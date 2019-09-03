@@ -20,6 +20,14 @@ Next, we need to initialize the database of the Identity Server:
 $ docker-compose run --rm stack is-db init
 ```
 
+The Things Enterprise Stack requires a tenant to be present, even if multi-tenancy is not included in the license. We now create this tenant:
+
+```bash
+$ docker-compose run --rm stack is-db create-tenant
+```
+
+> This will take the Tenant ID from the configuration.
+
 We'll now create an initial `admin` user. Make sure to give it a good password.
 
 ```bash
