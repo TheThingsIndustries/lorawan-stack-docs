@@ -1,5 +1,5 @@
 ---
-title: "Stripe"
+title: "Billing with Stripe"
 description: ""
 weight: 50
 ---

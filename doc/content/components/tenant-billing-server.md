@@ -18,7 +18,7 @@ The [Stripe](https://stripe.com/) backend provides billing and tenant management
 
 Tenants are created when a customer subscribes to a pricing plan which is enabled in the backend configuration. As long as the customer maintains their subscription and their payments are up to date, the tenant remains active. As soon as the subscription ends, the tenant is suspended until another subscription is created for the same customer. If the customer subscription is changed to a different pricing plan, the tenant will be upgraded automatically as well. 
 
-See [Modeling subscriptions](https://stripe.com/docs/billing/subscriptions/modeling) for more information about Stripe products, pricing plans and subscriptions.
+See [Modeling subscriptions](https://stripe.com/docs/billing/subscriptions/modeling) for more information about Stripe products, pricing plans and subscriptions. You can also refer to the [Billing with Stripe]({{< ref "/reference/stripe" >}}) guide which covers the creation of products, pricing plans and subscriptions in Stripe.
 
 #### Pricing Plans
 
