@@ -2,6 +2,10 @@
 title: "Certificates"
 description: ""
 weight: 2
+draft: true
+redirect_from:
+ - /draft/certificates/
+ - /certificates/
 ---
 
 ## Certificates

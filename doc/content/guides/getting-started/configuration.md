@@ -2,6 +2,10 @@
 title: "Configuration"
 description: ""
 weight: 3
+draft: true
+redirect_from:
+ - /draft/configuration/
+ - /configuration/
 ---
 
 {{% tts %}} can be started for development without passing any configuration. However, there are a number of things you need to configure for a production deployment. In this guide we'll set environment variables in the `docker-compose.yml` file to configure {{% tts %}} as a private deployment on `thethings.example.com`.

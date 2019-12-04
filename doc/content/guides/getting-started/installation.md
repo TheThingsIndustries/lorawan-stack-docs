@@ -2,6 +2,7 @@
 title: "Installation"
 description: ""
 weight: 1
+draft: true
 ---
 
 ## Preparation
