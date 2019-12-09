@@ -39,4 +39,4 @@ Go to the Console of The Things Industries Join Server (prerequisite 5):
 
 Your secure elements are now claimed in your application. The secure elements cannot be claimed by anyone else until you delete the devices.
 
-Claiming the secure elements only creates devices on the Join Server: they are not registered on a Network Server or Application Server yet. You first need to register them on a Network Server and Application Server before you can activate the devices.
+Claiming the secure elements only creates devices on the Join Server: they are not registered on a Network Server or Application Server yet. You first need to register them on a Network Server and Application Server before you can activate the devices. [Learn how to register devices on Cloud Hosted]({{< ref "/guides/cloud-hosted/tti-join-server/register-devices-cloud-hosted" >}}).
