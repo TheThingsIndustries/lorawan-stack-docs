@@ -4,11 +4,11 @@ description: ""
 weight: 20
 ---
 
-Each Cloud Hosted regional cluster contains a Join Server for convenience. Instead of the Join Server in a regional cluster, you can also use The Things Industries Join Server: a dedicated LoRaWAN Join Server which supports interoperability with other Network Servers and supports pre-provisioned secure elements.
+Each Cloud Hosted cluster contains a Join Server for convenience. Instead of the Join Server in a cluster, you can also use The Things Industries Join Server: a dedicated LoRaWAN Join Server which supports interoperability with other Network Servers and supports pre-provisioned secure elements.
 
 The addresses where you can reach your The Things Industries Cloud Hosted network consist of the tenant ID and `join.cloud.thethings.industries`.
 
-You can update the examples below with your tenant ID and regional cluster ID by filling them here.
+You can update the examples below with your tenant ID and cluster ID by filling them here.
 
 {{< tenant-cluster-selector >}}
 
@@ -24,13 +24,15 @@ https://<span data-content="tenant-id"></span>.join.cloud.thethings.industries/c
 
 ## Command-line Interface
 
-You can configure the command-line interface (CLI) to use The Things Industries Join Server with a Cloud Hosted regional cluster for all services, or use only The Things Industries Join Server. The latter 
+You can configure the command-line interface (CLI) to use The Things Industries Join Server with a Cloud Hosted cluster.
+
+Alternatively, you can also configure the CLI to use The Things Industries Join Server only. This is useful when working with a third-party LoRaWAN network.
 
 See the [CLI Getting Started Guide]({{< ref "/guides/getting-started/cli" >}}) to learn how to get started with the CLI and working with configuration files.
 
 ### CLI Configuration With Cloud Hosted Regional Cluster
 
-If you want to use The Things Industries Join Server with a Cloud Hosted regional cluster, you use this configuration file for the CLI:
+If you want to use The Things Industries Join Server with a Cloud Hosted cluster, you use this configuration file for the CLI:
 
 <pre>
 oauth-server-address: 'https://<span data-content="tenant-id"></span>.eu1.cloud.thethings.industries/oauth'

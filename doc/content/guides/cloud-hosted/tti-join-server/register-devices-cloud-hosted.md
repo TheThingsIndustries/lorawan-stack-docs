@@ -10,9 +10,14 @@ The Things Industries Join Server is a LoRaWAN Join Server. Learn how to registe
 
 {{< cli-only >}}
 
+## Prerequisites
+
+1. Command-line interface (CLI) configuration file with Cloud Hosted cluster. See [The Things Industries Join Server]({{< relref "../tti-join-server" >}})
+2. Devices registered in The Things Industries Join Server.
+
 ## Login with CLI
 
-Use the command-line interface (CLI) configuration file with Cloud Hosted regional cluster. See [The Things Industries Join Server]({{< relref "../tti-join-server" >}}).
+Use the command-line interface (CLI) configuration file with Cloud Hosted cluster. 
 
 ```bash
 $ ttn-lw-cli login
