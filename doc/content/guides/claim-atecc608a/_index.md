@@ -43,4 +43,4 @@ Your secure elements are now claimed in your application. The secure elements ca
 
 Claiming the secure elements only creates devices on the Join Server: they are not registered on a Network Server or Application Server yet. You first need to register them on a Network Server and Application Server before you can activate the devices.
 
-[Learn how to activate devices on The Things Industries Cloud Hosted]({{< ref "/guides/cloud-hosted/tti-join-server/register-devices-cloud-hosted" >}}).
+[Learn how to activate devices on The Things Industries Cloud Hosted]({{< ref "/guides/cloud-hosted/tti-join-server/activate-devices-cloud-hosted" >}}).
