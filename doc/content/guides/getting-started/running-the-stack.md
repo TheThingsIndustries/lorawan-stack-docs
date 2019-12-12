@@ -1,5 +1,5 @@
 ---
-title: "Running {{% tts %}}"
+title: "Running The Things Enterprise Stack"
 description: ""
 weight: 4
 draft: true
