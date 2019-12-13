@@ -9,6 +9,7 @@ weight: 2
 The Identity Server needs to be connected to a PostgreSQL-compatible database. Details for the form of the URI can be found in the [PostgreSQL documentation](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING).
 
 - `is.database-uri`: Database connection URI
+- `is.read-database-uri`: Read-Only database connection URI
 
 ## Email Options
 
