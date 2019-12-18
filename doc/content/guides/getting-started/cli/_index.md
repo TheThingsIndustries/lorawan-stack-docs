@@ -4,6 +4,32 @@ description: ""
 weight: 10
 ---
 
+Although the web interface of {{% tts %}} (the Console) currently has support for all basic features of {{% tts %}}, for some actions, you need to use the command-line interface (CLI). The CLI allows you to manage all features of {{% tts %}}.
+You can use the CLI on your local machine and on the server.
+
+>Note: if you need help with any CLI command, use the `--help` flag to get a list of subcommands, flags and their description and aliases.
+
+## Installation
+
+### Package managers (recommended)
+
+#### macOS
+
+```bash
+$ brew install TheThingsNetwork/lorawan-stack/ttn-lw-stack
+```
+
+#### Linux
+
+```bash
+$ sudo snap install ttn-lw-stack
+$ sudo snap alias ttn-lw-stack.ttn-lw-cli ttn-lw-cli
+```
+
+### Binaries
+
+You can download [pre-built binaries](https://github.com/TheThingsNetwork/lorawan-stack/releases) for your operating system and processor architecture.
+
 ## Configuration
 
 The command-line needs to be configured to connect to your deployment on `thethings.example.com`. You have multiple options to make the configuration file available to the CLI:
@@ -158,9 +184,3 @@ $ ttn-lw-cli end-devices create app1 dev2 \
 >Note: The `NwkSKey` is returned as `f_nwk_s_int_key` ({{% tts %}} uses LoRaWAN 1.1 terminology).
 
 >Hint: You can also pass `--with-session` to have a session generated.
-
-## Working With Data
-
-With your {{% tts %}} setup, a gateway connected and a device registered on your network, it's time to start working with data.
-
-Learn how to work with the [builtin MQTT server]({{< relref "../mqtt" >}}) and [HTTP webhooks]({{< relref "../webhooks" >}}).
