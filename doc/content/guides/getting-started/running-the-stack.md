@@ -1,7 +1,9 @@
 ---
-title: "Running The Things Stack"
+title: "Running The Things Enterprise Stack"
 description: ""
 weight: 4
+draft: true
+
 ---
 
 Now that all configuration is done, we're ready to initialize {{% tts %}} and start it. Open a terminal prompt in the same directory as your `docker-compose.yml` file.
