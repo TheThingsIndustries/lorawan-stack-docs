@@ -30,7 +30,7 @@ Alternatively, you can also configure the CLI to use The Things Industries Join 
 
 See the [CLI Getting Started Guide]({{< ref "/guides/getting-started/cli" >}}) to learn how to get started with the CLI and working with configuration files.
 
-### CLI Configuration With Cloud Hosted Regional Cluster
+### CLI Configuration With Cloud Hosted Cluster
 
 If you want to use The Things Industries Join Server with a Cloud Hosted cluster, you use this configuration file for the CLI:
 
