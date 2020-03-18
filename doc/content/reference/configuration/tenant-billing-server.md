@@ -9,6 +9,7 @@ weight: 10
 ## General options
 
 - `tbs.tenant-admin-key` : The tenant administration key configured in the Identity Server.
+- `tbs.pull-interval` : How frequently to pull the metering data.
 - `tbs.reporter-address-regexps` : Regular expressions representing addresses which can report tenant metering totals.
 
 ### Stripe configuration
