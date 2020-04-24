@@ -59,7 +59,9 @@ $ docker-compose run --rm stack is-db create-oauth-client \
   --owner admin \
   --secret the secret you generated before \
   --redirect-uri "https://thethings.example.com/console/oauth/callback" \
-  --redirect-uri "/console/oauth/callback"
+  --redirect-uri "/console/oauth/callback" \
+  --logout-redirect-uri "https://thethings.example.com/console" \
+  --logout-redirect-uri "/console" \
 ```
 
 ## Running {{% tts %}}

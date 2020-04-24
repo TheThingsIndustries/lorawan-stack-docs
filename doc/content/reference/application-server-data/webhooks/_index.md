@@ -1,7 +1,6 @@
 ---
 title: "HTTP Webhooks"
 description: ""
-weight: 3
 ---
 
 The webhooks feature allows the Application Server to send application related messages to specific HTTP(S) endpoints.
@@ -34,8 +33,8 @@ Make sure to save your API key at this point, since it will no longer be retriev
 
 The downlink queue operation paths are:
 
-- For push: `/v3/api/as/applications/{application_id}/webhooks/{webhook_id}/devices/{device_id}/down/push`
-- For replace: `/v3/api/as/applications/{application_id}/webhooks/{webhook_id}/devices/{device_id}/down/replace`
+- For push: `/api/v3/as/applications/{application_id}/webhooks/{webhook_id}/devices/{device_id}/down/push`
+- For replace: `/api/v3/as/applications/{application_id}/webhooks/{webhook_id}/devices/{device_id}/down/replace`
 
 For example:
 
