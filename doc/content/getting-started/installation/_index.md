@@ -2,6 +2,7 @@
 title: "Installation"
 description: ""
 weight: -1
+draft: true
 ---
 
 This is a guide for setting up a private LoRaWAN network server using {{% tts %}} for LoRaWAN.

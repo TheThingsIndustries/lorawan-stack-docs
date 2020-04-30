@@ -2,6 +2,7 @@
 title: "Upgrading"
 description: ""
 weight: -1
+draft: true
 ---
 
 Follow these instructions to upgrade an existing {{% tts %}} instance.

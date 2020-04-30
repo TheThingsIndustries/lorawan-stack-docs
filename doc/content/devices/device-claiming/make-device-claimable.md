@@ -25,7 +25,7 @@ In order to be claimable the device needs to be registered on The Things Industr
    Follow the [Register Devices]({{< ref "/getting-started/cloud-hosted/tti-join-server/register-devices" >}}) guide.
 
 2. With secure element claiming  
-   Follow the [Claim ATECC608A Secure Elements]({{< ref "/getting-started/claim-atecc608a" >}}) guide.
+   Follow the [Claim ATECC608A Secure Elements]({{< ref "/devices/claim-atecc608a" >}}) guide.
 
 ### Registered on The Things Industries Join Server and Configured in a Cloud Hosted Cluster
 
@@ -33,7 +33,7 @@ In order to be claimable the device needs to be registered on The Things Industr
    Follow the [Activating Devices on Cloud Hosted]({{< ref "/getting-started/cloud-hosted/tti-join-server/activate-devices-cloud-hosted" >}}) guide.
 
 2. With secure element claiming  
-   Follow the [Claim ATECC608A Secure Elements]({{< ref "/getting-started/claim-atecc608a" >}}) and [Activating Devices on Cloud Hosted]({{< ref "/getting-started/cloud-hosted/tti-join-server/activate-devices-cloud-hosted" >}}) guides.
+   Follow the [Claim ATECC608A Secure Elements]({{< ref "/devices/claim-atecc608a" >}}) and [Activating Devices on Cloud Hosted]({{< ref "/getting-started/cloud-hosted/tti-join-server/activate-devices-cloud-hosted" >}}) guides.
 
 ## Generate QR code for claiming
 
