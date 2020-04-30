@@ -2,6 +2,7 @@
 title: "Preparation"
 description: ""
 weight: 1
+draft: true
 ---
 
 ## Preparation

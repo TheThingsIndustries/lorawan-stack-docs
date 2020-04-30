@@ -8,6 +8,7 @@ The following email templates are currently used by {{% tts %}}:
 
 Full Name | Identifier | Scope | Additional fields
 ----------|------------|-------|------------------
+Tenant Created | `tenant_created` | Sent to the initial user of a tenant when it is first created. | `InitialPassword`
 Invitation | `invitation` | Sent when inviting new users to the network. | `InvitationToken`
 API Key changed | `api_key_changed` | Sent when the rights of an API Key have been changed. | `Identifiers` and `Rights`
 API Key created | `api_key_created` | Send when an API Key has been created. | `Identifiers` and `Rights`

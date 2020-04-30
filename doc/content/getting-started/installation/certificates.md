@@ -2,6 +2,8 @@
 title: "Certificates"
 description: ""
 weight: 2
+draft: true
+
 ---
 
 ## Certificates

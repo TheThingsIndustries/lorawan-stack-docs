@@ -2,6 +2,8 @@
 title: "Configuration"
 description: ""
 weight: 3
+draft: true
+
 ---
 
 {{% tts %}} can be started for development without passing any configuration. However, there are a number of things you need to configure for a production deployment. In this guide we will configure {{% tts %}} as a private deployment on `thethings.example.com`. For that purpose, we are going to need two configuration files: `docker-compose.yml`, which defines the Docker services of {{% tts %}} and its dependencies, and `ttn-lw-stack.yml`, which contains configuration specific to our {{% tts %}} deployment.
