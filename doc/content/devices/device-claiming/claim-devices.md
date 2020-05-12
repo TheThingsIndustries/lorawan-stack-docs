@@ -10,7 +10,7 @@ You can update the example below with your tenant ID and cluster ID by filling t
 
 ## Prerequisites
 
-1. An application in The Things Industries Cloud Hosted. [See instructions]({{< ref "/getting-started/console#create-application" >}})
+1. An application in The Things Industries Cloud Hosted. [See instructions]({{< ref "/getting-started/console/create-application" >}})
 2. A device with a QR code for claiming sticker.
 
 ## Claim a Device

@@ -13,7 +13,7 @@ This guide explains the process of making a device claimable
 ## Prerequisites
 
 1. Access to The Things Industries Cloud Hosted. [Contact The Things Industries](mailto:cloud@thethingsindustries.com) to get onboarded.
-3. An application in The Things Industries Cloud Hosted. [See instructions]({{< ref "/getting-started/console#create-application" >}})
+3. An application in The Things Industries Cloud Hosted. [See instructions]({{< ref "/getting-started/console/create-application" >}})
 
 ## Register Devices
 

@@ -16,7 +16,7 @@ This guide helps device makers to claim secure elements on The Things Industries
 1. ATECC608A-TNGLORA secure elements. [Product details](https://www.microchip.com/wwwproducts/en/ATECC608A-TNGLORA)
 2. Device security (manifest) file. You can obtain this from your [Microchip Direct order history](https://www.microchipdirect.com/orders)
 3. Access to The Things Industries Cloud Hosted. [Contact The Things Industries](mailto:cloud@thethingsindustries.com) to get onboarded
-4. An application in The Things Industries Cloud Hosted. [See instructions]({{< ref "/getting-started/console#create-application" >}})
+4. An application in The Things Industries Cloud Hosted. [See instructions]({{< ref "/getting-started/console/create-application" >}})
 5. Your The Things Industries Join Server address. [See Join Server addresses]({{< ref "/getting-started/cloud-hosted/tti-join-server" >}})
 
 ## Login
