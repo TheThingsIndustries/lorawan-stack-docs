@@ -10,6 +10,22 @@ Under normal circumstances, only `info`, `warn` and `error` logs are printed to 
 
 - `log.level`: The minimum level log messages must have to be shown (default "info")
 
+## License
+
+{{% tts %}} requires a license key for production use. For development purposes, it will work for a limited time on `localhost` without a license key.
+
+- `license.file`: Location of the license file
+- `license.key`: Contents of the license key
+
+## Key Vault
+
+The key vault is used to store secrets, such as TLS certificates and the keys for encrypting LoRaWAN root keys in the database. {{% tts %}} supports keys stored in AWS Secrets Manager, or static configuration for development purposes.
+
+- `key-vault.provider`: Provider (static or aws)
+- `key-vault.static`: Static key encryption keys; values use hex encoding
+- `key-vault.aws.region`: AWS region
+- `key-vault.aws.secret-id-prefix`: Secret ID prefix
+
 ## TLS Options
 
 {{% tts %}} serves several endpoints using TLS. TLS certificates can come from different sources.
@@ -192,6 +208,18 @@ The `cluster` options configure how {{% tts %}} communicates with other componen
 - `cluster.join-server`: Address for the Join Server
 - `cluster.crypto-server`: Address for the Crypto Server
 
+The next thing to configure is how peers discover each other, and how peers claim IDs.
+
+{{% tts %}} currently only supports `DNS` discovery. In this discovery mechanism cluster peers periodically perform DNS lookups for the configured addresses. If an address is of the form `host:port` the peers will be discovered by looking up the `A` records for that address, and connecting to the configured port. If an address is only a hostname, the peers will be discovered by looking up the `SRV` records for that address, then looking up the `A` records for each returned address and connecting to the port that was set on the `SRV` record.
+
+- `cluster.discovery-mode`: Peer discovery mode
+
+{{% tts %}} currently only supports the `redis` backend for ID claiming. This uses the same Redis instance as the one used for the cache. When a gateway connects to a Gateway Server, the Gateway Server will register itself in Redis for the given gateway ID. When a Network Server needs to send a downlink to a gateway, it will look up the registered Gateway Server for the given gateway ID. To avoid hitting Redis every time a Network Server needs to send a downlink, it has a local cache of these ID claims.
+
+- `cluster.claim.backend`: ID claiming backend
+- `cluster.claim.cache.size`: Maximum size of the local ID claims cache
+- `cluster.claim.cache.ttl`: TTL of locally cached ID claims
+
 The cluster keys are 128 bit, hex-encoded keys that cluster components use to authenticate to each other.
 
 - `cluster.keys`: Keys used to communicate between components of the cluster. The first one will be used by the cluster to identify itself
@@ -199,3 +227,16 @@ The cluster keys are 128 bit, hex-encoded keys that cluster components use to au
 It is possible to configure the cluster to use TLS or not. We recommend to enable TLS for production deployments.
 
 - `cluster.tls`: Do cluster gRPC over TLS
+
+## Multi-Tenancy
+
+In multi-tenant deployments, some additional configuration is required.
+
+- `tenancy.base-domains`: Base domains for tenant ID inference.  
+  Setting this to `thethings.example.com` would extract the tenant ID from `<tenant-id>.thethings.example.com`.
+- `tenancy.default-id`: Default tenant ID
+  Users visiting `thethings.example.com` (from `tenancy.base-domains`) will be redirected to `default.thethings.example.com`.
+
+Tenants can have custom configuration, such as custom branding or custom user registration options. This information is typically cached locally, especially in multi-region deployments to reduce the load on the Identity Server and to be more resilient against outages of the Identity Server.
+
+- `tenancy.ttl`: TTL of cached tenant configurations
