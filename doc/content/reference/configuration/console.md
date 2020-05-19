@@ -55,6 +55,8 @@ You can control the url of the assets folder that the Console frontend will use,
 
 - `console.ui.assets-base-url`: The base URL to the page assets
 - `console.ui.branding-base-url`: The base URL to the branding assets
+- `console.ui.branding-cluster-id`: The cluster ID to show below the logo
+- `console.ui.branding-text`: The branding text to show below the logo
 - `console.ui.icon-prefix`: The prefix to put before the page icons (favicon.ico, touch-icon.png, og-image.png)
 - `console.ui.canonical-url`: The page canonical URL
 - `console.ui.descriptions`: The page description
@@ -62,5 +64,6 @@ You can control the url of the assets folder that the Console frontend will use,
 - `console.ui.site-name`: The site name
 - `console.ui.sub-title`: The page sub-title
 - `console.ui.support-link`: The URI that the support button will point to
+- `console.ui.documentation-base-url`: The base URL for generating documentation links
 - `console.ui.theme-color`: The page theme color
 - `console.ui.title`: The page title

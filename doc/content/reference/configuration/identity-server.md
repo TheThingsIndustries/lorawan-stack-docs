@@ -66,6 +66,8 @@ If page assets for the OAuth UI are served from a CDN or on a different path on 
 
 - `is.oauth.ui.assets-base-url`: The base URL to the page assets
 - `is.oauth.ui.branding-base-url`: The base URL to the branding assets
+- `is.oauth.ui.branding-cluster-id`: The cluster ID to show below the logo
+- `is.oauth.ui.branding-text`: The branding text to show below the logo
 
 The appearance of {{% tts %}} can optionally be customized.
 
@@ -116,3 +118,9 @@ There are several options to customize the requirements for user passwords.
 - `is.user-registration.password-requirements.min-length`: Minimum password length
 - `is.user-registration.password-requirements.min-special`: Minimum number of special characters
 - `is.user-registration.password-requirements.min-uppercase`: Minimum number of uppercase letters
+
+## Tenant Administration Options
+
+In multi-tenant deployments, tenants are managed with "tenant admin keys". These keys need to be configured in the Identity Server.
+
+- `is.tenancy.admin-keys`: Keys that can be used for tenant administration (16, 24 or 32 hex-encoded bytes)
