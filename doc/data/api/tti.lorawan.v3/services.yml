@@ -1,0 +1,85 @@
+Tbs:
+  name: Tbs
+  comment: |2
+     The Tbs service manages the Tenant Billing Server metering reporting.
+  methods:
+    Report:
+      name: Report
+      input:
+        name: MeteringData
+      output:
+        package: google.protobuf
+        name: Empty
+      http:
+      - method: POST
+        path: /tbs/report
+TenantRegistry:
+  name: TenantRegistry
+  methods:
+    Create:
+      name: Create
+      input:
+        name: CreateTenantRequest
+      output:
+        name: Tenant
+      http:
+      - method: POST
+        path: /tenants
+    Get:
+      name: Get
+      input:
+        name: GetTenantRequest
+      output:
+        name: Tenant
+      http:
+      - method: GET
+        path: /tenants/{tenant_ids.tenant_id}
+    GetRegistryTotals:
+      name: GetRegistryTotals
+      input:
+        name: GetTenantRegistryTotalsRequest
+      output:
+        name: TenantRegistryTotals
+      http:
+      - method: GET
+        path: /tenants/{tenant_ids.tenant_id}/registry-totals
+    List:
+      name: List
+      input:
+        name: ListTenantsRequest
+      output:
+        name: Tenants
+      http:
+      - method: GET
+        path: /tenants
+    Update:
+      name: Update
+      input:
+        name: UpdateTenantRequest
+      output:
+        name: Tenant
+      http:
+      - method: PUT
+        path: /tenants/{tenant.ids.tenant_id}
+    Delete:
+      name: Delete
+      input:
+        name: TenantIdentifiers
+      output:
+        package: google.protobuf
+        name: Empty
+      http:
+      - method: DELETE
+        path: /tenants/{tenant_id}
+    GetIdentifiersForEndDeviceEUIs:
+      name: GetIdentifiersForEndDeviceEUIs
+      input:
+        name: GetTenantIdentifiersForEndDeviceEUIsRequest
+      output:
+        name: TenantIdentifiers
+    GetIdentifiersForGatewayEUI:
+      name: GetIdentifiersForGatewayEUI
+      input:
+        name: GetTenantIdentifiersForGatewayEUIRequest
+      output:
+        name: TenantIdentifiers

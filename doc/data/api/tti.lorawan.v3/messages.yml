@@ -1,0 +1,690 @@
+ApplicationAPIKey:
+  name: ApplicationAPIKey
+  fields:
+  - name: application_ids
+    message:
+      package: ttn.lorawan.v3
+      name: ApplicationIdentifiers
+    rules:
+      required: true
+    default: {}
+  - name: api_key
+    type: string
+    rules:
+      min_len: 1
+    default: ""
+Billing:
+  name: Billing
+  fields:
+  - name: stripe
+    message:
+      name: Billing.Stripe
+    default: {}
+  oneofs:
+  - name: provider
+    field_names:
+    - stripe
+Billing.Stripe:
+  name: Billing.Stripe
+  fields:
+  - name: customer_id
+    type: string
+    rules:
+      min_len: 1
+    default: ""
+  - name: plan_id
+    type: string
+    rules:
+      min_len: 1
+    default: ""
+  - name: subscription_id
+    type: string
+    rules:
+      min_len: 1
+    default: ""
+  - name: subscription_item_id
+    type: string
+    rules:
+      min_len: 1
+    default: ""
+Configuration:
+  name: Configuration
+  fields:
+  - name: default_cluster
+    comment: |2
+       Default cluster configuration.
+    message:
+      name: Configuration.Cluster
+    default: {}
+Configuration.Cluster:
+  name: Configuration.Cluster
+  fields:
+  - name: ui
+    message:
+      name: Configuration.UI
+    default: {}
+  - name: is
+    comment: |2
+       Identity Server configuration.
+    message:
+      name: Configuration.Cluster.IdentityServer
+    default: {}
+  - name: ns
+    message:
+      name: Configuration.Cluster.NetworkServer
+    default: {}
+Configuration.Cluster.IdentityServer:
+  name: Configuration.Cluster.IdentityServer
+  fields:
+  - name: user_registration
+    message:
+      name: Configuration.Cluster.IdentityServer.UserRegistration
+    default: {}
+Configuration.Cluster.IdentityServer.UserRegistration:
+  name: Configuration.Cluster.IdentityServer.UserRegistration
+  fields:
+  - name: invitation
+    message:
+      name: Configuration.Cluster.IdentityServer.UserRegistration.Invitation
+    default: {}
+  - name: contact_info_validation
+    message:
+      name: Configuration.Cluster.IdentityServer.UserRegistration.ContactInfoValidation
+    default: {}
+  - name: admin_approval
+    message:
+      name: Configuration.Cluster.IdentityServer.UserRegistration.AdminApproval
+    default: {}
+  - name: password_requirements
+    message:
+      name: Configuration.Cluster.IdentityServer.UserRegistration.PasswordRequirements
+    default: {}
+Configuration.Cluster.IdentityServer.UserRegistration.AdminApproval:
+  name: Configuration.Cluster.IdentityServer.UserRegistration.AdminApproval
+  fields:
+  - name: required
+    message:
+      package: google.protobuf
+      name: BoolValue
+    default: null
+Configuration.Cluster.IdentityServer.UserRegistration.ContactInfoValidation:
+  name: Configuration.Cluster.IdentityServer.UserRegistration.ContactInfoValidation
+  fields:
+  - name: required
+    message:
+      package: google.protobuf
+      name: BoolValue
+    default: null
+Configuration.Cluster.IdentityServer.UserRegistration.Invitation:
+  name: Configuration.Cluster.IdentityServer.UserRegistration.Invitation
+  fields:
+  - name: required
+    message:
+      package: google.protobuf
+      name: BoolValue
+    default: null
+  - name: token_ttl
+    message:
+      package: google.protobuf
+      name: Duration
+    default: 0s
+Configuration.Cluster.IdentityServer.UserRegistration.PasswordRequirements:
+  name: Configuration.Cluster.IdentityServer.UserRegistration.PasswordRequirements
+  fields:
+  - name: min_length
+    message:
+      package: google.protobuf
+      name: UInt32Value
+    default: null
+  - name: max_length
+    message:
+      package: google.protobuf
+      name: UInt32Value
+    default: null
+  - name: min_uppercase
+    message:
+      package: google.protobuf
+      name: UInt32Value
+    default: null
+  - name: min_digits
+    message:
+      package: google.protobuf
+      name: UInt32Value
+    default: null
+  - name: min_special
+    message:
+      package: google.protobuf
+      name: UInt32Value
+    default: null
+Configuration.Cluster.NetworkServer:
+  name: Configuration.Cluster.NetworkServer
+  fields:
+  - name: dev_addr_prefixes
+    repeated:
+      type: bytes
+    default: []
+  - name: deduplication_window
+    message:
+      package: google.protobuf
+      name: Duration
+    default: 0s
+  - name: cooldown_window
+    message:
+      package: google.protobuf
+      name: Duration
+    default: 0s
+Configuration.UI:
+  name: Configuration.UI
+  fields:
+  - name: branding_base_url
+    type: string
+    default: ""
+CreateTenantRequest:
+  name: CreateTenantRequest
+  fields:
+  - name: tenant
+    message:
+      name: Tenant
+    rules:
+      required: true
+    default: {}
+  - name: initial_user
+    message:
+      package: ttn.lorawan.v3
+      name: User
+    default: {}
+GetTenantIdentifiersForEndDeviceEUIsRequest:
+  name: GetTenantIdentifiersForEndDeviceEUIsRequest
+  fields:
+  - name: join_eui
+    type: bytes
+    default: ""
+  - name: dev_eui
+    type: bytes
+    default: ""
+GetTenantIdentifiersForGatewayEUIRequest:
+  name: GetTenantIdentifiersForGatewayEUIRequest
+  fields:
+  - name: eui
+    type: bytes
+    default: ""
+GetTenantRegistryTotalsRequest:
+  name: GetTenantRegistryTotalsRequest
+  fields:
+  - name: tenant_ids
+    message:
+      name: TenantIdentifiers
+    default: {}
+  - name: field_mask
+    message:
+      package: google.protobuf
+      name: FieldMask
+    default: {}
+GetTenantRequest:
+  name: GetTenantRequest
+  fields:
+  - name: tenant_ids
+    message:
+      name: TenantIdentifiers
+    rules:
+      required: true
+    default: {}
+  - name: field_mask
+    message:
+      package: google.protobuf
+      name: FieldMask
+    default: {}
+License:
+  name: License
+  fields:
+  - name: id
+    comment: |2
+       Immutable and unique public identifier for the License.
+       Generated by the License Server.
+    message:
+      name: LicenseIdentifiers
+    rules:
+      required: true
+    default: {}
+  - name: license_issuer_ids
+    comment: |2
+       Issuer of the license.
+    message:
+      name: LicenseIssuerIdentifiers
+    rules:
+      required: true
+    default: {}
+  - name: created_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
+  - name: valid_from
+    comment: |2
+       The license is not valid before this time.
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
+  - name: valid_until
+    comment: |2
+       The license is not valid after this time.
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
+  - name: warn_for
+    comment: |2
+       For how long (before valid_until) to warn about license expiry.
+    message:
+      package: google.protobuf
+      name: Duration
+    default: 0s
+  - name: limit_for
+    comment: |2
+       For how long (before valid_until) to limit non-critical functionality.
+    message:
+      package: google.protobuf
+      name: Duration
+    default: 0s
+  - name: min_version
+    comment: |2
+       If set, sets the minimum version allowed by this license (major.minor.patch).
+    type: string
+    default: ""
+  - name: max_version
+    comment: |2
+       If set, sets the maximum version allowed by this license (major.minor.patch).
+    type: string
+    default: ""
+  - name: components
+    comment: |2
+       If set, only the given components can be started.
+    repeated:
+      enum:
+        package: ttn.lorawan.v3
+        name: ClusterRole
+    default: []
+  - name: component_address_regexps
+    comment: |2
+       If set, the server addresses must match any of these regexps.
+    repeated:
+      type: string
+    default: []
+  - name: dev_addr_prefixes
+    comment: |2
+       If set, the configured DevAddr prefixes must match any of these prefixes.
+    repeated:
+      type: bytes
+    default: []
+  - name: join_eui_prefixes
+    comment: |2
+       If set, the configured JoinEUI prefixes must match any of these prefixes.
+    repeated:
+      type: bytes
+    default: []
+  - name: multi_tenancy
+    comment: |2
+       Indicates whether multi-tenancy support is included.
+    type: bool
+    default: false
+  - name: max_applications
+    comment: |2
+       If set, restricts the maximum number of applications that can be created.
+    message:
+      package: google.protobuf
+      name: UInt64Value
+    default: null
+  - name: max_clients
+    comment: |2
+       If set, restricts the maximum number of clients that can be created.
+    message:
+      package: google.protobuf
+      name: UInt64Value
+    default: null
+  - name: max_end_devices
+    comment: |2
+       If set, restricts the maximum number of end_devices that can be created.
+    message:
+      package: google.protobuf
+      name: UInt64Value
+    default: null
+  - name: max_gateways
+    comment: |2
+       If set, restricts the maximum number of gateways that can be created.
+    message:
+      package: google.protobuf
+      name: UInt64Value
+    default: null
+  - name: max_organizations
+    comment: |2
+       If set, restricts the maximum number of organizations that can be created.
+    message:
+      package: google.protobuf
+      name: UInt64Value
+    default: null
+  - name: max_users
+    comment: |2
+       If set, restricts the maximum number of users that can be created.
+    message:
+      package: google.protobuf
+      name: UInt64Value
+    default: null
+  - name: metering
+    comment: |2
+       If set, requires checking in with a metering service.
+    message:
+      name: MeteringConfiguration
+    default: {}
+LicenseIdentifiers:
+  name: LicenseIdentifiers
+  fields:
+  - name: license_id
+    type: string
+    rules:
+      max_len: 36
+      pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+    default: ""
+LicenseIssuerIdentifiers:
+  name: LicenseIssuerIdentifiers
+  fields:
+  - name: license_issuer_id
+    type: string
+    rules:
+      max_len: 36
+      pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+    default: ""
+LicenseKey:
+  name: LicenseKey
+  fields:
+  - name: license
+    comment: |2
+       The marshaled License message.
+    type: bytes
+    default: ""
+  - name: signatures
+    comment: |2
+       Signatures for the license bytes. The LicenseKey is invalid if it does not
+       contain any signature with a known key_id or if it contains any invalid
+       signature.
+    repeated:
+      message:
+        name: LicenseKey.Signature
+    default: []
+LicenseKey.Signature:
+  name: LicenseKey.Signature
+  fields:
+  - name: key_id
+    comment: |2
+       The ID of the key used to sign license.
+    type: string
+    default: ""
+  - name: signature
+    comment: |2
+       Signature for license using the key identified by key_id.
+    type: bytes
+    default: ""
+LicenseUpdate:
+  name: LicenseUpdate
+  fields:
+  - name: extend_valid_until
+    comment: |2
+       How long the license validity should be extended (relative to the current time) on update.
+    message:
+      package: google.protobuf
+      name: Duration
+    default: 0s
+ListTenantsRequest:
+  name: ListTenantsRequest
+  fields:
+  - name: field_mask
+    message:
+      package: google.protobuf
+      name: FieldMask
+    default: {}
+  - name: order
+    comment: |2
+       Order the results by this field path (must be present in the field mask).
+       Default ordering is by ID. Prepend with a minus (-) to reverse the order.
+    type: string
+    rules:
+      in:
+      - ""
+      - tenant_id
+      - -tenant_id
+      - name
+      - -name
+      - created_at
+      - -created_at
+    default: ""
+  - name: limit
+    comment: |2
+       Limit the number of results per page.
+    type: uint32
+    rules:
+      lte: 1000
+    default: 0
+  - name: page
+    comment: |2
+       Page number for pagination. 0 is interpreted as 1.
+    type: uint32
+    default: 0
+MeteringConfiguration:
+  name: MeteringConfiguration
+  fields:
+  - name: interval
+    comment: |2
+       How frequently to report to the metering service.
+    message:
+      package: google.protobuf
+      name: Duration
+    default: 0s
+  - name: on_success
+    comment: |2
+       How to update the license on success.
+    message:
+      name: LicenseUpdate
+    default: {}
+  - name: aws
+    message:
+      name: MeteringConfiguration.AWS
+    default: {}
+  - name: prometheus
+    message:
+      name: MeteringConfiguration.Prometheus
+    default: {}
+  oneofs:
+  - name: metering
+    field_names:
+    - aws
+    - prometheus
+MeteringConfiguration.AWS:
+  name: MeteringConfiguration.AWS
+  fields:
+  - name: sku
+    type: string
+    default: ""
+MeteringConfiguration.Prometheus:
+  name: MeteringConfiguration.Prometheus
+MeteringData:
+  name: MeteringData
+  fields:
+  - name: tenants
+    repeated:
+      message:
+        name: MeteringData.TenantMeteringData
+    default: []
+MeteringData.TenantMeteringData:
+  name: MeteringData.TenantMeteringData
+  fields:
+  - name: tenant_id
+    message:
+      name: TenantIdentifiers
+    default: {}
+  - name: totals
+    message:
+      name: TenantRegistryTotals
+    default: {}
+Tenant:
+  name: Tenant
+  comment: |2
+     Tenant is the message that defines a Tenant in the network.
+  fields:
+  - name: ids
+    message:
+      name: TenantIdentifiers
+    rules:
+      required: true
+    default: {}
+  - name: created_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
+  - name: updated_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
+  - name: name
+    type: string
+    rules:
+      max_len: 50
+    default: ""
+  - name: description
+    type: string
+    rules:
+      max_len: 2000
+    default: ""
+  - name: attributes
+    map_key:
+      type: string
+      rules:
+        max_len: 36
+        pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+    map_value:
+      type: string
+    default: {}
+  - name: contact_info
+    repeated:
+      message:
+        package: ttn.lorawan.v3
+        name: ContactInfo
+    default: []
+  - name: max_applications
+    comment: |2
+       If set, restricts the maximum number of applications that can be created.
+    message:
+      package: google.protobuf
+      name: UInt64Value
+    default: null
+  - name: max_clients
+    comment: |2
+       If set, restricts the maximum number of clients that can be created.
+    message:
+      package: google.protobuf
+      name: UInt64Value
+    default: null
+  - name: max_end_devices
+    comment: |2
+       If set, restricts the maximum number of end_devices that can be created.
+    message:
+      package: google.protobuf
+      name: UInt64Value
+    default: null
+  - name: max_gateways
+    comment: |2
+       If set, restricts the maximum number of gateways that can be created.
+    message:
+      package: google.protobuf
+      name: UInt64Value
+    default: null
+  - name: max_organizations
+    comment: |2
+       If set, restricts the maximum number of organizations that can be created.
+    message:
+      package: google.protobuf
+      name: UInt64Value
+    default: null
+  - name: max_users
+    comment: |2
+       If set, restricts the maximum number of users that can be created.
+    message:
+      package: google.protobuf
+      name: UInt64Value
+    default: null
+  - name: state
+    comment: |2
+       The reviewing state of the tenant.
+       This field can only be modified by tenant admins.
+    enum:
+      package: ttn.lorawan.v3
+      name: State
+    rules:
+      defined_only: true
+    default: STATE_REQUESTED
+  - name: capabilities
+    message:
+      package: google.protobuf
+      name: Struct
+    default: {}
+  - name: configuration
+    message:
+      name: Configuration
+    default: {}
+  - name: billing
+    message:
+      name: Billing
+    default: {}
+TenantIdentifiers:
+  name: TenantIdentifiers
+  fields:
+  - name: tenant_id
+    type: string
+    rules:
+      max_len: 36
+      pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+    default: ""
+TenantRegistryTotals:
+  name: TenantRegistryTotals
+  fields:
+  - name: applications
+    type: uint64
+    default: 0
+  - name: clients
+    type: uint64
+    default: 0
+  - name: end_devices
+    type: uint64
+    default: 0
+  - name: gateways
+    type: uint64
+    default: 0
+  - name: organizations
+    type: uint64
+    default: 0
+  - name: users
+    type: uint64
+    default: 0
+Tenants:
+  name: Tenants
+  fields:
+  - name: tenants
+    repeated:
+      message:
+        name: Tenant
+    default: []
+UpdateTenantRequest:
+  name: UpdateTenantRequest
+  fields:
+  - name: tenant
+    message:
+      name: Tenant
+    rules:
+      required: true
+    default: {}
+  - name: field_mask
+    message:
+      package: google.protobuf
+      name: FieldMask
+    default: {}

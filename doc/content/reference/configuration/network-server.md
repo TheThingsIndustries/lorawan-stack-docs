@@ -41,3 +41,9 @@ The `ns.interop` options configure how Network Server performs interoperability 
 - `ns.interop.blob.path`: Blob path, which contains interoperability client configuration
 - `ns.interop.directory`: OS filesystem directory, which contains interoperability client configuration
 - `ns.interop.url`: URL, which contains interoperability client configuration
+
+## Peering
+
+In multi-tenant deployments, the Network Server maintains strict isolation of traffic for different tenants. When it also has peering configured, the Packet Broker is typically configured with the correct tenant ID for the DevAddr ranges of each tenant. It is also possible to accept traffic from the Packet Broker without a tenant ID, and let the Network Server match devices without strict tenant isolation.
+
+- `ns.switch-peering-tenant-context`: Switch tenant context in peering
