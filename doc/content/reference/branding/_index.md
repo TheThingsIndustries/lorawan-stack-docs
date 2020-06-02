@@ -17,7 +17,9 @@ It is possible to change the logos of the web UI by changing the "branding base 
 
 | **Filename**           | **Size** | **Purpose** |
 | ---------------------- | -------- | ----------- |
-| claim-favicon.ico      | multiple | The logo for the device claiming frontend that is shown in browser tabs and bookmarks |
+| claim-favicon.svg      | vector   | The SVG logo for the device claiming frontend that is shown in browser tabs and bookmarks |
+| claim-favicon.png      | multiple | The fallback favicon logo for the device claiming frontend in `PNG` format; recommended size 32x32 |
+| claim-favicon.ico      | multiple | The fallback favicon logo for the device claiming frontend in `ICO` format; recommended size 32x32 |
 | claim-og-image.png     | 1200x600 | The logo for the device claiming frontend that is shown when sharing links on social media |
 | claim-touch-icon.png   | 400x400  | The logo for the device claiming frontend that is shown mobile devices |
 | console-favicon.svg    | vector   | The SVG logo for the console that is shown in browser tabs and bookmarks |
