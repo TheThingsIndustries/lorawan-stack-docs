@@ -22,8 +22,9 @@ The Things Industries Cloud Hosted is a multi-cluster deployment. This means tha
 
 The Things Industries Cloud Hosted currently has the following clusters:
 
-| **Cluster ID** | **Name**        | **Location**    |
-| -------------- | --------------- | --------------- |
-| `eu1`          | Europe 1        | Ireland         |
-| `nam1`         | North America 1 | California, USA |
+| **Cluster ID** | **Name**        | **Location**      |
+| -------------- | --------------- | ---------------   |
+| `au1`          | Australia 1     | Sydney, Australia |
+| `eu1`          | Europe 1        | Ireland           |
+| `nam1`         | North America 1 | California, USA   |
 
