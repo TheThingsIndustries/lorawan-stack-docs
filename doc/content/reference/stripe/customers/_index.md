@@ -46,9 +46,15 @@ Click on the **Edit** button in the **Metadata** section. The following fields a
 
 | Field name | Description |
 |------|-------------|
-| `tenant-id`| The ID name of the tenant. Required. |
-| `admin-user` |The username of the initial administrator. Optional, defaults to the `tenant-id` if not provided. |
-| `admin-password` |The password of the initial administrator. Optional, defaults to a randomly generated password if not provided. |
+| `tenant-id`| The ID of the tenant. Required. |
+| `tenant-name`| The name of the tenant. Optional, defaults to the `name` if not provided. |
+| `tenant-description`| The description of the tenant. Optional, defaults to the customer description if not provided. |
+| `admin-user` | The username of the initial administrator. Optional, defaults to the `tenant-id` if not provided. |
+| `admin-email`| The email of the initial administrator. Optional, defaults to the customer email if not provided. |
+| `admin-full-name` | The name of the initial administrator. Optional, defaults to empty if not provided. |
+| `admin-password` | The password of the initial administrator. Optional, defaults to a randomly generated password if not provided. |
+| `name` | _Deprecated - use `tenant-name`_. The name of the tenant. Optional, defaults to the `company` if not provided. |
+| `company` | _Deprecated - use `tenant-name`_. The company of the tenant. Optional, defaults to the customer name if not provided. |
 
 {{< figure src="subscription-metadata.png" alt="Subscription metadata" >}}
 
