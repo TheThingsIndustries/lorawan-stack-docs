@@ -146,6 +146,13 @@ Or you can enable failover using [Redis Sentinel](https://redis.io/topics/sentin
 - `redis.failover.addresses`: List of addresses of the Redis Sentinel instances (required)
 - `redis.failover.master-name`: Redis Sentinel master name (required)
 
+Further, you can reduce the load on the Redis master by specifying read-only configuration:
+
+- `redis.readonly.address`: Address of the Redis server
+- `redis.readonly.password`: Password of the Redis server
+- `redis.readonly.database`: Redis database to use
+- `redis.readonly.pool-size`: The maximum size of the connection pool
+
 ## Blob Options
 
 The `blob` options configure how {{% tts %}} reads or writes files such as pictures, the frequency plans repository or files required for Backend Interfaces interoperability. The `provider` field selects the provider that is used, and which other options are read.
@@ -180,6 +187,13 @@ When using the `redis` backend, the global [Redis configuration]({{< ref "#redis
 - `events.redis.database`: Redis database to use
 - `events.redis.namespace`: Namespace for Redis keys
 - `events.redis.pool-size`: The maximum size of the connection pool
+
+Similar to the global Redis configuration, you can reduce the load on the Redis master by specifying read-only configuration:
+
+- `events.redis.readonly.address`: Address of the Redis server
+- `events.redis.readonly.password`: Password of the Redis server
+- `events.redis.readonly.database`: Redis database to use
+- `events.redis.readonly.pool-size`: The maximum size of the connection pool
 
 With the `cloud` backend, the configured publish and subscribe URLs are passed to [the Go CDK](https://gocloud.dev/howto/pubsub/).
 
