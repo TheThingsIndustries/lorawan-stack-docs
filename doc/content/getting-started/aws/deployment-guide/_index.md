@@ -32,17 +32,17 @@ In order to follow this guide to deploy {{% tts %}}, it is recommended to be fam
 The following are necessary to complete this guide
 1. An account with AWS with access to the AWS Marketplace. If you don't have one, one can be created using the [Create an AWS account](https://portal.aws.amazon.com/billing/signup#/start) page.
 2. An RSA Public-Private Key pair
-3. Your AWS account requires sufficient rights to create IAM roles.
+3. Sufficient rights on your account to create IAM roles.
 4. A LoRaWAN compliant Gateway. This guide uses a [Tektelic Kona Micro]( https://tektelic.com/wp-content/uploads/KONA-Micro.pdf).
 5. A LoRaWAN compliant End Device. This guide uses [Smart Building Sensors - Motion sensor](https://connectedthings.store/gb/home-and-office-sensors/smart-building-sensors-motion-sensor-eu868.html).
-6. Access to a name server to map DNS.
+6. Access to a name server for DNS mapping.
 
 ## Deployment using AWS Cloud Formation
 
 ### Step 1: Prepare your deployment
 
 1. Login to your AWS Marketplace and navigate to the [product page for {{% tts %}} for LoRaWAN](https://aws.amazon.com/marketplace/pp/B081HZKDJ4).
-2. Choose the correct AWS Region in which to deploy your stack. Also choose the Software Pricing Tier that suits your needs.
+2. Choose the correct AWS Region in which to deploy your stack. Also choose the **Software Pricing Tier** that suits your needs.
 3. Make sure to read the terms of usage and other information available.
 4. If applicable, [request a service limit increase](https://console.aws.amazon.com/support/cases#/create?issueType=service-limit-increase&limitType=service-code-) for additional VPCs and/or Elastic IPs.
 5. Click **Continue to Subscribe** and accept the terms and conditions once they are found satisfactory.
@@ -55,11 +55,11 @@ This template allows the user to customize the deployment. The following is a li
 
 #### Basic Configuration
 
-|**Parameter**|**Description**|**Default**|
+|Parameter|Description|Default|
 |---|---|---|
-|EC2 Instance Name|Name of your {{% tts %}} EC2 instance.|`the-things-enterprise-stack`|
+| EC2 Instance Name | Name of the EC2 instance. | `the-things-enterprise-stack` |
 |Domain|Domain name. You should be able to configure DNS for the domain. TLS certificates from Let's Encrypt will automatically be requested.|-|
-|Network Title*|The title of your deployment.|`{{% tts %}} for LoRaWAN`|
+|Network Title*|The title of your deployment.|`The Things Enterprise Stack for LoRaWAN`|
 
 > \* This is an optional field
 
@@ -74,7 +74,7 @@ This template allows the user to customize the deployment. The following is a li
 |Amazon RDS Database Password|Password for the relational database. This password is used to access the Amazon RDS database.|-|
 |SSH Key|Name of an existing EC2 KeyPair to enable SSH access to your instance.|-|
 |SendGrid API Key*|API key for [SendGrid](https://sendgrid.com/) to send emails.|-|
-|License Key for {{% tts %}}|The license key for {{% tts %}}.|-|
+|License Key for The Things Enterprise Stack |The license key|-|
 
 > \* This is an optional field
 
@@ -145,10 +145,10 @@ The following parameters are exclusively meant for updating an existing deployme
 
 ### Step 3: Start your deployment
 
-1. Once the parameters of the stack are configured, click **Next** to configure options for the CloudFormation Stack. You may use the defaults in this page. 
+1. Once the parameters of {{% tts %}} are configured, click **Next** to configure options for the CloudFormation Stack. You may use the defaults in this page. 
 2. Click **Next** review the deployment. Select the **I acknowledge that AWS CloudFormation might create IAM resources.** checkbox and click **Create Stack** option. 
 3. If all the parameters were entered correctly, AWS CloudFormation triggers the creation of your CloudFormation stack. The stack is now in the `CREATE_IN_PROGRESS` state. On average, this process takes about 40 minutes.
-4. You can monitor the status of your deployment by navigating to **CloudFormation** > **\<your-stack\>** > **Events**.
+4. You can monitor the status of your deployment by navigating to **CloudFormation** > **\<your-stack-name\>** > **Events**.
 5. Once the required resources are successfully deployed, the state of the CloudFormation stack is updated to `CREATE_COMPLETE`.
 
 ### Step 4: DNS Configuration
@@ -250,7 +250,7 @@ $ /etc/init.d/pkt_fwd restart
 
 ### Registering a device
 
-In this section, we'll be using a Tabs Motion Sensor [insert link]. It uses a Passive Infrared Detector and Fresnel Lens to detect motion in a room. This data is then sent to the network via LoRaWAN.
+In this section, we'll be using a Tabs Motion Sensor. It uses a Passive Infrared Detector and Fresnel Lens to detect motion in a room. This data is then sent to the network via LoRaWAN.
 
 The following steps are necessary to configure the device to work with {{% tts %}}.
 
@@ -387,38 +387,38 @@ The following is a sample of the **Messages** and **Messages published** windows
 
 ## Troubleshooting
 
-This section contains information to troubleshoot {{% tts %}}.
+This section contains information to troubleshoot {{% tts %}} deployment.
 
 ### FAQ
 
 1. My stack creation failed
 2. How can I SSH into my machine?
    - You can SSH into the EC2 machine using the public IP output value. In AWS Console and open the CloudFormation resource and click on your recently deployed stack. Navigate to the **Outputs** tab and copy the value of the **PublicIP** field. Now using the private key of the **SSH Key** value that you entered during deployment, you can SSH into the machine using
-   ```
+   ```bash
     $ ssh -i <path-to-private-key> ec2-user@<PublicIP>
    ```
 3. How can I see logs of {{% tts %}}?
    - {{% tts %}} binary runs as a `systemd` service. In order to access the logs, SSH into the machine as described above and use the following command.
-   ```
+   ```bash
     $ sudo journalctl -f -u lorawan-stack.service
    ```
 4. How do I see more detailed debug logs of {{% tts %}}?
    - By default, {{% tts %}} does not log detailed `DEBUG` messages. In order to enable this, SSH into the EC2 instance as described above and add the following lines to the file `/tti/lorawan-stack/config.yml` using an editor such as `nano`.
-   ```
+   ```bash
    log:
      level: debug
    ```
    - Restart the service for this to take effect.
-   ```
+   ```bash
     $ sudo systemctl restart lorawan-stack.service
    ```
    - The debug logs can be read using the `journalctl`, same as above:
-   ```
+   ```bash
     $ sudo journalctl -f -u lorawan-stack.service
    ```
 5. My Gateway doesn't connect. What do I do?
    - Ensure that the configuration of the gateway is correct. This includes, the server address, port and frequency plan settings. Check the logs as described in the steps above to locate the potential cause of the issue. You can also check the gateway logs for potential clues. For the Tektelic gateways, SSH into the gateway as described in the previous sections, and use the following command:
-   ```
+   ```bash
     $ tail -f /var/log/pkt_fwd.log
    ```
 6. My device doesn't join. How do I fix this?
@@ -427,7 +427,3 @@ This section contains information to troubleshoot {{% tts %}}.
 ### Professional Support
 
 Additional paid support for this deployment is offered by The Things Industries. You can contact us either by mailing us at `support@thethingsindustries.com` or by visiting [our support page](https://www.thethingsindustries.com/stack/aws/support). 
-
-### Additional Documentation
-
-More detailed documentation covering various aspects of {{% tts %}} can be found at `https://enterprise.thethingsstack.io`.
