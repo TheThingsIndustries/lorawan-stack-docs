@@ -1,20 +1,20 @@
 ---
-title: "AWS Marketplace Deployment Guide"
+title: "Deployment Guide"
 description: ""
-weight: 1
+weight: 20
 ---
 
 ## Overview
 
 This section contains a detailed information to help you setup {{% tts %}} via the [AWS Marketplace listing](https://aws.amazon.com/marketplace/pp/B081HZKDJ4?qid=1593444260869&sr=0-1&ref_=srh_res_product_title).
 
-![AMI Architecture](./ami-architecture.jpg)
+{{< figure src="ami-architecture.jpg" alt="AMI Architecture" >}}
 
 ### AWS Deployment Architecture
 
 The following image describes the architecture of the components that are deployed while using the **default parameters**.
 
-![AMI Architecture](./aws-deployment-architecture.png)
+{{< figure src="aws-deployment-architecture.png" alt="AMI deployment Architecture" >}}
 
 ## Preparation
 
@@ -74,7 +74,6 @@ This template allows the user to customize the deployment. The following is a li
 |Amazon RDS Database Password|Password for the relational database. This password is used to access the Amazon RDS database.|-|
 |SSH Key|Name of an existing EC2 KeyPair to enable SSH access to your instance.|-|
 |SendGrid API Key*|API key for [SendGrid](https://sendgrid.com/) to send emails.|-|
-|License Key for The Things Enterprise Stack |The license key|-|
 
 > \* This is an optional field
 
@@ -189,13 +188,13 @@ As a security measure, plaintext access to the Console/API is disabled. In order
 Once you've ensured that the DNS Mapping works, you can now login to the console of {{% tts %}} using the url `https://domain/console`.
 If you're using a subdomain then use `https://subdomain.domain/console`
 
-![AWS Login](./aws-quick-start-login.png)
+{{< figure src="aws-quick-start-login.png" alt="AWS Login" >}}
 
 > There might be a delay of a few seconds while the stack sets up the SSL Certificates. This happens only the very first login.
 
 Click on **Login** and enter the **Admin Username** and **Initial Admin Password** that you set during the deployment.
 
-![AWS Login](./aws-quick-start-creds.png)
+{{< figure src="aws-quick-start-creds.png" alt="AWS Creds" >}}
 
 > We highly recommend you to update your password upon the first login.
 
@@ -205,185 +204,15 @@ Now that your stack has been successfully deployed, let's look at how to connect
 
 ### Connecting a Gateway
 
-In this section, we will be using a [Tektelic Kona Micro IoT LoRaWAN Gateway](https://tektelic.com/wp-content/uploads/KONA-Micro.pdf). For other gateways, please refer to our [Docs](https://enterprise.thethingsstack.io).
-
-
-1. Check the back panel of the Gateway and locate the field named **GW ID**. This is a 16 character alpha-numeric value.
-2. Login to {{% tts %}} Console as explained above.
-3. Select the **Register a gateway** icon.
-4. Fill in the details as described below. All the other fields can remain defaults.
-
-|**Field**|**Value**|**Example**|
-|---|---|---|
-|Gateway ID|Choose a unique, valid Identifier|`tektelic-1`|
-|Gateway EUI| The **GW ID** field located on the back panel of the gateway|-|
-|Gateway Name|Choose an easy to remember name | `my-test-tektelic`|
-|Gateway Description|Describe your gateway|`My test Tektelic`|
-|Frequency Plan|Choose this based on your operating Region|-|
-
-5. Select **Create Gateway**
-6. Connect the Gateway to an ethernet cable and plug in the power adapter.
-7. Find the IP address the gateway. This can be done in various ways. You can connect your machine to the same local network as that of the gateway Ethernet connection and scan for open SSH ports or assign a static IP to the gateway and use that.
-8. Once the gateway IP address is found, ssh into it. The password for the root user can be found on the back panel. It’s typically a 9 character alphanumeric string starting with 1846XXXXX.
-```
-$ ssh root@<GatewayIP>
-```
-9. Now you can edit the gateway configuration file.
-```
-$ vi /etc/default/config.json
-```
-> Press the i key on your keyboard to start insert mode. Once finished editing, press ESC and enter :wq to write the file and quit.
-
-10. Edit the server parameters.
-
-|**Parameter**|**Value**|
-|---|---|
-|**server_address**|**domain** or **sub-domain** configured earlier|
-|**serv_port_up**|1700|
-|**serv_port_down**|1700|
-
-11. Restart the packet forwarder
-
-```
-$ /etc/init.d/pkt_fwd restart
-```
+Please check our extensive guides on [Connecting Gateways]({{< relref "gateways" >}}) for the particular brand/model of your gateway.
 
 ### Registering a device
 
-In this section, we'll be using a Tabs Motion Sensor. It uses a Passive Infrared Detector and Fresnel Lens to detect motion in a room. This data is then sent to the network via LoRaWAN.
-
-The following steps are necessary to configure the device to work with {{% tts %}}.
-
-1. Login to {{% tts %}} Console and click on the **Go to applications** section. Click on **Add Application**.
-2. Fill in the details 
-
-|**Field**|**Value**|**Example**|
-|---|---|---|
-|**Owner**|Choose a user|`admin`|
-|**Application ID**|Choose a unique, valid Identifier|`my-motion-sensors`|
-|**Application Name**|Choose an easy to remember name|`my-motion-sensors`|
-|**Description**|Describe your application|`My collection of room sensors`|
-|**Link automatically**|**Checked**|-|
-|**Network Server Address**|Leave blank|-|
-
-Click **Create Application**.
-
-3. In your application, click **Add Device** and fill in the details
-
-|**Field**|**Value**|**Example**|
-|---|---|---|
-|**Device ID**|Choose a unique, valid Identifier|`my-motion-sensor-1`|
-|**Device Name**|Choose an easy to remember name|`my-motion-sensor-1`|
-|**Device Description**|Describe your device|`My first sensor`|
-|**MAC Version**|**MAC V1.0.2**|-|
-|**PHY Version**|**PHY V1.0.2 REV B**|-|
-|**Frequency Plan**|Choose this based on your operating Region|-|
-|**Supports Class C**|**Unchecked**|-|
-|**Network Server Address**|Leave default value|-|
-|**Application Server Address**|Leave default value|-|
-|**Activation Mode**|**Over The Air Activation (OTAA)**|-|
-|**JoinEUI**|A 16 digit value provided by the device maker. This would be called AppEUI.|-|
-|**DevEUI**|A 16 digit value provided by the device maker. This would be called DEVEUI. You can also find this value on the back panel of the device below the QR code.|-|
-|**External Join Server**|**Unchecked**|-|
-|**Join Server Address**|Leave default value|-|
-|**AppKey**|A 32 digit value provided by the device maker. This would be called APPKEY. ||
-|**NwkKey**|Leave blank|
-|**Reset Join Nonces**|**Unchecked**|-|
-
-Click **Create Device**.
-
-4. To activate the device for the first time, pull the small transparent film on the device labelled **REMOVE BEFORE USE**. This triggers the activation sequence in the device.
-
-5. While the device is trying to join the network, the Blue LED emits a short blink every 10 seconds. Once the device successfully joins, it sends the initial uplink values and the corresponding events can be seen on the data tabs of the console.
-
-![Device Join](./device-join.png)
+Please check the guide on [Adding Devices]({{< relref "devices/adding-devices" >}}).
 
 ### AWS IoT
 
-AWS [IoT](https://aws.amazon.com/iot/) is a service for managing IoT devices. {{% tts %}} supports publishing of uplink messages directly to the AWS IoT suite. In order for this to work, the **AWS IoT Telemetry** option in the CloudFormation template must be set to **true** during the deployment phase.
-
-AWS IoT suite can be used to subscribe to detailed uplink messages as well as get insights into aggregated metrics of your uplink data. 
-
-1. Login to the AWS Console in the *same region* as where the CloudFormation template is deployed.
-2. Search for **IoT Core** service and click to enter the IoT Core window.
-3. On the left-hand panel, select the **Test** option. In the central panel, choose **Subscribe to a topic**.
-4. In the **Subscription topic** field enter `lorawan/<cloud-formation-stack-name>/<application-id>/things/<device-id>/up` to subscribe to the uplinks for a particular device. 
-For example, if your CloudFormation stack name is `my-lorawan-server`, the application ID is `my-motion-sensors` and the device ID is `my-motion-sensor-1`, then the topic would be `lorawan/my-lorawan-server/my-motion-sensors/things/my-motion-sensor-1/up`. 
-When the device sends an uplink message, it will be displayed in this window in the preferred format.
-The following is an example payload in JSON format:
-```
-{
-  "format": "json",
-  "payload": {
-    "end_device_ids": {
-      "device_id": "my-motion-sensor-1",
-      "application_ids": {
-        "application_id": "my-motion-sensors"
-      },
-      "dev_eui": "xxxxxxxxxxxxxxxx",
-      "join_eui": "xxxxxxxxxxxxxxxx",
-      "dev_addr": "009C0D6F"
-    },
-    "correlation_ids": [
-      "as:up:01DYMZ1NKBT0B8NACFV6NJWG2J",
-      "gs:conn:01DYMY19DNK1R2EG9P79YQYB97",
-      "gs:uplink:01DYMZ1NCF2NAX6HJS3TX6SKAH",
-      "ns:uplink:01DYMZ1NCGW37WNSSKKJR86515",
-      "rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01DYMZ1NCGB9FBVPQK74WA20YT"
-    ],
-    "received_at": "2020-01-15T16:02:10.668892406Z",
-    "uplink_message": {
-      "session_key_id": "AW+poh7YEnPnhTgVoA5a2A==",
-      "f_port": 102,
-      "f_cnt": 13,
-      "frm_payload": "AdsmAADiAAA=",
-      "decoded_payload": {
-        "bat_percentage": 86.66666666666667,
-        "count": 226,
-        "events": "motion",
-        "status": 1,
-        "temp": 6,
-        "time": 0,
-        "voltage": 3.6
-      },
-      "rx_metadata": [
-        {
-          "gateway_ids": {
-            "gateway_id": "tektelic-1",
-            "eui": "xxxxxxxxxxxxxxxx"
-          },
-          "timestamp": 1453994219,
-          "rssi": -3,
-          "channel_rssi": -3,
-          "snr": 9.5,
-          "uplink_token": "CiMKIQoVdGVrdGVsaWMtZGVzay1nYXRld2F5Eghkf9r//gBccRDr4ai1BQ==",
-          "channel_index": 1
-        }
-      ],
-      "settings": {
-        "data_rate": {
-          "lora": {
-            "bandwidth": 125000,
-            "spreading_factor": 7
-          }
-        },
-        "data_rate_index": 5,
-        "coding_rate": "4/5",
-        "frequency": "867300000",
-        "timestamp": 1453994219
-      },
-      "received_at": "2020-01-15T16:02:10.448769590Z"
-    }
-  },
-  "qos": 0,
-  "timestamp": 1579104130996,
-  "topic": "lorawan/my-lorawan-server/my-motion-sensors/things/my-motion-sensor-1/up"
-}
-```
-5. On the left-hand panel, click on the **Monitor** option for aggregated metrics on uplink data. The **Sample period** and **Time range** can be adjusted using the drop down links on the top right-hand corner.
-The following is a sample of the **Messages** and **Messages published** windows for an hour sampled every 5 minutes.
-
-![AWS IoT monitor](./aws-iot-monitor.png)
+Please check the guide on [AWS IoT]({{< relref "integrations/aws-iot/application-server-telemetry" >}}).
 
 ## Troubleshooting
 
@@ -391,38 +220,57 @@ This section contains information to troubleshoot {{% tts %}} deployment.
 
 ### FAQ
 
-1. My stack creation failed
+1. My CloudFormation stack creation failed
+
+The CloudFormation Events page contains information on the progress of the deployment of various AWS services. This also contains error information (if any) which can help you debug the cause of the failure.
+
 2. How can I SSH into my machine?
-   - You can SSH into the EC2 machine using the public IP output value. In AWS Console and open the CloudFormation resource and click on your recently deployed stack. Navigate to the **Outputs** tab and copy the value of the **PublicIP** field. Now using the private key of the **SSH Key** value that you entered during deployment, you can SSH into the machine using
-   ```bash
-    $ ssh -i <path-to-private-key> ec2-user@<PublicIP>
-   ```
+
+You can SSH into the EC2 machine using the public IP output value. In AWS Console and open the CloudFormation resource and click on your recently deployed stack. Navigate to the **Outputs** tab and copy the value of the **PublicIP** field. Now using the private key of the **SSH Key** value that you entered during deployment, you can SSH into the machine using
+```bash
+$ ssh -i <path-to-private-key> ec2-user@<PublicIP>
+```
+
 3. How can I see logs of {{% tts %}}?
-   - {{% tts %}} binary runs as a `systemd` service. In order to access the logs, SSH into the machine as described above and use the following command.
-   ```bash
-    $ sudo journalctl -f -u lorawan-stack.service
-   ```
+
+{{% tts %}} binary runs as a `systemd` service. In order to access the logs, SSH into the machine as described above and use the following command.
+```bash
+  $ sudo journalctl -f -u lorawan-stack.service
+```
+
 4. How do I see more detailed debug logs of {{% tts %}}?
-   - By default, {{% tts %}} does not log detailed `DEBUG` messages. In order to enable this, SSH into the EC2 instance as described above and add the following lines to the file `/tti/lorawan-stack/config.yml` using an editor such as `nano`.
-   ```bash
-   log:
-     level: debug
+
+By default, {{% tts %}} does not log detailed `DEBUG` messages. In order to enable this, SSH into the EC2 instance as described above and add the following lines to the file `/tti/lorawan-stack/config.yml` using an editor such as `nano`.
+```bash
+log:
+  level: debug
+```
+- Restart the service for this to take effect.
+```bash
+$ sudo systemctl restart lorawan-stack.service
+```
+- The debug logs can be read using the `journalctl`, same as above:
+```bash
+$ sudo journalctl -f -u lorawan-stack.service
    ```
-   - Restart the service for this to take effect.
-   ```bash
-    $ sudo systemctl restart lorawan-stack.service
-   ```
-   - The debug logs can be read using the `journalctl`, same as above:
-   ```bash
-    $ sudo journalctl -f -u lorawan-stack.service
-   ```
+
 5. My Gateway doesn't connect. What do I do?
-   - Ensure that the configuration of the gateway is correct. This includes, the server address, port and frequency plan settings. Check the logs as described in the steps above to locate the potential cause of the issue. You can also check the gateway logs for potential clues. For the Tektelic gateways, SSH into the gateway as described in the previous sections, and use the following command:
-   ```bash
-    $ tail -f /var/log/pkt_fwd.log
-   ```
+
+<!--
+TODO: https://github.com/TheThingsNetwork/lorawan-stack/issues/2714
+Link to relevant section when available.
+-->
+
+Please check the troubleshooting section in the Connecting Gateways guide.
+  
 6. My device doesn't join. How do I fix this?
-   - Device join failure could be due to a number of reasons. Ensure that the device settings are correct. This includes the JoinEUI, DevEUI and/or AppKey/NwkKey and the frequency plan settings. Check the logs as described above to locate the potential cause of the issue.
+
+<!--
+TODO: https://github.com/TheThingsNetwork/lorawan-stack/issues/2714
+Link to relevant section when available.
+-->
+
+Device join failure could be due to a number of reasons. Ensure that the device settings are correct. This includes the JoinEUI, DevEUI and/or AppKey/NwkKey and the frequency plan settings. Check the logs as described above to locate the potential cause of the issue.
 
 ### Professional Support
 
