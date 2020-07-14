@@ -1,7 +1,6 @@
 ---
 title: "AWS"
 description: ""
-weight: 60
 ---
 
 The Things Enterprise Stack is available as an AWS CloudFormation stack that can be purchased at the AWS Marketplace.

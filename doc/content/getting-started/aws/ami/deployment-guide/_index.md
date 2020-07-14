@@ -1,12 +1,13 @@
 ---
 title: "Deployment Guide"
 description: ""
-weight: 20
+weight: 1
 ---
 
-## Overview
 
 This section contains a detailed information to help you setup {{% tts %}} via the [AWS Marketplace listing](https://aws.amazon.com/marketplace/pp/B081HZKDJ4?qid=1593444260869&sr=0-1&ref_=srh_res_product_title).
+
+<!--more-->
 
 {{< figure src="ami-architecture.jpg" alt="AMI Architecture" >}}
 
