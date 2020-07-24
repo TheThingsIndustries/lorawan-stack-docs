@@ -8,7 +8,7 @@ aliases:
 
 This section provides the information necessary to get started with The Things Enterprise Stack after it is deployed via [AWS Marketplace](https://aws.amazon.com/marketplace/pp/The-Things-Industries-The-Things-Enterprise-Stack/B081HZKDJ4) using AWS CloudFormation.
 
-## DNS configuration
+## DNS Configuration
 
 In order to access the Console/API of the {{% tts %}}, the domain name chosen during deployment must be mapped to the public IP address of the CloudFormation stack. This section provides details on how to do that.
 
@@ -37,21 +37,21 @@ There will be an initial propagation delay for this value to be updated. You can
 
 Once the domain has been propagated, the DNS Lookup will show that your Domain (or sub-domain) is pointing to the **PublicIP** value.
 
-### SSL certificates
+### SSL Certificates
 
 As a security measure, plaintext access to the Console/API is disabled. In order to serve requests securely, The Things Enterprise Stack has built-in support to automatically request, serve and renew SSL certificates.
 
 Apart from the DNS mapping above, no additional steps are necessary for this.
 
-## Getting started using the Console
+## Getting Started using the Console
 
 Please check the [Console Guide]({{< ref "/getting-started/console" >}}) to get quickly started with The Things Enterprise Stack Console.
 
-## Getting started using the Command Line Interface (CLI)
+## Getting Started using the Command Line Interface (CLI)
 
 Please check the [CLI Guide]({{< ref "/getting-started/cli" >}}) to get quickly started with The Things Enterprise Stack CLI.
 
-## SSH access
+## SSH Access
 
 In most cases, you will interact with The Things Enterprise Stack only via the Console or the CLI. However, in case there is a need to directly access the EC2 instance, there is an option to do so via SSH.
 
@@ -96,7 +96,7 @@ Now that your stack has been successfully deployed, let's look at how to connect
 
 Please check our extensive guides on [Connecting Gateways]({{< relref "gateways" >}}) for the particular brand/model of your gateway.
 
-### Registering a device
+### Registering a Device
 
 Please check the guide on [Adding Devices]({{< relref "devices/adding-devices" >}}).
 
@@ -106,7 +106,7 @@ The Things Enterprise Stack supports publishing of uplink messages directly to t
 
 Please check the guide on [AWS IoT]({{< relref "integrations/aws-iot/application-server-telemetry" >}}) for more information.
 
-## Updating the CloudFormation stack
+## Updating the CloudFormation Stack
 
 We recommend using [Change Sets](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html) to to update the CloudFormation Stack.
 
@@ -119,7 +119,7 @@ Once the necessary options are updated, select the **Create Change Set** option.
 
 After confirming the changes, select **Execute**. Depending on the resources, this will take some time to complete and can be tracked using the **Events** tab on the AWS Console.
 
-## Manual upgrade of databases (Amazon RDS/ Redis) using snapshots
+## Manual Upgrade of Databases (Amazon RDS and ElastiCache) using snapshots
 
 The update of certain fields of the CloudFormation stack necessitates the recreation of the database. AWS does not automatically migrate the data and hence, this must be done manually. A disclaimer is added to such fields in the CloudFormation template description.
 

@@ -33,13 +33,13 @@ The following are necessary to complete this guide
 1. An account with AWS with access to the AWS Marketplace. If you don't have one, one can be created using the [Create an AWS account](https://portal.aws.amazon.com/billing/signup#/start) page.
 2. An RSA Public-Private Key pair
 3. Sufficient rights on your account to create IAM roles.
-4. A LoRaWAN compliant Gateway. This guide uses a [Tektelic Kona Micro]( https://tektelic.com/wp-content/uploads/KONA-Micro.pdf).
-5. A LoRaWAN compliant End Device. This guide uses [Smart Building Sensors - Motion sensor](https://connectedthings.store/gb/home-and-office-sensors/smart-building-sensors-motion-sensor-eu868.html).
+4. A LoRaWAN compliant Gateway.
+5. A LoRaWAN compliant End Device.
 6. Access to a name server for DNS mapping.
 
 ## Deployment using AWS Cloud Formation
 
-### Step 1: Prepare your deployment
+### Step 1: Prepare the Deployment
 
 1. Login to your AWS Marketplace and navigate to the [product page for {{% tts %}} for LoRaWAN](https://aws.amazon.com/marketplace/pp/B081HZKDJ4).
 2. Choose the correct AWS Region in which to deploy your stack. Also choose the **Software Pricing Tier** that suits your needs.
@@ -48,7 +48,7 @@ The following are necessary to complete this guide
 5. Click **Continue to Subscribe** and accept the terms and conditions once they are found satisfactory.
 6. Now click **Continue to Configuration** to configure your deployment.
 
-### Step 2: Configure your deployment
+### Step 2: Configure the Deployment
 
 The **Continue to Configuration** button will redirect you to the AWS CloudFormation page where the CloudFormation template is pre-loaded. 
 This template allows the user to customize the deployment. The following is a list of the supported parameters that are available to the user.
@@ -142,7 +142,7 @@ The following parameters are exclusively meant for updating an existing deployme
 |S3 Profile Pictures Bucket Name|The name of the S3 bucket for profile pictures.|
 |S3 End Device Pictures Bucket Name|The name of the S3 bucket for end device pictures.|
 
-### Step 3: Start your deployment
+### Step 3: Start the Deployment
 
 1. Once the parameters of {{% tts %}} are configured, click **Next** to configure options for the CloudFormation Stack. You may use the defaults in this page. 
 2. Click **Next** review the deployment. Select the **I acknowledge that AWS CloudFormation might create IAM resources.** checkbox and click **Create Stack** option. 
