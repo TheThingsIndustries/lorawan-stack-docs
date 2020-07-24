@@ -7,6 +7,6 @@ The Things Enterprise Stack is currently available as an AWS CloudFormation stac
 
 <!--more-->
 
-{{< figure src="available-at-amazon-badge.png" alt="Available at Amazon Badge" >}}
+![Available at Amazon Badge](available-at-amazon-badge.png)
 
 > Amazon's trademark is used under license from Amazon.com, Inc. or its affiliates.
