@@ -159,6 +159,14 @@ Further, you can reduce the load on the Redis master by specifying read-only con
 - `redis.readonly.database`: Redis database to use
 - `redis.readonly.pool-size`: The maximum size of the connection pool
 
+If your Redis server uses TLS, use the following options:
+
+- `redis.tls.require`: Require TLS when connecting to Redis
+- `redis.tls.root-ca`: Location of TLS root CA certificate
+- `redis.tls.insecure-skip-verify`: Skip verification of certificate chains (insecure)
+
+Mutual TLS is not supported yet.
+
 ## Blob Options
 
 The `blob` options configure how {{% tts %}} reads or writes files such as pictures, the frequency plans repository or files required for Backend Interfaces interoperability. The `provider` field selects the provider that is used, and which other options are read.
@@ -200,6 +208,14 @@ Similar to the global Redis configuration, you can reduce the load on the Redis 
 - `events.redis.readonly.password`: Password of the Redis server
 - `events.redis.readonly.database`: Redis database to use
 - `events.redis.readonly.pool-size`: The maximum size of the connection pool
+
+If your Redis server uses TLS, use the following options:
+
+- `events.redis.tls.require`: Require TLS when connecting to Redis
+- `events.redis.tls.root-ca`: Location of TLS root CA certificate
+- `events.redis.tls.insecure-skip-verify`: Skip verification of certificate chains (insecure)
+
+Mutual TLS is not supported yet.
 
 With the `cloud` backend, the configured publish and subscribe URLs are passed to [the Go CDK](https://gocloud.dev/howto/pubsub/).
 
@@ -256,6 +272,20 @@ It is possible to configure the cluster to use TLS or not. We recommend to enabl
 
 - `cluster.tls`: Do cluster gRPC over TLS
 
+## Cache Options
+
+{{% tts %}} can optionally be configured to use a cache.
+
+- `cache.service`: Configure the backing store that will be used for the cache. Currently, only `redis` is supported
+
+When using the `redis` backend, the global [Redis configuration]({{< ref "#redis-options" >}}) is used. Alternatively, you may customize the Redis configuration that is used for the cache.
+
+- `cache.redis.address`: Address of the Redis server
+- `cache.redis.password`: Password of the Redis server
+- `cache.redis.database`: Redis database to use
+- `cache.redis.namespace`: Namespace for Redis keys
+- `cache.redis.pool-size`: The maximum size of the connection pool
+
 ## Multi-Tenancy
 
 In multi-tenant deployments, some additional configuration is required.
@@ -268,3 +298,4 @@ In multi-tenant deployments, some additional configuration is required.
 Tenants can have custom configuration, such as custom branding or custom user registration options. This information is typically cached locally, especially in multi-region deployments to reduce the load on the Identity Server and to be more resilient against outages of the Identity Server.
 
 - `tenancy.ttl`: TTL of cached tenant configurations
+
