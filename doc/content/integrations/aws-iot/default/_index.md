@@ -2,6 +2,8 @@
 title: "Default Integration"
 description: ""
 weight: 1
+aliases:
+  - "/integrations/pubsub/aws-iot/"
 ---
 
 The key features of the Default Integration are:
