@@ -1,11 +1,13 @@
 ---
-title: "Application Server Telemetry using AWS IoT"
+title: "Application Server Telemetry"
 description: ""
 ---
 
-{{% tts %}} supports publishing of uplink messages directly to the AWS IoT suite. In order for this to work, the **AWS IoT Telemetry** option in the CloudFormation template must be set to **true** during the deployment phase.
+{{% tts %}} supports publishing of uplink messages directly to the AWS IoT suite.
 
 AWS IoT suite can be used to subscribe to detailed uplink messages as well as get insights into aggregated metrics of your uplink data. 
+
+> NOTE: This only works if {{% tts %}} runs in your AWS account, i.e. in a Self Hosted or Marketplace Launcher deployment. When using the [AWS Marketplace AMI listing]({{< ref "/getting-started/aws/ami" >}}), the **AWS IoT Telemetry** option in the CloudFormation template must be set to **true** during the deployment phase.
 
 ## Setup
 
@@ -92,5 +94,3 @@ On the left-hand panel, click on the **Monitor** option for aggregated metrics o
 The following is a sample of the **Messages** and **Messages published** windows for an hour sampled every 5 minutes.
 
 {{< figure src="aws-iot-monitor.png" alt="AWS IoT monitor" >}}
-
-
