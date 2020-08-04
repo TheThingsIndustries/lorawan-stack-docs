@@ -90,6 +90,10 @@ Configuration.Cluster.IdentityServer:
     message:
       name: Configuration.Cluster.IdentityServer.UserRights
     default: {}
+  - name: oauth
+    message:
+      name: Configuration.Cluster.IdentityServer.OAuth
+    default: {}
 Configuration.Cluster.IdentityServer.EndDevicePicture:
   name: Configuration.Cluster.IdentityServer.EndDevicePicture
   fields:
@@ -98,6 +102,45 @@ Configuration.Cluster.IdentityServer.EndDevicePicture:
       package: google.protobuf
       name: BoolValue
     default: null
+Configuration.Cluster.IdentityServer.OAuth:
+  name: Configuration.Cluster.IdentityServer.OAuth
+  fields:
+  - name: providers
+    message:
+      name: Configuration.Cluster.IdentityServer.OAuth.AuthProviders
+    default: {}
+Configuration.Cluster.IdentityServer.OAuth.AuthProviders:
+  name: Configuration.Cluster.IdentityServer.OAuth.AuthProviders
+  fields:
+  - name: oidc
+    message:
+      name: Configuration.Cluster.IdentityServer.OAuth.AuthProviders.OpenIDConnect
+    default: {}
+Configuration.Cluster.IdentityServer.OAuth.AuthProviders.OpenIDConnect:
+  name: Configuration.Cluster.IdentityServer.OAuth.AuthProviders.OpenIDConnect
+  fields:
+  - name: shared
+    message:
+      name: Configuration.Cluster.IdentityServer.OAuth.AuthProviders.Shared
+    default: {}
+  - name: client_id
+    type: string
+    default: ""
+  - name: client_secret
+    type: string
+    default: ""
+  - name: provider_url
+    type: string
+    default: ""
+Configuration.Cluster.IdentityServer.OAuth.AuthProviders.Shared:
+  name: Configuration.Cluster.IdentityServer.OAuth.AuthProviders.Shared
+  fields:
+  - name: name
+    type: string
+    default: ""
+  - name: allow_registrations
+    type: bool
+    default: false
 Configuration.Cluster.IdentityServer.ProfilePicture:
   name: Configuration.Cluster.IdentityServer.ProfilePicture
   fields:
@@ -247,6 +290,33 @@ CreateTenantRequest:
       package: ttn.lorawan.v3
       name: User
     default: {}
+ExternalUser:
+  name: ExternalUser
+  fields:
+  - name: user_ids
+    message:
+      package: ttn.lorawan.v3
+      name: UserIdentifiers
+    rules:
+      required: true
+    default: {}
+  - name: provider
+    enum:
+      name: ExternalUser.Provider
+    default: OIDC
+  - name: created_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
+  - name: updated_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
+  - name: external_id
+    type: string
+    default: ""
 GetTenantIdentifiersForEndDeviceEUIsRequest:
   name: GetTenantIdentifiersForEndDeviceEUIsRequest
   fields:
