@@ -21,17 +21,17 @@ To communicate with the MQTT protocol, the Gateway Server and the gateway are ex
 
 See [Networking]({{< ref "/reference/networking" >}}) for the default port of the MQTT server.
 
-The username is `<gateway-id>`, and the password is a gateway API key with the `RIGHT_GATEWAY_LINK` right enabled. You can generate this API key using the [Console]({{< ref "/getting-started/console/create-gateway#create-gateway-api-key" >}}) or the [CLI]({{< ref "/getting-started/cli/create-gateway#create-gateway-api-key" >}}).
+The username is `<gateway-id>@<tenant-id>` (e.g. `gtw1@tenant1`), and the password is a gateway API key with the `RIGHT_GATEWAY_LINK` right enabled. You can generate this API key using the [Console]({{< ref "/getting-started/console/create-gateway#create-gateway-api-key" >}}) or the [CLI]({{< ref "/getting-started/cli/create-gateway#create-gateway-api-key" >}}).
 
 Authenticated clients get **write-only** access to the following topics:
 
-- `v3/<gateway-id>/up`: Used for sending uplink traffic to the Gateway Server.
-- `v3/<gateway-id>/status`: Used for sending gateway status messages to the Gateway Server.
-- `v3/<gateway-id>/down/ack`: Used for sending TxAck messages to the Gateway Server.
+- `v3/<gateway-id>@<tenant-id>/up`: Used for sending uplink traffic to the Gateway Server.
+- `v3/<gateway-id>@<tenant-id>/status`: Used for sending gateway status messages to the Gateway Server.
+- `v3/<gateway-id>@<tenant-id>/down/ack`: Used for sending TxAck messages to the Gateway Server.
 
 Clients also get **read-only** access and should subscribe to the following topic:
 
-- `v3/<gateway-id>/down`: The Gateway Server publishes downlink message that the gateway should transmit.
+- `v3/<gateway-id>@<tenant-id>/down`: The Gateway Server publishes downlink message that the gateway should transmit.
 
 ## Disconnect from the Gateway Server
 
@@ -39,12 +39,12 @@ The gateway can disconnect by terminating the MQTT client connection.
 
 ## Uplink Messages
 
-To forward uplink traffic to the Gateway Server, the MQTT client must publish a Protocol Buffer of type `ttnpb.UplinkMessage` under the topic `v3/<gateway-id>/up`.
+To forward uplink traffic to the Gateway Server, the MQTT client must publish a Protocol Buffer of type `ttnpb.UplinkMessage` under the topic `v3/<gateway-id>@<tenant-id>/up`.
 
 Below is an example that connects to the Gateway Server as `$GATEWAY_ID`, publishes an uplink message (Protocol Buffer stored as binary file `test-uplink-message`) and disconnects:
 
 ```bash
-$ export GATEWAY_ID="test-gtw"
+$ export GATEWAY_ID="test-gtw@my-tenant"
 $ export GATEWAY_API_KEY="NNSXS.VEEBURF3KR77ZR..." # API key with RIGHT_GATEWAY_LINK rights
 $ mosquitto_pub \
     -h "thethings.example.com" -p 1882 \
@@ -58,12 +58,12 @@ $ mosquitto_pub \
 
 ## Downlink Messages
 
-The Gateway Server instructs the gateway to send a downlink packet by publishing a Protocol Buffer of type `ttnpb.GatewayDown` under the topic `v3/<gateway-id>/down`.
+The Gateway Server instructs the gateway to send a downlink packet by publishing a Protocol Buffer of type `ttnpb.GatewayDown` under the topic `v3/<gateway-id>@<tenant-id>/down`.
 
 The MQTT client must subscribe to this topic after connecting to the Gateway Server. It must also listen for incoming `ttnpb.GatewayDown` messages (which contain both the packet data payload as well as any desired transmission settings). Upon receiving a scheduling request, it must trasmit that message, and [send back a `TxAck` packet]({{< ref "#txack-messages" >}}) on success.
 
 ```bash
-$ export GATEWAY_ID="test-gtw"
+$ export GATEWAY_ID="test-gtw@my-tenant"
 $ export GATEWAY_API_KEY="NNSXS.VEEBURF3KR77ZR..." # API key with RIGHT_GATEWAY_LINK rights
 $ mosquitto_sub \
     -h "thethings.example.com" -p 1882 \
@@ -77,12 +77,12 @@ $ mosquitto_sub \
 
 ## Gateway Status Messages
 
-To forward a gateway status message to the Gateway Server, the MQTT client must publish a Protocol Buffer of type `ttnpb.GatewayStatus` under the topic `v3/<gateway-id>/status`.
+To forward a gateway status message to the Gateway Server, the MQTT client must publish a Protocol Buffer of type `ttnpb.GatewayStatus` under the topic `v3/<gateway-id>@<tenant-id>/status`.
 
 Below is an example that connects to the Gateway Server as `$GATEWAY_ID`, publishes a gateway status message (Protocol Buffer stored as binary file `test-gateway-status`) and disconnects:
 
 ```bash
-$ export GATEWAY_ID="test-gtw"
+$ export GATEWAY_ID="test-gtw@my-tenant"
 $ export GATEWAY_API_KEY="NNSXS.VEEBURF3KR77ZR..." # API key with RIGHT_GATEWAY_LINK rights
 $ mosquitto_pub \
     -h "thethings.example.com" -p 1882 \
@@ -96,10 +96,10 @@ $ mosquitto_pub \
 
 ## TxAck Messages
 
-To forward a `TxAck` packet to the Gateway Server, the MQTT client must publish a Protocol Buffer of type `ttnpb.TxAcknowledgement` under the topic `v3/<gateway-id>/down/ack`.
+To forward a `TxAck` packet to the Gateway Server, the MQTT client must publish a Protocol Buffer of type `ttnpb.TxAcknowledgement` under the topic `v3/<gateway-id>@<tenant-id>/down/ack`.
 
 ```bash
-$ export GATEWAY_ID="test-gtw"
+$ export GATEWAY_ID="test-gtw@my-tenant"
 $ export GATEWAY_API_KEY="NNSXS.VEEBURF3KR77ZR..." # API key with RIGHT_GATEWAY_LINK rights
 $ mosquitto_pub \
     -h "thethings.example.com" -p 1882 \
