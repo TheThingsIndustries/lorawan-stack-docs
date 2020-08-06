@@ -2,6 +2,7 @@
 title: "Make a Device Claimable"
 description: ""
 weight: 1
+distribution: "Enterprise"
 --- 
 
 This guide explains the process of making a device claimable 

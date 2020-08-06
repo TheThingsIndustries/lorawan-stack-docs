@@ -2,9 +2,8 @@
 title: "Tenant Billing Server Options"
 description: ""
 weight: 10
+distribution: "Multi Tenant"
 ---
-
-{{< multi-tenant-only >}}
 
 ## General options
 

@@ -23,11 +23,15 @@ See [Networking]({{< ref "/reference/networking" >}}) for the default port of th
 
 The username is `<gateway-id>@<tenant-id>` (e.g. `gtw1@tenant1`), and the password is a gateway API key with the `RIGHT_GATEWAY_LINK` right enabled. You can generate this API key by following instructions in the [Creating Gateways]({{< ref "/gateways/adding-gateways#create-gateway-api-key" >}}) section.
 
+> If you are not on a multi-tenant deployment, the username is <gateway-id>
+
 Authenticated clients get **write-only** access to the following topics:
 
 - `v3/<gateway-id>@<tenant-id>/up`: Used for sending uplink traffic to the Gateway Server.
 - `v3/<gateway-id>@<tenant-id>/status`: Used for sending gateway status messages to the Gateway Server.
 - `v3/<gateway-id>@<tenant-id>/down/ack`: Used for sending TxAck messages to the Gateway Server.
+
+> If you are not on a multi-tenant deployment, remove `@tenant-id`
 
 Clients also get **read-only** access and should subscribe to the following topic:
 

@@ -1,6 +1,7 @@
 ---
 title: "Tenant APIs"
 description: ""
+distribution: ["Multi Tenant"]
 ---
  
 ## Authentication

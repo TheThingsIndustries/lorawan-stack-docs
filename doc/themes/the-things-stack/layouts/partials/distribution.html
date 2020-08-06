@@ -1,0 +1,15 @@
+{{ $distribution := .distribution }}
+{{ $distributions := slice "Self Hosted" "Cloud Hosted" "Community" "Open Source" "Enterprise" "Multi Tenant" "AWS" }}
+{{ range $distribution}}
+  {{ if not (in $distributions .) }}
+    {{ errorf "distribution '%s' not in '%s'" . (delimit $distributions ", ") }}
+  {{ end }}
+{{ end }}
+{{ with .inline }}
+<span class="distribution-inline">{{ delimit $distribution ", " " and " }} Only</span>
+{{ else }}
+<div class="notification is-primary">
+  <h3 class="has-text-light">{{ delimit $distribution ", " " and " }} Only</h3>
+  <p>The following instructions apply to {{ delimit $distribution ", " " and " }} distributions. See the <a href="/download">downloads page</a> for a feature breakdown of distributions of The Things Stack.</p>
+</div>
+{{ end }}

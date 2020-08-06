@@ -1,6 +1,7 @@
 ---
 title: "Device Claiming"
 description: ""
+distribution: "Enterprise"
 --- 
 
 This section provides guides for making devices claimable and claiming them.

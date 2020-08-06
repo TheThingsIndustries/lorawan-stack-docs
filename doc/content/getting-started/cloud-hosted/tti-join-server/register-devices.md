@@ -2,6 +2,7 @@
 title: "Register Devices"
 description: ""
 weight: 10
+distribution: ["Cloud Hosted"]
 ---
 
 The Things Industries Join Server is a LoRaWAN Join Server. Learn how to register devices to activate on The Things Industries Cloud Hosted or any LoRaWAN network.

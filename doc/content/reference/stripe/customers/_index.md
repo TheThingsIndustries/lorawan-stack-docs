@@ -2,9 +2,8 @@
 title: "Customers"
 description: ""
 weight: 20
+distribution: "Multi Tenant"
 ---
-
-{{< multi-tenant-only >}}
 
 ## Creating a Customer
 

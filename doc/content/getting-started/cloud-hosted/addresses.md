@@ -3,6 +3,7 @@ title: "Cloud Hosted Addresses"
 description: ""
 weight: 10
 aliases: [/guides/cloud-hosted/addresses]
+distribution: ["Cloud Hosted"]
 ---
 
 The addresses where you can reach your The Things Industries Cloud Hosted network consist of the tenant ID, the cluster ID and `cloud.thethings.industries`.

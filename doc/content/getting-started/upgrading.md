@@ -2,7 +2,7 @@
 title: "Upgrading"
 description: ""
 weight: -1
-draft: true
+distribution: ["Open Source"]
 ---
 
 Follow these instructions to upgrade an existing {{% tts %}} instance.

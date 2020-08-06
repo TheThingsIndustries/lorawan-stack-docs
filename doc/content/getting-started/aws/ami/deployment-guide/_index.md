@@ -2,6 +2,7 @@
 title: "Deployment Guide"
 description: ""
 weight: 1
+distribution: "AWS"
 ---
 
 This section contains detailed information to help you setup {{% tts %}} on the AWS Marketplace.

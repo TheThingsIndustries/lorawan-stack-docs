@@ -4,7 +4,16 @@
 {{ else }}
 <h1 class="title is-size-2">{{ .Title }}</h1>
 
-<div class="content">{{ .Content }}</div>
+<div class="content">
+{{ with .Params.distribution }}
+  {{ $distribution := .}}
+  {{ if ( not ( reflect.IsSlice . ) ) }}
+    {{ $distribution = slice $distribution }}
+  {{ end }}
+  {{ partial "distribution" (dict "distribution" $distribution) }}
+{{ end }}
+{{ .Content }}
+</div>
 {{ end }}
 
 {{ if not (and .Pages (not (eq .Parent .FirstSection))) }}

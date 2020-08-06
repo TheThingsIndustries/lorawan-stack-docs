@@ -2,6 +2,7 @@
 title: "Troubleshooting"
 description: ""
 weight: 3
+distribution: "AWS"
 ---
 
 <!--

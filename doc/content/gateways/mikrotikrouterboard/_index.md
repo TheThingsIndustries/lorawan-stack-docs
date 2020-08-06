@@ -24,7 +24,7 @@ The MikroTik Routerboard wAP LoRa8 kit comes with a PoE adapter. The following i
 
 ## Registration
 
-Create a gateway by following [the instructions]({{< ref "/gateways/adding-gateways" >}}). The **EUI** of the gateway can be found on the back panel of the gateway under the field **GW ID**.
+Create a gateway by following the instructions for the [Console]({{< ref "/getting-started/console#create-gateway" >}}) or the [CLI]({{< ref "/getting-started/cli#create-gateway" >}}). The **EUI** of the gateway can be found on the back panel of the gateway under the field **GW ID**.
 
 ## Configuration via Browser
 
@@ -65,10 +65,9 @@ In the device settings, click the **Network Servers Dropdown** to view available
 
 ![Device parameters](device-parameters-selected.png)
 
-Select **Public** for the Network.
+Select **Private** for the Network.
 
-![Network public](public.png)
-
+![Network private](device-parameters-network.png)
 
 Click OK to save the parameters.
 

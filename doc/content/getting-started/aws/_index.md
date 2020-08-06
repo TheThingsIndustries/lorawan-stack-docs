@@ -1,9 +1,10 @@
 ---
 title: "AWS"
 description: ""
+distribution: "AWS"
 ---
 
-The Things Enterprise Stack is currently available as an AWS CloudFormation stack that can be purchased at the AWS Marketplace.
+{{% tts %}} is currently available as an AWS CloudFormation stack that can be purchased at the AWS Marketplace.
 
 <!--more-->
 

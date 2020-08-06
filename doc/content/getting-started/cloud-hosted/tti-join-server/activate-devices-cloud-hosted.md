@@ -2,6 +2,7 @@
 title: "Activating Devices on Cloud Hosted"
 description: ""
 weight: 20
+distribution: ["Cloud Hosted"]
 ---
 
 The Things Industries Join Server is a LoRaWAN Join Server. Learn how to activate devices on The Things Industries Cloud Hosted.

@@ -1,6 +1,7 @@
 ---
 title: "Application Server Telemetry"
 description: ""
+distribution: "AWS"
 ---
 
 {{% tts %}} supports publishing of uplink messages directly to the AWS IoT suite.

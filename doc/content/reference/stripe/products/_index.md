@@ -2,9 +2,8 @@
 title: "Products and Pricing Plans"
 description: ""
 weight: 10
+distribution: "Multi Tenant"
 ---
-
-{{< multi-tenant-only >}}
 
 ## Creating a Product and the Initial Pricing Plan
 

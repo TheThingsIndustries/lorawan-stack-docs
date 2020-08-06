@@ -1,6 +1,7 @@
 ---
 title: "AWS IoT"
 description: ""
+distribution: "AWS"
 ---
 
 {{% tts %}} integrates directly with AWS IoT via a default integration that you deploy in your AWS account via CloudFormation.

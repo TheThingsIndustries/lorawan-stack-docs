@@ -2,6 +2,7 @@
 title: "Claim a Device"
 description: ""
 weight: 2
+distribution: "Enterprise"
 --- 
 
 You can update the example below with your tenant ID and cluster ID by filling them here.
