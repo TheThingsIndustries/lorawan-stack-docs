@@ -1,0 +1,24 @@
+{{ $path := printf "%s/%s" (.Get "bucket") (.Get "path") }}
+<a data-content="aws-deploy-cloudformation" data-path="{{ $path }}" target="_blank" class="button is-primary"></a>
+
+<script>
+  window.addEventListener('load', function(e) {
+    var $awsRegionInput = document.querySelector('select[data-content="aws-region"]');
+    var query = new URLSearchParams(window.location.search);
+    if (query.has('aws-region')) {
+      $awsRegionInput.value = query.has('aws-region');
+    }
+    var $deployLinks = document.querySelectorAll('a[data-content="aws-deploy-cloudformation"][data-path="{{ $path }}"]');
+    function syncValue($input, $links) {
+      var value = $input.value || 'us-east-1';
+      $links.forEach(function($link) {
+        $link.href = 'https://' + value + '.console.aws.amazon.com/cloudformation/home?region=' + value + '#/stacks/create/review?templateURL=https://s3.amazonaws.com/{{ $path }}';
+        $link.innerHTML = '{{ or (.Get "name") "Deploy" }} (' + value + ')';
+      });
+    }
+    syncValue($awsRegionInput, $deployLinks);
+    $awsRegionInput.addEventListener('change', function(e) {
+      syncValue(e.target, $deployLinks);
+    });
+  });
+</script>

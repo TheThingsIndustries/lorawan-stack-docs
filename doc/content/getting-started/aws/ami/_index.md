@@ -1,5 +1,5 @@
 ---
-title: "AMI"
+title: "AWS Marketplace AMI"
 description: ""
 ---
 
