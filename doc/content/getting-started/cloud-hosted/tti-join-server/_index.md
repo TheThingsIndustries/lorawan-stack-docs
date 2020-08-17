@@ -2,6 +2,7 @@
 title: "The Things Industries Join Server"
 description: ""
 weight: 20
+aliases: [/guides/cloud-hosted/tti-join-server]
 ---
 
 Each Cloud Hosted cluster contains a Join Server for convenience. Instead of the Join Server in a cluster, you can also use The Things Industries Join Server: a dedicated LoRaWAN Join Server which supports interoperability with other Network Servers and supports pre-provisioned secure elements.
