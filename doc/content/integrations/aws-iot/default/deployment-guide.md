@@ -11,7 +11,7 @@ Learn how to deploy the AWS IoT integration for {{% tts %}}.
 ## Prerequisites
 
 1. Access to an AWS account. [Create a new account](https://aws.amazon.com/resources/create-account/)
-2. An application in The Things Industries Cloud Hosted. [See instructions]({{< ref "/getting-started/console/create-application" >}})
+2. An application in {{% tts %}}. [See instructions]({{< ref "/getting-started/console/create-application" >}})
 
 ## Create API Key
 
@@ -35,8 +35,9 @@ Click **Create API key**, copy the key and store it in a safe place. You need th
 {{% aws-region-selector %}}
 
 {{% aws-deploy-cloudformation name="Deploy for Cloud Hosted" bucket="thethingsindustries" path="integration-aws/latest/cloudhosted.template.json" %}}
+{{% aws-deploy-cloudformation name="Deploy for Self Hosted" bucket="thethingsindustries" path="integration-aws/latest/selfhosted.template.json" %}}
 
-> If you want to examine the AWS CloudFormation template before deploying, [download the template](https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/cloudhosted.template.json).
+> If you want to examine the AWS CloudFormation template before deploying, download the [Cloud Hosted template](https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/cloudhosted.template.json) or [Self Hosted template](https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/selfhosted.template.json).
 
 ### Settings
 
@@ -44,6 +45,7 @@ The **Stack name** is the unique name identifying the integration in your AWS ac
 
 The parameters configure the integration:
 
+- **Principal Account ID** (only in Self Hosted): AWS Account ID that The Things Enterprise Stack authenticates with.
 - **Thing Type Name**: The unique AWS IoT Core thing type name for this integration.
 - **Cluster Address**: The domain name of your {{% tts %}} deployment.
 - **Application ID**: The application ID for which you configure the integration.
