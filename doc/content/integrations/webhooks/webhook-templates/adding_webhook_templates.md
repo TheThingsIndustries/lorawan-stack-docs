@@ -14,7 +14,7 @@ Once you have created a new webhook template with a proper [format]({{< ref "/in
 
 3. Include your webhook template in the `templates.yml` file.
 
-4. Update your {{% tts %}} [configuration]({{< ref "/getting-started/installation/configuration" >}}) file by adding the following lines:
+4. Update your {{% tts %}} configuration file by adding the following lines:
 
 ```yaml
 as:

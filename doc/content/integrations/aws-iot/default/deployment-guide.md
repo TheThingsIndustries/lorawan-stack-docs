@@ -11,7 +11,7 @@ Learn how to deploy the AWS IoT integration for {{% tts %}}.
 ## Prerequisites
 
 1. Access to an AWS account. [Create a new account](https://aws.amazon.com/resources/create-account/)
-2. An application in {{% tts %}}. [See instructions]({{< ref "/getting-started/console/create-application" >}})
+2. An application in {{% tts %}}. [See instructions]({{< ref "/integrations/adding-applications" >}})
 
 ## Create API Key
 
