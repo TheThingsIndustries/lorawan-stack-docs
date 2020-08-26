@@ -1,12 +1,20 @@
 ---
 title: "Configuration"
 description: ""
-weight: 3
-draft: true
-
+weight: 2
 ---
 
-{{% tts %}} can be started for development without passing any configuration. However, there are a number of things you need to configure for a production deployment. In this guide we will configure {{% tts %}} as a private deployment on `thethings.example.com`. For that purpose, we are going to need two configuration files: `docker-compose.yml`, which defines the Docker services of {{% tts %}} and its dependencies, and `ttn-lw-stack-docker.yml`, which contains configuration specific to our {{% tts %}} deployment.
+{{% tts %}} can be configured using command-line flags, environment variables, or configuration files. See the [Configuration Reference]({{< ref src="/reference/configuration" >}}) for more information about the configuration options.
+
+In this guide, we will configure {{% tts %}} using a configuration file, with an example domain `thethings.example.com` and TLS certificates from Let's Encrypt.
+
+To configure {{% tts %}}, we will use the configuration file `tti-lw-stack-docker.yml`, which contains configuration specific to our {{% tts %}} deployment. When {{% tts %}} starts, it looks for `tti-lw-stack-docker.yml` for a license key, hostname, and other configuration parameters.
+
+Download an example `tti-lw-stack-docker.yml` here.
+
+To configure Docker, we also need a `docker-compose.yml`, which defines the Docker services of {{% tts %}} and its dependencies.
+
+Download an example `docker-compose.yml` here.
 
 Create a new folder where your deployment files will be placed. This guide assumes the following directory hierarchy:
 
@@ -17,22 +25,28 @@ config/
     └── ttn-lw-stack-docker.yml    # configuration file for {{% tts %}}
 ```
 
-You can find the example [docker-compose.yml]({{% repo-file-url "raw" "docker-compose.yml" %}}) and [ttn-lw-stack-docker.yml]({{% repo-file-url "raw" "config/stack/ttn-lw-stack-docker.yml" %}}) files [in the Github repository of {{% tts %}}]({{% repo %}}).
+## Configure Docker
 
-We will configure these files for a production deployment on `thethings.example.com`.
+Docker runs an instance of {{% tts %}}, as well as an SQL database and a Redis database which {{% tts %}} depend on to store data.
 
-## Databases
+We will configure Docker to run three services:
 
-We need to configure an SQL database, in this guide we'll use a single instance of [CockroachDB](https://www.cockroachlabs.com/). Make sure to find a recent tag of the [cockroachdb/cockroach image on Docker Hub](https://hub.docker.com/r/cockroachdb/cockroach/tags) and update it in the `docker-compose.yml` file. Make sure that the `volumes` are set up correctly so that the database is persisted on your server's disk.
+- {{% tts %}}
+- An SQL database (CockroachDB and PostgreSQL are supported)
+- Redis
+ 
+### SQL Database
 
-The simplest configuration for CockroachDB will look like this (remember to replace `<the tag>`):
+We need to configure an SQL database, so in this guide we'll use a single instance of [CockroachDB](https://www.cockroachlabs.com/). Make sure to find a recent tag of the [cockroachdb/cockroach image on Docker Hub](https://hub.docker.com/r/cockroachdb/cockroach/tags) and update it in the `docker-compose.yml` file. Make sure that the `volumes` are set up correctly so that the database is persisted on your server's disk.
+
+The simplest configuration for CockroachDB will look like this (remember to replace `latest` with a version tag in production):
 
 ```yaml
 # file: docker-compose.yml
 services:
   # ...
   cockroach:
-    image: 'cockroachdb/cockroach:<the tag>'
+    image: 'cockroachdb/cockroach:latest'
     command: 'start --http-port 26256 --insecure'
     restart: 'unless-stopped'
     volumes:
@@ -40,18 +54,20 @@ services:
   # ...
 ```
 
-Read the CockroachDB documentation for setting up a highly available cluster.
+> NOTE: It also possible (and even preferred) to use a managed SQL database. In this case, you will need to update the [`is.database-uri` configuration option]({{< ref src="/reference/configuration/identity-server/#database-options" >}}) to point to the address of the managed database.
+
+### Redis
 
 We also need to configure [Redis](https://redis.io/). In this guide we'll use a single instance of Redis. Just as with the SQL database, find a recent tag of the [redis image on Docker Hub](https://hub.docker.com/_/redis?tab=tags) and update it in the `docker-compose.yml` file. Again, make sure that the `volumes` are set up correctly so that the datastore is persisted on your server's disk. Note that {{% tts %}} requires Redis version 5.0 or newer.
 
-The simplest configuration for Redis will look like this (remember to replace `<the tag>`):
+The simplest configuration for Redis will look like this (remember to replace `latest` with a version tag in production):
 
 ```yaml
 # file: docker-compose.yml
 services:
   # ...
   redis:
-    image: 'redis:<the tag>'
+    image: 'redis:latest'
     command: 'redis-server --appendonly yes'
     restart: 'unless-stopped'
     volumes:
@@ -59,41 +75,39 @@ services:
   # ...
 ```
 
-Read the Redis documentation for setting up a highly available cluster.
+> NOTE: It also possible (and even preferred) to use a managed Redis database. In this case, you will need to update the [`redis.address` configuration option]({{< ref src="/reference/configuration/the-things-stack/#redis-options" >}}) to point to the address of the managed database.
 
-## {{% tts %}}
+### {{% tts %}}
 
-### Docker
+We need to configure Docker to pull and run {{% tts %}}. Below you see part the configuration of the `stack` service in the `docker-compose.yml` file. As with the databases, you need to find a recent tag of the [thethingsindustries/lorawan-stack image on Docker Hub](https://hub.docker.com/r/thethingsnetwork/lorawan-stack/tags) and update the `docker-compose.yml` file with that.
 
-Before we go into the details of {{% tts %}}'s configuration, we'll take a look at the basics. Below you see part the configuration of the `stack` service in the `docker-compose.yml` file. As with the databases, you need to find a recent tag of the [thethingsnetwork/lorawan-stack image on Docker Hub](https://hub.docker.com/r/thethingsnetwork/lorawan-stack/tags) and update the `docker-compose.yml` file with that.
+#### Entrypoint and dependencies.
 
-### Entrypoint and dependencies.
+We tell Docker Compose to use `tti-lw-stack -c /config/tti-lw-stack-docker.yml`, as the container entry point so that our configuration file `tti-lw-stack-docker.yml` is always loaded (more on the config file below). The default command is `start`, which starts {{% tts %}}.
 
-We tell Docker Compose to use `ttn-lw-stack -c /config/ttn-lw-stack-docker.yml`, as the container entry point so that our configuration file is always loaded (more on the config file below). The default command is `start`, which starts {{% tts %}}.
+With the `depends_on` field we tell Docker Compose that {{% tts %}} depends on CockroachDB and Redis. With this, Docker Compose will wait for CockroachDB and Redis to come online before starting {{% tts %}}.
 
-With the `depends_on` section we tell Docker Compose that {{% tts %}} depends on CockroachDB and Redis. With this, Docker Compose will wait for CockroachDB and Redis to come online before starting {{% tts %}}.
+> NOTE: If using a managed SQL or Redis database, these can be removed from `depends_on` and the services do not need to be started in Docker.
 
-### Volumes
+#### Volumes
 
-Under the `volumes` section, we define volumes for files that need to be persisted on disk. There are stored blob files (such as profile pictures) and certificate files retrieved with ACME (if required). We also mount the local `./config/stack/` directory on the container under `/config`, so that {{% tts %}} can find our configuration file at `/config/ttn-lw-stack-docker.yml`.
+Under the `volumes` section, we define volumes for files that need to be persisted on disk. There are stored blob files (such as profile pictures) and certificate files retrieved with ACME (if required). We also mount the local `./config/stack/` directory on the container under `/config`, so that {{% tts %}} can find our configuration file at `/config/tti-lw-stack-docker.yml`.
 
-> NOTE: If your `ttn-lw-stack-docker.yml` is in a directory other than `./config/stack`, you will need to change this volume accordingly.
+> NOTE: If your `tti-lw-stack-docker.yml` is in a directory other than `./config/stack`, you will need to change this volume accordingly.
 
-### Ports
+#### Ports
 
 The `ports` section exposes {{% tts %}}'s ports to the world. Port `80` and `443` are mapped to the internal HTTP and HTTPS ports. The other ports have a direct mapping. If you don't need support for gateways and applications that don't support TLS, you can remove ports starting with `188`.
 
 In the `environment` section, we configure the databases used by {{% tts %}}. We will set these to the CockroachDB and Redis instances that are defined in the `docker-compose.yml` above.
-
-If you plan on using existing certificate files, then you will need to uncomment the two `secrets` sections below, by removing the `# ` prefixes.
 
 ```yaml
 # file: docker-compose.yml
 services:
   # ...
   stack:
-    image: 'thethingsnetwork/lorawan-stack:<the tag>'
-    entrypoint: 'ttn-lw-stack -c /config/ttn-lw-stack-docker.yml'
+    image: 'thethingsindustries/lorawan-stack:latest'
+    entrypoint: 'tti-lw-stack -c /config/tti-lw-stack-docker.yml'
     command: 'start'
     restart: 'unless-stopped'
     depends_on:
@@ -122,50 +136,55 @@ services:
       TTN_LW_BLOB_LOCAL_DIRECTORY: '/srv/ttn-lorawan/public/blob'
       TTN_LW_REDIS_ADDRESS: 'redis:6379'
       TTN_LW_IS_DATABASE_URI: 'postgres://root@cockroach:26257/ttn_lorawan?sslmode=disable'
-
-    # If using custom certificates
-    # secrets:
-    #   - ca.pem
-    #   - cert.pem
-    #   - key.pem
-
-# If using custom certificates
-# secrets:
-#   ca.pem:
-#     file: ./ca.pem
-#   cert.pem:
-#     file: ./cert.pem
-#   key.pem:
-#     file: ./key.pem
-
 ```
 
-Next, we'll have a look at the configuration options for your private deployment. We'll set these options in the `ttn-lw-stack-docker.yml` file.
+> NOTE: If using managed databased, the `environment` ports need to be changed to the ports of the managed databases.
 
-First is TLS with Let's Encrypt. Since we're deploying {{% tts %}} on
+## Configure {{% tts %}}
+
+Once Docker starts {{% tts %}}, we need to specify configuration options for running {{% tts %}} in the `tti-lw-stack-docker.yml` file. Let's have a look at the configuration options which are required.
+
+### License
+
+First is a license file. {{% tts %}} requires a license, which can be purchased at X. This is specified in the `license` field, and can be either a `key` string, or a `file`path. See the [License Configuration Reference]({{< ref src="/reference/configuration/the-things-stack" >}}) for more information.
+
+### TLS
+
+{{% tts %}} supports TLS with Let's Encrypt. Since we're deploying {{% tts %}} on
 `thethings.example.com`, we configure it to only request certificates for that
-host, and also to use it as the default host (see the `tls` section).
+host, and also to use it as the default host (see the [`tls` configuration reference]({{< ref src="/reference/configuration/the-things-stack" >}}) section).
 
 > NOTE: Make sure that you use the correct `tls` depending on whether you will be using Let's Encrypt or your own certificate files.
 
+### HTTP
+
 We also configure HTTP server keys for encrypting and verifying cookies, as well
 as passwords for endpoints that you may want to keep for internal use (see the `http` section).
+
+### Email
 
 {{% tts %}} sends emails to users, so we need to configure how these are sent.
 You can use Sendgrid or an SMTP server. If you skip setting up an email provider,
 {{% tts %}} will print emails to the stack logs (see the `email` section).
 
+### Component URLs
+
 Finally, we also need to configure the URLs for the Web UI and the secret used
-by the console client (see the `console` section).
+by the console client (see the `console` section). These tell {{% tts %}} where all its components are accessible.
 
-For more detailed configuration, refer to [the relevant documentation]({{< ref "/reference/configuration" >}}).
+>NOTE: Failure to correctly configure component URLs is a common problem that will prevent the stack from starting. Be sure to replace all instances of `thethings.example.com` with your domain name!
 
-Below is an example `ttn-lw-stack-docker.yml` file:
+Below is an example `tti-lw-stack-docker.yml` file:
 
 ```yaml
-# file: config/stack/ttn-lw-stack.yaml
+# file: config/stack/tti-lw-stack.yaml
 
-# Example ttn-lw-stack configuration file
+# License configuration
+license:
+  # License contents may be specified directly
+  key: ''
+  # Or stored in a file
+  # file: ''
 
 # Identity Server configuration
 is:
@@ -189,9 +208,9 @@ is:
 http:
   cookie:
     # generate 32 bytes (openssl rand -hex 32)
-    block-key: '0011223344556677001122334455667700112233445566770011223344556677'
+    block-key: ''
     # generate 64 bytes (openssl rand -hex 64)
-    hash-key: '00112233445566770011223344556677001122334455667700112233445566770011223344556677001122334455667700112233445566770011223344556677'
+    hash-key: ''
   metrics:
     password: 'metrics'               # choose a password
   pprof:
