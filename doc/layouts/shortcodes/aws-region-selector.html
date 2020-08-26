@@ -1,0 +1,14 @@
+{{ $selected := or (.Get "selected") "us-east-1" }}
+{{ $label := or (.Get "label") "Select your AWS region" }}
+<div class="field">
+  <label class="label">{{ $label }} </label>
+  <div class="control">
+    <div class="select">
+      <select data-content="aws-region">
+        {{- range sort (index .Site.Data "aws-regions") "name" }}
+        <option value="{{ .id }}" {{ if eq .id $selected }}selected{{ end }}>{{ .name }} ({{ .id }})</option>
+        {{- end }}
+      </select>
+    </div>
+  </div>
+</div>
