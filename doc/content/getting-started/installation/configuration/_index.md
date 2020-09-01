@@ -10,11 +10,11 @@ In this guide, we will configure {{% tts %}} using a configuration file, with an
 
 To configure {{% tts %}}, we will use the configuration file `ttn-lw-stack-docker.yml`, which contains configuration specific to our {{% tts %}} deployment. When {{% tts %}} starts, it looks for `ttn-lw-stack-docker.yml` for a license key, hostname, and other configuration parameters.
 
-Download the example `ttn-lw-stack-docker.yml` used in this guide [here](/ttn-lw-stack-docker.yml).
+Download the example `ttn-lw-stack-docker.yml` used in this guide [here](ttn-lw-stack-docker.yml).
 
 To configure Docker, we also need a `docker-compose.yml`, which defines the Docker services of {{% tts %}} and its dependencies.
 
-Download the example `docker-compose.yml` used in this guide [here](/docker-compose.yml).
+Download the example `docker-compose.yml` used in this guide [here](docker-compose.yml).
 
 Create a new folder where your deployment files will be placed. This guide assumes the following directory hierarchy:
 
@@ -42,7 +42,7 @@ We need to configure an SQL database, so in this guide we'll use a single instan
 The simplest configuration for CockroachDB will look like this (remember to replace `latest` with a version tag in production):
 
 {{< highlight yaml "linenos=table,linenostart=5" >}}
-{{< readfile path="/static/docker-compose.yml" from=5 to=13 >}}
+{{< readfile path="/content/getting-started/installation/configuration/docker-compose.yml" from=5 to=13 >}}
 {{< /highlight >}}
 
 > NOTE: It also possible (and even preferred) to use a managed SQL database. In this case, you will need to update the [`is.database-uri` configuration option]({{< ref src="/reference/configuration/identity-server/#database-options" >}}) to point to the address of the managed database.
@@ -54,7 +54,7 @@ We also need to configure [Redis](https://redis.io/). In this guide we'll use a 
 The simplest configuration for Redis will look like this (remember to replace `latest` with a version tag in production):
 
 {{< highlight yaml "linenos=table,linenostart=28" >}}
-{{< readfile path="/static/docker-compose.yml" from=28 to=35 >}}
+{{< readfile path="/content/getting-started/installation/configuration/docker-compose.yml" from=28 to=35 >}}
 {{< /highlight >}}
 
 > NOTE: It also possible (and even preferred) to use a managed Redis database. In this case, you will need to update the [`redis.address` configuration option]({{< ref src="/reference/configuration/the-things-stack/#redis-options" >}}) to point to the address of the managed database.
@@ -84,7 +84,7 @@ The `ports` section exposes {{% tts %}}'s ports to the world. Port `80` and `443
 In the `environment` section, we configure the databases used by {{% tts %}}. We will set these to the CockroachDB and Redis instances that are defined in the `docker-compose.yml` above.
 
 {{< highlight yaml "linenos=table,linenostart=37" >}}
-{{< readfile path="/static/docker-compose.yml" from=37 to=83 >}}
+{{< readfile path="/content/getting-started/installation/configuration/docker-compose.yml" from=37 to=83 >}}
 {{< /highlight >}}
 
 > NOTE: If using managed databased, the `environment` ports need to be changed to the ports of the managed databases.
@@ -126,7 +126,7 @@ by the console client (see the `console` section). These tell {{% tts %}} where 
 Below is an example `ttn-lw-stack-docker.yml` file:
 
 {{< highlight yaml "linenos=table" >}}
-{{< readfile path="/static/ttn-lw-stack-docker.yml" >}}
+{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker.yml" >}}
 {{< /highlight >}}
 
 > NOTE: Make note of the client secret, as it will be needed again when initializing {{% tts %}}.
