@@ -2,7 +2,7 @@
 title: "Draft Template"
 description: "This page is a draft template"
 weight: 
-distribution: ["AWS", "Multi Tenant"]
+distribution: ["Marketplace Launcher", "Self Hosted"]
 draft: true
 ---
 

@@ -1,5 +1,5 @@
 {{ $distribution := .distribution }}
-{{ $distributions := slice "Self Hosted" "Cloud Hosted" "Community" "Open Source" "Enterprise" "Multi Tenant" "AWS" }}
+{{ $distributions := index site.Data "distributions" }}
 {{ range $distribution}}
   {{ if not (in $distributions .) }}
     {{ errorf "distribution '%s' not in '%s'" . (delimit $distributions ", ") }}

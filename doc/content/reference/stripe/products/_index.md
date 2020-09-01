@@ -2,7 +2,7 @@
 title: "Products and Pricing Plans"
 description: ""
 weight: 10
-distribution: "Multi Tenant"
+distribution: ["Cloud Hosted", "Self Hosted"]
 ---
 
 ## Creating a Product and the Initial Pricing Plan

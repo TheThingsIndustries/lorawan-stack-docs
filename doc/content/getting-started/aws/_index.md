@@ -1,7 +1,7 @@
 ---
 title: "AWS"
 description: ""
-distribution: "AWS"
+distribution: "Marketplace Launcher"
 ---
 
 {{% tts %}} is currently available as an AWS CloudFormation stack that can be purchased at the AWS Marketplace.

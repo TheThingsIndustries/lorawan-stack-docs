@@ -2,7 +2,7 @@
 title: "Make a Device Claimable"
 description: ""
 weight: 1
-distribution: "Enterprise"
+distribution: ["Self Hosted", "Cloud Hosted"]
 --- 
 
 This guide explains the process of making a device claimable 

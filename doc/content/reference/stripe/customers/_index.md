@@ -2,7 +2,7 @@
 title: "Customers"
 description: ""
 weight: 20
-distribution: "Multi Tenant"
+distribution: ["Cloud Hosted", "Self Hosted"]
 ---
 
 ## Creating a Customer

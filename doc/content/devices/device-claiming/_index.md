@@ -1,7 +1,7 @@
 ---
 title: "Device Claiming"
 description: ""
-distribution: "Enterprise"
+distribution: ["Self Hosted", "Cloud Hosted"]
 --- 
 
 This section provides guides for making devices claimable and claiming them.

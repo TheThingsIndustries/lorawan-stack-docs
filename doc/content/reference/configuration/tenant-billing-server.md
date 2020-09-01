@@ -2,7 +2,7 @@
 title: "Tenant Billing Server Options"
 description: ""
 weight: 10
-distribution: "Multi Tenant"
+distribution: ["Cloud Hosted", "Self Hosted"]
 ---
 
 ## General options
