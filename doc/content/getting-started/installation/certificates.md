@@ -94,6 +94,7 @@ Your directory should look like this:
 ```bash
 cert.pem
 key.pem
+ca.pem
 docker-compose.yml          # defines Docker services for running {{% tts %}}
 config/
 └── stack/
