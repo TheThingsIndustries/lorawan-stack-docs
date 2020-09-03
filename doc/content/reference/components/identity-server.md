@@ -4,7 +4,7 @@ description: ""
 aliases: [/components/identity-server]
 ---
 
-The Identity Server provides the registries that store entities such as applications with their end devices, gateways, users, organizations and OAuth clients. It also manages access control through memberships and API keys.
+The Identity Server provides the registries that store entities such as applications with their end devices, gateways, users, organizations, OAuth clients and authentication providers. It also manages access control through memberships and API keys.
 
 <!--more-->
 
@@ -59,6 +59,12 @@ It is possible to register external OAuth clients in the OAuth registries. OAuth
 As with users, OAuth clients can be in one of multiple states. OAuth clients created by non-admin users need to be approved by an admin user.
 
 Official OAuth clients can be marked as "endorsed", or can be pre-authorized for all users.
+
+### Authentication Providers
+
+Federated authentication providers can be registered in the authentication provider registries. Authentication providers are registered with an ID, name and provider configuration.
+
+The authentication providers are used to allow the Identity Server to obtain the identity of a user from an external identity provider, such as an [OpenID Connect](https://openid.net/connect/) provider.
 
 ## Entity Access
 
