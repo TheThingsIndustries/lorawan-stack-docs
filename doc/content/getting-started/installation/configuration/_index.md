@@ -63,7 +63,7 @@ The simplest configuration for Redis will look like this (remember to replace `l
 
 We need to configure Docker to pull and run {{% tts %}}. Below you see part the configuration of the `stack` service in the `docker-compose.yml` file. As with the databases, you need to find a recent tag of the [thethingsindustries/lorawan-stack image on Docker Hub](https://hub.docker.com/r/thethingsnetwork/lorawan-stack/tags) and update the `docker-compose.yml` file with that.
 
-#### Entrypoint and dependencies.
+#### Entrypoint and dependencies
 
 We tell Docker Compose to use `ttn-lw-stack -c /config/ttn-lw-stack-docker.yml`, as the container entry point so that our configuration file `ttn-lw-stack-docker.yml` is always loaded (more on the config file below). The default command is `start`, which starts {{% tts %}}.
 
