@@ -11,6 +11,16 @@ You can update the examples below with your tenant ID and cluster ID by filling 
 
 {{< tenant-cluster-selector >}}
 
+## Cluster Address
+
+Your cluster address is:
+
+<p>
+<code data-content="cluster-address">
+<span data-content="tenant-id"></span>.<span data-content="cluster-id"></span>.cloud.thethings.industries
+</code>
+</p>
+
 ## Account and OAuth
 
 User accounts are stored in the `eu1` cluster. For registering users, logging in, changing your password and for performing OAuth flows, you need to use the following address:
