@@ -61,7 +61,7 @@ The simplest configuration for Redis will look like this (remember to replace `l
 
 ### {{% tts %}}
 
-We need to configure Docker to pull and run {{% tts %}}. Below you see part the configuration of the `stack` service in the `docker-compose.yml` file. As with the databases, you need to find a recent tag of the [thethingsindustries/lorawan-stack image on Docker Hub](https://hub.docker.com/r/thethingsnetwork/lorawan-stack/tags) and update the `docker-compose.yml` file with that.
+We need to configure Docker to pull and run {{% tts %}}. Below you see part the configuration of the `stack` service in the `docker-compose.yml` file. As with the databases, you need to find a recent tag of the [thethingsindustries/lorawan-stack image on Docker Hub](https://hub.docker.com/r/thethingsindustries/lorawan-stack/tags) and update the `docker-compose.yml` file with that.
 
 #### Entrypoint and dependencies
 
