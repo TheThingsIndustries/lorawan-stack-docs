@@ -33,6 +33,8 @@ Enter the following fields:
 1. **Name**: the **Gateway ID** that you chose earlier.
 2. Choose the WiFi network from the drop down and enter a password if necessary.
 
+> Note: To connect to a Cloud Hosted tenant, the tenant ID must be added to the  **Gateway ID** field in the format **Gateway ID**@**Tenant ID**.
+
 Click the **Show Advanced Options** button and enter the following fields:
 
 1. **Account Server**: The URL of {{% tts %}}. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `https://thethings.example.com`.

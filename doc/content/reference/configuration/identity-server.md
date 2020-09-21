@@ -8,7 +8,7 @@ description: ''
 The Identity Server needs to be connected to a PostgreSQL-compatible database. Details for the form of the URI can be found in the [PostgreSQL documentation](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING).
 
 - `is.database-uri`: Database connection URI
-- `is.read-database-uri`: Read-Only database connection URI {{< distribution-inline "Cloud" "Enterprise" >}}
+- `is.read-database-uri`: Read-Only database connection URI {{< distributions-inline "Cloud" "Enterprise" >}}
 
 ## Email Options
 
@@ -66,8 +66,8 @@ If page assets for the OAuth UI are served from a CDN or on a different path on 
 
 - `is.oauth.ui.assets-base-url`: The base URL to the page assets
 - `is.oauth.ui.branding-base-url`: The base URL to the branding assets
-- `is.oauth.ui.branding-cluster-id`: The cluster ID to show below the logo {{< distribution-inline "Cloud" "Enterprise" >}}
-- `is.oauth.ui.branding-text`: The branding text to show below the logo {{< distribution-inline "Cloud" "Enterprise" >}}
+- `is.oauth.ui.branding-cluster-id`: The cluster ID to show below the logo {{< distributions-inline "Cloud" "Enterprise" >}}
+- `is.oauth.ui.branding-text`: The branding text to show below the logo {{< distributions-inline "Cloud" "Enterprise" >}}
 
 The appearance of {{% tts %}} can optionally be customized.
 
@@ -136,8 +136,8 @@ By default users can create applications, gateways, organizations and OAuth clie
 - `is.user-rights.create-gateways`: Allow non-admin users to create gateways in their user account
 - `is.user-rights.create-organizations`: Allow non-admin users to create organizations in their user account
 
-## Tenant Administration Options {{< distribution-inline "Cloud" "Enterprise" >}}
+## Tenant Administration Options {{< distributions-inline "Cloud" "Enterprise" >}}
 
 In multi-tenant deployments, tenants are managed with "tenant admin keys". These keys need to be configured in the Identity Server.
 
-- `is.tenancy.admin-keys`: Keys that can be used for tenant administration (16, 24 or 32 hex-encoded bytes) {{< distribution-inline "Cloud" "Enterprise" >}}
+- `is.tenancy.admin-keys`: Keys that can be used for tenant administration (16, 24 or 32 hex-encoded bytes) {{< distributions-inline "Cloud" "Enterprise" >}}

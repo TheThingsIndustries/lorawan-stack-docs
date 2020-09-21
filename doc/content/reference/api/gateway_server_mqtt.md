@@ -7,6 +7,10 @@ This reference describes the MQTT protocol used by the Gateway Server. Packet fo
 
 The MQTT protocol can be used to develop custom packet forwarders or gateway bridges for exchanging traffic between a gateway and {{% tts %}}, or easily simulating gateway traffic for testing purposes. It is an alternative to the [Basic Station](https://doc.sm.tc/station/index.html) and the [Semtech UDP](https://github.com/Lora-net/packet_forwarder/blob/master/PROTOCOL.TXT) protocols.
 
+## Multi-Tenancy
+
+On multi-tenant environments such as Cloud, endoints include the tenant id, e.g `gateway1@tenant1`. On single tenant environments such as Open Source, the tenant id can be removed, i.e `gateway1`.
+
 ## MQTT Introduction
 
 MQTT is a server-client protocol for exchanging messages. Clients can connect to the server and **publish** messages (data) under a specific **topic**. They can also **subscribe** to a **topic**, and thus receive all messages that are published under that topic (by other clients, or the MQTT server itself).
@@ -23,15 +27,11 @@ See [Networking]({{< ref "/reference/networking" >}}) for the default port of th
 
 The username is `<gateway-id>@<tenant-id>` (e.g. `gtw1@tenant1`), and the password is a gateway API key with the `RIGHT_GATEWAY_LINK` right enabled. You can generate this API key by following instructions in the [Creating Gateways]({{< ref "/gateways/adding-gateways#create-gateway-api-key" >}}) section.
 
-> If you are not on a multi-tenant deployment, the username is <gateway-id>
-
 Authenticated clients get **write-only** access to the following topics:
 
 - `v3/<gateway-id>@<tenant-id>/up`: Used for sending uplink traffic to the Gateway Server.
 - `v3/<gateway-id>@<tenant-id>/status`: Used for sending gateway status messages to the Gateway Server.
 - `v3/<gateway-id>@<tenant-id>/down/ack`: Used for sending TxAck messages to the Gateway Server.
-
-> If you are not on a multi-tenant deployment, remove `@tenant-id`
 
 Clients also get **read-only** access and should subscribe to the following topic:
 

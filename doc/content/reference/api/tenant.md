@@ -1,7 +1,7 @@
 ---
 title: "Tenant APIs"
 description: ""
-distribution: ["Enterprise", "Cloud"]
+distributions: ["Enterprise", "Cloud"]
 ---
  
 ## Authentication

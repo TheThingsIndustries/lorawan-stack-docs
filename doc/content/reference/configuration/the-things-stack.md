@@ -10,14 +10,14 @@ Under normal circumstances, only `info`, `warn` and `error` logs are printed to 
 
 - `log.level`: The minimum level log messages must have to be shown (default "info")
 
-## License {{< distribution-inline "Cloud" "Enterprise" >}}
+## License {{< distributions-inline "Cloud" "Enterprise" >}}
 
 {{% tts %}} requires a license key for production use. For development purposes, it will work for a limited time on `localhost` without a license key.
 
 - `license.file`: Location of the license file
 - `license.key`: Contents of the license key
 
-## Key Vault {{< distribution-inline "Cloud" "Enterprise" >}}
+## Key Vault {{< distributions-inline "Cloud" "Enterprise" >}}
 
 The key vault is used to store secrets, such as TLS certificates and the keys for encrypting LoRaWAN root keys in the database. {{% tts %}} supports keys stored in AWS Secrets Manager, or static configuration for development purposes.
 
@@ -154,10 +154,10 @@ Or you can enable failover using [Redis Sentinel](https://redis.io/topics/sentin
 
 Further, you can reduce the load on the Redis master by specifying read-only configuration:
 
-- `redis.readonly.address`: Address of the Redis server {{< distribution-inline "Cloud" "Enterprise" >}}
-- `redis.readonly.password`: Password of the Redis server {{< distribution-inline "Cloud" "Enterprise" >}}
-- `redis.readonly.database`: Redis database to use {{< distribution-inline "Cloud" "Enterprise" >}}
-- `redis.readonly.pool-size`: The maximum size of the connection pool {{< distribution-inline "Cloud" "Enterprise" >}}
+- `redis.readonly.address`: Address of the Redis server {{< distributions-inline "Cloud" "Enterprise" >}}
+- `redis.readonly.password`: Password of the Redis server {{< distributions-inline "Cloud" "Enterprise" >}}
+- `redis.readonly.database`: Redis database to use {{< distributions-inline "Cloud" "Enterprise" >}}
+- `redis.readonly.pool-size`: The maximum size of the connection pool {{< distributions-inline "Cloud" "Enterprise" >}}
 
 If your Redis server uses TLS, use the following options:
 
@@ -204,10 +204,10 @@ When using the `redis` backend, the global [Redis configuration]({{< ref "#redis
 
 Similar to the global Redis configuration, you can reduce the load on the Redis master by specifying read-only configuration:
 
-- `events.redis.readonly.address`: Address of the Redis server {{< distribution-inline "Cloud" "Enterprise" >}}
-- `events.redis.readonly.password`: Password of the Redis server {{< distribution-inline "Cloud" "Enterprise" >}}
-- `events.redis.readonly.database`: Redis database to use {{< distribution-inline "Cloud" "Enterprise" >}}
-- `events.redis.readonly.pool-size`: The maximum size of the connection pool {{< distribution-inline "Cloud" "Enterprise" >}}
+- `events.redis.readonly.address`: Address of the Redis server {{< distributions-inline "Cloud" "Enterprise" >}}
+- `events.redis.readonly.password`: Password of the Redis server {{< distributions-inline "Cloud" "Enterprise" >}}
+- `events.redis.readonly.database`: Redis database to use {{< distributions-inline "Cloud" "Enterprise" >}}
+- `events.redis.readonly.pool-size`: The maximum size of the connection pool {{< distributions-inline "Cloud" "Enterprise" >}}
 
 If your Redis server uses TLS, use the following options:
 
@@ -287,14 +287,14 @@ When using the `redis` backend, the global [Redis configuration]({{< ref "#redis
 - `cache.redis.namespace`: Namespace for Redis keys
 - `cache.redis.pool-size`: The maximum size of the connection pool
 
-## Multi-Tenancy {{< distribution-inline "Cloud" "Enterprise" >}}
+## Multi-Tenancy {{< distributions-inline "Cloud" "Enterprise" >}}
 
 In multi-tenant deployments, some additional configuration is required.
 
-- `tenancy.base-domains`: Base domains for tenant ID inference. Setting this to `thethings.example.com` would extract the tenant ID from `<tenant-id>.thethings.example.com`. {{< distribution-inline "Cloud" "Enterprise" >}}
-- `tenancy.default-id`: Default tenant ID. Users visiting `thethings.example.com` (from `tenancy.base-domains`) will be redirected to `default.thethings.example.com`. {{< distribution-inline "Cloud" "Enterprise" >}}
+- `tenancy.base-domains`: Base domains for tenant ID inference. Setting this to `thethings.example.com` would extract the tenant ID from `<tenant-id>.thethings.example.com`. {{< distributions-inline "Cloud" "Enterprise" >}}
+- `tenancy.default-id`: Default tenant ID. Users visiting `thethings.example.com` (from `tenancy.base-domains`) will be redirected to `default.thethings.example.com`. {{< distributions-inline "Cloud" "Enterprise" >}}
 
 Tenants can have custom configuration, such as custom branding or custom user registration options. This information is typically cached locally, especially in multi-region deployments to reduce the load on the Identity Server and to be more resilient against outages of the Identity Server.
 
-- `tenancy.ttl`: TTL of cached tenant configurations {{< distribution-inline "Cloud" "Enterprise" >}}
+- `tenancy.ttl`: TTL of cached tenant configurations {{< distributions-inline "Cloud" "Enterprise" >}}
 

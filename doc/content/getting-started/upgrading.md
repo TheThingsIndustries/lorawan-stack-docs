@@ -1,8 +1,8 @@
 ---
-title: "Upgrading"
+title: "Upgrading The Things Stack"
 description: ""
 weight: -1
-distribution: ["Open Source"]
+distributions: ["Enterprise", "Open Source"]
 ---
 
 Follow these instructions to upgrade an existing {{% tts %}} instance.

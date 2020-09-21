@@ -4,13 +4,13 @@
     <div class="card has-radius is-fullwidth">
       <div class="card-content">
         <h3 class="title is-size-5 is-uppercase"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-        {{ with .Params.distribution }}
-        {{ $distribution := .}}
+        {{ with .Params.distributions }}
+        {{ $distributions := .}}
         {{ if ( not ( reflect.IsSlice . ) ) }}
-          {{ $distribution = slice $distribution }}
+          {{ $distributions = slice $distributions }}
         {{ end }}
         <p class="subtitle is-size-6 is-uppercase">
-            {{ delimit $distribution ", " " and " }} Only
+            {{ delimit $distributions ", " " and " }} Only
         </p>
         {{ end }}
         <div class="content has-text-grey">

@@ -2,7 +2,7 @@
 title: "Installing The Things Stack"
 description: ""
 weight: -1
-distribution: ["Enterprise", "Open Source"]
+distributions: ["Enterprise", "Open Source"]
 ---
 
 This is a guide for setting up a private LoRaWAN network server using {{% tts %}} for LoRaWAN.
@@ -13,7 +13,7 @@ This is a guide for setting up a private LoRaWAN network server using {{% tts %}
 
 1. A server with a recommended 4 virtual CPUs and 16GB RAM running [Docker](https://docs.docker.com/engine/) and [Docker Compose](https://docs.docker.com/compose/)*
 2. DNS records pointing to your server's IP address
-3. A [license](https://thethingsindustries.com/technology/pricing) for {{% tts %}} {{< distribution-inline "Enterprise" >}}
+3. A [license](https://thethingsindustries.com/technology/pricing) for {{% tts %}} {{< distributions-inline "Enterprise" >}}
 
 <!--more-->
 

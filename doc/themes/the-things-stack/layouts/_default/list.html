@@ -5,12 +5,12 @@
 <h1 class="title is-size-2">{{ .Title }}</h1>
 
 <div class="content">
-{{ with .Params.distribution }}
-  {{ $distribution := .}}
+{{ with .Params.distributions }}
+  {{ $distributions := . }}
   {{ if ( not ( reflect.IsSlice . ) ) }}
-    {{ $distribution = slice $distribution }}
+    {{ $distributions = slice $distributions }}
   {{ end }}
-  {{ partial "distribution" (dict "distribution" $distribution) }}
+  {{ partial "distributions" (dict "distributions" $distributions) }}
 {{ end }}
 {{ .Content }}
 </div>

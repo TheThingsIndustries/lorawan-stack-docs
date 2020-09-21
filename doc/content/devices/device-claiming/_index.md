@@ -1,7 +1,7 @@
 ---
 title: "Device Claiming"
 description: ""
-distribution: ["Enterprise", "Cloud"]
+distributions: ["Enterprise", "Cloud"]
 --- 
 
 This section provides guides for making devices claimable and claiming them.

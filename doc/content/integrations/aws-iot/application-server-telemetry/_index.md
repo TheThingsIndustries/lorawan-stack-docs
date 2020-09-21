@@ -1,7 +1,7 @@
 ---
 title: "Application Server Telemetry"
 description: ""
-distribution: "Marketplace Launcher"
+distributions: "Marketplace Launcher"
 ---
 
 {{% tts %}} supports publishing of uplink messages directly to the AWS IoT suite.

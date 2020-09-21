@@ -2,7 +2,7 @@
 title: "Products and Pricing Plans"
 description: ""
 weight: 10
-distribution: ["Cloud", "Enterprise"]
+distributions: ["Cloud", "Enterprise"]
 ---
 
 ## Creating a Product and the Initial Pricing Plan

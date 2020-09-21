@@ -1,7 +1,7 @@
 ---
 title: "Claim ATECC608A Secure Elements"
 description: ""
-distribution: ["Enterprise", "Cloud"]
+distributions: ["Enterprise", "Cloud"]
 ---
 
 The Things Industries and Microchip developed a security solution for LoRaWAN that enables secure key provisioning and secure cryptographic operations using secure elements.

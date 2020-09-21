@@ -10,6 +10,10 @@ aliases: [/guides/getting-started/mqtt]
 
 <!--more-->
 
+## Multi-Tenancy
+
+On multi-tenant environments such as Cloud, application ids and other endoints include the tenant id, e.g `app1@tenant1`. On single tenant environments such as Open Source, the tenant id can be removed, i.e `app1`.
+
 ## Creating an API Key
 
 In order to use the MQTT server you need to create a new API key to authenticate. The Console provides the required connection information and can be used to create an API key for authentication. In your application select the **MQTT** submenu from the **Integrations** side menu.
@@ -20,9 +24,7 @@ You can now click on the **Generate new API key** button in order to generate an
 
 {{< figure src="mqtt-key-created.png" alt="MQTT API key created" >}}
 
-Make sure to copy your API key now, since it will no longer be visible after leaving the page for security reasons. You can now login using an MQTT client with the application ID `app1` as user name and the newly generated API key as password.
-
->Note: If using Cloud Hosted, login using an MQTT client with the application ID and tenant ID `app1@tenant1` as user name and the newly generated API key as password. See the [Cloud Hosted MQTT instructions]({{< relref src="/cloud-hosted" >}}) for more information.
+Make sure to copy your API key now, since it will no longer be visible after leaving the page for security reasons. You can now login using an MQTT client with the application ID and tenant ID `app1@tenant1` as user name and the newly generated API key as password.
 
 ## MQTT Clients
 
@@ -31,25 +33,25 @@ There are many MQTT clients available. Great clients are `mosquitto_pub` and `mo
 ```bash
 # Tip: when using `mosquitto_sub`, pass the `-d` flag to see the topics messages get published on.
 # For example:
-$ mosquitto_sub -h thethings.example.com -t "#" -u app1 -P "NNSXS.VEEBURF3KR77ZR.." -d
+$ mosquitto_sub -h thethings.example.com -t "#" -u "app1@tenant1" -P "NNSXS.VEEBURF3KR77ZR.." -d
 ```
 
 ## Subscribing to Upstream Traffic
 
 The Application Server publishes on the following topics:
 
-- `v3/{application id}/devices/{device id}/join`
-- `v3/{application id}/devices/{device id}/up`
-- `v3/{application id}/devices/{device id}/down/queued`
-- `v3/{application id}/devices/{device id}/down/sent`
-- `v3/{application id}/devices/{device id}/down/ack`
-- `v3/{application id}/devices/{device id}/down/nack`
-- `v3/{application id}/devices/{device id}/down/failed`
-- `v3/{application id}/devices/{device id}/service/data`
+- `v3/{application id}@{tenant id}/devices/{device id}/join`
+- `v3/{application id}@{tenant id}/devices/{device id}/up`
+- `v3/{application id}@{tenant id}/devices/{device id}/down/queued`
+- `v3/{application id}@{tenant id}/devices/{device id}/down/sent`
+- `v3/{application id}@{tenant id}/devices/{device id}/down/ack`
+- `v3/{application id}@{tenant id}/devices/{device id}/down/nack`
+- `v3/{application id}@{tenant id}/devices/{device id}/down/failed`
+- `v3/{application id}@{tenant id}/devices/{device id}/service/data`
 
 While you could subscribe to separate topics, for the tutorial subscribe to `#` to subscribe to all messages.
 
-With your MQTT client subscribed, when a device joins the network, a `join` message gets published. For example, for a device ID `dev1`, the message will be published on the topic `v3/app1/devices/dev1/join`.
+With your MQTT client subscribed, when a device joins the network, a `join` message gets published. For example, for a device ID `dev1`, the message will be published on the topic `v3/app1@tenant1/devices/dev1/join`.
 
 <details><summary>Show example join accept message</summary>
 
@@ -80,7 +82,7 @@ With your MQTT client subscribed, when a device joins the network, a `join` mess
 
 You can use the correlation IDs to follow messages as they pass through {{% tts %}}.
 
-When the device sends an uplink message, a message will be published to the topic `v3/{application id}/devices/{device id}/up`.
+When the device sends an uplink message, a message will be published to the topic `v3/{application id}@{tenant id}/devices/{device id}/up`.
 
 <details><summary>Show example uplink message</summary>
 
@@ -135,13 +137,11 @@ When the device sends an uplink message, a message will be published to the topi
 ```
 </details>
 
->Note: If using Cloud Hosted, Uplink topics are published to `{application id}@{tenant id}` rather than `{application id}`. See the [Cloud Hosted MQTT instructions]({{< relref src="/cloud-hosted" >}}) for more information.
-
 ## Publishing Downlink Traffic
 
-Downlinks can be scheduled by publishing the message to the topic `v3/{application id}/devices/{device id}/down/push`.
+Downlinks can be scheduled by publishing the message to the topic `v3/{application id}@{tenant id}/devices/{device id}/down/push`.
 
-For example, to send an unconfirmed downlink message to the device `dev1` in application `app1` with the hexadecimal payload `BE EF` on `FPort` 15 with normal priority, use the topic `v3/app1/devices/dev1/down/push` with the following contents:
+For example, to send an unconfirmed downlink message to the device `dev1` in application `app1` in tenant `tenant1` with the hexadecimal payload `BE EF` on `FPort` 15 with normal priority, use the topic `v3/app1@tenant1/devices/dev1/down/push` with the following contents:
 
 ```json
 {
@@ -158,8 +158,8 @@ For example, to send an unconfirmed downlink message to the device `dev1` in app
 ```bash
 # If you use `mosquitto_pub`, use the following command:
 $ mosquitto_pub -h thethings.example.com \
-  -t "v3/app1/devices/dev1/down/push" \
-  -u app1 -P "NNSXS.VEEBURF3KR77ZR.." \
+  -t "v3/app1@tenant1/devices/dev1/down/push" \
+  -u "app1@tenant1" -P "NNSXS.VEEBURF3KR77ZR.." \
   -m '{"downlinks":[{"f_port": 15,"frm_payload":"vu8=","priority": "NORMAL"}]}' \
   -d`
 ```
@@ -182,7 +182,7 @@ It is also possible to send multiple downlink messages on a single push because 
 }
 ```
 
-Once the downlink gets acknowledged, a message is published to the topic `v3/{application id}/devices/{device id}/down/ack`.
+Once the downlink gets acknowledged, a message is published to the topic `v3/{application id}@{tenant id}/devices/{device id}/down/ack`.
 
 <details><summary>Show example downlink event message</summary>
 
@@ -218,5 +218,3 @@ Once the downlink gets acknowledged, a message is published to the topic `v3/{ap
 </details>
 
 You see the correlation ID `my-correlation-id` of your downlink message. You can add multiple custom correlation IDs, for example to reference events or identifiers of your application.
-
->Note: If using Cloud Hosted, Downlink messages are published to `{application id}@{tenant id}` rather than `{application id}`. See the [Cloud Hosted MQTT instructions]({{< relref src="/cloud-hosted" >}}) for more information.

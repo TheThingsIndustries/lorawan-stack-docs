@@ -1,11 +1,11 @@
 ---
-title: "Activating Devices on Cloud Hosted"
+title: "Activating Devices on Cloud"
 description: ""
 weight: 20
-distribution: ["Cloud"]
+distributions: ["Cloud"]
 ---
 
-The Things Industries Join Server is a LoRaWAN Join Server. Learn how to activate devices on The Things Industries Cloud Hosted.
+The Things Industries Join Server is a LoRaWAN Join Server. Learn how to activate devices on The Things Industries Cloud.
 
 <!--more-->
 
@@ -13,14 +13,14 @@ The Things Industries Join Server is a LoRaWAN Join Server. Learn how to activat
 
 ## Prerequisites
 
-1. Command-line interface (CLI) configuration file *with Cloud Hosted cluster*. See [The Things Industries Join Server]({{< relref "../tti-join-server" >}})
+1. Command-line interface (CLI) configuration file *with Cloud cluster*. See [The Things Industries Join Server]({{< relref "../tti-join-server" >}})
 2. Devices registered in The Things Industries Join Server. You can achieve this in two ways:
    1. Register devices with root keys. See [registering devices on The Things Industries Join Server]({{< relref "register-devices" >}})
    2. Claim secure elements. See [Claim ATECC608A-TNGLORA secure elements]({{< ref "/devices/claim-atecc608a" >}})
 
 ## Login with CLI
 
-Use the command-line interface (CLI) configuration file with Cloud Hosted cluster. 
+Use the command-line interface (CLI) configuration file with Cloud cluster. 
 
 ```bash
 $ ttn-lw-cli login
@@ -80,4 +80,4 @@ $ ttn-lw-cli end-devices set test-app eui-0004a310001ff9e0 \
 
 </details>
 
-You can now activate the devices on The Things Industries Cloud Hosted.
+You can now activate the devices on The Things Industries Cloud.

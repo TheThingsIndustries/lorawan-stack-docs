@@ -104,7 +104,7 @@ Here is an example `stack` configuration from the Enterprise version of `docker-
 
 Once Docker starts {{% tts %}}, we need to specify configuration options for running {{% tts %}} in the `ttn-lw-stack-docker.yml` file. Let's have a look at the configuration options which are required.
 
-### License {{< distribution-inline "Enterprise" >}}
+### License {{< distributions-inline "Enterprise" >}}
 
 First is a license file. {{% tts %}} Enterprise requires a license, which can be purchased at the [products page](https://thethingsindustries.com/technology/pricing). This is specified in the `license` field, and can be either a `key` string, or a `file`path. See the [License Configuration Reference]({{< ref src="/reference/configuration/the-things-stack" >}}) for more information.
 
