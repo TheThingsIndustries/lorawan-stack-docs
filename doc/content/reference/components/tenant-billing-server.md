@@ -2,7 +2,7 @@
 title: "Tenant Billing Server"
 description: ""
 weight: 12
-distribution: ["Cloud Hosted", "Self Hosted"]
+distribution: ["Cloud", "Enterprise"]
 ---
 
 The Tenant Billing Server is an enterprise component that manages the creation, suspension and billing of tenants using different payment backends. It requires a license with multi-tenancy support.

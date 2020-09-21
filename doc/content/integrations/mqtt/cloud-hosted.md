@@ -1,7 +1,7 @@
 ---
-title: "Cloud Hosted"
+title: "Cloud"
 description: ""
-distribution: ["Cloud Hosted"]
+distribution: ["Cloud"]
 ---
 
 Cloud Hosted has special MQTT addressing to support multi tenancy. While most of the instructions in the [overview]({{< relref src=".." >}}) apply, the following instructions are unique.

@@ -2,7 +2,7 @@
 title: "Draft Template"
 description: "This page is a draft template"
 weight: 
-distribution: ["Marketplace Launcher", "Self Hosted"]
+distribution: ["Marketplace Launcher", "Enterprise"]
 draft: true
 ---
 
@@ -24,8 +24,8 @@ Use a requirements subheading to list requirements/prerequisites.
 To mark a document as applicable to only one or more distributions, there are three options:
 
 1. Add an array of titles to a `distribution` front matter element. This will mark the page in the parent's table of contents, and will produce a notification on the page
-2. Use the {{< distribution "Self Hosted" "Cloud Hosted" >}} shortcode to produce a notification on the page
-3. Use the {{< distribution-inline "Self Hosted" >}} shortcode to produce an inline notification. This is especially useful for tables and lists
+2. Use the {{< distribution "Enterprise" "Cloud" >}} shortcode to produce a notification on the page
+3. Use the {{< distribution-inline "Enterprise" >}} shortcode to produce an inline notification. This is especially useful for tables and lists
 
 Available distributions are {{< distributions-list >}} and are stored in `data/distributions.yml`.
 

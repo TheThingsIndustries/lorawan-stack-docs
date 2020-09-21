@@ -10,11 +10,22 @@ In this guide, we will configure {{% tts %}} using a configuration file, with an
 
 To configure {{% tts %}}, we will use the configuration file `ttn-lw-stack-docker.yml`, which contains configuration specific to our {{% tts %}} deployment. When {{% tts %}} starts, it looks for `ttn-lw-stack-docker.yml` for a license key, hostname, and other configuration parameters.
 
-Download the example `ttn-lw-stack-docker.yml` used in this guide [here](ttn-lw-stack-docker.yml).
-
 To configure Docker, we also need a `docker-compose.yml`, which defines the Docker services of {{% tts %}} and its dependencies.
 
-Download the example `docker-compose.yml` used in this guide [here](docker-compose.yml).
+### Example Configuration Files
+
+{{< tabs/container "Enterprise" "Open Source" >}}
+{{< tabs/tab "Enterprise" >}}
+Download the example `ttn-lw-stack-docker.yml` for {{% tts %}} Enterprise <a href="ttn-lw-stack-docker-enterprise.yml" download="ttn-lw-stack-docker.yml">here</a>.
+
+Download the example `docker-compose.yml` for {{% tts %}} Enterprise <a href="docker-compose-enterprise.yml" download="docker-compose.yml">here</a>.
+{{< /tabs/tab >}}
+{{< tabs/tab "Open Source" >}}
+Download the example `ttn-lw-stack-docker.yml` for {{% tts %}} Open Source <a href="ttn-lw-stack-docker-open-source.yml" download="ttn-lw-stack-docker.yml">here</a>.
+
+Download the example `docker-compose.yml` for {{% tts %}} Open Source <a href="docker-compose-open-source.yml" download="docker-compose.yml">here</a>.
+{{< /tabs/tab >}}
+{{< /tabs/container >}}
 
 Create a new folder where your deployment files will be placed. This guide assumes the following directory hierarchy:
 
@@ -37,31 +48,29 @@ We will configure Docker to run three services:
  
 ### SQL Database
 
-We need to configure an SQL database, so in this guide we'll use a single instance of [CockroachDB](https://www.cockroachlabs.com/). Make sure to find a recent tag of the [cockroachdb/cockroach image on Docker Hub](https://hub.docker.com/r/cockroachdb/cockroach/tags) and update it in the `docker-compose.yml` file. Make sure that the `volumes` are set up correctly so that the database is persisted on your server's disk.
+We need to configure an SQL database, so in this guide we'll use a single instance of [CockroachDB](https://www.cockroachlabs.com/). Make sure that the `volumes` are set up correctly so that the database is persisted on your server's disk.
 
-The simplest configuration for CockroachDB will look like this (remember to replace `latest` with a version tag in production):
+The simplest configuration for CockroachDB will look like this:
 
 {{< highlight yaml "linenos=table,linenostart=5" >}}
-{{< readfile path="/content/getting-started/installation/configuration/docker-compose.yml" from=5 to=13 >}}
+{{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=5 to=14 >}}
 {{< /highlight >}}
 
 > NOTE: It also possible (and even preferred) to use a managed SQL database. In this case, you will need to update the [`is.database-uri` configuration option]({{< ref src="/reference/configuration/identity-server/#database-options" >}}) to point to the address of the managed database.
 
 ### Redis
 
-We also need to configure [Redis](https://redis.io/). In this guide we'll use a single instance of Redis. Just as with the SQL database, find a recent tag of the [redis image on Docker Hub](https://hub.docker.com/_/redis?tab=tags) and update it in the `docker-compose.yml` file. Again, make sure that the `volumes` are set up correctly so that the datastore is persisted on your server's disk. Note that {{% tts %}} requires Redis version 5.0 or newer.
+We also need to configure [Redis](https://redis.io/). In this guide we'll use a single instance of Redis. Again, make sure that the `volumes` are set up correctly so that the datastore is persisted on your server's disk. Note that {{% tts %}} requires Redis version 5.0 or newer.
 
-The simplest configuration for Redis will look like this (remember to replace `latest` with a version tag in production):
+The simplest configuration for Redis will look like this:
 
 {{< highlight yaml "linenos=table,linenostart=28" >}}
-{{< readfile path="/content/getting-started/installation/configuration/docker-compose.yml" from=28 to=35 >}}
+{{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=28 to=37 >}}
 {{< /highlight >}}
 
 > NOTE: It also possible (and even preferred) to use a managed Redis database. In this case, you will need to update the [`redis.address` configuration option]({{< ref src="/reference/configuration/the-things-stack/#redis-options" >}}) to point to the address of the managed database.
 
 ### {{% tts %}}
-
-We need to configure Docker to pull and run {{% tts %}}. Below you see part the configuration of the `stack` service in the `docker-compose.yml` file. As with the databases, you need to find a recent tag of the [thethingsindustries/lorawan-stack image on Docker Hub](https://hub.docker.com/r/thethingsnetwork/lorawan-stack/tags) and update the `docker-compose.yml` file with that.
 
 #### Entrypoint and dependencies
 
@@ -83,8 +92,10 @@ The `ports` section exposes {{% tts %}}'s ports to the world. Port `80` and `443
 
 In the `environment` section, we configure the databases used by {{% tts %}}. We will set these to the CockroachDB and Redis instances that are defined in the `docker-compose.yml` above.
 
-{{< highlight yaml "linenos=table,linenostart=37" >}}
-{{< readfile path="/content/getting-started/installation/configuration/docker-compose.yml" from=37 to=83 >}}
+Here is an example `stack` configuration from the Enterprise version of `docker-compose.yml`:
+
+{{< highlight yaml "linenos=table,linenostart=39" >}}
+{{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=39 to=83 >}}
 {{< /highlight >}}
 
 > NOTE: If using managed databased, the `environment` ports need to be changed to the ports of the managed databases.
@@ -93,9 +104,9 @@ In the `environment` section, we configure the databases used by {{% tts %}}. We
 
 Once Docker starts {{% tts %}}, we need to specify configuration options for running {{% tts %}} in the `ttn-lw-stack-docker.yml` file. Let's have a look at the configuration options which are required.
 
-### License
+### License {{< distribution-inline "Enterprise" >}}
 
-First is a license file. {{% tts %}} requires a license, which can be purchased at the [products page](https://thethingsindustries.com/technology/pricing). This is specified in the `license` field, and can be either a `key` string, or a `file`path. See the [License Configuration Reference]({{< ref src="/reference/configuration/the-things-stack" >}}) for more information.
+First is a license file. {{% tts %}} Enterprise requires a license, which can be purchased at the [products page](https://thethingsindustries.com/technology/pricing). This is specified in the `license` field, and can be either a `key` string, or a `file`path. See the [License Configuration Reference]({{< ref src="/reference/configuration/the-things-stack" >}}) for more information.
 
 ### TLS
 
@@ -123,10 +134,10 @@ by the console client (see the `console` section). These tell {{% tts %}} where 
 
 >NOTE: Failure to correctly configure component URLs is a common problem that will prevent the stack from starting. Be sure to replace all instances of `thethings.example.com` with your domain name!
 
-Below is an example `ttn-lw-stack-docker.yml` file:
+Below is an example `ttn-lw-stack-docker.yml` file for the Enterprise stack:
 
 {{< highlight yaml "linenos=table" >}}
-{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker.yml" >}}
+{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" >}}
 {{< /highlight >}}
 
 > NOTE: Make note of the client secret, as it will be needed again when initializing {{% tts %}}.

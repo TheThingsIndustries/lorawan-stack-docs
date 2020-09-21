@@ -1,7 +1,7 @@
 ---
 title: "Claim ATECC608A Secure Elements"
 description: ""
-distribution: ["Self Hosted", "Cloud Hosted"]
+distribution: ["Enterprise", "Cloud"]
 ---
 
 The Things Industries and Microchip developed a security solution for LoRaWAN that enables secure key provisioning and secure cryptographic operations using secure elements.
@@ -16,8 +16,8 @@ This guide helps device makers to claim secure elements on The Things Industries
 
 1. ATECC608A-TNGLORA secure elements. [Product details](https://www.microchip.com/wwwproducts/en/ATECC608A-TNGLORA)
 2. Device security (manifest) file. You can obtain this from your [Microchip Direct order history](https://www.microchipdirect.com/orders)
-3. Access to The Things Industries Cloud Hosted. [Contact The Things Industries](mailto:cloud@thethingsindustries.com) to get onboarded
-4. An application in The Things Industries Cloud Hosted. [See instructions]({{< ref "/integrations/adding-applications" >}})
+3. Access to The Things Industries Cloud. [Contact The Things Industries](mailto:cloud@thethingsindustries.com) to get onboarded
+4. An application in The Things Industries Cloud. [See instructions]({{< ref "/integrations/adding-applications" >}})
 5. Your The Things Industries Join Server address. [See Join Server addresses]({{< ref "/getting-started/cloud-hosted/tti-join-server" >}})
 
 ## Login
@@ -43,4 +43,4 @@ Your secure elements are now claimed in your application. The secure elements ca
 
 Claiming the secure elements only creates devices on the Join Server: they are not registered on a Network Server or Application Server yet. You first need to register them on a Network Server and Application Server before you can activate the devices.
 
-[Learn how to activate devices on The Things Industries Cloud Hosted]({{< ref "/getting-started/cloud-hosted/tti-join-server/activate-devices-cloud-hosted" >}}).
+[Learn how to activate devices on The Things Industries Cloud]({{< ref "/getting-started/cloud-hosted/tti-join-server/activate-devices-cloud-hosted" >}}).

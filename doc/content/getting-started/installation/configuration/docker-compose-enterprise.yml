@@ -3,6 +3,7 @@ services:
 
   # If using CockroachDB:
   cockroach:
+    # In production, replace 'latest' with tag from https://hub.docker.com/r/cockroachdb/cockroach/tags
     image: cockroachdb/cockroach:latest
     command: start --http-port 26256 --insecure
     restart: unless-stopped
@@ -26,6 +27,7 @@ services:
   #     - "127.0.0.1:5432:5432"
 
   redis:
+    # In production, replace 'latest' with tag from https://hub.docker.com/_/redis?tab=tags
     image: redis:latest
     command: redis-server --appendonly yes
     restart: unless-stopped
@@ -35,6 +37,7 @@ services:
       - "127.0.0.1:6379:6379"
 
   stack:
+    # In production, replace 'latest' with tag from https://hub.docker.com/r/thethingsindustries/lorawan-stack/tags
     image: thethingsindustries/lorawan-stack:latest
     entrypoint: tti-lw-stack -c /config/ttn-lw-stack-docker.yml
     command: start

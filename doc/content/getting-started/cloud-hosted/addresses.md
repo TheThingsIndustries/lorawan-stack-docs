@@ -1,12 +1,12 @@
 ---
-title: "Cloud Hosted Addresses"
+title: "Cloud Addresses"
 description: ""
 weight: 10
 aliases: [/guides/cloud-hosted/addresses]
-distribution: ["Cloud Hosted"]
+distribution: ["Cloud"]
 ---
 
-The addresses where you can reach your The Things Industries Cloud Hosted network consist of the tenant ID, the cluster ID and `cloud.thethings.industries`.
+The addresses where you can reach your The Things Industries Cloud network consist of the tenant ID, the cluster ID and `cloud.thethings.industries`.
 
 You can update the examples below with your tenant ID and cluster ID by filling them here.
 
@@ -36,7 +36,7 @@ https://<span data-content="tenant-id"></span>.eu1.cloud.thethings.industries/oa
 
 To learn how to get started with the Console, see the [Console Getting Started Guide]({{< ref "/getting-started/console" >}}).
 
-Each cluster has a Console where you can manage gateways and end devices of that cluster. You can use any cluster with your Cloud Hosted account.
+Each cluster has a Console where you can manage gateways and end devices of that cluster. You can use any cluster with your Cloud account.
 
 The address of the Console includes both your tenant ID and the cluster ID:
 

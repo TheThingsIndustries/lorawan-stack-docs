@@ -1,7 +1,7 @@
 ---
 title: "Tenant APIs"
 description: ""
-distribution: ["Self Hosted", "Cloud Hosted"]
+distribution: ["Enterprise", "Cloud"]
 ---
  
 ## Authentication
