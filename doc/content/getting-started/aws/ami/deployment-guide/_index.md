@@ -150,4 +150,4 @@ The following parameters are exclusively meant for updating an existing deployme
 4. You can monitor the status of your deployment by navigating to **CloudFormation** > **\<your-stack-name\>** > **Events**.
 5. Once the required resources are successfully deployed, the state of the CloudFormation stack is updated to `CREATE_COMPLETE`.
 
-Upon completion of these steps, please head over to the [Post Deployment Configuration guide]({{< relref "post-deployment" >}})  to configure your deployment.
+Upon completion of these steps, please head over to the [Post Deployment Configuration guide]({{< relref "../post-deployment" >}})  to configure your deployment.
