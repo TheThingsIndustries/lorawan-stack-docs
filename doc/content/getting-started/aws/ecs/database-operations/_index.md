@@ -4,11 +4,11 @@ description: ""
 weight: 4
 ---
 
-This page describes the steps for performing database operations tasks on an AWS ECS deployment.
+This page describes the steps for performing database operations on an AWS ECS deployment.
 
 <!--more-->
 
-The `OpsRunTaskArguments` output of the stack deployed from the `5-2-ecs-ops` template contains the parameters needed to run (database) operations tasks. The value of this output contains:
+The `OpsRunTaskArguments` output of the stack deployed from the `5-2-ecs-ops` template contains the parameters needed to run (database) operations. The value of this output contains:
 
 ```
 TASK_DEFINITION CLUSTER_NAME SUBNET_ONE SUBNET_TWO SECURITY_GROUP

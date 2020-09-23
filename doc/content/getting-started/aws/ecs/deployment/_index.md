@@ -95,7 +95,7 @@ The template `3-1-security-group-rules` creates the security group rules for bot
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.9/3-1-security-group-rules.gen.template
 
-In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template asks for the IP address ranges that are allowed to connect to the different ports exposed by {{% tts %}}. The [architecture page]({{< relref "../architecture" >}} gives more information about these ports. For (public) deployments that should be accessible from anywhere on the internet, the defaults do not need to be changed.
+In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template asks for the IP address ranges that are allowed to connect to the different ports exposed by {{% tts %}}. The [architecture page]({{< relref "../architecture" >}}) gives more information about these ports. For (public) deployments that should be accessible from anywhere on the internet, the defaults do not need to be changed.
 
 # Load Balancer Listeners
 
@@ -157,7 +157,7 @@ In addition to the re-used parameters and the name of your SSH keypair (see [Pre
 
 > **NOTE:** `t3` instances [don't support ENI trunking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html#eni-trunking-supported-instance-types) that is required to run a larger number of containers on the instance.
 
-# Operations Tasks
+# Operations
 
 The `5-2-ecs-ops` template creates an ECS Task Definition that will be used for performing database operations such as initializing, migrating and cleaning.
 
@@ -165,7 +165,7 @@ The `5-2-ecs-ops` template creates an ECS Task Definition that will be used for 
 
 In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template asks for the Redis clusters to use. If you only deployed one Redis cluster, this is the `general` cluster. If you deployed a separate cluster for caching, select `cache` as the **Cache Cluster**.
 
-The **Ops Image** is the Docker image that you want to use for operations tasks. The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws` (replacing `3.x.y` with the latest version of {{% tts %}}).
+The **Ops Image** is the Docker image that you want to use. The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws` (replacing `3.x.y` with the latest version of {{% tts %}}).
 
 You can now run instances of this task definition to perform operations on the deployment.
 
@@ -178,11 +178,11 @@ Depending on the type of cluster you're deploying, you need to deploy either `5-
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.9/5-3a-ecs-is-service.gen.template
 
-Fill the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and the Redis clusters to use. The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws` (replacing `3.x.y` with the latest version of {{% tts %}}). When deploying to `FARGATE`, make sure to select [a valid combination CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), otherwise you'll get an error about "Invalid CPU or memory value specified" when you deploy the stack. We recommend to start with 2 instances.
+Fill the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and the Redis clusters to use. The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws` (replacing `3.x.y` with the latest version of {{% tts %}}). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you'll get an error about "Invalid CPU or memory value specified" when you deploy the stack. We recommend to start with 2 instances.
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.9/5-3b-ecs-external-is-proxy.gen.template
 
-Fill the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and the domain of the cluster that contains the Identity Server. The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-proxy` (replacing `3.x.y` with the latest version of {{% tts %}}). When deploying to `FARGATE`, make sure to select [a valid combination CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), otherwise you'll get an error about "Invalid CPU or memory value specified" when you deploy the stack. We recommend to start with 2 instances.
+Fill the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and the domain of the cluster that contains the Identity Server. The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-proxy` (replacing `3.x.y` with the latest version of {{% tts %}}). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you'll get an error about "Invalid CPU or memory value specified" when you deploy the stack. We recommend to start with 2 instances.
 
 # Tenant Billing Server (optional)
 
@@ -190,7 +190,7 @@ In a multi-tenant deployment where tenants are billed through Stripe, you'll nee
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.9/5-3c-ecs-tbs-service.gen.template
 
-Fill the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and the Redis clusters to use. The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws` (replacing `3.x.y` with the latest version of {{% tts %}}). When deploying to `FARGATE`, make sure to select [a valid combination CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), otherwise you'll get an error about "Invalid CPU or memory value specified" when you deploy the stack.
+Fill the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and the Redis clusters to use. The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws` (replacing `3.x.y` with the latest version of {{% tts %}}). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you'll get an error about "Invalid CPU or memory value specified" when you deploy the stack.
 
 # Routing Services
 
@@ -200,7 +200,7 @@ The `5-4-ecs-services` template creates all other routing services.
 
 Fill the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and the Redis clusters to use. Indicate whether the services should use the Identity Server in the current cluster, or an external one through the proxy.
 
-For all services: the official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws` (replacing `3.x.y` with the latest version of {{% tts %}}). When deploying to `FARGATE`, make sure to select [a valid combination CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), otherwise you'll get an error about "Invalid CPU or memory value specified" when you deploy the stack. We recommend to start with 2 instances of each service. For some services it is not possible (yet) to deploy more than one instance.
+For all services: the official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws` (replacing `3.x.y` with the latest version of {{% tts %}}). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you'll get an error about "Invalid CPU or memory value specified" when you deploy the stack. We recommend to start with 2 instances of each service. For some services it is not possible (yet) to deploy more than one instance.
 
 # Monitoring (optional, but recommended)
 
@@ -210,7 +210,7 @@ We strongly recommend to monitor your deployment with [Prometheus](https://prome
 
 Fill the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and information about the cluster. 
 
-The official image is `docker.io/thethingsindustries/lorawan-stack:3.x-aws-prometheus` (replacing `3.x` with the latest minor version of {{% tts %}}). When deploying to `FARGATE`, make sure to select [a valid combination CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), otherwise you'll get an error about "Invalid CPU or memory value specified" when you deploy the stack. Prometheus typically needs CPU=1024 and Memory=2048.
+The official image is `docker.io/thethingsindustries/lorawan-stack:3.x-aws-prometheus` (replacing `3.x` with the latest minor version of {{% tts %}}). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you'll get an error about "Invalid CPU or memory value specified" when you deploy the stack. Prometheus typically needs CPU=1024 and Memory=2048.
 
 > **NOTE:** By default, Prometheus stores metrics only for a limited time. You can optionally enable long-term storage of metrics in an S3 bucket. This is done using a [Thanos](https://thanos.io/) sidecar. We do not support querying from long-term storage yet.
 
@@ -222,7 +222,7 @@ The template `5-6-ecs-proxy` deploys the proxy that routes incoming gRPC and HTT
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.9/5-6-ecs-proxy.gen.template
 
-The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-proxy` (replacing `3.x` with the latest minor version of {{% tts %}}). When deploying to `FARGATE`, make sure to select [a valid combination CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), otherwise you'll get an error about "Invalid CPU or memory value specified" when you deploy the stack. We recommend to start with 2 instances.
+The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-proxy` (replacing `3.x` with the latest minor version of {{% tts %}}). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you'll get an error about "Invalid CPU or memory value specified" when you deploy the stack. We recommend to start with 2 instances.
 
 # Let's Encrypt Certificates (optional)
 
@@ -230,7 +230,7 @@ Unfortunately not all gateways are able to connect when using AWS-issued certifi
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.9/5-7a-certs-le.gen.template
 
-The Docker image we'll use `docker.io/thethingsindustries/aws-certbot-dns-route53:latest`. On the initial deployment, leave the **Existing Certificate ARN** blank.
+The Docker image we'll use is `docker.io/thethingsindustries/aws-certbot-dns-route53:latest`. On the initial deployment, leave the **Existing Certificate ARN** blank.
 
 We need to manually request the certificates for the first time. In the CloudFormation **Output** window, copy the value for the output `RunCertbotTaskCLICommand` and run that from a CLI.
 

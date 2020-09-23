@@ -13,7 +13,8 @@ Before you can start the deployment, you will need to make sure that you have:
 - An AWS account with billing enabled.
 - An SSH keypair registered in the AWS region of choice.
 - A domain name with a hosted zone in AWS Route 53. For multi-tenant deployments, you need to be able to add a wildcard subdomain under this domain.
-- A LoRa Alliance NetID and DevAddr block. For development and testing it is possible ot use NetID `000000` and DevAddr block `00000000/6`
+- A username and password for an SMTP server for sending emails, or a Sendgrid API key with "Mail Send" rights.
+- A LoRa Alliance NetID and DevAddr block. For development and testing it is possible to use NetID `000000` and DevAddr block `00000000/6`
 - A license key for {{% tts %}}.
 - Configuration and Certificates for Backend Interfaces interop (optional).
 - Configuration and Certificates for Packet Broker peering (optional).
