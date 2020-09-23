@@ -1,0 +1,44 @@
+<div class="field">
+  <label class="label">Tenant ID</label>
+  <div class="control">
+    <input class="input" type="text" data-content="tenant-id" placeholder="tenant id">
+  </div>
+</div>
+<div class="field">
+  <label class="label">Cluster</label>
+  <div class="control">
+    <div class="select">
+      <select data-content="cluster-id">
+        <option value="eu1" selected>Europe 1 (Ireland)</option>
+        <option value="nam1">North America 1 (California, USA)</option>
+        <option value="au1">Australia 1 (Sydney, Australia)</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('load', function(e) {
+    var $tenantIDInput = document.querySelector('input[data-content="tenant-id"]');
+    var $clusterIDInput = document.querySelector('select[data-content="cluster-id"]');
+    var query = new URLSearchParams(window.location.search);
+    $tenantIDInput.value = query.has('tenant-id') ? query.get('tenant-id') : '';
+    if (query.has('cluster-id')) {
+      $clusterIDInput.value = query.get('cluster-id');
+    }
+    var $tenantIDSpans = document.querySelectorAll('span[data-content="tenant-id"]');
+    var $clusterIDSpans = document.querySelectorAll('span[data-content="cluster-id"]');
+    function syncValue($input, defaultValue, $spans) {
+      var value = $input.value ? $input.value : defaultValue;
+      $spans.forEach(function($span){ $span.innerText = value; });
+    }
+    syncValue($tenantIDInput, '<tenant-id>', $tenantIDSpans);
+    syncValue($clusterIDInput, '<cluster-id>', $clusterIDSpans);
+    $tenantIDInput.addEventListener('keyup', function(e) {
+      syncValue(e.target, '<tenant-id>', $tenantIDSpans);
+    });
+    $clusterIDInput.addEventListener('change', function(e) {
+      syncValue(e.target, '<cluster-id>', $clusterIDSpans);
+    });
+  });
+</script>
