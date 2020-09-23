@@ -32,7 +32,6 @@ clean.internal:
 clean.public:
 	rm -rf $(PUBLIC_DEST)
 
-<<<<<<< HEAD
 .PHONY: build.internal
 build.internal: $(INTERNAL_DEST) deps
 	$(HUGO) -d $(INTERNAL_DEST)
