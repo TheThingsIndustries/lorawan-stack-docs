@@ -1,4 +1,4 @@
-# Copyright © 2019 The Things Network Foundation, The Things Industries B.V.
+# Copyright © 2020 The Things Network Foundation, The Things Industries B.V.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -32,6 +32,7 @@ clean.internal:
 clean.public:
 	rm -rf $(PUBLIC_DEST)
 
+<<<<<<< HEAD
 .PHONY: build.internal
 build.internal: $(INTERNAL_DEST) deps
 	$(HUGO) -d $(INTERNAL_DEST)

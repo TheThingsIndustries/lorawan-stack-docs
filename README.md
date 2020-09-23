@@ -15,8 +15,6 @@ The Things Stack Documentation development tooling uses [Go](https://golang.org/
 In order to build the documentation site with the right theme, you need to run
 `make deps` from time to time. This will install [Yarn](https://yarnpkg.com/) on Mac and Unix systems if it is not already installed.
 
->Note: as a workaround for [this](https://github.com/gohugoio/hugo/issues/7083), `make deps` also pulls the latest version of [frequency-plans.yml](https://github.com/TheThingsNetwork/lorawan-frequency-plans/).
-
 ## Running a Development Server
 
 You can start a development server with live reloading by running
