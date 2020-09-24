@@ -2,6 +2,7 @@
 title: "Post Deployment Configuration"
 description: ""
 weight: 2
+aliases: "/guides/aws/ami/after-deploy"
 ---
 
 This section provides the information necessary to get started with The Things Enterprise Stack after it is deployed via [AWS Marketplace](https://aws.amazon.com/marketplace/pp/The-Things-Industries-The-Things-Enterprise-Stack/B081HZKDJ4) using AWS CloudFormation.

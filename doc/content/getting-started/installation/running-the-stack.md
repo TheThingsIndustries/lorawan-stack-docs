@@ -2,8 +2,6 @@
 title: "Running The Things Enterprise Stack"
 description: ""
 weight: 4
-draft: true
-
 ---
 
 Now that all configuration is done, we're ready to initialize {{% tts %}} and start it. Open a terminal prompt in the same directory as your `docker-compose.yml` file.
@@ -50,7 +48,9 @@ $ docker-compose run --rm stack is-db create-oauth-client \
   --redirect-uri "code"
 ```
 
-We do the same for the console. For `--secret`, make sure to enter the same value as you set for `console.oauth.client-secret` in the [Configuration]({{< relref "configuration" >}}) step.
+We do the same for the console. 
+
+> For `--secret`, make sure to enter the same value as you set for `console.oauth.client-secret` in the [Configuration]({{< relref "configuration" >}}) step.
 
 ```bash
 $ docker-compose run --rm stack is-db create-oauth-client \

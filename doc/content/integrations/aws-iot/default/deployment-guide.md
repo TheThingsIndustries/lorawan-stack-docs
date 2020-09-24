@@ -23,6 +23,7 @@ Enter a name, like **AWS IoT integration**, and grant at least the following ind
 - View device keys in application
 - Create devices in application
 - Edit device keys in application
+- Edit basic application settings
 - Write downlink application traffic
 - Read application traffic (uplink and downlink)
 
@@ -41,13 +42,14 @@ Click **Create API key**, copy the key and store it in a safe place. You need th
 
 ### Settings
 
-The **Stack name** is the unique name identifying the integration in your AWS account. The stack name is case sensitive. You need this stack name later.
+The **Stack name** is the unique name identifying the integration in your AWS account.
 
 The parameters configure the integration:
 
-- **Principal Account ID** (only in Self Hosted): AWS Account ID that The Things Enterprise Stack authenticates with.
+- **Principal Account ID** (only in Self Hosted): AWS Account ID that The Things Stack authenticates with.
 - **Thing Type Name**: The unique AWS IoT Core thing type name for this integration.
-- **Cluster Address**: The domain name of your {{% tts %}} deployment.
+- **Thing Shadow Metrics**: Enable or disable updating the thing shadow with metrics.
+- **Cluster Address**: The cluster address of your {{% tts %}} deployment. See [Cloud Hosted Addresses]({{< relref "/getting-started/cloud-hosted/addresses" >}}).
 - **Application ID**: The application ID for which you configure the integration.
 - **Application API Key**: The application API key that you generated before.
 
@@ -61,28 +63,6 @@ Click **Create stack**.
 
 > Creating all resources can take up to five minutes ☕
 
-When the deployment is done, you'll see the status `CREATE_COMPLETE`. Go to the **Outputs** tab and copy the value of **CrossAccountRoleArn**. You need this in the next step.
-
-{{< figure src="../cloudformation-outputs.png" alt="AWS CloudFormation outputs" >}}
-
-## Enable Integration
-
-In your application in {{% tts %}} Console, select the **Pub/Subs** submenu from the **Integrations** side menu. Clicking on the **+ Add Pub/Sub** button will open the Pub/Sub creation screen.
-
-Give your AWS IoT integration and **ID** (e.g. `aws-iot`) and select **AWS IoT** as provider.
-
-Make sure that **Use default integration** is checked.
-
-Select your **AWS region**. This must be the same as the AWS region where you deployed the CloudFormation template.
-
-Enter the **CloudFormation stack name**. This must be the same as the stack name that you entered in the previous step. Note that the stack name is case sensitive.
-
-Paste the **Cross-account role ARN** from the previous step (the CloudFormation output value of **CrossAccountRoleArn**).
-
-{{< figure src="../enable-integration.png" alt="Enable integration" >}}
-
-Click **Add Pub/Sub**.
-
-Any errors connecting to your AWS IoT Core endpoint are reported in the **Data** view of your application in {{% tts %}} Console.
+When the deployment is done, you'll see the status `CREATE_COMPLETE`.
 
 > Congratulations 🎉 You have now setup the AWS IoT integration for {{% tts %}}!
