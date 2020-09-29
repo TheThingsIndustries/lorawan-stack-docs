@@ -1,0 +1,32 @@
+{{ define "main" }}
+{{ if eq .Page.File.Ext "html" }}
+{{ .Content }}
+{{ else }}
+<h1 class="title is-size-2">{{ .Title }}</h1>
+
+<div class="content">
+{{ with .Params.distributions }}
+  {{ $distributions := . }}
+  {{ if ( not ( reflect.IsSlice . ) ) }}
+    {{ $distributions = slice $distributions }}
+  {{ end }}
+  {{ partial "distributions" (dict "distributions" $distributions) }}
+{{ end }}
+{{ .Content }}
+</div>
+{{ end }}
+
+{{ if not (and .Pages (not (eq .Parent .FirstSection))) }}
+{{ partial "feedback" . }}
+{{ end }}
+
+{{ partial "prev-next-in-section.html" . }}
+
+{{ if and .Pages (not (eq .Parent .FirstSection)) }}
+{{ partial "pages-cards.html" .Pages }}
+{{ end }}
+{{ end }}
+
+{{ define "sidebar" }}
+{{ partial "section-sidebar.html" . }}
+{{ end }}
