@@ -12,6 +12,30 @@
 #    - <Alt term 1>
 #    - <Alt term 2>
 
+- term: Network Session Encryption Key
+  abbr:
+    - NwkSEncKey
+  description: A network session key used to encrypt and decrypt MAC commands transmitted on FPort 0, which contain no application payload. When a LoRaWAN 1.1 capable device connects to a LoRaWAN 1.0x Network Server, the value of FNwkSIntKey is used as the value of SNwkSIntKey and NwkSEncKey.
+  link: https://lora-alliance.org/sites/default/files/2018-04/lorawantm_specification_-v1.1.pdf#page=50
+
+- term: Serving Network Session Integrity Key
+  abbr:
+    - SNwkSIntKey
+  description: A network session key used to calculate all of the message integrity code for downlink messages and half of the message integrity code for uplink messages. When a LoRaWAN 1.1 capable device connects to a LoRaWAN 1.0x Network Server, the value of FNwkSIntKey is used as the value of SNwkSIntKey and NwkSEncKey.
+  link: https://lora-alliance.org/sites/default/files/2018-04/lorawantm_specification_-v1.1.pdf#page=50
+
+- term: Forwarding Network Session Integrity Key
+  abbr:
+    - FNwkSIntKey
+  description: A network session key used to calculate all or half of the message integrity code for uplink messages. When a LoRaWAN 1.1 capable device connects to a LoRaWAN 1.0x Network Server, the value of FNwkSIntKey is used as the value of SNwkSIntKey and NwkSEncKey.
+  link: https://lora-alliance.org/sites/default/files/2018-04/lorawantm_specification_-v1.1.pdf#page=50
+
+- term: Network Key
+  abbr:
+    - NwkKey
+  description: A device specific encryption key used to derive the FNwkSIntKey, SNwkSIntKey, NwkSEncKey in LoRaWAN 1.1. When a LoRaWAN 1.1 capable device connects to a LoRaWAN 1.0x Network Server which does not support dual root keys (NwkKey and AppKey), the NwkKey value is used as the AppKey value.
+  link: https://lora-alliance.org/sites/default/files/2018-04/lorawantm_specification_-v1.1.pdf#page=48
+
 - term: Data Rate Offset
   description: The Data Rate Offset sets the offset between the uplink data rate and the downlink data rate used to communicate with the End Device during the first reception slot (RX1).
   link: https://lora-alliance.org/sites/default/files/2020-06/rp_2-1.0.1.pdf#page=27
@@ -215,7 +239,7 @@
     - NwkSKey
 
 - term: Application Key
-  description: A device specific encryption key used during OTAA to generate the AppSKey (in LoRaWAN 1.1x) or both the NwkSKey and AppSKey in LoRaWAN 1.0x. This is usually pre provisioned by the device manufacturer, but can also be created by the user.
+  description: A device specific encryption key used during OTAA to derive the AppSKey (in LoRaWAN 1.1x) or both the NwkSKey and AppSKey in LoRaWAN 1.0x. This is usually pre provisioned by the device manufacturer, but can also be created by the user.
   link: https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page=33
   abbr:
     - AppKey
