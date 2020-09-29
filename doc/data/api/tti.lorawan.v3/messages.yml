@@ -13,6 +13,71 @@ ApplicationAPIKey:
     rules:
       min_len: 1
     default: ""
+AuthenticationProvider:
+  name: AuthenticationProvider
+  fields:
+  - name: ids
+    message:
+      name: AuthenticationProviderIdentifiers
+    rules:
+      required: true
+    default: {}
+  - name: created_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
+  - name: updated_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
+  - name: name
+    type: string
+    rules:
+      max_len: 50
+    default: ""
+  - name: allow_registrations
+    type: bool
+    default: false
+  - name: configuration
+    message:
+      name: AuthenticationProvider.Configuration
+    default: {}
+AuthenticationProvider.Configuration:
+  name: AuthenticationProvider.Configuration
+  fields:
+  - name: oidc
+    message:
+      name: AuthenticationProvider.OIDC
+    default: {}
+  oneofs:
+  - name: provider
+    field_names:
+    - oidc
+AuthenticationProvider.OIDC:
+  name: AuthenticationProvider.OIDC
+  fields:
+  - name: client_id
+    type: string
+    default: ""
+  - name: client_secret
+    type: string
+    default: ""
+  - name: provider_url
+    type: string
+    rules:
+      uri: true
+    default: ""
+AuthenticationProviderIdentifiers:
+  name: AuthenticationProviderIdentifiers
+  fields:
+  - name: provider_id
+    type: string
+    rules:
+      max_len: 36
+      pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+    default: ""
 Billing:
   name: Billing
   fields:
@@ -247,6 +312,35 @@ CreateTenantRequest:
       package: ttn.lorawan.v3
       name: User
     default: {}
+ExternalUser:
+  name: ExternalUser
+  fields:
+  - name: user_ids
+    message:
+      package: ttn.lorawan.v3
+      name: UserIdentifiers
+    rules:
+      required: true
+    default: {}
+  - name: provider_ids
+    message:
+      name: AuthenticationProviderIdentifiers
+    rules:
+      required: true
+    default: {}
+  - name: created_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
+  - name: updated_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
+  - name: external_id
+    type: string
+    default: ""
 GetTenantIdentifiersForEndDeviceEUIsRequest:
   name: GetTenantIdentifiersForEndDeviceEUIsRequest
   fields:
