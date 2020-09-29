@@ -17,38 +17,43 @@ HUGO = $(GO) run -tags extended github.com/gohugoio/hugo
 YARN_DEPS = doc/themes/the-things-stack/node_modules
 FREQUENCY_PLAN_URL = https://raw.githubusercontent.com/TheThingsNetwork/lorawan-frequency-plans/master/frequency-plans.yml
 FREQUENCY_PLAN_DEST = doc/data/frequency-plans.yml
-PUBLIC_DEST = public
-INTERNAL_DEST = internal
+DOC_ROOT = doc
+PUBLIC_DEST = ../public # Relative to DOC_ROOT
+INTERNAL_DEST = ../internal # Relative to DOC_ROOT
 ENVIRONMENT = gh-pages
+HUGO_BASE_URL = thethingsindustries.com/docs
 
 .PHONY: default
-default: build.internal
+default: server
 
 .PHONY: clean.internal
 clean.internal:
-	rm -rf $(INTERNAL_DEST)
+	cd $(DOC_ROOT) && rm -rf $(INTERNAL_DEST)
 
 .PHONY: clean.public
 clean.public:
-	rm -rf $(PUBLIC_DEST)
+	cd $(DOC_ROOT) && rm -rf $(PUBLIC_DEST)
+
+.PHONY: clean.deps
+clean.deps:
+	rm -rf $(FREQUENCY_PLAN_DEST)
 
 .PHONY: build.internal
-build.internal: $(INTERNAL_DEST) deps
-	$(HUGO) -d $(INTERNAL_DEST)
+build.internal: deps
+	$(HUGO) --source $(DOC_ROOT) --destination $(INTERNAL_DEST)
 
 .PHONY: build.public
-build.public: $(PUBLIC_DEST) deps
-	$(HUGO) -s "./doc" -d $(PUBLIC_DEST) -b $(HUGO_BASE_URL) --environment $(ENVIRONMENT)
+build.public: deps
+	$(HUGO) --source $(DOC_ROOT) --destination $(PUBLIC_DEST) --baseURL $(HUGO_BASE_URL) --environment $(ENVIRONMENT)
 
 .PHONY: server
 server: deps
-	$(HUGO) server -s "./doc" --environment $(ENVIRONMENT)
+	$(HUGO) server -s $(DOC_ROOT) --environment $(ENVIRONMENT)
 
 .PHONY: deps
-deps: frequency-plan-deps | $(YARN_DEPS)
+deps: $(FREQUENCY_PLAN_DEST) | $(YARN_DEPS)
 
-.PHONY: frequency-plan-deps
-frequency-plan-deps:
+$(FREQUENCY_PLAN_DEST):
 	curl -o $(FREQUENCY_PLAN_DEST) $(FREQUENCY_PLAN_URL)
 
 $(YARN_DEPS):

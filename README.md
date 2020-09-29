@@ -18,16 +18,16 @@ In order to build the documentation site with the right theme, you need to run
 ## Running a Development Server
 
 You can start a development server with live reloading by running
-`make server`. This command will print the address of the server.
+`make` or `make server`. This command will print the address of the server.
 
 ## Building the Documentation for Github Pages
 
-The documentation site can be built for Github Pages by running `make build-public`. This will
+The documentation site can be built for Github Pages by running `make build.public`. This will
 output the site to `public`.
 
 ## Building the Documentation for Internal (Offline) Use
 
-The documentation site can be built for internal (offline) use by running `make build` or `make build-internal`. This will
+The documentation site can be built for internal (offline) use by running `make build.internal`. This will
 output the site to `internal`.
 
 ## Style Guidelines
