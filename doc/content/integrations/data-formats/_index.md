@@ -118,6 +118,15 @@ The JSON uplink messages use the following format:
       "frequency": "868300000",              // Frequency (Hz)
     },
     "received_at": "2020-02-12T15:15..."     // ISO 8601 UTC timestamp at which the uplink has been received by the Network Server
+    "consumed_airtime": "0.056576s",         // Time-on-air, calculated by the Network Server using payload size and transmission settings
+    "locations": {                           // End device location metadata
+      "user": {
+        "latitude": 37.97155556731436,       // Location latitude
+        "longitude": 23.72678801175413,      // Location longitude
+        "altitude": 10,                      // Location altitude
+        "source": "SOURCE_REGISTRY"          // Location source. SOURCE_REGISTRY is the location from the Identity Server.
+      }
+    }
   }
   "simulated": true,                         // Signals if the message is coming from the Network Server or is simulated.
 }
@@ -177,6 +186,15 @@ The JSON uplink messages use the following format:
       "frequency" : "868300000",
       "timestamp" : 2463457000,
       "time" : "2020-02-12T15:15:45.787Z"
+    },
+    "consumed_airtime": "0.056576s",
+    "locations": {
+      "user": {
+        "latitude": 37.97155556731436,
+        "longitude": 23.72678801175413,
+        "altitude": 10,
+        "source": "SOURCE_REGISTRY"
+      }
     },
     "received_at" : "2020-02-12T15:15:45.789585559Z"
   }
