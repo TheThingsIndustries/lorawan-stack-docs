@@ -49,6 +49,8 @@ For a standard deployment on `thethings.example.com`, all you need is:
 $ ttn-lw-cli use thethings.example.com [--fetch-ca] [--user] [--overwrite]
 ```
 
+>NOTE: On Windows, use `ttn-lw-cli.exe` instead of `ttn-lw-cli`.
+
 This will generate and save the required CLI config file. By default, the file is saved on the current directory, use the `--user` to save it under the user config directory.
 
 If the deployment is using a CA that is not already trusted by your system, use the `--fetch-ca` flag to also connect to the server and retrieve the CA required for establishing secure communication.
@@ -72,6 +74,12 @@ join-server-grpc-address: 'thethings.example.com:8884'
 device-claiming-server-grpc-address: 'thethings.example.com:8884'
 device-template-converter-grpc-address: 'thethings.example.com:8884'
 qr-code-generator-grpc-address: 'thethings.example.com:8884'
+```
+
+If you are using an `https` port other than `443`, you need to specify that port, e.g.:
+
+```yaml
+oauth-server-address: 'https://thethings.example:8885/oauth'
 ```
 
 If your deployment uses a custom certificate authority, you'll need to add:
@@ -102,4 +110,12 @@ For `bash`, this directory is typically `/etc/bash_completion.d/`:
 
 ```bash
 $ sudo cp ./ttn-lw-cli-autocomplete /etc/bash_completion.d/
+```
+
+Generating and sourcing an auto-completion PowerShell script on Windows is slightly modified:
+
+```bash
+$ ttn-lw-cli.exe complete --shell powershell --executable ttn-lw-cli.exe > ttn-lw-cli-autocomplete.ps1
+
+$ . ./ttn-lw-cli-autocomplete.ps1
 ```
