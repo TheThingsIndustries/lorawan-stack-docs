@@ -51,7 +51,7 @@ server: deps
 	$(HUGO) server -s $(DOC_ROOT) --environment $(ENVIRONMENT)
 
 .PHONY: deps
-deps: $(FREQUENCY_PLAN_DEST) | $(YARN_DEPS)
+deps: hooks $(FREQUENCY_PLAN_DEST) | $(YARN_DEPS)
 
 $(FREQUENCY_PLAN_DEST):
 	curl -o $(FREQUENCY_PLAN_DEST) $(FREQUENCY_PLAN_URL)
@@ -62,3 +62,12 @@ $(YARN_DEPS):
 	    curl -o- -L https://yarnpkg.com/install.sh | bash;\
 	fi
 	yarn --cwd doc/themes/the-things-stack/
+
+.PHONY: hooks
+hooks:
+ifeq (,$(wildcard .git/hooks/commit-msg))
+	go run .hooks/install-hooks.go
+endif
+
+.PHONY: init
+init: deps

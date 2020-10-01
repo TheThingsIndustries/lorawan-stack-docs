@@ -15,6 +15,14 @@ The Things Stack Documentation development tooling uses [Go](https://golang.org/
 In order to build the documentation site with the right theme, you need to run
 `make deps` from time to time. This will install [Yarn](https://yarnpkg.com/) on Mac and Unix systems if it is not already installed.
 
+## Getting Started
+
+Install dependencies and tooling to help you comply with our git style guidelines by running
+
+```
+$ make init
+```
+
 ## Running a Development Server
 
 You can start a development server with live reloading by running
