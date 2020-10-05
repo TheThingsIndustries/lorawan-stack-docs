@@ -46,6 +46,10 @@ The `1-2-bastion` template will deploy an EC2 instance in one of the public subn
 
 In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template asks for the **Instance Type** you want to use. A small instance is typically fine, since it will only be used to provide access. The **SSH Key Name** is the name of the SSH keypair you created before (see [Prerequisites]({{< relref "../prerequisites" >}})). The IPv4 and IPv6 ranges can be used to configure the Security Group rules that allow external access to this instance.
 
+# Opsgenie Alarms (optional)
+
+The `1-3-opsgenie.py` will deploy an SNS Topic and a Subscription to receive AWS CloudWatch alarms and forward it to your Opsgenie server. An Opsgenie CloudWatch API Key is necessary. Once this is deployed, you can enable alerting that's configured for particular resources.
+
 # Aurora Database
 
 The `2-1-db-aurora-master` and `2-2-db-aurora-replica` templates together create a highly available RDS Aurora PostgreSQL cluster. The template `2-1-db-aurora-master` creates a database cluster with a single master instance. The template `2-2-db-aurora-replica` can be deployed multiple times to deploy additional read-only replicas. See the [architecture page]({{< relref "../architecture" >}}) for more information.
