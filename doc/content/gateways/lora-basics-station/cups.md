@@ -41,7 +41,7 @@ Enter the following in your gateway as CUPS Server Address: `https://<server-add
 
 ### CUPS Server Certificate / CUPS Trust
 
-This is the [CA certificate](https://en.wikipedia.org/wiki/Certificate_authority) which secures your domain. A `.pem` file containing common certificates is available in the [Root Certificates Reference]({{< ref src="/reference/root-certificates" >}}).
+This is the [CA certificate](https://en.wikipedia.org/wiki/Certificate_authority) which secures your domain. A `.pem` file containing common certificates is available in the [Root Certificates Reference]({{< ref "/reference/root-certificates" >}}).
 
 Upload the `.pem` file in your gateway as the CUPS Server Certificate / CUPS Trust.
 
