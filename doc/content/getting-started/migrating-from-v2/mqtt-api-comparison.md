@@ -77,4 +77,4 @@ weight: 70
 
 [TTI V2 MQTT API Documentation](https://www.thethingsnetwork.org/docs/applications/mqtt/api.html)
 
-[TTS V3 MQTT API Documentation](https://enterprise.thethingsstack.io/v3.8.1/integrations/mqtt/)
+[TTS V3 MQTT API Documentation](https://enterprise.thethingsstack.io/integrations/mqtt/)
