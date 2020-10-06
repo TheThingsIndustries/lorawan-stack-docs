@@ -11,6 +11,8 @@ To import devices, use the `devices.json` file you created in the previous step.
 
 {{< tabs/tab "Console" >}}
 
+### Import devices via the Console {{< new-in-version "3.9.3" >}}
+
 Open the application you created and click the button **Import end devices**
 
 {{< figure src="../import-end-devices.png" alt="import devices" >}}
@@ -28,6 +30,7 @@ If the import was successful, your devices are added to the list of end-devices 
 {{< /tabs/tab >}}
 
 {{< tabs/tab "CLI" >}}
+### Import devices via the CLI
 
 You need the latest version of `ttn-lw-cli`, the CLI for {{% tts %}}.
 
