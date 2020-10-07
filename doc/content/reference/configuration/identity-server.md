@@ -136,6 +136,12 @@ By default users can create applications, gateways, organizations and OAuth clie
 - `is.user-rights.create-gateways`: Allow non-admin users to create gateways in their user account
 - `is.user-rights.create-organizations`: Allow non-admin users to create organizations in their user account
 
+## Gateway Secrets Encryption Options
+
+{{< new-in-version "3.10" >}}
+
+- `is.gateways.encryption-key-id`: ID of the key used to encrypt gateway secrets at rest.
+
 ## Tenant Administration Options {{< distributions-inline "Cloud" "Enterprise" >}}
 
 In multi-tenant deployments, tenants are managed with "tenant admin keys". These keys need to be configured in the Identity Server.
