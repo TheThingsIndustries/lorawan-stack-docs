@@ -128,6 +128,29 @@ services:
     image: 'thethingsnetwork/lorawan-stack:<the tag>'
 ```
 
+### Line Breaks
+
+In long command line examples or other code snippets, use the following guidelines:
+
+- If a line is longer than 80 columns, try to find a "natural" break
+- If a line is longer than 120 columns, insert a line break
+- In very special cases, longer lines are tolerated
+
+For example:
+
+```bash
+$ curl --location --header 'Authorization: Bearer NNSXS.XXXXXXXXX' --header 'Accept: application/json' \
+     --header 'Content-Type: application/json' --request POST 'https://thethings.example.com/api/v3/events' \
+     --data-raw '{
+    "identifiers":[{
+        "device_ids":{
+            "device_id":"dev1",
+            "application_ids":{"application_id":"app1"}
+        }
+    }]
+}'
+```
+
 ### Referencing Files
 
 It is also possible to host source code (or any text file) and display it using shortcodes. For example:

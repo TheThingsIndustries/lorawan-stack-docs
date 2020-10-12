@@ -96,6 +96,10 @@ Please respect the following guidelines for content in our documentation site. A
   - `bash` for CLI examples. Prefix commands with `$ `. Wrap strings with double quotes `""` (except when working with JSON, which already uses double quotes).
   - Wrap large CLI output with `<details><summary>Show CLI output</summary> ... output here ... </details>`.
   - `yaml` (not `yml`) for YAML. Wrap strings with single quotes `''` (because of frequent Go templates that use double quotes).
+- In long command line examples or other code snippets, use the following guidelines:
+  - If a line is longer than 80 columns, try to find a "natural" break
+  - If a line is longer than 120 columns, insert a line break
+  - In very special cases, longer lines are tolerated
 
 ## Legal
 
