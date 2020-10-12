@@ -67,9 +67,13 @@ Make sure that commits are scoped to something meaningful and could potentially 
 
 The body may contain a more detailed description of the commit, explaining what it changes and why. The "how" is less relevant, as this should be obvious from the diff.
 
+## Creating New Documentation
+
+Run `make new <path>` to create a new documentation section from the [template](doc/archetypes/section-bundle/_index.md) at `path`. For example, `make new getting-started/hello` will create a section in `getting-started/hello`.
+
 ## Style Guidelines
 
-Please respect the following guidelines for content in our documentation site. A copy and paste template for creating new documentation can be found [here](doc/content/example-template).
+Please respect the following guidelines for content in our documentation site.
 
 - Use the `{{< new-in-version "3.8.5" >}}` shortcode to tag documentation for features added in a particular version. For documentation that targets `master`, that's the next patch bump, e.g `3.8.x`. For documentation targeting `develop` that's the next minor bump, e.g `3.x.0`.
 - The title of a doc page is already rendered by the build system as a h1, don't add an extra one.
