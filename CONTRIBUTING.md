@@ -67,10 +67,30 @@ Make sure that commits are scoped to something meaningful and could potentially 
 
 The body may contain a more detailed description of the commit, explaining what it changes and why. The "how" is less relevant, as this should be obvious from the diff.
 
+## Distributions
+
+The Things Stack docs cover all flavors of The Things Stack:
+
+- The Things Stack Cloud
+- The Things Stack Dedicated Cloud
+- The Things Stack Marketplace Launcher
+- The Things Stack Enterprise
+- The Things Stack Open Source
+- The Things Network
+
+Available distributions can be printed using `{{< distributions-list >}}` and are stored in [`doc/data/distributions.yml`](./doc/data/distributions.yml).
+
+Mark documentation that applies only to a specific distribution in one of the following ways:
+
+- Use the Front Matter `distributions` element to add a list of distributions, i.e `distribution: ["Enterprise", "Cloud"]`. This will mark the page in the parent's table of contents, and will produce a notification on the page
+- Use the `{{< distribution "Enterprise" "Cloud" >}}` shortcode to produce a notification on the page
+- Use the `{{< distributions-inline "Enterprise" >}}` shortcode to produce an inline notification. This is especially useful for tables and lists
+
 ## Style Guidelines
 
 Please respect the following guidelines for content in our documentation site. A copy and paste template for creating new documentation can be found [here](doc/content/example-template).
 
+- Use the [`distributions`](#distributions) Front Matter element or shortcodes to mark documentation that applies to particular distributions of The Things Stack.
 - Use the `{{< new-in-version "3.8.5" >}}` shortcode to tag documentation for features added in a particular version. For documentation that targets `master`, that's the next patch bump, e.g `3.8.x`. For documentation targeting `develop` that's the next minor bump, e.g `3.x.0`.
 - The title of a doc page is already rendered by the build system as a h1, don't add an extra one.
 - Use title case for headings.
