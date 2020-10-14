@@ -1,12 +1,11 @@
 ---
-title: "Draft Template"
-description: "This page is a draft template"
+title: "{{ replace .Name "-" " " | title }}"
+description: ""
 weight: 
-distributions: ["Marketplace Launcher", "Enterprise"]
-draft: true
+distributions: {{ jsonify (index site.Data "distributions") }}
 ---
 
-Guidelines here are taken from [DEVELOPMENT.md](https://github.com/TheThingsNetwork/lorawan-stack/blob/default/DEVELOPMENT.md), which you should read. This template exists as a copy and paste starting point for new documentation. Remove the `draft`key in the Front Matter to generate the page (otherwise hugo will skip it).
+Guidelines here are taken from [CONTRIBUTING.md](CONTRIBUTING.md) in this repository, which you should read. This template exists as a copy and paste starting point for new documentation. Remove the `draft`key in the Front Matter to generate the page (otherwise hugo will skip it).
 
 A documentation page starts with an introduction, and then the first heading. The first paragraph of the introduction is typically a summary of the page. Use a <!--more--> to indicate where the summary ends.
 
@@ -19,12 +18,16 @@ Use a requirements subheading to list requirements/prerequisites.
 1. Requirement 1
 2. Requirement 2
 
+## Links Within Docs
+
+Use the `ref` shortcode. For example, [this is a link to the component reference]({{< ref "reference/components" >}}).
+
 ## Distributions
 
 To mark a document as applicable to only one or more distributions, there are three options:
 
-1. Add an array of titles to a `distribution` front matter element. This will mark the page in the parent's table of contents, and will produce a notification on the page
-2. Use the {{< distribution "Enterprise" "Cloud" >}} shortcode to produce a notification on the page
+1. Add an array of titles to a `distributions` front matter element. This will mark the page in the parent's table of contents, and will produce a notification on the page
+2. Use the {{< distributions "Enterprise" "Cloud" >}} shortcode to produce a notification on the page
 3. Use the {{< distributions-inline "Enterprise" >}} shortcode to produce an inline notification. This is especially useful for tables and lists
 
 Available distributions are {{< distributions-list >}} and are stored in `data/distributions.yml`.
@@ -156,5 +159,5 @@ $ curl --location --header 'Authorization: Bearer NNSXS.XXXXXXXXX' --header 'Acc
 It is also possible to host source code (or any text file) and display it using shortcodes. For example:
 
 {{< highlight yaml "linenos=table,linenostart=5" >}}
-{{< readfile path="/content/getting-started/installation/configuration/docker-compose.yml" from=5 to=13 >}}
+{{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=5 to=14 >}}
 {{< /highlight >}}

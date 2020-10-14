@@ -50,6 +50,12 @@ build.public: deps
 server: deps
 	$(HUGO) server -s $(DOC_ROOT) --environment $(ENVIRONMENT)
 
+.PHONY: new
+new:
+	$(HUGO) new --kind section-bundle -s $(DOC_ROOT) $(filter-out $@,$(MAKECMDGOALS))
+%:
+	@:
+
 .PHONY: deps
 deps: hooks $(FREQUENCY_PLAN_DEST) | $(YARN_DEPS)
 
