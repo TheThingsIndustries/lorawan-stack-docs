@@ -7,7 +7,7 @@ This section contains help for common issues you may encounter while installing 
 
 ## Component address is not included in this license
 
-Ensure that you configure the `is.oauth.ui.canonical-url` with a domain that matches the domain in your license. See the [Configuration Reference]({{< ref src="/reference/configuration" >}}) for more information about the configuration options.
+Ensure that you configure the `is.oauth.ui.canonical-url` with a domain that matches the domain in your license. See the [Configuration Reference]({{< ref "/reference/configuration" >}}) for more information about the configuration options.
 
 ## Version in "docker-compose.yml" is unsupported
 
