@@ -3,7 +3,7 @@ title: "Application Server Options"
 description: ""
 ---
 
-## Linking Options
+## Linking Options {{< removed-in-version "3.11.0" >}}
 
 The Application Server links to a Network Server. The `link-mode` configures how linking occurs.
 
