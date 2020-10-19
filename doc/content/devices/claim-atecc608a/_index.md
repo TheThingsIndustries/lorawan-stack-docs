@@ -33,9 +33,9 @@ Go to the Console of The Things Industries Join Server (prerequisite 5):
 3. As **Format**, select **Microchip ATECC608A-TNGLORA Manifest File**
 4. Click **Select a file** and open your manifest file (prerequisite 2)
 5. If you want to make your device available for claiming by other users, check **Set claim authentication code**
-   {{< figure src="import-devices-settings.png" alt="Import settings" >}}   
+  {{< figure src="import-devices-settings.png" alt="Import settings" >}}   
 6. Click **Create Devices**
-   {{< figure src="import-devices-progress.png" alt="Import progress" >}}
+  {{< figure src="import-devices-progress.png" alt="Import progress" >}}
 
 Your secure elements are now claimed in your application. The secure elements cannot be claimed by anyone else until you delete the devices.
 
