@@ -1,6 +1,6 @@
 ---
 title: Import End Devices in The Things Stack
-weight: 20
+weight: 2
 ---
 
 To import your devices, you need an application in {{% tts %}}. This can be done by following instructions for [Creating an Application]({{< ref "integrations/adding-applications" >}}).
