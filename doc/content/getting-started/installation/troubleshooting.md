@@ -7,7 +7,7 @@ This section contains help for common issues you may encounter while installing 
 
 ## Component address is not included in this license
 
-Ensure that you configure the `is.oauth.ui.canonical-url` with a domain that matches the domain in your license. See the [Configuration Reference]({{< ref "/reference/configuration" >}}) for more information about the configuration options.
+Ensure that you configure the `is.oauth.ui.canonical-url` with a domain that matches the domain in your license. See the [Configuration Reference]({{< ref "reference/configuration" >}}) for more information about the configuration options.
 
 ## Version in "docker-compose.yml" is unsupported
 
@@ -15,7 +15,7 @@ Our `docker-compose.yml` file uses [Compose file version 3.7](https://docs.docke
 
 ## Token Exchange Refused
 
-This is likely an Oauth issue. Double check that you used the correct `client-secret` when you authorized the client in [Running the Stack]({{< relref "running-the-stack" >}}).
+This is likely an Oauth issue. Double check that you used the correct `client-secret` when you authorized the client in [Running The Things Stack]({{< relref "running-the-stack" >}}).
 
 ## Can't access the server
 

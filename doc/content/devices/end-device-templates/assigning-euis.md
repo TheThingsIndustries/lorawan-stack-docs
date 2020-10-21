@@ -15,7 +15,7 @@ You can use the command in two different ways:
 
 Once the device templates are personalized with EUIs, you can set additional fields (see [Creating Templates]({{< relref "creating.md" >}})) or execute templates (see [Executing Templates]({{< relref "executing.md" >}})).
 
->Note: to make your device compliant with most LoRaWAN networks, use the `JoinEUI` of the LoRaWAN Join Server where the devices will be registered and use a `DevEUI` from an IEEE issued MAC address block that is assigned to your company. If you intend to operate your own LoRaWAN Join Server, use a `JoinEUI` from your IEEE assigned MAC address block as LoRa Alliance requires that for DNS lookup. [Learn how to apply for a IEEE issued MAC address block](https://standards.ieee.org/products-services/index.html).
+>**Note:** to make your device compliant with most LoRaWAN networks, use the `JoinEUI` of the LoRaWAN Join Server where the devices will be registered and use a `DevEUI` from an IEEE issued MAC address block that is assigned to your company. If you intend to operate your own LoRaWAN Join Server, use a `JoinEUI` from your IEEE assigned MAC address block as LoRa Alliance requires that for DNS lookup. [Learn how to apply for a IEEE issued MAC address block](https://standards.ieee.org/products-services/index.html).
 
 ## Example
 

@@ -12,7 +12,7 @@ You can create a device template from an existing device or extend an existing d
 
 You can use the `end-device template create` command to create a template from an existing device.
 
->Note: By default, `end-device template create` strips the device's application ID, device ID, `JoinEUI`, `DevEUI` and server addresses to create a generic template.
+>**Note**: By default, `end-device template create` strips the device's application ID, device ID, `JoinEUI`, `DevEUI` and server addresses to create a generic template.
 >
 >You can include the end device identifiers by passing the concerning flags: `--application-id`, `--device-id`, `--join-eui` and `--dev-eui`.
 
@@ -25,7 +25,7 @@ $ ttn-lw-cli end-devices get test-app test-dev \
   | ttn-lw-cli end-devices template create > template.json
 ```
 
-Output:
+<details><summary>Output</summary>
 
 ```json
 {
@@ -48,6 +48,7 @@ Output:
   }
 }
 ```
+</details>
 
 ## Extend existing template
 
@@ -59,7 +60,7 @@ $ cat template.json \
   --frequency-plan-id EU_863_870
 ```
 
-Output:
+<details><summary>Output</summary>
 
 ```json
 {
@@ -86,6 +87,7 @@ Output:
   }
 }
 ```
+</details>
 
 See `$ ttn-lw-cli end-devices template extend --help` for all the fields that can be set.
 
@@ -102,7 +104,7 @@ $ ttn-lw-cli end-devices template extend \
   --frequency-plan-id EU_863_870
 ```
 
-Output:
+<details><summary>Output</summary>
 
 ```json
 {
@@ -129,3 +131,4 @@ Output:
   }
 }
 ```
+</details>

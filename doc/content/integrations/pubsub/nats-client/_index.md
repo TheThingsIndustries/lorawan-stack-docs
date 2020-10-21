@@ -10,7 +10,7 @@ This section explains how to configure a Pub/Sub integration using the built-in 
 
 Creating a Pub/Sub integration with NATS requires you to have a NATS server running with an available endpoint. See the [NATS Documentation](https://docs.nats.io/) for more information about configuring a NATS server.
 
-> No API key is needed for Pub/Sub messaging. All messages received by the Application Server are assumed to be authorized, so be sure to configure appropriate security on your NATS server.
+>**Note:** No API key is needed for Pub/Sub messaging. All messages received by the Application Server are assumed to be authorized, so be sure to configure appropriate security on your NATS server.
 
 In your application select the **Pub/Subs** submenu from the **Integrations** side menu. Clicking on the **+ Add Pub/Sub** button will open the Pub/Sub creation screen.
 
@@ -52,7 +52,7 @@ You can schedule downlink messages by publishing to a topic. For example, using 
 $ nats-pub -s nats://<server_hostname>:<port> base-topic.push-subtopic '{"end_device_ids":{"device_id":"dev1","application_ids":{"application_id":"app1"}},"downlinks":[{"f_port":1,"frm_payload":"AA==","priority":"NORMAL"}]}'
 ```
 
-Will push a downlink to the end device `dev1` of the application `app1` with a base64 encoded payload of `AA==`, if ```push-subtopic```is configured as the Sub topic for **Downlink queue push**.
+will push a downlink to the end device `dev1` of the application `app1` with a base64 encoded payload of `AA==`, if ```push-subtopic```is configured as the Sub topic for **Downlink queue push**.
 
 This will also result in the following message being published by the Application Server:
 

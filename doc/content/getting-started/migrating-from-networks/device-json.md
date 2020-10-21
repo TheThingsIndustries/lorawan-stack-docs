@@ -153,6 +153,7 @@ The linked specification is quite extensive, and contains a lot of fields that a
   }
 }
 ```
+</details>
 
 </details></summary>
 

@@ -4,7 +4,7 @@ description: ""
 weight: -1
 ---
 
-This section explains how to set up Application and device specific payload formatters using the CLI.
+This section explains how to set up application and device specific payload formatters using the CLI.
 
 <!--more-->
 
@@ -12,7 +12,7 @@ This section explains how to set up Application and device specific payload form
 
 ## Create an Application Payload Formatter
 
-To create an Application payload formatter, use the following command when linking an Application. If creating a [Javascript payload formatter]({{< relref "javascript" >}}), save your `Encoder` and `Decoder` functions to files and load them using the `formatter-parameter-local-file` parameter:
+To create an application specific payload formatter, use the following command when linking an application. If creating a [Javascript payload formatter]({{< relref "javascript" >}}), save your `Encoder` and `Decoder` functions to files and load them using the `formatter-parameter-local-file` parameter:
 
 ```bash
 $ ttn-lw-cli applications link set app1 \
@@ -23,7 +23,7 @@ $ ttn-lw-cli applications link set app1 \
   --default-formatters.up-formatter-parameter-local-file "decoder.js"
 ```
 
-To create a [CayenneLPP]({{< relref "cayenne" >}}) or [Device Repository]({{< relref "device-repo" >}}) Application payload formatter, use the `FORMATTER_CAYENNELPP` or `FORMATTER_DEVICEREPO` constants. No `formatter-parameter-local-file` parameter is needed.
+To create a [CayenneLPP]({{< relref "cayenne" >}}) or [Device Repository]({{< relref "device-repo" >}}) application payload formatter, use the `FORMATTER_CAYENNELPP` or `FORMATTER_DEVICEREPO` constants. No `formatter-parameter-local-file` parameter is needed.
 
 ## Create a Device Specific Payload Formatter
 

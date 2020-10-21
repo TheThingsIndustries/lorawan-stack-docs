@@ -5,7 +5,7 @@ summary: Webhook templates define a webhook integration that is not created (yet
 weight: 1
 ---
 
-Webhook templates define a webhook integration that is not created (yet). Templates allows for using common values for many webhooks, such as a common base URLs.
+Webhook templates define a webhook integration that is not yet created. Templates allow using common values for many webhooks, such as a common base URLs.
 
 Webhook templates are primarily targeted at service providers who want to create specialized webhook integrations for the users of {{% tts %}}.
 

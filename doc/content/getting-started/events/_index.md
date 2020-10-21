@@ -37,11 +37,13 @@ $ curl https://thethings.example.com/api/v3/events \
   --data '{"identifiers":[{"application_ids":{"application_id":"app1"}},{"gateway_ids":{"gateway_id":"gtw1"}}]}'
 ```
 
->Note: The created API key for events is highly privileged; do not use it if you don't need it for events.
+>**Note**: The created API key for events is highly privileged; do not use it if you don't need it for events.
 
-## Example: join flow
+## Example: Join Flow
 
-These are the events of a typical join flow:
+See the events of a typical join flow in the example below:
+
+<details><summary>Join flow example</summary>
 
 ```js
 {
@@ -209,3 +211,4 @@ These are the events of a typical join flow:
   ]
 }
 ```
+</details>

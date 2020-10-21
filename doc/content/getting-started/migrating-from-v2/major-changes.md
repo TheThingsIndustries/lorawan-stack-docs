@@ -25,7 +25,7 @@ The Packet Broker enables peering between networks, so traffic received by one n
 
 With Packet Broker enabled on both {{% tts %}} and {{% ttnv2 %}}, you can receive traffic on {{% tts %}} without having to re-configure any of your gateways.
 
-> **NOTE**: Packet Broker is only enabled on The Things Network Public Community Network and The Things Industries Cloud Hosted.
+>**Note:** Packet Broker is only enabled on The Things Network Public Community Network and The Things Industries Cloud Hosted.
 
 For private {{% tts %}} deployments with Packet Broker disabled, you will need to re-configure your gateways to connect to {{% tts %}}, so that you can start receiving traffic from your end devices.
 
@@ -37,11 +37,11 @@ Also see [Gateways]({{< ref "/gateways" >}}) for instructions on configuring pop
 
 {{% tts %}} uses a different data format for uplink and downlink traffic than {{% ttnv2 %}}.
 
-For details on the data format of {{% ttnv2 %}}, see the documentation from [The Things Network](https://www.thethingsnetwork.org/docs/applications/mqtt/api.html).
+For details on the data format of {{% ttnv2 %}}, see [The Things Network API Reference](https://www.thethingsnetwork.org/docs/applications/mqtt/api.html).
 
-For details on the data format of {{% tts %}}, see the documentation in [Data Formats]({{% ref "/integrations/data-formats" %}}). It uses a different schema, different names, and has much richer metadata support.
+For details on the data format of {{% tts %}}, see the [Data Formats]({{% ref "/integrations/data-formats" %}}) section. It uses a different schema, different names, and has much richer metadata support.
 
-**When migrating to {{% tts %}}, ensure your application can properly handle the new {{% tts %}} data format.**
+>**Note:** When migrating to {{% tts %}}, ensure your application can properly handle the new {{% tts %}} data format.
 
 ### Payload Formats
 
@@ -53,28 +53,26 @@ Migrating the {{% ttnv2 %}} payload encoder and decoder to an uplink and downlin
 
 ### Integrations
 
-[Read about the Integrations supported by {{% tts %}}]({{< ref "/integrations" >}}).
+Read about the integrations supported by {{% tts %}} in the [Integrations]({{< ref "/integrations" >}}) section.
 
 #### MQTT Traffic
 
-You will need to change the MQTT server your application connects to. {{% tts %}} has a new MQTT server address. You will also need to create API keys and update your MQTT credentials accordingly.
+You will need to change the MQTT server your application connects to. {{% tts %}} has a new MQTT server address, so you will also need to create new API keys and update your MQTT credentials accordingly.
 
-Read more on [MQTT Server]({{< ref "/integrations/mqtt" >}}).
+Read more in the [MQTT Server]({{< ref "/integrations/mqtt" >}}) section.
 
 #### Webhooks
 
-The HTTP Integration is now called HTTP Webhooks. The payload format, downlink endpoints, paths and security settings have changed.
-
-Read more on [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}).
+The HTTP Integration is now called HTTP Webhooks. The payload format, downlink endpoints, paths and security settings have changed, so make sure to read more in the [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}) section.
 
 #### Storage Integration
 
-{{% tts %}} does not currently support a Storage integration similar to {{% ttnv2 %}}. This feature will be added in a future release.
+{{% tts %}} does not currently support a Storage integration similar to {{% ttnv2 %}}, but this feature will be added in a future release.
 
 ## Suggested Migration Process
 
-**First**: Update applications to support the {{% tts %}} data format. If you are using payload formatters, make sure to set them correctly from the Application settings page.
+**Step 1:** Update applications to support the {{% tts %}} data format. If you are using payload formatters, make sure to set them correctly from the Application settings page.
 
-**Second**: Follow this guide in order to migrate a single end device (and gateway, if needed) to {{% tts %}}. Continue by gradually migrating your end devices in small batches. Avoid migrating production workloads before you are certain that they will work as expected.
+**Step 2:** Follow this guide in order to migrate a single end device (and gateway, if needed) to {{% tts %}}. Continue by gradually migrating your end devices in small batches. Avoid migrating production workloads before you are certain that they will work as expected.
 
-**Finally**: Once you are confident that your end devices are working properly, migrate the rest of your devices and gateways to {{% tts %}}.
+**Step 3:** Once you are confident that your end devices are working properly, migrate the rest of your devices and gateways to {{% tts %}}.

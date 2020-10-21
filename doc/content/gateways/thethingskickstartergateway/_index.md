@@ -3,7 +3,11 @@ title: "The Things Kickstarter Gateway"
 description: ""
 ---
 
-The Things Kickstarter Gateway is a LoRaWAN gateway, whose technical specifications can be found in [the official documentation](https://www.thethingsnetwork.org/docs/gateways/gateway/). This page guides you to connect it to {{% tts %}}.
+This page guides you to connect The Things Kickstarter Gateway to {{% tts %}}.
+
+<!--more-->
+
+The Things Kickstarter Gateway is a LoRaWAN gateway, whose technical specifications can be found in [the official documentation](https://www.thethingsnetwork.org/docs/gateways/gateway/). 
 
 ## Prerequisites
 
@@ -30,16 +34,16 @@ In a web browser, open the gateway's configuration page by navigating to http://
 
 Enter the following fields:
 
-1. **Name**: the **Gateway ID** that you chose earlier.
-2. Choose the WiFi network from the drop down and enter a password if necessary.
+- **Name**: the **Gateway ID** that you chose earlier.
+- Choose the WiFi network from the drop down and enter a password if necessary.
 
-> Note: To connect to a Cloud Hosted tenant, the tenant ID must be added to the  **Gateway ID** field in the format **Gateway ID**@**Tenant ID**.
+>**Note:** To connect to a Cloud Hosted tenant, the tenant ID must be added to the  **Gateway ID** field in the format **Gateway ID**@**Tenant ID**.
 
 Click the **Show Advanced Options** button and enter the following fields:
 
-1. **Account Server**: The URL of {{% tts %}}. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `https://thethings.example.com`.
-2. **Gateway Key**: The API Key that you created earlier.
-3. Click **Save** when done.
+- **Account Server**: The URL of {{% tts %}}. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `https://thethings.example.com`.
+- **Gateway Key**: The API Key that you created earlier.
+- Click **Save** when done.
 
 This will apply the setting and reboot the gateway. If all the steps have been followed correctly, your gateway will now connect to {{% tts %}}.
 

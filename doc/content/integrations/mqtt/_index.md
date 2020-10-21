@@ -12,7 +12,7 @@ aliases: [/guides/getting-started/mqtt]
 
 ## Multi-Tenancy
 
-On multi-tenant environments such as Cloud, application ids and other endoints include the tenant id, e.g `app1@tenant1`. On single tenant environments such as Open Source, the tenant id can be removed, i.e `app1`.
+Note that on multi-tenant environments such as Cloud, application IDs and other endpoints include the tenant ID, e.g `app1@tenant1`. On single tenant environments such as Open Source, the tenant ID can be removed, i.e `app1`.
 
 ## Creating an API Key
 
@@ -20,15 +20,19 @@ In order to use the MQTT server you need to create a new API key to authenticate
 
 {{< figure src="mqtt-integration.png" alt="MQTT connection information" >}}
 
-You can now click on the **Generate new API key** button in order to generate an API key which can be used to send and receive traffic from MQTT.
+You can now click on the **Generate new API key** button in order to generate an API key which can be used to send and receive traffic from MQTT server.
 
 {{< figure src="mqtt-key-created.png" alt="MQTT API key created" >}}
 
-Make sure to copy your API key now, since it will no longer be visible after leaving the page for security reasons. You can now login using an MQTT client with the application ID and tenant ID `app1@tenant1` as user name and the newly generated API key as password.
+>**Note:** Make sure to copy your API key now, since it will no longer be visible after leaving the page for security reasons. 
+
+You can now login using an MQTT client with the application ID and tenant ID `app1@tenant1` as a username, and the newly generated API key as password.
 
 ## MQTT Clients
 
-There are many MQTT clients available. Great clients are `mosquitto_pub` and `mosquitto_sub`, part of [Mosquitto](https://mosquitto.org).
+There are many MQTT clients available. See [MQTT Clients]({{< ref "/integrations/mqtt-clients" >}}) section for instructions on how the integrate with the most popular ones. 
+
+In the examples below, we use `mosquitto_pub` and `mosquitto_sub` clients.
 
 ```bash
 # Tip: when using `mosquitto_sub`, pass the `-d` flag to see the topics messages get published on.
@@ -53,7 +57,7 @@ While you could subscribe to separate topics, for the tutorial subscribe to `#` 
 
 With your MQTT client subscribed, when a device joins the network, a `join` message gets published. For example, for a device ID `dev1`, the message will be published on the topic `v3/app1@tenant1/devices/dev1/join`.
 
-<details><summary>Show example join accept message</summary>
+<details><summary>Show join accept message example</summary>
 
 ```json
 {
@@ -84,7 +88,7 @@ You can use the correlation IDs to follow messages as they pass through {{% tts 
 
 When the device sends an uplink message, a message will be published to the topic `v3/{application id}@{tenant id}/devices/{device id}/up`.
 
-<details><summary>Show example uplink message</summary>
+<details><summary>Show uplink message example</summary>
 
 ```json
 {
@@ -153,7 +157,7 @@ For example, to send an unconfirmed downlink message to the device `dev1` in app
 }
 ```
 
->Hint: Use [this handy tool](https://v2.cryptii.com/hexadecimal/base64) to convert hexadecimal to base64.
+>**Tip:** Use [this handy tool](https://v2.cryptii.com/hexadecimal/base64) to convert hexadecimal to base64.
 
 ```bash
 # If you use `mosquitto_pub`, use the following command:
@@ -166,7 +170,7 @@ $ mosquitto_pub -h thethings.example.com \
 
 It is also possible to send multiple downlink messages on a single push because `downlinks` is an array. Instead of `/push`, you can also use `/replace` to replace the downlink queue. Replacing with an empty array clears the downlink queue.
 
->Note: if you do not specify a priority, the default priority `LOWEST` is used. You can specify `LOWEST`, `LOW`, `BELOW_NORMAL`, `NORMAL`, `ABOVE_NORMAL`, `HIGH` and `HIGHEST`.
+>**Note:** if you do not specify a priority, the default priority `LOWEST` is used. You can specify `LOWEST`, `LOW`, `BELOW_NORMAL`, `NORMAL`, `ABOVE_NORMAL`, `HIGH` and `HIGHEST`.
 
 {{% tts %}} supports some cool features, such as confirmed downlink with your own correlation IDs. For example, you can push this:
 
@@ -184,7 +188,7 @@ It is also possible to send multiple downlink messages on a single push because 
 
 Once the downlink gets acknowledged, a message is published to the topic `v3/{application id}@{tenant id}/devices/{device id}/down/ack`.
 
-<details><summary>Show example downlink event message</summary>
+<details><summary>Show downlink event message example</summary>
 
 ```json
 {

@@ -3,7 +3,11 @@ title: "NASys LoRaWAN Outdoor Gateway"
 description: ""
 ---
 
-NASys LoRaWAN Outdoor Gateway is an 8 Channel LoRaWAN gateway, whose technical specifications can be found in [the official product page](https://www.nasys.no/product/lorawan-gateway/). This page guides you to connect it to {{% tts %}}.
+This page guides you to connect NASys LoRaWAN Outdoor Gateway to {{% tts %}}.
+
+<!--more-->
+
+NASys LoRaWAN Outdoor Gateway is an 8 Channel LoRaWAN gateway, whose technical specifications can be found in [the official product page](https://www.nasys.no/product/lorawan-gateway/). 
 
 ## Prerequisites
 
@@ -51,10 +55,10 @@ $ vi /opt/nas-lgw/global_conf.json
 
 Edit the server parameters:
 
-1. **gateway_ID**: Make sure this is the same as the GatewayEUI (in lowercase).
-2. **server_address**: Address of the Gateway Server. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `thethings.example.com`.
-3. **serv_port_up**: UDP upstream port of the Gateway Server, typically 1700.
-4. **serv_port_down**: UDP downstream port of the Gateway Server, typically 1700.
+- **gateway_ID**: Make sure this is the same as the GatewayEUI (in lowercase).
+- **server_address**: Address of the Gateway Server. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `thethings.example.com`.
+- **serv_port_up**: UDP upstream port of the Gateway Server, typically 1700.
+- **serv_port_down**: UDP downstream port of the Gateway Server, typically 1700.
 
 You can access the gateway system logs using journalctl. See `journalctl --help` for details
 
@@ -63,7 +67,7 @@ $ journalctl -f -u nas_lgw -n 1000
 ```
 
 > **IMPORTANT NOTE**: The gateway logs will rotate when they reach about 15M in size, which means that you will generally not be able to access very old logs. At times of dense traffic (e.g. ~1000s of devices) this typically means that you will only have logs for 2-3 hours. If you want to keep historical data (for whatever reason), then you will have to forward the logs to an external server. If you decide to do so, then `netcat` may be useful:
-
+>
 > ```bash
 > $ journalctl -f | nc server-hostname server-port
 > ```

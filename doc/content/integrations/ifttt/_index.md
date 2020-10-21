@@ -10,7 +10,7 @@ weight:
 
 To connect {{% tts %}} to IFTTT, [Node-RED](https://nodered.org/) will also be used as a part of the setup.
 
-## Requirements
+## Prerequisites
 
 1. A user account on IFTTT.
 

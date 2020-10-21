@@ -5,15 +5,17 @@ description: ""
 
 Payload formatters allow you to process data going to and from end devices. This is useful for converting binary payloads to human readable fields, or for doing any other kind of data conversion on uplinks and downlinks.
 
-This section explains how to set up Application and device specific payload formatters.
+This section explains how to set up application and device specific payload formatters.
 
 <!--more-->
 
 ## Application and Device Specific Payload Formatters
 
-Payload formatters can be applied to an entire Application, or to a specific end device. Application payload formatters are useful if all devices use the same binary payload format, or as a fallback when no device specific payload formatter is set.
+Payload formatters can be applied to an entire application, or to a specific end device. Application payload formatters are useful if all devices use the same binary payload format, or as a fallback when no device specific payload formatter is set.
 
-Device payload formatters allow you to specify a unique payload formatter for each device. Device payload formatters override Application payload formatters.
+Device payload formatters allow you to specify a unique payload formatter for each device. 
+
+>**Note:** Device payload formatters override application payload formatters.
 
 ## Working with Bytes
 

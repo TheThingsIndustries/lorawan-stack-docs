@@ -3,7 +3,7 @@ title: "End Device Templates"
 description: ""
 ---
 
-End device templates define the blueprint of a device. Templates can be used to create one device or many devices at once. Templates allow for using common values for many devices, such as a device profile.
+End device templates define the blueprint of a device. Templates can be used to create one device or many devices at once. Templates allow using common values for many devices, such as a device profile.
 
 End device templates are primarily targeted at device makers and service providers who are managing and onboarding large amounts of devices.
 

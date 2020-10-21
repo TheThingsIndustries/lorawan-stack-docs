@@ -3,8 +3,6 @@ title: Enable Peering
 description: ""
 ---
 
-Peering is exchanging LoRaWAN traffic with other networks to share coverage and improve the overall network performance. See [Peering]({{< relref "peering" >}}) for more information about peering.
-
 This guide shows you how to enable peering on your private LoRaWAN network.
 
 <!--more-->

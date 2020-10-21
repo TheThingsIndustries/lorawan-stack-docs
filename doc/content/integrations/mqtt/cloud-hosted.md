@@ -10,12 +10,12 @@ Cloud Hosted has special MQTT addressing to support multi tenancy. While most of
 
 Login using an MQTT client with the application ID and tenant ID `app1@tenant1` as user name and your generated API key as password.
 
-Replace all instances of username `app` with username `app@tenant`.
+Replace all instances of username `app1` with username `app1@tenant`.
 
 ```bash
-# Tip: when using `mosquitto_sub`, pass the `-d` flag to see the topics message
-s get published on.
+# Tip: when using `mosquitto_sub`, pass the `-d` flag to see the topics messages get published on.
 # For example:
+
 $ mosquitto_sub -h thethings.example.com -t "#" -u "app1@tenant1" -P "NNSXS.VEEBURF3KR77ZR.." -d
 ```
 

@@ -3,7 +3,7 @@ title: "Application Packages"
 description: ""
 ---
 
-Application packages specify state machines running both on the end-device and the Application Server as well as signaling messages exchanged between the end-device's application layer and the Application Server.
+Application packages specify state machines running both on the end device and the Application Server, as well as signalling messages exchanged between the end device's application layer and the Application Server.
 
 <!--more-->
 
@@ -98,7 +98,7 @@ The package associations of a given device can be listed using the `default-asso
 $ ttn-lw-cli applications packages default-associations list app1
 ```
 
-Output:
+<details><summary>Output</summary>
 
 ```json
 {
@@ -117,6 +117,7 @@ Output:
   ]
 }
 ```
+</details>
 
 ## Retrieving an Association
 
@@ -126,7 +127,7 @@ The associations can be retrieved using the `default-associations get` command:
 $ ttn-lw-cli applications packages default-associations get app1 25 --data
 ```
 
-Output:
+<details><summary>Output</summary>
 
 ```json
 {
@@ -144,6 +145,7 @@ Output:
   }
 }
 ```
+</details>
 
 ## Deleting an Association
 

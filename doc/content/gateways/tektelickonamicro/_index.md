@@ -2,8 +2,12 @@
 title: "Tektelic Kona Micro IoT LoRaWAN Gateway"
 description: ""
 ---
+ 
+This page guides you to connect Tektelic Kona Micro IoT LoRaWAN Gateway to {{% tts %}}.
 
-Tektelic Kona Micro IoT LoRaWAN Gateway is an 8 channel LoRaWAN gateway, whose technical specifications can be found in [the official documentation](https://tektelic.com/wp-content/uploads/KONA-Micro.pdf). This page guides you to connect it to {{% tts %}}.
+<!--more-->
+
+Tektelic Kona Micro IoT LoRaWAN Gateway is an 8 channel LoRaWAN gateway, whose technical specifications can be found in [the official documentation](https://tektelic.com/wp-content/uploads/KONA-Micro.pdf).
 
 ## Prerequisites
 
@@ -30,13 +34,13 @@ Now you can edit the gateway configuration file.
 $ vi /etc/default/config.json
 ```
 
->Note: Press the `i` key on your keyboard to start insert mode. Once finished editing, press `ESC` and enter `:wq` to write the file and quit.
+>**Note:** Press the `i` key on your keyboard to start insert mode. Once finished editing, press `ESC` and enter `:wq` to write the file and quit.
 
-Edit the server parameters.
+Edit the server parameters:
 
-1. **server_address**: Address of the Gateway Server. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `thethings.example.com`.
-2. **serv_port_up**: UDP upstream port of the Gateway Server, typically 1700.
-3. **serv_port_down**: UDP downstream port of the Gateway Server, typically 1700.
+- **server_address**: Address of the Gateway Server. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `thethings.example.com`.
+- **serv_port_up**: UDP upstream port of the Gateway Server, typically 1700.
+- **serv_port_down**: UDP downstream port of the Gateway Server, typically 1700.
 
 Save the configuration and restart the packet forwarder.
 

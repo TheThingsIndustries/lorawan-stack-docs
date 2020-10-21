@@ -6,7 +6,7 @@ weight: -1
 
 The [{{% lbs %}}](https://lora-developers.semtech.com/resources/tools/basic-station/welcome-basic-station/) protocol simplifies management of large scale LoRaWAN networks. {{% lbs %}} is the preferred way of connecting Gateways to {{% tts %}}.
 
-This section contains information for connecting your gateway to {{% tts %}} using {{% lbs %}} and its sub protocols.
+This section contains information for connecting your gateway to {{% tts %}} using {{% lbs %}} and its subprotocols.
 
 <!--more-->
 

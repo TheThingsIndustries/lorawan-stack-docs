@@ -4,7 +4,11 @@ description: ""
 aliases: [/guides/connecting-gateways/kerlinkwirnetistation]
 ---
 
-Kerlink Wirnet iStation is a LoRaWAN gateway, whose technical specifications can be found in [the official documentation](https://www.kerlink.com/product/wirnet-istation/). This page guides you to connect it to {{% tts %}}.
+This page guides you to connect Kerlink Wirnet iStation to {{% tts %}}.
+
+<!--more-->
+
+You can find technical specifications for this gateway in [the official Kerlink documentation](https://www.kerlink.com/product/wirnet-istation/). 
 
 ## Prerequisites
 
@@ -18,7 +22,9 @@ Create an API Key with Gateway Info rights for this gateway using the same instr
 
 ## Configuration
 
-All further steps will assume the gateway is available at `192.168.4.155`, the stack address is `thethings.example.com`, gateway ID is `example-gtw` and gateway API key is `NNSXS.GTSZYGHE4NBR4XJZHJWEEMLXWYIFHEYZ4WR7UAI.YAT3OFLWLUVGQ45YYXSNS7HTVTFALWYSXK6YLJ6BDUNBPJMRH3UQ`, please replace these by the values appropriate for your setup.
+All further steps will assume the gateway is available at `192.168.4.155`, {{% tts %}} address is `thethings.example.com`, gateway ID is `example-gtw` and gateway API key is `NNSXS.GTSZYGHE4NBR4XJZHJWEEMLXWYIFHEYZ4WR7UAI.YAT3OFLWLUVGQ45YYXSNS7HTVTFALWYSXK6YLJ6BDUNBPJMRH3UQ`.
+
+>**Note:** Replace these by the values appropriate for your setup.
 
 ### Provisioning
 
