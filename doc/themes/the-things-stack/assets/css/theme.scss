@@ -8,6 +8,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'LatoFallback';
   src: url(../fonts/Lato-Bold.woff2) format('woff2'), url(../fonts/Lato-Bold.woff) format('woff'), url(../fonts/Lato-Bold.ttf) format('ttf');
@@ -37,6 +38,7 @@ $graphite: #292929;
 $white-bis: #fbfbfb;
 $white-ter : #ececec;
 $red: #f9595a;
+$blue-bg: #E5ECFF;
 
 $code: $blue;
 $link-hover: darken($blue, 20%);
@@ -45,13 +47,12 @@ $primary: $blue;
 $title-color: $blue;
 $navbar-background-color: $white-bis;
 $navbar-item-color: $blue;
-$navbar-item-hover-background-color: $white-ter;
+$navbar-item-hover-background-color: $blue-bg;
 $navbar-item-active-color: $blue;
 $navbar-item-active-background-color: $white-bis;
 
 $navbar-height: 4rem;
 
-$card-shadow: 0 10px 20px 0 rgba($black, 0.1);
 $card-content-padding:2rem;
 
 $border: $white-ter;
@@ -118,6 +119,14 @@ $tabs-border-bottom-color: $blue;
 @import "bulma/sass/layout/section.sass";
 @import "bulma/sass/layout/footer.sass";
 
+html {
+  margin: 0 10%;
+}
+
+.section {
+  padding: 10px 0 100px 0;
+}
+
 .tabs.is-boxed li.is-active a {
   background-color: $blue-alt !important;
   border-color: transparent !important;
@@ -132,20 +141,52 @@ $tabs-border-bottom-color: $blue;
 }
 
 .tabs.is-boxed a:hover {
-  background-color: lighten($blue-alt, 3%);
+  background-color: $blue-bg;
 }
 
-a.navbar-item {
-  font-family: $title-family;
+.logo {
+  width: 125px;
+}
+
+.button.is-primary {
   font-size: 0.8rem;
+  padding: 18px 15px;
+}
+
+.navbar.is-fixed-top {
+  padding: 0 10%;
+  background-color: #FFFFFF;
+}
+
+.navbar-start {
+  margin: auto;
+}
+
+
+a.navbar-item {
+  font-family: $family-sans-serif;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  margin: 10px 5px;
 }
 
 .is-not-wrapped {
   white-space: nowrap;
 }
 
-.is-borderless{
+.is-borderless {
   border: 0 !important
+}
+
+.content-intro, .title-intro {
+  display: flex;
+  margin: auto;
+  max-width: 650px;
+  text-align: center;
+}
+
+.schema {
+  margin: 100px 0px;
 }
 
 .card {
@@ -156,21 +197,22 @@ a.navbar-item {
     width: 100%;
   }
 
-  .card-content{
+  .card-content {
     display: flex;
     height: 100%;
     flex-direction: column;
   }
 
-  .buttons{
+  .buttons {
     margin-top: auto;
   }
 }
 
 .hero {
   &.has-radius {
-    border-radius: $radius;
+    border-radius: 10px;
   }
+  padding: 20px;
 }
 
 .has-vertical-space {
@@ -187,6 +229,14 @@ a.navbar-item {
   display: flex;
 }
 
+h1 {
+  padding-top: 100px;
+}
+
+.title.is-size-4 {
+  padding-top: 100px;
+}
+
 .content {
   h1, h2, h3, h4, h5, h6 {
     font-family: $title-family;
@@ -200,21 +250,28 @@ a.navbar-item {
 .hero.is-primary {
   background-image: url(../img/hero-bg.svg);
   background-size: cover;
+  margin: 100px 0px 150px 0px;
 }
 
-.footer.has-background-primary {
-  background-image: url(../img/footer-bg.svg);
+.footer {
   background-size: cover;
   .title {
-    color: $white;
+    color: $graphite;
+  }
+  .p {
+    color: $graphite;
   }
   a {
-    color: $white;
+    color: $graphite;
     &:hover {
-      color: $white;
-      font-weight: bold;
+      color: $blue;
     }
   }
+}
+
+.background-footer {
+  background-color: $white;
+  color: $graphite;
 }
 
 .table.has-text-in-td-centered td {
@@ -281,24 +338,26 @@ details + blockquote {
 }
 
 .search-container {
-  background-image: url(../img/search_bg.svg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  height: 120px;
+  margin: none;
+  padding: 100px 0px 0px 0px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .search-bar {
+  border: solid 1px #888888;
   background-color: white;
   width: 55vw;
-  padding: 20px;
+  padding: 28px;
   border-radius: 5px;
-  filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.2));
-  font-size: 16px;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
+  font-size: 20px;
   left: -1px; // Hack for left-justified dropdown
+}
+
+.is-one-quarter p {
+  margin-bottom: 0.4em;
 }
 
 .feedback {
