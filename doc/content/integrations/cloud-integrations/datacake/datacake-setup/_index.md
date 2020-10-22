@@ -35,4 +35,3 @@ Paste your **Application ID** from {{% tts %}} in the **TTI App Id** field.
 In {{% tts %}}, navigate to **API keys** on the left hand menu, click the **Add API key** button, give it a **Name** and confirm that you have copied it to finish. Paste the copied API key into the **TTI Api Key** field on Datacake. 
 
 {{< figure src="lorawan-settings.png" alt="LoRaWAN settings" >}}
-

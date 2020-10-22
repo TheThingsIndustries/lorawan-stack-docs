@@ -143,8 +143,8 @@ For example:
 
 ```bash
 $ curl --location --header 'Authorization: Bearer NNSXS.XXXXXXXXX' --header 'Accept: application/json' \
-     --header 'Content-Type: application/json' --request POST 'https://thethings.example.com/api/v3/events' \
-     --data-raw '{
+    --header 'Content-Type: application/json' --request POST 'https://thethings.example.com/api/v3/events' \
+    --data-raw '{
     "identifiers":[{
         "device_ids":{
             "device_id":"dev1",
