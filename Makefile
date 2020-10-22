@@ -15,7 +15,8 @@
 GO = go
 HUGO = $(GO) run -tags extended github.com/gohugoio/hugo
 YARN_DEPS = doc/themes/the-things-stack/node_modules
-FREQUENCY_PLAN_URL = https://raw.githubusercontent.com/TheThingsNetwork/lorawan-frequency-plans/master/frequency-plans.yml
+FREQUENCY_PLAN_URL = \
+https://raw.githubusercontent.com/TheThingsNetwork/lorawan-frequency-plans/master/frequency-plans.yml
 FREQUENCY_PLAN_DEST = doc/data/frequency-plans.yml
 DOC_ROOT = doc
 PUBLIC_DEST = ../public # Relative to DOC_ROOT
@@ -65,7 +66,7 @@ $(FREQUENCY_PLAN_DEST):
 $(YARN_DEPS):
 	@if ! [ -x "$$(command -v yarn)" ]; then\
 		echo "Installing yarn";\
-	    curl -o- -L https://yarnpkg.com/install.sh | bash;\
+			curl -o- -L https://yarnpkg.com/install.sh | bash;\
 	fi
 	yarn --cwd doc/themes/the-things-stack/
 

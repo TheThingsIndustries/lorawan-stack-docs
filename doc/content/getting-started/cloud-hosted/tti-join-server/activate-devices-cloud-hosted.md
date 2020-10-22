@@ -15,8 +15,8 @@ The Things Industries Join Server is a LoRaWAN Join Server. Learn how to activat
 
 1. Command-line interface (CLI) configuration file *with Cloud cluster*. See [The Things Industries Join Server]({{< relref "../tti-join-server" >}})
 2. Devices registered in The Things Industries Join Server. You can achieve this in two ways:
-   1. Register devices with root keys. See [registering devices on The Things Industries Join Server]({{< relref "register-devices" >}})
-   2. Claim secure elements. See [Claim ATECC608A-TNGLORA secure elements]({{< ref "/devices/claim-atecc608a" >}})
+  1. Register devices with root keys. See [registering devices on The Things Industries Join Server]({{< relref "register-devices" >}})
+  2. Claim secure elements. See [Claim ATECC608A-TNGLORA secure elements]({{< ref "/devices/claim-atecc608a" >}})
 
 ## Login with CLI
 
@@ -35,11 +35,11 @@ When registering the devices on a Network Server and Application Server, you nee
 3. LoRaWAN Regional Parameters version (i.e. `1.0.2-b`)
 4. Frequency plan (i.e. `EU_863_870` or `US_902_928`)
    
-   >Hint: List the supported LoRaWAN versions, regional parameters versions, frequency plans and other options with:
-   ```bash
-   $ ttn-lw-cli end-devices list-frequency-plans
-   $ ttn-lw-cli end-devices set --help
-   ```
+  >Hint: List the supported LoRaWAN versions, regional parameters versions, frequency plans and other options with:
+  ```bash
+  $ ttn-lw-cli end-devices list-frequency-plans
+  $ ttn-lw-cli end-devices set --help
+  ```
 
 To register the device in application `test-app` with device ID `eui-0004a310001ff9e0`:
 

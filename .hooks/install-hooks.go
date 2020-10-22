@@ -17,7 +17,8 @@ func installHook(name string) (err error) {
 			err = closeErr
 		}
 	}()
-	if _, err = fmt.Fprintf(f, "HOOK=\"%s\" ARGS=\"$@\" go run %s\n", name, filepath.Join(".hooks", "run-hooks.go")); err != nil {
+	_, err = fmt.Fprintf(f, "HOOK=\"%s\" ARGS=\"$@\" go run %s\n", name, filepath.Join(".hooks", "run-hooks.go"));
+	if err != nil {
 		return err
 	}
 	return nil
