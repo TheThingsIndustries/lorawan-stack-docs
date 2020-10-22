@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Messages | The Things Stack for LoRaWAN</title>
+  <link rel="alternate icon" href="/thethingsindustries.com/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/thethingsindustries.com/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/thethingsindustries.com/docs/favicon.svg">
+  <link rel="stylesheet" href="/thethingsindustries.com/docs/css/theme.min.f73831f1cd2827cc6e72a8e0df5a006e289e15ed508da505203eb0ef3f9e4238.css" integrity="sha256-9zgx8c0oJ8xucqjg31oAbiieFe1QjaUFID6w7z&#43;eQjg="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Messages">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Messages">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="thethingsindustries.com/docs/integrations/aws-iot/default/messages/">
+  <meta name="twitter:title" content="Messages" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/thethingsindustries.com/docs/">
+        <img src="/thethingsindustries.com/docs/img/TTS-horizontal-logo.svg">
+        <p class="navbar-item is-size-7">v3.10.0-dev</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="thethingsindustries.com/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/devices/">Devices</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="button is-primary" href="thethingsindustries.com/docs/download/">Get The Things Stack</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="search-container">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <div class="field has-addons has-addons-centered">
+            <div class="control">
+              <input class="input search-bar" id="search-input" type="text" placeholder="Search" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: "",
+indexName: "thethingsstack",
+inputSelector: '#search-input',
+debug: false 
+});
+</script>
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">AWS IoT</h2>
+
+<ul class="menu-list">
+<a href="thethingsindustries.com/docs/integrations/aws-iot/" class="">Overview</a>
+<li>
+  <a href="thethingsindustries.com/docs/integrations/aws-iot/default/" class="">Default Integration</a>
+  <ul class="menu-list">
+    <li>
+      <a href="thethingsindustries.com/docs/integrations/aws-iot/default/architecture/" class="">Architecture</a>
+    </li>
+    <li>
+      <a href="thethingsindustries.com/docs/integrations/aws-iot/default/deployment-guide/" class="">Deployment Guide</a>
+    </li>
+    <li>
+      <a href="thethingsindustries.com/docs/integrations/aws-iot/default/things/" class="">Managing Things</a>
+    </li>
+    <li>
+      <a href="thethingsindustries.com/docs/integrations/aws-iot/default/messages/" class="is-active">Messages</a>
+    </li>
+    <li>
+      <a href="thethingsindustries.com/docs/integrations/aws-iot/default/metrics/" class="">Metrics</a>
+    </li>
+    <li>
+      <a href="thethingsindustries.com/docs/integrations/aws-iot/default/update/" class="">Update</a>
+    </li>
+    <li>
+      <a href="thethingsindustries.com/docs/integrations/aws-iot/default/uninstall/" class="">Uninstall</a>
+    </li>
+    <li>
+      <a href="thethingsindustries.com/docs/integrations/aws-iot/default/troubleshooting/" class="">Troubleshooting</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/integrations/aws-iot/application-server-telemetry/" class="">Application Server Telemetry</a>
+</li>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">Messages</h1>
+
+<div class="content">
+
+<p>The Things Stack publishes uplink messages to AWS IoT Core MQTT. An IoT Core rule triggers a Lambda function which processes the message, creates a new IoT Core thing if it doesn&rsquo;t exist, and updates the shadow state with metrics. Device activations and uplink messages get republished so your application can act on them.</p>
+<p>Your application can schedule downlink messages by publishing a JSON object to an AWS IoT Core MQTT topic. An IoT Core rule triggers a Lambda function which performs an API call to The Things Stack to enqueue the downlink message.</p>
+<p>See <a href="thethingsindustries.com/docs/integrations/aws-iot/default/architecture/">Architecture</a> for the flow.</p>
+<h2 id="activations-and-uplink-messages">Activations and Uplink Messages</h2>
+<p>The AWS IoT Integration for The Things Stack uses the following topics for upstream traffic:</p>
+<ul>
+<li>Activations: <code>lorawan/&lt;thing&gt;/join</code></li>
+<li>Uplink: <code>lorawan/&lt;thing&gt;/uplink</code></li>
+</ul>
+<p>See <a href="thethingsindustries.com/docs/integrations/aws-iot/default/things/">Manage Things</a> to learn about the thing names.</p>
+<blockquote>
+<p>Use <a href="https://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html"><strong>Rules for AWS IoT</strong></a> to act on these messages for storage, analytics, alarms and API calls.</p>
+<p>This guide uses AWS IoT Core MQTT client for demonstration purposes only.</p>
+</blockquote>
+<p>In the AWS Console, open <strong>Services</strong> and go to <strong>IoT Core</strong>.</p>
+<p>In the menu on the left, click <strong>Test</strong>. This opens the <strong>MQTT client</strong>.</p>
+<figure>
+    <img src="../subscribe-uplink.png"
+         alt="Subscribe Uplink"/> 
+</figure>
+
+<p>In <strong>Subscription topic</strong>, enter <code>lorawan/#</code> to subscribe to all events from all LoRaWAN things in your account.</p>
+<p>Click <strong>Subscribe to topic</strong>.</p>
+<figure>
+    <img src="../uplink-message.png"
+         alt="Uplink Message"/> 
+</figure>
+
+<h2 id="downlink-messages">Downlink Messages</h2>
+<p>The AWS IoT Integration for The Things Stack uses the following topic for downstream traffic:</p>
+<ul>
+<li><code>lorawan/downlink</code></li>
+</ul>
+<blockquote>
+<p>Publish downlink messages from your application to IoT Core using <a href="https://docs.aws.amazon.com/iot/latest/apireference/Welcome.html#Welcome_AWS_IoT_Data_Plane"><strong>AWS IoT Data Plane</strong></a> using the <a href="https://docs.aws.amazon.com/iot/latest/apireference/API_iotdata_Publish.html"><strong>Publish</strong></a> action.</p>
+<p>This guide uses AWS IoT Core MQTT client for demonstration purposes only.</p>
+</blockquote>
+<p>Still in the AWS IoT <strong>MQTT client</strong>, enter the downlink topic <code>lorawan/downlink</code>.</p>
+<p>The message is a JSON object with the following format:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="p">{</span>
+  <span class="s2">&#34;thingName&#34;</span><span class="o">:</span> <span class="s2">&#34;&lt;stack&gt;_&lt;device-id&gt;&#34;</span><span class="p">,</span>
+
+  <span class="s2">&#34;bytes&#34;</span><span class="o">:</span> <span class="s2">&#34;AQ==&#34;</span><span class="p">,</span> <span class="c1">// Base64 encoded FRMPayload
+</span><span class="c1"></span>  <span class="c1">// or
+</span><span class="c1"></span>  <span class="s2">&#34;payload&#34;</span><span class="o">:</span> <span class="p">{</span>     <span class="c1">// JSON encoded payload (requires payload encoder)
+</span><span class="c1"></span>    <span class="s2">&#34;field1&#34;</span><span class="o">:</span> <span class="mi">42</span>
+  <span class="p">},</span>
+
+  <span class="c1">// Optional fields
+</span><span class="c1"></span>  <span class="s2">&#34;fPort&#34;</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>         <span class="c1">// FPort (default: 1)
+</span><span class="c1"></span>  <span class="s2">&#34;confirmed&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>   <span class="c1">// Confirmed data downlink (default: false)
+</span><span class="c1"></span>  <span class="s2">&#34;highPriority&#34;</span><span class="o">:</span> <span class="kc">true</span> <span class="c1">// High priority (default: false)
+</span><span class="c1"></span><span class="p">}</span>
+</code></pre></div><p>See <a href="thethingsindustries.com/docs/integrations/aws-iot/default/things/">Manage Things</a> to find the <code>thingName</code> for the end device.</p>
+</div>
+
+<script>window.emojicom_widget = { campaign: "" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+<div class="is-clearfix">
+<a class="button is-pulled-left" href="thethingsindustries.com/docs/integrations/aws-iot/default/things/">← Managing Things</a>
+<a class="button is-pulled-right" href="thethingsindustries.com/docs/integrations/aws-iot/default/metrics/">Metrics →</a>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer has-background-primary">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="thethingsindustries.com/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/devices/">Devices</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsNetwork/lorawan-stack">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="has-text-light is-size-7">
+  Last changed by Ben Olayinka on 22 Oct 2020.
+  <br>
+  <a href="https://github.com/TheThingsNetwork/lorawan-stack/commit/6b4daa186a9360e72e50edfe36c09fa7cdf05c68">
+      Merge pull request #31 from TheThingsIndustries/util/build-workflow
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/default/doc/content/integrations/aws-iot/default/messages.md" class="button is-primary is-small is-inverted is-outlined">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="/thethingsindustries.com/docs/js/theme.min.4feb1389331adbef9047157f884dbdbd63af1c61ac83f327e60eef42f999cb26.js" integrity="sha256-T&#43;sTiTMa2&#43;&#43;QRxV/iE29vWOvHGGsg/Mn5g7vQvmZyyY="></script><script>
+  window.intercomSettings = {
+    app_id: "",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

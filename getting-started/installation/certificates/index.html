@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Certificates | The Things Stack for LoRaWAN</title>
+  <link rel="alternate icon" href="/thethingsindustries.com/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/thethingsindustries.com/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/thethingsindustries.com/docs/favicon.svg">
+  <link rel="stylesheet" href="/thethingsindustries.com/docs/css/theme.min.f73831f1cd2827cc6e72a8e0df5a006e289e15ed508da505203eb0ef3f9e4238.css" integrity="sha256-9zgx8c0oJ8xucqjg31oAbiieFe1QjaUFID6w7z&#43;eQjg="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Certificates">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Certificates">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="thethingsindustries.com/docs/getting-started/installation/certificates/">
+  <meta name="twitter:title" content="Certificates" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/thethingsindustries.com/docs/">
+        <img src="/thethingsindustries.com/docs/img/TTS-horizontal-logo.svg">
+        <p class="navbar-item is-size-7">v3.10.0-dev</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="thethingsindustries.com/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/devices/">Devices</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="button is-primary" href="thethingsindustries.com/docs/download/">Get The Things Stack</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="search-container">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <div class="field has-addons has-addons-centered">
+            <div class="control">
+              <input class="input search-bar" id="search-input" type="text" placeholder="Search" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: "",
+indexName: "thethingsstack",
+inputSelector: '#search-input',
+debug: false 
+});
+</script>
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">Installing The Things Stack</h2>
+
+<ul class="menu-list">
+<a href="thethingsindustries.com/docs/getting-started/installation/" class="">Overview</a>
+<li>
+  <a href="thethingsindustries.com/docs/getting-started/installation/configuration/" class="">Configuration</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/getting-started/installation/certificates/" class="is-active">Certificates</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/getting-started/installation/running-the-stack/" class="">Running The Things Stack</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/getting-started/installation/troubleshooting/" class="">Troubleshooting</a>
+</li>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">Certificates</h1>
+
+<div class="content">
+
+<h2 id="trusted-certificates">Trusted Certificates</h2>
+<p>The Things Stack will be configured with Transport Layer Security (TLS) and HTTPS. This requires a TLS certificate and a corresponding key. In this guide we&rsquo;ll request a free, trusted certificate from <a href="https://letsencrypt.org/getting-started/">Let&rsquo;s Encrypt</a>, but if you already have a certificate (<code>cert.pem</code>) and key (<code>key.pem</code>), you can also use those.</p>
+<h3 id="automatic-certificate-management-acme">Automatic Certificate Management (ACME)</h3>
+<p>The Things Stack can be configured to automatically retrieve and update Let&rsquo;s Encrypt certificates. Assuming you followed the <a href="thethingsindustries.com/docs/getting-started/installation/configuration/">configuration</a> steps, create an <code>acme</code> directory where The Things Stack can store the certificate data:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mkdir ./acme
+$ sudo chown 886:886 ./acme
+</code></pre></div><p>Your directory should look like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">acme/
+docker-compose.yml          <span class="c1"># defines Docker services for running The Things Stack</span>
+config/
+└── stack/
+    └── ttn-lw-stack-docker.yml    <span class="c1"># configuration file for The Things Stack</span>
+</code></pre></div><blockquote>
+<p><code>886</code> is the uid and the gid of the user that runs The Things Stack in the Docker container. If you don&rsquo;t set these permissions, you&rsquo;ll get an error saying something like <code>open /var/lib/acme/acme_account+key&lt;...&gt;: permission denied</code>.</p>
+</blockquote>
+<h3 id="certificates-from-a-certificate-authority">Certificates from a Certificate Authority</h3>
+<p>If you want to use the certificate (<code>cert.pem</code>) and key (<code>key.pem</code>) that you already have, you also need to set these permissions.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo chown 886:886 ./cert.pem ./key.pem
+</code></pre></div><p>Your directory should look like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cert.pem
+key.pem
+docker-compose.yml          <span class="c1"># defines Docker services for running The Things Stack</span>
+config/
+└── stack/
+    └── ttn-lw-stack-docker.yml    <span class="c1"># configuration file for The Things Stack</span>
+</code></pre></div><blockquote>
+<p>If you don&rsquo;t set these permissions, you&rsquo;ll get an error saying something like <code>/run/secrets/key.pem: permission denied</code>.</p>
+</blockquote>
+<h2 id="custom-certificate-authority">Custom Certificate Authority</h2>
+<p>To use TLS on a local or offline deployment, you can use your own Certificate Authority. In order to set that up, you can use CloudFlare&rsquo;s PKI/TLS toolkit, <code>cfssl</code>. Installation instructions can be found <a href="https://github.com/cloudflare/cfssl#installation">in the README of <code>cfssl</code></a>.</p>
+<p>Write the configuration for your CA to <code>ca.json</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;names&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="nt">&#34;C&#34;</span><span class="p">:</span> <span class="s2">&#34;NL&#34;</span><span class="p">,</span> <span class="nt">&#34;ST&#34;</span><span class="p">:</span> <span class="s2">&#34;Noord-Holland&#34;</span><span class="p">,</span> <span class="nt">&#34;L&#34;</span><span class="p">:</span> <span class="s2">&#34;Amsterdam&#34;</span><span class="p">,</span> <span class="nt">&#34;O&#34;</span><span class="p">:</span> <span class="s2">&#34;The Things Demo&#34;</span><span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div><p>Then use the following command to generate the CA key and certificate:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ cfssl genkey -initca ca.json <span class="p">|</span> cfssljson -bare ca
+</code></pre></div><p>Now write the configuration for your certificate to <code>cert.json</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;hosts&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;thethings.example.com&#34;</span><span class="p">],</span>
+  <span class="nt">&#34;names&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span><span class="nt">&#34;C&#34;</span><span class="p">:</span> <span class="s2">&#34;NL&#34;</span><span class="p">,</span> <span class="nt">&#34;ST&#34;</span><span class="p">:</span> <span class="s2">&#34;Noord-Holland&#34;</span><span class="p">,</span> <span class="nt">&#34;L&#34;</span><span class="p">:</span> <span class="s2">&#34;Amsterdam&#34;</span><span class="p">,</span> <span class="nt">&#34;O&#34;</span><span class="p">:</span> <span class="s2">&#34;The Things Demo&#34;</span><span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div><p>And run the following command to generate the server key and certificate:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ cfssl gencert -ca ca.pem -ca-key ca-key.pem cert.json <span class="p">|</span> cfssljson -bare cert
+</code></pre></div><p>The next steps assume the certificate key is called <code>key.pem</code>, so you&rsquo;ll need to rename <code>cert-key.pem</code> to <code>key.pem</code>.</p>
+<p>Your directory should look like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cert.pem
+key.pem
+ca.pem
+docker-compose.yml          <span class="c1"># defines Docker services for running The Things Stack</span>
+config/
+└── stack/
+    └── ttn-lw-stack-docker.yml    <span class="c1"># configuration file for The Things Stack</span>
+</code></pre></div>
+</div>
+
+<script>window.emojicom_widget = { campaign: "" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+<div class="is-clearfix">
+<a class="button is-pulled-left" href="thethingsindustries.com/docs/getting-started/installation/configuration/">← Configuration</a>
+<a class="button is-pulled-right" href="thethingsindustries.com/docs/getting-started/installation/running-the-stack/">Running The Things Stack →</a>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer has-background-primary">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="thethingsindustries.com/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/devices/">Devices</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsNetwork/lorawan-stack">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="has-text-light is-size-7">
+  Last changed by Ben Olayinka on 22 Oct 2020.
+  <br>
+  <a href="https://github.com/TheThingsNetwork/lorawan-stack/commit/6b4daa186a9360e72e50edfe36c09fa7cdf05c68">
+      Merge pull request #31 from TheThingsIndustries/util/build-workflow
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/default/doc/content/getting-started/installation/certificates.md" class="button is-primary is-small is-inverted is-outlined">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="/thethingsindustries.com/docs/js/theme.min.4feb1389331adbef9047157f884dbdbd63af1c61ac83f327e60eef42f999cb26.js" integrity="sha256-T&#43;sTiTMa2&#43;&#43;QRxV/iE29vWOvHGGsg/Mn5g7vQvmZyyY="></script><script>
+  window.intercomSettings = {
+    app_id: "",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

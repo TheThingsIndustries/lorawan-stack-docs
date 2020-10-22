@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Tenant APIs | The Things Stack for LoRaWAN</title>
+  <link rel="alternate icon" href="/thethingsindustries.com/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/thethingsindustries.com/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/thethingsindustries.com/docs/favicon.svg">
+  <link rel="stylesheet" href="/thethingsindustries.com/docs/css/theme.min.f73831f1cd2827cc6e72a8e0df5a006e289e15ed508da505203eb0ef3f9e4238.css" integrity="sha256-9zgx8c0oJ8xucqjg31oAbiieFe1QjaUFID6w7z&#43;eQjg="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Tenant APIs">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Tenant APIs">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="thethingsindustries.com/docs/reference/api/tenant/">
+  <meta name="twitter:title" content="Tenant APIs" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/thethingsindustries.com/docs/">
+        <img src="/thethingsindustries.com/docs/img/TTS-horizontal-logo.svg">
+        <p class="navbar-item is-size-7">v3.10.0-dev</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="thethingsindustries.com/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/devices/">Devices</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="button is-primary" href="thethingsindustries.com/docs/download/">Get The Things Stack</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="search-container">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <div class="field has-addons has-addons-centered">
+            <div class="control">
+              <input class="input search-bar" id="search-input" type="text" placeholder="Search" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: "",
+indexName: "thethingsstack",
+inputSelector: '#search-input',
+debug: false 
+});
+</script>
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">API</h2>
+
+<ul class="menu-list">
+<a href="thethingsindustries.com/docs/reference/api/" class="">Overview</a>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/authentication/" class="">Authentication</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/application/" class="">Application APIs</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/application_pub_sub/" class="">Application Pub/Sub APIs</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/application_server/" class="">Application Server APIs</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/application_webhooks/" class="">Application Webhook APIs</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/end_device/" class="">End Device APIs</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/end_device_claiming/" class="">End Device Claiming APIs</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/events/" class="">Events API</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/gateway/" class="">Gateway APIs</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/gateway_server/" class="">Gateway Server APIs</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/gateway_server_mqtt/" class="">Gateway Server MQTT</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/network_server/" class="">Network Server APIs</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/organization/" class="">Organization APIs</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/tenant/" class="is-active">Tenant APIs</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/user/" class="">User APIs</a>
+</li>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">Tenant APIs</h1>
+
+<div class="content">
+
+  
+  
+  
+
+
+  
+
+  
+
+
+<div class="notification is-primary">
+  <h3 class="has-text-light">Enterprise and Cloud Only</h3>
+  <p>The following instructions apply to Enterprise and Cloud distributions. See the <a href="/download">downloads page</a> for a feature breakdown of distributions of The Things Stack.</p>
+</div>
+
+
+
+<h2 id="authentication">Authentication</h2>
+<p>Unlike the other services, the tenant services do <strong>not</strong> accept API keys or OAuth access tokens. Instead, authentication is done with a &ldquo;tenant admin key&rdquo; that is <a href="thethingsindustries.com/docs/reference/configuration/identity-server/#tenant-administration-options">configured in the Identity Server</a></p>
+<ul>
+<li>Usage with HTTP <code>Authorization</code> Header: <code>TenantAdminKey XXXXX</code></li>
+<li>Usage with gRPC <a href="https://grpc.io/docs/guides/auth.html#authentication-api">call credentials</a> (in the <code>authorization</code> header): <code>TenantAdminKey XXXXX</code></li>
+</ul>
+<h2 id="the-tenantregistry-service">The <code>TenantRegistry</code> service</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>TenantRegistry.Create</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:CreateTenantRequest"><code>CreateTenantRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:Tenant"><code>Tenant</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/tenants</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>TenantRegistry.Get</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GetTenantRequest"><code>GetTenantRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:Tenant"><code>Tenant</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/tenants/{tenant_ids.tenant_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>TenantRegistry.GetRegistryTotals</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GetTenantRegistryTotalsRequest"><code>GetTenantRegistryTotalsRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:TenantRegistryTotals"><code>TenantRegistryTotals</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/tenants/{tenant_ids.tenant_id}/registry-totals</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>TenantRegistry.List</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:ListTenantsRequest"><code>ListTenantsRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:Tenants"><code>Tenants</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/tenants</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>TenantRegistry.Update</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:UpdateTenantRequest"><code>UpdateTenantRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:Tenant"><code>Tenant</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>PUT</code> <code>/api/v3/tenants/{tenant.ids.tenant_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>TenantRegistry.Delete</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:TenantIdentifiers"><code>TenantIdentifiers</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>DELETE</code> <code>/api/v3/tenants/{tenant_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="messages">Messages</h2>
+<h3 id="message:Tenant">Message <code>Tenant</code></h3>
+<p>Tenant is the message that defines a Tenant in the network.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 175px">Field</th>
+      <th style="width: 250px">Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>ids</code>
+      </td>
+      <td><a href="#message:TenantIdentifiers"><code>TenantIdentifiers</code></a></td>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>created_at</code>
+      </td>
+      <td><code>google.protobuf.Timestamp</code></td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>updated_at</code>
+      </td>
+      <td><code>google.protobuf.Timestamp</code></td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>name</code>
+      </td>
+      <td><code>string</code></td>
+      <td>
+          <p><code>max_len</code>: <code>50</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>description</code>
+      </td>
+      <td><code>string</code></td>
+      <td>
+          <p><code>max_len</code>: <code>2000</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>attributes</code>
+      </td>
+      <td>map of <code>string</code> to <code>string</code></td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>contact_info</code>
+      </td>
+      <td>repeated <code>ttn.lorawan.v3.ContactInfo</code></td>
+      <td>
+        
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>max_applications</code>
+      </td>
+      <td><code>google.protobuf.UInt64Value</code></td>
+      <td>
+          <p>If set, restricts the maximum number of applications that can be created.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>max_clients</code>
+      </td>
+      <td><code>google.protobuf.UInt64Value</code></td>
+      <td>
+          <p>If set, restricts the maximum number of clients that can be created.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>max_end_devices</code>
+      </td>
+      <td><code>google.protobuf.UInt64Value</code></td>
+      <td>
+          <p>If set, restricts the maximum number of end_devices that can be created.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>max_gateways</code>
+      </td>
+      <td><code>google.protobuf.UInt64Value</code></td>
+      <td>
+          <p>If set, restricts the maximum number of gateways that can be created.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>max_organizations</code>
+      </td>
+      <td><code>google.protobuf.UInt64Value</code></td>
+      <td>
+          <p>If set, restricts the maximum number of organizations that can be created.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>max_users</code>
+      </td>
+      <td><code>google.protobuf.UInt64Value</code></td>
+      <td>
+          <p>If set, restricts the maximum number of users that can be created.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>state</code>
+      </td>
+      <td><code>ttn.lorawan.v3.State</code></td>
+      <td>
+          <p>The reviewing state of the tenant.
+This field can only be modified by tenant admins.</p>
+          <p><code>defined_only</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>capabilities</code>
+      </td>
+      <td><code>google.protobuf.Struct</code></td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>configuration</code>
+      </td>
+      <td><a href="#message:Configuration"><code>Configuration</code></a></td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>billing</code>
+      </td>
+      <td><a href="#message:Billing"><code>Billing</code></a></td>
+      <td>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "ids": {},
+  "created_at": "0001-01-01T00:00:00Z",
+  "updated_at": "0001-01-01T00:00:00Z",
+  "name": "",
+  "description": "",
+  "attributes": {},
+  "contact_info": [],
+  "max_applications": null,
+  "max_clients": null,
+  "max_end_devices": null,
+  "max_gateways": null,
+  "max_organizations": null,
+  "max_users": null,
+  "state": "STATE_REQUESTED",
+  "capabilities": {},
+  "configuration": {},
+  "billing": {},
+}</code></pre>
+</details>
+
+<h3 id="message:TenantIdentifiers">Message <code>TenantIdentifiers</code></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 175px">Field</th>
+      <th style="width: 250px">Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>tenant_id</code>
+      </td>
+      <td><code>string</code></td>
+      <td>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "tenant_id": "",
+}</code></pre>
+</details>
+
+<h3 id="message:Tenants">Message <code>Tenants</code></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 175px">Field</th>
+      <th style="width: 250px">Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>tenants</code>
+      </td>
+      <td>repeated <a href="#message:Tenant"><code>Tenant</code></a></td>
+      <td>
+        
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "tenants": [],
+}</code></pre>
+</details>
+
+<h3 id="message:CreateTenantRequest">Message <code>CreateTenantRequest</code></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 175px">Field</th>
+      <th style="width: 250px">Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>tenant</code>
+      </td>
+      <td><a href="#message:Tenant"><code>Tenant</code></a></td>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>initial_user</code>
+      </td>
+      <td><code>ttn.lorawan.v3.User</code></td>
+      <td>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "tenant": {},
+  "initial_user": {},
+}</code></pre>
+</details>
+
+<h3 id="message:GetTenantRequest">Message <code>GetTenantRequest</code></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 175px">Field</th>
+      <th style="width: 250px">Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>tenant_ids</code>
+      </td>
+      <td><a href="#message:TenantIdentifiers"><code>TenantIdentifiers</code></a></td>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>field_mask</code>
+      </td>
+      <td><code>google.protobuf.FieldMask</code></td>
+      <td>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "tenant_ids": {},
+  "field_mask": {},
+}</code></pre>
+</details>
+
+<h3 id="message:GetTenantRegistryTotalsRequest">Message <code>GetTenantRegistryTotalsRequest</code></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 175px">Field</th>
+      <th style="width: 250px">Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>tenant_ids</code>
+      </td>
+      <td><a href="#message:TenantIdentifiers"><code>TenantIdentifiers</code></a></td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>field_mask</code>
+      </td>
+      <td><code>google.protobuf.FieldMask</code></td>
+      <td>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "tenant_ids": {},
+  "field_mask": {},
+}</code></pre>
+</details>
+
+<h3 id="message:TenantRegistryTotals">Message <code>TenantRegistryTotals</code></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 175px">Field</th>
+      <th style="width: 250px">Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>applications</code>
+      </td>
+      <td><code>uint64</code></td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>clients</code>
+      </td>
+      <td><code>uint64</code></td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>end_devices</code>
+      </td>
+      <td><code>uint64</code></td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>gateways</code>
+      </td>
+      <td><code>uint64</code></td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>organizations</code>
+      </td>
+      <td><code>uint64</code></td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>users</code>
+      </td>
+      <td><code>uint64</code></td>
+      <td>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "applications": 0,
+  "clients": 0,
+  "end_devices": 0,
+  "gateways": 0,
+  "organizations": 0,
+  "users": 0,
+}</code></pre>
+</details>
+
+<h3 id="message:ListTenantsRequest">Message <code>ListTenantsRequest</code></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 175px">Field</th>
+      <th style="width: 250px">Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>field_mask</code>
+      </td>
+      <td><code>google.protobuf.FieldMask</code></td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>order</code>
+      </td>
+      <td><code>string</code></td>
+      <td>
+          <p>Order the results by this field path (must be present in the field mask).
+Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
+          <p><code>in</code>: <code>[ tenant_id -tenant_id name -name created_at -created_at]</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>limit</code>
+      </td>
+      <td><code>uint32</code></td>
+      <td>
+          <p>Limit the number of results per page.</p>
+          <p><code>lte</code>: <code>1000</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>page</code>
+      </td>
+      <td><code>uint32</code></td>
+      <td>
+          <p>Page number for pagination. 0 is interpreted as 1.</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "field_mask": {},
+  "order": "",
+  "limit": 0,
+  "page": 0,
+}</code></pre>
+</details>
+
+<h3 id="message:UpdateTenantRequest">Message <code>UpdateTenantRequest</code></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 175px">Field</th>
+      <th style="width: 250px">Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <code>tenant</code>
+      </td>
+      <td><a href="#message:Tenant"><code>Tenant</code></a></td>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>field_mask</code>
+      </td>
+      <td><code>google.protobuf.FieldMask</code></td>
+      <td>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "tenant": {},
+  "field_mask": {},
+}</code></pre>
+</details>
+
+
+</div>
+
+<script>window.emojicom_widget = { campaign: "" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+<div class="is-clearfix">
+<a class="button is-pulled-left" href="thethingsindustries.com/docs/reference/api/organization/">← Organization APIs</a>
+<a class="button is-pulled-right" href="thethingsindustries.com/docs/reference/api/user/">User APIs →</a>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer has-background-primary">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="thethingsindustries.com/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/devices/">Devices</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsNetwork/lorawan-stack">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="has-text-light is-size-7">
+  Last changed by Ben Olayinka on 22 Oct 2020.
+  <br>
+  <a href="https://github.com/TheThingsNetwork/lorawan-stack/commit/6b4daa186a9360e72e50edfe36c09fa7cdf05c68">
+      Merge pull request #31 from TheThingsIndustries/util/build-workflow
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/default/doc/content/reference/api/tenant.md" class="button is-primary is-small is-inverted is-outlined">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="/thethingsindustries.com/docs/js/theme.min.4feb1389331adbef9047157f884dbdbd63af1c61ac83f327e60eef42f999cb26.js" integrity="sha256-T&#43;sTiTMa2&#43;&#43;QRxV/iE29vWOvHGGsg/Mn5g7vQvmZyyY="></script><script>
+  window.intercomSettings = {
+    app_id: "",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

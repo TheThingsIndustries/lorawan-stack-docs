@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Post Deployment Configuration | The Things Stack for LoRaWAN</title>
+  <link rel="alternate icon" href="/thethingsindustries.com/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/thethingsindustries.com/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/thethingsindustries.com/docs/favicon.svg">
+  <link rel="stylesheet" href="/thethingsindustries.com/docs/css/theme.min.f73831f1cd2827cc6e72a8e0df5a006e289e15ed508da505203eb0ef3f9e4238.css" integrity="sha256-9zgx8c0oJ8xucqjg31oAbiieFe1QjaUFID6w7z&#43;eQjg="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Post Deployment Configuration">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Post Deployment Configuration">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="thethingsindustries.com/docs/getting-started/aws/ami/post-deployment/">
+  <meta name="twitter:title" content="Post Deployment Configuration" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/thethingsindustries.com/docs/">
+        <img src="/thethingsindustries.com/docs/img/TTS-horizontal-logo.svg">
+        <p class="navbar-item is-size-7">v3.10.0-dev</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="thethingsindustries.com/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/devices/">Devices</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="button is-primary" href="thethingsindustries.com/docs/download/">Get The Things Stack</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="search-container">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <div class="field has-addons has-addons-centered">
+            <div class="control">
+              <input class="input search-bar" id="search-input" type="text" placeholder="Search" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: "",
+indexName: "thethingsstack",
+inputSelector: '#search-input',
+debug: false 
+});
+</script>
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">AWS Marketplace AMI</h2>
+
+<ul class="menu-list">
+<a href="thethingsindustries.com/docs/getting-started/aws/ami/" class="">Overview</a>
+<li>
+  <a href="thethingsindustries.com/docs/getting-started/aws/ami/deployment-guide/" class="">Deployment Guide</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/getting-started/aws/ami/post-deployment/" class="is-active">Post Deployment Configuration</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/getting-started/aws/ami/troubleshooting/" class="">Troubleshooting</a>
+</li>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">Post Deployment Configuration</h1>
+
+<div class="content">
+
+<p>This section provides the information necessary to get started with The Things Enterprise Stack after it is deployed via <a href="https://aws.amazon.com/marketplace/pp/The-Things-Industries-The-Things-Enterprise-Stack/B081HZKDJ4">AWS Marketplace</a> using AWS CloudFormation.</p>
+<h2 id="dns-configuration">DNS Configuration</h2>
+<p>In order to access the Console/API of the The Things Stack, the domain name chosen during deployment must be mapped to the public IP address of the CloudFormation stack. This section provides details on how to do that.</p>
+<ol>
+<li>In AWS Console and open the CloudFormation resource and click on your recently deployed stack.</li>
+<li>Navigate to the <strong>Outputs</strong> tab and copy the value of the <strong>PublicIP</strong> field.</li>
+</ol>
+<p>Now, login to the Domain Name Management window of the Domain Name Registrar to which your preferred Domain is registered. Create a DNS <strong>A</strong> record with the parameters shown below.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Record Type</strong></th>
+<th><strong>Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@</code></td>
+<td><code>A</code></td>
+<td><strong>PublicIP</strong></td>
+</tr>
+</tbody>
+</table>
+<p>If you are using a sub-domain,</p>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Record Type</strong></th>
+<th><strong>Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sub-domain</code></td>
+<td><code>A</code></td>
+<td><strong>PublicIP</strong></td>
+</tr>
+</tbody>
+</table>
+<p>For example, if your <strong>PublicIP</strong> value is <code>3.12.14.15</code> and your sub-domain is <code>lorawan.mycompany.com</code>, then navigate to the management tab for the domain <code>mycompany.com</code> and perform the following mapping</p>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th><strong>Record Type</strong></th>
+<th><strong>Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>lorawan</code></td>
+<td><code>A</code></td>
+<td>3.12.14.15</td>
+</tr>
+</tbody>
+</table>
+<p>There will be an initial propagation delay for this value to be updated. You can check the status via a DNS lookup using either an <a href="https://network-tools.webwiz.net/nslookup.htm">online tool</a> or using a command line tool (ex: <code>nslookup</code>).</p>
+<p>Once the domain has been propagated, the DNS Lookup will show that your Domain (or sub-domain) is pointing to the <strong>PublicIP</strong> value.</p>
+<h3 id="ssl-certificates">SSL Certificates</h3>
+<p>As a security measure, plaintext access to the Console/API is disabled. In order to serve requests securely, The Things Enterprise Stack has built-in support to automatically request, serve and renew SSL certificates.</p>
+<p>Apart from the DNS mapping above, no additional steps are necessary for this.</p>
+<h2 id="getting-started-using-the-console">Getting Started using the Console</h2>
+<p>Please check the <a href="thethingsindustries.com/docs/getting-started/console/">Console Guide</a> to get quickly started with The Things Enterprise Stack Console.</p>
+<h2 id="getting-started-using-the-command-line-interface-cli">Getting Started using the Command Line Interface (CLI)</h2>
+<p>Please check the <a href="thethingsindustries.com/docs/getting-started/cli/">CLI Guide</a> to get quickly started with The Things Enterprise Stack CLI.</p>
+<h2 id="ssh-access">SSH Access</h2>
+<p>In most cases, you will interact with The Things Enterprise Stack only via the Console or the CLI. However, in case there is a need to directly access the EC2 instance, there is an option to do so via SSH.</p>
+<p>SSH access is possible only via the IP addresses set using the <strong>Restrict SSH Access to IP Range</strong> parameter during deployment. Also, the SSH client needs access to the private key corresponding to the public key that was chosen in the <strong>SSH Key</strong> parameter during deployment. The SSH username is <code>ec2-user</code>.</p>
+<p>For example, you can use the OpenSSH client via the terminal and login using:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh -i &lt;private-key-file&gt; ec2-user@PublicIP
+</code></pre></div><p>Upon accessing the machine, navigate to the <code>tti</code> directory:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> /tti
+</code></pre></div><p>This directory is structured as follows:</p>
+<pre><code>├── acme                        # contains SSL certificates and related files
+├── bootstrap                   # contains logs generated during deployment and restarts
+└── lorawan-stack
+    ├── config.yml              # The Things Enterprise Stack configuration
+    ├── environment             # additional environment variables
+    ├── lorawan-frequency-plans # contains a local copy of the LoRaWAN Frequency Plans Repository
+    ├── public                  # contains the static assets
+    └── tti-lw-stack            # The Things Enterprise Stack binary
+</code></pre><p>The Things Enterprise Stack binary is run as a <code>systemd</code> service. In order to check the logs, run the following:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo journalctl -f -u lorawan-stack.service
+</code></pre></div><h2 id="routing-lorawan-traffic">Routing LoRaWAN Traffic</h2>
+<p>Now that your stack has been successfully deployed, let&rsquo;s look at how to connect a LoRaWAN Gateway, Register a LoRaWAN Device and read traffic from this device.</p>
+<h3 id="connecting-a-gateway">Connecting a Gateway</h3>
+<p>Please check our extensive guides on <a href="thethingsindustries.com/docs/gateways/">Connecting Gateways</a> for the particular brand/model of your gateway.</p>
+<h3 id="registering-a-device">Registering a Device</h3>
+<p>Please check the guide on <a href="thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a>.</p>
+<h2 id="aws-iot">AWS IoT</h2>
+<p>The Things Enterprise Stack supports publishing of uplink messages directly to the <a href="https://aws.amazon.com/iot/">AWS IoT suite</a>. In order for this to work, the <strong>AWS IoT Telemetry</strong> option in the CloudFormation template must be set to <strong>true</strong> during the deployment phase.</p>
+<p>Please check the guide on <a href="thethingsindustries.com/docs/integrations/aws-iot/application-server-telemetry/">AWS IoT</a> for more information.</p>
+<h2 id="updating-the-cloudformation-stack">Updating the CloudFormation Stack</h2>
+<p>We recommend using <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html">Change Sets</a> to to update the CloudFormation Stack.</p>
+<p>On the AWS Console, open the <strong>CloudFormation</strong> service, navigate to the <strong>Change sets</strong> tab and select <strong>Create change set</strong>. There are two choices that can be made here:</p>
+<ul>
+<li>Use current template: Choose this option to update input parameters on an existing template.</li>
+<li>Replace current template: Choose this option to use a new template on the existing deployment. This option should be used to apply new versions of The Things Enterprise Stack that are delivered as new version of the CloudFormation template.</li>
+</ul>
+<p>Once the necessary options are updated, select the <strong>Create Change Set</strong> option. This will create a change set that describes the resources that will be updated by this change and if any of these resources need to be replaced.</p>
+<p>After confirming the changes, select <strong>Execute</strong>. Depending on the resources, this will take some time to complete and can be tracked using the <strong>Events</strong> tab on the AWS Console.</p>
+<h2 id="manual-upgrade-of-databases-amazon-rds-and-elasticache-using-snapshots">Manual Upgrade of Databases (Amazon RDS and ElastiCache) using snapshots</h2>
+<p>The update of certain fields of the CloudFormation stack necessitates the recreation of the database. AWS does not automatically migrate the data and hence, this must be done manually. A disclaimer is added to such fields in the CloudFormation template description.</p>
+<p>In order to migrate the database without the loss of data, first create a snapshot of your database before running a change set on these fields.</p>
+<ul>
+<li>For RDS, navigate to <strong>RDS</strong> &gt; <strong>Snapshots</strong> on the AWS Console and select <strong>Take Snapshot</strong>.</li>
+<li>For Redis (ElastiCache), navigate to <strong>ElastiCache</strong> on the AWS Console and select your Redis Replication Group and select <strong>Backup</strong> option.</li>
+</ul>
+<p>Now run a change set on CloudFormation.</p>
+<ul>
+<li>For RDS, enter the ARN (Amazon Resource Name) of the snapshot into the <strong>Amazon RDS Snapshot</strong> field and run the change set.</li>
+<li>For Redis (ElastiCache), enter the Name of the backup into the <strong>Amazon RDS Database Name</strong> and run the change set.</li>
+</ul>
+<p>The following section contains some basic troubleshooting information.</p>
+
+</div>
+
+
+
+<script>window.emojicom_widget = { campaign: "" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+
+
+<div class="is-clearfix">
+<a class="button is-pulled-left" href="thethingsindustries.com/docs/getting-started/aws/ami/deployment-guide/">← Deployment Guide</a>
+<a class="button is-pulled-right" href="thethingsindustries.com/docs/getting-started/aws/ami/troubleshooting/">Troubleshooting →</a>
+</div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer has-background-primary">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="thethingsindustries.com/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/devices/">Devices</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsNetwork/lorawan-stack">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="has-text-light is-size-7">
+  Last changed by Ben Olayinka on 22 Oct 2020.
+  <br>
+  <a href="https://github.com/TheThingsNetwork/lorawan-stack/commit/6b4daa186a9360e72e50edfe36c09fa7cdf05c68">
+      Merge pull request #31 from TheThingsIndustries/util/build-workflow
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/default/doc/content/getting-started/aws/ami/post-deployment/_index.md" class="button is-primary is-small is-inverted is-outlined">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="/thethingsindustries.com/docs/js/theme.min.4feb1389331adbef9047157f884dbdbd63af1c61ac83f327e60eef42f999cb26.js" integrity="sha256-T&#43;sTiTMa2&#43;&#43;QRxV/iE29vWOvHGGsg/Mn5g7vQvmZyyY="></script><script>
+  window.intercomSettings = {
+    app_id: "",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

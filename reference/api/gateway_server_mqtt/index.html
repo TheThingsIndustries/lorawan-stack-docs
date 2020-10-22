@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Gateway Server MQTT | The Things Stack for LoRaWAN</title>
+  <link rel="alternate icon" href="/thethingsindustries.com/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/thethingsindustries.com/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/thethingsindustries.com/docs/favicon.svg">
+  <link rel="stylesheet" href="/thethingsindustries.com/docs/css/theme.min.f73831f1cd2827cc6e72a8e0df5a006e289e15ed508da505203eb0ef3f9e4238.css" integrity="sha256-9zgx8c0oJ8xucqjg31oAbiieFe1QjaUFID6w7z&#43;eQjg="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Gateway Server MQTT">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Gateway Server MQTT">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="thethingsindustries.com/docs/reference/api/gateway_server_mqtt/">
+  <meta name="twitter:title" content="Gateway Server MQTT" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/thethingsindustries.com/docs/">
+        <img src="/thethingsindustries.com/docs/img/TTS-horizontal-logo.svg">
+        <p class="navbar-item is-size-7">v3.10.0-dev</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="thethingsindustries.com/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/devices/">Devices</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="button is-primary" href="thethingsindustries.com/docs/download/">Get The Things Stack</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="search-container">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <div class="field has-addons has-addons-centered">
+            <div class="control">
+              <input class="input search-bar" id="search-input" type="text" placeholder="Search" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: "",
+indexName: "thethingsstack",
+inputSelector: '#search-input',
+debug: false 
+});
+</script>
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">API</h2>
+
+<ul class="menu-list">
+<a href="thethingsindustries.com/docs/reference/api/" class="">Overview</a>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/authentication/" class="">Authentication</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/application/" class="">Application APIs</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/application_pub_sub/" class="">Application Pub/Sub APIs</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/application_server/" class="">Application Server APIs</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/application_webhooks/" class="">Application Webhook APIs</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/end_device/" class="">End Device APIs</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/end_device_claiming/" class="">End Device Claiming APIs</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/events/" class="">Events API</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/gateway/" class="">Gateway APIs</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/gateway_server/" class="">Gateway Server APIs</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/gateway_server_mqtt/" class="is-active">Gateway Server MQTT</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/network_server/" class="">Network Server APIs</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/organization/" class="">Organization APIs</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/tenant/" class="">Tenant APIs</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/api/user/" class="">User APIs</a>
+</li>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">Gateway Server MQTT</h1>
+
+<div class="content">
+
+<p>This reference describes the MQTT protocol used by the Gateway Server. Packet forwarders implementing the MQTT protocols are specific for The Things Stack.</p>
+<p>The MQTT protocol can be used to develop custom packet forwarders or gateway bridges for exchanging traffic between a gateway and The Things Stack, or easily simulating gateway traffic for testing purposes. It is an alternative to the <a href="https://doc.sm.tc/station/index.html">Basic Station</a> and the <a href="https://github.com/Lora-net/packet_forwarder/blob/master/PROTOCOL.TXT">Semtech UDP</a> protocols.</p>
+<h2 id="multi-tenancy">Multi-Tenancy</h2>
+<p>On multi-tenant environments such as Cloud, endoints include the tenant id, e.g <code>gateway1@tenant1</code>. On single tenant environments such as Open Source, the tenant id can be removed, i.e <code>gateway1</code>.</p>
+<h2 id="mqtt-introduction">MQTT Introduction</h2>
+<p>MQTT is a server-client protocol for exchanging messages. Clients can connect to the server and <strong>publish</strong> messages (data) under a specific <strong>topic</strong>. They can also <strong>subscribe</strong> to a <strong>topic</strong>, and thus receive all messages that are published under that topic (by other clients, or the MQTT server itself).</p>
+<p>The Gateway Server is the MQTT server, and gateways connect to the Gateway Server as MQTT clients. The gateway that connects is identified by the username that is used for authentication.</p>
+<h2 id="protocol-buffers">Protocol Buffers</h2>
+<p>To communicate with the MQTT protocol, the Gateway Server and the gateway are exchanging <a href="https://developers.google.com/protocol-buffers">Protocol Buffers</a>. The definitions of the Protocol Buffers can be found at the <a href="https://github.com/TheThingsNetwork/lorawan-stack">GitHub repository</a> of The Things Stack, under <a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/default/api/messages.proto"><strong>messages.proto</strong></a> and <a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/default/api/lorawan.proto"><strong>lorawan.proto</strong></a>.</p>
+<h2 id="connecting-to-the-gateway-server">Connecting to the Gateway Server</h2>
+<p>See <a href="thethingsindustries.com/docs/reference/networking/">Networking</a> for the default port of the MQTT server.</p>
+<p>The username is <code>&lt;gateway-id&gt;@&lt;tenant-id&gt;</code> (e.g. <code>gtw1@tenant1</code>), and the password is a gateway API key with the <code>RIGHT_GATEWAY_LINK</code> right enabled. You can generate this API key by following instructions in the <a href="thethingsindustries.com/docs/gateways/adding-gateways/#create-gateway-api-key">Creating Gateways</a> section.</p>
+<p>Authenticated clients get <strong>write-only</strong> access to the following topics:</p>
+<ul>
+<li><code>v3/&lt;gateway-id&gt;@&lt;tenant-id&gt;/up</code>: Used for sending uplink traffic to the Gateway Server.</li>
+<li><code>v3/&lt;gateway-id&gt;@&lt;tenant-id&gt;/status</code>: Used for sending gateway status messages to the Gateway Server.</li>
+<li><code>v3/&lt;gateway-id&gt;@&lt;tenant-id&gt;/down/ack</code>: Used for sending TxAck messages to the Gateway Server.</li>
+</ul>
+<p>Clients also get <strong>read-only</strong> access and should subscribe to the following topic:</p>
+<ul>
+<li><code>v3/&lt;gateway-id&gt;@&lt;tenant-id&gt;/down</code>: The Gateway Server publishes downlink message that the gateway should transmit.</li>
+</ul>
+<h2 id="disconnect-from-the-gateway-server">Disconnect from the Gateway Server</h2>
+<p>The gateway can disconnect by terminating the MQTT client connection.</p>
+<h2 id="uplink-messages">Uplink Messages</h2>
+<p>To forward uplink traffic to the Gateway Server, the MQTT client must publish a Protocol Buffer of type <code>ttnpb.UplinkMessage</code> under the topic <code>v3/&lt;gateway-id&gt;@&lt;tenant-id&gt;/up</code>.</p>
+<p>Below is an example that connects to the Gateway Server as <code>$GATEWAY_ID</code>, publishes an uplink message (Protocol Buffer stored as binary file <code>test-uplink-message</code>) and disconnects:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">GATEWAY_ID</span><span class="o">=</span><span class="s2">&#34;test-gtw@my-tenant&#34;</span>
+$ <span class="nb">export</span> <span class="nv">GATEWAY_API_KEY</span><span class="o">=</span><span class="s2">&#34;NNSXS.VEEBURF3KR77ZR...&#34;</span> <span class="c1"># API key with RIGHT_GATEWAY_LINK rights</span>
+$ mosquitto_pub <span class="se">\
+</span><span class="se"></span>    -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <span class="m">1882</span> <span class="se">\
+</span><span class="se"></span>    -u <span class="s2">&#34;</span><span class="nv">$GATEWAY_ID</span><span class="s2">&#34;</span> -P <span class="s2">&#34;</span><span class="nv">$GATEWAY_API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>    -t <span class="s2">&#34;v3/</span><span class="nv">$GATEWAY_ID</span><span class="s2">/up&#34;</span> -f test-uplink-message
+</code></pre></div><blockquote>
+<p>NOTE: Port 1882 is insecure. The TLS-enabled port 8882 should be used in a production setting.</p>
+</blockquote>
+<blockquote>
+<p>NOTE: The file <code>test-uplink-message</code> contains a Protocol Buffer of type <code>ttnpb.UplinkMessage</code> (binary, not JSON).</p>
+</blockquote>
+<h2 id="downlink-messages">Downlink Messages</h2>
+<p>The Gateway Server instructs the gateway to send a downlink packet by publishing a Protocol Buffer of type <code>ttnpb.GatewayDown</code> under the topic <code>v3/&lt;gateway-id&gt;@&lt;tenant-id&gt;/down</code>.</p>
+<p>The MQTT client must subscribe to this topic after connecting to the Gateway Server. It must also listen for incoming <code>ttnpb.GatewayDown</code> messages (which contain both the packet data payload as well as any desired transmission settings). Upon receiving a scheduling request, it must trasmit that message, and <a href="#txack-messages">send back a <code>TxAck</code> packet</a> on success.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">GATEWAY_ID</span><span class="o">=</span><span class="s2">&#34;test-gtw@my-tenant&#34;</span>
+$ <span class="nb">export</span> <span class="nv">GATEWAY_API_KEY</span><span class="o">=</span><span class="s2">&#34;NNSXS.VEEBURF3KR77ZR...&#34;</span> <span class="c1"># API key with RIGHT_GATEWAY_LINK rights</span>
+$ mosquitto_sub <span class="se">\
+</span><span class="se"></span>    -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <span class="m">1882</span> <span class="se">\
+</span><span class="se"></span>    -u <span class="s2">&#34;</span><span class="nv">$GATEWAY_ID</span><span class="s2">&#34;</span> -P <span class="s2">&#34;</span><span class="nv">$GATEWAY_API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>    -t <span class="s2">&#34;v3/</span><span class="nv">$GATEWAY_ID</span><span class="s2">/down&#34;</span> -v
+</code></pre></div><blockquote>
+<p>NOTE: Port 1882 is insecure. The TLS-enabled port 8882 should be used in a production setting.</p>
+</blockquote>
+<blockquote>
+<p>NOTE: The example above is not complete (as it does nothing with the scheduled downlink requests). It is only meant to showcase the MQTT client subscribing to the downlink topic.</p>
+</blockquote>
+<h2 id="gateway-status-messages">Gateway Status Messages</h2>
+<p>To forward a gateway status message to the Gateway Server, the MQTT client must publish a Protocol Buffer of type <code>ttnpb.GatewayStatus</code> under the topic <code>v3/&lt;gateway-id&gt;@&lt;tenant-id&gt;/status</code>.</p>
+<p>Below is an example that connects to the Gateway Server as <code>$GATEWAY_ID</code>, publishes a gateway status message (Protocol Buffer stored as binary file <code>test-gateway-status</code>) and disconnects:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">GATEWAY_ID</span><span class="o">=</span><span class="s2">&#34;test-gtw@my-tenant&#34;</span>
+$ <span class="nb">export</span> <span class="nv">GATEWAY_API_KEY</span><span class="o">=</span><span class="s2">&#34;NNSXS.VEEBURF3KR77ZR...&#34;</span> <span class="c1"># API key with RIGHT_GATEWAY_LINK rights</span>
+$ mosquitto_pub <span class="se">\
+</span><span class="se"></span>    -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <span class="m">1882</span> <span class="se">\
+</span><span class="se"></span>    -u <span class="s2">&#34;</span><span class="nv">$GATEWAY_ID</span><span class="s2">&#34;</span> -P <span class="s2">&#34;</span><span class="nv">$GATEWAY_API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>    -t <span class="s2">&#34;v3/</span><span class="nv">$GATEWAY_ID</span><span class="s2">/status&#34;</span> -f test-gateway-status
+</code></pre></div><blockquote>
+<p>NOTE: Port 1882 is insecure. The TLS-enabled port 8882 should be used in a production setting.</p>
+</blockquote>
+<blockquote>
+<p>NOTE: The file <code>test-gateway-status</code> contains a Protocol Buffer of type <code>ttnpb.GatewayStatus</code> (binary, not JSON).</p>
+</blockquote>
+<h2 id="txack-messages">TxAck Messages</h2>
+<p>To forward a <code>TxAck</code> packet to the Gateway Server, the MQTT client must publish a Protocol Buffer of type <code>ttnpb.TxAcknowledgement</code> under the topic <code>v3/&lt;gateway-id&gt;@&lt;tenant-id&gt;/down/ack</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">GATEWAY_ID</span><span class="o">=</span><span class="s2">&#34;test-gtw@my-tenant&#34;</span>
+$ <span class="nb">export</span> <span class="nv">GATEWAY_API_KEY</span><span class="o">=</span><span class="s2">&#34;NNSXS.VEEBURF3KR77ZR...&#34;</span> <span class="c1"># API key with RIGHT_GATEWAY_LINK rights</span>
+$ mosquitto_pub <span class="se">\
+</span><span class="se"></span>    -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <span class="m">1882</span> <span class="se">\
+</span><span class="se"></span>    -u <span class="s2">&#34;</span><span class="nv">$GATEWAY_ID</span><span class="s2">&#34;</span> -P <span class="s2">&#34;</span><span class="nv">$GATEWAY_API_KEY</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>    -t <span class="s2">&#34;v3/</span><span class="nv">$GATEWAY_ID</span><span class="s2">/down/ack&#34;</span> -f example-tx-ack
+</code></pre></div><blockquote>
+<p>NOTE: Port 1882 is insecure. The TLS-enabled port 8882 should be used in a production setting.</p>
+</blockquote>
+<blockquote>
+<p>NOTE: The example above is not complete (the TxAck should be sent in response to a successful downlink transmission). It is only meant to showcase the MQTT client sending a TxAck packet (contents of the <code>example-tx-ack</code> file) to the Gateway Server.</p>
+</blockquote>
+
+</div>
+
+<script>window.emojicom_widget = { campaign: "" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+<div class="is-clearfix">
+<a class="button is-pulled-left" href="thethingsindustries.com/docs/reference/api/gateway_server/">← Gateway Server APIs</a>
+<a class="button is-pulled-right" href="thethingsindustries.com/docs/reference/api/network_server/">Network Server APIs →</a>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer has-background-primary">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="thethingsindustries.com/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/devices/">Devices</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsNetwork/lorawan-stack">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="has-text-light is-size-7">
+  Last changed by Ben Olayinka on 22 Oct 2020.
+  <br>
+  <a href="https://github.com/TheThingsNetwork/lorawan-stack/commit/6b4daa186a9360e72e50edfe36c09fa7cdf05c68">
+      Merge pull request #31 from TheThingsIndustries/util/build-workflow
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/default/doc/content/reference/api/gateway_server_mqtt.md" class="button is-primary is-small is-inverted is-outlined">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="/thethingsindustries.com/docs/js/theme.min.4feb1389331adbef9047157f884dbdbd63af1c61ac83f327e60eef42f999cb26.js" integrity="sha256-T&#43;sTiTMa2&#43;&#43;QRxV/iE29vWOvHGGsg/Mn5g7vQvmZyyY="></script><script>
+  window.intercomSettings = {
+    app_id: "",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

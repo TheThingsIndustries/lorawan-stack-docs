@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>MQTT Client | The Things Stack for LoRaWAN</title>
+  <link rel="alternate icon" href="/thethingsindustries.com/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/thethingsindustries.com/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/thethingsindustries.com/docs/favicon.svg">
+  <link rel="stylesheet" href="/thethingsindustries.com/docs/css/theme.min.f73831f1cd2827cc6e72a8e0df5a006e289e15ed508da505203eb0ef3f9e4238.css" integrity="sha256-9zgx8c0oJ8xucqjg31oAbiieFe1QjaUFID6w7z&#43;eQjg="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="MQTT Client">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="MQTT Client">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="thethingsindustries.com/docs/integrations/pubsub/mqtt-client/">
+  <meta name="twitter:title" content="MQTT Client" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/thethingsindustries.com/docs/">
+        <img src="/thethingsindustries.com/docs/img/TTS-horizontal-logo.svg">
+        <p class="navbar-item is-size-7">v3.10.0-dev</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="thethingsindustries.com/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/devices/">Devices</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="button is-primary" href="thethingsindustries.com/docs/download/">Get The Things Stack</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="search-container">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <div class="field has-addons has-addons-centered">
+            <div class="control">
+              <input class="input search-bar" id="search-input" type="text" placeholder="Search" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: "",
+indexName: "thethingsstack",
+inputSelector: '#search-input',
+debug: false 
+});
+</script>
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">Pub/Sub</h2>
+
+<ul class="menu-list">
+<a href="thethingsindustries.com/docs/integrations/pubsub/" class="">Overview</a>
+<li>
+  <a href="thethingsindustries.com/docs/integrations/pubsub/mqtt-client/" class="is-active">MQTT Client</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/integrations/pubsub/nats-client/" class="">NATS Client</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/integrations/pubsub/message-types/" class="">Message Types</a>
+</li>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">MQTT Client</h1>
+
+<div class="content">
+
+<p>This section explains how to configure a Pub/Sub integration using the built-in MQTT client.</p>
+<p>Creating a Pub/Sub integration with the built in MQTT client requires you to have an MQTT server running with an available endpoint. <a href="https://mosquitto.org/">Mosquitto</a> is a popular open source MQTT Server you may use, but The Things Stack MQTT client works with any MQTT server.</p>
+<blockquote>
+<p>No API key is needed for Pub/Sub messaging. All messages received by the Application Server are assumed to be authorized, so be sure to configure appropriate security on your MQTT server.</p>
+</blockquote>
+<p>In your application select the <strong>Pub/Subs</strong> submenu from the <strong>Integrations</strong> side menu. Clicking on the <strong>+ Add Pub/Sub</strong> button will open the Pub/Sub creation screen.</p>
+<p>Give your Pub/Sub an <strong>ID</strong>, choose a <strong>Pub/Sub format</strong>, and enter a <strong>Base topic</strong> to subscribe or publish to.</p>
+<p>Select <strong>MQTT</strong> as provider.</p>
+<figure>
+    <img src="mqtt.png"
+         alt="Pub/Sub creation screen"/> 
+</figure>
+
+<p>If using client certificates, enable <strong>Secure</strong>. You will be asked to upload the <strong>Root CA certificate</strong>, the <strong>Client certificate</strong>, and the <strong>Client private key.</strong></p>
+<p>Enter the endpoint of the MQTT server in the <strong>Server URL</strong> field, including the protocol and port.</p>
+<p>Enter the <strong>Client ID</strong> the Application Server should use to authenticate.</p>
+<p>Enable <strong>Use credentials</strong> if your MQTT server uses password authentication. Enter the username and password the Application Server should authenticate with.</p>
+<figure>
+    <img src="mqtt-config.png"
+         alt="MQTT configuration"/> 
+</figure>
+
+<h2 id="message-types">Message Types</h2>
+<p>The Application Server can be configured to publish and subscribe to topics for individual events. See <a href="thethingsindustries.com/docs/integrations/pubsub/message-types/">Message Types</a> for more information about events and topics.</p>
+<p>After enabling events, click the <strong>Add Pub/Sub</strong> button to enable the integration.</p>
+<h2 id="subscribing-to-upstream-traffic">Subscribing to Upstream Traffic</h2>
+<p>The Application Server publishes messages for any enabled events. For example, when a device sends an uplink, an <code>uplink</code> message is published. To view these using a <code>mosquitto_sub</code> client connected to your MQTT server:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mosquitto_sub -h &lt;server_hostname&gt; -p &lt;port&gt; -t <span class="s1">&#39;#&#39;</span> -v
+<span class="c1"># base-topic/uplink {&#34;end_device_ids&#34;:{&#34;device_id&#34;:&#34;dev1&#34;,&#34;application_ids&#34;:{&#34;application_id&#34;:&#34;app1&#34;}},&#34;received_at&#34;:&#34;2020-05-12T12:23:07.087614Z&#34;,&#34;uplink_message&#34;:{&#34;session_key_id&#34;:&#34;AXIDznz4bnQqtW8T3NsIVg==&#34;,&#34;f_port&#34;:1,&#34;f_cnt&#34;:327,&#34;frm_payload&#34;:&#34;AQ==&#34;}}</span>
+</code></pre></div><h2 id="scheduling-downlinks">Scheduling Downlinks</h2>
+<p>You can schedule downlink messages by publishing to a topic. For example, using a <code>mosquitto_pub</code> client connected to your MQTT server:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mosquitto_pub -h &lt;server_hostname&gt; -p &lt;port&gt; -t <span class="s1">&#39;base-topic/push-subtopic&#39;</span> -m <span class="s1">&#39;{&#34;end_device_ids&#34;:{&#34;device_id&#34;:&#34;dev1&#34;,&#34;application_ids&#34;:{&#34;application_id&#34;:&#34;app1&#34;}},&#34;downlinks&#34;:[{&#34;f_port&#34;:1,&#34;frm_payload&#34;:&#34;AA==&#34;,&#34;priority&#34;:&#34;NORMAL&#34;}]}&#39;</span>
+</code></pre></div><p>Will push a downlink to the end device <code>dev1</code> of the application <code>app1</code> with a base64 encoded payload of <code>AA==</code>, if <code>push-subtopic</code>is configured as the Sub topic for Downlink queue push.</p>
+<p>This will also result in the following message being published by the Application Server:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Received on [base-topic/downlink-queued-subtopic] :</span> 
+<span class="s1">&#39;{&#34;end_device_ids&#34;:{&#34;device_id&#34;:&#34;dev1&#34;,&#34;application_ids&#34;:{&#34;application_id&#34;:&#34;app1&#34;}},&#34;correlation_ids&#34;:[&#34;as:downlink:01E84EAR5B4NM229NDKE0004J6&#34;],&#34;downlink_queued&#34;:{&#34;f_port&#34;:1,&#34;frm_payload&#34;:&#34;AA==&#34;,&#34;priority&#34;:&#34;NORMAL&#34;,&#34;correlation_ids&#34;:[&#34;as:downlink:01E84EAR5B4NM229NDKE0004J6&#34;]}}&#39;</span>
+</code></pre></div>
+</div>
+
+
+
+<script>window.emojicom_widget = { campaign: "" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+
+
+<div class="is-clearfix">
+<a class="button is-pulled-left" href="thethingsindustries.com/docs/integrations/pubsub/">← Pub/Sub</a>
+<a class="button is-pulled-right" href="thethingsindustries.com/docs/integrations/pubsub/nats-client/">NATS Client →</a>
+</div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer has-background-primary">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="thethingsindustries.com/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/devices/">Devices</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsNetwork/lorawan-stack">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="has-text-light is-size-7">
+  Last changed by Ben Olayinka on 22 Oct 2020.
+  <br>
+  <a href="https://github.com/TheThingsNetwork/lorawan-stack/commit/6b4daa186a9360e72e50edfe36c09fa7cdf05c68">
+      Merge pull request #31 from TheThingsIndustries/util/build-workflow
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/default/doc/content/integrations/pubsub/mqtt-client/_index.md" class="button is-primary is-small is-inverted is-outlined">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="/thethingsindustries.com/docs/js/theme.min.4feb1389331adbef9047157f884dbdbd63af1c61ac83f327e60eef42f999cb26.js" integrity="sha256-T&#43;sTiTMa2&#43;&#43;QRxV/iE29vWOvHGGsg/Mn5g7vQvmZyyY="></script><script>
+  window.intercomSettings = {
+    app_id: "",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

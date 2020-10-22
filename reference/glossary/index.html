@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Glossary | The Things Stack for LoRaWAN</title>
+  <link rel="alternate icon" href="/thethingsindustries.com/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/thethingsindustries.com/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/thethingsindustries.com/docs/favicon.svg">
+  <link rel="stylesheet" href="/thethingsindustries.com/docs/css/theme.min.f73831f1cd2827cc6e72a8e0df5a006e289e15ed508da505203eb0ef3f9e4238.css" integrity="sha256-9zgx8c0oJ8xucqjg31oAbiieFe1QjaUFID6w7z&#43;eQjg="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="Common terms and definitions">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Glossary">
+  <meta itemprop="description" content="Common terms and definitions">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Glossary">
+  <meta property="og:description" content="Common terms and definitions">
+  <meta property="og:url" content="thethingsindustries.com/docs/reference/glossary/">
+  <meta name="twitter:title" content="Glossary" />
+  <meta name="twitter:description" content="Common terms and definitions" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/thethingsindustries.com/docs/">
+        <img src="/thethingsindustries.com/docs/img/TTS-horizontal-logo.svg">
+        <p class="navbar-item is-size-7">v3.10.0-dev</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="thethingsindustries.com/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/devices/">Devices</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="button is-primary" href="thethingsindustries.com/docs/download/">Get The Things Stack</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="search-container">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <div class="field has-addons has-addons-centered">
+            <div class="control">
+              <input class="input search-bar" id="search-input" type="text" placeholder="Search" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: "",
+indexName: "thethingsstack",
+inputSelector: '#search-input',
+debug: false 
+});
+</script>
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">Glossary</h2>
+
+<ul class="menu-list">
+<a href="thethingsindustries.com/docs/reference/glossary/" class="is-active">Overview</a>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">Glossary</h1>
+
+<div class="content">
+
+<p>This reference contains common terms and definitions to help you find your way around The Things Stack.</p>
+<!-- terms come from /data/glossary. -->
+
+<dl class="glossary">
+  <dt id="activation-by-personalisation">
+    <span class="term">Activation by Personalisation</span>
+  </dt><dt id="abp">
+      <span class="term-abbr">
+        (ABP)
+      </span>
+    </dt><dd>Manually provisioning device keys to join a LoRaWAN network. Less flexible, less secure, and less scalable than OTAA, but sometimes useful during demos, to avoid waiting for a downlink window to join a network.</dd><dd><a href=https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page&#61;37>https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page=37</a></dd></dl>
+<dl class="glossary">
+  <dt id="activation-mode">
+    <span class="term">Activation Mode</span>
+  </dt><dd><strong>Over-the-Air Activation (OTAA)</strong> is the preferred and most secure way to connect a device. Devices perform a join-procedure with the network, during which a dynamic Device Address is assigned and security keys are negotiated with the device. <strong>Activation by Personalization (ABP)</strong> requires hardcoding the Device Address as well as the security keys in the device. This strategy might seem simpler, because you skip the join procedure, but it has downsides related to security. ABP also has the downside that devices can not switch network providers without manually changing keys in the device. <strong>Multicast</strong> is a virtual group of ABP devices which allows all devices to receive the same downlinks. Multicast groups do not support uplinks.</dd></dl>
+<dl class="glossary">
+  <dt id="adaptive-data-rate">
+    <span class="term">Adaptive Data Rate</span>
+  </dt><dt id="adr">
+      <span class="term-abbr">
+        (ADR)
+      </span>
+    </dt><dd>A mechanism for optimizing data rates, airtime and energy consumption in the network.</dd><dd><a href=https://www.thethingsnetwork.org/docs/lorawan/adaptive-data-rate.html>https://www.thethingsnetwork.org/docs/lorawan/adaptive-data-rate.html</a></dd></dl>
+<dl class="glossary">
+  <dt id="appeui">
+    <span class="term">AppEUI</span>
+  </dt><dt id="joineui">
+      <span class="term-alt">
+        (JoinEUI)
+      </span>
+    </dt><dd>In LoRaWAN specifications prior to 1.1, JoinEUI was called AppEUI. See JoinEUI.</dd><dd><a href=https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page&#61;33>https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page=33</a></dd></dl>
+<dl class="glossary">
+  <dt id="application">
+    <span class="term">Application</span>
+  </dt><dd>An Application in The Things Stack allows you to register LoRaWAN devices and manage data and integrations. Applications can be created via the Console or CLI.</dd><dd><a href=https://www.thethingsnetwork.org/docs/applications/>https://www.thethingsnetwork.org/docs/applications/</a></dd></dl>
+<dl class="glossary">
+  <dt id="application-id">
+    <span class="term">Application ID</span>
+  </dt><dt id="appid">
+      <span class="term-abbr">
+        (AppID)
+      </span>
+    </dt><dd>A unique, human-readable identifier for your application.</dd></dl>
+<dl class="glossary">
+  <dt id="application-key">
+    <span class="term">Application Key</span>
+  </dt><dt id="appkey">
+      <span class="term-abbr">
+        (AppKey)
+      </span>
+    </dt><dd>A device specific encryption key used during OTAA to derive the AppSKey (in LoRaWAN 1.1x) or both the NwkSKey and AppSKey in LoRaWAN 1.0x. This is usually pre provisioned by the device manufacturer, but can also be created by the user.</dd><dd><a href=https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page&#61;33>https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page=33</a></dd></dl>
+<dl class="glossary">
+  <dt id="application-session-key">
+    <span class="term">Application Session Key</span>
+  </dt><dt id="appskey">
+      <span class="term-abbr">
+        (AppSKey)
+      </span>
+    </dt><dd>After activation, this encryption key is used to secure messages which carry a payload.</dd></dl>
+<dl class="glossary">
+  <dt id="band">
+    <span class="term">Band</span>
+  </dt><dt id="frequency-band">
+      <span class="term-alt">
+        (Frequency Band)
+      </span>
+    </dt><dd>For LoRaWAN, a Band is a range of frequencies divided either in to dynamic channels (i.e. EU868) or fixed channels (i.e. US902, AU915). The LoRaWAN Regional Parameters specify which Bands are supported by LoRaWAN in a geographical area. Within a Band, there can be multiple complying Frequency Plans. Devices typically support one or more Bands in their hardware, and are configured for a particular Frequency Plan as part of activation.</dd><dd><a href=https://lora-alliance.org/sites/default/files/2020-01/rp_2-1.0.0_final_release.pdf>https://lora-alliance.org/sites/default/files/2020-01/rp_2-1.0.0_final_release.pdf</a></dd></dl>
+<dl class="glossary">
+  <dt id="bandwidth">
+    <span class="term">Bandwidth</span>
+  </dt><dd>LoRaWAN can use channels with a bandwidth of either 125 kHz, 250 kHz or 500 kHz, depending on the region or the Frequency Plan. Making the bandwidth 2x wider (from BW125 to BW250) allows you to send 2x more bytes in the same time.</dd><dd><a href=https://www.thethingsnetwork.org/docs/lorawan/modulation-data-rate.html>https://www.thethingsnetwork.org/docs/lorawan/modulation-data-rate.html</a></dd></dl>
+<dl class="glossary">
+  <dt id="class-a">
+    <span class="term">Class A</span>
+  </dt><dd>Class A devices support bi-directional communication between a device and a gateway. Uplink messages (from the device to the server) can be sent at any time (randomly). The device then opens two receive windows at specified times after an uplink transmission. The first receive window (Rx1) is set to 5 seconds and can be modified. The second receive window (Rx2) always comes 1 second after Rx1.</dd><dd><a href=https://www.thethingsnetwork.org/docs/lorawan/classes.html>https://www.thethingsnetwork.org/docs/lorawan/classes.html</a></dd></dl>
+<dl class="glossary">
+  <dt id="class-b">
+    <span class="term">Class B</span>
+  </dt><dd>Class B devices extend Class A by adding scheduled receive windows for downlink messages from the server. Using time-synchronized beacons transmitted by the gateway, the devices periodically open receive windows.</dd><dd><a href=https://www.thethingsnetwork.org/docs/lorawan/classes.html>https://www.thethingsnetwork.org/docs/lorawan/classes.html</a></dd></dl>
+<dl class="glossary">
+  <dt id="class-c">
+    <span class="term">Class C</span>
+  </dt><dd>Class C devices extend Class A by keeping the receive windows open unless they are transmitting. This allows for low-latency communication but is many times more energy consuming than Class A devices.</dd><dd><a href=https://www.thethingsnetwork.org/docs/lorawan/classes.html>https://www.thethingsnetwork.org/docs/lorawan/classes.html</a></dd></dl>
+<dl class="glossary">
+  <dt id="classes">
+    <span class="term">Classes</span>
+  </dt><dd>The LoRaWAN specification defines three device types. All LoRaWAN devices must implement Class A, whereas Class B and Class C are extensions to the specification of Class A devices.</dd><dd><a href=https://www.thethingsnetwork.org/docs/lorawan/classes.html>https://www.thethingsnetwork.org/docs/lorawan/classes.html</a></dd></dl>
+<dl class="glossary">
+  <dt id="data-rate">
+    <span class="term">Data Rate</span>
+  </dt><dt id="dr">
+      <span class="term-abbr">
+        (DR)
+      </span>
+    </dt><dd>A combination of Bandwidth and Spreading Factor which defines how quickly a message is transmitted.</dd><dd><a href=https://www.thethingsnetwork.org/docs/lorawan/modulation-data-rate.html>https://www.thethingsnetwork.org/docs/lorawan/modulation-data-rate.html</a></dd></dl>
+<dl class="glossary">
+  <dt id="data-rate-index">
+    <span class="term">Data Rate Index</span>
+  </dt><dd>The Data Rate Index specifies which data rate downlink communications will use, as given in the Regional Parameters.</dd><dd><a href=https://lora-alliance.org/sites/default/files/2020-06/rp_2-1.0.1.pdf#page&#61;25>https://lora-alliance.org/sites/default/files/2020-06/rp_2-1.0.1.pdf#page=25</a></dd></dl>
+<dl class="glossary">
+  <dt id="data-rate-offset">
+    <span class="term">Data Rate Offset</span>
+  </dt><dd>The Data Rate Offset sets the offset between the uplink data rate and the downlink data rate used to communicate with the End Device during the first reception slot (RX1).</dd><dd><a href=https://lora-alliance.org/sites/default/files/2020-06/rp_2-1.0.1.pdf#page&#61;27>https://lora-alliance.org/sites/default/files/2020-06/rp_2-1.0.1.pdf#page=27</a></dd></dl>
+<dl class="glossary">
+  <dt id="device-address">
+    <span class="term">Device Address</span>
+  </dt><dt id="devaddr">
+      <span class="term-abbr">
+        (DevAddr)
+      </span>
+    </dt><dd>A 32 bit non-unique identifier, assigned by the Network Server during device activation.</dd><dd><a href=https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page&#61;33>https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page=33</a></dd></dl>
+<dl class="glossary">
+  <dt id="device-eui">
+    <span class="term">Device EUI</span>
+  </dt><dt id="deveui">
+      <span class="term-abbr">
+        (DevEUI)
+      </span>
+    </dt><dd>A 64 bit extended unique identifier for your device. This is programmed by the manufacturer and should not be changed. It should be provided to you by the manufacturer, or printed on the device.</dd><dd><a href=https://www.thethingsnetwork.org/docs/lorawan/addressing.html>https://www.thethingsnetwork.org/docs/lorawan/addressing.html</a></dd></dl>
+<dl class="glossary">
+  <dt id="device-id">
+    <span class="term">Device ID</span>
+  </dt><dd>A unique, human-readable identifier for your device. You make it up, so be creative. Device IDs can not be used by multiple device within the same application.</dd></dl>
+<dl class="glossary">
+  <dt id="duty-cycle">
+    <span class="term">Duty Cycle</span>
+  </dt><dd>The fraction of time a device is busy. When a single device transmits on a channel for 2 time units every 10 time units, this device has a duty cycle of 20%.</dd><dd><a href=https://www.thethingsnetwork.org/docs/lorawan/duty-cycle.html>https://www.thethingsnetwork.org/docs/lorawan/duty-cycle.html</a></dd></dl>
+<dl class="glossary">
+  <dt id="dwell-time">
+    <span class="term">Dwell Time</span>
+  </dt><dd>The time needed to transmit a LoRaWAN message. In some regions a maximum allowed dwell time is configured to limit transmission time, typically 400ms.</dd></dl>
+<dl class="glossary">
+  <dt id="dwell-time-configuration">
+    <span class="term">Dwell Time Configuration</span>
+  </dt><dd>The Dwell time restrictions are configurable for each Frequency Plan. In regions where dwell time limitations are optional, they&rsquo;re disabled by default.</dd></dl>
+<dl class="glossary">
+  <dt id="dynamic-channel">
+    <span class="term">Dynamic Channel</span>
+  </dt><dd>A Band which uses Dynamic Channels (i.e. EU868) uses a Channel Frequency List (CFList) to communicate channels by frequency.</dd><dd><a href=https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page&#61;50>https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page=50</a></dd></dl>
+<dl class="glossary">
+  <dt id="end-device">
+    <span class="term">End Device</span>
+  </dt><dt id="device">
+      <span class="term-alt">
+        (Device)
+      </span>
+    </dt><dt id="node">
+      <span class="term-alt">
+        (Node)
+      </span>
+    </dt><dt id="mote">
+      <span class="term-alt">
+        (Mote)
+      </span>
+    </dt><dd>A sensor or actuator with an embedded low power LoRaWAN communication module.</dd><dd><a href=https://www.thethingsnetwork.org/docs/devices/>https://www.thethingsnetwork.org/docs/devices/</a></dd></dl>
+<dl class="glossary">
+  <dt id="fixed-channel">
+    <span class="term">Fixed Channel</span>
+  </dt><dd>A Band which uses Fixed Channels (i.e. US902, AU915) uses a Channel Mask (ChMask) to enable and disable channels.</dd><dd><a href=https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page&#61;50>https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page=50</a></dd></dl>
+<dl class="glossary">
+  <dt id="forwarding-network-session-integrity-key">
+    <span class="term">Forwarding Network Session Integrity Key</span>
+  </dt><dt id="fnwksintkey">
+      <span class="term-abbr">
+        (FNwkSIntKey)
+      </span>
+    </dt><dd>A network session key used to calculate all or half of the message integrity code for uplink messages. When a LoRaWAN 1.1 capable device connects to a LoRaWAN 1.0x Network Server, the value of FNwkSIntKey is used as the value of SNwkSIntKey and NwkSEncKey.</dd><dd><a href=https://lora-alliance.org/sites/default/files/2018-04/lorawantm_specification_-v1.1.pdf#page&#61;50>https://lora-alliance.org/sites/default/files/2018-04/lorawantm_specification_-v1.1.pdf#page=50</a></dd></dl>
+<dl class="glossary">
+  <dt id="frequency-plan">
+    <span class="term">Frequency Plan</span>
+  </dt><dt id="fp">
+      <span class="term-abbr">
+        (FP)
+      </span>
+    </dt><dt id="channel-plan">
+      <span class="term-alt">
+        (Channel Plan)
+      </span>
+    </dt><dd>A Frequency Plan defines data rates and channels which comply with the LoRaWAN Regional Parameters for a band or geographical area. Devices are configured for a particular Frequency Plan as part of activation, and can use any Frequency Plan within a supported band.</dd><dd><a href=https://github.com/TheThingsNetwork/lorawan-frequency-plans>https://github.com/TheThingsNetwork/lorawan-frequency-plans</a></dd></dl>
+<dl class="glossary">
+  <dt id="gateway">
+    <span class="term">Gateway</span>
+  </dt><dd>Gateways form the bridge between <a href="#end-device">End Devices</a> and Network Servers. Devices use low power networks like LoRa to connect to the Gateway, while the Gateway uses high bandwidth networks like WiFi, Ethernet or Cellular to connect to a Network Server.</dd><dd><a href=https://www.thethingsnetwork.org/docs/gateways/>https://www.thethingsnetwork.org/docs/gateways/</a></dd></dl>
+<dl class="glossary">
+  <dt id="gateway-eui">
+    <span class="term">Gateway EUI</span>
+  </dt><dd>A 64 bit extended unique identifier for your gateway. This is programmed by the manufacturer and should not be changed. In cases where it is not programmed by the manufacturer, it must be programmed with a unique EUI that you own.</dd><dd><a href=https://www.thethingsnetwork.org/docs/lorawan/addressing.html>https://www.thethingsnetwork.org/docs/lorawan/addressing.html</a></dd></dl>
+<dl class="glossary">
+  <dt id="gateway-id">
+    <span class="term">Gateway ID</span>
+  </dt><dd>A unique, human-readable identifier for your gateway.</dd></dl>
+<dl class="glossary">
+  <dt id="integration">
+    <span class="term">Integration</span>
+  </dt><dd>Integrations connect devices to the world, by triggering events whenever a device communicates. The Application server manages integrations using Webhooks or MQTT. These can be as simple as an IFTTT Maker Applet or a visual flow using Node-RED, or as complex as custom code on a server which processes and acts on device data.</dd><dd><a href=https://www.thethingsnetwork.org/docs/applications/integrations.html>https://www.thethingsnetwork.org/docs/applications/integrations.html</a></dd></dl>
+<dl class="glossary">
+  <dt id="interval">
+    <span class="term">Interval</span>
+  </dt><dd>The duration between messages.</dd><dd><a href=https://www.thethingsnetwork.org/docs/lorawan/duty-cycle.html>https://www.thethingsnetwork.org/docs/lorawan/duty-cycle.html</a></dd></dl>
+<dl class="glossary">
+  <dt id="ism-radio-bands">
+    <span class="term">ISM Radio Bands</span>
+  </dt><dd>The Industrial, Scientific, and Medical Bands, most commonly used for low-power and short range telecommunications, such as WiFi, Bluetooth, Zigbee, wireless telephones, RFID, and NFC.</dd><dd><a href=https://en.wikipedia.org/wiki/ISM_band>https://en.wikipedia.org/wiki/ISM_band</a></dd></dl>
+<dl class="glossary">
+  <dt id="join-server">
+    <span class="term">Join Server</span>
+  </dt><dd>A Join Server is a component of the LoRaWAN server defined in the LoRaWAN Backend Interfaces. The Things Stack contains a Join Server, which is used by default unless an External Join Server is specified. The Join Server&rsquo;s role is to store root keys, generate session keys, and to send those securely to the Network Server and Application Server of choice. The device contains the same root keys, which can be provisioned as part of assembly, distribution or upon installation. An External Join Server allows for secure end device provisioning without network lock-in. The owner uses a device claiming procedure to transfer ownership in the Join Server.</dd><dd><a href=https://lora-alliance.org/sites/default/files/2018-04/lorawantm-backend-interfaces-v1.0.pdf>https://lora-alliance.org/sites/default/files/2018-04/lorawantm-backend-interfaces-v1.0.pdf</a></dd></dl>
+<dl class="glossary">
+  <dt id="joineui">
+    <span class="term">JoinEUI</span>
+  </dt><dd>The JoinEUI (formerly called AppEUI) is a 64 bit extended unique identifier used to identify the Join Server during activation. This should be provided by the device manufacturer for pre-provisioned devices, or by the owner of the Join Server you will use. If you do not have a JoinEUI, it is okay to use <code>0000000000000000</code>, but ensure that you use the same JoinEUI in your device as you enter in The Things Stack.</dd><dd><a href=https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page&#61;33>https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page=33</a></dd></dl>
+<dl class="glossary">
+  <dt id="local-area-network">
+    <span class="term">Local area network</span>
+  </dt><dt id="lan">
+      <span class="term-abbr">
+        (LAN)
+      </span>
+    </dt><dd>A network that connects computers within a limited area.</dd><dd><a href=https://en.wikipedia.org/wiki/Local_area_network>https://en.wikipedia.org/wiki/Local_area_network</a></dd></dl>
+<dl class="glossary">
+  <dt id="lora">
+    <span class="term">LoRa</span>
+  </dt><dd>A modulation technology for long range wireless communication, based on chirp-spread spectrum technology.</dd><dd><a href=https://en.wikipedia.org/wiki/LoRa>https://en.wikipedia.org/wiki/LoRa</a></dd></dl>
+<dl class="glossary">
+  <dt id="lora-basics-station">
+    <span class="term">LoRa Basics™ Station</span>
+  </dt><dt id="lbs">
+      <span class="term-abbr">
+        (LBS)
+      </span>
+    </dt><dt id="basic-station">
+      <span class="term-alt">
+        (Basic Station)
+      </span>
+    </dt><dt id="station">
+      <span class="term-alt">
+        (Station)
+      </span>
+    </dt><dd>The LoRa Basics™ Station protocol simplifies management of large scale LoRaWAN networks. LoRa Basics™ Station is the preferred way of connecting Gateways to The Things Stack. Some of the advantages of LoRa Basics™ Station over the legacy UDP Packet Forwarder are: Centralized Update and Configuration Management, TLS and Token-based Authentication, Centralized Channel-Plan Management, and No Dependency on Local Time Keeping.</dd><dd><a href=https://lora-developers.semtech.com/resources/tools/basic-station/welcome-basic-station/>https://lora-developers.semtech.com/resources/tools/basic-station/welcome-basic-station/</a></dd></dl>
+<dl class="glossary">
+  <dt id="lorawan">
+    <span class="term">LoRaWAN</span>
+  </dt><dd>LoRaWAN is a media access control (MAC) protocol for wide area networks. It is designed to allow low-powered devices to communicate with Internet-connected applications over long range wireless connections.</dd><dd><a href=https://lora-alliance.org/about-lorawan>https://lora-alliance.org/about-lorawan</a></dd></dl>
+<dl class="glossary">
+  <dt id="lorawan-version">
+    <span class="term">LoRaWAN Version</span>
+  </dt><dd>The LoRaWAN version is the LoRa Alliance LoRaWAN specification your device conforms to, which defines which Media Access Control features it supports. The LoRaWAN version for your device should be provided by the manufacturer in a datasheet as LoRaWAN version or LoRaWAN specification.</dd></dl>
+<dl class="glossary">
+  <dt id="media-access-control">
+    <span class="term">Media Access Control</span>
+  </dt><dt id="mac">
+      <span class="term-abbr">
+        (MAC)
+      </span>
+    </dt><dd>LoRaWAN media access control protocols, downloadable from the LoRa Alliance. The Media Access Control version for your device should be provided by the manufacturer in a datasheet as LoRaWAN version or LoRaWAN specification.</dd><dd><a href=https://lora-alliance.org/lorawan-for-developers>https://lora-alliance.org/lorawan-for-developers</a></dd></dl>
+<dl class="glossary">
+  <dt id="network-key">
+    <span class="term">Network Key</span>
+  </dt><dt id="nwkkey">
+      <span class="term-abbr">
+        (NwkKey)
+      </span>
+    </dt><dd>A device specific encryption key used to derive the FNwkSIntKey, SNwkSIntKey, NwkSEncKey in LoRaWAN 1.1. When a LoRaWAN 1.1 capable device connects to a LoRaWAN 1.0x Network Server which does not support dual root keys (NwkKey and AppKey), the NwkKey value is used as the AppKey value.</dd><dd><a href=https://lora-alliance.org/sites/default/files/2018-04/lorawantm_specification_-v1.1.pdf#page&#61;48>https://lora-alliance.org/sites/default/files/2018-04/lorawantm_specification_-v1.1.pdf#page=48</a></dd></dl>
+<dl class="glossary">
+  <dt id="network-server">
+    <span class="term">Network Server</span>
+  </dt><dt id="backend">
+      <span class="term-alt">
+        (Backend)
+      </span>
+    </dt><dd>The Network Server is responsible for routing Internet of Things data between devices and applications.</dd><dd><a href=https://www.thethingsnetwork.org/docs/network/>https://www.thethingsnetwork.org/docs/network/</a></dd></dl>
+<dl class="glossary">
+  <dt id="network-session-encryption-key">
+    <span class="term">Network Session Encryption Key</span>
+  </dt><dt id="nwksenckey">
+      <span class="term-abbr">
+        (NwkSEncKey)
+      </span>
+    </dt><dd>A network session key used to encrypt and decrypt MAC commands transmitted on FPort 0, which contain no application payload. When a LoRaWAN 1.1 capable device connects to a LoRaWAN 1.0x Network Server, the value of FNwkSIntKey is used as the value of SNwkSIntKey and NwkSEncKey.</dd><dd><a href=https://lora-alliance.org/sites/default/files/2018-04/lorawantm_specification_-v1.1.pdf#page&#61;50>https://lora-alliance.org/sites/default/files/2018-04/lorawantm_specification_-v1.1.pdf#page=50</a></dd></dl>
+<dl class="glossary">
+  <dt id="network-session-key">
+    <span class="term">Network Session Key</span>
+  </dt><dt id="nwkskey">
+      <span class="term-abbr">
+        (NwkSKey)
+      </span>
+    </dt><dd>After activation, this encryption key is used to secure messages which do not carry a payload.</dd><dd><a href=https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page&#61;33>https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page=33</a></dd></dl>
+<dl class="glossary">
+  <dt id="over-the-air-activation">
+    <span class="term">Over the Air Activation</span>
+  </dt><dt id="otaa">
+      <span class="term-abbr">
+        (OTAA)
+      </span>
+    </dt><dd>The preferred method to join a LoRaWAN network, offering more flexibility, security, and scalability than ABP.</dd><dd><a href=https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page&#61;34>https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page=34</a></dd></dl>
+<dl class="glossary">
+  <dt id="packet-forwarder">
+    <span class="term">Packet Forwarder</span>
+  </dt><dd>A Packet Forwarder is a program running on a Gateway that receives and transmits LoRa packets, and forwards these packets to and from a Network Server.</dd></dl>
+<dl class="glossary">
+  <dt id="payload">
+    <span class="term">Payload</span>
+  </dt><dd>A LoRaWAN packet. Application payloads are decrypted data relevant to the application. Gateway payloads are encrypted and include the application payload plus a frame counter and other LoRaWAN data.</dd></dl>
+<dl class="glossary">
+  <dt id="physical-layer">
+    <span class="term">Physical Layer</span>
+  </dt><dt id="phy">
+      <span class="term-abbr">
+        (PHY)
+      </span>
+    </dt><dd>Hardware pertaining to LoRaWAN official regional specifications. The PHY version for your device should be specified in the product documentation as Regional Parameter version.</dd><dd><a href=https://lora-alliance.org/sites/default/files/2020-01/rp_2-1.0.0_final_release.pdf>https://lora-alliance.org/sites/default/files/2020-01/rp_2-1.0.0_final_release.pdf</a></dd></dl>
+<dl class="glossary">
+  <dt id="regional-parameters">
+    <span class="term">Regional Parameters</span>
+  </dt><dt id="phy">
+      <span class="term-abbr">
+        (PHY)
+      </span>
+    </dt><dd>The Regional Parameters specify frequency, dwell time, and other communication settings for different geographical areas. The Regional Parameters version is the version of the LoRa Alliance specification which your device supports. This should be provided by the device manufacturer in a datasheet.</dd><dd><a href=https://lora-alliance.org/sites/default/files/2020-01/rp_2-1.0.0_final_release.pdf>https://lora-alliance.org/sites/default/files/2020-01/rp_2-1.0.0_final_release.pdf</a></dd></dl>
+<dl class="glossary">
+  <dt id="semtech-udp-packet-forwarder">
+    <span class="term">Semtech UDP Packet Forwarder</span>
+  </dt><dt id="udp-packet-forwarder">
+      <span class="term-alt">
+        (UDP Packet Forwarder)
+      </span>
+    </dt><dd>The Semtech UDP Packet Forwarder is the first packet forwarder, connecting to servers through the Semtech UDP protocol. Although this protocol has several drawbacks, many gateways include a pre-compiled version of the packet forwarder, which makes it easy to test a gateway with this protocol.</dd></dl>
+<dl class="glossary">
+  <dt id="serving-network-session-integrity-key">
+    <span class="term">Serving Network Session Integrity Key</span>
+  </dt><dt id="snwksintkey">
+      <span class="term-abbr">
+        (SNwkSIntKey)
+      </span>
+    </dt><dd>A network session key used to calculate all of the message integrity code for downlink messages and half of the message integrity code for uplink messages. When a LoRaWAN 1.1 capable device connects to a LoRaWAN 1.0x Network Server, the value of FNwkSIntKey is used as the value of SNwkSIntKey and NwkSEncKey.</dd><dd><a href=https://lora-alliance.org/sites/default/files/2018-04/lorawantm_specification_-v1.1.pdf#page&#61;50>https://lora-alliance.org/sites/default/files/2018-04/lorawantm_specification_-v1.1.pdf#page=50</a></dd></dl>
+<dl class="glossary">
+  <dt id="signal-to-noise-ratio">
+    <span class="term">Signal to noise ratio</span>
+  </dt><dt id="snr">
+      <span class="term-abbr">
+        (SNR)
+      </span>
+    </dt><dd>A measure of signal strength.</dd><dd><a href=https://en.wikipedia.org/wiki/Signal-to-noise_ratio>https://en.wikipedia.org/wiki/Signal-to-noise_ratio</a></dd></dl>
+<dl class="glossary">
+  <dt id="spreading-factor">
+    <span class="term">Spreading Factor</span>
+  </dt><dt id="sf">
+      <span class="term-abbr">
+        (SF)
+      </span>
+    </dt><dd>The transmission speed or Data Rate of a LoRaWAN message, ranging from SF7 (highest Data Rate) to SF12 (lowest Data Rate). Making the spreading factor 1 step lower (from SF10 to SF9) allows you to roughly send the same amount of data use half the time on air. Lowering the spreading factor makes it more difficult for the gateway to receive a transmission, as it will be more sensitive to noise.</dd><dd><a href=https://www.thethingsnetwork.org/docs/lorawan/modulation-data-rate.html>https://www.thethingsnetwork.org/docs/lorawan/modulation-data-rate.html</a></dd></dl>
+<dl class="glossary">
+  <dt id="wide-area-network">
+    <span class="term">Wide area network</span>
+  </dt><dt id="wan">
+      <span class="term-abbr">
+        (WAN)
+      </span>
+    </dt><dd>A network that connects within a wide geographical range, usually to the internet.</dd><dd><a href=https://en.wikipedia.org/wiki/Wide_area_network>https://en.wikipedia.org/wiki/Wide_area_network</a></dd></dl>
+</div>
+
+
+
+<script>window.emojicom_widget = { campaign: "" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+
+
+<div class="is-clearfix">
+</div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer has-background-primary">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="thethingsindustries.com/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/devices/">Devices</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsNetwork/lorawan-stack">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="has-text-light is-size-7">
+  Last changed by Ben Olayinka on 22 Oct 2020.
+  <br>
+  <a href="https://github.com/TheThingsNetwork/lorawan-stack/commit/6b4daa186a9360e72e50edfe36c09fa7cdf05c68">
+      Merge pull request #31 from TheThingsIndustries/util/build-workflow
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/default/doc/content/reference/glossary/_index.md" class="button is-primary is-small is-inverted is-outlined">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="/thethingsindustries.com/docs/js/theme.min.4feb1389331adbef9047157f884dbdbd63af1c61ac83f327e60eef42f999cb26.js" integrity="sha256-T&#43;sTiTMa2&#43;&#43;QRxV/iE29vWOvHGGsg/Mn5g7vQvmZyyY="></script><script>
+  window.intercomSettings = {
+    app_id: "",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

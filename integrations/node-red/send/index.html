@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Send Messages | The Things Stack for LoRaWAN</title>
+  <link rel="alternate icon" href="/thethingsindustries.com/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/thethingsindustries.com/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/thethingsindustries.com/docs/favicon.svg">
+  <link rel="stylesheet" href="/thethingsindustries.com/docs/css/theme.min.f73831f1cd2827cc6e72a8e0df5a006e289e15ed508da505203eb0ef3f9e4238.css" integrity="sha256-9zgx8c0oJ8xucqjg31oAbiieFe1QjaUFID6w7z&#43;eQjg="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Send Messages">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Send Messages">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="thethingsindustries.com/docs/integrations/node-red/send/">
+  <meta name="twitter:title" content="Send Messages" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/thethingsindustries.com/docs/">
+        <img src="/thethingsindustries.com/docs/img/TTS-horizontal-logo.svg">
+        <p class="navbar-item is-size-7">v3.10.0-dev</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="thethingsindustries.com/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/devices/">Devices</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="button is-primary" href="thethingsindustries.com/docs/download/">Get The Things Stack</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="search-container">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <div class="field has-addons has-addons-centered">
+            <div class="control">
+              <input class="input search-bar" id="search-input" type="text" placeholder="Search" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: "",
+indexName: "thethingsstack",
+inputSelector: '#search-input',
+debug: false 
+});
+</script>
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">Node-RED</h2>
+
+<ul class="menu-list">
+<a href="thethingsindustries.com/docs/integrations/node-red/" class="">Overview</a>
+<li>
+  <a href="thethingsindustries.com/docs/integrations/node-red/setup/" class="">Setup</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/integrations/node-red/receive/" class="">Receive Events and Messages</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/integrations/node-red/send/" class="is-active">Send Messages</a>
+</li>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">Send Messages</h1>
+
+<div class="content">
+
+<p>This section explains the process of setting up a flow which publishes messages to a certain topic that the MQTT Server is subscribed to.</p>
+<p>Doing this schedules downlink messages to be sent to your end device. This section follows the example for publishing downlink traffic in <a href="thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a> guide.</p>
+<h2 id="configure-mqtt-out-node">Configure MQTT Out Node</h2>
+<p>Place the <strong>mqtt out</strong> node on the dashboard.</p>
+<p>Configure the <strong>Server</strong> options with the same settings as in the <a href="thethingsindustries.com/docs/integrations/node-red/#receive-events-and-messages">Receive Events and Messages</a> section.</p>
+<p>Set <strong>Topic</strong> to <code>v3/{application_id}/devices/{device_id}/down/push</code> to schedule downlink messages (as stated in <a href="thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a> guide).</p>
+<p>Choose a <strong>QoS</strong> from listed options and state whether you want the MQTT Server to retain messages.</p>
+<figure>
+    <img src="mqtt_out_node_properties.png"
+         alt="mqtt out node properties"/> 
+</figure>
+
+<h2 id="configure-inject-node">Configure Inject Node</h2>
+<p>Place the <strong>inject</strong> node on the dashboard. Double-click on the node to configure its properties.</p>
+<p>Choose <strong>buffer</strong> under <strong>Payload</strong> and enter the payload you wish to send.</p>
+<blockquote>
+<p>Note: in this example, a downlink message with hexadecimal payload <code>00 2A FF 00</code> is to be sent, so here we define the <strong>Payload</strong> field as a corresponding array of byte values.</p>
+</blockquote>
+<p>Define the period between the automatic injections if you want them, or choose <strong>none</strong> for <strong>Repeat</strong> if you wish to inject messages manually.</p>
+<figure>
+    <img src="inject_node_properties.png"
+         alt="inject node properties"/> 
+</figure>
+
+<h2 id="configure-function-node-and-deploy">Configure Function Node and Deploy</h2>
+<p>Next, you have to configure a <strong>function</strong> node, which converts previously defined payload to a downlink message with Base64 encoded payload.</p>
+<p>Place the <strong>function</strong> node with the following structure on dashboard:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="k">return</span> <span class="o">{</span>
+  <span class="s2">&#34;payload&#34;</span>: <span class="o">{</span>
+    <span class="s2">&#34;downlinks&#34;</span>: <span class="o">[{</span>
+      <span class="s2">&#34;f_port&#34;</span>: 15,
+      <span class="s2">&#34;frm_payload&#34;</span>: msg.payload.toString<span class="o">(</span><span class="s2">&#34;base64&#34;</span><span class="o">)</span>,
+      <span class="s2">&#34;priority&#34;</span>: <span class="s2">&#34;NORMAL&#34;</span>
+    <span class="o">}]</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><p>Connect the nodes and click <strong>Deploy</strong>. If the setup is correct, below the <strong>mqtt out</strong> node <strong>connected</strong> status will be reported and downlink messages will begin sending to your end device.</p>
+<figure>
+    <img src="send_downlink_flow.png"
+         alt="send downlink flow"/> 
+</figure>
+
+
+</div>
+
+
+
+<script>window.emojicom_widget = { campaign: "" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+
+
+<div class="is-clearfix">
+<a class="button is-pulled-left" href="thethingsindustries.com/docs/integrations/node-red/receive/">← Receive Events and Messages</a>
+</div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer has-background-primary">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="thethingsindustries.com/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/devices/">Devices</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsNetwork/lorawan-stack">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="has-text-light is-size-7">
+  Last changed by Ben Olayinka on 22 Oct 2020.
+  <br>
+  <a href="https://github.com/TheThingsNetwork/lorawan-stack/commit/6b4daa186a9360e72e50edfe36c09fa7cdf05c68">
+      Merge pull request #31 from TheThingsIndustries/util/build-workflow
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/default/doc/content/integrations/node-red/send/_index.md" class="button is-primary is-small is-inverted is-outlined">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="/thethingsindustries.com/docs/js/theme.min.4feb1389331adbef9047157f884dbdbd63af1c61ac83f327e60eef42f999cb26.js" integrity="sha256-T&#43;sTiTMa2&#43;&#43;QRxV/iE29vWOvHGGsg/Mn5g7vQvmZyyY="></script><script>
+  window.intercomSettings = {
+    app_id: "",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

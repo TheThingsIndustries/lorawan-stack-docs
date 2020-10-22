@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Deployment Guide | The Things Stack for LoRaWAN</title>
+  <link rel="alternate icon" href="/thethingsindustries.com/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/thethingsindustries.com/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/thethingsindustries.com/docs/favicon.svg">
+  <link rel="stylesheet" href="/thethingsindustries.com/docs/css/theme.min.f73831f1cd2827cc6e72a8e0df5a006e289e15ed508da505203eb0ef3f9e4238.css" integrity="sha256-9zgx8c0oJ8xucqjg31oAbiieFe1QjaUFID6w7z&#43;eQjg="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Deployment Guide">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Deployment Guide">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="thethingsindustries.com/docs/integrations/aws-iot/default/deployment-guide/">
+  <meta name="twitter:title" content="Deployment Guide" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/thethingsindustries.com/docs/">
+        <img src="/thethingsindustries.com/docs/img/TTS-horizontal-logo.svg">
+        <p class="navbar-item is-size-7">v3.10.0-dev</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="thethingsindustries.com/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/devices/">Devices</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="button is-primary" href="thethingsindustries.com/docs/download/">Get The Things Stack</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="search-container">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <div class="field has-addons has-addons-centered">
+            <div class="control">
+              <input class="input search-bar" id="search-input" type="text" placeholder="Search" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: "",
+indexName: "thethingsstack",
+inputSelector: '#search-input',
+debug: false 
+});
+</script>
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">AWS IoT</h2>
+
+<ul class="menu-list">
+<a href="thethingsindustries.com/docs/integrations/aws-iot/" class="">Overview</a>
+<li>
+  <a href="thethingsindustries.com/docs/integrations/aws-iot/default/" class="">Default Integration</a>
+  <ul class="menu-list">
+    <li>
+      <a href="thethingsindustries.com/docs/integrations/aws-iot/default/architecture/" class="">Architecture</a>
+    </li>
+    <li>
+      <a href="thethingsindustries.com/docs/integrations/aws-iot/default/deployment-guide/" class="is-active">Deployment Guide</a>
+    </li>
+    <li>
+      <a href="thethingsindustries.com/docs/integrations/aws-iot/default/things/" class="">Managing Things</a>
+    </li>
+    <li>
+      <a href="thethingsindustries.com/docs/integrations/aws-iot/default/messages/" class="">Messages</a>
+    </li>
+    <li>
+      <a href="thethingsindustries.com/docs/integrations/aws-iot/default/metrics/" class="">Metrics</a>
+    </li>
+    <li>
+      <a href="thethingsindustries.com/docs/integrations/aws-iot/default/update/" class="">Update</a>
+    </li>
+    <li>
+      <a href="thethingsindustries.com/docs/integrations/aws-iot/default/uninstall/" class="">Uninstall</a>
+    </li>
+    <li>
+      <a href="thethingsindustries.com/docs/integrations/aws-iot/default/troubleshooting/" class="">Troubleshooting</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/integrations/aws-iot/application-server-telemetry/" class="">Application Server Telemetry</a>
+</li>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">Deployment Guide</h1>
+
+<div class="content">
+
+<p>Learn how to deploy the AWS IoT integration for The Things Stack.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ol>
+<li>Access to an AWS account. <a href="https://aws.amazon.com/resources/create-account/">Create a new account</a></li>
+<li>An application in The Things Stack. <a href="thethingsindustries.com/docs/integrations/adding-applications/">See instructions</a></li>
+</ol>
+<h2 id="create-api-key">Create API Key</h2>
+<p>Go to your application in The Things Stack Console, go to <strong>API keys</strong> and click <strong>+ Add API key</strong>.</p>
+<p>Enter a name, like <strong>AWS IoT integration</strong>, and grant at least the following individual rights:</p>
+<ul>
+<li>View devices in application</li>
+<li>View device keys in application</li>
+<li>Create devices in application</li>
+<li>Edit device keys in application</li>
+<li>Edit basic application settings</li>
+<li>Write downlink application traffic</li>
+<li>Read application traffic (uplink and downlink)</li>
+</ul>
+<figure>
+    <img src="../create-api-key.png"
+         alt="Create API key"/> 
+</figure>
+
+<p>Click <strong>Create API key</strong>, copy the key and store it in a safe place. You need the API key in the next section.</p>
+<h2 id="deploy-aws-cloudformation-template">Deploy AWS CloudFormation Template</h2>
+<div class="field">
+  <label class="label">Select your AWS region </label>
+  <div class="control">
+    <div class="select">
+      <select data-content="aws-region">
+        <option value="af-south-1" >Africa, Cape Town (af-south-1)</option>
+        <option value="ap-east-1" >Asia Pacific, Hong Kong (ap-east-1)</option>
+        <option value="ap-south-1" >Asia Pacific, Mumbai (ap-south-1)</option>
+        <option value="ap-northeast-2" >Asia Pacific, Seoul (ap-northeast-2)</option>
+        <option value="ap-southeast-1" >Asia Pacific, Singapore (ap-southeast-1)</option>
+        <option value="ap-southeast-2" >Asia Pacific, Sydney (ap-southeast-2)</option>
+        <option value="ap-northeast-1" >Asia Pacific, Tokyo (ap-northeast-1)</option>
+        <option value="ca-central-1" >Canada, Central (ca-central-1)</option>
+        <option value="eu-central-1" >Europe, Frankfurt (eu-central-1)</option>
+        <option value="eu-west-1" >Europe, Ireland (eu-west-1)</option>
+        <option value="eu-west-2" >Europe, London (eu-west-2)</option>
+        <option value="eu-south-1" >Europe, Milan (eu-south-1)</option>
+        <option value="eu-west-3" >Europe, Paris (eu-west-3)</option>
+        <option value="eu-north-1" >Europe, Stockholm (eu-north-1)</option>
+        <option value="me-south-1" >Middle East, Bahrein (me-south-1)</option>
+        <option value="sa-east-1" >South America, São Paulo (sa-east-1)</option>
+        <option value="us-west-1" >United States, North California (us-west-1)</option>
+        <option value="us-east-1" selected>United States, North Virginia (us-east-1)</option>
+        <option value="us-east-2" >United States, Ohio (us-east-2)</option>
+        <option value="us-west-2" >United States, Oregon (us-west-2)</option>
+      </select>
+    </div>
+  </div>
+</div>
+<p><a data-content="aws-deploy-cloudformation" data-path="thethingsindustries/integration-aws/latest/cloudhosted.template.json" target="_blank" class="button is-primary"></a></p>
+<script>
+  window.addEventListener('load', function(e) {
+    var $awsRegionInput = document.querySelector('select[data-content="aws-region"]');
+    var query = new URLSearchParams(window.location.search);
+    if (query.has('aws-region')) {
+      $awsRegionInput.value = query.has('aws-region');
+    }
+    var $deployLinks = document.querySelectorAll('a[data-content="aws-deploy-cloudformation"][data-path="thethingsindustries\/integration-aws\/latest\/cloudhosted.template.json"]');
+    function syncValue($input, $links) {
+      var value = $input.value || 'us-east-1';
+      $links.forEach(function($link) {
+        $link.href = 'https://' + value + '.console.aws.amazon.com/cloudformation/home?region=' + value + '#/stacks/create/review?templateURL=https://s3.amazonaws.com/thethingsindustries\/integration-aws\/latest\/cloudhosted.template.json';
+        $link.innerHTML = 'Deploy for Cloud Hosted (' + value + ')';
+      });
+    }
+    syncValue($awsRegionInput, $deployLinks);
+    $awsRegionInput.addEventListener('change', function(e) {
+      syncValue(e.target, $deployLinks);
+    });
+  });
+</script>
+<p><a data-content="aws-deploy-cloudformation" data-path="thethingsindustries/integration-aws/latest/selfhosted.template.json" target="_blank" class="button is-primary"></a></p>
+<script>
+  window.addEventListener('load', function(e) {
+    var $awsRegionInput = document.querySelector('select[data-content="aws-region"]');
+    var query = new URLSearchParams(window.location.search);
+    if (query.has('aws-region')) {
+      $awsRegionInput.value = query.has('aws-region');
+    }
+    var $deployLinks = document.querySelectorAll('a[data-content="aws-deploy-cloudformation"][data-path="thethingsindustries\/integration-aws\/latest\/selfhosted.template.json"]');
+    function syncValue($input, $links) {
+      var value = $input.value || 'us-east-1';
+      $links.forEach(function($link) {
+        $link.href = 'https://' + value + '.console.aws.amazon.com/cloudformation/home?region=' + value + '#/stacks/create/review?templateURL=https://s3.amazonaws.com/thethingsindustries\/integration-aws\/latest\/selfhosted.template.json';
+        $link.innerHTML = 'Deploy for Self Hosted (' + value + ')';
+      });
+    }
+    syncValue($awsRegionInput, $deployLinks);
+    $awsRegionInput.addEventListener('change', function(e) {
+      syncValue(e.target, $deployLinks);
+    });
+  });
+</script>
+<blockquote>
+<p>If you want to examine the AWS CloudFormation template before deploying, download the <a href="https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/cloudhosted.template.json">Cloud Hosted template</a> or <a href="https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/selfhosted.template.json">Self Hosted template</a>.</p>
+</blockquote>
+<h3 id="settings">Settings</h3>
+<p>The <strong>Stack name</strong> is the unique name identifying the integration in your AWS account.</p>
+<p>The parameters configure the integration:</p>
+<ul>
+<li><strong>Principal Account ID</strong> (only in Self Hosted): AWS Account ID that The Things Stack authenticates with.</li>
+<li><strong>Thing Type Name</strong>: The unique AWS IoT Core thing type name for this integration.</li>
+<li><strong>Thing Shadow Metrics</strong>: Enable or disable updating the thing shadow with metrics.</li>
+<li><strong>Cluster Address</strong>: The cluster address of your The Things Stack deployment. See <a href="thethingsindustries.com/docs/getting-started/cloud-hosted/addresses/">Cloud Hosted Addresses</a>.</li>
+<li><strong>Application ID</strong>: The application ID for which you configure the integration.</li>
+<li><strong>Application API Key</strong>: The application API key that you generated before.</li>
+</ul>
+<blockquote>
+<p>If you use The Things Network Stack V2 integration for AWS IoT, you must change the <strong>Thing Type Name</strong> to something other than <code>lorawan</code> to avoid conflicts.</p>
+</blockquote>
+<figure>
+    <img src="../create-cloudformation-stack.png"
+         alt="Create AWS CloudFormation Stack"/> 
+</figure>
+
+<p>Check <strong>I acknowledge that AWS CloudFormation might create IAM resources</strong>.</p>
+<p>Click <strong>Create stack</strong>.</p>
+<blockquote>
+<p>Creating all resources can take up to five minutes ☕</p>
+</blockquote>
+<p>When the deployment is done, you&rsquo;ll see the status <code>CREATE_COMPLETE</code>.</p>
+<blockquote>
+<p>Congratulations 🎉 You have now setup the AWS IoT integration for The Things Stack!</p>
+</blockquote>
+</div>
+
+<script>window.emojicom_widget = { campaign: "" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+<div class="is-clearfix">
+<a class="button is-pulled-left" href="thethingsindustries.com/docs/integrations/aws-iot/default/architecture/">← Architecture</a>
+<a class="button is-pulled-right" href="thethingsindustries.com/docs/integrations/aws-iot/default/things/">Managing Things →</a>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer has-background-primary">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="thethingsindustries.com/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/devices/">Devices</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsNetwork/lorawan-stack">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="has-text-light is-size-7">
+  Last changed by Ben Olayinka on 22 Oct 2020.
+  <br>
+  <a href="https://github.com/TheThingsNetwork/lorawan-stack/commit/6b4daa186a9360e72e50edfe36c09fa7cdf05c68">
+      Merge pull request #31 from TheThingsIndustries/util/build-workflow
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/default/doc/content/integrations/aws-iot/default/deployment-guide.md" class="button is-primary is-small is-inverted is-outlined">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="/thethingsindustries.com/docs/js/theme.min.4feb1389331adbef9047157f884dbdbd63af1c61ac83f327e60eef42f999cb26.js" integrity="sha256-T&#43;sTiTMa2&#43;&#43;QRxV/iE29vWOvHGGsg/Mn5g7vQvmZyyY="></script><script>
+  window.intercomSettings = {
+    app_id: "",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

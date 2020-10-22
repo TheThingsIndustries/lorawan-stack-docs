@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Installing the CLI | The Things Stack for LoRaWAN</title>
+  <link rel="alternate icon" href="/thethingsindustries.com/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/thethingsindustries.com/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/thethingsindustries.com/docs/favicon.svg">
+  <link rel="stylesheet" href="/thethingsindustries.com/docs/css/theme.min.f73831f1cd2827cc6e72a8e0df5a006e289e15ed508da505203eb0ef3f9e4238.css" integrity="sha256-9zgx8c0oJ8xucqjg31oAbiieFe1QjaUFID6w7z&#43;eQjg="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Installing the CLI">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Installing the CLI">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="thethingsindustries.com/docs/getting-started/cli/installing-cli/">
+  <meta name="twitter:title" content="Installing the CLI" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/thethingsindustries.com/docs/">
+        <img src="/thethingsindustries.com/docs/img/TTS-horizontal-logo.svg">
+        <p class="navbar-item is-size-7">v3.10.0-dev</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="thethingsindustries.com/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/devices/">Devices</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="button is-primary" href="thethingsindustries.com/docs/download/">Get The Things Stack</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="search-container">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <div class="field has-addons has-addons-centered">
+            <div class="control">
+              <input class="input search-bar" id="search-input" type="text" placeholder="Search" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: "",
+indexName: "thethingsstack",
+inputSelector: '#search-input',
+debug: false 
+});
+</script>
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">Command-line Interface</h2>
+
+<ul class="menu-list">
+<a href="thethingsindustries.com/docs/getting-started/cli/" class="">Overview</a>
+<li>
+  <a href="thethingsindustries.com/docs/getting-started/cli/installing-cli/" class="is-active">Installing the CLI</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/getting-started/cli/login/" class="">Login with the CLI</a>
+</li>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">Installing the CLI</h1>
+
+<div class="content">
+
+<p>This section contains instructions for installing the command-line interface.</p>
+<h3 id="package-managers-recommended">Package managers (recommended)</h3>
+<h4 id="macos">macOS</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ brew install TheThingsNetwork/lorawan-stack/ttn-lw-stack
+</code></pre></div><blockquote>
+<p>Note: When installing with <code>brew</code>, auto-completion is enabled automatically.</p>
+</blockquote>
+<h4 id="linux">Linux</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo snap install ttn-lw-stack
+$ sudo snap <span class="nb">alias</span> ttn-lw-stack.ttn-lw-cli ttn-lw-cli
+</code></pre></div><blockquote>
+<p>Note: When installing with <code>snap</code>, auto-completion is enabled automatically.</p>
+</blockquote>
+<h3 id="binaries">Binaries</h3>
+<p>You can download <a href="https://github.com/TheThingsNetwork/lorawan-stack/releases">pre-built binaries</a> for your operating system and processor architecture.</p>
+<h2 id="configuration">Configuration</h2>
+<p>The command-line needs to be configured to connect to your deployment on <code>thethings.example.com</code>. You have multiple options to make the configuration file available to the CLI:</p>
+<ol>
+<li>Environment: <code>export TTN_LW_CONFIG=/path/to/ttn-lw-cli.yml</code></li>
+<li>Command-line flag: <code>-c /path/to/ttn-lw-cli.yml</code></li>
+<li>Save as <code>.ttn-lw-cli.yml</code> in <code>$XDG_CONFIG_HOME</code>, your home directory, or the working directory.</li>
+</ol>
+<blockquote>
+<p>NOTE: When using the snap packages, <code>~/.ttn-lw-cli.yml</code> will fail with permission errors. Choose a different path.</p>
+</blockquote>
+<h3 id="generate-configuration-file">Generate configuration file</h3>
+<p>For a standard deployment on <code>thethings.example.com</code>, all you need is:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli use thethings.example.com <span class="o">[</span>--fetch-ca<span class="o">]</span> <span class="o">[</span>--user<span class="o">]</span> <span class="o">[</span>--overwrite<span class="o">]</span>
+</code></pre></div><blockquote>
+<p>NOTE: On Windows, use <code>ttn-lw-cli.exe</code> instead of <code>ttn-lw-cli</code>.</p>
+</blockquote>
+<p>This will generate and save the required CLI config file. By default, the file is saved on the current directory, use the <code>--user</code> to save it under the user config directory.</p>
+<p>If the deployment is using a CA that is not already trusted by your system, use the <code>--fetch-ca</code> flag to also connect to the server and retrieve the CA required for establishing secure communication.</p>
+<blockquote>
+<p>NOTE: If the file exists already, it is not overwritten and an error is printed instead. You can use <code>--overwrite</code> to overwrite the existing configuration file.</p>
+</blockquote>
+<blockquote>
+<p>NOTE: You can also use the <code>--grpc-port</code> and <code>--oauth-server-address</code> flags to override the default values for the gRPC port and the OAuth server address. These are not needed for standard deployments.</p>
+</blockquote>
+<h3 id="manually-creating-configuration-file">Manually creating configuration file</h3>
+<p>Alternatively, you can create a file named <code>.ttn-lw-cli.yml</code> and paste the following contents:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">oauth-server-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/oauth&#39;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="k">identity-server-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:8884&#39;</span><span class="w">
+</span><span class="w"></span><span class="k">gateway-server-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:8884&#39;</span><span class="w">
+</span><span class="w"></span><span class="k">network-server-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:8884&#39;</span><span class="w">
+</span><span class="w"></span><span class="k">application-server-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:8884&#39;</span><span class="w">
+</span><span class="w"></span><span class="k">join-server-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:8884&#39;</span><span class="w">
+</span><span class="w"></span><span class="k">device-claiming-server-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:8884&#39;</span><span class="w">
+</span><span class="w"></span><span class="k">device-template-converter-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:8884&#39;</span><span class="w">
+</span><span class="w"></span><span class="k">qr-code-generator-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:8884&#39;</span><span class="w">
+</span></code></pre></div><p>If you are using an <code>https</code> port other than <code>443</code>, you need to specify that port, e.g.:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">oauth-server-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example:8885/oauth&#39;</span><span class="w">
+</span></code></pre></div><p>If your deployment uses a custom certificate authority, you&rsquo;ll need to add:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">ca</span><span class="p">:</span><span class="w"> </span>/path/to/ca.pem<span class="w">
+</span></code></pre></div><p>For advanced options, see the <a href="thethingsindustries.com/docs/reference/configuration/cli/">Configuration Reference</a>.</p>
+<h2 id="auto-completion">Auto Completion</h2>
+<p>Use <code>ttn-lw-cli complete</code> to generate an auto-completion script for the <code>ttn-lw-cli</code> command. <code>bash</code>, <code>zsh</code>, <code>fish</code> and <code>powershell</code> shells are supported:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli <span class="nb">complete</span> --shell bash --executable ttn-lw-cli &gt; ttn-lw-cli-autocomplete
+</code></pre></div><p>Source the file to enable auto-completion:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ . ./ttn-lw-cli-autocomplete
+</code></pre></div><p>Alternatively, put in a default directory so that it is loaded automatically (This directory depends on your Operating System and your shell).</p>
+<p>For <code>bash</code>, this directory is typically <code>/etc/bash_completion.d/</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo cp ./ttn-lw-cli-autocomplete /etc/bash_completion.d/
+</code></pre></div><p>Generating and sourcing an auto-completion PowerShell script on Windows is slightly modified:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli.exe <span class="nb">complete</span> --shell powershell --executable ttn-lw-cli.exe &gt; ttn-lw-cli-autocomplete.ps1
+
+$ . ./ttn-lw-cli-autocomplete.ps1
+</code></pre></div>
+</div>
+
+
+
+<script>window.emojicom_widget = { campaign: "" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+
+
+<div class="is-clearfix">
+<a class="button is-pulled-left" href="thethingsindustries.com/docs/getting-started/cli/">← Command-line Interface</a>
+<a class="button is-pulled-right" href="thethingsindustries.com/docs/getting-started/cli/login/">Login with the CLI →</a>
+</div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer has-background-primary">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="thethingsindustries.com/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/devices/">Devices</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsNetwork/lorawan-stack">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="has-text-light is-size-7">
+  Last changed by Ben Olayinka on 22 Oct 2020.
+  <br>
+  <a href="https://github.com/TheThingsNetwork/lorawan-stack/commit/6b4daa186a9360e72e50edfe36c09fa7cdf05c68">
+      Merge pull request #31 from TheThingsIndustries/util/build-workflow
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/default/doc/content/getting-started/cli/installing-cli/_index.md" class="button is-primary is-small is-inverted is-outlined">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="/thethingsindustries.com/docs/js/theme.min.4feb1389331adbef9047157f884dbdbd63af1c61ac83f327e60eef42f999cb26.js" integrity="sha256-T&#43;sTiTMa2&#43;&#43;QRxV/iE29vWOvHGGsg/Mn5g7vQvmZyyY="></script><script>
+  window.intercomSettings = {
+    app_id: "",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

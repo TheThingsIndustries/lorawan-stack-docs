@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>HiveMQ | The Things Stack for LoRaWAN</title>
+  <link rel="alternate icon" href="/thethingsindustries.com/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/thethingsindustries.com/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/thethingsindustries.com/docs/favicon.svg">
+  <link rel="stylesheet" href="/thethingsindustries.com/docs/css/theme.min.f73831f1cd2827cc6e72a8e0df5a006e289e15ed508da505203eb0ef3f9e4238.css" integrity="sha256-9zgx8c0oJ8xucqjg31oAbiieFe1QjaUFID6w7z&#43;eQjg="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="HiveMQ">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="HiveMQ">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="thethingsindustries.com/docs/integrations/mqtt-clients/hivemq/">
+  <meta name="twitter:title" content="HiveMQ" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/thethingsindustries.com/docs/">
+        <img src="/thethingsindustries.com/docs/img/TTS-horizontal-logo.svg">
+        <p class="navbar-item is-size-7">v3.10.0-dev</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="thethingsindustries.com/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/devices/">Devices</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="button is-primary" href="thethingsindustries.com/docs/download/">Get The Things Stack</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="search-container">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <div class="field has-addons has-addons-centered">
+            <div class="control">
+              <input class="input search-bar" id="search-input" type="text" placeholder="Search" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: "",
+indexName: "thethingsstack",
+inputSelector: '#search-input',
+debug: false 
+});
+</script>
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">MQTT Clients</h2>
+
+<ul class="menu-list">
+<a href="thethingsindustries.com/docs/integrations/mqtt-clients/" class="">Overview</a>
+<li>
+  <a href="thethingsindustries.com/docs/integrations/mqtt-clients/eclipse-mosquitto/" class="">Eclipse Mosquitto</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/integrations/mqtt-clients/eclipse-paho/" class="">Eclipse Paho</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/integrations/mqtt-clients/hivemq/" class="is-active">HiveMQ</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/integrations/mqtt-clients/mqttbox/" class="">MQTTBox</a>
+</li>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">HiveMQ</h1>
+
+<div class="content">
+
+<p><a href="https://www.hivemq.com/">HiveMQ</a> is an MQTT broker and a client based messaging platform which uses MQTT protocol for fast, reliable and efficient bi-directional data transfer to and from IoT devices. HiveMQ provides its own client library, but it can be used with any MQTT compliant client library. It can be deployed on a private, hybrid or public cloud. You can integrate HiveMQ with existing enterprise systems thanks to its open API and a flexible extension framework.</p>
+<p>HiveMQ also offers an open source tool called <a href="https://github.com/hivemq/mqtt-cli">MQTT CLI</a>, which provides a command line interface to interact with MQTT brokers. This tool can be used in a shell mode, allowing you to use multiple MQTT clients simultaneously.</p>
+<blockquote>
+<p>Note: HiveMQ broker is compliant with the MQTT 3.1, 3.1.1 and 5.0 protocol specifications, while the MQTT CLI tool supports 3.1.1 and 5.0 versions.</p>
+</blockquote>
+<p>This guide contains the instructions to use HiveMQ CLI tool in a shell mode for subscribing and publishing to topics used by The Things Stack <a href="thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a>.</p>
+<h2 id="requirements">Requirements</h2>
+<ol>
+<li><a href="https://hivemq.github.io/mqtt-cli/docs/installation.html">HiveMQ MQTT CLI</a> installed on your system.</li>
+</ol>
+<h2 id="connecting-to-mqtt-server-in-mqtt-cli-shell-mode">Connecting to MQTT Server in MQTT CLI Shell Mode</h2>
+<blockquote>
+<p>Learn how to connect to The Things Stack MQTT Server by reading the <a href="thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a> guide.</p>
+</blockquote>
+<p>Enter the HiveMQ MQTT CLI shell mode by typing the following command in your terminal:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mqtt shell
+</code></pre></div><p>Once in shell mode, you can connect to The Things Stack MQTT Server by using the following command:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ con -h hostname -p port -V <span class="m">3</span> -u username -pw password
+</code></pre></div><blockquote>
+<p>Note: keep in mind that <code>password</code> is the value of the authentication API key. For more info, see <a href="thethingsindustries.com/docs/integrations/mqtt/#creating-an-api-key">Creating an API Key</a>.</p>
+</blockquote>
+<blockquote>
+<p>Note: we use <code>-V 3</code> flag since the The Things Stack MQTT Server supports the 3.1.1 MQTT protocol version, as mentioned in the <a href="thethingsindustries.com/docs/integrations/mqtt/">MQTT Server guide</a>. For detailed descriptions of other parameters used with the <code>con</code> command, see the <a href="https://hivemq.github.io/mqtt-cli/docs/shell/connect.html">official MQTT CLI documentation</a>.</p>
+</blockquote>
+<p>For example, you can connect to The Things Stack MQTT Server over its public address with the following command:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">con -h thethings.example.com -p <span class="m">1883</span> -V <span class="m">3</span> -u app1 -pw NNSXS.VEEBURF3KR77ZR..
+</code></pre></div><p>TO use TLS for additional security, change the port from <code>1883</code> to <code>8883</code> and use the <code>--cafile</code> option to provide the PEM encoded CA file of your The Things Stack deployment.</p>
+<p>Once you have successfully connected to The Things Stack MQTT Server, continue with subscribing or publishing to topics exposed by it by following the sections below.</p>
+<h2 id="subscribe-to-upstream-traffic">Subscribe to Upstream Traffic</h2>
+<p>Use the <code>sub</code> command to subscribe to topics and listen to messages being sent from your end device.</p>
+<p>For example, if you want to listen to the uplink messages being sent from <code>dev1</code> device in <code>app1</code> application, use the following command:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sub -t v3/app1/devices/dev1/up -s
+</code></pre></div><blockquote>
+<p>Note: <code>-s</code> flag is used to subscribe with a context to the given topic, e.g. to stop the console being blocked by subscribing without a context. For detailed descriptions of all the available <code>sub</code> command parameters, see the <a href="https://hivemq.github.io/mqtt-cli/docs/shell/subscribe.html">Subscribe</a> section of the HiveMQ MQTT CLI documentation.</p>
+</blockquote>
+<blockquote>
+<p>See the <a href="thethingsindustries.com/docs/integrations/mqtt/#subscribing-to-upstream-traffic">Subscribing to Upstream Traffic</a> section of the MQTT Server guide for a full list of available topics you can subscribe to.</p>
+</blockquote>
+<h2 id="schedule-downlink-messages">Schedule Downlink Messages</h2>
+<p>Use the <code>pub</code> command to publish to topics, e.g. to schedule downlink messages to be sent to your end device.</p>
+<p>For example, to push an unconfirmed downlink message with the hexadecimal payload <code>BE EF</code> on <code>FPort</code> 15 with normal priority to the <code>dev1</code> device, use the following command:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ pub -t v3/app1/devices/dev1/down/push -m <span class="s1">&#39;{&#34;downlinks&#34;:[{&#34;f_port&#34;: 15,&#34;frm_payload&#34;:&#34;vu8=&#34;,&#34;priority&#34;: &#34;NORMAL&#34;}]}&#39;</span>
+</code></pre></div><blockquote>
+<p>Note: for detailed descriptions of the <code>pub</code> command parameters, see the <a href="https://hivemq.github.io/mqtt-cli/docs/shell/publish.html">Publish</a> section of the MQTT CLI documentation.</p>
+</blockquote>
+<blockquote>
+<p>See the <a href="thethingsindustries.com/docs/integrations/mqtt/#publishing-downlink-traffic">Publishing Downlink Traffic</a> section to learn about using <code>/replace</code> instead of <code>/push</code>.</p>
+</blockquote>
+</div>
+
+
+
+<script>window.emojicom_widget = { campaign: "" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+
+
+<div class="is-clearfix">
+<a class="button is-pulled-left" href="thethingsindustries.com/docs/integrations/mqtt-clients/eclipse-paho/">← Eclipse Paho</a>
+<a class="button is-pulled-right" href="thethingsindustries.com/docs/integrations/mqtt-clients/mqttbox/">MQTTBox →</a>
+</div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer has-background-primary">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="thethingsindustries.com/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/devices/">Devices</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsNetwork/lorawan-stack">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="has-text-light is-size-7">
+  Last changed by Ben Olayinka on 22 Oct 2020.
+  <br>
+  <a href="https://github.com/TheThingsNetwork/lorawan-stack/commit/6b4daa186a9360e72e50edfe36c09fa7cdf05c68">
+      Merge pull request #31 from TheThingsIndustries/util/build-workflow
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/default/doc/content/integrations/mqtt-clients/hivemq/_index.md" class="button is-primary is-small is-inverted is-outlined">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="/thethingsindustries.com/docs/js/theme.min.4feb1389331adbef9047157f884dbdbd63af1c61ac83f327e60eef42f999cb26.js" integrity="sha256-T&#43;sTiTMa2&#43;&#43;QRxV/iE29vWOvHGGsg/Mn5g7vQvmZyyY="></script><script>
+  window.intercomSettings = {
+    app_id: "",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Gateway Server Options | The Things Stack for LoRaWAN</title>
+  <link rel="alternate icon" href="/thethingsindustries.com/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/thethingsindustries.com/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/thethingsindustries.com/docs/favicon.svg">
+  <link rel="stylesheet" href="/thethingsindustries.com/docs/css/theme.min.f73831f1cd2827cc6e72a8e0df5a006e289e15ed508da505203eb0ef3f9e4238.css" integrity="sha256-9zgx8c0oJ8xucqjg31oAbiieFe1QjaUFID6w7z&#43;eQjg="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Gateway Server Options">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Gateway Server Options">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="thethingsindustries.com/docs/reference/configuration/gateway-server/">
+  <meta name="twitter:title" content="Gateway Server Options" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/thethingsindustries.com/docs/">
+        <img src="/thethingsindustries.com/docs/img/TTS-horizontal-logo.svg">
+        <p class="navbar-item is-size-7">v3.10.0-dev</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="thethingsindustries.com/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/devices/">Devices</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="thethingsindustries.com/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <a class="button is-primary" href="thethingsindustries.com/docs/download/">Get The Things Stack</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="search-container">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <div class="field has-addons has-addons-centered">
+            <div class="control">
+              <input class="input search-bar" id="search-input" type="text" placeholder="Search" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: "",
+indexName: "thethingsstack",
+inputSelector: '#search-input',
+debug: false 
+});
+</script>
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">Configuration</h2>
+
+<ul class="menu-list">
+<a href="thethingsindustries.com/docs/reference/configuration/" class="">Overview</a>
+<li>
+  <a href="thethingsindustries.com/docs/reference/configuration/the-things-stack/" class="">General Options</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/configuration/tenant-billing-server/" class="">Tenant Billing Server Options</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/configuration/application-server/" class="">Application Server Options</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/configuration/cli/" class="">Command-Line Interface Options</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/configuration/console/" class="">Console Options</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/configuration/device-claiming-server/" class="">Device Claiming Server Options</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/configuration/gateway-configuration-server/" class="">Gateway Configuration Server Options</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/configuration/gateway-server/" class="is-active">Gateway Server Options</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/configuration/identity-server/" class="">Identity Server Options</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/configuration/join-server/" class="">Join Server Options</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/configuration/network-server/" class="">Network Server Options</a>
+</li>
+<li>
+  <a href="thethingsindustries.com/docs/reference/configuration/packet-broker-agent/" class="">Packet Broker Agent Options</a>
+</li>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">Gateway Server Options</h1>
+
+<div class="content">
+
+<h2 id="forwarding-options">Forwarding Options</h2>
+<p>The Gateway Server forwards traffic to upstream hosts based on the <code>gs.forward</code> parameter.</p>
+<ul>
+<li><code>gs.forward</code>: Forward the DevAddr prefixes to the specified hosts. This parameter accepts a list of strings in the format <code>&quot;target=dev-addr-prefix1 target=dev-addr-prefix2&quot;</code></li>
+</ul>
+<p>Enter your NetID to view recommended forwarding settings:</p>
+<div class="field">
+  <label class="label">NetID (hex)</label>
+  <div class="control">
+    <input class="input" type="text" data-content="net-id" placeholder="net-id" maxlength="6" minlength="6">
+  </div>
+</div>
+
+<script>
+  window.addEventListener('load', function (e) {
+    var $netIDInput = document.querySelector('input[data-content="net-id"]');
+    var query = new URLSearchParams(window.location.search);
+    $netIDInput.value = query.has('net-id') ? query.get('net-id') : '000013';
+    var $devAddrPrefixSpans = document.querySelectorAll('span[data-content="dev-addr-prefix"]')
+    function update() {
+      var netID = parseInt($netIDInput.value ? $netIDInput.value : '000013', 16);
+      if (netID == NaN) {
+        netID = 0;
+      }
+      var type = netID >> 21;
+      var nwkIDMask;
+      switch (type) {
+        case 0b000, 0b001:
+          nwkIDMask = 0x3f;
+        case 0b010:
+          nwkIDMask = 0x1ff;
+        default:
+          nwkIDMask = 0x1fffff;
+      }
+      var nwkID = netID & nwkIDMask;
+      var nwkIDBits = [6, 6, 9, 11, 12, 13, 15, 17][type];
+      var nwkAddrBits = [25, 24, 20, 17, 15, 13, 10, 7][type];
+      var typePrefix = type > 0 ? ((1 << type) - 1 << 32 - type) >>> 0 : 0;
+      var devAddrBase = typePrefix + ((nwkID & (1 << nwkIDBits) - 1) << nwkAddrBits);
+      $devAddrPrefixSpans.forEach(function($span) {
+        $span.innerText = ('00000000' + devAddrBase.toString(16).toUpperCase()).slice(-8) + '/' + (32 - nwkAddrBits).toString();
+      });
+    }
+    update();
+    $netIDInput.addEventListener('keyup', update);
+  });
+</script>
+
+<ul>
+<li><code>&quot;cluster=00000000/0&quot;</code>: Forward all traffic to the Network Server in the cluster (default)</li>
+<li><code>&quot;cluster=<span data-content="dev-addr-prefix"></span>&quot;</code>: Forward only traffic for your NetID to the Network Server</li>
+<li><code>&quot;cluster=00000000/6 cluster=<span data-content="dev-addr-prefix"></span>&quot;</code>: Forward only traffic for the experimental NetIDs <code>000000</code> and <code>000001</code>, and your NetID to the Network Server in the cluster</li>
+<li><code>&quot;cluster=00000000/6 cluster=<span data-content="dev-addr-prefix"></span> packetbroker=00000000/0&quot;</code>: Forward only traffic for the experimental NetIDs <code>000000</code> and <code>000001</code>, and your NetID to the Network Server in the cluster, and all traffic to Packet Broker (see <a href="thethingsindustries.com/docs/reference/configuration/packet-broker-agent/">configuration</a>)</li>
+</ul>
+<h2 id="location-update-options">Location Update Options</h2>
+<p>The Gateway Server can be configured to update the location of gateway antennas from incoming status messages.</p>
+<ul>
+<li><code>gs.update-gateway-location-debounce-time</code>: Debounce time for gateway location updates from status messages.</li>
+</ul>
+<h2 id="security-options">Security Options</h2>
+<ul>
+<li><code>gs.require-registered-gateways</code>: Require the gateways to be registered in the Identity Server</li>
+<li><code>gs.basic-station.allow-unauthenticated</code>: Allow unauthenticated Basic Station connections. This is set to <code>false</code> by default. Set to disable auth check for testing.</li>
+</ul>
+<h2 id="basic-station-options">Basic Station Options</h2>
+<p>The Gateway Server supports connection of gateways using the Basic Station protocol.</p>
+<ul>
+<li><code>gs.basic-station.listen</code>: Address for the Basic Station frontend to listen on</li>
+<li><code>gs.basic-station.listen-tls</code>: Address for the Basic Station frontend to listen on (with TLS)</li>
+<li><code>gs.basic-station.use-traffic-tls-address</code>: Use WSS for the traffic address regardless of the TLS setting</li>
+</ul>
+<p>The frequency plan to use for unregistered gateways can be set using <code>gs.basic-station.fallback-frequency-plan-id</code>. Note that <code>gs.require-registered-gateways</code> must be set to false for this to take effect.</p>
+<ul>
+<li><code>gs.basic-station.fallback-frequency-plan-id</code>: Fallback frequency plan ID for non-registered gateways</li>
+</ul>
+<h2 id="mqtt-options">MQTT Options</h2>
+<p>The Gateway Server exposes an MQTT server for connecting gateways via MQTT.</p>
+<ul>
+<li><code>gs.mqtt.listen</code>: Address for the MQTT frontend to listen on</li>
+<li><code>gs.mqtt.listen-tls</code>: Address for the MQTTS frontend to listen on</li>
+<li><code>gs.mqtt.public-address</code>: Public address of the MQTT frontend</li>
+<li><code>gs.mqtt.public-tls-address</code>: Public address of the MQTTs frontend</li>
+</ul>
+<h2 id="mqtt-v2-options">MQTT V2 Options</h2>
+<p>The Gateway Server exposes an second MQTT server for connecting gateways that use the V2 MQTT format.</p>
+<ul>
+<li><code>gs.mqtt-v2.listen</code>: Address for the MQTT frontend to listen on</li>
+<li><code>gs.mqtt-v2.listen-tls</code>: Address for the MQTTS frontend to listen on</li>
+<li><code>gs.mqtt-v2.public-address</code>: Public address of the MQTT frontend</li>
+<li><code>gs.mqtt-v2.public-tls-address</code>: Public address of the MQTTs frontend</li>
+</ul>
+<h2 id="udp-options">UDP Options</h2>
+<p>The Gateway Server supports the connection of gateways using the Semtech UDP protocol.</p>
+<ul>
+<li><code>gs.udp.listeners</code>: Listen addresses with (optional) fallback frequency plan ID for non-registered gateways. This parameter accepts as string in the format <code>listen-address=frequency-plan-id</code></li>
+<li><code>gs.udp.schedule-late-time</code>: Time in advance to send downlink to the gateway when scheduling late</li>
+</ul>
+<p>Options are available to configure connection behavior of UDP gateways.</p>
+<ul>
+<li><code>gs.udp.connection-expires</code>: Time after which a connection of a gateway expires</li>
+<li><code>gs.udp.downlink-path-expires</code>: Time after which a downlink path to a gateway expires</li>
+<li><code>gs.udp.addr-change-block</code>: Time to block traffic when a gateway&rsquo;s address changes</li>
+</ul>
+<p>Using the <code>packet-buffer</code> and <code>packet-handlers</code> options, the throughput of UDP packets can be configured.</p>
+<ul>
+<li><code>gs.udp.packet-buffer</code>: Buffer size of unhandled packets</li>
+<li><code>gs.udp.packet-handlers</code>: Number of concurrent packet handlers</li>
+</ul>
+<h2 id="statistics-options">Statistics Options</h2>
+<p>Specify options for gateway connection statistics:</p>
+<ul>
+<li><code>gs.update-connection-stats-debounce-time</code>: Time before repeated refresh of the gateway connection stats</li>
+</ul>
+<h2 id="udp-rate-limiting-options">UDP Rate Limiting Options</h2>
+<p>The Gateway Server supports rate limiting traffic for gateways that are using the Semtech UDP protocol.</p>
+<ul>
+<li><code>gs.udp.rate-limiting.enable</code>: Enable rate limiting for gateways</li>
+<li><code>gs.udp.rate-limiting.messages</code>: Number of past messages to check timestamp for</li>
+<li><code>gs.udp.rate-limiting.threshold</code>: Filter packet if timestamp is not newer than the older timestamps of the previous messages by this threshold</li>
+</ul>
+
+</div>
+
+<script>window.emojicom_widget = { campaign: "" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+<div class="is-clearfix">
+<a class="button is-pulled-left" href="thethingsindustries.com/docs/reference/configuration/gateway-configuration-server/">← Gateway Configuration Server Options</a>
+<a class="button is-pulled-right" href="thethingsindustries.com/docs/reference/configuration/identity-server/">Identity Server Options →</a>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer has-background-primary">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="thethingsindustries.com/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/devices/">Devices</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="thethingsindustries.com/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsNetwork/lorawan-stack">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="has-text-light is-size-7">
+  Last changed by Ben Olayinka on 22 Oct 2020.
+  <br>
+  <a href="https://github.com/TheThingsNetwork/lorawan-stack/commit/6b4daa186a9360e72e50edfe36c09fa7cdf05c68">
+      Merge pull request #31 from TheThingsIndustries/util/build-workflow
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/default/doc/content/reference/configuration/gateway-server.md" class="button is-primary is-small is-inverted is-outlined">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="/thethingsindustries.com/docs/js/theme.min.4feb1389331adbef9047157f884dbdbd63af1c61ac83f327e60eef42f999cb26.js" integrity="sha256-T&#43;sTiTMa2&#43;&#43;QRxV/iE29vWOvHGGsg/Mn5g7vQvmZyyY="></script><script>
+  window.intercomSettings = {
+    app_id: "",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>
