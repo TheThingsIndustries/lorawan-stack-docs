@@ -1,14 +1,15 @@
 ---
-title: "Migrate from ChirpStack"
+title: "Migrating from ChirpStack"
 description: ""
-weight: 3
+weight: 4
+aliases: "/getting-started/migrating-from-networks/migrate-from-chirpstack"
 ---
 
 This section contains instructions on how to migrate end devices from ChirpStack to {{% tts %}}.
 
 <!--more-->
 
-End devices and applications can easily be migrated from ChirpStack to {{% tts %}} with the `ttn-lw-migrate` tool. This tool is used for exporting end devices and applications to a [JSON file]({{< ref "getting-started/migrating-from-networks/device-json.md" >}}) containing their description. This file can later be imported in {{% tts %}} as described in the [Import End Devices in The Things Stack]({{< ref "getting-started/migrating-from-networks/import-devices.md" >}}) section.
+End devices and applications can easily be migrated from ChirpStack to {{% tts %}} with the `ttn-lw-migrate` tool. This tool is used for exporting end devices and applications to a [JSON file]({{< ref "getting-started/migrating/device-json.md" >}}) containing their description. This file can later be imported in {{% tts %}} as described in the [Import End Devices in The Things Stack]({{< ref "getting-started/migrating/import-devices.md" >}}) section.
 
 First, configure the environment with the following variables modified according to your setup:
 

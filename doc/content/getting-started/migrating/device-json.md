@@ -1,7 +1,8 @@
 ---
-title: "Create JSON file to be imported"
+title: "Importable JSON File Reference"
 description: ""
-weight: 1
+weight: 5
+aliases: "/getting-started/migrating-from-networks/device-json"
 ---
 
 {{% tts %}} allows you to import devices from other networks using a JSON file describing those devices. Devices imported this way can be migrated without the need for a rejoin.
@@ -82,7 +83,7 @@ The linked specification is quite extensive, and contains a lot of fields that a
 
 ## Examples
 
-> **Note**: For more information on configuring MAC settings, see [Fine-tuning MAC Settings]({{< ref "getting-started/migrating-from-v2/configure-mac-settings" >}}).
+> **Note**: For more information on configuring MAC settings, see [Fine-tuning MAC Settings]({{< ref "getting-started/migrating/configure-mac-settings" >}}).
 
 ### Example OTAA Device:
 <summary><details>
@@ -153,7 +154,6 @@ The linked specification is quite extensive, and contains a lot of fields that a
   }
 }
 ```
-</details>
 
 </details></summary>
 

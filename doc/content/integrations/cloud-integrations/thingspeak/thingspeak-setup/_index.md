@@ -14,7 +14,7 @@ Enter a **Name** for your channel, give labels to the data fields and enable the
 
 When done, scroll down and click the **Save Channel** button.
 
->**Note:** You should enable a field for each metric from the `decoded_payload` object of the [uplink message]({{< ref "/integrations/data-formats#uplink-messages" >}}).
+>**Note:** You should enable a field for each metric from the `decoded_payload` object of the [uplink message]({{< ref "/reference/data-formats#uplink-messages" >}}).
 
 {{< figure src="channel.png" alt="Creating a new channel" >}}
 

@@ -5,7 +5,7 @@ summary: Enable Storage Integration for applications and end-devices.
 weight: 20
 ---
 
-The Storage Integration is implemented as an [Application Package]({{< ref "/integrations/application-packages" >}}). In order to enable it for an application (or a single end device), you have to create a package association.
+The Storage Integration is implemented as an [Application Package]({{< ref "/reference/application-packages" >}}). In order to enable it for an application (or a single end device), you have to create a package association.
 
 {{< cli-only >}}
 

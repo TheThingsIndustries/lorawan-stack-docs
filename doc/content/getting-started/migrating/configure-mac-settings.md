@@ -1,6 +1,7 @@
 ---
 title: Fine-tuning MAC Settings for End Devices
 weight: 60
+aliases: "/getting-started/migrating-from-v2/configure-mac-settings"
 ---
 
 MAC settings on {{% tts %}} are configurable per end device - see the [MAC settings guide]({{< ref "reference/api/end_device#message:MACSettings" >}}) for instructions.

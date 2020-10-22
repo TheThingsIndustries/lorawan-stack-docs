@@ -1,6 +1,7 @@
 ---
 title: "LoRa Cloud Device & Application Services"
 description: ""
+aliases: "/integrations/application-packages/lora-cloud-device-and-application-services"
 ---
 
 The LoRa Cloud Device & Application Services v1 application package communicates the uplinks received from a compatible device to the LoRa Cloud Device & Application Services, and schedules the downlinks received from the service back to the device.

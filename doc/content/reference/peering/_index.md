@@ -2,6 +2,7 @@
 title: Peering
 description: ""
 summary: Exchange traffic with other LoRaWAN networks via peering to share coverage and improve the overall network performance.
+aliases: "/integrations/peering"
 ---
 
 ## What is it?
@@ -21,7 +22,7 @@ Peering is useful for all public and private LoRaWAN network operators. It can i
 
 Your network can be a forwarder and a home network. Forwarder networks have physical gateway infrastructure and home networks have end devices. Most LoRaWAN networks typically have gateways and end devices, so that they can be configured to play both roles. You can also have networks with only gateway infrastructure, configured as forwarder, or only with end devices, configured as home network.
 
-As a forwarder, your network offloads traffic that has been received by your gateways but that is not intended for your network. The offloading goes to a [Packet Broker]({{< ref "/integrations/peering#packet-broker" >}}) - a LoRaWAN traffic exchange or LoRaWAN roaming hub for {{% tts %}}.
+As a forwarder, your network offloads traffic that has been received by your gateways but that is not intended for your network. The offloading goes to a [Packet Broker]({{< ref "/reference/peering#packet-broker" >}}) - a LoRaWAN traffic exchange or LoRaWAN roaming hub for {{% tts %}}.
 
 ### Packet Broker
 

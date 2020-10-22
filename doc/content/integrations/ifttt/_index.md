@@ -1,7 +1,7 @@
 ---
 title: "IFTTT"
 description: ""
-weight: 
+weight: 70
 ---
 
 [IFTTT](https://ifttt.com/) is a service that creates chains of conditional statements, called applets, that can be triggered by the events occurring within various web services. These applets connect multiple applications in order to run automated tasks.
