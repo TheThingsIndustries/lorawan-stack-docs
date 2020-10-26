@@ -53,14 +53,12 @@ The message is a JSON object with the following format:
 
 ```js
 {
-  "thingName": "<stack>_<device-id>",
-
+  "thingName": "<DevEUI>",
   "bytes": "AQ==", // Base64 encoded FRMPayload
   // or
   "payload": {     // JSON encoded payload (requires payload encoder)
     "field1": 42
   },
-
   // Optional fields
   "fPort": 10,         // FPort (default: 1)
   "confirmed": true,   // Confirmed data downlink (default: false)
