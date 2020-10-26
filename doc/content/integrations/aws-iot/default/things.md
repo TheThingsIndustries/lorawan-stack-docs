@@ -16,9 +16,9 @@ The AWS IoT Integration for {{% tts %}} synchronizes the device registry: you ca
 
 The AWS IoT Integration for {{% tts %}} uses the thing that you specified when deploying the integration. By default, the thing type is `lorawan`.
 
-Things are created automatically as they join the network or send an uplink message. The name scheme for new things is `<stack-name>_<device-id>`, where `<stack_name>` is the AWS CloudFormation stack name that you specified when deploying the integration, and `<device-id>` is the device ID as the device is registered in your {{% tts %}} application.
+Things are created automatically as they join the network or send an uplink message. For the name of new things, you can use their `<DevEUI>`
 
-For example, if your AWS CloudFormation stack name is `dev`, your AWS IoT things overview may look like this:
+Your AWS IoT things overview may look like this:
 
 {{< figure src="../things-overview.png" alt="Things Overview" >}}
 
