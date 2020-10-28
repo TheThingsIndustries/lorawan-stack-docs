@@ -8,9 +8,9 @@ Next, create a Webhook integration on {{% tts %}} by following this section.
 
 <!--more-->
 
->Note: **TagoIO** Webhook template is now available on {{% tts %}}, but in case you want to create a **Custom webhook**, this guide can be helpful. Read more about these templates in the [Webhook templates]({{< ref "/integrations/webhooks/webhook-templates" >}}) page.
+>**Note:** **TagoIO** Webhook template is now available on {{% tts %}}, but in case you want to create a **Custom webhook**, this guide can be helpful. Read more about these templates in the [Webhook templates]({{< ref "/integrations/webhooks/webhook-templates" >}}) page.
 
->Note: this section follows the [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}) guide.  
+>**Note:** this section follows the [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}) guide.  
 
 Fill in the **Webhook ID** field. 
 
