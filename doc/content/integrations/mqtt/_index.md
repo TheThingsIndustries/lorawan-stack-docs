@@ -6,7 +6,7 @@ aliases: [/guides/getting-started/mqtt]
 
 {{% tts %}} exposes an MQTT server to work with streaming events. This section explains how to connect an MQTT client and subscribe to uplinks or publish downlinks.
 
->{{% tts %}} supports the [MQTT Standard Version 3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.pdf).
+{{% tts %}} supports the [MQTT Standard Version 3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.pdf).
 
 <!--more-->
 
