@@ -57,7 +57,7 @@ The message is a JSON object with the following format:
 
   "bytes": "AQ==", // Base64 encoded FRMPayload
   // or
-  "payload": {     // JSON encoded payload (requires payload encoder)
+  "payload": {     // JSON encoded payload (see note below)
     "field1": 42
   },
 
@@ -67,5 +67,7 @@ The message is a JSON object with the following format:
   "highPriority": true // High priority (default: false)
 }
 ```
+
+> You can only send JSON encoded payload using the `payload` field when end-to-end encryption is **not enabled**. See [Deployment Guide]({{< relref "deployment-guide" >}}) on how to enable and disable end-to-end encryption.
 
 See [Manage Things]({{< relref "things" >}}) to find the `thingName` for the end device.
