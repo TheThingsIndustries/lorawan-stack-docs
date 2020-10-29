@@ -3,7 +3,7 @@ title: "Federated Authentication"
 description: ""
 ---
 
-Federated Authentication {{< new-in-version "3.10" >}} allow network administrators to use already existing identity providers in order to authenticate users, instead of manually creating and managing accounts in {{% tts %}}.
+Federated Authentication {{< new-in-version "3.10" >}} allows network administrators to use the already existing identity providers in order to authenticate users, instead of manually creating and managing the accounts in {{% tts %}}.
 
 <!--more-->
 
