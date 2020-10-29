@@ -150,7 +150,7 @@ debug: false
 <p>See <a href="/integrations/aws-iot/default/things/">Manage Things</a> to learn about the thing names.</p>
 <blockquote>
 <p>Use <a href="https://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html"><strong>Rules for AWS IoT</strong></a> to act on these messages for storage, analytics, alarms and API calls.</p>
-<p>This guide uses AWS IoT Core MQTT client for demonstration purposes only.</p>
+<p><strong>Note:</strong> This guide uses AWS IoT Core MQTT client for demonstration purposes only.</p>
 </blockquote>
 <p>In the AWS Console, open <strong>Services</strong> and go to <strong>IoT Core</strong>.</p>
 <p>In the menu on the left, click <strong>Test</strong>. This opens the <strong>MQTT client</strong>.</p>
@@ -173,7 +173,7 @@ debug: false
 </ul>
 <blockquote>
 <p>Publish downlink messages from your application to IoT Core using <a href="https://docs.aws.amazon.com/iot/latest/apireference/Welcome.html#Welcome_AWS_IoT_Data_Plane"><strong>AWS IoT Data Plane</strong></a> using the <a href="https://docs.aws.amazon.com/iot/latest/apireference/API_iotdata_Publish.html"><strong>Publish</strong></a> action.</p>
-<p>This guide uses AWS IoT Core MQTT client for demonstration purposes only.</p>
+<p><strong>Note:</strong> This guide uses AWS IoT Core MQTT client for demonstration purposes only.</p>
 </blockquote>
 <p>Still in the AWS IoT <strong>MQTT client</strong>, enter the downlink topic <code>lorawan/downlink</code>.</p>
 <p>The message is a JSON object with the following format:</p>
@@ -182,7 +182,7 @@ debug: false
 
   <span class="s2">&#34;bytes&#34;</span><span class="o">:</span> <span class="s2">&#34;AQ==&#34;</span><span class="p">,</span> <span class="c1">// Base64 encoded FRMPayload
 </span><span class="c1"></span>  <span class="c1">// or
-</span><span class="c1"></span>  <span class="s2">&#34;payload&#34;</span><span class="o">:</span> <span class="p">{</span>     <span class="c1">// JSON encoded payload (requires payload encoder)
+</span><span class="c1"></span>  <span class="s2">&#34;payload&#34;</span><span class="o">:</span> <span class="p">{</span>     <span class="c1">// JSON encoded payload (see the note below)
 </span><span class="c1"></span>    <span class="s2">&#34;field1&#34;</span><span class="o">:</span> <span class="mi">42</span>
   <span class="p">},</span>
 
@@ -191,7 +191,10 @@ debug: false
 </span><span class="c1"></span>  <span class="s2">&#34;confirmed&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>   <span class="c1">// Confirmed data downlink (default: false)
 </span><span class="c1"></span>  <span class="s2">&#34;highPriority&#34;</span><span class="o">:</span> <span class="kc">true</span> <span class="c1">// High priority (default: false)
 </span><span class="c1"></span><span class="p">}</span>
-</code></pre></div><p>See <a href="/integrations/aws-iot/default/things/">Manage Things</a> to find the <code>thingName</code> for the end device.</p>
+</code></pre></div><blockquote>
+<p><strong>Note:</strong> You can only send JSON encoded payload using the <code>payload</code> field when end-to-end encryption is <strong>not enabled</strong>. See <a href="/integrations/aws-iot/default/deployment-guide/">Deployment Guide</a> on how to enable and disable end-to-end encryption.</p>
+</blockquote>
+<p>See <a href="/integrations/aws-iot/default/things/">Manage Things</a> to find the <code>thingName</code> for the end device.</p>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -238,10 +241,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Johan Stokking on 28 Oct 2020.
+  Last changed by Nejra on 29 Oct 2020.
   <br>
-  <a href="https://github.com/TheThingsNetwork/lorawan-stack/commit/766bdc551cb12963069769c64a5793a4d66bddfc">
-      doc: Restore whitespace to clarify alternative
+  <a href="https://github.com/TheThingsNetwork/lorawan-stack/commit/e5d4ebfc44dd2f8dacb04624335e6b02218c41f1">
+      doc: Improving readability
     </a>
 </p>
 

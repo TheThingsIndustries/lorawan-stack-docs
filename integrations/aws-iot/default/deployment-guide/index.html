@@ -243,15 +243,34 @@ debug: false
 <p>The <strong>Stack name</strong> is the unique name identifying the integration in your AWS account.</p>
 <p>The parameters configure the integration:</p>
 <ul>
-<li><strong>Principal Account ID</strong> (only in Self Hosted): AWS Account ID that The Things Stack authenticates with.</li>
+<li><strong>Principal Account ID</strong> 
+
+
+
+  
+
+
+<span class="distribution-inline">Enterprise Only</span>
+
+: AWS Account ID that The Things Stack authenticates with.</li>
 <li><strong>Thing Type Name</strong>: The unique AWS IoT Core thing type name for this integration.</li>
 <li><strong>Thing Shadow Metrics</strong>: Enable or disable updating the thing shadow with metrics.</li>
-<li><strong>Cluster Address</strong>: The cluster address of your The Things Stack deployment. See <a href="/getting-started/cloud-hosted/addresses/">Cloud Hosted Addresses</a>.</li>
+<li><strong>Cluster Address</strong>: The cluster address of your The Things Stack deployment, for example <code>mycompany.eu1.cloud.thethings.industries</code>. See <a href="/getting-started/cloud-hosted/addresses/">Cloud Hosted Addresses</a> to find your cluster address.</li>
+<li><strong>Enable End-to-End Encryption</strong> <span class="new-in-version">New in 3.10.0</span> 
+
+
+
+  
+
+
+<span class="distribution-inline">Cloud Only</span>
+
+: If enabled, the AppSKey is delivered as encrypted from the Global Join Server to your AWS Account, so the AppSKey will not be exposed to the network layer. Also, your AWS solution needs to handle binary payload as the underlying network cannot run payload encoding and decoding functions.</li>
 <li><strong>Application ID</strong>: The application ID for which you configure the integration.</li>
 <li><strong>Application API Key</strong>: The application API key that you generated before.</li>
 </ul>
 <blockquote>
-<p>If you use The Things Network Stack V2 integration for AWS IoT, you must change the <strong>Thing Type Name</strong> to something other than <code>lorawan</code> to avoid conflicts.</p>
+<p><strong>Note:</strong> If you use The Things Network Stack V2 integration for AWS IoT, you must change the <strong>Thing Type Name</strong> to something other than <code>lorawan</code> to avoid conflicts.</p>
 </blockquote>
 <figure>
     <img src="../create-cloudformation-stack.png"
@@ -261,11 +280,11 @@ debug: false
 <p>Check <strong>I acknowledge that AWS CloudFormation might create IAM resources</strong>.</p>
 <p>Click <strong>Create stack</strong>.</p>
 <blockquote>
-<p>Creating all resources can take up to five minutes ☕</p>
+<p>Creating all resources can take up to five minutes.  ☕</p>
 </blockquote>
 <p>When the deployment is done, you&rsquo;ll see the status <code>CREATE_COMPLETE</code>.</p>
 <blockquote>
-<p>Congratulations 🎉 You have now setup the AWS IoT integration for The Things Stack!</p>
+<p>Congratulations! 🎉 You have now set up the AWS IoT integration for The Things Stack!</p>
 </blockquote>
 </div>
 
@@ -313,10 +332,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Johan Stokking on 14 Sep 2020.
+  Last changed by Nejra on 29 Oct 2020.
   <br>
-  <a href="https://github.com/TheThingsNetwork/lorawan-stack/commit/c77f9943694f44c61945b6dda40619932ae5ba45">
-      doc: Update AWS IoT Core documentation to latest version
+  <a href="https://github.com/TheThingsNetwork/lorawan-stack/commit/e5d4ebfc44dd2f8dacb04624335e6b02218c41f1">
+      doc: Improving readability
     </a>
 </p>
 

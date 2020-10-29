@@ -147,11 +147,13 @@ debug: false
 </figure>
 
 <blockquote>
-<p>Not seeing all log groups? The log groups are created automatically as log entries are written to an underlying log streams.</p>
+<p><strong>Not seeing all log groups?</strong> The log groups are created automatically as log entries are written to an underlying log streams.</p>
 </blockquote>
 <p>First place to look for issues with thing creation or claiming is the <code>/thethings/lorawan/&lt;stack-name&gt;/things</code> log group. Each thing has its own log stream in this log group. For example, if you <a href="/integrations/aws-iot/default/things/">created or claimed a thing</a> but it doesn&rsquo;t show up in The Things Stack, you can find the cause in the thing&rsquo;s log stream.</p>
 <p>For further details, you can look at the log entries of the Lambda functions:</p>
 <ul>
+<li><code>/aws/lambda/&lt;stack-name&gt;-ConfigureFunction...</code>: configuration</li>
+<li><code>/aws/lambda/&lt;stack-name&gt;-CreateThingTypeFunction...</code>: create the thing type</li>
 <li><code>/aws/lambda/&lt;stack-name&gt;-ClaimThingFunction...</code>: thing claiming</li>
 <li><code>/aws/lambda/&lt;stack-name&gt;-CreateThingFunction...</code>: thing creation</li>
 <li><code>/aws/lambda/&lt;stack-name&gt;-HandleDownlinkFunction...</code>: downlink handling</li>
@@ -203,10 +205,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Johan Stokking on 29 Jul 2020.
+  Last changed by Nejra on 29 Oct 2020.
   <br>
-  <a href="https://github.com/TheThingsNetwork/lorawan-stack/commit/3dd987c67324ede56a3bf607ca62615a1d590f9d">
-      doc: Document AWS IoT integration
+  <a href="https://github.com/TheThingsNetwork/lorawan-stack/commit/e5d4ebfc44dd2f8dacb04624335e6b02218c41f1">
+      doc: Improving readability
     </a>
 </p>
 
