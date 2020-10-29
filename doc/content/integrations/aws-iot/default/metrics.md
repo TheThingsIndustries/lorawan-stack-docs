@@ -27,10 +27,14 @@ The shadow state contains the following fields:
     "gateways": 1,
     // Uplink frame counter of the session
     "fCntUp": 3,
-    // Downlink frame counter of the session (not used when Application Server manages payload encryption)
+    // Downlink frame counter of the session (only when using end-to-end encryption)
     "fCntDown": 0,
     // LoRaWAN DevAddr (hex)
     "devAddr": "270000B0",
+    // Unique session ID
+    "sessionID": "AXVvI/CZfJfog5g2zvVKfw==",
+    // LoRaWAN AppSKey (only when using end-to-end encryption)
+    "appSKey": "F6AEEDFFA15F51C84B28EA2FA72716C8",
     // Best RSSI (received signal strength indicator) of the last uplink message
     "rssi": -38,
     // Best SNR (signal-to-noise ratio) of the last uplink message
