@@ -70,6 +70,14 @@ You can deploy one or multiple Redis clusters with the `2-3-db-redis` template. 
 
 In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and the previously described purpose, this template asks for the **Instance Type**. It is typically fine for small clusters to start with `cache.t3.medium` and scale as you grow. It is recommended to have a **Multi-AZ** cluster with automatic failover, in which case you'll need 2 **Replicas**. Since most load is read-write it is not necessary to deploy more than 2 replicas. If you are migrating your database from a previous deployment, or if you are upgrading your database, you can fill the name of the database **Snapshot** that should be restored.
 
+# TimescaleDB (optional) {{< new-in-version "3.10" >}}
+
+The template `2-5-db-timescale` is an optional template that creates an EC2 instance that runs [TimescaleDB](https://www.timescale.com/), which is used by the Storage Integration of the Application Server. If you do not want to install the storage integration, you do not need to deploy this.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/2-5-db-timescale.gen.template (replace `3.x` with the current minor version).
+
+In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template requires you to choose an **Instance type** and **SSH Key Name** to be used to login to the instance. You either need to specify the **EBS Volume Snapshot ID** to restore, or the **EBS Volume Size** for the storage volume to create. Finally, you need to specify the database name, username and password. If you restore from a snapshot, these must match the existing database in the snapshot.
+
 # S3 Buckets
 
 The template `2-4a-is-s3` creates S3 buckets for the Identity Server. This template only needs to be deployed for your "main" cluster that contains your Identity Server. Secondary clusters do not have an Identity Server and don't need this template.
