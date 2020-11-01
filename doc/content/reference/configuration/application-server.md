@@ -52,3 +52,37 @@ Application Server supports communicating the paths of the downlink queue operat
 
 - `as.webhooks.downlink.public-address`: Public address of the HTTP webhooks frontend (default "http://localhost:1885/api/v3")
 - `as.webhooks.downlink.public-tls-address`: Public address of the HTTPS webhooks frontend
+
+## Storage Integration Options
+
+{{< distributions-inline "Cloud" "Enterprise" >}}
+
+The Storage Integration requires a database for storing upstream messages.
+
+- `as.packages.storage.provider`: Database backend to use. Currently, only `postgres` is supported.
+
+A PostgreSQL-compatible database is required. The Application Server will automatically recognise when [TimescaleDB](https://www.timescale.com) is used.
+
+- `as.packages.storage.postgres.database-uri`: Database connection URI. Details for the form of the URI can be found in the [PostgreSQL documentation](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING)
+- `as.packages.storage.postgres.read-database-uri`: Read-only database connection URI
+- `as.packages.storage.postgres.select-batch-size`: Maximum batch size for `SELECT` queries. Larger values require more memory, but improve speed when querying large datasets
+- `as.packages.storage.postgres.insert-batch-size`: Maximum batch size for `INSERT` queries. Larger values require more memory, but improve throughput when storing messages, by reducing the number of required database transactions. Only relevant when bulk mode is enabled
+- `as.packages.storage.postgres.debug`: Log all SQL queries, make sure to set to `false` for production environments
+
+In order to improve performance, the Storage Integration can be configured to store upstream messages in a local cache, and then flush them in batches to the database in regular intervals.
+
+- `as.packages.storage.bulk.enabled`: Set to `true` to enable bulk mode.
+- `as.packages.storage.bulk.interval`: Interval between consecutive flushes.
+- `as.packages.storage.bulk.max-size`: Local cache size (number of messages). If the cache is full and a new upstream messages arrives, the cache is flushed to the database.
+
+The Storage Integration can be configured to store only specific types of upstream messages.
+
+- `as.packages.storage.enable.all`: Set to `true` to store all current and future message types, ignoring the rest of the options
+- `as.packages.storage.enable.uplink-message`: Set to `true` to store `UplinkMessage` messages
+- `as.packages.storage.enable.join-accept`: Set to `true` to store `JoinAccept` messages
+- `as.packages.storage.enable.downlink-ack`: Set to `true` to store `DownlinkAck` messages
+- `as.packages.storage.enable.downlink-nack`: Set to `true` to store `DownlinkNack` messages
+- `as.packages.storage.enable.downlink-sent`: Set to `true` to store `DownlinkSent` messages
+- `as.packages.storage.enable.downlink-failed`: Set to `true` to store `DownlinkFailed` messages
+- `as.packages.storage.enable.location-solved`: Set to `true` to store `LocationSolved` messages
+- `as.packages.storage.enable.service-data`: Set to `true` to store `ServiceData` messages
