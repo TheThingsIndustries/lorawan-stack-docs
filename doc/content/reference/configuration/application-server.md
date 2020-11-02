@@ -55,7 +55,7 @@ Application Server supports communicating the paths of the downlink queue operat
 
 ## Storage Integration Options
 
-{{< distributions-inline "Cloud" "Enterprise" >}}
+{{< distributions-inline "Enterprise" >}}
 
 The Storage Integration requires a database for storing upstream messages.
 
