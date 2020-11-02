@@ -3,7 +3,7 @@ title: "Storage Integration API"
 description: ""
 ---
 
-## The `ApplicationUpStorage` service
+## The `ApplicationUpStorage` Service
 
 {{< proto/method service="ApplicationUpStorage" method="GetStoredApplicationUp" >}}
 

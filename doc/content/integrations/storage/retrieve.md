@@ -4,7 +4,7 @@ summary: Retrieve historical data using the HTTP API
 weight: 30
 ---
 
-The Storage Integration offers the `StorageIntegrationService` gRPC service and the respective HTTP endpoints for retrieving historical data. This page merely contains a few examples, see [Reference]({{< ref "/reference/api/application_storage" >}}) for more details.
+The Storage Integration offers the `StorageIntegrationService` gRPC service and the respective HTTP endpoints for retrieving historical data. This page merely contains a few examples, see [Reference]({{< ref "/reference/api/storage_integration" >}}) for more details.
 
 ## Retrieve Uplinks of an Application
 
