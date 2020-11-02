@@ -118,6 +118,30 @@ Application:
       message:
         name: ContactInfo
     default: []
+ApplicationActivationSettings:
+  name: ApplicationActivationSettings
+  fields:
+  - name: kek_label
+    comment: The KEK label to use for wrapping application keys.
+    type: string
+    rules:
+      max_len: 2048
+    default: ""
+  - name: kek
+    comment: The (encrypted) Key Encryption Key.
+    message:
+      name: KeyEnvelope
+    default: {}
+  - name: home_net_id
+    comment: Home NetID.
+    type: bytes
+    default: ""
+  - name: application_server_id
+    comment: The AS-ID of the Application Server to use.
+    type: string
+    rules:
+      max_len: 100
+    default: ""
 ApplicationDownlink:
   name: ApplicationDownlink
   fields:
@@ -596,6 +620,10 @@ ApplicationPubSub:
     message:
       name: ApplicationPubSub.Message
     default: {}
+  - name: downlink_queue_invalidated
+    message:
+      name: ApplicationPubSub.Message
+    default: {}
   - name: location_solved
     message:
       name: ApplicationPubSub.Message
@@ -993,6 +1021,20 @@ ApplicationUplink:
   - name: confirmed
     type: bool
     default: false
+  - name: consumed_airtime
+    comment: Consumed airtime for the transmission of the uplink message. Calculated by Network Server using the RawPayload size and the transmission settings.
+    message:
+      package: google.protobuf
+      name: Duration
+    default: 0s
+  - name: locations
+    comment: End device location metadata, set by the Application Server while handling the message.
+    map_key:
+      type: string
+    map_value:
+      message:
+        name: Location
+    default: {}
 ApplicationWebhook:
   name: ApplicationWebhook
   fields:
@@ -1077,6 +1119,10 @@ ApplicationWebhook:
       name: ApplicationWebhook.Message
     default: {}
   - name: downlink_queued
+    message:
+      name: ApplicationWebhook.Message
+    default: {}
+  - name: downlink_queue_invalidated
     message:
       name: ApplicationWebhook.Message
     default: {}
@@ -1207,6 +1253,10 @@ ApplicationWebhookTemplate:
       name: ApplicationWebhookTemplate.Message
     default: {}
   - name: downlink_queued
+    message:
+      name: ApplicationWebhookTemplate.Message
+    default: {}
+  - name: downlink_queue_invalidated
     message:
       name: ApplicationWebhookTemplate.Message
     default: {}
@@ -2091,6 +2141,13 @@ DecodeUplinkMessageRequest:
   - name: parameter
     type: string
     default: ""
+DeleteApplicationActivationSettingsRequest:
+  name: DeleteApplicationActivationSettingsRequest
+  fields:
+  - name: application_ids
+    message:
+      name: ApplicationIdentifiers
+    default: {}
 DeleteInvitationRequest:
   name: DeleteInvitationRequest
   fields:
@@ -3204,9 +3261,17 @@ Gateway:
       name: Duration
     default: 0s
   - name: update_location_from_status
-    comment: update the location of this gateway from status messages
+    comment: Update the location of this gateway from status messages. This only works for gateways connecting with authentication; gateways connected over UDP are not supported.
     type: bool
     default: false
+  - name: lbs_lns_secret
+    comment: |-
+      The LoRa Basics Station LNS secret.
+      This is either an auth token (such as an API Key) or a TLS private certificate.
+      Requires the RIGHT_GATEWAY_READ_SECRETS for reading and RIGHT_GATEWAY_WRITE_SECRETS for updating this value.
+    message:
+      name: Secret
+    default: {}
 GatewayAntenna:
   name: GatewayAntenna
   comment: GatewayAntenna is the message that defines a gateway antenna.
@@ -3635,6 +3700,18 @@ GetApplicationAPIKeyRequest:
     comment: Unique public identifier for the API key.
     type: string
     default: ""
+GetApplicationActivationSettingsRequest:
+  name: GetApplicationActivationSettingsRequest
+  fields:
+  - name: application_ids
+    message:
+      name: ApplicationIdentifiers
+    default: {}
+  - name: field_mask
+    message:
+      package: google.protobuf
+      name: FieldMask
+    default: {}
 GetApplicationCollaboratorRequest:
   name: GetApplicationCollaboratorRequest
   fields:
@@ -4271,6 +4348,12 @@ JoinRequest:
       rules:
         max_len: 100
     default: []
+  - name: consumed_airtime
+    comment: Consumed airtime for the transmission of the join request. Calculated by Network Server using the RawPayload size and the transmission settings.
+    message:
+      package: google.protobuf
+      name: Duration
+    default: 0s
 JoinRequestPayload:
   name: JoinRequestPayload
   fields:
@@ -6151,6 +6234,39 @@ MACState:
       package: google.protobuf
       name: Timestamp
     default: "0001-01-01T00:00:00Z"
+  - name: rejected_data_rate_ranges
+    comment: Data rate ranges rejected by the device per frequency.
+    map_key:
+      type: uint64
+    map_value:
+      message:
+        name: MACState.DataRateRanges
+    default: {}
+MACState.DataRateRange:
+  name: MACState.DataRateRange
+  fields:
+  - name: min_data_rate_index
+    enum:
+      name: DataRateIndex
+    rules:
+      defined_only: true
+    default: DATA_RATE_0
+  - name: max_data_rate_index
+    enum:
+      name: DataRateIndex
+    rules:
+      defined_only: true
+    default: DATA_RATE_0
+MACState.DataRateRanges:
+  name: MACState.DataRateRanges
+  fields:
+  - name: ranges
+    rules:
+      min_items: 1
+    repeated:
+      message:
+        name: MACState.DataRateRange
+    default: []
 MACState.JoinAccept:
   name: MACState.JoinAccept
   fields:
@@ -7092,6 +7208,19 @@ SearchEntitiesRequest:
     comment: Page number for pagination. 0 is interpreted as 1.
     type: uint32
     default: 0
+Secret:
+  name: Secret
+  comment: Secret contains a secret value. It also contains the ID of the Encryption key used to encrypt it.
+  fields:
+  - name: key_id
+    comment: ID of the Key used to encrypt the secret.
+    type: string
+    default: ""
+  - name: value
+    type: bytes
+    rules:
+      max_len: 2048
+    default: ""
 SendInvitationRequest:
   name: SendInvitationRequest
   fields:
@@ -7201,6 +7330,22 @@ SessionKeys:
       This key is stored by the Application Server.
     message:
       name: KeyEnvelope
+    default: {}
+SetApplicationActivationSettingsRequest:
+  name: SetApplicationActivationSettingsRequest
+  fields:
+  - name: application_ids
+    message:
+      name: ApplicationIdentifiers
+    default: {}
+  - name: settings
+    message:
+      name: ApplicationActivationSettings
+    default: {}
+  - name: field_mask
+    message:
+      package: google.protobuf
+      name: FieldMask
     default: {}
 SetApplicationCollaboratorRequest:
   name: SetApplicationCollaboratorRequest
@@ -7762,6 +7907,12 @@ UplinkMessage:
     rules:
       lte: 255
     default: 0
+  - name: consumed_airtime
+    comment: Consumed airtime for the transmission of the uplink message. Calculated by Network Server using the RawPayload size and the transmission settings.
+    message:
+      package: google.protobuf
+      name: Duration
+    default: 0s
 UplinkToken:
   name: UplinkToken
   fields:
