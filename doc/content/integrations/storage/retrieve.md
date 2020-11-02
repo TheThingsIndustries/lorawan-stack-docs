@@ -17,7 +17,7 @@ $ ttn-lw-cli applications storage get "app1" --limit 10 --after "2018-08-20T00:0
 Using the HTTP API (`$API_KEY` should be a valid API key with the `RIGHT_APPLICATION_TRAFFIC_READ` right):
 
 ```bash
-$ curl -G "https://thethings.example.com/api/v3/as/applications/app1/packages/storage/uplinks" \
+$ curl -G "https://thethings.example.com/api/v3/as/applications/app1/packages/storage/uplink_message" \
     -H "Authorization: Bearer $API_KEY" \
     -d "limit=10" \
     -d "after=2020-08-20T00:00:00Z"
