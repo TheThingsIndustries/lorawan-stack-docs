@@ -1,0 +1,186 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Docs service template for thethingsindustries.com
+Metadata:
+  AWS::CloudFormation::Interface:
+    ParameterLabels:
+      CPU:
+        default: CPU limit of a container
+      DockerImage:
+        default: Docker image
+      Memory:
+        default: Memory limit of a container
+      TaskDesiredCount:
+        default: Number of container instances to run (prod only)
+Parameters:
+  CPU:
+    AllowedPattern: .+
+    Default: '256'
+    Type: String
+  DockerImage:
+    AllowedPattern: .+
+    Default: thethingsindustries/thethingsindustries:docs
+    Type: String
+  Memory:
+    AllowedPattern: .+
+    Default: '512'
+    Type: String
+  TaskDesiredCount:
+    Default: 2
+    Type: Number
+Resources:
+  ECSServiceDev:
+    Metadata:
+      cfn-lint:
+        config:
+          ignore_checks:
+          - E3002
+    Properties:
+      Cluster:
+        Ref: ECSTaskCluster
+      DesiredCount: 1
+      HealthCheckGracePeriodSeconds: 60
+      LaunchType: FARGATE
+      LoadBalancers:
+      - ContainerName: docs
+        ContainerPort: 80
+        TargetGroupArn:
+          Fn::ImportValue: tticom-dev-DocsTargetGroup
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: ENABLED
+          SecurityGroups:
+          - Fn::ImportValue: tticom-dev-AppSecurityGroup
+          Subnets:
+          - Fn::ImportValue: tticom-dev-SubnetAZa
+          - Fn::ImportValue: tticom-dev-SubnetAZb
+          - Fn::ImportValue: tticom-dev-SubnetAZc
+      ServiceName: docs-dev
+      TaskDefinition:
+        Ref: TaskDefinitionDev
+    Type: AWS::ECS::Service
+  ECSServiceProd:
+    Metadata:
+      cfn-lint:
+        config:
+          ignore_checks:
+          - E3002
+    Properties:
+      Cluster:
+        Ref: ECSTaskCluster
+      DesiredCount:
+        Ref: TaskDesiredCount
+      HealthCheckGracePeriodSeconds: 60
+      LaunchType: FARGATE
+      LoadBalancers:
+      - ContainerName: docs
+        ContainerPort: 80
+        TargetGroupArn:
+          Fn::ImportValue: tticom-prod-DocsTargetGroup
+      NetworkConfiguration:
+        AwsvpcConfiguration:
+          AssignPublicIp: ENABLED
+          SecurityGroups:
+          - Fn::ImportValue: tticom-prod-AppSecurityGroup
+          Subnets:
+          - Fn::ImportValue: tticom-prod-SubnetAZa
+          - Fn::ImportValue: tticom-prod-SubnetAZb
+          - Fn::ImportValue: tticom-prod-SubnetAZc
+      ServiceName: docs-prod
+      TaskDefinition:
+        Ref: TaskDefinitionProd
+    Type: AWS::ECS::Service
+  ECSTaskCluster:
+    Properties:
+      ClusterName: docs-cluster
+    Type: AWS::ECS::Cluster
+  TaskDefinitionDev:
+    Properties:
+      ContainerDefinitions:
+      - Image:
+          Ref: DockerImage
+        LogConfiguration:
+          LogDriver: awslogs
+          Options:
+            awslogs-group: tticom-dev-LogGroup
+            awslogs-region:
+              Ref: AWS::Region
+            awslogs-stream-prefix: docs-dev
+        Name: docs
+        PortMappings:
+        - ContainerPort: 80
+          Protocol: tcp
+        RepositoryCredentials:
+          CredentialsParameter:
+            Fn::ImportValue: tticom-dev-DockerLogin
+      Cpu:
+        Ref: CPU
+      ExecutionRoleArn:
+        Ref: TaskExecutionRole
+      Family: docs-dev
+      Memory:
+        Ref: Memory
+      NetworkMode: awsvpc
+      RequiresCompatibilities:
+      - FARGATE
+    Type: AWS::ECS::TaskDefinition
+  TaskDefinitionProd:
+    Properties:
+      ContainerDefinitions:
+      - Image:
+          Ref: DockerImage
+        LogConfiguration:
+          LogDriver: awslogs
+          Options:
+            awslogs-group: tticom-prod-LogGroup
+            awslogs-region:
+              Ref: AWS::Region
+            awslogs-stream-prefix: docs-prod
+        Name: docs
+        PortMappings:
+        - ContainerPort: 80
+          Protocol: tcp
+        RepositoryCredentials:
+          CredentialsParameter:
+            Fn::ImportValue: tticom-prod-DockerLogin
+      Cpu:
+        Ref: CPU
+      ExecutionRoleArn:
+        Ref: TaskExecutionRole
+      Family: docs-prod
+      Memory:
+        Ref: Memory
+      NetworkMode: awsvpc
+      RequiresCompatibilities:
+      - FARGATE
+    Type: AWS::ECS::TaskDefinition
+  TaskExecutionRole:
+    Properties:
+      AssumeRolePolicyDocument:
+        Statement:
+        - Action:
+          - sts:AssumeRole
+          Effect: Allow
+          Principal:
+            Service:
+            - ecs-tasks.amazonaws.com
+      Policies:
+      - PolicyDocument:
+          Statement:
+          - Action:
+            - secretsmanager:GetSecretValue
+            Effect: Allow
+            Resource:
+            - Fn::ImportValue: tticom-dev-DockerLogin
+            - Fn::ImportValue: tticom-prod-DockerLogin
+          - Action:
+            - logs:CreateLogStream
+            - logs:DescribeLogStreams
+            - logs:PutLogEvents
+            Effect: Allow
+            Resource:
+            - Fn::ImportValue: tticom-dev-LogGroupArn
+            - Fn::ImportValue: tticom-prod-LogGroupArn
+          Version: '2012-10-17'
+        PolicyName: docs-execution
+      RoleName: docs-ExecutionRole
+    Type: AWS::IAM::Role

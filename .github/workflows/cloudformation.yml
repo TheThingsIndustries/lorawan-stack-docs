@@ -1,0 +1,33 @@
+name: CloudFormation Templates
+
+on:
+  push:
+    paths:
+    - 'deploy/**'
+  pull_request:
+    paths:
+    - 'deploy/**'
+
+jobs:
+  quality:
+    name: Code Quality
+    runs-on: ubuntu-latest
+    steps:
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: '~3.8'
+    - name: Check out code
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 1
+    - name: Install dependencies
+      run: pip3 install -r deploy/src/requirements.txt
+    - name: Rebuild templates
+      run: cd deploy && python3 src/stack.py
+    - name: Lint templates
+      uses: ScottBrenner/cfn-lint-action@1.6.0
+      with:
+        args: 'deploy/*.yaml'
+    - name: Check for diff
+      run: git diff --exit-code --name-only

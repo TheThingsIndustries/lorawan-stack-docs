@@ -38,6 +38,10 @@ output the site to `public`.
 The documentation site can be built for internal (offline) use by running `make build.internal`. This will
 output the site to `internal`.
 
+## thethingsindustries.com/docs deployment
+
+thethingsindustries.com/docs uses docker image thethingsindustries/thethingsindustries.com:docs that contains an nginx server serving docs. Repository has a github action that automatically, upon push to `master`, updates the image and restarts services in AWS.
+
 ## Contributing
 
 Please see the style, branch naming, and commit guidelines in [CONTRIBUTING](CONTRIBUTING.md)

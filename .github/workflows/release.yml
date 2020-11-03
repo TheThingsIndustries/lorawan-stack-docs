@@ -9,11 +9,12 @@ jobs:
   release:
     name: Release docs
     runs-on: ubuntu-18.04
+    timeout-minutes: 30
     steps:
     - name: Check out code
       uses: actions/checkout@v2
       with:
-        fetch-depth: 0
+        fetch-depth: 1
     - name: Set up Go
       uses: actions/setup-go@v2
       with:
@@ -21,7 +22,7 @@ jobs:
     - name: Build docs
       run: make build.public
       env:
-        HUGO_BASE_URL: https://thethingsstack.io/
+        HUGO_BASE_URL: /docs
         HUGO_GOOGLEANALYTICS: ${{ secrets.HUGO_GOOGLEANALYTICS }}
         HUGO_PARAMS_FEEDBACK_CAMPAIGN: ${{ secrets.HUGO_PARAMS_FEEDBACK_CAMPAIGN }}
         HUGO_PARAMS_FEEDBACK_ENABLED: true
@@ -30,9 +31,23 @@ jobs:
         HUGO_PARAMS_SEARCH_APIKEY: ${{ secrets.HUGO_PARAMS_SEARCH_APIKEY }}
         HUGO_PARAMS_SEARCH_ENABLED: true
         HUGO_PARAMS_SEARCH_INDEX: thethingsstack
-    - name: Deploy documentation to Github pages
-      uses: JamesIves/github-pages-deploy-action@releases/v3
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
       with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: public
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_REGION }}
+    - name: Build docker image
+      run: sudo docker image build -t thethingsindustries/thethingsindustries:docs .
+    - name: Docker Login
+      run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Push docker image
+      run: docker push thethingsindustries/thethingsindustries:docs
+    - name: Restart ECS
+      run: |
+        aws ecs update-service --cluster docs-cluster --service docs-dev --force-new-deployment
+        aws ecs update-service --cluster docs-cluster --service docs-prod --force-new-deployment
+    - name: Wait for steady state
+      run: |
+        aws ecs wait services-stable --cluster docs-cluster --service docs-dev
+        aws ecs wait services-stable --cluster docs-cluster --service docs-prod
