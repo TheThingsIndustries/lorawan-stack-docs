@@ -4,25 +4,19 @@ description: ""
 weight: 2
 ---
 
-Once you have prepared the setup on ThingSpeak, follow this section to create a Webhook integration on {{% tts %}}.
+Once you have prepared the setup on ThingSpeak, follow this section to create a Webhook integration on {{% tts %}} by using the **ThingSpeak** [Webhook template]({{< ref "/integrations/webhooks/webhook-templates" >}}).
 
 <!--more-->
 
->**Note:** this section follows the [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}) guide.  
+>**Note:** To see the values of all parameters of the ThingSpeak integration, click on the integration after you create it with the Webhook template. In case you need to create a **Custom webhook**, see the [Creating Webhooks]({{< ref "/integrations/webhooks/creating-webhooks" >}}) guide.
 
 >**Note:** Before implementing the Webhook integration, you need to create an uplink payload formatter in order to decode the uplink payload and set fields in the `decoded_payload` object of the uplink message. See [Payload Formatters]({{< ref "/integrations/payload-formatters" >}}) for a detailed info.
 
-Fill in the **Webhook ID** field. 
+Give a name to your integration by filling in the **Webhook ID** field. 
 
-Create an `Authorization` header entry and paste the **Write API Key** you copied from ThingSpeak in the value field.
+Fill in the **Channel ID** field with the ThingSpeak channel ID value, and paste the **Write API Key** from ThingSpeak in the **API Key** field.
 
-Create another header entry named `Channelid` and paste the **Channel ID** value from ThingSpeak as its value.
-
-Finally, add `Content-Type` header entry with `application/json` value.
-
-Choose **JSON** as a **Webhook format** and set the **Base URL** value to `http://api.thingspeak.com/things_network/v3/update`.
-
-Tick the box next to the uplink message type to trigger this webhook with every new uplink message.
+Finish by clicking the **Create thingspeak webhook** button.
 
 {{< figure src="creating-a-webhook.png" alt="ThingSpeak webhook" >}}
 
