@@ -71,6 +71,10 @@ The body may contain a more detailed description of the commit, explaining what 
 
 Run `make new <path>` to create a new documentation section from the [template](doc/archetypes/section-bundle/_index.md) at `path`. For example, `make new getting-started/hello` will create a section in `getting-started/hello`.
 
+## Troubleshooting Sections
+
+If you add a section and it needs a troubleshooting page, title the troubleshooting page "Troubleshooting <name_of_section>", so that it is easy to find in search. For example, "Troubleshooting AWS IoT Integration" or "Troubleshooting Installation". An example is included in the new documentation template.
+
 ## Style Guidelines
 
 Please respect the following guidelines for content in our documentation site.
