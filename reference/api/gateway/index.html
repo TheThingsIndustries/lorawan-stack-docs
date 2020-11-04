@@ -1397,7 +1397,18 @@ duty cycle only in controlled research and development environments.</p>
       </td>
       <td><code>bool</code></td>
       <td>
-          <p>update the location of this gateway from status messages</p>
+          <p>Update the location of this gateway from status messages. This only works for gateways connecting with authentication; gateways connected over UDP are not supported.</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <code>lbs_lns_secret</code>
+      </td>
+      <td><a href="#message:Secret"><code>Secret</code></a></td>
+      <td>
+          <p>The LoRa Basics Station LNS secret.
+This is either an auth token (such as an API Key) or a TLS private certificate.
+Requires the RIGHT_GATEWAY_READ_SECRETS for reading and RIGHT_GATEWAY_WRITE_SECRETS for updating this value.</p>
       </td>
     </tr>
   </tbody>
@@ -1426,6 +1437,7 @@ duty cycle only in controlled research and development environments.</p>
   "downlink_path_constraint": "DOWNLINK_PATH_CONSTRAINT_NONE",
   "schedule_anytime_delay": "0s",
   "update_location_from_status": false,
+  "lbs_lns_secret": {},
 }</code></pre>
 </details>
 
