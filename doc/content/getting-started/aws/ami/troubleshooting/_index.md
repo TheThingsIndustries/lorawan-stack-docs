@@ -1,5 +1,5 @@
 ---
-title: "Troubleshooting"
+title: "Troubleshooting AWS AMI Deployment"
 description: ""
 weight: 3
 ---

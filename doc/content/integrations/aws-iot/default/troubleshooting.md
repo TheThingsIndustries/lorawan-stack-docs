@@ -1,5 +1,5 @@
 ---
-title: "Troubleshooting"
+title: "Troubleshooting AWS IoT Integration"
 description: ""
 weight: 80
 ---

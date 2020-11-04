@@ -33,7 +33,7 @@ Please refer to [Kerlink Wirnet provisioning documentation](https://github.com/T
 
 > NOTE: To avoid being prompted for `root` user password several times, you may add your SSH public key as authorized for `root` user on the gateway, for example, by `ssh-copy-id root@192.168.4.155`.
 
-## Troubleshoting
+## Troubleshooting
 
 Packet forwarder logs are located at `/mnt/fsuser-1/lora/var/log/lora.log`. You can access them by e.g.:
 
