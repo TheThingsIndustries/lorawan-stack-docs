@@ -1,5 +1,5 @@
 ---
-title: "Troubleshooting"
+title: "Troubleshooting Getting Started"
 description: ""
 ---
 
@@ -18,45 +18,6 @@ See the [authentication reference]({{< ref "reference/api/authentication" >}}).
 ### How do I create and authorize new users?
 
 See [user and organization management]({{< ref "getting-started/user-management" >}}).
-
-## Troubleshooting Devices
-
-### How do I see device events?
-
-Device event logs can be found in the console in the device's general information page. See [Working with Events]({{< ref "getting-started/events" >}}) for other ways of subscribing to events.
-
-### My device won't join. What do I do?
-
-- Double check your DevEUI, JoinEUI or AppEUI, LoRaWAN and Regional Parameters Version, root keys (AppKey, and with LoRaWAN 1.1 or higher, NwkKey)
-- Check gateway and application events for traffic from your device
-- Double check frequency plan settings in your end device and gateways (they must be the same LoRaWAN band)
-- Double check your network connection. If there is a slow connection from the server to the gateway, the join accept message may be sent too late (this can happen when a gateway uses 3G as a backhaul). If using the CLI, run `ttn-lw-cli gateways connection-stats <gateway-id>` to see the round trip time (RTT) for your gateway
-- Check for duplicate use of JoinNonce (or AppNonce) and/or DevNonce
-
-### No downlinks are reaching my device. What do I do?
-
-- Check gateway and application events for traffic from your device
-- Check duty cycle restrictions
-- Device clock drift often occurs when SF12 is used
-- Check your antenna connections
-
-### {{% tts %}} is no longer receiving uplinks from my device. What do I do?
-
-- Check [gateway events](#how-do-i-see-gateway-events) and [device events](#how-do-i-see-device-events) for traffic from your device
-- Check for FCnt mismatch on ABP devices
-
-## Troubleshooting Gateways
-
-### How do I see gateway events?
-
-Gateway event logs can be found in the console in the gateway's general information page. See [Working with Events]({{< ref "getting-started/events" >}}) for other ways of subscribing to events.
-
-### My gateway won't connect. What do I do?
-
-- Double check your gateway settings in {{% tts %}}. Ensure your Gateway EUI is correct
-- Double check the configuration settings on your gateway. Is the network address the same address you use to connect to {{% tts %}}? Are your ports correct?
-- Check your gateway logs. For information specific to your gateway, see the [Gateways section]({{< ref "/gateways" >}})
-- If using Basic Station with the CUPS protocol enabled, double check your API Keys and certificates
 
 ## Troubleshooting Common Errors
 
