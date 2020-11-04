@@ -190,7 +190,9 @@ $ aws s3 cp config.yml s3://<span class="si">${</span><span class="nv">InteropCo
 <p>In addition to the re-used parameters, the <strong>License Key</strong>, <strong>Cluster Secrets</strong> and <strong>OAuth Client Secrets</strong> (see <a href="/getting-started/aws/ecs/prerequisites/">Prerequisites</a>), this template asks for login information for your email provider. Currently, only Sendgrid and SMTP are supported.</p>
 <p>For deployments that connect to Packet Broker, you need to configure your Packet Broker secrets here. If you don&rsquo;t have this, you can leave these parameters empty. It is possible to add or update this in the future.</p>
 <p>For multi-tenant deployments that use tenant billing through Stripe (see the <a href="https://thethingsstack.io/reference/stripe/">Stripe Billing reference</a>), you need to configure the Stripe API key (starting with <code>sk_</code>) and Stripe endpoint secret key (starting with <code>whsec_</code>). It is possible to add or update this in the future.</p>
-<h1 id="configuration">Configuration</h1>
+<p>For the <strong>Gateway Secrets Encryption Key Value</strong> parameter <span class="new-in-version">New in 3.10</span>, provide an AES-128 Key in Base64. The following command can be used to randomly generate one:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ openssl rand -base64 <span class="m">16</span>
+</code></pre></div><h1 id="configuration">Configuration</h1>
 <p>The <code>4-2-configuration</code> template creates several configuration parameters in AWS Systems Manager Parameter Store.</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/4-2-configuration.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/4-2-configuration.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <p>As with the other templates, this one also asks for the re-used parameters from the <a href="/getting-started/aws/ecs/prerequisites/">Prerequisites</a>. Next to these parameters, this template has some notable parameters:</p>
@@ -321,10 +323,10 @@ See the <a href="https://thethingsstack.io/getting-started/aws/ecs/database-oper
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Hylke Visser on 27 Oct 2020.
+  Last changed by Krishna Iyer Easwaran on 03 Nov 2020.
   <br>
-  <a href="https://github.com/TheThingsNetwork/lorawan-stack/commit/83d0f0347d70e76db3fa67e12453fc7201cdc8d5">
-      doc: Remove 3.9 from CloudFormation links
+  <a href="https://github.com/TheThingsNetwork/lorawan-stack/commit/bf089c9cfaedb59c4c58b2c8ff0256a58b3fd156">
+      doc: Add gateway secrets enc key description
     </a>
 </p>
 
