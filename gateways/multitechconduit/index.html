@@ -92,6 +92,12 @@ debug: false
 
 <ul class="menu-list">
 <a href="https://thethingsstack.io/gateways/multitechconduit/" class="is-active">Overview</a>
+<li>
+  <a href="https://thethingsstack.io/gateways/multitechconduit/lbs/" class="">Configure LoRa Basics™ Station</a>
+</li>
+<li>
+  <a href="https://thethingsstack.io/gateways/multitechconduit/udp/" class="">Configure UDP Packet Forwarder</a>
+</li>
 </ul>
 
 
@@ -106,105 +112,87 @@ debug: false
 
 <div class="content">
 
-<p>The <a href="http://www.multitech.net/developer/products/multiconnect-Conduit-platform/">MultiTech MultiConnect® Conduit™</a> is a configurable, scalable cellular communications gateway for industrial IoT applications. The technical specifications of this Conduit can be found in the software guide in the <a href="http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/">official documentation</a> page.</p>
+<p>The <a href="http://www.multitech.net/developer/products/multiconnect-Conduit-platform/">MultiTech MultiConnect® Conduit™</a> is a configurable, scalable cellular communications gateway for industrial IoT applications. The technical specifications of the Conduit can be found in the software guide in the <a href="http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/">official documentation</a> page.</p>
 <p>This guide will help you set up the Multitech Conduit gateway to communicate over The Things Stack.</p>
-<figure>
-    <img src="001_Multitech_Conduit_AEP.png"
-         alt="MultiTech MultiConnect Conduit AEP Gateway"/> 
-</figure>
-
+<p><img src="multitech-conduit.png" alt="MultiTech MultiConnect Conduit AEP Gateway"></p>
+<p><img src="multitech-conduit-ap.png" alt="MultiTech MultiConnect Conduit AEP Gateway"></p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
 <li>User account on The Things Stack with rights to create Gateways.</li>
-<li>Multitech Conduit AEP Gateway connected to the internet and running the <a href="http://www.multitech.net/developer/downloads/">latest firmware</a>.</li>
+<li>Multitech Conduit AEP Gateway running <a href="http://www.multitech.net/developer/downloads/">mPower 5.30 firmware or later</a>.</li>
 </ol>
-<blockquote>
-<p>This article addresses the minimum configuration required to connect your Multitech Conduit AEP model to The Things Stack.
-For the first-time hardware and software setup, you can refer to the appropriate configuration guide on the <a href="http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/">Multitech documentation</a> page.</p>
-</blockquote>
 <h2 id="registration">Registration</h2>
 <p>Create a gateway by following the instructions for <a href="https://thethingsstack.io/gateways/adding-gateways/">Adding Gateways</a>.</p>
 <blockquote>
-<p>Note: The gateway EUI can be found at the bottom of the gateway under the field &quot;NODE LORA&quot;.</p>
+<p>The gateway EUI can be found at the bottom of the gateway under the field &quot;LORA NODE&quot;.</p>
 </blockquote>
-<h2 id="configuration-using-a-terminal">Configuration using a Terminal</h2>
-<p>Firstly, you will need to generate a <code>global_conf.json</code> file required to add a custom channel plan to your gateway. Follow the steps below to generate the required json file.</p>
+<h2 id="setting-up-the-gateway">Setting Up the Gateway</h2>
+<p>For the first-time hardware and software setup, you can refer to the appropriate configuration guide on the <a href="http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/">Multitech documentation</a> page.</p>
+<p>We have included a few short steps to help you get started.</p>
+<h3 id="connecting-to-the-gateway-as-a-dhcp-server">Connecting to the Gateway as a DHCP Server</h3>
+<p>Since the gateway initializes as a DHCP server, you may have to configure TCP/IP manually. After hard resetting the device, we connected it directly to a computer via ethernet and used the following TCP/IP settings:</p>
+<ul>
+<li>IP Address: 192.168.2.2</li>
+<li>Subnet Mask: 255.255.255.0</li>
+<li>Router Address: 192.168.2.1</li>
+</ul>
+<p>Browse to the IP address of the gateway, 192.168.2.1.</p>
+<p>You may be met with the following screen. In newer versions of Chrome, you can type &ldquo;thisisunsafe&rdquo; to continue past the certificate error screen. Other browsers have different ways of advancing past certificate error screens.</p>
+<figure>
+    <img src="cert-error.png"
+         alt="Chrome Certificate Error"/> 
+</figure>
+
+<p>Once past the certificate screen, create a username and password.</p>
+<p>You will then be met with the first time setup screen. Click <strong>Next</strong>.</p>
+<figure>
+    <img src="first-time-setup.png"
+         alt="First Time Setup"/> 
+</figure>
+
+<p>Set a time and date, and skip the rest of the configuration options.</p>
+<figure>
+    <img src="time-date.png"
+         alt="Time and Date"/> 
+</figure>
+
+<p>Once you have finished the first time setup, click the <strong>Setup</strong> button in the left hand menu, and choose <strong>Network Interfaces</strong>.</p>
+<p>Click on the pen icon for the <strong>eth0</strong> interface to modify it.</p>
+<figure>
+    <img src="network-interfaces.png"
+         alt="Network Interfaces"/> 
+</figure>
+
+<p>Set the <strong>Direction</strong> dropdown to <strong>WAN</strong>, and the <strong>Mode</strong> dropdown to <strong>DHCP Client</strong>.</p>
+<p>Click <strong>Submit</strong> to save the settings.</p>
+<figure>
+    <img src="eth.png"
+         alt="Ethernet Interface"/> 
+</figure>
+
+<p>Next, click the <strong>Administration</strong> button in the left hand menu, and choose the <strong>Access Configuration</strong> submenu.</p>
+<p>Here, enable the <strong>Web Server for HTTP</strong> via <strong>LAN</strong> and <strong>WAN</strong>, and enable <strong>HTTPS</strong> access via <strong>WAN</strong>.</p>
+<p>Optionally, you can also enable <strong>SSH</strong> via <strong>WAN</strong>.</p>
 <blockquote>
-<p><strong>Warning:</strong> The manual configuration of the frequency plan - required to make it work on the The Things (Enterprise) Stack - may result in a mismatch for some of the frequency bands used for the Multitech Gateway.</p>
+<p>Don&rsquo;t miss this part! If you don&rsquo;t enable Web Server or SSH access via WAN, when you connect the gateway to your local network, you will not be able to access it anymore, and you will have to hard reset and start over.</p>
 </blockquote>
-<p>The Gateway Configuration Server can be used to generate a proper <code>global_conf.json</code> configuration file for your gateway. You will need a Gateway API key with the <code>View gateway information</code> right enabled. The instructions for the same can be found in the <a href="https://thethingsstack.io/gateways/adding-gateways/">Adding Gateways</a> guide.</p>
-<p>Open the command prompt in Windows or any Linux terminal to run a curl command (as shown below) to generate the required <code>global_conf.json</code> file in your current working directory.</p>
-<p>Make sure you replace <code>thethings.example.com</code> with your server address:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl -XGET <span class="se">\
-</span><span class="se"></span>    <span class="s2">&#34;https://thethings.example.com/api/v3/gcs/gateways/{GATEWAY_ID}/semtechudp/global_conf.json&#34;</span> <span class="se">\
-</span><span class="se"></span>    -H <span class="s2">&#34;Authorization: Bearer {GTW_API_KEY}&#34;</span> &gt; ~/global_conf.json
-</code></pre></div><blockquote>
-<p>Note: Replace the required fields in the above command and run it.</p>
-</blockquote>
-<p>Once the <code>global_conf.json</code> file is generated, you will need to add this to your gateway. In a web browser, open the gateway’s configuration page by navigating to its IP Address obtained from the network it is connected to. Once logged in, you can configure the gateway to connect to The Things Stack by following the steps below:</p>
-<ul>
-<li>Click on <strong>LoRaWAN<sup>®</sup></strong> in the menu on the left. It opens the Gateway's configuration page.</li>
-</ul>
 <figure>
-    <img src="005_Gateway_Menu_LoRaWAN.png"
-         alt="MultiTech Conduit gateway home page"/> 
+    <img src="access.png"
+         alt="Access Configuration"/> 
 </figure>
 
-<ul>
-<li>Under <strong>Network Settings</strong>, select the mode as &quot;Packet Forwarder&quot;.</li>
-</ul>
+<p>Click <strong>Submit</strong> to save the Access Configuration Settings.</p>
 <figure>
-    <img src="006_Packet_Forwarder_Gateway.png"
-         alt="MultiTech Conduit packet forwarder settings"/> 
+    <img src="access-save.png"
+         alt="Save Access Configuration"/> 
 </figure>
 
-<ul>
-<li>On the right side of the &quot;LoRa Packet Forwarder Configuration&quot; section, you can find &quot;Manual Configuration &quot;. Click on it to setup the channel plan manually.</li>
-</ul>
-<figure>
-    <img src="001_Gateway_Frequency_plan_manual_config.png"
-         alt="Switch to manual configuration mode"/> 
-</figure>
-
-<ul>
-<li>The above step will lead you to the gateway configuration editor tagged as &quot;Config&quot;.</li>
-</ul>
-<figure>
-    <img src="002_Gateway_Frequency_plan_manual_config.png"
-         alt="edit the configuration"/> 
-</figure>
-
-<ul>
-<li>
-<p>Copy the contents of the <code>global_conf.json</code> file downloaded earlier and paste them in the gateway console configuration editor.</p>
-</li>
-<li>
-<p>Once pasted, modify the value of <code>clksrc</code> to set it to <code>0</code>.</p>
-</li>
-<li>
-<p>Click on <strong>Submit</strong> to save the configuration.</p>
-</li>
-<li>
-<p>Now, click on <strong>Save and Restart</strong> from the menu.</p>
-</li>
-</ul>
-<figure>
-    <img src="011_Gateway_Menu_Save-And-Restart.png"
-         alt="Saving the Network Interfaces Configuration"/> 
-</figure>
-
-<ul>
-<li>You will be prompted to confirm the restart. Choose <strong>OK</strong> to proceed.</li>
-</ul>
-<figure>
-    <img src="012_System_Confirmation_Prompt.png"
-         alt="Configuration restart prompt"/> 
-</figure>
-
-<p>This will apply the custom settings and reboot the gateway. If all the steps have been followed correctly, your gateway will now connect to The Things Stack.</p>
-<blockquote>
-<p>To know more about other features of the MultiTech Conduit gateway, you can refer to the <strong>mPower Edge AEP software guide</strong> on the <a href="http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/">Multitech Website</a>.</p>
-</blockquote>
+<p>After you have submitted both the <strong>Ethernet Configuration</strong> and <strong>Access Configuration</strong> settings, double check them so you don&rsquo;t lock yourself out!</p>
+<p>Finally, click <strong>Save and Apply</strong> to apply your configuration.</p>
+<p>At this point, the gateway will reboot. It will come back online as a DHCP client, so you can disconnect it from your computer, and connect the gateway directly to your router or local network.</p>
+<h2 id="connecting-the-gateway-to-the-things-stack">Connecting the Gateway to The Things Stack</h2>
+<p>The Multitech Conduit supports LoRa Basics™ Station and the legacy UDP packet forwarder. LoRa Basics™ Station is more secure and supports configuration of custom channel plans, amongst other improvements. The Things Stack supports LoRa Basics™ Station, so please follow instructions for <a href="/gateways/multitechconduit/lbs/">connecting the Multitech Conduit with LoRa Basics™ Station</a>.</p>
+<p>If for some reason LoRa Basics™ Station is not available to you, instructions for connecting with the legacy packet forwarder are <a href="/gateways/multitechconduit/udp/">here</a>.</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="packet-forwarder-logs">Packet Forwarder Logs</h3>
 <p>Packet forwarder logs contain the messages received from the devices and the network server. You can use the information to debug the issues.</p>
@@ -214,7 +202,7 @@ For the first-time hardware and software setup, you can refer to the appropriate
 <li>Click on the <strong>Download Logs</strong> button in the <strong>Logging</strong> section to download the logs.</li>
 </ul>
 <figure>
-    <img src="016_Packet_Forwarder.png"
+    <img src="packet-forwarder.png"
          alt="Packet forwarder"/> 
 </figure>
 
@@ -237,7 +225,7 @@ For the first-time hardware and software setup, you can refer to the appropriate
 <li>Click on <strong>Start Upgrade</strong>.</li>
 </ul>
 <figure>
-    <img src="017_Firmware_Upgrade.png"
+    <img src="firmware-upgrade.png"
          alt="Gateway firmware upgrade window"/> 
 </figure>
 
@@ -262,6 +250,7 @@ For the first-time hardware and software setup, you can refer to the appropriate
 
 
 <div class="is-clearfix">
+<a class="button is-pulled-right" href="/gateways/multitechconduit/lbs/">Configure LoRa Basics™ Station →</a>
 </div>
 
 
@@ -299,10 +288,10 @@ For the first-time hardware and software setup, you can refer to the appropriate
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 28 Jul 2020.
+  Last changed by benolayinka on 07 Oct 2020.
   <br>
-  <a href="https://github.com/TheThingsNetwork/lorawan-stack/commit/134f3b3f133ae5e72db4adf08e4c64efd9f77468">
-      doc: Add tabbed console&#43;cli shortcode
+  <a href="https://github.com/TheThingsNetwork/lorawan-stack/commit/4c4fc4cca0ad71302a38d773d4497635e6096d6b">
+      doc: Add multitech basic station guide
     </a>
 </p>
 
