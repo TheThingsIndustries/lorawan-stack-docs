@@ -4,18 +4,18 @@ description: ""
 weight: 2
 ---
 
-Once you have completed the setup in Akenza Core, follow this section to create the Webhook integration.
+Once you have completed the setup in Akenza Core, follow this section to create the Webhook integration by using the **Akenza Core** [Webhook template]({{< ref "/integrations/webhooks/webhook-templates" >}}).
 
 <!--more-->
 
->Note: this section follows the [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}) guide. 
+Name your Webhook integration in the **Webhook ID** field. 
 
-Fill in the **Webhook ID** field and choose **JSON** for the **Webhook format**. 
-
-Paste the copied **HTTP Uplink URL** from Akenza Core in the **Base URL** field.
-
-To send uplink messages to Akenza Core, check the **Enabled** box next to **Uplink message**. 
+Fill in the **Domain Secret** and **Device ID** fields with domain secret and device ID values you generated previously on Akenza Core. 
 
 {{< figure src="creating-webhook.png" alt="Akenza Core webhook" >}}
 
-After creating the integration, you will be able to see uplink messages in JSON format in Akenza Core in the **Data** tab of the created device (which can be found in the **Inventory**).
+Finish with creating the integration by clicking the **Create akenza core webhook** button.
+
+>**Note:** To see the values of all parameters of the Akenza Core integration, click on the integration after you created it with the Webhook template. 
+
+After creating the integration, go back to Akenza Core and you will be able to see the uplink messages in JSON format in your device's **Data** tab.

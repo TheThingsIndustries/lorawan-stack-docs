@@ -4,24 +4,14 @@ description: ""
 weight: 2
 ---
 
-Next, create a Webhook integration on {{% tts %}} by following this section.
+Next, follow the steps in this section to create a Webhook integration on {{% tts %}} by using the **TagoIO** [Webhook template]({{< ref "/integrations/webhooks/webhook-templates" >}}).
 
-<!--more-->
+<!--more--> 
 
->**Note:** **TagoIO** Webhook template is now available on {{% tts %}}, but in case you want to create a **Custom webhook**, this guide can be helpful. Read more about these templates in the [Webhook templates]({{< ref "/integrations/webhooks/webhook-templates" >}}) page.
-
->**Note:** this section follows the [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}) guide.  
-
-Fill in the **Webhook ID** field. 
-
-Create an `Authorization` header entry with the authorization copied in the previous step as a value.
-
-Choose **JSON** as a **Webhook format**.
-
-Set the **Base URL** value to `https://ttn.middleware.tago.io`.
-
-Tick the box besides the uplink message type to enable this webhook for it and enter `/uplink` as an additional path to be appended to the **Base URL**.
+Fill in the **Webhook ID** field, and then paste the TagoIO service authorization in the **Authorization** field.
 
 {{< figure src="creating-a-webhook.png" alt="TagoIO webhook" >}}
+
+>**Note:** To see the values of all parameters of the TagoIO integration, click on the integration after you created it with the Webhook template. 
 
 After following these steps, you will see messages arriving in the **Live Inspector** tab in TagoIO.
