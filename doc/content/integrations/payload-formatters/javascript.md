@@ -7,6 +7,8 @@ Javascript payload formatters allow you to write your own functions to encode or
 
 <!--more-->
 
+> **Note:** There are major differences between EC5 and EC6. See [here](https://www.javatpoint.com/es5-vs-es6) for a quick comparison. Notably, `let`, `const`, and arrow functions are not supported by EC5.
+
 The payload formatters should be simple and lightweight. Use arithmetic operations and bit shifts to convert binary data to fields. Avoid using non-trivial logic or polyfills. The runtime does not support modules or any input/output other than defined below.
 
 ## Decode Uplink Function
