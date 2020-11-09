@@ -432,6 +432,21 @@ ApplicationRegistry:
       http:
       - method: DELETE
         path: /applications/{application_id}
+ApplicationUpStorage:
+  name: ApplicationUpStorage
+  methods:
+    GetStoredApplicationUp:
+      name: GetStoredApplicationUp
+      input:
+        name: GetStoredApplicationUpRequest
+      output:
+        name: ApplicationUp
+        stream: true
+      http:
+      - method: GET
+        path: /as/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}/packages/storage/{type}
+      - method: GET
+        path: /as/applications/{application_ids.application_id}/packages/storage/{type}
 ApplicationWebhookRegistry:
   name: ApplicationWebhookRegistry
   methods:

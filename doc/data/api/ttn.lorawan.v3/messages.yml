@@ -4027,6 +4027,69 @@ GetRootKeysRequest:
       package: google.protobuf
       name: Struct
     default: {}
+GetStoredApplicationUpRequest:
+  name: GetStoredApplicationUpRequest
+  fields:
+  - name: application_ids
+    comment: Query upstream messages from all end devices of an application. Cannot be used in conjunction with EndDeviceIdentifiers.
+    message:
+      name: ApplicationIdentifiers
+    default: {}
+  - name: end_device_ids
+    comment: Query upstream messages from a single end device. Cannot be used in conjunction with ApplicationIdentifiers.
+    message:
+      name: EndDeviceIdentifiers
+    default: {}
+  - name: type
+    comment: Query upstream messages of a specific type. If not set, then all upstream messages are returned.
+    type: string
+    rules:
+      in:
+      - ""
+      - uplink_message
+      - join_accept
+      - downlink_ack
+      - downlink_nack
+      - downlink_sent
+      - downlink_failed
+      - downlink_queued
+      - downlink_queue_invalidated
+      - location_solved
+      - service_data
+    default: ""
+  - name: limit
+    comment: Limit number of results.
+    message:
+      package: google.protobuf
+      name: UInt32Value
+    default: null
+  - name: after
+    comment: Query upstream messages after this timestamp only.
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
+  - name: before
+    comment: Query upstream messages before this timestamp only.
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
+  - name: f_port
+    comment: Query uplinks on a specific FPort only.
+    message:
+      package: google.protobuf
+      name: UInt32Value
+    default: null
+  - name: order
+    comment: Order results.
+    type: string
+    rules:
+      in:
+      - ""
+      - -received_at
+      - received_at
+    default: ""
 GetUserAPIKeyRequest:
   name: GetUserAPIKeyRequest
   fields:

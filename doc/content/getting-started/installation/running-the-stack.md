@@ -20,6 +20,12 @@ Next, we need to initialize the database of the Identity Server:
 $ docker-compose run --rm stack is-db init
 ```
 
+For the Storage Integration available in {{% tts %}} Enterprise, we need to initialize the database of the Application Server as well:
+
+```bash
+$ docker-compose run --rm stack storage-db init
+```
+
 {{% tts %}} Enterprise requires a tenant to be present, even if multi-tenancy is not included in the license. We now create this tenant:
 
 ```bash
