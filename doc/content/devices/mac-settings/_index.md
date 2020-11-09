@@ -23,7 +23,7 @@ The expected procedure for testing and updating settings is:
 2. Test that everything works as expected
 3. Modify `mac-settings.desired_<parameter>` to make the change permanent
 
-If no settings are provided on device creation or unset, defaults are first taken from the device Frequency Plan if available, and finally from [Network Server Configuration]({{< ref src="/reference/configuration/network-server" >}}).
+If no settings are provided on device creation or unset, defaults are first taken from the device Frequency Plan if available, and finally from [Network Server Configuration]({{< ref "/reference/configuration/network-server" >}}).
 
 ### Available MAC settings
 

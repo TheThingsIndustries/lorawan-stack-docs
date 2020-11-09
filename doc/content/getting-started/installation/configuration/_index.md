@@ -4,7 +4,7 @@ description: ""
 weight: 2
 ---
 
-{{% tts %}} can be configured using command-line flags, environment variables, or configuration files. See the [Configuration Reference]({{< ref src="/reference/configuration" >}}) for more information about the configuration options.
+{{% tts %}} can be configured using command-line flags, environment variables, or configuration files. See the [Configuration Reference]({{< ref "/reference/configuration" >}}) for more information about the configuration options.
 
 In this guide, we will configure {{% tts %}} using a configuration file, with an example domain `thethings.example.com` and TLS certificates from Let's Encrypt.
 
@@ -56,7 +56,7 @@ The simplest configuration for CockroachDB will look like this:
 {{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=5 to=14 >}}
 {{< /highlight >}}
 
-> NOTE: It also possible (and even preferred) to use a managed SQL database. In this case, you will need to update the [`is.database-uri` configuration option]({{< ref src="/reference/configuration/identity-server/#database-options" >}}) to point to the address of the managed database.
+> NOTE: It also possible (and even preferred) to use a managed SQL database. In this case, you will need to update the [`is.database-uri` configuration option]({{< ref "/reference/configuration/identity-server#database-options" >}}) to point to the address of the managed database.
 
 ### Redis
 
@@ -68,7 +68,7 @@ The simplest configuration for Redis will look like this:
 {{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=28 to=37 >}}
 {{< /highlight >}}
 
-> NOTE: It also possible (and even preferred) to use a managed Redis database. In this case, you will need to update the [`redis.address` configuration option]({{< ref src="/reference/configuration/the-things-stack/#redis-options" >}}) to point to the address of the managed database.
+> NOTE: It also possible (and even preferred) to use a managed Redis database. In this case, you will need to update the [`redis.address` configuration option]({{< ref "/reference/configuration/the-things-stack#redis-options" >}}) to point to the address of the managed database.
 
 ### {{% tts %}}
 
@@ -106,13 +106,13 @@ Once Docker starts {{% tts %}}, we need to specify configuration options for run
 
 ### License {{< distributions-inline "Enterprise" >}}
 
-First is a license file. {{% tts %}} Enterprise requires a license, which can be purchased at the [products page](https://thethingsindustries.com/technology/pricing). This is specified in the `license` field, and can be either a `key` string, or a `file`path. See the [License Configuration Reference]({{< ref src="/reference/configuration/the-things-stack" >}}) for more information.
+First is a license file. {{% tts %}} Enterprise requires a license, which can be purchased at the [products page](https://thethingsindustries.com/technology/pricing). This is specified in the `license` field, and can be either a `key` string, or a `file`path. See the [License Configuration Reference]({{< ref "/reference/configuration/the-things-stack" >}}) for more information.
 
 ### TLS
 
 {{% tts %}} supports TLS with Let's Encrypt. Since we're deploying {{% tts %}} on
 `thethings.example.com`, we configure it to only request certificates for that
-host, and also to use it as the default host (see the [`tls` configuration reference]({{< ref src="/reference/configuration/the-things-stack" >}}) section).
+host, and also to use it as the default host (see the [`tls` configuration reference]({{< ref "/reference/configuration/the-things-stack" >}}) section).
 
 > NOTE: Make sure that you use the correct `tls` depending on whether you will be using Let's Encrypt or your own certificate files.
 
