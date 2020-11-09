@@ -23,7 +23,7 @@ See [Manage Things]({{< relref "things" >}}) to learn about the thing names.
 
 > Use [**Rules for AWS IoT**](https://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html) to act on these messages for storage, analytics, alarms and API calls.
 >
-> This guide uses AWS IoT Core MQTT client for demonstration purposes only.
+>**Note:** This guide uses AWS IoT Core MQTT client for demonstration purposes only.
 
 In the AWS Console, open **Services** and go to **IoT Core**.
 
@@ -45,7 +45,7 @@ The AWS IoT Integration for {{% tts %}} uses the following topic for downstream 
 
 > Publish downlink messages from your application to IoT Core using [**AWS IoT Data Plane**](https://docs.aws.amazon.com/iot/latest/apireference/Welcome.html#Welcome_AWS_IoT_Data_Plane) using the [**Publish**](https://docs.aws.amazon.com/iot/latest/apireference/API_iotdata_Publish.html) action.
 >
-> This guide uses AWS IoT Core MQTT client for demonstration purposes only.
+>**Note:** This guide uses AWS IoT Core MQTT client for demonstration purposes only.
 
 Still in the AWS IoT **MQTT client**, enter the downlink topic `lorawan/downlink`.
 
@@ -53,11 +53,11 @@ The message is a JSON object with the following format:
 
 ```js
 {
-  "thingName": "<stack>_<device-id>",
+  "thingName": "<DevEUI>",
 
   "bytes": "AQ==", // Base64 encoded FRMPayload
   // or
-  "payload": {     // JSON encoded payload (requires payload encoder)
+  "payload": {     // JSON encoded payload (see the note below)
     "field1": 42
   },
 
@@ -67,5 +67,7 @@ The message is a JSON object with the following format:
   "highPriority": true // High priority (default: false)
 }
 ```
+
+>**Note:** You can only send JSON encoded payload using the `payload` field when end-to-end encryption is **not enabled**. See [Deployment Guide]({{< relref "deployment-guide" >}}) on how to enable and disable end-to-end encryption.
 
 See [Manage Things]({{< relref "things" >}}) to find the `thingName` for the end device.

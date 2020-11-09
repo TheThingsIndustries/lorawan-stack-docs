@@ -297,4 +297,3 @@ In multi-tenant deployments, some additional configuration is required.
 Tenants can have custom configuration, such as custom branding or custom user registration options. This information is typically cached locally, especially in multi-region deployments to reduce the load on the Identity Server and to be more resilient against outages of the Identity Server.
 
 - `tenancy.ttl`: TTL of cached tenant configurations {{< distributions-inline "Cloud" "Enterprise" >}}
-

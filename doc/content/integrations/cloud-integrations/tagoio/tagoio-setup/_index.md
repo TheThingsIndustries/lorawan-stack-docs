@@ -10,23 +10,29 @@ This section helps you to prepare TagoIO setup for integration with {{% tts %}}.
 
 Log in to your TagoIO user account and click the **Devices** button on the left hand menu. 
 
-Select **Add Device** in the upper right to add a new device.
+The list of available connectors will pop out immediately if you do not own any devices. 
 
-The list of available devices will pop out. Choose **LoRaWAN TTN** and then select **Custom The Things Network**.
+>**Note:** If you already own some devices on TagoIO, select **Add Device** in the upper right to add a new device.
 
-{{< figure src="custom-ttn-device.png" alt="Choosing a Custom TTN device" >}}
+Choose **LoRaWAN TTI** connector and then select **Custom The Things Industries**.
 
-Give a name to your device by filling the **Device name** field, enter the **Device EUI** and click the **Create device** button to finish.
+{{< figure src="custom-tti-device.png" alt="Choosing a Custom TTN device" >}}
+
+Give a name to your device by filling the **Device name** field, enter the **Device EUI** and click the **Create my device** button to finish.
 
 {{< figure src="device-settings.png" alt="Configuring a device" >}}
 
-When your device has been created, the window with a note for generating an [authorization](https://docs.tago.io/en/articles/218) will pop out. Click the **Generate Authorization** button. 
+When the device has been succesfully created, you will be presented with a confirmation window, so you can just click **Continue**. 
+
+{{< figure src="confirmation-window.png" alt="Device successfully created" >}}
+
+Now, **Don't forget the [authorization](https://docs.tago.io/en/articles/218)!** Click the **Generate authorization** button. 
 
 {{< figure src="auth-pop-out.png" alt="Generate Authorization pop-out window" >}}
 
-When redirected to the **Service Authorization** page, fill in the **Name** field and select **Generate**. Copy this value for further steps.
+When redirected to the **Service Authorization** page, just fill in the **Name** field and select **Generate**. Copy this value for further steps.
 
-Select the created device in **Devices** to access its features.
+Click **Finish** and select the device you just created in **Devices** to access its features.
 
 {{< figure src="device-features.png" alt="Device features" >}}
 

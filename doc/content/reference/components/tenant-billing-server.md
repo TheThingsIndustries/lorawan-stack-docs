@@ -1,7 +1,6 @@
 ---
 title: "Tenant Billing Server"
 description: ""
-weight: 12
 distributions: ["Cloud", "Enterprise"]
 ---
 

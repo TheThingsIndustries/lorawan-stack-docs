@@ -4,81 +4,94 @@ description: ""
 aliases: [/guides/connecting-gateways/multitechconduit]
 ---
 
-The [MultiTech MultiConnect® Conduit™](http://www.multitech.net/developer/products/multiconnect-Conduit-platform/) is a configurable, scalable cellular communications gateway for industrial IoT applications. The technical specifications of this Conduit can be found in the software guide in the [official documentation](http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/) page.
+The [MultiTech MultiConnect® Conduit™](http://www.multitech.net/developer/products/multiconnect-Conduit-platform/) is a configurable, scalable cellular communications gateway for industrial IoT applications. The technical specifications of the Conduit can be found in the software guide in the [official documentation](http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/) page.
 
 This guide will help you set up the Multitech Conduit gateway to communicate over {{%tts%}}.
+
 <!--more-->
-{{< figure src="001_Multitech_Conduit_AEP.png" alt="MultiTech MultiConnect Conduit AEP Gateway" >}}
+
+![MultiTech MultiConnect Conduit AEP Gateway](multitech-conduit.png)
+
+![MultiTech MultiConnect Conduit AEP Gateway](multitech-conduit-ap.png)
 
 ## Prerequisites
 
 1. User account on {{% tts %}} with rights to create Gateways.
-2. Multitech Conduit AEP Gateway connected to the internet and running the [latest firmware](http://www.multitech.net/developer/downloads/).
-
-> This article addresses the minimum configuration required to connect your Multitech Conduit AEP model to {{% tts %}}.
-> For the first-time hardware and software setup, you can refer to the appropriate configuration guide on the [Multitech documentation](http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/) page.
+2. Multitech Conduit AEP Gateway running [mPower 5.30 firmware or later](http://www.multitech.net/developer/downloads/).
 
 ## Registration
 
 Create a gateway by following the instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}).
 
-> Note: The gateway EUI can be found at the bottom of the gateway under the field &quot;NODE LORA&quot;.
+> The gateway EUI can be found at the bottom of the gateway under the field &quot;LORA NODE&quot;.
 
-## Configuration using a Terminal
+## Setting Up the Gateway
 
-Firstly, you will need to generate a `global_conf.json` file required to add a custom channel plan to your gateway. Follow the steps below to generate the required json file.
+For the first-time hardware and software setup, you can refer to the appropriate configuration guide on the [Multitech documentation](http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/) page.
 
-> **Warning:** The manual configuration of the frequency plan - required to make it work on the The Things (Enterprise) Stack - may result in a mismatch for some of the frequency bands used for the Multitech Gateway.
+We have included a few short steps to help you get started.
 
-The Gateway Configuration Server can be used to generate a proper `global_conf.json` configuration file for your gateway. You will need a Gateway API key with the `View gateway information` right enabled. The instructions for the same can be found in the [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}) guide.
+### Connecting to the Gateway as a DHCP Server
 
-Open the command prompt in Windows or any Linux terminal to run a curl command (as shown below) to generate the required `global_conf.json` file in your current working directory.
+Since the gateway initializes as a DHCP server, you may have to configure TCP/IP manually. After hard resetting the device, we connected it directly to a computer via ethernet and used the following TCP/IP settings:
 
-Make sure you replace `thethings.example.com` with your server address:
+- IP Address: 192.168.2.2
+- Subnet Mask: 255.255.255.0
+- Router Address: 192.168.2.1
 
-```bash
-$ curl -XGET \
-    "https://thethings.example.com/api/v3/gcs/gateways/{GATEWAY_ID}/semtechudp/global_conf.json" \
-    -H "Authorization: Bearer {GTW_API_KEY}" > ~/global_conf.json
-```
+Browse to the IP address of the gateway, 192.168.2.1.
 
-> Note: Replace the required fields in the above command and run it.
+You may be met with the following screen. In newer versions of Chrome, you can type "thisisunsafe" to continue past the certificate error screen. Other browsers have different ways of advancing past certificate error screens.
 
-Once the `global_conf.json` file is generated, you will need to add this to your gateway. In a web browser, open the gateway’s configuration page by navigating to its IP Address obtained from the network it is connected to. Once logged in, you can configure the gateway to connect to {{%tts%}} by following the steps below:
+{{< figure src="cert-error.png" alt="Chrome Certificate Error" >}}
 
-- Click on **LoRaWAN<sup>®</sup>** in the menu on the left. It opens the Gateway&apos;s configuration page.
+Once past the certificate screen, create a username and password.
 
-{{< figure src="005_Gateway_Menu_LoRaWAN.png" alt="MultiTech Conduit gateway home page" >}}
+You will then be met with the first time setup screen. Click **Next**.
 
-- Under **Network Settings**, select the mode as &quot;Packet Forwarder&quot;.
+{{< figure src="first-time-setup.png" alt="First Time Setup" >}}
 
-{{< figure src="006_Packet_Forwarder_Gateway.png" alt="MultiTech Conduit packet forwarder settings" >}}
+Set a time and date, and skip the rest of the configuration options.
 
-- On the right side of the &quot;LoRa Packet Forwarder Configuration&quot; section, you can find &quot;Manual Configuration &quot;. Click on it to setup the channel plan manually.
+{{< figure src="time-date.png" alt="Time and Date" >}}
 
-{{< figure src="001_Gateway_Frequency_plan_manual_config.png" alt="Switch to manual configuration mode" >}}
+Once you have finished the first time setup, click the **Setup** button in the left hand menu, and choose **Network Interfaces**.
 
-- The above step will lead you to the gateway configuration editor tagged as &quot;Config&quot;.
+Click on the pen icon for the **eth0** interface to modify it.
 
-{{< figure src="002_Gateway_Frequency_plan_manual_config.png" alt="edit the configuration" >}}
+{{< figure src="network-interfaces.png" alt="Network Interfaces" >}}
 
-- Copy the contents of the `global_conf.json` file downloaded earlier and paste them in the gateway console configuration editor.
+Set the **Direction** dropdown to **WAN**, and the **Mode** dropdown to **DHCP Client**.
 
-- Once pasted, modify the value of `clksrc` to set it to `0`.
+Click **Submit** to save the settings.
 
-- Click on **Submit** to save the configuration.
+{{< figure src="eth.png" alt="Ethernet Interface" >}}
 
-- Now, click on **Save and Restart** from the menu.
+Next, click the **Administration** button in the left hand menu, and choose the **Access Configuration** submenu.
 
-{{< figure src="011_Gateway_Menu_Save-And-Restart.png" alt="Saving the Network Interfaces Configuration" >}}
+Here, enable the **Web Server for HTTP** via **LAN** and **WAN**, and enable **HTTPS** access via **WAN**.
 
-- You will be prompted to confirm the restart. Choose **OK** to proceed.
+Optionally, you can also enable **SSH** via **WAN**.
 
-{{< figure src="012_System_Confirmation_Prompt.png" alt="Configuration restart prompt" >}}
+> Don't miss this part! If you don't enable Web Server or SSH access via WAN, when you connect the gateway to your local network, you will not be able to access it anymore, and you will have to hard reset and start over.
 
-This will apply the custom settings and reboot the gateway. If all the steps have been followed correctly, your gateway will now connect to {{%tts%}}.
+{{< figure src="access.png" alt="Access Configuration" >}}
 
-> To know more about other features of the MultiTech Conduit gateway, you can refer to the **mPower Edge AEP software guide** on the [Multitech Website](http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/).
+Click **Submit** to save the Access Configuration Settings.
+
+{{< figure src="access-save.png" alt="Save Access Configuration" >}}
+
+After you have submitted both the **Ethernet Configuration** and **Access Configuration** settings, double check them so you don't lock yourself out!
+
+Finally, click **Save and Apply** to apply your configuration.
+
+At this point, the gateway will reboot. It will come back online as a DHCP client, so you can disconnect it from your computer, and connect the gateway directly to your router or local network.
+
+## Connecting the Gateway to {{% tts %}}
+
+The Multitech Conduit supports {{% lbs %}} and the legacy UDP packet forwarder. {{% lbs %}} is more secure and supports configuration of custom channel plans, amongst other improvements. {{% tts %}} supports {{% lbs %}}, so please follow instructions for [connecting the Multitech Conduit with {{% lbs %}}]({{< relref "lbs" >}}).
+
+If for some reason {{% lbs %}} is not available to you, instructions for connecting with the legacy packet forwarder are [here]({{< relref "udp" >}}).
 
 ## Troubleshooting
 
@@ -91,7 +104,7 @@ You can find the packet forwarder logs using the gateway&apos;s web console. Do 
 - Login to your gateway&apos;s web console and navigate to **Administration -> Debug Options**.
 - Click on the **Download Logs** button in the **Logging** section to download the logs.
 
-{{< figure src="016_Packet_Forwarder.png" alt="Packet forwarder" >}}
+{{< figure src="packet-forwarder.png" alt="Packet forwarder" >}}
 
 Now, in the downloaded logs, open the *lora-pkt-fwd-1.log* file to see the packet forwarder logs.
 
@@ -113,7 +126,7 @@ Do the following to upgrade the firmware on your device:
   - Select the file and click on **Open**. The file name appears next to the **Choose Firmware Upgrade File** button. Make sure you select the correct BIN file; otherwise, your device can become inoperable.
 - Click on **Start Upgrade**.
 
-{{< figure src="017_Firmware_Upgrade.png" alt="Gateway firmware upgrade window" >}}
+{{< figure src="firmware-upgrade.png" alt="Gateway firmware upgrade window" >}}
 
 - A message about the time needed to upgrade appears. Click on **OK**.
 - A progress bar appears indicating the status of the upgrade. When the upgrade is completed, your device reboots.

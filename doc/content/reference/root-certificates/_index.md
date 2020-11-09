@@ -38,5 +38,3 @@ Many {{% tts %}} deployments use the Let's Encrypt ISRG Root X1 Trust. If using 
 Some {{% tts %}} deployments use the Let's Encrypt DST Root X3 Trust, although it expires in 2021 and is being phased out. If your deployment uses the legacy DST Root X3 Trust, download it [here](https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem).
 
 > Unfortunately, if you use a single certificate and that certificate expires, your gateway will stop connecting until you update the certificate. The minimal and complete certificate lists contain the ISRG Root X1 and DST Root X3 certificates, but some gateways do not support concatenated certificate lists, even though they are part of the [ietf spec](https://tools.ietf.org/html/rfc1421) :( If you know you are using Let's Encrypt to secure your domain, use one of these `.pem` files as your gateway's Server Certificate for maximum compatibility.
-
-

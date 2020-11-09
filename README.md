@@ -41,3 +41,7 @@ output the site to `internal`.
 ## Contributing
 
 Please see the style, branch naming, and commit guidelines in [CONTRIBUTING](CONTRIBUTING.md)
+
+## Creating New Documentation
+
+Run `make new <path>` to create a new documentation section from the [template](doc/archetypes/section-bundle/_index.md) at `path`. For example, `make new getting-started/hello` will create a section in `getting-started/hello`.

@@ -67,6 +67,14 @@ Make sure that commits are scoped to something meaningful and could potentially 
 
 The body may contain a more detailed description of the commit, explaining what it changes and why. The "how" is less relevant, as this should be obvious from the diff.
 
+## Creating New Documentation
+
+Run `make new <path>` to create a new documentation section from the [template](doc/archetypes/section-bundle/_index.md) at `path`. For example, `make new getting-started/hello` will create a section in `getting-started/hello`.
+
+## Troubleshooting Sections
+
+If you add a section and it needs a troubleshooting page, title the troubleshooting page "Troubleshooting <name_of_section>", so that it is easy to find in search. For example, "Troubleshooting AWS IoT Integration" or "Troubleshooting Installation". An example is included in the new documentation template.
+
 ## Distributions
 
 The Things Stack docs cover all flavors of The Things Stack:
@@ -88,7 +96,7 @@ Mark documentation that applies only to a specific distribution in one of the fo
 
 ## Style Guidelines
 
-Please respect the following guidelines for content in our documentation site. A copy and paste template for creating new documentation can be found [here](doc/content/example-template).
+Please respect the following guidelines for content in our documentation site.
 
 - Use the [`distributions`](#distributions) Front Matter element or shortcodes to mark documentation that applies to particular distributions of The Things Stack.
 - Use the `{{< new-in-version "3.8.5" >}}` shortcode to tag documentation for features added in a particular version. For documentation that targets `master`, that's the next patch bump, e.g `3.8.x`. For documentation targeting `develop` that's the next minor bump, e.g `3.x.0`.
@@ -116,6 +124,10 @@ Please respect the following guidelines for content in our documentation site. A
   - `bash` for CLI examples. Prefix commands with `$ `. Wrap strings with double quotes `""` (except when working with JSON, which already uses double quotes).
   - Wrap large CLI output with `<details><summary>Show CLI output</summary> ... output here ... </details>`.
   - `yaml` (not `yml`) for YAML. Wrap strings with single quotes `''` (because of frequent Go templates that use double quotes).
+- In long command line examples or other code snippets, use the following guidelines:
+  - If a line is longer than 80 columns, try to find a "natural" break
+  - If a line is longer than 120 columns, insert a line break
+  - In very special cases, longer lines are tolerated
 
 ## Legal
 

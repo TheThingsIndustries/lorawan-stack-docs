@@ -1,5 +1,5 @@
 ---
-title: "Troubleshooting"
+title: "Troubleshooting AWS AMI Deployment"
 description: ""
 weight: 3
 ---
@@ -43,7 +43,7 @@ $ sudo systemctl restart lorawan-stack.service
 - The debug logs can be read using the `journalctl`, same as above:
 ```bash
 $ sudo journalctl -f -u lorawan-stack.service
-   ```
+  ```
 
 ### My Gateway doesn't connect. What do I do?
 
