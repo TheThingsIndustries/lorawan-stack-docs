@@ -12,7 +12,7 @@ You can configure PostgreSQL, or any other PostgreSQL-compatible database (e.g. 
 {{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=108 to=122 >}}
 {{< /highlight >}}
 
->*NOTE*: This will use the same database instance that is used for the Identity Server as well. In production deployments, this should be a different database.
+>**Note**: This will use the same database instance that is used for the Identity Server as well. In production deployments, this should be a different database.
 
 ## Database setup
 
