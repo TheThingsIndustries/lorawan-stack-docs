@@ -122,6 +122,9 @@ debug: false
 <div class="content">
 
 <p>Javascript payload formatters allow you to write your own functions to encode or decode messages. Javascript functions are executed using an <a href="https://www.ecma-international.org/ecma-262/5.1/">JavaScript ECMAScript 5.1</a> engine.</p>
+<blockquote>
+<p><strong>Note:</strong> Payload formatters use ECMAScript ES5 (2015), which has some distinct differences compared to newer, commonly used ECMAScript revisions. See <a href="https://www.javatpoint.com/es5-vs-es6">here</a> for a quick comparison. Notably, <code>let</code>, <code>const</code>, and arrow functions are not supported by ES5.</p>
+</blockquote>
 <p>The payload formatters should be simple and lightweight. Use arithmetic operations and bit shifts to convert binary data to fields. Avoid using non-trivial logic or polyfills. The runtime does not support modules or any input/output other than defined below.</p>
 <h2 id="decode-uplink-function">Decode Uplink Function</h2>
 <p>The Javascript <code>decodeUplink()</code> function is called when a data uplink message is received from a device. This function decodes the binary payload (<code>frm_payload</code>) received from the end device to a JSON object (<code>decoded_payload</code>) that gets send upstream to the application. The function takes an input object and returns and output object:</p>
@@ -324,10 +327,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Johan Stokking on 26 Aug 2020.
+  Last changed by Ben Olayinka on 05 Nov 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/21a8f0b6967a2cc798814f487931418163683810">
-      doc: Document new Javascript message processor API
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/951da687bc8e6803534e171c77d2ffa0745c7e35">
+      doc: Fix ECMA script title
     </a>
 </p>
 
