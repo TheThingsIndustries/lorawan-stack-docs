@@ -53,9 +53,7 @@ Application Server supports communicating the paths of the downlink queue operat
 - `as.webhooks.downlink.public-address`: Public address of the HTTP webhooks frontend (default "http://localhost:1885/api/v3")
 - `as.webhooks.downlink.public-tls-address`: Public address of the HTTPS webhooks frontend
 
-## Storage Integration Options
-
-{{< distributions-inline "Enterprise" >}}
+## Storage Integration Options {{< distributions-inline "Enterprise" "Marketplace Launcher" "Dedicated Cloud" >}}
 
 The Storage Integration requires a database for storing upstream messages.
 

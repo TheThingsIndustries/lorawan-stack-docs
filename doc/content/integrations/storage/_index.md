@@ -2,11 +2,10 @@
 title: Storage Integration
 description: ""
 summary: Persistent storage for upstream messages.
+distributions: ["Cloud", "Dedicated Cloud", "Enterprise", "Marketplace Launcher", "Community"]
 ---
 
 {{< new-in-version "3.10" >}}
-
-{{< distributions-inline "Cloud" "Enterprise" >}}
 
 The Storage Integration allows storing received upstream messages in a persistent database, and retrieving them at a later time.
 
