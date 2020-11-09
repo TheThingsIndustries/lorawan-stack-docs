@@ -31,5 +31,5 @@ $ docker-compose run --rm stack storage-db init
 If everything went well, upon restart, you should be able to see the following log message:
 
 ```
-  INFO Initialized Storage Integration          bulk=true namespace=applicationserver/io/packages/storage provider=postgres
+  INFO Initialized Storage Integration          namespace=applicationserver/io/packages/storage provider=postgres
 ```
