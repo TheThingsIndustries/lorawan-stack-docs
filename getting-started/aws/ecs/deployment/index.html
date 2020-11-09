@@ -163,6 +163,10 @@ debug: false
 <p>You can deploy one or multiple Redis clusters with the <code>2-3-db-redis</code> template. The Things Stack uses Redis for multiple purposes, and can use separate clusters for different purposes. Most deployments start with a single <code>general</code> cluster that is used for all purposes. It is also possible to use the <code>general</code> cluster for persistence only, and use a separate <code>cache</code> cluster for caching temporary data. See the <a href="/getting-started/aws/ecs/architecture/">architecture page</a> for more information.</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/2-3-db-redis.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/2-3-db-redis.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <p>In addition to the re-used parameters (see <a href="/getting-started/aws/ecs/prerequisites/">Prerequisites</a>) and the previously described purpose, this template asks for the <strong>Instance Type</strong>. It is typically fine for small clusters to start with <code>cache.t3.medium</code> and scale as you grow. It is recommended to have a <strong>Multi-AZ</strong> cluster with automatic failover, in which case you&rsquo;ll need 2 <strong>Replicas</strong>. Since most load is read-write it is not necessary to deploy more than 2 replicas. If you are migrating your database from a previous deployment, or if you are upgrading your database, you can fill the name of the database <strong>Snapshot</strong> that should be restored.</p>
+<h1 id="timescaledb-optional-hahahugoshortcode-s11-hbhb">TimescaleDB (optional) <span class="new-in-version">New in 3.10</span></h1>
+<p>The template <code>2-5-db-timescale</code> is an optional template that creates an EC2 instance that runs <a href="https://www.timescale.com/">TimescaleDB</a>, which is used by the Storage Integration of the Application Server. If you do not want to install the storage integration, you do not need to deploy this.</p>
+<p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/2-5-db-timescale.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/2-5-db-timescale.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
+<p>In addition to the re-used parameters (see <a href="/getting-started/aws/ecs/prerequisites/">Prerequisites</a>), this template requires you to choose an <strong>Instance type</strong> and <strong>SSH Key Name</strong> to be used to login to the instance. You either need to specify the <strong>EBS Volume Snapshot ID</strong> to restore, or the <strong>EBS Volume Size</strong> for the storage volume to create. Finally, you need to specify the database name, username and password. If you restore from a snapshot, these must match the existing database in the snapshot.</p>
 <h1 id="s3-buckets">S3 Buckets</h1>
 <p>The template <code>2-4a-is-s3</code> creates S3 buckets for the Identity Server. This template only needs to be deployed for your &ldquo;main&rdquo; cluster that contains your Identity Server. Secondary clusters do not have an Identity Server and don&rsquo;t need this template.</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/2-4a-is-s3.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/2-4a-is-s3.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
@@ -323,10 +327,10 @@ See the <a href="https://thethingsstack.io/getting-started/aws/ecs/database-oper
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer Easwaran on 03 Nov 2020.
+  Last changed by Hylke Visser on 30 Oct 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/bf089c9cfaedb59c4c58b2c8ff0256a58b3fd156">
-      doc: Add gateway secrets enc key description
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/921f77e9f8fdc2810837b990166c37b8386c0403">
+      doc: Add storage template to ECS deployment
     </a>
 </p>
 

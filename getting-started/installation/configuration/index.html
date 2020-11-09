@@ -510,6 +510,19 @@ by the console client (see the <code>console</code> section). These tell The Thi
 </span><span class="lnt">132
 </span><span class="lnt">133
 </span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># The Things Stack requires a license key</span><span class="w">
@@ -621,6 +634,19 @@ by the console client (see the <code>console</code> section). These tell The Thi
 </span><span class="w">
 </span><span class="w"></span><span class="c"># If Application Server enabled, defaults for &#34;thethings.example.com&#34;:</span><span class="w">
 </span><span class="w"></span><span class="k">as</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="c"># Configuration required for the Storage Integration</span><span class="w">
+</span><span class="w">  </span><span class="k">packages</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="k">storage</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="k">provider</span><span class="p">:</span><span class="w"> </span>postgres<span class="w">
+</span><span class="w">      </span><span class="k">bulk</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="k">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span><span class="w">      </span><span class="k">postgres</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="c"># if using CockroachDB</span><span class="w">
+</span><span class="w">        </span><span class="k">database-uri</span><span class="p">:</span><span class="w"> </span>postgres<span class="p">:</span>//root@cockroach<span class="p">:</span><span class="m">26257</span>/ttn_lorawan_dev<span class="p">?</span>sslmode=disable<span class="w">
+</span><span class="w">        </span><span class="c"># if using PostgreSQL or TimescaleDB</span><span class="w">
+</span><span class="w">        </span><span class="c"># database-uri: postgres://root:root@postgres:5432/ttn_lorawan_dev?sslmode=disable</span><span class="w">
+</span><span class="w">        </span><span class="k">insert-batch-size</span><span class="p">:</span><span class="w"> </span><span class="m">1024</span><span class="w">     </span><span class="c"># batch size for INSERT operations</span><span class="w">
+</span><span class="w">        </span><span class="k">select-batch-size</span><span class="p">:</span><span class="w"> </span><span class="m">1024</span><span class="w">     </span><span class="c"># batch size for SELECT operations</span><span class="w">
 </span><span class="w">  </span><span class="k">mqtt</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="k">public-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com:1883&#39;</span><span class="w">
 </span><span class="w">    </span><span class="k">public-tls-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com:8883&#39;</span><span class="w">

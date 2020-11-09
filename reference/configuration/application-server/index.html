@@ -188,6 +188,50 @@ debug: false
 <li><code>as.webhooks.downlink.public-address</code>: Public address of the HTTP webhooks frontend (default &ldquo;http://localhost:1885/api/v3&rdquo;)</li>
 <li><code>as.webhooks.downlink.public-tls-address</code>: Public address of the HTTPS webhooks frontend</li>
 </ul>
+<h2 id="storage-integration-options-hahahugoshortcode-s0-hbhb">Storage Integration Options 
+
+
+
+  
+
+  
+
+  
+
+
+<span class="distribution-inline">Enterprise, Marketplace Launcher and Dedicated Cloud Only</span>
+
+</h2>
+<p>The Storage Integration requires a database for storing upstream messages.</p>
+<ul>
+<li><code>as.packages.storage.provider</code>: Database backend to use. Currently, only <code>postgres</code> is supported.</li>
+</ul>
+<p>A PostgreSQL-compatible database is required. The Application Server will automatically recognise when <a href="https://www.timescale.com">TimescaleDB</a> is used.</p>
+<ul>
+<li><code>as.packages.storage.postgres.database-uri</code>: Database connection URI. Details for the form of the URI can be found in the <a href="https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING">PostgreSQL documentation</a></li>
+<li><code>as.packages.storage.postgres.read-database-uri</code>: Read-only database connection URI</li>
+<li><code>as.packages.storage.postgres.select-batch-size</code>: Maximum batch size for <code>SELECT</code> queries. Larger values require more memory, but improve speed when querying large datasets</li>
+<li><code>as.packages.storage.postgres.insert-batch-size</code>: Maximum batch size for <code>INSERT</code> queries. Larger values require more memory, but improve throughput when storing messages, by reducing the number of required database transactions. Only relevant when bulk mode is enabled</li>
+<li><code>as.packages.storage.postgres.debug</code>: Log all SQL queries, make sure to set to <code>false</code> for production environments</li>
+</ul>
+<p>In order to improve performance, the Storage Integration can be configured to store upstream messages in a local cache, and then flush them in batches to the database in regular intervals.</p>
+<ul>
+<li><code>as.packages.storage.bulk.enabled</code>: Set to <code>true</code> to enable bulk mode.</li>
+<li><code>as.packages.storage.bulk.interval</code>: Interval between consecutive flushes.</li>
+<li><code>as.packages.storage.bulk.max-size</code>: Local cache size (number of messages). If the cache is full and a new upstream messages arrives, the cache is flushed to the database.</li>
+</ul>
+<p>The Storage Integration can be configured to store only specific types of upstream messages.</p>
+<ul>
+<li><code>as.packages.storage.enable.all</code>: Set to <code>true</code> to store all current and future message types, ignoring the rest of the options</li>
+<li><code>as.packages.storage.enable.uplink-message</code>: Set to <code>true</code> to store <code>UplinkMessage</code> messages</li>
+<li><code>as.packages.storage.enable.join-accept</code>: Set to <code>true</code> to store <code>JoinAccept</code> messages</li>
+<li><code>as.packages.storage.enable.downlink-ack</code>: Set to <code>true</code> to store <code>DownlinkAck</code> messages</li>
+<li><code>as.packages.storage.enable.downlink-nack</code>: Set to <code>true</code> to store <code>DownlinkNack</code> messages</li>
+<li><code>as.packages.storage.enable.downlink-sent</code>: Set to <code>true</code> to store <code>DownlinkSent</code> messages</li>
+<li><code>as.packages.storage.enable.downlink-failed</code>: Set to <code>true</code> to store <code>DownlinkFailed</code> messages</li>
+<li><code>as.packages.storage.enable.location-solved</code>: Set to <code>true</code> to store <code>LocationSolved</code> messages</li>
+<li><code>as.packages.storage.enable.service-data</code>: Set to <code>true</code> to store <code>ServiceData</code> messages</li>
+</ul>
 
 </div>
 
@@ -235,10 +279,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 19 May 2020.
+  Last changed by Aggelos Kolaitis on 09 Nov 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/139e8c5569fba61c26a50f71ba23fda8c16d98a1">
-      doc: Fix typo in application server configuration doc
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/525ea3303c78cd83483ffd040849a43c1180cdb4">
+      doc: Use frontmatter for distributions
     </a>
 </p>
 
