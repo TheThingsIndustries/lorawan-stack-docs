@@ -118,7 +118,7 @@ debug: false
 
 <div class="content">
 
-<p>The Things Stack can be configured using command-line flags, environment variables, or configuration files. See the <a href="">Configuration Reference</a> for more information about the configuration options.</p>
+<p>The Things Stack can be configured using command-line flags, environment variables, or configuration files. See the <a href="https://thethingsstack.io/reference/configuration/">Configuration Reference</a> for more information about the configuration options.</p>
 <p>In this guide, we will configure The Things Stack using a configuration file, with an example domain <code>thethings.example.com</code> and TLS certificates from Let&rsquo;s Encrypt.</p>
 <p>To configure The Things Stack, we will use the configuration file <code>ttn-lw-stack-docker.yml</code>, which contains configuration specific to our The Things Stack deployment. When The Things Stack starts, it looks for <code>ttn-lw-stack-docker.yml</code> for a license key, hostname, and other configuration parameters.</p>
 <p>To configure Docker, we also need a <code>docker-compose.yml</code>, which defines the Docker services of The Things Stack and its dependencies.</p>
@@ -195,7 +195,7 @@ config/
 </div>
 </div>
 <blockquote>
-<p>NOTE: It also possible (and even preferred) to use a managed SQL database. In this case, you will need to update the <a href=""><code>is.database-uri</code> configuration option</a> to point to the address of the managed database.</p>
+<p>NOTE: It also possible (and even preferred) to use a managed SQL database. In this case, you will need to update the <a href="https://thethingsstack.io/reference/configuration/identity-server/#database-options"><code>is.database-uri</code> configuration option</a> to point to the address of the managed database.</p>
 </blockquote>
 <h3 id="redis">Redis</h3>
 <p>We also need to configure <a href="https://redis.io/">Redis</a>. In this guide we&rsquo;ll use a single instance of Redis. Again, make sure that the <code>volumes</code> are set up correctly so that the datastore is persisted on your server&rsquo;s disk. Note that The Things Stack requires Redis version 5.0 or newer.</p>
@@ -225,7 +225,7 @@ config/
 </div>
 </div>
 <blockquote>
-<p>NOTE: It also possible (and even preferred) to use a managed Redis database. In this case, you will need to update the <a href=""><code>redis.address</code> configuration option</a> to point to the address of the managed database.</p>
+<p>NOTE: It also possible (and even preferred) to use a managed Redis database. In this case, you will need to update the <a href="https://thethingsstack.io/reference/configuration/the-things-stack/#redis-options"><code>redis.address</code> configuration option</a> to point to the address of the managed database.</p>
 </blockquote>
 <h3 id="the-things-stack">The Things Stack</h3>
 <h4 id="entrypoint-and-dependencies">Entrypoint and dependencies</h4>
@@ -352,11 +352,11 @@ config/
 <span class="distribution-inline">Enterprise Only</span>
 
 </h3>
-<p>First is a license file. The Things Stack Enterprise requires a license, which can be purchased at the <a href="https://thethingsindustries.com/technology/pricing">products page</a>. This is specified in the <code>license</code> field, and can be either a <code>key</code> string, or a <code>file</code>path. See the <a href="">License Configuration Reference</a> for more information.</p>
+<p>First is a license file. The Things Stack Enterprise requires a license, which can be purchased at the <a href="https://thethingsindustries.com/technology/pricing">products page</a>. This is specified in the <code>license</code> field, and can be either a <code>key</code> string, or a <code>file</code>path. See the <a href="https://thethingsstack.io/reference/configuration/the-things-stack/">License Configuration Reference</a> for more information.</p>
 <h3 id="tls">TLS</h3>
 <p>The Things Stack supports TLS with Let&rsquo;s Encrypt. Since we&rsquo;re deploying The Things Stack on
 <code>thethings.example.com</code>, we configure it to only request certificates for that
-host, and also to use it as the default host (see the <a href=""><code>tls</code> configuration reference</a> section).</p>
+host, and also to use it as the default host (see the <a href="https://thethingsstack.io/reference/configuration/the-things-stack/"><code>tls</code> configuration reference</a> section).</p>
 <blockquote>
 <p>NOTE: Make sure that you use the correct <code>tls</code> depending on whether you will be using Let&rsquo;s Encrypt or your own certificate files.</p>
 </blockquote>
@@ -704,10 +704,10 @@ by the console client (see the <code>console</code> section). These tell The Thi
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 21 Sep 2020.
+  Last changed by benolayinka on 15 Oct 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3459237237abaaeb07a0d27a14ada3adba71022a">
-      doc: Add pierre styles
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/28c7c73ee03731bbbbb54e5ebca6b4052c59f868">
+      util: Fix broken refs
     </a>
 </p>
 
