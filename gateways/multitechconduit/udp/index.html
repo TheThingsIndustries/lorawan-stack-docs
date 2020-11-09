@@ -116,20 +116,9 @@ debug: false
 <blockquote>
 <p>Note: the UDP Packet Forwarder does not correctly handle unstable connectivity and has no security. It also does not support configuration of frequency plans from the Network Server. The Things Stack supports LoRa Basics™ Station, which solves all of these problems, so please <a href="/gateways/multitechconduit/lbs/">use that instead</a>.</p>
 </blockquote>
-<h2 id="configuration-using-a-terminal">Configuration using a Terminal</h2>
-<p>Firstly, you will need to generate a <code>global_conf.json</code> file required to add a custom channel plan to your gateway. Follow the steps below to generate the required json file.</p>
-<blockquote>
-<p><strong>Warning:</strong> The manual configuration of the frequency plan - required to make it work on the The Things (Enterprise) Stack - may result in a mismatch for some of the frequency bands used for the Multitech Gateway.</p>
-</blockquote>
-<p>The Gateway Configuration Server can be used to generate a proper <code>global_conf.json</code> configuration file for your gateway. You will need a Gateway API key with the <code>View gateway information</code> right enabled. The instructions for the same can be found in the <a href="https://thethingsstack.io/gateways/adding-gateways/">Adding Gateways</a> guide.</p>
-<p>Open the command prompt in Windows or any Linux terminal to run a curl command (as shown below) to generate the required <code>global_conf.json</code> file in your current working directory.</p>
-<p>Make sure you replace <code>thethings.example.com</code> with your server address:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl -XGET <span class="se">\
-</span><span class="se"></span>    <span class="s2">&#34;https://thethings.example.com/api/v3/gcs/gateways/{GATEWAY_ID}/semtechudp/global_conf.json&#34;</span> <span class="se">\
-</span><span class="se"></span>    -H <span class="s2">&#34;Authorization: Bearer {GTW_API_KEY}&#34;</span> &gt; ~/global_conf.json
-</code></pre></div><blockquote>
-<p>Note: Replace the required fields in the above command and run it.</p>
-</blockquote>
+<h2 id="configuration">Configuration</h2>
+<p>To configure the gateway for the correct channel plans, you need a <code>global_conf.json</code>.</p>
+<p>The Gateway Configuration Server can be used to retrieve a proper <code>global_conf.json</code> configuration file for your gateway. Follow instructions <a href="">here</a>.</p>
 <p>Once the <code>global_conf.json</code> file is generated, you will need to add this to your gateway. In a web browser, open the gateway’s configuration page by navigating to its IP Address obtained from the network it is connected to. Once logged in, you can configure the gateway to connect to The Things Stack by following the steps below:</p>
 <p>Click on <strong>LoRaWAN<sup>®</sup></strong> in the menu on the left. It opens the Gateway's configuration page.</p>
 <figure>
@@ -219,10 +208,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 07 Oct 2020.
+  Last changed by benolayinka on 13 Aug 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4c4fc4cca0ad71302a38d773d4497635e6096d6b">
-      doc: Add multitech basic station guide
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/99c308bf0a90bb0c240d26626038ff4864a314ad">
+      doc: Add udp packet forwarder doc
     </a>
 </p>
 

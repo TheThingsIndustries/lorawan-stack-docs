@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>NASys LoRaWAN Outdoor Gateway | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://thethingsstack.io/gateways/nasysoutdoorgateway/" />
+  <title>Semtech UDP Packet Forwarder | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://thethingsstack.io/gateways/semtech-udp-packet-forwarder/" />
   <link rel="alternate icon" href="/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="https://thethingsstack.io/css/theme.min.9835fa4d3cf6ec9a456f001bc45ec24ab74b80de487e212542e2b2c9770d1229.css" integrity="sha256-mDX6TTz27JpFbwAbxF7CSrdLgN5IfiElQuKyyXcNEik="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="NASys LoRaWAN Outdoor Gateway">
+  <meta itemprop="name" content="Semtech UDP Packet Forwarder">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="NASys LoRaWAN Outdoor Gateway">
+  <meta property="og:title" content="Semtech UDP Packet Forwarder">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://thethingsstack.io/gateways/nasysoutdoorgateway/">
-  <meta name="twitter:title" content="NASys LoRaWAN Outdoor Gateway" />
+  <meta property="og:url" content="https://thethingsstack.io/gateways/semtech-udp-packet-forwarder/">
+  <meta name="twitter:title" content="Semtech UDP Packet Forwarder" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -88,10 +88,10 @@ debug: false
       <div class="column is-one-third">
 
 
-<h2 class="title is-size-4">NASys LoRaWAN Outdoor Gateway</h2>
+<h2 class="title is-size-4">Semtech UDP Packet Forwarder</h2>
 
 <ul class="menu-list">
-<a href="https://thethingsstack.io/gateways/nasysoutdoorgateway/" class="is-active">Overview</a>
+<a href="https://thethingsstack.io/gateways/semtech-udp-packet-forwarder/" class="is-active">Overview</a>
 </ul>
 
 
@@ -102,50 +102,54 @@ debug: false
       
       <div class="column is-two-thirds">
 
-<h1 class="title is-size-2">NASys LoRaWAN Outdoor Gateway</h1>
+<h1 class="title is-size-2">Semtech UDP Packet Forwarder</h1>
 
 <div class="content">
 
-<p>NASys LoRaWAN Outdoor Gateway is an 8 Channel LoRaWAN gateway, whose technical specifications can be found in <a href="https://www.nasys.no/product/lorawan-gateway/">the official product page</a>. This page guides you to connect it to The Things Stack.</p>
-<h2 id="prerequisites">Prerequisites</h2>
-<ol>
-<li>User account on The Things Stack with rights to create Gateways.</li>
-<li>NASys LoRaWAN Outdoor Gateway connected to the internet (or your local network) via ethernet.</li>
-</ol>
-<h2 id="registration">Registration</h2>
-<p>Create a gateway by following the instructions for <a href="https://thethingsstack.io/gateways/adding-gateways/">Adding Gateways</a>. Typically, the <strong>EUI</strong> field for your gateway should exist on the sticker at the bottom. Make note of the Gateway ID you choose, because it will be needed later.</p>
-<h2 id="configuration-using-a-terminal">Configuration using a Terminal</h2>
-<p>Find the IP address the gateway. This can be done in various ways. You can connect your machine to the same local network as that of the gateway Ethernet connection and scan for open SSH ports or assign a static IP to the gateway and use that. Once the gateway IP address is found, ssh into it.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh root@&lt;GatewayIP&gt;
-</code></pre></div><p>The default username is <strong>root</strong>, and the default password can be also found in the sticker.</p>
-<p>Your gateway should come with a slightly modified version of the <a href="https://github.com/Lora-net/packet_forwarder">Lora-net UDP packet forwarder</a> pre-installed at <code>/opt/nas-lgw</code>. There are two configuration files <code>global_conf.json</code> and <code>local_conf.json</code>, both located in <code>/opt/nas_lgw</code>.</p>
-<p>The Gateway Configuration Server can be used to retrieve a proper <code>global_conf.json</code> configuration file for your gateway. Follow instructions <a href="">here</a>.</p>
-<p>Update the configuration files on the gateway with your downloaded <code>global_conf.json</code> and restart the packet forwarder:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mv /opt/nas-lgw/local_conf.json /opt/nas-lgw/local_conf.json.old
-$ cp global_conf.json /opt/nas-lgw/global_conf.json
+<p>The <a href="https://github.com/lora-net/packet_forwarder">Semtech UDP Packet Forwarder</a> is the original LoRaWAN packet forwarder, connecting to servers through the Semtech UDP protocol. Many gateways include a pre-compiled version of the Semtech UDP Packet Forwarder, often adapted to the specific gateway.</p>
+<p>The Semtech UDP Packet Forwarder has many security and scalability drawbacks, so if possible, use LoRa Basics™ Station to connect your gateway to The Things Stack.</p>
+<h2 id="configuration">Configuration</h2>
+<p>When the packet forwarder starts, it looks in the current directory for a <code>global_conf.json</code>, a <code>local_conf.json</code> and a <code>debug_conf.json</code>. The Gateway EUI, Network Server Address, Frequency Plan, Ports, and other parameters are configurable in these files.</p>
+<p>If <code>debug_conf.json</code> exists, the other files are ignored - otherwise, the parameters in <code>local_conf.json</code> override those in <code>global_conf.json</code>.</p>
+<p>An example <code>global_conf.json</code> is available in the <a href="https://github.com/Lora-net/packet_forwarder/blob/master/lora_pkt_fwd/global_conf.json">Semtech UDP Packet Forwarder Github repository</a>. It is also possible to download a <code>global_conf.json</code> configured with your Gateway EUI and Frequency Plan directly from The Things Stack.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="console">
+      <a>
+        <span>Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="cli">
+      <a>
+        <span>CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="console">
+  <h2 id="download-configuration-in-the-console">Download Configuration in the Console</h2>
+<p>To download a <code>global_conf.json</code> file for your gateway, open the Gateway overview page in the console. Click the <strong>Download global_conf.json</strong> button to download the file.</p>
+<figure>
+    <img src="conf.png"
+         alt="Download global_conf.json"/> 
+</figure>
+</section>
+<section data-content="cli">
+  <h2 id="download-configuration-via-terminal">Download Configuration via Terminal</h2>
+<p>To download a <code>global_conf.json</code> file using the terminal, you will need a Gateway API key with the <code>View gateway information</code> right enabled. To create an API key, see instructions for in the <a href="https://thethingsstack.io/gateways/adding-gateways/">Adding Gateways</a> guide.</p>
+<p>Open the command prompt in Windows or any Linux terminal to run a curl command (as shown below) to generate the required <code>global_conf.json</code> file in your current working directory.</p>
+<p>Make sure you replace <code>thethings.example.com</code> with your server address, <code>{GATEWAY_ID}</code> with your Gateway ID, and <code>{GATEWAY_API_KEY}</code> with the API key you generated:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl -XGET <span class="se">\
+</span><span class="se"></span>    <span class="s2">&#34;https://thethings.example.com/api/v3/gcs/gateways/{GATEWAY_ID}/semtechudp/global_conf.json&#34;</span> <span class="se">\
+</span><span class="se"></span>    -H <span class="s2">&#34;Authorization: Bearer {GATEWAY_API_KEY}&#34;</span> &gt; global_conf.json
+</code></pre></div>
+</section>
 
-$ systemctl restart nas_lgw
-</code></pre></div><p>If your configuration was successful, your gateway will connect to The Things Stack after a couple of seconds.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<p>If the gateway does not connect to The Things Stack after a few minutes, issue a <code>reboot</code> command, or disconnect and reconnect the power supply to power-cycle the gateway.</p>
-<p>If you still have trouble connecting to The Things Stack, then try editing the <code>gateway_conf</code> section:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ vi /opt/nas-lgw/global_conf.json
-</code></pre></div><p>Edit the server parameters:</p>
-<ol>
-<li><strong>gateway_ID</strong>: Make sure this is the same as the GatewayEUI (in lowercase).</li>
-<li><strong>server_address</strong>: Address of the Gateway Server. If you followed the <a href="https://thethingsstack.io/getting-started/">Getting Started guide</a> this is the same as what you use instead of <code>thethings.example.com</code>.</li>
-<li><strong>serv_port_up</strong>: UDP upstream port of the Gateway Server, typically 1700.</li>
-<li><strong>serv_port_down</strong>: UDP downstream port of the Gateway Server, typically 1700.</li>
-</ol>
-<p>You can access the gateway system logs using journalctl. See <code>journalctl --help</code> for details</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ journalctl -f -u nas_lgw -n <span class="m">1000</span>
-</code></pre></div><blockquote>
-<p><strong>IMPORTANT NOTE</strong>: The gateway logs will rotate when they reach about 15M in size, which means that you will generally not be able to access very old logs. At times of dense traffic (e.g. ~1000s of devices) this typically means that you will only have logs for 2-3 hours. If you want to keep historical data (for whatever reason), then you will have to forward the logs to an external server. If you decide to do so, then <code>netcat</code> may be useful:</p>
-</blockquote>
-<blockquote>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ journalctl -f <span class="p">|</span> nc server-hostname server-port
-</code></pre></div></blockquote>
-
+</div>
 </div>
 
 
@@ -203,7 +207,7 @@ $ systemctl restart nas_lgw
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/nasysoutdoorgateway/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/semtech-udp-packet-forwarder/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>

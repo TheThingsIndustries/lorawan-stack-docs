@@ -235,11 +235,8 @@ Gateway(config)# exit
 </code></pre></div><p>Copy the packet forwarder to <strong>/etc/pktfwd</strong>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">bash-3.2# cp /tools/pkt_forwarder /etc/pktfwd/pkt_forwarder
 </code></pre></div><p><strong>Retrieve configuration from the Gateway Configuration Server</strong>
-The Gateway Configuration Server can be used to retrieve a proper <code>global_conf.json</code> configuration file for your gateway.</p>
-<p>You will need a Gateway API key with the <code>View gateway information</code> right enabled. Instructions can be found in the relevant sections of the <a href="https://thethingsstack.io/getting-started/console/#create-gateway">Console</a> or the <a href="https://thethingsstack.io/getting-started/cli/#create-gateway">CLI</a> getting started guides.</p>
-<p>Make sure to replace <code>thethings.example.com</code>, <code>GATEWAY_ID</code> and <code>GTW_API_KEY</code> with your <strong>server address</strong>, <strong>Gateway ID</strong> and <strong>Gateway API Key ID</strong> which can be found using your Console or CLI.</p>
-<pre><code>bash-3.2# curl -k XGET &quot;https://thethings.example.com/api/v3/gcs/gateways/GATEWAY_ID/semtechudp/global_conf.json&quot; -H &quot;Authorization: Bearer GTW_API_KEY&quot; &gt; ~/config.json
-</code></pre><p>Copy the configuration template as <strong>config.json</strong> to <strong>/etc/pktfwd</strong></p>
+The Gateway Configuration Server can be used to retrieve a proper <code>global_conf.json</code> configuration file for your gateway. Follow instructions <a href="">here</a>.</p>
+<p>Copy the downloaded <code>global_conf.json</code> configuration template as <strong>config.json</strong> to <strong>/etc/pktfwd</strong></p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">bash-3.2# cp config.json /etc/pktfwd/config.json
 </code></pre></div><p>You can now test the packet forwarder by executing:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">bash-3.2# /etc/pktfwd/pkt_forwarder -c /etc/pktfwd/config.json -g/dev/ttyS1
@@ -371,10 +368,10 @@ restart<span class="o">()</span> <span class="o">{</span>
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Roman Volosatovs on 18 Aug 2020.
+  Last changed by benolayinka on 13 Aug 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5097c98124b3196f650440b73e0ddc908d5f6e6f">
-      doc: Fix spacing
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/99c308bf0a90bb0c240d26626038ff4864a314ad">
+      doc: Add udp packet forwarder doc
     </a>
 </p>
 
