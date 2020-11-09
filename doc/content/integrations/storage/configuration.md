@@ -8,26 +8,9 @@ The Storage Integration requires configuration for the underlying storage provid
 
 You can configure PostgreSQL, or any other PostgreSQL-compatible database (e.g. [TimescaleDB](https://www.timescale.com/)). A base-line configuration can be found below. Add the following section into your existing `ttn-lw-stack.yml` configuration file. See [Storage Integration Options]({{< ref "/reference/configuration/application-server#storage-integration-options" >}}) for more details.
 
-```yaml
-# ttn-lw-stack.yml
-
-as:
-  # ... other Application Server configuration goes here ...
-  packages:
-    storage:
-      provider: postgres
-      bulk:
-        enabled: true
-      postgres:
-        # if using CockroachDB
-        database-uri: postgres://root@cockroach:26257/ttn_lorawan_dev?sslmode=disable
-        # if using PostgreSQL or TimescaleDB
-        # database-uri: postgres://root:root@postgres:5432/ttn_lorawan_dev?sslmode=disable
-        insert-batch-size: 1024     # batch size for INSERT operations
-        select-batch-size: 1024     # batch size for SELECT operations
-
-# ... other configuration goes here ...
-```
+{{< highlight yaml "linenos=table,linenostart=108" >}}
+{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=108 to=122 >}}
+{{< /highlight >}}
 
 >*NOTE*: This will use the same database instance that is used for the Identity Server as well. In production deployments, this should be a different database.
 

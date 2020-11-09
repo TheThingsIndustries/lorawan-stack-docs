@@ -107,6 +107,19 @@ console:
 
 # If Application Server enabled, defaults for "thethings.example.com":
 as:
+  # Configuration required for the Storage Integration
+  packages:
+    storage:
+      provider: postgres
+      bulk:
+        enabled: true
+      postgres:
+        # if using CockroachDB
+        database-uri: postgres://root@cockroach:26257/ttn_lorawan_dev?sslmode=disable
+        # if using PostgreSQL or TimescaleDB
+        # database-uri: postgres://root:root@postgres:5432/ttn_lorawan_dev?sslmode=disable
+        insert-batch-size: 1024     # batch size for INSERT operations
+        select-batch-size: 1024     # batch size for SELECT operations
   mqtt:
     public-address: 'https://thethings.example.com:1883'
     public-tls-address: 'https://thethings.example.com:8883'
