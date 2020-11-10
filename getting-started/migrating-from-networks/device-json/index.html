@@ -116,193 +116,265 @@ debug: false
 <div class="content">
 
 <p>The Things Stack allows you to import devices from other networks using a JSON file describing those devices. Devices imported this way can be migrated without the need for a rejoin.</p>
-<h2 id="required-fields-in-devicesjson">Required Fields in <code>devices.json</code></h2>
+<p>Create a <code>devices.json</code> file containing a device object, like so:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;my-device&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0102030405060708&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0102030405060708&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;My Device&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Living room temperature sensor&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;lorawan_version&#34;</span><span class="p">:</span> <span class="s2">&#34;MAC_V1_0_2&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;lorawan_phy_version&#34;</span><span class="p">:</span> <span class="s2">&#34;PHY_V1_0_2_REV_B&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;frequency_plan_id&#34;</span><span class="p">:</span> <span class="s2">&#34;EU_863_870_TTN&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;supports_join&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&#34;root_keys&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;app_key&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;key&#34;</span><span class="p">:</span> <span class="s2">&#34;01020304050607080102030405060708&#34;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>You can define multiple end devices in a single file like so:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="cm">/* device 1 */</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="cm">/* device 2 */</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div><h2 id="json-end-device-format">JSON End Device Format</h2>
+<p>The full specification of the JSON format is defined in the API protos, see the <a href="https://thethingsstack.io/reference/api/end_device/#message:EndDevice">EndDevice</a> message definition for details.</p>
+<p>The linked specification is quite extensive, and contains a lot of fields that are not required, or are only set and used internally by the Network Server. Below, the required and most commonly used fields are discussed.</p>
 <table>
 <thead>
 <tr>
 <th>Field</th>
+<th>Required</th>
 <th>Type</th>
+<th>Example</th>
 <th>Description</th>
-<th></th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>ids.device_id</code></td>
+<td><strong><code>ids.device_id</code></strong></td>
+<td><strong>Always</strong></td>
 <td>string</td>
+<td><code>&quot;sensor-1&quot;</code></td>
 <td><a href="https://thethingsstack.io/reference/glossary/#device-id">More info</a></td>
-<td></td>
 </tr>
 <tr>
-<td><code>ids.application_id</code></td>
+<td><strong><code>ids.dev_eui</code></strong></td>
+<td><strong>Always</strong></td>
 <td>string</td>
-<td><a href="https://thethingsstack.io/reference/glossary/#application-id">More info</a></td>
-<td></td>
-</tr>
-<tr>
-<td><code>ids.dev_eui</code></td>
-<td>uint64</td>
+<td><code>&quot;0102030405060708&quot;</code></td>
 <td><a href="https://thethingsstack.io/reference/glossary/#deveui">More info</a></td>
-<td></td>
 </tr>
 <tr>
-<td><code>ids.join_eui</code></td>
-<td>uint64</td>
+<td><strong><code>ids.join_eui</code></strong></td>
+<td><strong>Always</strong></td>
+<td>string</td>
+<td><code>&quot;0102030405060708&quot;</code></td>
 <td>Also referred to as <strong>AppEUI</strong>. <a href="https://thethingsstack.io/reference/glossary/#joineui">More info</a></td>
-<td></td>
 </tr>
 <tr>
-<td><code>name</code></td>
+<td><strong><code>name</code></strong></td>
+<td>No</td>
 <td>string</td>
-<td>Optional, name of the device</td>
-<td></td>
+<td><code>&quot;My Sensor&quot;</code></td>
+<td>Optional, a name for the device</td>
 </tr>
 <tr>
-<td><code>description</code></td>
+<td><strong><code>description</code></strong></td>
+<td>No</td>
 <td>string</td>
+<td><code>&quot;Situated in living room&quot;</code></td>
 <td>Optional, description of the device</td>
-<td></td>
 </tr>
 <tr>
-<td><code>lorawan_version</code></td>
-<td><code>defined_only</code></td>
-<td>e.g.  <code>MAC_V1_0_2</code>. <a href="https://thethingsstack.io/reference/glossary/#lorawan-version">More info</a></td>
-<td></td>
+<td><strong><code>lorawan_version</code></strong></td>
+<td><strong>Always</strong></td>
+<td>string</td>
+<td><code>&quot;MAC_V1_0_2&quot;</code></td>
+<td>See <a href="https://thethingsstack.io/reference/api/end_device/#enum:MACVersion">MACVersion</a> for supported versions. See <a href="https://thethingsstack.io/reference/glossary/#lorawan-version">LoRaWAN Version</a> for more information.</td>
 </tr>
 <tr>
-<td><code>lorawan_phy_version</code></td>
-<td><code>defined_only</code></td>
-<td>e.g.  <code>PHY_V1_0_2_REV_B</code>. Also referred to as <strong>Regional Parameters Version</strong>. <a href="https://thethingsstack.io/reference/glossary/#regional-parameters">More info</a></td>
-<td></td>
+<td><strong><code>lorawan_phy_version</code></strong></td>
+<td><strong>Always</strong></td>
+<td>string</td>
+<td><code>&quot;PHY_V1_0_2_REV_B&quot;</code></td>
+<td>See <a href="https://thethingsstack.io/reference/api/end_device/#enum:PHYVersion">PHYVersion</a> for supported versions. See <a href="https://thethingsstack.io/reference/glossary/#regional-parameters">LoRaWAN Version</a> for more information.</td>
 </tr>
 <tr>
-<td><code>frequency_plan_id</code></td>
-<td><code>defined_only</code></td>
-<td>e.g.  <code>EU_863_870</code>. <a href="https://thethingsstack.io/reference/glossary/#frequency-plan">More info</a></td>
-<td></td>
+<td><strong><code>frequency_plan_id</code></strong></td>
+<td><strong>Always</strong></td>
+<td>string</td>
+<td><code>&quot;EU_863_870_TTN&quot;</code></td>
+<td>See <a href="https://thethingsstack.io/reference/frequency-plans/">Frequency Plans</a> for a list of supported frequency plans (The frequency plan <code>ID</code> is needed). See <a href="https://thethingsstack.io/reference/glossary/#frequency-plan">Frequency Plan</a> for more information.</td>
 </tr>
 <tr>
-<td><code>supports_join</code></td>
+<td><strong><code>supports_join</code></strong></td>
+<td><strong>Always</strong></td>
 <td>boolean</td>
-<td><code>true</code> for OTAA, <code>false</code> for ABP devices</td>
-<td></td>
+<td><code>true</code></td>
+<td><code>true</code> for OTAA devices, <code>false</code> for ABP.</td>
 </tr>
 <tr>
-<td><code>root_keys.nwk_app.key</code></td>
-<td>uint128</td>
-<td>Application Key. <a href="https://thethingsstack.io/reference/glossary/#application-key">More info</a></td>
-<td></td>
-</tr>
-<tr>
-<td><code>root_keys.nwk_key.key</code></td>
-<td>uint128</td>
-<td>Network Key. Only for LoRaWAN version 1.1+</td>
-<td></td>
-</tr>
-<tr>
-<td><code>mac_settings.rx1_delay.value</code></td>
-<td><code>RxDelayValue</code></td>
-<td>Optional. Typical values are <code>RX_DELAY_1</code> (1 second) and <code>RX_DELAY_5</code> (5 seconds).  <a href="https://thethingsstack.io/reference/api/end_device/#message:MACSettings">More info</a></td>
-<td></td>
-</tr>
-<tr>
-<td><code>mac_settings.supports_32_bit_f_cnt</code></td>
+<td><strong><code>supports_class_c</code></strong></td>
+<td>No</td>
 <td>boolean</td>
-<td><code>true</code> for 32 bit frame counters, <code>false</code> for non-32 bit counters). <a href="https://thethingsstack.io/reference/api/end_device/#message:MACSettings">More info</a></td>
-<td></td>
+<td><code>true</code></td>
+<td><code>true</code> for Class C devices, <code>false</code> otherwise.</td>
 </tr>
 <tr>
-<td><code>session.dev_addr</code></td>
-<td>uint32</td>
-<td>Device Address. <a href="https://thethingsstack.io/reference/glossary/#devaddr">More info</a></td>
-<td></td>
+<td><strong><code>root_keys.app_key.key</code></strong></td>
+<td><strong>For OTAA devices</strong></td>
+<td>string</td>
+<td><code>&quot;01020304050607080102030405060708&quot;</code></td>
+<td>See <a href="https://thethingsstack.io/reference/glossary/#application-key">Application Key</a> for more information.</td>
 </tr>
 <tr>
-<td><code>session.keys.app_s_key.key</code></td>
-<td>uint128</td>
-<td>Application Session Key. <a href="https://thethingsstack.io/reference/glossary/#application-session-key">More info</a></td>
-<td></td>
+<td><strong><code>root_keys.nwk_key.key</code></strong></td>
+<td><strong>For OTAA devices</strong></td>
+<td>string</td>
+<td><code>&quot;01020304050607080102030405060708&quot;</code></td>
+<td>For LoRaWAN version 1.1 and later only. See <a href="https://thethingsstack.io/reference/glossary/#network-key">Network Key</a> for more information.</td>
 </tr>
 <tr>
-<td><code>session.keys.f_nwk_s_int_key.key</code></td>
-<td>uint128</td>
-<td>Forwarding Network Session Integrity Key, also referred to as <strong>Network Session Key</strong> in LoRaWAN v1.0.x compatibility mode. <a href="https://thethingsstack.io/reference/api/end_device/#message:SessionKeys">More info</a></td>
-<td></td>
+<td><strong><code>mac_settings.rx1_delay.value</code></strong></td>
+<td>No</td>
+<td>string</td>
+<td><code>&quot;RX_DELAY_5&quot;</code></td>
+<td>Delay for the first Class A receive window (Rx1). Typical values are <code>RX_DELAY_1</code> (1 second) and <code>RX_DELAY_5</code> (5 seconds). See <a href="https://thethingsstack.io/reference/api/end_device/#message:MACSettings">MACSettings</a> for more information.</td>
 </tr>
 <tr>
-<td><code>session.last_f_cnt_up</code></td>
-<td>int</td>
-<td>Optional, frame counter uplink. <a href="https://thethingsstack.io/reference/api/end_device/#message:MACSettings">More info</a></td>
-<td></td>
+<td><strong><code>mac_settings.supports_32_bit_f_cnt</code></strong></td>
+<td>No</td>
+<td>boolean</td>
+<td><code>false</code></td>
+<td><code>true</code> if device supports 32-bit frame counters, <code>false</code> if device only supports 16-bit frame counters.</td>
 </tr>
 <tr>
-<td><code>session.last_n_f_cnt_down</code></td>
-<td>int</td>
-<td>Optional, frame counter downlinks. <a href="https://thethingsstack.io/reference/api/end_device/#message:MACSettings">More info</a></td>
-<td></td>
+<td><strong><code>session.dev_addr</code></strong></td>
+<td><strong>For existing session</strong></td>
+<td>string</td>
+<td><code>&quot;01020304&quot;</code></td>
+<td><strong>Needed for ABP devices or when migrating OTAA devices with an existing session</strong>. See <a href="https://thethingsstack.io/reference/glossary/#device-address">Device Address</a> for more information.</td>
+</tr>
+<tr>
+<td><strong><code>session.keys.app_s_key.key</code></strong></td>
+<td><strong>For existing session</strong></td>
+<td>string</td>
+<td><code>&quot;01020304050607080102030405060708&quot;</code></td>
+<td><strong>Needed for ABP devices or when migrating OTAA devices with an existing session</strong>. See <a href="https://thethingsstack.io/reference/glossary/#application-session-key">Application Session Key</a> for more information.</td>
+</tr>
+<tr>
+<td><strong><code>session.keys.f_nwk_s_int_key.key</code></strong></td>
+<td><strong>For existing session</strong></td>
+<td>string</td>
+<td><code>&quot;01020304050607080102030405060708&quot;</code></td>
+<td>Forwarding Network Session Integrity Key, also referred to as <strong>Network Session Key</strong> in LoRaWAN v1.0.x compatibility mode. See <a href="https://thethingsstack.io/reference/api/end_device/#message:SessionKeys">SessionKeys</a> and <a href="https://thethingsstack.io/reference/glossary/#forwarding-network-session-integrity-key">Forwarding Network Session Integrity Key</a> for more information.</td>
+</tr>
+<tr>
+<td><strong><code>session.last_f_cnt_up</code></strong></td>
+<td><strong>For existing session</strong></td>
+<td>uint</td>
+<td><code>12</code></td>
+<td>Last uplink frame counter used.</td>
+</tr>
+<tr>
+<td><strong><code>session.last_n_f_cnt_down</code></strong></td>
+<td><strong>For existing session</strong></td>
+<td>uint</td>
+<td><code>12</code></td>
+<td>Last network downlink frame counter used.</td>
+</tr>
+<tr>
+<td><strong><code>session.last_a_f_cnt_down</code></strong></td>
+<td><strong>For existing session</strong></td>
+<td>uint</td>
+<td><code>12</code></td>
+<td>Last application downlink frame counter used.</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
-<p>Note: The dots in the <strong>Field</strong> column imply an embedded object. For example, <code>root_keys.nwk_app.key</code> must be set as:</p>
+<p>Note: The dots in the <strong>Field</strong> column imply an embedded object. For example, <code>root_keys.nwk_key.key</code> must be set as:</p>
 <pre><code>&quot;root_keys&quot;: {
   &quot;nwk_key:&quot;: {
     &quot;key&quot;: &quot;&lt;NWK_KEY_HERE&gt;&quot;
   }
-}, 
+}
 </code></pre></blockquote>
-<h2 id="example-devicesjson">Example <code>devices.json</code></h2>
-<p>Below is an example <code>devices.json</code> file. The file may contain multiple devices, stored as different JSON objects.</p>
+<h2 id="examples">Examples</h2>
+<blockquote>
+<p><strong>Note</strong>: For more information on configuring MAC settings, see <a href="https://thethingsstack.io/getting-started/migrating-from-v2/configure-mac-settings/">Fine-tuning MAC Settings</a>.</p>
+</blockquote>
+<h3 id="example-otaa-device">Example OTAA Device:</h3>
+<summary><details>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;device-1&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;application-id&#34;</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0000000000000000&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0000000000000000&#34;</span>
+    <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;my-device&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0102030405060708&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0102030405060708&#34;</span>
   <span class="p">},</span>
-  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;name_of_device&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;description_of_device&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;lorawan_version&#34;</span><span class="p">:</span><span class="s2">&#34;1.0.2&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;lorawan_phy_version&#34;</span><span class="p">:</span><span class="s2">&#34;1.0.2-b&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;frequency_plan_id&#34;</span><span class="p">:</span><span class="s2">&#34;EU_863_870&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;My Device&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Living room temperature sensor&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;lorawan_version&#34;</span><span class="p">:</span> <span class="s2">&#34;MAC_V1_0_2&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;lorawan_phy_version&#34;</span><span class="p">:</span> <span class="s2">&#34;PHY_V1_0_2_REV_B&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;frequency_plan_id&#34;</span><span class="p">:</span> <span class="s2">&#34;EU_863_870_TTN&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;supports_join&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&#34;root_keys&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;app_key&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;key&#34;</span><span class="p">:</span> <span class="s2">&#34;01020304050607080102030405060708&#34;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></details></summary>
+<h3 id="example-otaa-device-with-existing-session">Example OTAA device with existing session:</h3>
+<summary>
+<details>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;device-2&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0102030405060708&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0102030405060708&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;My Device&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Migrated with existing session from The Things Network&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;lorawan_version&#34;</span><span class="p">:</span><span class="s2">&#34;MAC_V1_0_2&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;lorawan_phy_version&#34;</span><span class="p">:</span><span class="s2">&#34;PHY_V1_0_2_REV_B&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;frequency_plan_id&#34;</span><span class="p">:</span><span class="s2">&#34;EU_863_870_TTN&#34;</span><span class="p">,</span>
   <span class="nt">&#34;supports_join&#34;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
   <span class="nt">&#34;root_keys&#34;</span><span class="p">:{</span>
     <span class="nt">&#34;app_key&#34;</span><span class="p">:{</span>
-      <span class="nt">&#34;key&#34;</span><span class="p">:</span><span class="s2">&#34;00000000000000000000000000000000&#34;</span>
+      <span class="nt">&#34;key&#34;</span><span class="p">:</span><span class="s2">&#34;01020304050607080102030405060708&#34;</span>
     <span class="p">}</span>
   <span class="p">},</span>
   <span class="nt">&#34;mac_settings&#34;</span><span class="p">:{</span>
     <span class="nt">&#34;rx1_delay&#34;</span><span class="p">:{</span>
-      <span class="nt">&#34;value&#34;</span><span class="p">:</span><span class="s2">&#34;RX_DELAY_1&#34;</span>
-      <span class="p">},</span>
-    <span class="nt">&#34;supports_32_bit_f_cnt&#34;</span><span class="p">:</span><span class="kc">true</span>
+      <span class="nt">&#34;value&#34;</span><span class="p">:</span><span class="s2">&#34;RX_DELAY_5&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;supports_32_bit_f_cnt&#34;</span><span class="p">:</span> <span class="kc">true</span>
   <span class="p">},</span>
   <span class="nt">&#34;session&#34;</span><span class="p">:{</span>
-    <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span><span class="s2">&#34;00000000&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span><span class="s2">&#34;01020304&#34;</span><span class="p">,</span>
     <span class="nt">&#34;keys&#34;</span><span class="p">:{</span>
       <span class="nt">&#34;app_s_key&#34;</span><span class="p">:{</span>
-        <span class="nt">&#34;key&#34;</span><span class="p">:</span><span class="s2">&#34;00000000000000000000000000000000&#34;</span>
+        <span class="nt">&#34;key&#34;</span><span class="p">:</span><span class="s2">&#34;01020304050607080102030405060708&#34;</span>
       <span class="p">},</span>
       <span class="nt">&#34;f_nwk_s_int_key&#34;</span><span class="p">:{</span>
-        <span class="nt">&#34;key&#34;</span><span class="p">:</span><span class="s2">&#34;00000000000000000000000000000000&#34;</span>
+        <span class="nt">&#34;key&#34;</span><span class="p">:</span><span class="s2">&#34;01020304050607080102030405060708&#34;</span>
       <span class="p">}</span>
     <span class="p">},</span>
-    <span class="nt">&#34;last_f_cnt_up&#34;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
-    <span class="nt">&#34;last_n_f_cnt_down&#34;</span><span class="p">:</span><span class="mi">0</span>
+    <span class="nt">&#34;last_f_cnt_up&#34;</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span>
+    <span class="nt">&#34;last_n_f_cnt_down&#34;</span><span class="p">:</span> <span class="mi">10</span>
   <span class="p">}</span>
 <span class="p">}</span>
-<span class="p">{</span>
-  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;device-2&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;application-id&#34;</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;...&#34;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><p>For more information on configuring MAC settings, see <a href="https://thethingsstack.io/getting-started/migrating-from-v2/configure-mac-settings/">Fine-tuning MAC Settings</a>.</p>
+</code></pre></div></details></summary>
+<br>
 
 </div>
 
@@ -350,10 +422,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 09 Sep 2020.
+  Last changed by Aggelos Kolaitis on 10 Nov 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/fb2c4eff5c9428ed0bc6b155eac6b8f6552298cf">
-      doc: Add Chirpstack migration section to docs
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/973a0d532a71c201f00f8f4658c3920cb9f6c8df">
+      doc: Improve documentation for device JSON format
     </a>
 </p>
 
