@@ -6,93 +6,154 @@ weight: 1
 
 {{% tts %}} allows you to import devices from other networks using a JSON file describing those devices. Devices imported this way can be migrated without the need for a rejoin.
 
-## Required Fields in `devices.json`
+Create a `devices.json` file containing a device object, like so:
 
-| Field | Type | Description |
-|---|---|---|---|
-| `ids.device_id` | string | [More info]({{< ref "reference/glossary#device-id" >}}) |
-| `ids.application_id` | string | [More info]({{< ref "reference/glossary#application-id" >}}) |
-| `ids.dev_eui` | uint64 | [More info]({{< ref "reference/glossary#deveui" >}}) |
-| `ids.join_eui` | uint64 | Also referred to as **AppEUI**. [More info]({{< ref "reference/glossary#joineui" >}}) |
-| `name` | string | Optional, name of the device |
-| `description` | string | Optional, description of the device |
-| `lorawan_version` | `defined_only` | e.g.  `MAC_V1_0_2`. [More info]({{< ref "reference/glossary#lorawan-version" >}}) |
-| `lorawan_phy_version` | `defined_only` | e.g.  `PHY_V1_0_2_REV_B`. Also referred to as **Regional Parameters Version**. [More info]({{< ref "reference/glossary#regional-parameters" >}}) |
-| `frequency_plan_id` | `defined_only` | e.g.  `EU_863_870`. [More info]({{< ref "reference/glossary#frequency-plan" >}}) |
-| `supports_join` | boolean | `true` for OTAA, `false` for ABP devices |
-| `root_keys.nwk_app.key` | uint128 | Application Key. [More info]({{< ref "reference/glossary#application-key" >}}) |
-| `root_keys.nwk_key.key` | uint128 | Network Key. Only for LoRaWAN version 1.1+ |
-| `mac_settings.rx1_delay.value` | `RxDelayValue` | Optional. Typical values are `RX_DELAY_1` (1 second) and `RX_DELAY_5` (5 seconds).  [More info]({{< ref "reference/api/end_device#message:MACSettings" >}})|
-| `mac_settings.supports_32_bit_f_cnt` | boolean | `true` for 32 bit frame counters, `false` for non-32 bit counters). [More info]({{< ref "reference/api/end_device#message:MACSettings" >}})  |
-| `session.dev_addr` | uint32 | Device Address. [More info]({{< ref "reference/glossary#devaddr" >}}) |
-| `session.keys.app_s_key.key` | uint128 | Application Session Key. [More info]({{< ref "reference/glossary#application-session-key" >}}) |
-| `session.keys.f_nwk_s_int_key.key` | uint128 | Forwarding Network Session Integrity Key, also referred to as **Network Session Key** in LoRaWAN v1.0.x compatibility mode. [More info]({{< ref "reference/api/end_device#message:SessionKeys" >}}) |
-| `session.last_f_cnt_up` | int | Optional, frame counter uplink. [More info]({{< ref "reference/api/end_device#message:MACSettings" >}}) |
-| `session.last_n_f_cnt_down` | int | Optional, frame counter downlinks. [More info]({{< ref "reference/api/end_device#message:MACSettings" >}}) |
+```json
+{
+  "ids": {
+    "device_id": "my-device",
+    "dev_eui": "0102030405060708",
+    "join_eui": "0102030405060708"
+  },
+  "name": "My Device",
+  "description": "Living room temperature sensor",
+  "lorawan_version": "MAC_V1_0_2",
+  "lorawan_phy_version": "PHY_V1_0_2_REV_B",
+  "frequency_plan_id": "EU_863_870_TTN",
+  "supports_join": true,
+  "root_keys": {
+    "app_key": {
+      "key": "01020304050607080102030405060708"
+    }
+  }
+}
+```
 
-> Note: The dots in the **Field** column imply an embedded object. For example, `root_keys.nwk_app.key` must be set as: 
+You can define multiple end devices in a single file like so:
+
+```js
+[
+  {
+    /* device 1 */
+  },
+  {
+    /* device 2 */
+  }
+]
+```
+
+## JSON End Device Format
+
+The full specification of the JSON format is defined in the API protos, see the [EndDevice]({{< ref "/reference/api/end_device#message:EndDevice" >}}) message definition for details.
+
+The linked specification is quite extensive, and contains a lot of fields that are not required, or are only set and used internally by the Network Server. Below, the required and most commonly used fields are discussed.
+
+| Field | Required | Type | Example | Description |
+|---|---|---|---|---|
+| **`ids.device_id`** | **Always** | string | `"sensor-1"` | [More info]({{< ref "reference/glossary#device-id" >}}) |
+| **`ids.dev_eui`** | **Always** | string | `"0102030405060708"` | [More info]({{< ref "reference/glossary#deveui" >}}) |
+| **`ids.join_eui`** | **Always** | string | `"0102030405060708"` | Also referred to as **AppEUI**. [More info]({{< ref "reference/glossary#joineui" >}}) |
+| **`name`** | No | string | `"My Sensor"` | Optional, a name for the device |
+| **`description`** | No | string | `"Situated in living room"` | Optional, description of the device |
+| **`lorawan_version`** | **Always** | string | `"MAC_V1_0_2"` | See [MACVersion]({{< ref "reference/api/end_device#enum:MACVersion" >}}) for supported versions. See [LoRaWAN Version]({{< ref "reference/glossary#lorawan-version" >}}) for more information. |
+| **`lorawan_phy_version`** | **Always** | string | `"PHY_V1_0_2_REV_B"` | See [PHYVersion]({{< ref "reference/api/end_device#enum:PHYVersion" >}}) for supported versions. See [LoRaWAN Version]({{< ref "reference/glossary#regional-parameters" >}}) for more information. |
+| **`frequency_plan_id`** | **Always** | string | `"EU_863_870_TTN"` | See [Frequency Plans]({{< ref "reference/frequency-plans" >}}) for a list of supported frequency plans (The frequency plan `ID` is needed). See [Frequency Plan]({{< ref "reference/glossary#frequency-plan" >}}) for more information. |
+| **`supports_join`** | **Always** | boolean | `true` | `true` for OTAA devices, `false` for ABP. |
+| **`supports_class_c`** | No | boolean | `true` | `true` for Class C devices, `false` otherwise. |
+| **`root_keys.app_key.key`** | **For OTAA devices** | string | `"01020304050607080102030405060708"` | See [Application Key]({{< ref "reference/glossary#application-key" >}}) for more information. |
+| **`root_keys.nwk_key.key`** | **For OTAA devices** | string | `"01020304050607080102030405060708"` | For LoRaWAN version 1.1 and later only. See [Network Key]({{< ref "reference/glossary#network-key" >}}) for more information. |
+| **`mac_settings.rx1_delay.value`** | No | string | `"RX_DELAY_5"` | Delay for the first Class A receive window (Rx1). Typical values are `RX_DELAY_1` (1 second) and `RX_DELAY_5` (5 seconds). See [MACSettings]({{< ref "reference/api/end_device#message:MACSettings" >}}) for more information. |
+| **`mac_settings.supports_32_bit_f_cnt`** | No | boolean | `false` | `true` if device supports 32-bit frame counters, `false` if device only supports 16-bit frame counters. |
+| **`session.dev_addr`** | **For existing session** | string | `"01020304"` | **Needed for ABP devices or when migrating OTAA devices with an existing session**. See [Device Address]({{< ref "/reference/glossary#device-address" >}}) for more information. |
+| **`session.keys.app_s_key.key`** | **For existing session** | string | `"01020304050607080102030405060708"` | **Needed for ABP devices or when migrating OTAA devices with an existing session**. See [Application Session Key]({{< ref "reference/glossary#application-session-key" >}}) for more information. |
+| **`session.keys.f_nwk_s_int_key.key`** | **For existing session** | string | `"01020304050607080102030405060708"` | Forwarding Network Session Integrity Key, also referred to as **Network Session Key** in LoRaWAN v1.0.x compatibility mode. See [SessionKeys]({{< ref "reference/api/end_device#message:SessionKeys" >}}) and [Forwarding Network Session Integrity Key]({{< ref "/reference/glossary#forwarding-network-session-integrity-key" >}}) for more information. |
+| **`session.last_f_cnt_up`** | **For existing session** | uint | `12` | Last uplink frame counter used. |
+| **`session.last_n_f_cnt_down`** | **For existing session** | uint | `12` | Last network downlink frame counter used. |
+| **`session.last_a_f_cnt_down`** | **For existing session** | uint | `12` | Last application downlink frame counter used. |
+
+> Note: The dots in the **Field** column imply an embedded object. For example, `root_keys.nwk_key.key` must be set as:
 > ```
 > "root_keys": {
 >   "nwk_key:": {
 >     "key": "<NWK_KEY_HERE>"
 >   }
-> }, 
+> }
 > ```
 
-## Example `devices.json`
+## Examples
 
-Below is an example `devices.json` file. The file may contain multiple devices, stored as different JSON objects.
+> **Note**: For more information on configuring MAC settings, see [Fine-tuning MAC Settings]({{< ref "getting-started/migrating-from-v2/configure-mac-settings" >}}).
+
+### Example OTAA Device:
+<summary><details>
 
 ```json
 {
   "ids": {
-    "device_id": "device-1",
-    "application_ids": {
-      "application_id": "application-id"
-    },
-    "dev_eui": "0000000000000000",
-    "join_eui": "0000000000000000"
+    "device_id": "my-device",
+    "dev_eui": "0102030405060708",
+    "join_eui": "0102030405060708"
   },
-  "name": "name_of_device",
-  "description": "description_of_device",
-  "lorawan_version":"1.0.2",
-  "lorawan_phy_version":"1.0.2-b",
-  "frequency_plan_id":"EU_863_870",
+  "name": "My Device",
+  "description": "Living room temperature sensor",
+  "lorawan_version": "MAC_V1_0_2",
+  "lorawan_phy_version": "PHY_V1_0_2_REV_B",
+  "frequency_plan_id": "EU_863_870_TTN",
+  "supports_join": true,
+  "root_keys": {
+    "app_key": {
+      "key": "01020304050607080102030405060708"
+    }
+  }
+}
+```
+</details></summary>
+
+### Example OTAA device with existing session:
+<summary>
+
+<details>
+
+```json
+{
+  "ids": {
+    "device_id": "device-2",
+    "dev_eui": "0102030405060708",
+    "join_eui": "0102030405060708"
+  },
+  "name": "My Device",
+  "description": "Migrated with existing session from The Things Network",
+  "lorawan_version":"MAC_V1_0_2",
+  "lorawan_phy_version":"PHY_V1_0_2_REV_B",
+  "frequency_plan_id":"EU_863_870_TTN",
   "supports_join":true,
   "root_keys":{
     "app_key":{
-      "key":"00000000000000000000000000000000"
+      "key":"01020304050607080102030405060708"
     }
   },
   "mac_settings":{
     "rx1_delay":{
-      "value":"RX_DELAY_1"
-      },
-    "supports_32_bit_f_cnt":true
+      "value":"RX_DELAY_5"
+    },
+    "supports_32_bit_f_cnt": true
   },
   "session":{
-    "dev_addr":"00000000",
+    "dev_addr":"01020304",
     "keys":{
       "app_s_key":{
-        "key":"00000000000000000000000000000000"
+        "key":"01020304050607080102030405060708"
       },
       "f_nwk_s_int_key":{
-        "key":"00000000000000000000000000000000"
+        "key":"01020304050607080102030405060708"
       }
     },
-    "last_f_cnt_up":0,
-    "last_n_f_cnt_down":0
-  }
-}
-{
-  "ids": {
-    "device_id": "device-2",
-    "application_ids": {
-      "application_id": "application-id"
-    },
-    "..."
+    "last_f_cnt_up": 32,
+    "last_n_f_cnt_down": 10
   }
 }
 ```
 
-For more information on configuring MAC settings, see [Fine-tuning MAC Settings]({{< ref "getting-started/migrating-from-v2/configure-mac-settings" >}}).
+</details></summary>
+
+<br>
