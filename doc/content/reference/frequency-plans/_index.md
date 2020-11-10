@@ -11,4 +11,4 @@ Deployments may also have custom frequency plans configured.
 
 <!-- terms come from /data/frequency-plans. -->
 
-{{< frequency_plans >}}
+{{< frequency-plans >}}
