@@ -5,7 +5,7 @@ services:
   cockroach:
     # In production, replace 'latest' with tag from https://hub.docker.com/r/cockroachdb/cockroach/tags
     image: cockroachdb/cockroach:latest
-    command: start --http-port 26256 --insecure
+    command: start-single-node --http-port 26256 --insecure
     restart: unless-stopped
     volumes:
       - ${DEV_DATA_DIR:-.env/data}/cockroach:/cockroach/cockroach-data
