@@ -22,15 +22,15 @@ Create an API Key with Gateway Info rights for this gateway using the same instr
 
 ## Configuration
 
-All further steps will assume the gateway is available at `192.168.4.155`, {{% tts %}} address is `thethings.example.com`, gateway ID is `example-gtw` and gateway API key is `NNSXS.GTSZYGHE4NBR4XJZHJWEEMLXWYIFHEYZ4WR7UAI.YAT3OFLWLUVGQ45YYXSNS7HTVTFALWYSXK6YLJ6BDUNBPJMRH3UQ`.
+All further steps will assume the gateway is available at `<gateway-ip>`, {{% tts %}} is `<server-address>`, gateway ID is `<gateway-id>` and gateway API key is `<gateway-api-key>`, please replace these by the values appropriate for your setup.
 
->**Note:** Replace these by the values appropriate for your setup.
+>**Note:** Replace these with the values appropriate for your setup.
 
 ### Provisioning
 
 1. Execute: 
 ```bash
-$ curl -sL 'https://raw.githubusercontent.com/TheThingsNetwork/kerlink-wirnet-firmware/v0.0.2/provision.sh' | bash -s -- 'wirnet-istation' '192.168.4.155' 'thethings.example.com' 'example-gtw' 'NNSXS.GTSZYGHE4NBR4XJZHJWEEMLXWYIFHEYZ4WR7UAI.YAT3OFLWLUVGQ45YYXSNS7HTVTFALWYSXK6YLJ6BDUNBPJMRH3UQ'
+$ curl -sL 'https://raw.githubusercontent.com/TheThingsNetwork/kerlink-wirnet-firmware/v0.0.2/provision.sh' | bash -s -- 'wirnet-istation' <gateway-ip> <server-address> <gateway-id> <gateway-api-key>
 ```
 
 Please refer to [Kerlink Wirnet provisioning documentation](https://github.com/TheThingsNetwork/kerlink-wirnet-firmware/tree/v0.0.1#provisioning) if more detailed up-to-date documentation is necessary.
