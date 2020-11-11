@@ -1,6 +1,7 @@
 ---
 title: Import End Devices in The Things Stack
-weight: 2
+weight: 6
+aliases: ["/getting-started/migrating-from-v2/import-devices", "/getting-started/migrating-from-networks/import-devices"]
 ---
 
 To import your devices, you need an application in {{% tts %}}. This can be done by following instructions for [Creating an Application]({{< ref "integrations/adding-applications" >}}).

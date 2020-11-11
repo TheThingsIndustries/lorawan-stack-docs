@@ -29,11 +29,13 @@
         {{- end }}
         {{- end }}
         {{- if .Site.Menus.buttons }}
-        <div class="navbar-item">
-          {{- range .Site.Menus.buttons }}
-          <a class="button is-primary{{ if $currentPage.IsMenuCurrent "buttons" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a>
-          {{- end }}
-        </div>
+          {{- if not .Params.hidebuttons -}}
+          <div class="navbar-item">
+            {{- range .Site.Menus.buttons }}
+            <a class="button is-primary{{ if $currentPage.IsMenuCurrent "buttons" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a>
+            {{- end }}
+          </div>
+          {{- end -}}
         {{- end }}
       </div>
     </div>

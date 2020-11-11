@@ -1,6 +1,7 @@
 ---
 title: Enable Peering
 description: ""
+aliases: "/integrations/peering/enable"
 ---
 
 This guide shows you how to enable peering on your private LoRaWAN network.

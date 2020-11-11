@@ -1,7 +1,45 @@
 ---
-title: Export End Devices from V2
-weight: 20
+title: "Migrating from The Things Network Stack V2"
+description: ""
+weight: 3
+aliases: ["/getting-started/migrating-from-v2", "/getting-started/migrating-from-v2/configure-ttnctl", "/getting-started/migrating-from-v2/export-v2-devices"]
 ---
+
+This section documents the process of migrating end devices from {{% ttnv2 %}} to {{% tts %}}.
+
+<!--more-->
+
+For a breakdown of differences between {{% ttnv2 %}} and {{% tts %}}, see the [Major Changes]({{< relref "major-changes" >}}) section.
+
+## Suggested Migration Process
+
+**First**: Update applications to support the {{% tts %}} data format. If you are using payload formatters, make sure to set them correctly from the Application settings page.
+
+**Second**: Follow this guide in order to migrate a single end device (and gateway, if needed) to {{% tts %}}. Continue by gradually migrating your end devices in small batches. Avoid migrating production workloads before you are certain that they will work as expected.
+
+**Finally**: Once you are confident that your end devices are working properly, migrate the rest of your devices and gateways to {{% tts %}}.
+
+## Configure V2 CLI
+
+You will need to use the latest version of `ttnctl`, the CLI for {{% ttnv2 %}}. Follow the [instructions from The Things Network documentation][1]. An overview is given below:
+
+Download `ttnctl` [for your operating system][2].
+
+Update to the latest version:
+
+```bash
+$ ttnctl selfupdate
+```
+
+Go to [https://account.thethingsnetwork.org][3] and click [ttnctl access code][4].
+
+Use the returned code to login from the CLI with:
+
+```bash
+$ ttnctl user login "t9XPTwJl6shYSJSJxQ1QdATbs4u32D4Ib813-fO9Xlk"
+```
+
+## Export End Devices from V2
 
 In this step, the end devices from {{% ttnv2 %}} will be exported in a JSON format that can then be parsed and imported by {{% tts %}}.
 

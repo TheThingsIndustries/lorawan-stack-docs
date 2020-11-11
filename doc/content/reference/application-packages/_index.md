@@ -1,6 +1,7 @@
 ---
 title: "Application Packages"
 description: ""
+aliases: "/integrations/application-packages"
 ---
 
 Application packages specify state machines running both on the end device and the Application Server, as well as signalling messages exchanged between the end device's application layer and the Application Server.
