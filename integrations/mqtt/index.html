@@ -112,7 +112,7 @@ debug: false
 <p>The Things Stack exposes an MQTT server to work with streaming events. This section explains how to connect an MQTT client and subscribe to uplinks or publish downlinks.</p>
 <p>The Things Stack supports the <a href="http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.pdf">MQTT Standard Version 3.1.1</a>.</p>
 <h2 id="multi-tenancy">Multi-Tenancy</h2>
-<p>On multi-tenant environments such as Cloud, application ids and other endoints include the tenant id, e.g <code>app1@tenant1</code>. On single tenant environments such as Open Source, the tenant id can be removed, i.e <code>app1</code>.</p>
+<p>Note that on multi-tenant environments such as Cloud, application IDs and other endpoints include the tenant ID, e.g <code>app1@tenant1</code>. On single tenant environments such as Open Source, the tenant ID can be removed, i.e <code>app1</code>.</p>
 <h2 id="creating-an-api-key">Creating an API Key</h2>
 <p>In order to use the MQTT server you need to create a new API key to authenticate. The Console provides the required connection information and can be used to create an API key for authentication. In your application select the <strong>MQTT</strong> submenu from the <strong>Integrations</strong> side menu.</p>
 <figure>
@@ -120,15 +120,19 @@ debug: false
          alt="MQTT connection information"/> 
 </figure>
 
-<p>You can now click on the <strong>Generate new API key</strong> button in order to generate an API key which can be used to send and receive traffic from MQTT.</p>
+<p>You can now click on the <strong>Generate new API key</strong> button in order to generate an API key which can be used to send and receive traffic from MQTT server.</p>
 <figure>
     <img src="mqtt-key-created.png"
          alt="MQTT API key created"/> 
 </figure>
 
-<p>Make sure to copy your API key now, since it will no longer be visible after leaving the page for security reasons. You can now login using an MQTT client with the application ID and tenant ID <code>app1@tenant1</code> as user name and the newly generated API key as password.</p>
+<blockquote>
+<p><strong>Note:</strong> Make sure to copy your API key now, since it will no longer be visible after leaving the page for security reasons.</p>
+</blockquote>
+<p>You can now login using an MQTT client with the application ID and tenant ID <code>app1@tenant1</code> as a username, and the newly generated API key as password.</p>
 <h2 id="mqtt-clients">MQTT Clients</h2>
-<p>There are many MQTT clients available. Great clients are <code>mosquitto_pub</code> and <code>mosquitto_sub</code>, part of <a href="https://mosquitto.org">Mosquitto</a>.</p>
+<p>There are many MQTT clients available. See <a href="https://thethingsstack.io/integrations/mqtt-clients/">MQTT Clients</a> section for instructions on how the integrate with the most popular ones.</p>
+<p>In the examples below, we use <code>mosquitto_pub</code> and <code>mosquitto_sub</code> clients.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Tip: when using `mosquitto_sub`, pass the `-d` flag to see the topics messages get published on.</span>
 <span class="c1"># For example:</span>
 $ mosquitto_sub -h thethings.example.com -t <span class="s2">&#34;#&#34;</span> -u <span class="s2">&#34;app1@tenant1&#34;</span> -P <span class="s2">&#34;NNSXS.VEEBURF3KR77ZR..&#34;</span> -d
@@ -146,7 +150,7 @@ $ mosquitto_sub -h thethings.example.com -t <span class="s2">&#34;#&#34;</span> 
 </ul>
 <p>While you could subscribe to separate topics, for the tutorial subscribe to <code>#</code> to subscribe to all messages.</p>
 <p>With your MQTT client subscribed, when a device joins the network, a <code>join</code> message gets published. For example, for a device ID <code>dev1</code>, the message will be published on the topic <code>v3/app1@tenant1/devices/dev1/join</code>.</p>
-<details><summary>Show example join accept message</summary>
+<details><summary>Show join accept message example</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;end_device_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;dev1&#34;</span><span class="p">,</span>
@@ -171,7 +175,7 @@ $ mosquitto_sub -h thethings.example.com -t <span class="s2">&#34;#&#34;</span> 
 </code></pre></div></details>
 <p>You can use the correlation IDs to follow messages as they pass through The Things Stack.</p>
 <p>When the device sends an uplink message, a message will be published to the topic <code>v3/{application id}@{tenant id}/devices/{device id}/up</code>.</p>
-<details><summary>Show example uplink message</summary>
+<details><summary>Show uplink message example</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;end_device_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;dev1&#34;</span><span class="p">,</span>
@@ -231,7 +235,7 @@ $ mosquitto_sub -h thethings.example.com -t <span class="s2">&#34;#&#34;</span> 
   <span class="p">}]</span>
 <span class="p">}</span>
 </code></pre></div><blockquote>
-<p>Hint: Use <a href="https://v2.cryptii.com/hexadecimal/base64">this handy tool</a> to convert hexadecimal to base64.</p>
+<p><strong>Tip:</strong> Use <a href="https://v2.cryptii.com/hexadecimal/base64">this handy tool</a> to convert hexadecimal to base64.</p>
 </blockquote>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># If you use `mosquitto_pub`, use the following command:</span>
 $ mosquitto_pub -h thethings.example.com <span class="se">\
@@ -241,7 +245,7 @@ $ mosquitto_pub -h thethings.example.com <span class="se">\
 </span><span class="se"></span>  -d<span class="sb">`</span>
 </code></pre></div><p>It is also possible to send multiple downlink messages on a single push because <code>downlinks</code> is an array. Instead of <code>/push</code>, you can also use <code>/replace</code> to replace the downlink queue. Replacing with an empty array clears the downlink queue.</p>
 <blockquote>
-<p>Note: if you do not specify a priority, the default priority <code>LOWEST</code> is used. You can specify <code>LOWEST</code>, <code>LOW</code>, <code>BELOW_NORMAL</code>, <code>NORMAL</code>, <code>ABOVE_NORMAL</code>, <code>HIGH</code> and <code>HIGHEST</code>.</p>
+<p><strong>Note:</strong> if you do not specify a priority, the default priority <code>LOWEST</code> is used. You can specify <code>LOWEST</code>, <code>LOW</code>, <code>BELOW_NORMAL</code>, <code>NORMAL</code>, <code>ABOVE_NORMAL</code>, <code>HIGH</code> and <code>HIGHEST</code>.</p>
 </blockquote>
 <p>The Things Stack supports some cool features, such as confirmed downlink with your own correlation IDs. For example, you can push this:</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
@@ -254,7 +258,7 @@ $ mosquitto_pub -h thethings.example.com <span class="se">\
   <span class="p">}]</span>
 <span class="p">}</span>
 </code></pre></div><p>Once the downlink gets acknowledged, a message is published to the topic <code>v3/{application id}@{tenant id}/devices/{device id}/down/ack</code>.</p>
-<details><summary>Show example downlink event message</summary>
+<details><summary>Show downlink event message example</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;end_device_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;dev1&#34;</span><span class="p">,</span>
@@ -335,10 +339,10 @@ $ mosquitto_pub -h thethings.example.com <span class="se">\
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Johan Stokking on 28 Oct 2020.
+  Last changed by Nejra on 21 Oct 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/668f8701aab6714cf4fe7eaee0e38c19abbe8734">
-      doc: Fix MQTT server version rendering
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3b3b07d795e1ca2f908bdc3196e968a5485c000c">
+      doc: Improving docs readability
     </a>
 </p>
 

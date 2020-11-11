@@ -129,8 +129,9 @@ debug: false
 
 <div class="content">
 
-<p>This section provides instructions for creating scheduling downlinks using webhooks.</p>
-<p>You can schedule downlink messages using webhooks. This requires an API key with traffic writing rights, which can be created using the Console. In your application, select the <strong>API Keys</strong> sidemenu and click on the <strong>+ Add API Key</strong> button. You can now fill in the name and the rights of your API key.</p>
+<p>This section provides instructions for scheduling downlinks using HTTP Webhooks.</p>
+<p>You can schedule downlink messages using webhooks. This requires an API key with traffic writing rights, which can be created using the Console.</p>
+<p>In your application, select <strong>API Keys</strong> on the left menu and click the <strong>+ Add API Key</strong> button. Fill in the <strong>Name</strong> and the <strong>Rights</strong> of your API key.</p>
 <figure>
     <img src="../api-key-creation.png"
          alt="API key creation screen"/> 
@@ -142,7 +143,10 @@ debug: false
          alt="API key created"/> 
 </figure>
 
-<p>Make sure to save your API key at this point, since it will no longer be retrievable after you leave the page. You can now pass the API key as bearer token on the <code>Authorization</code> header.</p>
+<blockquote>
+<p><strong>Note:</strong> Make sure to save your API key at this point, since it will no longer be retrievable after you leave the page.</p>
+</blockquote>
+<p>You can now pass the API key as bearer token on the <code>Authorization</code> header.</p>
 <p>The downlink queue operation paths are:</p>
 <ul>
 <li>For push: <code>/api/v3/as/applications/{application_id}/webhooks/{webhook_id}/devices/{device_id}/down/push</code></li>
@@ -153,7 +157,7 @@ debug: false
   -X POST \
   -H 'Authorization: Bearer NNSXS.VEEBURF3KR77ZR..' \
   --data '{&quot;downlinks&quot;:[{&quot;frm_payload&quot;:&quot;vu8=&quot;,&quot;f_port&quot;:15,&quot;priority&quot;:&quot;NORMAL&quot;}]}'
-</code></pre><p>Will push a downlink to the end device <code>dev1</code> of the application <code>app1</code> using the webhook <code>wh1</code>.</p>
+</code></pre><p>will push a downlink to the end device <code>dev1</code> of the application <code>app1</code> using the webhook <code>wh1</code>.</p>
 <p>You can also save the API key in the webhook configuration page using the the <strong>Downlink API Key</strong> field. The Application Server will provide it to your endpoint using the <code>X-Downlink-Apikey</code> header and the push and replace operations paths using the <code>X-Downlink-Push</code> and <code>X-Downlink-Replace</code> headers.</p>
 </div>
 
@@ -201,10 +205,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 23 Jun 2020.
+  Last changed by Nejra on 21 Oct 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/09862756ad4d31e50ec294ac3ab601aa777406c3">
-      doc: Update webhooks
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3b3b07d795e1ca2f908bdc3196e968a5485c000c">
+      doc: Improving docs readability
     </a>
 </p>
 

@@ -144,8 +144,8 @@ debug: false
 </tr>
 <tr>
 <td>MQTT Public TLS Address</td>
-<td><code>{tenant_id}.thethings.industries:8883</code> (we have to use the TLS certificate provided in th e ttn document)</td>
-<td><code>https://thethings.example.com:1883</code></td>
+<td><code>{tenant_id}.thethings.industries:8883</code> (we have to use the TLS certificate provided in the ttn document)</td>
+<td><code>https://thethings.example.com:8883</code></td>
 </tr>
 <tr>
 <td>Username</td>
@@ -165,7 +165,7 @@ debug: false
 <tr>
 <td>Downlink scheduling topic (pub)</td>
 <td><code>{application_id}/devices/{device_id}/downSchedule</code> the downlink as the first or last item in a downlink queue using &ldquo;schedule&rdquo; key value in the payload.</td>
-<td>Push downlink - <code>v3/{application id}@{tenant id}/devices/{device id}/down/pushReplace</code> downlink queue - <code>v3/{application id}@{tenant id}/devices/{device id}/down/replace</code></td>
+<td>Push downlink - <code>v3/{application id}@{tenant id}/devices/{device id}/down/push</code>,                                     Replace downlink queue - <code>v3/{application id}@{tenant id}/devices/{device id}/down/replace</code></td>
 </tr>
 </tbody>
 </table>
@@ -252,7 +252,7 @@ debug: false
 <tr>
 <td>Uplink Metadata</td>
 <td><code>metadata</code> - This object includes metadata</td>
-<td><code>uplink_message</code> - this object includes metadata</td>
+<td><code>uplink_message</code> - This object includes metadata</td>
 </tr>
 <tr>
 <td></td>
@@ -262,17 +262,17 @@ debug: false
 <tr>
 <td></td>
 <td><code>metadata.time</code> - Time when the server received the message</td>
-<td><code>uplink_message.received_at</code> - Server time when the Application Server received the message.</td>
+<td><code>uplink_message.received_at</code> - Server time when the Application Server received the message</td>
 </tr>
 <tr>
 <td></td>
 <td><code>metadata.frequency</code> - Frequency at which the message was sent</td>
-<td><code>uplink_message.settings.frequenc</code>y - Frequency (Hz).</td>
+<td><code>uplink_message.settings.frequency</code> - Frequency (Hz)</td>
 </tr>
 <tr>
 <td></td>
 <td><code>metadata.modulation</code> - Modulation that was used - LORA or FSK</td>
-<td>Not available but as an alternative, modulation can be derived from settings.data_rate</td>
+<td>Not available but as an alternative, modulation can be derived from <code>settings.data_rate</code></td>
 </tr>
 <tr>
 <td></td>
@@ -287,7 +287,7 @@ debug: false
 <tr>
 <td></td>
 <td><code>metadata.coding_rate</code> - Coding rate that was used</td>
-<td><code>uplink_message.settings.coding_rate</code> - LoRa coding rate.</td>
+<td><code>uplink_message.settings.coding_rate</code> - LoRa coding rate</td>
 </tr>
 <tr>
 <td></td>
@@ -332,7 +332,7 @@ debug: false
 <tr>
 <td></td>
 <td>Not available in documentation</td>
-<td><code>uplink_message.session_key_id</code> - Join Server issued identifier for the session keys used by this uplink.</td>
+<td><code>uplink_message.session_key_id</code> - Join Server issued identifier for the session keys used by this uplink</td>
 </tr>
 <tr>
 <td></td>
@@ -340,7 +340,7 @@ debug: false
 <td></td>
 </tr>
 <tr>
-<td>common fields</td>
+<td>Common fields</td>
 <td><code>app_id</code></td>
 <td><code>end_device_ids.application_ids.application_id</code></td>
 </tr>
@@ -356,7 +356,7 @@ debug: false
 </tr>
 <tr>
 <td></td>
-<td><code>confirmed</code> - is set to true if this message was a confirmed message</td>
+<td><code>confirmed</code> - Is set to true if this message was a confirmed message</td>
 <td>Not available in documentation</td>
 </tr>
 <tr>
@@ -419,12 +419,12 @@ debug: false
 <tr>
 <td></td>
 <td><code>schedule</code></td>
-<td>replace and push topics are available as an alternative</td>
+<td>Replace and push topics are available as an alternative</td>
 </tr>
 <tr>
 <td></td>
 <td>Not available</td>
-<td><code>priority</code> - if you do not specify a priority, the default priority LOWEST is used. You can specify LOWEST, LOW, BELOW_NORMAL, NORMAL, ABOVE_NORMAL, HIGH and HIGHEST</td>
+<td><code>priority</code> - If you do not specify a priority, the default priority LOWEST is used. You can specify LOWEST, LOW, BELOW_NORMAL, NORMAL, ABOVE_NORMAL, HIGH and HIGHEST.</td>
 </tr>
 <tr>
 <td></td>
@@ -487,10 +487,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Aggelos Kolaitis on 30 Sep 2020.
+  Last changed by Nejra on 21 Oct 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3863a4396f614a8414907b8ae9013c48f9b7977e">
-      doc: Document uplink message consumed airtime and location fields
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3b3b07d795e1ca2f908bdc3196e968a5485c000c">
+      doc: Improving docs readability
     </a>
 </p>
 

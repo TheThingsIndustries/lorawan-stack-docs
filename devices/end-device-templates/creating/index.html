@@ -133,7 +133,7 @@ debug: false
 <h2 id="create-from-existing-device">Create from existing device</h2>
 <p>You can use the <code>end-device template create</code> command to create a template from an existing device.</p>
 <blockquote>
-<p>Note: By default, <code>end-device template create</code> strips the device&rsquo;s application ID, device ID, <code>JoinEUI</code>, <code>DevEUI</code> and server addresses to create a generic template.</p>
+<p><strong>Note</strong>: By default, <code>end-device template create</code> strips the device&rsquo;s application ID, device ID, <code>JoinEUI</code>, <code>DevEUI</code> and server addresses to create a generic template.</p>
 <p>You can include the end device identifiers by passing the concerning flags: <code>--application-id</code>, <code>--device-id</code>, <code>--join-eui</code> and <code>--dev-eui</code>.</p>
 </blockquote>
 <p>Pipe the output from getting a device to create a template, for example:</p>
@@ -141,7 +141,7 @@ debug: false
 </span><span class="se"></span>  --lorawan-version <span class="se">\
 </span><span class="se"></span>  --lorawan-phy-version <span class="se">\
 </span><span class="se"></span>  <span class="p">|</span> ttn-lw-cli end-devices template create &gt; template.json
-</code></pre></div><p>Output:</p>
+</code></pre></div><details><summary>Output</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;end_device&#34;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -161,12 +161,13 @@ debug: false
     <span class="p">]</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><h2 id="extend-existing-template">Extend existing template</h2>
+</code></pre></div></details>
+<h2 id="extend-existing-template">Extend existing template</h2>
 <p>Use the <code>end-device template extend</code> command to extend a template:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ cat template.json <span class="se">\
 </span><span class="se"></span>  <span class="p">|</span> ttn-lw-cli end-devices template extend <span class="se">\
 </span><span class="se"></span>  --frequency-plan-id EU_863_870
-</code></pre></div><p>Output:</p>
+</code></pre></div><details><summary>Output</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;end_device&#34;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -190,7 +191,8 @@ debug: false
     <span class="p">]</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><p>See <code>$ ttn-lw-cli end-devices template extend --help</code> for all the fields that can be set.</p>
+</code></pre></div></details>
+<p>See <code>$ ttn-lw-cli end-devices template extend --help</code> for all the fields that can be set.</p>
 <h2 id="create-from-scratch">Create from scratch</h2>
 <p>The <code>end-device template extend</code> can also be used to create a new template from scratch by simply not piping an existing device as input.</p>
 <p>For example, create a new template from scratch:</p>
@@ -198,7 +200,7 @@ debug: false
 </span><span class="se"></span>  --lorawan-version 1.0.3 <span class="se">\
 </span><span class="se"></span>  --lorawan-phy-version 1.0.3-a <span class="se">\
 </span><span class="se"></span>  --frequency-plan-id EU_863_870
-</code></pre></div><p>Output:</p>
+</code></pre></div><details><summary>Output</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;end_device&#34;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -222,7 +224,8 @@ debug: false
     <span class="p">]</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div></details>
+
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -269,10 +272,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Aggelos Kolaitis on 22 Jul 2020.
+  Last changed by Nejra on 21 Oct 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/6234f0ee6a896bbffe6aeb5c7650423eb5b6aa4f">
-      doc: Use canonical CLI command names in documentation pages
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3b3b07d795e1ca2f908bdc3196e968a5485c000c">
+      doc: Improving docs readability
     </a>
 </p>
 

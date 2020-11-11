@@ -106,7 +106,8 @@ debug: false
 
 <div class="content">
 
-<p>The <strong>Cisco Wireless Gateway for LoRaWAN</strong> technical specifications can be found in <a href="https://www.cisco.com/c/en/us/products/routers/wireless-gateway-lorawan/">Cisco&rsquo;s official documentation</a>. This page guides you to connecting the gateway to The Things Stack.</p>
+<p>This page guides you to connecting the Cisco Wireless Gateway for LoRaWAN to The Things Stack.</p>
+<p>Technical specifications for this gateway can be found in <a href="https://www.cisco.com/c/en/us/products/routers/wireless-gateway-lorawan/">Cisco&rsquo;s official documentation</a>.</p>
 <p><img src="cisco.jpg" alt="Cisco LoRaWAN Gateway"></p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
@@ -118,7 +119,7 @@ debug: false
 <p>Create a gateway by following the instructions for the <a href="https://thethingsstack.io/getting-started/console/#create-gateway">Console</a> or the <a href="https://thethingsstack.io/getting-started/cli/#create-gateway">CLI</a>.</p>
 <p>The <strong>EUI</strong> is derived from the <strong>MAC_ADDRESS</strong> that can be found on the back panel of the gateway. To get the EUI from the MAC_ADDRESS insert <code>FFFE</code> <strong>after the first 6 characters</strong> to make it a 64bit EUI.</p>
 <blockquote>
-<p>Note: If your <strong>MAC_ADDRESS</strong> is <code>5B:A0:CB:80:04:2B</code> then the <strong>EUI</strong> is <code>5B A0 CB FF FE 80 04 2B</code>.</p>
+<p><strong>Note:</strong> If your <strong>MAC_ADDRESS</strong> is <code>5B:A0:CB:80:04:2B</code> then the <strong>EUI</strong> is <code>5B A0 CB FF FE 80 04 2B</code>.</p>
 </blockquote>
 <p>The <strong>Gateway Server Address</strong> is the same as what you use instead of <code>thethings.example.com</code> in the <a href="https://thethingsstack.io/getting-started/">Getting Started guide</a>.</p>
 <h2 id="configuration">Configuration</h2>
@@ -126,7 +127,7 @@ debug: false
 <p>If you are using MacOS or Linux, connect to the Gateway by opening a terminal and a executing the following commands:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ls /dev/tty.usb*
 </code></pre></div><blockquote>
-<p>Note: This displays the list of available USB serial devices.</p>
+<p><strong>Note:</strong> This displays the list of available USB serial devices.</p>
 </blockquote>
 <p>Once you have found the one matching the Cisco console, connect using the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ screen /dev/tty.usbserial-AO001X6M <span class="m">115200</span>
@@ -151,7 +152,7 @@ Gateway# copy running-config startup-config
 </code></pre><p>You can test your Internet configuration with the <code>ping</code> command, for example ping Google&rsquo;s DNS server</p>
 <pre><code>Gateway# ping ip 8.8.8.8
 </code></pre><blockquote>
-<p>Note: To see more information about the gateway&rsquo;s IP and the network, you can use
+<p><strong>Note:</strong> To see more information about the gateway&rsquo;s IP and the network, you can use
 <code>show interfaces FastEthernet 0/1</code>
 <code>show ip interfaces FastEthernet 0/1</code> or
 <code>show ip route</code>.</p>
@@ -176,7 +177,7 @@ Gateway(config)# exit
 Gateway(config)# gps ubx enable
 Gateway(config)# exit
 </code></pre><blockquote>
-<p>Note: This command may return the message <code>packet-forwarder firmware is not installed</code>, this message can be ignored.</p>
+<p><strong>Note:</strong> This command may return the message <code>packet-forwarder firmware is not installed</code>, this message can be ignored.</p>
 </blockquote>
 <h4 id="enable-radio">Enable Radio</h4>
 <p>As a final step before setting up the packet forwarder software, we&rsquo;re going to <strong>enable the radio</strong>. You can see radio information with the <code>show radio</code> command:</p>
@@ -198,7 +199,7 @@ on
 Gateway(config)# no radio off
 Gateway(config)# exit
 </code></pre><blockquote>
-<p>Note: The <code>show radio</code> command also shows you more information about the LoRa concentrator powering the gateway. For example, <strong>LORA_SKU</strong> indicates the base frequency of the concentrator.</p>
+<p><strong>Note:</strong> The <code>show radio</code> command also shows you more information about the LoRa concentrator powering the gateway. For example, <strong>LORA_SKU</strong> indicates the base frequency of the concentrator.</p>
 </blockquote>
 <h4 id="enable-authentication">Enable Authentication</h4>
 <p>To prevent unauthorized access to the gateway, you&rsquo;ll want to set up user authentication. The Cisco gateway has a <strong>secret</strong> system, that requires users to enter a secret to access privileged commands.</p>
@@ -244,11 +245,11 @@ The Gateway Configuration Server can be used to retrieve a proper <code>global_c
 <p>Now that we know the packet forwarder is running, let&rsquo;s make it run automatically. Use this command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">bash-3.2# vi /etc/init.d/S60pkt_forwarder
 </code></pre></div><blockquote>
-<p>Note: Press the <code>i</code> key on your keyboard to start insert mode. Once finished editing, press <code>ESC</code> and enter <code>:wq</code> to write the file and quit.</p>
+<p><strong>Note:</strong> Press the <code>i</code> key on your keyboard to start insert mode. Once finished editing, press <code>ESC</code> and enter <code>:wq</code> to write the file and quit.</p>
 </blockquote>
 <p>Then copy paste the code below.</p>
 <blockquote>
-<p>Note: Replace <code>things.example.com</code> with the name of your network after <code>nslookup</code>.</p>
+<p><strong>Note:</strong> Replace <code>things.example.com</code> with the name of your network after <code>nslookup</code>.</p>
 </blockquote>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">SCRIPT_DIR</span><span class="o">=</span>/etc/pktfwd
 <span class="nv">SCRIPT</span><span class="o">=</span><span class="nv">$SCRIPT_DIR</span>/pkt_forwarder
@@ -313,11 +314,10 @@ restart<span class="o">()</span> <span class="o">{</span>
 <p>If the gateway does not connect to the The Things Stack after a few minutes, you can check the <strong>log file</strong> to see if the packet forwarder started properly.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">bash-3.2# tail -100 var/log/pkt_forwarder.log
 </code></pre></div><blockquote>
-<p>Note: GPS warnings may appear, this means the packet forwarder started.</p>
+<p><strong>Note:</strong> GPS warnings may appear, this means the packet forwarder started.</p>
 </blockquote>
 <p>If the radio failed to start, disconnect and reconnect the power supply to power-cycle the gateway.</p>
 <p>For further information and troubleshooting, have a look at <a href="https://www.cisco.com/c/en/us/td/docs/routers/interface-module-lorawan/software/configuration/guide/b_lora_scg.pdf">Cisco&rsquo;s Configuration Guide</a>.</p>
-
 </div>
 
 
@@ -368,10 +368,10 @@ restart<span class="o">()</span> <span class="o">{</span>
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 13 Aug 2020.
+  Last changed by Nejra on 21 Oct 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/99c308bf0a90bb0c240d26626038ff4864a314ad">
-      doc: Add udp packet forwarder doc
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3b3b07d795e1ca2f908bdc3196e968a5485c000c">
+      doc: Improving docs readability
     </a>
 </p>
 

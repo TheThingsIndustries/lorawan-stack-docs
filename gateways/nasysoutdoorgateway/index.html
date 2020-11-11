@@ -106,7 +106,8 @@ debug: false
 
 <div class="content">
 
-<p>NASys LoRaWAN Outdoor Gateway is an 8 Channel LoRaWAN gateway, whose technical specifications can be found in <a href="https://www.nasys.no/product/lorawan-gateway/">the official product page</a>. This page guides you to connect it to The Things Stack.</p>
+<p>This page guides you to connect NASys LoRaWAN Outdoor Gateway to The Things Stack.</p>
+<p>NASys LoRaWAN Outdoor Gateway is an 8 Channel LoRaWAN gateway, whose technical specifications can be found in <a href="https://www.nasys.no/product/lorawan-gateway/">the official product page</a>.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
 <li>User account on The Things Stack with rights to create Gateways.</li>
@@ -131,21 +132,18 @@ $ systemctl restart nas_lgw
 <p>If you still have trouble connecting to The Things Stack, then try editing the <code>gateway_conf</code> section:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ vi /opt/nas-lgw/global_conf.json
 </code></pre></div><p>Edit the server parameters:</p>
-<ol>
+<ul>
 <li><strong>gateway_ID</strong>: Make sure this is the same as the GatewayEUI (in lowercase).</li>
 <li><strong>server_address</strong>: Address of the Gateway Server. If you followed the <a href="https://thethingsstack.io/getting-started/">Getting Started guide</a> this is the same as what you use instead of <code>thethings.example.com</code>.</li>
 <li><strong>serv_port_up</strong>: UDP upstream port of the Gateway Server, typically 1700.</li>
 <li><strong>serv_port_down</strong>: UDP downstream port of the Gateway Server, typically 1700.</li>
-</ol>
+</ul>
 <p>You can access the gateway system logs using journalctl. See <code>journalctl --help</code> for details</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ journalctl -f -u nas_lgw -n <span class="m">1000</span>
 </code></pre></div><blockquote>
 <p><strong>IMPORTANT NOTE</strong>: The gateway logs will rotate when they reach about 15M in size, which means that you will generally not be able to access very old logs. At times of dense traffic (e.g. ~1000s of devices) this typically means that you will only have logs for 2-3 hours. If you want to keep historical data (for whatever reason), then you will have to forward the logs to an external server. If you decide to do so, then <code>netcat</code> may be useful:</p>
-</blockquote>
-<blockquote>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ journalctl -f <span class="p">|</span> nc server-hostname server-port
 </code></pre></div></blockquote>
-
 </div>
 
 
@@ -196,10 +194,10 @@ $ systemctl restart nas_lgw
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 13 Aug 2020.
+  Last changed by Nejra on 21 Oct 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/99c308bf0a90bb0c240d26626038ff4864a314ad">
-      doc: Add udp packet forwarder doc
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3b3b07d795e1ca2f908bdc3196e968a5485c000c">
+      doc: Improving docs readability
     </a>
 </p>
 

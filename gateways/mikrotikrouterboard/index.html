@@ -106,9 +106,11 @@ debug: false
 
 <div class="content">
 
-<p>MikroTik Routerboard wAP LoRa8 kit is a LoRaWAN gateway that contains a pre-installed UDP packet forwarder and an outdoor weatherproof wireless access point with 2.4 GHz WLAN interface and Ethernet port that could be used as a backend. It&rsquo;s technical specifications can be found in <a href="https://mikrotik.com/product/wap_lora8_kit">the official documentation</a>.</p>
+<p>MikroTik Routerboard wAP LoRa8 kit is a LoRaWAN gateway that contains a pre-installed UDP packet forwarder and an outdoor weatherproof wireless access point with 2.4 GHz WLAN interface and Ethernet port that could be used as a backend.</p>
+<p>This guide shows how to connect this gateway to The Things Stack.</p>
+<p>Its technical specifications can be found in <a href="https://mikrotik.com/product/wap_lora8_kit">the MikroTik official documentation</a>.</p>
 <blockquote>
-<p>Note: This gateway does not currently support changing Frequency Plans.</p>
+<p><strong>Note:</strong> This gateway does not currently support changing Frequency Plans.</p>
 </blockquote>
 <p>There are multiple interfaces to configure the gateway parameters. This page guides you to connect it to The Things Stack using a web browser or the <a href="https://mikrotik.com/mobile_app">MikroTik Mobile App</a> for Android/iOS.</p>
 <h2 id="physical-connections">Physical Connections</h2>
@@ -122,10 +124,10 @@ debug: false
 <ol>
 <li>User account on The Things Stack with rights to create Gateways.</li>
 <li>MikroTik Routerboard wAP LoRa8 kit connected via ethernet.</li>
-<li>A web browser (see section <a href="#configuration-via-browser"><strong>Configuration via Browser</strong></a>), or the <a href="https://mikrotik.com/mobile_app">MikroTik Mobile App</a> installed on a smartphone (see section <a href="#configuration-via-app"><strong>Configuration via App</strong></a>)</li>
+<li>A web browser (see section <a href="#configuration-via-browser">Configuration via Browser</a>), or the <a href="https://mikrotik.com/mobile_app">MikroTik Mobile App</a> installed on a smartphone (see section <a href="#configuration-via-app">Configuration via App</a>).</li>
 </ol>
 <h2 id="registration">Registration</h2>
-<p>Create a gateway by following <a href="https://thethingsstack.io/gateways/adding-gateways/">the instructions</a>. The <strong>EUI</strong> of the gateway can be found on the back panel of the gateway under the field <strong>GW ID</strong>.</p>
+<p>Create a gateway by following the instructions for <a href="https://thethingsstack.io/gateways/adding-gateways/">Adding Gateways</a>. The <strong>EUI</strong> of the gateway can be found on the back panel of the gateway under the field <strong>GW ID</strong>.</p>
 <h2 id="configuration-via-browser">Configuration via Browser</h2>
 <p>The MikroTik Routerboard exposes a WiFi Access Point (AP) with SSID <code>MikroTik-xxxxxx</code>, where <code>xxxxxx</code> are the last 6 digits of the device&rsquo;s MAC Address (printed on the sticker of the box, under <strong>W01</strong>).</p>
 <p>Connect to this AP. By default, there&rsquo;s no password.</p>
@@ -136,12 +138,12 @@ debug: false
 <p>From the top menu, select the <strong>Servers</strong> Tab and press the <strong>Add New</strong> button.</p>
 <p><img src="servers.png" alt="Servers"></p>
 <p>Edit the server parameters.</p>
-<ol>
+<ul>
 <li><strong>Name</strong>: A distinct name</li>
 <li><strong>Address</strong>: Address of the Gateway Server. If you followed the <a href="https://thethingsstack.io/getting-started/">Getting Started guide</a> this is the same as what you use instead of <code>thethings.example.com</code>.</li>
 <li><strong>Up port</strong>: UDP upstream port of the Gateway Server, typically <code>1700</code>.</li>
 <li><strong>Down port</strong>: UDP downstream port of the Gateway Server, typically <code>1700</code>.</li>
-</ol>
+</ul>
 <p>Press <strong>OK</strong> to save the parameters.</p>
 <p><img src="parameters.png" alt="Server Parameters"></p>
 <p>From the top menu, select the <strong>Devices Tab</strong>. Click the <strong>Gateway ID</strong> to configure it.</p>
@@ -183,12 +185,12 @@ debug: false
 
 <p>Back in the <strong>LoRa</strong> section, select the <strong>Servers</strong> section. Select the <strong>+</strong> button to add a new server.</p>
 <p>Edit the server parameters.</p>
-<ol>
+<ul>
 <li><strong>Name</strong>: A distinct name</li>
 <li><strong>Address</strong>: Address of the Gateway Server. If you followed the <a href="https://thethingsstack.io/getting-started/">Getting Started guide</a> this is the same as what you use instead of <code>thethings.example.com</code>.</li>
 <li><strong>Up port</strong>: UDP upstream port of the Gateway Server, typically <code>1700</code>.</li>
 <li><strong>Down port</strong>: UDP downstream port of the Gateway Server, typically <code>1700</code>.</li>
-</ol>
+</ul>
 <p>Now back in the <strong>LoRa</strong> section, select <strong>Devices</strong> and select the <strong>LoRa Device</strong>. Click on <strong>Network Servers</strong> and select the server based on the name in the previous step.</p>
 <p>Go back and click on the device and enable it.</p>
 <figure>
@@ -200,7 +202,6 @@ debug: false
 <h2 id="troubleshooting">Troubleshooting</h2>
 <p>If the gateway does not connect to The Things Stack after a few minutes, disconnect and reconnect the power supply to power-cycle the gateway. The traffic packets can be observed by going to <strong>LoRa</strong> &gt; <strong>Traffic</strong> to check if the gateway is seeing traffic (Rx/Tx) packets.</p>
 <p>If no WiFi Access Point is found by the gateway, hold the <strong>Reset</strong> button for 5 seconds during boot time. This will reset the router OS configuration.</p>
-
 </div>
 
 
@@ -251,10 +252,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 21 Sep 2020.
+  Last changed by Nejra on 21 Oct 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3459237237abaaeb07a0d27a14ada3adba71022a">
-      doc: Add pierre styles
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3b3b07d795e1ca2f908bdc3196e968a5485c000c">
+      doc: Improving docs readability
     </a>
 </p>
 

@@ -138,34 +138,35 @@ debug: false
 <p>The Packet Broker enables peering between networks, so traffic received by one network (e.g. the Public Community Network) but intended for a different network (The Things Stack) can be forwarded to and from that network. See the <a href="https://thethingsstack.io/integrations/peering/">Peering Guide</a> for details on Packet Broker and how to enable it for your network.</p>
 <p>With Packet Broker enabled on both The Things Stack and The Things Network Stack V2, you can receive traffic on The Things Stack without having to re-configure any of your gateways.</p>
 <blockquote>
-<p><strong>NOTE</strong>: Packet Broker is only enabled on The Things Network Public Community Network and The Things Industries Cloud Hosted.</p>
+<p><strong>Note:</strong> Packet Broker is only enabled on The Things Network Public Community Network and The Things Industries Cloud Hosted.</p>
 </blockquote>
 <p>For private The Things Stack deployments with Packet Broker disabled, you will need to re-configure your gateways to connect to The Things Stack, so that you can start receiving traffic from your end devices.</p>
 <p>In order to connect a gateway to The Things Stack, follow instructions for <a href="https://thethingsstack.io/gateways/adding-gateways/">Adding Gateways</a>. Then, reconfigure the gateway to connect to The Things Stack, and regenerate its API key (if required).</p>
 <p>Also see <a href="https://thethingsstack.io/gateways/">Gateways</a> for instructions on configuring popular LoRaWAN gateways with The Things Stack.</p>
 <h2 id="application-data">Application Data</h2>
 <p>The Things Stack uses a different data format for uplink and downlink traffic than The Things Network Stack V2.</p>
-<p>For details on the data format of The Things Network Stack V2, see the documentation from <a href="https://www.thethingsnetwork.org/docs/applications/mqtt/api.html">The Things Network</a>.</p>
-<p>For details on the data format of The Things Stack, see the documentation in <a href="https://thethingsstack.io/integrations/data-formats/">Data Formats</a>. It uses a different schema, different names, and has much richer metadata support.</p>
-<p><strong>When migrating to The Things Stack, ensure your application can properly handle the new The Things Stack data format.</strong></p>
+<p>For details on the data format of The Things Network Stack V2, see <a href="https://www.thethingsnetwork.org/docs/applications/mqtt/api.html">The Things Network API Reference</a>.</p>
+<p>For details on the data format of The Things Stack, see the <a href="https://thethingsstack.io/integrations/data-formats/">Data Formats</a> section. It uses a different schema, different names, and has much richer metadata support.</p>
+<blockquote>
+<p><strong>Note:</strong> When migrating to The Things Stack, ensure your application can properly handle the new The Things Stack data format.</p>
+</blockquote>
 <h3 id="payload-formats">Payload Formats</h3>
 <p>The Things Network Stack V2 has support for payload decoders, converters, validators (for uplink) and encoders (for downlink). These can be either CayenneLPP or Javascript functions.</p>
 <p>The Things Stack has support for an uplink payload formatter (similar to the payload decoder) and a downlink payload formatter (similar to the payload encoder). These can be set per application, and can even be overridden per end device. Similar to The Things Network Stack V2, CayenneLPP and Javascript functions are supported.</p>
 <p>Migrating the The Things Network Stack V2 payload encoder and decoder to an uplink and downlink payload formatter should be straightforward. See <a href="https://thethingsstack.io/integrations/payload-formatters/">Payload Formatters</a> for more details.</p>
 <h3 id="integrations">Integrations</h3>
-<p><a href="https://thethingsstack.io/integrations/">Read about the Integrations supported by The Things Stack</a>.</p>
+<p>Read about the integrations supported by The Things Stack in the <a href="https://thethingsstack.io/integrations/">Integrations</a> section.</p>
 <h4 id="mqtt-traffic">MQTT Traffic</h4>
-<p>You will need to change the MQTT server your application connects to. The Things Stack has a new MQTT server address. You will also need to create API keys and update your MQTT credentials accordingly.</p>
-<p>Read more on <a href="https://thethingsstack.io/integrations/mqtt/">MQTT Server</a>.</p>
+<p>You will need to change the MQTT server your application connects to. The Things Stack has a new MQTT server address, so you will also need to create new API keys and update your MQTT credentials accordingly.</p>
+<p>Read more in the <a href="https://thethingsstack.io/integrations/mqtt/">MQTT Server</a> section.</p>
 <h4 id="webhooks">Webhooks</h4>
-<p>The HTTP Integration is now called HTTP Webhooks. The payload format, downlink endpoints, paths and security settings have changed.</p>
-<p>Read more on <a href="https://thethingsstack.io/integrations/webhooks/">HTTP Webhooks</a>.</p>
+<p>The HTTP Integration is now called HTTP Webhooks. The payload format, downlink endpoints, paths and security settings have changed, so make sure to read more in the <a href="https://thethingsstack.io/integrations/webhooks/">HTTP Webhooks</a> section.</p>
 <h4 id="storage-integration">Storage Integration</h4>
-<p>The Things Stack does not currently support a Storage integration similar to The Things Network Stack V2. This feature will be added in a future release.</p>
+<p>The Things Stack does not currently support a Storage integration similar to The Things Network Stack V2, but this feature will be added in a future release.</p>
 <h2 id="suggested-migration-process">Suggested Migration Process</h2>
-<p><strong>First</strong>: Update applications to support the The Things Stack data format. If you are using payload formatters, make sure to set them correctly from the Application settings page.</p>
-<p><strong>Second</strong>: Follow this guide in order to migrate a single end device (and gateway, if needed) to The Things Stack. Continue by gradually migrating your end devices in small batches. Avoid migrating production workloads before you are certain that they will work as expected.</p>
-<p><strong>Finally</strong>: Once you are confident that your end devices are working properly, migrate the rest of your devices and gateways to The Things Stack.</p>
+<p><strong>Step 1:</strong> Update applications to support the The Things Stack data format. If you are using payload formatters, make sure to set them correctly from the Application settings page.</p>
+<p><strong>Step 2:</strong> Follow this guide in order to migrate a single end device (and gateway, if needed) to The Things Stack. Continue by gradually migrating your end devices in small batches. Avoid migrating production workloads before you are certain that they will work as expected.</p>
+<p><strong>Step 3:</strong> Once you are confident that your end devices are working properly, migrate the rest of your devices and gateways to The Things Stack.</p>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -212,10 +213,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Aggelos Kolaitis on 31 Aug 2020.
+  Last changed by Nejra on 21 Oct 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2c45294b3aa8b074dbe52e081005ea6835327ca5">
-      doc: Link to Payload Formatters documentation
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3b3b07d795e1ca2f908bdc3196e968a5485c000c">
+      doc: Improving docs readability
     </a>
 </p>
 

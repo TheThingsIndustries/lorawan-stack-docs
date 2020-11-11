@@ -139,18 +139,18 @@ debug: false
 </code></pre></div><p>Alternatively, you can export all the end devices with a single command and save them in <code>all-devices.json</code>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttnctl devices export-all --frequency-plan-id EU_863_870 &gt; all-devices.json
 </code></pre></div><blockquote>
-<p><strong>NOTE</strong>: In the command above we used the <code>EU_863_870</code> frequency plan. You will need to change this to the frequency plan corresponding to your region. See <a href="https://thethingsstack.io/reference/frequency-plans/">Frequency Plans</a> for a list of supported Frequency Plans and their respective IDs.</p>
+<p><strong>Note:</strong> Change <code>EU_863_870</code> frequency plan from the command above to the frequency plan corresponding to your region. See <a href="https://thethingsstack.io/reference/frequency-plans/">Frequency Plans</a> for a list of supported Frequency Plans and their respective IDs.</p>
 </blockquote>
 <blockquote>
-<p><strong>NOTE</strong>: Keep in mind that an end device can only be registered in one Network Server at a time. After importing an end device to The Things Stack, you should remove it from The Things Network Stack V2. For OTAA devices, it is enough to simply change the AppKey, so the device can no longer join but the existing session is preserved. Next time the device joins, the activation will be handled by The Things Stack.</p>
+<p><strong>Note:</strong> Keep in mind that an end device can only be registered in one Network Server at a time. After importing an end device to The Things Stack, you should remove it from The Things Network Stack V2. For OTAA devices, it is enough to simply change the AppKey, so the device can no longer join but the existing session is preserved. Next time the device joins, the activation will be handled by The Things Stack.</p>
 </blockquote>
 <h3 id="disable-exported-end-devices-on-v2">Disable Exported End Devices on V2</h3>
 <p>After exporting, make sure to clear the AppKey of your OTAA devices. This can be achieved with the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttnctl devices convert-to-abp <span class="s2">&#34;device-id&#34;</span> --save-to-attribute <span class="s2">&#34;original-app-key&#34;</span>
-</code></pre></div><p>There is also a convenience command to clear all your devices at once:</p>
+</code></pre></div><p>There is also a convenience command to clear all of your devices at once:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttnctl devices convert-all-to-abp --save-to-attribute <span class="s2">&#34;original-app-key&#34;</span>
 </code></pre></div><blockquote>
-<p><strong>NOTE</strong>: The AppKey of each device will be printed on the standard output, and stored as a device attribute (with name <code>original-app-key</code>). You can retrieve the device attributes with <code>ttnctl devices info &quot;device-id&quot;</code>.</p>
+<p><strong>Note:</strong> The AppKey of each device will be printed on the standard output, and stored as a device attribute (with name <code>original-app-key</code>). You can retrieve the device attributes with <code>ttnctl devices info &quot;device-id&quot;</code>.</p>
 </blockquote>
 
 </div>
@@ -199,10 +199,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by laurensslats on 27 Aug 2020.
+  Last changed by Nejra on 21 Oct 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/14d1941892182c59f74035284fb8e72278d0b4e0">
-      doc: Update migration doc with import feature
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3b3b07d795e1ca2f908bdc3196e968a5485c000c">
+      doc: Improving docs readability
     </a>
 </p>
 

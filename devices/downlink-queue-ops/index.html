@@ -107,7 +107,7 @@ debug: false
 <div class="content">
 
 <p>The Things Stack keeps a queue of downlink messages per device. Applications can keep pushing downlink messages or replace the queue with a list of downlink messages.</p>
-<p>You can schedule downlink using the CLI, MQTT or HTTP webhooks.</p>
+<p>You can schedule a downlink using the CLI, MQTT or HTTP webhooks.</p>
 <p>This guide shows how to interact with the downlink queue from the command-line interface (CLI).</p>
 <div class="notification is-primary">
   <h3 class="has-text-light">Command-line interface only</h3>
@@ -117,14 +117,14 @@ debug: false
   </div>
 </div>
 
-<p>If there are more application downlink messages in the queue, the Network Server sets the LoRaWAN <code>FPending</code> bit to indicate end devices that there is more downlink available. In class A downlink, this typically triggers the device to send an uplink message to receive the downlink message. In class C, the Network Server automatically transmits all queued downlink messages.</p>
+<p>If there are more application downlink messages in the queue, the Network Server sets the LoRaWAN <code>FPending</code> bit to indicate end devices that there is more downlinks available. In class A downlink, this typically triggers the device to send an uplink message to receive the downlink message. In class C, the Network Server automatically transmits all queued downlink messages.</p>
 <h2 id="push-and-replace-downlink-queue">Push and replace downlink queue</h2>
 <p>To push downlink to the end of the queue:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices downlink push app1 dev1 <span class="se">\
 </span><span class="se"></span>  --frm-payload <span class="m">01020304</span> <span class="se">\
 </span><span class="se"></span>  --priority NORMAL
   --f-port <span class="m">42</span>
-</code></pre></div><p>You must pass an <code>FPort</code> with <code>--f-port</code>. Confirmed downlinks can be set using <code>--confirmed</code>.</p>
+</code></pre></div><p>You must pass an <code>FPort</code> with the <code>--f-port</code> flag. Confirmed downlinks can be set using <code>--confirmed</code>.</p>
 <p>To replace the existing queue with a new item:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices downlink replace app1 dev1 <span class="se">\
 </span><span class="se"></span>  --frm-payload <span class="m">01020304</span> <span class="se">\
@@ -186,10 +186,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 21 Apr 2020.
+  Last changed by Nejra on 21 Oct 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/9431496d3eeb4f155032b53dd9a9abcdb0e49202">
-      doc: Move complex guides to device section
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3b3b07d795e1ca2f908bdc3196e968a5485c000c">
+      doc: Improving docs readability
     </a>
 </p>
 

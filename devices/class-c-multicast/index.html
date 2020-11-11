@@ -115,16 +115,16 @@ debug: false
 </code></pre></div><p>This will enable the Class C downlink scheduling of the device. That&rsquo;s it! Downlink messages are now scheduled as soon as possible.</p>
 <p>To disable Class C scheduling, reset with <code>--supports-class-c=false</code>.</p>
 <blockquote>
-<p>Note: Class C downlink scheduling starts when the end device confirms the session. This means that the device should send an uplink message after receiving the join-accept in order to enable Class C downlink scheduling.</p>
+<p><strong>Note:</strong> Class C downlink scheduling starts when the end device confirms the session. This means that the device should send an uplink message after receiving the join-accept in order to enable Class C downlink scheduling.</p>
 </blockquote>
 <h2 id="class-c-message-settings">Class C message settings</h2>
 <p>The Things Stack supports optional settings for Class C downlink messages: the downlink path and the time to send the message.</p>
-<p>The downlink path is defined by one or more gateways IDs. The Network Server and Gateway Server schedules only on the specified gateways in the specified order. This is useful for multicast (where no downlink path is known because there is no uplink). A scheduling attempt on can fail when the gateway is not connected, if there is a scheduling conflict or if duty-cycle regulations prohibit transmission. See the <a href="#example">Example</a> below.</p>
-<p>The time to transmit is an absolute timestamp in ISO 8601 format to send the message. This requires gateways either with GPS lock, or gateways that use a protocol that provide round-trip times (RTT). See the <a href="#example">Example</a> below.</p>
+<p>The downlink path is defined by one or more gateways IDs. The Network Server and Gateway Server schedules only on the specified gateways in the specified order. This is useful for multicast (where no downlink path is known because there is no uplink). A scheduling attempt on can fail when the gateway is not connected, if there is a scheduling conflict or if duty-cycle regulations prohibit transmission. See the <a href="#example">Example</a> section below.</p>
+<p>The time to transmit is an absolute timestamp in ISO 8601 format to send the message. This requires gateways either with GPS lock, or gateways that use a protocol that provide round-trip times (RTT). See the <a href="#example">Example</a> section below.</p>
 <h2 id="multicast-group">Multicast group</h2>
 <p>It is also possible to create a multicast group to send a Class C downlink message to a group of end devices. A multicast group is a virtual ABP device (i.e. shared session keys), does not support uplink, confirmed downlink nor MAC commands.</p>
 <p>When creating a device, you can specify in the Console and CLI whether it&rsquo;s a multicast group.</p>
-<p>CLI Example:</p>
+<p>CLI example:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices create app1 mc1 <span class="se">\
 </span><span class="se"></span>  --frequency-plan-id EU_863_870 <span class="se">\
 </span><span class="se"></span>  --lorawan-version 1.0.3 <span class="se">\
@@ -135,10 +135,10 @@ debug: false
 </span><span class="se"></span>  --multicast <span class="se">\
 </span><span class="se"></span>  --supports-class-c
 </code></pre></div><blockquote>
-<p>Note: A multicast group cannot be converted to a normal unicast device or the other way around.</p>
+<p><strong>Note:</strong> A multicast group cannot be converted to a normal unicast device or the other way around.</p>
 </blockquote>
 <blockquote>
-<p>Note: Since multicast does not support uplink, the Network Server does not know a downlink path. Therefore, you need to specify a downlink path when scheduling downlink message.</p>
+<p><strong>Note:</strong> Since multicast does not support uplink, the Network Server does not know a downlink path. Therefore, you need to specify a downlink path when scheduling downlink message.</p>
 </blockquote>
 <h2 id="example">Example</h2>
 <div class="notification is-primary">
@@ -233,10 +233,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Aggelos Kolaitis on 22 Jul 2020.
+  Last changed by Nejra on 21 Oct 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/6234f0ee6a896bbffe6aeb5c7650423eb5b6aa4f">
-      doc: Use canonical CLI command names in documentation pages
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3b3b07d795e1ca2f908bdc3196e968a5485c000c">
+      doc: Improving docs readability
     </a>
 </p>
 

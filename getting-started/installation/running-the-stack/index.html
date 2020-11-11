@@ -129,7 +129,7 @@ debug: false
 </code></pre></div><p>The Things Stack Enterprise requires a tenant to be present, even if multi-tenancy is not included in the license. We now create this tenant:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack is-db create-tenant
 </code></pre></div><blockquote>
-<p>This will take the Tenant ID from the configuration.</p>
+<p><strong>Note:</strong> This will take the Tenant ID from the configuration.</p>
 </blockquote>
 <p>We&rsquo;ll now create an initial <code>admin</code> user. Make sure to give it a good password.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack is-db create-admin-user <span class="se">\
@@ -143,9 +143,9 @@ debug: false
 </span><span class="se"></span>  --no-secret <span class="se">\
 </span><span class="se"></span>  --redirect-uri <span class="s2">&#34;local-callback&#34;</span> <span class="se">\
 </span><span class="se"></span>  --redirect-uri <span class="s2">&#34;code&#34;</span>
-</code></pre></div><p>We do the same for the console.</p>
+</code></pre></div><p>We do the same for the Console.</p>
 <blockquote>
-<p>For <code>--secret</code>, make sure to enter the same value as you set for <code>console.oauth.client-secret</code> in the <a href="/getting-started/installation/configuration/">Configuration</a> step.</p>
+<p>For <code>--secret</code>, make sure to enter the same value as you set for <code>console.oauth.client-secret</code> in the <code>ttn-lw-stack-docker.yml</code> file in the <a href="/getting-started/installation/configuration/">Configuration</a> step.</p>
 </blockquote>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack is-db create-oauth-client <span class="se">\
 </span><span class="se"></span>  --id console <span class="se">\
@@ -208,10 +208,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Aggelos Kolaitis on 09 Nov 2020.
+  Last changed by Nejra on 21 Oct 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5ce2c5ad4763acc0a1f13b76170171d514957cf0">
-      doc: Add storage integration init step in Getting Started
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3b3b07d795e1ca2f908bdc3196e968a5485c000c">
+      doc: Improving docs readability
     </a>
 </p>
 
