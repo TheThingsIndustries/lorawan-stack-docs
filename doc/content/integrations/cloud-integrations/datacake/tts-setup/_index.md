@@ -4,26 +4,16 @@ description: ""
 weight: 2
 ---
 
-After finishing Datacake setup, make a Webhook integration on {{% tts %}} with these steps.
+After finishing Datacake setup, use the **Datacake** [Webhook template]({{< ref "/integrations/webhooks/webhook-templates" >}}) to create a Webhook integration on {{% tts %}}.
 
 <!--more-->
 
->Note: A **Datacake** Webhook template is now available to allow you to easily create this integration. If you want to create a **Custom webhook**, this guide can be helpful. Read more about these templates in the [Webhook templates]({{< ref "/integrations/webhooks/webhook-templates" >}}) page.
-
->Note: this section follows the [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}) guide. 
-
-Fill in the **Webhook ID** field and choose **JSON** for **Webhook format**. 
-
-Next, you need to add an **Authorization** header, whose value will consist of the word "Token" and your [API token](https://docs.datacake.de/api/generate-access-token) from Datacake.
-
-Per the **Webhook Settings** information that can be found in the **Configuration** tab on Datacake, set the **Base URL** value to `https://api.datacake.co/integrations/lorawan/tti/`.
+To integrate, you only need to fill out the **Webhook ID** field and provide an [API token](https://docs.datacake.de/api/generate-access-token) from Datacake for the authorization.
 
 {{< figure src="tts-datacake-webhook.png" alt="Datacake webhook" >}}
 
-Check the message types for which you want to enable this webhook.
-
->Note: The Datacake webhook template has the `Uplink message` type enabled by the default. 
+>**Note:** To see the values of all parameters of the Datacake integration, click on the integration after you created it with the Webhook template. 
 
 Once the setup is finished, you can navigate to device's **Debug** tab on Datacake, where you can see the incoming messages and manipulate or monitor your data.
 
-Check the official Datacake documentation to learn how to [decode the payload](https://docs.datacake.de/lorawan/payload-decoders) received from {{% tts %}}. 
+>**Note:** Check the official Datacake documentation to learn how to [decode the payload](https://docs.datacake.de/lorawan/payload-decoders) received from {{% tts %}}. 

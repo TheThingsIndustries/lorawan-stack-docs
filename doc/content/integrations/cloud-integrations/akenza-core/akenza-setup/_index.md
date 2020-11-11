@@ -30,4 +30,4 @@ Provide a **Name** for your device, select the previously created device type an
 
 {{< figure src="creating-device.png" alt="Creating a new device" >}}
 
-Once the device is created, select it in **Inventory** and scroll down to the bottom of the page. Under **Endpoints**, you will find the **HTTP Uplink URL** that you need for the Webhook integration.
+The device you created can be found in the **Inventory** on the left hand menu.
