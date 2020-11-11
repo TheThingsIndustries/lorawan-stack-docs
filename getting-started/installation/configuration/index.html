@@ -156,7 +156,10 @@ debug: false
 config/
 └── stack/
     └── ttn-lw-stack-docker.yml    <span class="c1"># configuration file for The Things Stack</span>
-</code></pre></div><h2 id="configure-docker">Configure Docker</h2>
+</code></pre></div><blockquote>
+<p><strong>Note:</strong> These example configuration files contain all of the configuration settings you need to run The Things Stack for development - just update the files with your server address. In the next sections, we will examine the settings in these files and provide tips for running The Things Stack in production.</p>
+</blockquote>
+<h2 id="configure-docker">Configure Docker</h2>
 <p>Docker runs an instance of The Things Stack, as well as an SQL database and a Redis database which The Things Stack depends on to store data.</p>
 <p>We will configure Docker to run three services:</p>
 <ul>
@@ -166,7 +169,7 @@ config/
 </ul>
 <h3 id="sql-database">SQL Database</h3>
 <p>We need to configure an SQL database, so in this guide we&rsquo;ll use a single instance of <a href="https://www.cockroachlabs.com/">CockroachDB</a>. Make sure that the <code>volumes</code> are set up correctly so that the database is persisted on your server&rsquo;s disk.</p>
-<p>The simplest configuration for CockroachDB will look like this:</p>
+<p>The simplest configuration for CockroachDB will look like this (excerpted from the example <code>docker-compose.yml</code>):</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 5
@@ -193,28 +196,12 @@ config/
 </span><span class="w">      </span>- <span class="s2">&#34;127.0.0.1:26256:26256&#34;</span><span class="w"> </span><span class="c"># WebUI</span></code></pre></td></tr></table>
 </div>
 </div>
-<p>&laquo;&laquo;&laquo;&lt; HEAD</p>
 <blockquote>
-<p>NOTE: It also possible (and even preferred) to use a managed SQL database. In this case, you will need to update the <a href="https://thethingsstack.io/reference/configuration/identity-server/#database-options"><code>is.database-uri</code> configuration option</a> to point to the address of the managed database.
-=======
-<strong>Note:</strong> It is also possible (and even preferred) to use a managed SQL database. In this case, you will need to update the <a href=""><code>is.database-uri</code> configuration option</a> to point to the address of the managed database.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>doc: Improving docs readability</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
+<p><strong>Note:</strong> It is also possible (and even preferred) to use a managed SQL database. In this case, you will need to update the <a href="https://thethingsstack.io/reference/configuration/identity-server/#database-options"><code>is.database-uri</code> configuration option</a> to point to the address of the managed database.</p>
 </blockquote>
 <h3 id="redis">Redis</h3>
 <p>We also need to configure <a href="https://redis.io/">Redis</a>. In this guide we&rsquo;ll use a single instance of Redis. Again, make sure that the <code>volumes</code> are set up correctly so that the datastore is persisted on your server&rsquo;s disk. Note that The Things Stack requires Redis version 5.0 or newer.</p>
-<p>The simplest configuration for Redis will look like this:</p>
+<p>The simplest configuration for Redis will look like this (excerpted from the example <code>docker-compose.yml</code>):</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">28
@@ -239,24 +226,8 @@ config/
 </span><span class="w">      </span>- <span class="s2">&#34;127.0.0.1:6379:6379&#34;</span></code></pre></td></tr></table>
 </div>
 </div>
-<p>&laquo;&laquo;&laquo;&lt; HEAD</p>
 <blockquote>
-<p>NOTE: It also possible (and even preferred) to use a managed Redis database. In this case, you will need to update the <a href="https://thethingsstack.io/reference/configuration/the-things-stack/#redis-options"><code>redis.address</code> configuration option</a> to point to the address of the managed database.
-=======
-<strong>Note:</strong> It is also possible (and even preferred) to use a managed Redis database. In this case, you will need to update the <a href=""><code>redis.address</code> configuration option</a> to point to the address of the managed database.</p>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>doc: Improving docs readability</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
+<p><strong>Note:</strong> It is also possible (and even preferred) to use a managed Redis database. In this case, you will need to update the <a href="https://thethingsstack.io/reference/configuration/the-things-stack/#redis-options"><code>redis.address</code> configuration option</a> to point to the address of the managed database.</p>
 </blockquote>
 <h3 id="the-things-stack">The Things Stack</h3>
 <h4 id="entrypoint-and-dependencies">Entrypoint and dependencies</h4>
@@ -761,10 +732,10 @@ by the console client (see the <code>console</code> section). These tell The Thi
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 21 Oct 2020.
+  Last changed by benolayinka on 11 Nov 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3b3b07d795e1ca2f908bdc3196e968a5485c000c">
-      doc: Improving docs readability
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/67dc0d783cf69d8afe9f0dec42b82ba971371198">
+      doc: Add installation notes
     </a>
 </p>
 
