@@ -45,7 +45,7 @@ We will configure Docker to run three services:
 - {{% tts %}}
 - An SQL database (CockroachDB and PostgreSQL are supported)
 - Redis
- 
+
 ### SQL Database
 
 We need to configure an SQL database, so in this guide we'll use a single instance of [CockroachDB](https://www.cockroachlabs.com/). Make sure that the `volumes` are set up correctly so that the database is persisted on your server's disk.
@@ -56,11 +56,7 @@ The simplest configuration for CockroachDB will look like this:
 {{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=5 to=14 >}}
 {{< /highlight >}}
 
-<<<<<<< HEAD
-> NOTE: It also possible (and even preferred) to use a managed SQL database. In this case, you will need to update the [`is.database-uri` configuration option]({{< ref "/reference/configuration/identity-server#database-options" >}}) to point to the address of the managed database.
-=======
 >**Note:** It is also possible (and even preferred) to use a managed SQL database. In this case, you will need to update the [`is.database-uri` configuration option]({{< ref src="/reference/configuration/identity-server/#database-options" >}}) to point to the address of the managed database.
->>>>>>> doc: Improving docs readability
 
 ### Redis
 
@@ -72,11 +68,7 @@ The simplest configuration for Redis will look like this:
 {{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=28 to=37 >}}
 {{< /highlight >}}
 
-<<<<<<< HEAD
-> NOTE: It also possible (and even preferred) to use a managed Redis database. In this case, you will need to update the [`redis.address` configuration option]({{< ref "/reference/configuration/the-things-stack#redis-options" >}}) to point to the address of the managed database.
-=======
 >**Note:** It is also possible (and even preferred) to use a managed Redis database. In this case, you will need to update the [`redis.address` configuration option]({{< ref src="/reference/configuration/the-things-stack/#redis-options" >}}) to point to the address of the managed database.
->>>>>>> doc: Improving docs readability
 
 ### {{% tts %}}
 
