@@ -36,6 +36,8 @@ config/
     └── ttn-lw-stack-docker.yml    # configuration file for {{% tts %}}
 ```
 
+>**Note:** These example configuration files contain all of the configuration settings you need to run {{% tts %}} for development - just update the files with your server address. In the next sections, we will examine the settings in these files and provide tips for running {{% tts %}} in production.
+
 ## Configure Docker
 
 Docker runs an instance of {{% tts %}}, as well as an SQL database and a Redis database which {{% tts %}} depends on to store data.
@@ -50,33 +52,25 @@ We will configure Docker to run three services:
 
 We need to configure an SQL database, so in this guide we'll use a single instance of [CockroachDB](https://www.cockroachlabs.com/). Make sure that the `volumes` are set up correctly so that the database is persisted on your server's disk.
 
-The simplest configuration for CockroachDB will look like this:
+The simplest configuration for CockroachDB will look like this (excerpted from the example `docker-compose.yml`):
 
 {{< highlight yaml "linenos=table,linenostart=5" >}}
 {{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=5 to=14 >}}
 {{< /highlight >}}
 
-<<<<<<< HEAD
-> NOTE: It also possible (and even preferred) to use a managed SQL database. In this case, you will need to update the [`is.database-uri` configuration option]({{< ref "/reference/configuration/identity-server#database-options" >}}) to point to the address of the managed database.
-=======
->**Note:** It is also possible (and even preferred) to use a managed SQL database. In this case, you will need to update the [`is.database-uri` configuration option]({{< ref src="/reference/configuration/identity-server/#database-options" >}}) to point to the address of the managed database.
->>>>>>> doc: Improving docs readability
+>**Note:** It is also possible (and even preferred) to use a managed SQL database. In this case, you will need to update the [`is.database-uri` configuration option]({{< ref "/reference/configuration/identity-server#database-options" >}}) to point to the address of the managed database.
 
 ### Redis
 
 We also need to configure [Redis](https://redis.io/). In this guide we'll use a single instance of Redis. Again, make sure that the `volumes` are set up correctly so that the datastore is persisted on your server's disk. Note that {{% tts %}} requires Redis version 5.0 or newer.
 
-The simplest configuration for Redis will look like this:
+The simplest configuration for Redis will look like this (excerpted from the example `docker-compose.yml`):
 
 {{< highlight yaml "linenos=table,linenostart=28" >}}
 {{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=28 to=37 >}}
 {{< /highlight >}}
 
-<<<<<<< HEAD
-> NOTE: It also possible (and even preferred) to use a managed Redis database. In this case, you will need to update the [`redis.address` configuration option]({{< ref "/reference/configuration/the-things-stack#redis-options" >}}) to point to the address of the managed database.
-=======
->**Note:** It is also possible (and even preferred) to use a managed Redis database. In this case, you will need to update the [`redis.address` configuration option]({{< ref src="/reference/configuration/the-things-stack/#redis-options" >}}) to point to the address of the managed database.
->>>>>>> doc: Improving docs readability
+>**Note:** It is also possible (and even preferred) to use a managed Redis database. In this case, you will need to update the [`redis.address` configuration option]({{< ref "/reference/configuration/the-things-stack#redis-options" >}}) to point to the address of the managed database.
 
 ### {{% tts %}}
 
