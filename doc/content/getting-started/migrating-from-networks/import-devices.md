@@ -21,11 +21,11 @@ Select `The Things Stack JSON` as the **Format** and upload the `devices.json` f
 
 {{< figure src="../upload-file.png" alt="upload devices.json file" >}}
 
-Wait for the end devices to be successfully imported. In case any device fails, you see a relevant error message in the console.
+Wait for the end devices to be successfully imported. In case any device fails, you will see a relevant error message in the console.
 
 {{< figure src="../operation-finished.png" alt="import finished" >}}
 
-If the import was successful, your devices are added to the list of end-devices in your application.
+If the import was successful, your devices are added to the list of end devices in your application.
 
 {{< /tabs/tab >}}
 
@@ -54,4 +54,4 @@ If the import was successful, your devices is added to the list of end-devices i
 
 You can now start using your devices with {{% tts %}}!
 
-> **Note:** Don't forget to manually copy-paste the Payload Formatters (if applicable) from {{% ttnv2 %}} to your {{% tts %}} application. See [Payload Formatters]({{% ref "integrations/payload-formatters" %}}) for more details.
+> **Note:** You can always manually copy-paste the Payload Formatters (if applicable) from {{% ttnv2 %}} to your {{% tts %}} application. See [Payload Formatters]({{% ref "integrations/payload-formatters" %}}) for more details.

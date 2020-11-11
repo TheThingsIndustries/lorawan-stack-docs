@@ -22,7 +22,7 @@ You can execute an end device as follows:
 $ cat example.json | ttn-lw-cli end-devices template execute
 ```
 
-Output:
+<details><summary>Output</summary>
 
 ```json
 {
@@ -38,8 +38,9 @@ Output:
   "frequency_plan_id": "US_902_928"
 }
 ```
+</details>
 
-The `end-device template execute` command **does not create** the end device. You can, however, easily pipe the output of `end-device template execute` to create the device. But first, you need to personalize the devices by assigning EUIs since this is a generic device template, see [Assigning EUIs]({{< relref "assigning-euis.md" >}}).
+The `end-device template execute` command **does not actually create** the end device. You can, however, easily pipe the output of `end-device template execute` to create the device. But first, you need to personalize the devices by assigning EUIs since this is a generic device template - see [Assigning EUIs]({{< relref "assigning-euis.md" >}}).
 
 ```bash
 $ cat example.json \
@@ -48,7 +49,7 @@ $ cat example.json \
   | ttn-lw-cli end-devices create --application-id test-app
 ```
 
-Output:
+<details><summary>Output</summary>
 
 ```json
 {
@@ -73,3 +74,4 @@ Output:
   "supports_join": true
 }
 ```
+</details>

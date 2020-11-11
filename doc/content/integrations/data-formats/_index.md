@@ -11,7 +11,7 @@ The streaming data integrations provide multiple formats for the delivery of app
 
 The JSON message format is described in the sections below.
 
-> Note: Empty fields are omitted from payloads. As such, if a certain field has a value of `""`, `0` or `false` it will not be present in the message.
+>**Note:** Empty fields are omitted from payloads. As such, if a certain field has a value of `""`, `0` or `false` it will not be present in the message.
 
 ### Join-accept Messages
 
@@ -37,7 +37,7 @@ The JSON join-accept messages use the following format:
 }
 ```
 
-<details><summary>Example join message</summary>
+<details><summary>Join message example</summary>
 
 ```json
 {
@@ -132,7 +132,7 @@ The JSON uplink messages use the following format:
 }
 ```
 
-<details><summary>Example uplink message</summary>
+<details><summary>Uplink message example</summary>
 
 ```json
 {
@@ -232,7 +232,7 @@ The JSON downlink `ack`, `nack`, `queued` and `sent` events messages use the fol
 }
 ```
 
-<details><summary>Example downlink event message</summary>
+<details><summary>Downlink event message example</summary>
 
 ```json
 {
@@ -298,7 +298,7 @@ The JSON downlink `failed` event provides both the downlink and the error detail
 }
 ```
 
-<details><summary>Example downlink failed event message</summary>
+<details><summary>Downlink failed event message example</summary>
 
 ```json
 {
@@ -356,9 +356,9 @@ The JSON downlink messages use the following format:
 }
 ```
 
-> Note: The end device identifiers need to be supplied only to frontends that do not derive it from other sources (such as the URL for webhooks or topic name for MQTT).
+>**Note:** The end device identifiers need to be supplied only to frontends that do not derive it from other sources (such as the URL for webhooks or topic name for MQTT).
 
-<details><summary>Example downlink message</summary>
+<details><summary>Downlink message example</summary>
 
 ```json
 {

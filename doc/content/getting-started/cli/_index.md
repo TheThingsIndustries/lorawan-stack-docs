@@ -4,7 +4,7 @@ description: ""
 aliases: [/guides/getting-started/cli]
 ---
 
-Although the web interface of {{% tts %}} (the Console) currently has support for all basic features of {{% tts %}}, for some actions, you need to use the command-line interface (CLI). The CLI allows you to manage all features of {{% tts %}}.
+Although the web interface of {{% tts %}} (the Console) currently has support for all basic features of {{% tts %}}, for some actions, you need to use the Command-Line Interface (CLI). The CLI allows you to manage all features of {{% tts %}}.
 
 <!--more-->
 

@@ -10,7 +10,7 @@ weight:
 
 In this guide, we show how to create an MQTT client for subscribing or publishing to topics used by {{% tts %}} [MQTT Server]({{< ref "/integrations/mqtt" >}}).
 
-## Requirements
+## Prerequisites
 
 1. [MQTTBox app](http://workswithweb.com/html/mqttbox/downloads.html) installed on your system.
 

@@ -4,10 +4,8 @@ description: ""
 weight: -1
 ---
 
-Integrations allow you to process and act on data by triggering events. Events can be pretty much anything, and can easily be set up using Webhooks or MQTT.
-
-Integrations are managed within applications. Applications can be added to {{%tts%}} by following instructions for [Adding Applications]({{< ref "/integrations/adding-applications" >}}).
+Integrations allow you to process and act on data by triggering events. Learn how to set up integrations by following [MQTT Server]({{< ref "/integrations/mqtt" >}}) or [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}) guides.
 
 <!--more-->
 
-Once an application has been added, learn how to work with the [Application Server MQTT server]({{< ref "/integrations/mqtt" >}}) and [HTTP webhooks]({{< ref "/integrations/webhooks" >}}).
+>**Note:** Integrations are managed within applications (see instructions for [Adding Applications]({{< ref "/integrations/adding-applications" >}})).

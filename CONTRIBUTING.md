@@ -105,6 +105,7 @@ Please respect the following guidelines for content in our documentation site.
 - A documentation page starts with an introduction, and then the first heading. The first paragraph of the introduction is typically a summary of the page. Use a `<!--more-->` to indicate where the summary ends.
 - Divide long documents into separate files, each with its own folder and `_index.md`.
 - Use the `weight`tag in the [Front Matter](https://gohugo.io/content-management/front-matter/) to manually sort sections if necessary. If not, they will be sorted alphabetically.
+- Use the `distributions` tag in the front matter to emphasize the distribution of The Things Stack which the section refers to. This tag can take values "Cloud", "Dedicated Cloud", "Marketplace Launcher", "Enterprise", "Community" and "Open Source".
 - Since the title is a `h1`, everything in the content is at least `h2` (`##`).
 - Paragraphs typically consist of at least two sentences.
 - Use an empty line between all blocks (headings, paragraphs, lists, ...).

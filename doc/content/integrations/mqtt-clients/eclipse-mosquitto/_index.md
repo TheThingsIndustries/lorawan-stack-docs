@@ -11,7 +11,7 @@ This guide shows how to receive upstream messages and send downlink messages wit
 
 >Note: Eclipse Mosquitto MQTT server supports 3.1, 3.1.1 and 5.0 MQTT protocol versions.
 
-## Requirements
+## Prerequisites
 
 1. [Eclipse Mosquitto MQTT server](https://github.com/eclipse/mosquitto) installed on your system.
 

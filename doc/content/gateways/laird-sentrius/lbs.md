@@ -19,8 +19,6 @@ Choose **Semtech Basic Station** as the **Mode**.
 
 Follow the instructions for [Connecting LNS]({{< ref "/gateways/lora-basics-station/lns" >}}).
 
-If using CUPS, following the instructions for [Connecting CUPS]({{< ref "/gateways/lora-basics-station/cups" >}}).
+If using CUPS, follow the instructions for [Connecting CUPS]({{< ref "/gateways/lora-basics-station/cups" >}}).
 
-Click Update.
-
-If your configuration was successful, your gateway will connect to {{% tts %}} after a couple of seconds.
+Click **Update**. If your configuration was successful, your gateway will connect to {{% tts %}} after a couple of seconds.

@@ -14,7 +14,7 @@ HiveMQ also offers an open source tool called [MQTT CLI](https://github.com/hive
 
 This guide contains the instructions to use HiveMQ CLI tool in a shell mode for subscribing and publishing to topics used by {{% tts %}} [MQTT Server]({{< ref "/integrations/mqtt" >}}).
 
-## Requirements
+## Prerequisites
 
 1. [HiveMQ MQTT CLI](https://hivemq.github.io/mqtt-cli/docs/installation.html) installed on your system.
 

@@ -10,10 +10,10 @@ You can use the `end-device templates map` command to map input templates with a
 
 The matching from input to a mapping template is, in order, by mapping key (`mapping_key`), end device identifiers (`ids.application_id` and `ids.device_id`) and `DevEUI` (`ids.dev_eui`). If you don't specify a mapping key, end device identifiers nor `DevEUI`, the mapping entry always matches. This is useful for mapping many end device templates with a generic template.
 
-Typical use cases are:
+## Typical use cases 
 
-1. Assigning identifiers from a mapping file to device templates matching on mapping key.
-2. Mapping a device profile (i.e. MAC and PHY versions, frequency plan and class B/C support) from a mapping file to many end device templates.
+1. Assigning identifiers from a mapping file to device templates matching on mapping key
+2. Mapping a device profile (i.e. MAC and PHY versions, frequency plan and class B/C support) from a mapping file to many end device templates
 
 ## Example
 
@@ -72,7 +72,7 @@ The mapping file `profile.json` contains the following entries (omitting empty f
 
 Second, convert the provisioning data to a device templates file to `provisioningdata.json`.
 
->This example uses a **Microchip ATECC608A-MAHTN-T Manifest File**. This file contains provisioning data for The Things Industries Join Server. You can [download the example file](../microchip-atecc608a-mahtn-t-example.json).
+>This example uses a **Microchip ATECC608A-MAHTN-T Manifest File**. This file contains provisioning data for The Things Industries Join Server. You can download the example file [here](../microchip-atecc608a-mahtn-t-example.json).
 
 ```bash
 $ ttn-lw-cli end-devices template from-data microchip-atecc608a-mahtn-t --local-file example.json > provisioningdata.json

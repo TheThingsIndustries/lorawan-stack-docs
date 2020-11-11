@@ -4,9 +4,15 @@ description: ""
 weight: 1
 ---
 
-MikroTik Routerboard wAP LoRa8 kit is a LoRaWAN gateway that contains a pre-installed UDP packet forwarder and an outdoor weatherproof wireless access point with 2.4 GHz WLAN interface and Ethernet port that could be used as a backend. It's technical specifications can be found in [the official documentation](https://mikrotik.com/product/wap_lora8_kit). 
+MikroTik Routerboard wAP LoRa8 kit is a LoRaWAN gateway that contains a pre-installed UDP packet forwarder and an outdoor weatherproof wireless access point with 2.4 GHz WLAN interface and Ethernet port that could be used as a backend. 
 
-> Note: This gateway does not currently support changing Frequency Plans.
+This guide shows how to connect this gateway to {{% tts %}}.
+
+<!--more-->
+
+Its technical specifications can be found in [the MikroTik official documentation](https://mikrotik.com/product/wap_lora8_kit). 
+
+>**Note:** This gateway does not currently support changing Frequency Plans.
 
 There are multiple interfaces to configure the gateway parameters. This page guides you to connect it to {{% tts %}} using a web browser or the [MikroTik Mobile App](https://mikrotik.com/mobile_app) for Android/iOS.
 
@@ -20,11 +26,11 @@ The MikroTik Routerboard wAP LoRa8 kit comes with a PoE adapter. The following i
 
 1. User account on {{% tts %}} with rights to create Gateways.
 2. MikroTik Routerboard wAP LoRa8 kit connected via ethernet.
-3. A web browser (see section [**Configuration via Browser**](#configuration-via-browser)), or the [MikroTik Mobile App](https://mikrotik.com/mobile_app) installed on a smartphone (see section [**Configuration via App**](#configuration-via-app))
+3. A web browser (see section [Configuration via Browser](#configuration-via-browser)), or the [MikroTik Mobile App](https://mikrotik.com/mobile_app) installed on a smartphone (see section [Configuration via App](#configuration-via-app)).
 
 ## Registration
 
-Create a gateway by following [the instructions]({{< ref "/gateways/adding-gateways" >}}). The **EUI** of the gateway can be found on the back panel of the gateway under the field **GW ID**.
+Create a gateway by following the instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}). The **EUI** of the gateway can be found on the back panel of the gateway under the field **GW ID**.
 
 ## Configuration via Browser
 
@@ -46,10 +52,10 @@ From the top menu, select the **Servers** Tab and press the **Add New** button.
 
 Edit the server parameters.
 
-1. **Name**: A distinct name 
-2. **Address**: Address of the Gateway Server. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `thethings.example.com`.
-3. **Up port**: UDP upstream port of the Gateway Server, typically `1700`.
-4. **Down port**: UDP downstream port of the Gateway Server, typically `1700`.
+- **Name**: A distinct name 
+- **Address**: Address of the Gateway Server. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `thethings.example.com`.
+- **Up port**: UDP upstream port of the Gateway Server, typically `1700`.
+- **Down port**: UDP downstream port of the Gateway Server, typically `1700`.
 
 Press **OK** to save the parameters.
 
@@ -102,10 +108,10 @@ Back in the **LoRa** section, select the **Servers** section. Select the **+** b
 
 Edit the server parameters.
 
-1. **Name**: A distinct name 
-2. **Address**: Address of the Gateway Server. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `thethings.example.com`.
-3. **Up port**: UDP upstream port of the Gateway Server, typically `1700`.
-4. **Down port**: UDP downstream port of the Gateway Server, typically `1700`.
+- **Name**: A distinct name 
+- **Address**: Address of the Gateway Server. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `thethings.example.com`.
+- **Up port**: UDP upstream port of the Gateway Server, typically `1700`.
+- **Down port**: UDP downstream port of the Gateway Server, typically `1700`.
 
 Now back in the **LoRa** section, select **Devices** and select the **LoRa Device**. Click on **Network Servers** and select the server based on the name in the previous step. 
 

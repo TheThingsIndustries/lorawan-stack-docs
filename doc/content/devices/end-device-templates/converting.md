@@ -14,7 +14,7 @@ Start with listing the supported formats:
 $ ttn-lw-cli end-devices template list-formats
 ```
 
-This gives the supported formats. For example:
+This gives the supported formats, for example:
 
 ```json
 {
@@ -31,13 +31,13 @@ Given input data, you can use the `end-device template from-data` command to get
 
 ## Example
 
->This example uses a **Microchip ATECC608A-MAHTN-T Manifest File**. This file contains provisioning data for The Things Industries Join Server. You can [download the example file](../microchip-atecc608a-mahtn-t-example.json).
+>This example uses a **Microchip ATECC608A-MAHTN-T Manifest File**. This file contains provisioning data for The Things Industries Join Server. You can download the example file [here](../microchip-atecc608a-mahtn-t-example.json).
 
 ```bash
 $ ttn-lw-cli end-devices template from-data microchip-atecc608a-mahtn-t --local-file example.json
 ```
 
-Output:
+<details><summary>Output</summary>
 
 ```javascript
 {
@@ -67,5 +67,6 @@ Output:
   "mapping_key": "0123d34fb176c66f27"
 }
 ```
+</details>
 
-In this example, only the `provisioner_id` and `provisioning_data` fields are set with the `mapping_key` set to the serial number. Device makers can use the template to assign the `JoinEUI` and `DevEUI`s (see [Assigning EUIs]({{< relref "assigning-euis.md" >}})) as well as other device fields (see [Creating]({{< relref "creating.md" >}}) and [Mapping Templates]({{< relref "mapping.md" >}})).
+In this example, only the `provisioner_id` and `provisioning_data` fields are set with the `mapping_key` set to the serial number. Device makers can use the template to assign the `JoinEUI` and `DevEUI` (see [Assigning EUIs]({{< relref "assigning-euis.md" >}})) as well as other device fields (see [Creating]({{< relref "creating.md" >}}) and [Mapping Templates]({{< relref "mapping.md" >}})).

@@ -15,7 +15,9 @@ This section contains instructions for adding Gateways in {{%tts%}}.
 
 ## Adding Gateways using the Console
 
-Go to **Gateways** in the top menu, and click **+ Add Gateway** to reach the gateway registration page. Fill the gateway ID, gateway EUI (if your gateway has an EUI) and frequency plan. The other fields are optional. Click **Create Gateway** to create the gateway.
+Go to **Gateways** in the top menu, and click **+ Add Gateway** to reach the gateway registration page.
+
+Fill the **Gateway ID**, **Gateway EUI** (if your gateway has an EUI) and **Frequency Plan**. The other fields are optional. Click **Create Gateway** to finish.
 
 {{< figure src="gateway-creation.png" alt="Gateway creation" >}}
 
@@ -29,11 +31,13 @@ You can now connect your gateway to {{% tts %}}.
 
 Some gateways require an API Key with Link Gateway Rights to be able to connect to {{% tts %}}. 
 
-In order to do this, navigate the **API Keys** menu of your gateway and select **Add API Key**. Enter a name for your key, select the **Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink** right and then press **Create API Key**.
+In order to do this, navigate to the **API Keys** menu of your gateway and select **Add API Key**. 
+
+Enter a name for your key, select the **Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink** right and then press **Create API Key**.
 
 {{< figure src="gateway-api-key-creation.png" alt="Gateway API Key creation" >}}
 
-You will see a screen that shows your newly created API Key. You now can copy it in your clipboard by pressing the clipboard button. After saving the key in a safe place, press **I have copied the key**. You will not be able to see this key again in the future, and if you lose it, you can create a new one to replace it in the gateway configuration.
+You will see a screen that shows your newly created API Key. You now can copy it in your clipboard by pressing the copy button. After saving the key in a safe place, press **I have copied the key**. You will not be able to see this key again in the future, and if you lose it, you can create a new one to replace it in the gateway configuration.
 
 {{< figure src="gateway-api-key-created.png" alt="Gateway API Key created" >}}
 
@@ -61,7 +65,7 @@ $ ttn-lw-cli gateways create gtw1 \
 
 This creates a gateway `gtw1` with user `admin` as collaborator, frequency plan `EU_863_870`, EUI `00800000A00009EF` and respecting duty-cycle limitations. You can now connect your gateway to {{% tts %}}.
 
->Note: The CLI returns the created and updated entities by default in JSON. This can be useful in scripts.
+>**Note:** The CLI returns the created and updated entities by default in JSON. This can be useful in scripts.
 
 ### Create Gateway API Key
 

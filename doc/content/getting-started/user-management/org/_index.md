@@ -24,7 +24,7 @@ To add an organization, click **Add organization**.
 
 Choose the rights you would like to grant the organization, and click the **Add organization** button to save your choices.
 
->Note: When a user is a member of an organization which is a collaborator for an entity, the user's rights are the intersection of the user's rights in the organization and the organization's rights on the entity.
+>**Note:** When a user is a member of an organization which is a collaborator for an entity, the user's rights are the intersection of the user's rights in the organization and the organization's rights on the entity.
 
 {{< /tabs/tab >}}
 
@@ -81,7 +81,7 @@ $ ttn-lw-cli organizations list
 
 ## Searching for Organizations
 
-To search for organizations with the CLI, use the `organizations search` command. Make sure to specify the fields you're interested in. This example will search for organizations with IDs that contain "org1":
+To search for organizations with the CLI, use the `organizations search` command. Make sure to specify the fields you're interested in. This example will search for organizations with IDs that contain `org1`:
 
 ```bash
 $ ttn-lw-cli organizations search --id-contains org1
@@ -107,7 +107,7 @@ To add a user to an organization, use the  `organizations collaborators set` com
 $ ttn-lw-cli organizations collaborators set --organization-id org1 --user-id user1 --right-organization-all
 ```
 
->Note: You must specify rights when adding a collaborator. Use the `--help` flag to see the list of possible rights, e.g `$ ttn-lw-cli organizations collaborators set --help`.
+>**Note:** You must specify rights when adding a collaborator. Use the `--help` flag to see the list of possible rights, e.g `$ ttn-lw-cli organizations collaborators set --help`.
 
 ## Removing Users from Organizations
 

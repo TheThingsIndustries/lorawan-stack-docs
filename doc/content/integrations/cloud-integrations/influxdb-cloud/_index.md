@@ -12,7 +12,7 @@ Besides being able to send data to InfluxDB Cloud 2.0, [Telegraf agent](https://
 
 >Note: for additional info on configuring the Telegraf agent and using its plugins, check out the [official documentation](https://v2.docs.influxdata.com/v2.0/write-data/no-code/use-telegraf/).
 
-## Requirements
+## Prerequisites
 
 1. A user account on InfluxDB Cloud 2.0.
 

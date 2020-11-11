@@ -10,6 +10,6 @@ weight:
 
 In this guide, we use [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/) serverless service to run a function which can be triggered by an HTTP request. Since Azure offers many complex features, these instructions will help you to make an integration with {{% tts %}} in only a few easy steps.
 
-## Requirements
+## Prerequisites
 
 1. A user account on Azure.

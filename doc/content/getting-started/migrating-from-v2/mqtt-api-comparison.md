@@ -8,11 +8,11 @@ weight: 70
 | **Category/Type** | **TTI V2** | **TTS V3** |
 |---|----|---|
 | MQTT Public Address | `{tenant_id}.thethings.industries:1883` | `https://thethings.example.com:1883` (replace with the URL of your deployment) |
-| MQTT Public TLS Address | `{tenant_id}.thethings.industries:8883` (we have to use the TLS certificate provided in th e ttn document) | `https://thethings.example.com:1883` |
+| MQTT Public TLS Address | `{tenant_id}.thethings.industries:8883` (we have to use the TLS certificate provided in the ttn document) | `https://thethings.example.com:8883` |
 | Username | `{application_id}` | `{application_id}@{tenant_id}` |
 | Password | Application Access Key (with default rights) | Application API Key (with "Write downlink application traffic" and "Read application traffic (uplink and downlink)" rights) |
 | Uplink topic (sub) | `{application_id}/devices/{device_id}/up` | `v3/{application id}@{tenant id}/devices/{device id}/up` |
-| Downlink scheduling topic (pub) | `{application_id}/devices/{device_id}/downSchedule` the downlink as the first or last item in a downlink queue using "schedule" key value in the payload. | Push downlink - `v3/{application id}@{tenant id}/devices/{device id}/down/pushReplace` downlink queue - `v3/{application id}@{tenant id}/devices/{device id}/down/replace` |
+| Downlink scheduling topic (pub) | `{application_id}/devices/{device_id}/downSchedule` the downlink as the first or last item in a downlink queue using "schedule" key value in the payload. | Push downlink - `v3/{application id}@{tenant id}/devices/{device id}/down/push`, &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp;  &emsp; &emsp; Replace downlink queue - `v3/{application id}@{tenant id}/devices/{device id}/down/replace` |
 
 
 ### Uplinks
@@ -33,14 +33,14 @@ weight: 70
 |                       | Not available in documentation| `uplink_message.rx_metadata.channel_rssi` - Received signal strength indicator of the channel (dBm)|
 |                       | Not available in documentation| `uplink_message.rx_metadata.uplink_token` - Uplink token injected by gateway, Gateway Server or fNS|
 |                       |||
-| Uplink Metadata       | `metadata` - This object includes metadata| `uplink_message` - this object includes metadata |
+| Uplink Metadata       | `metadata` - This object includes metadata| `uplink_message` - This object includes metadata |
 |                       | `metadata.airtime` | `uplink_message.consumed_airtime` - Formatted as a string, with a suffix for the unit used. For example, `"0.051321s"` is 0.051321 seconds. |
-|                       | `metadata.time` - Time when the server received the message| `uplink_message.received_at` - Server time when the Application Server received the message. |
-|                       | `metadata.frequency` - Frequency at which the message was sent| `uplink_message.settings.frequenc`y - Frequency (Hz).|
-|                       | `metadata.modulation` - Modulation that was used - LORA or FSK| Not available but as an alternative, modulation can be derived from settings.data_rate |
+|                       | `metadata.time` - Time when the server received the message| `uplink_message.received_at` - Server time when the Application Server received the message |
+|                       | `metadata.frequency` - Frequency at which the message was sent| `uplink_message.settings.frequency` - Frequency (Hz)|
+|                       | `metadata.modulation` - Modulation that was used - LORA or FSK| Not available but as an alternative, modulation can be derived from `settings.data_rate` |
 |                       | `metadata.data_rate` - Data rate that was used - if LORA modulation| `uplink_message.settings.data_rate` - Data rate of LoRa or FSK |
 |                       | `metadata.bit_rate` - Bit rate that was used - if FSK modulation| `uplink_message.settings.data_rate.fsk.bit_rate` - Bit rate that was used - if FSK modulation |
-|                       | `metadata.coding_rate` - Coding rate that was used| `uplink_message.settings.coding_rate` - LoRa coding rate. |
+|                       | `metadata.coding_rate` - Coding rate that was used| `uplink_message.settings.coding_rate` - LoRa coding rate |
 |                       | `metadata.latitude`| `uplink_message.locations.user.latitude` - Latitude of the device |
 |                       | `metadata.longitude` | `uplink_message.locations.user.longitude` - Longitude of the device|
 |                       | `metadata.altitude` | `uplink_message.locations.user.altitude` - Altitude of the device |
@@ -49,12 +49,12 @@ weight: 70
 |                       | `metadata.payload_raw` - Base64 encoded payload: [0x01, 0x02, 0x03, 0x04] | `uplink_message.frm_payload` - Frame payload (Base64)|
 |                       | `port` - LoRaWAN FPort| `uplink_message.f_port` - LoRaWAN FPort |
 |                       | `counter` - LoRaWAN frame counter| `uplink_message.f_cnt` - LoRaWAN frame counter |
-|                       | Not available in documentation| `uplink_message.session_key_id` - Join Server issued identifier for the session keys used by this uplink. |
+|                       | Not available in documentation| `uplink_message.session_key_id` - Join Server issued identifier for the session keys used by this uplink |
 |                       |||
-| common fields         | `app_id` | `end_device_ids.application_ids.application_id` |
+| Common fields         | `app_id` | `end_device_ids.application_ids.application_id` |
 |                       | `dev_id` | `end_device_ids.device_id` |
 |                       | `hardware_serial` - In case of LoRaWAN: the `DevEUI` | `end_device_ids.dev_eui` |
-|                       | `confirmed` - is set to true if this message was a confirmed message | Not available in documentation |
+|                       | `confirmed` - Is set to true if this message was a confirmed message | Not available in documentation |
 |                       | Not available in documentation | `end_device_ids.join_eui` |
 |                       | Not available in documentation | `end_device_ids.dev_addr` |
 |                       | | |
@@ -69,8 +69,8 @@ weight: 70
 | Individual fields comparison    | `port` | `f_port` |
 | | `confirmed` | `confirmed` |
 | | `payload_raw` | `frm_payload` |
-| | `schedule` | replace and push topics are available as an alternative |
-| | Not available | `priority` - if you do not specify a priority, the default priority LOWEST is used. You can specify LOWEST, LOW, BELOW_NORMAL, NORMAL, ABOVE_NORMAL, HIGH and HIGHEST |
+| | `schedule` | Replace and push topics are available as an alternative |
+| | Not available | `priority` - If you do not specify a priority, the default priority LOWEST is used. You can specify LOWEST, LOW, BELOW_NORMAL, NORMAL, ABOVE_NORMAL, HIGH and HIGHEST. |
 | | Not available | `correlation_ids` - You can add multiple custom correlation IDs, for example to reference events or identifiers of your application. |
 | | `payload_fields` | Not available in documentation |
 

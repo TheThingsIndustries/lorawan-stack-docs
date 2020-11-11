@@ -23,15 +23,15 @@ This will enable the Class C downlink scheduling of the device. That's it! Downl
 
 To disable Class C scheduling, reset with `--supports-class-c=false`.
 
->Note: Class C downlink scheduling starts when the end device confirms the session. This means that the device should send an uplink message after receiving the join-accept in order to enable Class C downlink scheduling.
+>**Note:** Class C downlink scheduling starts when the end device confirms the session. This means that the device should send an uplink message after receiving the join-accept in order to enable Class C downlink scheduling.
 
 ## Class C message settings
 
 {{% tts %}} supports optional settings for Class C downlink messages: the downlink path and the time to send the message.
 
-The downlink path is defined by one or more gateways IDs. The Network Server and Gateway Server schedules only on the specified gateways in the specified order. This is useful for multicast (where no downlink path is known because there is no uplink). A scheduling attempt on can fail when the gateway is not connected, if there is a scheduling conflict or if duty-cycle regulations prohibit transmission. See the [Example]({{< relref "#example" >}}) below.
+The downlink path is defined by one or more gateways IDs. The Network Server and Gateway Server schedules only on the specified gateways in the specified order. This is useful for multicast (where no downlink path is known because there is no uplink). A scheduling attempt on can fail when the gateway is not connected, if there is a scheduling conflict or if duty-cycle regulations prohibit transmission. See the [Example]({{< relref "#example" >}}) section below.
 
-The time to transmit is an absolute timestamp in ISO 8601 format to send the message. This requires gateways either with GPS lock, or gateways that use a protocol that provide round-trip times (RTT). See the [Example]({{< relref "#example" >}}) below.
+The time to transmit is an absolute timestamp in ISO 8601 format to send the message. This requires gateways either with GPS lock, or gateways that use a protocol that provide round-trip times (RTT). See the [Example]({{< relref "#example" >}}) section below.
 
 ## Multicast group
 
@@ -39,7 +39,7 @@ It is also possible to create a multicast group to send a Class C downlink messa
 
 When creating a device, you can specify in the Console and CLI whether it's a multicast group.
 
-CLI Example:
+CLI example:
 
 ```bash
 $ ttn-lw-cli end-devices create app1 mc1 \
@@ -53,9 +53,9 @@ $ ttn-lw-cli end-devices create app1 mc1 \
   --supports-class-c
 ```
 
->Note: A multicast group cannot be converted to a normal unicast device or the other way around.
+>**Note:** A multicast group cannot be converted to a normal unicast device or the other way around.
 
->Note: Since multicast does not support uplink, the Network Server does not know a downlink path. Therefore, you need to specify a downlink path when scheduling downlink message.
+>**Note:** Since multicast does not support uplink, the Network Server does not know a downlink path. Therefore, you need to specify a downlink path when scheduling downlink message.
 
 ## Example
 
