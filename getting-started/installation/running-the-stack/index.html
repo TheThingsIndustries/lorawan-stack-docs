@@ -123,7 +123,10 @@ debug: false
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose pull
 </code></pre></div><p>Next, we need to initialize the database of the Identity Server:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack is-db init
-</code></pre></div><p>For the Storage Integration available in The Things Stack Enterprise, we need to initialize the database of the Application Server as well:</p>
+</code></pre></div><blockquote>
+<p><strong>Note</strong>: If you receive an error running The Things Stack, make sure a The Things Stack container isn&rsquo;t already running. Use <code>docker ps</code> to see running containers.</p>
+</blockquote>
+<p>For the Storage Integration available in The Things Stack Enterprise, we need to initialize the database of the Application Server as well:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack storage-db init
 </code></pre></div><p>The Things Stack Enterprise requires a tenant to be present, even if multi-tenancy is not included in the license. We now create this tenant:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack is-db create-tenant
@@ -207,10 +210,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 21 Oct 2020.
+  Last changed by benolayinka on 15 Oct 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3b3b07d795e1ca2f908bdc3196e968a5485c000c">
-      doc: Improving docs readability
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2cdb92c1b503cf43906de6c1c37f080f2e676960">
+      doc: Add localhost installation instructions
     </a>
 </p>
 

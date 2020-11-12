@@ -119,6 +119,9 @@ debug: false
 
 <p>The Things Stack can be configured using command-line flags, environment variables, or configuration files. See the <a href="https://thethingsstack.io/reference/configuration/">Configuration Reference</a> for more information about the configuration options.</p>
 <p>In this guide, we will configure The Things Stack using a configuration file, with an example domain <code>thethings.example.com</code> and TLS certificates from Let&rsquo;s Encrypt.</p>
+<blockquote>
+<p><strong>Note:</strong> If configuring The Things Stack as <code>localhost</code> on a machine with no public IP or DNS address, see the <a href="#localhost">special considerations</a> below.</p>
+</blockquote>
 <p>To configure The Things Stack, we will use the configuration file <code>ttn-lw-stack-docker.yml</code>, which contains configuration specific to our The Things Stack deployment. When The Things Stack starts, it looks for <code>ttn-lw-stack-docker.yml</code> for a license key, hostname, and other configuration parameters.</p>
 <p>To configure Docker, we also need a <code>docker-compose.yml</code>, which defines the Docker services of The Things Stack and its dependencies.</p>
 <h3 id="example-configuration-files">Example Configuration Files</h3>
@@ -344,7 +347,7 @@ config/
 </blockquote>
 <h2 id="configure-the-things-stack">Configure The Things Stack</h2>
 <p>Once Docker starts The Things Stack, we need to specify configuration options for running The Things Stack in the <code>ttn-lw-stack-docker.yml</code> file. Let&rsquo;s have a look at the configuration options which are required.</p>
-<h3 id="license-hahahugoshortcode-s31-hbhb">License 
+<h3 id="license-hahahugoshortcode-s32-hbhb">License 
 
 
 
@@ -679,6 +682,40 @@ by the console client (see the <code>console</code> section). These tell The Thi
 <blockquote>
 <p><strong>Note:</strong> Make note of the client secret, as it will be needed again when initializing The Things Stack.</p>
 </blockquote>
+<h2 id="localhost">Localhost</h2>
+<p>If you are configuring and running The Things Stack on a local machine with no public IP or DNS address, some special considerations must be made. <code>localhost</code> has a different meaning on your machine than inside the Docker container where The Things Stack runs, which can cause problems if you use <code>localhost</code> in your configuration.</p>
+<p><code>localhost</code> addresses on your machine will resolve to your machine, while <code>localhost</code> inside the Docker container will resolve inside the Docker container. In <code>docker-compose.yml</code>, we forward requests on ports 80 and 443 to ports 1885 and 8885 inside the container, so visiting <code>localhost</code> (which is really <code>localhost:80</code>) on your machine actually takes you to <code>localhost:1885</code> within the container.</p>
+<p>If you configure your <code>is.oauth.ui.canonical-url</code> as <code>localhost</code>, this causes <strong>Token Exchange Refused</strong> errors when you try to log in to The Things Stack Console, because an authorization request generated from within the container will not be redirected to port 1885 or 8885, where The Things Stack is listening.</p>
+<h3 id="solution-1-use-the-ip-address-of-your-computer-on-your-local-network">Solution 1: Use the IP address of your computer on your local network</h3>
+<p>The best solution is to configure and use a static IP address for your machine on your local network so that redirects from your machine, from the docker container, or from anywhere inside your local network all resolve at the same place, on your machine. Follow instructions <a href="https://uk.pcmag.com/news/124250/how-to-set-up-a-static-ip-address">here</a> for configuring a static IP address on your computer. Use that IP address as your server address, i.e replace <code>thethings.example.com</code> with that IP address. You may also generate a self-signed certificate for that IP address by following instructions in <a href="/getting-started/installation/certificates/">certificates</a>.</p>
+<p>This will still allow you to see the console by entering <code>localhost</code> or your local IP in your browser. It will also allow you to connect to The Things Stack from any machine inside your local network.</p>
+<h3 id="solution-2-specify-the-internal-ports-that-the-things-stack-listens-on-in-your-configuration-files">Solution 2: Specify the internal ports that The Things Stack listens on in your configuration files</h3>
+<p>By default, The Things Stack listens on ports 1885 and 8885 inside Docker. To make <code>localhost</code> work both on your local machine and within the container, append the port to <code>localhost</code> and make sure port forwarding is enabled in your <code>docker-compose.yml</code> for that port.</p>
+<p>You must also remove ports 80 and 443 from your The Things Stack Docker configuration.</p>
+<p>For example,</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">is</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">oauth</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="k">ui</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="k">canonical-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/oauth&#39;</span><span class="w">
+</span><span class="w">      </span><span class="k">is</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="k">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
+</span></code></pre></div><p>becomes</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">is</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">oauth</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="k">ui</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="k">canonical-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://localhost:8885/oauth&#39;</span><span class="w">
+</span><span class="w">      </span><span class="k">is</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span><span class="k">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://localhost:8885/api/v3&#39;</span><span class="w">
+</span></code></pre></div><p>and in <code>docker-compose.yml</code>, add the following port forwarding configuration if it does not exist, while removing ports 80 and 443:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">services</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">stack</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="k">ports</span><span class="p">:</span><span class="w">
+</span><span class="w">      </span><span class="k">stack</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- <span class="s2">&#34;1885:1885&#34;</span><span class="w">
+</span><span class="w">        </span>- <span class="s2">&#34;8885:8885&#34;</span><span class="w">
+</span><span class="w">        </span><span class="c"># - &#34;80:80&#34; # Do not forward port 80</span><span class="w">
+</span><span class="w">        </span><span class="c"># - &#34;443:443&#34; # Do not forward port 443</span><span class="w">
+</span></code></pre></div><p>This will result in visits from both outside and inside the Docker container being received at the correct port by The Things Stack.</p>
 
 </div>
 
@@ -732,10 +769,10 @@ by the console client (see the <code>console</code> section). These tell The Thi
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 11 Nov 2020.
+  Last changed by benolayinka on 15 Oct 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/67dc0d783cf69d8afe9f0dec42b82ba971371198">
-      doc: Add installation notes
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2cdb92c1b503cf43906de6c1c37f080f2e676960">
+      doc: Add localhost installation instructions
     </a>
 </p>
 
