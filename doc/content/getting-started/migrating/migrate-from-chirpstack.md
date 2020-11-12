@@ -9,7 +9,9 @@ This section contains instructions on how to migrate end devices from ChirpStack
 
 <!--more-->
 
-End devices and applications can easily be migrated from ChirpStack to {{% tts %}} with the `ttn-lw-migrate` tool. This tool is used for exporting end devices and applications to a [JSON file]({{< ref "getting-started/migrating/device-json.md" >}}) containing their description. This file can later be imported in {{% tts %}} as described in the [Import End Devices in The Things Stack]({{< ref "getting-started/migrating/import-devices.md" >}}) section.
+## Configure ttn-lw-migrate
+
+End devices and applications can easily be migrated from ChirpStack to {{% tts %}} with the [`ttn-lw-migrate`](https://github.com/TheThingsNetwork/lorawan-stack-migrate) tool. This tool is used for exporting end devices and applications to a [JSON file]({{< ref "getting-started/migrating/device-json.md" >}}) containing their description. This file can later be imported in {{% tts %}} as described in the [Import End Devices in The Things Stack]({{< ref "getting-started/migrating/import-devices.md" >}}) section.
 
 First, configure the environment with the following variables modified according to your setup:
 

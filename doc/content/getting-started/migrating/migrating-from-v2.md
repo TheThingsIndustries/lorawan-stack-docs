@@ -81,28 +81,32 @@ In order to export a single device, use the following command. The device will b
 $ ttnctl devices export "device-id" --frequency-plan-id EU_863_870 > device.json
 ```
 
-Alternatively, you can export all the end devices with a single command and save them in `all-devices.json`.
+{{< note >}} Payload formatters are not exported. See [Payload Formatters](https://thethingsstack.io/integrations/payload-formatters/). {{</ note >}}
 
-```bash
-$ ttnctl devices export-all --frequency-plan-id EU_863_870 > all-devices.json
+{{< warning >}} Active device sessions are exported by default. You can disable this by using the `--ttnv2.with-session=false` flag. It is recommended that you do not export session keys for devices that can instead re-join on The Things Stack. {{</ warning >}}
+
+In order to export a large number of devices, create a file named `device_ids.txt` with one device ID per line:
+
+```
+mydevice
+otherdevice
+device3
+device4
+device5
 ```
 
-{{< note >}} Change `EU_863_870` frequency plan from the command above to the frequency plan corresponding to your region. See [Frequency Plans]({{< ref "/reference/frequency-plans" >}}) for a list of supported Frequency Plans and their respective IDs. {{</ note >}}
+And then export with:
 
-{{< note >}} Keep in mind that an end device can only be registered in one Network Server at a time. After importing an end device to {{% tts %}}, you should remove it from {{% ttnv2 %}}. For OTAA devices, it is enough to simply change the AppKey, so the device can no longer join but the existing session is preserved. Next time the device joins, the activation will be handled by {{% tts %}}. {{</ note >}}
+```bash
+$ ttn-lw-migrate devices --source ttnv2 < device_ids.txt > devices.json
+```
+
+Alternatively, you can export all the end devices associated with your application, and save them in `all-devices.json`.
+
+```bash
+$ ttn-lw-migrate application --source ttnv2 "my-ttn-app" > all-devices.json
+```
 
 ### Disable Exported End Devices on V2
 
-After exporting, make sure to clear the AppKey of your OTAA devices. This can be achieved with the following command:
-
-```bash
-$ ttnctl devices convert-to-abp "device-id" --save-to-attribute "original-app-key"
-```
-
-There is also a convenience command to clear all of your devices at once:
-
-```bash
-$ ttnctl devices convert-all-to-abp --save-to-attribute "original-app-key"
-```
-
-{{< note >}} The AppKey of each device will be printed on the standard output, and stored as a device attribute (with name `original-app-key`). You can retrieve the device attributes with `ttnctl devices info "device-id"`. {{</ note >}}
+An end device can only be registered in one Network Server at a time. After importing an end device to {{% tts %}}, you should remove it from {{% ttnv2 %}}. For OTAA devices, it is enough to simply change the AppKey, so the device can no longer join but the existing session is preserved. Next time the device joins, the activation will be handled by {{% tts %}}.
