@@ -20,6 +20,8 @@ Next, we need to initialize the database of the Identity Server:
 $ docker-compose run --rm stack is-db init
 ```
 
+>**Note**: If you receive an error running {{% tts %}}, make sure a {{% tts %}} container isn't already running. Use `docker ps` to see running containers.
+
 For the Storage Integration available in {{% tts %}} Enterprise, we need to initialize the database of the Application Server as well:
 
 ```bash
