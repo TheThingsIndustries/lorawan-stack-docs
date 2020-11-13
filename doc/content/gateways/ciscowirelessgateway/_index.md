@@ -227,7 +227,7 @@ bash-3.2# cp /tools/pkt_forwarder /etc/pktfwd/pkt_forwarder
 ```
 
 **Retrieve configuration from the Gateway Configuration Server**
-The Gateway Configuration Server can be used to retrieve a proper `global_conf.json` configuration file for your gateway. Follow instructions [here]({{< relref src="../semtech-udp-packet-forwarder" >}}).
+The Gateway Configuration Server can be used to retrieve a proper `global_conf.json` configuration file for your gateway. Follow instructions [here]({{< ref "/gateways/semtech-udp-packet-forwarder" >}}).
 
 Copy the downloaded `global_conf.json` configuration template as **config.json** to **/etc/pktfwd** 
 
