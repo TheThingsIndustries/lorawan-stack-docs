@@ -124,12 +124,14 @@ debug: false
 <li>Centralized Channel-Plan Management</li>
 <li>No Dependency on Local Time Keeping</li>
 </ul>
+<h2 id="authentication">Authentication</h2>
+<p>The Things Stack supports <a href="https://doc.sm.tc/station/authmodes.html#tls-server-authentication-and-client-token">TLS server authentication and client token</a>. This requires a <code>*.trust</code> file and a <code>*.key</code> file. See the <a href="/gateways/lora-basics-station/lns/">LNS</a> and <a href="/gateways/lora-basics-station/cups/">CUPS</a> sections for information about getting these files. The Things Stack does not support TLS client authentication and does not provide a <code>*.cert</code> file.</p>
 <h2 id="lns-and-cups-sub-protocols">LNS and CUPS Sub Protocols</h2>
 <p>LoRa Basics™ Station contains two sub protocols for connecting Gateways to Network Servers, LoRaWAN Network Server (LNS) and Configuration and Update Server (CUPS).</p>
 <h3 id="lorawan-network-server-lns">LoRaWAN Network Server (LNS)</h3>
 <p>LNS establishes a data connection between a LoRa Basics™ Station gateway and a Network Server (in this case, The Things Stack). LoRa® uplink and downlink frames are exchanged through this data connection. The LNS protocol is <strong>required</strong> for sending and receiving LoRaWAN data.</p>
 <h3 id="configuration-and-update-server-cups">Configuration and Update Server (CUPS)</h3>
-<p>CUPS allows a Network Server to configure gateways remotely, and to update gateway firmware. CUPS is <strong>not required</strong> for sending and receiving LoRaWAN data, but it can greatly simplify the management of gateways.</p>
+<p>CUPS allows a Network Server to configure gateways remotely, and to update gateway firmware. CUPS is <strong>not required</strong> for sending and receiving LoRaWAN data, but it can greatly simplify the management of gateways. Configuring CUPS will also automatically retrieve LNS credentials and configure LNS on your gateway.</p>
 <p>More information about LoRa Basics™ Station is available at <a href="https://lora-developers.semtech.com/resources/tools/basic-station/welcome-basic-station/">Semtech&rsquo;s Developer Portal</a></p>
 </div>
 
@@ -182,10 +184,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 21 Oct 2020.
+  Last changed by benolayinka on 17 Nov 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3b3b07d795e1ca2f908bdc3196e968a5485c000c">
-      doc: Improving docs readability
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/c1ecd624fb214d28c02da05d6d02fb2d590a2ac7">
+      doc: Add lbs auth note
     </a>
 </p>
 
