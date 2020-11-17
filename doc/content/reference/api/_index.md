@@ -7,6 +7,8 @@ This is the reference for the gRPC and HTTP APIs that {{% tts %}} exposes.
 
 <!--more-->
 
+>**Note:** {{% tts %}} API is different from {{% ttnv2 %}} API. If migrating from V2, see [here]({{< ref "getting-started/migrating/major-changes" >}}) for an overview of changes.
+
 ## Field Masks
 
 {{% tts %}} APIs use field masks to specify a subset of fields that should be returned by a reading request, or to specify fields that should be updated in a writing request. See Google's [Protocol Buffers reference](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMask) for more information about field masks.
