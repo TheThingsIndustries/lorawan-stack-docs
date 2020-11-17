@@ -28,7 +28,7 @@ To create an API key for your gateway, follow instructions for Creating a Gatewa
 
 ## Configure Gateway
 
-Gateway configuration menus differ depending on the manufacturer, but all {{% lbs %}} gateways support the following configuration options. Consult your gateway documentation for more information about configuring your specific gateway. 
+All {{% lbs %}} gateways support the following configuration options. Consult your gateway documentation for more information about configuring your specific gateway. 
 
 ### LNS Server Address
 
@@ -48,10 +48,11 @@ Upload the `.pem` file in your gateway as the LNS Server Certificate / LNS Trust
 
 This is a file which {{% tts %}} uses to verify the identity of your gateway.
 
-Use the following command to create a file called `lns.key` with the `<gateway-api-key>` you created above.
+Use the following command to create a file called `lns.key`, replacing `"your-lns-api-key"` with the LNS API key you created above.
 
 ```bash
-echo "Authorization: Bearer <gateway-api-key>" | perl -p -e 's/\r\n|\n|\r/\r\n/g'  > lns.key
+$ export LNS_KEY="your-lns-api-key"
+$ echo "Authorization: Bearer $LNS_KEY" | perl -p -e 's/\r\n|\n|\r/\r\n/g'  > lns.key
 ```
 
 > The above command creates a file called `lns.key`, terminated with a Carriage Return Line Feed (`0x0D0A`) character. Upload this file in your gateway as the LNS key.
