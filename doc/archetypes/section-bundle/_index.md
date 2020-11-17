@@ -92,6 +92,19 @@ Thou shalt always use the shortcode {{% tts %}} when referring to this product.
 
 For documentation that requires the Command Line Interface, use the {{% cli-only %}} shortcode.
 
+## User Variables
+
+For variables which a user must replace, use a command to define the variable in the shell, if possible.
+
+```bash
+$ GTW_ID="your-gateway-id"
+$ LNS_KEY="your-lns-api-key"
+$ SECRET=$(echo $LNS_KEY | xxd -p -u | perl -pe 's/\n//')
+$ ttn-lw-cli gateways update $GTW_ID --lbs-lns-secret.value $SECRET
+```
+
+If not possible to define the variable, use angle brackets to indicate a variable that needs to be replaced, e.g `https://<server-address>`. 
+
 ## Syntax Highlighting
 
 See the following examples for types of syntax highlighting.
