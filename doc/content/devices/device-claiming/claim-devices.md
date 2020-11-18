@@ -29,3 +29,5 @@ Select the application that you created as a prerequisite.
 Authorize your browser to access the camera, scan the the device's QR code for claiming and click on **Save changes**.
 
 The device has been successfully claimed, so you can return to the Console and you will see the device in your application.
+
+>**Note:** Device claiming does not transfer a security session for a device, it only transfers ownership. The original LoRaWAN session is deleted. The device needs to join the network again for traffic to appear.
