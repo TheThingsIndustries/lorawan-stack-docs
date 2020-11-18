@@ -116,7 +116,13 @@ debug: false
 
 <p>LoRa Basics™ Station can regularly connect to a Configuration and Update Server (CUPS) server to check for configuration and software updates. This page contains information about connecting your gateway to The Things Stack to support remote management via the CUPS Protocol.</p>
 <blockquote>
-<p>CUPS is <strong>not required</strong> for sending and receiving LoRaWAN data, but it can greatly simplify the management of gateways. Configuring CUPS will also automatically retrieve LNS credentials and configure LNS on your gateway, so there is no need to configure both.</p>
+<p>CUPS is <strong>not required</strong> for sending and receiving LoRaWAN data, but it simplifies gateway management.</p>
+</blockquote>
+<blockquote>
+<p>Configuring CUPS automatically retrieves LNS credentials and configures LNS on your gateway. If you configure CUPS, <strong>DO NOT</strong> manually configure LNS, or your gateway may ignore the CUPS credentials.</p>
+</blockquote>
+<blockquote>
+<p>CUPS support in The Things Stack is in beta and is subject to change.</p>
 </blockquote>
 <h2 id="requirements">Requirements</h2>
 <ol>
@@ -125,15 +131,51 @@ debug: false
 </ol>
 <h2 id="create-a-gateway">Create a Gateway</h2>
 <p>To connect a gateway using the CUPS protocol, you must first add the gateway in The Things Stack. This can be done either in the console, or via the command line. See instructions for <a href="https://thethingsstack.io/gateways/adding-gateways/">Adding Gateways</a>.</p>
-<h2 id="create-an-api-key">Create an API Key</h2>
+<h2 id="create-separate-cups-and-lns-api-keys">Create Separate CUPS and LNS API Keys</h2>
+<p>Since CUPS automatically configures LNS, you will need two API keys.</p>
 <p>CUPS requires an API key for your gateway with the following rights:</p>
 <ul>
 <li>View gateway information</li>
 <li>Edit basic gateway settings</li>
 </ul>
+<p>LNS requires an API Key with the following rights:</p>
+<ul>
+<li>Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink</li>
+</ul>
 <p>To create an API key for your gateway, follow instructions for Creating a Gateway API key in <a href="https://thethingsstack.io/gateways/adding-gateways/">Adding Gateways</a>.</p>
+<h2 id="configure-cups-to-send-the-lns-api-key">Configure CUPS to Send the LNS API Key</h2>
+<div class="notification is-primary">
+  <h3 class="has-text-light">Command-line interface only</h3>
+  <p>The instructions below use the command-line interface (CLI).</p>
+  <div class="buttons">
+    <a class="button is-primary is-inverted is-outlined" href="https://thethingsstack.io/getting-started/cli/installing-cli/">Learn how to install the CLI</a>
+  </div>
+</div>
+<p>We need to configure CUPS in The Things Stack to transmit the LNS API key when a gateway connects. Use the following command to do so, replacing <code>&quot;your-gateway-id&quot;</code> with your gateway ID in The Things Stack and  <code>&quot;your-lns-api-key&quot;</code> with the LNS API key you created in the last step:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">GTW_ID</span><span class="o">=</span><span class="s2">&#34;your-gateway-id&#34;</span>
+$ <span class="nb">export</span> <span class="nv">LNS_KEY</span><span class="o">=</span><span class="s2">&#34;your-lns-api-key&#34;</span>
+$ <span class="nb">export</span> <span class="nv">SECRET</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> -n <span class="nv">$LNS_KEY</span> <span class="p">|</span> xxd -ps -u -c 8192<span class="k">)</span>
+$ ttn-lw-cli gateways update <span class="nv">$GTW_ID</span> --lbs-lns-secret.value <span class="nv">$SECRET</span>
+</code></pre></div><p>If successful, you should receive a response as follows:</p>
+<details>
+<summary>Show CLI output</summary>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;gateway-id&gt;&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-10-13T10:49:02.730Z&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-11-17T14:52:06.440Z&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;version_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+
+  <span class="p">},</span>
+  <span class="nt">&#34;lbs_lns_secret&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;key_id&#34;</span><span class="p">:</span> <span class="s2">&#34;is/gateway-secrets-encryption-key&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;encrpyted-base64-lns-api-key&gt;&#34;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></details>
 <h2 id="configure-gateway">Configure Gateway</h2>
-<p>Gateway configuration menus differ depending on the manufacturer, but all LoRa Basics™ Station gateways support the following configuration options. Consult your gateway documentation for more information about configuring your specific gateway.</p>
+<p>All LoRa Basics™ Station gateways support the following configuration options. Consult your gateway documentation for more information about configuring your specific gateway.</p>
 <h3 id="cups-server-address">CUPS Server Address</h3>
 <p>The server address is the network endpoint of The Things Stack CUPS. It is a combination of the <strong>protocol</strong> (https), the <strong>server address</strong>, and the <strong>port</strong>:</p>
 <p>Enter the following in your gateway as CUPS Server Address: <code>https://&lt;server-address&gt;:443</code></p>
@@ -145,11 +187,13 @@ debug: false
 <p>Upload the <code>.pem</code> file in your gateway as the CUPS Server Certificate / CUPS Trust.</p>
 <h3 id="cups-key-file">CUPS Key File</h3>
 <p>This is a file which The Things Stack uses to verify the identity of your gateway.</p>
-<p>Use the following command to create a file called <code>cups.key</code> with the <code>&lt;gateway-api-key&gt;</code> you created above.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer &lt;gateway-api-key&gt;&#34;</span> <span class="p">|</span> perl -p -e <span class="s1">&#39;s/\r\n|\n|\r/\r\n/g&#39;</span>  &gt; cups.key
+<p>Use the following commands to create a file called <code>cups.key</code>, replacing <code>&quot;your-cups-api-key&quot;</code> with the CUPS API key you created above.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">CUPS_KEY</span><span class="o">=</span><span class="s2">&#34;your-cups-api-key&#34;</span>
+$ <span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$CUPS_KEY</span><span class="s2">&#34;</span> <span class="p">|</span> perl -p -e <span class="s1">&#39;s/\r\n|\n|\r/\r\n/g&#39;</span>  &gt; cups.key
 </code></pre></div><blockquote>
 <p>The above command creates a file called <code>cups.key</code>, terminated with a Carriage Return Line Feed (<code>0x0D0A</code>) character. Upload this file in your gateway as the CUPS key.</p>
 </blockquote>
+<p>If the connection is successful, the CUPS server will send the LNS Server Address, LNS Trust and the LNS API Key to the gateway and it will automatically attempt to connect to the LNS Server.</p>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -198,8 +242,8 @@ debug: false
 <p class="is-size-7">
   Last changed by benolayinka on 17 Nov 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/c1ecd624fb214d28c02da05d6d02fb2d590a2ac7">
-      doc: Add lbs auth note
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/ee08bb81d5c76453003a431b9438cfb4d2bd81ec">
+      doc: Add CUPS instructions
     </a>
 </p>
 

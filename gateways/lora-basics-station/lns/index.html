@@ -132,7 +132,7 @@ debug: false
 </ul>
 <p>To create an API key for your gateway, follow instructions for Creating a Gateway API key in <a href="https://thethingsstack.io/gateways/adding-gateways/">Adding Gateways</a>.</p>
 <h2 id="configure-gateway">Configure Gateway</h2>
-<p>Gateway configuration menus differ depending on the manufacturer, but all LoRa Basics™ Station gateways support the following configuration options. Consult your gateway documentation for more information about configuring your specific gateway.</p>
+<p>All LoRa Basics™ Station gateways support the following configuration options. Consult your gateway documentation for more information about configuring your specific gateway.</p>
 <h3 id="lns-server-address">LNS Server Address</h3>
 <p>The server address is the network endpoint of The Things Stack LNS. It is a combination of the <strong>protocol</strong> (wss), the <strong>server address</strong>, and the <strong>port</strong>:</p>
 <p>Enter the following in your gateway as the LNS Server Address: <code>wss://&lt;server-address&gt;:8887</code></p>
@@ -144,8 +144,9 @@ debug: false
 <p>Upload the <code>.pem</code> file in your gateway as the LNS Server Certificate / LNS Trust.</p>
 <h3 id="lns-key-file">LNS Key File</h3>
 <p>This is a file which The Things Stack uses to verify the identity of your gateway.</p>
-<p>Use the following command to create a file called <code>lns.key</code> with the <code>&lt;gateway-api-key&gt;</code> you created above.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer &lt;gateway-api-key&gt;&#34;</span> <span class="p">|</span> perl -p -e <span class="s1">&#39;s/\r\n|\n|\r/\r\n/g&#39;</span>  &gt; lns.key
+<p>Use the following command to create a file called <code>lns.key</code>, replacing <code>&quot;your-lns-api-key&quot;</code> with the LNS API key you created above.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">LNS_KEY</span><span class="o">=</span><span class="s2">&#34;your-lns-api-key&#34;</span>
+$ <span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$LNS_KEY</span><span class="s2">&#34;</span> <span class="p">|</span> perl -p -e <span class="s1">&#39;s/\r\n|\n|\r/\r\n/g&#39;</span>  &gt; lns.key
 </code></pre></div><blockquote>
 <p>The above command creates a file called <code>lns.key</code>, terminated with a Carriage Return Line Feed (<code>0x0D0A</code>) character. Upload this file in your gateway as the LNS key.</p>
 </blockquote>
@@ -197,8 +198,8 @@ debug: false
 <p class="is-size-7">
   Last changed by benolayinka on 17 Nov 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/c1ecd624fb214d28c02da05d6d02fb2d590a2ac7">
-      doc: Add lbs auth note
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/ee08bb81d5c76453003a431b9438cfb4d2bd81ec">
+      doc: Add CUPS instructions
     </a>
 </p>
 
