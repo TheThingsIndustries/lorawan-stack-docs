@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>ThingsBoard Setup | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://thethingsstack.io/integrations/cloud-integrations/thingsboard/thingsboard-setup/" />
+  <link rel="alternate icon" href="/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="https://thethingsstack.io/css/theme.min.66449bb2268d8e98cc8bb71b21b0d8ce772c3f2331b05fc270c33e2edb776017.css" integrity="sha256-ZkSbsiaNjpjMi7cbIbDYzncsPyMxsF/CcMM&#43;Ltt3YBc="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="ThingsBoard Setup">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="ThingsBoard Setup">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://thethingsstack.io/integrations/cloud-integrations/thingsboard/thingsboard-setup/">
+  <meta name="twitter:title" content="ThingsBoard Setup" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/">
+        <img class="logo" src="/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.10</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/devices/">Devices</a>
+        <a class="navbar-item" href="/gateways/">Gateways</a>
+        <a class="navbar-item" href="/integrations/">Integrations</a>
+        <a class="navbar-item" href="/reference/">Reference</a>
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="/download/">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="search-container">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <div class="field has-addons has-addons-centered">
+            <div class="control">
+              <input class="input search-bar" id="search-input" type="text" placeholder="Search" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: "4372282a02970d8402d43457bf95d486",
+indexName: "thethingsstack",
+inputSelector: '#search-input',
+debug: false 
+});
+</script>
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">ThingsBoard</h2>
+
+<ul class="menu-list">
+<a href="https://thethingsstack.io/integrations/cloud-integrations/thingsboard/" class="">Overview</a>
+<li>
+  <a href="https://thethingsstack.io/integrations/cloud-integrations/thingsboard/tts-setup/" class="">The Things Stack Setup</a>
+</li>
+<li>
+  <a href="https://thethingsstack.io/integrations/cloud-integrations/thingsboard/thingsboard-setup/" class="is-active">ThingsBoard Setup</a>
+</li>
+<li>
+  <a href="https://thethingsstack.io/integrations/cloud-integrations/thingsboard/scheduling-downlinks/" class="">Scheduling Downlinks with ThingsBoard</a>
+</li>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">ThingsBoard Setup</h1>
+
+<div class="content">
+
+<p>After configuring the uplink payload formatter on The Things Stack, follow the steps in this section to prepare the setup on ThingsBoard.</p>
+<p>Log in to your ThingsBoard account.</p>
+<p>Before creating an integration, you need to define uplink and downlink data converters. To do so, first navigate to <strong>Data converters</strong> on the left hand menu.</p>
+<p>Click the <strong>+</strong> icon in the upper right and then select <strong>Create new converter</strong> to create a new uplink converter.</p>
+<p>Give a <strong>Name</strong> to your uplink converter, select <strong>Uplink</strong> as a <strong>Type</strong> and paste the following code in the decoder function field:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">decodeToJson</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">deviceName</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">end_device_ids</span><span class="p">.</span><span class="nx">device_id</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">deviceType</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">end_device_ids</span><span class="p">.</span><span class="nx">application_ids</span><span class="p">.</span><span class="nx">application_id</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">deviceName</span><span class="o">:</span> <span class="nx">deviceName</span><span class="p">,</span>
+    <span class="nx">deviceType</span><span class="o">:</span> <span class="nx">deviceType</span><span class="p">,</span>
+    <span class="nx">telemetry</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">temperature</span><span class="o">:</span> <span class="nx">data</span><span class="p">.</span><span class="nx">uplink_message</span><span class="p">.</span><span class="nx">decoded_payload</span><span class="p">.</span><span class="nx">temperature</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kd">function</span> <span class="nx">decodeToString</span><span class="p">(</span><span class="nx">payload</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">String</span><span class="p">.</span><span class="nx">fromCharCode</span><span class="p">.</span><span class="nx">apply</span><span class="p">(</span><span class="nb">String</span><span class="p">,</span> <span class="nx">payload</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">decodeToJson</span><span class="p">(</span><span class="nx">payload</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">str</span> <span class="o">=</span> <span class="nx">decodeToString</span><span class="p">(</span><span class="nx">payload</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">str</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+</code></pre></div><blockquote>
+<p><strong>Note:</strong> You can test the decoder by clicking the <strong>Test decoder function</strong> and submitting an uplink message from The Things Stack manually.</p>
+</blockquote>
+<figure>
+    <img src="uplink-converter.png"
+         alt="Creating the uplink converter"/> 
+</figure>
+
+<p>Finish by selecting <strong>Add</strong>.</p>
+<p>Follow the same procedure to create a converter with <strong>Downlink</strong> as a <strong>Type</strong> and a following encoder function:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="nx">downlinks</span><span class="o">:</span> <span class="p">[{</span>
+            <span class="nx">f_port</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="nx">confirmed</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nx">frm_payload</span><span class="o">:</span> <span class="nx">btoa</span><span class="p">(</span><span class="nx">msg</span><span class="p">.</span><span class="nx">version</span><span class="p">),</span>
+            <span class="nx">priority</span><span class="o">:</span> <span class="s2">&#34;NORMAL&#34;</span>
+        <span class="p">}]</span>
+    <span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">contentType</span><span class="o">:</span> <span class="s2">&#34;JSON&#34;</span><span class="p">,</span>
+    <span class="nx">data</span><span class="o">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="p">),</span>
+    <span class="nx">metadata</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">devId</span><span class="o">:</span> <span class="s1">&#39;device_id&#39;</span>     <span class="c1">//enter your device&#39;s ID here
+</span><span class="c1"></span>    <span class="p">}</span>
+<span class="p">};</span>
+<span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+</code></pre></div><blockquote>
+<p><strong>Note:</strong> Replace the <code>device_id</code> in the downlink converter function with the <strong>End device ID</strong> value from The Things Stack.</p>
+</blockquote>
+<figure>
+    <img src="downlink-converter.png"
+         alt="Creating a downlink converter"/> 
+</figure>
+
+<p>Next, navigate to the <strong>Integrations</strong> section on the left hand menu. Add a new integration by clicking the <strong>+</strong> button in the upper right corner.</p>
+<p>Give a name to your integration by filling in the <strong>Name</strong> field. For <strong>Type</strong>, choose <strong>TheThingsIndustries</strong>.</p>
+<blockquote>
+<p><strong>Note:</strong> Make sure the <strong>Enabled</strong> and <strong>Allow create devices or assets</strong> checkboxes are left ticked.</p>
+</blockquote>
+<p>For <strong>Uplink data converter</strong> and <strong>Downlink data converter</strong> choose the uplink and downlink converters you created in the previous step.</p>
+<p>Depending on your The Things Stack deployment, choose <strong>Host type</strong>.</p>
+<p>If you want to use TLS, enter <code>8883</code> for <strong>Port</strong>. Otherwise, enter <code>1883</code>.</p>
+<p>Use the credentials of your The Things Stack MQTT Server as <strong>Username</strong> and <strong>Password</strong>.</p>
+<blockquote>
+<p><strong>Note:</strong> You can check the connection with your host via port you specified using credentials you provided by pressing the <strong>Check connection</strong> button. If it fails, make sure you fix it.</p>
+</blockquote>
+<figure>
+    <img src="creating-integration.png"
+         alt="Creating the integration"/> 
+</figure>
+
+<p>Click the <strong>Add</strong> button on the bottom to finish creating the integration.</p>
+<p>A new device with your end device&rsquo;s ID will be created automatically. You can find it if you navigate to <strong>Device groups → All</strong> and search the end devices list. Select your device and switch to the <strong>Latest telemetry</strong> tab to see the telemetry data your device is sending, and use it to explore the further ThingsBoard features.</p>
+</div>
+
+
+
+<script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+
+
+<div class="is-clearfix">
+<a class="button is-pulled-left" href="/integrations/cloud-integrations/thingsboard/tts-setup/">← The Things Stack Setup</a>
+<a class="button is-pulled-right" href="/integrations/cloud-integrations/thingsboard/scheduling-downlinks/">Scheduling Downlinks with ThingsBoard →</a>
+</div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer background-footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/devices/">Devices</a></p>
+        <p><a class="" href="/gateways/">Gateways</a></p>
+        <p><a class="" href="/integrations/">Integrations</a></p>
+        <p><a class="" href="/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Nejra on 13 Nov 2020.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/07527b9d5c1eaccbef93b8ed4a1db6152085065b">
+      doc: Document ThingsBoard integration
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/cloud-integrations/thingsboard/thingsboard-setup/_index.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://thethingsstack.io/js/theme.min.4feb1389331adbef9047157f884dbdbd63af1c61ac83f327e60eef42f999cb26.js" integrity="sha256-T&#43;sTiTMa2&#43;&#43;QRxV/iE29vWOvHGGsg/Mn5g7vQvmZyyY="></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>
