@@ -3,6 +3,7 @@ title: "{{ replace .Name "-" " " | title }}"
 description: ""
 weight: 
 distributions: {{ jsonify (index site.Data "distributions") }}
+new_in_version: "3.8.5"
 ---
 
 Guidelines here are taken from [CONTRIBUTING.md](CONTRIBUTING.md) in this repository, which you should read. This template exists as a copy and paste starting point for new documentation. Remove the `draft`key in the Front Matter to generate the page (otherwise hugo will skip it).
@@ -34,7 +35,9 @@ Available distributions are {{< distributions-list >}} and are stored in `data/d
 
 ## New Features {{< new-in-version "3.8.5">}}
 
-Use the `{{< new-in-version "3.8.5" >}}` shortcode to tag documentation for features added in a particular version. For documentation that targets `v3.n`, that's the next patch bump, e.g `3.8.x`. For documentation targeting `v3.n+1` that's the next minor bump, e.g `3.9.0`. Check `tools/bin/mage version:current` for the current version.
+For entire pages dedicated to a feature that is new, use the Front Matter element `new_in_version`.
+
+For an inline tag, use the `{{< new-in-version "3.8.5" >}}` shortcode to tag documentation for features added in a particular version. For documentation that targets `v3.n`, that's the next patch bump, e.g `3.8.x`. For documentation targeting `v3.n+1` that's the next minor bump, e.g `3.9.0`. Check `tools/bin/mage version:current` for the current version.
 
 #### This Is A New Feature Heading {{< new-in-version "3.8.5">}}
 
