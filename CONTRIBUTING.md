@@ -102,9 +102,10 @@ Please respect the following guidelines for content in our documentation site.
 - Use title case for headings.
 - A documentation page starts with an introduction, and then the first heading. The first paragraph of the introduction is typically a summary of the page. Use a `<!--more-->` to indicate where the summary ends.
 - Divide long documents into separate files, each with its own folder and `_index.md`.
-- Use the [`distributions`](#distributions) Front Matter element or shortcodes to mark documentation that applies to particular distributions of The Things Stack.
+- Use the [`distributions`](#distributions) [Front Matter](https://gohugo.io/content-management/front-matter/) element or shortcodes to mark documentation that applies to particular distributions of The Things Stack.
 - Use the `{{< new-in-version "3.8.5" >}}` shortcode to tag documentation for features added in a particular version. For documentation that targets `master`, that's the next patch bump, e.g `3.8.x`. For documentation targeting `develop` that's the next minor bump, e.g `3.x.0`.
-- Use the `weight`tag in the [Front Matter](https://gohugo.io/content-management/front-matter/) to manually sort sections if necessary. If not, they will be sorted alphabetically.
+- Use the `deprecated_in_version` Front Matter element to mark a section as deprecated, or the `{{< deprecated-in-version "3.11" >}}` shortcode to produce an inline deprecation warning. If necessary, use th `{{< warning >}}` shortcode in the section content to provide additional information, e.g `{{< warning "This feature will be removed in January 5, 2021 for Cloud deployments">}}`.
+- Use the `weight`tag in the Front Matter to manually sort sections if necessary. If not, they will be sorted alphabetically.
 - Since the title is a `h1`, everything in the content is at least `h2` (`##`).
 - Paragraphs typically consist of at least two sentences.
 - Use an empty line between all blocks (headings, paragraphs, lists, ...).

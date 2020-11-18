@@ -45,6 +45,14 @@ This is new feature text {{< new-in-version "3.8.5">}}
 
 - This is a new feature bullet {{< new-in-version "3.8.5">}}
 
+## Deprecated Features {{< deprecated-in-version "3.11" >}}
+
+For entire sections that are deprecated, use the Front Matter element `deprecated_in_version`.
+
+For an inline tag, use the `{{< deprecated-in-version "3.8.5" >}}` shortcode.
+
+You may additionally provide information using the `{{< warning >}}` shortcode, e.g {{< warning "This feature will be removed in January 5, 2021 for Cloud deployments" >}} 
+
 ## Sections
 
 When possible, divide long documents into separate files, each with its own folder and `_index.md`. Use the `weight` tag in the [Front Matter](https://gohugo.io/content-management/front-matter/) to manually sort sections if necessary. If not, they will be sorted alphabetically.
