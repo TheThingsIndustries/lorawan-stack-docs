@@ -2,7 +2,11 @@
 {{ if eq .Page.File.Ext "html" }}
 {{ .Content }}
 {{ else }}
-<h1 class="title is-size-2">{{ .Title }}</h1>
+<h1 class="title is-size-2">{{ .Title }}
+{{ with .Params.new_in_version }}
+  {{ partial "new-in-version" . }}
+{{ end }}
+</h1>
 
 <div class="content">
 {{ with .Params.distributions }}

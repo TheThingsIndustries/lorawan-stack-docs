@@ -3,15 +3,19 @@
   <div class="column is-half is-flex">
     <div class="card has-radius is-fullwidth">
       <div class="card-content">
-        <h3 class="title is-size-5 is-uppercase"><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-        {{ with .Params.distributions }}
-        {{ $distributions := .}}
-        {{ if ( not ( reflect.IsSlice . ) ) }}
-          {{ $distributions = slice $distributions }}
+        <h3 class="title is-size-5 is-uppercase"><a href="{{ .Permalink }}">{{ .Title }}</a>
+        {{ with .Params.new_in_version }}
+          {{ partial "new-in-version" . }}
         {{ end }}
-        <p class="subtitle is-size-6 is-uppercase">
-            {{ delimit $distributions ", " " and " }} Only
-        </p>
+        </h3>
+        {{ with .Params.distributions }}
+          {{ $distributions := .}}
+          {{ if ( not ( reflect.IsSlice . ) ) }}
+            {{ $distributions = slice $distributions }}
+          {{ end }}
+          <p class="subtitle is-size-6 is-uppercase">
+              {{ delimit $distributions ", " " and " }} Only
+          </p>
         {{ end }}
         <div class="content has-text-grey">
           {{ .Summary }}
