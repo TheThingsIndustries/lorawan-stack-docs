@@ -14,7 +14,7 @@ Gateways can connect to Gateway Servers over multiple protocols. See [Networking
 
 ### Basic Station Protocol
 
-Gateways can connect to a Gateway Server using the [Basic Station](https://doc.sm.tc/station/index.html) LNS protocol. This is the recommended protocol for connecting gateways.
+Gateways can connect to a Gateway Server using the [Basic Station](https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/) LNS protocol. This is the recommended protocol for connecting gateways.
 
 ### UDP Protocol
 
