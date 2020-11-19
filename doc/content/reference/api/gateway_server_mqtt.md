@@ -5,7 +5,7 @@ description: ""
 
 This reference describes the MQTT protocol used by the Gateway Server. Packet forwarders implementing the MQTT protocols are specific for {{% tts %}}.
 
-The MQTT protocol can be used to develop custom packet forwarders or gateway bridges for exchanging traffic between a gateway and {{% tts %}}, or easily simulating gateway traffic for testing purposes. It is an alternative to the [Basic Station](https://doc.sm.tc/station/index.html) and the [Semtech UDP](https://github.com/Lora-net/packet_forwarder/blob/master/PROTOCOL.TXT) protocols.
+The MQTT protocol can be used to develop custom packet forwarders or gateway bridges for exchanging traffic between a gateway and {{% tts %}}, or easily simulating gateway traffic for testing purposes. It is an alternative to the [Basic Station](https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/) and the [Semtech UDP](https://github.com/Lora-net/packet_forwarder/blob/master/PROTOCOL.TXT) protocols.
 
 ## Multi-Tenancy
 
