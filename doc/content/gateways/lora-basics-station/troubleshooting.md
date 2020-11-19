@@ -35,7 +35,7 @@ This varies from device to device. If your device allows you to upload a `.key` 
 Authorization: <gateway-api-key>
 ```
 
-See the [{{% lbs %}} Authorization documentation](https://doc.sm.tc/station/authmodes.html) or your manufacturers guidelines for additional information.
+See the [{{% lbs %}} Authorization documentation](https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/?url=authmodes.html) or your manufacturers guidelines for additional information.
 
 ## Is an API Key required?
 
@@ -54,4 +54,4 @@ Some gateways require that `.key` files are terminated with a Carriage Return Li
 echo "Authorization: Bearer <gateway-api-key>" | perl -p -e 's/\r\n|\n|\r/\r\n/g'  > file.key
 ```
 
-See the [{{< lbs >}} documentation](https://doc.sm.tc/station/authmodes.html#tls-server-authentication-and-client-token) for more information.
+See the [{{< lbs >}} documentation](https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/?url=authmodes.html) for more information.
