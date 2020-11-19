@@ -4,7 +4,7 @@ description: ""
 weight: -1
 ---
 
-The [{{% lbs %}}](https://lora-developers.semtech.com/resources/tools/basic-station/welcome-basic-station/) protocol simplifies management of large scale LoRaWAN networks. {{% lbs %}} is the preferred way of connecting Gateways to {{% tts %}}.
+The [{{% lbs %}}](https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/) protocol simplifies management of large scale LoRaWAN networks. {{% lbs %}} is the preferred way of connecting Gateways to {{% tts %}}.
 
 This section contains information for connecting your gateway to {{% tts %}} using {{% lbs %}} and its subprotocols.
 
@@ -35,4 +35,4 @@ LNS establishes a data connection between a {{% lbs %}} gateway and a Network Se
 
 CUPS allows a Network Server to configure gateways remotely, and to update gateway firmware. CUPS is **not required** for sending and receiving LoRaWAN data, but it can greatly simplify the management of gateways. Configuring CUPS will also automatically retrieve LNS credentials and configure LNS on your gateway.
 
-More information about {{% lbs %}} is available at [Semtech's Developer Portal](https://lora-developers.semtech.com/resources/tools/basic-station/welcome-basic-station/)
+More information about {{% lbs %}} is available at [Semtech's Developer Portal](https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/)
