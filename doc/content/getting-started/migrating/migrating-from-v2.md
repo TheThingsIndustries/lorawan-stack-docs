@@ -21,23 +21,39 @@ For a breakdown of differences between {{% ttnv2 %}} and {{% tts %}}, see the [M
 
 ## Configure V2 CLI
 
-You will need to use the latest version of `ttnctl`, the CLI for {{% ttnv2 %}}. Follow the [instructions from The Things Network documentation][1]. An overview is given below:
+For using `ttnctl` with **The Things Network**, follow [these instructions](https://www.thethingsnetwork.org/docs/network/cli/quick-start.html). 
 
-Download `ttnctl` [for your operating system][2].
+When using a **private V2 network server**, provided by The Things Industries, go through the following steps:
 
-Update to the latest version:
+1. [Download](https://www.thethingsnetwork.org/docs/network/cli/quick-start.html) `ttnctl` for your operating system. 
+2. Update `ttnctl` to the latest version by running:
+    ```bash
+    $ ttnctl selfupdate
+    ```
+3. Create a file called `.ttnctl.yml` in your home directory and fill it with the following information:
+    ```
+    auth-server: https://account.<domain_id>.thethings.industries
+    allow-insecure: false
+    data: /home/<user_name>/.ttnctl
+    router-id: <domain_id>-router
+    mqtt-address: <domain_id>.thethings.industries:1883
+    handler-id: <domain_id>-handler
+    discovery-address: <domain_id>.thethings.industries:1900
+    ```
+    
+    **For windows users** make sure to use the `--config` flag with the full path to the configuration file: 
+    ```
+    ttnctl.exe --config fullpath/config.yml
+    ```
+4. Get the access code needed for logging in: `https://<domain_id>.thethings.industries/users/authorize?client_id=ttnctl&redirect_uri=/oauth/callback/ttnctl&response_type=code`
+5. Login: 
+    ```bash
+    $ ttnctl user login <access_code>
+    ```
+6. You are now logged in your private network, you should now see a folder named `/.ttnctl` in your home directory with private files.
+    
+    > Optional: define an alias on ttnctl --config /home/<user_name>/.ttnctl/community.yml to go faster
 
-```bash
-$ ttnctl selfupdate
-```
-
-Go to [https://account.thethingsnetwork.org][3] and click [ttnctl access code][4].
-
-Use the returned code to login from the CLI with:
-
-```bash
-$ ttnctl user login "t9XPTwJl6shYSJSJxQ1QdATbs4u32D4Ib813-fO9Xlk"
-```
 
 ## Export End Devices from V2
 
