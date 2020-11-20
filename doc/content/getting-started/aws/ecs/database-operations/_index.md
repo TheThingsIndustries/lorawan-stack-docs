@@ -16,7 +16,9 @@ TASK_DEFINITION CLUSTER_NAME SUBNET_ONE SUBNET_TWO SECURITY_GROUP
 
 To run a task from the AWS Console, go to **Amazon ECS** > **Clusters** > your cluster > **Tasks**, and click **Run new Task**.
 
-For **Task Definition** select the latest version of the ops task definition (`TASK_DEFINITION` from earlier). Select the **VPC**, and for **Subnets** the subnets `SUBNET_ONE` and `SUBNET_TWO` from the `OpsRunTaskArguments` mentioned earlier. Instead of creating a new security group, select the existing `SECURITY_GROUP` listed in `OpsRunTaskArguments`.
+For **Task Definition** select the latest version of the ops task definition (`TASK_DEFINITION` from earlier). 
+
+Select the **VPC**, and for **Subnets** the subnets `SUBNET_ONE` and `SUBNET_TWO` from the `OpsRunTaskArguments` mentioned earlier. Instead of creating a new security group, select the existing `SECURITY_GROUP` listed in `OpsRunTaskArguments`.
 
 Under **Advanced Options** > **Container Overrides** > `ttes`, set the **Command override** to the command you want to run, separating arguments with commas. A typical command will look like `tti-lw-stack,COMMAND,ARGUMENTS,AND,FLAGS`.
 
@@ -104,7 +106,7 @@ tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=cli,--name=Command 
 {{</ tabs/tab >}}
 {{</ tabs/container >}}
 
-> **NOTE:** Replace `--tenant-id=NULL` with `--tenant-id=your-tenant-id` in single-tenant deployments.
+> **Note:** Replace `--tenant-id=NULL` with `--tenant-id=your-tenant-id` in single-tenant deployments.
 
 ## Create the OAuth Client for the Console
 
@@ -121,13 +123,11 @@ tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=console-eu1,--name=
 {{</ tabs/tab >}}
 {{</ tabs/container >}}
 
-> **NOTE (1):** Replace `--tenant-id=NULL` with `--tenant-id=your-tenant-id` in single-tenant deployments.
-
-> **NOTE (2):** Replace the values of `--id`, `--name` and `--secret` with your own.
-
-> **NOTE (3):** For secondary clusters (where the domain of the Console is not equal to the domain of the Identity Server), omit `--redirect-uri=/console/oauth/callback` and `--logout-redirect-uri=/console`.
-
-> **NOTE (4):** You can use a similar command for the Device Claiming server if you use `/claim` instead of `/console` for the redirect URIs.
+> **Notes:** 
+>- Replace `--tenant-id=NULL` with `--tenant-id=your-tenant-id` in single-tenant deployments.
+>- Replace the values of `--id`, `--name` and `--secret` with your own.
+>- For secondary clusters (where the domain of the Console is not equal to the domain of the Identity Server), omit `--redirect-uri=/console/oauth/callback` and `--logout-redirect-uri=/console`.
+>- You can use a similar command for the Device Claiming server if you use `/claim` instead of `/console` for the redirect URIs.
 
 ## Migrate Identity Server Database
 

@@ -22,20 +22,20 @@ This section lists the preparatory steps necessary to successfully complete this
 
 ### Specialized Knowledge
 
-In order to follow this guide to deploy {{% tts %}}, it is recommended to be familiar with the following concepts
+In order to follow this guide to deploy {{% tts %}}, it is recommended to be familiar with the following concepts:
 - AWS EC2, AWS CloudFormation
 - Shell and command line usage
 - Basics of LoRaWAN devices and gateways
 
 ### Prerequisites
 
-The following are necessary to complete this guide
-1. An account with AWS with access to the AWS Marketplace. If you don't have one, one can be created using the [Create an AWS account](https://portal.aws.amazon.com/billing/signup#/start) page.
+The following are necessary to complete this guide:
+1. An account with AWS with access to the AWS Marketplace. If you don't have one, create it by using the [Create an AWS account](https://portal.aws.amazon.com/billing/signup#/start) page.
 2. An RSA Public-Private Key pair
-3. Sufficient rights on your account to create IAM roles.
-4. A LoRaWAN compliant Gateway.
-5. A LoRaWAN compliant End Device.
-6. Access to a name server for DNS mapping.
+3. Sufficient rights on your account to create IAM roles
+4. A LoRaWAN compliant Gateway
+5. A LoRaWAN compliant End Device
+6. Access to a name server for DNS mapping
 
 ## Deployment using AWS Cloud Formation
 
@@ -61,21 +61,21 @@ This template allows the user to customize the deployment. The following is a li
 |Domain|Domain name. You should be able to configure DNS for the domain. TLS certificates from Let's Encrypt will automatically be requested.|-|
 |Network Title*|The title of your deployment.|`The Things Enterprise Stack for LoRaWAN`|
 
-> \* This is an optional field
+> \* Optional field
 
 #### Security Configuration
 
 |**Parameter**|**Description**|**Default**|
 |---|---|---|
-|Admin Username|Name of the admin user|`admin`|
-|Admin Email|Email address of the admin user|`admin@mycompany.com`|
+|Admin Username|Name of the admin user.|`admin`|
+|Admin Email|Email address of the admin user.|`admin@mycompany.com`|
 |Initial Admin Password|Initial admin password. Please choose a strong password. It is recommended to change this password upon first login.|-|
-|Amazon RDS Database Username|Username of the relational database|`postgres`|
+|Amazon RDS Database Username|Username of the relational database.|`postgres`|
 |Amazon RDS Database Password|Password for the relational database. This password is used to access the Amazon RDS database.|-|
 |SSH Key|Name of an existing EC2 KeyPair to enable SSH access to your instance.|-|
 |SendGrid API Key*|API key for [SendGrid](https://sendgrid.com/) to send emails.|-|
 
-> \* This is an optional field
+> \* Optional field
 
 #### External Connectivity
 
@@ -86,7 +86,7 @@ This template allows the user to customize the deployment. The following is a li
 
 #### User Registration
 
-All of the fields below are optional.
+>**Note:** All of the fields below are optional.
 
 |**Parameter**|**Description**|**Default**|
 |---|---|---|
@@ -100,11 +100,11 @@ All of the fields below are optional.
 
 #### Resource Settings
 
-The fields in this section are for advanced users. A change to some of these parameters might incur additional costs.
+>**Note:** The fields in this section are for advanced users. A change to some of these parameters might incur additional costs.
 
 |**Parameter**|**Description**|**Default**|
 |---|---|---|
-|EC2 Instance Type|EC2 Instance Type|t3.small|
+|EC2 Instance Type|EC2 Instance Type.|t3.small|
 |Redis Backup Retention Period*|The retention period for daily Redis backups (days).|7|
 |Redis Instance Type|The size of machine for the Redis instance.|cache.t2.small|
 |Enable Multi-AZ for Redis| If true, replicas of Redis are created. If true, RedisNumCacheClusters property must be greater than 1.|false|
@@ -117,7 +117,7 @@ The fields in this section are for advanced users. A change to some of these par
 
 #### LoRaWAN Network Server Settings
 
-The following parameters are optional
+>**Note:** All of following parameters are optional.
 
 |**Parameter**|**Description**|**Default**|
 |---|---|---|
@@ -133,7 +133,7 @@ The following parameters are optional
 
 #### Update From Existing Deployment
 
-The following parameters are exclusively meant for updating an existing deployment.
+>**Note:** The following parameters are exclusively meant for updating an existing deployment.
 
 |**Parameter**|**Description**|
 |---|---|

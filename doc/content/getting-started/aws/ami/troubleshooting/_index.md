@@ -11,13 +11,19 @@ Move to generic getting started guide once ready.
 
 This section contains information to troubleshoot {{% tts %}} deployment.
 
+<!--more-->
+
 ### My CloudFormation stack creation failed
 
 The CloudFormation Events page contains information on the progress of the deployment of various AWS services. This also contains error information (if any) which can help you debug the cause of the failure.
 
 ### How can I SSH into my machine?
 
-You can SSH into the EC2 machine using the public IP output value. In AWS Console and open the CloudFormation resource and click on your recently deployed stack. Navigate to the **Outputs** tab and copy the value of the **PublicIP** field. Now using the private key of the **SSH Key** value that you entered during deployment, you can SSH into the machine using
+You can SSH into the EC2 machine using the public IP output value. 
+
+Log in AWS Console and open the CloudFormation resource and click on your recently deployed stack. Navigate to the **Outputs** tab and copy the value of the **PublicIP** field. 
+
+Now, using the private key of the **SSH Key** value that you entered during deployment, you can SSH into the machine using
 ```bash
 $ ssh -i <path-to-private-key> ec2-user@<PublicIP>
 ```
