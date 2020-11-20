@@ -133,14 +133,43 @@ debug: false
 <p><strong>Second</strong>: Follow this guide in order to migrate a single end device (and gateway, if needed) to The Things Stack. Continue by gradually migrating your end devices in small batches. Avoid migrating production workloads before you are certain that they will work as expected.</p>
 <p><strong>Finally</strong>: Once you are confident that your end devices are working properly, migrate the rest of your devices and gateways to The Things Stack.</p>
 <h2 id="configure-v2-cli">Configure V2 CLI</h2>
-<p>You will need to use the latest version of <code>ttnctl</code>, the CLI for The Things Network Stack V2. Follow the [instructions from The Things Network documentation][1]. An overview is given below:</p>
-<p>Download <code>ttnctl</code> [for your operating system][2].</p>
-<p>Update to the latest version:</p>
+<p>For using <code>ttnctl</code> with <strong>The Things Network</strong>, follow <a href="https://www.thethingsnetwork.org/docs/network/cli/quick-start.html">these instructions</a>.</p>
+<p>When using a <strong>private V2 network server</strong>, provided by The Things Industries, go through the following steps:</p>
+<ol>
+<li>
+<p><a href="https://www.thethingsnetwork.org/docs/network/cli/quick-start.html">Download</a> <code>ttnctl</code> for your operating system.</p>
+</li>
+<li>
+<p>Update <code>ttnctl</code> to the latest version by running:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttnctl selfupdate
-</code></pre></div><p>Go to [https://account.thethingsnetwork.org][3] and click [ttnctl access code][4].</p>
-<p>Use the returned code to login from the CLI with:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttnctl user login <span class="s2">&#34;t9XPTwJl6shYSJSJxQ1QdATbs4u32D4Ib813-fO9Xlk&#34;</span>
-</code></pre></div><h2 id="export-end-devices-from-v2">Export End Devices from V2</h2>
+</code></pre></div></li>
+<li>
+<p>Create a file called <code>.ttnctl.yml</code> in your home directory and fill it with the following information:</p>
+<pre><code>auth-server: https://account.&lt;domain_id&gt;.thethings.industries
+allow-insecure: false
+data: /home/&lt;user_name&gt;/.ttnctl
+router-id: &lt;domain_id&gt;-router
+mqtt-address: &lt;domain_id&gt;.thethings.industries:1883
+handler-id: &lt;domain_id&gt;-handler
+discovery-address: &lt;domain_id&gt;.thethings.industries:1900
+</code></pre><p><strong>For windows users</strong> make sure to use the <code>--config</code> flag with the full path to the configuration file:</p>
+<pre><code>ttnctl.exe --config fullpath/config.yml
+</code></pre></li>
+<li>
+<p>Get the access code needed for logging in: <code>https://&lt;domain_id&gt;.thethings.industries/users/authorize?client_id=ttnctl&amp;redirect_uri=/oauth/callback/ttnctl&amp;response_type=code</code></p>
+</li>
+<li>
+<p>Login:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttnctl user login &lt;access_code&gt;
+</code></pre></div></li>
+<li>
+<p>You are now logged in your private network, you should now see a folder named <code>/.ttnctl</code> in your home directory with private files.</p>
+<blockquote>
+<p>Optional: define an alias on ttnctl &ndash;config /home/&lt;user_name&gt;/.ttnctl/community.yml to go faster</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="export-end-devices-from-v2">Export End Devices from V2</h2>
 <p>In this step, the end devices from The Things Network Stack V2 will be exported in a JSON format that can then be parsed and imported by The Things Stack.</p>
 <p>The exported end devices contain the device name, description, location data, activation mode (ABP/OTAA), root keys and the AppEUI. They also contain the session keys, so your OTAA devices can simply keep working with The Things Stack.</p>
 <p>To get started, select the <strong>AppID</strong> and <strong>AppEUI</strong> of the application you want to export your end devices from:</p>
@@ -212,10 +241,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 22 Oct 2020.
+  Last changed by laurensslats on 17 Nov 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2f9bf3382c643b2e960a25490f74f1148ea28e65">
-      doc: Reorganize docs
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/46154c449f3f8fe2bbd10a85cbae7565f0c7c0a7">
+      doc: Update v2 migrations docs with info on CLI configuration
     </a>
 </p>
 
