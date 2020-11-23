@@ -69,7 +69,7 @@ $ docker-compose run --rm stack is-db create-oauth-client \
   --redirect-uri "https://thethings.example.com/console/oauth/callback" \
   --redirect-uri "/console/oauth/callback" \
   --logout-redirect-uri "https://thethings.example.com/console" \
-  --logout-redirect-uri "/console" \
+  --logout-redirect-uri "/console"
 ```
 
 ## Running {{% tts %}}
