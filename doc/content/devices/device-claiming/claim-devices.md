@@ -30,4 +30,4 @@ Authorize your browser to access the camera, scan the the device's QR code for c
 
 The device has been successfully claimed, so you can return to the Console and you will see the device in your application.
 
->**Note:** Device claiming does not transfer a security session for a device, it only transfers ownership. The original LoRaWAN session is deleted. The device needs to join the network again for traffic to appear.
+{{< note >}} Device claiming does not transfer a security session for a device, it only transfers ownership. The original LoRaWAN session is deleted. The device needs to join the network again for traffic to appear. {{</ note >}}
