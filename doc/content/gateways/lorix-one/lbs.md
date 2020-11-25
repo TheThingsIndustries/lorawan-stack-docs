@@ -48,4 +48,4 @@ If the connection fails, you will get this kind of message:
 
 Please check the configuration and the **LoRa Network Server** status. After a configuration change, always restart the Basic Station with the **Restart** button to make it effective.
 
->**Note:** if the Basic Station crashes for any reason, it will be automatically restarted if the **Auto-start** option is enabled.
+{{< info >}} If the Basic Station crashes for any reason, it will be automatically restarted if the **Auto-start** option is enabled. {{</ info >}}

@@ -8,11 +8,11 @@ weight: -1
 
 <!--more-->
 
-> CUPS is **not required** for sending and receiving LoRaWAN data, but it simplifies gateway management.
+{{< info >}} CUPS is **not required** for sending and receiving LoRaWAN data, but it simplifies gateway management.
 
-> Configuring CUPS automatically retrieves LNS credentials and configures LNS on your gateway. If you configure CUPS, **DO NOT** manually configure LNS, or your gateway may ignore the CUPS credentials.
+CUPS support in {{% tts %}} is in beta and is subject to change. {{</ info >}}
 
-> CUPS support in {{% tts %}} is in beta and is subject to change.
+{{< warning >}} Configuring CUPS automatically retrieves LNS credentials and configures LNS on your gateway. If you configure CUPS, **DO NOT** manually configure LNS, or your gateway may ignore the CUPS credentials. {{</ warning >}}
 
 ## Requirements
 
@@ -85,7 +85,7 @@ The server address is the network endpoint of {{% tts %}} CUPS. It is a combinat
 
 Enter the following in your gateway as CUPS Server Address: `https://<server-address>:443`
 
-> The `<server-address>` is the address of {{% tts %}}. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `thethings.example.com`, e.g `https://thethings.example.com:443`
+{{< note >}} The `<server-address>` is the address of {{% tts %}}. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `thethings.example.com`, e.g `https://thethings.example.com:443`. {{</ note >}}
 
 ### CUPS Server Certificate / CUPS Trust
 
@@ -104,6 +104,6 @@ $ export CUPS_KEY="your-cups-api-key"
 $ echo "Authorization: Bearer $CUPS_KEY" | perl -p -e 's/\r\n|\n|\r/\r\n/g'  > cups.key
 ```
 
-> The above command creates a file called `cups.key`, terminated with a Carriage Return Line Feed (`0x0D0A`) character. Upload this file in your gateway as the CUPS key.
+{{< note >}} The above command creates a file called `cups.key`, terminated with a Carriage Return Line Feed (`0x0D0A`) character. Upload this file in your gateway as the CUPS key. {{</ note >}}
 
 If the connection is successful, the CUPS server will send the LNS Server Address, LNS Trust and the LNS API Key to the gateway and it will automatically attempt to connect to the LNS Server.

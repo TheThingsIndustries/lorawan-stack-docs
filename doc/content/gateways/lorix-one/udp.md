@@ -20,4 +20,4 @@ On the **Global** tab of the configuration editor, set the following configurati
 
 Save the configuration and start the packet forwarder.
 
->**Note:** the UDP Packet Forwarder does not correctly handle unstable connectivity and has no security.
+{{< warning >}} the UDP Packet Forwarder does not correctly handle unstable connectivity and has no security. {{</ warning >}}

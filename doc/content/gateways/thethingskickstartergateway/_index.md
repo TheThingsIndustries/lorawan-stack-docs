@@ -37,7 +37,7 @@ Enter the following fields:
 - **Name**: the **Gateway ID** that you chose earlier.
 - Choose the WiFi network from the drop down and enter a password if necessary.
 
->**Note:** To connect to a Cloud Hosted tenant, the tenant ID must be added to the  **Gateway ID** field in the format **Gateway ID**@**Tenant ID**.
+{{< note >}} To connect to a Cloud Hosted tenant, the tenant ID must be added to the  **Gateway ID** field in the format **Gateway ID**@**Tenant ID**. {{</ note >}}
 
 Click the **Show Advanced Options** button and enter the following fields:
 

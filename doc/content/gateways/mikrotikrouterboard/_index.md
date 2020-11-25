@@ -12,7 +12,7 @@ This guide shows how to connect this gateway to {{% tts %}}.
 
 Its technical specifications can be found in [the MikroTik official documentation](https://mikrotik.com/product/wap_lora8_kit). 
 
->**Note:** This gateway does not currently support changing Frequency Plans.
+{{< warning >}} This gateway does not currently support changing Frequency Plans. {{</ warning >}}
 
 There are multiple interfaces to configure the gateway parameters. This page guides you to connect it to {{% tts %}} using a web browser or the [MikroTik Mobile App](https://mikrotik.com/mobile_app) for Android/iOS.
 
