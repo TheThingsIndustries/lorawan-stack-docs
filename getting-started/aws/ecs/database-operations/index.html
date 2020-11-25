@@ -126,7 +126,8 @@ debug: false
 <p>The <code>OpsRunTaskArguments</code> output of the stack deployed from the <code>5-2-ecs-ops</code> template contains the parameters needed to run (database) operations. The value of this output contains:</p>
 <pre><code>TASK_DEFINITION CLUSTER_NAME SUBNET_ONE SUBNET_TWO SECURITY_GROUP
 </code></pre><p>To run a task from the AWS Console, go to <strong>Amazon ECS</strong> &gt; <strong>Clusters</strong> &gt; your cluster &gt; <strong>Tasks</strong>, and click <strong>Run new Task</strong>.</p>
-<p>For <strong>Task Definition</strong> select the latest version of the ops task definition (<code>TASK_DEFINITION</code> from earlier). Select the <strong>VPC</strong>, and for <strong>Subnets</strong> the subnets <code>SUBNET_ONE</code> and <code>SUBNET_TWO</code> from the <code>OpsRunTaskArguments</code> mentioned earlier. Instead of creating a new security group, select the existing <code>SECURITY_GROUP</code> listed in <code>OpsRunTaskArguments</code>.</p>
+<p>For <strong>Task Definition</strong> select the latest version of the ops task definition (<code>TASK_DEFINITION</code> from earlier).</p>
+<p>Select the <strong>VPC</strong>, and for <strong>Subnets</strong> the subnets <code>SUBNET_ONE</code> and <code>SUBNET_TWO</code> from the <code>OpsRunTaskArguments</code> mentioned earlier. Instead of creating a new security group, select the existing <code>SECURITY_GROUP</code> listed in <code>OpsRunTaskArguments</code>.</p>
 <p>Under <strong>Advanced Options</strong> &gt; <strong>Container Overrides</strong> &gt; <code>ttes</code>, set the <strong>Command override</strong> to the command you want to run, separating arguments with commas. A typical command will look like <code>tti-lw-stack,COMMAND,ARGUMENTS,AND,FLAGS</code>.</p>
 <p>Alternatively, you can run ops commands using the AWS CLI:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ aws ecs run-task <span class="se">\
@@ -250,7 +251,7 @@ debug: false
 </div>
 
 <blockquote>
-<p><strong>NOTE:</strong> Replace <code>--tenant-id=NULL</code> with <code>--tenant-id=your-tenant-id</code> in single-tenant deployments.</p>
+<p><strong>Note:</strong> Replace <code>--tenant-id=NULL</code> with <code>--tenant-id=your-tenant-id</code> in single-tenant deployments.</p>
 </blockquote>
 <h2 id="create-the-oauth-client-for-the-console">Create the OAuth Client for the Console</h2>
 <div class="tabs is-boxed">
@@ -283,16 +284,13 @@ debug: false
 </div>
 
 <blockquote>
-<p><strong>NOTE (1):</strong> Replace <code>--tenant-id=NULL</code> with <code>--tenant-id=your-tenant-id</code> in single-tenant deployments.</p>
-</blockquote>
-<blockquote>
-<p><strong>NOTE (2):</strong> Replace the values of <code>--id</code>, <code>--name</code> and <code>--secret</code> with your own.</p>
-</blockquote>
-<blockquote>
-<p><strong>NOTE (3):</strong> For secondary clusters (where the domain of the Console is not equal to the domain of the Identity Server), omit <code>--redirect-uri=/console/oauth/callback</code> and <code>--logout-redirect-uri=/console</code>.</p>
-</blockquote>
-<blockquote>
-<p><strong>NOTE (4):</strong> You can use a similar command for the Device Claiming server if you use <code>/claim</code> instead of <code>/console</code> for the redirect URIs.</p>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>Replace <code>--tenant-id=NULL</code> with <code>--tenant-id=your-tenant-id</code> in single-tenant deployments.</li>
+<li>Replace the values of <code>--id</code>, <code>--name</code> and <code>--secret</code> with your own.</li>
+<li>For secondary clusters (where the domain of the Console is not equal to the domain of the Identity Server), omit <code>--redirect-uri=/console/oauth/callback</code> and <code>--logout-redirect-uri=/console</code>.</li>
+<li>You can use a similar command for the Device Claiming server if you use <code>/claim</code> instead of <code>/console</code> for the redirect URIs.</li>
+</ul>
 </blockquote>
 <h2 id="migrate-identity-server-database">Migrate Identity Server Database</h2>
 <p>Before upgrading the Identity Server to a new minor version, the database may need to be migrated.</p>
@@ -376,10 +374,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Hylke Visser on 23 Sep 2020.
+  Last changed by Nejra on 20 Nov 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/70be6b195c565b782fd37dc95d66673af7f86f4d">
-      doc: Address ECS doc review comments
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/6c87bfba72ffae8f55b136e065a03ffcbbae942c">
+      doc: Improving readability of AWS doc
     </a>
 </p>
 
