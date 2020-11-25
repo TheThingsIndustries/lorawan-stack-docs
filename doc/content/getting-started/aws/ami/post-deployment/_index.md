@@ -7,11 +7,13 @@ aliases: "/guides/aws/ami/after-deploy"
 
 This section provides the information necessary to get started with The Things Enterprise Stack after it is deployed via [AWS Marketplace](https://aws.amazon.com/marketplace/pp/The-Things-Industries-The-Things-Enterprise-Stack/B081HZKDJ4) using AWS CloudFormation.
 
+<!--more-->
+
 ## DNS Configuration
 
 In order to access the Console/API of the {{% tts %}}, the domain name chosen during deployment must be mapped to the public IP address of the CloudFormation stack. This section provides details on how to do that.
 
-1. In AWS Console and open the CloudFormation resource and click on your recently deployed stack.
+1. Log in AWS Console and open the CloudFormation resource and click on your recently deployed stack.
 2. Navigate to the **Outputs** tab and copy the value of the **PublicIP** field.
 
 Now, login to the Domain Name Management window of the Domain Name Registrar to which your preferred Domain is registered. Create a DNS **A** record with the parameters shown below.
@@ -20,13 +22,13 @@ Now, login to the Domain Name Management window of the Domain Name Registrar to 
 |---|---|---|
 |`@`|`A`|**PublicIP**|
 
-If you are using a sub-domain,
+If you are using a sub-domain:
 
 |**Name**|**Record Type**|**Value**|
 |---|---|---|
 |`sub-domain`|`A`|**PublicIP**|
 
-For example, if your **PublicIP** value is `3.12.14.15` and your sub-domain is `lorawan.mycompany.com`, then navigate to the management tab for the domain `mycompany.com` and perform the following mapping
+For example, if your **PublicIP** value is `3.12.14.15` and your sub-domain is `lorawan.mycompany.com`, then navigate to the management tab for the domain `mycompany.com` and perform the following mapping:
 
 |**Name**|**Record Type**|**Value**|
 |---|---|---|
@@ -44,11 +46,11 @@ Apart from the DNS mapping above, no additional steps are necessary for this.
 
 ## Getting Started using the Console
 
-Please check the [Console Guide]({{< ref "/getting-started/console" >}}) to get quickly started with The Things Enterprise Stack Console.
+Please check the [Console]({{< ref "/getting-started/console" >}}) guide to get quickly started with The Things Enterprise Stack Console.
 
 ## Getting Started using the Command Line Interface (CLI)
 
-Please check the [CLI Guide]({{< ref "/getting-started/cli" >}}) to get quickly started with The Things Enterprise Stack CLI.
+Please check the [CLI]({{< ref "/getting-started/cli" >}}) guide to get quickly started with The Things Enterprise Stack CLI.
 
 ## SSH Access
 
@@ -93,17 +95,17 @@ Now that your stack has been successfully deployed, let's look at how to connect
 
 ### Connecting a Gateway
 
-Please check our extensive guides on [Connecting Gateways]({{< relref "gateways" >}}) for the particular brand/model of your gateway.
+Please check [Gateways]({{< relref "gateways" >}}) section to find an extensive connecting guide for the particular brand/model of your gateway.
 
 ### Registering a Device
 
-Please check the guide on [Adding Devices]({{< relref "devices/adding-devices" >}}).
+Please check the [Adding Devices]({{< relref "devices/adding-devices" >}}) guide.
 
 ## AWS IoT
 
 The Things Enterprise Stack supports publishing of uplink messages directly to the [AWS IoT suite](https://aws.amazon.com/iot/). In order for this to work, the **AWS IoT Telemetry** option in the CloudFormation template must be set to **true** during the deployment phase.
 
-Please check the guide on [AWS IoT]({{< relref "integrations/aws-iot/application-server-telemetry" >}}) for more information.
+Please check the guide on [AWS IoT]({{< relref "integrations/aws-iot" >}}) guide for more information.
 
 ## Updating the CloudFormation Stack
 
