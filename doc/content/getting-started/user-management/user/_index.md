@@ -50,7 +50,7 @@ In the bottom of the edit view, you can click **Delete user** to delete the user
 
 {{< figure src="users-delete.png" alt="Deleting a User" >}}
 
->**Note:** When deleting users, their user IDs stay reserved in the system, it is not possible to create a new user with the same user ID. In most cases you'll probably want to update a user to set its state to "suspended" instead.
+{{< warning >}} When deleting users, their user IDs stay reserved in the system, it is not possible to create a new user with the same user ID. In most cases you'll probably want to update a user to set its state to `suspended` instead. {{</ warning >}}
 
 {{< /tabs/tab >}}
 
@@ -161,7 +161,7 @@ $ ttn-lw-cli users list --name --state --admin
 ```
 </details>
 
-> **Tip:** Use the pagination flags `--limit` and `--page` when there are many users.
+{{< note >}} Use the pagination flags `--limit` and `--page` when there are many users. {{</ note >}}
 
 ## Searching for Users
 
@@ -185,7 +185,7 @@ $ ttn-lw-cli users search --id-contains new --name
 ```
 </details>
 
-> **Tip:** Use the pagination flags `--limit` and `--page` when there are many users.
+{{< note >}} Use the pagination flags `--limit` and `--page` when there are many users. {{</ note >}}
 
 ## Updating Users
 
@@ -214,7 +214,7 @@ $ ttn-lw-cli users update new-user --state APPROVED --admin true
 
 To delete a user, use the `users delete` command.
 
->**Note:** When deleting users, their user IDs stay reserved in the system, it is not possible to create a new user with the same user ID. In most cases you'll probably want to update a user to set its state to "suspended" instead.
+{{< warning >}} When deleting users, their user IDs stay reserved in the system, it is not possible to create a new user with the same user ID. In most cases you'll probably want to update a user to set its state to `suspended` instead. {{</ warning >}}
 
 {{< /tabs/tab >}}
 

@@ -87,9 +87,9 @@ Alternatively, you can export all the end devices with a single command and save
 $ ttnctl devices export-all --frequency-plan-id EU_863_870 > all-devices.json
 ```
 
->**Note:** Change `EU_863_870` frequency plan from the command above to the frequency plan corresponding to your region. See [Frequency Plans]({{< ref "/reference/frequency-plans" >}}) for a list of supported Frequency Plans and their respective IDs.
+{{< note >}} Change `EU_863_870` frequency plan from the command above to the frequency plan corresponding to your region. See [Frequency Plans]({{< ref "/reference/frequency-plans" >}}) for a list of supported Frequency Plans and their respective IDs. {{</ note >}}
 
->**Note:** Keep in mind that an end device can only be registered in one Network Server at a time. After importing an end device to {{% tts %}}, you should remove it from {{% ttnv2 %}}. For OTAA devices, it is enough to simply change the AppKey, so the device can no longer join but the existing session is preserved. Next time the device joins, the activation will be handled by {{% tts %}}.
+{{< note >}} Keep in mind that an end device can only be registered in one Network Server at a time. After importing an end device to {{% tts %}}, you should remove it from {{% ttnv2 %}}. For OTAA devices, it is enough to simply change the AppKey, so the device can no longer join but the existing session is preserved. Next time the device joins, the activation will be handled by {{% tts %}}. {{</ note >}}
 
 ### Disable Exported End Devices on V2
 
@@ -105,4 +105,4 @@ There is also a convenience command to clear all of your devices at once:
 $ ttnctl devices convert-all-to-abp --save-to-attribute "original-app-key"
 ```
 
->**Note:** The AppKey of each device will be printed on the standard output, and stored as a device attribute (with name `original-app-key`). You can retrieve the device attributes with `ttnctl devices info "device-id"`.
+{{< info >}} The AppKey of each device will be printed on the standard output, and stored as a device attribute (with name `original-app-key`). You can retrieve the device attributes with `ttnctl devices info "device-id"`. {{</ info >}}

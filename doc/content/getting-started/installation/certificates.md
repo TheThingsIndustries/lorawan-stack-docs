@@ -27,7 +27,7 @@ config/
     └── ttn-lw-stack-docker.yml    # configuration file for {{% tts %}}
 ```
 
-> `886` is the uid and the gid of the user that runs {{% tts %}} in the Docker container. If you don't set these permissions, you'll get an error saying something like `open /var/lib/acme/acme_account+key<...>: permission denied`.
+{{< info >}} `886` is the uid and the gid of the user that runs {{% tts %}} in the Docker container. If you don't set these permissions, you'll get an error saying something like `open /var/lib/acme/acme_account+key<...>: permission denied`. {{</ info >}}
 
 ### Certificates from a Certificate Authority
 
@@ -48,7 +48,7 @@ config/
     └── ttn-lw-stack-docker.yml    # configuration file for {{% tts %}}
 ```
 
-> If you don't set these permissions, you'll get an error saying something like `/run/secrets/key.pem: permission denied`.
+{{< info >}} If you don't set these permissions, you'll get an error saying something like `/run/secrets/key.pem: permission denied`. {{</ info >}}
 
 ## Custom Certificate Authority
 
