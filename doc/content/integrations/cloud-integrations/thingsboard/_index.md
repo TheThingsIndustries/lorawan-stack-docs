@@ -14,4 +14,4 @@ The integration between {{% tts %}} and ThingsBoard is an example of an MQTT int
 
 1. Access to [ThingsBoard Professional Edition](https://thingsboard.io/products/thingsboard-pe/) deployment. You can [sign up](https://cloud.thingsboard.io/signup) for a trial account on ThingsBoard PE Cloud server.
 
->**Note:** Only ThingsBoard PE supports the **Platform Integrations** feature that is needed for this integration. 
+{{< warning >}} Only ThingsBoard PE supports the **Platform Integrations** feature that is needed for this integration. {{</ warning >}}

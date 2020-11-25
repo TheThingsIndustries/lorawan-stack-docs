@@ -18,7 +18,7 @@ Click on the **Create API Key** button in order to create the API key. This will
 
 {{< figure src="../api-key-created.png" alt="API key created" >}}
 
->**Note:** Make sure to save your API key at this point, since it will no longer be retrievable after you leave the page. 
+{{< note >}} Make sure to save your API key at this point, since it will no longer be retrievable after you leave the page. {{</ note >}}
 
 You can now pass the API key as bearer token on the `Authorization` header.
 

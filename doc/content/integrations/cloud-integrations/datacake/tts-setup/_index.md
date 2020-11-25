@@ -12,8 +12,8 @@ To integrate, you only need to fill out the **Webhook ID** field and provide an 
 
 {{< figure src="tts-datacake-webhook.png" alt="Datacake webhook" >}}
 
->**Note:** To see the values of all parameters of the Datacake integration, click on the integration after you created it with the Webhook template. 
+{{< note >}} To see the values of all parameters of the Datacake integration, click on the integration after you created it with the Webhook template. {{</ note >}}
 
 Once the setup is finished, you can navigate to device's **Debug** tab on Datacake, where you can see the incoming messages and manipulate or monitor your data.
 
->**Note:** Check the official Datacake documentation to learn how to [decode the payload](https://docs.datacake.de/lorawan/payload-decoders) received from {{% tts %}}. 
+{{< info >}} Check the official Datacake documentation to learn how to [decode the payload](https://docs.datacake.de/lorawan/payload-decoders) received from {{% tts %}}. {{</ info >}}

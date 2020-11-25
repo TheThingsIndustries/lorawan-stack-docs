@@ -8,7 +8,7 @@ Learn to schedule a downlink message to be sent to your end device from ThingsBo
 
 <!--more-->
 
->**Note:** This example shows the steps to create a setup that schedules a downlink message when the device attributes change. This requires modifying the **Root Rule Chain**. For more details, visit the [Getting Started with Rule Engine](https://thingsboard.io/docs/user-guide/rule-engine-2-0/re-getting-started/) section of the official ThingsBoard documentation page.
+{{< info >}} This example shows the steps to create a setup that schedules a downlink message when the device attributes change. This requires modifying the **Root Rule Chain**. For more details, visit the [Getting Started with Rule Engine](https://thingsboard.io/docs/user-guide/rule-engine-2-0/re-getting-started/) section of the official ThingsBoard documentation page. {{</ info >}}
 
 First, navigate to **Rule chains** on the left hand menu.
 

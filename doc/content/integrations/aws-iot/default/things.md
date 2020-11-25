@@ -8,9 +8,9 @@ The AWS IoT Integration for {{% tts %}} synchronizes the device registry: you ca
 
 <!--more-->
 
-> Devices that you create in {{% tts %}} are automatically created as AWS IoT Core things as soon as they activate or send their first uplink message.
->
-> Create and claim things only for devices that are not yet in your {{% tts %}} application.
+{{< note >}} Devices that you create in {{% tts %}} are automatically created as AWS IoT Core things as soon as they activate or send their first uplink message.
+
+Create and claim things only for devices that are not yet in your {{% tts %}} application. {{</ note >}}
 
 ## Thing Type and Names
 
@@ -89,7 +89,7 @@ When claiming things, you need to specify the minimum attributes for claiming Lo
 
 {{< figure src="../claim-thing.png" alt="Claim Thing" >}}
 
-> Are you a device maker? Learn [how to make your devices claimable](http://localhost:1313/devices/device-claiming/make-device-claimable/).
+{{< info >}} Are you a device maker? Learn [how to make your devices claimable](http://localhost:1313/devices/device-claiming/make-device-claimable/). {{</ info >}}
 
 ### Finalize Create
 
@@ -97,6 +97,6 @@ Click **Next**.
 
 Click **Skip certificate and create thing**.
 
-> Certificates are used when your AWS IoT thing is capable of TLS client authentication. This is not applicable to LoRaWAN end devices. Therefore, you don't need to manage certificates for LoRaWAN devices in AWS IoT.
+{{< info >}} Certificates are used when your AWS IoT thing is capable of TLS client authentication. This is not applicable to LoRaWAN end devices. Therefore, you don't need to manage certificates for LoRaWAN devices in AWS IoT. {{</ info >}}
 
 Your thing is now created. Please see [Troubleshooting]({{< relref "troubleshooting" >}}) if your device is not showing up in your {{% tts %}} application.

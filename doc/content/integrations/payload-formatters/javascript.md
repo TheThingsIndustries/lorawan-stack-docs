@@ -7,9 +7,9 @@ Javascript payload formatters allow you to write your own functions to encode or
 
 <!--more-->
 
-> **Note:** Payload formatters use ECMAScript 5 (2009), which has some distinct differences compared to newer, commonly used ECMAScript revisions. See [here](https://www.javatpoint.com/es5-vs-es6) for a quick comparison. Notably, `let`, `const`, and arrow functions are not supported by ES5.
+{{< info >}} Payload formatters use ECMAScript 5 (2009), which has some distinct differences compared to newer, commonly used ECMAScript revisions. See [here](https://www.javatpoint.com/es5-vs-es6) for a quick comparison. Notably, `let`, `const`, and arrow functions are not supported by ES5. {{</ info >}}
 
-> **Note:** Javascript payload formatters from {{% ttnv2 %}} will work in {{% tts %}}. {{% tts %}} has a new payload formatter signature, but it is also backwards compatible.
+{{< note >}} Javascript payload formatters from {{% ttnv2 %}} will work in {{% tts %}}. {{% tts %}} has a new payload formatter signature, but it is also backwards compatible. {{</ note >}}
 
 Tips:
 - The payload formatters should be simple and lightweight. 
@@ -50,7 +50,7 @@ The output object has the following structure:
 }
 ```
 
-> If an error is present in `errors`, the payload is invalid and the message will be dropped. Any warnings in `warnings` are informative.
+{{< warning >}} If an error is present in `errors`, the payload is invalid and the message will be dropped. Any warnings in `warnings` are informative. {{</ warning >}}
 
 ### Decode Uplink Example: The Things Node
 
@@ -140,7 +140,7 @@ The output object has the following structure:
 }
 ```
 
-> If an error is present in `errors`, the payload is invalid and the message will be dropped. Any warnings in `warnings` are informative.
+{{< warning >}} If an error is present in `errors`, the payload is invalid and the message will be dropped. Any warnings in `warnings` are informative. {{</ warning >}}
 
 ### Encode Downlink Example: The Things Node
 

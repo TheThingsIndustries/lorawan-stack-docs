@@ -21,9 +21,9 @@ The AWS IoT Integration for {{% tts %}} uses the following topics for upstream t
 
 See [Manage Things]({{< relref "things" >}}) to learn about the thing names.
 
-> Use [**Rules for AWS IoT**](https://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html) to act on these messages for storage, analytics, alarms and API calls.
->
->**Note:** This guide uses AWS IoT Core MQTT client for demonstration purposes only.
+{{< info >}} Use [**Rules for AWS IoT**](https://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html) to act on these messages for storage, analytics, alarms and API calls. {{</ info >}}
+
+{{< note >}} This guide uses AWS IoT Core MQTT client for demonstration purposes only. {{</ note >}}
 
 In the AWS Console, open **Services** and go to **IoT Core**.
 
@@ -43,9 +43,9 @@ The AWS IoT Integration for {{% tts %}} uses the following topic for downstream 
 
 - `lorawan/downlink`
 
-> Publish downlink messages from your application to IoT Core using [**AWS IoT Data Plane**](https://docs.aws.amazon.com/iot/latest/apireference/Welcome.html#Welcome_AWS_IoT_Data_Plane) using the [**Publish**](https://docs.aws.amazon.com/iot/latest/apireference/API_iotdata_Publish.html) action.
->
->**Note:** This guide uses AWS IoT Core MQTT client for demonstration purposes only.
+{{< info >}} Publish downlink messages from your application to IoT Core using [**AWS IoT Data Plane**](https://docs.aws.amazon.com/iot/latest/apireference/Welcome.html#Welcome_AWS_IoT_Data_Plane) using the [**Publish**](https://docs.aws.amazon.com/iot/latest/apireference/API_iotdata_Publish.html) action. {{</ info >}}
+
+{{< note >}} This guide uses AWS IoT Core MQTT client for demonstration purposes only. {{</ note >}}
 
 Still in the AWS IoT **MQTT client**, enter the downlink topic `lorawan/downlink`.
 
@@ -68,6 +68,6 @@ The message is a JSON object with the following format:
 }
 ```
 
->**Note:** You can only send JSON encoded payload using the `payload` field when end-to-end encryption is **not enabled**. See [Deployment Guide]({{< relref "deployment-guide" >}}) on how to enable and disable end-to-end encryption.
+{{< note >}} You can only send JSON encoded payload using the `payload` field when end-to-end encryption is **not enabled**. See [Deployment Guide]({{< relref "deployment-guide" >}}) on how to enable and disable end-to-end encryption. {{</ note >}}
 
-See [Manage Things]({{< relref "things" >}}) to find the `thingName` for the end device.
+See [Manage Things]({{< relref "things" >}}) to find the `thingName` for the end device. 

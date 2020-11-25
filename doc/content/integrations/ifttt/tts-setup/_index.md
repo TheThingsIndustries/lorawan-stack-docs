@@ -8,7 +8,7 @@ Follow this section to create a Webhook integration with the **http in** node fr
 
 <!--more-->
 
->Note: this section follows the [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}) guide. 
+{{< note >}} This section follows the [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}) guide. {{</ note >}}
 
 Give a name to your webhook by filling in the **Webhook ID** field. 
 

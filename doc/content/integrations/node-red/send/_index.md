@@ -26,7 +26,7 @@ Place the **inject** node on the dashboard. Double-click on the node to configur
 
 Choose **buffer** under **Payload** and enter the payload you wish to send. 
 
->Note: in this example, a downlink message with hexadecimal payload `00 2A FF 00` is to be sent, so here we define the **Payload** field as a corresponding array of byte values.  
+{{< note >}} In this example, a downlink message with hexadecimal payload `00 2A FF 00` is to be sent, so here we define the **Payload** field as a corresponding array of byte values. {{</ note >}} 
 
 Define the period between the automatic injections if you want them, or choose **none** for **Repeat** if you wish to inject messages manually.
 

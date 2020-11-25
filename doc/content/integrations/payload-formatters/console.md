@@ -18,7 +18,7 @@ Choose **Uplink** or **Downlink**.
 
 Choose a **Formatter type**. 
 
->**Note:** See the [Javascript]({{< relref "javascript" >}}), [CayenneLPP]({{< relref "cayenne" >}}), and [Device Repository]({{< relref "device-repo" >}}) payload formatter documentation for an explanation of the diffent types of payload formatters.
+{{< info >}} See the [Javascript]({{< relref "javascript" >}}), [CayenneLPP]({{< relref "cayenne" >}}), and [Device Repository]({{< relref "device-repo" >}}) payload formatter documentation for an explanation of the diffent types of payload formatters. {{</ info >}}
 
 {{< figure src="../application.png" alt="Application" >}}
 
@@ -36,6 +36,6 @@ Choose **Uplink** or **Downlink**.
 
 Choose a **Formatter type**. 
 
->**Note:** See the [Javascript]({{< relref "javascript" >}}), [CayenneLPP]({{< relref "cayenne" >}}), and [Device Repository]({{< relref "device-repo" >}}) payload formatter documentation for an explanation of the diffent types of payload formatters.
+{{< info >}} See the [Javascript]({{< relref "javascript" >}}), [CayenneLPP]({{< relref "cayenne" >}}), and [Device Repository]({{< relref "device-repo" >}}) payload formatter documentation for an explanation of the diffent types of payload formatters. {{</ info >}}
 
 {{< figure src="../device.png" alt="Device" >}}

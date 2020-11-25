@@ -44,7 +44,7 @@ function decodeToJson(payload) {
 return result;
 ```
 
->**Note:** You can test the decoder by clicking the **Test decoder function** and submitting an uplink message from {{% tts %}} manually.
+{{< info >}} You can test the decoder by clicking the **Test decoder function** and submitting an uplink message from {{% tts %}} manually. {{</ info >}}
 
 {{< figure src="uplink-converter.png" alt="Creating the uplink converter" >}}
 
@@ -72,7 +72,7 @@ var result = {
 return result;
 ```
 
->**Note:** Replace the `device_id` in the downlink converter function with the **End device ID** value from {{% tts %}}.
+{{< note >}} Replace the `device_id` in the downlink converter function with the **End device ID** value from {{% tts %}}. {{</ note >}}
 
 {{< figure src="downlink-converter.png" alt="Creating a downlink converter" >}}
 
@@ -82,7 +82,7 @@ When you have defined data converters, navigate to the **Integrations** section 
 
 Give a name to your integration by filling in the **Name** field. For **Type**, choose **The Things Stack**.
 
->**Note:** Make sure the **Enabled** and **Allow create devices or assets** checkboxes are left ticked.
+{{< note >}} Make sure the **Enabled** and **Allow create devices or assets** checkboxes are left ticked. {{</ note >}}
 
 For **Uplink data converter** and **Downlink data converter** choose the uplink and downlink converters you created in the previous step.
 
@@ -92,7 +92,7 @@ If you want to use TLS, enter `8883` for **Port**. Otherwise, enter `1883`.
 
 Use the credentials of your {{% tts %}} MQTT Server as **Username** and **Password**.
 
->**Note:** You can check the connection with your host via port you specified using credentials you provided by pressing the **Check connection** button. If it fails, make sure you fix it.
+{{< note >}} You can check the connection with your host via port you specified using credentials you provided by pressing the **Check connection** button. If it fails, make sure you fix it. {{</ note >}}
 
 {{< figure src="creating-integration.png" alt="Creating the integration" >}}
 

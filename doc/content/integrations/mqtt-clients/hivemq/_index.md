@@ -10,7 +10,7 @@ weight:
 
 HiveMQ also offers an open source tool called [MQTT CLI](https://github.com/hivemq/mqtt-cli), which provides a command line interface to interact with MQTT brokers. This tool can be used in a shell mode, allowing you to use multiple MQTT clients simultaneously. 
 
->Note: HiveMQ broker is compliant with the MQTT 3.1, 3.1.1 and 5.0 protocol specifications, while the MQTT CLI tool supports 3.1.1 and 5.0 versions.
+{{< info >}} HiveMQ broker is compliant with the MQTT 3.1, 3.1.1 and 5.0 protocol specifications, while the MQTT CLI tool supports 3.1.1 and 5.0 versions. {{</ info >}}
 
 This guide contains the instructions to use HiveMQ CLI tool in a shell mode for subscribing and publishing to topics used by {{% tts %}} [MQTT Server]({{< ref "/integrations/mqtt" >}}).
 
@@ -20,7 +20,7 @@ This guide contains the instructions to use HiveMQ CLI tool in a shell mode for 
 
 ## Connecting to MQTT Server in MQTT CLI Shell Mode
 
->Learn how to connect to {{% tts %}} MQTT Server by reading the [MQTT Server]({{< ref "/integrations/mqtt" >}}) guide.
+{{< info >}} Learn how to connect to {{% tts %}} MQTT Server by reading the [MQTT Server]({{< ref "/integrations/mqtt" >}}) guide. {{</ info >}}
 
 Enter the HiveMQ MQTT CLI shell mode by typing the following command in your terminal:
 
@@ -34,9 +34,9 @@ Once in shell mode, you can connect to {{% tts %}} MQTT Server by using the foll
 $ con -h hostname -p port -V 3 -u username -pw password
 ```
 
->Note: keep in mind that `password` is the value of the authentication API key. For more info, see [Creating an API Key]({{< ref "/integrations/mqtt#creating-an-api-key" >}}).
+{{< note >}} Keep in mind that `password` is the value of the authentication API key. For more info, see [Creating an API Key]({{< ref "/integrations/mqtt#creating-an-api-key" >}}). {{</ note >}}
 
->Note: we use `-V 3` flag since the {{% tts %}} MQTT Server supports the 3.1.1 MQTT protocol version, as mentioned in the [MQTT Server guide]({{< ref "/integrations/mqtt" >}}). For detailed descriptions of other parameters used with the `con` command, see the [official MQTT CLI documentation](https://hivemq.github.io/mqtt-cli/docs/shell/connect.html).
+{{< info >}} we use `-V 3` flag since the {{% tts %}} MQTT Server supports the 3.1.1 MQTT protocol version, as mentioned in the [MQTT Server guide]({{< ref "/integrations/mqtt" >}}). For detailed descriptions of other parameters used with the `con` command, see the [official MQTT CLI documentation](https://hivemq.github.io/mqtt-cli/docs/shell/connect.html). {{</ info >}}
 
 For example, you can connect to {{% tts %}} MQTT Server over its public address with the following command:
 
@@ -58,9 +58,9 @@ For example, if you want to listen to the uplink messages being sent from `dev1`
 $ sub -t v3/app1/devices/dev1/up -s
 ```
 
->Note: `-s` flag is used to subscribe with a context to the given topic, e.g. to stop the console being blocked by subscribing without a context. For detailed descriptions of all the available `sub` command parameters, see the [Subscribe](https://hivemq.github.io/mqtt-cli/docs/shell/subscribe.html) section of the HiveMQ MQTT CLI documentation.
+{{< info >}} `-s` flag is used to subscribe with a context to the given topic, e.g. to stop the console being blocked by subscribing without a context. For detailed descriptions of all the available `sub` command parameters, see the [Subscribe](https://hivemq.github.io/mqtt-cli/docs/shell/subscribe.html) section of the HiveMQ MQTT CLI documentation. {{</ info >}}
 
->See the [Subscribing to Upstream Traffic]({{< ref "/integrations/mqtt#subscribing-to-upstream-traffic" >}}) section of the MQTT Server guide for a full list of available topics you can subscribe to. 
+{{< note >}} See the [Subscribing to Upstream Traffic]({{< ref "/integrations/mqtt#subscribing-to-upstream-traffic" >}}) section of the MQTT Server guide for a full list of available topics you can subscribe to. {{</ note >}}
 
 ## Schedule Downlink Messages
 
@@ -71,6 +71,6 @@ For example, to push an unconfirmed downlink message with the hexadecimal payloa
 ```bash
 $ pub -t v3/app1/devices/dev1/down/push -m '{"downlinks":[{"f_port": 15,"frm_payload":"vu8=","priority": "NORMAL"}]}'
 ```
->Note: for detailed descriptions of the `pub` command parameters, see the [Publish](https://hivemq.github.io/mqtt-cli/docs/shell/publish.html) section of the MQTT CLI documentation.
+{{< info >}} For detailed descriptions of the `pub` command parameters, see the [Publish](https://hivemq.github.io/mqtt-cli/docs/shell/publish.html) section of the MQTT CLI documentation. {{</ info >}}
 
->See the [Publishing Downlink Traffic]({{< ref "/integrations/mqtt#publishing-downlink-traffic" >}}) section to learn about using `/replace` instead of `/push`.
+{{< note >}} See the [Publishing Downlink Traffic]({{< ref "/integrations/mqtt#publishing-downlink-traffic" >}}) section to learn about using `/replace` instead of `/push`. {{</ note >}}

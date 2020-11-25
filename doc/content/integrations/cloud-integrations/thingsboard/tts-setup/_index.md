@@ -8,7 +8,7 @@ This section shows you to configure the uplink payload formatter on {{% tts %}} 
 
 <!--more-->
 
->Learn to create a [payload formatter]({{< ref "/integrations/payload-formatters" >}}) in {{% tts %}} Console or with the CLI.
+{{< info >}} Learn to create a [payload formatter]({{< ref "/integrations/payload-formatters" >}}) in {{% tts %}} Console or with the CLI. {{</ info >}}
 
 Define a [Javascript]({{< ref "/integrations/payload-formatters/javascript" >}}) payload formatter and take the following code as an example of the formatter parameter:
 
@@ -21,6 +21,6 @@ function decodeUplink(input) {
   };
 }
 ```
->**Note:** The payload formatter shown above extracts the first byte of your payload and sets it as a temperature value, but `data` object's contents can vary depending on the telemetry type your device is sending.
+{{< note >}} The payload formatter shown above extracts the first byte of your payload and sets it as a temperature value, but `data` object's contents can vary depending on the telemetry type your device is sending. {{</ note >}}
 
 Also, note your credentials available under **MQTT** submenu of the **Integrations** menu on the left, because you will need them for further steps.

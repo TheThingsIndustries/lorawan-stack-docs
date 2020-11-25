@@ -8,7 +8,7 @@ After finishing the setup in Azure, this section shows you how to create the Web
 
 <!--more-->
 
->Note: this section follows the [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}) guide. 
+{{< note >}} This section follows the [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}) guide. {{</ note >}}
 
 Fill in the **Webhook ID** field and choose **JSON** for **Webhook format**. 
 

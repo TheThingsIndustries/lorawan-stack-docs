@@ -8,7 +8,7 @@ distributions: "Marketplace Launcher"
 
 AWS IoT suite can be used to subscribe to detailed uplink messages as well as get insights into aggregated metrics of your uplink data. 
 
-> NOTE: This only works if {{% tts %}} runs in your AWS account, i.e. in a Self Hosted or Marketplace Launcher deployment. When using the [AWS Marketplace AMI listing]({{< ref "/getting-started/aws/ami" >}}), the **AWS IoT Telemetry** option in the CloudFormation template must be set to **true** during the deployment phase.
+{{< note >}} This only works if {{% tts %}} runs in your AWS account, i.e. in a Self Hosted or Marketplace Launcher deployment. When using the [AWS Marketplace AMI listing]({{< ref "/getting-started/aws/ami" >}}), the **AWS IoT Telemetry** option in the CloudFormation template must be set to **true** during the deployment phase. {{</ note >}}
 
 ## Setup
 
