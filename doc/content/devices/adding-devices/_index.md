@@ -16,7 +16,7 @@ This section contains instructions for adding devices in {{% tts %}}.
 
 Go to **Devices** in the left menu and click on **+ Add Device** to reach the end device registration page. Fill the device ID, the LoRaWAN MAC and PHY versions and the frequency plan used by the device.
 
->**Note**: The PHY version represents the revision of the LoRAWAN Regional Parameters that the device expects, and must be correlated with the MAC version.
+{{< note "The PHY version represents the revision of the LoRAWAN Regional Parameters that the device expects, and must be correlated with the MAC version." />}}
 
 {{< figure src="device-creation-1.png" alt="Creating a new device" >}}
 
