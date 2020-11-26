@@ -33,11 +33,15 @@ $ export FREQUENCY_PLAN_ID="EU_863_870_TTN"           # Frequency Plan ID for ex
 
 See [Frequency Plans]({{< ref src="/reference/frequency-plans" >}}) for the list of frequency plans available on {{% tts %}}. Make sure to specify the correct Frequency Plan ID. For example, the ID `EU_863_870_TTN` corresponds to the **Europe 863-870 MHz (SF9 for RX2 - recommended)** frequency plan.
 
-Private The Things Network Stack V2 deployments are also supported, and require extra configuration. See `ttn-lw-migrate device --help` for more details. For example, to override the discovery server address:
+### Private {{% ttnv2 %}} deployments
+
+Private {{% ttnv2 %}} deployments are also supported, and require extra configuration. See `ttn-lw-migrate device --help` for more details. For most cases, it is enough to configure ttn-lw-migrate to use the Discovery Server of your installation, by setting the following environment variables:
 
 ```bash
-$ export TTNV2_DISCOVERY_SERVER_ADDRESS="discovery.thethings.network:1900"
+$ export TTNV2_DISCOVERY_SERVER_ADDRESS="discovery.<tenant>.thethings.industries:1900"
 ```
+
+>**Note:**: If the Discovery Server is not using TLS, you will need to use the `--ttnv2.discovery-server-insecure` flag when running the `ttn-lw-migrate` commands below.
 
 ## Export End Devices from {{% ttnv2 %}}
 
