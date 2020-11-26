@@ -56,9 +56,9 @@ $ mosquitto_pub \
     -t "v3/$GATEWAY_ID/up" -f test-uplink-message
 ```
 
->NOTE: Port 1882 is insecure. The TLS-enabled port 8882 should be used in a production setting.
+{{< warning >}} Port 1882 is insecure. The TLS-enabled port 8882 should be used in a production setting. {{</ warning >}}
 
->NOTE: The file `test-uplink-message` contains a Protocol Buffer of type `ttnpb.UplinkMessage` (binary, not JSON).
+{{< note >}} The file `test-uplink-message` contains a Protocol Buffer of type `ttnpb.UplinkMessage` (binary, not JSON). {{</ note >}}
 
 ## Downlink Messages
 
@@ -75,9 +75,9 @@ $ mosquitto_sub \
     -t "v3/$GATEWAY_ID/down" -v
 ```
 
->NOTE: Port 1882 is insecure. The TLS-enabled port 8882 should be used in a production setting.
+{{< warning >}} Port 1882 is insecure. The TLS-enabled port 8882 should be used in a production setting. {{</ warning >}}
 
->NOTE: The example above is not complete (as it does nothing with the scheduled downlink requests). It is only meant to showcase the MQTT client subscribing to the downlink topic.
+{{< note >}} The example above is not complete (as it does nothing with the scheduled downlink requests). It is only meant to showcase the MQTT client subscribing to the downlink topic. {{</ note >}}
 
 ## Gateway Status Messages
 
@@ -94,9 +94,9 @@ $ mosquitto_pub \
     -t "v3/$GATEWAY_ID/status" -f test-gateway-status
 ```
 
->NOTE: Port 1882 is insecure. The TLS-enabled port 8882 should be used in a production setting.
+{{< warning >}} Port 1882 is insecure. The TLS-enabled port 8882 should be used in a production setting. {{</ warning >}}
 
->NOTE: The file `test-gateway-status` contains a Protocol Buffer of type `ttnpb.GatewayStatus` (binary, not JSON).
+{{< note >}} The file `test-gateway-status` contains a Protocol Buffer of type `ttnpb.GatewayStatus` (binary, not JSON). {{</ note >}}
 
 ## TxAck Messages
 
@@ -111,6 +111,6 @@ $ mosquitto_pub \
     -t "v3/$GATEWAY_ID/down/ack" -f example-tx-ack
 ```
 
->NOTE: Port 1882 is insecure. The TLS-enabled port 8882 should be used in a production setting.
+{{< warning >}} Port 1882 is insecure. The TLS-enabled port 8882 should be used in a production setting. {{</ warning >}}
 
->NOTE: The example above is not complete (the TxAck should be sent in response to a successful downlink transmission). It is only meant to showcase the MQTT client sending a TxAck packet (contents of the `example-tx-ack` file) to the Gateway Server.
+{{< note >}} The example above is not complete (the TxAck should be sent in response to a successful downlink transmission). It is only meant to showcase the MQTT client sending a TxAck packet (contents of the `example-tx-ack` file) to the Gateway Server. {{</ note >}}

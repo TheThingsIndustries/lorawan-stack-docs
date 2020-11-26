@@ -7,7 +7,7 @@ description: ''
 
 <!--more-->
 
-> **NOTE:** Metrics are not covered by our compatibility commitment. This means that metrics may be changed or removed in major, minor, or patch releases. This page only lists metrics that are considered relatively stable, but even these metrics may be changed.
+{{< warning >}} Metrics are not covered by our compatibility commitment. This means that metrics may be changed or removed in major, minor, or patch releases. This page only lists metrics that are considered relatively stable, but even these metrics may be changed. {{</ warning >}}
 
 ## Process and Go Metrics
 

@@ -12,7 +12,7 @@ The streaming data integrations provide multiple formats for the delivery of app
 
 The JSON message format is described in the sections below.
 
->**Note:** Empty fields are omitted from payloads. As such, if a certain field has a value of `""`, `0` or `false` it will not be present in the message.
+{{< note >}} Empty fields are omitted from payloads. As such, if a certain field has a value of `""`, `0` or `false` it will not be present in the message. {{</ note >}}
 
 ### Join-accept Messages
 
