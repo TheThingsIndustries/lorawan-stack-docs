@@ -11,6 +11,14 @@ This section documents the process of migrating end devices from {{% ttnv2 %}} t
 
 For a breakdown of differences between {{% ttnv2 %}} and {{% tts %}}, see the [Major Changes]({{< relref "major-changes" >}}) section.
 
+>**Note**: 
+>
+>When migrating devices from the Public Community Network to {{< tts >}} Cloud, you may choose to transfer the active device sessions as well, which means that your devices will continue to work with {{% tts %}}. 
+>
+>When migrating from a private {{% ttnv2 %}}, devices that are outside of the DevAddr address block supported by {{% tts %}} Cloud will have to rejoin the network, otherwise {{% tts %}} will be unable to route their uplink and downlink traffic. 
+>
+>{{% tts %}} Dedicated Cloud, Enterprise and Marketplace Launcher deployments are not affected by this issue.
+
 ## Suggested Migration Process
 
 **First**: Update applications to support the {{% tts %}} data format. If you are using payload formatters, make sure to set them correctly from the Application settings page.
