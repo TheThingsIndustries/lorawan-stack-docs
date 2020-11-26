@@ -38,7 +38,7 @@ Click **Create API key**, copy the key and store it in a safe place. You need th
 {{% aws-deploy-cloudformation name="Deploy for Cloud Hosted" bucket="thethingsindustries" path="integration-aws/latest/cloudhosted.template.json" %}}
 {{% aws-deploy-cloudformation name="Deploy for Self Hosted" bucket="thethingsindustries" path="integration-aws/latest/selfhosted.template.json" %}}
 
-{{< info >}} If you want to examine the AWS CloudFormation template before deploying, download the [Cloud Hosted template](https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/cloudhosted.template.json) or [Self Hosted template](https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/selfhosted.template.json). {{</ info >}}
+{{< note >}} If you want to examine the AWS CloudFormation template before deploying, download the [Cloud Hosted template](https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/cloudhosted.template.json) or [Self Hosted template](https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/selfhosted.template.json). {{</ note >}}
 
 ### Settings
 
@@ -62,7 +62,7 @@ Check **I acknowledge that AWS CloudFormation might create IAM resources**.
 
 Click **Create stack**.
 
-{{< info >}} Creating all resources can take up to five minutes.  ☕ {{</ info >}}
+{{< note >}} Creating all resources can take up to five minutes.  ☕ {{</ note >}}
 
 When the deployment is done, you'll see the status `CREATE_COMPLETE`.
 

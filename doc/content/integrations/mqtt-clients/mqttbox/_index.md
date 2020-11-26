@@ -32,7 +32,7 @@ If the MQTTBox client successfully connects to {{% tts %}} MQTT Server, the **Co
 
 Once connected, you can proceed with configuring the publishers or subscribers. 
 
-{{< info >}} You can add multiple MQTT clients, as well as multiple publishers and subscribers within those clients. {{</ info >}}
+{{< note >}} You can add multiple MQTT clients, as well as multiple publishers and subscribers within those clients. {{</ note >}}
 
 ## Subscribe to Upstream Traffic
 

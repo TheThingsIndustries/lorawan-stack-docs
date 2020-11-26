@@ -38,7 +38,7 @@ If you are using MacOS or Linux, connect to the Gateway by opening a terminal an
 $ ls /dev/tty.usb*
 ```
 
-{{< info >}} This displays the list of available USB serial devices. {{</ info >}}
+{{< note >}} This displays the list of available USB serial devices. {{</ note >}}
 
 Once you have found the one matching the Cisco console, connect using the following command:
 
@@ -94,7 +94,7 @@ You can test your Internet configuration with the `ping` command, for example pi
 Gateway# ping ip 8.8.8.8
 ```
 
-{{< info >}} To see more information about the gateway's IP and the network, you can use 
+{{< note >}} To see more information about the gateway's IP and the network, you can use 
 
 - `show interfaces FastEthernet 0/1`
 - `show ip interfaces FastEthernet 0/1` or
@@ -142,7 +142,7 @@ Gateway(config)# gps ubx enable
 Gateway(config)# exit
 ```
 
-{{< info >}} This command may return the message `packet-forwarder firmware is not installed`, which can be ignored. {{</ note >}}
+{{< note >}} This command may return the message `packet-forwarder firmware is not installed`, which can be ignored. {{</ note >}}
 
 #### Enable Radio
 
@@ -172,7 +172,7 @@ Gateway(config)# no radio off
 Gateway(config)# exit
 ```
 
-{{< info >}} The `show radio` command also shows you more information about the LoRa concentrator powering the gateway. For example, **LORA_SKU** indicates the base frequency of the concentrator. {{</ info >}}
+{{< note >}} The `show radio` command also shows you more information about the LoRa concentrator powering the gateway. For example, **LORA_SKU** indicates the base frequency of the concentrator. {{</ note >}}
 
 #### Enable Authentication
 
@@ -338,7 +338,7 @@ If the gateway does not connect to the {{% tts %}} after a few minutes, you can 
 bash-3.2# tail -100 var/log/pkt_forwarder.log
 ```
 
-{{< info >}} GPS warnings may appear, which means the packet forwarder started. {{</ info >}}
+{{< note >}} GPS warnings may appear, which means the packet forwarder started. {{</ note >}}
 
 If the radio failed to start, disconnect and reconnect the power supply to power-cycle the gateway.
 

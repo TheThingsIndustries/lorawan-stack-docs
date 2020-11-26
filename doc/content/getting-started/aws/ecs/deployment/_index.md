@@ -189,7 +189,7 @@ $ aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --re
 
 As discussed in the [Architecture]({{< relref "../architecture" >}}) section, we will need the container instances for running UDP Gateway Servers. For all other services, you can consider deploying those to Fargate, in which case you won't need as much resources on the container instances.
 
-{{< info >}} All container instances will be deployed with a `schedule_gs=true` attribute which we can use as a constraint for scheduling the UDP Gateway Server in the future. {{</ info >}}
+{{< note >}} All container instances will be deployed with a `schedule_gs=true` attribute which we can use as a constraint for scheduling the UDP Gateway Server in the future. {{</ note >}}
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/5-1-ecs-cluster.gen.template (replace `3.x` with the current minor version).
 
@@ -257,7 +257,7 @@ Fill the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >
 
 The official image is `docker.io/thethingsindustries/lorawan-stack:3.x-aws-prometheus` (replace `3.x` with the current minor version). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you will get an error about `Invalid CPU or memory value specified` when you deploy the stack. Prometheus typically needs CPU=1024 and Memory=2048.
 
-{{< info >}} By default, Prometheus stores metrics only for a limited time. You can optionally enable long-term storage of metrics in an S3 bucket. This is done using a [Thanos](https://thanos.io/) sidecar. We do not support querying from long-term storage yet. {{</ info >}}
+{{< note >}} By default, Prometheus stores metrics only for a limited time. You can optionally enable long-term storage of metrics in an S3 bucket. This is done using a [Thanos](https://thanos.io/) sidecar. We do not support querying from long-term storage yet. {{</ note >}}
 
 We recommend to point Prometheus to an external **Alertmanager URL**, so that you can be alerted about (potential) problems with your deployment.
 

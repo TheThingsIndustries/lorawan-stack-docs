@@ -8,7 +8,7 @@ This section shows you to configure the uplink payload formatter on {{% tts %}} 
 
 <!--more-->
 
-{{< info >}} Learn to create a [payload formatter]({{< ref "/integrations/payload-formatters" >}}) in {{% tts %}} Console or with the CLI. {{</ info >}}
+{{< note >}} Learn to create a [payload formatter]({{< ref "/integrations/payload-formatters" >}}) in {{% tts %}} Console or with the CLI. {{</ note >}}
 
 Define a [Javascript]({{< ref "/integrations/payload-formatters/javascript" >}}) payload formatter and take the following code as an example of the formatter parameter:
 

@@ -65,7 +65,7 @@ $ ttn-lw-cli gateways create gtw1 \
 
 This creates a gateway `gtw1` with user `admin` as collaborator, frequency plan `EU_863_870`, EUI `00800000A00009EF` and respecting duty-cycle limitations. You can now connect your gateway to {{% tts %}}.
 
-{{< info >}} The CLI returns the created and updated entities by default in JSON. This can be useful in scripts. {{</ info >}}
+{{< note >}} The CLI returns the created and updated entities by default in JSON. This can be useful in scripts. {{</ note >}}
 
 ### Create Gateway API Key
 

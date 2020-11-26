@@ -4,7 +4,7 @@ description: ""
 weight: 6
 ---
 
-{{< info >}} We recommend getting familiar with the [html/template](https://golang.org/pkg/html/template/) template format first. {{</ info >}}
+{{< note >}} We recommend getting familiar with the [html/template](https://golang.org/pkg/html/template/) template format first. {{</ note >}}
 
 ## Template Components
 

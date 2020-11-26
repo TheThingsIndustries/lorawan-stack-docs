@@ -9,7 +9,7 @@ weight: 30
 
 <!--more-->
 
-{{< info >}} {{% tts %}} supports the [MQTT Standard Version 3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.pdf). {{</ info >}}
+{{< note >}} {{% tts %}} supports the [MQTT Standard Version 3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.pdf). {{</ note >}}
 
 ## Multi-Tenancy
 
@@ -158,7 +158,7 @@ For example, to send an unconfirmed downlink message to the device `dev1` in app
 }
 ```
 
-{{< info >}} Use [this handy tool](https://v2.cryptii.com/hexadecimal/base64) to convert hexadecimal to base64. {{</ info >}}
+{{< note >}} Use [this handy tool](https://v2.cryptii.com/hexadecimal/base64) to convert hexadecimal to base64. {{</ note >}}
 
 ```bash
 # If you use `mosquitto_pub`, use the following command:

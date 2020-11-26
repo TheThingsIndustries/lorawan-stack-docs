@@ -89,7 +89,7 @@ When claiming things, you need to specify the minimum attributes for claiming Lo
 
 {{< figure src="../claim-thing.png" alt="Claim Thing" >}}
 
-{{< info >}} Are you a device maker? Learn [how to make your devices claimable](http://localhost:1313/devices/device-claiming/make-device-claimable/). {{</ info >}}
+{{< note >}} Are you a device maker? Learn [how to make your devices claimable](http://localhost:1313/devices/device-claiming/make-device-claimable/). {{</ note >}}
 
 ### Finalize Create
 
@@ -97,6 +97,6 @@ Click **Next**.
 
 Click **Skip certificate and create thing**.
 
-{{< info >}} Certificates are used when your AWS IoT thing is capable of TLS client authentication. This is not applicable to LoRaWAN end devices. Therefore, you don't need to manage certificates for LoRaWAN devices in AWS IoT. {{</ info >}}
+{{< note >}} Certificates are used when your AWS IoT thing is capable of TLS client authentication. This is not applicable to LoRaWAN end devices. Therefore, you don't need to manage certificates for LoRaWAN devices in AWS IoT. {{</ note >}}
 
 Your thing is now created. Please see [Troubleshooting]({{< relref "troubleshooting" >}}) if your device is not showing up in your {{% tts %}} application.

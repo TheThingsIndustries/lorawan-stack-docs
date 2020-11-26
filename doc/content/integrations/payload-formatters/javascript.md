@@ -7,7 +7,7 @@ Javascript payload formatters allow you to write your own functions to encode or
 
 <!--more-->
 
-{{< info >}} Payload formatters use ECMAScript 5 (2009), which has some distinct differences compared to newer, commonly used ECMAScript revisions. See [here](https://www.javatpoint.com/es5-vs-es6) for a quick comparison. Notably, `let`, `const`, and arrow functions are not supported by ES5. {{</ info >}}
+{{< note >}} Payload formatters use ECMAScript 5 (2009), which has some distinct differences compared to newer, commonly used ECMAScript revisions. See [here](https://www.javatpoint.com/es5-vs-es6) for a quick comparison. Notably, `let`, `const`, and arrow functions are not supported by ES5. {{</ note >}}
 
 {{< note >}} Javascript payload formatters from {{% ttnv2 %}} will work in {{% tts %}}. {{% tts %}} has a new payload formatter signature, but it is also backwards compatible. {{</ note >}}
 

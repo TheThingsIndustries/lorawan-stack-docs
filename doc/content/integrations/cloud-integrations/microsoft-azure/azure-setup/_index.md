@@ -8,7 +8,7 @@ Follow the instructions in this section to create a function in Azure and prepar
 
 <!--more-->
 
-{{< info >}} You can find more detailed instructions for creating Azure functions in the [official Azure documentation](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-azure-function). {{</ info >}}
+{{< note >}} You can find more detailed instructions for creating Azure functions in the [official Azure documentation](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-azure-function). {{</ note >}}
 
 First, navigate to the Azure services dashboard and click on **Function App** service.
 

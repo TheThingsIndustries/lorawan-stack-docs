@@ -26,7 +26,7 @@ The Packet Broker enables peering between networks, so traffic received by one n
 
 With Packet Broker enabled on both {{% tts %}} and {{% ttnv2 %}}, you can receive traffic on {{% tts %}} without having to re-configure any of your gateways.
 
-{{< info >}} Packet Broker is only enabled on The Things Network Public Community Network and The Things Industries Cloud Hosted. {{</ info >}}
+{{< note >}} Packet Broker is only enabled on The Things Network Public Community Network and The Things Industries Cloud Hosted. {{</ note >}}
 
 For private {{% tts %}} deployments with Packet Broker disabled, you will need to re-configure your gateways to connect to {{% tts %}}, so that you can start receiving traffic from your end devices.
 

@@ -44,7 +44,7 @@ function decodeToJson(payload) {
 return result;
 ```
 
-{{< info >}} You can test the decoder by clicking the **Test decoder function** and submitting an uplink message from {{% tts %}} manually. {{</ info >}}
+{{< note >}} You can test the decoder by clicking the **Test decoder function** and submitting an uplink message from {{% tts %}} manually. {{</ note >}}
 
 {{< figure src="uplink-converter.png" alt="Creating the uplink converter" >}}
 

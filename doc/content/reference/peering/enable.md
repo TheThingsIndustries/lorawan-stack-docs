@@ -100,7 +100,7 @@ ns:
   - '26020000/16'
 ```
 
-{{< info >}} By default, Network Server uses NetID `000000` which is intended for experimentation purposes. Only devices that are activated with a DevAddr that falls in your NetID will have their traffic routed by Packet Broker to your network. {{</ info >}}
+{{< note >}} By default, Network Server uses NetID `000000` which is intended for experimentation purposes. Only devices that are activated with a DevAddr that falls in your NetID will have their traffic routed by Packet Broker to your network. {{</ note >}}
 
 See [Network Server configuration]({{< ref "/reference/configuration/network-server" >}}) for all configuration options.
 

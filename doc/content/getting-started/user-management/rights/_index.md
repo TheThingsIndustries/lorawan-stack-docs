@@ -26,7 +26,7 @@ Select the rights you wish the collaborator to have, and click **Add collaborato
 
 {{< figure src="rights.png" >}}
 
-{{< info >}} Rights apply to entities which a user or organization is a member (collaborator) of. To grant rights to an entity, add the user or organization as a collaborator of the entity. {{</ info >}}
+{{< note >}} Rights apply to entities which a user or organization is a member (collaborator) of. To grant rights to an entity, add the user or organization as a collaborator of the entity. {{</ note >}}
 
 {{< /tabs/tab >}}
 

@@ -105,4 +105,4 @@ There is also a convenience command to clear all of your devices at once:
 $ ttnctl devices convert-all-to-abp --save-to-attribute "original-app-key"
 ```
 
-{{< info >}} The AppKey of each device will be printed on the standard output, and stored as a device attribute (with name `original-app-key`). You can retrieve the device attributes with `ttnctl devices info "device-id"`. {{</ info >}}
+{{< note >}} The AppKey of each device will be printed on the standard output, and stored as a device attribute (with name `original-app-key`). You can retrieve the device attributes with `ttnctl devices info "device-id"`. {{</ note >}}

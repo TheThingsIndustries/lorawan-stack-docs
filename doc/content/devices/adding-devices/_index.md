@@ -83,7 +83,7 @@ The end device should now be able to join the private network.
 
 {{< note >}} If you do not have a `JoinEUI` or `AppEUI`, it is okay to use `0000000000000000`. Be sure to use the same `JoinEUI` in your device as you enter in {{% tts %}}. {{</ note >}}
 
-{{< info >}} The `AppEUI` is returned as `join_eui` (V3 uses LoRaWAN 1.1 terminology). {{</ info >}}
+{{< note >}} The `AppEUI` is returned as `join_eui` (V3 uses LoRaWAN 1.1 terminology). {{</ note >}}
 
 {{< note >}} You can also pass `--with-root-keys` to have root keys generated. {{</ note >}}
 
@@ -102,7 +102,7 @@ $ ttn-lw-cli end-devices create app1 dev2 \
   --session.keys.nwk-s-key.key B7F3E161BC9D4388E6C788A0C547F255
 ```
 
-{{< info >}} The `NwkSKey` is returned as `f_nwk_s_int_key` ({{% tts %}} uses LoRaWAN 1.1 terminology). {{</ info >}}
+{{< note >}} The `NwkSKey` is returned as `f_nwk_s_int_key` ({{% tts %}} uses LoRaWAN 1.1 terminology). {{</ note >}}
 
 {{< note >}} You can also pass `--with-session` to have a session generated. {{</ note >}}
 

@@ -16,7 +16,7 @@ This section contains instructions for installing the command-line interface.
 $ brew install TheThingsNetwork/lorawan-stack/ttn-lw-stack
 ```
 
-{{< info >}} When installing with `brew`, auto-completion is enabled automatically. {{</ info >}}
+{{< note >}} When installing with `brew`, auto-completion is enabled automatically. {{</ note >}}
 
 #### Linux
 
@@ -25,7 +25,7 @@ $ sudo snap install ttn-lw-stack
 $ sudo snap alias ttn-lw-stack.ttn-lw-cli ttn-lw-cli
 ```
 
-{{< info >}} When installing with `snap`, auto-completion is enabled automatically. {{</ info >}}
+{{< note >}} When installing with `snap`, auto-completion is enabled automatically. {{</ note >}}
 
 ### Binaries
 

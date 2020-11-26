@@ -34,7 +34,7 @@ $ docker-compose run --rm stack storage-db init
 $ docker-compose run --rm stack is-db create-tenant
 ```
 
-{{< info >}} This will take the Tenant ID from the configuration. {{</ info >}}
+{{< note >}} This will take the Tenant ID from the configuration. {{</ note >}}
 
 We'll now create an initial `admin` user. Make sure to give it a good password.
 

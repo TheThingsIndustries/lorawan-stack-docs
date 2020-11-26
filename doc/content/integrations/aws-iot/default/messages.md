@@ -21,7 +21,7 @@ The AWS IoT Integration for {{% tts %}} uses the following topics for upstream t
 
 See [Manage Things]({{< relref "things" >}}) to learn about the thing names.
 
-{{< info >}} Use [**Rules for AWS IoT**](https://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html) to act on these messages for storage, analytics, alarms and API calls. {{</ info >}}
+{{< note >}} Use [**Rules for AWS IoT**](https://docs.aws.amazon.com/iot/latest/developerguide/iot-rules.html) to act on these messages for storage, analytics, alarms and API calls. {{</ note >}}
 
 {{< note >}} This guide uses AWS IoT Core MQTT client for demonstration purposes only. {{</ note >}}
 
@@ -43,7 +43,7 @@ The AWS IoT Integration for {{% tts %}} uses the following topic for downstream 
 
 - `lorawan/downlink`
 
-{{< info >}} Publish downlink messages from your application to IoT Core using [**AWS IoT Data Plane**](https://docs.aws.amazon.com/iot/latest/apireference/Welcome.html#Welcome_AWS_IoT_Data_Plane) using the [**Publish**](https://docs.aws.amazon.com/iot/latest/apireference/API_iotdata_Publish.html) action. {{</ info >}}
+{{< note >}} Publish downlink messages from your application to IoT Core using [**AWS IoT Data Plane**](https://docs.aws.amazon.com/iot/latest/apireference/Welcome.html#Welcome_AWS_IoT_Data_Plane) using the [**Publish**](https://docs.aws.amazon.com/iot/latest/apireference/API_iotdata_Publish.html) action. {{</ note >}}
 
 {{< note >}} This guide uses AWS IoT Core MQTT client for demonstration purposes only. {{</ note >}}
 

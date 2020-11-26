@@ -14,7 +14,7 @@ This gateway's technical specifications can be found in [the official Kerlink do
 1. User account on {{% tts %}} with rights to create Gateways.
 2. Kerlink Wirnet Station with Common Packet Forwarder installed and enabled and/or running firmware version `3.0` or higher.
 
-{{< info >}} Minimum CPF version tested is `v1.1.6`. {{</ info >}}
+{{< note >}} Minimum CPF version tested is `v1.1.6`. {{</ note >}}
 
 ## Registration
 

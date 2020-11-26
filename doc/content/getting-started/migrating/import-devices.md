@@ -55,4 +55,4 @@ If the import was successful, your devices is added to the list of end-devices i
 
 You can now start using your devices with {{% tts %}}!
 
-{{< info >}} You can always manually copy-paste the Payload Formatters (if applicable) from {{% ttnv2 %}} to your {{% tts %}} application. See [Payload Formatters]({{% ref "integrations/payload-formatters" %}}) for more details. {{</ info >}}
+{{< note >}} You can always manually copy-paste the Payload Formatters (if applicable) from {{% ttnv2 %}} to your {{% tts %}} application. See [Payload Formatters]({{% ref "integrations/payload-formatters" %}}) for more details. {{</ note >}}

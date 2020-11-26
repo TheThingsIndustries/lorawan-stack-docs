@@ -9,7 +9,7 @@ description: ""
 
 This guide shows how to receive upstream messages and send downlink messages with the Eclipse Mosquitto command line clients and {{% tts %}} [MQTT Server]({{< ref "/integrations/mqtt" >}}).
 
-{{< info >}} Eclipse Mosquitto MQTT server supports 3.1, 3.1.1 and 5.0 MQTT protocol versions. {{</ info >}}
+{{< note >}} Eclipse Mosquitto MQTT server supports 3.1, 3.1.1 and 5.0 MQTT protocol versions. {{</ note >}}
 
 ## Prerequisites
 
@@ -35,7 +35,7 @@ $ mosquitto_sub -h thethings.example.com -t "#" -u app1 -P "NNSXS.VEEBURF3KR77ZR
 
 In you want to use TLS, you need to change the port value to `8883` and add the `--cafile` option to the command. `--cafile` option is used to define a path to the file containing trusted CA certificates that are PEM encoded.
 
-{{< info >}} Read more about the command line options in the [mosquitto_sub manual](https://mosquitto.org/man/mosquitto_sub-1.html). {{</ info >}}
+{{< note >}} Read more about the command line options in the [mosquitto_sub manual](https://mosquitto.org/man/mosquitto_sub-1.html). {{</ note >}}
 
 ## Publishing Downlink Messages
 
@@ -55,4 +55,4 @@ mosquitto_pub -h "thethings.example.com" -p "1883" -u "app1" -P "NNSXS.VEEBURF3K
 
 If TLS is being used, change the port value to `8883` and add the `--cafile` option to the command.
 
-{{< info >}} Read more about the command line options in the [mosquitto_pub manual](https://mosquitto.org/man/mosquitto_pub-1.html). {{</ info >}}
+{{< note >}} Read more about the command line options in the [mosquitto_pub manual](https://mosquitto.org/man/mosquitto_pub-1.html). {{</ note >}}

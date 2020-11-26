@@ -23,7 +23,7 @@ This will enable the Class C downlink scheduling of the device. That's it! Downl
 
 To disable Class C scheduling, reset with `--supports-class-c=false`.
 
-{{< info >}} Class C downlink scheduling starts when the end device confirms the session. This means that the device should send an uplink message after receiving the join-accept in order to enable Class C downlink scheduling. {{</ info >}}
+{{< note >}} Class C downlink scheduling starts when the end device confirms the session. This means that the device should send an uplink message after receiving the join-accept in order to enable Class C downlink scheduling. {{</ note >}}
 
 ## Class C message settings
 
@@ -53,7 +53,7 @@ $ ttn-lw-cli end-devices create app1 mc1 \
   --supports-class-c
 ```
 
-{{< info >}} A multicast group cannot be converted to a normal unicast device or the other way around. {{</ info >}}
+{{< note >}} A multicast group cannot be converted to a normal unicast device or the other way around. {{</ note >}}
 
 {{< note >}} Since multicast does not support uplink, the Network Server does not know a downlink path. Therefore, you need to specify a downlink path when scheduling downlink message. {{</ note >}}
 

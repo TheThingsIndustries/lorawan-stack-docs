@@ -83,7 +83,7 @@ The linked specification is quite extensive, and contains a lot of fields that a
 
 ## Examples
 
-{{< info >}} For more information on configuring MAC settings, see [Fine-tuning MAC Settings]({{< ref "getting-started/migrating/configure-mac-settings" >}}). {{</ info >}}
+{{< note >}} For more information on configuring MAC settings, see [Fine-tuning MAC Settings]({{< ref "getting-started/migrating/configure-mac-settings" >}}). {{</ note >}}
 
 ### Example OTAA Device:
 <summary><details>

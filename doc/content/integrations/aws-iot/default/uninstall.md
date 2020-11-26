@@ -20,7 +20,7 @@ In the top-right, click **Delete**.
 
 Double check that you are deleting the right AWS CloudFormation stack. Proceed with **Delete stack**.
 
-{{< info >}} Deleting all resources may take a few minutes. {{</ info >}}
+{{< note >}} Deleting all resources may take a few minutes. {{</ note >}}
 
 When the stack is deleted, the AWS CloudFormation stack disappears from the list.
 
