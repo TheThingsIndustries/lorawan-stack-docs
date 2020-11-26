@@ -65,6 +65,10 @@ When running a cluster in a trusted network, you can allow sending credentials o
 
 - `grpc.allow-insecure-for-credentials`: Allow transmission of credentials over insecure transport
 
+If {{% tts %}} is deployed behind a reverse proxy that does not use a private network IP address (in `127.0.0.0/8`, `10.0.0.0/8`, `100.64.0.0/10`, `172.16.0.0/12` or `192.168.0.0/16`), its IP address range needs to be configured in order for {{% tts %}} to trust it.
+
+- `grpc.trusted-proxies`: CIDRs of trusted reverse proxies. {{< new-in-version "3.10.2" >}}
+
 You can suppress log messages for successful gRPC method calls (e.g. to reduce the noise caused by the health checks in a production environment).
 
 - `grpc.log-ignore-methods`: List of gRPC methods for which to suppress logs of successful requests.
@@ -102,7 +106,7 @@ The HTTP server serves static files for the web UI. If these files are not in th
 - `http.static.mount`: Path on the server where static assets will be served
 - `http.static.search-path`: List of paths for finding the directory to serve static assets from
 
-If {{% tts %}} is deployed behind a reverse proxy that does not use a private network IP address (in `10.0.0.0/8`, `172.16.0.0/12` or `192.168.0.0/16`), its IP address range needs to be configured in order for {{% tts %}} to trust it.
+If {{% tts %}} is deployed behind a reverse proxy that does not use a private network IP address (in `127.0.0.0/8`, `10.0.0.0/8`, `100.64.0.0/10`, `172.16.0.0/12` or `192.168.0.0/16`), its IP address range needs to be configured in order for {{% tts %}} to trust it.
 
 - `http.trusted-proxies`: CIDRs of trusted reverse proxies
 
