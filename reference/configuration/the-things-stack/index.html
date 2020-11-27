@@ -221,6 +221,11 @@ debug: false
 <ul>
 <li><code>grpc.allow-insecure-for-credentials</code>: Allow transmission of credentials over insecure transport</li>
 </ul>
+<p>If The Things Stack is deployed behind a reverse proxy that does not use a private network IP address (in <code>127.0.0.0/8</code>, <code>10.0.0.0/8</code>, <code>100.64.0.0/10</code>, <code>172.16.0.0/12</code> or <code>192.168.0.0/16</code>), its IP address range needs to be configured in order for The Things Stack to trust it.</p>
+<ul>
+<li><code>grpc.trusted-proxies</code>: CIDRs of trusted reverse proxies. <span class="new-in-version">New in 3.10.2</span>
+</li>
+</ul>
 <p>You can suppress log messages for successful gRPC method calls (e.g. to reduce the noise caused by the health checks in a production environment).</p>
 <ul>
 <li><code>grpc.log-ignore-methods</code>: List of gRPC methods for which to suppress logs of successful requests.</li>
@@ -258,7 +263,7 @@ debug: false
 <li><code>http.static.mount</code>: Path on the server where static assets will be served</li>
 <li><code>http.static.search-path</code>: List of paths for finding the directory to serve static assets from</li>
 </ul>
-<p>If The Things Stack is deployed behind a reverse proxy that does not use a private network IP address (in <code>10.0.0.0/8</code>, <code>172.16.0.0/12</code> or <code>192.168.0.0/16</code>), its IP address range needs to be configured in order for The Things Stack to trust it.</p>
+<p>If The Things Stack is deployed behind a reverse proxy that does not use a private network IP address (in <code>127.0.0.0/8</code>, <code>10.0.0.0/8</code>, <code>100.64.0.0/10</code>, <code>172.16.0.0/12</code> or <code>192.168.0.0/16</code>), its IP address range needs to be configured in order for The Things Stack to trust it.</p>
 <ul>
 <li><code>http.trusted-proxies</code>: CIDRs of trusted reverse proxies</li>
 </ul>
@@ -523,7 +528,7 @@ debug: false
 <li><code>cache.redis.namespace</code>: Namespace for Redis keys</li>
 <li><code>cache.redis.pool-size</code>: The maximum size of the connection pool</li>
 </ul>
-<h2 id="multi-tenancy-hahahugoshortcode-s41-hbhb">Multi-Tenancy 
+<h2 id="multi-tenancy-hahahugoshortcode-s44-hbhb">Multi-Tenancy 
 
 
 
@@ -624,10 +629,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 19 Oct 2020.
+  Last changed by Hylke Visser on 26 Nov 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/57fe1f95f95beb3cbdc1bf9ba19c755836be0d16">
-      util: Fix eclint errors
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a66a8b25dfcc12b00da07d3666e0cb11bbc19d6a">
+      doc: Update configuration reference for trusted-proxies
     </a>
 </p>
 
