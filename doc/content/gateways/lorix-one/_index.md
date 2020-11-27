@@ -9,7 +9,7 @@ This page will guide you through the steps required to connect the gateway to {{
 
 <!--more-->
 
-![LORIX One](lorix-one.png)
+{{< figure src="lorix-one.png" alt="LORIX One" class="plain" >}}
 
 For additional help and technical specifications, please refer to [Wifx's official documentation](https://iot.wifx.net/docs).
 

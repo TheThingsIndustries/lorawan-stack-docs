@@ -73,8 +73,7 @@ In the device settings, click the **Network Servers Dropdown** to view available
 
 Select **Public** for the Network.
 
-![Network public](public.png)
-
+{{< figure src="public.png" alt="Network public" >}}
 
 Click OK to save the parameters.
 

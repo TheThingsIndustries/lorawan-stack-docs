@@ -10,7 +10,7 @@ The **Dragino LPS8** is a LoRaWAN indoor gateway based on the OpenWrt Linux syst
 
 This page guides you on how to connect the Dragino LPS8 to {{% tts %}}.
 
-{{< figure src="dragino-lps8.jpg" alt="Dragino LPS8" >}}
+{{< figure src="dragino-lps8.jpg" alt="Dragino LPS8" class="plain" >}}
 
 ## Prerequisites
 
@@ -37,7 +37,7 @@ In the prompt box, type your username and password and then click **OK**.
 
 >Note: The default username is `root` and the password is `dragino`.
 
-![step 1](lps8-step-2.png)
+{{< figure src="lps8-step-2.png" alt="step 1" class="plain" >}}
 
 Once you logged in, you will navigate to the home page of the configuration portal that is a web-based GUI.
 

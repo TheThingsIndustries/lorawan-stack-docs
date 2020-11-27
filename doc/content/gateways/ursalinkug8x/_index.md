@@ -11,7 +11,9 @@ This page contains information about connecting the Ursalink UG8X IoT LoRaWAN Ga
 
 The technical specifications can be found in [Ursalink's official documentation](https://www.ursalink.com/en/ad-lorawan-gateway/). The Ursalink UG8X IoT LoRaWAN Gateway supports two ways to connect with {{% tts %}}, using either the Semtech Packet Forwarder or {{% lbs %}}.
 
-{{< figure src="ursalink.jpg" alt="Ursalink">}}
+{{< figure src="ursalink-outdoor.png" alt="Ursalink" class="plain">}}
+
+{{< figure src="ursalink-indoor.png" alt="Ursalink" class="plain">}}
 
 ## Requirements
 
@@ -31,7 +33,7 @@ The **EUI** of the gateway can be found on the configuration web page of the gat
 
 Find the IP address of the gateway. The default IP for the Ursalink UG8X LoRaWAN Gateway is 192.168.23.150.
 
-Connect your machine to the same local network as that of the gateway, and enter the IP address in your web browser. The default username is **admin** and the default password is **password**. See [Ursalink's official documentation](https://www.ursalink.com/en/ad-lorawan-gateway/) for more information.
+Connect your machine to the same local network as that of the gateway, and enter the IP address in your web browser. The default username is `admin` and the default password is `password`.
 
 {{< figure src="login.png" alt="Login" >}}
 

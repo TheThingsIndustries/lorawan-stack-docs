@@ -10,13 +10,11 @@ This guide will help you set up the Multitech Conduit gateway to communicate ove
 
 <!--more-->
 
-![MultiTech MultiConnect Conduit AEP Gateway](multitech-conduit.png)
+{{< figure src="multitech-conduit.png" alt="MultiTech MultiConnect Conduit AEP Gateway" class="plain" >}}
 
-![MultiTech MultiConnect Conduit AEP Gateway](multitech-conduit-ap.png)
+{{< figure src="multitech-conduit-ap.png" alt="MultiTech MultiConnect Conduit AEP Gateway" class="plain" >}}
 
 The technical specifications of the Conduit can be found in the software guide in the [official documentation](http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/) page.
-
-{{< figure src="001_Multitech_Conduit_AEP.png" alt="MultiTech MultiConnect Conduit AEP Gateway" >}}
 
 ## Prerequisites
 
@@ -27,7 +25,7 @@ The technical specifications of the Conduit can be found in the software guide i
 
 Create a gateway by following the instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}).
 
-> The gateway EUI can be found at the bottom of the gateway under the field &quot;LORA NODE&quot;.
+> The gateway EUI can be found at the bottom of the gateway under the field **LORA NODE**;.
 
 ## Setting Up the Gateway
 

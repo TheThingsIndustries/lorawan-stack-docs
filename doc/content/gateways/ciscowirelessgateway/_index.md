@@ -10,7 +10,7 @@ This page guides you to connecting the Cisco Wireless Gateway for LoRaWAN to {{%
 
 Technical specifications for this gateway can be found in [Cisco's official documentation](https://www.cisco.com/c/en/us/products/routers/wireless-gateway-lorawan/). 
 
-![Cisco LoRaWAN Gateway](cisco.jpg)
+{{< figure src="cisco.jpg" alt="Cisco LoRaWAN Gateway" class="plain" >}}
 
 ## Prerequisites
 
