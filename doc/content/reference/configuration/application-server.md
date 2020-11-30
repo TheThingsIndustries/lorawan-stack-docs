@@ -61,7 +61,7 @@ Application Server can fetch information stored in the Identity Server. For exam
 - `as.fetcher.cache.size`: Number of cache entries. In case the cache is full, the Least Frequently Used entry will be evicted. Set to `0` to disable.
 - `as.fetcher.cache.ttl`: Time-To-Live for cache entries.
 
-## Storage Integration Options {{< distributions-inline "Enterprise" "Marketplace Launcher" "Dedicated Cloud" >}} {#storage-integration-options}
+## Storage Integration Options {{< distributions "Enterprise" "AWS Launcher" "Dedicated Cloud" >}} {#storage-integration-options}
 
 The Storage Integration requires a database for storing upstream messages.
 

@@ -4,6 +4,9 @@
     <div class="card has-radius is-fullwidth">
       <div class="card-content">
         <h3 class="title is-size-5 is-uppercase"><a href="{{ .Permalink }}">{{ .Title }}</a>
+        {{ with .Params.distributions }}
+          {{ partial "distributions" (dict "distributions" .) }}
+        {{ end }}
         {{ with .Params.new_in_version }}
           {{ partial "new-in-version" . }}
         {{ end }}
@@ -11,15 +14,6 @@
           {{ partial "deprecated-in-version" .}}
         {{ end }}
         </h3>
-        {{ with .Params.distributions }}
-          {{ $distributions := .}}
-          {{ if ( not ( reflect.IsSlice . ) ) }}
-            {{ $distributions = slice $distributions }}
-          {{ end }}
-          <p class="subtitle is-size-6 is-uppercase">
-              {{ delimit $distributions ", " " and " }} Only
-          </p>
-        {{ end }}
         <div class="content has-text-grey">
           {{ .Summary | plainify }}
         </div>
