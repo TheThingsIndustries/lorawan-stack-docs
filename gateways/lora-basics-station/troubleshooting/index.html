@@ -122,28 +122,31 @@ debug: false
 <p>CUPS uses the URI: <code>https://&lt;server-address&gt;:443</code></p>
 <p>LNS uses the URI: <code>wss://&lt;server-address&gt;:8887</code></p>
 <h2 id="how-do-i-find-the-ca-trust">How do I find the CA Trust?</h2>
-<p>Some device manufacturers include <a href="https://www.ccadb.org/">common CAs</a> in device firmware, and these devices should connect automatically to The Things Stack.</p>
-<p>If your device does not contain common CAs, and you are using Let&rsquo;s Encrypt to secure your domain, you may download the Let&rsquo;s Encrypt DST X3 Trust file <a href="https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem.txt">here</a>. Save the contents of the file as <code>cert.pem</code> and upload it as the Server Certificate on your gateway when connecting to LoRa Basics™ Station.</p>
-<p>If you are using self signed certificates, you are your own Trust. You may generate a Root Certificate from your private key using openssl:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ openssl req -x509 -new -nodes -key &lt;rootCA.key&gt; -sha256 -days <span class="m">1024</span>  -out &lt;rootCA.pem&gt;
-</code></pre></div><h2 id="how-do-i-use-an-api-key">How do I use an API Key?</h2>
-<p>This varies from device to device. If your device allows you to upload a <code>.key</code> file, copy your gateway API Key in to a <code>gateway-api.key</code> file (the filename is not important) as an HTTP header in the following format:</p>
-<pre><code>Authorization: &lt;gateway-api-key&gt;
-</code></pre><p>See the <a href="https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/?url=authmodes.html">LoRa Basics™ Station Authorization documentation</a> or your manufacturers guidelines for additional information.</p>
+<p>See the <a href="https://thethingsstack.io/reference/root-certificates/">Root Certificates Reference</a>.</p>
+<h2 id="how-do-i-use-an-api-key">How do I use an API Key?</h2>
+<p>Use the following commands to generate a <code>api.key</code> file which is correctly formatted (LoRa Basics™ Station requires that <code>.key</code> files end with a CRLF character).</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">API_KEY</span><span class="o">=</span><span class="s2">&#34;your-api-key&#34;</span>
+$ <span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="p">|</span> perl -p -e <span class="s1">&#39;s/\r\n|\n|\r/\r\n/g&#39;</span>  &gt; api.key
+</code></pre></div><p>Upload or copy the contents of this file in to your gateway as the <strong>Gateway Key</strong>.</p>
+<p>See the <a href="https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/?url=authmodes.html">LoRa Basics™ Station Authorization documentation</a> or your manufacturers guidelines for additional information.</p>
 <h2 id="is-an-api-key-required">Is an API Key required?</h2>
-<p>CUPS requires an API Key with the following rights:</p>
+<p>CUPS requires an API key for your gateway with the following rights:</p>
 <ul>
 <li>View gateway information</li>
 <li>Edit basic gateway settings</li>
+<li>Retrieve secrets associated with a gateway</li>
 </ul>
-<p>LNS does not require an API Key. If you wish to use Token Authentication, create an API Key with the following rights:</p>
+<p>LNS requires an API Key with the following rights:</p>
 <ul>
 <li>Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink</li>
 </ul>
-<h2 id="my-gateway-wont-connect-using-a-key-file">My gateway won&rsquo;t connect using a <code>.key</code> file</h2>
-<p>Some gateways require that <code>.key</code> files are terminated with a Carriage Return Line Feed (<code>0x0D0A</code>) character. To easily add a CRLF character and save the file, use the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer &lt;gateway-api-key&gt;&#34;</span> <span class="p">|</span> perl -p -e <span class="s1">&#39;s/\r\n|\n|\r/\r\n/g&#39;</span>  &gt; file.key
-</code></pre></div><p>See the <a href="https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/?url=authmodes.html">LoRa Basics™ Station documentation</a> for more information.</p>
+<h2 id="my-gateway-wont-connect">My gateway won&rsquo;t connect</h2>
+<p>Check your manufacturer&rsquo;s documentation to access the gateway logs on your gateway, which will help to diagnose the issue. Common issues include:</p>
+<ul>
+<li>Incorrect certificates. See the <a href="https://thethingsstack.io/reference/root-certificates/">Root Certificates Reference</a>.</li>
+<li>Incorrect API key permissions. See <a href="#is-an-api-key-required">above</a>.</li>
+<li>Both CUPS and LNS are configured, and one is configured incorrectly. There is no need to configure both, as CUPS will automatically configure LNS. Follow the instructions for <a href="/gateways/lora-basics-station/cups/">configuring CUPS</a>.</li>
+</ul>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -189,10 +192,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Oliv4945 on 19 Nov 2020.
+  Last changed by benolayinka on 01 Dec 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/e85cec134acde9b8ea2417cb141c7bb809b4b3cc">
-      doc: Fix Basic Station troubleshooting links
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/51a24b4211aa9fb99688f3ee47e89a0daa296c82">
+      doc: Update CUPS API Key info
     </a>
 </p>
 
