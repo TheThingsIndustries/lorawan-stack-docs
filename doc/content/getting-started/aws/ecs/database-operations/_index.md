@@ -70,6 +70,8 @@ tti-lw-stack,is-db,init
 {{</ tabs/tab >}}
 {{</ tabs/container >}}
 
+Please note that creating initial resources mentioned below is required for the stack to work.
+
 ## Create a Tenant in the Identity Server Database (multi-tenant only)
 
 If you can not, or do not want to use the Tenant Billing Server or the API to create tenants, you can create tenants directly in the database.
@@ -88,6 +90,8 @@ tti-lw-stack,is-db,create-tenant,--id=your-tenant-id,--name=Your Tenant Name
 ```
 {{</ tabs/tab >}}
 {{</ tabs/container >}}
+
+> **NOTE:** Replace `--id=your-tenant-id` and `--name=Your Tenant Name` with your own.
 
 ## Create the OAuth Client for the Command-Line Interface
 
@@ -123,11 +127,28 @@ tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=console-eu1,--name=
 
 > **NOTE (1):** Replace `--tenant-id=NULL` with `--tenant-id=your-tenant-id` in single-tenant deployments.
 
-> **NOTE (2):** Replace the values of `--id`, `--name` and `--secret` with your own.
+> **NOTE (2):** Replace the values of `--id`, `--name` and `--secret` with your own. `id` and `secret` can be found in the `*-console-oauth-client` secret in the AWS Secrets Manager.
 
 > **NOTE (3):** For secondary clusters (where the domain of the Console is not equal to the domain of the Identity Server), omit `--redirect-uri=/console/oauth/callback` and `--logout-redirect-uri=/console`.
 
 > **NOTE (4):** You can use a similar command for the Device Claiming server if you use `/claim` instead of `/console` for the redirect URIs.
+
+## Create Admin User
+
+{{< tabs/container "AWS Console" "AWS CLI">}}
+{{< tabs/tab "AWS Console" >}}
+```
+tti-lw-stack,is-db,create-admin-user,--tenant-id,your-tenant-id,--email,admin@email,--password,admin-password
+```
+{{</ tabs/tab >}}
+{{< tabs/tab "AWS CLI" >}}
+```
+["tti-lw-stack","is-db","create-admin-user","--tenant-id","your-tenant-id","--email","admin@email","--password","admin-password"]
+```
+{{</ tabs/tab >}}
+{{</ tabs/container >}}
+
+> **NOTE:** Replace `your-tenant-id`, `admin@email` and `admin-password` with your own.
 
 ## Migrate Identity Server Database
 
