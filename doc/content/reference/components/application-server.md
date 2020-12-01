@@ -9,7 +9,7 @@ It hosts an MQTT server for streaming application data, supports HTTP webhooks a
 
 <!--more-->
 
-## Linking to Network Servers
+## Linking to Network Servers {{< removed-in-version "3.11.0" >}}
 
 Application Servers link to Network Servers to receive upstream traffic and write downstream traffic.
 
