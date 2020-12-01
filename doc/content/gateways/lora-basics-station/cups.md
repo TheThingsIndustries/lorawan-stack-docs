@@ -28,10 +28,13 @@ To connect a gateway using the CUPS protocol, you must first add the gateway in 
 Since CUPS automatically configures LNS, you will need two API keys.
 
 CUPS requires an API key for your gateway with the following rights:
+
 - View gateway information
 - Edit basic gateway settings
+- Retrieve secrets associated with a gateway
 
 LNS requires an API Key with the following rights:
+
 - Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink
 
 To create an API key for your gateway, follow instructions for Creating a Gateway API key in [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}).
