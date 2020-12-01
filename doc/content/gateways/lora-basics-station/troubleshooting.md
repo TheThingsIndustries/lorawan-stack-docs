@@ -17,41 +17,37 @@ LNS uses the URI: `wss://<server-address>:8887`
 
 ## How do I find the CA Trust?
 
-Some device manufacturers include [common CAs](https://www.ccadb.org/) in device firmware, and these devices should connect automatically to {{% tts %}}.
-
-If your device does not contain common CAs, and you are using Let's Encrypt to secure your domain, you may download the Let's Encrypt DST X3 Trust file [here](https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem.txt). Save the contents of the file as `cert.pem` and upload it as the Server Certificate on your gateway when connecting to {{% lbs %}}.
-
-If you are using self signed certificates, you are your own Trust. You may generate a Root Certificate from your private key using openssl:
-
-```bash
-$ openssl req -x509 -new -nodes -key <rootCA.key> -sha256 -days 1024  -out <rootCA.pem>
-```
+See the [Root Certificates Reference]({{< ref "/reference/root-certificates" >}}).
 
 ## How do I use an API Key?
 
-This varies from device to device. If your device allows you to upload a `.key` file, copy your gateway API Key in to a `gateway-api.key` file (the filename is not important) as an HTTP header in the following format:
+Use the following commands to generate a `api.key` file which is correctly formatted ({{% lbs %}} requires that `.key` files end with a CRLF character).
 
+```bash
+$ export API_KEY="your-api-key"
+$ echo "Authorization: Bearer $API_KEY" | perl -p -e 's/\r\n|\n|\r/\r\n/g'  > api.key
 ```
-Authorization: <gateway-api-key>
-```
+
+Upload or copy the contents of this file in to your gateway as the **Gateway Key**.
 
 See the [{{% lbs %}} Authorization documentation](https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/?url=authmodes.html) or your manufacturers guidelines for additional information.
 
 ## Is an API Key required?
 
-CUPS requires an API Key with the following rights:
+CUPS requires an API key for your gateway with the following rights:
+
 - View gateway information
 - Edit basic gateway settings
+- Retrieve secrets associated with a gateway
 
-LNS does not require an API Key. If you wish to use Token Authentication, create an API Key with the following rights:
+LNS requires an API Key with the following rights:
+
 - Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink
 
-## My gateway won't connect using a `.key` file
+## My gateway won't connect
 
-Some gateways require that `.key` files are terminated with a Carriage Return Line Feed (`0x0D0A`) character. To easily add a CRLF character and save the file, use the following command:
+Check your manufacturer's documentation to access the gateway logs on your gateway, which will help to diagnose the issue. Common issues include:
 
-```bash
-echo "Authorization: Bearer <gateway-api-key>" | perl -p -e 's/\r\n|\n|\r/\r\n/g'  > file.key
-```
-
-See the [{{< lbs >}} documentation](https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/?url=authmodes.html) for more information.
+- Incorrect certificates. See the [Root Certificates Reference]({{< ref "/reference/root-certificates" >}}).
+- Incorrect API key permissions. See [above](#is-an-api-key-required).
+- Both CUPS and LNS are configured, and one is configured incorrectly. There is no need to configure both, as CUPS will automatically configure LNS. Follow the instructions for [configuring CUPS]({{< relref "cups" >}}).
