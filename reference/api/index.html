@@ -95,6 +95,9 @@ debug: false
   <a href="https://thethingsstack.io/reference/api/authentication/" class="">Authentication</a>
 </li>
 <li>
+  <a href="https://thethingsstack.io/reference/api/field-mask/" class="">Fields and Field Masks</a>
+</li>
+<li>
   <a href="https://thethingsstack.io/reference/api/application/" class="">Application APIs</a>
 </li>
 <li>
@@ -156,20 +159,7 @@ debug: false
 <div class="content">
 
 <p>This is the reference for the gRPC and HTTP APIs that The Things Stack exposes.</p>
-<blockquote>
-<p><strong>Note:</strong> The Things Stack API is different from The Things Network Stack V2 API. If migrating from V2, see <a href="https://thethingsstack.io/getting-started/migrating/major-changes/">here</a> for an overview of changes.</p>
-</blockquote>
-<h2 id="field-masks">Field Masks</h2>
-<p>The Things Stack APIs use field masks to specify a subset of fields that should be returned by a reading request, or to specify fields that should be updated in a writing request. See Google&rsquo;s <a href="https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMask">Protocol Buffers reference</a> for more information about field masks.</p>
-<h2 id="http-queries">HTTP Queries</h2>
-<p>Additional fields may be specified in HTTP requests by appending them as query string parameters. For example, to request the <code>name</code>, <code>description</code>, and <code>locations</code> of devices in an <code>EndDeviceRegistry.Get</code> request, add these fields to the <code>field_mask</code> field. To get this data for device <code>dev1</code> in application <code>app1</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl -i -H <span class="s2">&#34;Authorization: Bearer NNSXS.XXXXXXXXX&#34;</span> https://thethings.example.com/api/v3/applications/app1/devices/dev1?field_mask<span class="o">=</span>name,description,locations
-</code></pre></div><blockquote>
-<p>Fields that are empty or zero are not returned in requests, even if they are specified in a field mask.</p>
-</blockquote>
-<blockquote>
-<p>If you&rsquo;re having trouble with the HTTP API, you can always inspect requests in the Console using your browser&rsquo;s inspector. All of the data displayed in the Console is pulled using HTTP API requests, and this should give you some insight in to how they are formed.</p>
-</blockquote>
+
 </div>
 
 
@@ -221,10 +211,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 17 Nov 2020.
+  Last changed by benolayinka on 08 Oct 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/58e5734aa8b0ff96b65255e46fb70de7fb9199c8">
-      doc: Add V2 API note
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b503684d9bcc4a26426a6eb170e668cfe8c96ea7">
+      doc: Add api curl examples
     </a>
 </p>
 
