@@ -1,7 +1,7 @@
 ---
 title: "AWS Marketplace AMI"
 description: ""
-distributions: "Marketplace Launcher"
+distributions: "AWS Launcher"
 weight: 1
 ---
 

@@ -2,7 +2,7 @@
 title: Storage Integration
 description: ""
 summary: Persistent storage for upstream messages.
-distributions: ["Cloud", "Dedicated Cloud", "Enterprise", "Marketplace Launcher", "Community"]
+distributions: ["Cloud", "Dedicated Cloud", "Enterprise", "AWS Launcher", "Community"]
 new_in_version: "3.10"
 ---
 
