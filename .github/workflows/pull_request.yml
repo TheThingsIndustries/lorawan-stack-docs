@@ -9,6 +9,8 @@ jobs:
     steps:
     - name: Check out code
       uses: actions/checkout@v2
+    - name: Editor config
+      uses: snow-actions/eclint@v1.0.1
     - name: Set up Go
       uses: actions/setup-go@v2
       with:
@@ -41,8 +43,6 @@ jobs:
           ${{ runner.os }}-yarn-
     - name: Download Yarn dependencies
       run: make js.deps
-    - name: Editor config
-      uses: snow-actions/eclint@v1.0.1
     - name: Initialize Hugo binary cache
       uses: actions/cache@v2
       with:
