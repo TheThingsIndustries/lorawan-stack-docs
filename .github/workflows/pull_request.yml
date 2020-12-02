@@ -13,13 +13,18 @@ jobs:
       uses: actions/setup-go@v2
       with:
         go-version: '~1.15'
+    - name: Get Go module cache directory path
+      id: go-module-cache-dir-path
+      run: echo "::set-output name=dir::$(go env GOMODCACHE)"
     - name: Initialize Go module cache
       uses: actions/cache@v2
       with:
-        path: ~/go/pkg/mod
+        path: ${{ steps.go-module-cache-dir-path.outputs.dir }}
         key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
         restore-keys: |
           ${{ runner.os }}-go-
+    - name: Download Go dependencies
+      run: make go.deps
     - name: Editor config
       uses: snow-actions/eclint@v1.0.1
     - name: Build docs

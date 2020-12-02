@@ -38,6 +38,7 @@ clean.public:
 .PHONY: clean.deps
 clean.deps:
 	rm -rf $(FREQUENCY_PLAN_DEST)
+	rm -rf $(YARN_DEPS)
 
 .PHONY: build.internal
 build.internal: deps
@@ -58,10 +59,17 @@ new:
 	@:
 
 .PHONY: deps
-deps: hooks $(FREQUENCY_PLAN_DEST) | $(YARN_DEPS)
+deps: hooks $(FREQUENCY_PLAN_DEST) | go.deps js.deps
 
 $(FREQUENCY_PLAN_DEST):
 	curl -o $(FREQUENCY_PLAN_DEST) $(FREQUENCY_PLAN_URL)
+
+.PHONY: go.deps
+go.deps:
+	go mod download
+
+.PHONY: js.deps
+js.deps: $(YARN_DEPS)
 
 $(YARN_DEPS):
 	@if ! [ -x "$$(command -v yarn)" ]; then\
