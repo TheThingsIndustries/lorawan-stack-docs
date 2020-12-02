@@ -1,5 +1,5 @@
 ---
-title: "Creating a Webhook"
+title: "The Things Stack Setup"
 description: ""
 weight: 2
 ---
@@ -8,7 +8,22 @@ Once you have prepared the setup on ThingSpeak, follow this section to create a 
 
 <!--more-->
 
->**Note:** Before implementing the Webhook integration, you need to create an uplink payload formatter in order to decode the uplink payload and set fields in the `decoded_payload` object of the uplink message. See [Payload Formatters]({{< ref "/integrations/payload-formatters" >}}) for a detailed info.
+Before implementing the Webhook integration, you need to create an uplink [payload formatter]({{< ref "/integrations/payload-formatters" >}}) in order to decode the uplink payload and set fields in the `decoded_payload` object of the uplink message. The example uplink payload formatter is shown below.
+
+```js
+function decodeUplink(input) {
+  return {
+    data: {
+      field1: input.bytes[0],
+      field2: input.bytes[1]
+    },
+    warnings: [],
+    errors: []
+  };
+}
+```
+
+The last step is to instantiate the ThingSpeak Webhook template to create a Webhook integration.
 
 Give a name to your integration by filling in the **Webhook ID** field. 
 
@@ -20,4 +35,4 @@ Finish by clicking the **Create thingspeak webhook** button.
 
 >**Note:** To see the values of all parameters of the ThingSpeak integration, click on the integration after you created it with the Webhook template. 
 
-At this point, you can go back to your channel's page on ThingSpeak and check out the field charts under **Channel Stats** to see the visualization of the sensor data sent from {{% tts %}}.
+At this point, you can go back to your [channels page](https://thingspeak.com/channels) on ThingSpeak and select the private or public view of your channel to check out the field charts under **Channel Stats**. You can now also write and automate MATLAB&reg; code to analyze and further visualize your data.
