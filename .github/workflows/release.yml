@@ -47,6 +47,7 @@ jobs:
     - name: Download Yarn dependencies
       run: make js.deps
     - name: Initialize Hugo binary cache
+      id: cache-hugo
       uses: actions/cache@v2
       with:
         path: hugo.linux
@@ -54,6 +55,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-hugo-
     - name: Build Hugo binary
+      if: steps.cache-hugo.outputs.cache-hit != 'true'
       run: make hugo.linux
     - name: Build docs
       run: make build.public
