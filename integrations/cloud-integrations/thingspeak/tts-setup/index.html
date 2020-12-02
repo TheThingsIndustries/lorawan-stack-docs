@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Creating a Webhook | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://thethingsstack.io/integrations/cloud-integrations/thingspeak/tts-setup/" />
+  <title>The Things Stack Setup | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://thethingsstack.io/integrations/cloud-integrations/thingspeak/tts-setup/" />
   <link rel="alternate icon" href="/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="https://thethingsstack.io/css/theme.min.082afb357f0b3b4ce8eeb32537390757c466275311edc353ae49a68ee22254f6.css" integrity="sha256-CCr7NX8LO0zo7rMlNzkHV8RmJ1MR7cNTrkmmjuIiVPY="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Creating a Webhook">
+  <meta itemprop="name" content="The Things Stack Setup">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Creating a Webhook">
+  <meta property="og:title" content="The Things Stack Setup">
   <meta property="og:description" content="">
   <meta property="og:url" content="https://thethingsstack.io/integrations/cloud-integrations/thingspeak/tts-setup/">
-  <meta name="twitter:title" content="Creating a Webhook" />
+  <meta name="twitter:title" content="The Things Stack Setup" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -95,7 +95,7 @@ debug: false
   <a href="https://thethingsstack.io/integrations/cloud-integrations/thingspeak/thingspeak-setup/" class="">ThingSpeak Setup</a>
 </li>
 <li>
-  <a href="https://thethingsstack.io/integrations/cloud-integrations/thingspeak/tts-setup/" class="is-active">Creating a Webhook</a>
+  <a href="https://thethingsstack.io/integrations/cloud-integrations/thingspeak/tts-setup/" class="is-active">The Things Stack Setup</a>
 </li>
 </ul>
 
@@ -107,16 +107,25 @@ debug: false
       
       <div class="column is-two-thirds">
 
-<h1 class="title is-size-2">Creating a Webhook
+<h1 class="title is-size-2">The Things Stack Setup
 
 </h1>
 
 <div class="content">
 
 <p>Once you have prepared the setup on ThingSpeak, follow this section to create a Webhook integration on The Things Stack by using the <strong>ThingSpeak</strong> <a href="https://thethingsstack.io/integrations/webhooks/webhook-templates/">Webhook template</a>.</p>
-<blockquote>
-<p><strong>Note:</strong> Before implementing the Webhook integration, you need to create an uplink payload formatter in order to decode the uplink payload and set fields in the <code>decoded_payload</code> object of the uplink message. See <a href="https://thethingsstack.io/integrations/payload-formatters/">Payload Formatters</a> for a detailed info.</p>
-</blockquote>
+<p>Before implementing the Webhook integration, you need to create an uplink <a href="https://thethingsstack.io/integrations/payload-formatters/">payload formatter</a> in order to decode the uplink payload and set fields in the <code>decoded_payload</code> object of the uplink message. The example uplink payload formatter is shown below.</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">field1</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+      <span class="nx">field2</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nx">warnings</span><span class="o">:</span> <span class="p">[],</span>
+    <span class="nx">errors</span><span class="o">:</span> <span class="p">[]</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div><p>The last step is to instantiate the ThingSpeak Webhook template to create a Webhook integration.</p>
 <p>Give a name to your integration by filling in the <strong>Webhook ID</strong> field.</p>
 <p>Fill in the <strong>Channel ID</strong> field with the ThingSpeak channel ID value, and paste the <strong>Write API Key</strong> from ThingSpeak in the <strong>API Key</strong> field.</p>
 <p>Finish by clicking the <strong>Create thingspeak webhook</strong> button.</p>
@@ -128,7 +137,7 @@ debug: false
 <blockquote>
 <p><strong>Note:</strong> To see the values of all parameters of the ThingSpeak integration, click on the integration after you created it with the Webhook template.</p>
 </blockquote>
-<p>At this point, you can go back to your channel&rsquo;s page on ThingSpeak and check out the field charts under <strong>Channel Stats</strong> to see the visualization of the sensor data sent from The Things Stack.</p>
+<p>At this point, you can go back to your <a href="https://thingspeak.com/channels">channels page</a> on ThingSpeak and select the private or public view of your channel to check out the field charts under <strong>Channel Stats</strong>. You can now also write and automate MATLAB® code to analyze and further visualize your data.</p>
 </div>
 
 
@@ -180,10 +189,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 04 Nov 2020.
+  Last changed by Nejra on 27 Nov 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/d3db2296199f23aebcacf7393ea37f9b5cc8372c">
-      fixup! doc: Modify guide to use ThingSpeak webhook template
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/1e5378a5b1b280a70782e6c60c246be3f303bc22">
+      doc: Update ThingSpeak guide
     </a>
 </p>
 
