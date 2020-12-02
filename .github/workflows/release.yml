@@ -46,9 +46,19 @@ jobs:
           ${{ runner.os }}-yarn-
     - name: Download Yarn dependencies
       run: make js.deps
+    - name: Initialize Hugo binary cache
+      uses: actions/cache@v2
+      with:
+        path: hugo.linux
+        key: ${{ runner.os }}-hugo-${{ hashFiles('**/go.sum') }}
+        restore-keys: |
+          ${{ runner.os }}-hugo-
+    - name: Build Hugo binary
+      run: make hugo.linux
     - name: Build docs
       run: make build.public
       env:
+        HUGO: ./hugo.linux
         HUGO_BASE_URL: https://thethingsstack.io/
         HUGO_GOOGLEANALYTICS: ${{ secrets.HUGO_GOOGLEANALYTICS }}
         HUGO_PARAMS_FEEDBACK_CAMPAIGN: ${{ secrets.HUGO_PARAMS_FEEDBACK_CAMPAIGN }}

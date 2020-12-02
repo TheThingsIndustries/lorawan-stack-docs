@@ -13,7 +13,9 @@
 # limitations under the License.
 
 GO = go
-HUGO = $(GO) run -tags extended github.com/gohugoio/hugo
+HUGO_BUILD_FLAGS = -tags extended
+HUGO_MODULE = github.com/gohugoio/hugo
+HUGO ?= $(GO) run $(HUGO_BUILD_FLAGS) $(HUGO_MODULE)
 YARN_DEPS = doc/themes/the-things-stack/node_modules
 FREQUENCY_PLAN_URL ?= \
 https://raw.githubusercontent.com/TheThingsNetwork/lorawan-frequency-plans/master/frequency-plans.yml
@@ -77,6 +79,15 @@ $(YARN_DEPS):
 			curl -o- -L https://yarnpkg.com/install.sh | bash;\
 	fi
 	yarn --cwd doc/themes/the-things-stack/
+
+hugo.exe: go.mod go.sum
+	GOOS=windows go build -o $@ $(HUGO_BUILD_FLAGS) $(HUGO_MODULE)
+
+hugo.darwin: go.mod go.sum
+	GOOS=darwin go build -o $@ $(HUGO_BUILD_FLAGS) $(HUGO_MODULE)
+
+hugo.linux: go.mod go.sum
+	GOOS=linux go build -o $@ $(HUGO_BUILD_FLAGS) $(HUGO_MODULE)
 
 .PHONY: hooks
 hooks:
