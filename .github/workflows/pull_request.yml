@@ -25,6 +25,22 @@ jobs:
           ${{ runner.os }}-go-
     - name: Download Go dependencies
       run: make go.deps
+    - name: Set up Node
+      uses: actions/setup-node@v2-beta
+      with:
+        node-version: '~14'
+    - name: Get Yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(npx yarn cache dir)"
+    - name: Initialize Yarn module cache
+      uses: actions/cache@v2
+      with:
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+    - name: Download Yarn dependencies
+      run: make js.deps
     - name: Editor config
       uses: snow-actions/eclint@v1.0.1
     - name: Build docs
