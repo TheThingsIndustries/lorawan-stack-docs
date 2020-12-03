@@ -133,10 +133,14 @@ You can use Sendgrid or an SMTP server. If you skip setting up an email provider
 
 ### Component URLs
 
-Finally, we also need to configure the URLs for the Web UI and the secret used
+We also need to configure the URLs for the Web UI and the secret used
 by the console client (see the `console` section). These tell {{% tts %}} where all its components are accessible.
 
 >**Note:** Failure to correctly configure component URLs is a common problem that will prevent the stack from starting. Be sure to replace all instances of `thethings.example.com` with your domain name!
+
+### Multi-tenancy {{< distributions-inline "Enterprise" >}}
+
+If running a multi-tenant environment, we need to configure the default tenant ID, and the base domain from which tenant IDs are inferred. See the [`tenancy` configuration reference]({{< ref "/reference/configuration/the-things-stack#multi-tenancy" >}}).
 
 Below is an example `ttn-lw-stack-docker.yml` file for the Enterprise stack:
 

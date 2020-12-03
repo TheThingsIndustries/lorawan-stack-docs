@@ -35,6 +35,10 @@ is:
       is:
         base-url: 'https://thethings.example.com/api/v3'
 
+  # If running a multi-tenant environment, configure tenant admin keys
+  tenancy:
+    admin-keys: ''                  # generate 32 bytes (openssl rand -hex 32)
+
 # HTTP server configuration
 http:
   cookie:
@@ -145,3 +149,8 @@ dcs:
       base-url: 'https://thethings.example.com/api/v3'
     ns:
       base-url: 'https://thethings.example.com/api/v3'
+
+# If running a multi-tenant environment, defaults for "thethings.example.com":
+tenancy:
+  base-domains: 'thethings.example.com'
+  default-id: 'default'
