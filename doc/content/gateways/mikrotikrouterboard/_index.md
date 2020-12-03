@@ -16,11 +16,11 @@ Its technical specifications can be found in [the MikroTik official documentatio
 
 There are multiple interfaces to configure the gateway parameters. This page guides you to connect it to {{% tts %}} using a web browser or the [MikroTik Mobile App](https://mikrotik.com/mobile_app) for Android/iOS.
 
+{{< figure src="mikrotik-routerboard-connections.jpg" alt="MikroTik Routerboard wAP LoRa8 kit connections" class="float" >}}
+
 ## Physical Connections
 
-The MikroTik Routerboard wAP LoRa8 kit comes with a PoE adapter. The following image shows the proper connections to the device.
-
-{{< figure src="mikrotik-routerboard-connections.jpg" alt="MikroTik Routerboard wAP LoRa8 kit connections" >}}
+The MikroTik Routerboard wAP LoRa8 kit comes with a PoE adapter. The image on the right shows the proper connections to the device.
 
 ## Prerequisites
 
@@ -40,15 +40,15 @@ Connect to this AP. By default, there's no password.
 
 Open a browser to `http://192.168.88.1/webfig/#Interfaces`.
 
-![Portal](portal.png)
+{{< figure src="portal.png" alt="Portal" class="plain" >}}
 
 In the left hand menu select **LoRa**. Make sure the status is set to *Disabled*, if needed press the **D** to disable the LoRa Device.
 
-![Lora](portal-lora.png)
+{{< figure src="portal-lora.png" alt="LoRa" class="plain" >}}
 
 From the top menu, select the **Servers** Tab and press the **Add New** button.
 
-![Servers](servers.png)
+{{< figure src="servers.png" alt="Servers" class="plain" >}}
 
 Edit the server parameters.
 
@@ -59,28 +59,27 @@ Edit the server parameters.
 
 Press **OK** to save the parameters.
 
-![Server Parameters](parameters.png)
+{{< figure src="parameters.png" alt="Server Parameters" class="plain" >}}
 
 From the top menu, select the **Devices Tab**. Click the **Gateway ID** to configure it.
 
-![Devices](portal-lora-disable.png)
+{{< figure src="portal-lora-disable.png" alt="Devices" class="plain" >}}
 
 In the device settings, click the **Network Servers Dropdown** to view available servers. Choose the server you just created.
 
-![Device parameters](device-parameters.png)
+{{< figure src="device-parameters.png" alt="Device parameters" class="plain" >}}
 
-![Device parameters](device-parameters-selected.png)
+{{< figure src="device-parameters-selected.png" alt="Device parameters selected" class="plain" >}}
 
 Select **Public** for the Network.
 
-![Network public](public.png)
-
+{{< figure src="public.png" alt="Network public" class="plain" >}}
 
 Click OK to save the parameters.
 
 Press the **E** to enable the gateway device. It will become a **D** and the device status will update.
 
-![Device enable](portal-lora-enable.png)
+{{< figure src="portal-lora-enable.png" alt="Device enable" class="plain" >}}
 
 If your configuration was successful, your gateway will connect to {{% tts %}} after a couple of seconds.
 

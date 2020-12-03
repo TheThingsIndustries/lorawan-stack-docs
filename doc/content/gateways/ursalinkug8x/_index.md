@@ -5,13 +5,15 @@ description: ""
 
 The **Ursalink UG8X IoT LoRaWAN Gateway** is an 8 channel (16 channel optional) configurable, scalable gateway for industrial IoT applications.
 
-This page contains information about connecting the Ursalink UG8X IoT LoRaWAN Gateway to {{% tts %}}
+{{< figure src="compact.png" alt="Ursalink compact" class="plain float" >}}
+
+{{< figure src="outdoor.png" alt="Ursalink outdoor" class="plain float" >}}
+
+This page contains information about connecting the Ursalink UG8X IoT LoRaWAN Gateway to {{% tts %}}.
 
 <!--more-->
 
 The technical specifications can be found in [Ursalink's official documentation](https://www.ursalink.com/en/ad-lorawan-gateway/). The Ursalink UG8X IoT LoRaWAN Gateway supports two ways to connect with {{% tts %}}, using either the Semtech Packet Forwarder or {{% lbs %}}.
-
-{{< figure src="ursalink.jpg" alt="Ursalink">}}
 
 ## Requirements
 

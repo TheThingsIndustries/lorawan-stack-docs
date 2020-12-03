@@ -119,6 +119,8 @@ $tabs-border-bottom-color: $blue;
 @import "bulma/sass/layout/section.sass";
 @import "bulma/sass/layout/footer.sass";
 
+@import "vendor/basicLightbox.min.scss";
+
 html {
   margin: 0 10%;
 }
@@ -242,12 +244,37 @@ h1 {
     font-family: $title-family;
     color: $title-color;
   }
-  figure > img {
-    box-shadow: $card-shadow;
-  }
-  table {
-    display: block;
-    overflow: auto;
+  figure {
+    cursor: pointer;
+    transition: transform ease-out 150ms 150ms;
+
+    &:hover {
+      transform: scale(1.01);
+    }
+
+    &.float {
+      @media (max-width: 620px) {
+        max-width: none;
+      }
+      float: right;
+      @media (min-width: 621px) {
+        max-width: 40%;
+      }
+    }
+
+    & > img {
+      max-height: 500px;
+      object-fit: contain;
+    }
+
+    &:not(.plain) > img {
+      box-shadow: $card-shadow;
+    }
+
+    table {
+      display: block;
+      overflow: auto;
+    }
   }
 }
 

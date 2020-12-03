@@ -4,13 +4,13 @@ description: ""
 weight: 
 ---
 
+{{< figure src="dragino-lps8.jpg" alt="Dragino LPS8" class="float plain" >}}
+
 The **Dragino LPS8** is a LoRaWAN indoor gateway based on the OpenWrt Linux system. The hardware includes an SX1308 LoRa concentrator that provides 10 programmable parallel demodulation paths. The gateway has an ethernet and WiFi backhaul and supports EU868, IN865, US915, AU915, AS923, and KR920 ISM bands.
 
 <!--more-->
 
 This page guides you on how to connect the Dragino LPS8 to {{% tts %}}.
-
-{{< figure src="dragino-lps8.jpg" alt="Dragino LPS8" >}}
 
 ## Prerequisites
 
@@ -25,27 +25,27 @@ Create a gateway by following [the instructions]({{< ref "/gateways/adding-gatew
  
 >Note: If the WiFi MAC address is `A8:A8:41:A8:CE:54` then the Gateway EUI is `A8 A8 41 A8 CE 54 41 50`
 
-![Dragino LPS8 LoRaWAN config](add-gateway.png)
+{{< figure src="add-gateway.png" alt="Dragino LPS8 LoRaWAN config" >}}
 
 ## Configuring the LPS8
 
 Enter the IP address and port number of your gateway in the browser (the default port number is 8000, E.g. `192.168.1.6.:8000`)
 
-![step 1](lps8-step-1.png)
+{{< figure src="lps8-step-1.png" alt="Step 1" >}}
 
 In the prompt box, type your username and password and then click **OK**.
 
 >Note: The default username is `root` and the password is `dragino`.
 
-![step 1](lps8-step-2.png)
+{{< figure src="lps8-step-2.png" alt="Step 2" class="plain" >}}
 
 Once you logged in, you will navigate to the home page of the configuration portal that is a web-based GUI.
 
-![step 1](lps8-step-3.png)
+{{< figure src="lps8-step-3.png" alt="Step 3" >}}
 
 On the portal page, on the top menu, select **LoRaWAN > LoRaWAN**.
 
-![step 1](lps8-step-4.png)
+{{< figure src="lps8-step-4.png" alt="Step 4" >}}
 
 Edit the server settings.
 
@@ -57,8 +57,8 @@ Edit the server settings.
 
 Select **Save & Apply**.
 
-![step 1](lps8-step-5.png)
+{{< figure src="lps8-step-5.png" alt="Step 5" >}}
 
 Finally, test your connection by going to the gateway’s **Overview** page. You can see the gateway status is changed as connected (with a blue dot) or the frequently updating ‘Last seen’ time.
 
-![Dragino LPS8 LoRaWAN config](gateway-add-ok.png)
+{{< figure src="gateway-add-ok.png" alt="Dragino LPS8 LoRaWAN config" >}}

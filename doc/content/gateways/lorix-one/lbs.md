@@ -13,25 +13,25 @@ Go to the **LoRa > Settings page > Forwarder tab**.
 
 On the top right, click the **Edit** button to choose a forwarder.
 
-![LORIX One LoRa forwarder selection](../lorix-one-lora-settings-forwarder-change-list.png "LORIX One LoRa forwarder selection")
+{{< figure src="../lorix-one-lora-settings-forwarder-change-list.png" alt="LORIX One LoRa forwarder selection" class="plain" >}}
 
 In the list, select **LoRa Basic Station** and press apply.
 
-![LORIX One LoRa forwarder Basic Station selection](../lorix-one-lora-settings-forwarder-change-bs.png "LORIX One LoRa forwarder Basic Station selection")
+{{< figure src="../lorix-one-lora-settings-forwarder-change-bs.png" alt="LORIX One LoRa forwarder Basic Station selection" class="plain" >}}
 
 On the new page, scroll down to the **LoRaWAN Network Server** section and enable it.
 
-![LORIX One LoRa forwarder Basic Station LNS](../lorix-one-lora-settings-bs.png "LORIX One LoRa forwarder Basic Station LNS")
+{{< figure src="../lorix-one-lora-settings-bs.png" alt="LORIX One LoRa forwarder Basic Station LNS" >}}
 
 Follow the instructions for [Connecting LNS]({{< ref "/gateways/lora-basics-station/lns" >}}).
 
 If using CUPS, following the instructions for [Connecting CUPS]({{< ref "/gateways/lora-basics-station/cups" >}}).
 
-![LORIX One LoRa forwarder Basic Station LNS](../lorix-one-lora-settings-bs-lns.png "LORIX One LoRa forwarder Basic Station LNS")
+{{< figure src="../lorix-one-lora-settings-bs-lns.png" alt="LORIX One LoRa forwarder Basic Station LNS" class="plain" >}}
 
 Press the **save** button. In the **Control** pane above, press **start** and check the logs in the dedicated pane.
 
-![LORIX One LoRa forwarder Basic Station start](../lorix-one-lora-settings-bs-control-logs.png "LORIX One LoRa forwarder Basic Station start")
+{{< figure src="../lorix-one-lora-settings-bs-control-logs.png" alt="LORIX One LoRa forwarder Basic Station start" >}}
 
 You should see a bunch of messages, one of which indicates success :
 
