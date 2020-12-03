@@ -376,11 +376,22 @@ as passwords for endpoints that you may want to keep for internal use (see the <
 You can use Sendgrid or an SMTP server. If you skip setting up an email provider,
 The Things Stack will print emails to the stack logs (see the <code>email</code> section).</p>
 <h3 id="component-urls">Component URLs</h3>
-<p>Finally, we also need to configure the URLs for the Web UI and the secret used
+<p>We also need to configure the URLs for the Web UI and the secret used
 by the console client (see the <code>console</code> section). These tell The Things Stack where all its components are accessible.</p>
 <blockquote>
 <p><strong>Note:</strong> Failure to correctly configure component URLs is a common problem that will prevent the stack from starting. Be sure to replace all instances of <code>thethings.example.com</code> with your domain name!</p>
 </blockquote>
+<h3 id="multi-tenancy-hahahugoshortcode-s41-hbhb">Multi-tenancy 
+
+
+
+  
+
+
+<span class="distribution-inline">Enterprise Only</span>
+
+</h3>
+<p>If running a multi-tenant environment, we need to configure the default tenant ID, and the base domain from which tenant IDs are inferred. See the <a href="https://thethingsstack.io/reference/configuration/the-things-stack/#multi-tenancy"><code>tenancy</code> configuration reference</a>.</p>
 <p>Below is an example <code>ttn-lw-stack-docker.yml</code> file for the Enterprise stack:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -531,6 +542,15 @@ by the console client (see the <code>console</code> section). These tell The Thi
 </span><span class="lnt">145
 </span><span class="lnt">146
 </span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span><span class="lnt">156
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># The Things Stack requires a license key</span><span class="w">
@@ -569,6 +589,10 @@ by the console client (see the <code>console</code> section). These tell The Thi
 </span><span class="w">      </span><span class="k">canonical-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/oauth&#39;</span><span class="w">
 </span><span class="w">      </span><span class="k">is</span><span class="p">:</span><span class="w">
 </span><span class="w">        </span><span class="k">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
+</span><span class="w">
+</span><span class="w">  </span><span class="c"># If running a multi-tenant environment, configure tenant admin keys</span><span class="w">
+</span><span class="w">  </span><span class="k">tenancy</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="k">admin-keys</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">                  </span><span class="c"># generate 32 bytes (openssl rand -hex 32)</span><span class="w">
 </span><span class="w">
 </span><span class="w"></span><span class="c"># HTTP server configuration</span><span class="w">
 </span><span class="w"></span><span class="k">http</span><span class="p">:</span><span class="w">
@@ -679,7 +703,12 @@ by the console client (see the <code>console</code> section). These tell The Thi
 </span><span class="w">    </span><span class="k">is</span><span class="p">:</span><span class="w">
 </span><span class="w">      </span><span class="k">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
 </span><span class="w">    </span><span class="k">ns</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span></code></pre></td></tr></table>
+</span><span class="w">      </span><span class="k">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
+</span><span class="w">
+</span><span class="w"></span><span class="c"># If running a multi-tenant environment, defaults for &#34;thethings.example.com&#34;:</span><span class="w">
+</span><span class="w"></span><span class="k">tenancy</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">base-domains</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com&#39;</span><span class="w">
+</span><span class="w">  </span><span class="k">default-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;default&#39;</span></code></pre></td></tr></table>
 </div>
 </div>
 <blockquote>
@@ -772,10 +801,10 @@ by the console client (see the <code>console</code> section). These tell The Thi
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 15 Oct 2020.
+  Last changed by benolayinka on 02 Dec 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2cdb92c1b503cf43906de6c1c37f080f2e676960">
-      doc: Add localhost installation instructions
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3e6ba833682e36b42dde6bf810101024c77138e5">
+      doc: Add tenancy config to enterprise config file
     </a>
 </p>
 
