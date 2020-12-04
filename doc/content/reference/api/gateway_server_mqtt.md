@@ -19,7 +19,7 @@ The Gateway Server is the MQTT server, and gateways connect to the Gateway Serve
 
 ## Protocol Buffers
 
-To communicate with the MQTT protocol, the Gateway Server and the gateway are exchanging [Protocol Buffers](https://developers.google.com/protocol-buffers). The definitions of the Protocol Buffers can be found at the [GitHub repository](https://github.com/TheThingsNetwork/lorawan-stack) of {{% tts %}}, under [**messages.proto**](https://github.com/TheThingsNetwork/lorawan-stack/blob/default/api/messages.proto) and [**lorawan.proto**](https://github.com/TheThingsNetwork/lorawan-stack/blob/default/api/lorawan.proto).
+To communicate with the MQTT protocol, the Gateway Server and the gateway are exchanging [Protocol Buffers](https://developers.google.com/protocol-buffers). The definitions of the Protocol Buffers can be found at the [GitHub repository](https://github.com/TheThingsNetwork/lorawan-stack) of {{% tts %}}, under [**messages.proto**]({{< tts-repo-file-url "blob" "api/messages.proto" >}}) and [**lorawan.proto**]({{< tts-repo-file-url "blob" "api/lorawan.proto" >}}).
 
 ## Connecting to the Gateway Server
 
