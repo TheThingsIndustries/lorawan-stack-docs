@@ -10,6 +10,8 @@ After configuring the uplink payload formatter on {{% tts %}}, follow the steps 
 
 Log in to your ThingsBoard account. 
 
+## Defining Data Converters
+
 Before creating an integration, you need to define uplink and downlink data converters. To do so, first navigate to **Data converters** on the left hand menu.
 
 Click the **+** icon in the upper right and then select **Create new converter** to create a new uplink converter.
@@ -74,9 +76,11 @@ return result;
 
 {{< figure src="downlink-converter.png" alt="Creating a downlink converter" >}}
 
-Next, navigate to the **Integrations** section on the left hand menu. Add a new integration by clicking the **+** button in the upper right corner.
+## Creating MQTT Integration
 
-Give a name to your integration by filling in the **Name** field. For **Type**, choose **TheThingsIndustries**.
+When you have defined data converters, navigate to the **Integrations** section on the left hand menu. Add a new integration by clicking the **+** button in the upper right corner.
+
+Give a name to your integration by filling in the **Name** field. For **Type**, choose **The Things Stack**.
 
 >**Note:** Make sure the **Enabled** and **Allow create devices or assets** checkboxes are left ticked.
 
