@@ -29,6 +29,20 @@ config/
 
 > `886` is the uid and the gid of the user that runs {{% tts %}} in the Docker container. If you don't set these permissions, you'll get an error saying something like `open /var/lib/acme/acme_account+key<...>: permission denied`.
 
+### Using Custom Certificates
+
+To use [CA certificates you already have](#certificates-from-a-certificate-authority) or [self-signed certificates](#custom-certificate-authority), you will need to uncomment the custom certificates section of `docker-compose.yml`:
+
+{{< highlight yaml "linenos=table,linenostart=84" >}}
+{{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=84 to=97 >}}
+{{< /highlight >}}
+
+You will also need to comment out the Let's Encrypt section of `ttn-lw-stack-docker.yml`, and uncomment the custom certificates section:
+
+{{< highlight yaml "linenos=table,linenostart=48" >}}
+{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=48 to=62 >}}
+{{< /highlight >}}
+
 ### Certificates from a Certificate Authority
 
 If you want to use the certificate (`cert.pem`) and key (`key.pem`) that you already have, you also need to set these permissions.
@@ -50,7 +64,7 @@ config/
 
 > If you don't set these permissions, you'll get an error saying something like `/run/secrets/key.pem: permission denied`.
 
-## Custom Certificate Authority
+### Custom Certificate Authority
 
 To use TLS on a local or offline deployment, you can use your own Certificate Authority. In order to set that up, you can use CloudFlare's PKI/TLS toolkit, `cfssl`. Installation instructions can be found [in the README of `cfssl`](https://github.com/cloudflare/cfssl#installation).
 

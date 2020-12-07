@@ -160,6 +160,8 @@ The best solution is to configure and use a static IP address for your machine o
 
 This will still allow you to see the console by entering `localhost` or your local IP in your browser. It will also allow you to connect to {{% tts %}} from any machine inside your local network.
 
+You will also need to [configure the CLI]({{< ref "getting-started/cli/installing-cli#generate-configuration-file" >}}), to use the static IP of your machine as the address of {{% tts %}}. 
+
 ### Solution 2: Specify the internal ports that {{% tts %}} listens on in your configuration files
 
 By default, {{% tts %}} listens on ports 1885 and 8885 inside Docker. To make `localhost` work both on your local machine and within the container, append the port to `localhost` and make sure port forwarding is enabled in your `docker-compose.yml` for that port.
