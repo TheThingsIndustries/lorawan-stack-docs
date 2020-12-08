@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="stylesheet" href="https://thethingsstack.io/css/theme.min.cfc828cf25058c21e931fe626d67f57f507e9b4dd2a9b3628bde644419747477.css" integrity="sha256-z8gozyUFjCHpMf5ibWf1f1B&#43;m03SqbNii95kRBl0dHc="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://thethingsstack.io/css/theme.min.3d009bc9efa2f1479c48b05354839b290f5e1e3b86418170e312bdb7e5232d2a.css" integrity="sha256-PQCbye&#43;i8UecSLBTVIObKQ9eHjuGQYFw4xK9t&#43;UjLSo="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Enable">
@@ -118,32 +118,36 @@ debug: false
 <div class="content">
 
 <p>The Storage Integration is implemented as an <a href="https://thethingsstack.io/reference/application-packages/">Application Package</a>. In order to enable it for an application (or a single end device), you have to create a package association.</p>
-<div class="notification is-primary">
-  <h3 class="has-text-light">Command-line interface only</h3>
+<div class="notification is-primary is-light has-text-dark">
+  <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
   <p>The instructions below use the command-line interface (CLI).</p>
   <div class="buttons">
-    <a class="button is-primary is-inverted is-outlined" href="https://thethingsstack.io/getting-started/cli/installing-cli/">Learn how to install the CLI</a>
+    <a class="button is-dark is-outlined" href="https://thethingsstack.io/getting-started/cli/installing-cli/">Learn how to install the CLI</a>
   </div>
 </div>
 
 <h2 id="enable-for-an-application">Enable for an Application</h2>
 <p>Set up a default association between the desired application and the <code>storage-integration</code> package.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications packages default-associations <span class="nb">set</span> <span class="s2">&#34;app1&#34;</span> <span class="m">100</span> --package-name storage-integration
-</code></pre></div><blockquote>
-<p><strong>Note 1</strong>: The <code>f_port</code> for the default association is set to <code>100</code>. This value is irrelevant. <strong>The storage integration will receive and store all uplink messages, regardless of <code>f_port</code></strong>. The <code>f_port</code> value is only needed because of the way application packages work with The Things Stack.</p>
-</blockquote>
-<blockquote>
-<p><strong>Note 2</strong>: <strong>Do not configure more than one default association for the same application</strong>, since that will lead to storing duplicate messages in the persistent storage.</p>
-</blockquote>
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The <code>f_port</code> for the default association is set to <code>100</code>. This value is irrelevant. <strong>The storage integration will receive and store all uplink messages, regardless of <code>f_port</code></strong>. The <code>f_port</code> value is only needed because of the way application packages work with The Things Stack.
+</div>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  <strong>Do not configure more than one default association for the same application</strong>, since that will lead to storing duplicate messages in the persistent storage.
+</div>
 <h2 id="enable-for-an-end-device">Enable for an End Device</h2>
 <p>Set up an association between the desired end device and the <code>storage-integration</code> package.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications packages associations <span class="nb">set</span> <span class="s2">&#34;app1&#34;</span> <span class="s2">&#34;dev1&#34;</span> <span class="m">100</span> --package-name storage-integration
-</code></pre></div><blockquote>
-<p><strong>Note 1</strong>: The <code>f_port</code> value is irrelevant.</p>
-</blockquote>
-<blockquote>
-<p><strong>Note 2</strong>: <strong>Do not configure multiple associations for the same end device</strong>, since that will lead to storing duplicate uplinks in the persistent storage.</p>
-</blockquote>
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The <code>f_port</code> value is irrelevant.
+</div>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  <strong>Do not configure multiple associations for the same end device</strong>, since that will lead to storing duplicate uplinks in the persistent storage.
+</div>
 <h2 id="disable-the-storage-integration">Disable the Storage Integration</h2>
 <p>Delete the package association, or the default association:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># List default associations</span>
@@ -211,10 +215,10 @@ $ ttn-lw-cli applications packages default-associations list <span class="s2">&#
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 22 Oct 2020.
+  Last changed by Nejra on 25 Nov 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2f9bf3382c643b2e960a25490f74f1148ea28e65">
-      doc: Reorganize docs
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/71bd626b9b755ccbe2cbf6f6f0fc68df4cf38acd">
+      doc: Update notes in Integrations
     </a>
 </p>
 

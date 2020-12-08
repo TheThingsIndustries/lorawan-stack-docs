@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="stylesheet" href="https://thethingsstack.io/css/theme.min.cfc828cf25058c21e931fe626d67f57f507e9b4dd2a9b3628bde644419747477.css" integrity="sha256-z8gozyUFjCHpMf5ibWf1f1B&#43;m03SqbNii95kRBl0dHc="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://thethingsstack.io/css/theme.min.3d009bc9efa2f1479c48b05354839b290f5e1e3b86418170e312bdb7e5232d2a.css" integrity="sha256-PQCbye&#43;i8UecSLBTVIObKQ9eHjuGQYFw4xK9t&#43;UjLSo="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Gateway Server MQTT">
@@ -194,12 +194,14 @@ $ mosquitto_pub <span class="se">\
 </span><span class="se"></span>    -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <span class="m">1882</span> <span class="se">\
 </span><span class="se"></span>    -u <span class="s2">&#34;</span><span class="nv">$GATEWAY_ID</span><span class="s2">&#34;</span> -P <span class="s2">&#34;</span><span class="nv">$GATEWAY_API_KEY</span><span class="s2">&#34;</span> <span class="se">\
 </span><span class="se"></span>    -t <span class="s2">&#34;v3/</span><span class="nv">$GATEWAY_ID</span><span class="s2">/up&#34;</span> -f test-uplink-message
-</code></pre></div><blockquote>
-<p>NOTE: Port 1882 is insecure. The TLS-enabled port 8882 should be used in a production setting.</p>
-</blockquote>
-<blockquote>
-<p>NOTE: The file <code>test-uplink-message</code> contains a Protocol Buffer of type <code>ttnpb.UplinkMessage</code> (binary, not JSON).</p>
-</blockquote>
+</code></pre></div><div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  Port 1882 is insecure. The TLS-enabled port 8882 should be used in a production setting.
+</div>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The file <code>test-uplink-message</code> contains a Protocol Buffer of type <code>ttnpb.UplinkMessage</code> (binary, not JSON).
+</div>
 <h2 id="downlink-messages">Downlink Messages</h2>
 <p>The Gateway Server instructs the gateway to send a downlink packet by publishing a Protocol Buffer of type <code>ttnpb.GatewayDown</code> under the topic <code>v3/&lt;gateway-id&gt;@&lt;tenant-id&gt;/down</code>.</p>
 <p>The MQTT client must subscribe to this topic after connecting to the Gateway Server. It must also listen for incoming <code>ttnpb.GatewayDown</code> messages (which contain both the packet data payload as well as any desired transmission settings). Upon receiving a scheduling request, it must trasmit that message, and <a href="#txack-messages">send back a <code>TxAck</code> packet</a> on success.</p>
@@ -209,12 +211,14 @@ $ mosquitto_sub <span class="se">\
 </span><span class="se"></span>    -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <span class="m">1882</span> <span class="se">\
 </span><span class="se"></span>    -u <span class="s2">&#34;</span><span class="nv">$GATEWAY_ID</span><span class="s2">&#34;</span> -P <span class="s2">&#34;</span><span class="nv">$GATEWAY_API_KEY</span><span class="s2">&#34;</span> <span class="se">\
 </span><span class="se"></span>    -t <span class="s2">&#34;v3/</span><span class="nv">$GATEWAY_ID</span><span class="s2">/down&#34;</span> -v
-</code></pre></div><blockquote>
-<p>NOTE: Port 1882 is insecure. The TLS-enabled port 8882 should be used in a production setting.</p>
-</blockquote>
-<blockquote>
-<p>NOTE: The example above is not complete (as it does nothing with the scheduled downlink requests). It is only meant to showcase the MQTT client subscribing to the downlink topic.</p>
-</blockquote>
+</code></pre></div><div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  Port 1882 is insecure. The TLS-enabled port 8882 should be used in a production setting.
+</div>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The example above is not complete (as it does nothing with the scheduled downlink requests). It is only meant to showcase the MQTT client subscribing to the downlink topic.
+</div>
 <h2 id="gateway-status-messages">Gateway Status Messages</h2>
 <p>To forward a gateway status message to the Gateway Server, the MQTT client must publish a Protocol Buffer of type <code>ttnpb.GatewayStatus</code> under the topic <code>v3/&lt;gateway-id&gt;@&lt;tenant-id&gt;/status</code>.</p>
 <p>Below is an example that connects to the Gateway Server as <code>$GATEWAY_ID</code>, publishes a gateway status message (Protocol Buffer stored as binary file <code>test-gateway-status</code>) and disconnects:</p>
@@ -224,12 +228,14 @@ $ mosquitto_pub <span class="se">\
 </span><span class="se"></span>    -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <span class="m">1882</span> <span class="se">\
 </span><span class="se"></span>    -u <span class="s2">&#34;</span><span class="nv">$GATEWAY_ID</span><span class="s2">&#34;</span> -P <span class="s2">&#34;</span><span class="nv">$GATEWAY_API_KEY</span><span class="s2">&#34;</span> <span class="se">\
 </span><span class="se"></span>    -t <span class="s2">&#34;v3/</span><span class="nv">$GATEWAY_ID</span><span class="s2">/status&#34;</span> -f test-gateway-status
-</code></pre></div><blockquote>
-<p>NOTE: Port 1882 is insecure. The TLS-enabled port 8882 should be used in a production setting.</p>
-</blockquote>
-<blockquote>
-<p>NOTE: The file <code>test-gateway-status</code> contains a Protocol Buffer of type <code>ttnpb.GatewayStatus</code> (binary, not JSON).</p>
-</blockquote>
+</code></pre></div><div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  Port 1882 is insecure. The TLS-enabled port 8882 should be used in a production setting.
+</div>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The file <code>test-gateway-status</code> contains a Protocol Buffer of type <code>ttnpb.GatewayStatus</code> (binary, not JSON).
+</div>
 <h2 id="txack-messages">TxAck Messages</h2>
 <p>To forward a <code>TxAck</code> packet to the Gateway Server, the MQTT client must publish a Protocol Buffer of type <code>ttnpb.TxAcknowledgement</code> under the topic <code>v3/&lt;gateway-id&gt;@&lt;tenant-id&gt;/down/ack</code>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">GATEWAY_ID</span><span class="o">=</span><span class="s2">&#34;test-gtw@my-tenant&#34;</span>
@@ -238,12 +244,14 @@ $ mosquitto_pub <span class="se">\
 </span><span class="se"></span>    -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <span class="m">1882</span> <span class="se">\
 </span><span class="se"></span>    -u <span class="s2">&#34;</span><span class="nv">$GATEWAY_ID</span><span class="s2">&#34;</span> -P <span class="s2">&#34;</span><span class="nv">$GATEWAY_API_KEY</span><span class="s2">&#34;</span> <span class="se">\
 </span><span class="se"></span>    -t <span class="s2">&#34;v3/</span><span class="nv">$GATEWAY_ID</span><span class="s2">/down/ack&#34;</span> -f example-tx-ack
-</code></pre></div><blockquote>
-<p>NOTE: Port 1882 is insecure. The TLS-enabled port 8882 should be used in a production setting.</p>
-</blockquote>
-<blockquote>
-<p>NOTE: The example above is not complete (the TxAck should be sent in response to a successful downlink transmission). It is only meant to showcase the MQTT client sending a TxAck packet (contents of the <code>example-tx-ack</code> file) to the Gateway Server.</p>
-</blockquote>
+</code></pre></div><div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  Port 1882 is insecure. The TLS-enabled port 8882 should be used in a production setting.
+</div>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The example above is not complete (the TxAck should be sent in response to a successful downlink transmission). It is only meant to showcase the MQTT client sending a TxAck packet (contents of the <code>example-tx-ack</code> file) to the Gateway Server.
+</div>
 
 </div>
 
@@ -291,10 +299,10 @@ $ mosquitto_pub <span class="se">\
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Hylke Visser on 02 Dec 2020.
+  Last changed by Nejra on 26 Nov 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/c3ecf20d73461b88063dc786e8d6c0314aea82e8">
-      doc: Fix links to files in lorawan-stack repository
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/1cada2c69701499563c4c146aad7a4fe09ed76c3">
+      doc: Update notes in Reference
     </a>
 </p>
 

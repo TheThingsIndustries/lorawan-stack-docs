@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="stylesheet" href="https://thethingsstack.io/css/theme.min.cfc828cf25058c21e931fe626d67f57f507e9b4dd2a9b3628bde644419747477.css" integrity="sha256-z8gozyUFjCHpMf5ibWf1f1B&#43;m03SqbNii95kRBl0dHc="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://thethingsstack.io/css/theme.min.3d009bc9efa2f1479c48b05354839b290f5e1e3b86418170e312bdb7e5232d2a.css" integrity="sha256-PQCbye&#43;i8UecSLBTVIObKQ9eHjuGQYFw4xK9t&#43;UjLSo="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="HiveMQ">
@@ -122,28 +122,32 @@ debug: false
 
 <p><a href="https://www.hivemq.com/">HiveMQ</a> is an MQTT broker and a client based messaging platform which uses MQTT protocol for fast, reliable and efficient bi-directional data transfer to and from IoT devices. HiveMQ provides its own client library, but it can be used with any MQTT compliant client library. It can be deployed on a private, hybrid or public cloud. You can integrate HiveMQ with existing enterprise systems thanks to its open API and a flexible extension framework.</p>
 <p>HiveMQ also offers an open source tool called <a href="https://github.com/hivemq/mqtt-cli">MQTT CLI</a>, which provides a command line interface to interact with MQTT brokers. This tool can be used in a shell mode, allowing you to use multiple MQTT clients simultaneously.</p>
-<blockquote>
-<p>Note: HiveMQ broker is compliant with the MQTT 3.1, 3.1.1 and 5.0 protocol specifications, while the MQTT CLI tool supports 3.1.1 and 5.0 versions.</p>
-</blockquote>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  HiveMQ broker is compliant with the MQTT 3.1, 3.1.1 and 5.0 protocol specifications, while the MQTT CLI tool supports 3.1.1 and 5.0 versions.
+</div>
 <p>This guide contains the instructions to use HiveMQ CLI tool in a shell mode for subscribing and publishing to topics used by The Things Stack <a href="https://thethingsstack.io/integrations/mqtt/">MQTT Server</a>.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
 <li><a href="https://hivemq.github.io/mqtt-cli/docs/installation.html">HiveMQ MQTT CLI</a> installed on your system.</li>
 </ol>
 <h2 id="connecting-to-mqtt-server-in-mqtt-cli-shell-mode">Connecting to MQTT Server in MQTT CLI Shell Mode</h2>
-<blockquote>
-<p>Learn how to connect to The Things Stack MQTT Server by reading the <a href="https://thethingsstack.io/integrations/mqtt/">MQTT Server</a> guide.</p>
-</blockquote>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Learn how to connect to The Things Stack MQTT Server by reading the <a href="https://thethingsstack.io/integrations/mqtt/">MQTT Server</a> guide.
+</div>
 <p>Enter the HiveMQ MQTT CLI shell mode by typing the following command in your terminal:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mqtt shell
 </code></pre></div><p>Once in shell mode, you can connect to The Things Stack MQTT Server by using the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ con -h hostname -p port -V <span class="m">3</span> -u username -pw password
-</code></pre></div><blockquote>
-<p>Note: keep in mind that <code>password</code> is the value of the authentication API key. For more info, see <a href="https://thethingsstack.io/integrations/mqtt/#creating-an-api-key">Creating an API Key</a>.</p>
-</blockquote>
-<blockquote>
-<p>Note: we use <code>-V 3</code> flag since the The Things Stack MQTT Server supports the 3.1.1 MQTT protocol version, as mentioned in the <a href="https://thethingsstack.io/integrations/mqtt/">MQTT Server guide</a>. For detailed descriptions of other parameters used with the <code>con</code> command, see the <a href="https://hivemq.github.io/mqtt-cli/docs/shell/connect.html">official MQTT CLI documentation</a>.</p>
-</blockquote>
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Keep in mind that <code>password</code> is the value of the authentication API key. For more info, see <a href="https://thethingsstack.io/integrations/mqtt/#creating-an-api-key">Creating an API Key</a>.
+</div>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  we use <code>-V 3</code> flag since the The Things Stack MQTT Server supports the 3.1.1 MQTT protocol version, as mentioned in the <a href="https://thethingsstack.io/integrations/mqtt/">MQTT Server guide</a>. For detailed descriptions of other parameters used with the <code>con</code> command, see the <a href="https://hivemq.github.io/mqtt-cli/docs/shell/connect.html">official MQTT CLI documentation</a>.
+</div>
 <p>For example, you can connect to The Things Stack MQTT Server over its public address with the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">con -h thethings.example.com -p <span class="m">1883</span> -V <span class="m">3</span> -u app1 -pw NNSXS.VEEBURF3KR77ZR..
 </code></pre></div><p>TO use TLS for additional security, change the port from <code>1883</code> to <code>8883</code> and use the <code>--cafile</code> option to provide the PEM encoded CA file of your The Things Stack deployment.</p>
@@ -152,22 +156,26 @@ debug: false
 <p>Use the <code>sub</code> command to subscribe to topics and listen to messages being sent from your end device.</p>
 <p>For example, if you want to listen to the uplink messages being sent from <code>dev1</code> device in <code>app1</code> application, use the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sub -t v3/app1/devices/dev1/up -s
-</code></pre></div><blockquote>
-<p>Note: <code>-s</code> flag is used to subscribe with a context to the given topic, e.g. to stop the console being blocked by subscribing without a context. For detailed descriptions of all the available <code>sub</code> command parameters, see the <a href="https://hivemq.github.io/mqtt-cli/docs/shell/subscribe.html">Subscribe</a> section of the HiveMQ MQTT CLI documentation.</p>
-</blockquote>
-<blockquote>
-<p>See the <a href="https://thethingsstack.io/integrations/mqtt/#subscribing-to-upstream-traffic">Subscribing to Upstream Traffic</a> section of the MQTT Server guide for a full list of available topics you can subscribe to.</p>
-</blockquote>
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <code>-s</code> flag is used to subscribe with a context to the given topic, e.g. to stop the console being blocked by subscribing without a context. For detailed descriptions of all the available <code>sub</code> command parameters, see the <a href="https://hivemq.github.io/mqtt-cli/docs/shell/subscribe.html">Subscribe</a> section of the HiveMQ MQTT CLI documentation.
+</div>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  See the <a href="https://thethingsstack.io/integrations/mqtt/#subscribing-to-upstream-traffic">Subscribing to Upstream Traffic</a> section of the MQTT Server guide for a full list of available topics you can subscribe to.
+</div>
 <h2 id="schedule-downlink-messages">Schedule Downlink Messages</h2>
 <p>Use the <code>pub</code> command to publish to topics, e.g. to schedule downlink messages to be sent to your end device.</p>
 <p>For example, to push an unconfirmed downlink message with the hexadecimal payload <code>BE EF</code> on <code>FPort</code> 15 with normal priority to the <code>dev1</code> device, use the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ pub -t v3/app1/devices/dev1/down/push -m <span class="s1">&#39;{&#34;downlinks&#34;:[{&#34;f_port&#34;: 15,&#34;frm_payload&#34;:&#34;vu8=&#34;,&#34;priority&#34;: &#34;NORMAL&#34;}]}&#39;</span>
-</code></pre></div><blockquote>
-<p>Note: for detailed descriptions of the <code>pub</code> command parameters, see the <a href="https://hivemq.github.io/mqtt-cli/docs/shell/publish.html">Publish</a> section of the MQTT CLI documentation.</p>
-</blockquote>
-<blockquote>
-<p>See the <a href="https://thethingsstack.io/integrations/mqtt/#publishing-downlink-traffic">Publishing Downlink Traffic</a> section to learn about using <code>/replace</code> instead of <code>/push</code>.</p>
-</blockquote>
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  For detailed descriptions of the <code>pub</code> command parameters, see the <a href="https://hivemq.github.io/mqtt-cli/docs/shell/publish.html">Publish</a> section of the MQTT CLI documentation.
+</div>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  See the <a href="https://thethingsstack.io/integrations/mqtt/#publishing-downlink-traffic">Publishing Downlink Traffic</a> section to learn about using <code>/replace</code> instead of <code>/push</code>.
+</div>
 </div>
 
 
@@ -220,10 +228,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 21 Oct 2020.
+  Last changed by benolayinka on 26 Nov 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3b3b07d795e1ca2f908bdc3196e968a5485c000c">
-      doc: Improving docs readability
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/21da11257c965cc9e733dfee24ffc3ac4f2235fd">
+      doc: Change info tags to note
     </a>
 </p>
 

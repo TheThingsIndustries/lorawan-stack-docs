@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="stylesheet" href="https://thethingsstack.io/css/theme.min.cfc828cf25058c21e931fe626d67f57f507e9b4dd2a9b3628bde644419747477.css" integrity="sha256-z8gozyUFjCHpMf5ibWf1f1B&#43;m03SqbNii95kRBl0dHc="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://thethingsstack.io/css/theme.min.3d009bc9efa2f1479c48b05354839b290f5e1e3b86418170e312bdb7e5232d2a.css" integrity="sha256-PQCbye&#43;i8UecSLBTVIObKQ9eHjuGQYFw4xK9t&#43;UjLSo="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Migrating from The Things Network Stack V2">
@@ -184,20 +184,23 @@ discovery-address: &lt;domain_id&gt;.thethings.industries:1900
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttnctl devices <span class="nb">export</span> <span class="s2">&#34;device-id&#34;</span> --frequency-plan-id EU_863_870 &gt; device.json
 </code></pre></div><p>Alternatively, you can export all the end devices with a single command and save them in <code>all-devices.json</code>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttnctl devices export-all --frequency-plan-id EU_863_870 &gt; all-devices.json
-</code></pre></div><blockquote>
-<p><strong>Note:</strong> Change <code>EU_863_870</code> frequency plan from the command above to the frequency plan corresponding to your region. See <a href="https://thethingsstack.io/reference/frequency-plans/">Frequency Plans</a> for a list of supported Frequency Plans and their respective IDs.</p>
-</blockquote>
-<blockquote>
-<p><strong>Note:</strong> Keep in mind that an end device can only be registered in one Network Server at a time. After importing an end device to The Things Stack, you should remove it from The Things Network Stack V2. For OTAA devices, it is enough to simply change the AppKey, so the device can no longer join but the existing session is preserved. Next time the device joins, the activation will be handled by The Things Stack.</p>
-</blockquote>
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Change <code>EU_863_870</code> frequency plan from the command above to the frequency plan corresponding to your region. See <a href="https://thethingsstack.io/reference/frequency-plans/">Frequency Plans</a> for a list of supported Frequency Plans and their respective IDs.
+</div>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Keep in mind that an end device can only be registered in one Network Server at a time. After importing an end device to The Things Stack, you should remove it from The Things Network Stack V2. For OTAA devices, it is enough to simply change the AppKey, so the device can no longer join but the existing session is preserved. Next time the device joins, the activation will be handled by The Things Stack.
+</div>
 <h3 id="disable-exported-end-devices-on-v2">Disable Exported End Devices on V2</h3>
 <p>After exporting, make sure to clear the AppKey of your OTAA devices. This can be achieved with the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttnctl devices convert-to-abp <span class="s2">&#34;device-id&#34;</span> --save-to-attribute <span class="s2">&#34;original-app-key&#34;</span>
 </code></pre></div><p>There is also a convenience command to clear all of your devices at once:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttnctl devices convert-all-to-abp --save-to-attribute <span class="s2">&#34;original-app-key&#34;</span>
-</code></pre></div><blockquote>
-<p><strong>Note:</strong> The AppKey of each device will be printed on the standard output, and stored as a device attribute (with name <code>original-app-key</code>). You can retrieve the device attributes with <code>ttnctl devices info &quot;device-id&quot;</code>.</p>
-</blockquote>
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The AppKey of each device will be printed on the standard output, and stored as a device attribute (with name <code>original-app-key</code>). You can retrieve the device attributes with <code>ttnctl devices info &quot;device-id&quot;</code>.
+</div>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -244,10 +247,10 @@ discovery-address: &lt;domain_id&gt;.thethings.industries:1900
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by laurensslats on 17 Nov 2020.
+  Last changed by benolayinka on 26 Nov 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/46154c449f3f8fe2bbd10a85cbae7565f0c7c0a7">
-      doc: Update v2 migrations docs with info on CLI configuration
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/21da11257c965cc9e733dfee24ffc3ac4f2235fd">
+      doc: Change info tags to note
     </a>
 </p>
 

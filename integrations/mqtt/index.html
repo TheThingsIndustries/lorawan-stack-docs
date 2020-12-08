@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="stylesheet" href="https://thethingsstack.io/css/theme.min.cfc828cf25058c21e931fe626d67f57f507e9b4dd2a9b3628bde644419747477.css" integrity="sha256-z8gozyUFjCHpMf5ibWf1f1B&#43;m03SqbNii95kRBl0dHc="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://thethingsstack.io/css/theme.min.3d009bc9efa2f1479c48b05354839b290f5e1e3b86418170e312bdb7e5232d2a.css" integrity="sha256-PQCbye&#43;i8UecSLBTVIObKQ9eHjuGQYFw4xK9t&#43;UjLSo="><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="MQTT Server">
@@ -112,9 +112,10 @@ debug: false
 <div class="content">
 
 <p>The Things Stack exposes an MQTT server to work with streaming events. This section explains how to connect an MQTT client and subscribe to uplinks or publish downlinks.</p>
-<blockquote>
-<p>The Things Stack supports the <a href="http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.pdf">MQTT Standard Version 3.1.1</a>.</p>
-</blockquote>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The Things Stack supports the <a href="http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.pdf">MQTT Standard Version 3.1.1</a>.
+</div>
 <h2 id="multi-tenancy">Multi-Tenancy</h2>
 <p>Note that on multi-tenant environments such as Cloud, application IDs and other endpoints include the tenant ID, e.g <code>app1@tenant1</code>. On single tenant environments such as Open Source, the tenant ID can be removed, i.e <code>app1</code>.</p>
 <h2 id="creating-an-api-key">Creating an API Key</h2>
@@ -130,9 +131,10 @@ debug: false
          alt="MQTT API key created"/> 
 </figure>
 
-<blockquote>
-<p><strong>Note:</strong> Make sure to copy your API key now, since it will no longer be visible after leaving the page for security reasons.</p>
-</blockquote>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Make sure to copy your API key now, since it will no longer be visible after leaving the page for security reasons.
+</div>
 <p>You can now login using an MQTT client with the application ID and tenant ID <code>app1@tenant1</code> as a username, and the newly generated API key as password.</p>
 <h2 id="mqtt-clients">MQTT Clients</h2>
 <p>There are many MQTT clients available. See <a href="https://thethingsstack.io/integrations/mqtt-clients/">MQTT Clients</a> section for instructions on how the integrate with the most popular ones.</p>
@@ -238,9 +240,10 @@ $ mosquitto_sub -h thethings.example.com -t <span class="s2">&#34;#&#34;</span> 
     <span class="nt">&#34;priority&#34;</span><span class="p">:</span> <span class="s2">&#34;NORMAL&#34;</span>
   <span class="p">}]</span>
 <span class="p">}</span>
-</code></pre></div><blockquote>
-<p><strong>Tip:</strong> Use <a href="https://v2.cryptii.com/hexadecimal/base64">this handy tool</a> to convert hexadecimal to base64.</p>
-</blockquote>
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Use <a href="https://v2.cryptii.com/hexadecimal/base64">this handy tool</a> to convert hexadecimal to base64.
+</div>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># If you use `mosquitto_pub`, use the following command:</span>
 $ mosquitto_pub -h thethings.example.com <span class="se">\
 </span><span class="se"></span>  -t <span class="s2">&#34;v3/app1@tenant1/devices/dev1/down/push&#34;</span> <span class="se">\
@@ -248,9 +251,10 @@ $ mosquitto_pub -h thethings.example.com <span class="se">\
 </span><span class="se"></span>  -m <span class="s1">&#39;{&#34;downlinks&#34;:[{&#34;f_port&#34;: 15,&#34;frm_payload&#34;:&#34;vu8=&#34;,&#34;priority&#34;: &#34;NORMAL&#34;}]}&#39;</span> <span class="se">\
 </span><span class="se"></span>  -d<span class="sb">`</span>
 </code></pre></div><p>It is also possible to send multiple downlink messages on a single push because <code>downlinks</code> is an array. Instead of <code>/push</code>, you can also use <code>/replace</code> to replace the downlink queue. Replacing with an empty array clears the downlink queue.</p>
-<blockquote>
-<p><strong>Note:</strong> if you do not specify a priority, the default priority <code>LOWEST</code> is used. You can specify <code>LOWEST</code>, <code>LOW</code>, <code>BELOW_NORMAL</code>, <code>NORMAL</code>, <code>ABOVE_NORMAL</code>, <code>HIGH</code> and <code>HIGHEST</code>.</p>
-</blockquote>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  If you do not specify a priority, the default priority <code>LOWEST</code> is used. You can specify <code>LOWEST</code>, <code>LOW</code>, <code>BELOW_NORMAL</code>, <code>NORMAL</code>, <code>ABOVE_NORMAL</code>, <code>HIGH</code> and <code>HIGHEST</code>.
+</div>
 <p>The Things Stack supports some cool features, such as confirmed downlink with your own correlation IDs. For example, you can push this:</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;downlinks&#34;</span><span class="p">:</span> <span class="p">[{</span>
@@ -343,10 +347,10 @@ $ mosquitto_pub -h thethings.example.com <span class="se">\
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 22 Oct 2020.
+  Last changed by benolayinka on 26 Nov 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2f9bf3382c643b2e960a25490f74f1148ea28e65">
-      doc: Reorganize docs
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/21da11257c965cc9e733dfee24ffc3ac4f2235fd">
+      doc: Change info tags to note
     </a>
 </p>
 
