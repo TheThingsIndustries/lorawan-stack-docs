@@ -12,9 +12,10 @@ You can create a device template from an existing device or extend an existing d
 
 You can use the `end-device template create` command to create a template from an existing device.
 
->**Note**: By default, `end-device template create` strips the device's application ID, device ID, `JoinEUI`, `DevEUI` and server addresses to create a generic template.
->
->You can include the end device identifiers by passing the concerning flags: `--application-id`, `--device-id`, `--join-eui` and `--dev-eui`.
+{{< note >}} By default, `end-device template create` strips the device's application ID, device ID, `JoinEUI`, `DevEUI` and server addresses to create a generic template.
+
+You can include the end device identifiers by passing the concerning flags: `--application-id`, `--device-id`, `--join-eui` and `--dev-eui`.
+{{</ note >}}
 
 Pipe the output from getting a device to create a template, for example:
 

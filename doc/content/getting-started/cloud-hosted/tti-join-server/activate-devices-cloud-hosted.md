@@ -35,11 +35,12 @@ When registering the devices on a Network Server and Application Server, you nee
 3. LoRaWAN Regional Parameters version (i.e. `1.0.2-b`)
 4. Frequency plan (i.e. `EU_863_870` or `US_902_928`)
    
-  >Hint: List the supported LoRaWAN versions, regional parameters versions, frequency plans and other options with:
-  ```bash
-  $ ttn-lw-cli end-devices list-frequency-plans
-  $ ttn-lw-cli end-devices set --help
-  ```
+{{< note >}} List the supported LoRaWAN versions, regional parameters versions, frequency plans and other options with:
+```bash
+$ ttn-lw-cli end-devices list-frequency-plans
+$ ttn-lw-cli end-devices set --help
+```
+{{</ note >}}
 
 To register the device in application `test-app` with device ID `eui-0004a310001ff9e0`:
 

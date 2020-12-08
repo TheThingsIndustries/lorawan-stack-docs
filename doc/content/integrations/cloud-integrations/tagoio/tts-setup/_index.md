@@ -12,6 +12,6 @@ Fill in the **Webhook ID** field, and then paste the TagoIO service authorizatio
 
 {{< figure src="creating-a-webhook.png" alt="TagoIO webhook" >}}
 
->**Note:** To see the values of all parameters of the TagoIO integration, click on the integration after you created it with the Webhook template. 
+{{< note >}} To see the values of all parameters of the TagoIO integration, click on the integration after you created it with the Webhook template. {{</ note >}}
 
 After following these steps, you will see messages arriving in the **Live Inspector** tab in TagoIO.

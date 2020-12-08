@@ -8,7 +8,7 @@ Follow the instructions in this section to create a function in Azure and prepar
 
 <!--more-->
 
->Note: you can find more detailed instructions for creating Azure functions in the [official Azure documentation](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-azure-function).
+{{< note >}} You can find more detailed instructions for creating Azure functions in the [official Azure documentation](https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-azure-function). {{</ note >}}
 
 First, navigate to the Azure services dashboard and click on **Function App** service.
 
@@ -38,7 +38,7 @@ In the next step, you will be creating a function inside your function app. From
 
 In the **New Function** pop-up menu, select **HTTP trigger**. Give your function a recognizable name and choose **Function** for **Authorization level**. 
 
->Note: **Authorization level** defines whether the function requires an API key and if so, what kind (function or master key). Depending on this, an API key may be a part of the webhook URL. 
+{{< note >}} **Authorization level** defines whether the function requires an API key and if so, what kind (function or master key). Depending on this, an API key may be a part of the webhook URL. {{</ note >}}
 
 Select **Create Function** to finish. 
 

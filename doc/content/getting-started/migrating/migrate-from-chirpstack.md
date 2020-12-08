@@ -21,7 +21,7 @@ $ export FREQUENCY_PLAN_ID="EU_863_870"         # Set FrequencyPlanID for export
 $ export CHIRPSTACK_API_INSECURE=0              # Set to 1 if not using TLS
 ```
 
->Note: `JoinEUI` and `FrequencyPlanID` have to be set because ChirpStack does not store these variables.
+{{< note >}} `JoinEUI` and `FrequencyPlanID` have to be set because ChirpStack does not store these variables. {{</ note >}}
 
 ## Export End Devices
 
@@ -70,7 +70,8 @@ To export end devices from multiple applications to an `applications.json` file,
 $ ttn-lw-migrate --source chirpstack application < applications.txt > applications.json
 ```
 
->**Notes**: 
->- ABP end devices without an active session can be exported from ChirpStack, but cannot be imported in {{% tts %}}.
->- `MaxEIRP` parameter may not be always set properly.
->- ChirpStack `variables` parameter related to payload formatting will always be converted to `null` when the end device is imported to {{% tts %}}.
+{{< note >}} 
+- ABP end devices without an active session can be exported from ChirpStack, but cannot be imported in {{% tts %}}.
+- `MaxEIRP` parameter may not be always set properly.
+- ChirpStack `variables` parameter related to payload formatting will always be converted to `null` when the end device is imported to {{% tts %}}.
+{{</ note >}}

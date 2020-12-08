@@ -10,4 +10,4 @@ Although the web interface of {{% tts %}} (the Console) currently has support fo
 
 You can use the CLI on your local machine and on the server.
 
->Note: if you need help with any CLI command, use the `--help` flag to get a list of subcommands, flags and their description and aliases.
+{{< note >}} If you need help with any CLI command, use the `--help` flag to get a list of subcommands, flags and their description and aliases. {{</ note >}}

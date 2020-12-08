@@ -16,7 +16,7 @@ This section contains instructions for installing the command-line interface.
 $ brew install TheThingsNetwork/lorawan-stack/ttn-lw-stack
 ```
 
->**Note:** When installing with `brew`, auto-completion is enabled automatically.
+{{< note >}} When installing with `brew`, auto-completion is enabled automatically. {{</ note >}}
 
 #### Linux
 
@@ -25,7 +25,7 @@ $ sudo snap install ttn-lw-stack
 $ sudo snap alias ttn-lw-stack.ttn-lw-cli ttn-lw-cli
 ```
 
->**Note:** When installing with `snap`, auto-completion is enabled automatically.
+{{< note >}} When installing with `snap`, auto-completion is enabled automatically. {{</ note >}}
 
 ### Binaries
 
@@ -39,7 +39,7 @@ The command-line needs to be configured to connect to your deployment on `thethi
 2. Command-line flag: `-c /path/to/ttn-lw-cli.yml`
 3. Save as `.ttn-lw-cli.yml` in `$XDG_CONFIG_HOME`, your home directory, or the working directory.
 
->**Note:** When using the snap packages, `~/.ttn-lw-cli.yml` will fail with permission errors. Choose a different path.
+{{< warning >}} When using the snap packages, `~/.ttn-lw-cli.yml` will fail with permission errors. Choose a different path. {{</ warning >}}
 
 ### Generate configuration file
 
@@ -49,15 +49,15 @@ For a standard deployment on `thethings.example.com`, all you need is:
 $ ttn-lw-cli use thethings.example.com [--fetch-ca] [--user] [--overwrite]
 ```
 
->**Note:** On Windows, use `ttn-lw-cli.exe` instead of `ttn-lw-cli`.
+{{< note >}} On Windows, use `ttn-lw-cli.exe` instead of `ttn-lw-cli`. {{</ note >}}
 
 This will generate and save the required CLI config file. By default, the file is saved on the current directory, use the `--user` to save it under the user config directory.
 
 If the deployment is using a CA that is not already trusted by your system, use the `--fetch-ca` flag to also connect to the server and retrieve the CA required for establishing secure communication.
 
->**Note:** If the file exists already, it is not overwritten and an error is printed instead. You can use `--overwrite` to overwrite the existing configuration file.
+{{< note >}} If the file exists already, it is not overwritten and an error is printed instead. You can use `--overwrite` to overwrite the existing configuration file. {{</ note >}}
 
->**Note:** You can also use the `--grpc-port` and `--oauth-server-address` flags to override the default values for the gRPC port and the OAuth server address. These are not needed for standard deployments.
+{{< note >}} You can also use the `--grpc-port` and `--oauth-server-address` flags to override the default values for the gRPC port and the OAuth server address. These are not needed for standard deployments. {{</ note >}}
 
 ### Manually creating configuration file
 

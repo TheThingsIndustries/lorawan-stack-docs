@@ -38,6 +38,6 @@ Check **I acknowledge that AWS CloudFormation might create IAM resources.**.
 
 Click **Update stack**.
 
-> Updating all resources can take up to 5 minutes.
+{{< note >}} Updating all resources can take up to 5 minutes. {{</ note >}}
 
 When the deployment is updated, you'll see the status `UPDATE_COMPLETE`.

@@ -39,7 +39,7 @@ In the API Key creation screen, enter a name for your linking API key and select
 
 You will see a screen that shows your newly created API Key. Copy it in your clipboard by pressing the copy button. After saving the key in a safe place, press **I have copied the key**. 
 
->**Note:** You will not be able to see this key again in the future, but if you lose it, you can create a new one to replace it.  
+{{< note >}} You will not be able to see this key again in the future, but if you lose it, you can create a new one to replace it. {{</ note >}}
 
 {{< figure src="api-key-created.png" alt="Application API Key created" >}}
 
@@ -80,7 +80,7 @@ $ ttn-lw-cli applications api-keys create \
 
 The CLI will return an API key, such as `NNSXS.VEEBURF3KR77ZR...`. This API key has only link rights and can therefore only be used for linking this application. Make sure to copy the key and save it in a safe place. 
 
->**Note:** You will not be able to see this key again in the future, and if you lose it, you can create a new one to replace it in the gateway configuration.
+{{< note >}} You will not be able to see this key again in the future, and if you lose it, you can create a new one to replace it in the gateway configuration. {{</ note >}}
 
 You can now link the Application Server to the Network Server:
 

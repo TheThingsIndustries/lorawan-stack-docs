@@ -20,4 +20,4 @@ The paths are appended to the base URL. For example, if you follow the example i
 
 Clicking the **Add Webhook** button will create the Webhook.
 
->**Note:** If you don't have an endpoint available for testing, you can test with a free service like [PostBin](https://postb.in).
+{{< note >}} If you don't have an endpoint available for testing, you can test with a free service like [PostBin](https://postb.in). {{</ note >}}

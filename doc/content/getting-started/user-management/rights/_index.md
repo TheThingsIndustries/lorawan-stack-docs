@@ -26,7 +26,7 @@ Select the rights you wish the collaborator to have, and click **Add collaborato
 
 {{< figure src="rights.png" >}}
 
->Note: Rights apply to entities which a user or organization is a member (collaborator) of. To grant rights to an entity, add the user or organization as a collaborator of the entity.
+{{< note >}} Rights apply to entities which a user or organization is a member (collaborator) of. To grant rights to an entity, add the user or organization as a collaborator of the entity. {{</ note >}}
 
 {{< /tabs/tab >}}
 
@@ -46,7 +46,7 @@ $ ttn-lw-cli applications collaborators set --application-id app1 \
   --right-application-devices-write
 ```
 
-> **TIP:** To see the list of possible rights for an entity, use the `--help` flag, e.g `$ ttn-lw-cli applications collaborators set --help`.
+{{< note >}} To see the list of possible rights for an entity, use the `--help` flag, e.g `$ ttn-lw-cli applications collaborators set --help`. {{</ note >}}
 
 ## Listing Collaborators
 

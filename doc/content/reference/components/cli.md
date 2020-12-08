@@ -20,7 +20,7 @@ The CLI comes with builtin documentation. This documentation can be printed by a
 
 Many CLI commands names have aliases, which are different spellings or shorter versions of the same command. For instance, `applications` commands can also be written as `application`, `apps`, `app` or even `a`. This could save you some typing if you frequently use the CLI.
 
-> Tip: For even less typing you could also register an alias for `ttn-lw-cli` itself (`alias tt=ttn-lw-cli`).
+{{< note >}} For even less typing you could also register an alias for `ttn-lw-cli` itself (`alias tt=ttn-lw-cli`). {{</ note >}}
 
 ## Input and Output Formats
 

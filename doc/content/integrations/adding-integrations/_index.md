@@ -8,4 +8,4 @@ Integrations allow you to process and act on data by triggering events. Learn ho
 
 <!--more-->
 
->**Note:** Integrations are managed within applications (see instructions for [Adding Applications]({{< ref "/integrations/adding-applications" >}})).
+{{< note >}} Integrations are managed within applications (see instructions for [Adding Applications]({{< ref "/integrations/adding-applications" >}})). {{</ note >}}

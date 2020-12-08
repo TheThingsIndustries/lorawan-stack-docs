@@ -15,7 +15,7 @@ Payload formatters can be applied to an entire application, or to a specific end
 
 Device payload formatters allow you to specify a unique payload formatter for each device. 
 
->**Note:** Device payload formatters override application payload formatters.
+{{< note >}} Device payload formatters override application payload formatters. {{</ note >}}
 
 ## Working with Bytes
 

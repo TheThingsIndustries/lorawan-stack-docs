@@ -24,7 +24,7 @@ $ ttn-lw-stack start console --console.ui.canonical-url "https://thethings.examp
 
 Environment variables for configuration options are very similar to the command-line flags, except that they are in uppercase, and all separators (`.` or `-`) are replaced by underscores (`_`). Environment variables are also prefixed with `TTN_LW_`. 
 
-> In many cases you'll want to use a `.env` file that is loaded using the [`dotenv` command of direnv](https://direnv.net/man/direnv-stdlib.1.html) or the [`env_file` option of Docker Compose](https://docs.docker.com/compose/compose-file/#env_file). You can also `export` each environment variable, or run `export $(grep -v '^#' .env | xargs)` to export all variables in the `.env` file.
+{{< note >}} In many cases you'll want to use a `.env` file that is loaded using the [`dotenv` command of direnv](https://direnv.net/man/direnv-stdlib.1.html) or the [`env_file` option of Docker Compose](https://docs.docker.com/compose/compose-file/#env_file). You can also `export` each environment variable, or run `export $(grep -v '^#' .env | xargs)` to export all variables in the `.env` file. {{</ note >}}
 
 The option from the command-line example from above would look as follows with environment variables:
 

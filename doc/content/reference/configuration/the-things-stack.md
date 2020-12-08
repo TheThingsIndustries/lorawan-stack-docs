@@ -73,7 +73,7 @@ You can suppress log messages for successful gRPC method calls (e.g. to reduce t
 
 - `grpc.log-ignore-methods`: List of gRPC methods for which to suppress logs of successful requests.
 
-> NOTE: If you are seeing a lot of logs with `grpc_service=/ttn.v3.lorawan.ServiceName` and `grpc_method=MethodName`, use `/ttn.v3.lorawan.ServiceName/MethodName` for this option.
+{{< note >}} If you are seeing a lot of logs with `grpc_service=/ttn.v3.lorawan.ServiceName` and `grpc_method=MethodName`, use `/ttn.v3.lorawan.ServiceName/MethodName` for this option. {{</ note >}}
 
 ## HTTP Options
 

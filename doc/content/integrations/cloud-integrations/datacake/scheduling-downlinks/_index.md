@@ -14,7 +14,7 @@ Click the **Add Downlink** button.
 
 Next, fill in the **Name** field, define the **Payload encoder** and click **Save Downlink**. 
 
->Learn to write payload decoders in the [official Datacake documentation](https://docs.datacake.de/lorawan/downlinks#writing-a-downlink-encoder).
+{{< note >}} Learn to write payload decoders in the [official Datacake documentation](https://docs.datacake.de/lorawan/downlinks#writing-a-downlink-encoder). {{</ note >}}
 
 {{< figure src="downlink-configuration.png" alt="Configuring downlink" >}}
 

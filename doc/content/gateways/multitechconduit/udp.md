@@ -7,7 +7,7 @@ This section contains instructions for connecting the Multitech Conduit AEP to {
 
 <!--more-->
 
-> Note: the UDP Packet Forwarder does not correctly handle unstable connectivity and has no security. It also does not support configuration of frequency plans from the Network Server. {{% tts %}} supports {{% lbs %}}, which solves all of these problems, so please [use that instead]({{< relref "lbs" >}}).
+{{< note >}} The UDP Packet Forwarder does not correctly handle unstable connectivity and has no security. It also does not support configuration of frequency plans from the Network Server. {{% tts %}} supports {{% lbs %}}, which solves all of these problems, so please [use that instead]({{< relref "lbs" >}}). {{</ note >}}
 
 ## Configuration
 
@@ -49,4 +49,4 @@ You will be prompted to confirm the restart. Choose **OK** to proceed.
 
 This will apply the custom settings and reboot the gateway. If all the steps have been followed correctly, your gateway will now connect to {{%tts%}}.
 
-> To know more about other features of the MultiTech Conduit gateway, you can refer to the **mPower Edge AEP software guide** on the [Multitech Website](http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/).
+{{< note >}} To know more about other features of the MultiTech Conduit gateway, you can refer to the **mPower Edge AEP software guide** on the [Multitech Website](http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/). {{</ note >}}

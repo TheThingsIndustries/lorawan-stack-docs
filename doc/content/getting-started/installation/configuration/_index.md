@@ -8,7 +8,7 @@ weight: 2
 
 In this guide, we will configure {{% tts %}} using a configuration file, with an example domain `thethings.example.com` and TLS certificates from Let's Encrypt.
 
->**Note:** If configuring {{% tts %}} as `localhost` on a machine with no public IP or DNS address, see the [special considerations](#localhost) below.
+{{< note >}} If configuring {{% tts %}} as `localhost` on a machine with no public IP or DNS address, see the [special considerations](#localhost) below. {{</ note >}}
 
 To configure {{% tts %}}, we will use the configuration file `ttn-lw-stack-docker.yml`, which contains configuration specific to our {{% tts %}} deployment. When {{% tts %}} starts, it looks for `ttn-lw-stack-docker.yml` for a license key, hostname, and other configuration parameters.
 
@@ -38,7 +38,7 @@ config/
     └── ttn-lw-stack-docker.yml    # configuration file for {{% tts %}}
 ```
 
->**Note:** These example configuration files contain all of the configuration settings you need to run {{% tts %}} for development - just update the files with your server address. In the next sections, we will examine the settings in these files and provide tips for running {{% tts %}} in production.
+{{< note >}} These example configuration files contain all of the configuration settings you need to run {{% tts %}} for development - just update the files with your server address. In the next sections, we will examine the settings in these files and provide tips for running {{% tts %}} in production. {{</ note >}}
 
 ## Configure Docker
 
@@ -60,7 +60,7 @@ The simplest configuration for CockroachDB will look like this (excerpted from t
 {{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=5 to=14 >}}
 {{< /highlight >}}
 
->**Note:** It is also possible (and even preferred) to use a managed SQL database. In this case, you will need to update the [`is.database-uri` configuration option]({{< ref "/reference/configuration/identity-server#database-options" >}}) to point to the address of the managed database.
+{{< note >}} It is also possible (and even preferred) to use a managed SQL database. In this case, you will need to update the [`is.database-uri` configuration option]({{< ref "/reference/configuration/identity-server#database-options" >}}) to point to the address of the managed database. {{</ note >}}
 
 ### Redis
 
@@ -72,7 +72,7 @@ The simplest configuration for Redis will look like this (excerpted from the exa
 {{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=28 to=37 >}}
 {{< /highlight >}}
 
->**Note:** It is also possible (and even preferred) to use a managed Redis database. In this case, you will need to update the [`redis.address` configuration option]({{< ref "/reference/configuration/the-things-stack#redis-options" >}}) to point to the address of the managed database.
+{{< note >}} It is also possible (and even preferred) to use a managed Redis database. In this case, you will need to update the [`redis.address` configuration option]({{< ref "/reference/configuration/the-things-stack#redis-options" >}}) to point to the address of the managed database. {{</ note >}}
 
 ### {{% tts %}}
 
@@ -82,13 +82,13 @@ We tell Docker Compose to use `ttn-lw-stack -c /config/ttn-lw-stack-docker.yml`,
 
 With the `depends_on` field we tell Docker Compose that {{% tts %}} depends on CockroachDB and Redis. With this, Docker Compose will wait for CockroachDB and Redis to come online before starting {{% tts %}}.
 
->**Note:** If using a managed SQL or Redis database, these can be removed from `depends_on` and the services do not need to be started in Docker.
+{{< note >}} If using a managed SQL or Redis database, these can be removed from `depends_on` and the services do not need to be started in Docker. {{</ note >}}
 
 #### Volumes
 
 Under the `volumes` section, we define volumes for files that need to be persisted on disk. There are stored blob files (such as profile pictures) and certificate files retrieved with ACME (if required). We also mount the local `./config/stack/` directory on the container under `/config`, so that {{% tts %}} can find our configuration file at `/config/ttn-lw-stack-docker.yml`.
 
->**Note:** If your `ttn-lw-stack-docker.yml` is in a directory other than `./config/stack`, you will need to change this volume accordingly.
+{{< note >}} If your `ttn-lw-stack-docker.yml` is in a directory other than `./config/stack`, you will need to change this volume accordingly. {{</ note >}}
 
 #### Ports
 
@@ -102,7 +102,7 @@ Here is an example `stack` configuration from the Enterprise version of `docker-
 {{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=39 to=83 >}}
 {{< /highlight >}}
 
->**Note:** If using managed databases, the `environment` ports need to be changed to the ports of the managed databases.
+{{< note >}} If using managed databases, the `environment` ports need to be changed to the ports of the managed databases. {{</ note >}}
 
 ## Configure {{% tts %}}
 
@@ -118,7 +118,7 @@ First is a license file. {{% tts %}} Enterprise requires a license, which can be
 `thethings.example.com`, we configure it to only request certificates for that
 host, and also to use it as the default host (see the [`tls` configuration reference]({{< ref "/reference/configuration/the-things-stack" >}}) section).
 
->**Note:** Make sure that you use the correct `tls` depending on whether you will be using Let's Encrypt or your own certificate files.
+{{< note >}} Make sure that you use the correct `tls` depending on whether you will be using Let's Encrypt or your own certificate files. {{</ note >}}
 
 ### HTTP
 
@@ -136,7 +136,7 @@ You can use Sendgrid or an SMTP server. If you skip setting up an email provider
 We also need to configure the URLs for the Web UI and the secret used
 by the console client (see the `console` section). These tell {{% tts %}} where all its components are accessible.
 
->**Note:** Failure to correctly configure component URLs is a common problem that will prevent the stack from starting. Be sure to replace all instances of `thethings.example.com` with your domain name!
+{{< warning >}} Failure to correctly configure component URLs is a common problem that will prevent the stack from starting. Be sure to replace all instances of `thethings.example.com` with your domain name! {{</ warning >}}
 
 ### Multi-tenancy {{< distributions-inline "Enterprise" >}}
 
@@ -148,7 +148,7 @@ Below is an example `ttn-lw-stack-docker.yml` file for the Enterprise stack:
 {{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" >}}
 {{< /highlight >}}
 
->**Note:** Make note of the client secret, as it will be needed again when initializing {{% tts %}}.
+{{< note >}} Make note of the client secret, as it will be needed again when initializing {{% tts %}}. {{</ note >}}
 
 ## Localhost
 

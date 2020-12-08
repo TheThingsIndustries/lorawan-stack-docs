@@ -9,7 +9,7 @@ description: ""
 
 This guide shows how to receive upstream messages and send downlink messages with the Eclipse Mosquitto command line clients and {{% tts %}} [MQTT Server]({{< ref "/integrations/mqtt" >}}).
 
->Note: Eclipse Mosquitto MQTT server supports 3.1, 3.1.1 and 5.0 MQTT protocol versions.
+{{< note >}} Eclipse Mosquitto MQTT server supports 3.1, 3.1.1 and 5.0 MQTT protocol versions. {{</ note >}}
 
 ## Prerequisites
 
@@ -17,7 +17,7 @@ This guide shows how to receive upstream messages and send downlink messages wit
 
 ## Subscribing to Upstream Traffic
 
->Note: this section follows the example for subscribing to upstream traffic in the [MQTT Server]({{< ref "/integrations/mqtt#subscribing-to-upstream-traffic" >}}) guide.
+{{< note >}} This section follows the example for subscribing to upstream traffic in the [MQTT Server]({{< ref "/integrations/mqtt#subscribing-to-upstream-traffic" >}}) guide. {{</ note >}}
 
 The command for connecting to a host and subscribing to a topic has using `mosquitto_sub` has the following syntax:
 
@@ -35,11 +35,11 @@ $ mosquitto_sub -h thethings.example.com -t "#" -u app1 -P "NNSXS.VEEBURF3KR77ZR
 
 In you want to use TLS, you need to change the port value to `8883` and add the `--cafile` option to the command. `--cafile` option is used to define a path to the file containing trusted CA certificates that are PEM encoded.
 
->Read more about the command line options in the [mosquitto_sub manual](https://mosquitto.org/man/mosquitto_sub-1.html).
+{{< note >}} Read more about the command line options in the [mosquitto_sub manual](https://mosquitto.org/man/mosquitto_sub-1.html). {{</ note >}}
 
 ## Publishing Downlink Messages
 
->Note: this section follows the example for publishing downlink traffic in the [MQTT Server]({{< ref "/integrations/mqtt" >}}) guide. See [Publishing Downlink Messages]({{< ref "/integrations/mqtt#publishing-downlink-traffic" >}}) for a list of available topics.
+{{< note >}} This section follows the example for publishing downlink traffic in the [MQTT Server]({{< ref "/integrations/mqtt" >}}) guide. See [Publishing Downlink Messages]({{< ref "/integrations/mqtt#publishing-downlink-traffic" >}}) for a list of available topics. {{</ note >}}
 
 For connecting to a host and publishing a message, **mosquitto_pub** client defines a command with the following syntax:
 
@@ -55,4 +55,4 @@ mosquitto_pub -h "thethings.example.com" -p "1883" -u "app1" -P "NNSXS.VEEBURF3K
 
 If TLS is being used, change the port value to `8883` and add the `--cafile` option to the command.
 
->Read more about the command line options in the [mosquitto_pub manual](https://mosquitto.org/man/mosquitto_pub-1.html).
+{{< note >}} Read more about the command line options in the [mosquitto_pub manual](https://mosquitto.org/man/mosquitto_pub-1.html). {{</ note >}}

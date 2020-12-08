@@ -10,7 +10,7 @@ This section explains how to configure a Pub/Sub integration using the built-in 
 
 Creating a Pub/Sub integration with NATS requires you to have a NATS server running with an available endpoint. See the [NATS Documentation](https://docs.nats.io/) for more information about configuring a NATS server.
 
->**Note:** No API key is needed for Pub/Sub messaging. All messages received by the Application Server are assumed to be authorized, so be sure to configure appropriate security on your NATS server.
+{{< note >}} No API key is needed for Pub/Sub messaging. All messages received by the Application Server are assumed to be authorized, so be sure to configure appropriate security on your NATS server. {{</ note >}}
 
 In your application select the **Pub/Subs** submenu from the **Integrations** side menu. Clicking on the **+ Add Pub/Sub** button will open the Pub/Sub creation screen.
 

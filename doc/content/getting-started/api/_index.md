@@ -56,7 +56,7 @@ $ curl --location \
   'https://thethings.example.com/api/v3/events'
 ```
 
->**Note:** See [here](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events) for a description of the `text/event-stream` MIME type.
+{{< note >}} See [here](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events) for a description of the `text/event-stream` MIME type. {{</ note >}}
 
 If you want to create a device, perform multi step actions, or write shell scripts, it's best to use the [CLI]({{< ref "getting-started/cli" >}}).
 

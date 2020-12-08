@@ -8,7 +8,7 @@ LNS establishes a data connection between a {{% lbs %}} and {{% tts %}}. This pa
 
 <!--more-->
 
-> The LNS protocol is **required** for sending and receiving LoRaWAN data with {{% lbs %}}, while the CUPS protocol is not. However, configuring CUPS will automatically retrieve LNS credentials and configure LNS on your gateway, so there is no need to configure both.
+{{< note >}} The LNS protocol is **required** for sending and receiving LoRaWAN data with {{% lbs %}}, while the CUPS protocol is not. However, configuring CUPS will automatically retrieve LNS credentials and configure LNS on your gateway, so there is no need to configure both. {{</ note >}}
 
 ## Requirements
 
@@ -36,7 +36,7 @@ The server address is the network endpoint of {{% tts %}} LNS. It is a combinati
 
 Enter the following in your gateway as the LNS Server Address: `wss://<server-address>:8887`
 
-> The `<server-address>` is the address of {{% tts %}}. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `thethings.example.com`, e.g `wss://thethings.example.com:8887`
+{{< note >}} The `<server-address>` is the address of {{% tts %}}. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `thethings.example.com`, e.g `wss://thethings.example.com:8887`. {{</ note >}}
 
 ### LNS Server Certificate / LNS Trust
 
@@ -55,4 +55,4 @@ $ export LNS_KEY="your-lns-api-key"
 $ echo "Authorization: Bearer $LNS_KEY" | perl -p -e 's/\r\n|\n|\r/\r\n/g'  > lns.key
 ```
 
-> The above command creates a file called `lns.key`, terminated with a Carriage Return Line Feed (`0x0D0A`) character. Upload this file in your gateway as the LNS key.
+{{< note >}} The above command creates a file called `lns.key`, terminated with a Carriage Return Line Feed (`0x0D0A`) character. Upload this file in your gateway as the LNS key. {{</ note >}}

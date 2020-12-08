@@ -24,7 +24,7 @@ To add an organization, click **Add organization**.
 
 Choose the rights you would like to grant the organization, and click the **Add organization** button to save your choices.
 
->**Note:** When a user is a member of an organization which is a collaborator for an entity, the user's rights are the intersection of the user's rights in the organization and the organization's rights on the entity.
+{{< note >}} When a user is a member of an organization which is a collaborator for an entity, the user's rights are the intersection of the user's rights in the organization and the organization's rights on the entity. {{</ note >}}
 
 {{< /tabs/tab >}}
 
@@ -107,7 +107,7 @@ To add a user to an organization, use the  `organizations collaborators set` com
 $ ttn-lw-cli organizations collaborators set --organization-id org1 --user-id user1 --right-organization-all
 ```
 
->**Note:** You must specify rights when adding a collaborator. Use the `--help` flag to see the list of possible rights, e.g `$ ttn-lw-cli organizations collaborators set --help`.
+{{< note >}} You must specify rights when adding a collaborator. Use the `--help` flag to see the list of possible rights, e.g `$ ttn-lw-cli organizations collaborators set --help`. {{</ note >}}
 
 ## Removing Users from Organizations
 
@@ -127,7 +127,7 @@ To delete an organization, use the `organizations delete` command.
 $ ttn-lw-cli organizations delete --organization-id org1
 ```
 
-> **NOTE:** When deleting organizations, their IDs stay reserved in the system. For security reasons, it is not possible to create a new organization with the same ID.
+{{< warning >}} When deleting organizations, their IDs stay reserved in the system. For security reasons, it is not possible to create a new organization with the same ID. {{</ warning >}}
 
 {{< /tabs/tab >}}
 

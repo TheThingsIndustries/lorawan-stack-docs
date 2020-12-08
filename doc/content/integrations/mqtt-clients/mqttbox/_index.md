@@ -16,7 +16,7 @@ In this guide, we show how to create an MQTT client for subscribing or publishin
 
 ## Configuring MQTTBox
 
->Note: this section follows the examples in the [MQTT Server]({{< ref "/integrations/mqtt" >}}) guide.
+{{< note >}} This section follows the examples in the [MQTT Server]({{< ref "/integrations/mqtt" >}}) guide. {{</ note >}}
 
 In the MQTTBox application, click the **Create MQTT Client** button on the left to add a new MQTT client. Give a name to your MQTT client by filling in the **MQTT Client Name** field. Choose **mqtt / tcp** from the **Protocol** drop down list, and enter the **Public address** of your {{% tts %}} instance in the **Host** field. Do the same for the **Username** and **Password** fields.
 
@@ -32,7 +32,7 @@ If the MQTTBox client successfully connects to {{% tts %}} MQTT Server, the **Co
 
 Once connected, you can proceed with configuring the publishers or subscribers. 
 
->Note: you can add multiple MQTT clients, as well as multiple publishers and subscribers within those clients.
+{{< note >}} You can add multiple MQTT clients, as well as multiple publishers and subscribers within those clients. {{</ note >}}
 
 ## Subscribe to Upstream Traffic
 
@@ -40,7 +40,7 @@ To listen to messages being sent by your device and published by the {{% tts %}}
 
 In this section, we use the `v3/{application id}/devices/{device id}/up` topic structure for listening to uplink messages. 
 
->Note: See [Subscribing to Upstream Traffic]({{< ref "/integrations/mqtt#subscribing-to-upstream-traffic" >}}) section of the MQTT Server guide for a list of available topics you can subscribe to.
+{{< note >}} See [Subscribing to Upstream Traffic]({{< ref "/integrations/mqtt#subscribing-to-upstream-traffic" >}}) section of the MQTT Server guide for a list of available topics you can subscribe to. {{</ note >}}
 
 Choose an appropriate **QoS** value from the list, click the **Subscribe** button and messages from {{% tts %}} will begin arriving shortly.
 
@@ -52,7 +52,7 @@ To send messages to your end device, you need to schedule a downlink message as 
 
 Fill in the **Topic to publish** field with `v3/{application id}/devices/{device id}/down/push` and replace the variables with their values from the {{% tts %}} Console.
 
->Note: see the [Publishing Downlink Traffic]({{< ref "/integrations/mqtt#publishing-downlink-traffic" >}}) section to learn about using `/replace` instead of `/push`.
+{{< note >}} See the [Publishing Downlink Traffic]({{< ref "/integrations/mqtt#publishing-downlink-traffic" >}}) section to learn about using `/replace` instead of `/push`. {{</ note >}}
 
 Choose an appropriate **QoS** value from the drop down menu.
 

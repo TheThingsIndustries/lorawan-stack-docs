@@ -20,4 +20,4 @@ By default, non-administrator users have no rights over Gateways, End Devices, a
 
 To make it easier to manage groups of users, it is possible to create organizations with specific rights which apply to all users who are collaborators. To use organizations, users must be added as collaborators of the organization, and the organization must be added as a collaborator of an entity. 
 
->**Note:** When a user is a collaborator of an organization which is a collaborator for an entity, the user's rights are the intersection of the user's rights in the organization and the organization's rights on the entity.
+{{< note >}} When a user is a collaborator of an organization which is a collaborator for an entity, the user's rights are the intersection of the user's rights in the organization and the organization's rights on the entity. {{</ note >}}

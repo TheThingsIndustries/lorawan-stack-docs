@@ -34,7 +34,7 @@ Now you can edit the gateway configuration file.
 $ vi /etc/default/config.json
 ```
 
->**Note:** Press the `i` key on your keyboard to start insert mode. Once finished editing, press `ESC` and enter `:wq` to write the file and quit.
+{{< note >}} Press the `i` key on your keyboard to start insert mode. Once finished editing, press `ESC` and enter `:wq` to write the file and quit. {{</ note >}}
 
 Edit the server parameters:
 

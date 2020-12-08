@@ -66,8 +66,9 @@ You can access the gateway system logs using journalctl. See `journalctl --help`
 $ journalctl -f -u nas_lgw -n 1000
 ```
 
-> **IMPORTANT NOTE**: The gateway logs will rotate when they reach about 15M in size, which means that you will generally not be able to access very old logs. At times of dense traffic (e.g. ~1000s of devices) this typically means that you will only have logs for 2-3 hours. If you want to keep historical data (for whatever reason), then you will have to forward the logs to an external server. If you decide to do so, then `netcat` may be useful:
+{{< note >}} The gateway logs will rotate when they reach about 15M in size, which means that you will generally not be able to access very old logs. At times of dense traffic (e.g. ~1000s of devices) this typically means that you will only have logs for 2-3 hours. If you want to keep historical data (for whatever reason), then you will have to forward the logs to an external server. If you decide to do so, then `netcat` may be useful:
 >
 > ```bash
 > $ journalctl -f | nc server-hostname server-port
 > ```
+{{</ note >}}

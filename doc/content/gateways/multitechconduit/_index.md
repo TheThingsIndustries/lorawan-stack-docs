@@ -27,7 +27,7 @@ The technical specifications of the Conduit can be found in the software guide i
 
 Create a gateway by following the instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}).
 
-> The gateway EUI can be found at the bottom of the gateway under the field &quot;LORA NODE&quot;.
+{{< note >}} The gateway EUI can be found at the bottom of the gateway under the field &quot;LORA NODE&quot;. {{</ note >}}
 
 ## Setting Up the Gateway
 
@@ -77,7 +77,7 @@ Here, enable the **Web Server for HTTP** via **LAN** and **WAN**, and enable **H
 
 Optionally, you can also enable **SSH** via **WAN**.
 
-> Don't miss this part! If you don't enable Web Server or SSH access via WAN, when you connect the gateway to your local network, you will not be able to access it anymore, and you will have to hard reset and start over.
+{{< warning >}} If you don't enable Web Server or SSH access via WAN, when you connect the gateway to your local network, you will not be able to access it anymore, and you will have to hard reset and start over. {{</ warning >}}
 
 {{< figure src="access.png" alt="Access Configuration" >}}
 
@@ -136,4 +136,4 @@ Do the following to upgrade the firmware on your device:
 - A progress bar appears indicating the status of the upgrade. When the upgrade is completed, your device reboots.
 - After the firmware upgrade is completed, verify your configuration to ensure that it is same as what you expected.
 
->**Note:** The new firmware is written into flash memory. It may take up to 10 minutes to upgrade the firmware. Do not interrupt the devices&apos; power or press the reset button during this time.
+{{< note >}} The new firmware is written into flash memory. It may take up to 10 minutes to upgrade the firmware. Do not interrupt the devices&apos; power or press the reset button during this time. {{</ note >}}

@@ -38,7 +38,7 @@ Click **Create API key**, copy the key and store it in a safe place. You need th
 {{% aws-deploy-cloudformation name="Deploy for Cloud Hosted" bucket="thethingsindustries" path="integration-aws/latest/cloudhosted.template.json" %}}
 {{% aws-deploy-cloudformation name="Deploy for Self Hosted" bucket="thethingsindustries" path="integration-aws/latest/selfhosted.template.json" %}}
 
-> If you want to examine the AWS CloudFormation template before deploying, download the [Cloud Hosted template](https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/cloudhosted.template.json) or [Self Hosted template](https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/selfhosted.template.json).
+{{< note >}} If you want to examine the AWS CloudFormation template before deploying, download the [Cloud Hosted template](https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/cloudhosted.template.json) or [Self Hosted template](https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/selfhosted.template.json). {{</ note >}}
 
 ### Settings
 
@@ -54,7 +54,7 @@ The parameters configure the integration:
 - **Application ID**: The application ID for which you configure the integration.
 - **Application API Key**: The application API key that you generated before.
 
->**Note:** If you use The Things Network Stack V2 integration for AWS IoT, you must change the **Thing Type Name** to something other than `lorawan` to avoid conflicts.
+{{< note >}} If you use The Things Network Stack V2 integration for AWS IoT, you must change the **Thing Type Name** to something other than `lorawan` to avoid conflicts. {{</ note >}}
 
 {{< figure src="../create-cloudformation-stack.png" alt="Create AWS CloudFormation Stack" >}}
 
@@ -62,7 +62,7 @@ Check **I acknowledge that AWS CloudFormation might create IAM resources**.
 
 Click **Create stack**.
 
-> Creating all resources can take up to five minutes.  ☕
+{{< note >}} Creating all resources can take up to five minutes.  ☕ {{</ note >}}
 
 When the deployment is done, you'll see the status `CREATE_COMPLETE`.
 

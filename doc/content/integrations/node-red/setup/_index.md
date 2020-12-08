@@ -10,7 +10,7 @@ This section describes how to setup a Node-RED server and prepare to connect it 
 
 1. [Install Node-RED](https://nodered.org/docs/getting-started/local)
 
->Note: Node-RED v1.0.6 is current at time of writing and is used in this guide.
+{{< note >}} Node-RED v1.0.6 is current at time of writing and is used in this guide. {{</ note >}}
 
 ## Setup
 

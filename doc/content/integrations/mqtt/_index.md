@@ -9,7 +9,7 @@ weight: 30
 
 <!--more-->
 
->{{% tts %}} supports the [MQTT Standard Version 3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.pdf).
+{{< note >}} {{% tts %}} supports the [MQTT Standard Version 3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.pdf). {{</ note >}}
 
 ## Multi-Tenancy
 
@@ -25,7 +25,7 @@ You can now click on the **Generate new API key** button in order to generate an
 
 {{< figure src="mqtt-key-created.png" alt="MQTT API key created" >}}
 
->**Note:** Make sure to copy your API key now, since it will no longer be visible after leaving the page for security reasons. 
+{{< note >}} Make sure to copy your API key now, since it will no longer be visible after leaving the page for security reasons. {{</ note >}}
 
 You can now login using an MQTT client with the application ID and tenant ID `app1@tenant1` as a username, and the newly generated API key as password.
 
@@ -158,7 +158,7 @@ For example, to send an unconfirmed downlink message to the device `dev1` in app
 }
 ```
 
->**Tip:** Use [this handy tool](https://v2.cryptii.com/hexadecimal/base64) to convert hexadecimal to base64.
+{{< note >}} Use [this handy tool](https://v2.cryptii.com/hexadecimal/base64) to convert hexadecimal to base64. {{</ note >}}
 
 ```bash
 # If you use `mosquitto_pub`, use the following command:
@@ -171,7 +171,7 @@ $ mosquitto_pub -h thethings.example.com \
 
 It is also possible to send multiple downlink messages on a single push because `downlinks` is an array. Instead of `/push`, you can also use `/replace` to replace the downlink queue. Replacing with an empty array clears the downlink queue.
 
->**Note:** if you do not specify a priority, the default priority `LOWEST` is used. You can specify `LOWEST`, `LOW`, `BELOW_NORMAL`, `NORMAL`, `ABOVE_NORMAL`, `HIGH` and `HIGHEST`.
+{{< note >}} If you do not specify a priority, the default priority `LOWEST` is used. You can specify `LOWEST`, `LOW`, `BELOW_NORMAL`, `NORMAL`, `ABOVE_NORMAL`, `HIGH` and `HIGHEST`. {{</ note >}}
 
 {{% tts %}} supports some cool features, such as confirmed downlink with your own correlation IDs. For example, you can push this:
 

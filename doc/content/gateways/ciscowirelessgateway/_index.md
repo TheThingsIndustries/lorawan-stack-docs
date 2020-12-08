@@ -24,7 +24,7 @@ Create a gateway by following the instructions for the [Console]({{< ref "/getti
 
 The **EUI** is derived from the **MAC_ADDRESS** that can be found on the back panel of the gateway. To get the EUI from the MAC_ADDRESS insert `FFFE` **after the first 6 characters** to make it a 64bit EUI.
 
->**Note:** If your **MAC_ADDRESS** is `5B:A0:CB:80:04:2B` then the **EUI** is `5B A0 CB FF FE 80 04 2B`.
+{{< note >}} If your **MAC_ADDRESS** is `5B:A0:CB:80:04:2B` then the **EUI** is `5B A0 CB FF FE 80 04 2B`. {{</ note >}}
 
 The **Gateway Server Address** is the same as what you use instead of `thethings.example.com` in the [Getting Started guide]({{< ref "/getting-started" >}}).
 
@@ -38,7 +38,7 @@ If you are using MacOS or Linux, connect to the Gateway by opening a terminal an
 $ ls /dev/tty.usb*
 ```
 
->**Note:** This displays the list of available USB serial devices.
+{{< note >}} This displays the list of available USB serial devices. {{</ note >}}
 
 Once you have found the one matching the Cisco console, connect using the following command:
 
@@ -94,10 +94,13 @@ You can test your Internet configuration with the `ping` command, for example pi
 Gateway# ping ip 8.8.8.8
 ```
 
->**Note:** To see more information about the gateway's IP and the network, you can use 
-> `show interfaces FastEthernet 0/1`
-> `show ip interfaces FastEthernet 0/1` or
-> `show ip route`.
+{{< note >}} To see more information about the gateway's IP and the network, you can use 
+
+- `show interfaces FastEthernet 0/1`
+- `show ip interfaces FastEthernet 0/1` or
+- `show ip route`
+
+{{</ note >}}
 
 #### Date and Time
 
@@ -139,7 +142,7 @@ Gateway(config)# gps ubx enable
 Gateway(config)# exit
 ```
 
->**Note:** This command may return the message `packet-forwarder firmware is not installed`, this message can be ignored.
+{{< note >}} This command may return the message `packet-forwarder firmware is not installed`, which can be ignored. {{</ note >}}
 
 #### Enable Radio
 
@@ -169,7 +172,7 @@ Gateway(config)# no radio off
 Gateway(config)# exit
 ```
 
->**Note:** The `show radio` command also shows you more information about the LoRa concentrator powering the gateway. For example, **LORA_SKU** indicates the base frequency of the concentrator.
+{{< note >}} The `show radio` command also shows you more information about the LoRa concentrator powering the gateway. For example, **LORA_SKU** indicates the base frequency of the concentrator. {{</ note >}}
 
 #### Enable Authentication
 
@@ -204,7 +207,7 @@ Gateway# copy running-config startup-config
 
 ### Packet Forwarder Configuration
 
-> ⚠️ Keep in mind that the pre-installed packet forwarder is not supported by Cisco for production purposes.
+{{< warning >}} Keep in mind that the pre-installed packet forwarder is not supported by Cisco for production purposes. {{</ warning >}}
 
 To run the packet forwarder, we'll make use of the **container** that is running on the gateway at all times.
 
@@ -250,11 +253,11 @@ Now that we know the packet forwarder is running, let's make it run automaticall
 bash-3.2# vi /etc/init.d/S60pkt_forwarder
 ```
 
->**Note:** Press the `i` key on your keyboard to start insert mode. Once finished editing, press `ESC` and enter `:wq` to write the file and quit.
+{{< note >}} Press the `i` key on your keyboard to start insert mode. Once finished editing, press `ESC` and enter `:wq` to write the file and quit. {{</ note >}}
 
 Then copy paste the code below.
 
->**Note:** Replace `things.example.com` with the name of your network after `nslookup`.
+{{< note >}} Replace `things.example.com` with the name of your network after `nslookup`. {{</ note >}}
 
 ```bash
 SCRIPT_DIR=/etc/pktfwd
@@ -335,7 +338,7 @@ If the gateway does not connect to the {{% tts %}} after a few minutes, you can 
 bash-3.2# tail -100 var/log/pkt_forwarder.log
 ```
 
->**Note:** GPS warnings may appear, this means the packet forwarder started.
+{{< note >}} GPS warnings may appear, which means the packet forwarder started. {{</ note >}}
 
 If the radio failed to start, disconnect and reconnect the power supply to power-cycle the gateway.
 

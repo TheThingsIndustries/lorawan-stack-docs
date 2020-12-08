@@ -12,7 +12,7 @@ Log in to your TagoIO user account and click the **Devices** button on the left 
 
 The list of available connectors will pop out immediately if you do not own any devices. 
 
->**Note:** If you already own some devices on TagoIO, select **Add Device** in the upper right to add a new device.
+{{< note >}} If you already own some devices on TagoIO, select **Add Device** in the upper right to add a new device. {{</ note >}}
 
 Choose **LoRaWAN TTI** connector and then select **Custom The Things Industries**.
 

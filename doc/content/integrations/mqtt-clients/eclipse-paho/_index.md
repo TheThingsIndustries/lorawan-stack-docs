@@ -10,7 +10,7 @@ weight:
 
 Follow this guide to learn how to connect to {{% tts %}} MQTT Server, to receive and to send messages using the Eclipse Paho client.
 
->This document contains instructions to use [Eclipse Paho MQTT Python client library](https://www.eclipse.org/paho/index.php?page=clients/python/index.php), which implements MQTT v3.1 and v3.1.1 protocol. To compare this library with other Paho project implementations visit [Eclipse Paho Downloads page](https://www.eclipse.org/paho/index.php?page=downloads.php). To find more about the usage of the Python implementation, visit [this page](https://pypi.org/project/paho-mqtt/).
+{{< note >}} This document contains instructions to use [Eclipse Paho MQTT Python client library](https://www.eclipse.org/paho/index.php?page=clients/python/index.php), which implements MQTT v3.1 and v3.1.1 protocol. To compare this library with other Paho project implementations visit [Eclipse Paho Downloads page](https://www.eclipse.org/paho/index.php?page=downloads.php). To find more about the usage of the Python implementation, visit [this page](https://pypi.org/project/paho-mqtt/). {{</ note >}}
 
 ## Prerequisites
 
@@ -20,9 +20,9 @@ Follow this guide to learn how to connect to {{% tts %}} MQTT Server, to receive
 
 ## Subscribing to Upstream Traffic
 
->Note: this section follows the example for subscribing to upstream traffic in [MQTT Server]({{< ref "/integrations/mqtt#subscribing-to-upstream-traffic" >}}) guide.
+{{< note >}} This section follows the example for subscribing to upstream traffic in [MQTT Server]({{< ref "/integrations/mqtt#subscribing-to-upstream-traffic" >}}) guide. {{</ note >}}
 
->To keep things simple, you can use the existing Python scripts from the **examples** folder contained in your installation folder and adjust them according to your setup. 
+{{< note >}} To keep things simple, you can use the existing Python scripts from the **examples** folder contained in your installation folder and adjust them according to your setup. {{</ note >}}
 
 Enter the **examples** folder and create a new file named `subscribe.py`.
 
@@ -50,7 +50,7 @@ To use TLS for security, change the port value to `8883` and pass the `tls` argu
 
 ## Publishing Downlink Messages
 
->Note: this section follows the example for publishing downlink messages in [MQTT Server]({{< ref "/integrations/mqtt" >}}) guide. See [Publishing Downlink Messages]({{< ref "/integrations/mqtt#publishing-downlink-traffic" >}}) for a list of available topics.
+{{< note >}} This section follows the example for publishing downlink messages in [MQTT Server]({{< ref "/integrations/mqtt" >}}) guide. See [Publishing Downlink Messages]({{< ref "/integrations/mqtt#publishing-downlink-traffic" >}}) for a list of available topics. {{</ note >}}
 
 Create a new file named `publish.py` in the **examples** folder.
 

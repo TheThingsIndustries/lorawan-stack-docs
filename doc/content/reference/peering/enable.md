@@ -26,7 +26,7 @@ Enter your NetID to obtain your DevAddr prefix:
 
 Your DevAddr prefix is: <code><span data-content="dev-addr-prefix"></span></code>
 
->This guide uses The Things Network NetID `000013` as example, which has DevAddr prefix `26000000/7`.
+{{< note >}} This guide uses The Things Network NetID `000013` as example, which has DevAddr prefix `26000000/7`. {{</ note >}}
 
 ## Configure Packet Broker Agent
 
@@ -100,7 +100,7 @@ ns:
   - '26020000/16'
 ```
 
->By default, Network Server uses NetID `000000` which is intended for experimentation purposes. Only devices that are activated with a DevAddr that falls in your NetID will have their traffic routed by Packet Broker to your network.
+{{< note >}} By default, Network Server uses NetID `000000` which is intended for experimentation purposes. Only devices that are activated with a DevAddr that falls in your NetID will have their traffic routed by Packet Broker to your network. {{</ note >}}
 
 See [Network Server configuration]({{< ref "/reference/configuration/network-server" >}}) for all configuration options.
 
@@ -108,4 +108,4 @@ See [Network Server configuration]({{< ref "/reference/configuration/network-ser
 
 See [Publish and Subscribe Traffic](https://github.com/packetbroker/pb#publish-and-subscribe-traffic) on how to publish test messages and subscribe to traffic using Packet Broker CLI.
 
->Packet Broker Agent uses the configured `cluster-id` as Forwarder ID and subscription group.
+{{< note >}} Packet Broker Agent uses the configured `cluster-id` as Forwarder ID and subscription group. {{</ note >}}

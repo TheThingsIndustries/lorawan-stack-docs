@@ -14,7 +14,7 @@ In the **Server** dropdown menu, select **Add new mqtt-broker** and click on the
 
 In the **Connection** tab, under **Server**, provide the MQTT Server address from {{% tts %}} Console. 
 
->Note: in this example, TLS-secured connection is to be established, so the **Port** value is set to 8883. In this case you should also check the **Enable secure (SSL/TLS) connection** box.
+{{< note >}} In this example, TLS-secured connection is to be established, so the **Port** value is set to 8883. In this case you should also check the **Enable secure (SSL/TLS) connection** box. {{</ note >}}
 
 {{< figure src="mqtt_in_node_connection.png" alt="Configuring MQTT Server connection information" >}}
 
@@ -24,7 +24,7 @@ In the **Security** tab, enter the **Username** and **Password** according to th
 
 Go back to **Properties** and set the **Topic** value to `#` (to subscribe to all topics). 
 
->Note: a full list of topics that you can subscribe to is mentioned in [MQTT Server]({{< ref "/integrations/mqtt" >}}) guide. 
+{{< note >}} a full list of topics that you can subscribe to is mentioned in [MQTT Server]({{< ref "/integrations/mqtt" >}}) guide. {{</ note >}}
 
 Select the **QoS** value from the listed options and set **Output** parameter to **a parsed JSON object**. 
 
@@ -32,7 +32,7 @@ Select the **QoS** value from the listed options and set **Output** parameter to
 
 Add two **debug** nodes and connect both to the **mqtt in** node. One debug node will listen to the events, while the other will listen to published messages. 
 
->Note: you can also subscribe to `v3/{application_id}/devices/{device_id}/up` to only listen to uplink messages coming from end devices, as mentioned in [MQTT Server]({{< ref "/integrations/mqtt" >}}) guide.
+{{< note >}} You can also subscribe to `v3/{application_id}/devices/{device_id}/up` to only listen to uplink messages coming from end devices, as mentioned in [MQTT Server]({{< ref "/integrations/mqtt" >}}) guide. {{</ note >}}
 
 Set the **Output** parameters of these nodes to **complete msg object** and **msg.payload**.
 

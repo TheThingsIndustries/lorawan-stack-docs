@@ -14,7 +14,7 @@ This gateway's technical specifications can be found in [the official Kerlink do
 1. User account on {{% tts %}} with rights to create Gateways.
 2. Kerlink Wirnet Station with Common Packet Forwarder installed and enabled and/or running firmware version `3.0` or higher.
 
-> NOTE: Minimum CPF version tested is `v1.1.6`
+{{< note >}} Minimum CPF version tested is `v1.1.6`. {{</ note >}}
 
 ## Registration
 
@@ -26,18 +26,19 @@ Create an API Key with Gateway Info rights for this gateway using the same instr
 
 All further steps will assume the gateway is available at `<gateway-ip>`, {{% tts %}} is `<server-address>`, gateway ID is `<gateway-id>` and gateway API key is `<gateway-api-key>`, please replace these by the values appropriate for your setup.
 
->**Note:** Replace these with the values appropriate for your setup.
+{{< note >}} Replace these with the values appropriate for your setup. {{</ note >}}
 
 ### Provisioning
 
-1. Execute: 
+Execute: 
+
 ```bash
 $ curl -sL 'https://raw.githubusercontent.com/TheThingsNetwork/kerlink-wirnet-firmware/v0.0.2/provision.sh' | bash -s -- 'wirnet-station' <gateway-ip> <server-address> <gateway-id> <gateway-api-key>
 ```
 
 Please refer to [Kerlink Wirnet provisioning documentation](https://github.com/TheThingsNetwork/kerlink-wirnet-firmware/tree/v0.0.1#provisioning) if more detailed up-to-date documentation is necessary.
 
-> NOTE: To avoid being prompted for `root` user password several times, you may add your SSH public key as authorized for `root` user on the gateway, for example, by `ssh-copy-id root@192.168.4.155`.
+{{< note >}} To avoid being prompted for `root` user password several times, you may add your SSH public key as authorized for `root` user on the gateway, for example, by `ssh-copy-id root@192.168.4.155`. {{</ note >}}
 
 ## Troubleshooting
 

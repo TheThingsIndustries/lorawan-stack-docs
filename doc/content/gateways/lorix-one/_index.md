@@ -60,7 +60,7 @@ To connect to the LORIX One, open a web browser on your computer or device and e
 
 The hostname is `lorix-one-abcdef.local` where `abcdef` are the 6 last digits of the Gateway EUI.
 
->**Note:** hostname access is only available on networks that have mDNS enabled. On networks without mDNS, enter the IP address of the gateway in the web browser.
+{{< note >}} Hostname access is only available on networks that have mDNS enabled. On networks without mDNS, enter the IP address of the gateway in the web browser. {{</ note >}}
 
 You will land on the login page. Log on using the following the default username **admin** and default password **lorix4u**.
 
@@ -77,7 +77,7 @@ In the **Antenna** field, select the antenna you have connected.
 - 2dBi is the small antenna (~20cm)
 - 4dBi is the big antenna (~40cm)
 
->**Note:** if the antenna type is not configured, the packet forwarder will fail to start.
+{{< warning >}} If the antenna type is not configured, the packet forwarder will fail to start. {{</ warning >}}
 
 ## Configure the Packet Forwarder
 

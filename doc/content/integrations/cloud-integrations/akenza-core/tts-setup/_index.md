@@ -16,6 +16,6 @@ Fill in the **Domain Secret** and **Device ID** fields with domain secret and de
 
 Finish with creating the integration by clicking the **Create akenza core webhook** button.
 
->**Note:** To see the values of all parameters of the Akenza Core integration, click on the integration after you created it with the Webhook template. 
+{{< note >}} To see the values of all parameters of the Akenza Core integration, click on the integration after you created it with the Webhook template. {{</ note >}}
 
 After creating the integration, go back to Akenza Core and you will be able to see the uplink messages in JSON format in your device's **Data** tab.

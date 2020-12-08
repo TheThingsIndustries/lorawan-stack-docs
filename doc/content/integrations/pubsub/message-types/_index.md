@@ -18,12 +18,12 @@ The Application Server can be configured to **subscribe** to messages to schedul
 - Downlink queue push
 - Downlink queue replace
 
->**Note:** JSON messages sent or received by the Application Server are defined in [Data Formats]({{< ref "/reference/data-formats" >}}).
+{{< note >}} JSON messages sent or received by the Application Server are defined in [Data Formats]({{< ref "/reference/data-formats" >}}). {{</ note >}}
 
 Enabling event messaging also allows you to manually configure a **Sub topic** for that event. If no Sub topic is specified, events will be published to the configured **Base topic**.
 
 <!--more-->
 
->Separate Sub topics should be specified for **Downlink queue push** and **Downlink queue replace** in order to use both. Using the Base topic for both simultaneously will cause messages to randomly be scheduled as either **Downlink queue push** or **Downlink queue replace**.
+{{< note >}} Separate Sub topics should be specified for **Downlink queue push** and **Downlink queue replace** in order to use both. Using the Base topic for both simultaneously will cause messages to randomly be scheduled as either **Downlink queue push** or **Downlink queue replace**. {{</ note >}}
 
 {{< figure src="topics.png" alt="Topics" >}}

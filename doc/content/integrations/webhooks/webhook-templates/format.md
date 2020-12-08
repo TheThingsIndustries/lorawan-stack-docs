@@ -19,7 +19,7 @@ All of the webhook templates must contain the following fields which describe th
 - `info-url`: The URL of the main page of the service.
 - `documentation-url`: The URL of the documentation of the service. 
 
->**Note:** The difference between `documentation-url` and `info-url` is that `info-url` should lead to the home page of the service (i.e. `https://www.thethingsnetwork.org/`), while `documentation-url` should lead directly to the location of the documentation (i.e. `https://www.thethingsnetwork.org/docs/applications/example/`).
+{{< note >}} The difference between `documentation-url` and `info-url` is that `info-url` should lead to the home page of the service (i.e. `https://www.thethingsnetwork.org/`), while `documentation-url` should lead directly to the location of the documentation (i.e. `https://www.thethingsnetwork.org/docs/applications/example/`). {{</ note >}}
 
 ## Template Fields
 
@@ -54,4 +54,4 @@ The message paths are provided in the `paths` object which can contain the follo
 - `downlink-queue-invalidated` {{< new-in-version "3.10.0" >}}: The path to which downlink queue invalidated event will be sent. Can contain template fields. This is only used when the upstream platform carries out LoRaWAN `FRMPayload` encryption.
 - `location-solved`: The path to which the location of the device will be sent when resolved. Can contain template fields.
 
->**Note:** Not all of the messages types must be handled by the service. By omitting the field in the `paths` object, the message type will be disabled in the final webhook and the related messages will not be passed to the endpoint.
+{{< note >}} Not all of the messages types must be handled by the service. By omitting the field in the `paths` object, the message type will be disabled in the final webhook and the related messages will not be passed to the endpoint. {{</ note >}}

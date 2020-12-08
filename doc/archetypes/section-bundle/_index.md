@@ -61,11 +61,13 @@ When possible, divide long documents into separate files, each with its own fold
 
 Subheadings use Title Casing. Since the title is a h1, everything in the content is at least h2 (##). Use subheadings to break up sections and provide a high level overview of steps the user should follow.
 
-## Notes
+## Notes and Warnings
 
-Use the `>` markdown code, and include the word note to distinguish it from a code block.
+Use the `{{< note "This is a note" />}}` and `{{< warning "This is a warning" />}}` shortcodes to add a note or warning. Markdown inside the note will be processed normally. It is also possible to use these shortcodes using opening and closing tags:
 
->Note: if you need help with any CLI command, use the `--help` flag to get a list of subcommands, flags and their description and aliases.
+{{< note >}}
+There is no need to add the word "note" at the beginning of a note, or "warning" at the beginning of a warning - they are automatically added for you!
+{{</ note >}}
 
 ## Images
 

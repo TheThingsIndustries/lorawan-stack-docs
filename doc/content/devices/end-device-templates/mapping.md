@@ -72,7 +72,7 @@ The mapping file `profile.json` contains the following entries (omitting empty f
 
 Second, convert the provisioning data to a device templates file to `provisioningdata.json`.
 
->This example uses a **Microchip ATECC608A-MAHTN-T Manifest File**. This file contains provisioning data for The Things Industries Join Server. You can download the example file [here](../microchip-atecc608a-mahtn-t-example.json).
+{{< note >}} This example uses a **Microchip ATECC608A-MAHTN-T Manifest File**. This file contains provisioning data for The Things Industries Join Server. You can download the example file [here](../microchip-atecc608a-mahtn-t-example.json). {{</ note >}}
 
 ```bash
 $ ttn-lw-cli end-devices template from-data microchip-atecc608a-mahtn-t --local-file example.json > provisioningdata.json

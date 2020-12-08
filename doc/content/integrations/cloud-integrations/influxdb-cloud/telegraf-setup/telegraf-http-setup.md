@@ -44,7 +44,7 @@ In {{% tts %}} Console, [create a new webhook]({{< ref "/integrations/webhooks/c
 
 {{< figure src="../tts-webhook-info.png" alt="Creating webhook on The Things Stack" >}}
 
->Note: keep in mind that Telegraf agent can be hosted in a remote environment as well. In that case, you need to adjust the **Base URL** according to your setup.
+{{< note >}} Keep in mind that Telegraf agent can be hosted in a remote environment as well. In that case, you need to adjust the **Base URL** according to your setup. {{</ note >}}
 
 ## Monitor Your Data
 
