@@ -5,7 +5,7 @@ weight: 10
 distributions: Enterprise
 ---
 
->**Note**: On Cloud distributions, the following configuration options are automatically enabled. See the [Enable]({{< relref "enable" >}}) and [Retrieve]({{< relref "retrieve" >}}) sections to learn to enable and use the integration for Applications and End Devices.
+{{< note >}} On Cloud distributions, the following configuration options are automatically enabled. See the [Enable]({{< relref "enable" >}}) and [Retrieve]({{< relref "retrieve" >}}) sections to learn to enable and use the integration for Applications and End Devices. {{</ note >}}
 
 The Storage Integration requires configuration for the underlying storage provider used, along with a few options for tuning performance and memory usage.
 

@@ -86,7 +86,7 @@ This template allows the user to customize the deployment. The following is a li
 
 #### User Registration
 
->**Note:** All of the fields below are optional.
+{{< note >}} All of the fields below are optional. {{</ note >}}
 
 |**Parameter**|**Description**|**Default**|
 |---|---|---|
@@ -100,7 +100,7 @@ This template allows the user to customize the deployment. The following is a li
 
 #### Resource Settings
 
->**Note:** The fields in this section are for advanced users. A change to some of these parameters might incur additional costs.
+{{< note >}} The fields in this section are for advanced users. A change to some of these parameters might incur additional costs. {{</ note >}}
 
 |**Parameter**|**Description**|**Default**|
 |---|---|---|
@@ -117,7 +117,7 @@ This template allows the user to customize the deployment. The following is a li
 
 #### LoRaWAN Network Server Settings
 
->**Note:** All of following parameters are optional.
+{{< note >}} All of following parameters are optional. {{</ note >}}
 
 |**Parameter**|**Description**|**Default**|
 |---|---|---|
@@ -133,7 +133,7 @@ This template allows the user to customize the deployment. The following is a li
 
 #### Update From Existing Deployment
 
->**Note:** The following parameters are exclusively meant for updating an existing deployment.
+{{< note >}} The following parameters are exclusively meant for updating an existing deployment. {{</ note >}}
 
 |**Parameter**|**Description**|
 |---|---|

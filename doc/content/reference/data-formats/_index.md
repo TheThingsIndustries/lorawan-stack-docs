@@ -357,7 +357,7 @@ The JSON downlink messages use the following format:
 }
 ```
 
->**Note:** The end device identifiers need to be supplied only to frontends that do not derive it from other sources (such as the URL for webhooks or topic name for MQTT).
+{{< note >}} The end device identifiers need to be supplied only to frontends that do not derive it from other sources (such as the URL for webhooks or topic name for MQTT). {{</ note >}}
 
 <details><summary>Downlink message example</summary>
 

@@ -92,7 +92,7 @@ If you are migrating your database from a previous deployment, or if you are upg
 
 The template `2-5-db-timescale` is an optional template that creates an EC2 instance that runs [TimescaleDB](https://www.timescale.com/), which is used by the Storage Integration of the Application Server. 
 
->**Note:** If you do not want to install the storage integration, you do not need to deploy this.
+{{< note >}} If you do not want to install the storage integration, you do not need to deploy this. {{</ note >}}
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/2-5-db-timescale.gen.template (replace `3.x` with the current minor version).
 

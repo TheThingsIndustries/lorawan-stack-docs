@@ -33,6 +33,6 @@ Finish by clicking the **Create thingspeak webhook** button.
 
 {{< figure src="creating-a-webhook.png" alt="ThingSpeak webhook" >}}
 
->**Note:** To see the values of all parameters of the ThingSpeak integration, click on the integration after you created it with the Webhook template. 
+{{< note >}} To see the values of all parameters of the ThingSpeak integration, click on the integration after you created it with the Webhook template. {{</ note >}}
 
 At this point, you can go back to your [channels page](https://thingspeak.com/channels) on ThingSpeak and select the private or public view of your channel to check out the field charts under **Channel Stats**. You can now also write and automate MATLAB&reg; code to analyze and further visualize your data.
