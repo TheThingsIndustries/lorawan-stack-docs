@@ -50,7 +50,7 @@ The parameters configure the integration:
 - **Thing Type Name**: The unique AWS IoT Core thing type name for this integration.
 - **Thing Shadow Metrics**: Enable or disable updating the thing shadow with metrics.
 - **Cluster Address**: The cluster address of your {{% tts %}} deployment, for example `mycompany.eu1.cloud.thethings.industries`. See [Cloud Hosted Addresses]({{< relref "/getting-started/cloud-hosted/addresses" >}}) to find your cluster address.
-- **Enable End-to-End Encryption** {{< new-in-version "3.10.0" >}} {{< distributions-inline "Cloud" >}}: If enabled, the AppSKey is delivered as encrypted from the Global Join Server to your AWS Account, so the AppSKey will not be exposed to the network layer. Also, your AWS solution needs to handle binary payload as the underlying network cannot run payload encoding and decoding functions.
+- **Enable End-to-End Encryption** {{< new-in-version "3.10.0" >}} {{< distributions-inline "Cloud" >}}: If enabled, the AppSKey is delivered as encrypted from The Things Join Server to your AWS Account, so the AppSKey will not be exposed to the network layer. Also, your AWS solution needs to handle binary payload as the underlying network cannot run payload encoding and decoding functions.
 - **Application ID**: The application ID for which you configure the integration.
 - **Application API Key**: The application API key that you generated before.
 

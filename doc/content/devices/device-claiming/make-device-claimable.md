@@ -18,9 +18,9 @@ This guide explains the process of making a device claimable.
 
 ## Register Devices
 
-In order to be claimable, the device needs to be registered on The Things Industries Join Server. This can be done in multiple ways.
+In order to be claimable, the device needs to be registered on The Things Join Server. This can be done in multiple ways.
 
-### Registered on The Things Industries Join Server Only
+### Registered on The Things Join Server Only
 
 1. With root keys and claim authentication code
 - Follow the [Register Devices]({{< ref "/getting-started/cloud-hosted/tti-join-server/register-devices" >}}) guide.
@@ -28,7 +28,7 @@ In order to be claimable, the device needs to be registered on The Things Indust
 2. With secure element claiming
 - Follow the [Claim ATECC608A Secure Elements]({{< ref "/devices/claim-atecc608a" >}}) guide.
 
-### Registered on The Things Industries Join Server and Configured in a Cloud Cluster
+### Registered on The Things Join Server and Configured in a Cloud Cluster
 
 1. With root keys and claim authentication code
 - Follow the [Activating Devices on Cloud]({{< ref "/getting-started/cloud-hosted/tti-join-server/activate-devices-cloud-hosted" >}}) guide.
