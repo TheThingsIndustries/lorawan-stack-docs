@@ -20,7 +20,7 @@ Next, we need to initialize the database of the Identity Server:
 $ docker-compose run --rm stack is-db init
 ```
 
-{{< warning >}} If you receive an error running {{% tts %}}, make sure a {{% tts %}} container isn't already running. Use `docker ps` to see running containers. {{</ warning >}}
+{{< note >}} If you receive an error running {{% tts %}}, make sure a {{% tts %}} container isn't already running. Use `docker ps` to see running containers. {{</ note >}}
 
 For the Storage Integration available in {{% tts %}} Enterprise, we need to initialize the database of the Application Server as well:
 
@@ -34,7 +34,7 @@ $ docker-compose run --rm stack storage-db init
 $ docker-compose run --rm stack is-db create-tenant
 ```
 
-{{< note >}} This will take the Tenant ID from the configuration. {{</ note >}}
+{{< note >}} This will take the `tenancy.default-id` Tenant ID from the [configuration]({{< relref "configuration" >}}) in `ttn-lw-stack-docker.yml`. To specify another Tenant ID, use the `--id` parameter. {{</ note >}}
 
 We'll now create an initial `admin` user. Make sure to give it a good password.
 
@@ -58,19 +58,23 @@ $ docker-compose run --rm stack is-db create-oauth-client \
 
 We do the same for the Console. 
 
-{{< note >}} For `--secret`, make sure to enter the same value as you set for `console.oauth.client-secret` in the `ttn-lw-stack-docker.yml` file in the [Configuration]({{< relref "configuration" >}}) step. {{</ note >}}
-
 ```bash
+$ CONSOLE_SECRET="your-console-secret"
+$ SERVER_ADDRESS="your-server-address"
 $ docker-compose run --rm stack is-db create-oauth-client \
   --id console \
   --name "Console" \
   --owner admin \
-  --secret the secret you generated before \
-  --redirect-uri "https://thethings.example.com/console/oauth/callback" \
+  --secret "${CONSOLE_SECRET}" \
+  --redirect-uri "${SERVER_ADDRESS}/console/oauth/callback" \
   --redirect-uri "/console/oauth/callback" \
-  --logout-redirect-uri "https://thethings.example.com/console" \
+  --logout-redirect-uri "${SERVER_ADDRESS}/console" \
   --logout-redirect-uri "/console"
 ```
+
+{{< note >}} If running a multi-tenant environment, use option `--tenant-id NULL` to register the OAuth client for all tenants. {{</ note >}}
+
+{{< note >}} For `--secret`, make sure to enter the same value as you set for `console.oauth.client-secret` in the `ttn-lw-stack-docker.yml` file in the [Configuration]({{< relref "configuration" >}}) step. {{</ note >}}
 
 ## Running {{% tts %}}
 
