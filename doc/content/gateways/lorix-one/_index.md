@@ -3,13 +3,13 @@ title: "Wifx LORIX One"
 description: ""
 ---
 
+{{< figure src="lorix-one.png" alt="LORIX One" class="plain float" >}}
+
 The LORIX One is a robust and professional grade outdoor LoRaWAN® gateway in an ultra compact form factor, designed and assembled in Switzerland. The LORIX One supports ethernet, wireless, and cellular backhauls.
 
 This page will guide you through the steps required to connect the gateway to {{% tts %}}.
 
 <!--more-->
-
-![LORIX One](lorix-one.png)
 
 For additional help and technical specifications, please refer to [Wifx's official documentation](https://iot.wifx.net/docs).
 
@@ -70,7 +70,7 @@ You will land on the login page. Log on using the following the default username
 
 Go to the **LoRa > Settings page > Hardware tab**.
 
-![LORIX One LoRa hardware page](lorix-one-lora-settings-antenna.png "LORIX One LoRa hardware page")
+{{< figure src="lorix-one-lora-settings-antenna.png" alt="LORIX One LoRa hardware page" >}}
 
 In the **Antenna** field, select the antenna you have connected.
 

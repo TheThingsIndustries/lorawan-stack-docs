@@ -10,13 +10,11 @@ This guide will help you set up the Multitech Conduit gateway to communicate ove
 
 <!--more-->
 
-![MultiTech MultiConnect Conduit AEP Gateway](multitech-conduit.png)
-
-![MultiTech MultiConnect Conduit AEP Gateway](multitech-conduit-ap.png)
-
 The technical specifications of the Conduit can be found in the software guide in the [official documentation](http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/) page.
 
-{{< figure src="001_Multitech_Conduit_AEP.png" alt="MultiTech MultiConnect Conduit AEP Gateway" >}}
+{{< figure src="multitech-conduit.png" alt="MultiTech MultiConnect Conduit AEP Gateway" class="float plain" >}}
+
+{{< figure src="multitech-conduit-ap.png" alt="MultiTech MultiConnect Conduit AEP Gateway AP" class="float plain" >}}
 
 ## Prerequisites
 

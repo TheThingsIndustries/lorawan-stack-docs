@@ -34,6 +34,8 @@
   </div>
 </footer>
 
+{{- $script := resources.Get "js/vendor/basicLightbox.min.js" }}
+<script src="{{ $script.Permalink }}"></script>
 {{- $script := resources.Get "js/theme.js" | resources.Minify | resources.Fingerprint }}
 <script src="{{ $script.Permalink }}" integrity="{{ $script.Data.Integrity }}"></script>
 

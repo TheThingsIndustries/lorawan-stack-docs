@@ -3,6 +3,8 @@ title: "MultiTech Conduit mLinux"
 description: ""
 ---
 
+{{< figure src="001_Multitech_Conduit.png" alt="MultiTech MultiConnect Conduit Gateway" class="float plain" >}}
+
 The [MultiTech MultiConnect® Conduit™](http://www.multitech.net/developer/products/multiconnect-Conduit-platform/) is a configurable, scalable cellular communications gateway for industrial IoT applications. The technical specifications of this Conduit can be found in the software guide in the [official documentation](http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/) page.
 
 This guide will help you set up the Multitech Conduit mLinux gateway to communicate over {{%tts%}}.
@@ -10,8 +12,6 @@ This guide will help you set up the Multitech Conduit mLinux gateway to communic
 <!--more-->
 
 The MultiTech Conduit has two compatible firmwares - **AEP**, which is configured via the browser, and **mLinux**, which is configured via the terminal. This guide is for the **mLinux** firmware.
-
-{{< figure src="001_Multitech_Conduit.png" alt="MultiTech MultiConnect Conduit Gateway" >}}
 
 ## Prerequisites
 

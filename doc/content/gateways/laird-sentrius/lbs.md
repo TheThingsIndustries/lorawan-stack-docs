@@ -15,7 +15,7 @@ Click on the **Forwarder** tab.
 
 Choose **Semtech Basic Station** as the **Mode**.
 
-{{< figure src="../basic-station.png" alt="Create new server" >}}
+{{< figure src="../basic-station.png" alt="Create new server" class="plain" >}}
 
 Follow the instructions for [Connecting LNS]({{< ref "/gateways/lora-basics-station/lns" >}}).
 
