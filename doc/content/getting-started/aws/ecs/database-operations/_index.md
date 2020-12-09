@@ -72,6 +72,8 @@ tti-lw-stack,is-db,init
 {{</ tabs/tab >}}
 {{</ tabs/container >}}
 
+{{< note >}} While initialization alone is needed for deployment itself, creating initial resources mentioned below is required for the stack to work. {{</ note >}}
+
 ## Create a Tenant in the Identity Server Database (multi-tenant only)
 
 If you can not, or do not want to use the Tenant Billing Server or the API to create tenants, you can create tenants directly in the database.
@@ -81,15 +83,17 @@ The command for this is:
 {{< tabs/container "AWS Console" "AWS CLI">}}
 {{< tabs/tab "AWS Console" >}}
 ```
-tti-lw-stack,is-db,create-tenant,--id=your-tenant-id,--name=Your Tenant Name
+tti-lw-stack,is-db,create-tenant,--id=$TENANT_ID,--name=$TENANT_NAME
 ```
 {{</ tabs/tab >}}
 {{< tabs/tab "AWS CLI" >}}
 ```
-["tti-lw-stack","is-db","create-tenant","--id=your-tenant-id","--name=Your Tenant Name"]
+["tti-lw-stack","is-db","create-tenant","--id=$TENANT_ID","--name=$TENANT_NAME"]
 ```
 {{</ tabs/tab >}}
 {{</ tabs/container >}}
+
+{{< note >}} Replace `$TENANT_ID` and `$TENANT_NAME` with your own. {{</ note >}}
 
 ## Create the OAuth Client for the Command-Line Interface
 
@@ -106,29 +110,46 @@ tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=cli,--name=Command 
 {{</ tabs/tab >}}
 {{</ tabs/container >}}
 
-{{< note >}} Replace `--tenant-id=NULL` with `--tenant-id=your-tenant-id` in single-tenant deployments. {{</ note >}}
+{{< note >}} Replace `--tenant-id=NULL` with `--tenant-id=$TENANT_ID` in single-tenant deployments. {{</ note >}}
 
 ## Create the OAuth Client for the Console
 
 {{< tabs/container "AWS Console" "AWS CLI">}}
 {{< tabs/tab "AWS Console" >}}
 ```
-tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=console-eu1,--name=Europe 1 Console,--secret=CLIENT_SECRET,--redirect-uri=/console/oauth/callback,--redirect-uri=https://domain/console/oauth/callback,--logout-redirect-uri=/console,--logout-redirect-uri=https://domain/console
+tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=$ID,--name=$NAME,--secret=$CLIENT_SECRET,--redirect-uri=/console/oauth/callback,--redirect-uri=https://domain/console/oauth/callback,--logout-redirect-uri=/console,--logout-redirect-uri=https://domain/console
 ```
 {{</ tabs/tab >}}
 {{< tabs/tab "AWS CLI" >}}
 ```
-["tti-lw-stack","is-db","create-oauth-client","--tenant-id=NULL","--id=console-eu1","--name=Europe 1 Console","--secret=CLIENT_SECRET","--redirect-uri=/console/oauth/callback","--redirect-uri=https://domain/console/oauth/callback","--logout-redirect-uri=/console","--logout-redirect-uri=https://domain/console"]
+["tti-lw-stack","is-db","create-oauth-client","--tenant-id=NULL","--id=$ID","--name=$NAME","--secret=$CLIENT_SECRET","--redirect-uri=/console/oauth/callback","--redirect-uri=https://domain/console/oauth/callback","--logout-redirect-uri=/console","--logout-redirect-uri=https://domain/console"]
 ```
 {{</ tabs/tab >}}
 {{</ tabs/container >}}
 
 {{< note >}} 
-- Replace `--tenant-id=NULL` with `--tenant-id=your-tenant-id` in single-tenant deployments.
-- Replace the values of `--id`, `--name` and `--secret` with your own. 
+- Replace `--tenant-id=NULL` with `--tenant-id=$TENANT_ID` in single-tenant deployments.
+- Replace the values of `$ID`, `$NAME` and `$CLIENT_SECRET` with your own. `id` and `secret` can be found in the `<network>-<environment>-<cluster>-console-oauth-client` secret in the AWS Secrets Manager.
 - For secondary clusters (where the domain of the Console is not equal to the domain of the Identity Server), omit `--redirect-uri=/console/oauth/callback` and `--logout-redirect-uri=/console`.
 - You can use a similar command for the Device Claiming server if you use `/claim` instead of `/console` for the redirect URIs.
 {{</ note >}}
+
+## Create Admin User
+
+{{< tabs/container "AWS Console" "AWS CLI">}}
+{{< tabs/tab "AWS Console" >}}
+```
+tti-lw-stack,is-db,create-admin-user,--tenant-id,$TENANT_ID,--email,$ADMIN_EMAIL,--password,$ADMIN_PASSWORD
+```
+{{</ tabs/tab >}}
+{{< tabs/tab "AWS CLI" >}}
+```
+["tti-lw-stack","is-db","create-admin-user","--tenant-id","$TENANT_ID","--email","$ADMIN_EMAIL","--password","$ADMIN_PASSWORD"]
+```
+{{</ tabs/tab >}}
+{{</ tabs/container >}}
+
+{{< note >}} Replace `$TENANT_ID`, `$ADMIN_EMAIL` and `$ADMIN_PASSWORD` with your own. {{</ note >}}
 
 ## Migrate Identity Server Database
 
