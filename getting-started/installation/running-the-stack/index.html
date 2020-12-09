@@ -126,8 +126,8 @@ debug: false
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose pull
 </code></pre></div><p>Next, we need to initialize the database of the Identity Server:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack is-db init
-</code></pre></div><div class="notification is-warning is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   If you receive an error running The Things Stack, make sure a The Things Stack container isn&rsquo;t already running. Use <code>docker ps</code> to see running containers.
 </div>
 <p>For the Storage Integration available in The Things Stack Enterprise, we need to initialize the database of the Application Server as well:</p>
@@ -136,7 +136,7 @@ debug: false
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack is-db create-tenant
 </code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  This will take the Tenant ID from the configuration.
+  This will take the <code>tenancy.default-id</code> Tenant ID from the <a href="/getting-started/installation/configuration/">configuration</a> in <code>ttn-lw-stack-docker.yml</code>. To specify another Tenant ID, use the <code>--id</code> parameter.
 </div>
 <p>We&rsquo;ll now create an initial <code>admin</code> user. Make sure to give it a good password.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack is-db create-admin-user <span class="se">\
@@ -151,20 +151,26 @@ debug: false
 </span><span class="se"></span>  --redirect-uri <span class="s2">&#34;local-callback&#34;</span> <span class="se">\
 </span><span class="se"></span>  --redirect-uri <span class="s2">&#34;code&#34;</span>
 </code></pre></div><p>We do the same for the Console.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nv">CONSOLE_SECRET</span><span class="o">=</span><span class="s2">&#34;your-console-secret&#34;</span>
+$ <span class="nv">SERVER_ADDRESS</span><span class="o">=</span><span class="s2">&#34;your-server-address&#34;</span>
+$ docker-compose run --rm stack is-db create-oauth-client <span class="se">\
+</span><span class="se"></span>  --id console <span class="se">\
+</span><span class="se"></span>  --name <span class="s2">&#34;Console&#34;</span> <span class="se">\
+</span><span class="se"></span>  --owner admin <span class="se">\
+</span><span class="se"></span>  --secret <span class="s2">&#34;</span><span class="si">${</span><span class="nv">CONSOLE_SECRET</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span><span class="se"></span>  --redirect-uri <span class="s2">&#34;</span><span class="si">${</span><span class="nv">SERVER_ADDRESS</span><span class="si">}</span><span class="s2">/console/oauth/callback&#34;</span> <span class="se">\
+</span><span class="se"></span>  --redirect-uri <span class="s2">&#34;/console/oauth/callback&#34;</span> <span class="se">\
+</span><span class="se"></span>  --logout-redirect-uri <span class="s2">&#34;</span><span class="si">${</span><span class="nv">SERVER_ADDRESS</span><span class="si">}</span><span class="s2">/console&#34;</span> <span class="se">\
+</span><span class="se"></span>  --logout-redirect-uri <span class="s2">&#34;/console&#34;</span>
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  If running a multi-tenant environment, use option <code>--tenant-id NULL</code> to register the OAuth client for all tenants.
+</div>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   For <code>--secret</code>, make sure to enter the same value as you set for <code>console.oauth.client-secret</code> in the <code>ttn-lw-stack-docker.yml</code> file in the <a href="/getting-started/installation/configuration/">Configuration</a> step.
 </div>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack is-db create-oauth-client <span class="se">\
-</span><span class="se"></span>  --id console <span class="se">\
-</span><span class="se"></span>  --name <span class="s2">&#34;Console&#34;</span> <span class="se">\
-</span><span class="se"></span>  --owner admin <span class="se">\
-</span><span class="se"></span>  --secret the secret you generated before <span class="se">\
-</span><span class="se"></span>  --redirect-uri <span class="s2">&#34;https://thethings.example.com/console/oauth/callback&#34;</span> <span class="se">\
-</span><span class="se"></span>  --redirect-uri <span class="s2">&#34;/console/oauth/callback&#34;</span> <span class="se">\
-</span><span class="se"></span>  --logout-redirect-uri <span class="s2">&#34;https://thethings.example.com/console&#34;</span> <span class="se">\
-</span><span class="se"></span>  --logout-redirect-uri <span class="s2">&#34;/console&#34;</span>
-</code></pre></div><h2 id="running-the-things-stack">Running The Things Stack</h2>
+<h2 id="running-the-things-stack">Running The Things Stack</h2>
 <p>Now it&rsquo;s time to start The Things Stack:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose up
 </code></pre></div><p>This will start the stack and print logs to your terminal. You can also start the stack in detached mode by adding <code>-d</code> to the command above. In that case you can get logs with <a href="https://docs.docker.com/compose/reference/logs/"><code>docker-compose logs</code></a>.</p>
@@ -216,10 +222,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 26 Nov 2020.
+  Last changed by benolayinka on 07 Dec 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/21da11257c965cc9e733dfee24ffc3ac4f2235fd">
-      doc: Change info tags to note
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/aa559b9f7c6328de48094ce5a45d20a89e4f7c36">
+      doc: Add multi-tenant OAuth note
     </a>
 </p>
 
