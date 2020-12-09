@@ -25,6 +25,30 @@ document.addEventListener('DOMContentLoaded', function() {
     })
   }
 
+  // Migration Banner
+  if(document.querySelectorAll('.migration-banner')[0]){
+    var nav = document.getElementsByTagName("NAV")[0];
+    nav.classList.add("banner-gap");
+
+    function removeBanner(){
+      var migration_banner = document.querySelectorAll('.migration-banner')[0];
+      migration_banner.parentNode.removeChild(migration_banner);
+      nav.classList.remove("banner-gap");
+    }
+
+    if (window.sessionStorage.getItem('bannerClosed') === "true" ) {
+      removeBanner()
+    } else {
+      (document.querySelectorAll('.notification .got-it') || []).forEach(($delete) => {
+        $delete.addEventListener('click', () => {
+          window.sessionStorage.setItem('bannerClosed', true)
+          removeBanner()
+        });
+      });
+    }
+  }
+
+  // Tabs
   const tabs = [...document.querySelectorAll('.tabs li')]
   const tabContent = [...document.querySelectorAll('.tab-content section')]
   const activeClass = 'is-active'
