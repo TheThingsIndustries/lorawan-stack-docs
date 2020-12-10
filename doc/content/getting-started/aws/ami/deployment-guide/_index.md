@@ -8,13 +8,13 @@ This section contains detailed information to help you setup {{% tts %}} on the 
 
 <!--more-->
 
-{{< figure src="ami-architecture.jpg" alt="AMI Architecture" >}}
+{{< figure src="ami-architecture.jpg" alt="AMI Architecture" class="plain" >}}
 
 ### AWS Deployment Architecture
 
 The following image describes the architecture of the components that are deployed while using the **default parameters**.
 
-{{< figure src="aws-deployment-architecture.png" alt="AMI deployment Architecture" >}}
+{{< figure src="aws-deployment-architecture.png" alt="AMI deployment Architecture" class="plain" >}}
 
 ## Preparation
 

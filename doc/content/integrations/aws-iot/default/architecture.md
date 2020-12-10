@@ -8,7 +8,7 @@ The AWS IoT Core integration is a serverless deployment that scales automaticall
 
 <!--more-->
 
-![Default integration architecture](../architecture.svg)
+{{< figure src="../architecture.svg" alt="Default integration architecture" class="plain" >}}
 
 The key resources deployed in your AWS account are:
 

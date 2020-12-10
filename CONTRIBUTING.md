@@ -118,6 +118,7 @@ Please respect the following guidelines for content in our documentation site.
 - Taking screenshots is done as follows:
   - In Chrome: activate the **Developer Tools** and toggle the **Device Toolbar**. In the **Device Toolbar**, select **Laptop with HiDPI screen** (add it if not already there), and click **Capture Screenshot** in the menu on the right.
   - In Firefox: enter **Responsive Design Mode**. In the **Device Toolbar**, select "Laptop with HiDPI screen" (add it if not already there) and **Take a screenshot of the viewport**.
+- Use `{{< figure src="image.png" alt="Show this text if the image is missing" >}}` shortcode to insert images. Adding `class="float"` will embed the image into the content, while `class="plain"` will remove the shadow box around the image.
 - Use `**Strong**` when referring to buttons in the Console.
 - Use the `{{< note "This is a note" />}}` and `{{< warning "This is a warning" />}}` shortcodes to add a note or warning.
 - Use fenced code blocks with a language:
