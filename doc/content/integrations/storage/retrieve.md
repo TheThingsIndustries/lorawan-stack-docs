@@ -11,7 +11,7 @@ The Storage Integration offers the `ApplicationUpStorage` gRPC service and the r
 Using the CLI:
 
 ```bash
-$ ttn-lw-cli applications storage get "app1" --limit 10 --after "2018-08-20T00:00:00Z"
+$ ttn-lw-cli applications storage get "app1" --limit 10 --after "2018-08-20 00:00:00"
 ```
 
 Using the HTTP API (`$API_KEY` should be a valid API key with the `RIGHT_APPLICATION_TRAFFIC_READ` right):
@@ -20,7 +20,7 @@ Using the HTTP API (`$API_KEY` should be a valid API key with the `RIGHT_APPLICA
 $ curl -G "https://thethings.example.com/api/v3/as/applications/app1/packages/storage/uplink_message" \
     -H "Authorization: Bearer $API_KEY" \
     -d "limit=10" \
-    -d "after=2020-08-20T00:00:00Z"
+    -d "after=2020-08-20 00:00:00"
 ```
 
 <details><summary><b>See example API response</b></summary>
