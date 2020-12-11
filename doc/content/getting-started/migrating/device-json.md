@@ -73,13 +73,13 @@ The linked specification is quite extensive, and contains a lot of fields that a
 | **`session.last_a_f_cnt_down`** | **For existing session** | uint | `12` | Last application downlink frame counter used. |
 
 {{< note >}} The dots in the **Field** column imply an embedded object. For example, `root_keys.nwk_key.key` must be set as:
-> ```
-> "root_keys": {
->   "nwk_key:": {
->     "key": "<NWK_KEY_HERE>"
->   }
-> }
-> ```
+```
+"root_keys": {
+  "nwk_key:": {
+  "key": "<NWK_KEY_HERE>"
+  }
+}
+```
 {{</ note >}}
 
 ## Examples

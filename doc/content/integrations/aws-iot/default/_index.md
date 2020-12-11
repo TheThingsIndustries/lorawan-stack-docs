@@ -16,4 +16,4 @@ The key features of the Default Integration are:
 
 This integration comes with a AWS CloudFormation template to deploy in your AWS account.
 
-![Default integration overview](./overview.svg)
+{{< figure src="overview.svg" alt="Default integration overview" class="plain" >}}

@@ -12,7 +12,7 @@ This page describes the architecture of a {{% tts %}} deployment on AWS ECS.
 
 The foundation of the deployment is the Virtual Private Cloud (VPC) that lets us create an isolated environment within the AWS cloud.
 
-![VPC and Subnets](aws-vpc.svg)
+{{< figure src="aws-vpc.svg" alt="VPC and Subnets" class="plain" >}}
 
 We will deploy {{% tts %}} across two availability zones (AZs). In each AZ we have a private subnet that will contain the resources for {{% tts %}} such as databases, container instances and the application containers themselves. Since these resources can't communicate with the internet directly, we also have public subnets that contain a Network Load Balancer (NLB) for load balancing incoming traffic across instances and a NAT Gateway (NGW) for outgoing connections from resources in the private subnet. 
 
@@ -26,7 +26,7 @@ We use a PostgreSQL-compatible version of Amazon Aurora and a Redis-compatible v
 
 If desired, it is possible to use separate Redis clusters for persistent storage and for caching.
 
-![Databases](aws-databases.svg)
+{{< figure src="aws-databases.svg" alt="Databases" class="plain" >}}
 
 User uploads of profile pictures and end device pictures are stored in S3 buckets.
 
@@ -42,7 +42,7 @@ The configuration for interoperability with other LoRaWAN Backend Interfaces-com
 
 {{% tts %}} itself is deployed as Docker Containers on AWS ECS.
 
-![ECS Cluster](aws-ecs.svg)
+{{< figure src="aws-ecs.svg" alt="ECS Cluster" class="plain" >}}
 
 The ECS cluster uses container instances in the private subnets of both availability zones. Each container instance runs at least a Gateway Server container that is dedicated for UDP gateways. This is necessary because of the limited support for UDP in ECS. 
 
@@ -52,7 +52,7 @@ Depending on your preferences, you can run other containers on your container in
 
 All internal communication between the different components of {{% tts %}} is done over gRPC (port 1884) and HTTP (port 1885). For incoming connections from outside the cluster, ECS registers a number of services in the NLB.
 
-![ECS Containers](aws-ecs-containers.svg)
+{{< figure src="aws-ecs-containers.svg" alt="ECS Containers" class="plain" >}}
 
 In addition to containers for the different components of {{% tts %}}, our deployment also contains proxy containers to route HTTP and gRPC requests to the correct component. Prometheus containers are used for monitoring the deployment.
 
