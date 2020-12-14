@@ -34,6 +34,7 @@ To replace the existing queue with a new item:
 $ ttn-lw-cli end-devices downlink replace app1 dev1 \
   --frm-payload 01020304 \
   --priority NORMAL
+  --f-port 42
 ```
 
 ## List queue
