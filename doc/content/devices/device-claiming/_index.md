@@ -19,7 +19,7 @@ It is used to transfer ownership from a device maker to a device owner, or to a 
 
 ## How does it work?
 
-After pre-provisioning a device, device makers register it on The Things Industries Join Server or on their Cloud cluster, generate a QR code for claiming and stick it to the device. When purchasing a device, new device owners scan this QR code to claim it to their application. 
+After pre-provisioning a device, device makers register it on The Things Join Server or on their Cloud cluster, generate a QR code for claiming and stick it to the device. When purchasing a device, new device owners scan this QR code to claim it to their application. 
 
 [Learn how to claim a device]({{< ref "/devices/device-claiming" >}})
 

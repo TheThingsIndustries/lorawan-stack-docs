@@ -5,7 +5,7 @@ weight: 10
 distributions: ["Cloud"]
 ---
 
-The Things Industries Join Server is a LoRaWAN Join Server. Learn how to register devices to activate on The Things Industries Cloud Hosted or any LoRaWAN network.
+The Things Join Server is a LoRaWAN Join Server. Learn how to register devices to activate on The Things Industries Cloud Hosted or any LoRaWAN network.
 
 <!--more-->
 
@@ -13,7 +13,7 @@ The Things Industries Join Server is a LoRaWAN Join Server. Learn how to registe
 
 ## Prerequisites
 
-1. When using the command-line interface (CLI), a configuration file *with Join Server only*. See [The Things Industries Join Server]({{< relref "../tti-join-server" >}}).
+1. When using the command-line interface (CLI), a configuration file *with Join Server only*. See [The Things Join Server]({{< relref "../tti-join-server" >}}).
 2. JoinEUI/AppEUI is either issued from a IEEE block that you own, or set to `70B3D57ED0000000`.
 3. DevEUIs are issued from a IEEE block that you own.
 4. Root keys are generated randomly per device.

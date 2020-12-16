@@ -6,7 +6,7 @@ distributions: ["Enterprise", "Cloud"]
 
 The Things Industries and Microchip developed a security solution for LoRaWAN that enables secure key provisioning and secure cryptographic operations using secure elements.
 
-This guide helps device makers to claim secure elements on The Things Industries Join Server.
+This guide helps device makers to claim secure elements on The Things Join Server.
 
 <!--more-->
 
@@ -18,11 +18,11 @@ This guide helps device makers to claim secure elements on The Things Industries
 2. Device security (manifest) file. You can obtain this from your [Microchip Direct order history](https://www.microchipdirect.com/orders)
 3. Access to The Things Industries Cloud. [Contact The Things Industries](mailto:cloud@thethingsindustries.com) to get onboarded
 4. An application in The Things Industries Cloud. [See instructions]({{< ref "/integrations/adding-applications" >}})
-5. Your The Things Industries Join Server address. [See Join Server addresses]({{< ref "/getting-started/cloud-hosted/tti-join-server" >}})
+5. Your The Things Join Server address. [See Join Server addresses]({{< ref "/getting-started/cloud-hosted/tti-join-server" >}})
 
 ## Import Manifest
 
-Go to the Console of The Things Industries Join Server, e.g. `https://<tenant-id>.join.cloud.thethings.industries/console`.
+Go to the Console of The Things Join Server, e.g. `https://<tenant-id>.join.cloud.thethings.industries/console`.
 
 Go to the **Applications** and select your application. 
 
