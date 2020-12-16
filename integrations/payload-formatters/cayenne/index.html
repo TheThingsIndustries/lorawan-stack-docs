@@ -12,16 +12,16 @@
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.87592179d2b736be842bb7a3dd97c7a09f561effecbfb81ec0a18685eb1bd4e0.css" integrity="sha256-h1khedK3Nr6EK7ej3ZfHoJ9WHv/sv7gewKGGhesb1OA=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
-  <meta name="description" content="This page is a draft template">
+  <meta name="description" content="The Things Stack for LoRaWAN">
   <meta name="keywords" content="">
   <meta itemprop="name" content="CayenneLPP">
-  <meta itemprop="description" content="This page is a draft template">
+  <meta itemprop="description" content="The Things Stack for LoRaWAN">
   <meta itemprop="keywords" content="">
   <meta property="og:title" content="CayenneLPP">
-  <meta property="og:description" content="This page is a draft template">
+  <meta property="og:description" content="The Things Stack for LoRaWAN">
   <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/payload-formatters/cayenne/">
   <meta name="twitter:title" content="CayenneLPP" />
-  <meta name="twitter:description" content="This page is a draft template" />
+  <meta name="twitter:description" content="The Things Stack for LoRaWAN" />
   <meta name="twitter:card" content="summary" />
 </head>
 
@@ -127,7 +127,7 @@ debug: false
 
 <div class="content">
 
-<p>The Cayenne Low Power Payload (LPP) provides a convenient and easy way to send data over LPWAN networks such as LoRaWAN. The Cayenne LPP is compliant with the payload size restriction, which can be lowered down to 11 bytes, and allows the device to send multiple sensor data at one time.</p>
+<p>The <a href="https://developers.mydevices.com/cayenne/docs/lora/#lora-cayenne-low-power-payload">Cayenne Low Power Payload (LPP)</a> provides a convenient and easy way to send data over LPWAN networks such as LoRaWAN. The Cayenne LPP is compliant with the payload size restriction, which can be lowered down to 11 bytes, and allows the end device to send multiple sensor data at one time.</p>
 <h2 id="configure-your-device">Configure Your Device</h2>
 <p>In order to use the CayenneLPP Payload Formatter, your device must send Cayenne compatible binary payloads. For Arduino compatible boards, documentation about altering your Arduino Sketch to encode data with CayenneLPP can be found at The Things Network <a href="https://www.thethingsnetwork.org/docs/devices/arduino/api/cayennelpp.html">Cayenne Documentation</a>. General information about the CayenneLPP Payload is available in the <a href="https://github.com/myDevicesIoT/CayenneLPP">CayenneLPP Github Repository</a>.</p>
 <h2 id="decoded-payload">Decoded Payload</h2>
@@ -146,7 +146,21 @@ debug: false
     <span class="p">},</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
+</code></pre></div><h2 id="translating-sensor-types-to-decoded_payload-fields">Translating Sensor Types to <code>decoded_payload</code> Fields</h2>
+<p>A description of the Cayenne LPP sensor types is available in the Cayenne documentation <a href="https://developers.mydevices.com/cayenne/docs/lora/#lora-cayenne-low-power-payload-reference-implementation-cayenne-lpp-cc-constants-definitions">here</a>.</p>
+<p>The Things Stack uses the sensor names to create the <code>decoded_payload</code> fields, so a Cayenne payload with one <code>LPP_TEMPERATURE</code> and one <code>LPP_BAROMETRIC_PRESSURE</code> sensor reading will produce the following decoded payload:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;uplink_message&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+    <span class="nt">&#34;f_cnt&#34;</span><span class="p">:</span> <span class="mi">113</span><span class="p">,</span>
+    <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;AHMnvwBnAN4=&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;decoded_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;barometric_pressure_0&#34;</span><span class="p">:</span> <span class="mf">1017.5</span><span class="p">,</span>
+      <span class="nt">&#34;temperature_0&#34;</span><span class="p">:</span> <span class="mf">22.200000762939453</span>
+    <span class="p">},</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>The <code>decoded_payload</code> entries are formed from the lowercase sensor constant and channel, i.e. a <code>LPP_TEMPERATURE</code> reading on channel 0 becomes <code>temperature_0</code>.</p>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -193,10 +207,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 02 Jul 2020.
+  Last changed by benolayinka on 30 Nov 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/56d885bda466d11c50ec99bbae555a0af434ff4c">
-      doc: Add payload formatters
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/e9d82607516f3ea318ac95e306a0d5b26a208d96">
+      doc: Extend Cayenne LPP example
     </a>
 </p>
 
