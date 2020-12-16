@@ -140,7 +140,7 @@ By default users can create applications, gateways, organizations and OAuth clie
 
 - `is.gateways.encryption-key-id`: ID of the key used to encrypt gateway secrets at rest.
 
-## Tenant Administration Options {{< distributions-inline "Cloud" "Enterprise" >}}
+## Tenant Administration Options {{< distributions-inline "Cloud" "Enterprise" >}} {#tenant-administration-options}
 
 In multi-tenant deployments, tenants are managed with "tenant admin keys". These keys need to be configured in the Identity Server.
 

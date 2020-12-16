@@ -108,7 +108,7 @@ Here is an example `stack` configuration from the Enterprise version of `docker-
 
 Once Docker starts {{% tts %}}, we need to specify configuration options for running {{% tts %}} in the `ttn-lw-stack-docker.yml` file. Let's have a look at the configuration options which are required.
 
-### License {{< distributions-inline "Enterprise" >}}
+### License {{< distributions-inline "Enterprise" >}} {#license}
 
 First is a license file. {{% tts %}} Enterprise requires a license, which can be purchased at the [products page](https://thethingsindustries.com/technology/pricing). This is specified in the `license` field, and can be either a `key` string, or a `file`path. See the [License Configuration Reference]({{< ref "/reference/configuration/the-things-stack" >}}) for more information.
 
@@ -138,7 +138,7 @@ by the console client (see the `console` section). These tell {{% tts %}} where 
 
 {{< warning >}} Failure to correctly configure component URLs is a common problem that will prevent the stack from starting. Be sure to replace all instances of `thethings.example.com` with your domain name! {{</ warning >}}
 
-### Multi-tenancy {{< distributions-inline "Enterprise" >}}
+### Multi-tenancy {{< distributions-inline "Enterprise" >}} {#multi-tenancy}
 
 If running a multi-tenant environment, we need to configure the default tenant ID, and the base domain from which tenant IDs are inferred. See the [`tenancy` configuration reference]({{< ref "/reference/configuration/the-things-stack#multi-tenancy" >}}).
 

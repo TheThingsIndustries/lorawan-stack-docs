@@ -10,14 +10,14 @@ Under normal circumstances, only `info`, `warn` and `error` logs are printed to 
 
 - `log.level`: The minimum level log messages must have to be shown (default "info")
 
-## License {{< distributions-inline "Cloud" "Enterprise" >}}
+## License {{< distributions-inline "Cloud" "Enterprise" >}} {#license}
 
 {{% tts %}} requires a license key for production use. For development purposes, it will work for a limited time on `localhost` without a license key.
 
 - `license.file`: Location of the license file
 - `license.key`: Contents of the license key
 
-## Key Vault {{< distributions-inline "Cloud" "Enterprise" >}}
+## Key Vault {{< distributions-inline "Cloud" "Enterprise" >}} {#key-vault}
 
 The key vault is used to store secrets, such as TLS certificates and the keys for encrypting LoRaWAN root keys in the database. {{% tts %}} supports keys stored in AWS Secrets Manager, or static configuration for development purposes.
 
@@ -291,7 +291,7 @@ When using the `redis` backend, the global [Redis configuration]({{< ref "#redis
 - `cache.redis.namespace`: Namespace for Redis keys
 - `cache.redis.pool-size`: The maximum size of the connection pool
 
-## Multi-Tenancy {{< distributions-inline "Cloud" "Enterprise" >}}
+## Multi-Tenancy {{< distributions-inline "Cloud" "Enterprise" >}} {#multi-tenancy}
 
 In multi-tenant deployments, some additional configuration is required.
 
