@@ -31,6 +31,7 @@ The Cloud Hosted application server publishes on the following topics:
 - `v3/{application id}@{tenant id}/devices/{device id}/down/nack`
 - `v3/{application id}@{tenant id}/devices/{device id}/down/failed`
 - `v3/{application id}@{tenant id}/devices/{device id}/service/data`
+- `v3/{application id}@{tenant id}/devices/{device id}/location/solved`
 
 With your MQTT client subscribed, when a device joins the network, a `join` message gets published. For example, for a device ID `dev1`, the message will be published on the topic `v3/app1@tenant1/devices/dev1/join`.
 
