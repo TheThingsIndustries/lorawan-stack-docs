@@ -1,5 +1,5 @@
 ---
-title: "Node-RED Setup"
+title: "Node-RED Setup for Integration with IFTTT"
 description: ""
 weight: 2
 ---

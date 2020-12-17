@@ -91,7 +91,7 @@ At this point, the gateway will reboot. It will come back online as a DHCP clien
 
 ## Connecting the Gateway to {{% tts %}}
 
-The Multitech Conduit supports {{% lbs %}} and the legacy UDP packet forwarder. {{% lbs %}} is more secure and supports configuration of custom channel plans, amongst other improvements. {{% tts %}} supports {{% lbs %}}, so please follow instructions for [connecting the Multitech Conduit with {{% lbs %}}]({{< relref "lbs" >}}).
+The Multitech Conduit supports {{% lbs %}} and the legacy UDP packet forwarder. {{% lbs %}} is more secure and supports configuration of custom channel plans, amongst other improvements. {{% tts %}} supports {{% lbs %}}, so please follow instructions to [Connect Multitech Conduit with {{% lbs %}}]({{< relref "lbs" >}}).
 
 If for some reason {{% lbs %}} is not available to you, instructions for connecting with the legacy packet forwarder are [here]({{< relref "udp" >}}).
 

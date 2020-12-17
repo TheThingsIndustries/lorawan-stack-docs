@@ -1,5 +1,5 @@
 ---
-title: "The Things Stack Setup"
+title: "The Things Stack Setup for MQTT Integration with ThingsBoard"
 description: ""
 weight: 1
 ---

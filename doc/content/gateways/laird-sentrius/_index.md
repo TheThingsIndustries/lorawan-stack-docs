@@ -54,4 +54,4 @@ To log into the gateway web interface, follow these steps:
 
 ## Configure the Packet Forwarder
 
-After completing basic configuration, follow the instructions for connecting using [{{% lbs %}}]({{< relref "lbs" >}}).
+After completing basic configuration, follow the instructions to [Connect Laird Sentrius™ RG1xx with {{% lbs %}}]({{< relref "lbs" >}}).

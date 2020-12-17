@@ -31,7 +31,7 @@ You can now login using an MQTT client with the application ID and tenant ID `ap
 
 ## MQTT Clients
 
-There are many MQTT clients available. See [MQTT Clients]({{< ref "/integrations/mqtt-clients" >}}) section for instructions on how the integrate with the most popular ones. 
+There are many MQTT clients available. See [Integrations with MQTT Clients]({{< ref "/integrations/mqtt-clients" >}}) section for instructions on how the integrate with the most popular ones. 
 
 In the examples below, we use `mosquitto_pub` and `mosquitto_sub` clients.
 

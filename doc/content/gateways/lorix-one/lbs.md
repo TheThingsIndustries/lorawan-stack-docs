@@ -1,5 +1,5 @@
 ---
-title: "Configure Basic Station"
+title: "Connect LORIX One with Lora Basics™ Station"
 description: ""
 ---
 

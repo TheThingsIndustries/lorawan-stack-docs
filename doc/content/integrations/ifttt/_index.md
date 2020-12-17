@@ -1,5 +1,5 @@
 ---
-title: "IFTTT"
+title: "IFTTT Integration"
 description: ""
 weight: 70
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Telegraf Setup for MQTT Integration"
+title: "Telegraf Setup for MQTT Integration with InfluxDB Cloud"
 description: ""
 weight: 1
 ---
