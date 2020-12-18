@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Visualize LR1110 Geolocation Data on Ubidots | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/lr1110-geolocation/" />
+  <link rel="alternate icon" href="/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.87592179d2b736be842bb7a3dd97c7a09f561effecbfb81ec0a18685eb1bd4e0.css" integrity="sha256-h1khedK3Nr6EK7ej3ZfHoJ9WHv/sv7gewKGGhesb1OA=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Visualize LR1110 Geolocation Data on Ubidots">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Visualize LR1110 Geolocation Data on Ubidots">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/lr1110-geolocation/">
+  <meta name="twitter:title" content="Visualize LR1110 Geolocation Data on Ubidots" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div id="migration-info">
+      <div id="migration-text">thethingsstack.io has moved to thethingsindustries.com/docs</div>
+      <div id="migration-button" class="button is-primary">Got it</div>
+  </div>
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.10</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="/docs/download/">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="search-container">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <div class="field has-addons has-addons-centered">
+            <div class="control">
+              <input class="input search-bar" id="search-input" type="text" placeholder="Search" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: "4372282a02970d8402d43457bf95d486",
+indexName: "thethingsstack",
+inputSelector: '#search-input',
+debug: false 
+});
+</script>
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">Visualize LR1110 Geolocation Data on Ubidots</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/integrations/lr1110-geolocation/" class="is-active">Overview</a>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">Visualize LR1110 Geolocation Data on Ubidots
+
+
+</h1>
+
+<div class="content">
+
+<figure class="float plain">
+    <img src="LR1110.jpg"
+         alt="LR1110"/> 
+</figure>
+
+<p>This guide shows you an example of using The Things Stack integrations to interact with <a href="https://www.loracloud.com/documentation/device_management">LoRa Cloud™ Device &amp; Application Services</a> to acquire the position solution for the LR1110-based tracking device, and to send that position data to a map widget on <a href="https://ubidots.com/">Ubidots</a>.</p>
+<p><a href="https://www.semtech.com/products/wireless-rf/lora-transceivers/lr1110">LR1110</a> is a long range, ultra-low power transceiver designed by Semtech, offering Wi-Fi and GNSS geolocation capabilities. The <a href="https://lora-developers.semtech.com/uploads/documents/files/Understanding_LoRa_Basics_Modem-E_Sept2_Approvd-Final.pdf">LoRa Basics™ Modem-E</a> is a software embedded inside LR1110 that supports the LoRaWAN protocol stack, as well as the application layer functions and APIs.</p>
+<p>The <a href="https://www.loracloud.com/documentation/device_management?url=v1.html">Device &amp; Application Services with Geolocation for Modem-based Devices API</a> on LoRa Cloud™ allows interacting with Device &amp; Application Services to make efficient use of the LR1110&rsquo;s geolocation features.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ol>
+<li>
+<p>A user account on LoRa Cloud™.</p>
+</li>
+<li>
+<p>A Ubidots user account with an upgraded plan.</p>
+</li>
+</ol>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  The <a href="https://help.ubidots.com/en/articles/2132086-analytics-ubifunctions-user-guide">UbiFunctions</a> module used in this guide is currently not available for the STEM plan.
+</div>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  This guide assumes you have already added your LR1110-based tracking device to The Things Stack. See <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> section for a detailed info.
+</div>
+<h2 id="prepare-a-lora-cloud-setup">Prepare a LoRa Cloud™ Setup</h2>
+<p>To prepare the setup for your device&rsquo;s location resolution, first go to <a href="https://www.loracloud.com/portal">LoRa Cloud™</a> and select <strong>LoRa Cloud Device &amp; Application Services</strong> after logging in to your account.</p>
+<figure>
+    <img src="lora-cloud-das.png"
+         alt="LoRa Cloud Device &amp; Application Services"/> 
+</figure>
+
+<p>On the left hand menu, navigate to the <strong>Device Owners</strong> tab and click the <strong>Create new owner</strong> button. Enter a <strong>Name</strong>, choose a <strong>Plan</strong> and select <strong>Submit</strong>.</p>
+<figure>
+    <img src="device-owner.png"
+         alt="Creating a device owner"/> 
+</figure>
+
+<p>Next, navigate to the <strong>Manage Devices</strong> tab on the left hand menu and click the <strong>Add devices</strong> button. Enter your device&rsquo;s EUI and click the <strong>Add devices</strong> button.</p>
+<figure>
+    <img src="add-device.png"
+         alt="Adding a device"/> 
+</figure>
+
+<p>If you look under the <strong>Manage Tokens</strong> tab, you can find or create a new token needed for the next step.</p>
+<figure>
+    <img src="manage-tokens.png"
+         alt="Manage tokens"/> 
+</figure>
+
+<h2 id="create-a-lora-cloud-integration">Create a LoRa Cloud™ Integration</h2>
+<p>The next step is to integrate The Things Stack with LoRa Cloud™.</p>
+<p>In The Things Stack Console, navigate to the <strong>Integrations</strong> menu and select <strong>LoRa Cloud</strong>.</p>
+<p>Paste the token from LoRa Cloud™ in the <strong>Token</strong> field and enable the <strong>LR1110 demo encoding</strong> by checking the box.</p>
+<figure>
+    <img src="lora-cloud-integration.png"
+         alt="LoRa Cloud integration"/> 
+</figure>
+
+<p>At this point, your device will send the location updates to the LoRa Cloud™ Device &amp; Application Services. After receiving your device&rsquo;s location solution from Device &amp; Application Services, in your device&rsquo;s <strong>Live data</strong> tab in The Things Stack, you will find a message of the <strong>Forward location solved message</strong> type. This message contains the object of the following structure:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="s2">&#34;location_solved&#34;</span>: <span class="o">{</span>
+      <span class="s2">&#34;service&#34;</span>: <span class="s2">&#34;lora-cloud-device-management-v1-wifi&#34;</span>,
+      <span class="s2">&#34;location&#34;</span>: <span class="o">{</span>
+        <span class="s2">&#34;latitude&#34;</span>: 51.455,
+        <span class="s2">&#34;longitude&#34;</span>: 5.458,
+        <span class="s2">&#34;accuracy&#34;</span>: 15,
+        <span class="s2">&#34;source&#34;</span>: <span class="s2">&#34;SOURCE_WIFI_RSSI_GEOLOCATION&#34;</span>
+      <span class="o">}</span>
+    <span class="o">}</span>
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Keep on mind that these values can change depending on the type of scans your device is performing - WiFi or GNSS.
+</div>
+<h2 id="prepare-the-setup-on-ubidots">Prepare the Setup on Ubidots</h2>
+<p>Next, we want to send the location solution data to Ubidots and show it on a <a href="https://help.ubidots.com/en/articles/1712418-create-map-widgets-in-ubidots">map widget</a>. Before integrating, you need to prepare the setup on Ubidots first.</p>
+<p>This setup is only slightly modified comparing to the one in the <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ubidots/ubidots-setup">Ubidots integration guide</a>, so feel free to follow those steps. The only change you need to make is replacing this UbiFunction method:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">def parse_tti_data<span class="o">(</span>data<span class="o">)</span>:
+    <span class="k">return</span> data<span class="o">[</span><span class="s1">&#39;uplink_message&#39;</span><span class="o">][</span><span class="s1">&#39;decoded_payload&#39;</span><span class="o">]</span>
+</code></pre></div><p>with the following one:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">def parse_tti_data<span class="o">(</span>data<span class="o">)</span>:
+    <span class="k">return</span> data<span class="o">[</span><span class="s1">&#39;location_solved&#39;</span><span class="o">]</span>
+</code></pre></div><p>When you click the <strong>Make it live</strong> button, copy the <strong>HTTPs Endpoint URL</strong> assigned to your UbiFunction, and you are ready to go back to The Things Stack to create a Webhook integration.</p>
+<h2 id="create-a-webhook-integration-with-ubidots">Create a Webhook Integration with Ubidots</h2>
+<p>In The Things Stack Console, select <strong>Webhooks</strong> under <strong>Integrations</strong> on the left hand menu and choose the <strong>Custom webhook</strong>.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The Ubidots Webhook template is also available, but it is predefined to send only the <strong>Uplink message</strong> type via Webhook integration. You could modify the Webhook integration after creating it with this template, but we recommend using a custom webhook and following the next steps to avoid the possible confusion.
+</div>
+<p>The steps to be taken follow the <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/creating-webhooks/">Creating Webhooks</a> guide and are described below in detail.</p>
+<ul>
+<li>Create a <strong>Webhook ID</strong>.</li>
+<li>Add a <code>Content-type</code> header entry with <code>application/json</code> as a value.</li>
+<li>Select <strong>JSON</strong> as a <strong>Webhook format</strong>.</li>
+<li>In the <strong>Base URL</strong> field, paste the UbiFunction URL you copied in the previous step.</li>
+<li>Enable the <strong>Location solved</strong> message type.</li>
+</ul>
+<figure>
+    <img src="ubidots-integration.png"
+         alt="Ubidots Webhook integration"/> 
+</figure>
+
+<h2 id="visualize-data-on-a-ubidots-map-widget">Visualize Data on a Ubidots Map Widget</h2>
+<p>Go back to Ubidots and find your device by navigating to the <strong>Devices</strong> tab. After some new data reaches Ubidots, you will see the <strong>location</strong> variable automatically appearing on your device&rsquo;s dashboard.</p>
+<p>On the left, there is a window containing important info about your device. Under <strong>Location</strong> section, set the <strong>Mode</strong> to <strong>Auto</strong>. This tells Ubidots to use the <strong>location</strong> object to automatically determine your device&rsquo;s location. The <strong>Latitude</strong> and <strong>Longitude</strong> parameters will acquire the values from the <strong>latitude</strong> and <strong>longitude</strong> variables of the <strong>location</strong> object shown on the dashboard.</p>
+<figure>
+    <img src="ubidots-device.png"
+         alt="Ubidots device data"/> 
+</figure>
+
+<p>Now navigate to the <strong>Data</strong> tab and select <strong>Dashboards</strong>. Create a new dashboard which will contain your map widget.</p>
+<p>Add a new map widget by clicking the <strong>+</strong> button in the upper right corner and selecting <strong>Map</strong>.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  When creating this widget, do not forget to click the <strong>Select Device</strong> button and to select your device.
+</div>
+<figure>
+    <img src="create-map-widget.png"
+         alt="Creating a map widget"/> 
+</figure>
+
+<p>Finally, you will see a map widget containing your device&rsquo;s current location appearing in your dashboard!</p>
+<figure>
+    <img src="LR1110-location.png"
+         alt="LR1110 location"/> 
+</figure>
+</div>
+
+
+
+<script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+
+
+<div class="is-clearfix">
+</div>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer background-footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Nejra on 17 Dec 2020.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/bf15236ab77f5d810f637db010bcafda51b14fc4">
+      doc: Add LoRa Cloud &amp; Ubidots integration guide for LR1110
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/lr1110-geolocation/_index.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.e9df3c06e815b9686686212e86bfd0217a508f5ccee0139d7bc899ef7460191e.js" integrity="sha256-6d88BugVuWhmhiEuhr/QIXpQj1zO4BOde8iZ73RgGR4=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>
