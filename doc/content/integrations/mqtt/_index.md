@@ -53,6 +53,7 @@ The Application Server publishes on the following topics:
 - `v3/{application id}@{tenant id}/devices/{device id}/down/nack`
 - `v3/{application id}@{tenant id}/devices/{device id}/down/failed`
 - `v3/{application id}@{tenant id}/devices/{device id}/service/data`
+- `v3/{application id}@{tenant id}/devices/{device id}/location/solved`
 
 While you could subscribe to separate topics, for the tutorial subscribe to `#` to subscribe to all messages.
 

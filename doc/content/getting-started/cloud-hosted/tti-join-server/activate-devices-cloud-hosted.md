@@ -5,7 +5,7 @@ weight: 20
 distributions: ["Cloud"]
 ---
 
-The Things Industries Join Server is a LoRaWAN Join Server. Learn how to activate devices on The Things Industries Cloud.
+The Things Join Server is a LoRaWAN Join Server. Learn how to activate devices on The Things Industries Cloud.
 
 <!--more-->
 
@@ -13,9 +13,9 @@ The Things Industries Join Server is a LoRaWAN Join Server. Learn how to activat
 
 ## Prerequisites
 
-1. Command-line interface (CLI) configuration file *with Cloud cluster*. See [The Things Industries Join Server]({{< relref "../tti-join-server" >}})
-2. Devices registered in The Things Industries Join Server. You can achieve this in two ways:
-  1. Register devices with root keys. See [registering devices on The Things Industries Join Server]({{< relref "register-devices" >}})
+1. Command-line interface (CLI) configuration file *with Cloud cluster*. See [The Things Join Server]({{< relref "../tti-join-server" >}})
+2. Devices registered in The Things Join Server. You can achieve this in two ways:
+  1. Register devices with root keys. See [registering devices on The Things Join Server]({{< relref "register-devices" >}})
   2. Claim secure elements. See [Claim ATECC608A-TNGLORA secure elements]({{< ref "/devices/claim-atecc608a" >}})
 
 ## Login with CLI

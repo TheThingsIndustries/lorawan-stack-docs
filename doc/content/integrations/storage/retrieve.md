@@ -20,7 +20,7 @@ Using the HTTP API (`$API_KEY` should be a valid API key with the `RIGHT_APPLICA
 $ curl -G "https://thethings.example.com/api/v3/as/applications/app1/packages/storage/uplink_message" \
     -H "Authorization: Bearer $API_KEY" \
     -d "limit=10" \
-    -d "after=2020-08-20 00:00:00"
+    -d "after=2020-08-20T00:00:00Z"
 ```
 
 <details><summary><b>See example API response</b></summary>
@@ -36,13 +36,13 @@ $ curl -G "https://thethings.example.com/api/v3/as/applications/app1/packages/st
 Using the CLI:
 
 ```bash
-$ ttn-lw-cli end-devices storage get "app1" "dev1" --limit 2 --after "2020-08-20T00:00:00Z"
+$ ttn-lw-cli end-devices storage get "app1" "dev1" --limit 2 --after "2020-08-20 00:00:00"
 ```
 
 Using the HTTP API (`$API_KEY` should be a valid API key with the `RIGHT_APPLICATION_TRAFFIC_READ` right):
 
 ```bash
-$ curl -G "https://thethings.example.com/api/v3/as/applications/app1/devices/dev1/packages/storage/uplinks" \
+$ curl -G "https://thethings.example.com/api/v3/as/applications/app1/devices/dev1/packages/storage/uplink_message" \
     -H "Authorization: Bearer $API_KEY" \
     -d "limit=2" \
     -d "after=2020-08-20T00:00:00Z"
