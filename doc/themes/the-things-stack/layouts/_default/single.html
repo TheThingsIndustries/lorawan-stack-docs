@@ -12,12 +12,13 @@
 </h1>
 
 <div class="content">
+{{ $context := . }}
 {{ with .Params.distributions }}
   {{ $distributions := .}}
   {{ if ( not ( reflect.IsSlice . ) ) }}
     {{ $distributions = slice $distributions }}
   {{ end }}
-  {{ partial "distributions" (dict "distributions" $distributions) }}
+  {{ partial "distributions" (dict "context" $context  "distributions" $distributions) }}
 {{ end }}
 {{ .Content }}
 </div>
