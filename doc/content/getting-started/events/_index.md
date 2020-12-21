@@ -34,6 +34,7 @@ With the created API key:
 $ curl https://thethings.example.com/api/v3/events \
   -X POST \
   -H "Authorization: Bearer NNSXS.BR55PTYILPPVXY.." \
+  -H "Accept: text/event-stream" \
   --data '{"identifiers":[{"application_ids":{"application_id":"app1"}},{"gateway_ids":{"gateway_id":"gtw1"}}]}'
 ```
 
