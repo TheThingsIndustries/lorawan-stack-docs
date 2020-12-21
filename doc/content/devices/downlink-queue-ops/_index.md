@@ -22,7 +22,7 @@ To push downlink to the end of the queue:
 ```bash
 $ ttn-lw-cli end-devices downlink push app1 dev1 \
   --frm-payload 01020304 \
-  --priority NORMAL
+  --priority NORMAL \
   --f-port 42
 ```
 
@@ -33,7 +33,8 @@ To replace the existing queue with a new item:
 ```bash
 $ ttn-lw-cli end-devices downlink replace app1 dev1 \
   --frm-payload 01020304 \
-  --priority NORMAL
+  --priority NORMAL \
+  --f-port 42
 ```
 
 ## List queue
