@@ -1,5 +1,5 @@
 ---
-title: "Configure LoRa Basics™ Station"
+title: "Connect Multitech Conduit with LoRa Basics™ Station"
 description: ""
 ---
 

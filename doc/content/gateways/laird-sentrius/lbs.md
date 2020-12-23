@@ -1,5 +1,5 @@
 ---
-title: "LoRa Basics™ Station"
+title: "Connect Laird Sentrius™ RG1xx with LoRa Basics™ Station"
 description: ""
 ---
 

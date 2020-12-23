@@ -1,5 +1,5 @@
 ---
-title: "UDP Packet Forwarder"
+title: "Connect Ursalink UG8X with UDP Packet Forwarder"
 description: ""
 ---
 

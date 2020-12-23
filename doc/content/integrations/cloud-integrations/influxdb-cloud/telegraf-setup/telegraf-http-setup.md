@@ -1,5 +1,5 @@
 ---
-title: "Telegraf Setup for Webhook Integration"
+title: "Webhook Integration with InfluxDB Cloud via Telegraf"
 description: ""
 weight: 2
 ---

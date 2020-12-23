@@ -1,5 +1,5 @@
 ---
-title: "Lora Basics™ Station"
+title: "Connect Ursalink UG8X with Lora Basics™ Station"
 description: ""
 ---
 

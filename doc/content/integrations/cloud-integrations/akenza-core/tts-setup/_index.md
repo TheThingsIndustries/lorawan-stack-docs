@@ -1,5 +1,5 @@
 ---
-title: "Creating a Webhook"
+title: "Webhook Integration with Akenza Core"
 description: ""
 weight: 2
 ---

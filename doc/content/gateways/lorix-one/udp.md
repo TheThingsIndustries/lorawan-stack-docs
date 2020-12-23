@@ -1,5 +1,5 @@
 ---
-title: "Configure UDP Packet Forwarder"
+title: "Connect LORIX One with UDP Packet Forwarder"
 description: ""
 ---
 

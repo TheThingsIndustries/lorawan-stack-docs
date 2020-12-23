@@ -1,5 +1,5 @@
 ---
-title: "Scheduling Downlinks with ThingsBoard"
+title: "Scheduling Downlinks on ThingsBoard"
 description: ""
 weight: 3
 ---

@@ -1,5 +1,5 @@
 ---
-title: "Configure UDP Packet Forwarder"
+title: "Connect Multitech Conduit with UDP Packet Forwarder"
 description: ""
 ---
 

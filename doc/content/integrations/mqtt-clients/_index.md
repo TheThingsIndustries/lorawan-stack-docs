@@ -1,5 +1,5 @@
 ---
-title: "MQTT Clients"
+title: "Integrations with MQTT Clients"
 description: ""
 weight: 40
 ---

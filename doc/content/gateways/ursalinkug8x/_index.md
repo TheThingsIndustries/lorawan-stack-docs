@@ -51,4 +51,4 @@ Click **Save** to continue.
 
 ## Connect to {{% tts %}}
 
-After completing basic configuration, follow the instructions for connecting using [LBS]({{< relref "lbs" >}}) or the [UDP Packet Forwarder]({{< relref "packet-forwarder" >}}).
+After completing basic configuration, follow the instructions for connecting using [{{< lbs >}}]({{< relref "lbs" >}}) or the [UDP Packet Forwarder]({{< relref "packet-forwarder" >}}).

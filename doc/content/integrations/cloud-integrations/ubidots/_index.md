@@ -8,7 +8,7 @@ weight:
 
 <!--more-->
 
-{{< warning >}} In this guide, we use the [UbiFunctions](https://docs.microsoft.com/en-us/azure/azure-functions/https://help.ubidots.com/en/articles/2132086-analytics-ubifunctions-user-guide) module, which is currently not available for the STEM plan. {{</ warning >}}
+{{< warning >}} In this guide, we use the [UbiFunctions](https://help.ubidots.com/en/articles/2132086-analytics-ubifunctions-user-guide) module, which is currently not available for the STEM plan. {{</ warning >}}
 
 ## Prerequisites
 
