@@ -2,6 +2,7 @@
 title: "AWS IoT"
 description: ""
 distributions: ["Cloud", "Dedicated Cloud", "Enterprise", "Marketplace Launcher"]
+weight: -1
 ---
 
 {{% tts %}} integrates directly with AWS IoT via a default integration that you deploy in your AWS account via CloudFormation.
@@ -10,7 +11,11 @@ You can also configure {{% tts %}} to connect to your AWS IoT Core endpoint via 
 
 <!--more-->
 
-Finally, when running {{% tts %}} in your AWS account, you can publish Application Server telemetry to your IoT Core endpoint.
+When running {{% tts %}} in your AWS account, you can publish Application Server telemetry to your IoT Core endpoint.
+
+## Prerequisites
+
+1. You need to have {{% tts %}} deployed in AWS. See the [AWS]({{< ref "/getting-started/aws" >}}) guide to learn how.
 
 ## Default Integration {{< distributions-inline "Cloud" "Dedicated Cloud" "Enterprise" >}} {#default-integration}
 
