@@ -41,6 +41,22 @@ You will see a screen that shows your newly created API Key. You now can copy it
 
 {{< figure src="gateway-api-key-created.png" alt="Gateway API Key created" >}}
 
+## Set Gateway Location
+
+Once you have added your gateway to {{% tts %}}, you can also set its location to be displayed on a map widget by clicking **Change location settings**. 
+
+If you do not mind your gateway's location to be publicly displayed, check the **Publish location** box.
+
+The gateway location can be manually set by entering the **Latitude**, **Longitude** and **Altitude** values. 
+
+You can also check the **Update from status messages** box if you want to update the location based on the metadata from the incoming uplink gateway status messages. 
+
+{{< note >}} The location settings you manually entered will be overwritten by the updates from the gateway status messages. {{</ note >}}
+
+{{< note >}} {{% tts %}} Console currently supports setting one antenna location per gateway. {{</ note >}}
+
+{{< figure src="gateway-location.png" alt="Gateway location" >}}
+
 {{< /tabs/tab >}}
 
 {{< tabs/tab "CLI" >}}
@@ -81,6 +97,54 @@ $ ttn-lw-cli gateways api-keys create \
 ```
 
 The CLI will return an API key such as `NNSXS.VEEBURF3KR77ZR...`. This API key has only link rights and can therefore only be used for linking this gateway. Make sure to copy the key and save it in a safe place. You will not be able to see this key again in the future, and if you lose it, you can create a new one to replace it in the gateway configuration.
+
+## Set Gateway Location 
+
+Once you have added your gateway to {{% tts %}}, you can also set the locations of the gateway antennas. 
+
+Add an antenna and set its location  with:
+
+```bash
+$ GTW_ID="your-gateway-id"
+$ ttn-lw-cli gateways set $GTW_ID \
+  --antenna.location.latitude 43.84 \
+  --antenna.location.longitude 18.32 \
+  --antenna.location.altitude 500 \
+  --antenna.add \
+```
+
+If you do not mind your gateway's location to be publicly displayed, append the `--location-public` flag.
+
+You can also set the gateway location to be updated from various sources with the `--antenna.location.source` flag. The source of the location data can be the registry, GPS data, results of the LoRa RSSI geolocation, etc. 
+
+{{< note >}} Use `ttn-lw-cli gateways set gtw1 --help` command to see the full list of the available location sources and other relatable info. 
+
+If you set the alternative location source, the location settings you manually set will be overwritten by the automatic updates from that source. {{</ note >}}
+
+The CLI will return something like:
+
+```json
+{
+  "ids": {
+    "gateway_id": "gtw1"
+  },
+  "created_at": "2020-05-27T14:43:13.606Z",
+  "version_ids": {
+  },
+  "auto_update": true,
+  "antennas": [
+    {
+      "location": {
+        "latitude": 43.84,
+        "longitude": 18.32,
+        "altitude": 500,
+        "source": "SOURCE_REGISTRY"
+      }
+    }
+  ],
+  "location_public": true
+}
+```
 
 {{< /tabs/tab >}}
 
