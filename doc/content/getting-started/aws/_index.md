@@ -9,6 +9,8 @@ For getting started, we recommend [AWS Marketplace AMI]({{< ref "./ami" >}}) dep
 
 <!--more-->
 
+After deploying {{% tts %}} on AWS, check the [AWS IoT]({{< ref "/integrations/aws-iot" >}}) guide to learn to integrate {{% tts %}} with the AWS IoT services.
+
 {{< figure src="available-at-amazon-badge.png" alt="available-at-amazon-badge.png" class="plain" >}}
 
 {{< note >}} Amazon's trademark is used under license from Amazon.com, Inc. or its affiliates. {{</ note >}}
