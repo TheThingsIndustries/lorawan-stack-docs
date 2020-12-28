@@ -40,6 +40,16 @@
             <p><code>{{ $rule }}</code>{{ if not (eq $value true)}}: <code>{{ $value }}</code>{{ end }}</p>
           {{- end }}
         {{ end }}
+        {{- if .map_key }}
+          {{- range $rule, $value := .map_key.rules }}
+            <p><code>{{ $rule }}</code> (key){{ if not (eq $value true)}}: <code>{{ $value }}</code>{{ end }}</p>
+          {{- end }}
+        {{ end }}
+        {{- if .map_value }}
+          {{- range $rule, $value := .map_value.rules }}
+            <p><code>{{ $rule }}</code> (value){{ if not (eq $value true)}}: <code>{{ $value }}</code>{{ end }}</p>
+          {{- end }}
+        {{ end }}
       </td>
     </tr>
     {{- end }}
