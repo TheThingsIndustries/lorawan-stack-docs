@@ -9,55 +9,19 @@ This page guides you to connect Tektelic Kona Micro IoT LoRaWAN Gateway to {{% t
 
 Tektelic Kona Micro IoT LoRaWAN Gateway is an 8 channel LoRaWAN gateway, whose technical specifications can be found in [the official documentation](https://tektelic.com/catalog/kona-micro-iot-gateway).
 
+{{< figure src="kona-micro.jpg" alt="Tektelic Kona Micro IoT LoRaWAN Gateway" class="float plain" >}}
+
 ## Prerequisites
 
 1. User account on {{% tts %}} with rights to create Gateways.
-2. Tektelic Kona Micro IoT LoRaWAN Gateway connected to the Internet via ethernet.
+2. Tektelic Kona Micro IoT LoRaWAN Gateway with BSP version 3.x.x, connected to the Internet via ethernet.
 
 ## Registration
 
 Create a gateway by following the instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}). The **EUI** of the gateway can be found on the back panel of the gateway under the field **GW ID**.
 
-## Configuration using a Terminal
+## Connecting the Gateway to {{% tts %}}
 
-Find the IP address the gateway. This can be done in various ways. You can connect your machine to the same local network as that of the gateway ethernet connection and scan for open SSH ports or assign a static IP to the gateway and use that. Once the gateway IP address is found, SSH into it.
+The Tektelic Kona Micro supports {{% lbs %}} and the legacy UDP packet forwarder. {{% lbs %}} is more secure and supports configuration of custom channel plans, amongst other improvements. Please follow instructions for [connecting the Tektelic Kona Micro with {{% lbs %}}]({{< relref "lbs" >}}).
 
-```bash
-$ ssh root@<GatewayIP>
-```
-
-The password for the **root** user can be found on the back panel. It's typically a 9 character alphanumeric string starting with **1846XXXXX**.
-
-Now you can edit the gateway configuration file.
-
-```bash
-$ vi /etc/default/config.json
-```
-
-{{< note >}} Press the `i` key on your keyboard to start insert mode. Once finished editing, press `ESC` and enter `:wq` to write the file and quit. {{</ note >}}
-
-Edit the server parameters:
-
-- **server_address**: Address of the Gateway Server. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `thethings.example.com`.
-- **serv_port_up**: UDP upstream port of the Gateway Server, typically 1700.
-- **serv_port_down**: UDP downstream port of the Gateway Server, typically 1700.
-
-Save the configuration and restart the packet forwarder.
-
-```bash
-$ /etc/init.d/pkt_fwd restart
-```
-
-If your configuration was successful, your gateway will connect to {{% tts %}} after a couple of seconds.
-
-## Configuration using the GUI (Windows Only)
-
-> TODO: [Document using GUI](https://github.com/TheThingsNetwork/lorawan-stack/issues/1140)
-
-## Troubleshooting
-
-If the gateway does not connect to {{% tts %}} after a few minutes, disconnect and reconnect the power supply to power-cycle the gateway. Packet forwarder logs can be observed by SSH-ing into the gateway and running:
-
-```bash
-$ tail -f /var/log/pkt_fwd.log
-```
+If for some reason {{% lbs %}} is not available to you, instructions for connecting with the legacy packet forwarder are [here]({{< relref "udp" >}}).
