@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Connect Tektelic Kona Micro with Lora Basics™ Station | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/tektelickonamicro/lbs/" />
+  <link rel="alternate icon" href="/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.87592179d2b736be842bb7a3dd97c7a09f561effecbfb81ec0a18685eb1bd4e0.css" integrity="sha256-h1khedK3Nr6EK7ej3ZfHoJ9WHv/sv7gewKGGhesb1OA=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Connect Tektelic Kona Micro with Lora Basics™ Station">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Connect Tektelic Kona Micro with Lora Basics™ Station">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/tektelickonamicro/lbs/">
+  <meta name="twitter:title" content="Connect Tektelic Kona Micro with Lora Basics™ Station" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div id="migration-info">
+      <div id="migration-text">thethingsstack.io has moved to thethingsindustries.com/docs</div>
+      <div id="migration-button" class="button is-primary">Got it</div>
+  </div>
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.10</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="/docs/download/">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="search-container">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <div class="field has-addons has-addons-centered">
+            <div class="control">
+              <input class="input search-bar" id="search-input" type="text" placeholder="Search" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: "4372282a02970d8402d43457bf95d486",
+indexName: "thethingsstack",
+inputSelector: '#search-input',
+debug: false 
+});
+</script>
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">Tektelic Kona Micro IoT LoRaWAN Gateway</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/gateways/tektelickonamicro/" class="">Overview</a>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/gateways/tektelickonamicro/lbs/" class="is-active">Connect Tektelic Kona Micro with Lora Basics™ Station</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/gateways/tektelickonamicro/udp/" class="">Connect Tektelic Kona Micro with UDP Packet Forwarder</a>
+</li>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">Connect Tektelic Kona Micro with Lora Basics™ Station
+
+
+</h1>
+
+<div class="content">
+
+
+<p>This section guides you to connect the Tektelic Kona Micro IoT LoRaWAN Gateway to The Things Stack using LoRa Basics™ Station.</p>
+<h2 id="obtain-the-basic-station-package">Obtain the Basic Station Package</h2>
+<p>Obtain the <strong>ipk/bsp</strong> package by contacting Tektelic&rsquo;s support team. Create an account on the <a href="https://support.tektelic.com/portal/en/signin">support portal</a> or send an email to <a href="mailto:support@tektelic.com">support@tektelic.com</a>.</p>
+<h2 id="ssh-in-to-the-gateway">SSH in to the Gateway</h2>
+<p>Find the IP address the gateway. This can be done in various ways. You can connect your machine to the same local network as that of the gateway ethernet connection and scan for open SSH ports or assign a static IP to the gateway and use that. Once the gateway IP address is found, SSH into it.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh root@&lt;GatewayIP&gt;
+</code></pre></div><p>The password for the <strong>root</strong> user can be found on the back panel. It&rsquo;s typically a 9 character alphanumeric string starting with <strong>1846XXXXX</strong>.</p>
+<h2 id="install-the-basic-station-package">Install the Basic Station Package</h2>
+<h3 id="for-bsp-30x-and-31x">For BSP 3.0.x and 3.1.x</h3>
+<p>Upload the <code>Basic-Station-packages-vx.x.x-for-Tektelic-gateways.tar.gz</code> to the directory <code>/lib/firmware</code> on the target gateway and extract it using following command:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ tar -C /lib/firmware <span class="se">\
+</span><span class="se"></span>-zxvf /lib/firmware/Basic-Station-packages-vx.x.x-for-Tektelic-gateways.tar.gz
+</code></pre></div><p>Add the feed location to the package manager configuration file by using the following command:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s2">&#34;src/gz bstn file:///lib/firmware/Basic-Station-packages-vx.x.x-for-Tektelic-gateways&#34;</span> <span class="se">\
+</span><span class="se"></span>&gt; /etc/opkg/bstn-feed.conf
+</code></pre></div><p>Enter the following command</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">opkg update
+</code></pre></div><p>Install the package using the following command</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">opkg install tektelic-bstn curl libcurl4
+</code></pre></div><h3 id="for-bsp-32x">For BSP 3.2.x</h3>
+<p>Upload the <code>ipk/bsp</code> folder to the gateway and extract it in to <code>/lib/firmware</code>.</p>
+<p>Add the feed location to the package manager configuration file by using the following command</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s2">&#34;src/gz bstn file:///lib/firmware/bsp&#34;</span> &gt; /etc/opkg/bstn-feed.conf
+</code></pre></div><p>Enter the following command</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">opkg update
+</code></pre></div><p>Install the package using the following command</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">opkg install tektelic-bstn curl libcurl4
+</code></pre></div><h2 id="configure-gateway">Configure Gateway</h2>
+<p>Make sure Basic Station is installed by using the following command:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ opkg list-installed <span class="p">|</span> grep bstn
+</code></pre></div><p>The version of the Basic Station package should be displayed.</p>
+<p>Then, make sure Basic Station is running by using the following command:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ps aux <span class="p">|</span> grep bstn
+</code></pre></div><p>The Basic Station process ID should be displayed.</p>
+<h3 id="upload-configuration-files">Upload Configuration Files</h3>
+<p>On Basic Station gateways, only CUPS <strong>or</strong> LNS can be configured. Configuring CUPS will automatically configure LNS, so to use The Things Stack, just follow the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/cups/">Connecting CUPS</a>.</p>
+<p>After completing the instructions for CUPS, you should have the following files:</p>
+<ul>
+<li><code>cert.pem</code> (Server Certificate)</li>
+<li><code>cups.key</code> or <code>lns.key</code> (Key File)</li>
+</ul>
+<p>The Tektelic Kona Micro expects the Server Certificate to be named <code>cups.trust</code>, so rename <code>cert.pem</code> to <code>cups.trust</code>.</p>
+<p>Upload the <code>cups.trust</code> and <code>cups.key</code> files to <code>/etc/bstn</code> on the gateway.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  By default, CUPS is enabled in Basic Station to connect with The Things Stack. If you don’t want to use CUPS then you can disable that by setting “skip_cups=true” in /etc/default/bstn.toml file. If you disable CUPS and use LNS, you will need a <code>lns.key</code> file, rather than a <code>cups.key</code> file.
+</div>
+<p>Finally, enter the following command to restart the Basic Station:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ /etc/init.d/tektelic-bstn restart
+</code></pre></div><p>Now your Gateway should be able to connect to The Things Stack.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="where-can-i-find-log-files">Where can I find log files?</h3>
+<p>You can find the Basic Station log in <code>/var/log/syslog</code> (If your GW has 3.0.x, 3.1.x, 4.0.x
+and 4.1.x BSPs)</p>
+<p>You can find the Basic Station log in <code>/var/log/bstn.log</code> (If your GW has 3.2.x and 4.2.x or
+later)</p>
+<h3 id="what-do-i-do-if-basic-station-wont-run">What do I do if Basic Station won&rsquo;t run?</h3>
+<p>If it is not running, please reach out to Tektelic on their <a href="https://support.tektelic.com/portal/en/signin">support portal</a>, or support email – <a href="mailto:support@tektelic.com">support@tektelic.com</a></p>
+</div>
+
+<script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+<div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/gateways/tektelickonamicro/">← Tektelic Kona Micro IoT LoRaWAN Gateway</a>
+<a class="button is-pulled-right" href="/docs/gateways/tektelickonamicro/udp/">Connect Tektelic Kona Micro with UDP Packet Forwarder →</a>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer background-footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by benolayinka on 21 Dec 2020.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/fbc623080f13c161ecee5c82447d38e6bdbb9cc4">
+      doc: Add Tektelic LBS
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/tektelickonamicro/lbs.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.e9df3c06e815b9686686212e86bfd0217a508f5ccee0139d7bc899ef7460191e.js" integrity="sha256-6d88BugVuWhmhiEuhr/QIXpQj1zO4BOde8iZ73RgGR4=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

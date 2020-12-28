@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Tektelic Kona Micro IoT LoRaWAN Gateway | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/tektelickonamicro/" />
+  <title>Connect Tektelic Kona Micro with UDP Packet Forwarder | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/tektelickonamicro/udp/" />
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.87592179d2b736be842bb7a3dd97c7a09f561effecbfb81ec0a18685eb1bd4e0.css" integrity="sha256-h1khedK3Nr6EK7ej3ZfHoJ9WHv/sv7gewKGGhesb1OA=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Tektelic Kona Micro IoT LoRaWAN Gateway">
+  <meta itemprop="name" content="Connect Tektelic Kona Micro with UDP Packet Forwarder">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Tektelic Kona Micro IoT LoRaWAN Gateway">
+  <meta property="og:title" content="Connect Tektelic Kona Micro with UDP Packet Forwarder">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/tektelickonamicro/">
-  <meta name="twitter:title" content="Tektelic Kona Micro IoT LoRaWAN Gateway" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/tektelickonamicro/udp/">
+  <meta name="twitter:title" content="Connect Tektelic Kona Micro with UDP Packet Forwarder" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -94,12 +94,12 @@ debug: false
 <h2 class="title is-size-4">Tektelic Kona Micro IoT LoRaWAN Gateway</h2>
 
 <ul class="menu-list">
-<a href="https://www.thethingsindustries.com/docs/gateways/tektelickonamicro/" class="is-active">Overview</a>
+<a href="https://www.thethingsindustries.com/docs/gateways/tektelickonamicro/" class="">Overview</a>
 <li>
   <a href="https://www.thethingsindustries.com/docs/gateways/tektelickonamicro/lbs/" class="">Connect Tektelic Kona Micro with Lora Basics™ Station</a>
 </li>
 <li>
-  <a href="https://www.thethingsindustries.com/docs/gateways/tektelickonamicro/udp/" class="">Connect Tektelic Kona Micro with UDP Packet Forwarder</a>
+  <a href="https://www.thethingsindustries.com/docs/gateways/tektelickonamicro/udp/" class="is-active">Connect Tektelic Kona Micro with UDP Packet Forwarder</a>
 </li>
 </ul>
 
@@ -111,7 +111,7 @@ debug: false
       
       <div class="column is-two-thirds">
 
-<h1 class="title is-size-2">Tektelic Kona Micro IoT LoRaWAN Gateway
+<h1 class="title is-size-2">Connect Tektelic Kona Micro with UDP Packet Forwarder
 
 
 </h1>
@@ -119,26 +119,32 @@ debug: false
 <div class="content">
 
 
-<p>This page guides you to connect Tektelic Kona Micro IoT LoRaWAN Gateway to The Things Stack.</p>
-<p>Tektelic Kona Micro IoT LoRaWAN Gateway is an 8 channel LoRaWAN gateway, whose technical specifications can be found in <a href="https://tektelic.com/catalog/kona-micro-iot-gateway">the official documentation</a>.</p>
-<figure class="float plain">
-    <img src="kona-micro.jpg"
-         alt="Tektelic Kona Micro IoT LoRaWAN Gateway"/> 
-</figure>
-
-<h2 id="prerequisites">Prerequisites</h2>
-<ol>
-<li>User account on The Things Stack with rights to create Gateways.</li>
-<li>Tektelic Kona Micro IoT LoRaWAN Gateway with BSP version 3.x.x, connected to the Internet via ethernet.</li>
-</ol>
-<h2 id="registration">Registration</h2>
-<p>Create a gateway by following the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/">Adding Gateways</a>. The <strong>EUI</strong> of the gateway can be found on the back panel of the gateway under the field <strong>GW ID</strong>.</p>
-<h2 id="connecting-the-gateway-to-the-things-stack">Connecting the Gateway to The Things Stack</h2>
-<p>The Tektelic Kona Micro supports LoRa Basics™ Station and the legacy UDP packet forwarder. LoRa Basics™ Station is more secure and supports configuration of custom channel plans, amongst other improvements. Please follow instructions for <a href="/docs/gateways/tektelickonamicro/lbs/">connecting the Tektelic Kona Micro with LoRa Basics™ Station</a>.</p>
-<p>If for some reason LoRa Basics™ Station is not available to you, instructions for connecting with the legacy packet forwarder are <a href="/docs/gateways/tektelickonamicro/udp/">here</a>.</p>
+<p>This section guides you to connect the Tektelic Kona Micro IoT LoRaWAN Gateway to The Things Stack using the Semtech UDP Packet Forwarder.</p>
+<h2 id="connect-to-the-gateway">Connect to the Gateway</h2>
+<p>Find the IP address the gateway. This can be done in various ways. You can connect your machine to the same local network as that of the gateway ethernet connection and scan for open SSH ports or assign a static IP to the gateway and use that. Once the gateway IP address is found, SSH into it.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh root@&lt;GatewayIP&gt;
+</code></pre></div><p>The password for the <strong>root</strong> user can be found on the back panel. It&rsquo;s typically a 9 character alphanumeric string starting with <strong>1846XXXXX</strong>.</p>
+<h2 id="configure-the-packet-forwarder">Configure the Packet Forwarder</h2>
+<p>Now you can edit the gateway configuration file.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ vi /etc/default/config.json
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Press the <code>i</code> key on your keyboard to start insert mode. Once finished editing, press <code>ESC</code> and enter <code>:wq</code> to write the file and quit.
 </div>
-
-
+<p>Edit the server parameters:</p>
+<ul>
+<li><strong>server_address</strong>: Address of the Gateway Server. If you followed the <a href="https://www.thethingsindustries.com/docs/getting-started/">Getting Started guide</a> this is the same as what you use instead of <code>thethings.example.com</code>.</li>
+<li><strong>serv_port_up</strong>: UDP upstream port of the Gateway Server, typically 1700.</li>
+<li><strong>serv_port_down</strong>: UDP downstream port of the Gateway Server, typically 1700.</li>
+</ul>
+<p>Save the configuration and restart the packet forwarder.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ /etc/init.d/pkt_fwd restart
+</code></pre></div><p>If your configuration was successful, your gateway will connect to The Things Stack after a couple of seconds.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>If the gateway does not connect to The Things Stack after a few minutes, disconnect and reconnect the power supply to power-cycle the gateway. Packet forwarder logs can be observed by SSH-ing into the gateway and running:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ tail -f /var/log/pkt_fwd.log
+</code></pre></div>
+</div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
 <script src="https://cdn.emojicom.io/embed/widget.js" async></script>
@@ -146,13 +152,9 @@ debug: false
 <div class='feedback has-vertical-space'>
   <div id="emojicom-widget-inline"></div>
 </div>
-
-
 <div class="is-clearfix">
-<a class="button is-pulled-right" href="/docs/gateways/tektelickonamicro/lbs/">Connect Tektelic Kona Micro with Lora Basics™ Station →</a>
+<a class="button is-pulled-left" href="/docs/gateways/tektelickonamicro/lbs/">← Connect Tektelic Kona Micro with Lora Basics™ Station</a>
 </div>
-
-
 
 
       </div>
@@ -194,7 +196,7 @@ debug: false
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/tektelickonamicro/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/tektelickonamicro/udp.md" class="button">Edit on Github</a>
 </div>
 
       </div>
