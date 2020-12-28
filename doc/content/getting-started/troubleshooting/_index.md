@@ -21,6 +21,10 @@ See [user and organization management]({{< ref "getting-started/user-management"
 
 ## Troubleshooting Common Errors
 
+### Network Error / Reconnecting / Stream errors
+
+A network error in the Console occurs when your browser loses connection to the stream from the network server, which can happen for a number of reasons, such as your computer losing it's Wi-Fi connection. This does not indicate an error on a device or the network server, just that the stream was interrupted on your computer. Ensure your network connection is active and refresh the page to clear this error.
+
 ### Fail Link / Network Server Peer Not Available
 
 This happens when an Application is not linked properly to the Network Server. {{% tts %}} does not support external linking of the Application Server. Ensure that in your application, the Network Server address is blank and that the application API key is valid with linking rights.
