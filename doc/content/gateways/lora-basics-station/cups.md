@@ -12,7 +12,7 @@ weight: -1
 
 CUPS support in {{% tts %}} is in beta and is subject to change. {{</ note >}}
 
-{{< warning >}} Configuring CUPS automatically retrieves LNS credentials and configures LNS on your gateway. If you configure CUPS, **DO NOT** manually configure LNS, or your gateway may ignore the CUPS credentials. {{</ warning >}}
+{{< warning >}} Configuring CUPS automatically retrieves LNS credentials and configures LNS on your gateway. If you configure CUPS, your gateway will override LNS credentials in case of successful CUPS connection. {{</ warning >}}
 
 ## Requirements
 
