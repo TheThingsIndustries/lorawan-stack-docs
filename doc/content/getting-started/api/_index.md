@@ -1,7 +1,7 @@
 ---
 title: "Using the API"
 description: ""
-weight: 
+weight:
 ---
 
 While we recommend using the [Console]({{< ref "getting-started/console" >}}) or [CLI]({{< ref "getting-started/cli" >}}) to manage your applications and devices in {{% tts %}}, we also expose HTTP and gRPC APIs which you can interact directly with. This section contains information about using the HTTP API, and examples.
@@ -9,6 +9,9 @@ While we recommend using the [Console]({{< ref "getting-started/console" >}}) or
 <!--more-->
 
 A complete list of API endpoints is available in the [API Reference]({{< ref "reference/api" >}}). There, you can also find detailed information about [Authentication]({{< ref "reference/api/authentication" >}}) and [Field Masks]({{< ref "reference/api/field-mask" >}}).
+
+This page contains HTTP API examples with the `curl` command. See also
+[Python Code Examples]({{< ref "getting-started/api/python" >}}) and [Go Code Examples]({{< ref "getting-started/api/go" >}}).
 
 > If you're having trouble with the HTTP API, you can always inspect requests in the Console using your browser's inspector. All of the data displayed in the Console is pulled using HTTP API requests, and this should give you some insight in to how they are formed.
 
@@ -60,7 +63,7 @@ $ curl --location \
 
 If you want to create a device, perform multi step actions, or write shell scripts, it's best to use the [CLI]({{< ref "getting-started/cli" >}}).
 
-If you want to do something like registering a device directly via the API, you need to make calls to the Identity Server, Join Server, Network Server and Application Server. See the [API Reference]({{< ref "reference/api" >}}) for detailed information about which messages go to which endpoints. 
+If you want to do something like registering a device directly via the API, you need to make calls to the Identity Server, Join Server, Network Server and Application Server. See the [API Reference]({{< ref "reference/api" >}}) for detailed information about which messages go to which endpoints.
 
 To register a device `newdev1` in application `app1`, first, register the `DevEUI`, `JoinEUI` and cluster addresses in the Identity Server. This is also where you register a friendly name, description, attributes, location, and more - see all fields in the [API Reference]({{< ref "reference/api" >}}):
 
