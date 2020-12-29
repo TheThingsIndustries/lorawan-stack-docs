@@ -4,17 +4,19 @@ description: ""
 weight: 4
 ---
 
-Now that all configuration is done, we're ready to initialize {{% tts %}} and start it. Open a terminal prompt in the same directory as your `docker-compose.yml` file.
+Now that all configuration is done, you are ready to initialize {{% tts %}} and start it!
+
+Begin by opening a terminal prompt in the same directory as your `docker-compose.yml` file.
 
 ## Initialization
 
-The first time {{% tts %}} is started, it requires some initialization. We'll start by pulling the Docker images:
+The first time {{% tts %}} is started, it requires some initialization. Start by pulling the Docker images:
 
 ```bash
 $ docker-compose pull
 ```
 
-Next, we need to initialize the database of the Identity Server:
+Next, you need to initialize the database of the Identity Server:
 
 ```bash
 $ docker-compose run --rm stack is-db init
@@ -22,13 +24,13 @@ $ docker-compose run --rm stack is-db init
 
 {{< note >}} If you receive an error running {{% tts %}}, make sure a {{% tts %}} container isn't already running. Use `docker ps` to see running containers. {{</ note >}}
 
-For the Storage Integration available in {{% tts %}} Enterprise, we need to initialize the database of the Application Server as well:
+For the Storage Integration available in {{% tts %}} Enterprise, the database of the Application Server needs to be initialized as well:
 
 ```bash
 $ docker-compose run --rm stack storage-db init
 ```
 
-{{% tts %}} Enterprise requires a tenant to be present, even if multi-tenancy is not included in the license. We now create this tenant:
+{{% tts %}} Enterprise requires a tenant to be present, even if multi-tenancy is not included in the license. You create a tenant with:
 
 ```bash
 $ docker-compose run --rm stack is-db create-tenant
@@ -36,7 +38,7 @@ $ docker-compose run --rm stack is-db create-tenant
 
 {{< note >}} This will take the `tenancy.default-id` Tenant ID from the [configuration]({{< relref "configuration" >}}) in `ttn-lw-stack-docker.yml`. To specify another Tenant ID, use the `--id` parameter. {{</ note >}}
 
-We'll now create an initial `admin` user. Make sure to give it a good password.
+Next, an initial `admin` user has to be created. Make sure to give it a good password.
 
 ```bash
 $ docker-compose run --rm stack is-db create-admin-user \
@@ -44,7 +46,7 @@ $ docker-compose run --rm stack is-db create-admin-user \
   --email your@email.com
 ```
 
-Then we'll register the command-line interface as an OAuth client:
+Then the command-line interface needs to be registered as an OAuth client:
 
 ```bash
 $ docker-compose run --rm stack is-db create-oauth-client \
@@ -56,7 +58,7 @@ $ docker-compose run --rm stack is-db create-oauth-client \
   --redirect-uri "code"
 ```
 
-We do the same for the Console. 
+Afterwards, the same needs to be done for the Console. 
 
 ```bash
 $ CONSOLE_SECRET="your-console-secret"
@@ -78,12 +80,12 @@ $ docker-compose run --rm stack is-db create-oauth-client \
 
 ## Running {{% tts %}}
 
-Now it's time to start {{% tts %}}:
+Start {{% tts %}} with:
 
 ```bash
 $ docker-compose up
 ```
 
-This will start the stack and print logs to your terminal. You can also start the stack in detached mode by adding `-d` to the command above. In that case you can get logs with [`docker-compose logs`](https://docs.docker.com/compose/reference/logs/).
+This starts the stack, so you will see the stack logs being printed to your terminal. You can also start the stack in detached mode by adding `-d` to the command above. In that case you can get logs with [`docker-compose logs`](https://docs.docker.com/compose/reference/logs/).
 
-With {{% tts %}} up and running, it's time to connect gateways, create devices and work with streaming data. See [Console]({{< ref "getting-started/console" >}}) or [Command-line Interface]({{< ref "getting-started/cli" >}}) to proceed.
+With {{% tts %}} up and running, follow [Console]({{< ref "getting-started/console" >}}) or [Command-line Interface]({{< ref "getting-started/cli" >}}) to proceed with the login, then continue with connecting gateways, creating devices and working with streaming data.

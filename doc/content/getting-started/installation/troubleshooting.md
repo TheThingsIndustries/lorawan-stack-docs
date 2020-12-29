@@ -15,8 +15,8 @@ Our `docker-compose.yml` file uses [Compose file version 3.7](https://docs.docke
 
 ## Token Exchange Refused
 
-1. Double check that you used the correct `client-secret` when you authorized the client in [Running the Stack]({{< relref "running-the-stack" >}}).
-2. If running on `localhost`, see the [special considerations]({{< relref "configuration#localhost" >}}) for running on `localhost`.
+1. Double check that you used the correct `client-secret` when you authorized the client in [Running {{% tts %}}]({{< relref "running-the-stack" >}}).
+2. If running on `localhost`, see the [Localhost]({{< ref "getting-started/installation/configuration#localhost" >}}) section for additional info.
 
 ## Can't access the server
 
