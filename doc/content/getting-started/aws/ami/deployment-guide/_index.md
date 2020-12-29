@@ -14,7 +14,9 @@ This section contains detailed information to help you setup {{% tts %}} on the 
 
 The following image describes the architecture of the components that are deployed while using the **default parameters**.
 
-{{< figure src="aws-deployment-architecture.png" alt="AMI deployment Architecture" class="plain" >}}
+{{< figure src="ami-deployment-architecture.svg" alt="AMI deployment Architecture" class="plain" >}}
+
+{{< note >}} The public subnet is not fixed in to an Availability Zone (AZ) and hence is part of the default AZ of the VPC. {{</ note >}}
 
 ## Preparation
 
