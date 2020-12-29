@@ -136,7 +136,7 @@ By default users can create applications, gateways, organizations and OAuth clie
 - `is.user-rights.create-gateways`: Allow non-admin users to create gateways in their user account
 - `is.user-rights.create-organizations`: Allow non-admin users to create organizations in their user account
 
-## Gateway Secrets Encryption Options {{< new-in-version "3.10" >}}
+## Gateway Secrets Encryption Options {{< new-in-version "3.10" >}} {#gateway-secrets-encryption-options}
 
 - `is.gateways.encryption-key-id`: ID of the key used to encrypt gateway secrets at rest.
 

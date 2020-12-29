@@ -20,7 +20,7 @@ The key resources deployed in your AWS account are:
 
 This is a serverless deployment: there are no compute resources being deployed. AWS only charges for usage, which is driven by traffic. The only continuous charges are by IoT Core connectivity from {{% tts %}} to your AWS account. All permissions are the minimum permissions for the integration to function.
 
-## End-to-End Encryption {{< new-in-version "3.10.0" >}}
+## End-to-End Encryption {{< new-in-version "3.10.0" >}} {#end-to-end-encryption}
 
 This integration supports true LoRaWAN end-to-end encryption: the application payload is encrypted on the end device with the LoRaWAN AppSKey, and decrypted in your AWS Account. The underlying network infrastructure passes your application payload in the encrypted form - it cannot see your data.
 
