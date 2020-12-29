@@ -126,14 +126,23 @@ debug: false
 
 
 <p>The Things Stack can be configured using command-line flags, environment variables, or configuration files. See the <a href="https://www.thethingsindustries.com/docs/reference/configuration/">Configuration Reference</a> for more information about the configuration options.</p>
-<p>In this guide, we will configure The Things Stack using a configuration file, with an example domain <code>thethings.example.com</code> and TLS certificates from Let&rsquo;s Encrypt.</p>
+<p>This guide shows an example of configuring The Things Stack using a configuration file, with an example domain <code>thethings.example.com</code> and TLS certificates from Let&rsquo;s Encrypt.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  If configuring The Things Stack as <code>localhost</code> on a machine with no public IP or DNS address, see the <a href="#localhost">special considerations</a> below.
+  If configuring The Things Stack as <code>localhost</code> on a machine with no public IP or DNS address, see the <a href="#localhost">Localhost</a> section.
 </div>
-<p>To configure The Things Stack, we will use the configuration file <code>ttn-lw-stack-docker.yml</code>, which contains configuration specific to our The Things Stack deployment. When The Things Stack starts, it looks for <code>ttn-lw-stack-docker.yml</code> for a license key, hostname, and other configuration parameters.</p>
-<p>To configure Docker, we also need a <code>docker-compose.yml</code>, which defines the Docker services of The Things Stack and its dependencies.</p>
-<h3 id="example-configuration-files">Example Configuration Files</h3>
+<p>The <code>docker-compose.yml</code> file defines the Docker services of The Things Stack and its dependencies, and is used to configure Docker.</p>
+<p>The configuration file <code>ttn-lw-stack-docker.yml</code> contains the configuration specific to The Things Stack deployment and is used to configure The Things Stack. When The Things Stack starts, it searches through <code>ttn-lw-stack-docker.yml</code> for a license key, hostname and other configuration parameters.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The license key is not needed for Open Source.
+</div>
+<p>This guide assumes the following directory hierarchy:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose.yml          <span class="c1"># defines Docker services for running The Things Stack</span>
+config/
+└── stack/
+    └── ttn-lw-stack-docker.yml    <span class="c1"># configuration file for The Things Stack</span>
+</code></pre></div><h3 id="example-configuration-files">Example Configuration Files</h3>
 <div class="tabs is-boxed">
   <ul>
     
@@ -153,36 +162,33 @@ debug: false
 </div>
 <div class="tab-content content">
   <section data-content="enterprise">
-  <p>Download the example <code>ttn-lw-stack-docker.yml</code> for The Things Stack Enterprise <a href="ttn-lw-stack-docker-enterprise.yml" download="ttn-lw-stack-docker.yml">here</a>.</p>
-<p>Download the example <code>docker-compose.yml</code> for The Things Stack Enterprise <a href="docker-compose-enterprise.yml" download="docker-compose.yml">here</a>.</p>
+  <p>Download the example <code>docker-compose.yml</code> for The Things Stack Enterprise <a href="docker-compose-enterprise.yml" download="docker-compose.yml">here</a>.</p>
+<p>Download the example <code>ttn-lw-stack-docker.yml</code> for The Things Stack Enterprise <a href="ttn-lw-stack-docker-enterprise.yml" download="ttn-lw-stack-docker.yml">here</a>.</p>
 </section>
 <section data-content="open-source">
-  <p>Download the example <code>ttn-lw-stack-docker.yml</code> for The Things Stack Open Source <a href="ttn-lw-stack-docker-open-source.yml" download="ttn-lw-stack-docker.yml">here</a>.</p>
-<p>Download the example <code>docker-compose.yml</code> for The Things Stack Open Source <a href="docker-compose-open-source.yml" download="docker-compose.yml">here</a>.</p>
+  <p>Download the example <code>docker-compose.yml</code> for The Things Stack Open Source <a href="docker-compose-open-source.yml" download="docker-compose.yml">here</a>.</p>
+<p>Download the example <code>ttn-lw-stack-docker.yml</code> for The Things Stack Open Source <a href="ttn-lw-stack-docker-open-source.yml" download="ttn-lw-stack-docker.yml">here</a>.</p>
 </section>
 
 </div>
 
-<p>Create a new folder where your deployment files will be placed. This guide assumes the following directory hierarchy:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose.yml          <span class="c1"># defines Docker services for running The Things Stack</span>
-config/
-└── stack/
-    └── ttn-lw-stack-docker.yml    <span class="c1"># configuration file for The Things Stack</span>
-</code></pre></div><div class="notification is-info is-light has-text-dark">
+<div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  These example configuration files contain all of the configuration settings you need to run The Things Stack for development - just update the files with your server address. In the next sections, we will examine the settings in these files and provide tips for running The Things Stack in production.
+  These example configuration files contain all of the configuration settings you need to run The Things Stack for development - just update the files with your server address.
 </div>
-<h2 id="configure-docker">Configure Docker</h2>
-<p>Docker runs an instance of The Things Stack, as well as an SQL database and a Redis database which The Things Stack depends on to store data.</p>
-<p>We will configure Docker to run three services:</p>
+<p>Settings in <code>docker-compose.yml</code> and <code>ttn-lw-stack-docker.yml</code> files are explained in detail in <a href="#docker-configuration">Docker Configuration</a> and <a href="#the-things-stack-configuration">The Things Stack Configuration</a> sections. Further, we provide tips for running The Things Stack in production.</p>
+<h2 id="docker-configuration">Docker Configuration</h2>
+<p>In this section, configuring Docker is explained with an example <code>docker-compose.yml</code> file.</p>
+<p>Docker runs an instance of The Things Stack, as well as an SQL database and a Redis database, which The Things Stack depends on to store data.</p>
+<p>In <code>docker-compose.yml</code> file, Docker is configured to run three services:</p>
 <ul>
-<li>The Things Stack</li>
 <li>An SQL database (CockroachDB and PostgreSQL are supported)</li>
 <li>Redis</li>
+<li>The Things Stack</li>
 </ul>
 <h3 id="sql-database">SQL Database</h3>
-<p>We need to configure an SQL database, so in this guide we&rsquo;ll use a single instance of <a href="https://www.cockroachlabs.com/">CockroachDB</a>. Make sure that the <code>volumes</code> are set up correctly so that the database is persisted on your server&rsquo;s disk.</p>
-<p>The simplest configuration for CockroachDB will look like this (excerpted from the example <code>docker-compose.yml</code>):</p>
+<p>To configure an SQL database, a single instance of <a href="https://www.cockroachlabs.com/">CockroachDB</a> is used in this guide. Note that the <code>volumes</code> need to be set up correctly so that the database is persisted on your server&rsquo;s disk.</p>
+<p>The simplest configuration for CockroachDB looks like this (excerpted from the example <code>docker-compose.yml</code>):</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 5
@@ -211,11 +217,15 @@ config/
 </div>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  It is also possible (and even preferred) to use a managed SQL database. In this case, you will need to update the <a href="https://www.thethingsindustries.com/docs/reference/configuration/identity-server/#database-options"><code>is.database-uri</code> configuration option</a> to point to the address of the managed database.
+  It is also possible (and even preferred) to use a managed SQL database. In this case, you will need to configure the managed database URI with <code>TTN_LW_IS_DATABASE_URI</code> environment variable (see <a href="https://www.thethingsindustries.com/docs/getting-started/installation/configuration/#environment-and-ports">Environment and Ports</a>).
 </div>
 <h3 id="redis">Redis</h3>
-<p>We also need to configure <a href="https://redis.io/">Redis</a>. In this guide we&rsquo;ll use a single instance of Redis. Again, make sure that the <code>volumes</code> are set up correctly so that the datastore is persisted on your server&rsquo;s disk. Note that The Things Stack requires Redis version 5.0 or newer.</p>
-<p>The simplest configuration for Redis will look like this (excerpted from the example <code>docker-compose.yml</code>):</p>
+<p>The configuration in this guide uses a single instance of <a href="https://redis.io/">Redis</a>. Again, note that the <code>volumes</code> need to be set up correctly so that the datastore is persisted on your server&rsquo;s disk.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The Things Stack requires Redis version 5.0 or newer.
+</div>
+<p>The simplest configuration for Redis looks like this (excerpted from the example <code>docker-compose.yml</code>):</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">28
@@ -242,25 +252,30 @@ config/
 </div>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  It is also possible (and even preferred) to use a managed Redis database. In this case, you will need to update the <a href="https://www.thethingsindustries.com/docs/reference/configuration/the-things-stack/#redis-options"><code>redis.address</code> configuration option</a> to point to the address of the managed database.
+  It is also possible (and even preferred) to use a managed Redis database. In this case, you will need to configure the managed database address with <code>TTN_LW_REDIS_ADDRESS</code> environment variable (see <a href="https://www.thethingsindustries.com/docs/getting-started/installation/configuration/#environment-and-ports">Environment and Ports</a>).
 </div>
 <h3 id="the-things-stack">The Things Stack</h3>
 <h4 id="entrypoint-and-dependencies">Entrypoint and dependencies</h4>
-<p>We tell Docker Compose to use <code>ttn-lw-stack -c /config/ttn-lw-stack-docker.yml</code>, as the container entry point so that our configuration file <code>ttn-lw-stack-docker.yml</code> is always loaded (more on the config file below). The default command is <code>start</code>, which starts The Things Stack.</p>
-<p>With the <code>depends_on</code> field we tell Docker Compose that The Things Stack depends on CockroachDB and Redis. With this, Docker Compose will wait for CockroachDB and Redis to come online before starting The Things Stack.</p>
+<p>Docker Compose uses <code>ttn-lw-stack -c /config/ttn-lw-stack-docker.yml</code> as the container entry point, so that <code>ttn-lw-stack-docker.yml</code> configuration file is always loaded (more on the config file below).</p>
+<p>The default command is <code>start</code>, which starts The Things Stack.</p>
+<p>The <code>depends_on</code> field tells Docker Compose that The Things Stack depends on CockroachDB and Redis. With this, Docker Compose will wait for CockroachDB and Redis to come online before starting The Things Stack.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   If using a managed SQL or Redis database, these can be removed from <code>depends_on</code> and the services do not need to be started in Docker.
 </div>
 <h4 id="volumes">Volumes</h4>
-<p>Under the <code>volumes</code> section, we define volumes for files that need to be persisted on disk. There are stored blob files (such as profile pictures) and certificate files retrieved with ACME (if required). We also mount the local <code>./config/stack/</code> directory on the container under <code>/config</code>, so that The Things Stack can find our configuration file at <code>/config/ttn-lw-stack-docker.yml</code>.</p>
+<p>Under the <code>volumes</code> section, volumes for the files that need to be persisted on the disk are defined. There are stored blob files (such as profile pictures) and certificate files retrieved with ACME (if required). Also, local <code>./config/stack/</code> directory is mounted on the container under <code>/config</code>, so that The Things Stack can find the configuration file at <code>/config/ttn-lw-stack-docker.yml</code>.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   If your <code>ttn-lw-stack-docker.yml</code> is in a directory other than <code>./config/stack</code>, you will need to change this volume accordingly.
 </div>
-<h4 id="ports">Ports</h4>
-<p>The <code>ports</code> section exposes The Things Stack&rsquo;s ports to the world. Port <code>80</code> and <code>443</code> are mapped to the internal HTTP and HTTPS ports. The other ports have a direct mapping. If you don&rsquo;t need support for gateways and applications that don&rsquo;t support TLS, you can remove ports starting with <code>188</code>.</p>
-<p>In the <code>environment</code> section, we configure the databases used by The Things Stack. We will set these to the CockroachDB and Redis instances that are defined in the <code>docker-compose.yml</code> above.</p>
+<h4 id="environment-and-ports">Environment and Ports</h4>
+<p>The databases used by The Things Stack are configured in the <code>environment</code> section. In this guide, these are set to the CockroachDB and Redis instances that are mentioned above.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  If using managed databases, the <code>environment</code> ports need to be changed to the ports of the managed databases.
+</div>
+<p>The <code>ports</code> section exposes The Things Stack&rsquo;s ports to the world. Port <code>80</code> and <code>443</code> are mapped to the internal HTTP and HTTPS ports. The other ports have a direct mapping. If you don&rsquo;t need support for gateways and applications that don&rsquo;t use TLS, you can remove ports starting with <code>188</code>.</p>
 <p>Here is an example <code>stack</code> configuration from the Enterprise version of <code>docker-compose.yml</code>:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -356,60 +371,10 @@ config/
 </span><span class="w">      </span>- <span class="s2">&#34;1700:1700/udp&#34;</span></code></pre></td></tr></table>
 </div>
 </div>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  If using managed databases, the <code>environment</code> ports need to be changed to the ports of the managed databases.
-</div>
-<h2 id="configure-the-things-stack">Configure The Things Stack</h2>
-<p>Once Docker starts The Things Stack, we need to specify configuration options for running The Things Stack in the <code>ttn-lw-stack-docker.yml</code> file. Let&rsquo;s have a look at the configuration options which are required.</p>
-<h3 id="license">License 
-
-
-
-
-  
-
-
-<span class="distribution-inline">Enterprise Only</span>
-
-</h3>
-<p>First is a license file. The Things Stack Enterprise requires a license, which can be purchased at the <a href="https://thethingsindustries.com/technology/pricing">products page</a>. This is specified in the <code>license</code> field, and can be either a <code>key</code> string, or a <code>file</code>path. See the <a href="https://www.thethingsindustries.com/docs/reference/configuration/the-things-stack/">License Configuration Reference</a> for more information.</p>
-<h3 id="tls">TLS</h3>
-<p>The Things Stack supports TLS with Let&rsquo;s Encrypt. Since we&rsquo;re deploying The Things Stack on
-<code>thethings.example.com</code>, we configure it to only request certificates for that
-host, and also to use it as the default host (see the <a href="https://www.thethingsindustries.com/docs/reference/configuration/the-things-stack/"><code>tls</code> configuration reference</a> section).</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Make sure that you use the correct <code>tls</code> depending on whether you will be using Let&rsquo;s Encrypt or your own certificate files.
-</div>
-<h3 id="http">HTTP</h3>
-<p>We also configure HTTP server keys for encrypting and verifying cookies, as well
-as passwords for endpoints that you may want to keep for internal use (see the <code>http</code> section).</p>
-<h3 id="email">Email</h3>
-<p>The Things Stack sends emails to users, so we need to configure how these are sent.
-You can use Sendgrid or an SMTP server. If you skip setting up an email provider,
-The Things Stack will print emails to the stack logs (see the <code>email</code> section).</p>
-<h3 id="component-urls">Component URLs</h3>
-<p>We also need to configure the URLs for the Web UI and the secret used
-by the console client (see the <code>console</code> section). These tell The Things Stack where all its components are accessible.</p>
-<div class="notification is-warning is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  Failure to correctly configure component URLs is a common problem that will prevent the stack from starting. Be sure to replace all instances of <code>thethings.example.com</code> with your domain name!
-</div>
-<h3 id="multi-tenancy">Multi-tenancy 
-
-
-
-
-  
-
-
-<span class="distribution-inline">Enterprise Only</span>
-
-</h3>
-<p>If running a multi-tenant environment, we need to configure the default tenant ID, and the base domain from which tenant IDs are inferred. See the <a href="https://www.thethingsindustries.com/docs/reference/configuration/the-things-stack/#multi-tenancy"><code>tenancy</code> configuration reference</a>.</p>
-<p>Below is an example <code>ttn-lw-stack-docker.yml</code> file for the Enterprise stack:</p>
-<div class="highlight"><div class="chroma">
+<h2 id="the-things-stack-configuration">The Things Stack Configuration</h2>
+<p>Configuration options for running The Things Stack are specified in the <code>ttn-lw-stack-docker.yml</code> file. This section points out the required configuration options.</p>
+<p>The example <code>ttn-lw-stack-docker.yml</code> file for The Things Stack Enterprise shown below contains details which help you follow this section.</p>
+<details><summary>Example ttn-lw-stack-docker.yml file</summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
@@ -726,21 +691,77 @@ by the console client (see the <code>console</code> section). These tell The Thi
 </span><span class="w">  </span><span class="k">base-domains</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com&#39;</span><span class="w">
 </span><span class="w">  </span><span class="k">default-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;default&#39;</span></code></pre></td></tr></table>
 </div>
+</div></details>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The example <code>ttn-lw-stack-docker.yml</code> file is available for download in the <a href="https://www.thethingsindustries.com/docs/getting-started/installation/configuration/#example-configuration-files">Example Configuration Files</a> section.
+</div>
+<h3 id="license">License 
+
+
+
+
+  
+
+
+<span class="distribution-inline">Enterprise Only</span>
+
+</h3>
+<p>The Things Stack Enterprise requires a license, which can be purchased at the <a href="https://thethingsindustries.com/technology/pricing">products page</a>. This is specified in the <code>license</code> field, and can be either a <code>key</code> string, or a <code>file</code>path. See the <a href="https://www.thethingsindustries.com/docs/reference/configuration/the-things-stack/#license">License configuration reference</a> for more information.</p>
+<h3 id="tls">TLS</h3>
+<p>This example shows the configuration for using TLS with Let&rsquo;s Encrypt. Since The Things Stack is being deployed on
+<code>thethings.example.com</code> in this guide, it is configured to only request certificates for that
+host, and also to use it as the default host. See the <a href="https://www.thethingsindustries.com/docs/reference/configuration/the-things-stack/#tls-options">TLS Options configuration reference</a> for more information.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Make sure that you use the correct <code>tls</code> configuration depending on whether you are using Let&rsquo;s Encrypt or your own certificate files.
 </div>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Make note of the client secret, as it will be needed again when initializing The Things Stack.
+  If you are using your own certificate files, make sure to uncomment the lines that define <code>source</code> type, <code>root-ca</code>, <code>certificate</code> and <code>key</code>. The paths assigned to these do not need to be altered, because they point to the location of these files inside the Docker container, and not on your machine.
 </div>
+<h3 id="http">HTTP</h3>
+<p>In the <code>http</code> section, HTTP server keys for encrypting and verifying cookies are configured, as well
+as passwords for endpoints that you may want to keep for the internal use.</p>
+<h3 id="email">Email</h3>
+<p>The Things Stack sends emails to users, so the <code>email</code> section of the configuration defines how these are sent.
+You can use Sendgrid or an SMTP server. If you skip setting up an email provider,
+The Things Stack will print emails to the stack logs.</p>
+<h3 id="component-urls">Component URLs</h3>
+<p>Finally, the <code>console</code> section configures the URLs for the Web UI and the secret used
+by the console client. These tell The Things Stack where all its components are accessible.</p>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  Failure to correctly configure component URLs is a common problem that will prevent the stack from starting. Be sure to replace all instances of <code>thethings.example.com</code> with your domain name!
+</div>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Note that the <code>client-secret</code> will be needed later when authorizing the Console.
+</div>
+<h3 id="multi-tenancy">Multi-tenancy 
+
+
+
+
+  
+
+
+<span class="distribution-inline">Enterprise Only</span>
+
+</h3>
+<p>If running a multi-tenant environment, we need to configure the default tenant ID, and the base domain from which tenant IDs are inferred. See the <a href="https://www.thethingsindustries.com/docs/reference/configuration/the-things-stack/#multi-tenancy"><code>tenancy</code> configuration reference</a>.</p>
 <h2 id="localhost">Localhost</h2>
-<p>If you are configuring and running The Things Stack on a local machine with no public IP or DNS address, some special considerations must be made. <code>localhost</code> has a different meaning on your machine than inside the Docker container where The Things Stack runs, which can cause problems if you use <code>localhost</code> in your configuration.</p>
+<p>Follow this section if you are configuring and running The Things Stack on a local machine with no public IP or DNS address.</p>
+<p><code>localhost</code> has a different meaning on your machine than inside the Docker container where The Things Stack runs, which can cause problems if you use <code>localhost</code> in your configuration.</p>
 <p><code>localhost</code> addresses on your machine will resolve to your machine, while <code>localhost</code> inside the Docker container will resolve inside the Docker container. In <code>docker-compose.yml</code>, we forward requests on ports 80 and 443 to ports 1885 and 8885 inside the container, so visiting <code>localhost</code> (which is really <code>localhost:80</code>) on your machine actually takes you to <code>localhost:1885</code> within the container.</p>
 <p>If you configure your <code>is.oauth.ui.canonical-url</code> as <code>localhost</code>, this causes <strong>Token Exchange Refused</strong> errors when you try to log in to The Things Stack Console, because an authorization request generated from within the container will not be redirected to port 1885 or 8885, where The Things Stack is listening.</p>
 <h3 id="solution-1-use-the-ip-address-of-your-computer-on-your-local-network">Solution 1: Use the IP address of your computer on your local network</h3>
-<p>The best solution is to configure and use a static IP address for your machine on your local network so that redirects from your machine, from the docker container, or from anywhere inside your local network all resolve at the same place, on your machine. Follow instructions <a href="https://uk.pcmag.com/news/124250/how-to-set-up-a-static-ip-address">here</a> for configuring a static IP address on your computer. Use that IP address as your server address, i.e replace <code>thethings.example.com</code> with that IP address. You may also generate a self-signed certificate for that IP address by following instructions in <a href="/docs/getting-started/installation/certificates/">certificates</a>.</p>
-<p>This will still allow you to see the console by entering <code>localhost</code> or your local IP in your browser. It will also allow you to connect to The Things Stack from any machine inside your local network.</p>
+<p>The best solution is to configure and use a static IP address for your machine on your local network so that redirects from your machine, from the Docker container, or from anywhere inside your local network, all resolve at the same place, on your machine.</p>
+<p>Follow instructions <a href="https://uk.pcmag.com/news/124250/how-to-set-up-a-static-ip-address">here</a> for configuring a static IP address on your computer. Use that IP address as your server address, i.e replace <code>thethings.example.com</code> with that IP address. You may also generate a self-signed certificate for that IP address by following instructions in the <a href="/docs/getting-started/installation/certificates/">Certificates</a> section.</p>
+<p>This will still allow you to see The Things Stack Console by entering <code>localhost</code> or your local IP address in your browser. It will also allow you to connect to The Things Stack from any machine inside your local network.</p>
 <p>You will also need to <a href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/#generate-configuration-file">configure the CLI</a>, to use the static IP of your machine as the address of The Things Stack.</p>
 <h3 id="solution-2-specify-the-internal-ports-that-the-things-stack-listens-on-in-your-configuration-files">Solution 2: Specify the internal ports that The Things Stack listens on in your configuration files</h3>
-<p>By default, The Things Stack listens on ports 1885 and 8885 inside Docker. To make <code>localhost</code> work both on your local machine and within the container, append the port to <code>localhost</code> and make sure port forwarding is enabled in your <code>docker-compose.yml</code> for that port.</p>
+<p>By default, The Things Stack listens on ports 1885 and 8885 inside Docker. To make <code>localhost</code> work both on your local machine and within the Docker container, append the port to <code>localhost</code> and make sure port forwarding is enabled in your <code>docker-compose.yml</code> for that port.</p>
 <p>You must also remove ports 80 and 443 from your The Things Stack Docker configuration.</p>
 <p>For example,</p>
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">is</span><span class="p">:</span><span class="w">
@@ -756,7 +777,7 @@ by the console client (see the <code>console</code> section). These tell The Thi
 </span><span class="w">      </span><span class="k">canonical-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://localhost:8885/oauth&#39;</span><span class="w">
 </span><span class="w">      </span><span class="k">is</span><span class="p">:</span><span class="w">
 </span><span class="w">        </span><span class="k">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://localhost:8885/api/v3&#39;</span><span class="w">
-</span></code></pre></div><p>and in <code>docker-compose.yml</code>, add the following port forwarding configuration if it does not exist, while removing ports 80 and 443:</p>
+</span></code></pre></div><p>and in <code>docker-compose.yml</code>, add the following port forwarding configuration (if it does not already exist), while removing ports 80 and 443:</p>
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">services</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="k">stack</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="k">ports</span><span class="p">:</span><span class="w">
@@ -819,10 +840,10 @@ by the console client (see the <code>console</code> section). These tell The Thi
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 16 Dec 2020.
+  Last changed by Nejra on 19 Nov 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/6030e23400779586198640ad19dba9f551f66d73">
-      doc: Fix headings with inline shortcodes
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/60741783ca4a6325d97c3e69eba6612176b03258">
+      doc: Improve the installation guide
     </a>
 </p>
 
