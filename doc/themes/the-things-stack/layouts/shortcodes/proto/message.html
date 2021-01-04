@@ -5,20 +5,21 @@
 <p>{{ . | markdownify }}</p>
 {{- end }}
 
+{{- range .fields }}
 <table>
-  <thead>
-    <tr>
-      <th style="width: 175px">Field</th>
-      <th style="width: 250px">Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
   <tbody>
-    {{- range .fields }}
     <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>{{ .name }}</code>
       </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
       <td>
         {{- if and .map_key .map_value -}}
         map of {{ partial "proto/field-type" .map_key }} to {{ partial "proto/field-type" .map_value }}
@@ -28,6 +29,12 @@
         {{- partial "proto/field-type" . -}}
         {{- end -}}
       </td>
+    </tr>
+    {{ if or .comment .rules .repeated }}
+    <tr>
+      <th>
+        Description
+      </th>
       <td>
         {{- with .comment }}
           <p>{{ . | markdownify }}</p>
@@ -42,9 +49,10 @@
         {{ end }}
       </td>
     </tr>
-    {{- end }}
+    {{ end }}
   </tbody>
 </table>
+{{ end }}
 
 {{- if .oneofs }}
 <table>
