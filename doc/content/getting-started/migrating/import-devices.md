@@ -12,7 +12,7 @@ To import devices, use the `devices.json` file you created in the previous step.
 
 {{< tabs/tab "Console" >}}
 
-### Import devices via the Console {{< new-in-version "3.9.3" >}}
+### Import devices via the Console {{< new-in-version "3.9.3" >}} {#import-devices-via-the-console}
 
 Open the application you created and click the button **Import end devices**
 

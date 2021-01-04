@@ -22,7 +22,7 @@ An example `global_conf.json` is available in the [{{% udp-pf %}} Github reposit
 
 {{< tabs/tab "Console" >}}
 
-## Download Configuration in the Console {{< new-in-version "3.10" >}}
+## Download Configuration in the Console {{< new-in-version "3.10" >}} {#download-configuration-in-the-console}
 
 To download a `global_conf.json` file for your gateway, open the Gateway overview page in the console. Click the **Download global_conf.json** button to download the file.
 
