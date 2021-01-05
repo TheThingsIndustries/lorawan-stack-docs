@@ -11,17 +11,17 @@ This section explains how to set up payload formatters for a specific end device
 
 ## Types of Payload Formatters
 
-{{% tts %}} supports three types of Payload Formatters: Javascript, CayenneLPP, and Device Repo payload formatters.
+{{% tts %}} supports three types of payload formatters: Javascript, CayenneLPP, and Repository payload formatters.
 
 ### Javascript
 
-{{% tts %}} allows you to write your own custom Payload Formatters in Javascript. To find out how to write your own custom payload formatters, see the [Javascript Payload Formatters section]({{< relref "javascript" >}}).
+{{% tts %}} allows you to write your own custom payload formatters in Javascript. To find out how to write a custom Javascript payload formatter, see the [Javascript Payload Formatters]({{< relref "javascript" >}}) section.
 
 ### CayeneLPP
 
-{{% tts %}} can automatically decode CayenneLPP formatted payloads, no custom code neccessary. To find out how to use CayenneLPP Payload Formatters, see the [CayenneLPP section]({{< relref "cayenne" >}}).
+{{% tts %}} can automatically decode CayenneLPP formatted payloads, no custom code neccessary. To find out how to use CayenneLPP payload formatters, see the [CayenneLPP]({{< relref "cayenne" >}}) section.
 
-### Device Repository
+### Repository
 
 Device manufacturers may submit payload formatters designed to work with their devices. These are publicly available in {{% tts %}} [Device Repository](https://github.com/TheThingsNetwork/lorawan-devices/tree/master).
 
