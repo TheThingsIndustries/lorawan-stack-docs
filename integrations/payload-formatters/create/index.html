@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Creating Payload Formatters in the Console | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/console/" />
+  <title>Creating Payload Formatters | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/create/" />
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.87592179d2b736be842bb7a3dd97c7a09f561effecbfb81ec0a18685eb1bd4e0.css" integrity="sha256-h1khedK3Nr6EK7ej3ZfHoJ9WHv/sv7gewKGGhesb1OA=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Creating Payload Formatters in the Console">
+  <meta itemprop="name" content="Creating Payload Formatters">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Creating Payload Formatters in the Console">
+  <meta property="og:title" content="Creating Payload Formatters">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/payload-formatters/console/">
-  <meta name="twitter:title" content="Creating Payload Formatters in the Console" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/payload-formatters/create/">
+  <meta name="twitter:title" content="Creating Payload Formatters" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -96,10 +96,7 @@ debug: false
 <ul class="menu-list">
 <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/" class="">Overview</a>
 <li>
-  <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/console/" class="is-active">Creating Payload Formatters in the Console</a>
-</li>
-<li>
-  <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/cli/" class="">Creating Payload Formatters with the CLI</a>
+  <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/create/" class="is-active">Creating Payload Formatters</a>
 </li>
 <li>
   <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/cayenne/" class="">CayenneLPP</a>
@@ -120,7 +117,7 @@ debug: false
       
       <div class="column is-two-thirds">
 
-<h1 class="title is-size-2">Creating Payload Formatters in the Console
+<h1 class="title is-size-2">Creating Payload Formatters
 
 
 </h1>
@@ -128,8 +125,27 @@ debug: false
 <div class="content">
 
 
-<p>This section explains how to set up Application and device specific payload formatters in the console.</p>
-<h2 id="create-an-application-payload-formatter">Create an Application Payload Formatter</h2>
+<p>This section explains how to set up Payload Formatters using the Console or CLI.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="console">
+      <a>
+        <span>Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="cli">
+      <a>
+        <span>CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="console">
+  <h2 id="create-an-application-payload-formatter-in-the-console">Create an Application Payload Formatter in the Console</h2>
 <p>To create an Application payload formatter, navigate to the <strong>Applications</strong> tab and choose your application.</p>
 <p>Within the <strong>Application Overview</strong>, select the <strong>Payload Formatters</strong> dropdown in the left menu.</p>
 <p>Choose <strong>Uplink</strong> or <strong>Downlink</strong>.</p>
@@ -142,7 +158,6 @@ debug: false
     <img src="../application.png"
          alt="Application"/> 
 </figure>
-
 <h2 id="create-a-device-specific-payload-formatter">Create a Device Specific Payload Formatter</h2>
 <p>To create a device specific payload formatter, navigate to the <strong>Applications</strong> tab. Choose your application.</p>
 <p>Within the <strong>Application Overview</strong>, select <strong>End Devices</strong> in the left menu.</p>
@@ -158,6 +173,48 @@ debug: false
     <img src="../device.png"
          alt="Device"/> 
 </figure>
+</section>
+<section data-content="cli">
+  <h2 id="create-an-application-payload-formatter-using-the-cli">Create an Application Payload Formatter using the CLI</h2>
+<p>To create an application specific payload formatter, use the following command when linking an application. If creating a <a href="/docs/integrations/payload-formatters/javascript/">Javascript payload formatter</a>, save your <code>Encoder</code> and <code>Decoder</code> functions to files and load them using the <code>formatter-parameter-local-file</code> parameter:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications link <span class="nb">set</span> app1 <span class="se">\
+</span><span class="se"></span>  --api-key NNSXS.VEEBURF3KR77ZR..
+  --default-formatters.down-formatter FORMATTER_JAVASCRIPT <span class="se">\
+</span><span class="se"></span>  --default-formatters.down-formatter-parameter-local-file <span class="s2">&#34;encoder.js&#34;</span> <span class="se">\
+</span><span class="se"></span>  --default-formatters.up-formatter FORMATTER_JAVASCRIPT <span class="se">\
+</span><span class="se"></span>  --default-formatters.up-formatter-parameter-local-file <span class="s2">&#34;decoder.js&#34;</span>
+</code></pre></div><p>To create a <a href="/docs/integrations/payload-formatters/cayenne/">CayenneLPP</a> or <a href="/docs/integrations/payload-formatters/device-repo/">Device Repository</a> application payload formatter, use the <code>FORMATTER_CAYENNELPP</code> or <code>FORMATTER_DEVICEREPO</code> constants. No <code>formatter-parameter-local-file</code> parameter is needed.</p>
+<h2 id="create-a-device-specific-payload-formatter">Create a Device Specific Payload Formatter</h2>
+<p>It is possible to assign a device specific payload formatter when creating a device using the CLI. Use the following parameters during device creation, and if creating a <a href="/docs/integrations/payload-formatters/javascript/">Javascript payload formatter</a>, save your <code>Encoder</code> and <code>Decoder</code> functions to files and load them using the <code>formatter-parameter-local-file</code> parameter:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices create app1 dev1-with-formatter <span class="se">\
+</span><span class="se"></span>  --dev-eui 0004A30B001C0530 <span class="se">\
+</span><span class="se"></span>  --app-eui 800000000000000C <span class="se">\
+</span><span class="se"></span>  --frequency-plan-id EU_863_870 <span class="se">\
+</span><span class="se"></span>  --root-keys.app-key.key 752BAEC23EAE7964AF27C325F4C23C9A <span class="se">\
+</span><span class="se"></span>  --lorawan-version 1.0.3 <span class="se">\
+</span><span class="se"></span>  --lorawan-phy-version 1.0.3-a <span class="se">\
+</span><span class="se"></span>  --formatters.down-formatter FORMATTER_JAVASCRIPT <span class="se">\
+</span><span class="se"></span>  --formatters.down-formatter-parameter-local-file <span class="s2">&#34;encoder.js&#34;</span> <span class="se">\
+</span><span class="se"></span>  --formatters.up-formatter FORMATTER_JAVASCRIPT <span class="se">\
+</span><span class="se"></span>  --formatters.up-formatter-parameter-local-file <span class="s2">&#34;decoder.js&#34;</span>
+</code></pre></div><p>To create a <a href="/docs/integrations/payload-formatters/cayenne/">CayenneLPP</a> or <a href="/docs/integrations/payload-formatters/device-repo/">Device Repository</a> device payload formatter, use the <code>FORMATTER_CAYENNELPP</code> or <code>FORMATTER_DEVICEREPO</code> constants. No <code>formatter-parameter-local-file</code> parameter is needed.</p>
+<h2 id="edit-a-device-specific-payload-formatter">Edit a Device Specific Payload Formatter</h2>
+<p>To change the payload formatter for an existing device, use the <code>end-devices update</code> command:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices <span class="nb">set</span> app1 dev1-with-formatter <span class="se">\
+</span><span class="se"></span>  --formatters.down-formatter FORMATTER_JAVASCRIPT <span class="se">\
+</span><span class="se"></span>  --formatters.down-formatter-parameter-local-file <span class="s2">&#34;encoder.js&#34;</span> <span class="se">\
+</span><span class="se"></span>  --formatters.up-formatter FORMATTER_JAVASCRIPT <span class="se">\
+</span><span class="se"></span>  --formatters.up-formatter-parameter-local-file <span class="s2">&#34;decoder.js&#34;</span>
+</code></pre></div><p>To unset the payload formatters, use the <code>--unset</code> flag. The command below will unset all device specific payload formatters:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices <span class="nb">set</span> app1 dev1-with-formatter <span class="se">\
+</span><span class="se"></span>  --unset <span class="s2">&#34;formatters&#34;</span>
+</code></pre></div><p>It is also possible to unset the uplink or downlink formatters separately:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices <span class="nb">set</span> app1 dev1-with-formatter <span class="se">\
+</span><span class="se"></span>  --unset <span class="s2">&#34;formatters.up-formatter,formatters.up-formatter-parameter&#34;</span>
+</code></pre></div>
+</section>
+
+</div>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -168,7 +225,7 @@ debug: false
 </div>
 <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/payload-formatters/">← Payload Formatters</a>
-<a class="button is-pulled-right" href="/docs/integrations/payload-formatters/cli/">Creating Payload Formatters with the CLI →</a>
+<a class="button is-pulled-right" href="/docs/integrations/payload-formatters/cayenne/">CayenneLPP →</a>
 </div>
 
 
@@ -204,14 +261,14 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 26 Nov 2020.
+  Last changed by benolayinka on 05 Jan 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/21da11257c965cc9e733dfee24ffc3ac4f2235fd">
-      doc: Change info tags to note
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/711fac3098b9c333008fbbc01e62d75f100539f3">
+      doc: Consolidate CLI and Console payload formatter docs
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/payload-formatters/console.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/payload-formatters/create.md" class="button">Edit on Github</a>
 </div>
 
       </div>

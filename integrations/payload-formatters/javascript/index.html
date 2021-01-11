@@ -96,10 +96,7 @@ debug: false
 <ul class="menu-list">
 <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/" class="">Overview</a>
 <li>
-  <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/console/" class="">Creating Payload Formatters in the Console</a>
-</li>
-<li>
-  <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/cli/" class="">Creating Payload Formatters with the CLI</a>
+  <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/create/" class="">Creating Payload Formatters</a>
 </li>
 <li>
   <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/cayenne/" class="">CayenneLPP</a>
@@ -129,6 +126,12 @@ debug: false
 
 
 <p>Javascript payload formatters allow you to write your own functions to encode or decode messages. Javascript functions are executed using an <a href="https://www.ecma-international.org/ecma-262/5.1/">JavaScript ECMAScript 5.1</a> engine.</p>
+<p>Tips:</p>
+<ul>
+<li>The payload formatters should be simple and lightweight.</li>
+<li>Use arithmetic operations and bit shifts to convert binary data to fields.</li>
+<li>Avoid using non-trivial logic or polyfills.</li>
+</ul>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   Payload formatters use ECMAScript 5 (2009), which has some distinct differences compared to newer, commonly used ECMAScript revisions. See <a href="https://www.javatpoint.com/es5-vs-es6">here</a> for a quick comparison. Notably, <code>let</code>, <code>const</code>, and arrow functions are not supported by ES5.
@@ -137,13 +140,10 @@ debug: false
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   Javascript payload formatters from The Things Network Stack V2 will work in The Things Stack. The Things Stack has a new payload formatter signature, but it is also backwards compatible.
 </div>
-<p>Tips:</p>
-<ul>
-<li>The payload formatters should be simple and lightweight.</li>
-<li>Use arithmetic operations and bit shifts to convert binary data to fields.</li>
-<li>Avoid using non-trivial logic or polyfills.</li>
-<li>The runtime does not support modules or any input/output other than defined below.</li>
-</ul>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  For security, the runtime does not support modules, <code>require</code> syntax, or any input/output other than defined below.
+</div>
 <h2 id="decode-uplink-function">Decode Uplink Function</h2>
 <p>The Javascript <code>decodeUplink()</code> function is called when a data uplink message is received from a device. This function decodes the binary payload (<code>frm_payload</code>) received from the end device to a JSON object (<code>decoded_payload</code>) that gets send upstream to the application. The function takes an input object and returns and output object:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
@@ -347,10 +347,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 26 Nov 2020.
+  Last changed by benolayinka on 05 Jan 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/21da11257c965cc9e733dfee24ffc3ac4f2235fd">
-      doc: Change info tags to note
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/711fac3098b9c333008fbbc01e62d75f100539f3">
+      doc: Consolidate CLI and Console payload formatter docs
     </a>
 </p>
 
