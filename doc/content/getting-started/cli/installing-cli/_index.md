@@ -16,7 +16,7 @@ This section contains instructions for installing the command-line interface.
 $ brew install TheThingsNetwork/lorawan-stack/ttn-lw-stack
 ```
 
-{{< note >}} When installing with `brew`, auto-completion is enabled automatically. {{</ note >}}
+{{< note >}} When installing with `brew`, auto completion is enabled automatically. {{</ note >}}
 
 #### Linux
 
@@ -25,7 +25,7 @@ $ sudo snap install ttn-lw-stack
 $ sudo snap alias ttn-lw-stack.ttn-lw-cli ttn-lw-cli
 ```
 
-{{< note >}} When installing with `snap`, auto-completion is enabled automatically. {{</ note >}}
+{{< note >}} When installing with `snap`, auto completion is enabled automatically. {{</ note >}}
 
 ### Binaries
 
@@ -92,13 +92,15 @@ For advanced options, see the [Configuration Reference]({{< ref "/reference/conf
 
 ## Auto Completion
 
-Use `ttn-lw-cli complete` to generate an auto-completion script for the `ttn-lw-cli` command. `bash`, `zsh`, `fish` and `powershell` shells are supported:
+Auto completion allows the shell to [automatically fill in commands](https://en.wikipedia.org/wiki/Command-line_completion) after you type the first few letters. It is completely optional but can save you time entering commands.
+
+Use `ttn-lw-cli complete` to generate an auto completion script for the `ttn-lw-cli` command. `bash`, `zsh`, `fish` and `powershell` shells are supported:
 
 ```bash
 $ ttn-lw-cli complete --shell bash --executable ttn-lw-cli > ttn-lw-cli-autocomplete
 ```
 
-Source the file to enable auto-completion:
+Source the file to enable auto completion:
 
 ```bash
 $ . ./ttn-lw-cli-autocomplete
@@ -112,7 +114,7 @@ For `bash`, this directory is typically `/etc/bash_completion.d/`:
 $ sudo cp ./ttn-lw-cli-autocomplete /etc/bash_completion.d/
 ```
 
-Generating and sourcing an auto-completion PowerShell script on Windows is slightly modified:
+Generating and sourcing an auto completion PowerShell script on Windows is slightly modified:
 
 ```bash
 $ ttn-lw-cli.exe complete --shell powershell --executable ttn-lw-cli.exe > ttn-lw-cli-autocomplete.ps1
