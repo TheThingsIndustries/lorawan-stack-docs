@@ -142,6 +142,8 @@ debug: false
 <p>The Things Stack requires the <strong>LoRaWAN version</strong> and <strong>Regional Parameters</strong> (LoRaWAN PHY version) to be set per end device. These default to LoRaWAN version <strong>1.0.2</strong> and LoRaWAN Regional Parameters version <strong>1.0.2 Rev B</strong> for end devices imported from The Things Network Stack V2, because this configuration is the most consistent with V2.</p>
 <p>This means that all end devices need a frequency plan. You will have to choose the frequency plan corresponding to your region. See <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plans</a> for a list of supported Frequency Plans and their respective IDs.</p>
 <p>Furthermore, The Things Stack brings full support for all LoRaWAN versions, as well as Class B and Class C modes.</p>
+<h2 id="rx1delay">Rx1Delay</h2>
+<p>Devices imported from The Things Network Stack V2 are configured with an <code>Rx1Delay</code> of 1 second, by default. In The Things Stack we recommend using an <code>Rx1Delay</code> of 5 seconds to accommodate for high latency backhauls and/or <a href="https://www.thethingsindustries.com/docs/reference/peering/">peering with Packet Broker</a>. See the <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/">MAC settings guide</a> for more information and instructions about configuring <code>Rx1Delay</code>.</p>
 <h2 id="gateway-coverage">Gateway Coverage</h2>
 <p>The Packet Broker enables peering between networks, so traffic received by one network (e.g. the Public Community Network) but intended for a different network (The Things Stack) can be forwarded to and from that network. See the <a href="https://www.thethingsindustries.com/docs/reference/peering/">Peering Guide</a> for details on Packet Broker and how to enable it for your network.</p>
 <p>With Packet Broker enabled on both The Things Stack and The Things Network Stack V2, you can receive traffic on The Things Stack without having to re-configure any of your gateways.</p>
@@ -536,10 +538,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 26 Nov 2020.
+  Last changed by benolayinka on 04 Jan 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/21da11257c965cc9e733dfee24ffc3ac4f2235fd">
-      doc: Change info tags to note
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/dce6b2cb12ff168f7b6407d9110d78615fd63ed9">
+      doc: Document Rx1Delay v2 difference
     </a>
 </p>
 
