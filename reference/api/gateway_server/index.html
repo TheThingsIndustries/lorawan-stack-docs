@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.87592179d2b736be842bb7a3dd97c7a09f561effecbfb81ec0a18685eb1bd4e0.css" integrity="sha256-h1khedK3Nr6EK7ej3ZfHoJ9WHv/sv7gewKGGhesb1OA=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.45d386bbe9461da2c68cc147f2b47a48cce08563140b3c48a4edfa2aad49f779.css" integrity="sha256-RdOGu&#43;lGHaLGjMFH8rR6SMzghWMUCzxIpO36Kq1J93k=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Gateway Server APIs">
@@ -216,37 +216,65 @@ This is not persisted between reconnects.
 
 <h2 id="messages">Messages</h2>
 <h3 id="message:GatewayIdentifiers">Message <code>GatewayIdentifiers</code></h3>
-
 <table>
-  <thead>
-    <tr>
-      <th style="width: 175px">Field</th>
-      <th style="width: 250px">Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
   <tbody>
     <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>gateway_id</code>
       </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
       <td><code>string</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
       <td>
           <p><code>max_len</code>: <code>36</code></p>
           <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
       </td>
     </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
     <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>eui</code>
       </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
       <td><code>bytes</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
       <td>
           <p>Secondary identifier, which can only be used in specific requests.</p>
       </td>
     </tr>
+    
   </tbody>
 </table>
+
 
 <details><summary>Show object example</summary>
 <pre><code>{
@@ -257,101 +285,225 @@ This is not persisted between reconnects.
 
 <h3 id="message:GatewayConnectionStats">Message <code>GatewayConnectionStats</code></h3>
 <p>Connection stats as monitored by the Gateway Server.</p>
-
 <table>
-  <thead>
-    <tr>
-      <th style="width: 175px">Field</th>
-      <th style="width: 250px">Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
   <tbody>
     <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>connected_at</code>
       </td>
-      <td><code>google.protobuf.Timestamp</code></td>
-      <td>
-      </td>
     </tr>
     <tr>
+      <th>
+        Type
+      </th>
+      <td><code>google.protobuf.Timestamp</code></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>protocol</code>
       </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
       <td><code>string</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
       <td>
           <p>Protocol used to connect (for example, udp, mqtt, grpc)</p>
       </td>
     </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
     <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>last_status_received_at</code>
       </td>
-      <td><code>google.protobuf.Timestamp</code></td>
-      <td>
-      </td>
     </tr>
     <tr>
+      <th>
+        Type
+      </th>
+      <td><code>google.protobuf.Timestamp</code></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>last_status</code>
       </td>
-      <td><a href="#message:GatewayStatus"><code>GatewayStatus</code></a></td>
-      <td>
-      </td>
     </tr>
     <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:GatewayStatus"><code>GatewayStatus</code></a></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>last_uplink_received_at</code>
       </td>
-      <td><code>google.protobuf.Timestamp</code></td>
-      <td>
-      </td>
     </tr>
     <tr>
+      <th>
+        Type
+      </th>
+      <td><code>google.protobuf.Timestamp</code></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>uplink_count</code>
       </td>
-      <td><code>uint64</code></td>
-      <td>
-      </td>
     </tr>
     <tr>
+      <th>
+        Type
+      </th>
+      <td><code>uint64</code></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>last_downlink_received_at</code>
       </td>
-      <td><code>google.protobuf.Timestamp</code></td>
-      <td>
-      </td>
     </tr>
     <tr>
+      <th>
+        Type
+      </th>
+      <td><code>google.protobuf.Timestamp</code></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>downlink_count</code>
       </td>
-      <td><code>uint64</code></td>
-      <td>
-      </td>
     </tr>
     <tr>
+      <th>
+        Type
+      </th>
+      <td><code>uint64</code></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>round_trip_times</code>
       </td>
-      <td><a href="#message:GatewayConnectionStats.RoundTripTimes"><code>GatewayConnectionStats.RoundTripTimes</code></a></td>
-      <td>
-      </td>
     </tr>
     <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:GatewayConnectionStats.RoundTripTimes"><code>GatewayConnectionStats.RoundTripTimes</code></a></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>sub_bands</code>
       </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
       <td>repeated <a href="#message:GatewayConnectionStats.SubBand"><code>GatewayConnectionStats.SubBand</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
       <td>
           <p>Statistics for each sub band.</p>
         
       </td>
     </tr>
+    
   </tbody>
 </table>
+
 
 <details><summary>Show object example</summary>
 <pre><code>{
@@ -369,50 +521,86 @@ This is not persisted between reconnects.
 </details>
 
 <h3 id="message:GatewayConnectionStats.RoundTripTimes">Message <code>GatewayConnectionStats.RoundTripTimes</code></h3>
-
 <table>
-  <thead>
-    <tr>
-      <th style="width: 175px">Field</th>
-      <th style="width: 250px">Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
   <tbody>
     <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>min</code>
       </td>
-      <td><code>google.protobuf.Duration</code></td>
-      <td>
-      </td>
     </tr>
     <tr>
+      <th>
+        Type
+      </th>
+      <td><code>google.protobuf.Duration</code></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>max</code>
       </td>
-      <td><code>google.protobuf.Duration</code></td>
-      <td>
-      </td>
     </tr>
     <tr>
+      <th>
+        Type
+      </th>
+      <td><code>google.protobuf.Duration</code></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>median</code>
       </td>
-      <td><code>google.protobuf.Duration</code></td>
-      <td>
-      </td>
     </tr>
     <tr>
+      <th>
+        Type
+      </th>
+      <td><code>google.protobuf.Duration</code></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>count</code>
       </td>
-      <td><code>uint32</code></td>
-      <td>
-      </td>
     </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>uint32</code></td>
+    </tr>
+    
   </tbody>
 </table>
+
 
 <details><summary>Show object example</summary>
 <pre><code>{
@@ -424,31 +612,57 @@ This is not persisted between reconnects.
 </details>
 
 <h3 id="message:GatewayStatus">Message <code>GatewayStatus</code></h3>
-
 <table>
-  <thead>
-    <tr>
-      <th style="width: 175px">Field</th>
-      <th style="width: 250px">Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
   <tbody>
     <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>time</code>
       </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
       <td><code>google.protobuf.Timestamp</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
       <td>
           <p>Current time of the gateway</p>
           <p><code>required</code></p>
       </td>
     </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
     <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>boot_time</code>
       </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
       <td><code>google.protobuf.Timestamp</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
       <td>
           <p><p>Boot time of the gateway</p>
 <ul>
@@ -457,11 +671,31 @@ This is not persisted between reconnects.
 </p>
       </td>
     </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
     <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>versions</code>
       </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
       <td>map of <code>string</code> to <code>string</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
       <td>
           <p><p>Versions of gateway subsystems</p>
 <ul>
@@ -481,11 +715,31 @@ hal: &ldquo;v2-3.5.0&rdquo;</li>
         
       </td>
     </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
     <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>antenna_locations</code>
       </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
       <td>repeated <a href="#message:Location"><code>Location</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
       <td>
           <p><p>Location of each gateway&rsquo;s antenna</p>
 <ul>
@@ -495,22 +749,62 @@ hal: &ldquo;v2-3.5.0&rdquo;</li>
         
       </td>
     </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
     <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>ip</code>
       </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
       <td>repeated <code>string</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
       <td>
           <p>IP addresses of this gateway.
 Repeated addresses can be used to communicate addresses of multiple interfaces (LAN, Public IP, &hellip;).</p>
         
       </td>
     </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
     <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>metrics</code>
       </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
       <td>map of <code>string</code> to <code>float</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
       <td>
           <p><p>Metrics</p>
 <ul>
@@ -524,11 +818,31 @@ Repeated addresses can be used to communicate addresses of multiple interfaces (
         
       </td>
     </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
     <tr>
+      <th style="width: 150px">
+        Field
+      </th>
       <td>
         <code>advanced</code>
       </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
       <td><code>google.protobuf.Struct</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
       <td>
           <p><p>Advanced metadata fields</p>
 <ul>
@@ -538,8 +852,10 @@ Repeated addresses can be used to communicate addresses of multiple interfaces (
 </p>
       </td>
     </tr>
+    
   </tbody>
 </table>
+
 
 <details><summary>Show object example</summary>
 <pre><code>{
