@@ -22,6 +22,26 @@ Your cluster address is:
 </code>
 </p>
 
+## API Endpoints
+
+The Application Server, Join Server, and Network Server APIs are all available in your regional cluster:
+
+<p>
+<code data-content="cluster-address">
+<span data-content="tenant-id"></span>.<span data-content="cluster-id"></span>.cloud.thethings.industries
+</code>
+</p>
+
+However, the Identity Server APIs are only available in the `eu1` cluster:
+
+<p>
+<code data-content="cluster-address">
+<span data-content="tenant-id"></span>.eu1.cloud.thethings.industries
+</code>
+</p>
+
+{{< warning >}}End-Device Registry API requests or other Identity Server API requests to any cluster other than `eu1` will fail. {{</ warning >}}
+
 ## Account and OAuth
 
 User accounts are stored in the `eu1` cluster. For registering users, logging in, changing your password and for performing OAuth flows, you need to use the following address:
