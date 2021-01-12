@@ -7,6 +7,10 @@ This reference gives details on how to customize the branding of the login pages
 
 <!--more-->
 
+## Cloud Branding
+
+Cloud users need to [contact The Things Industries](mailto:support@thethingsindustries.com) to update branding in the console. See below for what's available to customize and what files are necessary. To request a branding update, either send us a link to a CDN which hosts these files or attach them to the email.
+
 ## Title, Subtitle and Description
 
 The title, subtitle and description of the login pages and the console can be changed using configuration options. See for details the [Identity Server configuration reference]({{< ref "/reference/configuration/identity-server#oauth-ui-options" >}}) and the [Console configuration reference]({{< ref "/reference/configuration/console" >}}).
