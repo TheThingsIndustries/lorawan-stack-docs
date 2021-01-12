@@ -18,6 +18,12 @@ $ brew install TheThingsNetwork/lorawan-stack/ttn-lw-stack
 
 {{< note >}} When installing with `brew`, auto completion is enabled automatically. {{</ note >}}
 
+To upgrade the CLI if it is already installed, use:
+
+```bash
+$ brew upgrade TheThingsNetwork/lorawan-stack/ttn-lw-stack
+```
+
 #### Linux
 
 ```bash
@@ -26,6 +32,12 @@ $ sudo snap alias ttn-lw-stack.ttn-lw-cli ttn-lw-cli
 ```
 
 {{< note >}} When installing with `snap`, auto completion is enabled automatically. {{</ note >}}
+
+To upgrade the CLI if it is already installed, use:
+
+```bash
+$ sudo snap refresh ttn-lw-stack
+```
 
 ### Binaries
 
