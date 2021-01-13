@@ -1,0 +1,17 @@
+{{ $new := ( where .Site.RegularPages "Type" "whats-new" ) }}
+{{ $sorted := $new.ByParam "date" }}
+{{ range last 1 $sorted }}
+<section class="is-fullwidth whats-new">
+  <div class="whats-new-content">
+    <div class="whats-new-header">
+      <h2 class="title is-size-5"><a href={{ .Permalink }}>What's new in V{{ .Title }}</a></h2>
+      <a href="{{ .Permalink }}">See all release notes⟶</a>
+    </div>
+    <a href="{{ .Permalink }}">
+      <div class="whats-new-items">
+        {{ .Content | markdownify}}
+      </div>
+    </a>
+  </div>
+</section>
+{{ end }}
