@@ -25,13 +25,12 @@ Use the `ref` shortcode. For example, [this is a link to the component reference
 
 ## Distributions {{< distributions-inline "Cloud", "Enterprise" >}} {#distributions}
 
-To mark a document as applicable to only one or more distributions, there are three options:
+To mark a document as applicable to only one or more distributions, do one of the following:
 
 1. Add an array of titles to a `distributions` front matter element. This will mark the page in the parent's table of contents, and will produce a notification on the page
-2. Use the {{< distributions "Enterprise" "Cloud" >}} shortcode to produce a notification on the page
-3. Use the {{< distributions-inline "Enterprise" >}} shortcode to produce an inline notification. This is especially useful for tables and lists
+2. Use the {{< distributions "Enterprise" "Cloud" >}} shortcode to produce an inline notification on the page
 
-Note that if you use the `{{< distributions-inline >}}` shortcode in a heading, Hugo will not correctly generate the ID element for it. [Manually add the heading](https://gohugo.io/content-management/cross-references/#heading-ids), i.e `## Cloud Specific Section {{< distributions-inline "Cloud" >}} {#cloud-specific-section}`
+Note that if you use the `{{< distributions >}}` shortcode in a heading, Hugo will not correctly generate the ID element for it. [Manually add the heading](https://gohugo.io/content-management/cross-references/#heading-ids), i.e `## Cloud Specific Section {{< distributions-inline "Cloud" >}} {#cloud-specific-section}`
 
 Available distributions are {{< distributions-list >}} and are stored in `data/distributions.yml`.
 
