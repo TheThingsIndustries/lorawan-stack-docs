@@ -136,6 +136,12 @@ By default users can create applications, gateways, organizations and OAuth clie
 - `is.user-rights.create-gateways`: Allow non-admin users to create gateways in their user account
 - `is.user-rights.create-organizations`: Allow non-admin users to create organizations in their user account
 
+## Admin Rights Options {{< new-in-version "3.10.6" >}} {#admin-rights-options}
+
+By default admins are granted _almost_ all rights on all entities in the network. The default configuration does not allow admins to read secrets, such as the root keys of end devices, and the CUPS/LNS secrets of gateways. This also means that admins can not assign those rights to others. The following option can be used to grant admin users all possible rights.
+
+- `is.admin-rights.all`: Grant all rights to admins, including `_KEYS` and `_ALL`
+
 ## Gateway Secrets Encryption Options {{< new-in-version "3.10" >}} {#gateway-secrets-encryption-options}
 
 - `is.gateways.encryption-key-id`: ID of the key used to encrypt gateway secrets at rest.
