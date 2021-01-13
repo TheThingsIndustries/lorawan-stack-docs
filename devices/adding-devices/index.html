@@ -176,6 +176,13 @@ debug: false
     <img src="device-abp-created.png"
          alt="ABP device overview"/> 
 </figure>
+<h2 id="set-device-location">Set Device Location</h2>
+<p>Once you have added your end device to The Things Stack, you can also set its location to be displayed on a map widget by clicking <strong>Change location settings</strong>.</p>
+<p>The end device location can be manually set by pinning on the map widget, or entering the <strong>Latitude</strong>, <strong>Longitude</strong> and <strong>Altitude</strong> values.</p>
+<figure>
+    <img src="device-location.png"
+         alt="Gateway location"/> 
+</figure>
 </section>
 <section data-content="cli">
   <h2 id="adding-devices-using-the-cli">Adding Devices using the CLI</h2>
@@ -223,6 +230,43 @@ $ ttn-lw-cli end-devices create --help
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   You can also pass <code>--with-session</code> to have a session generated.
 </div>
+<h2 id="set-device-location">Set Device Location</h2>
+<p>Once you have added your end device to The Things Stack, you can also set its location.</p>
+<p>Set your end device&rsquo;s location with:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;your-application-id&#34;</span> 
+$ <span class="nv">DEVICE_ID</span><span class="o">=</span><span class="s2">&#34;your-device-id&#34;</span>
+$ ttn-lw-cli end-devices <span class="nb">set</span> <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
+</span><span class="se"></span>  --location.latitude 43.84 <span class="se">\
+</span><span class="se"></span>  --location.longitude 18.32 <span class="se">\
+</span><span class="se"></span>  --location.altitude <span class="m">500</span> <span class="se">\
+</span></code></pre></div><p>You can also set the end device location to be updated from various sources with the <code>--location.source</code> flag. The source of the location data can be the registry, GPS data, results of the LoRa RSSI geolocation, etc.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <p>Use <code>ttn-lw-cli end-devices set app1 dev1 --help</code> command to see the full list of the available location sources and other relatable info.</p>
+<p>If you set the alternative location source, the location settings you manually set will be overwritten by the automatic updates from that source.</p>
+</div>
+<p>The CLI will return something like:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;dev1&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;app1&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0004A30B001C0530&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;800000000000000C&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-05-27T15:50:38.567Z&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-12-25T11:16:20.592Z&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;locations&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;user&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;latitude&#34;</span><span class="p">:</span> <span class="mf">43.84</span><span class="p">,</span>
+      <span class="nt">&#34;longitude&#34;</span><span class="p">:</span> <span class="mf">18.32</span><span class="p">,</span>
+      <span class="nt">&#34;altitude&#34;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+      <span class="nt">&#34;source&#34;</span><span class="p">:</span> <span class="s2">&#34;SOURCE_REGISTRY&#34;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<p></code></pre></div></p>
 </section>
 
 </div>
@@ -279,10 +323,10 @@ $ ttn-lw-cli end-devices create --help
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 26 Nov 2020.
+  Last changed by Nejra on 23 Dec 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/21da11257c965cc9e733dfee24ffc3ac4f2235fd">
-      doc: Change info tags to note
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/e4398ea6f5999ec8bac68cb600a1dc2df9f08e3b">
+      doc: Document location usage
     </a>
 </p>
 

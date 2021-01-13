@@ -162,6 +162,23 @@ debug: false
     <img src="gateway-api-key-created.png"
          alt="Gateway API Key created"/> 
 </figure>
+<h2 id="set-gateway-location">Set Gateway Location</h2>
+<p>Once you have added your gateway to The Things Stack, you can also set its location to be displayed on a map widget by clicking <strong>Change location settings</strong>.</p>
+<p>If you do not mind your gateway&rsquo;s location to be publicly displayed, check the <strong>Publish location</strong> box.</p>
+<p>The gateway location can be manually set by entering the <strong>Latitude</strong>, <strong>Longitude</strong> and <strong>Altitude</strong> values.</p>
+<p>You can also check the <strong>Update from status messages</strong> box if you want to update the location based on the metadata from the incoming uplink gateway status messages.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The location settings you manually entered will be overwritten by the updates from the gateway status messages.
+</div>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The Things Stack Console currently supports setting one antenna location per gateway.
+</div>
+<figure>
+    <img src="gateway-location.png"
+         alt="Gateway location"/> 
+</figure>
 </section>
 <section data-content="cli">
   <h2 id="adding-gateways-using-the-cli">Adding Gateways using the CLI</h2>
@@ -186,6 +203,44 @@ debug: false
 </span><span class="se"></span>  --gateway-id gtw1 <span class="se">\
 </span><span class="se"></span>  --right-gateway-link
 </code></pre></div><p>The CLI will return an API key such as <code>NNSXS.VEEBURF3KR77ZR...</code>. This API key has only link rights and can therefore only be used for linking this gateway. Make sure to copy the key and save it in a safe place. You will not be able to see this key again in the future, and if you lose it, you can create a new one to replace it in the gateway configuration.</p>
+<h2 id="set-gateway-location">Set Gateway Location</h2>
+<p>Once you have added your gateway to The Things Stack, you can also set the locations of the gateway antennas.</p>
+<p>Add an antenna and set its location  with:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nv">GTW_ID</span><span class="o">=</span><span class="s2">&#34;your-gateway-id&#34;</span>
+$ ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span> <span class="se">\
+</span><span class="se"></span>  --antenna.location.latitude 43.84 <span class="se">\
+</span><span class="se"></span>  --antenna.location.longitude 18.32 <span class="se">\
+</span><span class="se"></span>  --antenna.location.altitude <span class="m">500</span> <span class="se">\
+</span><span class="se"></span>  --antenna.add <span class="se">\
+</span></code></pre></div><p>If you do not mind your gateway&rsquo;s location to be publicly displayed, append the <code>--location-public</code> flag.</p>
+<p>You can also set the gateway location to be updated from various sources with the <code>--antenna.location.source</code> flag. The source of the location data can be the registry, GPS data, results of the LoRa RSSI geolocation, etc.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <p>Use <code>ttn-lw-cli gateways set gtw1 --help</code> command to see the full list of the available location sources and other relatable info.</p>
+<p>If you set the alternative location source, the location settings you manually set will be overwritten by the automatic updates from that source.</p>
+</div>
+<p>The CLI will return something like:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;gtw1&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-05-27T14:43:13.606Z&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;version_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;auto_update&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&#34;antennas&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;latitude&#34;</span><span class="p">:</span> <span class="mf">43.84</span><span class="p">,</span>
+        <span class="nt">&#34;longitude&#34;</span><span class="p">:</span> <span class="mf">18.32</span><span class="p">,</span>
+        <span class="nt">&#34;altitude&#34;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+        <span class="nt">&#34;source&#34;</span><span class="p">:</span> <span class="s2">&#34;SOURCE_REGISTRY&#34;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&#34;location_public&#34;</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div>
 </section>
 
 </div>
@@ -242,10 +297,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 26 Nov 2020.
+  Last changed by Nejra on 23 Dec 2020.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/21da11257c965cc9e733dfee24ffc3ac4f2235fd">
-      doc: Change info tags to note
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/e4398ea6f5999ec8bac68cb600a1dc2df9f08e3b">
+      doc: Document location usage
     </a>
 </p>
 
