@@ -50,6 +50,14 @@ You will now reach the device overview page for your device. The end device shou
 
 {{< figure src="device-abp-created.png" alt="ABP device overview" >}}
 
+## Set Device Location
+
+Once you have added your end device to {{% tts %}}, you can also set its location to be displayed on a map widget by clicking **Change location settings**. 
+
+The end device location can be manually set by pinning on the map widget, or entering the **Latitude**, **Longitude** and **Altitude** values. 
+
+{{< figure src="device-location.png" alt="Gateway location" >}}
+
 {{< /tabs/tab >}}
 
 {{< tabs/tab "CLI" >}}
@@ -105,6 +113,53 @@ $ ttn-lw-cli end-devices create app1 dev2 \
 {{< note >}} The `NwkSKey` is returned as `f_nwk_s_int_key` ({{% tts %}} uses LoRaWAN 1.1 terminology). {{</ note >}}
 
 {{< note >}} You can also pass `--with-session` to have a session generated. {{</ note >}}
+
+## Set Device Location 
+
+Once you have added your end device to {{% tts %}}, you can also set its location. 
+
+Set your end device's location with:
+
+```bash
+$ APP_ID="your-application-id" 
+$ DEVICE_ID="your-device-id"
+$ ttn-lw-cli end-devices set $APP_ID $DEVICE_ID \
+  --location.latitude 43.84 \
+  --location.longitude 18.32 \
+  --location.altitude 500 \
+```
+
+You can also set the end device location to be updated from various sources with the `--location.source` flag. The source of the location data can be the registry, GPS data, results of the LoRa RSSI geolocation, etc. 
+
+{{< note >}} Use `ttn-lw-cli end-devices set app1 dev1 --help` command to see the full list of the available location sources and other relatable info. 
+
+If you set the alternative location source, the location settings you manually set will be overwritten by the automatic updates from that source. {{</ note >}}
+
+The CLI will return something like:
+
+```json
+{
+  "ids": {
+    "device_id": "dev1",
+    "application_ids": {
+      "application_id": "app1"
+    },
+    "dev_eui": "0004A30B001C0530",
+    "join_eui": "800000000000000C"
+  },
+  "created_at": "2020-05-27T15:50:38.567Z",
+  "updated_at": "2020-12-25T11:16:20.592Z",
+  "locations": {
+    "user": {
+      "latitude": 43.84,
+      "longitude": 18.32,
+      "altitude": 500,
+      "source": "SOURCE_REGISTRY"
+    }
+  }
+}
+
+```
 
 {{< /tabs/tab >}}
 
