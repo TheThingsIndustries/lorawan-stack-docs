@@ -11,21 +11,19 @@ This section documents the process of migrating end devices from {{% ttnv2 %}} t
 
 For a breakdown of differences between {{% ttnv2 %}} and {{% tts %}}, see the [Major Changes]({{< relref "major-changes" >}}) section.
 
->**Note**: 
->
->When migrating devices from the Public Community Network to {{< tts >}} Cloud, you may choose to transfer the active device sessions as well, which means that your devices will continue to work with {{% tts %}}. 
->
->When migrating from a private {{% ttnv2 %}}, devices that are outside of the DevAddr address block supported by {{% tts %}} Cloud will have to rejoin the network, otherwise {{% tts %}} will be unable to route their uplink and downlink traffic. 
->
->{{% tts %}} Dedicated Cloud, Enterprise and Marketplace Launcher deployments are not affected by this issue.
-
 ## Suggested Migration Process
 
-**First**: Update applications to support the {{% tts %}} data format. If you are using payload formatters, make sure to set them correctly from the Application settings page.
+**First**: Update your integrations to support the {{% tts %}} [Data Format]({{% ref "/reference/data-formats" %}}). If you are using [Payload Formatters]({{% ref "/integrations/payload-formatters" %}}), make sure to set them correctly from the Application settings page.
 
 **Second**: Follow this guide in order to migrate a single end device (and gateway, if needed) to {{% tts %}}. Continue by gradually migrating your end devices in small batches. Avoid migrating production workloads before you are certain that they will work as expected.
 
 **Finally**: Once you are confident that your end devices are working properly, migrate the rest of your devices and gateways to {{% tts %}}.
+
+## Migrating Active Sessions {{< distributions-inline "Cloud" >}}
+
+When migrating devices from the public {{< ttnv2 >}} to {{< tts >}} Cloud, you may choose to transfer the active device sessions as well, which means that your devices will continue to work with {{% tts %}} without rejoining.
+
+When migrating from a private {{% ttnv2 %}}, devices that are outside of the DevAddr address block supported by {{% tts %}} Cloud will have to rejoin the network, otherwise {{% tts %}} will be unable to route their uplink and downlink traffic.
 
 ## Configure ttn-lw-migrate
 
@@ -43,25 +41,32 @@ See [Frequency Plans]({{< ref src="/reference/frequency-plans" >}}) for the list
 
 ### Private {{% ttnv2 %}} deployments
 
-Private {{% ttnv2 %}} deployments are also supported, and require extra configuration. See `ttn-lw-migrate device --help` for more details. For most cases, it is enough to configure ttn-lw-migrate to use the Discovery Server of your installation, by setting the following environment variables:
+Private {{% ttnv2 %}} deployments are also supported, and require extra configuration. See `ttn-lw-migrate device --help` for more details. For most cases, it is enough to configure `ttn-lw-migrate` to use the Discovery Server of your installation, by setting the following environment variables:
 
 ```bash
 $ export TTNV2_DISCOVERY_SERVER_ADDRESS="discovery.<tenant>.thethings.industries:1900"
 ```
 
->**Note:**: If the Discovery Server is not using TLS, you will need to use the `--ttnv2.discovery-server-insecure` flag when running the `ttn-lw-migrate` commands below.
+{{< note >}} If the Discovery Server is not using TLS, you will need to use the `--ttnv2.discovery-server-insecure` flag when running the `ttn-lw-migrate` commands below. {{</ note >}}
 
 ## Export End Devices from {{% ttnv2 %}}
+
+Migration from {{% ttnv2 %}} to {{% tts %}} is one-way. LoRaWAN devices may only be handled by one Network Server at a time. The commands below will clear both the root keys and the session keys from {{% ttnv2 %}} after the devices are exported. **This means that the devices will no longer work in {{% ttnv2 %}}.**
+
+Execute commands with the `--dry-run` flag first to test exporting the devices without deleting the device keys from {{% ttnv2 %}}. When you are ready to migrate, be sure to export the devices **without** the `--dry-run` flag to remove the device keys from {{% ttnv2 %}}, as having the session keys present on both Network Servers is not supported, and will most likely lead to traffic issues and/or a corrupted device MAC state.
 
 In order to export a single device, use the following command. The device with ID `mydevice` will exported and saved to `device.json`.
 
 ```bash
-$ ttn-lw-migrate devices --source ttnv2 "mydevice" > devices.json
+# dry run first, verify that no errors occur
+$ ttn-lw-migrate devices --dry-run --verbose --source ttnv2 "mydevice" > devices.json
+# export device and delete keys from {{% ttnv2 %}}
+$ ttn-lw-migrate device --source ttnv2 "mydevice" > devices.json
 ```
 
->**Notes:**:
->- Payload formatters are not exported. See [Payload Formatters](https://thethingsstack.io/integrations/payload-formatters/).
->- Active device sessions are exported by default. You can disable this by using the `--ttnv2.with-session=false` flag. It is recommended that you do not export session keys for devices that can instead re-join on The Things Stack.
+{{< warning >}} The export process will clear the device root keys (**AppKey**) and session (**AppSKey**, **NwkSKey**, **DevAddr**, **FCntUp** and **FCntDown**) from {{% ttnv2 %}}. Execute any commands with the `--dry-run` first, which will do everything except delete the device keys from {{% ttnv2 %}}. {{</ warning >}}
+
+{{< note >}} The export process will halt if any error occurs. {{</ note >}}
 
 In order to export a large number of devices, create a file named `device_ids.txt` with one device ID per line:
 
@@ -76,76 +81,19 @@ device5
 And then export with:
 
 ```bash
+# dry run first, verify that no errors occur
+$ ttn-lw-migrate devices --verbose --dry-run --source ttnv2 < device_ids.txt > devices.json
+# export device
 $ ttn-lw-migrate devices --source ttnv2 < device_ids.txt > devices.json
 ```
 
 Alternatively, you can export all the end devices associated with your application, and save them in `all-devices.json`.
 
 ```bash
+# dry run first, verify that no errors occur
+$ ttn-lw-migrate application --verbose --dry-run --source ttnv2 "my-ttn-app" > all-devices.json
+# export device
 $ ttn-lw-migrate application --source ttnv2 "my-ttn-app" > all-devices.json
 ```
 
->**Note:** Keep in mind that an end device can only be registered in one Network Server at a time. After importing an end device to {{% tts %}}, you should remove it from {{% ttnv2 %}}. For OTAA devices, it is enough to simply change the AppKey, so the device can no longer join but the existing session is preserved. Next time the device joins, the activation will be handled by {{% tts %}}.
-
-## Disable Exported End Devices on V2
-
-It is important that you unset the `AppKey` property of your exported devices, so that they are able to join properly on {{% tts %}}. This can be done from
-the {{% ttnv2 %}} Console. If you are migrating a large number of devices, you can automate the process with `ttnctl`, the CLI for {{% ttnv2 %}}.
-
-### Configure V2 CLI
-
-For using `ttnctl` with **The Things Network**, follow [these instructions](https://www.thethingsnetwork.org/docs/network/cli/quick-start.html).
-
-When using a **private V2 network server**, provided by The Things Industries, go through the following steps:
-
-1. [Download](https://www.thethingsnetwork.org/docs/network/cli/quick-start.html) `ttnctl` for your operating system.
-2. Update `ttnctl` to the latest version by running:
-    ```bash
-    $ ttnctl selfupdate
-    ```
-3. Create a file called `.ttnctl.yml` in your home directory and fill it with the following information:
-    ```
-    auth-server: https://account.<domain_id>.thethings.industries
-    allow-insecure: false
-    data: /home/<user_name>/.ttnctl
-    router-id: <domain_id>-router
-    mqtt-address: <domain_id>.thethings.industries:1883
-    handler-id: <domain_id>-handler
-    discovery-address: <domain_id>.thethings.industries:1900
-    ```
-
-    **For windows users** make sure to use the `--config` flag with the full path to the configuration file:
-    ```
-    ttnctl.exe --config fullpath/config.yml
-    ```
-4. Get the access code needed for logging in: `https://<domain_id>.thethings.industries/users/authorize?client_id=ttnctl&redirect_uri=/oauth/callback/ttnctl&response_type=code`
-5. Login:
-    ```bash
-    $ ttnctl user login <access_code>
-    ```
-6. You are now logged in your private network, you should now see a folder named `/.ttnctl` in your home directory with private files.
-
-    > Optional: define an alias on ttnctl --config /home/<user_name>/.ttnctl/community.yml to go faster
-
-
-To get started, select the **AppID** and **AppEUI** of the application you want to export your end devices from:
-
-```bash
-$ ttnctl applications select
-```
-
-To clear the AppKey of an OTAA device, use the following command:
-
-```bash
-$ ttn-lw-migrate devices --source ttnv2 < device_ids.txt > devices.json
-```
-
-Alternatively, you can export all the end devices associated with your application, and save them in `all-devices.json`.
-
-```bash
-$ ttn-lw-migrate application --source ttnv2 "my-ttn-app" > all-devices.json
-```
-
-### Disable Exported End Devices on V2
-
-An end device can only be registered in one Network Server at a time. After importing an end device to {{% tts %}}, you should remove it from {{% ttnv2 %}}. For OTAA devices, it is enough to simply change the AppKey, so the device can no longer join but the existing session is preserved. Next time the device joins, the activation will be handled by {{% tts %}}.
+{{< warning >}} Migrating device sessions will not work on {{% tts %}} v3.10 or older versions. {{</ warning >}}
