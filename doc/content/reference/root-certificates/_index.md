@@ -23,7 +23,13 @@ Download the complete certificate list from curl [here](https://curl.haxx.se/ca/
 
 ## Minimal Certificate List for Common Installations
 
-This `.pem` file contains certificates used in standard {{% tts %}} deployments, and is small enough to fit on memory constrained devices such as Gateways.
+This `.pem` file contains certificates used in standard {{% tts %}} deployments, and is small enough to fit on memory constrained devices such as Gateways. This list includes the following CA certificates:
+
+- ISRG Root X1
+- DST Root CA X3
+- Baltimore CyberTrust Root
+- Amazon Root CA 1, 2, 3 and 4
+- The Things Industries Root CA
 
 Download the minimal certificate list <a href="ca.pem" download>here</a>.
 
@@ -37,8 +43,8 @@ Many {{% tts %}} deployments use the Let's Encrypt ISRG Root X1 Trust. If using 
 
 Some {{% tts %}} deployments use the Let's Encrypt DST Root X3 Trust, although it expires in 2021 and is being phased out. If your deployment uses the legacy DST Root X3 Trust, download it [here](https://letsencrypt.org/certs/trustid-x3-root.pem).
 
-{{< warning >}} Unfortunately, if you use a single certificate and that certificate expires, your gateway will stop connecting until you update the certificate. 
+{{< warning >}} Unfortunately, if you use a single certificate and that certificate expires, your gateway will stop connecting until you update the certificate.
 
-The minimal and complete certificate lists contain the ISRG Root X1 and DST Root X3 certificates, but some gateways do not support concatenated certificate lists, even though they are part of the [ietf spec](https://tools.ietf.org/html/rfc1421). :( 
-    
+The minimal and complete certificate lists contain the ISRG Root X1 and DST Root X3 certificates, but some gateways do not support concatenated certificate lists, even though they are part of the [ietf spec](https://tools.ietf.org/html/rfc1421). :(
+
 If you know you are using Let's Encrypt to secure your domain, use one of these `.pem` files as your gateway's Server Certificate for maximum compatibility. {{</ warning >}}
