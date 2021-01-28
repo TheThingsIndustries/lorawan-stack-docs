@@ -41,7 +41,7 @@ Many {{% tts %}} deployments use the Let's Encrypt ISRG Root X1 Trust. If using 
 
 ### DST Root X3
 
-Some {{% tts %}} deployments use the Let's Encrypt DST Root X3 Trust, although it expires in 2021 and is being phased out. If your deployment uses the legacy DST Root X3 Trust, download it [here](https://letsencrypt.org/certs/trustid-x3-root.pem).
+Some {{% tts %}} deployments use the Let's Encrypt DST Root X3 Trust, although it expires in 2021 and is being phased out. If your deployment uses the legacy DST Root X3 Trust, download it [here](https://www.identrust.com/dst-root-ca-x3).
 
 {{< warning >}} Unfortunately, if you use a single certificate and that certificate expires, your gateway will stop connecting until you update the certificate.
 
