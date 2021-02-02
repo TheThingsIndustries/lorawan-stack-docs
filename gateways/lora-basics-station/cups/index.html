@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.45d386bbe9461da2c68cc147f2b47a48cce08563140b3c48a4edfa2aad49f779.css" integrity="sha256-RdOGu&#43;lGHaLGjMFH8rR6SMzghWMUCzxIpO36Kq1J93k=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.93bf889e812af65dbe2953e7b778a90223cd131cfb1292f737d7021d52bcbde0.css" integrity="sha256-k7&#43;InoEq9l2&#43;KVPnt3ipAiPNExz7EpL3N9cCHVK8veA=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Configuration and Update Server (CUPS)">
@@ -166,7 +166,11 @@ debug: false
 $ <span class="nb">export</span> <span class="nv">LNS_KEY</span><span class="o">=</span><span class="s2">&#34;your-lns-api-key&#34;</span>
 $ <span class="nb">export</span> <span class="nv">SECRET</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> -n <span class="nv">$LNS_KEY</span> <span class="p">|</span> xxd -ps -u -c 8192<span class="k">)</span>
 $ ttn-lw-cli gateways update <span class="nv">$GTW_ID</span> --lbs-lns-secret.value <span class="nv">$SECRET</span>
-</code></pre></div><p>If successful, you should receive a response as follows:</p>
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  If you receive an error running <code>ttn-lw-cli gateways update</code>, you may need to update the CLI. See instructions in <a href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/">Installing the CLI</a>.
+</div>
+<p>If successful, you should receive a response as follows:</p>
 <details>
 <summary>Show CLI output</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
@@ -252,10 +256,10 @@ $ <span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer </sp
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 28 Dec 2020.
+  Last changed by benolayinka on 12 Jan 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/693ea2b50232a94e1090fd9d0bfe055ea6fe1393">
-      doc: Add note that CUPS overrides LNS
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2638b0b4e323b39d76f9bc405838b3ecf1715a8e">
+      doc: Add cups note to update CLI
     </a>
 </p>
 
