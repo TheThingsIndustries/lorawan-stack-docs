@@ -52,6 +52,8 @@ $ export SECRET=$(echo -n $LNS_KEY | xxd -ps -u -c 8192)
 $ ttn-lw-cli gateways update $GTW_ID --lbs-lns-secret.value $SECRET
 ```
 
+{{< note >}}If you receive an error running `ttn-lw-cli gateways update`, you may need to update the CLI. See instructions in [Installing the CLI]({{< ref "/getting-started/cli/installing-cli" >}}).{{</ note >}}
+
 If successful, you should receive a response as follows:
 
 <details>
