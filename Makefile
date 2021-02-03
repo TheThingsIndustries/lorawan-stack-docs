@@ -43,15 +43,15 @@ clean.deps:
 	rm -rf $(YARN_DEPS)
 
 .PHONY: build.internal
-build.internal: deps
+build.internal:
 	$(HUGO) --source $(DOC_ROOT) --destination $(INTERNAL_DEST)
 
 .PHONY: build.public
-build.public: deps
+build.public:
 	$(HUGO) --source $(DOC_ROOT) --destination $(PUBLIC_DEST) --baseURL $(HUGO_BASE_URL) --environment $(ENVIRONMENT)
 
 .PHONY: server
-server: deps
+server:
 	$(HUGO) server -s $(DOC_ROOT) --environment $(ENVIRONMENT)
 
 .PHONY: new
@@ -71,13 +71,7 @@ go.deps:
 	go mod download
 
 .PHONY: js.deps
-js.deps: $(YARN_DEPS)
-
-$(YARN_DEPS):
-	@if ! [ -x "$$(command -v yarn)" ]; then\
-		echo "Installing yarn";\
-			curl -o- -L https://yarnpkg.com/install.sh | bash;\
-	fi
+js.deps:
 	yarn --cwd doc/themes/the-things-stack/
 
 hugo.exe: go.mod go.sum
