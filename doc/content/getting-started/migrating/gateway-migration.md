@@ -4,9 +4,17 @@ weight: 2
 aliases: "/getting-started/migrating-from-v2/gateway-migration"
 ---
 
-For instructions on adding gateways to {{% tts %}} using the CLI or Console, see [Adding Gateways]({{< ref "gateways/adding-gateways" >}}).
+Migrating gateway is a two step process.
 
-When using the Semtech UDP Packet Forwarder, make sure to update the `server_address` in the gateway configuration settings to the address of the Gateway Server (e.g. `my-tts-network.nam1.cloud.thethings.industries`).
+### Step 1
+
+Add the Gateway in the {{% tts %}}. For instructions on adding gateways to {{% tts %}} using the CLI or Console, see [Adding Gateways]({{< ref "gateways/adding-gateways" >}}).
+
+### Step 2
+
+Update the server address in the gateway configuration settings.
+- When using the Semtech UDP Packet Forwarder, make sure to update the `server_address` in the gateway configuration settings to the address of the ateway Server (e.g. `my-tts-network.nam1.cloud.thethings.industries`).
+- When using the LoRa Basics Station protocol refer [LoRa Basics Station document]({{< ref "gateways/lora-basics-station" >}})
 
 Once your gateways are migrated, data will be routed to {{% tts %}}.
 

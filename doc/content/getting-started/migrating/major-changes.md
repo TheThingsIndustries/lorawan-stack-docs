@@ -6,7 +6,6 @@ aliases: ["/getting-started/migrating-from-v2/major-changes", "/getting-started/
 
 Before getting started, we will discuss major breaking changes between {{% ttnv2 %}} and {{% tts %}}, along with some guidelines to make the migration process easier to manage.
 
-See the [API comparison](#api-comparison) for a table of differences between V2 and V3.
 
 ## Architecture
 
@@ -74,9 +73,10 @@ Read more on [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}).
 
 #### Storage Integration
 
-{{% tts %}} does not currently support a Storage integration similar to {{% ttnv2 %}}. This feature will be added in a future release.
+{{% tts %}} does support a Storage integration similar to {{% ttnv2 %}}. Refer [Storage Integration]({{< ref "/integrations/storage" >}}).
 
 ## API Comparison
+{{% tts %}} provides multiple APIs. Refer [APIs Documentation]({{< ref "/reference/api" >}}). For example, MQTT API Comparison is given below.
 
 ### MQTT Connection Details
 

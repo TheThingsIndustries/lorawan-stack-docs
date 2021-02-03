@@ -5,7 +5,7 @@ weight: -1
 aliases: "/getting-started/migrating-from-networks"
 ---
 
-This guide documents the process of migrating end devices to {{% tts %}} in bulk, without the need for devices to initiate a rejoin.
+This guide documents the process of migrating end devices and gateways to {{% tts %}}.
 
 <!--more-->
 

@@ -25,11 +25,24 @@ When migrating devices from the public {{< ttnv2 >}} to {{< tts >}} Cloud, you m
 
 When migrating from a private {{% ttnv2 %}}, devices that are outside of the DevAddr address block supported by {{% tts %}} Cloud will have to rejoin the network, otherwise {{% tts %}} will be unable to route their uplink and downlink traffic.
 
-## Configure ttn-lw-migrate
+{{< warning >}} Migrating device sessions will not work on {{% tts %}} v3.10 or older versions. {{</ warning >}}
+
+## Pre-requisites
+
+1. User account in V2.
+2. User account in V3.
+3. Install [LoRaWAN stack migrate](#ttn-lw-migrate-tool) tool.
+
+## `ttn-lw-migrate` Tool
 
 End devices and applications can easily be migrated from {{% ttnv2 %}} to {{% tts %}} with the [`ttn-lw-migrate`](https://github.com/TheThingsNetwork/lorawan-stack-migrate) tool. This tool is used for exporting end devices and applications to a [JSON file]({{< ref "getting-started/migrating/device-json.md" >}}) containing their description. This file can later be imported in {{% tts %}} as described in the [Import End Devices in The Things Stack]({{< ref "getting-started/migrating/import-devices.md" >}}) section.
 
-First, configure the environment with the following variables modified according to your setup:
+### Installation
+Binaries are available on [GitHub](https://github.com/TheThingsNetwork/lorawan-stack-migrate/releases). Download the latest version asset according to your OS.
+
+### Configuration
+
+Configure the environment with the following variables modified according to your setup:
 
 ```bash
 $ export TTNV2_APP_ID="my-ttn-app"                    # TTN App ID
@@ -39,12 +52,19 @@ $ export FREQUENCY_PLAN_ID="EU_863_870_TTN"           # Frequency Plan ID for ex
 
 See [Frequency Plans]({{< ref src="/reference/frequency-plans" >}}) for the list of frequency plans available on {{% tts %}}. Make sure to specify the correct Frequency Plan ID. For example, the ID `EU_863_870_TTN` corresponds to the **Europe 863-870 MHz (SF9 for RX2 - recommended)** frequency plan.
 
-### Private {{% ttnv2 %}} deployments
+{{< note >}} For Windows OS, while configuring the app_id, app_access_key, frequency_plan_id replace `export` with `set`  and remove double-quotes as shown below. {{</ note >}}
+```bash
+$ set TTNV2_APP_ID=my-ttn-app                    # TTN App ID
+$ set TTNV2_APP_ACCESS_KEY=ttn-account-v2.a...   # TTN App Access Key (needs `devices` permissions)
+$ set FREQUENCY_PLAN_ID=EU_863_870_TTN           # Frequency Plan ID for exported devices
+```
+
+### Configuration for {{% ttnv2 %}} private deployments
 
 Private {{% ttnv2 %}} deployments are also supported, and require extra configuration. See `ttn-lw-migrate device --help` for more details. For most cases, it is enough to configure `ttn-lw-migrate` to use the Discovery Server of your installation, by setting the following environment variables:
 
 ```bash
-$ export TTNV2_DISCOVERY_SERVER_ADDRESS="discovery.<tenant>.thethings.industries:1900"
+$ export TTNV2_DISCOVERY_SERVER_ADDRESS="<instance-id>.thethings.industries:1900"
 ```
 
 {{< note >}} If the Discovery Server is not using TLS, you will need to use the `--ttnv2.discovery-server-insecure` flag when running the `ttn-lw-migrate` commands below. {{</ note >}}
@@ -64,7 +84,7 @@ $ ttn-lw-migrate devices --dry-run --verbose --source ttnv2 "mydevice" > devices
 $ ttn-lw-migrate device --source ttnv2 "mydevice" > devices.json
 ```
 
-{{< warning >}} The export process will clear the device root keys (**AppKey**) and session (**AppSKey**, **NwkSKey**, **DevAddr**, **FCntUp** and **FCntDown**) from {{% ttnv2 %}}. Execute any commands with the `--dry-run` first, which will do everything except delete the device keys from {{% ttnv2 %}}. {{</ warning >}}
+{{< warning >}} The export process will clear the device root keys (**AppKey**) and session (**AppSKey**, **NwkSKey**, **DevAddr**, **FCntUp** and **FCntDown**) from {{% ttnv2 %}} by default. You can disable this by using the  `--ttnv2.with-session=false` flag. {{</ warning >}}
 
 {{< note >}} The export process will halt if any error occurs. {{</ note >}}
 
@@ -83,7 +103,7 @@ And then export with:
 ```bash
 # dry run first, verify that no errors occur
 $ ttn-lw-migrate devices --verbose --dry-run --source ttnv2 < device_ids.txt > devices.json
-# export device
+# export devices
 $ ttn-lw-migrate devices --source ttnv2 < device_ids.txt > devices.json
 ```
 
@@ -92,8 +112,9 @@ Alternatively, you can export all the end devices associated with your applicati
 ```bash
 # dry run first, verify that no errors occur
 $ ttn-lw-migrate application --verbose --dry-run --source ttnv2 "my-ttn-app" > all-devices.json
-# export device
+# export devices
 $ ttn-lw-migrate application --source ttnv2 "my-ttn-app" > all-devices.json
 ```
 
-{{< warning >}} Migrating device sessions will not work on {{% tts %}} v3.10 or older versions. {{</ warning >}}
+After exporting the end devices in to a json file you can refer [Import End Devices Document]({{< ref "getting-started/migrating/import-devices.md" >}}) in {{% tts %}} for next steps.
+
