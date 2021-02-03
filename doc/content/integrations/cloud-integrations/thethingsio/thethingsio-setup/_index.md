@@ -45,12 +45,8 @@ function main(params, callback){
 
 Once you have created the product and the parser function, thethings.iO setup is ready. The next step will be creating the Webhook integration on {{% tts %}}. 
 
-However, to complete the Webhook integration, you will need some information that can be obtained from your product's callback URL.
-
-You can find your product's callback URL if you navigate back to **Things** on the left hand menu, find the product you created and click on **Details**. The **Callback URL** is listed in the **Details** window on the top left.
+To complete the Webhook integration, you will need some information about the product you created in the previous steps. You can find the **Product ID** and its **Hash** in the **Details** window of the created product.
 
 {{< figure src="callback-url.png" alt="Callback URL" >}}
-
-{{< note >}} The callback URL contains your product's ID and its hash. For example, if your callback URL is `https://subscription.thethings.io/lora/foo/bar?idname={DevEUI}`, the product ID is `foo` and the hash is `bar`. {{</ note >}}
 
 At this point, you can see that the API has not been called yet. Also, if you scroll down and check the **Things** section, you will see that your product does not have any things activated yet. After we complete the integration, a thing will be activated within your product, you will see the API calls and you will be able to visualize the incoming data!
