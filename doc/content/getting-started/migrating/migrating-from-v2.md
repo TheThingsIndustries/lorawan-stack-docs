@@ -29,8 +29,8 @@ When migrating from a private {{% ttnv2 %}}, devices that are outside of the Dev
 
 ## Pre-requisites
 
-1. User account in V2.
-2. User account in V3.
+1. User account in {{% ttnv2 %}}.
+2. User account in {{% tts %}} V3.
 3. Install [LoRaWAN stack migrate](#ttn-lw-migrate-tool) tool.
 
 ## `ttn-lw-migrate` Tool
@@ -116,5 +116,5 @@ $ ttn-lw-migrate application --verbose --dry-run --source ttnv2 "my-ttn-app" > a
 $ ttn-lw-migrate application --source ttnv2 "my-ttn-app" > all-devices.json
 ```
 
-After exporting the end devices in to a json file you can refer [Import End Devices Document]({{< ref "getting-started/migrating/import-devices.md" >}}) in {{% tts %}} for next steps.
+After exporting the end devices in to a json file you can refer to [Import End Devices Document]({{< ref "getting-started/migrating/import-devices.md" >}}) in {{% tts %}} for next steps.
 

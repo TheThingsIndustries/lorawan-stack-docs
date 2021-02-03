@@ -73,10 +73,10 @@ Read more on [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}).
 
 #### Storage Integration
 
-{{% tts %}} does support a Storage integration similar to {{% ttnv2 %}}. Refer [Storage Integration]({{< ref "/integrations/storage" >}}).
+{{% tts %}} does support a Storage integration similar to {{% ttnv2 %}}. Refer to [Storage Integration]({{< ref "/integrations/storage" >}}).
 
 ## API Comparison
-{{% tts %}} provides multiple APIs. Refer [APIs Documentation]({{< ref "/reference/api" >}}). For example, MQTT API Comparison is given below.
+{{% tts %}} provides multiple APIs. Refer to [APIs Documentation]({{< ref "/reference/api" >}}). For example, MQTT API Comparison is given below.
 
 ### MQTT Connection Details
 
