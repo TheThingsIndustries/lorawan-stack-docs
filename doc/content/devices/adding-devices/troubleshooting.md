@@ -18,6 +18,7 @@ Device event logs can be found in the console in the device's general informatio
 - Double check frequency plan settings in your end device and gateways (they must be the same LoRaWAN band)
 - Double check your network connection. If there is a slow connection from the server to the gateway, the join accept message may be sent too late (this can happen when a gateway uses 3G as a backhaul). If using the CLI, run `ttn-lw-cli gateways connection-stats <gateway-id>` to see the round trip time (RTT) for your gateway
 - Check for duplicate use of JoinNonce (or AppNonce) and/or DevNonce
+- Adjust ADR and link check settings to conditions which the device is located in
 
 ### No downlinks are reaching my device. What do I do?
 
