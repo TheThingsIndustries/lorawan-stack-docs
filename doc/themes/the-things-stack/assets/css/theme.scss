@@ -55,7 +55,7 @@ $navbar-item-color: $blue;
 $navbar-item-hover-background-color: $blue-bg;
 $navbar-item-active-color: $blue;
 $navbar-item-active-background-color: $white-bis;
-$navbar-height: 4rem;
+$navbar-height: 6rem;
 
 $card-content-padding:2rem;
 
@@ -70,17 +70,18 @@ $tabs-border-bottom-color: $blue;
 
 $content-blockquote-background-color: inherit;
 
+$column-gap: 1.25rem;
+
+$content-padding-top: 2rem;
+
+// Modular imports broken in bulma 0.9
+// https://github.com/jgthms/bulma/issues/2797
+
 @import "bulma/bulma.sass";
 
 @import "vendor/basicLightbox.min.scss";
 
-html {
-  margin: 0 10%;
-}
-
-.section {
-  padding: 10px 0 100px 0;
-}
+// Tabs
 
 .tabs.is-boxed li.is-active a {
   background-color: $blue-alt !important;
@@ -99,31 +100,7 @@ html {
   background-color: $blue-bg;
 }
 
-.logo {
-  width: 125px;
-}
-
-.button.is-primary {
-  font-size: 0.8rem;
-  padding: 18px 15px;
-}
-
-.navbar.is-fixed-top {
-  padding: 0 10%;
-  background-color: #FFFFFF;
-}
-
-.navbar-start {
-  margin: auto;
-}
-
-
-a.navbar-item {
-  font-family: $family-sans-serif;
-  font-size: 0.8rem;
-  border-radius: 5px;
-  margin: 10px 5px;
-}
+// General
 
 .is-not-wrapped {
   white-space: nowrap;
@@ -133,10 +110,7 @@ a.navbar-item {
   border: 0 !important
 }
 
-.content-intro, .title-intro {
-  display: flex;
-  margin: auto;
-  max-width: 650px;
+.table.has-text-in-td-centered td {
   text-align: center;
 }
 
@@ -144,52 +118,16 @@ a.navbar-item {
   margin: 100px 0px;
 }
 
-.card {
-  &.has-radius {
-    border-radius: $radius;
-  }
-  &.is-fullwidth {
-    width: 100%;
-  }
-
-  .card-content {
-    display: flex;
-    height: 100%;
-    flex-direction: column;
-  }
-
-  .buttons {
-    margin-top: auto;
-  }
-}
-
-.hero {
-  &.has-radius {
-    border-radius: 10px;
-  }
-  padding: 20px;
+.content-intro, .title-intro {
+  display: flex;
+  margin: auto;
+  max-width: 650px;
+  text-align: center;
 }
 
 .has-vertical-space {
   margin-top: 3rem;
   margin-bottom: 3rem;
-}
-
-.has-image-centered {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.columns.has-same-height .column {
-  display: flex;
-}
-
-h1 {
-  padding-top: 100px;
-}
-
-.title.is-size-4 {
-  padding-top: 100px;
 }
 
 .content {
@@ -232,12 +170,6 @@ h1 {
 
 }
 
-.hero.is-primary {
-  background-image: url(../img/hero-bg.svg);
-  background-size: cover;
-  margin: 100px 0px 150px 0px;
-}
-
 .footer {
   background-size: cover;
   .title {
@@ -254,50 +186,12 @@ h1 {
   }
 }
 
-.background-footer {
-  background-color: $white;
-  color: $graphite;
-}
-
-.table.has-text-in-td-centered td {
-  text-align: center;
-}
-
-body {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-  main {
-    flex: 1;
-  }
-
-  tbody{
-    border: 1px solid $white-ter;
-  }
-}
-
-html.has-navbar-fixed-top {
-  body {
-    min-height: calc(100vh - #{$navbar-height});
-  }
-  :target::before {
-    content: "";
-    display: block;
-    height: $navbar-height;
-    margin-top: -$navbar-height;
-  }
-}
-
 details + p {
   margin-top: 1em;
 }
 
 details + blockquote {
   margin-top: 1em;
-}
-
-.event-description:first-letter {
-  text-transform: uppercase;
 }
 
 .glossary {
@@ -339,10 +233,6 @@ details + blockquote {
   filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.1));
   font-size: 20px;
   left: -1px; // Hack for left-justified dropdown
-}
-
-.is-one-quarter p {
-  margin-bottom: 0.4em;
 }
 
 #migration-text {
@@ -444,6 +334,64 @@ table.fixed td { overflow: auto; }
 
 .card {
   overflow: visible;
+// Column View
+
+.sidebar-left {
+    order: 0;
+
+    @media (min-width: $desktop) {
+    border-right: 1px solid #e9ecef;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 2 * $content-padding-top;
+    align-self: flex-start; /* Fix for sticky in flex */
+    }
+}
+
+.sidebar-right {
+  order: 2;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 2 * $content-padding-top;
+  align-self: flex-start;
+}
+
+.toc, .docs-content, .side-navigation {
+  padding-top: $content-padding-top;
+}
+
+.toc li {
+    margin-top: 0.375rem;
+    padding-top: 0.375rem;
+
+    ul li {
+      border-top: none;
+      padding-left: 1rem;
+      margin-top: 0.125rem;
+      padding-top: 0.125rem;
+    }
+}
+
+.docs-content {
+  order: 1;
+}
+
+.doc-links {
+  padding-top: 4rem;
+}
+
+.navbar {
+    border-bottom: 1px solid #e9ecef;
+}
+
+// Fix for anchor link headbutting https://css-tricks.com/hash-tag-links-padding/
+h2::before, h3::before, h4::before {
+  display: block;
+  content: " ";
+  margin-top: -$navbar-height - 1rem;
+  height: $navbar-height + 1rem;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .cli-flags dd {

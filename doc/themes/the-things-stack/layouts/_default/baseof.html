@@ -2,38 +2,35 @@
 
 <html class="has-navbar-fixed-top">
 
-{{ partial "head.html" . }}
+{{ partial "head/head.html" . }}
 
-{{- $hasSidebar := false -}}
-{{ if eq .Kind "section" "page" -}}
-  {{ $hasSidebar = and (not (eq .CurrentSection .FirstSection)) (not (eq . .FirstSection)) -}}
-  {{ if not (eq .CurrentSection.Parent .FirstSection) -}}
-    {{ .Scratch.Set "section" .CurrentSection.Parent -}}
-  {{ end -}}
-{{ end }}
+{{- $hasSidebar := not (eq .Page.File.Ext "html") -}}
 
 <body>
 
-{{ partial "header.html" . }}
+{{ partial "header/header.html" . }}
 
-<main>
-<section class="section">
-  <div class="container">
-    <div class="columns">
-      {{ if $hasSidebar }}
-      <div class="column is-one-third">
-        {{- block "sidebar" . }}{{- end }}
+<div class="container is-fluid" role="document">
+  <div class="columns is-marginless is-desktop">
+    {{ if $hasSidebar }}
+      <div class="column is-3-desktop sidebar-left">
+        <nav class="docs-links" aria-label="Main navigation">
+        {{ partial "sidebar/side-navigation.html" . }}
+        </nav>
       </div>
-      {{ end }}
-      <div class="column{{ if $hasSidebar }} is-two-thirds{{ end }}">
-        {{- block "main" . }}{{- end }}
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="docs-links" aria-label="Page navigation">
+        {{ partial "sidebar/toc.html" . }}
+        </nav>
       </div>
+    {{ end }}
+    <div class="column {{ if $hasSidebar }} is-7-desktop {{ end }}">
+      {{- block "main" . }}{{- end }}
     </div>
   </div>
-</section>
-</main>
+</div>
 
-{{ partial "footer.html" . }}
+{{ partial "footer/footer.html" . }}
 
 </body>
 
