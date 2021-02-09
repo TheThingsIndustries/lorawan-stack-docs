@@ -135,7 +135,8 @@ debug: false
 
 
 <p>This section contains instructions on how to migrate end devices from ChirpStack to The Things Stack.</p>
-<p>End devices and applications can easily be migrated from ChirpStack to The Things Stack with the <code>ttn-lw-migrate</code> tool. This tool is used for exporting end devices and applications to a <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON file</a> containing their description. This file can later be imported in The Things Stack as described in the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">Import End Devices in The Things Stack</a> section.</p>
+<h2 id="configure-ttn-lw-migrate">Configure ttn-lw-migrate</h2>
+<p>End devices and applications can easily be migrated from ChirpStack to The Things Stack with the <a href="https://github.com/TheThingsNetwork/lorawan-stack-migrate"><code>ttn-lw-migrate</code></a> tool. This tool is used for exporting end devices and applications to a <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON file</a> containing their description. This file can later be imported in The Things Stack as described in the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">Import End Devices in The Things Stack</a> section.</p>
 <p>First, configure the environment with the following variables modified according to your setup:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">CHIRPSTACK_API_URL</span><span class="o">=</span><span class="s2">&#34;localhost:8080&#34;</span>    <span class="c1"># ChirpStack Application Server URL</span>
 $ <span class="nb">export</span> <span class="nv">CHIRPSTACK_API_TOKEN</span><span class="o">=</span><span class="s2">&#34;7F0as987e61...&#34;</span>  <span class="c1"># ChirpStack API key</span>
@@ -167,15 +168,18 @@ $ <span class="nb">export</span> <span class="nv">CHIRPSTACK_API_INSECURE</span
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-migrate --source chirpstack application <span class="s2">&#34;app1&#34;</span> &gt; application.json
 </code></pre></div><p>To export end devices from multiple applications to an <code>applications.json</code> file, you need to create a <code>.txt</code> file containing one application name per line and run the following command in your terminal:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-migrate --source chirpstack application &lt; applications.txt &gt; applications.json
-</code></pre></div><div class="notification is-info is-light has-text-dark">
+</code></pre></div><p><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <ul>
-<li>ABP end devices without an active session can be exported from ChirpStack, but cannot be imported in The Things Stack.</li>
-<li><code>MaxEIRP</code> parameter may not be always set properly.</li>
-<li>ChirpStack <code>variables</code> parameter related to payload formatting will always be converted to <code>null</code> when the end device is imported to The Things Stack.</li>
-</ul>
-
+  ABP end devices without an active session can be exported from ChirpStack, but cannot be imported in The Things Stack.
 </div>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <code>MaxEIRP</code> parameter may not be always set properly.
+</div>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  ChirpStack <code>variables</code> parameter related to payload formatting will always be converted to <code>null</code> when the end device is imported to The Things Stack.
+</div></p>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -222,10 +226,10 @@ $ <span class="nb">export</span> <span class="nv">CHIRPSTACK_API_INSECURE</span
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 25 Nov 2020.
+  Last changed by Aggelos Kolaitis on 21 Jan 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/cd702053eceb85929389def980e30c175b89e7fd">
-      doc: Update notes in Getting Started
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/18ffa7d9a9542d0dadb338834d38d5532783fd26">
+      doc: Update ttn-lw-migrate instructions
     </a>
 </p>
 

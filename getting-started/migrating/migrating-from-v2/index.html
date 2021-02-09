@@ -137,75 +137,89 @@ debug: false
 <p>This section documents the process of migrating end devices from The Things Network Stack V2 to The Things Stack.</p>
 <p>For a breakdown of differences between The Things Network Stack V2 and The Things Stack, see the <a href="/docs/getting-started/migrating/major-changes/">Major Changes</a> section.</p>
 <h2 id="suggested-migration-process">Suggested Migration Process</h2>
-<p><strong>First</strong>: Update applications to support the The Things Stack data format. If you are using payload formatters, make sure to set them correctly from the Application settings page.</p>
+<p><strong>First</strong>: Update your integrations to support the The Things Stack <a href="https://www.thethingsindustries.com/docs/reference/data-formats/">Data Format</a>. If you are using <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">Payload Formatters</a>, make sure to set them correctly from the Application settings page.</p>
 <p><strong>Second</strong>: Follow this guide in order to migrate a single end device (and gateway, if needed) to The Things Stack. Continue by gradually migrating your end devices in small batches. Avoid migrating production workloads before you are certain that they will work as expected.</p>
 <p><strong>Finally</strong>: Once you are confident that your end devices are working properly, migrate the rest of your devices and gateways to The Things Stack.</p>
-<h2 id="configure-v2-cli">Configure V2 CLI</h2>
-<p>For using <code>ttnctl</code> with <strong>The Things Network</strong>, follow <a href="https://www.thethingsnetwork.org/docs/network/cli/quick-start.html">these instructions</a>.</p>
-<p>When using a <strong>private V2 network server</strong>, provided by The Things Industries, go through the following steps:</p>
+<h2 id="migrating-active-sessions-hahahugoshortcode-s10-hbhb">Migrating Active Sessions 
+
+
+
+
+  
+
+
+<span class="distribution-inline">Cloud Only</span>
+
+</h2>
+<p>When migrating devices from the public The Things Network Stack V2 to The Things Stack Cloud, you may choose to transfer the active device sessions as well, which means that your devices will continue to work with The Things Stack without rejoining.</p>
+<p>When migrating from a private The Things Network Stack V2, devices that are outside of the DevAddr address block supported by The Things Stack Cloud will have to rejoin the network, otherwise The Things Stack will be unable to route their uplink and downlink traffic.</p>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  Migrating device sessions will not work on The Things Stack v3.10 or older versions.
+</div>
+<h2 id="pre-requisites">Pre-requisites</h2>
 <ol>
-<li>
-<p><a href="https://www.thethingsnetwork.org/docs/network/cli/quick-start.html">Download</a> <code>ttnctl</code> for your operating system.</p>
-</li>
-<li>
-<p>Update <code>ttnctl</code> to the latest version by running:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttnctl selfupdate
-</code></pre></div></li>
-<li>
-<p>Create a file called <code>.ttnctl.yml</code> in your home directory and fill it with the following information:</p>
-<pre><code>auth-server: https://account.&lt;domain_id&gt;.thethings.industries
-allow-insecure: false
-data: /home/&lt;user_name&gt;/.ttnctl
-router-id: &lt;domain_id&gt;-router
-mqtt-address: &lt;domain_id&gt;.thethings.industries:1883
-handler-id: &lt;domain_id&gt;-handler
-discovery-address: &lt;domain_id&gt;.thethings.industries:1900
-</code></pre><p><strong>For windows users</strong> make sure to use the <code>--config</code> flag with the full path to the configuration file:</p>
-<pre><code>ttnctl.exe --config fullpath/config.yml
-</code></pre></li>
-<li>
-<p>Get the access code needed for logging in: <code>https://&lt;domain_id&gt;.thethings.industries/users/authorize?client_id=ttnctl&amp;redirect_uri=/oauth/callback/ttnctl&amp;response_type=code</code></p>
-</li>
-<li>
-<p>Login:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttnctl user login &lt;access_code&gt;
-</code></pre></div></li>
-<li>
-<p>You are now logged in your private network, you should now see a folder named <code>/.ttnctl</code> in your home directory with private files.</p>
-<blockquote>
-<p>Optional: define an alias on ttnctl &ndash;config /home/&lt;user_name&gt;/.ttnctl/community.yml to go faster</p>
-</blockquote>
-</li>
+<li>User account in The Things Network Stack V2.</li>
+<li>User account in The Things Stack V3.</li>
+<li>Install <a href="#ttn-lw-migrate-tool">LoRaWAN stack migrate</a> tool.</li>
 </ol>
-<h2 id="export-end-devices-from-v2">Export End Devices from V2</h2>
-<p>In this step, the end devices from The Things Network Stack V2 will be exported in a JSON format that can then be parsed and imported by The Things Stack.</p>
-<p>The exported end devices contain the device name, description, location data, activation mode (ABP/OTAA), root keys and the AppEUI. They also contain the session keys, so your OTAA devices can simply keep working with The Things Stack.</p>
-<p>To get started, select the <strong>AppID</strong> and <strong>AppEUI</strong> of the application you want to export your end devices from:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttnctl applications <span class="k">select</span>
-</code></pre></div><p>After selecting the application, make sure that you can list the available end devices:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttnctl devices list
-</code></pre></div><h3 id="exporting-devices">Exporting Devices</h3>
-<p>In order to export a single device, use the following command. The device will be saved to <code>device.json</code>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttnctl devices <span class="nb">export</span> <span class="s2">&#34;device-id&#34;</span> --frequency-plan-id EU_863_870 &gt; device.json
-</code></pre></div><p>Alternatively, you can export all the end devices with a single command and save them in <code>all-devices.json</code>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttnctl devices export-all --frequency-plan-id EU_863_870 &gt; all-devices.json
+<h2 id="ttn-lw-migrate-tool"><code>ttn-lw-migrate</code> Tool</h2>
+<p>End devices and applications can easily be migrated from The Things Network Stack V2 to The Things Stack with the <a href="https://github.com/TheThingsNetwork/lorawan-stack-migrate"><code>ttn-lw-migrate</code></a> tool. This tool is used for exporting end devices and applications to a <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON file</a> containing their description. This file can later be imported in The Things Stack as described in the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">Import End Devices in The Things Stack</a> section.</p>
+<h3 id="installation">Installation</h3>
+<p>Binaries are available on <a href="https://github.com/TheThingsNetwork/lorawan-stack-migrate/releases">GitHub</a>. Download the latest version asset according to your OS.</p>
+<h3 id="configuration">Configuration</h3>
+<p>Configure the environment with the following variables modified according to your setup:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">TTNV2_APP_ID</span><span class="o">=</span><span class="s2">&#34;my-ttn-app&#34;</span>                    <span class="c1"># TTN App ID</span>
+$ <span class="nb">export</span> <span class="nv">TTNV2_APP_ACCESS_KEY</span><span class="o">=</span><span class="s2">&#34;ttn-account-v2.a...&#34;</span>   <span class="c1"># TTN App Access Key (needs `devices` permissions)</span>
+$ <span class="nb">export</span> <span class="nv">FREQUENCY_PLAN_ID</span><span class="o">=</span><span class="s2">&#34;EU_863_870_TTN&#34;</span>           <span class="c1"># Frequency Plan ID for exported devices</span>
+</code></pre></div><p>See <a href="">Frequency Plans</a> for the list of frequency plans available on The Things Stack. Make sure to specify the correct Frequency Plan ID. For example, the ID <code>EU_863_870_TTN</code> corresponds to the <strong>Europe 863-870 MHz (SF9 for RX2 - recommended)</strong> frequency plan.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  For Windows OS, while configuring the app_id, app_access_key, frequency_plan_id replace <code>export</code> with <code>set</code>  and remove double-quotes as shown below.
+</div>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">set</span> <span class="nv">TTNV2_APP_ID</span><span class="o">=</span>my-ttn-app                    <span class="c1"># TTN App ID</span>
+$ <span class="nb">set</span> <span class="nv">TTNV2_APP_ACCESS_KEY</span><span class="o">=</span>ttn-account-v2.a...   <span class="c1"># TTN App Access Key (needs `devices` permissions)</span>
+$ <span class="nb">set</span> <span class="nv">FREQUENCY_PLAN_ID</span><span class="o">=</span>EU_863_870_TTN           <span class="c1"># Frequency Plan ID for exported devices</span>
+</code></pre></div><h3 id="configuration-for-the-things-network-stack-v2-private-deployments">Configuration for The Things Network Stack V2 private deployments</h3>
+<p>Private The Things Network Stack V2 deployments are also supported, and require extra configuration. See <code>ttn-lw-migrate device --help</code> for more details. For most cases, it is enough to configure <code>ttn-lw-migrate</code> to use the Discovery Server of your installation, by setting the following environment variables:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">TTNV2_DISCOVERY_SERVER_ADDRESS</span><span class="o">=</span><span class="s2">&#34;&lt;instance-id&gt;.thethings.industries:1900&#34;</span>
 </code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Change <code>EU_863_870</code> frequency plan from the command above to the frequency plan corresponding to your region. See <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plans</a> for a list of supported Frequency Plans and their respective IDs.
+  If the Discovery Server is not using TLS, you will need to use the <code>--ttnv2.discovery-server-insecure</code> flag when running the <code>ttn-lw-migrate</code> commands below.
+</div>
+<h2 id="export-end-devices-from-the-things-network-stack-v2">Export End Devices from The Things Network Stack V2</h2>
+<p>Migration from The Things Network Stack V2 to The Things Stack is one-way. LoRaWAN devices may only be handled by one Network Server at a time. The commands below will clear both the root keys and the session keys from The Things Network Stack V2 after the devices are exported. <strong>This means that the devices will no longer work in The Things Network Stack V2.</strong></p>
+<p>Execute commands with the <code>--dry-run</code> flag first to test exporting the devices without deleting the device keys from The Things Network Stack V2. When you are ready to migrate, be sure to export the devices <strong>without</strong> the <code>--dry-run</code> flag to remove the device keys from The Things Network Stack V2, as having the session keys present on both Network Servers is not supported, and will most likely lead to traffic issues and/or a corrupted device MAC state.</p>
+<p>In order to export a single device, use the following command. The device with ID <code>mydevice</code> will exported and saved to <code>device.json</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># dry run first, verify that no errors occur</span>
+$ ttn-lw-migrate devices --dry-run --verbose --source ttnv2 <span class="s2">&#34;mydevice&#34;</span> &gt; devices.json
+<span class="c1"># export device and delete keys from The Things Network Stack V2</span>
+$ ttn-lw-migrate device --source ttnv2 <span class="s2">&#34;mydevice&#34;</span> &gt; devices.json
+</code></pre></div><div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  The export process will clear the device root keys (<strong>AppKey</strong>) and session (<strong>AppSKey</strong>, <strong>NwkSKey</strong>, <strong>DevAddr</strong>, <strong>FCntUp</strong> and <strong>FCntDown</strong>) from The Things Network Stack V2 by default. You can disable this by using the  <code>--ttnv2.with-session=false</code> flag.
 </div>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Keep in mind that an end device can only be registered in one Network Server at a time. After importing an end device to The Things Stack, you should remove it from The Things Network Stack V2. For OTAA devices, it is enough to simply change the AppKey, so the device can no longer join but the existing session is preserved. Next time the device joins, the activation will be handled by The Things Stack.
+  The export process will halt if any error occurs.
 </div>
-<h3 id="disable-exported-end-devices-on-v2">Disable Exported End Devices on V2</h3>
-<p>After exporting, make sure to clear the AppKey of your OTAA devices. This can be achieved with the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttnctl devices convert-to-abp <span class="s2">&#34;device-id&#34;</span> --save-to-attribute <span class="s2">&#34;original-app-key&#34;</span>
-</code></pre></div><p>There is also a convenience command to clear all of your devices at once:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttnctl devices convert-all-to-abp --save-to-attribute <span class="s2">&#34;original-app-key&#34;</span>
-</code></pre></div><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The AppKey of each device will be printed on the standard output, and stored as a device attribute (with name <code>original-app-key</code>). You can retrieve the device attributes with <code>ttnctl devices info &quot;device-id&quot;</code>.
-</div>
+<p>In order to export a large number of devices, create a file named <code>device_ids.txt</code> with one device ID per line:</p>
+<pre><code>mydevice
+otherdevice
+device3
+device4
+device5
+</code></pre><p>And then export with:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># dry run first, verify that no errors occur</span>
+$ ttn-lw-migrate devices --verbose --dry-run --source ttnv2 &lt; device_ids.txt &gt; devices.json
+<span class="c1"># export devices</span>
+$ ttn-lw-migrate devices --source ttnv2 &lt; device_ids.txt &gt; devices.json
+</code></pre></div><p>Alternatively, you can export all the end devices associated with your application, and save them in <code>all-devices.json</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># dry run first, verify that no errors occur</span>
+$ ttn-lw-migrate application --verbose --dry-run --source ttnv2 <span class="s2">&#34;my-ttn-app&#34;</span> &gt; all-devices.json
+<span class="c1"># export devices</span>
+$ ttn-lw-migrate application --source ttnv2 <span class="s2">&#34;my-ttn-app&#34;</span> &gt; all-devices.json
+</code></pre></div><p>After exporting the end devices in to a json file you can refer to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">Import End Devices Document</a> in The Things Stack for next steps.</p>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -252,10 +266,10 @@ discovery-address: &lt;domain_id&gt;.thethings.industries:1900
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 26 Nov 2020.
+  Last changed by i3mSuperMan on 03 Feb 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/21da11257c965cc9e733dfee24ffc3ac4f2235fd">
-      doc: Change info tags to note
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/1072e7f48ce728751d8fbba2fd38867160992d9b">
+      doc: Update review changes
     </a>
 </p>
 
