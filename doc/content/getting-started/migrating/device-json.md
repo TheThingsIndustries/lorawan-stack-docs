@@ -84,8 +84,6 @@ The linked specification is quite extensive, and contains a lot of fields that a
 
 ## Examples
 
-{{< note >}} For more information on configuring MAC settings, see [Fine-tuning MAC Settings]({{< ref "getting-started/migrating/configure-mac-settings" >}}). {{</ note >}}
-
 ### Example OTAA Device:
 <summary><details>
 
@@ -157,5 +155,7 @@ The linked specification is quite extensive, and contains a lot of fields that a
 ```
 
 </details></summary>
+
+{{< note >}} For more information on configuring MAC settings, see [Fine-tuning MAC Settings]({{< ref "getting-started/migrating/configure-mac-settings" >}}). {{</ note >}}
 
 <br>
