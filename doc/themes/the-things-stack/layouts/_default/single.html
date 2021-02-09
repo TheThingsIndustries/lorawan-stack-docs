@@ -3,26 +3,25 @@
 {{ .Content }}
 {{ else }}
 <h1 class="title is-size-2">{{ .Title }}
+{{ with .Params.distributions }}
+	{{ $distributions := . }}
+	{{ if ( not ( reflect.IsSlice . ) ) }}
+		{{ $distributions = slice $distributions }}
+	{{ end }}
+	{{ partial "distributions" (dict "distributions" $distributions) }}
+{{ end }}
 {{ with .Params.new_in_version }}
-  {{ partial "new-in-version" . }}
+	{{ partial "new-in-version" . }}
 {{ end }}
 {{ with .Params.deprecated_in_version }}
   {{ partial "deprecated-in-version" .}}
 {{ end }}
 </h1>
-
 <div class="content">
-{{ $context := . }}
-{{ with .Params.distributions }}
-  {{ $distributions := .}}
-  {{ if ( not ( reflect.IsSlice . ) ) }}
-    {{ $distributions = slice $distributions }}
-  {{ end }}
-  {{ partial "distributions" (dict "context" $context  "distributions" $distributions) }}
-{{ end }}
 {{ .Content }}
 </div>
 {{ end }}
+
 {{ partial "feedback" . }}
 {{ partial "prev-next-in-section.html" . }}
 {{ end }}

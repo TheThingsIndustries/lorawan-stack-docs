@@ -70,9 +70,6 @@ $tabs-border-bottom-color: $blue;
 
 $content-blockquote-background-color: inherit;
 
-// Modular imports broken in bulma 0.9
-// https://github.com/jgthms/bulma/issues/2797
-
 @import "bulma/bulma.sass";
 
 @import "vendor/basicLightbox.min.scss";
@@ -408,7 +405,47 @@ details + blockquote {
   display: block;
 }
 
+.button.is-short {
+  height: 2.2em;
+  .icon {
+    height: 1em;
+    width: 1em;
+  }
+}
+
 table.fixed { table-layout:fixed; }
 table.fixed td { overflow: auto; }
 
+.badges {
+  .button {
+    padding-right: 0.75em;
+    padding-left: 0.75em;
+  }
+
+  .button .icon:first-child:not(:last-child){
+    margin-left: calc(-0.25em - 1px);
+    margin-right: 0.25em;
+  }
+}
+
+.badge-stack {
+  margin-left: .25em;
+  vertical-align: middle;
+}
+
+.badge-stack .badge {
+  height: 1em;
+  width: 1em;
+}
+
+.badge-stack .badge:not(:first-child){
+  margin-left: -0.75em;
+}
+
+.card {
+  overflow: visible;
+}
+
 @import "highlight.scss";
+
+@import "@creativebulma/bulma-tooltip/dist/bulma-tooltip.min";

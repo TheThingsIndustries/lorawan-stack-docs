@@ -1,16 +1,12 @@
-{{ $context := .context }}
-{{ $distributions := .distributions }}
+{{ $distributions_sliced := .distributions }}
+{{ if ( not ( reflect.IsSlice $distributions_sliced ) ) }}
+	{{ $distributions_sliced = slice $distributions_sliced }}
+{{ end }}
+{{ $distributions :=  sort $distributions_sliced }}
 {{ $distributions_all := index site.Data "distributions" }}
 {{ range $distributions }}
-  {{ if not (in $distributions_all .) }}
-    {{ errorf "distribution '%s' not in '%s'" . (delimit $distributions_all ", ") }}
-  {{ end }}
+	{{ if not (isset $distributions_all .) }}
+		{{ errorf "distribution '%s' not in '%s'" . (delimit $distributions_all ", ") }}
+	{{ end }}
 {{ end }}
-{{ with .inline }}
-<span class="distribution-inline">{{ delimit $distributions ", " " and " }} Only</span>
-{{ else }}
-<div class="notification is-primary">
-  <h3 class="has-text-light">{{ delimit $distributions ", " " and " }} Only</h3>
-  <p>The following instructions apply to {{ delimit $distributions ", " " and " }} distributions. See the <a href={{ ref $context "/download" }}>downloads page</a> for a feature breakdown of distributions of The Things Stack.</p>
-</div>
-{{ end }}
+{{ partial "distribution-icons" $distributions}}
