@@ -130,7 +130,7 @@ The example `ttn-lw-stack-docker.yml` file for {{% tts %}} Enterprise shown belo
 
 {{< note >}} The example `ttn-lw-stack-docker.yml` file is available for download in the [Example Configuration Files]({{< ref "/getting-started/installation/configuration#example-configuration-files" >}}) section. {{</ note >}}
 
-### License {{< distributions-inline "Enterprise" >}} {#license}
+### License {{< distributions "Enterprise" >}} {#license}
 
 {{% tts %}} Enterprise requires a license, which can be purchased at the [products page](https://thethingsindustries.com/technology/pricing). This is specified in the `license` field, and can be either a `key` string, or a `file`path. See the [License configuration reference]({{< ref "/reference/configuration/the-things-stack#license" >}}) for more information.
 
@@ -164,7 +164,7 @@ by the console client. These tell {{% tts %}} where all its components are acces
 
 {{< note >}} Note that the `client-secret` will be needed later when authorizing the Console. {{</ note >}}
 
-### Multi-tenancy {{< distributions-inline "Enterprise" >}} {#multi-tenancy}
+### Multi-tenancy {{< distributions "Enterprise" >}} {#multi-tenancy}
 
 If running a multi-tenant environment, we need to configure the default tenant ID, and the base domain from which tenant IDs are inferred. See the [`tenancy` configuration reference]({{< ref "/reference/configuration/the-things-stack#multi-tenancy" >}}).
 

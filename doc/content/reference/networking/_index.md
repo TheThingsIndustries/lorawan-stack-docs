@@ -21,7 +21,7 @@ The following table lists the default ports used.
 | Management | HTTP | API key, token | 1885 | 8885 |
 | Backend Interfaces | HTTP | Custom | N/A | 8886 |
 | {{% lbs %}} LNS | Web Sockets | Auth Token, Custom | 1887 | 8887 |
-| Tabs Hubs LNS {{< distributions-inline "Cloud" "Enterprise" >}} | Web Sockets | Auth Token, Custom | 1888 | 8888 |
+| Tabs Hubs LNS {{< distributions "Cloud" "Enterprise" >}} | Web Sockets | Auth Token, Custom | 1888 | 8888 |
 
 ## Service Discovery
 

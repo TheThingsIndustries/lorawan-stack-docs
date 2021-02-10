@@ -25,7 +25,7 @@ Similar metrics exist for gRPC client connections opened by {{% tts %}}, and RPC
 
 ## General Metrics
 
-- `ttn_lw_license_expiry_seconds` can be used to keep track of license expiry {{< distributions-inline "Enterprise" >}}
+- `ttn_lw_license_expiry_seconds` can be used to keep track of license expiry {{< distributions "Enterprise" >}}
 - `ttn_lw_log_log_messages_total` can be used to track the log messages written by different log namespaces at different log levels.
 - `ttn_lw_events_publishes_total` can be used to track the published events by event type.
 - `ttn_lw_events_channel_dropped_total` can be used to watch for dropped events, which typically indicates that a consumer (such as a user's web browser) can't keep up.

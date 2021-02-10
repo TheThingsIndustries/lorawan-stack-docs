@@ -26,11 +26,11 @@ It is possible to change the logos of the web UI by changing the "branding base 
 | console-favicon.ico    | multiple | The fallback favicon logo for the console in `ICO` format; recommended size 32x32 |
 | console-og-image.png   | 1200x600 | The logo for the console that is shown when sharing links on social media |
 | console-touch-icon.png | 400x400  | The logo for the console that is shown mobile devices |
-| claim-favicon.svg {{< distributions-inline "Cloud" "Enterprise" >}}     | vector   | The SVG logo for the device claiming frontend that is shown in browser tabs and bookmarks |
-| claim-favicon.png {{< distributions-inline "Cloud" "Enterprise" >}}     | multiple | The fallback favicon logo for the device claiming frontend in `PNG` format; recommended size 32x32 |
-| claim-favicon.ico {{< distributions-inline "Cloud" "Enterprise" >}}     | multiple | The fallback favicon logo for the device claiming frontend in `ICO` format; recommended size 32x32 |
-| claim-og-image.png {{< distributions-inline "Cloud" "Enterprise" >}}    | 1200x600 | The logo for the device claiming frontend that is shown when sharing links on social media |
-| claim-touch-icon.png {{< distributions-inline "Cloud" "Enterprise" >}}  | 400x400  | The logo for the device claiming frontend that is shown mobile devices |
+| claim-favicon.svg {{< distributions "Cloud" "Enterprise" >}}     | vector   | The SVG logo for the device claiming frontend that is shown in browser tabs and bookmarks |
+| claim-favicon.png {{< distributions "Cloud" "Enterprise" >}}     | multiple | The fallback favicon logo for the device claiming frontend in `PNG` format; recommended size 32x32 |
+| claim-favicon.ico {{< distributions "Cloud" "Enterprise" >}}     | multiple | The fallback favicon logo for the device claiming frontend in `ICO` format; recommended size 32x32 |
+| claim-og-image.png {{< distributions "Cloud" "Enterprise" >}}    | 1200x600 | The logo for the device claiming frontend that is shown when sharing links on social media |
+| claim-touch-icon.png {{< distributions "Cloud" "Enterprise" >}}  | 400x400  | The logo for the device claiming frontend that is shown mobile devices |
 | logo.svg               | vector   | The logo for the console that is shown in the menu bar of the console |
 | oauth-favicon.svg      | vector   | The SVG logo for the login pages that is shown in browser tabs and bookmarks |
 | oauth-favicon.png      | multiple | The fallback favicon logo for the login pages in `PNG` format; recommended size 32x32 |
