@@ -10,11 +10,12 @@ Full Name | Identifier | Scope | Additional fields
 ----------|------------|-------|------------------
 Tenant Created | `tenant_created` | Sent to the initial user of a tenant when it is first created. {{< distributions-inline "Cloud" "Enterprise" >}} | `InitialPassword`
 Invitation | `invitation` | Sent when inviting new users to the network. | `InvitationToken`, `TTL`
-API Key changed | `api_key_changed` | Sent when the rights of an API Key have been changed. | `Identifiers` and `Rights`
-API Key created | `api_key_created` | Send when an API Key has been created. | `Identifiers` and `Rights`
-Collaborator changed | `collaborator_changed` | Sent when the rights of a collaborator have been changed. | `Collaborator`
+API Key changed | `api_key_changed` | Sent when the rights of an API Key have been changed. | `Key`, `Rights`, `ConsoleURL`
+API Key created | `api_key_created` | Send when an API Key has been created. | `Key`, `Rights`, `ConsoleURL`
+Collaborator changed | `collaborator_changed` | Sent when the rights of a collaborator have been changed. | `Collaborator`, `ConsoleURL`
 Password changed | `password_changed` | Sent when the the password of a user has been changed.
 Temporary password | `temporary_password` | Sent when a temporary password has been requested for an user. | `TemporaryPassword`, `TTL`
+User Requested | `user_requested` | Sent to admins when a user is created and needs to be approved. | `ConsoleURL`
 Email validation | `validate` | Sent when a user is added as a collaborator of an entity, in order to validate their email. | `ID`, `Token`, `TTL`
 Entity State Changed | `entity_state_changed` | Sent when the approval state of an entity changed. | `State`
 
