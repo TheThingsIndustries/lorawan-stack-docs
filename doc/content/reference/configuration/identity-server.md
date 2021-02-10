@@ -112,8 +112,9 @@ It is also possible to disable uploads:
 
 ## User Registration Options
 
-The user registration process can be customized by requiring approval by admin users, requiring email validation or by requiring new users to be invited by existing users.
+By default, users can register their own user accounts. User accounts can also be registered by admin users in the network. The user registration process can be customized by requiring approval by admin users, requiring email validation or by requiring new users to be invited by existing users.
 
+- `is.user-registration.enabled`: Enable user registration. If user registration is disabled, admin users can still create users. {{< new-in-version "3.11" >}}
 - `is.user-registration.admin-approval.required`: Require admin approval for new users
 - `is.user-registration.contact-info-validation.required`: Require contact info validation for new users
 - `is.user-registration.invitation.required`: Require invitations for new users
