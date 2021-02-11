@@ -176,6 +176,17 @@ debug: false
     </tr>
     <tr>
       <th>
+        Description
+      </th>
+      <td>
+        Authorize the End Device Claiming Server to claim devices registered in the given application. The application
+identifiers are the source application, where the devices are registered before they are claimed.
+The API key is used to access the application, find the device, verify the claim request and delete the end device
+from the source application.
+      </td>
+    </tr>
+    <tr>
+      <th>
         Request type
       </th>
       <td>
@@ -212,6 +223,15 @@ debug: false
       </th>
       <td>
         <code>EndDeviceClaimingServer.UnauthorizeApplication</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Unauthorize the End Device Claiming Server to claim devices in the given application.
+This reverts the authorization given with rpc AuthorizeApplication.
       </td>
     </tr>
     <tr>
@@ -382,6 +402,7 @@ debug: false
         Description
       </th>
       <td>
+          <p><code>max_len</code>: <code>128</code></p>
           <p><code>min_len</code>: <code>1</code></p>
       </td>
     </tr>
@@ -415,6 +436,15 @@ debug: false
       <td><a href="#message:ClaimEndDeviceRequest.AuthenticatedIdentifiers"><code>ClaimEndDeviceRequest.AuthenticatedIdentifiers</code></a></td>
     </tr>
     
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Authenticated identifiers.</p>
+      </td>
+    </tr>
+    
   </tbody>
 </table>
 
@@ -440,6 +470,7 @@ debug: false
         Description
       </th>
       <td>
+          <p>Raw QR code contents.</p>
           <p><code>max_len</code>: <code>1024</code></p>
       </td>
     </tr>
@@ -767,6 +798,15 @@ If not set, the device shall not be registered on an Application Server.</p>
       <td><code>bytes</code></td>
     </tr>
     
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>JoinEUI (or AppEUI) of the device to claim.</p>
+      </td>
+    </tr>
+    
   </tbody>
 </table>
 
@@ -785,6 +825,15 @@ If not set, the device shall not be registered on an Application Server.</p>
         Type
       </th>
       <td><code>bytes</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>DevEUI of the device to claim.</p>
+      </td>
     </tr>
     
   </tbody>
@@ -812,6 +861,8 @@ If not set, the device shall not be registered on an Application Server.</p>
         Description
       </th>
       <td>
+          <p>Authentication code to prove ownership.
+In the LoRa Alliance TR005 specification, this equals the OwnerToken.</p>
           <p><code>pattern</code>: <code>^[A-Z0-9]{1,32}$</code></p>
       </td>
     </tr>

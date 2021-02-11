@@ -425,6 +425,15 @@ More or less fields may be returned, depending on the rights of the caller.
     </tr>
     <tr>
       <th>
+        Description
+      </th>
+      <td>
+        Search for organizations that match the conditions specified in the request.
+Non-admin users will only match organizations that they have rights on.
+      </td>
+    </tr>
+    <tr>
+      <th>
         Request type
       </th>
       <td>
@@ -2062,9 +2071,11 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
       </th>
       <td>
           <p>Key-value attributes for this organization. Typically used for organizing organizations or for storing integration-specific data.</p>
+          <p><code>max_pairs</code>: <code>10</code></p>
             <p><code>max_len</code> (key): <code>36</code></p>
             <p><code>pattern</code> (key): <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
         
+            <p><code>max_len</code> (value): <code>200</code></p>
         
       </td>
     </tr>
@@ -2095,6 +2106,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
       </th>
       <td>
           <p>Contact information for this organization. Typically used to indicate who to contact with security/billing questions about the organization.</p>
+          <p><code>max_items</code>: <code>10</code></p>
         
       </td>
     </tr>
@@ -2316,6 +2328,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
       </th>
       <td>
           <p>Find entities where the ID contains this substring.</p>
+          <p><code>max_len</code>: <code>50</code></p>
       </td>
     </tr>
     
@@ -2345,6 +2358,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
       </th>
       <td>
           <p>Find entities where the name contains this substring.</p>
+          <p><code>max_len</code>: <code>50</code></p>
       </td>
     </tr>
     
@@ -2374,6 +2388,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
       </th>
       <td>
           <p>Find entities where the description contains this substring.</p>
+          <p><code>max_len</code>: <code>50</code></p>
       </td>
     </tr>
     
@@ -2403,9 +2418,11 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
       </th>
       <td>
           <p>Find entities where the given attributes contain these substrings.</p>
+          <p><code>max_pairs</code>: <code>10</code></p>
             <p><code>max_len</code> (key): <code>36</code></p>
             <p><code>pattern</code> (key): <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
         
+            <p><code>max_len</code> (value): <code>50</code></p>
         
       </td>
     </tr>

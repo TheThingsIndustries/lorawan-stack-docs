@@ -176,6 +176,14 @@ debug: false
     </tr>
     <tr>
       <th>
+        Description
+      </th>
+      <td>
+        Returns a stream of application messages that have been stored in the database.
+      </td>
+    </tr>
+    <tr>
+      <th>
         Request type
       </th>
       <td>
@@ -228,7 +236,7 @@ debug: false
         Description
       </th>
       <td>
-          <p>Query upstream messages from all end devices of an application. Cannot be used in conjunction with EndDeviceIdentifiers.</p>
+          <p>Query upstream messages from all end devices of an application. Cannot be used in conjunction with end_device_ids.</p>
       </td>
     </tr>
     
@@ -257,7 +265,7 @@ debug: false
         Description
       </th>
       <td>
-          <p>Query upstream messages from a single end device. Cannot be used in conjunction with ApplicationIdentifiers.</p>
+          <p>Query upstream messages from a single end device. Cannot be used in conjunction with application_ids.</p>
       </td>
     </tr>
     
@@ -440,6 +448,36 @@ debug: false
   </tbody>
 </table>
 
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>field_mask</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>google.protobuf.FieldMask</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The names of the upstream message fields that should be returned. See the API reference
+for allowed field names for each type of upstream message.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
 
 <details><summary>Show object example</summary>
 <pre><code>{
@@ -451,6 +489,7 @@ debug: false
   "before": "0001-01-01T00:00:00Z",
   "f_port": null,
   "order": "",
+  "field_mask": {},
 }</code></pre>
 </details>
 

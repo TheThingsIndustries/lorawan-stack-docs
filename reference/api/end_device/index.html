@@ -202,9 +202,12 @@ debug: false
         Description
       </th>
       <td>
-        Create a new end device within an application.
-After creating a device in the EndDeviceRegistry (Identity Server), it still
-needs to be created in the NsEndDeviceRegistry, AsEndDeviceRegistry and JsEndDeviceRegistry.
+        <p>Create a new end device within an application.</p>
+<p>After registering an end device, it also needs to be registered in
+the NsEndDeviceRegistry that is exposed by the Network Server,
+the AsEndDeviceRegistry that is exposed by the Application Server,
+and the JsEndDeviceRegistry that is exposed by the Join Server.</p>
+
       </td>
     </tr>
     <tr>
@@ -400,10 +403,11 @@ More or less fields may be returned, depending on the rights of the caller.
         Description
       </th>
       <td>
-        Delete the end device with the given IDs.
-Before deleting an end device from the EndDeviceRegistry (the Identity Server),
-the device needs to be deleted from the JsEndDeviceRegistry, AsEndDeviceRegistry and NsEndDeviceRegistry.
-This is NOT done automatically.
+        <p>Delete the end device with the given IDs.</p>
+<p>Before deleting an end device it first needs to be deleted from the
+NsEndDeviceRegistry, the AsEndDeviceRegistry and the JsEndDeviceRegistry.
+This is NOT done automatically.</p>
+
       </td>
     </tr>
     <tr>
@@ -1138,9 +1142,11 @@ SDKs are responsible for combining (if desired) the three.</p>
       </th>
       <td>
           <p>Key-value attributes for this end device. Typically used for organizing end devices or for storing integration-specific data. Stored in Entity Registry.</p>
+          <p><code>max_pairs</code>: <code>10</code></p>
             <p><code>max_len</code> (key): <code>36</code></p>
             <p><code>pattern</code> (key): <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
         
+            <p><code>max_len</code> (value): <code>200</code></p>
         
       </td>
     </tr>
@@ -2229,100 +2235,6 @@ Stored in Network Server.</p>
         Field
       </th>
       <td>
-        <code>recent_adr_uplinks</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>repeated <a href="#message:UplinkMessage"><code>UplinkMessage</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Recent uplink messages with ADR bit set to 1 sorted by time. Stored in Network Server.
-The field is reset each time an uplink message carrying MACPayload is received with ADR bit set to 0.
-The number of messages stored is in the range [0,20];</p>
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>recent_uplinks</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>repeated <a href="#message:UplinkMessage"><code>UplinkMessage</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Recent uplink messages sorted by time. Stored in Network Server.
-The number of messages stored may depend on configuration.</p>
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>recent_downlinks</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>repeated <a href="#message:DownlinkMessage"><code>DownlinkMessage</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Recent downlink messages sorted by time. Stored in Network Server.
-The number of messages stored may depend on configuration.</p>
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
         <code>queued_application_downlinks</code>
       </td>
     </tr>
@@ -2600,9 +2512,6 @@ This field overrides the application-level setting.</p>
   "power_state": "POWER_UNKNOWN",
   "battery_percentage": null,
   "downlink_margin": 0,
-  "recent_adr_uplinks": [],
-  "recent_uplinks": [],
-  "recent_downlinks": [],
   "queued_application_downlinks": [],
   "formatters": {},
   "provisioner_id": "",
@@ -2968,6 +2877,15 @@ This field overrides the application-level setting.</p>
       <td><code>string</code></td>
     </tr>
     
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>32</code></p>
+      </td>
+    </tr>
+    
   </tbody>
 </table>
 
@@ -2988,6 +2906,44 @@ This field overrides the application-level setting.</p>
       <td><code>string</code></td>
     </tr>
     
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>32</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>band_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>string</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>32</code></p>
+      </td>
+    </tr>
+    
   </tbody>
 </table>
 
@@ -2998,6 +2954,7 @@ This field overrides the application-level setting.</p>
   "model_id": "",
   "hardware_version": "",
   "firmware_version": "",
+  "band_id": "",
 }</code></pre>
 </details>
 
@@ -3144,6 +3101,15 @@ See the API reference for which fields can be returned by the different services
         Type
       </th>
       <td><code>bytes</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>1024</code></p>
+      </td>
     </tr>
     
   </tbody>
@@ -4338,6 +4304,7 @@ If unset, the default value from Network Server configuration or regional parame
       <td>
           <p>List of factory-preset frequencies.
 If unset, the default value from Network Server configuration or regional parameters specification will be used.</p>
+          <p><code>max_items</code>: <code>96</code></p>
         
       </td>
     </tr>
@@ -5244,7 +5211,7 @@ Set each time a (re-)join request accept is received from Join Server and remove
       <th>
         Type
       </th>
-      <td><a href="#message:JoinRequest"><code>JoinRequest</code></a></td>
+      <td><a href="#message:MACState.JoinRequest"><code>MACState.JoinRequest</code></a></td>
     </tr>
     
     <tr>
@@ -5253,7 +5220,7 @@ Set each time a (re-)join request accept is received from Join Server and remove
       </th>
       <td>
           <p>Pending join request.
-Set each time a join accept is scheduled and removed each time an uplink is received from the device.</p>
+Set each time a join-accept is scheduled and removed each time an uplink is received from the device.</p>
       </td>
     </tr>
     
@@ -5540,6 +5507,35 @@ Elements are sorted in ascending order.</p>
   </tbody>
 </table>
 
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>last_adr_change_f_cnt_up</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>uint32</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Frame counter of uplink, which confirmed the last ADR parameter change.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
 
 <details><summary>Show object example</summary>
 <pre><code>{
@@ -5564,6 +5560,7 @@ Elements are sorted in ascending order.</p>
   "rejected_frequencies": [],
   "last_downlink_at": "0001-01-01T00:00:00Z",
   "rejected_data_rate_ranges": {},
+  "last_adr_change_f_cnt_up": 0,
 }</code></pre>
 </details>
 

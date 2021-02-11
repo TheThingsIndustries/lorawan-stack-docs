@@ -420,6 +420,15 @@ This method can not be used to change the password, see the UpdatePassword metho
     </tr>
     <tr>
       <th>
+        Description
+      </th>
+      <td>
+        Search for users that match the conditions specified in the request.
+This is only available to admin users.
+      </td>
+    </tr>
+    <tr>
+      <th>
         Request type
       </th>
       <td>
@@ -1902,6 +1911,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
       </th>
       <td>
           <p>Find entities where the ID contains this substring.</p>
+          <p><code>max_len</code>: <code>50</code></p>
       </td>
     </tr>
     
@@ -1931,6 +1941,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
       </th>
       <td>
           <p>Find entities where the name contains this substring.</p>
+          <p><code>max_len</code>: <code>50</code></p>
       </td>
     </tr>
     
@@ -1960,6 +1971,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
       </th>
       <td>
           <p>Find entities where the description contains this substring.</p>
+          <p><code>max_len</code>: <code>50</code></p>
       </td>
     </tr>
     
@@ -1989,9 +2001,11 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
       </th>
       <td>
           <p>Find entities where the given attributes contain these substrings.</p>
+          <p><code>max_pairs</code>: <code>10</code></p>
             <p><code>max_len</code> (key): <code>36</code></p>
             <p><code>pattern</code> (key): <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
         
+            <p><code>max_len</code> (value): <code>50</code></p>
         
       </td>
     </tr>
@@ -2445,9 +2459,11 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
       </th>
       <td>
           <p>Key-value attributes for this users. Typically used for storing integration-specific data.</p>
+          <p><code>max_pairs</code>: <code>10</code></p>
             <p><code>max_len</code> (key): <code>36</code></p>
             <p><code>pattern</code> (key): <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
         
+            <p><code>max_len</code> (value): <code>200</code></p>
         
       </td>
     </tr>
@@ -2478,6 +2494,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
       </th>
       <td>
           <p>Contact information for this user. Typically used to indicate who to contact with security/billing questions about the user.</p>
+          <p><code>max_items</code>: <code>10</code></p>
         
       </td>
     </tr>
@@ -2570,6 +2587,7 @@ This address is not public, use contact_info for that.</p>
           <p>The password field is only considered when creating a user.
 It is not returned on API calls, and can not be updated by updating the User.
 See the UpdatePassword method of the UserRegistry service for more information.</p>
+          <p><code>max_len</code>: <code>1000</code></p>
       </td>
     </tr>
     
@@ -2702,6 +2720,7 @@ This field can only be modified by other admins.</p>
           <p>The temporary password can only be used to update a user&rsquo;s password; never returned on API calls.
 It is not returned on API calls, and can not be updated by updating the User.
 See the CreateTemporaryPassword method of the UserRegistry service for more information.</p>
+          <p><code>max_len</code>: <code>1000</code></p>
       </td>
     </tr>
     
