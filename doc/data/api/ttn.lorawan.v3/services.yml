@@ -67,6 +67,9 @@ AppAs:
         path: /as/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}/up/simulate
 ApplicationAccess:
   name: ApplicationAccess
+  comment: |-
+    The ApplicationAcces service, exposed by the Identity Server, is used to manage
+    API keys and collaborators of applications.
   methods:
     ListRights:
       name: ListRights
@@ -202,6 +205,7 @@ ApplicationCryptoService:
   methods:
     DeriveAppSKey:
       name: DeriveAppSKey
+      comment: Derive the application session key (AppSKey).
       input:
         name: DeriveSessionKeysRequest
       output:
@@ -362,6 +366,9 @@ ApplicationPubSubRegistry:
         path: /as/pubsub/{application_ids.application_id}/{pub_sub_id}
 ApplicationRegistry:
   name: ApplicationRegistry
+  comment: |-
+    The ApplicationRegistry service, exposed by the Identity Server, is used to manage
+    application registrations.
   methods:
     Create:
       name: Create
@@ -432,11 +439,28 @@ ApplicationRegistry:
       http:
       - method: DELETE
         path: /applications/{application_id}
+    Purge:
+      name: Purge
+      comment: |-
+        Purge the application. This will release the application ID for reuse.
+        All end devices must be deleted from the application before it can be deleted.
+        The application owner is responsible for clearing data from any (external) integrations
+        that may store and expose data by application ID
+      input:
+        name: ApplicationIdentifiers
+      output:
+        package: google.protobuf
+        name: Empty
+      http:
+      - method: DELETE
+        path: /applications/{application_id}/purge
 ApplicationUpStorage:
   name: ApplicationUpStorage
+  comment: The ApplicationUpStorage service can be used to query stored application upstream messages.
   methods:
     GetStoredApplicationUp:
       name: GetStoredApplicationUp
+      comment: Returns a stream of application messages that have been stored in the database.
       input:
         name: GetStoredApplicationUpRequest
       output:
@@ -571,6 +595,15 @@ As:
       http:
       - method: GET
         path: /as/applications/{application_id}/link/stats
+    GetConfiguration:
+      name: GetConfiguration
+      input:
+        name: GetAsConfigurationRequest
+      output:
+        name: GetAsConfigurationResponse
+      http:
+      - method: GET
+        path: /as/configuration
 AsEndDeviceRegistry:
   name: AsEndDeviceRegistry
   comment: The AsEndDeviceRegistry service allows clients to manage their end devices on the Application Server.
@@ -618,6 +651,7 @@ AsJs:
   methods:
     GetAppSKey:
       name: GetAppSKey
+      comment: Request the application session key for a particular session.
       input:
         name: SessionKeyRequest
       output:
@@ -626,15 +660,6 @@ AsNs:
   name: AsNs
   comment: The AsNs service connects an Application Server to a Network Server.
   methods:
-    LinkApplication:
-      name: LinkApplication
-      input:
-        package: google.protobuf
-        name: Empty
-        stream: true
-      output:
-        name: ApplicationUp
-        stream: true
     DownlinkQueueReplace:
       name: DownlinkQueueReplace
       input:
@@ -657,6 +682,9 @@ AsNs:
         name: ApplicationDownlinks
 ClientAccess:
   name: ClientAccess
+  comment: |-
+    The ClientAcces service, exposed by the Identity Server, is used to manage
+    collaborators of OAuth clients.
   methods:
     ListRights:
       name: ListRights
@@ -710,6 +738,9 @@ ClientAccess:
         path: /clients/{client_ids.client_id}/collaborators
 ClientRegistry:
   name: ClientRegistry
+  comment: |-
+    The ClientRegistry service, exposed by the Identity Server, is used to manage
+    OAuth client registrations.
   methods:
     Create:
       name: Create
@@ -792,6 +823,12 @@ Configuration:
         path: /configuration/frequency-plans
 ContactInfoRegistry:
   name: ContactInfoRegistry
+  comment: |-
+    The ContactInfoRegistry service, exposed by the Identity Server, is used for
+    validating contact information of registered entities.
+
+    The actual contact information can be managed with the different registry services:
+    ApplicationRegistry, ClientRegistry, GatewayRegistry, OrganizationRegistry and UserRegistry.
   methods:
     RequestValidation:
       name: RequestValidation
@@ -814,8 +851,88 @@ ContactInfoRegistry:
       http:
       - method: PATCH
         path: /contact_info/validation
+DeviceRepository:
+  name: DeviceRepository
+  methods:
+    ListBrands:
+      name: ListBrands
+      input:
+        name: ListEndDeviceBrandsRequest
+      output:
+        name: ListEndDeviceBrandsResponse
+      http:
+      - method: GET
+        path: /dr/applications/{application_ids.application_id}/brands
+    GetBrand:
+      name: GetBrand
+      input:
+        name: GetEndDeviceBrandRequest
+      output:
+        name: EndDeviceBrand
+      http:
+      - method: GET
+        path: /dr/applications/{application_ids.application_id}/brands/{brand_id}
+    ListModels:
+      name: ListModels
+      input:
+        name: ListEndDeviceModelsRequest
+      output:
+        name: ListEndDeviceModelsResponse
+      http:
+      - method: GET
+        path: /dr/applications/{application_ids.application_id}/brands/{brand_id}/models
+      - method: GET
+        path: /dr/applications/{application_ids.application_id}/models
+    GetModel:
+      name: GetModel
+      input:
+        name: GetEndDeviceModelRequest
+      output:
+        name: EndDeviceModel
+      http:
+      - method: GET
+        path: /dr/applications/{application_ids.application_id}/brands/{brand_id}/models/{model_id}
+    GetTemplate:
+      name: GetTemplate
+      input:
+        name: GetTemplateRequest
+      output:
+        name: EndDeviceTemplate
+      http:
+      - method: GET
+        path: /dr/applications/{application_ids.application_id}/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/template
+    GetUplinkDecoder:
+      name: GetUplinkDecoder
+      input:
+        name: GetPayloadFormatterRequest
+      output:
+        name: MessagePayloadFormatter
+      http:
+      - method: GET
+        path: /dr/applications/{application_ids.application_id}/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/formatters/uplink/decoder
+    GetDownlinkDecoder:
+      name: GetDownlinkDecoder
+      input:
+        name: GetPayloadFormatterRequest
+      output:
+        name: MessagePayloadFormatter
+      http:
+      - method: GET
+        path: /dr/applications/{application_ids.application_id}/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/formatters/downlink/decoder
+    GetDownlinkEncoder:
+      name: GetDownlinkEncoder
+      input:
+        name: GetPayloadFormatterRequest
+      output:
+        name: MessagePayloadFormatter
+      http:
+      - method: GET
+        path: /dr/applications/{application_ids.application_id}/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/formatters/downlink/encoder
 EndDeviceClaimingServer:
   name: EndDeviceClaimingServer
+  comment: |-
+    The EndDeviceClaimingServer service configures authorization to claim end devices registered in an application,
+    and allows clients to claim end devices.
   methods:
     Claim:
       name: Claim
@@ -829,6 +946,11 @@ EndDeviceClaimingServer:
         path: /edcs/claim
     AuthorizeApplication:
       name: AuthorizeApplication
+      comment: |-
+        Authorize the End Device Claiming Server to claim devices registered in the given application. The application
+        identifiers are the source application, where the devices are registered before they are claimed.
+        The API key is used to access the application, find the device, verify the claim request and delete the end device
+        from the source application.
       input:
         name: AuthorizeApplicationRequest
       output:
@@ -839,6 +961,9 @@ EndDeviceClaimingServer:
         path: /edcs/applications/{application_ids.application_id}/authorize
     UnauthorizeApplication:
       name: UnauthorizeApplication
+      comment: |-
+        Unauthorize the End Device Claiming Server to claim devices in the given application.
+        This reverts the authorization given with rpc AuthorizeApplication.
       input:
         name: ApplicationIdentifiers
       output:
@@ -883,13 +1008,27 @@ EndDeviceQRCodeGenerator:
         path: /qr-codes/end-devices
 EndDeviceRegistry:
   name: EndDeviceRegistry
+  comment: |-
+    The EndDeviceRegistry service, exposed by the Identity Server, is used to manage
+    end device registrations.
+
+    After registering an end device, it also needs to be registered in
+    the NsEndDeviceRegistry that is exposed by the Network Server,
+    the AsEndDeviceRegistry that is exposed by the Application Server,
+    and the JsEndDeviceRegistry that is exposed by the Join Server.
+
+    Before deleting an end device it first needs to be deleted from the
+    NsEndDeviceRegistry, the AsEndDeviceRegistry and the JsEndDeviceRegistry.
   methods:
     Create:
       name: Create
       comment: |-
         Create a new end device within an application.
-        After creating a device in the EndDeviceRegistry (Identity Server), it still
-        needs to be created in the NsEndDeviceRegistry, AsEndDeviceRegistry and JsEndDeviceRegistry.
+
+        After registering an end device, it also needs to be registered in
+        the NsEndDeviceRegistry that is exposed by the Network Server,
+        the AsEndDeviceRegistry that is exposed by the Application Server,
+        and the JsEndDeviceRegistry that is exposed by the Join Server.
       input:
         name: CreateEndDeviceRequest
       output:
@@ -944,8 +1083,9 @@ EndDeviceRegistry:
       name: Delete
       comment: |-
         Delete the end device with the given IDs.
-        Before deleting an end device from the EndDeviceRegistry (the Identity Server),
-        the device needs to be deleted from the JsEndDeviceRegistry, AsEndDeviceRegistry and NsEndDeviceRegistry.
+
+        Before deleting an end device it first needs to be deleted from the
+        NsEndDeviceRegistry, the AsEndDeviceRegistry and the JsEndDeviceRegistry.
         This is NOT done automatically.
       input:
         name: EndDeviceIdentifiers
@@ -964,6 +1104,7 @@ EndDeviceRegistrySearch:
   methods:
     SearchEndDevices:
       name: SearchEndDevices
+      comment: Search for end devices in the given application that match the conditions specified in the request.
       input:
         name: SearchEndDevicesRequest
       output:
@@ -1019,6 +1160,9 @@ EntityRegistrySearch:
   methods:
     SearchApplications:
       name: SearchApplications
+      comment: |-
+        Search for applications that match the conditions specified in the request.
+        Non-admin users will only match applications that they have rights on.
       input:
         name: SearchEntitiesRequest
       output:
@@ -1028,6 +1172,9 @@ EntityRegistrySearch:
         path: /search/applications
     SearchClients:
       name: SearchClients
+      comment: |-
+        Search for OAuth clients that match the conditions specified in the request.
+        Non-admin users will only match OAuth clients that they have rights on.
       input:
         name: SearchEntitiesRequest
       output:
@@ -1037,6 +1184,9 @@ EntityRegistrySearch:
         path: /search/clients
     SearchGateways:
       name: SearchGateways
+      comment: |-
+        Search for gateways that match the conditions specified in the request.
+        Non-admin users will only match gateways that they have rights on.
       input:
         name: SearchEntitiesRequest
       output:
@@ -1046,6 +1196,9 @@ EntityRegistrySearch:
         path: /search/gateways
     SearchOrganizations:
       name: SearchOrganizations
+      comment: |-
+        Search for organizations that match the conditions specified in the request.
+        Non-admin users will only match organizations that they have rights on.
       input:
         name: SearchEntitiesRequest
       output:
@@ -1055,6 +1208,9 @@ EntityRegistrySearch:
         path: /search/organizations
     SearchUsers:
       name: SearchUsers
+      comment: |-
+        Search for users that match the conditions specified in the request.
+        This is only available to admin users.
       input:
         name: SearchEntitiesRequest
       output:
@@ -1081,6 +1237,9 @@ Events:
         path: /events
 GatewayAccess:
   name: GatewayAccess
+  comment: |-
+    The GatewayAcces service, exposed by the Identity Server, is used to manage
+    API keys and collaborators of gateways.
   methods:
     ListRights:
       name: ListRights
@@ -1187,6 +1346,9 @@ GatewayConfigurator:
         stream: true
 GatewayRegistry:
   name: GatewayRegistry
+  comment: |-
+    The GatewayRegistry service, exposed by the Identity Server, is used to manage
+    gateway registrations.
   methods:
     Create:
       name: Create
@@ -1262,6 +1424,20 @@ GatewayRegistry:
       http:
       - method: DELETE
         path: /gateways/{gateway_id}
+    Purge:
+      name: Purge
+      comment: |-
+        Purge the gateway. This will release both gateway ID and EUI for reuse.
+        The gateway owner is responsible for clearing data from any (external) integrations
+        that may store and expose data by gateway ID.
+      input:
+        name: GatewayIdentifiers
+      output:
+        package: google.protobuf
+        name: Empty
+      http:
+      - method: DELETE
+        path: /gateways/{gateway_id}/purge
 Gs:
   name: Gs
   methods:
@@ -1345,6 +1521,9 @@ Is:
   methods:
     GetConfiguration:
       name: GetConfiguration
+      comment: |-
+        Get the configuration of the Identity Server. The response is typically used
+        to enable or disable features in a user interface.
       input:
         name: GetIsConfigurationRequest
       output:
@@ -1357,6 +1536,7 @@ Js:
   methods:
     GetJoinEUIPrefixes:
       name: GetJoinEUIPrefixes
+      comment: Request the JoinEUI prefixes that are configured for this Join Server.
       input:
         package: google.protobuf
         name: Empty
@@ -1447,30 +1627,35 @@ NetworkCryptoService:
   methods:
     JoinRequestMIC:
       name: JoinRequestMIC
+      comment: Calculate the join-request message MIC.
       input:
         name: CryptoServicePayloadRequest
       output:
         name: CryptoServicePayloadResponse
     JoinAcceptMIC:
       name: JoinAcceptMIC
+      comment: Calculate the join-accept message MIC.
       input:
         name: JoinAcceptMICRequest
       output:
         name: CryptoServicePayloadResponse
     EncryptJoinAccept:
       name: EncryptJoinAccept
+      comment: Encrypt the join-accept payload.
       input:
         name: CryptoServicePayloadRequest
       output:
         name: CryptoServicePayloadResponse
     EncryptRejoinAccept:
       name: EncryptRejoinAccept
+      comment: Encrypt the rejoin-accept payload.
       input:
         name: CryptoServicePayloadRequest
       output:
         name: CryptoServicePayloadResponse
     DeriveNwkSKeys:
       name: DeriveNwkSKeys
+      comment: Derive network session keys (NwkSKey, or FNwkSKey, SNwkSKey and NwkSEncKey)
       input:
         name: DeriveSessionKeysRequest
       output:
@@ -1496,6 +1681,17 @@ Ns:
       http:
       - method: GET
         path: /ns/dev_addr
+NsAs:
+  name: NsAs
+  comment: The NsAs service connects a Network Server to an Application Server.
+  methods:
+    HandleUplink:
+      name: HandleUplink
+      input:
+        name: NsAsHandleUplinkRequest
+      output:
+        package: google.protobuf
+        name: Empty
 NsEndDeviceRegistry:
   name: NsEndDeviceRegistry
   comment: The NsEndDeviceRegistry service allows clients to manage their end devices on the Network Server.
@@ -1524,6 +1720,16 @@ NsEndDeviceRegistry:
         path: /ns/applications/{end_device.ids.application_ids.application_id}/devices/{end_device.ids.device_id}
       - method: POST
         path: /ns/applications/{end_device.ids.application_ids.application_id}/devices
+    ResetFactoryDefaults:
+      name: ResetFactoryDefaults
+      comment: ResetFactoryDefaults resets device state to factory defaults.
+      input:
+        name: ResetAndGetEndDeviceRequest
+      output:
+        name: EndDevice
+      http:
+      - method: PATCH
+        path: /ns/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}
     Delete:
       name: Delete
       comment: |-
@@ -1557,12 +1763,14 @@ NsJs:
   methods:
     HandleJoin:
       name: HandleJoin
+      comment: Handle a join-request message.
       input:
         name: JoinRequest
       output:
         name: JoinResponse
     GetNwkSKeys:
       name: GetNwkSKeys
+      comment: Request the network session keys for a particular session.
       input:
         name: SessionKeyRequest
       output:
@@ -1583,9 +1791,13 @@ NsPba:
         name: Empty
 OAuthAuthorizationRegistry:
   name: OAuthAuthorizationRegistry
+  comment: |-
+    The OAuthAuthorizationRegistry service, exposed by the Identity Server,
+    is used to manage OAuth client authorizations for users.
   methods:
     List:
       name: List
+      comment: List OAuth clients that are authorized by the user.
       input:
         name: ListOAuthClientAuthorizationsRequest
       output:
@@ -1595,6 +1807,7 @@ OAuthAuthorizationRegistry:
         path: /users/{user_ids.user_id}/authorizations
     ListTokens:
       name: ListTokens
+      comment: List OAuth access tokens issued to the OAuth client on behalf of the user.
       input:
         name: ListOAuthAccessTokensRequest
       output:
@@ -1604,6 +1817,7 @@ OAuthAuthorizationRegistry:
         path: /users/{user_ids.user_id}/authorizations/{client_ids.client_id}/tokens
     Delete:
       name: Delete
+      comment: Delete (de-authorize) an OAuth client for the user.
       input:
         name: OAuthClientAuthorizationIdentifiers
       output:
@@ -1614,6 +1828,7 @@ OAuthAuthorizationRegistry:
         path: /users/{user_ids.user_id}/authorizations/{client_ids.client_id}
     DeleteToken:
       name: DeleteToken
+      comment: Delete (invalidate) an OAuth access token.
       input:
         name: OAuthAccessTokenIdentifiers
       output:
@@ -1624,6 +1839,9 @@ OAuthAuthorizationRegistry:
         path: /users/{user_ids.user_id}/authorizations/{client_ids.client_id}/tokens/{id}
 OrganizationAccess:
   name: OrganizationAccess
+  comment: |-
+    The OrganizationAcces service, exposed by the Identity Server, is used to manage
+    API keys and collaborators of organizations.
   methods:
     ListRights:
       name: ListRights
@@ -1723,6 +1941,9 @@ OrganizationAccess:
         path: /organizations/{organization_ids.organization_id}/collaborators
 OrganizationRegistry:
   name: OrganizationRegistry
+  comment: |-
+    The OrganizationRegistry service, exposed by the Identity Server, is used to manage
+    organization registrations.
   methods:
     Create:
       name: Create
@@ -1787,8 +2008,25 @@ OrganizationRegistry:
       http:
       - method: DELETE
         path: /organizations/{organization_id}
+    Purge:
+      name: Purge
+      comment: |-
+        Purge the organization. This will release the organization ID for reuse.
+        The user is responsible for clearing data from any (external) integrations
+        that may store and expose data by user or organization ID.
+      input:
+        name: OrganizationIdentifiers
+      output:
+        package: google.protobuf
+        name: Empty
+      http:
+      - method: DELETE
+        path: /organizations/{organization_id}/purge
 UserAccess:
   name: UserAccess
+  comment: |-
+    The UserAcces service, exposed by the Identity Server, is used to manage
+    API keys of users.
   methods:
     ListRights:
       name: ListRights
@@ -1882,6 +2120,9 @@ UserInvitationRegistry:
         path: /invitations
 UserRegistry:
   name: UserRegistry
+  comment: |-
+    The UserRegistry service, exposed by the Identity Server, is used to manage
+    user registrations.
   methods:
     Create:
       name: Create
@@ -1963,8 +2204,25 @@ UserRegistry:
       http:
       - method: DELETE
         path: /users/{user_id}
+    Purge:
+      name: Purge
+      comment: |-
+        Purge the user. This will release the user ID for reuse.
+        The user is responsible for clearing data from any (external) integrations
+        that may store and expose data by user or organization ID.
+      input:
+        name: UserIdentifiers
+      output:
+        package: google.protobuf
+        name: Empty
+      http:
+      - method: DELETE
+        path: /users/{user_id}/purge
 UserSessionRegistry:
   name: UserSessionRegistry
+  comment: |-
+    The UserSessionRegistry service, exposed by the Identity Server, is used to manage
+    (browser) sessions of the user.
   methods:
     List:
       name: List

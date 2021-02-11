@@ -1,18 +1,3 @@
-ApplicationAPIKey:
-  name: ApplicationAPIKey
-  fields:
-  - name: application_ids
-    message:
-      package: ttn.lorawan.v3
-      name: ApplicationIdentifiers
-    rules:
-      required: true
-    default: {}
-  - name: api_key
-    type: string
-    rules:
-      min_len: 1
-    default: ""
 AuthenticationProvider:
   name: AuthenticationProvider
   fields:
@@ -85,10 +70,28 @@ Billing:
     message:
       name: Billing.Stripe
     default: {}
+  - name: aws_saas_marketplace
+    message:
+      name: Billing.AWSSaaSMarketplace
+    default: {}
   oneofs:
   - name: provider
     field_names:
     - stripe
+    - aws_saas_marketplace
+Billing.AWSSaaSMarketplace:
+  name: Billing.AWSSaaSMarketplace
+  fields:
+  - name: customer_identifier
+    type: string
+    rules:
+      min_len: 1
+    default: ""
+  - name: product_code
+    type: string
+    rules:
+      min_len: 1
+    default: ""
 Billing.Stripe:
   name: Billing.Stripe
   fields:
@@ -111,6 +114,14 @@ Billing.Stripe:
     type: string
     rules:
       min_len: 1
+    default: ""
+BillingIdentifiers:
+  name: BillingIdentifiers
+  fields:
+  - name: billing_id
+    type: string
+    rules:
+      max_len: 250
     default: ""
 Configuration:
   name: Configuration
@@ -155,6 +166,18 @@ Configuration.Cluster.IdentityServer:
     message:
       name: Configuration.Cluster.IdentityServer.UserRights
     default: {}
+  - name: admin_rights
+    message:
+      name: Configuration.Cluster.IdentityServer.AdminRights
+    default: {}
+Configuration.Cluster.IdentityServer.AdminRights:
+  name: Configuration.Cluster.IdentityServer.AdminRights
+  fields:
+  - name: all
+    message:
+      package: google.protobuf
+      name: BoolValue
+    default: null
 Configuration.Cluster.IdentityServer.EndDevicePicture:
   name: Configuration.Cluster.IdentityServer.EndDevicePicture
   fields:
@@ -195,6 +218,11 @@ Configuration.Cluster.IdentityServer.UserRegistration:
     message:
       name: Configuration.Cluster.IdentityServer.UserRegistration.PasswordRequirements
     default: {}
+  - name: enabled
+    message:
+      package: google.protobuf
+      name: BoolValue
+    default: null
 Configuration.Cluster.IdentityServer.UserRegistration.AdminApproval:
   name: Configuration.Cluster.IdentityServer.UserRegistration.AdminApproval
   fields:
@@ -312,6 +340,19 @@ CreateTenantRequest:
       package: ttn.lorawan.v3
       name: User
     default: {}
+EntityAPIKey:
+  name: EntityAPIKey
+  fields:
+  - name: entity_ids
+    message:
+      package: ttn.lorawan.v3
+      name: EntityIdentifiers
+    default: {}
+  - name: api_key
+    type: string
+    rules:
+      min_len: 1
+    default: ""
 ExternalUser:
   name: ExternalUser
   fields:
@@ -341,6 +382,15 @@ ExternalUser:
   - name: external_id
     type: string
     default: ""
+GetTenantIdentifiersForBillingIdentifiersRequest:
+  name: GetTenantIdentifiersForBillingIdentifiersRequest
+  fields:
+  - name: ids
+    message:
+      name: BillingIdentifiers
+    rules:
+      required: true
+    default: {}
 GetTenantIdentifiersForEndDeviceEUIsRequest:
   name: GetTenantIdentifiersForEndDeviceEUIsRequest
   fields:
@@ -749,6 +799,10 @@ Tenant:
   - name: billing
     message:
       name: Billing
+    default: {}
+  - name: billing_identifiers
+    message:
+      name: BillingIdentifiers
     default: {}
 TenantIdentifiers:
   name: TenantIdentifiers
