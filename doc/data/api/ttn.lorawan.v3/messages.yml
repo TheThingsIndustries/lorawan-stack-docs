@@ -104,6 +104,8 @@ Application:
     default: ""
   - name: attributes
     comment: Key-value attributes for this application. Typically used for organizing applications or for storing integration-specific data.
+    rules:
+      max_pairs: 10
     map_key:
       type: string
       rules:
@@ -111,9 +113,13 @@ Application:
         pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
     map_value:
       type: string
+      rules:
+        max_len: 200
     default: {}
   - name: contact_info
     comment: Contact information for this application. Typically used to indicate who to contact with technical/security questions about the application.
+    rules:
+      max_items: 10
     repeated:
       message:
         name: ContactInfo
@@ -267,8 +273,6 @@ ApplicationInvalidatedDownlinks:
   name: ApplicationInvalidatedDownlinks
   fields:
   - name: downlinks
-    rules:
-      min_items: 1
     repeated:
       message:
         name: ApplicationDownlink
@@ -311,24 +315,6 @@ ApplicationJoinAccept:
 ApplicationLink:
   name: ApplicationLink
   fields:
-  - name: network_server_address
-    comment: |-
-      The address of the external Network Server where to link to.
-      The typical format of the address is "host:port". If the port is omitted,
-      the normal port inference (with DNS lookup, otherwise defaults) is used.
-      Leave empty when linking to a cluster Network Server.
-    type: string
-    rules:
-      pattern: ^(?:(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*(?:[A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])(?::[0-9]{1,5})?$|^$
-    default: ""
-  - name: api_key
-    comment: |-
-      The API key to use to link the Application Server to Network Server.
-      This API key needs to have RIGHT_APPLICATION_LINK.
-    type: string
-    rules:
-      min_len: 1
-    default: ""
   - name: default_formatters
     comment: |-
       Default message payload formatters to use when there are no formatters
@@ -399,6 +385,8 @@ ApplicationLocation:
       required: true
     default: {}
   - name: attributes
+    rules:
+      max_pairs: 10
     map_key:
       type: string
       rules:
@@ -406,6 +394,8 @@ ApplicationLocation:
         pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
     map_value:
       type: string
+      rules:
+        max_len: 200
     default: {}
 ApplicationPackage:
   name: ApplicationPackage
@@ -783,14 +773,20 @@ ApplicationPubSub.MQTTProvider:
   - name: tls_ca
     comment: The server Root CA certificate. PEM formatted.
     type: bytes
+    rules:
+      max_len: 8192
     default: ""
   - name: tls_client_cert
     comment: The client certificate. PEM formatted.
     type: bytes
+    rules:
+      max_len: 8192
     default: ""
   - name: tls_client_key
     comment: The client private key. PEM formatted.
     type: bytes
+    rules:
+      max_len: 8192
     default: ""
   - name: headers
     comment: HTTP headers to use on MQTT-over-Websocket connections.
@@ -1093,6 +1089,8 @@ ApplicationWebhook:
       The API key to be used for downlink queue operations.
       The field is provided for convenience reasons, and can contain API keys with additional rights (albeit this is discouraged).
     type: string
+    rules:
+      max_len: 128
     default: ""
   - name: uplink_message
     message:
@@ -1140,6 +1138,8 @@ ApplicationWebhook.Message:
   - name: path
     comment: Path to append to the base URL.
     type: string
+    rules:
+      max_len: 64
     default: ""
 ApplicationWebhookFormats:
   name: ApplicationWebhookFormats
@@ -1274,6 +1274,8 @@ ApplicationWebhookTemplate.Message:
   - name: path
     comment: Path to append to the base URL. Can contain template fields, in RFC 6570 format.
     type: string
+    rules:
+      max_len: 64
     default: ""
 ApplicationWebhookTemplateField:
   name: ApplicationWebhookTemplateField
@@ -1340,6 +1342,36 @@ Applications:
       message:
         name: Application
     default: []
+AsConfiguration:
+  name: AsConfiguration
+  comment: Application Server configuration.
+  fields:
+  - name: pubsub
+    message:
+      name: AsConfiguration.PubSub
+    default: {}
+AsConfiguration.PubSub:
+  name: AsConfiguration.PubSub
+  fields:
+  - name: providers
+    message:
+      name: AsConfiguration.PubSub.Providers
+    default: {}
+AsConfiguration.PubSub.Providers:
+  name: AsConfiguration.PubSub.Providers
+  fields:
+  - name: mqtt
+    enum:
+      name: AsConfiguration.PubSub.Providers.Status
+    default: ENABLED
+  - name: nats
+    enum:
+      name: AsConfiguration.PubSub.Providers.Status
+    default: ENABLED
+  - name: aws_iot
+    enum:
+      name: AsConfiguration.PubSub.Providers.Status
+    default: ENABLED
 AuthInfoResponse:
   name: AuthInfoResponse
   fields:
@@ -1401,6 +1433,7 @@ AuthorizeApplicationRequest:
     type: string
     rules:
       min_len: 1
+      max_len: 128
     default: ""
 CFList:
   name: CFList
@@ -1431,10 +1464,12 @@ ClaimEndDeviceRequest:
   name: ClaimEndDeviceRequest
   fields:
   - name: authenticated_identifiers
+    comment: Authenticated identifiers.
     message:
       name: ClaimEndDeviceRequest.AuthenticatedIdentifiers
     default: {}
   - name: qr_code
+    comment: Raw QR code contents.
     type: bytes
     rules:
       max_len: 1024
@@ -1506,12 +1541,17 @@ ClaimEndDeviceRequest.AuthenticatedIdentifiers:
   name: ClaimEndDeviceRequest.AuthenticatedIdentifiers
   fields:
   - name: join_eui
+    comment: JoinEUI (or AppEUI) of the device to claim.
     type: bytes
     default: ""
   - name: dev_eui
+    comment: DevEUI of the device to claim.
     type: bytes
     default: ""
   - name: authentication_code
+    comment: |-
+      Authentication code to prove ownership.
+      In the LoRa Alliance TR005 specification, this equals the OwnerToken.
     type: string
     rules:
       pattern: ^[A-Z0-9]{1,32}$
@@ -1548,6 +1588,8 @@ Client:
     default: ""
   - name: attributes
     comment: Key-value attributes for this client. Typically used for organizing clients or for storing integration-specific data.
+    rules:
+      max_pairs: 10
     map_key:
       type: string
       rules:
@@ -1555,9 +1597,13 @@ Client:
         pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
     map_value:
       type: string
+      rules:
+        max_len: 200
     default: {}
   - name: contact_info
     comment: Contact information for this client. Typically used to indicate who to contact with technical/security questions about the application.
+    rules:
+      max_items: 10
     repeated:
       message:
         name: ContactInfo
@@ -1565,22 +1611,32 @@ Client:
   - name: secret
     comment: The client secret is only visible to collaborators of the client.
     type: string
+    rules:
+      max_len: 128
     default: ""
   - name: redirect_uris
     comment: |-
       The allowed redirect URIs against which authorization requests are checked.
       If the authorization request does not pass a redirect URI, the first one
       from this list is taken.
+    rules:
+      max_items: 10
     repeated:
       type: string
+      rules:
+        max_len: 128
     default: []
   - name: logout_redirect_uris
     comment: |-
       The allowed logout redirect URIs against which client initiated logout
       requests are checked. If the authorization request does not pass a redirect
       URI, the first one from this list is taken.
+    rules:
+      max_items: 10
     repeated:
       type: string
+      rules:
+        max_len: 128
     default: []
   - name: state
     comment: |-
@@ -1767,13 +1823,19 @@ ContactInfo:
   - name: contact_type
     enum:
       name: ContactType
+    rules:
+      defined_only: true
     default: CONTACT_TYPE_OTHER
   - name: contact_method
     enum:
       name: ContactMethod
+    rules:
+      defined_only: true
     default: CONTACT_METHOD_OTHER
   - name: value
     type: string
+    rules:
+      max_len: 256
     default: ""
   - name: public
     type: bool
@@ -1788,9 +1850,13 @@ ContactInfoValidation:
   fields:
   - name: id
     type: string
+    rules:
+      max_len: 64
     default: ""
   - name: token
     type: string
+    rules:
+      max_len: 64
     default: ""
   - name: entity
     message:
@@ -2011,27 +2077,34 @@ CryptoServicePayloadRequest:
   name: CryptoServicePayloadRequest
   fields:
   - name: ids
+    comment: End device identifiers for the cryptographic operation.
     message:
       name: EndDeviceIdentifiers
     rules:
       required: true
     default: {}
   - name: lorawan_version
+    comment: LoRaWAN version to use for the cryptographic operation.
     enum:
       name: MACVersion
     rules:
       defined_only: true
     default: MAC_UNKNOWN
   - name: payload
+    comment: Raw input payload.
     type: bytes
+    rules:
+      max_len: 256
     default: ""
   - name: provisioner_id
+    comment: Provisioner that provisioned the end device.
     type: string
     rules:
       max_len: 36
       pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$|^$
     default: ""
   - name: provisioning_data
+    comment: Provisioning data for the provisioner.
     message:
       package: google.protobuf
       name: Struct
@@ -2040,6 +2113,7 @@ CryptoServicePayloadResponse:
   name: CryptoServicePayloadResponse
   fields:
   - name: payload
+    comment: Raw output payload.
     type: bytes
     default: ""
 DLSettings:
@@ -2160,33 +2234,42 @@ DeriveSessionKeysRequest:
   name: DeriveSessionKeysRequest
   fields:
   - name: ids
+    comment: |-
+      End device identifiers to use for key derivation.
+      The DevAddr must be set in this request. The DevEUI may need to be set, depending on the provisioner.
     message:
       name: EndDeviceIdentifiers
     rules:
       required: true
     default: {}
   - name: lorawan_version
+    comment: LoRaWAN key derivation scheme.
     enum:
       name: MACVersion
     rules:
       defined_only: true
     default: MAC_UNKNOWN
   - name: join_nonce
+    comment: LoRaWAN JoinNonce (or AppNonce).
     type: bytes
     default: ""
   - name: dev_nonce
+    comment: LoRaWAN DevNonce.
     type: bytes
     default: ""
   - name: net_id
+    comment: LoRaWAN NetID.
     type: bytes
     default: ""
   - name: provisioner_id
+    comment: Provisioner that provisioned the end device.
     type: string
     rules:
       max_len: 36
       pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$|^$
     default: ""
   - name: provisioning_data
+    comment: Provisioning data for the provisioner.
     message:
       package: google.protobuf
       name: Struct
@@ -2322,6 +2405,8 @@ EndDevice:
     default: ""
   - name: attributes
     comment: Key-value attributes for this end device. Typically used for organizing end devices or for storing integration-specific data. Stored in Entity Registry.
+    rules:
+      max_pairs: 10
     map_key:
       type: string
       rules:
@@ -2329,6 +2414,8 @@ EndDevice:
         pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
     map_value:
       type: string
+      rules:
+        max_len: 200
     default: {}
   - name: version_ids
     comment: Version Identifiers. Stored in Entity Registry, Network Server and Application Server.
@@ -2583,31 +2670,6 @@ EndDevice:
       Stored in Network Server.
     type: int32
     default: 0
-  - name: recent_adr_uplinks
-    comment: |-
-      Recent uplink messages with ADR bit set to 1 sorted by time. Stored in Network Server.
-      The field is reset each time an uplink message carrying MACPayload is received with ADR bit set to 0.
-      The number of messages stored is in the range [0,20];
-    repeated:
-      message:
-        name: UplinkMessage
-    default: []
-  - name: recent_uplinks
-    comment: |-
-      Recent uplink messages sorted by time. Stored in Network Server.
-      The number of messages stored may depend on configuration.
-    repeated:
-      message:
-        name: UplinkMessage
-    default: []
-  - name: recent_downlinks
-    comment: |-
-      Recent downlink messages sorted by time. Stored in Network Server.
-      The number of messages stored may depend on configuration.
-    repeated:
-      message:
-        name: DownlinkMessage
-    default: []
   - name: queued_application_downlinks
     comment: |-
       Queued Application downlink messages. Stored in Application Server,
@@ -2682,20 +2744,42 @@ EndDeviceAuthenticationCode:
 EndDeviceBrand:
   name: EndDeviceBrand
   fields:
-  - name: id
+  - name: brand_id
+    comment: Brand identifier, as specified in the Device Repository.
     type: string
+    rules:
+      max_len: 36
+      pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
     default: ""
   - name: name
+    comment: Brand name.
     type: string
     default: ""
-  - name: url
-    type: string
-    default: ""
-  - name: logos
-    comment: Logos contains file names of brand logos.
+  - name: private_enterprise_number
+    comment: Private Enterprise Number (PEN) assigned by IANA.
+    type: uint32
+    default: 0
+  - name: organization_unique_identifiers
+    comment: Organization Unique Identifiers (OUI) assigned by IEEE.
     repeated:
       type: string
     default: []
+  - name: lora_alliance_vendor_id
+    comment: VendorID managed by the LoRa Alliance, as defined in TR005.
+    type: uint32
+    default: 0
+  - name: website
+    comment: Brand website URL.
+    type: string
+    default: ""
+  - name: email
+    comment: Contact email address.
+    type: string
+    default: ""
+  - name: logo
+    comment: Path to brand logo.
+    type: string
+    default: ""
 EndDeviceIdentifiers:
   name: EndDeviceIdentifiers
   fields:
@@ -2727,20 +2811,310 @@ EndDeviceModel:
   name: EndDeviceModel
   fields:
   - name: brand_id
+    comment: Brand identifier, as defined in the Device Repository.
     type: string
     rules:
       max_len: 36
       pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
     default: ""
-  - name: id
+  - name: model_id
+    comment: Model identifier, as defined in the Device Repository.
     type: string
     rules:
       max_len: 36
       pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
     default: ""
   - name: name
+    comment: Model name, as defined in the Device Repository.
+    type: string
+    rules:
+      max_len: 50
+    default: ""
+  - name: description
+    comment: Model description.
+    type: string
+    rules:
+      max_len: 2000
+    default: ""
+  - name: hardware_versions
+    comment: Available hardware versions.
+    repeated:
+      message:
+        name: EndDeviceModel.HardwareVersion
+    default: []
+  - name: firmware_versions
+    comment: Available firmware versions.
+    repeated:
+      message:
+        name: EndDeviceModel.FirmwareVersion
+    default: []
+  - name: sensors
+    comment: List of sensors included in the device.
+    repeated:
+      type: string
+    default: []
+  - name: dimensions
+    comment: Device dimensions.
+    message:
+      name: EndDeviceModel.Dimensions
+    default: {}
+  - name: weight
+    comment: Device weight (gram).
+    message:
+      package: google.protobuf
+      name: FloatValue
+    default: null
+  - name: battery
+    comment: Device battery information.
+    message:
+      name: EndDeviceModel.Battery
+    default: {}
+  - name: operating_conditions
+    comment: Device operating conditions.
+    message:
+      name: EndDeviceModel.OperatingConditions
+    default: {}
+  - name: ip_code
+    comment: Device IP rating code.
     type: string
     default: ""
+  - name: key_provisioning
+    comment: Supported key provisioning methods.
+    repeated:
+      enum:
+        name: KeyProvisioning
+    default: []
+  - name: key_security
+    comment: Device key security.
+    enum:
+      name: KeySecurity
+    default: KEY_SECURITY_UNKNOWN
+  - name: photos
+    comment: Device photos.
+    message:
+      name: EndDeviceModel.Photos
+    default: {}
+  - name: videos
+    comment: Device videos.
+    message:
+      name: EndDeviceModel.Videos
+    default: {}
+  - name: product_url
+    comment: Device information page URL.
+    type: string
+    default: ""
+  - name: datasheet_url
+    comment: Device datasheet URL.
+    type: string
+    default: ""
+  - name: resellers
+    comment: Reseller URLs.
+    repeated:
+      message:
+        name: EndDeviceModel.Reseller
+    default: []
+  - name: compliances
+    comment: List of standards the device is compliant with.
+    message:
+      name: EndDeviceModel.Compliances
+    default: {}
+  - name: additional_radios
+    comment: List of any additional radios included in the device.
+    repeated:
+      type: string
+    default: []
+EndDeviceModel.Battery:
+  name: EndDeviceModel.Battery
+  fields:
+  - name: replaceable
+    comment: Whether the device battery can be replaced.
+    message:
+      package: google.protobuf
+      name: BoolValue
+    default: null
+  - name: type
+    comment: Battery type.
+    type: string
+    default: ""
+EndDeviceModel.Compliances:
+  name: EndDeviceModel.Compliances
+  fields:
+  - name: safety
+    comment: List of safety standards the device is compliant with.
+    repeated:
+      message:
+        name: EndDeviceModel.Compliances.Compliance
+    default: []
+  - name: radio_equipment
+    comment: List of radio equipment standards the device is compliant with.
+    repeated:
+      message:
+        name: EndDeviceModel.Compliances.Compliance
+    default: []
+EndDeviceModel.Compliances.Compliance:
+  name: EndDeviceModel.Compliances.Compliance
+  fields:
+  - name: body
+    type: string
+    default: ""
+  - name: norm
+    type: string
+    default: ""
+  - name: standard
+    type: string
+    default: ""
+  - name: version
+    type: string
+    default: ""
+EndDeviceModel.Dimensions:
+  name: EndDeviceModel.Dimensions
+  fields:
+  - name: width
+    comment: Device width (mm).
+    message:
+      package: google.protobuf
+      name: FloatValue
+    default: null
+  - name: height
+    comment: Device height (mm).
+    message:
+      package: google.protobuf
+      name: FloatValue
+    default: null
+  - name: diameter
+    comment: Device diameter (mm).
+    message:
+      package: google.protobuf
+      name: FloatValue
+    default: null
+  - name: length
+    comment: Device length (mm).
+    message:
+      package: google.protobuf
+      name: FloatValue
+    default: null
+EndDeviceModel.FirmwareVersion:
+  name: EndDeviceModel.FirmwareVersion
+  fields:
+  - name: version
+    comment: Firmware version string.
+    type: string
+    default: ""
+  - name: numeric
+    comment: Numeric firmware revision number.
+    type: uint32
+    default: 0
+  - name: supported_hardware_versions
+    comment: Hardware versions supported by this firmware version.
+    repeated:
+      type: string
+    default: []
+  - name: profiles
+    comment: Device profiles for each supported region (band).
+    map_key:
+      type: string
+    map_value:
+      message:
+        name: EndDeviceModel.FirmwareVersion.Profile
+    default: {}
+EndDeviceModel.FirmwareVersion.Profile:
+  name: EndDeviceModel.FirmwareVersion.Profile
+  fields:
+  - name: profile_id
+    comment: Profile identifier, as defined in the Device Repository.
+    type: string
+    default: ""
+  - name: lorawan_certified
+    comment: Whether the device is LoRaWAN certified.
+    type: bool
+    default: false
+  - name: codec_id
+    comment: Payload formatter codec identifier, as defined in the Device Repository.
+    type: string
+    default: ""
+EndDeviceModel.HardwareVersion:
+  name: EndDeviceModel.HardwareVersion
+  fields:
+  - name: version
+    comment: Hardware version string.
+    type: string
+    default: ""
+  - name: numeric
+    comment: Numberic hardware revision number.
+    type: uint32
+    default: 0
+  - name: part_number
+    comment: Hardware part number.
+    type: string
+    default: ""
+EndDeviceModel.OperatingConditions:
+  name: EndDeviceModel.OperatingConditions
+  fields:
+  - name: temperature
+    comment: Temperature operating conditions (Celsius).
+    message:
+      name: EndDeviceModel.OperatingConditions.Limits
+    default: {}
+  - name: relative_humidity
+    comment: Relative humidity operating conditions (Fraction, in range [0, 1]).
+    message:
+      name: EndDeviceModel.OperatingConditions.Limits
+    default: {}
+EndDeviceModel.OperatingConditions.Limits:
+  name: EndDeviceModel.OperatingConditions.Limits
+  fields:
+  - name: min
+    comment: Min value of operating conditions range.
+    message:
+      package: google.protobuf
+      name: FloatValue
+    default: null
+  - name: max
+    comment: Max value of operating conditions range.
+    message:
+      package: google.protobuf
+      name: FloatValue
+    default: null
+EndDeviceModel.Photos:
+  name: EndDeviceModel.Photos
+  fields:
+  - name: main
+    comment: Main device photo.
+    type: string
+    default: ""
+  - name: other
+    comment: List of other device photos.
+    repeated:
+      type: string
+    default: []
+EndDeviceModel.Reseller:
+  name: EndDeviceModel.Reseller
+  fields:
+  - name: name
+    comment: Reseller name.
+    type: string
+    default: ""
+  - name: region
+    comment: Reseller regions.
+    repeated:
+      type: string
+    default: []
+  - name: url
+    comment: Reseller URL.
+    type: string
+    default: ""
+EndDeviceModel.Videos:
+  name: EndDeviceModel.Videos
+  fields:
+  - name: main
+    comment: Link to main device video.
+    type: string
+    default: ""
+  - name: other
+    comment: Links to other device videos.
+    repeated:
+      type: string
+    default: []
 EndDeviceTemplate:
   name: EndDeviceTemplate
   fields:
@@ -2828,6 +3202,8 @@ EndDeviceVersion:
     default: ""
   - name: photos
     comment: Photos contains file names of device photos.
+    rules:
+      max_items: 10
     repeated:
       type: string
     default: []
@@ -2885,9 +3261,18 @@ EndDeviceVersionIdentifiers:
     default: ""
   - name: hardware_version
     type: string
+    rules:
+      max_len: 32
     default: ""
   - name: firmware_version
     type: string
+    rules:
+      max_len: 32
+    default: ""
+  - name: band_id
+    type: string
+    rules:
+      max_len: 32
     default: ""
 EndDevices:
   name: EndDevices
@@ -3165,6 +3550,8 @@ Gateway:
     default: ""
   - name: attributes
     comment: Key-value attributes for this gateway. Typically used for organizing gateways or for storing integration-specific data.
+    rules:
+      max_pairs: 10
     map_key:
       type: string
       rules:
@@ -3172,9 +3559,13 @@ Gateway:
         pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
     map_value:
       type: string
+      rules:
+        max_len: 200
     default: {}
   - name: contact_info
     comment: Contact information for this gateway. Typically used to indicate who to contact with technical/security questions about the gateway.
+    rules:
+      max_items: 10
     repeated:
       message:
         name: ContactInfo
@@ -3201,6 +3592,8 @@ Gateway:
     default: false
   - name: update_channel
     type: string
+    rules:
+      max_len: 128
     default: ""
   - name: frequency_plan_id
     comment: |-
@@ -3222,6 +3615,8 @@ Gateway:
         max_len: 64
     default: []
   - name: antennas
+    rules:
+      max_items: 8
     repeated:
       message:
         name: GatewayAntenna
@@ -3272,6 +3667,31 @@ Gateway:
     message:
       name: Secret
     default: {}
+  - name: claim_authentication_code
+    comment: |-
+      The authentication code for gateway claiming.
+      Requires the RIGHT_GATEWAY_READ_SECRETS for reading and RIGHT_GATEWAY_WRITE_SECRETS for updating this value.
+      The entire field must be used in RPCs since sub-fields are validated wrt to each other. Direct selection/update of sub-fields only are not allowed.
+      Use the top level field mask `claim_authentication_code` even when updating single fields.
+    message:
+      name: GatewayClaimAuthenticationCode
+    default: {}
+  - name: target_cups_uri
+    comment: |-
+      CUPS URI for LoRa Basics Station CUPS redirection.
+      The CUPS Trust field will be automatically fetched from the cert chain presented by the target server.
+    type: string
+    rules:
+      uri: true
+    default: ""
+  - name: target_cups_key
+    comment: |-
+      CUPS Key for LoRa Basics Station CUPS redirection.
+      If redirecting to another instance of TTS, use the CUPS API Key for the gateway on the target instance.
+      Requires the RIGHT_GATEWAY_READ_SECRETS for reading and RIGHT_GATEWAY_WRITE_SECRETS for updating this value.
+    message:
+      name: Secret
+    default: {}
 GatewayAntenna:
   name: GatewayAntenna
   comment: GatewayAntenna is the message that defines a gateway antenna.
@@ -3288,6 +3708,8 @@ GatewayAntenna:
       required: true
     default: {}
   - name: attributes
+    rules:
+      max_pairs: 10
     map_key:
       type: string
       rules:
@@ -3295,6 +3717,8 @@ GatewayAntenna:
         pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
     map_value:
       type: string
+      rules:
+        max_len: 200
     default: {}
 GatewayAntennaIdentifiers:
   name: GatewayAntennaIdentifiers
@@ -3325,6 +3749,24 @@ GatewayBrand:
     repeated:
       type: string
     default: []
+GatewayClaimAuthenticationCode:
+  name: GatewayClaimAuthenticationCode
+  comment: Authentication code for claiming gateways.
+  fields:
+  - name: secret
+    message:
+      name: Secret
+    default: {}
+  - name: valid_from
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
+  - name: valid_to
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
 GatewayConnectionStats:
   name: GatewayConnectionStats
   comment: Connection stats as monitored by the Gateway Server.
@@ -3510,6 +3952,8 @@ GatewayStatus:
           fpga: "48"
           dsp: "27"
           hal: "v2-3.5.0"
+    rules:
+      max_pairs: 10
     map_key:
       type: string
       rules:
@@ -3517,11 +3961,15 @@ GatewayStatus:
         pattern: ^[a-z0-9](?:[_-]?[a-z0-9]){2,}$
     map_value:
       type: string
+      rules:
+        max_len: 32
     default: {}
   - name: antenna_locations
     comment: |-
       Location of each gateway's antenna
       - if left out, server uses registry-set location as fallback
+    rules:
+      max_items: 8
     repeated:
       message:
         name: Location
@@ -3530,14 +3978,20 @@ GatewayStatus:
     comment: |-
       IP addresses of this gateway.
       Repeated addresses can be used to communicate addresses of multiple interfaces (LAN, Public IP, ...).
+    rules:
+      max_items: 10
     repeated:
       type: string
+      rules:
+        ip: true
     default: []
   - name: metrics
     comment: |-
       Metrics
       - can be used for forwarding gateway metrics such as temperatures or performance metrics
       - map keys are written in snake_case
+    rules:
+      max_pairs: 10
     map_key:
       type: string
       rules:
@@ -3630,9 +4084,13 @@ GatewayVersionIdentifiers:
     default: ""
   - name: hardware_version
     type: string
+    rules:
+      max_len: 32
     default: ""
   - name: firmware_version
     type: string
+    rules:
+      max_len: 32
     default: ""
 Gateways:
   name: Gateways
@@ -3652,18 +4110,21 @@ GenerateEndDeviceQRCodeRequest:
   name: GenerateEndDeviceQRCodeRequest
   fields:
   - name: format_id
+    comment: QR code format identifier. Enumerate available formats with rpc ListFormats in the EndDeviceQRCodeGenerator service.
     type: string
     rules:
       max_len: 36
       pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
     default: ""
   - name: end_device
+    comment: End device to use as input to generate the QR code.
     message:
       name: EndDevice
     rules:
       required: true
     default: {}
   - name: image
+    comment: If set, the server will render the QR code image according to these settings.
     message:
       name: GenerateEndDeviceQRCodeRequest.Image
     default: {}
@@ -3671,6 +4132,7 @@ GenerateEndDeviceQRCodeRequest.Image:
   name: GenerateEndDeviceQRCodeRequest.Image
   fields:
   - name: image_size
+    comment: Requested QR code image dimension in pixels.
     type: uint32
     rules:
       lte: 1000
@@ -3680,6 +4142,7 @@ GenerateQRCodeResponse:
   name: GenerateQRCodeResponse
   fields:
   - name: text
+    comment: Text representation of the QR code contents.
     type: string
     default: ""
   - name: image
@@ -3826,6 +4289,15 @@ GetApplicationWebhookTemplateRequest:
       package: google.protobuf
       name: FieldMask
     default: {}
+GetAsConfigurationRequest:
+  name: GetAsConfigurationRequest
+GetAsConfigurationResponse:
+  name: GetAsConfigurationResponse
+  fields:
+  - name: configuration
+    message:
+      name: AsConfiguration
+    default: {}
 GetClientCollaboratorRequest:
   name: GetClientCollaboratorRequest
   fields:
@@ -3868,6 +4340,27 @@ GetCollaboratorResponse:
       enum:
         name: Right
     default: []
+GetEndDeviceBrandRequest:
+  name: GetEndDeviceBrandRequest
+  fields:
+  - name: application_ids
+    comment: Application identifiers.
+    message:
+      name: ApplicationIdentifiers
+    default: {}
+  - name: brand_id
+    comment: Brand identifier, as defined in the Device Repository.
+    type: string
+    rules:
+      max_len: 36
+      pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+    default: ""
+  - name: field_mask
+    comment: Field mask paths.
+    message:
+      package: google.protobuf
+      name: FieldMask
+    default: {}
 GetEndDeviceIdentifiersForEUIsRequest:
   name: GetEndDeviceIdentifiersForEUIsRequest
   fields:
@@ -3877,6 +4370,34 @@ GetEndDeviceIdentifiersForEUIsRequest:
   - name: dev_eui
     type: bytes
     default: ""
+GetEndDeviceModelRequest:
+  name: GetEndDeviceModelRequest
+  fields:
+  - name: application_ids
+    comment: Application identifiers.
+    message:
+      name: ApplicationIdentifiers
+    default: {}
+  - name: brand_id
+    comment: Brand identifier, as defined in the Device Repository.
+    type: string
+    rules:
+      max_len: 36
+      pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+    default: ""
+  - name: model_id
+    comment: Model identifier, as defined in the Device Repository.
+    type: string
+    rules:
+      max_len: 36
+      pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+    default: ""
+  - name: field_mask
+    comment: Field mask paths.
+    message:
+      package: google.protobuf
+      name: FieldMask
+    default: {}
 GetEndDeviceRequest:
   name: GetEndDeviceRequest
   fields:
@@ -3998,10 +4519,24 @@ GetOrganizationRequest:
       package: google.protobuf
       name: FieldMask
     default: {}
+GetPayloadFormatterRequest:
+  name: GetPayloadFormatterRequest
+  fields:
+  - name: application_ids
+    comment: Application identifiers.
+    message:
+      name: ApplicationIdentifiers
+    default: {}
+  - name: version_ids
+    comment: End device version information.
+    message:
+      name: EndDeviceVersionIdentifiers
+    default: {}
 GetQRCodeFormatRequest:
   name: GetQRCodeFormatRequest
   fields:
   - name: format_id
+    comment: QR code format identifier. Enumerate available formats with rpc ListFormats in the EndDeviceQRCodeGenerator service.
     type: string
     rules:
       max_len: 36
@@ -4011,18 +4546,21 @@ GetRootKeysRequest:
   name: GetRootKeysRequest
   fields:
   - name: ids
+    comment: End device identifiers to request the root keys for.
     message:
       name: EndDeviceIdentifiers
     rules:
       required: true
     default: {}
   - name: provisioner_id
+    comment: Provisioner that provisioned the end device.
     type: string
     rules:
       max_len: 36
       pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$|^$
     default: ""
   - name: provisioning_data
+    comment: Provisioning data for the provisioner.
     message:
       package: google.protobuf
       name: Struct
@@ -4031,12 +4569,12 @@ GetStoredApplicationUpRequest:
   name: GetStoredApplicationUpRequest
   fields:
   - name: application_ids
-    comment: Query upstream messages from all end devices of an application. Cannot be used in conjunction with EndDeviceIdentifiers.
+    comment: Query upstream messages from all end devices of an application. Cannot be used in conjunction with end_device_ids.
     message:
       name: ApplicationIdentifiers
     default: {}
   - name: end_device_ids
-    comment: Query upstream messages from a single end device. Cannot be used in conjunction with ApplicationIdentifiers.
+    comment: Query upstream messages from a single end device. Cannot be used in conjunction with application_ids.
     message:
       name: EndDeviceIdentifiers
     default: {}
@@ -4090,6 +4628,27 @@ GetStoredApplicationUpRequest:
       - -received_at
       - received_at
     default: ""
+  - name: field_mask
+    comment: |-
+      The names of the upstream message fields that should be returned. See the API reference
+      for allowed field names for each type of upstream message.
+    message:
+      package: google.protobuf
+      name: FieldMask
+    default: {}
+GetTemplateRequest:
+  name: GetTemplateRequest
+  fields:
+  - name: application_ids
+    comment: Application identifiers.
+    message:
+      name: ApplicationIdentifiers
+    default: {}
+  - name: version_ids
+    comment: End device version information.
+    message:
+      name: EndDeviceVersionIdentifiers
+    default: {}
 GetUserAPIKeyRequest:
   name: GetUserAPIKeyRequest
   fields:
@@ -4220,6 +4779,9 @@ IsConfiguration.UserRegistration:
     message:
       name: IsConfiguration.UserRegistration.PasswordRequirements
     default: {}
+  - name: enabled
+    type: bool
+    default: false
 IsConfiguration.UserRegistration.AdminApproval:
   name: IsConfiguration.UserRegistration.AdminApproval
   fields:
@@ -4304,18 +4866,21 @@ JoinAcceptMICRequest:
   name: JoinAcceptMICRequest
   fields:
   - name: payload_request
+    comment: Request data for the cryptographic operation.
     message:
       name: CryptoServicePayloadRequest
     rules:
       required: true
     default: {}
   - name: join_request_type
+    comment: LoRaWAN rejoin-request type.
     enum:
       name: RejoinType
     rules:
       defined_only: true
     default: CONTEXT
   - name: dev_nonce
+    comment: LoRaWAN DevNonce.
     type: bytes
     default: ""
 JoinAcceptPayload:
@@ -4470,6 +5035,8 @@ KeyEnvelope:
     default: ""
   - name: encrypted_key
     type: bytes
+    rules:
+      max_len: 1024
     default: ""
 ListApplicationAPIKeysRequest:
   name: ListApplicationAPIKeysRequest
@@ -4700,6 +5267,113 @@ ListClientsRequest:
     comment: Page number for pagination. 0 is interpreted as 1.
     type: uint32
     default: 0
+ListEndDeviceBrandsRequest:
+  name: ListEndDeviceBrandsRequest
+  fields:
+  - name: application_ids
+    comment: Application identifiers.
+    message:
+      name: ApplicationIdentifiers
+    default: {}
+  - name: limit
+    comment: Limit the number of results per page.
+    type: uint32
+    rules:
+      lte: 1000
+    default: 0
+  - name: page
+    comment: Page number for pagination. 0 is interpreted as 1.
+    type: uint32
+    default: 0
+  - name: order_by
+    comment: Order (for pagination)
+    type: string
+    rules:
+      in:
+      - ""
+      - brand_id
+      - -brand_id
+      - name
+      - -name
+    default: ""
+  - name: search
+    comment: Search for brands matching a query string.
+    type: string
+    rules:
+      max_len: 100
+    default: ""
+  - name: field_mask
+    comment: Field mask paths.
+    message:
+      package: google.protobuf
+      name: FieldMask
+    default: {}
+ListEndDeviceBrandsResponse:
+  name: ListEndDeviceBrandsResponse
+  fields:
+  - name: brands
+    repeated:
+      message:
+        name: EndDeviceBrand
+    default: []
+ListEndDeviceModelsRequest:
+  name: ListEndDeviceModelsRequest
+  fields:
+  - name: application_ids
+    comment: Application identifiers.
+    message:
+      name: ApplicationIdentifiers
+    default: {}
+  - name: brand_id
+    comment: List end devices from a specific brand.
+    type: string
+    rules:
+      max_len: 36
+      pattern: ^([a-z0-9](?:[-]?[a-z0-9]){2,}|)?$
+    default: ""
+  - name: limit
+    comment: Limit the number of results per page.
+    type: uint32
+    rules:
+      lte: 1000
+    default: 0
+  - name: page
+    comment: Page number for pagination. 0 is interpreted as 1.
+    type: uint32
+    default: 0
+  - name: order_by
+    comment: Order end devices
+    type: string
+    rules:
+      in:
+      - ""
+      - brand_id
+      - -brand_id
+      - model_id
+      - -model_id
+      - name
+      - -name
+    default: ""
+  - name: search
+    comment: List end devices matching a query string.
+    type: string
+    rules:
+      max_len: 100
+    default: ""
+  - name: field_mask
+    comment: Field mask paths.
+    message:
+      package: google.protobuf
+      name: FieldMask
+    default: {}
+ListEndDeviceModelsResponse:
+  name: ListEndDeviceModelsResponse
+  fields:
+  - name: models
+    repeated:
+      message:
+        name: EndDeviceModel
+    default: []
 ListEndDevicesRequest:
   name: ListEndDevicesRequest
   fields:
@@ -6005,6 +6679,8 @@ MACSettings:
     comment: |-
       List of factory-preset frequencies.
       If unset, the default value from Network Server configuration or regional parameters specification will be used.
+    rules:
+      max_items: 96
     repeated:
       type: uint64
     default: []
@@ -6227,9 +6903,9 @@ MACState:
   - name: pending_join_request
     comment: |-
       Pending join request.
-      Set each time a join accept is scheduled and removed each time an uplink is received from the device.
+      Set each time a join-accept is scheduled and removed each time an uplink is received from the device.
     message:
-      name: JoinRequest
+      name: MACState.JoinRequest
     default: {}
   - name: rx_windows_available
     comment: |-
@@ -6305,6 +6981,10 @@ MACState:
       message:
         name: MACState.DataRateRanges
     default: {}
+  - name: last_adr_change_f_cnt_up
+    comment: Frame counter of uplink, which confirmed the last ADR parameter change.
+    type: uint32
+    default: 0
 MACState.DataRateRange:
   name: MACState.DataRateRange
   fields:
@@ -6341,11 +7021,8 @@ MACState.JoinAccept:
       max_len: 33
     default: ""
   - name: request
-    comment: JoinRequest sent to Join Server.
     message:
-      name: JoinRequest
-    rules:
-      required: true
+      name: MACState.JoinRequest
     default: {}
   - name: keys
     comment: Network session keys associated with the join.
@@ -6360,6 +7037,31 @@ MACState.JoinAccept:
       rules:
         max_len: 100
     default: []
+  - name: dev_addr
+    type: bytes
+    default: ""
+  - name: net_id
+    type: bytes
+    default: ""
+MACState.JoinRequest:
+  name: MACState.JoinRequest
+  fields:
+  - name: downlink_settings
+    message:
+      name: DLSettings
+    rules:
+      required: true
+    default: {}
+  - name: rx_delay
+    enum:
+      name: RxDelay
+    rules:
+      defined_only: true
+    default: RX_DELAY_0
+  - name: cf_list
+    message:
+      name: CFList
+    default: {}
 MHDR:
   name: MHDR
   fields:
@@ -6438,6 +7140,20 @@ Message:
     - join_request_payload
     - join_accept_payload
     - rejoin_request_payload
+MessagePayloadFormatter:
+  name: MessagePayloadFormatter
+  fields:
+  - name: formatter
+    comment: Payload formatter type.
+    enum:
+      name: PayloadFormatter
+    rules:
+      defined_only: true
+    default: FORMATTER_NONE
+  - name: formatter_parameter
+    comment: Parameter for the formatter, must be set together.
+    type: string
+    default: ""
 MessagePayloadFormatters:
   name: MessagePayloadFormatters
   fields:
@@ -6463,6 +7179,16 @@ MessagePayloadFormatters:
     comment: Parameter for the down_formatter, must be set together.
     type: string
     default: ""
+NsAsHandleUplinkRequest:
+  name: NsAsHandleUplinkRequest
+  fields:
+  - name: application_ups
+    rules:
+      min_items: 1
+    repeated:
+      message:
+        name: ApplicationUp
+    default: []
 NwkSKeysResponse:
   name: NwkSKeysResponse
   fields:
@@ -6687,6 +7413,8 @@ Organization:
     default: ""
   - name: attributes
     comment: Key-value attributes for this organization. Typically used for organizing organizations or for storing integration-specific data.
+    rules:
+      max_pairs: 10
     map_key:
       type: string
       rules:
@@ -6694,9 +7422,13 @@ Organization:
         pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
     map_value:
       type: string
+      rules:
+        max_len: 200
     default: {}
   - name: contact_info
     comment: Contact information for this organization. Typically used to indicate who to contact with security/billing questions about the organization.
+    rules:
+      max_items: 10
     repeated:
       message:
         name: ContactInfo
@@ -6751,8 +7483,8 @@ PacketBrokerMetadata:
     comment: Tenant ID managed by the Packet Broker Forwarder Member.
     type: string
     default: ""
-  - name: forwarder_id
-    comment: Forwarder identifier issued by the Packet Broker Forwarder Member.
+  - name: forwarder_cluster_id
+    comment: Forwarder Cluster ID of the Packet Broker Forwarder.
     type: string
     default: ""
   - name: home_network_net_id
@@ -6763,6 +7495,10 @@ PacketBrokerMetadata:
     comment: |-
       Tenant ID managed by the Packet Broker Home Network Member.
       This value is empty if it cannot be determined by the Packet Broker Router.
+    type: string
+    default: ""
+  - name: home_network_cluster_id
+    comment: Home Network Cluster ID of the Packet Broker Home Network.
     type: string
     default: ""
   - name: hops
@@ -6846,12 +7582,16 @@ Picture.Embedded:
   - name: mime_type
     comment: MIME type of the picture.
     type: string
+    rules:
+      max_len: 32
     default: ""
   - name: data
     comment: |-
       Picture data. A data URI can be constructed as follows:
       `data:<mime_type>;base64,<data>`.
     type: bytes
+    rules:
+      max_len: 8388608
     default: ""
 PingSlotPeriodValue:
   name: PingSlotPeriodValue
@@ -6972,6 +7712,7 @@ QRCodeFormats:
   name: QRCodeFormats
   fields:
   - name: formats
+    comment: Available formats. The map key is the format identifier.
     map_key:
       type: string
       rules:
@@ -7003,6 +7744,23 @@ RejoinRequestPayload:
     comment: Contains RJCount0 or RJCount1 depending on rejoin_type.
     type: uint32
     default: 0
+ResetAndGetEndDeviceRequest:
+  name: ResetAndGetEndDeviceRequest
+  fields:
+  - name: end_device_ids
+    message:
+      name: EndDeviceIdentifiers
+    rules:
+      required: true
+    default: {}
+  - name: field_mask
+    comment: |-
+      The names of the end device fields that should be returned.
+      See the API reference for which fields can be returned by the different services.
+    message:
+      package: google.protobuf
+      name: FieldMask
+    default: {}
 Rights:
   name: Rights
   fields:
@@ -7172,17 +7930,25 @@ SearchEndDevicesRequest:
   - name: id_contains
     comment: Find end devices where the ID contains this substring.
     type: string
+    rules:
+      max_len: 50
     default: ""
   - name: name_contains
     comment: Find end devices where the name contains this substring.
     type: string
+    rules:
+      max_len: 50
     default: ""
   - name: description_contains
     comment: Find end devices where the description contains this substring.
     type: string
+    rules:
+      max_len: 50
     default: ""
   - name: attributes_contain
     comment: Find end devices where the given attributes contain these substrings.
+    rules:
+      max_pairs: 10
     map_key:
       type: string
       rules:
@@ -7190,18 +7956,26 @@ SearchEndDevicesRequest:
         pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
     map_value:
       type: string
+      rules:
+        max_len: 50
     default: {}
   - name: dev_eui_contains
     comment: Find end devices where the (hexadecimal) DevEUI contains this substring.
     type: string
+    rules:
+      max_len: 16
     default: ""
   - name: join_eui_contains
     comment: Find end devices where the (hexadecimal) JoinEUI contains this substring.
     type: string
+    rules:
+      max_len: 16
     default: ""
   - name: dev_addr_contains
     comment: Find end devices where the (hexadecimal) DevAddr contains this substring.
     type: string
+    rules:
+      max_len: 8
     default: ""
   - name: field_mask
     message:
@@ -7231,17 +8005,25 @@ SearchEntitiesRequest:
   - name: id_contains
     comment: Find entities where the ID contains this substring.
     type: string
+    rules:
+      max_len: 50
     default: ""
   - name: name_contains
     comment: Find entities where the name contains this substring.
     type: string
+    rules:
+      max_len: 50
     default: ""
   - name: description_contains
     comment: Find entities where the description contains this substring.
     type: string
+    rules:
+      max_len: 50
     default: ""
   - name: attributes_contain
     comment: Find entities where the given attributes contain these substrings.
+    rules:
+      max_pairs: 10
     map_key:
       type: string
       rules:
@@ -7249,6 +8031,8 @@ SearchEntitiesRequest:
         pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
     map_value:
       type: string
+      rules:
+        max_len: 50
     default: {}
   - name: field_mask
     message:
@@ -7903,9 +8687,13 @@ UpdateUserPasswordRequest:
     default: {}
   - name: new
     type: string
+    rules:
+      max_len: 1000
     default: ""
   - name: old
     type: string
+    rules:
+      max_len: 1000
     default: ""
   - name: revoke_all_access
     comment: Revoke active sessions and access tokens of user if true. To be used if credentials are suspected to be compromised.
@@ -8030,6 +8818,8 @@ User:
     default: ""
   - name: attributes
     comment: Key-value attributes for this users. Typically used for storing integration-specific data.
+    rules:
+      max_pairs: 10
     map_key:
       type: string
       rules:
@@ -8037,9 +8827,13 @@ User:
         pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
     map_value:
       type: string
+      rules:
+        max_len: 200
     default: {}
   - name: contact_info
     comment: Contact information for this user. Typically used to indicate who to contact with security/billing questions about the user.
+    rules:
+      max_items: 10
     repeated:
       message:
         name: ContactInfo
@@ -8064,6 +8858,8 @@ User:
       It is not returned on API calls, and can not be updated by updating the User.
       See the UpdatePassword method of the UserRegistry service for more information.
     type: string
+    rules:
+      max_len: 1000
     default: ""
   - name: password_updated_at
     message:
@@ -8094,6 +8890,8 @@ User:
       It is not returned on API calls, and can not be updated by updating the User.
       See the CreateTemporaryPassword method of the UserRegistry service for more information.
     type: string
+    rules:
+      max_len: 1000
     default: ""
   - name: temporary_password_created_at
     message:
