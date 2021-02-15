@@ -23,14 +23,14 @@ Use a requirements subheading to list requirements/prerequisites.
 
 Use the `ref` shortcode. For example, [this is a link to the component reference]({{< ref "reference/components" >}}).
 
-## Distributions {{< distributions-inline "Cloud", "Enterprise" >}} {#distributions}
+## Distributions {{< distributions "Cloud", "Enterprise" >}} {#distributions}
 
 To mark a document as applicable to only one or more distributions, do one of the following:
 
 1. Add an array of titles to a `distributions` front matter element. This will mark the page in the parent's table of contents, and will produce a notification on the page
 2. Use the {{< distributions "Enterprise" "Cloud" >}} shortcode to produce an inline notification on the page
 
-Note that if you use the `{{< distributions >}}` shortcode in a heading, Hugo will not correctly generate the ID element for it. [Manually add the heading](https://gohugo.io/content-management/cross-references/#heading-ids), i.e `## Cloud Specific Section {{< distributions-inline "Cloud" >}} {#cloud-specific-section}`
+Note that if you use the `{{< distributions >}}` shortcode in a heading, Hugo will not correctly generate the ID element for it. [Manually add the heading](https://gohugo.io/content-management/cross-references/#heading-ids), i.e `## Cloud Specific Section {{< distributions "Cloud" >}} {#cloud-specific-section}`
 
 Available distributions are {{< distributions-list >}} and are stored in `data/distributions.yml`.
 

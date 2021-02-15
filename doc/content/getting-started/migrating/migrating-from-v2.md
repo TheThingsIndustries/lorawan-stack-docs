@@ -19,7 +19,7 @@ For a breakdown of differences between {{% ttnv2 %}} and {{% tts %}}, see the [M
 
 **Finally**: Once you are confident that your end devices are working properly, migrate the rest of your devices and gateways to {{% tts %}}.
 
-## Migrating Active Sessions {{< distributions-inline "Cloud" >}}
+## Migrating Active Sessions {{< distributions "Cloud" >}}
 
 When migrating devices from the public {{< ttnv2 >}} to {{< tts >}} Cloud, you may choose to transfer the active device sessions as well, which means that your devices will continue to work with {{% tts %}} without rejoining.
 
