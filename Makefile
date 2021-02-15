@@ -72,7 +72,7 @@ go.deps:
 
 .PHONY: js.deps
 js.deps:
-	yarn --cwd doc/themes/the-things-stack/
+	yarn --cwd doc
 
 hugo.exe: go.mod go.sum
 	GOOS=windows go build -o $@ $(HUGO_BUILD_FLAGS) $(HUGO_MODULE)
