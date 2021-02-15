@@ -1,0 +1,180 @@
+.is-not-wrapped {
+  white-space: nowrap;
+}
+
+.is-borderless {
+  border: 0 !important
+}
+
+.table.has-text-in-td-centered td {
+  text-align: center;
+}
+
+.schema {
+  margin: 100px 0px;
+}
+
+.content-intro, .title-intro {
+  display: flex;
+  margin: auto;
+  max-width: 650px;
+  text-align: center;
+}
+
+.has-vertical-space {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.content {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: $title-family;
+    color: $title-color;
+  }
+  figure {
+    cursor: pointer;
+    transition: transform ease-out 150ms 150ms;
+
+    &:hover {
+      transform: scale(1.01);
+    }
+
+    &.float {
+      @media (max-width: 620px) {
+        max-width: none;
+      }
+      float: right;
+      @media (min-width: 621px) {
+        max-width: 40%;
+      }
+    }
+
+    & > img {
+      max-height: 500px;
+      object-fit: contain;
+    }
+
+    &:not(.plain) > img {
+      box-shadow: $card-shadow;
+    }
+  }
+
+  table {
+    display: block;
+    overflow: auto;
+  }
+
+}
+
+details + p {
+  margin-top: 1em;
+}
+
+details + blockquote {
+  margin-top: 1em;
+}
+
+.glossary {
+  .term, .term-abbr, .term-alt{
+    background-color: #ececec;
+    padding: 0.25rem;
+    font-weight: bold;
+  }
+  dd {
+    margin: 0.5em 0 0.5em 0;
+  }
+}
+
+.frequency-plan {
+  .id {
+    background-color: $white-ter;
+    padding: 0.25rem;
+    font-weight: bold;
+  }
+  dd {
+    margin: 0.5em 0 0.5em 0;
+  }
+}
+
+.feedback {
+  text-align: center;
+  background-color: $white-ter;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.new-in-version, .distribution-inline, .deprecated-in-version {
+  font-family: $family-sans-serif;
+  vertical-align: super;
+  font-size: 60%;
+  color: $red;
+  line-height: 0;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+}
+
+.removed-in-version, .distribution-inline {
+  vertical-align: super;
+  font-size: 60%;
+  color: $red;
+  line-height: 0;
+  padding-left: 0.3em;
+  padding-right: 0.3em;
+}
+
+table.fixed { table-layout:fixed; }
+table.fixed td { overflow: auto; }
+
+.sidebar-left {
+    order: 0;
+
+    @media (min-width: $desktop) {
+    border-right: 1px solid #e9ecef;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 2 * $content-padding-top;
+    align-self: flex-start; /* Fix for sticky in flex */
+    }
+}
+
+.sidebar-right {
+  order: 2;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 2 * $content-padding-top;
+  align-self: flex-start;
+}
+
+.docs-content {
+  order: 1;
+}
+
+.toc, .side-navigation {
+  font-size: 0.8rem;
+}
+
+.toc, .docs-content, .side-navigation {
+  padding-top: $content-padding-top;
+}
+
+.toc li {
+    margin-top: 0.375rem;
+    padding-top: 0.375rem;
+
+    ul li {
+      border-top: none;
+      padding-left: 1rem;
+      margin-top: 0.125rem;
+      padding-top: 0.125rem;
+    }
+}
+
+// Fix for anchor link headbutting https://css-tricks.com/hash-tag-links-padding/
+h2::before, h3::before, h4::before {
+  display: block;
+  content: " ";
+  margin-top: -$navbar-height - 1rem;
+  height: $navbar-height + 1rem;
+  visibility: hidden;
+  pointer-events: none;
+}
