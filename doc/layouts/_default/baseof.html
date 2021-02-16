@@ -11,21 +11,29 @@
 {{- partial "header/nav.html" . -}}
 {{- partial "header/search.html" . -}}
 
-<div class="container is-fluid" role="document">
-	<div class="columns my-0 is-desktop">
-		{{ if $hasSidebar }}
-			<div class="column is-2-desktop sidebar-left">
-				{{ partial "sidebar/side-navigation.html" . }}
-			</div>
-			<div class="column is-hidden-touch is-2-desktop sidebar-right">
-				{{ partial "sidebar/toc.html" . }}
-			</div>
-		{{ end }}
-		<div class="column {{ if $hasSidebar }} is-8-desktop {{ end }}">
-			{{- block "main" . }}{{- end }}
-		</div>
-	</div>
+{{ if $hasSidebar }}
+<div class="container" role="document">
+  <div class="columns my-0 is-desktop">
+      <div class="column is-3-desktop is-2-widescreen sidebar-left">
+        {{ partial "sidebar/side-navigation.html" . }}
+      </div>
+      <div class="column is-9-desktop is-8-widescreen sidebar-middle">
+        {{- block "main" . }}{{- end }}
+      </div>
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        {{ partial "sidebar/toc.html" . }}
+      </div>
+  </div>
 </div>
+{{ else }}
+<div class="container" role="document">
+  <div class="columns my-0 is-desktop">
+    <div class="column">
+      {{- block "main" . }}{{- end }}
+    </div>
+  </div>
+</div>
+{{ end }}
 
 {{ partial "footer/footer.html" . }}
 

@@ -1,3 +1,10 @@
+.container {
+  @media (max-width: $desktop) {
+  padding-left: $content-padding-side;
+  padding-right: $content-padding-side;
+  }
+}
+
 .is-not-wrapped {
   white-space: nowrap;
 }
@@ -124,50 +131,6 @@ details + blockquote {
 
 table.fixed { table-layout:fixed; }
 table.fixed td { overflow: auto; }
-
-.sidebar-left {
-    order: 0;
-
-    @media (min-width: $desktop) {
-    border-right: 1px solid #e9ecef;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 2 * $content-padding-top;
-    align-self: flex-start; /* Fix for sticky in flex */
-    }
-}
-
-.sidebar-right {
-  order: 2;
-  position: -webkit-sticky;
-  position: sticky;
-  top: 2 * $content-padding-top;
-  align-self: flex-start;
-}
-
-.docs-content {
-  order: 1;
-}
-
-.toc, .side-navigation {
-  font-size: 0.8rem;
-}
-
-.toc, .docs-content, .side-navigation {
-  padding-top: $content-padding-top;
-}
-
-.toc li {
-    margin-top: 0.375rem;
-    padding-top: 0.375rem;
-
-    ul li {
-      border-top: none;
-      padding-left: 1rem;
-      margin-top: 0.125rem;
-      padding-top: 0.125rem;
-    }
-}
 
 // Fix for anchor link headbutting https://css-tricks.com/hash-tag-links-padding/
 .content {
