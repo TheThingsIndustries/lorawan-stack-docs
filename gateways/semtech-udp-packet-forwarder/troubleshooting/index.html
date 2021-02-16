@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Semtech UDP Packet Forwarder | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/semtech-udp-packet-forwarder/" />
+  <title>Troubleshooting Semtech UDP Packet Forwarder | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/semtech-udp-packet-forwarder/troubleshooting/" />
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8b9763173ce6d9dcb22f6a17bd613664e90d7a59677f5a24f3281cf20fb1a419.css" integrity="sha256-i5djFzzm2dyyL2oXvWE2ZOkNellnf1ok8ygc8g&#43;xpBk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Semtech UDP Packet Forwarder">
+  <meta itemprop="name" content="Troubleshooting Semtech UDP Packet Forwarder">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Semtech UDP Packet Forwarder">
+  <meta property="og:title" content="Troubleshooting Semtech UDP Packet Forwarder">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/semtech-udp-packet-forwarder/">
-  <meta name="twitter:title" content="Semtech UDP Packet Forwarder" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/semtech-udp-packet-forwarder/troubleshooting/">
+  <meta name="twitter:title" content="Troubleshooting Semtech UDP Packet Forwarder" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -94,9 +94,9 @@ debug: false
 <h2 class="title is-size-4">Semtech UDP Packet Forwarder</h2>
 
 <ul class="menu-list">
-<a href="https://www.thethingsindustries.com/docs/gateways/semtech-udp-packet-forwarder/" class="is-active">Overview</a>
+<a href="https://www.thethingsindustries.com/docs/gateways/semtech-udp-packet-forwarder/" class="">Overview</a>
 <li>
-  <a href="https://www.thethingsindustries.com/docs/gateways/semtech-udp-packet-forwarder/troubleshooting/" class="">Troubleshooting Semtech UDP Packet Forwarder</a>
+  <a href="https://www.thethingsindustries.com/docs/gateways/semtech-udp-packet-forwarder/troubleshooting/" class="is-active">Troubleshooting Semtech UDP Packet Forwarder</a>
 </li>
 </ul>
 
@@ -108,62 +108,24 @@ debug: false
       
       <div class="column is-two-thirds">
 
-<h1 class="title is-size-2">Semtech UDP Packet Forwarder
+<h1 class="title is-size-2">Troubleshooting Semtech UDP Packet Forwarder
 
 
 
 </h1>
 <div class="content">
-<p>The <a href="https://github.com/lora-net/packet_forwarder">Semtech UDP Packet Forwarder</a> is the original LoRaWAN packet forwarder, connecting to servers through the Semtech UDP protocol. Many gateways include a pre-compiled version of the Semtech UDP Packet Forwarder, often adapted to the specific gateway.</p>
-<div class="notification is-warning is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  The Semtech UDP Packet Forwarder has many security and scalability drawbacks, so if possible, use <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/">LoRa Basics™ Station</a> to connect your gateway to The Things Stack.
+<p>This section contains help for common problems you may encounter when using Semtech UDP Packet Forwarder to connect to The Things Stack.</p>
+<h3 id="no-downlinks-are-reaching-my-udp-gateway-why">No downlinks are reaching my UDP gateway. Why?</h3>
+<p>With UDP gateways, if uplink messages are reaching The Things Stack, that does not mean the downlink messages are going to be received correctly by the gateway.</p>
+<p>The Semtech UDP Packet Forwarder sends a <code>PULL_DATA</code> request every ~5 seconds to pull the data scheduled for a downlink transmission on The Things Stack.</p>
+<p>If downlink messages are reaching your gateway, the Semtech UDP Packet Forwarder should be sending <code>PULL_ACK</code> messages with a reasonable latency, usually way lower than 500 ms. If this latency is high, pulling the downlink data will fail. One of the drawbacks of using the Semtech UDP Packet Forwarder is that it does not have an implemented mechanism to detect if pulling the downlink data fails, so your data might end up lost.</p>
+<p>Common reasons for having latency issues between the gateway and The Things Stack cluster are that the gateway is geographically far from the cluster, and using cellular or satellite backhauls for gateways.</p>
+<p>Try solving this issue by:</p>
+<ul>
+<li>Checking your internet connection</li>
+<li>Using The Things Stack cluster closest to the location of your gateway</li>
+</ul>
 </div>
-<h2 id="configuration">Configuration</h2>
-<p>When the packet forwarder starts, it looks in the current directory for a <code>global_conf.json</code>, a <code>local_conf.json</code> and a <code>debug_conf.json</code>. The Gateway EUI, Network Server Address, Frequency Plan, Ports, and other parameters are configurable in these files.</p>
-<p>If <code>debug_conf.json</code> exists, the other files are ignored - otherwise, the parameters in <code>local_conf.json</code> override those in <code>global_conf.json</code>.</p>
-<p>An example <code>global_conf.json</code> is available in the <a href="https://github.com/Lora-net/packet_forwarder/blob/master/lora_pkt_fwd/global_conf.json">Semtech UDP Packet Forwarder Github repository</a>. It is also possible to download a <code>global_conf.json</code> configured with your Gateway EUI and Frequency Plan directly from The Things Stack.</p>
-<div class="tabs is-boxed">
-  <ul>
-    
-    <li data-tab="console">
-      <a>
-        <span>Console</span>
-      </a>
-    </li>
-    
-    <li data-tab="cli">
-      <a>
-        <span>CLI</span>
-      </a>
-    </li>
-    
-  </ul>
-</div>
-<div class="tab-content content">
-  <section data-content="console">
-  <h2 id="download-configuration-in-the-console-span-classnew-in-versionnew-in-310span">Download Configuration in the Console <span class="new-in-version">New in 3.10</span></h2>
-<p>{#download-configuration-in-the-console}</p>
-<p>To download a <code>global_conf.json</code> file for your gateway, open the Gateway overview page in the console. Click the <strong>Download global_conf.json</strong> button to download the file.</p>
-<figure>
-    <img src="conf.png"
-         alt="Download global_conf.json"/> 
-</figure>
-</section>
-<section data-content="cli">
-  <h2 id="download-configuration-via-terminal">Download Configuration via Terminal</h2>
-<p>To download a <code>global_conf.json</code> file using the terminal, you will need a Gateway API key with the <code>View gateway information</code> right enabled. To create an API key, see instructions for in the <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/">Adding Gateways</a> guide.</p>
-<p>Open the command prompt in Windows or any Linux terminal to run a curl command (as shown below) to generate the required <code>global_conf.json</code> file in your current working directory.</p>
-<p>Make sure you replace <code>thethings.example.com</code> with your server address, <code>{GATEWAY_ID}</code> with your Gateway ID, and <code>{GATEWAY_API_KEY}</code> with the API key you generated:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl -XGET <span class="se">\
-</span><span class="se"></span>    <span class="s2">&#34;https://thethings.example.com/api/v3/gcs/gateways/{GATEWAY_ID}/semtechudp/global_conf.json&#34;</span> <span class="se">\
-</span><span class="se"></span>    -H <span class="s2">&#34;Authorization: Bearer {GATEWAY_API_KEY}&#34;</span> &gt; global_conf.json
-</code></pre></div>
-</section>
-
-</div>
-</div>
-
 
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -172,13 +134,9 @@ debug: false
 <div class='feedback has-vertical-space'>
   <div id="emojicom-widget-inline"></div>
 </div>
-
-
 <div class="is-clearfix">
-<a class="button is-pulled-right" href="/docs/gateways/semtech-udp-packet-forwarder/troubleshooting/">Troubleshooting Semtech UDP Packet Forwarder →</a>
+<a class="button is-pulled-left" href="/docs/gateways/semtech-udp-packet-forwarder/">← Semtech UDP Packet Forwarder</a>
 </div>
-
-
 
 
       </div>
@@ -220,7 +178,7 @@ debug: false
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/semtech-udp-packet-forwarder/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/semtech-udp-packet-forwarder/troubleshooting.md" class="button">Edit on Github</a>
 </div>
 
       </div>
