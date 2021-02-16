@@ -8,26 +8,23 @@
 
 <body>
 
-{{ partial "header/header.html" . }}
+{{- partial "header/nav.html" . -}}
+{{- partial "header/search.html" . -}}
 
 <div class="container is-fluid" role="document">
-  <div class="columns is-marginless is-desktop">
-    {{ if $hasSidebar }}
-      <div class="column is-3-desktop sidebar-left">
-        <nav class="docs-links" aria-label="Main navigation">
-        {{ partial "sidebar/side-navigation.html" . }}
-        </nav>
-      </div>
-      <div class="column is-hidden-touch is-2-desktop sidebar-right">
-        <nav class="docs-links" aria-label="Page navigation">
-        {{ partial "sidebar/toc.html" . }}
-        </nav>
-      </div>
-    {{ end }}
-    <div class="column {{ if $hasSidebar }} is-7-desktop {{ end }}">
-      {{- block "main" . }}{{- end }}
-    </div>
-  </div>
+	<div class="columns my-0 is-desktop">
+		{{ if $hasSidebar }}
+			<div class="column is-2-desktop sidebar-left">
+				{{ partial "sidebar/side-navigation.html" . }}
+			</div>
+			<div class="column is-hidden-touch is-2-desktop sidebar-right">
+				{{ partial "sidebar/toc.html" . }}
+			</div>
+		{{ end }}
+		<div class="column {{ if $hasSidebar }} is-8-desktop {{ end }}">
+			{{- block "main" . }}{{- end }}
+		</div>
+	</div>
 </div>
 
 {{ partial "footer/footer.html" . }}
