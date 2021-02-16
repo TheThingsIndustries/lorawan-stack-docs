@@ -170,11 +170,14 @@ table.fixed td { overflow: auto; }
 }
 
 // Fix for anchor link headbutting https://css-tricks.com/hash-tag-links-padding/
-h2::before, h3::before, h4::before {
-  display: block;
-  content: " ";
-  margin-top: -$navbar-height - 1rem;
-  height: $navbar-height + 1rem;
-  visibility: hidden;
-  pointer-events: none;
+.content {
+  h2::before, h3::before, h4::before {
+    display: block;
+    content: " ";
+    margin-top: -$navbar-height - 1rem;
+    height: $navbar-height + 1rem;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: -1;
+  }
 }
