@@ -33,7 +33,7 @@ config/
     └── ttn-lw-stack-docker.yml    # configuration file for {{% tts %}}
 ```
 
-### Example Configuration Files
+## Example Configuration Files
 
 {{< tabs/container "Enterprise" "Open Source" >}}
 {{< tabs/tab "Enterprise" >}}
