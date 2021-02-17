@@ -35,10 +35,25 @@ Click **Create API key**, copy the key and store it in a safe place. You need th
 
 {{% aws-region-selector %}}
 
-{{% aws-deploy-cloudformation name="Deploy for Cloud Hosted" bucket="thethingsindustries" path="integration-aws/latest/cloudhosted.template.json" %}}
-{{% aws-deploy-cloudformation name="Deploy for Self Hosted" bucket="thethingsindustries" path="integration-aws/latest/selfhosted.template.json" %}}
+{{< tabs/container "Cloud" "Enterprise" "Community" >}}
+{{< tabs/tab "Cloud" >}}
+{{% aws-deploy-cloudformation name="Deploy for The Things Stack Cloud" bucket="thethingsindustries" path="integration-aws/latest/cloudhosted.template.json" %}}
 
-{{< note >}} If you want to examine the AWS CloudFormation template before deploying, download the [Cloud Hosted template](https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/cloudhosted.template.json) or [Self Hosted template](https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/selfhosted.template.json). {{</ note >}}
+[View template](https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/cloudhosted.template.json)
+{{< /tabs/tab >}}
+
+{{< tabs/tab "Enterprise" >}}
+{{% aws-deploy-cloudformation name="Deploy for The Things Stack Enterprise" bucket="thethingsindustries" path="integration-aws/latest/selfhosted.template.json" %}}
+
+[View template](https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/selfhosted.template.json)
+{{< /tabs/tab >}}
+
+{{< tabs/tab "Community" >}}
+{{% aws-deploy-cloudformation name="Deploy for The Things Network" bucket="thethingsindustries" path="integration-aws/latest/community.template.json" %}}
+
+[View template](https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/community.template.json)
+{{< /tabs/tab >}}
+{{< /tabs/container >}}
 
 ### Settings
 
@@ -49,7 +64,10 @@ The parameters configure the integration:
 - **Principal Account ID** {{< distributions "Enterprise" >}}: AWS Account ID that The Things Stack authenticates with.
 - **Thing Type Name**: The unique AWS IoT Core thing type name for this integration.
 - **Thing Shadow Metrics**: Enable or disable updating the thing shadow with metrics.
-- **Cluster Address**: The cluster address of your {{% tts %}} deployment, for example `mycompany.eu1.cloud.thethings.industries`. See [Cloud Hosted Addresses]({{< relref "/getting-started/cloud-hosted/addresses" >}}) to find your cluster address.
+- **Cluster Address**: The cluster address of your {{% tts %}} deployment.
+  - When using **The Things Stack Cloud**, go to [The Things Stack Cloud Addresses]({{< relref "/getting-started/cloud-hosted/addresses" >}}) to find your cluster address
+  - When using **The Things Stack Enterprise**, enter your cluster address
+  - When using **The Things Network**, select the community cluster from the dropdown
 - **Enable End-to-End Encryption** {{< new-in-version "3.10.0" >}} {{< distributions "Cloud" >}}: If enabled, the AppSKey is delivered as encrypted from The Things Join Server to your AWS Account, so the AppSKey will not be exposed to the network layer. Also, your AWS solution needs to handle binary payload as the underlying network cannot run payload encoding and decoding functions.
 - **Application ID**: The application ID for which you configure the integration.
 - **Application API Key**: The application API key that you generated before.
