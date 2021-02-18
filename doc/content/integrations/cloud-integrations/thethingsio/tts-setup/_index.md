@@ -21,4 +21,3 @@ Hit the **Create thethings.io webhook** button to finish.
 {{< note >}} To see the values of all parameters of the thethins.iO integration, click on the integration after you created it with the Webhook template. 
 
 If you do this, you will see that the final callback URL has the following structure: `https://subscription.thethings.io/lora/{Product ID}/{Hash}?idname=end_device_ids.dev_eui`. {{</ note >}}
-

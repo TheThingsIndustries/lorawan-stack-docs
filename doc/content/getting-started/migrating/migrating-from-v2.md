@@ -117,4 +117,3 @@ $ ttn-lw-migrate application --source ttnv2 "my-ttn-app" > all-devices.json
 ```
 
 After exporting the end devices in to a json file you can refer to [Import End Devices Document]({{< ref "getting-started/migrating/import-devices.md" >}}) in {{% tts %}} for next steps.
-

@@ -57,4 +57,3 @@ A description of the Cayenne LPP sensor types is available in the Cayenne docume
 ```
 
 The `decoded_payload` entries are formed from the lowercase sensor constant and channel, i.e. a `LPP_TEMPERATURE` reading on channel 0 becomes `temperature_0`.
-
