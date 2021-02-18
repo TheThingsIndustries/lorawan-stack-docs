@@ -23,6 +23,9 @@
 	{{ end }}
 	{{ .Content }}
 </div>
+{{ if and .Pages (not (eq .Parent .FirstSection)) }}
+{{ partial "pages-cards.html" .Pages }}
+{{ end }}
 {{ partial "prev-next-in-section" . }}
 {{ partial "feedback" . }}
 </div>
