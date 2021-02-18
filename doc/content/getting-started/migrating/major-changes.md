@@ -21,11 +21,11 @@ Furthermore, {{% tts %}} brings full support for all LoRaWAN versions, as well a
 
 ## Rx1Delay
 
-Devices imported from {{% ttnv2 %}} are configured with an `Rx1Delay` of 1 second, by default. In {{% tts %}} we recommend using an `Rx1Delay` of 5 seconds to accommodate for high latency backhauls and/or [peering with Packet Broker]({{< ref "/reference/peering" >}}). See the [MAC settings guide]({{< ref "/devices/mac-settings" >}}) for more information and instructions about configuring `Rx1Delay`.
+Devices imported from {{% ttnv2 %}} are configured with an `Rx1Delay` of 1 second, by default. In {{% tts %}} we recommend using an `Rx1Delay` of 5 seconds to accommodate for high latency backhauls and/or [peering with Packet Broker]({{< ref "/reference/packet-broker" >}}). See the [MAC settings guide]({{< ref "/devices/mac-settings" >}}) for more information and instructions about configuring `Rx1Delay`.
 
 ## Gateway Coverage
 
-The Packet Broker enables peering between networks, so traffic received by one network (e.g. the Public Community Network) but intended for a different network ({{% tts %}}) can be forwarded to and from that network. See the [Peering Guide]({{< ref "/reference/peering" >}}) for details on Packet Broker and how to enable it for your network.
+The Packet Broker enables peering between networks, so traffic received by one network (e.g. the Public Community Network) but intended for a different network ({{% tts %}}) can be forwarded to and from that network. See the [Peering Guide]({{< ref "/reference/packet-broker" >}}) for details on Packet Broker and how to enable it for your network.
 
 With Packet Broker enabled on both {{% tts %}} and {{% ttnv2 %}}, you can receive traffic on {{% tts %}} without having to re-configure any of your gateways.
 
