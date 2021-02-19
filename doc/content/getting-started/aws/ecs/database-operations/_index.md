@@ -167,3 +167,71 @@ tti-lw-stack,is-db,migrate
 ```
 {{</ tabs/tab >}}
 {{</ tabs/container >}}
+
+## Migrate Network Server Database
+
+Before upgrading the Network Server to a new minor version, the database may need to be migrated.
+
+{{< tabs/container "AWS Console" "AWS CLI">}}
+{{< tabs/tab "AWS Console" >}}
+```
+tti-lw-stack,ns-db,migrate
+```
+{{</ tabs/tab >}}
+{{< tabs/tab "AWS CLI" >}}
+```
+["tti-lw-stack","ns-db","migrate"]
+```
+{{</ tabs/tab >}}
+{{</ tabs/container >}}
+
+## Prune Network Server Database
+
+Before upgrading the Network Server to a new minor version, the unused data may be pruned from the database.
+
+{{< tabs/container "AWS Console" "AWS CLI">}}
+{{< tabs/tab "AWS Console" >}}
+```
+tti-lw-stack,ns-db,prune
+```
+{{</ tabs/tab >}}
+{{< tabs/tab "AWS CLI" >}}
+```
+["tti-lw-stack","ns-db","prune"]
+```
+{{</ tabs/tab >}}
+{{</ tabs/container >}}
+
+## Migrate Application Server Database
+
+Before upgrading the Application Server to a new minor version, the database may need to be migrated.
+
+{{< tabs/container "AWS Console" "AWS CLI">}}
+{{< tabs/tab "AWS Console" >}}
+```
+tti-lw-stack,as-db,migrate
+```
+{{</ tabs/tab >}}
+{{< tabs/tab "AWS CLI" >}}
+```
+["tti-lw-stack","as-db","migrate"]
+```
+{{</ tabs/tab >}}
+{{</ tabs/container >}}
+
+## Migrate Device Claiming Server Database
+
+Before upgrading the Device Claiming Server to a new minor version, the database may need to be migrated.
+
+{{< tabs/container "AWS Console" "AWS CLI">}}
+{{< tabs/tab "AWS Console" >}}
+```
+tti-lw-stack,dcs-db,migrate
+```
+{{</ tabs/tab >}}
+{{< tabs/tab "AWS CLI" >}}
+```
+["tti-lw-stack","dcs-db","migrate"]
+```
+{{</ tabs/tab >}}
+{{</ tabs/container >}}
