@@ -1,5 +1,5 @@
 ---
-title: "Cloud"
+title: "The Things Stack Cloud"
 description: ""
 weight: 50
 aliases: [/guides/cloud-hosted/cloud-hosted]
