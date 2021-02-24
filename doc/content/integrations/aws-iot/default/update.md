@@ -18,7 +18,23 @@ In the top-right, click **Update**.
 
 Select **Replace current template**.
 
-In the **Amazon S3 URL** enter `https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/cloudhosted.template.json`. This URL contains always the latest version.
+In the **Amazon S3 URL** enter the following URL depending on your deployment:
+
+{{< tabs/container "Cloud" "Enterprise" "Community" >}}
+{{< tabs/tab "Cloud" >}}
+`https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/cloudhosted.template.json`
+{{< /tabs/tab >}}
+
+{{< tabs/tab "Enterprise" >}}
+`https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/selfhosted.template.json`
+{{< /tabs/tab >}}
+
+{{< tabs/tab "Community" >}}
+`https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/community.template.json`
+{{< /tabs/tab >}}
+{{< /tabs/container >}}
+
+This URL always contain the latest version.
 
 {{< figure src="../update-stack-2.png" alt="Update Stack" >}}
 

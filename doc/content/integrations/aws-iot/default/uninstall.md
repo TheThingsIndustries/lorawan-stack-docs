@@ -23,13 +23,3 @@ Double check that you are deleting the right AWS CloudFormation stack. Proceed w
 {{< note >}} Deleting all resources may take a few minutes. {{</ note >}}
 
 When the stack is deleted, the AWS CloudFormation stack disappears from the list.
-
-## Disable AWS IoT Integration
-
-In your application in {{% tts %}} Console, select the **Pub/Subs** submenu from the **Integrations** side menu.
-
-Open your AWS IoT integration. Click **Delete Pub/Sub**.
-
-{{< figure src="../delete-pubsub.png" alt="Delete Pub/Sub" >}}
-
-Double check that you are deleting the right Pub/Sub. Proceed with **Delete Pub/Sub**.

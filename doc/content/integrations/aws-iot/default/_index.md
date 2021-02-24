@@ -1,7 +1,7 @@
 ---
 title: "Default Integration"
 description: ""
-distributions: ["Cloud", "Dedicated Cloud", "Enterprise"]
+distributions: ["Cloud", "Dedicated Cloud", "Enterprise", "The Things Network"]
 weight: 1
 aliases:
   - "/integrations/pubsub/aws-iot/"
