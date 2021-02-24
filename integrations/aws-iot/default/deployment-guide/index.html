@@ -197,7 +197,32 @@ debug: false
     </div>
   </div>
 </div>
-<p><a data-content="aws-deploy-cloudformation" data-path="thethingsindustries/integration-aws/latest/cloudhosted.template.json" target="_blank" class="button is-primary"></a></p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="cloud">
+      <a>
+        <span>Cloud</span>
+      </a>
+    </li>
+    
+    <li data-tab="enterprise">
+      <a>
+        <span>Enterprise</span>
+      </a>
+    </li>
+    
+    <li data-tab="community">
+      <a>
+        <span>Community</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="cloud">
+  <p><a data-content="aws-deploy-cloudformation" data-path="thethingsindustries/integration-aws/latest/cloudhosted.template.json" target="_blank" class="button is-primary"></a></p>
 <script>
   window.addEventListener('load', function(e) {
     var $awsRegionInput = document.querySelector('select[data-content="aws-region"]');
@@ -210,7 +235,7 @@ debug: false
       var value = $input.value || 'us-east-1';
       $links.forEach(function($link) {
         $link.href = 'https://' + value + '.console.aws.amazon.com/cloudformation/home?region=' + value + '#/stacks/create/review?templateURL=https://s3.amazonaws.com/thethingsindustries\/integration-aws\/latest\/cloudhosted.template.json';
-        $link.innerHTML = 'Deploy for Cloud Hosted (' + value + ')';
+        $link.innerHTML = 'Deploy for The Things Stack Cloud (' + value + ')';
       });
     }
     syncValue($awsRegionInput, $deployLinks);
@@ -219,7 +244,10 @@ debug: false
     });
   });
 </script>
-<p><a data-content="aws-deploy-cloudformation" data-path="thethingsindustries/integration-aws/latest/selfhosted.template.json" target="_blank" class="button is-primary"></a></p>
+<p><a href="https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/cloudhosted.template.json">View template</a></p>
+</section>
+<section data-content="enterprise">
+  <p><a data-content="aws-deploy-cloudformation" data-path="thethingsindustries/integration-aws/latest/selfhosted.template.json" target="_blank" class="button is-primary"></a></p>
 <script>
   window.addEventListener('load', function(e) {
     var $awsRegionInput = document.querySelector('select[data-content="aws-region"]');
@@ -232,7 +260,7 @@ debug: false
       var value = $input.value || 'us-east-1';
       $links.forEach(function($link) {
         $link.href = 'https://' + value + '.console.aws.amazon.com/cloudformation/home?region=' + value + '#/stacks/create/review?templateURL=https://s3.amazonaws.com/thethingsindustries\/integration-aws\/latest\/selfhosted.template.json';
-        $link.innerHTML = 'Deploy for Self Hosted (' + value + ')';
+        $link.innerHTML = 'Deploy for The Things Stack Enterprise (' + value + ')';
       });
     }
     syncValue($awsRegionInput, $deployLinks);
@@ -241,10 +269,36 @@ debug: false
     });
   });
 </script>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  If you want to examine the AWS CloudFormation template before deploying, download the <a href="https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/cloudhosted.template.json">Cloud Hosted template</a> or <a href="https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/selfhosted.template.json">Self Hosted template</a>.
+<p><a href="https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/selfhosted.template.json">View template</a></p>
+</section>
+<section data-content="community">
+  <p><a data-content="aws-deploy-cloudformation" data-path="thethingsindustries/integration-aws/latest/community.template.json" target="_blank" class="button is-primary"></a></p>
+<script>
+  window.addEventListener('load', function(e) {
+    var $awsRegionInput = document.querySelector('select[data-content="aws-region"]');
+    var query = new URLSearchParams(window.location.search);
+    if (query.has('aws-region')) {
+      $awsRegionInput.value = query.has('aws-region');
+    }
+    var $deployLinks = document.querySelectorAll('a[data-content="aws-deploy-cloudformation"][data-path="thethingsindustries\/integration-aws\/latest\/community.template.json"]');
+    function syncValue($input, $links) {
+      var value = $input.value || 'us-east-1';
+      $links.forEach(function($link) {
+        $link.href = 'https://' + value + '.console.aws.amazon.com/cloudformation/home?region=' + value + '#/stacks/create/review?templateURL=https://s3.amazonaws.com/thethingsindustries\/integration-aws\/latest\/community.template.json';
+        $link.innerHTML = 'Deploy for The Things Network (' + value + ')';
+      });
+    }
+    syncValue($awsRegionInput, $deployLinks);
+    $awsRegionInput.addEventListener('change', function(e) {
+      syncValue(e.target, $deployLinks);
+    });
+  });
+</script>
+<p><a href="https://s3.amazonaws.com/thethingsindustries/integration-aws/latest/community.template.json">View template</a></p>
+</section>
+
 </div>
+
 <h3 id="settings">Settings</h3>
 <p>The <strong>Stack name</strong> is the unique name identifying the integration in your AWS account.</p>
 <p>The parameters configure the integration:</p>
@@ -267,7 +321,13 @@ debug: false
 : AWS Account ID that The Things Stack authenticates with.</li>
 <li><strong>Thing Type Name</strong>: The unique AWS IoT Core thing type name for this integration.</li>
 <li><strong>Thing Shadow Metrics</strong>: Enable or disable updating the thing shadow with metrics.</li>
-<li><strong>Cluster Address</strong>: The cluster address of your The Things Stack deployment, for example <code>mycompany.eu1.cloud.thethings.industries</code>. See <a href="/docs/getting-started/cloud-hosted/addresses/">Cloud Hosted Addresses</a> to find your cluster address.</li>
+<li><strong>Cluster Address</strong>: The cluster address of your The Things Stack deployment.
+<ul>
+<li>When using <strong>The Things Stack Cloud</strong>, go to <a href="/docs/getting-started/cloud-hosted/addresses/">The Things Stack Cloud Addresses</a> to find your cluster address</li>
+<li>When using <strong>The Things Stack Enterprise</strong>, enter your cluster address</li>
+<li>When using <strong>The Things Network</strong>, select the community cluster from the dropdown</li>
+</ul>
+</li>
 <li><strong>Enable End-to-End Encryption</strong> <span class="new-in-version">New in 3.10.0</span>
  
 
@@ -354,10 +414,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 10 Feb 2021.
+  Last changed by Johan Stokking on 17 Feb 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b8e89583c4eaf1f4d1023f4dd846e50b0161d488">
-      util: Replace distributions-inline with distributions shortcode
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/279023b706ec83dd0f906a81502cc6423e0708a6">
+      doc: Update documentation for AWS IoT integration
     </a>
 </p>
 
