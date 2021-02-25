@@ -70,8 +70,12 @@ When creating things, you need to specify the minimum attributes for creating Lo
 - `regionalParametersVersion`: either `1.0`, `1.0.1`, `1.0.2` (or `1.0.2-a`), `1.0.2-b`, `1.0.3-a`, `1.1-a` or `1.1-b`
 - `appKey`: hexadecimal LoRaWAN AppKey
 - `nwkKey`: hexadecimal LoRaWAN NwkKey (only when using LoRaWAN 1.1 or higher)
-- Optional `deviceID`: the device ID that will be used to create the device in your {{% tts %}} application. When omitted, the integration uses `eui-<dev-eui>` as device ID.
+- Optional `deviceID`: the device ID that will be used to create the device in your {{% tts %}} application. When omitted, the integration uses `eui-<dev-eui>` as device ID. See [ID and EUI constraints]({{< ref "/reference/id-eui-constraints" >}}) for accepted ID formats.
 - Optional `frequencyPlanID`: the frequency plan ID. See [Frequency Plans]({{< ref "/reference/frequency-plans" >}}) for the supported values. When omitted, the default frequency plan of your AWS region is used. See the **Outputs** section of your AWS CloudFormation stack to see which one that is.
+
+{{< note >}}
+Any errors during Creating Things will be propagated to CloudWatch. See [Troubleshooting]({{< ref "/reference/frequency-plans" >}}) for more information about retrieving logs.
+{{< /note >}}
 
 {{< figure src="../create-thing-3.png" alt="Create Thing" >}}
 
