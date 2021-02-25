@@ -1,9 +1,9 @@
 ---
-title: "Class C and Multicast"
+title: "Class C"
 description: ""
 ---
 
-Class C end devices continuously listen for downlink messages. This allows applications to send messages to devices at any time, instead of having to wait for a Class A uplink. When combined with multicast groups, this allows applications to send immediate downlinks to many devices at the same time.
+Class C end devices continuously listen for downlink messages. This allows applications to send messages to devices at any time, instead of having to wait for a Class A uplink. When combined with [multicast groups]({{< ref "/devices/multicast" >}}), this allows applications to send immediate downlinks to many devices at the same time.
 
 This guide shows how to enable or disable Class C for an and device, and how to work with multicast groups.
 
@@ -23,9 +23,13 @@ This will enable the Class C downlink scheduling of the device. That's it! Downl
 
 To disable Class C scheduling, reset with `--supports-class-c=false`.
 
-{{< note >}} Class C downlink scheduling starts when the end device confirms the session. This means that the device should send an uplink message after receiving the join-accept in order to enable Class C downlink scheduling. {{</ note >}}
+{{< note >}} For unicast devices, Class C downlink scheduling starts after the end device sends an uplink in the session. This means that an OTAA end device should send an uplink message after receiving the join-accept in order to enable Class C downlink scheduling. {{</ note >}}
 
-## Class C message settings
+## Multicast Group
+
+See [Multicast]({{< ref "devices/multicast" >}}) for instructions for creating and using multicast groups.
+
+## Class C Message Settings
 
 {{% tts %}} supports optional settings for Class C downlink messages: the downlink path and the time to send the message.
 
@@ -33,45 +37,20 @@ The downlink path is defined by one or more gateways IDs. The Network Server and
 
 The time to transmit is an absolute timestamp in ISO 8601 format to send the message. This requires gateways either with GPS lock, or gateways that use a protocol that provide round-trip times (RTT). See the [Example]({{< relref "#example" >}}) section below.
 
-## Multicast group
-
-It is also possible to create a multicast group to send a Class C downlink message to a group of end devices. A multicast group is a virtual ABP device (i.e. shared session keys), does not support uplink, confirmed downlink nor MAC commands.
-
-When creating a device, you can specify in the Console and CLI whether it's a multicast group.
-
-CLI example:
-
-```bash
-$ ttn-lw-cli end-devices create app1 mc1 \
-  --frequency-plan-id EU_863_870 \
-  --lorawan-version 1.0.3 \
-  --lorawan-phy-version 1.0.3-a \
-  --session.dev-addr 00E4304D \
-  --session.keys.app-s-key.key A0CAD5A30036DBE03096EB67CA975BAA \
-  --session.keys.nwk-s-key.key B7F3E161BC9D4388E6C788A0C547F255 \
-  --multicast \
-  --supports-class-c
-```
-
-{{< note >}} A multicast group cannot be converted to a normal unicast device or the other way around. {{</ note >}}
-
-{{< note >}} Since multicast does not support uplink, the Network Server does not know a downlink path. Therefore, you need to specify a downlink path when scheduling downlink message. {{</ note >}}
-
 ## Example
 
 {{< cli-only >}}
 
-First, create a multicast group:
+First, create a Class C device:
 
 ```bash
-$ ttn-lw-cli end-devices create app1 mc1 \
+$ ttn-lw-cli end-devices create app1 dev1 \
   --frequency-plan-id EU_863_870 \
   --lorawan-version 1.0.3 \
   --lorawan-phy-version 1.0.3-a \
   --session.dev-addr 00E4304D \
   --session.keys.app-s-key.key A0CAD5A30036DBE03096EB67CA975BAA \
   --session.keys.nwk-s-key.key B7F3E161BC9D4388E6C788A0C547F255 \
-  --multicast \
   --supports-class-c
 ```
 
