@@ -1,0 +1,15 @@
+<dl>
+{{- range . }}
+{{- if not .hidden }}
+
+{{- with .shorthand }}<dt><code>-{{ . }}</code></dt>{{ end }}
+<dt><code>--{{ .name }}</code></dt>
+<dd>
+type: <code>{{ .type }}</code>
+{{ with .default_value }}, default: <code>{{ . }}</code>{{ end }}
+{{- with .usage }}<br>{{ . }}{{ end }}
+</dd>
+
+{{- end }}
+{{- end }}
+</dl>
