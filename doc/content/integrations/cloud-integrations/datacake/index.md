@@ -2,6 +2,7 @@
 title: "Datacake"
 description: ""
 weight: 
+aliases: ["/integrations/cloud-integrations/datacake/datacake-setup", "/integrations/cloud-integrations/datacake/tts-setup", "/integrations/cloud-integrations/datacake/scheduling-downlinks"]
 ---
 
 [Datacake](https://datacake.co/) is a multi-purpose IoT platform, which provides the possibility of building custom IoT applications, without requiring programming skills. 
@@ -10,7 +11,7 @@ weight:
 
 ## Prerequisites
 
-1. A user account on Datacake.
+1. A [user account on Datacake](https://app.datacake.de/signup).
 
 ## Setup Datacake
 

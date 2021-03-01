@@ -2,6 +2,7 @@
 title: "Akenza Core"
 description: ""
 weight: 
+aliases: ["/integrations/cloud-integrations/akenza-core/akenza-setup", "/integrations/cloud-integrations/akenza-core/tts-setup"]
 ---
 
 [Akenza Core](https://akenza.com/technology) is an IoT system designed to help bind any type of device and technology into a real-time connected solution.
@@ -10,7 +11,7 @@ weight:
 
 ## Prerequisites
 
-1. A user account on Akenza Core.
+1. A [user account on Akenza Core](https://auth.akenza.io/register).
 
 ## Setup Akenza Core
 
@@ -39,6 +40,8 @@ Provide a **Name** for your device, select the previously created device type an
 The device you created can be found in the **Inventory** on the left hand menu.
 
 ## Configure {{% tts %}}
+
+Next step is to create a Webhook integration by instantiating the **Akenza Core** [Webhook template]({{< ref "/integrations/webhooks/webhook-templates" >}}).
 
 Name your Webhook integration in the **Webhook ID** field. 
 
