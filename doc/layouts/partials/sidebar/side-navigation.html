@@ -8,11 +8,11 @@
 <a href="{{ .FirstSection.Permalink }}" class="{{ if eq $currentPage .FirstSection }}is-active{{ end }}">Overview</a>
 {{- range .FirstSection.Pages.ByWeight }}
 <li>
-		<a href="{{ .Permalink }}" class="{{ if eq $currentPage . }}is-active{{ end }}">{{ .Name }}</a>
-		{{- if .IsAncestor $currentPage }}
-		{{ template "expandifancestor" (dict "section" . "goal" $currentPage ) }}
-		{{ end }}
-	</li>
+    <a href="{{ .Permalink }}" class="{{ if eq $currentPage . }}is-active{{ end }}">{{ .Name }}</a>
+    {{- if .IsAncestor $currentPage }}
+    {{ template "expandifancestor" (dict "section" . "goal" $currentPage ) }}
+    {{ end }}
+  </li>
 {{- end }}
 </ul>
 
@@ -21,12 +21,12 @@
 {{ with .section.Pages }}
 <ul class="menu-list">
 {{ range . }}
-	<li>
-		<a href="{{ .Permalink }}" class="{{ if eq $goal . }}is-active{{ end }}">{{ .Name }}</a>
-		{{ if .IsAncestor $goal }}
-		{{ template "expandifancestor" (dict "section" . "goal" $goal ) }}
-		{{ end }}
-	</li>
+  <li>
+    <a href="{{ .Permalink }}" class="{{ if eq $goal . }}is-active{{ end }}">{{ .Name }}</a>
+    {{ if .IsAncestor $goal }}
+    {{ template "expandifancestor" (dict "section" . "goal" $goal ) }}
+    {{ end }}
+  </li>
 {{ end }}
 </ul>
 {{ end }}
@@ -41,14 +41,14 @@
 {{- $sidebarMenuPageNumber := 0 }}
 {{- if eq $currentPage $currentSection }}{{ $sidebarMenuPageNumber = (len $sidebarMenuPages) }}{{ end }}
 {{- range $currentSection.Pages.ByWeight }}
-	{{- $sidebarMenuPages = $sidebarMenuPages | append . }}
-	{{- if eq $currentPage . }}{{ $sidebarMenuPageNumber = (len $sidebarMenuPages) }}{{ end }}
-	{{- if .Pages }}
-		{{- range .Pages.ByWeight }}
-			{{- $sidebarMenuPages = $sidebarMenuPages | append . }}
-			{{- if eq $currentPage . }}{{ $sidebarMenuPageNumber = (len $sidebarMenuPages) }}{{ end }}
-		{{- end }}
-	{{- end }}
+  {{- $sidebarMenuPages = $sidebarMenuPages | append . }}
+  {{- if eq $currentPage . }}{{ $sidebarMenuPageNumber = (len $sidebarMenuPages) }}{{ end }}
+  {{- if .Pages }}
+    {{- range .Pages.ByWeight }}
+      {{- $sidebarMenuPages = $sidebarMenuPages | append . }}
+      {{- if eq $currentPage . }}{{ $sidebarMenuPageNumber = (len $sidebarMenuPages) }}{{ end }}
+    {{- end }}
+  {{- end }}
 {{- end }}
 
 {{ .Scratch.Set "previous" (index $sidebarMenuPages (add $sidebarMenuPageNumber -2 )) }}
