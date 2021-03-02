@@ -40,6 +40,8 @@ Make sure that at least **Thing: Created, updated, deleted** is checked.
 
 You can use AWS IoT to create and claim devices in {{% tts %}}. This is useful to manage all your things in one place, without having to use {{% tts %}} Console, CLI or API.
 
+**Creating** a Thing allows you to add any LoRaWAN device by manually entering its information and security keys. **Claiming** a Thing allows you to use a QR code to transfer ownership from the manufacturer or previous owner of the device, if the device has been provisioned for claiming. See [Device Claiming]({{< ref "devices/device-claiming" >}}) for more information.
+
 In the AWS Console, open **Services** and go to **IoT Core**.
 
 In the menu on the left, click **Manage**, go to **Things** and click **Create** in the top-right.
@@ -93,7 +95,7 @@ When claiming things, you need to specify the minimum attributes for claiming Lo
 
 {{< figure src="../claim-thing.png" alt="Claim Thing" >}}
 
-{{< note >}} Are you a device maker? Learn [how to make your devices claimable](http://localhost:1313/devices/device-claiming/make-device-claimable/). {{</ note >}}
+{{< note >}} Are you a device maker? Learn [how to make your devices claimable]({{< ref "devices/device-claiming/make-device-claimable" >}}). {{</ note >}}
 
 ### Finalize Create
 
