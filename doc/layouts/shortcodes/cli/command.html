@@ -2,19 +2,25 @@
 {{- $command := or (.Get 0) $cli }}
 {{- $fullCommand := strings.TrimRight " " (printf "%s %s" $cli (or (.Get 0) "")) }}
 {{ with index .Site.Data $cli $fullCommand -}}
+<hr>
 <h2 id="command-{{ urlize $fullCommand }}">Command <code>{{ $fullCommand }}</code></h2>
 
+{{- if or .long .short -}}
+<h3>Description</h3>
 {{- if .long }}
 <pre>{{ .long }}</pre>
 {{- else if .short }}
 <p>{{ .short }}</p>
+{{- end -}}
 {{- end }}
 
 {{- with .aliases }}
-<p>Aliases:{{ range . }} <code>{{.}}</code>{{ end }}</p>
+<h3>Aliases</h3>
+<p>{{ range . }} <code>{{.}}</code>{{ end }}</p>
 {{- end }}
 
-<p>Usage: <code>{{ $fullCommand }}{{ with .use }} {{ . }}{{ end }} [flags]</code>
+<h3>Usage</h3>
+<p><code>{{ $fullCommand }}{{ with .use }} {{ . }}{{ end }} [flags]</code>
 
 {{- with .example }}
 <h3>Example usage of <code>{{ $fullCommand }}</code></h3>
