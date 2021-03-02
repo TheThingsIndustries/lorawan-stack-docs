@@ -7,21 +7,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Fine-tuning MAC Settings for End Devices | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/migrating/configure-mac-settings/" />
+  <title>Packet Broker | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/packet-broker/" />
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8b9763173ce6d9dcb22f6a17bd613664e90d7a59677f5a24f3281cf20fb1a419.css" integrity="sha256-i5djFzzm2dyyL2oXvWE2ZOkNellnf1ok8ygc8g&#43;xpBk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
-  <meta name="description" content="The Things Stack for LoRaWAN">
+  <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Fine-tuning MAC Settings for End Devices">
-  <meta itemprop="description" content="The Things Stack for LoRaWAN">
+  <meta itemprop="name" content="Packet Broker">
+  <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Fine-tuning MAC Settings for End Devices">
-  <meta property="og:description" content="The Things Stack for LoRaWAN">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/migrating/configure-mac-settings/">
-  <meta name="twitter:title" content="Fine-tuning MAC Settings for End Devices" />
-  <meta name="twitter:description" content="The Things Stack for LoRaWAN" />
+  <meta property="og:title" content="Packet Broker">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/packet-broker/">
+  <meta name="twitter:title" content="Packet Broker" />
+  <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
 
@@ -91,30 +91,12 @@ debug: false
       <div class="column is-one-third">
 
 
-<h2 class="title is-size-4">Migrating to The Things Stack</h2>
+<h2 class="title is-size-4">Packet Broker</h2>
 
 <ul class="menu-list">
-<a href="https://www.thethingsindustries.com/docs/getting-started/migrating/" class="">Overview</a>
+<a href="https://www.thethingsindustries.com/docs/reference/packet-broker/" class="is-active">Overview</a>
 <li>
-  <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/major-changes/" class="">Major Changes In The Things Stack</a>
-</li>
-<li>
-  <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/" class="">Migrating Gateways</a>
-</li>
-<li>
-  <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/" class="">Migrating from The Things Network Stack V2</a>
-</li>
-<li>
-  <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrate-from-chirpstack/" class="">Migrating from ChirpStack</a>
-</li>
-<li>
-  <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/" class="">Importable JSON File Reference</a>
-</li>
-<li>
-  <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/" class="">Import End Devices in The Things Stack</a>
-</li>
-<li>
-  <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/configure-mac-settings/" class="is-active">Fine-tuning MAC Settings for End Devices</a>
+  <a href="https://www.thethingsindustries.com/docs/reference/packet-broker/enable/" class="">Configure</a>
 </li>
 </ul>
 
@@ -126,19 +108,38 @@ debug: false
       
       <div class="column is-two-thirds">
 
-<h1 class="title is-size-2">Fine-tuning MAC Settings for End Devices
+<h1 class="title is-size-2">Packet Broker
 
 
 
 </h1>
 <div class="content">
-<p>MAC settings on The Things Stack are configurable per end device. See the <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/">MAC settings guide</a> for instructions.</p>
-<div class="notification is-warning is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  Devices imported from The Things Network Stack V2 are configured with an <code>Rx1Delay</code> of 1 second, by default. In The Things Stack we recommend using an <code>Rx1Delay</code> of 5 seconds to accommodate for high latency backhauls and/or <a href="https://www.thethingsindustries.com/docs/reference/packet-broker/">peering with Packet Broker</a>. Devices added to The Things Stack Cloud use an <code>Rx1Delay</code> of 5 seconds by default.
-</div>
+<h2 id="what-is-it">What is it?</h2>
+<p>Packet Broker can be used to exchange traffic with other LoRaWAN networks to share coverage and improve the overall network performance.</p>
+<h2 id="who-is-it-for">Who is it for?</h2>
+<p>Exchanging traffic can be beneficial for all public and private LoRaWAN network operators: it can improve overall network performance by increasing resilience against gateway failures, expanding coverage area and optimizing end device battery life by communicating with the nearest gateways.</p>
+<h3 id="typical-use-cases">Typical use cases</h3>
+<ol>
+<li>Forward uplink traffic received by your gateways from devices to their home network. The home network may also use your gateways to transmit downlink traffic to their devices. You can also put commercial agreements in place to monetize coverage.</li>
+<li>Receive uplink traffic for your devices from other networks, and use those other networks to transmit downlink traffic to your end devices.</li>
+</ol>
+<h2 id="how-does-it-work">How does it work?</h2>
+<p>In Packet Broker, networks can play the Forwarder and the Home Network role. Forwarder networks have physical gateway infrastructure and Home Networks have end devices. Most LoRaWAN networks typically have gateways and end devices, so they can be configured to play both roles. You can also have networks with only gateway infrastructure, configured as Forwarder only, or only with end devices, configured as Home Network only.</p>
+<p>As a Forwarder, your network offloads traffic that has been received by your gateways but that is not intended for your network. The offloading goes to Packet Broker, a LoRaWAN traffic exchange (also known as LoRaWAN roaming hub).</p>
+<h3 id="packet-broker">Packet Broker</h3>
+<p><a href="https://www.packetbroker.org">Packet Broker</a> is a global backbone for LoRaWAN traffic. It is designed to securely exchange traffic between LoRaWAN networks.</p>
+<ul>
+<li>Packet Broker allows for individual packet selection: networks do not get charged for traffic they did not consume.</li>
+<li>Packet Broker separates traffic routing from billing and clearing: networks are free to put commercial agreements in place to settle balances.</li>
+<li>Packet Broker separates payload from metadata: networks only get charged for the value they need.</li>
+<li>The Things Stack has native support for Packet Broker and can access the global coverage provided by The Things Network public community network.</li>
+</ul>
+<p>Your network authenticates with its NetID and (optionally) a tenant ID to Packet Broker. NetIDs are issued by the LoRa Alliance. To obtain a NetID for your network, <a href="https://lora-alliance.org/become-a-member">become a member of the LoRa Alliance</a>. If you don&rsquo;t have your own NetID, you can become a tenant of The Things Network&rsquo;s NetID.</p>
+<p>Packet Broker routes traffic based on device addresses (DevAddr) which are issued from NetIDs (the most significant bits of a 32-bit DevAddr refers to the NetID). If your network is a tenant of a host NetID, the host can configure one or more DevAddr blocks that point to your network.</p>
+<p>The Packet Broker Agent of The Things Stack connects as Forwarder and/or Home Network to Packet Broker. Learn to <a href="/docs/reference/packet-broker/enable/">Configure</a> Packet Broker on your LoRaWAN network.</p>
 
 </div>
+
 
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -147,9 +148,13 @@ debug: false
 <div class='feedback has-vertical-space'>
   <div id="emojicom-widget-inline"></div>
 </div>
+
+
 <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/getting-started/migrating/import-devices/">← Import End Devices in The Things Stack</a>
+<a class="button is-pulled-right" href="/docs/reference/packet-broker/enable/">Configure →</a>
 </div>
+
+
 
 
       </div>
@@ -191,7 +196,7 @@ debug: false
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/migrating/configure-mac-settings.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/reference/packet-broker/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
