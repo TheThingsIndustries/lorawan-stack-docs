@@ -31,6 +31,8 @@ config/
     └── ttn-lw-stack-docker.yml    # configuration file for {{% tts %}}
 ```
 
+Certificates will automatically be requested the first time you access {{% tts %}}. You will notice that the page takes some time to load while certificates are obtained in the background. 
+
 ### Using Custom Certificates
 
 To use [CA certificates you already have](#certificates-from-a-certificate-authority) or [self-signed certificates](#custom-certificate-authority), you will need to uncomment the custom certificates section of `docker-compose.yml`:

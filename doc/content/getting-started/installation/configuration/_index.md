@@ -4,17 +4,25 @@ description: ""
 weight: 2
 ---
 
-{{% tts %}} can be configured using command-line flags, environment variables, or configuration files. See the [Configuration Reference]({{< ref "reference/configuration" >}}) for more information about the configuration options.
+This guide shows an example of configuring {{% tts %}} using configuration files, with an example domain `thethings.example.com` and TLS certificates from Let's Encrypt.
 
-This guide shows an example of configuring {{% tts %}} using a configuration file, with an example domain `thethings.example.com` and TLS certificates from Let's Encrypt.
+{{< note >}} If configuring {{% tts %}} as `localhost` on a machine with no public IP or DNS address, see the [Localhost](#running-the-things-stack-as-localhost) section. {{</ note >}}
 
-{{< note >}} If configuring {{% tts %}} as `localhost` on a machine with no public IP or DNS address, see the [Localhost](#localhost) section. {{</ note >}}
+## Configuration Files
 
-The `docker-compose.yml` file defines the Docker services of {{% tts %}} and its dependencies, and is used to configure Docker.
+{{% tts %}} requires two configuration files when installing with Docker: `docker-compose.yml` and `ttn-lw-stack-docker.yml`. 
 
-The configuration file `ttn-lw-stack-docker.yml` contains the configuration specific to {{% tts %}} deployment and is used to configure {{% tts %}}. When {{% tts %}} starts, it searches through `ttn-lw-stack-docker.yml` for a license key, hostname and other configuration parameters.
+Example files for Enterprise and Open source are provided [below](#example-configuration-files).
 
-{{< note >}} The license key is not needed for Open Source. {{</ note >}}
+### `docker-compose.yml`
+
+`docker-compose.yml` defines the Docker services of {{% tts %}} and its dependencies, and is used to configure Docker.
+
+### `ttn-lw-stack-docker.yml`
+
+`ttn-lw-stack-docker.yml` contains the configuration specific to {{% tts %}} deployment and is used to configure {{% tts %}}. When {{% tts %}} starts, it searches through `ttn-lw-stack-docker.yml` for component server addresses, a TLS certificate source, client authentication credentials, and other configuration parameters.
+
+The configuration options in `ttn-lw-stack-docker` can also be specified using command-line flags or environment variables. All configuration options have a corresponding environment variable and command-line flag. See the [Configuration Reference]({{< ref "reference/configuration" >}}) for more information about the configuration options.
 
 This guide assumes the following directory hierarchy:
 
@@ -44,11 +52,13 @@ Download the example `ttn-lw-stack-docker.yml` for {{% tts %}} Open Source <a hr
 {{< /tabs/tab >}}
 {{< /tabs/container >}}
 
-{{< note >}} These example configuration files contain all of the configuration settings you need to run {{% tts %}} for development - just update the files with your server address. {{</ note >}}
+{{< note >}} These example configuration files contain all of the configuration settings you need to run {{% tts %}} for development. Be sure to update `ttn-lw-stack-docker.yml` with your server address, generate keys in `http.cookie` and set `console.oauth.client-secret`.
 
-Settings in `docker-compose.yml` and `ttn-lw-stack-docker.yml` files are explained in detail in [Docker Configuration](#docker-configuration) and [The Things Stack Configuration](#the-things-stack-configuration) sections. Further, we provide tips for running {{% tts %}} in production.
+For an extended explanation of the configuration settings, keep reading. {{</ note >}}
 
-## Docker Configuration
+Settings in `docker-compose.yml` and `ttn-lw-stack-docker.yml` files are explained in detail in [Docker Configuration](#understanding-docker-configuration) and [The Things Stack Configuration](#understanding-the-things-stack-configuration) sections. Further, we provide tips for running {{% tts %}} in production.
+
+## Understanding Docker Configuration
 
 In this section, configuring Docker is explained with an example `docker-compose.yml` file.
 
@@ -64,13 +74,15 @@ In `docker-compose.yml` file, Docker is configured to run three services:
 
 To configure an SQL database, a single instance of [CockroachDB](https://www.cockroachlabs.com/) is used in this guide. Note that the `volumes` need to be set up correctly so that the database is persisted on your server's disk.
 
+In production, replace the `image` with a working, stable tag from [Docker Hub - CoackroachDB](https://hub.docker.com/r/cockroachdb/cockroach/tags).
+
+It is also possible (and even preferred) to use a managed SQL database. In this case, you will need to configure the managed database URI with the `is.database-uri` [configuration option]({{< ref "reference/configuration/identity-server#database-options" >}}) or `TTN_LW_IS_DATABASE_URI` environment variable.
+
 The simplest configuration for CockroachDB looks like this (excerpted from the example `docker-compose.yml`):
 
 {{< highlight yaml "linenos=table,linenostart=5" >}}
 {{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=5 to=14 >}}
 {{< /highlight >}}
-
-{{< note >}} It is also possible (and even preferred) to use a managed SQL database. In this case, you will need to configure the managed database URI with `TTN_LW_IS_DATABASE_URI` environment variable (see [Environment and Ports]({{< ref "/getting-started/installation/configuration#environment-and-ports" >}})). {{</ note >}}
 
 ### Redis
 
@@ -78,29 +90,45 @@ The configuration in this guide uses a single instance of [Redis](https://redis.
 
 {{< note >}} {{% tts %}} requires Redis version 5.0 or newer. {{</ note >}}
 
+In production, replace the `image` with a working, stable tag from [Docker Hub - Redis](https://hub.docker.com/_/redis?tab=tags).
+
+It is also possible (and even preferred) to use a managed Redis database. In this case, you will need to configure the managed database address with the `redis-address` [configuration option]({{< ref "reference/configuration/the-things-stack#redis-options" >}}) or `TTN_LW_REDIS_ADDRESS` environment variable.
+
 The simplest configuration for Redis looks like this (excerpted from the example `docker-compose.yml`):
 
 {{< highlight yaml "linenos=table,linenostart=28" >}}
 {{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=28 to=37 >}}
 {{< /highlight >}}
 
-{{< note >}} It is also possible (and even preferred) to use a managed Redis database. In this case, you will need to configure the managed database address with `TTN_LW_REDIS_ADDRESS` environment variable (see [Environment and Ports]({{< ref "/getting-started/installation/configuration#environment-and-ports" >}})). {{</ note >}}
-
 ### {{% tts %}}
 
 #### Entrypoint and dependencies
 
-Docker Compose uses `ttn-lw-stack -c /config/ttn-lw-stack-docker.yml` as the container entry point, so that `ttn-lw-stack-docker.yml` configuration file is always loaded (more on the config file below). 
+Docker Compose uses `ttn-lw-stack -c /config/ttn-lw-stack-docker.yml` as the container entry point, so that `ttn-lw-stack-docker.yml` configuration file is always loaded (more on the config file below).
+
+In production, replace the `image` with a working, stable tag from [Docker Hub - The Things Industries](https://hub.docker.com/r/thethingsindustries/lorawan-stack/tags) for Enterprise, or [Docker Hub - The Things Network](https://hub.docker.com/r/thethingsnetwork/lorawan-stack/tags) for Open Source. 
 
 The default command is `start`, which starts {{% tts %}}.
 
+{{< highlight yaml "linenos=table,linenostart=39" >}}
+{{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=39 to=43 >}}
+{{< /highlight >}}
+
 The `depends_on` field tells Docker Compose that {{% tts %}} depends on CockroachDB and Redis. With this, Docker Compose will wait for CockroachDB and Redis to come online before starting {{% tts %}}.
+
+{{< highlight yaml "linenos=table,linenostart=45" >}}
+{{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=45 to=50 >}}
+{{< /highlight >}}
 
 {{< note >}} If using a managed SQL or Redis database, these can be removed from `depends_on` and the services do not need to be started in Docker. {{</ note >}}
 
 #### Volumes
 
 Under the `volumes` section, volumes for the files that need to be persisted on the disk are defined. There are stored blob files (such as profile pictures) and certificate files retrieved with ACME (if required). Also, local `./config/stack/` directory is mounted on the container under `/config`, so that {{% tts %}} can find the configuration file at `/config/ttn-lw-stack-docker.yml`.
+
+{{< highlight yaml "linenos=table,linenostart=51" >}}
+{{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=51 to=55 >}}
+{{< /highlight >}}
 
 {{< note >}} If your `ttn-lw-stack-docker.yml` is in a directory other than `./config/stack`, you will need to change this volume accordingly. {{</ note >}}
 
@@ -110,15 +138,13 @@ The databases used by {{% tts %}} are configured in the `environment` section. I
 
 {{< note >}} If using managed databases, the `environment` ports need to be changed to the ports of the managed databases. {{</ note >}}
 
-The `ports` section exposes {{% tts %}}'s ports to the world. Port `80` and `443` are mapped to the internal HTTP and HTTPS ports. The other ports have a direct mapping. If you don't need support for gateways and applications that don't use TLS, you can remove ports starting with `188`.
+The `ports` section exposes {{% tts %}}'s ports outside the Docker container. Port `80` and `443` are mapped to the internal HTTP and HTTPS ports. The other ports have a direct mapping. If you don't need support for gateways and applications that don't use TLS, you can remove ports starting with `188`:
 
-Here is an example `stack` configuration from the Enterprise version of `docker-compose.yml`:
-
-{{< highlight yaml "linenos=table,linenostart=39" >}}
-{{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=39 to=83 >}}
+{{< highlight yaml "linenos=table,linenostart=56" >}}
+{{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=56 to=83 >}}
 {{< /highlight >}}
 
-## The Things Stack Configuration
+## Understanding The Things Stack Configuration
 
 Configuration options for running {{% tts %}} are specified in the `ttn-lw-stack-docker.yml` file. This section points out the required configuration options.
 
@@ -138,7 +164,11 @@ The example `ttn-lw-stack-docker.yml` file for {{% tts %}} Enterprise shown belo
 
 This example shows the configuration for using TLS with Let's Encrypt. Since {{% tts %}} is being deployed on
 `thethings.example.com` in this guide, it is configured to only request certificates for that
-host, and also to use it as the default host. See the [TLS Options configuration reference]({{< ref "/reference/configuration/the-things-stack#tls-options" >}}) for more information.
+host, and also to use it as the default host.
+
+If using Let's Encrypt, certificates will automatically be requested the first time you access {{% tts %}}. You will notice that the page takes some time to load while certificates are obtained in the background. 
+
+See the [TLS Options configuration reference]({{< ref "/reference/configuration/the-things-stack#tls-options" >}}) for more information.
 
 {{< note >}} Make sure that you use the correct `tls` configuration depending on whether you are using Let's Encrypt or your own certificate files. {{</ note >}}
 
@@ -160,15 +190,15 @@ You can use Sendgrid or an SMTP server. If you skip setting up an email provider
 Finally, the `console` section configures the URLs for the Web UI and the secret used
 by the console client. These tell {{% tts %}} where all its components are accessible.
 
-{{< warning >}} Failure to correctly configure component URLs is a common problem that will prevent the stack from starting. Be sure to replace all instances of `thethings.example.com` with your domain name! {{</ warning >}}
+{{< note >}} The `client-secret` will be needed later when authorizing the Console. Be sure to set and remember it! {{</ note >}}
 
-{{< note >}} Note that the `client-secret` will be needed later when authorizing the Console. {{</ note >}}
+{{< warning >}} Failure to correctly configure component URLs is a common problem that will prevent the stack from starting. Be sure to replace all instances of `thethings.example.com` with your domain name! {{</ warning >}}
 
 ### Multi-tenancy {{< distributions "Enterprise" >}} {#multi-tenancy}
 
 If running a multi-tenant environment, we need to configure the default tenant ID, and the base domain from which tenant IDs are inferred. See the [`tenancy` configuration reference]({{< ref "/reference/configuration/the-things-stack#multi-tenancy" >}}).
 
-## Localhost
+## Running The Things Stack as Localhost
 
 Follow this section if you are configuring and running {{% tts %}} on a local machine with no public IP or DNS address.
 
