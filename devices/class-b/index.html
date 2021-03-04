@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Class C and Multicast | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/class-c-multicast/" />
+  <title>Class B | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/class-b/" />
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.3aa7b3376ed1b8091a3db6c86336adf809ea1df379a9a07e9f99610710179427.css" integrity="sha256-OqezN27RuAkaPbbIYzat&#43;AnqHfN5qaB&#43;n5lhBxAXlCc=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Class C and Multicast">
+  <meta itemprop="name" content="Class B">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Class C and Multicast">
+  <meta property="og:title" content="Class B">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/devices/class-c-multicast/">
-  <meta name="twitter:title" content="Class C and Multicast" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/devices/class-b/">
+  <meta name="twitter:title" content="Class B" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -88,66 +88,31 @@ debug: false
   <div class="container">
     <div class="columns">
       
-      <div class="column is-one-third">
+      <div class="column">
 
-
-<h2 class="title is-size-4">Class C and Multicast</h2>
-
-<ul class="menu-list">
-<a href="https://www.thethingsindustries.com/docs/devices/class-c-multicast/" class="is-active">Overview</a>
-</ul>
-
-
-
-
-
-      </div>
-      
-      <div class="column is-two-thirds">
-
-<h1 class="title is-size-2">Class C and Multicast
+<h1 class="title is-size-2">Class B
 
 
 
 </h1>
 <div class="content">
-<p>Class C end devices continuously listen for downlink messages. This allows applications to send messages to devices at any time, instead of having to wait for a Class A uplink. When combined with multicast groups, this allows applications to send immediate downlinks to many devices at the same time.</p>
-<p>This guide shows how to enable or disable Class C for an and device, and how to work with multicast groups.</p>
-<h2 id="enabling-and-disabling-class-c">Enabling and Disabling Class C</h2>
-<p>In order to send Class C downlink messages to a single device, enable Class C support for the end device when creating or updating it with the <code>--supports-class-c</code> flag.</p>
-<p>For example, when enabling Class C for an existing device:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices <span class="nb">set</span> app1 dev1 --supports-class-c
-</code></pre></div><p>This will enable the Class C downlink scheduling of the device. That&rsquo;s it! Downlink messages are now scheduled as soon as possible.</p>
-<p>To disable Class C scheduling, reset with <code>--supports-class-c=false</code>.</p>
+<p>Class B end devices listen for downlink messages during ping slots. This allows applications to send messages to devices at predefined time slots, rather than waiting for a Class A uplink. When combined with <a href="https://www.thethingsindustries.com/docs/devices/multicast/">multicast groups</a>, this allows applications to send periodic downlinks to many devices at the same time.</p>
+<h2 id="enabling-and-disabling-class-b">Enabling and Disabling Class B</h2>
+<p>In order to send Class B downlink messages to a single device, enable Class B support for the end device when creating or updating it with the <code>--supports-class-b</code> flag.</p>
+<p>For example, when enabling Class B for an existing device:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices <span class="nb">set</span> app1 dev1 --supports-class-b
+</code></pre></div><p>This will enable the Class B downlink scheduling of the device. Downlink messages are now scheduled during the next available ping slot.</p>
+<p>To disable Class B scheduling, reset with <code>--supports-class-b=false</code>.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Class C downlink scheduling starts when the end device confirms the session. This means that the device should send an uplink message after receiving the join-accept in order to enable Class C downlink scheduling.
+  For unicast devices, Class B downlink scheduling starts when the end device sends an uplink with the Class B bit set. This means that an OTAA device should send an uplink message with the Class B bit set after receiving the join-accept in order to enable Class B downlink scheduling.
 </div>
-<h2 id="class-c-message-settings">Class C message settings</h2>
-<p>The Things Stack supports optional settings for Class C downlink messages: the downlink path and the time to send the message.</p>
-<p>The downlink path is defined by one or more gateways IDs. The Network Server and Gateway Server schedules only on the specified gateways in the specified order. This is useful for multicast (where no downlink path is known because there is no uplink). A scheduling attempt on can fail when the gateway is not connected, if there is a scheduling conflict or if duty-cycle regulations prohibit transmission. See the <a href="#example">Example</a> section below.</p>
+<h2 id="multicast-group">Multicast Group</h2>
+<p>See <a href="https://www.thethingsindustries.com/docs/devices/multicast/">Multicast</a> for instructions for creating and using multicast groups.</p>
+<h2 id="class-b-message-settings">Class B Message Settings</h2>
+<p>The Things Stack supports optional settings for Class B downlink messages: the downlink path and the time to send the message.</p>
+<p>The downlink path is defined by one or more gateways IDs. The Network Server and Gateway Server schedules only on the specified gateways in the specified order. This is useful for multicast (where no downlink path is known because there is no uplink). A scheduling attempt can fail when the gateway is not connected, if there is a scheduling conflict or if duty-cycle regulations prohibit transmission.</p>
 <p>The time to transmit is an absolute timestamp in ISO 8601 format to send the message. This requires gateways either with GPS lock, or gateways that use a protocol that provide round-trip times (RTT). See the <a href="#example">Example</a> section below.</p>
-<h2 id="multicast-group">Multicast group</h2>
-<p>It is also possible to create a multicast group to send a Class C downlink message to a group of end devices. A multicast group is a virtual ABP device (i.e. shared session keys), does not support uplink, confirmed downlink nor MAC commands.</p>
-<p>When creating a device, you can specify in the Console and CLI whether it&rsquo;s a multicast group.</p>
-<p>CLI example:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices create app1 mc1 <span class="se">\
-</span><span class="se"></span>  --frequency-plan-id EU_863_870 <span class="se">\
-</span><span class="se"></span>  --lorawan-version 1.0.3 <span class="se">\
-</span><span class="se"></span>  --lorawan-phy-version 1.0.3-a <span class="se">\
-</span><span class="se"></span>  --session.dev-addr 00E4304D <span class="se">\
-</span><span class="se"></span>  --session.keys.app-s-key.key A0CAD5A30036DBE03096EB67CA975BAA <span class="se">\
-</span><span class="se"></span>  --session.keys.nwk-s-key.key B7F3E161BC9D4388E6C788A0C547F255 <span class="se">\
-</span><span class="se"></span>  --multicast <span class="se">\
-</span><span class="se"></span>  --supports-class-c
-</code></pre></div><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  A multicast group cannot be converted to a normal unicast device or the other way around.
-</div>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Since multicast does not support uplink, the Network Server does not know a downlink path. Therefore, you need to specify a downlink path when scheduling downlink message.
-</div>
 <h2 id="example">Example</h2>
 <div class="notification is-primary is-light has-text-dark">
   <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
@@ -157,16 +122,15 @@ debug: false
   </div>
 </div>
 
-<p>First, create a multicast group:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices create app1 mc1 <span class="se">\
+<p>First, create a Class B device:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices create app1 dev1 <span class="se">\
 </span><span class="se"></span>  --frequency-plan-id EU_863_870 <span class="se">\
 </span><span class="se"></span>  --lorawan-version 1.0.3 <span class="se">\
 </span><span class="se"></span>  --lorawan-phy-version 1.0.3-a <span class="se">\
 </span><span class="se"></span>  --session.dev-addr 00E4304D <span class="se">\
 </span><span class="se"></span>  --session.keys.app-s-key.key A0CAD5A30036DBE03096EB67CA975BAA <span class="se">\
 </span><span class="se"></span>  --session.keys.nwk-s-key.key B7F3E161BC9D4388E6C788A0C547F255 <span class="se">\
-</span><span class="se"></span>  --multicast <span class="se">\
-</span><span class="se"></span>  --supports-class-c
+</span><span class="se"></span>  --supports-class-b
 </code></pre></div><p>Then, schedule the following message to the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">Application Server MQTT server</a> or <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/">HTTP webhooks</a>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;downlinks&#34;</span><span class="p">:</span> <span class="p">[{</span>
@@ -194,19 +158,15 @@ debug: false
 </div>
 
 
-
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
 <script src="https://cdn.emojicom.io/embed/widget.js" async></script>
 
 <div class='feedback has-vertical-space'>
   <div id="emojicom-widget-inline"></div>
 </div>
-
-
 <div class="is-clearfix">
+<a class="button is-pulled-right" href="/docs/devices/multicast/">Multicast →</a>
 </div>
-
-
 
 
       </div>
@@ -241,14 +201,14 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 26 Nov 2020.
+  Last changed by Ben Olayinka on 25 Feb 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/21da11257c965cc9e733dfee24ffc3ac4f2235fd">
-      doc: Change info tags to note
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3ae3ae575f74883b422051dd13e733aa3b9f9fbc">
+      doc: Add Class B doc
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/devices/class-c-multicast/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/devices/class-b/index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
