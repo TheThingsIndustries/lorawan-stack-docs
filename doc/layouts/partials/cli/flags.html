@@ -1,0 +1,23 @@
+<dl class="cli-flags">
+{{- range . }}
+{{- if not .hidden }}
+
+{{- with .shorthand }}<dt><code>-{{ . }}</code></dt>{{ end }}
+<dt><code>--{{ .name }}</code></dt>
+<dd>
+<p>
+type: <code>{{ .type }}</code>
+</p>
+{{ with .default_value }}
+<p>
+default: <code>{{ . }}</code>
+</p>
+{{ end }}
+<p>
+{{- with .usage }}{{ . }}{{ end }}
+</p>
+</dd>
+
+{{- end }}
+{{- end }}
+</dl>

@@ -1,0 +1,47 @@
+{{- $cli := or (.Get "cli") "ttn-lw-cli" }}
+{{- $command := or (.Get 0) $cli }}
+{{- $fullCommand := strings.TrimRight " " (printf "%s %s" $cli (or (.Get 0) "")) }}
+{{ with index .Site.Data $cli $fullCommand -}}
+<hr>
+<h2 id="command-{{ urlize $fullCommand }}">Command <code>{{ $fullCommand }}</code></h2>
+
+{{- if or .long .short -}}
+<h3>Description</h3>
+{{- if .long }}
+<pre>{{ .long }}</pre>
+{{- else if .short }}
+<p>{{ .short }}</p>
+{{- end -}}
+{{- end }}
+
+{{- with .aliases }}
+<h3>Aliases</h3>
+<p>{{ range . }} <code>{{.}}</code>{{ end }}</p>
+{{- end }}
+
+<h3>Usage</h3>
+<p><code>{{ $fullCommand }}{{ with .use }} {{ . }}{{ end }} [flags]</code>
+
+{{- with .example }}
+<h3>Example usage of <code>{{ $fullCommand }}</code></h3>
+<pre><code>{{ . }}</code></pre>
+{{- end }}
+
+<h3>Flags for <code>{{ $fullCommand }}</code></h3>
+
+{{- with .command_flags }}
+{{ partial "cli/flags" . }}
+{{- end }}
+
+{{- with .parent_path }}
+<p>This command inherits flags from <code>{{ . }}</code></p>
+{{- end }}
+
+{{- with .persistent_flags }}
+<p>The following flags are also available in sub-commands:</p>
+{{ partial "cli/flags" . }}
+{{- end }}
+
+{{- else -}}
+{{ errorf "command %s of cli %s not found: %s" $command $cli .Position }}
+{{- end }}
