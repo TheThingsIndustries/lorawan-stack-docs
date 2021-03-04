@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Application CLI Commands | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/cli/applications/" />
+  <link rel="alternate icon" href="/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.3aa7b3376ed1b8091a3db6c86336adf809ea1df379a9a07e9f99610710179427.css" integrity="sha256-OqezN27RuAkaPbbIYzat&#43;AnqHfN5qaB&#43;n5lhBxAXlCc=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Application CLI Commands">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Application CLI Commands">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/cli/applications/">
+  <meta name="twitter:title" content="Application CLI Commands" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div id="migration-info">
+      <div id="migration-text">thethingsstack.io has moved to thethingsindustries.com/docs</div>
+      <div id="migration-button" class="button is-primary">Got it</div>
+  </div>
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.11</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="/docs/download/">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="search-container">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <div class="field has-addons has-addons-centered">
+            <div class="control">
+              <input class="input search-bar" id="search-input" type="text" placeholder="Search" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: "4372282a02970d8402d43457bf95d486",
+indexName: "thethingsstack",
+inputSelector: '#search-input',
+debug: false 
+});
+</script>
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">Command-Line Interface</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/reference/cli/" class="">Overview</a>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/cli/applications/" class="is-active">Application CLI Commands</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/cli/applications_packages/" class="">Application Packages CLI Commands</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/cli/applications_pub_sub/" class="">Application Pub/Sub CLI Commands</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/cli/storage_integration/" class="">Application Storage Integration CLI Commands</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/cli/applications_webhooks/" class="">Application Webhook CLI Commands</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/cli/end_devices/" class="">End Device CLI Commands</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/cli/gateways/" class="">Gateway CLI Commands</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/cli/clients/" class="">OAuth Client CLI Commands</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/cli/organizations/" class="">Organization CLI Commands</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/cli/users/" class="">User CLI Commands</a>
+</li>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">Application CLI Commands
+
+
+
+</h1>
+<div class="content">
+<h2 id="general-application-commands">General Application Commands</h2>
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications">Command <code>ttn-lw-cli applications</code></h2><h3>Description</h3>
+<p>Application commands</p>
+<h3>Aliases</h3>
+<p> <code>application</code> <code>apps</code> <code>app</code> <code>a</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications</code></h3>
+<p>This command inherits flags from <code>ttn-lw-cli</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-list">Command <code>ttn-lw-cli applications list</code></h2><h3>Description</h3>
+<p>List applications</p>
+<h3>Aliases</h3>
+<p> <code>ls</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications list [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications list</code></h3>
+<dl class="cli-flags">
+<dt><code>--all</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select all application fields
+</p>
+</dd>
+<dt><code>--attributes</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select the attributes field
+</p>
+</dd>
+<dt><code>--contact-info</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select the contact_info field
+</p>
+</dd>
+<dt><code>--description</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select the description field
+</p>
+</dd>
+<dt><code>--limit</code></dt>
+<dd>
+<p>
+type: <code>uint32</code>
+</p>
+
+<p>
+default: <code>50</code>
+</p>
+
+<p>maximum number of results to get
+</p>
+</dd>
+<dt><code>--name</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select the name field
+</p>
+</dd>
+<dt><code>--order</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>order by this field
+</p>
+</dd>
+<dt><code>--organization-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--page</code></dt>
+<dd>
+<p>
+type: <code>uint32</code>
+</p>
+
+<p>
+default: <code>1</code>
+</p>
+
+<p>results page number
+</p>
+</dd>
+<dt><code>--user-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-search">Command <code>ttn-lw-cli applications search</code></h2><h3>Description</h3>
+<p>Search for applications</p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications search [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications search</code></h3>
+<dl class="cli-flags">
+<dt><code>--all</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select all application fields
+</p>
+</dd>
+<dt><code>--attributes</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select the attributes field
+</p>
+</dd>
+<dt><code>--attributes-contain</code></dt>
+<dd>
+<p>
+type: <code>stringToString</code>
+</p>
+
+<p>
+default: <code>[]</code>
+</p>
+
+<p>(key=value)
+</p>
+</dd>
+<dt><code>--contact-info</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select the contact_info field
+</p>
+</dd>
+<dt><code>--description</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select the description field
+</p>
+</dd>
+<dt><code>--description-contains</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--id-contains</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--limit</code></dt>
+<dd>
+<p>
+type: <code>uint32</code>
+</p>
+
+<p>
+default: <code>50</code>
+</p>
+
+<p>maximum number of results to get
+</p>
+</dd>
+<dt><code>--name</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select the name field
+</p>
+</dd>
+<dt><code>--name-contains</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--order</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>order by this field
+</p>
+</dd>
+<dt><code>--page</code></dt>
+<dd>
+<p>
+type: <code>uint32</code>
+</p>
+
+<p>
+default: <code>1</code>
+</p>
+
+<p>results page number
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-get">Command <code>ttn-lw-cli applications get</code></h2><h3>Description</h3>
+<p>Get an application</p>
+<h3>Aliases</h3>
+<p> <code>info</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications get [application-id] [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications get</code></h3>
+<dl class="cli-flags">
+<dt><code>--all</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select all application fields
+</p>
+</dd>
+<dt><code>--application-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--attributes</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select the attributes field
+</p>
+</dd>
+<dt><code>--contact-info</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select the contact_info field
+</p>
+</dd>
+<dt><code>--description</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select the description field
+</p>
+</dd>
+<dt><code>--name</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select the name field
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-create">Command <code>ttn-lw-cli applications create</code></h2><h3>Description</h3>
+<p>Create an application</p>
+<h3>Aliases</h3>
+<p> <code>add</code> <code>register</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications create [application-id] [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications create</code></h3>
+<dl class="cli-flags">
+<dt><code>--application-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--attributes</code></dt>
+<dd>
+<p>
+type: <code>stringSlice</code>
+</p>
+
+<p>
+default: <code>[]</code>
+</p>
+
+<p>key=value
+</p>
+</dd>
+<dt><code>--description</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--name</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--organization-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--user-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-set">Command <code>ttn-lw-cli applications set</code></h2><h3>Description</h3>
+<p>Set properties of an application</p>
+<h3>Aliases</h3>
+<p> <code>update</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications set [application-id] [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications set</code></h3>
+<dl class="cli-flags">
+<dt><code>--application-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--attributes</code></dt>
+<dd>
+<p>
+type: <code>stringSlice</code>
+</p>
+
+<p>
+default: <code>[]</code>
+</p>
+
+<p>key=value
+</p>
+</dd>
+<dt><code>--description</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--name</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-delete">Command <code>ttn-lw-cli applications delete</code></h2><h3>Description</h3>
+<p>Delete an application</p>
+<h3>Aliases</h3>
+<p> <code>del</code> <code>remove</code> <code>rm</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications delete [application-id] [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications delete</code></h3>
+<dl class="cli-flags">
+<dt><code>--application-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications</code></p>
+
+<h2 id="application-contact-info-commands">Application Contact Info Commands</h2>
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-contact-info">Command <code>ttn-lw-cli applications contact-info</code></h2><h3>Description</h3>
+<p>Manage application contact info</p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications contact-info [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications contact-info</code></h3>
+<p>This command inherits flags from <code>ttn-lw-cli applications</code></p>
+<p>The following flags are also available in sub-commands:</p>
+<dl class="cli-flags">
+<dt><code>--application-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+</dl>
+
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-contact-info-list">Command <code>ttn-lw-cli applications contact-info list</code></h2>
+<h3>Aliases</h3>
+<p> <code>ls</code> <code>get</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications contact-info list [application-id] [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications contact-info list</code></h3>
+<dl class="cli-flags">
+<dt><code>--contact-method</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>allowed values: CONTACT_METHOD_EMAIL, CONTACT_METHOD_OTHER, CONTACT_METHOD_PHONE
+</p>
+</dd>
+<dt><code>--contact-type</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>allowed values: CONTACT_TYPE_ABUSE, CONTACT_TYPE_BILLING, CONTACT_TYPE_OTHER, CONTACT_TYPE_TECHNICAL
+</p>
+</dd>
+<dt><code>--public</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--validated-at</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>(YYYY-MM-DDTHH:MM:SSZ)
+</p>
+</dd>
+<dt><code>--value</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications contact-info</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-contact-info-create">Command <code>ttn-lw-cli applications contact-info create</code></h2>
+<h3>Aliases</h3>
+<p> <code>add</code> <code>register</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications contact-info create [application-id] [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications contact-info create</code></h3>
+<dl class="cli-flags">
+<dt><code>--contact-method</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>allowed values: CONTACT_METHOD_EMAIL, CONTACT_METHOD_OTHER, CONTACT_METHOD_PHONE
+</p>
+</dd>
+<dt><code>--contact-type</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>allowed values: CONTACT_TYPE_ABUSE, CONTACT_TYPE_BILLING, CONTACT_TYPE_OTHER, CONTACT_TYPE_TECHNICAL
+</p>
+</dd>
+<dt><code>--public</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--validated-at</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>(YYYY-MM-DDTHH:MM:SSZ)
+</p>
+</dd>
+<dt><code>--value</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications contact-info</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-contact-info-request-validation">Command <code>ttn-lw-cli applications contact-info request-validation</code></h2><h3>Description</h3>
+<p>Request validation for entity contact info</p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications contact-info request-validation [application-id] [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications contact-info request-validation</code></h3>
+<dl class="cli-flags">
+<dt><code>--contact-method</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>allowed values: CONTACT_METHOD_EMAIL, CONTACT_METHOD_OTHER, CONTACT_METHOD_PHONE
+</p>
+</dd>
+<dt><code>--contact-type</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>allowed values: CONTACT_TYPE_ABUSE, CONTACT_TYPE_BILLING, CONTACT_TYPE_OTHER, CONTACT_TYPE_TECHNICAL
+</p>
+</dd>
+<dt><code>--public</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--validated-at</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>(YYYY-MM-DDTHH:MM:SSZ)
+</p>
+</dd>
+<dt><code>--value</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications contact-info</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-contact-info-validate">Command <code>ttn-lw-cli applications contact-info validate</code></h2><h3>Description</h3>
+<pre>Validate contact info by providing the reference and the validation token that you received</pre>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications contact-info validate [reference] [token] [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications contact-info validate</code></h3>
+<dl class="cli-flags">
+<dt><code>--reference</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>Reference of the requested validation
+</p>
+</dd>
+<dt><code>--token</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>Token that you received
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications contact-info</code></p>
+
+<h2 id="application-access-commands">Application Access Commands</h2>
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-rights">Command <code>ttn-lw-cli applications rights</code></h2><h3>Description</h3>
+<p>List the rights to an application</p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications rights [application-id] [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications rights</code></h3>
+<dl class="cli-flags">
+<dt><code>--application-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-api-keys">Command <code>ttn-lw-cli applications api-keys</code></h2><h3>Description</h3>
+<p>Manage application API keys</p>
+<h3>Aliases</h3>
+<p> <code>api-key</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications api-keys [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications api-keys</code></h3>
+<p>This command inherits flags from <code>ttn-lw-cli applications</code></p>
+<p>The following flags are also available in sub-commands:</p>
+<dl class="cli-flags">
+<dt><code>--application-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+</dl>
+
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-api-keys-list">Command <code>ttn-lw-cli applications api-keys list</code></h2><h3>Description</h3>
+<p>List application API keys</p>
+<h3>Aliases</h3>
+<p> <code>ls</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications api-keys list [application-id] [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications api-keys list</code></h3>
+<dl class="cli-flags">
+<dt><code>--limit</code></dt>
+<dd>
+<p>
+type: <code>uint32</code>
+</p>
+
+<p>
+default: <code>50</code>
+</p>
+
+<p>maximum number of results to get
+</p>
+</dd>
+<dt><code>--page</code></dt>
+<dd>
+<p>
+type: <code>uint32</code>
+</p>
+
+<p>
+default: <code>1</code>
+</p>
+
+<p>results page number
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications api-keys</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-api-keys-get">Command <code>ttn-lw-cli applications api-keys get</code></h2><h3>Description</h3>
+<p>Get an application API key</p>
+<h3>Aliases</h3>
+<p> <code>info</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications api-keys get [application-id] [api-key-id] [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications api-keys get</code></h3>
+<dl class="cli-flags">
+<dt><code>--api-key-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications api-keys</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-api-keys-create">Command <code>ttn-lw-cli applications api-keys create</code></h2><h3>Description</h3>
+<p>Create an application API key</p>
+<h3>Aliases</h3>
+<p> <code>add</code> <code>register</code> <code>generate</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications api-keys create [application-id] [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications api-keys create</code></h3>
+<dl class="cli-flags">
+<dt><code>--name</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-all</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-delete</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-devices-read</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-devices-read-keys</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-devices-write</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-devices-write-keys</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-info</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-link</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-settings-api-keys</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-settings-basic</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-settings-collaborators</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-settings-packages</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-traffic-down-write</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-traffic-read</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-traffic-up-write</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications api-keys</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-api-keys-set">Command <code>ttn-lw-cli applications api-keys set</code></h2><h3>Description</h3>
+<p>Set properties of an application API key</p>
+<h3>Aliases</h3>
+<p> <code>update</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications api-keys set [application-id] [api-key-id] [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications api-keys set</code></h3>
+<dl class="cli-flags">
+<dt><code>--api-key-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--name</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-all</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-delete</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-devices-read</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-devices-read-keys</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-devices-write</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-devices-write-keys</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-info</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-link</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-settings-api-keys</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-settings-basic</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-settings-collaborators</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-settings-packages</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-traffic-down-write</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-traffic-read</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-traffic-up-write</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications api-keys</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-api-keys-delete">Command <code>ttn-lw-cli applications api-keys delete</code></h2><h3>Description</h3>
+<p>Delete an application API key</p>
+<h3>Aliases</h3>
+<p> <code>del</code> <code>remove</code> <code>rm</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications api-keys delete [application-id] [api-key-id] [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications api-keys delete</code></h3>
+<dl class="cli-flags">
+<dt><code>--api-key-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications api-keys</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-collaborators">Command <code>ttn-lw-cli applications collaborators</code></h2><h3>Description</h3>
+<p>Manage application collaborators</p>
+<h3>Aliases</h3>
+<p> <code>collaborator</code> <code>members</code> <code>member</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications collaborators [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications collaborators</code></h3>
+<p>This command inherits flags from <code>ttn-lw-cli applications</code></p>
+<p>The following flags are also available in sub-commands:</p>
+<dl class="cli-flags">
+<dt><code>--application-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+</dl>
+
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-collaborators-list">Command <code>ttn-lw-cli applications collaborators list</code></h2><h3>Description</h3>
+<p>List application collaborators</p>
+<h3>Aliases</h3>
+<p> <code>ls</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications collaborators list [application-id] [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications collaborators list</code></h3>
+<dl class="cli-flags">
+<dt><code>--limit</code></dt>
+<dd>
+<p>
+type: <code>uint32</code>
+</p>
+
+<p>
+default: <code>50</code>
+</p>
+
+<p>maximum number of results to get
+</p>
+</dd>
+<dt><code>--page</code></dt>
+<dd>
+<p>
+type: <code>uint32</code>
+</p>
+
+<p>
+default: <code>1</code>
+</p>
+
+<p>results page number
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications collaborators</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-collaborators-get">Command <code>ttn-lw-cli applications collaborators get</code></h2><h3>Description</h3>
+<p>Get an application collaborator</p>
+<h3>Aliases</h3>
+<p> <code>info</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications collaborators get [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications collaborators get</code></h3>
+<dl class="cli-flags">
+<dt><code>--organization-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--user-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications collaborators</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-collaborators-set">Command <code>ttn-lw-cli applications collaborators set</code></h2><h3>Description</h3>
+<p>Set properties of an application collaborator</p>
+<h3>Aliases</h3>
+<p> <code>update</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications collaborators set [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications collaborators set</code></h3>
+<dl class="cli-flags">
+<dt><code>--organization-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-all</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-delete</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-devices-read</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-devices-read-keys</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-devices-write</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-devices-write-keys</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-info</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-link</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-settings-api-keys</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-settings-basic</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-settings-collaborators</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-settings-packages</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-traffic-down-write</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-traffic-read</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--right-application-traffic-up-write</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--user-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications collaborators</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-collaborators-delete">Command <code>ttn-lw-cli applications collaborators delete</code></h2><h3>Description</h3>
+<p>Delete an application collaborator</p>
+<h3>Aliases</h3>
+<p> <code>del</code> <code>remove</code> <code>rm</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications collaborators delete [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications collaborators delete</code></h3>
+<dl class="cli-flags">
+<dt><code>--organization-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--user-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications collaborators</code></p>
+
+
+</div>
+
+
+<script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+<div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/reference/cli/">← Command-Line Interface</a>
+<a class="button is-pulled-right" href="/docs/reference/cli/applications_packages/">Application Packages CLI Commands →</a>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer background-footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Hylke Visser on 26 Feb 2021.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/8afc30f8cedb6881ec8b9438c3729419d7e22200">
+      doc,util: Add CLI Reference
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/reference/cli/applications.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.e9df3c06e815b9686686212e86bfd0217a508f5ccee0139d7bc899ef7460191e.js" integrity="sha256-6d88BugVuWhmhiEuhr/QIXpQj1zO4BOde8iZ73RgGR4=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Application Packages CLI Commands | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/cli/applications_packages/" />
+  <link rel="alternate icon" href="/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.3aa7b3376ed1b8091a3db6c86336adf809ea1df379a9a07e9f99610710179427.css" integrity="sha256-OqezN27RuAkaPbbIYzat&#43;AnqHfN5qaB&#43;n5lhBxAXlCc=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Application Packages CLI Commands">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Application Packages CLI Commands">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/cli/applications_packages/">
+  <meta name="twitter:title" content="Application Packages CLI Commands" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div id="migration-info">
+      <div id="migration-text">thethingsstack.io has moved to thethingsindustries.com/docs</div>
+      <div id="migration-button" class="button is-primary">Got it</div>
+  </div>
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.11</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="/docs/download/">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="search-container">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <div class="field has-addons has-addons-centered">
+            <div class="control">
+              <input class="input search-bar" id="search-input" type="text" placeholder="Search" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: "4372282a02970d8402d43457bf95d486",
+indexName: "thethingsstack",
+inputSelector: '#search-input',
+debug: false 
+});
+</script>
+
+<main>
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      
+      <div class="column is-one-third">
+
+
+<h2 class="title is-size-4">Command-Line Interface</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/reference/cli/" class="">Overview</a>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/cli/applications/" class="">Application CLI Commands</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/cli/applications_packages/" class="is-active">Application Packages CLI Commands</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/cli/applications_pub_sub/" class="">Application Pub/Sub CLI Commands</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/cli/storage_integration/" class="">Application Storage Integration CLI Commands</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/cli/applications_webhooks/" class="">Application Webhook CLI Commands</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/cli/end_devices/" class="">End Device CLI Commands</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/cli/gateways/" class="">Gateway CLI Commands</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/cli/clients/" class="">OAuth Client CLI Commands</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/cli/organizations/" class="">Organization CLI Commands</a>
+</li>
+<li>
+  <a href="https://www.thethingsindustries.com/docs/reference/cli/users/" class="">User CLI Commands</a>
+</li>
+</ul>
+
+
+
+
+
+      </div>
+      
+      <div class="column is-two-thirds">
+
+<h1 class="title is-size-2">Application Packages CLI Commands
+
+
+
+</h1>
+<div class="content">
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-packages">Command <code>ttn-lw-cli applications packages</code></h2><h3>Description</h3>
+<p>Application packages commands</p>
+<h3>Aliases</h3>
+<p> <code>package</code> <code>pkg</code> <code>pkgs</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications packages [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications packages</code></h3>
+<p>This command inherits flags from <code>ttn-lw-cli applications</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-packages-list">Command <code>ttn-lw-cli applications packages list</code></h2><h3>Description</h3>
+<p>List the available application packages for the device</p>
+<h3>Aliases</h3>
+<p> <code>ls</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications packages list [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications packages list</code></h3>
+<p>This command inherits flags from <code>ttn-lw-cli applications packages</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-packages-associations">Command <code>ttn-lw-cli applications packages associations</code></h2><h3>Description</h3>
+<p>Application packages associations commands</p>
+<h3>Aliases</h3>
+<p> <code>assoc</code> <code>assocs</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications packages associations [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications packages associations</code></h3>
+<p>This command inherits flags from <code>ttn-lw-cli applications packages</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-packages-associations-list">Command <code>ttn-lw-cli applications packages associations list</code></h2><h3>Description</h3>
+<p>List application package associations</p>
+<h3>Aliases</h3>
+<p> <code>ls</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications packages associations list [application-id] [device-id] [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications packages associations list</code></h3>
+<dl class="cli-flags">
+<dt><code>--all</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select all application package association fields
+</p>
+</dd>
+<dt><code>--application-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--data</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select the data field and all allowed sub-fields
+</p>
+</dd>
+<dt><code>--dev-eui</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>(hex)
+</p>
+</dd>
+<dt><code>--device-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--join-eui</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>(hex)
+</p>
+</dd>
+<dt><code>--limit</code></dt>
+<dd>
+<p>
+type: <code>uint32</code>
+</p>
+
+<p>
+default: <code>50</code>
+</p>
+
+<p>maximum number of results to get
+</p>
+</dd>
+<dt><code>--package-name</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select the package_name field
+</p>
+</dd>
+<dt><code>--page</code></dt>
+<dd>
+<p>
+type: <code>uint32</code>
+</p>
+
+<p>
+default: <code>1</code>
+</p>
+
+<p>results page number
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications packages associations</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-packages-associations-get">Command <code>ttn-lw-cli applications packages associations get</code></h2><h3>Description</h3>
+<p>Get the properties of an application package association</p>
+<h3>Aliases</h3>
+<p> <code>info</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications packages associations get [application-id] [device-id] [f-port] [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications packages associations get</code></h3>
+<dl class="cli-flags">
+<dt><code>--all</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select all application package association fields
+</p>
+</dd>
+<dt><code>--application-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--data</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select the data field and all allowed sub-fields
+</p>
+</dd>
+<dt><code>--device-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--f-port</code></dt>
+<dd>
+<p>
+type: <code>uint8</code>
+</p>
+
+<p>
+default: <code>0</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--package-name</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select the package_name field
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications packages associations</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-packages-associations-set">Command <code>ttn-lw-cli applications packages associations set</code></h2><h3>Description</h3>
+<p>Set the properties of an application package association</p>
+<h3>Aliases</h3>
+<p> <code>update</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications packages associations set [application-id] [device-id] [f-port] [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications packages associations set</code></h3>
+<dl class="cli-flags">
+<dt><code>--application-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--data-local-file</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>package data (local file name)
+</p>
+</dd>
+<dt><code>--device-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--f-port</code></dt>
+<dd>
+<p>
+type: <code>uint8</code>
+</p>
+
+<p>
+default: <code>0</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--package-name</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications packages associations</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-packages-default-associations">Command <code>ttn-lw-cli applications packages default-associations</code></h2><h3>Description</h3>
+<p>Application packages default associations commands</p>
+<h3>Aliases</h3>
+<p> <code>def-assoc</code> <code>def-assocs</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications packages default-associations [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications packages default-associations</code></h3>
+<p>This command inherits flags from <code>ttn-lw-cli applications packages</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-packages-default-associations-list">Command <code>ttn-lw-cli applications packages default-associations list</code></h2><h3>Description</h3>
+<p>List application package default associations</p>
+<h3>Aliases</h3>
+<p> <code>ls</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications packages default-associations list [application-id] [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications packages default-associations list</code></h3>
+<dl class="cli-flags">
+<dt><code>--all</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select all application package default association fields
+</p>
+</dd>
+<dt><code>--application-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--data</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select the data field and all allowed sub-fields
+</p>
+</dd>
+<dt><code>--limit</code></dt>
+<dd>
+<p>
+type: <code>uint32</code>
+</p>
+
+<p>
+default: <code>50</code>
+</p>
+
+<p>maximum number of results to get
+</p>
+</dd>
+<dt><code>--package-name</code></dt>
+<dd>
+<p>
+type: <code>bool</code>
+</p>
+
+<p>
+default: <code>false</code>
+</p>
+
+<p>select the package_name field
+</p>
+</dd>
+<dt><code>--page</code></dt>
+<dd>
+<p>
+type: <code>uint32</code>
+</p>
+
+<p>
+default: <code>1</code>
+</p>
+
+<p>results page number
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications packages default-associations</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-packages-default-associations-get">Command <code>ttn-lw-cli applications packages default-associations get</code></h2><h3>Description</h3>
+<p>Get the properties of an application package default association</p>
+<h3>Aliases</h3>
+<p> <code>info</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications packages default-associations get [application-id] [f-port] [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications packages default-associations get</code></h3>
+<p>This command inherits flags from <code>ttn-lw-cli applications packages default-associations</code></p>
+
+
+<hr>
+<h2 id="command-ttn-lw-cli-applications-packages-default-associations-set">Command <code>ttn-lw-cli applications packages default-associations set</code></h2><h3>Description</h3>
+<p>Set the properties of an application package default association</p>
+<h3>Aliases</h3>
+<p> <code>update</code></p>
+
+<h3>Usage</h3>
+<p><code>ttn-lw-cli applications packages default-associations set [application-id] [f-port] [flags]</code>
+
+<h3>Flags for <code>ttn-lw-cli applications packages default-associations set</code></h3>
+<dl class="cli-flags">
+<dt><code>--application-id</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--data-local-file</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>package data (local file name)
+</p>
+</dd>
+<dt><code>--f-port</code></dt>
+<dd>
+<p>
+type: <code>uint8</code>
+</p>
+
+<p>
+default: <code>0</code>
+</p>
+
+<p>
+</p>
+</dd>
+<dt><code>--package-name</code></dt>
+<dd>
+<p>
+type: <code>string</code>
+</p>
+
+<p>
+</p>
+</dd>
+</dl>
+
+<p>This command inherits flags from <code>ttn-lw-cli applications packages default-associations</code></p>
+
+
+</div>
+
+
+<script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+<div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/reference/cli/applications/">← Application CLI Commands</a>
+<a class="button is-pulled-right" href="/docs/reference/cli/applications_pub_sub/">Application Pub/Sub CLI Commands →</a>
+</div>
+
+
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer background-footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Hylke Visser on 26 Feb 2021.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/8afc30f8cedb6881ec8b9438c3729419d7e22200">
+      doc,util: Add CLI Reference
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/reference/cli/applications_packages.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.e9df3c06e815b9686686212e86bfd0217a508f5ccee0139d7bc899ef7460191e.js" integrity="sha256-6d88BugVuWhmhiEuhr/QIXpQj1zO4BOde8iZ73RgGR4=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>
