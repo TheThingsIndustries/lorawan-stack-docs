@@ -5,7 +5,9 @@ weight: 5
 aliases: "/getting-started/migrating-from-networks/device-json"
 ---
 
-{{% tts %}} allows you to import devices from other networks using a JSON file describing those devices. Devices imported this way can be migrated without the need for a rejoin.
+{{% tts %}} allows you to import devices from other networks using a JSON file describing those devices.
+
+Devices imported this way can be migrated without the need for a rejoin, although {{% tts %}} does not yet support this, but will support it in an upcoming release.
 
 Create a `devices.json` file containing a device object, like so:
 
@@ -82,6 +84,10 @@ The linked specification is quite extensive, and contains a lot of fields that a
 ```
 {{</ note >}}
 
+## Migrating Devices with Existing Sessions
+
+Migrating devices with existing sessions is not currently supported in {{% tts %}}, but it will be supported in an upcoming release.
+
 ## Examples
 
 ### Example OTAA Device:
@@ -108,54 +114,3 @@ The linked specification is quite extensive, and contains a lot of fields that a
 }
 ```
 </details></summary>
-
-### Example OTAA device with existing session:
-<summary>
-
-<details>
-
-```json
-{
-  "ids": {
-    "device_id": "device-2",
-    "dev_eui": "0102030405060708",
-    "join_eui": "0102030405060708"
-  },
-  "name": "My Device",
-  "description": "Migrated with existing session from The Things Network",
-  "lorawan_version":"MAC_V1_0_2",
-  "lorawan_phy_version":"PHY_V1_0_2_REV_B",
-  "frequency_plan_id":"EU_863_870_TTN",
-  "supports_join":true,
-  "root_keys":{
-    "app_key":{
-      "key":"01020304050607080102030405060708"
-    }
-  },
-  "mac_settings":{
-    "rx1_delay":{
-      "value":"RX_DELAY_5"
-    },
-    "supports_32_bit_f_cnt": true
-  },
-  "session":{
-    "dev_addr":"01020304",
-    "keys":{
-      "app_s_key":{
-        "key":"01020304050607080102030405060708"
-      },
-      "f_nwk_s_int_key":{
-        "key":"01020304050607080102030405060708"
-      }
-    },
-    "last_f_cnt_up": 32,
-    "last_n_f_cnt_down": 10
-  }
-}
-```
-
-</details></summary>
-
-{{< note >}} For more information on configuring MAC settings, see [Fine-tuning MAC Settings]({{< ref "getting-started/migrating/configure-mac-settings" >}}). {{</ note >}}
-
-<br>
