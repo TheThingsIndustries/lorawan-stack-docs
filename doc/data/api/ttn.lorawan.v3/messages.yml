@@ -45,6 +45,16 @@ APIKey:
       rules:
         defined_only: true
     default: []
+  - name: created_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
+  - name: updated_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
 APIKeys:
   name: APIKeys
   fields:
@@ -280,6 +290,11 @@ ApplicationInvalidatedDownlinks:
   - name: last_f_cnt_down
     type: uint32
     default: 0
+  - name: session_key_id
+    type: bytes
+    rules:
+      max_len: 2048
+    default: ""
 ApplicationJoinAccept:
   name: ApplicationJoinAccept
   fields:
@@ -860,6 +875,7 @@ ApplicationServiceData:
     default: {}
 ApplicationUp:
   name: ApplicationUp
+  comment: Application uplink message.
   fields:
   - name: end_device_ids
     message:
@@ -949,7 +965,6 @@ ApplicationUplink:
     type: uint32
     rules:
       lte: 255
-      gte: 1
       not_in:
       - 224
     default: 0
@@ -2326,6 +2341,31 @@ DownlinkPath:
     field_names:
     - uplink_token
     - fixed
+DownlinkQueueOperationErrorDetails:
+  name: DownlinkQueueOperationErrorDetails
+  fields:
+  - name: dev_addr
+    type: bytes
+    default: ""
+  - name: session_key_id
+    type: bytes
+    rules:
+      max_len: 2048
+    default: ""
+  - name: min_f_cnt_down
+    type: uint32
+    default: 0
+  - name: pending_dev_addr
+    type: bytes
+    default: ""
+  - name: pending_session_key_id
+    type: bytes
+    rules:
+      max_len: 2048
+    default: ""
+  - name: pending_min_f_cnt_down
+    type: uint32
+    default: 0
 DownlinkQueueRequest:
   name: DownlinkQueueRequest
   fields:
@@ -4102,6 +4142,7 @@ Gateways:
     default: []
 GenerateDevAddrResponse:
   name: GenerateDevAddrResponse
+  comment: Response of GenerateDevAddr.
   fields:
   - name: dev_addr
     type: bytes
@@ -7099,6 +7140,7 @@ MQTTConnectionInfo:
     default: ""
 Message:
   name: Message
+  comment: Message represents a LoRaWAN message
   fields:
   - name: m_hdr
     message:
@@ -7181,6 +7223,7 @@ MessagePayloadFormatters:
     default: ""
 NsAsHandleUplinkRequest:
   name: NsAsHandleUplinkRequest
+  comment: Container for multiple Application uplink messages.
   fields:
   - name: application_ups
     rules:
