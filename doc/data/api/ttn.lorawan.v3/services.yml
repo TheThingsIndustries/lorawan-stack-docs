@@ -662,6 +662,10 @@ AsNs:
   methods:
     DownlinkQueueReplace:
       name: DownlinkQueueReplace
+      comment: |-
+        Replace the entire downlink queue with the specified messages.
+        This can also be used to empty the queue by specifying no messages.
+        Note that this will trigger an immediate downlink if a downlink slot is available.
       input:
         name: DownlinkQueueRequest
       output:
@@ -669,6 +673,9 @@ AsNs:
         name: Empty
     DownlinkQueuePush:
       name: DownlinkQueuePush
+      comment: |-
+        Push downlink messages to the end of the downlink queue.
+        Note that this will trigger an immediate downlink if a downlink slot is available.
       input:
         name: DownlinkQueueRequest
       output:
@@ -676,6 +683,7 @@ AsNs:
         name: Empty
     DownlinkQueueList:
       name: DownlinkQueueList
+      comment: List the items currently in the downlink queue.
       input:
         name: EndDeviceIdentifiers
       output:
@@ -1459,6 +1467,7 @@ GsNs:
   methods:
     HandleUplink:
       name: HandleUplink
+      comment: Handle a LoRaWAN uplink message.
       input:
         name: UplinkMessage
       output:
@@ -1669,6 +1678,7 @@ NetworkCryptoService:
         name: KeyEnvelope
 Ns:
   name: Ns
+  comment: The Ns service manages the Network Server.
   methods:
     GenerateDevAddr:
       name: GenerateDevAddr
@@ -1687,6 +1697,7 @@ NsAs:
   methods:
     HandleUplink:
       name: HandleUplink
+      comment: Handle Application uplink messages.
       input:
         name: NsAsHandleUplinkRequest
       output:

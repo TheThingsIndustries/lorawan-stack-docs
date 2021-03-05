@@ -1859,7 +1859,7 @@ ttn-lw-cli applications storage get:
     default_value: "false"
   - name: type
     type: string
-    usage: message type (|downlink_sent|downlink_nack|downlink_failed|downlink_queued|downlink_queue_invalidated|location_solved|uplink_message|join_accept|downlink_ack|service_data)
+    usage: message type (service_data|join_accept|downlink_ack|downlink_nack|downlink_sent|downlink_queued|downlink_queue_invalidated|location_solved||uplink_message|downlink_failed)
   - name: up.downlink-ack
     type: bool
     usage: select the up.downlink_ack field and all allowed sub-fields
@@ -2035,6 +2035,10 @@ ttn-lw-cli applications storage get:
   - name: up.downlink-queue-invalidated.last-f-cnt-down
     type: bool
     usage: select the up.downlink_queue_invalidated.last_f_cnt_down field
+    default_value: "false"
+  - name: up.downlink-queue-invalidated.session-key-id
+    type: bool
+    usage: select the up.downlink_queue_invalidated.session_key_id field
     default_value: "false"
   - name: up.downlink-queued
     type: bool
@@ -6965,7 +6969,7 @@ ttn-lw-cli end-devices storage get:
     default_value: "false"
   - name: type
     type: string
-    usage: message type (|downlink_sent|downlink_ack|downlink_nack|downlink_failed|downlink_queued|downlink_queue_invalidated|location_solved|uplink_message|join_accept|service_data)
+    usage: message type (service_data|join_accept|downlink_ack|downlink_nack|downlink_sent|downlink_queued|downlink_queue_invalidated|location_solved||uplink_message|downlink_failed)
   - name: up.downlink-ack
     type: bool
     usage: select the up.downlink_ack field and all allowed sub-fields
@@ -7141,6 +7145,10 @@ ttn-lw-cli end-devices storage get:
   - name: up.downlink-queue-invalidated.last-f-cnt-down
     type: bool
     usage: select the up.downlink_queue_invalidated.last_f_cnt_down field
+    default_value: "false"
+  - name: up.downlink-queue-invalidated.session-key-id
+    type: bool
+    usage: select the up.downlink_queue_invalidated.session_key_id field
     default_value: "false"
   - name: up.downlink-queued
     type: bool
@@ -11883,6 +11891,886 @@ ttn-lw-cli templates map:
   - name: mapping-local-file
     type: string
     usage: mapping file (local file name)
+ttn-lw-cli tenants:
+  path: ttn-lw-cli tenants
+  parent_path: ttn-lw-cli
+  name: tenants
+  aliases:
+  - tenant
+  - tnt
+  - t
+  short: Tenant commands
+  hidden: true
+  persistent_flags:
+  - name: tenant-admin-key
+    type: string
+    usage: Tenant Admin Key
+ttn-lw-cli tenants create:
+  path: ttn-lw-cli tenants create
+  parent_path: ttn-lw-cli tenants
+  name: create
+  use: '[tenant-id]'
+  aliases:
+  - add
+  - register
+  short: Create a tenant
+  command_flags:
+  - name: attributes
+    type: stringSlice
+    usage: key=value
+    default_value: '[]'
+  - name: billing-identifiers.billing-id
+    type: string
+  - name: billing.provider.aws-saas-marketplace.customer-identifier
+    type: string
+  - name: billing.provider.aws-saas-marketplace.product-code
+    type: string
+  - name: billing.provider.stripe.customer-id
+    type: string
+  - name: billing.provider.stripe.plan-id
+    type: string
+  - name: billing.provider.stripe.subscription-id
+    type: string
+  - name: billing.provider.stripe.subscription-item-id
+    type: string
+  - name: configuration.default-cluster.is.admin-rights.all
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.is.end-device-picture.disable-upload
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.is.profile-picture.disable-upload
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.is.profile-picture.use-gravatar
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.admin-approval.required
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.contact-info-validation.required
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.enabled
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.invitation.required
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.invitation.token-ttl
+    type: duration
+    usage: (1h2m3s)
+    default_value: 0s
+  - name: configuration.default-cluster.is.user-registration.password-requirements.max-length
+    type: uint32
+    default_value: "0"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.min-digits
+    type: uint32
+    default_value: "0"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.min-length
+    type: uint32
+    default_value: "0"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.min-special
+    type: uint32
+    default_value: "0"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.min-uppercase
+    type: uint32
+    default_value: "0"
+  - name: configuration.default-cluster.is.user-rights.create-applications
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-rights.create-clients
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-rights.create-gateways
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-rights.create-organizations
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.ns.cooldown-window
+    type: duration
+    usage: (1h2m3s)
+    default_value: 0s
+  - name: configuration.default-cluster.ns.deduplication-window
+    type: duration
+    usage: (1h2m3s)
+    default_value: 0s
+  - name: configuration.default-cluster.ns.dev-addr-prefixes
+    type: stringSlice
+    default_value: '[]'
+  - name: configuration.default-cluster.ui.branding-base-url
+    type: string
+  - name: description
+    type: string
+  - name: initial-user
+    type: bool
+    usage: create initial tenant user
+    default_value: "false"
+  - name: initial-user.admin
+    type: bool
+    default_value: "false"
+  - name: initial-user.created-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: initial-user.description
+    type: string
+  - name: initial-user.ids.email
+    type: string
+  - name: initial-user.ids.user-id
+    type: string
+  - name: initial-user.name
+    type: string
+  - name: initial-user.password
+    type: string
+  - name: initial-user.password-updated-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: initial-user.primary-email-address
+    type: string
+  - name: initial-user.primary-email-address-validated-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: initial-user.require-password-update
+    type: bool
+    default_value: "false"
+  - name: initial-user.state
+    type: string
+    usage: 'allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED'
+    default_value: STATE_APPROVED
+  - name: initial-user.temporary-password
+    type: string
+  - name: initial-user.temporary-password-created-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: initial-user.temporary-password-expires-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: initial-user.updated-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: max-applications
+    type: uint64
+    default_value: "0"
+  - name: max-clients
+    type: uint64
+    default_value: "0"
+  - name: max-end-devices
+    type: uint64
+    default_value: "0"
+  - name: max-gateways
+    type: uint64
+    default_value: "0"
+  - name: max-organizations
+    type: uint64
+    default_value: "0"
+  - name: max-users
+    type: uint64
+    default_value: "0"
+  - name: name
+    type: string
+  - name: state
+    type: string
+    usage: 'allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED'
+  - name: tenant-id
+    type: string
+ttn-lw-cli tenants delete:
+  path: ttn-lw-cli tenants delete
+  parent_path: ttn-lw-cli tenants
+  name: delete
+  use: '[tenant-id]'
+  short: Delete a tenant
+  command_flags:
+  - name: tenant-id
+    type: string
+ttn-lw-cli tenants get:
+  path: ttn-lw-cli tenants get
+  parent_path: ttn-lw-cli tenants
+  name: get
+  use: '[tenant-id]'
+  aliases:
+  - info
+  short: Get a tenant
+  command_flags:
+  - name: attributes
+    type: bool
+    usage: select the attributes field
+    default_value: "false"
+  - name: billing
+    type: bool
+    usage: select the billing field and all allowed sub-fields
+    default_value: "false"
+  - name: billing-identifiers
+    type: bool
+    usage: select the billing_identifiers field and all allowed sub-fields
+    default_value: "false"
+  - name: billing-identifiers.billing-id
+    type: bool
+    usage: select the billing_identifiers.billing_id field
+    default_value: "false"
+  - name: billing.provider.aws-saas-marketplace
+    type: bool
+    usage: select the billing.provider.aws_saas_marketplace field and all allowed sub-fields
+    default_value: "false"
+  - name: billing.provider.aws-saas-marketplace.customer-identifier
+    type: bool
+    usage: select the billing.provider.aws_saas_marketplace.customer_identifier field
+    default_value: "false"
+  - name: billing.provider.aws-saas-marketplace.product-code
+    type: bool
+    usage: select the billing.provider.aws_saas_marketplace.product_code field
+    default_value: "false"
+  - name: billing.provider.stripe
+    type: bool
+    usage: select the billing.provider.stripe field and all allowed sub-fields
+    default_value: "false"
+  - name: billing.provider.stripe.customer-id
+    type: bool
+    usage: select the billing.provider.stripe.customer_id field
+    default_value: "false"
+  - name: billing.provider.stripe.plan-id
+    type: bool
+    usage: select the billing.provider.stripe.plan_id field
+    default_value: "false"
+  - name: billing.provider.stripe.subscription-id
+    type: bool
+    usage: select the billing.provider.stripe.subscription_id field
+    default_value: "false"
+  - name: billing.provider.stripe.subscription-item-id
+    type: bool
+    usage: select the billing.provider.stripe.subscription_item_id field
+    default_value: "false"
+  - name: capabilities
+    type: bool
+    usage: select the capabilities field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration
+    type: bool
+    usage: select the configuration field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster
+    type: bool
+    usage: select the configuration.default_cluster field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is
+    type: bool
+    usage: select the configuration.default_cluster.is field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.admin-rights
+    type: bool
+    usage: select the configuration.default_cluster.is.admin_rights field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.admin-rights.all
+    type: bool
+    usage: select the configuration.default_cluster.is.admin_rights.all field
+    default_value: "false"
+  - name: configuration.default-cluster.is.end-device-picture
+    type: bool
+    usage: select the configuration.default_cluster.is.end_device_picture field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.end-device-picture.disable-upload
+    type: bool
+    usage: select the configuration.default_cluster.is.end_device_picture.disable_upload field
+    default_value: "false"
+  - name: configuration.default-cluster.is.profile-picture
+    type: bool
+    usage: select the configuration.default_cluster.is.profile_picture field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.profile-picture.disable-upload
+    type: bool
+    usage: select the configuration.default_cluster.is.profile_picture.disable_upload field
+    default_value: "false"
+  - name: configuration.default-cluster.is.profile-picture.use-gravatar
+    type: bool
+    usage: select the configuration.default_cluster.is.profile_picture.use_gravatar field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.admin-approval
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.admin_approval field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.admin-approval.required
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.admin_approval.required field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.contact-info-validation
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.contact_info_validation field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.contact-info-validation.required
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.contact_info_validation.required field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.enabled
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.enabled field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.invitation
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.invitation field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.invitation.required
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.invitation.required field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.invitation.token-ttl
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.invitation.token_ttl field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.password-requirements
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.password_requirements field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.max-length
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.password_requirements.max_length field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.min-digits
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.password_requirements.min_digits field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.min-length
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.password_requirements.min_length field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.min-special
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.password_requirements.min_special field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.min-uppercase
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.password_requirements.min_uppercase field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-rights
+    type: bool
+    usage: select the configuration.default_cluster.is.user_rights field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-rights.create-applications
+    type: bool
+    usage: select the configuration.default_cluster.is.user_rights.create_applications field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-rights.create-clients
+    type: bool
+    usage: select the configuration.default_cluster.is.user_rights.create_clients field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-rights.create-gateways
+    type: bool
+    usage: select the configuration.default_cluster.is.user_rights.create_gateways field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-rights.create-organizations
+    type: bool
+    usage: select the configuration.default_cluster.is.user_rights.create_organizations field
+    default_value: "false"
+  - name: configuration.default-cluster.ns
+    type: bool
+    usage: select the configuration.default_cluster.ns field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.ns.cooldown-window
+    type: bool
+    usage: select the configuration.default_cluster.ns.cooldown_window field
+    default_value: "false"
+  - name: configuration.default-cluster.ns.deduplication-window
+    type: bool
+    usage: select the configuration.default_cluster.ns.deduplication_window field
+    default_value: "false"
+  - name: configuration.default-cluster.ns.dev-addr-prefixes
+    type: bool
+    usage: select the configuration.default_cluster.ns.dev_addr_prefixes field
+    default_value: "false"
+  - name: configuration.default-cluster.ui
+    type: bool
+    usage: select the configuration.default_cluster.ui field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.ui.branding-base-url
+    type: bool
+    usage: select the configuration.default_cluster.ui.branding_base_url field
+    default_value: "false"
+  - name: contact-info
+    type: bool
+    usage: select the contact_info field
+    default_value: "false"
+  - name: description
+    type: bool
+    usage: select the description field
+    default_value: "false"
+  - name: max-applications
+    type: bool
+    usage: select the max_applications field
+    default_value: "false"
+  - name: max-clients
+    type: bool
+    usage: select the max_clients field
+    default_value: "false"
+  - name: max-end-devices
+    type: bool
+    usage: select the max_end_devices field
+    default_value: "false"
+  - name: max-gateways
+    type: bool
+    usage: select the max_gateways field
+    default_value: "false"
+  - name: max-organizations
+    type: bool
+    usage: select the max_organizations field
+    default_value: "false"
+  - name: max-users
+    type: bool
+    usage: select the max_users field
+    default_value: "false"
+  - name: name
+    type: bool
+    usage: select the name field
+    default_value: "false"
+  - name: state
+    type: bool
+    usage: select the state field
+    default_value: "false"
+  - name: tenant-id
+    type: string
+ttn-lw-cli tenants get-identifiers-for-end-device-euis:
+  path: ttn-lw-cli tenants get-identifiers-for-end-device-euis
+  parent_path: ttn-lw-cli tenants
+  name: get-identifiers-for-end-device-euis
+  short: Get tenant identifiers for Device EUIs
+  command_flags:
+  - name: dev-eui
+    type: string
+    usage: (hex)
+  - name: join-eui
+    type: string
+    usage: (hex)
+ttn-lw-cli tenants get-identifiers-for-gateway-eui:
+  path: ttn-lw-cli tenants get-identifiers-for-gateway-eui
+  parent_path: ttn-lw-cli tenants
+  name: get-identifiers-for-gateway-eui
+  short: Get tenant identifiers for a Gateway EUI
+  command_flags:
+  - name: gateway-eui
+    type: string
+    usage: (hex)
+ttn-lw-cli tenants get-registry-totals:
+  path: ttn-lw-cli tenants get-registry-totals
+  parent_path: ttn-lw-cli tenants
+  name: get-registry-totals
+  use: '[tenant-id]'
+  aliases:
+  - totals
+  short: Get registry totals of a tenant
+  command_flags:
+  - name: applications
+    type: bool
+    usage: select the applications field
+    default_value: "false"
+  - name: clients
+    type: bool
+    usage: select the clients field
+    default_value: "false"
+  - name: end-devices
+    type: bool
+    usage: select the end_devices field
+    default_value: "false"
+  - name: gateways
+    type: bool
+    usage: select the gateways field
+    default_value: "false"
+  - name: organizations
+    type: bool
+    usage: select the organizations field
+    default_value: "false"
+  - name: tenant-id
+    type: string
+  - name: users
+    type: bool
+    usage: select the users field
+    default_value: "false"
+ttn-lw-cli tenants list:
+  path: ttn-lw-cli tenants list
+  parent_path: ttn-lw-cli tenants
+  name: list
+  aliases:
+  - ls
+  short: List tenants
+  command_flags:
+  - name: attributes
+    type: bool
+    usage: select the attributes field
+    default_value: "false"
+  - name: billing
+    type: bool
+    usage: select the billing field and all allowed sub-fields
+    default_value: "false"
+  - name: billing-identifiers
+    type: bool
+    usage: select the billing_identifiers field and all allowed sub-fields
+    default_value: "false"
+  - name: billing-identifiers.billing-id
+    type: bool
+    usage: select the billing_identifiers.billing_id field
+    default_value: "false"
+  - name: billing.provider.aws-saas-marketplace
+    type: bool
+    usage: select the billing.provider.aws_saas_marketplace field and all allowed sub-fields
+    default_value: "false"
+  - name: billing.provider.aws-saas-marketplace.customer-identifier
+    type: bool
+    usage: select the billing.provider.aws_saas_marketplace.customer_identifier field
+    default_value: "false"
+  - name: billing.provider.aws-saas-marketplace.product-code
+    type: bool
+    usage: select the billing.provider.aws_saas_marketplace.product_code field
+    default_value: "false"
+  - name: billing.provider.stripe
+    type: bool
+    usage: select the billing.provider.stripe field and all allowed sub-fields
+    default_value: "false"
+  - name: billing.provider.stripe.customer-id
+    type: bool
+    usage: select the billing.provider.stripe.customer_id field
+    default_value: "false"
+  - name: billing.provider.stripe.plan-id
+    type: bool
+    usage: select the billing.provider.stripe.plan_id field
+    default_value: "false"
+  - name: billing.provider.stripe.subscription-id
+    type: bool
+    usage: select the billing.provider.stripe.subscription_id field
+    default_value: "false"
+  - name: billing.provider.stripe.subscription-item-id
+    type: bool
+    usage: select the billing.provider.stripe.subscription_item_id field
+    default_value: "false"
+  - name: capabilities
+    type: bool
+    usage: select the capabilities field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration
+    type: bool
+    usage: select the configuration field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster
+    type: bool
+    usage: select the configuration.default_cluster field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is
+    type: bool
+    usage: select the configuration.default_cluster.is field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.admin-rights
+    type: bool
+    usage: select the configuration.default_cluster.is.admin_rights field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.admin-rights.all
+    type: bool
+    usage: select the configuration.default_cluster.is.admin_rights.all field
+    default_value: "false"
+  - name: configuration.default-cluster.is.end-device-picture
+    type: bool
+    usage: select the configuration.default_cluster.is.end_device_picture field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.end-device-picture.disable-upload
+    type: bool
+    usage: select the configuration.default_cluster.is.end_device_picture.disable_upload field
+    default_value: "false"
+  - name: configuration.default-cluster.is.profile-picture
+    type: bool
+    usage: select the configuration.default_cluster.is.profile_picture field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.profile-picture.disable-upload
+    type: bool
+    usage: select the configuration.default_cluster.is.profile_picture.disable_upload field
+    default_value: "false"
+  - name: configuration.default-cluster.is.profile-picture.use-gravatar
+    type: bool
+    usage: select the configuration.default_cluster.is.profile_picture.use_gravatar field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.admin-approval
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.admin_approval field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.admin-approval.required
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.admin_approval.required field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.contact-info-validation
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.contact_info_validation field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.contact-info-validation.required
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.contact_info_validation.required field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.enabled
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.enabled field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.invitation
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.invitation field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.invitation.required
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.invitation.required field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.invitation.token-ttl
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.invitation.token_ttl field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.password-requirements
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.password_requirements field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.max-length
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.password_requirements.max_length field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.min-digits
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.password_requirements.min_digits field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.min-length
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.password_requirements.min_length field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.min-special
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.password_requirements.min_special field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.min-uppercase
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.password_requirements.min_uppercase field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-rights
+    type: bool
+    usage: select the configuration.default_cluster.is.user_rights field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-rights.create-applications
+    type: bool
+    usage: select the configuration.default_cluster.is.user_rights.create_applications field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-rights.create-clients
+    type: bool
+    usage: select the configuration.default_cluster.is.user_rights.create_clients field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-rights.create-gateways
+    type: bool
+    usage: select the configuration.default_cluster.is.user_rights.create_gateways field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-rights.create-organizations
+    type: bool
+    usage: select the configuration.default_cluster.is.user_rights.create_organizations field
+    default_value: "false"
+  - name: configuration.default-cluster.ns
+    type: bool
+    usage: select the configuration.default_cluster.ns field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.ns.cooldown-window
+    type: bool
+    usage: select the configuration.default_cluster.ns.cooldown_window field
+    default_value: "false"
+  - name: configuration.default-cluster.ns.deduplication-window
+    type: bool
+    usage: select the configuration.default_cluster.ns.deduplication_window field
+    default_value: "false"
+  - name: configuration.default-cluster.ns.dev-addr-prefixes
+    type: bool
+    usage: select the configuration.default_cluster.ns.dev_addr_prefixes field
+    default_value: "false"
+  - name: configuration.default-cluster.ui
+    type: bool
+    usage: select the configuration.default_cluster.ui field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.ui.branding-base-url
+    type: bool
+    usage: select the configuration.default_cluster.ui.branding_base_url field
+    default_value: "false"
+  - name: contact-info
+    type: bool
+    usage: select the contact_info field
+    default_value: "false"
+  - name: description
+    type: bool
+    usage: select the description field
+    default_value: "false"
+  - name: limit
+    type: uint32
+    usage: maximum number of results to get
+    default_value: "50"
+  - name: max-applications
+    type: bool
+    usage: select the max_applications field
+    default_value: "false"
+  - name: max-clients
+    type: bool
+    usage: select the max_clients field
+    default_value: "false"
+  - name: max-end-devices
+    type: bool
+    usage: select the max_end_devices field
+    default_value: "false"
+  - name: max-gateways
+    type: bool
+    usage: select the max_gateways field
+    default_value: "false"
+  - name: max-organizations
+    type: bool
+    usage: select the max_organizations field
+    default_value: "false"
+  - name: max-users
+    type: bool
+    usage: select the max_users field
+    default_value: "false"
+  - name: name
+    type: bool
+    usage: select the name field
+    default_value: "false"
+  - name: order
+    type: string
+    usage: order by this field
+  - name: page
+    type: uint32
+    usage: results page number
+    default_value: "1"
+  - name: state
+    type: bool
+    usage: select the state field
+    default_value: "false"
+ttn-lw-cli tenants update:
+  path: ttn-lw-cli tenants update
+  parent_path: ttn-lw-cli tenants
+  name: update
+  use: '[tenant-id]'
+  aliases:
+  - set
+  short: Update a tenant
+  command_flags:
+  - name: attributes
+    type: stringSlice
+    usage: key=value
+    default_value: '[]'
+  - name: billing-identifiers.billing-id
+    type: string
+  - name: billing.provider.aws-saas-marketplace.customer-identifier
+    type: string
+  - name: billing.provider.aws-saas-marketplace.product-code
+    type: string
+  - name: billing.provider.stripe
+    type: bool
+    usage: use the Stripe billing provider
+    default_value: "false"
+  - name: billing.provider.stripe.customer-id
+    type: string
+  - name: billing.provider.stripe.plan-id
+    type: string
+  - name: billing.provider.stripe.subscription-id
+    type: string
+  - name: billing.provider.stripe.subscription-item-id
+    type: string
+  - name: configuration.default-cluster.is.admin-rights.all
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.is.end-device-picture.disable-upload
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.is.profile-picture.disable-upload
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.is.profile-picture.use-gravatar
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.admin-approval.required
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.contact-info-validation.required
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.enabled
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.invitation.required
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.invitation.token-ttl
+    type: duration
+    usage: (1h2m3s)
+    default_value: 0s
+  - name: configuration.default-cluster.is.user-registration.password-requirements.max-length
+    type: uint32
+    default_value: "0"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.min-digits
+    type: uint32
+    default_value: "0"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.min-length
+    type: uint32
+    default_value: "0"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.min-special
+    type: uint32
+    default_value: "0"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.min-uppercase
+    type: uint32
+    default_value: "0"
+  - name: configuration.default-cluster.is.user-rights.create-applications
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-rights.create-clients
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-rights.create-gateways
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-rights.create-organizations
+    type: bool
+    default_value: "false"
+  - name: configuration.default-cluster.ns.cooldown-window
+    type: duration
+    usage: (1h2m3s)
+    default_value: 0s
+  - name: configuration.default-cluster.ns.deduplication-window
+    type: duration
+    usage: (1h2m3s)
+    default_value: 0s
+  - name: configuration.default-cluster.ns.dev-addr-prefixes
+    type: stringSlice
+    default_value: '[]'
+  - name: configuration.default-cluster.ui.branding-base-url
+    type: string
+  - name: description
+    type: string
+  - name: max-applications
+    type: uint64
+    default_value: "0"
+  - name: max-clients
+    type: uint64
+    default_value: "0"
+  - name: max-end-devices
+    type: uint64
+    default_value: "0"
+  - name: max-gateways
+    type: uint64
+    default_value: "0"
+  - name: max-organizations
+    type: uint64
+    default_value: "0"
+  - name: max-users
+    type: uint64
+    default_value: "0"
+  - name: name
+    type: string
+  - name: state
+    type: string
+    usage: 'allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED'
+  - name: tenant-id
+    type: string
+  - name: unset
+    type: stringSlice
+    usage: list of fields to unset
+    default_value: '[]'
 ttn-lw-cli use:
   path: ttn-lw-cli use
   parent_path: ttn-lw-cli
