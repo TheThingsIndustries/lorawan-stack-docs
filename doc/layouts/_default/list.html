@@ -1,0 +1,30 @@
+{{ define "main" }}
+{{ if eq .Page.File.Ext "html" }}
+{{ .Content }}
+{{ else }}
+<div class="docs-content">
+<h1 class="title is-size-2">{{ .Title }}
+  {{ $context := . }}
+  {{ with .Params.distributions }}
+    {{ $distributions := .}}
+    {{ partial "distributions" (dict "context" $context "distributions" $distributions) }}
+  {{ end }}
+  {{ with .Params.new_in_version }}
+    {{ partial "new-in-version" . }}
+  {{ end }}
+  {{ with .Params.deprecated_in_version }}
+    {{ partial "deprecated-in-version" .}}
+  {{ end }}
+</h1>
+
+<div class="content">
+  {{ .Content }}
+</div>
+{{ if and .Pages (not (eq .Parent .FirstSection)) }}
+{{ partial "pages-cards.html" .Pages }}
+{{ end }}
+{{ partial "prev-next-in-section" . }}
+{{ partial "feedback" . }}
+</div>
+{{ end }}
+{{ end }}

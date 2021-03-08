@@ -26,4 +26,3 @@ After entering the CUPS configuration, click the **Submit** button, and then cli
 {{< figure src="../lbs-save.png" alt="LoRa Basics Station" >}}
 
 If your configuration was successful, your gateway will connect to {{% tts %}} after a couple of seconds.
-

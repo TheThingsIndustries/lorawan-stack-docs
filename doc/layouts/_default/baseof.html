@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+{{ partial "head/head.html" . }}
+
+{{- $hasSidebar := not (eq .Page.File.Ext "html") -}}
+
+<body>
+
+{{- partial "header/nav.html" . -}}
+{{- partial "header/search.html" . -}}
+
+{{ if $hasSidebar }}
+<div class="container" role="document">
+  <div class="columns my-0 is-desktop">
+      <div class="column is-3-desktop is-2-widescreen sidebar-left">
+        {{ partial "sidebar/side-navigation.html" . }}
+      </div>
+      <div class="column is-9-desktop is-8-widescreen sidebar-middle">
+        {{- block "main" . }}{{- end }}
+      </div>
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        {{ partial "sidebar/toc.html" . }}
+      </div>
+  </div>
+</div>
+{{ else }}
+<div class="container" role="document">
+  <div class="columns my-0 is-desktop">
+    <div class="column">
+      {{- block "main" . }}{{- end }}
+    </div>
+  </div>
+</div>
+{{ end }}
+
+{{ partial "footer/footer.html" . }}
+
+</body>
+
+</html>

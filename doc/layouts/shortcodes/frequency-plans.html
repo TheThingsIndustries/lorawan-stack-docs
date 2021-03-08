@@ -1,0 +1,24 @@
+{{- range index .Site.Data "frequency-plans" }}
+<div class="has-vertical-space">
+  <h3 id="{{.id | urlize}}">{{- .name -}}</h3>
+  <table class="fixed">
+    <thead>
+      <col width="10px" />
+      <col width="10px" />
+      <col width="20px" />
+      <tr>
+        <th>ID</th>
+        <th>Base Frequency</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>{{ index . "id" }}</code></td>
+        <td><code>{{ index . "base-frequency" }}</code></td>
+        <td> {{ .description | markdownify }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{{- end }}

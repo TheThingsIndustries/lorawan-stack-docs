@@ -1,0 +1,12 @@
+{{ $distributions_sliced := .distributions }}
+{{ if ( not ( reflect.IsSlice $distributions_sliced ) ) }}
+  {{ $distributions_sliced = slice $distributions_sliced }}
+{{ end }}
+{{ $distributions :=  sort $distributions_sliced }}
+{{ $distributions_all := index site.Data "distributions" }}
+{{ range $distributions }}
+  {{ if not (isset $distributions_all .) }}
+    {{ errorf "distribution '%s' not in '%s'" . (delimit $distributions_all ", ") }}
+  {{ end }}
+{{ end }}
+{{ partial "distribution-icons" $distributions}}
