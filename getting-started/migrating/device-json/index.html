@@ -132,7 +132,8 @@ debug: false
 
 </h1>
 <div class="content">
-<p>The Things Stack allows you to import devices from other networks using a JSON file describing those devices. Devices imported this way can be migrated without the need for a rejoin.</p>
+<p>The Things Stack allows you to import devices from other networks using a JSON file describing those devices.</p>
+<p>Devices imported this way can be migrated without the need for a rejoin, although The Things Stack does not yet support this, but will support it in an upcoming release.</p>
 <p>Create a <code>devices.json</code> file containing a device object, like so:</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -327,6 +328,8 @@ debug: false
 }
 </code></pre>
 </div>
+<h2 id="migrating-devices-with-existing-sessions">Migrating Devices with Existing Sessions</h2>
+<p>Migrating devices with existing sessions is not currently supported in The Things Stack, but it will be supported in an upcoming release.</p>
 <h2 id="examples">Examples</h2>
 <h3 id="example-otaa-device">Example OTAA Device:</h3>
 <summary><details>
@@ -349,52 +352,6 @@ debug: false
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></details></summary>
-<h3 id="example-otaa-device-with-existing-session">Example OTAA device with existing session:</h3>
-<summary>
-<details>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;device-2&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0102030405060708&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0102030405060708&#34;</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;My Device&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Migrated with existing session from The Things Network&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;lorawan_version&#34;</span><span class="p">:</span><span class="s2">&#34;MAC_V1_0_2&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;lorawan_phy_version&#34;</span><span class="p">:</span><span class="s2">&#34;PHY_V1_0_2_REV_B&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;frequency_plan_id&#34;</span><span class="p">:</span><span class="s2">&#34;EU_863_870_TTN&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;supports_join&#34;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
-  <span class="nt">&#34;root_keys&#34;</span><span class="p">:{</span>
-    <span class="nt">&#34;app_key&#34;</span><span class="p">:{</span>
-      <span class="nt">&#34;key&#34;</span><span class="p">:</span><span class="s2">&#34;01020304050607080102030405060708&#34;</span>
-    <span class="p">}</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;mac_settings&#34;</span><span class="p">:{</span>
-    <span class="nt">&#34;rx1_delay&#34;</span><span class="p">:{</span>
-      <span class="nt">&#34;value&#34;</span><span class="p">:</span><span class="s2">&#34;RX_DELAY_5&#34;</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;supports_32_bit_f_cnt&#34;</span><span class="p">:</span> <span class="kc">true</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;session&#34;</span><span class="p">:{</span>
-    <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span><span class="s2">&#34;01020304&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;keys&#34;</span><span class="p">:{</span>
-      <span class="nt">&#34;app_s_key&#34;</span><span class="p">:{</span>
-        <span class="nt">&#34;key&#34;</span><span class="p">:</span><span class="s2">&#34;01020304050607080102030405060708&#34;</span>
-      <span class="p">},</span>
-      <span class="nt">&#34;f_nwk_s_int_key&#34;</span><span class="p">:{</span>
-        <span class="nt">&#34;key&#34;</span><span class="p">:</span><span class="s2">&#34;01020304050607080102030405060708&#34;</span>
-      <span class="p">}</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;last_f_cnt_up&#34;</span><span class="p">:</span> <span class="mi">32</span><span class="p">,</span>
-    <span class="nt">&#34;last_n_f_cnt_down&#34;</span><span class="p">:</span> <span class="mi">10</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></details></summary>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  For more information on configuring MAC settings, see <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/configure-mac-settings/">Fine-tuning MAC Settings</a>.
-</div>
-<br>
 
 </div>
 
@@ -443,10 +400,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by i3mSuperMan on 03 Feb 2021.
+  Last changed by Ben Olayinka on 04 Mar 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/c44258cea912969a42a883057a33312188d0af1a">
-      doc: Updated migration docs
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/82181d94d19dcd600747092f4a7635c053d4c381">
+      doc: Add note that session migration is not supported
     </a>
 </p>
 
