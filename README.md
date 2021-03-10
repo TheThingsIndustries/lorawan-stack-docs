@@ -28,6 +28,10 @@ $ make init
 You can start a development server with live reloading by running
 `make` or `make server`. This command will print the address of the server.
 
+## Configuration
+
+Hugo accepts configuration parameters specified in [config](doc/config), most notably for baseURL, search, and feedback widget. Parameters can be specified as environment variables, e.g `params.search.enabled` becomes `HUGO_PARAMS_SEARCH_ENABLED`.
+
 ## Building the Documentation for Github Pages
 
 The documentation site can be built for Github Pages by running `make build.public`. This will
@@ -45,3 +49,7 @@ Please see the style, branch naming, and commit guidelines in [CONTRIBUTING](CON
 ## Creating New Documentation
 
 Run `make new <path>` to create a new documentation section from the [template](doc/archetypes/section-bundle/_index.md) at `path`. For example, `make new getting-started/hello` will create a section in `getting-started/hello`.
+
+## Releasing
+
+See the [Release template](.github/ISSUE_TEMPLATE/release.md)

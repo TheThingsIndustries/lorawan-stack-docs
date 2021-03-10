@@ -40,7 +40,7 @@ implementation proposal in the referenced issues.
 <!-- Make sure that this pull request is complete. -->
 
 - [ ] Scope: The referenced issue is addressed, there are no unrelated changes.
-- [ ] Run Locally: Verified that the docs build using `make server`, posted screenshots, verified external links.
+- [ ] Run Locally: Verified that the docs build using `make server`, posted screenshots, verified external links. Test with `HUGO_PARAMS_SEARCH_ENABLED=true` if style changes will affect the search bar.
 - [ ] New Features Marked: Documentation for new features is marked using the `new-in-version` shortcode, according to the guidelines in [CONTRIBUTING](CONTRIBUTING.md).
 - [ ] Style Guidelines: Documentation obeys style guidelines in [CONTRIBUTING](CONTRIBUTING.md).
 - [ ] Commits: Commit messages follow guidelines in [CONTRIBUTING](CONTRIBUTING.md), there are no fixup commits left.
