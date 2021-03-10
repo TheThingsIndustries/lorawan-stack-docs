@@ -39,6 +39,13 @@ For the Gateway Server:
 - `ttn_lw_gs_uplink_forwarded_total` indicates the number of uplink messages forwarded to the Network Server or Packet Broker.
 - `ttn_lw_gs_uplink_dropped_total` indicates the number of uplink messages that are dropped for various reasons.
 
+For the Packet Broker Agent: {{< new-in-version "3.11.2" >}}
+
+- `ttn_lw_pba_uplink_received_total` indicates the number of uplink messages received from Packet Broker (as a home network).
+- `ttn_lw_pba_downlink_forwarded_total` indicates the number of downlink messages sent to Packet Broker (as a home network).
+- `ttn_lw_pba_downlink_received_total` indicates the number of downlink messages received from Packet Broker (as a forwarder).
+- `ttn_lw_pba_uplink_forwarded_total` indicates the number of uplink messages sent to Packet Broker (as a forwarder).
+
 For the Network Server:
 
 - `ttn_lw_ns_uplink_received_total` indicates the number of uplink messages received from the Gateway Server or Packet Broker.

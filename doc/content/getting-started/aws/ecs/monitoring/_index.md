@@ -60,6 +60,13 @@ For the Gateway Server:
 
 For some of these metrics, there are also variants with `:avg` and `:stddev` suffixes that can be used for anomaly detection, and are therefore also used in alerting rules.
 
+For the Packet Broker Agent: {{< new-in-version "3.11.2" >}}
+
+- `ttn_lw_pba_uplink_received_rate` record the rate of uplink messages received from Packet Broker (as a home network).
+- `ttn_lw_pba_downlink_forwarded_rate` record the rate of downlink messages sent to Packet Broker (as a home network).
+- `ttn_lw_pba_downlink_received_rate` record the rate of downlink messages received from Packet Broker (as a forwarder).
+- `ttn_lw_pba_uplink_forwarded_rate` record the rate of uplink messages sent to Packet Broker (as a forwarder).
+
 For the Network Server:
 
 - `ttn_lw_ns_uplink_received_rate` and `ttn_lw_ns_uplink_received_rate:by_tenant_id` record the rate of uplink messages received from the Gateway Server or Packet Broker.
