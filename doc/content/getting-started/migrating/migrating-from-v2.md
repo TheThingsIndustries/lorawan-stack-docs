@@ -25,7 +25,7 @@ When migrating devices from the public {{< ttnv2 >}} to {{< tts >}} Cloud, you m
 
 When migrating from a private {{% ttnv2 %}}, devices that are outside of the DevAddr address block supported by {{% tts %}} Cloud will have to rejoin the network, otherwise {{% tts %}} will be unable to route their uplink and downlink traffic.
 
-{{< warning >}} Migrating device sessions will not work on {{% tts %}} v3.10 or older versions. {{</ warning >}}
+{{< warning >}} Migrating device sessions is currently not possible, and is in the pipeline. It will be available in future releases.{{</ warning >}}
 
 ## Pre-requisites
 
