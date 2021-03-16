@@ -5,49 +5,80 @@ weight: 1
 distributions: ["Enterprise", "Cloud"]
 --- 
 
-{{< cli-only >}}
-
-This guide explains the process of making a device claimable.
+This guide explains the process of making a device claimable. When a device is claimable, someone else can claim the device in a secure manner.
 
 <!--more-->
 
 ## Prerequisites
 
-1. Access to The Things Industries Cloud. [Contact The Things Industries](mailto:cloud@thethingsindustries.com) to get onboarded
-2. An application in The Things Industries Cloud. [See instructions]({{< ref "/integrations/adding-applications" >}})
-
-## Register Devices
-
-In order to be claimable, the device needs to be registered on The Things Join Server. This can be done in multiple ways.
-
-### Registered on The Things Join Server Only
-
-1. With root keys and claim authentication code
-- Follow the [Register Devices]({{< ref "/getting-started/cloud-hosted/tti-join-server/register-devices" >}}) guide.
-
-2. With secure element claiming
-- Follow the [Claim ATECC608A Secure Elements]({{< ref "/devices/claim-atecc608a" >}}) guide.
-
-### Registered on The Things Join Server and Configured in a Cloud Cluster
-
-1. With root keys and claim authentication code
-- Follow the [Activating Devices on Cloud]({{< ref "/getting-started/cloud-hosted/tti-join-server/activate-devices-cloud-hosted" >}}) guide.
-
-2. With secure element claiming
-- Follow the [Claim ATECC608A Secure Elements]({{< ref "/devices/claim-atecc608a" >}}) and [Activating Devices on Cloud]({{< ref "/getting-started/cloud-hosted/tti-join-server/activate-devices-cloud-hosted" >}}) guides.
-
-## Generate QR code for claiming
-
-After registering your devices, you need to generate QR codes for claiming.
-
-Learn how to [Generate QR Codes]({{< ref "/devices/generate-qr-code#generate-qr-code-for-claiming" >}})
+1. An application in The Things Stack Cloud. [See instructions]({{< ref "/integrations/adding-applications" >}})
 
 ## Authorize Claiming
-  
+
+In order for anyone to claim devices that are registered in your application, you need to authorize claiming. This is needed for {{% tts %}} to move the device out of your application. This needs to be done once, per application.
+
+{{< cli-only >}}
+
 Replace `<app-id>` with the **Application ID** of the application that you created in prerequisites, and run the following command in the CLI:
 
-```
+```bash
 $ ttn-lw-cli applications claim authorize <app-id>
 ```
 
-The device is now ready to be claimed. You can test it by creating a second application and claiming a device there.
+To undo the action:
+
+```bash
+$ ttn-lw-cli application claim unauthorize <app-id>
+```
+
+## Register Device
+
+In order to make a device claimable, the device needs to be added first in the application that has been authorized for claiming.
+
+If you already have devices in your application can be claimed, i.e. to transfer ownership, you can go ahead to the next section.
+
+If you don't have a devices in the application yet, you can use the following ways to add a device:
+
+1. [Add a device]({{< relref "../adding-devices/" >}}) in {{% tts %}}
+2. [Register a device]({{< ref "/getting-started/cloud-hosted/tti-join-server/register-devices" >}}) on The Things Join Server (i.e. not in a Network Server or Application Server yet)
+3. [Import ATECC608A Secure Elements]({{< relref "../claim-atecc608a" >}}) on The Things Join Server. Be sure to check **Set claim authentication code**
+
+## Claiming Settings
+
+When your device is added in {{% tts %}}, you can go ahead and configure claiming settings. This is comprised of a claim authentication code and a validity window. The claim authentication code is a secret value. The validity window is an optional start and end date that the claim authentication code can be used.
+
+{{< tabs/container "Console" "CLI" >}}
+
+{{< tabs/tab "Console" >}}
+
+Go to your application in {{% tts %}} Console. Go to **End devices** in the left menu and find the device you want to configure for claiming.
+
+In the **Claiming** tab, you find the claiming settings:
+
+{{< figure src="../claiming-settings.png" alt="Claiming settings" >}}
+
+You can edit the claim authentication code and validity window here. To save, click **Save changes**.
+
+To disallow claiming, click **Delete claim authentication code**.
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "CLI" >}}
+
+To configure the claiming using the command-line interface:
+
+```bash
+$ ttn-lw-cli end-device <app-id> <device-id> --claim-authentication-code.value ABCD \
+  --claim-authentication-code.valid-from 2021-03-01T00:00:00Z \
+  --claim-authentication-code.valid-from 2021-03-31T23:59:59Z
+```
+
+This sets the secret claim authentication code to `ABCD`, that can be used in March 2021.
+
+{{< /tabs/tab >}}
+
+## Generate QR Code for Claiming
+
+You can use QR codes to make claiming really easy. The QR code includes the unique identifiers of the device as well as the secret claim authentication code.
+
+Learn how to [Generate QR Codes]({{< relref "../generate-qr-code#generate-qr-code-for-claiming" >}})
