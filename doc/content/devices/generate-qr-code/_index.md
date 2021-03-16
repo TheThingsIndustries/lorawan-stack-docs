@@ -60,9 +60,9 @@ This saves the QR code to the current directory with the device ID as file name,
 
 ## Generate QR Code for Claiming
 
-Device claiming is a mechanism to transfer devices securely from one application to another. For example, from a device maker to a device owner, or transferring ownership to new device owner. [Learn how to make a device claimable]({{< relref "../device-claiming/make-device-claimable" >}}).
+Device claiming is a mechanism to transfer devices securely from one application to another. For example, from a device maker to a device owner, or transferring ownership to new device owner. Learn how to [make a device claimable]({{< relref "../device-claiming/make-device-claimable" >}}).
 
-When a device is claimable (it contains a claim authentication code), you can use the same command to generate a QR code:
+When a device is claimable (it contains a claim authentication code), you can use the same command as above to generate a QR code:
 
 ```bash
 $ ttn-lw-cli end-devices generate-qr app1 dev1 --format-id tr005
