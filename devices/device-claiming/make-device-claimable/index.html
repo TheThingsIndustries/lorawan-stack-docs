@@ -191,7 +191,14 @@ debug: false
 </h1>
 
 <div class="content">
-  <div class="notification is-primary is-light has-text-dark">
+  <p>This guide explains the process of making a device claimable. When a device is claimable, someone else can claim the device in a secure manner.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ol>
+<li>An application in The Things Stack Cloud. <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/">See instructions</a></li>
+</ol>
+<h2 id="authorize-claiming">Authorize Claiming</h2>
+<p>In order for anyone to claim devices that are registered in your application, you need to authorize claiming. This is needed for The Things Stack to move the device out of your application. This needs to be done once, per application.</p>
+<div class="notification is-primary is-light has-text-dark">
   <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
   <p>The instructions below use the command-line interface (CLI).</p>
   <div class="buttons">
@@ -199,47 +206,61 @@ debug: false
   </div>
 </div>
 
-<p>This guide explains the process of making a device claimable.</p>
-<h2 id="prerequisites">Prerequisites</h2>
-<ol>
-<li>Access to The Things Industries Cloud. <a href="mailto:cloud@thethingsindustries.com">Contact The Things Industries</a> to get onboarded</li>
-<li>An application in The Things Industries Cloud. <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/">See instructions</a></li>
-</ol>
-<h2 id="register-devices">Register Devices</h2>
-<p>In order to be claimable, the device needs to be registered on The Things Join Server. This can be done in multiple ways.</p>
-<h3 id="registered-on-the-things-join-server-only">Registered on The Things Join Server Only</h3>
-<ol>
-<li>With root keys and claim authentication code</li>
-</ol>
-<ul>
-<li>Follow the <a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/tti-join-server/register-devices/">Register Devices</a> guide.</li>
-</ul>
-<ol start="2">
-<li>With secure element claiming</li>
-</ol>
-<ul>
-<li>Follow the <a href="https://www.thethingsindustries.com/docs/devices/claim-atecc608a/">Claim ATECC608A Secure Elements</a> guide.</li>
-</ul>
-<h3 id="registered-on-the-things-join-server-and-configured-in-a-cloud-cluster">Registered on The Things Join Server and Configured in a Cloud Cluster</h3>
-<ol>
-<li>With root keys and claim authentication code</li>
-</ol>
-<ul>
-<li>Follow the <a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/tti-join-server/activate-devices-cloud-hosted/">Activating Devices on Cloud</a> guide.</li>
-</ul>
-<ol start="2">
-<li>With secure element claiming</li>
-</ol>
-<ul>
-<li>Follow the <a href="https://www.thethingsindustries.com/docs/devices/claim-atecc608a/">Claim ATECC608A Secure Elements</a> and <a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/tti-join-server/activate-devices-cloud-hosted/">Activating Devices on Cloud</a> guides.</li>
-</ul>
-<h2 id="generate-qr-code-for-claiming">Generate QR code for claiming</h2>
-<p>After registering your devices, you need to generate QR codes for claiming.</p>
-<p>Learn how to <a href="https://www.thethingsindustries.com/docs/devices/generate-qr-code/#generate-qr-code-for-claiming">Generate QR Codes</a></p>
-<h2 id="authorize-claiming">Authorize Claiming</h2>
 <p>Replace <code>&lt;app-id&gt;</code> with the <strong>Application ID</strong> of the application that you created in prerequisites, and run the following command in the CLI:</p>
-<pre><code>$ ttn-lw-cli applications claim authorize &lt;app-id&gt;
-</code></pre><p>The device is now ready to be claimed. You can test it by creating a second application and claiming a device there.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications claim authorize &lt;app-id&gt;
+</code></pre></div><p>To undo the action:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli application claim unauthorize &lt;app-id&gt;
+</code></pre></div><h2 id="register-device">Register Device</h2>
+<p>In order to make a device claimable, the device needs to be added first in the application that has been authorized for claiming.</p>
+<p>If you already have devices in your application can be claimed, i.e. to transfer ownership, you can go ahead to the next section.</p>
+<p>If you don&rsquo;t have a devices in the application yet, you can use the following ways to add a device:</p>
+<ol>
+<li><a href="/docs/devices/adding-devices/">Add a device</a> in The Things Stack</li>
+<li><a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/tti-join-server/register-devices/">Register a device</a> on The Things Join Server (i.e. not in a Network Server or Application Server yet)</li>
+<li><a href="/docs/devices/claim-atecc608a/">Import ATECC608A Secure Elements</a> on The Things Join Server. Be sure to check <strong>Set claim authentication code</strong></li>
+</ol>
+<h2 id="claiming-settings">Claiming Settings</h2>
+<p>When your device is added in The Things Stack, you can go ahead and configure claiming settings. This is comprised of a claim authentication code and a validity window. The claim authentication code is a secret value. The validity window is an optional start and end date that the claim authentication code can be used.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="console">
+      <a>
+        <span>Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="cli">
+      <a>
+        <span>CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="console">
+  <p>Go to your application in The Things Stack Console. Go to <strong>End devices</strong> in the left menu and find the device you want to configure for claiming.</p>
+<p>In the <strong>Claiming</strong> tab, you find the claiming settings:</p>
+<figure>
+    <img src="../claiming-settings.png"
+         alt="Claiming settings"/> 
+</figure>
+<p>You can edit the claim authentication code and validity window here. To save, click <strong>Save changes</strong>.</p>
+<p>To disallow claiming, click <strong>Delete claim authentication code</strong>.</p>
+</section>
+<section data-content="cli">
+  <p>To configure the claiming using the command-line interface:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-device &lt;app-id&gt; &lt;device-id&gt; --claim-authentication-code.value ABCD <span class="se">\
+</span><span class="se"></span>  --claim-authentication-code.valid-from 2021-03-01T00:00:00Z <span class="se">\
+</span><span class="se"></span>  --claim-authentication-code.valid-from 2021-03-31T23:59:59Z
+</code></pre></div><p>This sets the secret claim authentication code to <code>ABCD</code>, that can be used in March 2021.</p>
+</section>
+<h2 id="generate-qr-code-for-claiming">Generate QR Code for Claiming</h2>
+<p>You can use QR codes to make claiming really easy. The QR code includes the unique identifiers of the device as well as the secret claim authentication code.</p>
+<p>Learn how to <a href="/docs/devices/generate-qr-code/#generate-qr-code-for-claiming">Generate QR Codes</a></p>
+
+</div>
 </div>
 <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/devices/device-claiming/">← Device Claiming</a>
@@ -266,11 +287,13 @@ debug: false
     
       <li><a href='#prerequisites'>Prerequisites</a></li>
     
-      <li><a href='#register-devices'>Register Devices</a></li>
-    
-      <li><a href='#generate-qr-code-for-claiming'>Generate QR code for claiming</a></li>
-    
       <li><a href='#authorize-claiming'>Authorize Claiming</a></li>
+    
+      <li><a href='#register-device'>Register Device</a></li>
+    
+      <li><a href='#claiming-settings'>Claiming Settings</a></li>
+    
+      <li><a href='#generate-qr-code-for-claiming'>Generate QR Code for Claiming</a></li>
     
   </ul>
 
@@ -308,10 +331,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 09 Dec 2020.
+  Last changed by Johan Stokking on 16 Mar 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/ec2b7177114ddfb058412e4cb096dcdceaa1e5a9">
-      doc: Rename Global Join Server to The Things Join Server
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/ebe2abad6cb037fd5e06eb979ee87d8a380e40c8">
+      doc: Clarify making a device claimable
     </a>
 </p>
 

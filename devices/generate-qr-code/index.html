@@ -171,8 +171,8 @@ debug: false
 </code></pre></div><details><summary>Output</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;formats&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;tr005draft3&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;LoRa Alliance TR005 Draft 3&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;tr005&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;LoRa Alliance TR005&#34;</span><span class="p">,</span>
       <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Standard QR code format defined by LoRa Alliance.&#34;</span><span class="p">,</span>
       <span class="nt">&#34;field_mask&#34;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&#34;paths&#34;</span><span class="p">:</span> <span class="p">[</span>
@@ -187,26 +187,27 @@ debug: false
 </code></pre></div></details>
 <p>The formats show the fields of the end device that are used in the QR code.</p>
 <h2 id="generate-qr-code-for-identification">Generate QR Code for Identification</h2>
-<figure class="float plain">
+<p>To generate a QR code for identification:</p>
+<pre><code>$ ttn-lw-cli end-devices generate-qr app1 dev1 --format-id tr005
+</code></pre><details><summary>Example</summary>
+<figure>
     <img src="qr-identification.png"
          alt="Device QR Code for Identification"/> 
 </figure>
 
-<p>To generate a QR code for identification:</p>
-<pre><code>$ ttn-lw-cli end-devices generate-qr app1 dev1 --format-id tr005draft3
-</code></pre><p>This saves the QR code to the current directory with the device ID as file name, in PNG format with a default size of 300 pixels. Use <code>--folder</code> and <code>--size</code> to change the save location and image size.</p>
+</details>
+<p>This saves the QR code to the current directory with the device ID as file name, in PNG format with a default size of 300 pixels. Use <code>--folder</code> and <code>--size</code> to change the save location and image size.</p>
 <h2 id="generate-qr-code-for-claiming">Generate QR Code for Claiming</h2>
-<figure class="plain float">
+<p>Device claiming is a mechanism to transfer devices securely from one application to another. For example, from a device maker to a device owner, or transferring ownership to new device owner. <a href="/docs/devices/device-claiming/make-device-claimable/">Learn how to make a device claimable</a>.</p>
+<p>When a device is claimable (it contains a claim authentication code), you can use the same command to generate a QR code:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices generate-qr app1 dev1 --format-id tr005
+</code></pre></div><details><summary>Example</summary>
+<figure>
     <img src="qr-claiming.png"
          alt="Device QR Code for Claiming"/> 
 </figure>
 
-<p>Device claiming is a mechanism to transfer devices securely from one application to another. For example, from a device maker to a device owner, or transferring ownership to new device owner.</p>
-<p>When you create a device, you can generate a claim authentication code by specifying the <code>--with-claim-authentication-code</code> flag. You can also set a claim authentication code via CLI:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices <span class="nb">set</span> app1 dev1 --claim-authentication-code.value<span class="o">=</span>ABCD
-</code></pre></div><p>To generate a QR code for claiming:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices generate-qr app1 dev1 --format-id tr005draft3
-</code></pre></div>
+</details>
 </div>
 
 <div class="is-clearfix">
@@ -274,10 +275,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 10 Dec 2020.
+  Last changed by Johan Stokking on 16 Mar 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/ccdbeaa1e0131b8a0a49d139e435e2b3e7a34485">
-      doc: Update figures, add instructions for importing images
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5b158ae3e62e0cbfc63b77ba79eb82a8b5f43141">
+      doc: Update QR code instructions
     </a>
 </p>
 
