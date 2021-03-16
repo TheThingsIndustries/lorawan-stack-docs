@@ -24,8 +24,8 @@ $ ttn-lw-cli end-devices list-qr-formats
 ```json
 {
   "formats": {
-    "tr005draft3": {
-      "name": "LoRa Alliance TR005 Draft 3",
+    "tr005": {
+      "name": "LoRa Alliance TR005",
       "description": "Standard QR code format defined by LoRa Alliance.",
       "field_mask": {
         "paths": [
@@ -44,30 +44,32 @@ The formats show the fields of the end device that are used in the QR code.
 
 ## Generate QR Code for Identification
 
-{{< figure src="qr-identification.png" alt="Device QR Code for Identification" class="float plain" >}}
-
 To generate a QR code for identification:
 
 ```
-$ ttn-lw-cli end-devices generate-qr app1 dev1 --format-id tr005draft3
+$ ttn-lw-cli end-devices generate-qr app1 dev1 --format-id tr005
 ```
+
+<details><summary>Example</summary>
+
+{{< figure src="qr-identification.png" alt="Device QR Code for Identification" >}}
+
+</details>
 
 This saves the QR code to the current directory with the device ID as file name, in PNG format with a default size of 300 pixels. Use `--folder` and `--size` to change the save location and image size.
 
 ## Generate QR Code for Claiming
 
-{{< figure src="qr-claiming.png" alt="Device QR Code for Claiming" class="plain float" >}}
+Device claiming is a mechanism to transfer devices securely from one application to another. For example, from a device maker to a device owner, or transferring ownership to new device owner. [Learn how to make a device claimable]({{< relref "../device-claiming/make-device-claimable" >}}).
 
-Device claiming is a mechanism to transfer devices securely from one application to another. For example, from a device maker to a device owner, or transferring ownership to new device owner.
-
-When you create a device, you can generate a claim authentication code by specifying the `--with-claim-authentication-code` flag. You can also set a claim authentication code via CLI:
+When a device is claimable (it contains a claim authentication code), you can use the same command to generate a QR code:
 
 ```bash
-$ ttn-lw-cli end-devices set app1 dev1 --claim-authentication-code.value=ABCD
+$ ttn-lw-cli end-devices generate-qr app1 dev1 --format-id tr005
 ```
 
-To generate a QR code for claiming:
+<details><summary>Example</summary>
 
-```bash
-$ ttn-lw-cli end-devices generate-qr app1 dev1 --format-id tr005draft3
-```
+{{< figure src="qr-claiming.png" alt="Device QR Code for Claiming" >}}
+
+</details>
