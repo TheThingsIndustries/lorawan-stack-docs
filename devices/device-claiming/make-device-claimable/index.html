@@ -211,16 +211,16 @@ debug: false
 </code></pre></div><p>To undo the action:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli application claim unauthorize &lt;app-id&gt;
 </code></pre></div><h2 id="register-device">Register Device</h2>
-<p>In order to make a device claimable, the device needs to be added first in the application that has been authorized for claiming.</p>
-<p>If you already have devices in your application can be claimed, i.e. to transfer ownership, you can go ahead to the next section.</p>
-<p>If you don&rsquo;t have a devices in the application yet, you can use the following ways to add a device:</p>
+<p>In order to make a device claimable, the device first needs to be added first in the application that has been authorized for claiming.</p>
+<p>If you already have devices in your application that can be claimed, i.e. to transfer the ownership, you can go ahead to the next section.</p>
+<p>If you don&rsquo;t have a device in the application yet, you can add it by using one of the following ways:</p>
 <ol>
 <li><a href="/docs/devices/adding-devices/">Add a device</a> in The Things Stack</li>
 <li><a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/tti-join-server/register-devices/">Register a device</a> on The Things Join Server (i.e. not in a Network Server or Application Server yet)</li>
-<li><a href="/docs/devices/claim-atecc608a/">Import ATECC608A Secure Elements</a> on The Things Join Server. Be sure to check <strong>Set claim authentication code</strong></li>
+<li><a href="/docs/devices/claim-atecc608a/">Import ATECC608A Secure Elements</a> on The Things Join Server. Make sure to enable the <strong>Set claim authentication code</strong> option</li>
 </ol>
 <h2 id="claiming-settings">Claiming Settings</h2>
-<p>When your device is added in The Things Stack, you can go ahead and configure claiming settings. This is comprised of a claim authentication code and a validity window. The claim authentication code is a secret value. The validity window is an optional start and end date that the claim authentication code can be used.</p>
+<p>When your device is added in The Things Stack, you can go ahead and configure claiming settings. This is comprised of a claim authentication code and a validity window. The claim authentication code is a secret value. The validity window is an optional start and end date on which the claim authentication code can be used.</p>
 <div class="tabs is-boxed">
   <ul>
     
@@ -241,16 +241,16 @@ debug: false
 <div class="tab-content content">
   <section data-content="console">
   <p>Go to your application in The Things Stack Console. Go to <strong>End devices</strong> in the left menu and find the device you want to configure for claiming.</p>
-<p>In the <strong>Claiming</strong> tab, you find the claiming settings:</p>
+<p>Find the claiming settings in the <strong>Claiming</strong> tab:</p>
 <figure>
     <img src="../claiming-settings.png"
          alt="Claiming settings"/> 
 </figure>
-<p>You can edit the claim authentication code and validity window here. To save, click <strong>Save changes</strong>.</p>
+<p>To save the claiming settings you edited, click <strong>Save changes</strong>.</p>
 <p>To disallow claiming, click <strong>Delete claim authentication code</strong>.</p>
 </section>
 <section data-content="cli">
-  <p>To configure the claiming using the command-line interface:</p>
+  <p>To configure claiming using the CLI, use the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-device &lt;app-id&gt; &lt;device-id&gt; --claim-authentication-code.value ABCD <span class="se">\
 </span><span class="se"></span>  --claim-authentication-code.valid-from 2021-03-01T00:00:00Z <span class="se">\
 </span><span class="se"></span>  --claim-authentication-code.valid-from 2021-03-31T23:59:59Z
@@ -333,8 +333,8 @@ debug: false
 <p class="is-size-7">
   Last changed by Johan Stokking on 16 Mar 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/ebe2abad6cb037fd5e06eb979ee87d8a380e40c8">
-      doc: Clarify making a device claimable
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/c6981870131fdd15168ab3e9d2c3d86ae3b29fd4">
+      doc: Address review comments
     </a>
 </p>
 
