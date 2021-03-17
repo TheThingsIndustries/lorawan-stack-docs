@@ -31,8 +31,10 @@ The Device Claiming Server needs to know how the individual {{% tts %}} componen
 - `dcs.ui.as.enabled`: Enable Application Server related functionality in the Device Claiming Server
 - `dcs.ui.is.base-url`: Base URL to the HTTP API
 - `dcs.ui.is.enabled`: Enable Identity Server related functionality in the Device Claiming Server
+- `dcs.ui.js.base-url`: Base URL to the HTTP API
+- `dcs.ui.js.enabled`: Enable Join Server related functionality in the Device Claiming Server
 - `dcs.ui.dcs.base-url`: Base URL to the HTTP API
-- `dcs.ui.dcs.enabled`: Enable Device Claiming Server related functionality in the Device Claiming Server
+- `dcs.ui.dcs.enabled`: Enable Device Claiming Server related functionality in the Device Claiming Server (must be `true` for the frontend to work)
 - `dcs.ui.ns.base-url`: Base URL to the HTTP API
 - `dcs.ui.ns.enabled`: Enable Network Server related functionality in the Device Claiming Server
 
@@ -49,8 +51,8 @@ You can control the url of the assets folder that the Device Claiming Server fro
 
 - `dcs.ui.assets-base-url`: The base URL to the page assets
 - `dcs.ui.branding-base-url`: The base URL to the branding assets
-- `dcs.ui.branding-cluster-id`: The cluster ID to show below the logo
-- `dcs.ui.branding-text`: The branding text to show below the logo
+- `dcs.ui.branding-cluster-id`: The cluster ID to show below the logo {{< distributions "Cloud" "Enterprise" >}}
+- `dcs.ui.branding-text`: The branding text to show below the logo {{< distributions "Cloud" "Enterprise" >}}
 - `dcs.ui.icon-prefix`: The prefix to put before the page icons (favicon.ico, touch-icon.png, og-image.png)
 - `dcs.ui.canonical-url`: The page canonical URL
 - `dcs.ui.descriptions`: The page description
