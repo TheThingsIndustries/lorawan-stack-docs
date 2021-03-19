@@ -61,6 +61,9 @@ For a standard deployment on `thethings.example.com`, all you need is:
 $ ttn-lw-cli use thethings.example.com [--fetch-ca] [--user] [--overwrite]
 ```
 
+{{< warning >}} If configuring `ttn-lw-cli` for {{% tts %}} Cloud, see [Cloud Addresses]({{< ref "getting-started/cloud-hosted/addresses" >}}) for information about endpoints.
+{{</ warning >}}
+
 {{< note >}} On Windows, use `ttn-lw-cli.exe` instead of `ttn-lw-cli`. {{</ note >}}
 
 This will generate and save the required CLI config file. By default, the file is saved on the current directory, use the `--user` to save it under the user config directory.
@@ -87,6 +90,9 @@ device-claiming-server-grpc-address: 'thethings.example.com:8884'
 device-template-converter-grpc-address: 'thethings.example.com:8884'
 qr-code-generator-grpc-address: 'thethings.example.com:8884'
 ```
+
+{{< warning >}} If configuring `ttn-lw-cli` for {{% tts %}} Cloud, see [Cloud Addresses]({{< ref "getting-started/cloud-hosted/addresses" >}}) for information about endpoints.
+{{</ warning >}}
 
 If you are using an `https` port other than `443`, you need to specify that port, e.g.:
 
