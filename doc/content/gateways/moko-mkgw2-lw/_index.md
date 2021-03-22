@@ -17,9 +17,9 @@ indoor use and easy for installation.
 
 Create a gateway by following [the instructions]({{< ref "/gateways/adding-gateways" >}}). 
 
-The **EUI** of the gateway can be found on the configuration web page of the gateway. 
-
 {{< figure src="eui.png" alt="Gateway EUI" >}}
+
+The **EUI** of the gateway can be found on the configuration web page of the gateway. 
 
 ## Configuration via Browser
 1. Turn On the gateway and waiting for about 60s.
@@ -29,7 +29,6 @@ The **EUI** of the gateway can be found on the configuration web page of the gat
 It is recommended that the default password is changed for security reasons.
 
 {{< figure src="login in web.png" alt="Login In Web" >}}
-
 
 ## Connect to {{% tts %}}
 
