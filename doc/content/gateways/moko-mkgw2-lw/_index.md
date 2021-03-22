@@ -52,5 +52,5 @@ Edit the server parameters:
 
 Don't foget to click "SAVE&APPLY" after you  fill in the parameters.
 
-More information and setting, you can refer to the user manual fo mkgw2-lw from moko sales or send email to support_lora@mokotechnology.com.
+More information and setting, you can refer to the user manual fo mkgw2-lw from MOKOSMART.
 
