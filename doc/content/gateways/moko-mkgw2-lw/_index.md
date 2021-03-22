@@ -1,5 +1,5 @@
 ---
-title: "MOKOSMART MKGW2-LW LoRaWAN Gateway"
+title: "MKGW2-LW LoRaWAN Gateway"
 description: ""
 ---
 
@@ -41,4 +41,4 @@ Edit the server parameters:
 - **serv_port_up**: UDP upstream port of the Gateway Server, typically 1700.
 - **serv_port_down**: UDP downstream port of the Gateway Server, typically 1700.
 
-Don't foget to click "SAVE&APPLY" after you  fill in the parameters.More information and setting, you can refer to the user manual fo mkgw2-lw from moko sales or send email to support_lora@mokotechnology.com.
+Don't foget to click "SAVE&APPLY" after you  fill in the parameters.More information and setting, you can refer to the user manual fo mkgw2-lw from mokosmart.
