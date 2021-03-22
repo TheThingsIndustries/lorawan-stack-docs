@@ -10,7 +10,7 @@ weight: 3
 
 In this guide, we show you how to request a free, trusted certificate from [Let's Encrypt](https://letsencrypt.org/getting-started/), but if you already have a certificate (`cert.pem`) and a corresponding key (`key.pem`), you can also use those. For local deployments, you can set up your own Certificate Authority and issue a certificate-key pair.
 
-## Automatic Certificate Management (ACME)
+## Automatic Certificate Management
 
 {{% tts %}} can be configured to automatically retrieve and update Let's Encrypt certificates. Assuming you followed the [configuration]({{< relref "configuration" >}}) steps, create an `acme` directory where {{% tts %}} can store the certificate data:
 
@@ -37,14 +37,14 @@ Certificates will automatically be requested the first time you access {{% tts %
 
 To use [CA certificates you already have](#certificates-from-a-certificate-authority) or [self-signed certificates](#custom-certificate-authority), you will need to uncomment the custom certificates section of `docker-compose.yml`:
 
-{{< highlight yaml "linenos=table,linenostart=84" >}}
-{{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=84 to=97 >}}
+{{< highlight yaml "linenos=table,linenostart=82" >}}
+{{< readfile path="/content/getting-started/installation/configuration/docker-compose-custom-certificates.yml" from=82 to=97 >}}
 {{< /highlight >}}
 
 You will also need to comment out the Let's Encrypt section of `ttn-lw-stack-docker.yml`, and uncomment the custom certificates section:
 
-{{< highlight yaml "linenos=table,linenostart=48" >}}
-{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=48 to=62 >}}
+{{< highlight yaml "linenos=table,linenostart=41" >}}
+{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-custom-certificates.yml" from=41 to=55 >}}
 {{< /highlight >}}
 
 ### Certificates from a Certificate Authority
@@ -67,6 +67,8 @@ config/
 └── stack/
     └── ttn-lw-stack-docker.yml    # configuration file for {{% tts %}}
 ```
+
+Be sure to configure `docker-compose.yml` and `ttn-lw-stack-docker.yml` for your custom certificates, as shown in [using custom certificates](#using-custom-certificates).
 
 ## Custom Certificate Authority
 
@@ -120,3 +122,5 @@ config/
 └── stack/
     └── ttn-lw-stack-docker.yml    # configuration file for {{% tts %}}
 ```
+
+Be sure to configure `docker-compose.yml` and `ttn-lw-stack-docker.yml` for your custom certificates, as shown in [using custom certificates](#using-custom-certificates).
