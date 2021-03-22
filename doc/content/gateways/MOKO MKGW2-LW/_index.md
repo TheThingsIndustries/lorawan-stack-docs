@@ -12,52 +12,45 @@ network parameters and LoRaWAN protocol parameters through the Web management pl
 {{< figure src="mkgw2-lw.jpg" alt="mkgw2-lw" class="plain float" >}}
 
 
-The **Ursalink UG8X IoT LoRaWAN Gateway** is an 8 channel (16 channel optional) configurable, scalable gateway for industrial IoT applications.
-
-{{< figure src="compact.png" alt="Ursalink compact" class="plain float" >}}
-
-{{< figure src="outdoor.png" alt="Ursalink outdoor" class="plain float" >}}
-
-This page contains information about connecting the Ursalink UG8X IoT LoRaWAN Gateway to {{% tts %}}.
-
-<!--more-->
-
-The technical specifications can be found in [Ursalink's official documentation](https://www.ursalink.com/en/ad-lorawan-gateway/). The Ursalink UG8X IoT LoRaWAN Gateway supports two ways to connect with {{% tts %}}, using either the Semtech Packet Forwarder or {{% lbs %}}.
-
 ## Requirements
 
 1. User account on {{% tts %}} with rights to create gateways.
-2. Ursalink UG8X LoRaWAN Gateway connected to the internet via ethernet or cellular backhaul.
-3. CA certificate for {{% lbs %}} (if using {{% lbs %}}).
+2. MOKOSMART MKGW2-LW connected to the internet via ethernet or WIFI.（For the ethernet and wifi setting, you can refer to the  5.login into the Gateway and 6.Internet Setting of the user maunal)
 
 ## Registration
 
 Create a gateway by following the instructions for the [Console]({{< ref "/getting-started/console#create-gateway" >}}) or the [CLI]({{< ref "/getting-started/cli#create-gateway" >}}).
 
-The **EUI** of the gateway can be found on the configuration web page of the gateway. See the [next section]({{< ref "#configuration-via-browser" >}}) for instructions to access the configuration page.
+The **EUI** of the gateway can be found on the configuration web page of the gateway. 
 
 {{< figure src="eui.png" alt="Gateway EUI" >}}
 
 ## Configuration via Browser
+Turn On the gateway and waiting for about 60s.
 
-Find the IP address of the gateway. The default IP for the Ursalink UG8X LoRaWAN Gateway is 192.168.23.150.
+Using your PC or phone connect the SSID of the gateway. The default SSID format is "MKGW2-LW-xxxx” such as " MKGW2-LW-91D8 ", “91D8” is the last two bytes of the gateway MAC address. verify the password (Default: Moko4321) and connect to the gateway.
 
-Connect your machine to the same local network as that of the gateway, and enter the IP address in your web browser. The default username is **admin** and the default password is **password**. See [Ursalink's official documentation](https://www.ursalink.com/en/ad-lorawan-gateway/) for more information.
+After successful connection, the WEB management platform can be accessed through the IP address 192.168.22.1 of the gateway LAN interface.
+Log on using the following default credentials, Username: Admin Password: admin
+It is recommended that the default password is changed for security reasons.
 
-{{< figure src="login.png" alt="Login" >}}
+{{< figure src="login in web.png" alt="Login In Web" >}}
 
-### Disable Default Server
-
-In the left menu, choose **Packet Forwarder**. Select the **General** tab.
-
-{{< figure src="eui.png" alt="Packet Forwarder" >}}
-
-Click the pencil icon next to the default server, and uncheck the **Enabled** button to disable the default server.
-
-Click **Save** to continue.
-
-{{< figure src="disable.png" alt="Disable default server" >}}
 
 ## Connect to {{% tts %}}
 
-After completing basic configuration, follow the instructions for connecting using [{{< lbs >}}]({{< relref "lbs" >}}) or the [UDP Packet Forwarder]({{< relref "packet-forwarder" >}}).
+The MOKOSMART MKGW2-LW  support  UDP packet forwarder. 
+Please follow instructions for connecting the MKGW2-LW with UDP packet forwarder .
+After completing basic configuration, turn to server address interface of web.
+{{< figure src="eui.png" alt="Gateway EUI" >}}
+
+Edit the server parameters:
+
+- **server_address**: Address of the Gateway Server. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `thethings.example.com`.
+- **serv_port_up**: UDP upstream port of the Gateway Server, typically 1700.
+- **serv_port_down**: UDP downstream port of the Gateway Server, typically 1700.
+
+Don't foget to click "SAVE&APPLY" after you  fill in the parameters.
+
+More information and setting, you can refer to the user manual fo mkgw2-lw from moko sales or send email to support_lora@mokotechnology.com.
+
