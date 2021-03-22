@@ -3,6 +3,15 @@ title: "MOKOSMART MKGW2-LW LoRaWAN Gateway"
 description: ""
 ---
 
+MOKO 8 channels gateway MKGW2 is based on LoRaWAN protocol, which is embedded with Semtech’s high performance multi-channel transceiver SX1301/SX1257 and MTK platform. It is for
+indoor use and easy for installation. 
+
+MKGW2-LW includes 2 modes: AP and STA as router, offers 2.4Ghz Wi-Fi and wired Ethernet forconnecting internet. The gateway built-in OpenWRT operating system, users can flexibly configure
+network parameters and LoRaWAN protocol parameters through the Web management platform.The MKGW2-LW Gateway can be connected to LoRaWAN terminals in various application nodes,collects useful information and sends the data to cloud server. And it supports POE, DC, Micro USB to provide power supply.
+
+{{< figure src="mkgw2-lw.jpg" alt="mkgw2-lw" class="plain float" >}}
+
+
 The **Ursalink UG8X IoT LoRaWAN Gateway** is an 8 channel (16 channel optional) configurable, scalable gateway for industrial IoT applications.
 
 {{< figure src="compact.png" alt="Ursalink compact" class="plain float" >}}
