@@ -6,11 +6,11 @@ description: ""
 MOKO 8 channels gateway MKGW2 is based on LoRaWAN protocol, which is embedded with Semtech’s high performance multi-channel transceiver SX1301/SX1257 and MTK platform. It is for
 indoor use and easy for installation. 
 
-MKGW2-LW includes 2 modes: AP and STA as router, offers 2.4Ghz Wi-Fi and wired Ethernet forconnecting internet. The gateway built-in OpenWRT operating system, users can flexibly configure
-network parameters and LoRaWAN protocol parameters through the Web management platform.The MKGW2-LW Gateway can be connected to LoRaWAN terminals in various application nodes,collects useful information and sends the data to cloud server. And it supports POE, DC, Micro USB to provide power supply.
+MKGW2-LW includes 2 modes: AP and STA as router, offers 2.4Ghz Wi-Fi and wired Ethernet forconnecting internet. The gateway built-in OpenWRT operating system, users can flexibly configure network parameters and LoRaWAN protocol parameters through the Web management platform.
+
+The MKGW2-LW Gateway can be connected to LoRaWAN terminals in various application nodes,collects useful information and sends the data to cloud server. And it supports POE, DC, Micro USB to provide power supply.
 
 {{< figure src="mkgw2-lw.jpg" alt="mkgw2-lw" class="plain float" >}}
-
 
 ## Requirements
 
@@ -36,7 +36,6 @@ It is recommended that the default password is changed for security reasons.
 
 {{< figure src="login in web.png" alt="Login In Web" >}}
 
-
 ## Connect to {{% tts %}}
 
 The MOKOSMART MKGW2-LW  support  UDP packet forwarder. 
@@ -53,4 +52,3 @@ Edit the server parameters:
 Don't foget to click "SAVE&APPLY" after you  fill in the parameters.
 
 More information and setting, you can refer to the user manual fo mkgw2-lw from MOKOSMART.
-
