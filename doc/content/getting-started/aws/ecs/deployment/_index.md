@@ -247,6 +247,18 @@ For all services: the official image is `docker.io/thethingsindustries/lorawan-s
 
 >We recommend to start with 2 instances of each service. For some services it is not possible (yet) to deploy more than one instance.
 
+## Gateway Configuration Service (optional) {{< new-in-version "3.11.3" >}} {#gateway-configuration-service}
+
+The `5-3d-ecs-gcs-service` template creates a stand-alone Gateway Configuration Server (GCS) service with a separate console.
+
+> The Gateway Server instances that are deployed by `5-4-ecs-services` already contain GCS services within them. This template is for a stand-alone GCS that may be deployed as a separate cluster with dedicated DNS.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/5-3d-ecs-gcs.gen.template (replace `3.x` with the current minor version).
+
+Fill the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})) and the Redis clusters to use.
+
+For all services: the official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws` (replace `3.x.y` with the current version). When deploying to `FARGATE`, make sure to select [a valid combination of CPU and Memory](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html), or you will get an error about `Invalid CPU or memory value specified` when you deploy the stack.
+
 ## Monitoring (optional, but recommended)
 
 We strongly recommend to monitor your deployment with [Prometheus](https://prometheus.io) and send alerts to [Alertmanager](https://prometheus.io/docs/alerting/latest/overview/), from where you can forward alerts to external on-call notification systems. With the `5-5-ecs-monitoring` you can deploy Prometheus to your ECS cluster.
