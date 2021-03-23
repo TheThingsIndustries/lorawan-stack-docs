@@ -45,7 +45,7 @@ You can download [pre-built binaries](https://github.com/TheThingsNetwork/lorawa
 
 ## Configuration
 
-The command-line needs to be configured to connect to your deployment on `thethings.example.com`. You have multiple options to make the configuration file available to the CLI:
+The command-line needs to be configured to connect to {{% tts %}}. You have multiple options to make the configuration file available to the CLI:
 
 1. Environment: `export TTN_LW_CONFIG=/path/to/ttn-lw-cli.yml`
 2. Command-line flag: `-c /path/to/ttn-lw-cli.yml`
@@ -55,7 +55,9 @@ The command-line needs to be configured to connect to your deployment on `thethi
 
 ### Generate configuration file
 
-For a standard deployment on `thethings.example.com`, all you need is:
+If using {{% tts %}} Community Edition by The Things Network or {{% tts %}} Cloud, visit the addresses page for [The Things Network]({{< ref "getting-started/ttn/addresses" >}}) or [{{% tts %}} Cloud]({{< ref "getting-started/cloud-hosted/addresses" >}}) to find CLI configuration files for these deployments.
+
+If hosting your own deployment, for example at `thethings.example.com`, all you need is:
 
 ```bash
 $ ttn-lw-cli use thethings.example.com [--fetch-ca] [--user] [--overwrite]
@@ -74,9 +76,11 @@ If the deployment is using a CA that is not already trusted by your system, use 
 
 {{< note >}} You can also use the `--grpc-port` and `--oauth-server-address` flags to override the default values for the gRPC port and the OAuth server address. These are not needed for standard deployments. {{</ note >}}
 
-### Manually creating configuration file
+### Manually create configuration file
 
-Alternatively, you can create a file named `.ttn-lw-cli.yml` and paste the following contents:
+If using The Things Network or {{% tts %}} Cloud, visit the addresses page for [The Things Network]({{< ref "getting-started/ttn/addresses" >}}) or [{{% tts %}} Cloud]({{< ref "getting-started/cloud-hosted/addresses" >}}) to find CLI configuration files for these deployments.
+
+If hosting your own deployment, you can create a file named `.ttn-lw-cli.yml` and paste the following contents:
 
 ```yaml
 oauth-server-address: 'https://thethings.example.com/oauth'
