@@ -22,17 +22,18 @@ Create a gateway by following [the instructions]({{< ref "/gateways/adding-gatew
 The **EUI** of the gateway can be found on the configuration web page of the gateway. 
 
 ## Configuration via Browser
+
 1. Turn On the gateway and waiting for about 60s.
 2. Using your PC or phone connect the SSID of the gateway. The default SSID format is "MKGW2-LW-xxxx” such as " MKGW2-LW-91D8 ", “91D8” is the last two bytes of the gateway MAC address. verify the password (Default: Moko4321) and connect to the gateway.
 3. After successful connection, the WEB management platform can be accessed through the IP address 192.168.22.1 of the gateway LAN interface.
-4. Log on using the following default credentials, Username: Admin Password: admin
-It is recommended that the default password is changed for security reasons.
+4. Log on using the following default credentials, Username: Admin Password: admin.It is recommended that the default password is changed for security reasons.
 
 {{< figure src="login in web.png" alt="Login In Web" >}}
 
 ## Connect to {{% tts %}}
 
 The MOKOSMART MKGW2-LW  support  UDP packet forwarder. Please follow instructions for connecting the MKGW2-LW with UDP packet forwarder.After completing basic configuration, turn to server address interface of web.
+
 {{< figure src="eui.png" alt="Gateway EUI" >}}
 
 Edit the server parameters:
