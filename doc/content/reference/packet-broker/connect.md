@@ -1,22 +1,15 @@
 ---
-title: Configure
+title: Connect
 description: ""
-aliases:
-  - "/integrations/peering/enable"
-  - "/reference/peering/enable"
+weight: 1
+distributions: ["Enterprise", "Open Source"]
 ---
 
-This guide shows you how to enable peering on your private LoRaWAN network.
+This section explains how to connect {{% tts %}} to Packet Broker.
 
-<!--more-->
-
-## Peering Between {{% tts %}} Cloud and The Things Network
-
-By default, Packet Broker enables peering in the following scenario:
-
-- Traffic received on The Things Network is forwarded to The Things Stack Cloud
-
-Currently, Packet Broker does not peer by default between {{% tts %}} Cloud tenants, or forward traffic from {{% tts %}} Cloud to The Things Network. Cloud customers may file a support ticket to enable this feature, and it will be possible for users to configure {{% tts %}} to support peering from {{% tts %}} Cloud in an upcoming release.
+{{< info >}}
+The Things Stack Cloud and The Things Network are already connected to Packet Broker. Use this section to connect your {{% tts %}} Enterprise or Open Source deployment to Packet Broker.
+{{< /info >}}
 
 ## Prerequisites
 
