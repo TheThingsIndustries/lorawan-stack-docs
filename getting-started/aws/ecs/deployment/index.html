@@ -378,6 +378,16 @@ $ aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --re
 <blockquote>
 <p>We recommend to start with 2 instances of each service. For some services it is not possible (yet) to deploy more than one instance.</p>
 </blockquote>
+<h2 id="gateway-configuration-service">Gateway Configuration Service (optional) <span class="new-in-version">New in 3.11.3</span>
+
+</h2>
+<p>The <code>5-3d-ecs-gcs-service</code> template creates a stand-alone Gateway Configuration Server (GCS) service with a separate console.</p>
+<blockquote>
+<p>The Gateway Server instances that are deployed by <code>5-4-ecs-services</code> already contain GCS services within them. This template is for a stand-alone GCS that may be deployed as a separate cluster with dedicated DNS.</p>
+</blockquote>
+<p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/5-3d-ecs-gcs.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/5-3d-ecs-gcs.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
+<p>Fill the re-used parameters (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>) and the Redis clusters to use.</p>
+<p>For all services: the official image is <code>docker.io/thethingsindustries/lorawan-stack:3.x.y-aws</code> (replace <code>3.x.y</code> with the current version). When deploying to <code>FARGATE</code>, make sure to select <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html">a valid combination of CPU and Memory</a>, or you will get an error about <code>Invalid CPU or memory value specified</code> when you deploy the stack.</p>
 <h2 id="monitoring-optional-but-recommended">Monitoring (optional, but recommended)</h2>
 <p>We strongly recommend to monitor your deployment with <a href="https://prometheus.io">Prometheus</a> and send alerts to <a href="https://prometheus.io/docs/alerting/latest/overview/">Alertmanager</a>, from where you can forward alerts to external on-call notification systems. With the <code>5-5-ecs-monitoring</code> you can deploy Prometheus to your ECS cluster.</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/5-5-ecs-monitoring.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/5-5-ecs-monitoring.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
@@ -513,10 +523,10 @@ $ aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --re
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 29 Dec 2020.
+  Last changed by Krishna Iyer Easwaran on 03 Mar 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/87c19bc419d90627cb28b0df9ea8ca465fed0e45">
-      doc: Fix broken headings with shortcodes
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5a2c25cef536d91d31a78440cecf545a725feb2c">
+      doc: Add GCS deployment description
     </a>
 </p>
 
