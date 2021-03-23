@@ -844,7 +844,7 @@ by the console client. These tell The Things Stack where all its components are 
 
 </h3>
 <p>If running a multi-tenant environment, we need to configure the default tenant ID, and the base domain from which tenant IDs are inferred. See the <a href="https://www.thethingsindustries.com/docs/reference/configuration/the-things-stack/#multi-tenancy"><code>tenancy</code> configuration reference</a>.</p>
-<h2 id="running-the-things-stackas-localhost">Running The Things Stack as Localhost</h2>
+<h2 id="running-the-things-stack-as-localhost">Running The Things Stack As Localhost</h2>
 <p>Follow this section if you are configuring and running The Things Stack on a local machine with no public IP or DNS address.</p>
 <p><code>localhost</code> has a different meaning on your machine than inside the Docker container where The Things Stack runs, which can cause problems if you use <code>localhost</code> in your configuration.</p>
 <p><code>localhost</code> addresses on your machine will resolve to your machine, while <code>localhost</code> inside the Docker container will resolve inside the Docker container. In <code>docker-compose.yml</code>, we forward requests on ports 80 and 443 to ports 1885 and 8885 inside the container, so visiting <code>localhost</code> (which is really <code>localhost:80</code>) on your machine actually takes you to <code>localhost:1885</code> within the container.</p>
@@ -852,6 +852,11 @@ by the console client. These tell The Things Stack where all its components are 
 <h3 id="solution-1-use-the-ip-address-of-your-computer-on-your-local-network">Solution 1: Use the IP address of your computer on your local network</h3>
 <p>The best solution is to configure and use a static IP address for your machine on your local network so that redirects from your machine, from the Docker container, or from anywhere inside your local network, all resolve at the same place, on your machine.</p>
 <p>Follow instructions <a href="https://uk.pcmag.com/news/124250/how-to-set-up-a-static-ip-address">here</a> for configuring a static IP address on your computer. Use that IP address as your server address, i.e replace <code>thethings.example.com</code> with that IP address. You may also generate a self-signed certificate for that IP address by following instructions in the <a href="/docs/getting-started/installation/certificates/">Certificates</a> section.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  ACME will not work on <code>localhost</code>, so you must either generate custom certificates for your IP address as shown in the <a href="(/docs/getting-started/installation/certificates/#custom-certificate-authority)">Custom Certificate Authority</a> instructions, or use <code>http</code> (unsecure) in your configuration.
+</div>
+
 <p>This will still allow you to see The Things Stack Console by entering <code>localhost</code> or your local IP address in your browser. It will also allow you to connect to The Things Stack from any machine inside your local network.</p>
 <p>You will also need to <a href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/#generate-configuration-file">configure the CLI</a>, to use the static IP of your machine as the address of The Things Stack.</p>
 <h3 id="solution-2-specify-the-internal-ports-that-the-things-stack-listens-on-in-your-configuration-files">Solution 2: Specify the internal ports that The Things Stack listens on in your configuration files</h3>
@@ -914,7 +919,7 @@ by the console client. These tell The Things Stack where all its components are 
     
       <li><a href='#understanding-the-things-stack-configuration'>Understanding The Things Stack Configuration</a></li>
     
-      <li><a href='#running-the-things-stack%c2%a0as-localhost'>Running The Things Stack as Localhost</a></li>
+      <li><a href='#running-the-things-stack-as-localhost'>Running The Things Stack As Localhost</a></li>
     
   </ul>
 
@@ -952,10 +957,10 @@ by the console client. These tell The Things Stack where all its components are 
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 16 Feb 2021.
+  Last changed by Ben Olayinka on 22 Mar 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/e06fc18bc77035569404d0f7034f5c88c4fd51aa">
-      doc: Fix configuration heading
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/98e1435432f82ed8cb2d237cea436ba2d05a925a">
+      doc: Add ACME localhost note and improve certs docs
     </a>
 </p>
 
