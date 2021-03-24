@@ -1,6 +1,6 @@
 ---
-title: "MKGW2-LW LoRaWAN Gateway"
-description: ""
+title: "MKGW2-LW"
+description: "MOKOSMART LORAWAN GATEWAY"
 ---
 
 MOKO 8 channels gateway MKGW2 is based on LoRaWAN protocol, which is embedded with Semtech’s high performance multi-channel transceiver SX1301/SX1257 and MTK platform. It is for
