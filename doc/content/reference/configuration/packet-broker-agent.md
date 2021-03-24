@@ -3,37 +3,42 @@ title: "Packet Broker Agent Options"
 description: ""
 ---
 
+## Registration Options {{< new-in-version "3.12.0" >}}
+
+- `pba.registration.name`: Friendly name to register with Packet Broker
+- `pba.registration.administrative-contact.email`: Email address of the administrative contact person or mailing group
+- `pba.registration.technical-contact.email`: Email address of the technical contact person or mailing group
+- `pba.registration.listed`: Indicates whether the Home Network is listed in the Packet Broker catalog. Set this to `false` to connect to Packet Broker but to stay private to other networks
+
 ## Connection Options
 
-- `pba.data-plane-address`: Address of Packet Broker Data Plane
+- `pba.iam-address`: Address of Packet Broker IAM {{< new-in-version "3.12.0" >}}
+- `pba.control-plane-address`: Address of Packet Broker Control Plane {{< new-in-version "3.12.0" >}}
+- `pba.data-plane-address`: Address of Packet Broker Data Plane. See [Packet Broker Clients](https://github.com/packetbroker/pb) for available cluster addresses
+- `pba.insecure`: Connect without using TLS (only for test environments)
 - `pba.net-id`: LoRa Alliance NetID
 - `pba.tenant-id`: Tenant ID within the NetID
 - `pba.cluster-id`: Cluster ID uniquely identifying this cluster within a NetID and tenant. The cluster ID is used for shared subscriptions (i.e. splitting traffic over multiple Packet Broker Agents) and as Forwarder ID to route downlink traffic to the right cluster
+- `pba.home-network-cluster-id`: Home Network Cluster ID, if different from the Cluster ID. Leave empty to fallback to `cluster-id`
 
-## Client TLS Options
+## Authentication Options
 
-Packet Broker Agent uses TLS client authentication to connect to the configured Packet Broker Data Plane. You need to configure a client certificate which is authorized for the configured NetID and tenant ID.
-
-- `pba.tls.source`: Source of the TLS certificate (`file`, `key-vault`)
-
-If `file` is specified as `pba.tls.source`, the location of the certificate and key need to be configured.
-
-- `pba.tls.certificate`: Location of TLS certificate
-- `pba.tls.key`: Location of TLS private key
-
-If `key-vault` is specified as `pba.tls.source`, the certificate with the given ID is loaded from the key vault.
-
-- `pba.tls.key-vault.id`: ID of the certificate
+- `pba.authentication-mode`: Set this to `oauth2`
+- `pba.oauth2.client-id`: Packet Broker API key ID, used to fetch an OAuth 2.0 token via client credentials
+- `pba.oauth2.client-secret`: Corresponding secret API key
+- `pba.oauth2.token-url`: URL to fetch the OAuth 2.0 token
 
 ## Forwarder Options
 
 - `pba.forwarder.enable`: Enable Forwarder role
-- `pba.forwarder.worker-pool.limit`: Limit of active workers concurrently forwarding uplink messages and processing downlink messages
-- `pba.forwarder.token-key`: AES 128 or 256-bit key for encrypting uplink tokens
+- `pba.forwarder.worker-pool.limit`: Limit of active workers concurrently forwarding uplink messages and processing downlink message
+- `pba.forwarder.token-key`: AES 128 or 256-bit key for encrypting uplink token
+- `pba.forwarder.include-gateway-eui`: Indicates whether to include the gateway EUI in forwarded uplink messages {{< new-in-version "3.12.0" >}}
+- `pba.forwarder.include-gateway-id`: Indicates whether to include the gateway ID (plain or hashed) in forwarded uplink messages {{< new-in-version "3.12.0" >}}
+- `pba.forwarder.hash-gateway-id`: Indicates whether the forwarded gateway ID should be hashed. This setting is ineffective if `include-gateway-id` is `false` {{< new-in-version "3.12.0" >}}
 
 ## Home Network Options
 
 - `pba.home-network.enable`: Enable Home Network role
 - `pba.home-network.dev-addr-prefixes`: DevAddr prefixes to subscribe to
 - `pba.home-network.worker-pool.limit`: Limit of active workers concurrently processing uplink messages and publishing downlink messages
-- `pba.home-network.blacklist-forwarder`: Blacklist traffic from Forwarder to avoid traffic loops. Enable this when you have the Forwarder role enabled and overlapping forwarding ranges in `gs.forward` (see [configuration]({{< relref "gateway-server.md" >}})). Only disable this for testing.
