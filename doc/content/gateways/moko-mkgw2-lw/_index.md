@@ -8,6 +8,8 @@ indoor use and easy for installation.
 
 {{< figure src="mkgw2-lw.jpg" alt="mkgw2-lw" class="plain float" >}}
 
+<!--more-->
+
 ## Requirements
 
 1. User account on {{% tts %}} with rights to create gateways.
