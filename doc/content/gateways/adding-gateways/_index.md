@@ -150,4 +150,6 @@ The CLI will return something like:
 
 {{< /tabs/container >}}
 
+{{< note >}} Keep in mind that if you change the physical location of your gateway, the location update in {{% tts %}} will take place only after you restart the gateway. {{</ note >}}
+
 Once a gateway has been added, get started with [Adding Devices]({{< ref "/devices/adding-devices" >}}) and [Integrations]({{< ref "/integrations" >}}) to process and act on data.
