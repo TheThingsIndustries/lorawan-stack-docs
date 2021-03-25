@@ -3,12 +3,18 @@ title: Connect
 description: ""
 weight: 1
 distributions: ["Enterprise", "Open Source"]
+aliases:
+  - "/integrations/peering/enable"
+  - "/reference/peering/enable"
+  - "/reference/packet-broker/enable"
 ---
 
 This section explains how to connect {{% tts %}} to Packet Broker.
 
 {{< info >}}
-The Things Stack Cloud and The Things Network are already connected to Packet Broker. Use this section to connect your {{% tts %}} Enterprise or Open Source deployment to Packet Broker.
+{{% tts %}} Cloud and The Things Network are already connected to Packet Broker. Use this section to connect your {{% tts %}} Enterprise or Open Source deployment to Packet Broker.
+
+If you are using {{% tts %}} Cloud or if your {{% tts %}} deployment is connected to Packet Broker, [proceed to configuration]({{< relref "configure" >}}).
 {{< /info >}}
 
 ## Prerequisites
@@ -103,7 +109,11 @@ ns:
 
 See [Network Server configuration]({{< ref "/reference/configuration/network-server" >}}) for all configuration options.
 
-## Test Uplink and Downlink
+## Configure Packet Broker
+
+When {{% tts %}} is connected to Packet Broker, you can proceed with [Packet Broker Configuration]({{< relref "configure" >}}).
+
+## Advanced: Test Uplink and Downlink
 
 See [Publish and Subscribe Traffic](https://github.com/packetbroker/pb#publish-and-subscribe-traffic) on how to publish test messages and subscribe to traffic using Packet Broker CLI.
 
