@@ -6,7 +6,7 @@ weight: 2
 
 This guide shows an example of configuring {{% tts %}} using configuration files, with an example domain `thethings.example.com` and TLS certificates from Let's Encrypt.
 
-{{< note >}} If configuring {{% tts %}} as `localhost` on a machine with no public IP or DNS address, see the [Localhost](#running-the-things-stack-as-localhost) section. {{</ note >}}
+{{< note >}} If configuring {{% tts %}} as `localhost` on a machine with no public IP or DNS address, see the [`localhost`](#running-the-things-stack-as-localhost) section. {{</ note >}}
 
 ## Configuration Files
 
@@ -198,7 +198,7 @@ by the console client. These tell {{% tts %}} where all its components are acces
 
 If running a multi-tenant environment, we need to configure the default tenant ID, and the base domain from which tenant IDs are inferred. See the [`tenancy` configuration reference]({{< ref "/reference/configuration/the-things-stack#multi-tenancy" >}}).
 
-## Running The Things Stack As Localhost
+## Running The Things Stack as `localhost`
 
 Follow this section if you are configuring and running {{% tts %}} on a local machine with no public IP or DNS address.
 
