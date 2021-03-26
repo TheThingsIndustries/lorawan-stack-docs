@@ -12,6 +12,8 @@ Follow this guide to learn how to connect to {{% tts %}} MQTT Server, to receive
 
 {{< note >}} This document contains instructions to use [Eclipse Paho MQTT Python client library](https://www.eclipse.org/paho/index.php?page=clients/python/index.php), which implements MQTT v3.1 and v3.1.1 protocol. To compare this library with other Paho project implementations visit [Eclipse Paho Downloads page](https://www.eclipse.org/paho/index.php?page=downloads.php). To find more about the usage of the Python implementation, visit [this page](https://pypi.org/project/paho-mqtt/). {{</ note >}}
 
+{{< note >}} The examples in this guide are suitable for {{% tts %}} Open Source deployment. If you are using a different {{% tts %}} deployment, make sure your read a [Note on Using the tenant ID]({{< ref "/integrations/mqtt#note-on-using-the-tenant-id" >}}). {{</ note >}} 
+
 ## Prerequisites
 
 1. Python v2.7 or v3.x installed on your system.

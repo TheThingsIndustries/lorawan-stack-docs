@@ -11,6 +11,8 @@ This guide shows how to receive upstream messages and send downlink messages wit
 
 {{< note >}} Eclipse Mosquitto MQTT server supports 3.1, 3.1.1 and 5.0 MQTT protocol versions. {{</ note >}}
 
+{{< note >}} The examples in this guide are suitable for {{% tts %}} Open Source deployment. If you are using a different {{% tts %}} deployment, make sure your read a [Note on Using the tenant ID]({{< ref "/integrations/mqtt#note-on-using-the-tenant-id" >}}). {{</ note >}} 
+
 ## Prerequisites
 
 1. [Eclipse Mosquitto MQTT server](https://github.com/eclipse/mosquitto) installed on your system.
@@ -50,7 +52,7 @@ mosquitto_pub -h {hostname} -p {port} -u {username} -P {password} -t {topic} -m 
 For example, to send an unconfirmed downlink message to the device `dev1` in application `app1` with the hexadecimal payload `BE EF` on `FPort` 15 with normal priority, use the topic `v3/app1/devices/dev1/down/push` with the following contents:
 
 ```bash
-mosquitto_pub -h "thethings.example.com" -p "1883" -u "app1" -P "NNSXS.VEEBURF3KR77ZR.." -t "v3/app1/devices/dev1/up" -m '{"downlinks":[{"f_port": 15,"frm_payload":"vu8=","priority": "NORMAL"}]}'
+mosquitto_pub -h "thethings.example.com" -p "1883" -u "app1" -P "NNSXS.VEEBURF3KR77ZR.." -t "v3/app1/devices/dev1/down/push" -m '{"downlinks":[{"f_port": 15,"frm_payload":"vu8=","priority": "NORMAL"}]}'
 ```
 
 If TLS is being used, change the port value to `8883` and add the `--cafile` option to the command.

@@ -14,6 +14,8 @@ HiveMQ also offers an open source tool called [MQTT CLI](https://github.com/hive
 
 This guide contains the instructions to use HiveMQ CLI tool in a shell mode for subscribing and publishing to topics used by {{% tts %}} [MQTT Server]({{< ref "/integrations/mqtt" >}}).
 
+{{< note >}} The examples in this guide are suitable for {{% tts %}} Open Source deployment. If you are using a different {{% tts %}} deployment, make sure your read a [Note on Using the tenant ID]({{< ref "/integrations/mqtt#note-on-using-the-tenant-id" >}}). {{</ note >}} 
+
 ## Prerequisites
 
 1. [HiveMQ MQTT CLI](https://hivemq.github.io/mqtt-cli/docs/installation.html) installed on your system.
@@ -44,7 +46,7 @@ For example, you can connect to {{% tts %}} MQTT Server over its public address 
 con -h thethings.example.com -p 1883 -V 3 -u app1 -pw NNSXS.VEEBURF3KR77ZR..
 ```
 
-TO use TLS for additional security, change the port from `1883` to `8883` and use the `--cafile` option to provide the PEM encoded CA file of your {{% tts %}} deployment.
+To use TLS for additional security, change the port from `1883` to `8883` and use the `--cafile` option to provide the PEM encoded CA file of your {{% tts %}} deployment.
 
 Once you have successfully connected to {{% tts %}} MQTT Server, continue with subscribing or publishing to topics exposed by it by following the sections below.
 
@@ -71,6 +73,7 @@ For example, to push an unconfirmed downlink message with the hexadecimal payloa
 ```bash
 $ pub -t v3/app1/devices/dev1/down/push -m '{"downlinks":[{"f_port": 15,"frm_payload":"vu8=","priority": "NORMAL"}]}'
 ```
+
 {{< note >}} For detailed descriptions of the `pub` command parameters, see the [Publish](https://hivemq.github.io/mqtt-cli/docs/shell/publish.html) section of the MQTT CLI documentation. {{</ note >}}
 
 {{< note >}} See the [Publishing Downlink Traffic]({{< ref "/integrations/mqtt#publishing-downlink-traffic" >}}) section to learn about using `/replace` instead of `/push`. {{</ note >}}
