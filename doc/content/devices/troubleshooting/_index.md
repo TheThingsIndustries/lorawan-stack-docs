@@ -14,10 +14,13 @@ Device event logs can be found in the console in the device's general informatio
 ### My device won't join. What do I do?
 
 - Double check your DevEUI, JoinEUI or AppEUI, LoRaWAN and Regional Parameters Version, root keys (AppKey, and with LoRaWAN 1.1 or higher, NwkKey)
-- Check gateway and application events for traffic from your device
-- Double check frequency plan settings in your end device and gateways (they must be the same LoRaWAN band)
+- Check gateway and device events for traffic from your device. Below are a few common issues
+    - **MIC mismatch** error in the device events: Possible mismatch of AppKey in device firmware to the AppKey registered in {{% tts %}} console. Update the AppKey in the console accordingly
+    - **Uplink channel not found** error in the gateway events: Indicates there is a mismatch of the frequency plans. Double check frequency plan settings in your end device and gateways (they must be the same LoRaWAN band)
+    - **DevNonce has already been used** error in the device events: Indicates a duplicate use of Devnonce. Generally happens when the device has sent too many unsuccessful Join Requests
+    - **Uplink channel not found** error in the device events: The device is transmitting Join Requests in the non-default channels of the band which is not in line with the LoRaWAN Specification. Contact the end-device manufacturer
 - Double check your network connection. If there is a slow connection from the server to the gateway, the join accept message may be sent too late (this can happen when a gateway uses 3G as a backhaul). If using the CLI, run `ttn-lw-cli gateways connection-stats <gateway-id>` to see the round trip time (RTT) for your gateway
-- Check for duplicate use of JoinNonce (or AppNonce) and/or DevNonce
+- Check for duplicate use of JoinNonce (or AppNonce)
 - Adjust ADR and link check settings to conditions which the device is located in
 
 ### No downlinks are reaching my device. What do I do?
