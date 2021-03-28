@@ -10,7 +10,7 @@ distributions:
 new_in_version: 3.12.0
 ---
 
-This guide explains how to manage routing policies: the rules for forwarding uplink and downlink traffic.
+This guide explains how to manage routing policies, i.e. the rules for forwarding uplink and downlink traffic.
 
 <!--more-->
 
@@ -36,7 +36,7 @@ $ ttn-lw-cli packetbroker home-networks list
 ```
 
 {{< note >}}
-This shows only the Home Networks that have indicated to be visible to other networks. If you are using {{% tts %}} Cloud or Dedicated cloud, contact support to change if your network is listed or not. If you are using {{% tts %}} Open Source or Enterprise, see [Configuration]({{< relref "/reference/configuration/packet-broker-agent" >}}).
+This shows only the Home Networks that have been set to be visible to other networks. If you are using {{% tts %}} Cloud or Dedicated Cloud, [contact The Things Industries support](mailto:support@thethingsindustries.com) to set your network to be listed or not. If you are using {{% tts %}} Open Source or Enterprise, see [Configuration]({{< relref "/reference/configuration/packet-broker-agent" >}}).
 {{< /note >}}
 
 <details><summary>Example output</summary>

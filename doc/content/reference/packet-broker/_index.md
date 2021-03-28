@@ -13,7 +13,7 @@ Packet Broker can be used to exchange traffic with other LoRaWAN networks to sha
 
 ![Overview](overview.png)
 
-Packet Broker supports class A and C downlink as well as device activations (over-the-air activation).
+Packet Broker supports class A and C downlink as well as OTAA device activations.
 
 ## Who is it for?
 
@@ -28,17 +28,17 @@ Exchanging traffic can be beneficial for all public and private LoRaWAN network 
 
 Packet Broker distinguishes two types of networks: Forwarders and Home Networks. Forwarders are networks with gateways: they forward uplink messages from the gateways to Packet Broker, and downlink messages from Packet Broker back to the gateways. Home Networks are networks with end devices.
 
+Your {{% tts %}} deployment can be a Forwarder, a Home Network or both. This means that you can make your physical gateway infrastructure available to other networks without having end devices. Likewise, you can deploy end devices as a Home Network, without physical gateway infrastructure.
+
 Packet Broker routes uplink messages from Forwarders to Home Networks based on the 32-bit `DevAddr` in the uplink message. The first part of the `DevAddr` is the `NetID`, a globally unique identifier of a LoRaWAN network. Packet Broker uses the `NetID` to lookup the Home Network. Besides identifying Home Networks by `NetID`, Packet Broker also supports tenants. Tenants use a `DevAddr` block of a Home Network host.
 
 > For example, a message with `DevAddr` `27ABCD12` has `NetID` `000013` (owned by The Things Network Foundation). The `DevAddr` block `27ABCD00` to `27ABCDFF` might be assigned to a private network `example-com`. That `DevAddr` block is noted as `27ABCD00/24`: 24 significant bits. Packet Broker identifies the Home Network then as `NetID` `000013` and tenant ID `example-com`.
-
-Your {{% tts %}} deployment can be a Forwarder, a Home Network or both. This means that you can make your physical gateway infrastructure available to other networks without having end devices. Likewise, you can deploy end devices as a Home Network, without physical gateway infrastructure.
 
 {{< info >}}The Things Network is identified by `NetID` is `000013` and tenant ID `ttn`.{{< /info >}}
 
 ### Routing Policies
 
-Routing policies define rules that Forwarders configure for routing messages to Home Networks. Routing policies are peer-to-peer: a Forwarder can define policies with each individual Home Network. Forwarders can also define an optional default routing policy that is used as fallback when no specific policy is defined.
+Routing policies define the rules that Forwarders configure for routing messages to Home Networks. Routing policies are peer-to-peer: a Forwarder can define policies with each individual Home Network. Forwarders can also define an optional default routing policy that is used as a fallback when no specific policy is defined.
 
 Forwarders can configure the following things in a routing policy:
 
@@ -52,15 +52,15 @@ Localization | O | | Gateway locations, timestamps and signal quality
 
 >For instance, a Forwarder may wish to configure three policies:
 >
->1. With Home Network that has `NetID` `000013` and tenant ID `ttn` (The Things Network): all message types. That is, join-requests and join-accepts, uplink and downlink MAC and application payload messages, and signal quality and localization information.
->2. With Home Network that has `NetID` `000013` and tenant ID `example-com`: only join-requests, join-accepts and uplink and downlink MAC and application payload messages. That is, no metadata.
->3. A default policy (for all other networks): only uplink MAC and application payload messages. That is, do not forward join-requests and join-accepts, and do not forward metadata.
+>1. With Home Network that has `NetID` `000013` and tenant ID `ttn` (The Things Network): all message types. This would mean to forward join-requests and join-accepts, uplink and downlink MAC and application payload messages, and signal quality and localization information.
+>2. With Home Network that has `NetID` `000013` and tenant ID `example-com`: only join-requests, join-accepts and uplink and downlink MAC and application payload messages. This would mean to not forward the metadata.
+>3. A default policy (for all other networks): only uplink MAC and application payload messages. That would mean to not forward join-requests and join-accepts, and to not forward the metadata.
 
 ## Getting Started
 
-The Things Network or {{% tts %}} Cloud {{< distributions "Cloud" "Dedicated Cloud" "The Things Network" >}} is already connected to Packet Broker. Proceed to [Configuration]({{< relref "configure" >}}) to manage your registration and routing policies with other networks.
+The Things Network or {{% tts %}} Cloud {{< distributions "Cloud" "Dedicated Cloud" "The Things Network" >}} is already connected to the Packet Broker. Proceed to [Configure]({{< relref "configure" >}}) section to manage your registration and routing policies with other networks.
 
-When you are using The Things Network {{< distributions "The Things Network" >}}, you cannot configure any routing policies, as The Things Network is a public network and The Things Network Foundation controls with which public or private networks traffic gets exchanged. Upgrade to {{% tts %}} Cloud to manage routing policies for your gateways.
+When you are using The Things Network {{< distributions "The Things Network" >}}, you cannot configure any routing policies, as The Things Network is a public network and The Things Network Foundation controls which public or private networks the traffic gets exchanged with. To manage routing policies for your gateways, upgrade to {{% tts %}} Cloud.
 
 When using {{% tts %}} Enterprise of {{% tts %}} Open Source, learn to [Connect {{% tts %}} to Packet Broker]({{< relref "connect" >}}). {{< distributions "Enterprise" "Open Source" >}}
 
@@ -68,7 +68,7 @@ When using {{% tts %}} Enterprise of {{% tts %}} Open Source, learn to [Connect 
 
 Packet Broker is a global backbone for LoRaWAN traffic. It is designed to securely exchange traffic between LoRaWAN networks.
 
-Packet Broker supports LoRaWAN passive roaming. However, Packet Broker goes beyond that:
+Packet Broker supports LoRaWAN passive roaming, but it goes even beyond that:
 
 - Packet Broker allows for individual packet selection: networks do not get charged for traffic they did not consume. 
 - Packet Broker separates traffic routing from billing and clearing: networks are free to put commercial agreements in place to settle balances. 

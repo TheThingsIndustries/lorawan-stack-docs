@@ -14,7 +14,7 @@ This section explains how to connect {{% tts %}} to Packet Broker.
 {{< info >}}
 {{% tts %}} Cloud and The Things Network are already connected to Packet Broker. Use this section to connect your {{% tts %}} Enterprise or Open Source deployment to Packet Broker.
 
-If you are using {{% tts %}} Cloud or if your {{% tts %}} deployment is connected to Packet Broker, [proceed to configuration]({{< relref "configure" >}}).
+If you are using {{% tts %}} Cloud or if your {{% tts %}} deployment is connected to Packet Broker, proceed to [configure Packet Broker]({{< relref "configure" >}}).
 {{< /info >}}
 
 ## Prerequisites

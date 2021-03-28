@@ -20,7 +20,7 @@ This guide explains how to manage your Packet Broker registration.
 
 1. {{% tts %}} connected to Packet Broker.
   - {{< distributions "Cloud" >}} **{{% tts %}} Cloud** is already connected to Packet Broker.
-  - {{< distributions "Dedicated Cloud" >}} **{{% tts %}} Dedicated Cloud** can be connected on request. Please contact support.
+  - {{< distributions "Dedicated Cloud" >}} **{{% tts %}} Dedicated Cloud** can be connected on request. Please [contact The Things Industries support](mailto:support@thethingsindustries.com).
   - {{< distributions "Enterprise" "Open Source" >}} **{{% tts %}} Enterprise** and **Open Source**: see [Connect]({{< relref "connect" >}}).
 2. An admin account for the {{% tts %}} deployment. All Packet Broker configuration requires administrative access.
 
