@@ -25,7 +25,7 @@ Devices imported from {{% ttnv2 %}} are configured with an `Rx1Delay` of 1 secon
 
 ## Gateway Coverage
 
-The Packet Broker enables peering between networks, so traffic received by one network (e.g. the Public Community Network) but intended for a different network ({{% tts %}}) can be forwarded to and from that network. See the [Peering Guide]({{< ref "/reference/packet-broker" >}}) for details on Packet Broker and how to enable it for your network.
+Packet Broker enables peering between networks, so traffic received by one network (e.g. the Public Community Network) but intended for a different network ({{% tts %}}) can be forwarded to and from that network. See the [Peering Guide]({{< ref "/reference/packet-broker" >}}) for details on Packet Broker and how to enable it for your network.
 
 With Packet Broker enabled on both {{% tts %}} and {{% ttnv2 %}}, you can receive traffic on {{% tts %}} without having to re-configure any of your gateways.
 
