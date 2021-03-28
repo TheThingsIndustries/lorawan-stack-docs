@@ -71,4 +71,4 @@ Device join failure could be due to a number of reasons. Ensure that the device 
 
 ## Professional Support
 
-Additional paid support for this deployment is offered by The Things Industries. You can contact us either by mailing us at `support@thethingsindustries.com` or by visiting [our support page](https://www.thethingsindustries.com/stack/aws/support). 
+Additional paid support for this deployment is offered by The Things Industries. You can [contact The Things Industries support](mailto:support@thethingsindustries.com) or visit [the support page](https://www.thethingsindustries.com/stack/aws/support).

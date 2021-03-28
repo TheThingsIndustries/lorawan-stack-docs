@@ -37,7 +37,7 @@ https://<span data-content="tenant-id"></span>.<span data-content="cluster-id"><
 </p>
 
 {{< info >}}
-Although there is a Join Server in each routing cluster, this Join Server does not support advanced features like secure elements and interoperability with LoRaWAN Backend Interfaces. See below the address of The Things Join Server that does support these features.
+Although there is a Join Server in each routing cluster, this Join Server does not support advanced features like secure elements and interoperability with LoRaWAN Backend Interfaces. See below the address of The Things Join Server that does support these features in the section below.
 {{< /info >}}
 
 The address of the Console for **The Things Join Server** is always in the `join` cluster:

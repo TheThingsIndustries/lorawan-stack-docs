@@ -21,11 +21,11 @@ This guide helps device makers to claim Microchip ATECC608A/B secure elements on
 
 ## Import Manifest
 
-Go to the Console of The Things Join Server, e.g.
+Visit the Console of The Things Join Server, e.g.:
 
 `https://<tenant-id>.join.cloud.thethings.industries/console`
 
-Go to the **Applications** and select your application. 
+Go to the **Applications** menu and select your application. 
 
 Go to **Devices** and click **Import Devices** button in the upper right. 
 
