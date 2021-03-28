@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Class C | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/class-c/" />
+  <title>Claim | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/atecc608a/claim/" />
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.db043375ab9a68ad2c8c4e45b432617be913b8b857768ffc17e743cfeb4080f3.css" integrity="sha256-2wQzdauaaK0sjE5FtDJhe&#43;kTuLhXdo/8F&#43;dDz&#43;tAgPM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Class C">
+  <meta itemprop="name" content="Claim">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Class C">
+  <meta property="og:title" content="Claim">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/devices/class-c/">
-  <meta name="twitter:title" content="Class C" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/devices/atecc608a/claim/">
+  <meta name="twitter:title" content="Claim" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -97,6 +97,25 @@ debug: false
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/devices/atecc608a/" class="">ATECC608A/B Secure Elements</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/devices/atecc608a/claim/" class="is-active">Claim</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/devices/atecc608a/transfer/" class="">Transfer to new Join Server</a>
+    
+  </li>
+
+</ul>
+
+
+    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/devices/best-practices/" class="">Best Practices</a>
@@ -105,12 +124,7 @@ debug: false
     <a href="https://www.thethingsindustries.com/docs/devices/class-b/" class="">Class B</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/class-c/" class="is-active">Class C</a>
-    
-
-
-
-    
+    <a href="https://www.thethingsindustries.com/docs/devices/class-c/" class="">Class C</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/devices/device-claiming/" class="">Device Claiming</a>
@@ -147,80 +161,70 @@ debug: false
       <div class="column sidebar-middle">
 
 <div class="docs-content">
-<h1 class="title is-size-2">Class C
+<h1 class="title is-size-2">Claim
   
+  
+    
+    
+
+
+
+
+  
+
+  
+
+<a href="/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud and Enterprise Only">
+  
+    
+    <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
+  
+    
+    <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+  
+</a>
+
+
   
   
   
 </h1>
 
 <div class="content">
-  <p>Class C end devices continuously listen for downlink messages. This allows applications to send messages to devices at any time, instead of having to wait for a Class A uplink. When combined with <a href="https://www.thethingsindustries.com/docs/devices/multicast/">multicast groups</a>, this allows applications to send immediate downlinks to many devices at the same time.</p>
-<p>This guide shows how to enable or disable Class C for an and device, and how to work with multicast groups.</p>
-<h2 id="enabling-and-disabling-class-c">Enabling and Disabling Class C</h2>
-<p>In order to send Class C downlink messages to a single device, enable Class C support for the end device when creating or updating it with the <code>--supports-class-c</code> flag.</p>
-<p>For example, when enabling Class C for an existing device:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices <span class="nb">set</span> app1 dev1 --supports-class-c
-</code></pre></div><p>This will enable the Class C downlink scheduling of the device. That&rsquo;s it! Downlink messages are now scheduled as soon as possible.</p>
-<p>To disable Class C scheduling, reset with <code>--supports-class-c=false</code>.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  For unicast devices, Class C downlink scheduling starts after the end device sends an uplink in the session. This means that an OTAA end device should send an uplink message after receiving the join-accept in order to enable Class C downlink scheduling.
-</div>
+  <p>This guide helps device makers to claim Microchip ATECC608A/B secure elements on The Things Join Server.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ol>
+<li>ATECC608A-TNGLORA or ATECC608B-TNGLORA secure elements. <a href="https://www.microchip.com/wwwproducts/en/ATECC608A-TNGLORA">Product details</a></li>
+<li>Device security (manifest) file. You can obtain this from your <a href="https://www.microchipdirect.com/orders">Microchip Direct order history</a></li>
+<li>Access to The Things Stack Cloud. <a href="mailto:cloud@thethingsindustries.com">Contact The Things Industries</a> to get onboarded</li>
+<li>An application in The Things Stack Cloud. <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/">See instructions</a></li>
+<li>Your The Things Join Server address. <a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/tti-join-server/">See Join Server addresses</a></li>
+</ol>
+<h2 id="import-manifest">Import Manifest</h2>
+<p>Visit the Console of The Things Join Server, e.g.:</p>
+<p><code>https://&lt;tenant-id&gt;.join.cloud.thethings.industries/console</code></p>
+<p>Go to the <strong>Applications</strong> menu and select your application.</p>
+<p>Go to <strong>Devices</strong> and click <strong>Import Devices</strong> button in the upper right.</p>
+<p>As <strong>Format</strong>, select <strong>Microchip ATECC608A-TNGLORA Manifest File</strong>.</p>
+<p>Click <strong>Select a file</strong> and open your manifest file. If you want to make your device available for claiming by other users, check <strong>Set claim authentication code</strong>.</p>
+<figure>
+    <img src="../import-devices-settings.png"
+         alt="Import settings"/> 
+</figure>
 
-<h2 id="multicast-group">Multicast Group</h2>
-<p>See <a href="https://www.thethingsindustries.com/docs/devices/multicast/">Multicast</a> for instructions for creating and using multicast groups.</p>
-<h2 id="class-c-message-settings">Class C Message Settings</h2>
-<p>The Things Stack supports optional settings for Class C downlink messages: the downlink path and the time to send the message.</p>
-<p>The downlink path is defined by one or more gateways IDs. The Network Server and Gateway Server schedules only on the specified gateways in the specified order. This is useful for multicast (where no downlink path is known because there is no uplink). A scheduling attempt on can fail when the gateway is not connected, if there is a scheduling conflict or if duty-cycle regulations prohibit transmission. See the <a href="#example">Example</a> section below.</p>
-<p>The time to transmit is an absolute timestamp in ISO 8601 format to send the message. This requires gateways either with GPS lock, or gateways that use a protocol that provide round-trip times (RTT). See the <a href="#example">Example</a> section below.</p>
-<h2 id="example">Example</h2>
-<div class="notification is-primary is-light has-text-dark">
-  <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
-  <p>The instructions below use the command-line interface (CLI).</p>
-  <div class="buttons">
-    <a class="button is-dark is-outlined" href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/">Learn how to install the CLI</a>
-  </div>
-</div>
+<p>Click <strong>Create Devices</strong> to finish.</p>
+<figure>
+    <img src="../import-devices-progress.png"
+         alt="Import progress"/> 
+</figure>
 
-<p>First, create a Class C device:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices create app1 dev1 <span class="se">\
-</span><span class="se"></span>  --frequency-plan-id EU_863_870 <span class="se">\
-</span><span class="se"></span>  --lorawan-version 1.0.3 <span class="se">\
-</span><span class="se"></span>  --lorawan-phy-version 1.0.3-a <span class="se">\
-</span><span class="se"></span>  --session.dev-addr 00E4304D <span class="se">\
-</span><span class="se"></span>  --session.keys.app-s-key.key A0CAD5A30036DBE03096EB67CA975BAA <span class="se">\
-</span><span class="se"></span>  --session.keys.nwk-s-key.key B7F3E161BC9D4388E6C788A0C547F255 <span class="se">\
-</span><span class="se"></span>  --supports-class-c
-</code></pre></div><p>Then, schedule the following message to the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">Application Server MQTT server</a> or <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/">HTTP webhooks</a>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;downlinks&#34;</span><span class="p">:</span> <span class="p">[{</span>
-    <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;vu8=&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
-    <span class="nt">&#34;priority&#34;</span><span class="p">:</span> <span class="s2">&#34;NORMAL&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;class_b_c&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;gateways&#34;</span><span class="p">:</span> <span class="p">[</span>
-        <span class="p">{</span>
-          <span class="nt">&#34;gateway_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;gtw1&#34;</span>
-          <span class="p">},</span>
-        <span class="p">},</span>
-        <span class="p">{</span>
-          <span class="nt">&#34;gateway_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;gtw2&#34;</span>
-          <span class="p">},</span>
-        <span class="p">}</span>
-      <span class="p">],</span>
-      <span class="nt">&#34;absolute_time&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-07-23T13:05:00Z&#34;</span>
-    <span class="p">}</span>
-  <span class="p">}]</span>
-<span class="p">}</span>
-</code></pre></div>
+<p>Your secure elements are now claimed in your application. The secure elements cannot be claimed by anyone else until you delete the devices.</p>
+<p>Note that claiming the secure elements only creates devices on the Join Server, but they are not registered on a Network Server or Application Server yet. You first need to register them on a Network Server and Application Server before you can activate the devices.</p>
+<p><a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/tti-join-server/activate-devices-cloud-hosted/">Learn how to activate devices on The Things Stack Cloud</a></p>
 </div>
-
 <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/devices/class-b/">← Class B</a>
-<a class="button is-pulled-right" href="/docs/devices/device-claiming/">Device Claiming →</a>
+<a class="button is-pulled-left" href="/docs/devices/atecc608a/">← ATECC608A/B Secure Elements</a>
+<a class="button is-pulled-right" href="/docs/devices/atecc608a/transfer/">Transfer to new Join Server →</a>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -241,13 +245,9 @@ debug: false
 
   <ul class="menu-list">
     
-      <li><a href='#enabling-and-disabling-class-c'>Enabling and Disabling Class C</a></li>
+      <li><a href='#prerequisites'>Prerequisites</a></li>
     
-      <li><a href='#multicast-group'>Multicast Group</a></li>
-    
-      <li><a href='#class-c-message-settings'>Class C Message Settings</a></li>
-    
-      <li><a href='#example'>Example</a></li>
+      <li><a href='#import-manifest'>Import Manifest</a></li>
     
   </ul>
 
@@ -285,14 +285,14 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 25 Feb 2021.
+  Last changed by Johan Stokking on 28 Mar 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3ae3ae575f74883b422051dd13e733aa3b9f9fbc">
-      doc: Add Class B doc
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/ae37cc9a5f3ca0e2ce3c8a0e164cd2a9586b1b69">
+      doc: Small textual improvements
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/devices/class-c/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/devices/atecc608a/claim.md" class="button">Edit on Github</a>
 </div>
 
       </div>

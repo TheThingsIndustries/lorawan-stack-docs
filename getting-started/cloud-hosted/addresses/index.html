@@ -240,8 +240,28 @@ debug: false
 <span data-content="tenant-id"></span>.<span data-content="cluster-id"></span>.cloud.thethings.industries
 </code>
 </p>
+<h2 id="console">Console</h2>
+<p>To learn how to get started with the Console, see the <a href="https://www.thethingsindustries.com/docs/getting-started/console/">Console Getting Started Guide</a>.</p>
+<p>Each cluster has a Console where you can manage gateways and end devices of that cluster. You can use any cluster with your Cloud account.</p>
+<p>The address of the Console for the <strong>routing cluster</strong> includes both your tenant ID and the cluster ID:</p>
+<p>
+<code data-content="cluster-address">
+https://<span data-content="tenant-id"></span>.<span data-content="cluster-id"></span>.cloud.thethings.industries/console
+</code>
+</p>
+<div class="notification is-primary is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Info:</h5>
+  Although there is a Join Server in each routing cluster, this Join Server does not support advanced features like secure elements and interoperability with LoRaWAN Backend Interfaces. See below the address of The Things Join Server that does support these features in the section below.
+</div>
+
+<p>The address of the Console for <strong>The Things Join Server</strong> is always in the <code>join</code> cluster:</p>
+<p>
+<code data-content="cluster-address">
+https://<span data-content="tenant-id"></span>.join.cloud.thethings.industries/console
+</code>
+</p>
 <h2 id="api-endpoints">API Endpoints</h2>
-<p>The Application Server, Join Server, and Network Server APIs are all available in your regional cluster:</p>
+<p>The Application Server, Join Server and Network Server APIs are all available in your routing cluster.</p>
 <p>
 <code data-content="cluster-address">
 <span data-content="tenant-id"></span>.<span data-content="cluster-id"></span>.cloud.thethings.industries
@@ -258,20 +278,17 @@ debug: false
   End-Device Registry API requests or other Identity Server API requests to any cluster other than <code>eu1</code> will fail.
 </div>
 
+<p>The Things Join Server APIs are only available in the <code>join</code> cluster:</p>
+<p>
+<code data-content="cluster-address">
+<span data-content="tenant-id"></span>.join.cloud.thethings.industries
+</code>
+</p>
 <h2 id="account-and-oauth">Account and OAuth</h2>
 <p>User accounts are stored in the <code>eu1</code> cluster. For registering users, logging in, changing your password and for performing OAuth flows, you need to use the following address:</p>
 <p>
 <code data-content="cluster-address">
 https://<span data-content="tenant-id"></span>.eu1.cloud.thethings.industries/oauth
-</code>
-</p>
-<h2 id="console">Console</h2>
-<p>To learn how to get started with the Console, see the <a href="https://www.thethingsindustries.com/docs/getting-started/console/">Console Getting Started Guide</a>.</p>
-<p>Each cluster has a Console where you can manage gateways and end devices of that cluster. You can use any cluster with your Cloud account.</p>
-<p>The address of the Console includes both your tenant ID and the cluster ID:</p>
-<p>
-<code data-content="cluster-address">
-https://<span data-content="tenant-id"></span>.<span data-content="cluster-id"></span>.cloud.thethings.industries/console
 </code>
 </p>
 <h2 id="command-line-interface">Command-line Interface</h2>
@@ -319,11 +336,11 @@ credentials-id: '<span data-content="tenant-id"></span>'
     
       <li><a href='#cluster-address'>Cluster Address</a></li>
     
+      <li><a href='#console'>Console</a></li>
+    
       <li><a href='#api-endpoints'>API Endpoints</a></li>
     
       <li><a href='#account-and-oauth'>Account and OAuth</a></li>
-    
-      <li><a href='#console'>Console</a></li>
     
       <li><a href='#command-line-interface'>Command-line Interface</a></li>
     
@@ -363,10 +380,10 @@ credentials-id: '<span data-content="tenant-id"></span>'
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 11 Jan 2021.
+  Last changed by Johan Stokking on 28 Mar 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/ae4dce70b24cfb4cf7f13b87105a3990e9b7c931">
-      doc: Add note that IS is eu1 only
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/ae37cc9a5f3ca0e2ce3c8a0e164cd2a9586b1b69">
+      doc: Small textual improvements
     </a>
 </p>
 
