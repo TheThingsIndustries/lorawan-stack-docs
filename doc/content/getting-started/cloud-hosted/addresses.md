@@ -22,9 +22,35 @@ Your cluster address is:
 </code>
 </p>
 
+## Console
+
+To learn how to get started with the Console, see the [Console Getting Started Guide]({{< ref "/getting-started/console" >}}).
+
+Each cluster has a Console where you can manage gateways and end devices of that cluster. You can use any cluster with your Cloud account.
+
+The address of the Console for the **routing cluster** includes both your tenant ID and the cluster ID:
+
+<p>
+<code data-content="cluster-address">
+https://<span data-content="tenant-id"></span>.<span data-content="cluster-id"></span>.cloud.thethings.industries/console
+</code>
+</p>
+
+{{< info >}}
+Although there is a Join Server in each routing cluster, this Join Server does not support advanced features like secure elements and interoperability with LoRaWAN Backend Interfaces. See below the address of The Things Join Server that does support these features in the section below.
+{{< /info >}}
+
+The address of the Console for **The Things Join Server** is always in the `join` cluster:
+
+<p>
+<code data-content="cluster-address">
+https://<span data-content="tenant-id"></span>.join.cloud.thethings.industries/console
+</code>
+</p>
+
 ## API Endpoints
 
-The Application Server, Join Server, and Network Server APIs are all available in your regional cluster:
+The Application Server, Join Server and Network Server APIs are all available in your routing cluster.
 
 <p>
 <code data-content="cluster-address">
@@ -42,6 +68,14 @@ However, the Identity Server APIs are only available in the `eu1` cluster:
 
 {{< warning >}}End-Device Registry API requests or other Identity Server API requests to any cluster other than `eu1` will fail. {{</ warning >}}
 
+The Things Join Server APIs are only available in the `join` cluster:
+
+<p>
+<code data-content="cluster-address">
+<span data-content="tenant-id"></span>.join.cloud.thethings.industries
+</code>
+</p>
+
 ## Account and OAuth
 
 User accounts are stored in the `eu1` cluster. For registering users, logging in, changing your password and for performing OAuth flows, you need to use the following address:
@@ -49,20 +83,6 @@ User accounts are stored in the `eu1` cluster. For registering users, logging in
 <p>
 <code data-content="cluster-address">
 https://<span data-content="tenant-id"></span>.eu1.cloud.thethings.industries/oauth
-</code>
-</p>
-
-## Console
-
-To learn how to get started with the Console, see the [Console Getting Started Guide]({{< ref "/getting-started/console" >}}).
-
-Each cluster has a Console where you can manage gateways and end devices of that cluster. You can use any cluster with your Cloud account.
-
-The address of the Console includes both your tenant ID and the cluster ID:
-
-<p>
-<code data-content="cluster-address">
-https://<span data-content="tenant-id"></span>.<span data-content="cluster-id"></span>.cloud.thethings.industries/console
 </code>
 </p>
 

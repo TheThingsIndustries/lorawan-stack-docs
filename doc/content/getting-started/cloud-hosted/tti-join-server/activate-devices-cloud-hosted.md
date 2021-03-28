@@ -16,7 +16,7 @@ The Things Join Server is a LoRaWAN Join Server. Learn how to activate devices o
 1. Command-line interface (CLI) configuration file *with Cloud cluster*. See [The Things Join Server]({{< relref "../tti-join-server" >}})
 2. Devices registered in The Things Join Server. You can achieve this in two ways:
   1. Register devices with root keys. See [registering devices on The Things Join Server]({{< relref "register-devices" >}})
-  2. Claim secure elements. See [Claim ATECC608A-TNGLORA secure elements]({{< ref "/devices/claim-atecc608a" >}})
+  2. Claim secure elements. See [Claim ATECC608A-TNGLORA secure elements]({{< ref "/devices/atecc608a/claim" >}})
 
 ## Login with CLI
 

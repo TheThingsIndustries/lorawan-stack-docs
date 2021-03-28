@@ -41,7 +41,7 @@ If you don't have a device in the application yet, you can add it by using one o
 
 1. [Add a device]({{< relref "../adding-devices/" >}}) in {{% tts %}}
 2. [Register a device]({{< ref "/getting-started/cloud-hosted/tti-join-server/register-devices" >}}) on The Things Join Server (i.e. not in a Network Server or Application Server yet)
-3. [Import ATECC608A Secure Elements]({{< relref "../claim-atecc608a" >}}) on The Things Join Server. Make sure to enable the **Set claim authentication code** option
+3. [Import ATECC608A Secure Elements]({{< relref "../atecc608a/claim" >}}) on The Things Join Server. Make sure to enable the **Set claim authentication code** option
 
 ## Claiming Settings
 
