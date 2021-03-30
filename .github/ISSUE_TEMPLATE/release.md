@@ -16,7 +16,30 @@ This is a checklist for releases. This is filled in by both the releaser and the
 #### Update Documentation
 
 - [ ] Update the [documentation version](https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/config/_default/config.toml#L28) to match the current minor, if necessary (`v3.${minor}`).
-- [ ] Run `mage ttiProto:hugoData` from [TheThingsIndustries/lorawan-stack](https://github.com/TheThingsIndustries/lorawan-stack), and copy the generated files to the [TheThingsIndustries/lorawan-stack-docs](https://github.com/TheThingsIndustries/lorawan-stack-docs).
+- [ ] To generate documentation, create a clone of [TheThingsIndustries/lorawan-stack](https://github.com/TheThingsIndustries/lorawan-stack), and **checkout the correct branch**, i.e the current minor branch.
+- [ ] To generate API documentation, run the following from within the clone of [TheThingsIndustries/lorawan-stack](https://github.com/TheThingsIndustries/lorawan-stack): 
+
+```
+  tools/bin/mage ttiProto:hugoData
+```
+
+- [ ] Copy generated files to `lorawan-stack-docs` with the following command:
+
+```
+  cp -r doc/data/api /path/to/lorawan-stack-docs/doc/data/
+```
+
+- [ ] To generate and export CLI documentation from within the clone of [TheThingsIndustries/lorawan-stack](https://github.com/TheThingsIndustries/lorawan-stack), run the following command:
+
+```
+  go run -tags tti ./cmd/tti-lw-cli gen-yaml-doc -o /path/to/lorawan-stack-docs/doc/data/
+```
+
+#### Check (for reviewers)
+
+- [ ] The documentation version is up to date.
+- [ ] The TTI and TTN API documentation has been generated and updated in [doc/data/api](https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/data/api). This includes the following files:
+
   ```
   doc/data/api/tti.lorawan.v3/messages.yml
   doc/data/api/tti.lorawan.v3/services.yml
@@ -25,13 +48,11 @@ This is a checklist for releases. This is filled in by both the releaser and the
   doc/data/api/ttn.lorawan.v3/services.yml
   doc/data/api/ttn.lorawan.v3/enums.yml
   ```
-- [ ] Run `go install ./cmd/ttn-lw-cli` from [TheThingsIndustries/lorawan-stack](https://github.com/TheThingsIndustries/lorawan-stack), and export the generated files to the [TheThingsIndustries/lorawan-stack-docs](https://github.com/TheThingsIndustries/lorawan-stack-docs) using the following command:
-```
-  HOME='$HOME' ttn-lw-cli gen-yaml-doc -o /path/to/lorawan-stack-docs/doc/data/
-```
 
-#### Check (for reviewers)
+- [ ] The TTI CLI documentation has been generated and updated in [doc/data](https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/data). This includes the following file:
 
-- [ ] The documentation version is up to date.
-- [ ] The TTI and TTN API documentation has been generated and updated in [doc/data/api](https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/data/api).
-- [ ] The TTN CLI documentation has been generated and updated in [doc/data](https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/data)
+  ```
+  doc/data/ttn-lw-cli.yml
+  ```
+
+- [ ] All generated documentation matches the version that is being released.
