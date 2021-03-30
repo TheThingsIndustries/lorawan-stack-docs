@@ -212,7 +212,12 @@ $ sudo snap <span class="nb">alias</span> ttn-lw-stack.ttn-lw-cli ttn-lw-cli
 <h3 id="generate-configuration-file">Generate configuration file</h3>
 <p>For a standard deployment on <code>thethings.example.com</code>, all you need is:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli use thethings.example.com <span class="o">[</span>--fetch-ca<span class="o">]</span> <span class="o">[</span>--user<span class="o">]</span> <span class="o">[</span>--overwrite<span class="o">]</span>
-</code></pre></div><div class="notification is-info is-light has-text-dark">
+</code></pre></div><div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  If configuring <code>ttn-lw-cli</code> for The Things Stack Cloud, see <a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/addresses/">Cloud Addresses</a> for information about endpoints.
+</div>
+
+<div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   On Windows, use <code>ttn-lw-cli.exe</code> instead of <code>ttn-lw-cli</code>.
 </div>
@@ -241,7 +246,12 @@ $ sudo snap <span class="nb">alias</span> ttn-lw-stack.ttn-lw-cli ttn-lw-cli
 </span><span class="w"></span><span class="k">device-claiming-server-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:8884&#39;</span><span class="w">
 </span><span class="w"></span><span class="k">device-template-converter-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:8884&#39;</span><span class="w">
 </span><span class="w"></span><span class="k">qr-code-generator-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:8884&#39;</span><span class="w">
-</span></code></pre></div><p>If you are using an <code>https</code> port other than <code>443</code>, you need to specify that port, e.g.:</p>
+</span></code></pre></div><div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  If configuring <code>ttn-lw-cli</code> for The Things Stack Cloud, see <a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/addresses/">Cloud Addresses</a> for information about endpoints.
+</div>
+
+<p>If you are using an <code>https</code> port other than <code>443</code>, you need to specify that port, e.g.:</p>
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">oauth-server-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example:8885/oauth&#39;</span><span class="w">
 </span></code></pre></div><p>If your deployment uses a custom certificate authority, you&rsquo;ll need to add:</p>
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">ca</span><span class="p">:</span><span class="w"> </span>/path/to/ca.pem<span class="w">
@@ -325,10 +335,10 @@ $ . ./ttn-lw-cli-autocomplete.ps1
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 12 Jan 2021.
+  Last changed by Ben Olayinka on 19 Mar 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/8a3f0173d515f2e47f905e13aa072c87fdd011ff">
-      doc: Add instructions to upgrade CLI
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/dbc4cad72f5203d815ba8ff60450071833c9cf57">
+      doc: Add CLI note about au1 oauth
     </a>
 </p>
 
