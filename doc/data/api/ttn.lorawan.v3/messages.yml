@@ -2202,6 +2202,41 @@ DecodeDownlinkMessageRequest:
   - name: parameter
     type: string
     default: ""
+DecodeDownlinkRequest:
+  name: DecodeDownlinkRequest
+  fields:
+  - name: end_device_ids
+    message:
+      name: EndDeviceIdentifiers
+    rules:
+      required: true
+    default: {}
+  - name: version_ids
+    message:
+      name: EndDeviceVersionIdentifiers
+    default: {}
+  - name: downlink
+    message:
+      name: ApplicationDownlink
+    rules:
+      required: true
+    default: {}
+  - name: formatter
+    enum:
+      name: PayloadFormatter
+    rules:
+      defined_only: true
+    default: FORMATTER_NONE
+  - name: parameter
+    type: string
+    default: ""
+DecodeDownlinkResponse:
+  name: DecodeDownlinkResponse
+  fields:
+  - name: downlink
+    message:
+      name: ApplicationDownlink
+    default: {}
 DecodeUplinkMessageRequest:
   name: DecodeUplinkMessageRequest
   fields:
@@ -2230,6 +2265,41 @@ DecodeUplinkMessageRequest:
   - name: parameter
     type: string
     default: ""
+DecodeUplinkRequest:
+  name: DecodeUplinkRequest
+  fields:
+  - name: end_device_ids
+    message:
+      name: EndDeviceIdentifiers
+    rules:
+      required: true
+    default: {}
+  - name: version_ids
+    message:
+      name: EndDeviceVersionIdentifiers
+    default: {}
+  - name: uplink
+    message:
+      name: ApplicationUplink
+    rules:
+      required: true
+    default: {}
+  - name: formatter
+    enum:
+      name: PayloadFormatter
+    rules:
+      defined_only: true
+    default: FORMATTER_NONE
+  - name: parameter
+    type: string
+    default: ""
+DecodeUplinkResponse:
+  name: DecodeUplinkResponse
+  fields:
+  - name: uplink
+    message:
+      name: ApplicationUplink
+    default: {}
 DeleteApplicationActivationSettingsRequest:
   name: DeleteApplicationActivationSettingsRequest
   fields:
@@ -2408,6 +2478,41 @@ EncodeDownlinkMessageRequest:
   - name: parameter
     type: string
     default: ""
+EncodeDownlinkRequest:
+  name: EncodeDownlinkRequest
+  fields:
+  - name: end_device_ids
+    message:
+      name: EndDeviceIdentifiers
+    rules:
+      required: true
+    default: {}
+  - name: version_ids
+    message:
+      name: EndDeviceVersionIdentifiers
+    default: {}
+  - name: downlink
+    message:
+      name: ApplicationDownlink
+    rules:
+      required: true
+    default: {}
+  - name: formatter
+    enum:
+      name: PayloadFormatter
+    rules:
+      defined_only: true
+    default: FORMATTER_NONE
+  - name: parameter
+    type: string
+    default: ""
+EncodeDownlinkResponse:
+  name: EncodeDownlinkResponse
+  fields:
+  - name: downlink
+    message:
+      name: ApplicationDownlink
+    default: {}
 EndDevice:
   name: EndDevice
   comment: |-
