@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Kerlink Wirnet Station | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/kerlinkwirnetstation/" />
+  <title>RAK7240 WisGate Edge Prime | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/rak-7240/" />
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.65a9b35ee028e02a37b1c52cf749fd0282297d1c6431a14269fa6f7437792af6.css" integrity="sha256-ZamzXuAo4Co3scUs90n9AoIpfRxkMaFCafpvdDd5KvY=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Kerlink Wirnet Station">
+  <meta itemprop="name" content="RAK7240 WisGate Edge Prime">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Kerlink Wirnet Station">
+  <meta property="og:title" content="RAK7240 WisGate Edge Prime">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/kerlinkwirnetstation/">
-  <meta name="twitter:title" content="Kerlink Wirnet Station" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/rak-7240/">
+  <meta name="twitter:title" content="RAK7240 WisGate Edge Prime" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -105,7 +105,26 @@ debug: false
     <a href="https://www.thethingsindustries.com/docs/gateways/mikrotikrouterboard/" class="">MikroTik Routerboard wAP LoRa8 kit</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/rak-7240/" class="">RAK7240 WisGate Edge Prime</a>
+    <a href="https://www.thethingsindustries.com/docs/gateways/rak-7240/" class="is-active">RAK7240 WisGate Edge Prime</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/rak-7240/bs/" class="">Connect RAK7240 in Basic Station Mode</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/rak-7240/pf/" class="">Connect RAK7240 in Packet Forwarder Mode</a>
+    
+  </li>
+
+</ul>
+
+
+    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/dragino-lps8/" class="">Dragino LPS8</a>
@@ -114,12 +133,7 @@ debug: false
     <a href="https://www.thethingsindustries.com/docs/gateways/kerlinkwirnetistation/" class="">Kerlink Wirnet iStation</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/kerlinkwirnetstation/" class="is-active">Kerlink Wirnet Station</a>
-    
-
-
-
-    
+    <a href="https://www.thethingsindustries.com/docs/gateways/kerlinkwirnetstation/" class="">Kerlink Wirnet Station</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/laird-sentrius/" class="">Laird Sentrius™ RG1xx LoRaWAN Gateway</a>
@@ -162,7 +176,7 @@ debug: false
       <div class="column sidebar-middle">
 
 <div class="docs-content">
-<h1 class="title is-size-2">Kerlink Wirnet Station
+<h1 class="title is-size-2">RAK7240 WisGate Edge Prime
   
   
   
@@ -170,46 +184,96 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>This page guides you to connect Kerlink Wirnet Station to The Things Stack.</p>
-<p>This gateway&rsquo;s technical specifications can be found in <a href="https://www.kerlink.com/product/wirnet-station/">the official Kerlink documentation</a>.</p>
+  <p>The <a href="https://docs.rakwireless.com/Product-Categories/WisGate/RAK7240/Overview/">RAK7240 (WisGate Edge Prime)</a> is a macro outdoor LoRaWAN gateway, ideal for large scale deployments. It is highly reliable, customizable, and offers a WiFi, LTE and Ethernet backhaul.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Configuring and connecting <strong>RAK7249</strong> and <strong>RAK7258</strong> gateways to The Things Stack should be identical as for the <strong>RAK7240</strong>.
+</div>
+
+<p>This guide will help you set up the RAK2470 gateway to communicate over The Things Stack.</p>
+<figure class="float plain">
+    <img src="rak7240.jpg"
+         alt="RAK7240 WisGate Edge Prime gateway"/> 
+</figure>
+
+<p>Read more about technical specifications in <a href="https://docs.rakwireless.com/Product-Categories/WisGate/RAK7240/Datasheet/">RAK7240 WisGate Edge Prime Datasheet document</a>.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
 <li>User account on The Things Stack with rights to create Gateways.</li>
-<li>Kerlink Wirnet Station with Common Packet Forwarder installed and enabled and/or running firmware version <code>3.0</code> or higher.</li>
+<li>RAK7240 LoRaWAN gateway connected to the Internet or your local network.</li>
+<li>A PC, tablet or mobile phone connected to the network (to configure the gateway).</li>
 </ol>
+<h2 id="setting-up-the-gateway">Setting Up the Gateway</h2>
+<p>Detailed instructions on how to mount and protect your gateway, power it on, access it and connect it to the Internet are available in the <a href="https://docs.rakwireless.com/Product-Categories/WisGate/RAK7240/Quickstart/">Quick Start Guide provided by RAK</a>.</p>
+<p>We have included a few short steps to help you get started. For setting up the gateway we will be using the <a href="https://docs.rakwireless.com/Knowledge-Hub/Learn/WEB-Management-Platform/">Web Management Platform</a>.</p>
+<h3 id="access-the-gateway">Access the Gateway</h3>
+<p>You can access the RAK7240 gateway&rsquo;s Web Management Platform in two ways - using gateway&rsquo;s WiFi Access Point Mode or through gateway&rsquo;s Ethernet port.</p>
+<h4 id="wifi-access-point-mode">WiFi Access Point Mode</h4>
+<p>The gateway exposes a WiFi network with SSID format <strong>RAK7240_XXXX</strong>, where <strong>XXXX</strong> represents the last two bytes of the gateway&rsquo;s MAC address. You will need no password to connect to this WiFi network.</p>
+<p>To access the Web Management Platform, connect your PC/tablet/phone to this network and enter the default gateway IP address <code>192.168.230.1</code> in your browser.</p>
+<h4 id="ethernet-port">Ethernet Port</h4>
+<p>Connect the Ethernet port of the gateway to the PoE port of the PoE injector with an Ethernet cable. Connect the LAN port of the PoE injector to your PC.</p>
+<p>The default IP address used for accessing the Web Management Platform has a format <code>169.254.X.X</code>, where <code>X.X</code> segment is mapped from the last four bits of the gateway&rsquo;s MAC address. For example, if the last four bits of the MAC address are <code>0F:01</code>, the IP address is <code>169.254.15.1</code>.</p>
+<p>Now manually configure the IP address of your PC/tablet/phone to be in the same network (e.g. <code>169.254.15.2</code>) and access the Web Management Platform through your browser.</p>
+<p>In both ways, after succesfully accessing the Web Management Platform, you will be presented with the log in screen as shown in the image below. To log in, use the username <code>root</code> and password <code>root</code>.</p>
+<figure class="plain">
+    <img src="wmp.jpg"
+         alt="Web Management Platform"/> 
+</figure>
+
+<h3 id="access-the-internet">Access the Internet</h3>
+<p>Providing your gateway with the Internet access can be done in three ways - through WiFi or Ethernet/PoE connection to your router, or via cellular network.</p>
+<h4 id="wifi-wireless-client">WiFi Wireless Client</h4>
+<p>In the Web Management Platform, navigate to <strong>Network → Wi-Fi</strong> and enable the <strong>Wireless Client</strong>.</p>
+<p>Click the <strong>Scan</strong> button to scan for available WiFi networks. Choose your router&rsquo;s WiFi network, enter the <strong>Encryption</strong> method it is using and the <strong>Key</strong>.</p>
+<figure class="plain">
+    <img src="wireless-client.png"
+         alt="Wireless Client enabled"/> 
+</figure>
+
+<p>After successfully connecting, your gateway&rsquo;s WiFi interface will be assigned with an IP address by the DHCP server running on your WiFi router.</p>
+<h4 id="wan-interface">WAN Interface</h4>
+<p>Connect your gateway&rsquo;s Ethernet port to the PoE port of the PoE injector with an Ethernet cable. Connect the LAN port of the PoE injector to your router.</p>
+<p>The DHCP server running on the router will assign an IP address to your gateway&rsquo;s WAN interface. You can find out this IP address by navigating to <strong>Network → WAN Interface</strong>.</p>
+<h4 id="cellular-interface">Cellular Interface</h4>
+<p>Place a SIM card in your gateway&rsquo;s Nano SIM Socket.</p>
+<p>In the Web Management Platform, navigate to <strong>Network → Cellular Interface</strong>.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Minimum CPF version tested is <code>v1.1.6</code>.
+  If needed, you will need to set <strong>APN</strong>, <strong>User</strong> and <strong>Password</strong> for your provider. Commonly, these parameters are automatically acquired.
+</div>
+
+<p>If your SIM card needs a PIN, enter it in the <strong>PIN Code</strong> field.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  It is also recommended to set the gateway metric. By increasing the gateway metric, you are lowering the priority of using the specific interface. Since using cellular backhaul can be limiting or expensive, the gateway metric for cellular interface should be the highest one.
+</div>
+
+<p>The IP address of your gateway will be shown under <strong>Status</strong>.</p>
+<figure class="plain">
+    <img src="cellular-interface.jpg"
+         alt="Cellular interface settings"/> 
+</figure>
+
+<h3 id="configuring-lorawan-network-settings">Configuring LoRaWAN Network Settings</h3>
+<p>In the Web Management Platform, navigate to <strong>LoRa Network → Network Settings</strong>.</p>
+<p>RAK7240 can operate in three modes - <strong>Network Server</strong>, <strong>Basic Station</strong> and <strong>Packet Forwarder</strong>. The available network settings depend on which <strong>Mode</strong> you choose.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  For this guide, Network Server mode is not relevant. Continue reading to learn to connect RAK7240 to The Things Stack using <a href="https://www.thethingsindustries.com/docs/gateways/rak-7240/bs/">Basic Station mode</a> or <a href="https://www.thethingsindustries.com/docs/gateways/rak-7240/pf/">Packet Forwarder mode</a>.
 </div>
 
 <h2 id="registration">Registration</h2>
-<p>Create a gateway by following the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/">Adding Gateways</a>. Choose a <strong>Gateway ID</strong> and set <strong>EUI</strong> equal to the one on the gateway.</p>
-<p>Create an API Key with Gateway Info rights for this gateway using the same instructions. Copy the key and save it for later use.</p>
-<h2 id="configuration">Configuration</h2>
-<p>All further steps will assume the gateway is available at <code>&lt;gateway-ip&gt;</code>, The Things Stack is <code>&lt;server-address&gt;</code>, gateway ID is <code>&lt;gateway-id&gt;</code> and gateway API key is <code>&lt;gateway-api-key&gt;</code>, please replace these by the values appropriate for your setup.</p>
+<p>Create a gateway on The Things Stack by following the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/">Adding Gateways</a>.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Replace these with the values appropriate for your setup.
+  You can find the <strong>Gateway EUI</strong> under <strong>LoRa Network → Network Settings → LoRaWAN Network Settings</strong> once you successfully access the Web Management Platform.
 </div>
-
-<h3 id="provisioning">Provisioning</h3>
-<p>Execute:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl -sL <span class="s1">&#39;https://raw.githubusercontent.com/TheThingsNetwork/kerlink-wirnet-firmware/v0.0.3/provision.sh&#39;</span> <span class="p">|</span> bash -s -- <span class="s1">&#39;wirnet-station&#39;</span> &lt;gateway-ip&gt; &lt;server-address&gt; &lt;gateway-id&gt; &lt;gateway-api-key&gt;
-</code></pre></div><p>Please refer to <a href="https://github.com/TheThingsNetwork/kerlink-wirnet-firmware/tree/v0.0.3#provisioning">Kerlink Wirnet provisioning documentation</a> if more detailed up-to-date documentation is necessary.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  To avoid being prompted for <code>root</code> user password several times, you may add your SSH public key as authorized for <code>root</code> user on the gateway, for example, by <code>ssh-copy-id root@192.168.4.155</code>.
-</div>
-
-<h2 id="troubleshooting">Troubleshooting</h2>
-<p>Packet forwarder logs are located at <code>/mnt/fsuser-1/lora/var/log/lora.log</code>. You can access them by e.g.:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ssh root@192.168.4.155 <span class="s1">&#39;tail -f /mnt/fsuser-1/lora/var/log/lora.log&#39;</span>
-</code></pre></div>
 </div>
 
 <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/gateways/kerlinkwirnetistation/">← Kerlink Wirnet iStation</a>
-<a class="button is-pulled-right" href="/docs/gateways/laird-sentrius/">Laird Sentrius™ RG1xx LoRaWAN Gateway →</a>
+<a class="button is-pulled-left" href="/docs/gateways/mikrotikrouterboard/">← MikroTik Routerboard wAP LoRa8 kit</a>
+<a class="button is-pulled-right" href="/docs/gateways/rak-7240/bs/">Connect RAK7240 in Basic Station Mode →</a>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -232,11 +296,9 @@ debug: false
     
       <li><a href='#prerequisites'>Prerequisites</a></li>
     
+      <li><a href='#setting-up-the-gateway'>Setting Up the Gateway</a></li>
+    
       <li><a href='#registration'>Registration</a></li>
-    
-      <li><a href='#configuration'>Configuration</a></li>
-    
-      <li><a href='#troubleshooting'>Troubleshooting</a></li>
     
   </ul>
 
@@ -274,14 +336,14 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Roman Volosatovs on 30 Dec 2020.
+  Last changed by Nejra on 24 Mar 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/e0dde8888955011c1150c424ff345bd7021a826a">
-      doc: Update wirnet provisioning script version
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3fa99116c4e03044ba44452eb0a817fd0c4b38e3">
+      doc: Document using RAK7240 gw
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/kerlinkwirnetstation/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/rak-7240/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>

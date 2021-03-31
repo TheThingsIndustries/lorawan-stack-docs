@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Connect Ursalink UG8X with UDP Packet Forwarder | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/ursalinkug8x/packet-forwarder/" />
+  <title>Connect RAK7240 in Basic Station Mode | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/rak-7240/bs/" />
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.65a9b35ee028e02a37b1c52cf749fd0282297d1c6431a14269fa6f7437792af6.css" integrity="sha256-ZamzXuAo4Co3scUs90n9AoIpfRxkMaFCafpvdDd5KvY=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Connect Ursalink UG8X with UDP Packet Forwarder">
+  <meta itemprop="name" content="Connect RAK7240 in Basic Station Mode">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Connect Ursalink UG8X with UDP Packet Forwarder">
+  <meta property="og:title" content="Connect RAK7240 in Basic Station Mode">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/ursalinkug8x/packet-forwarder/">
-  <meta name="twitter:title" content="Connect Ursalink UG8X with UDP Packet Forwarder" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/rak-7240/bs/">
+  <meta name="twitter:title" content="Connect RAK7240 in Basic Station Mode" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -106,6 +106,25 @@ debug: false
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/rak-7240/" class="">RAK7240 WisGate Edge Prime</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/rak-7240/bs/" class="is-active">Connect RAK7240 in Basic Station Mode</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/rak-7240/pf/" class="">Connect RAK7240 in Packet Forwarder Mode</a>
+    
+  </li>
+
+</ul>
+
+
+    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/dragino-lps8/" class="">Dragino LPS8</a>
@@ -136,25 +155,6 @@ debug: false
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/ursalinkug8x/" class="">Ursalink UG8X IoT LoRaWAN Gateway</a>
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/ursalinkug8x/lbs/" class="">Connect Ursalink UG8X with Lora Basics™ Station</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/ursalinkug8x/packet-forwarder/" class="is-active">Connect Ursalink UG8X with UDP Packet Forwarder</a>
-    
-  </li>
-
-</ul>
-
-
-    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/lorix-one/" class="">Wifx LORIX One</a>
@@ -176,7 +176,7 @@ debug: false
       <div class="column sidebar-middle">
 
 <div class="docs-content">
-<h1 class="title is-size-2">Connect Ursalink UG8X with UDP Packet Forwarder
+<h1 class="title is-size-2">Connect RAK7240 in Basic Station Mode
   
   
   
@@ -184,28 +184,26 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>This section contains instructions for connecting to The Things Stack using the UDP Packet Forwarder.</p>
-<p>In the <strong>Packet Forwarder</strong> menu, click the <strong>Plus</strong> button to create a new server.</p>
-<figure>
-    <img src="../plus.png"
-         alt="Create new server"/> 
+  <p>RAK7240&rsquo;s <strong>Basic Station</strong> mode utilizes the <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/">LoRa Basics™ Station
+</a> protocol. As part of the Basic Station mode, RAK7240 supports two LoRa Basics™ Station
+subprotocols - <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/lns/">LNS</a> and <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/cups/">CUPS</a>. Follow this section to learn how to connect to The Things Stack Network Server using this mode.</p>
+<p>To configure the gateway to use LNS or CUPS, first navigate to <strong>LoRa Network → Network Settings → LoRa Basic Station</strong>.</p>
+<h2 id="cups">CUPS</h2>
+<p>To connect the gateway to via CUPS protocol, follow the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/cups/">Connecting CUPS</a>.</p>
+<p>Select <strong>TLS Server Authentication</strong> for the <strong>Authentication Mode</strong>. Copy your CUPS Server Certificate and paste it in the <strong>trust</strong> field.</p>
+<h2 id="lns">LNS</h2>
+<p>To connect the gateway to via LNS protocol, fill in the info in the <strong>LNS Server</strong> section instead.</p>
+<p>Follow the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/lns/">Connecting LNS</a>.</p>
+<p>Select <strong>TLS Server Authentication</strong> for the <strong>Authentication Mode</strong>. Copy your LNS Server Certificate and paste it in the <strong>trust</strong> field.</p>
+<p>Whichever subprotocol you have configured, press <strong>Save &amp; Apply</strong> and your gateway should appear as connected in The Things Stack Console.</p>
+<figure class="plain">
+    <img src="../cups-lns.jpg"
+         alt="Configuring CUPS and LNS"/> 
 </figure>
-
-<p>In the server configuration options, check the <strong>Enabled</strong> box.</p>
-<p>Choose <strong>Semtech</strong> as the <strong>Type</strong>.</p>
-<p>For the <strong>Server Address</strong> choose <strong>custom</strong>, and enter the same as what you use instead of <code>thethings.example.com</code> in the <a href="https://www.thethingsindustries.com/docs/getting-started/">Getting Started guide</a>.</p>
-<p>Choose the appropriate <strong>Port Up</strong> and <strong>Port Down</strong> values. These are both <strong>1700</strong> by default in The Things Stack.</p>
-<p>Click <strong>Save</strong> to continue.</p>
-<figure>
-    <img src="../semtech.png"
-         alt="Semtech Configuration"/> 
-</figure>
-
-<p>If your configuration was successful, your gateway will connect to The Things Stack after a couple of seconds.</p>
 </div>
 <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/gateways/ursalinkug8x/lbs/">← Connect Ursalink UG8X with Lora Basics™ Station</a>
-<a class="button is-pulled-right" href="/docs/gateways/lorix-one/">Wifx LORIX One →</a>
+<a class="button is-pulled-left" href="/docs/gateways/rak-7240/">← RAK7240 WisGate Edge Prime</a>
+<a class="button is-pulled-right" href="/docs/gateways/rak-7240/pf/">Connect RAK7240 in Packet Forwarder Mode →</a>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -223,6 +221,14 @@ debug: false
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      <li><a href='#cups'>CUPS</a></li>
+    
+      <li><a href='#lns'>LNS</a></li>
+    
+  </ul>
 
 
   </nav>
@@ -258,14 +264,14 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 17 Dec 2020.
+  Last changed by Nejra on 24 Mar 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/bdc3988bf1e2eb3a98b0958be845134929d16d58">
-      doc: Differentiate section names
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3fa99116c4e03044ba44452eb0a817fd0c4b38e3">
+      doc: Document using RAK7240 gw
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/ursalinkug8x/packet-forwarder.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/rak-7240/bs.md" class="button">Edit on Github</a>
 </div>
 
       </div>
