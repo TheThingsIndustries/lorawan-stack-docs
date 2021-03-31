@@ -206,6 +206,13 @@ and The Things Stack, along with some guidelines to make the migration process e
 <h2 id="rx1delay">Rx1Delay</h2>
 <p>Devices imported from The Things Network Stack V2
 are configured with an <code>Rx1Delay</code> of 1 second, by default. In The Things Stack we recommend using an <code>Rx1Delay</code> of 5 seconds to accommodate for high latency backhauls and/or <a href="https://www.thethingsindustries.com/docs/reference/packet-broker/">peering with Packet Broker</a>. See the <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/">MAC settings guide</a> for more information and instructions about configuring <code>Rx1Delay</code>.</p>
+<h2 id="mac-commands">MAC Commands</h2>
+<p>The Things Stack expects that all end devices comply with the LoRaWAN specification by default, which means that the end devices should respond to Network Server MAC command requests accordingly. If a device fails to answer a MAC Command in a timely manner, there may be disruptions to the device uplink or downlink traffic. As mentioned in the LoRaWAN specification, the Network Server of The Things Stack will always prioritize MAC commands over application payloads on downlink.
+Note, that in case a device is not fully compliant with the specification - it can still work on The Things Stack, but it may require custom MAC settings configuration.</p>
+<h3 id="devstatusreq">DevStatusReq</h3>
+<p>The <code>DevStatusReq</code> MAC command is sent by the Network Server periodically to check the current status of the end device. Devices are expected to send a <code>DevStatusAns</code> reply.</p>
+<p>For end devices that ignore this MAC command, make sure to configure the <code>StatusTimePeriodicity</code> (time duration after which a <code>DevStatusReq</code> is issued by the Network Server) and <code>StatusCountPeriodicity</code> (number of frames after which a <code>DevStatusReq</code> is issued) of the device explicitly to <code>0</code>. Same as with <code>Rx1Delay</code>, see the <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/">MAC settings guide</a> for more information.</p>
+<p>If you follow the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/">Migrating from The Things Network Stack V2</a> guide, devices exported with the <code>ttn-lw-migrate</code> tool have these MAC settings set to <code>0</code> by default.</p>
 <h2 id="gateway-coverage">Gateway Coverage</h2>
 <p>Packet Broker enables peering between networks, so traffic received by one network (e.g. the Public Community Network) but intended for a different network (The Things Stack) can be forwarded to and from that network. See the <a href="https://www.thethingsindustries.com/docs/reference/packet-broker/">Peering Guide</a> for details on Packet Broker and how to enable it for your network.</p>
 <p>With Packet Broker enabled on both The Things Stack and The Things Network Stack V2
@@ -594,6 +601,8 @@ payload encoder and decoder to an uplink and downlink payload formatter should b
     
       <li><a href='#rx1delay'>Rx1Delay</a></li>
     
+      <li><a href='#mac-commands'>MAC Commands</a></li>
+    
       <li><a href='#gateway-coverage'>Gateway Coverage</a></li>
     
       <li><a href='#application-data'>Application Data</a></li>
@@ -636,10 +645,10 @@ payload encoder and decoder to an uplink and downlink payload formatter should b
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Johan Stokking on 28 Mar 2021.
+  Last changed by Aggelos Kolaitis on 31 Mar 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2545353f4850e7d2b4cce2eee9f11f2562c6e98e">
-      doc: Use Packet Broker as name
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/040d6c40466fc9246b1d0700ff89a0d57256d98d">
+      doc: Commit suggestion for doc/content/getting-started/migrating/major-changes.md
     </a>
 </p>
 
