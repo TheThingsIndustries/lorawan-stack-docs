@@ -10,6 +10,8 @@ weight:
 
 In this guide, we show how to create an MQTT client for subscribing or publishing to topics used by {{% tts %}} [MQTT Server]({{< ref "/integrations/mqtt" >}}).
 
+{{< note >}} The examples in this guide are suitable for {{% tts %}} Open Source deployment. If you are using a different {{% tts %}} deployment, make sure your read a [Note on Using the tenant ID]({{< ref "/integrations/mqtt#note-on-using-the-tenant-id" >}}). {{</ note >}} 
+
 ## Prerequisites
 
 1. [MQTTBox app](http://workswithweb.com/html/mqttbox/downloads.html) installed on your system.
