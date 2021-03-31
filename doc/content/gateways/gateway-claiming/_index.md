@@ -2,9 +2,10 @@
 title: "Gateway Claiming"
 description: ""
 distributions: ["Enterprise", "Cloud"]
+new_in_version: 3.12.0
 --- 
 
-Gateway claiming {{< new-in-version "3.12.0" >}} is a mechanism that transfers gateways securely from one user(tenant) to another. This section provides guides for making gateways claimable and claiming them.
+Gateway claiming is a mechanism that transfers gateways securely. This enables transfer of ownership between users as well as between tenants. This section provides guides for making gateways claimable and claiming them.
 
 <!--more-->
 

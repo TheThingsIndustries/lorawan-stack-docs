@@ -5,19 +5,19 @@ weight: 1
 distributions: ["Enterprise", "Cloud"]
 --- 
 
+{{< cli-only >}}
+
 This guide explains the process of making a gateway claimable. When a gateway is claimable, someone else can claim it securely.
 
 <!--more-->
 
 ## Prerequisites
 
-1. An gateway in The Things Stack Cloud. [See instructions]({{< ref "/gateways/adding-gateways" >}})
+1. An gateway registered to a The Things Stack Cloud or The Things Stack Enterprise cluster[See instructions]({{< ref "/gateways/adding-gateways" >}})
 
 ## Authorize Claiming
 
 In order for anyone to claim a gateway that is owned by you, you need to authorize claiming. This is needed for {{% tts %}} to move the gateway to the other user. This needs to be done separately for each gateway.
-
-{{< cli-only >}}
 
 Replace `<gateway-id>` with the **Gateway ID** of the gateway that you created in prerequisites, and run the following command in the CLI:
 
@@ -33,9 +33,9 @@ $ ttn-lw-cli gateways claim unauthorize <gateway-id>
 
 ## Claiming Settings
 
-When a gateway is added in {{% tts %}}, it's claiming settings can be configured. This is comprised of a claim authentication code and a validity window. The claim authentication code is a secret value. The validity window is an optional start and end date on which the claim authentication code can be used.
+When a gateway is added in {{% tts %}}, its claiming settings can be configured.
 
-{{< cli-only >}}
+This is comprised of a claim authentication code and a validity window. The claim authentication code is a secret value. The validity window is an optional start and end date on which the claim authentication code can be used.
 
 ```bash
 $ ttn-lw-cli gateways update <gateway-id> --claim-authentication-code.secret.value ABCD \
