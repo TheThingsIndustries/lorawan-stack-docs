@@ -25,7 +25,8 @@ Devices imported from {{% ttnv2 %}} are configured with an `Rx1Delay` of 1 secon
 
 ## MAC Commands
 
-{{% tts %}} expects that all end devices comply to the LoRaWAN spec, which means that the end devices should properly respond to all MAC commands requests issued by the Network Server. If a device fails to forward a response to MAC Command in a timely manner, there may be disruptions to the device uplink or downlink traffic. As mentioned in the LoRaWAN spec, the Network Server of {{% tts %}} will always prioritize MAC commands over device traffic.
+{{% tts %}} expects that all end devices comply with the LoRaWAN specification by default, which means that the end devices should respond to Network Server MAC command requests accordingly. If a device fails to answer a MAC Command in a timely manner, there may be disruptions to the device uplink or downlink traffic. As mentioned in the LoRaWAN specification, the Network Server of {{% tts %}} will always prioritize MAC commands over application payloads on downlink.
+Note, that in case a device is not fully compliant with the specification - it can still work on {{% tts %}}, but it may require custom MAC settings configuration.
 
 ### DevStatusReq
 
