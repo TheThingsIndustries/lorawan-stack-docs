@@ -23,6 +23,19 @@ Furthermore, {{% tts %}} brings full support for all LoRaWAN versions, as well a
 
 Devices imported from {{% ttnv2 %}} are configured with an `Rx1Delay` of 1 second, by default. In {{% tts %}} we recommend using an `Rx1Delay` of 5 seconds to accommodate for high latency backhauls and/or [peering with Packet Broker]({{< ref "/reference/packet-broker" >}}). See the [MAC settings guide]({{< ref "/devices/mac-settings" >}}) for more information and instructions about configuring `Rx1Delay`.
 
+## MAC Commands
+
+{{% tts %}} expects that all end devices comply with the LoRaWAN specification by default, which means that the end devices should respond to Network Server MAC command requests accordingly. If a device fails to answer a MAC Command in a timely manner, there may be disruptions to the device uplink or downlink traffic. As mentioned in the LoRaWAN specification, the Network Server of {{% tts %}} will always prioritize MAC commands over application payloads on downlink.
+Note, that in case a device is not fully compliant with the specification - it can still work on {{% tts %}}, but it may require custom MAC settings configuration.
+
+### DevStatusReq
+
+The `DevStatusReq` MAC command is sent by the Network Server periodically to check the current status of the end device. Devices are expected to send a `DevStatusAns` reply.
+
+For end devices that ignore this MAC command, make sure to configure the `StatusTimePeriodicity` (time duration after which a `DevStatusReq` is issued by the Network Server) and `StatusCountPeriodicity` (number of frames after which a `DevStatusReq` is issued) of the device explicitly to `0`. Same as with `Rx1Delay`, see the [MAC settings guide]({{< ref "/devices/mac-settings" >}}) for more information.
+
+If you follow the [Migrating from The Things Network Stack V2]({{< ref "/getting-started/migrating/migrating-from-v2" >}}) guide, devices exported with the `ttn-lw-migrate` tool have these MAC settings set to `0` by default.
+
 ## Gateway Coverage
 
 Packet Broker enables peering between networks, so traffic received by one network (e.g. the Public Community Network) but intended for a different network ({{% tts %}}) can be forwarded to and from that network. See the [Peering Guide]({{< ref "/reference/packet-broker" >}}) for details on Packet Broker and how to enable it for your network.
