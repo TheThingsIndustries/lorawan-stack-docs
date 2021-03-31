@@ -49,3 +49,7 @@ $ curl -XGET \
 {{< /tabs/tab >}}
 
 {{< /tabs/container >}}
+
+{{< note >}} The `global_conf.json` file you download from {{% tts %}} contains the `gateway_ID` field, that has a different value than the **Gateway ID** in {{% tts %}} Console. 
+
+**Gateway ID** in {{% tts %}} Console represents the name of your gateway used to register it, while the `gateway_ID` field in the `global_conf.json` file contains your gateway's EUI. {{</ note >}}
