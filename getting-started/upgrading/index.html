@@ -178,42 +178,142 @@ debug: false
 
 <div class="content">
   <p>Follow these instructions to upgrade an existing The Things Stack instance.</p>
-<p>Replace the tag in your <strong>docker-compose.yml</strong> file with the newer version of The Things Stack:</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># file: docker-compose.yml</span><span class="w">
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  All commands explained here are executed in a terminal prompt in the same <strong>directory</strong> as your <code>docker-compose.yml</code> file.
+</div>
+
+<h3 id="pulling-new-images">Pulling new images</h3>
+<p>Replace the tag in your <code>docker-compose.yml</code> file with the newer version of The Things Stack.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="enterprise">
+      <a>
+        <span>Enterprise</span>
+      </a>
+    </li>
+    
+    <li data-tab="open-source">
+      <a>
+        <span>Open Source</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="enterprise">
+  <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># file: docker-compose.yml</span><span class="w">
 </span><span class="w"></span><span class="k">services</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="c"># ...</span><span class="w">
 </span><span class="w">  </span><span class="k">stack</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">image</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethingsnetwork/lorawan-stack:&lt;the tag&gt;&#39;</span><span class="w">
+</span><span class="w">    </span><span class="k">image</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethingsindustries/lorawan-stack:&lt;new-version-tag&gt;&#39;</span><span class="w">
 </span><span class="w">  </span><span class="c"># ...</span><span class="w">
-</span><span class="w">
-</span></code></pre></div><p>Pull the new images:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose pull
-Pulling cockroach ... <span class="k">done</span>
-Pulling redis     ... <span class="k">done</span>
+</span></code></pre></div>
+</section>
+<section data-content="open-source">
+  <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># file: docker-compose.yml</span><span class="w">
+</span><span class="w"></span><span class="k">services</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="c"># ...</span><span class="w">
+</span><span class="w">  </span><span class="k">stack</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="k">image</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethingsnetwork/lorawan-stack:&lt;new-version-tag&gt;&#39;</span><span class="w">
+</span><span class="w">  </span><span class="c"># ...</span><span class="w">
+</span></code></pre></div>
+</section>
+
+</div>
+
+<p>Pull the docker images of the new version.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose pull stack
 Pulling stack     ... <span class="k">done</span>
-</code></pre></div><p>Shut down the stack:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose down
-Stopping root_stack_1     ... <span class="k">done</span>
-Stopping root_cockroach_1 ... <span class="k">done</span>
-Stopping root_redis_1     ... <span class="k">done</span>
-Removing root_stack_1     ... <span class="k">done</span>
-Removing root_cockroach_1 ... <span class="k">done</span>
-Removing root_redis_1     ... <span class="k">done</span>
-Removing network root_default
-</code></pre></div><p>Run migrations:</p>
+</code></pre></div><p>The new version will be pulled locally but not run yet.</p>
+<h3 id="backup">Backup</h3>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  We do not recommend manually backing up and restoring databases for production deployments. Consider using a managed database service with support for snapshots.
+</div>
+
+<p>Stop <code>The Things Stack</code> container.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose stop stack
+Stopping &lt;directory&gt;_stack_1 ... <span class="k">done</span>
+</code></pre></div><h4 id="redis">Redis</h4>
+<p>Navigate to the Redis data folder, which can be found in the <code>docker-compose.yml</code> for the <code>redis</code> service (ex: <code>${DEV_DATA_DIR:-.env/data}/redis</code>)</p>
+<p>Stop the <code>redis</code> container.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose stop redis
+Stopping &lt;directory&gt;_redis_1 ... <span class="k">done</span>
+</code></pre></div><p>Copy the <code>${DEV_DATA_DIR:-.env/data}/redis/appendonly.aof</code> file to a location of your choice. This file is now a snapshot of the database at the time that it is copied.</p>
+<p>To restore <code>redis</code> from this file, simply place the file back in the data folder (replacing the <code>appendonly.aof</code> file) and start <code>redis</code>. The contents of the backup will be read and restored.</p>
+<p>Start the <code>redis</code> container.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose up -d redis
+Starting &lt;directory&gt;_redis_1 ... <span class="k">done</span>
+</code></pre></div><h4 id="cockroach">Cockroach</h4>
+<p>Keep the <code>cockroach</code> container running and enter a cockroach CLI shell.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it &lt;directory&gt;_cockroach_1 ./cockroach sql --insecure
+</code></pre></div><p>Backup the database.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">root@:26257/defaultdb&gt; BACKUP * TO <span class="s1">&#39;nodelocal://self/&lt;backup_name&gt;&#39;</span><span class="p">;</span>
+</code></pre></div><p>A folder with the chosen <code>&lt;backup_name&gt;</code> will be created at the location <code>${DEV_DATA_DIR:-.env/data}/cockroach/extern</code>.</p>
+<p>Copy this folder (<code>${DEV_DATA_DIR:-.env/data}/cockroach/extern/&lt;backup_name&gt;</code>) to a location of your choice. This folder is now a snapshot of the database at the time that it is copied.</p>
+<p>In order to restore from a backup, copy the backup folder to <code>${DEV_DATA_DIR:-.env/data}/cockroach/extern</code>.</p>
+<p>Now, again enter a cockroach CLI shell again with the <code>cockroach</code> container running.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it &lt;directory&gt;_cockroach_1 ./cockroach sql --insecure
+</code></pre></div><p>Delete (or rename) the existing database to prevent conflicts.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">root@:26257/defaultdb&gt;  DROP DATABASE ttn_lorawan CASCADE<span class="p">;</span>
+</code></pre></div><p>Restore from the backup.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">root@:26257/defaultdb&gt;  RESTORE DATABASE ttn_lorawan FROM <span class="s1">&#39;nodelocal://self/&lt;backup_name&gt;&#39;</span><span class="p">;</span>
+</code></pre></div><h4 id="optional">Optional</h4>
+<p>Updates to The Things Stack do not modify static (user-uploaded) assets. But those can be backed up as well.</p>
+<p>User profile pictures and end device pictures are stored in the <code>assets</code> folder by default.</p>
+<p>Check the values set for <code>is.profile-picture.bucket-url</code> and <code>is.end-device-picture.bucket-url</code> configuration options to find these locations (if you are using a non-default location).</p>
+<p>You can now copy the contents of those folders to a location of your choice.</p>
+<h3 id="migrations">Migrations</h3>
+<p>New minor versions of The Things Stack include new features/fixes which may require an update to the databases. This is done through migrations.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="enterprise">
+      <a>
+        <span>Enterprise</span>
+      </a>
+    </li>
+    
+    <li data-tab="open-source">
+      <a>
+        <span>Open Source</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="enterprise">
+  <p>Migrate the Identity Server Database.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack is-db migrate
-Creating network <span class="s2">&#34;root_default&#34;</span> with the default driver
-Creating root_cockroach_1 ... <span class="k">done</span>
-Creating root_redis_1     ... <span class="k">done</span>
-  INFO Connecting to Identity Server database...
-  INFO Detected database CockroachDB CCL v19.2.6 <span class="o">(</span>x86_64-unknown-linux-gnu, built 2020/04/06 18:05:31, go1.12.12<span class="o">)</span>
-  INFO Migrating tables...                     
-  INFO Successfully migrated  
-</code></pre></div><p>Start stack:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose up -d
-root_cockroach_1 is up-to-date
-root_redis_1 is up-to-date
-Creating root_stack_1 ... <span class="k">done</span>
+</code></pre></div><p>Migrate the Network Server Database.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack ns-db migrate
+</code></pre></div><p>Update the device repository indices.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack dr-db migrate
+</code></pre></div><p>Migrate the Device Claiming Server Database.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack dcs-db migrate
+</code></pre></div><p>Migrate the Application Server Database.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack as-db migrate
+</code></pre></div>
+</section>
+<section data-content="open-source">
+  <p>Migrate the Identity Server Database.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack is-db migrate
+</code></pre></div><p>Migrate the Network Server Database.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack ns-db migrate
+</code></pre></div><p>Update the device repository indices.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack dr-db migrate
+</code></pre></div>
+</section>
+
+</div>
+
+<h3 id="running-the-new-version">Running the new version</h3>
+<p>Once the above steps are successfully completed, start The Things Stack.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose up -d stack
 </code></pre></div>
 </div>
 
@@ -272,10 +372,10 @@ Creating root_stack_1 ... <span class="k">done</span>
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 02 Feb 2021.
+  Last changed by Krishna Iyer Easwaran on 25 Mar 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/79af1be0ab2d05841e1b3e716dab9ea0c8e09aa4">
-      doc: Move upgrading folder
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/64694a123de5400ab2c06ed8bf9e9aac82ba5215">
+      doc: Add backup notes
     </a>
 </p>
 

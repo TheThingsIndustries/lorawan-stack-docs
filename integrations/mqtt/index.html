@@ -109,15 +109,6 @@ debug: false
     
 
 
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/cloud-hosted/" class="">Cloud</a>
-    
-  </li>
-
-</ul>
-
 
     
   </li>
@@ -173,8 +164,14 @@ debug: false
   The Things Stack supports the <a href="http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.pdf">MQTT Standard Version 3.1.1</a>.
 </div>
 
-<h2 id="multi-tenancy">Multi-Tenancy</h2>
-<p>Note that on multi-tenant environments such as Cloud, application IDs and other endpoints include the tenant ID, e.g <code>app1@tenant1</code>. On single tenant environments such as Open Source, the tenant ID can be removed, i.e <code>app1</code>.</p>
+<h2 id="note-on-using-the-tenant-id">Note on Using the Tenant ID</h2>
+<p>For all The Things Stack deployments except the Open Source, application IDs and other endpoints include the tenant ID. For the integration with The Things Stack MQTT Server on these deployments this means two things:</p>
+<ul>
+<li>The <strong>Username</strong> used for connecting will be of format <code>{application id}@{tenant id}</code> (see the section below)</li>
+<li>The MQTT topics will contain <code>{application id}@{tenant id}</code> (see <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#mqtt-clients">MQTT Clients</a> section)</li>
+</ul>
+<p>For example, for an application <code>app1</code> added on The Things Network, you would use <code>app1@ttn</code>, because <code>ttn</code> is a tenant ID for The Things Network.</p>
+<p>For The Things Stack Open Source deployment these endpoints do not include the tenant ID. Hence, instead of <code>{application id}@{tenant id}</code>, you would be using only <code>{application id}</code> for <strong>Username</strong> and in topics.</p>
 <h2 id="creating-an-api-key">Creating an API Key</h2>
 <p>In order to use the MQTT server you need to create a new API key to authenticate. The Console provides the required connection information and can be used to create an API key for authentication. In your application select the <strong>MQTT</strong> submenu from the <strong>Integrations</strong> side menu.</p>
 <figure>
@@ -193,15 +190,22 @@ debug: false
   Make sure to copy your API key now, since it will no longer be visible after leaving the page for security reasons.
 </div>
 
-<p>You can now login using an MQTT client with the application ID and tenant ID <code>app1@tenant1</code> as a username, and the newly generated API key as password.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Keep in mind that this example shows the MQTT Server information for The Things Stack Open Source. If you are using a different deployment, make sure your read a <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#note-on-using-the-tenant-id">Note on Using the tenant ID</a>.
+</div>
+
+<p>The information shown on the image above is enough for you to be able to connect to The Things Stack MQTT Server using an arbitrary MQTT client. Keep reading to find out how.</p>
 <h2 id="mqtt-clients">MQTT Clients</h2>
-<p>There are many MQTT clients available. See <a href="https://www.thethingsindustries.com/docs/integrations/mqtt-clients/">Integrations with MQTT Clients</a> section for instructions on how the integrate with the most popular ones.</p>
-<p>In the examples below, we use <code>mosquitto_pub</code> and <code>mosquitto_sub</code> clients.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Tip: when using `mosquitto_sub`, pass the `-d` flag to see the topics messages get published on.</span>
-<span class="c1"># For example:</span>
-$ mosquitto_sub -h thethings.example.com -t <span class="s2">&#34;#&#34;</span> -u <span class="s2">&#34;app1@tenant1&#34;</span> -P <span class="s2">&#34;NNSXS.VEEBURF3KR77ZR..&#34;</span> -d
-</code></pre></div><h2 id="subscribing-to-upstream-traffic">Subscribing to Upstream Traffic</h2>
-<p>The Application Server publishes on the following topics:</p>
+<p>There are many available MQTT clients you can use to connect to The Things Stack MQTT Server. See <a href="https://www.thethingsindustries.com/docs/integrations/mqtt-clients/">Integrations with MQTT Clients</a> section for detailed instructions on how the integrate with the most popular ones.</p>
+<p>In this section, we focus on the available topics that the MQTT Server is exposing and provide short examples of their usage. In general, some topics are used for subscribing to upstream traffic, while others are used for publishing downlink traffic.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  In the examples below, we use the <code>mosquitto_pub</code> and <code>mosquitto_sub</code> clients.
+</div>
+
+<h2 id="subscribing-to-upstream-traffic">Subscribing to Upstream Traffic</h2>
+<p>The Application Server publishes uplink traffic on the following topics:</p>
 <ul>
 <li><code>v3/{application id}@{tenant id}/devices/{device id}/join</code></li>
 <li><code>v3/{application id}@{tenant id}/devices/{device id}/up</code></li>
@@ -213,8 +217,23 @@ $ mosquitto_sub -h thethings.example.com -t <span class="s2">&#34;#&#34;</span> 
 <li><code>v3/{application id}@{tenant id}/devices/{device id}/service/data</code></li>
 <li><code>v3/{application id}@{tenant id}/devices/{device id}/location/solved</code></li>
 </ul>
-<p>While you could subscribe to separate topics, for the tutorial subscribe to <code>#</code> to subscribe to all messages.</p>
-<p>With your MQTT client subscribed, when a device joins the network, a <code>join</code> message gets published. For example, for a device ID <code>dev1</code>, the message will be published on the topic <code>v3/app1@tenant1/devices/dev1/join</code>.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Remember that the format of these topics for The Things Stack Open Source would contain <code>{application id}</code> instead of <code>{application id}@{tenant id}</code>.
+</div>
+
+<p>While you could subscribe to all of these topics separately, for the simplicity of this tutorial we use <code>#</code> to subscribe to all topics, i.e. to receive all uplink traffic.</p>
+<p>Subscribing to all topics with the <code>mosquitto_sub</code> client can be done with:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Tip: when using `mosquitto_sub`, pass the `-d` flag to see the topics messages get published on.</span>
+<span class="c1"># For example:</span>
+$ mosquitto_sub -h thethings.example.com -t <span class="s2">&#34;#&#34;</span> -u <span class="s2">&#34;app1@tenant1&#34;</span> -P <span class="s2">&#34;NNSXS.VEEBURF3KR77ZR..&#34;</span> -d
+</code></pre></div><h3 id="example">Example</h3>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  This example is suitable for The Things Stack deployments other than Open Source. If you are using The Things Stack Open source, make sure your read a <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#note-on-using-the-tenant-id">Note on Using the tenant ID</a>.
+</div>
+
+<p>When a device <code>dev1</code> (in application <code>app1</code> in tenant <code>tenant1</code>) joins the network, the <code>join</code> message is published on the topic <code>v3/app1@tenant1/devices/dev1/join</code>. With your MQTT client subscribed to that topic (or all topics), you can catch that <code>join</code> message.</p>
 <details><summary>Show join accept message example</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;end_device_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -238,8 +257,7 @@ $ mosquitto_sub -h thethings.example.com -t <span class="s2">&#34;#&#34;</span> 
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></details>
-<p>You can use the correlation IDs to follow messages as they pass through The Things Stack.</p>
-<p>When the device sends an uplink message, a message will be published to the topic <code>v3/{application id}@{tenant id}/devices/{device id}/up</code>.</p>
+<p>When a device <code>dev1</code> sends an uplink message, that message is being published on the topic <code>v3/app1@tenant1/devices/dev1/up</code>.</p>
 <details><summary>Show uplink message example</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;end_device_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -291,7 +309,19 @@ $ mosquitto_sub -h thethings.example.com -t <span class="s2">&#34;#&#34;</span> 
 </code></pre></div></details>
 <h2 id="publishing-downlink-traffic">Publishing Downlink Traffic</h2>
 <p>Downlinks can be scheduled by publishing the message to the topic <code>v3/{application id}@{tenant id}/devices/{device id}/down/push</code>.</p>
-<p>For example, to send an unconfirmed downlink message to the device <code>dev1</code> in application <code>app1</code> in tenant <code>tenant1</code> with the hexadecimal payload <code>BE EF</code> on <code>FPort</code> 15 with normal priority, use the topic <code>v3/app1@tenant1/devices/dev1/down/push</code> with the following contents:</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Remember that the format of this topic for The Things Stack Open Source deployment would be <code>v3/{application id}/devices/{device id}/down/push</code>.
+</div>
+
+<p>Instead of <code>/push</code>, you can also use <code>/replace</code> to replace the downlink queue. Replacing with an empty array clears the downlink queue.</p>
+<h3 id="example-1">Example</h3>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  This example is suitable for The Things Stack deployments other than Open Source. If you are using The Things Stack Open source, make sure your read a <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#note-on-using-the-tenant-id">Note on Using the tenant ID</a>.
+</div>
+
+<p>To send an unconfirmed downlink message to the device <code>dev1</code> in application <code>app1</code> in tenant <code>tenant1</code> with the hexadecimal payload <code>BE EF</code> on <code>FPort</code> 15 with normal priority, use the topic <code>v3/app1@tenant1/devices/dev1/down/push</code> with the following contents:</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;downlinks&#34;</span><span class="p">:</span> <span class="p">[{</span>
     <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
@@ -310,7 +340,7 @@ $ mosquitto_pub -h thethings.example.com <span class="se">\
 </span><span class="se"></span>  -u <span class="s2">&#34;app1@tenant1&#34;</span> -P <span class="s2">&#34;NNSXS.VEEBURF3KR77ZR..&#34;</span> <span class="se">\
 </span><span class="se"></span>  -m <span class="s1">&#39;{&#34;downlinks&#34;:[{&#34;f_port&#34;: 15,&#34;frm_payload&#34;:&#34;vu8=&#34;,&#34;priority&#34;: &#34;NORMAL&#34;}]}&#39;</span> <span class="se">\
 </span><span class="se"></span>  -d<span class="sb">`</span>
-</code></pre></div><p>It is also possible to send multiple downlink messages on a single push because <code>downlinks</code> is an array. Instead of <code>/push</code>, you can also use <code>/replace</code> to replace the downlink queue. Replacing with an empty array clears the downlink queue.</p>
+</code></pre></div><p>It is also possible to send multiple downlink messages on a single push because <code>downlinks</code> is an array.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   If you do not specify a priority, the default priority <code>LOWEST</code> is used. You can specify <code>LOWEST</code>, <code>LOW</code>, <code>BELOW_NORMAL</code>, <code>NORMAL</code>, <code>ABOVE_NORMAL</code>, <code>HIGH</code> and <code>HIGHEST</code>.
@@ -326,7 +356,7 @@ $ mosquitto_pub -h thethings.example.com <span class="se">\
     <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;my-correlation-id&#34;</span><span class="p">]</span>
   <span class="p">}]</span>
 <span class="p">}</span>
-</code></pre></div><p>Once the downlink gets acknowledged, a message is published to the topic <code>v3/{application id}@{tenant id}/devices/{device id}/down/ack</code>.</p>
+</code></pre></div><p>Once the downlink gets acknowledged, a message is published to the topic <code>v3/app1@tenant1/devices/dev1/down/ack</code>.</p>
 <details><summary>Show downlink event message example</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;end_device_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -361,7 +391,7 @@ $ mosquitto_pub -h thethings.example.com <span class="se">\
 
 <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/ubidots/">← Ubidots</a>
-<a class="button is-pulled-right" href="/docs/integrations/mqtt/cloud-hosted/">Cloud →</a>
+<a class="button is-pulled-right" href="/docs/integrations/mqtt-clients/">Integrations with MQTT Clients →</a>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -382,7 +412,7 @@ $ mosquitto_pub -h thethings.example.com <span class="se">\
 
   <ul class="menu-list">
     
-      <li><a href='#multi-tenancy'>Multi-Tenancy</a></li>
+      <li><a href='#note-on-using-the-tenant-id'>Note on Using the Tenant ID</a></li>
     
       <li><a href='#creating-an-api-key'>Creating an API Key</a></li>
     
@@ -428,10 +458,10 @@ $ mosquitto_pub -h thethings.example.com <span class="se">\
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 17 Dec 2020.
+  Last changed by Nejra on 26 Mar 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/bdc3988bf1e2eb3a98b0958be845134929d16d58">
-      doc: Differentiate section names
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a9b5411706621b4c8a0e09492804ae87f82f3f08">
+      doc: Update MQTT integration guides
     </a>
 </p>
 

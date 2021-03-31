@@ -194,6 +194,11 @@ debug: false
   Eclipse Mosquitto MQTT server supports 3.1, 3.1.1 and 5.0 MQTT protocol versions.
 </div>
 
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The examples in this guide are suitable for The Things Stack Open Source deployment. If you are using a different The Things Stack deployment, make sure your read a <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#note-on-using-the-tenant-id">Note on Using the tenant ID</a>.
+</div>
+
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
 <li><a href="https://github.com/eclipse/mosquitto">Eclipse Mosquitto MQTT server</a> installed on your system.</li>
@@ -225,7 +230,7 @@ $ mosquitto_sub -h thethings.example.com -t <span class="s2">&#34;#&#34;</span> 
 <p>For connecting to a host and publishing a message, <strong>mosquitto_pub</strong> client defines a command with the following syntax:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mosquitto_pub -h <span class="o">{</span>hostname<span class="o">}</span> -p <span class="o">{</span>port<span class="o">}</span> -u <span class="o">{</span>username<span class="o">}</span> -P <span class="o">{</span>password<span class="o">}</span> -t <span class="o">{</span>topic<span class="o">}</span> -m <span class="o">{</span>message<span class="o">}</span>
 </code></pre></div><p>For example, to send an unconfirmed downlink message to the device <code>dev1</code> in application <code>app1</code> with the hexadecimal payload <code>BE EF</code> on <code>FPort</code> 15 with normal priority, use the topic <code>v3/app1/devices/dev1/down/push</code> with the following contents:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mosquitto_pub -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <span class="s2">&#34;1883&#34;</span> -u <span class="s2">&#34;app1&#34;</span> -P <span class="s2">&#34;NNSXS.VEEBURF3KR77ZR..&#34;</span> -t <span class="s2">&#34;v3/app1/devices/dev1/up&#34;</span> -m <span class="s1">&#39;{&#34;downlinks&#34;:[{&#34;f_port&#34;: 15,&#34;frm_payload&#34;:&#34;vu8=&#34;,&#34;priority&#34;: &#34;NORMAL&#34;}]}&#39;</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mosquitto_pub -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <span class="s2">&#34;1883&#34;</span> -u <span class="s2">&#34;app1&#34;</span> -P <span class="s2">&#34;NNSXS.VEEBURF3KR77ZR..&#34;</span> -t <span class="s2">&#34;v3/app1/devices/dev1/down/push&#34;</span> -m <span class="s1">&#39;{&#34;downlinks&#34;:[{&#34;f_port&#34;: 15,&#34;frm_payload&#34;:&#34;vu8=&#34;,&#34;priority&#34;: &#34;NORMAL&#34;}]}&#39;</span>
 </code></pre></div><p>If TLS is being used, change the port value to <code>8883</code> and add the <code>--cafile</code> option to the command.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
@@ -298,10 +303,10 @@ $ mosquitto_sub -h thethings.example.com -t <span class="s2">&#34;#&#34;</span> 
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 26 Nov 2020.
+  Last changed by Nejra on 26 Mar 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/21da11257c965cc9e733dfee24ffc3ac4f2235fd">
-      doc: Change info tags to note
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a9b5411706621b4c8a0e09492804ae87f82f3f08">
+      doc: Update MQTT integration guides
     </a>
 </p>
 
