@@ -13,7 +13,7 @@ This guide explains the process of making a gateway claimable. When a gateway is
 
 ## Prerequisites
 
-1. An gateway registered to a The Things Stack Cloud or The Things Stack Enterprise cluster[See instructions]({{< ref "/gateways/adding-gateways" >}})
+1. An gateway registered in a The Things Stack Cloud or The Things Stack Enterprise cluster [See instructions]({{< ref "/gateways/adding-gateways" >}}).
 
 ## Authorize Claiming
 

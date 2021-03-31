@@ -11,7 +11,7 @@ This guide explains the process of making a device claimable. When a device is c
 
 ## Prerequisites
 
-1. An application in The Things Stack Cloud. [See instructions]({{< ref "/integrations/adding-applications" >}})
+1. An application in a The Things Stack Cloud or The Things Stack Enterprise cluster. [See instructions]({{< ref "/integrations/adding-applications" >}})
 
 ## Authorize Claiming
 
