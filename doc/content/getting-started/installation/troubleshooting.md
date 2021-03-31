@@ -21,3 +21,11 @@ Our `docker-compose.yml` file uses [Compose file version 3.7](https://docs.docke
 ## Can't access the server
 
 Ensure you have a DNS record pointing to your server's public IP address. See your domain registrar's help section for instructions, or [name.com's DNS guide](https://www.name.com/support/articles/205188538-Pointing-your-domain-to-hosting-with-A-records) for general information about pointing records to your IP address.
+
+## Forbidden
+
+If you see an error reading:
+
+> The client is not authorized to request a token using this method
+
+while trying to log into the Console, make sure you used the same `client-secret` in your {{% tts %}} configuration (`ttn-lw-stack-docker.yml` file) and for authorizing the Console client in [Running {{% tts %}}]({{< relref "running-the-stack" >}}).
