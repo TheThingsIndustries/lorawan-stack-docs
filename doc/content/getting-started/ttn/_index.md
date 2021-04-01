@@ -1,7 +1,7 @@
 ---
 title: "The Things Network"
 description: ""
-distributions: "The Things Network"
+distributions: "Community"
 ---
 
 {{< figure src="logo_TTN.svg" class="float plain" width="150px" >}}

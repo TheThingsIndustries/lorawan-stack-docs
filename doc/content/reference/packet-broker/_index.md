@@ -58,9 +58,9 @@ Localization | O | | Gateway locations, timestamps and signal quality
 
 ## Getting Started
 
-The Things Network or {{% tts %}} Cloud {{< distributions "Cloud" "Dedicated Cloud" "The Things Network" >}} is already connected to Packet Broker. Proceed to [Configure]({{< relref "configure" >}}) section to manage your registration and routing policies with other networks.
+{{% tts %}} Community Edition or {{% tts %}} Cloud {{< distributions "Cloud" "Dedicated Cloud" "Community" >}} is already connected to Packet Broker. Proceed to [Configure]({{< relref "configure" >}}) section to manage your registration and routing policies with other networks.
 
-When you are using The Things Network {{< distributions "The Things Network" >}}, you cannot configure any routing policies, as The Things Network is a public network and The Things Network Foundation controls which public or private networks the traffic gets exchanged with. To manage routing policies for your gateways, upgrade to {{% tts %}} Cloud.
+When you are using {{% tts %}} Community Edition {{< distributions "Community" >}}, you cannot configure any routing policies, as {{% tts %}} Community Edition is a public network and The Things Network Foundation controls which public or private networks the traffic gets exchanged with. To manage routing policies for your gateways, upgrade to {{% tts %}} Cloud.
 
 When using {{% tts %}} Enterprise of {{% tts %}} Open Source, learn to [Connect {{% tts %}} to Packet Broker]({{< relref "connect" >}}). {{< distributions "Enterprise" "Open Source" >}}
 
