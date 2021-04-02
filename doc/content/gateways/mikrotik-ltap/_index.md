@@ -48,7 +48,7 @@ Open a browser to `http://192.168.88.1/webfig/#Interfaces`.
 
 ![MikroTik-portal.png](portal.png)
 
-In the left hand menu select **LoRa**. Make sure the status is set to *Disabled*, if needed press the **D** to disable the LoRa Device.
+Select **LoRa** on the left hand menu. The status of the gateway should be **Disabled** - if needed, press the **D** button to disable it.
 
 ![MikroTik-portal-lora.png](portal-lora.png)
 
