@@ -78,7 +78,7 @@ Press **OK** to save the parameters.
 
 ![MikroTik-paramters](parameters.png)
 
-From the top menu, select the **Devices Tab**. Click the **Gateway ID** to configure it.
+From the top menu, select the **Devices** tab. Click the **Gateway ID** to configure it.
 
 ![MikroTik-Devices](portal-lora-disable.png)
 
