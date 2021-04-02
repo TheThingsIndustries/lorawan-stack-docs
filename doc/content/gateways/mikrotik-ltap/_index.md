@@ -82,7 +82,7 @@ From the top menu, select the **Devices** tab. Click the **Gateway ID** to confi
 
 ![MikroTik-Devices](portal-lora-disable.png)
 
-In the device settings, click the **Network Servers Dropdown** to view available servers. Choose the server you just created.
+In the device settings, click the **Network Servers** drop-down menu to view available servers. Choose the server you just created.
 
 Select **Public** for the Network.
 
