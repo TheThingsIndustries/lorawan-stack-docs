@@ -31,7 +31,7 @@ For more info, see Mikrotik's [official product page](https://mikrotik.com/produ
 ## Prerequisites
 
 1. User account on {{% tts %}} with rights to create Gateways.
-2. MikroTik LtAP kit connected via ethernet, LTE or LTE-M.
+2. MikroTik LtAP kit connected via Ethernet, LTE or LTE-M.
 3. A web browser (see section [Configuration via Browser](#configuration-via-browser)), or the [MikroTik Mobile App](https://mikrotik.com/mobile_app) installed on a smartphone.
 
 ## Registration
