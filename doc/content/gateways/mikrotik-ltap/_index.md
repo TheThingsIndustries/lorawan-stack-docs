@@ -26,7 +26,7 @@ For more info, see Mikrotik's [official product page](https://mikrotik.com/produ
 * Serial port and full size USB for other devices
 * Perfect for cars or outdoor mobile applications
 
-{{< warning >}} This gateway does not currently support changing Frequency Plans. {{</ warning >}}
+{{< warning >}} Currently, this gateway does not support changing Frequency Plans. {{</ warning >}}
 
 ## Prerequisites
 
