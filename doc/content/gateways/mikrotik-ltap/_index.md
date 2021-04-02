@@ -88,6 +88,6 @@ Select **Public** for the Network.
 
 Click **OK** to save the parameters.
 
-Press the **E** to enable the gateway device. It will become a **D** and the device status will update.
+Press the **E** button to enable the gateway device (it is enabled when **E** becomes **D**) and the device status will update.
 
 If your configuration was successful, your gateway will connect to {{% tts %}} after a couple of seconds.
