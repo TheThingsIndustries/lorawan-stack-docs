@@ -53,7 +53,7 @@ Select **LoRa** on the left hand menu. The status of the gateway should be **Dis
 ![MikroTik-portal-lora.png](portal-lora.png)
 
 {{< note >}}
-If you don't see any Devices listed in the LoRa tab, you first need to enable the LoRa interface. To do so, go to the **Terminal** (top-right button) and enter the command:
+If you don't see any devices listed in the **Devices** tab of the **LoRa** menu, you will need to enable the LoRa interface first. To do so, click the **Terminal** button in the upper right corner and enter the command:
 ```
 system routerboard usb set type=mini-PCIe
 ```
