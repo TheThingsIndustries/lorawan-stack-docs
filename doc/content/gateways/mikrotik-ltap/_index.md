@@ -84,9 +84,7 @@ From the top menu, select the **Devices** tab. Click the **Gateway ID** to confi
 
 In the device settings, click the **Network Servers** drop-down menu to view available servers. Choose the server you just created.
 
-Select **Public** for the Network.
-
-Click **OK** to save the parameters.
+Select **Public** for the **Network** and click **OK** to save these parameters.
 
 Press the **E** button to enable the gateway device (it is enabled when **E** becomes **D**) and the device status will update.
 
