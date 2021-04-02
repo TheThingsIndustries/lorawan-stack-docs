@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Connect Multitech Conduit with LoRa Basics™ Station | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/multitechconduit/lbs/" />
+  <title>Claim a Gateway | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/gateway-claiming/claim-gateways/" />
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.65a9b35ee028e02a37b1c52cf749fd0282297d1c6431a14269fa6f7437792af6.css" integrity="sha256-ZamzXuAo4Co3scUs90n9AoIpfRxkMaFCafpvdDd5KvY=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Connect Multitech Conduit with LoRa Basics™ Station">
+  <meta itemprop="name" content="Claim a Gateway">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Connect Multitech Conduit with LoRa Basics™ Station">
+  <meta property="og:title" content="Claim a Gateway">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/multitechconduit/lbs/">
-  <meta name="twitter:title" content="Connect Multitech Conduit with LoRa Basics™ Station" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/gateway-claiming/claim-gateways/">
+  <meta name="twitter:title" content="Claim a Gateway" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -112,6 +112,25 @@ debug: false
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/gateway-claiming/" class="">Gateway Claiming</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/gateway-claiming/make-gateways-claimable/" class="">Make a Gateway Claimable</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/gateway-claiming/claim-gateways/" class="is-active">Claim a Gateway</a>
+    
+  </li>
+
+</ul>
+
+
+    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/kerlinkwirnetistation/" class="">Kerlink Wirnet iStation</a>
@@ -124,25 +143,6 @@ debug: false
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/multitechconduit/" class="">MultiTech Conduit AEP</a>
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/multitechconduit/lbs/" class="is-active">Connect Multitech Conduit with LoRa Basics™ Station</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/multitechconduit/udp/" class="">Connect Multitech Conduit with UDP Packet Forwarder</a>
-    
-  </li>
-
-</ul>
-
-
-    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/multitechconduit-mlinux/" class="">MultiTech Conduit mLinux</a>
@@ -179,42 +179,129 @@ debug: false
       <div class="column sidebar-middle">
 
 <div class="docs-content">
-<h1 class="title is-size-2">Connect Multitech Conduit with LoRa Basics™ Station
+<h1 class="title is-size-2">Claim a Gateway
   
+  
+    
+    
+
+
+
+
+  
+
+  
+
+<a href="/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud and Enterprise Only">
+  
+    
+    <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
+  
+    
+    <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+  
+</a>
+
+
   
   
   
 </h1>
 
 <div class="content">
-  <p>This section contains instructions for connecting the Multitech Conduit AEP to The Things Stack using LoRa Basics™ Station
-.</p>
-<p>To set up LoRa packet forwarding on the gateway, follow these steps.</p>
-<p>Click the <strong>LoRaWAN</strong> tab in the left menu.</p>
-<p>Choose <strong>Basic Station</strong> in the <strong>LoRa Mode</strong> dropdown.</p>
-<figure>
-    <img src="../lbs-menu.png"
-         alt="LoRaWAN Menu"/> 
-</figure>
+  <div class="notification is-primary is-light has-text-dark">
+  <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
+  <p>The instructions below use the command-line interface (CLI).</p>
+  <div class="buttons">
+    <a class="button is-dark is-outlined" href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/">Learn how to install the CLI</a>
+  </div>
+</div>
 
-<p>On Multitech gateways, only CUPS <strong>or</strong> LNS can be configured. Configuring CUPS will automatically configure LNS, so to use The Things Stack, just follow the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/cups/">Connecting CUPS</a>.</p>
-<p>Be sure to select <strong>CUPS</strong> in the <strong>Credentials</strong> dropdown.</p>
-<figure>
-    <img src="../lbs-cups.png"
-         alt="LoRa Basics Station"/> 
-</figure>
+<p>This section provides an example on how to claim your gateway. You can update the example with your tenant ID and cluster ID by providing your values below.</p>
+<div class="field">
+  <label class="label">Tenant ID</label>
+  <div class="control">
+    <input class="input" type="text" data-content="tenant-id" placeholder="tenant id">
+  </div>
+</div>
+<div class="field">
+  <label class="label">Cluster</label>
+  <div class="control">
+    <div class="select">
+      <select data-content="cluster-id">
+        <option value="eu1" selected>Europe 1 (Ireland)</option>
+        <option value="nam1">North America 1 (California, USA)</option>
+        <option value="au1">Australia 1 (Sydney, Australia)</option>
+      </select>
+    </div>
+  </div>
+</div>
 
-<p>After entering the CUPS configuration, click the <strong>Submit</strong> button, and then click <strong>Save and Apply</strong>. The gateway will apply the changes.</p>
-<figure>
-    <img src="../lbs-save.png"
-         alt="LoRa Basics Station"/> 
-</figure>
+<script>
+  window.addEventListener('load', function(e) {
+    var $tenantIDInput = document.querySelector('input[data-content="tenant-id"]');
+    var $clusterIDInput = document.querySelector('select[data-content="cluster-id"]');
+    var query = new URLSearchParams(window.location.search);
+    $tenantIDInput.value = query.has('tenant-id') ? query.get('tenant-id') : '';
+    if (query.has('cluster-id')) {
+      $clusterIDInput.value = query.get('cluster-id');
+    }
+    var $tenantIDSpans = document.querySelectorAll('span[data-content="tenant-id"]');
+    var $clusterIDSpans = document.querySelectorAll('span[data-content="cluster-id"]');
+    function syncValue($input, defaultValue, $spans) {
+      var value = $input.value ? $input.value : defaultValue;
+      $spans.forEach(function($span){ $span.innerText = value; });
+    }
+    syncValue($tenantIDInput, '<tenant-id>', $tenantIDSpans);
+    syncValue($clusterIDInput, '<cluster-id>', $clusterIDSpans);
+    $tenantIDInput.addEventListener('keyup', function(e) {
+      syncValue(e.target, '<tenant-id>', $tenantIDSpans);
+    });
+    $clusterIDInput.addEventListener('change', function(e) {
+      syncValue(e.target, '<cluster-id>', $clusterIDSpans);
+    });
+  });
+</script>
 
-<p>If your configuration was successful, your gateway will connect to The Things Stack after a couple of seconds.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ol>
+<li>An user account in The Things Industries Cloud or a The Things Stack Enterprise cluster.</li>
+<li>EUI of the gateway that you wish to claim.</li>
+<li>The Claim Authentication Code for the gateway (shared out of band by the current gateway owner).</li>
+<li>The Current CUPS Key used by the gateway (for LoRa Basics™ Station
+only).</li>
+</ol>
+<h2 id="general">General</h2>
+<p>For the commands below, the <code>--target-gateway-id</code> field is optional. If left blank, the server will attempt to use <code>eui-&lt;gateway-id&gt;</code> as the gateway ID. If a gateway already exists with either Gateway ID values, claiming will fail.</p>
+<p>If the gateway has been successfully claimed, so you can return to the Console and you will see it in your list of gateways.</p>
+<p>Once a gateway is claimed, it needs to restarted for the new changes to take effect.</p>
+<h3 id="claim-a-gateway-lora-basics-station">Claim a Gateway (LoRa Basics Station)</h3>
+<p>If the gateway is a LoRa Basics™ Station
+gateway and has a CUPS server configured to a The Things Industries Cloud tenant, then you must additionally set up CUPS redirection. This means that when the newly claimed gateway connects to the CUPS server, the server will update the CUPS endpoint and credentials to the ones of the new owner.</p>
+<p>The additional fields that need to be set are</p>
+<ul>
+<li>
+<p><code>--target-cups-uri</code>: The URI of the CUPS server once the gateway is claimed. For The Things Industries Cloud, this would be:</p>
+  <p>
+  <code data-content="cluster-address">
+  https://<span data-content="tenant-id"></span>.<span data-content="cluster-id"></span>.cloud.thethings.industries:443
+  </code>
+  </p>
+</li>
+<li>
+<p><code>--current-gateway-key</code>: The API Key that is currently used by the gateway currently to connect to the CUPS Server.</p>
+</li>
+</ul>
+<p>Replace <code>&lt;gateway-id&gt;</code> with the <strong>Gateway ID</strong> of the gateway that you created in prerequisites, and run the following command in the CLI:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli gateways claim &lt;gateway-eui&gt; --authentication-code &lt;claim-authentication-code&gt; --user-id &lt;user-id&gt; --target-gateway-id <span class="o">[</span>target-gateway-id<span class="o">]</span> --target-cups-uri &lt;target-cups-uri&gt; --current-gateway-key &lt;current-cups-key&gt;
+</code></pre></div><h3 id="claim-a-gateway-non-lora-basics-station">Claim a Gateway (non LoRa Basics Station)</h3>
+<p>Replace <code>&lt;gateway-id&gt;</code> with the <strong>Gateway ID</strong> of the gateway that you created in prerequisites, and run the following command in the CLI:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli gateways claim &lt;gateway-eui&gt; --authentication-code &lt;claim-authentication-code&gt; --user-id &lt;user-id&gt; --target-gateway-id <span class="o">[</span>target-gateway-id<span class="o">]</span>
+</code></pre></div>
 </div>
 <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/gateways/multitechconduit/">← MultiTech Conduit AEP</a>
-<a class="button is-pulled-right" href="/docs/gateways/multitechconduit/udp/">Connect Multitech Conduit with UDP Packet Forwarder →</a>
+<a class="button is-pulled-left" href="/docs/gateways/gateway-claiming/make-gateways-claimable/">← Make a Gateway Claimable</a>
+<a class="button is-pulled-right" href="/docs/gateways/kerlinkwirnetistation/">Kerlink Wirnet iStation →</a>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -232,6 +319,14 @@ debug: false
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      <li><a href='#prerequisites'>Prerequisites</a></li>
+    
+      <li><a href='#general'>General</a></li>
+    
+  </ul>
 
 
   </nav>
@@ -267,14 +362,14 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 18 Feb 2021.
+  Last changed by Krishna Iyer Easwaran on 31 Mar 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/bd323cf167ae68ad678b6ed3d23c0e4b734efdb5">
-      doc: Lint
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2790d52d0a86cf983275e8f08bef864ee4bd8c70">
+      doc: Update gateway claiming doc
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/multitechconduit/lbs.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/gateway-claiming/claim-gateways.md" class="button">Edit on Github</a>
 </div>
 
       </div>
