@@ -17,7 +17,7 @@ Create and claim things only for devices that are not yet in your {{% tts %}} ap
 
 The AWS IoT Integration for {{% tts %}} uses the thing that you specified when deploying the integration. By default, the thing type is `lorawan`.
 
-Things are created automatically as they join the network or send an uplink message. For the name of new things, you can use their `<DevEUI>`
+Things are created automatically as they join the network or send an uplink message. For the name of new things, you can use their `<DevEUI>` or `<stack-name>_<device-id>`.
 
 Your AWS IoT things overview may look like this:
 
