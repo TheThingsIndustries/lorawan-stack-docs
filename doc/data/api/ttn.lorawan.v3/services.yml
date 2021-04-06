@@ -466,6 +466,21 @@ ApplicationRegistry:
       http:
       - method: DELETE
         path: /applications/{application_id}
+    Restore:
+      name: Restore
+      comment: |-
+        Restore a recently deleted application.
+
+        Deployment configuration may specify if, and for how long after deletion,
+        entities can be restored.
+      input:
+        name: ApplicationIdentifiers
+      output:
+        package: google.protobuf
+        name: Empty
+      http:
+      - method: POST
+        path: /applications/{application_id}/restore
     Purge:
       name: Purge
       comment: |-
@@ -844,6 +859,32 @@ ClientRegistry:
       http:
       - method: DELETE
         path: /clients/{client_id}
+    Restore:
+      name: Restore
+      comment: |-
+        Restore a recently deleted client.
+
+        Deployment configuration may specify if, and for how long after deletion,
+        entities can be restored.
+      input:
+        name: ClientIdentifiers
+      output:
+        package: google.protobuf
+        name: Empty
+      http:
+      - method: POST
+        path: /clients/{client_id}/restore
+    Purge:
+      name: Purge
+      comment: Purge the client. This will release the client ID for reuse.
+      input:
+        name: ClientIdentifiers
+      output:
+        package: google.protobuf
+        name: Empty
+      http:
+      - method: DELETE
+        path: /clients/{client_id}/purge
 Configuration:
   name: Configuration
   methods:
@@ -1199,7 +1240,7 @@ EntityRegistrySearch:
         Search for applications that match the conditions specified in the request.
         Non-admin users will only match applications that they have rights on.
       input:
-        name: SearchEntitiesRequest
+        name: SearchApplicationsRequest
       output:
         name: Applications
       http:
@@ -1211,7 +1252,7 @@ EntityRegistrySearch:
         Search for OAuth clients that match the conditions specified in the request.
         Non-admin users will only match OAuth clients that they have rights on.
       input:
-        name: SearchEntitiesRequest
+        name: SearchClientsRequest
       output:
         name: Clients
       http:
@@ -1223,7 +1264,7 @@ EntityRegistrySearch:
         Search for gateways that match the conditions specified in the request.
         Non-admin users will only match gateways that they have rights on.
       input:
-        name: SearchEntitiesRequest
+        name: SearchGatewaysRequest
       output:
         name: Gateways
       http:
@@ -1235,7 +1276,7 @@ EntityRegistrySearch:
         Search for organizations that match the conditions specified in the request.
         Non-admin users will only match organizations that they have rights on.
       input:
-        name: SearchEntitiesRequest
+        name: SearchOrganizationsRequest
       output:
         name: Organizations
       http:
@@ -1247,7 +1288,7 @@ EntityRegistrySearch:
         Search for users that match the conditions specified in the request.
         This is only available to admin users.
       input:
-        name: SearchEntitiesRequest
+        name: SearchUsersRequest
       output:
         name: Users
       http:
@@ -1369,6 +1410,41 @@ GatewayAccess:
       http:
       - method: GET
         path: /gateways/{gateway_ids.gateway_id}/collaborators
+GatewayClaimingServer:
+  name: GatewayClaimingServer
+  methods:
+    Claim:
+      name: Claim
+      comment: Claims a gateway by claim authentication code or QR code and transfers the gateway to the target user.
+      input:
+        name: ClaimGatewayRequest
+      output:
+        name: GatewayIdentifiers
+      http:
+      - method: POST
+        path: /gcls/claim
+    AuthorizeGateway:
+      name: AuthorizeGateway
+      comment: AuthorizeGateway allows a gateway to be claimed.
+      input:
+        name: AuthorizeGatewayRequest
+      output:
+        package: google.protobuf
+        name: Empty
+      http:
+      - method: POST
+        path: /gcls/gateways/{gateway_ids.gateway_id}/authorize
+    UnauthorizeGateway:
+      name: UnauthorizeGateway
+      comment: UnauthorizeGateway prevents a gateway from being claimed.
+      input:
+        name: GatewayIdentifiers
+      output:
+        package: google.protobuf
+        name: Empty
+      http:
+      - method: DELETE
+        path: /gcls/gateways/{gateway_id}/authorize
 GatewayConfigurator:
   name: GatewayConfigurator
   methods:
@@ -1459,6 +1535,22 @@ GatewayRegistry:
       http:
       - method: DELETE
         path: /gateways/{gateway_id}
+    Restore:
+      name: Restore
+      comment: |-
+        Restore a recently deleted gateway. This does not restore the EUI,
+        as that was released when deleting the gateway.
+
+        Deployment configuration may specify if, and for how long after deletion,
+        entities can be restored.
+      input:
+        name: GatewayIdentifiers
+      output:
+        package: google.protobuf
+        name: Empty
+      http:
+      - method: POST
+        path: /gateways/{gateway_id}/restore
     Purge:
       name: Purge
       comment: |-
@@ -1494,9 +1586,17 @@ GsNs:
   methods:
     HandleUplink:
       name: HandleUplink
-      comment: Handle a LoRaWAN uplink message.
+      comment: Called by the Gateway Server when an uplink message arrives.
       input:
         name: UplinkMessage
+      output:
+        package: google.protobuf
+        name: Empty
+    ReportTxAcknowledgment:
+      name: ReportTxAcknowledgment
+      comment: Called by the Gateway Server when a Tx acknowledgment arrives.
+      input:
+        name: GatewayTxAcknowledgment
       output:
         package: google.protobuf
         name: Empty
@@ -2046,6 +2146,21 @@ OrganizationRegistry:
       http:
       - method: DELETE
         path: /organizations/{organization_id}
+    Restore:
+      name: Restore
+      comment: |-
+        Restore a recently deleted organization.
+
+        Deployment configuration may specify if, and for how long after deletion,
+        entities can be restored.
+      input:
+        name: OrganizationIdentifiers
+      output:
+        package: google.protobuf
+        name: Empty
+      http:
+      - method: POST
+        path: /organizations/{organization_id}/restore
     Purge:
       name: Purge
       comment: |-
@@ -2060,6 +2175,179 @@ OrganizationRegistry:
       http:
       - method: DELETE
         path: /organizations/{organization_id}/purge
+Pba:
+  name: Pba
+  comment: The Pba service allows clients to manage peering through Packet Broker.
+  methods:
+    GetInfo:
+      name: GetInfo
+      comment: |-
+        Get information about the Packet Broker registration.
+        Viewing Packet Packet information requires administrative access.
+      input:
+        package: google.protobuf
+        name: Empty
+      output:
+        name: PacketBrokerInfo
+      http:
+      - method: GET
+        path: /pba/info
+    Register:
+      name: Register
+      comment: |-
+        Register with Packet Broker. If no registration exists, it will be created. Any existing registration will be updated.
+        All registration settings are taken from Packet Broker Agent configuration and caller context.
+        Packet Broker registration requires administrative access.
+      input:
+        package: google.protobuf
+        name: Empty
+      output:
+        name: PacketBrokerNetwork
+      http:
+      - method: PUT
+        path: /pba/registration
+      - method: POST
+        path: /pba/registration
+    Deregister:
+      name: Deregister
+      comment: |-
+        Deregister from Packet Broker.
+        Packet Broker deregistration requires administrative access.
+      input:
+        package: google.protobuf
+        name: Empty
+      output:
+        package: google.protobuf
+        name: Empty
+      http:
+      - method: DELETE
+        path: /pba/registration
+    GetHomeNetworkDefaultRoutingPolicy:
+      name: GetHomeNetworkDefaultRoutingPolicy
+      comment: |-
+        Get the default routing policy.
+        Getting routing policies requires administrative access.
+      input:
+        package: google.protobuf
+        name: Empty
+      output:
+        name: PacketBrokerDefaultRoutingPolicy
+      http:
+      - method: GET
+        path: /pba/home-networks/policies/default
+    SetHomeNetworkDefaultRoutingPolicy:
+      name: SetHomeNetworkDefaultRoutingPolicy
+      comment: |-
+        Set the default routing policy.
+        Setting routing policies requires administrative access.
+      input:
+        name: SetPacketBrokerDefaultRoutingPolicyRequest
+      output:
+        package: google.protobuf
+        name: Empty
+      http:
+      - method: PUT
+        path: /pba/home-networks/policies/default
+      - method: POST
+        path: /pba/home-networks/policies/default
+    DeleteHomeNetworkDefaultRoutingPolicy:
+      name: DeleteHomeNetworkDefaultRoutingPolicy
+      comment: |-
+        Deletes the default routing policy.
+        Deleting routing policies requires administrative access.
+      input:
+        package: google.protobuf
+        name: Empty
+      output:
+        package: google.protobuf
+        name: Empty
+      http:
+      - method: DELETE
+        path: /pba/home-networks/policies/default
+    ListHomeNetworkRoutingPolicies:
+      name: ListHomeNetworkRoutingPolicies
+      comment: |-
+        List the routing policies that Packet Broker Agent as Forwarder configured with Home Networks.
+        Listing routing policies requires administrative access.
+      input:
+        name: ListHomeNetworkRoutingPoliciesRequest
+      output:
+        name: PacketBrokerRoutingPolicies
+      http:
+      - method: GET
+        path: /pba/home-networks/policies
+    GetHomeNetworkRoutingPolicy:
+      name: GetHomeNetworkRoutingPolicy
+      comment: |-
+        Get the routing policy for the given Home Network.
+        Getting routing policies requires administrative access.
+      input:
+        name: PacketBrokerNetworkIdentifier
+      output:
+        name: PacketBrokerRoutingPolicy
+      http:
+      - method: GET
+        path: /pba/home-networks/policies/{net_id}
+      - method: GET
+        path: /pba/home-networks/policies/{net_id}/{tenant_id}
+    SetHomeNetworkRoutingPolicy:
+      name: SetHomeNetworkRoutingPolicy
+      comment: |-
+        Set the routing policy for the given Home Network.
+        Setting routing policies requires administrative access.
+      input:
+        name: SetPacketBrokerRoutingPolicyRequest
+      output:
+        package: google.protobuf
+        name: Empty
+      http:
+      - method: PUT
+        path: /pba/home-networks/policies/{home_network_id.net_id}
+      - method: POST
+        path: /pba/home-networks/policies/{home_network_id.net_id}
+      - method: PUT
+        path: /pba/home-networks/policies/{home_network_id.net_id}/{home_network_id.tenant_id}
+      - method: POST
+        path: /pba/home-networks/policies/{home_network_id.net_id}/{home_network_id.tenant_id}
+    DeleteHomeNetworkRoutingPolicy:
+      name: DeleteHomeNetworkRoutingPolicy
+      comment: |-
+        Delete the routing policy for the given Home Network.
+        Deleting routing policies requires administrative access.
+      input:
+        name: PacketBrokerNetworkIdentifier
+      output:
+        package: google.protobuf
+        name: Empty
+      http:
+      - method: DELETE
+        path: /pba/home-networks/policies/{net_id}
+      - method: DELETE
+        path: /pba/home-networks/policies/{net_id}/{tenant_id}
+    ListHomeNetworks:
+      name: ListHomeNetworks
+      comment: |-
+        List the (public) home networks for which routing policies can be configured.
+        Listing home networks requires administrative access.
+      input:
+        name: ListHomeNetworksRequest
+      output:
+        name: PacketBrokerNetworks
+      http:
+      - method: GET
+        path: /pba/home-networks
+    ListForwarderRoutingPolicies:
+      name: ListForwarderRoutingPolicies
+      comment: |-
+        List the routing policies that Forwarders configured with Packet Broker Agent as Home Network.
+        Listing routing policies requires administrative access.
+      input:
+        name: ListForwarderRoutingPoliciesRequest
+      output:
+        name: PacketBrokerRoutingPolicies
+      http:
+      - method: GET
+        path: /pba/forwarders/policies
 UserAccess:
   name: UserAccess
   comment: |-
@@ -2122,6 +2410,16 @@ UserAccess:
       http:
       - method: PUT
         path: /users/{user_ids.user_id}/api-keys/{api_key.id}
+    CreateLoginToken:
+      name: CreateLoginToken
+      comment: Create a login token that can be used for a one-time login as a user.
+      input:
+        name: CreateLoginTokenRequest
+      output:
+        name: CreateLoginTokenResponse
+      http:
+      - method: POST
+        path: /users/{user_ids.user_id}/login-tokens
 UserInvitationRegistry:
   name: UserInvitationRegistry
   methods:
@@ -2242,6 +2540,21 @@ UserRegistry:
       http:
       - method: DELETE
         path: /users/{user_id}
+    Restore:
+      name: Restore
+      comment: |-
+        Restore a recently deleted user.
+
+        Deployment configuration may specify if, and for how long after deletion,
+        entities can be restored.
+      input:
+        name: UserIdentifiers
+      output:
+        package: google.protobuf
+        name: Empty
+      http:
+      - method: POST
+        path: /users/{user_id}/restore
     Purge:
       name: Purge
       comment: |-

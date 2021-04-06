@@ -67,7 +67,7 @@ description: ""
 
 {{< proto/message message="Rights" >}}
 
-{{< proto/message message="SearchEntitiesRequest" >}}
+{{< proto/message message="SearchUsersRequest" >}}
 
 {{< proto/message message="SendInvitationRequest" >}}
 

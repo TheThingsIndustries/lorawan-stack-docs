@@ -123,6 +123,28 @@ BillingIdentifiers:
     rules:
       max_len: 250
     default: ""
+CUPSRedirectCredentials:
+  name: CUPSRedirectCredentials
+  fields:
+  - name: current_gateway_key
+    comment: |-
+      Used only to validate incoming requests from the gateway.
+      It can be an auth token or a The Things Stack API Key.
+    type: string
+    rules:
+      max_len: 2048
+    default: ""
+  - name: redirect_api_key
+    comment: |-
+      API Key to fetch fields from the gateway for redirection.
+      Needs the following rights on the gateway.
+      ttnpb.RIGHT_GATEWAY_INFO,
+      ttnpb.RIGHT_GATEWAY_SETTINGS_BASIC,
+      ttnpb.RIGHT_GATEWAY_READ_SECRETS,
+    type: string
+    rules:
+      max_len: 2048
+    default: ""
 Configuration:
   name: Configuration
   fields:
@@ -130,6 +152,11 @@ Configuration:
     comment: Default cluster configuration.
     message:
       name: Configuration.Cluster
+    default: {}
+  - name: pb
+    comment: Packet Broker configuration.
+    message:
+      name: Configuration.PacketBroker
     default: {}
 Configuration.Cluster:
   name: Configuration.Cluster
@@ -320,6 +347,13 @@ Configuration.Cluster.NetworkServer:
       package: google.protobuf
       name: Duration
     default: 0s
+Configuration.PacketBroker:
+  name: Configuration.PacketBroker
+  fields:
+  - name: listed
+    comment: Indicates whether the Home Network is publicly listed.
+    type: bool
+    default: false
 Configuration.UI:
   name: Configuration.UI
   fields:
@@ -696,6 +730,16 @@ MeteringData.TenantMeteringData:
     message:
       name: TenantRegistryTotals
     default: {}
+SetCUPSRedirectionRequest:
+  name: SetCUPSRedirectionRequest
+  fields:
+  - name: eui
+    type: bytes
+    default: ""
+  - name: credentials
+    message:
+      name: CUPSRedirectCredentials
+    default: {}
 Tenant:
   name: Tenant
   comment: Tenant is the message that defines a Tenant in the network.
@@ -781,12 +825,22 @@ Tenant:
     comment: |-
       The reviewing state of the tenant.
       This field can only be modified by tenant admins.
+      If state_description is not updated when updating state, state_description is cleared.
     enum:
       package: ttn.lorawan.v3
       name: State
     rules:
       defined_only: true
     default: STATE_REQUESTED
+  - name: state_description
+    comment: |-
+      A description for the state field.
+      This field can only be modified by admins, and should typically only be updated
+      when also updating `state`.
+    type: string
+    rules:
+      max_len: 128
+    default: ""
   - name: capabilities
     message:
       package: google.protobuf
@@ -842,6 +896,12 @@ Tenants:
       message:
         name: Tenant
     default: []
+UnsetCUPSRedirectionRequest:
+  name: UnsetCUPSRedirectionRequest
+  fields:
+  - name: eui
+    type: bytes
+    default: ""
 UpdateTenantRequest:
   name: UpdateTenantRequest
   fields:
