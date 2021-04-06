@@ -116,4 +116,6 @@ $ ttn-lw-migrate application --verbose --dry-run --source ttnv2 "my-ttn-app" > a
 $ ttn-lw-migrate application --source ttnv2 "my-ttn-app" > all-devices.json
 ```
 
+{{< note >}} In {{% ttnv2 %}}, underscores ( _ ) are allowed in the end device ID but not in {{% tts %}}. You can refer to [ID And EUI Constraints Document]({{< ref "reference/id-eui-constraints" >}}) for more information. The `ttn-lw-migrate` tool replaces an underscore with a dash ( - ) automagically while exporting the devices. {{</ note >}}
+
 After exporting the end devices in to a json file you can refer to [Import End Devices Document]({{< ref "getting-started/migrating/import-devices.md" >}}) in {{% tts %}} for next steps.
