@@ -1,12 +1,14 @@
 ---
 title: Import End Devices in The Things Stack
-weight: 6
+weight: 4
 aliases: ["/getting-started/migrating-from-v2/import-devices", "/getting-started/migrating-from-networks/import-devices"]
 ---
 
-To import your devices, you need an application in {{% tts %}}. This can be done by following instructions for [Creating an Application]({{< ref "integrations/adding-applications" >}}).
+To import end devices, you need access to an application in {{% tts %}}. If you have not created one previously, see the [Adding Applications]({{< ref "integrations/adding-applications" >}}) guide for detailed instructions.
 
-To import devices, use the `devices.json` file you created in the previous step.
+To import devices in {{% tts %}}, use the `devices.json` file you created by following [Migrating End Devices from {{% ttnv2 %}}]({{< ref "/getting-started/migrating/migrating-from-v2" >}}) or [Migrating End Devices from ChirpStack]({{< ref "/getting-started/migrating/migrate-from-chirpstack" >}}).
+
+There are two ways to import devices in {{% tts %}} - using [Console]({{< ref "/getting-started/console" >}}) or [CLI]({{< ref "/getting-started/cli" >}}).
 
 {{< tabs/container "Console" "CLI" >}}
 
@@ -14,7 +16,7 @@ To import devices, use the `devices.json` file you created in the previous step.
 
 ### Import devices via the Console {#import-devices-via-the-console}
 
-Open the application you created and click the button **Import end devices**
+Open your application and click the button **Import end devices**
 
 {{< figure src="../import-end-devices.png" alt="import devices" >}}
 
@@ -31,22 +33,22 @@ If the import was successful, your devices are added to the list of end devices 
 {{< /tabs/tab >}}
 
 {{< tabs/tab "CLI" >}}
+
 ### Import devices via the CLI
 
-You need the latest version of `ttn-lw-cli`, the CLI for {{% tts %}}.
+To complete these steps, you need the have the latest version of `ttn-lw-cli` installed on your system.
 
 {{< cli-only >}}
 
-To import the devices.json file, run the following command in `ttn-lw-cli`.
+To import `devices.json` file in {{% tts %}}, run the following command with `ttn-lw-cli`:
 
 ```bash
 $ ttn-lw-cli end-devices create --application-id "imported-application" < devices.json
 ```
 
-This will import your devices on {{% tts %}}. In case any device fails, you see a relevant error message at the end of the output.
+This will import your devices in {{% tts %}}. In case any device import fails, you will see a relevant error message at the end of the output.
 
-If the import was successful, your devices is added to the list of end-devices in your application.
-
+If the import was successful, you will see your devices added to the list of end devices in your application.
 
 {{< /tabs/tab >}}
 
@@ -55,4 +57,4 @@ If the import was successful, your devices is added to the list of end-devices i
 
 You can now start using your devices with {{% tts %}}!
 
-{{< note >}} You can always manually copy-paste the Payload Formatters (if applicable) from {{% ttnv2 %}} to your {{% tts %}} application. See [Payload Formatters]({{% ref "integrations/payload-formatters" %}}) for more details. {{</ note >}}
+{{< note >}} If you migrated your end devices from {{% ttnv2 %}} (The Things Network V2 or The Things Industries V2), you can manually copy-paste the Payload Formatters (if applicable) from {{% ttnv2 %}} to your {{% tts %}} application. See [Payload Formatters]({{% ref "integrations/payload-formatters" %}}) for more details. {{</ note >}}

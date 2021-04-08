@@ -1,15 +1,15 @@
 ---
-title: "Importable JSON File Reference"
+title: "JSON File Reference"
 description: ""
-weight: 5
+weight: 7
 aliases: "/getting-started/migrating-from-networks/device-json"
 ---
 
-{{% tts %}} allows you to import devices from other networks using a JSON file describing those devices.
+{{% tts %}} allows you to import end devices from {{% ttnv2 %}}, ChirpStack and other LoRaWAN networks using a JSON file describing those devices.
 
-Devices imported this way can be migrated without the need for a rejoin, although {{% tts %}} does not yet support this, but will support it in an upcoming release.
+{{< info >}} Using JSON file with device descriptions, you can migrate end devices with or without their existing sessions. {{</ info >}}
 
-Create a `devices.json` file containing a device object, like so:
+Here is an example of an OTAA device description in the `devices.json` file:
 
 ```json
 {
@@ -32,7 +32,7 @@ Create a `devices.json` file containing a device object, like so:
 }
 ```
 
-You can define multiple end devices in a single file like so:
+Multiple end devices can also be contained in a single `devices.json` file like so:
 
 ```js
 [
@@ -47,7 +47,9 @@ You can define multiple end devices in a single file like so:
 
 ## JSON End Device Format
 
-The full specification of the JSON format is defined in the API protos, see the [EndDevice]({{< ref "/reference/api/end_device#message:EndDevice" >}}) message definition for details.
+The full specification of the JSON format is defined in the API protos. 
+
+> See the [EndDevice]({{< ref "/reference/api/end_device#message:EndDevice" >}}) message definition for details.
 
 The linked specification is quite extensive, and contains a lot of fields that are not required, or are only set and used internally by the Network Server. Below, the required and most commonly used fields are discussed.
 
@@ -83,34 +85,3 @@ The linked specification is quite extensive, and contains a lot of fields that a
 }
 ```
 {{</ note >}}
-
-## Migrating Devices with Existing Sessions
-
-Migrating devices with existing sessions is not currently supported in {{% tts %}}, but it will be supported in an upcoming release.
-
-## Examples
-
-### Example OTAA Device:
-<summary><details>
-
-```json
-{
-  "ids": {
-    "device_id": "my-device",
-    "dev_eui": "0102030405060708",
-    "join_eui": "0102030405060708"
-  },
-  "name": "My Device",
-  "description": "Living room temperature sensor",
-  "lorawan_version": "MAC_V1_0_2",
-  "lorawan_phy_version": "PHY_V1_0_2_REV_B",
-  "frequency_plan_id": "EU_863_870_TTN",
-  "supports_join": true,
-  "root_keys": {
-    "app_key": {
-      "key": "01020304050607080102030405060708"
-    }
-  }
-}
-```
-</details></summary>
