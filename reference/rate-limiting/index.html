@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Rate Limiting | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/rate-limiting/" />
+  <link rel="alternate icon" href="/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.65a9b35ee028e02a37b1c52cf749fd0282297d1c6431a14269fa6f7437792af6.css" integrity="sha256-ZamzXuAo4Co3scUs90n9AoIpfRxkMaFCafpvdDd5KvY=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Rate Limiting">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Rate Limiting">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/rate-limiting/">
+  <meta name="twitter:title" content="Rate Limiting" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+<body><nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div id="migration-info">
+      <div id="migration-text">thethingsstack.io has moved to thethingsindustries.com/docs</div>
+      <div id="migration-button" class="button is-primary">Got it</div>
+  </div>
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.11</p>
+      </a>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="/docs/download/">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<section class="search-container">
+    <div class="container">
+      <div class="columns is-vcentered">
+        <div class="column">
+          <div class="field has-addons has-addons-centered">
+            <div class="control">
+              <input class="input search-bar" id="search-input" type="text" placeholder="Search" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript"> docsearch({
+apiKey: "4372282a02970d8402d43457bf95d486",
+indexName: "thethingsstack",
+inputSelector: '#search-input',
+debug: false 
+});
+</script>
+<div class="container" role="document">
+  <div class="columns my-0">
+      <div class="column is-one-fifth-tablet is-one-third sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Reference</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/reference/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/reference/stripe/" class="">Billing with Stripe</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/reference/api/" class="">API</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/reference/application-packages/" class="">Application Packages</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/reference/cli/" class="">Command-Line Interface</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/reference/components/" class="">Components</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/reference/configuration/" class="">Configuration</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/reference/data-formats/" class="">Data Formats</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/reference/email-templates/" class="">Email Templates</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/reference/federated-auth/" class="">Federated Authentication</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/" class="">Frequency Plans</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/reference/glossary/" class="">Glossary</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/" class="">ID and EUI Constraints</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/reference/interop-repository/" class="">Interoperability Repository</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/reference/spec-regional-parameters/" class="">LoRaWAN Specification and Regional Parameters</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/reference/networking/" class="">Networking</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/reference/packet-broker/" class="">Packet Broker</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/reference/rate-limiting/" class="is-active">Rate Limiting</a>
+    
+
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/reference/root-certificates/" class="">Root Certificates</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/reference/telemetry/" class="">Telemetry</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/reference/branding/" class="">Web UI Branding</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      <div class="column sidebar-middle">
+
+<div class="docs-content">
+<h1 class="title is-size-2">Rate Limiting
+  
+  
+  
+    <span class="new-in-version">New in 3.12</span>
+
+  
+  
+</h1>
+
+<div class="content">
+  <p>The Things Stack supports rate limiting for all outward facing services. Access to each resource is limited by a unique identifier key, and it is possible to define rate limiting classes for fine-grained control.</p>
+<h2 id="example-configuration">Example configuration</h2>
+<p>The rate limiting configuration is split into multiple profiles. For each profile, we provide a name, the maximum allowed rate per minute, and optionally a maximum burst rate. Finally, we associate the profile with a number of rate limiting classes. Refer to the <a href="#rate-limited-entities">Rate Limited Entities</a> section below for a list of all available rate limiting classes and what they mean.</p>
+<p>Enable rate limiting by adding the following configuration to your <code>ttn-lw-stack.yml</code>.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The values shown below are only meant as an example. Make sure to adjust them accordingly, depending on the actual traffic of your deployment.
+</div>
+
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">rate-limiting</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">profiles</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>HTTP<span class="w"> </span>servers<span class="w">
+</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">30</span><span class="w">
+</span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- http<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Application<span class="w"> </span>downlink<span class="w"> </span>traffic<span class="w">
+</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- as<span class="p">:</span>down<span class="p">:</span>web<span class="w">
+</span><span class="w">        </span>- as<span class="p">:</span>down<span class="p">:</span>mqtt<span class="w">
+</span><span class="w">        </span>- grpc<span class="p">:</span>method<span class="p">:</span>/ttn.v3.lorawan.v3.AppAs/DownlinkQueuePush<span class="w">
+</span><span class="w">        </span>- grpc<span class="p">:</span>method<span class="p">:</span>/ttn.v3.lorawan.v3.AppAs/DownlinkQueueReplace<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Gateway<span class="w"> </span>connections<span class="w">
+</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- gs<span class="p">:</span>accept<span class="p">:</span>mqtt<span class="w">
+</span><span class="w">        </span>- gs<span class="p">:</span>accept<span class="p">:</span>ws<span class="w">
+</span><span class="w">        </span>- grpc<span class="p">:</span>stream<span class="p">:</span>accept<span class="p">:</span>/ttn.lorawan.v3.GtwGs/LinkGateway<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>gRPC<span class="w"> </span>API<span class="w">
+</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">60</span><span class="w">
+</span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- grpc<span class="p">:</span>method<span class="w">
+</span><span class="w">        </span>- grpc<span class="p">:</span>stream<span class="p">:</span>accept<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Override<span class="w"> </span>rate<span class="w"> </span>for<span class="w"> </span>uplink<span class="w"> </span>simulation<span class="w">
+</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- grpc<span class="p">:</span>method<span class="p">:</span>/ttn.lorawan.v3.AppAs/SimulateUplink<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Gateway<span class="w"> </span>uplink<span class="w"> </span>traffic<span class="w">
+</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">1000</span><span class="w">
+</span><span class="w">      </span><span class="k">max-burst</span><span class="p">:</span><span class="w"> </span><span class="m">1500</span><span class="w">
+</span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- gs<span class="p">:</span>up<span class="w">
+</span></code></pre></div><h2 id="rate-limited-entities">Rate Limited Entities</h2>
+<p>This section lists resources of The Things Stack on which a maximum rate limit can be enforced.</p>
+
+<div class="has-vertical-space">
+  <a href="#application-server-mqtt-client-connections">
+    <h3 id="application-server-mqtt-client-connections">Application Server MQTT Client Connections</h3>
+  </a>
+  <table class="fixed">
+    <tbody>
+      <tr>
+        <td><b>Description</b></td><td>Limit number of new MQTT client connections to Application Server by remote IP.</td>
+      </tr>
+      <tr>
+        <td><b>Classes</b></td><td><code>as:accept:mqtt</code></td>
+      </tr>
+      <tr>
+        <td><b>Key</b></td><td><code>as:accept:mqtt:ip:{{ RemoteIP }}</code></td>
+      </tr>
+      <tr>
+        <td><b>Example</b></td><td><code>as:accept:mqtt:ip:10.10.10.10</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="has-vertical-space">
+  <a href="#application-server-mqtt-downlink-traffic">
+    <h3 id="application-server-mqtt-downlink-traffic">Application Server MQTT Downlink Traffic</h3>
+  </a>
+  <table class="fixed">
+    <tbody>
+      <tr>
+        <td><b>Description</b></td><td>Limit number of downlink messages from MQTT clients by application ID and authentication token ID.</td>
+      </tr>
+      <tr>
+        <td><b>Classes</b></td><td><code>as:down:mqtt</code></td>
+      </tr>
+      <tr>
+        <td><b>Key</b></td><td><code>as:down:mqtt:app:{{ AppUID }}:token:{{ AuthTokenID }}</code></td>
+      </tr>
+      <tr>
+        <td><b>Example</b></td><td><code>as:down:mqtt:app:my-application:token:F69AA8D76F5A78S6FDAASADF</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="has-vertical-space">
+  <a href="#application-server-downlink-traffic-via-webhooks">
+    <h3 id="application-server-downlink-traffic-via-webhooks">Application Server Downlink Traffic Via Webhooks</h3>
+  </a>
+  <table class="fixed">
+    <tbody>
+      <tr>
+        <td><b>Description</b></td><td>Limit number of downlink messages via webhooks by application ID, device ID and authentication token ID.</td>
+      </tr>
+      <tr>
+        <td><b>Classes</b></td><td><code>as:down:web</code></td>
+      </tr>
+      <tr>
+        <td><b>Key</b></td><td><code>as:down:web:dev:{{ DevUID }}:token:{{ AuthTokenID }}</code></td>
+      </tr>
+      <tr>
+        <td><b>Example</b></td><td><code>as:down:web:dev:my-application.my-device:token:F69AA8D76F5A78S6FDAASADF</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="has-vertical-space">
+  <a href="#grpc-requests">
+    <h3 id="grpc-requests">gRPC Requests</h3>
+  </a>
+  <table class="fixed">
+    <tbody>
+      <tr>
+        <td><b>Description</b></td><td>Limit number of gRPC API requests by full gRPC method name, entity ID and authentication token ID.</td>
+      </tr>
+      <tr>
+        <td><b>Classes</b></td><td><code>grpc:method:{{ FullMethod }}</code> <code>grpc:method</code></td>
+      </tr>
+      <tr>
+        <td><b>Key</b></td><td><code>grpc:method:{{ FullMethod }}:{{ EntityUID }}:token:{{ AuthTokenID }}</code></td>
+      </tr>
+      <tr>
+        <td><b>Example</b></td><td><code>grpc:method:/ttn.lorawan.v3.AppAs/SimulateUplink:end device:my-application.my-device:token:F69AA8D76F5A78S6FDAASADF</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="has-vertical-space">
+  <a href="#http-api-requests">
+    <h3 id="http-api-requests">HTTP API Requests</h3>
+  </a>
+  <table class="fixed">
+    <tbody>
+      <tr>
+        <td><b>Description</b></td><td>Limit number of HTTP API requests by gRPC method name, entity ID and authentication token ID.</td>
+      </tr>
+      <tr>
+        <td><b>Classes</b></td><td><code>grpc:method:{{ FullMethod }}</code> <code>grpc:method</code></td>
+      </tr>
+      <tr>
+        <td><b>Key</b></td><td><code>grpc:method:{{ FullMethod }}:{{ EntityUID }}:token:{{ AuthTokenID }}</code></td>
+      </tr>
+      <tr>
+        <td><b>Example</b></td><td><code>grpc:method:/ttn.lorawan.v3.AppAs/SimulateUplink:dev:my-application.my-device:token:F69AA8D76F5A78S6FDAASADF</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="has-vertical-space">
+  <a href="#grpc-server-streams">
+    <h3 id="grpc-server-streams">gRPC Server Streams</h3>
+  </a>
+  <table class="fixed">
+    <tbody>
+      <tr>
+        <td><b>Description</b></td><td>Limit number of new gRPC server streams by gRPC server stream and authentication token ID.</td>
+      </tr>
+      <tr>
+        <td><b>Classes</b></td><td><code>grpc:stream:accept:{{ FullMethod }}</code> <code>grpc:stream:accept</code></td>
+      </tr>
+      <tr>
+        <td><b>Key</b></td><td><code>grpc:stream:accept:{{ FullMethod }}:token:{{ AuthTokenID }}</code></td>
+      </tr>
+      <tr>
+        <td><b>Example</b></td><td><code>grpc:stream:accept:/ttn.lorawan.v3.GtwGs/LinkGateway:token:F69AA8D76F5A78S6FDAASADF</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="has-vertical-space">
+  <a href="#incoming-client-traffic-from-grpc-server-streams">
+    <h3 id="incoming-client-traffic-from-grpc-server-streams">Incoming Client Traffic From gRPC Server Streams</h3>
+  </a>
+  <table class="fixed">
+    <tbody>
+      <tr>
+        <td><b>Description</b></td><td>Limit number of incoming message for gRPC server streams for individual server streams.</td>
+      </tr>
+      <tr>
+        <td><b>Classes</b></td><td><code>grpc:stream:up:{{ FullMethod }}</code> <code>grpc:stream:up</code></td>
+      </tr>
+      <tr>
+        <td><b>Key</b></td><td><code>grpc:stream:up:{{ FullMethod }}:streamID:{{ CorrelationID }}</code></td>
+      </tr>
+      <tr>
+        <td><b>Example</b></td><td><code>grpc:stream:up:/ttn.lorawan.v3.GtwGs/LinkGateway:streamID:01F26VW4B39PAPHZKXFV6YM1TP</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="has-vertical-space">
+  <a href="#gateway-server-mqtt-gateway-connections">
+    <h3 id="gateway-server-mqtt-gateway-connections">Gateway Server MQTT Gateway Connections</h3>
+  </a>
+  <table class="fixed">
+    <tbody>
+      <tr>
+        <td><b>Description</b></td><td>Limit number of new MQTT gateway connections to Gateway Server by remote IP.</td>
+      </tr>
+      <tr>
+        <td><b>Classes</b></td><td><code>gs:accept:mqtt</code></td>
+      </tr>
+      <tr>
+        <td><b>Key</b></td><td><code>gs:accept:mqtt:ip:{{ RemoteIP }}</code></td>
+      </tr>
+      <tr>
+        <td><b>Example</b></td><td><code>gs:accept:mqtt:ip:10.10.10.10</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="has-vertical-space">
+  <a href="#gateway-server-basicstation-gateway-connections">
+    <h3 id="gateway-server-basicstation-gateway-connections">Gateway Server BasicStation Gateway Connections</h3>
+  </a>
+  <table class="fixed">
+    <tbody>
+      <tr>
+        <td><b>Description</b></td><td>Limit number of new BasicStation gateway connections to Gateway Server by remote IP and request URL.</td>
+      </tr>
+      <tr>
+        <td><b>Classes</b></td><td><code>gs:accept:ws</code> <code>http</code></td>
+      </tr>
+      <tr>
+        <td><b>Key</b></td><td><code>gs:accept:ws:ip:{{ RemoteIP }}:url:{{ URL }}</code></td>
+      </tr>
+      <tr>
+        <td><b>Example</b></td><td><code>gs:accept:ws:ip:10.10.10.10:url:/traffic/eui-0102030405060708</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="has-vertical-space">
+  <a href="#gateway-server-uplink-traffic-udp">
+    <h3 id="gateway-server-uplink-traffic-udp">Gateway Server Uplink Traffic (UDP)</h3>
+  </a>
+  <table class="fixed">
+    <tbody>
+      <tr>
+        <td><b>Description</b></td><td>Limit number of UDP packets processed by the Gateway Server by remote IP.</td>
+      </tr>
+      <tr>
+        <td><b>Classes</b></td><td><code>gs:up:udp</code> <code>gs:up</code></td>
+      </tr>
+      <tr>
+        <td><b>Key</b></td><td><code>gs:up:udp:ip:{{ RemoteIP }}</code></td>
+      </tr>
+      <tr>
+        <td><b>Example</b></td><td><code>gs:up:udp:ip:10.10.10.10</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="has-vertical-space">
+  <a href="#gateway-server-uplink-traffic-basicstation-mqtt-and-grpc">
+    <h3 id="gateway-server-uplink-traffic-basicstation-mqtt-and-grpc">Gateway Server Uplink Traffic (BasicStation, MQTT and gRPC)</h3>
+  </a>
+  <table class="fixed">
+    <tbody>
+      <tr>
+        <td><b>Description</b></td><td>Limit number of uplink messages received by the Gateway Server (for the BasicStation, gRPC and MQTT frontends) by gateway ID.</td>
+      </tr>
+      <tr>
+        <td><b>Classes</b></td><td><code>gs:up</code></td>
+      </tr>
+      <tr>
+        <td><b>Key</b></td><td><code>gs:up:gtw:{{ GtwUID }}</code></td>
+      </tr>
+      <tr>
+        <td><b>Example</b></td><td><code>gs:up:gtw:my-gateway</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="has-vertical-space">
+  <a href="#basicstation-cups">
+    <h3 id="basicstation-cups">BasicStation CUPS</h3>
+  </a>
+  <table class="fixed">
+    <tbody>
+      <tr>
+        <td><b>Description</b></td><td>Limit number of HTTP requests to the BasicStation CUPS by remote IP and request URL.</td>
+      </tr>
+      <tr>
+        <td><b>Classes</b></td><td><code>basicstation:cups</code> <code>http</code></td>
+      </tr>
+      <tr>
+        <td><b>Key</b></td><td><code>basicstation:cups:ip:{{ RemoteIP }}:url:{{ URL }}</code></td>
+      </tr>
+      <tr>
+        <td><b>Example</b></td><td><code>basicstation:cups:ip:10.10.10.10:url:/update-info</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<div class="has-vertical-space">
+  <a href="#oauth-server-account-app-gateway-configuration-server-interop-server-metrics-health-pprof">
+    <h3 id="oauth-server-account-app-gateway-configuration-server-interop-server-metrics-health-pprof">OAuth Server, Account App, Gateway Configuration Server, Interop Server, Metrics, Health, pprof</h3>
+  </a>
+  <table class="fixed">
+    <tbody>
+      <tr>
+        <td><b>Description</b></td><td>Limit number of HTTP requests by remote IP and request URL. `{{ Server }}` is `oauth`, `account`, `gcs`, `interop`, `metrics`, `health`, `pprof` respectively.</td>
+      </tr>
+      <tr>
+        <td><b>Classes</b></td><td><code>http:{{ Server }}</code> <code>http</code></td>
+      </tr>
+      <tr>
+        <td><b>Key</b></td><td><code>http:{{ Server }}:ip:{{ RemoteIP }}:url:{{ URL }}</code></td>
+      </tr>
+      <tr>
+        <td><b>Example</b></td><td><code>http:oauth:ip:10.10.10.10:url:/authorize</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  gRPC Requests support multiple classes. This is to enable overriding the generic rate limits for specific gRPC methods.
+</div>
+
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  When The Things Stack HTTP and gRPC endpoints are served behind a reverse proxy, the <code>X-Forwarded-For</code> header is respected for the remote IP. The IP address of the reverse proxy must be trusted by The Things Stack for this to work, see <a href="https://www.thethingsindustries.com/docs/reference/configuration/the-things-stack/#http-options">HTTP options</a> and <a href="https://www.thethingsindustries.com/docs/reference/configuration/the-things-stack/#grpc-options">gRPC Options</a>.
+</div>
+
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  When The Things Stack MQTT and UDP endpoints are served by a reverse proxy, the remote IP address seen by The Things Stack may not be correct. In this case, rate limiting for new MQTT connections (and UDP traffic) should be handled by the reverse proxy and disabled in The Things Stack.
+</div>
+
+<h2 id="rate-limiting-actions">Rate Limiting Actions</h2>
+<p>The following table describes how The Things Stack reacts when the maximum rate limit for a resource is exceeded.</p>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Rate Limit Action</th>
+<th>Expected Client Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gRPC Requests</td>
+<td>Return an error response of type <code>ResourceExhausted</code>, and set rate limiting headers.</td>
+<td>The client should wait and then retry the gRPC request. The <code>X-Rate-Limit-Retry</code> header from the response can help in this case.</td>
+</tr>
+<tr>
+<td>HTTP Requests</td>
+<td>Return an <code>HTTP 429 (Too Many Requests)</code> error response, and set rate limiting headers.</td>
+<td>The client should wait and then retry the HTTP request. The <code>X-Rate-Limit-Retry</code> header from the response can help in this case.</td>
+</tr>
+<tr>
+<td>New MQTT Connections</td>
+<td>Drop (reject) new connection.</td>
+<td>The client should reconnect with a backoff.</td>
+</tr>
+<tr>
+<td>UDP packets</td>
+<td>Drop packet.</td>
+<td>The client has no way of knowing whether the sent packet was received and/or processed, which is a limitation of the Legacy UDP packet forwarder.</td>
+</tr>
+<tr>
+<td>Application Downlinks</td>
+<td>Reject downlink message and terminate connection.</td>
+<td>The client should reconnect, and reduce the downlink traffic load.</td>
+</tr>
+<tr>
+<td>Gateway Uplinks</td>
+<td>Reject uplink message and terminate connection.</td>
+<td>The client should reconnect, and reduce the downlink traffic load.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="rate-limiting-headers">Rate Limiting Headers</h2>
+<p>When rate limiting is enabled, the following headers are added to all HTTP and gRPC requests:</p>
+<ul>
+<li><code>X-Rate-Limit-Limit</code>: The maximum number of allowed requests for the current time period.</li>
+<li><code>X-Rate-Limit-Available</code>: Number of available requests for the current time period.</li>
+<li><code>X-Rate-Limit-Reset</code>: Seconds until the rate limiter resets.</li>
+<li><code>X-Rate-Limit-Retry</code>: Seconds the client should wait before retrying the request.</li>
+</ul>
+<h2 id="example-configuration-1">Example configuration</h2>
+<p>Enable rate limiting by adding the following configuration to your <code>ttn-lw-stack.yml</code>. Make sure to alter the values accordingly so that they match your deployment needs.</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">rate-limiting</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">profiles</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>HTTP<span class="w"> </span>servers<span class="w">
+</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">30</span><span class="w">
+</span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- http<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Application<span class="w"> </span>downlink<span class="w"> </span>traffic<span class="w">
+</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- as<span class="p">:</span>down<span class="p">:</span>web<span class="w">
+</span><span class="w">        </span>- as<span class="p">:</span>down<span class="p">:</span>mqtt<span class="w">
+</span><span class="w">        </span>- grpc<span class="p">:</span>method<span class="p">:</span>/ttn.v3.lorawan.v3.AppAs/DownlinkQueuePush<span class="w">
+</span><span class="w">        </span>- grpc<span class="p">:</span>method<span class="p">:</span>/ttn.v3.lorawan.v3.AppAs/DownlinkQueueReplace<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Gateway<span class="w"> </span>connections<span class="w">
+</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- gs<span class="p">:</span>accept<span class="p">:</span>mqtt<span class="w">
+</span><span class="w">        </span>- gs<span class="p">:</span>accept<span class="p">:</span>ws<span class="w">
+</span><span class="w">        </span>- grpc<span class="p">:</span>stream<span class="p">:</span>accept<span class="p">:</span>/ttn.lorawan.v3.GtwGs/LinkGateway<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>gRPC<span class="w"> </span>API<span class="w">
+</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">60</span><span class="w">
+</span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- grpc<span class="p">:</span>method<span class="w">
+</span><span class="w">        </span>- grpc<span class="p">:</span>stream<span class="p">:</span>accept<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Override<span class="w"> </span>rate<span class="w"> </span>for<span class="w"> </span>uplink<span class="w"> </span>simulation<span class="w">
+</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- grpc<span class="p">:</span>method<span class="p">:</span>/ttn.lorawan.v3.AppAs/SimulateUplink<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Gateway<span class="w"> </span>uplink<span class="w"> </span>traffic<span class="w">
+</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">1000</span><span class="w">
+</span><span class="w">      </span><span class="k">max-burst</span><span class="p">:</span><span class="w"> </span><span class="m">1500</span><span class="w">
+</span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- gs<span class="p">:</span>up<span class="w">
+</span></code></pre></div>
+</div>
+
+<div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/reference/packet-broker/configure/">← Configure</a>
+<a class="button is-pulled-right" href="/docs/reference/root-certificates/">Root Certificates →</a>
+</div>
+
+<script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+</div>
+
+
+      </div>
+      <div class="column is-hidden-touch is-one-quarter is-one-fifth-widescreen sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      <li><a href='#example-configuration'>Example configuration</a></li>
+    
+      <li><a href='#rate-limited-entities'>Rate Limited Entities</a></li>
+    
+      <li><a href='#rate-limiting-actions'>Rate Limiting Actions</a></li>
+    
+      <li><a href='#rate-limiting-headers'>Rate Limiting Headers</a></li>
+    
+      <li><a href='#example-configuration'>Example configuration</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+  </div>
+</div>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Aggelos Kolaitis on 29 Mar 2021.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3bf6bd826751d00633e500cf909418efa67cecc5">
+      doc: Rate limiting
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/reference/rate-limiting/_index.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.595b97b16778e75a16096b7412b5ce1e7fff37a56e4e45e7f89921711a3cd177.js" integrity="sha256-WVuXsWd451oWCWt0ErXOHn//N6VuTkXn&#43;JkhcRo80Xc=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>
