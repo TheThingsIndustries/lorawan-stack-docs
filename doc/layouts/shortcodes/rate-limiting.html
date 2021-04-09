@@ -1,0 +1,23 @@
+{{- range index .Site.Data "rate-limiting" }}
+<div class="has-vertical-space">
+  <a href="#{{ .resource | urlize }}">
+    <h3 id="{{.resource | urlize}}">{{- .resource -}}</h3>
+  </a>
+  <table class="fixed">
+    <tbody>
+      <tr>
+        <td><b>Description</b></td><td>{{ index . "description" }}</td>
+      </tr>
+      <tr>
+        <td><b>Classes</b></td><td><code>{{- delimit (index . "classes") "</code> <code>" }}</code></td>
+      </tr>
+      <tr>
+        <td><b>Key</b></td><td><code>{{ index . "key" }}</code></td>
+      </tr>
+      <tr>
+        <td><b>Example</b></td><td><code>{{ index . "example-key" }}</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+{{- end }}

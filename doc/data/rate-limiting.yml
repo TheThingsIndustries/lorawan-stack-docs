@@ -1,0 +1,98 @@
+- resource: Application Server MQTT Client Connections
+  description: Limit number of new MQTT client connections to Application Server by remote IP.
+  key: as:accept:mqtt:ip:{{ RemoteIP }}
+  example-key: as:accept:mqtt:ip:10.10.10.10
+  classes:
+    - as:accept:mqtt
+
+- resource: Application Server MQTT Downlink Traffic
+  description: Limit number of downlink messages from MQTT clients by application ID and authentication token ID.
+  key: as:down:mqtt:app:{{ AppUID }}:token:{{ AuthTokenID }}
+  example-key: as:down:mqtt:app:my-application:token:F69AA8D76F5A78S6FDAASADF
+  classes:
+    - as:down:mqtt
+
+- resource: Application Server Downlink Traffic Via Webhooks
+  description: Limit number of downlink messages via webhooks by application ID, device ID and authentication token ID.
+  key: as:down:web:dev:{{ DevUID }}:token:{{ AuthTokenID }}
+  example-key: as:down:web:dev:my-application.my-device:token:F69AA8D76F5A78S6FDAASADF
+  classes:
+    - as:down:web
+
+- resource: gRPC Requests
+  description: Limit number of gRPC API requests by full gRPC method name, entity ID and authentication token ID.
+  key: grpc:method:{{ FullMethod }}:{{ EntityUID }}:token:{{ AuthTokenID }}
+  example-key: grpc:method:/ttn.lorawan.v3.AppAs/SimulateUplink:end device:my-application.my-device:token:F69AA8D76F5A78S6FDAASADF
+  classes:
+    - grpc:method:{{ FullMethod }}
+    - grpc:method
+
+- resource: HTTP API Requests
+  description: Limit number of HTTP API requests by gRPC method name, entity ID and authentication token ID.
+  key: grpc:method:{{ FullMethod }}:{{ EntityUID }}:token:{{ AuthTokenID }}
+  example-key: grpc:method:/ttn.lorawan.v3.AppAs/SimulateUplink:dev:my-application.my-device:token:F69AA8D76F5A78S6FDAASADF
+  classes:
+    - grpc:method:{{ FullMethod }}
+    - grpc:method
+
+- resource: gRPC Server Streams
+  description: Limit number of new gRPC server streams by gRPC server stream and authentication token ID.
+  key: grpc:stream:accept:{{ FullMethod }}:token:{{ AuthTokenID }}
+  example-key: grpc:stream:accept:/ttn.lorawan.v3.GtwGs/LinkGateway:token:F69AA8D76F5A78S6FDAASADF
+  classes:
+    - grpc:stream:accept:{{ FullMethod }}
+    - grpc:stream:accept
+
+- resource: Incoming Client Traffic From gRPC Server Streams
+  description: Limit number of incoming message for gRPC server streams for individual server streams.
+  key: grpc:stream:up:{{ FullMethod }}:streamID:{{ CorrelationID }}
+  example-key: grpc:stream:up:/ttn.lorawan.v3.GtwGs/LinkGateway:streamID:01F26VW4B39PAPHZKXFV6YM1TP
+  classes:
+    - grpc:stream:up:{{ FullMethod }}
+    - grpc:stream:up
+
+- resource: Gateway Server MQTT Gateway Connections
+  description: Limit number of new MQTT gateway connections to Gateway Server by remote IP.
+  key: gs:accept:mqtt:ip:{{ RemoteIP }}
+  example-key: gs:accept:mqtt:ip:10.10.10.10
+  classes:
+    - gs:accept:mqtt
+
+- resource: Gateway Server BasicStation Gateway Connections
+  description: Limit number of new BasicStation gateway connections to Gateway Server by remote IP and request URL.
+  key: gs:accept:ws:ip:{{ RemoteIP }}:url:{{ URL }}
+  example-key: gs:accept:ws:ip:10.10.10.10:url:/traffic/eui-0102030405060708
+  classes:
+    - gs:accept:ws
+    - http
+
+- resource: Gateway Server Uplink Traffic (UDP)
+  description: Limit number of UDP packets processed by the Gateway Server by remote IP.
+  key: gs:up:udp:ip:{{ RemoteIP }}
+  example-key: gs:up:udp:ip:10.10.10.10
+  classes:
+    - gs:up:udp
+    - gs:up
+
+- resource: Gateway Server Uplink Traffic (BasicStation, MQTT and gRPC)
+  description: Limit number of uplink messages received by the Gateway Server (for the BasicStation, gRPC and MQTT frontends) by gateway ID.
+  key: gs:up:gtw:{{ GtwUID }}
+  example-key: gs:up:gtw:my-gateway
+  classes:
+    - gs:up
+
+- resource: BasicStation CUPS
+  description: Limit number of HTTP requests to the BasicStation CUPS by remote IP and request URL.
+  key: basicstation:cups:ip:{{ RemoteIP }}:url:{{ URL }}
+  example-key: basicstation:cups:ip:10.10.10.10:url:/update-info
+  classes:
+    - basicstation:cups
+    - http
+
+- resource: OAuth Server, Account App, Gateway Configuration Server, Interop Server, Metrics, Health, pprof
+  description: Limit number of HTTP requests by remote IP and request URL. `{{ Server }}` is `oauth`, `account`, `gcs`, `interop`, `metrics`, `health`, `pprof` respectively.
+  key: http:{{ Server }}:ip:{{ RemoteIP }}:url:{{ URL }}
+  example-key: http:oauth:ip:10.10.10.10:url:/authorize
+  classes:
+    - http:{{ Server }}
+    - http
