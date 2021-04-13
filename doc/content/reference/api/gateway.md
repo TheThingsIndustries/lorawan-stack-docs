@@ -91,7 +91,7 @@ The Gateway Server exposes the list of available frequency plans with the `Confi
 
 {{< proto/message message="Rights" >}}
 
-{{< proto/message message="SearchEntitiesRequest" >}}
+{{< proto/message message="SearchGatewaysRequest" >}}
 
 {{< proto/message message="SetGatewayCollaboratorRequest" >}}
 

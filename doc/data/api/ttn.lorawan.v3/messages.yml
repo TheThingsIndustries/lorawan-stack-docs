@@ -102,6 +102,11 @@ Application:
       package: google.protobuf
       name: Timestamp
     default: "0001-01-01T00:00:00Z"
+  - name: deleted_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
   - name: name
     type: string
     rules:
@@ -1450,6 +1455,26 @@ AuthorizeApplicationRequest:
       min_len: 1
       max_len: 128
     default: ""
+AuthorizeGatewayRequest:
+  name: AuthorizeGatewayRequest
+  fields:
+  - name: gateway_ids
+    message:
+      name: GatewayIdentifiers
+    rules:
+      required: true
+    default: {}
+  - name: api_key
+    type: string
+    rules:
+      min_len: 1
+    default: ""
+BoolValue:
+  name: BoolValue
+  fields:
+  - name: value
+    type: bool
+    default: false
 CFList:
   name: CFList
   fields:
@@ -1475,6 +1500,19 @@ CFList:
     repeated:
       type: bool
     default: []
+CUPSRedirection:
+  name: CUPSRedirection
+  fields:
+  - name: target_cups_uri
+    comment: CUPS URI for LoRa Basics Station CUPS redirection.
+    type: string
+    default: ""
+  - name: current_gateway_key
+    comment: The key set in the gateway to authenticate itself.
+    type: string
+    rules:
+      max_len: 2048
+    default: ""
 ClaimEndDeviceRequest:
   name: ClaimEndDeviceRequest
   fields:
@@ -1571,6 +1609,61 @@ ClaimEndDeviceRequest.AuthenticatedIdentifiers:
     rules:
       pattern: ^[A-Z0-9]{1,32}$
     default: ""
+ClaimGatewayRequest:
+  name: ClaimGatewayRequest
+  fields:
+  - name: authenticated_identifiers
+    message:
+      name: ClaimGatewayRequest.AuthenticatedIdentifiers
+    default: {}
+  - name: qr_code
+    type: bytes
+    rules:
+      max_len: 1024
+    default: ""
+  - name: collaborator
+    comment: Collaborator to grant all rights on the target gateway.
+    message:
+      name: OrganizationOrUserIdentifiers
+    rules:
+      required: true
+    default: {}
+  - name: target_gateway_id
+    comment: |-
+      Gateway ID for the target gateway. This must be a unique value.
+      If this is not set, the target ID for the target gateway will be set to `eui-<gateway-eui>`
+    type: string
+    rules:
+      max_len: 36
+      pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$|^$
+    default: ""
+  - name: target_gateway_server_address
+    comment: Target Gateway Server Address for the target gateway.
+    type: string
+    rules:
+      pattern: ^(?:(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*(?:[A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])(?::[0-9]{1,5})?$|^$
+    default: ""
+  - name: cups_redirection
+    comment: Parameters to set CUPS redirection for the gateway.
+    message:
+      name: CUPSRedirection
+    default: {}
+  oneofs:
+  - name: source_gateway
+    field_names:
+    - authenticated_identifiers
+    - qr_code
+ClaimGatewayRequest.AuthenticatedIdentifiers:
+  name: ClaimGatewayRequest.AuthenticatedIdentifiers
+  fields:
+  - name: gateway_eui
+    type: bytes
+    default: ""
+  - name: authentication_code
+    type: bytes
+    rules:
+      max_len: 2048
+    default: ""
 Client:
   name: Client
   comment: An OAuth client on the network.
@@ -1587,6 +1680,11 @@ Client:
       name: Timestamp
     default: "0001-01-01T00:00:00Z"
   - name: updated_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
+  - name: deleted_at
     message:
       package: google.protobuf
       name: Timestamp
@@ -1657,11 +1755,21 @@ Client:
     comment: |-
       The reviewing state of the client.
       This field can only be modified by admins.
+      If state_description is not updated when updating state, state_description is cleared.
     enum:
       name: State
     rules:
       defined_only: true
     default: STATE_REQUESTED
+  - name: state_description
+    comment: |-
+      A description for the state field.
+      This field can only be modified by admins, and should typically only be updated
+      when also updating `state`.
+    type: string
+    rules:
+      max_len: 128
+    default: ""
   - name: skip_authorization
     comment: |-
       If set, the authorization page will be skipped.
@@ -2005,6 +2113,30 @@ CreateGatewayRequest:
     rules:
       required: true
     default: {}
+CreateLoginTokenRequest:
+  name: CreateLoginTokenRequest
+  fields:
+  - name: user_ids
+    message:
+      name: UserIdentifiers
+    rules:
+      required: true
+    default: {}
+  - name: skip_email
+    comment: |-
+      Skip sending the login token to the user by email.
+      This field is only effective when the login token is created by an admin user.
+    type: bool
+    default: false
+CreateLoginTokenResponse:
+  name: CreateLoginTokenResponse
+  fields:
+  - name: token
+    comment: |-
+      The token that can be used for logging in as the user.
+      This field is only present if a token was created by an admin user for a non-admin user.
+    type: string
+    default: ""
 CreateOrganizationAPIKeyRequest:
   name: CreateOrganizationAPIKeyRequest
   fields:
@@ -2135,10 +2267,11 @@ DLSettings:
   name: DLSettings
   fields:
   - name: rx1_dr_offset
-    type: uint32
+    enum:
+      name: DataRateOffset
     rules:
-      lte: 7
-    default: 0
+      defined_only: true
+    default: DATA_RATE_OFFSET_0
   - name: rx2_dr
     enum:
       name: DataRateIndex
@@ -2174,6 +2307,15 @@ DataRateIndexValue:
     rules:
       defined_only: true
     default: DATA_RATE_0
+DataRateOffsetValue:
+  name: DataRateOffsetValue
+  fields:
+  - name: value
+    enum:
+      name: DataRateOffset
+    rules:
+      defined_only: true
+    default: DATA_RATE_OFFSET_0
 DecodeDownlinkMessageRequest:
   name: DecodeDownlinkMessageRequest
   fields:
@@ -2359,6 +2501,17 @@ DeriveSessionKeysRequest:
       package: google.protobuf
       name: Struct
     default: {}
+DevAddrPrefix:
+  name: DevAddrPrefix
+  fields:
+  - name: dev_addr
+    comment: DevAddr base.
+    type: bytes
+    default: ""
+  - name: length
+    comment: Number of most significant bits from dev_addr that are used as prefix.
+    type: uint32
+    default: 0
 DownlinkMessage:
   name: DownlinkMessage
   comment: Downlink message from the network to the end device
@@ -3663,6 +3816,14 @@ FrequencyPlanDescription:
     comment: Base frequency in MHz for hardware support (433, 470, 868 or 915)
     type: uint32
     default: 0
+FrequencyValue:
+  name: FrequencyValue
+  fields:
+  - name: value
+    type: uint64
+    rules:
+      gte: 100000
+    default: 0
 Gateway:
   name: Gateway
   comment: Gateway is the message that defines a gateway on the network.
@@ -3679,6 +3840,11 @@ Gateway:
       name: Timestamp
     default: "0001-01-01T00:00:00Z"
   - name: updated_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
+  - name: deleted_at
     message:
       package: google.protobuf
       name: Timestamp
@@ -3837,6 +4003,10 @@ Gateway:
     message:
       name: Secret
     default: {}
+  - name: require_authenticated_connection
+    comment: Require an authenticated gateway connection. This prevents the gateway from using the UDP protocol and requires authentication when using other protocols.
+    type: bool
+    default: false
 GatewayAntenna:
   name: GatewayAntenna
   comment: GatewayAntenna is the message that defines a gateway antenna.
@@ -4154,6 +4324,17 @@ GatewayStatus:
       package: google.protobuf
       name: Struct
     default: {}
+GatewayTxAcknowledgment:
+  name: GatewayTxAcknowledgment
+  fields:
+  - name: gateway_ids
+    message:
+      name: GatewayIdentifiers
+    default: {}
+  - name: tx_ack
+    message:
+      name: TxAcknowledgment
+    default: {}
 GatewayUp:
   name: GatewayUp
   comment: GatewayUp may contain zero or more uplink messages and/or a status message for the gateway.
@@ -4170,7 +4351,7 @@ GatewayUp:
       name: GatewayStatus
     default: {}
   - name: tx_acknowledgment
-    comment: A transmission acknowledgement or error.
+    comment: A Tx acknowledgment or error.
     message:
       name: TxAcknowledgment
     default: {}
@@ -5352,6 +5533,10 @@ ListApplicationsRequest:
     comment: Page number for pagination. 0 is interpreted as 1.
     type: uint32
     default: 0
+  - name: deleted
+    comment: Only return recently deleted applications.
+    type: bool
+    default: false
 ListClientCollaboratorsRequest:
   name: ListClientCollaboratorsRequest
   fields:
@@ -5413,6 +5598,10 @@ ListClientsRequest:
     comment: Page number for pagination. 0 is interpreted as 1.
     type: uint32
     default: 0
+  - name: deleted
+    comment: Only return recently deleted clients.
+    type: bool
+    default: false
 ListEndDeviceBrandsRequest:
   name: ListEndDeviceBrandsRequest
   fields:
@@ -5568,6 +5757,22 @@ ListEndDevicesRequest:
     comment: Page number for pagination. 0 is interpreted as 1.
     type: uint32
     default: 0
+ListForwarderRoutingPoliciesRequest:
+  name: ListForwarderRoutingPoliciesRequest
+  fields:
+  - name: home_network_id
+    comment: Packet Broker identifier of the Home Network.
+    message:
+      name: PacketBrokerNetworkIdentifier
+    default: {}
+  - name: limit
+    comment: Limit the number of results per page.
+    type: uint32
+    default: 0
+  - name: page
+    comment: Page number for pagination. 0 is interpreted as 1.
+    type: uint32
+    default: 0
 ListFrequencyPlansRequest:
   name: ListFrequencyPlansRequest
   fields:
@@ -5655,6 +5860,36 @@ ListGatewaysRequest:
       - created_at
       - -created_at
     default: ""
+  - name: limit
+    comment: Limit the number of results per page.
+    type: uint32
+    rules:
+      lte: 1000
+    default: 0
+  - name: page
+    comment: Page number for pagination. 0 is interpreted as 1.
+    type: uint32
+    default: 0
+  - name: deleted
+    comment: Only return recently deleted gateways.
+    type: bool
+    default: false
+ListHomeNetworkRoutingPoliciesRequest:
+  name: ListHomeNetworkRoutingPoliciesRequest
+  fields:
+  - name: limit
+    comment: Limit the number of results per page.
+    type: uint32
+    rules:
+      lte: 1000
+    default: 0
+  - name: page
+    comment: Page number for pagination. 0 is interpreted as 1.
+    type: uint32
+    default: 0
+ListHomeNetworksRequest:
+  name: ListHomeNetworksRequest
+  fields:
   - name: limit
     comment: Limit the number of results per page.
     type: uint32
@@ -5826,6 +6061,10 @@ ListOrganizationsRequest:
     comment: Page number for pagination. 0 is interpreted as 1.
     type: uint32
     default: 0
+  - name: deleted
+    comment: Only return recently deleted organizations.
+    type: bool
+    default: false
 ListUserAPIKeysRequest:
   name: ListUserAPIKeysRequest
   fields:
@@ -5915,6 +6154,10 @@ ListUsersRequest:
     comment: Page number for pagination. 0 is interpreted as 1.
     type: uint32
     default: 0
+  - name: deleted
+    comment: Only return recently deleted users.
+    type: bool
+    default: false
 LoRaDataRate:
   name: LoRaDataRate
   fields:
@@ -5957,6 +6200,36 @@ Location:
     rules:
       defined_only: true
     default: SOURCE_UNKNOWN
+LoginToken:
+  name: LoginToken
+  fields:
+  - name: user_ids
+    message:
+      name: UserIdentifiers
+    rules:
+      required: true
+    default: {}
+  - name: created_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
+  - name: updated_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
+  - name: expires_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
+  - name: token
+    type: string
+    default: ""
+  - name: used
+    type: bool
+    default: false
 MACCommand:
   name: MACCommand
   fields:
@@ -6490,10 +6763,11 @@ MACCommand.RxParamSetupReq:
       defined_only: true
     default: DATA_RATE_0
   - name: rx1_data_rate_offset
-    type: uint32
+    enum:
+      name: DataRateOffset
     rules:
-      lte: 7
-    default: 0
+      defined_only: true
+    default: DATA_RATE_OFFSET_0
   - name: rx2_frequency
     comment: Rx2 frequency (Hz).
     type: uint64
@@ -6577,10 +6851,11 @@ MACParameters:
     default: RX_DELAY_0
   - name: rx1_data_rate_offset
     comment: Data rate offset for Rx1.
-    type: uint32
+    enum:
+      name: DataRateOffset
     rules:
-      lte: 7
-    default: 0
+      defined_only: true
+    default: DATA_RATE_OFFSET_0
   - name: rx2_data_rate_index
     comment: Data rate index for Rx2.
     enum:
@@ -6649,17 +6924,15 @@ MACParameters:
       Whether uplink dwell time is set (400ms).
       If this field is not set, then the value is either unknown or irrelevant(Network Server cannot modify it).
     message:
-      package: google.protobuf
       name: BoolValue
-    default: null
+    default: {}
   - name: downlink_dwell_time
     comment: |-
       Whether downlink dwell time is set (400ms).
       If this field is not set, then the value is either unknown or irrelevant(Network Server cannot modify it).
     message:
-      package: google.protobuf
       name: BoolValue
-    default: null
+    default: {}
   - name: adr_ack_limit_exponent
     comment: 'ADR: number of messages to wait before setting ADRAckReq.'
     message:
@@ -6764,21 +7037,15 @@ MACSettings:
       Frequency of the class B ping slot (Hz).
       If unset, the default value from Network Server configuration will be used.
     message:
-      package: google.protobuf
-      name: UInt64Value
-    rules:
-      gte: 100000
-    default: null
+      name: FrequencyValue
+    default: {}
   - name: beacon_frequency
     comment: |-
       Frequency of the class B beacon (Hz).
       If unset, the default value from Network Server configuration will be used.
     message:
-      package: google.protobuf
-      name: UInt64Value
-    rules:
-      gte: 100000
-    default: null
+      name: FrequencyValue
+    default: {}
   - name: class_c_timeout
     comment: |-
       Maximum delay for the device to answer a MAC request or a confirmed downlink frame.
@@ -6799,11 +7066,8 @@ MACSettings:
       Rx1 data rate offset.
       If unset, the default value from Network Server configuration will be used.
     message:
-      package: google.protobuf
-      name: UInt32Value
-    rules:
-      lte: 7
-    default: null
+      name: DataRateOffsetValue
+    default: {}
   - name: rx2_data_rate_index
     comment: |-
       Data rate index for Rx2.
@@ -6816,11 +7080,8 @@ MACSettings:
       Frequency for Rx2 (Hz).
       If unset, the default value from Network Server configuration or regional parameters specification will be used.
     message:
-      package: google.protobuf
-      name: UInt64Value
-    rules:
-      gte: 100000
-    default: null
+      name: FrequencyValue
+    default: {}
   - name: factory_preset_frequencies
     comment: |-
       List of factory-preset frequencies.
@@ -6840,17 +7101,15 @@ MACSettings:
       Whether the device supports 32-bit frame counters.
       If unset, the default value from Network Server configuration will be used.
     message:
-      package: google.protobuf
       name: BoolValue
-    default: null
+    default: {}
   - name: use_adr
     comment: |-
       Whether the Network Server should use ADR for the device.
       If unset, the default value from Network Server configuration will be used.
     message:
-      package: google.protobuf
       name: BoolValue
-    default: null
+    default: {}
   - name: adr_margin
     comment: |-
       The ADR margin tells the network server how much margin it should add in ADR requests.
@@ -6865,9 +7124,8 @@ MACSettings:
       Whether the device resets the frame counters (not LoRaWAN compliant).
       If unset, the default value from Network Server configuration will be used.
     message:
-      package: google.protobuf
       name: BoolValue
-    default: null
+    default: {}
   - name: status_time_periodicity
     comment: |-
       The interval after which a DevStatusReq MACCommand shall be sent.
@@ -6896,9 +7154,8 @@ MACSettings:
       The Rx1 data rate offset Network Server should configure device to use via MAC commands or Join-Accept.
       If unset, the default value from Network Server configuration will be used.
     message:
-      package: google.protobuf
-      name: UInt32Value
-    default: null
+      name: DataRateOffsetValue
+    default: {}
   - name: desired_rx2_data_rate_index
     comment: |-
       The Rx2 data rate index Network Server should configure device to use via MAC commands or Join-Accept.
@@ -6911,11 +7168,8 @@ MACSettings:
       The Rx2 frequency index Network Server should configure device to use via MAC commands.
       If unset, the default value from frequency plan, Network Server configuration or regional parameters specification will be used.
     message:
-      package: google.protobuf
-      name: UInt64Value
-    rules:
-      gte: 100000
-    default: null
+      name: FrequencyValue
+    default: {}
   - name: desired_max_duty_cycle
     comment: |-
       The maximum uplink duty cycle (of all channels) Network Server should configure device to use via MAC commands.
@@ -6949,21 +7203,15 @@ MACSettings:
       The frequency of the class B ping slot (Hz) Network Server should configure device to use via MAC commands.
       If unset, the default value from Network Server configuration or regional parameters specification will be used.
     message:
-      package: google.protobuf
-      name: UInt64Value
-    rules:
-      gte: 100000
-    default: null
+      name: FrequencyValue
+    default: {}
   - name: desired_beacon_frequency
     comment: |-
       The frequency of the class B beacon (Hz) Network Server should configure device to use via MAC commands.
       If unset, the default value from Network Server configuration will be used.
     message:
-      package: google.protobuf
-      name: UInt64Value
-    rules:
-      gte: 100000
-    default: null
+      name: FrequencyValue
+    default: {}
 MACState:
   name: MACState
   comment: |-
@@ -7549,6 +7797,11 @@ Organization:
       package: google.protobuf
       name: Timestamp
     default: "0001-01-01T00:00:00Z"
+  - name: deleted_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
   - name: name
     type: string
     rules:
@@ -7616,6 +7869,51 @@ Organizations:
       message:
         name: Organization
     default: []
+PacketBrokerDefaultRoutingPolicy:
+  name: PacketBrokerDefaultRoutingPolicy
+  fields:
+  - name: updated_at
+    comment: Timestamp when the policy got last updated.
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
+  - name: uplink
+    comment: Uplink policy.
+    message:
+      name: PacketBrokerRoutingPolicyUplink
+    default: {}
+  - name: downlink
+    comment: Downlink policy.
+    message:
+      name: PacketBrokerRoutingPolicyDownlink
+    default: {}
+PacketBrokerDevAddrBlock:
+  name: PacketBrokerDevAddrBlock
+  fields:
+  - name: dev_addr_prefix
+    message:
+      name: DevAddrPrefix
+    default: {}
+  - name: home_network_cluster_id
+    type: string
+    default: ""
+PacketBrokerInfo:
+  name: PacketBrokerInfo
+  fields:
+  - name: registration
+    comment: The current registration, unset if there isn't a registration.
+    message:
+      name: PacketBrokerNetwork
+    default: {}
+  - name: forwarder_enabled
+    comment: Whether the server is configured as Forwarder (with gateways).
+    type: bool
+    default: false
+  - name: home_network_enabled
+    comment: Whether the server is configured as Home Network (with end devices).
+    type: bool
+    default: false
 PacketBrokerMetadata:
   name: PacketBrokerMetadata
   fields:
@@ -7635,6 +7933,16 @@ PacketBrokerMetadata:
     comment: Forwarder Cluster ID of the Packet Broker Forwarder.
     type: string
     default: ""
+  - name: forwarder_gateway_eui
+    comment: Forwarder gateway EUI.
+    type: bytes
+    default: ""
+  - name: forwarder_gateway_id
+    comment: Forwarder gateway ID.
+    message:
+      package: google.protobuf
+      name: StringValue
+    default: null
   - name: home_network_net_id
     comment: LoRa Alliance NetID of the Packet Broker Home Network Member.
     type: bytes
@@ -7654,6 +7962,52 @@ PacketBrokerMetadata:
     repeated:
       message:
         name: PacketBrokerRouteHop
+    default: []
+PacketBrokerNetwork:
+  name: PacketBrokerNetwork
+  fields:
+  - name: id
+    comment: Packet Broker network identifier.
+    message:
+      name: PacketBrokerNetworkIdentifier
+    default: {}
+  - name: name
+    comment: Name of the network.
+    type: string
+    default: ""
+  - name: dev_addr_blocks
+    comment: DevAddr blocks that are assigned to this registration.
+    repeated:
+      message:
+        name: PacketBrokerDevAddrBlock
+    default: []
+  - name: contact_info
+    comment: Contact information.
+    repeated:
+      message:
+        name: ContactInfo
+    default: []
+PacketBrokerNetworkIdentifier:
+  name: PacketBrokerNetworkIdentifier
+  fields:
+  - name: net_id
+    comment: LoRa Alliance NetID.
+    type: uint32
+    default: 0
+  - name: tenant_id
+    comment: Tenant identifier if the registration leases DevAddr blocks from a NetID.
+    type: string
+    rules:
+      max_len: 36
+      pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$|^$
+    default: ""
+PacketBrokerNetworks:
+  name: PacketBrokerNetworks
+  fields:
+  - name: networks
+    repeated:
+      message:
+        name: PacketBrokerNetwork
     default: []
 PacketBrokerRouteHop:
   name: PacketBrokerRouteHop
@@ -7680,6 +8034,81 @@ PacketBrokerRouteHop:
     comment: Receiver agent.
     type: string
     default: ""
+PacketBrokerRoutingPolicies:
+  name: PacketBrokerRoutingPolicies
+  fields:
+  - name: policies
+    repeated:
+      message:
+        name: PacketBrokerRoutingPolicy
+    default: []
+PacketBrokerRoutingPolicy:
+  name: PacketBrokerRoutingPolicy
+  fields:
+  - name: forwarder_id
+    comment: Packet Broker identifier of the Forwarder.
+    message:
+      name: PacketBrokerNetworkIdentifier
+    default: {}
+  - name: home_network_id
+    comment: Packet Broker identifier of the Home Network.
+    message:
+      name: PacketBrokerNetworkIdentifier
+    default: {}
+  - name: updated_at
+    comment: Timestamp when the policy got last updated.
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
+  - name: uplink
+    comment: Uplink policy.
+    message:
+      name: PacketBrokerRoutingPolicyUplink
+    default: {}
+  - name: downlink
+    comment: Downlink policy.
+    message:
+      name: PacketBrokerRoutingPolicyDownlink
+    default: {}
+PacketBrokerRoutingPolicyDownlink:
+  name: PacketBrokerRoutingPolicyDownlink
+  fields:
+  - name: join_accept
+    comment: Allow join-accept messages.
+    type: bool
+    default: false
+  - name: mac_data
+    comment: Allow downlink messages with FPort of 0.
+    type: bool
+    default: false
+  - name: application_data
+    comment: Allow downlink messages with FPort between 1 and 255.
+    type: bool
+    default: false
+PacketBrokerRoutingPolicyUplink:
+  name: PacketBrokerRoutingPolicyUplink
+  fields:
+  - name: join_request
+    comment: Forward join-request messages.
+    type: bool
+    default: false
+  - name: mac_data
+    comment: Forward uplink messages with FPort of 0.
+    type: bool
+    default: false
+  - name: application_data
+    comment: Forward uplink messages with FPort between 1 and 255.
+    type: bool
+    default: false
+  - name: signal_quality
+    comment: Forward RSSI and SNR.
+    type: bool
+    default: false
+  - name: localization
+    comment: Forward gateway location, RSSI, SNR and fine timestamp.
+    type: bool
+    default: false
 PeerInfo:
   name: PeerInfo
   comment: PeerInfo
@@ -8066,6 +8495,138 @@ ScheduleDownlinkResponse:
       package: google.protobuf
       name: Duration
     default: 0s
+SearchApplicationsRequest:
+  name: SearchApplicationsRequest
+  comment: This message is used for finding applications in the EntityRegistrySearch service.
+  fields:
+  - name: id_contains
+    comment: Find applications where the ID contains this substring.
+    type: string
+    rules:
+      max_len: 50
+    default: ""
+  - name: name_contains
+    comment: Find applications where the name contains this substring.
+    type: string
+    rules:
+      max_len: 50
+    default: ""
+  - name: description_contains
+    comment: Find applications where the description contains this substring.
+    type: string
+    rules:
+      max_len: 50
+    default: ""
+  - name: attributes_contain
+    comment: Find applications where the given attributes contain these substrings.
+    rules:
+      max_pairs: 10
+    map_key:
+      type: string
+      rules:
+        max_len: 36
+        pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+    map_value:
+      type: string
+      rules:
+        max_len: 50
+    default: {}
+  - name: field_mask
+    message:
+      package: google.protobuf
+      name: FieldMask
+    default: {}
+  - name: order
+    comment: |-
+      Order the results by this field path (must be present in the field mask).
+      Default ordering is by ID. Prepend with a minus (-) to reverse the order.
+    type: string
+    default: ""
+  - name: limit
+    comment: Limit the number of results per page.
+    type: uint32
+    rules:
+      lte: 1000
+    default: 0
+  - name: page
+    comment: Page number for pagination. 0 is interpreted as 1.
+    type: uint32
+    default: 0
+  - name: deleted
+    comment: Only return recently deleted applications.
+    type: bool
+    default: false
+SearchClientsRequest:
+  name: SearchClientsRequest
+  comment: This message is used for finding OAuth clients in the EntityRegistrySearch service.
+  fields:
+  - name: id_contains
+    comment: Find OAuth clients where the ID contains this substring.
+    type: string
+    rules:
+      max_len: 50
+    default: ""
+  - name: name_contains
+    comment: Find OAuth clients where the name contains this substring.
+    type: string
+    rules:
+      max_len: 50
+    default: ""
+  - name: description_contains
+    comment: Find OAuth clients where the description contains this substring.
+    type: string
+    rules:
+      max_len: 50
+    default: ""
+  - name: attributes_contain
+    comment: Find OAuth clients where the given attributes contain these substrings.
+    rules:
+      max_pairs: 10
+    map_key:
+      type: string
+      rules:
+        max_len: 36
+        pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+    map_value:
+      type: string
+      rules:
+        max_len: 50
+    default: {}
+  - name: state
+    comment: Find OAuth clients where the state is any of these states.
+    rules:
+      unique: true
+    repeated:
+      enum:
+        name: State
+      rules:
+        defined_only: true
+    default: []
+  - name: field_mask
+    message:
+      package: google.protobuf
+      name: FieldMask
+    default: {}
+  - name: order
+    comment: |-
+      Order the results by this field path (must be present in the field mask).
+      Default ordering is by ID. Prepend with a minus (-) to reverse the order.
+    type: string
+    default: ""
+  - name: limit
+    comment: Limit the number of results per page.
+    type: uint32
+    rules:
+      lte: 1000
+    default: 0
+  - name: page
+    comment: Page number for pagination. 0 is interpreted as 1.
+    type: uint32
+    default: 0
+  - name: deleted
+    comment: Only return recently deleted OAuth clients.
+    type: bool
+    default: false
 SearchEndDevicesRequest:
   name: SearchEndDevicesRequest
   fields:
@@ -8146,30 +8707,97 @@ SearchEndDevicesRequest:
     comment: Page number for pagination. 0 is interpreted as 1.
     type: uint32
     default: 0
-SearchEntitiesRequest:
-  name: SearchEntitiesRequest
-  comment: This message is used for finding entities in the EntityRegistrySearch service.
+SearchGatewaysRequest:
+  name: SearchGatewaysRequest
+  comment: This message is used for finding gateways in the EntityRegistrySearch service.
   fields:
   - name: id_contains
-    comment: Find entities where the ID contains this substring.
+    comment: Find gateways where the ID contains this substring.
     type: string
     rules:
       max_len: 50
     default: ""
   - name: name_contains
-    comment: Find entities where the name contains this substring.
+    comment: Find gateways where the name contains this substring.
     type: string
     rules:
       max_len: 50
     default: ""
   - name: description_contains
-    comment: Find entities where the description contains this substring.
+    comment: Find gateways where the description contains this substring.
     type: string
     rules:
       max_len: 50
     default: ""
   - name: attributes_contain
-    comment: Find entities where the given attributes contain these substrings.
+    comment: Find gateways where the given attributes contain these substrings.
+    rules:
+      max_pairs: 10
+    map_key:
+      type: string
+      rules:
+        max_len: 36
+        pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+    map_value:
+      type: string
+      rules:
+        max_len: 50
+    default: {}
+  - name: eui_contains
+    comment: Find gateways where the (hexadecimal) EUI contains this substring.
+    type: string
+    rules:
+      max_len: 16
+    default: ""
+  - name: field_mask
+    message:
+      package: google.protobuf
+      name: FieldMask
+    default: {}
+  - name: order
+    comment: |-
+      Order the results by this field path (must be present in the field mask).
+      Default ordering is by ID. Prepend with a minus (-) to reverse the order.
+    type: string
+    default: ""
+  - name: limit
+    comment: Limit the number of results per page.
+    type: uint32
+    rules:
+      lte: 1000
+    default: 0
+  - name: page
+    comment: Page number for pagination. 0 is interpreted as 1.
+    type: uint32
+    default: 0
+  - name: deleted
+    comment: Only return recently deleted gateways.
+    type: bool
+    default: false
+SearchOrganizationsRequest:
+  name: SearchOrganizationsRequest
+  comment: This message is used for finding organizations in the EntityRegistrySearch service.
+  fields:
+  - name: id_contains
+    comment: Find organizations where the ID contains this substring.
+    type: string
+    rules:
+      max_len: 50
+    default: ""
+  - name: name_contains
+    comment: Find organizations where the name contains this substring.
+    type: string
+    rules:
+      max_len: 50
+    default: ""
+  - name: description_contains
+    comment: Find organizations where the description contains this substring.
+    type: string
+    rules:
+      max_len: 50
+    default: ""
+  - name: attributes_contain
+    comment: Find organizations where the given attributes contain these substrings.
     rules:
       max_pairs: 10
     map_key:
@@ -8203,6 +8831,81 @@ SearchEntitiesRequest:
     comment: Page number for pagination. 0 is interpreted as 1.
     type: uint32
     default: 0
+  - name: deleted
+    comment: Only return recently deleted organizations.
+    type: bool
+    default: false
+SearchUsersRequest:
+  name: SearchUsersRequest
+  comment: This message is used for finding users in the EntityRegistrySearch service.
+  fields:
+  - name: id_contains
+    comment: Find users where the ID contains this substring.
+    type: string
+    rules:
+      max_len: 50
+    default: ""
+  - name: name_contains
+    comment: Find users where the name contains this substring.
+    type: string
+    rules:
+      max_len: 50
+    default: ""
+  - name: description_contains
+    comment: Find users where the description contains this substring.
+    type: string
+    rules:
+      max_len: 50
+    default: ""
+  - name: attributes_contain
+    comment: Find users where the given attributes contain these substrings.
+    rules:
+      max_pairs: 10
+    map_key:
+      type: string
+      rules:
+        max_len: 36
+        pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+    map_value:
+      type: string
+      rules:
+        max_len: 50
+    default: {}
+  - name: state
+    comment: Find users where the state is any of these states.
+    rules:
+      unique: true
+    repeated:
+      enum:
+        name: State
+      rules:
+        defined_only: true
+    default: []
+  - name: field_mask
+    message:
+      package: google.protobuf
+      name: FieldMask
+    default: {}
+  - name: order
+    comment: |-
+      Order the results by this field path (must be present in the field mask).
+      Default ordering is by ID. Prepend with a minus (-) to reverse the order.
+    type: string
+    default: ""
+  - name: limit
+    comment: Limit the number of results per page.
+    type: uint32
+    rules:
+      lte: 1000
+    default: 0
+  - name: page
+    comment: Page number for pagination. 0 is interpreted as 1.
+    type: uint32
+    default: 0
+  - name: deleted
+    comment: Only return recently deleted users.
+    type: bool
+    default: false
 Secret:
   name: Secret
   comment: Secret contains a secret value. It also contains the ID of the Encryption key used to encrypt it.
@@ -8495,6 +9198,45 @@ SetOrganizationCollaboratorRequest:
     rules:
       required: true
     default: {}
+SetPacketBrokerDefaultRoutingPolicyRequest:
+  name: SetPacketBrokerDefaultRoutingPolicyRequest
+  fields:
+  - name: uplink
+    comment: Uplink policy.
+    message:
+      name: PacketBrokerRoutingPolicyUplink
+    rules:
+      required: true
+    default: {}
+  - name: downlink
+    comment: Downlink policy.
+    message:
+      name: PacketBrokerRoutingPolicyDownlink
+    rules:
+      required: true
+    default: {}
+SetPacketBrokerRoutingPolicyRequest:
+  name: SetPacketBrokerRoutingPolicyRequest
+  fields:
+  - name: home_network_id
+    comment: Packet Broker identifier of the Home Network.
+    message:
+      name: PacketBrokerNetworkIdentifier
+    default: {}
+  - name: uplink
+    comment: Uplink policy.
+    message:
+      name: PacketBrokerRoutingPolicyUplink
+    rules:
+      required: true
+    default: {}
+  - name: downlink
+    comment: Downlink policy.
+    message:
+      name: PacketBrokerRoutingPolicyDownlink
+    rules:
+      required: true
+    default: {}
 StreamEventsRequest:
   name: StreamEventsRequest
   fields:
@@ -8523,6 +9265,10 @@ TxAcknowledgment:
   name: TxAcknowledgment
   fields:
   - name: correlation_ids
+    comment: |-
+      Correlation IDs for the downlink message.
+      Set automatically by the UDP and LBS frontends.
+      For gRPC and the MQTT v3 frontends, the correlation IDs must match the ones of the downlink message the Tx acknowledgment message refers to.
     repeated:
       type: string
       rules:
@@ -8534,6 +9280,11 @@ TxAcknowledgment:
     rules:
       defined_only: true
     default: SUCCESS
+  - name: downlink_message
+    comment: The acknowledged downlink message. Set by the Gateway Server.
+    message:
+      name: DownlinkMessage
+    default: {}
 TxRequest:
   name: TxRequest
   comment: |-
@@ -8954,6 +9705,11 @@ User:
       package: google.protobuf
       name: Timestamp
     default: "0001-01-01T00:00:00Z"
+  - name: deleted_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    default: "0001-01-01T00:00:00Z"
   - name: name
     type: string
     rules:
@@ -9026,6 +9782,15 @@ User:
     rules:
       defined_only: true
     default: STATE_REQUESTED
+  - name: state_description
+    comment: |-
+      A description for the state field.
+      This field can only be modified by admins, and should typically only be updated
+      when also updating `state`.
+    type: string
+    rules:
+      max_len: 128
+    default: ""
   - name: admin
     comment: |-
       This user is an admin.

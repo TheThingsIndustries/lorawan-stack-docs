@@ -26,8 +26,11 @@ $ tools/bin/mage ttiProto:hugoData
 - [ ] Copy generated files to `lorawan-stack-docs` with the following command:
 
 ```bash
-$ cp -r doc/data/api /path/to/lorawan-stack-docs/doc/data/
+$ cp api/ttn.lorawan.v3/*.yml ../lorawan-stack-docs/doc/data/api/ttn.lorawan.v3/
+$ cp api/tti.lorawan.v3/*.yml ../lorawan-stack-docs/doc/data/api/tti.lorawan.v3/
 ```
+
+> NOTE: Replace `../lorawan-stack-docs` if your `lorawan-stack-docs` folder is in a different location.
 
 - [ ] To generate and export CLI documentation from within the clone of [TheThingsIndustries/lorawan-stack](https://github.com/TheThingsIndustries/lorawan-stack), first run the following command to build the CLI:
 
@@ -38,8 +41,10 @@ $ go build -tags tti ./cmd/tti-lw-cli
 - [ ] Then export the CLI documentation using the following command:
 
 ```bash
-$ HOME=$HOME ./tti-lw-cli gen-yaml-doc -o /path/to/lorawan-stack-docs/doc/data/
+$ HOME='$HOME' ./tti-lw-cli gen-yaml-doc -o ../lorawan-stack-docs/doc/data/
 ```
+
+> NOTE: Replace `../lorawan-stack-docs` if your `lorawan-stack-docs` folder is in a different location.
 
 #### Check (for reviewers)
 

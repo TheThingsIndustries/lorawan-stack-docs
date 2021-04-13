@@ -86,6 +86,10 @@ ttn-lw-cli:
     type: string
     usage: Output format
     default_value: json
+  - name: packet-broker-agent-grpc-address
+    type: string
+    usage: Packet Broker Agent address
+    default_value: localhost:8884
   - name: qr-code-generator-grpc-address
     type: string
     usage: QR Code Generator address
@@ -621,6 +625,9 @@ ttn-lw-cli applications create:
     type: stringSlice
     usage: key=value
     default_value: '[]'
+  - name: deleted-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: description
     type: string
   - name: name
@@ -670,6 +677,10 @@ ttn-lw-cli applications get:
   - name: contact-info
     type: bool
     usage: select the contact_info field
+    default_value: "false"
+  - name: deleted-at
+    type: bool
+    usage: select the deleted_at field
     default_value: "false"
   - name: description
     type: bool
@@ -798,6 +809,14 @@ ttn-lw-cli applications list:
   - name: contact-info
     type: bool
     usage: select the contact_info field
+    default_value: "false"
+  - name: deleted
+    type: bool
+    usage: return recently deleted
+    default_value: "false"
+  - name: deleted-at
+    type: bool
+    usage: select the deleted_at field
     default_value: "false"
   - name: description
     type: bool
@@ -1540,26 +1559,36 @@ ttn-lw-cli applications pubsubs set:
     type: bool
     usage: use the AWS IoT provider
     default_value: "false"
+    hidden: true
   - name: aws-iot.access-key.access-key-id
     type: string
+    hidden: true
   - name: aws-iot.access-key.secret-access-key
     type: string
+    hidden: true
   - name: aws-iot.access-key.session-token
     type: string
+    hidden: true
   - name: aws-iot.assume-role.arn
     type: string
+    hidden: true
   - name: aws-iot.assume-role.external-id
     type: string
+    hidden: true
   - name: aws-iot.assume-role.session-duration
     type: duration
     usage: (1h2m3s)
     default_value: 0s
+    hidden: true
   - name: aws-iot.deployment.default.stack-name
     type: string
+    hidden: true
   - name: aws-iot.endpoint-address
     type: string
+    hidden: true
   - name: aws-iot.region
     type: string
+    hidden: true
   - name: base-topic
     type: string
   - name: downlink-ack.topic
@@ -1588,50 +1617,66 @@ ttn-lw-cli applications pubsubs set:
     type: bool
     usage: use the MQTT provider
     default_value: "false"
+    hidden: true
   - name: mqtt.client-id
     type: string
+    hidden: true
   - name: mqtt.password
     type: string
+    hidden: true
   - name: mqtt.publish-qos
     type: string
     usage: 'allowed values: AT_LEAST_ONCE, AT_MOST_ONCE, EXACTLY_ONCE'
+    hidden: true
   - name: mqtt.server-url
     type: string
+    hidden: true
   - name: mqtt.subscribe-qos
     type: string
     usage: 'allowed values: AT_LEAST_ONCE, AT_MOST_ONCE, EXACTLY_ONCE'
+    hidden: true
   - name: mqtt.tls-ca
     type: string
     usage: (hex)
+    hidden: true
   - name: mqtt.tls-ca-local-file
     type: string
     usage: (local file name)
+    hidden: true
   - name: mqtt.tls-client-cert
     type: string
     usage: (hex)
+    hidden: true
   - name: mqtt.tls-client-cert-local-file
     type: string
     usage: (local file name)
+    hidden: true
   - name: mqtt.tls-client-key
     type: string
     usage: (hex)
+    hidden: true
   - name: mqtt.tls-client-key-local-file
     type: string
     usage: (local file name)
+    hidden: true
   - name: mqtt.use-tls
     type: bool
     default_value: "false"
+    hidden: true
   - name: mqtt.username
     type: string
+    hidden: true
   - name: nats
     type: bool
     usage: use the NATS provider
     default_value: "false"
+    hidden: true
   - name: nats-server-url
     type: string
     hidden: true
   - name: nats.server-url
     type: string
+    hidden: true
   - name: provider.aws-iot.access-key.access-key-id
     type: string
   - name: provider.aws-iot.access-key.secret-access-key
@@ -1701,6 +1746,15 @@ ttn-lw-cli applications purge:
   - name: force
     type: bool
     default_value: "false"
+ttn-lw-cli applications restore:
+  path: ttn-lw-cli applications restore
+  parent_path: ttn-lw-cli applications
+  name: restore
+  use: '[application-id]'
+  short: Restore an application
+  command_flags:
+  - name: application-id
+    type: string
 ttn-lw-cli applications rights:
   path: ttn-lw-cli applications rights
   parent_path: ttn-lw-cli applications
@@ -1731,6 +1785,14 @@ ttn-lw-cli applications search:
   - name: contact-info
     type: bool
     usage: select the contact_info field
+    default_value: "false"
+  - name: deleted
+    type: bool
+    usage: return recently deleted
+    default_value: "false"
+  - name: deleted-at
+    type: bool
+    usage: select the deleted_at field
     default_value: "false"
   - name: description
     type: bool
@@ -1772,6 +1834,9 @@ ttn-lw-cli applications set:
     type: stringSlice
     usage: key=value
     default_value: '[]'
+  - name: deleted-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: description
     type: string
   - name: name
@@ -1859,7 +1924,7 @@ ttn-lw-cli applications storage get:
     default_value: "false"
   - name: type
     type: string
-    usage: message type (uplink_message|join_accept|downlink_ack|downlink_nack|downlink_queue_invalidated|location_solved||downlink_sent|downlink_failed|downlink_queued|service_data)
+    usage: message type (|downlink_ack|downlink_failed|downlink_nack|downlink_queue_invalidated|downlink_queued|downlink_sent|join_accept|location_solved|service_data|uplink_message)
   - name: up.downlink-ack
     type: bool
     usage: select the up.downlink_ack field and all allowed sub-fields
@@ -2912,6 +2977,9 @@ ttn-lw-cli clients create:
     default_value: '[]'
   - name: client-id
     type: string
+  - name: deleted-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: description
     type: string
   - name: endorsed
@@ -2944,6 +3012,8 @@ ttn-lw-cli clients create:
     type: string
     usage: 'allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED'
     default_value: STATE_APPROVED
+  - name: state-description
+    type: string
   - name: user-id
     type: string
 ttn-lw-cli clients delete:
@@ -2981,6 +3051,10 @@ ttn-lw-cli clients get:
   - name: contact-info
     type: bool
     usage: select the contact_info field
+    default_value: "false"
+  - name: deleted-at
+    type: bool
+    usage: select the deleted_at field
     default_value: "false"
   - name: description
     type: bool
@@ -3022,6 +3096,10 @@ ttn-lw-cli clients get:
     type: bool
     usage: select the state field
     default_value: "false"
+  - name: state-description
+    type: bool
+    usage: select the state_description field
+    default_value: "false"
 ttn-lw-cli clients list:
   path: ttn-lw-cli clients list
   parent_path: ttn-lw-cli clients
@@ -3041,6 +3119,14 @@ ttn-lw-cli clients list:
   - name: contact-info
     type: bool
     usage: select the contact_info field
+    default_value: "false"
+  - name: deleted
+    type: bool
+    usage: return recently deleted
+    default_value: "false"
+  - name: deleted-at
+    type: bool
+    usage: select the deleted_at field
     default_value: "false"
   - name: description
     type: bool
@@ -3095,7 +3181,35 @@ ttn-lw-cli clients list:
     type: bool
     usage: select the state field
     default_value: "false"
+  - name: state-description
+    type: bool
+    usage: select the state_description field
+    default_value: "false"
   - name: user-id
+    type: string
+ttn-lw-cli clients purge:
+  path: ttn-lw-cli clients purge
+  parent_path: ttn-lw-cli clients
+  name: purge
+  use: '[client-id]'
+  aliases:
+  - permanent-delete
+  - hard-delete
+  short: Purge an client
+  command_flags:
+  - name: client-id
+    type: string
+  - name: force
+    type: bool
+    default_value: "false"
+ttn-lw-cli clients restore:
+  path: ttn-lw-cli clients restore
+  parent_path: ttn-lw-cli clients
+  name: restore
+  use: '[client-id]'
+  short: Restore a client
+  command_flags:
+  - name: client-id
     type: string
 ttn-lw-cli clients rights:
   path: ttn-lw-cli clients rights
@@ -3127,6 +3241,14 @@ ttn-lw-cli clients search:
   - name: contact-info
     type: bool
     usage: select the contact_info field
+    default_value: "false"
+  - name: deleted
+    type: bool
+    usage: return recently deleted
+    default_value: "false"
+  - name: deleted-at
+    type: bool
+    usage: select the deleted_at field
     default_value: "false"
   - name: description
     type: bool
@@ -3182,8 +3304,12 @@ ttn-lw-cli clients search:
     usage: select the skip_authorization field
     default_value: "false"
   - name: state
+    type: stringSlice
+    usage: 'allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED'
+    default_value: '[]'
+  - name: state-description
     type: bool
-    usage: select the state field
+    usage: select the state_description field
     default_value: "false"
 ttn-lw-cli clients set:
   path: ttn-lw-cli clients set
@@ -3200,6 +3326,9 @@ ttn-lw-cli clients set:
     default_value: '[]'
   - name: client-id
     type: string
+  - name: deleted-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: description
     type: string
   - name: endorsed
@@ -3230,6 +3359,8 @@ ttn-lw-cli clients set:
     type: string
     usage: 'allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED'
     default_value: STATE_APPROVED
+  - name: state-description
+    type: string
 ttn-lw-cli complete:
   path: ttn-lw-cli complete
   parent_path: ttn-lw-cli
@@ -3356,6 +3487,9 @@ ttn-lw-cli end-devices create:
     type: stringSlice
     usage: key=value
     default_value: '[]'
+  - name: battery-percentage
+    type: float32
+    default_value: "0"
   - name: claim-authentication-code.valid-from
     type: string
     usage: (YYYY-MM-DDTHH:MM:SSZ)
@@ -3375,6 +3509,9 @@ ttn-lw-cli end-devices create:
     usage: (hex)
   - name: device-id
     type: string
+  - name: downlink-margin
+    type: int32
+    default_value: "0"
   - name: formatters.down-formatter
     type: string
     usage: 'allowed values: FORMATTER_CAYENNELPP, FORMATTER_GRPC_SERVICE, FORMATTER_JAVASCRIPT, FORMATTER_NONE, FORMATTER_REPOSITORY'
@@ -3401,6 +3538,9 @@ ttn-lw-cli end-devices create:
   - name: last-dev-nonce
     type: uint32
     default_value: "0"
+  - name: last-dev-status-received-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: last-join-nonce
     type: uint32
     default_value: "0"
@@ -3447,31 +3587,31 @@ ttn-lw-cli end-devices create:
     default_value: 0s
   - name: mac-settings.desired-adr-ack-delay-exponent
     type: string
-    usage: allowed values ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192
+    usage: 'allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192'
   - name: mac-settings.desired-adr-ack-limit-exponent
     type: string
-    usage: allowed values ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192
+    usage: 'allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192'
   - name: mac-settings.desired-beacon-frequency
     type: uint64
     default_value: "0"
   - name: mac-settings.desired-max-duty-cycle
     type: string
-    usage: allowed values DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192
+    usage: 'allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192'
   - name: mac-settings.desired-ping-slot-data-rate-index
     type: string
-    usage: allowed values DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-settings.desired-ping-slot-frequency
     type: uint64
     default_value: "0"
   - name: mac-settings.desired-rx1-data-rate-offset
-    type: uint32
-    default_value: "0"
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
   - name: mac-settings.desired-rx1-delay
     type: string
-    usage: allowed values RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
   - name: mac-settings.desired-rx2-data-rate-index
     type: string
-    usage: allowed values DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-settings.desired-rx2-frequency
     type: uint64
     default_value: "0"
@@ -3480,28 +3620,28 @@ ttn-lw-cli end-devices create:
     default_value: '[]'
   - name: mac-settings.max-duty-cycle
     type: string
-    usage: allowed values DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192
+    usage: 'allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192'
   - name: mac-settings.ping-slot-data-rate-index
     type: string
-    usage: allowed values DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-settings.ping-slot-frequency
     type: uint64
     default_value: "0"
   - name: mac-settings.ping-slot-periodicity
     type: string
-    usage: allowed values PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S
+    usage: 'allowed values: PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S'
   - name: mac-settings.resets-f-cnt
     type: bool
     default_value: "false"
   - name: mac-settings.rx1-data-rate-offset
-    type: uint32
-    default_value: "0"
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
   - name: mac-settings.rx1-delay
     type: string
-    usage: allowed values RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
   - name: mac-settings.rx2-data-rate-index
     type: string
-    usage: allowed values DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-settings.rx2-frequency
     type: uint64
     default_value: "0"
@@ -3520,10 +3660,10 @@ ttn-lw-cli end-devices create:
     default_value: "false"
   - name: mac-state.current-parameters.adr-ack-delay-exponent
     type: string
-    usage: allowed values ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192
+    usage: 'allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192'
   - name: mac-state.current-parameters.adr-ack-limit-exponent
     type: string
-    usage: allowed values ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192
+    usage: 'allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192'
   - name: mac-state.current-parameters.adr-data-rate-index
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
@@ -3545,7 +3685,7 @@ ttn-lw-cli end-devices create:
   - name: mac-state.current-parameters.max-eirp
     type: float32
     default_value: "0"
-  - name: mac-state.current-parameters.ping-slot-data-rate-index
+  - name: mac-state.current-parameters.ping-slot-data-rate-index-value
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-state.current-parameters.ping-slot-frequency
@@ -3558,8 +3698,8 @@ ttn-lw-cli end-devices create:
     type: string
     usage: 'allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9'
   - name: mac-state.current-parameters.rx1-data-rate-offset
-    type: uint32
-    default_value: "0"
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
   - name: mac-state.current-parameters.rx1-delay
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
@@ -3574,10 +3714,10 @@ ttn-lw-cli end-devices create:
     default_value: "false"
   - name: mac-state.desired-parameters.adr-ack-delay-exponent
     type: string
-    usage: allowed values ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192
+    usage: 'allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192'
   - name: mac-state.desired-parameters.adr-ack-limit-exponent
     type: string
-    usage: allowed values ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192
+    usage: 'allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192'
   - name: mac-state.desired-parameters.adr-data-rate-index
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
@@ -3599,7 +3739,7 @@ ttn-lw-cli end-devices create:
   - name: mac-state.desired-parameters.max-eirp
     type: float32
     default_value: "0"
-  - name: mac-state.desired-parameters.ping-slot-data-rate-index
+  - name: mac-state.desired-parameters.ping-slot-data-rate-index-value
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-state.desired-parameters.ping-slot-frequency
@@ -3612,8 +3752,8 @@ ttn-lw-cli end-devices create:
     type: string
     usage: 'allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9'
   - name: mac-state.desired-parameters.rx1-data-rate-offset
-    type: uint32
-    default_value: "0"
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
   - name: mac-state.desired-parameters.rx1-delay
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
@@ -3629,12 +3769,67 @@ ttn-lw-cli end-devices create:
   - name: mac-state.device-class
     type: string
     usage: 'allowed values: CLASS_A, CLASS_B, CLASS_C'
+  - name: mac-state.last-adr-change-f-cnt-up
+    type: uint32
+    default_value: "0"
+  - name: mac-state.last-confirmed-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: mac-state.last-dev-status-f-cnt-up
+    type: uint32
+    default_value: "0"
+  - name: mac-state.last-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: mac-state.last-network-initiated-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: mac-state.lorawan-version
     type: string
     usage: 'allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.1, 1.1.0, MAC_UNKNOWN, MAC_V1_0, MAC_V1_0_1, MAC_V1_0_2, MAC_V1_0_3, MAC_V1_0_4, MAC_V1_1, unknown'
+  - name: mac-state.pending-application-downlink.class-b-c.absolute-time
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: mac-state.pending-application-downlink.class-b-c.gateways
+    type: stringSlice
+    default_value: '[]'
+  - name: mac-state.pending-application-downlink.confirmed
+    type: bool
+    default_value: "false"
+  - name: mac-state.pending-application-downlink.correlation-ids
+    type: stringSlice
+    default_value: '[]'
+  - name: mac-state.pending-application-downlink.f-cnt
+    type: uint32
+    default_value: "0"
+  - name: mac-state.pending-application-downlink.f-port
+    type: uint32
+    default_value: "0"
+  - name: mac-state.pending-application-downlink.frm-payload
+    type: string
+    usage: (hex)
+  - name: mac-state.pending-application-downlink.priority
+    type: string
+    usage: 'allowed values: ABOVE_NORMAL, BELOW_NORMAL, HIGH, HIGHEST, LOW, LOWEST, NORMAL'
+  - name: mac-state.pending-application-downlink.session-key-id
+    type: string
+    usage: (hex)
   - name: mac-state.ping-slot-periodicity
     type: string
-    usage: allowed values PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S
+    usage: 'allowed values: PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S'
+  - name: mac-state.rejected-adr-data-rate-indexes
+    type: stringSlice
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+    default_value: '[]'
+  - name: mac-state.rejected-adr-tx-power-indexes
+    type: uintSlice
+    default_value: '[]'
+  - name: mac-state.rejected-frequencies
+    type: uintSlice
+    default_value: '[]'
+  - name: mac-state.rx-windows-available
+    type: bool
+    default_value: "false"
   - name: max-frequency
     type: uint64
     default_value: "0"
@@ -3653,6 +3848,244 @@ ttn-lw-cli end-devices create:
     type: string
   - name: network-server-kek-label
     type: string
+  - name: pending-mac-state.current-parameters.adr-ack-delay-exponent
+    type: string
+    usage: 'allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192'
+  - name: pending-mac-state.current-parameters.adr-ack-limit-exponent
+    type: string
+    usage: 'allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192'
+  - name: pending-mac-state.current-parameters.adr-data-rate-index
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.current-parameters.adr-nb-trans
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.adr-tx-power-index
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.beacon-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.downlink-dwell-time
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.current-parameters.max-duty-cycle
+    type: string
+    usage: 'allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192'
+  - name: pending-mac-state.current-parameters.max-eirp
+    type: float32
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.ping-slot-data-rate-index-value
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.current-parameters.ping-slot-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.rejoin-count-periodicity
+    type: string
+    usage: 'allowed values: REJOIN_COUNT_1024, REJOIN_COUNT_128, REJOIN_COUNT_131072, REJOIN_COUNT_16, REJOIN_COUNT_16384, REJOIN_COUNT_2048, REJOIN_COUNT_256, REJOIN_COUNT_262144, REJOIN_COUNT_32, REJOIN_COUNT_32768, REJOIN_COUNT_4096, REJOIN_COUNT_512, REJOIN_COUNT_524288, REJOIN_COUNT_64, REJOIN_COUNT_65536, REJOIN_COUNT_8192'
+  - name: pending-mac-state.current-parameters.rejoin-time-periodicity
+    type: string
+    usage: 'allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9'
+  - name: pending-mac-state.current-parameters.rx1-data-rate-offset
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
+  - name: pending-mac-state.current-parameters.rx1-delay
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
+  - name: pending-mac-state.current-parameters.rx2-data-rate-index
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.current-parameters.rx2-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.uplink-dwell-time
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.desired-parameters.adr-ack-delay-exponent
+    type: string
+    usage: 'allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192'
+  - name: pending-mac-state.desired-parameters.adr-ack-limit-exponent
+    type: string
+    usage: 'allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192'
+  - name: pending-mac-state.desired-parameters.adr-data-rate-index
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.desired-parameters.adr-nb-trans
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.adr-tx-power-index
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.beacon-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.downlink-dwell-time
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.desired-parameters.max-duty-cycle
+    type: string
+    usage: 'allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192'
+  - name: pending-mac-state.desired-parameters.max-eirp
+    type: float32
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.ping-slot-data-rate-index-value
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.desired-parameters.ping-slot-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.rejoin-count-periodicity
+    type: string
+    usage: 'allowed values: REJOIN_COUNT_1024, REJOIN_COUNT_128, REJOIN_COUNT_131072, REJOIN_COUNT_16, REJOIN_COUNT_16384, REJOIN_COUNT_2048, REJOIN_COUNT_256, REJOIN_COUNT_262144, REJOIN_COUNT_32, REJOIN_COUNT_32768, REJOIN_COUNT_4096, REJOIN_COUNT_512, REJOIN_COUNT_524288, REJOIN_COUNT_64, REJOIN_COUNT_65536, REJOIN_COUNT_8192'
+  - name: pending-mac-state.desired-parameters.rejoin-time-periodicity
+    type: string
+    usage: 'allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9'
+  - name: pending-mac-state.desired-parameters.rx1-data-rate-offset
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
+  - name: pending-mac-state.desired-parameters.rx1-delay
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
+  - name: pending-mac-state.desired-parameters.rx2-data-rate-index
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.desired-parameters.rx2-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.uplink-dwell-time
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.device-class
+    type: string
+    usage: 'allowed values: CLASS_A, CLASS_B, CLASS_C'
+  - name: pending-mac-state.last-adr-change-f-cnt-up
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.last-confirmed-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: pending-mac-state.last-dev-status-f-cnt-up
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.last-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: pending-mac-state.last-network-initiated-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: pending-mac-state.lorawan-version
+    type: string
+    usage: 'allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.1, 1.1.0, MAC_UNKNOWN, MAC_V1_0, MAC_V1_0_1, MAC_V1_0_2, MAC_V1_0_3, MAC_V1_0_4, MAC_V1_1, unknown'
+  - name: pending-mac-state.pending-join-request.cf-list.ch-masks
+    type: boolSlice
+    default_value: '[]'
+  - name: pending-mac-state.pending-join-request.cf-list.freq
+    type: uintSlice
+    default_value: '[]'
+  - name: pending-mac-state.pending-join-request.cf-list.type
+    type: string
+    usage: 'allowed values: CHANNEL_MASKS, FREQUENCIES'
+  - name: pending-mac-state.pending-join-request.downlink-settings.opt-neg
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.pending-join-request.downlink-settings.rx1-dr-offset
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
+  - name: pending-mac-state.pending-join-request.downlink-settings.rx2-dr
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.pending-join-request.rx-delay
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
+  - name: pending-mac-state.ping-slot-periodicity
+    type: string
+    usage: 'allowed values: PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S'
+  - name: pending-mac-state.queued-join-accept.correlation-ids
+    type: stringSlice
+    default_value: '[]'
+  - name: pending-mac-state.queued-join-accept.dev-addr
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.app-s-key.encrypted-key
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.app-s-key.kek-label
+    type: string
+  - name: pending-mac-state.queued-join-accept.keys.app-s-key.key
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.f-nwk-s-int-key.key
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.nwk-s-enc-key.key
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.s-nwk-s-int-key.key
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.session-key-id
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.net-id
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.payload
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.request.cf-list.ch-masks
+    type: boolSlice
+    default_value: '[]'
+  - name: pending-mac-state.queued-join-accept.request.cf-list.freq
+    type: uintSlice
+    default_value: '[]'
+  - name: pending-mac-state.queued-join-accept.request.cf-list.type
+    type: string
+    usage: 'allowed values: CHANNEL_MASKS, FREQUENCIES'
+  - name: pending-mac-state.queued-join-accept.request.downlink-settings.opt-neg
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.queued-join-accept.request.downlink-settings.rx1-dr-offset
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
+  - name: pending-mac-state.queued-join-accept.request.downlink-settings.rx2-dr
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.queued-join-accept.request.rx-delay
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
+  - name: pending-mac-state.rejected-adr-data-rate-indexes
+    type: stringSlice
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+    default_value: '[]'
+  - name: pending-mac-state.rejected-adr-tx-power-indexes
+    type: uintSlice
+    default_value: '[]'
+  - name: pending-mac-state.rejected-frequencies
+    type: uintSlice
+    default_value: '[]'
+  - name: pending-mac-state.rx-windows-available
+    type: bool
+    default_value: "false"
+  - name: pending-session.dev-addr
+    type: string
+    usage: (hex)
+  - name: pending-session.keys.f-nwk-s-int-key.key
+    type: string
+    usage: (hex)
+  - name: pending-session.keys.nwk-s-enc-key.key
+    type: string
+    usage: (hex)
+  - name: pending-session.keys.nwk-s-key.key
+    type: string
+    usage: (hex)
+    hidden: true
+  - name: pending-session.keys.s-nwk-s-int-key.key
+    type: string
+    usage: (hex)
+  - name: pending-session.keys.session-key-id
+    type: string
+    usage: (hex)
   - name: picture
     type: string
     usage: upload the end device picture from this file
@@ -3937,13 +4370,14 @@ ttn-lw-cli end-devices generate-qr:
     the device ID.
 
     This command may take end device identifiers from stdin.
-  example: |-
-    To generate a QR code for a single end device:
-      ttn-lw-cli end-devices generate-qr app1 dev1
+  example: |2-
 
-    To generate a QR code for multiple end devices:
-      ttn-lw-cli end-devices list app1 \
-        | ttn-lw-cli end-devices generate-qr
+      To generate a QR code for a single end device:
+        $ ttn-lw-cli end-devices generate-qr app1 dev1
+
+      To generate a QR code for multiple end devices:
+        $ ttn-lw-cli end-devices list app1 \
+          | ttn-lw-cli end-devices generate-qr
   command_flags:
   - name: app-eui
     type: string
@@ -4730,6 +5164,10 @@ ttn-lw-cli end-devices get:
   - name: pending-mac-state.pending-join-request.cf-list.type
     type: bool
     usage: select the pending_mac_state.pending_join_request.cf_list.type field
+    default_value: "false"
+  - name: pending-mac-state.pending-join-request.downlink-settings
+    type: bool
+    usage: select the pending_mac_state.pending_join_request.downlink_settings field and all allowed sub-fields
     default_value: "false"
   - name: pending-mac-state.pending-join-request.downlink-settings.opt-neg
     type: bool
@@ -6016,6 +6454,10 @@ ttn-lw-cli end-devices reset:
     type: bool
     usage: select the pending_mac_state.pending_join_request.cf_list.type field
     default_value: "false"
+  - name: pending-mac-state.pending-join-request.downlink-settings
+    type: bool
+    usage: select the pending_mac_state.pending_join_request.downlink_settings field and all allowed sub-fields
+    default_value: "false"
   - name: pending-mac-state.pending-join-request.downlink-settings.opt-neg
     type: bool
     usage: select the pending_mac_state.pending_join_request.downlink_settings.opt_neg field
@@ -6433,6 +6875,10 @@ ttn-lw-cli end-devices search:
     type: bool
     usage: select the contact_info field
     default_value: "false"
+  - name: deleted-at
+    type: bool
+    usage: select the deleted_at field
+    default_value: "false"
   - name: description
     type: bool
     usage: select the description field
@@ -6490,6 +6936,9 @@ ttn-lw-cli end-devices set:
     type: stringSlice
     usage: key=value
     default_value: '[]'
+  - name: battery-percentage
+    type: float32
+    default_value: "0"
   - name: claim-authentication-code.valid-from
     type: string
     usage: (YYYY-MM-DDTHH:MM:SSZ)
@@ -6505,6 +6954,9 @@ ttn-lw-cli end-devices set:
     usage: (hex)
   - name: device-id
     type: string
+  - name: downlink-margin
+    type: int32
+    default_value: "0"
   - name: formatters.down-formatter
     type: string
     usage: 'allowed values: FORMATTER_CAYENNELPP, FORMATTER_GRPC_SERVICE, FORMATTER_JAVASCRIPT, FORMATTER_NONE, FORMATTER_REPOSITORY'
@@ -6531,6 +6983,9 @@ ttn-lw-cli end-devices set:
   - name: last-dev-nonce
     type: uint32
     default_value: "0"
+  - name: last-dev-status-received-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: last-join-nonce
     type: uint32
     default_value: "0"
@@ -6577,31 +7032,31 @@ ttn-lw-cli end-devices set:
     default_value: 0s
   - name: mac-settings.desired-adr-ack-delay-exponent
     type: string
-    usage: allowed values ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192
+    usage: 'allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192'
   - name: mac-settings.desired-adr-ack-limit-exponent
     type: string
-    usage: allowed values ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192
+    usage: 'allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192'
   - name: mac-settings.desired-beacon-frequency
     type: uint64
     default_value: "0"
   - name: mac-settings.desired-max-duty-cycle
     type: string
-    usage: allowed values DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192
+    usage: 'allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192'
   - name: mac-settings.desired-ping-slot-data-rate-index
     type: string
-    usage: allowed values DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-settings.desired-ping-slot-frequency
     type: uint64
     default_value: "0"
   - name: mac-settings.desired-rx1-data-rate-offset
-    type: uint32
-    default_value: "0"
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
   - name: mac-settings.desired-rx1-delay
     type: string
-    usage: allowed values RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
   - name: mac-settings.desired-rx2-data-rate-index
     type: string
-    usage: allowed values DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-settings.desired-rx2-frequency
     type: uint64
     default_value: "0"
@@ -6610,28 +7065,28 @@ ttn-lw-cli end-devices set:
     default_value: '[]'
   - name: mac-settings.max-duty-cycle
     type: string
-    usage: allowed values DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192
+    usage: 'allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192'
   - name: mac-settings.ping-slot-data-rate-index
     type: string
-    usage: allowed values DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-settings.ping-slot-frequency
     type: uint64
     default_value: "0"
   - name: mac-settings.ping-slot-periodicity
     type: string
-    usage: allowed values PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S
+    usage: 'allowed values: PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S'
   - name: mac-settings.resets-f-cnt
     type: bool
     default_value: "false"
   - name: mac-settings.rx1-data-rate-offset
-    type: uint32
-    default_value: "0"
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
   - name: mac-settings.rx1-delay
     type: string
-    usage: allowed values RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
   - name: mac-settings.rx2-data-rate-index
     type: string
-    usage: allowed values DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-settings.rx2-frequency
     type: uint64
     default_value: "0"
@@ -6650,10 +7105,10 @@ ttn-lw-cli end-devices set:
     default_value: "false"
   - name: mac-state.current-parameters.adr-ack-delay-exponent
     type: string
-    usage: allowed values ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192
+    usage: 'allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192'
   - name: mac-state.current-parameters.adr-ack-limit-exponent
     type: string
-    usage: allowed values ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192
+    usage: 'allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192'
   - name: mac-state.current-parameters.adr-data-rate-index
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
@@ -6675,7 +7130,7 @@ ttn-lw-cli end-devices set:
   - name: mac-state.current-parameters.max-eirp
     type: float32
     default_value: "0"
-  - name: mac-state.current-parameters.ping-slot-data-rate-index
+  - name: mac-state.current-parameters.ping-slot-data-rate-index-value
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-state.current-parameters.ping-slot-frequency
@@ -6688,8 +7143,8 @@ ttn-lw-cli end-devices set:
     type: string
     usage: 'allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9'
   - name: mac-state.current-parameters.rx1-data-rate-offset
-    type: uint32
-    default_value: "0"
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
   - name: mac-state.current-parameters.rx1-delay
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
@@ -6704,10 +7159,10 @@ ttn-lw-cli end-devices set:
     default_value: "false"
   - name: mac-state.desired-parameters.adr-ack-delay-exponent
     type: string
-    usage: allowed values ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192
+    usage: 'allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192'
   - name: mac-state.desired-parameters.adr-ack-limit-exponent
     type: string
-    usage: allowed values ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192
+    usage: 'allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192'
   - name: mac-state.desired-parameters.adr-data-rate-index
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
@@ -6729,7 +7184,7 @@ ttn-lw-cli end-devices set:
   - name: mac-state.desired-parameters.max-eirp
     type: float32
     default_value: "0"
-  - name: mac-state.desired-parameters.ping-slot-data-rate-index
+  - name: mac-state.desired-parameters.ping-slot-data-rate-index-value
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-state.desired-parameters.ping-slot-frequency
@@ -6742,8 +7197,8 @@ ttn-lw-cli end-devices set:
     type: string
     usage: 'allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9'
   - name: mac-state.desired-parameters.rx1-data-rate-offset
-    type: uint32
-    default_value: "0"
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
   - name: mac-state.desired-parameters.rx1-delay
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
@@ -6759,12 +7214,67 @@ ttn-lw-cli end-devices set:
   - name: mac-state.device-class
     type: string
     usage: 'allowed values: CLASS_A, CLASS_B, CLASS_C'
+  - name: mac-state.last-adr-change-f-cnt-up
+    type: uint32
+    default_value: "0"
+  - name: mac-state.last-confirmed-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: mac-state.last-dev-status-f-cnt-up
+    type: uint32
+    default_value: "0"
+  - name: mac-state.last-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: mac-state.last-network-initiated-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: mac-state.lorawan-version
     type: string
     usage: 'allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.1, 1.1.0, MAC_UNKNOWN, MAC_V1_0, MAC_V1_0_1, MAC_V1_0_2, MAC_V1_0_3, MAC_V1_0_4, MAC_V1_1, unknown'
+  - name: mac-state.pending-application-downlink.class-b-c.absolute-time
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: mac-state.pending-application-downlink.class-b-c.gateways
+    type: stringSlice
+    default_value: '[]'
+  - name: mac-state.pending-application-downlink.confirmed
+    type: bool
+    default_value: "false"
+  - name: mac-state.pending-application-downlink.correlation-ids
+    type: stringSlice
+    default_value: '[]'
+  - name: mac-state.pending-application-downlink.f-cnt
+    type: uint32
+    default_value: "0"
+  - name: mac-state.pending-application-downlink.f-port
+    type: uint32
+    default_value: "0"
+  - name: mac-state.pending-application-downlink.frm-payload
+    type: string
+    usage: (hex)
+  - name: mac-state.pending-application-downlink.priority
+    type: string
+    usage: 'allowed values: ABOVE_NORMAL, BELOW_NORMAL, HIGH, HIGHEST, LOW, LOWEST, NORMAL'
+  - name: mac-state.pending-application-downlink.session-key-id
+    type: string
+    usage: (hex)
   - name: mac-state.ping-slot-periodicity
     type: string
-    usage: allowed values PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S
+    usage: 'allowed values: PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S'
+  - name: mac-state.rejected-adr-data-rate-indexes
+    type: stringSlice
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+    default_value: '[]'
+  - name: mac-state.rejected-adr-tx-power-indexes
+    type: uintSlice
+    default_value: '[]'
+  - name: mac-state.rejected-frequencies
+    type: uintSlice
+    default_value: '[]'
+  - name: mac-state.rx-windows-available
+    type: bool
+    default_value: "false"
   - name: max-frequency
     type: uint64
     default_value: "0"
@@ -6783,6 +7293,244 @@ ttn-lw-cli end-devices set:
     type: string
   - name: network-server-kek-label
     type: string
+  - name: pending-mac-state.current-parameters.adr-ack-delay-exponent
+    type: string
+    usage: 'allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192'
+  - name: pending-mac-state.current-parameters.adr-ack-limit-exponent
+    type: string
+    usage: 'allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192'
+  - name: pending-mac-state.current-parameters.adr-data-rate-index
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.current-parameters.adr-nb-trans
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.adr-tx-power-index
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.beacon-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.downlink-dwell-time
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.current-parameters.max-duty-cycle
+    type: string
+    usage: 'allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192'
+  - name: pending-mac-state.current-parameters.max-eirp
+    type: float32
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.ping-slot-data-rate-index-value
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.current-parameters.ping-slot-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.rejoin-count-periodicity
+    type: string
+    usage: 'allowed values: REJOIN_COUNT_1024, REJOIN_COUNT_128, REJOIN_COUNT_131072, REJOIN_COUNT_16, REJOIN_COUNT_16384, REJOIN_COUNT_2048, REJOIN_COUNT_256, REJOIN_COUNT_262144, REJOIN_COUNT_32, REJOIN_COUNT_32768, REJOIN_COUNT_4096, REJOIN_COUNT_512, REJOIN_COUNT_524288, REJOIN_COUNT_64, REJOIN_COUNT_65536, REJOIN_COUNT_8192'
+  - name: pending-mac-state.current-parameters.rejoin-time-periodicity
+    type: string
+    usage: 'allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9'
+  - name: pending-mac-state.current-parameters.rx1-data-rate-offset
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
+  - name: pending-mac-state.current-parameters.rx1-delay
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
+  - name: pending-mac-state.current-parameters.rx2-data-rate-index
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.current-parameters.rx2-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.uplink-dwell-time
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.desired-parameters.adr-ack-delay-exponent
+    type: string
+    usage: 'allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192'
+  - name: pending-mac-state.desired-parameters.adr-ack-limit-exponent
+    type: string
+    usage: 'allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192'
+  - name: pending-mac-state.desired-parameters.adr-data-rate-index
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.desired-parameters.adr-nb-trans
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.adr-tx-power-index
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.beacon-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.downlink-dwell-time
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.desired-parameters.max-duty-cycle
+    type: string
+    usage: 'allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192'
+  - name: pending-mac-state.desired-parameters.max-eirp
+    type: float32
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.ping-slot-data-rate-index-value
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.desired-parameters.ping-slot-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.rejoin-count-periodicity
+    type: string
+    usage: 'allowed values: REJOIN_COUNT_1024, REJOIN_COUNT_128, REJOIN_COUNT_131072, REJOIN_COUNT_16, REJOIN_COUNT_16384, REJOIN_COUNT_2048, REJOIN_COUNT_256, REJOIN_COUNT_262144, REJOIN_COUNT_32, REJOIN_COUNT_32768, REJOIN_COUNT_4096, REJOIN_COUNT_512, REJOIN_COUNT_524288, REJOIN_COUNT_64, REJOIN_COUNT_65536, REJOIN_COUNT_8192'
+  - name: pending-mac-state.desired-parameters.rejoin-time-periodicity
+    type: string
+    usage: 'allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9'
+  - name: pending-mac-state.desired-parameters.rx1-data-rate-offset
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
+  - name: pending-mac-state.desired-parameters.rx1-delay
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
+  - name: pending-mac-state.desired-parameters.rx2-data-rate-index
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.desired-parameters.rx2-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.uplink-dwell-time
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.device-class
+    type: string
+    usage: 'allowed values: CLASS_A, CLASS_B, CLASS_C'
+  - name: pending-mac-state.last-adr-change-f-cnt-up
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.last-confirmed-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: pending-mac-state.last-dev-status-f-cnt-up
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.last-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: pending-mac-state.last-network-initiated-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: pending-mac-state.lorawan-version
+    type: string
+    usage: 'allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.1, 1.1.0, MAC_UNKNOWN, MAC_V1_0, MAC_V1_0_1, MAC_V1_0_2, MAC_V1_0_3, MAC_V1_0_4, MAC_V1_1, unknown'
+  - name: pending-mac-state.pending-join-request.cf-list.ch-masks
+    type: boolSlice
+    default_value: '[]'
+  - name: pending-mac-state.pending-join-request.cf-list.freq
+    type: uintSlice
+    default_value: '[]'
+  - name: pending-mac-state.pending-join-request.cf-list.type
+    type: string
+    usage: 'allowed values: CHANNEL_MASKS, FREQUENCIES'
+  - name: pending-mac-state.pending-join-request.downlink-settings.opt-neg
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.pending-join-request.downlink-settings.rx1-dr-offset
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
+  - name: pending-mac-state.pending-join-request.downlink-settings.rx2-dr
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.pending-join-request.rx-delay
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
+  - name: pending-mac-state.ping-slot-periodicity
+    type: string
+    usage: 'allowed values: PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S'
+  - name: pending-mac-state.queued-join-accept.correlation-ids
+    type: stringSlice
+    default_value: '[]'
+  - name: pending-mac-state.queued-join-accept.dev-addr
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.app-s-key.encrypted-key
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.app-s-key.kek-label
+    type: string
+  - name: pending-mac-state.queued-join-accept.keys.app-s-key.key
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.f-nwk-s-int-key.key
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.nwk-s-enc-key.key
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.s-nwk-s-int-key.key
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.session-key-id
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.net-id
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.payload
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.request.cf-list.ch-masks
+    type: boolSlice
+    default_value: '[]'
+  - name: pending-mac-state.queued-join-accept.request.cf-list.freq
+    type: uintSlice
+    default_value: '[]'
+  - name: pending-mac-state.queued-join-accept.request.cf-list.type
+    type: string
+    usage: 'allowed values: CHANNEL_MASKS, FREQUENCIES'
+  - name: pending-mac-state.queued-join-accept.request.downlink-settings.opt-neg
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.queued-join-accept.request.downlink-settings.rx1-dr-offset
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
+  - name: pending-mac-state.queued-join-accept.request.downlink-settings.rx2-dr
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.queued-join-accept.request.rx-delay
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
+  - name: pending-mac-state.rejected-adr-data-rate-indexes
+    type: stringSlice
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+    default_value: '[]'
+  - name: pending-mac-state.rejected-adr-tx-power-indexes
+    type: uintSlice
+    default_value: '[]'
+  - name: pending-mac-state.rejected-frequencies
+    type: uintSlice
+    default_value: '[]'
+  - name: pending-mac-state.rx-windows-available
+    type: bool
+    default_value: "false"
+  - name: pending-session.dev-addr
+    type: string
+    usage: (hex)
+  - name: pending-session.keys.f-nwk-s-int-key.key
+    type: string
+    usage: (hex)
+  - name: pending-session.keys.nwk-s-enc-key.key
+    type: string
+    usage: (hex)
+  - name: pending-session.keys.nwk-s-key.key
+    type: string
+    usage: (hex)
+    hidden: true
+  - name: pending-session.keys.s-nwk-s-int-key.key
+    type: string
+    usage: (hex)
+  - name: pending-session.keys.session-key-id
+    type: string
+    usage: (hex)
   - name: picture
     type: string
     usage: upload the end device picture from this file
@@ -6969,7 +7717,7 @@ ttn-lw-cli end-devices storage get:
     default_value: "false"
   - name: type
     type: string
-    usage: message type (downlink_queued|service_data||downlink_sent|downlink_failed|downlink_nack|downlink_queue_invalidated|location_solved|uplink_message|join_accept|downlink_ack)
+    usage: message type (|downlink_ack|downlink_failed|downlink_nack|downlink_queue_invalidated|downlink_queued|downlink_sent|join_accept|location_solved|service_data|uplink_message)
   - name: up.downlink-ack
     type: bool
     usage: select the up.downlink_ack field and all allowed sub-fields
@@ -7695,6 +8443,79 @@ ttn-lw-cli gateways api-keys set:
   - name: right-gateway-write-secrets
     type: bool
     default_value: "false"
+ttn-lw-cli gateways claim:
+  path: ttn-lw-cli gateways claim
+  parent_path: ttn-lw-cli gateways
+  name: claim
+  use: '[gateway-eui]'
+  short: Claim a gateway (EXPERIMENTAL)
+  long: |
+    Claim an gateway (EXPERIMENTAL)
+    The claiming procedure transfers ownership of gateways using the Device
+    Claiming Server.
+
+    Authentication of gateway claiming is by the Gateway EUI and the claim
+    authentication code (which is part of the gateway entity itself) stored
+    in the Identity Server.
+
+    Claim authentication code validity is controlled by the owner of the
+    gateway by setting the value and optionally a time window when the
+    code is valid. As part of the claiming, the claim authentication code
+    is not transferred to the new claimed gateway. This prevents further claim
+    requests.
+
+    As part of claiming, you can optionally provide the target Gateway ID and
+    Gateway Server Address.
+
+    Additionally, for LoRa Basics Station gateways, it is required to provide
+    the current auth key (Ex: A The Things Stack API Key or an auth token)
+    used by the gateway and the URI of the Target CUPS server to which the
+    gateway should connect.
+  command_flags:
+  - name: authentication-code
+    type: bytesHex
+    usage: (hex)
+  - name: current-gateway-key
+    type: string
+  - name: organization-id
+    type: string
+  - name: target-cups-uri
+    type: string
+  - name: target-gateway-id
+    type: string
+    usage: gateway ID for the claimed gateway
+  - name: target-gateway-server-address
+    type: string
+  - name: user-id
+    type: string
+  persistent_flags:
+  - name: gateway-eui
+    type: string
+  - name: gateway-id
+    type: string
+ttn-lw-cli gateways claim authorize:
+  path: ttn-lw-cli gateways claim authorize
+  parent_path: ttn-lw-cli gateways claim
+  name: authorize
+  use: '[gateway-id]'
+  short: Authorize an gateway for claiming (EXPERIMENTAL)
+  long: |-
+    Authorize an gateway for claiming (EXPERIMENTAL)
+
+    The given API key must have the right to
+    - read gateway information
+    - read secrets
+    - delete the gateway.
+    If no API key is provided, a new one will be created.
+  command_flags:
+  - name: api-key
+    type: string
+ttn-lw-cli gateways claim unauthorize:
+  path: ttn-lw-cli gateways claim unauthorize
+  parent_path: ttn-lw-cli gateways claim
+  name: unauthorize
+  use: '[gateway-id]'
+  short: Unauthorize an gateway for claiming (EXPERIMENTAL)
 ttn-lw-cli gateways collaborators:
   path: ttn-lw-cli gateways collaborators
   parent_path: ttn-lw-cli gateways
@@ -7968,6 +8789,9 @@ ttn-lw-cli gateways create:
     type: bool
     usage: configure gateway with defaults
     default_value: "true"
+  - name: deleted-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: description
     type: string
   - name: downlink-path-constraint
@@ -7999,6 +8823,9 @@ ttn-lw-cli gateways create:
     type: string
   - name: organization-id
     type: string
+  - name: require-authenticated-connection
+    type: bool
+    default_value: "false"
   - name: schedule-anytime-delay
     type: duration
     usage: (1h2m3s)
@@ -8099,6 +8926,10 @@ ttn-lw-cli gateways get:
     type: bool
     usage: select the contact_info field
     default_value: "false"
+  - name: deleted-at
+    type: bool
+    usage: select the deleted_at field
+    default_value: "false"
   - name: description
     type: bool
     usage: select the description field
@@ -8146,6 +8977,10 @@ ttn-lw-cli gateways get:
   - name: name
     type: bool
     usage: select the name field
+    default_value: "false"
+  - name: require-authenticated-connection
+    type: bool
+    usage: select the require_authenticated_connection field
     default_value: "false"
   - name: schedule-anytime-delay
     type: bool
@@ -8270,6 +9105,14 @@ ttn-lw-cli gateways list:
     type: bool
     usage: select the contact_info field
     default_value: "false"
+  - name: deleted
+    type: bool
+    usage: return recently deleted
+    default_value: "false"
+  - name: deleted-at
+    type: bool
+    usage: select the deleted_at field
+    default_value: "false"
   - name: description
     type: bool
     usage: select the description field
@@ -8327,6 +9170,10 @@ ttn-lw-cli gateways list:
     type: uint32
     usage: results page number
     default_value: "1"
+  - name: require-authenticated-connection
+    type: bool
+    usage: select the require_authenticated_connection field
+    default_value: "false"
   - name: schedule-anytime-delay
     type: bool
     usage: select the schedule_anytime_delay field
@@ -8416,6 +9263,17 @@ ttn-lw-cli gateways purge:
     type: string
   - name: gateway-id
     type: string
+ttn-lw-cli gateways restore:
+  path: ttn-lw-cli gateways restore
+  parent_path: ttn-lw-cli gateways
+  name: restore
+  use: '[gateway-id]'
+  short: Restore a gateway
+  command_flags:
+  - name: gateway-eui
+    type: string
+  - name: gateway-id
+    type: string
 ttn-lw-cli gateways rights:
   path: ttn-lw-cli gateways rights
   parent_path: ttn-lw-cli gateways
@@ -8481,6 +9339,14 @@ ttn-lw-cli gateways search:
     type: bool
     usage: select the contact_info field
     default_value: "false"
+  - name: deleted
+    type: bool
+    usage: return recently deleted
+    default_value: "false"
+  - name: deleted-at
+    type: bool
+    usage: select the deleted_at field
+    default_value: "false"
   - name: description
     type: bool
     usage: select the description field
@@ -8495,6 +9361,8 @@ ttn-lw-cli gateways search:
     type: bool
     usage: select the enforce_duty_cycle field
     default_value: "false"
+  - name: eui-contains
+    type: string
   - name: frequency-plan-id
     type: bool
     usage: select the frequency_plan_id field
@@ -8542,6 +9410,10 @@ ttn-lw-cli gateways search:
     type: uint32
     usage: results page number
     default_value: "1"
+  - name: require-authenticated-connection
+    type: bool
+    usage: select the require_authenticated_connection field
+    default_value: "false"
   - name: schedule-anytime-delay
     type: bool
     usage: select the schedule_anytime_delay field
@@ -8655,6 +9527,9 @@ ttn-lw-cli gateways set:
   - name: claim-authentication-code.valid-to
     type: string
     usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: deleted-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: description
     type: string
   - name: downlink-path-constraint
@@ -8684,6 +9559,9 @@ ttn-lw-cli gateways set:
     default_value: "false"
   - name: name
     type: string
+  - name: require-authenticated-connection
+    type: bool
+    default_value: "false"
   - name: schedule-anytime-delay
     type: duration
     usage: (1h2m3s)
@@ -9431,6 +10309,9 @@ ttn-lw-cli organizations create:
     type: stringSlice
     usage: key=value
     default_value: '[]'
+  - name: deleted-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: description
     type: string
   - name: name
@@ -9473,6 +10354,10 @@ ttn-lw-cli organizations get:
     type: bool
     usage: select the contact_info field
     default_value: "false"
+  - name: deleted-at
+    type: bool
+    usage: select the deleted_at field
+    default_value: "false"
   - name: description
     type: bool
     usage: select the description field
@@ -9502,6 +10387,14 @@ ttn-lw-cli organizations list:
   - name: contact-info
     type: bool
     usage: select the contact_info field
+    default_value: "false"
+  - name: deleted
+    type: bool
+    usage: return recently deleted
+    default_value: "false"
+  - name: deleted-at
+    type: bool
+    usage: select the deleted_at field
     default_value: "false"
   - name: description
     type: bool
@@ -9541,6 +10434,15 @@ ttn-lw-cli organizations purge:
     default_value: "false"
   - name: organization-id
     type: string
+ttn-lw-cli organizations restore:
+  path: ttn-lw-cli organizations restore
+  parent_path: ttn-lw-cli organizations
+  name: restore
+  use: '[organization-id]'
+  short: Restore an organization
+  command_flags:
+  - name: organization-id
+    type: string
 ttn-lw-cli organizations rights:
   path: ttn-lw-cli organizations rights
   parent_path: ttn-lw-cli organizations
@@ -9571,6 +10473,14 @@ ttn-lw-cli organizations search:
   - name: contact-info
     type: bool
     usage: select the contact_info field
+    default_value: "false"
+  - name: deleted
+    type: bool
+    usage: return recently deleted
+    default_value: "false"
+  - name: deleted-at
+    type: bool
+    usage: select the deleted_at field
     default_value: "false"
   - name: description
     type: bool
@@ -9610,12 +10520,232 @@ ttn-lw-cli organizations set:
     type: stringSlice
     usage: key=value
     default_value: '[]'
+  - name: deleted-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: description
     type: string
   - name: name
     type: string
   - name: organization-id
     type: string
+ttn-lw-cli packetbroker:
+  path: ttn-lw-cli packetbroker
+  parent_path: ttn-lw-cli
+  name: packetbroker
+  aliases:
+  - pb
+  short: Packet Broker commands
+ttn-lw-cli packetbroker deregister:
+  path: ttn-lw-cli packetbroker deregister
+  parent_path: ttn-lw-cli packetbroker
+  name: deregister
+  short: Deregister from Packet Broker
+ttn-lw-cli packetbroker forwarders:
+  path: ttn-lw-cli packetbroker forwarders
+  parent_path: ttn-lw-cli packetbroker
+  name: forwarders
+  aliases:
+  - forwarder
+  - fwd
+  short: Forwarder commands
+ttn-lw-cli packetbroker forwarders policies:
+  path: ttn-lw-cli packetbroker forwarders policies
+  parent_path: ttn-lw-cli packetbroker forwarders
+  name: policies
+  aliases:
+  - policy
+  - po
+  short: Manage Forwarder routing policies
+ttn-lw-cli packetbroker forwarders policies list:
+  path: ttn-lw-cli packetbroker forwarders policies list
+  parent_path: ttn-lw-cli packetbroker forwarders policies
+  name: list
+  short: List routing policies configured by Forwarders
+  command_flags:
+  - name: limit
+    type: uint32
+    usage: maximum number of results to get
+    default_value: "50"
+  - name: page
+    type: uint32
+    usage: results page number
+    default_value: "1"
+ttn-lw-cli packetbroker home-networks:
+  path: ttn-lw-cli packetbroker home-networks
+  parent_path: ttn-lw-cli packetbroker
+  name: home-networks
+  aliases:
+  - home-network
+  - homenetworks
+  - homenetwork
+  - hn
+  short: Home Network commands
+ttn-lw-cli packetbroker home-networks list:
+  path: ttn-lw-cli packetbroker home-networks list
+  parent_path: ttn-lw-cli packetbroker home-networks
+  name: list
+  aliases:
+  - ls
+  short: List Home Networks
+  command_flags:
+  - name: limit
+    type: uint32
+    usage: maximum number of results to get
+    default_value: "50"
+  - name: page
+    type: uint32
+    usage: results page number
+    default_value: "1"
+ttn-lw-cli packetbroker home-networks policies:
+  path: ttn-lw-cli packetbroker home-networks policies
+  parent_path: ttn-lw-cli packetbroker home-networks
+  name: policies
+  aliases:
+  - policy
+  - po
+  short: Manage Home Network routing policies
+ttn-lw-cli packetbroker home-networks policies delete:
+  path: ttn-lw-cli packetbroker home-networks policies delete
+  parent_path: ttn-lw-cli packetbroker home-networks policies
+  name: delete
+  use: '[default|net-id] [tenant-id]'
+  short: Delete a Home Network routing policy
+  command_flags:
+  - name: default
+    type: bool
+    default_value: "false"
+  - name: net-id
+    type: string
+    usage: (hex)
+  - name: tenant-id
+    type: string
+ttn-lw-cli packetbroker home-networks policies get:
+  path: ttn-lw-cli packetbroker home-networks policies get
+  parent_path: ttn-lw-cli packetbroker home-networks policies
+  name: get
+  use: '[default|net-id] [tenant-id]'
+  short: Get a Home Network routing policy
+  example: |2-
+
+      To get the default routing policy:
+        $ ttn-lw-cli packetbroker home-network policies get default
+
+      To get the routing policy with NetID 000013:
+        $ ttn-lw-cli packetbroker home-network policies get 000013
+
+      To get the routing policy with NetID 000013 and tenant ttn (The Things Network):
+        $ ttn-lw-cli packetbroker home-network policies get 000013 ttn
+  command_flags:
+  - name: default
+    type: bool
+    default_value: "false"
+  - name: net-id
+    type: string
+    usage: (hex)
+  - name: tenant-id
+    type: string
+ttn-lw-cli packetbroker home-networks policies list:
+  path: ttn-lw-cli packetbroker home-networks policies list
+  parent_path: ttn-lw-cli packetbroker home-networks policies
+  name: list
+  aliases:
+  - ls
+  short: List Home Network routing policies
+  command_flags:
+  - name: limit
+    type: uint32
+    usage: maximum number of results to get
+    default_value: "50"
+  - name: page
+    type: uint32
+    usage: results page number
+    default_value: "1"
+ttn-lw-cli packetbroker home-networks policies set:
+  path: ttn-lw-cli packetbroker home-networks policies set
+  parent_path: ttn-lw-cli packetbroker home-networks policies
+  name: set
+  use: '[default|net-id] [tenant-id]'
+  short: Set a Home Network routing policy
+  long: |-
+    Set a Home Network routing policy
+
+    Specify default to configure the default routing policy. The default routing
+    policy is a fallback routing policy when no specific policy has been defined
+    for the Home Network (by NetID and tenant ID).
+  example: |2-
+
+      To set the default routing policy to pass join, MAC and application data,
+      signal quality and gateway locations:
+        $ ttn-lw-cli packetbroker home-network policy set default \
+          --join --mac-data --application-data --signal-quality --localization
+
+      To set the routing policy with NetID 000013 and tenant ID ttn (The Things
+      Network), allowing all data:
+        $ ttn-lw-cli packetbroker home-network policy set 000013 ttn --all
+
+      To set the routing policy with NetID C00001 to allow only uplink:
+        $ ttn-lw-cli packetbroker home-network policy set C00001 \
+          --mac-data-up --application-data-up --signal-quality --localization
+  command_flags:
+  - name: all
+    type: bool
+    usage: enable all data
+    default_value: "false"
+  - name: application-data
+    type: bool
+    usage: application data uplink and downlink (FPort > 0)
+    default_value: "false"
+  - name: application-data-down
+    type: bool
+    default_value: "false"
+  - name: application-data-up
+    type: bool
+    default_value: "false"
+  - name: default
+    type: bool
+    default_value: "false"
+  - name: join
+    type: bool
+    usage: join-request and join-accept
+    default_value: "false"
+  - name: join-accept
+    type: bool
+    default_value: "false"
+  - name: join-request
+    type: bool
+    default_value: "false"
+  - name: localization
+    type: bool
+    default_value: "false"
+  - name: mac-data
+    type: bool
+    usage: MAC data uplink and downlink (FPort = 0)
+    default_value: "false"
+  - name: mac-data-down
+    type: bool
+    default_value: "false"
+  - name: mac-data-up
+    type: bool
+    default_value: "false"
+  - name: net-id
+    type: string
+    usage: (hex)
+  - name: signal-quality
+    type: bool
+    default_value: "false"
+  - name: tenant-id
+    type: string
+ttn-lw-cli packetbroker info:
+  path: ttn-lw-cli packetbroker info
+  parent_path: ttn-lw-cli packetbroker
+  name: info
+  short: Show Packet Broker info
+ttn-lw-cli packetbroker register:
+  path: ttn-lw-cli packetbroker register
+  parent_path: ttn-lw-cli packetbroker
+  name: register
+  short: Register with Packet Broker
 ttn-lw-cli simulate:
   path: ttn-lw-cli simulate
   parent_path: ttn-lw-cli
@@ -10710,6 +11840,10 @@ ttn-lw-cli templates create:
     type: bool
     usage: select the pending_mac_state.pending_join_request.cf_list.type field
     default_value: "false"
+  - name: pending-mac-state.pending-join-request.downlink-settings
+    type: bool
+    usage: select the pending_mac_state.pending_join_request.downlink_settings field and all allowed sub-fields
+    default_value: "false"
   - name: pending-mac-state.pending-join-request.downlink-settings.opt-neg
     type: bool
     usage: select the pending_mac_state.pending_join_request.downlink_settings.opt_neg field
@@ -11121,6 +12255,9 @@ ttn-lw-cli templates execute:
     type: string
   - name: application-server-kek-label
     type: string
+  - name: battery-percentage
+    type: float32
+    default_value: "0"
   - name: claim-authentication-code.valid-from
     type: string
     usage: (YYYY-MM-DDTHH:MM:SSZ)
@@ -11131,6 +12268,9 @@ ttn-lw-cli templates execute:
     type: string
   - name: description
     type: string
+  - name: downlink-margin
+    type: int32
+    default_value: "0"
   - name: formatters.down-formatter
     type: string
     usage: 'allowed values: FORMATTER_CAYENNELPP, FORMATTER_GRPC_SERVICE, FORMATTER_JAVASCRIPT, FORMATTER_NONE, FORMATTER_REPOSITORY'
@@ -11148,6 +12288,9 @@ ttn-lw-cli templates execute:
   - name: last-dev-nonce
     type: uint32
     default_value: "0"
+  - name: last-dev-status-received-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: last-join-nonce
     type: uint32
     default_value: "0"
@@ -11179,31 +12322,31 @@ ttn-lw-cli templates execute:
     default_value: 0s
   - name: mac-settings.desired-adr-ack-delay-exponent
     type: string
-    usage: allowed values ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192
+    usage: 'allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192'
   - name: mac-settings.desired-adr-ack-limit-exponent
     type: string
-    usage: allowed values ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192
+    usage: 'allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192'
   - name: mac-settings.desired-beacon-frequency
     type: uint64
     default_value: "0"
   - name: mac-settings.desired-max-duty-cycle
     type: string
-    usage: allowed values DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192
+    usage: 'allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192'
   - name: mac-settings.desired-ping-slot-data-rate-index
     type: string
-    usage: allowed values DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-settings.desired-ping-slot-frequency
     type: uint64
     default_value: "0"
   - name: mac-settings.desired-rx1-data-rate-offset
-    type: uint32
-    default_value: "0"
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
   - name: mac-settings.desired-rx1-delay
     type: string
-    usage: allowed values RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
   - name: mac-settings.desired-rx2-data-rate-index
     type: string
-    usage: allowed values DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-settings.desired-rx2-frequency
     type: uint64
     default_value: "0"
@@ -11212,28 +12355,28 @@ ttn-lw-cli templates execute:
     default_value: '[]'
   - name: mac-settings.max-duty-cycle
     type: string
-    usage: allowed values DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192
+    usage: 'allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192'
   - name: mac-settings.ping-slot-data-rate-index
     type: string
-    usage: allowed values DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-settings.ping-slot-frequency
     type: uint64
     default_value: "0"
   - name: mac-settings.ping-slot-periodicity
     type: string
-    usage: allowed values PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S
+    usage: 'allowed values: PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S'
   - name: mac-settings.resets-f-cnt
     type: bool
     default_value: "false"
   - name: mac-settings.rx1-data-rate-offset
-    type: uint32
-    default_value: "0"
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
   - name: mac-settings.rx1-delay
     type: string
-    usage: allowed values RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
   - name: mac-settings.rx2-data-rate-index
     type: string
-    usage: allowed values DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-settings.rx2-frequency
     type: uint64
     default_value: "0"
@@ -11252,10 +12395,10 @@ ttn-lw-cli templates execute:
     default_value: "false"
   - name: mac-state.current-parameters.adr-ack-delay-exponent
     type: string
-    usage: allowed values ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192
+    usage: 'allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192'
   - name: mac-state.current-parameters.adr-ack-limit-exponent
     type: string
-    usage: allowed values ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192
+    usage: 'allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192'
   - name: mac-state.current-parameters.adr-data-rate-index
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
@@ -11277,7 +12420,7 @@ ttn-lw-cli templates execute:
   - name: mac-state.current-parameters.max-eirp
     type: float32
     default_value: "0"
-  - name: mac-state.current-parameters.ping-slot-data-rate-index
+  - name: mac-state.current-parameters.ping-slot-data-rate-index-value
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-state.current-parameters.ping-slot-frequency
@@ -11290,8 +12433,8 @@ ttn-lw-cli templates execute:
     type: string
     usage: 'allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9'
   - name: mac-state.current-parameters.rx1-data-rate-offset
-    type: uint32
-    default_value: "0"
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
   - name: mac-state.current-parameters.rx1-delay
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
@@ -11306,10 +12449,10 @@ ttn-lw-cli templates execute:
     default_value: "false"
   - name: mac-state.desired-parameters.adr-ack-delay-exponent
     type: string
-    usage: allowed values ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192
+    usage: 'allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192'
   - name: mac-state.desired-parameters.adr-ack-limit-exponent
     type: string
-    usage: allowed values ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192
+    usage: 'allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192'
   - name: mac-state.desired-parameters.adr-data-rate-index
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
@@ -11331,7 +12474,7 @@ ttn-lw-cli templates execute:
   - name: mac-state.desired-parameters.max-eirp
     type: float32
     default_value: "0"
-  - name: mac-state.desired-parameters.ping-slot-data-rate-index
+  - name: mac-state.desired-parameters.ping-slot-data-rate-index-value
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-state.desired-parameters.ping-slot-frequency
@@ -11344,8 +12487,8 @@ ttn-lw-cli templates execute:
     type: string
     usage: 'allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9'
   - name: mac-state.desired-parameters.rx1-data-rate-offset
-    type: uint32
-    default_value: "0"
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
   - name: mac-state.desired-parameters.rx1-delay
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
@@ -11361,12 +12504,67 @@ ttn-lw-cli templates execute:
   - name: mac-state.device-class
     type: string
     usage: 'allowed values: CLASS_A, CLASS_B, CLASS_C'
+  - name: mac-state.last-adr-change-f-cnt-up
+    type: uint32
+    default_value: "0"
+  - name: mac-state.last-confirmed-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: mac-state.last-dev-status-f-cnt-up
+    type: uint32
+    default_value: "0"
+  - name: mac-state.last-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: mac-state.last-network-initiated-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: mac-state.lorawan-version
     type: string
     usage: 'allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.1, 1.1.0, MAC_UNKNOWN, MAC_V1_0, MAC_V1_0_1, MAC_V1_0_2, MAC_V1_0_3, MAC_V1_0_4, MAC_V1_1, unknown'
+  - name: mac-state.pending-application-downlink.class-b-c.absolute-time
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: mac-state.pending-application-downlink.class-b-c.gateways
+    type: stringSlice
+    default_value: '[]'
+  - name: mac-state.pending-application-downlink.confirmed
+    type: bool
+    default_value: "false"
+  - name: mac-state.pending-application-downlink.correlation-ids
+    type: stringSlice
+    default_value: '[]'
+  - name: mac-state.pending-application-downlink.f-cnt
+    type: uint32
+    default_value: "0"
+  - name: mac-state.pending-application-downlink.f-port
+    type: uint32
+    default_value: "0"
+  - name: mac-state.pending-application-downlink.frm-payload
+    type: string
+    usage: (hex)
+  - name: mac-state.pending-application-downlink.priority
+    type: string
+    usage: 'allowed values: ABOVE_NORMAL, BELOW_NORMAL, HIGH, HIGHEST, LOW, LOWEST, NORMAL'
+  - name: mac-state.pending-application-downlink.session-key-id
+    type: string
+    usage: (hex)
   - name: mac-state.ping-slot-periodicity
     type: string
-    usage: allowed values PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S
+    usage: 'allowed values: PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S'
+  - name: mac-state.rejected-adr-data-rate-indexes
+    type: stringSlice
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+    default_value: '[]'
+  - name: mac-state.rejected-adr-tx-power-indexes
+    type: uintSlice
+    default_value: '[]'
+  - name: mac-state.rejected-frequencies
+    type: uintSlice
+    default_value: '[]'
+  - name: mac-state.rx-windows-available
+    type: bool
+    default_value: "false"
   - name: max-frequency
     type: uint64
     default_value: "0"
@@ -11385,6 +12583,244 @@ ttn-lw-cli templates execute:
     type: string
   - name: network-server-kek-label
     type: string
+  - name: pending-mac-state.current-parameters.adr-ack-delay-exponent
+    type: string
+    usage: 'allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192'
+  - name: pending-mac-state.current-parameters.adr-ack-limit-exponent
+    type: string
+    usage: 'allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192'
+  - name: pending-mac-state.current-parameters.adr-data-rate-index
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.current-parameters.adr-nb-trans
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.adr-tx-power-index
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.beacon-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.downlink-dwell-time
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.current-parameters.max-duty-cycle
+    type: string
+    usage: 'allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192'
+  - name: pending-mac-state.current-parameters.max-eirp
+    type: float32
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.ping-slot-data-rate-index-value
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.current-parameters.ping-slot-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.rejoin-count-periodicity
+    type: string
+    usage: 'allowed values: REJOIN_COUNT_1024, REJOIN_COUNT_128, REJOIN_COUNT_131072, REJOIN_COUNT_16, REJOIN_COUNT_16384, REJOIN_COUNT_2048, REJOIN_COUNT_256, REJOIN_COUNT_262144, REJOIN_COUNT_32, REJOIN_COUNT_32768, REJOIN_COUNT_4096, REJOIN_COUNT_512, REJOIN_COUNT_524288, REJOIN_COUNT_64, REJOIN_COUNT_65536, REJOIN_COUNT_8192'
+  - name: pending-mac-state.current-parameters.rejoin-time-periodicity
+    type: string
+    usage: 'allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9'
+  - name: pending-mac-state.current-parameters.rx1-data-rate-offset
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
+  - name: pending-mac-state.current-parameters.rx1-delay
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
+  - name: pending-mac-state.current-parameters.rx2-data-rate-index
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.current-parameters.rx2-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.uplink-dwell-time
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.desired-parameters.adr-ack-delay-exponent
+    type: string
+    usage: 'allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192'
+  - name: pending-mac-state.desired-parameters.adr-ack-limit-exponent
+    type: string
+    usage: 'allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192'
+  - name: pending-mac-state.desired-parameters.adr-data-rate-index
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.desired-parameters.adr-nb-trans
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.adr-tx-power-index
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.beacon-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.downlink-dwell-time
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.desired-parameters.max-duty-cycle
+    type: string
+    usage: 'allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192'
+  - name: pending-mac-state.desired-parameters.max-eirp
+    type: float32
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.ping-slot-data-rate-index-value
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.desired-parameters.ping-slot-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.rejoin-count-periodicity
+    type: string
+    usage: 'allowed values: REJOIN_COUNT_1024, REJOIN_COUNT_128, REJOIN_COUNT_131072, REJOIN_COUNT_16, REJOIN_COUNT_16384, REJOIN_COUNT_2048, REJOIN_COUNT_256, REJOIN_COUNT_262144, REJOIN_COUNT_32, REJOIN_COUNT_32768, REJOIN_COUNT_4096, REJOIN_COUNT_512, REJOIN_COUNT_524288, REJOIN_COUNT_64, REJOIN_COUNT_65536, REJOIN_COUNT_8192'
+  - name: pending-mac-state.desired-parameters.rejoin-time-periodicity
+    type: string
+    usage: 'allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9'
+  - name: pending-mac-state.desired-parameters.rx1-data-rate-offset
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
+  - name: pending-mac-state.desired-parameters.rx1-delay
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
+  - name: pending-mac-state.desired-parameters.rx2-data-rate-index
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.desired-parameters.rx2-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.uplink-dwell-time
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.device-class
+    type: string
+    usage: 'allowed values: CLASS_A, CLASS_B, CLASS_C'
+  - name: pending-mac-state.last-adr-change-f-cnt-up
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.last-confirmed-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: pending-mac-state.last-dev-status-f-cnt-up
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.last-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: pending-mac-state.last-network-initiated-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: pending-mac-state.lorawan-version
+    type: string
+    usage: 'allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.1, 1.1.0, MAC_UNKNOWN, MAC_V1_0, MAC_V1_0_1, MAC_V1_0_2, MAC_V1_0_3, MAC_V1_0_4, MAC_V1_1, unknown'
+  - name: pending-mac-state.pending-join-request.cf-list.ch-masks
+    type: boolSlice
+    default_value: '[]'
+  - name: pending-mac-state.pending-join-request.cf-list.freq
+    type: uintSlice
+    default_value: '[]'
+  - name: pending-mac-state.pending-join-request.cf-list.type
+    type: string
+    usage: 'allowed values: CHANNEL_MASKS, FREQUENCIES'
+  - name: pending-mac-state.pending-join-request.downlink-settings.opt-neg
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.pending-join-request.downlink-settings.rx1-dr-offset
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
+  - name: pending-mac-state.pending-join-request.downlink-settings.rx2-dr
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.pending-join-request.rx-delay
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
+  - name: pending-mac-state.ping-slot-periodicity
+    type: string
+    usage: 'allowed values: PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S'
+  - name: pending-mac-state.queued-join-accept.correlation-ids
+    type: stringSlice
+    default_value: '[]'
+  - name: pending-mac-state.queued-join-accept.dev-addr
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.app-s-key.encrypted-key
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.app-s-key.kek-label
+    type: string
+  - name: pending-mac-state.queued-join-accept.keys.app-s-key.key
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.f-nwk-s-int-key.key
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.nwk-s-enc-key.key
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.s-nwk-s-int-key.key
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.session-key-id
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.net-id
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.payload
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.request.cf-list.ch-masks
+    type: boolSlice
+    default_value: '[]'
+  - name: pending-mac-state.queued-join-accept.request.cf-list.freq
+    type: uintSlice
+    default_value: '[]'
+  - name: pending-mac-state.queued-join-accept.request.cf-list.type
+    type: string
+    usage: 'allowed values: CHANNEL_MASKS, FREQUENCIES'
+  - name: pending-mac-state.queued-join-accept.request.downlink-settings.opt-neg
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.queued-join-accept.request.downlink-settings.rx1-dr-offset
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
+  - name: pending-mac-state.queued-join-accept.request.downlink-settings.rx2-dr
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.queued-join-accept.request.rx-delay
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
+  - name: pending-mac-state.rejected-adr-data-rate-indexes
+    type: stringSlice
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+    default_value: '[]'
+  - name: pending-mac-state.rejected-adr-tx-power-indexes
+    type: uintSlice
+    default_value: '[]'
+  - name: pending-mac-state.rejected-frequencies
+    type: uintSlice
+    default_value: '[]'
+  - name: pending-mac-state.rx-windows-available
+    type: bool
+    default_value: "false"
+  - name: pending-session.dev-addr
+    type: string
+    usage: (hex)
+  - name: pending-session.keys.f-nwk-s-int-key.key
+    type: string
+    usage: (hex)
+  - name: pending-session.keys.nwk-s-enc-key.key
+    type: string
+    usage: (hex)
+  - name: pending-session.keys.nwk-s-key.key
+    type: string
+    usage: (hex)
+    hidden: true
+  - name: pending-session.keys.s-nwk-s-int-key.key
+    type: string
+    usage: (hex)
+  - name: pending-session.keys.session-key-id
+    type: string
+    usage: (hex)
   - name: provisioner-id
     type: string
   - name: resets-join-nonces
@@ -11482,6 +12918,9 @@ ttn-lw-cli templates extend:
     type: stringSlice
     usage: key=value
     default_value: '[]'
+  - name: battery-percentage
+    type: float32
+    default_value: "0"
   - name: claim-authentication-code.valid-from
     type: string
     usage: (YYYY-MM-DDTHH:MM:SSZ)
@@ -11492,6 +12931,9 @@ ttn-lw-cli templates extend:
     type: string
   - name: description
     type: string
+  - name: downlink-margin
+    type: int32
+    default_value: "0"
   - name: formatters.down-formatter
     type: string
     usage: 'allowed values: FORMATTER_CAYENNELPP, FORMATTER_GRPC_SERVICE, FORMATTER_JAVASCRIPT, FORMATTER_NONE, FORMATTER_REPOSITORY'
@@ -11509,6 +12951,9 @@ ttn-lw-cli templates extend:
   - name: last-dev-nonce
     type: uint32
     default_value: "0"
+  - name: last-dev-status-received-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: last-join-nonce
     type: uint32
     default_value: "0"
@@ -11540,31 +12985,31 @@ ttn-lw-cli templates extend:
     default_value: 0s
   - name: mac-settings.desired-adr-ack-delay-exponent
     type: string
-    usage: allowed values ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192
+    usage: 'allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192'
   - name: mac-settings.desired-adr-ack-limit-exponent
     type: string
-    usage: allowed values ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192
+    usage: 'allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192'
   - name: mac-settings.desired-beacon-frequency
     type: uint64
     default_value: "0"
   - name: mac-settings.desired-max-duty-cycle
     type: string
-    usage: allowed values DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192
+    usage: 'allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192'
   - name: mac-settings.desired-ping-slot-data-rate-index
     type: string
-    usage: allowed values DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-settings.desired-ping-slot-frequency
     type: uint64
     default_value: "0"
   - name: mac-settings.desired-rx1-data-rate-offset
-    type: uint32
-    default_value: "0"
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
   - name: mac-settings.desired-rx1-delay
     type: string
-    usage: allowed values RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
   - name: mac-settings.desired-rx2-data-rate-index
     type: string
-    usage: allowed values DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-settings.desired-rx2-frequency
     type: uint64
     default_value: "0"
@@ -11573,28 +13018,28 @@ ttn-lw-cli templates extend:
     default_value: '[]'
   - name: mac-settings.max-duty-cycle
     type: string
-    usage: allowed values DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192
+    usage: 'allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192'
   - name: mac-settings.ping-slot-data-rate-index
     type: string
-    usage: allowed values DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-settings.ping-slot-frequency
     type: uint64
     default_value: "0"
   - name: mac-settings.ping-slot-periodicity
     type: string
-    usage: allowed values PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S
+    usage: 'allowed values: PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S'
   - name: mac-settings.resets-f-cnt
     type: bool
     default_value: "false"
   - name: mac-settings.rx1-data-rate-offset
-    type: uint32
-    default_value: "0"
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
   - name: mac-settings.rx1-delay
     type: string
-    usage: allowed values RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
   - name: mac-settings.rx2-data-rate-index
     type: string
-    usage: allowed values DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-settings.rx2-frequency
     type: uint64
     default_value: "0"
@@ -11613,10 +13058,10 @@ ttn-lw-cli templates extend:
     default_value: "false"
   - name: mac-state.current-parameters.adr-ack-delay-exponent
     type: string
-    usage: allowed values ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192
+    usage: 'allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192'
   - name: mac-state.current-parameters.adr-ack-limit-exponent
     type: string
-    usage: allowed values ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192
+    usage: 'allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192'
   - name: mac-state.current-parameters.adr-data-rate-index
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
@@ -11638,7 +13083,7 @@ ttn-lw-cli templates extend:
   - name: mac-state.current-parameters.max-eirp
     type: float32
     default_value: "0"
-  - name: mac-state.current-parameters.ping-slot-data-rate-index
+  - name: mac-state.current-parameters.ping-slot-data-rate-index-value
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-state.current-parameters.ping-slot-frequency
@@ -11651,8 +13096,8 @@ ttn-lw-cli templates extend:
     type: string
     usage: 'allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9'
   - name: mac-state.current-parameters.rx1-data-rate-offset
-    type: uint32
-    default_value: "0"
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
   - name: mac-state.current-parameters.rx1-delay
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
@@ -11667,10 +13112,10 @@ ttn-lw-cli templates extend:
     default_value: "false"
   - name: mac-state.desired-parameters.adr-ack-delay-exponent
     type: string
-    usage: allowed values ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192
+    usage: 'allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192'
   - name: mac-state.desired-parameters.adr-ack-limit-exponent
     type: string
-    usage: allowed values ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192
+    usage: 'allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192'
   - name: mac-state.desired-parameters.adr-data-rate-index
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
@@ -11692,7 +13137,7 @@ ttn-lw-cli templates extend:
   - name: mac-state.desired-parameters.max-eirp
     type: float32
     default_value: "0"
-  - name: mac-state.desired-parameters.ping-slot-data-rate-index
+  - name: mac-state.desired-parameters.ping-slot-data-rate-index-value
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
   - name: mac-state.desired-parameters.ping-slot-frequency
@@ -11705,8 +13150,8 @@ ttn-lw-cli templates extend:
     type: string
     usage: 'allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9'
   - name: mac-state.desired-parameters.rx1-data-rate-offset
-    type: uint32
-    default_value: "0"
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
   - name: mac-state.desired-parameters.rx1-delay
     type: string
     usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
@@ -11722,12 +13167,67 @@ ttn-lw-cli templates extend:
   - name: mac-state.device-class
     type: string
     usage: 'allowed values: CLASS_A, CLASS_B, CLASS_C'
+  - name: mac-state.last-adr-change-f-cnt-up
+    type: uint32
+    default_value: "0"
+  - name: mac-state.last-confirmed-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: mac-state.last-dev-status-f-cnt-up
+    type: uint32
+    default_value: "0"
+  - name: mac-state.last-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: mac-state.last-network-initiated-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: mac-state.lorawan-version
     type: string
     usage: 'allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.1, 1.1.0, MAC_UNKNOWN, MAC_V1_0, MAC_V1_0_1, MAC_V1_0_2, MAC_V1_0_3, MAC_V1_0_4, MAC_V1_1, unknown'
+  - name: mac-state.pending-application-downlink.class-b-c.absolute-time
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: mac-state.pending-application-downlink.class-b-c.gateways
+    type: stringSlice
+    default_value: '[]'
+  - name: mac-state.pending-application-downlink.confirmed
+    type: bool
+    default_value: "false"
+  - name: mac-state.pending-application-downlink.correlation-ids
+    type: stringSlice
+    default_value: '[]'
+  - name: mac-state.pending-application-downlink.f-cnt
+    type: uint32
+    default_value: "0"
+  - name: mac-state.pending-application-downlink.f-port
+    type: uint32
+    default_value: "0"
+  - name: mac-state.pending-application-downlink.frm-payload
+    type: string
+    usage: (hex)
+  - name: mac-state.pending-application-downlink.priority
+    type: string
+    usage: 'allowed values: ABOVE_NORMAL, BELOW_NORMAL, HIGH, HIGHEST, LOW, LOWEST, NORMAL'
+  - name: mac-state.pending-application-downlink.session-key-id
+    type: string
+    usage: (hex)
   - name: mac-state.ping-slot-periodicity
     type: string
-    usage: allowed values PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S
+    usage: 'allowed values: PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S'
+  - name: mac-state.rejected-adr-data-rate-indexes
+    type: stringSlice
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+    default_value: '[]'
+  - name: mac-state.rejected-adr-tx-power-indexes
+    type: uintSlice
+    default_value: '[]'
+  - name: mac-state.rejected-frequencies
+    type: uintSlice
+    default_value: '[]'
+  - name: mac-state.rx-windows-available
+    type: bool
+    default_value: "false"
   - name: mapping-key
     type: string
   - name: max-frequency
@@ -11748,6 +13248,244 @@ ttn-lw-cli templates extend:
     type: string
   - name: network-server-kek-label
     type: string
+  - name: pending-mac-state.current-parameters.adr-ack-delay-exponent
+    type: string
+    usage: 'allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192'
+  - name: pending-mac-state.current-parameters.adr-ack-limit-exponent
+    type: string
+    usage: 'allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192'
+  - name: pending-mac-state.current-parameters.adr-data-rate-index
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.current-parameters.adr-nb-trans
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.adr-tx-power-index
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.beacon-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.downlink-dwell-time
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.current-parameters.max-duty-cycle
+    type: string
+    usage: 'allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192'
+  - name: pending-mac-state.current-parameters.max-eirp
+    type: float32
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.ping-slot-data-rate-index-value
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.current-parameters.ping-slot-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.rejoin-count-periodicity
+    type: string
+    usage: 'allowed values: REJOIN_COUNT_1024, REJOIN_COUNT_128, REJOIN_COUNT_131072, REJOIN_COUNT_16, REJOIN_COUNT_16384, REJOIN_COUNT_2048, REJOIN_COUNT_256, REJOIN_COUNT_262144, REJOIN_COUNT_32, REJOIN_COUNT_32768, REJOIN_COUNT_4096, REJOIN_COUNT_512, REJOIN_COUNT_524288, REJOIN_COUNT_64, REJOIN_COUNT_65536, REJOIN_COUNT_8192'
+  - name: pending-mac-state.current-parameters.rejoin-time-periodicity
+    type: string
+    usage: 'allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9'
+  - name: pending-mac-state.current-parameters.rx1-data-rate-offset
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
+  - name: pending-mac-state.current-parameters.rx1-delay
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
+  - name: pending-mac-state.current-parameters.rx2-data-rate-index
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.current-parameters.rx2-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.current-parameters.uplink-dwell-time
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.desired-parameters.adr-ack-delay-exponent
+    type: string
+    usage: 'allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192'
+  - name: pending-mac-state.desired-parameters.adr-ack-limit-exponent
+    type: string
+    usage: 'allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192'
+  - name: pending-mac-state.desired-parameters.adr-data-rate-index
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.desired-parameters.adr-nb-trans
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.adr-tx-power-index
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.beacon-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.downlink-dwell-time
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.desired-parameters.max-duty-cycle
+    type: string
+    usage: 'allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192'
+  - name: pending-mac-state.desired-parameters.max-eirp
+    type: float32
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.ping-slot-data-rate-index-value
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.desired-parameters.ping-slot-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.rejoin-count-periodicity
+    type: string
+    usage: 'allowed values: REJOIN_COUNT_1024, REJOIN_COUNT_128, REJOIN_COUNT_131072, REJOIN_COUNT_16, REJOIN_COUNT_16384, REJOIN_COUNT_2048, REJOIN_COUNT_256, REJOIN_COUNT_262144, REJOIN_COUNT_32, REJOIN_COUNT_32768, REJOIN_COUNT_4096, REJOIN_COUNT_512, REJOIN_COUNT_524288, REJOIN_COUNT_64, REJOIN_COUNT_65536, REJOIN_COUNT_8192'
+  - name: pending-mac-state.desired-parameters.rejoin-time-periodicity
+    type: string
+    usage: 'allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9'
+  - name: pending-mac-state.desired-parameters.rx1-data-rate-offset
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
+  - name: pending-mac-state.desired-parameters.rx1-delay
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
+  - name: pending-mac-state.desired-parameters.rx2-data-rate-index
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.desired-parameters.rx2-frequency
+    type: uint64
+    default_value: "0"
+  - name: pending-mac-state.desired-parameters.uplink-dwell-time
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.device-class
+    type: string
+    usage: 'allowed values: CLASS_A, CLASS_B, CLASS_C'
+  - name: pending-mac-state.last-adr-change-f-cnt-up
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.last-confirmed-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: pending-mac-state.last-dev-status-f-cnt-up
+    type: uint32
+    default_value: "0"
+  - name: pending-mac-state.last-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: pending-mac-state.last-network-initiated-downlink-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: pending-mac-state.lorawan-version
+    type: string
+    usage: 'allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.1, 1.1.0, MAC_UNKNOWN, MAC_V1_0, MAC_V1_0_1, MAC_V1_0_2, MAC_V1_0_3, MAC_V1_0_4, MAC_V1_1, unknown'
+  - name: pending-mac-state.pending-join-request.cf-list.ch-masks
+    type: boolSlice
+    default_value: '[]'
+  - name: pending-mac-state.pending-join-request.cf-list.freq
+    type: uintSlice
+    default_value: '[]'
+  - name: pending-mac-state.pending-join-request.cf-list.type
+    type: string
+    usage: 'allowed values: CHANNEL_MASKS, FREQUENCIES'
+  - name: pending-mac-state.pending-join-request.downlink-settings.opt-neg
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.pending-join-request.downlink-settings.rx1-dr-offset
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
+  - name: pending-mac-state.pending-join-request.downlink-settings.rx2-dr
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.pending-join-request.rx-delay
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
+  - name: pending-mac-state.ping-slot-periodicity
+    type: string
+    usage: 'allowed values: PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S'
+  - name: pending-mac-state.queued-join-accept.correlation-ids
+    type: stringSlice
+    default_value: '[]'
+  - name: pending-mac-state.queued-join-accept.dev-addr
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.app-s-key.encrypted-key
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.app-s-key.kek-label
+    type: string
+  - name: pending-mac-state.queued-join-accept.keys.app-s-key.key
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.f-nwk-s-int-key.key
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.nwk-s-enc-key.key
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.s-nwk-s-int-key.key
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.keys.session-key-id
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.net-id
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.payload
+    type: string
+    usage: (hex)
+  - name: pending-mac-state.queued-join-accept.request.cf-list.ch-masks
+    type: boolSlice
+    default_value: '[]'
+  - name: pending-mac-state.queued-join-accept.request.cf-list.freq
+    type: uintSlice
+    default_value: '[]'
+  - name: pending-mac-state.queued-join-accept.request.cf-list.type
+    type: string
+    usage: 'allowed values: CHANNEL_MASKS, FREQUENCIES'
+  - name: pending-mac-state.queued-join-accept.request.downlink-settings.opt-neg
+    type: bool
+    default_value: "false"
+  - name: pending-mac-state.queued-join-accept.request.downlink-settings.rx1-dr-offset
+    type: string
+    usage: 'allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7'
+  - name: pending-mac-state.queued-join-accept.request.downlink-settings.rx2-dr
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+  - name: pending-mac-state.queued-join-accept.request.rx-delay
+    type: string
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9'
+  - name: pending-mac-state.rejected-adr-data-rate-indexes
+    type: stringSlice
+    usage: 'allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9'
+    default_value: '[]'
+  - name: pending-mac-state.rejected-adr-tx-power-indexes
+    type: uintSlice
+    default_value: '[]'
+  - name: pending-mac-state.rejected-frequencies
+    type: uintSlice
+    default_value: '[]'
+  - name: pending-mac-state.rx-windows-available
+    type: bool
+    default_value: "false"
+  - name: pending-session.dev-addr
+    type: string
+    usage: (hex)
+  - name: pending-session.keys.f-nwk-s-int-key.key
+    type: string
+    usage: (hex)
+  - name: pending-session.keys.nwk-s-enc-key.key
+    type: string
+    usage: (hex)
+  - name: pending-session.keys.nwk-s-key.key
+    type: string
+    usage: (hex)
+    hidden: true
+  - name: pending-session.keys.s-nwk-s-int-key.key
+    type: string
+    usage: (hex)
+  - name: pending-session.keys.session-key-id
+    type: string
+    usage: (hex)
   - name: provisioner-id
     type: string
   - name: resets-join-nonces
@@ -12001,6 +13739,9 @@ ttn-lw-cli tenants create:
     default_value: '[]'
   - name: configuration.default-cluster.ui.branding-base-url
     type: string
+  - name: configuration.pb.listed
+    type: bool
+    default_value: "false"
   - name: description
     type: string
   - name: initial-user
@@ -12011,6 +13752,9 @@ ttn-lw-cli tenants create:
     type: bool
     default_value: "false"
   - name: initial-user.created-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: initial-user.deleted-at
     type: string
     usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: initial-user.description
@@ -12038,6 +13782,8 @@ ttn-lw-cli tenants create:
     type: string
     usage: 'allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED'
     default_value: STATE_APPROVED
+  - name: initial-user.state-description
+    type: string
   - name: initial-user.temporary-password
     type: string
   - name: initial-user.temporary-password-created-at
@@ -12072,6 +13818,8 @@ ttn-lw-cli tenants create:
   - name: state
     type: string
     usage: 'allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED'
+  - name: state-description
+    type: string
   - name: tenant-id
     type: string
 ttn-lw-cli tenants delete:
@@ -12288,6 +14036,14 @@ ttn-lw-cli tenants get:
     type: bool
     usage: select the configuration.default_cluster.ui.branding_base_url field
     default_value: "false"
+  - name: configuration.pb
+    type: bool
+    usage: select the configuration.pb field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.pb.listed
+    type: bool
+    usage: select the configuration.pb.listed field
+    default_value: "false"
   - name: contact-info
     type: bool
     usage: select the contact_info field
@@ -12327,6 +14083,10 @@ ttn-lw-cli tenants get:
   - name: state
     type: bool
     usage: select the state field
+    default_value: "false"
+  - name: state-description
+    type: bool
+    usage: select the state_description field
     default_value: "false"
   - name: tenant-id
     type: string
@@ -12590,6 +14350,14 @@ ttn-lw-cli tenants list:
     type: bool
     usage: select the configuration.default_cluster.ui.branding_base_url field
     default_value: "false"
+  - name: configuration.pb
+    type: bool
+    usage: select the configuration.pb field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.pb.listed
+    type: bool
+    usage: select the configuration.pb.listed field
+    default_value: "false"
   - name: contact-info
     type: bool
     usage: select the contact_info field
@@ -12641,6 +14409,10 @@ ttn-lw-cli tenants list:
     type: bool
     usage: select the state field
     default_value: "false"
+  - name: state-description
+    type: bool
+    usage: select the state_description field
+    default_value: "false"
 ttn-lw-cli tenants update:
   path: ttn-lw-cli tenants update
   parent_path: ttn-lw-cli tenants
@@ -12664,6 +14436,7 @@ ttn-lw-cli tenants update:
     type: bool
     usage: use the Stripe billing provider
     default_value: "false"
+    hidden: true
   - name: billing.provider.stripe.customer-id
     type: string
   - name: billing.provider.stripe.plan-id
@@ -12740,6 +14513,9 @@ ttn-lw-cli tenants update:
     default_value: '[]'
   - name: configuration.default-cluster.ui.branding-base-url
     type: string
+  - name: configuration.pb.listed
+    type: bool
+    default_value: "false"
   - name: description
     type: string
   - name: max-applications
@@ -12765,6 +14541,8 @@ ttn-lw-cli tenants update:
   - name: state
     type: string
     usage: 'allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED'
+  - name: state-description
+    type: string
   - name: tenant-id
     type: string
   - name: unset
@@ -13352,6 +15130,9 @@ ttn-lw-cli users create:
     type: stringSlice
     usage: key=value
     default_value: '[]'
+  - name: deleted-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: description
     type: string
   - name: invitation-token
@@ -13375,11 +15156,22 @@ ttn-lw-cli users create:
     type: string
     usage: 'allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED'
     default_value: STATE_APPROVED
+  - name: state-description
+    type: string
   - name: temporary-password
     type: string
   - name: temporary-password-expires-at
     type: string
     usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: user-id
+    type: string
+ttn-lw-cli users create-login-token:
+  path: ttn-lw-cli users create-login-token
+  parent_path: ttn-lw-cli users
+  name: create-login-token
+  use: '[user-id]'
+  short: Create a user login token
+  command_flags:
   - name: user-id
     type: string
 ttn-lw-cli users delete:
@@ -13431,6 +15223,10 @@ ttn-lw-cli users get:
     type: bool
     usage: select the contact_info field
     default_value: "false"
+  - name: deleted-at
+    type: bool
+    usage: select the deleted_at field
+    default_value: "false"
   - name: description
     type: bool
     usage: select the description field
@@ -13466,6 +15262,10 @@ ttn-lw-cli users get:
   - name: state
     type: bool
     usage: select the state field
+    default_value: "false"
+  - name: state-description
+    type: bool
+    usage: select the state_description field
     default_value: "false"
   - name: temporary-password
     type: bool
@@ -13544,6 +15344,14 @@ ttn-lw-cli users list:
     type: bool
     usage: select the contact_info field
     default_value: "false"
+  - name: deleted
+    type: bool
+    usage: return recently deleted
+    default_value: "false"
+  - name: deleted-at
+    type: bool
+    usage: select the deleted_at field
+    default_value: "false"
   - name: description
     type: bool
     usage: select the description field
@@ -13590,6 +15398,10 @@ ttn-lw-cli users list:
   - name: state
     type: bool
     usage: select the state field
+    default_value: "false"
+  - name: state-description
+    type: bool
+    usage: select the state_description field
     default_value: "false"
   - name: temporary-password
     type: bool
@@ -13707,6 +15519,15 @@ ttn-lw-cli users purge:
     default_value: "false"
   - name: user-id
     type: string
+ttn-lw-cli users restore:
+  path: ttn-lw-cli users restore
+  parent_path: ttn-lw-cli users
+  name: restore
+  use: '[user-id]'
+  short: Restore a user
+  command_flags:
+  - name: user-id
+    type: string
 ttn-lw-cli users rights:
   path: ttn-lw-cli users rights
   parent_path: ttn-lw-cli users
@@ -13741,6 +15562,14 @@ ttn-lw-cli users search:
   - name: contact-info
     type: bool
     usage: select the contact_info field
+    default_value: "false"
+  - name: deleted
+    type: bool
+    usage: return recently deleted
+    default_value: "false"
+  - name: deleted-at
+    type: bool
+    usage: select the deleted_at field
     default_value: "false"
   - name: description
     type: bool
@@ -13792,8 +15621,12 @@ ttn-lw-cli users search:
     usage: select the require_password_update field
     default_value: "false"
   - name: state
+    type: stringSlice
+    usage: 'allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED'
+    default_value: '[]'
+  - name: state-description
     type: bool
-    usage: select the state field
+    usage: select the state_description field
     default_value: "false"
   - name: temporary-password
     type: bool
@@ -13823,6 +15656,9 @@ ttn-lw-cli users set:
     type: stringSlice
     usage: key=value
     default_value: '[]'
+  - name: deleted-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: description
     type: string
   - name: name
@@ -13844,6 +15680,8 @@ ttn-lw-cli users set:
     type: string
     usage: 'allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED'
     default_value: STATE_APPROVED
+  - name: state-description
+    type: string
   - name: temporary-password
     type: string
   - name: temporary-password-expires-at
