@@ -194,33 +194,33 @@ debug: false
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">rate-limiting</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="k">profiles</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>HTTP<span class="w"> </span>servers<span class="w">
-</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">30</span><span class="w">
+</span><span class="w">      </span><span class="k">max-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">30</span><span class="w">
 </span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
 </span><span class="w">        </span>- http<span class="w">
 </span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Application<span class="w"> </span>downlink<span class="w"> </span>traffic<span class="w">
-</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="w">      </span><span class="k">max-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
 </span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
 </span><span class="w">        </span>- as<span class="p">:</span>down<span class="p">:</span>web<span class="w">
 </span><span class="w">        </span>- as<span class="p">:</span>down<span class="p">:</span>mqtt<span class="w">
 </span><span class="w">        </span>- grpc<span class="p">:</span>method<span class="p">:</span>/ttn.v3.lorawan.v3.AppAs/DownlinkQueuePush<span class="w">
 </span><span class="w">        </span>- grpc<span class="p">:</span>method<span class="p">:</span>/ttn.v3.lorawan.v3.AppAs/DownlinkQueueReplace<span class="w">
 </span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Gateway<span class="w"> </span>connections<span class="w">
-</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">      </span><span class="k">max-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
 </span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
 </span><span class="w">        </span>- gs<span class="p">:</span>accept<span class="p">:</span>mqtt<span class="w">
 </span><span class="w">        </span>- gs<span class="p">:</span>accept<span class="p">:</span>ws<span class="w">
 </span><span class="w">        </span>- grpc<span class="p">:</span>stream<span class="p">:</span>accept<span class="p">:</span>/ttn.lorawan.v3.GtwGs/LinkGateway<span class="w">
 </span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>gRPC<span class="w"> </span>API<span class="w">
-</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">60</span><span class="w">
+</span><span class="w">      </span><span class="k">max-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">60</span><span class="w">
 </span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
 </span><span class="w">        </span>- grpc<span class="p">:</span>method<span class="w">
 </span><span class="w">        </span>- grpc<span class="p">:</span>stream<span class="p">:</span>accept<span class="w">
 </span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Override<span class="w"> </span>rate<span class="w"> </span>for<span class="w"> </span>uplink<span class="w"> </span>simulation<span class="w">
-</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">      </span><span class="k">max-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
 </span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
 </span><span class="w">        </span>- grpc<span class="p">:</span>method<span class="p">:</span>/ttn.lorawan.v3.AppAs/SimulateUplink<span class="w">
 </span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Gateway<span class="w"> </span>uplink<span class="w"> </span>traffic<span class="w">
-</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">1000</span><span class="w">
+</span><span class="w">      </span><span class="k">max-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">1000</span><span class="w">
 </span><span class="w">      </span><span class="k">max-burst</span><span class="p">:</span><span class="w"> </span><span class="m">1500</span><span class="w">
 </span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
 </span><span class="w">        </span>- gs<span class="p">:</span>up<span class="w">
@@ -468,13 +468,13 @@ debug: false
         <td><b>Description</b></td><td>Limit number of HTTP requests to the BasicStation CUPS by remote IP and request URL.</td>
       </tr>
       <tr>
-        <td><b>Classes</b></td><td><code>basicstation:cups</code> <code>http</code></td>
+        <td><b>Classes</b></td><td><code>http:gcs:cups</code> <code>http</code></td>
       </tr>
       <tr>
-        <td><b>Key</b></td><td><code>basicstation:cups:ip:{{ RemoteIP }}:url:{{ URL }}</code></td>
+        <td><b>Key</b></td><td><code>http:gcs:cups:ip:{{ RemoteIP }}:url:{{ URL }}</code></td>
       </tr>
       <tr>
-        <td><b>Example</b></td><td><code>basicstation:cups:ip:10.10.10.10:url:/update-info</code></td>
+        <td><b>Example</b></td><td><code>http:gcs:cups:ip:10.10.10.10:url:/update-info</code></td>
       </tr>
     </tbody>
   </table>
@@ -572,33 +572,33 @@ debug: false
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">rate-limiting</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="k">profiles</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>HTTP<span class="w"> </span>servers<span class="w">
-</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">30</span><span class="w">
+</span><span class="w">      </span><span class="k">max-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">30</span><span class="w">
 </span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
 </span><span class="w">        </span>- http<span class="w">
 </span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Application<span class="w"> </span>downlink<span class="w"> </span>traffic<span class="w">
-</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span><span class="w">      </span><span class="k">max-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
 </span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
 </span><span class="w">        </span>- as<span class="p">:</span>down<span class="p">:</span>web<span class="w">
 </span><span class="w">        </span>- as<span class="p">:</span>down<span class="p">:</span>mqtt<span class="w">
 </span><span class="w">        </span>- grpc<span class="p">:</span>method<span class="p">:</span>/ttn.v3.lorawan.v3.AppAs/DownlinkQueuePush<span class="w">
 </span><span class="w">        </span>- grpc<span class="p">:</span>method<span class="p">:</span>/ttn.v3.lorawan.v3.AppAs/DownlinkQueueReplace<span class="w">
 </span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Gateway<span class="w"> </span>connections<span class="w">
-</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">      </span><span class="k">max-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
 </span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
 </span><span class="w">        </span>- gs<span class="p">:</span>accept<span class="p">:</span>mqtt<span class="w">
 </span><span class="w">        </span>- gs<span class="p">:</span>accept<span class="p">:</span>ws<span class="w">
 </span><span class="w">        </span>- grpc<span class="p">:</span>stream<span class="p">:</span>accept<span class="p">:</span>/ttn.lorawan.v3.GtwGs/LinkGateway<span class="w">
 </span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>gRPC<span class="w"> </span>API<span class="w">
-</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">60</span><span class="w">
+</span><span class="w">      </span><span class="k">max-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">60</span><span class="w">
 </span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
 </span><span class="w">        </span>- grpc<span class="p">:</span>method<span class="w">
 </span><span class="w">        </span>- grpc<span class="p">:</span>stream<span class="p">:</span>accept<span class="w">
 </span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Override<span class="w"> </span>rate<span class="w"> </span>for<span class="w"> </span>uplink<span class="w"> </span>simulation<span class="w">
-</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">      </span><span class="k">max-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
 </span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
 </span><span class="w">        </span>- grpc<span class="p">:</span>method<span class="p">:</span>/ttn.lorawan.v3.AppAs/SimulateUplink<span class="w">
 </span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Gateway<span class="w"> </span>uplink<span class="w"> </span>traffic<span class="w">
-</span><span class="w">      </span><span class="k">max-rate-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">1000</span><span class="w">
+</span><span class="w">      </span><span class="k">max-per-min</span><span class="p">:</span><span class="w"> </span><span class="m">1000</span><span class="w">
 </span><span class="w">      </span><span class="k">max-burst</span><span class="p">:</span><span class="w"> </span><span class="m">1500</span><span class="w">
 </span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
 </span><span class="w">        </span>- gs<span class="p">:</span>up<span class="w">
@@ -674,10 +674,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Aggelos Kolaitis on 29 Mar 2021.
+  Last changed by Aggelos Kolaitis on 13 Apr 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3bf6bd826751d00633e500cf909418efa67cecc5">
-      doc: Rate limiting
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3452a3f48e78066a8117a36f32bcbd535d2c54f8">
+      doc: Quickfix for rate limiting keys
     </a>
 </p>
 
