@@ -150,12 +150,6 @@ Migrate the Network Server Database.
 $ docker-compose run --rm stack ns-db migrate
 ```
 
-Update the device repository indices.
-
-```bash
-$ docker-compose run --rm stack dr-db migrate
-```
-
 Migrate the Device Claiming Server Database.
 
 ```bash
@@ -181,12 +175,6 @@ Migrate the Network Server Database.
 
 ```bash
 $ docker-compose run --rm stack ns-db migrate
-```
-
-Update the device repository indices.
-
-```bash
-$ docker-compose run --rm stack dr-db migrate
 ```
 {{< /tabs/tab >}}
 {{< /tabs/container >}}
