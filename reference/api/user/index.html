@@ -33,7 +33,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.11</p>
+        <p class="navbar-item is-size-7">v3.12</p>
       </a>
       <span class="navbar-burger burger" data-target="topMenu">
         <span></span>
@@ -538,7 +538,7 @@ This is only available to admin users.
         Request type
       </th>
       <td>
-        <a href="#message:SearchEntitiesRequest"><code>SearchEntitiesRequest</code></a>
+        <a href="#message:SearchUsersRequest"><code>SearchUsersRequest</code></a>
         
       </td>
     </tr>
@@ -1986,6 +1986,35 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
   </tbody>
 </table>
 
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>deleted</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>bool</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Only return recently deleted users.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
 
 <details><summary>Show object example</summary>
 <pre><code>{
@@ -1993,6 +2022,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
   "order": "",
   "limit": 0,
   "page": 0,
+  "deleted": false,
 }</code></pre>
 </details>
 
@@ -2034,8 +2064,8 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
 }</code></pre>
 </details>
 
-<h3 id="message:SearchEntitiesRequest">Message <code>SearchEntitiesRequest</code></h3>
-<p>This message is used for finding entities in the EntityRegistrySearch service.</p>
+<h3 id="message:SearchUsersRequest">Message <code>SearchUsersRequest</code></h3>
+<p>This message is used for finding users in the EntityRegistrySearch service.</p>
 <table>
   <tbody>
     <tr>
@@ -2058,7 +2088,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
         Description
       </th>
       <td>
-          <p>Find entities where the ID contains this substring.</p>
+          <p>Find users where the ID contains this substring.</p>
           <p><code>max_len</code>: <code>50</code></p>
       </td>
     </tr>
@@ -2088,7 +2118,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
         Description
       </th>
       <td>
-          <p>Find entities where the name contains this substring.</p>
+          <p>Find users where the name contains this substring.</p>
           <p><code>max_len</code>: <code>50</code></p>
       </td>
     </tr>
@@ -2118,7 +2148,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
         Description
       </th>
       <td>
-          <p>Find entities where the description contains this substring.</p>
+          <p>Find users where the description contains this substring.</p>
           <p><code>max_len</code>: <code>50</code></p>
       </td>
     </tr>
@@ -2148,12 +2178,44 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
         Description
       </th>
       <td>
-          <p>Find entities where the given attributes contain these substrings.</p>
+          <p>Find users where the given attributes contain these substrings.</p>
           <p><code>max_pairs</code>: <code>10</code></p>
             <p><code>max_len</code> (key): <code>36</code></p>
             <p><code>pattern</code> (key): <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
         
             <p><code>max_len</code> (value): <code>50</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>state</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>repeated <a href="#enum:State"><code>State</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Find users where the state is any of these states.</p>
+          <p><code>unique</code></p>
+            <p><code>defined_only</code></p>
         
       </td>
     </tr>
@@ -2270,6 +2332,35 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
   </tbody>
 </table>
 
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>deleted</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>bool</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Only return recently deleted users.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
 
 <details><summary>Show object example</summary>
 <pre><code>{
@@ -2277,10 +2368,12 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
   "name_contains": "",
   "description_contains": "",
   "attributes_contain": {},
+  "state": [],
   "field_mask": {},
   "order": "",
   "limit": 0,
   "page": 0,
+  "deleted": false,
 }</code></pre>
 </details>
 
@@ -2514,6 +2607,26 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
       </th>
       <td>
         <code>updated_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>google.protobuf.Timestamp</code></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>deleted_at</code>
       </td>
     </tr>
     <tr>
@@ -2820,6 +2933,38 @@ This field can only be modified by admins.</p>
         Field
       </th>
       <td>
+        <code>state_description</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>string</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>A description for the state field.
+This field can only be modified by admins, and should typically only be updated
+when also updating <code>state</code>.</p>
+          <p><code>max_len</code>: <code>128</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
         <code>admin</code>
       </td>
     </tr>
@@ -2941,6 +3086,7 @@ See the CreateTemporaryPassword method of the UserRegistry service for more info
   "ids": {},
   "created_at": "0001-01-01T00:00:00Z",
   "updated_at": "0001-01-01T00:00:00Z",
+  "deleted_at": "0001-01-01T00:00:00Z",
   "name": "",
   "description": "",
   "attributes": {},
@@ -2951,6 +3097,7 @@ See the CreateTemporaryPassword method of the UserRegistry service for more info
   "password_updated_at": "0001-01-01T00:00:00Z",
   "require_password_update": false,
   "state": "STATE_REQUESTED",
+  "state_description": "",
   "admin": false,
   "temporary_password": "",
   "temporary_password_created_at": "0001-01-01T00:00:00Z",
@@ -3205,10 +3352,10 @@ See the CreateTemporaryPassword method of the UserRegistry service for more info
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Roman Volosatovs on 18 Aug 2020.
+  Last changed by Nejra on 06 Apr 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/0f5847691a26afe138623b7e1b182694016100da">
-      all: Fix EditorConfig issues
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/280f690a5c9828f8c665daed362fd15ae00691d3">
+      doc: Update for v3.12.0 release
     </a>
 </p>
 

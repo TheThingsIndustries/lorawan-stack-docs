@@ -33,7 +33,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.11</p>
+        <p class="navbar-item is-size-7">v3.12</p>
       </a>
       <span class="navbar-burger burger" data-target="topMenu">
         <span></span>
@@ -543,7 +543,7 @@ Non-admin users will only match organizations that they have rights on.
         Request type
       </th>
       <td>
-        <a href="#message:SearchEntitiesRequest"><code>SearchEntitiesRequest</code></a>
+        <a href="#message:SearchOrganizationsRequest"><code>SearchOrganizationsRequest</code></a>
         
       </td>
     </tr>
@@ -2057,6 +2057,35 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
   </tbody>
 </table>
 
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>deleted</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>bool</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Only return recently deleted organizations.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
 
 <details><summary>Show object example</summary>
 <pre><code>{
@@ -2065,6 +2094,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
   "order": "",
   "limit": 0,
   "page": 0,
+  "deleted": false,
 }</code></pre>
 </details>
 
@@ -2126,6 +2156,26 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
       </th>
       <td>
         <code>updated_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>google.protobuf.Timestamp</code></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>deleted_at</code>
       </td>
     </tr>
     <tr>
@@ -2268,6 +2318,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
   "ids": {},
   "created_at": "0001-01-01T00:00:00Z",
   "updated_at": "0001-01-01T00:00:00Z",
+  "deleted_at": "0001-01-01T00:00:00Z",
   "name": "",
   "description": "",
   "attributes": {},
@@ -2451,8 +2502,8 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
 }</code></pre>
 </details>
 
-<h3 id="message:SearchEntitiesRequest">Message <code>SearchEntitiesRequest</code></h3>
-<p>This message is used for finding entities in the EntityRegistrySearch service.</p>
+<h3 id="message:SearchOrganizationsRequest">Message <code>SearchOrganizationsRequest</code></h3>
+<p>This message is used for finding organizations in the EntityRegistrySearch service.</p>
 <table>
   <tbody>
     <tr>
@@ -2475,7 +2526,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
         Description
       </th>
       <td>
-          <p>Find entities where the ID contains this substring.</p>
+          <p>Find organizations where the ID contains this substring.</p>
           <p><code>max_len</code>: <code>50</code></p>
       </td>
     </tr>
@@ -2505,7 +2556,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
         Description
       </th>
       <td>
-          <p>Find entities where the name contains this substring.</p>
+          <p>Find organizations where the name contains this substring.</p>
           <p><code>max_len</code>: <code>50</code></p>
       </td>
     </tr>
@@ -2535,7 +2586,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
         Description
       </th>
       <td>
-          <p>Find entities where the description contains this substring.</p>
+          <p>Find organizations where the description contains this substring.</p>
           <p><code>max_len</code>: <code>50</code></p>
       </td>
     </tr>
@@ -2565,7 +2616,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
         Description
       </th>
       <td>
-          <p>Find entities where the given attributes contain these substrings.</p>
+          <p>Find organizations where the given attributes contain these substrings.</p>
           <p><code>max_pairs</code>: <code>10</code></p>
             <p><code>max_len</code> (key): <code>36</code></p>
             <p><code>pattern</code> (key): <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
@@ -2687,6 +2738,35 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
   </tbody>
 </table>
 
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>deleted</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>bool</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Only return recently deleted organizations.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
 
 <details><summary>Show object example</summary>
 <pre><code>{
@@ -2698,6 +2778,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
   "order": "",
   "limit": 0,
   "page": 0,
+  "deleted": false,
 }</code></pre>
 </details>
 
@@ -3040,10 +3121,10 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Hylke Visser on 02 Jul 2020.
+  Last changed by Nejra on 06 Apr 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/d23f2518b8c7bfa4609ad7a9aae801ee9abf02fd">
-      doc: Add reference for organization and user APIs
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/280f690a5c9828f8c665daed362fd15ae00691d3">
+      doc: Update for v3.12.0 release
     </a>
 </p>
 

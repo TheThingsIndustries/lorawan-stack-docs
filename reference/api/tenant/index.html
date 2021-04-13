@@ -33,7 +33,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.11</p>
+        <p class="navbar-item is-size-7">v3.12</p>
       </a>
       <span class="navbar-burger burger" data-target="topMenu">
         <span></span>
@@ -913,8 +913,41 @@ debug: false
       </th>
       <td>
           <p>The reviewing state of the tenant.
-This field can only be modified by tenant admins.</p>
+This field can only be modified by tenant admins.
+If state_description is not updated when updating state, state_description is cleared.</p>
           <p><code>defined_only</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>state_description</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>string</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>A description for the state field.
+This field can only be modified by admins, and should typically only be updated
+when also updating <code>state</code>.</p>
+          <p><code>max_len</code>: <code>128</code></p>
       </td>
     </tr>
     
@@ -1018,6 +1051,7 @@ This field can only be modified by tenant admins.</p>
   "max_organizations": null,
   "max_users": null,
   "state": "STATE_REQUESTED",
+  "state_description": "",
   "capabilities": {},
   "configuration": {},
   "billing": {},
