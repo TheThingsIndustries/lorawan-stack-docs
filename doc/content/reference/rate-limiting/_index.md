@@ -20,33 +20,33 @@ Enable rate limiting by adding the following configuration to your `ttn-lw-stack
 rate-limiting:
   profiles:
     - name: HTTP servers
-      max-rate-per-min: 30
+      max-per-min: 30
       associations:
         - http
     - name: Application downlink traffic
-      max-rate-per-min: 10
+      max-per-min: 10
       associations:
         - as:down:web
         - as:down:mqtt
         - grpc:method:/ttn.v3.lorawan.v3.AppAs/DownlinkQueuePush
         - grpc:method:/ttn.v3.lorawan.v3.AppAs/DownlinkQueueReplace
     - name: Gateway connections
-      max-rate-per-min: 5
+      max-per-min: 5
       associations:
         - gs:accept:mqtt
         - gs:accept:ws
         - grpc:stream:accept:/ttn.lorawan.v3.GtwGs/LinkGateway
     - name: gRPC API
-      max-rate-per-min: 60
+      max-per-min: 60
       associations:
         - grpc:method
         - grpc:stream:accept
     - name: Override rate for uplink simulation
-      max-rate-per-min: 5
+      max-per-min: 5
       associations:
         - grpc:method:/ttn.lorawan.v3.AppAs/SimulateUplink
     - name: Gateway uplink traffic
-      max-rate-per-min: 1000
+      max-per-min: 1000
       max-burst: 1500
       associations:
         - gs:up
@@ -94,33 +94,33 @@ Enable rate limiting by adding the following configuration to your `ttn-lw-stack
 rate-limiting:
   profiles:
     - name: HTTP servers
-      max-rate-per-min: 30
+      max-per-min: 30
       associations:
         - http
     - name: Application downlink traffic
-      max-rate-per-min: 10
+      max-per-min: 10
       associations:
         - as:down:web
         - as:down:mqtt
         - grpc:method:/ttn.v3.lorawan.v3.AppAs/DownlinkQueuePush
         - grpc:method:/ttn.v3.lorawan.v3.AppAs/DownlinkQueueReplace
     - name: Gateway connections
-      max-rate-per-min: 5
+      max-per-min: 5
       associations:
         - gs:accept:mqtt
         - gs:accept:ws
         - grpc:stream:accept:/ttn.lorawan.v3.GtwGs/LinkGateway
     - name: gRPC API
-      max-rate-per-min: 60
+      max-per-min: 60
       associations:
         - grpc:method
         - grpc:stream:accept
     - name: Override rate for uplink simulation
-      max-rate-per-min: 5
+      max-per-min: 5
       associations:
         - grpc:method:/ttn.lorawan.v3.AppAs/SimulateUplink
     - name: Gateway uplink traffic
-      max-rate-per-min: 1000
+      max-per-min: 1000
       max-burst: 1500
       associations:
         - gs:up
