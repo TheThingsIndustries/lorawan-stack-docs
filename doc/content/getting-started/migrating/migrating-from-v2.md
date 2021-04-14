@@ -40,6 +40,8 @@ End devices and applications can easily be migrated from {{% ttnv2 %}} to {{% tt
 ### Installation
 Binaries are available on [GitHub](https://github.com/TheThingsNetwork/lorawan-stack-migrate/releases). Download the latest version asset according to your OS.
 
+{{% warning %}} Make sure to use `ttn-lw-migrate` version **0.5.0** or newer, and {{% tts %}} version **3.12.0** or newer. {{</ warning >}}
+
 ### Configuration
 
 Configure the environment with the following variables modified according to your setup:
