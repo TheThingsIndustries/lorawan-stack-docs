@@ -8,4 +8,4 @@ The Pub/Sub integration allows the Application Server to publish and subscribe t
 
 <!--more-->
 
-{{< warning >}} This feature will be removed in January 5, 2021 for Cloud deployments! {{</ warning >}}
+{{< warning >}} This feature has been removed for Cloud deployments! {{</ warning >}}
