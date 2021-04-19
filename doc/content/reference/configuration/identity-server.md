@@ -127,6 +127,8 @@ There are several options to customize the requirements for user passwords.
 - `is.user-registration.password-requirements.min-length`: Minimum password length
 - `is.user-registration.password-requirements.min-special`: Minimum number of special characters
 - `is.user-registration.password-requirements.min-uppercase`: Minimum number of uppercase letters
+- `is.user-registration.password-requirements.reject-common`: Reject common passwords {{< new-in-version "3.12.1" >}}
+- `is.user-registration.password-requirements.reject-user-id`: Reject passwords that contain user ID {{< new-in-version "3.12.1" >}}
 
 ## User Rights Options
 
