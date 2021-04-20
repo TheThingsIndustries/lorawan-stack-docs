@@ -166,3 +166,110 @@ table.fixed td { overflow: auto; }
 .card {
   overflow: visible;
 }
+
+.whats-new {
+  position: relative;
+  max-height:25em;
+  overflow: hidden;
+  background-color: $blue-bg;
+  border-radius: .5rem;
+  padding: 1.5rem 2rem;
+  &:before {
+    content: "";
+    position:absolute;
+    top: 3rem;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgb(229,236,255);
+    background: linear-gradient(90deg, rgba(229,236,255,0) 72%, rgba(229,236,255,1) 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+  &:after {
+    content: "";
+    height: 6rem;
+    @media (max-width: 620px) {
+      height: 10rem;
+    }
+    display: block;
+  }
+  .whats-new-header {
+    display: flex;
+    justify-content: space-between;
+    @media (max-width: 620px) {
+      h2 {
+        margin-bottom: 0.2rem;
+      }
+      & > a {
+        margin-bottom: 1rem;
+      }
+      flex-direction: column;
+    }
+    & > a {
+      font-size: .8rem;
+    }
+  }
+  .whats-new-content{
+    position: relative;
+    & > a {
+      display: block;
+      color: inherit;
+    }
+  }
+  .whats-new-items {
+    position: absolute;
+    display: flex;
+    height: 6rem;
+    @media (max-width: 620px) {
+      height: 10rem;
+    }
+    ul {
+      display: flex;
+      margin-right: 1rem;
+    }
+  }
+  h3 {
+    display: none;
+  }
+  h3#fixed + ul li:before {
+    content: "Fixed: "
+  }
+  h3#deprecated + ul li:before {
+    content: "Deprecated: "
+  }
+  h3#removed + ul li:before {
+    content: "Removed: "
+  }
+  li {
+    display: block;
+    list-style: none;
+    padding: .5rem;
+    border-radius: $radius;
+    background-color: white;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-shadow: $card-shadow;
+    width: 24rem;
+    height: 6rem;
+    transition: transform 100ms ease-out;
+    @media (max-width: 620px) {
+      width: 12rem;
+      height: 10rem;
+    }
+    &:not(:last-child) {
+      margin-right: 1rem;
+    }
+    &:hover {
+      transform: scale(1.02);
+    }
+    ul {
+      display: none;
+    }
+    @media (min-width: 621px) {
+      code {
+        white-space: nowrap;
+      }
+    }
+  }
+}

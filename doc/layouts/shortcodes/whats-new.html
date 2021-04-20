@@ -1,0 +1,15 @@
+{{ range first 1 (where .Site.RegularPages "Section" "whats-new").ByDate.Reverse }}
+<section class="is-fullwidth whats-new">
+  <div class="whats-new-content">
+    <div class="whats-new-header">
+      <h2 class="title is-size-5"><a href={{ .Permalink }}>What's new in V{{ .Title }}</a></h2>
+      <a href="{{ ref . "whats-new" }}">See all release notes⟶</a>
+    </div>
+    <a href="{{ .Permalink }}">
+      <div class="whats-new-items">
+        {{ .Content | markdownify}}
+      </div>
+    </a>
+  </div>
+</section>
+{{ end }}
