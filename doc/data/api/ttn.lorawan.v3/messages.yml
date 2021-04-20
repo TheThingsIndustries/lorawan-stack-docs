@@ -1329,6 +1329,9 @@ ApplicationWebhookTemplateField:
     rules:
       max_len: 100
     default: ""
+  - name: optional
+    type: bool
+    default: false
 ApplicationWebhookTemplateIdentifiers:
   name: ApplicationWebhookTemplateIdentifiers
   fields:
@@ -2029,6 +2032,9 @@ CreateApplicationAPIKeyRequest:
       max_len: 50
     default: ""
   - name: rights
+    rules:
+      min_items: 1
+      unique: true
     repeated:
       enum:
         name: Right
@@ -2091,6 +2097,9 @@ CreateGatewayAPIKeyRequest:
       max_len: 50
     default: ""
   - name: rights
+    rules:
+      min_items: 1
+      unique: true
     repeated:
       enum:
         name: Right
@@ -2152,6 +2161,9 @@ CreateOrganizationAPIKeyRequest:
       max_len: 50
     default: ""
   - name: rights
+    rules:
+      min_items: 1
+      unique: true
     repeated:
       enum:
         name: Right
@@ -2201,6 +2213,9 @@ CreateUserAPIKeyRequest:
       max_len: 50
     default: ""
   - name: rights
+    rules:
+      min_items: 1
+      unique: true
     repeated:
       enum:
         name: Right
@@ -6955,6 +6970,7 @@ MACParameters.Channel:
     comment: Uplink frequency of the channel (Hz).
     type: uint64
     rules:
+      lte: 0
       gte: 100000
     default: 0
   - name: downlink_frequency
@@ -7987,6 +8003,10 @@ PacketBrokerNetwork:
       message:
         name: ContactInfo
     default: []
+  - name: listed
+    comment: Whether the network is listed so it can be viewed by other networks.
+    type: bool
+    default: false
 PacketBrokerNetworkIdentifier:
   name: PacketBrokerNetworkIdentifier
   fields:
