@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Console | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/console/" />
+  <title>Addresses | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/ttn/addresses/" />
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.204300283223df27f32bfebd660183246f754276b7c9a859eb8ed03098cb05bb.css" integrity="sha256-IEMAKDIj3yfzK/69ZgGDJG91Qna3yahZ647QMJjLBbs=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Console">
+  <meta itemprop="name" content="Addresses">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Console">
+  <meta property="og:title" content="Addresses">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/console/">
-  <meta name="twitter:title" content="Console" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/ttn/addresses/">
+  <meta name="twitter:title" content="Addresses" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -99,21 +99,7 @@ debug: false
     <a href="https://www.thethingsindustries.com/docs/getting-started/cli/" class="">Command-line Interface</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/console/" class="is-active">Console</a>
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/console/login/" class="">Login</a>
-    
-  </li>
-
-</ul>
-
-
-    
+    <a href="https://www.thethingsindustries.com/docs/getting-started/console/" class="">Console</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/installation/" class="">Installing The Things Stack</a>
@@ -123,6 +109,20 @@ debug: false
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/ttn/" class="">The Things Network</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/ttn/addresses/" class="is-active">Addresses</a>
+    
+  </li>
+
+</ul>
+
+
+    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/aws/" class="">The Things Stack AWS Launcher</a>
@@ -162,7 +162,7 @@ debug: false
       <div class="column sidebar-middle">
 
 <div class="docs-content">
-<h1 class="title is-size-2">Console
+<h1 class="title is-size-2">Addresses
   
   
   
@@ -170,13 +170,95 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>The Console is the management application of The Things Stack for LoRaWAN. It is a web application which can be used to register applications, end devices or gateways, monitor network traffic, or configure network related options, among other things.</p>
-<p>Visit the addresses page for <a href="https://www.thethingsindustries.com/docs/getting-started/ttn/addresses/">The Things Stack Community Edition</a> by The Things Network] or <a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/addresses/">The Things Stack Cloud</a> to find the URL of the Console for these deployments.</p>
+  <p>The addresses where you can reach The Things Stack Community Edition consist of the cluster ID and <code>cloud.thethings.network</code>.</p>
+<p>You can update the examples below with your cluster ID by filling it here.</p>
+<div class="field">
+  <label class="label">Cluster</label>
+  <div class="control">
+    <div class="select">
+      <select data-content="cluster-id">
+        <option value="eu1" selected>Europe 1 (Ireland)</option>
+        <option value="nam1">North America 1 (California, USA)</option>
+        <option value="au1">Australia 1 (Sydney, Australia)</option>
+      </select>
+    </div>
+  </div>
 </div>
 
+<script>
+  window.addEventListener('load', function(e) {
+    var $clusterIDInput = document.querySelector('select[data-content="cluster-id"]');
+    var query = new URLSearchParams(window.location.search);
+    if (query.has('cluster-id')) {
+      $clusterIDInput.value = query.get('cluster-id');
+    }
+    var $clusterIDSpans = document.querySelectorAll('span[data-content="cluster-id"]');
+    function syncValue($input, defaultValue, $spans) {
+      var value = $input.value ? $input.value : defaultValue;
+      $spans.forEach(function($span){ $span.innerText = value; });
+    }
+    syncValue($clusterIDInput, '<cluster-id>', $clusterIDSpans);
+    $clusterIDInput.addEventListener('change', function(e) {
+      syncValue(e.target, '<cluster-id>', $clusterIDSpans);
+    });
+  });
+</script>
+
+<h2 id="console">Console</h2>
+<p>To learn how to get started with the Console, see the <a href="https://www.thethingsindustries.com/docs/getting-started/console/">Console Getting Started Guide</a>.</p>
+<p>Each cluster has a Console where you can manage gateways and end devices of that cluster. You can use any cluster with your Cloud account.</p>
+<p>The address of the Console is:</p>
+<p>
+<code data-content="cluster-address">
+https://<span data-content="cluster-id"></span>.cloud.thethings.network/console
+</code>
+</p>
+<h2 id="api-endpoints">API Endpoints</h2>
+<p>The Application Server, Join Server, and Network Server APIs are all available in your regional cluster:</p>
+<p>
+<code data-content="cluster-address">
+<span data-content="cluster-id"></span>.cloud.thethings.network
+</code>
+</p>
+<p>However, the Identity Server APIs are only available in the <code>eu1</code> cluster:</p>
+<p>
+<code data-content="cluster-address">
+eu1.cloud.thethings.network
+</code>
+</p>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  End-Device Registry API requests or other Identity Server API requests to any cluster other than <code>eu1</code> will fail.
+</div>
+
+<h2 id="account-and-oauth">Account and OAuth</h2>
+<p>User accounts are stored in the <code>eu1</code> cluster. For registering users, logging in, changing your password and for performing OAuth flows, you need to use the following address:</p>
+<p>
+<code data-content="cluster-address">
+https://eu1.cloud.thethings.network/oauth
+</code>
+</p>
+<h2 id="command-line-interface">Command-line Interface</h2>
+<p>The Command-line Interface (CLI) needs to be configured with the address of the OAuth server and the gRPC addresses of the different servers. The addresses for OAuth and the Identity Server are always those of the <code>eu1</code> cluster. The other addresses are typically of the cluster of your choice.</p>
+<p>Here you find the contents of the CLI configuration file for the cluster:</p>
+<pre>
+oauth-server-address: 'https://eu1.cloud.thethings.network/oauth'
+identity-server-grpc-address: 'eu1.cloud.thethings.network:8884'
+
+gateway-server-grpc-address: '<span data-content="cluster-id"></span>.cloud.thethings.network:8884'
+network-server-grpc-address: '<span data-content="cluster-id"></span>.cloud.thethings.network:8884'
+application-server-grpc-address: '<span data-content="cluster-id"></span>.cloud.thethings.network:8884'
+join-server-grpc-address: '<span data-content="cluster-id"></span>.cloud.thethings.network:8884'
+device-claiming-server-grpc-address: '<span data-content="cluster-id"></span>.cloud.thethings.network:8884'
+device-template-converter-grpc-address: '<span data-content="cluster-id"></span>.cloud.thethings.network:8884'
+qr-code-generator-grpc-address: '<span data-content="cluster-id"></span>.cloud.thethings.network:8884'
+</pre>
+<p>See the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">CLI Getting Started Guide</a> to learn how to get started with the CLI and working with configuration files.</p>
+
+</div>
 <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/getting-started/cli/login/">← Login with the CLI</a>
-<a class="button is-pulled-right" href="/docs/getting-started/console/login/">Login →</a>
+<a class="button is-pulled-left" href="/docs/getting-started/ttn/">← The Things Network</a>
+<a class="button is-pulled-right" href="/docs/getting-started/aws/">The Things Stack AWS Launcher →</a>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -194,6 +276,18 @@ debug: false
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      <li><a href='#console'>Console</a></li>
+    
+      <li><a href='#api-endpoints'>API Endpoints</a></li>
+    
+      <li><a href='#account-and-oauth'>Account and OAuth</a></li>
+    
+      <li><a href='#command-line-interface'>Command-line Interface</a></li>
+    
+  </ul>
 
 
   </nav>
@@ -236,7 +330,7 @@ debug: false
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/console/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/ttn/addresses.md" class="button">Edit on Github</a>
 </div>
 
       </div>
