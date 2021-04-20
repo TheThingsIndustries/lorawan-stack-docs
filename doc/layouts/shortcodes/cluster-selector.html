@@ -1,0 +1,31 @@
+<div class="field">
+  <label class="label">Cluster</label>
+  <div class="control">
+    <div class="select">
+      <select data-content="cluster-id">
+        <option value="eu1" selected>Europe 1 (Ireland)</option>
+        <option value="nam1">North America 1 (California, USA)</option>
+        <option value="au1">Australia 1 (Sydney, Australia)</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('load', function(e) {
+    var $clusterIDInput = document.querySelector('select[data-content="cluster-id"]');
+    var query = new URLSearchParams(window.location.search);
+    if (query.has('cluster-id')) {
+      $clusterIDInput.value = query.get('cluster-id');
+    }
+    var $clusterIDSpans = document.querySelectorAll('span[data-content="cluster-id"]');
+    function syncValue($input, defaultValue, $spans) {
+      var value = $input.value ? $input.value : defaultValue;
+      $spans.forEach(function($span){ $span.innerText = value; });
+    }
+    syncValue($clusterIDInput, '<cluster-id>', $clusterIDSpans);
+    $clusterIDInput.addEventListener('change', function(e) {
+      syncValue(e.target, '<cluster-id>', $clusterIDSpans);
+    });
+  });
+</script>

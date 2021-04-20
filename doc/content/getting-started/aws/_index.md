@@ -1,5 +1,5 @@
 ---
-title: "AWS"
+title: "The Things Stack AWS Launcher"
 description: ""
 ---
 

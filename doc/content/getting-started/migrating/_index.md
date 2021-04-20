@@ -1,7 +1,6 @@
 ---
 title: "Migrating to The Things Stack"
 description: ""
-weight: -1
 aliases: "/getting-started/migrating-from-networks"
 ---
 

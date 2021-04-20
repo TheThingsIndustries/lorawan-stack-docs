@@ -1,7 +1,6 @@
 ---
 title: "Installing The Things Stack"
 description: ""
-weight: -1
 distributions: ["Enterprise", "Open Source"]
 ---
 

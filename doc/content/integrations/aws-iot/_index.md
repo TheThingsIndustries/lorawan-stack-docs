@@ -16,7 +16,7 @@ When running {{% tts %}} in your AWS account, you can publish Application Server
 
 1. You need to have {{% tts %}} deployed in AWS. See the [AWS]({{< ref "/getting-started/aws" >}}) guide to learn how.
 
-## Default Integration {{< distributions "Cloud" "Dedicated Cloud" "Enterprise" "The Things Network" >}} {#default-integration}
+## Default Integration {{< distributions "Cloud" "Dedicated Cloud" "Enterprise" "Community" >}} {#default-integration}
 
 The recommended way to integrate with AWS IoT is by using the **Default Integration** for {{% tts %}}. This integration is the most feature rich and supports all deployments of {{% tts %}}. The Default Integration comes with a AWS CloudFormation template to deploy in your AWS account.
 
