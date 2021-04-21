@@ -88,7 +88,7 @@ It is recommended to have a **Multi-AZ** cluster with automatic failover, in whi
 
 If you are migrating your database from a previous deployment, or if you are upgrading your database, you can fill the name of the database **Snapshot** that should be restored.
 
-## TimescaleDB (optional) {{< new-in-version "3.10" >}} {#timescaledb-optional}
+## TimescaleDB (optional) {#timescaledb-optional}
 
 The template `2-5-db-timescale` is an optional template that creates an EC2 instance that runs [TimescaleDB](https://www.timescale.com/), which is used by the Storage Integration of the Application Server. 
 
@@ -151,7 +151,7 @@ For deployments that connect to Packet Broker, you need to configure your Packet
 
 For multi-tenant deployments that use tenant billing through Stripe (see the [Stripe Billing reference]({{< ref "/reference/stripe" >}})), you need to configure the Stripe API key (starting with `sk_`) and Stripe endpoint secret key (starting with `whsec_`). It is possible to add or update this in the future.
 
-For the **Gateway Secrets Encryption Key Value** parameter {{< new-in-version "3.10" >}}, provide an AES-128 Key in Base64. The following command can be used to randomly generate one:
+For the **Gateway Secrets Encryption Key Value** parameter, provide an AES-128 Key in Base64. The following command can be used to randomly generate one:
 
 ```bash
 $ openssl rand -base64 16

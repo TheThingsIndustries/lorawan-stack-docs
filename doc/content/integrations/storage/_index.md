@@ -3,7 +3,6 @@ title: Storage Integration
 description: ""
 summary: Persistent storage for upstream messages.
 distributions: ["Cloud", "Dedicated Cloud", "Enterprise", "AWS Launcher", "Community"]
-new_in_version: "3.10"
 ---
 
 The Storage Integration allows storing received upstream messages in a persistent database, and retrieving them at a later time.

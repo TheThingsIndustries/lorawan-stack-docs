@@ -9,7 +9,7 @@ The Storage Integration is implemented as an [Application Package]({{< ref "/ref
 
 {{< cli-only >}}
 
-{{< warning >}}The Storage Integration is new in {{% tts %}} 3.10. You may need to update the CLI to use the new features. See instructions in [Installing the CLI]({{< ref "/getting-started/cli/installing-cli" >}})
+{{< warning >}} You may need to update the CLI to use the new features. See instructions in [Installing the CLI]({{< ref "/getting-started/cli/installing-cli" >}}).
 {{</ warning >}}
 
 ## Enable for an Application

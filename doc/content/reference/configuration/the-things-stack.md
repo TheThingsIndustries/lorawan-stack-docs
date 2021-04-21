@@ -67,7 +67,7 @@ When running a cluster in a trusted network, you can allow sending credentials o
 
 If {{% tts %}} is deployed behind a reverse proxy that does not use a private network IP address (in `127.0.0.0/8`, `10.0.0.0/8`, `100.64.0.0/10`, `172.16.0.0/12` or `192.168.0.0/16`), its IP address range needs to be configured in order for {{% tts %}} to trust it.
 
-- `grpc.trusted-proxies`: CIDRs of trusted reverse proxies. {{< new-in-version "3.10.2" >}}
+- `grpc.trusted-proxies`: CIDRs of trusted reverse proxies.
 
 You can suppress log messages for successful gRPC method calls (e.g. to reduce the noise caused by the health checks in a production environment).
 
@@ -302,6 +302,6 @@ Tenants can have custom configuration, such as custom branding or custom user re
 
 - `tenancy.ttl`: TTL of cached tenant configurations {{< distributions "Cloud" "Enterprise" >}}
 
-## Rate Limiting {{< new-in-version "3.12" >}}
+## Rate Limiting {{< new-in-version "3.12.0" >}}
 
 {{% tts %}} supports rate limiting external endpoints. Rate limiting configuration can only be set from the configuration file. See [Rate Limiting]({{< ref "/reference/rate-limiting" >}}) for more details.

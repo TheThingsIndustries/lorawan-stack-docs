@@ -15,12 +15,12 @@ The key resources deployed in your AWS account are:
 - Cross-account role for {{% tts %}} to connect to your AWS IoT Core MQTT endpoint
 - AWS Lambda functions to create the thing type and configure the integration as pub/sub in {{% tts %}}
 - AWS Lambda functions for claiming and creating devices, and for handling uplink and downlink messages
-- Secret with key encryption key (KEK) to leverage LoRaWAN end-to-end encryption {{< new-in-version "3.10.0" >}}
+- Secret with key encryption key (KEK) to leverage LoRaWAN end-to-end encryption
 - IoT Core rules to trigger the Lambda functions based on topics and attributes
 
 This is a serverless deployment: there are no compute resources being deployed. AWS only charges for usage, which is driven by traffic. The only continuous charges are by IoT Core connectivity from {{% tts %}} to your AWS account. All permissions are the minimum permissions for the integration to function.
 
-## End-to-End Encryption {{< new-in-version "3.10.0" >}} {#end-to-end-encryption}
+## End-to-End Encryption {#end-to-end-encryption}
 
 This integration supports true LoRaWAN end-to-end encryption: the application payload is encrypted on the end device with the LoRaWAN AppSKey, and decrypted in your AWS Account. The underlying network infrastructure passes your application payload in the encrypted form - it cannot see your data.
 

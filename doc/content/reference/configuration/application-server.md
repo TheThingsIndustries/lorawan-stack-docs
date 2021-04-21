@@ -3,12 +3,6 @@ title: "Application Server Options"
 description: ""
 ---
 
-## Linking Options {{< removed-in-version "3.11.0" >}}
-
-The Application Server links to a Network Server. The `link-mode` configures how linking occurs.
-
-- `as.link-mode`: Mode to link applications to their Network Server (all, explicit) (default "all")
-
 ## Security Options
 
 - `as.device-kek-label`: Label of KEK used to encrypt device keys at rest

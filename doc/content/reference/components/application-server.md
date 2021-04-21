@@ -9,14 +9,6 @@ It hosts an MQTT server for streaming application data, supports HTTP webhooks a
 
 <!--more-->
 
-## Linking to Network Servers {{< removed-in-version "3.11.0" >}}
-
-Application Servers link to Network Servers to receive upstream traffic and write downstream traffic.
-
-Most {{% tts %}} clusters contain an Application Server, but you can also link an external Application Server to a Network Server. This ensures that the application session key (AppSKey) is not available to the network-layer for end-to-end security.
-
-Only one Application Server instance can be linked to a Network Server at a time.
-
 ## Connectivity
 
 Applications can connect to Application Server over multiple protocols and mechanisms.

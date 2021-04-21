@@ -51,7 +51,7 @@ The message paths are provided in the `paths` object which can contain the follo
 - `downlink-sent`: The path to which downlink sent will be sent. Can contain template fields.
 - `downlink-failed`: The path to which downlink failures will be sent. Can contain template fields.
 - `downlink-queued`: The path to which downlink queued status will be sent. Can contain template fields.
-- `downlink-queue-invalidated` {{< new-in-version "3.10.0" >}}: The path to which downlink queue invalidated event will be sent. Can contain template fields. This is only used when the upstream platform carries out LoRaWAN `FRMPayload` encryption.
+- `downlink-queue-invalidated`: The path to which downlink queue invalidated event will be sent. Can contain template fields. This is only used when the upstream platform carries out LoRaWAN `FRMPayload` encryption.
 - `location-solved`: The path to which the location of the device will be sent when resolved. Can contain template fields.
 
 {{< note >}} Not all of the messages types must be handled by the service. By omitting the field in the `paths` object, the message type will be disabled in the final webhook and the related messages will not be passed to the endpoint. {{</ note >}}
