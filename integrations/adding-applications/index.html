@@ -190,55 +190,18 @@ debug: false
     <img src="application-overview.png"
          alt="Application overview"/> 
 </figure>
-<p>You can now use the built-in <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a> or <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/">HTTP Webhooks</a> to receive uplink and send downlink traffic. End devices are created within applications (see <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> section).</p>
-<h3 id="link-application-span-classremoved-in-versionremoved-in-3110span">Link application <span class="removed-in-version">Removed in 3.11.0</span></h3>
-<p>If you did not uncheck the <strong>Link automatically</strong> checkbox during creation, your application will be automatically linked to the Application Server. You can skip this section in this case.</p>
-<p>In order to send uplinks and receive downlinks from your device, you must link the Application Server to the Network Server. To do this, create an API key for the Application Server by going to <strong>API keys</strong> in the left menu of your application, and then clicking <strong>+ Add API Key</strong>.</p>
-<p>In the API Key creation screen, enter a name for your linking API key and select the <strong>Link as Application to a Network Server</strong> right, then press <strong>Create API Key</strong>.</p>
-<figure>
-    <img src="api-key-creation.png"
-         alt="Application API Key creation"/> 
-</figure>
-<p>You will see a screen that shows your newly created API Key. Copy it in your clipboard by pressing the copy button. After saving the key in a safe place, press <strong>I have copied the key</strong>.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  You will not be able to see this key again in the future, but if you lose it, you can create a new one to replace it.
-</div>
-<figure>
-    <img src="api-key-created.png"
-         alt="Application API Key created"/> 
-</figure>
-<p>Now go to <strong>Link</strong> in the left menu of the application and enter the API key you&rsquo;ve just created. You can leave the Network Server address empty. Press <strong>Save Changes</strong> to save the link settings.</p>
-<figure>
-    <img src="application-link-creation.png"
-         alt="Application link creation"/> 
-</figure>
-<p>You can now see the status of the linking process appear in the right part of your screen. This also shows the statistics of the link between the Application Server and the Network Server.</p>
-<p>Your application is now linked, so you can proceed with using the MQTT server and webhooks for receiving uplink traffic and sending downlink traffic.</p>
 </section>
 <section data-content="cli">
   <h2 id="adding-applications-using-the-cli">Adding Applications using the CLI</h2>
 <p>Create the first application:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications create app1 --user-id admin
 </code></pre></div><p>This creates an application <code>app1</code> with the <code>admin</code> user as collaborator.</p>
-<p>End devices are created within applications (see <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> section).</p>
-<h3 id="link-application-span-classremoved-in-versionremoved-in-3110span">Link Application <span class="removed-in-version">Removed in 3.11.0</span></h3>
-<p>In order to send uplinks and receive downlinks from your device, you must link the Application Server to the Network Server. In order to do this, create an API key for the Application Server:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications api-keys create <span class="se">\
-</span><span class="se"></span>  --name link <span class="se">\
-</span><span class="se"></span>  --application-id app1 <span class="se">\
-</span><span class="se"></span>  --right-application-link
-</code></pre></div><p>The CLI will return an API key, such as <code>NNSXS.VEEBURF3KR77ZR...</code>. This API key has only link rights and can therefore only be used for linking this application. Make sure to copy the key and save it in a safe place.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  You will not be able to see this key again in the future, and if you lose it, you can create a new one to replace it in the gateway configuration.
-</div>
-<p>You can now link the Application Server to the Network Server:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications link <span class="nb">set</span> app1 --api-key NNSXS.VEEBURF3KR77ZR..
-</code></pre></div><p>Your application is now linked, so you can proceed with using the MQTT server and webhooks for receiving uplink traffic and sending downlink traffic.</p>
 </section>
 
 </div>
+
+<p>Next, see <a href="https://www.thethingsindustries.com/docs/integrations/adding-integrations/">Adding Integrations</a> to proceed with using the built-in <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a> and <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/">HTTP Webhooks</a> for receiving uplink and sending downlink traffic.</p>
+<p>End devices are also created within applications. See <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> for more information.</p>
 </div>
 
 <div class="is-clearfix">
@@ -304,10 +267,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 25 Nov 2020.
+  Last changed by Nejra on 16 Apr 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/71bd626b9b755ccbe2cbf6f6f0fc68df4cf38acd">
-      doc: Update notes in Integrations
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/fcc7921ae70778fb1380f38d7e21eac00dace6a5">
+      doc: Remove old new-in-version tags, small fixes
     </a>
 </p>
 

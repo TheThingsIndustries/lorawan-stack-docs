@@ -269,9 +269,7 @@ debug: false
 <p>In addition to the re-used parameters (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>) and the previously described purpose, this template asks for the <strong>Instance Type</strong>. It is typically fine for small clusters to start with <code>cache.t3.medium</code> and scale as you grow.</p>
 <p>It is recommended to have a <strong>Multi-AZ</strong> cluster with automatic failover, in which case you&rsquo;ll need 2 <strong>Replicas</strong>. Since most load is read-write it is not necessary to deploy more than 2 replicas.</p>
 <p>If you are migrating your database from a previous deployment, or if you are upgrading your database, you can fill the name of the database <strong>Snapshot</strong> that should be restored.</p>
-<h2 id="timescaledb-optional">TimescaleDB (optional) <span class="new-in-version">New in 3.10</span>
-
-</h2>
+<h2 id="timescaledb-optional">TimescaleDB (optional)</h2>
 <p>The template <code>2-5-db-timescale</code> is an optional template that creates an EC2 instance that runs <a href="https://www.timescale.com/">TimescaleDB</a>, which is used by the Storage Integration of the Application Server.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
@@ -310,9 +308,7 @@ $ aws s3 cp config.yml s3://<span class="si">${</span><span class="nv">InteropCo
 <p>In addition to the re-used parameters, the <strong>License Key</strong>, <strong>Cluster Secrets</strong> and <strong>OAuth Client Secrets</strong> (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>), this template asks for login information for your email provider. Currently, only Sendgrid and SMTP are supported.</p>
 <p>For deployments that connect to Packet Broker, you need to configure your Packet Broker secrets here. If you don&rsquo;t have this, you can leave these parameters empty. It is possible to add or update this in the future.</p>
 <p>For multi-tenant deployments that use tenant billing through Stripe (see the <a href="https://www.thethingsindustries.com/docs/reference/stripe/">Stripe Billing reference</a>), you need to configure the Stripe API key (starting with <code>sk_</code>) and Stripe endpoint secret key (starting with <code>whsec_</code>). It is possible to add or update this in the future.</p>
-<p>For the <strong>Gateway Secrets Encryption Key Value</strong> parameter <span class="new-in-version">New in 3.10</span>
-
-, provide an AES-128 Key in Base64. The following command can be used to randomly generate one:</p>
+<p>For the <strong>Gateway Secrets Encryption Key Value</strong> parameter, provide an AES-128 Key in Base64. The following command can be used to randomly generate one:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ openssl rand -base64 <span class="m">16</span>
 </code></pre></div><h2 id="configuration">Configuration</h2>
 <p>The <code>4-2-configuration</code> template creates several configuration parameters in AWS Systems Manager Parameter Store.</p>
@@ -467,6 +463,8 @@ $ aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --re
     
       <li><a href='#redis-database'>Redis Database</a></li>
     
+      <li><a href='#timescaledb-%28optional%29'>TimescaleDB (optional)</a></li>
+    
       <li><a href='#s3-buckets'>S3 Buckets</a></li>
     
       <li><a href='#security-group-rules'>Security Group Rules</a></li>
@@ -529,10 +527,10 @@ $ aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --re
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer Easwaran on 03 Mar 2021.
+  Last changed by Nejra on 16 Apr 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5a2c25cef536d91d31a78440cecf545a725feb2c">
-      doc: Add GCS deployment description
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/fcc7921ae70778fb1380f38d7e21eac00dace6a5">
+      doc: Remove old new-in-version tags, small fixes
     </a>
 </p>
 

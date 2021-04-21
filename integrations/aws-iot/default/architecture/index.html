@@ -232,15 +232,11 @@ debug: false
 <li>Cross-account role for The Things Stack to connect to your AWS IoT Core MQTT endpoint</li>
 <li>AWS Lambda functions to create the thing type and configure the integration as pub/sub in The Things Stack</li>
 <li>AWS Lambda functions for claiming and creating devices, and for handling uplink and downlink messages</li>
-<li>Secret with key encryption key (KEK) to leverage LoRaWAN end-to-end encryption <span class="new-in-version">New in 3.10.0</span>
-
-</li>
+<li>Secret with key encryption key (KEK) to leverage LoRaWAN end-to-end encryption</li>
 <li>IoT Core rules to trigger the Lambda functions based on topics and attributes</li>
 </ul>
 <p>This is a serverless deployment: there are no compute resources being deployed. AWS only charges for usage, which is driven by traffic. The only continuous charges are by IoT Core connectivity from The Things Stack to your AWS account. All permissions are the minimum permissions for the integration to function.</p>
-<h2 id="end-to-end-encryption">End-to-End Encryption <span class="new-in-version">New in 3.10.0</span>
-
-</h2>
+<h2 id="end-to-end-encryption">End-to-End Encryption</h2>
 <p>This integration supports true LoRaWAN end-to-end encryption: the application payload is encrypted on the end device with the LoRaWAN AppSKey, and decrypted in your AWS Account. The underlying network infrastructure passes your application payload in the encrypted form - it cannot see your data.</p>
 <p>When enabled, this integration configures Join Server with your key encryption key (KEK) that is generated in your AWS Account and stored as a secret in <a href="https://aws.amazon.com/secrets-manager/">Secrets Manager</a>. Join Server encrypts the AppSKey with the KEK before passing it to the network layer. The network layer sends the encrypted AppSKey to your AWS Account, where it gets decrypted. This feature only works with devices registered in Join Server.</p>
 <p>When using this feature, your AWS application needs to process the LoRaWAN application payload in binary form, as the network layer&rsquo;s payload encoding and decoding functions cannot work with the encrypted data.</p>
@@ -265,6 +261,12 @@ debug: false
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      <li><a href='#end-to-end-encryption'>End-to-End Encryption</a></li>
+    
+  </ul>
 
 
   </nav>
@@ -300,10 +302,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by i3mSuperMan on 23 Mar 2021.
+  Last changed by Nejra on 16 Apr 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/998a2d9cfc08ea0fb31fc0ff38774f61e3bc60fe">
-      doc: Update aws integration end-to-end-encryption section
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/fcc7921ae70778fb1380f38d7e21eac00dace6a5">
+      doc: Remove old new-in-version tags, small fixes
     </a>
 </p>
 
