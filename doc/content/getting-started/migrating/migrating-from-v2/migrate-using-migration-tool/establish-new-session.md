@@ -1,5 +1,5 @@
 ---
-title: "Migrating without Persisting Active Sessions"
+title: "Migrate without Persisting Active Sessions"
 description: ""
 weight: 1
 ---

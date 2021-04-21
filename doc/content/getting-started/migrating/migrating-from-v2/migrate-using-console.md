@@ -1,5 +1,5 @@
 ---
-title: "Console"
+title: "Migrate using the Console"
 description: ""
 weight: 2
 ---

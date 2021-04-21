@@ -9,11 +9,11 @@ This section contains instructions on how to migrate end devices from ChirpStack
 
 <!--more-->
 
-`ttn-lw-migrate` tool is used to export end devices and applications from ChirpStack to a [JSON file]({{< ref "/getting-started/migrating/device-json" >}}). This JSON file can afterwards be [imported in {{% tts %}}]({{< ref "/getting-started/migrating/import-devices" >}}) via [Console]({{< ref "/getting-started/console" >}}) or via [CLI]({{< ref "/getting-started/cli" >}}).
-
 ## Prerequisites
 
 1. [`ttn-lw-migrate` tool](https://github.com/TheThingsNetwork/lorawan-stack-migrate) version `0.5.0` or higher installed on your system.
+
+{{< note >}} See the [Migration Tool]({{< ref "/getting-started/migrating/migration-tool" >}}) guide for detailed installation instructions. {{</ note >}}
 
 ## Configure ttn-lw-migrate
 
@@ -26,6 +26,13 @@ $ export JOIN_EUI="0101010102020203"            # Set The Things Stack JoinEUI f
 $ export FREQUENCY_PLAN_ID="EU_863_870"         # Set The Things Stack FrequencyPlanID for exported devices
 $ export CHIRPSTACK_API_INSECURE=0              # Set to 1 if not using TLS on ChirpStack
 ```
+
+{{< note >}} If using Windows OS, replace `export` with `set` and remove the double-quotes in commands above. For example, you would use:
+
+```bash
+$ set CHIRPSTACK_API_TOKEN=7F0as987e61...
+```
+{{</ note >}}
 
 {{< note >}} `JoinEUI` and `FrequencyPlanID` have to be set because ChirpStack does not store these variables. 
 

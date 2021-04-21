@@ -6,7 +6,7 @@ weight: 1
 
 Read this section if you want to make use of [Packet Broker]({{< ref "/reference/packet-broker" >}}) to migrate your end devices and route traffic from {{% ttnv2 %}} to {{% tts %}}.
 
-<!-- more -->
+<!--more-->
 
 When migrating your devices with active sessions, it is in most cases not possible to make use of Packet Broker. Read along to learn when you can and cannot make use of Packet Broker.
 
