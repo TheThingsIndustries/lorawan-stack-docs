@@ -10,7 +10,7 @@ MOKOSMART's 8 channel MKGW2 gateway is embedded with Semtech’s high performanc
 ## Requirements
 
 1. User account on {{% tts %}} with rights to create gateways.
-2. MOKOSMART MKGW2-LW connected to the internet via Ethernet or WiFi. (For Ethernet and WiFi settings, see sections 5 and 6 of the [user manual](https://www.mokosmart.com/lorawan-gateway-mkgw2-lw/))
+2. MOKOSMART MKGW2-LW connected to the internet via Ethernet or WiFi. (For Ethernet and WiFi settings, see sections 5 and 6 of the user manual.
 
 ## Registration
 
