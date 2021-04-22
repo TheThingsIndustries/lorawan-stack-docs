@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Migrating End Devices from V2 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/" />
+  <title>Migrating Active Sessions | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session/" />
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.204300283223df27f32bfebd660183246f754276b7c9a859eb8ed03098cb05bb.css" integrity="sha256-IEMAKDIj3yfzK/69ZgGDJG91Qna3yahZ647QMJjLBbs=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Migrating End Devices from V2">
+  <meta itemprop="name" content="Migrating Active Sessions">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Migrating End Devices from V2">
+  <meta property="og:title" content="Migrating Active Sessions">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/">
-  <meta name="twitter:title" content="Migrating End Devices from V2" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session/">
+  <meta name="twitter:title" content="Migrating Active Sessions" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -117,7 +117,7 @@ debug: false
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/" class="is-active">Migrating End Devices from V2</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/" class="">Migrating End Devices from V2</a>
     
     
 
@@ -136,6 +136,25 @@ debug: false
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/" class="">Migration Tool</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/establish-new-session/" class="">Migrating without Persisting Active Sessions</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session/" class="is-active">Migrating Active Sessions</a>
+    
+  </li>
+
+</ul>
+
+
     
   </li>
 
@@ -216,140 +235,119 @@ debug: false
       <div class="column sidebar-middle">
 
 <div class="docs-content">
-<h1 class="title is-size-2">Migrating End Devices from V2
+<h1 class="title is-size-2">Migrating Active Sessions
   
   
+  
+    <span class="new-in-version">New in 3.12.0</span>
+
   
   
 </h1>
 
 <div class="content">
-  <p>This section documents the process of migrating end devices from V2 to The Things Stack.</p>
+  <p>Starting from The Things Stack version <code>3.12.0</code>, it is possible to migrate end devices together with their active sessions using the <code>ttn-lw-migrate</code> tool. This section explains how to export one or more of your end devices from V2 to a <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON file</a>, with persisting their active sessions.</p>
 <div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  We highly recommend to always test the migration on a single end device or a small batch of end devices in order to make sure the migration process goes as expected.
-</div>
-
-<h2 id="prerequisites">Prerequisites</h2>
-<ol>
-<li>User account on The Things Network V2 or The Things Industries V2.</li>
-<li>End device(s) and gateway(s) connected to a V2 network.</li>
-<li>User account in The Things Stack.</li>
-</ol>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  We <strong>highly recommend</strong> using The Things Stack version <code>3.12.0</code> or higher. Some of the features (like session migration) from this guide might not be available for prior versions.
-</div>
-
-<h2 id="add-application-in-the-things-stack">Add Application in The Things Stack</h2>
-<p>Since end devices are being created within applications, you first need to add a new application in The Things Stack.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  When adding an application in The Things Stack, the <strong>Application ID</strong> does not have to be the same as the one in V2.
-</div>
-
-<blockquote>
-<p>See <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/">Adding Applications</a> for detailed instructions.</p>
-</blockquote>
-<h2 id="add-payload-formatters-and-integrations-in-the-things-stack">Add Payload Formatters and Integrations in The Things Stack</h2>
-<p>After creating an application, you need to add the associated elements like application-level payload formatters and integrations.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>The payload formatters can be uplink and downlink, and they are what was known in V2 as coders and decoders. The format of payload coders and decoders is still supported in The Things Stack.</p>
-<p>In The Things Stack, it is also possible to add payload formatters per end device, which override application payload formatters. However, before devices are migrated to The Things Stack it is only possible to add a payload formatter per application.</p>
+  <p>Active device sessions can be migrated via Packet Broker only from <strong>The Things Industries V2 (SaaS)</strong> to <strong>The Things Stack Cloud</strong>, and this is achievable only on a customer request. Contact <a href="mailto:support@thethingsindustries.com">The Things Industries support</a> for more information.</p>
+<p>Migrating active sessions from <strong>The Things Network V2</strong> (public community network) to The Things Stack deployments is achievable only if you <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway to The Things Stack</a> too. However, we strongly recommend The Things Network community members to keep their gateways registered on The Things Network V2 for as long as possible, or to agree on performing coordinated migration to The Things Stack, as this will ensure the community does not loose their LoRaWAN coverage.</p>
 
 </div>
 
-<blockquote>
-<p>See <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">Payload Formatters</a> guide for detailed instructions on how to add payload formatters and which types are supported by The Things Stack.</p>
-</blockquote>
-<blockquote>
-<p>For detailed tutorials on the integrations that are available in The Things Stack, see <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">Integrations</a>.</p>
-</blockquote>
-<h2 id="migrate-end-devices">Migrate End Devices</h2>
-<p>When you have added your application and elements associated with it, it is time to migrate your end device(s) from V2 to The Things Stack.</p>
 <div class="notification is-primary is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Info:</h5>
-  <p>End devices connected to The Things Network V2 can be migrated to The Things Stack Cloud and The Things Stack Community Edition without the need for migrating a gateway, thanks to the default connection with <a href="https://www.thethingsindustries.com/docs/reference/packet-broker/">Packet Broker</a>. The Things Industries V2 (SaaS) can also be connected to Packet Broker by contacting <a href="mailto:support@thethingsindustries.com">support</a>, while The Things Stack Enterprise or Open Source can be <a href="https://www.thethingsindustries.com/docs/reference/packet-broker/connect/">configured</a> manually.</p>
-<p>If you are using deployments connected to Packet Broker, the traffic from your end device(s) will be routed to The Things Stack after migrating your device(s). However, there are certain requirements that your devices need to meet for Packet Broker to route their traffic to The Things Stack correctly. See <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/packet-broker-requirements/">Packet Broker Requirements for End Device Migration</a> for detailed information.</p>
-<p>If you are using deployments that are not connected to Packet Broker, you will have to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway</a> to receive traffic from your end device in The Things Stack.</p>
+  We strongly recommend migrating end devices without persisting active sessions.
+</div>
 
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="otaa">
+      <a>
+        <span>OTAA</span>
+      </a>
+    </li>
+    
+    <li data-tab="abp">
+      <a>
+        <span>ABP</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="otaa">
+  In the case of persisting active sessions during migration, OTAA devices do not need to perform a new join on The Things Stack network, but their existing session will be transferred from V2.
+</section>
+<section data-content="abp">
+  The <strong>DevAddr</strong> and some other parameters (like <strong>RX1 Delay</strong>) are hardcoded for ABP devices. If you do not re-program the device to change these values, you are basically migrating it to The Things Stack with its active session.
+</section>
+
+</div>
+
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  Exporting end devices with their active sessions will clear their root and session keys from V2, so these devices will automatically no longer work on V2.
 </div>
 
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  We recommend The Things Network community members to keep their gateways registered on The Things Network V2 for as long as possible (i.e. to migrate their devices via Packet Broker), or to agree on performing coordinated migration to The Things Stack together with the local community to ensure reliable LoRaWAN network coverage.
+  Before exporting end devices, you can first test the execution by appending the <code>--dry-run</code> and <code>--verbose</code> flags to the commands presented in the sections below.
 </div>
 
-<p>There are two approaches for migrating devices, depending on how many end devices you intend to migrate and if you wish to migrate with or without active sessions, described in the following guides:</p>
-<ul>
-<li><a href="/docs/getting-started/migrating/migrating-from-v2/migrate-using-console/">Using The Things Stack Console</a> - this method is convenient only for small number of devices. Migrating active device sessions is not supported.</li>
-<li><a href="/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/">Using <code>ttn-lw-migrate</code> tool</a> - this method allows migrating devices in bulk, optionally with active device sessions.</li>
-</ul>
+<h3 id="export-a-single-end-device">Export a Single End Device</h3>
+<p>To export a single end device from V2 and clear its security keys:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-migrate device --source ttnv2 <span class="s2">&#34;v2-end-device-ID&#34;</span> &gt; devices.json
+</code></pre></div><h3 id="export-a-batch-of-end-devices">Export a Batch of End Devices</h3>
+<p>First, create a text file <code>device_ids.txt</code>. This file needs to contain a V2 <strong>Device ID</strong> for every end device you want to export from V2.</p>
+<p>The format of this file is one <strong>Device ID</strong> per one line, i.e.:</p>
+<pre><code>dev1
+dev2
+dev3
+</code></pre><p>To export a batch of end devices from V2 and clear their security keys:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-migrate device --source ttnv2 &lt; device_ids.txt &gt; devices.json
+</code></pre></div><h3 id="export-all-end-devices-associated-with-v2-application">Export All End Devices Associated With V2 Application</h3>
+<p>To export all devices contained in V2 application and clear their security keys:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-migrate application --source ttnv2 <span class="s2">&#34;ttn-v2-application-ID&#34;</span> &gt; devices.json
+</code></pre></div><h2 id="import-end-devices-in-the-things-stack-application">Import End Devices in The Things Stack Application</h2>
+<p>Now that you have exported one or more of your devices to a <code>devices.json</code> file, you can continue by importing this file in The Things Stack via Console or via CLI.</p>
+<blockquote>
+<p>See <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">Import End Devices in The Things Stack</a> for detailed instructions on how to do this.</p>
+</blockquote>
+<h2 id="next-step---migrate-gateways">Next Step - Migrate Gateways</h2>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="otaa">
+      <a>
+        <span>OTAA</span>
+      </a>
+    </li>
+    
+    <li data-tab="abp">
+      <a>
+        <span>ABP</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="otaa">
+  Migrating your OTAA device from <strong>The Things Industries V2 (SaaS)</strong> to <strong>The Things Stack Cloud</strong> with its active session means it will keep its <strong>DevAddr</strong>, channel settings and MAC parameters from V2. It will not send new Join Requests, but the uplink traffic from your device should automatically show up in The Things Stack, because it will be routed via Packet Broker thanks to preserving your device&rsquo;s existing session.
+</section>
+<section data-content="abp">
+  Migrating your ABP device from <strong>The Things Industries V2 (SaaS)</strong> to <strong>The Things Stack Cloud</strong> with its active session means it will keep its <strong>DevAddr</strong>, channel settings and MAC parameters from V2. Once properly migrated, the uplink traffic from your end device should automatically show up in The Things Stack, because it will be routed via Packet Broker thanks to preserving your device&rsquo;s existing session.
+</section>
+
 </div>
 
-<div class="columns is-multiline">
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <h3 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/packet-broker-requirements/">Packet Broker Requirements for End Device Migration</a>
-        
-        
-        
-        </h3>
-        <div class="content has-text-grey">
-          Read this section if you want to make use of Packet Broker to migrate your end devices and route traffic from V2 to The Things Stack.
-When migrating your devices with active sessions, it is in most cases not possible to make use of Packet Broker. Read along to learn when you can and cannot make use of Packet Broker.
-   Migrate from Migrate to Possibility to use Packet Broker     The Things Network V2 The Things Stack Community Edition Only without persisting active device sessions   The Things Network V2 The Things Stack Cloud Only without persisting active device sessions   The Things Industries V2 The Things Stack Community Edition Only without persisting active device sessions   The Things Industries V2 The Things Stack Cloud With and without persisting active device sessions    Note: Remember that The Things Stack Enterprise and The Things Stack Open Source can also be configured to connect to Packet Broker.
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/packet-broker-requirements/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <h3 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-console/">Console</a>
-        
-        
-        
-        </h3>
-        <div class="content has-text-grey">
-          This section refers to migrating end devices to The Things Stack by using The Things Stack Console.
-
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-console/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <h3 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/">Migration Tool</a>
-        
-        
-        
-        </h3>
-        <div class="content has-text-grey">
-          This section refers to migrating end devices to The Things Stack using ttn-lw-migrate migration tool.
-
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<p>If you are migrating an end device with its active session via Packet Broker, you will need to set the <strong>RX1 Delay</strong> of the device to 5 seconds by <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/configure-mac-settings/">configuring MAC settings</a>, otherwise the traffic might not reach The Things Stack in time via Packet Broker. You can also leave the <strong>RX1 Delay</strong> value as is (1 second from V2), but then you will need to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway to The Things Stack</a> too, but if your gateway has a high-latency backhaul, you could still experience latency issues.</p>
+<p>If you are not specifically migrating from <strong>The Things Industries V2 (SaaS)</strong> to <strong>The Things Stack Cloud</strong>, you will need to either <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway to The Things Stack</a> in order for session migration to work, or <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/establish-new-session/">migrate your device without a session</a>.</p>
 </div>
-
-
 <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/getting-started/migrating/major-changes/">← Major Changes In The Things Stack</a>
-<a class="button is-pulled-right" href="/docs/getting-started/migrating/migrating-from-v2/packet-broker-requirements/">Packet Broker Requirements for End Device Migration →</a>
+<a class="button is-pulled-left" href="/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/establish-new-session/">← Migrating without Persisting Active Sessions</a>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -370,13 +368,9 @@ When migrating your devices with active sessions, it is in most cases not possib
 
   <ul class="menu-list">
     
-      <li><a href='#prerequisites'>Prerequisites</a></li>
+      <li><a href='#import-end-devices-in-the-things-stack-application'>Import End Devices in The Things Stack Application</a></li>
     
-      <li><a href='#add-application-in-the-things-stack'>Add Application in The Things Stack</a></li>
-    
-      <li><a href='#add-payload-formatters-and-integrations-in-the-things-stack'>Add Payload Formatters and Integrations in The Things Stack</a></li>
-    
-      <li><a href='#migrate-end-devices'>Migrate End Devices</a></li>
+      <li><a href='#next-step---migrate-gateways'>Next Step - Migrate Gateways</a></li>
     
   </ul>
 
@@ -421,7 +415,7 @@ When migrating your devices with active sessions, it is in most cases not possib
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/migrating/migrating-from-v2/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session.md" class="button">Edit on Github</a>
 </div>
 
       </div>

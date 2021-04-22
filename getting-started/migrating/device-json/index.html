@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Importable JSON File Reference | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/" />
+  <title>JSON File Reference | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/" />
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.204300283223df27f32bfebd660183246f754276b7c9a859eb8ed03098cb05bb.css" integrity="sha256-IEMAKDIj3yfzK/69ZgGDJG91Qna3yahZ647QMJjLBbs=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Importable JSON File Reference">
+  <meta itemprop="name" content="JSON File Reference">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Importable JSON File Reference">
+  <meta property="og:title" content="JSON File Reference">
   <meta property="og:description" content="">
   <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">
-  <meta name="twitter:title" content="Importable JSON File Reference" />
+  <meta name="twitter:title" content="JSON File Reference" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -117,22 +117,12 @@ debug: false
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/" class="">Migrating Gateways</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/" class="">Migrating End Devices from V2</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/" class="">Migrating from The Things Network Stack V2</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrate-from-chirpstack/" class="">Migrating from ChirpStack</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/" class="is-active">Importable JSON File Reference</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrate-from-chirpstack/" class="">Migrating End Devices from ChirpStack</a>
     
   </li>
 
@@ -143,6 +133,16 @@ debug: false
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/configure-mac-settings/" class="">Fine-tuning MAC Settings for End Devices</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/" class="">Migrating Gateways</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/" class="is-active">JSON File Reference</a>
     
   </li>
 
@@ -192,7 +192,7 @@ debug: false
       <div class="column sidebar-middle">
 
 <div class="docs-content">
-<h1 class="title is-size-2">Importable JSON File Reference
+<h1 class="title is-size-2">JSON File Reference
   
   
   
@@ -200,9 +200,13 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>The Things Stack allows you to import devices from other networks using a JSON file describing those devices.</p>
-<p>Devices imported this way can be migrated without the need for a rejoin, although The Things Stack does not yet support this, but will support it in an upcoming release.</p>
-<p>Create a <code>devices.json</code> file containing a device object, like so:</p>
+  <p>The Things Stack allows you to import end devices from V2, ChirpStack and other LoRaWAN networks using a JSON file describing those devices.</p>
+<div class="notification is-primary is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Info:</h5>
+  Using JSON file with device descriptions, you can migrate end devices with or without their existing sessions.
+</div>
+
+<p>Here is an example of an OTAA device description in the <code>devices.json</code> file:</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;my-device&#34;</span><span class="p">,</span>
@@ -221,7 +225,7 @@ debug: false
     <span class="p">}</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><p>You can define multiple end devices in a single file like so:</p>
+</code></pre></div><p>Multiple end devices can also be contained in a single <code>devices.json</code> file like so:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="p">[</span>
   <span class="p">{</span>
     <span class="cm">/* device 1 */</span>
@@ -231,7 +235,10 @@ debug: false
   <span class="p">}</span>
 <span class="p">]</span>
 </code></pre></div><h2 id="json-end-device-format">JSON End Device Format</h2>
-<p>The full specification of the JSON format is defined in the API protos, see the <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#message:EndDevice">EndDevice</a> message definition for details.</p>
+<p>The full specification of the JSON format is defined in the API protos.</p>
+<blockquote>
+<p>See the <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#message:EndDevice">EndDevice</a> message definition for details.</p>
+</blockquote>
 <p>The linked specification is quite extensive, and contains a lot of fields that are not required, or are only set and used internally by the Network Server. Below, the required and most commonly used fields are discussed.</p>
 <table>
 <thead>
@@ -397,35 +404,11 @@ debug: false
 </code></pre>
 </div>
 
-<h2 id="migrating-devices-with-existing-sessions">Migrating Devices with Existing Sessions</h2>
-<p>Migrating devices with existing sessions is not currently supported in The Things Stack, but it will be supported in an upcoming release.</p>
-<h2 id="examples">Examples</h2>
-<h3 id="example-otaa-device">Example OTAA Device:</h3>
-<summary><details>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;my-device&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0102030405060708&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0102030405060708&#34;</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;My Device&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;description&#34;</span><span class="p">:</span> <span class="s2">&#34;Living room temperature sensor&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;lorawan_version&#34;</span><span class="p">:</span> <span class="s2">&#34;MAC_V1_0_2&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;lorawan_phy_version&#34;</span><span class="p">:</span> <span class="s2">&#34;PHY_V1_0_2_REV_B&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;frequency_plan_id&#34;</span><span class="p">:</span> <span class="s2">&#34;EU_863_870_TTN&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;supports_join&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nt">&#34;root_keys&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;app_key&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;key&#34;</span><span class="p">:</span> <span class="s2">&#34;01020304050607080102030405060708&#34;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></details></summary>
 
 </div>
 <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/getting-started/migrating/migrate-from-chirpstack/">← Migrating from ChirpStack</a>
-<a class="button is-pulled-right" href="/docs/getting-started/migrating/import-devices/">Import End Devices in The Things Stack →</a>
+<a class="button is-pulled-left" href="/docs/getting-started/migrating/gateway-migration/">← Migrating Gateways</a>
+<a class="button is-pulled-right" href="/docs/getting-started/ttn/">The Things Network →</a>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -447,10 +430,6 @@ debug: false
   <ul class="menu-list">
     
       <li><a href='#json-end-device-format'>JSON End Device Format</a></li>
-    
-      <li><a href='#migrating-devices-with-existing-sessions'>Migrating Devices with Existing Sessions</a></li>
-    
-      <li><a href='#examples'>Examples</a></li>
     
   </ul>
 
@@ -488,10 +467,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 04 Mar 2021.
+  Last changed by Nejra on 08 Apr 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/82181d94d19dcd600747092f4a7635c053d4c381">
-      doc: Add note that session migration is not supported
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/c3e77fa22021ae5fc7213e8f00cf6ebc648aba6c">
+      doc: Rearrange and update migration docs
     </a>
 </p>
 

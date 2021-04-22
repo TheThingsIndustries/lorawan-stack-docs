@@ -7,21 +7,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Migrating Gateways | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/" />
+  <title>Packet Broker Requirements for End Device Migration | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/packet-broker-requirements/" />
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.204300283223df27f32bfebd660183246f754276b7c9a859eb8ed03098cb05bb.css" integrity="sha256-IEMAKDIj3yfzK/69ZgGDJG91Qna3yahZ647QMJjLBbs=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
-  <meta name="description" content="The Things Stack for LoRaWAN">
+  <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Migrating Gateways">
-  <meta itemprop="description" content="The Things Stack for LoRaWAN">
+  <meta itemprop="name" content="Packet Broker Requirements for End Device Migration">
+  <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Migrating Gateways">
-  <meta property="og:description" content="The Things Stack for LoRaWAN">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">
-  <meta name="twitter:title" content="Migrating Gateways" />
-  <meta name="twitter:description" content="The Things Stack for LoRaWAN" />
+  <meta property="og:title" content="Packet Broker Requirements for End Device Migration">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/packet-broker-requirements/">
+  <meta name="twitter:title" content="Packet Broker Requirements for End Device Migration" />
+  <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
 <body><nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
@@ -119,6 +119,30 @@ debug: false
   <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/" class="">Migrating End Devices from V2</a>
     
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/packet-broker-requirements/" class="is-active">Packet Broker Requirements for End Device Migration</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-console/" class="">Console</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/" class="">Migration Tool</a>
+    
+  </li>
+
+</ul>
+
+
+    
   </li>
 
   <li>
@@ -137,7 +161,7 @@ debug: false
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/" class="is-active">Migrating Gateways</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/" class="">Migrating Gateways</a>
     
   </li>
 
@@ -192,7 +216,7 @@ debug: false
       <div class="column sidebar-middle">
 
 <div class="docs-content">
-<h1 class="title is-size-2">Migrating Gateways
+<h1 class="title is-size-2">Packet Broker Requirements for End Device Migration
   
   
   
@@ -200,29 +224,68 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>Migrating gateways to The Things Stack is an easy, two step process.</p>
-<h3 id="step-1">Step 1</h3>
-<p>Add the Gateway in the The Things Stack.</p>
-<blockquote>
-<p>For detailed instructions on adding gateways to The Things Stack using the CLI or Console, see <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/">Adding Gateways</a>.</p>
-</blockquote>
-<h3 id="step-2">Step 2</h3>
-<p>Update the server address in the gateway configuration settings.</p>
-<ul>
-<li>When using the Semtech UDP Packet Forwarder, make sure to update the <code>server_address</code> in the gateway configuration settings to the address of the Gateway Server. For examples, see <a href="https://www.thethingsindustries.com/docs/getting-started/ttn/addresses/">The Things Network Addresses</a> if you are using The Things Stack Community Edition, or <a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/addresses/">Cloud Addresses</a> if you are using The Things Stack Cloud. See <a href="https://www.thethingsindustries.com/docs/gateways/semtech-udp-packet-forwarder/">Semtech UDP Packet Forwarder</a> documentation for more info.</li>
-<li>When using the LoRa Basics Station protocol, refer to the <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/">LoRa Basics Station</a> documentation.</li>
-</ul>
-<p>Once your gateways are migrated, the traffic will be routed directly to The Things Stack.</p>
+  <p>Read this section if you want to make use of <a href="https://www.thethingsindustries.com/docs/reference/packet-broker/">Packet Broker</a> to migrate your end devices and route traffic from V2 to The Things Stack.</p>
+<!-- more -->
+<p>When migrating your devices with active sessions, it is in most cases not possible to make use of Packet Broker. Read along to learn when you can and cannot make use of Packet Broker.</p>
+<table>
+<thead>
+<tr>
+<th>Migrate from</th>
+<th align="left">Migrate to</th>
+<th align="left">Possibility to use Packet Broker</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The Things Network V2</td>
+<td align="left">The Things Stack Community Edition</td>
+<td align="left">Only without persisting active device sessions</td>
+</tr>
+<tr>
+<td>The Things Network V2</td>
+<td align="left">The Things Stack Cloud</td>
+<td align="left">Only without persisting active device sessions</td>
+</tr>
+<tr>
+<td>The Things Industries V2</td>
+<td align="left">The Things Stack Community Edition</td>
+<td align="left">Only without persisting active device sessions</td>
+</tr>
+<tr>
+<td>The Things Industries V2</td>
+<td align="left">The Things Stack Cloud</td>
+<td align="left">With and without persisting active device sessions</td>
+</tr>
+</tbody>
+</table>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  If you migrated your end devices and gateways from V2 (The Things Network V2 or The Things Industries V2 (SaaS), their traffic might still end up in V2. If this occurs, disable the devices in V2 by deleting their session keys, or deleting the application completely.
+  Remember that The Things Stack Enterprise and The Things Stack Open Source can also be configured to connect to Packet Broker. In that case, end devices can be migrated from V2 via Packet Broker without persisting active sessions.
+</div>
+
+<h2 id="devices-address-devaddr">Devices Address (DevAddr)</h2>
+<p><strong>V2 DevAddr of your end device needs to be routable by Packet Broker.</strong></p>
+<p>OTAA devices migrated without an active session will acquire a new <strong>DevAddr</strong> from The Things Stack during the join procedure. Packet Broker will always be able to route the traffic with DevAddrs assigned by The Things Stack Community Edition or The Things Stack Cloud.</p>
+<p>When registering ABP devices on The Things Stack, it is possible to auto-generate new <strong>DevAddr</strong> which can be routed by Packet Broker. ABP devices can be re-programmed to use this new <strong>DevAddr</strong>. This implies breaking their existing session on V2.</p>
+<p>Migrating OTAA and ABP devices with their active sessions implies keeping their <strong>DevAddr</strong> values from V2. Packet Broker will be able to route traffic for these <strong>DevAddr</strong> values only if these devices were registered on <strong>The Things Industries V2 (SaaS)</strong> and you are migrating them to <strong>The Things Stack Cloud</strong>. If you are not using these deployments and you still want your traffic to be routed by Packet Broker, end devices can only be migrated without their active sessions.</p>
+<h2 id="rx1-delay">RX1 Delay</h2>
+<p><strong>The <strong>RX1 delay</strong> value for your end device needs to be set to 5 seconds, which is a default for The Things Stack (V2 is using 1 second).</strong></p>
+<p>The RX1 delay of OTAA devices migrated without their active session will be automatically set to 5 seconds without your intervention.</p>
+<p>However, this needs to be manually set for OTAA devices migrated with an active session by <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/configure-mac-settings/">configuring their MAC settings</a>. It is also possible to re-program ABP devices to enforce the <strong>RX1 Delay</strong> of 5 seconds (this basically implies starting a new ABP session, i.e. migrating ABP devices without their active session from V2).</p>
+<p>If devices keep on using an <strong>RX1 Delay</strong> of 1 second, downlinks routed via the Packet Broker will probably never reach the end device in time. The solution to enable downlinks is to migrate your gateway to The Things Stack too. Even if you migrate your gateways to The Things Stack, you might still experience issues if you are using a high-latency backhaul.</p>
+<p>If DevAddr and RX1 Delay conditions stated above are not met, it is likely that you will experience difficulties in communication between your end device and The Things Stack via Packet Broker. If you are using deployments that are not connected to Packet Broker, you will have to migrate your devices as well as <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">your gateways</a> in order to receive the traffic from your end device on The Things Stack.</p>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  <p>It is possible to migrate active device sessions from The Things Network V2 (public community network) to any The Things Stack deployment. But, this is achievable only if you <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway to The Things Stack</a>, as Packet Broker cannot route this traffic properly.</p>
+<p>We strongly recommend to migrate devices without their active sessions, to make sure Packet Broker can route the traffic properly and that it reaches The Things Stack in time.</p>
+
 </div>
 
 
 </div>
 <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/getting-started/migrating/configure-mac-settings/">← Fine-tuning MAC Settings for End Devices</a>
-<a class="button is-pulled-right" href="/docs/getting-started/migrating/device-json/">JSON File Reference →</a>
+<a class="button is-pulled-left" href="/docs/getting-started/migrating/migrating-from-v2/">← Migrating End Devices from V2</a>
+<a class="button is-pulled-right" href="/docs/getting-started/migrating/migrating-from-v2/migrate-using-console/">Console →</a>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -240,6 +303,14 @@ debug: false
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      <li><a href='#devices-address-%28devaddr%29'>Devices Address (DevAddr)</a></li>
+    
+      <li><a href='#rx1-delay'>RX1 Delay</a></li>
+    
+  </ul>
 
 
   </nav>
@@ -282,7 +353,7 @@ debug: false
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/migrating/gateway-migration.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/migrating/migrating-from-v2/packet-broker-requirements.md" class="button">Edit on Github</a>
 </div>
 
       </div>

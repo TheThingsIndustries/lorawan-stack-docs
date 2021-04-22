@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Migrating from ChirpStack | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrate-from-chirpstack/" />
+  <title>Migrating End Devices from ChirpStack | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrate-from-chirpstack/" />
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.204300283223df27f32bfebd660183246f754276b7c9a859eb8ed03098cb05bb.css" integrity="sha256-IEMAKDIj3yfzK/69ZgGDJG91Qna3yahZ647QMJjLBbs=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Migrating from ChirpStack">
+  <meta itemprop="name" content="Migrating End Devices from ChirpStack">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Migrating from ChirpStack">
+  <meta property="og:title" content="Migrating End Devices from ChirpStack">
   <meta property="og:description" content="">
   <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/migrating/migrate-from-chirpstack/">
-  <meta name="twitter:title" content="Migrating from ChirpStack" />
+  <meta name="twitter:title" content="Migrating End Devices from ChirpStack" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -117,22 +117,12 @@ debug: false
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/" class="">Migrating Gateways</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/" class="">Migrating End Devices from V2</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/" class="">Migrating from The Things Network Stack V2</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrate-from-chirpstack/" class="is-active">Migrating from ChirpStack</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/" class="">Importable JSON File Reference</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrate-from-chirpstack/" class="is-active">Migrating End Devices from ChirpStack</a>
     
   </li>
 
@@ -143,6 +133,16 @@ debug: false
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/configure-mac-settings/" class="">Fine-tuning MAC Settings for End Devices</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/" class="">Migrating Gateways</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/" class="">JSON File Reference</a>
     
   </li>
 
@@ -192,7 +192,7 @@ debug: false
       <div class="column sidebar-middle">
 
 <div class="docs-content">
-<h1 class="title is-size-2">Migrating from ChirpStack
+<h1 class="title is-size-2">Migrating End Devices from ChirpStack
   
   
   
@@ -200,48 +200,52 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>This section contains instructions on how to migrate end devices from ChirpStack to The Things Stack.</p>
+  <p>This section contains instructions on how to migrate end devices from ChirpStack to The Things Stack using <a href="https://github.com/TheThingsNetwork/lorawan-stack-migrate"><code>ttn-lw-migrate</code> migration tool</a>.</p>
+<p><code>ttn-lw-migrate</code> tool is used to export end devices and applications from ChirpStack to a <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON file</a>. This JSON file can afterwards be <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">imported in The Things Stack</a> via <a href="https://www.thethingsindustries.com/docs/getting-started/console/">Console</a> or via <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">CLI</a>.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ol>
+<li><a href="https://github.com/TheThingsNetwork/lorawan-stack-migrate"><code>ttn-lw-migrate</code> tool</a> version <code>0.5.0</code> or higher installed on your system.</li>
+</ol>
 <h2 id="configure-ttn-lw-migrate">Configure ttn-lw-migrate</h2>
-<p>End devices and applications can easily be migrated from ChirpStack to The Things Stack with the <a href="https://github.com/TheThingsNetwork/lorawan-stack-migrate"><code>ttn-lw-migrate</code></a> tool. This tool is used for exporting end devices and applications to a <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON file</a> containing their description. This file can later be imported in The Things Stack as described in the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">Import End Devices in The Things Stack</a> section.</p>
-<p>First, configure the environment with the following variables modified according to your setup:</p>
+<p>First, configure the environment with the following variables modified according to your setup. Navigate to the folder where you installed <code>ttn-lw-migrate</code> and execute:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">CHIRPSTACK_API_URL</span><span class="o">=</span><span class="s2">&#34;localhost:8080&#34;</span>    <span class="c1"># ChirpStack Application Server URL</span>
 $ <span class="nb">export</span> <span class="nv">CHIRPSTACK_API_TOKEN</span><span class="o">=</span><span class="s2">&#34;7F0as987e61...&#34;</span>  <span class="c1"># ChirpStack API key</span>
-$ <span class="nb">export</span> <span class="nv">JOIN_EUI</span><span class="o">=</span><span class="s2">&#34;0101010102020203&#34;</span>            <span class="c1"># Set JoinEUI for exported devices</span>
-$ <span class="nb">export</span> <span class="nv">FREQUENCY_PLAN_ID</span><span class="o">=</span><span class="s2">&#34;EU_863_870&#34;</span>         <span class="c1"># Set FrequencyPlanID for exported devices</span>
-$ <span class="nb">export</span> <span class="nv">CHIRPSTACK_API_INSECURE</span><span class="o">=</span><span class="m">0</span>              <span class="c1"># Set to 1 if not using TLS</span>
+$ <span class="nb">export</span> <span class="nv">JOIN_EUI</span><span class="o">=</span><span class="s2">&#34;0101010102020203&#34;</span>            <span class="c1"># Set The Things Stack JoinEUI for exported devices</span>
+$ <span class="nb">export</span> <span class="nv">FREQUENCY_PLAN_ID</span><span class="o">=</span><span class="s2">&#34;EU_863_870&#34;</span>         <span class="c1"># Set The Things Stack FrequencyPlanID for exported devices</span>
+$ <span class="nb">export</span> <span class="nv">CHIRPSTACK_API_INSECURE</span><span class="o">=</span><span class="m">0</span>              <span class="c1"># Set to 1 if not using TLS on ChirpStack</span>
 </code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <code>JoinEUI</code> and <code>FrequencyPlanID</code> have to be set because ChirpStack does not store these variables.
+  <p><code>JoinEUI</code> and <code>FrequencyPlanID</code> have to be set because ChirpStack does not store these variables.</p>
+<p>See <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plans</a> for a full list of frequency plans supported by The Things Stack (and their IDs).</p>
+
 </div>
 
 <h2 id="export-end-devices">Export End Devices</h2>
-<p>With <code>ttn-lw-migrate</code> tool you can export a single or multiple end devices based on their <code>DevEUI</code>.</p>
-<p>To export a single end device&rsquo;s description to a <code>device.json</code> file, use the following command in your terminal:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-migrate --source chirpstack device <span class="s2">&#34;0102030405060701&#34;</span> &gt; device.json
-</code></pre></div><p>To export multiple end devices, you need to create a <code>.txt</code> file containing one DevEUI per line as in example below.</p>
-<details><summary>Example of devices.txt</summary>
+<p>With <code>ttn-lw-migrate</code> tool you can easily export a single or multiple end devices based on their <strong>DevEUI</strong>.</p>
+<p>To export a single end device to a <code>devices.json</code> file:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-migrate --source chirpstack device <span class="s2">&#34;0102030405060701&#34;</span> &gt; devices.json
+</code></pre></div><p>To export multiple end devices, create a <code>devices.txt</code> file containing one <code>DevEUI</code> per line:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="m">0102030405060701</span>
 <span class="m">0102030405060702</span>
 <span class="m">0102030405060703</span>
 <span class="m">0102030405060704</span>
 <span class="m">0102030405060705</span>
 <span class="m">0102030405060706</span>
-</code></pre></div></details>
-<p>To export multiple end devices to a <code>devices.json</code> file, run the following command in your terminal:</p>
+</code></pre></div><p>To export multiple end devices to a <code>devices.json</code> file:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-migrate --source chirpstack device &lt; devices.txt &gt; devices.json
 </code></pre></div><h2 id="export-applications">Export Applications</h2>
-<p>You can also export applications with <code>ttn-lw-migrate</code> tool using their names, which results with a JSON file containing descriptions of all the end devices that the application contains.</p>
-<p>Use the following command to export end devices from a single application:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-migrate --source chirpstack application <span class="s2">&#34;app1&#34;</span> &gt; application.json
+<p>You can also export applications with <code>ttn-lw-migrate</code> tool using their names from ChirpStack, which results in a JSON file containing descriptions of all the end devices contained by that application.</p>
+<p>To export end devices from a single application:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-migrate --source chirpstack application <span class="s2">&#34;app1&#34;</span> &gt; applications.json
 </code></pre></div><p>To export end devices from multiple applications to an <code>applications.json</code> file, you need to create a <code>.txt</code> file containing one application name per line and run the following command in your terminal:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-migrate --source chirpstack application &lt; applications.txt &gt; applications.json
-</code></pre></div><p><div class="notification is-info is-light has-text-dark">
+</code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   ABP end devices without an active session can be exported from ChirpStack, but cannot be imported in The Things Stack.
 </div>
 
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
   <code>MaxEIRP</code> parameter may not be always set properly.
 </div>
 
@@ -249,11 +253,10 @@ $ <span class="nb">export</span> <span class="nv">CHIRPSTACK_API_INSECURE</span
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   ChirpStack <code>variables</code> parameter related to payload formatting will always be converted to <code>null</code> when the end device is imported to The Things Stack.
 </div>
-</p>
 </div>
 <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/getting-started/migrating/migrating-from-v2/">← Migrating from The Things Network Stack V2</a>
-<a class="button is-pulled-right" href="/docs/getting-started/migrating/device-json/">Importable JSON File Reference →</a>
+<a class="button is-pulled-left" href="/docs/getting-started/migrating/migrating-from-v2/">← Migrating End Devices from V2</a>
+<a class="button is-pulled-right" href="/docs/getting-started/migrating/import-devices/">Import End Devices in The Things Stack →</a>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -273,6 +276,8 @@ $ <span class="nb">export</span> <span class="nv">CHIRPSTACK_API_INSECURE</span
 
 
   <ul class="menu-list">
+    
+      <li><a href='#prerequisites'>Prerequisites</a></li>
     
       <li><a href='#configure-ttn-lw-migrate'>Configure ttn-lw-migrate</a></li>
     
@@ -316,10 +321,10 @@ $ <span class="nb">export</span> <span class="nv">CHIRPSTACK_API_INSECURE</span
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Aggelos Kolaitis on 21 Jan 2021.
+  Last changed by Nejra on 08 Apr 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/18ffa7d9a9542d0dadb338834d38d5532783fd26">
-      doc: Update ttn-lw-migrate instructions
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/c3e77fa22021ae5fc7213e8f00cf6ebc648aba6c">
+      doc: Rearrange and update migration docs
     </a>
 </p>
 
