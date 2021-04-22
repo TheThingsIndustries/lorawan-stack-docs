@@ -8,4 +8,8 @@ This guide documents the process of migrating end devices and gateways to {{% tt
 
 <!--more-->
 
-{{% tts %}} can import devices from any network - for networks not covered in this section, see the [devices.json]({{< relref "device-json" >}}) file format reference.
+End devices from [{{% ttnv2 %}}]({{< relref "migrating-from-v2" >}}) or any other LoRaWAN network (like [Chirpstack]({{< relref "migrate-from-chirpstack" >}})) can be migrated to {{% tts %}}. Migrating devices can be done in two ways - manually via {{% tts %}} Console or by using `ttn-lw-migrate` tool, depending on how many devices and which network you are migrating from.
+
+{{< note >}} In general, end devices from any LoRaWAN network can be imported to {{% tts %}} by using a properly formatted [JSON file]({{< relref "device-json" >}}). {{</ note >}}
+
+In this section, we first consider migrating end devices, then migrating gateways.
