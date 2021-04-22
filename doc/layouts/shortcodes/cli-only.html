@@ -1,7 +1,10 @@
 <div class="notification is-primary is-light has-text-dark">
   <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
   <p>The instructions below use the command-line interface (CLI).</p>
+  {{ if .Get "hint-upgrade" }}
+  <p>Make sure that the CLI is up-to-date and uses an updated configuration file: <code>ttn-lw-cli use...</code></p>
+  {{ end }}
   <div class="buttons">
-    <a class="button is-dark is-outlined" href="{{ ref . "/getting-started/cli/installing-cli" }}">Learn how to install the CLI</a>
+    <a class="button is-dark is-outlined" href="{{ ref . "/getting-started/cli/installing-cli" }}">Learn how to install {{ if .Get "hint-upgrade" -}} or upgrade {{ end -}} the CLI</a>
   </div>
 </div>
