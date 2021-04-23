@@ -26,8 +26,8 @@ The **EUI** of the gateway can be found on the configuration web page of the gat
 2. Using your PC or phone, connect to the WiFi Access Point exposed by the gateway. The default SSID format is "MKGW2-LW-xxxx”, e.g "MKGW2-LW-91D8 ", where “91D8” is the last two bytes of the gateway MAC address. The default password is Moko4321.
 3. After successful connection, the WEB management platform can be accessed through the IP address 192.168.22.1 of the gateway LAN interface.
 4. Log in using the following default credentials:
-Username: Admin 
-Password: admin
+ Username: Admin 
+ Password: admin
 It is recommended that the default password is changed for security reasons.
 
 {{< figure src="login in web.png" alt="Login In Web" >}}
