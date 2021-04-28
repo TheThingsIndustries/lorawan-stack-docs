@@ -1,5 +1,5 @@
 ---
-title: "Migration Tool"
+title: "Migrate using the Migration Tool"
 description: ""
 weight: 2
 ---
@@ -8,11 +8,11 @@ This section refers to migrating end devices to {{% tts %}} using [`ttn-lw-migra
 
 <!--more-->
 
-`ttn-lw-migrate` tool is used to export end devices from {{% ttnv2 %}} to a [JSON file]({{< ref "/getting-started/migrating/device-json" >}}). This JSON file can afterwards be [imported in {{% tts %}}]({{< ref "/getting-started/migrating/import-devices" >}}) via the [Console]({{< ref "/getting-started/console" >}}) or via the [CLI]({{< ref "/getting-started/cli" >}}).
-
 ## Prerequisites
 
 1. [`ttn-lw-migrate` tool](https://github.com/TheThingsNetwork/lorawan-stack-migrate) version `0.5.0` or higher installed on your system.
+
+{{< note >}} See the [Migration Tool]({{< ref "/getting-started/migrating/migration-tool" >}}) guide for detailed installation instructions. {{</ note >}}
 
 ## Configure the Environment
 

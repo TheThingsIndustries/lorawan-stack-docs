@@ -1,5 +1,5 @@
 ---
-title: "Migrating Active Sessions"
+title: "Migrate Active Sessions"
 description: ""
 weight: 2
 new_in_version: "3.12.0"
