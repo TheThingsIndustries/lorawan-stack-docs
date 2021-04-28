@@ -1,18 +1,20 @@
 ---
-title: "Visualize LR1110 Geolocation Data on Ubidots"
+title: "Visualize LoRa Edge™ Geolocation Data on Ubidots"
 description: ""
 weight: 70
+aliases:
+  - /integrations/lr1110-geolocation
 ---
 
-{{< figure src="LR1110.jpg" alt="LR1110" class="float plain" >}}
+{{< figure src="LR1110.jpg" alt="LoRa Edge™ LR1110" class="float plain" >}}
 
-This guide shows you an example of using {{% tts %}} integrations to interact with [LoRa Cloud™ Device & Application Services](https://www.loracloud.com/documentation/device_management) to acquire the position solution for the LR1110-based tracking device, and to send that position data to a map widget on [Ubidots](https://ubidots.com/).
+This guide shows you an example of using {{% tts %}} integrations to interact with [LoRa Cloud™ Device & Application Services](https://www.loracloud.com/documentation/device_management) to acquire the position solution for the LoRa Edge™-based tracking device, and to send that position data to a map widget on [Ubidots](https://ubidots.com/).
 
 <!--more-->
 
-[LR1110](https://www.semtech.com/products/wireless-rf/lora-transceivers/lr1110) is a long range, ultra-low power transceiver designed by Semtech, offering Wi-Fi and GNSS geolocation capabilities. The [LoRa Basics™ Modem-E](https://lora-developers.semtech.com/uploads/documents/files/Understanding_LoRa_Basics_Modem-E_Sept2_Approvd-Final.pdf) is a software embedded inside LR1110 that supports the LoRaWAN protocol stack, as well as the application layer functions and APIs. 
+[LoRa Edge™ LR1110](https://www.semtech.com/products/wireless-rf/lora-transceivers/lr1110) is a long range, ultra-low power transceiver designed by Semtech, offering Wi-Fi and GNSS geolocation capabilities. The [LoRa Basics™ Modem-E](https://lora-developers.semtech.com/uploads/documents/files/Understanding_LoRa_Basics_Modem-E_Sept2_Approvd-Final.pdf) is a software embedded inside LoRa Edge™ LR1110 that supports the LoRaWAN protocol stack, as well as the application layer functions and APIs. 
 
-The [Device & Application Services with Geolocation for Modem-based Devices API](https://www.loracloud.com/documentation/device_management?url=v1.html) on LoRa Cloud™ allows interacting with Device & Application Services to make efficient use of the LR1110's geolocation features.
+The [Device & Application Services with Geolocation for Modem-based Devices API](https://www.loracloud.com/documentation/device_management?url=v1.html) on LoRa Cloud™ allows interacting with Device & Application Services to make efficient use of the LoRa Edge™'s geolocation features.
 
 ## Prerequisites
 
@@ -22,7 +24,7 @@ The [Device & Application Services with Geolocation for Modem-based Devices API]
 
 {{< warning >}} The [UbiFunctions](https://help.ubidots.com/en/articles/2132086-analytics-ubifunctions-user-guide) module used in this guide is currently not available for the STEM plan. {{</ warning >}}
 
-{{< note >}} This guide assumes you have already added your LR1110-based tracking device to {{% tts %}}. See [Adding Devices](https://www.thethingsindustries.com/docs/devices/adding-devices/) section for a detailed info. {{</ note >}}
+{{< note >}} This guide assumes you have already added your LoRa Edge™-based tracking device to {{% tts %}}. See [Adding Devices](https://www.thethingsindustries.com/docs/devices/adding-devices/) section for a detailed info. {{</ note >}}
 
 ## Prepare a LoRa Cloud™ Setup
 
@@ -122,4 +124,4 @@ Add a new map widget by clicking the **+** button in the upper right corner and 
 
 Finally, you will see a map widget containing your device's current location appearing in your dashboard! 
 
-{{< figure src="LR1110-location.png" alt="LR1110 location" >}}
+{{< figure src="LR1110-location.png" alt="LoRa Edge™ location" >}}
