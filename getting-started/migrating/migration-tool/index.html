@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Migrate without Persisting Active Sessions | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/establish-new-session/" />
+  <title>Migration Tool | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/" />
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.6cfa3f65f4261ffebfcd3dec8ec1fbb74dc5578581ec4c630140cbb0214fd122.css" integrity="sha256-bPo/ZfQmH/6/zT3sjsH7t03FV4WB7ExjAUDLsCFP0SI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Migrate without Persisting Active Sessions">
+  <meta itemprop="name" content="Migration Tool">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Migrate without Persisting Active Sessions">
+  <meta property="og:title" content="Migration Tool">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/establish-new-session/">
-  <meta name="twitter:title" content="Migrate without Persisting Active Sessions" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/">
+  <meta name="twitter:title" content="Migration Tool" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -119,49 +119,6 @@ debug: false
   <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/" class="">Migrating End Devices from V2</a>
     
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/packet-broker-requirements/" class="">Packet Broker Requirements for End Device Migration</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-console/" class="">Migrate using the Console</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/" class="">Migrate using the Migration Tool</a>
-    
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/establish-new-session/" class="is-active">Migrate without Persisting Active Sessions</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session/" class="">Migrate Active Sessions</a>
-    
-  </li>
-
-</ul>
-
-
-    
-  </li>
-
-</ul>
-
-
-    
   </li>
 
   <li>
@@ -175,7 +132,7 @@ debug: false
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/" class="">Migration Tool</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/" class="is-active">Migration Tool</a>
     
   </li>
 
@@ -240,7 +197,7 @@ debug: false
       <div class="column sidebar-middle">
 
 <div class="docs-content">
-<h1 class="title is-size-2">Migrate without Persisting Active Sessions
+<h1 class="title is-size-2">Migration Tool
   
   
   
@@ -248,64 +205,48 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>This section explains how to export one or more of your end devices from V2 to a <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON file</a>, without persisting their session.</p>
+  <p><a href="https://github.com/TheThingsNetwork/lorawan-stack-migrate"><code>ttn-lw-migrate</code></a> is a tool that can be used for migrating end devices and applications from V2 and other supported LoRaWAN networks (like ChirpStack) to The Things Stack. This section provides a few ways to install this tool.</p>
+<p>This tool is used for exporting descriptions of end devices and applications to a <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON file</a>, that can later be <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">imported in The Things Stack</a>.</p>
+<h2 id="installation">Installation</h2>
+<p>The migration tool can be installed using package managers or manually from binary files. The following subsections contain instructions for recommended installation methods depending on your OS.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>Migrating end devices without their active session with <code>ttn-lw-migrate</code> tool is not applicable to ABP devices. To achieve this, see <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-console/">how to migrate ABP device to The Things Stack using Console</a>.</p>
-<p>This section only applies to OTAA devices.</p>
+  We highly recommend installing or upgrading to <code>ttn-lw-migrate</code> version <code>0.5.0</code> or newer, because some features like session migration are not available for prior versions.
+</div>
+
+<h3 id="macos">macOS</h3>
+<p>To install <code>ttn-lw-migrate</code> tool with <code>brew</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ brew install TheThingsNetwork/homebrew-lorawan-stack/ttn-lw-migrate
+</code></pre></div><p>To upgrade <code>ttn-lw-migrate</code> tool if updates are available:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ brew upgrade TheThingsNetwork/homebrew-lorawan-stack/ttn-lw-migrate
+</code></pre></div><h3 id="linux">Linux</h3>
+<p>To install <code>ttn-lw-migrate</code> tool with <code>snap</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo snap install ttn-lw-migrate
+</code></pre></div><p>To upgrade <code>ttn-lw-migrate</code> tool if updates are available:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo snap refresh ttn-lw-migrate
+</code></pre></div><h3 id="windows">Windows</h3>
+<p>Download the zipped archive with binary files for Windows from <a href="https://github.com/TheThingsNetwork/lorawan-stack-migrate/releases">Github</a>.</p>
+<p>Extract the folder from ZIP archive and enter the folder. Double-click to run the <code>ttn-lw-migrate.exe</code> executable file.</p>
+<p>After this, you will be notified that you can run <code>ttn-lw-migrate</code> from the command prompt.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <p>To use the <code>ttn-lw-migrate</code> tool after successful installation, use your terminal or command prompt to navigate to the folder where it is installed and run the commands from there.</p>
+<p>Run <code>ttn-lw-migrate help</code> to see all available commands and flags.</p>
 
 </div>
 
+<h2 id="list-available-sources">List Available Sources</h2>
+<p>To list available sources that you can migrate your end devices and applications from:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-migrate sources
+</code></pre></div><p>Currently, supported sources are <code>ttnv2</code> and <code>chirpstack</code>.</p>
 <div class="notification is-primary is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Info:</h5>
-  We strongly recommend migrating end devices without persisting active sessions
-</div>
-
-<p>When migrating OTAA devices without persisting active sessions, a new join needs to be performed on The Things Stack to establish a new session.</p>
-<p>By establishing the new session with The Things Stack, an OTAA device gets assigned a new <strong>DevAddr</strong> and default values of some other parameters (like 5 seconds <strong>RX1 Delay</strong>). This ensures that the traffic sent by these end devices can be properly routed by the Packet Broker to and from The Things Stack.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Before exporting end devices, you can first test the execution by appending the <code>--dry-run</code> and <code>--verbose</code> flags to the commands presented in the sections below.
-</div>
-
-<h3 id="export-a-single-end-device">Export a Single End Device</h3>
-<p>To export a single end device from V2:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-migrate device --source ttnv2 <span class="s2">&#34;v2-end-device-ID&#34;</span> --ttnv2.with-session<span class="o">=</span><span class="nb">false</span> &gt; devices.json
-</code></pre></div><h3 id="export-a-batch-of-end-devices">Export a Batch of End Devices</h3>
-<p>First, create a text file <code>device_ids.txt</code>. This file needs to contain a V2 <code>Device ID</code> for every end device you want to export from V2.</p>
-<p>The format of this file is one <code>Device ID</code> per one line, i.e.:</p>
-<pre><code>dev1
-dev2
-dev3
-</code></pre><p>To export a batch of end devices from V2:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-migrate device --source ttnv2 --ttnv2.with-session<span class="o">=</span><span class="nb">false</span> &lt; device_ids.txt &gt; devices.json
-</code></pre></div><h3 id="export-all-end-devices-associated-with-v2-application">Export All End Devices Associated With V2 Application</h3>
-<p>To export all devices contained in V2 application:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-migrate application --source ttnv2 <span class="s2">&#34;ttn-v2-application-ID&#34;</span> --ttnv2.with-session<span class="o">=</span><span class="nb">false</span> &gt; devices.json
-</code></pre></div><h2 id="prevent-the-end-device-from-joining-v2-network">Prevent the End Device from Joining V2 Network</h2>
-<p>Exporting end devices without their active sessions does not clear root and session keys on V2. Hence, you need to prevent your devices from re-joining the V2 network.</p>
-<p>To prevent OTAA device from re-joining the V2 network, the recommended practice is to change the <strong>AppKey</strong> in the V2. By changing the <strong>AppKey</strong>, the existing session on V2 will not be terminated yet, but the end device will not be able to re-join because the V2 cluster will reject its new Join Requests.</p>
-<h2 id="import-end-devices-in-the-things-stack-application">Import End Devices in The Things Stack Application</h2>
-<p>Now that you have exported one or more of your devices to a <code>devices.json</code> file, you can continue by importing this file in The Things Stack via Console or via CLI.</p>
-<blockquote>
-<p>See <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">Import End Devices in The Things Stack</a> for detailed instructions on how to do this.</p>
-</blockquote>
-<h2 id="let-the-otaa-end-device-join-the-things-stack-network">Let the OTAA End Device Join The Things Stack Network</h2>
-<p>Next, your OTAA end device needs to join The Things Stack network. Since you have not migrated your device with its active session, it will need to perform a new join.</p>
-<p>Some OTAA devices ocasionally perform new joins - with these end devices, you can only wait for them to do this on their own.</p>
-<p>You could also send a downlink message from the V2 Console to trigger a new join if your device supports this - contact your device maker for detailed instructions.</p>
-<p>Some devices are also triggered when power cycled, or when deleted from V2.</p>
-<h2 id="next-step---migrate-gateways">Next Step - Migrate Gateways</h2>
-<p>Since we assume that you have not migrated your gateway from V2 yet, new Join Requests sent by your OTAA device are still being received by the V2 network. However, if you have prevented your device from joining V2 network (as recommended above), these Join Requests are not going to be accepted by the V2 Network Server.</p>
-<p>Instead, these Join Requests are going to be routed to The Things Stack via Packet Broker and The Things Stack will accept them. Your OTAA device will negotiate with The Things Stack Network Server to obtain a new <strong>DevAddr</strong>, channel settings and other MAC parameters. The traffic from your end device can from now on be routed to The Things Stack thanks to the newly assigned <strong>DevAddr</strong> and <strong>RX1 Delay</strong> of 5 seconds, which fulfills the Packet Broker requirements.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Even if you manage to get your end device traffic routed to The Things Stack via Packet Broker, we still recommend you get in touch with your local The Things Network community and coordinate the migration of gateways, so you do not loose the LoRaWAN network coverage. See how to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway to The Things Stack</a>.
+  For detailed instructions on migrating from V2 and ChirpStack, read <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/">Migrating End Devices from V2</a> and <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrate-from-chirpstack/">Migrating End Devices from ChirpStack</a> guides.
 </div>
 </div>
 <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/">← Migrate using the Migration Tool</a>
-<a class="button is-pulled-right" href="/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session/">Migrate Active Sessions →</a>
+<a class="button is-pulled-left" href="/docs/getting-started/migrating/import-devices/">← Import End Devices in The Things Stack</a>
+<a class="button is-pulled-right" href="/docs/getting-started/migrating/configure-mac-settings/">Fine-tuning MAC Settings for End Devices →</a>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -326,13 +267,9 @@ dev3
 
   <ul class="menu-list">
     
-      <li><a href='#prevent-the-end-device-from-joining-v2-network'>Prevent the End Device from Joining V2 Network</a></li>
+      <li><a href='#installation'>Installation</a></li>
     
-      <li><a href='#import-end-devices-in-the-things-stack-application'>Import End Devices in The Things Stack Application</a></li>
-    
-      <li><a href='#let-the-otaa-end-device-join-the-things-stack-network'>Let the OTAA End Device Join The Things Stack Network</a></li>
-    
-      <li><a href='#next-step---migrate-gateways'>Next Step - Migrate Gateways</a></li>
+      <li><a href='#list-available-sources'>List Available Sources</a></li>
     
   </ul>
 
@@ -377,7 +314,7 @@ dev3
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/establish-new-session.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/migrating/migration-tool.md" class="button">Edit on Github</a>
 </div>
 
       </div>
