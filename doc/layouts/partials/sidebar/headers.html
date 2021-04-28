@@ -3,7 +3,8 @@
 {{ if and (ge (len $headers) 1) (ne $.Params.toc "none") }}
   <ul class="menu-list">
     {{ range $headers }}
-      <li><a href='#{{ replaceRE  "\\s" "-" (. | plainify | lower) | replaceRE "[,.!?;:]" "" }}'>{{ . | plainify }}</a></li>
+      {{ $header := . | plainify | htmlUnescape }}
+      <li><a href='#{{ $header | anchorize }}'>{{ $header }}</a></li>
     {{ end }}
   </ul>
 {{ end }}
