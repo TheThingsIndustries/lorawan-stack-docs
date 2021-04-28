@@ -14,7 +14,7 @@ This guide explains how to manage your Packet Broker registration.
 
 <!--more-->
 
-{{< cli-only >}}
+{{< cli-only hint-upgrade=true >}}
 
 ## Prerequisites
 
@@ -29,7 +29,7 @@ This guide explains how to manage your Packet Broker registration.
 To view the current registration with Packet Broker:
 
 ```bash
-$ ttn-lw-cli packetbroker registration info
+$ ttn-lw-cli packetbroker info
 ```
 
 <details><summary>Example output with registration</summary>

@@ -161,6 +161,10 @@ To get the default routing policy:
 $ ttn-lw-cli packetbroker home-networks policies get default
 ```
 
+{{< info >}}
+If there is no default policy defined, this command fails with `not found`.
+{{< /info >}}
+
 <details><summary>Example output</summary>
 
 This example has all message types enabled:
