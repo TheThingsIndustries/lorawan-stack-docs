@@ -8,4 +8,4 @@ The Console is the management application of {{% tts %}} for LoRaWAN. It is a we
 
 <!--more-->
 
-Visit the addresses page for [{{% tts %}} Community Edition]({{< ref "getting-started/ttn/addresses" >}}) by The Things Network] or [{{% tts %}} Cloud]({{< ref "getting-started/cloud-hosted/addresses" >}}) to find the URL of the Console for these deployments.
+Visit the addresses page for [{{% tts %}} Community Edition]({{< ref "getting-started/ttn/addresses" >}}) by [The Things Network](https://thethingsnetwork.org) or [{{% tts %}} Cloud]({{< ref "getting-started/cloud-hosted/addresses" >}}) to find the URL of the Console for these deployments.
