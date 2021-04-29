@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.6cfa3f65f4261ffebfcd3dec8ec1fbb74dc5578581ec4c630140cbb0214fd122.css" integrity="sha256-bPo/ZfQmH/6/zT3sjsH7t03FV4WB7ExjAUDLsCFP0SI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8ad74acd91b5a12241eda8028141f254d94c46a257f9dc8b717a8d4f6c5ef678.css" integrity="sha256-itdKzZG1oSJB7agCgUHyVNlMRqJX&#43;dyLcXqNT2xe9ng=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Adding Gateways">
@@ -185,7 +185,8 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>This section contains instructions for adding Gateways in The Things Stack.</p>
+  
+<p>This section contains instructions for adding Gateways in The Things Stack.</p>
 <div class="tabs is-boxed">
   <ul>
     
@@ -205,7 +206,7 @@ debug: false
 </div>
 <div class="tab-content content">
   <section data-content="console">
-  <h2 id="adding-gateways-using-the-console">Adding Gateways using the Console</h2>
+  <h2 id="adding-gateways-using-the-console">Adding Gateways using the Console&nbsp;<a class="header-hash" href="#adding-gateways-using-the-console">#</a> </h2>
 <p>Go to <strong>Gateways</strong> in the top menu, and click <strong>+ Add Gateway</strong> to reach the gateway registration page.</p>
 <p>Fill the <strong>Gateway ID</strong>, <strong>Gateway EUI</strong> (if your gateway has an EUI) and <strong>Frequency Plan</strong>. The other fields are optional. Click <strong>Create Gateway</strong> to finish.</p>
 <figure>
@@ -218,7 +219,7 @@ debug: false
          alt="Gateway overview"/> 
 </figure>
 <p>You can now connect your gateway to The Things Stack.</p>
-<h3 id="create-gateway-api-key">Create Gateway API Key</h3>
+<h3 id="create-gateway-api-key">Create Gateway API Key&nbsp;<a class="header-hash" href="#create-gateway-api-key">#</a> </h3>
 <p>Some gateways require an API Key with Link Gateway Rights to be able to connect to The Things Stack.</p>
 <p>In order to do this, navigate to the <strong>API Keys</strong> menu of your gateway and select <strong>Add API Key</strong>.</p>
 <p>Enter a name for your key, select the <strong>Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink</strong> right and then press <strong>Create API Key</strong>.</p>
@@ -231,7 +232,7 @@ debug: false
     <img src="gateway-api-key-created.png"
          alt="Gateway API Key created"/> 
 </figure>
-<h2 id="set-gateway-location">Set Gateway Location</h2>
+<h2 id="set-gateway-location">Set Gateway Location&nbsp;<a class="header-hash" href="#set-gateway-location">#</a> </h2>
 <p>Once you have added your gateway to The Things Stack, you can also set its location to be displayed on a map widget by clicking <strong>Change location settings</strong>.</p>
 <p>If you do not mind your gateway&rsquo;s location to be publicly displayed, check the <strong>Publish location</strong> box.</p>
 <p>The gateway location can be manually set by entering the <strong>Latitude</strong>, <strong>Longitude</strong> and <strong>Altitude</strong> values.</p>
@@ -250,7 +251,7 @@ debug: false
 </figure>
 </section>
 <section data-content="cli">
-  <h2 id="adding-gateways-using-the-cli">Adding Gateways using the CLI</h2>
+  <h2 id="adding-gateways-using-the-cli">Adding Gateways using the CLI&nbsp;<a class="header-hash" href="#adding-gateways-using-the-cli">#</a> </h2>
 <p>First, list the available frequency plans:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli gateways list-frequency-plans
 </code></pre></div><p>Then, create the first gateway with the chosen frequency plan:</p>
@@ -264,7 +265,7 @@ debug: false
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   The CLI returns the created and updated entities by default in JSON. This can be useful in scripts.
 </div>
-<h3 id="create-gateway-api-key">Create Gateway API Key</h3>
+<h3 id="create-gateway-api-key">Create Gateway API Key&nbsp;<a class="header-hash" href="#create-gateway-api-key">#</a> </h3>
 <p>Some gateways require an API Key with Link Gateway Rights to be able to connect to The Things Stack.</p>
 <p>Create an API key for the gateway:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli gateways api-keys create <span class="se">\
@@ -272,7 +273,7 @@ debug: false
 </span><span class="se"></span>  --gateway-id gtw1 <span class="se">\
 </span><span class="se"></span>  --right-gateway-link
 </code></pre></div><p>The CLI will return an API key such as <code>NNSXS.VEEBURF3KR77ZR...</code>. This API key has only link rights and can therefore only be used for linking this gateway. Make sure to copy the key and save it in a safe place. You will not be able to see this key again in the future, and if you lose it, you can create a new one to replace it in the gateway configuration.</p>
-<h2 id="set-gateway-location">Set Gateway Location</h2>
+<h2 id="set-gateway-location">Set Gateway Location&nbsp;<a class="header-hash" href="#set-gateway-location">#</a> </h2>
 <p>Once you have added your gateway to The Things Stack, you can also set the locations of the gateway antennas.</p>
 <p>Add an antenna and set its location  with:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nv">GTW_ID</span><span class="o">=</span><span class="s2">&#34;your-gateway-id&#34;</span>
@@ -320,6 +321,7 @@ $ ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span
 </div>
 
 <p>Once a gateway has been added, get started with <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> and <a href="https://www.thethingsindustries.com/docs/integrations/">Integrations</a> to process and act on data.</p>
+
 </div>
 
 <div class="is-clearfix">
@@ -345,12 +347,16 @@ $ ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span
 
   <ul class="menu-list">
     
+      
       <li><a href='#adding-gateways-using-the-console'>Adding Gateways using the Console</a></li>
     
+      
       <li><a href='#set-gateway-location'>Set Gateway Location</a></li>
     
+      
       <li><a href='#adding-gateways-using-the-cli'>Adding Gateways using the CLI</a></li>
     
+      
       <li><a href='#set-gateway-location'>Set Gateway Location</a></li>
     
   </ul>

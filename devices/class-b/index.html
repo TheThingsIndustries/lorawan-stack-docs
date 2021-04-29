@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.6cfa3f65f4261ffebfcd3dec8ec1fbb74dc5578581ec4c630140cbb0214fd122.css" integrity="sha256-bPo/ZfQmH/6/zT3sjsH7t03FV4WB7ExjAUDLsCFP0SI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8ad74acd91b5a12241eda8028141f254d94c46a257f9dc8b717a8d4f6c5ef678.css" integrity="sha256-itdKzZG1oSJB7agCgUHyVNlMRqJX&#43;dyLcXqNT2xe9ng=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Class B">
@@ -150,8 +150,9 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>Class B end devices listen for downlink messages during ping slots. This allows applications to send messages to devices at predefined time slots, rather than waiting for a Class A uplink. When combined with <a href="https://www.thethingsindustries.com/docs/devices/multicast/">multicast groups</a>, this allows applications to send periodic downlinks to many devices at the same time.</p>
-<h2 id="enabling-and-disabling-class-b">Enabling and Disabling Class B</h2>
+  
+<p>Class B end devices listen for downlink messages during ping slots. This allows applications to send messages to devices at predefined time slots, rather than waiting for a Class A uplink. When combined with <a href="https://www.thethingsindustries.com/docs/devices/multicast/">multicast groups</a>, this allows applications to send periodic downlinks to many devices at the same time.</p>
+<h2 id="enabling-and-disabling-class-b">Enabling and Disabling Class B&nbsp;<a class="header-hash" href="#enabling-and-disabling-class-b">#</a> </h2>
 <p>In order to send Class B downlink messages to a single device, enable Class B support for the end device when creating or updating it with the <code>--supports-class-b</code> flag.</p>
 <p>For example, when enabling Class B for an existing device:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices <span class="nb">set</span> app1 dev1 --supports-class-b
@@ -162,13 +163,13 @@ debug: false
   For unicast devices, Class B downlink scheduling starts when the end device sends an uplink with the Class B bit set. This means that an OTAA device should send an uplink message with the Class B bit set after receiving the join-accept in order to enable Class B downlink scheduling.
 </div>
 
-<h2 id="multicast-group">Multicast Group</h2>
+<h2 id="multicast-group">Multicast Group&nbsp;<a class="header-hash" href="#multicast-group">#</a> </h2>
 <p>See <a href="https://www.thethingsindustries.com/docs/devices/multicast/">Multicast</a> for instructions for creating and using multicast groups.</p>
-<h2 id="class-b-message-settings">Class B Message Settings</h2>
+<h2 id="class-b-message-settings">Class B Message Settings&nbsp;<a class="header-hash" href="#class-b-message-settings">#</a> </h2>
 <p>The Things Stack supports optional settings for Class B downlink messages: the downlink path and the time to send the message.</p>
 <p>The downlink path is defined by one or more gateways IDs. The Network Server and Gateway Server schedules only on the specified gateways in the specified order. This is useful for multicast (where no downlink path is known because there is no uplink). A scheduling attempt can fail when the gateway is not connected, if there is a scheduling conflict or if duty-cycle regulations prohibit transmission.</p>
 <p>The time to transmit is an absolute timestamp in ISO 8601 format to send the message. This requires gateways either with GPS lock, or gateways that use a protocol that provide round-trip times (RTT). See the <a href="#example">Example</a> section below.</p>
-<h2 id="example">Example</h2>
+<h2 id="example">Example&nbsp;<a class="header-hash" href="#example">#</a> </h2>
 <div class="notification is-primary is-light has-text-dark">
   <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
   <p>The instructions below use the command-line interface (CLI).</p>
@@ -211,6 +212,7 @@ debug: false
   <span class="p">}]</span>
 <span class="p">}</span>
 </code></pre></div>
+
 </div>
 <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/devices/best-practices/">← Best Practices</a>
@@ -235,12 +237,16 @@ debug: false
 
   <ul class="menu-list">
     
+      
       <li><a href='#enabling-and-disabling-class-b'>Enabling and Disabling Class B</a></li>
     
+      
       <li><a href='#multicast-group'>Multicast Group</a></li>
     
+      
       <li><a href='#class-b-message-settings'>Class B Message Settings</a></li>
     
+      
       <li><a href='#example'>Example</a></li>
     
   </ul>

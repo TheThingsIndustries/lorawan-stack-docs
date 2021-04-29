@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.6cfa3f65f4261ffebfcd3dec8ec1fbb74dc5578581ec4c630140cbb0214fd122.css" integrity="sha256-bPo/ZfQmH/6/zT3sjsH7t03FV4WB7ExjAUDLsCFP0SI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8ad74acd91b5a12241eda8028141f254d94c46a257f9dc8b717a8d4f6c5ef678.css" integrity="sha256-itdKzZG1oSJB7agCgUHyVNlMRqJX&#43;dyLcXqNT2xe9ng=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Enable">
@@ -177,7 +177,8 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>The Storage Integration is implemented as an <a href="https://www.thethingsindustries.com/docs/reference/application-packages/">Application Package</a>. In order to enable it for an application (or a single end device), you have to create a package association.</p>
+  
+<p>The Storage Integration is implemented as an <a href="https://www.thethingsindustries.com/docs/reference/application-packages/">Application Package</a>. In order to enable it for an application (or a single end device), you have to create a package association.</p>
 <div class="notification is-primary is-light has-text-dark">
   <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
   <p>The instructions below use the command-line interface (CLI).</p>
@@ -192,7 +193,7 @@ debug: false
   You may need to update the CLI to use the new features. See instructions in <a href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/">Installing the CLI</a>.
 </div>
 
-<h2 id="enable-for-an-application">Enable for an Application</h2>
+<h2 id="enable-for-an-application">Enable for an Application&nbsp;<a class="header-hash" href="#enable-for-an-application">#</a> </h2>
 <p>Set up a default association between the desired application and the <code>storage-integration</code> package.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications packages default-associations <span class="nb">set</span> <span class="s2">&#34;app1&#34;</span> <span class="m">100</span> --package-name storage-integration
 </code></pre></div><div class="notification is-info is-light has-text-dark">
@@ -205,7 +206,7 @@ debug: false
   <strong>Do not configure more than one default association for the same application</strong>, since that will lead to storing duplicate messages in the persistent storage.
 </div>
 
-<h2 id="enable-for-an-end-device">Enable for an End Device</h2>
+<h2 id="enable-for-an-end-device">Enable for an End Device&nbsp;<a class="header-hash" href="#enable-for-an-end-device">#</a> </h2>
 <p>Set up an association between the desired end device and the <code>storage-integration</code> package.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications packages associations <span class="nb">set</span> <span class="s2">&#34;app1&#34;</span> <span class="s2">&#34;dev1&#34;</span> <span class="m">100</span> --package-name storage-integration
 </code></pre></div><div class="notification is-info is-light has-text-dark">
@@ -218,7 +219,7 @@ debug: false
   <strong>Do not configure multiple associations for the same end device</strong>, since that will lead to storing duplicate uplinks in the persistent storage.
 </div>
 
-<h2 id="disable-the-storage-integration">Disable the Storage Integration</h2>
+<h2 id="disable-the-storage-integration">Disable the Storage Integration&nbsp;<a class="header-hash" href="#disable-the-storage-integration">#</a> </h2>
 <p>Delete the package association, or the default association:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># List default associations</span>
 $ ttn-lw-cli applications packages default-associations list <span class="s2">&#34;app1&#34;</span>
@@ -239,6 +240,7 @@ $ ttn-lw-cli applications packages default-associations list <span class="s2">&#
 <span class="o">}</span>
 </code></pre></div><div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications packages default-associations delete <span class="s2">&#34;app1&#34;</span> <span class="m">100</span>
 </code></pre></div>
+
 </div>
 <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/storage/configuration/">← Configuration</a>
@@ -263,10 +265,13 @@ $ ttn-lw-cli applications packages default-associations list <span class="s2">&#
 
   <ul class="menu-list">
     
+      
       <li><a href='#enable-for-an-application'>Enable for an Application</a></li>
     
+      
       <li><a href='#enable-for-an-end-device'>Enable for an End Device</a></li>
     
+      
       <li><a href='#disable-the-storage-integration'>Disable the Storage Integration</a></li>
     
   </ul>

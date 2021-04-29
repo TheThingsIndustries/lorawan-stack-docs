@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.6cfa3f65f4261ffebfcd3dec8ec1fbb74dc5578581ec4c630140cbb0214fd122.css" integrity="sha256-bPo/ZfQmH/6/zT3sjsH7t03FV4WB7ExjAUDLsCFP0SI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8ad74acd91b5a12241eda8028141f254d94c46a257f9dc8b717a8d4f6c5ef678.css" integrity="sha256-itdKzZG1oSJB7agCgUHyVNlMRqJX&#43;dyLcXqNT2xe9ng=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Architecture">
@@ -219,8 +219,9 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>This page describes the architecture of a The Things Stack deployment on AWS ECS.</p>
-<h2 id="vpc-and-subnets">VPC and Subnets</h2>
+  
+<p>This page describes the architecture of a The Things Stack deployment on AWS ECS.</p>
+<h2 id="vpc-and-subnets">VPC and Subnets&nbsp;<a class="header-hash" href="#vpc-and-subnets">#</a> </h2>
 <p>The foundation of the deployment is the Virtual Private Cloud (VPC) that lets us create an isolated environment within the AWS cloud.</p>
 <figure class="plain">
     <img src="aws-vpc.svg"
@@ -229,7 +230,7 @@ debug: false
 
 <p>We will deploy The Things Stack across two availability zones (AZs). In each AZ we have a private subnet that will contain the resources for The Things Stack such as databases, container instances and the application containers themselves. Since these resources can&rsquo;t communicate with the internet directly, we also have public subnets that contain a Network Load Balancer (NLB) for load balancing incoming traffic across instances and a NAT Gateway (NGW) for outgoing connections from resources in the private subnet.</p>
 <p>The NLBs and NGWs all have Elastic IP address. All incoming connections to The Things Stack will use the IP addresses of the NLBs, and all outgoing connections will use the IP addresses of the NGWs. This means that you can use these IP addresses in the firewall rules for gateways that need to connect to your deployment, and on other servers that need to connect to your deployment or receive connections (webhooks) from it.</p>
-<h2 id="persistence">Persistence</h2>
+<h2 id="persistence">Persistence&nbsp;<a class="header-hash" href="#persistence">#</a> </h2>
 <p>The Things Stack relies on two databases: PostgreSQL and Redis. AWS offers these databases as managed services, so that we can focus on operating a LoRaWAN network instead of operating databases.</p>
 <p>We use a PostgreSQL-compatible version of Amazon Aurora and a Redis-compatible version of Amazon ElastiCache. Both PostgreSQL and Redis are deployed in a multi-AZ master-replica setup.</p>
 <p>If desired, it is possible to use separate Redis clusters for persistent storage and for caching.</p>
@@ -244,10 +245,10 @@ debug: false
   In multi-cluster deployments, the PostgreSQL database, the S3 bucket for profile pictures and the S3 bucket for end device pictures are only deployed in the primary cluster.
 </div>
 
-<h2 id="configuration">Configuration</h2>
+<h2 id="configuration">Configuration&nbsp;<a class="header-hash" href="#configuration">#</a> </h2>
 <p>The AWS ECS deployment of The Things Stack uses a combination of configuration stored in AWS Systems Manager Parameter Store, secrets stored in AWS Secrets Manager and other environment variables that are set directly on the ECS tasks.</p>
 <p>The configuration for interoperability with other LoRaWAN Backend Interfaces-compliant servers can become quite complicated and is therefore stored as multiple files in an S3 bucket.</p>
-<h2 id="containers">Containers</h2>
+<h2 id="containers">Containers&nbsp;<a class="header-hash" href="#containers">#</a> </h2>
 <p>The Things Stack itself is deployed as Docker Containers on AWS ECS.</p>
 <figure class="plain">
     <img src="aws-ecs.svg"
@@ -256,7 +257,7 @@ debug: false
 
 <p>The ECS cluster uses container instances in the private subnets of both availability zones. Each container instance runs at least a Gateway Server container that is dedicated for UDP gateways. This is necessary because of the limited support for UDP in ECS.</p>
 <p>Depending on your preferences, you can run other containers on your container instances, or choose to use AWS Fargate.</p>
-<h2 id="networking">Networking</h2>
+<h2 id="networking">Networking&nbsp;<a class="header-hash" href="#networking">#</a> </h2>
 <p>All internal communication between the different components of The Things Stack is done over gRPC (port 1884) and HTTP (port 1885). For incoming connections from outside the cluster, ECS registers a number of services in the NLB.</p>
 <figure class="plain">
     <img src="aws-ecs-containers.svg"
@@ -268,6 +269,7 @@ debug: false
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   In multi-cluster deployments, the Identity Server containers in secondary clusters are replaced with containers that proxy requests to Identity Server in the primary cluster.
 </div>
+
 </div>
 
 <div class="is-clearfix">
@@ -293,14 +295,19 @@ debug: false
 
   <ul class="menu-list">
     
+      
       <li><a href='#vpc-and-subnets'>VPC and Subnets</a></li>
     
+      
       <li><a href='#persistence'>Persistence</a></li>
     
+      
       <li><a href='#configuration'>Configuration</a></li>
     
+      
       <li><a href='#containers'>Containers</a></li>
     
+      
       <li><a href='#networking'>Networking</a></li>
     
   </ul>

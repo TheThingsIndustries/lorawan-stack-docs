@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.6cfa3f65f4261ffebfcd3dec8ec1fbb74dc5578581ec4c630140cbb0214fd122.css" integrity="sha256-bPo/ZfQmH/6/zT3sjsH7t03FV4WB7ExjAUDLsCFP0SI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8ad74acd91b5a12241eda8028141f254d94c46a257f9dc8b717a8d4f6c5ef678.css" integrity="sha256-itdKzZG1oSJB7agCgUHyVNlMRqJX&#43;dyLcXqNT2xe9ng=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="MQTT Client">
@@ -182,7 +182,8 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>This section explains how to configure a Pub/Sub integration using the built-in MQTT client.</p>
+  
+<p>This section explains how to configure a Pub/Sub integration using the built-in MQTT client.</p>
 <p>Creating a Pub/Sub integration with the built in MQTT client requires you to have an MQTT server running with an available endpoint. <a href="https://mosquitto.org/">Mosquitto</a> is a popular open source MQTT server you may use, but The Things Stack MQTT client works with any other MQTT server too.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
@@ -206,14 +207,14 @@ debug: false
          alt="MQTT configuration"/> 
 </figure>
 
-<h2 id="message-types">Message Types</h2>
+<h2 id="message-types">Message Types&nbsp;<a class="header-hash" href="#message-types">#</a> </h2>
 <p>The Application Server can be configured to publish and subscribe to topics for individual events. See <a href="/docs/integrations/pubsub/message-types/">Message Types</a> for more information about events and topics.</p>
 <p>After enabling events, click the <strong>Add Pub/Sub</strong> button to enable the integration.</p>
-<h2 id="subscribing-to-upstream-traffic">Subscribing to Upstream Traffic</h2>
+<h2 id="subscribing-to-upstream-traffic">Subscribing to Upstream Traffic&nbsp;<a class="header-hash" href="#subscribing-to-upstream-traffic">#</a> </h2>
 <p>The Application Server publishes messages for any enabled events. For example, when a device sends an uplink, an <code>uplink</code> message is published. To view these using a <code>mosquitto_sub</code> client connected to your MQTT server:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mosquitto_sub -h &lt;server_hostname&gt; -p &lt;port&gt; -t <span class="s1">&#39;#&#39;</span> -v
 <span class="c1"># base-topic/uplink {&#34;end_device_ids&#34;:{&#34;device_id&#34;:&#34;dev1&#34;,&#34;application_ids&#34;:{&#34;application_id&#34;:&#34;app1&#34;}},&#34;received_at&#34;:&#34;2020-05-12T12:23:07.087614Z&#34;,&#34;uplink_message&#34;:{&#34;session_key_id&#34;:&#34;AXIDznz4bnQqtW8T3NsIVg==&#34;,&#34;f_port&#34;:1,&#34;f_cnt&#34;:327,&#34;frm_payload&#34;:&#34;AQ==&#34;}}</span>
-</code></pre></div><h2 id="scheduling-downlinks">Scheduling Downlinks</h2>
+</code></pre></div><h2 id="scheduling-downlinks">Scheduling Downlinks&nbsp;<a class="header-hash" href="#scheduling-downlinks">#</a> </h2>
 <p>You can schedule downlink messages by publishing to a topic. For example, using a <code>mosquitto_pub</code> client connected to your MQTT server:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mosquitto_pub -h &lt;server_hostname&gt; -p &lt;port&gt; -t <span class="s1">&#39;base-topic/push-subtopic&#39;</span> -m <span class="s1">&#39;{&#34;end_device_ids&#34;:{&#34;device_id&#34;:&#34;dev1&#34;,&#34;application_ids&#34;:{&#34;application_id&#34;:&#34;app1&#34;}},&#34;downlinks&#34;:[{&#34;f_port&#34;:1,&#34;frm_payload&#34;:&#34;AA==&#34;,&#34;priority&#34;:&#34;NORMAL&#34;}]}&#39;</span>
 </code></pre></div><p>will push a downlink to the end device <code>dev1</code> of the application <code>app1</code> with a base64 encoded payload of <code>AA==</code>, if <code>push-subtopic</code>is configured as the Sub topic for Downlink queue push.</p>
@@ -221,6 +222,7 @@ debug: false
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Received on [base-topic/downlink-queued-subtopic] :</span> 
 <span class="s1">&#39;{&#34;end_device_ids&#34;:{&#34;device_id&#34;:&#34;dev1&#34;,&#34;application_ids&#34;:{&#34;application_id&#34;:&#34;app1&#34;}},&#34;correlation_ids&#34;:[&#34;as:downlink:01E84EAR5B4NM229NDKE0004J6&#34;],&#34;downlink_queued&#34;:{&#34;f_port&#34;:1,&#34;frm_payload&#34;:&#34;AA==&#34;,&#34;priority&#34;:&#34;NORMAL&#34;,&#34;correlation_ids&#34;:[&#34;as:downlink:01E84EAR5B4NM229NDKE0004J6&#34;]}}&#39;</span>
 </code></pre></div>
+
 </div>
 
 <div class="is-clearfix">
@@ -246,10 +248,13 @@ debug: false
 
   <ul class="menu-list">
     
+      
       <li><a href='#message-types'>Message Types</a></li>
     
+      
       <li><a href='#subscribing-to-upstream-traffic'>Subscribing to Upstream Traffic</a></li>
     
+      
       <li><a href='#scheduling-downlinks'>Scheduling Downlinks</a></li>
     
   </ul>

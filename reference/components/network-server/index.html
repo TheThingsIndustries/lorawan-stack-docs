@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.6cfa3f65f4261ffebfcd3dec8ec1fbb74dc5578581ec4c630140cbb0214fd122.css" integrity="sha256-bPo/ZfQmH/6/zT3sjsH7t03FV4WB7ExjAUDLsCFP0SI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8ad74acd91b5a12241eda8028141f254d94c46a257f9dc8b717a8d4f6c5ef678.css" integrity="sha256-itdKzZG1oSJB7agCgUHyVNlMRqJX&#43;dyLcXqNT2xe9ng=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Network Server">
@@ -248,26 +248,27 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>The Network Server handles the LoRaWAN network layer, including MAC commands, regional parameters and adaptive data rate (ADR).</p>
-<h2 id="device-management">Device Management</h2>
+  
+<p>The Network Server handles the LoRaWAN network layer, including MAC commands, regional parameters and adaptive data rate (ADR).</p>
+<h2 id="device-management">Device Management&nbsp;<a class="header-hash" href="#device-management">#</a> </h2>
 <p>Network Servers expose <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#the-nsenddeviceregistry-service">NsEndDeviceRegistry</a> service for end device management. Typical clients of this service are <a href="/docs/reference/components/console/">Console</a> and <a href="/docs/reference/components/cli/">CLI</a>.</p>
 <p>Network Servers store device MAC configuration, MAC state and network session keys.</p>
 <p>Change of device MAC configuration may trigger a downlink message.</p>
-<h2 id="application-downlink-queue-management-and-linking">Application Downlink Queue Management and Linking</h2>
+<h2 id="application-downlink-queue-management-and-linking">Application Downlink Queue Management and Linking&nbsp;<a class="header-hash" href="#application-downlink-queue-management-and-linking">#</a> </h2>
 <p>Network Servers let <a href="/docs/reference/components/gateway-server/">Application Servers</a> push, replace and list application downlinks as well as link applications via gRPC API.</p>
 <p>Change of application downlink queue may trigger a downlink message.</p>
 <p>Once the link is established, Network Server will send application-specific uplink messages to the client via the link. There can be at most one active link per-appplication.</p>
 <p>In case link is not active, but Network Server has application-specific uplink messages to send, those messages will be queued and sent once the link is established.</p>
-<h2 id="downlink-scheduling">Downlink Scheduling</h2>
+<h2 id="downlink-scheduling">Downlink Scheduling&nbsp;<a class="header-hash" href="#downlink-scheduling">#</a> </h2>
 <p>Network Servers maintain internal downlink task queue. Each downlink task has an execution time associated with it, which tasks are sorted by in ascending order. Whenever a downlink task is ready to execute, it is executed as soon as possible.</p>
-<h3 id="join-accept">Join-accept</h3>
+<h3 id="join-accept">Join-accept&nbsp;<a class="header-hash" href="#join-accept">#</a> </h3>
 <p>In case a pending session exists and join-accept is queued for the device, it is scheduled.</p>
-<h3 id="data-downlink">Data downlink</h3>
+<h3 id="data-downlink">Data downlink&nbsp;<a class="header-hash" href="#data-downlink">#</a> </h3>
 <p>In case a pending session does not exist or join-accept for it has already been sent, Network Server attempts to genererate and schedule data downlink in the active session.</p>
-<h2 id="uplink-handling">Uplink Handling</h2>
+<h2 id="uplink-handling">Uplink Handling&nbsp;<a class="header-hash" href="#uplink-handling">#</a> </h2>
 <p>Network Servers receive uplinks from <a href="/docs/reference/components/gateway-server/">Gateway Servers</a> via gRPC.</p>
 <p>Network Servers process the uplinks received and handle accordingly. The first step is matching the uplink to a device. In case an uplink cannot be matched to a device stored in Network Server, it is dropped.</p>
-<h3 id="join-request">Join-request</h3>
+<h3 id="join-request">Join-request&nbsp;<a class="header-hash" href="#join-request">#</a> </h3>
 <p>If join-request is received:</p>
 <ol>
 <li>Device is matched using the <code>DevEUI</code> and <code>JoinEUI</code> pair present in the join-request, which uniquely identifies the device.</li>
@@ -276,7 +277,7 @@ debug: false
 <li>If <a href="/docs/reference/components/join-server/">Join Server</a> is not present in the cluster or the device is not provisioned in the cluster-local <a href="/docs/reference/components/join-server/">Join Server</a>, Network Server sends a join-request message to the <a href="/docs/reference/components/join-server/">Join Server</a> discovered via <a href="https://www.thethingsindustries.com/docs/reference/interop-repository/">interoperability configuration</a>.</li>
 <li>If a <a href="/docs/reference/components/join-server/">Join Server</a> accepted the join-request, join-accept message may be enqueued for the device and application-specific uplink messages carrying relevant information about join-accept is sent to linked <a href="/docs/reference/components/application-server/">Application Server</a>.</li>
 </ol>
-<h3 id="data-uplink">Data uplink</h3>
+<h3 id="data-uplink">Data uplink&nbsp;<a class="header-hash" href="#data-uplink">#</a> </h3>
 <p>If data uplink is received:</p>
 <ol>
 <li>Device is matched using the <code>DevAddr</code> present in the data uplink. Matching is performed by comparing the session context and MAC state, as well as performing the MIC check. Since several devices may have identical <code>DevAddr</code>s, the Network Server may need to go through several stored devices before matching the device.</li>
@@ -284,6 +285,7 @@ debug: false
 <li>If ADR bit is set in data uplink, Network Server runs the ADR algorithm and updates MAC state accordingly.</li>
 <li>If data uplink is successfully processed, downlink may be enqueued for the device and one or more application-specific uplink messages carrying relevant information about join-accept are sent to linked <a href="/docs/reference/components/application-server/">Application Server</a>.</li>
 </ol>
+
 </div>
 <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/reference/components/join-server/">← Join Server</a>
@@ -308,12 +310,16 @@ debug: false
 
   <ul class="menu-list">
     
+      
       <li><a href='#device-management'>Device Management</a></li>
     
+      
       <li><a href='#application-downlink-queue-management-and-linking'>Application Downlink Queue Management and Linking</a></li>
     
+      
       <li><a href='#downlink-scheduling'>Downlink Scheduling</a></li>
     
+      
       <li><a href='#uplink-handling'>Uplink Handling</a></li>
     
   </ul>

@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.6cfa3f65f4261ffebfcd3dec8ec1fbb74dc5578581ec4c630140cbb0214fd122.css" integrity="sha256-bPo/ZfQmH/6/zT3sjsH7t03FV4WB7ExjAUDLsCFP0SI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8ad74acd91b5a12241eda8028141f254d94c46a257f9dc8b717a8d4f6c5ef678.css" integrity="sha256-itdKzZG1oSJB7agCgUHyVNlMRqJX&#43;dyLcXqNT2xe9ng=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Troubleshooting AWS AMI Deployment">
@@ -204,22 +204,23 @@ debug: false
 </h1>
 
 <div class="content">
-  <!--
+  
+<!--
 TODO: https://github.com/TheThingsNetwork/lorawan-stack/issues/2714
 Move to generic getting started guide once ready.
 -->
 <p>This section contains information to troubleshoot The Things Stack deployment.</p>
-<h3 id="my-cloudformation-stack-creation-failed">My CloudFormation stack creation failed</h3>
+<h3 id="my-cloudformation-stack-creation-failed">My CloudFormation stack creation failed&nbsp;<a class="header-hash" href="#my-cloudformation-stack-creation-failed">#</a> </h3>
 <p>The CloudFormation Events page contains information on the progress of the deployment of various AWS services. This also contains error information (if any) which can help you debug the cause of the failure.</p>
-<h3 id="how-can-i-ssh-into-my-machine">How can I SSH into my machine?</h3>
+<h3 id="how-can-i-ssh-into-my-machine">How can I SSH into my machine?&nbsp;<a class="header-hash" href="#how-can-i-ssh-into-my-machine">#</a> </h3>
 <p>You can SSH into the EC2 machine using the public IP output value.</p>
 <p>Log in AWS Console and open the CloudFormation resource and click on your recently deployed stack. Navigate to the <strong>Outputs</strong> tab and copy the value of the <strong>PublicIP</strong> field.</p>
 <p>Now, using the private key of the <strong>SSH Key</strong> value that you entered during deployment, you can SSH into the machine using</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh -i &lt;path-to-private-key&gt; ec2-user@&lt;PublicIP&gt;
-</code></pre></div><h3 id="how-can-i-see-logs-of-the-things-stack">How can I see logs of The Things Stack?</h3>
+</code></pre></div><h3 id="how-can-i-see-logs-of-the-things-stack">How can I see logs of The Things Stack?&nbsp;<a class="header-hash" href="#how-can-i-see-logs-of-the-things-stack">#</a> </h3>
 <p>The Things Stack binary runs as a <code>systemd</code> service. In order to access the logs, SSH into the machine as described above and use the following command.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">  $ sudo journalctl -f -u lorawan-stack.service
-</code></pre></div><h3 id="how-do-i-see-more-detailed-debug-logs-of-the-things-stack">How do I see more detailed debug logs of The Things Stack?</h3>
+</code></pre></div><h3 id="how-do-i-see-more-detailed-debug-logs-of-the-things-stack">How do I see more detailed debug logs of The Things Stack?&nbsp;<a class="header-hash" href="#how-do-i-see-more-detailed-debug-logs-of-the-things-stack">#</a> </h3>
 <p>By default, The Things Stack does not log detailed <code>DEBUG</code> messages. In order to enable this, SSH into the EC2 instance as described above and add the following lines to the file <code>/tti/lorawan-stack/config.yml</code> using an editor such as <code>nano</code>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">log:
   level: debug
@@ -231,20 +232,21 @@ Move to generic getting started guide once ready.
 <li>The debug logs can be read using the <code>journalctl</code>, same as above:</li>
 </ul>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo journalctl -f -u lorawan-stack.service
-</code></pre></div><h3 id="my-gateway-doesnt-connect-what-do-i-do">My Gateway doesn&rsquo;t connect. What do I do?</h3>
+</code></pre></div><h3 id="my-gateway-doesnt-connect-what-do-i-do">My Gateway doesn&rsquo;t connect. What do I do?&nbsp;<a class="header-hash" href="#my-gateway-doesnt-connect-what-do-i-do">#</a> </h3>
 <!--
 TODO: https://github.com/TheThingsNetwork/lorawan-stack/issues/2714
 Link to relevant section when available.
 -->
 <p>Please check the troubleshooting section in the Connecting Gateways guide.</p>
-<h3 id="my-device-doesnt-join-how-do-i-fix-this">My device doesn&rsquo;t join. How do I fix this?</h3>
+<h3 id="my-device-doesnt-join-how-do-i-fix-this">My device doesn&rsquo;t join. How do I fix this?&nbsp;<a class="header-hash" href="#my-device-doesnt-join-how-do-i-fix-this">#</a> </h3>
 <!--
 TODO: https://github.com/TheThingsNetwork/lorawan-stack/issues/2714
 Link to relevant section when available.
 -->
 <p>Device join failure could be due to a number of reasons. Ensure that the device settings are correct. This includes the JoinEUI, DevEUI and/or AppKey/NwkKey and the frequency plan settings. Check the logs as described above to locate the potential cause of the issue.</p>
-<h2 id="professional-support">Professional Support</h2>
+<h2 id="professional-support">Professional Support&nbsp;<a class="header-hash" href="#professional-support">#</a> </h2>
 <p>Additional paid support for this deployment is offered by The Things Industries. You can <a href="mailto:support@thethingsindustries.com">contact The Things Industries support</a> or visit <a href="https://www.thethingsindustries.com/stack/aws/support">the support page</a>.</p>
+
 </div>
 
 <div class="is-clearfix">
@@ -269,6 +271,7 @@ Link to relevant section when available.
 
   <ul class="menu-list">
     
+      
       <li><a href='#professional-support'>Professional Support</a></li>
     
   </ul>

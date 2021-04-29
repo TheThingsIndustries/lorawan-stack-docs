@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.6cfa3f65f4261ffebfcd3dec8ec1fbb74dc5578581ec4c630140cbb0214fd122.css" integrity="sha256-bPo/ZfQmH/6/zT3sjsH7t03FV4WB7ExjAUDLsCFP0SI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8ad74acd91b5a12241eda8028141f254d94c46a257f9dc8b717a8d4f6c5ef678.css" integrity="sha256-itdKzZG1oSJB7agCgUHyVNlMRqJX&#43;dyLcXqNT2xe9ng=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Packet Broker Requirements for End Device Migration">
@@ -229,7 +229,8 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>Read this section if you want to make use of <a href="https://www.thethingsindustries.com/docs/reference/packet-broker/">Packet Broker</a> to migrate your end devices and route traffic from V2 to The Things Stack.</p>
+  
+<p>Read this section if you want to make use of <a href="https://www.thethingsindustries.com/docs/reference/packet-broker/">Packet Broker</a> to migrate your end devices and route traffic from V2 to The Things Stack.</p>
 <p>When migrating your devices with active sessions, it is in most cases not possible to make use of Packet Broker. Read along to learn when you can and cannot make use of Packet Broker.</p>
 <table>
 <thead>
@@ -267,12 +268,12 @@ debug: false
   Remember that The Things Stack Enterprise and The Things Stack Open Source can also be configured to connect to Packet Broker. In that case, end devices can be migrated from V2 via Packet Broker without persisting active sessions.
 </div>
 
-<h2 id="devices-address-devaddr">Devices Address (DevAddr)</h2>
+<h2 id="devices-address-devaddr">Devices Address (DevAddr)&nbsp;<a class="header-hash" href="#devices-address-devaddr">#</a> </h2>
 <p><strong>V2 DevAddr of your end device needs to be routable by Packet Broker.</strong></p>
 <p>OTAA devices migrated without an active session will acquire a new <strong>DevAddr</strong> from The Things Stack during the join procedure. Packet Broker will always be able to route the traffic with DevAddrs assigned by The Things Stack Community Edition or The Things Stack Cloud.</p>
 <p>When registering ABP devices on The Things Stack, it is possible to auto-generate new <strong>DevAddr</strong> which can be routed by Packet Broker. ABP devices can be re-programmed to use this new <strong>DevAddr</strong>. This implies breaking their existing session on V2.</p>
 <p>Migrating OTAA and ABP devices with their active sessions implies keeping their <strong>DevAddr</strong> values from V2. Packet Broker will be able to route traffic for these <strong>DevAddr</strong> values only if these devices were registered on <strong>The Things Industries V2 (SaaS)</strong> and you are migrating them to <strong>The Things Stack Cloud</strong>. If you are not using these deployments and you still want your traffic to be routed by Packet Broker, end devices can only be migrated without their active sessions.</p>
-<h2 id="rx1-delay">RX1 Delay</h2>
+<h2 id="rx1-delay">RX1 Delay&nbsp;<a class="header-hash" href="#rx1-delay">#</a> </h2>
 <p><strong>The <strong>RX1 delay</strong> value for your end device needs to be set to 5 seconds, which is a default for The Things Stack (V2 is using 1 second).</strong></p>
 <p>The RX1 delay of OTAA devices migrated without their active session will be automatically set to 5 seconds without your intervention.</p>
 <p>However, this needs to be manually set for OTAA devices migrated with an active session by <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/configure-mac-settings/">configuring their MAC settings</a>. It is also possible to re-program ABP devices to enforce the <strong>RX1 Delay</strong> of 5 seconds (this basically implies starting a new ABP session, i.e. migrating ABP devices without their active session from V2).</p>
@@ -284,6 +285,7 @@ debug: false
 <p>We strongly recommend to migrate devices without their active sessions, to make sure Packet Broker can route the traffic properly and that it reaches The Things Stack in time.</p>
 
 </div>
+
 </div>
 <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/getting-started/migrating/migrating-from-v2/">← Migrating End Devices from V2</a>
@@ -308,8 +310,10 @@ debug: false
 
   <ul class="menu-list">
     
-      <li><a href='#devices-address-%28devaddr%29'>Devices Address (DevAddr)</a></li>
+      
+      <li><a href='#devices-address-devaddr'>Devices Address (DevAddr)</a></li>
     
+      
       <li><a href='#rx1-delay'>RX1 Delay</a></li>
     
   </ul>

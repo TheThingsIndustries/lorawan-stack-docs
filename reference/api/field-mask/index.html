@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.6cfa3f65f4261ffebfcd3dec8ec1fbb74dc5578581ec4c630140cbb0214fd122.css" integrity="sha256-bPo/ZfQmH/6/zT3sjsH7t03FV4WB7ExjAUDLsCFP0SI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8ad74acd91b5a12241eda8028141f254d94c46a257f9dc8b717a8d4f6c5ef678.css" integrity="sha256-itdKzZG1oSJB7agCgUHyVNlMRqJX&#43;dyLcXqNT2xe9ng=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Fields and Field Masks">
@@ -268,12 +268,13 @@ debug: false
 </h1>
 
 <div class="content">
-  <h2 id="field-masks">Field Masks</h2>
+  
+<h2 id="field-masks">Field Masks&nbsp;<a class="header-hash" href="#field-masks">#</a> </h2>
 <p>The Things Stack APIs use field masks to specify a subset of fields that should be returned by a reading request, or to specify fields that should be updated in a writing request. See Google&rsquo;s <a href="https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMask">Protocol Buffers reference</a> for more information about field masks.</p>
-<h2 id="fields-and-field-masks-in-http-queries">Fields and Field Masks in HTTP Queries</h2>
+<h2 id="fields-and-field-masks-in-http-queries">Fields and Field Masks in HTTP Queries&nbsp;<a class="header-hash" href="#fields-and-field-masks-in-http-queries">#</a> </h2>
 <p>Fields may be specified in HTTP requests by appending them as query string parameters. For example, to request the <code>name</code>, <code>description</code>, and <code>locations</code> of devices in an <code>EndDeviceRegistry.Get</code> request, add these fields to the <code>field_mask</code> field. To get this data for device <code>dev1</code> in application <code>app1</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location --header <span class="s2">&#34;Authorization: Bearer NNSXS.XXXXXXXXX&#34;</span> https://thethings.example.com/api/v3/applications/app1/devices/dev1?field_mask<span class="o">=</span>name,description,locations
-</code></pre></div><h3 id="post-requests">POST Requests</h3>
+</code></pre></div><h3 id="post-requests">POST Requests&nbsp;<a class="header-hash" href="#post-requests">#</a> </h3>
 <p>Some endpoints require a message to be sent as part of the request. For example, to request an <a href="https://www.thethingsindustries.com/docs/reference/api/events/#the-event-service">Event Stream</a>, you must <code>POST</code> a <a href="https://www.thethingsindustries.com/docs/reference/api/events/#message:StreamEventsRequest">StreamEventsRequest message</a>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
@@ -291,6 +292,7 @@ debug: false
 </code></pre></div><blockquote>
 <p>Fields that are empty or zero are not returned in requests, even if they are specified in a field mask.</p>
 </blockquote>
+
 
 </div>
 <div class="is-clearfix">
@@ -316,8 +318,10 @@ debug: false
 
   <ul class="menu-list">
     
+      
       <li><a href='#field-masks'>Field Masks</a></li>
     
+      
       <li><a href='#fields-and-field-masks-in-http-queries'>Fields and Field Masks in HTTP Queries</a></li>
     
   </ul>

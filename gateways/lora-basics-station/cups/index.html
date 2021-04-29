@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.6cfa3f65f4261ffebfcd3dec8ec1fbb74dc5578581ec4c630140cbb0214fd122.css" integrity="sha256-bPo/ZfQmH/6/zT3sjsH7t03FV4WB7ExjAUDLsCFP0SI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8ad74acd91b5a12241eda8028141f254d94c46a257f9dc8b717a8d4f6c5ef678.css" integrity="sha256-itdKzZG1oSJB7agCgUHyVNlMRqJX&#43;dyLcXqNT2xe9ng=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Configuration and Update Server (CUPS)">
@@ -195,7 +195,8 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>LoRa Basics™ Station
+  
+<p>LoRa Basics™ Station
 can regularly connect to a Configuration and Update Server
 (CUPS) server to check for configuration and software updates. This page contains information about connecting your gateway to The Things Stack to support remote management via the CUPS Protocol.</p>
 <div class="notification is-info is-light has-text-dark">
@@ -210,15 +211,15 @@ can regularly connect to a Configuration and Update Server
   Configuring CUPS automatically retrieves LNS credentials and configures LNS on your gateway. If you configure CUPS, your gateway will override LNS credentials in case of successful CUPS connection.
 </div>
 
-<h2 id="requirements">Requirements</h2>
+<h2 id="requirements">Requirements&nbsp;<a class="header-hash" href="#requirements">#</a> </h2>
 <ol>
 <li>User account on The Things Stack with rights to create gateways.</li>
 <li>A gateway which supports LoRa Basics™ Station
 .</li>
 </ol>
-<h2 id="create-a-gateway">Create a Gateway</h2>
+<h2 id="create-a-gateway">Create a Gateway&nbsp;<a class="header-hash" href="#create-a-gateway">#</a> </h2>
 <p>To connect a gateway using the CUPS protocol, you must first add the gateway in The Things Stack. This can be done either in the console, or via the command line. See instructions for <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/">Adding Gateways</a>.</p>
-<h2 id="create-separate-cups-and-lns-api-keys">Create Separate CUPS and LNS API Keys</h2>
+<h2 id="create-separate-cups-and-lns-api-keys">Create Separate CUPS and LNS API Keys&nbsp;<a class="header-hash" href="#create-separate-cups-and-lns-api-keys">#</a> </h2>
 <p>Since CUPS automatically configures LNS, you will need two API keys.</p>
 <p>CUPS requires an API key for your gateway with the following rights:</p>
 <ul>
@@ -231,7 +232,7 @@ can regularly connect to a Configuration and Update Server
 <li>Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink</li>
 </ul>
 <p>To create an API key for your gateway, follow instructions for Creating a Gateway API key in <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/">Adding Gateways</a>.</p>
-<h2 id="configure-cups-to-send-the-lns-api-key">Configure CUPS to Send the LNS API Key</h2>
+<h2 id="configure-cups-to-send-the-lns-api-key">Configure CUPS to Send the LNS API Key&nbsp;<a class="header-hash" href="#configure-cups-to-send-the-lns-api-key">#</a> </h2>
 <div class="notification is-primary is-light has-text-dark">
   <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
   <p>The instructions below use the command-line interface (CLI).</p>
@@ -267,10 +268,10 @@ $ ttn-lw-cli gateways update <span class="nv">$GTW_ID</span> --lbs-lns-secret.v
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></details>
-<h2 id="configure-gateway">Configure Gateway</h2>
+<h2 id="configure-gateway">Configure Gateway&nbsp;<a class="header-hash" href="#configure-gateway">#</a> </h2>
 <p>All LoRa Basics™ Station
 gateways support the following configuration options. Consult your gateway documentation for more information about configuring your specific gateway.</p>
-<h3 id="cups-server-address">CUPS Server Address</h3>
+<h3 id="cups-server-address">CUPS Server Address&nbsp;<a class="header-hash" href="#cups-server-address">#</a> </h3>
 <p>The server address is the network endpoint of The Things Stack CUPS. It is a combination of the <strong>protocol</strong> (https), the <strong>server address</strong>, and the <strong>port</strong>:</p>
 <p>Enter the following in your gateway as CUPS Server Address: <code>https://&lt;server-address&gt;:443</code></p>
 <div class="notification is-info is-light has-text-dark">
@@ -278,10 +279,10 @@ gateways support the following configuration options. Consult your gateway docum
   The <code>&lt;server-address&gt;</code> is the address of The Things Stack. If you followed the <a href="https://www.thethingsindustries.com/docs/getting-started/">Getting Started guide</a> this is the same as what you use instead of <code>thethings.example.com</code>, e.g <code>https://thethings.example.com:443</code>.
 </div>
 
-<h3 id="cups-server-certificate--cups-trust">CUPS Server Certificate / CUPS Trust</h3>
+<h3 id="cups-server-certificate--cups-trust">CUPS Server Certificate / CUPS Trust&nbsp;<a class="header-hash" href="#cups-server-certificate--cups-trust">#</a> </h3>
 <p>This is the <a href="https://en.wikipedia.org/wiki/Certificate_authority">CA certificate</a> which secures your domain. A <code>.pem</code> file containing common certificates is available in the <a href="https://www.thethingsindustries.com/docs/reference/root-certificates/">Root Certificates Reference</a>.</p>
 <p>Upload the <code>.pem</code> file in your gateway as the CUPS Server Certificate / CUPS Trust.</p>
-<h3 id="cups-key-file">CUPS Key File</h3>
+<h3 id="cups-key-file">CUPS Key File&nbsp;<a class="header-hash" href="#cups-key-file">#</a> </h3>
 <p>This is a file which The Things Stack uses to verify the identity of your gateway.</p>
 <p>Use the following commands to create a file called <code>cups.key</code>, replacing <code>&quot;your-cups-api-key&quot;</code> with the CUPS API key you created above.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">CUPS_KEY</span><span class="o">=</span><span class="s2">&#34;your-cups-api-key&#34;</span>
@@ -292,6 +293,7 @@ $ <span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer </sp
 </div>
 
 <p>If the connection is successful, the CUPS server will send the LNS Server Address, LNS Trust and the LNS API Key to the gateway and it will automatically attempt to connect to the LNS Server.</p>
+
 </div>
 <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/gateways/lora-basics-station/">← LoRa Basics™ Station</a>
@@ -316,14 +318,19 @@ $ <span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer </sp
 
   <ul class="menu-list">
     
+      
       <li><a href='#requirements'>Requirements</a></li>
     
+      
       <li><a href='#create-a-gateway'>Create a Gateway</a></li>
     
+      
       <li><a href='#create-separate-cups-and-lns-api-keys'>Create Separate CUPS and LNS API Keys</a></li>
     
+      
       <li><a href='#configure-cups-to-send-the-lns-api-key'>Configure CUPS to Send the LNS API Key</a></li>
     
+      
       <li><a href='#configure-gateway'>Configure Gateway</a></li>
     
   </ul>

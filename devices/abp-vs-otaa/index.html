@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.6cfa3f65f4261ffebfcd3dec8ec1fbb74dc5578581ec4c630140cbb0214fd122.css" integrity="sha256-bPo/ZfQmH/6/zT3sjsH7t03FV4WB7ExjAUDLsCFP0SI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8ad74acd91b5a12241eda8028141f254d94c46a257f9dc8b717a8d4f6c5ef678.css" integrity="sha256-itdKzZG1oSJB7agCgUHyVNlMRqJX&#43;dyLcXqNT2xe9ng=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="ABP vs OTAA">
@@ -155,16 +155,17 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>This section can help you understand the differences between ABP and OTAA activation modes for LORaWAN end devices, and comprehend why using OTAA is recommended.</p>
+  
+<p>This section can help you understand the differences between ABP and OTAA activation modes for LORaWAN end devices, and comprehend why using OTAA is recommended.</p>
 <p>A <code>DevEUI</code> is a 64-bit unique ID assigned to an end device by the manufacturer. This value is linked to the hardware and it cannot be altered.</p>
 <p>Unlike <code>DevEUI</code>, which identifies an end device globally, a 32-bit <code>DevAddr</code> identifies the end device within the current network and all communication after joining the network is done with it. A <code>DevAddr</code> value consists of <code>NwkAddr</code> (end device address within network) prefixed by a <code>NwkID</code> (network identifier).</p>
 <p><strong>Note:</strong> <code>DevAddr</code> is not unique - multiple devices can have the same <code>DevAddr</code>.</p>
 <p>A <code>DevAddr</code> and session keys are assigned to an end device during a procedure called <strong>activation</strong>. LoRaWAN supports two modes of activating an end device: <strong>ABP (Activation By Personalization)</strong> and <strong>OTAA (Over-The-Air Activation)</strong>.</p>
-<h2 id="abp">ABP</h2>
+<h2 id="abp">ABP&nbsp;<a class="header-hash" href="#abp">#</a> </h2>
 <p>In ABP activation, a <strong>fixed</strong> <code>DevAddr</code> and <strong>session keys</strong> for a pre-selected network are hardcoded into the end device, and they remain the same throughout the lifetime of an ABP end device. With this mode, an end device skips the join procedure which seems to be simpler, but there are quite a few limitations of using ABP, which are explained below.</p>
-<h2 id="otaa">OTAA</h2>
+<h2 id="otaa">OTAA&nbsp;<a class="header-hash" href="#otaa">#</a> </h2>
 <p>OTAA end devices are provisioned with <strong>root keys</strong>. In OTAA activation, an end device performs a join procedure with a LoRaWAN network, during which a <strong>dynamic</strong> <code>DevAddr</code> is assigned to an end device, and root keys are utilized to derive <strong>session keys</strong>. Hence, <code>DevAddr</code> and session keys change as each new session is established.</p>
-<h2 id="why-is-otaa-better-than-abp">Why is OTAA better than ABP?</h2>
+<h2 id="why-is-otaa-better-than-abp">Why is OTAA better than ABP?&nbsp;<a class="header-hash" href="#why-is-otaa-better-than-abp">#</a> </h2>
 <p>ABP&rsquo;s drawbacks are arising as consequences of its main characteristics.</p>
 <ol>
 <li><strong>ABP end devices use a fixed <code>DevAddr</code>.</strong></li>
@@ -184,6 +185,7 @@ debug: false
 </ol>
 <p>When registering an ABP device on The Things Stack, you will need to provide the <strong>RX1 Delay</strong>, <strong>RX1 Data Rate Offset</strong>, <strong>RX2 Data Rate Index</strong>, <strong>RX2 Frequency</strong> and a list of <strong>Factory Preset Frequencies</strong>. If these values are not correctly configured, uplinks and/or downlinks might not work.</p>
 <p>OTAA end devices re-negotiate network parameters at establishing each new session, meaning you do not have to worry about them being misconfigured.</p>
+
 </div>
 
 <div class="is-clearfix">
@@ -209,10 +211,13 @@ debug: false
 
   <ul class="menu-list">
     
+      
       <li><a href='#abp'>ABP</a></li>
     
+      
       <li><a href='#otaa'>OTAA</a></li>
     
+      
       <li><a href='#why-is-otaa-better-than-abp'>Why is OTAA better than ABP?</a></li>
     
   </ul>

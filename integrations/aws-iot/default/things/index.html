@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.6cfa3f65f4261ffebfcd3dec8ec1fbb74dc5578581ec4c630140cbb0214fd122.css" integrity="sha256-bPo/ZfQmH/6/zT3sjsH7t03FV4WB7ExjAUDLsCFP0SI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8ad74acd91b5a12241eda8028141f254d94c46a257f9dc8b717a8d4f6c5ef678.css" integrity="sha256-itdKzZG1oSJB7agCgUHyVNlMRqJX&#43;dyLcXqNT2xe9ng=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Managing Things">
@@ -221,7 +221,8 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>The AWS IoT Integration for The Things Stack synchronizes the device registry: you can create and claim things in AWS IoT Core which trigger a Lambda function that creates or claims the device in The Things Stack.</p>
+  
+<p>The AWS IoT Integration for The Things Stack synchronizes the device registry: you can create and claim things in AWS IoT Core which trigger a Lambda function that creates or claims the device in The Things Stack.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   <p>Devices that you create in The Things Stack are automatically created as AWS IoT Core things as soon as they activate or send their first uplink message.</p>
@@ -229,7 +230,7 @@ debug: false
 
 </div>
 
-<h2 id="thing-type-and-names">Thing Type and Names</h2>
+<h2 id="thing-type-and-names">Thing Type and Names&nbsp;<a class="header-hash" href="#thing-type-and-names">#</a> </h2>
 <p>The AWS IoT Integration for The Things Stack uses the thing that you specified when deploying the integration. By default, the thing type is <code>lorawan</code>.</p>
 <p>Things are created automatically as they join the network or send an uplink message. For the name of new things, you can use their <code>&lt;DevEUI&gt;</code></p>
 <p>Your AWS IoT things overview may look like this:</p>
@@ -238,7 +239,7 @@ debug: false
          alt="Things Overview"/> 
 </figure>
 
-<h2 id="preparation">Preparation</h2>
+<h2 id="preparation">Preparation&nbsp;<a class="header-hash" href="#preparation">#</a> </h2>
 <p>In order to create and claim things in AWS IoT, you need to enable event-based messages. This enables the AWS IoT Integration to act on thing create, update and delete events.</p>
 <p>In the AWS Console, open <strong>Services</strong> and go to <strong>IoT Core</strong>.</p>
 <p>In the menu on the left, in the bottom, click <strong>Settings</strong>.</p>
@@ -249,7 +250,7 @@ debug: false
          alt="Thing Topics"/> 
 </figure>
 
-<h2 id="creating-and-claiming-things">Creating and Claiming Things</h2>
+<h2 id="creating-and-claiming-things">Creating and Claiming Things&nbsp;<a class="header-hash" href="#creating-and-claiming-things">#</a> </h2>
 <p>You can use AWS IoT to create and claim devices in The Things Stack. This is useful to manage all your things in one place, without having to use The Things Stack Console, CLI or API.</p>
 <p><strong>Creating</strong> a Thing allows you to add any LoRaWAN device by manually entering its information and security keys. <strong>Claiming</strong> a Thing allows you to use a QR code to transfer ownership from the manufacturer or previous owner of the device, if the device has been provisioned for claiming. See <a href="https://www.thethingsindustries.com/docs/devices/device-claiming/">Device Claiming</a> for more information.</p>
 <p>In the AWS Console, open <strong>Services</strong> and go to <strong>IoT Core</strong>.</p>
@@ -273,7 +274,7 @@ debug: false
 </figure>
 
 <p>Next, you can create a new device by specifying all required attributes, or your can claim an existing thing with an authentication code (or owner token).</p>
-<h3 id="creating-things">Creating Things</h3>
+<h3 id="creating-things">Creating Things&nbsp;<a class="header-hash" href="#creating-things">#</a> </h3>
 <p>When creating things, you need to specify the minimum attributes for creating LoRaWAN devices:</p>
 <ul>
 <li><code>joinEUI</code>: the hexadecimal LoRaWAN JoinEUI (or AppEUI). You may also specify <code>appEUI</code> instead.</li>
@@ -295,7 +296,7 @@ debug: false
 </figure>
 
 <p><a href="#finalize-create">Finalize device creation</a></p>
-<h3 id="claiming-things">Claiming Things</h3>
+<h3 id="claiming-things">Claiming Things&nbsp;<a class="header-hash" href="#claiming-things">#</a> </h3>
 <p>First, follow <a href="#creating-and-claiming-things">the steps above</a>.</p>
 <p>When claiming things, you need to specify the minimum attributes for claiming LoRaWAN devices:</p>
 <ul>
@@ -313,7 +314,7 @@ debug: false
   Are you a device maker? Learn <a href="https://www.thethingsindustries.com/docs/devices/device-claiming/make-device-claimable/">how to make your devices claimable</a>.
 </div>
 
-<h3 id="finalize-create">Finalize Create</h3>
+<h3 id="finalize-create">Finalize Create&nbsp;<a class="header-hash" href="#finalize-create">#</a> </h3>
 <p>Click <strong>Next</strong>.</p>
 <p>Click <strong>Skip certificate and create thing</strong>.</p>
 <div class="notification is-info is-light has-text-dark">
@@ -322,6 +323,7 @@ debug: false
 </div>
 
 <p>Your thing is now created. Please see <a href="/docs/integrations/aws-iot/default/troubleshooting/">Troubleshooting</a> if your device is not showing up in your The Things Stack application.</p>
+
 </div>
 <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/aws-iot/default/deployment-guide/">← Deployment Guide</a>
@@ -346,10 +348,13 @@ debug: false
 
   <ul class="menu-list">
     
+      
       <li><a href='#thing-type-and-names'>Thing Type and Names</a></li>
     
+      
       <li><a href='#preparation'>Preparation</a></li>
     
+      
       <li><a href='#creating-and-claiming-things'>Creating and Claiming Things</a></li>
     
   </ul>

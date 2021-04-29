@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.6cfa3f65f4261ffebfcd3dec8ec1fbb74dc5578581ec4c630140cbb0214fd122.css" integrity="sha256-bPo/ZfQmH/6/zT3sjsH7t03FV4WB7ExjAUDLsCFP0SI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8ad74acd91b5a12241eda8028141f254d94c46a257f9dc8b717a8d4f6c5ef678.css" integrity="sha256-itdKzZG1oSJB7agCgUHyVNlMRqJX&#43;dyLcXqNT2xe9ng=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Adding Devices">
@@ -164,7 +164,8 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>This section contains instructions for adding devices in The Things Stack.</p>
+  
+<p>This section contains instructions for adding devices in The Things Stack.</p>
 <div class="tabs is-boxed">
   <ul>
     
@@ -184,7 +185,7 @@ debug: false
 </div>
 <div class="tab-content content">
   <section data-content="console">
-  <h2 id="adding-devices-using-the-console">Adding Devices using the Console</h2>
+  <h2 id="adding-devices-using-the-console">Adding Devices using the Console&nbsp;<a class="header-hash" href="#adding-devices-using-the-console">#</a> </h2>
 <p>Go to <strong>Devices</strong> in the left menu and click on <strong>+ Add Device</strong> to reach the end device registration page. Fill the device ID, the LoRaWAN MAC and PHY versions and the frequency plan used by the device.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
@@ -194,7 +195,7 @@ debug: false
     <img src="device-creation-1.png"
          alt="Creating a new device"/> 
 </figure>
-<h3 id="over-the-air-activation-otaa-device">Over-The-Air-Activation (OTAA) Device</h3>
+<h3 id="over-the-air-activation-otaa-device">Over-The-Air-Activation (OTAA) Device&nbsp;<a class="header-hash" href="#over-the-air-activation-otaa-device">#</a> </h3>
 <p>After filling the fields in the <strong>General Settings</strong> section, scroll to the lower part of the device registration page and make sure that <strong>Over The Air Activation</strong> is selected.</p>
 <p>Fill the <strong>JoinEUI</strong> (AppEUI in LoRaWAN versions before 1.1), <strong>DevEUI</strong> and <strong>AppKey</strong>. The <strong>NwkKey</strong> is only needed for LoRaWAN version 1.1 or later. All other fields on the page are optional.</p>
 <p>Press <strong>Create Device</strong> to create the device.</p>
@@ -211,7 +212,7 @@ debug: false
     <img src="device-otaa-created.png"
          alt="OTAA device overview"/> 
 </figure>
-<h3 id="activation-by-personalization-abp-device">Activation By Personalization (ABP) Device</h3>
+<h3 id="activation-by-personalization-abp-device">Activation By Personalization (ABP) Device&nbsp;<a class="header-hash" href="#activation-by-personalization-abp-device">#</a> </h3>
 <p>After filling the fields in the <strong>General Settings</strong> section, scroll to the lower part of the device registration page and make sure that <strong>Activation By Personalization</strong> is selected.</p>
 <p>Fill the <strong>Device Address</strong>, the <strong>FNwkSIntKey</strong> (NwkSKey in LoRaWAN versions before 1.1) and the <strong>AppSKey</strong>. The other key fields are only needed for LoRaWAN version 1.1 or later. All other fields on the page are optional.</p>
 <p>Press <strong>Create Device</strong> to create the device.</p>
@@ -224,7 +225,7 @@ debug: false
     <img src="device-abp-created.png"
          alt="ABP device overview"/> 
 </figure>
-<h2 id="set-device-location">Set Device Location</h2>
+<h2 id="set-device-location">Set Device Location&nbsp;<a class="header-hash" href="#set-device-location">#</a> </h2>
 <p>Once you have added your end device to The Things Stack, you can also set its location to be displayed on a map widget by clicking <strong>Change location settings</strong>.</p>
 <p>The end device location can be manually set by pinning on the map widget, or entering the <strong>Latitude</strong>, <strong>Longitude</strong> and <strong>Altitude</strong> values.</p>
 <figure>
@@ -233,11 +234,11 @@ debug: false
 </figure>
 </section>
 <section data-content="cli">
-  <h2 id="adding-devices-using-the-cli">Adding Devices using the CLI</h2>
+  <h2 id="adding-devices-using-the-cli">Adding Devices using the CLI&nbsp;<a class="header-hash" href="#adding-devices-using-the-cli">#</a> </h2>
 <p>First, list the available frequency plans and LoRaWAN versions:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices list-frequency-plans
 $ ttn-lw-cli end-devices create --help
-</code></pre></div><h3 id="over-the-air-activation-otaa-device">Over-The-Air-Activation (OTAA) Device</h3>
+</code></pre></div><h3 id="over-the-air-activation-otaa-device">Over-The-Air-Activation (OTAA) Device&nbsp;<a class="header-hash" href="#over-the-air-activation-otaa-device">#</a> </h3>
 <p>To create an end device using over-the-air-activation (OTAA):</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices create app1 dev1 <span class="se">\
 </span><span class="se"></span>  --dev-eui 0004A30B001C0530 <span class="se">\
@@ -260,7 +261,7 @@ $ ttn-lw-cli end-devices create --help
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   You can also pass <code>--with-root-keys</code> to have root keys generated.
 </div>
-<h3 id="activation-by-personalization-abp-device">Activation By Personalization (ABP) Device</h3>
+<h3 id="activation-by-personalization-abp-device">Activation By Personalization (ABP) Device&nbsp;<a class="header-hash" href="#activation-by-personalization-abp-device">#</a> </h3>
 <p>It is also possible to register an ABP activated device using the <code>--abp</code> flag as follows:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices create app1 dev2 <span class="se">\
 </span><span class="se"></span>  --frequency-plan-id EU_863_870 <span class="se">\
@@ -278,7 +279,7 @@ $ ttn-lw-cli end-devices create --help
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   You can also pass <code>--with-session</code> to have a session generated.
 </div>
-<h2 id="set-device-location">Set Device Location</h2>
+<h2 id="set-device-location">Set Device Location&nbsp;<a class="header-hash" href="#set-device-location">#</a> </h2>
 <p>Once you have added your end device to The Things Stack, you can also set its location.</p>
 <p>Set your end device&rsquo;s location with:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;your-application-id&#34;</span> 
@@ -320,6 +321,7 @@ $ ttn-lw-cli end-devices <span class="nb">set</span> <span class="nv">$APP_ID</s
 </div>
 
 <p>Once a device has been added, get started with <a href="https://www.thethingsindustries.com/docs/integrations/">Integrations</a> to process and act on data.</p>
+
 </div>
 
 <div class="is-clearfix">
@@ -345,12 +347,16 @@ $ ttn-lw-cli end-devices <span class="nb">set</span> <span class="nv">$APP_ID</s
 
   <ul class="menu-list">
     
+      
       <li><a href='#adding-devices-using-the-console'>Adding Devices using the Console</a></li>
     
+      
       <li><a href='#set-device-location'>Set Device Location</a></li>
     
+      
       <li><a href='#adding-devices-using-the-cli'>Adding Devices using the CLI</a></li>
     
+      
       <li><a href='#set-device-location'>Set Device Location</a></li>
     
   </ul>

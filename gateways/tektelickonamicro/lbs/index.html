@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.6cfa3f65f4261ffebfcd3dec8ec1fbb74dc5578581ec4c630140cbb0214fd122.css" integrity="sha256-bPo/ZfQmH/6/zT3sjsH7t03FV4WB7ExjAUDLsCFP0SI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8ad74acd91b5a12241eda8028141f254d94c46a257f9dc8b717a8d4f6c5ef678.css" integrity="sha256-itdKzZG1oSJB7agCgUHyVNlMRqJX&#43;dyLcXqNT2xe9ng=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Connect Tektelic Kona Micro with Lora Basics™ Station">
@@ -190,16 +190,17 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>This section guides you to connect the Tektelic Kona Micro IoT LoRaWAN Gateway to The Things Stack using LoRa Basics™ Station
+  
+<p>This section guides you to connect the Tektelic Kona Micro IoT LoRaWAN Gateway to The Things Stack using LoRa Basics™ Station
 .</p>
-<h2 id="obtain-the-basic-station-package">Obtain the Basic Station Package</h2>
+<h2 id="obtain-the-basic-station-package">Obtain the Basic Station Package&nbsp;<a class="header-hash" href="#obtain-the-basic-station-package">#</a> </h2>
 <p>Obtain the <strong>ipk/bsp</strong> package by contacting Tektelic&rsquo;s support team. Create an account on the <a href="https://support.tektelic.com/portal/en/signin">support portal</a> or send an email to <a href="mailto:support@tektelic.com">support@tektelic.com</a>.</p>
-<h2 id="ssh-in-to-the-gateway">SSH in to the Gateway</h2>
+<h2 id="ssh-in-to-the-gateway">SSH in to the Gateway&nbsp;<a class="header-hash" href="#ssh-in-to-the-gateway">#</a> </h2>
 <p>Find the IP address the gateway. This can be done in various ways. You can connect your machine to the same local network as that of the gateway ethernet connection and scan for open SSH ports or assign a static IP to the gateway and use that. Once the gateway IP address is found, SSH into it.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh root@&lt;GatewayIP&gt;
 </code></pre></div><p>The password for the <strong>root</strong> user can be found on the back panel. It&rsquo;s typically a 9 character alphanumeric string starting with <strong>1846XXXXX</strong>.</p>
-<h2 id="install-the-basic-station-package">Install the Basic Station Package</h2>
-<h3 id="for-bsp-30x-and-31x">For BSP 3.0.x and 3.1.x</h3>
+<h2 id="install-the-basic-station-package">Install the Basic Station Package&nbsp;<a class="header-hash" href="#install-the-basic-station-package">#</a> </h2>
+<h3 id="for-bsp-30x-and-31x">For BSP 3.0.x and 3.1.x&nbsp;<a class="header-hash" href="#for-bsp-30x-and-31x">#</a> </h3>
 <p>Upload the <code>Basic-Station-packages-vx.x.x-for-Tektelic-gateways.tar.gz</code> to the directory <code>/lib/firmware</code> on the target gateway and extract it using following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ tar -C /lib/firmware <span class="se">\
 </span><span class="se"></span>-zxvf /lib/firmware/Basic-Station-packages-vx.x.x-for-Tektelic-gateways.tar.gz
@@ -210,7 +211,7 @@ debug: false
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">opkg update
 </code></pre></div><p>Install the package using the following command</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">opkg install tektelic-bstn curl libcurl4
-</code></pre></div><h3 id="for-bsp-32x">For BSP 3.2.x</h3>
+</code></pre></div><h3 id="for-bsp-32x">For BSP 3.2.x&nbsp;<a class="header-hash" href="#for-bsp-32x">#</a> </h3>
 <p>Upload the <code>ipk/bsp</code> folder to the gateway and extract it in to <code>/lib/firmware</code>.</p>
 <p>Add the feed location to the package manager configuration file by using the following command</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s2">&#34;src/gz bstn file:///lib/firmware/bsp&#34;</span> &gt; /etc/opkg/bstn-feed.conf
@@ -218,14 +219,14 @@ debug: false
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">opkg update
 </code></pre></div><p>Install the package using the following command</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">opkg install tektelic-bstn curl libcurl4
-</code></pre></div><h2 id="configure-gateway">Configure Gateway</h2>
+</code></pre></div><h2 id="configure-gateway">Configure Gateway&nbsp;<a class="header-hash" href="#configure-gateway">#</a> </h2>
 <p>Make sure Basic Station is installed by using the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ opkg list-installed <span class="p">|</span> grep bstn
 </code></pre></div><p>The version of the Basic Station package should be displayed.</p>
 <p>Then, make sure Basic Station is running by using the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ps aux <span class="p">|</span> grep bstn
 </code></pre></div><p>The Basic Station process ID should be displayed.</p>
-<h3 id="upload-configuration-files">Upload Configuration Files</h3>
+<h3 id="upload-configuration-files">Upload Configuration Files&nbsp;<a class="header-hash" href="#upload-configuration-files">#</a> </h3>
 <p>On Basic Station gateways, only CUPS <strong>or</strong> LNS can be configured. Configuring CUPS will automatically configure LNS, so to use The Things Stack, just follow the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/cups/">Connecting CUPS</a>.</p>
 <p>After completing the instructions for CUPS, you should have the following files:</p>
 <ul>
@@ -242,14 +243,15 @@ debug: false
 <p>Finally, enter the following command to restart the Basic Station:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ /etc/init.d/tektelic-bstn restart
 </code></pre></div><p>Now your Gateway should be able to connect to The Things Stack.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<h3 id="where-can-i-find-log-files">Where can I find log files?</h3>
+<h2 id="troubleshooting">Troubleshooting&nbsp;<a class="header-hash" href="#troubleshooting">#</a> </h2>
+<h3 id="where-can-i-find-log-files">Where can I find log files?&nbsp;<a class="header-hash" href="#where-can-i-find-log-files">#</a> </h3>
 <p>You can find the Basic Station log in <code>/var/log/syslog</code> (If your GW has 3.0.x, 3.1.x, 4.0.x
 and 4.1.x BSPs)</p>
 <p>You can find the Basic Station log in <code>/var/log/bstn.log</code> (If your GW has 3.2.x and 4.2.x or
 later)</p>
-<h3 id="what-do-i-do-if-basic-station-wont-run">What do I do if Basic Station won&rsquo;t run?</h3>
+<h3 id="what-do-i-do-if-basic-station-wont-run">What do I do if Basic Station won&rsquo;t run?&nbsp;<a class="header-hash" href="#what-do-i-do-if-basic-station-wont-run">#</a> </h3>
 <p>If it is not running, please reach out to Tektelic on their <a href="https://support.tektelic.com/portal/en/signin">support portal</a>, or support email – <a href="mailto:support@tektelic.com">support@tektelic.com</a></p>
+
 </div>
 <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/gateways/tektelickonamicro/">← Tektelic Kona Micro IoT LoRaWAN Gateway</a>
@@ -274,14 +276,19 @@ later)</p>
 
   <ul class="menu-list">
     
+      
       <li><a href='#obtain-the-basic-station-package'>Obtain the Basic Station Package</a></li>
     
+      
       <li><a href='#ssh-in-to-the-gateway'>SSH in to the Gateway</a></li>
     
+      
       <li><a href='#install-the-basic-station-package'>Install the Basic Station Package</a></li>
     
+      
       <li><a href='#configure-gateway'>Configure Gateway</a></li>
     
+      
       <li><a href='#troubleshooting'>Troubleshooting</a></li>
     
   </ul>

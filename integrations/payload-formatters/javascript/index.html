@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.6cfa3f65f4261ffebfcd3dec8ec1fbb74dc5578581ec4c630140cbb0214fd122.css" integrity="sha256-bPo/ZfQmH/6/zT3sjsH7t03FV4WB7ExjAUDLsCFP0SI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8ad74acd91b5a12241eda8028141f254d94c46a257f9dc8b717a8d4f6c5ef678.css" integrity="sha256-itdKzZG1oSJB7agCgUHyVNlMRqJX&#43;dyLcXqNT2xe9ng=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Javascript">
@@ -182,7 +182,8 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>Javascript payload formatters allow you to write your own functions to encode or decode messages. Javascript functions are executed using an <a href="https://www.ecma-international.org/ecma-262/5.1/">JavaScript ECMAScript 5.1</a> engine.</p>
+  
+<p>Javascript payload formatters allow you to write your own functions to encode or decode messages. Javascript functions are executed using an <a href="https://www.ecma-international.org/ecma-262/5.1/">JavaScript ECMAScript 5.1</a> engine.</p>
 <p>Tips:</p>
 <ul>
 <li>The payload formatters should be simple and lightweight.</li>
@@ -204,7 +205,7 @@ debug: false
   For security, the runtime does not support modules, <code>require</code> syntax, or any input/output other than defined below.
 </div>
 
-<h2 id="decode-uplink-function">Decode Uplink Function</h2>
+<h2 id="decode-uplink-function">Decode Uplink Function&nbsp;<a class="header-hash" href="#decode-uplink-function">#</a> </h2>
 <p>The Javascript <code>decodeUplink()</code> function is called when a data uplink message is received from a device. This function decodes the binary payload (<code>frm_payload</code>) received from the end device to a JSON object (<code>decoded_payload</code>) that gets send upstream to the application. The function takes an input object and returns and output object:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">{</span>
@@ -229,7 +230,7 @@ debug: false
   If an error is present in <code>errors</code>, the payload is invalid and the message will be dropped. Any warnings in <code>warnings</code> are informative.
 </div>
 
-<h3 id="decode-uplink-example-the-things-node">Decode Uplink Example: The Things Node</h3>
+<h3 id="decode-uplink-example-the-things-node">Decode Uplink Example: The Things Node&nbsp;<a class="header-hash" href="#decode-uplink-example-the-things-node">#</a> </h3>
 <p>Here is an example <code>decodeUplink()</code> function from The Things Node:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{};</span>
@@ -272,7 +273,7 @@ debug: false
     <span class="nt">&#34;decoded_payload_warnings&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;it&#39;s cold&#34;</span><span class="p">]</span>
   <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div><h2 id="encode-downlink-function">Encode Downlink Function</h2>
+</code></pre></div><h2 id="encode-downlink-function">Encode Downlink Function&nbsp;<a class="header-hash" href="#encode-downlink-function">#</a> </h2>
 <p>The <code>encodeDownlink()</code> function is called when a data downlink message is scheduled. This function encodes a JSON object of the downlink message (<code>decoded_payload</code>) to binary payload (<code>frm_payload</code>) that gets transmitted to the end device. The function takes an input object and returns and output object:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">encodeDownlink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">{</span>
@@ -296,7 +297,7 @@ debug: false
   If an error is present in <code>errors</code>, the payload is invalid and the message will be dropped. Any warnings in <code>warnings</code> are informative.
 </div>
 
-<h3 id="encode-downlink-example-the-things-node">Encode Downlink Example: The Things Node</h3>
+<h3 id="encode-downlink-example-the-things-node">Encode Downlink Example: The Things Node&nbsp;<a class="header-hash" href="#encode-downlink-example-the-things-node">#</a> </h3>
 <p>Here is an example of an encoder function that uses the <code>color</code> field to send a byte on a specific FPort:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">encodeDownlink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
   <span class="kd">var</span> <span class="nx">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;red&#34;</span><span class="p">,</span> <span class="s2">&#34;green&#34;</span><span class="p">,</span> <span class="s2">&#34;blue&#34;</span><span class="p">];</span>
@@ -314,7 +315,7 @@ debug: false
 </code></pre></div><p>Yields the following binary output:</p>
 <pre><code>[ 2 ]
 </code></pre><p>And will be sent on FPort 4.</p>
-<h2 id="decode-downlink-function">Decode Downlink Function</h2>
+<h2 id="decode-downlink-function">Decode Downlink Function&nbsp;<a class="header-hash" href="#decode-downlink-function">#</a> </h2>
 <p>The <code>decodeDownlink()</code> function is called to decode a data downlink message. This function decodes the binary payload (<code>frm_payload</code>) previously encoded with <code>encodeDownlink()</code> back to a JSON object (<code>decoded_payload</code>). Downlink messages sent upstream as part of events or downlink queue operations are therefore decoded, just like uplink messages.</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">decodeDownlink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">return</span> <span class="p">{</span>
@@ -333,7 +334,7 @@ debug: false
 </code></pre></div><blockquote>
 <p><code>decodeDownlink()</code> must be symmetric with <code>encodeDownlink()</code> and should therefore not return any errors.</p>
 </blockquote>
-<h3 id="decode-downlink-example-the-things-node">Decode Downlink Example: The Things Node</h3>
+<h3 id="decode-downlink-example-the-things-node">Decode Downlink Example: The Things Node&nbsp;<a class="header-hash" href="#decode-downlink-example-the-things-node">#</a> </h3>
 <p>Here is an example of a function that decodes the output of <code>encodeDownlink()</code> (see above):</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">decodeDownlink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
   <span class="k">switch</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">fPort</span><span class="p">)</span> <span class="p">{</span>
@@ -364,6 +365,7 @@ debug: false
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
+
 </div>
 <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/payload-formatters/device-repo/">← Device Repository</a>
@@ -388,10 +390,13 @@ debug: false
 
   <ul class="menu-list">
     
+      
       <li><a href='#decode-uplink-function'>Decode Uplink Function</a></li>
     
+      
       <li><a href='#encode-downlink-function'>Encode Downlink Function</a></li>
     
+      
       <li><a href='#decode-downlink-function'>Decode Downlink Function</a></li>
     
   </ul>

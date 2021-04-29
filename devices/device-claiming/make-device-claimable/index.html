@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.6cfa3f65f4261ffebfcd3dec8ec1fbb74dc5578581ec4c630140cbb0214fd122.css" integrity="sha256-bPo/ZfQmH/6/zT3sjsH7t03FV4WB7ExjAUDLsCFP0SI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8ad74acd91b5a12241eda8028141f254d94c46a257f9dc8b717a8d4f6c5ef678.css" integrity="sha256-itdKzZG1oSJB7agCgUHyVNlMRqJX&#43;dyLcXqNT2xe9ng=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Make a Device Claimable">
@@ -191,12 +191,13 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>This guide explains the process of making a device claimable. When a device is claimable, someone else can claim the device in a secure manner.</p>
-<h2 id="prerequisites">Prerequisites</h2>
+  
+<p>This guide explains the process of making a device claimable. When a device is claimable, someone else can claim the device in a secure manner.</p>
+<h2 id="prerequisites">Prerequisites&nbsp;<a class="header-hash" href="#prerequisites">#</a> </h2>
 <ol>
 <li>An application in a The Things Stack Cloud or The Things Stack Enterprise cluster. <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/">See instructions</a></li>
 </ol>
-<h2 id="authorize-claiming">Authorize Claiming</h2>
+<h2 id="authorize-claiming">Authorize Claiming&nbsp;<a class="header-hash" href="#authorize-claiming">#</a> </h2>
 <p>In order for anyone to claim devices that are registered in your application, you need to authorize claiming. This is needed for The Things Stack to move the device out of your application. This needs to be done once, per application.</p>
 <div class="notification is-primary is-light has-text-dark">
   <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
@@ -211,7 +212,7 @@ debug: false
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications claim authorize &lt;app-id&gt;
 </code></pre></div><p>To undo the action:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli application claim unauthorize &lt;app-id&gt;
-</code></pre></div><h2 id="register-device">Register Device</h2>
+</code></pre></div><h2 id="register-device">Register Device&nbsp;<a class="header-hash" href="#register-device">#</a> </h2>
 <p>In order to make a device claimable, the device first needs to be added first in the application that has been authorized for claiming.</p>
 <p>If you already have devices in your application that can be claimed, i.e. to transfer the ownership, you can go ahead to the next section.</p>
 <p>If you don&rsquo;t have a device in the application yet, you can add it by using one of the following ways:</p>
@@ -220,7 +221,7 @@ debug: false
 <li><a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/tti-join-server/register-devices/">Register a device</a> on The Things Join Server (i.e. not in a Network Server or Application Server yet)</li>
 <li><a href="/docs/devices/atecc608a/claim/">Import ATECC608A Secure Elements</a> on The Things Join Server. Make sure to enable the <strong>Set claim authentication code</strong> option</li>
 </ol>
-<h2 id="claiming-settings">Claiming Settings</h2>
+<h2 id="claiming-settings">Claiming Settings&nbsp;<a class="header-hash" href="#claiming-settings">#</a> </h2>
 <p>When your device is added in The Things Stack, you can go ahead and configure claiming settings. This is comprised of a claim authentication code and a validity window. The claim authentication code is a secret value. The validity window is an optional start and end date on which the claim authentication code can be used.</p>
 <div class="tabs is-boxed">
   <ul>
@@ -257,11 +258,12 @@ debug: false
 </span><span class="se"></span>  --claim-authentication-code.valid-from 2021-03-31T23:59:59Z
 </code></pre></div><p>This sets the secret claim authentication code to <code>ABCD</code>, that can be used in March 2021.</p>
 </section>
-<h2 id="generate-qr-code-for-claiming">Generate QR Code for Claiming</h2>
+<h2 id="generate-qr-code-for-claiming">Generate QR Code for Claiming&nbsp;<a class="header-hash" href="#generate-qr-code-for-claiming">#</a> </h2>
 <p>You can use QR codes to make claiming really easy. The QR code includes the unique identifiers of the device as well as the secret claim authentication code.</p>
 <p>Learn how to <a href="/docs/devices/generate-qr-code/#generate-qr-code-for-claiming">Generate QR Codes</a></p>
 
 </div>
+
 </div>
 <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/devices/device-claiming/">← Device Claiming</a>
@@ -286,14 +288,19 @@ debug: false
 
   <ul class="menu-list">
     
+      
       <li><a href='#prerequisites'>Prerequisites</a></li>
     
+      
       <li><a href='#authorize-claiming'>Authorize Claiming</a></li>
     
+      
       <li><a href='#register-device'>Register Device</a></li>
     
+      
       <li><a href='#claiming-settings'>Claiming Settings</a></li>
     
+      
       <li><a href='#generate-qr-code-for-claiming'>Generate QR Code for Claiming</a></li>
     
   </ul>

@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.6cfa3f65f4261ffebfcd3dec8ec1fbb74dc5578581ec4c630140cbb0214fd122.css" integrity="sha256-bPo/ZfQmH/6/zT3sjsH7t03FV4WB7ExjAUDLsCFP0SI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8ad74acd91b5a12241eda8028141f254d94c46a257f9dc8b717a8d4f6c5ef678.css" integrity="sha256-itdKzZG1oSJB7agCgUHyVNlMRqJX&#43;dyLcXqNT2xe9ng=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Send Messages">
@@ -182,9 +182,10 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>This section explains the process of setting up a flow which publishes messages to a certain topic that the MQTT Server is subscribed to.</p>
+  
+<p>This section explains the process of setting up a flow which publishes messages to a certain topic that the MQTT Server is subscribed to.</p>
 <p>Doing this schedules downlink messages to be sent to your end device. This section follows the example for publishing downlink traffic in <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a> guide.</p>
-<h2 id="configure-mqtt-out-node">Configure MQTT Out Node</h2>
+<h2 id="configure-mqtt-out-node">Configure MQTT Out Node&nbsp;<a class="header-hash" href="#configure-mqtt-out-node">#</a> </h2>
 <p>Place the <strong>mqtt out</strong> node on the dashboard.</p>
 <p>Configure the <strong>Server</strong> options with the same settings as in the <a href="https://www.thethingsindustries.com/docs/integrations/node-red/#receive-events-and-messages">Receive Events and Messages</a> section.</p>
 <p>Set <strong>Topic</strong> to <code>v3/{application_id}/devices/{device_id}/down/push</code> to schedule downlink messages (as stated in <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a> guide).</p>
@@ -194,7 +195,7 @@ debug: false
          alt="mqtt out node properties"/> 
 </figure>
 
-<h2 id="configure-inject-node">Configure Inject Node</h2>
+<h2 id="configure-inject-node">Configure Inject Node&nbsp;<a class="header-hash" href="#configure-inject-node">#</a> </h2>
 <p>Place the <strong>inject</strong> node on the dashboard. Double-click on the node to configure its properties.</p>
 <p>Choose <strong>buffer</strong> under <strong>Payload</strong> and enter the payload you wish to send.</p>
 <div class="notification is-info is-light has-text-dark">
@@ -208,7 +209,7 @@ debug: false
          alt="inject node properties"/> 
 </figure>
 
-<h2 id="configure-function-node-and-deploy">Configure Function Node and Deploy</h2>
+<h2 id="configure-function-node-and-deploy">Configure Function Node and Deploy&nbsp;<a class="header-hash" href="#configure-function-node-and-deploy">#</a> </h2>
 <p>Next, you have to configure a <strong>function</strong> node, which converts previously defined payload to a downlink message with Base64 encoded payload.</p>
 <p>Place the <strong>function</strong> node with the following structure on dashboard:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="k">return</span> <span class="o">{</span>
@@ -225,6 +226,7 @@ debug: false
     <img src="send_downlink_flow.png"
          alt="send downlink flow"/> 
 </figure>
+
 
 
 </div>
@@ -251,10 +253,13 @@ debug: false
 
   <ul class="menu-list">
     
+      
       <li><a href='#configure-mqtt-out-node'>Configure MQTT Out Node</a></li>
     
+      
       <li><a href='#configure-inject-node'>Configure Inject Node</a></li>
     
+      
       <li><a href='#configure-function-node-and-deploy'>Configure Function Node and Deploy</a></li>
     
   </ul>
