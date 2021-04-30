@@ -1847,17 +1847,6 @@ Collaborators:
       message:
         name: Collaborator
     default: []
-CombinedIdentifiers:
-  name: CombinedIdentifiers
-  comment: |-
-    Combine the identifiers of multiple entities.
-    The main purpose of this message is its use in events.
-  fields:
-  - name: entity_identifiers
-    repeated:
-      message:
-        name: EntityIdentifiers
-    default: []
 ConcentratorConfig:
   name: ConcentratorConfig
   fields:
@@ -2457,6 +2446,30 @@ DecodeUplinkResponse:
     message:
       name: ApplicationUplink
     default: {}
+DecodedMessagePayload:
+  name: DecodedMessagePayload
+  fields:
+  - name: data
+    message:
+      package: google.protobuf
+      name: Struct
+    default: {}
+  - name: warnings
+    rules:
+      max_items: 10
+    repeated:
+      type: string
+      rules:
+        max_len: 100
+    default: []
+  - name: errors
+    rules:
+      max_items: 10
+    repeated:
+      type: string
+      rules:
+        max_len: 100
+    default: []
 DeleteApplicationActivationSettingsRequest:
   name: DeleteApplicationActivationSettingsRequest
   fields:
@@ -2681,6 +2694,33 @@ EncodeDownlinkResponse:
     message:
       name: ApplicationDownlink
     default: {}
+EncodedMessagePayload:
+  name: EncodedMessagePayload
+  fields:
+  - name: f_port
+    type: uint32
+    rules:
+      lte: 255
+    default: 0
+  - name: frm_payload
+    type: bytes
+    default: ""
+  - name: warnings
+    rules:
+      max_items: 10
+    repeated:
+      type: string
+      rules:
+        max_len: 100
+    default: []
+  - name: errors
+    rules:
+      max_items: 10
+    repeated:
+      type: string
+      rules:
+        max_len: 100
+    default: []
 EndDevice:
   name: EndDevice
   comment: |-
@@ -4873,6 +4913,12 @@ GetPayloadFormatterRequest:
     comment: End device version information.
     message:
       name: EndDeviceVersionIdentifiers
+    default: {}
+  - name: field_mask
+    comment: Field mask paths.
+    message:
+      package: google.protobuf
+      name: FieldMask
     default: {}
 GetQRCodeFormatRequest:
   name: GetQRCodeFormatRequest
@@ -7551,8 +7597,8 @@ Message:
     - join_request_payload
     - join_accept_payload
     - rejoin_request_payload
-MessagePayloadFormatter:
-  name: MessagePayloadFormatter
+MessagePayloadDecoder:
+  name: MessagePayloadDecoder
   fields:
   - name: formatter
     comment: Payload formatter type.
@@ -7565,6 +7611,78 @@ MessagePayloadFormatter:
     comment: Parameter for the formatter, must be set together.
     type: string
     default: ""
+  - name: codec_id
+    type: string
+    rules:
+      max_len: 36
+      pattern: ^([a-z0-9](?:[-]?[a-z0-9]){2,}|)?$
+    default: ""
+  - name: examples
+    rules:
+      max_items: 20
+    repeated:
+      message:
+        name: MessagePayloadDecoder.Example
+    default: []
+MessagePayloadDecoder.Example:
+  name: MessagePayloadDecoder.Example
+  fields:
+  - name: description
+    type: string
+    rules:
+      max_len: 200
+    default: ""
+  - name: input
+    message:
+      name: EncodedMessagePayload
+    default: {}
+  - name: output
+    message:
+      name: DecodedMessagePayload
+    default: {}
+MessagePayloadEncoder:
+  name: MessagePayloadEncoder
+  fields:
+  - name: formatter
+    comment: Payload formatter type.
+    enum:
+      name: PayloadFormatter
+    rules:
+      defined_only: true
+    default: FORMATTER_NONE
+  - name: formatter_parameter
+    comment: Parameter for the formatter, must be set together.
+    type: string
+    default: ""
+  - name: codec_id
+    type: string
+    rules:
+      max_len: 36
+      pattern: ^([a-z0-9](?:[-]?[a-z0-9]){2,}|)?$
+    default: ""
+  - name: examples
+    rules:
+      max_items: 20
+    repeated:
+      message:
+        name: MessagePayloadEncoder.Example
+    default: []
+MessagePayloadEncoder.Example:
+  name: MessagePayloadEncoder.Example
+  fields:
+  - name: description
+    type: string
+    rules:
+      max_len: 200
+    default: ""
+  - name: input
+    message:
+      name: DecodedMessagePayload
+    default: {}
+  - name: output
+    message:
+      name: EncodedMessagePayload
+    default: {}
 MessagePayloadFormatters:
   name: MessagePayloadFormatters
   fields:
