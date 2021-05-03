@@ -167,8 +167,16 @@ debug: false
 <blockquote>
 <p>If you&rsquo;re having trouble with the HTTP API, you can always inspect requests in the Console using your browser&rsquo;s inspector. All of the data displayed in the Console is pulled using HTTP API requests, and this should give you some insight in to how they are formed.</p>
 </blockquote>
-<h2 id="http-queries">HTTP Queries&nbsp;<a class="header-hash" href="#http-queries">#</a> </h2>
-<p>Additional fields may be specified in HTTP requests by appending them as query string parameters. For example, to request the <code>name</code>, <code>description</code>, and <code>locations</code> of devices in an <code>EndDeviceRegistry.Get</code> request, add these fields to the <code>field_mask</code> field. To get this data for device <code>dev1</code> in application <code>app1</code>:</p>
+<h2 id="best-practices">Best Practices&nbsp;<a class="header-hash" href="#best-practices">#</a> </h2>
+<h3 id="send-a-user-agent-header">Send a <code>User-Agent</code> Header&nbsp;<a class="header-hash" href="#send-a-user-agent-header">#</a> </h3>
+<p>Set the <code>User-Agent</code> HTTP header containing your integration name and version. That way, a network operator can help finding out potential issues using the logs.</p>
+<h3 id="respect-x-ratelimit--response-headers">Respect <code>X-Ratelimit-*</code> Response Headers&nbsp;<a class="header-hash" href="#respect-x-ratelimit--response-headers">#</a> </h3>
+<p>The Things Stack sends responses containing information about how many requests your integration has made and how many are remaining, in accordance with the IETF draft spec <a href="https://tools.ietf.org/id/draft-polli-ratelimit-headers-03.html">here</a>.</p>
+<h3 id="mind-the-x-warning-headers">Mind the <code>X-Warning</code> Headers&nbsp;<a class="header-hash" href="#mind-the-x-warning-headers">#</a> </h3>
+<p>The Things Stack sends responses containing this header to warn about issues that may become errors in the future.</p>
+<h2 id="http-query-examples">HTTP Query Examples&nbsp;<a class="header-hash" href="#http-query-examples">#</a> </h2>
+<h2 id="get-device-info">Get Device Info&nbsp;<a class="header-hash" href="#get-device-info">#</a> </h2>
+<p>Fields may be specified in HTTP requests by appending them as query string parameters. For example, to request the <code>name</code>, <code>description</code>, and <code>locations</code> of devices in an <code>EndDeviceRegistry.Get</code> request, add these fields to the <code>field_mask</code> field. To get this data for device <code>dev1</code> in application <code>app1</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s2">&#34;Authorization: Bearer NNSXS.XXXXXXXXX&#34;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Accept: application/json&#39;</span> <span class="se">\
@@ -181,6 +189,7 @@ debug: false
 </span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
 </span><span class="se"></span>  <span class="s1">&#39;https://tenant1.thethings.example.com/api/v3/applications/app1/devices/dev1?field_mask=name,description,locations&#39;</span>
 </code></pre></div><p>Fields may also be specified as a JSON object in a POST request.</p>
+<h3 id="get-event-stream">Get Event Stream&nbsp;<a class="header-hash" href="#get-event-stream">#</a> </h3>
 <p>To get a stream of events for device <code>dev1</code> in application <code>app1</code> :</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
@@ -202,7 +211,45 @@ debug: false
   See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events">here</a> for a description of the <code>text/event-stream</code> MIME type.
 </div>
 
-<p>If you want to create a device, perform multi step actions, or write shell scripts, it&rsquo;s best to use the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">CLI</a>.</p>
+<h3 id="schedule-downlink">Schedule Downlink&nbsp;<a class="header-hash" href="#schedule-downlink">#</a> </h3>
+<p>To schedule a downlink, you may use the <code>DownlinkQueuePush</code> or <code>DownlinkQueueReplace</code> endpoints of the <a href="https://www.thethingsindustries.com/docs/reference/api/application_server/#the-appas-service">Application Server API</a>. For example, to schedule a downlink queue push to device <code>dev1</code> in application <code>app1</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
+</span><span class="se"></span>  --request POST <span class="se">\
+</span><span class="se"></span>  --data <span class="s1">&#39;{
+</span><span class="s1">    &#34;downlinks&#34;: [{
+</span><span class="s1">      &#34;frm_payload&#34;: &#34;vu8=&#34;,
+</span><span class="s1">      &#34;f_port&#34;: 42,
+</span><span class="s1">    }]
+</span><span class="s1">  }&#39;</span> <span class="se">\
+</span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/as/applications/app1/devices/dev1/down/push&#39;</span>
+</code></pre></div><p>To schedule a human readable downlink to the same device using a downlink <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">Payload Formatter</a>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
+</span><span class="se"></span>  --request POST <span class="se">\
+</span><span class="se"></span>  --data <span class="s1">&#39;{&#34;downlinks&#34;:[{
+</span><span class="s1">      &#34;decoded_payload&#34;: {
+</span><span class="s1">        &#34;bytes&#34;: [1, 2, 3]
+</span><span class="s1">      }
+</span><span class="s1">    }]
+</span><span class="s1">  }&#39;</span> <span class="se">\
+</span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/as/applications/app1/devices/dev1/down/push&#39;</span>
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Downlinks scheduled using the <code>decoded_payload</code> Payload Formatter field are encrypted in the Application Server, and the content will not be comprehensible in the Network Server&rsquo;s <code>frm_payload</code> field when viewing events.
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  It&rsquo;s also possible to <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/scheduling-downlinks/">schedule downlinks using HTTP Webhooks</a>, which give you flexibility to choose JSON or gRPC HTTP payloads.
+</div>
+
+<h3 id="multi-step-actions">Multi-step Actions&nbsp;<a class="header-hash" href="#multi-step-actions">#</a> </h3>
+<p>If you want to create a device, perform multi-step actions, or write shell scripts, it&rsquo;s best to use the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">CLI</a>.</p>
 <p>If you want to do something like registering a device directly via the API, you need to make calls to the Identity Server, Join Server, Network Server and Application Server. See the <a href="https://www.thethingsindustries.com/docs/reference/api/">API Reference</a> for detailed information about which messages go to which endpoints.</p>
 <p>To register a device <code>newdev1</code> in application <code>app1</code>, first, register the <code>DevEUI</code>, <code>JoinEUI</code> and cluster addresses in the Identity Server. This is also where you register a friendly name, description, attributes, location, and more - see all fields in the <a href="https://www.thethingsindustries.com/docs/reference/api/">API Reference</a>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
@@ -318,13 +365,7 @@ debug: false
 </span><span class="s1">    }
 </span><span class="s1">  }&#39;</span> <span class="se">\
 </span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/js/applications/app1/devices/newdev1&#39;</span>
-</code></pre></div><h2 id="best-practices">Best Practices&nbsp;<a class="header-hash" href="#best-practices">#</a> </h2>
-<h3 id="send-a-user-agent-header">Send a <code>User-Agent</code> Header&nbsp;<a class="header-hash" href="#send-a-user-agent-header">#</a> </h3>
-<p>Set the <code>User-Agent</code> HTTP header containing your integration name and version. That way, a network operator can help finding out potential issues using the logs.</p>
-<h3 id="respect-x-ratelimit--response-headers">Respect <code>X-Ratelimit-*</code> Response Headers&nbsp;<a class="header-hash" href="#respect-x-ratelimit--response-headers">#</a> </h3>
-<p>The Things Stack sends responses containing information about how many requests your integration has made and how many are remaining, in accordance with the IETF draft spec <a href="https://tools.ietf.org/id/draft-polli-ratelimit-headers-03.html">here</a>.</p>
-<h3 id="mind-the-x-warning-headers">Mind the <code>X-Warning</code> Headers&nbsp;<a class="header-hash" href="#mind-the-x-warning-headers">#</a> </h3>
-<p>The Things Stack sends responses containing this header to warn about issues that may become errors in the future.</p>
+</code></pre></div>
 
 </div>
 
@@ -352,10 +393,13 @@ debug: false
   <ul class="menu-list">
     
       
-      <li><a href='#http-queries'>HTTP Queries</a></li>
+      <li><a href='#best-practices'>Best Practices</a></li>
     
       
-      <li><a href='#best-practices'>Best Practices</a></li>
+      <li><a href='#http-query-examples'>HTTP Query Examples</a></li>
+    
+      
+      <li><a href='#get-device-info'>Get Device Info</a></li>
     
   </ul>
 
@@ -393,10 +437,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 08 Dec 2020.
+  Last changed by Ben Olayinka on 29 Apr 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/fc0b74d4e22584d10b5089573097a0629ba2711c">
-      doc: Update missing notes
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5dee2ad1b069f152c90f32479aa97db2b3e16c58">
+      doc: Add API example for payload formatter
     </a>
 </p>
 

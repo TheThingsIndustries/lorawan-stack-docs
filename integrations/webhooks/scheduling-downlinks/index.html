@@ -185,6 +185,7 @@ debug: false
   
 <p>This section provides instructions for scheduling downlinks using HTTP Webhooks.</p>
 <p>You can schedule downlink messages using webhooks. This requires an API key with traffic writing rights, which can be created using the Console.</p>
+<h2 id="create-an-api-key">Create an API Key&nbsp;<a class="header-hash" href="#create-an-api-key">#</a> </h2>
 <p>In your application, select <strong>API Keys</strong> on the left menu and click the <strong>+ Add API Key</strong> button. Fill in the <strong>Name</strong> and the <strong>Rights</strong> of your API key.</p>
 <figure>
     <img src="../api-key-creation.png"
@@ -203,17 +204,43 @@ debug: false
 </div>
 
 <p>You can now pass the API key as bearer token on the <code>Authorization</code> header.</p>
+<h2 id="scheduling-downlinks">Scheduling Downlinks&nbsp;<a class="header-hash" href="#scheduling-downlinks">#</a> </h2>
 <p>The downlink queue operation paths are:</p>
 <ul>
 <li>For push: <code>/api/v3/as/applications/{application_id}/webhooks/{webhook_id}/devices/{device_id}/down/push</code></li>
 <li>For replace: <code>/api/v3/as/applications/{application_id}/webhooks/{webhook_id}/devices/{device_id}/down/replace</code></li>
 </ul>
-<p>For example:</p>
-<pre><code>$ curl https://thethings.example.com/api/v3/as/applications/app1/webhooks/wh1/devices/dev1/down/push \
-  -X POST \
-  -H 'Authorization: Bearer NNSXS.VEEBURF3KR77ZR..' \
-  --data '{&quot;downlinks&quot;:[{&quot;frm_payload&quot;:&quot;vu8=&quot;,&quot;f_port&quot;:15,&quot;priority&quot;:&quot;NORMAL&quot;}]}'
-</code></pre><p>will push a downlink to the end device <code>dev1</code> of the application <code>app1</code> using the webhook <code>wh1</code>.</p>
+<p>For example, to push a downlink to the end device <code>dev1</code> of the application <code>app1</code> using the webhook <code>wh1</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
+</span><span class="se"></span>  --request POST <span class="se">\
+</span><span class="se"></span>  --data <span class="s1">&#39;{&#34;downlinks&#34;:[{
+</span><span class="s1">      &#34;frm_payload&#34;:&#34;vu8=&#34;,
+</span><span class="s1">      &#34;f_port&#34;:15,
+</span><span class="s1">      &#34;priority&#34;:&#34;NORMAL&#34;
+</span><span class="s1">    }]
+</span><span class="s1">  }&#39;</span> <span class="se">\
+</span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/as/applications/app1/webhooks/wh1/devices/dev1/down/push&#39;</span>
+</code></pre></div><p>To schedule a human readable downlink to the same device using a downlink <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">Payload Formatter</a>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
+</span><span class="se"></span>  --request POST <span class="se">\
+</span><span class="se"></span>  --data <span class="s1">&#39;{&#34;downlinks&#34;:[{
+</span><span class="s1">      &#34;decoded_payload&#34;: {
+</span><span class="s1">        &#34;bytes&#34;: [1, 2, 3]
+</span><span class="s1">      }
+</span><span class="s1">    }]
+</span><span class="s1">  }&#39;</span> <span class="se">\
+</span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/as/applications/app1/webhooks/wh1/devices/dev1/down/push&#39;</span>
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Downlinks scheduled using the <code>decoded_payload</code> Payload Formatter field are encrypted in the Application Server, and the content will not be comprehensible in the Network Server&rsquo;s <code>frm_payload</code> field when viewing events.
+</div>
+
 <p>You can also save the API key in the webhook configuration page using the the <strong>Downlink API Key</strong> field. The Application Server will provide it to your endpoint using the <code>X-Downlink-Apikey</code> header and the push and replace operations paths using the <code>X-Downlink-Push</code> and <code>X-Downlink-Replace</code> headers.</p>
 
 </div>
@@ -237,6 +264,16 @@ debug: false
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#create-an-api-key'>Create an API Key</a></li>
+    
+      
+      <li><a href='#scheduling-downlinks'>Scheduling Downlinks</a></li>
+    
+  </ul>
 
 
   </nav>
@@ -272,10 +309,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 25 Nov 2020.
+  Last changed by Ben Olayinka on 29 Apr 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/71bd626b9b755ccbe2cbf6f6f0fc68df4cf38acd">
-      doc: Update notes in Integrations
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5dee2ad1b069f152c90f32479aa97db2b3e16c58">
+      doc: Add API example for payload formatter
     </a>
 </p>
 
