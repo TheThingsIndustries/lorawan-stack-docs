@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Troubleshooting Devices | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/adding-devices/troubleshooting/" />
+  <title>Troubleshooting Devices | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/troubleshooting/" />
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
@@ -19,7 +19,7 @@
   <meta itemprop="keywords" content="">
   <meta property="og:title" content="Troubleshooting Devices">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/devices/adding-devices/troubleshooting/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/devices/troubleshooting/">
   <meta name="twitter:title" content="Troubleshooting Devices" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
@@ -94,20 +94,6 @@ debug: false
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/" class="">Adding Devices</a>
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/troubleshooting/" class="is-active">Troubleshooting Devices</a>
-    
-  </li>
-
-</ul>
-
-
-    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/devices/atecc608a/" class="">ATECC608A/B Secure Elements</a>
@@ -138,6 +124,14 @@ debug: false
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/devices/multicast/" class="">Multicast</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/devices/troubleshooting/" class="is-active">Troubleshooting Devices</a>
+    
+
+
+
+    
   </li>
 </ul>
 
@@ -171,10 +165,16 @@ debug: false
 <h3 id="my-device-wont-join-what-do-i-do">My device won&rsquo;t join. What do I do?&nbsp;<a class="header-hash" href="#my-device-wont-join-what-do-i-do">#</a> </h3>
 <ul>
 <li>Double check your DevEUI, JoinEUI or AppEUI, LoRaWAN and Regional Parameters Version, root keys (AppKey, and with LoRaWAN 1.1 or higher, NwkKey)</li>
-<li>Check gateway and application events for traffic from your device</li>
-<li>Double check frequency plan settings in your end device and gateways (they must be the same LoRaWAN band)</li>
+<li>Check gateway and device events for traffic from your device. Below are a few common issues
+<ul>
+<li><strong>MIC mismatch</strong> error in the device events: Possible mismatch of AppKey in device firmware to the AppKey registered in The Things Stack console. Update the AppKey in the console accordingly</li>
+<li><strong>Uplink channel not found</strong> error in the gateway events: Indicates there is a mismatch of the frequency plans. Double check frequency plan settings in your end device and gateways (they must be the same LoRaWAN band)</li>
+<li><strong>DevNonce has already been used</strong> error in the device events: Indicates a duplicate use of Devnonce. Generally happens when the device has sent too many unsuccessful Join Requests</li>
+<li><strong>Uplink channel not found</strong> error in the device events: The device is transmitting Join Requests in the non-default channels of the band which is not in line with the LoRaWAN Specification. Contact the end-device manufacturer</li>
+</ul>
+</li>
 <li>Double check your network connection. If there is a slow connection from the server to the gateway, the join accept message may be sent too late (this can happen when a gateway uses 3G as a backhaul). If using the CLI, run <code>ttn-lw-cli gateways connection-stats &lt;gateway-id&gt;</code> to see the round trip time (RTT) for your gateway</li>
-<li>Check for duplicate use of JoinNonce (or AppNonce) and/or DevNonce</li>
+<li>Check for duplicate use of JoinNonce (or AppNonce)</li>
 <li>Adjust ADR and link check settings to conditions which the device is located in</li>
 </ul>
 <h3 id="no-downlinks-are-reaching-my-device-what-do-i-do">No downlinks are reaching my device. What do I do?&nbsp;<a class="header-hash" href="#no-downlinks-are-reaching-my-device-what-do-i-do">#</a> </h3>
@@ -191,9 +191,9 @@ debug: false
 </ul>
 
 </div>
+
 <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/devices/adding-devices/">← Adding Devices</a>
-<a class="button is-pulled-right" href="/docs/devices/atecc608a/">ATECC608A/B Secure Elements →</a>
+<a class="button is-pulled-left" href="/docs/devices/multicast/">← Multicast</a>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -246,14 +246,14 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 04 Feb 2021.
+  Last changed by i3mSuperMan on 27 Mar 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b9b4d9ee0536b1be334ba546e3e34f7f465f6427">
-      doc: Add troubleshooting for UDP gws and devices
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/53846568e7c8c5ace6e72253896feac64518a7c6">
+      doc: Add troubleshooting points for join issues
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/devices/adding-devices/troubleshooting.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/devices/troubleshooting/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
