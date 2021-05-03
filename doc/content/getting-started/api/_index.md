@@ -12,9 +12,25 @@ A complete list of API endpoints is available in the [API Reference]({{< ref "re
 
 > If you're having trouble with the HTTP API, you can always inspect requests in the Console using your browser's inspector. All of the data displayed in the Console is pulled using HTTP API requests, and this should give you some insight in to how they are formed.
 
-## HTTP Queries
+## Best Practices
 
-Additional fields may be specified in HTTP requests by appending them as query string parameters. For example, to request the `name`, `description`, and `locations` of devices in an `EndDeviceRegistry.Get` request, add these fields to the `field_mask` field. To get this data for device `dev1` in application `app1`:
+### Send a `User-Agent` Header
+
+Set the `User-Agent` HTTP header containing your integration name and version. That way, a network operator can help finding out potential issues using the logs.
+
+### Respect `X-Ratelimit-*` Response Headers
+
+{{% tts %}} sends responses containing information about how many requests your integration has made and how many are remaining, in accordance with the IETF draft spec [here](https://tools.ietf.org/id/draft-polli-ratelimit-headers-03.html).
+
+### Mind the `X-Warning` Headers
+
+{{% tts %}} sends responses containing this header to warn about issues that may become errors in the future.
+
+## HTTP Query Examples
+
+## Get Device Info
+
+Fields may be specified in HTTP requests by appending them as query string parameters. For example, to request the `name`, `description`, and `locations` of devices in an `EndDeviceRegistry.Get` request, add these fields to the `field_mask` field. To get this data for device `dev1` in application `app1`:
 
 ```bash
 $ curl --location \
@@ -35,6 +51,8 @@ $ curl --location \
 ```
 
 Fields may also be specified as a JSON object in a POST request.
+
+### Get Event Stream
 
 To get a stream of events for device `dev1` in application `app1` :
 
@@ -58,7 +76,49 @@ $ curl --location \
 
 {{< note >}} See [here](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events) for a description of the `text/event-stream` MIME type. {{</ note >}}
 
-If you want to create a device, perform multi step actions, or write shell scripts, it's best to use the [CLI]({{< ref "getting-started/cli" >}}).
+### Schedule Downlink
+
+To schedule a downlink, you may use the `DownlinkQueuePush` or `DownlinkQueueReplace` endpoints of the [Application Server API]({{< ref "reference/api/application_server#the-appas-service" >}}). For example, to schedule a downlink queue push to device `dev1` in application `app1`:
+
+```bash
+$ curl --location \
+  --header 'Authorization: Bearer NNSXS.XXXXXXXXX' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: my-integration/my-integration-version' \
+  --request POST \
+  --data '{
+    "downlinks": [{
+      "frm_payload": "vu8=",
+      "f_port": 42,
+    }]
+  }' \
+  'https://thethings.example.com/api/v3/as/applications/app1/devices/dev1/down/push'
+```
+
+To schedule a human readable downlink to the same device using a downlink [Payload Formatter]({{< ref "integrations/payload-formatters" >}}):
+
+```bash
+$ curl --location \
+  --header 'Authorization: Bearer NNSXS.XXXXXXXXX' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: my-integration/my-integration-version' \
+  --request POST \
+  --data '{"downlinks":[{
+      "decoded_payload": {
+        "bytes": [1, 2, 3]
+      }
+    }]
+  }' \
+  'https://thethings.example.com/api/v3/as/applications/app1/devices/dev1/down/push'
+```
+
+{{< note >}} Downlinks scheduled using the `decoded_payload` Payload Formatter field are encrypted in the Application Server, and the content will not be comprehensible in the Network Server's `frm_payload` field when viewing events. {{</ note >}}
+
+{{< note >}} It's also possible to [schedule downlinks using HTTP Webhooks]({{< ref "integrations/webhooks/scheduling-downlinks" >}}), which give you flexibility to choose JSON or gRPC HTTP payloads. {{</ note >}}
+
+### Multi-step Actions
+
+If you want to create a device, perform multi-step actions, or write shell scripts, it's best to use the [CLI]({{< ref "getting-started/cli" >}}).
 
 If you want to do something like registering a device directly via the API, you need to make calls to the Identity Server, Join Server, Network Server and Application Server. See the [API Reference]({{< ref "reference/api" >}}) for detailed information about which messages go to which endpoints. 
 
@@ -191,17 +251,3 @@ $ curl --location \
   }' \
   'https://thethings.example.com/api/v3/js/applications/app1/devices/newdev1'
 ```
-
-## Best Practices
-
-### Send a `User-Agent` Header
-
-Set the `User-Agent` HTTP header containing your integration name and version. That way, a network operator can help finding out potential issues using the logs.
-
-### Respect `X-Ratelimit-*` Response Headers
-
-{{% tts %}} sends responses containing information about how many requests your integration has made and how many are remaining, in accordance with the IETF draft spec [here](https://tools.ietf.org/id/draft-polli-ratelimit-headers-03.html).
-
-### Mind the `X-Warning` Headers
-
-{{% tts %}} sends responses containing this header to warn about issues that may become errors in the future.
