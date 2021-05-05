@@ -15,7 +15,7 @@ This is a checklist for releases. This is filled in by both the releaser and the
 
 #### Update Documentation
 
-- [ ] Create a new release in the [`whats-new` section](doc/content/whats-new) and copy the release CHANGELOG from [TheThingsIndustries/lorawan-stack](https://github.com/TheThingsIndustries/lorawan-stack). The title is the release version and the date is the release date.
+- [ ] Create a new release in the [`whats-new` section](https://github.com/TheThingsIndustries/lorawan-stack-docs/tree/master/doc/content/whats-new) and copy the release CHANGELOG from [TheThingsIndustries/lorawan-stack](https://github.com/TheThingsIndustries/lorawan-stack). The title is the release version and the date is the release date.
 - [ ] Update the [documentation version](https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/config/_default/config.toml#L28) to match the current minor, if necessary (`v3.${minor}`).
 - [ ] To generate documentation, create a clone of [TheThingsIndustries/lorawan-stack](https://github.com/TheThingsIndustries/lorawan-stack), and **checkout the git tag of the release**.
 - [ ] To generate API documentation, run the following from within the clone of [TheThingsIndustries/lorawan-stack](https://github.com/TheThingsIndustries/lorawan-stack): 
@@ -27,11 +27,9 @@ $ tools/bin/mage ttiProto:hugoData
 - [ ] Copy generated files to `lorawan-stack-docs` with the following command:
 
 ```bash
-$ cp api/ttn.lorawan.v3/*.yml ../lorawan-stack-docs/doc/data/api/ttn.lorawan.v3/
-$ cp api/tti.lorawan.v3/*.yml ../lorawan-stack-docs/doc/data/api/tti.lorawan.v3/
+$ cp api/ttn.lorawan.v3/*.yml /path/to/lorawan-stack-docs/doc/data/api/ttn.lorawan.v3/
+$ cp api/tti.lorawan.v3/*.yml /path/to/lorawan-stack-docs/doc/data/api/tti.lorawan.v3/
 ```
-
-> NOTE: Replace `../lorawan-stack-docs` if your `lorawan-stack-docs` folder is in a different location.
 
 - [ ] To generate and export CLI documentation from within the clone of [TheThingsIndustries/lorawan-stack](https://github.com/TheThingsIndustries/lorawan-stack), first run the following command to build the CLI:
 
@@ -44,8 +42,6 @@ $ go build -tags tti ./cmd/tti-lw-cli
 ```bash
 $ HOME='$HOME' ./tti-lw-cli gen-yaml-doc -o /path/to/lorawan-stack-docs/doc/data/
 ```
-
-> NOTE: Replace `../lorawan-stack-docs` if your `lorawan-stack-docs` folder is in a different location.
 
 #### Check (for reviewers)
 
