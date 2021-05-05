@@ -8,9 +8,7 @@ weight: -1
 
 <!--more-->
 
-{{< note >}} CUPS is **not required** for sending and receiving LoRaWAN data, but it simplifies gateway management.
-
-CUPS support in {{% tts %}} is in beta and is subject to change. {{</ note >}}
+{{< note >}} CUPS is **not required** for sending and receiving LoRaWAN data, but it simplifies gateway management. CUPS support in {{% tts %}} is in beta and is subject to change. {{</ note >}}
 
 {{< warning >}} Configuring CUPS automatically retrieves LNS credentials and configures LNS on your gateway. If you configure CUPS, your gateway will override LNS credentials in case of successful CUPS connection. {{</ warning >}}
 
@@ -33,15 +31,33 @@ CUPS requires an API key for your gateway with the following rights:
 - Edit basic gateway settings
 - Retrieve secrets associated with a gateway
 
+{{< figure src="../cups-rights.png" alt="CUPS API Key Rights" >}}
+
 LNS requires an API Key with the following rights:
 
 - Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink
+
+{{< figure src="../lns-rights.png" alt="LNS API Key Rights" >}}
 
 To create an API key for your gateway, follow instructions for Creating a Gateway API key in [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}).
 
 ## Configure CUPS to Send the LNS API Key
 
-{{% cli-only %}}
+{{< tabs/container "Console" "CLI" >}}
+
+{{< tabs/tab "Console" >}}
+
+We need to configure CUPS in {{% tts %}} to transmit the LNS API key when a gateway connects. To do so in the Console, go to the **General Settings** page of your gateway.
+
+In the **LoRa Basics Station LNS Authentication Key** field, paste the LNS API key you generated in the previous step.
+
+{{< figure src="../lns-key.png" alt="LoRa Basics Station LNS Authentication Key" >}}
+
+Press **Save Changes** to update the gateway settings. When your gateway connects to CUPS, {{% tts %}} will send the LNS configuration settings and API key.
+
+{{</ tabs/tab >}}
+
+{{< tabs/tab "CLI" >}}
 
 We need to configure CUPS in {{% tts %}} to transmit the LNS API key when a gateway connects. Use the following command to do so, replacing `"your-gateway-id"` with your gateway ID in {{% tts %}} and  `"your-lns-api-key"` with the LNS API key you created in the last step:
 
@@ -76,6 +92,10 @@ If successful, you should receive a response as follows:
 }
 ```
 </details>
+
+{{</ tabs/tab >}}
+
+{{</ tabs/container >}}
 
 ## Configure Gateway
 

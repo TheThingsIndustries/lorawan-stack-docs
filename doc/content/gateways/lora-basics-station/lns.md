@@ -22,7 +22,10 @@ To connect a gateway using the LNS protocol, you must first add the gateway in {
 ## Create an API Key
 
 LNS requires an API Key with the following rights:
+
 - Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink
+
+{{< figure src="../lns-rights.png" alt="LNS API Key Rights" >}}
 
 To create an API key for your gateway, follow instructions for Creating a Gateway API key in [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}).
 
