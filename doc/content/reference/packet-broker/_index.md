@@ -58,11 +58,15 @@ Localization | O | | Gateway locations, timestamps and signal quality
 
 ## Getting Started
 
-{{% tts %}} Community Edition or {{% tts %}} Cloud {{< distributions "Cloud" "Dedicated Cloud" "Community" >}} is already connected to Packet Broker. Proceed to [Configure]({{< relref "configure" >}}) section to manage your registration and routing policies with other networks.
+{{% tts %}} Community Edition and {{% tts %}} Cloud are already connected to Packet Broker. Proceed to [Configure]({{< relref "configure" >}}) section to manage your registration and routing policies with other networks.
 
-When you are using {{% tts %}} Community Edition {{< distributions "Community" >}}, you cannot configure any routing policies, as {{% tts %}} Community Edition is a public network and The Things Network Foundation controls which public or private networks the traffic gets exchanged with. To manage routing policies for your gateways, upgrade to {{% tts %}} Cloud.
+{{< note >}}
+{{% tts %}} Community Edition and {{% tts %}} Cloud are configured for peering within the same geographical region. For example, {{% tts %}} Community Edition `eu1` cluster is configured to peer only with {{% tts %}} Cloud `eu1` deployments and vice versa. Peering between `eu1`, `au1` and `nam1` clusters is not currently enabled.
+{{</ note >}}
 
-When using {{% tts %}} Enterprise of {{% tts %}} Open Source, learn to [Connect {{% tts %}} to Packet Broker]({{< relref "connect" >}}). {{< distributions "Enterprise" "Open Source" >}}
+When you are using {{% tts %}} Community Edition, you cannot configure any routing policies, as {{% tts %}} Community Edition is a public network and The Things Network Foundation controls which public or private networks the traffic gets exchanged with. To manage routing policies for your gateways, upgrade to {{% tts %}} Cloud.
+
+When using {{% tts %}} Enterprise of {{% tts %}} Open Source, learn to [Connect {{% tts %}} to Packet Broker]({{< relref "connect" >}}).
 
 ## LoRaWAN Roaming vs Packet Broker
 
