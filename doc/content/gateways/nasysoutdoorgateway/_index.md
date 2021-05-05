@@ -38,7 +38,7 @@ Update the configuration files on the gateway with your downloaded `global_conf.
 $ mv /opt/nas-lgw/local_conf.json /opt/nas-lgw/local_conf.json.old
 $ cp global_conf.json /opt/nas-lgw/global_conf.json
 
-$ systemctl restart nas_lgw
+$ systemctl restart nas-lgw
 ```
 
 If your configuration was successful, your gateway will connect to {{% tts %}} after a couple of seconds.
