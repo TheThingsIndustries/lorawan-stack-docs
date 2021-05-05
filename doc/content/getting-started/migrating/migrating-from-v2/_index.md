@@ -55,3 +55,8 @@ There are two approaches for migrating devices, depending on how many end device
 
 - [Using {{% tts %}} Console]({{< relref "migrate-using-console" >}}) - this method is convenient only for small number of devices. Migrating active device sessions is not supported.
 - [Using `ttn-lw-migrate` tool]({{< relref "migrate-using-migration-tool" >}}) - this method allows migrating devices in bulk, optionally with active device sessions.
+
+## Migration decision tree
+Migrating from V2 to The Things Stack Cloud or The Things Stack Community Edition (click on the image to enlarge).
+
+[![migration decision tree](migration-decision-tree.jpg "migration decision tree")](migration-decision-tree.jpg)
