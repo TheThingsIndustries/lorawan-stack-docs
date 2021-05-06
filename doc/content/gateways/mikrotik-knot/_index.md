@@ -6,19 +6,19 @@ weight: 1
 
 {{< figure src="mikrotik-knot.jpeg" alt="Ltmikrotik-knotAP" class="plain float" >}}
 
-The MikroTik KNOT LR8/LR9 kit is a universal device with exceptional connectivity options and protocol support. It is an IoT Gateway which can use LTE-M (also known as CAT-M) technology as the gateway backhaul. 
+The MikroTik KNOT LR8/LR9 kit is a universal device with exceptional connectivity options and protocol support. It is an IoT Gateway which can use ethernet or LTE-M (also known as CAT-M) technology as the gateway backhaul.
 
 <!--more-->
 
 For more info, see Mikrotik's [official product page](https://mikrotik.com/product/knot)
 
-{{< warning >}} Currently, this gateway does not support changing Frequency Plans. {{</ warning >}}
-
 ## Prerequisites
 
 1. User account on {{% tts %}} with rights to create Gateways.
-2. MikroTik KNOT connected via Ethernet or LTE-M.
+2. MikroTik KNOT connected to Internet via Ethernet or LTE-M.
 3. A web browser (see section [Configuration via Browser](#configuration-via-browser)), or the [MikroTik Mobile App](https://mikrotik.com/mobile_app) installed on a smartphone.
+
+{{< warning >}} Currently, this gateway does not support changing Frequency Plans. {{</ warning >}}
 
 ## Registration
 
@@ -26,11 +26,9 @@ Create a gateway by following the instructions for [Adding Gateways]({{< ref "/g
 
 ## Configuration via Browser
 
-The MikroTik Routerboard exposes a WiFi Access Point (AP) with SSID `MikroTik-xxxxxx`, where `xxxxxx` are the last 6 digits of the device's MAC Address.
+The MikroTik Routerboard exposes a WiFi Access Point (AP) with SSID `MikroTik-xxxxxx`, where `xxxxxx` are the last 6 digits of the device's MAC address. Use your PC, tablet or smartphone to connect to this AP. You will not need a password to connect to this AP. 
 
-Use your PC, tablet or smartphone to connect to this AP. You will not need a password to connect to this AP.
-
-Open a browser to `http://192.168.88.1/webfig/#Interfaces`.
+{{< info >}} By opening your browser to `http://192.168.88.1/webfig` you will be able to access the RouterOS web interface and configure your gateway device. {{</ info >}}
 
 ![MikroTik-portal.png](portal.png)
 
@@ -69,20 +67,19 @@ Press the **E** button to enable the gateway device (it is enabled when **E** be
 
 If your configuration was successful, your gateway will connect to {{% tts %}} after a couple of seconds.
 
-## Set up LET-M
+## Set up LTE-M
 Connect an external antenna to the LTE-M antenna connector.
 
 <img src="KNOT-antenna.png" alt="KNOT Antennas"	title="KNOT Antennas" width="250" />
 
+Go to [**Interfaces**](http://192.168.88.1/webfig/#Interfaces), click on **PPP-out1** and fill out the **APN settings** of your operator.
 
-Go to **Interfaces**, click on **PPP-out1** and fill out the **APN settings** of your operator.
-
-To test whether a connection is made to your LTE-M network, go to the Terminal in the RouterOS and run the command:
+To test whether a connection with your LTE-M network is established, go to the **Terminal** tab in the RouterOS web interface and run the command:
 
 ```
 $ /interface ppp-client info ppp-out1
 ```
-If the gateway is set up correct, the gateway will respond with a message like:
+If the gateway is set up correctly, it will respond with a message like:
 
 ```
 modem-status: ready
