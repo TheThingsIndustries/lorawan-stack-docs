@@ -86,8 +86,8 @@ modem-status: ready
 pin-status: no password required
 functionality: full
 manufacturer: Quectel
- model: BG77
- revision: BG77LAR02A04
+  model: BG77
+  revision: BG77LAR02A04
 current-operator: LMT (n/a)
 signal-strength: -67 dBm
 ```
