@@ -341,6 +341,21 @@ GrantType:
   - name: GRANT_REFRESH_TOKEN
     comment: Grant type used to exchange a refresh token for an access token.
     value: 2
+JoinRequestType:
+  name: JoinRequestType
+  values:
+  - name: REJOIN_CONTEXT
+    comment: Resets DevAddr, Session Keys, Frame Counters, Radio Parameters.
+    value: 0
+  - name: REJOIN_SESSION
+    comment: Equivalent to the initial JoinRequest.
+    value: 1
+  - name: REJOIN_KEYS
+    comment: Resets DevAddr, Session Keys, Frame Counters, while keeping the Radio Parameters.
+    value: 2
+  - name: JOIN
+    comment: Normal join-request.
+    value: 255
 KeyProvisioning:
   name: KeyProvisioning
   values:
@@ -659,6 +674,18 @@ RejoinPeriodExponent:
   - name: REJOIN_PERIOD_7
     comment: Every 4096 to 4128 seconds.
     value: 7
+RejoinRequestType:
+  name: RejoinRequestType
+  values:
+  - name: CONTEXT
+    comment: Resets DevAddr, Session Keys, Frame Counters, Radio Parameters.
+    value: 0
+  - name: SESSION
+    comment: Equivalent to the initial JoinRequest.
+    value: 1
+  - name: KEYS
+    comment: Resets DevAddr, Session Keys, Frame Counters, while keeping the Radio Parameters.
+    value: 2
 RejoinTimeExponent:
   name: RejoinTimeExponent
   values:
@@ -710,18 +737,6 @@ RejoinTimeExponent:
   - name: REJOIN_TIME_15
     comment: Every ~1.1 year.
     value: 15
-RejoinType:
-  name: RejoinType
-  values:
-  - name: CONTEXT
-    comment: Resets DevAddr, Session Keys, Frame Counters, Radio Parameters.
-    value: 0
-  - name: SESSION
-    comment: Equivalent to the initial JoinRequest.
-    value: 1
-  - name: KEYS
-    comment: Resets DevAddr, Session Keys, Frame Counters, while keeping the Radio Parameters.
-    value: 2
 Right:
   name: Right
   comment: Right is the enum that defines all the different rights to do something in the network.
