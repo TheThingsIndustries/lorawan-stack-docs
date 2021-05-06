@@ -50,3 +50,7 @@ $ convert console-favicon.png \
     console-favicon.ico
 ```
 {{</ note >}}
+
+## Deployment Information and Disclaimers
+
+It is possible to highlight some deployment information and disclaimers in the header of the web UIs. E.g. you can highlight an SLA that applies or a support tier that is connected with the deployment. Please see the respective sections in the [Identity Server configuration reference]({{< ref "/reference/configuration/identity-server#oauth-ui-options" >}}) and [Console configuration reference]({{< ref "/reference/configuration/console#deployment-information-and-disclaimers" >}})
