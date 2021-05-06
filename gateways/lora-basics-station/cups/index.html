@@ -207,9 +207,7 @@ can regularly connect to a Configuration and Update Server
 (CUPS) server to check for configuration and software updates. This page contains information about connecting your gateway to The Things Stack to support remote management via the CUPS Protocol.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>CUPS is <strong>not required</strong> for sending and receiving LoRaWAN data, but it simplifies gateway management.</p>
-<p>CUPS support in The Things Stack is in beta and is subject to change.</p>
-
+  CUPS is <strong>not required</strong> for sending and receiving LoRaWAN data, but it simplifies gateway management. CUPS support in The Things Stack is in beta and is subject to change.
 </div>
 
 <div class="notification is-warning is-light has-text-dark">
@@ -233,20 +231,51 @@ can regularly connect to a Configuration and Update Server
 <li>Edit basic gateway settings</li>
 <li>Retrieve secrets associated with a gateway</li>
 </ul>
+<figure>
+    <img src="../cups-rights.png"
+         alt="CUPS API Key Rights"/> 
+</figure>
+
 <p>LNS requires an API Key with the following rights:</p>
 <ul>
 <li>Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink</li>
 </ul>
+<figure>
+    <img src="../lns-rights.png"
+         alt="LNS API Key Rights"/> 
+</figure>
+
 <p>To create an API key for your gateway, follow instructions for Creating a Gateway API key in <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/">Adding Gateways</a>.</p>
 <h2 id="configure-cups-to-send-the-lns-api-key">Configure CUPS to Send the LNS API Key&nbsp;<a class="header-hash" href="#configure-cups-to-send-the-lns-api-key">#</a> </h2>
-<div class="notification is-primary is-light has-text-dark">
-  <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
-  <p>The instructions below use the command-line interface (CLI).</p>
-  <div class="buttons">
-    <a class="button is-dark is-outlined" href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/">Learn how to install the CLI</a>
-  </div>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="console">
+      <a>
+        <span>Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="cli">
+      <a>
+        <span>CLI</span>
+      </a>
+    </li>
+    
+  </ul>
 </div>
-<p>We need to configure CUPS in The Things Stack to transmit the LNS API key when a gateway connects. Use the following command to do so, replacing <code>&quot;your-gateway-id&quot;</code> with your gateway ID in The Things Stack and  <code>&quot;your-lns-api-key&quot;</code> with the LNS API key you created in the last step:</p>
+<div class="tab-content content">
+  <section data-content="console">
+  <p>We need to configure CUPS in The Things Stack to transmit the LNS API key when a gateway connects. To do so in the Console, go to the <strong>General Settings</strong> page of your gateway.</p>
+<p>In the <strong>LoRa Basics Station LNS Authentication Key</strong> field, paste the LNS API key you generated in the previous step.</p>
+<figure>
+    <img src="../lns-key.png"
+         alt="LoRa Basics Station LNS Authentication Key"/> 
+</figure>
+<p>Press <strong>Save Changes</strong> to update the gateway settings. When your gateway connects to CUPS, The Things Stack will send the LNS configuration settings and API key.</p>
+</section>
+<section data-content="cli">
+  <p>We need to configure CUPS in The Things Stack to transmit the LNS API key when a gateway connects. Use the following command to do so, replacing <code>&quot;your-gateway-id&quot;</code> with your gateway ID in The Things Stack and  <code>&quot;your-lns-api-key&quot;</code> with the LNS API key you created in the last step:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">GTW_ID</span><span class="o">=</span><span class="s2">&#34;your-gateway-id&#34;</span>
 $ <span class="nb">export</span> <span class="nv">LNS_KEY</span><span class="o">=</span><span class="s2">&#34;your-lns-api-key&#34;</span>
 $ <span class="nb">export</span> <span class="nv">SECRET</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> -n <span class="nv">$LNS_KEY</span> <span class="p">|</span> xxd -ps -u -c 8192<span class="k">)</span>
@@ -255,7 +284,6 @@ $ ttn-lw-cli gateways update <span class="nv">$GTW_ID</span> --lbs-lns-secret.v
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   If you receive an error running <code>ttn-lw-cli gateways update</code>, you may need to update the CLI. See instructions in <a href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/">Installing the CLI</a>.
 </div>
-
 <p>If successful, you should receive a response as follows:</p>
 <details>
 <summary>Show CLI output</summary>
@@ -266,14 +294,17 @@ $ ttn-lw-cli gateways update <span class="nv">$GTW_ID</span> --lbs-lns-secret.v
   <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-10-13T10:49:02.730Z&#34;</span><span class="p">,</span>
   <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-11-17T14:52:06.440Z&#34;</span><span class="p">,</span>
   <span class="nt">&#34;version_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-
-  <span class="p">},</span>
-  <span class="nt">&#34;lbs_lns_secret&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;key_id&#34;</span><span class="p">:</span> <span class="s2">&#34;is/gateway-secrets-encryption-key&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;encrpyted-base64-lns-api-key&gt;&#34;</span>
-  <span class="p">}</span>
+<p><span class="p">},</span>
+<span class="nt">&quot;lbs_lns_secret&quot;</span><span class="p">:</span> <span class="p">{</span>
+<span class="nt">&quot;key_id&quot;</span><span class="p">:</span> <span class="s2">&quot;is/gateway-secrets-encryption-key&quot;</span><span class="p">,</span>
+<span class="nt">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;encrpyted-base64-lns-api-key&gt;&quot;</span>
 <span class="p">}</span>
-</code></pre></div></details>
+<span class="p">}</span>
+</code></pre></div></details></p>
+</section>
+
+</div>
+
 <h2 id="configure-gateway">Configure Gateway&nbsp;<a class="header-hash" href="#configure-gateway">#</a> </h2>
 <p>All LoRa Basics™ Station
 gateways support the following configuration options. Consult your gateway documentation for more information about configuring your specific gateway.</p>
@@ -375,10 +406,10 @@ $ <span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer </sp
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 12 Jan 2021.
+  Last changed by Ben Olayinka on 05 May 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2638b0b4e323b39d76f9bc405838b3ecf1715a8e">
-      doc: Add cups note to update CLI
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/d1c5200977e9df1328311e982b93b3cc4f9a64a9">
+      doc: Add instructions for console LNS API key
     </a>
 </p>
 
