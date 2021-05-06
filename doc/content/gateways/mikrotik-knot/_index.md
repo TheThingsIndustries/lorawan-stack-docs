@@ -10,7 +10,7 @@ The MikroTik KNOT LR8/LR9 kit is a universal device with exceptional connectivit
 
 <!--more-->
 
-For more info, see Mikrotik's [official product page](https://mikrotik.com/product/knot)
+For more info, see Mikrotik's [official product page](https://mikrotik.com/product/knot).
 
 ## Prerequisites
 
@@ -37,17 +37,17 @@ Select **LoRa** on the left hand menu. The status of the gateway should be **Dis
 ![MikroTik-portal-lora.png](portal-lora.png)
 
 {{< note >}}
-The Gateway ID you see here is the Gateway EUI you need to register the gateway in The Things Stack.
+The **Gateway ID** you see here is the **Gateway EUI** you need to register the gateway in The Things Stack.
 {{</ note >}}
 
-From the top menu, select the **Servers** Tab and press the **Add New** button.
+From the top menu, select the **Servers** tab and press the **Add New** button.
 
 ![MikroTik-server](servers.png)
 
 Edit the server parameters.
 
-- **Name**: A distinct name
-- **Address**: Address of the Gateway Server. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `thethings.example.com`.
+- **Name**: A distinct name which you can define yourself
+- **Address**: Address of {{% tts %}} Gateway Server. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `thethings.example.com` (for example: `eu1.cloud.thethings.network` for The Things Stack Community Edition in Europe).
 - **Up port**: UDP upstream port of the Gateway Server, typically `1700`.
 - **Down port**: UDP downstream port of the Gateway Server, typically `1700`.
 
@@ -55,11 +55,11 @@ Press **OK** to save the parameters.
 
 ![MikroTik-paramters](parameters.png)
 
-From the top menu, select the **Devices** tab. Click the **Gateway ID** to configure it.
+From the top menu, select the **Devices** tab. Click the **Gateway ID** to configure the gateway.
 
 ![MikroTik-Devices](portal-lora-disable.png)
 
-In the device settings, click the **Network Servers** drop-down menu to view available servers. Choose the server you just created.
+In the device settings, click the **Network Servers** drop-down menu to view available servers. Choose the server you created in the previous step.
 
 Select **Public** for the **Network** and click **OK** to save these parameters.
 
