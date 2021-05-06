@@ -5261,12 +5261,12 @@ JoinAcceptMICRequest:
       required: true
     default: {}
   - name: join_request_type
-    comment: LoRaWAN rejoin-request type.
+    comment: LoRaWAN join-request type.
     enum:
-      name: RejoinType
+      name: JoinRequestType
     rules:
       defined_only: true
-    default: CONTEXT
+    default: REJOIN_CONTEXT
   - name: dev_nonce
     comment: LoRaWAN DevNonce.
     type: bytes
@@ -6591,7 +6591,7 @@ MACCommand.ForceRejoinReq:
   fields:
   - name: rejoin_type
     enum:
-      name: RejoinType
+      name: RejoinRequestType
     rules:
       defined_only: true
     default: CONTEXT
@@ -8442,7 +8442,7 @@ RejoinRequestPayload:
   fields:
   - name: rejoin_type
     enum:
-      name: RejoinType
+      name: RejoinRequestType
     rules:
       defined_only: true
     default: CONTEXT
