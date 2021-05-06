@@ -19,10 +19,11 @@ If you are using {{% tts %}} Cloud or if your {{% tts %}} deployment is connecte
 
 ## Prerequisites
 
-1. A LoRa Alliance NetID or a tenant of a host NetID.
-  - To obtain a NetID, [become a member of the LoRa Alliance](https://lora-alliance.org/become-a-member) (from USD 6,000 per year)
-  - To obtain a DevAddr block, [contact The Things Industries sales](mailto:sales@thethingsindustries.com) (from USD 1,000 per year)
-2. Access to Packet Broker with an API key, [contact The Things Industries sales](mailto:sales@thethingsindustries.com)
+1. A LoRa Alliance NetID or a tenant of a host NetID
+  - To obtain a NetID, [become a member of the LoRa Alliance](https://lora-alliance.org/become-a-member)
+  - To obtain a DevAddr block, [contact The Things Industries sales](mailto:sales@thethingsindustries.com)
+2. Access to Packet Broker with an API key
+  - To obtain access to Packet Broker, [contact The Things Industries sales](mailto:sales@thethingsindustries.com)
 3. {{% tts %}} installed and configured. See [Getting Started]({{< ref "/getting-started" >}})
 4. Packet Broker CLI installed and configured. See [Packet Broker CLI](https://github.com/packetbroker/pb)
 
@@ -66,7 +67,7 @@ See [Packet Broker Agent configuration]({{< ref "/reference/configuration/packet
 
 ## Configure Gateway Server
 
-Configure Gateway Server to forward traffic for the current network to the Network Server in the cluster, and route all traffic to Packet Broker (via Packet Broker Agent):
+Configure the Gateway Server to forward traffic for the current network to the Network Server in the cluster, and route all traffic to Packet Broker (via Packet Broker Agent):
 
 ```yaml
 # Edit the Gateway Server configuration in your configuration file:
@@ -84,7 +85,7 @@ See [Gateway Server configuration]({{< ref "/reference/configuration/gateway-ser
 
 ## Configure Network Server
 
-Configure Network Server to issue device addresses (DevAddr) that fall within your NetID:
+Configure the Network Server to issue device addresses (DevAddr) that fall within your NetID:
 
 ```yaml
 # Edit the Network Server configuration in your configuration file:
@@ -105,7 +106,7 @@ ns:
   - '27222200/16'
 ```
 
-{{< note >}} By default, Network Server uses NetID `000000` which is intended for experimentation purposes. Only devices that are activated with a DevAddr that refers to a NetID will have their traffic routed by Packet Broker to your network. {{</ note >}}
+{{< note >}} By default, the Network Server uses NetID `000000` which is intended for experimentation purposes. Only devices that are activated with a DevAddr that refers to a NetID will have their traffic routed by Packet Broker to your network. {{</ note >}}
 
 See [Network Server configuration]({{< ref "/reference/configuration/network-server" >}}) for all configuration options.
 
