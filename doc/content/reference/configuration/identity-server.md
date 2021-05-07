@@ -68,6 +68,7 @@ If page assets for the OAuth UI are served from a CDN or on a different path on 
 - `is.oauth.ui.branding-base-url`: The base URL to the branding assets
 - `is.oauth.ui.branding-cluster-id`: The cluster ID to show below the logo {{< distributions "Cloud" "Enterprise" >}}
 - `is.oauth.ui.branding-text`: The branding text to show below the logo {{< distributions "Cloud" "Enterprise" >}}
+- `is.oauth.ui.cluster-picker-url`: A URL to the a cluster picker to enable users to pick the correct cluster of the deployment
 
 The appearance of {{% tts %}} can optionally be customized.
 
@@ -83,6 +84,14 @@ Further customization of the CSS files, JS files and icons is also possible:
 - `is.oauth.ui.css-file`: The names of the CSS files
 - `is.oauth.ui.js-file`: The names of the JS files
 - `is.oauth.ui.icon-prefix`: The prefix to put before the page icons (favicon.ico, touch-icon.png, og-image.png)
+
+It is possible to highlight some deployment information and disclaimers in the header of the Account App:
+
+- `is.oauth.ui.fair-use-policy-information-url`: A URL with information about the applicable fair use policy of the deployment
+- `is.oauth.ui.sla-applies`: The applicable Service Level Agreement of this deployment, e.g. `>99.9%`
+- `is.oauth.ui.sla-information-url`: A URL with information about the SLA applicable for this deployment
+- `is.oauth.ui.support-plan-applies`: The applicable support plan of this deployment, e.g. `priority`, `24h`
+- `is.oauth.ui.support-plan-information-url`: A URL with information about the support plan applicable for this deployment
 
 ## Profile Picture Storage Options
 

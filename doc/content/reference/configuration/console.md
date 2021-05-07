@@ -69,3 +69,14 @@ You can control the url of the assets folder that the Console frontend will use,
 - `console.ui.documentation-base-url`: The base URL for generating documentation links
 - `console.ui.theme-color`: The page theme color
 - `console.ui.title`: The page title
+- `console.ui.cluster-picker-url`: A URL to the a cluster picker to enable users to pick the correct cluster of the deployment
+
+### Deployment Information and Disclaimers
+
+It is possible to highlight some deployment information and disclaimers in the header of the Console:
+
+- `console.ui.fair-use-policy-information-url`: A URL with information about the applicable fair use policy of the deployment
+- `console.ui.sla-applies`: The applicable Service Level Agreement of this deployment, e.g. `>99.9%`
+- `console.ui.sla-information-url`: A URL with information about the SLA applicable for this deployment
+- `console.ui.support-plan-applies`: The applicable support plan of this deployment, e.g. `priority`, `24h`
+- `console.ui.support-plan-information-url`: A URL with information about the support plan applicable for this deployment
