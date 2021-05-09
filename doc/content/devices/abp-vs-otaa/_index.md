@@ -3,7 +3,7 @@ title: "ABP vs OTAA"
 description: ""
 ---
 
-This section can help you understand the differences between ABP and OTAA activation modes for LORaWAN end devices, and comprehend why using OTAA is recommended. 
+This section can help you understand the differences between ABP and OTAA activation modes for LoRaWAN end devices, and comprehend why using OTAA is recommended. 
 
 <!--more-->
 
@@ -50,3 +50,19 @@ ABP's drawbacks are arising as consequences of its main characteristics.
   When registering an ABP device on {{% tts %}}, you will need to provide the **RX1 Delay**, **RX1 Data Rate Offset**, **RX2 Data Rate Index**, **RX2 Frequency** and a list of **Factory Preset Frequencies**. If these values are not correctly configured, uplinks and/or downlinks might not work.
 
   OTAA end devices re-negotiate network parameters at establishing each new session, meaning you do not have to worry about them being misconfigured.
+
+## OTAA Requirements
+
+In general, there are no drawbacks in using OTAA over using ABP, but there are certain requirements that need to be met when using OTAA.
+
+The only thing to keep in mind is that an OTAA join requires the end device to be within the coverage of the network it is registered on. The reason for this is that the OTAA join procedure requires the end device to be able to receive the Join Accept downlink message from the Network Server.
+
+In case the end device does not have the network coverage when it is switched on, the Join procedure will fail. Depending on the firmware and LoRaWAN stack used in the device, a failed OTAA join may result in the device not going into sleep mode, or using a lot of energy on endless attempts to rejoin the network.
+
+If the network coverage for the end device can not be guaranteed, it does not mean that OTAA can not be used. If the firmware in the device is smart enough to handle failed OTAA joins properly, the device can retry the join at a later stage.
+
+A naive approach that has been used in the past to avoid this was to use ABP. ABP allows a device to start transmitting messages immediately when it is switched on, regardless of whether it has the network coverage or not.
+
+A better approach is to perform an OTAA join in a factory or workshop where the network coverage and working downlinks can be guaranteed. There are no drawbacks to this approach as long as the device follows the LoRaWAN [best practices]({{< ref "/devices/best-practices" >}}). 
+
+One more thing to take into account is persisting network parameters between device restarts. For example, an ABP device uses a non-volatile storage to persist frame counters between restarts. A better approach would be to switch to using OTAA and store the OTAA session rather than frame counters.
