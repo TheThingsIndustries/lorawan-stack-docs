@@ -11,13 +11,13 @@ This reference explains how {{% tts %}} deals with IDs and EUIs, including regul
 
 An ID or EUI in {{% tts %}} must:
 
-- Have a length of between 3 and 36 characters (inclusive)
+- Have a length of between 2 and 36 characters (inclusive)
 - Consist of lowercase letters, numbers, and non-consecutive dashes
 - **NOT** begin or end with a dash
 
 The following regular expression is used to validate IDs and EUIs:
 
-`(^[a-z0-9](?:[-]?[a-z0-9]){2,}$)`
+`(^[a-z0-9](?:[-]?[a-z0-9]){1,}$)`
 
 ## Uniqueness
 
