@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.4a91a2bdbdbc4e92cae68733965ef7b28a6ab235c8c20ea25b693218b6f87f06.css" integrity="sha256-SpGivb28TpLK5oczll73sopqsjXIwg6iW2kyGLb4fwY=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.07bd6845af106c056072b394b0aba314a5ea0d3b3ad4fba538a2fa137f338b3b.css" integrity="sha256-B71oRa8QbAVgcrOUsKujFKXqDTs61PulOKL6E38zizs=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Deployment">
@@ -219,18 +219,17 @@ debug: false
 </h1>
 
 <div class="content">
-  
-<p>This page describes the steps for deploying The Things Stack on AWS ECS.</p>
+  <p>This page describes the steps for deploying The Things Stack on AWS ECS.</p>
 <p>Most steps involve deploying a CloudFormation stack from our templates. Some steps involve some manual work.</p>
-<h2 id="vpc-and-subnets">VPC and Subnets&nbsp;<a class="header-hash" href="#vpc-and-subnets">#</a> </h2>
+<h2 id="vpc-and-subnets">VPC and Subnets</h2>
 <p>We start with the <code>1-1-vpc</code> template that creates the foundation for your deployment: the Virtual Private Cloud (VPC) and the different subnets in two availability zones (AZs). See the <a href="/docs/getting-started/aws/ecs/architecture/">Architecture</a> section for more information.</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/1-1-vpc.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/1-1-vpc.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <p>In addition to the re-used parameters (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>), this template asks for a <strong>CIDR block</strong>. The default value is usually fine, but if you plan to deploy multiple clusters, you may want to use CIDRs that do not overlap.</p>
-<h2 id="tls-certificates">TLS Certificates&nbsp;<a class="header-hash" href="#tls-certificates">#</a> </h2>
+<h2 id="tls-certificates">TLS Certificates</h2>
 <p>Go to AWS Certificate Manager and request a certificate for your domain of choice.</p>
 <p>If you are deploying a multi-tenant deployment, request a certificate that contains both <code>domain</code> and <code>*.domain</code>.</p>
 <p>Certificate Manager will give further instructions on creating the DNS records that are required for issuing the certificates.</p>
-<h2 id="dns-records">DNS Records&nbsp;<a class="header-hash" href="#dns-records">#</a> </h2>
+<h2 id="dns-records">DNS Records</h2>
 <p>Go to AWS Route 53 and create an A record that points <code>domain</code> to the Network Load Balancer that was created when you deployed the <code>1-1-vpc</code> template:</p>
 <ul>
 <li><strong>Routing Policy</strong>: Simple routing</li>
@@ -247,7 +246,7 @@ debug: false
   Even though the current templates do not support IPv6 yet, you can already create additional AAAA records to be ready for IPv6.
 </div>
 
-<h2 id="bastion-host-optional">Bastion Host (optional)&nbsp;<a class="header-hash" href="#bastion-host-optional">#</a> </h2>
+<h2 id="bastion-host-optional">Bastion Host (optional)</h2>
 <p>The <code>1-2-bastion</code> template will deploy an EC2 instance in one of the public subnets of your VPC. This instance can be used to provide external access to your cluster.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
@@ -257,10 +256,10 @@ debug: false
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/1-2-bastion.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/1-2-bastion.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <p>In addition to the re-used parameters (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>), this template asks for the <strong>Instance Type</strong> you want to use. A small instance is typically fine, since it will only be used to provide access.</p>
 <p>The <strong>SSH Key Name</strong> is the name of the SSH keypair you created before (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>). The IPv4 and IPv6 ranges can be used to configure the Security Group rules that allow external access to this instance.</p>
-<h2 id="opsgenie-alarms-optional">Opsgenie Alarms (optional)&nbsp;<a class="header-hash" href="#opsgenie-alarms-optional">#</a> </h2>
+<h2 id="opsgenie-alarms-optional">Opsgenie Alarms (optional)</h2>
 <p>The <code>1-3-opsgenie.py</code> will deploy an SNS Topic and a Subscription to receive AWS CloudWatch alarms and forward it to your Opsgenie server. An Opsgenie CloudWatch API Key is necessary.</p>
 <p>Once this is deployed, you can enable alerting that&rsquo;s configured for particular resources.</p>
-<h2 id="aurora-database">Aurora Database&nbsp;<a class="header-hash" href="#aurora-database">#</a> </h2>
+<h2 id="aurora-database">Aurora Database</h2>
 <p>The <code>2-1-db-aurora-master</code> and <code>2-2-db-aurora-replica</code> templates together create a highly available RDS Aurora PostgreSQL cluster. The template <code>2-1-db-aurora-master</code> creates a database cluster with a single master instance. The template <code>2-2-db-aurora-replica</code> can be deployed multiple times to deploy additional read-only replicas. See the <a href="/docs/getting-started/aws/ecs/architecture/">Architecture</a> section for more information.</p>
 <p><strong>Master Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/2-1-db-aurora-master.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/2-1-db-aurora-master.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <p>In addition to the re-used parameters (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>), this template asks for the <strong>Database Name</strong> and <strong>Username</strong> you want to configure on the database (the password will be generated).</p>
@@ -268,14 +267,14 @@ debug: false
 <p>If you are migrating your database from a previous deployment, or if you are upgrading your database, you can fill the ARN of the database <strong>Snapshot</strong> that should be restored.</p>
 <p><strong>Replica Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/2-2-db-aurora-replica.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/2-2-db-aurora-replica.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <p>In addition to the re-used parameters (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>), this template asks for an <strong>Instance Type</strong>, just as for the master template. It is typically fine for small clusters to start with <code>db.t3.medium</code> and scale as you grow.</p>
-<h2 id="redis-database">Redis Database&nbsp;<a class="header-hash" href="#redis-database">#</a> </h2>
+<h2 id="redis-database">Redis Database</h2>
 <p>You can deploy one or multiple Redis clusters with the <code>2-3-db-redis</code> template. The Things Stack uses Redis for multiple purposes, and can use separate clusters for different purposes.</p>
 <p>Most deployments start with a single <code>general</code> cluster that is used for all purposes. It is also possible to use the <code>general</code> cluster for persistence only, and use a separate <code>cache</code> cluster for caching temporary data. See the <a href="/docs/getting-started/aws/ecs/architecture/">Architecture</a> section for more information.</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/2-3-db-redis.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/2-3-db-redis.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <p>In addition to the re-used parameters (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>) and the previously described purpose, this template asks for the <strong>Instance Type</strong>. It is typically fine for small clusters to start with <code>cache.t3.medium</code> and scale as you grow.</p>
 <p>It is recommended to have a <strong>Multi-AZ</strong> cluster with automatic failover, in which case you&rsquo;ll need 2 <strong>Replicas</strong>. Since most load is read-write it is not necessary to deploy more than 2 replicas.</p>
 <p>If you are migrating your database from a previous deployment, or if you are upgrading your database, you can fill the name of the database <strong>Snapshot</strong> that should be restored.</p>
-<h2 id="timescaledb-optional">TimescaleDB (optional)&nbsp;<a class="header-hash" href="#timescaledb-optional">#</a> </h2>
+<h2 id="timescaledb-optional">TimescaleDB (optional)</h2>
 <p>The template <code>2-5-db-timescale</code> is an optional template that creates an EC2 instance that runs <a href="https://www.timescale.com/">TimescaleDB</a>, which is used by the Storage Integration of the Application Server.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
@@ -285,7 +284,7 @@ debug: false
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/2-5-db-timescale.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/2-5-db-timescale.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <p>In addition to the re-used parameters (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>), this template requires you to choose an <strong>Instance type</strong> and <strong>SSH Key Name</strong> to be used to login to the instance. You either need to specify the <strong>EBS Volume Snapshot ID</strong> to restore, or the <strong>EBS Volume Size</strong> for the storage volume to create.</p>
 <p>Finally, you need to specify the database name, username and password. If you restore from a snapshot, these must match the existing database in the snapshot.</p>
-<h2 id="s3-buckets">S3 Buckets&nbsp;<a class="header-hash" href="#s3-buckets">#</a> </h2>
+<h2 id="s3-buckets">S3 Buckets</h2>
 <p>The template <code>2-4a-is-s3</code> creates S3 buckets for the Identity Server. This template only needs to be deployed for your &ldquo;main&rdquo; cluster that contains your Identity Server. Secondary clusters do not have an Identity Server and don&rsquo;t need this template.</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/2-4a-is-s3.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/2-4a-is-s3.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <p>In addition to the re-used parameters (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>), this template asks for the names of the buckets you want to create. It is typically fine to leave these parameters empty, and have automatically generated bucket names.</p>
@@ -300,15 +299,15 @@ $ aws s3 cp config.yml s3://<span class="si">${</span><span class="nv">InteropCo
   If you did not set a bucket name, see the <code>InteropConfigBucket</code> output of the <code>2-4b-routing-s3</code> stack for the name of the bucket.
 </div>
 
-<h2 id="security-group-rules">Security Group Rules&nbsp;<a class="header-hash" href="#security-group-rules">#</a> </h2>
+<h2 id="security-group-rules">Security Group Rules</h2>
 <p>The template <code>3-1-security-group-rules</code> creates the security group rules for both external and internal network traffic.</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/3-1-security-group-rules.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/3-1-security-group-rules.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <p>In addition to the re-used parameters (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>), this template asks for the IP address ranges that are allowed to connect to the different ports exposed by The Things Stack. The <a href="/docs/getting-started/aws/ecs/architecture/">Architecture</a> section gives more information about these ports. For (public) deployments that should be accessible from anywhere on the internet, the defaults do not need to be changed.</p>
-<h2 id="load-balancer-listeners">Load Balancer Listeners&nbsp;<a class="header-hash" href="#load-balancer-listeners">#</a> </h2>
+<h2 id="load-balancer-listeners">Load Balancer Listeners</h2>
 <p>Template <code>3-2-load-balancer-rules</code> creates listeners and target groups for the Network Load Balancer. Before deploying this template, go to AWS Certificate Manager, and copy the ARN of the TLS certificate you created earlier.</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/3-2-load-balancer-rules.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/3-2-load-balancer-rules.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <p>In addition to the re-used parameters (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>) and the previously mentioned TLS certificate ARN, this template asks if you want to serve HTTP/2, which is recommended for all deployments.</p>
-<h2 id="secrets">Secrets&nbsp;<a class="header-hash" href="#secrets">#</a> </h2>
+<h2 id="secrets">Secrets</h2>
 <p>The <code>4-1-secrets</code> template creates several secrets in AWS Secrets Manager</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/4-1-secrets.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/4-1-secrets.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <p>In addition to the re-used parameters, the <strong>License Key</strong>, <strong>Cluster Secrets</strong> and <strong>OAuth Client Secrets</strong> (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>), this template asks for login information for your email provider. Currently, only Sendgrid and SMTP are supported.</p>
@@ -316,7 +315,7 @@ $ aws s3 cp config.yml s3://<span class="si">${</span><span class="nv">InteropCo
 <p>For multi-tenant deployments that use tenant billing through Stripe (see the <a href="https://www.thethingsindustries.com/docs/reference/stripe/">Stripe Billing reference</a>), you need to configure the Stripe API key (starting with <code>sk_</code>) and Stripe endpoint secret key (starting with <code>whsec_</code>). It is possible to add or update this in the future.</p>
 <p>For the <strong>Gateway Secrets Encryption Key Value</strong> parameter, provide an AES-128 Key in Base64. The following command can be used to randomly generate one:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ openssl rand -base64 <span class="m">16</span>
-</code></pre></div><h2 id="configuration">Configuration&nbsp;<a class="header-hash" href="#configuration">#</a> </h2>
+</code></pre></div><h2 id="configuration">Configuration</h2>
 <p>The <code>4-2-configuration</code> template creates several configuration parameters in AWS Systems Manager Parameter Store.</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/4-2-configuration.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/4-2-configuration.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <p>As with the other templates, this one also asks for the re-used parameters from the <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>. Next to these parameters, this template has some notable parameters:</p>
@@ -325,7 +324,7 @@ $ aws s3 cp config.yml s3://<span class="si">${</span><span class="nv">InteropCo
 <li>The <strong>Default Tenant ID</strong> is the tenant ID of the only tenant in single-tenant deployments, or the optional default tenant ID in multi-tenant deployments.</li>
 </ul>
 <p>For the other parameters, see the descriptions and the <a href="https://www.thethingsindustries.com/docs/reference/configuration/">Configuration reference</a>.</p>
-<h2 id="ecs-cluster">ECS Cluster&nbsp;<a class="header-hash" href="#ecs-cluster">#</a> </h2>
+<h2 id="ecs-cluster">ECS Cluster</h2>
 <p>Before deploying the ECS cluster, check the ECS settings in your AWS account by going to <strong>Amazon ECS</strong> &gt; <strong>Account Settings</strong>. If you use multiple IAM users, you need to do this with your root account.</p>
 <p>Under <strong>Amazon ECS ARN and resource ID settings</strong> the <strong>new ARN and resource ID format</strong> needs to be enabled for <strong>container instances</strong>, <strong>services</strong> and <strong>tasks</strong>. If you plan to deploy The Things Stack on container instances, <strong>AWSVPC Trunking</strong> needs to be enabled.</p>
 <p>Alternatively, you can configure these settings for the entire AWS account using the AWS CLI:</p>
@@ -351,7 +350,7 @@ $ aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --re
   <code>t3</code> instances <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html#eni-trunking-supported-instance-types">don&rsquo;t support ENI trunking</a> that is required to run a larger number of containers on the instance.
 </div>
 
-<h2 id="operations">Operations&nbsp;<a class="header-hash" href="#operations">#</a> </h2>
+<h2 id="operations">Operations</h2>
 <p>The <code>5-2-ecs-ops</code> template creates an ECS Task Definition that will be used for performing database operations such as initializing, migrating and cleaning.</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/5-2-ecs-ops.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/5-2-ecs-ops.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <p>In addition to the re-used parameters (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>), this template asks for the Redis clusters to use. If you only deployed one Redis cluster, this is the <code>general</code> cluster. If you deployed a separate cluster for caching, select <code>cache</code> as the <strong>Cache Cluster</strong>.</p>
@@ -362,7 +361,7 @@ $ aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --re
   You need to initialize the Identity Server database before moving on to the next step. See the <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/database-operations/">Database Operations page</a> for details.
 </div>
 
-<h2 id="identity-server-or-identity-server-proxy">Identity Server or Identity Server Proxy&nbsp;<a class="header-hash" href="#identity-server-or-identity-server-proxy">#</a> </h2>
+<h2 id="identity-server-or-identity-server-proxy">Identity Server or Identity Server Proxy</h2>
 <p>Depending on the type of cluster you are deploying, you need to deploy either <code>5-3a-ecs-is-service</code> (the Identity Server) or <code>5-3b-ecs-external-is-proxy</code> (proxy to Identity Server in another cluster).</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/5-3a-ecs-is-service.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/5-3a-ecs-is-service.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <p>Fill the re-used parameters (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>) and the Redis clusters to use. The official image is <code>docker.io/thethingsindustries/lorawan-stack:3.x.y-aws</code> (replace <code>3.x.y</code> with the current version). When deploying to <code>FARGATE</code>, make sure to select <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html">a valid combination of CPU and Memory</a>, or you will get an error about <code>Invalid CPU or memory value specified</code> when you deploy the stack.</p>
@@ -374,11 +373,11 @@ $ aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --re
 <blockquote>
 <p>We recommend to start with 2 instances.</p>
 </blockquote>
-<h2 id="tenant-billing-server-optional">Tenant Billing Server (optional)&nbsp;<a class="header-hash" href="#tenant-billing-server-optional">#</a> </h2>
+<h2 id="tenant-billing-server-optional">Tenant Billing Server (optional)</h2>
 <p>In a multi-tenant deployment where tenants are billed through Stripe, you&rsquo;ll need to deploy the Tenant Billing Server.</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/5-3c-ecs-tbs-service.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/5-3c-ecs-tbs-service.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <p>Fill the re-used parameters (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>) and the Redis clusters to use. The official image is <code>docker.io/thethingsindustries/lorawan-stack:3.x.y-aws</code> (replace <code>3.x.y</code> with the current version). When deploying to <code>FARGATE</code>, make sure to select <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html">a valid combination of CPU and Memory</a>, or you will get an error about <code>Invalid CPU or memory value specified</code> when you deploy the stack.</p>
-<h2 id="routing-services">Routing Services&nbsp;<a class="header-hash" href="#routing-services">#</a> </h2>
+<h2 id="routing-services">Routing Services</h2>
 <p>The <code>5-4-ecs-services</code> template creates all other routing services.</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/5-4-ecs-services.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/5-4-ecs-services.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <p>Fill the re-used parameters (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>) and the Redis clusters to use. Indicate whether the services should use the Identity Server in the current cluster, or an external one through the proxy.</p>
@@ -396,7 +395,7 @@ $ aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --re
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/5-3d-ecs-gcs.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/5-3d-ecs-gcs.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <p>Fill the re-used parameters (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>) and the Redis clusters to use.</p>
 <p>For all services: the official image is <code>docker.io/thethingsindustries/lorawan-stack:3.x.y-aws</code> (replace <code>3.x.y</code> with the current version). When deploying to <code>FARGATE</code>, make sure to select <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html">a valid combination of CPU and Memory</a>, or you will get an error about <code>Invalid CPU or memory value specified</code> when you deploy the stack.</p>
-<h2 id="monitoring-optional-but-recommended">Monitoring (optional, but recommended)&nbsp;<a class="header-hash" href="#monitoring-optional-but-recommended">#</a> </h2>
+<h2 id="monitoring-optional-but-recommended">Monitoring (optional, but recommended)</h2>
 <p>We strongly recommend to monitor your deployment with <a href="https://prometheus.io">Prometheus</a> and send alerts to <a href="https://prometheus.io/docs/alerting/latest/overview/">Alertmanager</a>, from where you can forward alerts to external on-call notification systems. With the <code>5-5-ecs-monitoring</code> you can deploy Prometheus to your ECS cluster.</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/5-5-ecs-monitoring.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/5-5-ecs-monitoring.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <p>Fill the re-used parameters (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>) and information about the cluster.</p>
@@ -407,14 +406,14 @@ $ aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --re
 </div>
 
 <p>We recommend to point Prometheus to an external <strong>Alertmanager URL</strong>, so that you can be alerted about (potential) problems with your deployment.</p>
-<h2 id="http-and-grpc-proxy">HTTP and gRPC Proxy&nbsp;<a class="header-hash" href="#http-and-grpc-proxy">#</a> </h2>
+<h2 id="http-and-grpc-proxy">HTTP and gRPC Proxy</h2>
 <p>The template <code>5-6-ecs-proxy</code> deploys the proxy that routes incoming gRPC and HTTP requests from the outside world to the right service.</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/5-6-ecs-proxy.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/5-6-ecs-proxy.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <p>The official image is <code>docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-proxy</code> (replace <code>3.x</code> with the current minor version). When deploying to <code>FARGATE</code>, make sure to select <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-cpu-memory-error.html">a valid combination of CPU and Memory</a>, or you will get an error about <code>Invalid CPU or memory value specified</code> when you deploy the stack.</p>
 <blockquote>
 <p>We recommend to start with 2 instances.</p>
 </blockquote>
-<h2 id="lets-encrypt-certificates-optional">Let&rsquo;s Encrypt Certificates (optional)&nbsp;<a class="header-hash" href="#lets-encrypt-certificates-optional">#</a> </h2>
+<h2 id="lets-encrypt-certificates-optional">Let&rsquo;s Encrypt Certificates (optional)</h2>
 <p>Unfortunately not all gateways are able to connect when using AWS-issued certificates. If this is the case in your deployment, you can use the <code>5-7a-certs-le</code> and <code>5-7b-ecs-certbot-scheduled-task</code> templates to request certificates from <a href="https://letsencrypt.org/">Let&rsquo;s Encrypt</a>.</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/5-7a-certs-le.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/5-7a-certs-le.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <p>The Docker image we&rsquo;ll use is <code>docker.io/thethingsindustries/aws-certbot-dns-route53:latest</code>. On the initial deployment, leave the <strong>Existing Certificate ARN</strong> blank.</p>
@@ -430,7 +429,6 @@ $ aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --re
 <blockquote>
 <p>We recommend to schedule this task to run every 14 days.</p>
 </blockquote>
-
 </div>
 
 <div class="is-clearfix">
@@ -570,7 +568,7 @@ $ aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --re
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.595b97b16778e75a16096b7412b5ce1e7fff37a56e4e45e7f89921711a3cd177.js" integrity="sha256-WVuXsWd451oWCWt0ErXOHn//N6VuTkXn&#43;JkhcRo80Xc=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.0591382a7eda937afd29a067f0682efe7f966ea310ee0e055021aa6365233405.js" integrity="sha256-BZE4Kn7ak3r9KaBn8Ggu/n&#43;WbqMQ7g4FUCGqY2UjNAU=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

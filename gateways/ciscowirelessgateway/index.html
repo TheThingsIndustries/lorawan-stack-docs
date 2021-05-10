@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.4a91a2bdbdbc4e92cae68733965ef7b28a6ab235c8c20ea25b693218b6f87f06.css" integrity="sha256-SpGivb28TpLK5oczll73sopqsjXIwg6iW2kyGLb4fwY=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.07bd6845af106c056072b394b0aba314a5ea0d3b3ad4fba538a2fa137f338b3b.css" integrity="sha256-B71oRa8QbAVgcrOUsKujFKXqDTs61PulOKL6E38zizs=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Cisco Wireless Gateway for LoRaWAN">
@@ -182,21 +182,20 @@ debug: false
 </h1>
 
 <div class="content">
-  
-<p>This page guides you to connecting the Cisco Wireless Gateway for LoRaWAN to The Things Stack.</p>
+  <p>This page guides you to connecting the Cisco Wireless Gateway for LoRaWAN to The Things Stack.</p>
 <p>Technical specifications for this gateway can be found in <a href="https://www.cisco.com/c/en/us/products/routers/wireless-gateway-lorawan/">Cisco&rsquo;s official documentation</a>.</p>
 <figure class="float plain">
     <img src="cisco.jpg"
          alt="Cisco LoRaWAN Gateway"/> 
 </figure>
 
-<h2 id="prerequisites">Prerequisites&nbsp;<a class="header-hash" href="#prerequisites">#</a> </h2>
+<h2 id="prerequisites">Prerequisites</h2>
 <ol>
 <li>User account on The Things Stack with rights to create gateways.</li>
 <li>Cisco Wireless Gateway for LoRaWAN with latest firmware (version <code>2.0.32</code> or higher), connected to the internet (or your local network) via ethernet.</li>
 <li><a href="https://www.cablesandkits.com/accessories/console-cables/usb-rj45-6ft/pro-9900/">Console cable from USB to RJ45</a>.</li>
 </ol>
-<h2 id="registration">Registration&nbsp;<a class="header-hash" href="#registration">#</a> </h2>
+<h2 id="registration">Registration</h2>
 <p>Create a gateway by following the instructions for the <a href="https://www.thethingsindustries.com/docs/getting-started/console/#create-gateway">Console</a> or the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/#create-gateway">CLI</a>.</p>
 <p>The <strong>EUI</strong> is derived from the <strong>MAC_ADDRESS</strong> that can be found on the back panel of the gateway. To get the EUI from the MAC_ADDRESS insert <code>FFFE</code> <strong>after the first 6 characters</strong> to make it a 64bit EUI.</p>
 <div class="notification is-info is-light has-text-dark">
@@ -205,7 +204,7 @@ debug: false
 </div>
 
 <p>The <strong>Gateway Server Address</strong> is the same as what you use instead of <code>thethings.example.com</code> in the <a href="https://www.thethingsindustries.com/docs/getting-started/">Getting Started guide</a>.</p>
-<h2 id="configuration">Configuration&nbsp;<a class="header-hash" href="#configuration">#</a> </h2>
+<h2 id="configuration">Configuration</h2>
 <p>Plug the RJ45 end of the cable in the <strong>Console</strong> port at the side of the gateway, and the USB port to your computer.</p>
 <p>If you are using MacOS or Linux, connect to the Gateway by opening a terminal and a executing the following commands:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ls /dev/tty.usb*
@@ -218,10 +217,10 @@ debug: false
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ screen /dev/tty.usbserial-AO001X6M <span class="m">115200</span>
 </code></pre></div><p>Use PuTTy if you are using Windows.</p>
 <p>You are now in the gateway&rsquo;s shell, called <code>standalone mode</code>.</p>
-<h3 id="system-setup">System setup&nbsp;<a class="header-hash" href="#system-setup">#</a> </h3>
+<h3 id="system-setup">System setup</h3>
 <p>First you need to enable the privileged mode.</p>
 <pre><code>Gateway&gt; enable
-</code></pre><h4 id="network">Network&nbsp;<a class="header-hash" href="#network">#</a> </h4>
+</code></pre><h4 id="network">Network</h4>
 <p>To configure your Cisco Gateway to your network, type the following commands:</p>
 <pre><code>Gateway# configure terminal 
 Gateway(config)# interface FastEthernet 0/1
@@ -247,7 +246,7 @@ Gateway# copy running-config startup-config
 
 </div>
 
-<h4 id="date-and-time">Date and Time&nbsp;<a class="header-hash" href="#date-and-time">#</a> </h4>
+<h4 id="date-and-time">Date and Time</h4>
 <p>To configure your system&rsquo;s date and time, you can use <strong>ntp</strong>:</p>
 <pre><code>Gateway# configure terminal
 Gateway(config)# ntp server address &lt;NTP server address&gt;
@@ -257,11 +256,11 @@ Gateway(config)# exit
 Gateway(config)# ntp server ip &lt;NTP server IP&gt;
 Gateway(config)# exit
 </code></pre><p>If you don&rsquo;t have production-grade ntp servers available, you can use <a href="http://www.pool.ntp.org/en/use.html">pool.ntp.org</a>&lsquo;s servers.</p>
-<h4 id="fpga">FPGA&nbsp;<a class="header-hash" href="#fpga">#</a> </h4>
+<h4 id="fpga">FPGA</h4>
 <p>If you needed to update your gateway firmware previously, your FPGA will need ~20 minutes to update once the new firmware is installed. The packet forwarder will not work until then, so we recommend at this point waiting until the FPGA is upgraded.To show the status of the FPGA, you can use the following command:</p>
 <pre><code>Gateway# show inventory
 </code></pre><p>When the <strong>FPGAStatus</strong> line indicates <strong>Ready</strong>, this means you can go forward with this guide.</p>
-<h4 id="gps">GPS&nbsp;<a class="header-hash" href="#gps">#</a> </h4>
+<h4 id="gps">GPS</h4>
 <p>If you have a GPS connected to your Cisco gateway, enable it with the following commands:</p>
 <pre><code>Gateway# configure terminal
 Gateway(config)# gps ubx enable
@@ -271,7 +270,7 @@ Gateway(config)# exit
   This command may return the message <code>packet-forwarder firmware is not installed</code>, which can be ignored.
 </div>
 
-<h4 id="enable-radio">Enable Radio&nbsp;<a class="header-hash" href="#enable-radio">#</a> </h4>
+<h4 id="enable-radio">Enable Radio</h4>
 <p>As a final step before setting up the packet forwarder software, we&rsquo;re going to <strong>enable the radio</strong>. You can see radio information with the <code>show radio</code> command:</p>
 <pre><code>Gateway# show radio 
 ORA_SN: FOC21028R8S
@@ -295,7 +294,7 @@ Gateway(config)# exit
   The <code>show radio</code> command also shows you more information about the LoRa concentrator powering the gateway. For example, <strong>LORA_SKU</strong> indicates the base frequency of the concentrator.
 </div>
 
-<h4 id="enable-authentication">Enable Authentication&nbsp;<a class="header-hash" href="#enable-authentication">#</a> </h4>
+<h4 id="enable-authentication">Enable Authentication</h4>
 <p>To prevent unauthorized access to the gateway, you&rsquo;ll want to set up user authentication. The Cisco gateway has a <strong>secret</strong> system, that requires users to enter a secret to access privileged commands.</p>
 <p>To enable this secret system, you can use the following commands:</p>
 <ul>
@@ -307,7 +306,7 @@ Gateway(config)# exit
 <li><code>Gateway(config)# exit</code> to exit global configuration mode.</li>
 <li><code>Gateway#copy running-config startup-config</code> to save the configuration.</li>
 </ul>
-<h4 id="verification">Verification&nbsp;<a class="header-hash" href="#verification">#</a> </h4>
+<h4 id="verification">Verification</h4>
 <p>Before we install the packet forwarder, let&rsquo;s run verification to ensure that the gateway is ready.</p>
 <ul>
 <li>Type <code>show radio</code> to verify that the <strong>radio is enabled</strong>. The result should indicate <strong>radio status: on</strong>.</li>
@@ -318,7 +317,7 @@ Gateway(config)# exit
 <p>If some of those checks fail, go back to the appropriate section earlier in order to fix it.</p>
 <p>Then save the configuration by executing</p>
 <pre><code>Gateway# copy running-config startup-config
-</code></pre><h3 id="packet-forwarder-configuration">Packet Forwarder Configuration&nbsp;<a class="header-hash" href="#packet-forwarder-configuration">#</a> </h3>
+</code></pre><h3 id="packet-forwarder-configuration">Packet Forwarder Configuration</h3>
 <div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
   Keep in mind that the pre-installed packet forwarder is not supported by Cisco for production purposes.
@@ -410,7 +409,7 @@ restart<span class="o">()</span> <span class="o">{</span>
 </code></pre></div><p>To enable it immediately, execute</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">bash-3.2# /etc/init.d/S60pkt_forwarder start
 </code></pre></div><p>You can now reboot the gateway, it can take up to 4 minutes.</p>
-<h2 id="troubleshooting">Troubleshooting&nbsp;<a class="header-hash" href="#troubleshooting">#</a> </h2>
+<h2 id="troubleshooting">Troubleshooting</h2>
 <p>If the gateway does not connect to the The Things Stack after a few minutes, you can check the <strong>log file</strong> to see if the packet forwarder started properly.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">bash-3.2# tail -100 var/log/pkt_forwarder.log
 </code></pre></div><div class="notification is-info is-light has-text-dark">
@@ -420,7 +419,6 @@ restart<span class="o">()</span> <span class="o">{</span>
 
 <p>If the radio failed to start, disconnect and reconnect the power supply to power-cycle the gateway.</p>
 <p>For further information and troubleshooting, have a look at <a href="https://www.cisco.com/c/en/us/td/docs/routers/interface-module-lorawan/software/configuration/guide/b_lora_scg.pdf">Cisco&rsquo;s Configuration Guide</a>.</p>
-
 </div>
 
 <div class="is-clearfix">
@@ -509,7 +507,7 @@ restart<span class="o">()</span> <span class="o">{</span>
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.595b97b16778e75a16096b7412b5ce1e7fff37a56e4e45e7f89921711a3cd177.js" integrity="sha256-WVuXsWd451oWCWt0ErXOHn//N6VuTkXn&#43;JkhcRo80Xc=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.0591382a7eda937afd29a067f0682efe7f966ea310ee0e055021aa6365233405.js" integrity="sha256-BZE4Kn7ak3r9KaBn8Ggu/n&#43;WbqMQ7g4FUCGqY2UjNAU=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

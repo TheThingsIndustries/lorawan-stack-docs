@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.4a91a2bdbdbc4e92cae68733965ef7b28a6ab235c8c20ea25b693218b6f87f06.css" integrity="sha256-SpGivb28TpLK5oczll73sopqsjXIwg6iW2kyGLb4fwY=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.07bd6845af106c056072b394b0aba314a5ea0d3b3ad4fba538a2fa137f338b3b.css" integrity="sha256-B71oRa8QbAVgcrOUsKujFKXqDTs61PulOKL6E38zizs=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="General Options">
@@ -243,8 +243,7 @@ debug: false
 </h1>
 
 <div class="content">
-  
-<h2 id="global-options">Global Options&nbsp;<a class="header-hash" href="#global-options">#</a> </h2>
+  <h2 id="global-options">Global Options</h2>
 <p>Under normal circumstances, only <code>info</code>, <code>warn</code> and <code>error</code> logs are printed to the console. For development, you may also want to see <code>debug</code> logs.</p>
 <ul>
 <li><code>log.level</code>: The minimum level log messages must have to be shown (default &ldquo;info&rdquo;)</li>
@@ -323,7 +322,7 @@ debug: false
 <li><code>key-vault.aws.region</code>: AWS region</li>
 <li><code>key-vault.aws.secret-id-prefix</code>: Secret ID prefix</li>
 </ul>
-<h2 id="tls-options">TLS Options&nbsp;<a class="header-hash" href="#tls-options">#</a> </h2>
+<h2 id="tls-options">TLS Options</h2>
 <p>The Things Stack serves several endpoints using TLS. TLS certificates can come from different sources.</p>
 <ul>
 <li><code>tls.source</code>: Source of the TLS certificate (<code>file</code>, <code>acme</code>, <code>key-vault</code>)</li>
@@ -350,7 +349,7 @@ debug: false
 <li><code>tls.root-ca</code>: Location of TLS root CA certificate (optional)</li>
 <li><code>tls.insecure-skip-verify</code>: Skip verification of certificate chains (insecure)</li>
 </ul>
-<h2 id="grpc-options">gRPC Options&nbsp;<a class="header-hash" href="#grpc-options">#</a> </h2>
+<h2 id="grpc-options">gRPC Options</h2>
 <p>The <code>grpc</code> options configure how The Things Stack listens for gRPC connections. The format is <code>host:port</code>. When listening on TLS ports, it uses the global <a href="#tls-options">TLS configuration</a>.</p>
 <ul>
 <li><code>grpc.listen</code>: Address for the TCP gRPC server to listen on</li>
@@ -373,7 +372,7 @@ debug: false
   If you are seeing a lot of logs with <code>grpc_service=/ttn.v3.lorawan.ServiceName</code> and <code>grpc_method=MethodName</code>, use <code>/ttn.v3.lorawan.ServiceName/MethodName</code> for this option.
 </div>
 
-<h2 id="http-options">HTTP Options&nbsp;<a class="header-hash" href="#http-options">#</a> </h2>
+<h2 id="http-options">HTTP Options</h2>
 <p>The <code>http</code> options configure how The Things Stack listens for HTTP connections. The format is <code>host:port</code>. When listening on TLS ports, it uses the global <a href="#tls-options">TLS configuration</a>.</p>
 <ul>
 <li><code>http.listen</code>: Address for the HTTP server to listen on</li>
@@ -411,7 +410,7 @@ debug: false
 <ul>
 <li><code>http.log-ignore-paths</code>: List of URLs for which to suppress logs of successful requests.</li>
 </ul>
-<h2 id="interoperability-options">Interoperability Options&nbsp;<a class="header-hash" href="#interoperability-options">#</a> </h2>
+<h2 id="interoperability-options">Interoperability Options</h2>
 <p>The Things Stack supports interoperability according to LoRaWAN Backend Interfaces specification. The following options are used to configure the server for this.</p>
 <ul>
 <li>
@@ -434,7 +433,7 @@ debug: false
 <li><code>interop.sender-client-ca.blob.bucket</code>: Bucket to use</li>
 <li><code>interop.sender-client-ca.blob.path</code>: Path to use</li>
 </ul>
-<h2 id="redis-options">Redis Options&nbsp;<a class="header-hash" href="#redis-options">#</a> </h2>
+<h2 id="redis-options">Redis Options</h2>
 <p>Redis is the main data store for the <a href="/docs/reference/configuration/network-server/">Network Server</a>, <a href="/docs/reference/configuration/application-server/">Application Server</a> and <a href="/docs/reference/configuration/join-server/">Join Server</a>. Redis is also used by the <a href="/docs/reference/configuration/identity-server/">Identity Server</a> for caching and can be used by the <a href="#events-options">events system</a> for exchanging events between components.</p>
 <p>Redis configuration options:</p>
 <ul>
@@ -587,7 +586,7 @@ debug: false
 <li><code>redis.tls.insecure-skip-verify</code>: Skip verification of certificate chains (insecure)</li>
 </ul>
 <p>Mutual TLS is not supported yet.</p>
-<h2 id="blob-options">Blob Options&nbsp;<a class="header-hash" href="#blob-options">#</a> </h2>
+<h2 id="blob-options">Blob Options</h2>
 <p>The <code>blob</code> options configure how The Things Stack reads or writes files such as pictures, the frequency plans repository or files required for Backend Interfaces interoperability. The <code>provider</code> field selects the provider that is used, and which other options are read.</p>
 <ul>
 <li><code>blob.provider</code>: Blob store provider (local, aws, gcp) (default &ldquo;local&rdquo;)</li>
@@ -607,7 +606,7 @@ debug: false
 <li><code>blob.gcp.credentials</code>: JSON data of the GCP credentials, if not using JSON file</li>
 <li><code>blob.gcp.credentials-file</code>: Path to the GCP credentials JSON file</li>
 </ul>
-<h2 id="events-options">Events Options&nbsp;<a class="header-hash" href="#events-options">#</a> </h2>
+<h2 id="events-options">Events Options</h2>
 <p>The <code>events</code> options configure how events are shared between components. When using a single instance of The Things Stack, the <code>internal</code> backend is the best option. If you need to communicate in a cluster, you can use the <code>redis</code> or <code>cloud</code> backend.</p>
 <ul>
 <li><code>events.backend</code>: Backend to use for events (internal, redis, cloud) (default &ldquo;internal&rdquo;)</li>
@@ -759,7 +758,7 @@ debug: false
 <li><code>events.cloud.publish-url</code>: URL for the topic to send events</li>
 <li><code>events.cloud.subscribe-url</code>: URL for the subscription to receiving events</li>
 </ul>
-<h2 id="frequency-plans-options">Frequency Plans Options&nbsp;<a class="header-hash" href="#frequency-plans-options">#</a> </h2>
+<h2 id="frequency-plans-options">Frequency Plans Options</h2>
 <p>The <code>frequency-plans</code> configuration is used by the <a href="/docs/reference/configuration/gateway-server/">Gateway Server</a> and the <a href="/docs/reference/configuration/network-server/">Network Server</a>. It can load configuration from a number of sources.</p>
 <ul>
 <li><code>frequency-plans.config-source</code>: Source of the frequency plans (static, directory, url, blob)</li>
@@ -777,7 +776,7 @@ debug: false
 <li><code>frequency-plans.blob.bucket</code>: Bucket to use</li>
 <li><code>frequency-plans.blob.path</code>: Path to use</li>
 </ul>
-<h2 id="cluster-options">Cluster Options&nbsp;<a class="header-hash" href="#cluster-options">#</a> </h2>
+<h2 id="cluster-options">Cluster Options</h2>
 <p>The <code>cluster</code> options configure how The Things Stack communicates with other components in the cluster. These options do not need to be set when running a single instance of The Things Stack. The most important options are the ones to configure the addresses of the other components in the cluster.</p>
 <ul>
 <li><code>cluster.identity-server</code>: Address for the Identity Server</li>
@@ -807,7 +806,7 @@ debug: false
 <li><code>cluster.tls</code>: Do cluster gRPC over TLS</li>
 <li><code>cluster.tls-server-name</code>: Server name to use in TLS handshake to cluster peers</li>
 </ul>
-<h2 id="cache-options">Cache Options&nbsp;<a class="header-hash" href="#cache-options">#</a> </h2>
+<h2 id="cache-options">Cache Options</h2>
 <p>The Things Stack can optionally be configured to use a cache.</p>
 <ul>
 <li><code>cache.service</code>: Configure the backing store that will be used for the cache. Currently, only <code>redis</code> is supported</li>
@@ -955,7 +954,6 @@ debug: false
 </h2>
 <p>The Things Stack supports rate limiting external endpoints. Rate limiting configuration can only be set from the configuration file. See <a href="https://www.thethingsindustries.com/docs/reference/rate-limiting/">Rate Limiting</a> for more details.</p>
 
-
 </div>
 <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/reference/configuration/">← Configuration</a>
@@ -1064,7 +1062,7 @@ debug: false
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.595b97b16778e75a16096b7412b5ce1e7fff37a56e4e45e7f89921711a3cd177.js" integrity="sha256-WVuXsWd451oWCWt0ErXOHn//N6VuTkXn&#43;JkhcRo80Xc=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.0591382a7eda937afd29a067f0682efe7f966ea310ee0e055021aa6365233405.js" integrity="sha256-BZE4Kn7ak3r9KaBn8Ggu/n&#43;WbqMQ7g4FUCGqY2UjNAU=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

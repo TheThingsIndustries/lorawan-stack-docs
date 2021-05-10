@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.4a91a2bdbdbc4e92cae68733965ef7b28a6ab235c8c20ea25b693218b6f87f06.css" integrity="sha256-SpGivb28TpLK5oczll73sopqsjXIwg6iW2kyGLb4fwY=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.07bd6845af106c056072b394b0aba314a5ea0d3b3ad4fba538a2fa137f338b3b.css" integrity="sha256-B71oRa8QbAVgcrOUsKujFKXqDTs61PulOKL6E38zizs=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Gateway Server">
@@ -248,26 +248,25 @@ debug: false
 </h1>
 
 <div class="content">
-  
-<p>The Gateway Server maintains connections with gateways supporting the Basic Station, UDP, MQTT and gRPC protocols. It forwards uplink traffic to Network Servers directly or indirectly, and schedules downlink traffic on gateways.</p>
-<h2 id="connectivity">Connectivity&nbsp;<a class="header-hash" href="#connectivity">#</a> </h2>
+  <p>The Gateway Server maintains connections with gateways supporting the Basic Station, UDP, MQTT and gRPC protocols. It forwards uplink traffic to Network Servers directly or indirectly, and schedules downlink traffic on gateways.</p>
+<h2 id="connectivity">Connectivity</h2>
 <p>Gateways can connect to Gateway Servers over multiple protocols. See <a href="https://www.thethingsindustries.com/docs/reference/networking/">Networking</a>.</p>
-<h3 id="basic-station-protocol">Basic Station Protocol&nbsp;<a class="header-hash" href="#basic-station-protocol">#</a> </h3>
+<h3 id="basic-station-protocol">Basic Station Protocol</h3>
 <p>Gateways can connect to a Gateway Server using the <a href="https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/">Basic Station</a> LNS protocol. This is the recommended protocol for connecting gateways.</p>
-<h3 id="udp-protocol">UDP Protocol&nbsp;<a class="header-hash" href="#udp-protocol">#</a> </h3>
+<h3 id="udp-protocol">UDP Protocol</h3>
 <p>Gateways can connect to a Gateway Server over <a href="https://github.com/Lora-net/packet_forwarder/blob/master/PROTOCOL.TXT">the UDP protocol</a>. The EUI that is sent with every message is used to identify the gateway.</p>
 <p>If a gateway is found in the Identity Server with this EUI, messages are correlated to this gateway. Otherwise, depending on network configuration, uplinks may routed or dropped. However, the network will not send downlinks to this gateway, given that its regional parameters cannot be identified.</p>
 <p>Older versions of packet forwarders implementing the UDP protocol do not implement any queuing system for downlinks, resulting in packet loss since SX130x concentrators do not buffer multiple downlinks. The Things Stack therefore implements, for the UDP protocol, a delay to send downlinks to gateway just before they&rsquo;re meant to be emitted by the concentrator. You can disable this feature individually per gateway, for example if the RTT between your gateway and the Gateway Server is too high.</p>
-<h3 id="mqtt-protocol">MQTT Protocol&nbsp;<a class="header-hash" href="#mqtt-protocol">#</a> </h3>
+<h3 id="mqtt-protocol">MQTT Protocol</h3>
 <p>Gateways can connect to a Gateway Server by exchanging <a href="https://developers.google.com/protocol-buffers">Protocol Buffers</a> over MQTT. MQTT is available over TLS, providing confidentiality of messages exchanged between the gateway and the network. The encoding with protocol buffers reduces bandwidth usage compared to the UDP protocol, which uses JSON encoding. See <a href="https://www.thethingsindustries.com/docs/reference/api/gateway_server_mqtt/">Gateway Server MQTT Protocol</a> for technical details.</p>
 <p>Packet forwarders implementing the MQTT protocols are specific for The Things Stack.</p>
-<h2 id="gateway-information">Gateway Information&nbsp;<a class="header-hash" href="#gateway-information">#</a> </h2>
+<h2 id="gateway-information">Gateway Information</h2>
 <p>While a gateway is connected, the Gateway Server collects statistics about the messages exchanged with the gateway, and about the status messages sent by the gateway. Those statistics can be retrieved from the Gateway Server using its gRPC and HTTP APIs. See <a href="https://www.thethingsindustries.com/docs/reference/api/gateway_server/#Gs"><code>Gs</code> service</a>.</p>
-<h2 id="communication-with-network-server">Communication with Network Server&nbsp;<a class="header-hash" href="#communication-with-network-server">#</a> </h2>
+<h2 id="communication-with-network-server">Communication with Network Server</h2>
 <p>The main function of the Gateway Server is to maintain connections with gateways, and to serve as a relay between those gateways and the Network Servers.</p>
-<h3 id="uplink-messages">Uplink Messages&nbsp;<a class="header-hash" href="#uplink-messages">#</a> </h3>
+<h3 id="uplink-messages">Uplink Messages</h3>
 <p>When receiving a data uplink message, the Gateway Server decides which Network Server to send it to based on the <code>DevAddr</code> of the device and the configured forwarding table with endpoints. Join-requests are routed to all configured endpoints. An endpoint can be the cluster&rsquo;s Network Server over gRPC, or an intermediate traffic routing mechanism.</p>
-<h3 id="downlink-messages">Downlink Messages&nbsp;<a class="header-hash" href="#downlink-messages">#</a> </h3>
+<h3 id="downlink-messages">Downlink Messages</h3>
 <p>Network Servers can request transmission for downlink messages. The Gateway Server attempts to schedule the message based on the selected gateways, time to send the message and LoRaWAN settings (downlink class, RX1 delay and RX1/RX2 data rates and frequencies).</p>
 <p>The Gateway Server keeps track of all downlinks emitted and to be emitted by gateways connected to it, including the exact time-on-air based on message size and data rate. This allows The Things Stack to do smart scheduling. Besides timing and LoRaWAN settings, the Gateway Server takes applicable limitations into account, including:</p>
 <ul>
@@ -276,7 +275,6 @@ debug: false
 <li><strong>Duty-cycle</strong>: Some countries, such as European countries, have <strong>duty-cycle restrictions</strong>, prohibiting a device for emitting for more than a certain percentage of time on a certain band.</li>
 <li><strong>Dwell time</strong>: Some countries, such as the United States, are subject to <strong>dwell time regulations</strong>, meaning the duration of a transmission cannot exceed a certain limit.</li>
 </ul>
-
 </div>
 <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/reference/components/gateway-configuration-server/">← Gateway Configuration Server</a>
@@ -361,7 +359,7 @@ debug: false
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.595b97b16778e75a16096b7412b5ce1e7fff37a56e4e45e7f89921711a3cd177.js" integrity="sha256-WVuXsWd451oWCWt0ErXOHn//N6VuTkXn&#43;JkhcRo80Xc=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.0591382a7eda937afd29a067f0682efe7f966ea310ee0e055021aa6365233405.js" integrity="sha256-BZE4Kn7ak3r9KaBn8Ggu/n&#43;WbqMQ7g4FUCGqY2UjNAU=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

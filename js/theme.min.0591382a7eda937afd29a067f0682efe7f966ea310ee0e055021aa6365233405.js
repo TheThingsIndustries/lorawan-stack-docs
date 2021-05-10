@@ -1,15 +1,12 @@
-document.addEventListener('DOMContentLoaded',function(){var migrationInfoAccepted=window.localStorage.getItem('migrationInfoAccepted')
-if(migrationInfoAccepted!='true'){var migrationBar=document.getElementById('migration-info')
-migrationBar.style.display='flex';document.documentElement.classList.add("has-navbar-banner-top")
-var migrationButton=document.getElementById('migration-button')
-migrationButton.addEventListener('click',function(){window.localStorage.setItem('migrationInfoAccepted',true)
-migrationBar.style.display='none';document.documentElement.classList.remove("has-navbar-banner-top")})}
-var $navbarBurgers=Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'),0)
+function addNavBarBurgers(){var $navbarBurgers=Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'),0)
 if($navbarBurgers.length>0){$navbarBurgers.forEach(function(el){el.addEventListener('click',function(){var target=el.dataset.target
 var $target=document.getElementById(target)
 el.classList.toggle('is-active')
-$target.classList.toggle('is-active')})})}
-const tabs=[...document.querySelectorAll('.tabs li')]
+$target.classList.toggle('is-active')})})}}
+function addAnchor(element){element.insertAdjacentHTML('beforeend',`<a class="header-hash" href="#${element.id}" ariaLabel="Anchor">#</a>`)}
+function addAnchors(){var headers=document.querySelectorAll('.docs-content h2[id], .docs-content h3[id], .docs-content h4[id], .docs-content h5[id], .docs-content h6[id]')
+if(headers){headers.forEach(addAnchor)}}
+function addTabs(){const tabs=[...document.querySelectorAll('.tabs li')]
 const tabContent=[...document.querySelectorAll('.tab-content section')]
 const activeClass='is-active'
 function init(){if(window.sessionStorage.getItem('tabActive')){toggleTab(window.sessionStorage.getItem('tabActive'))}else if(tabs&&tabs[0]){let key=tabs[0].getAttribute('data-tab')
@@ -29,4 +26,14 @@ let data=item.getAttribute('data-content')
 if(data===key){item.classList.add(activeClass)}})
 if(window.sessionStorage){window.sessionStorage.setItem('tabActive',key)}}
 function getTabsByKey(key){return[...document.querySelectorAll(`[data-tab="${key}"]`)]}
-init()})
+init()}
+function addMigrationBar(){var migrationInfoAccepted=window.localStorage.getItem('migrationInfoAccepted')
+if(migrationInfoAccepted!='true'){var migrationBar=document.getElementById('migration-info')
+migrationBar.style.display='flex';document.documentElement.classList.add("has-navbar-banner-top")
+var migrationButton=document.getElementById('migration-button')
+migrationButton.addEventListener('click',function(){window.localStorage.setItem('migrationInfoAccepted',true)
+migrationBar.style.display='none';document.documentElement.classList.remove("has-navbar-banner-top")})}}
+document.addEventListener('DOMContentLoaded',function(){addAnchors()
+addMigrationBar()
+addNavBarBurgers()
+addTabs()})

@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.4a91a2bdbdbc4e92cae68733965ef7b28a6ab235c8c20ea25b693218b6f87f06.css" integrity="sha256-SpGivb28TpLK5oczll73sopqsjXIwg6iW2kyGLb4fwY=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.07bd6845af106c056072b394b0aba314a5ea0d3b3ad4fba538a2fa137f338b3b.css" integrity="sha256-B71oRa8QbAVgcrOUsKujFKXqDTs61PulOKL6E38zizs=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="InfluxDB Cloud 2.0">
@@ -217,15 +217,14 @@ debug: false
 </h1>
 
 <div class="content">
-  
-<p><a href="https://v2.docs.influxdata.com/v2.0/get-started/">InfluxDB Cloud 2.0</a> is a serverless real-time monitoring platform specifically created for working with time series data. It combines data storage, user interface, visualization, processing, monitoring and alerting into one cohesive system.</p>
+  <p><a href="https://v2.docs.influxdata.com/v2.0/get-started/">InfluxDB Cloud 2.0</a> is a serverless real-time monitoring platform specifically created for working with time series data. It combines data storage, user interface, visualization, processing, monitoring and alerting into one cohesive system.</p>
 <p>Besides being able to send data to InfluxDB Cloud 2.0, <a href="https://www.influxdata.com/time-series-platform/telegraf/">Telegraf agent</a> can also be configured to subscribe to messages published by The Things Stack <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT server</a> or to listen to messages sent by The Things Stack Application Server via <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/">HTTP Webhooks</a>. This guide contains the instructions for both of these implementations.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   For additional info on configuring the Telegraf agent and using its plugins, check out the <a href="https://v2.docs.influxdata.com/v2.0/write-data/no-code/use-telegraf/">official documentation</a>.
 </div>
 
-<h2 id="prerequisites">Prerequisites&nbsp;<a class="header-hash" href="#prerequisites">#</a> </h2>
+<h2 id="prerequisites">Prerequisites</h2>
 <ol>
 <li>
 <p>A <a href="https://cloud2.influxdata.com/signup">user account on InfluxDB Cloud 2.0</a>.</p>
@@ -234,7 +233,7 @@ debug: false
 <p>Telegraf agent (version 1.9.2 or higher) <a href="https://portal.influxdata.com/downloads/">installed</a> on your system.</p>
 </li>
 </ol>
-<h2 id="setup-influxdb-cloud-20">Setup InfluxDB Cloud 2.0&nbsp;<a class="header-hash" href="#setup-influxdb-cloud-20">#</a> </h2>
+<h2 id="setup-influxdb-cloud-20">Setup InfluxDB Cloud 2.0</h2>
 <p>Log in to your InfluxDB Cloud 2.0 account and select the <strong>Data</strong> on the left hand menu.</p>
 <figure>
     <img src="influxdb-data-dashboard.png"
@@ -269,7 +268,7 @@ debug: false
          alt="Auto-generated Telegraf configuration"/> 
 </figure>
 
-<h2 id="configure-telegraf-for-mqtt-integration">Configure Telegraf for MQTT Integration&nbsp;<a class="header-hash" href="#configure-telegraf-for-mqtt-integration">#</a> </h2>
+<h2 id="configure-telegraf-for-mqtt-integration">Configure Telegraf for MQTT Integration</h2>
 <p>This section shows you how to configure your Telegraf agent with <a href="https://github.com/influxdata/telegraf/tree/master/plugins/inputs/mqtt_consumer">MQTT Consumer</a> plugin used for connecting to The Things Stack <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a>.</p>
 <p>The information needed to configure Telegraf can be found on the <strong>MQTT</strong> tab in The Things Stack <strong>Integrations</strong> menu.</p>
 <figure>
@@ -299,7 +298,7 @@ debug: false
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">INFLUX_TOKEN</span><span class="o">=</span><span class="s2">&#34;paste your token here&#34;</span>
 </code></pre></div><p>Run the Telegraf agent in your terminal with the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ telegraf --config /path/to/custom/telegraf.conf
-</code></pre></div><h2 id="configure-telegraf-and-the-things-stack-for-webhook-integration">Configure Telegraf and The Things Stack for Webhook Integration&nbsp;<a class="header-hash" href="#configure-telegraf-and-the-things-stack-for-webhook-integration">#</a> </h2>
+</code></pre></div><h2 id="configure-telegraf-and-the-things-stack-for-webhook-integration">Configure Telegraf and The Things Stack for Webhook Integration</h2>
 <p>This section shows you how to configure the Telegraf agent with <a href="https://github.com/influxdata/telegraf/blob/master/plugins/inputs/http_listener_v2/">HTTP Listener v2</a> plugin and how to create a belonging <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/creating-webhooks/">Webhook integration</a> on The Things Stack.</p>
 <p>Update the Telegraf configuration you previously downloaded as described in <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/influxdb-cloud/">InfluxDB Cloud 2.0 Setup</a> by adding the following lines and modifying them according to your setup:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[[</span>inputs.http_listener_v2<span class="o">]]</span>
@@ -333,7 +332,7 @@ debug: false
   Keep in mind that Telegraf agent can be hosted in a remote environment as well. In that case, you need to adjust the <strong>Base URL</strong> according to your setup.
 </div>
 
-<h2 id="monitor-your-data">Monitor Your Data&nbsp;<a class="header-hash" href="#monitor-your-data">#</a> </h2>
+<h2 id="monitor-your-data">Monitor Your Data</h2>
 <p>Click the <strong>Explore</strong> tab on the left in InfluxDB Cloud 2.0. Select your bucket in the <strong>FROM</strong> window in the bottom. Next, you have to filter your measurements depending on the type of integration.</p>
 <p>If you created an MQTT integration, select <strong>_measurement</strong> on the drop-down menu in the <strong>Filter</strong> window and tick the <strong>mqtt_consumer</strong> box. Then you can choose the topic and parameter you wish to monitor.</p>
 <figure>
@@ -346,7 +345,6 @@ debug: false
     <img src="influxdb-http.png"
          alt="Monitoring the HTTP data"/> 
 </figure>
-
 </div>
 
 <div class="is-clearfix">
@@ -438,7 +436,7 @@ debug: false
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.595b97b16778e75a16096b7412b5ce1e7fff37a56e4e45e7f89921711a3cd177.js" integrity="sha256-WVuXsWd451oWCWt0ErXOHn//N6VuTkXn&#43;JkhcRo80Xc=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.0591382a7eda937afd29a067f0682efe7f966ea310ee0e055021aa6365233405.js" integrity="sha256-BZE4Kn7ak3r9KaBn8Ggu/n&#43;WbqMQ7g4FUCGqY2UjNAU=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

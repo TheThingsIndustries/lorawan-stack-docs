@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.4a91a2bdbdbc4e92cae68733965ef7b28a6ab235c8c20ea25b693218b6f87f06.css" integrity="sha256-SpGivb28TpLK5oczll73sopqsjXIwg6iW2kyGLb4fwY=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.07bd6845af106c056072b394b0aba314a5ea0d3b3ad4fba538a2fa137f338b3b.css" integrity="sha256-B71oRa8QbAVgcrOUsKujFKXqDTs61PulOKL6E38zizs=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Post Deployment Configuration">
@@ -204,9 +204,8 @@ debug: false
 </h1>
 
 <div class="content">
-  
-<p>This section provides the information necessary to get started with The Things Enterprise Stack after it is deployed via <a href="https://aws.amazon.com/marketplace/pp/The-Things-Industries-The-Things-Enterprise-Stack/B081HZKDJ4">AWS Marketplace</a> using AWS CloudFormation.</p>
-<h2 id="dns-configuration">DNS Configuration&nbsp;<a class="header-hash" href="#dns-configuration">#</a> </h2>
+  <p>This section provides the information necessary to get started with The Things Enterprise Stack after it is deployed via <a href="https://aws.amazon.com/marketplace/pp/The-Things-Industries-The-Things-Enterprise-Stack/B081HZKDJ4">AWS Marketplace</a> using AWS CloudFormation.</p>
+<h2 id="dns-configuration">DNS Configuration</h2>
 <p>In order to access the Console/API of the The Things Stack, the domain name chosen during deployment must be mapped to the public IP address of the CloudFormation stack. This section provides details on how to do that.</p>
 <ol>
 <li>Log in AWS Console and open the CloudFormation resource and click on your recently deployed stack.</li>
@@ -265,14 +264,14 @@ debug: false
 </table>
 <p>There will be an initial propagation delay for this value to be updated. You can check the status via a DNS lookup using either an <a href="https://network-tools.webwiz.net/nslookup.htm">online tool</a> or using a command line tool (ex: <code>nslookup</code>).</p>
 <p>Once the domain has been propagated, the DNS Lookup will show that your Domain (or sub-domain) is pointing to the <strong>PublicIP</strong> value.</p>
-<h3 id="ssl-certificates">SSL Certificates&nbsp;<a class="header-hash" href="#ssl-certificates">#</a> </h3>
+<h3 id="ssl-certificates">SSL Certificates</h3>
 <p>As a security measure, plaintext access to the Console/API is disabled. In order to serve requests securely, The Things Enterprise Stack has built-in support to automatically request, serve and renew SSL certificates.</p>
 <p>Apart from the DNS mapping above, no additional steps are necessary for this.</p>
-<h2 id="getting-started-using-the-console">Getting Started using the Console&nbsp;<a class="header-hash" href="#getting-started-using-the-console">#</a> </h2>
+<h2 id="getting-started-using-the-console">Getting Started using the Console</h2>
 <p>Please check the <a href="https://www.thethingsindustries.com/docs/getting-started/console/">Console</a> guide to get quickly started with The Things Enterprise Stack Console.</p>
-<h2 id="getting-started-using-the-command-line-interface-cli">Getting Started using the Command Line Interface (CLI)&nbsp;<a class="header-hash" href="#getting-started-using-the-command-line-interface-cli">#</a> </h2>
+<h2 id="getting-started-using-the-command-line-interface-cli">Getting Started using the Command Line Interface (CLI)</h2>
 <p>Please check the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">CLI</a> guide to get quickly started with The Things Enterprise Stack CLI.</p>
-<h2 id="ssh-access">SSH Access&nbsp;<a class="header-hash" href="#ssh-access">#</a> </h2>
+<h2 id="ssh-access">SSH Access</h2>
 <p>In most cases, you will interact with The Things Enterprise Stack only via the Console or the CLI. However, in case there is a need to directly access the EC2 instance, there is an option to do so via SSH.</p>
 <p>SSH access is possible only via the IP addresses set using the <strong>Restrict SSH Access to IP Range</strong> parameter during deployment. Also, the SSH client needs access to the private key corresponding to the public key that was chosen in the <strong>SSH Key</strong> parameter during deployment. The SSH username is <code>ec2-user</code>.</p>
 <p>For example, you can use the OpenSSH client via the terminal and login using:</p>
@@ -290,16 +289,16 @@ debug: false
     └── tti-lw-stack            # The Things Enterprise Stack binary
 </code></pre><p>The Things Enterprise Stack binary is run as a <code>systemd</code> service. In order to check the logs, run the following:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo journalctl -f -u lorawan-stack.service
-</code></pre></div><h2 id="routing-lorawan-traffic">Routing LoRaWAN Traffic&nbsp;<a class="header-hash" href="#routing-lorawan-traffic">#</a> </h2>
+</code></pre></div><h2 id="routing-lorawan-traffic">Routing LoRaWAN Traffic</h2>
 <p>Now that your stack has been successfully deployed, let&rsquo;s look at how to connect a LoRaWAN Gateway, Register a LoRaWAN Device and read traffic from this device.</p>
-<h3 id="connecting-a-gateway">Connecting a Gateway&nbsp;<a class="header-hash" href="#connecting-a-gateway">#</a> </h3>
+<h3 id="connecting-a-gateway">Connecting a Gateway</h3>
 <p>Please check <a href="/docs/gateways/">Gateways</a> section to find an extensive connecting guide for the particular brand/model of your gateway.</p>
-<h3 id="registering-a-device">Registering a Device&nbsp;<a class="header-hash" href="#registering-a-device">#</a> </h3>
+<h3 id="registering-a-device">Registering a Device</h3>
 <p>Please check the <a href="/docs/devices/adding-devices/">Adding Devices</a> guide.</p>
-<h2 id="aws-iot">AWS IoT&nbsp;<a class="header-hash" href="#aws-iot">#</a> </h2>
+<h2 id="aws-iot">AWS IoT</h2>
 <p>The Things Enterprise Stack supports publishing of uplink messages directly to the <a href="https://aws.amazon.com/iot/">AWS IoT suite</a>. In order for this to work, the <strong>AWS IoT Telemetry</strong> option in the CloudFormation template must be set to <strong>true</strong> during the deployment phase.</p>
 <p>Please check the guide on <a href="/docs/integrations/aws-iot/">AWS IoT</a> guide for more information.</p>
-<h2 id="updating-the-cloudformation-stack">Updating the CloudFormation Stack&nbsp;<a class="header-hash" href="#updating-the-cloudformation-stack">#</a> </h2>
+<h2 id="updating-the-cloudformation-stack">Updating the CloudFormation Stack</h2>
 <p>We recommend using <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html">Change Sets</a> to to update the CloudFormation Stack.</p>
 <p>On the AWS Console, open the <strong>CloudFormation</strong> service, navigate to the <strong>Change sets</strong> tab and select <strong>Create change set</strong>. There are two choices that can be made here:</p>
 <ul>
@@ -308,7 +307,7 @@ debug: false
 </ul>
 <p>Once the necessary options are updated, select the <strong>Create Change Set</strong> option. This will create a change set that describes the resources that will be updated by this change and if any of these resources need to be replaced.</p>
 <p>After confirming the changes, select <strong>Execute</strong>. Depending on the resources, this will take some time to complete and can be tracked using the <strong>Events</strong> tab on the AWS Console.</p>
-<h2 id="manual-upgrade-of-databases-amazon-rds-and-elasticache-using-snapshots">Manual Upgrade of Databases (Amazon RDS and ElastiCache) using snapshots&nbsp;<a class="header-hash" href="#manual-upgrade-of-databases-amazon-rds-and-elasticache-using-snapshots">#</a> </h2>
+<h2 id="manual-upgrade-of-databases-amazon-rds-and-elasticache-using-snapshots">Manual Upgrade of Databases (Amazon RDS and ElastiCache) using snapshots</h2>
 <p>The update of certain fields of the CloudFormation stack necessitates the recreation of the database. AWS does not automatically migrate the data and hence, this must be done manually. A disclaimer is added to such fields in the CloudFormation template description.</p>
 <p>In order to migrate the database without the loss of data, first create a snapshot of your database before running a change set on these fields.</p>
 <ul>
@@ -321,7 +320,6 @@ debug: false
 <li>For Redis (ElastiCache), enter the Name of the backup into the <strong>Amazon RDS Database Name</strong> and run the change set.</li>
 </ul>
 <p>The following section contains some basic troubleshooting information.</p>
-
 </div>
 
 <div class="is-clearfix">
@@ -422,7 +420,7 @@ debug: false
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.595b97b16778e75a16096b7412b5ce1e7fff37a56e4e45e7f89921711a3cd177.js" integrity="sha256-WVuXsWd451oWCWt0ErXOHn//N6VuTkXn&#43;JkhcRo80Xc=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.0591382a7eda937afd29a067f0682efe7f966ea310ee0e055021aa6365233405.js" integrity="sha256-BZE4Kn7ak3r9KaBn8Ggu/n&#43;WbqMQ7g4FUCGqY2UjNAU=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

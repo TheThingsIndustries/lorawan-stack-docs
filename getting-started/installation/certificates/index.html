@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.4a91a2bdbdbc4e92cae68733965ef7b28a6ab235c8c20ea25b693218b6f87f06.css" integrity="sha256-SpGivb28TpLK5oczll73sopqsjXIwg6iW2kyGLb4fwY=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.07bd6845af106c056072b394b0aba314a5ea0d3b3ad4fba538a2fa137f338b3b.css" integrity="sha256-B71oRa8QbAVgcrOUsKujFKXqDTs61PulOKL6E38zizs=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Certificates">
@@ -185,10 +185,9 @@ debug: false
 </h1>
 
 <div class="content">
-  
-<p>The Things Stack needs to be configured with Transport Layer Security (TLS) and HTTPS. This requires a TLS certificate and a corresponding key.</p>
+  <p>The Things Stack needs to be configured with Transport Layer Security (TLS) and HTTPS. This requires a TLS certificate and a corresponding key.</p>
 <p>In this guide, we show you how to request a free, trusted certificate from <a href="https://letsencrypt.org/getting-started/">Let&rsquo;s Encrypt</a>, but if you already have a certificate (<code>cert.pem</code>) and a corresponding key (<code>key.pem</code>), you can also use those. For local deployments, you can set up your own Certificate Authority and issue a certificate-key pair.</p>
-<h2 id="automatic-certificate-management">Automatic Certificate Management&nbsp;<a class="header-hash" href="#automatic-certificate-management">#</a> </h2>
+<h2 id="automatic-certificate-management">Automatic Certificate Management</h2>
 <p>The Things Stack can be configured to automatically retrieve and update Let&rsquo;s Encrypt certificates. Assuming you followed the <a href="/docs/getting-started/installation/configuration/">configuration</a> steps, create an <code>acme</code> directory where The Things Stack can store the certificate data:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mkdir ./acme
 $ sudo chown 886:886 ./acme
@@ -204,7 +203,7 @@ config/
 └── stack/
     └── ttn-lw-stack-docker.yml    <span class="c1"># configuration file for The Things Stack</span>
 </code></pre></div><p>Certificates will automatically be requested the first time you access The Things Stack. You will notice that the page takes some time to load while certificates are obtained in the background.</p>
-<h3 id="using-custom-certificates">Using Custom Certificates&nbsp;<a class="header-hash" href="#using-custom-certificates">#</a> </h3>
+<h3 id="using-custom-certificates">Using Custom Certificates</h3>
 <p>To use <a href="#certificates-from-a-certificate-authority">CA certificates you already have</a> or <a href="#custom-certificate-authority">self-signed certificates</a>, you will need to uncomment the custom certificates section of <code>docker-compose.yml</code>:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -277,7 +276,7 @@ config/
 </span><span class="w"></span><span class="c">#     default-host: &#39;thethings.example.com&#39;</span></code></pre></td></tr></table>
 </div>
 </div>
-<h3 id="certificates-from-a-certificate-authority">Certificates from a Certificate Authority&nbsp;<a class="header-hash" href="#certificates-from-a-certificate-authority">#</a> </h3>
+<h3 id="certificates-from-a-certificate-authority">Certificates from a Certificate Authority</h3>
 <p>If you want to use the certificate (<code>cert.pem</code>) and key (<code>key.pem</code>) that you already have, you also need to set these permissions.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo chown 886:886 ./cert.pem ./key.pem
 </code></pre></div><div class="notification is-warning is-light has-text-dark">
@@ -293,7 +292,7 @@ config/
 └── stack/
     └── ttn-lw-stack-docker.yml    <span class="c1"># configuration file for The Things Stack</span>
 </code></pre></div><p>Be sure to configure <code>docker-compose.yml</code> and <code>ttn-lw-stack-docker.yml</code> for your custom certificates, as shown in <a href="#using-custom-certificates">using custom certificates</a>.</p>
-<h2 id="custom-certificate-authority">Custom Certificate Authority&nbsp;<a class="header-hash" href="#custom-certificate-authority">#</a> </h2>
+<h2 id="custom-certificate-authority">Custom Certificate Authority</h2>
 <p>To use TLS on a local or offline deployment, you can use your own Certificate Authority. In order to set that up, you can use <code>cfssl</code>, CloudFlare&rsquo;s PKI/TLS toolkit. The <code>cfssl</code> installation instructions can be found <a href="https://github.com/cloudflare/cfssl#installation">here</a>.</p>
 <p>Write the configuration for your CA to <code>ca.json</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
@@ -327,7 +326,6 @@ config/
 └── stack/
     └── ttn-lw-stack-docker.yml    <span class="c1"># configuration file for The Things Stack</span>
 </code></pre></div><p>Be sure to configure <code>docker-compose.yml</code> and <code>ttn-lw-stack-docker.yml</code> for your custom certificates, as shown in <a href="#using-custom-certificates">using custom certificates</a>.</p>
-
 </div>
 <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/getting-started/installation/configuration/">← Configuration</a>
@@ -409,7 +407,7 @@ config/
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.595b97b16778e75a16096b7412b5ce1e7fff37a56e4e45e7f89921711a3cd177.js" integrity="sha256-WVuXsWd451oWCWt0ErXOHn//N6VuTkXn&#43;JkhcRo80Xc=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.0591382a7eda937afd29a067f0682efe7f966ea310ee0e055021aa6365233405.js" integrity="sha256-BZE4Kn7ak3r9KaBn8Ggu/n&#43;WbqMQ7g4FUCGqY2UjNAU=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

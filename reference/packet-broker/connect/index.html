@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.4a91a2bdbdbc4e92cae68733965ef7b28a6ab235c8c20ea25b693218b6f87f06.css" integrity="sha256-SpGivb28TpLK5oczll73sopqsjXIwg6iW2kyGLb4fwY=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.07bd6845af106c056072b394b0aba314a5ea0d3b3ad4fba538a2fa137f338b3b.css" integrity="sha256-B71oRa8QbAVgcrOUsKujFKXqDTs61PulOKL6E38zizs=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Connect">
@@ -224,8 +224,7 @@ debug: false
 </h1>
 
 <div class="content">
-  
-<p>This section explains how to connect The Things Stack to Packet Broker.</p>
+  <p>This section explains how to connect The Things Stack to Packet Broker.</p>
 <div class="notification is-primary is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Info:</h5>
   <p>The Things Stack Cloud and The Things Network are already connected to Packet Broker. Use this section to connect your The Things Stack Enterprise or Open Source deployment to Packet Broker.</p>
@@ -233,7 +232,7 @@ debug: false
 
 </div>
 
-<h2 id="prerequisites">Prerequisites&nbsp;<a class="header-hash" href="#prerequisites">#</a> </h2>
+<h2 id="prerequisites">Prerequisites</h2>
 <ol>
 <li>A LoRa Alliance NetID or a tenant of a host NetID</li>
 </ol>
@@ -251,7 +250,7 @@ debug: false
 <li>The Things Stack installed and configured. See <a href="https://www.thethingsindustries.com/docs/getting-started/">Getting Started</a></li>
 <li>Packet Broker CLI installed and configured. See <a href="https://github.com/packetbroker/pb">Packet Broker CLI</a></li>
 </ol>
-<h2 id="define-devaddr-prefix-by-netid">Define DevAddr Prefix by NetID&nbsp;<a class="header-hash" href="#define-devaddr-prefix-by-netid">#</a> </h2>
+<h2 id="define-devaddr-prefix-by-netid">Define DevAddr Prefix by NetID</h2>
 <p>If you own a NetID, enter your NetID to obtain your DevAddr prefix:</p>
 <div class="field">
   <label class="label">NetID (hex)</label>
@@ -301,7 +300,7 @@ debug: false
   This guide uses The Things Network NetID <code>000013</code> as example, which has DevAddr prefix <code>26000000/7</code>.
 </div>
 
-<h2 id="configure-packet-broker-agent">Configure Packet Broker Agent&nbsp;<a class="header-hash" href="#configure-packet-broker-agent">#</a> </h2>
+<h2 id="configure-packet-broker-agent">Configure Packet Broker Agent</h2>
 <p>The Packet Broker Agent component of The Things Stack connects to Packet Broker. The Packet Broker Agent can be configured as Forwarder and as Home Network in your <code>ttn-lw-stack.yaml</code> configuration file:</p>
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># Add Packet Broker configuration to your configuration file:</span><span class="w">
 </span><span class="w">
@@ -323,7 +322,7 @@ debug: false
 </span><span class="w">  </span><span class="k">home-network</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="k">enable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span></code></pre></div><p>See <a href="https://www.thethingsindustries.com/docs/reference/configuration/packet-broker-agent/">Packet Broker Agent configuration</a> for all configuration options.</p>
-<h2 id="configure-gateway-server">Configure Gateway Server&nbsp;<a class="header-hash" href="#configure-gateway-server">#</a> </h2>
+<h2 id="configure-gateway-server">Configure Gateway Server</h2>
 <p>Configure the Gateway Server to forward traffic for the current network to the Network Server in the cluster, and route all traffic to Packet Broker (via Packet Broker Agent):</p>
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># Edit the Gateway Server configuration in your configuration file:</span><span class="w">
 </span><span class="w">
@@ -335,7 +334,7 @@ debug: false
 </span><span class="w">  </span><span class="c"># Forward all traffic also to Packet Broker</span><span class="w">
 </span><span class="w">  </span>- <span class="s1">&#39;packetbroker=00000000/0&#39;</span><span class="w">
 </span></code></pre></div><p>See <a href="https://www.thethingsindustries.com/docs/reference/configuration/gateway-server/">Gateway Server configuration</a> for all configuration options.</p>
-<h2 id="configure-network-server">Configure Network Server&nbsp;<a class="header-hash" href="#configure-network-server">#</a> </h2>
+<h2 id="configure-network-server">Configure Network Server</h2>
 <p>Configure the Network Server to issue device addresses (DevAddr) that fall within your NetID:</p>
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># Edit the Network Server configuration in your configuration file:</span><span class="w">
 </span><span class="w">
@@ -355,15 +354,14 @@ debug: false
 </div>
 
 <p>See <a href="https://www.thethingsindustries.com/docs/reference/configuration/network-server/">Network Server configuration</a> for all configuration options.</p>
-<h2 id="configure-packet-broker">Configure Packet Broker&nbsp;<a class="header-hash" href="#configure-packet-broker">#</a> </h2>
+<h2 id="configure-packet-broker">Configure Packet Broker</h2>
 <p>When The Things Stack is connected to Packet Broker, you can proceed with <a href="/docs/reference/packet-broker/configure/">Packet Broker Configuration</a>.</p>
-<h2 id="advanced-test-uplink-and-downlink">Advanced: Test Uplink and Downlink&nbsp;<a class="header-hash" href="#advanced-test-uplink-and-downlink">#</a> </h2>
+<h2 id="advanced-test-uplink-and-downlink">Advanced: Test Uplink and Downlink</h2>
 <p>See <a href="https://github.com/packetbroker/pb#publish-and-subscribe-traffic">Publish and Subscribe Traffic</a> on how to publish test messages and subscribe to traffic using Packet Broker CLI.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   Packet Broker Agent uses the configured <code>cluster-id</code> as Forwarder ID and subscription group.
 </div>
-
 
 
 </div>
@@ -462,7 +460,7 @@ debug: false
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.595b97b16778e75a16096b7412b5ce1e7fff37a56e4e45e7f89921711a3cd177.js" integrity="sha256-WVuXsWd451oWCWt0ErXOHn//N6VuTkXn&#43;JkhcRo80Xc=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.0591382a7eda937afd29a067f0682efe7f966ea310ee0e055021aa6365233405.js" integrity="sha256-BZE4Kn7ak3r9KaBn8Ggu/n&#43;WbqMQ7g4FUCGqY2UjNAU=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.4a91a2bdbdbc4e92cae68733965ef7b28a6ab235c8c20ea25b693218b6f87f06.css" integrity="sha256-SpGivb28TpLK5oczll73sopqsjXIwg6iW2kyGLb4fwY=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.07bd6845af106c056072b394b0aba314a5ea0d3b3ad4fba538a2fa137f338b3b.css" integrity="sha256-B71oRa8QbAVgcrOUsKujFKXqDTs61PulOKL6E38zizs=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="HiveMQ">
@@ -187,8 +187,7 @@ debug: false
 </h1>
 
 <div class="content">
-  
-<p><a href="https://www.hivemq.com/">HiveMQ</a> is an MQTT broker and a client based messaging platform which uses MQTT protocol for fast, reliable and efficient bi-directional data transfer to and from IoT devices. HiveMQ provides its own client library, but it can be used with any MQTT compliant client library. It can be deployed on a private, hybrid or public cloud. You can integrate HiveMQ with existing enterprise systems thanks to its open API and a flexible extension framework.</p>
+  <p><a href="https://www.hivemq.com/">HiveMQ</a> is an MQTT broker and a client based messaging platform which uses MQTT protocol for fast, reliable and efficient bi-directional data transfer to and from IoT devices. HiveMQ provides its own client library, but it can be used with any MQTT compliant client library. It can be deployed on a private, hybrid or public cloud. You can integrate HiveMQ with existing enterprise systems thanks to its open API and a flexible extension framework.</p>
 <p>HiveMQ also offers an open source tool called <a href="https://github.com/hivemq/mqtt-cli">MQTT CLI</a>, which provides a command line interface to interact with MQTT brokers. This tool can be used in a shell mode, allowing you to use multiple MQTT clients simultaneously.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
@@ -201,11 +200,11 @@ debug: false
   The examples in this guide are suitable for The Things Stack Open Source deployment. If you are using a different The Things Stack deployment, make sure your read a <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#note-on-using-the-tenant-id">Note on Using the tenant ID</a>.
 </div>
 
-<h2 id="prerequisites">Prerequisites&nbsp;<a class="header-hash" href="#prerequisites">#</a> </h2>
+<h2 id="prerequisites">Prerequisites</h2>
 <ol>
 <li><a href="https://hivemq.github.io/mqtt-cli/docs/installation.html">HiveMQ MQTT CLI</a> installed on your system.</li>
 </ol>
-<h2 id="connecting-to-mqtt-server-in-mqtt-cli-shell-mode">Connecting to MQTT Server in MQTT CLI Shell Mode&nbsp;<a class="header-hash" href="#connecting-to-mqtt-server-in-mqtt-cli-shell-mode">#</a> </h2>
+<h2 id="connecting-to-mqtt-server-in-mqtt-cli-shell-mode">Connecting to MQTT Server in MQTT CLI Shell Mode</h2>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   Learn how to connect to The Things Stack MQTT Server by reading the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a> guide.
@@ -229,7 +228,7 @@ debug: false
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">con -h thethings.example.com -p <span class="m">1883</span> -V <span class="m">3</span> -u app1 -pw NNSXS.VEEBURF3KR77ZR..
 </code></pre></div><p>To use TLS for additional security, change the port from <code>1883</code> to <code>8883</code> and use the <code>--cafile</code> option to provide the PEM encoded CA file of your The Things Stack deployment.</p>
 <p>Once you have successfully connected to The Things Stack MQTT Server, continue with subscribing or publishing to topics exposed by it by following the sections below.</p>
-<h2 id="subscribe-to-upstream-traffic">Subscribe to Upstream Traffic&nbsp;<a class="header-hash" href="#subscribe-to-upstream-traffic">#</a> </h2>
+<h2 id="subscribe-to-upstream-traffic">Subscribe to Upstream Traffic</h2>
 <p>Use the <code>sub</code> command to subscribe to topics and listen to messages being sent from your end device.</p>
 <p>For example, if you want to listen to the uplink messages being sent from <code>dev1</code> device in <code>app1</code> application, use the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sub -t v3/app1/devices/dev1/up -s
@@ -243,7 +242,7 @@ debug: false
   See the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#subscribing-to-upstream-traffic">Subscribing to Upstream Traffic</a> section of the MQTT Server guide for a full list of available topics you can subscribe to.
 </div>
 
-<h2 id="schedule-downlink-messages">Schedule Downlink Messages&nbsp;<a class="header-hash" href="#schedule-downlink-messages">#</a> </h2>
+<h2 id="schedule-downlink-messages">Schedule Downlink Messages</h2>
 <p>Use the <code>pub</code> command to publish to topics, e.g. to schedule downlink messages to be sent to your end device.</p>
 <p>For example, to push an unconfirmed downlink message with the hexadecimal payload <code>BE EF</code> on <code>FPort</code> 15 with normal priority to the <code>dev1</code> device, use the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ pub -t v3/app1/devices/dev1/down/push -m <span class="s1">&#39;{&#34;downlinks&#34;:[{&#34;f_port&#34;: 15,&#34;frm_payload&#34;:&#34;vu8=&#34;,&#34;priority&#34;: &#34;NORMAL&#34;}]}&#39;</span>
@@ -256,7 +255,6 @@ debug: false
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   See the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#publishing-downlink-traffic">Publishing Downlink Traffic</a> section to learn about using <code>/replace</code> instead of <code>/push</code>.
 </div>
-
 </div>
 
 <div class="is-clearfix">
@@ -345,7 +343,7 @@ debug: false
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.595b97b16778e75a16096b7412b5ce1e7fff37a56e4e45e7f89921711a3cd177.js" integrity="sha256-WVuXsWd451oWCWt0ErXOHn//N6VuTkXn&#43;JkhcRo80Xc=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.0591382a7eda937afd29a067f0682efe7f966ea310ee0e055021aa6365233405.js" integrity="sha256-BZE4Kn7ak3r9KaBn8Ggu/n&#43;WbqMQ7g4FUCGqY2UjNAU=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

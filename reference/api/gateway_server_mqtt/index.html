@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.4a91a2bdbdbc4e92cae68733965ef7b28a6ab235c8c20ea25b693218b6f87f06.css" integrity="sha256-SpGivb28TpLK5oczll73sopqsjXIwg6iW2kyGLb4fwY=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.07bd6845af106c056072b394b0aba314a5ea0d3b3ad4fba538a2fa137f338b3b.css" integrity="sha256-B71oRa8QbAVgcrOUsKujFKXqDTs61PulOKL6E38zizs=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Gateway Server MQTT">
@@ -268,19 +268,18 @@ debug: false
 </h1>
 
 <div class="content">
-  
-<p>This reference describes the MQTT protocol used by the Gateway Server. Packet forwarders implementing the MQTT protocols are specific for The Things Stack.</p>
+  <p>This reference describes the MQTT protocol used by the Gateway Server. Packet forwarders implementing the MQTT protocols are specific for The Things Stack.</p>
 <p>The MQTT protocol can be used to develop custom packet forwarders or gateway bridges for exchanging traffic between a gateway and The Things Stack, or easily simulating gateway traffic for testing purposes. It is an alternative to the <a href="https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/">Basic Station</a> and the <a href="https://github.com/Lora-net/packet_forwarder/blob/master/PROTOCOL.TXT">Semtech UDP</a> protocols.</p>
-<h2 id="multi-tenancy">Multi-Tenancy&nbsp;<a class="header-hash" href="#multi-tenancy">#</a> </h2>
+<h2 id="multi-tenancy">Multi-Tenancy</h2>
 <p>On multi-tenant environments such as Cloud, endoints include the tenant id, e.g <code>gateway1@tenant1</code>. On single tenant environments such as Open Source, the tenant id can be removed, i.e <code>gateway1</code>.</p>
-<h2 id="mqtt-introduction">MQTT Introduction&nbsp;<a class="header-hash" href="#mqtt-introduction">#</a> </h2>
+<h2 id="mqtt-introduction">MQTT Introduction</h2>
 <p>MQTT is a server-client protocol for exchanging messages. Clients can connect to the server and <strong>publish</strong> messages (data) under a specific <strong>topic</strong>. They can also <strong>subscribe</strong> to a <strong>topic</strong>, and thus receive all messages that are published under that topic (by other clients, or the MQTT server itself).</p>
 <p>The Gateway Server is the MQTT server, and gateways connect to the Gateway Server as MQTT clients. The gateway that connects is identified by the username that is used for authentication.</p>
-<h2 id="protocol-buffers">Protocol Buffers&nbsp;<a class="header-hash" href="#protocol-buffers">#</a> </h2>
+<h2 id="protocol-buffers">Protocol Buffers</h2>
 <p>To communicate with the MQTT protocol, the Gateway Server and the gateway are exchanging <a href="https://developers.google.com/protocol-buffers">Protocol Buffers</a>. The definitions of the Protocol Buffers can be found at the <a href="https://github.com/TheThingsNetwork/lorawan-stack">GitHub repository</a> of The Things Stack, under <a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/v3.12/api/messages.proto
 "><strong>messages.proto</strong></a> and <a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/v3.12/api/lorawan.proto
 "><strong>lorawan.proto</strong></a>.</p>
-<h2 id="connecting-to-the-gateway-server">Connecting to the Gateway Server&nbsp;<a class="header-hash" href="#connecting-to-the-gateway-server">#</a> </h2>
+<h2 id="connecting-to-the-gateway-server">Connecting to the Gateway Server</h2>
 <p>See <a href="https://www.thethingsindustries.com/docs/reference/networking/">Networking</a> for the default port of the MQTT server.</p>
 <p>The username is <code>&lt;gateway-id&gt;@&lt;tenant-id&gt;</code> (e.g. <code>gtw1@tenant1</code>), and the password is a gateway API key with the <code>RIGHT_GATEWAY_LINK</code> right enabled. You can generate this API key by following instructions in the <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/#create-gateway-api-key">Creating Gateways</a> section.</p>
 <p>Authenticated clients get <strong>write-only</strong> access to the following topics:</p>
@@ -293,9 +292,9 @@ debug: false
 <ul>
 <li><code>v3/&lt;gateway-id&gt;@&lt;tenant-id&gt;/down</code>: The Gateway Server publishes downlink message that the gateway should transmit.</li>
 </ul>
-<h2 id="disconnect-from-the-gateway-server">Disconnect from the Gateway Server&nbsp;<a class="header-hash" href="#disconnect-from-the-gateway-server">#</a> </h2>
+<h2 id="disconnect-from-the-gateway-server">Disconnect from the Gateway Server</h2>
 <p>The gateway can disconnect by terminating the MQTT client connection.</p>
-<h2 id="uplink-messages">Uplink Messages&nbsp;<a class="header-hash" href="#uplink-messages">#</a> </h2>
+<h2 id="uplink-messages">Uplink Messages</h2>
 <p>To forward uplink traffic to the Gateway Server, the MQTT client must publish a Protocol Buffer of type <code>ttnpb.UplinkMessage</code> under the topic <code>v3/&lt;gateway-id&gt;@&lt;tenant-id&gt;/up</code>.</p>
 <p>Below is an example that connects to the Gateway Server as <code>$GATEWAY_ID</code>, publishes an uplink message (Protocol Buffer stored as binary file <code>test-uplink-message</code>) and disconnects:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">GATEWAY_ID</span><span class="o">=</span><span class="s2">&#34;test-gtw@my-tenant&#34;</span>
@@ -314,7 +313,7 @@ $ mosquitto_pub <span class="se">\
   The file <code>test-uplink-message</code> contains a Protocol Buffer of type <code>ttnpb.UplinkMessage</code> (binary, not JSON).
 </div>
 
-<h2 id="downlink-messages">Downlink Messages&nbsp;<a class="header-hash" href="#downlink-messages">#</a> </h2>
+<h2 id="downlink-messages">Downlink Messages</h2>
 <p>The Gateway Server instructs the gateway to send a downlink packet by publishing a Protocol Buffer of type <code>ttnpb.GatewayDown</code> under the topic <code>v3/&lt;gateway-id&gt;@&lt;tenant-id&gt;/down</code>.</p>
 <p>The MQTT client must subscribe to this topic after connecting to the Gateway Server. It must also listen for incoming <code>ttnpb.GatewayDown</code> messages (which contain both the packet data payload as well as any desired transmission settings). Upon receiving a scheduling request, it must trasmit that message, and <a href="#txack-messages">send back a <code>TxAck</code> packet</a> on success.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">GATEWAY_ID</span><span class="o">=</span><span class="s2">&#34;test-gtw@my-tenant&#34;</span>
@@ -333,7 +332,7 @@ $ mosquitto_sub <span class="se">\
   The example above is not complete (as it does nothing with the scheduled downlink requests). It is only meant to showcase the MQTT client subscribing to the downlink topic.
 </div>
 
-<h2 id="gateway-status-messages">Gateway Status Messages&nbsp;<a class="header-hash" href="#gateway-status-messages">#</a> </h2>
+<h2 id="gateway-status-messages">Gateway Status Messages</h2>
 <p>To forward a gateway status message to the Gateway Server, the MQTT client must publish a Protocol Buffer of type <code>ttnpb.GatewayStatus</code> under the topic <code>v3/&lt;gateway-id&gt;@&lt;tenant-id&gt;/status</code>.</p>
 <p>Below is an example that connects to the Gateway Server as <code>$GATEWAY_ID</code>, publishes a gateway status message (Protocol Buffer stored as binary file <code>test-gateway-status</code>) and disconnects:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">GATEWAY_ID</span><span class="o">=</span><span class="s2">&#34;test-gtw@my-tenant&#34;</span>
@@ -352,7 +351,7 @@ $ mosquitto_pub <span class="se">\
   The file <code>test-gateway-status</code> contains a Protocol Buffer of type <code>ttnpb.GatewayStatus</code> (binary, not JSON).
 </div>
 
-<h2 id="txack-messages">TxAck Messages&nbsp;<a class="header-hash" href="#txack-messages">#</a> </h2>
+<h2 id="txack-messages">TxAck Messages</h2>
 <p>To forward a <code>TxAck</code> packet to the Gateway Server, the MQTT client must publish a Protocol Buffer of type <code>ttnpb.TxAcknowledgement</code> under the topic <code>v3/&lt;gateway-id&gt;@&lt;tenant-id&gt;/down/ack</code>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">GATEWAY_ID</span><span class="o">=</span><span class="s2">&#34;test-gtw@my-tenant&#34;</span>
 $ <span class="nb">export</span> <span class="nv">GATEWAY_API_KEY</span><span class="o">=</span><span class="s2">&#34;NNSXS.VEEBURF3KR77ZR...&#34;</span> <span class="c1"># API key with RIGHT_GATEWAY_LINK rights</span>
@@ -369,7 +368,6 @@ $ mosquitto_pub <span class="se">\
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   The example above is not complete (the TxAck should be sent in response to a successful downlink transmission). It is only meant to showcase the MQTT client sending a TxAck packet (contents of the <code>example-tx-ack</code> file) to the Gateway Server.
 </div>
-
 
 
 </div>
@@ -474,7 +472,7 @@ $ mosquitto_pub <span class="se">\
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.595b97b16778e75a16096b7412b5ce1e7fff37a56e4e45e7f89921711a3cd177.js" integrity="sha256-WVuXsWd451oWCWt0ErXOHn//N6VuTkXn&#43;JkhcRo80Xc=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.0591382a7eda937afd29a067f0682efe7f966ea310ee0e055021aa6365233405.js" integrity="sha256-BZE4Kn7ak3r9KaBn8Ggu/n&#43;WbqMQ7g4FUCGqY2UjNAU=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

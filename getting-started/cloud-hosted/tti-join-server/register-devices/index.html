@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.4a91a2bdbdbc4e92cae68733965ef7b28a6ab235c8c20ea25b693218b6f87f06.css" integrity="sha256-SpGivb28TpLK5oczll73sopqsjXIwg6iW2kyGLb4fwY=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.07bd6845af106c056072b394b0aba314a5ea0d3b3ad4fba538a2fa137f338b3b.css" integrity="sha256-B71oRa8QbAVgcrOUsKujFKXqDTs61PulOKL6E38zizs=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Register Devices">
@@ -217,8 +217,7 @@ debug: false
 </h1>
 
 <div class="content">
-  
-<p>The Things Join Server is a LoRaWAN Join Server. Learn how to register devices to activate on The Things Industries Cloud Hosted or any LoRaWAN network.</p>
+  <p>The Things Join Server is a LoRaWAN Join Server. Learn how to register devices to activate on The Things Industries Cloud Hosted or any LoRaWAN network.</p>
 <div class="notification is-primary is-light has-text-dark">
   <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
   <p>The instructions below use the command-line interface (CLI).</p>
@@ -228,7 +227,7 @@ debug: false
   </div>
 </div>
 
-<h2 id="prerequisites">Prerequisites&nbsp;<a class="header-hash" href="#prerequisites">#</a> </h2>
+<h2 id="prerequisites">Prerequisites</h2>
 <ol>
 <li>When using the command-line interface (CLI), a configuration file <em>with Join Server only</em>. See <a href="/docs/getting-started/cloud-hosted/tti-join-server/">The Things Join Server</a>.</li>
 <li>JoinEUI/AppEUI is either issued from a IEEE block that you own, or set to <code>70B3D57ED0000000</code>.</li>
@@ -236,13 +235,13 @@ debug: false
 <li>Root keys are generated randomly per device.</li>
 </ol>
 <p>Learn more about <a href="https://standards.ieee.org/products-services/regauth/index.html">obtaining a IEEE MAC Address Block</a> for JoinEUI/AppEUI and DevEUIs.</p>
-<h2 id="login-with-cli">Login with CLI&nbsp;<a class="header-hash" href="#login-with-cli">#</a> </h2>
+<h2 id="login-with-cli">Login with CLI</h2>
 <p>Use the command-line interface (CLI) configuration file with Join Server only.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli login
-</code></pre></div><h2 id="register">Register&nbsp;<a class="header-hash" href="#register">#</a> </h2>
+</code></pre></div><h2 id="register">Register</h2>
 <p>You can register devices that support LoRaWAN 1.0.x and 1.1.x activation. The actual LoRaWAN version of the session depends on the end device and the LoRaWAN network capabilities and configuration.</p>
 <p>It is recommended to provision the LoRaWAN 1.1.x NwkKey for future compliance. This allows the device for joining as LoRaWAN 1.0 as well, only using the AppKey.</p>
-<h3 id="lorawan-10x">LoRaWAN 1.0.x&nbsp;<a class="header-hash" href="#lorawan-10x">#</a> </h3>
+<h3 id="lorawan-10x">LoRaWAN 1.0.x</h3>
 <p>To register a LoRaWAN 1.0.x device in application <code>test-app</code>, device ID <code>test-device</code>, AppEUI <code>70B3D57ED0000000</code> and DevEUI <code>0004A310001FF9E0</code> and an AppKey:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices create test-app test-device <span class="se">\
 </span><span class="se"></span>  --app-eui 70B3D57ED0000000 <span class="se">\
@@ -272,7 +271,7 @@ debug: false
 <span class="p">}</span>
 
 </code></pre></div></details>
-<h3 id="lorawan-11x">LoRaWAN 1.1.x&nbsp;<a class="header-hash" href="#lorawan-11x">#</a> </h3>
+<h3 id="lorawan-11x">LoRaWAN 1.1.x</h3>
 <p>To register a LoRaWAN 1.1.x device in application <code>test-app</code>, device ID <code>test-device</code>, JoinEUI <code>70B3D57ED0000000</code> and DevEUI <code>0004A310001FF9E0</code> and an AppKey:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices create test-app test-device <span class="se">\
 </span><span class="se"></span>  --join-eui 70B3D57ED0000000 <span class="se">\
@@ -307,7 +306,7 @@ debug: false
 <span class="p">}</span>
 
 </code></pre></div></details>
-<h3 id="advanced-settings">Advanced Settings&nbsp;<a class="header-hash" href="#advanced-settings">#</a> </h3>
+<h3 id="advanced-settings">Advanced Settings</h3>
 <p>As part of the end device <code>create</code> and <code>update</code> CLI commands, you can specify advanced settings.</p>
 <p>On create, the <code>--with-root-keys</code> flag allows for generating root keys randomly.</p>
 <p>The <code>--resets-join-nonces={true|false}</code> indicates whether the DevNonce and AppNonce/JoinNonce are allowed to reset. Use this with caution in research and development scenarios only: enabling this allows for join replay attacks.</p>
@@ -318,9 +317,8 @@ debug: false
 <li><code>--claim-authentication-code.valid-to</code>: date and time when the code expires.</li>
 </ul>
 <p>The claim authentication code can be part of QR codes. <a href="https://www.thethingsindustries.com/docs/devices/generate-qr-code/">Learn how to generate QR codes</a>.</p>
-<h2 id="next-steps">Next Steps&nbsp;<a class="header-hash" href="#next-steps">#</a> </h2>
+<h2 id="next-steps">Next Steps</h2>
 <p>You can now activate the devices on The Things Industries Cloud Hosted.</p>
-
 </div>
 <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/getting-started/cloud-hosted/tti-join-server/">← The Things Join Server</a>
@@ -408,7 +406,7 @@ debug: false
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.595b97b16778e75a16096b7412b5ce1e7fff37a56e4e45e7f89921711a3cd177.js" integrity="sha256-WVuXsWd451oWCWt0ErXOHn//N6VuTkXn&#43;JkhcRo80Xc=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.0591382a7eda937afd29a067f0682efe7f966ea310ee0e055021aa6365233405.js" integrity="sha256-BZE4Kn7ak3r9KaBn8Ggu/n&#43;WbqMQ7g4FUCGqY2UjNAU=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

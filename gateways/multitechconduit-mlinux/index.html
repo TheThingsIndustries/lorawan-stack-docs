@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.4a91a2bdbdbc4e92cae68733965ef7b28a6ab235c8c20ea25b693218b6f87f06.css" integrity="sha256-SpGivb28TpLK5oczll73sopqsjXIwg6iW2kyGLb4fwY=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.07bd6845af106c056072b394b0aba314a5ea0d3b3ad4fba538a2fa137f338b3b.css" integrity="sha256-B71oRa8QbAVgcrOUsKujFKXqDTs61PulOKL6E38zizs=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="MultiTech Conduit mLinux">
@@ -182,8 +182,7 @@ debug: false
 </h1>
 
 <div class="content">
-  
-<figure class="float plain">
+  <figure class="float plain">
     <img src="001_Multitech_Conduit.png"
          alt="MultiTech MultiConnect Conduit Gateway"/> 
 </figure>
@@ -191,29 +190,29 @@ debug: false
 <p>The <a href="http://www.multitech.net/developer/products/multiconnect-Conduit-platform/">MultiTech MultiConnect® Conduit™</a> is a configurable, scalable cellular communications gateway for industrial IoT applications. The technical specifications of this Conduit can be found in the software guide in the <a href="http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/">official documentation</a> page.</p>
 <p>This guide will help you set up the Multitech Conduit mLinux gateway to communicate over The Things Stack.</p>
 <p>The MultiTech Conduit has two compatible firmwares - <strong>AEP</strong>, which is configured via the browser, and <strong>mLinux</strong>, which is configured via the terminal. This guide is for the <strong>mLinux</strong> firmware.</p>
-<h2 id="prerequisites">Prerequisites&nbsp;<a class="header-hash" href="#prerequisites">#</a> </h2>
+<h2 id="prerequisites">Prerequisites</h2>
 <ol>
 <li>User account on The Things Stack with rights to create Gateways.</li>
 <li>Multitech Conduit Gateway running <a href="http://www.multitech.net/developer/downloads/">mLinux 5.2.7 or later</a>.</li>
 </ol>
-<h2 id="registration">Registration&nbsp;<a class="header-hash" href="#registration">#</a> </h2>
+<h2 id="registration">Registration</h2>
 <p>Create a gateway by following the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/">Adding Gateways</a>.</p>
 <blockquote>
 <p>The gateway EUI can be found at the bottom of the gateway under the field &quot;LORA NODE&quot;.</p>
 </blockquote>
-<h2 id="setting-up-the-gateway">Setting Up the Gateway&nbsp;<a class="header-hash" href="#setting-up-the-gateway">#</a> </h2>
+<h2 id="setting-up-the-gateway">Setting Up the Gateway</h2>
 <p>For the first-time hardware and software setup, you can refer to the appropriate configuration guide on the <a href="http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/">Multitech documentation</a> page.</p>
 <p>We have included a few short steps to help you get started.</p>
-<h3 id="connecting-to-the-gateway-as-a-dhcp-server">Connecting to the Gateway as a DHCP Server&nbsp;<a class="header-hash" href="#connecting-to-the-gateway-as-a-dhcp-server">#</a> </h3>
+<h3 id="connecting-to-the-gateway-as-a-dhcp-server">Connecting to the Gateway as a DHCP Server</h3>
 <p>Since the gateway initializes as a DHCP server, you may have to configure TCP/IP manually. After hard resetting the device, we connected it directly to a computer via ethernet and used the following TCP/IP settings:</p>
 <ul>
 <li>IP Address: 192.168.2.2</li>
 <li>Subnet Mask: 255.255.255.0</li>
 <li>Router Address: 192.168.2.1</li>
 </ul>
-<h3 id="commissioning">Commissioning&nbsp;<a class="header-hash" href="#commissioning">#</a> </h3>
+<h3 id="commissioning">Commissioning</h3>
 <p>After connecting to the gateway, it must be commissioned, or you will not be able to login to the gateway. See instructions <a href="https://www.multitech.net/developer/software/mlinux/getting-started-with-conduit-mlinux/commissioning-for-mlinux-devices/">here</a>. In short, open a browser to the gateway&rsquo;s IP, 192.168.2.1, and set a username and password.</p>
-<h3 id="configuring-the-gateway-as-a-dhcp-client">Configuring the Gateway as a DHCP Client&nbsp;<a class="header-hash" href="#configuring-the-gateway-as-a-dhcp-client">#</a> </h3>
+<h3 id="configuring-the-gateway-as-a-dhcp-client">Configuring the Gateway as a DHCP Client</h3>
 <p>To connect the gateway to your network, you must reconfigure it as a DHCP client. After commissioning the device, ssh in using the username and password you set up:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh username@192.168.2.1
 </code></pre></div><p>Modify the network configuration file, <code>/etc/network/interfaces</code>:</p>
@@ -227,11 +226,11 @@ iface eth0 inet dhcp
 <span class="c1">#netmask 255.255.255.0</span>
 <span class="c1">#gateway 192.168.2.254</span>
 </code></pre></div><p>Reboot your gateway to enable the new network configuration, and now you can connect your gateway to your router and finish the configuration for The Things Stack.</p>
-<h2 id="configuration-using-a-terminal">Configuration using a Terminal&nbsp;<a class="header-hash" href="#configuration-using-a-terminal">#</a> </h2>
-<h3 id="downloading-global_confjson">Downloading Global_conf.json&nbsp;<a class="header-hash" href="#downloading-global_confjson">#</a> </h3>
+<h2 id="configuration-using-a-terminal">Configuration using a Terminal</h2>
+<h3 id="downloading-global_confjson">Downloading Global_conf.json</h3>
 <p>To configure the gateway for the correct channel plans, you need a <code>global_conf.json</code>.</p>
 <p>The Gateway Configuration Server can be used to retrieve a proper <code>global_conf.json</code> configuration file for your gateway. Follow instructions <a href="">here</a>.</p>
-<h3 id="configuring-the-packet-forwarder">Configuring the Packet Forwarder&nbsp;<a class="header-hash" href="#configuring-the-packet-forwarder">#</a> </h3>
+<h3 id="configuring-the-packet-forwarder">Configuring the Packet Forwarder</h3>
 <p>Once the <code>global_conf.json</code> file is generated, you will need to add this to your gateway.</p>
 <p>Login to your router at its IP address on your local network, and copy the <code>global_conf.json</code> contents in to a file at <code>/var/config/lora/global_conf.json</code></p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh username@&lt;GATEWAY_IP_ADDRESS&gt;
@@ -256,10 +255,9 @@ $ sudo nano /etc/defaults/lora-packet-forwarder
 <span class="c1">#ENABLED=”yes”</span>
 </code></pre></div><p>Start the packet forwarder, and The Things Stack will begin receiving packets from your gateway:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo /etc/init.d/lora-packet-forwarder start
-</code></pre></div><h2 id="troubleshooting">Troubleshooting&nbsp;<a class="header-hash" href="#troubleshooting">#</a> </h2>
-<h3 id="lora-card-not-detected">LORA card not detected&nbsp;<a class="header-hash" href="#lora-card-not-detected">#</a> </h3>
+</code></pre></div><h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="lora-card-not-detected">LORA card not detected</h3>
 <p>If you receive a <code>LORA card not detected</code> error, make sure you start the <code>lora-packet-forwarder</code> as <code>sudo</code>.</p>
-
 </div>
 
 <div class="is-clearfix">
@@ -351,7 +349,7 @@ $ sudo nano /etc/defaults/lora-packet-forwarder
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.595b97b16778e75a16096b7412b5ce1e7fff37a56e4e45e7f89921711a3cd177.js" integrity="sha256-WVuXsWd451oWCWt0ErXOHn//N6VuTkXn&#43;JkhcRo80Xc=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.0591382a7eda937afd29a067f0682efe7f966ea310ee0e055021aa6365233405.js" integrity="sha256-BZE4Kn7ak3r9KaBn8Ggu/n&#43;WbqMQ7g4FUCGqY2UjNAU=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

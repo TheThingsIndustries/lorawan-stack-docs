@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.4a91a2bdbdbc4e92cae68733965ef7b28a6ab235c8c20ea25b693218b6f87f06.css" integrity="sha256-SpGivb28TpLK5oczll73sopqsjXIwg6iW2kyGLb4fwY=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.07bd6845af106c056072b394b0aba314a5ea0d3b3ad4fba538a2fa137f338b3b.css" integrity="sha256-B71oRa8QbAVgcrOUsKujFKXqDTs61PulOKL6E38zizs=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Routing Policies">
@@ -262,8 +262,7 @@ debug: false
 </h1>
 
 <div class="content">
-  
-<p>This guide explains how to manage routing policies, i.e. the rules for forwarding uplink and downlink traffic.</p>
+  <p>This guide explains how to manage routing policies, i.e. the rules for forwarding uplink and downlink traffic.</p>
 <div class="notification is-primary is-light has-text-dark">
   <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
   <p>The instructions below use the command-line interface (CLI).</p>
@@ -273,7 +272,7 @@ debug: false
   </div>
 </div>
 
-<h2 id="prerequisites">Prerequisites&nbsp;<a class="header-hash" href="#prerequisites">#</a> </h2>
+<h2 id="prerequisites">Prerequisites</h2>
 <ol>
 <li>Understand how Packet Broker works and what routing policies are. <a href="/docs/reference/packet-broker/">Learn about Packet Broker</a>.</li>
 <li>The Things Stack connected to Packet Broker.</li>
@@ -360,7 +359,7 @@ debug: false
 <ol start="3">
 <li>An admin account for the The Things Stack deployment. All Packet Broker configuration requires administrative access.</li>
 </ol>
-<h2 id="list-home-networks">List Home Networks&nbsp;<a class="header-hash" href="#list-home-networks">#</a> </h2>
+<h2 id="list-home-networks">List Home Networks</h2>
 <p>In order to configure routing policies with Home Networks, you need to know which Home Networks are available in Packet Broker.</p>
 <p>To list Packet Broker Home Networks:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-networks list
@@ -423,7 +422,7 @@ debug: false
 <span class="p">}</span>
 <span class="p">]</span>
 </code></pre></div></details>
-<h2 id="forwarder-routing-policies">Forwarder Routing Policies&nbsp;<a class="header-hash" href="#forwarder-routing-policies">#</a> </h2>
+<h2 id="forwarder-routing-policies">Forwarder Routing Policies</h2>
 <p>You can see which routing policies Forwarders set for your network as the Home Network. This allows you to see from which networks you receive traffic, which data is being routed, and what downlink capabilities you have with those Forwarders.</p>
 <p>To list the routing policies set by Forwarders for your network:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker forwarder policies list
@@ -454,16 +453,16 @@ debug: false
 <span class="p">}</span>
 <span class="p">]</span>
 </code></pre></div></details>
-<h2 id="home-network-routing-policies">Home Network Routing Policies&nbsp;<a class="header-hash" href="#home-network-routing-policies">#</a> </h2>
+<h2 id="home-network-routing-policies">Home Network Routing Policies</h2>
 <p>You can manage the routing policies between you as Forwarder and any Home Network available in Packet Broker. This allows you to configure what uplink traffic is routed where, and to which extent those Home Networks can use your gateways for downlink traffic.</p>
 <div class="notification is-primary is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Info:</h5>
   Packet Broker Router uses a cache of the routing table. It takes up to 10 minutes for changes in routing policies to be fully propagated and effective. ☕
 </div>
 
-<h3 id="default-routing-policy">Default Routing Policy&nbsp;<a class="header-hash" href="#default-routing-policy">#</a> </h3>
+<h3 id="default-routing-policy">Default Routing Policy</h3>
 <p>The Default routing policy defines rules for all Home Networks if there is no specific Routing Policy for a Home Network.</p>
-<h4 id="get-default-routing-policy">Get Default Routing Policy&nbsp;<a class="header-hash" href="#get-default-routing-policy">#</a> </h4>
+<h4 id="get-default-routing-policy">Get Default Routing Policy</h4>
 <p>To get the default routing policy:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-networks policies get default
 </code></pre></div><div class="notification is-primary is-light has-text-dark">
@@ -489,19 +488,19 @@ debug: false
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></details>
-<h4 id="set-default-routing-policy">Set Default Routing Policy&nbsp;<a class="header-hash" href="#set-default-routing-policy">#</a> </h4>
+<h4 id="set-default-routing-policy">Set Default Routing Policy</h4>
 <p>To set the default routing policy to forward all uplink traffic and allow Home Networks to forward all downlink traffic:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-networks policies <span class="nb">set</span> default --all
 </code></pre></div><p>To customize, see <a href="#flags">Flags</a> below.</p>
-<h4 id="delete-default-routing-policy">Delete Default Routing Policy&nbsp;<a class="header-hash" href="#delete-default-routing-policy">#</a> </h4>
+<h4 id="delete-default-routing-policy">Delete Default Routing Policy</h4>
 <p>To delete the default routing policy:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-networks policies delete default
-</code></pre></div><h3 id="home-network-routing-policies-1">Home Network Routing Policies&nbsp;<a class="header-hash" href="#home-network-routing-policies-1">#</a> </h3>
+</code></pre></div><h3 id="home-network-routing-policies-1">Home Network Routing Policies</h3>
 <p>Home Network routing policies take precedence over the default routing policy.</p>
-<h4 id="list-home-network-routing-policies">List Home Network Routing Policies&nbsp;<a class="header-hash" href="#list-home-network-routing-policies">#</a> </h4>
+<h4 id="list-home-network-routing-policies">List Home Network Routing Policies</h4>
 <p>To list the routing policies for Home Networks:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-network policies list
-</code></pre></div><h4 id="get-home-network-routing-policy">Get Home Network Routing Policy&nbsp;<a class="header-hash" href="#get-home-network-routing-policy">#</a> </h4>
+</code></pre></div><h4 id="get-home-network-routing-policy">Get Home Network Routing Policy</h4>
 <p>To get the Routing Policy for a Home Network:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-networks policies get &lt;net-id&gt; <span class="o">[</span>&lt;tenant-id&gt;<span class="o">]</span>
 </code></pre></div><p>Replace <code>&lt;net-id&gt;</code> with the <code>NetID</code>. The <code>tenant-id</code> is optional and represents the tenant within the <code>NetID</code>.</p>
@@ -512,11 +511,11 @@ debug: false
 </code></pre></div>
 </div>
 
-<h4 id="delete-home-network-routing-policy">Delete Home Network Routing Policy&nbsp;<a class="header-hash" href="#delete-home-network-routing-policy">#</a> </h4>
+<h4 id="delete-home-network-routing-policy">Delete Home Network Routing Policy</h4>
 <p>To delete the Routing Policy for a Home Network:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-networks policies delete &lt;net-id&gt; <span class="o">[</span>&lt;tenant-id&gt;<span class="o">]</span>
 </code></pre></div><p>Replace <code>&lt;net-id&gt;</code> with the <code>NetID</code>. The <code>tenant-id</code> is optional and represents the tenant within the <code>NetID</code>.</p>
-<h3 id="flags">Flags&nbsp;<a class="header-hash" href="#flags">#</a> </h3>
+<h3 id="flags">Flags</h3>
 <p>When setting a Routing Policy, you can specify a combination of the following flags:</p>
 <table>
 <thead>
@@ -576,7 +575,6 @@ debug: false
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/reference/packet-broker/configure/registration/">← Registration</a>
@@ -663,7 +661,7 @@ debug: false
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.595b97b16778e75a16096b7412b5ce1e7fff37a56e4e45e7f89921711a3cd177.js" integrity="sha256-WVuXsWd451oWCWt0ErXOHn//N6VuTkXn&#43;JkhcRo80Xc=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.0591382a7eda937afd29a067f0682efe7f966ea310ee0e055021aa6365233405.js" integrity="sha256-BZE4Kn7ak3r9KaBn8Ggu/n&#43;WbqMQ7g4FUCGqY2UjNAU=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };
