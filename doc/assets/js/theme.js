@@ -12,20 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-document.addEventListener('DOMContentLoaded', function () {
-  var migrationInfoAccepted = window.localStorage.getItem('migrationInfoAccepted')
-  if(migrationInfoAccepted != 'true') {
-    var migrationBar = document.getElementById('migration-info')
-    migrationBar.style.display = 'flex';
-    document.documentElement.classList.add("has-navbar-banner-top")
-    var migrationButton = document.getElementById('migration-button')
-    migrationButton.addEventListener('click', function (){
-      window.localStorage.setItem('migrationInfoAccepted', true)
-      migrationBar.style.display = 'none';
-      document.documentElement.classList.remove("has-navbar-banner-top")
-    })
-  }
-
+function addNavBarBurgers(){
   var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0)
   if ($navbarBurgers.length > 0) {
     $navbarBurgers.forEach(function(el) {
@@ -37,7 +24,22 @@ document.addEventListener('DOMContentLoaded', function () {
       })
     })
   }
+}
 
+function addAnchor(element) {
+  element.insertAdjacentHTML('beforeend',
+  `<a class="header-hash" href="#${element.id}" ariaLabel="Anchor">#</a>` )
+}
+
+function addAnchors() {
+  var headers = document.querySelectorAll(
+    '.docs-content h2[id], .docs-content h3[id], .docs-content h4[id], .docs-content h5[id], .docs-content h6[id]')
+    if (headers) {
+        headers.forEach(addAnchor)
+    }
+}
+
+function addTabs(){
   const tabs = [...document.querySelectorAll('.tabs li')]
   const tabContent = [...document.querySelectorAll('.tab-content section')]
   const activeClass = 'is-active'
@@ -102,4 +104,26 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   init()
+}
+
+function addMigrationBar(){
+  var migrationInfoAccepted = window.localStorage.getItem('migrationInfoAccepted')
+  if(migrationInfoAccepted != 'true') {
+    var migrationBar = document.getElementById('migration-info')
+    migrationBar.style.display = 'flex';
+    document.documentElement.classList.add("has-navbar-banner-top")
+    var migrationButton = document.getElementById('migration-button')
+    migrationButton.addEventListener('click', function (){
+      window.localStorage.setItem('migrationInfoAccepted', true)
+      migrationBar.style.display = 'none';
+      document.documentElement.classList.remove("has-navbar-banner-top")
+    })
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  addAnchors()
+  addMigrationBar()
+  addNavBarBurgers()
+  addTabs()
 })
