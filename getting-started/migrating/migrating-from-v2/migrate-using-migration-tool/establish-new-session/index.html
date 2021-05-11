@@ -249,20 +249,49 @@ debug: false
 
 <div class="content">
   <p>This section explains how to export one or more of your end devices from V2 to a <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON file</a>, without persisting their session.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>Migrating end devices without their active session with <code>ttn-lw-migrate</code> tool is not applicable to ABP devices. To achieve this, see <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-console/">how to migrate ABP device to The Things Stack using Console</a>.</p>
-<p>This section only applies to OTAA devices.</p>
-
-</div>
-
 <div class="notification is-primary is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Info:</h5>
-  We strongly recommend migrating end devices without persisting active sessions
+  We strongly recommend migrating end devices without persisting active sessions.
 </div>
 
-<p>When migrating OTAA devices without persisting active sessions, a new join needs to be performed on The Things Stack to establish a new session.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="otaa">
+      <a>
+        <span>OTAA</span>
+      </a>
+    </li>
+    
+    <li data-tab="abp">
+      <a>
+        <span>ABP</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="otaa">
+  <p>When migrating OTAA devices without persisting active sessions, a new join needs to be performed on The Things Stack to establish a new session.</p>
 <p>By establishing the new session with The Things Stack, an OTAA device gets assigned a new <strong>DevAddr</strong> and default values of some other parameters (like 5 seconds <strong>RX1 Delay</strong>). This ensures that the traffic sent by these end devices can be properly routed by the Packet Broker to and from The Things Stack.</p>
+</section>
+<section data-content="abp">
+  <p>The <strong>DevAddr</strong> and some other parameters (like <strong>RX1 Delay</strong>) are hardcoded for ABP devices. If you do not re-program the device to change these values, you can migrate it to The Things Stack without its security keys, network parameters, etc. which basically means you are migrating it without its active session.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <p>If you want your end device traffic to be routed via Packet Broker to The Things Stack, the <strong>DevAddr</strong> must be routable by the Packet Broker and the <strong>RX1 Delay</strong> value must be 5 seconds. Note that the <strong>DevAddr</strong> is routable only if you are using <strong>The Things Industries V2 (SaaS)</strong> and migrating to <strong>The Things Stack Cloud</strong>, and even that is being achieved only on customer request by contacting <a href="mailto:support@thethingsindustries.com">The Things Industries support</a>.</p>
+<p>If you are not migrating from <strong>The Things Industries V2 (SaaS)</strong> to <strong>The Things Stack Cloud</strong>, Packet Broker will not be able to route your ABP device&rsquo;s traffic properly, so you will have to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway</a> to The Things Stack too. Be aware that in this case, even if you do migrate your gateway, you could still be experiencing latency issues if your gateway has a high latency backhaul.</p>
+</div>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  <p>Note that this is <strong>not a recommended practice</strong>. We advise re-programming the ABP device to change the <strong>DevAddr</strong> to the one issued by The Things Stack and <strong>RX1 Delay</strong> to 5 seconds, even if you do not want your traffic to be routed by Packet Broker.</p>
+<p>If you re-program the device, you will have to follow the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-console/">Migrate using the Console</a> guide. The reason for this is that when you re-program your ABP device, its <strong>DevAddr</strong> and other parameters will no longer match the device description stored in V2, so you will not be able to export the current device description using the <code>ttn-lw-migrate</code> tool.</p>
+</div>
+</section>
+
+</div>
+
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   Before exporting end devices, you can first test the execution by appending the <code>--dry-run</code> and <code>--verbose</code> flags to the commands presented in the sections below.
@@ -284,13 +313,61 @@ dev3
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-migrate application --source ttnv2 <span class="s2">&#34;ttn-v2-application-ID&#34;</span> --ttnv2.with-session<span class="o">=</span><span class="nb">false</span> &gt; devices.json
 </code></pre></div><h2 id="prevent-the-end-device-from-joining-v2-network">Prevent the End Device from Joining V2 Network</h2>
 <p>Exporting end devices without their active sessions does not clear root and session keys on V2. Hence, you need to prevent your devices from re-joining the V2 network.</p>
-<p>To prevent OTAA device from re-joining the V2 network, the recommended practice is to change the <strong>AppKey</strong> in the V2. By changing the <strong>AppKey</strong>, the existing session on V2 will not be terminated yet, but the end device will not be able to re-join because the V2 cluster will reject its new Join Requests.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="otaa">
+      <a>
+        <span>OTAA</span>
+      </a>
+    </li>
+    
+    <li data-tab="abp">
+      <a>
+        <span>ABP</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="otaa">
+  To prevent OTAA device from re-joining the V2 network, the recommended practice is to change the <strong>AppKey</strong> in the V2. By changing the <strong>AppKey</strong>, the existing session on V2 will not be terminated yet, but the end device will not be able to re-join because the V2 cluster will reject its new Join Requests.
+</section>
+<section data-content="abp">
+  <div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  For ABP device, you need to completely delete it from V2, especially because this section assumes that you have not re-programmed it for a new <strong>DevAddr</strong>. Having this device registered in V2 and The Things Stack would introduce some serious conflicts.
+</div>
+</section>
+
+</div>
+
 <h2 id="import-end-devices-in-the-things-stack-application">Import End Devices in The Things Stack Application</h2>
 <p>Now that you have exported one or more of your devices to a <code>devices.json</code> file, you can continue by importing this file in The Things Stack via Console or via CLI.</p>
 <blockquote>
 <p>See <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">Import End Devices in The Things Stack</a> for detailed instructions on how to do this.</p>
 </blockquote>
-<h2 id="let-the-otaa-end-device-join-the-things-stack-network">Let the OTAA End Device Join The Things Stack Network</h2>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="otaa">
+      <a>
+        <span>OTAA</span>
+      </a>
+    </li>
+    
+    <li data-tab="abp">
+      <a>
+        <span>ABP</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="otaa">
+  <h2 id="let-the-otaa-end-device-join-the-things-stack-network">Let the OTAA End Device Join The Things Stack Network</h2>
 <p>Next, your OTAA end device needs to join The Things Stack network. Since you have not migrated your device with its active session, it will need to perform a new join.</p>
 <p>Some OTAA devices ocasionally perform new joins - with these end devices, you can only wait for them to do this on their own.</p>
 <p>You could also send a downlink message from the V2 Console to trigger a new join if your device supports this - contact your device maker for detailed instructions.</p>
@@ -301,6 +378,18 @@ dev3
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   Even if you manage to get your end device traffic routed to The Things Stack via Packet Broker, we still recommend you get in touch with your local The Things Network community and coordinate the migration of gateways, so you do not loose the LoRaWAN network coverage. See how to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway to The Things Stack</a>.
+</div>
+</section>
+<section data-content="abp">
+  <h2 id="next-step---migrate-gateways">Next Step - Migrate Gateways</h2>
+<p>This section implies that you are keeping the <strong>DevAddr</strong> and <strong>RX1 Delay</strong> values from V2, which means Packet Broker will be able to route the traffic properly only if you are migrating from <strong>The Things Industries V2</strong> to <strong>The Things Stack Cloud</strong>. This can be only achieved on a customer request, so if this is the case please contact <a href="mailto:support@thethingsindustries.com">The Things Industries support</a> for more information.</p>
+<p>If you are not migrating from <strong>The Things Industries V2</strong> to <strong>The Things Stack Cloud</strong>, please follow the guide to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway</a> to The Things Stack.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Keep in mind that we advise to keep your gateways on V2 until you get in touch with your local The Things Network community and coordinate the migration of gateways, so you do not loose the LoRaWAN network coverage.
+</div>
+</section>
+
 </div>
 </div>
 <div class="is-clearfix">
@@ -334,6 +423,9 @@ dev3
     
       
       <li><a href='#let-the-otaa-end-device-join-the-things-stack-network'>Let the OTAA End Device Join The Things Stack Network</a></li>
+    
+      
+      <li><a href='#next-step---migrate-gateways'>Next Step - Migrate Gateways</a></li>
     
       
       <li><a href='#next-step---migrate-gateways'>Next Step - Migrate Gateways</a></li>
@@ -374,10 +466,10 @@ dev3
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 21 Apr 2021.
+  Last changed by Nejra on 05 May 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5dff1d8814db9e2e69296d56342e26a03ccc2c9f">
-      doc: Add installation instructions for migration tool
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/fb7323953601e8b119025450db03a29517d2e62e">
+      doc: Fix migration docs
     </a>
 </p>
 
