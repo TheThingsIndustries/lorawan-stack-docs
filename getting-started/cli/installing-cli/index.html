@@ -182,15 +182,33 @@ debug: false
 <div class="content">
   <p>This section contains instructions for installing the command-line interface.</p>
 <h3 id="package-managers-recommended">Package managers (recommended)</h3>
-<h4 id="macos">macOS</h4>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ brew install TheThingsNetwork/lorawan-stack/ttn-lw-stack
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="open-source">
+      <a>
+        <span>Open Source</span>
+      </a>
+    </li>
+    
+    <li data-tab="enterprise">
+      <a>
+        <span>Enterprise</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="open-source">
+  <h4 id="macos">macOS</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ brew install TheThingsNetwork/lorawan-stack/ttn-lw-cli
 </code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   When installing with <code>brew</code>, auto completion is enabled automatically.
 </div>
-
 <p>To upgrade the CLI if it is already installed, use:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ brew upgrade TheThingsNetwork/lorawan-stack/ttn-lw-stack
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ brew upgrade TheThingsNetwork/lorawan-stack/ttn-lw-cli
 </code></pre></div><h4 id="linux">Linux</h4>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo snap install ttn-lw-stack
 $ sudo snap <span class="nb">alias</span> ttn-lw-stack.ttn-lw-cli ttn-lw-cli
@@ -198,11 +216,34 @@ $ sudo snap <span class="nb">alias</span> ttn-lw-stack.ttn-lw-cli ttn-lw-cli
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   When installing with <code>snap</code>, auto completion is enabled automatically.
 </div>
-
 <p>To upgrade the CLI if it is already installed, use:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo snap refresh ttn-lw-stack
 </code></pre></div><h3 id="binaries">Binaries</h3>
 <p>You can download <a href="https://github.com/TheThingsNetwork/lorawan-stack/releases">pre-built binaries</a> for your operating system and processor architecture.</p>
+</section>
+<section data-content="enterprise">
+  <h4 id="macos">macOS</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ brew install TheThingsIndustries/lorawan-stack/tti-lw-cli
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  When installing with <code>brew</code>, auto completion is enabled automatically.
+</div>
+<p>To upgrade the CLI if it is already installed, use:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ brew upgrade TheThingsIndustries/lorawan-stack/tti-lw-cli
+</code></pre></div><h4 id="linux">Linux</h4>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo snap install tti-lw-stack
+$ sudo snap <span class="nb">alias</span> tti-lw-stack.tti-lw-cli tti-lw-cli
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  When installing with <code>snap</code>, auto completion is enabled automatically.
+</div>
+<p>To upgrade the CLI if it is already installed, use:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo snap refresh tti-lw-stack
+</code></pre></div>
+</section>
+
+</div>
+
 <h2 id="configuration">Configuration</h2>
 <p>The command-line needs to be configured to connect to The Things Stack. You have multiple options to make the configuration file available to the CLI:</p>
 <ol>
@@ -215,30 +256,66 @@ $ sudo snap <span class="nb">alias</span> ttn-lw-stack.ttn-lw-cli ttn-lw-cli
   When using the snap packages, <code>~/.ttn-lw-cli.yml</code> will fail with permission errors. Choose a different path.
 </div>
 
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The default configuration file for both Open Source and Enterprise versions of the CLI is named <code>.ttn-lw-cli.yml</code>.
+</div>
+
 <h3 id="generate-configuration-file">Generate configuration file</h3>
 <p>If using The Things Stack Community Edition by The Things Network or The Things Stack Cloud, visit the addresses page for <a href="https://www.thethingsindustries.com/docs/getting-started/ttn/addresses/">The Things Network</a> or <a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/addresses/">The Things Stack Cloud</a> to find CLI configuration files for these deployments.</p>
 <p>If hosting your own deployment, for example at <code>thethings.example.com</code>, all you need is:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli use thethings.example.com <span class="o">[</span>--fetch-ca<span class="o">]</span> <span class="o">[</span>--user<span class="o">]</span> <span class="o">[</span>--overwrite<span class="o">]</span>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="open-source">
+      <a>
+        <span>Open Source</span>
+      </a>
+    </li>
+    
+    <li data-tab="enterprise">
+      <a>
+        <span>Enterprise</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="open-source">
+  <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli use thethings.example.com <span class="o">[</span>--fetch-ca<span class="o">]</span> <span class="o">[</span>--user<span class="o">]</span> <span class="o">[</span>--overwrite<span class="o">]</span>
 </code></pre></div><div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
   If configuring <code>ttn-lw-cli</code> for The Things Stack Cloud, see <a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/addresses/">Cloud Addresses</a> for information about endpoints.
 </div>
-
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   On Windows, use <code>ttn-lw-cli.exe</code> instead of <code>ttn-lw-cli</code>.
 </div>
+</section>
+<section data-content="enterprise">
+  <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ tti-lw-cli use thethings.example.com <span class="o">[</span>--fetch-ca<span class="o">]</span> <span class="o">[</span>--user<span class="o">]</span> <span class="o">[</span>--overwrite<span class="o">]</span>
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  On Windows, use <code>tti-lw-cli.exe</code> instead of <code>tti-lw-cli</code>.
+</div>
+</section>
+
+</div>
 
 <p>This will generate and save the required CLI config file. By default, the file is saved on the current directory, use the <code>--user</code> to save it under the user config directory.</p>
 <p>If the deployment is using a CA that is not already trusted by your system, use the <code>--fetch-ca</code> flag to also connect to the server and retrieve the CA required for establishing secure communication.</p>
+<p>If the file exists already, it is not overwritten and an error is printed instead. You can use <code>--overwrite</code> to overwrite the existing configuration file.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  If the file exists already, it is not overwritten and an error is printed instead. You can use <code>--overwrite</code> to overwrite the existing configuration file.
+  You can also use the <code>--grpc-port</code> and <code>--oauth-server-address</code> flags to override the default values for the gRPC port and the OAuth server address. These are not needed for standard deployments.
 </div>
 
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  You can also use the <code>--grpc-port</code> and <code>--oauth-server-address</code> flags to override the default values for the gRPC port and the OAuth server address. These are not needed for standard deployments.
+  <p>If you are using an <code>https</code> port other than <code>443</code> (for example if you are running The Things Stack on localhost), you need to specify the OAuth server address by appending the <code>--oauth-server-address=&quot;https://localhost:8885/oauth&quot;</code> flag when running the CLI.</p>
+<p>If you are using a <a href="https://www.thethingsindustries.com/docs/getting-started/installation/certificates/#custom-certificate-authority">custom certificate authority</a>, you will have to specify the <code>--ca=&quot;/path/to/ca.pem&quot;</code> flag when running the CLI.</p>
+
 </div>
 
 <h3 id="manually-create-configuration-file">Manually create configuration file</h3>
@@ -254,30 +331,88 @@ $ sudo snap <span class="nb">alias</span> ttn-lw-stack.ttn-lw-cli ttn-lw-cli
 </span><span class="w"></span><span class="k">device-claiming-server-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:8884&#39;</span><span class="w">
 </span><span class="w"></span><span class="k">device-template-converter-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:8884&#39;</span><span class="w">
 </span><span class="w"></span><span class="k">qr-code-generator-grpc-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:8884&#39;</span><span class="w">
-</span></code></pre></div><div class="notification is-warning is-light has-text-dark">
+</span></code></pre></div><div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="open-source">
+      <a>
+        <span>Open Source</span>
+      </a>
+    </li>
+    
+    <li data-tab="enterprise">
+      <a>
+        <span>Enterprise</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="open-source">
+  <div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
   If configuring <code>ttn-lw-cli</code> for The Things Stack Cloud, see <a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/addresses/">Cloud Addresses</a> for information about endpoints.
 </div>
+</section>
+<section data-content="enterprise">
+</section>
 
-<p>If you are using an <code>https</code> port other than <code>443</code>, you need to specify that port, e.g.:</p>
+</div>
+
+<p>If you are using an <code>https</code> port other than <code>443</code> (for example if running The Things Stack on localhost), you need to specify that port, e.g.:</p>
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">oauth-server-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example:8885/oauth&#39;</span><span class="w">
-</span></code></pre></div><p>If your deployment uses a custom certificate authority, you&rsquo;ll need to add:</p>
+</span></code></pre></div><p>If your deployment uses a custom certificate authority, you will need to add the following line in the configuration file:</p>
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">ca</span><span class="p">:</span><span class="w"> </span>/path/to/ca.pem<span class="w">
 </span></code></pre></div><p>For advanced options, see the <a href="https://www.thethingsindustries.com/docs/reference/configuration/cli/">Configuration Reference</a>.</p>
 <h2 id="auto-completion">Auto Completion</h2>
 <p>Auto completion allows the shell to <a href="https://en.wikipedia.org/wiki/Command-line_completion">automatically fill in commands</a> after you type the first few letters. It is completely optional but can save you time entering commands.</p>
-<p>Use <code>ttn-lw-cli complete</code> to generate an auto completion script for the <code>ttn-lw-cli</code> command. <code>bash</code>, <code>zsh</code>, <code>fish</code> and <code>powershell</code> shells are supported:</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="open-source">
+      <a>
+        <span>Open Source</span>
+      </a>
+    </li>
+    
+    <li data-tab="enterprise">
+      <a>
+        <span>Enterprise</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="open-source">
+  <p>Use <code>ttn-lw-cli complete</code> to generate an auto completion script for the <code>ttn-lw-cli</code> command. <code>bash</code>, <code>zsh</code>, <code>fish</code> and <code>powershell</code> shells are supported:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli <span class="nb">complete</span> --shell bash --executable ttn-lw-cli &gt; ttn-lw-cli-autocomplete
 </code></pre></div><p>Source the file to enable auto completion:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ . ./ttn-lw-cli-autocomplete
-</code></pre></div><p>Alternatively, put in a default directory so that it is loaded automatically (This directory depends on your Operating System and your shell).</p>
+</code></pre></div><p>Alternatively, put in a default directory so that it is loaded automatically (this directory depends on your Operating System and your shell).</p>
 <p>For <code>bash</code>, this directory is typically <code>/etc/bash_completion.d/</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo cp ./ttn-lw-cli-autocomplete /etc/bash_completion.d/
 </code></pre></div><p>Generating and sourcing an auto completion PowerShell script on Windows is slightly modified:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli.exe <span class="nb">complete</span> --shell powershell --executable ttn-lw-cli.exe &gt; ttn-lw-cli-autocomplete.ps1
+<p>$ . ./ttn-lw-cli-autocomplete.ps1
+</code></pre></div></p>
+</section>
+<section data-content="enterprise">
+  <p>Use <code>tti-lw-cli complete</code> to generate an auto completion script for the <code>tti-lw-cli</code> command. <code>bash</code>, <code>zsh</code>, <code>fish</code> and <code>powershell</code> shells are supported:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ tti-lw-cli <span class="nb">complete</span> --shell bash --executable tti-lw-cli &gt; tti-lw-cli-autocomplete
+</code></pre></div><p>Source the file to enable auto completion:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ . ./tti-lw-cli-autocomplete
+</code></pre></div><p>Alternatively, put in a default directory so that it is loaded automatically (this directory depends on your Operating System and your shell).</p>
+<p>For <code>bash</code>, this directory is typically <code>/etc/bash_completion.d/</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo cp ./tti-lw-cli-autocomplete /etc/bash_completion.d/
+</code></pre></div><p>Generating and sourcing an auto completion PowerShell script on Windows is slightly modified:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ tti-lw-cli.exe <span class="nb">complete</span> --shell powershell --executable tti-lw-cli.exe &gt; tti-lw-cli-autocomplete.ps1
+<p>$ . ./tti-lw-cli-autocomplete.ps1
+</code></pre></div></p>
+</section>
 
-$ . ./ttn-lw-cli-autocomplete.ps1
-</code></pre></div>
+</div>
 </div>
 
 <div class="is-clearfix">
@@ -345,10 +480,10 @@ $ . ./ttn-lw-cli-autocomplete.ps1
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 23 Mar 2021.
+  Last changed by Nejra on 06 May 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/18458c11f8f1cfe3989b32db7686f21b0a3516b1">
-      doc: Add ttn doc
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f17f96d71a2b2d49d2515a7087423b66dd2ac8bd">
+      doc: Document tti-lw-cli installation and usage
     </a>
 </p>
 
