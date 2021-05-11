@@ -105,7 +105,7 @@ Some OTAA devices ocasionally perform new joins - with these end devices, you ca
 
 {{< tabs/tab "ABP" >}}
 
-For ABP device, you need to completely delete it from {{% ttnv2 %}}, especially if you have not re-programmed it for a new **DevAddr**. Having the same session in {{% ttnv2 %}} and {{% tts %}} would  introduce some serious conflicts.
+{{< warning >}} For ABP device, you need to completely delete it from {{% ttnv2 %}}, especially if you have not re-programmed it for a new **DevAddr**. Having the device registered in both {{% ttnv2 %}} and {{% tts %}} would  introduce some serious conflicts. {{</ warning >}}
 
 {{< /tabs/tab >}}
 
