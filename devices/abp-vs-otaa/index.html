@@ -158,7 +158,7 @@ debug: false
 </h1>
 
 <div class="content">
-  <p>This section can help you understand the differences between ABP and OTAA activation modes for LORaWAN end devices, and comprehend why using OTAA is recommended.</p>
+  <p>This section can help you understand the differences between ABP and OTAA activation modes for LoRaWAN end devices, and comprehend why using OTAA is recommended.</p>
 <p>A <code>DevEUI</code> is a 64-bit unique ID assigned to an end device by the manufacturer. This value is linked to the hardware and it cannot be altered.</p>
 <p>Unlike <code>DevEUI</code>, which identifies an end device globally, a 32-bit <code>DevAddr</code> identifies the end device within the current network and all communication after joining the network is done with it. A <code>DevAddr</code> value consists of <code>NwkAddr</code> (end device address within network) prefixed by a <code>NwkID</code> (network identifier).</p>
 <p><strong>Note:</strong> <code>DevAddr</code> is not unique - multiple devices can have the same <code>DevAddr</code>.</p>
@@ -187,6 +187,14 @@ debug: false
 </ol>
 <p>When registering an ABP device on The Things Stack, you will need to provide the <strong>RX1 Delay</strong>, <strong>RX1 Data Rate Offset</strong>, <strong>RX2 Data Rate Index</strong>, <strong>RX2 Frequency</strong> and a list of <strong>Factory Preset Frequencies</strong>. If these values are not correctly configured, uplinks and/or downlinks might not work.</p>
 <p>OTAA end devices re-negotiate network parameters at establishing each new session, meaning you do not have to worry about them being misconfigured.</p>
+<h2 id="otaa-requirements">OTAA Requirements</h2>
+<p>In general, there are no drawbacks in using OTAA over using ABP, but there are certain requirements that need to be met when using OTAA.</p>
+<p>The only thing to keep in mind is that an OTAA join requires the end device to be within the coverage of the network it is registered on. The reason for this is that the OTAA join procedure requires the end device to be able to receive the Join Accept downlink message from the Network Server.</p>
+<p>In case the end device does not have the network coverage when it is switched on, the Join procedure will fail. Depending on the firmware and LoRaWAN stack used in the device, a failed OTAA join may result in the device not going into sleep mode, or using a lot of energy on endless attempts to rejoin the network.</p>
+<p>If the network coverage for the end device can not be guaranteed, it does not mean that OTAA can not be used. If the firmware in the device is smart enough to handle failed OTAA joins properly, the device can retry the join at a later stage.</p>
+<p>A naive approach that has been used in the past to avoid this was to use ABP. ABP allows a device to start transmitting messages immediately when it is switched on, regardless of whether it has the network coverage or not.</p>
+<p>A better approach is to perform an OTAA join in a factory or workshop where the network coverage and working downlinks can be guaranteed. There are no drawbacks to this approach as long as the device follows the LoRaWAN <a href="https://www.thethingsindustries.com/docs/devices/best-practices/">best practices</a>.</p>
+<p>One more thing to take into account is persisting network parameters between device restarts. For example, an ABP device uses a non-volatile storage to persist frame counters between restarts. A better approach would be to switch to using OTAA and store the OTAA session rather than frame counters.</p>
 </div>
 
 <div class="is-clearfix">
@@ -220,6 +228,9 @@ debug: false
     
       
       <li><a href='#why-is-otaa-better-than-abp'>Why is OTAA better than ABP?</a></li>
+    
+      
+      <li><a href='#otaa-requirements'>OTAA Requirements</a></li>
     
   </ul>
 
@@ -257,10 +268,10 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Johan Stokking on 18 Feb 2021.
+  Last changed by JP Meijers on 09 May 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3ded3bcd44c8738c9970199e96b006b668a44f43">
-      doc: Document Packet Broker config with API keys
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7ef53864d9d9c540fc1c7d4fd214a1fbaa9232ab">
+      doc: Add OTAA requirements section
     </a>
 </p>
 
