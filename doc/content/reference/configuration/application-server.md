@@ -55,6 +55,12 @@ Application Server can fetch information stored in the Identity Server. For exam
 - `as.fetcher.cache.size`: Number of cache entries. In case the cache is full, the Least Frequently Used entry will be evicted. Set to `0` to disable.
 - `as.fetcher.cache.ttl`: Time-To-Live for cache entries.
 
+## Formatter Options {{< new-in-version "3.13.0" >}}
+
+Application Server can use Javascript payload formatters to decode uplink and encode downlink messages.
+
+- `as.formatters.max-parameter-length`: Maximum length (in bytes) for user-defined payload formatter scripts. A global cap of 16KB is enforced at the API level. This does not affect payload formatter scripts loaded from the [Device Repository]({{< ref "/integrations/payload-formatters/device-repo" >}}).
+
 ## Storage Integration Options {{< distributions "Enterprise" "AWS Launcher" "Dedicated Cloud" >}} {#storage-integration-options}
 
 The Storage Integration requires a database for storing upstream messages.
