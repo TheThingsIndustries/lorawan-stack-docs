@@ -2,7 +2,7 @@
 title: "UIB"
 description: ""
 weight: 
-aliases: [""/integrations/cloud-integrations/uib/tts-setup"]
+aliases: ["/integrations/cloud-integrations/uib/tts-setup"]
 ---
 
 [UIB's](https://www.uib.ai/) technology makes human to machine communications simple.
