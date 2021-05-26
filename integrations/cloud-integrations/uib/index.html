@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Akenza Core | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/akenza-core/" />
+  <title>UIB | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/uib/" />
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.07bd6845af106c056072b394b0aba314a5ea0d3b3ad4fba538a2fa137f338b3b.css" integrity="sha256-B71oRa8QbAVgcrOUsKujFKXqDTs61PulOKL6E38zizs=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Akenza Core">
+  <meta itemprop="name" content="UIB">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Akenza Core">
+  <meta property="og:title" content="UIB">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/akenza-core/">
-  <meta name="twitter:title" content="Akenza Core" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/uib/">
+  <meta name="twitter:title" content="UIB" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -109,7 +109,7 @@ debug: false
 <ul class="menu-list">
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/akenza-core/" class="is-active">Akenza Core</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/akenza-core/" class="">Akenza Core</a>
     
   </li>
 
@@ -159,7 +159,12 @@ debug: false
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/uib/" class="">UIB</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/uib/" class="is-active">UIB</a>
+    
+    
+
+
+
     
   </li>
 
@@ -209,7 +214,7 @@ debug: false
       <div class="column sidebar-middle">
 
 <div class="docs-content">
-<h1 class="title is-size-2">Akenza Core
+<h1 class="title is-size-2">UIB
   
   
   
@@ -217,60 +222,52 @@ debug: false
 </h1>
 
 <div class="content">
-  <p><a href="https://akenza.com/technology">Akenza Core</a> is an IoT system designed to help bind any type of device and technology into a real-time connected solution.</p>
+  <p><a href="https://www.uib.ai/">UIB&rsquo;s</a> technology makes human to machine communications simple. Keep following this guide to find out how to send notifications on data events to WhatsApp.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
-<li>A <a href="https://auth.akenza.io/register">user account on Akenza Core</a>.</li>
+<li>A WhatsApp Business Account.</li>
+<li>The content of the notification message which you need to send to the customer has to be submitted and approved by WhatsApp, before it can be used.</li>
 </ol>
-<h2 id="setup-akenza-core">Setup Akenza Core</h2>
-<p>Log in to Akenza Core and navigate to the <strong>Quick Start</strong> tab in the <strong>Environment</strong> to see the steps to be taken to connect a device and manipulate the data coming from it.</p>
-<figure>
-    <img src="quick-start.png"
-         alt="Steps to connect a device"/> 
-</figure>
+<div class="notification is-primary is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Info:</h5>
+  Please send an email to <a href="mailto:support@uib.ai">support@uib.ai</a> with your company details, Facebook Business Manager ID and an approximate number of messages you want to send per month. UIB&rsquo;s support team will respond you back with the pricing and the steps to proceed.
+</div>
 
-<p>Set up a domain by selecting the <strong>Add Domain</strong> button in the <strong>Domains</strong> submenu.</p>
-<p>Give a <strong>Name</strong> to your domain and choose <strong>HTTP</strong> for <strong>Technology</strong> to create a Webhook integration. The <strong>Domain Secret</strong> is auto-generated, while <strong>Uplink Function</strong> and <strong>Downlink Function</strong> may retain a <strong>Passthrough</strong> value.</p>
-<p>Select <strong>Save</strong> to finish.</p>
-<figure>
-    <img src="creating-domain.png"
-         alt="Creating a new domain"/> 
-</figure>
-
-<p>Next, create a new device type in the <strong>Device Types</strong> submenu. Select the <strong>Add Device Type</strong> button, provide a <strong>Name</strong> and click <strong>Save</strong>.</p>
-<figure>
-    <img src="creating-device-type.png"
-         alt="Creating a device type"/> 
-</figure>
-
-<p>After defining a domain and a device type, you can create a new device by selecting <strong>Add Device</strong> button in the <strong>Inventory</strong> submenu.</p>
-<p>Provide a <strong>Name</strong> for your device, select the previously created device type and domain, and do not forget to generate a <strong>Device ID</strong>.</p>
-<figure>
-    <img src="creating-device.png"
-         alt="Creating a new device"/> 
-</figure>
-
-<p>The device you created can be found in the <strong>Inventory</strong> on the left hand menu.</p>
-<h2 id="configure-the-things-stack">Configure The Things Stack</h2>
-<p>Next step is to create a Webhook integration by instantiating the <strong>Akenza Core</strong> <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a>.</p>
-<p>Name your Webhook integration in the <strong>Webhook ID</strong> field.</p>
-<p>Fill in the <strong>Domain Secret</strong> and <strong>Device ID</strong> fields with domain secret and device ID values you generated previously on Akenza Core.</p>
-<figure>
-    <img src="creating-webhook.png"
-         alt="Akenza Core webhook"/> 
-</figure>
-
-<p>Finish with creating the integration by clicking the <strong>Create akenza core webhook</strong> button.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  To see the values of all parameters of the Akenza Core integration, click on the integration after you created it with the Webhook template.
+  Please note that the template/notification name, name space, access key, etc. will be provided once the notification message content is approved by WhatsApp.
 </div>
 
-<p>After creating the integration, go back to Akenza Core and you will be able to see the uplink messages in JSON format in your device&rsquo;s <strong>Data</strong> tab.</p>
+<h2 id="define-the-uplink-payload-formatter">Define the Uplink Payload Formatter</h2>
+<p>In order for UIB to be able to decode the data coming from The Things Stack, you need to create an uplink <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">payload formatter</a> on The Things Stack to set fields in the <code>decoded_payload</code> object of the uplink message.</p>
+<p>The notification message will be sent to the user if the <code>decoded_payload_warnings</code> field is not empty. You can push a text to rhe warnings array according to your parameter thresholds (<code>field1</code>, <code>field2</code>, etc. can be the data of your device, for example temperature or pressure).</p>
+<p>The example uplink payload formatter is shown below:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="nx">data</span><span class="p">.</span><span class="nx">field1</span> <span class="o">=</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+  <span class="nx">data</span><span class="p">.</span><span class="nx">field2</span> <span class="o">=</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+  <span class="kd">var</span> <span class="nx">warnings</span> <span class="o">=</span> <span class="p">[];</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">field1</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">warnings</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">&#34;Warning&#34;</span><span class="p">);</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">data</span><span class="o">:</span> <span class="nx">data</span><span class="p">,</span>
+    <span class="nx">warnings</span><span class="o">:</span> <span class="nx">warnings</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div><h2 id="configure-the-things-stack">Configure The Things Stack</h2>
+<p>Next, you need to create a Webhook integration by instantiating the <strong>UIB</strong> <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a>.</p>
+<p>The <strong>Application Key</strong>, <strong>Template Name</strong> and <strong>Template Namespace</strong> values are provided by UIB, and you need to use them in the respective fields of the UIB Webhook template.</p>
+<p>The <strong>Receiver Phone Number(s)</strong>, to which the notification message is to be sent, need to be separated by comma on entry.</p>
+<p>The <strong>Template Variables</strong> should also be comma separated, and in the order as they appear in the notification message. Make sure to use the same parameter names which you have provided in the payload formatter above.</p>
+<figure>
+    <img src="uib-template-webhook.png"
+         alt="UIB webhook"/> 
+</figure>
 </div>
+
 <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/">← Cloud Integrations</a>
-<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/datacake/">Datacake →</a>
+<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/ubidots/">← Ubidots</a>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -295,7 +292,7 @@ debug: false
       <li><a href='#prerequisites'>Prerequisites</a></li>
     
       
-      <li><a href='#setup-akenza-core'>Setup Akenza Core</a></li>
+      <li><a href='#define-the-uplink-payload-formatter'>Define the Uplink Payload Formatter</a></li>
     
       
       <li><a href='#configure-the-things-stack'>Configure The Things Stack</a></li>
@@ -336,14 +333,14 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 01 Mar 2021.
+  Last changed by Nejra on 26 May 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/8b8db812793525ad8423784706b1fd86aaab1a40">
-      doc: Fix cloud integrations
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/35ba97af01bc3cda8f203ea46d39d4b004614eed">
+      doc: UIB integration guide
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/cloud-integrations/akenza-core/index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/cloud-integrations/uib/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
