@@ -496,6 +496,18 @@ ApplicationRegistry:
       http:
       - method: DELETE
         path: /applications/{application_id}/purge
+    IssueDevEUI:
+      name: IssueDevEUI
+      comment: |-
+        Request DevEUI from the configured address block for a device inside the application.
+        The maximum number of DevEUI's issued per application can be configured.
+      input:
+        name: ApplicationIdentifiers
+      output:
+        name: IssueDevEUIResponse
+      http:
+      - method: POST
+        path: /applications/{application_id}/dev-eui
 ApplicationUpStorage:
   name: ApplicationUpStorage
   comment: The ApplicationUpStorage service can be used to query stored application upstream messages.
@@ -1311,6 +1323,15 @@ Events:
       http:
       - method: POST
         path: /events
+    FindRelated:
+      name: FindRelated
+      input:
+        name: FindRelatedEventsRequest
+      output:
+        name: FindRelatedEventsResponse
+      http:
+      - method: GET
+        path: /events/related
 GatewayAccess:
   name: GatewayAccess
   comment: |-
@@ -2324,13 +2345,25 @@ Pba:
         path: /pba/home-networks/policies/{net_id}
       - method: DELETE
         path: /pba/home-networks/policies/{net_id}/{tenant_id}
+    ListNetworks:
+      name: ListNetworks
+      comment: |-
+        List all listed networks.
+        Listing networks requires administrative access.
+      input:
+        name: ListPacketBrokerNetworksRequest
+      output:
+        name: PacketBrokerNetworks
+      http:
+      - method: GET
+        path: /pba/networks
     ListHomeNetworks:
       name: ListHomeNetworks
       comment: |-
-        List the (public) home networks for which routing policies can be configured.
+        List the listed home networks for which routing policies can be configured.
         Listing home networks requires administrative access.
       input:
-        name: ListHomeNetworksRequest
+        name: ListPacketBrokerHomeNetworksRequest
       output:
         name: PacketBrokerNetworks
       http:
