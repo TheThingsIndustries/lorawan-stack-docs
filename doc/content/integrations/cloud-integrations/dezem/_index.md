@@ -24,6 +24,6 @@ Configure the same **API key** in deZemAd and in deZem's Webhook template.
 
 ## Analyze and Visualize
 
-Create analyses and visalisations for use in production.
+Create analyses and vizualisations for use in production.
 
 ![deZem dashboard](dezem-dashboard.jpg)
