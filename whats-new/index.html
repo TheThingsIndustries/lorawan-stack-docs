@@ -33,7 +33,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.12</p>
+        <p class="navbar-item is-size-7">v3.13</p>
       </a>
       <span class="navbar-burger burger" data-target="topMenu">
         <span></span>
@@ -89,6 +89,9 @@ debug: false
 
 <ul class="menu-list">
 <a href="https://www.thethingsindustries.com/docs/whats-new/" class="is-active">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.13.0/" class="">3.13.0</a>
+  </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.12.3/" class="">3.12.3</a>
   </li>
@@ -163,6 +166,62 @@ debug: false
   
 </div>
 
+
+<section class="is-fullwidth whats-new has-vertical-space">
+  <div class="whats-new-content">
+    <div class="whats-new-header">
+      <h2 class="title is-size-5"><a href=https://www.thethingsindustries.com/docs/whats-new/3.13.0/>What's new in V3.13.0</a></h2>
+    </div>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.13.0/">
+      <div class="whats-new-items">
+        <h3 id="added">Added</h3>
+<ul>
+<li>Searching Packet Broker networks with <code>--tenant-id-contains</code> and <code>--name-contains</code> flags.</li>
+<li>Listing all listed Packet Broker networks with <code>ttn-lw-cli packetbroker networks list</code>.</li>
+<li>Include end device version identifiers in upstream messages (see <code>uplink_message.version_ids.brand_id</code>, <code>uplink_message.version_ids.model_id</code>, <code>uplink_message.version_ids.firmware_version</code>, <code>uplink_message.version_ids.hardware_version</code> and <code>uplink_message.version_ids.band_id</code> fields).</li>
+<li>Reporting uplink and downlink message delivery state changes to Packet Broker. This will be used for statistical purposes (e.g. which message is processed successfully or why it errored) as well as LoRaWAN roaming (the <code>XmitDataAns</code> result code).</li>
+<li>Setting API key expiry via <code>--api-key-expiry</code> flag using RFC3339 format.</li>
+<li>Events storage in the Redis events backend. This can be enabled with the new <code>events.redis.store.enable</code> option. The new options <code>events.redis.store.ttl</code>, <code>events.redis.store.entity-ttl</code>, <code>events.redis.store.entity-count</code> and <code>events.redis.store.correlation-id-count</code> can be used to configure retention.</li>
+<li>RPC to find related events by correlation ID.</li>
+<li>CLI command <code>events find-related</code>.</li>
+<li>Support for loading Device Repository profiles from different vendors if specified. This allows reusing standard end device profiles from module makers and LoRaWAN end device stack vendors.</li>
+<li>Filtering out verbose events in the event views in the Console.</li>
+<li>The <code>gs.up.forward</code> event now includes the host an uplink was forwarded to.</li>
+<li>Previews for <code>*.update</code> events in the Console.</li>
+<li>The Console can now show recent historical events in networks that have events storage enabled.</li>
+</ul>
+<h3 id="changed">Changed</h3>
+<ul>
+<li>User IDs now have a minimum length of 2 instead of 3, so that more users coming from v2 can keep their username.</li>
+<li>Disabled device uplink simulation and downlink message sending when skipping payload crypto.</li>
+<li>The UpdateAPIKey RPCs now take a fieldmask.</li>
+<li>The Gateway Server no longer sends <code>gs.up.drop</code> event if the Network Server does not handle an uplink message, or if the uplink does not match the DevAddr prefix of an upstream.</li>
+<li>Maximum size for user-defined payload formatter scripts.
+<ul>
+<li>The default cap is at 4KB, see the new <code>as.formatters.max-parameter-length</code> config option.</li>
+<li>A maximum cap of 16KB per script is set at the API level.</li>
+<li>This only prevents setting large payload formatter scripts for new devices and applications; it does not remove payload formatters from existing applications and devices. Scripts sourced from the Device Repository are not affected. See <a href="https://github.com/TheThingsNetwork/lorawan-stack/issues/4053">issue #4053</a> for more context on this change.</li>
+</ul>
+</li>
+</ul>
+<h3 id="deprecated">Deprecated</h3>
+<h3 id="removed">Removed</h3>
+<ul>
+<li>The <code>gs.status.forward</code> event.</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>OAuth token exchange for OAuth clients that use Basic auth.</li>
+<li>The CLI now properly returns a non-zero exit status code on invalid commands.</li>
+<li>Gateway connection requests with zero EUI are rejected.</li>
+<li>End device payload formatter reset to <code>FORMATTER_NONE</code> in the Console.</li>
+</ul>
+<h3 id="security">Security</h3>
+
+      </div>
+    </a>
+  </div>
+</section>
 
 <section class="is-fullwidth whats-new has-vertical-space">
   <div class="whats-new-content">

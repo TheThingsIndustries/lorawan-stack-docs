@@ -33,7 +33,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.12</p>
+        <p class="navbar-item is-size-7">v3.13</p>
       </a>
       <span class="navbar-burger burger" data-target="topMenu">
         <span></span>
@@ -4924,6 +4924,36 @@ If unset, the default value from Network Server configuration will be used.</p>
   </tbody>
 </table>
 
+<table>
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>desired_max_eirp</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:DeviceEIRPValue"><code>DeviceEIRPValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Maximum EIRP (dBm).
+If unset, the default value from regional parameters specification will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
 
 <details><summary>Show object example</summary>
 <pre><code>{
@@ -4955,6 +4985,7 @@ If unset, the default value from Network Server configuration will be used.</p>
   "desired_ping_slot_data_rate_index": {},
   "desired_ping_slot_frequency": {},
   "desired_beacon_frequency": {},
+  "desired_max_eirp": {},
 }</code></pre>
 </details>
 
@@ -5716,7 +5747,8 @@ Elements are sorted in ascending order.</p>
         Description
       </th>
       <td>
-          <p>Parameter for the up_formatter, must be set together.</p>
+          <p>Parameter for the up_formatter, must be set together. The API enforces a maximum length of 16KB, but the size may be restricted further by deployment configuration.</p>
+          <p><code>max_len</code>: <code>16384</code></p>
       </td>
     </tr>
     
@@ -5775,7 +5807,8 @@ Elements are sorted in ascending order.</p>
         Description
       </th>
       <td>
-          <p>Parameter for the down_formatter, must be set together.</p>
+          <p>Parameter for the down_formatter, must be set together. The API enforces a maximum length of 16KB, but the size may be restricted further by deployment configuration.</p>
+          <p><code>max_len</code>: <code>16384</code></p>
       </td>
     </tr>
     
