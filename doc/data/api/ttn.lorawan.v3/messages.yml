@@ -55,6 +55,13 @@ APIKey:
       package: google.protobuf
       name: Timestamp
     default: "0001-01-01T00:00:00Z"
+  - name: expires_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    rules:
+      gt_now: true
+    default: "0001-01-01T00:00:00Z"
 APIKeys:
   name: APIKeys
   fields:
@@ -998,8 +1005,6 @@ ApplicationUplink:
     default: []
   - name: rx_metadata
     comment: A list of metadata for each antenna of each gateway that received this message.
-    rules:
-      min_items: 1
     repeated:
       message:
         name: RxMetadata
@@ -1050,6 +1055,11 @@ ApplicationUplink:
     map_value:
       message:
         name: Location
+    default: {}
+  - name: version_ids
+    comment: End device version identifiers, set by the Application Server while handling the message.
+    message:
+      name: EndDeviceVersionIdentifiers
     default: {}
 ApplicationWebhook:
   name: ApplicationWebhook
@@ -1515,6 +1525,42 @@ CUPSRedirection:
     type: string
     rules:
       max_len: 2048
+    default: ""
+  - name: target_cups_trust
+    comment: Optional PEM encoded CA Root certificate. If this field is empty, DCS will attempt to dial the Target CUPS server and fetch the CA.
+    type: bytes
+    default: ""
+  - name: client_tls
+    comment: 'TODO: Support mTLS (https://github.com/TheThingsNetwork/lorawan-stack/issues/137)'
+    message:
+      name: CUPSRedirection.ClientTLS
+    default: {}
+  - name: auth_token
+    comment: HTTP Auth token for CUPS requests. If this field is left blank and Client TLS is empty, the DCS will create a The Things Stack API Key.
+    type: string
+    rules:
+      max_len: 2048
+    default: ""
+  oneofs:
+  - name: gateway_credentials
+    comment: CUPS Credentials for the gateway.
+    field_names:
+    - client_tls
+    - auth_token
+CUPSRedirection.ClientTLS:
+  name: CUPSRedirection.ClientTLS
+  fields:
+  - name: cert
+    comment: PEM encoded Client Certificate.
+    type: bytes
+    rules:
+      max_len: 8192
+    default: ""
+  - name: key
+    comment: PEM encoded Client Private Key.
+    type: bytes
+    rules:
+      max_len: 8192
     default: ""
 ClaimEndDeviceRequest:
   name: ClaimEndDeviceRequest
@@ -2030,6 +2076,13 @@ CreateApplicationAPIKeyRequest:
       rules:
         defined_only: true
     default: []
+  - name: expires_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    rules:
+      gt_now: true
+    default: "0001-01-01T00:00:00Z"
 CreateApplicationRequest:
   name: CreateApplicationRequest
   fields:
@@ -2095,6 +2148,13 @@ CreateGatewayAPIKeyRequest:
       rules:
         defined_only: true
     default: []
+  - name: expires_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    rules:
+      gt_now: true
+    default: "0001-01-01T00:00:00Z"
 CreateGatewayRequest:
   name: CreateGatewayRequest
   fields:
@@ -2159,6 +2219,13 @@ CreateOrganizationAPIKeyRequest:
       rules:
         defined_only: true
     default: []
+  - name: expires_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    rules:
+      gt_now: true
+    default: "0001-01-01T00:00:00Z"
 CreateOrganizationRequest:
   name: CreateOrganizationRequest
   fields:
@@ -2211,6 +2278,13 @@ CreateUserAPIKeyRequest:
       rules:
         defined_only: true
     default: []
+  - name: expires_at
+    message:
+      package: google.protobuf
+      name: Timestamp
+    rules:
+      gt_now: true
+    default: "0001-01-01T00:00:00Z"
 CreateUserRequest:
   name: CreateUserRequest
   fields:
@@ -2540,6 +2614,15 @@ DevAddrPrefix:
     comment: Number of most significant bits from dev_addr that are used as prefix.
     type: uint32
     default: 0
+DeviceEIRPValue:
+  name: DeviceEIRPValue
+  fields:
+  - name: value
+    enum:
+      name: DeviceEIRP
+    rules:
+      defined_only: true
+    default: DEVICE_EIRP_8
 DownlinkMessage:
   name: DownlinkMessage
   comment: Downlink message from the network to the end device
@@ -3373,6 +3456,13 @@ EndDeviceModel.FirmwareVersion:
 EndDeviceModel.FirmwareVersion.Profile:
   name: EndDeviceModel.FirmwareVersion.Profile
   fields:
+  - name: vendor_id
+    comment: |-
+      Vendor ID of the profile, as defined in the Device Repository.
+      If this value is set, the profile is loaded from this vendor's folder.
+      If this value is not set, the profile is loaded from the current (end device's) vendor.
+    type: string
+    default: ""
   - name: profile_id
     comment: Profile identifier, as defined in the Device Repository.
     type: string
@@ -3854,6 +3944,23 @@ FSKDataRate:
     comment: Bit rate (bps).
     type: uint32
     default: 0
+FindRelatedEventsRequest:
+  name: FindRelatedEventsRequest
+  fields:
+  - name: correlation_id
+    type: string
+    rules:
+      min_len: 1
+      max_len: 100
+    default: ""
+FindRelatedEventsResponse:
+  name: FindRelatedEventsResponse
+  fields:
+  - name: events
+    repeated:
+      message:
+        name: Event
+    default: []
 FrequencyPlanDescription:
   name: FrequencyPlanDescription
   fields:
@@ -5250,6 +5357,12 @@ IsConfiguration.UserRights:
       package: google.protobuf
       name: BoolValue
     default: null
+IssueDevEUIResponse:
+  name: IssueDevEUIResponse
+  fields:
+  - name: dev_eui
+    type: bytes
+    default: ""
 JoinAcceptMICRequest:
   name: JoinAcceptMICRequest
   fields:
@@ -5948,19 +6061,6 @@ ListHomeNetworkRoutingPoliciesRequest:
     comment: Page number for pagination. 0 is interpreted as 1.
     type: uint32
     default: 0
-ListHomeNetworksRequest:
-  name: ListHomeNetworksRequest
-  fields:
-  - name: limit
-    comment: Limit the number of results per page.
-    type: uint32
-    rules:
-      lte: 1000
-    default: 0
-  - name: page
-    comment: Page number for pagination. 0 is interpreted as 1.
-    type: uint32
-    default: 0
 ListInvitationsRequest:
   name: ListInvitationsRequest
   fields:
@@ -6126,6 +6226,60 @@ ListOrganizationsRequest:
     comment: Only return recently deleted organizations.
     type: bool
     default: false
+ListPacketBrokerHomeNetworksRequest:
+  name: ListPacketBrokerHomeNetworksRequest
+  fields:
+  - name: limit
+    comment: Limit the number of results per page.
+    type: uint32
+    rules:
+      lte: 1000
+    default: 0
+  - name: page
+    comment: Page number for pagination. 0 is interpreted as 1.
+    type: uint32
+    default: 0
+  - name: tenant_id_contains
+    comment: Filter by tenant ID.
+    type: string
+    rules:
+      max_len: 100
+    default: ""
+  - name: name_contains
+    comment: Filter by name.
+    type: string
+    rules:
+      max_len: 100
+    default: ""
+ListPacketBrokerNetworksRequest:
+  name: ListPacketBrokerNetworksRequest
+  fields:
+  - name: limit
+    comment: Limit the number of results per page.
+    type: uint32
+    rules:
+      lte: 1000
+    default: 0
+  - name: page
+    comment: Page number for pagination. 0 is interpreted as 1.
+    type: uint32
+    default: 0
+  - name: with_routing_policy
+    comment: If true, list only the Forwarders and Home Networks with whom a routing policy has been defined in either direction.
+    type: bool
+    default: false
+  - name: tenant_id_contains
+    comment: Filter by tenant ID.
+    type: string
+    rules:
+      max_len: 100
+    default: ""
+  - name: name_contains
+    comment: Filter by name.
+    type: string
+    rules:
+      max_len: 100
+    default: ""
 ListUserAPIKeysRequest:
   name: ListUserAPIKeysRequest
   fields:
@@ -7274,6 +7428,13 @@ MACSettings:
     message:
       name: FrequencyValue
     default: {}
+  - name: desired_max_eirp
+    comment: |-
+      Maximum EIRP (dBm).
+      If unset, the default value from regional parameters specification will be used.
+    message:
+      name: DeviceEIRPValue
+    default: {}
 MACState:
   name: MACState
   comment: |-
@@ -7694,8 +7855,10 @@ MessagePayloadFormatters:
       defined_only: true
     default: FORMATTER_NONE
   - name: up_formatter_parameter
-    comment: Parameter for the up_formatter, must be set together.
+    comment: Parameter for the up_formatter, must be set together. The API enforces a maximum length of 16KB, but the size may be restricted further by deployment configuration.
     type: string
+    rules:
+      max_len: 16384
     default: ""
   - name: down_formatter
     comment: Payload formatter for downlink messages, must be set together with its parameter.
@@ -7705,8 +7868,10 @@ MessagePayloadFormatters:
       defined_only: true
     default: FORMATTER_NONE
   - name: down_formatter_parameter
-    comment: Parameter for the down_formatter, must be set together.
+    comment: Parameter for the down_formatter, must be set together. The API enforces a maximum length of 16KB, but the size may be restricted further by deployment configuration.
     type: string
+    rules:
+      max_len: 16384
     default: ""
 NsAsHandleUplinkRequest:
   name: NsAsHandleUplinkRequest
@@ -8633,6 +8798,23 @@ ScheduleDownlinkResponse:
       package: google.protobuf
       name: Duration
     default: 0s
+  - name: downlink_path
+    comment: Downlink path chosen by the Gateway Server.
+    message:
+      name: DownlinkPath
+    default: {}
+  - name: rx1
+    comment: |-
+      Whether RX1 has been chosen for the downlink message.
+      Both RX1 and RX2 can be used for transmitting the same message by the same gateway.
+    type: bool
+    default: false
+  - name: rx2
+    comment: |-
+      Whether RX2 has been chosen for the downlink message.
+      Both RX1 and RX2 can be used for transmitting the same message by the same gateway.
+    type: bool
+    default: false
 SearchApplicationsRequest:
   name: SearchApplicationsRequest
   comment: This message is used for finding applications in the EntityRegistrySearch service.
@@ -9591,6 +9773,12 @@ UpdateApplicationAPIKeyRequest:
     rules:
       required: true
     default: {}
+  - name: field_mask
+    comment: The names of the api key fields that should be updated.
+    message:
+      package: google.protobuf
+      name: FieldMask
+    default: {}
 UpdateApplicationRequest:
   name: UpdateApplicationRequest
   fields:
@@ -9653,6 +9841,12 @@ UpdateGatewayAPIKeyRequest:
     rules:
       required: true
     default: {}
+  - name: field_mask
+    comment: The names of the api key fields that should be updated.
+    message:
+      package: google.protobuf
+      name: FieldMask
+    default: {}
 UpdateGatewayRequest:
   name: UpdateGatewayRequest
   fields:
@@ -9683,6 +9877,12 @@ UpdateOrganizationAPIKeyRequest:
     rules:
       required: true
     default: {}
+  - name: field_mask
+    comment: The names of the api key fields that should be updated.
+    message:
+      package: google.protobuf
+      name: FieldMask
+    default: {}
 UpdateOrganizationRequest:
   name: UpdateOrganizationRequest
   fields:
@@ -9712,6 +9912,12 @@ UpdateUserAPIKeyRequest:
       name: APIKey
     rules:
       required: true
+    default: {}
+  - name: field_mask
+    comment: The names of the api key fields that should be updated.
+    message:
+      package: google.protobuf
+      name: FieldMask
     default: {}
 UpdateUserPasswordRequest:
   name: UpdateUserPasswordRequest
@@ -9966,7 +10172,7 @@ UserIdentifiers:
     type: string
     rules:
       max_len: 36
-      pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+      pattern: ^[a-z0-9](?:[-]?[a-z0-9]){1,}$
     default: ""
   - name: email
     comment: Secondary identifier, which can only be used in specific requests.
