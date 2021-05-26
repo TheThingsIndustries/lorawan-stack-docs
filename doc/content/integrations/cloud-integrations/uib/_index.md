@@ -45,3 +45,5 @@ The **Receiver Phone Number(s)** to which the notification message has to be sen
 The **Template Variables** should be added as comma separated and in the order as they appear in the notification message. Use the same parameter names as you provide in the payload formatter
 
 {{< figure src="uib-template-webhook.png" alt="UIB webhook" >}}
+
+
