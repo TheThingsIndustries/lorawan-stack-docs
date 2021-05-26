@@ -7,21 +7,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>ThingSpeak | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingspeak/" />
+  <title>deZem | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/dezem/" />
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.07bd6845af106c056072b394b0aba314a5ea0d3b3ad4fba538a2fa137f338b3b.css" integrity="sha256-B71oRa8QbAVgcrOUsKujFKXqDTs61PulOKL6E38zizs=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
-  <meta name="description" content="">
+  <meta name="description" content="deZem IoT data management system">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="ThingSpeak">
-  <meta itemprop="description" content="">
+  <meta itemprop="name" content="deZem">
+  <meta itemprop="description" content="deZem IoT data management system">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="ThingSpeak">
-  <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingspeak/">
-  <meta name="twitter:title" content="ThingSpeak" />
-  <meta name="twitter:description" content="" />
+  <meta property="og:title" content="deZem">
+  <meta property="og:description" content="deZem IoT data management system">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/dezem/">
+  <meta name="twitter:title" content="deZem" />
+  <meta name="twitter:description" content="deZem IoT data management system" />
   <meta name="twitter:card" content="summary" />
 </head>
 <body><nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
@@ -119,7 +119,12 @@ debug: false
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/dezem/" class="">deZem</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/dezem/" class="is-active">deZem</a>
+    
+    
+
+
+
     
   </li>
 
@@ -154,12 +159,7 @@ debug: false
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingspeak/" class="is-active">ThingSpeak</a>
-    
-    
-
-
-
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingspeak/" class="">ThingSpeak</a>
     
   </li>
 
@@ -219,7 +219,7 @@ debug: false
       <div class="column sidebar-middle">
 
 <div class="docs-content">
-<h1 class="title is-size-2">ThingSpeak
+<h1 class="title is-size-2">deZem
   
   
   
@@ -227,71 +227,27 @@ debug: false
 </h1>
 
 <div class="content">
-  <p><a href="https://thingspeak.com/">ThingSpeak</a> is an IoT platform with built-in <a href="https://www.mathworks.com/products/matlab.html">MATLAB®</a> analytics, which allows preprocessing, analyzing and visualizing data sent by IoT devices, as well as creating actions such as alerts based on your channel data.</p>
+  <p>The <a href="https://www.dezem.de/en/data-acquisition/lorawan/">deZem IoT data management system</a> facilitates an increased efficiency and productivity of plants, processes and infrastructure. To this end, deZem provides a modular solution to collect sensor data from very heterogeneous sources on a single platform, and a large variety of online analysis tools. As LoRaWAN devices are great for effortless data acquisition in the field, the deZem system integrates with The Things Stack.</p>
+<p><img src="lorawan-and-dezem.svg" alt="deZemAd TheThingsStack import interface"></p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
-<li>A <a href="https://thingspeak.com/login">user account</a> on ThingSpeak.</li>
+<li>deZem account</li>
+<li>User rights for deZemAd&rsquo;s technical tree</li>
 </ol>
-<h2 id="setup-thingspeak">Setup ThingSpeak</h2>
-<p>Log in to your ThingSpeak user account and navigate to the <strong>Channels</strong> section. To create a new channel, click the <strong>New Channel</strong> button.</p>
-<p>Enter a <strong>Name</strong> for your channel, give labels to the data fields and enable them by checking the boxes next to them.</p>
-<p>When done, scroll down and click the <strong>Save Channel</strong> button.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  You should enable a field for each metric from the <code>decoded_payload</code> object of the <a href="https://www.thethingsindustries.com/docs/reference/data-formats/#uplink-messages">uplink message</a>.
-</div>
+<h2 id="setup">Setup</h2>
+<p>In the technical tree of deZemAd, create a new device of type <strong>LoRaWAN TTS interface</strong>.</p>
+<p><img src="dezem-ad-lorawan-import-interface.png" alt="deZemAd TTS import interface"></p>
+<p>Configure the same <strong>API key</strong> in deZemAd and in deZem&rsquo;s Webhook template.</p>
+<p><img src="dezem-webhook-template.png" alt="deZem Webhook Template"></p>
+<h2 id="analyze-and-visualize">Analyze and Visualize</h2>
+<p>Create analyses and vizualisations for use in production.</p>
+<p><img src="dezem-dashboard.jpg" alt="deZem dashboard"></p>
 
-<figure>
-    <img src="channel.png"
-         alt="Creating a new channel"/> 
-</figure>
-
-<p>For implementing the webhook integration on The Things Stack, you will need the following information from your channel&rsquo;s page on ThingSpeak:</p>
-<ul>
-<li>
-<p><strong>Channel ID</strong>, which can be found on the <strong>Channel Settings</strong> tab after channel creation, or under your channel&rsquo;s name on top of the channel page;</p>
-</li>
-<li>
-<p><strong>Write API Key</strong>, which can be found on the <strong>API Keys</strong> tab.</p>
-</li>
-</ul>
-<figure>
-    <img src="api-key.png"
-         alt="Channel information"/> 
-</figure>
-
-<h2 id="configure-the-things-stack">Configure The Things Stack</h2>
-<p>Before implementing the Webhook integration, you need to create an uplink <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">payload formatter</a> in order to decode the uplink payload and set fields in the <code>decoded_payload</code> object of the uplink message. The example uplink payload formatter is shown below.</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="p">{</span>
-    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">field1</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-      <span class="nx">field2</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="p">},</span>
-    <span class="nx">warnings</span><span class="o">:</span> <span class="p">[],</span>
-    <span class="nx">errors</span><span class="o">:</span> <span class="p">[]</span>
-  <span class="p">};</span>
-<span class="p">}</span>
-</code></pre></div><p>The last step is to instantiate the <strong>ThingSpeak</strong> <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a> to create a Webhook integration.</p>
-<p>Give a name to your integration by filling in the <strong>Webhook ID</strong> field.</p>
-<p>Fill in the <strong>Channel ID</strong> field with the ThingSpeak channel ID value, and paste the <strong>Write API Key</strong> from ThingSpeak in the <strong>API Key</strong> field.</p>
-<p>Finish by clicking the <strong>Create thingspeak webhook</strong> button.</p>
-<figure>
-    <img src="creating-a-webhook.png"
-         alt="ThingSpeak webhook"/> 
-</figure>
-
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  To see the values of all parameters of the ThingSpeak integration, click on the integration after you created it with the Webhook template.
-</div>
-
-<p>At this point, you can go back to your <a href="https://thingspeak.com/channels">channels page</a> on ThingSpeak and select the private or public view of your channel to check out the field charts under <strong>Channel Stats</strong>. You can now also write and automate MATLAB® code to analyze and further visualize your data.</p>
 </div>
 
 <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/thingsboard/">← ThingsBoard</a>
-<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/ubidots/">Ubidots →</a>
+<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/datacake/">← Datacake</a>
+<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/influxdb-cloud/">InfluxDB Cloud 2.0 →</a>
 </div>
 
 <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -316,10 +272,10 @@ debug: false
       <li><a href='#prerequisites'>Prerequisites</a></li>
     
       
-      <li><a href='#setup-thingspeak'>Setup ThingSpeak</a></li>
+      <li><a href='#setup'>Setup</a></li>
     
       
-      <li><a href='#configure-the-things-stack'>Configure The Things Stack</a></li>
+      <li><a href='#analyze-and-visualize'>Analyze and Visualize</a></li>
     
   </ul>
 
@@ -357,14 +313,14 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 01 Mar 2021.
+  Last changed by deZem GmbH on 26 May 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/8b8db812793525ad8423784706b1fd86aaab1a40">
-      doc: Fix cloud integrations
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f471f28a4afd42f9d5fbb1ac40b8bc2da8e19581">
+      Add deZem documentation to cloud-integrations (#363)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/cloud-integrations/thingspeak/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/cloud-integrations/dezem/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
