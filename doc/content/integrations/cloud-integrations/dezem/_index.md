@@ -14,7 +14,7 @@ The [deZem IoT data management system](https://www.dezem.de/en/data-acquisition/
 
 ## Setup
 
-In the technical tree of deZemAd, create a new device of type 'LoRaWAN TTS interface'.
+In the technical tree of deZemAd, create a new device of type **LoRaWAN TTS interface**.
 
 ![deZemAd TTS import interface](dezem-ad-lorawan-import-interface.png)
 
