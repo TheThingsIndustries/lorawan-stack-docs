@@ -18,7 +18,7 @@ In the technical tree of deZemAd, create a new device of type **LoRaWAN TTS inte
 
 ![deZemAd TTS import interface](dezem-ad-lorawan-import-interface.png)
 
-Configure the same API key in deZemAd and in deZem's Webhook template.
+Configure the same **API key** in deZemAd and in deZem's Webhook template.
 
 ![deZem Webhook Template](dezem-webhook-template.png)
 
