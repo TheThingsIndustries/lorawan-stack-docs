@@ -14,7 +14,7 @@ aliases: []
 1. A WhatsApp Business Account.
 2. The content of the notification message which you need to send to the customer has to be submitted and approved by WhatsApp, before it can be used.
 
-{{< info >}} Please send an email to [support@uib.ai](mailto:support@uib.ai) with your company details, Facebook Business Manager ID and an approximate number of messages you want to send per month. UIB's support team will respond you back with the pricing and the steps to proceed. {{</ info >}}
+{{< info >}} Please send an email to [info@uib.ai](mailto:info@uib.ai) with your company details, Facebook Business Manager ID and an approximate number of messages you want to send per month. UIB's support team will respond you back with the pricing and the steps to proceed. {{</ info >}}
 
 {{< note >}} Please note that the template/notification name, name space, access key, etc. will be provided once the notification message content is approved by WhatsApp. {{</ note >}}
 
@@ -23,7 +23,7 @@ aliases: []
 
 In order for UIB to be able to decode the data coming from {{% tts %}}, you need to create an uplink [payload formatter]({{< ref "/integrations/payload-formatters" >}}) on {{% tts %}} to set fields in the `decoded_payload` object of the uplink message.
 
-The notification message will be sent to the user if the `decoded_payload_warnings` field is not empty. You can push a text to rhe warnings array according to your parameter thresholds (`field1`, `field2`, etc. can be the data of your device, for example temperature or pressure). 
+The notification message will be sent to the user if the `decoded_payload_warnings` field is not empty. You can push a text to the warnings array according to your parameter thresholds (`field1`, `field2`, etc. can be the data of your device, for example temperature or pressure). 
 
 The example uplink payload formatter is shown below:
 
