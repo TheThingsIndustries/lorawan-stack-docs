@@ -106,24 +106,8 @@ function addTabs(){
   init()
 }
 
-function addMigrationBar(){
-  var migrationInfoAccepted = window.localStorage.getItem('migrationInfoAccepted')
-  if(migrationInfoAccepted != 'true') {
-    var migrationBar = document.getElementById('migration-info')
-    migrationBar.style.display = 'flex';
-    document.documentElement.classList.add("has-navbar-banner-top")
-    var migrationButton = document.getElementById('migration-button')
-    migrationButton.addEventListener('click', function (){
-      window.localStorage.setItem('migrationInfoAccepted', true)
-      migrationBar.style.display = 'none';
-      document.documentElement.classList.remove("has-navbar-banner-top")
-    })
-  }
-}
-
 document.addEventListener('DOMContentLoaded', function () {
   addAnchors()
-  addMigrationBar()
   addNavBarBurgers()
   addTabs()
 })
