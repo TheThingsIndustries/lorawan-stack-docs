@@ -46,7 +46,8 @@ In addition to the [metrics exported by {{% tts %}}]({{< ref "/reference/telemet
 
 For all services the following metrics are recorded:
 
-- `ttn_lw_log_log_messages_rate` records the rate of log messages by job (service), namespace and level. This can be useful for monitoring warning and error rates.
+- `ttn_lw_log_messages_rate` records the rate of log messages by job (service), namespace and level. This can be useful for monitoring warning and error rates. {{< new-in-version "3.13.1" >}}
+  - Before version 3.13.1 this metric was called `ttn_lw_log_log_messages_rate`.
 - `ttn_lw_events_publishes_rate` records the rate of published events by event name.
 
 For the Gateway Server:
