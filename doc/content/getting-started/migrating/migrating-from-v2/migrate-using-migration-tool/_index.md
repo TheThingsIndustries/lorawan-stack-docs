@@ -24,7 +24,9 @@ $ export TTNV2_APP_ACCESS_KEY="ttn-v2-application-access-key"
 $ export FREQUENCY_PLAN_ID="EU_863_870_TTN"
 ```
 
-If using Windows OS, replace `export` with `set` and remove the double-quotes in commands above:
+{{< note >}} Change the `FREQUENCY_PLAN_ID` value to the frequency plan you are using. See the list of [supported Frequency Plans]({{< ref "/reference/frequency-plans" >}}). {{</ note >}}
+
+If using Windows OS Command Prompt, replace `export` with `set` and remove the double-quotes in commands above:
 
 ```bash
 $ set TTNV2_APP_ID=ttn-v2-application-ID
@@ -32,7 +34,12 @@ $ set TTNV2_APP_ACCESS_KEY=ttn-v2-application-access-key
 $ set FREQUENCY_PLAN_ID=EU_863_870_TTN
 ```
 
-{{< note >}} Change the `FREQUENCY_PLAN_ID` value to the frequency plan you are using. See the list of [supported Frequency Plans]({{< ref "/reference/frequency-plans" >}}). {{</ note >}}
+{{< note >}} Be aware that setting environmental variables using Windows PowerShell is slightly different. For example, you would set the `TTNV2_APP_ID` variable as follows:
+
+```powershell
+$ $env:TTNV2_APP_ID='ttn-v2-application-ID'
+```
+{{</ note >}}
 
 If you are migrating end devices from a private The Things Industries V2 (SaaS) cluster, you need to configure one extra environmental variable:
 
