@@ -1,11 +1,14 @@
 ---
 title: "Eclipse Mosquitto"
 description: ""
+aliases: [/integrations/mqtt-clients/eclipse-mosquitto]
 ---
 
-[Eclipse Mosquitto](https://mosquitto.org/) is a project which provides an open source MQTT broker, a C and C++ library for MQTT client implementations and the popular command line MQTT clients. Its lightweight MQTT protocol implementation makes it suitable for full power machines, as well as for the low power and embedded ones. 
+[Eclipse Mosquitto](https://mosquitto.org/) is a project which provides an open source MQTT broker, a C and C++ library for MQTT client implementations and the popular command line MQTT clients. 
 
 <!--more-->
+
+Its lightweight MQTT protocol implementation makes it suitable for full power machines, as well as for the low power and embedded ones.
 
 This guide shows how to receive upstream messages and send downlink messages with the Eclipse Mosquitto command line clients and {{% tts %}} [MQTT Server]({{< ref "/integrations/mqtt" >}}).
 

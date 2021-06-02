@@ -1,6 +1,7 @@
 ---
 title: "Troubleshooting Getting Started"
 description: ""
+weight: 11
 ---
 
 This section provides help for common issues and frequently asked questions you may have when getting started with {{% tts %}}. 

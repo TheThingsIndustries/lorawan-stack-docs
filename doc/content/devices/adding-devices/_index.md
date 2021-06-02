@@ -2,6 +2,7 @@
 title: "Adding Devices"
 description: ""
 aliases: [/getting-started/cli/create-end-device, /getting-started/console/create-end-device]
+weight: 2
 ---
 
 This section contains instructions for adding devices in {{% tts %}}.

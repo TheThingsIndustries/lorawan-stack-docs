@@ -2,6 +2,7 @@
 title: "Update"
 description: ""
 weight: 60
+aliases: ["/integrations/aws-iot/default/update"]
 ---
 
 You can update the AWS IoT integration for {{% tts %}} using AWS CloudFormation easily. In most cases, this is without service interruptions.

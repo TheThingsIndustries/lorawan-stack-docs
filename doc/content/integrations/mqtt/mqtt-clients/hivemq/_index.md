@@ -2,11 +2,14 @@
 title: "HiveMQ"
 description: ""
 weight: 
+aliases: [/integrations/mqtt-clients/hivemq]
 ---
 
-[HiveMQ](https://www.hivemq.com/) is an MQTT broker and a client based messaging platform which uses MQTT protocol for fast, reliable and efficient bi-directional data transfer to and from IoT devices. HiveMQ provides its own client library, but it can be used with any MQTT compliant client library. It can be deployed on a private, hybrid or public cloud. You can integrate HiveMQ with existing enterprise systems thanks to its open API and a flexible extension framework.
+[HiveMQ](https://www.hivemq.com/) is an MQTT broker and a client based messaging platform which uses MQTT protocol for fast, reliable and efficient bi-directional data transfer to and from IoT devices. 
 
 <!--more-->
+
+HiveMQ provides its own client library, but it can be used with any MQTT compliant client library. It can be deployed on a private, hybrid or public cloud. You can integrate HiveMQ with existing enterprise systems thanks to its open API and a flexible extension framework.
 
 HiveMQ also offers an open source tool called [MQTT CLI](https://github.com/hivemq/mqtt-cli), which provides a command line interface to interact with MQTT brokers. This tool can be used in a shell mode, allowing you to use multiple MQTT clients simultaneously. 
 

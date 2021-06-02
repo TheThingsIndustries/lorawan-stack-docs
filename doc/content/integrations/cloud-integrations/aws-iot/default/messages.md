@@ -2,6 +2,7 @@
 title: "Messages"
 description: ""
 weight: 40
+aliases: ["/integrations/aws-iot/default/messages"]
 ---
 
 {{% tts %}} publishes uplink messages to AWS IoT Core MQTT. An IoT Core rule triggers a Lambda function which processes the message, creates a new IoT Core thing if it doesn't exist, and updates the shadow state with metrics. Device activations and uplink messages get republished so your application can act on them.
@@ -70,4 +71,4 @@ The message is a JSON object with the following format:
 
 {{< note >}} You can only send JSON encoded payload using the `payload` field when end-to-end encryption is **not enabled**. See [Deployment Guide]({{< relref "deployment-guide" >}}) on how to enable and disable end-to-end encryption. {{</ note >}}
 
-See [Manage Things]({{< relref "things" >}}) to find the `thingName` for the end device. 
+See [Manage Things]({{< relref "things" >}}) to find the `thingName` for the end device.

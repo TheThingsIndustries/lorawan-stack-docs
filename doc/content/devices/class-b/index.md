@@ -1,6 +1,7 @@
 ---
 title: "Class B"
 description: ""
+weight: 4
 ---
 
 Class B end devices listen for downlink messages during ping slots. This allows applications to send messages to devices at predefined time slots, rather than waiting for a Class A uplink. When combined with [multicast groups]({{< ref "/devices/multicast" >}}), this allows applications to send periodic downlinks to many devices at the same time.

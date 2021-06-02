@@ -1,7 +1,7 @@
 ---
 title: "Best Practices"
 description: ""
-weight:
+weight: 3
 ---
 
 This section contains best practices for building connected devices which use {{% tts %}} as a Network Server.

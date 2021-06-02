@@ -40,7 +40,7 @@ The information shown on the image above is enough for you to be able to connect
 
 ## MQTT Clients
 
-There are many available MQTT clients you can use to connect to {{% tts %}} MQTT Server. See [Integrations with MQTT Clients]({{< ref "/integrations/mqtt-clients" >}}) section for detailed instructions on how the integrate with the most popular ones.
+There are many available MQTT clients you can use to connect to {{% tts %}} MQTT Server. See [Integrations with MQTT Clients]({{< ref "/integrations/mqtt/mqtt-clients" >}}) section for detailed instructions on how the integrate with the most popular ones.
 
 In this section, we focus on the available topics that the MQTT Server is exposing and provide short examples of their usage. In general, some topics are used for subscribing to upstream traffic, while others are used for publishing downlink traffic. 
 

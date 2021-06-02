@@ -105,7 +105,7 @@ Please check the [Adding Devices]({{< relref "devices/adding-devices" >}}) guide
 
 The Things Enterprise Stack supports publishing of uplink messages directly to the [AWS IoT suite](https://aws.amazon.com/iot/). In order for this to work, the **AWS IoT Telemetry** option in the CloudFormation template must be set to **true** during the deployment phase.
 
-Please check the guide on [AWS IoT]({{< relref "integrations/aws-iot" >}}) guide for more information.
+Please check the guide on [AWS IoT]({{< relref "integrations/cloud-integrations/aws-iot" >}}) guide for more information.
 
 ## Updating the CloudFormation Stack
 

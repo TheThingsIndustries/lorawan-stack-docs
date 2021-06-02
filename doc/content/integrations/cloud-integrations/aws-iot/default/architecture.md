@@ -2,6 +2,7 @@
 title: "Architecture"
 description: ""
 weight: 10
+aliases: ["/integrations/aws-iot/default/architecture"]
 ---
 
 The AWS IoT Core integration is a serverless deployment that scales automatically as your deployment grows.

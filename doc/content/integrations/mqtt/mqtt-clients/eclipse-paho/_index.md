@@ -2,11 +2,14 @@
 title: "Eclipse Paho"
 description: ""
 weight: 
+aliases: [/integrations/mqtt-clients/eclipse-paho]
 ---
 
-[Eclipse Paho](https://www.eclipse.org/paho/) is an umbrella project on a mission to provide high quality implementations of tools and libraries for M2M communications. It covers MQTT client implementations in several programming languages such as Java, Python, Go, etc.
+[Eclipse Paho](https://www.eclipse.org/paho/) is an umbrella project on a mission to provide high quality implementations of tools and libraries for M2M communications. 
 
 <!--more-->
+
+It covers MQTT client implementations in several programming languages such as Java, Python, Go, etc.
 
 Follow this guide to learn how to connect to {{% tts %}} MQTT Server, to receive and to send messages using the Eclipse Paho client.
 

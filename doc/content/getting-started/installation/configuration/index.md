@@ -56,7 +56,7 @@ Download the example `ttn-lw-stack-docker.yml` for {{% tts %}} Open Source <a hr
 
 For an extended explanation of the configuration settings, keep reading. {{</ note >}}
 
-Settings in `docker-compose.yml` and `ttn-lw-stack-docker.yml` files are explained in detail in [Docker Configuration](#understanding-docker-configuration) and [The Things Stack Configuration](#understanding-the-things-stack-configuration) sections. Further, we provide tips for running {{% tts %}} in production.
+Settings in `docker-compose.yml` and `ttn-lw-stack-docker.yml` files are explained in detail in [Understanding Docker Configuration](#understanding-docker-configuration) and [Understanding The Things Stack Configuration](#understanding-the-things-stack-configuration) sections. Further, we provide tips for running {{% tts %}} in production.
 
 ## Understanding Docker Configuration
 
