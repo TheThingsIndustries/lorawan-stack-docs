@@ -106,6 +106,12 @@ The JSON uplink messages use the following format:
       "snr": 5,                              // Signal-to-noise ratio (dB)
       "uplink_token": "ChIKEA...",           // Uplink token injected by gateway, Gateway Server or fNS
       "channel_index": 2                     // Index of the gateway channel that received the message
+      "location": {                          // Gateway location metadata (only for gateways with location set to public)
+        "latitude": 37.97155556731436,       // Location latitude
+        "longitude": 23.72678801175413,      // Location longitude
+        "altitude": 2,                       // Location altitude
+        "source": "SOURCE_REGISTRY"          // Location source. SOURCE_REGISTRY is the location from the Identity Server.
+      }
     }],
     "settings": {                            // Settings for the transmission
       "data_rate": {                         // Data rate settings
