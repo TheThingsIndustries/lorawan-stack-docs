@@ -11,7 +11,7 @@ Starting from {{% tts %}} version `3.12.0`, it is possible to migrate end device
 
 {{< warning >}} Active device sessions can be migrated via Packet Broker only from **The Things Industries V2 (SaaS)** to **{{% tts %}} Cloud**, and this is achievable only on a customer request. Contact [The Things Industries support](mailto:support@thethingsindustries.com) for more information. 
 
-For all other scenarios, migrating active session is achievable only if you [migrate your gateway to {{% tts %}}]({{< ref "/getting-started/migrating/gateway-migration" >}}) too. However, we strongly recommend The Things Network community members to keep their gateways registered on The Things Network V2 for as long as possible, or to agree on performing coordinated migration to {{% tts %}}, as this will ensure the community does not loose their LoRaWAN coverage. {{</ warning >}}
+For all other scenarios, migrating active session is achievable only if you [migrate your gateway to {{% tts %}}]({{< ref "/getting-started/migrating/gateway-migration" >}}) too. {{</ warning >}}
 
 {{< info >}} We strongly recommend migrating end devices without persisting active sessions. {{</ info >}}
 
@@ -89,14 +89,14 @@ Migrating your OTAA device from **The Things Industries V2 (SaaS)** to **{{% tts
 
 {{< tabs/tab "ABP" >}}
 
-Migrating your ABP device from **The Things Industries V2 (SaaS)** to **{{% tts %}} Cloud** with its active session means it will keep its **DevAddr**, channel settings and MAC parameters from {{% ttnv2 %}}. Once properly migrated, the uplink traffic from your end device should automatically show up in {{% tts %}}, because it will be routed via Packet Broker thanks to preserving your device's existing session.
+Migrating your ABP device from {{% ttnv2 %}} to {{% tts %}} with its active session means it will keep its **DevAddr**, channel settings and MAC parameters from {{% ttnv2 %}}, i.e. the existing session will be preserved.
 
 {{< /tabs/tab >}}
 
 {{< /tabs/container >}}
 
-If you are migrating an end device with its active session via Packet Broker, you will need to set the **RX1 Delay** of the device to 5 seconds by [configuring MAC settings]({{< ref "/getting-started/migrating/configure-mac-settings" >}}), otherwise the traffic might not reach {{% tts %}} in time via Packet Broker. 
+If you are migrating an end device with its active session via Packet Broker (from **The Things Industries V2** to **{{% tts %}} Cloud**), you might need to set the **RX1 Delay** of the device to 5 seconds by [configuring MAC settings]({{< ref "/getting-started/migrating/configure-mac-settings" >}}), otherwise the traffic might not reach {{% tts %}} in time via Packet Broker. 
 
-You can leave the **RX1 Delay** value as is (1 second from {{% ttnv2 %}}), but then you will need to [migrate your gateway to {{% tts %}}]({{< ref "/getting-started/migrating/gateway-migration" >}}) too - keep in mind that if your gateway has a high-latency backhaul, you could still experience latency issues.
+In any case, you can leave the **RX1 Delay** value as is (1 second from {{% ttnv2 %}}), but then you will need to [migrate your gateway to {{% tts %}}]({{< ref "/getting-started/migrating/gateway-migration" >}}) too.
 
-{{< note >}} Even if you manage to get your end device traffic routed to {{% tts %}} via Packet Broker, we recommend you get in touch with your local The Things Network community and agree on coordinating the migration of gateways, so you do not loose the LoRaWAN network coverage. See how to [migrate your gateway to {{% tts %}}]({{< ref "/getting-started/migrating/gateway-migration" >}}). {{</ note >}}
+{{< note >}} Starting from {{% tts %}} `v3.13.0` release, The Things Network community members can freely migrate their gateways from The Things Network {{% ttnv2 %}} to {{% tts %}} Community Edition, while still providing uplink and downlink coverage to The Things Network {{% ttnv2 %}}. Even if you manage to get your end device traffic routed to {{% tts %}} by Packet Broker, we recommend to migrate your gateways as soon as possible. {{</ note >}}

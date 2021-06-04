@@ -118,8 +118,6 @@ Since we assume that you have not migrated your gateway from {{% ttnv2 %}} yet, 
 
 Instead, these Join Requests are going to be routed to {{% tts %}} via Packet Broker and {{% tts %}} will accept them. Your OTAA device will negotiate with {{% tts %}} Network Server to obtain a new **DevAddr**, channel settings and other MAC parameters. The traffic from your end device can from now on be routed to {{% tts %}} thanks to the newly assigned **DevAddr** and **RX1 Delay** of 5 seconds, which fulfills the Packet Broker requirements.
 
-{{< note >}} Even if you manage to get your end device traffic routed to {{% tts %}} via Packet Broker, we still recommend you get in touch with your local The Things Network community and coordinate the migration of gateways, so you do not loose the LoRaWAN network coverage. See how to [migrate your gateway to {{% tts %}}]({{< ref "/getting-started/migrating/gateway-migration" >}}). {{</ note >}}
-
 {{< /tabs/tab >}}
 
 {{< tabs/tab "ABP" >}}
@@ -130,4 +128,8 @@ This section implies that you are keeping the **DevAddr** and **RX1 Delay** valu
 
 If you are not migrating from **The Things Industries {{% ttnv2 %}}** to **{{% tts %}} Cloud**, please follow the guide to [migrate your gateway]({{< ref "/getting-started/migrating/gateway-migration" >}}) to {{% tts %}}. 
 
-{{< note >}} Keep in mind that we advise to keep your gateways on {{% ttnv2 %}} until you get in touch with your local The Things Network community and coordinate the migration of gateways, so you do not loose the LoRaWAN network coverage. {{</ note >}}
+{{< /tabs/tab >}}
+
+{{< /tabs/container >}}
+
+{{< note >}} Starting from {{% tts %}} `v3.13.0` release, The Things Network community members can freely migrate their gateways from The Things Network {{% ttnv2 %}} to {{% tts %}} Community Edition, while still providing uplink and downlink coverage to The Things Network {{% ttnv2 %}}. Even if you manage to get your end device traffic routed to {{% tts %}} by Packet Broker, we recommend to migrate your gateways as soon as possible. {{</ note >}}

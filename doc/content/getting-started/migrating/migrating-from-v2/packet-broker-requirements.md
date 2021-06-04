@@ -17,7 +17,7 @@ When migrating your devices with active sessions, it is in most cases not possib
 | The Things Industries V2 | The Things Stack Community Edition | Only without persisting active device sessions |
 | The Things Industries V2 | The Things Stack Cloud | With and without persisting active device sessions |
 
-{{< note >}} Remember that {{% tts %}} Enterprise and {{% tts %}} Open Source can also be configured to connect to Packet Broker. In that case, end devices can be migrated from {{% ttnv2 %}} via Packet Broker without persisting active sessions. {{</ note >}}
+{{< note >}} Remember that {{% tts %}} Enterprise and {{% tts %}} Open Source can also be configured to connect to Packet Broker. If using those deployments, end devices can be migrated from {{% ttnv2 %}} via Packet Broker without persisting active sessions. {{</ note >}}
 
 ## Devices Address (DevAddr)
 
