@@ -34,21 +34,21 @@ Note that if you use the `{{< distributions >}}` shortcode in a heading, Hugo wi
 
 Available distributions are {{< distributions-list >}} and are stored in `data/distributions.yml`.
 
-## New Features {{< new-in-version "3.8.5">}} {#new-features}
+## New Features
 
-For entire pages dedicated to a feature that is new, use the Front Matter element `new_in_version`.
+{{< new-in-version "3.8.5">}} For entire pages dedicated to a feature that is new, use the Front Matter element `new_in_version`.
 
 For an inline tag, use the `{{< new-in-version "3.8.5" >}}` shortcode to tag documentation for features added in a particular version. For documentation that targets `v3.n`, that's the next patch bump, e.g `3.8.x`. For documentation targeting `v3.n+1` that's the next minor bump, e.g `3.9.0`. Check `tools/bin/mage version:current` for the current version.
 
-#### This Is A New Feature Heading {{< new-in-version "3.8.5">}} {#this-is-a-new-feature-heading}
+#### This Is A New Feature Heading
 
-This is new feature text {{< new-in-version "3.8.5">}}
+{{< new-in-version "3.8.5">}} This is new feature text {{< new-in-version "3.8.5">}}
 
 - This is a new feature bullet {{< new-in-version "3.8.5">}}
 
-## Deprecated Features {{< deprecated-in-version "3.11" >}} {#deprecated-features}
+## Deprecated Features
 
-For entire sections that are deprecated, use the Front Matter element `deprecated_in_version`.
+{{< deprecated-in-version "3.11" >}} For entire sections that are deprecated, use the Front Matter element `deprecated_in_version`.
 
 For an inline tag, use the `{{< deprecated-in-version "3.8.5" >}}` shortcode.
 

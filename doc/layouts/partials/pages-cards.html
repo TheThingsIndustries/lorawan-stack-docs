@@ -3,17 +3,21 @@
   <div class="column is-half is-flex">
     <div class="card has-radius is-fullwidth">
       <div class="card-content">
-        <h3 class="title is-size-5 is-uppercase"><a href="{{ .Permalink }}">{{ .Title }}</a>
-        {{ with .Params.distributions }}
-          {{ partial "distributions" (dict "distributions" .) }}
+        <h1 class="title is-size-5 is-uppercase"><a href="{{ .Permalink }}">{{ .Title }}</a>
+        </h1>
+        {{ if or .Params.distributions (or .Params.new_in_version .Params.deprecated_in_version) }}
+        <h2 class="subtitle">
+          {{ with .Params.distributions }}
+            {{ partial "distributions" (dict "distributions" .) }}
+          {{ end }}
+          {{ with .Params.new_in_version }}
+            {{ partial "new-in-version" . }}
+          {{ end }}
+          {{ with .Params.deprecated_in_version }}
+            {{ partial "deprecated-in-version" .}}
+          {{ end }}
+        </h2>
         {{ end }}
-        {{ with .Params.new_in_version }}
-          {{ partial "new-in-version" . }}
-        {{ end }}
-        {{ with .Params.deprecated_in_version }}
-          {{ partial "deprecated-in-version" .}}
-        {{ end }}
-        </h3>
         <div class="content has-text-grey">
           {{ .Summary | plainify }}
         </div>

@@ -156,9 +156,9 @@ The example `ttn-lw-stack-docker.yml` file for {{% tts %}} Enterprise shown belo
 
 {{< note >}} The example `ttn-lw-stack-docker.yml` file is available for download in the [Example Configuration Files]({{< ref "/getting-started/installation/configuration#example-configuration-files" >}}) section. {{</ note >}}
 
-### License {{< distributions "Enterprise" >}} {#license}
+### License
 
-{{% tts %}} Enterprise requires a license, which can be purchased at the [products page](https://thethingsindustries.com/technology/pricing). This is specified in the `license` field, and can be either a `key` string, or a `file`path. See the [License configuration reference]({{< ref "/reference/configuration/the-things-stack#license" >}}) for more information.
+{{< distributions "Enterprise" >}} {{% tts %}} Enterprise requires a license, which can be purchased at the [products page](https://thethingsindustries.com/technology/pricing). This is specified in the `license` field, and can be either a `key` string, or a `file`path. See the [License configuration reference]({{< ref "/reference/configuration/the-things-stack#license" >}}) for more information.
 
 ### TLS
 
@@ -194,9 +194,9 @@ by the console client. These tell {{% tts %}} where all its components are acces
 
 {{< warning >}} Failure to correctly configure component URLs is a common problem that will prevent the stack from starting. Be sure to replace all instances of `thethings.example.com` with your domain name! {{</ warning >}}
 
-### Multi-tenancy {{< distributions "Enterprise" >}} {#multi-tenancy}
+### Multi-tenancy
 
-If running a multi-tenant environment, we need to configure the default tenant ID, and the base domain from which tenant IDs are inferred. See the [`tenancy` configuration reference]({{< ref "/reference/configuration/the-things-stack#multi-tenancy" >}}).
+{{< distributions "Enterprise" >}} If running a multi-tenant environment, we need to configure the default tenant ID, and the base domain from which tenant IDs are inferred. See the [`tenancy` configuration reference]({{< ref "/reference/configuration/the-things-stack#multi-tenancy" >}}).
 
 ## Running The Things Stack as `localhost`
 

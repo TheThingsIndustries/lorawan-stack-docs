@@ -8,7 +8,7 @@ description: ''
 The Identity Server needs to be connected to a PostgreSQL-compatible database. Details for the form of the URI can be found in the [PostgreSQL documentation](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING).
 
 - `is.database-uri`: Database connection URI
-- `is.read-database-uri`: Read-Only database connection URI {{< distributions "Cloud" "Enterprise" >}}
+- `is.read-database-uri` {{< distributions "Cloud" "Enterprise" >}}: Read-Only database connection URI 
 
 ## Email Options
 
@@ -66,8 +66,8 @@ If page assets for the OAuth UI are served from a CDN or on a different path on 
 
 - `is.oauth.ui.assets-base-url`: The base URL to the page assets
 - `is.oauth.ui.branding-base-url`: The base URL to the branding assets
-- `is.oauth.ui.branding-cluster-id`: The cluster ID to show below the logo {{< distributions "Cloud" "Enterprise" >}}
-- `is.oauth.ui.branding-text`: The branding text to show below the logo {{< distributions "Cloud" "Enterprise" >}}
+- `is.oauth.ui.branding-cluster-id` {{< distributions "Cloud" "Enterprise" >}}: The cluster ID to show below the logo 
+- `is.oauth.ui.branding-text` {{< distributions "Cloud" "Enterprise" >}}: The branding text to show below the logo 
 - `is.oauth.ui.cluster-picker-url`: A URL to the a cluster picker to enable users to pick the correct cluster of the deployment
 
 The appearance of {{% tts %}} can optionally be customized.
@@ -123,7 +123,7 @@ It is also possible to disable uploads:
 
 By default, users can register their own user accounts. User accounts can also be registered by admin users in the network. The user registration process can be customized by requiring approval by admin users, requiring email validation or by requiring new users to be invited by existing users.
 
-- `is.user-registration.enabled`: Enable user registration. If user registration is disabled, admin users can still create users. {{< new-in-version "3.11" >}}
+- `is.user-registration.enabled` {{< new-in-version "3.11" >}}: Enable user registration. If user registration is disabled, admin users can still create users. 
 - `is.user-registration.admin-approval.required`: Require admin approval for new users
 - `is.user-registration.contact-info-validation.required`: Require contact info validation for new users
 - `is.user-registration.invitation.required`: Require invitations for new users
@@ -136,8 +136,8 @@ There are several options to customize the requirements for user passwords.
 - `is.user-registration.password-requirements.min-length`: Minimum password length
 - `is.user-registration.password-requirements.min-special`: Minimum number of special characters
 - `is.user-registration.password-requirements.min-uppercase`: Minimum number of uppercase letters
-- `is.user-registration.password-requirements.reject-common`: Reject common passwords {{< new-in-version "3.12.1" >}}
-- `is.user-registration.password-requirements.reject-user-id`: Reject passwords that contain user ID {{< new-in-version "3.12.1" >}}
+- `is.user-registration.password-requirements.reject-common` {{< new-in-version "3.12.1" >}}: Reject common passwords
+- `is.user-registration.password-requirements.reject-user-id` {{< new-in-version "3.12.1" >}}: Reject passwords that contain user ID
 
 ## User Rights Options
 
@@ -158,8 +158,8 @@ By default admins are granted _almost_ all rights on all entities in the network
 
 - `is.gateways.encryption-key-id`: ID of the key used to encrypt gateway secrets at rest.
 
-## Tenant Administration Options {{< distributions "Cloud" "Enterprise" >}} {#tenant-administration-options}
+## Tenant Administration Options 
 
-In multi-tenant deployments, tenants are managed with "tenant admin keys". These keys need to be configured in the Identity Server.
+{{< distributions "Cloud" "Enterprise" >}} In multi-tenant deployments, tenants are managed with "tenant admin keys". These keys need to be configured in the Identity Server.
 
-- `is.tenancy.admin-keys`: Keys that can be used for tenant administration (16, 24 or 32 hex-encoded bytes) {{< distributions "Cloud" "Enterprise" >}}
+- `is.tenancy.admin-keys` {{< distributions "Cloud" "Enterprise" >}}: Keys that can be used for tenant administration (16, 24 or 32 hex-encoded bytes)
