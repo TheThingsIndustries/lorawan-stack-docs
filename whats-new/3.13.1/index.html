@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>3.12.0 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/whats-new/3.12.0/" />
+  <title>3.13.1 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/whats-new/3.13.1/" />
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.448201dae984e04b2579a9ee482b5768bcd23d222184681e69f3a8b1146f3bb2.css" integrity="sha256-RIIB2umE4EsleanuSCtXaLzSPSIhhGgeafOosRRvO7I=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="The Things Stack for LoRaWAN">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="3.12.0">
+  <meta itemprop="name" content="3.13.1">
   <meta itemprop="description" content="The Things Stack for LoRaWAN">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="3.12.0">
+  <meta property="og:title" content="3.13.1">
   <meta property="og:description" content="The Things Stack for LoRaWAN">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/whats-new/3.12.0/">
-  <meta name="twitter:title" content="3.12.0" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/whats-new/3.13.1/">
+  <meta name="twitter:title" content="3.13.1" />
   <meta name="twitter:description" content="The Things Stack for LoRaWAN" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -86,7 +86,7 @@ debug: false
 <ul class="menu-list">
 <a href="https://www.thethingsindustries.com/docs/whats-new/" class="">Overview</a>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.13.1/" class="">3.13.1</a>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.13.1/" class="is-active">3.13.1</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.13.0/" class="">3.13.0</a>
@@ -101,7 +101,7 @@ debug: false
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.12.1/" class="">3.12.1</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.12.0/" class="is-active">3.12.0</a>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.12.0/" class="">3.12.0</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.11.3/" class="">3.11.3</a>
@@ -158,87 +158,35 @@ debug: false
       </div>
       <div class="column sidebar-middle">
 <div class="docs-content">
-<h1 class="title is-size-2">3.12.0
+<h1 class="title is-size-2">3.13.1
 </h1>
 
 <div class="content">
   <h3 id="added">Added</h3>
 <ul>
-<li>API and CLI commands for listing, searching for and restoring recently deleted applications, OAuth clients, gateways, organizations and users.</li>
-<li>State Description fields for adding context to the (rejected, flagged, suspended) state of Users, OAuth clients and tenants.
-<ul>
-<li>This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>) because of the added columns.</li>
-</ul>
-</li>
-<li>Configure retention policy for the Storage Integration database (only supported when using TimescaleDB).
-<ul>
-<li>You will need to run the <code>ttn-lw-stack storage-db migrate</code> command to apply the new configuration. See the <code>--timescaledb.chunk-time-interval</code>, <code>--timescaledb.enable-retention-policy</code> and <code>--timescaledb.retention-days</code> command-line flags.</li>
-</ul>
-</li>
-<li>Searching for gateways by EUI.</li>
-<li>Searching for users and OAuth clients by state.</li>
-<li>Gateway Server forwards Tx Acknowlegdment packets to the Network Server for scheduled downlinks. These can be used by the Network Server to forward <code>downlink_ack</code> upstream messages to the Application Server.</li>
-<li>UDP connection error caching. The duration can be configured via the <code>gs.udp.connection-error-expires</code> configuration entry.</li>
-<li>Option to require individual gateways to use authenticated connections.
-<ul>
-<li>This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>) because of the added columns.</li>
-</ul>
-</li>
-<li>Login Tokens (magic login links) that can be used for password-less login.
-<ul>
-<li>This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>) because of the added columns.</li>
-<li>This feature is disabled by default; use the new <code>is.login-tokens.enabled</code> option to enable it.</li>
-</ul>
-</li>
-<li>Packet Broker registration, configuration of routing policies, listing home networks and viewing routing policies set by forwarding networks. See <code>ttn-lw-cli packetbroker --help</code> for more information.</li>
-<li>Support LoRa 2.4 GHz with Packet Broker.</li>
-<li>Include gateway identifiers from Packet Broker in metadata.</li>
-<li>Support for claiming gateways through CLI. See <code>ttn-lw-cli gateways claim --help</code> for more information.</li>
-<li>Session and MAC state import functionality. This means that devices can be migrated without rejoin.</li>
-<li>Rate limiting for HTTP endpoints, gRPC endpoints, MQTT, UDP and WebSockets connections.
-<ul>
-<li>Rate limiting is disabled by default. Refer to the <code>rate-limiting</code> configuration entry to enable.</li>
-</ul>
-</li>
-<li>Profile settings link to header dropdown menu.</li>
+<li>More contextual tooltips to end device and gateway form fields in the Console.</li>
+<li>Warnings in the Console when changing or revoking your own access to an entity.</li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
-<li>Changed the pub/sub channels that the Redis backend of the Events system uses.</li>
-<li>Changed the encoding of events transported by the Redis backend of the Events system.</li>
-<li>All external HTTP calls are now using TLS client configuration. This fixes issues where HTTP calls would fail if custom (e.g. self-signed) CAs were used.</li>
-<li>All external HTTP calls are now using a default timeout. This fixes issues where HTTP calls would stall for a long time.</li>
-<li>All value wrappers now are encoded and decoded as the value being wrapped in JSON. That means, that, e.g. format of <code>mac_settings.rx1_delay</code> is changed from <code>{&quot;value&quot;: 2}</code> to just <code>2</code>.</li>
-<li>Changed the error that is returned when attempting to validate already validated contact info.
-<ul>
-<li>This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>) because of the added column.</li>
+<li>Enable LoRa Standard channel for Tabs Hubs gateways.</li>
+<li>UDP gateway traffic is limited by IP address and source port number.</li>
+<li>Do not print error line logs for rate limited gRPC and HTTP API requests.</li>
+<li>The <code>ttn_lw_log_log_messages_total</code> metric was renamed to <code>ttn_lw_log_messages_total</code> and has an additional <code>error_name</code> label.</li>
+<li>Authenticated users now have access to gateway status and location when those are set to public.</li>
+<li>Cookies are no longer allowed in cross-origin requests to the HTTP API. Applications must instead use Bearer tokens in the Authorization header.</li>
 </ul>
-</li>
-<li>Update Go to 1.16</li>
-<li>Network Server now performs more strict validation and will disallow creation and updates of invalid devices.</li>
-<li>DevEUI is not required for multicast devices anymore, regarding of LoRaWAN version.</li>
-<li>Pub/Sub provider visibility in console based on <code>disabled</code> status.</li>
-</ul>
+<h3 id="deprecated">Deprecated</h3>
 <h3 id="removed">Removed</h3>
-<ul>
-<li>AWS IoT Integration as pub/sub integration. The integration is only available as application package.
-<ul>
-<li>This requires a database migration (<code>ttn-lw-stack as-db migrate</code>).</li>
-</ul>
-</li>
-</ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>Incorrect documentation url for event details data formats.</li>
-<li>Search functionality for applications, gateways and organizations in the Console.</li>
-<li>Error handling of end device template formats for the application overview page in the Console.</li>
-<li>Payload size limits for AU915 data rates 8 and 9, which are now consistent with Regional Parameters RP002-1.0.2.</li>
-<li>Payload size limit calculation in Network Server.</li>
-<li>Occasional panic in Network Server on downlink with corrupted device states.</li>
-<li>Occasional panic in Identity Server on extracting log fields from invalid requests.</li>
-<li>Print an error message stating that the Storage Integration is not available in the open source edition of The Things Stack when trying to execute <code>ttn-lw-stack storage-db</code> commands.</li>
-<li>Applications without AWS IoT integration displaying configuration of a previously inspected application.</li>
+<li>Loading event data in (non-historical) event streams.</li>
+<li>Downlink queue eviction on FCnt mismatch.</li>
+<li>End device payload formatter view crashing in the Console.</li>
+<li>End device overview frequently crashing in the Console.</li>
+<li>Panic on empty downlink in zero indexed downlink token.</li>
 </ul>
+<h3 id="security">Security</h3>
 
 </div>
 
@@ -291,14 +239,14 @@ debug: false
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 20 Apr 2021.
+  Last changed by Nejra Selimović on 08 Jun 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f37454105960ffbbeaf811edc23e3f4b3a68a0ac">
-      doc: Lint whats new
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/ecc2d066f705fef879e6958ed4a5ac424c6b65c9">
+      doc: Update docs for v3.13.1 release (#377)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/whats-new/3.12.0.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/whats-new/3.13.1.md" class="button">Edit on Github</a>
 </div>
 
       </div>
