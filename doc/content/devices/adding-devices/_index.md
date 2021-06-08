@@ -8,13 +8,13 @@ This section contains instructions for adding devices in {{% tts %}}.
 
 <!--more-->
 
+Devices are managed under applications. An application can contain an unlimited number of devices, but it can be helpful to sort devices in to applications by function or geographical area, to make the integrations and live data views more useful.
+
 {{< tabs/container "Console" "CLI" >}}
 
 {{< tabs/tab "Console" >}}
 
 ## Adding Devices using the Console
-
-Devices are managed under applications. An application can contain an unlimited number of devices, but it can be helpful to sort devices in to applications by function or geographical area, to make the integrations and live data views more useful.
 
 To create a device, first open the application you wish to add the device in. Go to **End devices** in the left menu and click on **+ Add end device** to reach the end device registration page.
 
@@ -24,7 +24,7 @@ To create a device, first open the application you wish to add the device in. Go
 
 The [LoRaWAN device repository](https://github.com/TheThingsNetwork/lorawan-devices) contains device profiles, LoRaWAN information, codecs, and more, for many LoRaWAN devices. Using the device repository to add devices in {{% tts %}} automatically uses the correct LoRaWAN version and regional parameters version, which means less information for you to find!
 
-To use the device repository, make sure the **From the LoRaWAN Device Repository** button is selected. Then, select the **Brand**, **Model**, **Hardware Version**, **Software Version**, and **Region** for your device.
+To use the device repository, make sure the **From the LoRaWAN Device Repository** tab is selected. Then, select the **Brand**, **Model**, **Hardware Version**, **Software Version**, and **Region** for your device.
 
 {{< note "If your device is not in the device repository, see [Manually Create End Device](#manually-create-end-device) below." />}}
 
@@ -52,9 +52,7 @@ The device is now activated, and will appear as connected in {{% tts %}} once it
 
 If your device is not in the device repository, you may manually register it.
 
-Make sure the **Manually** button is selected.
-
-{{< figure src="register-manually.png" alt="Register manually" >}}
+Make sure the **Manually** tab is selected.
 
 Choose the **Activation Mode**.
 
@@ -62,14 +60,14 @@ Select the device **LoRaWAN version**.
 
 If using Over-the-Air-Activation (OTAA) and an External Join Server, tick the **External Join Server** button.
 
-The **Network Server**, **Application Server**, and **Join Server** addresses should correctly point to the address of your {{% tts %}} deployment.
+The **Network Server**, **Application Server**, and **Join Server** addresses should correctly point to the address of {{% tts %}} deployment you are using.
 
 Click the **Start** button to proceed to the Basic Settings page.
 
 {{< figure src="manual-settings.png" alt="Register manually" >}}
 
 {{< note >}}
-This guide covers adding a device using [OTAA]({{< ref "reference/glossary#over-the-air-activation" >}}) (the most secure and preferred activation method) and [LoRaWAN version]({{< ref "reference/glossary#over-the-air-activation" >}}) MAC V1.0.2 (the most common LoRaWAN version, although newer version are better and more secure). Names and keys may vary slightly for other versions.
+This guide covers adding a device using [OTAA]({{< ref "reference/glossary#over-the-air-activation" >}}) (the most secure and preferred activation method) and [LoRaWAN version]({{< ref "reference/glossary#lorawan-version" >}}) MAC V1.0.2 (the most common LoRaWAN version, although newer versions are better and more secure). Names and keys may vary slightly for other versions.
 {{</ note >}}
 
 Give your device a unique **End device ID**.
