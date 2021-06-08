@@ -155,6 +155,7 @@ debug: false
 
 <div class="content">
   <p>This section contains instructions for adding devices in The Things Stack.</p>
+<p>Devices are managed under applications. An application can contain an unlimited number of devices, but it can be helpful to sort devices in to applications by function or geographical area, to make the integrations and live data views more useful.</p>
 <div class="tabs is-boxed">
   <ul>
     
@@ -175,44 +176,80 @@ debug: false
 <div class="tab-content content">
   <section data-content="console">
   <h2 id="adding-devices-using-the-console">Adding Devices using the Console</h2>
-<p>Go to <strong>Devices</strong> in the left menu and click on <strong>+ Add Device</strong> to reach the end device registration page. Fill the device ID, the LoRaWAN MAC and PHY versions and the frequency plan used by the device.</p>
+<p>To create a device, first open the application you wish to add the device in. Go to <strong>End devices</strong> in the left menu and click on <strong>+ Add end device</strong> to reach the end device registration page.</p>
+<figure>
+    <img src="application-overview.png"
+         alt="Application overview"/> 
+</figure>
+<h3 id="using-the-lorawan-device-repository">Using the LoRaWAN Device Repository</h3>
+<p>The <a href="https://github.com/TheThingsNetwork/lorawan-devices">LoRaWAN device repository</a> contains device profiles, LoRaWAN information, codecs, and more, for many LoRaWAN devices. Using the device repository to add devices in The Things Stack automatically uses the correct LoRaWAN version and regional parameters version, which means less information for you to find!</p>
+<p>To use the device repository, make sure the <strong>From the LoRaWAN Device Repository</strong> tab is selected. Then, select the <strong>Brand</strong>, <strong>Model</strong>, <strong>Hardware Version</strong>, <strong>Software Version</strong>, and <strong>Region</strong> for your device.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The PHY version represents the revision of the LoRAWAN Regional Parameters that the device expects, and must be correlated with the MAC version.
+  If your device is not in the device repository, see <a href="#manually-create-end-device">Manually Create End Device</a> below.
 </div>
 <figure>
-    <img src="device-creation-1.png"
-         alt="Creating a new device"/> 
+    <img src="device-repo.png"
+         alt="Creating a new device with the Device Repository"/> 
 </figure>
-<h3 id="over-the-air-activation-otaa-device">Over-The-Air-Activation (OTAA) Device</h3>
-<p>After filling the fields in the <strong>General Settings</strong> section, scroll to the lower part of the device registration page and make sure that <strong>Over The Air Activation</strong> is selected.</p>
-<p>Fill the <strong>JoinEUI</strong> (AppEUI in LoRaWAN versions before 1.1), <strong>DevEUI</strong> and <strong>AppKey</strong>. The <strong>NwkKey</strong> is only needed for LoRaWAN version 1.1 or later. All other fields on the page are optional.</p>
-<p>Press <strong>Create Device</strong> to create the device.</p>
-<figure>
-    <img src="device-creation-otaa.png"
-         alt="Creating an OTAA device"/> 
-</figure>
-<p>You will now reach the device overview page for your device. The end device should now be able to join the private network.</p>
+<p>Choose a <strong>Frequency plan</strong> appropriate for your region. Your device and gateway must use the same frequency plan to communicate.</p>
+<p>Enter a <strong>JoinEUI/AppEUI</strong> if provided by your manufacturer. If your device is programmable, you may use all 0&rsquo;s, and then program the same JoinEUI/AppEUI in the device.</p>
+<p>Enter your <strong>DevEUI</strong>.</p>
+<p>If your manufacturer provides an <strong>AppKey</strong>, enter it. Otherwise, use the generate button to create one, and program it in to your device.</p>
+<p>Finally, give your device a unique <strong>End device ID</strong>, and click the <strong>Register end device</strong> button to create the end device.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  If you do not have a <code>JoinEUI</code> or <code>AppEUI</code>, it is okay to use <code>0000000000000000</code>. Be sure to use the same <code>JoinEUI</code> in your device as you enter in The Things Stack.
+  See <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">ID and EUI constraints</a> for guidelines about choosing a unique ID.
 </div>
 <figure>
-    <img src="device-otaa-created.png"
-         alt="OTAA device overview"/> 
+    <img src="device-repo-settings.png"
+         alt="Device information"/> 
 </figure>
-<h3 id="activation-by-personalization-abp-device">Activation By Personalization (ABP) Device</h3>
-<p>After filling the fields in the <strong>General Settings</strong> section, scroll to the lower part of the device registration page and make sure that <strong>Activation By Personalization</strong> is selected.</p>
-<p>Fill the <strong>Device Address</strong>, the <strong>FNwkSIntKey</strong> (NwkSKey in LoRaWAN versions before 1.1) and the <strong>AppSKey</strong>. The other key fields are only needed for LoRaWAN version 1.1 or later. All other fields on the page are optional.</p>
-<p>Press <strong>Create Device</strong> to create the device.</p>
+<p>The device is now activated, and will appear as connected in The Things Stack once it sends an uplink.</p>
+<h3 id="manually-create-end-device">Manually Create End Device</h3>
+<p>If your device is not in the device repository, you may manually register it.</p>
+<p>Make sure the <strong>Manually</strong> tab is selected.</p>
+<p>Choose the <strong>Activation Mode</strong>.</p>
+<p>Select the device <strong>LoRaWAN version</strong>.</p>
+<p>If using Over-the-Air-Activation (OTAA) and an External Join Server, tick the <strong>External Join Server</strong> button.</p>
+<p>The <strong>Network Server</strong>, <strong>Application Server</strong>, and <strong>Join Server</strong> addresses should correctly point to the address of The Things Stack deployment you are using.</p>
+<p>Click the <strong>Start</strong> button to proceed to the Basic Settings page.</p>
 <figure>
-    <img src="device-creation-abp.png"
-         alt="Creating an ABP device"/> 
+    <img src="manual-settings.png"
+         alt="Register manually"/> 
 </figure>
-<p>You will now reach the device overview page for your device. The end device should now be able to communicate with the private network.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  This guide covers adding a device using <a href="https://www.thethingsindustries.com/docs/reference/glossary/#over-the-air-activation">OTAA</a> (the most secure and preferred activation method) and <a href="https://www.thethingsindustries.com/docs/reference/glossary/#lorawan-version">LoRaWAN version</a> MAC V1.0.2 (the most common LoRaWAN version, although newer versions are better and more secure). Names and keys may vary slightly for other versions.
+</div>
+<p>Give your device a unique <strong>End device ID</strong>.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  See <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">ID and EUI constraints</a> for guidelines about choosing a unique ID.
+</div>
+<p>Enter a <strong>JoinEUI/AppEUI</strong> if provided by your manufacturer. If your device is programmable, you may use all 0&rsquo;s, and then program the same JoinEUI/AppEUI in the device.</p>
+<p>Enter your <strong>DevEUI</strong>.</p>
+<p><strong>Name</strong> and <strong>Description</strong> are optional fields to help you identify your device.</p>
+<p>Click <strong>Network Layer Settings</strong> to proceed to the next page.</p>
 <figure>
-    <img src="device-abp-created.png"
-         alt="ABP device overview"/> 
+    <img src="basic-settings.png"
+         alt="Basic settings"/> 
+</figure>
+<p>Choose a <strong>Frequency plan</strong> appropriate for your region. Your device and gateway must use the same frequency plan to communicate.</p>
+<p>Choose the <strong>Regional Parameters version</strong> provided by the manufacturer of your device. This should be specified in the data sheet as Regional Parameters or PHY version.</p>
+<p>If your device supports <strong>Class B</strong> or <strong>Class C</strong> features, you may enable them using the checkboxes.</p>
+<p>There are also advanced settings to configure <strong>Frame counter width</strong> and <strong>RX2 settings</strong>, but these should not be necessary for most devices.</p>
+<p>Click the <strong>Join settings</strong> button to proceed to the next page.</p>
+<figure>
+    <img src="network-settings.png"
+         alt="Network settings"/> 
+</figure>
+<p>If your manufacturer provides an <strong>AppKey</strong>, enter it. Otherwise, use the generate button to create one, and program it in to your device.</p>
+<p>There are also advanced settings to configure <strong>Net ID</strong>, <strong>Application Server ID</strong>, and <strong>KEK Labels</strong>, but these are not necessary for most devices.</p>
+<p>Finally, click <strong>Add end device</strong> to register the end device.</p>
+<figure>
+    <img src="join-settings.png"
+         alt="Join settings"/> 
 </figure>
 <h2 id="set-device-location">Set Device Location</h2>
 <p>Once you have added your end device to The Things Stack, you can also set its location to be displayed on a map widget by clicking <strong>Change location settings</strong>.</p>
@@ -383,10 +420,10 @@ $ ttn-lw-cli end-devices <span class="nb">set</span> <span class="nv">$APP_ID</s
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 23 Dec 2020.
+  Last changed by Ben Olayinka on 08 Jun 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/e4398ea6f5999ec8bac68cb600a1dc2df9f08e3b">
-      doc: Document location usage
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/6686377775155228b7954ae2489145642a2d878c">
+      Update Adding Devices doc for device repo (#380)
     </a>
 </p>
 
