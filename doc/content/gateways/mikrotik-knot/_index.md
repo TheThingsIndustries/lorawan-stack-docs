@@ -18,7 +18,7 @@ For more info, see Mikrotik's [official product page](https://mikrotik.com/produ
 2. MikroTik KNOT connected to Internet via Ethernet or LTE-M.
 3. A web browser (see section [Configuration via Browser](#configuration-via-browser)), or the [MikroTik Mobile App](https://mikrotik.com/mobile_app) installed on a smartphone.
 
-{{< warning >}} Currently, this gateway does not support changing Frequency Plans. {{</ warning >}}
+{{< warning >}} Currently, this gateway does not support changing frequency channels. {{</ warning >}}
 
 ## Registration
 
