@@ -11,7 +11,7 @@
   <link rel="alternate icon" href="/docs/favicon.ico">
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.448201dae984e04b2579a9ee482b5768bcd23d222184681e69f3a8b1146f3bb2.css" integrity="sha256-RIIB2umE4EsleanuSCtXaLzSPSIhhGgeafOosRRvO7I=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cf9447944fbcc7bdf6a5140d8d9c5c7c741f08af5d17e0b1c3bd26da8cd08507.css" integrity="sha256-z5RHlE&#43;8x732pRQNjZxcfHQfCK9dF&#43;Cxw70m2ozQhQc=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="End Device APIs">
@@ -289,7 +289,7 @@ debug: false
 <li><code>picture</code></li>
 </ul>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -342,7 +342,7 @@ and the JsEndDeviceRegistry that is exposed by the Join Server.</p>
 </table>
 
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -392,7 +392,7 @@ More or less fields may be returned, depending on the rights of the caller.
 </table>
 
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -442,7 +442,7 @@ More or less fields may be returned, depending on the rights of the caller.
 </table>
 
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -490,7 +490,7 @@ More or less fields may be returned, depending on the rights of the caller.
 </table>
 
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -565,7 +565,7 @@ This is NOT done automatically.</p>
 </ul>
 <p>See the <a href="#message:EndDevice">EndDevice message</a> and its sub-messages for additional fields that can be read from the Join Server&rsquo;s <code>JsEndDeviceRegistry</code>.</p>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -614,7 +614,7 @@ This is NOT done automatically.</p>
 </table>
 
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -663,7 +663,7 @@ If there are multiple matches, an error will be returned.
 </table>
 
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -736,7 +736,7 @@ If there are multiple matches, an error will be returned.
 </ul>
 <p>See the <a href="#message:EndDevice">EndDevice message</a> and its sub-messages for additional fields that can be read from the Network Server&rsquo;s <code>NsEndDeviceRegistry</code>.</p>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -785,7 +785,7 @@ If there are multiple matches, an error will be returned.
 </table>
 
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -834,7 +834,7 @@ If there are multiple matches, an error will be returned.
 </table>
 
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -904,7 +904,7 @@ If there are multiple matches, an error will be returned.
 </ul>
 <p>See the <a href="#message:EndDevice">EndDevice message</a> and its sub-messages for additional fields that can be read from the Application Server&rsquo;s <code>AsEndDeviceRegistry</code>.</p>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -953,7 +953,7 @@ If there are multiple matches, an error will be returned.
 </table>
 
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -1002,7 +1002,7 @@ If there are multiple matches, an error will be returned.
 </table>
 
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -1052,7 +1052,15 @@ If there are multiple matches, an error will be returned.
 
 <h2 id="messages">Messages</h2>
 <h3 id="message:CreateEndDeviceRequest">Message <code>CreateEndDeviceRequest</code></h3>
-<table>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "end_device": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -1082,1494 +1090,10 @@ If there are multiple matches, an error will be returned.
 </table>
 
 
-<details><summary>Show object example</summary>
-<pre><code>{
-  "end_device": {},
-}</code></pre>
-</details>
-
 <h3 id="message:EndDevice">Message <code>EndDevice</code></h3>
 <p>Defines an End Device registration and its state on the network.
 The persistence of the EndDevice is divided between the Network Server, Application Server and Join Server.
 SDKs are responsible for combining (if desired) the three.</p>
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>ids</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:EndDeviceIdentifiers"><code>EndDeviceIdentifiers</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><code>required</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>created_at</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>google.protobuf.Timestamp</code></td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>updated_at</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>google.protobuf.Timestamp</code></td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>name</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>string</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Friendly name of the device. Stored in Entity Registry.</p>
-          <p><code>max_len</code>: <code>50</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>description</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>string</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Description of the device. Stored in Entity Registry.</p>
-          <p><code>max_len</code>: <code>2000</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>attributes</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>map of <code>string</code> to <code>string</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Key-value attributes for this end device. Typically used for organizing end devices or for storing integration-specific data. Stored in Entity Registry.</p>
-          <p><code>max_pairs</code>: <code>10</code></p>
-            <p><code>max_len</code> (key): <code>36</code></p>
-            <p><code>pattern</code> (key): <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
-        
-            <p><code>max_len</code> (value): <code>200</code></p>
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>version_ids</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:EndDeviceVersionIdentifiers"><code>EndDeviceVersionIdentifiers</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Version Identifiers. Stored in Entity Registry, Network Server and Application Server.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>service_profile_id</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>string</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Default service profile. Stored in Entity Registry.</p>
-          <p><code>max_len</code>: <code>64</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>network_server_address</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>string</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The address of the Network Server where this device is supposed to be registered.
-Stored in Entity Registry and Join Server.
-The typical format of the address is &ldquo;host:port&rdquo;. If the port is omitted,
-the normal port inference (with DNS lookup, otherwise defaults) is used.
-The connection shall be established with transport layer security (TLS).
-Custom certificate authorities may be configured out-of-band.</p>
-          <p><code>pattern</code>: <code>^(?:(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*(?:[A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])(?::[0-9]{1,5})?$|^$</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>network_server_kek_label</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>string</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The KEK label of the Network Server to use for wrapping network session keys.
-Stored in Join Server.</p>
-          <p><code>max_len</code>: <code>2048</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>application_server_address</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>string</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The address of the Application Server where this device is supposed to be registered.
-Stored in Entity Registry and Join Server.
-The typical format of the address is &ldquo;host:port&rdquo;. If the port is omitted,
-the normal port inference (with DNS lookup, otherwise defaults) is used.
-The connection shall be established with transport layer security (TLS).
-Custom certificate authorities may be configured out-of-band.</p>
-          <p><code>pattern</code>: <code>^(?:(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*(?:[A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])(?::[0-9]{1,5})?$|^$</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>application_server_kek_label</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>string</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The KEK label of the Application Server to use for wrapping the application session key.
-Stored in Join Server.</p>
-          <p><code>max_len</code>: <code>2048</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>application_server_id</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>string</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The AS-ID of the Application Server to use.
-Stored in Join Server.</p>
-          <p><code>max_len</code>: <code>100</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>join_server_address</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>string</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The address of the Join Server where this device is supposed to be registered.
-Stored in Entity Registry.
-The typical format of the address is &ldquo;host:port&rdquo;. If the port is omitted,
-the normal port inference (with DNS lookup, otherwise defaults) is used.
-The connection shall be established with transport layer security (TLS).
-Custom certificate authorities may be configured out-of-band.</p>
-          <p><code>pattern</code>: <code>^(?:(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*(?:[A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])(?::[0-9]{1,5})?$|^$</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>locations</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>map of <code>string</code> to <a href="#message:Location"><code>Location</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Location of the device. Stored in Entity Registry.</p>
-            <p><code>max_len</code> (key): <code>36</code></p>
-            <p><code>pattern</code> (key): <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
-        
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>picture</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:Picture"><code>Picture</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Stored in Entity Registry.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>supports_class_b</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>bool</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Whether the device supports class B.
-Copied on creation from template identified by version_ids, if any or from the home Network Server device profile, if any.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>supports_class_c</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>bool</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Whether the device supports class C.
-Copied on creation from template identified by version_ids, if any or from the home Network Server device profile, if any.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>lorawan_version</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#enum:MACVersion"><code>MACVersion</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>LoRaWAN MAC version. Stored in Network Server.
-Copied on creation from template identified by version_ids, if any or from the home Network Server device profile, if any.</p>
-          <p><code>defined_only</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>lorawan_phy_version</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#enum:PHYVersion"><code>PHYVersion</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>LoRaWAN PHY version. Stored in Network Server.
-Copied on creation from template identified by version_ids, if any or from the home Network Server device profile, if any.</p>
-          <p><code>defined_only</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>frequency_plan_id</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>string</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>ID of the frequency plan used by this device.
-Copied on creation from template identified by version_ids, if any or from the home Network Server device profile, if any.</p>
-          <p><code>max_len</code>: <code>64</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>min_frequency</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>uint64</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Minimum frequency the device is capable of using (Hz). Stored in Network Server.
-Copied on creation from template identified by version_ids, if any or from the home Network Server device profile, if any.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>max_frequency</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>uint64</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Maximum frequency the device is capable of using (Hz). Stored in Network Server.
-Copied on creation from template identified by version_ids, if any or from the home Network Server device profile, if any.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>supports_join</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>bool</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The device supports join (it&rsquo;s OTAA).
-Copied on creation from template identified by version_ids, if any or from the home Network Server device profile, if any.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>resets_join_nonces</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>bool</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Whether the device resets the join and dev nonces (not LoRaWAN compliant). Stored in Join Server.
-Copied on creation from template identified by version_ids, if any or from the home Network Server device profile, if any.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>root_keys</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:RootKeys"><code>RootKeys</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Device root keys. Stored in Join Server.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>net_id</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>bytes</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Home NetID. Stored in Join Server.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>mac_settings</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:MACSettings"><code>MACSettings</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Settings for how the Network Server handles MAC layer for this device. Stored in Network Server.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>mac_state</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:MACState"><code>MACState</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>MAC state of the device. Stored in Network Server.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>pending_mac_state</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:MACState"><code>MACState</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Pending MAC state of the device. Stored in Network Server.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>session</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:Session"><code>Session</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Current session of the device. Stored in Network Server and Application Server.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>pending_session</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:Session"><code>Session</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Pending session. Stored in Network Server and Application Server until RekeyInd is received.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>last_dev_nonce</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>uint32</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Last DevNonce used.
-This field is only used for devices using LoRaWAN version 1.1 and later.
-Stored in Join Server.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>used_dev_nonces</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>repeated <code>uint32</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Used DevNonces sorted in ascending order.
-This field is only used for devices using LoRaWAN versions preceding 1.1.
-Stored in Join Server.</p>
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>last_join_nonce</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>uint32</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Last JoinNonce/AppNonce(for devices using LoRaWAN versions preceding 1.1) used.
-Stored in Join Server.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>last_rj_count_0</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>uint32</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Last Rejoin counter value used (type 0/2).
-Stored in Join Server.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>last_rj_count_1</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>uint32</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Last Rejoin counter value used (type 1).
-Stored in Join Server.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>last_dev_status_received_at</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>google.protobuf.Timestamp</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Time when last DevStatus MAC command was received.
-Stored in Network Server.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>power_state</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#enum:PowerState"><code>PowerState</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The power state of the device; whether it is battery-powered or connected to an external power source.
-Received via the DevStatus MAC command at status_received_at.
-Stored in Network Server.</p>
-          <p><code>defined_only</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>battery_percentage</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>google.protobuf.FloatValue</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Latest-known battery percentage of the device.
-Received via the DevStatus MAC command at last_dev_status_received_at or earlier.
-Stored in Network Server.</p>
-          <p><code>gte</code>: <code>0</code></p>
-          <p><code>lte</code>: <code>1</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>downlink_margin</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>int32</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Demodulation signal-to-noise ratio (dB).
-Received via the DevStatus MAC command at last_dev_status_received_at.
-Stored in Network Server.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>queued_application_downlinks</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>repeated <a href="#message:ApplicationDownlink"><code>ApplicationDownlink</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Queued Application downlink messages. Stored in Application Server,
-which sets them on the Network Server.
-This field is deprecated and is always set equal to session.queued_application_downlinks.</p>
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>formatters</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:MessagePayloadFormatters"><code>MessagePayloadFormatters</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The payload formatters for this end device. Stored in Application Server.
-Copied on creation from template identified by version_ids.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>provisioner_id</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>string</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>ID of the provisioner. Stored in Join Server.</p>
-          <p><code>max_len</code>: <code>36</code></p>
-          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$|^$</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>provisioning_data</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>google.protobuf.Struct</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Vendor-specific provisioning data. Stored in Join Server.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>multicast</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>bool</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Indicates whether this device represents a multicast group.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>claim_authentication_code</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:EndDeviceAuthenticationCode"><code>EndDeviceAuthenticationCode</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Authentication code to claim ownership of the end device. Stored in Join Server.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>skip_payload_crypto</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>bool</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Skip decryption of uplink payloads and encryption of downlink payloads.
-This field is deprecated, use skip_payload_crypto_override instead.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>skip_payload_crypto_override</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>google.protobuf.BoolValue</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Skip decryption of uplink payloads and encryption of downlink payloads.
-This field overrides the application-level setting.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
 
 <details><summary>Show object example</summary>
 <pre><code>{
@@ -2625,9 +1149,1499 @@ This field overrides the application-level setting.</p>
 }</code></pre>
 </details>
 
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:EndDeviceIdentifiers"><code>EndDeviceIdentifiers</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>created_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>google.protobuf.Timestamp</code></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>updated_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>google.protobuf.Timestamp</code></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>name</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>string</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Friendly name of the device. Stored in Entity Registry.</p>
+          <p><code>max_len</code>: <code>50</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>description</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>string</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Description of the device. Stored in Entity Registry.</p>
+          <p><code>max_len</code>: <code>2000</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>attributes</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>map of <code>string</code> to <code>string</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Key-value attributes for this end device. Typically used for organizing end devices or for storing integration-specific data. Stored in Entity Registry.</p>
+          <p><code>max_pairs</code>: <code>10</code></p>
+            <p><code>max_len</code> (key): <code>36</code></p>
+            <p><code>pattern</code> (key): <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+        
+            <p><code>max_len</code> (value): <code>200</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>version_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:EndDeviceVersionIdentifiers"><code>EndDeviceVersionIdentifiers</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Version Identifiers. Stored in Entity Registry, Network Server and Application Server.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>service_profile_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>string</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Default service profile. Stored in Entity Registry.</p>
+          <p><code>max_len</code>: <code>64</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>network_server_address</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>string</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The address of the Network Server where this device is supposed to be registered.
+Stored in Entity Registry and Join Server.
+The typical format of the address is &ldquo;host:port&rdquo;. If the port is omitted,
+the normal port inference (with DNS lookup, otherwise defaults) is used.
+The connection shall be established with transport layer security (TLS).
+Custom certificate authorities may be configured out-of-band.</p>
+          <p><code>pattern</code>: <code>^(?:(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*(?:[A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])(?::[0-9]{1,5})?$|^$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>network_server_kek_label</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>string</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The KEK label of the Network Server to use for wrapping network session keys.
+Stored in Join Server.</p>
+          <p><code>max_len</code>: <code>2048</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>application_server_address</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>string</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The address of the Application Server where this device is supposed to be registered.
+Stored in Entity Registry and Join Server.
+The typical format of the address is &ldquo;host:port&rdquo;. If the port is omitted,
+the normal port inference (with DNS lookup, otherwise defaults) is used.
+The connection shall be established with transport layer security (TLS).
+Custom certificate authorities may be configured out-of-band.</p>
+          <p><code>pattern</code>: <code>^(?:(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*(?:[A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])(?::[0-9]{1,5})?$|^$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>application_server_kek_label</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>string</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The KEK label of the Application Server to use for wrapping the application session key.
+Stored in Join Server.</p>
+          <p><code>max_len</code>: <code>2048</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>application_server_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>string</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The AS-ID of the Application Server to use.
+Stored in Join Server.</p>
+          <p><code>max_len</code>: <code>100</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>join_server_address</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>string</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The address of the Join Server where this device is supposed to be registered.
+Stored in Entity Registry.
+The typical format of the address is &ldquo;host:port&rdquo;. If the port is omitted,
+the normal port inference (with DNS lookup, otherwise defaults) is used.
+The connection shall be established with transport layer security (TLS).
+Custom certificate authorities may be configured out-of-band.</p>
+          <p><code>pattern</code>: <code>^(?:(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*(?:[A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])(?::[0-9]{1,5})?$|^$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>locations</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>map of <code>string</code> to <a href="#message:Location"><code>Location</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Location of the device. Stored in Entity Registry.</p>
+            <p><code>max_len</code> (key): <code>36</code></p>
+            <p><code>pattern</code> (key): <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+        
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>picture</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:Picture"><code>Picture</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Stored in Entity Registry.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>supports_class_b</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>bool</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Whether the device supports class B.
+Copied on creation from template identified by version_ids, if any or from the home Network Server device profile, if any.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>supports_class_c</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>bool</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Whether the device supports class C.
+Copied on creation from template identified by version_ids, if any or from the home Network Server device profile, if any.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>lorawan_version</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#enum:MACVersion"><code>MACVersion</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>LoRaWAN MAC version. Stored in Network Server.
+Copied on creation from template identified by version_ids, if any or from the home Network Server device profile, if any.</p>
+          <p><code>defined_only</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>lorawan_phy_version</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#enum:PHYVersion"><code>PHYVersion</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>LoRaWAN PHY version. Stored in Network Server.
+Copied on creation from template identified by version_ids, if any or from the home Network Server device profile, if any.</p>
+          <p><code>defined_only</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>frequency_plan_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>string</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>ID of the frequency plan used by this device.
+Copied on creation from template identified by version_ids, if any or from the home Network Server device profile, if any.</p>
+          <p><code>max_len</code>: <code>64</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>min_frequency</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>uint64</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Minimum frequency the device is capable of using (Hz). Stored in Network Server.
+Copied on creation from template identified by version_ids, if any or from the home Network Server device profile, if any.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>max_frequency</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>uint64</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Maximum frequency the device is capable of using (Hz). Stored in Network Server.
+Copied on creation from template identified by version_ids, if any or from the home Network Server device profile, if any.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>supports_join</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>bool</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The device supports join (it&rsquo;s OTAA).
+Copied on creation from template identified by version_ids, if any or from the home Network Server device profile, if any.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>resets_join_nonces</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>bool</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Whether the device resets the join and dev nonces (not LoRaWAN compliant). Stored in Join Server.
+Copied on creation from template identified by version_ids, if any or from the home Network Server device profile, if any.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>root_keys</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:RootKeys"><code>RootKeys</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Device root keys. Stored in Join Server.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>net_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>bytes</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Home NetID. Stored in Join Server.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>mac_settings</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:MACSettings"><code>MACSettings</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Settings for how the Network Server handles MAC layer for this device. Stored in Network Server.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>mac_state</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:MACState"><code>MACState</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>MAC state of the device. Stored in Network Server.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>pending_mac_state</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:MACState"><code>MACState</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Pending MAC state of the device. Stored in Network Server.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>session</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:Session"><code>Session</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Current session of the device. Stored in Network Server and Application Server.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>pending_session</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:Session"><code>Session</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Pending session. Stored in Network Server and Application Server until RekeyInd is received.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>last_dev_nonce</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>uint32</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Last DevNonce used.
+This field is only used for devices using LoRaWAN version 1.1 and later.
+Stored in Join Server.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>used_dev_nonces</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>repeated <code>uint32</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Used DevNonces sorted in ascending order.
+This field is only used for devices using LoRaWAN versions preceding 1.1.
+Stored in Join Server.</p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>last_join_nonce</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>uint32</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Last JoinNonce/AppNonce(for devices using LoRaWAN versions preceding 1.1) used.
+Stored in Join Server.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>last_rj_count_0</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>uint32</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Last Rejoin counter value used (type 0/2).
+Stored in Join Server.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>last_rj_count_1</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>uint32</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Last Rejoin counter value used (type 1).
+Stored in Join Server.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>last_dev_status_received_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>google.protobuf.Timestamp</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Time when last DevStatus MAC command was received.
+Stored in Network Server.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>power_state</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#enum:PowerState"><code>PowerState</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The power state of the device; whether it is battery-powered or connected to an external power source.
+Received via the DevStatus MAC command at status_received_at.
+Stored in Network Server.</p>
+          <p><code>defined_only</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>battery_percentage</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>google.protobuf.FloatValue</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Latest-known battery percentage of the device.
+Received via the DevStatus MAC command at last_dev_status_received_at or earlier.
+Stored in Network Server.</p>
+          <p><code>gte</code>: <code>0</code></p>
+          <p><code>lte</code>: <code>1</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>downlink_margin</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>int32</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Demodulation signal-to-noise ratio (dB).
+Received via the DevStatus MAC command at last_dev_status_received_at.
+Stored in Network Server.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>queued_application_downlinks</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>repeated <a href="#message:ApplicationDownlink"><code>ApplicationDownlink</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Queued Application downlink messages. Stored in Application Server,
+which sets them on the Network Server.
+This field is deprecated and is always set equal to session.queued_application_downlinks.</p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>formatters</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:MessagePayloadFormatters"><code>MessagePayloadFormatters</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The payload formatters for this end device. Stored in Application Server.
+Copied on creation from template identified by version_ids.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>provisioner_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>string</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>ID of the provisioner. Stored in Join Server.</p>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$|^$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>provisioning_data</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>google.protobuf.Struct</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Vendor-specific provisioning data. Stored in Join Server.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>multicast</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>bool</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Indicates whether this device represents a multicast group.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>claim_authentication_code</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:EndDeviceAuthenticationCode"><code>EndDeviceAuthenticationCode</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Authentication code to claim ownership of the end device. Stored in Join Server.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>skip_payload_crypto</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>bool</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Skip decryption of uplink payloads and encryption of downlink payloads.
+This field is deprecated, use skip_payload_crypto_override instead.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>skip_payload_crypto_override</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>google.protobuf.BoolValue</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Skip decryption of uplink payloads and encryption of downlink payloads.
+This field overrides the application-level setting.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
 <h3 id="message:EndDeviceAuthenticationCode">Message <code>EndDeviceAuthenticationCode</code></h3>
 <p>Authentication code for end devices.</p>
-<table>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "value": "",
+  "valid_from": "0001-01-01T00:00:00Z",
+  "valid_to": "0001-01-01T00:00:00Z",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -2656,7 +2670,7 @@ This field overrides the application-level setting.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -2676,7 +2690,7 @@ This field overrides the application-level setting.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -2697,16 +2711,20 @@ This field overrides the application-level setting.</p>
 </table>
 
 
+<h3 id="message:EndDeviceIdentifiers">Message <code>EndDeviceIdentifiers</code></h3>
+
 <details><summary>Show object example</summary>
 <pre><code>{
-  "value": "",
-  "valid_from": "0001-01-01T00:00:00Z",
-  "valid_to": "0001-01-01T00:00:00Z",
+  "device_id": "",
+  "application_ids": {},
+  "dev_eui": "",
+  "join_eui": "",
+  "dev_addr": "",
 }</code></pre>
 </details>
 
-<h3 id="message:EndDeviceIdentifiers">Message <code>EndDeviceIdentifiers</code></h3>
-<table>
+<p><b>Fields:</b></p>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -2736,7 +2754,7 @@ This field overrides the application-level setting.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -2765,7 +2783,7 @@ This field overrides the application-level setting.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -2794,7 +2812,7 @@ This field overrides the application-level setting.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -2823,7 +2841,7 @@ This field overrides the application-level setting.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -2853,18 +2871,16 @@ This field overrides the application-level setting.</p>
 </table>
 
 
+<h3 id="message:EndDevices">Message <code>EndDevices</code></h3>
+
 <details><summary>Show object example</summary>
 <pre><code>{
-  "device_id": "",
-  "application_ids": {},
-  "dev_eui": "",
-  "join_eui": "",
-  "dev_addr": "",
+  "end_devices": [],
 }</code></pre>
 </details>
 
-<h3 id="message:EndDevices">Message <code>EndDevices</code></h3>
-<table>
+<p><b>Fields:</b></p>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -2894,15 +2910,21 @@ This field overrides the application-level setting.</p>
 </table>
 
 
+<h3 id="message:EndDeviceVersionIdentifiers">Message <code>EndDeviceVersionIdentifiers</code></h3>
+<p>Identifies an end device model with version information.</p>
+
 <details><summary>Show object example</summary>
 <pre><code>{
-  "end_devices": [],
+  "brand_id": "",
+  "model_id": "",
+  "hardware_version": "",
+  "firmware_version": "",
+  "band_id": "",
 }</code></pre>
 </details>
 
-<h3 id="message:EndDeviceVersionIdentifiers">Message <code>EndDeviceVersionIdentifiers</code></h3>
-<p>Identifies an end device model with version information.</p>
-<table>
+<p><b>Fields:</b></p>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -2932,7 +2954,7 @@ This field overrides the application-level setting.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -2962,7 +2984,7 @@ This field overrides the application-level setting.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -2991,7 +3013,7 @@ This field overrides the application-level setting.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3020,7 +3042,7 @@ This field overrides the application-level setting.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3050,18 +3072,17 @@ This field overrides the application-level setting.</p>
 </table>
 
 
+<h3 id="message:GetEndDeviceRequest">Message <code>GetEndDeviceRequest</code></h3>
+
 <details><summary>Show object example</summary>
 <pre><code>{
-  "brand_id": "",
-  "model_id": "",
-  "hardware_version": "",
-  "firmware_version": "",
-  "band_id": "",
+  "end_device_ids": {},
+  "field_mask": {},
 }</code></pre>
 </details>
 
-<h3 id="message:GetEndDeviceRequest">Message <code>GetEndDeviceRequest</code></h3>
-<table>
+<p><b>Fields:</b></p>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3090,7 +3111,7 @@ This field overrides the application-level setting.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3121,15 +3142,18 @@ See the API reference for which fields can be returned by the different services
 </table>
 
 
+<h3 id="message:KeyEnvelope">Message <code>KeyEnvelope</code></h3>
+
 <details><summary>Show object example</summary>
 <pre><code>{
-  "end_device_ids": {},
-  "field_mask": {},
+  "key": "",
+  "kek_label": "",
+  "encrypted_key": "",
 }</code></pre>
 </details>
 
-<h3 id="message:KeyEnvelope">Message <code>KeyEnvelope</code></h3>
-<table>
+<p><b>Fields:</b></p>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3158,7 +3182,7 @@ See the API reference for which fields can be returned by the different services
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3188,7 +3212,7 @@ See the API reference for which fields can be returned by the different services
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3218,16 +3242,20 @@ See the API reference for which fields can be returned by the different services
 </table>
 
 
+<h3 id="message:ListEndDevicesRequest">Message <code>ListEndDevicesRequest</code></h3>
+
 <details><summary>Show object example</summary>
 <pre><code>{
-  "key": "",
-  "kek_label": "",
-  "encrypted_key": "",
+  "application_ids": {},
+  "field_mask": {},
+  "order": "",
+  "limit": 0,
+  "page": 0,
 }</code></pre>
 </details>
 
-<h3 id="message:ListEndDevicesRequest">Message <code>ListEndDevicesRequest</code></h3>
-<table>
+<p><b>Fields:</b></p>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3256,7 +3284,7 @@ See the API reference for which fields can be returned by the different services
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3286,7 +3314,7 @@ See the API reference for which fields can be returned by the different services
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3317,7 +3345,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3347,7 +3375,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3377,20 +3405,39 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
 </table>
 
 
-<details><summary>Show object example</summary>
-<pre><code>{
-  "application_ids": {},
-  "field_mask": {},
-  "order": "",
-  "limit": 0,
-  "page": 0,
-}</code></pre>
-</details>
-
 <h3 id="message:MACParameters">Message <code>MACParameters</code></h3>
 <p>MACParameters represent the parameters of the device&rsquo;s MAC layer (active or desired).
 This is used internally by the Network Server.</p>
-<table>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "max_eirp": 0,
+  "adr_data_rate_index": "DATA_RATE_0",
+  "adr_tx_power_index": 0,
+  "adr_nb_trans": 0,
+  "adr_ack_limit": 0,
+  "adr_ack_delay": 0,
+  "rx1_delay": "RX_DELAY_0",
+  "rx1_data_rate_offset": "DATA_RATE_OFFSET_0",
+  "rx2_data_rate_index": "DATA_RATE_0",
+  "rx2_frequency": 0,
+  "max_duty_cycle": "DUTY_CYCLE_1",
+  "rejoin_time_periodicity": "REJOIN_TIME_0",
+  "rejoin_count_periodicity": "REJOIN_COUNT_16",
+  "ping_slot_frequency": 0,
+  "ping_slot_data_rate_index": "DATA_RATE_0",
+  "beacon_frequency": 0,
+  "channels": [],
+  "uplink_dwell_time": {},
+  "downlink_dwell_time": {},
+  "adr_ack_limit_exponent": {},
+  "adr_ack_delay_exponent": {},
+  "ping_slot_data_rate_index_value": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3419,7 +3466,7 @@ This is used internally by the Network Server.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3449,7 +3496,7 @@ This is used internally by the Network Server.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3479,7 +3526,7 @@ This is used internally by the Network Server.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3509,7 +3556,7 @@ This is used internally by the Network Server.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3539,7 +3586,7 @@ This field is deprecated, use adr_ack_limit_exponent instead.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3569,7 +3616,7 @@ This field is deprecated, use adr_ack_delay_exponent instead.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3599,7 +3646,7 @@ This field is deprecated, use adr_ack_delay_exponent instead.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3629,7 +3676,7 @@ This field is deprecated, use adr_ack_delay_exponent instead.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3659,7 +3706,7 @@ This field is deprecated, use adr_ack_delay_exponent instead.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3689,7 +3736,7 @@ This field is deprecated, use adr_ack_delay_exponent instead.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3719,7 +3766,7 @@ This field is deprecated, use adr_ack_delay_exponent instead.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3749,7 +3796,7 @@ This field is deprecated, use adr_ack_delay_exponent instead.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3779,7 +3826,7 @@ This field is deprecated, use adr_ack_delay_exponent instead.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3810,7 +3857,7 @@ This field is deprecated, use adr_ack_delay_exponent instead.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3840,7 +3887,7 @@ This field is deprecated, use ping_slot_data_rate_index_value instead.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3871,7 +3918,7 @@ This field is deprecated, use ping_slot_data_rate_index_value instead.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3902,7 +3949,7 @@ This field is deprecated, use ping_slot_data_rate_index_value instead.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3932,7 +3979,7 @@ If this field is not set, then the value is either unknown or irrelevant(Network
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3962,7 +4009,7 @@ If this field is not set, then the value is either unknown or irrelevant(Network
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -3991,7 +4038,7 @@ If this field is not set, then the value is either unknown or irrelevant(Network
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -4020,7 +4067,7 @@ If this field is not set, then the value is either unknown or irrelevant(Network
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -4050,906 +4097,7 @@ If this field is not set, then the value is either unknown or irrelevant(Network
 </table>
 
 
-<details><summary>Show object example</summary>
-<pre><code>{
-  "max_eirp": 0,
-  "adr_data_rate_index": "DATA_RATE_0",
-  "adr_tx_power_index": 0,
-  "adr_nb_trans": 0,
-  "adr_ack_limit": 0,
-  "adr_ack_delay": 0,
-  "rx1_delay": "RX_DELAY_0",
-  "rx1_data_rate_offset": "DATA_RATE_OFFSET_0",
-  "rx2_data_rate_index": "DATA_RATE_0",
-  "rx2_frequency": 0,
-  "max_duty_cycle": "DUTY_CYCLE_1",
-  "rejoin_time_periodicity": "REJOIN_TIME_0",
-  "rejoin_count_periodicity": "REJOIN_COUNT_16",
-  "ping_slot_frequency": 0,
-  "ping_slot_data_rate_index": "DATA_RATE_0",
-  "beacon_frequency": 0,
-  "channels": [],
-  "uplink_dwell_time": {},
-  "downlink_dwell_time": {},
-  "adr_ack_limit_exponent": {},
-  "adr_ack_delay_exponent": {},
-  "ping_slot_data_rate_index_value": {},
-}</code></pre>
-</details>
-
 <h3 id="message:MACSettings">Message <code>MACSettings</code></h3>
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>class_b_timeout</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>google.protobuf.Duration</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Maximum delay for the device to answer a MAC request or a confirmed downlink frame.
-If unset, the default value from Network Server configuration will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>ping_slot_periodicity</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:PingSlotPeriodValue"><code>PingSlotPeriodValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Periodicity of the class B ping slot.
-If unset, the default value from Network Server configuration will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>ping_slot_data_rate_index</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:DataRateIndexValue"><code>DataRateIndexValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Data rate index of the class B ping slot.
-If unset, the default value from Network Server configuration will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>ping_slot_frequency</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:FrequencyValue"><code>FrequencyValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Frequency of the class B ping slot (Hz).
-If unset, the default value from Network Server configuration will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>beacon_frequency</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:FrequencyValue"><code>FrequencyValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Frequency of the class B beacon (Hz).
-If unset, the default value from Network Server configuration will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>class_c_timeout</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>google.protobuf.Duration</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Maximum delay for the device to answer a MAC request or a confirmed downlink frame.
-If unset, the default value from Network Server configuration will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>rx1_delay</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:RxDelayValue"><code>RxDelayValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Class A Rx1 delay.
-If unset, the default value from Network Server configuration or regional parameters specification will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>rx1_data_rate_offset</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:DataRateOffsetValue"><code>DataRateOffsetValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Rx1 data rate offset.
-If unset, the default value from Network Server configuration will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>rx2_data_rate_index</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:DataRateIndexValue"><code>DataRateIndexValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Data rate index for Rx2.
-If unset, the default value from Network Server configuration or regional parameters specification will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>rx2_frequency</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:FrequencyValue"><code>FrequencyValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Frequency for Rx2 (Hz).
-If unset, the default value from Network Server configuration or regional parameters specification will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>factory_preset_frequencies</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>repeated <code>uint64</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>List of factory-preset frequencies.
-If unset, the default value from Network Server configuration or regional parameters specification will be used.</p>
-          <p><code>max_items</code>: <code>96</code></p>
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>max_duty_cycle</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:AggregatedDutyCycleValue"><code>AggregatedDutyCycleValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Maximum uplink duty cycle (of all channels).</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>supports_32_bit_f_cnt</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:BoolValue"><code>BoolValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Whether the device supports 32-bit frame counters.
-If unset, the default value from Network Server configuration will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>use_adr</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:BoolValue"><code>BoolValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Whether the Network Server should use ADR for the device.
-If unset, the default value from Network Server configuration will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>adr_margin</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>google.protobuf.FloatValue</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The ADR margin tells the network server how much margin it should add in ADR requests.
-A bigger margin is less efficient, but gives a better chance of successful reception.
-If unset, the default value from Network Server configuration will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>resets_f_cnt</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:BoolValue"><code>BoolValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Whether the device resets the frame counters (not LoRaWAN compliant).
-If unset, the default value from Network Server configuration will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>status_time_periodicity</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>google.protobuf.Duration</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The interval after which a DevStatusReq MACCommand shall be sent.
-If unset, the default value from Network Server configuration will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>status_count_periodicity</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><code>google.protobuf.UInt32Value</code></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Number of uplink messages after which a DevStatusReq MACCommand shall be sent.
-If unset, the default value from Network Server configuration will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>desired_rx1_delay</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:RxDelayValue"><code>RxDelayValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The Rx1 delay Network Server should configure device to use via MAC commands or Join-Accept.
-If unset, the default value from Network Server configuration or regional parameters specification will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>desired_rx1_data_rate_offset</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:DataRateOffsetValue"><code>DataRateOffsetValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The Rx1 data rate offset Network Server should configure device to use via MAC commands or Join-Accept.
-If unset, the default value from Network Server configuration will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>desired_rx2_data_rate_index</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:DataRateIndexValue"><code>DataRateIndexValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The Rx2 data rate index Network Server should configure device to use via MAC commands or Join-Accept.
-If unset, the default value from frequency plan, Network Server configuration or regional parameters specification will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>desired_rx2_frequency</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:FrequencyValue"><code>FrequencyValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The Rx2 frequency index Network Server should configure device to use via MAC commands.
-If unset, the default value from frequency plan, Network Server configuration or regional parameters specification will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>desired_max_duty_cycle</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:AggregatedDutyCycleValue"><code>AggregatedDutyCycleValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The maximum uplink duty cycle (of all channels) Network Server should configure device to use via MAC commands.
-If unset, the default value from Network Server configuration will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>desired_adr_ack_limit_exponent</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:ADRAckLimitExponentValue"><code>ADRAckLimitExponentValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The ADR ACK limit Network Server should configure device to use via MAC commands.
-If unset, the default value from Network Server configuration or regional parameters specification will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>desired_adr_ack_delay_exponent</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:ADRAckDelayExponentValue"><code>ADRAckDelayExponentValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The ADR ACK delay Network Server should configure device to use via MAC commands.
-If unset, the default value from Network Server configuration or regional parameters specification will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>desired_ping_slot_data_rate_index</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:DataRateIndexValue"><code>DataRateIndexValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The data rate index of the class B ping slot Network Server should configure device to use via MAC commands.
-If unset, the default value from Network Server configuration will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>desired_ping_slot_frequency</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:FrequencyValue"><code>FrequencyValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The frequency of the class B ping slot (Hz) Network Server should configure device to use via MAC commands.
-If unset, the default value from Network Server configuration or regional parameters specification will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>desired_beacon_frequency</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:FrequencyValue"><code>FrequencyValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The frequency of the class B beacon (Hz) Network Server should configure device to use via MAC commands.
-If unset, the default value from Network Server configuration will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table>
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>desired_max_eirp</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td><a href="#message:DeviceEIRPValue"><code>DeviceEIRPValue</code></a></td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Maximum EIRP (dBm).
-If unset, the default value from regional parameters specification will be used.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
 
 <details><summary>Show object example</summary>
 <pre><code>{
@@ -4985,11 +4133,914 @@ If unset, the default value from regional parameters specification will be used.
 }</code></pre>
 </details>
 
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>class_b_timeout</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>google.protobuf.Duration</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Maximum delay for the device to answer a MAC request or a confirmed downlink frame.
+If unset, the default value from Network Server configuration will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>ping_slot_periodicity</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:PingSlotPeriodValue"><code>PingSlotPeriodValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Periodicity of the class B ping slot.
+If unset, the default value from Network Server configuration will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>ping_slot_data_rate_index</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:DataRateIndexValue"><code>DataRateIndexValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Data rate index of the class B ping slot.
+If unset, the default value from Network Server configuration will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>ping_slot_frequency</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:FrequencyValue"><code>FrequencyValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Frequency of the class B ping slot (Hz).
+If unset, the default value from Network Server configuration will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>beacon_frequency</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:FrequencyValue"><code>FrequencyValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Frequency of the class B beacon (Hz).
+If unset, the default value from Network Server configuration will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>class_c_timeout</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>google.protobuf.Duration</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Maximum delay for the device to answer a MAC request or a confirmed downlink frame.
+If unset, the default value from Network Server configuration will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>rx1_delay</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:RxDelayValue"><code>RxDelayValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Class A Rx1 delay.
+If unset, the default value from Network Server configuration or regional parameters specification will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>rx1_data_rate_offset</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:DataRateOffsetValue"><code>DataRateOffsetValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Rx1 data rate offset.
+If unset, the default value from Network Server configuration will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>rx2_data_rate_index</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:DataRateIndexValue"><code>DataRateIndexValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Data rate index for Rx2.
+If unset, the default value from Network Server configuration or regional parameters specification will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>rx2_frequency</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:FrequencyValue"><code>FrequencyValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Frequency for Rx2 (Hz).
+If unset, the default value from Network Server configuration or regional parameters specification will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>factory_preset_frequencies</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>repeated <code>uint64</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>List of factory-preset frequencies.
+If unset, the default value from Network Server configuration or regional parameters specification will be used.</p>
+          <p><code>max_items</code>: <code>96</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>max_duty_cycle</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:AggregatedDutyCycleValue"><code>AggregatedDutyCycleValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Maximum uplink duty cycle (of all channels).</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>supports_32_bit_f_cnt</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:BoolValue"><code>BoolValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Whether the device supports 32-bit frame counters.
+If unset, the default value from Network Server configuration will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>use_adr</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:BoolValue"><code>BoolValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Whether the Network Server should use ADR for the device.
+If unset, the default value from Network Server configuration will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>adr_margin</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>google.protobuf.FloatValue</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The ADR margin tells the network server how much margin it should add in ADR requests.
+A bigger margin is less efficient, but gives a better chance of successful reception.
+If unset, the default value from Network Server configuration will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>resets_f_cnt</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:BoolValue"><code>BoolValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Whether the device resets the frame counters (not LoRaWAN compliant).
+If unset, the default value from Network Server configuration will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>status_time_periodicity</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>google.protobuf.Duration</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The interval after which a DevStatusReq MACCommand shall be sent.
+If unset, the default value from Network Server configuration will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>status_count_periodicity</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>google.protobuf.UInt32Value</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Number of uplink messages after which a DevStatusReq MACCommand shall be sent.
+If unset, the default value from Network Server configuration will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>desired_rx1_delay</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:RxDelayValue"><code>RxDelayValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The Rx1 delay Network Server should configure device to use via MAC commands or Join-Accept.
+If unset, the default value from Network Server configuration or regional parameters specification will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>desired_rx1_data_rate_offset</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:DataRateOffsetValue"><code>DataRateOffsetValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The Rx1 data rate offset Network Server should configure device to use via MAC commands or Join-Accept.
+If unset, the default value from Network Server configuration will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>desired_rx2_data_rate_index</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:DataRateIndexValue"><code>DataRateIndexValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The Rx2 data rate index Network Server should configure device to use via MAC commands or Join-Accept.
+If unset, the default value from frequency plan, Network Server configuration or regional parameters specification will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>desired_rx2_frequency</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:FrequencyValue"><code>FrequencyValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The Rx2 frequency index Network Server should configure device to use via MAC commands.
+If unset, the default value from frequency plan, Network Server configuration or regional parameters specification will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>desired_max_duty_cycle</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:AggregatedDutyCycleValue"><code>AggregatedDutyCycleValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The maximum uplink duty cycle (of all channels) Network Server should configure device to use via MAC commands.
+If unset, the default value from Network Server configuration will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>desired_adr_ack_limit_exponent</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:ADRAckLimitExponentValue"><code>ADRAckLimitExponentValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The ADR ACK limit Network Server should configure device to use via MAC commands.
+If unset, the default value from Network Server configuration or regional parameters specification will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>desired_adr_ack_delay_exponent</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:ADRAckDelayExponentValue"><code>ADRAckDelayExponentValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The ADR ACK delay Network Server should configure device to use via MAC commands.
+If unset, the default value from Network Server configuration or regional parameters specification will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>desired_ping_slot_data_rate_index</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:DataRateIndexValue"><code>DataRateIndexValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The data rate index of the class B ping slot Network Server should configure device to use via MAC commands.
+If unset, the default value from Network Server configuration will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>desired_ping_slot_frequency</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:FrequencyValue"><code>FrequencyValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The frequency of the class B ping slot (Hz) Network Server should configure device to use via MAC commands.
+If unset, the default value from Network Server configuration or regional parameters specification will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>desired_beacon_frequency</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:FrequencyValue"><code>FrequencyValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The frequency of the class B beacon (Hz) Network Server should configure device to use via MAC commands.
+If unset, the default value from Network Server configuration will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>desired_max_eirp</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><a href="#message:DeviceEIRPValue"><code>DeviceEIRPValue</code></a></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Maximum EIRP (dBm).
+If unset, the default value from regional parameters specification will be used.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
 <h3 id="message:MACState">Message <code>MACState</code></h3>
 <p>MACState represents the state of MAC layer of the device.
 MACState is reset on each join for OTAA or ResetInd for ABP devices.
 This is used internally by the Network Server.</p>
-<table>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "current_parameters": {},
+  "desired_parameters": {},
+  "device_class": "CLASS_A",
+  "lorawan_version": "MAC_UNKNOWN",
+  "last_confirmed_downlink_at": "0001-01-01T00:00:00Z",
+  "last_dev_status_f_cnt_up": 0,
+  "ping_slot_periodicity": {},
+  "pending_application_downlink": {},
+  "queued_responses": [],
+  "pending_requests": [],
+  "queued_join_accept": {},
+  "pending_join_request": {},
+  "rx_windows_available": false,
+  "recent_uplinks": [],
+  "recent_downlinks": [],
+  "last_network_initiated_downlink_at": "0001-01-01T00:00:00Z",
+  "rejected_adr_data_rate_indexes": [],
+  "rejected_adr_tx_power_indexes": [],
+  "rejected_frequencies": [],
+  "last_downlink_at": "0001-01-01T00:00:00Z",
+  "rejected_data_rate_ranges": {},
+  "last_adr_change_f_cnt_up": 0,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5019,7 +5070,7 @@ This is used internally by the Network Server.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5049,7 +5100,7 @@ This is used internally by the Network Server.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5085,7 +5136,7 @@ This is used internally by the Network Server.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5115,7 +5166,7 @@ This is used internally by the Network Server.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5144,7 +5195,7 @@ This is used internally by the Network Server.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5173,7 +5224,7 @@ This is used internally by the Network Server.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5202,7 +5253,7 @@ This is used internally by the Network Server.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5231,7 +5282,7 @@ This is used internally by the Network Server.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5262,7 +5313,7 @@ Regenerated on each uplink.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5293,7 +5344,7 @@ Regenerated on each downlink.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5323,7 +5374,7 @@ Set each time a (re-)join request accept is received from Join Server and remove
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5353,7 +5404,7 @@ Set each time a join-accept is scheduled and removed each time an uplink is rece
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5384,7 +5435,7 @@ Set to false every time a successful downlink scheduling attempt is made.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5415,7 +5466,7 @@ The number of messages stored may depend on configuration.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5446,7 +5497,7 @@ The number of messages stored may depend on configuration.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5475,7 +5526,7 @@ The number of messages stored may depend on configuration.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5509,7 +5560,7 @@ Elements are sorted in ascending order.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5542,7 +5593,7 @@ Elements are sorted in ascending order.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5573,7 +5624,7 @@ Elements are sorted in ascending order.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5602,7 +5653,7 @@ Elements are sorted in ascending order.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5633,7 +5684,7 @@ Elements are sorted in ascending order.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5663,35 +5714,19 @@ Elements are sorted in ascending order.</p>
 </table>
 
 
+<h3 id="message:MessagePayloadFormatters">Message <code>MessagePayloadFormatters</code></h3>
+
 <details><summary>Show object example</summary>
 <pre><code>{
-  "current_parameters": {},
-  "desired_parameters": {},
-  "device_class": "CLASS_A",
-  "lorawan_version": "MAC_UNKNOWN",
-  "last_confirmed_downlink_at": "0001-01-01T00:00:00Z",
-  "last_dev_status_f_cnt_up": 0,
-  "ping_slot_periodicity": {},
-  "pending_application_downlink": {},
-  "queued_responses": [],
-  "pending_requests": [],
-  "queued_join_accept": {},
-  "pending_join_request": {},
-  "rx_windows_available": false,
-  "recent_uplinks": [],
-  "recent_downlinks": [],
-  "last_network_initiated_downlink_at": "0001-01-01T00:00:00Z",
-  "rejected_adr_data_rate_indexes": [],
-  "rejected_adr_tx_power_indexes": [],
-  "rejected_frequencies": [],
-  "last_downlink_at": "0001-01-01T00:00:00Z",
-  "rejected_data_rate_ranges": {},
-  "last_adr_change_f_cnt_up": 0,
+  "up_formatter": "FORMATTER_NONE",
+  "up_formatter_parameter": "",
+  "down_formatter": "FORMATTER_NONE",
+  "down_formatter_parameter": "",
 }</code></pre>
 </details>
 
-<h3 id="message:MessagePayloadFormatters">Message <code>MessagePayloadFormatters</code></h3>
-<table>
+<p><b>Fields:</b></p>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5721,7 +5756,7 @@ Elements are sorted in ascending order.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5751,7 +5786,7 @@ Elements are sorted in ascending order.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5781,7 +5816,7 @@ Elements are sorted in ascending order.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5812,19 +5847,20 @@ Elements are sorted in ascending order.</p>
 </table>
 
 
-<details><summary>Show object example</summary>
-<pre><code>{
-  "up_formatter": "FORMATTER_NONE",
-  "up_formatter_parameter": "",
-  "down_formatter": "FORMATTER_NONE",
-  "down_formatter_parameter": "",
-}</code></pre>
-</details>
-
 <h3 id="message:RootKeys">Message <code>RootKeys</code></h3>
 <p>Root keys for a LoRaWAN device.
 These are stored on the Join Server.</p>
-<table>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "root_key_id": "",
+  "app_key": {},
+  "nwk_key": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5854,7 +5890,7 @@ These are stored on the Join Server.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5883,7 +5919,7 @@ These are stored on the Join Server.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5913,16 +5949,23 @@ These are stored on the Join Server.</p>
 </table>
 
 
+<h3 id="message:Session">Message <code>Session</code></h3>
+
 <details><summary>Show object example</summary>
 <pre><code>{
-  "root_key_id": "",
-  "app_key": {},
-  "nwk_key": {},
+  "dev_addr": "",
+  "keys": {},
+  "last_f_cnt_up": 0,
+  "last_n_f_cnt_down": 0,
+  "last_a_f_cnt_down": 0,
+  "last_conf_f_cnt_down": 0,
+  "started_at": "0001-01-01T00:00:00Z",
+  "queued_application_downlinks": [],
 }</code></pre>
 </details>
 
-<h3 id="message:Session">Message <code>Session</code></h3>
-<table>
+<p><b>Fields:</b></p>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5952,7 +5995,7 @@ Known by Network Server, Application Server and Join Server. Owned by Network Se
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -5981,7 +6024,7 @@ Known by Network Server, Application Server and Join Server. Owned by Network Se
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -6010,7 +6053,7 @@ Known by Network Server, Application Server and Join Server. Owned by Network Se
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -6039,7 +6082,7 @@ Known by Network Server, Application Server and Join Server. Owned by Network Se
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -6068,7 +6111,7 @@ Known by Network Server, Application Server and Join Server. Owned by Network Se
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -6097,7 +6140,7 @@ Known by Network Server, Application Server and Join Server. Owned by Network Se
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -6126,7 +6169,7 @@ Known by Network Server, Application Server and Join Server. Owned by Network Se
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -6157,23 +6200,22 @@ Known by Network Server, Application Server and Join Server. Owned by Network Se
 </table>
 
 
-<details><summary>Show object example</summary>
-<pre><code>{
-  "dev_addr": "",
-  "keys": {},
-  "last_f_cnt_up": 0,
-  "last_n_f_cnt_down": 0,
-  "last_a_f_cnt_down": 0,
-  "last_conf_f_cnt_down": 0,
-  "started_at": "0001-01-01T00:00:00Z",
-  "queued_application_downlinks": [],
-}</code></pre>
-</details>
-
 <h3 id="message:SessionKeys">Message <code>SessionKeys</code></h3>
 <p>Session keys for a LoRaWAN session.
 Only the components for which the keys were meant, will have the key-encryption-key (KEK) to decrypt the individual keys.</p>
-<table>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "session_key_id": "",
+  "f_nwk_s_int_key": {},
+  "s_nwk_s_int_key": {},
+  "nwk_s_enc_key": {},
+  "app_s_key": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -6204,7 +6246,7 @@ This ID can be used to request the keys from the Join Server in case the are los
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -6234,7 +6276,7 @@ This key is stored by the (forwarding) Network Server.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -6264,7 +6306,7 @@ This key is stored by the (serving) Network Server.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -6294,7 +6336,7 @@ This key is stored by the (serving) Network Server.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -6325,18 +6367,17 @@ This key is stored by the Application Server.</p>
 </table>
 
 
+<h3 id="message:SetEndDeviceRequest">Message <code>SetEndDeviceRequest</code></h3>
+
 <details><summary>Show object example</summary>
 <pre><code>{
-  "session_key_id": "",
-  "f_nwk_s_int_key": {},
-  "s_nwk_s_int_key": {},
-  "nwk_s_enc_key": {},
-  "app_s_key": {},
+  "end_device": {},
+  "field_mask": {},
 }</code></pre>
 </details>
 
-<h3 id="message:SetEndDeviceRequest">Message <code>SetEndDeviceRequest</code></h3>
-<table>
+<p><b>Fields:</b></p>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -6365,7 +6406,7 @@ This key is stored by the Application Server.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -6395,16 +6436,18 @@ See the API reference for which fields can be set on the different services.</p>
   </tbody>
 </table>
 
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "end_device": {},
-  "field_mask": {},
-}</code></pre>
-</details>
 
 <h3 id="message:UpdateEndDeviceRequest">Message <code>UpdateEndDeviceRequest</code></h3>
-<table>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "end_device": {},
+  "field_mask": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -6433,7 +6476,7 @@ See the API reference for which fields can be set on the different services.</p>
   </tbody>
 </table>
 
-<table>
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -6463,18 +6506,11 @@ See the API reference for which fields can be set on the different services.</p>
   </tbody>
 </table>
 
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "end_device": {},
-  "field_mask": {},
-}</code></pre>
-</details>
 
 <h2 id="enums">Enums</h2>
 
 <h3 id="enum:AggregatedDutyCycle">Enum <code>AggregatedDutyCycle</code></h3>
-<table>
+<table class="api">
   <thead>
     <tr>
       <th>Name</th>
@@ -6568,7 +6604,7 @@ See the API reference for which fields can be set on the different services.</p>
 
 
 <h3 id="enum:MACVersion">Enum <code>MACVersion</code></h3>
-<table>
+<table class="api">
   <thead>
     <tr>
       <th>Name</th>
@@ -6617,7 +6653,7 @@ See the API reference for which fields can be set on the different services.</p>
 
 
 <h3 id="enum:PHYVersion">Enum <code>PHYVersion</code></h3>
-<table>
+<table class="api">
   <thead>
     <tr>
       <th>Name</th>
@@ -6672,7 +6708,7 @@ See the API reference for which fields can be set on the different services.</p>
 
 <h3 id="enum:PowerState">Enum <code>PowerState</code></h3>
 <p>Power state of the device.</p>
-<table>
+<table class="api">
   <thead>
     <tr>
       <th>Name</th>
