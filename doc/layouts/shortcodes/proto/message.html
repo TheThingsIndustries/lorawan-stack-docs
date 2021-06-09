@@ -5,8 +5,26 @@
 <p>{{ . | markdownify }}</p>
 {{- end }}
 
+{{- if .oneofs }}
+<b>Restrictions:</b>
+{{- range .oneofs }}
+<ul>
+  <li>Only one of {{ range $i, $name := .field_names }}{{ if gt $i 0 }}, {{ end }}<code>{{ $name }}</code>{{ end}} can be set.</li>
+</ul>
+{{- end }}
+{{- end }}
+
+<details><summary>Show object example</summary>
+<pre><code>{
 {{- range .fields }}
-<table>
+  "{{ .name }}": {{ .default | jsonify }},
+{{- end }}
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+{{- range .fields }}
+<table class="api">
   <tbody>
     <tr>
       <th style="width: 150px">
@@ -63,31 +81,6 @@
   </tbody>
 </table>
 {{ end }}
-
-{{- if .oneofs }}
-<table>
-  <thead>
-    <th>Restrictions</th>
-  </thead>
-  <tbody>
-    {{- range .oneofs }}
-    <tr>
-      <td>
-        Only one of {{ range $i, $name := .field_names }}{{ if gt $i 0 }}, {{ end }}<code>{{ $name }}</code>{{ end}} can be set.
-      </td>
-    </tr>
-    {{- end }}
-  </tbody>
-</table>
-{{- end }}
-
-<details><summary>Show object example</summary>
-<pre><code>{
-{{- range .fields }}
-  "{{ .name }}": {{ .default | jsonify }},
-{{- end }}
-}</code></pre>
-</details>
 
 {{- else -}}
 {{ errorf "message %s of package %s not found: %s" $message $package .Position }}
