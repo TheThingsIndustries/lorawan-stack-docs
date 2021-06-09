@@ -18,14 +18,23 @@
 }
 
 .schema {
-  margin: 100px 0px;
+  display: flex;
+  width: 70%;
+  margin: 100px auto;
+  @media (max-width: 1440px) {
+    width: 100%;
+    margin: 50px auto;
+  }
 }
 
 .content-intro, .title-intro {
   display: flex;
   margin: auto;
-  max-width: 650px;
+  max-width: 70%;
   text-align: center;
+  @media (max-width: 1200px) {
+    max-width: 80%;
+  }
 }
 
 .has-vertical-space {
@@ -146,13 +155,128 @@ table.fixed td { overflow: auto; }
 
 .card {
   overflow: visible;
+  border-radius: .7rem;
+  box-shadow: 0 3px 10px 5px rgba(30, 93, 255, 0.04);
+  border: solid #D4D3D9 .5px;
+}
+
+.card-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title-content {
+  margin-bottom: 2em;
+}
+
+.whats-new-title {
+  font-size: 1.2rem;
+  font-family: "AvantGardePro";
+  color: $blue;
+}
+
+.see-more {
+  color: $blue;
+}
+
+.see-more:hover {
+  color: $blue-secondary;
+  text-decoration: underline;
+}
+
+.circle-more-updates {
+  border-radius: 50%;
+  background-color: white;
+  padding: 1em;
+  box-shadow: 0 3px 8px 5px rgba(30, 93, 255, 0.05);
+  text-align: center;
+  display: flex;
+}
+
+.circle-more-updates:hover {
+  transition: transform 100ms ease-out;
+  transform: scale(1.05);
+}
+
+.news-number {
+  font-size: 1.2rem;
+  color: $blue;
+  font-weight: bold;
+}
+
+.whats-new-background {
+  margin: 100px auto;
+  width: 100%;
+  border-radius: .7rem;
+  background-color: #F4F7FF;
+}
+
+.whats-new-header2 {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 1em 2em;
+}
+
+.whats-new-content2 {
+  display: flex;
+  justify-content: center;
+  padding: 0 1em 1em 1em;
+}
+
+.ul-whats-new {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ul-whats-new li {
+  background-color: white;
+  padding: 1em;
+  margin-right: 1rem;
+  border-radius: .7rem;
+  box-shadow: 0 3px 8px 5px rgba(30, 93, 255, 0.05);
+}
+
+.more-updates {
+  display: flex;
+  margin: auto;
+}
+
+.whats-new-background-800 {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .whats-new-background-800 {
+    display: flex;
+    margin: 75px auto;
+    width: 100%;
+    border-radius: .7rem;
+    background-color: #F4F7FF;
+    border: solid #1E5DFF .5px;
+  }
+
+  .whats-new-header-800 {
+    color: $blue;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1em;
+  }
+
+  .whats-new-background {
+    display: none;
+  }
 }
 
 .whats-new {
   position: relative;
-  max-height:25em;
+  max-height: 25em;
   overflow: hidden;
-  background-color: $blue-bg;
+  background-color: #F4F7FF;
   border-radius: .5rem;
   padding: 1.5rem 2rem;
   &:before {
@@ -163,7 +287,7 @@ table.fixed td { overflow: auto; }
     left: 0;
     bottom: 0;
     background: rgb(229,236,255);
-    background: linear-gradient(90deg, rgba(229,236,255,0) 72%, rgba(229,236,255,1) 100%);
+    background: linear-gradient(90deg, rgba(229,236,255,0) 100%, rgba(229,236,255,1) 100%);
     z-index: 1;
     pointer-events: none;
   }
@@ -239,7 +363,7 @@ table.fixed td { overflow: auto; }
       height: 10rem;
     }
     &:not(:last-child) {
-      margin-right: 1rem;
+      margin-right: 1rem
     }
     &:hover {
       transform: scale(1.02);
