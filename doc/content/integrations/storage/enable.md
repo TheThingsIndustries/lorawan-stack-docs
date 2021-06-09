@@ -5,14 +5,25 @@ summary: Enable Storage Integration for applications and end-devices.
 weight: 20
 ---
 
-The Storage Integration is implemented as an [Application Package]({{< ref "/reference/application-packages" >}}). In order to enable it for an application (or a single end device), you have to create a package association.
+The Storage Integration is implemented as an [Application Package]({{< ref "/reference/application-packages" >}}).
 
-{{< cli-only >}}
-
-{{< warning >}} You may need to update the CLI to use the new features. See instructions in [Installing the CLI]({{< ref "/getting-started/cli/installing-cli" >}}).
-{{</ warning >}}
+{{< note >}} Enabling Storage Integration for applications can be done using {{% tts %}} Console or CLI. Enabling Storage Integration for individual end devices is available only via CLI. {{</ note >}}
 
 ## Enable for an Application
+
+{{< tabs/container "Console" "CLI" >}}
+
+{{< tabs/tab "Console" >}}
+
+Navigate to **Applications** in the top menu and then select your application. On the left side, click **Integrations** and then **Storage Integration**.
+
+Click on **Activate Storage Integration** to enable the storage integration for your application.
+
+{{< figure src="activate-storage-integration.png" alt="Activate Storage Integration screen" >}}
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "CLI" >}}
 
 Set up a default association between the desired application and the `storage-integration` package.
 
@@ -24,7 +35,16 @@ $ ttn-lw-cli applications packages default-associations set "app1" 100 --package
 
 {{< warning >}} **Do not configure more than one default association for the same application**, since that will lead to storing duplicate messages in the persistent storage. {{</ warning >}}
 
+{{< /tabs/tab >}}
+
+{{< /tabs/container >}}
+
 ## Enable for an End Device
+
+{{< cli-only >}}
+
+{{< warning >}} You may need to update the CLI to use the new features. See instructions in [Installing the CLI]({{< ref "/getting-started/cli/installing-cli" >}}).
+{{</ warning >}}
 
 Set up an association between the desired end device and the `storage-integration` package.
 
@@ -38,7 +58,19 @@ $ ttn-lw-cli applications packages associations set "app1" "dev1" 100 --package-
 
 ## Disable the Storage Integration
 
-Delete the package association, or the default association:
+{{< tabs/container "Console" "CLI" >}}
+
+{{< tabs/tab "Console" >}}
+
+To disable the integration, you only need to click the **Deactivate Storage Integration** button:
+
+{{< figure src="activated-storage-integration.png" alt="Activated Storage Integration screen" >}}
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "CLI" >}}
+
+To disable the integration, delete the package association, or the default association:
 
 ```bash
 # List default associations
@@ -63,3 +95,7 @@ $ ttn-lw-cli applications packages default-associations list "app1"
 ```bash
 $ ttn-lw-cli applications packages default-associations delete "app1" 100
 ```
+
+{{< /tabs/tab >}}
+
+{{< /tabs/container >}}
