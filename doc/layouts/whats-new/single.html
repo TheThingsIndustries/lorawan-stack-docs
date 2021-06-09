@@ -1,12 +1,26 @@
 {{ define "main" }}
-<div class="docs-content">
-<h1 class="title is-size-2">{{ .Title }}
-</h1>
 
-<div class="content">
-  {{ .Content }}
+<div class="container" role="document">
+  <div class="columns my-0">
+      <div class="column is-one-fifth-tablet is-one-third sidebar-left">
+        {{ partial "sidebar/side-navigation.html" . }}
+      </div>
+      <div class="column sidebar-middle">
+        <div class="docs-content">
+        <h1 class="title is-size-2">{{ .Title }}
+        </h1>
+
+        <div class="content">
+          {{ .Content }}
+        </div>
+
+        {{ partial "feedback" . }}
+        </div>
+      </div>
+      <div class="column is-hidden-touch is-one-quarter is-one-fifth-widescreen sidebar-right">
+        {{ partial "sidebar/toc.html" . }}
+      </div>
+  </div>
 </div>
 
-{{ partial "feedback" . }}
-</div>
 {{ end }}
