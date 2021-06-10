@@ -9,6 +9,15 @@
       {{- range .Site.Menus.brand }}
       <a class="navbar-item{{ if $currentPage.IsMenuCurrent "brand" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a>
       {{- end }}
+      {{- if .Site.Params.search.enabled -}}
+      <div class="navbar-item navbar-search-brand">
+        <div class="field has-addons has-addons-centered">
+          <div class="control">
+            <input id="search-input-brand" class="input search-bar" type="text" placeholder="Search the docs..." type="text">
+          </div>
+        </div>
+      </div>
+      {{ end }}
       <span class="navbar-burger burger" data-target="topMenu">
         <span></span>
         <span></span>
@@ -21,6 +30,17 @@
         {{- range .Site.Menus.main }}
         <a class="navbar-item{{ if $currentPage.IsMenuCurrent "main" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a>
         {{- end }}
+
+        {{- if .Site.Params.search.enabled -}}
+          <div class="navbar-item navbar-search-menu">
+            <div class="field has-addons has-addons-centered">
+              <div class="control">
+                <input id="search-input-menu" class="input search-bar" type="text" placeholder="Search the docs..." type="text">
+              </div>
+            </div>
+          </div>
+        {{- end -}}
+
       </div>
       <div class="navbar-end">
         {{- if .Site.Menus.right }}
@@ -41,3 +61,21 @@
     </div>
   </div>
 </nav>
+
+{{- if .Site.Params.search.enabled -}}
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+  <script type="text/javascript">
+    docsearch({
+      apiKey: {{ .Site.Params.search.apikey }},
+      indexName: {{ .Site.Params.search.index }},
+      inputSelector: '#search-input-brand',
+      debug: false // Set debug to true if you want to inspect the dropdown.
+    });
+    docsearch({
+      apiKey: {{ .Site.Params.search.apikey }},
+      indexName: {{ .Site.Params.search.index }},
+      inputSelector: '#search-input-menu',
+      debug: false // Set debug to true if you want to inspect the dropdown.
+    });
+  </script>
+{{- end -}}
