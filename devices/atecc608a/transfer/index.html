@@ -24,6 +24,8 @@
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
+
+
 <body><nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
   <div class="container is-fluid">
     <div class="navbar-brand">
@@ -73,9 +75,9 @@ indexName: "thethingsstack",
 inputSelector: '#search-input',
 debug: false 
 });
-</script>
-<div class="container" role="document">
-  <div class="columns my-0">
+</script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
       <div class="column is-one-fifth-tablet is-one-third sidebar-left">
         
 
@@ -157,17 +159,17 @@ debug: false
 
 
       </div>
+      
       <div class="column sidebar-middle">
-
-<div class="docs-content">
-<h1 class="title is-size-2">Transfer to new Join Server
-  
-</h1>
-
-<h2 class="subtitle">
-  
-  
-  
+        <div class="docs-content">
+        <h1 class="title is-size-2">Transfer to new Join Server
+          
+        </h1>
+        
+        <h2 class="subtitle">
+          
+            
+            
 
 
 
@@ -196,14 +198,13 @@ debug: false
 </a>
 
 
-
-
-
-</h2>
-
-
-<div class="content">
-  <p>ATECC608A/B secure elements are provisioned to The Things Join Server. This Join Server supports activation with all LoRaWAN Backend Interfaces compliant Network Servers. You don&rsquo;t need to be a user of The Things Stack to activate devices with a secure element via The Things Join Server.</p>
+          
+          
+          
+        </h2>
+        
+        <div class="content">
+          <p>ATECC608A/B secure elements are provisioned to The Things Join Server. This Join Server supports activation with all LoRaWAN Backend Interfaces compliant Network Servers. You don&rsquo;t need to be a user of The Things Stack to activate devices with a secure element via The Things Join Server.</p>
 <p>In some scenarios, it is not feasible to use The Things Join Server. For instance, when the Network Server is deployed in a network with no internet access, when the LoRaWAN Network Server does not support the LoRaWAN Backend Interfaces, or when the LoRaWAN network operator wants to have access to the root keys.</p>
 <p>To use the ATECC608A/B secure elements in these scenarios, you can transfer the root keys from The Things Join Server to a new Join Server. There are two options for doing so, which are both explained in this section.</p>
 <h2 id="new-joineui">New <code>JoinEUI</code></h2>
@@ -226,22 +227,21 @@ debug: false
 
 <p>The second option is to rekey the secure elements. This works by sending an instruction to rekey to the end device as part of the LoRaWAN 1.1.1 join-accept. This instruction contains the new <code>JoinEUI</code> and a security cookie, or number used once (nonce), that the end device calculates as (non-secret) input to a key derivation function to derive new root keys. The join-accept does not contain the new root key(s): the ATECC608A/B is provisioned with a secret rekeying key from which new root keys can be derived.</p>
 <p>The requester can instruct The Things Join Server to rekey the end device. The requester must provide a new <code>JoinEUI</code> pointing to the new Join Server. The Things Join Server generates a new security cookie with which it derives the new root keys. The new root keys are exported as JWE (see above), that the requester can use to import the new root keys in the new Join Server. Whenever the end device joins next, The Things Join Server will send the rekey instruction as part of the join-accept. The end device will then use the security cookie from the rekey instruction to derive the new root keys. Also, the end device sets the new <code>JoinEUI</code> from the rekey instruction. The end device will then perform a second join-request which will be answered by the new Join Server.</p>
-</div>
-<div class="is-clearfix">
+        </div>
+        <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/devices/atecc608a/claim/">← Claim</a>
 <a class="button is-pulled-right" href="/docs/devices/best-practices/">Best Practices →</a>
 </div>
 
-<script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
 <script src="https://cdn.emojicom.io/embed/widget.js" async></script>
 
 <div class='feedback has-vertical-space'>
   <div id="emojicom-widget-inline"></div>
 </div>
-</div>
-
-
+        </div>
       </div>
+      
       <div class="column is-hidden-touch is-one-quarter is-one-fifth-widescreen sidebar-right">
         <nav class="toc" aria-label="Page navigation">
     <h2 class="title is-size-6">On this page</h2>
@@ -265,8 +265,10 @@ debug: false
   </nav>
 
       </div>
+      
   </div>
 </div>
+
 
 
 <footer class="footer">
