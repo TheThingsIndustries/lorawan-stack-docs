@@ -2,6 +2,7 @@
 title: "AWS IoT"
 description: ""
 weight: -1
+aliases: ["/integrations/aws-iot"]
 ---
 
 {{% tts %}} integrates directly with AWS IoT via a default integration that you deploy in your AWS account via CloudFormation.

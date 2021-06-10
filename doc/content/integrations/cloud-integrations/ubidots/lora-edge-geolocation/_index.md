@@ -4,6 +4,7 @@ description: ""
 weight: 70
 aliases:
   - /integrations/lr1110-geolocation
+  - /integrations/lora-edge-geolocation
 ---
 
 {{< figure src="LR1110.jpg" alt="LoRa Edge™ LR1110" class="float plain" >}}
@@ -12,7 +13,7 @@ This guide shows you an example of using {{% tts %}} integrations to interact wi
 
 <!--more-->
 
-[LoRa Edge™ LR1110](https://www.semtech.com/products/wireless-rf/lora-transceivers/lr1110) is a long range, ultra-low power transceiver designed by Semtech, offering Wi-Fi and GNSS geolocation capabilities. The [LoRa Basics™ Modem-E](https://lora-developers.semtech.com/uploads/documents/files/Understanding_LoRa_Basics_Modem-E_Sept2_Approvd-Final.pdf) is a software embedded inside LoRa Edge™ LR1110 that supports the LoRaWAN protocol stack, as well as the application layer functions and APIs. 
+[LoRa Edge™ LR1110](https://www.semtech.com/products/wireless-rf/lora-transceivers/lr1110) is a long range, ultra-low power transceiver designed by Semtech, offering Wi-Fi and GNSS geolocation capabilities. The [LoRa Basics™ Modem-E](https://lora-developers.semtech.com/uploads/documents/files/Understanding_LoRa_Basics_Modem-E_Sept2_Approvd-Final.pdf) is a software embedded inside LoRa Edge™ LR1110 that supports the LoRaWAN protocol stack, as well as the application layer functions and APIs.
 
 The [Device & Application Services with Geolocation for Modem-based Devices API](https://www.loracloud.com/documentation/device_management?url=v1.html) on LoRa Cloud™ allows interacting with Device & Application Services to make efficient use of the LoRa Edge™'s geolocation features.
 

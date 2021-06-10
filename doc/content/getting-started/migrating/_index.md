@@ -2,6 +2,7 @@
 title: "Migrating to The Things Stack"
 description: ""
 aliases: "/getting-started/migrating-from-networks"
+weight: 4
 ---
 
 This guide documents the process of migrating end devices and gateways to {{% tts %}}.

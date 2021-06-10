@@ -2,6 +2,7 @@
 title: "Managing Things"
 description: ""
 weight: 30
+aliases: ["/integrations/aws-iot/default/things"]
 ---
 
 The AWS IoT Integration for {{% tts %}} synchronizes the device registry: you can create and claim things in AWS IoT Core which trigger a Lambda function that creates or claims the device in {{% tts %}}.

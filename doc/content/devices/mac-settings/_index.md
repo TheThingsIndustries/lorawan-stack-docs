@@ -1,6 +1,7 @@
 ---
 title: "MAC Settings"
 description: ""
+weight: 8
 ---
 
 This section provides guidelines for configuring MAC settings for end devices from the CLI.

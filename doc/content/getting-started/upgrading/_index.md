@@ -2,6 +2,7 @@
 title: "Upgrading The Things Stack"
 description: ""
 distributions: ["Enterprise", "Open Source"]
+weight: 3
 ---
 
 Follow these instructions to upgrade an existing {{% tts %}} instance.

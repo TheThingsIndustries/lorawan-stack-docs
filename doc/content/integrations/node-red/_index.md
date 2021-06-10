@@ -1,5 +1,5 @@
 ---
-title: "Node-RED Integration"
+title: "Node-RED"
 description: ""
 weight: 60
 ---

@@ -2,6 +2,7 @@
 title: "Troubleshooting AWS IoT Integration"
 description: ""
 weight: 80
+aliases: ["/integrations/aws-iot/default/troubleshooting"]
 ---
 
 The AWS IoT Integration for {{% tts %}} puts logs to AWS CloudWatch where you can find detailed traces and errors.

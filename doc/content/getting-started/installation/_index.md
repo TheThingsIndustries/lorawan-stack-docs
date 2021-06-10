@@ -2,6 +2,7 @@
 title: "Installing The Things Stack"
 description: ""
 distributions: ["Enterprise", "Open Source"]
+weight: -1
 ---
 
 This is a guide for setting up a private LoRaWAN network server using {{% tts %}} for LoRaWAN.

@@ -5,6 +5,7 @@ distributions: ["Cloud", "Dedicated Cloud", "Enterprise", "Community"]
 weight: 1
 aliases:
   - "/integrations/pubsub/aws-iot/"
+  - "/integrations/aws-iot/default/"
 ---
 
 The key features of the Default Integration are:

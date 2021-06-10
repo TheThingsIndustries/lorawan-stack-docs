@@ -3,13 +3,14 @@ title: "Application Server Telemetry"
 description: ""
 distributions: "AWS Launcher"
 deprecated_in_version: "3.11.1"
+aliases: ["/integrations/aws-iot/application-server-telemetry"]
 ---
 
 {{% tts %}} supports publishing of uplink messages directly to the AWS IoT suite.
 
 {{< warning >}} This integration will be removed in a next version. Please switch to the [Default Integration]({{< relref "../default" >}}) instead. {{</ warning >}}
 
-AWS IoT suite can be used to subscribe to detailed uplink messages as well as get insights into aggregated metrics of your uplink data. 
+AWS IoT suite can be used to subscribe to detailed uplink messages as well as get insights into aggregated metrics of your uplink data.
 
 {{< note >}} This only works if {{% tts %}} runs in your AWS account, i.e. in a Enterprise or AWS Launcher deployment. When using the [AWS Marketplace AMI listing]({{< ref "/getting-started/aws/ami" >}}), the **AWS IoT Telemetry** option in the CloudFormation template must be set to **true** during the deployment phase. {{</ note >}}
 
@@ -18,8 +19,8 @@ AWS IoT suite can be used to subscribe to detailed uplink messages as well as ge
 1. Login to the AWS Console in the *same region* as where the CloudFormation template is deployed.
 2. Search for **IoT Core** service and click to enter the IoT Core window.
 3. On the left-hand panel, select the **Test** option. In the central panel, choose **Subscribe to a topic**.
-4. In the **Subscription topic** field enter `lorawan/<cloud-formation-stack-name>/<application-id>/things/<device-id>/up` to subscribe to the uplinks for a particular device. 
-For example, if your CloudFormation stack name is `my-lorawan-server`, the application ID is `my-motion-sensors` and the device ID is `my-motion-sensor-1`, then the topic would be `lorawan/my-lorawan-server/my-motion-sensors/things/my-motion-sensor-1/up`. 
+4. In the **Subscription topic** field enter `lorawan/<cloud-formation-stack-name>/<application-id>/things/<device-id>/up` to subscribe to the uplinks for a particular device.
+For example, if your CloudFormation stack name is `my-lorawan-server`, the application ID is `my-motion-sensors` and the device ID is `my-motion-sensor-1`, then the topic would be `lorawan/my-lorawan-server/my-motion-sensors/things/my-motion-sensor-1/up`.
 When the device sends an uplink message, it will be displayed in this window in the preferred format.
 The following is an example payload in JSON format:
 ```

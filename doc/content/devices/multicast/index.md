@@ -2,6 +2,7 @@
 title: "Multicast"
 description: ""
 aliases: ["devices/class-c-multicast"]
+weight: 6
 ---
 
 It is also possible to create a [Class B]({{< ref "devices/class-b" >}}) or [Class C]({{< ref "devices/class-c" >}}) multicast group to send downlink messages to a group of end devices. A multicast group is a virtual ABP device (i.e. shared session keys), does not support uplink, confirmed downlink nor MAC commands.
