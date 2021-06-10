@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>AWS IoT | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/" />
+  <link rel="alternate icon" href="/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.251cfdf7755320b8cba045b014804ef47a48f9a110dbff8aa5be364cb081cf3c.css" integrity="sha256-JRz993VTILjLoEWwFIBO9HpI&#43;aEQ2/&#43;Kpb42TLCBzzw=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="AWS IoT">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="AWS IoT">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/">
+  <meta name="twitter:title" content="AWS IoT" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body><nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.13</p>
+      </a><div class="navbar-item navbar-search-brand">
+        <div class="field has-addons has-addons-centered">
+          <div class="control">
+            <input id="search-input-brand" class="input search-bar" type="text" placeholder="Search the docs..." type="text">
+          </div>
+        </div>
+      </div>
+      
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a><div class="navbar-item navbar-search-menu">
+            <div class="field has-addons has-addons-centered">
+              <div class="control">
+                <input id="search-input-menu" class="input search-bar" type="text" placeholder="Search the docs..." type="text">
+              </div>
+            </div>
+          </div></div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="/docs/download/">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+  <script type="text/javascript">
+    docsearch({
+      apiKey: "4372282a02970d8402d43457bf95d486",
+      indexName: "thethingsstack",
+      inputSelector: '#search-input-brand',
+      debug: false 
+    });
+    docsearch({
+      apiKey: "4372282a02970d8402d43457bf95d486",
+      indexName: "thethingsstack",
+      inputSelector: '#search-input-menu',
+      debug: false 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-one-fifth-tablet is-one-third sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Integrations</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/integrations/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/" class="">Adding Applications</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/adding-integrations/" class="">Adding Integrations</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/" class="">HTTP Webhooks</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/" class="">Cloud Integrations</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/" class="is-active">AWS IoT</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/default/" class="">Default Integration</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/application-server-telemetry/" class="">Application Server Telemetry</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/akenza-core/" class="">Akenza Core</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/datacake/" class="">Datacake</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/dezem/" class="">deZem</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/influxdb-cloud/" class="">InfluxDB Cloud 2.0</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/microsoft-azure/" class="">Microsoft Azure</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/qubitro/" class="">Qubitro</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/tagoio/" class="">TagoIO</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thethingsio/" class="">thethings.iO</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingsboard/" class="">ThingsBoard</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thingspeak/" class="">ThingSpeak</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ubidots/" class="">Ubidots</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/uib/" class="">UIB</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/" class="">MQTT Server</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/pubsub/" class="">Pub/Sub</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/node-red/" class="">Node-RED</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/ifttt/" class="">IFTTT</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/" class="">Payload Formatters</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/storage/" class="">Storage Integration</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column sidebar-middle">
+        <div class="docs-content">
+        <h1 class="title is-size-2">AWS IoT
+          
+        </h1>
+        
+        <div class="content">
+          <p>The Things Stack integrates directly with AWS IoT via a default integration that you deploy in your AWS account via CloudFormation.</p>
+<p>You can also configure The Things Stack to connect to your AWS IoT Core endpoint via AWS access keys and role-based access control using custom configuration.</p>
+<p>When running The Things Stack in your AWS account, you can publish Application Server telemetry to your IoT Core endpoint.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ol>
+<li>You need to have The Things Stack deployed in AWS. See the <a href="https://www.thethingsindustries.com/docs/getting-started/aws/">AWS</a> guide to learn how.</li>
+</ol>
+<h2 id="default-integration">Default Integration</h2>
+<p>
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud, Dedicated Cloud, Enterprise and Community Only">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_dedicated_cloud.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_ttn.svg"></img>
+
+</a>
+
+
+ The recommended way to integrate with AWS IoT is by using the <strong>Default Integration</strong> for The Things Stack. This integration is the most feature rich and supports all deployments of The Things Stack. The Default Integration comes with a AWS CloudFormation template to deploy in your AWS account.</p>
+<p><a href="/docs/integrations/cloud-integrations/aws-iot/default/">Learn how to set up the default AWS IoT integration</a></p>
+<h2 id="application-server-telemetry">Application Server Telemetry</h2>
+<p>
+
+
+
+
+
+
+  
+    
+  
+
+
+
+  
+
+<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="AWS Launcher Only">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_aws.svg"></img>
+
+</a>
+
+
+ <span class="tag is-danger is-light">Deprecated in 3.11.1</span>
+
+ This is a simple integration that only supports publishing uplink messages and requires The Things Stack to run in your AWS account. This is typically only used for <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ami/">AWS Marketplace AMI</a> deployments.</p>
+<p><a href="/docs/integrations/cloud-integrations/aws-iot/application-server-telemetry/">Learn how to use Application Server Telemetry</a></p>
+        </div>
+        
+          <div class="columns is-multiline">
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/default/">Default Integration</a>
+        </h1>
+        
+        <h2 class="subtitle">
+          
+            
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud, Dedicated Cloud, Enterprise and Community Only">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_dedicated_cloud.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_ttn.svg"></img>
+
+</a>
+
+
+          
+          
+          
+        </h2>
+        
+        <div class="content has-text-grey">
+          The key features of the Default Integration are:
+ Handling uplink and downlink messages: The Things Stack publishes uplink messages to IoT Core and subscribes to downlink messages Creating and claiming devices: manage things in IoT Core, or claim things securely on The Things Join Server by proving ownership Encrypting and decrypting message payloads: leverage true LoRaWAN end-to-end encryption by unwrapping the AppSKey from the Join Server Updating device state in shadow: monitor devices using useful metrics reported in the shadow state, like signal quality and number of covering gateways  This integration comes with a AWS CloudFormation template to deploy in your AWS account.
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/default/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/application-server-telemetry/">Application Server Telemetry</a>
+        </h1>
+        
+        <h2 class="subtitle">
+          
+            
+
+  
+
+
+
+
+
+  
+    
+  
+
+
+
+  
+
+<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="AWS Launcher Only">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_aws.svg"></img>
+
+</a>
+
+
+          
+          
+          
+            <span class="tag is-danger is-light">Deprecated in 3.11.1</span>
+
+          
+        </h2>
+        
+        <div class="content has-text-grey">
+          The Things Stack supports publishing of uplink messages directly to the AWS IoT suite.
+Warning: This integration will be removed in a next version. Please switch to the Default Integration instead.  AWS IoT suite can be used to subscribe to detailed uplink messages as well as get insights into aggregated metrics of your uplink data.
+Note: This only works if The Things Stack runs in your AWS account, i.e. in a Enterprise or AWS Launcher deployment.
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/application-server-telemetry/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+        
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/">← Cloud Integrations</a>
+<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/aws-iot/default/">Default Integration →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-one-quarter is-one-fifth-widescreen sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#prerequisites'>Prerequisites</a></li>
+    
+      
+      <li><a href='#default-integration'>Default Integration</a></li>
+    
+      
+      <li><a href='#application-server-telemetry'>Application Server Telemetry</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Nejra Selimović on 10 Jun 2021.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/aea847e4a5b06db18fe91950625da9cc60eaf291">
+      Docs reorganization (#374)
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/cloud-integrations/aws-iot/_index.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.af1cdce2271a42369c7c022fb683df665bf882e1fdc766a89a6ee99196bc4f9e.js" integrity="sha256-rxzc4icaQjacfAIvtoPfZlv4guH9x2aomm7pkZa8T54=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>MQTTBox | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/mqtt/mqtt-clients/mqttbox/" />
+  <link rel="alternate icon" href="/docs/favicon.ico">
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.251cfdf7755320b8cba045b014804ef47a48f9a110dbff8aa5be364cb081cf3c.css" integrity="sha256-JRz993VTILjLoEWwFIBO9HpI&#43;aEQ2/&#43;Kpb42TLCBzzw=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="MQTTBox">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="MQTTBox">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/mqtt/mqtt-clients/mqttbox/">
+  <meta name="twitter:title" content="MQTTBox" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body><nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.13</p>
+      </a><div class="navbar-item navbar-search-brand">
+        <div class="field has-addons has-addons-centered">
+          <div class="control">
+            <input id="search-input-brand" class="input search-bar" type="text" placeholder="Search the docs..." type="text">
+          </div>
+        </div>
+      </div>
+      
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a><div class="navbar-item navbar-search-menu">
+            <div class="field has-addons has-addons-centered">
+              <div class="control">
+                <input id="search-input-menu" class="input search-bar" type="text" placeholder="Search the docs..." type="text">
+              </div>
+            </div>
+          </div></div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="/docs/download/">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+  <script type="text/javascript">
+    docsearch({
+      apiKey: "4372282a02970d8402d43457bf95d486",
+      indexName: "thethingsstack",
+      inputSelector: '#search-input-brand',
+      debug: false 
+    });
+    docsearch({
+      apiKey: "4372282a02970d8402d43457bf95d486",
+      indexName: "thethingsstack",
+      inputSelector: '#search-input-menu',
+      debug: false 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-one-fifth-tablet is-one-third sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Integrations</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/integrations/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/" class="">Adding Applications</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/adding-integrations/" class="">Adding Integrations</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/" class="">HTTP Webhooks</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/" class="">Cloud Integrations</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/" class="">MQTT Server</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/mqtt-clients/" class="">Integrations with MQTT Clients</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/mqtt-clients/eclipse-mosquitto/" class="">Eclipse Mosquitto</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/mqtt-clients/eclipse-paho/" class="">Eclipse Paho</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/mqtt-clients/hivemq/" class="">HiveMQ</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/mqtt-clients/mqttbox/" class="is-active">MQTTBox</a>
+    
+    
+
+
+
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/pubsub/" class="">Pub/Sub</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/node-red/" class="">Node-RED</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/ifttt/" class="">IFTTT</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/" class="">Payload Formatters</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/storage/" class="">Storage Integration</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column sidebar-middle">
+        <div class="docs-content">
+        <h1 class="title is-size-2">MQTTBox
+          
+        </h1>
+        
+        <div class="content">
+          <p><a href="http://workswithweb.com/mqttbox.html">MQTTBox</a> is a cross platform application that makes it simple to create MQTT clients, virtual device networks, and load test MQTT devices and brokers.</p>
+<p>In this guide, we show how to create an MQTT client for subscribing or publishing to topics used by The Things Stack <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a>.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The examples in this guide are suitable for The Things Stack Open Source deployment. If you are using a different The Things Stack deployment, make sure your read a <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#note-on-using-the-tenant-id">Note on Using the tenant ID</a>.
+</div>
+
+<h2 id="prerequisites">Prerequisites</h2>
+<ol>
+<li><a href="http://workswithweb.com/html/mqttbox/downloads.html">MQTTBox app</a> installed on your system.</li>
+</ol>
+<h2 id="configuring-mqttbox">Configuring MQTTBox</h2>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  This section follows the examples in the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a> guide.
+</div>
+
+<p>In the MQTTBox application, click the <strong>Create MQTT Client</strong> button on the left to add a new MQTT client. Give a name to your MQTT client by filling in the <strong>MQTT Client Name</strong> field. Choose <strong>mqtt / tcp</strong> from the <strong>Protocol</strong> drop down list, and enter the <strong>Public address</strong> of your The Things Stack instance in the <strong>Host</strong> field. Do the same for the <strong>Username</strong> and <strong>Password</strong> fields.</p>
+<figure>
+    <img src="mqttbox-config.png"
+         alt="MQTTBox client configuration"/> 
+</figure>
+
+<p>If you want to enable TLS for security, choose <strong>mqtt / tls</strong> as <strong>Protocol</strong> and use the <strong>Public TLS address</strong> of The Things Stack MQTT Server for <strong>Host</strong> instead. You will also have to upload at least the <strong>CA file</strong> associated with your The Things Stack deployment.</p>
+<figure>
+    <img src="mqttbox-tls-config.png"
+         alt="MQTTBox TLS client configuration"/> 
+</figure>
+
+<p>You may leave the other fields empty. Click <strong>Save</strong> to save the configuration.</p>
+<p>If the MQTTBox client successfully connects to The Things Stack MQTT Server, the <strong>Connected</strong> status button will be visible in the upper right. You can also use this button do disconnect.</p>
+<p>Once connected, you can proceed with configuring the publishers or subscribers.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  You can add multiple MQTT clients, as well as multiple publishers and subscribers within those clients.
+</div>
+
+<h2 id="subscribe-to-upstream-traffic">Subscribe to Upstream Traffic</h2>
+<p>To listen to messages being sent by your device and published by the The Things Stack MQTT Server, select <strong>Add subscriber</strong> and fill in the <strong>Topic to subscribe</strong> field with the name of topic you wish to subscribe to.</p>
+<p>In this section, we use the <code>v3/{application id}/devices/{device id}/up</code> topic structure for listening to uplink messages.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  See <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#subscribing-to-upstream-traffic">Subscribing to Upstream Traffic</a> section of the MQTT Server guide for a list of available topics you can subscribe to.
+</div>
+
+<p>Choose an appropriate <strong>QoS</strong> value from the list, click the <strong>Subscribe</strong> button and messages from The Things Stack will begin arriving shortly.</p>
+<figure>
+    <img src="subscribe.png"
+         alt="Subscribe"/> 
+</figure>
+
+<h2 id="schedule-downlink-messages">Schedule Downlink Messages</h2>
+<p>To send messages to your end device, you need to schedule a downlink message as described in the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#publishing-downlink-traffic">Publishing Downlink Traffic</a> section of the MQTT Server guide. You can achieve this by adding and configuring a publisher in the MQTTBox application.</p>
+<p>Fill in the <strong>Topic to publish</strong> field with <code>v3/{application id}/devices/{device id}/down/push</code> and replace the variables with their values from the The Things Stack Console.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  See the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#publishing-downlink-traffic">Publishing Downlink Traffic</a> section to learn about using <code>/replace</code> instead of <code>/push</code>.
+</div>
+
+<p>Choose an appropriate <strong>QoS</strong> value from the drop down menu.</p>
+<p>You can define the payload in multiple formats. In this guide, we use the <strong>Strings / JSON / XML / Characters</strong> for <strong>Payload Type</strong>.</p>
+<p>To send an example downlink, paste the following content in the <strong>Payload</strong> field:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;downlinks&#34;</span><span class="p">:</span> <span class="p">[{</span>
+    <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;vu8=&#34;</span><span class="p">,</span>
+    <span class="nt">&#34;priority&#34;</span><span class="p">:</span> <span class="s2">&#34;NORMAL&#34;</span>
+  <span class="p">}]</span>
+<span class="p">}</span>
+</code></pre></div><p>Click the <strong>Publish</strong> button and a message with the hexadecimal payload <code>BE EF</code> will be scheduled for sending to your end device.</p>
+<figure>
+    <img src="publish.png"
+         alt="Publish"/> 
+</figure>
+        </div>
+        
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/integrations/mqtt/mqtt-clients/hivemq/">← HiveMQ</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-one-quarter is-one-fifth-widescreen sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#prerequisites'>Prerequisites</a></li>
+    
+      
+      <li><a href='#configuring-mqttbox'>Configuring MQTTBox</a></li>
+    
+      
+      <li><a href='#subscribe-to-upstream-traffic'>Subscribe to Upstream Traffic</a></li>
+    
+      
+      <li><a href='#schedule-downlink-messages'>Schedule Downlink Messages</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Nejra Selimović on 10 Jun 2021.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/aea847e4a5b06db18fe91950625da9cc60eaf291">
+      Docs reorganization (#374)
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/mqtt/mqtt-clients/mqttbox/_index.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.af1cdce2271a42369c7c022fb683df665bf882e1fdc766a89a6ee99196bc4f9e.js" integrity="sha256-rxzc4icaQjacfAIvtoPfZlv4guH9x2aomm7pkZa8T54=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>
