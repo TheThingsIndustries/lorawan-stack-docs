@@ -51,8 +51,8 @@ You can control the url of the assets folder that the Device Claiming Server fro
 
 - `dcs.ui.assets-base-url`: The base URL to the page assets
 - `dcs.ui.branding-base-url`: The base URL to the branding assets
-- `dcs.ui.branding-cluster-id`: The cluster ID to show below the logo {{< distributions "Cloud" "Enterprise" >}}
-- `dcs.ui.branding-text`: The branding text to show below the logo {{< distributions "Cloud" "Enterprise" >}}
+- `dcs.ui.branding-cluster-id` {{< distributions "Cloud" "Enterprise" >}}: The cluster ID to show below the logo 
+- `dcs.ui.branding-text` {{< distributions "Cloud" "Enterprise" >}}: The branding text to show below the logo 
 - `dcs.ui.icon-prefix`: The prefix to put before the page icons (favicon.ico, touch-icon.png, og-image.png)
 - `dcs.ui.canonical-url`: The page canonical URL
 - `dcs.ui.descriptions`: The page description

@@ -3,17 +3,17 @@ title: "Packet Broker Agent Options"
 description: ""
 ---
 
-## Registration Options {{< new-in-version "3.12.0" >}}
+## Registration Options
 
-- `pba.registration.name`: Friendly name to register with Packet Broker
-- `pba.registration.administrative-contact.email`: Email address of the administrative contact person or mailing group
-- `pba.registration.technical-contact.email`: Email address of the technical contact person or mailing group
-- `pba.registration.listed`: Indicates whether the Home Network is listed in the Packet Broker catalog. Set this to `false` to connect to Packet Broker but to stay private to other networks
+- `pba.registration.name` {{< new-in-version "3.12.0" >}}: Friendly name to register with Packet Broker
+- `pba.registration.administrative-contact.email` {{< new-in-version "3.12.0" >}}: Email address of the administrative contact person or mailing group
+- `pba.registration.technical-contact.email` {{< new-in-version "3.12.0" >}}: Email address of the technical contact person or mailing group
+- `pba.registration.listed` {{< new-in-version "3.12.0" >}}: Indicates whether the Home Network is listed in the Packet Broker catalog. Set this to `false` to connect to Packet Broker but to stay private to other networks
 
 ## Connection Options
 
-- `pba.iam-address`: Address of Packet Broker IAM {{< new-in-version "3.12.0" >}}
-- `pba.control-plane-address`: Address of Packet Broker Control Plane {{< new-in-version "3.12.0" >}}
+- `pba.iam-address` {{< new-in-version "3.12.0" >}}: Address of Packet Broker IAM
+- `pba.control-plane-address` {{< new-in-version "3.12.0" >}}: Address of Packet Broker Control Plane
 - `pba.data-plane-address`: Address of Packet Broker Data Plane. See [Packet Broker Clients](https://github.com/packetbroker/pb) for available cluster addresses
 - `pba.insecure`: Connect without using TLS (only for test environments)
 - `pba.net-id`: LoRa Alliance NetID
@@ -33,9 +33,9 @@ description: ""
 - `pba.forwarder.enable`: Enable Forwarder role
 - `pba.forwarder.worker-pool.limit`: Limit of active workers concurrently forwarding uplink messages and processing downlink message
 - `pba.forwarder.token-key`: AES 128 or 256-bit key for encrypting uplink token
-- `pba.forwarder.include-gateway-eui`: Indicates whether to include the gateway EUI in forwarded uplink messages {{< new-in-version "3.12.0" >}}
-- `pba.forwarder.include-gateway-id`: Indicates whether to include the gateway ID (plain or hashed) in forwarded uplink messages {{< new-in-version "3.12.0" >}}
-- `pba.forwarder.hash-gateway-id`: Indicates whether the forwarded gateway ID should be hashed. This setting is ineffective if `include-gateway-id` is `false` {{< new-in-version "3.12.0" >}}
+- `pba.forwarder.include-gateway-eui` {{< new-in-version "3.12.0" >}}: Indicates whether to include the gateway EUI in forwarded uplink messages
+- `pba.forwarder.include-gateway-id` {{< new-in-version "3.12.0" >}}: Indicates whether to include the gateway ID (plain or hashed) in forwarded uplink messages
+- `pba.forwarder.hash-gateway-id` {{< new-in-version "3.12.0" >}}: Indicates whether the forwarded gateway ID should be hashed. This setting is ineffective if `include-gateway-id` is `false`
 
 ## Home Network Options
 

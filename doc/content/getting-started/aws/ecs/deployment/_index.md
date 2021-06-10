@@ -247,9 +247,9 @@ For all services: the official image is `docker.io/thethingsindustries/lorawan-s
 
 >We recommend to start with 2 instances of each service. For some services it is not possible (yet) to deploy more than one instance.
 
-## Gateway Configuration Service (optional) {{< new-in-version "3.11.3" >}} {#gateway-configuration-service}
+## Gateway Configuration Service (optional) 
 
-The `5-3d-ecs-gcs-service` template creates a stand-alone Gateway Configuration Server (GCS) service with a separate console.
+{{< new-in-version "3.11.3" >}} The `5-3d-ecs-gcs-service` template creates a stand-alone Gateway Configuration Server (GCS) service with a separate console.
 
 > The Gateway Server instances that are deployed by `5-4-ecs-services` already contain GCS services within them. This template is for a stand-alone GCS that may be deployed as a separate cluster with dedicated DNS.
 

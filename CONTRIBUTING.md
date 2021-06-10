@@ -92,7 +92,7 @@ Mark documentation that applies only to a specific distribution in one of the fo
 
 - Use the Front Matter `distributions` element to add a list of distributions, i.e `distribution: ["Enterprise", "Cloud"]`. This will mark the page in the parent's table of contents, and will produce a notification on the page
 - Use the `{{< distributions "Enterprise" "Cloud" >}}` shortcode to produce a notification on the page
-- Note that if you use the `{{< distributions >}}`,  `{{< new-in-version >}}`, or `{{< deprecated-in-version >}}` shortcodes in a heading, Hugo will not correctly generate the ID element for it. [Manually add the heading](https://gohugo.io/content-management/cross-references/#heading-ids), i.e `## Cloud Specific Section {{< distributions "Cloud" >}} {#cloud-specific-section}`
+- Note that you should not use the `{{< distributions >}}`,  `{{< new-in-version >}}`, or `{{< deprecated-in-version >}}` shortcodes in a heading, as Hugo will not correctly generate the ID element for it. Put it at the beginning of the paragraph below.
 
 ## Style Guidelines
 
