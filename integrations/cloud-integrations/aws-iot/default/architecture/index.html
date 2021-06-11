@@ -301,8 +301,17 @@
 <p>This is a serverless deployment: there are no compute resources being deployed. AWS only charges for usage, which is driven by traffic. The only continuous charges are by IoT Core connectivity from The Things Stack to your AWS account. All permissions are the minimum permissions for the integration to function.</p>
 <h2 id="end-to-end-encryption">End-to-End Encryption</h2>
 <p>This integration supports true LoRaWAN end-to-end encryption: the application payload is encrypted on the end device with the LoRaWAN AppSKey, and decrypted in your AWS Account. The underlying network infrastructure passes your application payload in the encrypted form - it cannot see your data.</p>
-<p>When enabled, this integration configures Join Server with your key encryption key (KEK) that is generated in your AWS Account and stored as a secret in <a href="https://aws.amazon.com/secrets-manager/">Secrets Manager</a>. Join Server encrypts the AppSKey with the KEK before passing it to the network layer. The network layer sends the encrypted AppSKey to your AWS Account, where it gets decrypted. This feature only works with devices registered in Join Server.</p>
+<p>When end-to-end encryption is enabled, this integration configures Join Server with your key encryption key (KEK) that is generated in your AWS Account and stored as a secret in <a href="https://aws.amazon.com/secrets-manager/">Secrets Manager</a>. Join Server encrypts the AppSKey with the KEK before passing it to the network layer. The network layer sends the encrypted AppSKey to your AWS Account, where it gets decrypted.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  This feature only works with OTAA devices registered in the in-cluster Join Server or The Things Join Server.
+</div>
+
 <p>When using this feature, your AWS application needs to process the LoRaWAN application payload in binary form, as the network layer&rsquo;s payload encoding and decoding functions cannot work with the encrypted data.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  When <strong>End-to-End Encryption</strong> option on AWS is enabled, the <strong>Skip Payload Crypto</strong> option will be enabled on the application level in The Things Stack. In this case, scheduling downlink messages from The Things Stack is restricted, and can only be achieved from AWS. Downlink scheduling through the Console and CLI is not supported.
+</div>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/aws-iot/default/">← Default Integration</a>
@@ -367,10 +376,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 10 Jun 2021.
+  Last changed by Nejra Selimović on 11 Jun 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/aea847e4a5b06db18fe91950625da9cc60eaf291">
-      Docs reorganization (#374)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/792a322723e759b0a035d3355fd954c2b58e675c">
+      doc: Add note about scheduling downlinks (#392)
     </a>
 </p>
 
