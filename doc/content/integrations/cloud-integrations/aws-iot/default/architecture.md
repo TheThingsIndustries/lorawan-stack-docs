@@ -25,6 +25,10 @@ This is a serverless deployment: there are no compute resources being deployed. 
 
 This integration supports true LoRaWAN end-to-end encryption: the application payload is encrypted on the end device with the LoRaWAN AppSKey, and decrypted in your AWS Account. The underlying network infrastructure passes your application payload in the encrypted form - it cannot see your data.
 
-When enabled, this integration configures Join Server with your key encryption key (KEK) that is generated in your AWS Account and stored as a secret in [Secrets Manager](https://aws.amazon.com/secrets-manager/). Join Server encrypts the AppSKey with the KEK before passing it to the network layer. The network layer sends the encrypted AppSKey to your AWS Account, where it gets decrypted. This feature only works with devices registered in Join Server.
+When end-to-end encryption is enabled, this integration configures Join Server with your key encryption key (KEK) that is generated in your AWS Account and stored as a secret in [Secrets Manager](https://aws.amazon.com/secrets-manager/). Join Server encrypts the AppSKey with the KEK before passing it to the network layer. The network layer sends the encrypted AppSKey to your AWS Account, where it gets decrypted. 
+
+{{< note >}} This feature only works with OTAA devices registered in the in-cluster Join Server or The Things Join Server.{{</ note >}}
 
 When using this feature, your AWS application needs to process the LoRaWAN application payload in binary form, as the network layer's payload encoding and decoding functions cannot work with the encrypted data.
+
+{{< note >}} When **End-to-End Encryption** option on AWS is enabled, the **Skip Payload Crypto** option will be enabled on the application level in {{% tts %}}. In this case, scheduling downlink messages from {{% tts %}} is restricted, and can only be achieved from AWS. Downlink scheduling through the Console and CLI is not supported. {{</ note >}}
