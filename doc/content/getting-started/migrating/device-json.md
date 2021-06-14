@@ -47,7 +47,7 @@ Multiple end devices can also be contained in a single `devices.json` file like 
 
 ## JSON End Device Format
 
-The full specification of the JSON format is defined in the API protos. 
+The full specification of the JSON format is defined in the API protos.
 
 > See the [EndDevice]({{< ref "/reference/api/end_device#message:EndDevice" >}}) message definition for details.
 
@@ -67,7 +67,7 @@ The linked specification is quite extensive, and contains a lot of fields that a
 | **`supports_class_c`** | No | boolean | `true` | `true` for Class C devices, `false` otherwise. |
 | **`root_keys.app_key.key`** | **For OTAA devices** | string | `"01020304050607080102030405060708"` | See [Application Key]({{< ref "reference/glossary#application-key" >}}) for more information. |
 | **`root_keys.nwk_key.key`** | **For OTAA devices** | string | `"01020304050607080102030405060708"` | For LoRaWAN version 1.1 and later only. See [Network Key]({{< ref "reference/glossary#network-key" >}}) for more information. |
-| **`mac_settings.rx1_delay.value`** | No | string | `"RX_DELAY_5"` | Delay for the first Class A receive window (Rx1). Typical values are `RX_DELAY_1` (1 second) and `RX_DELAY_5` (5 seconds). See [MACSettings]({{< ref "reference/api/end_device#message:MACSettings" >}}) for more information. |
+| **`mac_settings.rx1_delay`** | No | string | `"RX_DELAY_5"` | Delay for the first Class A receive window (Rx1). Typical values are `"RX_DELAY_1"` (1 second) and `"RX_DELAY_5"` (5 seconds). See [MACSettings]({{< ref "reference/api/end_device#message:MACSettings" >}}) for more information. |
 | **`mac_settings.supports_32_bit_f_cnt`** | No | boolean | `false` | `true` if device supports 32-bit frame counters, `false` if device only supports 16-bit frame counters. |
 | **`session.dev_addr`** | **For existing session** | string | `"01020304"` | **Needed for ABP devices or when migrating OTAA devices with an existing session**. See [Device Address]({{< ref "/reference/glossary#device-address" >}}) for more information. |
 | **`session.keys.app_s_key.key`** | **For existing session** | string | `"01020304050607080102030405060708"` | **Needed for ABP devices or when migrating OTAA devices with an existing session**. See [Application Session Key]({{< ref "reference/glossary#application-session-key" >}}) for more information. |
