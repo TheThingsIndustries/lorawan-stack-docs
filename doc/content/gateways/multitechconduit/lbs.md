@@ -7,6 +7,12 @@ This section contains instructions for connecting the Multitech Conduit AEP to {
 
 <!--more-->
 
+## Prerequisites:
+1. Multitech Conduit AEP gateway running [mPower 5.3.0 firmware or later](http://www.multitech.net/developer/downloads/).
+2. Hardware required: MTCDT with `MTAC-LORA-H mCard`
+
+{{< warning >}}{{% lbs %}} does not support on Multitech Conduit gateways with [**MTAC-LORA-1.0**](http://www.multitech.net/developer/software/lora/running-basic-station-on-conduit/) USB cards. {{</ warning >}}
+
 To set up LoRa packet forwarding on the gateway, follow these steps.
 
 Click the **LoRaWAN** tab in the left menu.
