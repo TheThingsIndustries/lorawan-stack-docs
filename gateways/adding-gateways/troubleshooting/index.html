@@ -193,11 +193,28 @@
 <h3 id="how-do-i-see-gateway-events">How do I see gateway events?</h3>
 <p>Gateway event logs can be found in the console in the gateway&rsquo;s general information page. See <a href="https://www.thethingsindustries.com/docs/getting-started/events/">Working with Events</a> for other ways of subscribing to events.</p>
 <h3 id="my-gateway-wont-connect-what-do-i-do">My gateway won&rsquo;t connect. What do I do?</h3>
+<h4 id="check-the-following-in-the-things-stack-console">Check the following in The Things Stack Console:</h4>
 <ul>
-<li>Double check your gateway settings in The Things Stack. Ensure your Gateway EUI is correct</li>
-<li>Double check the configuration settings on your gateway. Is the network address the same address you use to connect to The Things Stack? Are your ports correct?</li>
-<li>Check your gateway logs. For information specific to your gateway, see the <a href="https://www.thethingsindustries.com/docs/gateways/">Gateways section</a></li>
-<li>If using Basic Station with the CUPS protocol enabled, double check your API Keys and certificates</li>
+<li>Does the Gateway EUI in the console match with the EUI of the gateway?</li>
+<li>Does the Frequency Plan selected match with the configuration in the gateway? Refer to the <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plans section</a> for plans that are officially supported by The Things Stack</li>
+<li>Did you select <strong>Require authenticated connection</strong> in gateway settings? This prevents UDP gateways from working (and for gateways connected with Basic Station or MQTT, this prevents unauthenticated connections)</li>
+<li>Do you see any warnings/errors in the Gateway live data section?</li>
+</ul>
+<h4 id="check-the-following-in-the-gateway-configuration">Check the following in the Gateway configuration:</h4>
+<h5 id="udp-gateways">UDP Gateways</h5>
+<ul>
+<li>Does the Gateway Server address match with the address mentioned in the gateway overview in The Things Stack Console?</li>
+<li>Are the upstream and downstream ports set to 1700?</li>
+</ul>
+<h5 id="lora-basics-station-gateways">LoRa Basics™ Station Gateways:</h5>
+<ul>
+<li>Are the CUPS Server Address and LNS Server Address correctly configured?</li>
+<li>Are the CUPS and LNS ports configured with 443 and 8887 respectively?</li>
+<li>Are API Keys assigned with necessary rights?</li>
+<li>Did you select the relevant root certificates to configure?</li>
+<li>Is the Backhaul used in the Gateway stable?</li>
+<li>Does the Gateway run with the latest firmware?</li>
+<li>Does the Frequency Plan selected match with the configuration in the gateway? Refer to the <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plans section</a> for plans that are officially supported by The Things Stack</li>
 </ul>
         </div>
         <div class="is-clearfix">
@@ -256,10 +273,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 04 Nov 2020.
+  Last changed by Ben Olayinka on 16 Jun 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/56ec40ec1203c987499d8126336c4c4336fb6b00">
-      doc: Rename troubleshooting
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/89bd7960eed1792b3ffffd7eaaa43871ce4e553d">
+      doc: Update gateway troubleshooting (#403)
     </a>
 </p>
 
