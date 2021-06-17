@@ -30,7 +30,11 @@ You can search for users by ID using the search field above the list of users. I
 
 ## Creating Users
 
-It is currently not possible to create users in the Console, but users can register themselves, or you can create them with the CLI.
+See the following video from [The Things Network youtube channel](https://youtu.be/vxXKBEQxLq0) for instructions to create a user in the console.
+
+<details><summary>Show video</summary>
+{{< youtube "vxXKBEQxLq0" >}}
+</details>
 
 ## Inviting Users
 

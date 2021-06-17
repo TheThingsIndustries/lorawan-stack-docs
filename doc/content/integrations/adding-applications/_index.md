@@ -15,6 +15,12 @@ This section contains instructions for creating an Application.
 
 ## Adding Applications using the Console
 
+In addition to the written instructions below, a video with instructions for adding an application is available on [The Things Network youtube channel](https://youtu.be/403yK_RaONE).
+
+<details><summary>Show video</summary>
+{{< youtube "403yK_RaONE" >}}
+</details>
+
 Go to **Applications** in the top menu, and click **+ Add Application** to reach the application registration page. Fill the application ID. The other fields are optional. 
 
 Click **Create Application** to create the application.
