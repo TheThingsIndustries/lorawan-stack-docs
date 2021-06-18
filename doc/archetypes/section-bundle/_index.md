@@ -2,7 +2,7 @@
 title: "{{ replace .Name "-" " " | title }}"
 description: ""
 weight: 
-distributions: {{ jsonify (index site.Data "distributions") }}
+distributions: ["Cloud", "Marketplace Launcher"]
 new_in_version: "3.8.5"
 ---
 
