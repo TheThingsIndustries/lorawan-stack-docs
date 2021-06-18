@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>3.10.2 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/whats-new/3.10.2/" />
+  <title>3.13.2 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/whats-new/3.13.2/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.eed40414e43dc0d7006e683e6183b33c300bbc447b5ff8372b57562b9b8b0cb1.css" integrity="sha256-7tQEFOQ9wNcAbmg&#43;YYOzPDALvER7X/g3K1dWK5uLDLE=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="The Things Stack for LoRaWAN">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="3.10.2">
+  <meta itemprop="name" content="3.13.2">
   <meta itemprop="description" content="The Things Stack for LoRaWAN">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="3.10.2">
+  <meta property="og:title" content="3.13.2">
   <meta property="og:description" content="The Things Stack for LoRaWAN">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/whats-new/3.10.2/">
-  <meta name="twitter:title" content="3.10.2" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/whats-new/3.13.2/">
+  <meta name="twitter:title" content="3.13.2" />
   <meta name="twitter:description" content="The Things Stack for LoRaWAN" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -92,7 +92,7 @@
 <ul class="menu-list">
 <a href="https://www.thethingsindustries.com/docs/whats-new/" class="">Overview</a>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.13.2/" class="">3.13.2</a>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.13.2/" class="is-active">3.13.2</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.13.1/" class="">3.13.1</a>
@@ -143,7 +143,7 @@
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.10.3/" class="">3.10.3</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.10.2/" class="is-active">3.10.2</a>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.10.2/" class="">3.10.2</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.10.1/" class="">3.10.1</a>
@@ -167,25 +167,41 @@
       </div>
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">3.10.2
+        <h1 class="title is-size-2">3.13.2
         </h1>
 
         <div class="content">
           <h3 id="added">Added</h3>
 <ul>
-<li>gRPC middleware to extract proxy headers from trusted proxies. This adds a configuration <code>grpc.trusted-proxies</code> that is similar to the existing <code>http.trusted-proxies</code> option.</li>
+<li>Support claiming of The Things Indoor Gateways.</li>
+<li>Configurable log formats with the <code>log.format</code> configuration option.
+<ul>
+<li>The <code>console</code> format that prints logs as more human-friendly text. This is the new default.</li>
+<li>The <code>json</code> format that prints logs as JSON. This is the recommended format for production deployments.</li>
+<li>The <code>old</code> format (deprecated). This can be used if you need to adapt your log analysis tooling before v3.14.</li>
+</ul>
+</li>
+<li><code>ttn_lw_gs_ns_uplink_latency_seconds</code>, <code>ttn_lw_ns_as_uplink_latency_seconds</code> and <code>ttn_lw_gtw_as_uplink_latency_seconds</code> metrics to track latency of uplink processing.</li>
+<li>Signing of releases.</li>
+<li>Hard delete option to delete applications, gateways and organizations in the Console.</li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
-<li>Log field consistency for HTTP and gRPC request logs.</li>
+<li>Relaxed the cookie policy for cross-origin requests from Strict to Lax.</li>
+<li>Changed the cookie policy for OAuth state to None.</li>
+</ul>
+<h3 id="deprecated">Deprecated</h3>
+<ul>
+<li>The <code>old</code> log format is deprecated and will be removed in v3.14.</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>Uplink frame counter reset handling.</li>
-<li>Uplink retransmission handling in Network Server.</li>
-<li>DevAddr generation for NetID Type 3 and 4, according to errata.</li>
-<li>Packet Broker downlink in multi-tenant clusters.</li>
-<li>HTTP header propagation (such as Request ID) to gRPC services.</li>
+<li>Incorrect Storage Integration API URL in Console.</li>
+<li>Permissions issue for reading and writing gateway secrets in the Console.</li>
+<li>Current and future rights selection for organization collaborators in the Console.</li>
+<li>Current and future rights selection for user api keys in the Console.</li>
+<li>Low or no throughput of message handling from Packet Broker when the ingress is high when Packet Broker Agent starts.</li>
+<li>Unset ADR bit in downlink messages to multicast devices.</li>
 </ul>
 
         </div>
@@ -239,14 +255,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 13 Jan 2021.
+  Last changed by Nejra Selimović on 18 Jun 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/938c9dd5c2cab0ca1080e8d0175e0b3a3d364794">
-      doc: Add whats-new
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/10ed6baa1941720c1e944748aaa7838d691f6716">
+      doc: Update documentation for v3.13.2 release (#411)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/whats-new/3.10.2.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/whats-new/3.13.2.md" class="button">Edit on Github</a>
 </div>
 
       </div>
