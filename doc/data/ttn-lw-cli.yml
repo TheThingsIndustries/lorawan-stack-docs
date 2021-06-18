@@ -22,7 +22,7 @@ ttn-lw-cli:
     type: stringSlice
     shorthand: c
     usage: Location of the config files
-    default_value: '[.ttn-lw-cli.yml,$HOME/.ttn-lw-cli.yml,$HOME/.config/.ttn-lw-cli.yml]'
+    default_value: '[.ttn-lw-cli.yml,HOME/.ttn-lw-cli.yml,HOME/.config/.ttn-lw-cli.yml]'
   - name: credentials-id
     type: string
     usage: Credentials ID (if using multiple configurations)
@@ -66,6 +66,10 @@ ttn-lw-cli:
     type: string
     usage: Join Server address
     default_value: localhost:8884
+  - name: log.format
+    type: string
+    usage: Log format to write (old, console, json)
+    default_value: console
   - name: log.level
     type: string
     usage: The minimum level log messages must have to be shown
@@ -9089,32 +9093,30 @@ ttn-lw-cli gateways claim:
     The claiming procedure transfers ownership of gateways using the Device
     Claiming Server.
 
-    Authentication of gateway claiming is by the Gateway EUI and the claim
-    authentication code (which is part of the gateway entity itself) stored
-    in the Identity Server.
+    Gateways need to be authorized for claiming before they can be claimed.
+    See: "ttn-lw-cli claim authorize"
 
-    Claim authentication code validity is controlled by the owner of the
-    gateway by setting the value and optionally a time window when the
-    code is valid. As part of the claiming, the claim authentication code
-    is not transferred to the new claimed gateway. This prevents further claim
-    requests.
+    Authentication of gateway claiming is by the Gateway EUI and the claim
+    authentication code.
+    For UDP gateways, the claim authentication code is placed in the gateway
+    entity, stored in the Identity Server.
 
     As part of claiming, you can optionally provide the target Gateway ID and
-    Gateway Server Address.
-
-    Additionally, for LoRa Basics Station gateways, it is required to provide
-    the current auth key (Ex: A The Things Stack API Key or an auth token)
-    used by the gateway and the URI of the Target CUPS server to which the
-    gateway should connect.
+    Gateway Server address and a frequency plan ID.
+    For LoRa Basic Station gateways, the Target CUPS URI must be specified.
+    A PEM encoded CUPS trust may be included in the claim request.
   command_flags:
   - name: authentication-code
-    type: bytesHex
-    usage: (hex)
-  - name: current-gateway-key
     type: string
+    usage: (hex)
   - name: organization-id
     type: string
+  - name: target-cups-trust-local-file
+    type: string
+    usage: (optional) Target CUPS trust in PEM format (local file name)
   - name: target-cups-uri
+    type: string
+  - name: target-frequency-plan-id
     type: string
   - name: target-gateway-id
     type: string

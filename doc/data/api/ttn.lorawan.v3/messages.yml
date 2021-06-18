@@ -1536,7 +1536,7 @@ CUPSRedirection:
       name: CUPSRedirection.ClientTLS
     default: {}
   - name: auth_token
-    comment: HTTP Auth token for CUPS requests. If this field is left blank and Client TLS is empty, the DCS will create a The Things Stack API Key.
+    comment: The Device Claiming Server will fill this field with a The Things Stack API Key.
     type: string
     rules:
       max_len: 2048
@@ -1697,6 +1697,14 @@ ClaimGatewayRequest:
     message:
       name: CUPSRedirection
     default: {}
+  - name: target_frequency_plan_id
+    comment: |-
+      Frequency plan ID of the target gateway.
+      This equals the first element of the frequency_plan_ids field.
+    type: string
+    rules:
+      max_len: 64
+    default: ""
   oneofs:
   - name: source_gateway
     field_names:

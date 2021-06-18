@@ -123,28 +123,6 @@ BillingIdentifiers:
     rules:
       max_len: 250
     default: ""
-CUPSRedirectCredentials:
-  name: CUPSRedirectCredentials
-  fields:
-  - name: current_gateway_key
-    comment: |-
-      Used only to validate incoming requests from the gateway.
-      It can be an auth token or a The Things Stack API Key.
-    type: string
-    rules:
-      max_len: 2048
-    default: ""
-  - name: redirect_api_key
-    comment: |-
-      API Key to fetch fields from the gateway for redirection.
-      Needs the following rights on the gateway.
-      ttnpb.RIGHT_GATEWAY_INFO,
-      ttnpb.RIGHT_GATEWAY_SETTINGS_BASIC,
-      ttnpb.RIGHT_GATEWAY_READ_SECRETS,
-    type: string
-    rules:
-      max_len: 2048
-    default: ""
 Configuration:
   name: Configuration
   fields:
@@ -730,16 +708,6 @@ MeteringData.TenantMeteringData:
     message:
       name: TenantRegistryTotals
     default: {}
-SetCUPSRedirectionRequest:
-  name: SetCUPSRedirectionRequest
-  fields:
-  - name: eui
-    type: bytes
-    default: ""
-  - name: credentials
-    message:
-      name: CUPSRedirectCredentials
-    default: {}
 Tenant:
   name: Tenant
   comment: Tenant is the message that defines a Tenant in the network.
@@ -896,12 +864,6 @@ Tenants:
       message:
         name: Tenant
     default: []
-UnsetCUPSRedirectionRequest:
-  name: UnsetCUPSRedirectionRequest
-  fields:
-  - name: eui
-    type: bytes
-    default: ""
 UpdateTenantRequest:
   name: UpdateTenantRequest
   fields:
