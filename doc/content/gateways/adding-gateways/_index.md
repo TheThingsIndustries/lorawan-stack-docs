@@ -1,7 +1,7 @@
 ---
 title: "Adding Gateways"
 description: ""
-weight: -1
+weight: -2
 aliases: [/getting-started/cli/create-gateway, /getting-started/console/create-gateway]
 ---
 
