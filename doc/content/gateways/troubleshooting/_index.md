@@ -11,7 +11,7 @@ This section provides help for common issues and frequently asked questions you 
 
 ## What is my server address?
 
-This is the address you use to access {{% tts %}}. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `thethings.example.com`. If you use {{% tts %}} Cloud, this is typically `tenant_id.region.cloud.thethings.industries`.
+This is the address you use to access {{% tts %}}. If you use {{% tts %}} Cloud, this is typically `<tenant_id>.<region>.cloud.thethings.industries`. If you use The Things Network, this is `<region>.cloud.thethings.network`. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `thethings.example.com`.
 
 For **{{% lbs %}}:**
 
@@ -74,13 +74,13 @@ UDP is a connectionless protocol. {{% tts %}} expects a UDP gateway to occasiona
 
 ## My gateway is shown as connected in the console but I don’t see any events (including the gateway connection stats). What do I do?
 
-We have observed this with **UDP gateways only**. As the {{% udp-pf %}} has many security and scalability drawbacks, we recommend using [{{% lbs %}}]({{< ref "gateways/lora-basics-station" >}}) if possible.
+We have observed this with **UDP gateways only**. We recommend using [{{% lbs %}}]({{< ref "gateways/lora-basics-station" >}}) instead if possible, as the {{% udp-pf %}} has many security and scalability drawbacks.
 
-Otherwise, first try restarting the gateway. Sometimes, the gateway reports status while failing to forward packets, and this may fix that.
-
-Finally, check the following in the {{% tts %}} console:
+Check the following in the {{% tts %}} console:
 
 - Did you select **Require authenticated connection** in gateway settings? This prevents UDP gateways from working (and for gateways connected with Basic Station or MQTT, this prevents unauthenticated connections)
+
+Otherwise, try restarting the gateway. Sometimes, the gateway reports its status but still fails to forward packets, and this may fix that.
 
 ## My gateway is offline, but still shows as connected in the console. Why?
 
