@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Troubleshooting Gateways | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/troubleshooting/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.eed40414e43dc0d7006e683e6183b33c300bbc447b5ff8372b57562b9b8b0cb1.css" integrity="sha256-7tQEFOQ9wNcAbmg&#43;YYOzPDALvER7X/g3K1dWK5uLDLE=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Troubleshooting Gateways">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Troubleshooting Gateways">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/troubleshooting/">
+  <meta name="twitter:title" content="Troubleshooting Gateways" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body><nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.13</p>
+      </a><div class="navbar-item navbar-search-brand">
+        <div class="field has-addons has-addons-centered">
+          <div class="control">
+            <input id="search-input-brand" class="input search-bar" type="text" placeholder="Search the docs..." type="text">
+          </div>
+        </div>
+      </div>
+      
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a><div class="navbar-item navbar-search-menu">
+            <div class="field has-addons has-addons-centered">
+              <div class="control">
+                <input id="search-input-menu" class="input search-bar" type="text" placeholder="Search the docs..." type="text">
+              </div>
+            </div>
+          </div></div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="/docs/download/">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+  <script type="text/javascript">
+    docsearch({
+      apiKey: "4372282a02970d8402d43457bf95d486",
+      indexName: "thethingsstack",
+      inputSelector: '#search-input-brand',
+      debug: false 
+    });
+    docsearch({
+      apiKey: "4372282a02970d8402d43457bf95d486",
+      indexName: "thethingsstack",
+      inputSelector: '#search-input-menu',
+      debug: false 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Gateways</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/gateways/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/" class="">Adding Gateways</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/gateway-claiming/" class="">Gateway Claiming</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/troubleshooting/" class="is-active">Troubleshooting Gateways</a>
+    
+
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/" class="">LoRa Basics™ Station</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/udp/" class="">Semtech UDP Packet Forwarder</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/ciscowirelessgateway/" class="">Cisco Wireless Gateway for LoRaWAN</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/mikrotik-knot/" class="">MikroTik KNOT</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/mikrotik-ltap/" class="">MikroTik LtAP</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/mikrotikrouterboard/" class="">MikroTik Routerboard wAP LoRa8 kit</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/rak-7240/" class="">RAK7240 WisGate Edge Prime</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/dragino-lps8/" class="">Dragino LPS8</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/kerlinkwirnetistation/" class="">Kerlink Wirnet iStation</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/kerlinkwirnetstation/" class="">Kerlink Wirnet Station</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/laird-sentrius/" class="">Laird Sentrius™ RG1xx LoRaWAN Gateway</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/moko-mkgw2-lw/" class="">MOKOSMART MKGW2-LW LoRaWAN Gateway</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/multitechconduit/" class="">MultiTech Conduit AEP</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/multitechconduit-mlinux/" class="">MultiTech Conduit mLinux</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/nasysoutdoorgateway/" class="">NASys LoRaWAN Outdoor Gateway</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/tektelickonamicro/" class="">Tektelic Kona Micro IoT LoRaWAN Gateway</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/thethingskickstartergateway/" class="">The Things Kickstarter Gateway</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/ursalinkug8x/" class="">Ursalink UG8X IoT LoRaWAN Gateway</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/lorix-one/" class="">Wifx LORIX One</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        <h1 class="title is-size-2">Troubleshooting Gateways
+          
+        </h1>
+        
+        <div class="content">
+          <p>This section provides help for common issues and frequently asked questions you may have when adding gateways.</p>
+<h2 id="what-is-my-server-address">What is my server address?</h2>
+<p>This is the address you use to access The Things Stack. If you use The Things Stack Cloud, this is typically <code>&lt;tenant_id&gt;.&lt;region&gt;.cloud.thethings.industries</code>. If you use The Things Network, this is <code>&lt;region&gt;.cloud.thethings.network</code>. If you followed the <a href="https://www.thethingsindustries.com/docs/getting-started/">Getting Started guide</a> this is the same as what you use instead of <code>thethings.example.com</code>.</p>
+<p>For <strong>LoRa Basics™ Station
+:</strong></p>
+<p>CUPS uses the URI: <code>https://&lt;server-address&gt;:443</code></p>
+<p>LNS uses the URI: <code>wss://&lt;server-address&gt;:8887</code></p>
+<p>For <strong>Semtech UDP Packet Forwarder
+:</strong>:</p>
+<p>Use <code>&lt;server-address&gt;</code>. The <strong>Up Port</strong> and <strong>Down Port</strong> are typically <strong>1700</strong>.</p>
+<h2 id="how-do-i-find-the-ca-trust">How do I find the CA Trust?</h2>
+<p>See the <a href="https://www.thethingsindustries.com/docs/reference/root-certificates/">Root Certificates Reference</a>.</p>
+<h2 id="how-do-i-use-an-api-key-for-lbs-gateways">How do I use an API Key for LBS gateways?</h2>
+<p>Use the following commands to generate a <code>api.key</code> file which is correctly formatted (LoRa Basics™ Station
+requires that <code>.key</code> files end with a CRLF character).</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">API_KEY</span><span class="o">=</span><span class="s2">&#34;your-api-key&#34;</span>
+$ <span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="p">|</span> perl -p -e <span class="s1">&#39;s/\r\n|\n|\r/\r\n/g&#39;</span>  &gt; api.key
+</code></pre></div><p>Upload or copy the contents of this file in to your gateway as the <strong>Gateway Key</strong>.</p>
+<p>See the <a href="https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/?url=authmodes.html">LoRa Basics™ Station
+Authorization documentation</a> or your manufacturers guidelines for additional information.</p>
+<h2 id="is-an-api-key-required">Is an API Key required?</h2>
+<p><strong>LoRa Basics™ Station
+CUPS</strong> requires an API key for your gateway with the following rights:</p>
+<ul>
+<li>View gateway information</li>
+<li>Edit basic gateway settings</li>
+<li>Retrieve secrets associated with a gateway</li>
+</ul>
+<p><strong>LoRa Basics™ Station
+LNS</strong> requires an API Key with the following rights:</p>
+<ul>
+<li>Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink</li>
+</ul>
+<p><strong>UDP gateways</strong> are unsecured and require no API key.</p>
+<h2 id="how-do-i-see-gateway-events">How do I see gateway events?</h2>
+<p>Gateway event logs can be found in the console in the gateway&rsquo;s general information page. See <a href="https://www.thethingsindustries.com/docs/getting-started/events/">Working with Events</a> for other ways of subscribing to events.</p>
+<h2 id="how-does-the-things-stack-console-know-whether-a-gateway-is-connected">How does The Things Stack console know whether a gateway is connected?</h2>
+<p>For both <a href="https://www.thethingsindustries.com/docs/gateways/udp/">UDP</a> and <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/">LoRa Basics™ Station
+</a> gateways, The Things Stack creates a <code>GatewayConnectionStats</code> database entry when a gateway connects and removes that entry when the gateway disconnects. The console checks whether this database entry exists and shows the gateway as connected or disconnected accordingly.</p>
+<p>The mechanism for determining whether a gateway remains connected differs for UDP and LBS gateways:</p>
+<p><strong>For LBS gateways:</strong></p>
+<p>LBS uses a TCP keepalive to indicate that the connection is still alive.</p>
+<p><strong>For UDP gateways:</strong></p>
+<p>UDP is a connectionless protocol. The Things Stack expects a UDP gateway to occasionally send a <code>pull_data</code> message. This is typically every 5 seconds. By default, if a gateway misses 3 of these consecutively (15s) then the gateway is shown as disconnected and this indicates there’s potentially an issue with gateway connectivity.</p>
+<h2 id="my-gateway-is-shown-as-connected-in-the-console-but-i-dont-see-any-events-including-the-gateway-connection-stats-what-do-i-do">My gateway is shown as connected in the console but I don’t see any events (including the gateway connection stats). What do I do?</h2>
+<p>We have observed this with <strong>UDP gateways only</strong>. We recommend using <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/">LoRa Basics™ Station
+</a> instead if possible, as the Semtech UDP Packet Forwarder
+has many security and scalability drawbacks.</p>
+<p>Check the following in the The Things Stack console:</p>
+<ul>
+<li>Did you select <strong>Require authenticated connection</strong> in gateway settings? This prevents UDP gateways from working (and for gateways connected with Basic Station or MQTT, this prevents unauthenticated connections)</li>
+</ul>
+<p>Otherwise, try restarting the gateway. Sometimes, the gateway reports its status but still fails to forward packets, and this may fix that.</p>
+<h2 id="my-gateway-is-offline-but-still-shows-as-connected-in-the-console-why">My gateway is offline, but still shows as connected in the console. Why?</h2>
+<p>If you are using a UDP gateway, it is possible that another gateway with the same EUI is transmitting data. UDP has no authentication, so there is no way to prevent this from happening, although it is unlikely that another gateway with the same EUI will be registered on the same network server. If this is the case, the solutions are</p>
+<ul>
+<li>Use the LoRa Basics™ Station
+packet forwarder</li>
+<li>Change your gateway EUI</li>
+</ul>
+<h2 id="my-gateway-wont-connect-what-do-i-do">My gateway won&rsquo;t connect. What do I do?</h2>
+<p>Check the following in <strong>The Things Stack console:</strong></p>
+<ul>
+<li>Does the Gateway EUI in the console match with the EUI of the gateway?</li>
+<li>Does the Frequency Plan selected match with the configuration in the gateway? Refer to the <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plans section</a> for plans that are officially supported by The Things Stack</li>
+<li>Did you select <strong>Require authenticated connection</strong> in gateway settings? This prevents UDP gateways from working (and for gateways connected with Basic Station or MQTT, this prevents unauthenticated connections)</li>
+<li>Do you see any warnings/errors in the Gateway live data section?</li>
+</ul>
+<p>Check the following in your <strong>Gateway configuration:</strong></p>
+<p><strong>For UDP gateways:</strong></p>
+<ul>
+<li>Does the Gateway Server address match with the address mentioned in the gateway overview in The Things Stack Console?</li>
+<li>Are the upstream and downstream ports set to 1700?</li>
+</ul>
+<p><strong>For LoRa Basics™ Station Gateways:</strong></p>
+<ul>
+<li>Are the CUPS server address and LNS server address correctly configured? See <a href="#whats-my-server-address">What&rsquo;s my server address</a>.</li>
+<li>Are the CUPS and LNS ports configured with 443 and 8887 respectively? See <a href="#whats-my-server-address">What&rsquo;s my server address</a>.</li>
+<li>Are API keys assigned with necessary rights? See <a href="#is-an-api-key-required">Is an API key required</a></li>
+<li>Did you select the correct root certificates? See the <a href="https://www.thethingsindustries.com/docs/reference/root-certificates/">Root Certificates Reference</a>.</li>
+<li>Is the backhaul used in the Gateway stable?</li>
+<li>Does the Gateway run with the latest firmware?</li>
+<li>Does the Frequency Plan selected match with the configuration in the gateway? Refer to the <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plans section</a> for plans that are officially supported by The Things Stack</li>
+<li>Are both CUPS and LNS are configured? There is no need to configure both, as CUPS will automatically configure LNS. Follow the instructions for <a href="/docs/gateways/lora-basics-station/cups/">configuring CUPS</a>.</li>
+</ul>
+<p>Check your manufacturer&rsquo;s documentation to access the gateway logs on your gateway, which will help to diagnose the issue.</p>
+<h2 id="my-gateway-is-shown-as-disconnected-after-recreating-with-the-same-gateway-eui-what-do-i-do">My gateway is shown as disconnected after recreating with the same Gateway EUI. What do I do?</h2>
+<p>If a gateway is deleted when it’s still connected, the connection statistics for the gateway will continue to exist under the old ID until the gateway actually reconnects.</p>
+<p>If you are using <strong>LoRa Basics™ Station
+or another TCP based gateway</strong> then a simple restart/reconnection of the gateway will clear the statistics of the old ID and you create an entry for the new ID.</p>
+<p>If you are using a <strong>UDP gateway</strong> then there is no concept of a connection. The Things Stack assumes the connection is alive until no messages are received for the duration of the <code>DownlinkPathExpires</code>and <code>ConnectionExpires</code> settings. In this case, your gateway must be turned off for at least as long as the <code>ConnectionExpires</code> interval (default 1 minute) for The Things Stack to mark the gateway as disconnected clear the statistics for the old ID.</p>
+<h2 id="no-downlinks-are-reaching-my-udp-gateway-why">No downlinks are reaching my UDP gateway. Why?</h2>
+<p>With UDP gateways, if uplink messages are reaching The Things Stack, that does not mean the downlink messages are going to be received correctly by the gateway.</p>
+<p>The Semtech UDP Packet Forwarder
+sends a <code>PULL_DATA</code> request every ~5 seconds to pull the data scheduled for a downlink transmission on The Things Stack.</p>
+<p>If downlink messages are reaching your gateway, the Semtech UDP Packet Forwarder
+should be sending <code>PULL_ACK</code> messages with a reasonable latency, usually way lower than 500 ms. If this latency is high, pulling the downlink data will fail. One of the drawbacks of using the Semtech UDP Packet Forwarder
+is that it does not have an implemented mechanism to detect if pulling the downlink data fails, so your data might end up lost.</p>
+<p>Common reasons for having latency issues between the gateway and The Things Stack cluster are that the gateway is geographically far from the cluster, and using cellular or satellite backhauls for gateways.</p>
+<p>Try solving this issue by:</p>
+<ul>
+<li>Checking your internet connection</li>
+<li>Using The Things Stack cluster closest to the location of your gateway</li>
+</ul>
+        </div>
+        
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/gateways/gateway-claiming/claim-gateways/">← Claim a Gateway</a>
+<a class="button is-pulled-right" href="/docs/gateways/lora-basics-station/">LoRa Basics™ Station →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#what-is-my-server-address'>What is my server address?</a></li>
+    
+      
+      <li><a href='#how-do-i-find-the-ca-trust'>How do I find the CA Trust?</a></li>
+    
+      
+      <li><a href='#how-do-i-use-an-api-key-for-lbs-gateways'>How do I use an API Key for LBS gateways?</a></li>
+    
+      
+      <li><a href='#is-an-api-key-required'>Is an API Key required?</a></li>
+    
+      
+      <li><a href='#how-do-i-see-gateway-events'>How do I see gateway events?</a></li>
+    
+      
+      <li><a href='#how-does-the-things-stack-console-know-whether-a-gateway-is-connected'>How does The Things Stack console know whether a gateway is connected?</a></li>
+    
+      
+      <li><a href='#my-gateway-is-shown-as-connected-in-the-console-but-i-dont-see-any-events-including-the-gateway-connection-stats-what-do-i-do'>My gateway is shown as connected in the console but I don’t see any events (including the gateway connection stats). What do I do?</a></li>
+    
+      
+      <li><a href='#my-gateway-is-offline-but-still-shows-as-connected-in-the-console-why'>My gateway is offline, but still shows as connected in the console. Why?</a></li>
+    
+      
+      <li><a href='#my-gateway-wont-connect-what-do-i-do'>My gateway won’t connect. What do I do?</a></li>
+    
+      
+      <li><a href='#my-gateway-is-shown-as-disconnected-after-recreating-with-the-same-gateway-eui-what-do-i-do'>My gateway is shown as disconnected after recreating with the same Gateway EUI. What do I do?</a></li>
+    
+      
+      <li><a href='#no-downlinks-are-reaching-my-udp-gateway-why'>No downlinks are reaching my UDP gateway. Why?</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Ben Olayinka on 25 Jun 2021.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/88894e4ee1da02f97cc13052c50a9ccad2ccbb79">
+      Gateway troubleshooting additions (#417)
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/troubleshooting/_index.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>
