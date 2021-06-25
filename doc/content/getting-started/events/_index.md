@@ -6,9 +6,19 @@ weight: 10
 
 {{% tts %}} generates lots of events that allow you to get insight in what is going on. You can subscribe to application, gateway, end device events, as well as to user, organization and OAuth client events.
 
-This guide shows how to subscribe to events with the CLI and with the HTTP API.
+This guide shows how to view events in the console and to subscribe to events with the CLI or HTTP API.
 
 <!--more-->
+
+## View Events in the Console
+
+It is possible to view live events for an entire application, gateway, or specific end device in the console.
+
+See the following video from [The Things Network youtube channel](https://youtu.be/PbYzyqoJf5Q) for instructions.
+
+<details><summary>Show video</summary>
+{{< youtube "PbYzyqoJf5Q" >}}
+</details>
 
 ## Subscribe with CLI
 

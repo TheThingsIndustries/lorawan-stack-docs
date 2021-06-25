@@ -16,6 +16,12 @@ This section contains instructions for managing rights.
 
 ## Managing Collaborators
 
+In addition to the written instructions linked below, a video with instructions for managing collaborator rights is available on [The Things Network youtube channel](https://youtu.be/-m5rULfP1yg).
+
+<details><summary>Show video</summary>
+{{< youtube "-m5rULfP1yg" >}}
+</details>
+
 Gateways, End Devices, and Applications have a **Collaborators** tab which allows you to specify rights for users or organizations on that entity. To manage collaborators, click the **Collaborators** tab in the left hand menu.
 
 Click the **Add collaborator** button to add a collaborator.

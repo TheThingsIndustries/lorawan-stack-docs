@@ -9,6 +9,12 @@ This section explains how to set up payload formatters for a specific end device
 
 <!--more-->
 
+In addition to the written instructions linked below, a video with instructions for creating Javascript and device repository payload formatters is available on [The Things Network youtube channel](https://youtu.be/4tii7MiD-yM).
+
+<details><summary>Show video</summary>
+{{< youtube "4tii7MiD-yM" >}}
+</details>
+
 ## Types of Payload Formatters
 
 {{% tts %}} supports three types of payload formatters: Javascript, CayenneLPP, and Repository payload formatters.

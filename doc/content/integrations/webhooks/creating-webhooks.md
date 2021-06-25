@@ -8,6 +8,12 @@ This section provides instructions for creating a webhook in the console.
 
 <!--more-->
 
+In addition to the written instructions linked below, a video with instructions for creating webhooks is available on [The Things Network youtube channel](https://youtu.be/trNIzIf3TZo).
+
+<details><summary>Show video</summary>
+{{< youtube "trNIzIf3TZo" >}}
+</details>
+
 Creating a webhook requires you to have an HTTP(S) endpoint available.
 
 In your application select the **Webhooks** submenu from the **Integrations** side menu. Clicking on the **+ Add Webhook** button will open the Webhook creation screen. 

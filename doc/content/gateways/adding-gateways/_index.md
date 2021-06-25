@@ -15,6 +15,12 @@ This section contains instructions for adding Gateways in {{%tts%}}.
 
 ## Adding Gateways using the Console
 
+In addition to the written instructions below, a video with instructions for adding a gateway is available on [The Things Network youtube channel](https://youtu.be/o6nwc3APXns).
+
+<details><summary>Show video</summary>
+{{< youtube "o6nwc3APXns" >}}
+</details>
+
 Go to **Gateways** in the top menu, and click **+ Add Gateway** to reach the gateway registration page.
 
 Fill the **Gateway ID**, **Gateway EUI** (if your gateway has an EUI) and **Frequency Plan**. The other fields are optional. Click **Create Gateway** to finish.
