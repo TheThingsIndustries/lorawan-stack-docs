@@ -30,11 +30,8 @@
 .content-intro, .title-intro {
   display: flex;
   margin: auto;
-  max-width: 70%;
+  max-width: 650px;
   text-align: center;
-  @media (max-width: 1200px) {
-    max-width: 80%;
-  }
 }
 
 .has-vertical-space {
@@ -171,10 +168,10 @@ table.fixed td { overflow: auto; }
   margin-bottom: 2em;
 }
 
-.whats-new-background {
+.whats-new {
   counter-reset: li;
   position: relative;
-  max-height:25em;
+  max-height: 25em;
   overflow: hidden;
   background-color: #F4F7FF;
   border-radius: .7rem;
@@ -225,14 +222,14 @@ table.fixed td { overflow: auto; }
     font-weight: bold;
   }
 
-  .whats-new-header2 {
+  .whats-new-header {
     display: flex;
     justify-content: space-between;
     width: 100%;
     padding: 1em 2em;
   }
 
-  .whats-new-content2 {
+  .whats-new-content {
     position: relative;
     & > a {
       display: block;
@@ -327,19 +324,6 @@ table.fixed td { overflow: auto; }
     }
   }
 
-  .ul-whats-new {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .ul-whats-new li {
-    background-color: white;
-    padding: 1em;
-    margin-right: 1rem;
-    border-radius: .7rem;
-    box-shadow: 0 3px 8px 5px rgba(30, 93, 255, 0.05);
-  }
-
   .more-updates {
     flex: 0 0;
     display: flex;
@@ -347,12 +331,12 @@ table.fixed td { overflow: auto; }
   }
 }
 
-.whats-new-background-800 {
-    display: none;
-  }
+.whats-new-800 {
+  display: none;
+}
 
 @media (max-width: 800px) {
-  .whats-new-background-800 {
+  .whats-new-800 {
     display: flex;
     margin: 75px auto;
     width: 100%;
@@ -370,115 +354,8 @@ table.fixed td { overflow: auto; }
     padding: 1em;
   }
 
-  .whats-new-background {
+  .whats-new {
     display: none;
-  }
-}
-
-.whats-new {
-  position: relative;
-  max-height:25em;
-  overflow: hidden;
-  background-color: $blue-bg;
-  border-radius: .5rem;
-  padding: 1.5rem 2rem;
-  &:before {
-    content: "";
-    position:absolute;
-    top: 3rem;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background: rgb(229,236,255);
-    background: linear-gradient(90deg, rgba(229,236,255,0) 72%, rgba(229,236,255,1) 100%);
-    z-index: 1;
-    pointer-events: none;
-  }
-  &:after {
-    content: "";
-    height: 6rem;
-    @media (max-width: 620px) {
-      height: 10rem;
-    }
-    display: block;
-  }
-  .whats-new-header {
-    display: flex;
-    justify-content: space-between;
-    @media (max-width: 620px) {
-      h2 {
-        margin-bottom: 0.2rem;
-      }
-      & > a {
-        margin-bottom: 1rem;
-      }
-      flex-direction: column;
-    }
-    & > a {
-      font-size: .8rem;
-    }
-  }
-  .whats-new-content{
-    position: relative;
-    & > a {
-      display: block;
-      color: inherit;
-    }
-  }
-  .whats-new-items {
-    position: absolute;
-    display: flex;
-    height: 6rem;
-    @media (max-width: 620px) {
-      height: 10rem;
-    }
-    ul {
-      display: flex;
-      margin-right: 1rem;
-    }
-  }
-  h3 {
-    display: none;
-  }
-  h3#fixed + ul li:before {
-    content: "Fixed: "
-  }
-  h3#deprecated + ul li:before {
-    content: "Deprecated: "
-  }
-  h3#removed + ul li:before {
-    content: "Removed: "
-  }
-  li {
-    display: block;
-    list-style: none;
-    padding: .5rem;
-    border-radius: $radius;
-    background-color: white;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    box-shadow: $card-shadow;
-    width: 24rem;
-    height: 6rem;
-    transition: transform 100ms ease-out;
-    @media (max-width: 620px) {
-      width: 12rem;
-      height: 10rem;
-    }
-    &:not(:last-child) {
-      margin-right: 1rem;
-    }
-    &:hover {
-      transform: scale(1.02);
-    }
-    ul {
-      display: none;
-    }
-    @media (min-width: 621px) {
-      code {
-        white-space: nowrap;
-      }
-    }
   }
 }
 

@@ -1,9 +1,9 @@
 {{ range first 1 (where .Site.RegularPages "Section" "whats-new").ByDate.Reverse }}
-<div class="whats-new-background">
-  <div class="whats-new-content2">
-    <div class="whats-new-header2">
+<div class="whats-new">
+  <div class="whats-new-content">
+    <div class="whats-new-header">
       <h2 class="whats-new-title"><a href={{ .Permalink }}>What's new in V{{ .Title }}</a></h2>
-      <a href="{{ ref . "whats-new" }}"><p class="see-more">See all release notes -></p></a>
+      <a href="{{ ref . "whats-new" }}"><p class="see-more">See all release notes →</p></a>
     </div>
     <a href="{{ .Permalink }}">
       <div class="whats-new-body">
@@ -22,8 +22,8 @@
   </div>
 </div>
 
-<a href="https://www.thethingsindustries.com/docs/whats-new/">
-  <div class="whats-new-background-800">
+<a href="{{ ref . "whats-new" }}">
+  <div class="whats-new-800">
     <div class="whats-new-header-800">
       <p>See what's new in V{{ .Title }}</p>
       <p>-></p>
