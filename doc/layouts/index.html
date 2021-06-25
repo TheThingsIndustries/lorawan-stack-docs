@@ -39,11 +39,13 @@
     <div class="columns">
       {{ range $cards}}
         <div class="column is-flex">
-          <div class="card has-radius is-fullwidth">
+          <div class="card is-fullwidth">
             <div class="card-content">
-              <h2 class="title is-size-5 has-text-centered is-uppercase">{{ .title }}</h2>
-              <div class="content has-text-grey">
-                  {{ .text | markdownify }}
+              <div class="title-content">
+                <h2 class="title is-size-5 has-text-centered">{{ .title }}</h2>
+                <div class="content">
+                    {{ .text | markdownify }}
+                </div>
               </div>
               <div class="buttons is-centered">
                 <a href="{{ .url }}" class="button is-primary is-outlined">{{ .button }}</a>

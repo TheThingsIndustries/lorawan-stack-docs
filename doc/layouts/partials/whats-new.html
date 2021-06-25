@@ -1,15 +1,34 @@
 {{ range first 1 (where .Site.RegularPages "Section" "whats-new").ByDate.Reverse }}
-<section class="is-fullwidth whats-new">
+<div class="whats-new">
   <div class="whats-new-content">
     <div class="whats-new-header">
-      <h2 class="title is-size-5"><a href={{ .Permalink }}>What's new in V{{ .Title }}</a></h2>
-      <a href="{{ ref . "whats-new" }}">See all release notes⟶</a>
+      <h2 class="whats-new-title"><a href={{ .Permalink }}>What's new in V{{ .Title }}</a></h2>
+      <a href="{{ ref . "whats-new" }}"><p class="see-more">See all release notes →</p></a>
     </div>
     <a href="{{ .Permalink }}">
-      <div class="whats-new-items">
-        {{ .Content | markdownify}}
+      <div class="whats-new-body">
+        <div class="whats-new-items-shadow whats-new-items-fade">
+          <div class="whats-new-items">
+            {{ .Content | markdownify}}
+          </div>
+        </div>
+        <div class="more-updates">
+          <div class="circle-more-updates">
+            <p class="news-number"></p>
+          </div>
+        </div>
       </div>
     </a>
   </div>
-</section>
+</div>
+
+<a href="{{ ref . "whats-new" }}">
+  <div class="whats-new-800">
+    <div class="whats-new-header-800">
+      <p>See what's new in V{{ .Title }}</p>
+      <p>-></p>
+    </div>
+  </div>
+</a>
 {{ end }}
+

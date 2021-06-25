@@ -18,7 +18,13 @@
 }
 
 .schema {
-  margin: 100px 0px;
+  display: flex;
+  width: 70%;
+  margin: 100px auto;
+  @media (max-width: 1440px) {
+    width: 100%;
+    margin: 50px auto;
+  }
 }
 
 .content-intro, .title-intro {
@@ -146,112 +152,210 @@ table.fixed td { overflow: auto; }
 
 .card {
   overflow: visible;
+  border-radius: .7rem;
+  box-shadow: 0 3px 10px 5px rgba(30, 93, 255, 0.04);
+  border: solid #D4D3D9 .5px;
+}
+
+.card-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.title-content {
+  margin-bottom: 2em;
 }
 
 .whats-new {
+  counter-reset: li;
   position: relative;
-  max-height:25em;
+  max-height: 25em;
   overflow: hidden;
-  background-color: $blue-bg;
-  border-radius: .5rem;
+  background-color: #F4F7FF;
+  border-radius: .7rem;
   padding: 1.5rem 2rem;
-  &:before {
-    content: "";
-    position:absolute;
-    top: 3rem;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    background: rgb(229,236,255);
-    background: linear-gradient(90deg, rgba(229,236,255,0) 72%, rgba(229,236,255,1) 100%);
-    z-index: 1;
-    pointer-events: none;
-  }
+
   &:after {
     content: "";
     height: 6rem;
-    @media (max-width: 620px) {
-      height: 10rem;
-    }
     display: block;
   }
+
+  .whats-new-title {
+    font-size: 1.2rem;
+    font-family: "AvantGardePro";
+    color: $blue;
+  }
+
+  .see-more {
+    color: $blue;
+  }
+
+  .see-more:hover {
+    color: $blue-secondary;
+    text-decoration: underline;
+  }
+
+  .circle-more-updates {
+    border-radius: 50%;
+    background-color: white;
+    padding: 1em;
+    box-shadow: 0 3px 8px 5px rgba(30, 93, 255, 0.05);
+    text-align: center;
+    display: flex;
+  }
+
+  .circle-more-updates:hover {
+    transition: transform 100ms ease-out;
+    transform: scale(1.05);
+  }
+
+  .news-number {
+    &:before {
+      content: "+" counter(li);
+    }
+
+    font-size: 1.2rem;
+    color: $blue;
+    font-weight: bold;
+  }
+
   .whats-new-header {
     display: flex;
     justify-content: space-between;
-    @media (max-width: 620px) {
-      h2 {
-        margin-bottom: 0.2rem;
-      }
-      & > a {
-        margin-bottom: 1rem;
-      }
-      flex-direction: column;
-    }
-    & > a {
-      font-size: .8rem;
-    }
+    width: 100%;
+    padding: 1em 2em;
   }
-  .whats-new-content{
+
+  .whats-new-content {
     position: relative;
     & > a {
       display: block;
       color: inherit;
     }
   }
-  .whats-new-items {
+
+  .whats-new-body {
     position: absolute;
     display: flex;
     height: 6rem;
-    @media (max-width: 620px) {
-      height: 10rem;
+    width: 100%;
+  }
+
+  .whats-new-items-shadow {
+    flex: 1 0;
+    position: relative;
+    box-sizing: content-box;
+    padding: 1rem;
+    top: -1rem;
+    left: -1rem;
+    overflow: hidden;
+    height: 100%;
+  }
+
+  .whats-new-items-fade {
+    position: relative;
+    &:before {
+      content: "";
+      position:absolute;
+      top: 0rem;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background: rgb(244,247,255);
+      background: linear-gradient(90deg, rgba(244,247,255,0) 90%, rgba(244,247,255,1) 100%);
+      z-index: 1;
+      pointer-events: none;
     }
+  }
+
+  .whats-new-items {
+    flex: 1 0;
+    display: flex;
+    box-sizing: border-box;
+
+    h3 {
+    display: none;
+    }
+    h3#fixed + ul li:before {
+      content: "Fixed: "
+    }
+    h3#deprecated + ul li:before {
+      content: "Deprecated: "
+    }
+    h3#removed + ul li:before {
+      content: "Removed: "
+    }
+
     ul {
       display: flex;
+      justify-content: space-between;
       margin-right: 1rem;
     }
-  }
-  h3 {
-    display: none;
-  }
-  h3#fixed + ul li:before {
-    content: "Fixed: "
-  }
-  h3#deprecated + ul li:before {
-    content: "Deprecated: "
-  }
-  h3#removed + ul li:before {
-    content: "Removed: "
-  }
-  li {
-    display: block;
-    list-style: none;
-    padding: .5rem;
-    border-radius: $radius;
-    background-color: white;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    box-shadow: $card-shadow;
-    width: 24rem;
-    height: 6rem;
-    transition: transform 100ms ease-out;
-    @media (max-width: 620px) {
-      width: 12rem;
-      height: 10rem;
-    }
-    &:not(:last-child) {
-      margin-right: 1rem;
-    }
-    &:hover {
-      transform: scale(1.02);
-    }
-    ul {
-      display: none;
-    }
-    @media (min-width: 621px) {
-      code {
-        white-space: nowrap;
+
+    li {
+
+      &:before {
+        counter-increment: li;
+      }
+
+      background-color: white;
+      padding: 1rem;
+      border-radius: .7rem;
+      box-shadow: 0 3px 8px 5px rgba(30, 93, 255, 0.05);
+      list-style: none;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 24rem;
+      height: 6rem;
+      transition: transform 100ms ease-out;
+
+      &:not(:last-child) {
+        margin-right: 1rem
+      }
+      &:hover {
+        transform: scale(1.02);
+      }
+      ul {
+        display: none;
       }
     }
+  }
+
+  .more-updates {
+    flex: 0 0;
+    display: flex;
+    margin: auto;
+  }
+}
+
+.whats-new-800 {
+  display: none;
+}
+
+@media (max-width: 800px) {
+  .whats-new-800 {
+    display: flex;
+    margin: 75px auto;
+    width: 100%;
+    border-radius: .7rem;
+    background-color: #F4F7FF;
+    border: solid #1E5DFF .5px;
+  }
+
+  .whats-new-header-800 {
+    color: $blue;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1em;
+  }
+
+  .whats-new {
+    display: none;
   }
 }
 
