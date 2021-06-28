@@ -2,10 +2,11 @@
 title: "Upgrading The Things Stack"
 description: ""
 distributions: ["Enterprise", "Open Source"]
-weight: 3
 ---
 
-Follow these instructions to upgrade an existing {{% tts %}} instance.
+This section contains instructions to upgrade a {{% tts %}} Enterprise or Open Source deployment, that was installed using the [installation guide]({{< relref "installation" >}}).
+
+{{% tts %}} Cloud and Community Edition are updated automatically (you don't need to do anything!)
 
 <!--more-->
 

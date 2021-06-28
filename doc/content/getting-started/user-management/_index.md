@@ -2,7 +2,6 @@
 title: "Users and Organizations"
 description: ""
 aliases: [/user-management]
-weight: 8
 ---
 
 This section explains how to manage users and organizations, and how to grant rights over entities.
