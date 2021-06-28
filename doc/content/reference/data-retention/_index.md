@@ -4,11 +4,21 @@ description: ""
 weight:
 ---
 
-This reference contains information about how long {{% tts %}} persists device data. For inquiries about data privacy or data security, read on, or [contact us](cloud@thethingsindustries.com).
+This reference contains information about what access administrators and users have to data, and how long {{% tts %}} persists device data. For inquiries about data privacy or data security, read on, or [contact The Things Industries](cloud@thethingsindustries.com).
 
 <!--more-->
 
-## Cloud and Customer Hosted Deployments
+## Important Terms
+
+To understand how data is secured in {{% tts %}} it is necessary to understand some important roles:
+
+**Infrastructure Owners**: Those with access to the hardware {{% tts %}} runs on. For {{% tts %}} Cloud and Community Edition, this is The Things Industries. For Enterprise and Open Source deployments, this is you, the customer. Formally, the **Infrastructure Owner** has access to all data stored in a database on the hardware. In practice, The Things Industries does not use this to access data in {{% tts %}} Cloud or Community Edition deployments.
+
+**Network Administrators**: Users with `admin` access in a tenant. **Network Administrators** have access to all entities in a tenant, including device secrets. In multi-tenant environments, tenants are completely isolated, and **Network Administrators** of one tenant have **no access** to other tenants.
+
+**Users and Organizations**: Users without `admin` access, and organizations, can access entities which they have [collaborator rights]({{< ref "getting-started/user-management" >}}) over.
+
+## Cloud Deployments
 
 The following information applies to {{% tts %}} deployments hosted by The Things Industries, specifically {{% tts %}} Cloud and Dedicated Cloud.
 
@@ -32,4 +42,4 @@ The Application Server stores
 
 {{< figure src="skip-encryption.png" >}}
 
-The Things Industries will never read application payloads, even if the AppSKey is configured..
+The Things Industries personnel will never access your application payloads, even if the AppSKey is configured, unless given permission to do so to provide support.
