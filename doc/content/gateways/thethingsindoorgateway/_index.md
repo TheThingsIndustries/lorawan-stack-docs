@@ -80,6 +80,12 @@ If your configuration is correct,
 
 ### Common Errors
 
+#### Claim Authentication Code Mismatch
+
+Double-check the EUI and the WiFi Password. Sometimes an `8` looks like a `3` or a `B`, an `1` like an `l`, a `0` like an `O`, etc.
+
+If your {{% ttig %}} was sold by IoT-Shop.de (either directly or via Amazon.com) The Things Network may not be able to claim your gateway on the upstream server, because your gateway may already have been claimed by the Alpha-Omega network. We currently don’t have a solution for this, but we’ll reach out to Alpha-Omega and Semtech to see how we can resolve this for you. Until then, your {{% ttig %}} will just stay connected to V2, and traffic for V3 devices will be forwarded through Packet Broker.
+
 #### Gateway Not Authorized for Claiming
 
 If you have already registered your TTIG on the same {{% tts %}} cluster that you want to claim, you have the following options
