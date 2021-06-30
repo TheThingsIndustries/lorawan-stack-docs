@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Connect Tektelic Kona Micro with UDP Packet Forwarder | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/tektelickonamicro/udp/" />
+  <title>The Things Indoor Gateway | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/thethingsindoorgateway/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.076b4863c3656ef90d55e3aadb9e99f5763e3aac9f17e1cfe345a4ceec4ccd8b.css" integrity="sha256-B2tIY8NlbvkNVeOq256Z9XY&#43;OqyfF&#43;HP40WkzuxMzYs=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Connect Tektelic Kona Micro with UDP Packet Forwarder">
+  <meta itemprop="name" content="The Things Indoor Gateway">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Connect Tektelic Kona Micro with UDP Packet Forwarder">
+  <meta property="og:title" content="The Things Indoor Gateway">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/tektelickonamicro/udp/">
-  <meta name="twitter:title" content="Connect Tektelic Kona Micro with UDP Packet Forwarder" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/thethingsindoorgateway/">
+  <meta name="twitter:title" content="The Things Indoor Gateway" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -146,28 +146,14 @@
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/tektelickonamicro/" class="">Tektelic Kona Micro IoT LoRaWAN Gateway</a>
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/tektelickonamicro/lbs/" class="">Connect Tektelic Kona Micro with Lora Basics™ Station</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/tektelickonamicro/udp/" class="is-active">Connect Tektelic Kona Micro with UDP Packet Forwarder</a>
-    
-  </li>
-
-</ul>
-
-
-    
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/thethingsindoorgateway/" class="">The Things Indoor Gateway</a>
+    <a href="https://www.thethingsindustries.com/docs/gateways/thethingsindoorgateway/" class="is-active">The Things Indoor Gateway</a>
+    
+
+
+
+    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/thethingskickstartergateway/" class="">The Things Kickstarter Gateway</a>
@@ -195,45 +181,211 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Connect Tektelic Kona Micro with UDP Packet Forwarder
+        <h1 class="title is-size-2">The Things Indoor Gateway
           
         </h1>
         
+        <h2 class="subtitle">
+          
+            
+            
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+  
+
+  
+
+<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud and Community Only">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_ttn.svg"></img>
+
+</a>
+
+
+          
+          
+            <span class="tag is-light">New in 3.13.3</span>
+
+          
+          
+        </h2>
+        
         <div class="content">
-          <p>This section guides you to connect the Tektelic Kona Micro IoT LoRaWAN Gateway to The Things Stack using the Semtech UDP Packet Forwarder
-.</p>
-<h2 id="connect-to-the-gateway">Connect to the Gateway</h2>
-<p>Find the IP address the gateway. This can be done in various ways. You can connect your machine to the same local network as that of the gateway ethernet connection and scan for open SSH ports or assign a static IP to the gateway and use that. Once the gateway IP address is found, SSH into it.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh root@&lt;GatewayIP&gt;
-</code></pre></div><p>The password for the <strong>root</strong> user can be found on the back panel. It&rsquo;s typically a 9 character alphanumeric string starting with <strong>1846XXXXX</strong>.</p>
-<h2 id="configure-the-packet-forwarder">Configure the Packet Forwarder</h2>
-<p>Now you can edit the gateway configuration file.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ vi /etc/default/config.json
-</code></pre></div><div class="notification is-info is-light has-text-dark">
+          <figure class="plain float">
+    <img src="TTIG.jpeg"
+         alt="{{% ttig %}}"/> 
+</figure>
+
+<p>This page guides you to connect The Things Indoor Gateway to The Things Stack.</p>
+<p>The Things Indoor Gateway is an 8 Channel LoRaWAN gateway, whose technical specifications can be found in <a href="https://www.thethingsnetwork.org/docs/gateways/thethingsindoor/">the official documentation</a>.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ol>
+<li>User account on The Things Stack with rights to create Gateways and API Keys.</li>
+<li>The gateway EUI. The EUI of the gateway is <strong>not</strong> the WiFi MAC address printed on the back of the gateway, but is derived from the first number that typically is of the form <strong>58A0CBxxxxxx</strong>, printed on the top of the sticker below the QR code. For example, if that number is <strong>5BA0CB800BE7</strong>, insert <strong>FFFE</strong> after the first 6 characters to make it a 16 character Gateway EUI (e.g. 5BA0CBFFFE800BE7).</li>
+</ol>
+<p><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Press the <code>i</code> key on your keyboard to start insert mode. Once finished editing, press <code>ESC</code> and enter <code>:wq</code> to write the file and quit.
+  The gateway EUI can later be found at the bottom in the WiFi setup screen.
 </div>
 
-<p>Edit the server parameters:</p>
+<figure>
+    <img src="TTIG_EUI.png"
+         alt="{{% ttig %}} EUI"/> 
+</figure>
+</p>
+<ol start="3">
+<li>The WiFi password of the The Things Indoor Gateway, typically printed on the back of the gateway.</li>
+</ol>
+<h2 id="claiming-the-things-indoor-gateway">Claiming The Things Indoor Gateway</h2>
+<p>The Things Indoor Gateway is added to The Things Stack via a process called <strong>Gateway Claiming</strong>.</p>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  Do not register your TTIGs via the regular option of <strong>Adding Gateways</strong>.
+</div>
+
+<p>Go to <strong>Gateways</strong> in the top menu, and click the <strong>Claim Gateway</strong> button on the upper right to reach the gateway claiming page.</p>
+<p>Fill the <strong>Gateway EUI</strong>, the <strong>Claim authentication code</strong> (the WiFi Password from Prerequisites), the <strong>Gateway ID</strong> and choose the appropriate <strong>Frequency Plan</strong>.</p>
+<p>Click <strong>Claim gateway</strong> to finish.</p>
+<figure>
+    <img src="TTIG_Claim.png"
+         alt="{{% ttig %}} Claiming"/> 
+</figure>
+
+<p>If your inputs are correct, a new gateway will be created and you will be redirected to the gateway overview page of your newly created gateway.</p>
+<h2 id="connecting-the-things-indoor-gateway">Connecting The Things Indoor Gateway</h2>
+<h3 id="gateways-connected-to-another-lns">Gateways Connected to Another LNS</h3>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  This is applicable if your gateway was previously connected to The Things Network v2.
+</div>
+
+<p>If the The Things Indoor Gateway is currently connected to another LNS, do either of the following</p>
 <ul>
-<li><strong>server_address</strong>: Address of the Gateway Server. If you followed the <a href="https://www.thethingsindustries.com/docs/getting-started/">Getting Started guide</a> this is the same as what you use instead of <code>thethings.example.com</code>.</li>
-<li><strong>serv_port_up</strong>: UDP upstream port of the Gateway Server, typically 1700.</li>
-<li><strong>serv_port_down</strong>: UDP downstream port of the Gateway Server, typically 1700.</li>
+<li>Wait up to 24 hrs (this is the default action for gateways that are not physically reachable). The Things Indoor Gateway connects to the server every 24 hours to check for new configuration.</li>
+<li>Unplug the power supply, wait for a few seconds and plug it back in. The Things Indoor Gateway now connects to the server to check for new configuration.</li>
 </ul>
-<p>Save the configuration and restart the packet forwarder.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ /etc/init.d/pkt_fwd restart
-</code></pre></div><p>If your configuration was successful, your gateway will connect to The Things Stack after a couple of seconds.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<p>If the gateway does not connect to The Things Stack after a few minutes, disconnect and reconnect the power supply to power-cycle the gateway. Packet forwarder logs can be observed by SSH-ing into the gateway and running:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ tail -f /var/log/pkt_fwd.log
-</code></pre></div>
-        </div>
-        <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/gateways/tektelickonamicro/lbs/">← Connect Tektelic Kona Micro with Lora Basics™ Station</a>
-<a class="button is-pulled-right" href="/docs/gateways/thethingsindoorgateway/">The Things Indoor Gateway →</a>
+<h3 id="new-gateways">New Gateways</h3>
+<p>If your gateway has never been configured to any LNS, follow the steps below.</p>
+<p>Keep the RESET button (small button at the back of the gateway next to the USB-C port) pressed for 5 seconds until the LED blinks rapidly from GREEN to RED and vice versa for a couple of times.</p>
+<p>Hold the SETUP button (at the top of the gateway, next to the LED) for 10 seconds until the LED rapidly blinks RED.</p>
+<p>The gateway now exposes a WiFi access point whose SSID is <strong>MINIHUB-xxxxxx</strong>, where <code>xxxxxx</code> is the last 6 digits of the gateway EUI. The password for this network is same WiFi password from the Prerequisites.</p>
+<p>After connecting to this network go to <code>192.168.4.1</code> using a web browser to access the WiFi config page.
+<figure>
+    <img src="TTIG_WiFi_Setup.png"
+         alt="{{% ttig %}} WiFi Setup"/> 
+</figure>
+</p>
+<p>Select the WiFi network by clicking the <strong>+</strong> button next to the desired network (and enter its password if it is a secure network).</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The Things Indoor Gateway does not support enterprise WiFi networks.
 </div>
 
-        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<p>Click <strong>Save and Reboot</strong> to finish.</p>
+<p>If your configuration is correct,</p>
+<ul>
+<li>The gateway will blink GREEN for a few seconds until it connects to the selected WiFi network.</li>
+<li>Then, it will blink from GREEN to RED and vice versa for a few seconds while it connects to the server and fetches the necessary configuration.</li>
+<li>Please allow 5-10 minutes for the gateway to pick up the new configuration.</li>
+</ul>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  If this is the first time your gateway is being powered on/connected to WiFi, it might pick up a new firmware depending on when it was last updated. This is indicated by alternating GREEN/RED blinks of the LED. Please leave the gateway powered on when this happens.
+</div>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+<h3 id="common-errors">Common Errors</h3>
+<h4 id="gateway-not-authorized-for-claiming">Gateway Not Authorized for Claiming</h4>
+<p>If you have already registered your TTIG on the same The Things Stack cluster that you want to claim, you have the following options</p>
+<p>a. If you would like to retain the Gateway ID that you registered it with, support will be added in a subsequent release to claim the gateway while retaining its current Gateway ID.</p>
+<p>b. If you would like to claim the gateway with a new Gateway ID, you can delete the existing gateway from The Things Stack cluster and follow the claiming process below with a new Gateway ID.</p>
+<h4 id="gateway-with-id-already-exists">Gateway with ID Already Exists</h4>
+<p>This means that either you or another user has already used the Gateway ID. Please choose another ID and try again.</p>
+<h3 id="led-states">LED States</h3>
+<table>
+<thead>
+<tr>
+<th>Color(s)</th>
+<th>Illumination Pattern</th>
+<th>Operating Mode</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GREEN</td>
+<td>Blinking (freq 1 sec)</td>
+<td>GW</td>
+<td>WiFi not connected (or trying to connect)</td>
+</tr>
+<tr>
+<td>GREEN</td>
+<td>Blinking (freq 1/4 sec)</td>
+<td>GW</td>
+<td>Connected to WiFi, establishing connection to LNS/configuring radio</td>
+</tr>
+<tr>
+<td>GREEN</td>
+<td>Solid</td>
+<td>GW</td>
+<td>Connected to WiFi, connected to LNS backend, listening for packets</td>
+</tr>
+<tr>
+<td>GREEN/RED</td>
+<td>Alternate Blinking (freq 1/4 sec)</td>
+<td>CONF</td>
+<td>Scanning WiFi networks, setting up Config AP</td>
+</tr>
+<tr>
+<td>RED</td>
+<td>Blinking (freq 1/4 sec)</td>
+<td>CONF</td>
+<td>Config AP active</td>
+</tr>
+</tbody>
+</table>
+<h3 id="button-actions">Button Actions</h3>
+<p>There are three possible button actions on the TTIG that are listed below.</p>
+<ul>
+<li>SETUP button pressed for 10s:
+<ul>
+<li>Switch to CONF mode if in GW mode</li>
+</ul>
+</li>
+<li>SETUP button pressed for 5s:
+<ul>
+<li>Reboot if in CONF mode, do nothing in GW mode</li>
+</ul>
+</li>
+<li>RESET button pressed for 5s:
+<ul>
+<li>Factory reset (wipes out WiFi and LNS credentials, retains CUPS credentials)</li>
+</ul>
+</li>
+</ul>
+        </div>
+        
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/gateways/tektelickonamicro/udp/">← Connect Tektelic Kona Micro with UDP Packet Forwarder</a>
+<a class="button is-pulled-right" href="/docs/gateways/thethingskickstartergateway/">The Things Kickstarter Gateway →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
 <script src="https://cdn.emojicom.io/embed/widget.js" async></script>
 
 <div class='feedback has-vertical-space'>
@@ -251,10 +403,13 @@
   <ul class="menu-list">
     
       
-      <li><a href='#connect-to-the-gateway'>Connect to the Gateway</a></li>
+      <li><a href='#prerequisites'>Prerequisites</a></li>
     
       
-      <li><a href='#configure-the-packet-forwarder'>Configure the Packet Forwarder</a></li>
+      <li><a href='#claiming-the-things-indoor-gateway'>Claiming The Things Indoor Gateway</a></li>
+    
+      
+      <li><a href='#connecting-the-things-indoor-gateway'>Connecting The Things Indoor Gateway</a></li>
     
       
       <li><a href='#troubleshooting'>Troubleshooting</a></li>
@@ -297,14 +452,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 21 Dec 2020.
+  Last changed by Krishna Iyer Easwaran on 30 Jun 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/fbc623080f13c161ecee5c82447d38e6bdbb9cc4">
-      doc: Add Tektelic LBS
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/abf723e164ce50202c9d3c74ec03c799a4a3a9da">
+      doc: Add TTIG claiming (#424)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/tektelickonamicro/udp.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/thethingsindoorgateway/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
