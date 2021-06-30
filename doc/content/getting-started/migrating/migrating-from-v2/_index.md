@@ -9,6 +9,10 @@ This section documents the process of migrating end devices from {{% ttnv2 %}} t
 
 <!--more-->
 
+{{< note >}} As previously announced, on **July 1, 2021** users will no longer be able to add new applications, devices and gateways on {{% ttnv2 %}} deployments, i.e. {{% ttnv2 %}} is going to **read-only** mode.
+
+Make sure to migrate your gateways and devices from {{% ttnv2 %}} to {{% tts %}} as soon as possible, since {{% ttnv2 %}} machines are planned to be completely shut down on **December 31, 2021**. {{</ note >}}
+
 {{< warning >}} We highly recommend to always test the migration on a single end device or a small batch of end devices in order to make sure the migration process goes as expected. {{</ warning >}}
 
 ## Prerequisites
@@ -18,6 +22,8 @@ This section documents the process of migrating end devices from {{% ttnv2 %}} t
 3. User account in {{% tts %}}.
 
 {{< note >}} We **highly recommend** using {{% tts %}} version `3.12.0` or higher. Some of the features (like session migration) from this guide might not be available for prior versions. {{</ note >}}
+
+{{< info >}} Starting from {{% tts %}} `v3.13.0` release, The Things Network community members can freely migrate their gateways from The Things Network {{% ttnv2 %}} to {{% tts %}} Community Edition, while still providing uplink and downlink coverage to The Things Network {{% ttnv2 %}}. This means that the order of actions of migrating gateways and devices is no longer relevant - you can migrate your devices first and then your gateways, or vice versa. {{</ info >}}
 
 ## Add Application in {{% tts %}}
 
@@ -31,9 +37,32 @@ Since end devices are being created within applications, you first need to add a
 
 After creating an application, you need to add the associated elements like application-level payload formatters and integrations.
 
-{{< note >}} The payload formatters can be uplink and downlink, and they are what was known in {{% ttnv2 %}} as coders and decoders. The format of payload coders and decoders is still supported in {{% tts %}}.
+{{< info >}} The payload formatters can be uplink and downlink, and they are what was known in {{% ttnv2 %}} as encoders and decoders. In {{% tts %}}, it is also possible to add payload formatters per end device, which override application payload formatters. However, before devices are migrated to {{% tts %}} it is only possible to add a payload formatter per application. {{</ info >}}
 
-In {{% tts %}}, it is also possible to add payload formatters per end device, which override application payload formatters. However, before devices are migrated to {{% tts %}} it is only possible to add a payload formatter per application. {{</ note >}}
+{{< note >}} The format of {{% ttnv2 %}} payload encoders and decoders is still supported in {{% tts %}}. You only need to add one additional line to the function code used in {{% ttnv2 %}} to make it fully compatible with {{% tts %}}. For example, if your payload decoder function in {{% ttnv2 %}} was:
+
+```js
+function Decoder(bytes) {
+    var temperature = bytes[0] | bytes[2];  
+    return {
+        temperature: temperature;
+    }
+}
+```
+
+then your uplink payload formatter function in {{% tts %}} should be:
+
+```js
+function decodeUplink(input) {
+    var bytes = input.bytes;
+    var temperature = bytes[0] | bytes[2];
+    return {
+        temperature: temperature;
+    }
+}
+```
+
+{{</ note >}}
 
 > See [Payload Formatters]({{< ref "/integrations/payload-formatters" >}}) guide for detailed instructions on how to add payload formatters and which types are supported by {{% tts %}}. 
 
@@ -49,14 +78,9 @@ If you are using deployments connected to Packet Broker, the traffic from your e
 
 If you are using deployments that are not connected to Packet Broker, you will have to [migrate your gateway]({{< ref "/getting-started/migrating/gateway-migration" >}}) to receive traffic from your end device in {{% tts %}}. {{</ info >}}
 
-{{< note >}} We recommend The Things Network community members to keep their gateways registered on The Things Network V2 for as long as possible (i.e. to migrate their devices via Packet Broker), or to agree on performing coordinated migration to {{% tts %}} together with the local community to ensure reliable LoRaWAN network coverage. {{</ note >}}
+{{< note >}} Starting from {{% tts %}} `v3.13.0` release, The Things Network community members can freely migrate their gateways from The Things Network {{% ttnv2 %}} to {{% tts %}} Community Edition, while still providing uplink and downlink coverage to The Things Network {{% ttnv2 %}}. {{</ note >}}
 
 There are two approaches for migrating devices, depending on how many end devices you intend to migrate and if you wish to migrate with or without active sessions, described in the following guides:
 
-- [Using {{% tts %}} Console]({{< relref "migrate-using-console" >}}) - this method is convenient only for small number of devices. Migrating active device sessions is not supported.
-- [Using `ttn-lw-migrate` tool]({{< relref "migrate-using-migration-tool" >}}) - this method allows migrating devices in bulk, optionally with active device sessions.
-
-## Migration Decision Tree
-Migrating from V2 to **The Things Stack Cloud** or **The Things Stack Community Edition** (click on the image to enlarge).
-
-[![migration decision tree](migration-decision-tree.jpg "migration decision tree")](migration-decision-tree.jpg)
+- [Using {{% tts %}} Console]({{< relref "migrate-using-console" >}})
+- [Using `ttn-lw-migrate` tool]({{< relref "migrate-using-migration-tool" >}})

@@ -6,6 +6,8 @@ aliases: "/getting-started/migrating-from-v2/gateway-migration"
 
 Migrating gateways to {{% tts %}} is an easy, two step process.
 
+{{< info >}} Migrating **The Things Indoor Gateway (TTIG)** from {{% ttnv2 %}} to {{% tts %}} via CLI and Console is now fully supported! [Read more]({{< ref "/gateways/thethingsindoorgateway" >}}) {{</ info >}}
+
 ### Step 1
 
 Add the Gateway in the {{% tts %}}. 
