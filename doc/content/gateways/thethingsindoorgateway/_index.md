@@ -21,30 +21,25 @@ This page guides you to connect {{% ttig %}} to {{% tts %}}.
 3. The WiFi password of the {{% ttig %}}, typically printed on the back of the gateway. 
 
 
-## Claiming
+## Claiming {{% ttig %}}
 
 {{% ttig %}} is added to The Things Stack via a process called **Gateway Claiming**.
 
 {{< warning >}} Do not register your TTIGs via the regular option of **Adding Gateways**. {{</ warning >}}
 
-### Gateway Already Registered 
-
-If you have already registered your TTIG, you have the following options
-
-a. If you would like to retain the Gateway ID that you registered it with, support will be added in a subsequent release to claim the gateway while retaining it's current Gateway ID.
-
-b. If you would like to claim the gateway with a new Gateway ID, you can delete the existing gateway and follow the claiming process below with a new Gateway ID.
-
 ### Procedure
 
+Go to **Gateways** in the top menu, and click **Claim Gateway** to reach the gateway claiming page.
 
-## Configuration 
+Fill the **Gateway EUI**, the **Claim authentication code** (the WiFi Password), the **Gateway ID** and choose the appropriate **Frequency Plan**.
 
-### Gateways Connected to Another Network
+Click **Claim gateway** to finish.
 
-If the {{% ttig %}} is currently connected to another LNS, do either of the following
-- Wait up to 24 hrs (this is the default actions for gateways that are not physically reachable). {{% ttig %}} connects to the server every 24 hours to check for new configuration.
-- Unplug the power supply, wait for a few seconds and plug it back in. {{% ttig %}} now connects to the server to check for new configuration.
+{{< figure src="TTIG_Claim.png" alt="{{% ttig %}} Claiming" >}}
+
+If your inputs are correct, a new gateway will be created and you will be redirected to the gateway overview page of your newly created gateway.
+
+## Connecting {{% ttig %}}
 
 ### New Gateways
 
@@ -70,9 +65,29 @@ If your configuration is correct,
 
 {{< note >}} If this is the first time your gateway is being powered on/connected to WiFi, it might pickup a new firmware depending on when it was last updated. This is indicted by alternating GREEN/RED blinks of the LED. Please leave the gateway powered on when this happens. {{</ note >}}
 
+### Gateways Connected to Another LNS
+
+If the {{% ttig %}} is currently connected to another LNS, do either of the following
+- Wait up to 24 hrs (this is the default action for gateways that are not physically reachable). {{% ttig %}} connects to the server every 24 hours to check for new configuration.
+- Unplug the power supply, wait for a few seconds and plug it back in. {{% ttig %}} now connects to the server to check for new configuration.
+
 ## Troubleshooting
 
-## LED States
+### Common Errors
+
+#### Gateway Not Authorized for Claiming
+
+If you have already registered your TTIG, you have the following options
+
+a. If you would like to retain the Gateway ID that you registered it with, support will be added in a subsequent release to claim the gateway while retaining it's current Gateway ID.
+
+b. If you would like to claim the gateway with a new Gateway ID, you can delete the existing gateway and follow the claiming process below with a new Gateway ID.
+
+#### Gateway with ID Already Exists
+
+This means that either you or another user has already used the Gateway ID. Please choose another ID and try again.
+
+### LED States
 
 |Color(s) | Illumination Pattern |Operating Mode | Meaning|
 |---|---|---|---| 
@@ -82,7 +97,7 @@ If your configuration is correct,
 |GREEN/RED|Alternate Blinking (freq 1/4 sec)|CONF| Scanning WiFi networks, setting up Config AP|
 |RED|Blinking (freq 1/4 sec)|CONF| Config AP Active|
 
-## Button Actions
+### Button Actions
 
 There are three possible button actions on the TTIG
 * SETUP Button pressed for 10s: 
