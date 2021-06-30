@@ -231,8 +231,15 @@
 <p>Migrating your end devices using The Things Stack Console is easy, but it is convenient only if you have an intention of migrating few devices.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>This method comes down to adding end devices in The Things Stack Console one by one, and it is not possible to migrate groups of devices as with using <code>ttn-lw-migrate</code> tool.</p>
-<p>With this method, it is also not possible to migrate active device sessions. Therefore, this section implies migrating devices without active sessions.</p>
+  <p>This method comes down to adding end devices in The Things Stack Console one by one, and it is not possible to migrate groups of devices using Console only.</p>
+<p>It is possible to import groups of devices using The Things Stack Console, but that would require the usage of <code>ttn-lw-migrate</code> tool to export those devices from V2, which is already addressed in <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/">Migrate using the Migration Tool</a> guide.</p>
+
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <p>Migrating active sessions using The Things Stack Console <strong>only</strong> is not fully achievable. You can migrate the device from V2 to The Things Stack using the Console, but you will need <code>ttn-lw-migrate</code> tool to export session-related parameters (like session keys, frame counters, etc.) from V2 to a <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON file</a>. You can later <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">import this file in The Things Stack</a> using The Things Stack Console, or the CLI. That approach would be a combination of the migration methods described in this documentation, but for the sake of simplicity, and the fact that migrating active sessions is not recommended, we will not devote too much attention to it.</p>
+<p>Therefore, this section implies migrating devices without active sessions, as that can be fully achieved with using only The Things Stack Console.</p>
 
 </div>
 
@@ -277,8 +284,13 @@
 <li>Select <strong>Regional Parameters version</strong> <code>PHY V1.0.2 REV B</code> (this is the version used in V2)</li>
 <li>Do not check the boxes <strong>Supports class B/C</strong></li>
 <li>Keep the default Advanced settings as OTAA devices commonly negotiate about these with The Things Stack Network Server</li>
-<li>Enter your end device’s <strong>AppKey</strong> (has to match the one in V2, as this info is provided by the device manufacturer)</li>
+<li>Enter your end device’s <strong>AppKey</strong> (see the note below)</li>
 </ul>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <p>The <strong>AppKey</strong> value can match the one used in V2, as this info is usually provided by the device manufacturer. The <strong>AppKey</strong> can also be generated in the Console as the last step of the OTAA device registration process. If you decide to generate it, do not forget to program your OTAA device to use the new <strong>AppKey</strong> issued by The Things Stack.</p>
+<p>If you are migrating an active OTAA device session, the <strong>AppKey</strong> must match the one used on V2, otherwise you can choose to keep one from V2 or not.</p>
+</div>
 </section>
 <section data-content="abp">
   <p>If you still have a good reason to use ABP device, you can add it in The Things Stack by following next few steps:</p>
@@ -306,9 +318,10 @@ Choose <strong>LoRaWAN version</strong> <code>MAC V1.0.2</code> (this is the ver
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   <p>The <strong>DevAddr</strong> and <strong>RX1 Delay</strong> values depend on your specific use case.</p>
-<p>If you want your end device traffic to be routed via Packet Broker to The Things Stack, the <strong>DevAddr</strong> must be routable by the Packet Broker and the <strong>RX1 Delay</strong> value must be 5 seconds. Note that the <strong>DevAddr</strong> is routable only if you are using <strong>The Things Industries V2</strong> and migrating to <strong>The Things Stack Cloud</strong>, and even that is being achieved only on customer request by contacting <a href="mailto:support@thethingsindustries.com">The Things Industries support</a>.</p>
+<p>If you want your end device traffic to be routed via Packet Broker to The Things Stack, the <strong>DevAddr</strong> must be routable by the Packet Broker and the <strong>RX1 Delay</strong> value must be set to 5 seconds. Note that the <strong>DevAddr</strong> is routable only if you are using <strong>The Things Industries V2</strong> and migrating to <strong>The Things Stack Cloud</strong>, and even that is being achieved only on customer request by contacting <a href="mailto:support@thethingsindustries.com">The Things Industries support</a>.</p>
 <p>If the existing <strong>DevAddr</strong> is not routable by the Packet Broker (i.e. you are not migrating from <strong>The Things Industries V2</strong> to <strong>The Things Stack Cloud</strong>), and/or <strong>RX1 Delay</strong> is different than 5 seconds (for V2 the default is 1 second), you will need to auto-generate new <strong>DevAddr</strong> during device registration on The Things Stack, then re-program the device to assign it with that new <strong>DevAddr</strong> and <strong>RX1 Delay</strong> of 5 seconds. Otherwise, the traffic from your device will not be properly routed by the Packet Broker or will never reach your end device in time.</p>
 <p>If you do not want your traffic to be routed by the Packet Broker, i.e. you want to migrate your gateway to The Things Stack too, you do not have to re-program your device. You can keep the existing <strong>DevAddr</strong> and <strong>RX1 Delay</strong> of 1 second, and use these values when adding the device to The Things Stack. Be aware that if you are using a high-latency backhaul, keeping the <strong>RX1 Delay</strong> of 1 second might cause latency issues.</p>
+<p>The <strong>NwkSKey</strong> has to match the one used on V2 if you are migrating an active ABP device session. If not, you can choose to keep the one used on V2, or to generate a new one in The Things Stack Console during the device registration process.</p>
 </div>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
@@ -393,7 +406,7 @@ Choose <strong>LoRaWAN version</strong> <code>MAC V1.0.2</code> (this is the ver
 
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Even if you manage to get your end device traffic routed to The Things Stack via Packet Broker, we recommend you get in touch with your local The Things Network community and agree on coordinating the migration of gateways, so you do not loose the LoRaWAN network coverage. See how to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway to The Things Stack</a>.
+  Starting from The Things Stack <code>v3.13.0</code> release, The Things Network community members can freely migrate their gateways from The Things Network V2 to The Things Stack Community Edition, while still providing uplink and downlink coverage to The Things Network V2. Even if you manage to get your end device traffic routed to The Things Stack by Packet Broker, we recommend to migrate your gateways as soon as possible.
 </div>
         </div>
         <div class="is-clearfix">
@@ -468,10 +481,10 @@ Choose <strong>LoRaWAN version</strong> <code>MAC V1.0.2</code> (this is the ver
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 05 May 2021.
+  Last changed by Nejra Selimović on 30 Jun 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/fb7323953601e8b119025450db03a29517d2e62e">
-      doc: Fix migration docs
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4bdcb88f2a81c6408669ae47ef0613e3e7ef026c">
+      doc: Update migration docs (#386)
     </a>
 </p>
 

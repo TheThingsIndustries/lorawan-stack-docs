@@ -259,7 +259,7 @@
 <div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
   <p>Active device sessions can be migrated via Packet Broker only from <strong>The Things Industries V2 (SaaS)</strong> to <strong>The Things Stack Cloud</strong>, and this is achievable only on a customer request. Contact <a href="mailto:support@thethingsindustries.com">The Things Industries support</a> for more information.</p>
-<p>For all other scenarios, migrating active session is achievable only if you <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway to The Things Stack</a> too. However, we strongly recommend The Things Network community members to keep their gateways registered on The Things Network V2 for as long as possible, or to agree on performing coordinated migration to The Things Stack, as this will ensure the community does not loose their LoRaWAN coverage.</p>
+<p>For all other scenarios, migrating active session is achievable only if you <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway to The Things Stack</a> too.</p>
 
 </div>
 
@@ -348,16 +348,16 @@ dev3
   Migrating your OTAA device from <strong>The Things Industries V2 (SaaS)</strong> to <strong>The Things Stack Cloud</strong> with its active session means it will keep its <strong>DevAddr</strong>, channel settings and MAC parameters from V2. It will not send new Join Requests, but the uplink traffic from your device should automatically show up in The Things Stack, because it will be routed via Packet Broker thanks to preserving your device&rsquo;s existing session.
 </section>
 <section data-content="abp">
-  Migrating your ABP device from <strong>The Things Industries V2 (SaaS)</strong> to <strong>The Things Stack Cloud</strong> with its active session means it will keep its <strong>DevAddr</strong>, channel settings and MAC parameters from V2. Once properly migrated, the uplink traffic from your end device should automatically show up in The Things Stack, because it will be routed via Packet Broker thanks to preserving your device&rsquo;s existing session.
+  Migrating your ABP device from V2 to The Things Stack with its active session means it will keep its <strong>DevAddr</strong>, channel settings and MAC parameters from V2, i.e. the existing session will be preserved.
 </section>
 
 </div>
 
-<p>If you are migrating an end device with its active session via Packet Broker, you will need to set the <strong>RX1 Delay</strong> of the device to 5 seconds by <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/configure-mac-settings/">configuring MAC settings</a>, otherwise the traffic might not reach The Things Stack in time via Packet Broker.</p>
-<p>You can leave the <strong>RX1 Delay</strong> value as is (1 second from V2), but then you will need to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway to The Things Stack</a> too - keep in mind that if your gateway has a high-latency backhaul, you could still experience latency issues.</p>
+<p>If you are migrating an end device with its active session via Packet Broker (from <strong>The Things Industries V2</strong> to <strong>The Things Stack Cloud</strong>), you might need to set the <strong>RX1 Delay</strong> of the device to 5 seconds by <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/configure-mac-settings/">configuring MAC settings</a>, otherwise the traffic might not reach The Things Stack in time via Packet Broker.</p>
+<p>In any case, you can leave the <strong>RX1 Delay</strong> value as is (1 second from V2), but then you will need to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway to The Things Stack</a> too.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Even if you manage to get your end device traffic routed to The Things Stack via Packet Broker, we recommend you get in touch with your local The Things Network community and agree on coordinating the migration of gateways, so you do not loose the LoRaWAN network coverage. See how to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway to The Things Stack</a>.
+  Starting from The Things Stack <code>v3.13.0</code> release, The Things Network community members can freely migrate their gateways from The Things Network V2 to The Things Stack Community Edition, while still providing uplink and downlink coverage to The Things Network V2. Even if you manage to get your end device traffic routed to The Things Stack by Packet Broker, we recommend to migrate your gateways as soon as possible.
 </div>
         </div>
         <div class="is-clearfix">
@@ -425,10 +425,10 @@ dev3
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 05 May 2021.
+  Last changed by Nejra Selimović on 30 Jun 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/fb7323953601e8b119025450db03a29517d2e62e">
-      doc: Fix migration docs
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4bdcb88f2a81c6408669ae47ef0613e3e7ef026c">
+      doc: Update migration docs (#386)
     </a>
 </p>
 
