@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>3.10.3 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/whats-new/3.10.3/" />
+  <title>3.13.3 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/whats-new/3.13.3/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.25b30cdd256bfe2021b3a162f05871509954bca5cc3a6e85d1f515ea9ed6aa0f.css" integrity="sha256-JbMM3SVr/iAhs6Fi8FhxUJlUvKXMOm6F0fUV6p7Wqg8=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="The Things Stack for LoRaWAN">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="3.10.3">
+  <meta itemprop="name" content="3.13.3">
   <meta itemprop="description" content="The Things Stack for LoRaWAN">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="3.10.3">
+  <meta property="og:title" content="3.13.3">
   <meta property="og:description" content="The Things Stack for LoRaWAN">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/whats-new/3.10.3/">
-  <meta name="twitter:title" content="3.10.3" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/whats-new/3.13.3/">
+  <meta name="twitter:title" content="3.13.3" />
   <meta name="twitter:description" content="The Things Stack for LoRaWAN" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -92,7 +92,7 @@
 <ul class="menu-list">
 <a href="https://www.thethingsindustries.com/docs/whats-new/" class="">Overview</a>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.13.3/" class="">3.13.3</a>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.13.3/" class="is-active">3.13.3</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.13.2/" class="">3.13.2</a>
@@ -143,7 +143,7 @@
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.10.4/" class="">3.10.4</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.10.3/" class="is-active">3.10.3</a>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.10.3/" class="">3.10.3</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.10.2/" class="">3.10.2</a>
@@ -170,18 +170,68 @@
       </div>
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">3.10.3
+        <h1 class="title is-size-2">3.13.3
         </h1>
 
         <div class="content">
           <h3 id="added">Added</h3>
 <ul>
-<li>Configure application activation settings from the CLI (see <code>ttn-lw-cli application activation-settings</code> commands).</li>
-<li>CLI support for federated authentication provider deletion (<code>ttn-lw-stack is-db delete-auth-provider</code>).</li>
-</ul>
-<h3 id="security">Security</h3>
+<li>Email sent to admins when an OAuth client is requested by a non-admin user.</li>
+<li>Packet Broker UI in the Console (admin only).</li>
+<li>New config option <code>--console.oauth.cross-site-cookie</code> to control access to OAuth state cookie between origins.
 <ul>
-<li>Fixed an issue with authentication on the <code>/debug/pprof</code>, <code>/healthz</code> and <code>/metrics</code> endpoints.</li>
+<li>This option needs to be set to <code>true</code> (default is <code>false</code>) in multi-cluster deployments in order to support OAuth clients that use POST callbacks.</li>
+</ul>
+</li>
+<li>Application Server forwards upstream messages of type <code>ApplicationDownlinkSent</code> for application downlink messages that were acknowledged with a TxAck message from the gateway.
+<ul>
+<li>MQTT clients can subscribe to the topic <code>v3/{application-id}/devices/{device-id}/down/sent</code>.</li>
+<li>For HTTP webhooks, make sure that the <strong>Downlink Sent</strong> messages are enabled.</li>
+</ul>
+</li>
+<li>Query for the most recent application messages from the Storage Integration API with the new <code>last</code> parameter (for example, <code>?last=10m</code> or <code>?last=2h</code>). See also <code>--last</code> argument for the <code>ttn-lw-cli applications storage get</code> and <code>ttn-lw-cli end-devices storage get</code> commands.</li>
+<li>A location solved message is published automatically by Application Server when the decoded payload contains coordinates (e.g. <code>latitude</code> and <code>longitude</code>, among other combinations, as well as support for accuracy and altitude).</li>
+<li>Configuration option to include Packet Broker metadata in uplink messages: <code>pba.home-network.include-hops</code>. By default, this is now disabled.</li>
+<li>Update gateway identity, status, antennas, frequency plan, location and receive and transmit rates to Packet Broker Mapper. Mapping is enabled when the Forwarder role is enabled. The following new configuration options are introduced to change the default behavior:
+<ul>
+<li><code>gs.packetbroker.update-gateway-interval</code>: Update gateway interval</li>
+<li><code>gs.packetbroker.update-gateway-jitter</code>: Jitter (fraction) to apply to the update interval to randomize intervals</li>
+<li><code>gs.packetbroker.online-ttl-margin</code>: Time to extend the online status before it expires</li>
+<li><code>pba.mapper-address</code>: Address of Packet Broker Mapper</li>
+<li><code>pba.forwarder.gateway-online-ttl</code>: Time-to-live of online status reported to Packet Broker</li>
+</ul>
+</li>
+<li>Improved error messages for Gateway Claiming and additional defaults for non-existing gateways.</li>
+</ul>
+<h3 id="changed">Changed</h3>
+<ul>
+<li>Low-level log messages from the <code>go-redis</code> library are printed only when the log level is set to <code>DEBUG</code>.</li>
+<li>GS will discard repeated gateway uplink messages (often received due to buggy gateway forwarder implementations). A gateway uplink is considered to be repeated when it has the same payload, frequency and antenna index as the last one.
+<ul>
+<li>The new <code>gs_uplink_repeated_total</code> metric counts how many repeated uplinks have been discarded.</li>
+<li>A <code>gs.up.repeat</code> event is emitted (once per minute maximum) for gateways that are stuck in a loop and forward the same uplink message.</li>
+</ul>
+</li>
+<li>For ABP sessions, the CLI now requests a DevAddr from the Network Server instead of generating one from the testing NetID.</li>
+<li>Descriptions, tooltips and defaults for checkboxes for public gateway status and location in the Console.</li>
+<li>All HTTP requests made by The Things Stack now contain a <code>User-Agent</code> header in the form of <code>TheThingsStack/{version}</code>.</li>
+<li>No connection to Packet Broker is being made when neither the Forwarder nor the Home Network role is enabled.</li>
+<li>Increase the default size limit for payload formatter scripts to 40KB (up from 4KB). The maximum size enforced at API level is 40KB (up from 16KB).
+<ul>
+<li>For more context see <a href="https://github.com/TheThingsNetwork/lorawan-stack/issues/4053">issue #4053</a> and <a href="https://github.com/TheThingsNetwork/lorawan-stack/issues/4278">issue #4278</a>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>Parse error in Webhook Templates.</li>
+<li>Clarified errors in device claiming.</li>
+<li>Application deletion handling in the Console.</li>
+<li>Error when logging into the Console when using connections without TLS.</li>
+<li>Account for antenna gain when the gateway is not authenticated (i.e. UDP gateway).</li>
+<li>Preserve antenna gain when the gateway status message contains GPS coordinates.</li>
+<li>Location map coordinate selection in the Console.</li>
+<li>Rights required for reading scheduled downlinks.</li>
 </ul>
 
         </div>
@@ -235,14 +285,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 13 Jan 2021.
+  Last changed by Nejra Selimović on 02 Jul 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/938c9dd5c2cab0ca1080e8d0175e0b3a3d364794">
-      doc: Add whats-new
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3aa2984cda75e4d2988c4d2e1b1dc6085b72e579">
+      doc: Update v3.13.3 release docs (#428)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/whats-new/3.10.3.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/whats-new/3.13.3.md" class="button">Edit on Github</a>
 </div>
 
       </div>

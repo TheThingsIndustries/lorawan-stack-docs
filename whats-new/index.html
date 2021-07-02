@@ -92,6 +92,9 @@
 <ul class="menu-list">
 <a href="https://www.thethingsindustries.com/docs/whats-new/" class="is-active">Overview</a>
 <li>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.13.3/" class="">3.13.3</a>
+  </li>
+<li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.13.2/" class="">3.13.2</a>
   </li>
 <li>
@@ -175,6 +178,78 @@
         </div>
 
         
+<section class="is-fullwidth whats-new has-vertical-space">
+  <div class="whats-new-content">
+    <div class="whats-new-header">
+      <h2 class="title is-size-5"><a href=https://www.thethingsindustries.com/docs/whats-new/3.13.3/>What's new in V3.13.3</a></h2>
+    </div>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.13.3/">
+      <div class="whats-new-items">
+        <h3 id="added">Added</h3>
+<ul>
+<li>Email sent to admins when an OAuth client is requested by a non-admin user.</li>
+<li>Packet Broker UI in the Console (admin only).</li>
+<li>New config option <code>--console.oauth.cross-site-cookie</code> to control access to OAuth state cookie between origins.
+<ul>
+<li>This option needs to be set to <code>true</code> (default is <code>false</code>) in multi-cluster deployments in order to support OAuth clients that use POST callbacks.</li>
+</ul>
+</li>
+<li>Application Server forwards upstream messages of type <code>ApplicationDownlinkSent</code> for application downlink messages that were acknowledged with a TxAck message from the gateway.
+<ul>
+<li>MQTT clients can subscribe to the topic <code>v3/{application-id}/devices/{device-id}/down/sent</code>.</li>
+<li>For HTTP webhooks, make sure that the <strong>Downlink Sent</strong> messages are enabled.</li>
+</ul>
+</li>
+<li>Query for the most recent application messages from the Storage Integration API with the new <code>last</code> parameter (for example, <code>?last=10m</code> or <code>?last=2h</code>). See also <code>--last</code> argument for the <code>ttn-lw-cli applications storage get</code> and <code>ttn-lw-cli end-devices storage get</code> commands.</li>
+<li>A location solved message is published automatically by Application Server when the decoded payload contains coordinates (e.g. <code>latitude</code> and <code>longitude</code>, among other combinations, as well as support for accuracy and altitude).</li>
+<li>Configuration option to include Packet Broker metadata in uplink messages: <code>pba.home-network.include-hops</code>. By default, this is now disabled.</li>
+<li>Update gateway identity, status, antennas, frequency plan, location and receive and transmit rates to Packet Broker Mapper. Mapping is enabled when the Forwarder role is enabled. The following new configuration options are introduced to change the default behavior:
+<ul>
+<li><code>gs.packetbroker.update-gateway-interval</code>: Update gateway interval</li>
+<li><code>gs.packetbroker.update-gateway-jitter</code>: Jitter (fraction) to apply to the update interval to randomize intervals</li>
+<li><code>gs.packetbroker.online-ttl-margin</code>: Time to extend the online status before it expires</li>
+<li><code>pba.mapper-address</code>: Address of Packet Broker Mapper</li>
+<li><code>pba.forwarder.gateway-online-ttl</code>: Time-to-live of online status reported to Packet Broker</li>
+</ul>
+</li>
+<li>Improved error messages for Gateway Claiming and additional defaults for non-existing gateways.</li>
+</ul>
+<h3 id="changed">Changed</h3>
+<ul>
+<li>Low-level log messages from the <code>go-redis</code> library are printed only when the log level is set to <code>DEBUG</code>.</li>
+<li>GS will discard repeated gateway uplink messages (often received due to buggy gateway forwarder implementations). A gateway uplink is considered to be repeated when it has the same payload, frequency and antenna index as the last one.
+<ul>
+<li>The new <code>gs_uplink_repeated_total</code> metric counts how many repeated uplinks have been discarded.</li>
+<li>A <code>gs.up.repeat</code> event is emitted (once per minute maximum) for gateways that are stuck in a loop and forward the same uplink message.</li>
+</ul>
+</li>
+<li>For ABP sessions, the CLI now requests a DevAddr from the Network Server instead of generating one from the testing NetID.</li>
+<li>Descriptions, tooltips and defaults for checkboxes for public gateway status and location in the Console.</li>
+<li>All HTTP requests made by The Things Stack now contain a <code>User-Agent</code> header in the form of <code>TheThingsStack/{version}</code>.</li>
+<li>No connection to Packet Broker is being made when neither the Forwarder nor the Home Network role is enabled.</li>
+<li>Increase the default size limit for payload formatter scripts to 40KB (up from 4KB). The maximum size enforced at API level is 40KB (up from 16KB).
+<ul>
+<li>For more context see <a href="https://github.com/TheThingsNetwork/lorawan-stack/issues/4053">issue #4053</a> and <a href="https://github.com/TheThingsNetwork/lorawan-stack/issues/4278">issue #4278</a>.</li>
+</ul>
+</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>Parse error in Webhook Templates.</li>
+<li>Clarified errors in device claiming.</li>
+<li>Application deletion handling in the Console.</li>
+<li>Error when logging into the Console when using connections without TLS.</li>
+<li>Account for antenna gain when the gateway is not authenticated (i.e. UDP gateway).</li>
+<li>Preserve antenna gain when the gateway status message contains GPS coordinates.</li>
+<li>Location map coordinate selection in the Console.</li>
+<li>Rights required for reading scheduled downlinks.</li>
+</ul>
+
+      </div>
+    </a>
+  </div>
+</section>
+
 <section class="is-fullwidth whats-new has-vertical-space">
   <div class="whats-new-content">
     <div class="whats-new-header">

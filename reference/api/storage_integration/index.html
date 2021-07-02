@@ -333,6 +333,7 @@
   "f_port": null,
   "order": "",
   "field_mask": {},
+  "last": "0s",
 }</code></pre>
 </details>
 
@@ -476,7 +477,7 @@
         Description
       </th>
       <td>
-          <p>Query upstream messages after this timestamp only.</p>
+          <p>Query upstream messages after this timestamp only. Cannot be used in conjunction with last.</p>
       </td>
     </tr>
     
@@ -505,7 +506,7 @@
         Description
       </th>
       <td>
-          <p>Query upstream messages before this timestamp only.</p>
+          <p>Query upstream messages before this timestamp only. Cannot be used in conjunction with last.</p>
       </td>
     </tr>
     
@@ -595,6 +596,35 @@
       <td>
           <p>The names of the upstream message fields that should be returned. See the API reference
 for allowed field names for each type of upstream message.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>last</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td><code>google.protobuf.Duration</code></td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Query upstream messages that have arrived in the last minutes or hours. Cannot be used in conjunction with after and before.</p>
       </td>
     </tr>
     
