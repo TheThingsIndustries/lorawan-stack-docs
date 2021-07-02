@@ -837,7 +837,7 @@ ClientRegistry:
         List OAuth clients where the given user or organization is a direct collaborator.
         If no user or organization is given, this returns the OAuth clients the caller
         has access to.
-        Similar to Get, this selects the fields sepcified in the field mask.
+        Similar to Get, this selects the fields specified in the field mask.
         More or less fields may be returned, depending on the rights of the caller.
       input:
         name: ListClientsRequest
@@ -1159,7 +1159,7 @@ EndDeviceRegistry:
         path: /applications/{application_ids.application_id}/devices
     Update:
       name: Update
-      comment: Update the OAuth client, changing the fields specified by the field mask to the provided values.
+      comment: Update the end device, changing the fields specified by the field mask to the provided values.
       input:
         name: UpdateEndDeviceRequest
       output:
@@ -1632,6 +1632,16 @@ GsPba:
       output:
         package: google.protobuf
         name: Empty
+    UpdateGateway:
+      name: UpdateGateway
+      comment: |-
+        Update the gateway, changing the fields specified by the field mask to the provided values.
+        To mark a gateway as online, call this rpc setting online to true, include status_public in field_mask and
+        keep calling this rpc before the returned online_ttl passes to keep the gateway online.
+      input:
+        name: UpdatePacketBrokerGatewayRequest
+      output:
+        name: UpdatePacketBrokerGatewayResponse
 GtwGs:
   name: GtwGs
   comment: The GtwGs service connects a gateway to a Gateway Server.
