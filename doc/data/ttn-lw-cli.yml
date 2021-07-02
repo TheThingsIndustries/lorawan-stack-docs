@@ -22,7 +22,7 @@ ttn-lw-cli:
     type: stringSlice
     shorthand: c
     usage: Location of the config files
-    default_value: '[.ttn-lw-cli.yml,HOME/.ttn-lw-cli.yml,HOME/.config/.ttn-lw-cli.yml]'
+    default_value: '[.ttn-lw-cli.yml,$HOME/.ttn-lw-cli.yml,$HOME/.config/.ttn-lw-cli.yml]'
   - name: credentials-id
     type: string
     usage: Credentials ID (if using multiple configurations)
@@ -1939,6 +1939,10 @@ ttn-lw-cli applications storage get:
     type: uint32
     usage: query upstream messages with specific FPort
     default_value: "0"
+  - name: last
+    type: duration
+    usage: query upstream messages in the last hours or minutes
+    default_value: 0s
   - name: limit
     type: uint32
     usage: limit number of upstream messages to fetch
@@ -8285,6 +8289,10 @@ ttn-lw-cli end-devices storage get:
   - name: join-eui
     type: string
     usage: (hex)
+  - name: last
+    type: duration
+    usage: query upstream messages in the last hours or minutes
+    default_value: 0s
   - name: limit
     type: uint32
     usage: limit number of upstream messages to fetch

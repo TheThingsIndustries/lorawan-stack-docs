@@ -2660,6 +2660,11 @@ DownlinkMessage:
       rules:
         max_len: 100
     default: []
+  - name: session_key_id
+    type: bytes
+    rules:
+      max_len: 2048
+    default: ""
   oneofs:
   - name: settings
     field_names:
@@ -5105,13 +5110,13 @@ GetStoredApplicationUpRequest:
       name: UInt32Value
     default: null
   - name: after
-    comment: Query upstream messages after this timestamp only.
+    comment: Query upstream messages after this timestamp only. Cannot be used in conjunction with last.
     message:
       package: google.protobuf
       name: Timestamp
     default: "0001-01-01T00:00:00Z"
   - name: before
-    comment: Query upstream messages before this timestamp only.
+    comment: Query upstream messages before this timestamp only. Cannot be used in conjunction with last.
     message:
       package: google.protobuf
       name: Timestamp
@@ -5139,6 +5144,12 @@ GetStoredApplicationUpRequest:
       package: google.protobuf
       name: FieldMask
     default: {}
+  - name: last
+    comment: Query upstream messages that have arrived in the last minutes or hours. Cannot be used in conjunction with after and before.
+    message:
+      package: google.protobuf
+      name: Duration
+    default: 0s
 GetTemplateRequest:
   name: GetTemplateRequest
   fields:
@@ -7866,7 +7877,7 @@ MessagePayloadFormatters:
     comment: Parameter for the up_formatter, must be set together. The API enforces a maximum length of 16KB, but the size may be restricted further by deployment configuration.
     type: string
     rules:
-      max_len: 16384
+      max_len: 40960
     default: ""
   - name: down_formatter
     comment: Payload formatter for downlink messages, must be set together with its parameter.
@@ -7879,7 +7890,7 @@ MessagePayloadFormatters:
     comment: Parameter for the down_formatter, must be set together. The API enforces a maximum length of 16KB, but the size may be restricted further by deployment configuration.
     type: string
     rules:
-      max_len: 16384
+      max_len: 40960
     default: ""
 NsAsHandleUplinkRequest:
   name: NsAsHandleUplinkRequest
@@ -9906,6 +9917,59 @@ UpdateOrganizationRequest:
       package: google.protobuf
       name: FieldMask
     default: {}
+UpdatePacketBrokerGatewayRequest:
+  name: UpdatePacketBrokerGatewayRequest
+  fields:
+  - name: gateway
+    message:
+      name: Gateway
+    rules:
+      required: true
+    default: {}
+  - name: online
+    type: bool
+    default: false
+  - name: rx_rate
+    comment: |-
+      Received packets rate (number of packets per hour).
+      This field gets updated when a value is set.
+    message:
+      package: google.protobuf
+      name: FloatValue
+    default: null
+  - name: tx_rate
+    comment: |-
+      Transmitted packets rate (number of packets per hour).
+      This field gets updated when a value is set.
+    message:
+      package: google.protobuf
+      name: FloatValue
+    default: null
+  - name: field_mask
+    comment: |-
+      The names of the gateway fields that are considered for update.
+      Supported values are: antennas, contact_info, frequency_plan_id, frequency_plan_ids, ids, status_public and
+      location_public.
+
+      Online status is only updated if status_public is set. If status_public is set and false, the status will be reset.
+      If status_public is set and true, the online status is taken from the online field. The return message contains
+      the duration online_ttl for how long the gateway is considered online.
+
+      Location is only updated if location_public is set. If location_public is set and false, the location will be reset.
+      If location_public is set and true, the first antenna location will be used as gateway location.
+    message:
+      package: google.protobuf
+      name: FieldMask
+    default: {}
+UpdatePacketBrokerGatewayResponse:
+  name: UpdatePacketBrokerGatewayResponse
+  fields:
+  - name: online_ttl
+    comment: Time to live of the online status.
+    message:
+      package: google.protobuf
+      name: Duration
+    default: 0s
 UpdateUserAPIKeyRequest:
   name: UpdateUserAPIKeyRequest
   fields:
