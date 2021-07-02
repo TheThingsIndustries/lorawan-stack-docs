@@ -9,120 +9,167 @@ aliases: ["/integrations/cloud-integrations/ubidots/ubidots-setup", "/integratio
 
 <!--more-->
 
-{{< warning >}} In this guide, we use the [UbiFunctions](https://help.ubidots.com/en/articles/2132086-analytics-ubifunctions-user-guide) module, which is currently not available for the STEM plan. {{</ warning >}}
-
 ## Prerequisites
 
-1. A Ubidots user account with an upgraded plan.
+1. A Ubidots user account.
 
 ## Setup Ubidots
 
-Log in to your Ubidots account and find the **Devices** tab in the upper part of your dashboard. In its drop-down list, choose **Functions**.
+Log in to your Ubidots account and find the **Devices** tab in the upper part of your dashboard. In its drop-down list, choose **Plugins**.
 
-When redirected to the **UbiFunctions** page, create a new function with the **Create Function** button.
+{{< figure src="plugins.png" alt="Ubidots Plugins" >}}
 
-On the left, give a **Name** to your function, select the **POST** method and choose **Python 3.6** for **Runtime**.
+Click on the **+** or on the **Create Data Plugin** button to create a new plugin.
 
-In this example, we will use the following Python function, which receives a JSON payload from {{% tts %}}, extracts the `decoded_payload`, and posts received data to Ubidots.
+When you are presented with available plugins, select **The Things Stack** plugin.
 
-{{< note >}} To find your **Token**, click on your avatar in the upper right corner and select **API Credentials**. Be sure to use your **Token** and not your **API Key**. {{</ note >}}
+{{< figure src="tts-plugin.png" alt="TTS plugin" >}}
 
+You will see details about **Inputs**, **Usage**, etc. Move forward by clicking the **>** button.
+
+Next, you need to provide the name for a **Ubidots device type** after which a new device type will be created and linked to this plugin. This device type will later allow you to make changes for all devices that receive data through this plugin.
+
+You also need to select a **Ubidots token**. You can use the **Default token**, but creating a new token specifically for this plugin is **recommended**.
+
+{{< figure src="device-type.png" alt="Creating a device type and selecting token" >}}
+
+To create a new token, first click on your avatar in the upper right corner and select **API Credentials**. Then select **More** below the **Default token** and add a new token within the **API Credentials page**.
+
+{{< figure src="tokens.png" alt="Creating token" >}}
+
+Select **>** to continue and then hit the checkmark to finish.
+
+{{< figure src="name-description.png" alt="Finish with creating the plugin" >}}
+
+After a few moments, your newly created plugin will show the status **Running**.
+
+{{< figure src="running.png" alt="Status: Running" >}}
+
+To complete the integration with {{% tts %}}, you will need to provide the plugin ID and aforementioned token. 
+
+To find the plugin ID, click on your newly created plugin and navigate to the **Decoder** tab on the left. The plugin ID is available as part of the **HTTPs Endpoint URL** (as highlighted on the image below).
+
+{{< figure src="plugin-id.png" alt="Plugin ID" >}}
+
+## Setup Payload Decoder
+
+To decode the payload that is being sent from your end device in uplink messages, in order to present it on the Ubidots dashboard, you have two quite simple options:
+
+- to create an [uplink payload formatter]({{< ref "/integrations/payload-formatters" >}}) on {{% tts %}} (with a [Ubidots-friendly](https://ubidots.com/docs/hw/#send-data-to-a-device) format)
+- to edit the pre-loaded sample decoder on Ubidots in a way that it decodes the Base64-encoded raw payload received from {{% tts %}} in `uplink_message.frm_payload` field
+
+{{% note %}} In this section, we show you an example of how to do the first option. The pre-loaded sample payload decoder on Ubidots contains comments which can help you decode your payload either way. {{</ note>}}
+
+If you are using an uplink payload formatter on {{% tts %}} to decode your payload, the decoded values will be contained in the `uplink_message.decoded_payload` field of your uplink message. See examples below.
+
+<details><summary>Example JavaScript uplink payload formatter</summary>
+
+```js
+function decodeUplink(input) {
+  var bytes = input.bytes;
+  var temperature = bytes[0] | bytes[2];
+  var humidity = bytes[1]| bytes[3];
+  return {
+    data: {
+      temperature: temperature,
+      humidity: humidity
+    },
+    warnings: [],
+    errors: []
+  };
+}
 ```
-import requests
-import json
-import time
+</details>
 
-BASE_URL = "https://industrial.api.ubidots.com"
-TOKEN = "····" # Enter a token here
+<details><summary>Example `uplink_message` object containing decoded payload</summary>
 
-def main(args):
-    # Prining args from TTI
-    print(f'[INFO] Args from TTI:\n {args}')
-
-    # Parsing data
-    payload = parse_tti_data(args)
-    dev_label = tti_dev_eui(args)
-    print(f'[INFO] Parsed data:\n {payload}')
-    print(f'[INFO] TTI Dev_EUI data:\n {dev_label}')
-
-    # Posting to Ubidots
-    req = update_device(dev_label, payload, TOKEN)
-    print(f'[INFO] Request to Ubidots Status code: {req.status_code}')
-    print(f'[INFO] Request ti Ubidots JSON:\n {req.json()}')
-
-    return {
-        'status_code': req.status_code,
-        'response_json': req.json()
+```json
+{
+    "uplink_message": {
+      "session_key_id": "AXqFkTMicRIyXZ/Mvzl02w==",
+      "f_port": 8,
+      "f_cnt": 202,
+      "frm_payload": "ICw=",
+      "decoded_payload": {
+        "humidity": 44,
+        "temperature": 32
+      },
+      "rx_metadata": [
+        {
+          "gateway_ids": {
+            "gateway_id": "gw1",
+            "eui": "B827EBFFFE8DB885"
+          },
+          "time": "2021-07-08T11:17:59.131695Z",
+          "timestamp": 3940207243,
+          "rssi": -27,
+          "channel_rssi": -27,
+          "snr": 9.2,
+          "uplink_token": "ChIKEAoEc2VlZBIIuCfr//6NuIUQi5Xr1g4aDAjmvZuHBhDNk4rVAyD43Zy11u6C",
+          "channel_index": 4
+        }
+      ],
+      "settings": {
+        "data_rate": {
+          "lora": {
+            "bandwidth": 125000,
+            "spreading_factor": 7
+          }
+        },
+        "data_rate_index": 5,
+        "coding_rate": "4/5",
+        "frequency": "867300000",
+        "timestamp": 3940207243,
+        "time": "2021-07-08T11:17:59.131695Z"
+      },
+      "received_at": "2021-07-08T11:17:58.984396504Z",
+      "consumed_airtime": "0.046336s"
     }
+}
+```
+</details>
 
+To ensure that Ubidots checks the `decoded_payload` field for decoded values, and not `uplink_message.frm_payload`, you need to uncomment the following line in the `format_payload` function that is a part of the sample payload decoder on Ubidots:
 
-def parse_tti_data(data):
-    return data['uplink_message']['decoded_payload']
-
-
-def tti_dev_eui(data):
-    return data['end_device_ids']['device_id']
-
-
-def update_device(device, payload, token):
-    """
-    Updates device with payload
-    """
-    url = "{}/api/v1.6/devices/{}".format(BASE_URL, device)
-    headers = {"X-Auth-Token": token, "Content-Type": "application/json"}
-    req = create_request(url, headers, attempts=5, request_type="post", data=payload)
-    return req
-
-
-def create_request(url, headers, attempts, request_type, data=None):
-    """
-    Function to make a request to the server
-    """
-    request_func = getattr(requests, request_type)
-    kwargs = {"url": url, "headers": headers}
-    if request_type == "post" or request_type == "patch":
-        kwargs["json"] = data
-    try:
-        req = request_func(**kwargs)
-        status_code = req.status_code
-        time.sleep(1)
-        while status_code >= 400 and attempts < 5:
-            req = request_func(**kwargs)
-            status_code = req.status_code
-            attempts += 1
-            time.sleep(1)
-        return req
-    except Exception as e:
-        print("[ERROR] There was an error with the request, details:")
-        print(e)
-        return None
+```js
+var decoded_payload = args['uplink_message']['decoded_payload'];
 ```
 
-After modifying the function code with your token, click the **Make it live** button. 
+and you need to comment (or remove) the following lines in the same function:
 
-Your function will be assigned an **HTTPS Endpoint URL**. Copy this URL in order to use it later as a part of setup on {{% tts %}}. 
+```js
+let bytes =  Buffer.from(args['uplink_message']['frm_payload'], 'base64');
+var decoded_payload = decodeUplink(bytes)['data'];
+```
 
-{{< figure src="creating-function.png" alt="Creating a UbiFunction" >}}
+{{< note >}} You can find Ubidots' pre-loaded sample payload decoder in your newly created plugin's menu, if you navigate to **Decoder** on the left and scroll down to the **Decoding Function** window. There you can edit it and finish with **Save & Make Live**. {{</ note >}}
 
-Your function is now ready to handle the conversion of the incoming messages from {{% tts %}}, from JSON format to the one that is compatible with Ubidots.
+{{< figure src="decoding-function.png" alt="Ubidots decoder function" >}}
 
 ## Configure {{% tts %}}
 
-Next step is to create a Webhook integration on {{% tts %}} by using the **Ubidots** [Webhook template]({{< ref "/integrations/webhooks/webhook-templates" >}}).
+When you have prepared the setup on Ubidots, it is the time to create a Webhook integration on {{% tts %}} by using the **Ubidots** [Webhook template]({{< ref "/integrations/webhooks/webhook-templates" >}}).
 
-{{< note >}} Besides implementing the Webhook integration, you also need to create an uplink payload formatter in order to decode the uplink payload and set fields in the `decoded_payload` object of the uplink message. This is necessary to allow the Ubidots function to interpret the payload coming from {{% tts %}}. See [Payload Formatters]({{< ref "/integrations/payload-formatters" >}}) for a detailed info. {{</ note >}}
+{{< note >}} Advanced users can also use [UbiFunctions](https://help.ubidots.com/en/articles/2132086-analytics-ubifunctions-user-guide) module to complete this integration. {{</ note >}}
 
-First, fill in the **Webhook ID** field.
+On {{% tts %}}, navigate to **Integrations &#8594; Webhooks** and choose the **Ubidots** Webhook template.
 
-Then enter your **Ubidots username** and provide your UbiFunction's name.
+Name your integration by filling in the **Webhook ID**.
 
-{{< note >}} The name of the UbiFunction needs to be modified to use lowercase and dashes only. For example, if the UbiFunction is named **Example Function**, enter `example-function` in the **UbiFunction name** field as shown in the image below. {{</ note >}}
+Paste the **Plugin ID** and **Ubidots token** values from Ubidots.
 
-{{< figure src="ubidots-webhook-creation.png" alt="Ubidots webhook" >}}
+{{< figure src="ubidots-integration.png" alt="Ubidots webhook template" >}}
 
 {{< note >}} To see the values of all parameters of the Ubidots integration, click on the integration after you created it with the Webhook template. {{</ note >}}
 
-Once you have created the integration, navigate to **Devices** tab in Ubidots dashboard and select **Devices**. 
+## Monitor Your Data
 
-You should see your device listed, as it is automatically added when an uplink is received. Click the device to see variables and their latest values.
+After you have completed the integration, navigate to **Devices** menu. You will see your end device appearing in the end devices list as soon as it sends an uplink message.
 
+{{< figure src="devices.png" alt="End devices list" >}}
+
+Select your device to enter its dashboard. Some variables are automatically loaded from uplink metadata, while some are loaded as a payload decoder result (like **humidity** and **temperature** in this example). 
+
+{{< figure src="dashboard.png" alt="Device dashboard" >}}
+
+You can further use Ubidots features to monitor, process or visualize your data.
