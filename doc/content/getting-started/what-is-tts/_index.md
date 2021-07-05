@@ -12,7 +12,15 @@ Welcome to {{% tts %}}! In this section, we help you to understand how to use {{
 
 {{% tts %}} is an enterprise grade LoRaWAN network server, built on an [open source](https://github.com/TheThingsNetwork/lorawan-stack) core. {{% tts %}} allows you to build and manage LoRaWAN networks on your own hardware or in the cloud.
 
-To get started running {{% tts %}} on your own, see the [installation section]({{< ref "/getting-started/installation" >}}). To inquire about a worry-free hosted solution, [get in touch with us](mailto:info@thethingsindustries.com).
+### {{% tts %}} Deployments
+
+{{% tts %}} comes in many different flavors to meet different requirements. For all available deployments, see [Get {{% tts %}}]({{< ref "download" >}}). The most common deployments are:
+
+**Cloud**: SLA backed network server hosted by The Things Industries. See [Cloud]({{< ref "getting-started/cloud-hosted" >}}).
+
+**Enterprise**: Install the network server on your own hardware, with professional support from The Things Industries.
+
+**Community Edition**: Run by The Things Network, this is our free to use network server which provides the world's largest community based LoRaWAN network. To learn more and sign up, see [The Things Network]({{< ref "getting-started/ttn" >}}).
 
 ## Who makes {{% tts %}}?
 

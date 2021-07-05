@@ -11,7 +11,7 @@ This section provides help for common issues and frequently asked questions you 
 
 ## What is my server address?
 
-This is the address you use to access {{% tts %}}. If you use {{% tts %}} Cloud, this is typically `<tenant_id>.<region>.cloud.thethings.industries`. If you use The Things Network, this is `<region>.cloud.thethings.network`. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `thethings.example.com`.
+This is the address you use to access {{% tts %}}. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}).
 
 For **{{% lbs %}}:**
 

@@ -22,7 +22,9 @@ Here is a video of Johan Stokking, the tech lead of The Things Industries and on
 
 ## Start Using {{% tts %}}
 
-To get started with {{% tts %}}, you can simply [create an account](https://console.cloud.thethings.network) on The Things Network to start using The Things Stack Community. 
+To get started with {{% tts %}}, you can simply [create an account](https://console.cloud.thethings.network) on The Things Network to start using [The Things Stack Community Edition]({{< ref "getting-started/ttn" >}}) for free.
+
+To purchase a professional plan for {{% tts %}}, see [Pricing](https://accounts.thethingsindustries.com/fee-calculator).
 
 If you are more of the DIY type, you can also [install and run your own network server]({{< ref "getting-started/installation" >}}), using our [open source stack](https://github.com/TheThingsNetwork/lorawan-stack).
 

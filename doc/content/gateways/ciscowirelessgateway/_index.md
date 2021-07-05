@@ -26,7 +26,7 @@ The **EUI** is derived from the **MAC_ADDRESS** that can be found on the back pa
 
 {{< note >}} If your **MAC_ADDRESS** is `5B:A0:CB:80:04:2B` then the **EUI** is `5B A0 CB FF FE 80 04 2B`. {{</ note >}}
 
-The **Gateway Server Address** is the same as what you use instead of `thethings.example.com` in the [Getting Started guide]({{< ref "/getting-started" >}}).
+The **Gateway Server Address** is the address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}).
 
 ## Configuration
 

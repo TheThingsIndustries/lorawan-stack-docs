@@ -15,7 +15,7 @@ In the server configuration options, check the **Enabled** box.
 
 Choose **Semtech** as the **Type**.
 
-For the **Server Address** choose **custom**, and enter the same as what you use instead of `thethings.example.com` in the [Getting Started guide]({{< ref "/getting-started" >}}).
+For the **Server Address** choose **custom**, and enter the address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}).
 
 Choose the appropriate **Port Up** and **Port Down** values. These are both **1700** by default in {{% tts %}}.
 

@@ -29,7 +29,7 @@ $ vi /etc/default/config.json
 
 Edit the server parameters:
 
-- **server_address**: Address of the Gateway Server. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `thethings.example.com`.
+- **server_address**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}).
 - **serv_port_up**: UDP upstream port of the Gateway Server, typically 1700.
 - **serv_port_down**: UDP downstream port of the Gateway Server, typically 1700.
 
