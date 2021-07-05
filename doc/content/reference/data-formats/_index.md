@@ -103,7 +103,7 @@ The JSON uplink messages use the following format:
       "timestamp": 2463457000,               // Timestamp of the gateway concentrator when the message has been received
       "rssi": -35,                           // Received signal strength indicator (dBm)
       "channel_rssi": -35,                   // Received signal strength indicator of the channel (dBm)
-      "snr": 5,                              // Signal-to-noise ratio (dB)
+      "snr": 5.2,                            // Signal-to-noise ratio (dB)
       "uplink_token": "ChIKEA...",           // Uplink token injected by gateway, Gateway Server or fNS
       "channel_index": 2                     // Index of the gateway channel that received the message
       "location": {                          // Gateway location metadata (only for gateways with location set to public)
