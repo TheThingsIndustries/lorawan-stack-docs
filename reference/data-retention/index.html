@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>LoRaWAN Specification and Regional Parameters | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/spec-regional-parameters/" />
+  <title>Data Retention and Privacy | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/data-retention/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.25b30cdd256bfe2021b3a162f05871509954bca5cc3a6e85d1f515ea9ed6aa0f.css" integrity="sha256-JbMM3SVr/iAhs6Fi8FhxUJlUvKXMOm6F0fUV6p7Wqg8=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="LoRaWAN Specification and Regional Parameters">
+  <meta itemprop="name" content="Data Retention and Privacy">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="LoRaWAN Specification and Regional Parameters">
+  <meta property="og:title" content="Data Retention and Privacy">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/spec-regional-parameters/">
-  <meta name="twitter:title" content="LoRaWAN Specification and Regional Parameters" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/data-retention/">
+  <meta name="twitter:title" content="Data Retention and Privacy" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -115,7 +115,12 @@
     <a href="https://www.thethingsindustries.com/docs/reference/data-formats/" class="">Data Formats</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/data-retention/" class="">Data Retention and Privacy</a>
+    <a href="https://www.thethingsindustries.com/docs/reference/data-retention/" class="is-active">Data Retention and Privacy</a>
+    
+
+
+
+    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/reference/email-templates/" class="">Email Templates</a>
@@ -136,7 +141,7 @@
     <a href="https://www.thethingsindustries.com/docs/reference/interop-repository/" class="">Interoperability Repository</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/spec-regional-parameters/" class="is-active">LoRaWAN Specification and Regional Parameters</a>
+    <a href="https://www.thethingsindustries.com/docs/reference/spec-regional-parameters/" class="">LoRaWAN Specification and Regional Parameters</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/reference/networking/" class="">Networking</a>
@@ -173,41 +178,49 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">LoRaWAN Specification and Regional Parameters
+        <h1 class="title is-size-2">Data Retention and Privacy
           
         </h1>
         
         <div class="content">
-          <p>The Things Stack supports versions 1.0.x and 1.1.x of the LoRaWAN specifications.</p>
-<p>This includes all of the following LoRaWAN specification versions:</p>
+          <p>This reference contains information about what access administrators and users have to data, and how long The Things Stack persists device data. For inquiries about data privacy or data security, read on, or <a href="cloud@thethingsindustries.com">contact The Things Industries</a>.</p>
+<h2 id="important-terms">Important Terms</h2>
+<p>To understand how data is secured in The Things Stack it is necessary to understand some important roles:</p>
+<p><strong>Infrastructure Owners</strong>: Those with access to the hardware The Things Stack runs on. For The Things Stack Cloud, Dedicated Cloud and Community Edition, this is The Things Industries. The Things Stack Enterprise and Open Source deployments are managed by the customer and user respectively; The Things Industries does not have any infrastructural access. Technically, <strong>Infrastructure Owners</strong> have access to all data stored in databases or persistent volumes. In practice, The Things Industries uses this direct data access to The Things Stack Cloud or Community Edition deployments only for backups.</p>
+<p><strong>Network Administrators</strong>: Users with administrative access in a tenant. <strong>Network Administrators</strong> have access to all entities in a tenant, including device secrets. In multi-tenant environments, tenants are completely isolated, and <strong>Network Administrators</strong> of one tenant have <strong>no access</strong> to other tenants.</p>
+<p><strong>Users and Organizations</strong>: Users without administrative access, and organizations, can access entities which they have <a href="https://www.thethingsindustries.com/docs/getting-started/user-management/">collaborator rights</a> over.</p>
+<p><strong>Support Engineers</strong>: The Things Industries support engineers do <strong>not</strong> have infrastructural access to any The Things Stack deployments. They must be <a href="https://www.thethingsindustries.com/docs/getting-started/user-management/">granted access</a> by the customer.</p>
+<h2 id="the-things-stack-cloud-and-dedicated-cloud">The Things Stack Cloud and Dedicated Cloud</h2>
+<p>The following information applies to The Things Stack deployments hosted by The Things Industries, specifically The Things Stack Cloud and Dedicated Cloud.</p>
+<p>The Things Stack deployments hosted on customer hardware, specifically The Things Stack Enterprise, are completely managed by the customer and can be configured to meet more specific data privacy requirements.</p>
+<h3 id="persisted-data">Persisted Data</h3>
+<p>On The Things Stack Cloud and Dedicated Cloud, the Network Server stores</p>
 <ul>
-<li>LoRaWAN 1.0</li>
-<li>LoRaWAN 1.0.1</li>
-<li>LoRaWAN 1.0.2</li>
-<li>LoRaWAN 1.0.3</li>
-<li>LoRaWAN 1.0.4</li>
-<li>LoRaWAN 1.1</li>
+<li>Recent uplinks as part of the MAC state, in a Redis database</li>
 </ul>
-<p>The LoRaWAN specification versions are available from the <a href="https://lora-alliance.org/resource-hub/">LoRa Alliance resource hub</a>.</p>
-<p>The Things Stack supports the following LoRaWAN Regional Parameter specification versions:</p>
+<p>The Application Server stores</p>
 <ul>
-<li>LoRaWAN Regional Parameters 1.0</li>
-<li>LoRaWAN Regional Parameters 1.0.1</li>
-<li>LoRaWAN Regional Parameters 1.0.2 Rev A</li>
-<li>LoRaWAN Regional Parameters 1.0.2 Rev B</li>
-<li>LoRaWAN Regional Parameters 1.0.3 Rev A</li>
-<li>LoRaWAN Regional Parameters 1.1 Rev A</li>
-<li>LoRaWAN Regional Parameters 1.1 Rev B</li>
+<li>
+<p>Recent uplink application payloads, in a Redis database</p>
+</li>
+<li>
+<p>Upstream messages (only if the <a href="https://www.thethingsindustries.com/docs/integrations/storage/">Storage Integration</a> is enabled)</p>
+</li>
 </ul>
-<p>The LoRaWAN Regional Parameters specification versions are available from the <a href="https://lora-alliance.org/resource-hub/">LoRa Alliance resource hub</a>.</p>
-<p>In addition, The Things Stack supports Class A, B, C, and multicast group devices. See the <a href="https://www.thethingsindustries.com/docs/devices/class-b/">Class B</a>, <a href="https://www.thethingsindustries.com/docs/devices/class-c/">Class C</a>, and <a href="https://www.thethingsindustries.com/docs/devices/multicast/">Multicast</a> references for special instructions when using these device classes.</p>
+<p>The Things Stack Cloud runs in isolated subnets. Databases can only be accessed from within the subnet and are not publicly accessible.</p>
+<p>The Things Stack uses your NwkSKey (NwkSEncKey in LoRaWAN 1.1) to decrypt LoRaWAN network-level payload. These session keys are only known to the Network Server and are never exposed downstream (to gateways) or upstream (to applications).</p>
+<p>The Things Stack uses the LoRaWAN AppSKey to decrypt the application payload, which is available in the <a href="https://www.thethingsindustries.com/docs/reference/data-formats/">JSON message</a>. It is also possible to skip payload decryption in The Things Stack, and perform decryption later in your application pipeline. Select <strong>Skip payload encryption/decryption</strong> when registering a device to do so.</p>
+<figure>
+    <img src="skip-encryption.png"/> 
+</figure>
         </div>
-        <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/reference/interop-repository/">← Interoperability Repository</a>
-<a class="button is-pulled-right" href="/docs/reference/networking/">Networking →</a>
+        
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/reference/data-formats/">← Data Formats</a>
+<a class="button is-pulled-right" href="/docs/reference/email-templates/">Email Templates →</a>
 </div>
 
-        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
 <script src="https://cdn.emojicom.io/embed/widget.js" async></script>
 
 <div class='feedback has-vertical-space'>
@@ -221,6 +234,16 @@
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#important-terms'>Important Terms</a></li>
+    
+      
+      <li><a href='#the-things-stack-cloud-and-dedicated-cloud'>The Things Stack Cloud and Dedicated Cloud</a></li>
+    
+  </ul>
 
 
   </nav>
@@ -258,14 +281,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 25 Feb 2021.
+  Last changed by Ben Olayinka on 05 Jul 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/01164f5bc8abb042f3f599cf48c6f65349105a34">
-      doc: Add supported LoRaWAN spec and rps
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/01f2e90e816570267bfc3c0ed95fea6d1467de6b">
+      Document data retention/data privacy (#413)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/reference/spec-regional-parameters/index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/reference/data-retention/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
