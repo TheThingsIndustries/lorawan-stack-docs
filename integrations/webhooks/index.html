@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>HTTP Webhooks | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/webhooks/" />
+  <title>Webhooks | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/webhooks/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.25b30cdd256bfe2021b3a162f05871509954bca5cc3a6e85d1f515ea9ed6aa0f.css" integrity="sha256-JbMM3SVr/iAhs6Fi8FhxUJlUvKXMOm6F0fUV6p7Wqg8=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="HTTP Webhooks">
+  <meta itemprop="name" content="Webhooks">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="HTTP Webhooks">
+  <meta property="og:title" content="Webhooks">
   <meta property="og:description" content="">
   <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/webhooks/">
-  <meta name="twitter:title" content="HTTP Webhooks" />
+  <meta name="twitter:title" content="Webhooks" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -97,7 +97,31 @@
     <a href="https://www.thethingsindustries.com/docs/integrations/adding-integrations/" class="">Adding Integrations</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/" class="is-active">HTTP Webhooks</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/" class="">Cloud Integrations</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/" class="">MQTT Server</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/pubsub/" class="">Pub/Sub</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/lora-cloud/" class="">LoRa Cloud</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/node-red/" class="">Node-RED</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/ifttt/" class="">IFTTT</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/" class="">Payload Formatters</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/storage/" class="">Storage Integration</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/" class="is-active">Webhooks</a>
     
 
 
@@ -128,30 +152,6 @@
 
     
   </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/" class="">Cloud Integrations</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/" class="">MQTT Server</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/pubsub/" class="">Pub/Sub</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/lora-cloud/" class="">LoRa Cloud</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/node-red/" class="">Node-RED</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/ifttt/" class="">IFTTT</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/" class="">Payload Formatters</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/storage/" class="">Storage Integration</a>
-  </li>
 </ul>
 
 
@@ -169,17 +169,26 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">HTTP Webhooks
+        <h1 class="title is-size-2">Webhooks
           
         </h1>
         
         <div class="content">
-          <p>The HTTP Webhooks feature allows the Application Server to send application related messages to specific HTTP(S) endpoints.</p>
-
+          <p>The Webhooks feature allows The Things Stack to send application related messages to specific HTTP(S) endpoints.</p>
+<h2 id="who-is-it-for">Who is it for?</h2>
+<p>Webhooks can be used to build integrations between The Things Stack and any third party service. For example, The Things Stack can send a webhook every time an uplink is received, which can then be visualized in an external dashboard. See <a href="/docs/integrations/webhooks/webhook-templates/">Webhook Templates</a> for examples of third party services which The Things Stack is pre-configured to work with.</p>
+<h3 id="typical-use-cases">Typical use cases</h3>
+<ol>
+<li>Visualizing or acting on uplink data on another platform.</li>
+<li>Scheduling downlinks from a third party service.</li>
+</ol>
+<h2 id="how-does-it-work">How does it work?</h2>
+<p>Webhooks access an HTTP(S) endpoint and pass relevant data as JSON. The third party service must expose this endpoint and listen for data, or post messages to The Things Stack. For uplinks, this is encrypted or unencrypted application data, metadata about gateways and signal strength, timestamps, etc. For downlinks, The Things Stack expects an application payload.</p>
+<p>See <a href="https://www.thethingsindustries.com/docs/reference/data-formats/">Data Formats</a> for examples of uplink and downlink JSON messages.</p>
         </div>
         
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/integrations/adding-integrations/">← Adding Integrations</a>
+<a class="button is-pulled-left" href="/docs/integrations/storage/retrieve/">← Retrieve messages</a>
 <a class="button is-pulled-right" href="/docs/integrations/webhooks/creating-webhooks/">Creating Webhooks →</a>
 </div>
 
@@ -197,6 +206,16 @@
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#who-is-it-for'>Who is it for?</a></li>
+    
+      
+      <li><a href='#how-does-it-work'>How does it work?</a></li>
+    
+  </ul>
 
 
   </nav>
@@ -234,10 +253,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 22 Oct 2020.
+  Last changed by Ben Olayinka on 06 Jul 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2f9bf3382c643b2e960a25490f74f1148ea28e65">
-      doc: Reorganize docs
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/819eb8382ea9db336d9dbfca184bdc8354ee0541">
+      Improve webhook docs (#433)
     </a>
 </p>
 
