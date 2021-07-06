@@ -6,7 +6,7 @@ distributions: ["Enterprise", "Open Source"]
 
 This is a guide for installing {{% tts %}} Enterprise or Open Source on your own hardware, to run your own private LoRaWAN network server.
 
-To use {{% tts %}} in the cloud without installing it on your own hardware, see [{{% tts %}} Cloud]({{< relref "cloud-hosted" >}}) (our professional, SLA backed offering) or [The Things Network]({{< relref "ttn" >}}) (our free-to-use community edition).
+To use {{% tts %}} in the cloud without installing it on your own hardware, see [{{% tts %}} Cloud]({{< relref "cloud-hosted" >}}) (our professional, SLA-backed offering) or [Community Edition]({{< relref "ttn" >}}) (our free-to-use community edition).
 
 <!--more-->
 
