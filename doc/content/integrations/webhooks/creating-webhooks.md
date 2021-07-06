@@ -22,7 +22,9 @@ Fill in your **Webhook ID**, choose **Webhook Format** and provide **Base URL**.
 
 {{< figure src="../webhook-creation.png" alt="Webhook creation screen" >}}
 
-The paths are appended to the base URL. For example, if you follow the example in the picture above, the Application Server will perform `POST` requests on the endpoint `https://app.example.com/lorahooks/join` for join-accepts and `https://app.example.com/lorahooks/up` for uplink messages. 
+The paths are appended to the base URL. For example, if you follow the example in the picture above, the Application Server will perform `POST` requests on the endpoint `https://app.example.com/lorahooks/join` for join-accepts and `https://app.example.com/lorahooks/up` for uplink messages.
+
+See [Data Formats]({{< ref "reference/data-formats" >}}) for examples of uplink and downlink JSON messages. 
 
 Clicking the **Add Webhook** button will create the Webhook.
 
