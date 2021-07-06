@@ -1,7 +1,6 @@
 ---
 title: "The Things Stack AWS Launcher"
 description: ""
-weight: 7
 ---
 
 {{% tts %}} is currently available as an AWS CloudFormation stack that can be purchased at the AWS Marketplace, and as a set of CloudFormation templates that can be deployed to build a highly available cluster for large-scale deployments.
