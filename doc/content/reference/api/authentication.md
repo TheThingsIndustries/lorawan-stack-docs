@@ -42,6 +42,18 @@ To use this method, you first need an **OAuth client registration**:
 - The **redirect URI** is where the user is redirected after authorizing your OAuth client.
 - The **client secret** is issued when your OAuth client Registration is accepted by a network admin.
 
+To register OAuth client you need to use [CLI](https://www.thethingsindustries.com/docs/getting-started/cli/):
+
+```
+ttn-lw-cli clients create \
+    --client-id mybrand-gateway-manager \
+    --name "MyBrand Gateway Manager" \
+    --description "Manage your MyBrand gateway from the mobile app" \
+    --organization-id mybrand \ # or --user-id htdvisser \
+    --redirect-uris https://app.mybrand.com/oauth/callback/ttn \
+    --grants GRANT_AUTHORIZATION_CODE \
+    --rights RIGHT_GATEWAY_ALL,RIGHT_ORGANIZATION_GATEWAYS_CREATE,RIGHT_ORGANIZATION_GATEWAYS_LIST,RIGHT_ORGANIZATION_INFO,RIGHT_USER_GATEWAYS_CREATE,RIGHT_USER_GATEWAYS_LIST,RIGHT_USER_INFO,RIGHT_USER_ORGANIZATIONS_LIST
+```
 After your OAuth client Registration is accepted, you can **request authorization** by sending the user to the **authorization URL**:
 
 ```
