@@ -58,7 +58,7 @@ The Identity Server will prompt the user with a view asking to authorize your OA
 https://<REDIRECT-URI>/?code=<AUTHORIZATION-CODE>
 ```
 
-Your OAuth client can exchange this **authorization code** for an **OAuth access token** by making a `POST` request to the **token URL**:
+Your OAuth client can exchange this **authorization code**, which is valid for 5 minutes, for an **OAuth access token** by making a `POST` request to the **token URL**:
 
 ```
 https://<HOSTNAME>/oauth/token
@@ -75,7 +75,7 @@ The **authorization code** is sent in the request payload:
 }
 ```
 
-The response contains the **OAuth access token** and an indication of when it expires. If the network admin gave your OAuth client the **refresh token** grant, the response also contains a **refresh token**.
+The response contains the **OAuth access token**, which is valid for 60 minutes. If the network admin gave your OAuth client the **refresh token** grant, the response also contains a **refresh token**.
 
 ```json
 {
