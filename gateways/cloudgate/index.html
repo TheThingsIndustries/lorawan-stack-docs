@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Dragino LPS8 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/dragino-lps8/" />
+  <title>CloudGate | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/cloudgate/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.25b30cdd256bfe2021b3a162f05871509954bca5cc3a6e85d1f515ea9ed6aa0f.css" integrity="sha256-JbMM3SVr/iAhs6Fi8FhxUJlUvKXMOm6F0fUV6p7Wqg8=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Dragino LPS8">
+  <meta itemprop="name" content="CloudGate">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Dragino LPS8">
+  <meta property="og:title" content="CloudGate">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/dragino-lps8/">
-  <meta name="twitter:title" content="Dragino LPS8" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/cloudgate/">
+  <meta name="twitter:title" content="CloudGate" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -109,7 +109,12 @@
     <a href="https://www.thethingsindustries.com/docs/gateways/ciscowirelessgateway/" class="">Cisco Wireless Gateway for LoRaWAN</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/cloudgate/" class="">CloudGate</a>
+    <a href="https://www.thethingsindustries.com/docs/gateways/cloudgate/" class="is-active">CloudGate</a>
+    
+
+
+
+    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/mikrotik-knot/" class="">MikroTik KNOT</a>
@@ -124,12 +129,7 @@
     <a href="https://www.thethingsindustries.com/docs/gateways/rak-7240/" class="">RAK7240 WisGate Edge Prime</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/dragino-lps8/" class="is-active">Dragino LPS8</a>
-    
-
-
-
-    
+    <a href="https://www.thethingsindustries.com/docs/gateways/dragino-lps8/" class="">Dragino LPS8</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/kerlinkwirnetistation/" class="">Kerlink Wirnet iStation</a>
@@ -184,91 +184,123 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Dragino LPS8
+        <h1 class="title is-size-2">CloudGate
           
         </h1>
         
         <div class="content">
           <figure class="float plain">
-    <img src="dragino-lps8.jpg"
-         alt="Dragino LPS8"/> 
+    <img src="CloudGate.png"
+         alt="CloudGate Gateway"/> 
 </figure>
 
-<p>The <strong>Dragino LPS8</strong> is a LoRaWAN indoor gateway based on the OpenWrt Linux system. The hardware includes an SX1308 LoRa concentrator that provides 10 programmable parallel demodulation paths. The gateway has an ethernet and WiFi backhaul and supports EU868, IN865, US915, AU915, AS923, and KR920 ISM bands.</p>
-<p>This page guides you on how to connect the Dragino LPS8 to The Things Stack.</p>
+<p>Option Wireless Technology’s CloudGate is the carrier-approved IoT solution platform that delivers device connectivity, security and processing power for global IoT applications.</p>
+<p>This guide will help you set up the CloudGate gateway to communicate over The Things Stack using <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/">LoRa Basics Station</a>.</p>
+<p>For more information, see <a href="https://cloudgateuniverse.com/docs/cloudgate-universe-guide">CloudGate Universe documentation</a> site (free login required to access).</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
-<li>A user account on The Things Stack with user rights to add gateways.</li>
-<li>An LPS8 connected to the internet.</li>
-<li>A computer on the same network as the LPS8.</li>
-<li>The latest version of firmware running on the Dragino LPS8 (read the Dragino LPS8 <a href="https://www.dragino.com/downloads/downloads/LoRa_Gateway/LPS8/LPS8_LoRaWAN_Gateway_User_Manual_v1.2.0.pdf">user manual</a> for instructions on firmware upgrade).</li>
+<li>User account on The Things Stack with rights to create Gateways.</li>
+<li>CloudGate Gateway with firmware version <code>2.96.0</code> or newer, connected to Internet via Ethernet or LTE.</li>
+<li>CG2132 LoRa expansion card installed in to the CloudGate.</li>
 </ol>
-<h2 id="register-the-gateway-on-the-things-stack">Register the Gateway on The Things Stack</h2>
-<p>Create a gateway by following <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/">the instructions</a>. The Gateway EUI can be derived from the WiFi MAC address that can be found on the back of the gateway enclosure. To get the 8 byte Gateway EUI insert <code>4150</code> at the end of the WiFi MAC address.</p>
+<h2 id="cloudgate-setup">CloudGate Setup</h2>
+<p>For the first-time hardware and software setup, you can refer to the appropriate configuration guide on the <a href="https://cloudgateuniverse.com/docs/cloudgate-user-guide">CloudGate Universe documentation</a> page. Here, we have included a few short steps to help you to get started.</p>
+<h3 id="connect-the-cloudgate-to-the-internet-via-ethernet">Connect the CloudGate to the Internet via Ethernet</h3>
+<p>Connect an Ethernet cable to the WAN port of the CloudGate gateway. The WAN port supports DHCP and should automatically obtain an IP address from the network.</p>
+<h3 id="connect-the-cloudgate-to-the-internet-via-lte">Connect the CloudGate to the Internet via LTE</h3>
+<figure class="float">
+    <img src="Insert-SIM.jpeg"
+         alt="Insert SIM"/> 
+</figure>
+
+<p>Install the LoRa expansion card into the CloudGate gateway.</p>
+<p>Attach the appropriate antennas to the antenna connectors on the front of the device. The right SMA connector is for the main antenna, and the left SMA connector is for the GPS/diversity antenna.</p>
+<p>Install the micro-SIM card by removing the plate on the back side of the CloudGate. Insert the micro SIM into the slot as shown in the picture on the right.</p>
+<h3 id="connect-your-pc-to-the-cloudgate">Connect your PC to the CloudGate</h3>
+<p>Power on the CloudGate by plugging in the 12VDC power supply. The boot process takes about 120 seconds.</p>
+<p>Connect one side of an Ethernet cable to the LAN port of the CloudGate, and the other side to your PC. The CloudGate runs a built-in DHCP server, so it will provide your PC with an IP address in the <code>192.168.1.x</code> range.</p>
+<p>Now, open a web browser and navigate to to <code>192.168.1.1</code>.</p>
+<p>Log in using <code>admin</code> as both a username and a password.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  If the WiFi MAC address is <code>A8:A8:41:A8:CE:54</code> then the Gateway EUI is <code>A8 A8 41 A8 CE 54 41 50</code>
+  It is highly recommended to change the default username and password. This can be done in the settings under the <strong>System</strong> tab.
 </div>
 
+<p>Navigate to the <strong>Home</strong> tab and check if the CloudGate is connected.</p>
 <figure>
-    <img src="add-gateway.png"
-         alt="Dragino LPS8 LoRaWAN config"/> 
+    <img src="Connection-status.png"
+         alt="Connection status"/> 
 </figure>
 
-<h2 id="configuring-the-lps8">Configuring the LPS8</h2>
-<p>Enter the IP address and port number of your gateway in the browser (the default port number is 8000, E.g. <code>192.168.1.6.:8000</code>)</p>
+<p>In case the CloudGate is not connected yet and you are connecting it via LTE network, check if the SIM PIN is entered correctly or if the correct APN parameters are used in the <strong>Network Settings</strong> section (under the <strong>Connections → LTE Interface</strong> tab).</p>
 <figure>
-    <img src="lps8-step-1.png"
-         alt="Step 1"/> 
+    <img src="Network-settings.png"
+         alt="Network settings"/> 
 </figure>
 
-<p>In the prompt box, type your username and password and then click <strong>OK</strong>.</p>
+<p>On the other hand, if you are connecting it via Ethernet, check if the CloudGate has obtained an IP address in the <strong>Connections → Main Ethernet Interface</strong> tab.</p>
+<p>As soon as the CloudGate is connected to the Internet, it will perform a check-in on the <a href="https://cloudgateuniverse.com">CloudGate Universe</a>, and it will start downloading and installing the latest software. You will see the LEDs move in a Knight Rider-like sequence during download and installation.</p>
+<p>After the installation is complete, the CloudGate will reboot. This takes approximately 2 minutes to complete.</p>
+<p>Go to <strong>Home → System Information</strong> and make sure that the <strong>Basics Station</strong> application is installed in the CloudGate.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The default username is <code>root</code> and the password is <code>dragino</code>.
+  The Basics Station application works only for CG2132 and CG8102 <a href="https://cloudgateuniverse.com/docs/lora-card-family">LoRa cards</a>.
 </div>
 
-<figure class="plain">
-    <img src="lps8-step-2.png"
-         alt="Step 2"/> 
+<h2 id="connect-the-cloudgate-to-the-things-stack">Connect the CloudGate to The Things Stack</h2>
+<h3 id="registration">Registration</h3>
+<p>Create a gateway by following the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/">Adding Gateways</a>.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The Gateway EUI is the MAC address of the CloudGate with <code>FFFE</code> in the middle. For example, if the gateway&rsquo;s MAC address is <code>1234567890AB</code>, the Gateway EUI is <code>123456FFFE7890AB</code>.
+</div>
+
+<h3 id="create-an-api-key">Create an API key</h3>
+<p>LNS establishes a data connection between a LoRa Basics Station and The Things Stack. To connect a gateway using the LNS protocol, it requires an API Key.</p>
+<p>Navigate to the <strong>API Keys</strong> on the left hand menu in your gateway&rsquo;s settings on The Things Stack and select <strong>Add API Key</strong>.</p>
+<p>Enter a name for your key, select the <strong>Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink</strong> right and then press <strong>Create API Key</strong>.</p>
+<figure>
+    <img src="Create-API-Key.png"
+         alt="Create API key"/> 
 </figure>
 
-<p>Once you logged in, you will navigate to the home page of the configuration portal that is a web-based GUI.</p>
+<p>You will see a screen that shows your newly created API Key. You now can copy it in your clipboard by pressing the copy button. After saving the key in a safe place, press <strong>I have copied the key</strong>. </p>
+<h3 id="configure-basics-station">Configure Basics Station</h3>
+<p>We assume you have made sure that the Basics Station application is installed in your CloudGate as noted in the previous steps.</p>
+<p>Now, go to <strong>Plugins → Basic Station</strong>.</p>
 <figure>
-    <img src="lps8-step-3.png"
-         alt="Step 3"/> 
+    <img src="Open-BasicsStation.png"
+         alt="Open Basics Station"/> 
 </figure>
 
-<p>On the portal page, on the top menu, select <strong>LoRaWAN &gt; LoRaWAN</strong>.</p>
+<p>Configure the authentication as <strong>LNS</strong>, and select the region.</p>
 <figure>
-    <img src="lps8-step-4.png"
-         alt="Step 4"/> 
+    <img src="BasicsStation-Config-Authentication.png"
+         alt="Choose Authentication Field"/> 
 </figure>
 
-<p>Edit the server settings.</p>
-<ol>
-<li><strong>LoRaWAN Service Provider</strong>: Choose <strong>Custom</strong> from the drop-down list.</li>
-<li><strong>Server Address</strong>: Provide your LoRaWAN Gateway Server address. You can find it on The Things Stack <strong>Gateway Overview</strong> page.</li>
-<li><strong>Gateway ID</strong>: This is the Gateway EUI. Make sure that the Gateway EUI already appeared in the text box is match with the one you have derived from the WiFi MAC address in the previous section.</li>
-<li><strong>Server Port Upstream</strong>: Upstream port of the Gateway Server, typically 1700.</li>
-<li><strong>Server Port Downstream</strong>: Downstream port of the Gateway Server, typically 1700.</li>
-</ol>
-<p>Select <strong>Save &amp; Apply</strong>.</p>
+<p>On CloudGate gateways, only CUPS or LNS can be configured. Configuring CUPS will automatically configure LNS, so to use The Things Stack, just follow the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/cups/">Connecting to CUPS</a>.</p>
+<p>The server address is the network endpoint of The Things Stack LNS. It is a combination of the <strong>protocol</strong> (wss), the <strong>server address</strong>, and the <strong>port</strong>. Enter the following in your gateway as the <strong>LNS Server Address</strong>: <code>wss://&lt;server-address&gt;:8887</code>.</p>
+<p>The server CA certificates can be found from <a href="https://www.thethingsindustries.com/docs/reference/root-certificates/">Root Certificates</a> page.</p>
+<p>You can download the minimal certificates list, and then copy and paste the content into the <strong>Server CA Cert</strong> field.</p>
 <figure>
-    <img src="lps8-step-5.png"
-         alt="Step 5"/> 
+    <img src="BasicsStation-Config-ServerCACert.png"
+         alt="Add Server CA Certificate"/> 
 </figure>
 
-<p>Finally, test your connection by going to the gateway’s <strong>Overview</strong> page. You can see the gateway status is changed as connected (with a blue dot) or the frequently updating ‘Last seen’ time.</p>
+<p>The <strong>Gateway Cert</strong> field must be left empty.</p>
+<p>In the <strong>Gateway Key</strong> field, enter the LNS API key you created during previous steps. The format should be <code>Authorization: Bearer &lt;api-key&gt;</code>. Click on <strong>Save Changes</strong> to finish.</p>
 <figure>
-    <img src="gateway-add-ok.png"
-         alt="Dragino LPS8 LoRaWAN config"/> 
+    <img src="BasicsStation-Config-GatewayKey.png"
+         alt=" Enter Gateway Key"/> 
 </figure>
+
+<p>If your configuration was successful, your gateway will connect to The Things Stack after a couple of seconds!</p>
         </div>
         
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/gateways/rak-7240/pf/">← Connect RAK7240 in Packet Forwarder Mode</a>
-<a class="button is-pulled-right" href="/docs/gateways/kerlinkwirnetistation/">Kerlink Wirnet iStation →</a>
+<a class="button is-pulled-left" href="/docs/gateways/ciscowirelessgateway/">← Cisco Wireless Gateway for LoRaWAN</a>
+<a class="button is-pulled-right" href="/docs/gateways/mikrotik-knot/">MikroTik KNOT →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -292,10 +324,10 @@
       <li><a href='#prerequisites'>Prerequisites</a></li>
     
       
-      <li><a href='#register-the-gateway-on-the-things-stack'>Register the Gateway on The Things Stack</a></li>
+      <li><a href='#cloudgate-setup'>CloudGate Setup</a></li>
     
       
-      <li><a href='#configuring-the-lps8'>Configuring the LPS8</a></li>
+      <li><a href='#connect-the-cloudgate-to-the-things-stack'>Connect the CloudGate to The Things Stack</a></li>
     
   </ul>
 
@@ -335,14 +367,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Kevin Schiffer on 03 Dec 2020.
+  Last changed by PRINCYPM on 08 Jul 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a6b444375340d44e91e7c4e27e99cd9d21b45be0">
-      doc: Add lightbox functionality and update figure styles
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7f8653c5891bd37d7ffb11b6279d4c7ea4eb516d">
+      doc: Adding document for cloudgate (#437)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/dragino-lps8/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/cloudgate/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
