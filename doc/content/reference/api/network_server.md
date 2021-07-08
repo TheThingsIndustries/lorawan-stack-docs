@@ -10,3 +10,5 @@ description: ""
 ## Messages
 
 {{< proto/message message="GenerateDevAddrResponse" >}}
+
+{{< api-refs >}}

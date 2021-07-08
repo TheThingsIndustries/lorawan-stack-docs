@@ -54,3 +54,5 @@ description: ""
 {{< proto/enum enum="PayloadFormatter" >}}
 
 {{< proto/enum enum="TxSchedulePriority" >}}
+
+{{< api-refs >}}

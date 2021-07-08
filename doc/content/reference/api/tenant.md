@@ -44,3 +44,43 @@ Unlike the other services, the tenant services do **not** accept API keys or OAu
 {{< proto/message package="tti.lorawan.v3" message="ListTenantsRequest" >}}
 
 {{< proto/message package="tti.lorawan.v3" message="UpdateTenantRequest" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="Configuration" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="Billing" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="BillingIdentifiers" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="Configuration.PacketBroker" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="Billing.Stripe" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="Billing.AWSSaaSMarketplace" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="Configuration.UI" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.IdentityServer" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.IdentityServer.UserRegistration" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.IdentityServer.UserRegistration.Invitation" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.IdentityServer.UserRegistration.ContactInfoValidation" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.IdentityServer.UserRegistration.AdminApproval" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.IdentityServer.UserRegistration.PasswordRequirements" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.IdentityServer.ProfilePicture" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.IdentityServer.EndDevicePicture" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.IdentityServer.UserRights" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.IdentityServer.AdminRights" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.NetworkServer" >}}
+
+{{< api-refs >}}

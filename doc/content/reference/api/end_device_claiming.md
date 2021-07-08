@@ -22,3 +22,5 @@ description: ""
 {{< proto/message message="ClaimEndDeviceRequest.AuthenticatedIdentifiers" >}}
 
 {{< proto/message message="EndDeviceIdentifiers" >}}
+
+{{< api-refs >}}

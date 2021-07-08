@@ -87,6 +87,8 @@ The Gateway Server exposes the list of available frequency plans with the `Confi
 
 {{< proto/message message="ListGatewaysRequest" >}}
 
+{{< proto/message message="Location" >}}
+
 {{< proto/message message="OrganizationOrUserIdentifiers" >}}
 
 {{< proto/message message="Rights" >}}
@@ -101,6 +103,19 @@ The Gateway Server exposes the list of available frequency plans with the `Confi
 
 {{< proto/message message="UserIdentifiers" >}}
 
+{{< proto/message message="GatewayClaimAuthenticationCode" >}}
+
+{{< proto/message message="OrganizationIdentifiers" >}}
+
+{{< proto/message message="Secret" >}}
+
 ## Enums
 
 {{< proto/enum enum="DownlinkPathConstraint" >}}
+
+{{< proto/enum enum="LocationSource" >}}
+
+{{< api-refs >}}
+
+
+{{< api-refs >}}

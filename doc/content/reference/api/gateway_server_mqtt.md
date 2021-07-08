@@ -114,3 +114,5 @@ $ mosquitto_pub \
 {{< warning >}} Port 1882 is insecure. The TLS-enabled port 8882 should be used in a production setting. {{</ warning >}}
 
 {{< note >}} The example above is not complete (the TxAck should be sent in response to a successful downlink transmission). It is only meant to showcase the MQTT client sending a TxAck packet (contents of the `example-tx-ack` file) to the Gateway Server. {{</ note >}}
+
+{{< api-refs >}}

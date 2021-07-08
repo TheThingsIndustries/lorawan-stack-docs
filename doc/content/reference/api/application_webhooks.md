@@ -34,3 +34,7 @@ description: ""
 {{< proto/message message="ListApplicationWebhooksRequest" >}}
 
 {{< proto/message message="SetApplicationWebhookRequest" >}}
+
+{{< proto/message message="ApplicationIdentifiers" >}}
+
+{{< api-refs >}}

@@ -84,3 +84,7 @@ description: ""
 {{< proto/message message="UpdateApplicationRequest" >}}
 
 {{< proto/message message="UserIdentifiers" >}}
+
+{{< proto/message message="OrganizationIdentifiers" >}}
+
+{{< api-refs >}}

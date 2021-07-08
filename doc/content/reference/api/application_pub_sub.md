@@ -37,6 +37,18 @@ description: ""
 
 {{< proto/message message="SetApplicationPubSubRequest" >}}
 
+{{< proto/message message="ApplicationIdentifiers" >}}
+
+{{< proto/message message="ApplicationPubSub.AWSIoTProvider" >}}
+
+{{< proto/message message="ApplicationPubSub.AWSIoTProvider.AccessKey" >}}
+
+{{< proto/message message="ApplicationPubSub.AWSIoTProvider.AssumeRole" >}}
+
+{{< proto/message message="ApplicationPubSub.AWSIoTProvider.DefaultIntegration" >}}
+
 ## Enums
 
 {{< proto/enum enum="ApplicationPubSub.MQTTProvider.QoS" >}}
+
+{{< api-refs >}}
