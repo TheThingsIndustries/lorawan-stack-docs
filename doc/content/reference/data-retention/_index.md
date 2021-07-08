@@ -4,7 +4,7 @@ description: ""
 weight:
 ---
 
-This reference contains information about what access administrators and users have to data, and how long {{% tts %}} persists device data. For inquiries about data privacy or data security, read on, or [contact The Things Industries](cloud@thethingsindustries.com).
+This reference contains information about what access administrators and users have to data, and how long {{% tts %}} persists device data. For inquiries about data privacy or data security, read on, or [contact The Things Industries](mailto:cloud@thethingsindustries.com).
 
 <!--more-->
 
