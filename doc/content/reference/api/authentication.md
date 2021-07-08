@@ -115,5 +115,3 @@ The response again contains the **OAuth access token** and an indication of when
   "refresh_token": "YYYYY"
 }
 ```
-
-{{< api-refs >}}
