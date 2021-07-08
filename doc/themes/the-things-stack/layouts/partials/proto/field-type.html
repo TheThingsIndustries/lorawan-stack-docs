@@ -1,3 +1,33 @@
-{{- with .type }}<code>{{ . }}</code>{{ end -}}
-{{- with .message }}{{ if not .package }}<a href="#message:{{ .name }}">{{ end }}<code>{{ with .package }}{{ . }}.{{end}}{{ .name }}</code>{{ if not .package }}</a>{{ end }}{{ end -}}
-{{- with .enum }}{{ if not .package }}<a href="#enum:{{ .name }}">{{ end }}<code>{{ with .package }}{{ . }}.{{end}}{{ .name }}</code>{{ if not .package }}</a>{{ end }}{{ end -}}
+{{- with .type }}
+  <code>{{ . }}</code>
+{{ end -}}
+{{- with .message }}
+  {{ if not .package }}
+    {{ $.Page.Scratch.Add "referenced" (slice .name) }}
+    <a href="#message:{{ .name }}">
+  {{ end }}
+  <code>
+    {{ with .package }}
+      {{ . }}.
+    {{end}}
+    {{ .name }}
+  </code>
+  {{ if not .package }}
+    </a>
+  {{ end }}
+{{ end -}}
+{{- with .enum }}
+  {{ if not .package }}
+    {{ $.Page.Scratch.Add "referenced" (slice .name) }}
+    <a href="#enum:{{ .name }}">
+  {{ end }}
+  <code>
+  {{ with .package }}
+  {{ . }}.
+  {{end}}
+  {{ .name }}
+  </code>
+    {{ if not .package }}
+  </a>
+  {{ end }}
+{{ end -}}

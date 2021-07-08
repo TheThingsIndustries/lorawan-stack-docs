@@ -1,6 +1,7 @@
 {{ $package := or (.Get "package") "ttn.lorawan.v3" }}{{ $service := .Get "service" }}{{ $method := .Get "method" }}
 {{ with index .Site.Data "api" $package "services" $service "methods" $method -}}
-
+{{ $ctx := . }}
+{{ $ctx.Scratch.Add "references" .name }}
 <table class="api">
   <tbody>
     <tr>
@@ -26,7 +27,7 @@
         Request type
       </th>
       <td>
-        {{ if .input.stream }}Stream of {{ end }}{{ if not .input.package }}<a href="#message:{{ .input.name }}">{{ end }}<code>{{ with .input.package }}{{ . }}.{{end}}{{ .input.name }}</code>{{ if not .input.package }}</a>{{ end }}
+        {{ if .input.stream }}Stream of {{ end }}{{ if not .input.package }}{{ $.Page.Scratch.Add "referenced" (slice .input.name) }}<a href="#message:{{ .input.name }}">{{ end }}<code>{{ with .input.package }}{{ . }}.{{end}}{{ .input.name }}</code>{{ if not .input.package }}</a>{{ end }}
         {{ if and .http .input.stream }}<br>The HTTP API uses <code>Content-Type: text/event-stream</code><br>and a request body of newline-delimited JSON.{{ end }}
       </td>
     </tr>

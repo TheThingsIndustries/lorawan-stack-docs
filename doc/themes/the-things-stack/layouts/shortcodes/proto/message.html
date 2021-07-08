@@ -1,5 +1,6 @@
 {{ $package := or (.Get "package") "ttn.lorawan.v3" }}{{ $message := .Get "message" }}
 {{- with index .Site.Data "api" $package "messages" $message -}}
+{{ $.Page.Scratch.Add "rendered" (slice .name) }}
 <h3 id="message:{{ .name }}">Message <code>{{ .name }}</code></h3>
 {{- with .comment }}
 <p>{{ . | markdownify }}</p>
@@ -39,6 +40,11 @@
         Type
       </th>
       <td>
+        {{ with or .message .enum }}
+            {{ if not .package }}
+              {{ $.Page.Scratch.Add "referenced" (slice .name) }}
+            {{ end }}
+        {{ end }}
         {{- if and .map_key .map_value -}}
         map of {{ partial "proto/field-type" .map_key }} to {{ partial "proto/field-type" .map_value }}
         {{- else if .repeated -}}
