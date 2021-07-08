@@ -14,7 +14,7 @@ Welcome to {{% tts %}}! In this section, we help you to understand how to use {{
 
 ### {{% tts %}} Deployments
 
-{{% tts %}} comes in many different flavors to meet different requirements. For all available deployments, see [Get {{% tts %}}]({{< ref "download" >}}). The most common deployments are:
+{{% tts %}} comes in many different flavors to meet different requirements. For all available deployments, see [Deployments](https://www.thethingsindustries.com/deployment/). The most common are:
 
 **Cloud**: SLA backed network server hosted by The Things Industries. See [Cloud]({{< ref "getting-started/cloud-hosted" >}}).
 

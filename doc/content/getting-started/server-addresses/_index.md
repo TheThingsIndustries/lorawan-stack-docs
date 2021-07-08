@@ -7,8 +7,10 @@ To access the [Console]({{< ref "getting-started/console" >}}), register a [comm
 
 <!--more-->
 
-By default, all components of {{% tts %}}, such as the Gateway Server, Identity Server, and Console, are located at the same server address.
-It is possible to configure separate addresses for the different components if you are running Enterprise or Open Source. For Cloud and Community Edition, all endpoints are located at the same server address (except the Identity Server, which is [only available]({{< ref "getting-started/cloud-hosted/addresses#api-endpoints" >}}) in the `eu1` cluster). The server address for the different {{% tts %}} deployments are listed below.
+Deployments of {{% tts %}} in a single cluster use the same server address for all components.
+
+Distributed deployments, like {{% tts %}} Cloud and Community Edition, use different addresses per region for routing components, while the address of global components (like Identity Server) is always the same. Enterprise and Open Source deployments may be in a single cluster, or distributed over multiple clusters with multiple addresses.
+The server addresses for the different {{% tts %}} deployments are listed below.
 
 ## Deployments
 
