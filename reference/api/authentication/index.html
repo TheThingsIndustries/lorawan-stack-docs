@@ -317,7 +317,7 @@
 </ul>
 <p>The Identity Server will prompt the user with a view asking to authorize your OAuth client. They will see the <strong>client ID</strong>, <strong>description</strong>, requested <strong>scope</strong> and <strong>redirect URI</strong>. If they accept the authorization, they will be redirected to your <strong>redirect URI</strong> with an <strong>authorization code</strong>:</p>
 <pre><code>https://&lt;REDIRECT-URI&gt;/?code=&lt;AUTHORIZATION-CODE&gt;
-</code></pre><p>Your OAuth client can exchange this <strong>authorization code</strong> for an <strong>OAuth access token</strong> by making a <code>POST</code> request to the <strong>token URL</strong>:</p>
+</code></pre><p>Your OAuth client can exchange this <strong>authorization code</strong>, which is valid for 5 minutes, for an <strong>OAuth access token</strong> by making a <code>POST</code> request to the <strong>token URL</strong>:</p>
 <pre><code>https://&lt;HOSTNAME&gt;/oauth/token
 </code></pre><p>The request must use <strong>Basic Auth</strong> (<a href="https://tools.ietf.org/html/rfc7617">RFC7617</a>) with the <strong>client ID</strong> as username and the <strong>client secret</strong> as password.</p>
 <p>The <strong>authorization code</strong> is sent in the request payload:</p>
@@ -325,7 +325,7 @@
   <span class="nt">&#34;code&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;AUTHORIZATION-CODE&gt;&#34;</span><span class="p">,</span> 
   <span class="nt">&#34;grant_type&#34;</span><span class="p">:</span> <span class="s2">&#34;authorization_code&#34;</span>
 <span class="p">}</span>
-</code></pre></div><p>The response contains the <strong>OAuth access token</strong> and an indication of when it expires. If the network admin gave your OAuth client the <strong>refresh token</strong> grant, the response also contains a <strong>refresh token</strong>.</p>
+</code></pre></div><p>The response contains the <strong>OAuth access token</strong>, which is valid for 60 minutes. If the network admin gave your OAuth client the <strong>refresh token</strong> grant, the response also contains a <strong>refresh token</strong>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;access_token&#34;</span><span class="p">:</span> <span class="s2">&#34;XXXXX&#34;</span><span class="p">,</span> 
   <span class="nt">&#34;token_type&#34;</span><span class="p">:</span> <span class="s2">&#34;bearer&#34;</span><span class="p">,</span> 
@@ -419,10 +419,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Hylke Visser on 02 Dec 2020.
+  Last changed by Hylke Visser on 08 Jul 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/c3ecf20d73461b88063dc786e8d6c0314aea82e8">
-      doc: Fix links to files in lorawan-stack repository
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/79086fbfc542889a5e604b9d66dce0ed388bcce6">
+      doc: Mention OAuth token TTL
     </a>
 </p>
 
