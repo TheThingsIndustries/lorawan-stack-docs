@@ -56,6 +56,8 @@ Click **Create API key**, copy the key and store it in a safe place. You need th
 {{< /tabs/tab >}}
 {{< /tabs/container >}}
 
+{{< warning >}} Make sure to select the template related to your deployment only. {{</ warning >}}
+
 ### Settings
 
 The **Stack name** is the unique name identifying the integration in your AWS account.
@@ -64,6 +66,9 @@ The parameters configure the integration:
 
 - **Principal Account ID** {{< distributions "Enterprise" >}}: AWS Account ID that The Things Stack authenticates with.
 - **Thing Type Name**: The unique AWS IoT Core thing type name for this integration.
+- **Thing Name Scheme**: The name that is given to AWS IoT things when they are created by the integration.
+  - When using `DevEUI`, the name will appear as the numeric DevEUI, i.e 1122334455667788.
+  - When using `DeviceID`, the thing name will be a combination of the CloudFormation stack name and the device ID as registered in  {{% tts %}}, i.e. `<stackName>_<DeviceID>`.
 - **Thing Shadow Metrics**: Enable or disable updating the thing shadow with metrics.
 - **Cluster Address**: The cluster address of your {{% tts %}} deployment.
   - When using **The Things Stack Cloud**, go to [The Things Stack Cloud Addresses]({{< relref "/getting-started/cloud-hosted/addresses" >}}) to find your cluster address
