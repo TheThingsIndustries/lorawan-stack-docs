@@ -158,12 +158,82 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="UpdateEndDeviceRequest" >}}
 
+{{< proto/message message="ApplicationIdentifiers" >}}
+
+{{< proto/message message="GatewayClaimAuthenticationCode" >}}
+
+{{< proto/message message="Picture" >}}
+
+{{< proto/message message="Picture.Embedded" >}}
+
+{{< proto/message message="Secret" >}}
+
+{{< proto/message message="BoolValue" >}}
+
+{{< proto/message message="ADRAckLimitExponentValue" >}}
+
+{{< proto/message message="ADRAckDelayExponentValue" >}}
+
+{{< proto/message message="DataRateIndexValue" >}}
+
+{{< proto/message message="PingSlotPeriodValue" >}}
+
+{{< proto/message message="FrequencyValue" >}}
+
+{{< proto/message message="RxDelayValue" >}}
+
+{{< proto/message message="DataRateOffsetValue" >}}
+
+{{< proto/message message="AggregatedDutyCycleValue" >}}
+
+{{< proto/message message="DeviceEIRPValue" >}}
+
+{{< proto/message message="ApplicationDownlink" >}}
+
+{{< proto/message message="MACState.JoinAccept" >}}
+
+{{< proto/message message="MACState.JoinRequest" >}}
+
+{{< proto/message message="ApplicationDownlink.ClassBC" >}}
+
+{{< proto/message message="DLSettings" >}}
+
+{{< proto/message message="CFList" >}}
+
 ## Enums
+
+{{< proto/enum enum="ADRAckLimitExponent" >}}
+
+{{< proto/enum enum="ADRAckDelayExponent" >}}
 
 {{< proto/enum enum="AggregatedDutyCycle" >}}
 
+{{< proto/enum enum="Class" >}}
+
+{{< proto/enum enum="CFListType" >}}
+
+{{< proto/enum enum="DataRateIndex" >}}
+
+{{< proto/enum enum="DataRateOffset" >}}
+
+{{< proto/enum enum="DeviceEIRP" >}}
+
 {{< proto/enum enum="MACVersion" >}}
+
+{{< proto/enum enum="PayloadFormatter" >}}
+
+{{< proto/enum enum="PingSlotPeriod" >}}
 
 {{< proto/enum enum="PHYVersion" >}}
 
 {{< proto/enum enum="PowerState" >}}
+
+{{< proto/enum enum="RxDelay" >}}
+
+{{< proto/enum enum="RejoinTimeExponent" >}}
+
+{{< proto/enum enum="RejoinCountExponent" >}}
+
+{{< proto/enum enum="TxSchedulePriority" >}}
+
+{{< api-refs >}}

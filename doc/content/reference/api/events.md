@@ -29,6 +29,10 @@ description: ""
 
 {{< proto/message message="StreamEventsRequest" >}}
 
+{{< proto/message message="Rights" >}}
+
 ## Events
 
 {{< events >}}
+
+{{< api-refs >}}

@@ -65,6 +65,10 @@ description: ""
 
 {{< proto/message message="ListUsersRequest" >}}
 
+{{< proto/message message="Picture" >}}
+
+{{< proto/message message="Picture.Embedded" >}}
+
 {{< proto/message message="Rights" >}}
 
 {{< proto/message message="SearchUsersRequest" >}}
@@ -82,3 +86,9 @@ description: ""
 {{< proto/message message="UserIdentifiers" >}}
 
 {{< proto/message message="Users" >}}
+
+## Enums
+
+{{< proto/enum enum="State" >}}
+
+{{< api-refs >}}

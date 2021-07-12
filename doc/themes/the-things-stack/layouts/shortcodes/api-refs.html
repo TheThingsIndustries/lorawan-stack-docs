@@ -1,0 +1,8 @@
+{{ $ctx := . }}
+{{ $ref := uniq ($.Page.Scratch.Get "referenced") }}
+{{ $ren := uniq ($.Page.Scratch.Get "rendered") }}
+{{ range $ref }}
+	{{ if not (in $ren .) }}
+		{{ errorf "Referenced type not rendered:  %q in page %s" . $ctx.Position }}
+	{{ end }}
+{{ end }}

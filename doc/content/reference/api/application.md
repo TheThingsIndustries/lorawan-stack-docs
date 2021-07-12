@@ -73,6 +73,8 @@ description: ""
 
 {{< proto/message message="OrganizationOrUserIdentifiers" >}}
 
+{{< proto/message message="OrganizationIdentifiers" >}}
+
 {{< proto/message message="Rights" >}}
 
 {{< proto/message message="SearchApplicationsRequest" >}}
@@ -84,3 +86,5 @@ description: ""
 {{< proto/message message="UpdateApplicationRequest" >}}
 
 {{< proto/message message="UserIdentifiers" >}}
+
+{{< api-refs >}}
