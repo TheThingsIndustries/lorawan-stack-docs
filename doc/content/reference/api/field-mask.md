@@ -13,7 +13,7 @@ weight: -1
 Fields may be specified in HTTP requests by appending them as query string parameters. For example, to request the `name`, `description`, and `locations` of devices in an `EndDeviceRegistry.Get` request, add these fields to the `field_mask` field. To get this data for device `dev1` in application `app1`:
 
 ```bash
-$ curl --location --header "Authorization: Bearer NNSXS.XXXXXXXXX" https://thethings.example.com/api/v3/applications/app1/devices/dev1?field_mask=name,description,locations
+$ curl --location --header "Authorization: Bearer NNSXS.XXXXXXXXX" https://thethings.example.com/api/v3/applications/app1/devices/dev1?field_mask=name,description,locations
 ```
 
 ### POST Requests
@@ -21,7 +21,7 @@ $ curl --location --header "Authorization: Bearer NNSXS.XXXXXXXXX" https://thet
 Some endpoints require a message to be sent as part of the request. For example, to request an [Event Stream]({{< ref "reference/api/events#the-event-service" >}}), you must `POST` a [StreamEventsRequest message]({{< ref "reference/api/events#message:StreamEventsRequest" >}}):
 
 ```bash
-$ curl --location \
+$ curl --location \
   --header 'Authorization: Bearer NNSXS.XXXXXXXXX' \
   --header 'Content-Type: application/json' \
   --request POST \

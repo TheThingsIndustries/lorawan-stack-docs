@@ -17,6 +17,8 @@ description: ""
 
 ## Messages
 
+{{< proto/message message="ApplicationIdentifiers" >}}
+
 {{< proto/message message="ApplicationWebhook" >}}
 
 {{< proto/message message="ApplicationWebhook.Message" >}}
@@ -34,7 +36,5 @@ description: ""
 {{< proto/message message="ListApplicationWebhooksRequest" >}}
 
 {{< proto/message message="SetApplicationWebhookRequest" >}}
-
-{{< proto/message message="ApplicationIdentifiers" >}}
 
 {{< api-refs >}}

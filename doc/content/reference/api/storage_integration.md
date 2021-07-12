@@ -17,6 +17,8 @@ description: ""
 
 {{< proto/message message="ApplicationDownlink" >}}
 
+{{< proto/message message="ApplicationDownlink.ClassBC" >}}
+
 {{< proto/message message="ApplicationDownlinkFailed" >}}
 
 {{< proto/message message="ApplicationInvalidatedDownlinks" >}}
@@ -25,40 +27,36 @@ description: ""
 
 {{< proto/message message="ApplicationServiceData" >}}
 
-{{< proto/message message="KeyEnvelope" >}}
-
-{{< proto/message message="EndDeviceVersionIdentifiers" >}}
-
-{{< proto/message message="TxSettings.Downlink" >}}
-
-{{< proto/message message="FSKDataRate" >}}
-
-{{< proto/message message="LoRaDataRate" >}}
-
-{{< proto/message message="EndDeviceIdentifiers" >}}
-
 {{< proto/message message="ApplicationUp" >}}
 
 {{< proto/message message="ApplicationUplink" >}}
 
-{{< proto/message message="TxSettings" >}}
-
 {{< proto/message message="DataRate" >}}
 
-{{< proto/message message="LoRaDataRate" >}}
+{{< proto/message message="EndDeviceIdentifiers" >}}
 
-{{< proto/message message="ApplicationDownlink.ClassBC" >}}
+{{< proto/message message="EndDeviceVersionIdentifiers" >}}
 
 {{< proto/message message="ErrorDetails" >}}
 
+{{< proto/message message="FSKDataRate" >}}
+
+{{< proto/message message="KeyEnvelope" >}}
+
+{{< proto/message message="LoRaDataRate" >}}
+
 {{< proto/message message="Location" >}}
+
+{{< proto/message message="TxSettings.Downlink" >}}
+
+{{< proto/message message="TxSettings" >}}
 
 ## Enums
 
 {{< proto/enum enum="DataRateIndex" >}}
 
-{{< proto/enum enum="TxSchedulePriority" >}}
-
 {{< proto/enum enum="LocationSource" >}}
+
+{{< proto/enum enum="TxSchedulePriority" >}}
 
 {{< api-refs >}}

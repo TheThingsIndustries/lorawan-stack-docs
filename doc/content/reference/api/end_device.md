@@ -202,11 +202,27 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 ## Enums
 
+{{< proto/enum enum="ADRAckLimitExponent" >}}
+
+{{< proto/enum enum="ADRAckDelayExponent" >}}
+
 {{< proto/enum enum="AggregatedDutyCycle" >}}
+
+{{< proto/enum enum="Class" >}}
+
+{{< proto/enum enum="CFListType" >}}
 
 {{< proto/enum enum="DataRateIndex" >}}
 
+{{< proto/enum enum="DataRateOffset" >}}
+
+{{< proto/enum enum="DeviceEIRP" >}}
+
 {{< proto/enum enum="MACVersion" >}}
+
+{{< proto/enum enum="PayloadFormatter" >}}
+
+{{< proto/enum enum="PingSlotPeriod" >}}
 
 {{< proto/enum enum="PHYVersion" >}}
 
@@ -214,26 +230,10 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/enum enum="RxDelay" >}}
 
-{{< proto/enum enum="DataRateOffset" >}}
-
 {{< proto/enum enum="RejoinTimeExponent" >}}
 
 {{< proto/enum enum="RejoinCountExponent" >}}
 
-{{< proto/enum enum="ADRAckLimitExponent" >}}
-
-{{< proto/enum enum="ADRAckDelayExponent" >}}
-
-{{< proto/enum enum="Class" >}}
-
-{{< proto/enum enum="PayloadFormatter" >}}
-
-{{< proto/enum enum="PingSlotPeriod" >}}
-
-{{< proto/enum enum="DeviceEIRP" >}}
-
 {{< proto/enum enum="TxSchedulePriority" >}}
-
-{{< proto/enum enum="CFListType" >}}
 
 {{< api-refs >}}
