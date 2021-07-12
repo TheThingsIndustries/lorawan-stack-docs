@@ -1,7 +1,6 @@
 ---
-title: "Implementation Details"
+title: "LoRa Basics Station Implementation Guide"
 description: ""
-weight: 10
 ---
 
 This guide contains implementation details primarily for gateway manufacturers intending to implement the {{% lbs %}} protocol.
