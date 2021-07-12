@@ -10,14 +10,22 @@ Under normal circumstances, only `info`, `warn` and `error` logs are printed to 
 
 - `log.level`: The minimum level log messages must have to be shown (default "info")
 
-## License 
+## License
 
 {{< distributions "Cloud" "Enterprise" >}} {{% tts %}} requires a license key for production use. For development purposes, it will work for a limited time on `localhost` without a license key.
 
-- `license.file`: Location of the license file
-- `license.key`: Contents of the license key
+- `license.key`: Contents of the license key. Must be a base64-encoded string.
+- `license.file`: Location of the license file. Must be a binary file containing the raw license bytes.
 
-## Key Vault 
+{{< note >}}
+Given the license key in base64 format, you can create the license file like this:
+
+```bash
+$ echo "AzYFASd/Gcggs..." | base64 --decode > ttn-lw-stack-license.bin
+```
+{{</ note >}}
+
+## Key Vault
 
 {{< distributions "Cloud" "Enterprise" >}} The key vault is used to store secrets, such as TLS certificates and the keys for encrypting LoRaWAN root keys in the database. {{% tts %}} supports keys stored in AWS Secrets Manager, or static configuration for development purposes.
 
