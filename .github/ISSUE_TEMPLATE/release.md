@@ -25,12 +25,14 @@ This is a checklist for releases. This is filled in by both the releaser and the
 $ tools/bin/mage ttiProto:hugoData
 ```
 
-- [ ] Copy generated files to `lorawan-stack-docs` with the following command:
+- [ ] Copy generated files to `lorawan-stack-docs` by running the following commands in `lorawan-stack-docs`:
 
 ```bash
-$ cp api/ttn.lorawan.v3/*.yml /path/to/lorawan-stack-docs/doc/data/api/ttn.lorawan.v3/
-$ cp api/tti.lorawan.v3/*.yml /path/to/lorawan-stack-docs/doc/data/api/tti.lorawan.v3/
+$ rsync --recursive --delete --remove-source-files ../lorawan-stack/api/ttn.lorawan.v3/ ./doc/data/api/ttn.lorawan.v3/
+$ rsync --recursive --delete --remove-source-files ../lorawan-stack/api/tti.lorawan.v3/ ./doc/data/api/tti.lorawan.v3/
 ```
+
+> NOTE: This assumes that the parent directory of `lorawan-stack-docs` also contains `lorawan-stack`. If not, you'll need to adjust the commands accordingly.
 
 - [ ] To generate and export CLI documentation from within the clone of [TheThingsIndustries/lorawan-stack](https://github.com/TheThingsIndustries/lorawan-stack), first run the following command to build the CLI:
 
