@@ -41,7 +41,7 @@ Enter the following fields:
 
 Click the **Show Advanced Options** button and enter the following fields:
 
-- **Account Server**: The URL of {{% tts %}}. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}) this is the same as what you use instead of `https://thethings.example.com`.
+- **Account Server**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}).
 - **Gateway Key**: The API Key that you created earlier.
 - Click **Save** when done.
 
