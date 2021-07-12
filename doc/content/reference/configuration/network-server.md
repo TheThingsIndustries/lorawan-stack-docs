@@ -7,6 +7,7 @@ description: ""
 
 - `ns.dev-addr-prefixes`: Device address prefixes of this Network Server
 - `ns.net-id`: NetID of this Network Server
+- `ns.cluster-id`: {{< new-in-version "3.14.0" >}} ClusterID of this Network Server. This is purely informative and is added as metadata to messages forwarded to the Application Server
 
 ## Uplink Options
 
@@ -46,8 +47,8 @@ The `ns.interop` options configure how Network Server performs interoperability 
 - `ns.interop.directory`: OS filesystem directory, which contains interoperability client configuration
 - `ns.interop.url`: URL, which contains interoperability client configuration
 
-## Peering 
+## Peering
 
 {{< distributions "Cloud" "Enterprise" >}} In multi-tenant deployments, the Network Server maintains strict isolation of traffic for different tenants. When it also has peering configured, Packet Broker is typically configured with the correct tenant ID for the DevAddr ranges of each tenant. It is also possible to accept traffic from Packet Broker without a tenant ID, and let the Network Server match devices without strict tenant isolation.
 
-- `ns.switch-peering-tenant-context` {{< distributions "Cloud" "Enterprise" >}}: Switch tenant context in peering 
+- `ns.switch-peering-tenant-context` {{< distributions "Cloud" "Enterprise" >}}: Switch tenant context in peering
