@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Application Server | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/components/application-server/" />
+  <title>LoRa Basics Station Implementation Guide | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/lbs-implementation-guide/implementation-details/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.25b30cdd256bfe2021b3a162f05871509954bca5cc3a6e85d1f515ea9ed6aa0f.css" integrity="sha256-JbMM3SVr/iAhs6Fi8FhxUJlUvKXMOm6F0fUV6p7Wqg8=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Application Server">
+  <meta itemprop="name" content="LoRa Basics Station Implementation Guide">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Application Server">
+  <meta property="og:title" content="LoRa Basics Station Implementation Guide">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/components/application-server/">
-  <meta name="twitter:title" content="Application Server" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/lbs-implementation-guide/implementation-details/">
+  <meta name="twitter:title" content="LoRa Basics Station Implementation Guide" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -107,80 +107,6 @@
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/reference/components/" class="">Components</a>
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/components/application-server/" class="is-active">Application Server</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/components/cli/" class="">Command-line Interface</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/components/console/" class="">Console</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/components/device-claiming-server/" class="">Device Claiming Server</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/components/device-template-converter/" class="">Device Template Converter</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/components/gateway-configuration-server/" class="">Gateway Configuration Server</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/components/gateway-server/" class="">Gateway Server</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/components/identity-server/" class="">Identity Server</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/components/join-server/" class="">Join Server</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/components/network-server/" class="">Network Server</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/components/packet-broker-agent/" class="">Packet Broker Agent</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/components/qr-code-generator/" class="">QR Code Generator</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/components/tenant-billing-server/" class="">Tenant Billing Server</a>
-    
-  </li>
-
-</ul>
-
-
-    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/reference/configuration/" class="">Configuration</a>
@@ -210,7 +136,7 @@
     <a href="https://www.thethingsindustries.com/docs/reference/interop-repository/" class="">Interoperability Repository</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/lbs-implementation-guide/implementation-details/" class="">LoRa Basics Station Implementation Guide</a>
+    <a href="https://www.thethingsindustries.com/docs/reference/lbs-implementation-guide/implementation-details/" class="is-active">LoRa Basics Station Implementation Guide</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/reference/spec-regional-parameters/" class="">LoRaWAN Specification and Regional Parameters</a>
@@ -250,32 +176,36 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Application Server
+        <h1 class="title is-size-2">LoRa Basics Station Implementation Guide
           
         </h1>
         
         <div class="content">
-          <p>The Application Server handles the LoRaWAN application layer, including uplink data decryption and decoding, downlink queuing and downlink data encoding and encryption.</p>
-<p>It hosts an MQTT server for streaming application data, supports HTTP webhooks as well as pub/sub integrations.</p>
-<h2 id="connectivity">Connectivity</h2>
-<p>Applications can connect to Application Server over multiple protocols and mechanisms.</p>
-<h3 id="mqtt-protocol">MQTT Protocol</h3>
-<p>Applications can connect to an Application Server by exchanging JSON messages over MQTT. MQTT is available over TLS, providing confidentiality of messages exchanged between applications and the Application Server.</p>
-<p>The upstream messages do not only contain data uplink messages, but also join-accepts and downlink events, on separate topics.</p>
-<p>See <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">Application Server MQTT server</a> for more information.</p>
-<h3 id="http-webhooks">HTTP Webhooks</h3>
-<p>Applications can get streaming JSON messages via HTTP webhooks, and schedule downlink messages by making an HTTP request to the Application Server.</p>
-<p>Like MQTT, all upstream messages can be configured, including uplink messages, join-accepts and downlink events, each to separate URL paths.</p>
-<p>See <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/">HTTP webhooks</a> for more information.</p>
-<h3 id="pubsub-integrations">Pub/Sub Integrations</h3>
-<p>Applications can also use pub/sub integrations to work with streaming data. This includes connecting to an external MQTT server and <a href="https://www.nats.io">NATS server</a>.</p>
-<h2 id="message-processing">Message Processing</h2>
-<p>The Application Server can decode and encode binary payload sent and received by end devices. This allows for working with structured streaming data, such as JSON objects using MQTT and HTTP webhooks, yet using compact binary data that is transmitted over the air.</p>
-<p>Message processors can be well-known formats or custom scripts, and can be set on the device level, or for the entire application.</p>
+          <p>This guide contains implementation details primarily for gateway manufacturers intending to implement the LoRa Basics™ Station
+protocol.</p>
+<h2 id="use-of-deveui-field-in-downlink-messages">Use of DevEui field in Downlink Messages</h2>
+<p>Gateways using the LoRa Basics™ Station
+protocol report the successful transmission of downlink messages via the Transmit Confirmation (<code>dntxed</code>) message. In order to correlate the confirmation message to a downlink, the LoRa Basics™ Station
+protocol provides two options to the LNS. The LNS is offered the flexibility to implement either of these mechanisms.</p>
+<p>a. Using the <code>DevEui</code> and the <code>diid</code> fields</p>
+<ul>
+<li>In this mode, the LNS uses a per-device downlink counter. Gateways echo the <code>DevEui</code> and <code>diid</code> fields sent on the downlink message on the corresponding Transmit Confirmation message.</li>
+<li>The LNS then forwards the transmit confirmation upstream.</li>
+<li>This is useful for debugging using LoRa Basics™ Station
+gateway logs since the <code>DevEui</code> will be printed. However, this exposes the DevEui of end devices to gateways which is not desirable in cases where the gateway is not owned/operated by the device owner.</li>
+<li>The Things Stack does not use this method to correlate Transmit Confirmations.</li>
+</ul>
+<p>b. Using only the <code>diid</code> field</p>
+<ul>
+<li>The LNS can choose to make the <code>diid</code> field globally unique per gateway (per session). The LNS can then maintain a correlation of the <code>diid</code> values to downlink messages.</li>
+<li>When the gateway sends a Transmit Confirmation message, the LNS can then use the echoed <code>diid</code> value to look up the downlink message and retrieve information on the end device and forward the transmit confirmation upstream.</li>
+<li>In this mode, the <code>DevEui</code> field of the downlink message is not used by the LNS but should be set to a non-zero value.</li>
+<li>This is the approach used by The Things Stack, where the <code>DevEui</code> is set to <code>0000000000000001</code> for all downlink messages.</li>
+</ul>
         </div>
         <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/reference/components/">← Components</a>
-<a class="button is-pulled-right" href="/docs/reference/components/cli/">Command-line Interface →</a>
+<a class="button is-pulled-left" href="/docs/reference/interop-repository/">← Interoperability Repository</a>
+<a class="button is-pulled-right" href="/docs/reference/spec-regional-parameters/">LoRaWAN Specification and Regional Parameters →</a>
 </div>
 
         <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -296,10 +226,7 @@
   <ul class="menu-list">
     
       
-      <li><a href='#connectivity'>Connectivity</a></li>
-    
-      
-      <li><a href='#message-processing'>Message Processing</a></li>
+      <li><a href='#use-of-deveui-field-in-downlink-messages'>Use of DevEui field in Downlink Messages</a></li>
     
   </ul>
 
@@ -339,14 +266,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 16 Apr 2021.
+  Last changed by Krishna Iyer Easwaran on 12 Jul 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/fcc7921ae70778fb1380f38d7e21eac00dace6a5">
-      doc: Remove old new-in-version tags, small fixes
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/ad26828d1916c3b83d00c9a871983e54d527638d">
+      Document DevEui field in LBS downlinks (#447)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/reference/components/application-server.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/reference/lbs-implementation-guide/implementation-details.md" class="button">Edit on Github</a>
 </div>
 
       </div>
