@@ -279,10 +279,10 @@
 <p>The Things Stack APIs use field masks to specify a subset of fields that should be returned by a reading request, or to specify fields that should be updated in a writing request. See Google&rsquo;s <a href="https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMask">Protocol Buffers reference</a> for more information about field masks.</p>
 <h2 id="fields-and-field-masks-in-http-queries">Fields and Field Masks in HTTP Queries</h2>
 <p>Fields may be specified in HTTP requests by appending them as query string parameters. For example, to request the <code>name</code>, <code>description</code>, and <code>locations</code> of devices in an <code>EndDeviceRegistry.Get</code> request, add these fields to the <code>field_mask</code> field. To get this data for device <code>dev1</code> in application <code>app1</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location --header <span class="s2">&#34;Authorization: Bearer NNSXS.XXXXXXXXX&#34;</span> https://thethings.example.com/api/v3/applications/app1/devices/dev1?field_mask<span class="o">=</span>name,description,locations
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location --header <span class="s2">&#34;Authorization: Bearer NNSXS.XXXXXXXXX&#34;</span> https://thethings.example.com/api/v3/applications/app1/devices/dev1?field_mask<span class="o">=</span>name,description,locations
 </code></pre></div><h3 id="post-requests">POST Requests</h3>
 <p>Some endpoints require a message to be sent as part of the request. For example, to request an <a href="https://www.thethingsindustries.com/docs/reference/api/events/#the-event-service">Event Stream</a>, you must <code>POST</code> a <a href="https://www.thethingsindustries.com/docs/reference/api/events/#message:StreamEventsRequest">StreamEventsRequest message</a>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
 </span><span class="se"></span>  --request POST <span class="se">\
@@ -366,10 +366,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 08 Oct 2020.
+  Last changed by Ben Olayinka on 12 Jul 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b503684d9bcc4a26426a6eb170e668cfe8c96ea7">
-      doc: Add api curl examples
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f3394edb26008b428a8fc5d32c7691290353445b">
+      Add missing API messages and enums (fix broken links) (#442)
     </a>
 </p>
 
