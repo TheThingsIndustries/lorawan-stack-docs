@@ -18,12 +18,19 @@ Our `docker-compose.yml` file uses [Compose file version 3.7](https://docs.docke
 1. Double check that you used the correct `client-secret` when you authorized the client in [Running {{% tts %}}]({{< relref "running-the-stack" >}}).
 2. If running on `localhost`, see the [Localhost]({{< ref "getting-started/installation/configuration#localhost" >}}) section for additional info.
 3. You may have invalid certificates. Verify using `openssl verify -CAfile ca.pem cert.pem`.
+4. If you configure {{% tts %}} without TLS and attempt to connect using `https` you will receive this error. Configure TLS or use `http`.
 
 ## Can't access the server
 
 Ensure you have a DNS record pointing to your server's public IP address. See your domain registrar's help section for instructions, or [name.com's DNS guide](https://www.name.com/support/articles/205188538-Pointing-your-domain-to-hosting-with-A-records) for general information about pointing records to your IP address.
 
 ## Forbidden
+
+If you see an error reading:
+
+> Invalid redirect URI
+
+Check that you entered the correct server address when [registering the Console as an OAuth client]({{< ref "getting-started/installation/running-the-stack#initialization" >}})
 
 If you see an error reading:
 

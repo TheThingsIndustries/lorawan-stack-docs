@@ -8,6 +8,12 @@ This guide shows an example of configuring {{% tts %}} using configuration files
 
 {{< note >}} If configuring {{% tts %}} as `localhost` on a machine with no public IP or DNS address, see the [`localhost`](#running-the-things-stack-as-localhost) section. {{</ note >}}
 
+In addition to the written instructions below, video instructions for installing {{% tts %}} are available on [The Things Network youtube channel](https://youtu.be/bMT9n1-6dCc).
+
+<details><summary>Show video</summary>
+{{< youtube "XgPSU4UkDuE" >}}
+</details>
+
 ## Configuration Files
 
 {{% tts %}} requires two configuration files when installing with Docker: `docker-compose.yml` and `ttn-lw-stack-docker.yml`. 
@@ -201,6 +207,12 @@ by the console client. These tell {{% tts %}} where all its components are acces
 ## Running The Things Stack as `localhost`
 
 Follow this section if you are configuring and running {{% tts %}} on a local machine with no public IP or DNS address.
+
+In addition to the written instructions below, video instructions for installing on `localhost` are available on [The Things Network youtube channel](https://youtu.be/bMT9n1-6dCc).
+
+<details><summary>Show video</summary>
+{{< youtube "Owm5IUtQTx8" >}}
+</details>
 
 `localhost` has a different meaning on your machine than inside the Docker container where {{% tts %}} runs, which can cause problems if you use `localhost` in your configuration.
 
