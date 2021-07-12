@@ -43,6 +43,8 @@ In this template we use an autoscaling group. Updates to `LaunchConfiguration` d
 
 Templates `5-x` create ECS services, and they use Docker images. For this reason, when updating `5-x` stacks, do not forget to change used Docker images to newer ones. Since `5-x` stacks have images as parameters, do not forget to update them, even if they are not mentioned in `UPGRADING.md`.
 
+Please go through [Release Notes](https://www.thethingsindustries.com/docs/whats-new/) to get familiar with changes between the versions you're updating from and to, including changes introduced in the in-between releases.
+
 ## Migrations
 
 When updating {{% tts %}} to a newer version, the [Release Notes](https://www.thethingsindustries.com/docs/whats-new/) might mention that a migration is needed. When updating an ECS-deployed {{% tts %}}, the right moment to perform these migrations is right after updating `5-2-ecs-ops` stack. You might need to perform these migrations:
