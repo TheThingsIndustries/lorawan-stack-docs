@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Prerequisites | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/prerequisites/" />
+  <title>Server Addresses | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/server-addresses/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.25b30cdd256bfe2021b3a162f05871509954bca5cc3a6e85d1f515ea9ed6aa0f.css" integrity="sha256-JbMM3SVr/iAhs6Fi8FhxUJlUvKXMOm6F0fUV6p7Wqg8=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Prerequisites">
+  <meta itemprop="name" content="Server Addresses">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Prerequisites">
+  <meta property="og:title" content="Server Addresses">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/prerequisites/">
-  <meta name="twitter:title" content="Prerequisites" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/server-addresses/">
+  <meta name="twitter:title" content="Server Addresses" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -109,76 +109,18 @@
     <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/" class="">Migrating to The Things Stack</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/server-addresses/" class="">Server Addresses</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/server-addresses/" class="is-active">Server Addresses</a>
+    
+
+
+
+    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/ttn/" class="">The Things Network</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/aws/" class="">The Things Stack AWS Launcher</a>
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ami/" class="">AWS Marketplace AMI</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/" class="">AWS ECS</a>
-    
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/architecture/" class="">Architecture</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/prerequisites/" class="is-active">Prerequisites</a>
-    
-    
-
-
-
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/deployment/" class="">Deployment</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/updating/" class="">Updating</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/database-operations/" class="">Database Operations</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/monitoring/" class="">Monitoring</a>
-    
-  </li>
-
-</ul>
-
-
-    
-  </li>
-
-</ul>
-
-
-    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/" class="">The Things Stack Cloud</a>
@@ -215,42 +157,58 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Prerequisites
+        <h1 class="title is-size-2">Server Addresses
           
         </h1>
         
         <div class="content">
-          <p>This page describes what you need for deploying The Things Stack on AWS ECS.</p>
-<p>Before you can start the deployment, you will need to make sure that you have:</p>
-<ul>
-<li>An AWS account with billing enabled.</li>
-<li>An SSH keypair registered in the AWS region of choice.</li>
-<li>A domain name with a hosted zone in AWS Route 53. For multi-tenant deployments, you need to be able to add a wildcard subdomain under this domain.</li>
-<li>A username and password for an SMTP server for sending emails, or a Sendgrid API key with &ldquo;Mail Send&rdquo; rights.</li>
-<li>A LoRa Alliance NetID and DevAddr block. For development and testing it is possible to use NetID <code>000000</code> and DevAddr block <code>00000000/6</code>.</li>
-<li>A license key for The Things Stack.</li>
-<li>Configuration and Certificates for Backend Interfaces interop (optional).</li>
-<li>Configuration and Certificates for Packet Broker peering (optional).</li>
-</ul>
-<p>You will need to come up with the following parameters, which will be used in multiple places:</p>
-<ul>
-<li>Network Name: the name of the network.<br>
-Example: The Things Industries uses <code>ttich</code> for their Cloud Hosted service.</li>
-<li>Environment: <code>prod</code> or <code>staging</code>.</li>
-<li>Cluster: the name of the cluster.<br>
-Example: The Things Industries uses continent+number for their Cloud Hosted service. <code>eu1</code> for Europe 1, <code>nam1</code> for North America 1, etc.</li>
-<li>Cluster Secret for internal communication.<br>
-This can be randomly generated with <code>openssl rand -hex 24</code>. When deploying a network with multiple clusters, this needs to be the same for all clusters.</li>
-<li>OAuth Client ID and Secret for the Console.<br>
-Example: The Things Industries uses client ID <code>console-</code> + cluster for their Cloud Hosted service. <code>console-eu1</code> for the Console of the Europe 1 cluster. The client secret can be randomly generated with <code>openssl rand -hex 24</code>.</li>
-<li>OAuth Client ID and Secret for Device Claiming.<br>
-Example: The Things Industries uses client ID <code>device-claiming-</code> + cluster for their Cloud Hosted service. <code>device-claiming-eu1</code> for the Console of the Europe 1 cluster. The client secret can be randomly generated with <code>openssl rand -hex 24</code>.</li>
-</ul>
+          <p>To access the <a href="https://www.thethingsindustries.com/docs/getting-started/console/">Console</a>, register a <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">command line client</a>, <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/">connect gateways</a>, or schedule uplinks via <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/">webhooks</a>, it is necessary to know the server address of your The Things Stack instance. This section contains information about addresses for different The Things Stack deployments.</p>
+<p>Deployments of The Things Stack in a single cluster use the same server address for all components.</p>
+<p>Distributed deployments, like The Things Stack Cloud and Community Edition, use different addresses per region for routing components, while the address of global components (like Identity Server) is always the same. Enterprise and Open Source deployments may be in a single cluster, or distributed over multiple clusters with multiple addresses.
+The server addresses for the different The Things Stack deployments are listed below.</p>
+<h2 id="deployments">Deployments</h2>
+<p><strong>Cloud and Dedicated Cloud</strong>: See <a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/addresses/">Cloud Addresses</a>.</p>
+<p><strong>AWS Launcher</strong>: This is the domain you specify in your <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ami/deployment-guide/#step-2-configure-the-deployment">CloudFormation configuration</a>.</p>
+<p><strong>Community Edition</strong>: See <a href="https://www.thethingsindustries.com/docs/getting-started/ttn/addresses/">Community Edition Addresses</a></p>
+<p><strong>Enterprise and Open Source</strong>: This is the domain you configure when installing The Things Stack. If you followed the <a href="https://www.thethingsindustries.com/docs/getting-started/">Getting Started guide</a>, this is what you use instead of <code>thethings.example.com</code>.</p>
+<h2 id="console">Console</h2>
+<p>To access the Console, simply enter the <a href="#deployments">server address of your deployment</a> in a browser.</p>
+<blockquote>
+<p><strong>Example 1</strong>: to access the <code>eu1</code> Community Edition Console, enter <code>https://eu1.cloud.thethings.network</code> in your browser.</p>
+</blockquote>
+<blockquote>
+<p><strong>Example 2</strong>: To access the <code>au1</code> Cloud Console, enter <code>https://tenant.au1.thethings.industries</code>, where <code>tenant</code> is your Tenant ID.</p>
+</blockquote>
+<blockquote>
+<p><strong>Example 3</strong>: If you installed The Things Stack Enterprise or Open Source, access the Console at the domain you used in place of <code>https://thethings.example.com</code>.</p>
+</blockquote>
+<h2 id="lns">LNS</h2>
+<p>The LNS gateway address is a combination of the <strong>protocol</strong> (wss), the <strong>server address</strong>, and the <strong>port</strong> (8887).</p>
+<blockquote>
+<p><strong>Example 1</strong>: the <code>eu1</code> Community Edition LNS address is <code>wss://eu1.cloud.thethings.network:8887</code>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Example 2</strong>: The LNS address for an <code>au1</code> Cloud tenant is <code>wss://tenant.au1.thethings.industries:8887</code>, where <code>tenant</code> should be replaced with your Tenant ID.</p>
+</blockquote>
+<blockquote>
+<p><strong>Example 3</strong>: If you installed The Things Stack Enterprise or Open Source, the LNS address is the domain you used in configuration, for example <code>wss://thethings.example.com:8887</code>.</p>
+</blockquote>
+<h2 id="cups">CUPS</h2>
+<p>The CUPS gateway address is a combination of the <strong>protocol</strong> (https), the <strong>server address</strong>, and the <strong>port</strong> (443).</p>
+<blockquote>
+<p><strong>Example 1</strong>: the <code>eu1</code> Community Edition CUPS address is <code>https://cloud.eu1.thethings.network:443</code>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Example 2</strong>: The CUPS address for an <code>au1</code> Cloud tenant is <code>https://tenant.au1.thethings.industries:443</code>, where <code>tenant</code> should be replaced with your Tenant ID.</p>
+</blockquote>
+<blockquote>
+<p><strong>Example 3</strong>: If you installed The Things Stack Enterprise or Open Source, the CUPS address is the domain you used in configuration, for example <code>https://thethings.example.com:443</code>.</p>
+</blockquote>
         </div>
         
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/getting-started/aws/ecs/architecture/">← Architecture</a>
-<a class="button is-pulled-right" href="/docs/getting-started/aws/ecs/deployment/">Deployment →</a>
+<a class="button is-pulled-left" href="/docs/getting-started/migrating/device-json/">← JSON File Reference</a>
+<a class="button is-pulled-right" href="/docs/getting-started/ttn/">The Things Network →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -267,6 +225,22 @@ Example: The Things Industries uses client ID <code>device-claiming-</code> + cl
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#deployments'>Deployments</a></li>
+    
+      
+      <li><a href='#console'>Console</a></li>
+    
+      
+      <li><a href='#lns'>LNS</a></li>
+    
+      
+      <li><a href='#cups'>CUPS</a></li>
+    
+  </ul>
 
 
   </nav>
@@ -304,14 +278,14 @@ Example: The Things Industries uses client ID <code>device-claiming-</code> + cl
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 20 Nov 2020.
+  Last changed by Ben Olayinka on 12 Jul 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/6c87bfba72ffae8f55b136e065a03ffcbbae942c">
-      doc: Improving readability of AWS doc
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b03897e07a682a8d7b5107bbb3ec431f8ac21fb4">
+      Add server addresses page (#435)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/aws/ecs/prerequisites/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/server-addresses/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
