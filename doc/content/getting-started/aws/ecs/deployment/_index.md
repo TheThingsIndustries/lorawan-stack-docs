@@ -54,9 +54,11 @@ The **SSH Key Name** is the name of the SSH keypair you created before (see [Pre
 
 ## Opsgenie Alarms (optional)
 
-The `1-3-opsgenie.py` will deploy an SNS Topic and a Subscription to receive AWS CloudWatch alarms and forward it to your Opsgenie server. An Opsgenie CloudWatch API Key is necessary. 
+The `1-3-opsgenie` template will deploy an SNS Topic and a Subscription to receive AWS CloudWatch alarms and forward it to your Opsgenie server. An Opsgenie CloudWatch API Key is necessary. 
 
 Once this is deployed, you can enable alerting that's configured for particular resources.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/1-3-opsgenie.gen.template (replace `3.x` with the current minor version).
 
 ## Aurora Database
 
@@ -166,7 +168,7 @@ The `4-2-configuration` template creates several configuration parameters in AWS
 As with the other templates, this one also asks for the re-used parameters from the [Prerequisites]({{< relref "../prerequisites" >}}). Next to these parameters, this template has some notable parameters:
 
 - **Domain** and **Identity Server Domain** are the `domain` from earlier. In multi-tenant deployments, tenants will use `[tenant-id].[domain]` to access the cluster.
-- The **Default Tenant ID** is the tenant ID of the only tenant in single-tenant deployments, or the optional default tenant ID in multi-tenant deployments.
+- The **Default Tenant ID** is the tenant ID of the only tenant in single-tenant deployments, or the optional default tenant ID in multi-tenant deployments. Please note that the stack does not automatically create the default tenant. See [Database Operations]({{< ref "/getting-started/aws/ecs/database-operations" >}}) for instructions how to do this manually.
 
 For the other parameters, see the descriptions and the [Configuration reference]({{< ref "/reference/configuration" >}}).
 
