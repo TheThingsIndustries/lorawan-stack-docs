@@ -288,9 +288,16 @@
 
  The Things Stack requires a license key for production use. For development purposes, it will work for a limited time on <code>localhost</code> without a license key.</p>
 <ul>
-<li><code>license.file</code>: Location of the license file</li>
-<li><code>license.key</code>: Contents of the license key</li>
+<li><code>license.key</code>: Contents of the license key. Must be a base64-encoded string.</li>
+<li><code>license.file</code>: Location of the license file. Must be a binary file containing the raw license bytes.</li>
 </ul>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <p>Given the license key in base64 format, you can create the license file like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s2">&#34;AzYFASd/Gcggs...&#34;</span> <span class="p">|</span> base64 --decode &gt; ttn-lw-stack-license.bin
+</code></pre></div>
+</div>
+
 <h2 id="key-vault">Key Vault</h2>
 <p>
 
@@ -1067,10 +1074,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 10 Jun 2021.
+  Last changed by Aggelos Kolaitis on 13 Jul 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/1088c5144c03928eb7d97c6105895e620eab3d79">
-      Move inline shortcodes to next line (#382)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5b4ada29934b617d4c2916ec04ae75818db27429">
+      doc: Clarify license key format (#451)
     </a>
 </p>
 
