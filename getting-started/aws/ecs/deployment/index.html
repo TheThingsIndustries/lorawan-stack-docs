@@ -258,8 +258,9 @@
 <p>In addition to the re-used parameters (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>), this template asks for the <strong>Instance Type</strong> you want to use. A small instance is typically fine, since it will only be used to provide access.</p>
 <p>The <strong>SSH Key Name</strong> is the name of the SSH keypair you created before (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>). The IPv4 and IPv6 ranges can be used to configure the Security Group rules that allow external access to this instance.</p>
 <h2 id="opsgenie-alarms-optional">Opsgenie Alarms (optional)</h2>
-<p>The <code>1-3-opsgenie.py</code> will deploy an SNS Topic and a Subscription to receive AWS CloudWatch alarms and forward it to your Opsgenie server. An Opsgenie CloudWatch API Key is necessary.</p>
+<p>The <code>1-3-opsgenie</code> template will deploy an SNS Topic and a Subscription to receive AWS CloudWatch alarms and forward it to your Opsgenie server. An Opsgenie CloudWatch API Key is necessary.</p>
 <p>Once this is deployed, you can enable alerting that&rsquo;s configured for particular resources.</p>
+<p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/1-3-opsgenie.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/1-3-opsgenie.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <h2 id="aurora-database">Aurora Database</h2>
 <p>The <code>2-1-db-aurora-master</code> and <code>2-2-db-aurora-replica</code> templates together create a highly available RDS Aurora PostgreSQL cluster. The template <code>2-1-db-aurora-master</code> creates a database cluster with a single master instance. The template <code>2-2-db-aurora-replica</code> can be deployed multiple times to deploy additional read-only replicas. See the <a href="/docs/getting-started/aws/ecs/architecture/">Architecture</a> section for more information.</p>
 <p><strong>Master Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/2-1-db-aurora-master.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/2-1-db-aurora-master.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
@@ -322,7 +323,7 @@ $ aws s3 cp config.yml s3://<span class="si">${</span><span class="nv">InteropCo
 <p>As with the other templates, this one also asks for the re-used parameters from the <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>. Next to these parameters, this template has some notable parameters:</p>
 <ul>
 <li><strong>Domain</strong> and <strong>Identity Server Domain</strong> are the <code>domain</code> from earlier. In multi-tenant deployments, tenants will use <code>[tenant-id].[domain]</code> to access the cluster.</li>
-<li>The <strong>Default Tenant ID</strong> is the tenant ID of the only tenant in single-tenant deployments, or the optional default tenant ID in multi-tenant deployments.</li>
+<li>The <strong>Default Tenant ID</strong> is the tenant ID of the only tenant in single-tenant deployments, or the optional default tenant ID in multi-tenant deployments. Please note that the stack does not automatically create the default tenant. See <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/database-operations/">Database Operations</a> for instructions how to do this manually.</li>
 </ul>
 <p>For the other parameters, see the descriptions and the <a href="https://www.thethingsindustries.com/docs/reference/configuration/">Configuration reference</a>.</p>
 <h2 id="ecs-cluster">ECS Cluster</h2>
@@ -558,10 +559,10 @@ $ aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --re
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 10 Jun 2021.
+  Last changed by Michał Borkowski on 13 Jul 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/1088c5144c03928eb7d97c6105895e620eab3d79">
-      Move inline shortcodes to next line (#382)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/12f29ce0a14ae1e930346e958914525a1226efa9">
+      doc: Minor fixes (#446)
     </a>
 </p>
 
