@@ -24,7 +24,7 @@ Where `my-oidc-provider` is the ID that you have chosen for this OpenID Connect 
 After you have created the OAuth2 client you may register the provider using the `is-db` stack command:
 
 ```bash
-$ ttn-lw-stack is-db create-auth-provider
+$ tti-lw-stack is-db create-auth-provider
     --id my-oidc-provider
     --name "My OIDC Provider"
     --allow-registrations true
