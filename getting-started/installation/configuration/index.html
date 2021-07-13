@@ -192,6 +192,14 @@
   If configuring The Things Stack as <code>localhost</code> on a machine with no public IP or DNS address, see the <a href="#running-the-things-stack-as-localhost"><code>localhost</code></a> section.
 </div>
 
+<p>In addition to the written instructions below, video instructions for installing The Things Stack are available on <a href="https://youtu.be/bMT9n1-6dCc">The Things Network youtube channel</a>.</p>
+<details><summary>Show video</summary>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/XgPSU4UkDuE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+</details>
 <h2 id="configuration-files">Configuration Files</h2>
 <p>The Things Stack requires two configuration files when installing with Docker: <code>docker-compose.yml</code> and <code>ttn-lw-stack-docker.yml</code>.</p>
 <p>Example files for Enterprise and Open source are provided <a href="#example-configuration-files">below</a>.</p>
@@ -741,9 +749,9 @@ config/
 </span><span class="w">        </span><span class="k">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="w">      </span><span class="k">postgres</span><span class="p">:</span><span class="w">
 </span><span class="w">        </span><span class="c"># if using CockroachDB</span><span class="w">
-</span><span class="w">        </span><span class="k">database-uri</span><span class="p">:</span><span class="w"> </span>postgres<span class="p">:</span>//root@cockroach<span class="p">:</span><span class="m">26257</span>/ttn_lorawan_dev<span class="p">?</span>sslmode=disable<span class="w">
+</span><span class="w">        </span><span class="k">database-uri</span><span class="p">:</span><span class="w"> </span>postgres<span class="p">:</span>//root@cockroach<span class="p">:</span><span class="m">26257</span>/ttn_lorawan<span class="p">?</span>sslmode=disable<span class="w">
 </span><span class="w">        </span><span class="c"># if using PostgreSQL or TimescaleDB</span><span class="w">
-</span><span class="w">        </span><span class="c"># database-uri: postgres://root:root@postgres:5432/ttn_lorawan_dev?sslmode=disable</span><span class="w">
+</span><span class="w">        </span><span class="c"># database-uri: postgres://root:root@postgres:5432/ttn_lorawan?sslmode=disable</span><span class="w">
 </span><span class="w">        </span><span class="k">insert-batch-size</span><span class="p">:</span><span class="w"> </span><span class="m">1024</span><span class="w">     </span><span class="c"># batch size for INSERT operations</span><span class="w">
 </span><span class="w">        </span><span class="k">select-batch-size</span><span class="p">:</span><span class="w"> </span><span class="m">1024</span><span class="w">     </span><span class="c"># batch size for SELECT operations</span><span class="w">
 </span><span class="w">  </span><span class="k">mqtt</span><span class="p">:</span><span class="w">
@@ -869,6 +877,14 @@ by the console client. These tell The Things Stack where all its components are 
  If running a multi-tenant environment, we need to configure the default tenant ID, and the base domain from which tenant IDs are inferred. See the <a href="https://www.thethingsindustries.com/docs/reference/configuration/the-things-stack/#multi-tenancy"><code>tenancy</code> configuration reference</a>.</p>
 <h2 id="running-the-things-stack-as-localhost">Running The Things Stack as <code>localhost</code></h2>
 <p>Follow this section if you are configuring and running The Things Stack on a local machine with no public IP or DNS address.</p>
+<p>In addition to the written instructions below, video instructions for installing on <code>localhost</code> are available on <a href="https://youtu.be/bMT9n1-6dCc">The Things Network youtube channel</a>.</p>
+<details><summary>Show video</summary>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/Owm5IUtQTx8" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+</details>
 <p><code>localhost</code> has a different meaning on your machine than inside the Docker container where The Things Stack runs, which can cause problems if you use <code>localhost</code> in your configuration.</p>
 <p><code>localhost</code> addresses on your machine will resolve to your machine, while <code>localhost</code> inside the Docker container will resolve inside the Docker container. In <code>docker-compose.yml</code>, we forward requests on ports 80 and 443 to ports 1885 and 8885 inside the container, so visiting <code>localhost</code> (which is really <code>localhost:80</code>) on your machine actually takes you to <code>localhost:1885</code> within the container.</p>
 <p>If you configure your <code>is.oauth.ui.canonical-url</code> as <code>localhost</code>, this causes <strong>Token Exchange Refused</strong> errors when you try to log in to The Things Stack Console, because an authorization request generated from within the container will not be redirected to port 1885 or 8885, where The Things Stack is listening.</p>
@@ -986,10 +1002,10 @@ by the console client. These tell The Things Stack where all its components are 
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 10 Jun 2021.
+  Last changed by Ben Olayinka on 13 Jul 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/aea847e4a5b06db18fe91950625da9cc60eaf291">
-      Docs reorganization (#374)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/430ad02932a92fce19274ca58fa31485fecb2a83">
+      doc: Improve installation guide (#448)
     </a>
 </p>
 
