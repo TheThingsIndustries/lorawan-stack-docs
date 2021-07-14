@@ -115,3 +115,26 @@ There are three possible button actions on the TTIG that are listed below.
   * Reboot if in CONF mode, do nothing in GW mode
 * RESET button pressed for 5s:
   * Factory reset (wipes out WiFi and LNS credentials, retains CUPS credentials)
+
+### Serial logging
+
+It is possible to read debug messages of the gateway but it requires opening its casing.
+
+{{< warning >}} Opening the casing may damage the gateway and/or void your warranty. {{</ warning >}}
+
+The casing needs to be first opened by unscrewing two screws found below the top and the bottom panel. Then, connect a 3.3V UART-USB Interface such as an FTDI to your computer. Connect the Rx (FTDI) to the Tx of the Gateway and ground pins.
+
+Use a serial terminal (Ex: `PUTTY` on Windows and `screen`/`minicom` on macOS/Linux) with a baudrate of 115200@8N to read the serial out. The connections are shown in the image below.
+
+{{< figure src="TTIG_Serial.jpg" alt="{{% ttig %}} Serial" >}}
+
+### Operating behind a firewall
+
+The following connections must be permitted in the firewall.
+
+| IP Version | Protocol | Destination| Port | Description |
+| --- | --- | ---| ---| --- |
+| IPv4 | TCP | \<cluster\>.cloud.thethings.network | 443 | CUPS |
+| IPv4 | TCP |\<cluster\>.cloud.thethings.network | 8887 | LNS |
+| IPv4 | TCP | rjs.sm.tc | 9191 | Root CUPS |
+| IPv4 | UDP | your DNS server(s) | 53 | DNS |
