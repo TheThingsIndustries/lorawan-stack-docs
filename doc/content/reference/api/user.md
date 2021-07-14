@@ -47,6 +47,8 @@ description: ""
 
 {{< proto/message message="CreateUserAPIKeyRequest" >}}
 
+{{< proto/message message="ContactInfo" >}}
+
 {{< proto/message message="CreateUserRequest" >}}
 
 {{< proto/message message="DeleteInvitationRequest" >}}
@@ -88,6 +90,12 @@ description: ""
 {{< proto/message message="Users" >}}
 
 ## Enums
+
+{{< proto/enum enum="ContactType" >}}
+
+{{< proto/enum enum="ContactMethod" >}}
+
+{{< proto/enum enum="Right" >}}
 
 {{< proto/enum enum="State" >}}
 

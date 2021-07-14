@@ -41,11 +41,21 @@ description: ""
 
 {{< proto/message message="FSKDataRate" >}}
 
+{{< proto/message message="GatewayIdentifiers" >}}
+
+{{< proto/message message="GatewayAntennaIdentifiers" >}}
+
 {{< proto/message message="KeyEnvelope" >}}
 
 {{< proto/message message="LoRaDataRate" >}}
 
 {{< proto/message message="Location" >}}
+
+{{< proto/message message="PacketBrokerMetadata" >}}
+
+{{< proto/message message="PacketBrokerRouteHop" >}}
+
+{{< proto/message message="RxMetadata" >}}
 
 {{< proto/message message="LRFHSSDataRate" >}}
 
@@ -58,6 +68,8 @@ description: ""
 ## Enums
 
 {{< proto/enum enum="DataRateIndex" >}}
+
+{{< proto/enum enum="DownlinkPathConstraint" >}}
 
 {{< proto/enum enum="LocationSource" >}}
 

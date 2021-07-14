@@ -122,7 +122,37 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 ## Messages
 
+{{< proto/message message="ApplicationIdentifiers" >}}
+
+{{< proto/message message="ApplicationDownlink" >}}
+
+{{< proto/message message="ApplicationDownlink.ClassBC" >}}
+
+{{< proto/message message="ADRAckLimitExponentValue" >}}
+
+{{< proto/message message="ADRAckDelayExponentValue" >}}
+
+{{< proto/message message="AggregatedDutyCycleValue" >}}
+
+{{< proto/message message="BoolValue" >}}
+
 {{< proto/message message="CreateEndDeviceRequest" >}}
+
+{{< proto/message message="CFList" >}}
+
+{{< proto/message message="DataRate" >}}
+
+{{< proto/message message="DataRateIndexValue" >}}
+
+{{< proto/message message="DataRateOffsetValue" >}}
+
+{{< proto/message message="DeviceEIRPValue" >}}
+
+{{< proto/message message="DLSettings" >}}
+
+{{< proto/message message="DownlinkMessage" >}}
+
+{{< proto/message message="DownlinkPath" >}}
 
 {{< proto/message message="EndDevice" >}}
 
@@ -134,21 +164,135 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="EndDeviceVersionIdentifiers" >}}
 
+{{< proto/message message="FrequencyValue" >}}
+
+{{< proto/message message="FHDR" >}}
+
+{{< proto/message message="FCtrl" >}}
+
+{{< proto/message message="FSKDataRate" >}}
+
+{{< proto/message message="GatewayClaimAuthenticationCode" >}}
+
+{{< proto/message message="GatewayIdentifiers" >}}
+
+{{< proto/message message="GatewayAntennaIdentifiers" >}}
+
 {{< proto/message message="GetEndDeviceRequest" >}}
+
+{{< proto/message message="JoinRequestPayload" >}}
+
+{{< proto/message message="JoinAcceptPayload" >}}
 
 {{< proto/message message="KeyEnvelope" >}}
 
 {{< proto/message message="ListEndDevicesRequest" >}}
 
+{{< proto/message message="Location" >}}
+
+{{< proto/message message="LoRaDataRate" >}}
+
+{{< proto/message message="MACCommand" >}}
+
+{{< proto/message message="MACCommand.ResetInd" >}}
+
+{{< proto/message message="MACCommand.ResetConf" >}}
+
+{{< proto/message message="MACCommand.LinkCheckAns" >}}
+
+{{< proto/message message="MACCommand.LinkADRReq" >}}
+
+{{< proto/message message="MACCommand.LinkADRAns" >}}
+
+{{< proto/message message="MACCommand.DutyCycleReq" >}}
+
+{{< proto/message message="MACCommand.RxParamSetupReq" >}}
+
+{{< proto/message message="MACCommand.RxParamSetupAns" >}}
+
+{{< proto/message message="MACCommand.DevStatusAns" >}}
+
+{{< proto/message message="MACCommand.NewChannelReq" >}}
+
+{{< proto/message message="MACCommand.NewChannelAns" >}}
+
+{{< proto/message message="MACCommand.DLChannelReq" >}}
+
+{{< proto/message message="MACCommand.DLChannelAns" >}}
+
+{{< proto/message message="MACCommand.RxTimingSetupReq" >}}
+
+{{< proto/message message="MACCommand.TxParamSetupReq" >}}
+
+{{< proto/message message="MACCommand.RekeyInd" >}}
+
+{{< proto/message message="MACCommand.RekeyConf" >}}
+
+{{< proto/message message="MACCommand.ADRParamSetupReq" >}}
+
+{{< proto/message message="MACCommand.DeviceTimeAns" >}}
+
+{{< proto/message message="MACCommand.ForceRejoinReq" >}}
+
+{{< proto/message message="MACCommand.RejoinParamSetupReq" >}}
+
+{{< proto/message message="MACCommand.RejoinParamSetupAns" >}}
+
+{{< proto/message message="MACCommand.PingSlotInfoReq" >}}
+
+{{< proto/message message="MACCommand.PingSlotChannelReq" >}}
+
+{{< proto/message message="MACCommand.PingSlotChannelAns" >}}
+
+{{< proto/message message="MACCommand.BeaconTimingAns" >}}
+
+{{< proto/message message="MACCommand.BeaconFreqReq" >}}
+
+{{< proto/message message="MACCommand.BeaconFreqAns" >}}
+
+{{< proto/message message="MACCommand.DeviceModeInd" >}}
+
+{{< proto/message message="MACCommand.DeviceModeConf" >}}
+
+{{< proto/message message="MACPayload" >}}
+
 {{< proto/message message="MACParameters" >}}
+
+{{< proto/message message="MACParameters.Channel" >}}
 
 {{< proto/message message="MACSettings" >}}
 
 {{< proto/message message="MACState" >}}
 
+{{< proto/message message="MACState.JoinAccept" >}}
+
+{{< proto/message message="MACState.JoinRequest" >}}
+
+{{< proto/message message="Message" >}}
+
+{{< proto/message message="MHDR" >}}
+
 {{< proto/message message="MessagePayloadFormatters" >}}
 
+{{< proto/message message="PacketBrokerMetadata" >}}
+
+{{< proto/message message="PacketBrokerRouteHop" >}}
+
+{{< proto/message message="Picture" >}}
+
+{{< proto/message message="Picture.Embedded" >}}
+
+{{< proto/message message="PingSlotPeriodValue" >}}
+
+{{< proto/message message="RejoinRequestPayload" >}}
+
 {{< proto/message message="RootKeys" >}}
+
+{{< proto/message message="RxDelayValue" >}}
+
+{{< proto/message message="RxMetadata" >}}
+
+{{< proto/message message="Secret" >}}
 
 {{< proto/message message="Session" >}}
 
@@ -156,49 +300,15 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="SetEndDeviceRequest" >}}
 
+{{< proto/message message="TxRequest" >}}
+
+{{< proto/message message="TxSettings" >}}
+
+{{< proto/message message="TxSettings.Downlink" >}}
+
 {{< proto/message message="UpdateEndDeviceRequest" >}}
 
-{{< proto/message message="ApplicationIdentifiers" >}}
-
-{{< proto/message message="GatewayClaimAuthenticationCode" >}}
-
-{{< proto/message message="Picture" >}}
-
-{{< proto/message message="Picture.Embedded" >}}
-
-{{< proto/message message="Secret" >}}
-
-{{< proto/message message="BoolValue" >}}
-
-{{< proto/message message="ADRAckLimitExponentValue" >}}
-
-{{< proto/message message="ADRAckDelayExponentValue" >}}
-
-{{< proto/message message="DataRateIndexValue" >}}
-
-{{< proto/message message="PingSlotPeriodValue" >}}
-
-{{< proto/message message="FrequencyValue" >}}
-
-{{< proto/message message="RxDelayValue" >}}
-
-{{< proto/message message="DataRateOffsetValue" >}}
-
-{{< proto/message message="AggregatedDutyCycleValue" >}}
-
-{{< proto/message message="DeviceEIRPValue" >}}
-
-{{< proto/message message="ApplicationDownlink" >}}
-
-{{< proto/message message="MACState.JoinAccept" >}}
-
-{{< proto/message message="MACState.JoinRequest" >}}
-
-{{< proto/message message="ApplicationDownlink.ClassBC" >}}
-
-{{< proto/message message="DLSettings" >}}
-
-{{< proto/message message="CFList" >}}
+{{< proto/message message="UplinkMessage" >}}
 
 ## Enums
 
@@ -218,7 +328,19 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/enum enum="DeviceEIRP" >}}
 
+{{< proto/enum enum="DownlinkPathConstraint" >}}
+
+{{< proto/enum enum="LocationSource" >}}
+
 {{< proto/enum enum="MACVersion" >}}
+
+{{< proto/enum enum="MACCommandIdentifier" >}}
+
+{{< proto/enum enum="Major" >}}
+
+{{< proto/enum enum="MType" >}}
+
+{{< proto/enum enum="Minor" >}}
 
 {{< proto/enum enum="PayloadFormatter" >}}
 
@@ -233,6 +355,10 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 {{< proto/enum enum="RejoinTimeExponent" >}}
 
 {{< proto/enum enum="RejoinCountExponent" >}}
+
+{{< proto/enum enum="RejoinRequestType" >}}
+
+{{< proto/enum enum="RejoinPeriodExponent" >}}
 
 {{< proto/enum enum="TxSchedulePriority" >}}
 
