@@ -383,6 +383,63 @@
 </ul>
 </li>
 </ul>
+<h3 id="serial-logging">Serial logging</h3>
+<p>It is possible to read debug messages of the gateway but it requires opening its casing.</p>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  Opening the casing may damage the gateway and/or void your warranty.
+</div>
+
+<p>The casing needs to be first opened by unscrewing two screws found below the top and the bottom panel. Then, connect a 3.3V UART-USB Interface such as an FTDI to your computer. Connect the Rx (FTDI) to the Tx of the Gateway and ground pins.</p>
+<p>Use a serial terminal (Ex: <code>PUTTY</code> on Windows and <code>screen</code>/<code>minicom</code> on macOS/Linux) with a baudrate of 115200@8N to read the serial out. The connections are shown in the image below.</p>
+<figure>
+    <img src="TTIG_Serial.jpg"
+         alt="{{% ttig %}} Serial"/> 
+</figure>
+
+<h3 id="operating-behind-a-firewall">Operating behind a firewall</h3>
+<p>The following connections must be permitted in the firewall.</p>
+<table>
+<thead>
+<tr>
+<th>IP Version</th>
+<th>Protocol</th>
+<th>Destination</th>
+<th>Port</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>IPv4</td>
+<td>TCP</td>
+<td>&lt;cluster&gt;.cloud.thethings.network</td>
+<td>443</td>
+<td>CUPS</td>
+</tr>
+<tr>
+<td>IPv4</td>
+<td>TCP</td>
+<td>&lt;cluster&gt;.cloud.thethings.network</td>
+<td>8887</td>
+<td>LNS</td>
+</tr>
+<tr>
+<td>IPv4</td>
+<td>TCP</td>
+<td>rjs.sm.tc</td>
+<td>9191</td>
+<td>Root CUPS</td>
+</tr>
+<tr>
+<td>IPv4</td>
+<td>UDP</td>
+<td>your DNS server(s)</td>
+<td>53</td>
+<td>DNS</td>
+</tr>
+</tbody>
+</table>
         </div>
         
           <div class="is-clearfix">
@@ -457,10 +514,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer Easwaran on 07 Jul 2021.
+  Last changed by Krishna Iyer Easwaran on 14 Jul 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/c5ec7e1063f237a64bb14f0bdf5c868cdab56e98">
-      doc: Remove remark on iot-shop.de (#438)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/aa2666b74199b89adb1eb2e696c50676b0806c2a">
+      doc: Update TTIG info (#459)
     </a>
 </p>
 
