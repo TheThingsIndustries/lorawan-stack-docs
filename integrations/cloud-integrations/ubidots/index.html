@@ -164,15 +164,6 @@
     
 
 
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ubidots/lora-edge-geolocation/" class="">Visualize LoRa Edge™ Geolocation Data on Ubidots</a>
-    
-  </li>
-
-</ul>
-
 
     
   </li>
@@ -234,118 +225,155 @@
         
         <div class="content">
           <p><a href="https://ubidots.com/">Ubidots</a> provides a secure and easy way to build IoT solutions for students, makers and researchers. It is used for sending data from any Internet-enabled device to the cloud, triggering actions and alerts based on that data, and visualizing it.</p>
-<div class="notification is-warning is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  In this guide, we use the <a href="https://help.ubidots.com/en/articles/2132086-analytics-ubifunctions-user-guide">UbiFunctions</a> module, which is currently not available for the STEM plan.
-</div>
-
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
-<li>A Ubidots user account with an upgraded plan.</li>
+<li>A Ubidots user account.</li>
 </ol>
 <h2 id="setup-ubidots">Setup Ubidots</h2>
-<p>Log in to your Ubidots account and find the <strong>Devices</strong> tab in the upper part of your dashboard. In its drop-down list, choose <strong>Functions</strong>.</p>
-<p>When redirected to the <strong>UbiFunctions</strong> page, create a new function with the <strong>Create Function</strong> button.</p>
-<p>On the left, give a <strong>Name</strong> to your function, select the <strong>POST</strong> method and choose <strong>Python 3.6</strong> for <strong>Runtime</strong>.</p>
-<p>In this example, we will use the following Python function, which receives a JSON payload from The Things Stack, extracts the <code>decoded_payload</code>, and posts received data to Ubidots.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  To find your <strong>Token</strong>, click on your avatar in the upper right corner and select <strong>API Credentials</strong>. Be sure to use your <strong>Token</strong> and not your <strong>API Key</strong>.
-</div>
-
-<pre><code>import requests
-import json
-import time
-
-BASE_URL = &quot;https://industrial.api.ubidots.com&quot;
-TOKEN = &quot;····&quot; # Enter a token here
-
-def main(args):
-    # Prining args from TTI
-    print(f'[INFO] Args from TTI:\n {args}')
-
-    # Parsing data
-    payload = parse_tti_data(args)
-    dev_label = tti_dev_eui(args)
-    print(f'[INFO] Parsed data:\n {payload}')
-    print(f'[INFO] TTI Dev_EUI data:\n {dev_label}')
-
-    # Posting to Ubidots
-    req = update_device(dev_label, payload, TOKEN)
-    print(f'[INFO] Request to Ubidots Status code: {req.status_code}')
-    print(f'[INFO] Request ti Ubidots JSON:\n {req.json()}')
-
-    return {
-        'status_code': req.status_code,
-        'response_json': req.json()
-    }
-
-
-def parse_tti_data(data):
-    return data['uplink_message']['decoded_payload']
-
-
-def tti_dev_eui(data):
-    return data['end_device_ids']['device_id']
-
-
-def update_device(device, payload, token):
-    &quot;&quot;&quot;
-    Updates device with payload
-    &quot;&quot;&quot;
-    url = &quot;{}/api/v1.6/devices/{}&quot;.format(BASE_URL, device)
-    headers = {&quot;X-Auth-Token&quot;: token, &quot;Content-Type&quot;: &quot;application/json&quot;}
-    req = create_request(url, headers, attempts=5, request_type=&quot;post&quot;, data=payload)
-    return req
-
-
-def create_request(url, headers, attempts, request_type, data=None):
-    &quot;&quot;&quot;
-    Function to make a request to the server
-    &quot;&quot;&quot;
-    request_func = getattr(requests, request_type)
-    kwargs = {&quot;url&quot;: url, &quot;headers&quot;: headers}
-    if request_type == &quot;post&quot; or request_type == &quot;patch&quot;:
-        kwargs[&quot;json&quot;] = data
-    try:
-        req = request_func(**kwargs)
-        status_code = req.status_code
-        time.sleep(1)
-        while status_code &gt;= 400 and attempts &lt; 5:
-            req = request_func(**kwargs)
-            status_code = req.status_code
-            attempts += 1
-            time.sleep(1)
-        return req
-    except Exception as e:
-        print(&quot;[ERROR] There was an error with the request, details:&quot;)
-        print(e)
-        return None
-</code></pre><p>After modifying the function code with your token, click the <strong>Make it live</strong> button.</p>
-<p>Your function will be assigned an <strong>HTTPS Endpoint URL</strong>. Copy this URL in order to use it later as a part of setup on The Things Stack.</p>
+<p>Log in to your Ubidots account and find the <strong>Devices</strong> tab in the upper part of your dashboard. In its drop-down list, choose <strong>Plugins</strong>.</p>
 <figure>
-    <img src="creating-function.png"
-         alt="Creating a UbiFunction"/> 
+    <img src="plugins.png"
+         alt="Ubidots Plugins"/> 
 </figure>
 
-<p>Your function is now ready to handle the conversion of the incoming messages from The Things Stack, from JSON format to the one that is compatible with Ubidots.</p>
-<h2 id="configure-the-things-stack">Configure The Things Stack</h2>
-<p>Next step is to create a Webhook integration on The Things Stack by using the <strong>Ubidots</strong> <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a>.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Besides implementing the Webhook integration, you also need to create an uplink payload formatter in order to decode the uplink payload and set fields in the <code>decoded_payload</code> object of the uplink message. This is necessary to allow the Ubidots function to interpret the payload coming from The Things Stack. See <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">Payload Formatters</a> for a detailed info.
-</div>
+<p>Click on the <strong>+</strong> or on the <strong>Create Data Plugin</strong> button to create a new plugin.</p>
+<p>When you are presented with available plugins, select <strong>The Things Stack</strong> plugin.</p>
+<figure>
+    <img src="tts-plugin.png"
+         alt="TTS plugin"/> 
+</figure>
 
-<p>First, fill in the <strong>Webhook ID</strong> field.</p>
-<p>Then enter your <strong>Ubidots username</strong> and provide your UbiFunction&rsquo;s name.</p>
+<p>You will see details about <strong>Inputs</strong>, <strong>Usage</strong>, etc. Move forward by clicking the <strong>&gt;</strong> button.</p>
+<p>Next, you need to provide the name for a <strong>Ubidots device type</strong> after which a new device type will be created and linked to this plugin. This device type will later allow you to make changes for all devices that receive data through this plugin.</p>
+<p>You also need to select a <strong>Ubidots token</strong>. You can use the <strong>Default token</strong>, but creating a new token specifically for this plugin is <strong>recommended</strong>.</p>
+<figure>
+    <img src="device-type.png"
+         alt="Creating a device type and selecting token"/> 
+</figure>
+
+<p>To create a new token, first click on your avatar in the upper right corner and select <strong>API Credentials</strong>. Then select <strong>More</strong> below the <strong>Default token</strong> and add a new token within the <strong>API Credentials page</strong>.</p>
+<figure>
+    <img src="tokens.png"
+         alt="Creating token"/> 
+</figure>
+
+<p>Select <strong>&gt;</strong> to continue and then hit the checkmark to finish.</p>
+<figure>
+    <img src="name-description.png"
+         alt="Finish with creating the plugin"/> 
+</figure>
+
+<p>After a few moments, your newly created plugin will show the status <strong>Running</strong>.</p>
+<figure>
+    <img src="running.png"
+         alt="Status: Running"/> 
+</figure>
+
+<p>To complete the integration with The Things Stack, you will need to provide the plugin ID and aforementioned token.</p>
+<p>To find the plugin ID, click on your newly created plugin and navigate to the <strong>Decoder</strong> tab on the left. The plugin ID is available as part of the <strong>HTTPs Endpoint URL</strong> (as highlighted on the image below).</p>
+<figure>
+    <img src="plugin-id.png"
+         alt="Plugin ID"/> 
+</figure>
+
+<h2 id="setup-payload-decoder">Setup Payload Decoder</h2>
+<p>To decode the payload that is being sent from your end device in uplink messages, in order to present it on the Ubidots dashboard, you have two quite simple options:</p>
+<ul>
+<li>to create an <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">uplink payload formatter</a> on The Things Stack (with a <a href="https://ubidots.com/docs/hw/#send-data-to-a-device">Ubidots-friendly</a> format)</li>
+<li>to edit the pre-loaded sample decoder on Ubidots in a way that it decodes the Base64-encoded raw payload received from The Things Stack in <code>uplink_message.frm_payload</code> field</li>
+</ul>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The name of the UbiFunction needs to be modified to use lowercase and dashes only. For example, if the UbiFunction is named <strong>Example Function</strong>, enter <code>example-function</code> in the <strong>UbiFunction name</strong> field as shown in the image below.
+  In this section, we show you an example of how to do the first option. The pre-loaded sample payload decoder on Ubidots contains comments which can help you decode your payload either way.
+</div>
+<p>If you are using an uplink payload formatter on The Things Stack to decode your payload, the decoded values will be contained in the <code>uplink_message.decoded_payload</code> field of your uplink message. See examples below.</p>
+<details><summary>Example JavaScript uplink payload formatter</summary>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">bytes</span> <span class="o">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">;</span>
+  <span class="kd">var</span> <span class="nx">temperature</span> <span class="o">=</span> <span class="nx">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">|</span> <span class="nx">bytes</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+  <span class="kd">var</span> <span class="nx">humidity</span> <span class="o">=</span> <span class="nx">bytes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">|</span> <span class="nx">bytes</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">temperature</span><span class="o">:</span> <span class="nx">temperature</span><span class="p">,</span>
+      <span class="nx">humidity</span><span class="o">:</span> <span class="nx">humidity</span>
+    <span class="p">},</span>
+    <span class="nx">warnings</span><span class="o">:</span> <span class="p">[],</span>
+    <span class="nx">errors</span><span class="o">:</span> <span class="p">[]</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div></details>
+<details><summary>Example `uplink_message` object containing decoded payload</summary>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+    <span class="nt">&#34;uplink_message&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;session_key_id&#34;</span><span class="p">:</span> <span class="s2">&#34;AXqFkTMicRIyXZ/Mvzl02w==&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+      <span class="nt">&#34;f_cnt&#34;</span><span class="p">:</span> <span class="mi">202</span><span class="p">,</span>
+      <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;ICw=&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;decoded_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;humidity&#34;</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span>
+        <span class="nt">&#34;temperature&#34;</span><span class="p">:</span> <span class="mi">32</span>
+      <span class="p">},</span>
+      <span class="nt">&#34;rx_metadata&#34;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&#34;gateway_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;gw1&#34;</span><span class="p">,</span>
+            <span class="nt">&#34;eui&#34;</span><span class="p">:</span> <span class="s2">&#34;B827EBFFFE8DB885&#34;</span>
+          <span class="p">},</span>
+          <span class="nt">&#34;time&#34;</span><span class="p">:</span> <span class="s2">&#34;2021-07-08T11:17:59.131695Z&#34;</span><span class="p">,</span>
+          <span class="nt">&#34;timestamp&#34;</span><span class="p">:</span> <span class="mi">3940207243</span><span class="p">,</span>
+          <span class="nt">&#34;rssi&#34;</span><span class="p">:</span> <span class="mi">-27</span><span class="p">,</span>
+          <span class="nt">&#34;channel_rssi&#34;</span><span class="p">:</span> <span class="mi">-27</span><span class="p">,</span>
+          <span class="nt">&#34;snr&#34;</span><span class="p">:</span> <span class="mf">9.2</span><span class="p">,</span>
+          <span class="nt">&#34;uplink_token&#34;</span><span class="p">:</span> <span class="s2">&#34;ChIKEAoEc2VlZBIIuCfr//6NuIUQi5Xr1g4aDAjmvZuHBhDNk4rVAyD43Zy11u6C&#34;</span><span class="p">,</span>
+          <span class="nt">&#34;channel_index&#34;</span><span class="p">:</span> <span class="mi">4</span>
+        <span class="p">}</span>
+      <span class="p">],</span>
+      <span class="nt">&#34;settings&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;data_rate&#34;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&#34;lora&#34;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&#34;bandwidth&#34;</span><span class="p">:</span> <span class="mi">125000</span><span class="p">,</span>
+            <span class="nt">&#34;spreading_factor&#34;</span><span class="p">:</span> <span class="mi">7</span>
+          <span class="p">}</span>
+        <span class="p">},</span>
+        <span class="nt">&#34;data_rate_index&#34;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="nt">&#34;coding_rate&#34;</span><span class="p">:</span> <span class="s2">&#34;4/5&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;frequency&#34;</span><span class="p">:</span> <span class="s2">&#34;867300000&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;timestamp&#34;</span><span class="p">:</span> <span class="mi">3940207243</span><span class="p">,</span>
+        <span class="nt">&#34;time&#34;</span><span class="p">:</span> <span class="s2">&#34;2021-07-08T11:17:59.131695Z&#34;</span>
+      <span class="p">},</span>
+      <span class="nt">&#34;received_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2021-07-08T11:17:58.984396504Z&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;consumed_airtime&#34;</span><span class="p">:</span> <span class="s2">&#34;0.046336s&#34;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></details>
+<p>To ensure that Ubidots checks the <code>decoded_payload</code> field for decoded values, and not <code>uplink_message.frm_payload</code>, you need to uncomment the following line in the <code>format_payload</code> function that is a part of the sample payload decoder on Ubidots:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">var</span> <span class="nx">decoded_payload</span> <span class="o">=</span> <span class="nx">args</span><span class="p">[</span><span class="s1">&#39;uplink_message&#39;</span><span class="p">][</span><span class="s1">&#39;decoded_payload&#39;</span><span class="p">];</span>
+</code></pre></div><p>and you need to comment (or remove) the following lines in the same function:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">let</span> <span class="nx">bytes</span> <span class="o">=</span>  <span class="nx">Buffer</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="s1">&#39;uplink_message&#39;</span><span class="p">][</span><span class="s1">&#39;frm_payload&#39;</span><span class="p">],</span> <span class="s1">&#39;base64&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">decoded_payload</span> <span class="o">=</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">bytes</span><span class="p">)[</span><span class="s1">&#39;data&#39;</span><span class="p">];</span>
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  You can find Ubidots&rsquo; pre-loaded sample payload decoder in your newly created plugin&rsquo;s menu, if you navigate to <strong>Decoder</strong> on the left and scroll down to the <strong>Decoding Function</strong> window. There you can edit it and finish with <strong>Save &amp; Make Live</strong>.
 </div>
 
 <figure>
-    <img src="ubidots-webhook-creation.png"
-         alt="Ubidots webhook"/> 
+    <img src="decoding-function.png"
+         alt="Ubidots decoder function"/> 
+</figure>
+
+<h2 id="configure-the-things-stack">Configure The Things Stack</h2>
+<p>When you have prepared the setup on Ubidots, it is the time to create a Webhook integration on The Things Stack by using the <strong>Ubidots</strong> <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a>.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Advanced users can also use <a href="https://help.ubidots.com/en/articles/2132086-analytics-ubifunctions-user-guide">UbiFunctions</a> module to complete this integration.
+</div>
+
+<p>On The Things Stack, navigate to <strong>Integrations → Webhooks</strong> and choose the <strong>Ubidots</strong> Webhook template.</p>
+<p>Name your integration by filling in the <strong>Webhook ID</strong>.</p>
+<p>Paste the <strong>Plugin ID</strong> and <strong>Ubidots token</strong> values from Ubidots.</p>
+<figure>
+    <img src="ubidots-integration.png"
+         alt="Ubidots webhook template"/> 
 </figure>
 
 <div class="notification is-info is-light has-text-dark">
@@ -353,35 +381,25 @@ def create_request(url, headers, attempts, request_type, data=None):
   To see the values of all parameters of the Ubidots integration, click on the integration after you created it with the Webhook template.
 </div>
 
-<p>Once you have created the integration, navigate to <strong>Devices</strong> tab in Ubidots dashboard and select <strong>Devices</strong>.</p>
-<p>You should see your device listed, as it is automatically added when an uplink is received. Click the device to see variables and their latest values.</p>
-        </div>
-        
-          <div class="columns is-multiline">
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ubidots/lora-edge-geolocation/">Visualize LoRa Edge™ Geolocation Data on Ubidots</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-             This guide shows you an example of using The Things Stack integrations to interact with LoRa Cloud™ Device &amp;amp; Application Services to acquire the position solution for the LoRa Edge™-based tracking device, and to send that position data to a map widget on Ubidots.
+<h2 id="monitor-your-data">Monitor Your Data</h2>
+<p>After you have completed the integration, navigate to <strong>Devices</strong> menu. You will see your end device appearing in the end devices list as soon as it sends an uplink message.</p>
+<figure>
+    <img src="devices.png"
+         alt="End devices list"/> 
+</figure>
 
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ubidots/lora-edge-geolocation/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<p>Select your device to enter its dashboard. Some variables are automatically loaded from uplink metadata, while some are loaded as a payload decoder result (like <strong>humidity</strong> and <strong>temperature</strong> in this example).</p>
+<figure>
+    <img src="dashboard.png"
+         alt="Device dashboard"/> 
+</figure>
 
+<p>You can further use Ubidots features to monitor, process or visualize your data.</p>
+        </div>
         
           <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/thingspeak/">← ThingSpeak</a>
-<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/ubidots/lora-edge-geolocation/">Visualize LoRa Edge™ Geolocation Data on Ubidots →</a>
+<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/uib/">UIB →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -408,7 +426,13 @@ def create_request(url, headers, attempts, request_type, data=None):
       <li><a href='#setup-ubidots'>Setup Ubidots</a></li>
     
       
+      <li><a href='#setup-payload-decoder'>Setup Payload Decoder</a></li>
+    
+      
       <li><a href='#configure-the-things-stack'>Configure The Things Stack</a></li>
+    
+      
+      <li><a href='#monitor-your-data'>Monitor Your Data</a></li>
     
   </ul>
 
@@ -448,10 +472,10 @@ def create_request(url, headers, attempts, request_type, data=None):
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 01 Mar 2021.
+  Last changed by Nejra Selimović on 14 Jul 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/8b8db812793525ad8423784706b1fd86aaab1a40">
-      doc: Fix cloud integrations
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/75f06fe4e087db0b6fbad73f0075518d8001a369">
+      doc: Update Ubidots integration to use Plugins (#429)
     </a>
 </p>
 
