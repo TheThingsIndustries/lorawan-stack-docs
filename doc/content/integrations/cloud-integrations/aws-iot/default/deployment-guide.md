@@ -25,6 +25,7 @@ Enter a name, like **AWS IoT integration**, and grant at least the following ind
 - Create devices in application
 - Edit device keys in application
 - Edit basic application settings
+- View and edit application packages and associations
 - Write downlink application traffic
 - Read application traffic (uplink and downlink)
 
