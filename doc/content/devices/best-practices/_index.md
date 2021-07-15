@@ -102,3 +102,13 @@ In the case of link loss, do the following:
 - Decrease data rate step by step, and try again
 - Reset to default channels, and try again
 - Send periodic join requests with backoff
+
+## Support force rejoin command or downlink
+
+The Force Rejoin Command (`ForceRejoinReq`) is part of the LoRaWAN specifications versions 1.1. When using the command, the device to asked to immediately transmit a Rejoin-Request. Force Rejoin Commands enable, among others, end devices to easily switch LoRaWAN networks by initiating a new session with a new Network Server provider.
+
+When using end devices running LoRaWAN version 1.0.x, the firmware of the end devices should allow the devices to transmit a Rejoin-Request after receiving a predefined downlink message.
+
+## LoRaWAN Certified
+
+Use devices which are LoRaWAN Certified to be ensured of proper implementation of the LoRaWAN standard. [Click here](https://lora-alliance.org/showcase/search/?_sfm_lorawan_certified_device=certified) to find an overview of certified LoRaWAN devices.
