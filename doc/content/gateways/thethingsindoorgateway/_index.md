@@ -16,7 +16,7 @@ This page guides you to connect {{% ttig %}} to {{% tts %}}.
 ## Prerequisites
 
 1. User account on {{% tts %}} with rights to create Gateways and API Keys.
-2. The gateway EUI. The EUI of the gateway is **not** the WiFi MAC address printed on the back of the gateway, but is derived from the first number that typically is of the form **58A0CBxxxxxx**, printed on the top of the sticker below the QR code. For example, if that number is **5BA0CB800BE7**, insert **FFFE** after the first 6 characters to make it a 16 character Gateway EUI (e.g. 5BA0CBFFFE800BE7).
+2. The gateway EUI. The EUI of the gateway is **not** the WiFi MAC address printed on the back of the gateway, but is derived from the first number that typically is of the form **58A0CBxxxxxx**, printed on the top of the sticker below the QR code. For example, if that number is **58A0CB800BE7**, insert **FFFE** after the first 6 characters to make it a 16 character Gateway EUI (e.g. 58A0CBFFFE800BE7).
 
 {{< note >}} The gateway EUI can later be found at the bottom in the WiFi setup screen. {{</ note >}}
 {{< figure src="TTIG_EUI.png" alt="{{% ttig %}} EUI" >}}
