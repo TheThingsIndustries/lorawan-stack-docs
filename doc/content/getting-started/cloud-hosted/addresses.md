@@ -108,3 +108,11 @@ credentials-id: '<span data-content="tenant-id"></span>'
 </pre>
 
 See the [CLI Getting Started Guide]({{< ref "/getting-started/cli" >}}) to learn how to get started with the CLI and working with configuration files.
+
+## IP Addresses
+
+{{% tts %}} Cloud runs on AWS. See the [AWS IP address range documentation](https://docs.aws.amazon.com/general/latest/gr/aws-ip-ranges.html) for IP addresses of Cloud clusters.
+
+{{< note >}}
+IP addresses of Cloud clusters are not static, and may change over time. We recommend whitelisting the DNS address of your Cloud cluster if possible.
+{{</ note >}}
