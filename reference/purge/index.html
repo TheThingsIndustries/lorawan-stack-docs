@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Device Claiming Server Options | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/configuration/device-claiming-server/" />
+  <title>Purging Entities | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/purge/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.25b30cdd256bfe2021b3a162f05871509954bca5cc3a6e85d1f515ea9ed6aa0f.css" integrity="sha256-JbMM3SVr/iAhs6Fi8FhxUJlUvKXMOm6F0fUV6p7Wqg8=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Device Claiming Server Options">
+  <meta itemprop="name" content="Purging Entities">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Device Claiming Server Options">
+  <meta property="og:title" content="Purging Entities">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/configuration/device-claiming-server/">
-  <meta name="twitter:title" content="Device Claiming Server Options" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/purge/">
+  <meta name="twitter:title" content="Purging Entities" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -110,75 +110,6 @@
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/reference/configuration/" class="">Configuration</a>
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/configuration/the-things-stack/" class="">General Options</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/configuration/tenant-billing-server/" class="">Tenant Billing Server Options</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/configuration/application-server/" class="">Application Server Options</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/configuration/cli/" class="">Command-Line Interface Options</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/configuration/console/" class="">Console Options</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/configuration/device-claiming-server/" class="is-active">Device Claiming Server Options</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/configuration/gateway-configuration-server/" class="">Gateway Configuration Server Options</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/configuration/gateway-server/" class="">Gateway Server Options</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/configuration/identity-server/" class="">Identity Server Options</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/configuration/join-server/" class="">Join Server Options</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/configuration/network-server/" class="">Network Server Options</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/configuration/packet-broker-agent/" class="">Packet Broker Agent Options</a>
-    
-  </li>
-
-</ul>
-
-
-    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/reference/data-formats/" class="">Data Formats</a>
@@ -217,7 +148,12 @@
     <a href="https://www.thethingsindustries.com/docs/reference/packet-broker/" class="">Packet Broker</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/purge/" class="">Purging Entities</a>
+    <a href="https://www.thethingsindustries.com/docs/reference/purge/" class="is-active">Purging Entities</a>
+    
+
+
+
+    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/reference/rate-limiting/" class="">Rate Limiting</a>
@@ -248,133 +184,33 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Device Claiming Server Options
+        <h1 class="title is-size-2">Purging Entities
           
         </h1>
         
         <div class="content">
-          <h2 id="device-claiming-server-mount">Device Claiming Server Mount</h2>
-<p>The Device Claiming Server can be served under any arbitrary path on your server</p>
+          <p>When entities are deleted, The Things Stack <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">retains some IDs</a> by default to prevent another user re-registering the ID and obtaining historical data.</p>
+<p>It is also possible for administrators to purge IDs so that they may be reused. This reference contains information about how to do this, and the implications of purging IDs.</p>
+<p>Only administrators may purge entities. Purging an entity has the following effects:</p>
 <ul>
-<li><code>dcs.mount</code>: Path on the server where the Device Claiming Server will be served</li>
+<li>Permanently deletes the entity</li>
+<li>Permanently deletes collaborator rights related to the entity (does not apply to users as they do not have collaborators)</li>
+<li>Permanently deletes API keys related to the entity (does not apply to OAuth clients as they do not have API keys)</li>
+<li><strong>Does not</strong> delete stored data in routing clusters (only in the Identity Server)</li>
+<li><strong>Does not</strong> delete stored events (hence these can be recovered by re-registering the ID)</li>
+<li><strong>Does not</strong> delete information stored in Packet Broker (applies to gateways)</li>
+<li><strong>Does not</strong> delete stored data in the storage integration (applies to applications)</li>
+<li><strong>Does not</strong> delete stored data in external integrations (applies to applications)</li>
+<li>Releases the ID of the entity for re-use, which may give other users access to historical data if they register an entity with the same ID</li>
 </ul>
-<h2 id="oauth-options">OAuth Options</h2>
-<p>The Device Claiming app uses the <a href="https://en.wikipedia.org/wiki/OAuth#OAuth_2.0_2">OAuth 2.0 authorization flow</a> to authorize actions in the backend. You can customize the authorization parameters if necessary:</p>
-<ul>
-<li><code>dcs.oauth.authorize-url</code>: The OAuth Authorize URL</li>
-<li><code>dcs.oauth.client-id</code>: The OAuth client ID</li>
-<li><code>dcs.oauth.client-secret</code>: The OAuth client secret</li>
-<li><code>dcs.oauth.token-url</code>: The OAuth Token Exchange URL</li>
-<li><code>dcs.oauth.logout-url</code>: The logout URL of the OAuth server used to perform client initiated logouts</li>
-</ul>
-<h2 id="frontend-setup">Frontend Setup</h2>
-<p>You can change various values that will be passed to the JavaScript logic and HTML Head tags of the Web UI:</p>
-<h3 id="component-configuration">Component Configuration</h3>
-<p>The Device Claiming Server needs to know how the individual The Things Stack components are configured, so it can execute API calls correctly. Likewise, disabled components will cause possible respective options and menus in the Device Claiming Server frontend to be disabled.</p>
-<ul>
-<li><code>dcs.ui.as.base-url</code>: Base URL to the HTTP API</li>
-<li><code>dcs.ui.as.enabled</code>: Enable Application Server related functionality in the Device Claiming Server</li>
-<li><code>dcs.ui.is.base-url</code>: Base URL to the HTTP API</li>
-<li><code>dcs.ui.is.enabled</code>: Enable Identity Server related functionality in the Device Claiming Server</li>
-<li><code>dcs.ui.js.base-url</code>: Base URL to the HTTP API</li>
-<li><code>dcs.ui.js.enabled</code>: Enable Join Server related functionality in the Device Claiming Server</li>
-<li><code>dcs.ui.dcs.base-url</code>: Base URL to the HTTP API</li>
-<li><code>dcs.ui.dcs.enabled</code>: Enable Device Claiming Server related functionality in the Device Claiming Server (must be <code>true</code> for the frontend to work)</li>
-<li><code>dcs.ui.ns.base-url</code>: Base URL to the HTTP API</li>
-<li><code>dcs.ui.ns.enabled</code>: Enable Network Server related functionality in the Device Claiming Server</li>
-</ul>
-<h3 id="file-includes">File Includes</h3>
-<p>You can control which CSS and JavaScript files are included into the rendered HTML of the Device Claiming Server. Note that these files must be present in the <code>/public</code> folder during runtime.</p>
-<ul>
-<li><code>dcs.ui.js-file</code>: The names of the JavaScript file</li>
-<li><code>dcs.ui.css-file</code>: The names of the CSS files</li>
-</ul>
-<h3 id="assets-and-custom-branding">Assets and Custom Branding</h3>
-<p>You can control the url of the assets folder that the Device Claiming Server frontend will use, e.g. if you plan on using a CDN to serve your assets. The branding base url will enable custom branding for logos, favicons and OpenGraph images. See the <a href="https://www.thethingsindustries.com/docs/reference/branding/">custom branding guide</a> for detailed descriptions on this subject.</p>
-<ul>
-<li><code>dcs.ui.assets-base-url</code>: The base URL to the page assets</li>
-<li><code>dcs.ui.branding-base-url</code>: The base URL to the branding assets</li>
-<li><code>dcs.ui.branding-cluster-id</code> 
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-  
-
-  
-
-<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud and Enterprise Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
-
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
-
-</a>
-
-
-: The cluster ID to show below the logo</li>
-<li><code>dcs.ui.branding-text</code> 
-
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-  
-
-  
-
-<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud and Enterprise Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
-
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
-
-</a>
-
-
-: The branding text to show below the logo</li>
-<li><code>dcs.ui.icon-prefix</code>: The prefix to put before the page icons (favicon.ico, touch-icon.png, og-image.png)</li>
-<li><code>dcs.ui.canonical-url</code>: The page canonical URL</li>
-<li><code>dcs.ui.descriptions</code>: The page description</li>
-<li><code>dcs.ui.language</code>: The page language</li>
-<li><code>dcs.ui.site-name</code>: The site name</li>
-<li><code>dcs.ui.sub-title</code>: The page sub-title</li>
-<li><code>dcs.ui.support-link</code>: The URI that the support button will point to</li>
-<li><code>dcs.ui.documentation-base-url</code>: The base URL for generating documentation links</li>
-<li><code>dcs.ui.theme-color</code>: The page theme color</li>
-<li><code>dcs.ui.title</code>: The page title</li>
-</ul>
-
         </div>
-        <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/reference/configuration/console/">← Console Options</a>
-<a class="button is-pulled-right" href="/docs/reference/configuration/gateway-configuration-server/">Gateway Configuration Server Options →</a>
+        
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/reference/packet-broker/configure/">← Configure</a>
+<a class="button is-pulled-right" href="/docs/reference/rate-limiting/">Rate Limiting →</a>
 </div>
 
-        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
 <script src="https://cdn.emojicom.io/embed/widget.js" async></script>
 
 <div class='feedback has-vertical-space'>
@@ -388,19 +224,6 @@
     <h2 class="title is-size-6">On this page</h2>
     
 
-
-  <ul class="menu-list">
-    
-      
-      <li><a href='#device-claiming-server-mount'>Device Claiming Server Mount</a></li>
-    
-      
-      <li><a href='#oauth-options'>OAuth Options</a></li>
-    
-      
-      <li><a href='#frontend-setup'>Frontend Setup</a></li>
-    
-  </ul>
 
 
   </nav>
@@ -438,14 +261,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 10 Jun 2021.
+  Last changed by Ben Olayinka on 20 Jul 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/1088c5144c03928eb7d97c6105895e620eab3d79">
-      Move inline shortcodes to next line (#382)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/651e53ed886d41b02b63642fa8bfbd3b76b2d62a">
+      doc: Add purge reference (#474)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/reference/configuration/device-claiming-server.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/reference/purge/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
