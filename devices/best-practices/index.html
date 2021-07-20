@@ -159,6 +159,8 @@
           <p>This section contains best practices for building connected devices which use The Things Stack as a Network Server.</p>
 <p>LoRaWAN devices should always comply to the <a href="https://www.lora-alliance.org/lorawan-for-developers">LoRaWAN specification</a>.</p>
 <p>The goal of these best practices is to optimize individual devices (especially for power) and the network as a whole (to reliably and efficiently serve more devices with the same number of gateways).</p>
+<h2 id="lorawan-certified">LoRaWAN Certified</h2>
+<p>Use devices which are LoRaWAN Certified to be ensured of proper implementation of the LoRaWAN standard. <a href="https://lora-alliance.org/showcase/search/?_sfm_lorawan_certified_device=certified">Click here</a> to find an overview of certified LoRaWAN devices.</p>
 <h2 id="eliminate-unnecessary-join-requests">Eliminate Unnecessary Join Requests</h2>
 <p>The LoRaWAN specification warns specifically against systematic rejoin in case of network failure. A device should keep the result of an activation in permanent storage if the device is expected to be power-cycled during its lifetime.</p>
 <p>A device may temporarily lose connection with the network for many reasons: if the network server or gateways are suffering from an outage, if there’s no coverage in the area, etc. Whenever a device rejoins, it consumes the closest gateway’s airtime to emit the downlink - and if many devices in an area are rejoining at the same time (e.g. in case of a temporary gateway outage), this leads to network bloating in the area.</p>
@@ -208,6 +210,9 @@
 <li>Reset to default channels, and try again</li>
 <li>Send periodic join requests with backoff</li>
 </ul>
+<h2 id="support-force-rejoin-command-or-downlink">Support Force Rejoin Command or Downlink</h2>
+<p>The Force Rejoin Command (<code>ForceRejoinReq</code>) is part of the LoRaWAN specifications version 1.1. When using this command, the device immediately transmits a Rejoin Request message. Force Rejoin Commands enable end devices to, among other, easily switch LoRaWAN networks by initiating a new session with a new Network Server provider.</p>
+<p>When using end devices running LoRaWAN version 1.0.x, the firmware of the end devices should allow the devices to transmit a Rejoin Request message after receiving a predefined downlink message.</p>
         </div>
         
           <div class="is-clearfix">
@@ -231,6 +236,9 @@
 
 
   <ul class="menu-list">
+    
+      
+      <li><a href='#lorawan-certified'>LoRaWAN Certified</a></li>
     
       
       <li><a href='#eliminate-unnecessary-join-requests'>Eliminate Unnecessary Join Requests</a></li>
@@ -261,6 +269,9 @@
     
       
       <li><a href='#ack'>Ack</a></li>
+    
+      
+      <li><a href='#support-force-rejoin-command-or-downlink'>Support Force Rejoin Command or Downlink</a></li>
     
   </ul>
 
@@ -300,10 +311,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 10 Jun 2021.
+  Last changed by Laurens Slats on 20 Jul 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/aea847e4a5b06db18fe91950625da9cc60eaf291">
-      Docs reorganization (#374)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3f9a938bbb70457d5280aea089b83b852a5028f4">
+      doc: Additions to LoRaWAN Best Practices (#460)
     </a>
 </p>
 
