@@ -1,0 +1,32 @@
+name: MACState.JoinAccept
+fields:
+- name: payload
+  comment: Payload of the join-accept received from Join Server.
+  type: bytes
+  rules:
+    min_len: 17
+    max_len: 33
+  default: ""
+- name: request
+  message:
+    name: MACState.JoinRequest
+  default: {}
+- name: keys
+  comment: Network session keys associated with the join.
+  message:
+    name: SessionKeys
+  rules:
+    required: true
+  default: {}
+- name: correlation_ids
+  repeated:
+    type: string
+    rules:
+      max_len: 100
+  default: []
+- name: dev_addr
+  type: bytes
+  default: ""
+- name: net_id
+  type: bytes
+  default: ""

@@ -1,0 +1,32 @@
+name: ApplicationJoinAccept
+fields:
+- name: session_key_id
+  comment: Join Server issued identifier for the session keys negotiated in this join.
+  type: bytes
+  rules:
+    max_len: 2048
+  default: ""
+- name: app_s_key
+  comment: Encrypted Application Session Key (if Join Server sent it to Network Server).
+  message:
+    name: KeyEnvelope
+  default: {}
+- name: invalidated_downlinks
+  comment: Downlink messages in the queue that got invalidated because of the session
+    change.
+  repeated:
+    message:
+      name: ApplicationDownlink
+  default: []
+- name: pending_session
+  comment: |-
+    Indicates whether the security context refers to the pending session, i.e. when this join-accept is an answer to a
+    rejoin-request.
+  type: bool
+  default: false
+- name: received_at
+  comment: Server time when the Network Server received the message.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"

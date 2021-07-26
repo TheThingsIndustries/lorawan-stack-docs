@@ -1,0 +1,33 @@
+name: Location
+fields:
+- name: latitude
+  comment: The North–South position (degrees; -90 to +90), where 0 is the equator,
+    North pole is positive, South pole is negative.
+  type: double
+  rules:
+    lte: 90
+    gte: -90
+  default: 0
+- name: longitude
+  comment: The East-West position (degrees; -180 to +180), where 0 is the Prime Meridian
+    (Greenwich), East is positive , West is negative.
+  type: double
+  rules:
+    lte: 180
+    gte: -180
+  default: 0
+- name: altitude
+  comment: The altitude (meters), where 0 is the mean sea level.
+  type: int32
+  default: 0
+- name: accuracy
+  comment: The accuracy of the location (meters).
+  type: int32
+  default: 0
+- name: source
+  comment: Source of the location information.
+  enum:
+    name: LocationSource
+  rules:
+    defined_only: true
+  default: SOURCE_UNKNOWN

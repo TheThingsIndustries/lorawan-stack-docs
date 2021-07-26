@@ -1,0 +1,52 @@
+name: TxSettings
+comment: |-
+  TxSettings contains the settings for a transmission.
+  This message is used on both uplink and downlink.
+  On downlink, this is a scheduled transmission.
+fields:
+- name: data_rate
+  comment: Data rate.
+  message:
+    name: DataRate
+  rules:
+    required: true
+  default: {}
+- name: data_rate_index
+  comment: LoRaWAN data rate index.
+  enum:
+    name: DataRateIndex
+  rules:
+    defined_only: true
+  default: DATA_RATE_0
+- name: coding_rate
+  comment: LoRa coding rate.
+  type: string
+  default: ""
+- name: frequency
+  comment: Frequency (Hz).
+  type: uint64
+  default: 0
+- name: enable_crc
+  comment: Send a CRC in the packet; only on uplink; on downlink, CRC should not be
+    enabled.
+  type: bool
+  default: false
+- name: timestamp
+  comment: |-
+    Timestamp of the gateway concentrator when the uplink message was received, or when the downlink message should be transmitted (microseconds).
+    On downlink, set timestamp to 0 and time to null to use immediate scheduling.
+  type: uint32
+  default: 0
+- name: time
+  comment: |-
+    Time of the gateway when the uplink message was received, or when the downlink message should be transmitted.
+    For downlink, this requires the gateway to have GPS time synchronization.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: downlink
+  comment: Transmission settings for downlink.
+  message:
+    name: TxSettings.Downlink
+  default: {}

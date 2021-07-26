@@ -1,0 +1,23 @@
+name: TxAcknowledgment
+fields:
+- name: correlation_ids
+  comment: |-
+    Correlation IDs for the downlink message.
+    Set automatically by the UDP and LBS frontends.
+    For gRPC and the MQTT v3 frontends, the correlation IDs must match the ones of the downlink message the Tx acknowledgment message refers to.
+  repeated:
+    type: string
+    rules:
+      max_len: 100
+  default: []
+- name: result
+  enum:
+    name: TxAcknowledgment.Result
+  rules:
+    defined_only: true
+  default: SUCCESS
+- name: downlink_message
+  comment: The acknowledged downlink message. Set by the Gateway Server.
+  message:
+    name: DownlinkMessage
+  default: {}

@@ -1,0 +1,20 @@
+name: GatewayUp
+comment: GatewayUp may contain zero or more uplink messages and/or a status message
+  for the gateway.
+fields:
+- name: uplink_messages
+  comment: Uplink messages received by the gateway.
+  repeated:
+    message:
+      name: UplinkMessage
+  default: []
+- name: gateway_status
+  comment: Gateway status produced by the gateway.
+  message:
+    name: GatewayStatus
+  default: {}
+- name: tx_acknowledgment
+  comment: A Tx acknowledgment or error.
+  message:
+    name: TxAcknowledgment
+  default: {}

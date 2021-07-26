@@ -1,0 +1,23 @@
+name: EndDeviceModel.FirmwareVersion
+fields:
+- name: version
+  comment: Firmware version string.
+  type: string
+  default: ""
+- name: numeric
+  comment: Numeric firmware revision number.
+  type: uint32
+  default: 0
+- name: supported_hardware_versions
+  comment: Hardware versions supported by this firmware version.
+  repeated:
+    type: string
+  default: []
+- name: profiles
+  comment: Device profiles for each supported region (band).
+  map_key:
+    type: string
+  map_value:
+    message:
+      name: EndDeviceModel.FirmwareVersion.Profile
+  default: {}

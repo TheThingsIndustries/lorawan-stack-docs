@@ -1,0 +1,14 @@
+name: AzureIoTHubService
+comment: The Azure IoT Hub service can be used to submit Azure IoT Hub device twin
+  and lifecycle events.
+methods:
+  Submit:
+    name: Submit
+    input:
+      name: AzureIoTHubEvents
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: POST
+      path: /as/applications/{application_ids.application_id}/packages/azureiothub/events

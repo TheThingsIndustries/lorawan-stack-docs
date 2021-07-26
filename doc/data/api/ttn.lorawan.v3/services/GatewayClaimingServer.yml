@@ -1,0 +1,35 @@
+name: GatewayClaimingServer
+methods:
+  Claim:
+    name: Claim
+    comment: Claims a gateway by claim authentication code or QR code and transfers
+      the gateway to the target user.
+    input:
+      name: ClaimGatewayRequest
+    output:
+      name: GatewayIdentifiers
+    http:
+    - method: POST
+      path: /gcls/claim
+  AuthorizeGateway:
+    name: AuthorizeGateway
+    comment: AuthorizeGateway allows a gateway to be claimed.
+    input:
+      name: AuthorizeGatewayRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: POST
+      path: /gcls/gateways/{gateway_ids.gateway_id}/authorize
+  UnauthorizeGateway:
+    name: UnauthorizeGateway
+    comment: UnauthorizeGateway prevents a gateway from being claimed.
+    input:
+      name: GatewayIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /gcls/gateways/{gateway_id}/authorize

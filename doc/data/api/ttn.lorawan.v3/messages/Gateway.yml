@@ -1,0 +1,196 @@
+name: Gateway
+comment: Gateway is the message that defines a gateway on the network.
+fields:
+- name: ids
+  message:
+    name: GatewayIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: created_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: updated_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: deleted_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: name
+  type: string
+  rules:
+    max_len: 50
+  default: ""
+- name: description
+  type: string
+  rules:
+    max_len: 2000
+  default: ""
+- name: attributes
+  comment: Key-value attributes for this gateway. Typically used for organizing gateways
+    or for storing integration-specific data.
+  rules:
+    max_pairs: 10
+  map_key:
+    type: string
+    rules:
+      max_len: 36
+      pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+  map_value:
+    type: string
+    rules:
+      max_len: 200
+  default: {}
+- name: contact_info
+  comment: Contact information for this gateway. Typically used to indicate who to
+    contact with technical/security questions about the gateway.
+  rules:
+    max_items: 10
+  repeated:
+    message:
+      name: ContactInfo
+  default: []
+- name: version_ids
+  message:
+    name: GatewayVersionIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: gateway_server_address
+  comment: |-
+    The address of the Gateway Server to connect to.
+    The typical format of the address is "host:port". If the port is omitted,
+    the normal port inference (with DNS lookup, otherwise defaults) is used.
+    The connection shall be established with transport layer security (TLS).
+    Custom certificate authorities may be configured out-of-band.
+  type: string
+  rules:
+    pattern: ^(?:(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*(?:[A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])(?::[0-9]{1,5})?$|^$
+  default: ""
+- name: auto_update
+  type: bool
+  default: false
+- name: update_channel
+  type: string
+  rules:
+    max_len: 128
+  default: ""
+- name: frequency_plan_id
+  comment: |-
+    Frequency plan ID of the gateway.
+    This equals the first element of the frequency_plan_ids field.
+  type: string
+  rules:
+    max_len: 64
+  default: ""
+- name: frequency_plan_ids
+  comment: |-
+    Frequency plan IDs of the gateway.
+    The first element equals the frequency_plan_id field.
+  rules:
+    max_items: 8
+  repeated:
+    type: string
+    rules:
+      max_len: 64
+  default: []
+- name: antennas
+  rules:
+    max_items: 8
+  repeated:
+    message:
+      name: GatewayAntenna
+  default: []
+- name: status_public
+  comment: The status of this gateway may be publicly displayed.
+  type: bool
+  default: false
+- name: location_public
+  comment: The location of this gateway may be publicly displayed.
+  type: bool
+  default: false
+- name: schedule_downlink_late
+  comment: |-
+    Enable server-side buffering of downlink messages. This is recommended for gateways using the Semtech UDP Packet
+    Forwarder v2.x or older, as it does not feature a just-in-time queue. If enabled, the Gateway Server schedules the
+    downlink message late to the gateway so that it does not overwrite previously scheduled downlink messages that have
+    not been transmitted yet.
+  type: bool
+  default: false
+- name: enforce_duty_cycle
+  comment: |-
+    Enforcing gateway duty cycle is recommended for all gateways to respect spectrum regulations. Disable enforcing the
+    duty cycle only in controlled research and development environments.
+  type: bool
+  default: false
+- name: downlink_path_constraint
+  enum:
+    name: DownlinkPathConstraint
+  rules:
+    defined_only: true
+  default: DOWNLINK_PATH_CONSTRAINT_NONE
+- name: schedule_anytime_delay
+  comment: Adjust the time that GS schedules class C messages in advance. This is
+    useful for gateways that have a known high latency backhaul, like 3G and satellite.
+  message:
+    package: google.protobuf
+    name: Duration
+  default: 0s
+- name: update_location_from_status
+  comment: Update the location of this gateway from status messages. This only works
+    for gateways connecting with authentication; gateways connected over UDP are not
+    supported.
+  type: bool
+  default: false
+- name: lbs_lns_secret
+  comment: |-
+    The LoRa Basics Station LNS secret.
+    This is either an auth token (such as an API Key) or a TLS private certificate.
+    Requires the RIGHT_GATEWAY_READ_SECRETS for reading and RIGHT_GATEWAY_WRITE_SECRETS for updating this value.
+  message:
+    name: Secret
+  default: {}
+- name: claim_authentication_code
+  comment: |-
+    The authentication code for gateway claiming.
+    Requires the RIGHT_GATEWAY_READ_SECRETS for reading and RIGHT_GATEWAY_WRITE_SECRETS for updating this value.
+    The entire field must be used in RPCs since sub-fields are validated wrt to each other. Direct selection/update of sub-fields only are not allowed.
+    Use the top level field mask `claim_authentication_code` even when updating single fields.
+  message:
+    name: GatewayClaimAuthenticationCode
+  default: {}
+- name: target_cups_uri
+  comment: |-
+    CUPS URI for LoRa Basics Station CUPS redirection.
+    The CUPS Trust field will be automatically fetched from the cert chain presented by the target server.
+  type: string
+  rules:
+    uri: true
+    ignore_empty: true
+  default: ""
+- name: target_cups_key
+  comment: |-
+    CUPS Key for LoRa Basics Station CUPS redirection.
+    If redirecting to another instance of TTS, use the CUPS API Key for the gateway on the target instance.
+    Requires the RIGHT_GATEWAY_READ_SECRETS for reading and RIGHT_GATEWAY_WRITE_SECRETS for updating this value.
+  message:
+    name: Secret
+  default: {}
+- name: require_authenticated_connection
+  comment: Require an authenticated gateway connection. This prevents the gateway
+    from using the UDP protocol and requires authentication when using other protocols.
+  type: bool
+  default: false
+- name: lrfhss
+  message:
+    name: Gateway.LRFHSS
+  default: {}
+- name: disable_packet_broker_forwarding
+  type: bool
+  default: false

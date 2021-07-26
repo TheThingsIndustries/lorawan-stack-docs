@@ -1,0 +1,18 @@
+name: ApplicationCryptoService
+comment: Service for application layer cryptographic operations.
+methods:
+  DeriveAppSKey:
+    name: DeriveAppSKey
+    comment: Derive the application session key (AppSKey).
+    input:
+      name: DeriveSessionKeysRequest
+    output:
+      name: AppSKeyResponse
+  GetAppKey:
+    name: GetAppKey
+    comment: Get the AppKey. Crypto Servers may return status code FAILED_PRECONDITION
+      when root keys are not exposed.
+    input:
+      name: GetRootKeysRequest
+    output:
+      name: KeyEnvelope

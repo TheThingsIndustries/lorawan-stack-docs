@@ -1,0 +1,33 @@
+name: EndDeviceQRCodeGenerator
+methods:
+  GetFormat:
+    name: GetFormat
+    comment: Return the QR code format.
+    input:
+      name: GetQRCodeFormatRequest
+    output:
+      name: QRCodeFormat
+    http:
+    - method: GET
+      path: /qr-codes/end-devices/formats/{format_id}
+  ListFormats:
+    name: ListFormats
+    comment: Returns the supported formats.
+    input:
+      package: google.protobuf
+      name: Empty
+    output:
+      name: QRCodeFormats
+    http:
+    - method: GET
+      path: /qr-codes/end-devices/formats
+  Generate:
+    name: Generate
+    comment: Generates a QR code.
+    input:
+      name: GenerateEndDeviceQRCodeRequest
+    output:
+      name: GenerateQRCodeResponse
+    http:
+    - method: POST
+      path: /qr-codes/end-devices

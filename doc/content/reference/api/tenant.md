@@ -83,4 +83,10 @@ Unlike the other services, the tenant services do **not** accept API keys or OAu
 
 {{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.NetworkServer" >}}
 
+{{< proto/message package="tti.lorawan.v3" message="EntityCounting" >}}
+
+## Enums
+
+{{< proto/enum package="tti.lorawan.v3" enum="EntityCounting.EntityCountingType" >}}
+
 {{< api-refs >}}

@@ -1,0 +1,19 @@
+name: MQTTConnectionInfo
+comment: The connection information of an MQTT frontend.
+fields:
+- name: public_address
+  comment: The public listen address of the frontend.
+  type: string
+  rules:
+    pattern: ^(?:(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*(?:[A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])(?::[0-9]{1,5})?$|^$
+  default: ""
+- name: public_tls_address
+  comment: The public listen address of the TLS frontend.
+  type: string
+  rules:
+    pattern: ^(?:(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*(?:[A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])(?::[0-9]{1,5})?$|^$
+  default: ""
+- name: username
+  comment: The username to be used for authentication.
+  type: string
+  default: ""

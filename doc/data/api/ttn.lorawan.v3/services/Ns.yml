@@ -1,0 +1,26 @@
+name: Ns
+comment: The Ns service manages the Network Server.
+methods:
+  GenerateDevAddr:
+    name: GenerateDevAddr
+    comment: GenerateDevAddr requests a device address assignment from the Network
+      Server.
+    input:
+      package: google.protobuf
+      name: Empty
+    output:
+      name: GenerateDevAddrResponse
+    http:
+    - method: GET
+      path: /ns/dev_addr
+  GetDefaultMACSettings:
+    name: GetDefaultMACSettings
+    comment: GetDefaultMACSettings retrieves the default MAC settings for a frequency
+      plan.
+    input:
+      name: GetDefaultMACSettingsRequest
+    output:
+      name: MACSettings
+    http:
+    - method: GET
+      path: /ns/default_mac_settings/{frequency_plan_id}/{lorawan_phy_version}

@@ -1,0 +1,16 @@
+name: Picture.Embedded
+fields:
+- name: mime_type
+  comment: MIME type of the picture.
+  type: string
+  rules:
+    max_len: 32
+  default: ""
+- name: data
+  comment: |-
+    Picture data. A data URI can be constructed as follows:
+    `data:<mime_type>;base64,<data>`.
+  type: bytes
+  rules:
+    max_len: 8388608
+  default: ""

@@ -1,0 +1,41 @@
+name: SessionKeys
+comment: |-
+  Session keys for a LoRaWAN session.
+  Only the components for which the keys were meant, will have the key-encryption-key (KEK) to decrypt the individual keys.
+fields:
+- name: session_key_id
+  comment: |-
+    Join Server issued identifier for the session keys.
+    This ID can be used to request the keys from the Join Server in case the are lost.
+  type: bytes
+  rules:
+    max_len: 2048
+  default: ""
+- name: f_nwk_s_int_key
+  comment: |-
+    The (encrypted) Forwarding Network Session Integrity Key (or Network Session Key in 1.0 compatibility mode).
+    This key is stored by the (forwarding) Network Server.
+  message:
+    name: KeyEnvelope
+  default: {}
+- name: s_nwk_s_int_key
+  comment: |-
+    The (encrypted) Serving Network Session Integrity Key.
+    This key is stored by the (serving) Network Server.
+  message:
+    name: KeyEnvelope
+  default: {}
+- name: nwk_s_enc_key
+  comment: |-
+    The (encrypted) Network Session Encryption Key.
+    This key is stored by the (serving) Network Server.
+  message:
+    name: KeyEnvelope
+  default: {}
+- name: app_s_key
+  comment: |-
+    The (encrypted) Application Session Key.
+    This key is stored by the Application Server.
+  message:
+    name: KeyEnvelope
+  default: {}

@@ -1,0 +1,35 @@
+name: CryptoServicePayloadRequest
+fields:
+- name: ids
+  comment: End device identifiers for the cryptographic operation.
+  message:
+    name: EndDeviceIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: lorawan_version
+  comment: LoRaWAN version to use for the cryptographic operation.
+  enum:
+    name: MACVersion
+  rules:
+    defined_only: true
+  default: MAC_UNKNOWN
+- name: payload
+  comment: Raw input payload.
+  type: bytes
+  rules:
+    max_len: 256
+  default: ""
+- name: provisioner_id
+  comment: Provisioner that provisioned the end device.
+  type: string
+  rules:
+    max_len: 36
+    pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$|^$
+  default: ""
+- name: provisioning_data
+  comment: Provisioning data for the provisioner.
+  message:
+    package: google.protobuf
+    name: Struct
+  default: {}

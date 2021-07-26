@@ -1,0 +1,24 @@
+name: CFList
+fields:
+- name: type
+  enum:
+    name: CFListType
+  rules:
+    defined_only: true
+  default: FREQUENCIES
+- name: freq
+  comment: |-
+    Frequencies to be broadcasted, in hecto-Hz.
+    These values are broadcasted as 24 bits unsigned integers.
+    This field should not contain default values.
+  repeated:
+    type: uint32
+  default: []
+- name: ch_masks
+  comment: |-
+    ChMasks controlling the channels to be used.
+    Length of this field must be equal to the amount of uplink channels
+    defined by the selected frequency plan.
+  repeated:
+    type: bool
+  default: []

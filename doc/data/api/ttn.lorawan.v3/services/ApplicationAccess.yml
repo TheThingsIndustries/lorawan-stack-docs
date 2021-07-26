@@ -1,0 +1,98 @@
+name: ApplicationAccess
+comment: |-
+  The ApplicationAcces service, exposed by the Identity Server, is used to manage
+  API keys and collaborators of applications.
+methods:
+  ListRights:
+    name: ListRights
+    comment: List the rights the caller has on this application.
+    input:
+      name: ApplicationIdentifiers
+    output:
+      name: Rights
+    http:
+    - method: GET
+      path: /applications/{application_id}/rights
+  CreateAPIKey:
+    name: CreateAPIKey
+    comment: Create an API key scoped to this application.
+    input:
+      name: CreateApplicationAPIKeyRequest
+    output:
+      name: APIKey
+    http:
+    - method: POST
+      path: /applications/{application_ids.application_id}/api-keys
+  ListAPIKeys:
+    name: ListAPIKeys
+    comment: List the API keys for this application.
+    input:
+      name: ListApplicationAPIKeysRequest
+    output:
+      name: APIKeys
+    http:
+    - method: GET
+      path: /applications/{application_ids.application_id}/api-keys
+  GetAPIKey:
+    name: GetAPIKey
+    comment: Get a single API key of this application.
+    input:
+      name: GetApplicationAPIKeyRequest
+    output:
+      name: APIKey
+    http:
+    - method: GET
+      path: /applications/{application_ids.application_id}/api-keys/{key_id}
+  UpdateAPIKey:
+    name: UpdateAPIKey
+    comment: |-
+      Update the rights of an API key of the application.
+      This method can also be used to delete the API key, by giving it no rights.
+      The caller is required to have all assigned or/and removed rights.
+    input:
+      name: UpdateApplicationAPIKeyRequest
+    output:
+      name: APIKey
+    http:
+    - method: PUT
+      path: /applications/{application_ids.application_id}/api-keys/{api_key.id}
+  GetCollaborator:
+    name: GetCollaborator
+    comment: |-
+      Get the rights of a collaborator (member) of the application.
+      Pseudo-rights in the response (such as the "_ALL" right) are not expanded.
+    input:
+      name: GetApplicationCollaboratorRequest
+    output:
+      name: GetCollaboratorResponse
+    http:
+    - method: ""
+      path: ""
+    - method: GET
+      path: /applications/{application_ids.application_id}/collaborator/user/{collaborator.user_ids.user_id}
+    - method: GET
+      path: /applications/{application_ids.application_id}/collaborator/organization/{collaborator.organization_ids.organization_id}
+  SetCollaborator:
+    name: SetCollaborator
+    comment: |-
+      Set the rights of a collaborator (member) on the application.
+      This method can also be used to delete the collaborator, by giving them no rights.
+      The caller is required to have all assigned or/and removed rights.
+    input:
+      name: SetApplicationCollaboratorRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: PUT
+      path: /applications/{application_ids.application_id}/collaborators
+  ListCollaborators:
+    name: ListCollaborators
+    comment: List the collaborators on this application.
+    input:
+      name: ListApplicationCollaboratorsRequest
+    output:
+      name: Collaborators
+    http:
+    - method: GET
+      path: /applications/{application_ids.application_id}/collaborators

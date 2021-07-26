@@ -1,0 +1,62 @@
+name: PacketBrokerGateway
+comment: |-
+  Gateway respresentation for Packet Broker.
+  This is a subset and superset of the Gateway message using the same data types and field tags to achieve initial wire compatibility.
+  There is no (longer) wire compatibility needed; new fields may use any tag.
+fields:
+- name: ids
+  message:
+    name: PacketBrokerGateway.GatewayIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: contact_info
+  rules:
+    max_items: 10
+  repeated:
+    message:
+      name: ContactInfo
+  default: []
+- name: antennas
+  rules:
+    max_items: 8
+  repeated:
+    message:
+      name: GatewayAntenna
+  default: []
+- name: status_public
+  type: bool
+  default: false
+- name: location_public
+  type: bool
+  default: false
+- name: frequency_plan_ids
+  rules:
+    max_items: 8
+  repeated:
+    type: string
+    rules:
+      max_len: 64
+  default: []
+- name: update_location_from_status
+  type: bool
+  default: false
+- name: online
+  type: bool
+  default: false
+- name: rx_rate
+  comment: |-
+    Received packets rate (number of packets per hour).
+    This field gets updated when a value is set.
+  message:
+    package: google.protobuf
+    name: FloatValue
+  default: null
+- name: tx_rate
+  comment: |-
+    Transmitted packets rate (number of packets per hour).
+    This field gets updated when a value is set.
+  message:
+    package: google.protobuf
+    name: FloatValue
+  default: null

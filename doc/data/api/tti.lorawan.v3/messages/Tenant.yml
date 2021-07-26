@@ -1,0 +1,117 @@
+name: Tenant
+comment: Tenant is the message that defines a Tenant in the network.
+fields:
+- name: ids
+  message:
+    name: TenantIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: created_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: updated_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: name
+  type: string
+  rules:
+    max_len: 50
+  default: ""
+- name: description
+  type: string
+  rules:
+    max_len: 2000
+  default: ""
+- name: attributes
+  map_key:
+    type: string
+    rules:
+      max_len: 36
+      pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+  map_value:
+    type: string
+  default: {}
+- name: contact_info
+  repeated:
+    message:
+      package: ttn.lorawan.v3
+      name: ContactInfo
+  default: []
+- name: max_applications
+  comment: If set, restricts the maximum number of applications that can be created.
+  message:
+    package: google.protobuf
+    name: UInt64Value
+  default: null
+- name: max_clients
+  comment: If set, restricts the maximum number of clients that can be created.
+  message:
+    package: google.protobuf
+    name: UInt64Value
+  default: null
+- name: max_end_devices
+  comment: If set, restricts the maximum number of end_devices that can be created.
+  message:
+    package: google.protobuf
+    name: UInt64Value
+  default: null
+- name: max_gateways
+  comment: If set, restricts the maximum number of gateways that can be created.
+  message:
+    package: google.protobuf
+    name: UInt64Value
+  default: null
+- name: max_organizations
+  comment: If set, restricts the maximum number of organizations that can be created.
+  message:
+    package: google.protobuf
+    name: UInt64Value
+  default: null
+- name: max_users
+  comment: If set, restricts the maximum number of users that can be created.
+  message:
+    package: google.protobuf
+    name: UInt64Value
+  default: null
+- name: state
+  comment: |-
+    The reviewing state of the tenant.
+    This field can only be modified by tenant admins.
+    If state_description is not updated when updating state, state_description is cleared.
+  enum:
+    package: ttn.lorawan.v3
+    name: State
+  rules:
+    defined_only: true
+  default: STATE_REQUESTED
+- name: state_description
+  comment: |-
+    A description for the state field.
+    This field can only be modified by admins, and should typically only be updated
+    when also updating `state`.
+  type: string
+  rules:
+    max_len: 128
+  default: ""
+- name: capabilities
+  message:
+    package: google.protobuf
+    name: Struct
+  default: {}
+- name: configuration
+  message:
+    name: Configuration
+  default: {}
+- name: billing
+  message:
+    name: Billing
+  default: {}
+- name: billing_identifiers
+  message:
+    name: BillingIdentifiers
+  default: {}

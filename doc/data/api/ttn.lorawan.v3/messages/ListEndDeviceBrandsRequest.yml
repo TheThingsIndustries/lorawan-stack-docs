@@ -1,0 +1,40 @@
+name: ListEndDeviceBrandsRequest
+fields:
+- name: application_ids
+  comment: Application identifiers.
+  message:
+    name: ApplicationIdentifiers
+  default: {}
+- name: limit
+  comment: Limit the number of results per page.
+  type: uint32
+  rules:
+    lte: 1000
+  default: 0
+- name: page
+  comment: Page number for pagination. 0 is interpreted as 1.
+  type: uint32
+  default: 0
+- name: order_by
+  comment: Order (for pagination)
+  type: string
+  rules:
+    in:
+    - ""
+    - brand_id
+    - -brand_id
+    - name
+    - -name
+  default: ""
+- name: search
+  comment: Search for brands matching a query string.
+  type: string
+  rules:
+    max_len: 100
+  default: ""
+- name: field_mask
+  comment: Field mask paths.
+  message:
+    package: google.protobuf
+    name: FieldMask
+  default: {}

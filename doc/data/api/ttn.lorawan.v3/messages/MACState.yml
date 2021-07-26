@@ -1,0 +1,167 @@
+name: MACState
+comment: |-
+  MACState represents the state of MAC layer of the device.
+  MACState is reset on each join for OTAA or ResetInd for ABP devices.
+  This is used internally by the Network Server.
+fields:
+- name: current_parameters
+  comment: Current LoRaWAN MAC parameters.
+  message:
+    name: MACParameters
+  rules:
+    required: true
+  default: {}
+- name: desired_parameters
+  comment: Desired LoRaWAN MAC parameters.
+  message:
+    name: MACParameters
+  rules:
+    required: true
+  default: {}
+- name: device_class
+  comment: |-
+    Currently active LoRaWAN device class
+    - Device class is A by default
+    - If device sets ClassB bit in uplink, this will be set to B
+    - If device sent DeviceModeInd MAC message, this will be set to that value
+  enum:
+    name: Class
+  rules:
+    defined_only: true
+  default: CLASS_A
+- name: lorawan_version
+  comment: LoRaWAN MAC version.
+  enum:
+    name: MACVersion
+  rules:
+    defined_only: true
+  default: MAC_UNKNOWN
+- name: last_confirmed_downlink_at
+  comment: Time when the last confirmed downlink message or MAC command was scheduled.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: last_dev_status_f_cnt_up
+  comment: Frame counter value of last uplink containing DevStatusAns.
+  type: uint32
+  default: 0
+- name: ping_slot_periodicity
+  comment: Periodicity of the class B ping slot.
+  message:
+    name: PingSlotPeriodValue
+  default: {}
+- name: pending_application_downlink
+  comment: A confirmed application downlink, for which an acknowledgment is expected
+    to arrive.
+  message:
+    name: ApplicationDownlink
+  default: {}
+- name: queued_responses
+  comment: |-
+    Queued MAC responses.
+    Regenerated on each uplink.
+  repeated:
+    message:
+      name: MACCommand
+  default: []
+- name: pending_requests
+  comment: |-
+    Pending MAC requests(i.e. sent requests, for which no response has been received yet).
+    Regenerated on each downlink.
+  repeated:
+    message:
+      name: MACCommand
+  default: []
+- name: queued_join_accept
+  comment: |-
+    Queued join-accept.
+    Set each time a (re-)join request accept is received from Join Server and removed each time a downlink is scheduled.
+  message:
+    name: MACState.JoinAccept
+  default: {}
+- name: pending_join_request
+  comment: |-
+    Pending join request.
+    Set each time a join-accept is scheduled and removed each time an uplink is received from the device.
+  message:
+    name: MACState.JoinRequest
+  default: {}
+- name: rx_windows_available
+  comment: |-
+    Whether or not Rx windows are expected to be open.
+    Set to true every time an uplink is received.
+    Set to false every time a successful downlink scheduling attempt is made.
+  type: bool
+  default: false
+- name: recent_uplinks
+  comment: |-
+    Recent data uplink messages sorted by time.
+    The number of messages stored may depend on configuration.
+  repeated:
+    message:
+      name: UplinkMessage
+  default: []
+- name: recent_downlinks
+  comment: |-
+    Recent data downlink messages sorted by time.
+    The number of messages stored may depend on configuration.
+  repeated:
+    message:
+      name: DownlinkMessage
+  default: []
+- name: last_network_initiated_downlink_at
+  comment: Time when the last network-initiated downlink message was scheduled.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: rejected_adr_data_rate_indexes
+  comment: |-
+    ADR Data rate index values rejected by the device.
+    Reset each time `current_parameters.channels` change.
+    Elements are sorted in ascending order.
+  rules:
+    max_items: 15
+  repeated:
+    enum:
+      name: DataRateIndex
+    rules:
+      defined_only: true
+  default: []
+- name: rejected_adr_tx_power_indexes
+  comment: |-
+    ADR TX output power index values rejected by the device.
+    Elements are sorted in ascending order.
+  rules:
+    max_items: 15
+  repeated:
+    type: uint32
+    rules:
+      lte: 15
+  default: []
+- name: rejected_frequencies
+  comment: Frequencies rejected by the device.
+  repeated:
+    type: uint64
+    rules:
+      gte: 100000
+  default: []
+- name: last_downlink_at
+  comment: Time when the last downlink message was scheduled.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: rejected_data_rate_ranges
+  comment: Data rate ranges rejected by the device per frequency.
+  map_key:
+    type: uint64
+  map_value:
+    message:
+      name: MACState.DataRateRanges
+  default: {}
+- name: last_adr_change_f_cnt_up
+  comment: Frame counter of uplink, which confirmed the last ADR parameter change.
+  type: uint32
+  default: 0

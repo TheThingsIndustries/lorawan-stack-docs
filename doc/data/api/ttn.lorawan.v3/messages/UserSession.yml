@@ -1,0 +1,33 @@
+name: UserSession
+fields:
+- name: user_ids
+  message:
+    name: UserIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: session_id
+  type: string
+  rules:
+    max_len: 64
+  default: ""
+- name: created_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: updated_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: expires_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: session_secret
+  comment: The session secret is used to compose an authorization key and is never
+    returned.
+  type: string
+  default: ""

@@ -1,0 +1,26 @@
+name: MACCommand.NewChannelReq
+fields:
+- name: channel_index
+  type: uint32
+  rules:
+    lte: 255
+  default: 0
+- name: frequency
+  comment: Channel frequency (Hz).
+  type: uint64
+  rules:
+    lte: 0
+    gte: 100000
+  default: 0
+- name: min_data_rate_index
+  enum:
+    name: DataRateIndex
+  rules:
+    defined_only: true
+  default: DATA_RATE_0
+- name: max_data_rate_index
+  enum:
+    name: DataRateIndex
+  rules:
+    defined_only: true
+  default: DATA_RATE_0

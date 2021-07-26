@@ -1,0 +1,27 @@
+name: PacketBrokerNetwork
+fields:
+- name: id
+  comment: Packet Broker network identifier.
+  message:
+    name: PacketBrokerNetworkIdentifier
+  default: {}
+- name: name
+  comment: Name of the network.
+  type: string
+  default: ""
+- name: dev_addr_blocks
+  comment: DevAddr blocks that are assigned to this registration.
+  repeated:
+    message:
+      name: PacketBrokerDevAddrBlock
+  default: []
+- name: contact_info
+  comment: Contact information.
+  repeated:
+    message:
+      name: ContactInfo
+  default: []
+- name: listed
+  comment: Whether the network is listed so it can be viewed by other networks.
+  type: bool
+  default: false

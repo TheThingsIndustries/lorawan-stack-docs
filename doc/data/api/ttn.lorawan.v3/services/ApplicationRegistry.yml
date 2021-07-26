@@ -1,0 +1,117 @@
+name: ApplicationRegistry
+comment: |-
+  The ApplicationRegistry service, exposed by the Identity Server, is used to manage
+  application registrations.
+methods:
+  Create:
+    name: Create
+    comment: |-
+      Create a new application. This also sets the given organization or user as
+      first collaborator with all possible rights.
+    input:
+      name: CreateApplicationRequest
+    output:
+      name: Application
+    http:
+    - method: POST
+      path: /users/{collaborator.user_ids.user_id}/applications
+    - method: POST
+      path: /organizations/{collaborator.organization_ids.organization_id}/applications
+  Get:
+    name: Get
+    comment: |-
+      Get the application with the given identifiers, selecting the fields specified
+      in the field mask.
+      More or less fields may be returned, depending on the rights of the caller.
+    input:
+      name: GetApplicationRequest
+    output:
+      name: Application
+    http:
+    - method: GET
+      path: /applications/{application_ids.application_id}
+  List:
+    name: List
+    comment: |-
+      List applications where the given user or organization is a direct collaborator.
+      If no user or organization is given, this returns the applications the caller
+      has access to.
+      Similar to Get, this selects the fields given by the field mask.
+      More or less fields may be returned, depending on the rights of the caller.
+    input:
+      name: ListApplicationsRequest
+    output:
+      name: Applications
+    http:
+    - method: GET
+      path: /applications
+    - method: GET
+      path: /users/{collaborator.user_ids.user_id}/applications
+    - method: GET
+      path: /organizations/{collaborator.organization_ids.organization_id}/applications
+  Update:
+    name: Update
+    comment: Update the application, changing the fields specified by the field mask
+      to the provided values.
+    input:
+      name: UpdateApplicationRequest
+    output:
+      name: Application
+    http:
+    - method: PUT
+      path: /applications/{application.ids.application_id}
+  Delete:
+    name: Delete
+    comment: |-
+      Delete the application. This may not release the application ID for reuse.
+      All end devices must be deleted from the application before it can be deleted.
+    input:
+      name: ApplicationIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /applications/{application_id}
+  Restore:
+    name: Restore
+    comment: |-
+      Restore a recently deleted application.
+
+      Deployment configuration may specify if, and for how long after deletion,
+      entities can be restored.
+    input:
+      name: ApplicationIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: POST
+      path: /applications/{application_id}/restore
+  Purge:
+    name: Purge
+    comment: |-
+      Purge the application. This will release the application ID for reuse.
+      All end devices must be deleted from the application before it can be deleted.
+      The application owner is responsible for clearing data from any (external) integrations
+      that may store and expose data by application ID
+    input:
+      name: ApplicationIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /applications/{application_id}/purge
+  IssueDevEUI:
+    name: IssueDevEUI
+    comment: |-
+      Request DevEUI from the configured address block for a device inside the application.
+      The maximum number of DevEUI's issued per application can be configured.
+    input:
+      name: ApplicationIdentifiers
+    output:
+      name: IssueDevEUIResponse
+    http:
+    - method: POST
+      path: /applications/{application_id}/dev-eui

@@ -1,0 +1,101 @@
+name: OrganizationAccess
+comment: |-
+  The OrganizationAcces service, exposed by the Identity Server, is used to manage
+  API keys and collaborators of organizations.
+methods:
+  ListRights:
+    name: ListRights
+    comment: List the rights the caller has on this organization.
+    input:
+      name: OrganizationIdentifiers
+    output:
+      name: Rights
+    http:
+    - method: GET
+      path: /organizations/{organization_id}/rights
+  CreateAPIKey:
+    name: CreateAPIKey
+    comment: |-
+      Create an API key scoped to this organization.
+      Organization API keys can give access to the organization itself, as well as
+      any application, gateway and OAuth client this organization is a collaborator of.
+    input:
+      name: CreateOrganizationAPIKeyRequest
+    output:
+      name: APIKey
+    http:
+    - method: POST
+      path: /organizations/{organization_ids.organization_id}/api-keys
+  ListAPIKeys:
+    name: ListAPIKeys
+    comment: List the API keys for this organization.
+    input:
+      name: ListOrganizationAPIKeysRequest
+    output:
+      name: APIKeys
+    http:
+    - method: GET
+      path: /organizations/{organization_ids.organization_id}/api-keys
+  GetAPIKey:
+    name: GetAPIKey
+    comment: Get a single API key of this organization.
+    input:
+      name: GetOrganizationAPIKeyRequest
+    output:
+      name: APIKey
+    http:
+    - method: GET
+      path: /organizations/{organization_ids.organization_id}/api-keys/{key_id}
+  UpdateAPIKey:
+    name: UpdateAPIKey
+    comment: |-
+      Update the rights of an API key of the organization.
+      This method can also be used to delete the API key, by giving it no rights.
+      The caller is required to have all assigned or/and removed rights.
+    input:
+      name: UpdateOrganizationAPIKeyRequest
+    output:
+      name: APIKey
+    http:
+    - method: PUT
+      path: /organizations/{organization_ids.organization_id}/api-keys/{api_key.id}
+  GetCollaborator:
+    name: GetCollaborator
+    comment: |-
+      Get the rights of a collaborator (member) of the organization.
+      Pseudo-rights in the response (such as the "_ALL" right) are not expanded.
+    input:
+      name: GetOrganizationCollaboratorRequest
+    output:
+      name: GetCollaboratorResponse
+    http:
+    - method: ""
+      path: ""
+    - method: GET
+      path: /organizations/{organization_ids.organization_id}/collaborator/user/{collaborator.user_ids.user_id}
+  SetCollaborator:
+    name: SetCollaborator
+    comment: |-
+      Set the rights of a collaborator (member) on the organization.
+      Organization collaborators can get access to the organization itself, as well as
+      any application, gateway and OAuth client this organization is a collaborator of.
+      This method can also be used to delete the collaborator, by giving them no rights.
+      The caller is required to have all assigned or/and removed rights.
+    input:
+      name: SetOrganizationCollaboratorRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: PUT
+      path: /organizations/{organization_ids.organization_id}/collaborators
+  ListCollaborators:
+    name: ListCollaborators
+    comment: List the collaborators on this organization.
+    input:
+      name: ListOrganizationCollaboratorsRequest
+    output:
+      name: Collaborators
+    http:
+    - method: GET
+      path: /organizations/{organization_ids.organization_id}/collaborators

@@ -1,0 +1,21 @@
+name: RejoinRequestPayload
+fields:
+- name: rejoin_type
+  enum:
+    name: RejoinRequestType
+  rules:
+    defined_only: true
+  default: CONTEXT
+- name: net_id
+  type: bytes
+  default: ""
+- name: join_eui
+  type: bytes
+  default: ""
+- name: dev_eui
+  type: bytes
+  default: ""
+- name: rejoin_cnt
+  comment: Contains RJCount0 or RJCount1 depending on rejoin_type.
+  type: uint32
+  default: 0

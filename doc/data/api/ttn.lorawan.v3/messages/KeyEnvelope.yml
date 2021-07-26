@@ -1,0 +1,18 @@
+name: KeyEnvelope
+fields:
+- name: key
+  comment: The unencrypted AES key.
+  type: bytes
+  default: ""
+- name: kek_label
+  comment: The label of the RFC 3394 key-encryption-key (KEK) that was used to encrypt
+    the key.
+  type: string
+  rules:
+    max_len: 2048
+  default: ""
+- name: encrypted_key
+  type: bytes
+  rules:
+    max_len: 1024
+  default: ""

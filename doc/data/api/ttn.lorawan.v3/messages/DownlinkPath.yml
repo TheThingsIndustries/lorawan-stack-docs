@@ -1,0 +1,17 @@
+name: DownlinkPath
+fields:
+- name: uplink_token
+  type: bytes
+  default: ""
+- name: fixed
+  message:
+    name: GatewayAntennaIdentifiers
+  default: {}
+oneofs:
+- name: path
+  comment: |-
+    Set uplink token for class A, B or C downlink to the uplink token received from the corresponding RxMetadata. Uplink tokens are opaque to the Network Server.
+    Set fixed to force using the specified gateway antenna identifiers for downlink. This can only be used for class B or C downlinks.
+  field_names:
+  - uplink_token
+  - fixed

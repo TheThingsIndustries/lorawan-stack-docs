@@ -1,0 +1,23 @@
+name: ApplicationLink
+fields:
+- name: default_formatters
+  comment: |-
+    Default message payload formatters to use when there are no formatters
+    defined on the end device level.
+  message:
+    name: MessagePayloadFormatters
+  default: {}
+- name: tls
+  comment: |-
+    Enable TLS for linking to the external Network Server.
+    For cluster-local Network Servers, the cluster's TLS setting is used.
+  type: bool
+  default: false
+- name: skip_payload_crypto
+  comment: |-
+    Skip decryption of uplink payloads and encryption of downlink payloads.
+    Leave empty for the using the Application Server's default setting.
+  message:
+    package: google.protobuf
+    name: BoolValue
+  default: null

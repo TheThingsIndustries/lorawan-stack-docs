@@ -1,0 +1,104 @@
+name: ApplicationPubSub
+fields:
+- name: ids
+  message:
+    name: ApplicationPubSubIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: created_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: updated_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: format
+  comment: |-
+    The format to use for the body.
+    Supported values depend on the Application Server configuration.
+  type: string
+  rules:
+    max_len: 20
+    pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+  default: ""
+- name: nats
+  message:
+    name: ApplicationPubSub.NATSProvider
+  default: {}
+- name: mqtt
+  message:
+    name: ApplicationPubSub.MQTTProvider
+  default: {}
+- name: aws_iot
+  message:
+    name: ApplicationPubSub.AWSIoTProvider
+  default: {}
+- name: base_topic
+  comment: Base topic name to which the messages topic is appended.
+  type: string
+  rules:
+    max_len: 100
+  default: ""
+- name: downlink_push
+  comment: The topic to which the Application Server subscribes for downlink queue
+    push operations.
+  message:
+    name: ApplicationPubSub.Message
+  default: {}
+- name: downlink_replace
+  comment: The topic to which the Application Server subscribes for downlink queue
+    replace operations.
+  message:
+    name: ApplicationPubSub.Message
+  default: {}
+- name: uplink_message
+  message:
+    name: ApplicationPubSub.Message
+  default: {}
+- name: join_accept
+  message:
+    name: ApplicationPubSub.Message
+  default: {}
+- name: downlink_ack
+  message:
+    name: ApplicationPubSub.Message
+  default: {}
+- name: downlink_nack
+  message:
+    name: ApplicationPubSub.Message
+  default: {}
+- name: downlink_sent
+  message:
+    name: ApplicationPubSub.Message
+  default: {}
+- name: downlink_failed
+  message:
+    name: ApplicationPubSub.Message
+  default: {}
+- name: downlink_queued
+  message:
+    name: ApplicationPubSub.Message
+  default: {}
+- name: downlink_queue_invalidated
+  message:
+    name: ApplicationPubSub.Message
+  default: {}
+- name: location_solved
+  message:
+    name: ApplicationPubSub.Message
+  default: {}
+- name: service_data
+  message:
+    name: ApplicationPubSub.Message
+  default: {}
+oneofs:
+- name: provider
+  comment: The provider for the PubSub.
+  field_names:
+  - nats
+  - mqtt
+  - aws_iot

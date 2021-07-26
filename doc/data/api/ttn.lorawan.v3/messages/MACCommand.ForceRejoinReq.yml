@@ -1,0 +1,26 @@
+name: MACCommand.ForceRejoinReq
+fields:
+- name: rejoin_type
+  enum:
+    name: RejoinRequestType
+  rules:
+    defined_only: true
+  default: CONTEXT
+- name: data_rate_index
+  enum:
+    name: DataRateIndex
+  rules:
+    defined_only: true
+  default: DATA_RATE_0
+- name: max_retries
+  type: uint32
+  rules:
+    lte: 7
+  default: 0
+- name: period_exponent
+  comment: Exponent e that configures the rejoin period = 32 * 2^e + rand(0,32) seconds.
+  enum:
+    name: RejoinPeriodExponent
+  rules:
+    defined_only: true
+  default: REJOIN_PERIOD_0

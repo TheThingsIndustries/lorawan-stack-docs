@@ -1,0 +1,25 @@
+name: Events
+comment: The Events service serves events from the cluster.
+methods:
+  Stream:
+    name: Stream
+    comment: |-
+      Stream live events, optionally with a tail of historical events (depending on server support and retention policy).
+      Events may arrive out-of-order.
+    input:
+      name: StreamEventsRequest
+    output:
+      name: Event
+      stream: true
+    http:
+    - method: POST
+      path: /events
+  FindRelated:
+    name: FindRelated
+    input:
+      name: FindRelatedEventsRequest
+    output:
+      name: FindRelatedEventsResponse
+    http:
+    - method: GET
+      path: /events/related

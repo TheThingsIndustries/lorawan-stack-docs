@@ -1,0 +1,19 @@
+name: MACCommand.DevStatusAns
+fields:
+- name: battery
+  comment: |-
+    Device battery status.
+    0 indicates that the device is connected to an external power source.
+    1..254 indicates a battery level.
+    255 indicates that the device was not able to measure the battery level.
+  type: uint32
+  rules:
+    lte: 255
+  default: 0
+- name: margin
+  comment: SNR of the last downlink (dB; [-32, +31]).
+  type: int32
+  rules:
+    lte: 31
+    gte: -32
+  default: 0

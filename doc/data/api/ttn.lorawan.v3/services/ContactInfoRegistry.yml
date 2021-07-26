@@ -1,0 +1,29 @@
+name: ContactInfoRegistry
+comment: |-
+  The ContactInfoRegistry service, exposed by the Identity Server, is used for
+  validating contact information of registered entities.
+
+  The actual contact information can be managed with the different registry services:
+  ApplicationRegistry, ClientRegistry, GatewayRegistry, OrganizationRegistry and UserRegistry.
+methods:
+  RequestValidation:
+    name: RequestValidation
+    comment: Request validation for the non-validated contact info for the given entity.
+    input:
+      name: EntityIdentifiers
+    output:
+      name: ContactInfoValidation
+    http:
+    - method: POST
+      path: /contact_info/validation
+  Validate:
+    name: Validate
+    comment: Validate confirms a contact info validation.
+    input:
+      name: ContactInfoValidation
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: PATCH
+      path: /contact_info/validation

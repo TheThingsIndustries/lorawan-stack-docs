@@ -1,0 +1,55 @@
+name: ClientAccess
+comment: |-
+  The ClientAcces service, exposed by the Identity Server, is used to manage
+  collaborators of OAuth clients.
+methods:
+  ListRights:
+    name: ListRights
+    comment: List the rights the caller has on this application.
+    input:
+      name: ClientIdentifiers
+    output:
+      name: Rights
+    http:
+    - method: GET
+      path: /clients/{client_id}/rights
+  GetCollaborator:
+    name: GetCollaborator
+    comment: |-
+      Get the rights of a collaborator (member) of the client.
+      Pseudo-rights in the response (such as the "_ALL" right) are not expanded.
+    input:
+      name: GetClientCollaboratorRequest
+    output:
+      name: GetCollaboratorResponse
+    http:
+    - method: ""
+      path: ""
+    - method: GET
+      path: /clients/{client_ids.client_id}/collaborator/user/{collaborator.user_ids.user_id}
+    - method: GET
+      path: /clients/{client_ids.client_id}/collaborator/organization/{collaborator.organization_ids.organization_id}
+  SetCollaborator:
+    name: SetCollaborator
+    comment: |-
+      Set the rights of a collaborator (member) on the OAuth client.
+      This method can also be used to delete the collaborator, by giving them no rights.
+      The caller is required to have all assigned or/and removed rights.
+    input:
+      name: SetClientCollaboratorRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: PUT
+      path: /clients/{client_ids.client_id}/collaborators
+  ListCollaborators:
+    name: ListCollaborators
+    comment: List the collaborators on this OAuth client.
+    input:
+      name: ListClientCollaboratorsRequest
+    output:
+      name: Collaborators
+    http:
+    - method: GET
+      path: /clients/{client_ids.client_id}/collaborators

@@ -1,0 +1,106 @@
+name: RxMetadata
+comment: |-
+  Contains metadata for a received message. Each antenna that receives
+  a message corresponds to one RxMetadata.
+fields:
+- name: gateway_ids
+  message:
+    name: GatewayIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: packet_broker
+  message:
+    name: PacketBrokerMetadata
+  default: {}
+- name: antenna_index
+  type: uint32
+  default: 0
+- name: time
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: timestamp
+  comment: Gateway concentrator timestamp when the Rx finished (microseconds).
+  type: uint32
+  default: 0
+- name: fine_timestamp
+  comment: Gateway's internal fine timestamp when the Rx finished (nanoseconds).
+  type: uint64
+  default: 0
+- name: encrypted_fine_timestamp
+  comment: Encrypted gateway's internal fine timestamp when the Rx finished (nanoseconds).
+  type: bytes
+  default: ""
+- name: encrypted_fine_timestamp_key_id
+  type: string
+  default: ""
+- name: rssi
+  comment: |-
+    Received signal strength indicator (dBm).
+    This value equals `channel_rssi`.
+  type: float
+  default: 0
+- name: signal_rssi
+  comment: Received signal strength indicator of the signal (dBm).
+  message:
+    package: google.protobuf
+    name: FloatValue
+  default: null
+- name: channel_rssi
+  comment: Received signal strength indicator of the channel (dBm).
+  type: float
+  default: 0
+- name: rssi_standard_deviation
+  comment: Standard deviation of the RSSI during preamble.
+  type: float
+  default: 0
+- name: snr
+  comment: Signal-to-noise ratio (dB).
+  type: float
+  default: 0
+- name: frequency_offset
+  comment: Frequency offset (Hz).
+  type: int64
+  default: 0
+- name: location
+  comment: Antenna location; injected by the Gateway Server.
+  message:
+    name: Location
+  default: {}
+- name: downlink_path_constraint
+  comment: Gateway downlink path constraint; injected by the Gateway Server.
+  enum:
+    name: DownlinkPathConstraint
+  rules:
+    defined_only: true
+  default: DOWNLINK_PATH_CONSTRAINT_NONE
+- name: uplink_token
+  comment: Uplink token to be included in the Tx request in class A downlink; injected
+    by gateway, Gateway Server or fNS.
+  type: bytes
+  default: ""
+- name: channel_index
+  comment: Index of the gateway channel that received the message.
+  type: uint32
+  rules:
+    lte: 255
+  default: 0
+- name: hopping_width
+  comment: Hopping width; a number describing the number of steps of the LR-FHSS grid.
+  type: uint32
+  default: 0
+- name: frequency_drift
+  comment: Frequency drift in Hz between start and end of an LR-FHSS packet (signed).
+  type: int32
+  default: 0
+- name: advanced
+  comment: |-
+    Advanced metadata fields
+    - can be used for advanced information or experimental features that are not yet formally defined in the API
+    - field names are written in snake_case
+  message:
+    package: google.protobuf
+    name: Struct
+  default: {}

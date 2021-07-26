@@ -1,0 +1,43 @@
+name: Message
+comment: Message represents a LoRaWAN message
+fields:
+- name: m_hdr
+  message:
+    name: MHDR
+  rules:
+    required: true
+  default: {}
+- name: mic
+  type: bytes
+  rules:
+    max_len: 4
+  default: ""
+- name: mac_payload
+  message:
+    name: MACPayload
+  default: {}
+- name: join_request_payload
+  message:
+    name: JoinRequestPayload
+  default: {}
+- name: join_accept_payload
+  message:
+    name: JoinAcceptPayload
+  default: {}
+- name: rejoin_request_payload
+  message:
+    name: RejoinRequestPayload
+  default: {}
+oneofs:
+- name: Payload
+  comment: |-
+    Payload represents either MACPayload, RejoinRequestPayload, JoinRequestPayload or JoinAcceptPayload
+    - MACPayload length is in range [7:M] bytes, where M is PHY specific.
+    - JoinRequestPayload length is 18 bytes.
+    - JoinAcceptPayload length is either 12 or 28 bytes.
+    - RejoinRequestPayload length is 14 for Type 0 and 2, 19 for Type 1.
+  field_names:
+  - mac_payload
+  - join_request_payload
+  - join_accept_payload
+  - rejoin_request_payload

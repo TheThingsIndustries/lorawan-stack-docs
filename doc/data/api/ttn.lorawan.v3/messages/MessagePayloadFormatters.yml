@@ -1,0 +1,33 @@
+name: MessagePayloadFormatters
+fields:
+- name: up_formatter
+  comment: Payload formatter for uplink messages, must be set together with its parameter.
+  enum:
+    name: PayloadFormatter
+  rules:
+    defined_only: true
+  default: FORMATTER_NONE
+- name: up_formatter_parameter
+  comment: Parameter for the up_formatter, must be set together. The API enforces
+    a maximum length of 16KB, but the size may be restricted further by deployment
+    configuration.
+  type: string
+  rules:
+    max_len: 40960
+  default: ""
+- name: down_formatter
+  comment: Payload formatter for downlink messages, must be set together with its
+    parameter.
+  enum:
+    name: PayloadFormatter
+  rules:
+    defined_only: true
+  default: FORMATTER_NONE
+- name: down_formatter_parameter
+  comment: Parameter for the down_formatter, must be set together. The API enforces
+    a maximum length of 16KB, but the size may be restricted further by deployment
+    configuration.
+  type: string
+  rules:
+    max_len: 40960
+  default: ""

@@ -1,0 +1,43 @@
+name: OAuthAccessToken
+fields:
+- name: user_ids
+  message:
+    name: UserIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: user_session_id
+  type: string
+  rules:
+    max_len: 64
+  default: ""
+- name: client_ids
+  message:
+    name: ClientIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: id
+  type: string
+  default: ""
+- name: access_token
+  type: string
+  default: ""
+- name: refresh_token
+  type: string
+  default: ""
+- name: rights
+  repeated:
+    enum:
+      name: Right
+  default: []
+- name: created_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: expires_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"

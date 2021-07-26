@@ -1,0 +1,25 @@
+name: MACPayload
+fields:
+- name: f_hdr
+  message:
+    name: FHDR
+  rules:
+    required: true
+  default: {}
+- name: f_port
+  type: uint32
+  rules:
+    lte: 255
+  default: 0
+- name: frm_payload
+  type: bytes
+  default: ""
+- name: decoded_payload
+  message:
+    package: google.protobuf
+    name: Struct
+  default: {}
+- name: full_f_cnt
+  comment: Full 32-bit FCnt value. Used internally by Network Server.
+  type: uint32
+  default: 0

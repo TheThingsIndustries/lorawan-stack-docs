@@ -1,0 +1,22 @@
+name: UplinkToken
+fields:
+- name: ids
+  message:
+    name: GatewayAntennaIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: timestamp
+  type: uint32
+  default: 0
+- name: server_time
+  comment: Absolute time observed by the server when the uplink message has been received.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: concentrator_time
+  comment: Absolute concentrator time as observed by the Gateway Server, accounting
+    for rollovers.
+  type: int64
+  default: 0

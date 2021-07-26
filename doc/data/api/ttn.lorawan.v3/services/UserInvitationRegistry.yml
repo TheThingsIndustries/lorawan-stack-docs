@@ -1,0 +1,33 @@
+name: UserInvitationRegistry
+methods:
+  Send:
+    name: Send
+    comment: Invite a user to join the network.
+    input:
+      name: SendInvitationRequest
+    output:
+      name: Invitation
+    http:
+    - method: POST
+      path: /invitations
+  List:
+    name: List
+    comment: List the invitations the caller has sent.
+    input:
+      name: ListInvitationsRequest
+    output:
+      name: Invitations
+    http:
+    - method: GET
+      path: /invitations
+  Delete:
+    name: Delete
+    comment: Delete (revoke) a user invitation.
+    input:
+      name: DeleteInvitationRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /invitations

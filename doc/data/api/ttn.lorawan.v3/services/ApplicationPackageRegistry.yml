@@ -1,0 +1,100 @@
+name: ApplicationPackageRegistry
+methods:
+  List:
+    name: List
+    comment: List returns the available packages for the end device.
+    input:
+      name: EndDeviceIdentifiers
+    output:
+      name: ApplicationPackages
+    http:
+    - method: GET
+      path: /as/applications/{application_ids.application_id}/devices/{device_id}/packages
+  GetAssociation:
+    name: GetAssociation
+    comment: GetAssociation returns the association registered on the FPort of the
+      end device.
+    input:
+      name: GetApplicationPackageAssociationRequest
+    output:
+      name: ApplicationPackageAssociation
+    http:
+    - method: GET
+      path: /as/applications/{ids.end_device_ids.application_ids.application_id}/devices/{ids.end_device_ids.device_id}/packages/associations/{ids.f_port}
+  ListAssociations:
+    name: ListAssociations
+    comment: ListAssociations returns all of the associations of the end device.
+    input:
+      name: ListApplicationPackageAssociationRequest
+    output:
+      name: ApplicationPackageAssociations
+    http:
+    - method: GET
+      path: /as/applications/{ids.application_ids.application_id}/devices/{ids.device_id}/packages/associations
+  SetAssociation:
+    name: SetAssociation
+    comment: SetAssociation updates or creates the association on the FPort of the
+      end device.
+    input:
+      name: SetApplicationPackageAssociationRequest
+    output:
+      name: ApplicationPackageAssociation
+    http:
+    - method: PUT
+      path: /as/applications/{association.ids.end_device_ids.application_ids.application_id}/devices/{association.ids.end_device_ids.device_id}/packages/associations/{association.ids.f_port}
+  DeleteAssociation:
+    name: DeleteAssociation
+    comment: DeleteAssociation removes the association on the FPort of the end device.
+    input:
+      name: ApplicationPackageAssociationIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /as/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}/packages/associations/{f_port}
+  GetDefaultAssociation:
+    name: GetDefaultAssociation
+    comment: GetDefaultAssociation returns the default association registered on the
+      FPort of the application.
+    input:
+      name: GetApplicationPackageDefaultAssociationRequest
+    output:
+      name: ApplicationPackageDefaultAssociation
+    http:
+    - method: GET
+      path: /as/applications/{ids.application_ids.application_id}/packages/associations/{ids.f_port}
+  ListDefaultAssociations:
+    name: ListDefaultAssociations
+    comment: ListDefaultAssociations returns all of the default associations of the
+      application.
+    input:
+      name: ListApplicationPackageDefaultAssociationRequest
+    output:
+      name: ApplicationPackageDefaultAssociations
+    http:
+    - method: GET
+      path: /as/applications/{ids.application_id}/packages/associations
+  SetDefaultAssociation:
+    name: SetDefaultAssociation
+    comment: SetDefaultAssociation updates or creates the default association on the
+      FPort of the application.
+    input:
+      name: SetApplicationPackageDefaultAssociationRequest
+    output:
+      name: ApplicationPackageDefaultAssociation
+    http:
+    - method: PUT
+      path: /as/applications/{default.ids.application_ids.application_id}/packages/associations/{default.ids.f_port}
+  DeleteDefaultAssociation:
+    name: DeleteDefaultAssociation
+    comment: DeleteDefaultAssociation removes the default association on the FPort
+      of the application.
+    input:
+      name: ApplicationPackageDefaultAssociationIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /as/applications/{application_ids.application_id}/packages/associations/{f_port}

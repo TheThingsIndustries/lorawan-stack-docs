@@ -1,0 +1,26 @@
+name: ScheduleDownlinkResponse
+fields:
+- name: delay
+  comment: The amount of time between the message has been scheduled and it will be
+    transmitted by the gateway.
+  message:
+    package: google.protobuf
+    name: Duration
+  default: 0s
+- name: downlink_path
+  comment: Downlink path chosen by the Gateway Server.
+  message:
+    name: DownlinkPath
+  default: {}
+- name: rx1
+  comment: |-
+    Whether RX1 has been chosen for the downlink message.
+    Both RX1 and RX2 can be used for transmitting the same message by the same gateway.
+  type: bool
+  default: false
+- name: rx2
+  comment: |-
+    Whether RX2 has been chosen for the downlink message.
+    Both RX1 and RX2 can be used for transmitting the same message by the same gateway.
+  type: bool
+  default: false

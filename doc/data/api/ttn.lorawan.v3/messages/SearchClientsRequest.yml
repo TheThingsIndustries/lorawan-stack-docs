@@ -1,0 +1,71 @@
+name: SearchClientsRequest
+comment: This message is used for finding OAuth clients in the EntityRegistrySearch
+  service.
+fields:
+- name: id_contains
+  comment: Find OAuth clients where the ID contains this substring.
+  type: string
+  rules:
+    max_len: 50
+  default: ""
+- name: name_contains
+  comment: Find OAuth clients where the name contains this substring.
+  type: string
+  rules:
+    max_len: 50
+  default: ""
+- name: description_contains
+  comment: Find OAuth clients where the description contains this substring.
+  type: string
+  rules:
+    max_len: 50
+  default: ""
+- name: attributes_contain
+  comment: Find OAuth clients where the given attributes contain these substrings.
+  rules:
+    max_pairs: 10
+  map_key:
+    type: string
+    rules:
+      max_len: 36
+      pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+  map_value:
+    type: string
+    rules:
+      max_len: 50
+  default: {}
+- name: state
+  comment: Find OAuth clients where the state is any of these states.
+  rules:
+    unique: true
+  repeated:
+    enum:
+      name: State
+    rules:
+      defined_only: true
+  default: []
+- name: field_mask
+  message:
+    package: google.protobuf
+    name: FieldMask
+  default: {}
+- name: order
+  comment: |-
+    Order the results by this field path (must be present in the field mask).
+    Default ordering is by ID. Prepend with a minus (-) to reverse the order.
+  type: string
+  default: ""
+- name: limit
+  comment: Limit the number of results per page.
+  type: uint32
+  rules:
+    lte: 1000
+  default: 0
+- name: page
+  comment: Page number for pagination. 0 is interpreted as 1.
+  type: uint32
+  default: 0
+- name: deleted
+  comment: Only return recently deleted OAuth clients.
+  type: bool
+  default: false

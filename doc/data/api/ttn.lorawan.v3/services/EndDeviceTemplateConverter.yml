@@ -1,0 +1,24 @@
+name: EndDeviceTemplateConverter
+methods:
+  ListFormats:
+    name: ListFormats
+    comment: Returns the configured formats to convert from.
+    input:
+      package: google.protobuf
+      name: Empty
+    output:
+      name: EndDeviceTemplateFormats
+    http:
+    - method: GET
+      path: /edtc/formats
+  Convert:
+    name: Convert
+    comment: Converts the binary data to a stream of end device templates.
+    input:
+      name: ConvertEndDeviceTemplateRequest
+    output:
+      name: EndDeviceTemplate
+      stream: true
+    http:
+    - method: POST
+      path: /edtc/convert

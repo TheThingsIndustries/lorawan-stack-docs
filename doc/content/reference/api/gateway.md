@@ -59,6 +59,8 @@ The Gateway Server exposes the list of available frequency plans with the `Confi
 
 {{< proto/message message="FrequencyPlanDescription" >}}
 
+{{< proto/message message="Gateway.LRFHSS" >}}
+
 {{< proto/message message="Gateway" >}}
 
 {{< proto/message message="GatewayAntenna" >}}
@@ -112,6 +114,8 @@ The Gateway Server exposes the list of available frequency plans with the `Confi
 ## Enums
 
 {{< proto/enum enum="DownlinkPathConstraint" >}}
+
+{{< proto/enum enum="GatewayAntennaPlacement" >}}
 
 {{< proto/enum enum="LocationSource" >}}
 

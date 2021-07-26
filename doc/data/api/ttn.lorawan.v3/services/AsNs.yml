@@ -1,0 +1,31 @@
+name: AsNs
+comment: The AsNs service connects an Application Server to a Network Server.
+methods:
+  DownlinkQueueReplace:
+    name: DownlinkQueueReplace
+    comment: |-
+      Replace the entire downlink queue with the specified messages.
+      This can also be used to empty the queue by specifying no messages.
+      Note that this will trigger an immediate downlink if a downlink slot is available.
+    input:
+      name: DownlinkQueueRequest
+    output:
+      package: google.protobuf
+      name: Empty
+  DownlinkQueuePush:
+    name: DownlinkQueuePush
+    comment: |-
+      Push downlink messages to the end of the downlink queue.
+      Note that this will trigger an immediate downlink if a downlink slot is available.
+    input:
+      name: DownlinkQueueRequest
+    output:
+      package: google.protobuf
+      name: Empty
+  DownlinkQueueList:
+    name: DownlinkQueueList
+    comment: List the items currently in the downlink queue.
+    input:
+      name: EndDeviceIdentifiers
+    output:
+      name: ApplicationDownlinks

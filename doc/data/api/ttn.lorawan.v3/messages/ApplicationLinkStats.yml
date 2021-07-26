@@ -1,0 +1,36 @@
+name: ApplicationLinkStats
+comment: Link stats as monitored by the Application Server.
+fields:
+- name: linked_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: network_server_address
+  type: string
+  rules:
+    pattern: ^(?:(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*(?:[A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])(?::[0-9]{1,5})?$|^$
+  default: ""
+- name: last_up_received_at
+  comment: |-
+    Timestamp when the last upstream message has been received from a Network Server.
+    This can be a join-accept, uplink message or downlink message event.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: up_count
+  comment: Number of upstream messages received.
+  type: uint64
+  default: 0
+- name: last_downlink_forwarded_at
+  comment: Timestamp when the last downlink message has been forwarded to a Network
+    Server.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: downlink_count
+  comment: Number of downlink messages forwarded.
+  type: uint64
+  default: 0

@@ -1,0 +1,20 @@
+name: JoinAcceptMICRequest
+fields:
+- name: payload_request
+  comment: Request data for the cryptographic operation.
+  message:
+    name: CryptoServicePayloadRequest
+  rules:
+    required: true
+  default: {}
+- name: join_request_type
+  comment: LoRaWAN join-request type.
+  enum:
+    name: JoinRequestType
+  rules:
+    defined_only: true
+  default: REJOIN_CONTEXT
+- name: dev_nonce
+  comment: LoRaWAN DevNonce.
+  type: bytes
+  default: ""

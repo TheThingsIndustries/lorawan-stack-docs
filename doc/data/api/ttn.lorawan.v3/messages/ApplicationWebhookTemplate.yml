@@ -1,0 +1,103 @@
+name: ApplicationWebhookTemplate
+fields:
+- name: ids
+  message:
+    name: ApplicationWebhookTemplateIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: name
+  type: string
+  rules:
+    max_len: 20
+  default: ""
+- name: description
+  type: string
+  rules:
+    max_len: 100
+  default: ""
+- name: logo_url
+  type: string
+  rules:
+    uri: true
+  default: ""
+- name: info_url
+  type: string
+  rules:
+    uri: true
+  default: ""
+- name: documentation_url
+  type: string
+  rules:
+    uri: true
+  default: ""
+- name: base_url
+  comment: The base URL of the template. Can contain template fields, in RFC 6570
+    format.
+  type: string
+  rules:
+    uri: true
+  default: ""
+- name: headers
+  comment: The HTTP headers used by the template. Both the key and the value can contain
+    template fields.
+  map_key:
+    type: string
+  map_value:
+    type: string
+  default: {}
+- name: format
+  type: string
+  rules:
+    max_len: 20
+    pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+  default: ""
+- name: fields
+  repeated:
+    message:
+      name: ApplicationWebhookTemplateField
+  default: []
+- name: create_downlink_api_key
+  comment: Control the creation of the downlink queue operations API key.
+  type: bool
+  default: false
+- name: uplink_message
+  message:
+    name: ApplicationWebhookTemplate.Message
+  default: {}
+- name: join_accept
+  message:
+    name: ApplicationWebhookTemplate.Message
+  default: {}
+- name: downlink_ack
+  message:
+    name: ApplicationWebhookTemplate.Message
+  default: {}
+- name: downlink_nack
+  message:
+    name: ApplicationWebhookTemplate.Message
+  default: {}
+- name: downlink_sent
+  message:
+    name: ApplicationWebhookTemplate.Message
+  default: {}
+- name: downlink_failed
+  message:
+    name: ApplicationWebhookTemplate.Message
+  default: {}
+- name: downlink_queued
+  message:
+    name: ApplicationWebhookTemplate.Message
+  default: {}
+- name: downlink_queue_invalidated
+  message:
+    name: ApplicationWebhookTemplate.Message
+  default: {}
+- name: location_solved
+  message:
+    name: ApplicationWebhookTemplate.Message
+  default: {}
+- name: service_data
+  message:
+    name: ApplicationWebhookTemplate.Message
+  default: {}

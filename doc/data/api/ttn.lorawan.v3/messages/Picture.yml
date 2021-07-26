@@ -1,0 +1,18 @@
+name: Picture
+fields:
+- name: embedded
+  comment: |-
+    Embedded picture.
+    Omitted if there are external URLs available (in sizes).
+  message:
+    name: Picture.Embedded
+  default: {}
+- name: sizes
+  comment: URLs of the picture for different sizes, if available on a CDN.
+  map_key:
+    type: uint32
+  map_value:
+    type: string
+    rules:
+      uri_ref: true
+  default: {}

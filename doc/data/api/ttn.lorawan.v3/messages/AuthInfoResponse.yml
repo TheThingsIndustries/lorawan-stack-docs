@@ -1,0 +1,32 @@
+name: AuthInfoResponse
+fields:
+- name: api_key
+  message:
+    name: AuthInfoResponse.APIKeyAccess
+  default: {}
+- name: oauth_access_token
+  message:
+    name: OAuthAccessToken
+  default: {}
+- name: user_session
+  comment: |-
+    Warning: A user authorized by session cookie will be granted all
+    current and future rights. When using this auth type, the respective
+    handlers need to ensure thorough CSRF and CORS protection using
+    appropriate middleware.
+  message:
+    name: UserSession
+  default: {}
+- name: universal_rights
+  message:
+    name: Rights
+  default: {}
+- name: is_admin
+  type: bool
+  default: false
+oneofs:
+- name: access_method
+  field_names:
+  - api_key
+  - oauth_access_token
+  - user_session

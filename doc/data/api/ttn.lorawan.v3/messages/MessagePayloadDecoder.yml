@@ -1,0 +1,26 @@
+name: MessagePayloadDecoder
+fields:
+- name: formatter
+  comment: Payload formatter type.
+  enum:
+    name: PayloadFormatter
+  rules:
+    defined_only: true
+  default: FORMATTER_NONE
+- name: formatter_parameter
+  comment: Parameter for the formatter, must be set together.
+  type: string
+  default: ""
+- name: codec_id
+  type: string
+  rules:
+    max_len: 36
+    pattern: ^([a-z0-9](?:[-]?[a-z0-9]){2,}|)?$
+  default: ""
+- name: examples
+  rules:
+    max_items: 20
+  repeated:
+    message:
+      name: MessagePayloadDecoder.Example
+  default: []

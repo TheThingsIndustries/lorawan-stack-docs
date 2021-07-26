@@ -1,0 +1,115 @@
+name: EndDeviceModel
+fields:
+- name: brand_id
+  comment: Brand identifier, as defined in the Device Repository.
+  type: string
+  rules:
+    max_len: 36
+    pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+  default: ""
+- name: model_id
+  comment: Model identifier, as defined in the Device Repository.
+  type: string
+  rules:
+    max_len: 36
+    pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+  default: ""
+- name: name
+  comment: Model name, as defined in the Device Repository.
+  type: string
+  rules:
+    max_len: 50
+  default: ""
+- name: description
+  comment: Model description.
+  type: string
+  rules:
+    max_len: 2000
+  default: ""
+- name: hardware_versions
+  comment: Available hardware versions.
+  repeated:
+    message:
+      name: EndDeviceModel.HardwareVersion
+  default: []
+- name: firmware_versions
+  comment: Available firmware versions.
+  repeated:
+    message:
+      name: EndDeviceModel.FirmwareVersion
+  default: []
+- name: sensors
+  comment: List of sensors included in the device.
+  repeated:
+    type: string
+  default: []
+- name: dimensions
+  comment: Device dimensions.
+  message:
+    name: EndDeviceModel.Dimensions
+  default: {}
+- name: weight
+  comment: Device weight (gram).
+  message:
+    package: google.protobuf
+    name: FloatValue
+  default: null
+- name: battery
+  comment: Device battery information.
+  message:
+    name: EndDeviceModel.Battery
+  default: {}
+- name: operating_conditions
+  comment: Device operating conditions.
+  message:
+    name: EndDeviceModel.OperatingConditions
+  default: {}
+- name: ip_code
+  comment: Device IP rating code.
+  type: string
+  default: ""
+- name: key_provisioning
+  comment: Supported key provisioning methods.
+  repeated:
+    enum:
+      name: KeyProvisioning
+  default: []
+- name: key_security
+  comment: Device key security.
+  enum:
+    name: KeySecurity
+  default: KEY_SECURITY_UNKNOWN
+- name: photos
+  comment: Device photos.
+  message:
+    name: EndDeviceModel.Photos
+  default: {}
+- name: videos
+  comment: Device videos.
+  message:
+    name: EndDeviceModel.Videos
+  default: {}
+- name: product_url
+  comment: Device information page URL.
+  type: string
+  default: ""
+- name: datasheet_url
+  comment: Device datasheet URL.
+  type: string
+  default: ""
+- name: resellers
+  comment: Reseller URLs.
+  repeated:
+    message:
+      name: EndDeviceModel.Reseller
+  default: []
+- name: compliances
+  comment: List of standards the device is compliant with.
+  message:
+    name: EndDeviceModel.Compliances
+  default: {}
+- name: additional_radios
+  comment: List of any additional radios included in the device.
+  repeated:
+    type: string
+  default: []
