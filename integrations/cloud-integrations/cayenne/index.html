@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>AWS IoT | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/" />
+  <title>Cayenne | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cayenne/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.25b30cdd256bfe2021b3a162f05871509954bca5cc3a6e85d1f515ea9ed6aa0f.css" integrity="sha256-JbMM3SVr/iAhs6Fi8FhxUJlUvKXMOm6F0fUV6p7Wqg8=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="AWS IoT">
+  <meta itemprop="name" content="Cayenne">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="AWS IoT">
+  <meta property="og:title" content="Cayenne">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/">
-  <meta name="twitter:title" content="AWS IoT" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cayenne/">
+  <meta name="twitter:title" content="Cayenne" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -104,26 +104,7 @@
 <ul class="menu-list">
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/" class="is-active">AWS IoT</a>
-    
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/default/" class="">Default Integration</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/application-server-telemetry/" class="">Application Server Telemetry</a>
-    
-  </li>
-
-</ul>
-
-
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/" class="">AWS IoT</a>
     
   </li>
 
@@ -133,7 +114,12 @@
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cayenne/" class="">Cayenne</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cayenne/" class="is-active">Cayenne</a>
+    
+    
+
+
+
     
   </li>
 
@@ -248,225 +234,98 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">AWS IoT
+        <h1 class="title is-size-2">Cayenne
           
         </h1>
         
         <div class="content">
-          <p>The Things Stack integrates directly with AWS IoT via a default integration that you deploy in your AWS account via CloudFormation.</p>
-<p>You can also configure The Things Stack to connect to your AWS IoT Core endpoint via AWS access keys and role-based access control using custom configuration.</p>
-<p>When running The Things Stack in your AWS account, you can publish Application Server telemetry to your IoT Core endpoint.</p>
+          <p><a href="https://cayenne.mydevices.com/">Cayenne</a> is a drag-and-drop IoT platform, developed by <a href="https://mydevices.com/about/">myDevices</a>, that empowers users to quickly prototype and share their connected IoT solutions.</p>
+<p>Check the <a href="https://developers.mydevices.com/cayenne/docs/intro/">official Cayenne documentation page</a> for more info.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
-<li>You need to have The Things Stack deployed in AWS. See the <a href="https://www.thethingsindustries.com/docs/getting-started/aws/">AWS</a> guide to learn how.</li>
+<li>A <a href="https://cayenne.mydevices.com">user account on Cayenne</a>.</li>
+<li>Message payload in <a href="https://docs.mydevices.com/docs/lorawan/cayenne-lpp">Cayenne Low Power Payload (LPP)</a> format.</li>
 </ol>
-<h2 id="default-integration">Default Integration</h2>
-<p>
+<h2 id="setup-cayenne">Setup Cayenne</h2>
+<p>Log in to the Cayenne platform.</p>
+<p>First, you need to <strong>Choose a device to start a project</strong>. Choose <strong>LoRa</strong>.</p>
+<figure>
+    <img src="start-screen.png"
+         alt="Choose a device"/> 
+</figure>
+
+<p>You will be presented with a list of LoRaWAN networks you can connect your devices from and a list of device models you can connect to Cayenne. Scroll through the list of networks on the left and choose <strong>The Things Network</strong>, then select the model of your end device.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <p>You can choose the device model, but you can also choose <strong>Cayenne LPP</strong>. Most of devices in the list are associated with the Cayenne LPP codec, but if you are experiencing issues, try using the <strong>Cayenne LPP</strong> instead.</p>
+<p>In this guide, we chose <strong>Cayenne LPP</strong>.</p>
 
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-  
-
-  
-
-  
-
-  
-
-<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud, Dedicated Cloud, Enterprise and Community Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
-
-  <img class="badge" src="/docs/img/tts_frames/frame_dedicated_cloud.svg"></img>
-
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
-
-  <img class="badge" src="/docs/img/tts_frames/frame_ttn.svg"></img>
-
-</a>
-
-
- The recommended way to integrate with AWS IoT is by using the <strong>Default Integration</strong> for The Things Stack. This integration is the most feature rich and supports all deployments of The Things Stack. The Default Integration comes with a AWS CloudFormation template to deploy in your AWS account.</p>
-<p><a href="/docs/integrations/cloud-integrations/aws-iot/default/">Learn how to set up the default AWS IoT integration</a></p>
-<h2 id="application-server-telemetry">Application Server Telemetry</h2>
-<p>
-
-
-
-
-
-
-  
-    
-  
-
-
-
-  
-
-<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="AWS Launcher Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_aws.svg"></img>
-
-</a>
-
-
- <span class="tag is-danger is-light">Deprecated in 3.11.1</span>
-
- This is a simple integration that only supports publishing uplink messages and requires The Things Stack to run in your AWS account. This is typically only used for <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ami/">AWS Marketplace AMI</a> deployments.</p>
-<p><a href="/docs/integrations/cloud-integrations/aws-iot/application-server-telemetry/">Learn how to use Application Server Telemetry</a></p>
-        </div>
-        
-          <div class="columns is-multiline">
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/default/">Default Integration</a>
-          </h1>
-          
-          <h2 class="subtitle">
-            
-              
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-  
-
-  
-
-  
-
-  
-
-<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud, Dedicated Cloud, Enterprise and Community Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
-
-  <img class="badge" src="/docs/img/tts_frames/frame_dedicated_cloud.svg"></img>
-
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
-
-  <img class="badge" src="/docs/img/tts_frames/frame_ttn.svg"></img>
-
-</a>
-
-
-            
-            
-            
-          </h2>
-          
-          <div class="content has-text-grey">
-            The key features of the Default Integration are:
- Handling uplink and downlink messages: The Things Stack publishes uplink messages to IoT Core and subscribes to downlink messages Creating and claiming devices: manage things in IoT Core, or claim things securely on The Things Join Server by proving ownership Encrypting and decrypting message payloads: leverage true LoRaWAN end-to-end encryption by unwrapping the AppSKey from the Join Server Updating device state in shadow: monitor devices using useful metrics reported in the shadow state, like signal quality and number of covering gateways  This integration comes with a AWS CloudFormation template to deploy in your AWS account.
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/default/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/application-server-telemetry/">Application Server Telemetry</a>
-          </h1>
-          
-          <h2 class="subtitle">
-            
-              
-
-  
-
-
-
-
-
-  
-    
-  
-
-
-
-  
-
-<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="AWS Launcher Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_aws.svg"></img>
-
-</a>
-
-
-            
-            
-            
-              <span class="tag is-danger is-light">Deprecated in 3.11.1</span>
-
-            
-          </h2>
-          
-          <div class="content has-text-grey">
-            The Things Stack supports publishing of uplink messages directly to the AWS IoT suite.
-Warning: This integration will be removed in a next version. Please switch to the Default Integration instead.  AWS IoT suite can be used to subscribe to detailed uplink messages as well as get insights into aggregated metrics of your uplink data.
-Note: This only works if The Things Stack runs in your AWS account, i.e. in a Enterprise or AWS Launcher deployment.
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/application-server-telemetry/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
+<figure>
+    <img src="choose-ttn-device.png"
+         alt="Choose network and device model"/> 
+</figure>
+
+<p>To add your device, you will need to give it a <strong>Name</strong> (you can leave the pre-defined one) and provide its <strong>DevEUI</strong>.</p>
+<p>Since in this guide we assume your end device is already connected to The Things Stack, choose <strong>Already Registered</strong> for the <strong>Activation Mode</strong>.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  If your device is not connected to The Things Stack, see <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> section for instructions on how to register it.
+</div>
+
+<p>What you choose under <strong>Tracking → Location</strong> depends on the model of your device, i.e. if it can provide location coordinates or not. If you choose <strong>This device doesn&rsquo;t move</strong>, you will need to provide a static location of your device.</p>
+<p>Click <strong>Add device</strong> to finish.</p>
+<figure>
+    <img src="add-device.png"
+         alt="Adding device info"/> 
+</figure>
+
+<p>Once you finish creating a new device, you will be presented with its dashboard.</p>
+<p>The <strong>Overview</strong> tab usually contains a map showing the device location (static or dynamic), and widgets showing sensor data. These widgets will be automatically loaded once data from The Things Stack reaches Cayenne.</p>
+<p>The <strong>Data</strong> tab will show the incoming live data, and you will be able to see historic data as well.</p>
+<figure>
+    <img src="device-overview.png"
+         alt="Device overview"/> 
+</figure>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Note the <strong>Last data packet sent: - -</strong> in the bottom of the image below, indicating that The Things Stack data still has not reached Cayenne.
+</div>
+
+<h2 id="configure-the-things-stack">Configure The Things Stack</h2>
+<p>After preparing the setup on Cayenne, use the Cayenne <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a> to create a Webhook integration on The Things Stack.</p>
+<p>To integrate, you only need to fill out the <strong>Webhook ID</strong> field. The <strong>Client ID</strong> field is optional, so you can leave it empty.</p>
+<figure>
+    <img src="cayenne-webhook-template.png"
+         alt="Cayenne Webhook template"/> 
+</figure>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  To see the values of all parameters of the Cayenne integration, click on the integration after you created it with the Webhook template.
+</div>
+
+<h2 id="monitor-your-data">Monitor Your Data</h2>
+<p>As soon as new uplink message containing CayenneLPP-encoded sensor data is sent from your end device, the widgets showing this data will automatically load on your device&rsquo;s Cayenne dashboard, enabling you to monitor your data in a user friendly way.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <strong>RSSI</strong> and <strong>SNR</strong> are loaded from uplink message metadata.
+</div>
+
+<p>You can see the time of the arrival of the last message in the bottom.</p>
+<figure>
+    <img src="monitor-data.png"
+         alt="Monitor your data"/> 
+</figure>
+
+<p>Now you can switch to <strong>Data</strong> tab to see full incoming data records, create new widgets, events, triggers, etc. Have fun!</p>
+        </div>
         
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/">← Cloud Integrations</a>
-<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/aws-iot/default/">Default Integration →</a>
+<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/akenza-core/">← Akenza Core</a>
+<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/datacake/">Datacake →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -490,10 +349,13 @@ Note: This only works if The Things Stack runs in your AWS account, i.e. in a En
       <li><a href='#prerequisites'>Prerequisites</a></li>
     
       
-      <li><a href='#default-integration'>Default Integration</a></li>
+      <li><a href='#setup-cayenne'>Setup Cayenne</a></li>
     
       
-      <li><a href='#application-server-telemetry'>Application Server Telemetry</a></li>
+      <li><a href='#configure-the-things-stack'>Configure The Things Stack</a></li>
+    
+      
+      <li><a href='#monitor-your-data'>Monitor Your Data</a></li>
     
   </ul>
 
@@ -533,14 +395,14 @@ Note: This only works if The Things Stack runs in your AWS account, i.e. in a En
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 10 Jun 2021.
+  Last changed by Nejra Selimović on 26 Jul 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/aea847e4a5b06db18fe91950625da9cc60eaf291">
-      Docs reorganization (#374)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2b2c3936b6bf91e617460427879f1ed7e1207d83">
+      doc: Add Cayenne guide (#464)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/cloud-integrations/aws-iot/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/cloud-integrations/cayenne/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
