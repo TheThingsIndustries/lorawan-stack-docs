@@ -1,7 +1,6 @@
 ---
 title: "Billing with Stripe"
 description: ""
-weight: 50
 distributions: ["Cloud", "Enterprise"]
 ---
 
