@@ -137,7 +137,7 @@ If the file exists already, it is not overwritten and an error is printed instea
 
 {{< note >}} You can also use the `--grpc-port` and `--oauth-server-address` flags to override the default values for the gRPC port and the OAuth server address. These are not needed for standard deployments. {{</ note >}}
 
-{{< note >}} If you are using an `https` port other than `443` (for example if you are running {{% tts %}} on localhost), you need to specify the OAuth server address by appending the `--oauth-server-address="https://localhost:8885/oauth"` flag when running the CLI. 
+{{< note >}} If you are using an `https` port other than `443` (for example if you are running {{% tts %}} on localhost), you need to specify the OAuth server address by appending the `--oauth-server-address="https://thethings.example.com:8885/oauth"` flag when running the CLI. 
 
 If you are using a [custom certificate authority]({{< ref "/getting-started/installation/certificates#custom-certificate-authority" >}}), you will have to specify the `--ca="/path/to/ca.pem"` flag when running the CLI. {{</ note >}}
 
@@ -178,7 +178,7 @@ qr-code-generator-grpc-address: 'thethings.example.com:8884'
 If you are using an `https` port other than `443` (for example if running {{% tts %}} on localhost), you need to specify that port, e.g.:
 
 ```yaml
-oauth-server-address: 'https://thethings.example:8885/oauth'
+oauth-server-address: 'https://thethings.example.com:8885/oauth'
 ```
 
 If your deployment uses a custom certificate authority, you will need to add the following line in the configuration file:
