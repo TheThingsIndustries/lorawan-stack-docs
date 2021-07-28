@@ -31,11 +31,13 @@ Create a gateway by following the instructions for [Adding Gateways]({{< ref "/g
 
 For the first-time hardware and software setup, you can refer to the appropriate configuration guide on the [Multitech documentation](http://www.multitech.net/developer/products/multiconnect-conduit-platform/conduit/) page.
 
-We have included a few short steps to help you get started.
+We have included a few short steps to help you get started. If your gateway is already configured on your local network, skip ahead to [Connecting The Gateway to {{% tts %}}](#connecting-the-gateway-to-the-things-stack).
 
 ### Connecting to the Gateway as a DHCP Server
 
-Since the gateway initializes as a DHCP server, you may have to configure TCP/IP manually. After hard resetting the device, we connected it directly to a computer via ethernet and used the following TCP/IP settings:
+If you have already connected your gateway to your local network and you can access its configuration page via the gateway's IP address, skip ahead to [Connecting The Gateway to {{% tts %}}](#connecting-the-gateway-to-the-things-stack).
+
+Since the gateway initializes as a DHCP **server**, you can not simply connect it to your local network, and you may have to configure TCP/IP manually. After hard resetting the device, connect it **directly to a computer via ethernet** and use the following TCP/IP settings:
 
 - IP Address: 192.168.2.2
 - Subnet Mask: 255.255.255.0
@@ -91,7 +93,7 @@ At this point, the gateway will reboot. It will come back online as a DHCP clien
 
 ## Connecting the Gateway to {{% tts %}}
 
-The Multitech Conduit supports {{% lbs %}} and the legacy UDP packet forwarder. {{% lbs %}} is more secure and supports configuration of custom channel plans, amongst other improvements. {{% tts %}} supports {{% lbs %}}, so please follow instructions to [Connect Multitech Conduit with {{% lbs %}}]({{< relref "lbs" >}}).
+The Multitech Conduit supports {{% lbs %}} and the legacy UDP packet forwarder. {{% lbs %}} is more secure and supports configuration of custom channel plans, amongst other improvements. Please follow instructions to [Connect Multitech Conduit with {{% lbs %}}]({{< relref "lbs" >}}).
 
 If for some reason {{% lbs %}} is not available to you, instructions for connecting with the legacy packet forwarder are [here]({{< relref "udp" >}}).
 
