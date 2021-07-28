@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.13</p>
+        <p class="navbar-item is-size-7">v3.14</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -2458,6 +2458,7 @@ If null, the time is selected based on slot availability. This is recommended in
   "consumed_airtime": "0s",
   "locations": {},
   "version_ids": {},
+  "network_ids": {},
 }</code></pre>
 </details>
 
@@ -3031,18 +3032,65 @@ Can be used with app_s_key to encrypt downlink payloads.</p>
   </tbody>
 </table>
 
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>network_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:NetworkIdentifiers">
+  
+  <code>
+    
+    NetworkIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Network identifiers, set by the Network Server that handles the message.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
 
 
 <h3 id="message:DataRate">Message <code>DataRate</code></h3>
 <b>Restrictions:</b>
 <ul>
-  <li>Only one of <code>lora</code>, <code>fsk</code> can be set.</li>
+  <li>Only one of <code>lora</code>, <code>fsk</code>, <code>lrfhss</code> can be set.</li>
 </ul>
 
 <details><summary>Show object example</summary>
 <pre><code>{
   "lora": {},
   "fsk": {},
+  "lrfhss": {},
 }</code></pre>
 </details>
 
@@ -3111,6 +3159,43 @@ Can be used with app_s_key to encrypt downlink payloads.</p>
   <code>
     
     FSKDataRate
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>lrfhss</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:LRFHSSDataRate">
+  
+  <code>
+    
+    LRFHSSDataRate
   </code>
   
     </a>
@@ -3352,6 +3437,7 @@ Can be used with app_s_key to encrypt downlink payloads.</p>
         Description
       </th>
       <td>
+          <p><code>ignore_empty</code></p>
           <p><code>max_len</code>: <code>36</code></p>
           <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
       </td>
@@ -3385,6 +3471,7 @@ Can be used with app_s_key to encrypt downlink payloads.</p>
         Description
       </th>
       <td>
+          <p><code>ignore_empty</code></p>
           <p><code>max_len</code>: <code>36</code></p>
           <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
       </td>
@@ -4215,6 +4302,186 @@ traces the network may (or may not) store about recent errors.</p>
 
 
 
+<h3 id="message:LRFHSSDataRate">Message <code>LRFHSSDataRate</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "modulation_type": 0,
+  "operating_channel_width": 0,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>modulation_type</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>operating_channel_width</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Operating Channel Width (kHz).</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:NetworkIdentifiers">Message <code>NetworkIdentifiers</code></h3>
+<p>Identifies a Network Server.</p>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "net_id": "",
+  "tenant_id": "",
+  "cluster_id": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>net_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>LoRa Alliance NetID.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>tenant_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Optional tenant identifier for multi-tenant deployments.</p>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$|^$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>cluster_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Cluster identifier of the Network Server.</p>
+          <p><code>max_len</code>: <code>64</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
 <h3 id="message:TxSettings.Downlink">Message <code>TxSettings.Downlink</code></h3>
 <p>Transmission settings for downlink.</p>
 
@@ -4912,6 +5179,10 @@ For downlink, this requires the gateway to have GPS time synchronization.</p>
 
 	
 
+	
+
+	
+
 
         </div>
         <div class="is-clearfix">
@@ -4983,10 +5254,10 @@ For downlink, this requires the gateway to have GPS time synchronization.</p>
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 12 Jul 2021.
+  Last changed by Nejra Selimović on 28 Jul 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f3394edb26008b428a8fc5d32c7691290353445b">
-      Add missing API messages and enums (fix broken links) (#442)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/9d8cffeb3d65851a4e7ce4446abcd9a700ed7bba">
+      doc: Create v3.14.0 release docs, add missing refs (#482)
     </a>
 </p>
 

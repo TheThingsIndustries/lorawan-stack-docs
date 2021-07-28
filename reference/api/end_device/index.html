@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.13</p>
+        <p class="navbar-item is-size-7">v3.14</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -1207,6 +1207,7 @@ SDKs are responsible for combining (if desired) the three.</p>
   "claim_authentication_code": {},
   "skip_payload_crypto": false,
   "skip_payload_crypto_override": null,
+  "activated_at": "0001-01-01T00:00:00Z",
 }</code></pre>
 </details>
 
@@ -3110,6 +3111,52 @@ This field overrides the application-level setting.</p>
   </tbody>
 </table>
 
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>activated_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Timestamp when the device has been activated. Stored in the Entity Registry.
+This field is set by the Application Server when an end device sends
+its first uplink.
+The Application Server will use the field in order to avoid repeated
+calls to the Entity Registry.
+The field cannot be unset once set.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
 
 
 <h3 id="message:EndDeviceAuthenticationCode">Message <code>EndDeviceAuthenticationCode</code></h3>
@@ -3504,6 +3551,7 @@ This field overrides the application-level setting.</p>
         Description
       </th>
       <td>
+          <p><code>ignore_empty</code></p>
           <p><code>max_len</code>: <code>36</code></p>
           <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
       </td>
@@ -3537,6 +3585,7 @@ This field overrides the application-level setting.</p>
         Description
       </th>
       <td>
+          <p><code>ignore_empty</code></p>
           <p><code>max_len</code>: <code>36</code></p>
           <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
       </td>
@@ -11195,38 +11244,58 @@ defined by the selected frequency plan.</p>
       <td> </td>
     </tr>
     <tr>
-      <td><code>PHY_V1_0</code></td>
+      <td><code>TS001_V1_0</code></td>
       <td><code>1</code></td>
       <td> </td>
     </tr>
     <tr>
-      <td><code>PHY_V1_0_1</code></td>
+      <td><code>TS001_V1_0_1</code></td>
       <td><code>2</code></td>
       <td> </td>
     </tr>
     <tr>
-      <td><code>PHY_V1_0_2_REV_A</code></td>
+      <td><code>RP001_V1_0_2</code></td>
       <td><code>3</code></td>
       <td> </td>
     </tr>
     <tr>
-      <td><code>PHY_V1_0_2_REV_B</code></td>
+      <td><code>RP001_V1_0_2_REV_B</code></td>
       <td><code>4</code></td>
       <td> </td>
     </tr>
     <tr>
-      <td><code>PHY_V1_1_REV_A</code></td>
+      <td><code>RP001_V1_1_REV_A</code></td>
       <td><code>5</code></td>
       <td> </td>
     </tr>
     <tr>
-      <td><code>PHY_V1_1_REV_B</code></td>
+      <td><code>RP001_V1_1_REV_B</code></td>
       <td><code>6</code></td>
       <td> </td>
     </tr>
     <tr>
-      <td><code>PHY_V1_0_3_REV_A</code></td>
+      <td><code>RP001_V1_0_3_REV_A</code></td>
       <td><code>7</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>RP002_V1_0_0</code></td>
+      <td><code>8</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>RP002_V1_0_1</code></td>
+      <td><code>9</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>RP002_V1_0_2</code></td>
+      <td><code>10</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>RP002_V1_0_3</code></td>
+      <td><code>11</code></td>
       <td> </td>
     </tr>
   </tbody>

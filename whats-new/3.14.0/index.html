@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>3.10.5 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/whats-new/3.10.5/" />
+  <title>3.14.0 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/whats-new/3.14.0/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.25b30cdd256bfe2021b3a162f05871509954bca5cc3a6e85d1f515ea9ed6aa0f.css" integrity="sha256-JbMM3SVr/iAhs6Fi8FhxUJlUvKXMOm6F0fUV6p7Wqg8=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="The Things Stack for LoRaWAN">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="3.10.5">
+  <meta itemprop="name" content="3.14.0">
   <meta itemprop="description" content="The Things Stack for LoRaWAN">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="3.10.5">
+  <meta property="og:title" content="3.14.0">
   <meta property="og:description" content="The Things Stack for LoRaWAN">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/whats-new/3.10.5/">
-  <meta name="twitter:title" content="3.10.5" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/whats-new/3.14.0/">
+  <meta name="twitter:title" content="3.14.0" />
   <meta name="twitter:description" content="The Things Stack for LoRaWAN" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -92,7 +92,7 @@
 <ul class="menu-list">
 <a href="https://www.thethingsindustries.com/docs/whats-new/" class="">Overview</a>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.14.0/" class="">3.14.0</a>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.14.0/" class="is-active">3.14.0</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.13.3/" class="">3.13.3</a>
@@ -140,7 +140,7 @@
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.10.6/" class="">3.10.6</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.10.5/" class="is-active">3.10.5</a>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.10.5/" class="">3.10.5</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.10.4/" class="">3.10.4</a>
@@ -173,25 +173,94 @@
       </div>
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">3.10.5
+        <h1 class="title is-size-2">3.14.0
         </h1>
 
         <div class="content">
           <h3 id="added">Added</h3>
 <ul>
-<li>Support for sending end device uplinks using the CLI (see <code>ttn-lw-cli simulate application-uplink</code> command).</li>
-<li>Clients can now perform custom ADR by modifying ADR parameters in <code>mac-state.desired-parameters</code> of the device.</li>
+<li>Gateway antenna placement; unknown, indoor or outdoor. This can now be specified with CLI, e.g. for the first antenna: <code>ttn-lw-cli gateways set &lt;gateway-id&gt; --antenna.index 0 --antenna.placement OUTDOOR</code>. The antenna placement will be reported to Packet Broker Mapper.
+<ul>
+<li>This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>) because of the added columns.</li>
+</ul>
+</li>
+<li>Payload formatter length validation in the Console.</li>
+<li>User session management (listing and deleting) in the Identity Server and the CLI.</li>
+<li>Improved logging for the OAuth server.</li>
+<li>LR-FHSS modulation
+<ul>
+<li>Additional fields for the Gateway and Rx Metadata API. This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>) because of the added columns.</li>
+<li>Support for LR-FHSS fields when translating uplink messages with the UDP protocol.</li>
+</ul>
+</li>
+<li>Network Server now appends network identifiers in forwarded uplink messages. These are populated from the <code>ns.net-id</code> and the new <code>ns.cluster-id</code> configuration option.
+<ul>
+<li>See the new <code>uplink_message.network_identifiers.net_id</code>, <code>uplink_message.network_identifiers.cluster_id</code> and <code>uplink_message.network_identifiers.tenant_id</code> fields.</li>
+<li>This can be useful for HTTP webhooks to determine the Network Server that received and forwarded an uplink message.</li>
+</ul>
+</li>
+<li><code>GetDefaultMACSettings</code> RPC for requesting the default and desired MAC settings for a Band (Frequency Plan) and LoRaWAN regional parameters version.</li>
+<li>Error handling for missing templates in device repository form in the Console.</li>
+<li>Cache gateway entity responses for requests made to the IS by the GS. See the new <code>gs.entity-registry-cache.size</code> and <code>gs.entity-registry-cache.timeout</code> configuration options.</li>
+<li>API for searching tenants.</li>
+<li>End device first activation timestamp in the Identity Server end device store.
+<ul>
+<li>This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>) because of the added columns.</li>
+</ul>
+</li>
+<li>Azure IoT Hub integration via an application package.</li>
+<li>Resilience to flakiness in upstream servers during gateway claiming.</li>
+<li>Opt out of Packet Broker for individual gateways, see the new <code>disable_packet_broker_forwarding</code> gateway option.
+<ul>
+<li>This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>) because of the added columns.</li>
+<li>This is only relevant when Packet Broker is enabled and configured by the network operator.</li>
+</ul>
+</li>
+<li>Gateways are now disconnected when settings affecting the connection with Gateway Server change. Use the <code>gs.fetch-gateway-interval</code> and <code>gs.fetch-interval-jitter</code> to configure how often the gateway is fetched from the entity registry.</li>
+<li>Small UX improvements to the LoRaCloud DAS forms in the Console.</li>
+<li>End device first activation timestamp in the Identity Server end device store.
+<ul>
+<li>This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>) because of the added columns.</li>
+</ul>
+</li>
+<li><code>AppJs</code> interface for applications to get the LoRaWAN AppSKey directly from the Join Server.</li>
+<li>Console support for DevEUI generation from the configured DevEUI address block.
+<ul>
+<li>This requires <code>console.ui.dev-eui-issuing-enabled</code> and <code>console.ui.dev-eui-app-limit</code> to be set with the same values as in the Identity Server configuration.</li>
+</ul>
+</li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
-<li>Form field layouts in the Console (field labels are now dispayed above the field).</li>
-<li>Small structural changes to the custom webhook form in the Console.</li>
-<li>Renamed experimental command <code>ttn-lw-cli simulate uplink</code> to <code>ttn-lw-cli simulate gateway-uplink</code>.</li>
-<li>Renamed experimental command <code>ttn-lw-cli simulate join-request</code> to <code>ttn-lw-cli simulate gateway-join-request</code>.</li>
+<li>When a gateway uplink message contains duplicate data uplinks, only the one with the highest RSSI are forwarded.</li>
+<li>The HTTP port now allows HTTP/2 connections over cleartext (h2c).</li>
+<li><code>ttn-lw-stack ns-db migrate</code> command records the schema version and only performs migrations if on a newer version.
+<ul>
+<li>Use the <code>--force</code> flag to force perform migrations.</li>
+</ul>
+</li>
+<li>Any authenticated user in the network can now list the collaborators of entities in the network.</li>
+<li>The search RPCs no longer require fields to be specified in the field mask when those fields are already specified as filters.</li>
+<li>When generating client configuration with the CLI <code>use</code> command, automatically set the correct Identity Server and OAuth Server addresses for The Things Stack Cloud and The Things Stack Community Edition.</li>
+</ul>
+<h3 id="removed">Removed</h3>
+<ul>
+<li>The <code>old</code> log format.</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>Removed misleading warning message for missing package data when setting up the storage integration package association.</li>
+<li>Network Server ADR algorithm data rate adjustment behavior on negative margin.</li>
+<li>CLI <code>gateway set --antenna.remove</code> command failing to remove gateway antennas in some cases.</li>
+<li>CLI <code>gateway set --antenna.gain &lt;gain&gt;</code> command crashing when no gateway antennas are present.</li>
+<li>Webhook template path variable expansion of query parameters.</li>
+<li>LBS LNS Auth Secret displays garbage value when updated.</li>
+<li>Transmit confirmation messages for LoRa Basics Station gateways.</li>
+<li>Instability and frequent crashes when internet connection is lost in the Console.</li>
+<li>Rate limiting for <code>TenantRegistry.GetTenantIdentifiersForGatewayEUI</code> is now applied per gateway EUI.</li>
+<li>Rate limiting for <code>TenantRegistry.GetTenantIdentifiersForEndDeviceEUIs</code> is now applied per end device EUI.</li>
+<li>Panic in GCS when CUPS rotation is set without a key.</li>
+<li>Rate limiting for <code>GatewayRegistry.GetGatewayIdentifiersForEUI</code> is now applied per gateway EUI.</li>
+<li>Network Server ensures that the Band ID in the end device version identifiers match the configured Frequency Plan of the device.</li>
 </ul>
 
         </div>
@@ -245,14 +314,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 13 Jan 2021.
+  Last changed by Nejra Selimović on 28 Jul 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/938c9dd5c2cab0ca1080e8d0175e0b3a3d364794">
-      doc: Add whats-new
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/9d8cffeb3d65851a4e7ce4446abcd9a700ed7bba">
+      doc: Create v3.14.0 release docs, add missing refs (#482)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/whats-new/3.10.5.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/whats-new/3.14.0.md" class="button">Edit on Github</a>
 </div>
 
       </div>
