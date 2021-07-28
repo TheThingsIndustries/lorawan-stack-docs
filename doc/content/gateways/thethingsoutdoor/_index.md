@@ -39,19 +39,21 @@ Connect all antennas:
  - ANT 3 - LoRaWAN antenna
  - ANT 4 - (not used)
 
-Then, connect the PoE injector output cable to the Gateway Ethernet connector. Connect the PoE input cable to your network.
+Then, connect the PoE injector output cable to the gateway ethernet connector. Connect the PoE input cable to your network.
 
 ## Configuration
 
-The ODU GUI is a web interface to configure all network settings. The ODU GUI uses the IP address assigned by the Gateway to enter the network setting page.
+The ODU GUI is a web interface to configure all network settings. The ODU GUI uses the IP address assigned by the gateway to enter the network setting page.
 
-Connect and power the gateway as above. The gateway will use DHCP to request an IP address from the network. Find this IP address from your router and enter the IP address assigned to the Gateway into the web browser to access the ODU GUI interface. The configuration page should look like this: 
+Connect and power the gateway as above. The gateway will use DHCP to request an IP address from the network. Find this IP address from your router and enter the IP address assigned to the gateway into the web browser to access the ODU GUI interface. The configuration page should look like this: 
 
 {{< figure src="GUI.png" alt="TTOG GUI">}}
 
-Login with the username and password: `admin` / and the password from the label on the back of your unit (older firmware versions used the password `admin`). Make sure to update the password the first time you login.
+{{< note >}} Older firmware versions used the password `admin`.
+{{</ note >}}
 
-Connect the gateway to {{% tts %}} via: **Packet Forward** > **Module 1 Settings** and enter the following settings:
+Navigate to **Packet Forward** > **Module 1 Settings** on the left hand menu and enter the following settings to connect the gateway to {{% tts %}}:
+
  - **Server Address:** The address of your {{% tts %}} instance. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}) 
  - **Server Uplink Port:** 1700
  - **Server Downlink Port:** 1700
@@ -66,7 +68,7 @@ Set the network settings via **Network** > **WAN**. You can choose to connect vi
 {{</ note >}}
 
 {{< note >}}
-To open the ODU GUI again, you can access the web interface via the fallback IP address: [192.168.11.10](http://192.168.11.10).
+To open the ODU GUI again, you can access the web interface via the fallback IP address: [`192.168.11.10`](http://192.168.11.10).
 
 You will need to set your PC's IP address in the same range, e.g.:
 - IP address: `192.168.11.100`
@@ -80,19 +82,18 @@ Create a gateway in {{% tts %}} by following the instructions for [Adding Gatewa
 
 Give your gateway a unique **Gateway ID** in {{% tts %}} - this is just for you to identify the gateway and it does not need to be the same as the **Gateway ID** displayed in the gateway.
 
-The **Gateway ID** in the gateway is used to derive the EUI, which can be found in the ODE GUI, under **Packet Forward** > **Module 1 Settings**. Add `0000` at the beginning of the Gateway ID to get the Gateway EUI. For example `80029c10xxxx` becomes `000080029c10xxxx`.
+The **Gateway ID** in the gateway is used to derive the EUI, which can be found in the ODE GUI, under **Packet Forward** > **Module 1 Settings**. Add `0000` at the beginning of the Gateway ID to get the Gateway EUI. For example, the Gateway ID `80029c10xxxx` will yield the Gateway EUI `000080029c10xxxx`.
 
 Add this EUI in {{% tts %}} as **Gateway EUI**.
 
-Once you have registered your gateway, if all the steps have been followed correctly, your gateway will now connect to {{% tts %}}.
+If all steps have been followed correctly, once you register your gateway it will connect to {{% tts %}}.
 
 ## Troubleshooting
 
-* When you cannot find a way to change the LoRaWAN settings, you might need to update the System Firmware. You can do so via:
- * **System** > **System Firmware** 
- * Download [this file](https://connectedthings.store/files/WAPS-232N_LW_OPDK_GUI_1.01.09_3416004962.tar.gz), making sure to keep the file name exactly the same (don't try to unzip this file)
- * Upload the file to and click **Upgrade**
+When you cannot find a way to change the LoRaWAN settings, you might need to update the system firmware. You can do so by following steps below:
 
- {{< figure src="upgrade_1.png" alt="Upgrade Page">}}
-
- * The gateway will automatically reboot with the upgraded firmware
+* Navigate to **System** > **System Firmware** on the left hand menu
+* Download [this file](https://connectedthings.store/files/WAPS-232N_LW_OPDK_GUI_1.01.09_3416004962.tar.gz), making sure to keep the file name exactly the same (do not unzip this file)
+* Upload the file and click **Upgrade**
+{{< figure src="upgrade_1.png" alt="Upgrade Page">}}
+* The gateway will automatically reboot with the upgraded firmware
