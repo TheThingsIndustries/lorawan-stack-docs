@@ -1,7 +1,6 @@
-﻿---
+---
 title: "CloudGate"
 description: ""
-weight: 1
 ---
 
 {{< figure src="CloudGate.png" alt="CloudGate Gateway" class="float plain" >}}

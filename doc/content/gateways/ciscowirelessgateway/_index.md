@@ -1,7 +1,6 @@
 ---
 title: "Cisco Wireless Gateway for LoRaWAN"
 description: ""
-weight: 1
 ---
 
 This page guides you to connecting the Cisco Wireless Gateway for LoRaWAN to {{% tts %}}.

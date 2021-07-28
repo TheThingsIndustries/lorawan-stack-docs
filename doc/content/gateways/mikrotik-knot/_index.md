@@ -1,7 +1,6 @@
 ---
 title: "MikroTik KNOT"
 description: ""
-weight: 1
 ---
 
 {{< figure src="mikrotik-knot.jpeg" alt="Ltmikrotik-knotAP" class="plain float" >}}
