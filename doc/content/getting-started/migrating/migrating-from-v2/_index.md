@@ -72,7 +72,7 @@ function decodeUplink(input) {
 
 When you have added your application and elements associated with it, it is time to migrate your end device(s) from {{% ttnv2 %}} to {{% tts %}}.
 
-{{< info >}} End devices connected to The Things Network V2 can be migrated to {{% tts %}} Cloud and {{% tts %}} Community Edition without the need for migrating a gateway, thanks to the default connection with [Packet Broker]({{< ref "/reference/packet-broker" >}}). The Things Industries V2 (SaaS) can also be connected to Packet Broker by contacting [support](mailto:support@thethingsindustries.com), while {{% tts %}} Enterprise or Open Source can be [configured]({{< ref "/reference/packet-broker/connect" >}}) manually.
+{{< info >}} End devices connected to The Things Network V2 can be migrated to {{% tts %}} Cloud and {{% tts %}} Community Edition without the need for migrating a gateway, thanks to the default connection with [Packet Broker]({{< ref "/getting-started/packet-broker" >}}). The Things Industries V2 (SaaS) can also be connected to Packet Broker by contacting [support](mailto:support@thethingsindustries.com), while {{% tts %}} Enterprise or Open Source can be [configured]({{< ref "/getting-started/packet-broker/connect" >}}) manually.
 
 If you are using deployments connected to Packet Broker, the traffic from your end device(s) will be routed to {{% tts %}} after migrating your device(s). However, there are certain requirements that your devices need to meet for Packet Broker to route their traffic to {{% tts %}} correctly. See [Packet Broker Requirements for End Device Migration]({{< ref "/getting-started/migrating/migrating-from-v2/packet-broker-requirements" >}}) for detailed information.
 

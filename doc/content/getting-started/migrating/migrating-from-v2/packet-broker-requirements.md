@@ -4,7 +4,7 @@ description: ""
 weight: 1
 ---
 
-Read this section if you want to make use of [Packet Broker]({{< ref "/reference/packet-broker" >}}) to migrate your end devices and route traffic from {{% ttnv2 %}} to {{% tts %}}.
+Read this section if you want to make use of [Packet Broker]({{< ref "/getting-started/packet-broker" >}}) to migrate your end devices and route traffic from {{% ttnv2 %}} to {{% tts %}}.
 
 <!--more-->
 
