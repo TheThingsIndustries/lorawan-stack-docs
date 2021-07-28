@@ -1,0 +1,99 @@
+name: OrganizationRegistry
+comment: |-
+  The OrganizationRegistry service, exposed by the Identity Server, is used to manage
+  organization registrations.
+methods:
+  Create:
+    name: Create
+    comment: |-
+      Create a new organization. This also sets the given user as
+      first collaborator with all possible rights.
+    input:
+      name: CreateOrganizationRequest
+    output:
+      name: Organization
+    http:
+    - method: POST
+      path: /users/{collaborator.user_ids.user_id}/organizations
+  Get:
+    name: Get
+    comment: |-
+      Get the organization with the given identifiers, selecting the fields specified
+      in the field mask.
+      More or less fields may be returned, depending on the rights of the caller.
+    input:
+      name: GetOrganizationRequest
+    output:
+      name: Organization
+    http:
+    - method: GET
+      path: /organizations/{organization_ids.organization_id}
+  List:
+    name: List
+    comment: |-
+      List organizations where the given user or organization is a direct collaborator.
+      If no user or organization is given, this returns the organizations the caller
+      has access to.
+      Similar to Get, this selects the fields given by the field mask.
+      More or less fields may be returned, depending on the rights of the caller.
+    input:
+      name: ListOrganizationsRequest
+    output:
+      name: Organizations
+    http:
+    - method: GET
+      path: /organizations
+    - method: GET
+      path: /users/{collaborator.user_ids.user_id}/organizations
+  Update:
+    name: Update
+    comment: Update the organization, changing the fields specified by the field mask
+      to the provided values.
+    input:
+      name: UpdateOrganizationRequest
+    output:
+      name: Organization
+    http:
+    - method: PUT
+      path: /organizations/{organization.ids.organization_id}
+  Delete:
+    name: Delete
+    comment: Delete the organization. This may not release the organization ID for
+      reuse.
+    input:
+      name: OrganizationIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /organizations/{organization_id}
+  Restore:
+    name: Restore
+    comment: |-
+      Restore a recently deleted organization.
+
+      Deployment configuration may specify if, and for how long after deletion,
+      entities can be restored.
+    input:
+      name: OrganizationIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: POST
+      path: /organizations/{organization_id}/restore
+  Purge:
+    name: Purge
+    comment: |-
+      Purge the organization. This will release the organization ID for reuse.
+      The user is responsible for clearing data from any (external) integrations
+      that may store and expose data by user or organization ID.
+    input:
+      name: OrganizationIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /organizations/{organization_id}/purge

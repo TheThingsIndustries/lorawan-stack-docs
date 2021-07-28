@@ -1,0 +1,22 @@
+name: UpdatePacketBrokerGatewayRequest
+fields:
+- name: gateway
+  message:
+    name: PacketBrokerGateway
+  rules:
+    required: true
+  default: {}
+- name: field_mask
+  comment: |-
+    The names of the gateway fields that are considered for update.
+
+    Online status is only updated if status_public is set. If status_public is set and false, the status will be reset.
+    If status_public is set and true, the online status is taken from the online field. The return message contains
+    the duration online_ttl for how long the gateway is considered online.
+
+    Location is only updated if location_public is set. If location_public is set and false, the location will be reset.
+    If location_public is set and true, the first antenna location will be used as gateway location.
+  message:
+    package: google.protobuf
+    name: FieldMask
+  default: {}

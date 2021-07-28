@@ -1,0 +1,211 @@
+name: MACSettings
+fields:
+- name: class_b_timeout
+  comment: |-
+    Maximum delay for the device to answer a MAC request or a confirmed downlink frame.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    package: google.protobuf
+    name: Duration
+  default: 0s
+- name: ping_slot_periodicity
+  comment: |-
+    Periodicity of the class B ping slot.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    name: PingSlotPeriodValue
+  default: {}
+- name: ping_slot_data_rate_index
+  comment: |-
+    Data rate index of the class B ping slot.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    name: DataRateIndexValue
+  default: {}
+- name: ping_slot_frequency
+  comment: |-
+    Frequency of the class B ping slot (Hz).
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    name: FrequencyValue
+  default: {}
+- name: beacon_frequency
+  comment: |-
+    Frequency of the class B beacon (Hz).
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    name: FrequencyValue
+  default: {}
+- name: class_c_timeout
+  comment: |-
+    Maximum delay for the device to answer a MAC request or a confirmed downlink frame.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    package: google.protobuf
+    name: Duration
+  default: 0s
+- name: rx1_delay
+  comment: |-
+    Class A Rx1 delay.
+    If unset, the default value from Network Server configuration or regional parameters specification will be used.
+  message:
+    name: RxDelayValue
+  default: {}
+- name: rx1_data_rate_offset
+  comment: |-
+    Rx1 data rate offset.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    name: DataRateOffsetValue
+  default: {}
+- name: rx2_data_rate_index
+  comment: |-
+    Data rate index for Rx2.
+    If unset, the default value from Network Server configuration or regional parameters specification will be used.
+  message:
+    name: DataRateIndexValue
+  default: {}
+- name: rx2_frequency
+  comment: |-
+    Frequency for Rx2 (Hz).
+    If unset, the default value from Network Server configuration or regional parameters specification will be used.
+  message:
+    name: FrequencyValue
+  default: {}
+- name: factory_preset_frequencies
+  comment: |-
+    List of factory-preset frequencies.
+    If unset, the default value from Network Server configuration or regional parameters specification will be used.
+  rules:
+    max_items: 96
+  repeated:
+    type: uint64
+  default: []
+- name: max_duty_cycle
+  comment: Maximum uplink duty cycle (of all channels).
+  message:
+    name: AggregatedDutyCycleValue
+  default: {}
+- name: supports_32_bit_f_cnt
+  comment: |-
+    Whether the device supports 32-bit frame counters.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    name: BoolValue
+  default: {}
+- name: use_adr
+  comment: |-
+    Whether the Network Server should use ADR for the device.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    name: BoolValue
+  default: {}
+- name: adr_margin
+  comment: |-
+    The ADR margin tells the network server how much margin it should add in ADR requests.
+    A bigger margin is less efficient, but gives a better chance of successful reception.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    package: google.protobuf
+    name: FloatValue
+  default: null
+- name: resets_f_cnt
+  comment: |-
+    Whether the device resets the frame counters (not LoRaWAN compliant).
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    name: BoolValue
+  default: {}
+- name: status_time_periodicity
+  comment: |-
+    The interval after which a DevStatusReq MACCommand shall be sent.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    package: google.protobuf
+    name: Duration
+  default: 0s
+- name: status_count_periodicity
+  comment: |-
+    Number of uplink messages after which a DevStatusReq MACCommand shall be sent.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    package: google.protobuf
+    name: UInt32Value
+  default: null
+- name: desired_rx1_delay
+  comment: |-
+    The Rx1 delay Network Server should configure device to use via MAC commands or Join-Accept.
+    If unset, the default value from Network Server configuration or regional parameters specification will be used.
+  message:
+    name: RxDelayValue
+  default: {}
+- name: desired_rx1_data_rate_offset
+  comment: |-
+    The Rx1 data rate offset Network Server should configure device to use via MAC commands or Join-Accept.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    name: DataRateOffsetValue
+  default: {}
+- name: desired_rx2_data_rate_index
+  comment: |-
+    The Rx2 data rate index Network Server should configure device to use via MAC commands or Join-Accept.
+    If unset, the default value from frequency plan, Network Server configuration or regional parameters specification will be used.
+  message:
+    name: DataRateIndexValue
+  default: {}
+- name: desired_rx2_frequency
+  comment: |-
+    The Rx2 frequency index Network Server should configure device to use via MAC commands.
+    If unset, the default value from frequency plan, Network Server configuration or regional parameters specification will be used.
+  message:
+    name: FrequencyValue
+  default: {}
+- name: desired_max_duty_cycle
+  comment: |-
+    The maximum uplink duty cycle (of all channels) Network Server should configure device to use via MAC commands.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    name: AggregatedDutyCycleValue
+  default: {}
+- name: desired_adr_ack_limit_exponent
+  comment: |-
+    The ADR ACK limit Network Server should configure device to use via MAC commands.
+    If unset, the default value from Network Server configuration or regional parameters specification will be used.
+  message:
+    name: ADRAckLimitExponentValue
+  default: {}
+- name: desired_adr_ack_delay_exponent
+  comment: |-
+    The ADR ACK delay Network Server should configure device to use via MAC commands.
+    If unset, the default value from Network Server configuration or regional parameters specification will be used.
+  message:
+    name: ADRAckDelayExponentValue
+  default: {}
+- name: desired_ping_slot_data_rate_index
+  comment: |-
+    The data rate index of the class B ping slot Network Server should configure device to use via MAC commands.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    name: DataRateIndexValue
+  default: {}
+- name: desired_ping_slot_frequency
+  comment: |-
+    The frequency of the class B ping slot (Hz) Network Server should configure device to use via MAC commands.
+    If unset, the default value from Network Server configuration or regional parameters specification will be used.
+  message:
+    name: FrequencyValue
+  default: {}
+- name: desired_beacon_frequency
+  comment: |-
+    The frequency of the class B beacon (Hz) Network Server should configure device to use via MAC commands.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    name: FrequencyValue
+  default: {}
+- name: desired_max_eirp
+  comment: |-
+    Maximum EIRP (dBm).
+    If unset, the default value from regional parameters specification will be used.
+  message:
+    name: DeviceEIRPValue
+  default: {}

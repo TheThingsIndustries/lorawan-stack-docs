@@ -1,0 +1,76 @@
+name: DeviceRepository
+methods:
+  ListBrands:
+    name: ListBrands
+    input:
+      name: ListEndDeviceBrandsRequest
+    output:
+      name: ListEndDeviceBrandsResponse
+    http:
+    - method: GET
+      path: /dr/applications/{application_ids.application_id}/brands
+  GetBrand:
+    name: GetBrand
+    input:
+      name: GetEndDeviceBrandRequest
+    output:
+      name: EndDeviceBrand
+    http:
+    - method: GET
+      path: /dr/applications/{application_ids.application_id}/brands/{brand_id}
+  ListModels:
+    name: ListModels
+    input:
+      name: ListEndDeviceModelsRequest
+    output:
+      name: ListEndDeviceModelsResponse
+    http:
+    - method: GET
+      path: /dr/applications/{application_ids.application_id}/brands/{brand_id}/models
+    - method: GET
+      path: /dr/applications/{application_ids.application_id}/models
+  GetModel:
+    name: GetModel
+    input:
+      name: GetEndDeviceModelRequest
+    output:
+      name: EndDeviceModel
+    http:
+    - method: GET
+      path: /dr/applications/{application_ids.application_id}/brands/{brand_id}/models/{model_id}
+  GetTemplate:
+    name: GetTemplate
+    input:
+      name: GetTemplateRequest
+    output:
+      name: EndDeviceTemplate
+    http:
+    - method: GET
+      path: /dr/applications/{application_ids.application_id}/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/template
+  GetUplinkDecoder:
+    name: GetUplinkDecoder
+    input:
+      name: GetPayloadFormatterRequest
+    output:
+      name: MessagePayloadDecoder
+    http:
+    - method: GET
+      path: /dr/applications/{application_ids.application_id}/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/formatters/uplink/decoder
+  GetDownlinkDecoder:
+    name: GetDownlinkDecoder
+    input:
+      name: GetPayloadFormatterRequest
+    output:
+      name: MessagePayloadDecoder
+    http:
+    - method: GET
+      path: /dr/applications/{application_ids.application_id}/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/formatters/downlink/decoder
+  GetDownlinkEncoder:
+    name: GetDownlinkEncoder
+    input:
+      name: GetPayloadFormatterRequest
+    output:
+      name: MessagePayloadEncoder
+    http:
+    - method: GET
+      path: /dr/applications/{application_ids.application_id}/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/formatters/downlink/encoder

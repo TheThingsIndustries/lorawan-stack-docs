@@ -68,7 +68,7 @@ ttn-lw-cli:
     default_value: localhost:8884
   - name: log.format
     type: string
-    usage: Log format to write (old, console, json)
+    usage: Log format to write (console, json)
     default_value: console
   - name: log.level
     type: string
@@ -98,6 +98,10 @@ ttn-lw-cli:
     type: string
     usage: QR Code Generator address
     default_value: localhost:8884
+  - name: skip-version-check
+    type: bool
+    usage: Do not perform version checks
+    default_value: "false"
 ttn-lw-cli applications:
   path: ttn-lw-cli applications
   parent_path: ttn-lw-cli
@@ -649,6 +653,9 @@ ttn-lw-cli applications create:
     usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: description
     type: string
+  - name: dev-eui-counter
+    type: uint32
+    default_value: "0"
   - name: name
     type: string
   - name: organization-id
@@ -704,6 +711,10 @@ ttn-lw-cli applications get:
   - name: description
     type: bool
     usage: select the description field
+    default_value: "false"
+  - name: dev-eui-counter
+    type: bool
+    usage: select the dev_eui_counter field
     default_value: "false"
   - name: name
     type: bool
@@ -853,6 +864,10 @@ ttn-lw-cli applications list:
   - name: description
     type: bool
     usage: select the description field
+    default_value: "false"
+  - name: dev-eui-counter
+    type: bool
+    usage: select the dev_eui_counter field
     default_value: "false"
   - name: limit
     type: uint32
@@ -1832,6 +1847,10 @@ ttn-lw-cli applications search:
     default_value: "false"
   - name: description-contains
     type: string
+  - name: dev-eui-counter
+    type: bool
+    usage: select the dev_eui_counter field
+    default_value: "false"
   - name: id-contains
     type: string
   - name: limit
@@ -1871,6 +1890,9 @@ ttn-lw-cli applications set:
     usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: description
     type: string
+  - name: dev-eui-counter
+    type: uint32
+    default_value: "0"
   - name: name
     type: string
 ttn-lw-cli applications storage:
@@ -2393,6 +2415,22 @@ ttn-lw-cli applications storage get:
     type: bool
     usage: select the up.uplink_message.locations field
     default_value: "false"
+  - name: up.uplink-message.network-ids
+    type: bool
+    usage: select the up.uplink_message.network_ids field and all allowed sub-fields
+    default_value: "false"
+  - name: up.uplink-message.network-ids.cluster-id
+    type: bool
+    usage: select the up.uplink_message.network_ids.cluster_id field
+    default_value: "false"
+  - name: up.uplink-message.network-ids.net-id
+    type: bool
+    usage: select the up.uplink_message.network_ids.net_id field
+    default_value: "false"
+  - name: up.uplink-message.network-ids.tenant-id
+    type: bool
+    usage: select the up.uplink_message.network_ids.tenant_id field
+    default_value: "false"
   - name: up.uplink-message.received-at
     type: bool
     usage: select the up.uplink_message.received_at field
@@ -2444,6 +2482,21 @@ ttn-lw-cli applications storage get:
   - name: up.uplink-message.settings.data-rate.modulation.lora.spreading-factor
     type: bool
     usage: select the up.uplink_message.settings.data_rate.modulation.lora.spreading_factor
+      field
+    default_value: "false"
+  - name: up.uplink-message.settings.data-rate.modulation.lrfhss
+    type: bool
+    usage: select the up.uplink_message.settings.data_rate.modulation.lrfhss field
+      and all allowed sub-fields
+    default_value: "false"
+  - name: up.uplink-message.settings.data-rate.modulation.lrfhss.modulation-type
+    type: bool
+    usage: select the up.uplink_message.settings.data_rate.modulation.lrfhss.modulation_type
+      field
+    default_value: "false"
+  - name: up.uplink-message.settings.data-rate.modulation.lrfhss.operating-channel-width
+    type: bool
+    usage: select the up.uplink_message.settings.data_rate.modulation.lrfhss.operating_channel_width
       field
     default_value: "false"
   - name: up.uplink-message.settings.downlink
@@ -3588,6 +3641,9 @@ ttn-lw-cli end-devices create:
     type: bool
     usage: configure end device as ABP
     default_value: "false"
+  - name: activated-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: app-eui
     type: string
     usage: (hex)
@@ -3690,7 +3746,10 @@ ttn-lw-cli end-devices create:
     type: string
     usage: 'allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.2-a, 1.0.2-b, 1.0.3-a, 1.1-a,
       1.1-b, 1.1.0-a, 1.1.0-b, PHY_UNKNOWN, PHY_V1_0, PHY_V1_0_1, PHY_V1_0_2_REV_A,
-      PHY_V1_0_2_REV_B, PHY_V1_0_3_REV_A, PHY_V1_1_REV_A, PHY_V1_1_REV_B, unknown'
+      PHY_V1_0_2_REV_B, PHY_V1_0_3_REV_A, PHY_V1_1_REV_A, PHY_V1_1_REV_B, RP001_V1_0_2,
+      RP001_V1_0_2_REV_B, RP001_V1_0_3_REV_A, RP001_V1_1_REV_A, RP001_V1_1_REV_B,
+      RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3, TS001_V1_0, TS001_V1_0_1,
+      unknown'
   - name: lorawan-version
     type: string
     usage: 'allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.1, 1.1.0, MAC_UNKNOWN,
@@ -4725,6 +4784,10 @@ ttn-lw-cli end-devices get:
   - info
   short: Get an end device
   command_flags:
+  - name: activated-at
+    type: bool
+    usage: select the activated_at field
+    default_value: "false"
   - name: all
     type: bool
     usage: select all end devices fields
@@ -5917,6 +5980,22 @@ ttn-lw-cli end-devices get:
     type: bool
     usage: select the version_ids.model_id field
     default_value: "false"
+ttn-lw-cli end-devices get-default-mac-settings:
+  path: ttn-lw-cli end-devices get-default-mac-settings
+  parent_path: ttn-lw-cli end-devices
+  name: get-default-mac-settings
+  short: Get Network Server default MAC settings for frequency plan and LoRaWAN version
+  command_flags:
+  - name: frequency-plan-id
+    type: string
+  - name: lorawan-phy-version
+    type: string
+    usage: 'allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.2-a, 1.0.2-b, 1.0.3-a, 1.1-a,
+      1.1-b, 1.1.0-a, 1.1.0-b, PHY_UNKNOWN, PHY_V1_0, PHY_V1_0_1, PHY_V1_0_2_REV_A,
+      PHY_V1_0_2_REV_B, PHY_V1_0_3_REV_A, PHY_V1_1_REV_A, PHY_V1_1_REV_B, RP001_V1_0_2,
+      RP001_V1_0_2_REV_B, RP001_V1_0_3_REV_A, RP001_V1_1_REV_A, RP001_V1_1_REV_B,
+      RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3, TS001_V1_0, TS001_V1_0_1,
+      unknown'
 ttn-lw-cli end-devices list:
   path: ttn-lw-cli end-devices list
   parent_path: ttn-lw-cli end-devices
@@ -5926,6 +6005,10 @@ ttn-lw-cli end-devices list:
   - ls
   short: List end devices
   command_flags:
+  - name: activated-at
+    type: bool
+    usage: select the activated_at field
+    default_value: "false"
   - name: all
     type: bool
     usage: select all end devices fields
@@ -6056,6 +6139,10 @@ ttn-lw-cli end-devices reset:
   use: '[application-id] [device-id]'
   short: Reset state of an end device to factory defaults
   command_flags:
+  - name: activated-at
+    type: bool
+    usage: select the activated_at field
+    default_value: "false"
   - name: all
     type: bool
     usage: select all end devices fields
@@ -7288,6 +7375,10 @@ ttn-lw-cli end-devices search:
     hidden: true
   - name: dev-eui-contains
     type: string
+  - name: dev-eui-counter
+    type: bool
+    usage: select the dev_eui_counter field
+    default_value: "false"
   - name: id-contains
     type: string
   - name: join-eui-contains
@@ -7318,6 +7409,9 @@ ttn-lw-cli end-devices set:
   - update
   short: Set properties of an end device
   command_flags:
+  - name: activated-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: app-eui
     type: string
     usage: (hex)
@@ -7416,7 +7510,10 @@ ttn-lw-cli end-devices set:
     type: string
     usage: 'allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.2-a, 1.0.2-b, 1.0.3-a, 1.1-a,
       1.1-b, 1.1.0-a, 1.1.0-b, PHY_UNKNOWN, PHY_V1_0, PHY_V1_0_1, PHY_V1_0_2_REV_A,
-      PHY_V1_0_2_REV_B, PHY_V1_0_3_REV_A, PHY_V1_1_REV_A, PHY_V1_1_REV_B, unknown'
+      PHY_V1_0_2_REV_B, PHY_V1_0_3_REV_A, PHY_V1_1_REV_A, PHY_V1_1_REV_B, RP001_V1_0_2,
+      RP001_V1_0_2_REV_B, RP001_V1_0_3_REV_A, RP001_V1_1_REV_A, RP001_V1_1_REV_B,
+      RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3, TS001_V1_0, TS001_V1_0_1,
+      unknown'
   - name: lorawan-version
     type: string
     usage: 'allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.1, 1.1.0, MAC_UNKNOWN,
@@ -8743,6 +8840,22 @@ ttn-lw-cli end-devices storage get:
     type: bool
     usage: select the up.uplink_message.locations field
     default_value: "false"
+  - name: up.uplink-message.network-ids
+    type: bool
+    usage: select the up.uplink_message.network_ids field and all allowed sub-fields
+    default_value: "false"
+  - name: up.uplink-message.network-ids.cluster-id
+    type: bool
+    usage: select the up.uplink_message.network_ids.cluster_id field
+    default_value: "false"
+  - name: up.uplink-message.network-ids.net-id
+    type: bool
+    usage: select the up.uplink_message.network_ids.net_id field
+    default_value: "false"
+  - name: up.uplink-message.network-ids.tenant-id
+    type: bool
+    usage: select the up.uplink_message.network_ids.tenant_id field
+    default_value: "false"
   - name: up.uplink-message.received-at
     type: bool
     usage: select the up.uplink_message.received_at field
@@ -8794,6 +8907,21 @@ ttn-lw-cli end-devices storage get:
   - name: up.uplink-message.settings.data-rate.modulation.lora.spreading-factor
     type: bool
     usage: select the up.uplink_message.settings.data_rate.modulation.lora.spreading_factor
+      field
+    default_value: "false"
+  - name: up.uplink-message.settings.data-rate.modulation.lrfhss
+    type: bool
+    usage: select the up.uplink_message.settings.data_rate.modulation.lrfhss field
+      and all allowed sub-fields
+    default_value: "false"
+  - name: up.uplink-message.settings.data-rate.modulation.lrfhss.modulation-type
+    type: bool
+    usage: select the up.uplink_message.settings.data_rate.modulation.lrfhss.modulation_type
+      field
+    default_value: "false"
+  - name: up.uplink-message.settings.data-rate.modulation.lrfhss.operating-channel-width
+    type: bool
+    usage: select the up.uplink_message.settings.data_rate.modulation.lrfhss.operating_channel_width
       field
     default_value: "false"
   - name: up.uplink-message.settings.downlink
@@ -9422,6 +9550,9 @@ ttn-lw-cli gateways create:
     usage: 'allowed values: SOURCE_BT_RSSI_GEOLOCATION, SOURCE_COMBINED_GEOLOCATION,
       SOURCE_GPS, SOURCE_IP_GEOLOCATION, SOURCE_LORA_RSSI_GEOLOCATION, SOURCE_LORA_TDOA_GEOLOCATION,
       SOURCE_REGISTRY, SOURCE_UNKNOWN, SOURCE_WIFI_RSSI_GEOLOCATION'
+  - name: antenna.placement
+    type: string
+    usage: 'allowed values: INDOOR, OUTDOOR, PLACEMENT_UNKNOWN'
   - name: attributes
     type: stringSlice
     usage: key=value
@@ -9449,6 +9580,9 @@ ttn-lw-cli gateways create:
     usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: description
     type: string
+  - name: disable-packet-broker-forwarding
+    type: bool
+    default_value: "false"
   - name: downlink-path-constraint
     type: string
     usage: 'allowed values: DOWNLINK_PATH_CONSTRAINT_NEVER, DOWNLINK_PATH_CONSTRAINT_NONE,
@@ -9473,6 +9607,9 @@ ttn-lw-cli gateways create:
     type: string
     usage: (hex)
   - name: location-public
+    type: bool
+    default_value: "false"
+  - name: lrfhss.supported
     type: bool
     default_value: "false"
   - name: name
@@ -9590,6 +9727,10 @@ ttn-lw-cli gateways get:
     type: bool
     usage: select the description field
     default_value: "false"
+  - name: disable-packet-broker-forwarding
+    type: bool
+    usage: select the disable_packet_broker_forwarding field
+    default_value: "false"
   - name: downlink-path-constraint
     type: bool
     usage: select the downlink_path_constraint field
@@ -9629,6 +9770,14 @@ ttn-lw-cli gateways get:
   - name: location-public
     type: bool
     usage: select the location_public field
+    default_value: "false"
+  - name: lrfhss
+    type: bool
+    usage: select the lrfhss field and all allowed sub-fields
+    default_value: "false"
+  - name: lrfhss.supported
+    type: bool
+    usage: select the lrfhss.supported field
     default_value: "false"
   - name: name
     type: bool
@@ -9773,6 +9922,10 @@ ttn-lw-cli gateways list:
     type: bool
     usage: select the description field
     default_value: "false"
+  - name: disable-packet-broker-forwarding
+    type: bool
+    usage: select the disable_packet_broker_forwarding field
+    default_value: "false"
   - name: downlink-path-constraint
     type: bool
     usage: select the downlink_path_constraint field
@@ -9812,6 +9965,14 @@ ttn-lw-cli gateways list:
   - name: location-public
     type: bool
     usage: select the location_public field
+    default_value: "false"
+  - name: lrfhss
+    type: bool
+    usage: select the lrfhss field and all allowed sub-fields
+    default_value: "false"
+  - name: lrfhss.supported
+    type: bool
+    usage: select the lrfhss.supported field
     default_value: "false"
   - name: name
     type: bool
@@ -10009,6 +10170,10 @@ ttn-lw-cli gateways search:
     default_value: "false"
   - name: description-contains
     type: string
+  - name: disable-packet-broker-forwarding
+    type: bool
+    usage: select the disable_packet_broker_forwarding field
+    default_value: "false"
   - name: downlink-path-constraint
     type: bool
     usage: select the downlink_path_constraint field
@@ -10052,6 +10217,14 @@ ttn-lw-cli gateways search:
   - name: location-public
     type: bool
     usage: select the location_public field
+    default_value: "false"
+  - name: lrfhss
+    type: bool
+    usage: select the lrfhss field and all allowed sub-fields
+    default_value: "false"
+  - name: lrfhss.supported
+    type: bool
+    usage: select the lrfhss.supported field
     default_value: "false"
   - name: name
     type: bool
@@ -10163,6 +10336,9 @@ ttn-lw-cli gateways set:
     usage: 'allowed values: SOURCE_BT_RSSI_GEOLOCATION, SOURCE_COMBINED_GEOLOCATION,
       SOURCE_GPS, SOURCE_IP_GEOLOCATION, SOURCE_LORA_RSSI_GEOLOCATION, SOURCE_LORA_TDOA_GEOLOCATION,
       SOURCE_REGISTRY, SOURCE_UNKNOWN, SOURCE_WIFI_RSSI_GEOLOCATION'
+  - name: antenna.placement
+    type: string
+    usage: 'allowed values: INDOOR, OUTDOOR, PLACEMENT_UNKNOWN'
   - name: antenna.remove
     type: bool
     usage: remove an antenna
@@ -10190,6 +10366,9 @@ ttn-lw-cli gateways set:
     usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: description
     type: string
+  - name: disable-packet-broker-forwarding
+    type: bool
+    default_value: "false"
   - name: downlink-path-constraint
     type: string
     usage: 'allowed values: DOWNLINK_PATH_CONSTRAINT_NEVER, DOWNLINK_PATH_CONSTRAINT_NONE,
@@ -10214,6 +10393,9 @@ ttn-lw-cli gateways set:
     type: string
     usage: (hex)
   - name: location-public
+    type: bool
+    default_value: "false"
+  - name: lrfhss.supported
     type: bool
     default_value: "false"
   - name: name
@@ -11507,6 +11689,13 @@ ttn-lw-cli simulate application-uplink:
   - name: last-a-f-cnt-down
     type: uint32
     default_value: "0"
+  - name: network-ids.cluster-id
+    type: string
+  - name: network-ids.net-id
+    type: string
+    usage: (hex)
+  - name: network-ids.tenant-id
+    type: string
   - name: received-at
     type: string
     usage: (YYYY-MM-DDTHH:MM:SSZ)
@@ -11528,6 +11717,12 @@ ttn-lw-cli simulate application-uplink:
     type: uint32
     default_value: "0"
   - name: settings.data-rate.modulation.lora.spreading-factor
+    type: uint32
+    default_value: "0"
+  - name: settings.data-rate.modulation.lrfhss.modulation-type
+    type: uint32
+    default_value: "0"
+  - name: settings.data-rate.modulation.lrfhss.operating-channel-width
     type: uint32
     default_value: "0"
   - name: settings.downlink.antenna-index
@@ -11614,7 +11809,10 @@ ttn-lw-cli simulate gateway-join-request:
     type: string
     usage: 'allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.2-a, 1.0.2-b, 1.0.3-a, 1.1-a,
       1.1-b, 1.1.0-a, 1.1.0-b, PHY_UNKNOWN, PHY_V1_0, PHY_V1_0_1, PHY_V1_0_2_REV_A,
-      PHY_V1_0_2_REV_B, PHY_V1_0_3_REV_A, PHY_V1_1_REV_A, PHY_V1_1_REV_B, unknown'
+      PHY_V1_0_2_REV_B, PHY_V1_0_3_REV_A, PHY_V1_1_REV_A, PHY_V1_1_REV_B, RP001_V1_0_2,
+      RP001_V1_0_2_REV_B, RP001_V1_0_3_REV_A, RP001_V1_1_REV_A, RP001_V1_1_REV_B,
+      RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3, TS001_V1_0, TS001_V1_0_1,
+      unknown'
   - name: lorawan-version
     type: string
     usage: 'allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.1, 1.1.0, MAC_UNKNOWN,
@@ -11718,7 +11916,10 @@ ttn-lw-cli simulate gateway-uplink:
     type: string
     usage: 'allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.2-a, 1.0.2-b, 1.0.3-a, 1.1-a,
       1.1-b, 1.1.0-a, 1.1.0-b, PHY_UNKNOWN, PHY_V1_0, PHY_V1_0_1, PHY_V1_0_2_REV_A,
-      PHY_V1_0_2_REV_B, PHY_V1_0_3_REV_A, PHY_V1_1_REV_A, PHY_V1_1_REV_B, unknown'
+      PHY_V1_0_2_REV_B, PHY_V1_0_3_REV_A, PHY_V1_1_REV_A, PHY_V1_1_REV_B, RP001_V1_0_2,
+      RP001_V1_0_2_REV_B, RP001_V1_0_3_REV_A, RP001_V1_1_REV_A, RP001_V1_1_REV_B,
+      RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3, TS001_V1_0, TS001_V1_0_1,
+      unknown'
   - name: lorawan-version
     type: string
     usage: 'allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.1, 1.1.0, MAC_UNKNOWN,
@@ -11810,6 +12011,10 @@ ttn-lw-cli templates create:
 
     This command takes end devices from stdin.
   command_flags:
+  - name: activated-at
+    type: bool
+    usage: select the activated_at field
+    default_value: "false"
   - name: app-eui
     type: bool
     default_value: "false"
@@ -13015,6 +13220,9 @@ ttn-lw-cli templates execute:
 
     This command takes end device templates from stdin.
   command_flags:
+  - name: activated-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: application-server-address
     type: string
   - name: application-server-id
@@ -13072,7 +13280,10 @@ ttn-lw-cli templates execute:
     type: string
     usage: 'allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.2-a, 1.0.2-b, 1.0.3-a, 1.1-a,
       1.1-b, 1.1.0-a, 1.1.0-b, PHY_UNKNOWN, PHY_V1_0, PHY_V1_0_1, PHY_V1_0_2_REV_A,
-      PHY_V1_0_2_REV_B, PHY_V1_0_3_REV_A, PHY_V1_1_REV_A, PHY_V1_1_REV_B, unknown'
+      PHY_V1_0_2_REV_B, PHY_V1_0_3_REV_A, PHY_V1_1_REV_A, PHY_V1_1_REV_B, RP001_V1_0_2,
+      RP001_V1_0_2_REV_B, RP001_V1_0_3_REV_A, RP001_V1_1_REV_A, RP001_V1_1_REV_B,
+      RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3, TS001_V1_0, TS001_V1_0_1,
+      unknown'
   - name: lorawan-version
     type: string
     usage: 'allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.1, 1.1.0, MAC_UNKNOWN,
@@ -13863,6 +14074,9 @@ ttn-lw-cli templates extend:
   use: '[flags]'
   short: Extend an end device template (EXPERIMENTAL)
   command_flags:
+  - name: activated-at
+    type: string
+    usage: (YYYY-MM-DDTHH:MM:SSZ)
   - name: application-server-address
     type: string
   - name: application-server-id
@@ -13924,7 +14138,10 @@ ttn-lw-cli templates extend:
     type: string
     usage: 'allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.2-a, 1.0.2-b, 1.0.3-a, 1.1-a,
       1.1-b, 1.1.0-a, 1.1.0-b, PHY_UNKNOWN, PHY_V1_0, PHY_V1_0_1, PHY_V1_0_2_REV_A,
-      PHY_V1_0_2_REV_B, PHY_V1_0_3_REV_A, PHY_V1_1_REV_A, PHY_V1_1_REV_B, unknown'
+      PHY_V1_0_2_REV_B, PHY_V1_0_3_REV_A, PHY_V1_1_REV_A, PHY_V1_1_REV_B, RP001_V1_0_2,
+      RP001_V1_0_2_REV_B, RP001_V1_0_3_REV_A, RP001_V1_1_REV_A, RP001_V1_1_REV_B,
+      RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3, TS001_V1_0, TS001_V1_0_1,
+      unknown'
   - name: lorawan-version
     type: string
     usage: 'allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.1, 1.1.0, MAC_UNKNOWN,
@@ -14802,6 +15019,9 @@ ttn-lw-cli tenants create:
     default_value: '[]'
   - name: billing-identifiers.billing-id
     type: string
+  - name: billing.counting.end-devices
+    type: int32
+    default_value: "0"
   - name: billing.provider.aws-saas-marketplace.customer-identifier
     type: string
   - name: billing.provider.aws-saas-marketplace.product-code
@@ -15000,6 +15220,14 @@ ttn-lw-cli tenants get:
   - name: billing-identifiers.billing-id
     type: bool
     usage: select the billing_identifiers.billing_id field
+    default_value: "false"
+  - name: billing.counting
+    type: bool
+    usage: select the billing.counting field and all allowed sub-fields
+    default_value: "false"
+  - name: billing.counting.end-devices
+    type: bool
+    usage: select the billing.counting.end_devices field
     default_value: "false"
   - name: billing.provider.aws-saas-marketplace
     type: bool
@@ -15291,6 +15519,10 @@ ttn-lw-cli tenants get-registry-totals:
   - totals
   short: Get registry totals of a tenant
   command_flags:
+  - name: activated-end-devices
+    type: bool
+    usage: select the activated_end_devices field
+    default_value: "false"
   - name: applications
     type: bool
     usage: select the applications field
@@ -15340,6 +15572,14 @@ ttn-lw-cli tenants list:
   - name: billing-identifiers.billing-id
     type: bool
     usage: select the billing_identifiers.billing_id field
+    default_value: "false"
+  - name: billing.counting
+    type: bool
+    usage: select the billing.counting field and all allowed sub-fields
+    default_value: "false"
+  - name: billing.counting.end-devices
+    type: bool
+    usage: select the billing.counting.end_devices field
     default_value: "false"
   - name: billing.provider.aws-saas-marketplace
     type: bool
@@ -15610,6 +15850,320 @@ ttn-lw-cli tenants list:
     type: bool
     usage: select the state_description field
     default_value: "false"
+ttn-lw-cli tenants search:
+  path: ttn-lw-cli tenants search
+  parent_path: ttn-lw-cli tenants
+  name: search
+  short: Search for tenants
+  command_flags:
+  - name: attributes
+    type: bool
+    usage: select the attributes field
+    default_value: "false"
+  - name: attributes-contain
+    type: stringToString
+    usage: (key=value)
+    default_value: '[]'
+  - name: billing
+    type: bool
+    usage: select the billing field and all allowed sub-fields
+    default_value: "false"
+  - name: billing-identifiers
+    type: bool
+    usage: select the billing_identifiers field and all allowed sub-fields
+    default_value: "false"
+  - name: billing-identifiers.billing-id
+    type: bool
+    usage: select the billing_identifiers.billing_id field
+    default_value: "false"
+  - name: billing.counting
+    type: bool
+    usage: select the billing.counting field and all allowed sub-fields
+    default_value: "false"
+  - name: billing.counting.end-devices
+    type: bool
+    usage: select the billing.counting.end_devices field
+    default_value: "false"
+  - name: billing.provider.aws-saas-marketplace
+    type: bool
+    usage: select the billing.provider.aws_saas_marketplace field and all allowed
+      sub-fields
+    default_value: "false"
+  - name: billing.provider.aws-saas-marketplace.customer-identifier
+    type: bool
+    usage: select the billing.provider.aws_saas_marketplace.customer_identifier field
+    default_value: "false"
+  - name: billing.provider.aws-saas-marketplace.product-code
+    type: bool
+    usage: select the billing.provider.aws_saas_marketplace.product_code field
+    default_value: "false"
+  - name: billing.provider.stripe
+    type: bool
+    usage: select the billing.provider.stripe field and all allowed sub-fields
+    default_value: "false"
+  - name: billing.provider.stripe.customer-id
+    type: bool
+    usage: select the billing.provider.stripe.customer_id field
+    default_value: "false"
+  - name: billing.provider.stripe.plan-id
+    type: bool
+    usage: select the billing.provider.stripe.plan_id field
+    default_value: "false"
+  - name: billing.provider.stripe.subscription-id
+    type: bool
+    usage: select the billing.provider.stripe.subscription_id field
+    default_value: "false"
+  - name: billing.provider.stripe.subscription-item-id
+    type: bool
+    usage: select the billing.provider.stripe.subscription_item_id field
+    default_value: "false"
+  - name: capabilities
+    type: bool
+    usage: select the capabilities field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration
+    type: bool
+    usage: select the configuration field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster
+    type: bool
+    usage: select the configuration.default_cluster field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is
+    type: bool
+    usage: select the configuration.default_cluster.is field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.admin-rights
+    type: bool
+    usage: select the configuration.default_cluster.is.admin_rights field and all
+      allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.admin-rights.all
+    type: bool
+    usage: select the configuration.default_cluster.is.admin_rights.all field
+    default_value: "false"
+  - name: configuration.default-cluster.is.end-device-picture
+    type: bool
+    usage: select the configuration.default_cluster.is.end_device_picture field and
+      all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.end-device-picture.disable-upload
+    type: bool
+    usage: select the configuration.default_cluster.is.end_device_picture.disable_upload
+      field
+    default_value: "false"
+  - name: configuration.default-cluster.is.profile-picture
+    type: bool
+    usage: select the configuration.default_cluster.is.profile_picture field and all
+      allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.profile-picture.disable-upload
+    type: bool
+    usage: select the configuration.default_cluster.is.profile_picture.disable_upload
+      field
+    default_value: "false"
+  - name: configuration.default-cluster.is.profile-picture.use-gravatar
+    type: bool
+    usage: select the configuration.default_cluster.is.profile_picture.use_gravatar
+      field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration field and
+      all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.admin-approval
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.admin_approval
+      field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.admin-approval.required
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.admin_approval.required
+      field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.contact-info-validation
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.contact_info_validation
+      field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.contact-info-validation.required
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.contact_info_validation.required
+      field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.enabled
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.enabled field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.invitation
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.invitation
+      field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.invitation.required
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.invitation.required
+      field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.invitation.token-ttl
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.invitation.token_ttl
+      field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.password-requirements
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.password_requirements
+      field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.max-length
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.password_requirements.max_length
+      field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.min-digits
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.password_requirements.min_digits
+      field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.min-length
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.password_requirements.min_length
+      field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.min-special
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.password_requirements.min_special
+      field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-registration.password-requirements.min-uppercase
+    type: bool
+    usage: select the configuration.default_cluster.is.user_registration.password_requirements.min_uppercase
+      field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-rights
+    type: bool
+    usage: select the configuration.default_cluster.is.user_rights field and all allowed
+      sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-rights.create-applications
+    type: bool
+    usage: select the configuration.default_cluster.is.user_rights.create_applications
+      field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-rights.create-clients
+    type: bool
+    usage: select the configuration.default_cluster.is.user_rights.create_clients
+      field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-rights.create-gateways
+    type: bool
+    usage: select the configuration.default_cluster.is.user_rights.create_gateways
+      field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-rights.create-organizations
+    type: bool
+    usage: select the configuration.default_cluster.is.user_rights.create_organizations
+      field
+    default_value: "false"
+  - name: configuration.default-cluster.ns
+    type: bool
+    usage: select the configuration.default_cluster.ns field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.ns.cooldown-window
+    type: bool
+    usage: select the configuration.default_cluster.ns.cooldown_window field
+    default_value: "false"
+  - name: configuration.default-cluster.ns.deduplication-window
+    type: bool
+    usage: select the configuration.default_cluster.ns.deduplication_window field
+    default_value: "false"
+  - name: configuration.default-cluster.ns.dev-addr-prefixes
+    type: bool
+    usage: select the configuration.default_cluster.ns.dev_addr_prefixes field
+    default_value: "false"
+  - name: configuration.default-cluster.ui
+    type: bool
+    usage: select the configuration.default_cluster.ui field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.ui.branding-base-url
+    type: bool
+    usage: select the configuration.default_cluster.ui.branding_base_url field
+    default_value: "false"
+  - name: configuration.pb
+    type: bool
+    usage: select the configuration.pb field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.pb.listed
+    type: bool
+    usage: select the configuration.pb.listed field
+    default_value: "false"
+  - name: contact-info
+    type: bool
+    usage: select the contact_info field
+    default_value: "false"
+  - name: deleted
+    type: bool
+    usage: return recently deleted
+    default_value: "false"
+  - name: description
+    type: bool
+    usage: select the description field
+    default_value: "false"
+  - name: description-contains
+    type: string
+  - name: id-contains
+    type: string
+  - name: limit
+    type: uint32
+    usage: maximum number of results to get
+    default_value: "50"
+  - name: max-applications
+    type: bool
+    usage: select the max_applications field
+    default_value: "false"
+  - name: max-clients
+    type: bool
+    usage: select the max_clients field
+    default_value: "false"
+  - name: max-end-devices
+    type: bool
+    usage: select the max_end_devices field
+    default_value: "false"
+  - name: max-gateways
+    type: bool
+    usage: select the max_gateways field
+    default_value: "false"
+  - name: max-organizations
+    type: bool
+    usage: select the max_organizations field
+    default_value: "false"
+  - name: max-users
+    type: bool
+    usage: select the max_users field
+    default_value: "false"
+  - name: name
+    type: bool
+    usage: select the name field
+    default_value: "false"
+  - name: name-contains
+    type: string
+  - name: order
+    type: string
+    usage: order by this field
+  - name: page
+    type: uint32
+    usage: results page number
+    default_value: "1"
+  - name: state
+    type: stringSlice
+    usage: 'allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED,
+      STATE_SUSPENDED'
+    default_value: '[]'
+  - name: state-description
+    type: bool
+    usage: select the state_description field
+    default_value: "false"
 ttn-lw-cli tenants update:
   path: ttn-lw-cli tenants update
   parent_path: ttn-lw-cli tenants
@@ -15625,6 +16179,9 @@ ttn-lw-cli tenants update:
     default_value: '[]'
   - name: billing-identifiers.billing-id
     type: string
+  - name: billing.counting.end-devices
+    type: int32
+    default_value: "0"
   - name: billing.provider.aws-saas-marketplace.customer-identifier
     type: string
   - name: billing.provider.aws-saas-marketplace.product-code
@@ -15751,11 +16308,10 @@ ttn-lw-cli use:
   path: ttn-lw-cli use
   parent_path: ttn-lw-cli
   name: use
-  use: '[host]'
   aliases:
   - generate-configuration
   - generate-cfg
-  short: Use
+  short: Generate client configuration for The Things Stack
   command_flags:
   - name: fetch-ca
     type: bool
@@ -16851,6 +17407,47 @@ ttn-lw-cli users search:
     type: bool
     usage: select the temporary_password_expires_at field
     default_value: "false"
+ttn-lw-cli users sessions:
+  path: ttn-lw-cli users sessions
+  parent_path: ttn-lw-cli users
+  name: sessions
+  aliases:
+  - session
+  short: Manage user sessions
+ttn-lw-cli users sessions delete:
+  path: ttn-lw-cli users sessions delete
+  parent_path: ttn-lw-cli users sessions
+  name: delete
+  use: '[user-id] [session-id]'
+  aliases:
+  - del
+  - remove
+  - rm
+  short: Delete a user session
+  command_flags:
+  - name: session-id
+    type: string
+  - name: user-id
+    type: string
+ttn-lw-cli users sessions list:
+  path: ttn-lw-cli users sessions list
+  parent_path: ttn-lw-cli users sessions
+  name: list
+  use: '[user-id]'
+  aliases:
+  - ls
+  short: List user sessions
+  command_flags:
+  - name: limit
+    type: uint32
+    usage: maximum number of results to get
+    default_value: "50"
+  - name: page
+    type: uint32
+    usage: results page number
+    default_value: "1"
+  - name: user-id
+    type: string
 ttn-lw-cli users set:
   path: ttn-lw-cli users set
   parent_path: ttn-lw-cli users

@@ -1,0 +1,66 @@
+name: EntityRegistrySearch
+comment: |-
+  The EntityRegistrySearch service indexes entities in the various registries
+  and enables searching for them.
+  This service is not implemented on all deployments.
+methods:
+  SearchApplications:
+    name: SearchApplications
+    comment: |-
+      Search for applications that match the conditions specified in the request.
+      Non-admin users will only match applications that they have rights on.
+    input:
+      name: SearchApplicationsRequest
+    output:
+      name: Applications
+    http:
+    - method: GET
+      path: /search/applications
+  SearchClients:
+    name: SearchClients
+    comment: |-
+      Search for OAuth clients that match the conditions specified in the request.
+      Non-admin users will only match OAuth clients that they have rights on.
+    input:
+      name: SearchClientsRequest
+    output:
+      name: Clients
+    http:
+    - method: GET
+      path: /search/clients
+  SearchGateways:
+    name: SearchGateways
+    comment: |-
+      Search for gateways that match the conditions specified in the request.
+      Non-admin users will only match gateways that they have rights on.
+    input:
+      name: SearchGatewaysRequest
+    output:
+      name: Gateways
+    http:
+    - method: GET
+      path: /search/gateways
+  SearchOrganizations:
+    name: SearchOrganizations
+    comment: |-
+      Search for organizations that match the conditions specified in the request.
+      Non-admin users will only match organizations that they have rights on.
+    input:
+      name: SearchOrganizationsRequest
+    output:
+      name: Organizations
+    http:
+    - method: GET
+      path: /search/organizations
+  SearchUsers:
+    name: SearchUsers
+    comment: |-
+      Search for users that match the conditions specified in the request.
+      This is only available to admin users.
+    input:
+      name: SearchUsersRequest
+    output:
+      name: Users
+    http:
+    - method: GET
+      path: /search/users

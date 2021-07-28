@@ -1,0 +1,46 @@
+name: Session
+fields:
+- name: dev_addr
+  comment: |-
+    Device Address, issued by the Network Server or chosen by device manufacturer in case of testing range (beginning with 00-03).
+    Known by Network Server, Application Server and Join Server. Owned by Network Server.
+  type: bytes
+  default: ""
+- name: keys
+  message:
+    name: SessionKeys
+  rules:
+    required: true
+  default: {}
+- name: last_f_cnt_up
+  comment: Last uplink frame counter value used. Network Server only. Application
+    Server assumes the Network Server checked it.
+  type: uint32
+  default: 0
+- name: last_n_f_cnt_down
+  comment: Last network downlink frame counter value used. Network Server only.
+  type: uint32
+  default: 0
+- name: last_a_f_cnt_down
+  comment: Last application downlink frame counter value used. Application Server
+    only.
+  type: uint32
+  default: 0
+- name: last_conf_f_cnt_down
+  comment: Frame counter of the last confirmed downlink message sent. Network Server
+    only.
+  type: uint32
+  default: 0
+- name: started_at
+  comment: Time when the session started. Network Server only.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: queued_application_downlinks
+  comment: Queued Application downlink messages. Stored in Application Server and
+    Network Server.
+  repeated:
+    message:
+      name: ApplicationDownlink
+  default: []

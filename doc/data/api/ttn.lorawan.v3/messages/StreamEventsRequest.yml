@@ -1,0 +1,23 @@
+name: StreamEventsRequest
+fields:
+- name: identifiers
+  repeated:
+    message:
+      name: EntityIdentifiers
+  default: []
+- name: tail
+  comment: |-
+    If greater than zero, this will return historical events, up to this maximum when the stream starts.
+    If used in combination with "after", the limit that is reached first, is used.
+    The availability of historical events depends on server support and retention policy.
+  type: uint32
+  default: 0
+- name: after
+  comment: |-
+    If not empty, this will return historical events after the given time when the stream starts.
+    If used in combination with "tail", the limit that is reached first, is used.
+    The availability of historical events depends on server support and retention policy.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"

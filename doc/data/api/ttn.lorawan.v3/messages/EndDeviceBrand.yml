@@ -1,0 +1,38 @@
+name: EndDeviceBrand
+fields:
+- name: brand_id
+  comment: Brand identifier, as specified in the Device Repository.
+  type: string
+  rules:
+    max_len: 36
+    pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+  default: ""
+- name: name
+  comment: Brand name.
+  type: string
+  default: ""
+- name: private_enterprise_number
+  comment: Private Enterprise Number (PEN) assigned by IANA.
+  type: uint32
+  default: 0
+- name: organization_unique_identifiers
+  comment: Organization Unique Identifiers (OUI) assigned by IEEE.
+  repeated:
+    type: string
+  default: []
+- name: lora_alliance_vendor_id
+  comment: VendorID managed by the LoRa Alliance, as defined in TR005.
+  type: uint32
+  default: 0
+- name: website
+  comment: Brand website URL.
+  type: string
+  default: ""
+- name: email
+  comment: Contact email address.
+  type: string
+  default: ""
+- name: logo
+  comment: Path to brand logo.
+  type: string
+  default: ""

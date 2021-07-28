@@ -1,0 +1,98 @@
+name: GatewayAccess
+comment: |-
+  The GatewayAcces service, exposed by the Identity Server, is used to manage
+  API keys and collaborators of gateways.
+methods:
+  ListRights:
+    name: ListRights
+    comment: List the rights the caller has on this gateway.
+    input:
+      name: GatewayIdentifiers
+    output:
+      name: Rights
+    http:
+    - method: GET
+      path: /gateways/{gateway_id}/rights
+  CreateAPIKey:
+    name: CreateAPIKey
+    comment: Create an API key scoped to this gateway.
+    input:
+      name: CreateGatewayAPIKeyRequest
+    output:
+      name: APIKey
+    http:
+    - method: POST
+      path: /gateways/{gateway_ids.gateway_id}/api-keys
+  ListAPIKeys:
+    name: ListAPIKeys
+    comment: List the API keys for this gateway.
+    input:
+      name: ListGatewayAPIKeysRequest
+    output:
+      name: APIKeys
+    http:
+    - method: GET
+      path: /gateways/{gateway_ids.gateway_id}/api-keys
+  GetAPIKey:
+    name: GetAPIKey
+    comment: Get a single API key of this gateway.
+    input:
+      name: GetGatewayAPIKeyRequest
+    output:
+      name: APIKey
+    http:
+    - method: GET
+      path: /gateways/{gateway_ids.gateway_id}/api-keys/{key_id}
+  UpdateAPIKey:
+    name: UpdateAPIKey
+    comment: |-
+      Update the rights of an API key of the gateway.
+      This method can also be used to delete the API key, by giving it no rights.
+      The caller is required to have all assigned or/and removed rights.
+    input:
+      name: UpdateGatewayAPIKeyRequest
+    output:
+      name: APIKey
+    http:
+    - method: PUT
+      path: /gateways/{gateway_ids.gateway_id}/api-keys/{api_key.id}
+  GetCollaborator:
+    name: GetCollaborator
+    comment: |-
+      Get the rights of a collaborator (member) of the gateway.
+      Pseudo-rights in the response (such as the "_ALL" right) are not expanded.
+    input:
+      name: GetGatewayCollaboratorRequest
+    output:
+      name: GetCollaboratorResponse
+    http:
+    - method: ""
+      path: ""
+    - method: GET
+      path: /gateways/{gateway_ids.gateway_id}/collaborator/user/{collaborator.user_ids.user_id}
+    - method: GET
+      path: /gateways/{gateway_ids.gateway_id}/collaborator/organization/{collaborator.organization_ids.organization_id}
+  SetCollaborator:
+    name: SetCollaborator
+    comment: |-
+      Set the rights of a collaborator (member) on the gateway.
+      This method can also be used to delete the collaborator, by giving them no rights.
+      The caller is required to have all assigned or/and removed rights.
+    input:
+      name: SetGatewayCollaboratorRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: PUT
+      path: /gateways/{gateway_ids.gateway_id}/collaborators
+  ListCollaborators:
+    name: ListCollaborators
+    comment: List the collaborators on this gateway.
+    input:
+      name: ListGatewayCollaboratorsRequest
+    output:
+      name: Collaborators
+    http:
+    - method: GET
+      path: /gateways/{gateway_ids.gateway_id}/collaborators

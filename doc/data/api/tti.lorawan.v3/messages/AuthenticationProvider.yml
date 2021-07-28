@@ -1,0 +1,30 @@
+name: AuthenticationProvider
+fields:
+- name: ids
+  message:
+    name: AuthenticationProviderIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: created_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: updated_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: name
+  type: string
+  rules:
+    max_len: 50
+  default: ""
+- name: allow_registrations
+  type: bool
+  default: false
+- name: configuration
+  message:
+    name: AuthenticationProvider.Configuration
+  default: {}

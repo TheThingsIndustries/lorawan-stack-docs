@@ -1,0 +1,46 @@
+name: NetworkCryptoService
+comment: Service for network layer cryptographic operations.
+methods:
+  JoinRequestMIC:
+    name: JoinRequestMIC
+    comment: Calculate the join-request message MIC.
+    input:
+      name: CryptoServicePayloadRequest
+    output:
+      name: CryptoServicePayloadResponse
+  JoinAcceptMIC:
+    name: JoinAcceptMIC
+    comment: Calculate the join-accept message MIC.
+    input:
+      name: JoinAcceptMICRequest
+    output:
+      name: CryptoServicePayloadResponse
+  EncryptJoinAccept:
+    name: EncryptJoinAccept
+    comment: Encrypt the join-accept payload.
+    input:
+      name: CryptoServicePayloadRequest
+    output:
+      name: CryptoServicePayloadResponse
+  EncryptRejoinAccept:
+    name: EncryptRejoinAccept
+    comment: Encrypt the rejoin-accept payload.
+    input:
+      name: CryptoServicePayloadRequest
+    output:
+      name: CryptoServicePayloadResponse
+  DeriveNwkSKeys:
+    name: DeriveNwkSKeys
+    comment: Derive network session keys (NwkSKey, or FNwkSKey, SNwkSKey and NwkSEncKey)
+    input:
+      name: DeriveSessionKeysRequest
+    output:
+      name: NwkSKeysResponse
+  GetNwkKey:
+    name: GetNwkKey
+    comment: Get the NwkKey. Crypto Servers may return status code FAILED_PRECONDITION
+      when root keys are not exposed.
+    input:
+      name: GetRootKeysRequest
+    output:
+      name: KeyEnvelope

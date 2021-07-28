@@ -1,0 +1,89 @@
+name: EndDeviceRegistry
+comment: |-
+  The EndDeviceRegistry service, exposed by the Identity Server, is used to manage
+  end device registrations.
+
+  After registering an end device, it also needs to be registered in
+  the NsEndDeviceRegistry that is exposed by the Network Server,
+  the AsEndDeviceRegistry that is exposed by the Application Server,
+  and the JsEndDeviceRegistry that is exposed by the Join Server.
+
+  Before deleting an end device it first needs to be deleted from the
+  NsEndDeviceRegistry, the AsEndDeviceRegistry and the JsEndDeviceRegistry.
+methods:
+  Create:
+    name: Create
+    comment: |-
+      Create a new end device within an application.
+
+      After registering an end device, it also needs to be registered in
+      the NsEndDeviceRegistry that is exposed by the Network Server,
+      the AsEndDeviceRegistry that is exposed by the Application Server,
+      and the JsEndDeviceRegistry that is exposed by the Join Server.
+    input:
+      name: CreateEndDeviceRequest
+    output:
+      name: EndDevice
+    http:
+    - method: POST
+      path: /applications/{end_device.ids.application_ids.application_id}/devices
+  Get:
+    name: Get
+    comment: |-
+      Get the end device with the given identifiers, selecting the fields specified
+      in the field mask.
+      More or less fields may be returned, depending on the rights of the caller.
+    input:
+      name: GetEndDeviceRequest
+    output:
+      name: EndDevice
+    http:
+    - method: GET
+      path: /applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}
+  GetIdentifiersForEUIs:
+    name: GetIdentifiersForEUIs
+    comment: Get the identifiers of the end device that has the given EUIs registered.
+    input:
+      name: GetEndDeviceIdentifiersForEUIsRequest
+    output:
+      name: EndDeviceIdentifiers
+  List:
+    name: List
+    comment: |-
+      List end devices in the given application.
+      Similar to Get, this selects the fields given by the field mask.
+      More or less fields may be returned, depending on the rights of the caller.
+    input:
+      name: ListEndDevicesRequest
+    output:
+      name: EndDevices
+    http:
+    - method: GET
+      path: /applications/{application_ids.application_id}/devices
+  Update:
+    name: Update
+    comment: Update the end device, changing the fields specified by the field mask
+      to the provided values.
+    input:
+      name: UpdateEndDeviceRequest
+    output:
+      name: EndDevice
+    http:
+    - method: PUT
+      path: /applications/{end_device.ids.application_ids.application_id}/devices/{end_device.ids.device_id}
+  Delete:
+    name: Delete
+    comment: |-
+      Delete the end device with the given IDs.
+
+      Before deleting an end device it first needs to be deleted from the
+      NsEndDeviceRegistry, the AsEndDeviceRegistry and the JsEndDeviceRegistry.
+      This is NOT done automatically.
+    input:
+      name: EndDeviceIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /applications/{application_ids.application_id}/devices/{device_id}

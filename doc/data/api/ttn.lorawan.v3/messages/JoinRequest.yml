@@ -1,0 +1,51 @@
+name: JoinRequest
+fields:
+- name: raw_payload
+  type: bytes
+  rules:
+    len: 23
+  default: ""
+- name: payload
+  message:
+    name: Message
+  default: {}
+- name: dev_addr
+  type: bytes
+  default: ""
+- name: selected_mac_version
+  enum:
+    name: MACVersion
+  default: MAC_UNKNOWN
+- name: net_id
+  type: bytes
+  default: ""
+- name: downlink_settings
+  message:
+    name: DLSettings
+  rules:
+    required: true
+  default: {}
+- name: rx_delay
+  enum:
+    name: RxDelay
+  rules:
+    defined_only: true
+  default: RX_DELAY_0
+- name: cf_list
+  comment: Optional CFList.
+  message:
+    name: CFList
+  default: {}
+- name: correlation_ids
+  repeated:
+    type: string
+    rules:
+      max_len: 100
+  default: []
+- name: consumed_airtime
+  comment: Consumed airtime for the transmission of the join request. Calculated by
+    Network Server using the RawPayload size and the transmission settings.
+  message:
+    package: google.protobuf
+    name: Duration
+  default: 0s

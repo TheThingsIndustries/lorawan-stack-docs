@@ -1,0 +1,21 @@
+name: RootKeys
+comment: |-
+  Root keys for a LoRaWAN device.
+  These are stored on the Join Server.
+fields:
+- name: root_key_id
+  comment: Join Server issued identifier for the root keys.
+  type: string
+  rules:
+    max_len: 2048
+  default: ""
+- name: app_key
+  comment: The (encrypted) Application Key.
+  message:
+    name: KeyEnvelope
+  default: {}
+- name: nwk_key
+  comment: The (encrypted) Network Key.
+  message:
+    name: KeyEnvelope
+  default: {}

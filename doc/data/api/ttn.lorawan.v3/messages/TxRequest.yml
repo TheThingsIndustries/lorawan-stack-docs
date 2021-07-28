@@ -1,0 +1,92 @@
+name: TxRequest
+comment: |-
+  TxRequest is a request for transmission.
+  If sent to a roaming partner, this request is used to generate the DLMetadata Object (see Backend Interfaces 1.0, Table 22).
+  If the gateway has a scheduler, this request is sent to the gateway, in the order of gateway_ids.
+  Otherwise, the Gateway Server attempts to schedule the request and creates the TxSettings.
+fields:
+- name: class
+  enum:
+    name: Class
+  default: CLASS_A
+- name: downlink_paths
+  comment: |-
+    Downlink paths used to select a gateway for downlink.
+    In class A, the downlink paths are required to only contain uplink tokens.
+    In class B and C, the downlink paths may contain uplink tokens and fixed gateways antenna identifiers.
+  repeated:
+    message:
+      name: DownlinkPath
+  default: []
+- name: rx1_delay
+  comment: Rx1 delay (Rx2 delay is Rx1 delay + 1 second).
+  enum:
+    name: RxDelay
+  rules:
+    defined_only: true
+  default: RX_DELAY_0
+- name: rx1_data_rate_index
+  comment: LoRaWAN data rate index for Rx1.
+  enum:
+    name: DataRateIndex
+  rules:
+    defined_only: true
+  default: DATA_RATE_0
+- name: rx1_frequency
+  comment: Frequency (Hz) for Rx1.
+  type: uint64
+  default: 0
+- name: rx2_data_rate_index
+  comment: LoRaWAN data rate index for Rx2.
+  enum:
+    name: DataRateIndex
+  rules:
+    defined_only: true
+  default: DATA_RATE_0
+- name: rx2_frequency
+  comment: Frequency (Hz) for Rx2.
+  type: uint64
+  default: 0
+- name: priority
+  comment: |-
+    Priority for scheduling.
+    Requests with a higher priority are allocated more channel time than messages with a lower priority, in duty-cycle limited regions.
+    A priority of HIGH or higher sets the HiPriorityFlag in the DLMetadata Object.
+  enum:
+    name: TxSchedulePriority
+  rules:
+    defined_only: true
+  default: LOWEST
+- name: absolute_time
+  comment: |-
+    Time when the downlink message should be transmitted.
+    This value is only valid for class C downlink; class A downlink uses uplink tokens and class B downlink is scheduled on ping slots.
+    This requires the gateway to have GPS time sychronization.
+    If the absolute time is not set, the first available time will be used that does not conflict or violate regional limitations.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: frequency_plan_id
+  comment: Frequency plan ID from which the frequencies in this message are retrieved.
+  type: string
+  rules:
+    max_len: 64
+  default: ""
+- name: lorawan_phy_version
+  comment: The regional parameters version used to interpret the data rate indices
+    in this message.
+  enum:
+    name: PHYVersion
+  rules:
+    defined_only: true
+  default: PHY_UNKNOWN
+- name: advanced
+  comment: |-
+    Advanced metadata fields
+    - can be used for advanced information or experimental features that are not yet formally defined in the API
+    - field names are written in snake_case
+  message:
+    package: google.protobuf
+    name: Struct
+  default: {}

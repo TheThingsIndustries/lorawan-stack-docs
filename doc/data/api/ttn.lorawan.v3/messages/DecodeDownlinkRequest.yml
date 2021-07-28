@@ -1,0 +1,27 @@
+name: DecodeDownlinkRequest
+fields:
+- name: end_device_ids
+  message:
+    name: EndDeviceIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: version_ids
+  message:
+    name: EndDeviceVersionIdentifiers
+  default: {}
+- name: downlink
+  message:
+    name: ApplicationDownlink
+  rules:
+    required: true
+  default: {}
+- name: formatter
+  enum:
+    name: PayloadFormatter
+  rules:
+    defined_only: true
+  default: FORMATTER_NONE
+- name: parameter
+  type: string
+  default: ""

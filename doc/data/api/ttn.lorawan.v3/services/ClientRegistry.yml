@@ -1,0 +1,99 @@
+name: ClientRegistry
+comment: |-
+  The ClientRegistry service, exposed by the Identity Server, is used to manage
+  OAuth client registrations.
+methods:
+  Create:
+    name: Create
+    comment: |-
+      Create a new OAuth client. This also sets the given organization or user as
+      first collaborator with all possible rights.
+    input:
+      name: CreateClientRequest
+    output:
+      name: Client
+    http:
+    - method: POST
+      path: /users/{collaborator.user_ids.user_id}/clients
+    - method: POST
+      path: /organizations/{collaborator.organization_ids.organization_id}/clients
+  Get:
+    name: Get
+    comment: |-
+      Get the OAuth client with the given identifiers, selecting the fields specified
+      in the field mask.
+      More or less fields may be returned, depending on the rights of the caller.
+    input:
+      name: GetClientRequest
+    output:
+      name: Client
+    http:
+    - method: GET
+      path: /clients/{client_ids.client_id}
+  List:
+    name: List
+    comment: |-
+      List OAuth clients where the given user or organization is a direct collaborator.
+      If no user or organization is given, this returns the OAuth clients the caller
+      has access to.
+      Similar to Get, this selects the fields specified in the field mask.
+      More or less fields may be returned, depending on the rights of the caller.
+    input:
+      name: ListClientsRequest
+    output:
+      name: Clients
+    http:
+    - method: GET
+      path: /clients
+    - method: GET
+      path: /users/{collaborator.user_ids.user_id}/clients
+    - method: GET
+      path: /organizations/{collaborator.organization_ids.organization_id}/clients
+  Update:
+    name: Update
+    comment: Update the OAuth client, changing the fields specified by the field mask
+      to the provided values.
+    input:
+      name: UpdateClientRequest
+    output:
+      name: Client
+    http:
+    - method: PUT
+      path: /clients/{client.ids.client_id}
+  Delete:
+    name: Delete
+    comment: Delete the OAuth client. This may not release the client ID for reuse.
+    input:
+      name: ClientIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /clients/{client_id}
+  Restore:
+    name: Restore
+    comment: |-
+      Restore a recently deleted client.
+
+      Deployment configuration may specify if, and for how long after deletion,
+      entities can be restored.
+    input:
+      name: ClientIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: POST
+      path: /clients/{client_id}/restore
+  Purge:
+    name: Purge
+    comment: Purge the client. This will release the client ID for reuse.
+    input:
+      name: ClientIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /clients/{client_id}/purge

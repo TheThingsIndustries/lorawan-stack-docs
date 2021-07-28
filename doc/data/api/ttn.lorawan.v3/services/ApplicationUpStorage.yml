@@ -1,0 +1,18 @@
+name: ApplicationUpStorage
+comment: The ApplicationUpStorage service can be used to query stored application
+  upstream messages.
+methods:
+  GetStoredApplicationUp:
+    name: GetStoredApplicationUp
+    comment: Returns a stream of application messages that have been stored in the
+      database.
+    input:
+      name: GetStoredApplicationUpRequest
+    output:
+      name: ApplicationUp
+      stream: true
+    http:
+    - method: GET
+      path: /as/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}/packages/storage/{type}
+    - method: GET
+      path: /as/applications/{application_ids.application_id}/packages/storage/{type}

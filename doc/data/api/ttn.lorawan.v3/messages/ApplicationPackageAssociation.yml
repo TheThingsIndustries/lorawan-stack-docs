@@ -1,0 +1,29 @@
+name: ApplicationPackageAssociation
+fields:
+- name: ids
+  message:
+    name: ApplicationPackageAssociationIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: created_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: updated_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: package_name
+  type: string
+  rules:
+    max_len: 36
+    pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+  default: ""
+- name: data
+  message:
+    package: google.protobuf
+    name: Struct
+  default: {}

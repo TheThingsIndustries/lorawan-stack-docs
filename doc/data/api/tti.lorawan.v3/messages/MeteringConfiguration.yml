@@ -1,0 +1,26 @@
+name: MeteringConfiguration
+fields:
+- name: interval
+  comment: How frequently to report to the metering service.
+  message:
+    package: google.protobuf
+    name: Duration
+  default: 0s
+- name: on_success
+  comment: How to update the license on success.
+  message:
+    name: LicenseUpdate
+  default: {}
+- name: aws
+  message:
+    name: MeteringConfiguration.AWS
+  default: {}
+- name: prometheus
+  message:
+    name: MeteringConfiguration.Prometheus
+  default: {}
+oneofs:
+- name: metering
+  field_names:
+  - aws
+  - prometheus

@@ -1,0 +1,115 @@
+name: UserRegistry
+comment: |-
+  The UserRegistry service, exposed by the Identity Server, is used to manage
+  user registrations.
+methods:
+  Create:
+    name: Create
+    comment: Register a new user. This method may be restricted by network settings.
+    input:
+      name: CreateUserRequest
+    output:
+      name: User
+    http:
+    - method: POST
+      path: /users
+  Get:
+    name: Get
+    comment: |-
+      Get the user with the given identifiers, selecting the fields given by the
+      field mask. The method may return more or less fields, depending on the rights
+      of the caller.
+    input:
+      name: GetUserRequest
+    output:
+      name: User
+    http:
+    - method: GET
+      path: /users/{user_ids.user_id}
+  List:
+    name: List
+    comment: List users of the network. This method is typically restricted to admins
+      only.
+    input:
+      name: ListUsersRequest
+    output:
+      name: Users
+    http:
+    - method: GET
+      path: /users
+  Update:
+    name: Update
+    comment: |-
+      Update the user, changing the fields specified by the field mask to the provided values.
+      This method can not be used to change the password, see the UpdatePassword method for that.
+    input:
+      name: UpdateUserRequest
+    output:
+      name: User
+    http:
+    - method: PUT
+      path: /users/{user.ids.user_id}
+  CreateTemporaryPassword:
+    name: CreateTemporaryPassword
+    comment: |-
+      Create a temporary password that can be used for updating a forgotten password.
+      The generated password is sent to the user's email address.
+    input:
+      name: CreateTemporaryPasswordRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: POST
+      path: /users/{user_ids.user_id}/temporary_password
+  UpdatePassword:
+    name: UpdatePassword
+    comment: Update the password of the user.
+    input:
+      name: UpdateUserPasswordRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: PUT
+      path: /users/{user_ids.user_id}/password
+  Delete:
+    name: Delete
+    comment: Delete the user. This may not release the user ID for reuse.
+    input:
+      name: UserIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /users/{user_id}
+  Restore:
+    name: Restore
+    comment: |-
+      Restore a recently deleted user.
+
+      Deployment configuration may specify if, and for how long after deletion,
+      entities can be restored.
+    input:
+      name: UserIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: POST
+      path: /users/{user_id}/restore
+  Purge:
+    name: Purge
+    comment: |-
+      Purge the user. This will release the user ID for reuse.
+      The user is responsible for clearing data from any (external) integrations
+      that may store and expose data by user or organization ID.
+    input:
+      name: UserIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /users/{user_id}/purge

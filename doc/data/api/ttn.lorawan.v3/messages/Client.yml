@@ -1,0 +1,140 @@
+name: Client
+comment: An OAuth client on the network.
+fields:
+- name: ids
+  message:
+    name: ClientIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: created_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: updated_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: deleted_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: name
+  type: string
+  rules:
+    max_len: 50
+  default: ""
+- name: description
+  type: string
+  rules:
+    max_len: 2000
+  default: ""
+- name: attributes
+  comment: Key-value attributes for this client. Typically used for organizing clients
+    or for storing integration-specific data.
+  rules:
+    max_pairs: 10
+  map_key:
+    type: string
+    rules:
+      max_len: 36
+      pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+  map_value:
+    type: string
+    rules:
+      max_len: 200
+  default: {}
+- name: contact_info
+  comment: Contact information for this client. Typically used to indicate who to
+    contact with technical/security questions about the application.
+  rules:
+    max_items: 10
+  repeated:
+    message:
+      name: ContactInfo
+  default: []
+- name: secret
+  comment: The client secret is only visible to collaborators of the client.
+  type: string
+  rules:
+    max_len: 128
+  default: ""
+- name: redirect_uris
+  comment: |-
+    The allowed redirect URIs against which authorization requests are checked.
+    If the authorization request does not pass a redirect URI, the first one
+    from this list is taken.
+  rules:
+    max_items: 10
+  repeated:
+    type: string
+    rules:
+      max_len: 128
+  default: []
+- name: logout_redirect_uris
+  comment: |-
+    The allowed logout redirect URIs against which client initiated logout
+    requests are checked. If the authorization request does not pass a redirect
+    URI, the first one from this list is taken.
+  rules:
+    max_items: 10
+  repeated:
+    type: string
+    rules:
+      max_len: 128
+  default: []
+- name: state
+  comment: |-
+    The reviewing state of the client.
+    This field can only be modified by admins.
+    If state_description is not updated when updating state, state_description is cleared.
+  enum:
+    name: State
+  rules:
+    defined_only: true
+  default: STATE_REQUESTED
+- name: state_description
+  comment: |-
+    A description for the state field.
+    This field can only be modified by admins, and should typically only be updated
+    when also updating `state`.
+  type: string
+  rules:
+    max_len: 128
+  default: ""
+- name: skip_authorization
+  comment: |-
+    If set, the authorization page will be skipped.
+    This field can only be modified by admins.
+  type: bool
+  default: false
+- name: endorsed
+  comment: |-
+    If set, the authorization page will show endorsement.
+    This field can only be modified by admins.
+  type: bool
+  default: false
+- name: grants
+  comment: |-
+    OAuth flows that can be used for the client to get a token.
+    After a client is created, this field can only be modified by admins.
+  repeated:
+    enum:
+      name: GrantType
+    rules:
+      defined_only: true
+  default: []
+- name: rights
+  comment: |-
+    Rights denotes what rights the client will have access to.
+    Users that previously authorized this client will have to re-authorize the
+    client after rights are added to this list.
+  repeated:
+    enum:
+      name: Right
+    rules:
+      defined_only: true
+  default: []

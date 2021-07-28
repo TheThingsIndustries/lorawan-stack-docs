@@ -1,0 +1,35 @@
+name: CUPSRedirection
+fields:
+- name: target_cups_uri
+  comment: CUPS URI for LoRa Basics Station CUPS redirection.
+  type: string
+  default: ""
+- name: current_gateway_key
+  comment: The key set in the gateway to authenticate itself.
+  type: string
+  rules:
+    max_len: 2048
+  default: ""
+- name: target_cups_trust
+  comment: Optional PEM encoded CA Root certificate. If this field is empty, DCS will
+    attempt to dial the Target CUPS server and fetch the CA.
+  type: bytes
+  default: ""
+- name: client_tls
+  comment: 'TODO: Support mTLS (https://github.com/TheThingsNetwork/lorawan-stack/issues/137)'
+  message:
+    name: CUPSRedirection.ClientTLS
+  default: {}
+- name: auth_token
+  comment: The Device Claiming Server will fill this field with a The Things Stack
+    API Key.
+  type: string
+  rules:
+    max_len: 2048
+  default: ""
+oneofs:
+- name: gateway_credentials
+  comment: CUPS Credentials for the gateway.
+  field_names:
+  - client_tls
+  - auth_token

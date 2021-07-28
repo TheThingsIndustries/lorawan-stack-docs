@@ -1,0 +1,71 @@
+name: UserAccess
+comment: |-
+  The UserAcces service, exposed by the Identity Server, is used to manage
+  API keys of users.
+methods:
+  ListRights:
+    name: ListRights
+    comment: List the rights the caller has on this user.
+    input:
+      name: UserIdentifiers
+    output:
+      name: Rights
+    http:
+    - method: GET
+      path: /users/{user_id}/rights
+  CreateAPIKey:
+    name: CreateAPIKey
+    comment: |-
+      Create an API key scoped to this user.
+      User API keys can give access to the user itself, as well as
+      any organization, application, gateway and OAuth client this user is a collaborator of.
+    input:
+      name: CreateUserAPIKeyRequest
+    output:
+      name: APIKey
+    http:
+    - method: POST
+      path: /users/{user_ids.user_id}/api-keys
+  ListAPIKeys:
+    name: ListAPIKeys
+    comment: List the API keys for this user.
+    input:
+      name: ListUserAPIKeysRequest
+    output:
+      name: APIKeys
+    http:
+    - method: GET
+      path: /users/{user_ids.user_id}/api-keys
+  GetAPIKey:
+    name: GetAPIKey
+    comment: Get a single API key of this user.
+    input:
+      name: GetUserAPIKeyRequest
+    output:
+      name: APIKey
+    http:
+    - method: GET
+      path: /users/{user_ids.user_id}/api-keys/{key_id}
+  UpdateAPIKey:
+    name: UpdateAPIKey
+    comment: |-
+      Update the rights of an API key of the user.
+      This method can also be used to delete the API key, by giving it no rights.
+      The caller is required to have all assigned or/and removed rights.
+    input:
+      name: UpdateUserAPIKeyRequest
+    output:
+      name: APIKey
+    http:
+    - method: PUT
+      path: /users/{user_ids.user_id}/api-keys/{api_key.id}
+  CreateLoginToken:
+    name: CreateLoginToken
+    comment: Create a login token that can be used for a one-time login as a user.
+    input:
+      name: CreateLoginTokenRequest
+    output:
+      name: CreateLoginTokenResponse
+    http:
+    - method: POST
+      path: /users/{user_ids.user_id}/login-tokens

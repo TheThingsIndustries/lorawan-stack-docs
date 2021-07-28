@@ -1,0 +1,94 @@
+name: AppAs
+comment: The AppAs service connects an application or integration to an Application
+  Server.
+methods:
+  Subscribe:
+    name: Subscribe
+    comment: Subscribe to upstream messages.
+    input:
+      name: ApplicationIdentifiers
+    output:
+      name: ApplicationUp
+      stream: true
+  DownlinkQueuePush:
+    name: DownlinkQueuePush
+    comment: Push downlink messages to the end of the downlink queue.
+    input:
+      name: DownlinkQueueRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: POST
+      path: /as/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}/down/push
+  DownlinkQueueReplace:
+    name: DownlinkQueueReplace
+    comment: |-
+      Replace the entire downlink queue with the specified messages.
+      This can also be used to empty the queue by specifying no messages.
+    input:
+      name: DownlinkQueueRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: POST
+      path: /as/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}/down/replace
+  DownlinkQueueList:
+    name: DownlinkQueueList
+    comment: List the items currently in the downlink queue.
+    input:
+      name: EndDeviceIdentifiers
+    output:
+      name: ApplicationDownlinks
+    http:
+    - method: GET
+      path: /as/applications/{application_ids.application_id}/devices/{device_id}/down
+  GetMQTTConnectionInfo:
+    name: GetMQTTConnectionInfo
+    comment: Get connection information to connect an MQTT client.
+    input:
+      name: ApplicationIdentifiers
+    output:
+      name: MQTTConnectionInfo
+    http:
+    - method: GET
+      path: /as/applications/{application_id}/mqtt-connection-info
+  SimulateUplink:
+    name: SimulateUplink
+    comment: Simulate an upstream message. This can be used to test integrations.
+    input:
+      name: ApplicationUp
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: POST
+      path: /as/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}/up/simulate
+  EncodeDownlink:
+    name: EncodeDownlink
+    input:
+      name: EncodeDownlinkRequest
+    output:
+      name: EncodeDownlinkResponse
+    http:
+    - method: POST
+      path: /as/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}/down/encode
+  DecodeUplink:
+    name: DecodeUplink
+    input:
+      name: DecodeUplinkRequest
+    output:
+      name: DecodeUplinkResponse
+    http:
+    - method: POST
+      path: /as/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}/up/decode
+  DecodeDownlink:
+    name: DecodeDownlink
+    input:
+      name: DecodeDownlinkRequest
+    output:
+      name: DecodeDownlinkResponse
+    http:
+    - method: POST
+      path: /as/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}/down/decode

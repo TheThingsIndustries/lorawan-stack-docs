@@ -1,0 +1,18 @@
+name: ClaimEndDeviceRequest.AuthenticatedIdentifiers
+fields:
+- name: join_eui
+  comment: JoinEUI (or AppEUI) of the device to claim.
+  type: bytes
+  default: ""
+- name: dev_eui
+  comment: DevEUI of the device to claim.
+  type: bytes
+  default: ""
+- name: authentication_code
+  comment: |-
+    Authentication code to prove ownership.
+    In the LoRa Alliance TR005 specification, this equals the OwnerToken.
+  type: string
+  rules:
+    pattern: ^[A-Z0-9]{1,32}$
+  default: ""

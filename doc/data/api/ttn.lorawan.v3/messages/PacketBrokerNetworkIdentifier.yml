@@ -1,0 +1,13 @@
+name: PacketBrokerNetworkIdentifier
+fields:
+- name: net_id
+  comment: LoRa Alliance NetID.
+  type: uint32
+  default: 0
+- name: tenant_id
+  comment: Tenant identifier if the registration leases DevAddr blocks from a NetID.
+  type: string
+  rules:
+    max_len: 36
+    pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$|^$
+  default: ""

@@ -1,0 +1,147 @@
+name: MACParameters
+comment: |-
+  MACParameters represent the parameters of the device's MAC layer (active or desired).
+  This is used internally by the Network Server.
+fields:
+- name: max_eirp
+  comment: Maximum EIRP (dBm).
+  type: float
+  default: 0
+- name: adr_data_rate_index
+  comment: 'ADR: data rate index to use.'
+  enum:
+    name: DataRateIndex
+  rules:
+    defined_only: true
+  default: DATA_RATE_0
+- name: adr_tx_power_index
+  comment: 'ADR: transmission power index to use.'
+  type: uint32
+  rules:
+    lte: 15
+  default: 0
+- name: adr_nb_trans
+  comment: 'ADR: number of retransmissions.'
+  type: uint32
+  rules:
+    lte: 15
+  default: 0
+- name: adr_ack_limit
+  comment: |-
+    ADR: number of messages to wait before setting ADRAckReq.
+    This field is deprecated, use adr_ack_limit_exponent instead.
+  type: uint32
+  default: 0
+- name: adr_ack_delay
+  comment: |-
+    ADR: number of messages to wait after setting ADRAckReq and before changing TxPower or DataRate.
+    This field is deprecated, use adr_ack_delay_exponent instead.
+  type: uint32
+  default: 0
+- name: rx1_delay
+  comment: Rx1 delay (Rx2 delay is Rx1 delay + 1 second).
+  enum:
+    name: RxDelay
+  rules:
+    defined_only: true
+  default: RX_DELAY_0
+- name: rx1_data_rate_offset
+  comment: Data rate offset for Rx1.
+  enum:
+    name: DataRateOffset
+  rules:
+    defined_only: true
+  default: DATA_RATE_OFFSET_0
+- name: rx2_data_rate_index
+  comment: Data rate index for Rx2.
+  enum:
+    name: DataRateIndex
+  rules:
+    defined_only: true
+  default: DATA_RATE_0
+- name: rx2_frequency
+  comment: Frequency for Rx2 (Hz).
+  type: uint64
+  rules:
+    gte: 100000
+  default: 0
+- name: max_duty_cycle
+  comment: Maximum uplink duty cycle (of all channels).
+  enum:
+    name: AggregatedDutyCycle
+  rules:
+    defined_only: true
+  default: DUTY_CYCLE_1
+- name: rejoin_time_periodicity
+  comment: Time within which a rejoin-request must be sent.
+  enum:
+    name: RejoinTimeExponent
+  rules:
+    defined_only: true
+  default: REJOIN_TIME_0
+- name: rejoin_count_periodicity
+  comment: Message count within which a rejoin-request must be sent.
+  enum:
+    name: RejoinCountExponent
+  rules:
+    defined_only: true
+  default: REJOIN_COUNT_16
+- name: ping_slot_frequency
+  comment: Frequency of the class B ping slot (Hz).
+  type: uint64
+  rules:
+    lte: 0
+    gte: 100000
+  default: 0
+- name: ping_slot_data_rate_index
+  comment: |-
+    Data rate index of the class B ping slot.
+    This field is deprecated, use ping_slot_data_rate_index_value instead.
+  enum:
+    name: DataRateIndex
+  default: DATA_RATE_0
+- name: beacon_frequency
+  comment: Frequency of the class B beacon (Hz).
+  type: uint64
+  rules:
+    lte: 0
+    gte: 100000
+  default: 0
+- name: channels
+  comment: Configured uplink channels and optionally Rx1 frequency.
+  rules:
+    min_items: 1
+  repeated:
+    message:
+      name: MACParameters.Channel
+  default: []
+- name: uplink_dwell_time
+  comment: |-
+    Whether uplink dwell time is set (400ms).
+    If this field is not set, then the value is either unknown or irrelevant(Network Server cannot modify it).
+  message:
+    name: BoolValue
+  default: {}
+- name: downlink_dwell_time
+  comment: |-
+    Whether downlink dwell time is set (400ms).
+    If this field is not set, then the value is either unknown or irrelevant(Network Server cannot modify it).
+  message:
+    name: BoolValue
+  default: {}
+- name: adr_ack_limit_exponent
+  comment: 'ADR: number of messages to wait before setting ADRAckReq.'
+  message:
+    name: ADRAckLimitExponentValue
+  default: {}
+- name: adr_ack_delay_exponent
+  comment: 'ADR: number of messages to wait after setting ADRAckReq and before changing
+    TxPower or DataRate.'
+  message:
+    name: ADRAckDelayExponentValue
+  default: {}
+- name: ping_slot_data_rate_index_value
+  comment: Data rate index of the class B ping slot.
+  message:
+    name: DataRateIndexValue
+  default: {}

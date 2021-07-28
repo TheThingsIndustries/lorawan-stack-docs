@@ -1,0 +1,31 @@
+name: ContactInfoValidation
+fields:
+- name: id
+  type: string
+  rules:
+    max_len: 64
+  default: ""
+- name: token
+  type: string
+  rules:
+    max_len: 64
+  default: ""
+- name: entity
+  message:
+    name: EntityIdentifiers
+  default: {}
+- name: contact_info
+  repeated:
+    message:
+      name: ContactInfo
+  default: []
+- name: created_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: expires_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"

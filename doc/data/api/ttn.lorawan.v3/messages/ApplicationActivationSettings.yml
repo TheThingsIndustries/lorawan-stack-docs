@@ -1,0 +1,23 @@
+name: ApplicationActivationSettings
+fields:
+- name: kek_label
+  comment: The KEK label to use for wrapping application keys.
+  type: string
+  rules:
+    max_len: 2048
+  default: ""
+- name: kek
+  comment: The (encrypted) Key Encryption Key.
+  message:
+    name: KeyEnvelope
+  default: {}
+- name: home_net_id
+  comment: Home NetID.
+  type: bytes
+  default: ""
+- name: application_server_id
+  comment: The AS-ID of the Application Server to use.
+  type: string
+  rules:
+    max_len: 100
+  default: ""

@@ -1,0 +1,21 @@
+name: FHDR
+fields:
+- name: dev_addr
+  type: bytes
+  default: ""
+- name: f_ctrl
+  message:
+    name: FCtrl
+  rules:
+    required: true
+  default: {}
+- name: f_cnt
+  type: uint32
+  rules:
+    lte: 65535
+  default: 0
+- name: f_opts
+  type: bytes
+  rules:
+    max_len: 15
+  default: ""

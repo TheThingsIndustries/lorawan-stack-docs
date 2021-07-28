@@ -1,0 +1,73 @@
+name: EndDeviceVersion
+comment: Template for creating end devices.
+fields:
+- name: ids
+  comment: Version identifiers.
+  message:
+    name: EndDeviceVersionIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: lorawan_version
+  comment: LoRaWAN MAC version.
+  enum:
+    name: MACVersion
+  rules:
+    defined_only: true
+  default: MAC_UNKNOWN
+- name: lorawan_phy_version
+  comment: LoRaWAN PHY version.
+  enum:
+    name: PHYVersion
+  rules:
+    defined_only: true
+  default: PHY_UNKNOWN
+- name: frequency_plan_id
+  comment: ID of the frequency plan used by this device.
+  type: string
+  rules:
+    max_len: 64
+  default: ""
+- name: photos
+  comment: Photos contains file names of device photos.
+  rules:
+    max_items: 10
+  repeated:
+    type: string
+  default: []
+- name: supports_class_b
+  comment: Whether the device supports class B.
+  type: bool
+  default: false
+- name: supports_class_c
+  comment: Whether the device supports class C.
+  type: bool
+  default: false
+- name: default_mac_settings
+  comment: Default MAC layer settings of the device.
+  message:
+    name: MACSettings
+  default: {}
+- name: min_frequency
+  comment: Minimum frequency the device is capable of using (Hz).
+  type: uint64
+  default: 0
+- name: max_frequency
+  comment: Maximum frequency the device is capable of using (Hz).
+  type: uint64
+  default: 0
+- name: supports_join
+  comment: The device supports join (it's OTAA).
+  type: bool
+  default: false
+- name: resets_join_nonces
+  comment: Whether the device resets the join and dev nonces (not LoRaWAN compliant).
+  type: bool
+  default: false
+- name: default_formatters
+  comment: Default formatters defining the payload formats for this end device.
+  message:
+    name: MessagePayloadFormatters
+  rules:
+    required: true
+  default: {}

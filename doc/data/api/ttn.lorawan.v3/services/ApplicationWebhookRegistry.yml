@@ -1,0 +1,69 @@
+name: ApplicationWebhookRegistry
+methods:
+  GetFormats:
+    name: GetFormats
+    input:
+      package: google.protobuf
+      name: Empty
+    output:
+      name: ApplicationWebhookFormats
+    http:
+    - method: GET
+      path: /as/webhook-formats
+  GetTemplate:
+    name: GetTemplate
+    input:
+      name: GetApplicationWebhookTemplateRequest
+    output:
+      name: ApplicationWebhookTemplate
+    http:
+    - method: GET
+      path: /as/webhook-templates/{ids.template_id}
+  ListTemplates:
+    name: ListTemplates
+    input:
+      name: ListApplicationWebhookTemplatesRequest
+    output:
+      name: ApplicationWebhookTemplates
+    http:
+    - method: GET
+      path: /as/webhook-templates
+  Get:
+    name: Get
+    input:
+      name: GetApplicationWebhookRequest
+    output:
+      name: ApplicationWebhook
+    http:
+    - method: GET
+      path: /as/webhooks/{ids.application_ids.application_id}/{ids.webhook_id}
+  List:
+    name: List
+    input:
+      name: ListApplicationWebhooksRequest
+    output:
+      name: ApplicationWebhooks
+    http:
+    - method: GET
+      path: /as/webhooks/{application_ids.application_id}
+  Set:
+    name: Set
+    input:
+      name: SetApplicationWebhookRequest
+    output:
+      name: ApplicationWebhook
+    http:
+    - method: PUT
+      path: /as/webhooks/{webhook.ids.application_ids.application_id}/{webhook.ids.webhook_id}
+    - method: POST
+      path: /as/webhooks/{webhook.ids.application_ids.application_id}
+  Delete:
+    name: Delete
+    input:
+      name: ApplicationWebhookIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /as/webhooks/{application_ids.application_id}/{webhook_id}

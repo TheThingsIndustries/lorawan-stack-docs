@@ -1,0 +1,51 @@
+name: NsEndDeviceRegistry
+comment: The NsEndDeviceRegistry service allows clients to manage their end devices
+  on the Network Server.
+methods:
+  Get:
+    name: Get
+    comment: |-
+      Get returns the device that matches the given identifiers.
+      If there are multiple matches, an error will be returned.
+    input:
+      name: GetEndDeviceRequest
+    output:
+      name: EndDevice
+    http:
+    - method: GET
+      path: /ns/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}
+  Set:
+    name: Set
+    comment: Set creates or updates the device.
+    input:
+      name: SetEndDeviceRequest
+    output:
+      name: EndDevice
+    http:
+    - method: PUT
+      path: /ns/applications/{end_device.ids.application_ids.application_id}/devices/{end_device.ids.device_id}
+    - method: POST
+      path: /ns/applications/{end_device.ids.application_ids.application_id}/devices
+  ResetFactoryDefaults:
+    name: ResetFactoryDefaults
+    comment: ResetFactoryDefaults resets device state to factory defaults.
+    input:
+      name: ResetAndGetEndDeviceRequest
+    output:
+      name: EndDevice
+    http:
+    - method: PATCH
+      path: /ns/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}
+  Delete:
+    name: Delete
+    comment: |-
+      Delete deletes the device that matches the given identifiers.
+      If there are multiple matches, an error will be returned.
+    input:
+      name: EndDeviceIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /ns/applications/{application_ids.application_id}/devices/{device_id}

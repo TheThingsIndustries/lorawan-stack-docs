@@ -1,0 +1,18 @@
+name: ApplicationPubSub.AWSIoTProvider.AssumeRole
+fields:
+- name: arn
+  type: string
+  rules:
+    pattern: ^arn:aws:iam::[0-9]{12}:role\/[A-Za-z0-9_+=,.@-]+$
+  default: ""
+- name: external_id
+  type: string
+  rules:
+    max_len: 1224
+    pattern: ^[\w+=,.@:\/-]*$
+  default: ""
+- name: session_duration
+  message:
+    package: google.protobuf
+    name: Duration
+  default: 0s

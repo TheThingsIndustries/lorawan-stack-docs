@@ -1,0 +1,15 @@
+name: LicenseKey
+fields:
+- name: license
+  comment: The marshaled License message.
+  type: bytes
+  default: ""
+- name: signatures
+  comment: |-
+    Signatures for the license bytes. The LicenseKey is invalid if it does not
+    contain any signature with a known key_id or if it contains any invalid
+    signature.
+  repeated:
+    message:
+      name: LicenseKey.Signature
+  default: []

@@ -1,0 +1,21 @@
+name: EndDeviceTemplateFormat
+fields:
+- name: name
+  type: string
+  rules:
+    max_len: 100
+  default: ""
+- name: description
+  type: string
+  rules:
+    max_len: 200
+  default: ""
+- name: file_extensions
+  rules:
+    max_items: 100
+    unique: true
+  repeated:
+    type: string
+    rules:
+      pattern: ^(?:\.[a-z0-9]{1,16}){1,2}$
+  default: []

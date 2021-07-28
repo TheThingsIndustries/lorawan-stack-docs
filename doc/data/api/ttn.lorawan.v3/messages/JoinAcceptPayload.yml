@@ -1,0 +1,30 @@
+name: JoinAcceptPayload
+fields:
+- name: encrypted
+  type: bytes
+  default: ""
+- name: join_nonce
+  type: bytes
+  default: ""
+- name: net_id
+  type: bytes
+  default: ""
+- name: dev_addr
+  type: bytes
+  default: ""
+- name: dl_settings
+  message:
+    name: DLSettings
+  rules:
+    required: true
+  default: {}
+- name: rx_delay
+  enum:
+    name: RxDelay
+  rules:
+    defined_only: true
+  default: RX_DELAY_0
+- name: cf_list
+  message:
+    name: CFList
+  default: {}

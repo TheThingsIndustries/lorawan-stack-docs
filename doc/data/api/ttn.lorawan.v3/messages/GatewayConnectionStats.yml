@@ -1,0 +1,47 @@
+name: GatewayConnectionStats
+comment: Connection stats as monitored by the Gateway Server.
+fields:
+- name: connected_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: protocol
+  comment: Protocol used to connect (for example, udp, mqtt, grpc)
+  type: string
+  default: ""
+- name: last_status_received_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: last_status
+  message:
+    name: GatewayStatus
+  default: {}
+- name: last_uplink_received_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: uplink_count
+  type: uint64
+  default: 0
+- name: last_downlink_received_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: downlink_count
+  type: uint64
+  default: 0
+- name: round_trip_times
+  message:
+    name: GatewayConnectionStats.RoundTripTimes
+  default: {}
+- name: sub_bands
+  comment: Statistics for each sub band.
+  repeated:
+    message:
+      name: GatewayConnectionStats.SubBand
+  default: []

@@ -1,0 +1,26 @@
+name: EncodedMessagePayload
+fields:
+- name: f_port
+  type: uint32
+  rules:
+    lte: 255
+  default: 0
+- name: frm_payload
+  type: bytes
+  default: ""
+- name: warnings
+  rules:
+    max_items: 10
+  repeated:
+    type: string
+    rules:
+      max_len: 100
+  default: []
+- name: errors
+  rules:
+    max_items: 10
+  repeated:
+    type: string
+    rules:
+      max_len: 100
+  default: []

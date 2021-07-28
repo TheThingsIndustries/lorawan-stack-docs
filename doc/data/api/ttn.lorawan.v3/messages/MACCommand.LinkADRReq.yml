@@ -1,0 +1,29 @@
+name: MACCommand.LinkADRReq
+fields:
+- name: data_rate_index
+  enum:
+    name: DataRateIndex
+  rules:
+    defined_only: true
+  default: DATA_RATE_0
+- name: tx_power_index
+  type: uint32
+  rules:
+    lte: 15
+  default: 0
+- name: channel_mask
+  rules:
+    max_items: 16
+  repeated:
+    type: bool
+  default: []
+- name: channel_mask_control
+  type: uint32
+  rules:
+    lte: 7
+  default: 0
+- name: nb_trans
+  type: uint32
+  rules:
+    lte: 15
+  default: 0

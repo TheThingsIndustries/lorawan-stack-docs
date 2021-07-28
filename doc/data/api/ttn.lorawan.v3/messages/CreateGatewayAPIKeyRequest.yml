@@ -1,0 +1,30 @@
+name: CreateGatewayAPIKeyRequest
+fields:
+- name: gateway_ids
+  message:
+    name: GatewayIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: name
+  type: string
+  rules:
+    max_len: 50
+  default: ""
+- name: rights
+  rules:
+    min_items: 1
+    unique: true
+  repeated:
+    enum:
+      name: Right
+    rules:
+      defined_only: true
+  default: []
+- name: expires_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  rules:
+    gt_now: true
+  default: "0001-01-01T00:00:00Z"

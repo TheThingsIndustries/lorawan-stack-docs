@@ -1,0 +1,27 @@
+name: GetEndDeviceModelRequest
+fields:
+- name: application_ids
+  comment: Application identifiers.
+  message:
+    name: ApplicationIdentifiers
+  default: {}
+- name: brand_id
+  comment: Brand identifier, as defined in the Device Repository.
+  type: string
+  rules:
+    max_len: 36
+    pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+  default: ""
+- name: model_id
+  comment: Model identifier, as defined in the Device Repository.
+  type: string
+  rules:
+    max_len: 36
+    pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+  default: ""
+- name: field_mask
+  comment: Field mask paths.
+  message:
+    package: google.protobuf
+    name: FieldMask
+  default: {}

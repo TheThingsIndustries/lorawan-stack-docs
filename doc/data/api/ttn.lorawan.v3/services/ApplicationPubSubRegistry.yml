@@ -1,0 +1,51 @@
+name: ApplicationPubSubRegistry
+methods:
+  GetFormats:
+    name: GetFormats
+    input:
+      package: google.protobuf
+      name: Empty
+    output:
+      name: ApplicationPubSubFormats
+    http:
+    - method: GET
+      path: /as/pubsub-formats
+  Get:
+    name: Get
+    input:
+      name: GetApplicationPubSubRequest
+    output:
+      name: ApplicationPubSub
+    http:
+    - method: GET
+      path: /as/pubsub/{ids.application_ids.application_id}/{ids.pub_sub_id}
+  List:
+    name: List
+    input:
+      name: ListApplicationPubSubsRequest
+    output:
+      name: ApplicationPubSubs
+    http:
+    - method: GET
+      path: /as/pubsub/{application_ids.application_id}
+  Set:
+    name: Set
+    input:
+      name: SetApplicationPubSubRequest
+    output:
+      name: ApplicationPubSub
+    http:
+    - method: PUT
+      path: /as/pubsub/{pubsub.ids.application_ids.application_id}/{pubsub.ids.pub_sub_id}
+    - method: POST
+      path: /as/pubsub/{pubsub.ids.application_ids.application_id}
+  Delete:
+    name: Delete
+    input:
+      name: ApplicationPubSubIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /as/pubsub/{application_ids.application_id}/{pub_sub_id}

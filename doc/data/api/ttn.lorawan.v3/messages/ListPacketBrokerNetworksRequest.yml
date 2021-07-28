@@ -1,0 +1,29 @@
+name: ListPacketBrokerNetworksRequest
+fields:
+- name: limit
+  comment: Limit the number of results per page.
+  type: uint32
+  rules:
+    lte: 1000
+  default: 0
+- name: page
+  comment: Page number for pagination. 0 is interpreted as 1.
+  type: uint32
+  default: 0
+- name: with_routing_policy
+  comment: If true, list only the Forwarders and Home Networks with whom a routing
+    policy has been defined in either direction.
+  type: bool
+  default: false
+- name: tenant_id_contains
+  comment: Filter by tenant ID.
+  type: string
+  rules:
+    max_len: 100
+  default: ""
+- name: name_contains
+  comment: Filter by name.
+  type: string
+  rules:
+    max_len: 100
+  default: ""

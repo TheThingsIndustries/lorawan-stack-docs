@@ -1,0 +1,51 @@
+name: ClaimGatewayRequest
+fields:
+- name: authenticated_identifiers
+  message:
+    name: ClaimGatewayRequest.AuthenticatedIdentifiers
+  default: {}
+- name: qr_code
+  type: bytes
+  rules:
+    max_len: 1024
+  default: ""
+- name: collaborator
+  comment: Collaborator to grant all rights on the target gateway.
+  message:
+    name: OrganizationOrUserIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: target_gateway_id
+  comment: |-
+    Gateway ID for the target gateway. This must be a unique value.
+    If this is not set, the target ID for the target gateway will be set to `eui-<gateway-eui>`
+  type: string
+  rules:
+    max_len: 36
+    pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$|^$
+  default: ""
+- name: target_gateway_server_address
+  comment: Target Gateway Server Address for the target gateway.
+  type: string
+  rules:
+    pattern: ^(?:(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*(?:[A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])(?::[0-9]{1,5})?$|^$
+  default: ""
+- name: cups_redirection
+  comment: Parameters to set CUPS redirection for the gateway.
+  message:
+    name: CUPSRedirection
+  default: {}
+- name: target_frequency_plan_id
+  comment: |-
+    Frequency plan ID of the target gateway.
+    This equals the first element of the frequency_plan_ids field.
+  type: string
+  rules:
+    max_len: 64
+  default: ""
+oneofs:
+- name: source_gateway
+  field_names:
+  - authenticated_identifiers
+  - qr_code

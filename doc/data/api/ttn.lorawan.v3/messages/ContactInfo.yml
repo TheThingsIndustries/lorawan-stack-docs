@@ -1,0 +1,27 @@
+name: ContactInfo
+fields:
+- name: contact_type
+  enum:
+    name: ContactType
+  rules:
+    defined_only: true
+  default: CONTACT_TYPE_OTHER
+- name: contact_method
+  enum:
+    name: ContactMethod
+  rules:
+    defined_only: true
+  default: CONTACT_METHOD_OTHER
+- name: value
+  type: string
+  rules:
+    max_len: 256
+  default: ""
+- name: public
+  type: bool
+  default: false
+- name: validated_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"

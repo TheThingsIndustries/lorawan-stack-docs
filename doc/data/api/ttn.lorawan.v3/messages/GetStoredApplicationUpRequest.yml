@@ -1,0 +1,82 @@
+name: GetStoredApplicationUpRequest
+fields:
+- name: application_ids
+  comment: Query upstream messages from all end devices of an application. Cannot
+    be used in conjunction with end_device_ids.
+  message:
+    name: ApplicationIdentifiers
+  default: {}
+- name: end_device_ids
+  comment: Query upstream messages from a single end device. Cannot be used in conjunction
+    with application_ids.
+  message:
+    name: EndDeviceIdentifiers
+  default: {}
+- name: type
+  comment: Query upstream messages of a specific type. If not set, then all upstream
+    messages are returned.
+  type: string
+  rules:
+    in:
+    - ""
+    - uplink_message
+    - join_accept
+    - downlink_ack
+    - downlink_nack
+    - downlink_sent
+    - downlink_failed
+    - downlink_queued
+    - downlink_queue_invalidated
+    - location_solved
+    - service_data
+  default: ""
+- name: limit
+  comment: Limit number of results.
+  message:
+    package: google.protobuf
+    name: UInt32Value
+  default: null
+- name: after
+  comment: Query upstream messages after this timestamp only. Cannot be used in conjunction
+    with last.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: before
+  comment: Query upstream messages before this timestamp only. Cannot be used in conjunction
+    with last.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: f_port
+  comment: Query uplinks on a specific FPort only.
+  message:
+    package: google.protobuf
+    name: UInt32Value
+  default: null
+- name: order
+  comment: Order results.
+  type: string
+  rules:
+    in:
+    - ""
+    - -received_at
+    - received_at
+  default: ""
+- name: field_mask
+  comment: |-
+    The names of the upstream message fields that should be returned. See the API reference
+    for allowed field names for each type of upstream message.
+  message:
+    package: google.protobuf
+    name: FieldMask
+  default: {}
+- name: last
+  comment: Query upstream messages that have arrived in the last minutes or hours.
+    Cannot be used in conjunction with after and before.
+  message:
+    package: google.protobuf
+    name: Duration
+  default: 0s

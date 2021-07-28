@@ -1,0 +1,167 @@
+name: MACCommand
+fields:
+- name: cid
+  enum:
+    name: MACCommandIdentifier
+  rules:
+    defined_only: true
+    not_in:
+    - 0
+  default: CID_RFU_0
+- name: raw_payload
+  type: bytes
+  default: ""
+- name: reset_ind
+  message:
+    name: MACCommand.ResetInd
+  default: {}
+- name: reset_conf
+  message:
+    name: MACCommand.ResetConf
+  default: {}
+- name: link_check_ans
+  message:
+    name: MACCommand.LinkCheckAns
+  default: {}
+- name: link_adr_req
+  message:
+    name: MACCommand.LinkADRReq
+  default: {}
+- name: link_adr_ans
+  message:
+    name: MACCommand.LinkADRAns
+  default: {}
+- name: duty_cycle_req
+  message:
+    name: MACCommand.DutyCycleReq
+  default: {}
+- name: rx_param_setup_req
+  message:
+    name: MACCommand.RxParamSetupReq
+  default: {}
+- name: rx_param_setup_ans
+  message:
+    name: MACCommand.RxParamSetupAns
+  default: {}
+- name: dev_status_ans
+  message:
+    name: MACCommand.DevStatusAns
+  default: {}
+- name: new_channel_req
+  message:
+    name: MACCommand.NewChannelReq
+  default: {}
+- name: new_channel_ans
+  message:
+    name: MACCommand.NewChannelAns
+  default: {}
+- name: dl_channel_req
+  message:
+    name: MACCommand.DLChannelReq
+  default: {}
+- name: dl_channel_ans
+  message:
+    name: MACCommand.DLChannelAns
+  default: {}
+- name: rx_timing_setup_req
+  message:
+    name: MACCommand.RxTimingSetupReq
+  default: {}
+- name: tx_param_setup_req
+  message:
+    name: MACCommand.TxParamSetupReq
+  default: {}
+- name: rekey_ind
+  message:
+    name: MACCommand.RekeyInd
+  default: {}
+- name: rekey_conf
+  message:
+    name: MACCommand.RekeyConf
+  default: {}
+- name: adr_param_setup_req
+  message:
+    name: MACCommand.ADRParamSetupReq
+  default: {}
+- name: device_time_ans
+  message:
+    name: MACCommand.DeviceTimeAns
+  default: {}
+- name: force_rejoin_req
+  message:
+    name: MACCommand.ForceRejoinReq
+  default: {}
+- name: rejoin_param_setup_req
+  message:
+    name: MACCommand.RejoinParamSetupReq
+  default: {}
+- name: rejoin_param_setup_ans
+  message:
+    name: MACCommand.RejoinParamSetupAns
+  default: {}
+- name: ping_slot_info_req
+  message:
+    name: MACCommand.PingSlotInfoReq
+  default: {}
+- name: ping_slot_channel_req
+  message:
+    name: MACCommand.PingSlotChannelReq
+  default: {}
+- name: ping_slot_channel_ans
+  message:
+    name: MACCommand.PingSlotChannelAns
+  default: {}
+- name: beacon_timing_ans
+  message:
+    name: MACCommand.BeaconTimingAns
+  default: {}
+- name: beacon_freq_req
+  message:
+    name: MACCommand.BeaconFreqReq
+  default: {}
+- name: beacon_freq_ans
+  message:
+    name: MACCommand.BeaconFreqAns
+  default: {}
+- name: device_mode_ind
+  message:
+    name: MACCommand.DeviceModeInd
+  default: {}
+- name: device_mode_conf
+  message:
+    name: MACCommand.DeviceModeConf
+  default: {}
+oneofs:
+- name: payload
+  field_names:
+  - raw_payload
+  - reset_ind
+  - reset_conf
+  - link_check_ans
+  - link_adr_req
+  - link_adr_ans
+  - duty_cycle_req
+  - rx_param_setup_req
+  - rx_param_setup_ans
+  - dev_status_ans
+  - new_channel_req
+  - new_channel_ans
+  - dl_channel_req
+  - dl_channel_ans
+  - rx_timing_setup_req
+  - tx_param_setup_req
+  - rekey_ind
+  - rekey_conf
+  - adr_param_setup_req
+  - device_time_ans
+  - force_rejoin_req
+  - rejoin_param_setup_req
+  - rejoin_param_setup_ans
+  - ping_slot_info_req
+  - ping_slot_channel_req
+  - ping_slot_channel_ans
+  - beacon_timing_ans
+  - beacon_freq_req
+  - beacon_freq_ans
+  - device_mode_ind
+  - device_mode_conf

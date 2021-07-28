@@ -1,0 +1,20 @@
+name: GsPba
+comment: The GsPba service connects a Gateway Server to a Packet Broker Agent.
+methods:
+  PublishUplink:
+    name: PublishUplink
+    input:
+      name: GatewayUplinkMessage
+    output:
+      package: google.protobuf
+      name: Empty
+  UpdateGateway:
+    name: UpdateGateway
+    comment: |-
+      Update the gateway, changing the fields specified by the field mask to the provided values.
+      To mark a gateway as online, call this rpc setting online to true, include status_public in field_mask and
+      keep calling this rpc before the returned online_ttl passes to keep the gateway online.
+    input:
+      name: UpdatePacketBrokerGatewayRequest
+    output:
+      name: UpdatePacketBrokerGatewayResponse

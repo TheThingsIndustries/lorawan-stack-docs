@@ -1,0 +1,49 @@
+name: ErrorDetails
+comment: |-
+  Error details that are communicated over gRPC (and HTTP) APIs.
+  The messages (for translation) are stored as "error:<namespace>:<name>".
+fields:
+- name: namespace
+  comment: Namespace of the error (typically the package name in The Things Stack).
+  type: string
+  default: ""
+- name: name
+  comment: Name of the error.
+  type: string
+  default: ""
+- name: message_format
+  comment: |-
+    The default (fallback) message format that should be used for the error.
+    This is also used if the client does not have a translation for the error.
+  type: string
+  default: ""
+- name: attributes
+  comment: |-
+    Attributes that should be filled into the message format. Any extra attributes
+    can be displayed as error details.
+  message:
+    package: google.protobuf
+    name: Struct
+  default: {}
+- name: correlation_id
+  comment: |-
+    The correlation ID of the error can be used to correlate the error to stack
+    traces the network may (or may not) store about recent errors.
+  type: string
+  default: ""
+- name: cause
+  comment: The error that caused this error.
+  message:
+    name: ErrorDetails
+  default: {}
+- name: code
+  comment: The status code of the error.
+  type: uint32
+  default: 0
+- name: details
+  comment: The details of the error.
+  repeated:
+    message:
+      package: google.protobuf
+      name: Any
+  default: []

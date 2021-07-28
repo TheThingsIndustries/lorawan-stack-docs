@@ -1,0 +1,47 @@
+name: ListEndDevicesRequest
+fields:
+- name: application_ids
+  message:
+    name: ApplicationIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: field_mask
+  comment: |-
+    The names of the end device fields that should be returned.
+    See the API reference for which fields can be returned by the different services.
+  message:
+    package: google.protobuf
+    name: FieldMask
+  default: {}
+- name: order
+  comment: |-
+    Order the results by this field path (must be present in the field mask).
+    Default ordering is by ID. Prepend with a minus (-) to reverse the order.
+  type: string
+  rules:
+    in:
+    - ""
+    - device_id
+    - -device_id
+    - join_eui
+    - -join_eui
+    - dev_eui
+    - -dev_eui
+    - name
+    - -name
+    - description
+    - -description
+    - created_at
+    - -created_at
+  default: ""
+- name: limit
+  comment: Limit the number of results per page.
+  type: uint32
+  rules:
+    lte: 1000
+  default: 0
+- name: page
+  comment: Page number for pagination. 0 is interpreted as 1.
+  type: uint32
+  default: 0

@@ -1,0 +1,24 @@
+name: PeerInfo
+comment: PeerInfo
+fields:
+- name: grpc_port
+  comment: Port on which the gRPC server is exposed.
+  type: uint32
+  default: 0
+- name: tls
+  comment: Indicates whether the gRPC server uses TLS.
+  type: bool
+  default: false
+- name: roles
+  comment: Roles of the peer.
+  repeated:
+    enum:
+      name: ClusterRole
+  default: []
+- name: tags
+  comment: Tags of the peer
+  map_key:
+    type: string
+  map_value:
+    type: string
+  default: {}

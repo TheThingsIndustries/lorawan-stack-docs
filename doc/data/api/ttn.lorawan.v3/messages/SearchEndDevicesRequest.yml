@@ -1,0 +1,79 @@
+name: SearchEndDevicesRequest
+fields:
+- name: application_ids
+  message:
+    name: ApplicationIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: id_contains
+  comment: Find end devices where the ID contains this substring.
+  type: string
+  rules:
+    max_len: 50
+  default: ""
+- name: name_contains
+  comment: Find end devices where the name contains this substring.
+  type: string
+  rules:
+    max_len: 50
+  default: ""
+- name: description_contains
+  comment: Find end devices where the description contains this substring.
+  type: string
+  rules:
+    max_len: 50
+  default: ""
+- name: attributes_contain
+  comment: Find end devices where the given attributes contain these substrings.
+  rules:
+    max_pairs: 10
+  map_key:
+    type: string
+    rules:
+      max_len: 36
+      pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+  map_value:
+    type: string
+    rules:
+      max_len: 50
+  default: {}
+- name: dev_eui_contains
+  comment: Find end devices where the (hexadecimal) DevEUI contains this substring.
+  type: string
+  rules:
+    max_len: 16
+  default: ""
+- name: join_eui_contains
+  comment: Find end devices where the (hexadecimal) JoinEUI contains this substring.
+  type: string
+  rules:
+    max_len: 16
+  default: ""
+- name: dev_addr_contains
+  comment: Find end devices where the (hexadecimal) DevAddr contains this substring.
+  type: string
+  rules:
+    max_len: 8
+  default: ""
+- name: field_mask
+  message:
+    package: google.protobuf
+    name: FieldMask
+  default: {}
+- name: order
+  comment: |-
+    Order the results by this field path (must be present in the field mask).
+    Default ordering is by ID. Prepend with a minus (-) to reverse the order.
+  type: string
+  default: ""
+- name: limit
+  comment: Limit the number of results per page.
+  type: uint32
+  rules:
+    lte: 1000
+  default: 0
+- name: page
+  comment: Page number for pagination. 0 is interpreted as 1.
+  type: uint32
+  default: 0

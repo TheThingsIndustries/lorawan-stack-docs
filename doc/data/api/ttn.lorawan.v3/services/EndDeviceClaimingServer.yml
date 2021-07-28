@@ -1,0 +1,44 @@
+name: EndDeviceClaimingServer
+comment: |-
+  The EndDeviceClaimingServer service configures authorization to claim end devices registered in an application,
+  and allows clients to claim end devices.
+methods:
+  Claim:
+    name: Claim
+    comment: Claims the end device by claim authentication code or QR code and transfers
+      the device to the target application.
+    input:
+      name: ClaimEndDeviceRequest
+    output:
+      name: EndDeviceIdentifiers
+    http:
+    - method: POST
+      path: /edcs/claim
+  AuthorizeApplication:
+    name: AuthorizeApplication
+    comment: |-
+      Authorize the End Device Claiming Server to claim devices registered in the given application. The application
+      identifiers are the source application, where the devices are registered before they are claimed.
+      The API key is used to access the application, find the device, verify the claim request and delete the end device
+      from the source application.
+    input:
+      name: AuthorizeApplicationRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: POST
+      path: /edcs/applications/{application_ids.application_id}/authorize
+  UnauthorizeApplication:
+    name: UnauthorizeApplication
+    comment: |-
+      Unauthorize the End Device Claiming Server to claim devices in the given application.
+      This reverts the authorization given with rpc AuthorizeApplication.
+    input:
+      name: ApplicationIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /edcs/applications/{application_id}/authorize

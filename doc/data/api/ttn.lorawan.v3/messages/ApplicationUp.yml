@@ -1,0 +1,78 @@
+name: ApplicationUp
+comment: Application uplink message.
+fields:
+- name: end_device_ids
+  message:
+    name: EndDeviceIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: correlation_ids
+  repeated:
+    type: string
+    rules:
+      max_len: 100
+  default: []
+- name: received_at
+  comment: Server time when the Application Server received the message.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: uplink_message
+  message:
+    name: ApplicationUplink
+  default: {}
+- name: join_accept
+  message:
+    name: ApplicationJoinAccept
+  default: {}
+- name: downlink_ack
+  message:
+    name: ApplicationDownlink
+  default: {}
+- name: downlink_nack
+  message:
+    name: ApplicationDownlink
+  default: {}
+- name: downlink_sent
+  message:
+    name: ApplicationDownlink
+  default: {}
+- name: downlink_failed
+  message:
+    name: ApplicationDownlinkFailed
+  default: {}
+- name: downlink_queued
+  message:
+    name: ApplicationDownlink
+  default: {}
+- name: downlink_queue_invalidated
+  message:
+    name: ApplicationInvalidatedDownlinks
+  default: {}
+- name: location_solved
+  message:
+    name: ApplicationLocation
+  default: {}
+- name: service_data
+  message:
+    name: ApplicationServiceData
+  default: {}
+- name: simulated
+  comment: Signals if the message is coming from the Network Server or is simulated.
+  type: bool
+  default: false
+oneofs:
+- name: up
+  field_names:
+  - uplink_message
+  - join_accept
+  - downlink_ack
+  - downlink_nack
+  - downlink_sent
+  - downlink_failed
+  - downlink_queued
+  - downlink_queue_invalidated
+  - location_solved
+  - service_data

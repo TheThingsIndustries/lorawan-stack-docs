@@ -1,0 +1,100 @@
+name: ApplicationWebhook
+fields:
+- name: ids
+  message:
+    name: ApplicationWebhookIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: created_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: updated_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: base_url
+  comment: Base URL to which the message's path is appended.
+  type: string
+  rules:
+    uri: true
+  default: ""
+- name: headers
+  comment: HTTP headers to use.
+  map_key:
+    type: string
+  map_value:
+    type: string
+  default: {}
+- name: format
+  comment: |-
+    The format to use for the body.
+    Supported values depend on the Application Server configuration.
+  type: string
+  rules:
+    max_len: 20
+    pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+  default: ""
+- name: template_ids
+  comment: The ID of the template that was used to create the Webhook.
+  message:
+    name: ApplicationWebhookTemplateIdentifiers
+  default: {}
+- name: template_fields
+  comment: The value of the fields used by the template. Maps field.id to the value.
+  map_key:
+    type: string
+  map_value:
+    type: string
+  default: {}
+- name: downlink_api_key
+  comment: |-
+    The API key to be used for downlink queue operations.
+    The field is provided for convenience reasons, and can contain API keys with additional rights (albeit this is discouraged).
+  type: string
+  rules:
+    max_len: 128
+  default: ""
+- name: uplink_message
+  message:
+    name: ApplicationWebhook.Message
+  default: {}
+- name: join_accept
+  message:
+    name: ApplicationWebhook.Message
+  default: {}
+- name: downlink_ack
+  message:
+    name: ApplicationWebhook.Message
+  default: {}
+- name: downlink_nack
+  message:
+    name: ApplicationWebhook.Message
+  default: {}
+- name: downlink_sent
+  message:
+    name: ApplicationWebhook.Message
+  default: {}
+- name: downlink_failed
+  message:
+    name: ApplicationWebhook.Message
+  default: {}
+- name: downlink_queued
+  message:
+    name: ApplicationWebhook.Message
+  default: {}
+- name: downlink_queue_invalidated
+  message:
+    name: ApplicationWebhook.Message
+  default: {}
+- name: location_solved
+  message:
+    name: ApplicationWebhook.Message
+  default: {}
+- name: service_data
+  message:
+    name: ApplicationWebhook.Message
+  default: {}

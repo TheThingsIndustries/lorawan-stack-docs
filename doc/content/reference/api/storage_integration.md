@@ -47,6 +47,10 @@ description: ""
 
 {{< proto/message message="Location" >}}
 
+{{< proto/message message="LRFHSSDataRate" >}}
+
+{{< proto/message message="NetworkIdentifiers" >}}
+
 {{< proto/message message="TxSettings.Downlink" >}}
 
 {{< proto/message message="TxSettings" >}}

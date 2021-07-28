@@ -1,0 +1,26 @@
+name: UserSessionRegistry
+comment: |-
+  The UserSessionRegistry service, exposed by the Identity Server, is used to manage
+  (browser) sessions of the user.
+methods:
+  List:
+    name: List
+    comment: List the active sessions for the given user.
+    input:
+      name: ListUserSessionsRequest
+    output:
+      name: UserSessions
+    http:
+    - method: GET
+      path: /users/{user_ids.user_id}/sessions
+  Delete:
+    name: Delete
+    comment: Delete (revoke) the given user session.
+    input:
+      name: UserSessionIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /users/{user_ids.user_id}/sessions/{session_id}

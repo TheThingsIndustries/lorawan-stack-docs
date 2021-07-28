@@ -1,0 +1,49 @@
+name: ListEndDeviceModelsRequest
+fields:
+- name: application_ids
+  comment: Application identifiers.
+  message:
+    name: ApplicationIdentifiers
+  default: {}
+- name: brand_id
+  comment: List end devices from a specific brand.
+  type: string
+  rules:
+    max_len: 36
+    pattern: ^([a-z0-9](?:[-]?[a-z0-9]){2,}|)?$
+  default: ""
+- name: limit
+  comment: Limit the number of results per page.
+  type: uint32
+  rules:
+    lte: 1000
+  default: 0
+- name: page
+  comment: Page number for pagination. 0 is interpreted as 1.
+  type: uint32
+  default: 0
+- name: order_by
+  comment: Order end devices
+  type: string
+  rules:
+    in:
+    - ""
+    - brand_id
+    - -brand_id
+    - model_id
+    - -model_id
+    - name
+    - -name
+  default: ""
+- name: search
+  comment: List end devices matching a query string.
+  type: string
+  rules:
+    max_len: 100
+  default: ""
+- name: field_mask
+  comment: Field mask paths.
+  message:
+    package: google.protobuf
+    name: FieldMask
+  default: {}

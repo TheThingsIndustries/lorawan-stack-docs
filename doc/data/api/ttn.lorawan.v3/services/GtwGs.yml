@@ -1,0 +1,42 @@
+name: GtwGs
+comment: The GtwGs service connects a gateway to a Gateway Server.
+methods:
+  LinkGateway:
+    name: LinkGateway
+    comment: Link a gateway to the Gateway Server for streaming upstream messages
+      and downstream messages.
+    input:
+      name: GatewayUp
+      stream: true
+    output:
+      name: GatewayDown
+      stream: true
+  GetConcentratorConfig:
+    name: GetConcentratorConfig
+    comment: Get configuration for the concentrator.
+    input:
+      package: google.protobuf
+      name: Empty
+    output:
+      name: ConcentratorConfig
+  GetMQTTConnectionInfo:
+    name: GetMQTTConnectionInfo
+    comment: Get connection information to connect an MQTT gateway.
+    input:
+      name: GatewayIdentifiers
+    output:
+      name: MQTTConnectionInfo
+    http:
+    - method: GET
+      path: /gs/gateways/{gateway_id}/mqtt-connection-info
+  GetMQTTV2ConnectionInfo:
+    name: GetMQTTV2ConnectionInfo
+    comment: Get legacy connection information to connect a The Things Network Stack
+      V2 MQTT gateway.
+    input:
+      name: GatewayIdentifiers
+    output:
+      name: MQTTConnectionInfo
+    http:
+    - method: GET
+      path: /gs/gateways/{gateway_id}/mqttv2-connection-info

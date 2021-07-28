@@ -1,0 +1,48 @@
+name: OAuthAuthorizationRegistry
+comment: |-
+  The OAuthAuthorizationRegistry service, exposed by the Identity Server,
+  is used to manage OAuth client authorizations for users.
+methods:
+  List:
+    name: List
+    comment: List OAuth clients that are authorized by the user.
+    input:
+      name: ListOAuthClientAuthorizationsRequest
+    output:
+      name: OAuthClientAuthorizations
+    http:
+    - method: GET
+      path: /users/{user_ids.user_id}/authorizations
+  ListTokens:
+    name: ListTokens
+    comment: List OAuth access tokens issued to the OAuth client on behalf of the
+      user.
+    input:
+      name: ListOAuthAccessTokensRequest
+    output:
+      name: OAuthAccessTokens
+    http:
+    - method: GET
+      path: /users/{user_ids.user_id}/authorizations/{client_ids.client_id}/tokens
+  Delete:
+    name: Delete
+    comment: Delete (de-authorize) an OAuth client for the user.
+    input:
+      name: OAuthClientAuthorizationIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /users/{user_ids.user_id}/authorizations/{client_ids.client_id}
+  DeleteToken:
+    name: DeleteToken
+    comment: Delete (invalidate) an OAuth access token.
+    input:
+      name: OAuthAccessTokenIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /users/{user_ids.user_id}/authorizations/{client_ids.client_id}/tokens/{id}

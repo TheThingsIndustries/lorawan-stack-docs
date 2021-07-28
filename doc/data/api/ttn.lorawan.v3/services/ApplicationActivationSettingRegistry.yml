@@ -1,0 +1,35 @@
+name: ApplicationActivationSettingRegistry
+comment: The ApplicationActivationSettingRegistry service allows clients to manage
+  their application activation settings.
+methods:
+  Get:
+    name: Get
+    comment: Get returns application activation settings.
+    input:
+      name: GetApplicationActivationSettingsRequest
+    output:
+      name: ApplicationActivationSettings
+    http:
+    - method: GET
+      path: /js/applications/{application_ids.application_id}/settings
+  Set:
+    name: Set
+    comment: Set creates or updates application activation settings.
+    input:
+      name: SetApplicationActivationSettingsRequest
+    output:
+      name: ApplicationActivationSettings
+    http:
+    - method: POST
+      path: /js/applications/{application_ids.application_id}/settings
+  Delete:
+    name: Delete
+    comment: Delete deletes application activation settings.
+    input:
+      name: DeleteApplicationActivationSettingsRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /js/applications/{application_ids.application_id}/settings

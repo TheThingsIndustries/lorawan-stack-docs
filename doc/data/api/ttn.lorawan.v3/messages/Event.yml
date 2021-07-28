@@ -1,0 +1,69 @@
+name: Event
+fields:
+- name: name
+  comment: Name of the event. This can be used to find the (localized) event description.
+  type: string
+  default: ""
+- name: time
+  comment: Time at which the event was triggered.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  rules:
+    required: true
+  default: "0001-01-01T00:00:00Z"
+- name: identifiers
+  comment: Identifiers of the entity (or entities) involved.
+  repeated:
+    message:
+      name: EntityIdentifiers
+  default: []
+- name: data
+  comment: Optional data attached to the event.
+  message:
+    package: google.protobuf
+    name: Any
+  default: null
+- name: correlation_ids
+  comment: Correlation IDs can be used to find related events and actions such as
+    API calls.
+  repeated:
+    type: string
+    rules:
+      max_len: 100
+  default: []
+- name: origin
+  comment: The origin of the event. Typically the hostname of the server that created
+    it.
+  type: string
+  default: ""
+- name: context
+  comment: Event context, internal use only.
+  map_key:
+    type: string
+  map_value:
+    type: bytes
+  default: {}
+- name: visibility
+  comment: The event will be visible to a caller that has any of these rights.
+  message:
+    name: Rights
+  default: {}
+- name: authentication
+  comment: Details on the authentication provided by the caller that triggered this
+    event.
+  message:
+    name: Event.Authentication
+  default: {}
+- name: remote_ip
+  comment: The IP address of the caller that triggered this event.
+  type: string
+  default: ""
+- name: user_agent
+  comment: The IP address of the caller that triggered this event.
+  type: string
+  default: ""
+- name: unique_id
+  comment: The unique identifier of the event, assigned on creation.
+  type: string
+  default: ""

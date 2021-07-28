@@ -1,0 +1,22 @@
+name: GenerateEndDeviceQRCodeRequest
+fields:
+- name: format_id
+  comment: QR code format identifier. Enumerate available formats with rpc ListFormats
+    in the EndDeviceQRCodeGenerator service.
+  type: string
+  rules:
+    max_len: 36
+    pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$
+  default: ""
+- name: end_device
+  comment: End device to use as input to generate the QR code.
+  message:
+    name: EndDevice
+  rules:
+    required: true
+  default: {}
+- name: image
+  comment: If set, the server will render the QR code image according to these settings.
+  message:
+    name: GenerateEndDeviceQRCodeRequest.Image
+  default: {}

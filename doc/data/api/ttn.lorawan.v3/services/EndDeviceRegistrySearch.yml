@@ -1,0 +1,17 @@
+name: EndDeviceRegistrySearch
+comment: |-
+  The EndDeviceRegistrySearch service indexes devices in the EndDeviceRegistry
+  and enables searching for them.
+  This service is not implemented on all deployments.
+methods:
+  SearchEndDevices:
+    name: SearchEndDevices
+    comment: Search for end devices in the given application that match the conditions
+      specified in the request.
+    input:
+      name: SearchEndDevicesRequest
+    output:
+      name: EndDevices
+    http:
+    - method: GET
+      path: /search/applications/{application_ids.application_id}/devices
