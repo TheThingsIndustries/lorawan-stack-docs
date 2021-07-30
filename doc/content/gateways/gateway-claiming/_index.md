@@ -10,6 +10,8 @@ Gateway claiming is a mechanism that transfers gateways securely. This enables t
 
 <!--more-->
 
+{{< note >}} If you are instead looking to claim your {{% ttig %}}, please check [here]({{< ref "/gateways/thethingsindoorgateway" >}}).{{</ note >}}
+
 {{< warning >}} This is an experimental feature. {{</ warning >}}
 
 ## Who is it for?
