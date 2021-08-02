@@ -5,7 +5,7 @@ summary: Exchange traffic with other LoRaWAN networks via peering to share cover
 aliases:
   - "/integrations/peering"
   - "/reference/peering"
-  - "/getting-started/packet-broker"
+  - "/reference/packet-broker"
 ---
 
 ## What is it?

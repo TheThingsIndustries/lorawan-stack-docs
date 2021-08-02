@@ -6,7 +6,7 @@ distributions: ["Enterprise", "Open Source"]
 aliases:
   - "/integrations/peering/enable"
   - "/reference/peering/enable"
-  - "/getting-started/packet-broker/enable"
+  - "/reference/packet-broker/enable"
 ---
 
 This section explains how to connect {{% tts %}} to Packet Broker.
