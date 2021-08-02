@@ -13,43 +13,43 @@
 #    - <Alt term 2>
 
 - term: Tenant ID
-  description: A Tenant ID is given to you by The Things Industries when you register for a Cloud account. Your Tenant ID is part of the URL of your deployment, i.e https://tenant.eu1.thethings.industries.
+  description: A Tenant ID is given to you by The Things Industries when you register for a Cloud account. Your Tenant ID is part of the URL of your deployment, i.e https://<tenant-id>.eu1.thethings.industries.
 
 - term: Join Server
   description: A Join Server is a component of the LoRaWAN server defined in the LoRaWAN Backend Interfaces. The Things Stack contains a Join Server, which is used by default unless an External Join Server is specified. The Join Server's role is to store root keys, generate session keys, and to send those securely to the Network Server and Application Server of choice. The device contains the same root keys, which can be provisioned as part of assembly, distribution or upon installation. An External Join Server allows for secure end device provisioning without network lock-in. The owner uses a device claiming procedure to transfer ownership in the Join Server.
-  link: https://lora-alliance.org/sites/default/files/2018-04/lorawantm-backend-interfaces-v1.0.pdf
+  link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawantm-backend-interfaces-v1.0.pdf#page=9
 
 - term: Network Session Encryption Key
   abbr:
     - NwkSEncKey
   description: A network session key used to encrypt and decrypt MAC commands transmitted on FPort 0, which contain no application payload. When a LoRaWAN 1.1 capable device connects to a LoRaWAN 1.0x Network Server, the value of FNwkSIntKey is used as the value of SNwkSIntKey and NwkSEncKey.
-  link: https://lora-alliance.org/sites/default/files/2018-04/lorawantm_specification_-v1.1.pdf#page=50
+  link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawantm_specification_-v1.1.pdf#page=50
 
 - term: Serving Network Session Integrity Key
   abbr:
     - SNwkSIntKey
   description: A network session key used to calculate all of the message integrity code for downlink messages and half of the message integrity code for uplink messages. When a LoRaWAN 1.1 capable device connects to a LoRaWAN 1.0x Network Server, the value of FNwkSIntKey is used as the value of SNwkSIntKey and NwkSEncKey.
-  link: https://lora-alliance.org/sites/default/files/2018-04/lorawantm_specification_-v1.1.pdf#page=50
+  link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawantm_specification_-v1.1.pdf#page=50
 
 - term: Forwarding Network Session Integrity Key
   abbr:
     - FNwkSIntKey
   description: A network session key used to calculate all or half of the message integrity code for uplink messages. When a LoRaWAN 1.1 capable device connects to a LoRaWAN 1.0x Network Server, the value of FNwkSIntKey is used as the value of SNwkSIntKey and NwkSEncKey.
-  link: https://lora-alliance.org/sites/default/files/2018-04/lorawantm_specification_-v1.1.pdf#page=50
+  link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawantm_specification_-v1.1.pdf#page=50
 
 - term: Network Key
   abbr:
     - NwkKey
   description: A device specific encryption key used to derive the FNwkSIntKey, SNwkSIntKey, NwkSEncKey in LoRaWAN 1.1. When a LoRaWAN 1.1 capable device connects to a LoRaWAN 1.0x Network Server which does not support dual root keys (NwkKey and AppKey), the NwkKey value is used as the AppKey value.
-  link: https://lora-alliance.org/sites/default/files/2018-04/lorawantm_specification_-v1.1.pdf#page=48
+  link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawantm_specification_-v1.1.pdf#page=48
 
 - term: Data Rate Offset
   description: The Data Rate Offset sets the offset between the uplink data rate and the downlink data rate used to communicate with the End Device during the first reception slot (RX1).
-  link: https://lora-alliance.org/sites/default/files/2020-06/rp_2-1.0.1.pdf#page=27
+  link: https://lora-alliance.org/wp-content/uploads/2020/11/rp_2-1.0.1.pdf#page=27
 
 - term: Data Rate Index
   description: The Data Rate Index specifies which data rate downlink communications will use, as given in the Regional Parameters.
-  link: https://lora-alliance.org/sites/default/files/2020-06/rp_2-1.0.1.pdf#page=25
+  link: https://lora-alliance.org/wp-content/uploads/2020/11/rp_2-1.0.1.pdf#page=25
 
 - term: Packet Forwarder
   description: A Packet Forwarder is a program running on a Gateway that receives and transmits LoRa packets, and forwards these packets to and from a Network Server.
@@ -123,13 +123,13 @@
 
 - term: Regional Parameters
   description: The Regional Parameters specify frequency, dwell time, and other communication settings for different geographical areas. The Regional Parameters version is the version of the LoRa Alliance specification which your device supports. This should be provided by the device manufacturer in a datasheet.
-  link: https://lora-alliance.org/sites/default/files/2020-01/rp_2-1.0.0_final_release.pdf
+  link: https://lora-alliance.org/wp-content/uploads/2019/11/rp_2-1.0.0_final_release.pdf
   abbr:
     - PHY
 
 - term: Physical Layer
   description: Hardware pertaining to LoRaWAN official regional specifications. The PHY version for your device should be specified in the product documentation as Regional Parameter version.
-  link: https://lora-alliance.org/sites/default/files/2020-01/rp_2-1.0.0_final_release.pdf
+  link: https://lora-alliance.org/wp-content/uploads/2019/11/rp_2-1.0.0_final_release.pdf
   abbr:
     - PHY
 
@@ -215,7 +215,7 @@
 
 - term: Device Address
   description: A 32 bit non-unique identifier, assigned by the Network Server during device activation.
-  link: https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page=33
+  link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf#page=33
   abbr:
     - DevAddr
 
@@ -226,40 +226,41 @@
 
 - term: JoinEUI
   description: The JoinEUI (formerly called AppEUI) is a 64 bit extended unique identifier used to identify the Join Server during activation. This should be provided by the device manufacturer for pre-provisioned devices, or by the owner of the Join Server you will use. If you do not have a JoinEUI, it is okay to use `0000000000000000`, but ensure that you use the same JoinEUI in your device as you enter in The Things Stack.
-  link: https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page=33
+  link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf#page=33
 
 - term: AppEUI
   description: In LoRaWAN specifications prior to 1.1, JoinEUI was called AppEUI. See JoinEUI.
-  link: https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page=33
+  link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf#page=33
   alt:
     - JoinEUI
 
 - term: Application Session Key
   description: After activation, this encryption key is used to secure messages which carry a payload.
+  link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf#page=33
   abbr:
     - AppSKey
 
 - term: Network Session Key
   description: After activation, this encryption key is used to secure messages which do not carry a payload.
-  link: https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page=33
+  link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf#page=33
   abbr:
     - NwkSKey
 
 - term: Application Key
   description: A device specific encryption key used during OTAA to derive the AppSKey (in LoRaWAN 1.1x) or both the NwkSKey and AppSKey in LoRaWAN 1.0x. This is usually pre provisioned by the device manufacturer, but can also be created by the user.
-  link: https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page=33
+  link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf#page=34
   abbr:
     - AppKey
 
 - term: Over the Air Activation
   description: The preferred method to join a LoRaWAN network, offering more flexibility, security, and scalability than ABP.
-  link: https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page=34
+  link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf#page=34
   abbr:
     - OTAA
 
 - term: Activation by Personalisation
   description: Manually provisioning device keys to join a LoRaWAN network. Less flexible, less secure, and less scalable than OTAA, but sometimes useful during demos, to avoid waiting for a downlink window to join a network.
-  link: https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page=37
+  link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf#page=37
   abbr:
     - ABP
 
@@ -271,7 +272,7 @@
 
 - term: Band
   description: For LoRaWAN, a Band is a range of frequencies divided either in to dynamic channels (i.e. EU868) or fixed channels (i.e. US902, AU915). The LoRaWAN Regional Parameters specify which Bands are supported by LoRaWAN in a geographical area. Within a Band, there can be multiple complying Frequency Plans. Devices typically support one or more Bands in their hardware, and are configured for a particular Frequency Plan as part of activation.
-  link: https://lora-alliance.org/sites/default/files/2020-01/rp_2-1.0.0_final_release.pdf
+  link: https://lora-alliance.org/wp-content/uploads/2019/11/rp_2-1.0.0_final_release.pdf
   alt:
     - Frequency Band
 
@@ -285,8 +286,8 @@
 
 - term: Dynamic Channel
   description: A Band which uses Dynamic Channels (i.e. EU868) uses a Channel Frequency List (CFList) to communicate channels by frequency.
-  link: https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page=50
+  link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf#page=50
 
 - term: Fixed Channel
   description: A Band which uses Fixed Channels (i.e. US902, AU915) uses a Channel Mask (ChMask) to enable and disable channels.
-  link: https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf#page=50
+  link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf#page=50
