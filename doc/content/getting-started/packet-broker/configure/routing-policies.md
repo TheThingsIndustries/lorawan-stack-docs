@@ -20,7 +20,7 @@ This guide explains how to manage routing policies, i.e. the rules for forwardin
 
 1. Understand how Packet Broker works and what routing policies are. [Learn about Packet Broker]({{< relref "../" >}}).
 2. {{% tts %}} connected to Packet Broker.
-  - {{< distributions "Cloud" >}} **{{% tts %}} Cloud** is already connected to Packet Broker. To configure routing to/from another specific Cloud customer, [contact The Things Industries support](mailto:support@thethingsindustries.com).
+  - {{< distributions "Cloud" >}} **{{% tts %}} Cloud** is already connected to Packet Broker.
   - {{< distributions "Dedicated Cloud" >}} **{{% tts %}} Dedicated Cloud** can be connected on request. Please contact support.
   - {{< distributions "Enterprise" "Open Source" >}} **{{% tts %}} Enterprise** and **Open Source**: see [Connect]({{< relref "connect" >}}).
 3. An admin account for the {{% tts %}} deployment. All Packet Broker configuration requires administrative access.
