@@ -192,6 +192,8 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="LoRaDataRate" >}}
 
+{{< proto/message message="LRFHSSDataRate" >}}
+
 {{< proto/message message="MACCommand" >}}
 
 {{< proto/message message="MACCommand.ResetInd" >}}
