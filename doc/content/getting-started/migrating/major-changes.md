@@ -22,7 +22,7 @@ Furthermore, {{% tts %}} brings full support for all LoRaWAN versions, as well a
 
 The RX1 delay is the time after which the first receive window (RX1) opens. In the receive window, the Network Server can schedule a downlink. The second receive window (RX2) opens exactly 1 second after the first one opens. In LoRaWAN, the RX1 delay can be between 1 and 15 seconds.
 
-Devices imported from {{% ttnv2 %}} are configured with an RX1 delay of 1 second. In all {{% tts %}} deployments, the recommended RX1 delay is 5 seconds to accommodate for high latency backhauls and/or [peering with Packet Broker]({{< ref "/reference/packet-broker" >}}).
+Devices imported from {{% ttnv2 %}} are configured with an RX1 delay of 1 second. In all {{% tts %}} deployments, the recommended RX1 delay is 5 seconds to accommodate for high latency backhauls and/or [peering with Packet Broker]({{< ref "/getting-started/packet-broker" >}}).
 
 See the [MAC settings guide]({{< ref "/devices/mac-settings" >}}) for more information and instructions about configuring the RX1 delay.
 
@@ -44,11 +44,11 @@ See the [MAC settings guide]({{< ref "/devices/mac-settings" >}}) for more infor
 
 ## Gateway Coverage
 
-[Packet Broker]({{< ref "/reference/packet-broker" >}}) enables peering between networks, so traffic received by one network (The Things Network V2) but intended for a different network ({{% tts %}}) can be forwarded to and from that network. With Packet Broker enabled on both {{% tts %}} and The Things Network V2, you can receive traffic on {{% tts %}} without having to re-configure any of your gateways.
+[Packet Broker]({{< ref "/getting-started/packet-broker" >}}) enables peering between networks, so traffic received by one network (The Things Network V2) but intended for a different network ({{% tts %}}) can be forwarded to and from that network. With Packet Broker enabled on both {{% tts %}} and The Things Network V2, you can receive traffic on {{% tts %}} without having to re-configure any of your gateways.
 
 {{< note >}} Packet Broker is already enabled on The Things Network V2 (public community network) and {{% tts %}} Cloud. 
 
-For {{% tts %}} Enterprise or {{% tts %}} Open Source, see how to [Connect]({{< ref "/reference/packet-broker/connect">}}) to Packet Broker.{{</ note >}}
+For {{% tts %}} Enterprise or {{% tts %}} Open Source, see how to [Connect]({{< ref "/getting-started/packet-broker/connect">}}) to Packet Broker.{{</ note >}}
 
 For private {{% tts %}} deployments with Packet Broker disabled, you will need to re-configure your gateways to connect to {{% tts %}}, so that you can start receiving traffic from your end devices.
 
