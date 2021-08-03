@@ -6,9 +6,9 @@ weight: -1
 
 ## Field Masks
 
-{{% tts %}} APIs use field masks to specify a subset of fields that should be returned by a reading request, or to specify fields that should be updated in a writing request. By default, API requests will not return or update most fields, unless they are specified in a field mask.
+{{% tts %}} APIs use field masks to specify a subset of fields that should be returned by a reading request, or to specify fields that should be updated in a writing request. API request messages which contain a `field_mask` field operate this way - for example, [`GetEndDeviceRequest`]({{< ref "reference/api/end_device#message:GetEndDeviceRequest" >}}), or [`UpdateApplicationRequest`]({{< ref "reference/api/application#message:UpdateApplicationRequest" >}}), and most `Get`, `List`, `Set`, and `Update` requests. By default, these API requests will not return or update most fields, unless they are specified in a field mask.
 
-The following fields are always returned and always updated:
+The following fields are always returned:
 
 - Fields containing `id`
 - `created_at`
