@@ -8,6 +8,8 @@ distributions:
   - Enterprise
   - Open Source
 new_in_version: 3.12.0
+aliases:
+  - "/reference/packet-broker/configure/routing-policies"
 ---
 
 This guide explains how to manage routing policies, i.e. the rules for forwarding uplink and downlink traffic.
