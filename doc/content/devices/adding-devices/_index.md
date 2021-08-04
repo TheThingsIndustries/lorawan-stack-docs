@@ -59,7 +59,7 @@ See [ID and EUI constraints]({{< ref "reference/id-eui-constraints" >}}) for gui
 
 The device is now activated, and will appear as connected in {{% tts %}} once it sends an uplink.
 
-## Manually Creating an End Device
+## Manually Registering an End Device
 
 If your device is not in the device repository, you may manually register it.
 
