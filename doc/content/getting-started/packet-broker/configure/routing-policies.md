@@ -25,6 +25,8 @@ This guide explains how to manage routing policies, i.e. the rules for forwardin
   - {{< distributions "Enterprise" "Open Source" >}} **{{% tts %}} Enterprise** and **Open Source**: see [Connect]({{< relref "connect" >}}).
 3. An admin account for the {{% tts %}} deployment. All Packet Broker configuration requires administrative access.
 
+To see which routing policies are configured by default for all deployments, see the [Packet Broker Routing]({{< ref "pb-routing" >}}) section.
+
 ## List Home Networks
 
 In order to configure routing policies with Home Networks, you need to know which Home Networks are available in Packet Broker.
