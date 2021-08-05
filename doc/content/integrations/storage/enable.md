@@ -1,5 +1,5 @@
 ---
-title: Enable
+title: Enable/Disable
 description: ""
 summary: Enable Storage Integration for applications and end-devices.
 weight: 20
@@ -41,10 +41,7 @@ $ ttn-lw-cli applications packages default-associations set "app1" 100 --package
 
 ## Enable for an End Device
 
-{{< cli-only >}}
-
-{{< warning >}} You may need to update the CLI to use the new features. See instructions in [Installing the CLI]({{< ref "/getting-started/cli/installing-cli" >}}).
-{{</ warning >}}
+{{< cli-only hint-upgrade="true" >}}
 
 Set up an association between the desired end device and the `storage-integration` package.
 
@@ -56,7 +53,7 @@ $ ttn-lw-cli applications packages associations set "app1" "dev1" 100 --package-
 
 {{< warning >}} **Do not configure multiple associations for the same end device**, since that will lead to storing duplicate uplinks in the persistent storage. {{</ warning >}}
 
-## Disable the Storage Integration
+## Disable for an Application
 
 {{< tabs/container "Console" "CLI" >}}
 
@@ -99,3 +96,39 @@ $ ttn-lw-cli applications packages default-associations delete "app1" 100
 {{< /tabs/tab >}}
 
 {{< /tabs/container >}}
+
+## Disable for an End Device
+
+{{< cli-only >}}
+
+To disable the integration, delete the association. First, list associations:
+
+```bash
+# List associations
+$ ttn-lw-cli applications packages associations list "app1" "dev1"
+{
+  "associations": [
+    {
+      "ids": {
+        "end_device_ids": {
+          "device_id": "dev1",
+          "application_ids": {
+            "application_id": "app1"
+          }
+        },
+        "f_port": 100
+      },
+      "created_at": "2020-08-24T21:09:44.649890166Z",
+      "updated_at": "2020-08-24T21:09:44.649890166Z",
+      "package_name": "storage-integration"
+    }
+  ]
+}
+```
+
+Delete the association with:
+
+```bash
+# Delete association between "app1" and "dev1"
+$ ttn-lw-cli applications packages associations delete "app1" "dev1" 100
+```
