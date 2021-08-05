@@ -309,6 +309,16 @@
 <ul>
 <li><code>ttn_lw_js_join_accepted_rate:by_tenant_id</code> and <code>ttn_lw_js_join_rejected_rate:by_tenant_id</code> record the rate of accepted and rejected join requests.</li>
 </ul>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>Sometimes the monitoring service fails with <code>Essential container in task exited</code> error. This is often caused by insufficient resources. Therefore you can:</p>
+<ol>
+<li>
+<p>Set <code>UseLongTermStorage</code> to <code>false</code> in order to disable Thanos and allow Prometheus use more of the assigned resources.</p>
+</li>
+<li>
+<p>Increase memory available to the Prometheus task. A value of 2GB should be sufficient in almost all cases.</p>
+</li>
+</ol>
         </div>
         
           <div class="is-clearfix">
@@ -337,6 +347,9 @@
     
       
       <li><a href='#metrics'>Metrics</a></li>
+    
+      
+      <li><a href='#troubleshooting'>Troubleshooting</a></li>
     
   </ul>
 
@@ -376,10 +389,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Hylke Visser on 04 Jun 2021.
+  Last changed by Michał Borkowski on 05 Aug 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a345ea02d97a4f46ee8ff3aa91522be79e467b10">
-      doc: Rename log messages metric (#373)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b3f7246d309aa673c16b2e5ac41bebe5b4b059bf">
+      doc: Add Prometheus troubleshooting (#502)
     </a>
 </p>
 
