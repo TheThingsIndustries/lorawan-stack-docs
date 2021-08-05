@@ -8,6 +8,8 @@ distributions:
   - Enterprise
   - Open Source
 new_in_version: 3.12.0
+aliases:
+  - "/reference/packet-broker/configure/registration"
 ---
 
 This guide explains how to manage your Packet Broker registration.

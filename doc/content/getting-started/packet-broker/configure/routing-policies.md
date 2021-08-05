@@ -8,6 +8,8 @@ distributions:
   - Enterprise
   - Open Source
 new_in_version: 3.12.0
+aliases:
+  - "/reference/packet-broker/configure/routing-policies"
 ---
 
 This guide explains how to manage routing policies, i.e. the rules for forwarding uplink and downlink traffic.
@@ -234,6 +236,24 @@ To view the Routing Policy configured between you (the Forwarder) and The Things
 
 ```bash
 $ ttn-lw-cli packetbroker home-networks policies get 000013 ttn
+```
+{{< /note >}}
+
+#### Set Home Network Routing Policy
+
+To set the Routing Policy for a Home Network:
+
+```bash
+$ ttn-lw-cli packetbroker home-network policies set <net-id> [<tenant-id>] --all
+```
+
+To customize, see [Flags]({{< relref "#flags" >}}) below.
+
+{{< note >}}
+To enable forwarding of all packets between you (the Forwarder) and The Things Network (the Home Network):
+
+```bash
+$ ttn-lw-cli packetbroker home-network policy set 000013 ttn --all
 ```
 {{< /note >}}
 

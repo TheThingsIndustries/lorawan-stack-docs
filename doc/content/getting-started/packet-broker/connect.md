@@ -7,6 +7,7 @@ aliases:
   - "/integrations/peering/enable"
   - "/reference/peering/enable"
   - "/reference/packet-broker/enable"
+  - "/reference/packet-broker/connect"
 ---
 
 This section explains how to connect {{% tts %}} to Packet Broker.
