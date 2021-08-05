@@ -95,3 +95,11 @@ For some of these metrics, there are also variants with `:avg` and `:stddev` suf
 For the Join Server:
 
 - `ttn_lw_js_join_accepted_rate:by_tenant_id` and `ttn_lw_js_join_rejected_rate:by_tenant_id` record the rate of accepted and rejected join requests.
+
+## Troubleshooting
+
+Sometimes the monitoring service fails with `Essential container in task exited` error. This is often caused by insufficient resources. Therefore you can:
+
+1. Set `UseLongTermStorage` to `false` in order to disable Thanos and allow Prometheus use more of the assigned resources.
+
+2. Increase memory available to the Prometheus task. A value of 2GB should be sufficient in almost all cases.
