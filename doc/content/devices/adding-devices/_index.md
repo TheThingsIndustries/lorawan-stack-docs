@@ -69,9 +69,9 @@ Make sure the **Manually** tab is selected.
 
 Select the device **LoRaWAN version**. This should be provided with your device as the LoRaWAN version, LoRaWAN specification, or MAC version.
 
-{{< note >}}
-If you can not find the LoRaWAN version of your device, use MACV1.0.2 and Regional Parameters PHY V1.0.2 Rev B, as these are the most common. But watch the [event log]({{< ref "getting-started/events" >}}) for errors!
-{{</ note >}}
+{{< warning >}}
+Choosing the incorrect LoRaWAN version can lead to complex errors. Activation may work, but the device will not be able to communicate consistently. Watch the [event log]({{< ref "getting-started/events" >}}) for errors!
+{{</ warning >}}
 
 Choose a **Frequency plan** appropriate for your region. Your device and gateway must use the same frequency plan to communicate.
 
