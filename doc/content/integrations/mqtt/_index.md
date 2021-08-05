@@ -9,7 +9,7 @@ weight: 30
 
 <!--more-->
 
-{{< note >}} {{% tts %}} supports the [MQTT Standard Version 3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.pdf). {{</ note >}}
+{{< note >}} {{% tts %}} supports the [MQTT Standard Version 3.1.1](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.pdf) and QoS 0 only. {{</ note >}}
 
 ## Note on Using the Tenant ID
 
