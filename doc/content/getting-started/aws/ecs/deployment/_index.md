@@ -161,9 +161,9 @@ $ openssl rand -base64 16
 
 ## Configuration
 
-The `4-2-configuration` template creates several configuration parameters in AWS Systems Manager Parameter Store.
+The `4-2a-configuration` template creates several configuration parameters in AWS Systems Manager Parameter Store.
 
-**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/4-2-configuration.gen.template (replace `3.x` with the current minor version).
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/4-2a-configuration.gen.template (replace `3.x` with the current minor version).
 
 As with the other templates, this one also asks for the re-used parameters from the [Prerequisites]({{< relref "../prerequisites" >}}). Next to these parameters, this template has some notable parameters:
 
