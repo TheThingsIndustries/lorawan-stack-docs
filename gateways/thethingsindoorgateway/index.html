@@ -259,11 +259,29 @@
 </ol>
 <h2 id="claiming-the-things-indoor-gateway">Claiming The Things Indoor Gateway</h2>
 <p>The Things Indoor Gateway is added to The Things Stack via a process called <strong>Gateway Claiming</strong>.</p>
-<div class="notification is-warning is-light has-text-dark">
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="console">
+      <a>
+        <span>Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="cli">
+      <a>
+        <span>CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="console">
+  <div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
   Do not register your TTIGs via the regular option of <strong>Adding Gateways</strong>.
 </div>
-
 <p>Go to <strong>Gateways</strong> in the top menu, and click the <strong>Claim Gateway</strong> button on the upper right to reach the gateway claiming page.</p>
 <p>Fill the <strong>Gateway EUI</strong>, the <strong>Claim authentication code</strong> (the WiFi Password from Prerequisites), the <strong>Gateway ID</strong> and choose the appropriate <strong>Frequency Plan</strong>.</p>
 <p>Click <strong>Claim gateway</strong> to finish.</p>
@@ -271,8 +289,27 @@
     <img src="TTIG_Claim.png"
          alt="{{% ttig %}} Claiming"/> 
 </figure>
-
 <p>If your inputs are correct, a new gateway will be created and you will be redirected to the gateway overview page of your newly created gateway.</p>
+</section>
+<section data-content="cli">
+  <p>The following example claims and configures a gateway with EUI <code>00800000A00009EF</code> and Gateway ID <code>gtw1</code> to the  The Things Stack Community Edition <code>eu1</code> cluster.</p>
+<p>Please adapt the example for your specific case.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">tti-lw-cli gateways claim 00800000A00009EF <span class="se">\
+</span><span class="se"></span>--authentication-code abcdef <span class="se">\
+</span><span class="se"></span>--target-gateway-id gtw1
+--target-cups-uri https://eu1.cloud.thethings.network:443 <span class="se">\
+</span><span class="se"></span>--target-gateway-server-address eu1.cloud.thethings.network <span class="se">\
+</span><span class="se"></span>--target-frequency-plan-id EU_863_870 <span class="se">\
+</span><span class="se"></span>--user-id user1
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <p>For The Things Stack Cloud, you will also need to append the Tenant ID to <code>--target-cups-uri</code> and  <code>--target-gateway-server-address</code> fields.</p>
+<p>For example using <code>tenant1</code>, the <code>target-cups-uri</code> would be <code>https://tenant1.eu1.cloud.thethings.industries:443</code> and the <code>target-gateway-server-address</code> would become <code>tenant1.eu1.cloud.thethings.industries</code>.</p>
+</div>
+</section>
+
+</div>
+
 <h2 id="connecting-the-things-indoor-gateway">Connecting The Things Indoor Gateway</h2>
 <h3 id="gateways-connected-to-another-lns">Gateways Connected to Another LNS</h3>
 <div class="notification is-info is-light has-text-dark">
@@ -314,14 +351,30 @@
   If this is the first time your gateway is being powered on/connected to WiFi, it might pick up a new firmware depending on when it was last updated. This is indicated by alternating GREEN/RED blinks of the LED. Please leave the gateway powered on when this happens.
 </div>
 
-<h2 id="troubleshooting">Troubleshooting</h2>
+<h2 id="existing-gateways">Existing Gateways</h2>
+<p><span class="tag is-light">New in 3.14.1</span>
+
+ You can also claim gateways that have been previously claimed or registered to The Things Stack.</p>
+<p>For this, you need to authorize your gateways for claiming. This is currently only supported via the CLI.</p>
+<div class="notification is-primary is-light has-text-dark">
+  <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
+  <p>The instructions below use the command-line interface (CLI).</p>
+  
+  <div class="buttons">
+    <a class="button is-dark is-outlined" href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/">Learn how to install the CLI</a>
+  </div>
+</div>
+
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli gateways claim authorize &lt;gateway-id&gt;
+</code></pre></div><p>Now claim the gateway as described in the <a href="#claiming-the-things-indoor-gateway">Claiming The Things Indoor Gateway</a> section.</p>
+<p>Once complete, make sure to unauthorize the gateway to prevent further claiming.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli gateways claim unauthorize &lt;gateway-id&gt;
+</code></pre></div><h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="common-errors">Common Errors</h3>
 <h4 id="claim-authentication-code-mismatch">Claim Authentication Code Mismatch</h4>
 <p>Double-check the EUI and the WiFi Password. Sometimes an <code>8</code> looks like a <code>3</code> or a <code>B</code>, an <code>1</code> like an <code>l</code>, a <code>0</code> like an <code>O</code>, etc.</p>
 <h4 id="gateway-not-authorized-for-claiming">Gateway Not Authorized for Claiming</h4>
-<p>If you have already registered your TTIG on the same The Things Stack cluster that you want to claim, you have the following options</p>
-<p>a. If you would like to retain the Gateway ID that you registered it with, support will be added in a subsequent release to claim the gateway while retaining its current Gateway ID.</p>
-<p>b. If you would like to claim the gateway with a new Gateway ID, you can delete the existing gateway from The Things Stack cluster and follow the claiming process below with a new Gateway ID.</p>
+<p>If you have already registered/claimed your The Things Indoor Gateway in The Things Stack cluster that you want to claim, check the section on <a href="#existing-gateways">claiming existing gateways</a>.</p>
 <h4 id="gateway-with-id-already-exists">Gateway with ID Already Exists</h4>
 <p>This means that either you or another user has already used the Gateway ID. Please choose another ID and try again.</p>
 <h3 id="led-states">LED States</h3>
@@ -477,6 +530,9 @@
       <li><a href='#connecting-the-things-indoor-gateway'>Connecting The Things Indoor Gateway</a></li>
     
       
+      <li><a href='#existing-gateways'>Existing Gateways</a></li>
+    
+      
       <li><a href='#troubleshooting'>Troubleshooting</a></li>
     
   </ul>
@@ -517,10 +573,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by John DeGood on 02 Aug 2021.
+  Last changed by Krishna Iyer Easwaran on 09 Aug 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/6fd5532b87be9b973cd277bfd5eca5e0a0ca1cac">
-      Update _index.md (#463)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/1f75184f1e632e428eab50765d08ff95e9b643eb">
+       Update ttig claiming options (#510)
     </a>
 </p>
 
