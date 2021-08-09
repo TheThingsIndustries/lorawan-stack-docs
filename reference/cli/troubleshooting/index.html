@@ -246,10 +246,37 @@
         
         <div class="content">
           <p>This section contains help for common errors encountered when using the CLI.</p>
+<h2 id="faulty-oauth-server-address">Faulty OAuth Server Address</h2>
+<p>In the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/#configuration">CLI configuration file</a>, the server address is set to <code>thethings.example.com</code> by default. If you do not change this server address to the address of your own deployment, using <code>ttn-lw-cli login</code> command will redirect to <code>https://thethings.example.com/oauth/authorize?client_id=cli&amp;redirect_uri=local-callback&amp;response_type=code</code> in your web browser, where the CLI needs to be authorized for exchanging an access token.</p>
+<p>Since your server address is most likely different than <code>thethings.example.com</code>, you will see an error about that URL not being found in your browser, the access token will not be obtained and you will not be able to execute any further CLI commands. In your terminal, you will see something like:</p>
+<pre><code>INFO Opening your browser on https://thethings.example.com/oauth/authorize?client_id=cli&amp;redirect_uri=local-callback&amp;response_type=code
+INFO After logging in and authorizing the CLI, we'll get an access token for future commands.
+INFO Waiting for your authorization...
+</code></pre><p>The solution to this issue would be to replace <code>thethings.example.com</code> occurrences with the server address of your The Things Stack deployment.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  You will experience the same behavior if you are using an <code>https</code> port other than <code>443</code> and you have not specified that port in the <code>oauth-server-address</code> parameter in the CLI configuration file (or with <code>--oauth-server-address</code> flag when running the CLI). For example, if you are running The Things Stack on <code>localhost</code>, you would have to specify the OAuth server address as <code>'https://localhost:8885/oauth'</code>.
+</div>
+
+<h2 id="certificate-signed-by-unknown-authority">Certificate Signed by Unknown Authority</h2>
+<p>If the CA file path is not specified in the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/#configuration">CLI configuration file</a> (or with <code>--ca</code> flag when running the CLI), or if you are using self-signed certificates, using <code>ttn-lw-cli login</code> might result in the following error:</p>
+<pre><code>ERROR Could not exchange OAuth access token    error=Post &quot;https://thethings.example.com:8885/oauth/token&quot;: x509: certificate signed by unknown authority
+</code></pre><p>If the CA file is present on your system, the CLI configuration file should contain <code>ca: /path/to/ca.pem</code> or you should run the CLI with <code>--ca=&quot;/path/to/ca.pem&quot;</code> flag, and you should also import the CA file using your web browser&rsquo;s certificate manager to make sure it&rsquo;s trusted by your system.</p>
+<p>You can also run the CLI with the <code>--fetch-ca</code> flag which will make sure to connect to the server, fetch the CA file and configure the path to it in your CLI configuration file.</p>
 <h2 id="no-collaborator-set">No Collaborator Set</h2>
 <p>Many CLI commands require that a user or organization is set to grant permissions over an entity. For example, to create an application:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications create app1 --user-id user1
-</code></pre></div>
+</code></pre></div><h2 id="permission-denied">Permission Denied</h2>
+<p>If a user (specified with the <code>--user-id</code> flag) does not have sufficient rights to perform the desired action, you will face an error such as:</p>
+<pre><code>error:pkg/auth/rights:insufficient_application_rights (insufficient rights for application `app1`)
+</code></pre><p>See <a href="https://www.thethingsindustries.com/docs/getting-started/user-management/">Users and Organizations</a> section for more info on rights management.</p>
+<h2 id="invalid-identifiers">Invalid Identifiers</h2>
+<p>When creating an entity using the CLI, if the ID value that you use does not follow The Things Stack naming convention, you will face an error. For example, using <code>ttn-lw-cli gateways create My_Gateway</code> command would result in the following error:</p>
+<pre><code>error:pkg/errors:validation (invalid `gateway_id`: value does not match regex pattern &quot;^[a-z0-9](?:[-]?[a-z0-9]){2,}$&quot;)
+field=gateway_id
+name=GatewayIdentifiersValidationError
+reason=value does not match regex pattern &quot;^[a-z0-9](?:[-]?[a-z0-9]){2,}$&quot;
+</code></pre><p>See <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">ID and EUI Constraints</a> section for more info.</p>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/reference/cli/organizations/">← Organization CLI Commands</a>
@@ -274,7 +301,19 @@
   <ul class="menu-list">
     
       
+      <li><a href='#faulty-oauth-server-address'>Faulty OAuth Server Address</a></li>
+    
+      
+      <li><a href='#certificate-signed-by-unknown-authority'>Certificate Signed by Unknown Authority</a></li>
+    
+      
       <li><a href='#no-collaborator-set'>No Collaborator Set</a></li>
+    
+      
+      <li><a href='#permission-denied'>Permission Denied</a></li>
+    
+      
+      <li><a href='#invalid-identifiers'>Invalid Identifiers</a></li>
     
   </ul>
 
@@ -314,10 +353,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 28 Jul 2021.
+  Last changed by Nejra Selimović on 09 Aug 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3cd57bd7e4f75171a118d5b4e02d1d07f6ec75af">
-      doc: Add CLI troubleshooting (#485)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/0bd2169567a050c55f9cce0690dd28c1b9930f7f">
+      doc: Add CLI troubleshooting (#487)
     </a>
 </p>
 
