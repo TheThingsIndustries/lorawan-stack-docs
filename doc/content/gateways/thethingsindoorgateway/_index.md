@@ -65,7 +65,7 @@ tti-lw-cli gateways claim 00800000A00009EF \
 {{< note >}}
 For {{% tts %}} Cloud, you will also need to append the Tenant ID to `--target-cups-uri` and  `--target-gateway-server-address` fields.
 
-For example using `tenant1`, the `target-cups-uri` would be `https://tenant1.eu1.cloud.thethings.industries:443` and the `target-gateway-server-address` would become `tenant1.eu1.cloud.thethings.industries `.
+For example using `tenant1`, the `target-cups-uri` would be `https://tenant1.eu1.cloud.thethings.industries:443` and the `target-gateway-server-address` would become `tenant1.eu1.cloud.thethings.industries`.
 {{</ note >}}
 
 {{< /tabs/tab >}}
@@ -121,7 +121,7 @@ For this, you need to authorize your gateways for claiming. This is currently on
 $ ttn-lw-cli gateways claim authorize <gateway-id>
 ```
 
-Now claim the gateway as described in the [claiming]({{< ref "#claiming-the-things-indoor-gateway" >}}) section.
+Now claim the gateway as described in the [Claiming {{% ttig %}}]({{< ref "#claiming-the-things-indoor-gateway" >}}) section.
 
 Once complete, make sure to unauthorize the gateway to prevent further claiming.
 
@@ -141,7 +141,7 @@ Double-check the EUI and the WiFi Password. Sometimes an `8` looks like a `3` or
 
 #### Gateway Not Authorized for Claiming
 
-If you have already registered/claimed your TTIG in {{% tts %}} cluster that you want to claim, check the section on [claiming existing gateways]({{< ref "#existing-gateways" >}}).
+If you have already registered/claimed your {{% ttig %}} in {{% tts %}} cluster that you want to claim, check the section on [claiming existing gateways]({{< ref "#existing-gateways" >}}).
 
 #### Gateway with ID Already Exists
 
