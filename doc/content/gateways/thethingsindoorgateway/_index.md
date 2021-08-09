@@ -28,6 +28,10 @@ This page guides you to connect {{% ttig %}} to {{% tts %}}.
 
 {{% ttig %}} is added to The Things Stack via a process called **Gateway Claiming**.
 
+{{< tabs/container "Console" "CLI" >}}
+
+{{< tabs/tab "Console" >}}
+
 {{< warning >}} Do not register your TTIGs via the regular option of **Adding Gateways**. {{</ warning >}}
 
 Go to **Gateways** in the top menu, and click the **Claim Gateway** button on the upper right to reach the gateway claiming page.
@@ -39,6 +43,35 @@ Click **Claim gateway** to finish.
 {{< figure src="TTIG_Claim.png" alt="{{% ttig %}} Claiming" >}}
 
 If your inputs are correct, a new gateway will be created and you will be redirected to the gateway overview page of your newly created gateway.
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "CLI" >}}
+
+The following example claims and configures a gateway with EUI `00800000A00009EF` and Gateway ID `gtw1` to the  {{% tts %}} Community Edition `eu1` cluster.
+
+Please adapt the example for your specific case.
+
+```bash
+tti-lw-cli gateways claim 00800000A00009EF \
+--authentication-code abcdef \
+--target-gateway-id gtw1
+--target-cups-uri https://eu1.cloud.thethings.network:443 \
+--target-gateway-server-address eu1.cloud.thethings.network \
+--target-frequency-plan-id EU_863_870 \
+--user-id user1
+```
+
+{{< note >}}
+For {{% tts %}} Cloud, you will also need to append the Tenant ID to `--target-cups-uri` and  `--target-gateway-server-address` fields.
+
+For example using `tenant1`, the `target-cups-uri` would be `https://tenant1.eu1.cloud.thethings.industries:443` and the `target-gateway-server-address` would become `tenant1.eu1.cloud.thethings.industries`.
+{{</ note >}}
+
+{{< /tabs/tab >}}
+
+{{< /tabs/container >}}
+
 
 ## Connecting {{% ttig %}}
 
@@ -76,6 +109,28 @@ If your configuration is correct,
 
 {{< note >}} If this is the first time your gateway is being powered on/connected to WiFi, it might pick up a new firmware depending on when it was last updated. This is indicated by alternating GREEN/RED blinks of the LED. Please leave the gateway powered on when this happens. {{</ note >}}
 
+## Existing Gateways
+
+{{< new-in-version "3.14.1" >}} You can also claim gateways that have been previously claimed or registered to {{% tts %}}.
+
+For this, you need to authorize your gateways for claiming. This is currently only supported via the CLI.
+
+{{< cli-only >}}
+
+```bash
+$ ttn-lw-cli gateways claim authorize <gateway-id>
+```
+
+Now claim the gateway as described in the [Claiming {{% ttig %}}]({{< ref "#claiming-the-things-indoor-gateway" >}}) section.
+
+Once complete, make sure to unauthorize the gateway to prevent further claiming.
+
+
+```bash
+$ ttn-lw-cli gateways claim unauthorize <gateway-id>
+```
+
+
 ## Troubleshooting
 
 ### Common Errors
@@ -86,11 +141,7 @@ Double-check the EUI and the WiFi Password. Sometimes an `8` looks like a `3` or
 
 #### Gateway Not Authorized for Claiming
 
-If you have already registered your TTIG on the same {{% tts %}} cluster that you want to claim, you have the following options
-
-a. If you would like to retain the Gateway ID that you registered it with, support will be added in a subsequent release to claim the gateway while retaining its current Gateway ID.
-
-b. If you would like to claim the gateway with a new Gateway ID, you can delete the existing gateway from {{% tts %}} cluster and follow the claiming process below with a new Gateway ID.
+If you have already registered/claimed your {{% ttig %}} in {{% tts %}} cluster that you want to claim, check the section on [claiming existing gateways]({{< ref "#existing-gateways" >}}).
 
 #### Gateway with ID Already Exists
 
