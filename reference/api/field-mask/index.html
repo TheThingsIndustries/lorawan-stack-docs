@@ -276,11 +276,144 @@
         
         <div class="content">
           <h2 id="field-masks">Field Masks</h2>
-<p>The Things Stack APIs use field masks to specify a subset of fields that should be returned by a reading request, or to specify fields that should be updated in a writing request. See Google&rsquo;s <a href="https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMask">Protocol Buffers reference</a> for more information about field masks.</p>
+<p>The Things Stack APIs use field masks to specify a subset of fields that should be returned by a reading request, or to specify fields that should be updated in a writing request. API request messages which contain a <code>field_mask</code> field operate this way - for example, <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#message:GetEndDeviceRequest"><code>GetEndDeviceRequest</code></a>, or <a href="https://www.thethingsindustries.com/docs/reference/api/application/#message:UpdateApplicationRequest"><code>UpdateApplicationRequest</code></a>, and most <code>Get</code>, <code>List</code>, <code>Set</code>, and <code>Update</code> requests. By default, these API requests will not return or update most fields, unless they are specified in a field mask.</p>
+<p>The following fields are always returned:</p>
+<ul>
+<li>Fields containing <code>id</code></li>
+<li><code>created_at</code></li>
+<li><code>updated_at</code></li>
+<li><code>deleted_at</code></li>
+</ul>
+<p>All other fields are <strong>not returned</strong> and <strong>not updated</strong>, unless specified. Fields that are empty or zero are not returned, even if they are specified in a field mask.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  For more information, see Google&rsquo;s <a href="https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#google.protobuf.FieldMask">Protocol Buffers reference</a>. Note that Google&rsquo;s Protocol Buffers return <strong>all</strong> available fields if no field mask is specified, but The Things Stack API does <strong>not</strong> work this way, and no fields except the above mentioned are returned if no field mask is specified.
+</div>
+
 <h2 id="fields-and-field-masks-in-http-queries">Fields and Field Masks in HTTP Queries</h2>
-<p>Fields may be specified in HTTP requests by appending them as query string parameters. For example, to request the <code>name</code>, <code>description</code>, and <code>locations</code> of devices in an <code>EndDeviceRegistry.Get</code> request, add these fields to the <code>field_mask</code> field. To get this data for device <code>dev1</code> in application <code>app1</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location --header <span class="s2">&#34;Authorization: Bearer NNSXS.XXXXXXXXX&#34;</span> https://thethings.example.com/api/v3/applications/app1/devices/dev1?field_mask<span class="o">=</span>name,description,locations
-</code></pre></div><h3 id="post-requests">POST Requests</h3>
+<h3 id="get-requests"><code>GET</code> Requests</h3>
+<p>Fields may be specified in HTTP <code>GET</code> requests by appending them as query string parameters. For example, to request the <code>name</code>, <code>description</code>, and <code>locations</code> of devices in an <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#the-enddeviceregistry-service"><code>EndDeviceRegistry.Get</code></a> request, add these fields to the <code>field_mask</code> field. To get this data for device <code>dev1</code> in application <code>app1</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location --header <span class="s2">&#34;Authorization: Bearer NNSXS.XXXXXXXXX&#34;</span> <span class="s2">&#34;https://thethings.example.com/api/v3/applications/app1/devices/dev1?field_mask=name,description,locations&#34;</span>
+</code></pre></div><p>This will return the following:</p>
+ <details><summary>Show JSON API response</summary>
+<pre><code>{
+   &quot;ids&quot;:{
+      &quot;device_id&quot;:&quot;dev1&quot;,
+      &quot;application_ids&quot;:{
+         &quot;application_id&quot;:&quot;app1&quot;
+      },
+      &quot;dev_eui&quot;:&quot;0000000000000000&quot;,
+      &quot;join_eui&quot;:&quot;0000000000000000&quot;
+   },
+   &quot;created_at&quot;:&quot;2020-07-31T12:17:51.645Z&quot;,
+   &quot;updated_at&quot;:&quot;2021-07-20T14:14:56.318Z&quot;,
+   &quot;name&quot;:&quot;device-name&quot;,
+   &quot;description&quot;:&quot;device-description&quot;,
+   &quot;locations&quot;:{
+      &quot;user&quot;:{
+         &quot;latitude&quot;:52.51622086393074,
+         &quot;longitude&quot;:13.39075966780985,
+         &quot;source&quot;:&quot;SOURCE_REGISTRY&quot;
+      }
+   }
+}
+</code></pre></details>
+<p>Without the field masks specified, this request would not return the <code>name</code>, <code>description</code>, and <code>locations</code> fields:</p>
+<details><summary>Show JSON API response</summary>
+<pre><code>{
+   &quot;ids&quot;:{
+      &quot;device_id&quot;:&quot;ben-things-uno&quot;,
+      &quot;application_ids&quot;:{
+         &quot;application_id&quot;:&quot;tti-playground&quot;
+      },
+      &quot;dev_eui&quot;:&quot;0004A30B001C35EC&quot;,
+      &quot;join_eui&quot;:&quot;1234567891234567&quot;
+   },
+   &quot;created_at&quot;:&quot;2020-07-31T12:17:51.645Z&quot;,
+   &quot;updated_at&quot;:&quot;2020-07-31T12:17:51.645Z&quot;
+}
+</code></pre></details>
+<h3 id="put-requests"><code>PUT</code> Requests</h3>
+<p><code>PUT</code> requests can be used to update entities by supplying the object as JSON data. To update fields, the field mask must also be specified in the JSON object (query parameters do not work for <code>PUT</code> requests). The field mask has the following format:</p>
+<pre><code>{
+  &quot;field_mask&quot;: {
+      &quot;paths&quot;: [
+        &quot;ids.device_id&quot;,
+        &quot;name&quot;,
+        &quot;description&quot;
+      ]
+    }
+}
+</code></pre><p>Where <code>ids.device_id</code>, <code>name</code>, and <code>description</code> are fields to be updated.</p>
+<p>For example, to update the <code>name</code> field of device <code>dev1</code> in application <code>app1</code>with an <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#the-enddeviceregistry-service"><code>EndDeviceRegistry.Update</code></a> request:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  --request PUT <span class="se">\
+</span><span class="se"></span>  --data-raw <span class="s1">&#39;{
+</span><span class="s1">   &#34;end_device&#34;:{
+</span><span class="s1">      &#34;name&#34;:&#34;device-name&#34;,
+</span><span class="s1">      &#34;description&#34;:&#34;device-description&#34;
+</span><span class="s1">   },
+</span><span class="s1">    &#34;field_mask&#34;: {
+</span><span class="s1">      &#34;paths&#34;: [
+</span><span class="s1">        &#34;name&#34;
+</span><span class="s1">      ]
+</span><span class="s1">    }
+</span><span class="s1">  }&#39;</span> <span class="se">\
+</span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/applications/app1/devices/dev1&#39;</span>
+</code></pre></div><p>This request will update the <code>name</code> field of the device, but will not update the <code>description</code> field because it is not specified in the <code>field_mask</code> object. The following will be returned as confirmation:</p>
+<details><summary>Show JSON API response</summary>
+<pre><code>{
+   &quot;ids&quot;:{
+      &quot;device_id&quot;:&quot;dev1&quot;,
+      &quot;application_ids&quot;:{
+         &quot;application_id&quot;:&quot;app1&quot;
+      },
+      &quot;dev_eui&quot;:&quot;0000000000000000&quot;,
+      &quot;join_eui&quot;:&quot;0000000000000000&quot;
+   },
+   &quot;created_at&quot;:&quot;2020-07-31T12:17:51.645Z&quot;,
+   &quot;updated_at&quot;:&quot;2021-07-20T15:04:26.339Z&quot;,
+   &quot;name&quot;:&quot;device-name&quot;
+}
+</code></pre></details>
+<p>To update both the <code>name</code> and <code>description</code> fields, the following request could be made:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  --request PUT <span class="se">\
+</span><span class="se"></span>  --data-raw <span class="s1">&#39;{
+</span><span class="s1">   &#34;end_device&#34;:{
+</span><span class="s1">      &#34;name&#34;:&#34;device-name&#34;,
+</span><span class="s1">      &#34;description&#34;:&#34;device-description&#34;
+</span><span class="s1">   },
+</span><span class="s1">    &#34;field_mask&#34;: {
+</span><span class="s1">      &#34;paths&#34;: [
+</span><span class="s1">        &#34;name&#34;,
+</span><span class="s1">        &#34;description&#34;,
+</span><span class="s1">      ]
+</span><span class="s1">    }
+</span><span class="s1">  }&#39;</span> <span class="se">\
+</span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/applications/app1/devices/dev1&#39;</span>
+</code></pre></div><p>This would return the following confirmation:</p>
+<details><summary>Show JSON API response</summary>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">{</span>
+   <span class="s2">&#34;ids&#34;</span>:<span class="o">{</span>
+      <span class="s2">&#34;device_id&#34;</span>:<span class="s2">&#34;dev1&#34;</span>,
+      <span class="s2">&#34;application_ids&#34;</span>:<span class="o">{</span>
+         <span class="s2">&#34;application_id&#34;</span>:<span class="s2">&#34;app1&#34;</span>
+      <span class="o">}</span>,
+      <span class="s2">&#34;dev_eui&#34;</span>:<span class="s2">&#34;0000000000000000&#34;</span>,
+      <span class="s2">&#34;join_eui&#34;</span>:<span class="s2">&#34;0000000000000000&#34;</span>
+   <span class="o">}</span>,
+   <span class="s2">&#34;created_at&#34;</span>:<span class="s2">&#34;2020-07-31T12:17:51.645Z&#34;</span>,
+   <span class="s2">&#34;updated_at&#34;</span>:<span class="s2">&#34;2021-07-20T15:04:26.339Z&#34;</span>,
+   <span class="s2">&#34;name&#34;</span>:<span class="s2">&#34;device-name&#34;</span>,
+   <span class="s2">&#34;description&#34;</span>: <span class="s2">&#34;device-description&#34;</span>,
+<span class="o">}</span>
+</code></pre></div></details>
+<h3 id="post-requests"><code>POST</code> Requests</h3>
 <p>Some endpoints require a message to be sent as part of the request. For example, to request an <a href="https://www.thethingsindustries.com/docs/reference/api/events/#the-event-service">Event Stream</a>, you must <code>POST</code> a <a href="https://www.thethingsindustries.com/docs/reference/api/events/#message:StreamEventsRequest">StreamEventsRequest message</a>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
@@ -295,10 +428,7 @@
 </span><span class="s1">    }]
 </span><span class="s1">  }&#39;</span> <span class="se">\
 </span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/events&#39;</span>
-</code></pre></div><blockquote>
-<p>Fields that are empty or zero are not returned in requests, even if they are specified in a field mask.</p>
-</blockquote>
-
+</code></pre></div>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/reference/api/authentication/">← Authentication</a>
@@ -366,10 +496,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 12 Jul 2021.
+  Last changed by Ben Olayinka on 16 Aug 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f3394edb26008b428a8fc5d32c7691290353445b">
-      Add missing API messages and enums (fix broken links) (#442)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5a835dc32881e8370322cd2fe18a18130caac35f">
+      Improve description of field masks in API documentation (#475)
     </a>
 </p>
 
