@@ -9,7 +9,11 @@ While we recommend using the [Console]({{< ref "getting-started/console" >}}) or
 
 A complete list of API endpoints is available in the [API Reference]({{< ref "reference/api" >}}). There, you can also find detailed information about [Authentication]({{< ref "reference/api/authentication" >}}) and [Field Masks]({{< ref "reference/api/field-mask" >}}).
 
-> If you're having trouble with the HTTP API, you can always inspect requests in the Console using your browser's inspector. All of the data displayed in the Console is pulled using HTTP API requests, and this should give you some insight in to how they are formed.
+{{< warning >}} If you are not getting the fields you expect in API responses, see the [Field Masks]({{< relref "field-mask" >}}) reference.
+{{</ warning >}}
+
+{{< note >}} If you're having trouble with the HTTP API, you can always inspect requests in the Console using your browser's inspector. All of the data displayed in the Console is pulled using HTTP API requests, and this should give you some insight in to how they are formed.
+{{</ note >}}
 
 ## Best Practices
 

@@ -53,6 +53,8 @@ description: ""
 
 {{< proto/message message="Collaborators" >}}
 
+{{< proto/message message="ContactInfo" >}}
+
 {{< proto/message message="CreateApplicationAPIKeyRequest" >}}
 
 {{< proto/message message="CreateApplicationRequest" >}}
@@ -86,5 +88,13 @@ description: ""
 {{< proto/message message="UpdateApplicationRequest" >}}
 
 {{< proto/message message="UserIdentifiers" >}}
+
+## Enums 
+
+{{< proto/enum enum="ContactType" >}}
+
+{{< proto/enum enum="ContactMethod" >}}
+
+{{< proto/enum enum="Right" >}}
 
 {{< api-refs >}}

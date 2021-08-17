@@ -53,6 +53,8 @@ The Gateway Server exposes the list of available frequency plans with the `Confi
 
 {{< proto/message message="Collaborators" >}}
 
+{{< proto/message message="ContactInfo" >}}
+
 {{< proto/message message="CreateGatewayAPIKeyRequest" >}}
 
 {{< proto/message message="CreateGatewayRequest" >}}
@@ -113,10 +115,16 @@ The Gateway Server exposes the list of available frequency plans with the `Confi
 
 ## Enums
 
+{{< proto/enum enum="ContactType" >}}
+
+{{< proto/enum enum="ContactMethod" >}}
+
 {{< proto/enum enum="DownlinkPathConstraint" >}}
 
 {{< proto/enum enum="GatewayAntennaPlacement" >}}
 
 {{< proto/enum enum="LocationSource" >}}
+
+{{< proto/enum enum="Right" >}}
 
 {{< api-refs >}}

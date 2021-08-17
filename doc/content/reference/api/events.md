@@ -31,6 +31,10 @@ description: ""
 
 {{< proto/message message="Rights" >}}
 
+## Enums
+
+{{< proto/enum enum="Right" >}}
+
 ## Events
 
 {{< events >}}

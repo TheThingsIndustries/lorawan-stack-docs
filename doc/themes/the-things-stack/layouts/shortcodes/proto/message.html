@@ -40,6 +40,13 @@
         Type
       </th>
       <td>
+        {{ with .repeated }}
+          {{ with or .message .enum }}
+              {{ if not .package }}
+                {{ $.Page.Scratch.Add "referenced" (slice .name) }}
+              {{ end }}
+          {{ end }}
+        {{ end }}
         {{ with or .message .enum }}
             {{ if not .package }}
               {{ $.Page.Scratch.Add "referenced" (slice .name) }}
