@@ -46,6 +46,12 @@ If you are an administrator, you will be presented with the option to purge the 
 
 {{< tabs/tab "CLI" >}}
 
+To view soft-deleted users:
+
+```bash
+$ ttn-lw-cli user list --deleted --all
+```
+
 To purge an application:
 
 ```bash

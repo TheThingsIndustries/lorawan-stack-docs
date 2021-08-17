@@ -1,6 +1,7 @@
 ---
 title: "Troubleshooting Getting Started"
 description: ""
+weight: -1
 ---
 
 This section provides help for common issues and frequently asked questions you may have when getting started with {{% tts %}}. 
@@ -34,6 +35,10 @@ This happens when an Application is not linked properly to the Network Server. {
 Your gateway receives traffic from all devices in range, and {{% tts %}} drops this traffic if no matching device is found. If you are trying to activate a device but receiving this error, double check your DevEUI and JoinEUI (or AppEUI).
 
 In rare cases, this may also happen to ABP devices if a device resets its frame counters (usually because of a power cycle) and can not be found by the session. In this case, it is necessary to re-activate the device. OTAA prevents this problem from occurring, and is more secure in general, so it is the preferred form of activation when possible.
+
+### Entity Already Exists
+
+An entity with this ID already exists. The entity may have been deleted, but {{% tts %}} retains deleted IDs so that they can not be reused, unless they are [purged]({{< ref "reference/purge" >}}). See [ID and EUI constraints]({{< ref "reference/id-eui-constraints" >}}) for uniqueness requirements.
 
 ### Duplicate Uplink
 
