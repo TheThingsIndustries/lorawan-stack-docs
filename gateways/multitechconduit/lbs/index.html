@@ -106,22 +106,13 @@
     <a href="https://www.thethingsindustries.com/docs/gateways/udp/" class="">Semtech UDP Packet Forwarder</a>
   </li>
 <li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/rak-7240/" class="">RAK7240 WisGate Edge Prime</a>
+  </li>
+<li>
     <a href="https://www.thethingsindustries.com/docs/gateways/ciscowirelessgateway/" class="">Cisco Wireless Gateway for LoRaWAN</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/cloudgate/" class="">CloudGate</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/mikrotik-knot/" class="">MikroTik KNOT</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/mikrotik-ltap/" class="">MikroTik LtAP</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/mikrotikrouterboard/" class="">MikroTik Routerboard wAP LoRa8 kit</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/rak-7240/" class="">RAK7240 WisGate Edge Prime</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/dragino-lps8/" class="">Dragino LPS8</a>
@@ -134,6 +125,15 @@
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/laird-sentrius/" class="">Laird Sentrius™ RG1xx LoRaWAN Gateway</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/mikrotik-knot/" class="">MikroTik KNOT</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/mikrotik-ltap/" class="">MikroTik LtAP</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/mikrotikrouterboard/" class="">MikroTik Routerboard wAP LoRa8 kit</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/moko-mkgw2-lw/" class="">MOKOSMART MKGW2-LW LoRaWAN Gateway</a>
@@ -208,7 +208,7 @@
         <div class="content">
           <p>This section contains instructions for connecting the Multitech Conduit AEP to The Things Stack using LoRa Basics™ Station
 .</p>
-<h2 id="prerequisites">Prerequisites:</h2>
+<h2 id="prerequisites">Prerequisites</h2>
 <ol>
 <li>Multitech Conduit AEP gateway running <a href="http://www.multitech.net/developer/downloads/">mPower 5.3.0 firmware or later</a>.</li>
 <li>Hardware required: MTCDT with <code>MTAC-LORA-H mCard</code></li>
@@ -216,7 +216,8 @@
 <div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
   LoRa Basics™ Station
-is not supported on Multitech Conduit gateways with <a href="http://www.multitech.net/developer/software/lora/running-basic-station-on-conduit/"><strong>MTAC-LORA-1.0</strong></a> USB cards.
+is not supported on Multitech Conduit gateways with <a href="http://www.multitech.net/developer/software/lora/running-basic-station-on-conduit/"><strong>MTAC-LORA-1.0</strong></a> USB cards. Please follow instructions for connecting with the <a href="/docs/gateways/multitechconduit/udp/">Semtech UDP Packet Forwarder
+</a>
 </div>
 
 <p>To set up LoRa packet forwarding on the gateway, follow these steps.</p>
@@ -229,6 +230,15 @@ is not supported on Multitech Conduit gateways with <a href="http://www.multitec
 
 <p>On Multitech gateways, only CUPS <strong>or</strong> LNS can be configured. Configuring CUPS will automatically configure LNS, so to use The Things Stack, just follow the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/cups/">Connecting CUPS</a>.</p>
 <p>Be sure to select <strong>CUPS</strong> in the <strong>Credentials</strong> dropdown.</p>
+<p>The entire configuration should look like:</p>
+<ul>
+<li>Credentials: CUPS</li>
+<li>URI: See <a href="https://www.thethingsindustries.com/docs/getting-started/server-addresses/">Server Addresses</a></li>
+<li>Station Config: Leave it as-is (will be overwritten by CUPS)</li>
+<li>Server Cert: Use the <a href="https://www.thethingsindustries.com/docs/reference/root-certificates/#isrg-root-x1">ISRG Root X1 Certificate</a></li>
+<li>Gateway Cert: Leave blank</li>
+<li>Gateway Key: See <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/cups/#cups-key-file">CUPS Key</a> instructions. Be sure you have also configured CUPS to <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/cups/#configure-cups-to-send-the-lns-api-key">transmit an LNS API Key</a>.</li>
+</ul>
 <figure>
     <img src="../lbs-cups.png"
          alt="LoRa Basics Station"/> 
@@ -265,7 +275,7 @@ is not supported on Multitech Conduit gateways with <a href="http://www.multitec
   <ul class="menu-list">
     
       
-      <li><a href='#prerequisites'>Prerequisites:</a></li>
+      <li><a href='#prerequisites'>Prerequisites</a></li>
     
   </ul>
 
@@ -305,10 +315,10 @@ is not supported on Multitech Conduit gateways with <a href="http://www.multitec
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by i3mSuperMan on 16 Jun 2021.
+  Last changed by Ben Olayinka on 16 Aug 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/cedb85c71a77159fdf9d7ed9ecb27963f3ad81f5">
-      Add a prerequisites section to the Multitech Conduit AEP gateways doc for supporting LBS (#402)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/799ef67bd497c621ea87a62feca00535c066f4e2">
+      Improve multitech docs (#489)
     </a>
 </p>
 
