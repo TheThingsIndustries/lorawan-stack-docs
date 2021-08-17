@@ -8,6 +8,8 @@ LNS establishes a data connection between a {{% lbs %}} and {{% tts %}}. This pa
 
 <!--more-->
 
+These are general instructions for all {{% lbs %}} gateways. For specific instructions for connecting your gateway via LNS, look in the [Gateways]({{< ref "gateways" >}}) section.
+
 {{< note >}} The LNS protocol is **required** for sending and receiving LoRaWAN data with {{% lbs %}}, while the CUPS protocol is not. However, configuring CUPS will automatically retrieve LNS credentials and configure LNS on your gateway, so there is no need to configure both. {{</ note >}}
 
 ## Requirements

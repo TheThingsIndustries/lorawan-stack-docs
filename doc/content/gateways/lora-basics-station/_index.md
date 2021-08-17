@@ -10,6 +10,8 @@ This section contains information for connecting your gateway to {{% tts %}} usi
 
 <!--more-->
 
+These are general instructions for all {{% lbs %}} gateways. For specific instructions for your gateway, look in the [Gateways]({{< ref "gateways" >}}) section.
+
 ## Advantages of {{% lbs %}}
 
 Some of the advantages of {{% lbs %}} over the legacy UDP Packet Forwarder are:

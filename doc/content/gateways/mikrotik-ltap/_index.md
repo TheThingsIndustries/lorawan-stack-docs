@@ -1,7 +1,6 @@
 ---
 title: "MikroTik LtAP"
 description: ""
-weight: 1
 ---
 
 {{< figure src="LtaP.jpg" alt="LtAP" class="plain float" >}}

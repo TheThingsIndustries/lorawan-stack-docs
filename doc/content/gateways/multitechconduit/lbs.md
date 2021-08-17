@@ -7,11 +7,12 @@ This section contains instructions for connecting the Multitech Conduit AEP to {
 
 <!--more-->
 
-## Prerequisites:
+## Prerequisites
+
 1. Multitech Conduit AEP gateway running [mPower 5.3.0 firmware or later](http://www.multitech.net/developer/downloads/).
 2. Hardware required: MTCDT with `MTAC-LORA-H mCard`
 
-{{< warning >}}{{% lbs %}} is not supported on Multitech Conduit gateways with [**MTAC-LORA-1.0**](http://www.multitech.net/developer/software/lora/running-basic-station-on-conduit/) USB cards. {{</ warning >}}
+{{< warning >}}{{% lbs %}} is not supported on Multitech Conduit gateways with [**MTAC-LORA-1.0**](http://www.multitech.net/developer/software/lora/running-basic-station-on-conduit/) USB cards. Please follow instructions for connecting with the [{{% udp-pf %}}]({{< relref "udp" >}}) {{</ warning >}}
 
 To set up LoRa packet forwarding on the gateway, follow these steps.
 
@@ -24,6 +25,15 @@ Choose **Basic Station** in the **LoRa Mode** dropdown.
 On Multitech gateways, only CUPS **or** LNS can be configured. Configuring CUPS will automatically configure LNS, so to use {{% tts %}}, just follow the instructions for [Connecting CUPS]({{< ref "/gateways/lora-basics-station/cups" >}}).
 
 Be sure to select **CUPS** in the **Credentials** dropdown.
+
+The entire configuration should look like:
+
+- Credentials: CUPS
+- URI: See [Server Addresses]({{< ref "getting-started/server-addresses" >}})
+- Station Config: Leave it as-is (will be overwritten by CUPS)
+- Server Cert: Use the [ISRG Root X1 Certificate]({{< ref "reference/root-certificates#isrg-root-x1" >}})
+- Gateway Cert: Leave blank
+- Gateway Key: See [CUPS Key]({{< ref "gateways/lora-basics-station/cups#cups-key-file" >}}) instructions. Be sure you have also configured CUPS to [transmit an LNS API Key]({{< ref "gateways/lora-basics-station/cups#configure-cups-to-send-the-lns-api-key" >}}).
 
 {{< figure src="../lbs-cups.png" alt="LoRa Basics Station" >}}
 
