@@ -188,6 +188,7 @@
         <div class="content">
           <p>When entities are deleted, The Things Stack <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">retains some IDs</a> by default to prevent another user re-registering the ID and obtaining historical data.</p>
 <p>It is also possible for administrators to purge IDs so that they may be reused. This reference contains information about how to do this, and the implications of purging IDs.</p>
+<h2 id="what-happens-to-purged-entities">What Happens to Purged Entities?</h2>
 <p>Only administrators may purge entities. Purging an entity has the following effects:</p>
 <ul>
 <li>Permanently deletes the entity</li>
@@ -200,6 +201,26 @@
 <li><strong>Does not</strong> delete stored data in external integrations (applies to applications)</li>
 <li>Releases the ID of the entity for re-use, which may give other users access to historical data if they register an entity with the same ID</li>
 </ul>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  Purging entites deletes them <strong>permanently</strong> and is irreversible!
+</div>
+
+<h2 id="how-to-purge-entities">How to Purge Entities</h2>
+<p>To purge an application:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications purge --application-id &lt;APPLICATION_ID&gt;
+</code></pre></div><p>To purge a client:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli clients purge --client-id &lt;CLIENT_ID&gt;
+</code></pre></div><p>To purge a gateway:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># By EUI</span>
+$ ttn-lw-cli gateways purge --gateway-eui &lt;GATEWAY_EUI&gt;
+<span class="c1"># Or by ID</span>
+$ ttn-lw-cli gateways purge --gateway-id &lt;GATEWAY_ID&gt;
+</code></pre></div><p>To purge an organization:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli organizations purge --organization-id &lt;ORGANIZATION_ID&gt;
+</code></pre></div><p>To purge a user:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli users purge --user-id &lt;USER_ID&gt;
+</code></pre></div>
         </div>
         
           <div class="is-clearfix">
@@ -221,6 +242,16 @@
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#what-happens-to-purged-entities'>What Happens to Purged Entities?</a></li>
+    
+      
+      <li><a href='#how-to-purge-entities'>How to Purge Entities</a></li>
+    
+  </ul>
 
 
   </nav>
@@ -258,10 +289,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 20 Jul 2021.
+  Last changed by Ben Olayinka on 16 Aug 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/651e53ed886d41b02b63642fa8bfbd3b76b2d62a">
-      doc: Add purge reference (#474)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/ecdf6fc8145439141a6c91c90c92899641c34306">
+      doc: Add purge CLI commands (#506)
     </a>
 </p>
 
