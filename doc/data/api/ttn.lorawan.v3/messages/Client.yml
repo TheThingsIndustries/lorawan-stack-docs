@@ -2,32 +2,44 @@ name: Client
 comment: An OAuth client on the network.
 fields:
 - name: ids
+  comment: The identifiers of the OAuth client. These are public and can be seen by
+    any authenticated user in the network.
   message:
     name: ClientIdentifiers
   rules:
     required: true
   default: {}
 - name: created_at
+  comment: When the OAuth client was created. This information is public and can be
+    seen by any authenticated user in the network.
   message:
     package: google.protobuf
     name: Timestamp
   default: "0001-01-01T00:00:00Z"
 - name: updated_at
+  comment: When the OAuth client was last updated. This information is public and
+    can be seen by any authenticated user in the network.
   message:
     package: google.protobuf
     name: Timestamp
   default: "0001-01-01T00:00:00Z"
 - name: deleted_at
+  comment: When the OAuth client was deleted. This information is public and can be
+    seen by any authenticated user in the network.
   message:
     package: google.protobuf
     name: Timestamp
   default: "0001-01-01T00:00:00Z"
 - name: name
+  comment: The name of the OAuth client. This information is public and can be seen
+    by any authenticated user in the network.
   type: string
   rules:
     max_len: 50
   default: ""
 - name: description
+  comment: A description for the OAuth client. This information is public and can
+    be seen by any authenticated user in the network.
   type: string
   rules:
     max_len: 2000
@@ -48,8 +60,9 @@ fields:
       max_len: 200
   default: {}
 - name: contact_info
-  comment: Contact information for this client. Typically used to indicate who to
-    contact with technical/security questions about the application.
+  comment: |-
+    Contact information for this client. Typically used to indicate who to contact with technical/security questions about the application.
+    This information is public and can be seen by any authenticated user in the network.
   rules:
     max_items: 10
   repeated:
@@ -67,6 +80,7 @@ fields:
     The allowed redirect URIs against which authorization requests are checked.
     If the authorization request does not pass a redirect URI, the first one
     from this list is taken.
+    This information is public and can be seen by any authenticated user in the network.
   rules:
     max_items: 10
   repeated:
@@ -79,6 +93,7 @@ fields:
     The allowed logout redirect URIs against which client initiated logout
     requests are checked. If the authorization request does not pass a redirect
     URI, the first one from this list is taken.
+    This information is public and can be seen by any authenticated user in the network.
   rules:
     max_items: 10
   repeated:
@@ -89,6 +104,7 @@ fields:
 - name: state
   comment: |-
     The reviewing state of the client.
+    This information is public and can be seen by any authenticated user in the network.
     This field can only be modified by admins.
     If state_description is not updated when updating state, state_description is cleared.
   enum:
@@ -108,18 +124,21 @@ fields:
 - name: skip_authorization
   comment: |-
     If set, the authorization page will be skipped.
+    This information is public and can be seen by any authenticated user in the network.
     This field can only be modified by admins.
   type: bool
   default: false
 - name: endorsed
   comment: |-
     If set, the authorization page will show endorsement.
+    This information is public and can be seen by any authenticated user in the network.
     This field can only be modified by admins.
   type: bool
   default: false
 - name: grants
   comment: |-
     OAuth flows that can be used for the client to get a token.
+    This information is public and can be seen by any authenticated user in the network.
     After a client is created, this field can only be modified by admins.
   repeated:
     enum:
@@ -130,6 +149,7 @@ fields:
 - name: rights
   comment: |-
     Rights denotes what rights the client will have access to.
+    This information is public and can be seen by any authenticated user in the network.
     Users that previously authorized this client will have to re-authorize the
     client after rights are added to this list.
   repeated:
