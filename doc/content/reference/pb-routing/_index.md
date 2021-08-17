@@ -13,6 +13,6 @@ The following table explains which Forwarder Networks and Home Networks are conf
 |TTN V2 | TTS Cloud | Enabled|
 |TTN V2 | TTS Community Edition | Enabled|
 |TTS Community Edition | TTS Cloud | Enabled|
-|TTS Community Edition | TTN V2 | Enabled|
+|TTS Community Edition | TTN V2 | Not Enabled|
 |TTS Cloud | TTS Community Edition | Not Enabled|
 |TTS Cloud <TENANT X> | TTS Cloud <TENANT Y> | Not Enabled|
