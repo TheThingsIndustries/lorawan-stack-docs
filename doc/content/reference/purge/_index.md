@@ -10,6 +10,8 @@ It is also possible for administrators to purge IDs so that they may be reused. 
 
 <!--more-->
 
+## What Happens to Purged Entities?
+
 Only administrators may purge entities. Purging an entity has the following effects:
 
 - Permanently deletes the entity
@@ -21,3 +23,42 @@ Only administrators may purge entities. Purging an entity has the following effe
 - **Does not** delete stored data in the storage integration (applies to applications)
 - **Does not** delete stored data in external integrations (applies to applications)
 - Releases the ID of the entity for re-use, which may give other users access to historical data if they register an entity with the same ID
+
+{{< warning >}}
+Purging entites deletes them **permanently** and is irreversible!
+{{</ warning >}}
+
+## How to Purge Entities
+
+To purge an application:
+
+```bash
+$ ttn-lw-cli applications purge --application-id <APPLICATION_ID>
+```
+
+To purge a client:
+
+```bash
+$ ttn-lw-cli clients purge --client-id <CLIENT_ID>
+```
+
+To purge a gateway:
+
+```bash
+# By EUI
+$ ttn-lw-cli gateways purge --gateway-eui <GATEWAY_EUI>
+# Or by ID
+$ ttn-lw-cli gateways purge --gateway-id <GATEWAY_ID>
+```
+
+To purge an organization:
+
+```bash
+$ ttn-lw-cli organizations purge --organization-id <ORGANIZATION_ID>
+```
+
+To purge a user:
+
+```bash
+$ ttn-lw-cli users purge --user-id <USER_ID>
+```
