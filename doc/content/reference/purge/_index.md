@@ -24,6 +24,10 @@ Only administrators may purge entities. Purging an entity has the following effe
 - **Does not** delete stored data in external integrations (applies to applications)
 - Releases the ID of the entity for re-use, which may give other users access to historical data if they register an entity with the same ID
 
+{{< warning >}}
+Purging entites deletes them **permanently** and is irreversible!
+{{</ warning >}}
+
 ## How to Purge Entities
 
 To purge an application:
