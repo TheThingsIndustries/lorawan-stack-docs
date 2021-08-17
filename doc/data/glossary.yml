@@ -291,3 +291,54 @@
 - term: Fixed Channel
   description: A Band which uses Fixed Channels (i.e. US902, AU915) uses a Channel Mask (ChMask) to enable and disable channels.
   link: https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf#page=50
+
+- term: Class B timeout
+  description: Time after sending a class B confirmed downlink message in a ping slot to wait for an uplink message with acknowledgment that the confirmed downlink message was received. The Network Server waits for the uplink message with acknowledgment to arrive or for this class B timeout to expire before scheduling other downlink messages. The Things Stack does not schedule MAC commands in class B downlink; the only type of downlink messages that require an uplink message within this timeout are confirmed application data downlink messages.
+
+- term: Class C timeout
+  description: Time after sending a class C confirmed downlink message to wait for an uplink message with acknowledgment that the confirmed downlink message was received. The Network Server waits for the uplink message with acknowledgment to arrive or for this class C timeout to expire before scheduling other downlink messages. The Things Stack does not schedule MAC commands in class C downlink; the only type of downlink messages that require an uplink message within this timeout are confirmed application data downlink messages.
+
+- term: ADR enabled
+  description: Whether or not Adaptive Data Rate (ADR) is enabled for the end device to optimize the data rate and power consumption based on signal strength and noise ratio. Enable this for stationary end devices and for end devices that set the LoRaWAN ADR bit in uplink messages. If this setting is enabled, but the end device does not ask for ADR in uplink messages, ADR will not be applied. Disable ADR for moving devices like asset trackers.
+
+- term: Resets FCnt
+  description: Enable this to allow end devices to reset their frame counter (FCnt). This is not LoRaWAN compliant and this is not secure. This is to support ABP end devices that reset their frame counter on a power cycle. Do not use this setting in production.
+
+- term: Status time periodicity
+  description: Interval to request the device status by transmitting the `DevStatusReq` MAC command. Set to 0 to disable requesting the device status on an interval.
+
+- term: Status count periodicity
+  description: Number of uplink messages after which the device status is requested by transmitting the `DevStatusReq` MAC command. Set to 0 to disable requesting the device status based on the number of uplink messages.
+
+- term: RX1 delay
+  description: Time in seconds after an uplink transmission until the first receive window (RX1) opens. The second receive window (RX2) opens exactly 1 second after RX1. OTAA devices receive the RX1 delay as part of the join-accept. Changing the desired value during an OTAA or ABP session makes the Network Server transmit the `RXTimingSetupReq` MAC command.
+
+- term: RX1 data rate offset
+  description: Used to lower data rate in the first receive window (RX1). When using 0, there is no offset applied. A value higher than 0 reduces the RX1 data rate. See LoRaWAN Regional Parameters to lookup the downstream data rate in RX1 for each offset value. OTAA devices receive the RX1 data rate offset as part of the join-accept. Changing the desired value during an OTAA or ABP session makes the Network Server transmit the `RXParamSetupReq` MAC command.
+
+- term: RX2 data rate index
+  description: The second receive window (RX2) uses a fixed frequency and data rate. This value configures the data rate to use in RX2. See LoRaWAN Regional Parameters to find the band's modulation settings for each data rate index. OTAA devices receive the RX1 data rate offset as part of the join-accept. Changing the desired value during an OTAA or ABP session makes the Network Server transmit the `RXParamSetupReq` MAC command.
+
+- term: RX2 data rate frequency
+  description: The second receive window (RX2) uses a fixed frequency and data rate. This value configures the frequency to use in RX2. Changing the desired value makes the Network Server transmit the `RXParamSetupReq` MAC command.
+
+- term: Maximum duty cycle
+  description: The maximum aggregated transmit duty cycle of the end device over all sub-bands. The allowed time-on-air is 1/N where N is the given value, 1 is 100%, 1024 is 0.97%, etc. This value is used for traffic shaping. All end devices must respect regional regulations regardless of this value. Changing the desired value makes the Network Server transmit the `DutyCycleReq` MAC command.
+
+- term: ADR ACK limit
+  description: This value changes the `ADR_ACK_LIMIT` value defining the ADR back-off algorithm. Changing the desired value makes the Network Server transmit the `ADRParamSetupReq` MAC command (from LoRaWAN 1.1).
+
+- term: ADR ACK delay
+  description: This value changes the `ADR_ACK_DELAY` value defining the ADR back-off algorithm. Changing the desired value makes the Network Server transmit the `ADRParamSetupReq` MAC command (from LoRaWAN 1.1).
+
+- term: Ping slot data rate index
+  description: The class B ping slot uses a fixed frequency and data rate. This value configures the data rate to use in class B ping slots. See LoRaWAN Regional Parameters to find the band's modulation settings for each data rate index. Changing the desired value makes the Network Server transmit the `PingSlotChannelReq` MAC command.
+
+- term: Ping slot frequency
+  description: The class B ping slot uses a fixed frequency and data rate. This value configures the frequency to use in class B ping slots. Changing the desired value makes the Network Server transmit the `PingSlotChannelReq` MAC command.
+
+- term: Beacon frequency
+  description: The class B beacon is sent on a fixed frequency. This value changes the frequency to use in class B beacons. Use the same setting for all end devices using class B in the network. Changing the desired value makes the Network Server transmit the `BeaconFreqReq` MAC command.
+
+- term: Maximum EIRP
+  description: The maximum allowed Effective Isotropic Radiated Power (EIRP). The end device uses this value as the maximum, it shall never use a higher EIRP, but a lower EIRP is allowed. This value is given in dBm. Changing the desired value makes the Network Server transmit the `TxParamSetupReq`.
