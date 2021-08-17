@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Enable | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/storage/enable/" />
+  <title>Enable/Disable | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/storage/enable/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.294c77c74f918a8f5064a76731a816bd0b67f9a72689b5b3e1426b114bf7b43a.css" integrity="sha256-KUx3x0&#43;Rio9QZKdnMagWvQtn&#43;acmibWz4UJrEUv3tDo=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Enable">
+  <meta itemprop="name" content="Enable/Disable">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Enable">
+  <meta property="og:title" content="Enable/Disable">
   <meta property="og:description" content="">
   <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/storage/enable/">
-  <meta name="twitter:title" content="Enable" />
+  <meta name="twitter:title" content="Enable/Disable" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -130,7 +130,7 @@
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/storage/enable/" class="is-active">Enable</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/storage/enable/" class="is-active">Enable/Disable</a>
     
   </li>
 
@@ -164,7 +164,7 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Enable
+        <h1 class="title is-size-2">Enable/Disable
           
         </h1>
         
@@ -172,7 +172,7 @@
           <p>The Storage Integration is implemented as an <a href="https://www.thethingsindustries.com/docs/reference/application-packages/">Application Package</a>.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Enabling Storage Integration for applications can be done using The Things Stack Console or CLI. Enabling Storage Integration for individual end devices is available only via CLI.
+  Enabling/disabling Storage Integration for applications can be done using The Things Stack Console or CLI. Enabling/disabling Storage Integration for individual end devices is available only via CLI.
 </div>
 
 <h2 id="enable-for-an-application">Enable for an Application</h2>
@@ -222,14 +222,11 @@
   <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
   <p>The instructions below use the command-line interface (CLI).</p>
   
+  <p>Make sure that the CLI is up-to-date and uses an updated configuration file: <code>ttn-lw-cli use...</code></p>
+  
   <div class="buttons">
-    <a class="button is-dark is-outlined" href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/">Learn how to install the CLI</a>
+    <a class="button is-dark is-outlined" href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/">Learn how to install or upgrade the CLI</a>
   </div>
-</div>
-
-<div class="notification is-warning is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  You may need to update the CLI to use the new features. See instructions in <a href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/">Installing the CLI</a>.
 </div>
 
 <p>Set up an association between the desired end device and the <code>storage-integration</code> package.</p>
@@ -244,7 +241,7 @@
   <strong>Do not configure multiple associations for the same end device</strong>, since that will lead to storing duplicate uplinks in the persistent storage.
 </div>
 
-<h2 id="disable-the-storage-integration">Disable the Storage Integration</h2>
+<h2 id="disable-for-an-application">Disable for an Application</h2>
 <div class="tabs is-boxed">
   <ul>
     
@@ -295,7 +292,41 @@ $ ttn-lw-cli applications packages default-associations list <span class="s2">&#
 
 </div>
 
+<h2 id="disable-for-an-end-device">Disable for an End Device</h2>
+<div class="notification is-primary is-light has-text-dark">
+  <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
+  <p>The instructions below use the command-line interface (CLI).</p>
+  
+  <div class="buttons">
+    <a class="button is-dark is-outlined" href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/">Learn how to install the CLI</a>
+  </div>
+</div>
 
+<p>To disable the integration, delete the association. First, list associations:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># List associations</span>
+$ ttn-lw-cli applications packages associations list <span class="s2">&#34;app1&#34;</span> <span class="s2">&#34;dev1&#34;</span>
+<span class="o">{</span>
+  <span class="s2">&#34;associations&#34;</span>: <span class="o">[</span>
+    <span class="o">{</span>
+      <span class="s2">&#34;ids&#34;</span>: <span class="o">{</span>
+        <span class="s2">&#34;end_device_ids&#34;</span>: <span class="o">{</span>
+          <span class="s2">&#34;device_id&#34;</span>: <span class="s2">&#34;dev1&#34;</span>,
+          <span class="s2">&#34;application_ids&#34;</span>: <span class="o">{</span>
+            <span class="s2">&#34;application_id&#34;</span>: <span class="s2">&#34;app1&#34;</span>
+          <span class="o">}</span>
+        <span class="o">}</span>,
+        <span class="s2">&#34;f_port&#34;</span>: <span class="m">100</span>
+      <span class="o">}</span>,
+      <span class="s2">&#34;created_at&#34;</span>: <span class="s2">&#34;2020-08-24T21:09:44.649890166Z&#34;</span>,
+      <span class="s2">&#34;updated_at&#34;</span>: <span class="s2">&#34;2020-08-24T21:09:44.649890166Z&#34;</span>,
+      <span class="s2">&#34;package_name&#34;</span>: <span class="s2">&#34;storage-integration&#34;</span>
+    <span class="o">}</span>
+  <span class="o">]</span>
+<span class="o">}</span>
+</code></pre></div><p>Delete the association with:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Delete association between &#34;app1&#34; and &#34;dev1&#34;</span>
+$ ttn-lw-cli applications packages associations delete <span class="s2">&#34;app1&#34;</span> <span class="s2">&#34;dev1&#34;</span> <span class="m">100</span>
+</code></pre></div>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/storage/configuration/">← Configuration</a>
@@ -326,7 +357,10 @@ $ ttn-lw-cli applications packages default-associations list <span class="s2">&#
       <li><a href='#enable-for-an-end-device'>Enable for an End Device</a></li>
     
       
-      <li><a href='#disable-the-storage-integration'>Disable the Storage Integration</a></li>
+      <li><a href='#disable-for-an-application'>Disable for an Application</a></li>
+    
+      
+      <li><a href='#disable-for-an-end-device'>Disable for an End Device</a></li>
     
   </ul>
 
@@ -366,10 +400,10 @@ $ ttn-lw-cli applications packages default-associations list <span class="s2">&#
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Aggelos Kolaitis on 10 Jun 2021.
+  Last changed by Ben Olayinka on 16 Aug 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a4c844ab2c8699bf605743864189567e0ee818f3">
-      doc: Document enabling storage integration via Console (#391)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/ded18fb753170b8c18a736258d35863374c42668">
+      doc: Add disable storage integration instructions (#505)
     </a>
 </p>
 
