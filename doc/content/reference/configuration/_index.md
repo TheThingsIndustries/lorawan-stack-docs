@@ -8,6 +8,10 @@ aliases: [/guides/getting-started/configuration]
 
 <!--more-->
 
+{{< note >}}
+These configuration methods only apply to {{% tts %}} Open Source and Enterprise deployments that follow the [Installation]({{< ref "getting-started/installation" >}}) guide. AWS Launcher deployments can be configured using the [CloudFormation template settings]({{< ref "/getting-started/aws/ami/deployment-guide#deployment-using-aws-cloud-formation" >}}). Managed deployments such as Cloud and Community Edition are configured for you by The Things Industries.
+{{</ note >}}
+
 ## Configuration Sources
 
 In this reference we will refer to configuration options by name. On this page we will show how the `console.ui.canonical-url` option can be configured.
