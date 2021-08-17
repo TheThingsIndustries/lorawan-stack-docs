@@ -7,7 +7,7 @@ weight: 20
 
 The Storage Integration is implemented as an [Application Package]({{< ref "/reference/application-packages" >}}).
 
-{{< note >}} Enabling Storage Integration for applications can be done using {{% tts %}} Console or CLI. Enabling Storage Integration for individual end devices is available only via CLI. {{</ note >}}
+{{< note >}} Enabling/disabling Storage Integration for applications can be done using {{% tts %}} Console or CLI. Enabling/disabling Storage Integration for individual end devices is available only via CLI. {{</ note >}}
 
 ## Enable for an Application
 
