@@ -296,6 +296,29 @@ is that it does not have an implemented mechanism to detect if pulling the downl
 <li>Checking your internet connection</li>
 <li>Using The Things Stack cluster closest to the location of your gateway</li>
 </ul>
+<h2 id="what-is-radio-configuration">What is Radio Configuration?</h2>
+<p>There are three types of radio configuration. All types are typically defined in the same <code>station.conf</code> file.</p>
+<p><strong>Hardware Specific</strong>: configuration unique to the hardware. This is defined in a file shipped with the gateway and should not be modified. Examples are <code>clksrc</code> and RSSI offset.</p>
+<p><strong>LoRaWAN Regional</strong>: configuration according to LoRaWAN Regional Parameters. This is common to all gateways using the same Regional Parameters, and is provided by the network server automatically when using LoRa Basics™ Station
+. It must be configured manually for UDP gateways. Examples are data rates and mandatory channels.</p>
+<p><strong>User Defined</strong>: configuration which the user is free to choose. Examples are non-mandatory channels and sub-bands.</p>
+<p>For an example configuration file, see <a href="https://doc.sm.tc/station/gw_v1.5.html#single-board-sample-configuration">Semtech&rsquo;s LoRa Basics™ Station
+documentation</a>.</p>
+<h2 id="what-modes-of-authentication-are-supported">What modes of authentication are supported?</h2>
+<p>LoRa Basics™ Station
+defines bi-directional authentication at the server (The Things Stack) and client (gateway). The server is authenticated with a trusted certificate and the client is authenticated either by HTTP token or certificate. See <a href="https://doc.sm.tc/station/authmodes.html#authentication-modes">Semtech&rsquo;s documentation</a>.</p>
+<h2 id="how-is-the-server-authenticated">How is the server authenticated?</h2>
+<p>The server is authenticated by a certificate signed by a Root Certificate Authority. The Root CA certificate is installed in the client (gateway). This is set using the <code>cups.trust</code> or <code>tc.trust</code> file for CUPS or LNS respectively.</p>
+<h2 id="how-is-my-gateway-authenticated">How is my gateway authenticated?</h2>
+<p>Currently, The Things Stack only supports <a href="https://doc.sm.tc/station/authmodes.html#tls-server-authentication-and-client-token">TLS Server Authentication and Client Token</a>. The gateway is authenticated using an HTTP header containing an API key generated in The Things Stack. See <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/cups/#configure-gateway">Configure CUPS</a> for instructions for setting this API key for CUPS.</p>
+<h2 id="should-i-set-cups-or-lns-credentials">Should I set CUPS or LNS credentials?</h2>
+<p>These are two different types of LoRa Basics™ Station
+connections. Since CUPS automatically also configures LNS, we recommend you configure CUPS and leave LNS blank.</p>
+<h2 id="where-can-i-learn-more-about-lora-basics-station">Where can I learn more about LoRa Basics™ Station</h2>
+<p><strong>Gateway Demo</strong>: <a href="https://www.youtube.com/watch?v=LGFFxPOuSJw">https://www.youtube.com/watch?v=LGFFxPOuSJw</a></p>
+<p><strong>Official LoRa Basics™ Station
+documentation</strong>: <a href="https://doc.sm.tc/station/">https://doc.sm.tc/station/</a></p>
+<p><strong>Forum</strong>: <a href="https://www.thethingsnetwork.org/forum/">https://www.thethingsnetwork.org/forum/</a></p>
         </div>
         
           <div class="is-clearfix">
@@ -353,6 +376,24 @@ is that it does not have an implemented mechanism to detect if pulling the downl
       
       <li><a href='#no-downlinks-are-reaching-my-udp-gateway-why'>No downlinks are reaching my UDP gateway. Why?</a></li>
     
+      
+      <li><a href='#what-is-radio-configuration'>What is Radio Configuration?</a></li>
+    
+      
+      <li><a href='#what-modes-of-authentication-are-supported'>What modes of authentication are supported?</a></li>
+    
+      
+      <li><a href='#how-is-the-server-authenticated'>How is the server authenticated?</a></li>
+    
+      
+      <li><a href='#how-is-my-gateway-authenticated'>How is my gateway authenticated?</a></li>
+    
+      
+      <li><a href='#should-i-set-cups-or-lns-credentials'>Should I set CUPS or LNS credentials?</a></li>
+    
+      
+      <li><a href='#where-can-i-learn-more-about-lora-basics-station'>Where can I learn more about LoRa Basics™ Station</a></li>
+    
   </ul>
 
 
@@ -391,10 +432,10 @@ is that it does not have an implemented mechanism to detect if pulling the downl
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 12 Jul 2021.
+  Last changed by Ben Olayinka on 19 Aug 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b03897e07a682a8d7b5107bbb3ec431f8ac21fb4">
-      Add server addresses page (#435)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3459d7e817203edb329de226240afa3d0f3bdaba">
+      doc: Add gateway FAQ (#532)
     </a>
 </p>
 
