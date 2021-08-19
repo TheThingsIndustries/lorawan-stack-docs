@@ -19,6 +19,10 @@ A gRPC service and an HTTP API is exposed so that stored messages can then be re
 
 {{< note >}} {{% tts %}} Cloud stores only uplink messages. {{</ note >}}
 
+{{< warning >}}
+The Storage Integration should not be used for querying realtime data. For scalability reasons, writes to the Storage Integration database are performed in batches and there may be a delay after an uplink is received, before it is available. For realtime alerts, use [Webhooks]({{< ref "integrations/webhooks" >}}).
+{{</ warning >}}
+
 ## Typical use cases
 
 - Long-term storage of historical data for end-devices.
