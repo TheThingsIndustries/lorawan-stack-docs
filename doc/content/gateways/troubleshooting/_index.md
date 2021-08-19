@@ -145,12 +145,12 @@ Try solving this issue by:
 
 Another gateway is already registered with this ID. This gateway may have been deleted already, but {{% tts %}} reserves previously used IDs for [security reasons]({{< ref "reference/id-eui-constraints" >}}).
 
-This gateway may also be registered by another user, and if you are not an administrator (e.g if you are using The Things Stack Community Edition) you will not be able to see gateways registered by other users.
+This gateway may also be registered by another user, but you are not able to see gateways registered by other users if you are not an administrator (e.g. if you are using {{% tts %}} Community Edition).
 
 To solve this, use a different gateway ID. If you are an administrator and wish to reuse a deleted ID, see [Purging Entities]({{< ref "reference/purge" >}}).
 
 ## I Get a "Gateway with EUI is Already Registered" Error When Adding a Gateway.
 
-Another gateway is already registered with the same Gateway EUI. This gateway may be registered by another user, and if you are not an administrator (e.g if you are using The Things Stack Community Edition) you will not be able to see gateways registered by other users.
+Another gateway is already registered with the same Gateway EUI. This gateway may be registered by another user, but if you are not an administrator (e.g if you are using The Things Stack Community Edition) you will not be able to see gateways registered by other users.
 
 First, double check that you have entered the EUI correctly. Then, double check that you have not already registered the gateway. Finally, if you have purchased the gateway secondhand, it is possible someone before you registered the gateway. Contact them to unregister it. If they are unavailable, contact [The Things Industries](mailto:info@thethingsindustries.com).
