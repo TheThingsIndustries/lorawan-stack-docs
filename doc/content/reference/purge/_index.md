@@ -30,6 +30,28 @@ Purging entites deletes them **permanently** and is irreversible!
 
 ## How to Purge Entities
 
+{{< tabs/container "Console" "CLI" >}}
+
+{{< tabs/tab "Console" >}}
+
+Go to the **General Settings** tab of the entity and click **Delete**.
+
+{{< figure src="delete.png" >}}
+
+If you are an administrator, you will be presented with the option to purge the entity. Check the **Also release entity IDs** box to also purge the entity.
+
+{{< figure src="purge.png" >}}
+
+{{</ tabs/tab >}}
+
+{{< tabs/tab "CLI" >}}
+
+To view soft-deleted users:
+
+```bash
+$ ttn-lw-cli user list --deleted --all
+```
+
 To purge an application:
 
 ```bash
@@ -62,3 +84,7 @@ To purge a user:
 ```bash
 $ ttn-lw-cli users purge --user-id <USER_ID>
 ```
+
+{{</ tabs/tab >}}
+
+{{</ tabs/container >}}

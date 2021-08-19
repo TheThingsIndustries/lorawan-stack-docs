@@ -1,32 +1,43 @@
 name: Organization
 fields:
 - name: ids
+  comment: The identifiers of the organization. These are public and can be seen by
+    any authenticated user in the network.
   message:
     name: OrganizationIdentifiers
   rules:
     required: true
   default: {}
 - name: created_at
+  comment: When the organization was created. This information is public and can be
+    seen by any authenticated user in the network.
   message:
     package: google.protobuf
     name: Timestamp
   default: "0001-01-01T00:00:00Z"
 - name: updated_at
+  comment: When the organization was last updated. This information is public and
+    can be seen by any authenticated user in the network.
   message:
     package: google.protobuf
     name: Timestamp
   default: "0001-01-01T00:00:00Z"
 - name: deleted_at
+  comment: When the organization was deleted. This information is public and can be
+    seen by any authenticated user in the network.
   message:
     package: google.protobuf
     name: Timestamp
   default: "0001-01-01T00:00:00Z"
 - name: name
+  comment: The name of the organization. This information is public and can be seen
+    by any authenticated user in the network.
   type: string
   rules:
     max_len: 50
   default: ""
 - name: description
+  comment: A description for the organization.
   type: string
   rules:
     max_len: 2000

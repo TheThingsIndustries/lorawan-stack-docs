@@ -154,3 +154,39 @@ To solve this, use a different gateway ID. If you are an administrator and wish 
 Another gateway is already registered with the same Gateway EUI. This gateway may be registered by another user, but if you are not an administrator (e.g if you are using The Things Stack Community Edition) you will not be able to see gateways registered by other users.
 
 First, double check that you have entered the EUI correctly. Then, double check that you have not already registered the gateway. Finally, if you have purchased the gateway secondhand, it is possible someone before you registered the gateway. Contact them to unregister it. If they are unavailable, contact [The Things Industries](mailto:info@thethingsindustries.com).
+
+## What is Radio Configuration?
+
+There are three types of radio configuration. All types are typically defined in the same `station.conf` file.
+
+**Hardware Specific**: configuration unique to the hardware. This is defined in a file shipped with the gateway and should not be modified. Examples are `clksrc` and RSSI offset.
+
+**LoRaWAN Regional**: configuration according to LoRaWAN Regional Parameters. This is common to all gateways using the same Regional Parameters, and is provided by the network server automatically when using {{% lbs %}}. It must be configured manually for UDP gateways. Examples are data rates and mandatory channels.
+
+**User Defined**: configuration which the user is free to choose. Examples are non-mandatory channels and sub-bands.
+
+For an example configuration file, see [Semtech's {{% lbs %}} documentation](https://doc.sm.tc/station/gw_v1.5.html#single-board-sample-configuration).
+
+## What modes of authentication are supported?
+
+{{% lbs %}} defines bi-directional authentication at the server ({{% tts %}}) and client (gateway). The server is authenticated with a trusted certificate and the client is authenticated either by HTTP token or certificate. See [Semtech's documentation](https://doc.sm.tc/station/authmodes.html#authentication-modes).
+
+## How is the server authenticated?
+
+The server is authenticated by a certificate signed by a Root Certificate Authority. The Root CA certificate is installed in the client (gateway). This is set using the `cups.trust` or `tc.trust` file for CUPS or LNS respectively.
+
+## How is my gateway authenticated?
+
+Currently, {{% tts %}} only supports [TLS Server Authentication and Client Token](https://doc.sm.tc/station/authmodes.html#tls-server-authentication-and-client-token). The gateway is authenticated using an HTTP header containing an API key generated in {{% tts %}}. See [Configure CUPS]({{< ref "gateways/lora-basics-station/cups#configure-gateway" >}}) for instructions for setting this API key for CUPS.
+
+## Should I set CUPS or LNS credentials?
+
+These are two different types of {{% lbs %}} connections. Since CUPS automatically also configures LNS, we recommend you configure CUPS and leave LNS blank.
+
+## Where can I learn more about {{% lbs %}}
+
+**Gateway Demo**: https://www.youtube.com/watch?v=LGFFxPOuSJw
+
+**Official {{% lbs %}} documentation**: https://doc.sm.tc/station/
+
+**Forum**: https://www.thethingsnetwork.org/forum/

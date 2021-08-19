@@ -8,11 +8,15 @@ This section contains instructions for installing the command-line interface.
 
 <!--more-->
 
+There are two versions of {{% tts %}} CLI: `ttn-lw-cli`and `tti-lw-cli`. For most users, `ttn-lw-cli` is sufficient, as it supports all commands to manage {{% tts %}}. `tti-lw-cli` has additional commands for tenant management, but is otherwise identical.
+
+We recommend that Cloud, Community Edition, and Open Source users install `ttn-lw-cli`, and Enterprise users install `tti-lw-cli`.
+
 ### Package managers (recommended)
 
-{{< tabs/container "Open Source" "Enterprise" >}}
+{{< tabs/container "Cloud, Community Edition, and Open Source" "Enterprise" >}}
 
-{{< tabs/tab "Open Source" >}}
+{{< tabs/tab "Cloud, Community Edition, and Open Source" >}}
 
 #### macOS
 

@@ -2,32 +2,44 @@ name: User
 comment: User is the message that defines a user on the network.
 fields:
 - name: ids
+  comment: The identifiers of the user. These are public and can be seen by any authenticated
+    user in the network.
   message:
     name: UserIdentifiers
   rules:
     required: true
   default: {}
 - name: created_at
+  comment: When the user was created. This information is public and can be seen by
+    any authenticated user in the network.
   message:
     package: google.protobuf
     name: Timestamp
   default: "0001-01-01T00:00:00Z"
 - name: updated_at
+  comment: When the user was last updated. This information is public and can be seen
+    by any authenticated user in the network.
   message:
     package: google.protobuf
     name: Timestamp
   default: "0001-01-01T00:00:00Z"
 - name: deleted_at
+  comment: When the user was deleted. This information is public and can be seen by
+    any authenticated user in the network.
   message:
     package: google.protobuf
     name: Timestamp
   default: "0001-01-01T00:00:00Z"
 - name: name
+  comment: The name of the user. This information is public and can be seen by any
+    authenticated user in the network.
   type: string
   rules:
     max_len: 50
   default: ""
 - name: description
+  comment: A description for the user. This information is public and can be seen
+    by any authenticated user in the network.
   type: string
   rules:
     max_len: 2000
@@ -91,6 +103,7 @@ fields:
 - name: state
   comment: |-
     The reviewing state of the user.
+    This information is public and can be seen by any authenticated user in the network.
     This field can only be modified by admins.
   enum:
     name: State
@@ -109,6 +122,7 @@ fields:
 - name: admin
   comment: |-
     This user is an admin.
+    This information is public and can be seen by any authenticated user in the network.
     This field can only be modified by other admins.
   type: bool
   default: false
@@ -132,6 +146,9 @@ fields:
     name: Timestamp
   default: "0001-01-01T00:00:00Z"
 - name: profile_picture
+  comment: |-
+    A profile picture for the user.
+    This information is public and can be seen by any authenticated user in the network.
   message:
     name: Picture
   default: {}

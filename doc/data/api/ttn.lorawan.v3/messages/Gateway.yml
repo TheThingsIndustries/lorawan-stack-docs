@@ -2,32 +2,44 @@ name: Gateway
 comment: Gateway is the message that defines a gateway on the network.
 fields:
 - name: ids
+  comment: The identifiers of the gateway. These are public and can be seen by any
+    authenticated user in the network.
   message:
     name: GatewayIdentifiers
   rules:
     required: true
   default: {}
 - name: created_at
+  comment: When the gateway was created. This information is public and can be seen
+    by any authenticated user in the network.
   message:
     package: google.protobuf
     name: Timestamp
   default: "0001-01-01T00:00:00Z"
 - name: updated_at
+  comment: When the gateway was last updated. This information is public and can be
+    seen by any authenticated user in the network.
   message:
     package: google.protobuf
     name: Timestamp
   default: "0001-01-01T00:00:00Z"
 - name: deleted_at
+  comment: When the gateway was deleted. This information is public and can be seen
+    by any authenticated user in the network.
   message:
     package: google.protobuf
     name: Timestamp
   default: "0001-01-01T00:00:00Z"
 - name: name
+  comment: The name of the gateway. This information is public and can be seen by
+    any authenticated user in the network.
   type: string
   rules:
     max_len: 50
   default: ""
 - name: description
+  comment: A description for the gateway. This information is public and can be seen
+    by any authenticated user in the network.
   type: string
   rules:
     max_len: 2000
@@ -65,6 +77,7 @@ fields:
 - name: gateway_server_address
   comment: |-
     The address of the Gateway Server to connect to.
+    This information is public and can be seen by any authenticated user in the network if status_public is true.
     The typical format of the address is "host:port". If the port is omitted,
     the normal port inference (with DNS lookup, otherwise defaults) is used.
     The connection shall be established with transport layer security (TLS).
@@ -84,6 +97,8 @@ fields:
 - name: frequency_plan_id
   comment: |-
     Frequency plan ID of the gateway.
+    This information is public and can be seen by any authenticated user in the network.
+    DEPRECATED: use frequency_plan_ids.
     This equals the first element of the frequency_plan_ids field.
   type: string
   rules:
@@ -92,6 +107,7 @@ fields:
 - name: frequency_plan_ids
   comment: |-
     Frequency plan IDs of the gateway.
+    This information is public and can be seen by any authenticated user in the network.
     The first element equals the frequency_plan_id field.
   rules:
     max_items: 8
@@ -101,6 +117,8 @@ fields:
       max_len: 64
   default: []
 - name: antennas
+  comment: Antennas of the gateway. Location information of the antennas is public
+    and can be seen by any authenticated user in the network if location_public=true.
   rules:
     max_items: 8
   repeated:

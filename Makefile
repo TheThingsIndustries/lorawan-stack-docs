@@ -61,9 +61,10 @@ new:
 	@:
 
 .PHONY: deps
-deps: hooks $(FREQUENCY_PLAN_DEST) | go.deps js.deps
+deps: hooks freq.deps go.deps js.deps
 
-$(FREQUENCY_PLAN_DEST):
+.PHONY: freq.deps
+freq.deps:
 	curl -o $(FREQUENCY_PLAN_DEST) $(FREQUENCY_PLAN_URL)
 
 .PHONY: go.deps
