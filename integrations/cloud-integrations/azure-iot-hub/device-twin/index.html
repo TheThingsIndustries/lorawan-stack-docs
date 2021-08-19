@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Microsoft Azure | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/microsoft-azure/" />
+  <title>Messages and Device Twin | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/device-twin/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.294c77c74f918a8f5064a76731a816bd0b67f9a72689b5b3e1426b114bf7b43a.css" integrity="sha256-KUx3x0&#43;Rio9QZKdnMagWvQtn&#43;acmibWz4UJrEUv3tDo=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Microsoft Azure">
+  <meta itemprop="name" content="Messages and Device Twin">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Microsoft Azure">
+  <meta property="og:title" content="Messages and Device Twin">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/microsoft-azure/">
-  <meta name="twitter:title" content="Microsoft Azure" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/device-twin/">
+  <meta name="twitter:title" content="Messages and Device Twin" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -109,6 +109,50 @@
   </li>
 
   <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/" class="">Azure IoT Hub</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/architecture/" class="">Architecture</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/deployment/" class="">Deployment Guide</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/devices/" class="">Managing Devices</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/device-twin/" class="is-active">Messages and Device Twin</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/update/" class="">Update</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/uninstall/" class="">Uninstall</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
     <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/akenza-core/" class="">Akenza Core</a>
     
   </li>
@@ -150,16 +194,6 @@
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/iotinabox/" class="">IoT in a Box</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/microsoft-azure/" class="is-active">Microsoft Azure</a>
-    
-    
-
-
-
     
   </li>
 
@@ -244,91 +278,78 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Microsoft Azure
+        <h1 class="title is-size-2">Messages and Device Twin
           
         </h1>
         
         <div class="content">
-          <p><a href="https://azure.microsoft.com/">Azure</a> is a cloud computing platform, created by Microsoft, for building and managing aplications and services, while supporting many different programming languages, frameworks and tools.</p>
-<p>In this guide, we use <a href="https://docs.microsoft.com/en-us/azure/azure-functions/">Azure Functions</a> serverless service to run a function which can be triggered by an HTTP request. Since Azure offers many complex features, these instructions will help you to make a Webhook integration with The Things Stack in only a few easy steps.</p>
-<h2 id="prerequisites">Prerequisites</h2>
-<ol>
-<li>A <a href="https://azure.microsoft.com/en-us/free/">user account on Azure</a>.</li>
-</ol>
-<h2 id="setup-azure">Setup Azure</h2>
+          <p>The Things Stack publishes uplink messages to Azure IoT Hub as device telemetry. The Things Stack updates the <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins">Device Twin</a> reported properties of the device, and schedules downlinks when the <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins">Device Twin</a> desired properties are changed.</p>
+<blockquote>
+<p>The Things Stack automatically creates the end device in Azure IoT Hub in case it is not yet created. See <a href="/docs/integrations/cloud-integrations/azure-iot-hub/devices/">Managing Devices</a> for details.</p>
+</blockquote>
+<blockquote>
+<p>See <a href="/docs/integrations/cloud-integrations/azure-iot-hub/architecture/">Architecture</a> for the flow.</p>
+</blockquote>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  More detailed instructions for creating Azure functions can be found in the <a href="https://docs.microsoft.com/en-us/azure/azure-functions/functions-create-first-azure-function">official Azure documentation</a>.
+  The <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins">Device Twin</a> properties functionality depends on the presence of <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">Payload Formatters</a>. Devices which are configured using <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/device-repo/">LoRaWAN Device Repository</a> will automatically have payload formatters.
 </div>
 
-<p>First, navigate to the Azure services dashboard and click on <strong>Function App</strong> service.</p>
+<h2 id="reported-properties">Reported Properties</h2>
+<p>The Azure IoT Hub integration will automatically update the <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins">Device Twin</a> reported properties when an uplink message arrives, using <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">Payload Formatters</a>.</p>
+<p>In the Azure Console, open your Azure IoT Hub resource. In the menu on the left, click <strong>IoT Devices</strong>.</p>
 <figure>
-    <img src="azure-services-dashboard.png"
-         alt="Function app in Azure services dashboard"/> 
+    <img src="../device-list.png"
+         alt="IoT Devices"/> 
 </figure>
 
-<p>Once you are in <strong>Function App</strong> creation wizard, all the options that you will need for this guide are in the <strong>Basics</strong> tab.</p>
-<p>Fill in the <strong>Subscription</strong> and <strong>Resource Group</strong> fields according to your preferences. If it is your first time using the Azure, you will have to create a new resource group.</p>
-<p>Next, you have to provide a globally unique <strong>Function App name</strong>. After deploying your function, you can check if it is running by navigating to <code>https://{function_app_name}.azurewebsites.net/</code>.</p>
-<p>Choose <strong>Code</strong> for <strong>Publish</strong> to publish your code files (the alternative would be publishing a Docker container).</p>
-<p>Since you can use different programming languages for your function, you have to choose an appropriate <strong>Runtime stack</strong>. In this guide, we use a <strong>C#</strong> function, therefore we choose <strong>.NET Core</strong> runtime stack. Also, you need to choose the <strong>Version</strong> of the installed runtime. The most recent version will automatically be suggested to you.</p>
-<p>Choose a <strong>Region</strong> nearest to you, or near other services that your functions access.</p>
+<p>Click on the device you want to view.</p>
 <figure>
-    <img src="creating-a-function-app.png"
-         alt="Creating Azure function app"/> 
+    <img src="../device-created.png"
+         alt="Device View"/> 
 </figure>
 
-<p>When finished, click on <strong>Review + create</strong> button, and then once again on <strong>Create</strong> button. At this point, you should see something like this:</p>
+<p>Click on <strong>Device Twin</strong>. The device reported properties will be visible under the <code>properties.reported.decodedPayload</code> key.</p>
 <figure>
-    <img src="successfully-deployed-function-app.png"
-         alt="Function app deployment complete"/> 
+    <img src="../reported-properties.png"
+         alt="Reported Properties"/> 
 </figure>
 
-<p>To view and manage your function app, select <strong>Go to resource</strong>.</p>
-<p>In the next step, you will be creating a function inside your function app. From the left hand <strong>Functions</strong> menu, choose <strong>Functions</strong> and click on <strong>Add</strong> button.</p>
-<p>In the <strong>New Function</strong> pop-up menu, select <strong>HTTP trigger</strong>. Give your function a recognizable name and choose <strong>Function</strong> for <strong>Authorization level</strong>.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <strong>Authorization level</strong> defines whether the function requires an API key and if so, what kind (function or master key). Depending on this, an API key may be a part of the webhook URL.
-</div>
-
-<p>Select <strong>Create Function</strong> to finish.</p>
+<h2 id="desired-properties">Desired Properties</h2>
+<p>The Azure IoT Hub integration will automatically schedule a downlink when the <a href="https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins">Device Twin</a> desired properties are updated.</p>
+<p>In the Azure Console, open your Azure IoT Hub resource. In the menu on the left, click <strong>IoT Devices</strong>.</p>
 <figure>
-    <img src="http-trigger-function-creation.png"
-         alt="Creating HTTP trigger function"/> 
+    <img src="../device-list.png"
+         alt="IoT Devices"/> 
 </figure>
 
-<p>After creating a function, click on it and select <strong>Code + Test</strong> in the <strong>Developer</strong> menu on the left. Modify the function code as shown below in order to show incoming messages in JSON format.</p>
-<p>Also make sure to copy the <strong>function URL</strong>, because you will need it when creating a Webhook integration on The Things Stack.</p>
+<p>Click on the device you want to view.</p>
 <figure>
-    <img src="http-trigger-function-code.png"
-         alt="HTTP trigger function code"/> 
+    <img src="../device-created.png"
+         alt="Device View"/> 
 </figure>
 
-<p>Finally, expand the <strong>Logs</strong> in the bottom and click on the <strong>Start</strong> button.</p>
-<h2 id="configure-the-things-stack">Configure The Things Stack</h2>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  This section follows the <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/creating-webhooks/">Creating HTTP Webhooks</a> guide.
-</div>
-
-<p>Fill in the <strong>Webhook ID</strong> field and choose <strong>JSON</strong> for <strong>Webhook format</strong>.</p>
-<p>Fill in the <strong>Base URL</strong> field with the function URL you copied from Azure in the previous step.</p>
-<p>Check the message types for which you wish to enable this webhook and finish creating an integration with <strong>Add Webhook</strong> button in the bottom.</p>
+<p>Click on <strong>Device Twin</strong>. The device reported desired will be visible under the <code>properties.desired.decodedPayload</code> key. If the key is missing, you will have to manually create it. The contents of the object should be compatible with the device&rsquo;s payload formatter.</p>
+<p>The final JSON <code>properties.desired</code> object should look as follows:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+   <span class="nt">&#34;decodedPayload&#34;</span><span class="p">:{</span>
+      <span class="nt">&#34;color&#34;</span><span class="p">:</span><span class="s2">&#34;red&#34;</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>When finished editing the JSON <code>tags</code> object, click on <strong>Save</strong> in the top-left corner.</p>
 <figure>
-    <img src="azure-webhook-creation.png"
-         alt="Azure webhook"/> 
+    <img src="../desired-properties.png"
+         alt="Desired Properties"/> 
 </figure>
 
-<p>After creating the integration, navigate to the logs console in Azure to see the incoming messages printed in JSON format.</p>
+<p>A downlink message will be generated in The Things Stack.</p>
         </div>
-        
-          <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/iotinabox/">← IoT in a Box</a>
-<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/qubitro/">Qubitro →</a>
+        <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/azure-iot-hub/devices/">← Managing Devices</a>
+<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/azure-iot-hub/update/">Update →</a>
 </div>
 
-          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
 <script src="https://cdn.emojicom.io/embed/widget.js" async></script>
 
 <div class='feedback has-vertical-space'>
@@ -346,13 +367,10 @@
   <ul class="menu-list">
     
       
-      <li><a href='#prerequisites'>Prerequisites</a></li>
+      <li><a href='#reported-properties'>Reported Properties</a></li>
     
       
-      <li><a href='#setup-azure'>Setup Azure</a></li>
-    
-      
-      <li><a href='#configure-the-things-stack'>Configure The Things Stack</a></li>
+      <li><a href='#desired-properties'>Desired Properties</a></li>
     
   </ul>
 
@@ -392,14 +410,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 01 Mar 2021.
+  Last changed by Adrian-Stefan Mares on 19 Aug 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/8b8db812793525ad8423784706b1fd86aaab1a40">
-      doc: Fix cloud integrations
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/8d58a6bf4e8a217741b2abfeec6b209ab851c0be">
+      Add Azure IoT Hub integration documentation (#528)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/cloud-integrations/microsoft-azure/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/cloud-integrations/azure-iot-hub/device-twin.md" class="button">Edit on Github</a>
 </div>
 
       </div>
