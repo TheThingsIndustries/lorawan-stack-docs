@@ -2,7 +2,7 @@
 title: "Adding Devices"
 description: ""
 aliases: [/getting-started/cli/create-end-device, /getting-started/console/create-end-device]
-weight: 2
+weight: -1
 ---
 
 This section contains instructions for adding devices in {{% tts %}}.
@@ -39,11 +39,15 @@ To use the device repository, make sure the **From the LoRaWAN Device Repository
 
 Choose a **Frequency plan** appropriate for your region. Your device and gateway must use the same frequency plan to communicate.
 
-Enter a **JoinEUI/AppEUI** if provided by your manufacturer. If your device is programmable, you may use all 0's, and then program the same JoinEUI/AppEUI in the device.
+Enter a **JoinEUI/AppEUI** if provided by your manufacturer. If your device is programmable, you may use the **Fill with zeros** button, and then program the same JoinEUI/AppEUI (`0000000000000000`) in the device.
 
-Enter your **DevEUI**.
+Enter your **DevEUI**. This should be provided by your manufacturer for commercial devices. If your device is programmable, you may generate an EUI using the **Generate** button, and program it in your device.
 
-If your manufacturer provides an **AppKey**, enter it. Otherwise, use the generate button to create one, and program it in to your device.
+For LoRaWAN version 1.0.x devices, you will see an **AppKey** field. If your manufacturer provides an **AppKey**, enter it. Otherwise, use the **Generate** button to create one, and program it in to your device.
+
+For LoRaWAN version 1.1.x devices, you will also see a **NwkKey** field. If it is provided by your manufacturer, enter it. Otherwise, use the **Generate** button to create one, and program it in to your device.
+
+{{< figure src="device-repo-settings.png" alt="Device information" >}}
 
 Finally, give your device a unique **End device ID**, and click the **Register end device** button to create the end device.
 
@@ -55,27 +59,65 @@ See [ID and EUI constraints]({{< ref "reference/id-eui-constraints" >}}) for gui
 
 The device is now activated, and will appear as connected in {{% tts %}} once it sends an uplink.
 
-## Manually Create End Device
+## Manually Registering an End Device
 
 If your device is not in the device repository, you may manually register it.
 
 Make sure the **Manually** tab is selected.
 
-Choose the **Activation Mode**.
+{{< figure src="manual-tab.png" alt="Manual tab" >}}
 
-Select the device **LoRaWAN version**.
+Select the device **LoRaWAN version**. This should be provided with your device as the LoRaWAN version, LoRaWAN specification, or MAC version.
 
-If using Over-the-Air-Activation (OTAA) and an External Join Server, tick the **External Join Server** button.
+{{< warning >}}
+Choosing the incorrect LoRaWAN version can lead to complex errors. Activation may work, but the device will not be able to communicate consistently. If you are unsure about the LoRaWAN version you have selected, watch the [event log]({{< ref "getting-started/events" >}}) for errors!
+{{</ warning >}}
 
-The **Network Server**, **Application Server**, and **Join Server** addresses should correctly point to the address of {{% tts %}} deployment you are using.
+Choose a **Frequency plan** appropriate for your region. Your device and gateway must use the same frequency plan to communicate.
 
-Click the **Start** button to proceed to the Basic Settings page.
+Choose the **Regional Parameters version** provided by the manufacturer of your device. This should be specified in the data sheet as Regional Parameters or PHY version.
 
-{{< figure src="manual-settings.png" alt="Register manually" >}}
+{{< figure src="manual.png" alt="Manually create end device" >}}
+
+If you need to use a method of activation other than OTAA, create a multicast group, specify a Class B or Class C device, or change Rx Delay and Frequency plan settings, see the [Advanced settings](#advanced-settings) section below. Otherwise, proceed to [OTAA devices](#otaa-devices).
+
+### Advanced Settings
+
+To modify advanced settings, expand the **Show advanced activation, LoRaWAN class and cluster settings** dropdown.
+
+Here, you may choose your **Activation Mode**.
+
+{{< figure src="advanced.png" alt="Advanced settings" >}}
+
+If your device supports **Class B** or **Class C** features, you may enable them using the dropdown.
+
+{{< figure src="class.png" alt="Choose device class" >}}
+
+To modify **Rx2 data rate** or **Rx2 frequency**, uncheck **Use network's Rx and frequency defaults**. If using **[ABP](#abp-devices)**, this will also allow you to configure **Rx1 settings**.
+
+{{< figure src="default-frequencies.png" alt="Use default frequencies" >}}
+
+To use an external join server or an external network server, check **Use external LoRaWAN backend servers**.
+
+The **Network Server** and **Join Server** addresses should correctly point to the address of {{% tts %}} deployment you are using.
+
+If using an External Join Server, enter its address in the **Join Server** field.
+
+{{< figure src="external-servers.png" alt="Use external backend servers" >}}
+
+### OTAA Devices
+
+Over-the-Air-Activation (OTAA) is the secure, scalable way to activate LoRaWAN devices. All commercially available LoRaWAN devices support OTAA, and it is selected by default. If you are using a custom or DIY device, and cannot use OTAA, see the [Activation by Personalisation](#abp-devices) section.
 
 {{< note >}}
-This guide covers adding a device using [OTAA]({{< ref "reference/glossary#over-the-air-activation" >}}) (the most secure and preferred activation method) and [LoRaWAN version]({{< ref "reference/glossary#lorawan-version" >}}) MAC V1.0.2 (the most common LoRaWAN version, although newer versions are better and more secure). Names and keys may vary slightly for other versions.
+The example in this guide covers adding a device using [OTAA]({{< ref "reference/glossary#over-the-air-activation" >}}) (the most secure and preferred activation method) and [LoRaWAN version]({{< ref "reference/glossary#lorawan-version" >}}) MAC V1.0.2 (the most common LoRaWAN version, although newer versions are better and more secure). Names and keys may vary slightly for other versions, but the process is the same and any differences are noted.
 {{</ note >}}
+
+Enter your **DevEUI**. This should be provided by your manufacturer for commercial devices. If your device is programmable, you may generate an EUI using the **Generate** button, and program it in your device.
+
+Enter a **JoinEUI/AppEUI** if provided by your manufacturer. If your device is programmable, you may use the **Fill with zeros** button, and then program the same JoinEUI/AppEUI (`0000000000000000`) in the device.
+
+If your manufacturer provides an **AppKey**, enter it. Otherwise, use the **Generate** button to create one, and program it in to your device.
 
 Give your device a unique **End device ID**.
 
@@ -83,35 +125,39 @@ Give your device a unique **End device ID**.
 See [ID and EUI constraints]({{< ref "reference/id-eui-constraints" >}}) for guidelines about choosing a unique ID.
 {{</ note >}}
 
-Enter a **JoinEUI/AppEUI** if provided by your manufacturer. If your device is programmable, you may use all 0's, and then program the same JoinEUI/AppEUI in the device.
+{{< figure src="manual-network-settings-otaa.png" alt="Manually create OTAA end device" >}}
 
-Enter your **DevEUI**.
+Click **Register end device** to create the end device.
 
-**Name** and **Description** are optional fields to help you identify your device.
+### ABP Devices
 
-Click **Network Layer Settings** to proceed to the next page.
+If your device can not be activated using the more secure OTAA, you may manually activate it by programming security keys in.
 
-{{< figure src="basic-settings.png" alt="Basic settings" >}}
+In the **Advanced settings** dropdown, select **Activation by Personalization (ABP)**.
 
-Choose a **Frequency plan** appropriate for your region. Your device and gateway must use the same frequency plan to communicate.
+{{< figure src="manual-abp.png" alt="ABP" >}}
 
-Choose the **Regional Parameters version** provided by the manufacturer of your device. This should be specified in the data sheet as Regional Parameters or PHY version.
+When using ABP, it is important to make sure that the Rx1 settings in your device match those in {{% tts %}}. Uncheck **Use network's Rx and frequency defaults** to specify settings that match those in your device. {{% tts %}} recommends an Rx1 delay of `5` seconds.
 
-If your device supports **Class B** or **Class C** features, you may enable them using the checkboxes.
+{{< figure src="rx1-settings.png" alt="Rx1 settings" >}}
 
-There are also advanced settings to configure **Frame counter width** and **RX2 settings**, but these should not be necessary for most devices.
+Enter your **DevEUI**. This should be provided by your manufacturer for commercial devices. If your device is programmable, you may generate an EUI using the **Generate** button, and program it in your device.
 
-Click the **Join settings** button to proceed to the next page.
+Use the **Generate** button to create a **Device address**, and program it in your device.
 
-{{< figure src="network-settings.png" alt="Network settings" >}}
+For LoRaWAN versions 1.0.x, generate an **AppSKey** and **NwkSKey** and program them in your device.
 
-If your manufacturer provides an **AppKey**, enter it. Otherwise, use the generate button to create one, and program it in to your device.
+For LoRaWAN versions 1.1.x, generate an **AppSKey**, **FNwkSIntKey**, **SNwkSIntKey**, and **NwkSEncKey**, and program them in your device.
 
-There are also advanced settings to configure **Net ID**, **Application Server ID**, and **KEK Labels**, but these are not necessary for most devices.
+Finally, give your device a unique **End device ID**.
 
-Finally, click **Add end device** to register the end device.
+{{< note >}}
+See [ID and EUI constraints]({{< ref "reference/id-eui-constraints" >}}) for guidelines about choosing a unique ID.
+{{</ note >}}
 
-{{< figure src="join-settings.png" alt="Join settings" >}}
+{{< figure src="manual-network-settings-abp.png" alt="Manually create OTAA end device" >}}
+
+Click **Register end device** to create the end device.
 
 ## Adding Devices in Bulk
 
@@ -144,6 +190,8 @@ $ ttn-lw-cli end-devices create --help
 
 ### Over-The-Air-Activation (OTAA) Device
 
+**LoRaWAN 1.0.x:**
+
 To create an end device using over-the-air-activation (OTAA):
 
 ```bash
@@ -162,11 +210,36 @@ The end device should now be able to join the private network.
 
 {{< note >}} If you do not have a `JoinEUI` or `AppEUI`, it is okay to use `0000000000000000`. Be sure to use the same `JoinEUI` in your device as you enter in {{% tts %}}. {{</ note >}}
 
-{{< note >}} The `AppEUI` is returned as `join_eui` (V3 uses LoRaWAN 1.1 terminology). {{</ note >}}
+{{< note >}} The `AppEUI` is returned as `join_eui` ({{% tts %}} uses LoRaWAN 1.1 terminology). {{</ note >}}
 
-{{< note >}} You can also pass `--with-root-keys` to have root keys generated. {{</ note >}}
+{{< note >}} You can also pass `--with-root-keys` to have root keys generated. In this case, you do not need to specify `--root-keys.app-key.key`. {{</ note >}}
+
+**LoRaWAN 1.1.x:**
+
+To create an end device using over-the-air-activation (OTAA):
+
+```bash
+$ ttn-lw-cli end-devices create app1 dev1 \
+  --dev-eui 0004A30B001C0530 \
+  --app-eui 800000000000000C \
+  --frequency-plan-id EU_863_870 \
+  --root-keys.app-key.key 752BAEC23EAE7964AF27C325F4C23C9A \
+  --root-keys.nwk-key.key 01020304050607080102030405060708 \
+  --lorawan-version 1.1.0 \
+  --lorawan-phy-version 1.1.0-b
+```
+
+This will create a LoRaWAN 1.1.0 end device `dev1` in application `app1` with the `EU_863_870` frequency plan.
+
+The end device should now be able to join the private network.
+
+{{< note >}} If you do not have a `JoinEUI` or `AppEUI`, it is okay to use `0000000000000000`. Be sure to use the same `JoinEUI` in your device as you enter in {{% tts %}}. {{</ note >}}
+
+{{< note >}} You can also pass `--with-root-keys` to have root keys generated. In this case, you do not need to specify `--root-keys.app-key.key` or `root-keys.nwk-key.key`. {{</ note >}}
 
 ### Activation By Personalization (ABP) Device
+
+**LoRaWAN 1.0.x:**
 
 It is also possible to register an ABP activated device using the `--abp` flag as follows:
 
@@ -182,6 +255,26 @@ $ ttn-lw-cli end-devices create app1 dev2 \
 ```
 
 {{< note >}} The `NwkSKey` is returned as `f_nwk_s_int_key` ({{% tts %}} uses LoRaWAN 1.1 terminology). {{</ note >}}
+
+{{< note >}} You can also pass `--with-session` to have a session generated. {{</ note >}}
+
+**LoRaWAN 1.1.x:**
+
+To register a LoRaWAN 1.1.x end device using ABP:
+
+```bash
+$ ttn-lw-cli end-devices create app1 dev2 \
+  --frequency-plan-id EU_863_870 \
+  --lorawan-version 1.1.0 \
+  --lorawan-phy-version 1.1.0-b \
+  --abp \
+  --session.dev-addr 00E4304D \
+  --session.keys.app-s-key.key A0CAD5A30036DBE03096EB67CA975BAA \
+  --session.keys.nwk-s-key.key B7F3E161BC9D4388E6C788A0C547F255
+  --session.keys.f-nwk-s-int-key.key 01020304050607080102030405060708 \
+  --session.keys.s-nwk-s-int-key.key 01020304050607080102030405060708 \
+  --session.keys.nwk-s-enc-key.key 01020304050607080102030405060708
+```
 
 {{< note >}} You can also pass `--with-session` to have a session generated. {{</ note >}}
 
