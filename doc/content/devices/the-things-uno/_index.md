@@ -30,7 +30,7 @@ Select the **Install** button.
 
 When the installation finishes, close the **Library Manager** by selecting the **Close** button.
 
-{{< figure src="LibraryManager.png" alt="Library Manager" >}}
+{{< figure src="LibraryManager.png" class="plain" alt="Library Manager" >}}
 
 ## Connecting Things Uno to your Computer
 
