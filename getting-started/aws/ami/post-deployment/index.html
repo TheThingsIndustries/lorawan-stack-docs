@@ -155,6 +155,11 @@
     
   </li>
 
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ami/updating/" class="">Updating AWS AMI Deployment</a>
+    
+  </li>
+
 </ul>
 
 
@@ -302,28 +307,6 @@
 <h2 id="aws-iot">AWS IoT</h2>
 <p>The Things Enterprise Stack supports publishing of uplink messages directly to the <a href="https://aws.amazon.com/iot/">AWS IoT suite</a>. In order for this to work, the <strong>AWS IoT Telemetry</strong> option in the CloudFormation template must be set to <strong>true</strong> during the deployment phase.</p>
 <p>Please check the guide on <a href="/docs/integrations/cloud-integrations/aws-iot/">AWS IoT</a> guide for more information.</p>
-<h2 id="updating-the-cloudformation-stack">Updating the CloudFormation Stack</h2>
-<p>We recommend using <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html">Change Sets</a> to to update the CloudFormation Stack.</p>
-<p>On the AWS Console, open the <strong>CloudFormation</strong> service, navigate to the <strong>Change sets</strong> tab and select <strong>Create change set</strong>. There are two choices that can be made here:</p>
-<ul>
-<li>Use current template: Choose this option to update input parameters on an existing template.</li>
-<li>Replace current template: Choose this option to use a new template on the existing deployment. This option should be used to apply new versions of The Things Enterprise Stack that are delivered as new version of the CloudFormation template.</li>
-</ul>
-<p>Once the necessary options are updated, select the <strong>Create Change Set</strong> option. This will create a change set that describes the resources that will be updated by this change and if any of these resources need to be replaced.</p>
-<p>After confirming the changes, select <strong>Execute</strong>. Depending on the resources, this will take some time to complete and can be tracked using the <strong>Events</strong> tab on the AWS Console.</p>
-<h2 id="manual-upgrade-of-databases-amazon-rds-and-elasticache-using-snapshots">Manual Upgrade of Databases (Amazon RDS and ElastiCache) using snapshots</h2>
-<p>The update of certain fields of the CloudFormation stack necessitates the recreation of the database. AWS does not automatically migrate the data and hence, this must be done manually. A disclaimer is added to such fields in the CloudFormation template description.</p>
-<p>In order to migrate the database without the loss of data, first create a snapshot of your database before running a change set on these fields.</p>
-<ul>
-<li>For RDS, navigate to <strong>RDS</strong> &gt; <strong>Snapshots</strong> on the AWS Console and select <strong>Take Snapshot</strong>.</li>
-<li>For Redis (ElastiCache), navigate to <strong>ElastiCache</strong> on the AWS Console and select your Redis Replication Group and select <strong>Backup</strong> option.</li>
-</ul>
-<p>Now run a change set on CloudFormation.</p>
-<ul>
-<li>For RDS, enter the ARN (Amazon Resource Name) of the snapshot into the <strong>Amazon RDS Snapshot</strong> field and run the change set.</li>
-<li>For Redis (ElastiCache), enter the Name of the backup into the <strong>Amazon RDS Database Name</strong> and run the change set.</li>
-</ul>
-<p>The following section contains some basic troubleshooting information.</p>
         </div>
         
           <div class="is-clearfix">
@@ -366,12 +349,6 @@
       
       <li><a href='#aws-iot'>AWS IoT</a></li>
     
-      
-      <li><a href='#updating-the-cloudformation-stack'>Updating the CloudFormation Stack</a></li>
-    
-      
-      <li><a href='#manual-upgrade-of-databases-amazon-rds-and-elasticache-using-snapshots'>Manual Upgrade of Databases (Amazon RDS and ElastiCache) using snapshots</a></li>
-    
   </ul>
 
 
@@ -410,10 +387,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 10 Jun 2021.
+  Last changed by Michał Borkowski on 24 Aug 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/aea847e4a5b06db18fe91950625da9cc60eaf291">
-      Docs reorganization (#374)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/83736a9394ec098e471a8a3f7cb9265648c485ce">
+      doc: Fixes to AMI update docs (#539)
     </a>
 </p>
 

@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>AWS ECS | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/" />
+  <title>Updating AWS AMI Deployment | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/aws/ami/updating/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.294c77c74f918a8f5064a76731a816bd0b67f9a72689b5b3e1426b114bf7b43a.css" integrity="sha256-KUx3x0&#43;Rio9QZKdnMagWvQtn&#43;acmibWz4UJrEUv3tDo=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="AWS ECS">
+  <meta itemprop="name" content="Updating AWS AMI Deployment">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="AWS ECS">
+  <meta property="og:title" content="Updating AWS AMI Deployment">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/">
-  <meta name="twitter:title" content="AWS ECS" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/aws/ami/updating/">
+  <meta name="twitter:title" content="Updating AWS AMI Deployment" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -130,49 +130,44 @@
   <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ami/" class="">AWS Marketplace AMI</a>
     
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/" class="is-active">AWS ECS</a>
-    
     
 
 
 <ul class="menu-list">
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/architecture/" class="">Architecture</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ami/deployment-guide/" class="">Deployment Guide</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/prerequisites/" class="">Prerequisites</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ami/post-deployment/" class="">Post Deployment Configuration</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/deployment/" class="">Deployment</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ami/troubleshooting/" class="">Troubleshooting AWS AMI Deployment</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/updating/" class="">Updating</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ami/updating/" class="is-active">Updating AWS AMI Deployment</a>
     
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/database-operations/" class="">Database Operations</a>
     
-  </li>
 
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/monitoring/" class="">Monitoring</a>
+
+
     
   </li>
 
 </ul>
 
 
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/" class="">AWS ECS</a>
     
   </li>
 
@@ -213,174 +208,42 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">AWS ECS
+        <h1 class="title is-size-2">Updating AWS AMI Deployment
           
         </h1>
         
-        <h2 class="subtitle">
-          
-            
-            
-
-  
-
-
-
-
-
-  
-    
-  
-
-
-
-  
-
-<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Enterprise Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
-
-</a>
-
-
-          
-          
-          
-        </h2>
-        
         <div class="content">
-          <p>The Things Stack can be deployed to AWS as a set of highly available services on AWS ECS using AWS CloudFormation.</p>
-<p>This guide gives an overview of the architecture and shows how to deploy your own highly available The Things Stack cluster.</p>
-<h2 id="who-is-it-for">Who is it for?</h2>
-<p>The AWS ECS deployment option is for professional, large-scale and multi-tenant deployments.</p>
-<p>This deployment option is significantly more complicated than other deployment options. In order to deploy and operate The Things Stack in this configuration, you will need to be comfortable working with and operating the following concepts:</p>
+          <p>This section contains information to update The Things Stack deployment on AWS Marketplace.</p>
+<h2 id="updating-the-cloudformation-stack">Updating the CloudFormation Stack</h2>
+<p>We recommend using <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html">Change Sets</a> to to update the CloudFormation Stack.</p>
+<p>On the AWS Console, open the <strong>CloudFormation</strong> service, navigate to the <strong>Change sets</strong> tab and select <strong>Create change set</strong>. There are two choices that can be made here:</p>
 <ul>
-<li>AWS VPC</li>
-<li>AWS RDS</li>
-<li>AWS ElastiCache</li>
-<li>AWS EC2</li>
-<li>AWS ECS</li>
-<li>AWS CloudFormation</li>
-<li>Shell and command line usage</li>
-<li>AWS command line interface</li>
+<li>Use current template: Choose this option to update input parameters on an existing template.</li>
+<li>Replace current template: Choose this option to use a new template on the existing deployment. This option should be used to apply new versions of The Things Enterprise Stack that are delivered as new version of the CloudFormation template.</li>
 </ul>
+<p>Once the necessary options are updated, select the <strong>Create Change Set</strong> option. This will create a change set that describes the resources that will be updated by this change and if any of these resources need to be replaced.</p>
+<p>After confirming the changes, select <strong>Execute</strong>. Depending on the resources, this will take some time to complete and can be tracked using the <strong>Events</strong> tab on the AWS Console.</p>
+<h2 id="manual-upgrade-of-databases-amazon-rds-and-elasticache-using-snapshots">Manual Upgrade of Databases (Amazon RDS and ElastiCache) using snapshots</h2>
+<p>The update of certain fields of the CloudFormation stack necessitates the recreation of the database. AWS does not automatically migrate the data and hence, this must be done manually. This section applies only when CloudFormation plans to recreate the database.</p>
+<p>In order to migrate the database without the loss of data, first create a snapshot of your database before running a change set on these fields.</p>
+<ul>
+<li>For RDS, navigate to <strong>RDS</strong> &gt; <strong>Snapshots</strong> on the AWS Console and select <strong>Take Snapshot</strong>.</li>
+<li>For Redis (ElastiCache), navigate to <strong>ElastiCache</strong> on the AWS Console and select your Redis Replication Group and select <strong>Backup</strong> option.</li>
+</ul>
+<p>Now run a change set on CloudFormation.</p>
+<ul>
+<li>For RDS, enter the ARN (Amazon Resource Name) of the snapshot into the <strong>Amazon RDS Snapshot</strong> field and run the change set.</li>
+<li>For Redis (ElastiCache), enter the Name of the backup into the <strong>Amazon RDS Database Name</strong> and run the change set.</li>
+</ul>
+<h2 id="database-migrations">Database Migrations</h2>
+<p>When updating minor version of the stack, you might be required to perform database migrations. Please refer to the changelog for information which migrations are needed when updating to given version. Remember that you need to perform migrations mentioned not only in the latest version, but also those mentioned in versions between your current and target version. Database migrations are run by logging into the EC2 machine that the stack runs on, and executing relevant commands. Required command you need to run is also mentioned in the changelog, for example:</p>
+<blockquote>
+<p>This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>) because of the added columns.</p>
+</blockquote>
         </div>
-        
-          <div class="columns is-multiline">
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/architecture/">Architecture</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            This page describes the architecture of a The Things Stack deployment on AWS ECS.
-
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/architecture/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            This page describes what you need for deploying The Things Stack on AWS ECS.
-
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/prerequisites/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/deployment/">Deployment</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            This page describes the steps for deploying The Things Stack on AWS ECS.
-
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/deployment/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/updating/">Updating</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            This page describes the steps for updating The Things Stack on AWS ECS.
-
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/updating/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/database-operations/">Database Operations</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            This page describes the steps for performing database operations on an AWS ECS deployment.
-
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/database-operations/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/monitoring/">Monitoring</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            This page describes how you can monitor a The Things Stack deployment on AWS ECS.
-
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/monitoring/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
         
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/getting-started/aws/ami/updating/">← Updating AWS AMI Deployment</a>
-<a class="button is-pulled-right" href="/docs/getting-started/aws/ecs/architecture/">Architecture →</a>
+<a class="button is-pulled-left" href="/docs/getting-started/aws/ami/troubleshooting/">← Troubleshooting AWS AMI Deployment</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -401,7 +264,13 @@
   <ul class="menu-list">
     
       
-      <li><a href='#who-is-it-for'>Who is it for?</a></li>
+      <li><a href='#updating-the-cloudformation-stack'>Updating the CloudFormation Stack</a></li>
+    
+      
+      <li><a href='#manual-upgrade-of-databases-amazon-rds-and-elasticache-using-snapshots'>Manual Upgrade of Databases (Amazon RDS and ElastiCache) using snapshots</a></li>
+    
+      
+      <li><a href='#database-migrations'>Database Migrations</a></li>
     
   </ul>
 
@@ -441,14 +310,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Hylke Visser on 27 Oct 2020.
+  Last changed by Michał Borkowski on 24 Aug 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/97f75f4fe2e3c4e75c35655dd74896e3cdd6e395">
-      doc: Fix AWS description and subsection weights
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/83736a9394ec098e471a8a3f7cb9265648c485ce">
+      doc: Fixes to AMI update docs (#539)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/aws/ecs/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/aws/ami/updating/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
