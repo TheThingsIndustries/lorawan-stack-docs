@@ -69,6 +69,14 @@ Link to relevant section when available.
 
 Device join failure could be due to a number of reasons. Ensure that the device settings are correct. This includes the JoinEUI, DevEUI and/or AppKey/NwkKey and the frequency plan settings. Check the logs as described above to locate the potential cause of the issue.
 
+### I have tried deploying the stack a few times. Now I suddenly cannot get the TLS certficate
+
+In our stack we use Let's Encrypt certificates, which are requested upon stack deployment. There are quotas in place, once you hit them you need to wait before requesting a certificate again. If you're redeploying the stack multiple times for testing purposes, use a different domain, so that you don't hit the limit in your production environment. For details, please refer to the [Let's Encrypt website](https://letsencrypt.org/docs/rate-limits/).
+
+## My update has failed, and I don't know the details
+
+You can find logs in the `/tti/bootstrap/*.log` files.
+
 ## Professional Support
 
 Additional paid support for this deployment is offered by The Things Industries. You can [contact The Things Industries support](mailto:support@thethingsindustries.com) or visit [the support page](https://www.thethingsindustries.com/stack/aws/support).
