@@ -140,39 +140,64 @@
 <div class="whats-new">
   <div class="whats-new-content">
     <div class="whats-new-header">
-      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.14.1/>What's new in V3.14.1</a></h2>
+      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.14.2/>What's new in V3.14.2</a></h2>
       <a href="https://www.thethingsindustries.com/docs/whats-new/"><p class="see-more">See all release notes →</p></a>
     </div>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.14.1/">
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.14.2/">
       <div class="whats-new-body">
         <div class="whats-new-items-shadow whats-new-items-fade">
           <div class="whats-new-items">
             <h3 id="added">Added</h3>
 <ul>
-<li>New config option <code>--as.packages.timeout</code> to control the message processing timeout of application packages.</li>
-<li>Option to retain current Gateway ID while claiming.</li>
-<li>Option to view and copy error details in full view errors in the Console.</li>
-<li>Metrics for CUPS requests.</li>
-<li>Language chooser in the footer in the Console.</li>
-<li>Japanese language support in the Console.</li>
-<li>Metrics for gateway claiming.</li>
-<li>Option to disable primary email and name update via stack.</li>
+<li>CLI warnings about insecure connections.</li>
+<li>CLI warnings about using the <code>--all</code> flag.</li>
+<li>Packet Broker network listed switch in the Console.</li>
+<li>Improved errors for invalid command-line flags.</li>
+<li>Validation of entity attributes in the Console, with regards to maximum length for keys and values.</li>
+<li>Support limiting concurrent data plane application gRPC and MQTT connections by application and tenant ID. See the <code>resource-limiting</code> configuration section for details.</li>
+<li>CLI command to decode raw LoRaWAN frames (<code>ttn-lw-cli lorawan decode</code>), useful for debugging purposes.</li>
+<li>Options to restore or purge deleted applications, gateways and organizations in the Console.</li>
+<li>Handling of default mac settings values when manually registering end devices in the Console.</li>
+<li>Add a new <code>class_b_c_downlink_interval</code> field that can be configured to set the minimum interval between a network initiated downlink (Class B &amp; Class C) and an arbitrary downlink per device.</li>
+<li>Retrieve count of upstream messages from the Storage Integration by end device.
+<ul>
+<li>See the new <code>GetStoredApplicationUpCount</code> RPC.</li>
+<li>See the new <code>ttn-lw-cli applications storage count</code> and <code>ttn-lw-cli end-devices storage count</code> CLI commands.</li>
+</ul>
+</li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
-<li>Cache Root CA for client TLS configuration.</li>
-<li>Identity Server no longer allows removing the <code>_ALL</code> right from entity collaborators if that leaves the entity without any collaborator that has the <code>_ALL</code> right.</li>
-<li>The Network Server application uplink queue may now be skipped if the Application Server peer is available at enqueue time.</li>
-<li>The interval for updating gateways in Packet Broker is now 10 minutes (was 5 minutes) and the timeout is 5 seconds (was 2 seconds).</li>
+<li>The Identity Server now returns a validation error when trying to update the EUIs of an end device.</li>
+<li>Network Server no longer accepts RX metadata from Packet Broker if the originating forwarder network equals the current Network Server (by NetID and cluster ID, based on<code>ns.net-id</code> and <code>ns.cluster-id</code> configuration). This avoids duplicate RX metadata as well as redundant downlink scheduling attempts through Packet Broker after the cluster&rsquo;s Gateway Server already failed to schedule.</li>
+<li>Usability of the end device import function in the Console.
+<ul>
+<li>Show a per-device report when errors occur.</li>
+<li>More structural changes to the process to improve UX.</li>
+</ul>
+</li>
 </ul>
 <h3 id="removed">Removed</h3>
 <ul>
-<li>Validation of the <code>location</code> field in <code>GatewayAntenna</code>.</li>
+<li>Packet Broker mutual TLS authentication; only OAuth 2.0 is supported now.</li>
+<li><code>request_details</code> from errors in the Console.</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>Improved errors when ordering search requests by non-existent fields.</li>
-<li>LNS authentication key handling for gateways in the Console.</li>
+<li>Generated CLI configuration for The Things Stack Community Edition.</li>
+<li>End device access with limited rights in the Console.</li>
+<li>Parsing of ID6 encoded EUIs from Basic Station gateways.</li>
+<li>Warnings about unknown fields when getting or searching for gateways.</li>
+<li>Internal Server Errors from <code>pkg/identityserver/store</code>.</li>
+<li>Console rendering blank pages in outdated browsers due to missing or incomplete internationalization API.</li>
+<li>Error in edit user form (Console) when submitting without making any changes.</li>
+<li><code>description</code> field not being fetched in edit user form (admin only) in the Console.</li>
+<li>Ignore invalid configuration when printing configuration with <code>ttn-lw-cli config</code> or <code>ttn-lw-stack config</code>.</li>
+<li>Emails about API key changes.</li>
+<li>Avoid rendering blank pages in the Console for certain errors.</li>
+<li>Blank page crashes in the Console for certain browsers that do not fully support <code>Intl</code> API.</li>
+<li>End device session keys handling in the Console.</li>
+<li>Byte input width in Safari in the Console.</li>
 </ul>
 
           </div>
@@ -190,7 +215,7 @@
 <a href="https://www.thethingsindustries.com/docs/whats-new/">
   <div class="whats-new-800">
     <div class="whats-new-header-800">
-      <p>See what's new in V3.14.1</p>
+      <p>See what's new in V3.14.2</p>
       <p>-></p>
     </div>
   </div>

@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>3.12.3 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/whats-new/3.12.3/" />
+  <title>3.14.2 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/whats-new/3.14.2/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.294c77c74f918a8f5064a76731a816bd0b67f9a72689b5b3e1426b114bf7b43a.css" integrity="sha256-KUx3x0&#43;Rio9QZKdnMagWvQtn&#43;acmibWz4UJrEUv3tDo=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="The Things Stack for LoRaWAN">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="3.12.3">
+  <meta itemprop="name" content="3.14.2">
   <meta itemprop="description" content="The Things Stack for LoRaWAN">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="3.12.3">
+  <meta property="og:title" content="3.14.2">
   <meta property="og:description" content="The Things Stack for LoRaWAN">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/whats-new/3.12.3/">
-  <meta name="twitter:title" content="3.12.3" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/whats-new/3.14.2/">
+  <meta name="twitter:title" content="3.14.2" />
   <meta name="twitter:description" content="The Things Stack for LoRaWAN" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -92,7 +92,7 @@
 <ul class="menu-list">
 <a href="https://www.thethingsindustries.com/docs/whats-new/" class="">Overview</a>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.14.2/" class="">3.14.2</a>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.14.2/" class="is-active">3.14.2</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.14.1/" class="">3.14.1</a>
@@ -113,7 +113,7 @@
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.13.0/" class="">3.13.0</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.12.3/" class="is-active">3.12.3</a>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.12.3/" class="">3.12.3</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.12.2/" class="">3.12.2</a>
@@ -179,25 +179,61 @@
       </div>
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">3.12.3
+        <h1 class="title is-size-2">3.14.2
         </h1>
 
         <div class="content">
           <h3 id="added">Added</h3>
 <ul>
-<li>Publish Snapcraft snaps <code>tti-lw-stack</code> and <code>tti-lw-cli</code></li>
+<li>CLI warnings about insecure connections.</li>
+<li>CLI warnings about using the <code>--all</code> flag.</li>
+<li>Packet Broker network listed switch in the Console.</li>
+<li>Improved errors for invalid command-line flags.</li>
+<li>Validation of entity attributes in the Console, with regards to maximum length for keys and values.</li>
+<li>Support limiting concurrent data plane application gRPC and MQTT connections by application and tenant ID. See the <code>resource-limiting</code> configuration section for details.</li>
+<li>CLI command to decode raw LoRaWAN frames (<code>ttn-lw-cli lorawan decode</code>), useful for debugging purposes.</li>
+<li>Options to restore or purge deleted applications, gateways and organizations in the Console.</li>
+<li>Handling of default mac settings values when manually registering end devices in the Console.</li>
+<li>Add a new <code>class_b_c_downlink_interval</code> field that can be configured to set the minimum interval between a network initiated downlink (Class B &amp; Class C) and an arbitrary downlink per device.</li>
+<li>Retrieve count of upstream messages from the Storage Integration by end device.
+<ul>
+<li>See the new <code>GetStoredApplicationUpCount</code> RPC.</li>
+<li>See the new <code>ttn-lw-cli applications storage count</code> and <code>ttn-lw-cli end-devices storage count</code> CLI commands.</li>
+</ul>
+</li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
-<li>Optimized storage of recent application uplinks in Application Server.</li>
+<li>The Identity Server now returns a validation error when trying to update the EUIs of an end device.</li>
+<li>Network Server no longer accepts RX metadata from Packet Broker if the originating forwarder network equals the current Network Server (by NetID and cluster ID, based on<code>ns.net-id</code> and <code>ns.cluster-id</code> configuration). This avoids duplicate RX metadata as well as redundant downlink scheduling attempts through Packet Broker after the cluster&rsquo;s Gateway Server already failed to schedule.</li>
+<li>Usability of the end device import function in the Console.
+<ul>
+<li>Show a per-device report when errors occur.</li>
+<li>More structural changes to the process to improve UX.</li>
+</ul>
+</li>
+</ul>
+<h3 id="removed">Removed</h3>
+<ul>
+<li>Packet Broker mutual TLS authentication; only OAuth 2.0 is supported now.</li>
+<li><code>request_details</code> from errors in the Console.</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>Validation of OAuth token exchange requests from the CLI.</li>
-<li>Validation of join-request types when using the Crypto Server backend.</li>
-<li>Application Server session recovery functionality for imported devices.</li>
-<li>Fetching AppSKey when the session is rebuilt but the identifier did not change.</li>
-<li>Brew artifacts are now in a publicly accessible location.</li>
+<li>Generated CLI configuration for The Things Stack Community Edition.</li>
+<li>End device access with limited rights in the Console.</li>
+<li>Parsing of ID6 encoded EUIs from Basic Station gateways.</li>
+<li>Warnings about unknown fields when getting or searching for gateways.</li>
+<li>Internal Server Errors from <code>pkg/identityserver/store</code>.</li>
+<li>Console rendering blank pages in outdated browsers due to missing or incomplete internationalization API.</li>
+<li>Error in edit user form (Console) when submitting without making any changes.</li>
+<li><code>description</code> field not being fetched in edit user form (admin only) in the Console.</li>
+<li>Ignore invalid configuration when printing configuration with <code>ttn-lw-cli config</code> or <code>ttn-lw-stack config</code>.</li>
+<li>Emails about API key changes.</li>
+<li>Avoid rendering blank pages in the Console for certain errors.</li>
+<li>Blank page crashes in the Console for certain browsers that do not fully support <code>Intl</code> API.</li>
+<li>End device session keys handling in the Console.</li>
+<li>Byte input width in Safari in the Console.</li>
 </ul>
 
         </div>
@@ -251,14 +287,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Johan Stokking on 06 May 2021.
+  Last changed by Nejra Selimović on 30 Aug 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/62c7fec2104d24ada0d8ec2202a51f74d42e7631">
-      doc: Update 3.12.3 release notes
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/6f90ffe82b16a108ff82d4fc25f095d9aecea53c">
+      doc: Update v3.14.2 release docs (#547)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/whats-new/3.12.3.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/whats-new/3.14.2.md" class="button">Edit on Github</a>
 </div>
 
       </div>
