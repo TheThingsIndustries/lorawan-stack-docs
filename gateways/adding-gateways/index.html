@@ -332,6 +332,43 @@ $ ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span
   Keep in mind that if you change the physical location of your gateway, the location update in The Things Stack will take place only after you restart the gateway.
 </div>
 
+<h2 id="set-gateway-antenna-gain">Set Gateway Antenna Gain</h2>
+<div class="notification is-primary is-light has-text-dark">
+  <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
+  <p>The instructions below use the command-line interface (CLI).</p>
+  <div class="buttons">
+    <a class="button is-dark is-outlined" href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/">Learn how to install the CLI</a>
+  </div>
+</div>
+<p>A preffered way for adjusting a downlink path gain is setting the gateway antenna gain, instead of changing the gateway Tx power. The following command will set the gateway antenna gain to 3 dB:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span> --antenna.gain <span class="m">3</span>
+</code></pre></div><p>The CLI output will be similar to:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;gtw1&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-05-27T14:43:13.606Z&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;version_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;auto_update&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+  <span class="nt">&#34;antennas&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&#34;gain&#34;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+      <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;latitude&#34;</span><span class="p">:</span> <span class="mf">43.84</span><span class="p">,</span>
+        <span class="nt">&#34;longitude&#34;</span><span class="p">:</span> <span class="mf">18.32</span><span class="p">,</span>
+        <span class="nt">&#34;altitude&#34;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+        <span class="nt">&#34;source&#34;</span><span class="p">:</span> <span class="s2">&#34;SOURCE_REGISTRY&#34;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&#34;location_public&#34;</span><span class="p">:</span> <span class="kc">true</span>
+<span class="p">}</span>
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Keep in mind that the <code>antennas.location</code> object will be empty if you have not previously set the gateway antenna location.
+</div>
+
 <p>Once a gateway has been added, get started with <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> and <a href="https://www.thethingsindustries.com/docs/integrations/">Integrations</a> to process and act on data.</p>
         </div>
         
@@ -368,6 +405,9 @@ $ ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span
     
       
       <li><a href='#set-gateway-location'>Set Gateway Location</a></li>
+    
+      
+      <li><a href='#set-gateway-antenna-gain'>Set Gateway Antenna Gain</a></li>
     
   </ul>
 
@@ -407,10 +447,10 @@ $ ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 25 Jun 2021.
+  Last changed by Nejra Selimović on 30 Aug 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5272946e70a82186d3bbec8a94ad275138613dfa">
-      doc: Add videos (#408)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/874de189e0ba6ee7c6f77df6704a4e5e7f2b9ba7">
+      doc: Document setting gateway antenna gain (#518)
     </a>
 </p>
 
