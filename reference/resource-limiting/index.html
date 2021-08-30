@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Tenant Management | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/tenant-management/" />
+  <title>Resource Limiting | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/resource-limiting/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.294c77c74f918a8f5064a76731a816bd0b67f9a72689b5b3e1426b114bf7b43a.css" integrity="sha256-KUx3x0&#43;Rio9QZKdnMagWvQtn&#43;acmibWz4UJrEUv3tDo=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Tenant Management">
+  <meta itemprop="name" content="Resource Limiting">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Tenant Management">
+  <meta property="og:title" content="Resource Limiting">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/tenant-management/">
-  <meta name="twitter:title" content="Tenant Management" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/resource-limiting/">
+  <meta name="twitter:title" content="Resource Limiting" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -157,7 +157,12 @@
     <a href="https://www.thethingsindustries.com/docs/reference/rate-limiting/" class="">Rate Limiting</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/resource-limiting/" class="">Resource Limiting</a>
+    <a href="https://www.thethingsindustries.com/docs/reference/resource-limiting/" class="is-active">Resource Limiting</a>
+    
+
+
+
+    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/reference/root-certificates/" class="">Root Certificates</a>
@@ -166,12 +171,7 @@
     <a href="https://www.thethingsindustries.com/docs/reference/telemetry/" class="">Telemetry</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/tenant-management/" class="is-active">Tenant Management</a>
-    
-
-
-
-    
+    <a href="https://www.thethingsindustries.com/docs/reference/tenant-management/" class="">Tenant Management</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/reference/branding/" class="">Web UI Branding</a>
@@ -193,7 +193,7 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Tenant Management
+        <h1 class="title is-size-2">Resource Limiting
           
         </h1>
         
@@ -210,82 +210,129 @@
     
   
 
+  
+    
+  
+
 
 
   
 
-<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Enterprise Only">
+  
+
+<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Enterprise and AWS Launcher Only">
 
   <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_aws.svg"></img>
 
 </a>
 
 
           
           
+            <span class="tag is-light">New in 3.14.2</span>
+
+          
           
         </h2>
         
         <div class="content">
-          <p>This guide contains detailed information on how to perform common tenant management operations for The Things Stack Enterprise.</p>
-<div class="notification is-primary is-light has-text-dark">
-  <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
-  <p>The instructions below use the command-line interface (CLI).</p>
-  
-  
-  <p>The following commands are supported by <code>tti-lw-cli</code> CLI version only.</p>
-  
-  <div class="buttons">
-    <a class="button is-dark is-outlined" href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/">Learn how to install the CLI</a>
-  </div>
+          <p>The Things Stack supports setting maximum limits for active resources. Access to each resource is limited by a unique identifier key, and it is possible to define resource limiting classes for fine-grained control.</p>
+<h2 id="example-configuration">Example configuration</h2>
+<p>The resource limiting configuration is split into multiple profiles. For each profile, we provide a name and the maximum number of concurrent resources allowed rate. The profile is associated with a number of resource limiting classes. Refer to the <a href="#limited-entities">Limited Entities</a> section below for a list of all available resource limiting classes and what they mean.</p>
+<p>Enable resource limiting by adding the following configuration to your <code>ttn-lw-stack.yml</code>.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The values shown below are only meant as an example. Make sure to adjust them accordingly, depending on the actual traffic of your deployment.
 </div>
 
-<h2 id="authentication">Authentication</h2>
-<p>Instead of using API keys and OAuth access tokens as for other The Things Stack services, the tenant services require using <strong>tenant admin keys</strong> for authentication.</p>
-<blockquote>
-<p>Tenant admin keys are configured in the Identity Server as described <a href="https://www.thethingsindustries.com/docs/reference/configuration/identity-server/#tenant-administration-options">here</a>.</p>
-</blockquote>
-<p>This means all tenant management CLI commands will need to have the <code>--tenant-admin-key</code> flag appended, followed by a tenant admin key that you configured in the Identity Server. See the section below for examples.</p>
-<h2 id="basic-operations">Basic Operations</h2>
-<h3 id="create-a-tenant">Create a Tenant</h3>
-<p>To create a new tenant with the tenant ID <code>tenant1</code>:</p>
-<pre><code>$ TENANT_ADMIN_KEY=14596c0bdb9b11f6a97273e7c09167531571efa5898274e48660ee8d08f62b67
-$ tti-lw-cli tenant create tenant1 --tenant-admin-key $TENANT_ADMIN_KEY
-</code></pre><h3 id="get-a-tenant">Get a Tenant</h3>
-<p>To get a tenant <code>tenant1</code>, i.e. to see details like when it was created or updated, and which its capabilities are:</p>
-<pre><code>$ tti-lw-cli tenant get tenant1 --tenant-admin-key $TENANT_ADMIN_KEY
-</code></pre><h3 id="list-tenants">List Tenants</h3>
-<p>To get descriptions of all tenants:</p>
-<pre><code>$ tti-lw-cli tenant list --tenant-admin-key $TENANT_ADMIN_KEY
-</code></pre><h3 id="delete-a-tenant">Delete a Tenant</h3>
-<p>To delete a tenant <code>tenant1</code>:</p>
-<pre><code>$ tti-lw-cli tenant delete tenant1 --tenant-admin-key $TENANT_ADMIN_KEY
-</code></pre><h3 id="get-tenant-identifiers-for-device-euis">Get Tenant Identifiers for Device EUIs</h3>
-<p>To get a tenant ID based on your device&rsquo;s DevEUI and JoinEUI:</p>
-<pre><code>$ tti-lw-cli tenant get-identifiers-for-end-device-euis --dev-eui 0004A30B001C0530 --join-eui 800000000000000C --tenant-admin-key $TENANT_ADMIN_KEY
-</code></pre><h3 id="get-tenant-identifiers-for-a-gateway-eui">Get Tenant Identifiers for a Gateway EUI</h3>
-<p>To get a tenant ID based on your gateways&rsquo;s EUI:</p>
-<pre><code>$ tti-lw-cli tenant get-identifiers-for-gateway-eui --gateway-eui 00800000A00009EF --tenant-admin-key $TENANT_ADMIN_KEY
-</code></pre><h3 id="search-for-tenants">Search for Tenants</h3>
-<p>You can search tenants based on multiple criteria such as name, maximum number of entities, state, configuration, etc. These criteria are defined using flags. To see all available flags, use the following command:</p>
-<pre><code>$ tti-lw-cli tenant search --help
-</code></pre><p>For example, to search for recently deleted tenants:</p>
-<pre><code>$ tti-lw-cli tenant search --deleted --tenant-admin-key $TENANT_ADMIN_KEY
-</code></pre><h3 id="update-a-tenant">Update a Tenant</h3>
-<p>You can update a tenant in multiple ways, for example change its name, set a maximum number of entities, change configuration and billing settings, etc. Use the following command to list all available flags:</p>
-<pre><code>$ tti-lw-cli tenant update --help
-</code></pre><p>For example, to update a maximum number of end devices that can be registered in a tenant:</p>
-<pre><code>$ tti-lw-cli tenant update --tenant-id tenant1 --max-end-devices 3 --tenant-admin-key $TENANT_ADMIN_KEY
-</code></pre><h2 id="setting-a-devaddr-prefix-for-a-tenant">Setting a DevAddr Prefix for a Tenant</h2>
-<p>In a multi-tenant deployment, different tenants share the same NetID, but they use different DevAddr blocks. DevAddr blocks need to be configured for every tenant in order for Packet Broker to be able to distinguish traffic that belongs to each of those tenants.</p>
-<p>Setting a DevAddr prefix for a tenant can be done using the <code>update</code> operation mentioned in the section above. To set a DevAddr prefix for a tenant <code>tenant1</code>:</p>
-<pre><code>$ tti-lw-cli tenant update --tenant-id tenant1 --configuration.default-cluster.ns.dev-addr-prefixes 27123400/24
-</code></pre>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">resource-limiting</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">profiles</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Limit<span class="w"> </span>application<span class="w"> </span>data<span class="w"> </span>plane<span class="w"> </span>connections<span class="w"> </span>(MQTT<span class="w"> </span>and<span class="w"> </span>gRPC)<span class="w">
+</span><span class="w">      </span><span class="k">max-concurrent</span><span class="p">:</span><span class="w"> </span><span class="m">50</span><span class="w">
+</span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- as<span class="p">:</span>conn<span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Override<span class="w"> </span>limit<span class="w"> </span>for<span class="w"> </span>application<span class="w"> </span>`test-app<span class="m">-1</span>`<span class="w"> </span>of<span class="w"> </span>tenant<span class="w"> </span>`test-tenant<span class="m">-1</span>`<span class="w">
+</span><span class="w">      </span><span class="k">max-concurrent</span><span class="p">:</span><span class="w"> </span><span class="m">100</span><span class="w">
+</span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- as<span class="p">:</span>conn<span class="p">:</span>app<span class="p">:</span>test-app<span class="m">-1</span>@test-tenant<span class="m">-1</span><span class="w">
+</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Override<span class="w"> </span>limit<span class="w"> </span>for<span class="w"> </span>all<span class="w"> </span>applications<span class="w"> </span>of<span class="w"> </span>tenants<span class="w"> </span>`test-tenant<span class="m">-2</span>`<span class="w"> </span>and<span class="w"> </span>`test-tenant<span class="m">-3</span>`<span class="w">
+</span><span class="w">      </span><span class="k">max-concurrent</span><span class="p">:</span><span class="w"> </span><span class="m">200</span><span class="w">
+</span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
+</span><span class="w">        </span>- as<span class="p">:</span>conn<span class="p">:</span>tenant<span class="p">:</span>test-tenant<span class="m">-2</span><span class="w">
+</span><span class="w">        </span>- as<span class="p">:</span>conn<span class="p">:</span>tenant<span class="p">:</span>test-tenant<span class="m">-3</span><span class="w">
+</span></code></pre></div><h2 id="limited-entities">Limited Entities</h2>
+
+<div class="has-vertical-space">
+  <a href="#application-server-data-plane-connections">
+    <h3 id="application-server-data-plane-connections">Application Server Data Plane Connections</h3>
+  </a>
+  <table class="fixed">
+    <tbody>
+      <tr>
+        <td><b>Description</b></td><td>Limit number of concurrent Application Server data plane connections by application and frontend.</td>
+      </tr>
+      <tr>
+        <td><b>Classes</b></td><td><code>as:conn:app:{{ AppUID }}</code> <code>as:conn:tenant:{{ TenantID }}</code> <code>as:conn:frontend:{{ Frontend }}</code> <code>as:conn</code></td>
+      </tr>
+      <tr>
+        <td><b>Key</b></td><td><code>as:conn:frontend:{{ Frontend }}:app:{{ AppUID }}</code></td>
+      </tr>
+      <tr>
+        <td><b>Example</b></td><td><code>as:conn:frontend:mqtt:app:app-1@tenant-1</code></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  For resources where multiple classes are defined, the first matching profile will be used. For example, if profile <code>A</code> is associated with class <code>as:conn</code> and profile <code>B</code> is associated with <code>as:conn:app:my-application@my-tenant</code>, then connections for <code>my-application@my-tenant</code> will use the limits from profile <code>B</code>.
+</div>
+
+<h2 id="resource-limiting-actions">Resource Limiting Actions</h2>
+<p>The following table describes how The Things Stack reacts when the maximum resource limits are exceeded.</p>
+<table>
+<thead>
+<tr>
+<th>Resource</th>
+<th>Resource Limit Action</th>
+<th>Expected Client Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gRPC Application Connections</td>
+<td>Calls to <code>Subscribe</code> RPC will fail with an error of type <code>ResourceExhausted</code>.</td>
+<td>Terminate existing connections and retry.</td>
+</tr>
+<tr>
+<td>MQTT Application Connections</td>
+<td>A <code>ServerUnavailable</code> response is returned for new connections.</td>
+<td>Terminate existing connections and retry.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="external-configuration">External configuration</h2>
+<p>It is possible to load extra resource limiting profiles from an external file. Create a file named <code>/opt/config/resource-limiting.yml</code> (replace <code>/opt/config</code> with any path you like) with the following contents:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># If a profile is configured in `ttn-lw-stack.yml` for `as:conn`, then</span><span class="w">
+</span><span class="w"></span><span class="c"># it will be overriden</span><span class="w">
+</span><span class="w"></span><span class="k">profiles</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Example<span class="w"> </span>profile<span class="w">
+</span><span class="w">    </span><span class="k">max-concurrent</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span><span class="w">    </span><span class="k">associations</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>as<span class="p">:</span>conn<span class="p">]</span><span class="w">
+</span></code></pre></div><p>Then add the following config to <code>ttn-lw-stack.yml</code> (replace <code>/opt/config</code> with your path):</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">resource-limiting</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="c"># This will read profiles from /opt/config/resource-limiting.yml</span><span class="w">
+</span><span class="w">  </span><span class="k">config-source</span><span class="p">:</span><span class="w"> </span>directory<span class="w">
+</span><span class="w">  </span><span class="k">directory</span><span class="p">:</span><span class="w"> </span>/opt/config<span class="w">
+</span></code></pre></div>
         </div>
         
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/reference/telemetry/">← Telemetry</a>
-<a class="button is-pulled-right" href="/docs/reference/branding/">Web UI Branding →</a>
+<a class="button is-pulled-left" href="/docs/reference/rate-limiting/">← Rate Limiting</a>
+<a class="button is-pulled-right" href="/docs/reference/root-certificates/">Root Certificates →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -306,13 +353,16 @@ $ tti-lw-cli tenant create tenant1 --tenant-admin-key $TENANT_ADMIN_KEY
   <ul class="menu-list">
     
       
-      <li><a href='#authentication'>Authentication</a></li>
+      <li><a href='#example-configuration'>Example configuration</a></li>
     
       
-      <li><a href='#basic-operations'>Basic Operations</a></li>
+      <li><a href='#limited-entities'>Limited Entities</a></li>
     
       
-      <li><a href='#setting-a-devaddr-prefix-for-a-tenant'>Setting a DevAddr Prefix for a Tenant</a></li>
+      <li><a href='#resource-limiting-actions'>Resource Limiting Actions</a></li>
+    
+      
+      <li><a href='#external-configuration'>External configuration</a></li>
     
   </ul>
 
@@ -352,14 +402,14 @@ $ tti-lw-cli tenant create tenant1 --tenant-admin-key $TENANT_ADMIN_KEY
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 30 Aug 2021.
+  Last changed by Aggelos Kolaitis on 30 Aug 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/e18c24340c7eeab0e4bf52146262a7121264d33f">
-      doc: Document tenant management (#536)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/8e6c801e851584cd632bf5309d3097fa6e7af61d">
+      doc: Document resource limits and add example configs (#529)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/reference/tenant-management/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/reference/resource-limiting/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
