@@ -52,7 +52,7 @@ The following are necessary to complete this guide:
 
 ### Step 2: Configure the Deployment
 
-The **Continue to Configuration** button will redirect you to the AWS CloudFormation page where the CloudFormation template is pre-loaded. 
+The **Continue to Configuration** button will redirect you to the AWS CloudFormation page where the CloudFormation template is pre-loaded.
 This template allows the user to customize the deployment. The following is a list of the supported parameters that are available to the user.
 
 #### Basic Configuration
@@ -103,6 +103,7 @@ This template allows the user to customize the deployment. The following is a li
 #### Resource Settings
 
 {{< note >}} The fields in this section are for advanced users. A change to some of these parameters might incur additional costs. {{</ note >}}
+{{< note >}} In order to provide failover, we recommend enabling Multi-AZ for Amazon RDS and Redis. {{</ note >}}
 
 |**Parameter**|**Description**|**Default**|
 |---|---|---|
