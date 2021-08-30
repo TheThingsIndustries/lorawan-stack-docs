@@ -53,6 +53,8 @@ The full specification of the JSON format is defined in the API protos.
 
 The linked specification is quite extensive, and contains a lot of fields that are not required, or are only set and used internally by the Network Server. Below, the required and most commonly used fields are discussed.
 
+<div class="fixed-table table-device-json">
+
 | Field | Required | Type | Example | Description |
 |---|---|---|---|---|
 | **`ids.device_id`** | **Always** | string | `"sensor-1"` | [More info]({{< ref "reference/glossary#device-id" >}}) |
@@ -75,6 +77,9 @@ The linked specification is quite extensive, and contains a lot of fields that a
 | **`session.last_f_cnt_up`** | **For existing session** | uint | `12` | Last uplink frame counter used. |
 | **`session.last_n_f_cnt_down`** | **For existing session** | uint | `12` | Last network downlink frame counter used. |
 | **`session.last_a_f_cnt_down`** | **For existing session** | uint | `12` | Last application downlink frame counter used. |
+
+</div>
+<br>
 
 {{< note >}} The dots in the **Field** column imply an embedded object. For example, `root_keys.nwk_key.key` must be set as:
 ```
