@@ -25,6 +25,16 @@ Initialize the configured database with:
 $ ttn-lw-stack storage-db init
 ```
 
+{{< note >}}
+If you are using TimescaleDB, the following configuration options are also available:
+
+```
+--timescaledb.chunk-time-interval
+--timescaledb.enable-retention-policy
+--timescaledb.retention-days
+```
+{{</ note >}}
+
 If you are using Docker Compose (as shown in the Getting Started guide), you should instead do:
 
 ```bash
