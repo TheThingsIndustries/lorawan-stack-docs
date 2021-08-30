@@ -17,14 +17,10 @@ fields:
 - name: name
   comment: Model name, as defined in the Device Repository.
   type: string
-  rules:
-    max_len: 50
   default: ""
 - name: description
   comment: Model description.
   type: string
-  rules:
-    max_len: 2000
   default: ""
 - name: hardware_versions
   comment: Available hardware versions.
@@ -40,6 +36,8 @@ fields:
   default: []
 - name: sensors
   comment: List of sensors included in the device.
+  rules:
+    unique: true
   repeated:
     type: string
   default: []
@@ -70,14 +68,20 @@ fields:
   default: ""
 - name: key_provisioning
   comment: Supported key provisioning methods.
+  rules:
+    unique: true
   repeated:
     enum:
       name: KeyProvisioning
+    rules:
+      defined_only: true
   default: []
 - name: key_security
   comment: Device key security.
   enum:
     name: KeySecurity
+  rules:
+    defined_only: true
   default: KEY_SECURITY_UNKNOWN
 - name: photos
   comment: Device photos.
@@ -92,10 +96,16 @@ fields:
 - name: product_url
   comment: Device information page URL.
   type: string
+  rules:
+    uri: true
+    ignore_empty: true
   default: ""
 - name: datasheet_url
   comment: Device datasheet URL.
   type: string
+  rules:
+    uri: true
+    ignore_empty: true
   default: ""
 - name: resellers
   comment: Reseller URLs.
@@ -110,6 +120,8 @@ fields:
   default: {}
 - name: additional_radios
   comment: List of any additional radios included in the device.
+  rules:
+    unique: true
   repeated:
     type: string
   default: []

@@ -3,9 +3,15 @@ fields:
 - name: main
   comment: Link to main device video.
   type: string
+  rules:
+    pattern: ^(?:https?:\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)(?:[\w\-_]*)(?:&(amp;)?[\w\?=]*)?)$|^(?:https?:\/\/(?:www\.)?vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|)(?:\d+)(?:|\/\?))$
   default: ""
 - name: other
   comment: Links to other device videos.
+  rules:
+    unique: true
   repeated:
     type: string
+    rules:
+      pattern: ^(?:https?:\/\/(?:www\.)?youtu(?:be\.com\/watch\?v=|\.be\/)(?:[\w\-_]*)(?:&(amp;)?[\w\?=]*)?)$|^(?:https?:\/\/(?:www\.)?vimeo\.com\/(?:channels\/(?:\w+\/)?|groups\/([^\/]*)\/videos\/|)(?:\d+)(?:|\/\?))$
   default: []
