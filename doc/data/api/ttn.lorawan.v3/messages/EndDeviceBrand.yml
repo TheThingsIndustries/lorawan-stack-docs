@@ -19,6 +19,8 @@ fields:
   comment: Organization Unique Identifiers (OUI) assigned by IEEE.
   repeated:
     type: string
+    rules:
+      pattern: '[0-9A-F]{6}'
   default: []
 - name: lora_alliance_vendor_id
   comment: VendorID managed by the LoRa Alliance, as defined in TR005.
@@ -27,12 +29,20 @@ fields:
 - name: website
   comment: Brand website URL.
   type: string
+  rules:
+    uri: true
+    ignore_empty: true
   default: ""
 - name: email
   comment: Contact email address.
   type: string
+  rules:
+    email: true
+    ignore_empty: true
   default: ""
 - name: logo
   comment: Path to brand logo.
   type: string
+  rules:
+    pattern: ^$|^(([a-z0-9-]+\/)+)?([a-z0-9_-]+\.)+(png|svg)$
   default: ""

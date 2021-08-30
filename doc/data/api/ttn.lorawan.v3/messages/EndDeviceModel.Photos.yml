@@ -3,9 +3,15 @@ fields:
 - name: main
   comment: Main device photo.
   type: string
+  rules:
+    pattern: ^$|^(([a-z0-9-]+\/)+)?([a-z0-9_-]+\.)+(png|jpg|jpeg)$
   default: ""
 - name: other
   comment: List of other device photos.
+  rules:
+    unique: true
   repeated:
     type: string
+    rules:
+      pattern: ^$|^(([a-z0-9-]+\/)+)?([a-z0-9_-]+\.)+(png|jpg|jpeg)$
   default: []

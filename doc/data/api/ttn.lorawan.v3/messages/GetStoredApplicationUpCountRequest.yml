@@ -1,0 +1,59 @@
+name: GetStoredApplicationUpCountRequest
+fields:
+- name: application_ids
+  comment: Count upstream messages from all end devices of an application. Cannot
+    be used in conjunction with end_device_ids.
+  message:
+    name: ApplicationIdentifiers
+  default: {}
+- name: end_device_ids
+  comment: Count upstream messages from a single end device. Cannot be used in conjunction
+    with application_ids.
+  message:
+    name: EndDeviceIdentifiers
+  default: {}
+- name: type
+  comment: Count upstream messages of a specific type. If not set, then all upstream
+    messages are returned.
+  type: string
+  rules:
+    in:
+    - ""
+    - uplink_message
+    - join_accept
+    - downlink_ack
+    - downlink_nack
+    - downlink_sent
+    - downlink_failed
+    - downlink_queued
+    - downlink_queue_invalidated
+    - location_solved
+    - service_data
+  default: ""
+- name: after
+  comment: Count upstream messages after this timestamp only. Cannot be used in conjunction
+    with last.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: before
+  comment: Count upstream messages before this timestamp only. Cannot be used in conjunction
+    with last.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: f_port
+  comment: Count uplinks on a specific FPort only.
+  message:
+    package: google.protobuf
+    name: UInt32Value
+  default: null
+- name: last
+  comment: Count upstream messages that have arrived in the last minutes or hours.
+    Cannot be used in conjunction with after and before.
+  message:
+    package: google.protobuf
+    name: Duration
+  default: 0s

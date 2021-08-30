@@ -1900,6 +1900,44 @@ ttn-lw-cli applications storage:
   parent_path: ttn-lw-cli applications
   name: storage
   short: Storage Integration
+ttn-lw-cli applications storage count:
+  path: ttn-lw-cli applications storage count
+  parent_path: ttn-lw-cli applications storage
+  name: count
+  use: '[application-id]'
+  short: Count stored upstream messages
+  command_flags:
+  - name: after
+    type: string
+    usage: 'query upstream messages after specified timestamp (format: ''2006-01-02
+      15:04:05'')'
+  - name: after-utc
+    type: string
+    usage: 'query upstream messages after specified timestamp (format: ''2006-01-02
+      15:04:05'') (UTC)'
+  - name: application-id
+    type: string
+  - name: before
+    type: string
+    usage: 'query upstream messages before specified timestamp (format: ''2006-01-02
+      15:04:05'')'
+  - name: before-utc
+    type: string
+    usage: 'query upstream messages before specified timestamp (format: ''2006-01-02
+      15:04:05'') (UTC)'
+  - name: f-port
+    type: uint32
+    usage: query upstream messages with specific FPort
+    default_value: "0"
+  - name: last
+    type: duration
+    usage: query upstream messages in the last hours or minutes
+    default_value: 0s
+  - name: type
+    type: string
+    usage: 'message type (allowed values: , downlink_ack, downlink_failed, downlink_nack,
+      downlink_queue_invalidated, downlink_queued, downlink_sent, join_accept, location_solved,
+      service_data, uplink_message)'
 ttn-lw-cli applications storage get:
   path: ttn-lw-cli applications storage get
   parent_path: ttn-lw-cli applications storage
@@ -2488,6 +2526,11 @@ ttn-lw-cli applications storage get:
     type: bool
     usage: select the up.uplink_message.settings.data_rate.modulation.lrfhss field
       and all allowed sub-fields
+    default_value: "false"
+  - name: up.uplink-message.settings.data-rate.modulation.lrfhss.coding-rate
+    type: bool
+    usage: select the up.uplink_message.settings.data_rate.modulation.lrfhss.coding_rate
+      field
     default_value: "false"
   - name: up.uplink-message.settings.data-rate.modulation.lrfhss.modulation-type
     type: bool
@@ -3760,6 +3803,10 @@ ttn-lw-cli end-devices create:
   - name: mac-settings.beacon-frequency
     type: uint64
     default_value: "0"
+  - name: mac-settings.class-b-c-downlink-interval
+    type: duration
+    usage: (1h2m3s)
+    default_value: 0s
   - name: mac-settings.class-b-timeout
     type: duration
     usage: (1h2m3s)
@@ -4073,9 +4120,6 @@ ttn-lw-cli end-devices create:
   - name: mac-state.pending-application-downlink.class-b-c.absolute-time
     type: string
     usage: (YYYY-MM-DDTHH:MM:SSZ)
-  - name: mac-state.pending-application-downlink.class-b-c.gateways
-    type: stringSlice
-    default_value: '[]'
   - name: mac-state.pending-application-downlink.confirmed
     type: bool
     default_value: "false"
@@ -4921,6 +4965,10 @@ ttn-lw-cli end-devices get:
   - name: mac-settings.beacon-frequency
     type: bool
     usage: select the mac_settings.beacon_frequency field
+    default_value: "false"
+  - name: mac-settings.class-b-c-downlink-interval
+    type: bool
+    usage: select the mac_settings.class_b_c_downlink_interval field
     default_value: "false"
   - name: mac-settings.class-b-timeout
     type: bool
@@ -6277,6 +6325,10 @@ ttn-lw-cli end-devices reset:
     type: bool
     usage: select the mac_settings.beacon_frequency field
     default_value: "false"
+  - name: mac-settings.class-b-c-downlink-interval
+    type: bool
+    usage: select the mac_settings.class_b_c_downlink_interval field
+    default_value: "false"
   - name: mac-settings.class-b-timeout
     type: bool
     usage: select the mac_settings.class_b_timeout field
@@ -7524,6 +7576,10 @@ ttn-lw-cli end-devices set:
   - name: mac-settings.beacon-frequency
     type: uint64
     default_value: "0"
+  - name: mac-settings.class-b-c-downlink-interval
+    type: duration
+    usage: (1h2m3s)
+    default_value: 0s
   - name: mac-settings.class-b-timeout
     type: duration
     usage: (1h2m3s)
@@ -7837,9 +7893,6 @@ ttn-lw-cli end-devices set:
   - name: mac-state.pending-application-downlink.class-b-c.absolute-time
     type: string
     usage: (YYYY-MM-DDTHH:MM:SSZ)
-  - name: mac-state.pending-application-downlink.class-b-c.gateways
-    type: stringSlice
-    default_value: '[]'
   - name: mac-state.pending-application-downlink.confirmed
     type: bool
     default_value: "false"
@@ -8313,6 +8366,56 @@ ttn-lw-cli end-devices storage:
   parent_path: ttn-lw-cli end-devices
   name: storage
   short: Storage Integration
+ttn-lw-cli end-devices storage count:
+  path: ttn-lw-cli end-devices storage count
+  parent_path: ttn-lw-cli end-devices storage
+  name: count
+  use: '[application-id] [device-id]'
+  short: Count stored upstream messages
+  command_flags:
+  - name: after
+    type: string
+    usage: 'query upstream messages after specified timestamp (format: ''2006-01-02
+      15:04:05'')'
+  - name: after-utc
+    type: string
+    usage: 'query upstream messages after specified timestamp (format: ''2006-01-02
+      15:04:05'') (UTC)'
+  - name: app-eui
+    type: string
+    usage: (hex)
+    hidden: true
+  - name: application-id
+    type: string
+  - name: before
+    type: string
+    usage: 'query upstream messages before specified timestamp (format: ''2006-01-02
+      15:04:05'')'
+  - name: before-utc
+    type: string
+    usage: 'query upstream messages before specified timestamp (format: ''2006-01-02
+      15:04:05'') (UTC)'
+  - name: dev-eui
+    type: string
+    usage: (hex)
+  - name: device-id
+    type: string
+  - name: f-port
+    type: uint32
+    usage: query upstream messages with specific FPort
+    default_value: "0"
+  - name: join-eui
+    type: string
+    usage: (hex)
+  - name: last
+    type: duration
+    usage: query upstream messages in the last hours or minutes
+    default_value: 0s
+  - name: type
+    type: string
+    usage: 'message type (allowed values: , downlink_ack, downlink_failed, downlink_nack,
+      downlink_queue_invalidated, downlink_queued, downlink_sent, join_accept, location_solved,
+      service_data, uplink_message)'
 ttn-lw-cli end-devices storage get:
   path: ttn-lw-cli end-devices storage get
   parent_path: ttn-lw-cli end-devices storage
@@ -8913,6 +9016,11 @@ ttn-lw-cli end-devices storage get:
     type: bool
     usage: select the up.uplink_message.settings.data_rate.modulation.lrfhss field
       and all allowed sub-fields
+    default_value: "false"
+  - name: up.uplink-message.settings.data-rate.modulation.lrfhss.coding-rate
+    type: bool
+    usage: select the up.uplink_message.settings.data_rate.modulation.lrfhss.coding_rate
+      field
     default_value: "false"
   - name: up.uplink-message.settings.data-rate.modulation.lrfhss.modulation-type
     type: bool
@@ -10501,6 +10609,65 @@ ttn-lw-cli logout:
   parent_path: ttn-lw-cli
   name: logout
   short: Logout
+ttn-lw-cli lorawan:
+  path: ttn-lw-cli lorawan
+  parent_path: ttn-lw-cli
+  name: lorawan
+  aliases:
+  - lw
+  short: LoRaWAN commands
+ttn-lw-cli lorawan decode:
+  path: ttn-lw-cli lorawan decode
+  parent_path: ttn-lw-cli lorawan
+  name: decode
+  aliases:
+  - d
+  short: Decode LoRaWAN frames
+  example: "\n  Join Request:\n    $ echo 'AFP6A9B+1bNwFgIcAAujBABERDaumME=' | ttn-lw-cli
+    lorawan decode --input-format base64\n    $ echo '0053fa03d07ed5b37016021c000ba30400444436ae98c1'
+    | ttn-lw-cli lorawan decode --input-format hex\n\n  Join Accept:\n    $ echo 'IAUNJTHDK7t2zM+eeFmGIyjAlSyqfNfAWPzZTjhcVfAg'
+    | ttn-lw-cli lorawan decode --input-format base64\n    $ echo 'IAUNJTHDK7t2zM+eeFmGIyjAlSyqfNfAWPzZTjhcVfAg'
+    | ttn-lw-cli lorawan decode --input-format base64 --app-key 5CF2BD4810FD92E9271050D2541A0F2B\n
+    \   $ echo 'IAUNJTHDK7t2zM+eeFmGIyjAlSyqfNfAWPzZTjhcVfAg' | ttn-lw-cli lorawan
+    decode --input-format base64 --lorawan-version 1.1 --nwk-key 5CF2BD4810FD92E9271050D2541A0F2B\n\n
+    \ Example Network Uplink:\n    $ echo 'QL8AACeFAQADBwb/CP6z6aY=' | ttn-lw-cli
+    lorawan decode --input-format base64\n\n  Example Data Uplink:\n    $ echo 'QD7U3QEAEgABK7VS98g='
+    | ttn-lw-cli lorawan decode --input-format base64\n    $ echo 'QD7U3QEAEgABK7VS98g='
+    | ttn-lw-cli lorawan decode --input-format base64 --app-s-key CAE4B67DA7EA96144AFD687CD1EF1F23\n\t\t"
+  command_flags:
+  - name: app-key
+    type: string
+    usage: LoRaWAN AppKey
+  - name: app-s-key
+    type: string
+    usage: LoRaWAN AppSKey
+  - name: band
+    type: string
+    usage: LoRaWAN Band ID
+    default_value: EU_863_870
+  - name: f-nwk-s-int-key
+    type: string
+    usage: LoRaWAN FNwkSIntKey (LoRaWAN 1.1+)
+  - name: lorawan-phy-version
+    type: string
+    usage: LoRaWAN Regional Parameters version
+    default_value: 1.0.2-b
+  - name: lorawan-version
+    type: string
+    usage: LoRaWAN version
+    default_value: 1.0.2
+  - name: nwk-key
+    type: string
+    usage: LoRaWAN NwkKey
+  - name: nwk-s-enc-key
+    type: string
+    usage: LoRaWAN NwkSEncKey (LoRaWAN 1.1+)
+  - name: nwk-s-key
+    type: string
+    usage: LoRaWAN NwkSKey
+  - name: s-nwk-s-int-key
+    type: string
+    usage: LoRaWAN SNwkSIntKey (LoRaWAN 1.1+)
 ttn-lw-cli organizations:
   path: ttn-lw-cli organizations
   parent_path: ttn-lw-cli
@@ -11723,6 +11890,8 @@ ttn-lw-cli simulate application-uplink:
   - name: settings.data-rate.modulation.lora.spreading-factor
     type: uint32
     default_value: "0"
+  - name: settings.data-rate.modulation.lrfhss.coding-rate
+    type: string
   - name: settings.data-rate.modulation.lrfhss.modulation-type
     type: uint32
     default_value: "0"
@@ -12150,6 +12319,10 @@ ttn-lw-cli templates create:
   - name: mac-settings.beacon-frequency
     type: bool
     usage: select the mac_settings.beacon_frequency field
+    default_value: "false"
+  - name: mac-settings.class-b-c-downlink-interval
+    type: bool
+    usage: select the mac_settings.class_b_c_downlink_interval field
     default_value: "false"
   - name: mac-settings.class-b-timeout
     type: bool
@@ -13298,6 +13471,10 @@ ttn-lw-cli templates execute:
   - name: mac-settings.beacon-frequency
     type: uint64
     default_value: "0"
+  - name: mac-settings.class-b-c-downlink-interval
+    type: duration
+    usage: (1h2m3s)
+    default_value: 0s
   - name: mac-settings.class-b-timeout
     type: duration
     usage: (1h2m3s)
@@ -13611,9 +13788,6 @@ ttn-lw-cli templates execute:
   - name: mac-state.pending-application-downlink.class-b-c.absolute-time
     type: string
     usage: (YYYY-MM-DDTHH:MM:SSZ)
-  - name: mac-state.pending-application-downlink.class-b-c.gateways
-    type: stringSlice
-    default_value: '[]'
   - name: mac-state.pending-application-downlink.confirmed
     type: bool
     default_value: "false"
@@ -14156,6 +14330,10 @@ ttn-lw-cli templates extend:
   - name: mac-settings.beacon-frequency
     type: uint64
     default_value: "0"
+  - name: mac-settings.class-b-c-downlink-interval
+    type: duration
+    usage: (1h2m3s)
+    default_value: 0s
   - name: mac-settings.class-b-timeout
     type: duration
     usage: (1h2m3s)
@@ -14469,9 +14647,6 @@ ttn-lw-cli templates extend:
   - name: mac-state.pending-application-downlink.class-b-c.absolute-time
     type: string
     usage: (YYYY-MM-DDTHH:MM:SSZ)
-  - name: mac-state.pending-application-downlink.class-b-c.gateways
-    type: stringSlice
-    default_value: '[]'
   - name: mac-state.pending-application-downlink.confirmed
     type: bool
     default_value: "false"
