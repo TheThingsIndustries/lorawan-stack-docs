@@ -313,3 +313,7 @@ Tenants can have custom configuration, such as custom branding or custom user re
 ## Rate Limiting
 
 {{< new-in-version "3.12.0" >}} {{% tts %}} supports rate limiting external endpoints. Rate limiting configuration can only be set from the configuration file. See [Rate Limiting]({{< ref "/reference/rate-limiting" >}}) for more details.
+
+## Resource Limiting
+
+{{< new-in-version "3.15.0" >}} {{< distributions "Dedicated Cloud" "Enterprise" "AWS Launcher" >}}  {{% tts %}} supports configuring maximum limits for active resources (e.g. number of active application data-plane MQTT connections). Resource limiting configuration can only be set from the configuration file. See [Resource Limiting]({{< ref "/reference/resource-limiting" >}}) for more details.
