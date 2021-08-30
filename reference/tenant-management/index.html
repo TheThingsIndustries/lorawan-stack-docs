@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Billing with Stripe | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/stripe/" />
+  <title>Tenant Management | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/tenant-management/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.294c77c74f918a8f5064a76731a816bd0b67f9a72689b5b3e1426b114bf7b43a.css" integrity="sha256-KUx3x0&#43;Rio9QZKdnMagWvQtn&#43;acmibWz4UJrEUv3tDo=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Billing with Stripe">
+  <meta itemprop="name" content="Tenant Management">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Billing with Stripe">
+  <meta property="og:title" content="Tenant Management">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/stripe/">
-  <meta name="twitter:title" content="Billing with Stripe" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/tenant-management/">
+  <meta name="twitter:title" content="Tenant Management" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -100,26 +100,7 @@
     <a href="https://www.thethingsindustries.com/docs/reference/application-packages/" class="">Application Packages</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/stripe/" class="is-active">Billing with Stripe</a>
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/stripe/products/" class="">Products and Pricing Plans</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/stripe/customers/" class="">Customers</a>
-    
-  </li>
-
-</ul>
-
-
-    
+    <a href="https://www.thethingsindustries.com/docs/reference/stripe/" class="">Billing with Stripe</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/reference/cli/" class="">Command-Line Interface</a>
@@ -182,7 +163,12 @@
     <a href="https://www.thethingsindustries.com/docs/reference/telemetry/" class="">Telemetry</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/tenant-management/" class="">Tenant Management</a>
+    <a href="https://www.thethingsindustries.com/docs/reference/tenant-management/" class="is-active">Tenant Management</a>
+    
+
+
+
+    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/reference/branding/" class="">Web UI Branding</a>
@@ -204,7 +190,7 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Billing with Stripe
+        <h1 class="title is-size-2">Tenant Management
           
         </h1>
         
@@ -221,19 +207,11 @@
     
   
 
-  
-    
-  
-
 
 
   
 
-  
-
-<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud and Enterprise Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
+<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Enterprise Only">
 
   <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
 
@@ -246,14 +224,65 @@
         </h2>
         
         <div class="content">
-          <p>This is a reference for the Stripe backend of the <a href="https://www.thethingsindustries.com/docs/reference/components/tenant-billing-server/">Tenant Billing Server</a>.</p>
-<p>It covers the creation of a product, the pricing plans and adding customer subscriptions.</p>
+          <p>This guide contains detailed information on how to perform common tenant management operations for The Things Stack Enterprise.</p>
+<div class="notification is-primary is-light has-text-dark">
+  <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
+  <p>The instructions below use the command-line interface (CLI).</p>
+  
+  
+  <p>The following commands are supported by <code>tti-lw-cli</code> CLI version only.</p>
+  
+  <div class="buttons">
+    <a class="button is-dark is-outlined" href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/">Learn how to install the CLI</a>
+  </div>
+</div>
 
+<h2 id="authentication">Authentication</h2>
+<p>Instead of using API keys and OAuth access tokens as for other The Things Stack services, the tenant services require using <strong>tenant admin keys</strong> for authentication.</p>
+<blockquote>
+<p>Tenant admin keys are configured in the Identity Server as described <a href="https://www.thethingsindustries.com/docs/reference/configuration/identity-server/#tenant-administration-options">here</a>.</p>
+</blockquote>
+<p>This means all tenant management CLI commands will need to have the <code>--tenant-admin-key</code> flag appended, followed by a tenant admin key that you configured in the Identity Server. See the section below for examples.</p>
+<h2 id="basic-operations">Basic Operations</h2>
+<h3 id="create-a-tenant">Create a Tenant</h3>
+<p>To create a new tenant with the tenant ID <code>tenant1</code>:</p>
+<pre><code>$ TENANT_ADMIN_KEY=14596c0bdb9b11f6a97273e7c09167531571efa5898274e48660ee8d08f62b67
+$ tti-lw-cli tenant create tenant1 --tenant-admin-key $TENANT_ADMIN_KEY
+</code></pre><h3 id="get-a-tenant">Get a Tenant</h3>
+<p>To get a tenant <code>tenant1</code>, i.e. to see details like when it was created or updated, and which its capabilities are:</p>
+<pre><code>$ tti-lw-cli tenant get tenant1 --tenant-admin-key $TENANT_ADMIN_KEY
+</code></pre><h3 id="list-tenants">List Tenants</h3>
+<p>To get descriptions of all tenants:</p>
+<pre><code>$ tti-lw-cli tenant list --tenant-admin-key $TENANT_ADMIN_KEY
+</code></pre><h3 id="delete-a-tenant">Delete a Tenant</h3>
+<p>To delete a tenant <code>tenant1</code>:</p>
+<pre><code>$ tti-lw-cli tenant delete tenant1 --tenant-admin-key $TENANT_ADMIN_KEY
+</code></pre><h3 id="get-tenant-identifiers-for-device-euis">Get Tenant Identifiers for Device EUIs</h3>
+<p>To get a tenant ID based on your device&rsquo;s DevEUI and JoinEUI:</p>
+<pre><code>$ tti-lw-cli tenant get-identifiers-for-end-device-euis --dev-eui 0004A30B001C0530 --join-eui 800000000000000C --tenant-admin-key $TENANT_ADMIN_KEY
+</code></pre><h3 id="get-tenant-identifiers-for-a-gateway-eui">Get Tenant Identifiers for a Gateway EUI</h3>
+<p>To get a tenant ID based on your gateways&rsquo;s EUI:</p>
+<pre><code>$ tti-lw-cli tenant get-identifiers-for-gateway-eui --gateway-eui 00800000A00009EF --tenant-admin-key $TENANT_ADMIN_KEY
+</code></pre><h3 id="search-for-tenants">Search for Tenants</h3>
+<p>You can search tenants based on multiple criteria such as name, maximum number of entities, state, configuration, etc. These criteria are defined using flags. To see all available flags, use the following command:</p>
+<pre><code>$ tti-lw-cli tenant search --help
+</code></pre><p>For example, to search for recently deleted tenants:</p>
+<pre><code>$ tti-lw-cli tenant search --deleted --tenant-admin-key $TENANT_ADMIN_KEY
+</code></pre><h3 id="update-a-tenant">Update a Tenant</h3>
+<p>You can update a tenant in multiple ways, for example change its name, set a maximum number of entities, change configuration and billing settings, etc. Use the following command to list all available flags:</p>
+<pre><code>$ tti-lw-cli tenant update --help
+</code></pre><p>For example, to update a maximum number of end devices that can be registered in a tenant:</p>
+<pre><code>$ tti-lw-cli tenant update --tenant-id tenant1 --max-end-devices 3 --tenant-admin-key $TENANT_ADMIN_KEY
+</code></pre><h2 id="setting-a-devaddr-prefix-for-a-tenant">Setting a DevAddr Prefix for a Tenant</h2>
+<p>In a multi-tenant deployment, different tenants share the same NetID, but they use different DevAddr blocks. DevAddr blocks need to be configured for every tenant in order for Packet Broker to be able to distinguish traffic that belongs to each of those tenants.</p>
+<p>Setting a DevAddr prefix for a tenant can be done using the <code>update</code> operation mentioned in the section above. To set a DevAddr prefix for a tenant <code>tenant1</code>:</p>
+<pre><code>$ tti-lw-cli tenant update --tenant-id tenant1 --configuration.default-cluster.ns.dev-addr-prefixes 27123400/24
+</code></pre>
         </div>
         
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/reference/application-packages/lora-cloud-device-and-application-services/">← LoRa Cloud Device &amp; Application Services</a>
-<a class="button is-pulled-right" href="/docs/reference/stripe/products/">Products and Pricing Plans →</a>
+<a class="button is-pulled-left" href="/docs/reference/telemetry/">← Telemetry</a>
+<a class="button is-pulled-right" href="/docs/reference/branding/">Web UI Branding →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -270,6 +299,19 @@
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#authentication'>Authentication</a></li>
+    
+      
+      <li><a href='#basic-operations'>Basic Operations</a></li>
+    
+      
+      <li><a href='#setting-a-devaddr-prefix-for-a-tenant'>Setting a DevAddr Prefix for a Tenant</a></li>
+    
+  </ul>
 
 
   </nav>
@@ -307,14 +349,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 28 Jul 2021.
+  Last changed by Nejra Selimović on 30 Aug 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3cd57bd7e4f75171a118d5b4e02d1d07f6ec75af">
-      doc: Add CLI troubleshooting (#485)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/e18c24340c7eeab0e4bf52146262a7121264d33f">
+      doc: Document tenant management (#536)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/reference/stripe/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/reference/tenant-management/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
