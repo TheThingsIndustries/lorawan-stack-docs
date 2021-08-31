@@ -256,6 +256,8 @@ Link to relevant section when available.
 <p>In our stack we use Let&rsquo;s Encrypt certificates, which are requested upon stack deployment. There are quotas in place, once you hit them you need to wait before requesting a certificate again. If you&rsquo;re redeploying the stack multiple times for testing purposes, use a different domain, so that you don&rsquo;t hit the limit in your production environment. For details, please refer to the <a href="https://letsencrypt.org/docs/rate-limits/">Let&rsquo;s Encrypt website</a>.</p>
 <h2 id="my-update-has-failed-and-i-dont-know-the-details">My update has failed, and I don&rsquo;t know the details</h2>
 <p>You can find logs in the <code>/tti/bootstrap/*.log</code> files.</p>
+<h2 id="there-are-store-errors-in-the-things-stack-logs">There are store errors in The Things Stack logs</h2>
+<p>This means that The Things Stack fails to connect to the database and/or Redis. For details of your database and Redis, go to Amazon RDS and ElastiCache respectively. Refer to the <code>Resources</code> tab in the CloudFormation stack to know which RDS and ElastiCache instances belong to the The Things Stack instance. Make sure that Amazon does not signal any issues, and all metrics are within expected values. This includes, but is not limited to CPU, memory, free disk, available connections.</p>
 <h2 id="professional-support">Professional Support</h2>
 <p>Additional paid support for this deployment is offered by The Things Industries. You can <a href="mailto:support@thethingsindustries.com">contact The Things Industries support</a> or visit <a href="https://www.thethingsindustries.com/stack/aws/support">the support page</a>.</p>
         </div>
@@ -284,6 +286,9 @@ Link to relevant section when available.
     
       
       <li><a href='#my-update-has-failed-and-i-dont-know-the-details'>My update has failed, and I don’t know the details</a></li>
+    
+      
+      <li><a href='#there-are-store-errors-in-the-things-stack-logs'>There are store errors in The Things Stack logs</a></li>
     
       
       <li><a href='#professional-support'>Professional Support</a></li>
@@ -326,10 +331,10 @@ Link to relevant section when available.
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Michał Borkowski on 24 Aug 2021.
+  Last changed by Michał Borkowski on 31 Aug 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/83736a9394ec098e471a8a3f7cb9265648c485ce">
-      doc: Fixes to AMI update docs (#539)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5e4f5ee0b4d12267f0b9f351a4dfd13b2d34031a">
+      doc: Improve documentation regarding RDS and Redis (#548)
     </a>
 </p>
 
