@@ -77,6 +77,10 @@ In our stack we use Let's Encrypt certificates, which are requested upon stack d
 
 You can find logs in the `/tti/bootstrap/*.log` files.
 
+## There are store errors in {{% tts %}} logs
+
+This means that {{% tts %}} fails to connect to the database and/or Redis. For details of your database and Redis, go to Amazon RDS and ElastiCache respectively. Refer to the `Resources` tab in the CloudFormation stack to know which RDS and ElastiCache instances belong to the {{% tts %}} instance. Make sure that Amazon does not signal any issues, and all metrics are within expected values. This includes, but is not limited to CPU, memory, free disk, available connections.
+
 ## Professional Support
 
 Additional paid support for this deployment is offered by The Things Industries. You can [contact The Things Industries support](mailto:support@thethingsindustries.com) or visit [the support page](https://www.thethingsindustries.com/stack/aws/support).
