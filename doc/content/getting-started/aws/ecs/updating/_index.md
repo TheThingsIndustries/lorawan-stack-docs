@@ -29,15 +29,36 @@ There are two templates that have a non-standard update procedure:
 
 ### `2-5-db-timescale`
 
-This template describes an EC2 machine with EBS storage. Currently, AWS does not permit replacement updates on EC2 machines with EBS volumes attached. Continuing with update might result in data loss. For this reason, you will need to carefully examine what changes AWS wants to perform while updating this stack, and manually apply some of them.
+{{< note >}} As AMI, we use the newest Amazon Linux 2 image. This means that AMI ID is most likely going to change between two consecutive releases of {{% tts %}}, and upon update AWS will try to replace the EC2 machine. If there are no notes in `UPGRADING.md` and new template differs only by AMI ID, consider simply upgrading the software on the machine instead of updating this particular stack via CloudFormation, especially prior to version 3.15.0. Always remember to backup your data before update. {{</ note >}}
 
-As machine image, we use the newest Amazon Linux 2 image. This means that AMI is most likely going to change between two consecutive releases of {{% tts %}}, and upon update AWS will try to replace the EC2 machine. However, you should update the software on that EC2 machine manually instead.
+#### Updating before version 3.15.0
+
+If you're updating to a version lower than 3.15.0, simple CloudFormation update will fail because CloudFormation doesn't propely remount EBS volumes. It is advised that you skip this template, or inspect and apply relevant changes manually.
+
+#### Updating to 3.15.0 or higher
+
+In version 3.15.0 the `2-5-db-timescale` template has been reworked to allow smoother update.
+
+##### Updating from version lower than 3.15.0
+
+It is strongly advised to backup your data before performing this update.
+
+1. Before update, set the `ApplicationServerStorageEnabled` parameter in `5-2-ecs-ops` and `5-4-ecs-services` to `false`. This will turn off storage integration.
+2. Terminate the EC2 machine hosting TimescaleDB.
+3. Update the `2-5-db-timescale` template. Make sure that there are no changes to `Volume` (potential data loss). If you can't avoid updating `Volume`, make a snapshot and then use the `VolumeSnapshotID` parameter to recreate the volume from a snapshot.
+4. Continue with the update as normal. When you reach `5-2-ecs-ops` and `5-4-ecs-services`, set `ApplicationServerStorageEnabled` parameter back to `true`.
+
+##### Updating from version 3.15.0 or higher
+
+You can update the template as any other. Make sure that the Change Set doesn't contain any changes to `Volume`, or you might experience data loss.
+
+Keep in mind that storage integration will not work until Application Server ECS service is restarted. If you're updating the stack to a new version (thus, changing the used image), Application Server service will be restarted during `5-4-ecs-services` update and you don't need to do this explicitly.
 
 ### `5-1-ecs-cluster`
 
 In this template we use an autoscaling group. Updates to `LaunchConfiguration` do not cause any effect on already running machines that were created using said `LaunchConfiguration`. This means that if this template contains changes, e.g. different `UserData` or an updated AMI image, you should examine changes and apply them manually.
 
-{{< note >}} Make sure to remember that both `5-1-ecs-cluster` and `2-5-db-timescale` use bare Amazon Linux 2 images. This should make it easy to decide whether you actually need to update the machines, and if yes, how exactly. There is no non-standard software on these machines beyond what's in the `UserData` section of respective template, therefore you can follow standard update procedures. {{</ note >}}
+{{< note >}} Make sure to remember that both `5-1-ecs-cluster` and `2-5-db-timescale` use standard Amazon Linux 2 images. This should make it easy to decide whether you actually need to update the machines, and if yes, how exactly. There is no non-standard software on these machines beyond what's in the `UserData` section of respective template, therefore you can follow standard update procedures. {{</ note >}}
 
 ## Changing Docker Images
 
