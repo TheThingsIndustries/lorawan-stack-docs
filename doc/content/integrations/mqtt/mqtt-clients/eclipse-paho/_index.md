@@ -13,7 +13,7 @@ It covers MQTT client implementations in several programming languages such as J
 
 Follow this guide to learn how to connect to {{% tts %}} MQTT Server, to receive and to send messages using the Eclipse Paho client.
 
-{{< note >}} This document contains instructions to use [Eclipse Paho MQTT Python client library](https://www.eclipse.org/paho/index.php?page=clients/python/index.php), which implements MQTT v3.1 and v3.1.1 protocol. To compare this library with other Paho project implementations visit [Eclipse Paho Downloads page](https://www.eclipse.org/paho/index.php?page=downloads.php). To find more about the usage of the Python implementation, visit [this page](https://pypi.org/project/paho-mqtt/). {{</ note >}}
+> This document contains instructions to use [Eclipse Paho MQTT Python client library](https://www.eclipse.org/paho/index.php?page=clients/python/index.php), which implements MQTT v3.1 and v3.1.1 protocol. To compare this library with other Paho project implementations visit [Eclipse Paho Downloads page](https://www.eclipse.org/paho/index.php?page=downloads.php). To find more about the usage of the Python implementation, visit [this page](https://pypi.org/project/paho-mqtt/).
 
 {{< note >}} The examples in this guide are suitable for {{% tts %}} Open Source deployment. If you are using a different {{% tts %}} deployment, make sure your read a [Note on Using the tenant ID]({{< ref "/integrations/mqtt#note-on-using-the-tenant-id" >}}). {{</ note >}} 
 
@@ -67,6 +67,8 @@ import paho.mqtt.publish as publish
 
 publish.single("v3/{application-id}/devices/{device-id}/down/push", '{"downlinks":[{"f_port": 15,"frm_payload":"vu8=","priority": "NORMAL"}]}', hostname="thethings.example.com", port=1883, {'username':"app1",'password':"NNSXS.VEEBURF3KR77ZR.."})
 ```
+
+{{< note >}} For scheduling downlink messages, the `f_port` values from `1` to `233` are allowed. {{</ note >}}
 
 Save the file and run it the terminal with:
 

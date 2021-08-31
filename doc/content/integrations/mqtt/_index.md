@@ -184,7 +184,9 @@ To send an unconfirmed downlink message to the device `dev1` in application `app
 }
 ```
 
-{{< note >}} Use [this handy tool](https://v2.cryptii.com/hexadecimal/base64) to convert hexadecimal to base64. {{</ note >}}
+{{< note >}} For scheduling downlink messages, the `f_port` values from `1` to `233` are allowed. {{</ note >}}
+
+> Use [this handy tool](https://v2.cryptii.com/hexadecimal/base64) to convert hexadecimal to base64.
 
 ```bash
 # If you use `mosquitto_pub`, use the following command:

@@ -27,7 +27,7 @@ This guide shows how to receive upstream messages and send downlink messages wit
 The command for connecting to a host and subscribing to a topic has using `mosquitto_sub` has the following syntax:
 
 ```bash 
-mosquitto_sub -h {hostname} -p {port} -u {username} -P {password} -t {topic}
+mosquitto_sub -h <hostname> -p <port> -u <username> -P <password> -t <topic>
 ```
 
 For example, to subscribe to all topics in the application `app1`:
@@ -35,12 +35,12 @@ For example, to subscribe to all topics in the application `app1`:
 ```bash
 # Tip: when using `mosquitto_sub`, pass the `-d` flag to see the topics messages get published on.
 # For example:
-$ mosquitto_sub -h thethings.example.com -t "#" -u app1 -P "NNSXS.VEEBURF3KR77ZR.." -d
+$ mosquitto_sub -h "thethings.example.com" -p "1883" -u "app1" -P "NNSXS.VEEBURF3KR77ZR.." -t "#" -d
 ```
 
 In you want to use TLS, you need to change the port value to `8883` and add the `--cafile` option to the command. `--cafile` option is used to define a path to the file containing trusted CA certificates that are PEM encoded.
 
-{{< note >}} Read more about the command line options in the [mosquitto_sub manual](https://mosquitto.org/man/mosquitto_sub-1.html). {{</ note >}}
+> Read more about the command line options in the [mosquitto_sub manual](https://mosquitto.org/man/mosquitto_sub-1.html).
 
 ## Publishing Downlink Messages
 
@@ -49,7 +49,7 @@ In you want to use TLS, you need to change the port value to `8883` and add the 
 For connecting to a host and publishing a message, **mosquitto_pub** client defines a command with the following syntax:
 
 ```bash 
-mosquitto_pub -h {hostname} -p {port} -u {username} -P {password} -t {topic} -m {message}
+mosquitto_pub -h <hostname> -p <port> -u <username> -P <password> -t <topic> -m <message>
 ```
 
 For example, to send an unconfirmed downlink message to the device `dev1` in application `app1` with the hexadecimal payload `BE EF` on `FPort` 15 with normal priority, use the topic `v3/app1/devices/dev1/down/push` with the following contents:
@@ -58,6 +58,8 @@ For example, to send an unconfirmed downlink message to the device `dev1` in app
 mosquitto_pub -h "thethings.example.com" -p "1883" -u "app1" -P "NNSXS.VEEBURF3KR77ZR.." -t "v3/app1/devices/dev1/down/push" -m '{"downlinks":[{"f_port": 15,"frm_payload":"vu8=","priority": "NORMAL"}]}'
 ```
 
+{{< note >}} For scheduling downlink messages, the `f_port` values from `1` to `233` are allowed. {{</ note >}}
+
 If TLS is being used, change the port value to `8883` and add the `--cafile` option to the command.
 
-{{< note >}} Read more about the command line options in the [mosquitto_pub manual](https://mosquitto.org/man/mosquitto_pub-1.html). {{</ note >}}
+> Read more about the command line options in the [mosquitto_pub manual](https://mosquitto.org/man/mosquitto_pub-1.html).

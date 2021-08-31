@@ -36,17 +36,17 @@ $ mqtt shell
 Once in shell mode, you can connect to {{% tts %}} MQTT Server by using the following command:
 
 ```bash
-$ con -h hostname -p port -V 3 -u username -pw password
+$ con -h <hostname> -p <port> -V 3 -u <username> -pw <password>
 ```
 
 {{< note >}} Keep in mind that `password` is the value of the authentication API key. For more info, see [Creating an API Key]({{< ref "/integrations/mqtt#creating-an-api-key" >}}). {{</ note >}}
 
-{{< note >}} we use `-V 3` flag since the {{% tts %}} MQTT Server supports the 3.1.1 MQTT protocol version, as mentioned in the [MQTT Server guide]({{< ref "/integrations/mqtt" >}}). For detailed descriptions of other parameters used with the `con` command, see the [official MQTT CLI documentation](https://hivemq.github.io/mqtt-cli/docs/shell/connect.html). {{</ note >}}
+{{< note >}} The `-V 3` flag is used here because the {{% tts %}} MQTT Server supports the 3.1.1 MQTT protocol version, as mentioned in the [MQTT Server guide]({{< ref "/integrations/mqtt" >}}). For detailed descriptions of other parameters used with the `con` command, see the [official MQTT CLI documentation](https://hivemq.github.io/mqtt-cli/docs/shell/connect.html). {{</ note >}}
 
 For example, you can connect to {{% tts %}} MQTT Server over its public address with the following command:
 
 ```bash
-con -h thethings.example.com -p 1883 -V 3 -u app1 -pw NNSXS.VEEBURF3KR77ZR..
+con -h "thethings.example.com" -p "1883" -V 3 -u "app1" -pw "NNSXS.VEEBURF3KR77ZR.."
 ```
 
 To use TLS for additional security, change the port from `1883` to `8883` and use the `--cafile` option to provide the PEM encoded CA file of your {{% tts %}} deployment.
@@ -60,12 +60,12 @@ Use the `sub` command to subscribe to topics and listen to messages being sent f
 For example, if you want to listen to the uplink messages being sent from `dev1` device in `app1` application, use the following command:
 
 ```bash
-$ sub -t v3/app1/devices/dev1/up -s
+$ sub -t "v3/app1/devices/dev1/up" -s
 ```
 
 {{< note >}} `-s` flag is used to subscribe with a context to the given topic, e.g. to stop the console being blocked by subscribing without a context. For detailed descriptions of all the available `sub` command parameters, see the [Subscribe](https://hivemq.github.io/mqtt-cli/docs/shell/subscribe.html) section of the HiveMQ MQTT CLI documentation. {{</ note >}}
 
-{{< note >}} See the [Subscribing to Upstream Traffic]({{< ref "/integrations/mqtt#subscribing-to-upstream-traffic" >}}) section of the MQTT Server guide for a full list of available topics you can subscribe to. {{</ note >}}
+> See the [Subscribing to Upstream Traffic]({{< ref "/integrations/mqtt#subscribing-to-upstream-traffic" >}}) section of the MQTT Server guide for a full list of available topics you can subscribe to.
 
 ## Schedule Downlink Messages
 
@@ -74,9 +74,11 @@ Use the `pub` command to publish to topics, e.g. to schedule downlink messages t
 For example, to push an unconfirmed downlink message with the hexadecimal payload `BE EF` on `FPort` 15 with normal priority to the `dev1` device, use the following command:
 
 ```bash
-$ pub -t v3/app1/devices/dev1/down/push -m '{"downlinks":[{"f_port": 15,"frm_payload":"vu8=","priority": "NORMAL"}]}'
+$ pub -t "v3/app1/devices/dev1/down/push" -m '{"downlinks":[{"f_port": 15,"frm_payload":"vu8=","priority": "NORMAL"}]}'
 ```
 
-{{< note >}} For detailed descriptions of the `pub` command parameters, see the [Publish](https://hivemq.github.io/mqtt-cli/docs/shell/publish.html) section of the MQTT CLI documentation. {{</ note >}}
+{{< note >}} For scheduling downlink messages, the `f_port` values from `1` to `233` are allowed. {{</ note >}}
+
+> For detailed descriptions of the `pub` command parameters, see the [Publish](https://hivemq.github.io/mqtt-cli/docs/shell/publish.html) section of the MQTT CLI documentation.
 
 {{< note >}} See the [Publishing Downlink Traffic]({{< ref "/integrations/mqtt#publishing-downlink-traffic" >}}) section to learn about using `/replace` instead of `/push`. {{</ note >}}
