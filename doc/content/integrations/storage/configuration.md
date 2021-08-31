@@ -5,7 +5,9 @@ weight: 10
 distributions: Enterprise
 ---
 
-{{< note >}} On Cloud distributions, the following configuration options are automatically enabled in {{% tts %}}. To enable and use the integration for specific Applications, follow the instructions in the [Enable]({{< relref "enable" >}}) and [Retrieve]({{< relref "retrieve" >}}) sections. {{</ note >}}
+This section contains instructions for configuring the Storage Integration on Enterprise distributions.
+
+{{< note >}} The Storage Integration is already configured on Cloud and Community Edition distributions. To enable and use the integration for specific Applications, follow the instructions in the [Enable]({{< relref "enable" >}}) and [Retrieve]({{< relref "retrieve" >}}) sections. {{</ note >}}
 
 The Storage Integration requires configuration for the underlying storage provider used, along with a few options for tuning performance and memory usage.
 
@@ -16,6 +18,25 @@ You can configure PostgreSQL, or any other PostgreSQL-compatible database (e.g. 
 {{< /highlight >}}
 
 {{< note >}} This will use the same database instance that is used for the Identity Server as well. In production deployments, this should be a different database. {{</ note >}}
+
+## TimescaleDB Options
+
+The Storage Integration has special configuration options for TimescaleDB. These options are set as flags when the database is initialized.
+
+**\--timescaledb.chunk-time-interval**
+
+This configures the [chunk time interval](https://docs.timescale.com/timescaledb/latest/how-to-guides/hypertables/best-practices/#time-intervals). It accepts values in hours, and is set to `168` hours by default.
+
+**\--timescaledb.enable-retention-policy**
+**\--timescaledb.enable-retention-policy=false**
+
+This enables or disables the retention policy for TimescaleDB. If enabled, data older than the **retention-days** will be deleted.
+
+{{< note >}} This configuration option will have immediate effect and delete messages older than the retention value. {{</ note >}}
+
+**\--timescaledb.retention-days**
+
+This sets the number of days for the retention policy. It accepts values in days, and is set to `30` days by default.
 
 ## Database setup
 
