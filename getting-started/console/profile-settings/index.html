@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Installing The Things Stack | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/installation/" />
+  <title>Profile Settings | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/console/profile-settings/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.294c77c74f918a8f5064a76731a816bd0b67f9a72689b5b3e1426b114bf7b43a.css" integrity="sha256-KUx3x0&#43;Rio9QZKdnMagWvQtn&#43;acmibWz4UJrEUv3tDo=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Installing The Things Stack">
+  <meta itemprop="name" content="Profile Settings">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Installing The Things Stack">
+  <meta property="og:title" content="Profile Settings">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/installation/">
-  <meta name="twitter:title" content="Installing The Things Stack" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/console/profile-settings/">
+  <meta name="twitter:title" content="Profile Settings" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -104,31 +104,23 @@
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/console/" class="">Console</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/installation/" class="is-active">Installing The Things Stack</a>
     
 
 
 <ul class="menu-list">
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/installation/configuration/" class="">Configuration</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/console/login/" class="">Login</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/installation/certificates/" class="">Certificates</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/console/profile-settings/" class="is-active">Profile Settings</a>
     
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/installation/running-the-stack/" class="">Running The Things Stack</a>
     
-  </li>
 
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/installation/troubleshooting/" class="">Troubleshooting Installation</a>
+
+
     
   </li>
 
@@ -136,6 +128,9 @@
 
 
     
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/installation/" class="">Installing The Things Stack</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/" class="">Migrating to The Things Stack</a>
@@ -184,79 +179,53 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Installing The Things Stack
+        <h1 class="title is-size-2">Profile Settings
           
         </h1>
         
-        <h2 class="subtitle">
-          
-            
-            
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-  
-
-  
-
-<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Enterprise and Open Source Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
-
-  <img class="badge" src="/docs/img/tts_frames/frame_open_source.svg"></img>
-
-</a>
-
-
-          
-          
-          
-        </h2>
-        
         <div class="content">
-          <p>This is a guide for installing The Things Stack Enterprise or Open Source on your own hardware, to run your own private LoRaWAN network server.</p>
-<p>To use The Things Stack in the cloud without installing it on your own hardware, see <a href="/docs/getting-started/cloud-hosted/">The Things Stack Cloud</a> (our professional, SLA-backed offering) or <a href="/docs/getting-started/ttn/">Community Edition</a> (our free-to-use community edition).</p>
-<p>In addition to the written instructions, video instructions for installing The Things Stack are available on <a href="https://youtu.be/bMT9n1-6dCc">The Things Network youtube channel</a>.</p>
-<details><summary>Show video</summary>
+          <p>This section explains how to modify profile settings on in The Things Stack Console.</p>
+<p>Once you are logged into the Console, you can adjust profile settings. Click on your avatar in the upper right corner and select <strong>Profile settings</strong>.</p>
+<figure>
+    <img src="profile-settings.png"
+         alt="Navigate to profile settings"/> 
+</figure>
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/XgPSU4UkDuE" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-
-</details>
-<h2 id="prerequisites">Prerequisites</h2>
-<ol>
-<li>A server with a recommended 4 virtual CPUs and 16GB RAM running <a href="https://docs.docker.com/engine/">Docker</a> and <a href="https://docs.docker.com/compose/">Docker Compose</a>*</li>
-<li>DNS records pointing to your server&rsquo;s IP address (skip if using <code>localhost</code>)</li>
-<li>A <a href="https://thethingsindustries.com/technology/pricing">license</a> for The Things Stack (only for Enterprise)</li>
-</ol>
-<!--more-->
+<p>You will be redirected to a dedicated profile settings page.</p>
+<h2 id="general-settings">General Settings</h2>
+<p>To change basic info such as your profile picture, name or email address, click the <strong>Expand</strong> button next to the <strong>General settings</strong> section.</p>
+<p>For profile picture, the <a href="https://en.gravatar.com/">Gravatar</a> image associated with your email address is used by default. You can choose to <strong>Upload an image</strong> to change your profile picture.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  When purchasing a license, consider setting up a multi-tenant environment from the beginning if you plan to add tenants later. Switching from a a single-tenant to multi-tenant environment requires database migration.
+  You cannot change the <strong>User ID</strong>, but you can set your name to be displayed instead by filling in the <strong>Name</strong> field.
 </div>
 
-<p>This guide shows you how to get everything up and running on a server. If you are comfortable with configuring servers and working with command line, this is the perfect place to start, but first, follow the guides to <a href="https://docs.docker.com/install/#supported-platforms">install Docker</a> and to <a href="https://docs.docker.com/compose/install/#install-compose">install Docker Compose</a>.</p>
-<blockquote>
-<p>*Benchmark for 100K devices with 12 confirmed uplinks per day. Your requirements will vary depending on your load and desired redundancy.</p>
-</blockquote>
+<p>You can change the primary email address associated with your The Things Stack account by entering a new one in the <strong>Email address</strong> field.</p>
+<figure>
+    <img src="general-settings.png"
+         alt="General settings"/> 
+</figure>
+
+<p>Click <strong>Save changes</strong> to save any modified info.</p>
+<h2 id="change-password">Change password</h2>
+<p>To set up a new password for your account, click the <strong>Expand</strong> button next to the <strong>Change password</strong> section.</p>
+<p>Type in your <strong>Current password</strong>, then create a <strong>New password</strong> and confirm it.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  We recommend you create a strong password to enhance your profile&rsquo;s security.
+</div>
+
+<p>You can also choose to revoke all currently active sessions and access tokens by ticking the <strong>Enabled</strong> checkbox under <strong>Revoke all access</strong>. This will require you to log into the Console again using your newly created password.</p>
+<figure>
+    <img src="change-password.png"
+         alt="Change password"/> 
+</figure>
+
+<p>Select <strong>Change password</strong> to finish.</p>
         </div>
         
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/getting-started/console/profile-settings/">← Profile Settings</a>
-<a class="button is-pulled-right" href="/docs/getting-started/installation/configuration/">Configuration →</a>
+<a class="button is-pulled-left" href="/docs/getting-started/console/login/">← Login</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -277,7 +246,10 @@
   <ul class="menu-list">
     
       
-      <li><a href='#prerequisites'>Prerequisites</a></li>
+      <li><a href='#general-settings'>General Settings</a></li>
+    
+      
+      <li><a href='#change-password'>Change password</a></li>
     
   </ul>
 
@@ -317,14 +289,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 13 Jul 2021.
+  Last changed by Nejra Selimović on 31 Aug 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/430ad02932a92fce19274ca58fa31485fecb2a83">
-      doc: Improve installation guide (#448)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/29f49eacde303fd8c9d7c5d0e1693998900a649b">
+      doc: Document profile settings (#513)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/installation/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/console/profile-settings/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
