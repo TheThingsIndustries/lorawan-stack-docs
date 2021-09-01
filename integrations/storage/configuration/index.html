@@ -200,9 +200,10 @@
         </h2>
         
         <div class="content">
-          <div class="notification is-info is-light has-text-dark">
+          <p>This section contains instructions for configuring the Storage Integration on Enterprise distributions.</p>
+<div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  On Cloud distributions, the following configuration options are automatically enabled in The Things Stack. To enable and use the integration for specific Applications, follow the instructions in the <a href="/docs/integrations/storage/enable/">Enable</a> and <a href="/docs/integrations/storage/retrieve/">Retrieve</a> sections.
+  The Storage Integration is already configured on Cloud and Community Edition distributions. To enable and use the integration for specific Applications, follow the instructions in the <a href="/docs/integrations/storage/enable/">Enable</a> and <a href="/docs/integrations/storage/retrieve/">Retrieve</a> sections.
 </div>
 
 <p>The Storage Integration requires configuration for the underlying storage provider used, along with a few options for tuning performance and memory usage.</p>
@@ -248,10 +249,33 @@
   This will use the same database instance that is used for the Identity Server as well. In production deployments, this should be a different database.
 </div>
 
+<h2 id="timescaledb-options">TimescaleDB Options</h2>
+<p>The Storage Integration has special configuration options for TimescaleDB. These options are set as flags when the database is initialized.</p>
+<p><strong>--timescaledb.chunk-time-interval</strong></p>
+<p>This configures the <a href="https://docs.timescale.com/timescaledb/latest/how-to-guides/hypertables/best-practices/#time-intervals">chunk time interval</a>. It accepts values in hours, and is set to <code>168</code> hours by default.</p>
+<p><strong>--timescaledb.enable-retention-policy</strong>
+<strong>--timescaledb.enable-retention-policy=false</strong></p>
+<p>This enables or disables the retention policy for TimescaleDB. If enabled, data older than the <strong>retention-days</strong> will be deleted.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  This configuration option will have immediate effect and delete messages older than the retention value.
+</div>
+
+<p><strong>--timescaledb.retention-days</strong></p>
+<p>This sets the number of days for the retention policy. It accepts values in days, and is set to <code>30</code> days by default.</p>
 <h2 id="database-setup">Database setup</h2>
 <p>Initialize the configured database with:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-stack storage-db init
-</code></pre></div><p>If you are using Docker Compose (as shown in the Getting Started guide), you should instead do:</p>
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <p>If you are using TimescaleDB, the following configuration options are also available:</p>
+<pre><code>--timescaledb.chunk-time-interval
+--timescaledb.enable-retention-policy
+--timescaledb.retention-days
+</code></pre>
+</div>
+
+<p>If you are using Docker Compose (as shown in the Getting Started guide), you should instead do:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack storage-db init
 </code></pre></div><p>If everything went well, upon restart, you should be able to see the following log message:</p>
 <pre><code>  INFO Initialized Storage Integration          namespace=applicationserver/io/packages/storage provider=postgres
@@ -278,6 +302,9 @@
 
 
   <ul class="menu-list">
+    
+      
+      <li><a href='#timescaledb-options'>TimescaleDB Options</a></li>
     
       
       <li><a href='#database-setup'>Database setup</a></li>
@@ -320,10 +347,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 12 Jan 2021.
+  Last changed by Ben Olayinka on 01 Sep 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a050955fdfd936858e85115b56fdae543cb0db5d">
-      doc: Add storage note to update cli
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/cee4ea6a91881ab763ee0002873aefc7a789a935">
+      doc: Add timescaledb config options (#551)
     </a>
 </p>
 
