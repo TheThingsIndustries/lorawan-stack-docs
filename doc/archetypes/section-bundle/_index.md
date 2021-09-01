@@ -19,6 +19,33 @@ Use a requirements subheading to list requirements/prerequisites.
 1. Requirement 1
 2. Requirement 2
 
+## Tables
+
+For custom table sizing, wrap tables in a `fixed-table` class div and a `table-name` css class with the sizes specified.
+
+For example:
+
+<div class="fixed-table table-name">
+
+| Header 1 | Header 2 |
+|---|---|
+| Col 1 | Col 2 |
+
+</div>
+
+Then, add a css class `table-name` as follows:
+
+```
+.table-name {
+  th:nth-child(1) {
+    width: 10em;
+  }
+  th:nth-child(2) {
+    width: 6em;
+  }
+}
+```
+
 ## Links Within Docs
 
 Use the `ref` shortcode. For example, [this is a link to the component reference]({{< ref "reference/components" >}}).
