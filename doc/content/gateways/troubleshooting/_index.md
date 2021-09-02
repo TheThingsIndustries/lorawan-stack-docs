@@ -153,6 +153,8 @@ To solve this, use a different gateway ID. If you are an administrator and wish 
 
 Another gateway is already registered with the same Gateway EUI. This gateway may be registered by another user, but if you are not an administrator (e.g if you are using The Things Stack Community Edition) you will not be able to see gateways registered by other users.
 
+If the gateway is registered with the same EUI in some other tenant, the error will reflect that as well.
+
 First, double check that you have entered the EUI correctly. Then, double check that you have not already registered the gateway. Finally, if you have purchased the gateway secondhand, it is possible someone before you registered the gateway. Contact them to unregister it. If they are unavailable, contact [The Things Industries](mailto:info@thethingsindustries.com).
 
 ## What is Radio Configuration?
