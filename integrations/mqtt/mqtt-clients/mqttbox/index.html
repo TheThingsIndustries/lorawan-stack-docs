@@ -210,7 +210,15 @@
   This section follows the examples in the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a> guide.
 </div>
 
-<p>In the MQTTBox application, click the <strong>Create MQTT Client</strong> button on the left to add a new MQTT client. Give a name to your MQTT client by filling in the <strong>MQTT Client Name</strong> field. Choose <strong>mqtt / tcp</strong> from the <strong>Protocol</strong> drop down list, and enter the <strong>Public address</strong> of your The Things Stack instance in the <strong>Host</strong> field. Do the same for the <strong>Username</strong> and <strong>Password</strong> fields.</p>
+<p>In the MQTTBox application, click the <strong>Create MQTT Client</strong> button on the left to add a new MQTT client.</p>
+<p>Give a name to your MQTT client by filling in the <strong>MQTT Client Name</strong> field.</p>
+<p>Choose <strong>mqtt / tcp</strong> from the <strong>Protocol</strong> drop down list, and enter the <strong>Public address</strong> of your The Things Stack instance in the <strong>Host</strong> field.</p>
+<p>Fill in the <strong>Username</strong> and <strong>Password</strong> fields.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Keep in mind that password represents the value of the authentication API key. For more info, see <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#creating-an-api-key">Creating an API Key</a>.
+</div>
+
 <figure>
     <img src="mqttbox-config.png"
          alt="MQTTBox client configuration"/> 
@@ -262,7 +270,12 @@
     <span class="nt">&#34;priority&#34;</span><span class="p">:</span> <span class="s2">&#34;NORMAL&#34;</span>
   <span class="p">}]</span>
 <span class="p">}</span>
-</code></pre></div><p>Click the <strong>Publish</strong> button and a message with the hexadecimal payload <code>BE EF</code> will be scheduled for sending to your end device.</p>
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  For scheduling downlink messages, the <code>f_port</code> values from <code>1</code> to <code>233</code> are allowed.
+</div>
+
+<p>Click the <strong>Publish</strong> button and a message with the hexadecimal payload <code>BE EF</code> will be scheduled for sending to your end device.</p>
 <figure>
     <img src="publish.png"
          alt="Publish"/> 
@@ -340,10 +353,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 10 Jun 2021.
+  Last changed by Nejra Selimović on 02 Sep 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/aea847e4a5b06db18fe91950625da9cc60eaf291">
-      Docs reorganization (#374)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/6e632e2d2b4a2ae99f59672341067fc7b3fee321">
+      doc: Add fport note, equalize MQTT  docs (#552)
     </a>
 </p>
 

@@ -196,11 +196,9 @@
           <p><a href="https://www.eclipse.org/paho/">Eclipse Paho</a> is an umbrella project on a mission to provide high quality implementations of tools and libraries for M2M communications.</p>
 <p>It covers MQTT client implementations in several programming languages such as Java, Python, Go, etc.</p>
 <p>Follow this guide to learn how to connect to The Things Stack MQTT Server, to receive and to send messages using the Eclipse Paho client.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  This document contains instructions to use <a href="https://www.eclipse.org/paho/index.php?page=clients/python/index.php">Eclipse Paho MQTT Python client library</a>, which implements MQTT v3.1 and v3.1.1 protocol. To compare this library with other Paho project implementations visit <a href="https://www.eclipse.org/paho/index.php?page=downloads.php">Eclipse Paho Downloads page</a>. To find more about the usage of the Python implementation, visit <a href="https://pypi.org/project/paho-mqtt/">this page</a>.
-</div>
-
+<blockquote>
+<p>This document contains instructions to use <a href="https://www.eclipse.org/paho/index.php?page=clients/python/index.php">Eclipse Paho MQTT Python client library</a>, which implements MQTT v3.1 and v3.1.1 protocol. To compare this library with other Paho project implementations visit <a href="https://www.eclipse.org/paho/index.php?page=downloads.php">Eclipse Paho Downloads page</a>. To find more about the usage of the Python implementation, visit <a href="https://pypi.org/project/paho-mqtt/">this page</a>.</p>
+</blockquote>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   The examples in this guide are suitable for The Things Stack Open Source deployment. If you are using a different The Things Stack deployment, make sure your read a <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#note-on-using-the-tenant-id">Note on Using the tenant ID</a>.
@@ -251,7 +249,12 @@ import paho.mqtt.subscribe as subscribe
 import paho.mqtt.publish as publish
 
 publish.single<span class="o">(</span><span class="s2">&#34;v3/{application-id}/devices/{device-id}/down/push&#34;</span>, <span class="s1">&#39;{&#34;downlinks&#34;:[{&#34;f_port&#34;: 15,&#34;frm_payload&#34;:&#34;vu8=&#34;,&#34;priority&#34;: &#34;NORMAL&#34;}]}&#39;</span>, <span class="nv">hostname</span><span class="o">=</span><span class="s2">&#34;thethings.example.com&#34;</span>, <span class="nv">port</span><span class="o">=</span>1883, <span class="o">{</span><span class="s1">&#39;username&#39;</span>:<span class="s2">&#34;app1&#34;</span>,<span class="s1">&#39;password&#39;</span>:<span class="s2">&#34;NNSXS.VEEBURF3KR77ZR..&#34;</span><span class="o">})</span>
-</code></pre></div><p>Save the file and run it the terminal with:</p>
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  For scheduling downlink messages, the <code>f_port</code> values from <code>1</code> to <code>233</code> are allowed.
+</div>
+
+<p>Save the file and run it the terminal with:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ python publish.py
 </code></pre></div><p>You will see the scheduled message in the console under the <strong>Live data</strong> tab and your end device will receive the message after a short time.</p>
 <p>In case of using TLS, adjust the <code>port</code> value and pass the <code>tls</code> argument to the <code>simple</code> function as described in section above.</p>
@@ -326,10 +329,10 @@ publish.single<span class="o">(</span><span class="s2">&#34;v3/{application-id}/
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 10 Jun 2021.
+  Last changed by Nejra Selimović on 02 Sep 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/aea847e4a5b06db18fe91950625da9cc60eaf291">
-      Docs reorganization (#374)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/6e632e2d2b4a2ae99f59672341067fc7b3fee321">
+      doc: Add fport note, equalize MQTT  docs (#552)
     </a>
 </p>
 

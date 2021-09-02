@@ -220,7 +220,7 @@
 <p>Enter the HiveMQ MQTT CLI shell mode by typing the following command in your terminal:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mqtt shell
 </code></pre></div><p>Once in shell mode, you can connect to The Things Stack MQTT Server by using the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ con -h hostname -p port -V <span class="m">3</span> -u username -pw password
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ con -h &lt;hostname&gt; -p &lt;port&gt; -V <span class="m">3</span> -u &lt;username&gt; -pw &lt;password&gt;
 </code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   Keep in mind that <code>password</code> is the value of the authentication API key. For more info, see <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#creating-an-api-key">Creating an API Key</a>.
@@ -228,36 +228,37 @@
 
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  we use <code>-V 3</code> flag since the The Things Stack MQTT Server supports the 3.1.1 MQTT protocol version, as mentioned in the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT Server guide</a>. For detailed descriptions of other parameters used with the <code>con</code> command, see the <a href="https://hivemq.github.io/mqtt-cli/docs/shell/connect.html">official MQTT CLI documentation</a>.
+  The <code>-V 3</code> flag is used here because the The Things Stack MQTT Server supports the 3.1.1 MQTT protocol version, as mentioned in the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT Server guide</a>. For detailed descriptions of other parameters used with the <code>con</code> command, see the <a href="https://hivemq.github.io/mqtt-cli/docs/shell/connect.html">official MQTT CLI documentation</a>.
 </div>
 
 <p>For example, you can connect to The Things Stack MQTT Server over its public address with the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">con -h thethings.example.com -p <span class="m">1883</span> -V <span class="m">3</span> -u app1 -pw NNSXS.VEEBURF3KR77ZR..
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">con -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <span class="s2">&#34;1883&#34;</span> -V <span class="m">3</span> -u <span class="s2">&#34;app1&#34;</span> -pw <span class="s2">&#34;NNSXS.VEEBURF3KR77ZR..&#34;</span>
 </code></pre></div><p>To use TLS for additional security, change the port from <code>1883</code> to <code>8883</code> and use the <code>--cafile</code> option to provide the PEM encoded CA file of your The Things Stack deployment.</p>
 <p>Once you have successfully connected to The Things Stack MQTT Server, continue with subscribing or publishing to topics exposed by it by following the sections below.</p>
 <h2 id="subscribe-to-upstream-traffic">Subscribe to Upstream Traffic</h2>
 <p>Use the <code>sub</code> command to subscribe to topics and listen to messages being sent from your end device.</p>
 <p>For example, if you want to listen to the uplink messages being sent from <code>dev1</code> device in <code>app1</code> application, use the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sub -t v3/app1/devices/dev1/up -s
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sub -t <span class="s2">&#34;v3/app1/devices/dev1/up&#34;</span> -s
 </code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   <code>-s</code> flag is used to subscribe with a context to the given topic, e.g. to stop the console being blocked by subscribing without a context. For detailed descriptions of all the available <code>sub</code> command parameters, see the <a href="https://hivemq.github.io/mqtt-cli/docs/shell/subscribe.html">Subscribe</a> section of the HiveMQ MQTT CLI documentation.
 </div>
 
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  See the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#subscribing-to-upstream-traffic">Subscribing to Upstream Traffic</a> section of the MQTT Server guide for a full list of available topics you can subscribe to.
-</div>
-
+<blockquote>
+<p>See the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#subscribing-to-upstream-traffic">Subscribing to Upstream Traffic</a> section of the MQTT Server guide for a full list of available topics you can subscribe to.</p>
+</blockquote>
 <h2 id="schedule-downlink-messages">Schedule Downlink Messages</h2>
 <p>Use the <code>pub</code> command to publish to topics, e.g. to schedule downlink messages to be sent to your end device.</p>
 <p>For example, to push an unconfirmed downlink message with the hexadecimal payload <code>BE EF</code> on <code>FPort</code> 15 with normal priority to the <code>dev1</code> device, use the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ pub -t v3/app1/devices/dev1/down/push -m <span class="s1">&#39;{&#34;downlinks&#34;:[{&#34;f_port&#34;: 15,&#34;frm_payload&#34;:&#34;vu8=&#34;,&#34;priority&#34;: &#34;NORMAL&#34;}]}&#39;</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ pub -t <span class="s2">&#34;v3/app1/devices/dev1/down/push&#34;</span> -m <span class="s1">&#39;{&#34;downlinks&#34;:[{&#34;f_port&#34;: 15,&#34;frm_payload&#34;:&#34;vu8=&#34;,&#34;priority&#34;: &#34;NORMAL&#34;}]}&#39;</span>
 </code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  For detailed descriptions of the <code>pub</code> command parameters, see the <a href="https://hivemq.github.io/mqtt-cli/docs/shell/publish.html">Publish</a> section of the MQTT CLI documentation.
+  For scheduling downlink messages, the <code>f_port</code> values from <code>1</code> to <code>233</code> are allowed.
 </div>
 
+<blockquote>
+<p>For detailed descriptions of the <code>pub</code> command parameters, see the <a href="https://hivemq.github.io/mqtt-cli/docs/shell/publish.html">Publish</a> section of the MQTT CLI documentation.</p>
+</blockquote>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   See the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#publishing-downlink-traffic">Publishing Downlink Traffic</a> section to learn about using <code>/replace</code> instead of <code>/push</code>.
@@ -336,10 +337,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 10 Jun 2021.
+  Last changed by Nejra Selimović on 02 Sep 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/aea847e4a5b06db18fe91950625da9cc60eaf291">
-      Docs reorganization (#374)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/6e632e2d2b4a2ae99f59672341067fc7b3fee321">
+      doc: Add fport note, equalize MQTT  docs (#552)
     </a>
 </p>
 
