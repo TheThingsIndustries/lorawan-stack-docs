@@ -21,7 +21,15 @@ In this guide, we show how to create an MQTT client for subscribing or publishin
 
 {{< note >}} This section follows the examples in the [MQTT Server]({{< ref "/integrations/mqtt" >}}) guide. {{</ note >}}
 
-In the MQTTBox application, click the **Create MQTT Client** button on the left to add a new MQTT client. Give a name to your MQTT client by filling in the **MQTT Client Name** field. Choose **mqtt / tcp** from the **Protocol** drop down list, and enter the **Public address** of your {{% tts %}} instance in the **Host** field. Do the same for the **Username** and **Password** fields.
+In the MQTTBox application, click the **Create MQTT Client** button on the left to add a new MQTT client.
+
+Give a name to your MQTT client by filling in the **MQTT Client Name** field.
+
+Choose **mqtt / tcp** from the **Protocol** drop down list, and enter the **Public address** of your {{% tts %}} instance in the **Host** field.
+
+Fill in the **Username** and **Password** fields.
+
+{{< note >}} Keep in mind that password represents the value of the authentication API key. For more info, see [Creating an API Key]({{< ref "/integrations/mqtt#creating-an-api-key" >}}). {{</ note >}}
 
 {{< figure src="mqttbox-config.png" alt="MQTTBox client configuration" >}}
 
@@ -72,6 +80,8 @@ To send an example downlink, paste the following content in the **Payload** fiel
   }]
 }
 ```
+
+{{< note >}} For scheduling downlink messages, the `f_port` values from `1` to `233` are allowed. {{</ note >}}
 
 Click the **Publish** button and a message with the hexadecimal payload `BE EF` will be scheduled for sending to your end device.
 
