@@ -205,7 +205,7 @@
 <h2 id="configuration">Configuration</h2>
 <p>Open the front panel of the gateway casing.</p>
 <p>While the gateway is powered on, hold the pink reset button for 5 seconds (until each of the 5 LEDs illuminate). This erases the existing configuration on the gateway.</p>
-<p>The gateway will now expose a WiFi Access Point whose SSID is of the form <code>TheThings-Gateway-xxxxx</code>, to which you should now connect using password <code>thethings</code>.</p>
+<p>The gateway will now expose a WiFi Access Point (AP) whose SSID is of the form <code>TheThings-Gateway-xxxxx</code>, to which you should now connect using password <code>thethings</code>.</p>
 <p>In a web browser, open the gateway&rsquo;s configuration page by navigating to http://192.168.84.1/</p>
 <figure>
     <img src="ttkg-config-window.png"
@@ -230,8 +230,48 @@
 </ul>
 <p>This will apply the setting and reboot the gateway. If all the steps have been followed correctly, your gateway will now connect to The Things Stack.</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
-<p>Please allow about 5 mins for the gateway to attempt connection before trouble shooting. During this period only 2 or 3 LEDs will be ON with the 3rd LED slowly blinking.</p>
-<p>If there only 3 LEDs active for an extended period of time, unplug the gateway, wait for 10s and reconnect. Also try using an Ethernet connection as that improves the network connectivity.</p>
+<p>Please allow about 5 mins for the gateway to attempt connection before troubleshooting. During this period only 2 or 3 LEDs will be ON with the 3rd LED slowly blinking.</p>
+<p>If there are only 3 LEDs active for an extended period of time, unplug the gateway, wait for 10s and then reconnect. Also, try using an Ethernet connection as that improves the network connectivity.</p>
+<h3 id="how-can-i-open-or-close-the-things-kickstarter-gateway">How can I open or close The Things Kickstarter Gateway?</h3>
+<p>To open the gateway, put it down with the antenna socket at the top and (gently) lift the left and right sides of the white shield.</p>
+<p>To close the gateway, align the lid and push firmly at the sides so you can hear it snap in place.</p>
+<h3 id="the-second-time-i-power-my-gateway-it-takes-time-to-start-up-why">The second time I power my gateway, it takes time to start up. why?</h3>
+<p>Upon every power cycle and every 24 hours, the gateway checks for a new firmware. If the latest firmware is not downloaded yet, it will download the new image and perform a reboot in order to install the new image. This can take up to a few minutes. The process is indicated by a flashing power LED. Power cycling during this process is not dangerous, but this process will be restarted on the next start-up, so please be patient!</p>
+<h3 id="what-do-the-led-lights-on-the-gateway-indicate">What do the LED lights on the gateway indicate?</h3>
+<p>The LED lights are a great way of understanding the current state of the gateway. Visit the <a href="https://www.thethingsnetwork.org/docs/gateways/gateway/ledstatus/">official documentation page</a> for a complete list of LED states.</p>
+<h3 id="how-can-i-check-if-the-gateway-is-working-or-not">How can I check if the gateway is working or not?</h3>
+<p>To check the status of the gateway, go to The Things Stack Console → <strong>Gateways</strong> section → your gateway&rsquo;s settings. If any device sends data through your gateway, you will be able to see it under your gateway&rsquo;s <strong>Live data</strong> tab.</p>
+<p>If you connect your phone/computer to the same network as your gateway, you can access some gateway information at <a href="http://things-gateway.local/info">http://things-gateway.local/info</a> in your web browser.</p>
+<h3 id="how-can-i-reset-my-gateway">How can I reset my gateway?</h3>
+<p>There are few things you can do by pressing the reset button in different ways:</p>
+<ul>
+<li>restart the gateway by shortly pressing the button</li>
+<li>erase WiFi settings by holding the button for 2 seconds</li>
+<li>erase WiFi and activation settings by holding the button for 5 seconds</li>
+<li>erase the full serial flash by holding the button while powering the gateway on</li>
+</ul>
+<h3 id="my-gateway-is-in-a-reboot-loop-how-can-i-fix-it">My gateway is in a reboot loop. How can I fix it?</h3>
+<p>A possible cause of this issue is that the LoRa board is not fully pushed in in the socket. Open the lid and push the LoRa board in the socket. If this fix does not work for you, check the <a href="https://github.com/TheThingsProducts/gateway/issues">product repository</a>, browse through issues to search for solution or file a new issue.</p>
+<h3 id="my-gateway-stays-in-ap-mode-what-do-i-do">My gateway stays in AP mode. What do I do?</h3>
+<p>This behaviour occurs when there is a glitch in the WiFi connection of the gateway. When this happens, your gateway will turn into an AP and devices you used to set up the gateway can connect to it (your laptop or phone). To avoid this, you should remove the gateway from the list of APs from your laptop/phone (<em>Network Settings → Things-Gateway-XXXX → Forget this network</em>).</p>
+<h3 id="i-want-to-get-in-depth-insightread-debug-messages-of-my-gateway-is-that-possible">I want to get in-depth insight/read debug messages of my gateway. Is that possible?</h3>
+<p>The gateway has a UART port on which it prints debug messages. To see these messages you need to connect a device between the gateway and your computer that can read out a UART (e.g. an FTDI cable/board).</p>
+<p>Connect a UART interface device to your computer. Connect the RX line to the RX pin of the gateway, and the GND line to the GND pin on the gateway with jumpers.</p>
+<figure>
+    <img src="uart-sample.jpg"
+         alt="Sample connection between The Things Kickstarter gateway and an UART device"/> 
+</figure>
+
+<p>Now, you need to start a terminal session to UART interface device with <code>115200@8N</code>. On Windows you can use <em>PuTTY</em>, on macOS or Linux use <em>screen</em>. The sample output is shown below.</p>
+<figure>
+    <img src="screen-macos.png"
+         alt="Sample screen output"/> 
+</figure>
+
+<h3 id="what-steps-do-i-need-to-take-if-i-want-to-relocate-my-gateway">What steps do I need to take if I want to relocate my gateway?</h3>
+<p>There is no need to reconfigure the gateway, however, it is recommended to update the <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/#set-gateway-location">gateway location settings</a> in The Things Stack Console for a better accuracy.</p>
+<h3 id="i-see-unexpected-data-sent-to-gateway-error-what-should-i-do">I see <em>Unexpected data sent to gateway</em> error. What should I do?</h3>
+<p>This error seems to appear when the Gateway ID length exceeds the maximum of 34 characters. If your gateway&rsquo;s ID is longer than the maximum allowed, delete and re-register your gateway in The Things Stack Console with a new, shorter Gateway ID.</p>
         </div>
         
           <div class="is-clearfix">
@@ -306,10 +346,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 12 Jul 2021.
+  Last changed by Nejra Selimović on 07 Sep 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b03897e07a682a8d7b5107bbb3ec431f8ac21fb4">
-      Add server addresses page (#435)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4100bf02f853d7b541df7e578568e8dc848a99dc">
+      doc: Add Kickstarter FAQ (#559)
     </a>
 </p>
 
