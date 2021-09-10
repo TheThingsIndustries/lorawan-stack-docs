@@ -242,13 +242,31 @@
 <p>as default parameters might not be valid in context of your deployment.</p>
 <p>There are two templates that have a non-standard update procedure:</p>
 <h3 id="2-5-db-timescale"><code>2-5-db-timescale</code></h3>
-<p>This template describes an EC2 machine with EBS storage. Currently, AWS does not permit replacement updates on EC2 machines with EBS volumes attached. Continuing with update might result in data loss. For this reason, you will need to carefully examine what changes AWS wants to perform while updating this stack, and manually apply some of them.</p>
-<p>As machine image, we use the newest Amazon Linux 2 image. This means that AMI is most likely going to change between two consecutive releases of The Things Stack, and upon update AWS will try to replace the EC2 machine. However, you should update the software on that EC2 machine manually instead.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  As AMI, we use the newest Amazon Linux 2 image. This means that AMI ID is most likely going to change between two consecutive releases of The Things Stack, and upon update AWS will try to replace the EC2 machine. If there are no notes in <code>UPGRADING.md</code> and new template differs only by AMI ID, consider simply upgrading the software on the machine instead of updating this particular stack via CloudFormation, especially prior to version 3.15.0. Always remember to backup your data before update.
+</div>
+
+<h4 id="updating-before-version-3150">Updating before version 3.15.0</h4>
+<p>If you&rsquo;re updating to a version lower than 3.15.0, simple CloudFormation update will fail because CloudFormation doesn&rsquo;t propely remount EBS volumes. It is advised that you skip this template, or inspect and apply relevant changes manually.</p>
+<h4 id="updating-to-3150-or-higher">Updating to 3.15.0 or higher</h4>
+<p>In version 3.15.0 the <code>2-5-db-timescale</code> template has been reworked to allow smoother update.</p>
+<h5 id="updating-from-version-lower-than-3150">Updating from version lower than 3.15.0</h5>
+<p>It is strongly advised to backup your data before performing this update.</p>
+<ol>
+<li>Before update, set the <code>ApplicationServerStorageEnabled</code> parameter in <code>5-2-ecs-ops</code> and <code>5-4-ecs-services</code> to <code>false</code>. This will turn off storage integration.</li>
+<li>Terminate the EC2 machine hosting TimescaleDB.</li>
+<li>Update the <code>2-5-db-timescale</code> template. Make sure that there are no changes to <code>Volume</code> (potential data loss). If you can&rsquo;t avoid updating <code>Volume</code>, make a snapshot and then use the <code>VolumeSnapshotID</code> parameter to recreate the volume from a snapshot.</li>
+<li>Continue with the update as normal. When you reach <code>5-2-ecs-ops</code> and <code>5-4-ecs-services</code>, set <code>ApplicationServerStorageEnabled</code> parameter back to <code>true</code>.</li>
+</ol>
+<h5 id="updating-from-version-3150-or-higher">Updating from version 3.15.0 or higher</h5>
+<p>You can update the template as any other. Make sure that the Change Set doesn&rsquo;t contain any changes to <code>Volume</code>, or you might experience data loss.</p>
+<p>Keep in mind that storage integration will not work until Application Server ECS service is restarted. If you&rsquo;re updating the stack to a new version (thus, changing the used image), Application Server service will be restarted during <code>5-4-ecs-services</code> update and you don&rsquo;t need to do this explicitly.</p>
 <h3 id="5-1-ecs-cluster"><code>5-1-ecs-cluster</code></h3>
 <p>In this template we use an autoscaling group. Updates to <code>LaunchConfiguration</code> do not cause any effect on already running machines that were created using said <code>LaunchConfiguration</code>. This means that if this template contains changes, e.g. different <code>UserData</code> or an updated AMI image, you should examine changes and apply them manually.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Make sure to remember that both <code>5-1-ecs-cluster</code> and <code>2-5-db-timescale</code> use bare Amazon Linux 2 images. This should make it easy to decide whether you actually need to update the machines, and if yes, how exactly. There is no non-standard software on these machines beyond what&rsquo;s in the <code>UserData</code> section of respective template, therefore you can follow standard update procedures.
+  Make sure to remember that both <code>5-1-ecs-cluster</code> and <code>2-5-db-timescale</code> use standard Amazon Linux 2 images. This should make it easy to decide whether you actually need to update the machines, and if yes, how exactly. There is no non-standard software on these machines beyond what&rsquo;s in the <code>UserData</code> section of respective template, therefore you can follow standard update procedures.
 </div>
 
 <h2 id="changing-docker-images">Changing Docker Images</h2>
@@ -338,10 +356,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Michał Borkowski on 13 Jul 2021.
+  Last changed by Michał Borkowski on 10 Sep 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/12f29ce0a14ae1e930346e958914525a1226efa9">
-      doc: Minor fixes (#446)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d71262f5e162383febdf9f4a05e74f3148f1b89">
+      doc: V3.15.0 TimescaleDB update (#555)
     </a>
 </p>
 
