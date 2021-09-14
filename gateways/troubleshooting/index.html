@@ -296,11 +296,11 @@ is that it does not have an implemented mechanism to detect if pulling the downl
 <li>Checking your internet connection</li>
 <li>Using The Things Stack cluster closest to the location of your gateway</li>
 </ul>
-<h2 id="i-get-a-id-already-taken-error-when-adding-a-gateway">I Get a &ldquo;ID Already Taken&rdquo; Error When Adding a Gateway.</h2>
+<h2 id="i-get-an-id-already-taken-error-when-adding-a-gateway">I get an &ldquo;ID Already Taken&rdquo; error when adding a gateway.</h2>
 <p>Another gateway is already registered with this ID. This gateway may have been deleted already, but The Things Stack reserves previously used IDs for <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">security reasons</a>.</p>
 <p>This gateway may also be registered by another user, but you are not able to see gateways registered by other users if you are not an administrator (e.g. if you are using The Things Stack Community Edition).</p>
 <p>To solve this, use a different gateway ID. If you are an administrator and wish to reuse a deleted ID, see <a href="https://www.thethingsindustries.com/docs/reference/purge/">Purging Entities</a>.</p>
-<h2 id="i-get-a-gateway-with-eui-is-already-registered-error-when-adding-a-gateway">I Get a &ldquo;Gateway with EUI is Already Registered&rdquo; Error When Adding a Gateway.</h2>
+<h2 id="i-get-a-gateway-with-eui-is-already-registered-error-when-adding-a-gateway">I get a &ldquo;Gateway with EUI is Already Registered&rdquo; error when adding a gateway.</h2>
 <p>Another gateway is already registered with the same Gateway EUI. This gateway may be registered by another user, but if you are not an administrator (e.g if you are using The Things Stack Community Edition) you will not be able to see gateways registered by other users.</p>
 <p>If the gateway is registered with the same EUI in some other tenant, the error will reflect that as well.</p>
 <p>First, double check that you have entered the EUI correctly. Then, double check that you have not already registered the gateway. Finally, if you have purchased the gateway secondhand, it is possible someone before you registered the gateway. Contact them to unregister it. If they are unavailable, contact <a href="mailto:info@thethingsindustries.com">The Things Industries</a>.</p>
@@ -327,6 +327,19 @@ connections. Since CUPS automatically also configures LNS, we recommend you conf
 <p><strong>Official LoRa Basics™ Station
 documentation</strong>: <a href="https://doc.sm.tc/station/">https://doc.sm.tc/station/</a></p>
 <p><strong>Forum</strong>: <a href="https://www.thethingsnetwork.org/forum/">https://www.thethingsnetwork.org/forum/</a></p>
+<h2 id="why-do-my-gateways-gps-location-details-not-show-in-the-things-stack-console">Why do my gateway&rsquo;s GPS location details not show in The Things Stack Console?</h2>
+<p><a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/">LoRa Basics™ Station
+</a> protocol currently does not support GPS fields in Uplink messages, so the GPS location in The Things Stack Console for LoRa Basics™ Station
+-based gateways cannot be updated from status messages.</p>
+<p>Updating gateway location from status messages in supported only for gateways that establish authenticated connections (Basic Station and MQTT gateways), i.e. it is not supported for <a href="https://www.thethingsindustries.com/docs/gateways/udp/">UDP</a> gateways.</p>
+<p>Keep in mind that you can still set the gateway location <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/#set-gateway-location">manually</a> from The Things Stack Console.</p>
+<h2 id="i-set-the-gateway-location-manually-in-the-things-stack-console-why-cant-i-see-it-in-the-gateway-connection-statistics">I set the gateway location manually in The Things Stack Console, why can&rsquo;t I see it in the gateway connection statistics?</h2>
+<p>The connection statistics (<a href="https://www.thethingsindustries.com/docs/reference/api/gateway_server/#a-namegsthe-gs-servicea">Gateway Server service API</a>) do not store the gateway locations.</p>
+<p>The gateway location is stored in the Identity Server instead. The updated location can be found by querying the Identity Server <a href="https://www.thethingsindustries.com/docs/reference/api/gateway/">GetGateway API</a>.</p>
+<blockquote>
+<p>For example, you can query the location with:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl -H <span class="s2">&#34;Authorization: Bearer &lt;api-key&gt;&#34;</span> https://example.thethings.com/api/v3/gateways/&lt;gateway-id&gt;?field_mask<span class="o">=</span>antennas
+</code></pre></div></blockquote>
         </div>
         
           <div class="is-clearfix">
@@ -385,10 +398,10 @@ documentation</strong>: <a href="https://doc.sm.tc/station/">https://doc.sm.tc/s
       <li><a href='#no-downlinks-are-reaching-my-udp-gateway-why'>No downlinks are reaching my UDP gateway. Why?</a></li>
     
       
-      <li><a href='#i-get-a-id-already-taken-error-when-adding-a-gateway'>I Get a “ID Already Taken” Error When Adding a Gateway.</a></li>
+      <li><a href='#i-get-an-id-already-taken-error-when-adding-a-gateway'>I get an “ID Already Taken” error when adding a gateway.</a></li>
     
       
-      <li><a href='#i-get-a-gateway-with-eui-is-already-registered-error-when-adding-a-gateway'>I Get a “Gateway with EUI is Already Registered” Error When Adding a Gateway.</a></li>
+      <li><a href='#i-get-a-gateway-with-eui-is-already-registered-error-when-adding-a-gateway'>I get a “Gateway with EUI is Already Registered” error when adding a gateway.</a></li>
     
       
       <li><a href='#what-is-radio-configuration'>What is Radio Configuration?</a></li>
@@ -407,6 +420,12 @@ documentation</strong>: <a href="https://doc.sm.tc/station/">https://doc.sm.tc/s
     
       
       <li><a href='#where-can-i-learn-more-about-lora-basics-station'>Where can I learn more about LoRa Basics™ Station</a></li>
+    
+      
+      <li><a href='#why-do-my-gateways-gps-location-details-not-show-in-the-things-stack-console'>Why do my gateway’s GPS location details not show in The Things Stack Console?</a></li>
+    
+      
+      <li><a href='#i-set-the-gateway-location-manually-in-the-things-stack-console-why-cant-i-see-it-in-the-gateway-connection-statistics'>I set the gateway location manually in The Things Stack Console, why can’t I see it in the gateway connection statistics?</a></li>
     
   </ul>
 
@@ -446,10 +465,10 @@ documentation</strong>: <a href="https://doc.sm.tc/station/">https://doc.sm.tc/s
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 02 Sep 2021.
+  Last changed by Nejra Selimović on 14 Sep 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f9c7d26c1a94e34a93224eaea7b6276d0a9c1cad">
-      doc: Add a note about already registered in other tenant (#554)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/002566ef61e91f23d7dfeeba59ee3d17411f86d1">
+      doc: Add gateway location troubleshooting (#563)
     </a>
 </p>
 
