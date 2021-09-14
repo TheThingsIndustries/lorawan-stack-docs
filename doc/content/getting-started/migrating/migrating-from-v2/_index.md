@@ -11,7 +11,7 @@ This section documents the process of migrating end devices from {{% ttnv2 %}} t
 
 {{< note >}} As previously announced, on **July 1, 2021** users will no longer be able to add new applications, devices and gateways on {{% ttnv2 %}} deployments, i.e. {{% ttnv2 %}} is going to **read-only** mode.
 
-Make sure to migrate your gateways and devices from {{% ttnv2 %}} to {{% tts %}} as soon as possible, since {{% ttnv2 %}} machines are planned to be completely shut down on **December 31, 2021**. {{</ note >}}
+Make sure to migrate your gateways and devices from {{% ttnv2 %}} to {{% tts %}} as soon as possible, since {{% ttnv2 %}} machines are planned to be completely shut down on **December 1, 2021**. {{</ note >}}
 
 {{< warning >}} We highly recommend to always test the migration on a single end device or a small batch of end devices in order to make sure the migration process goes as expected. {{</ warning >}}
 
