@@ -141,7 +141,7 @@ Try solving this issue by:
 - Checking your internet connection
 - Using {{% tts %}} cluster closest to the location of your gateway
 
-## I Get a "ID Already Taken" Error When Adding a Gateway.
+## I get an "ID Already Taken" error when adding a gateway.
 
 Another gateway is already registered with this ID. This gateway may have been deleted already, but {{% tts %}} reserves previously used IDs for [security reasons]({{< ref "reference/id-eui-constraints" >}}).
 
@@ -149,7 +149,7 @@ This gateway may also be registered by another user, but you are not able to see
 
 To solve this, use a different gateway ID. If you are an administrator and wish to reuse a deleted ID, see [Purging Entities]({{< ref "reference/purge" >}}).
 
-## I Get a "Gateway with EUI is Already Registered" Error When Adding a Gateway.
+## I get a "Gateway with EUI is Already Registered" error when adding a gateway.
 
 Another gateway is already registered with the same Gateway EUI. This gateway may be registered by another user, but if you are not an administrator (e.g if you are using The Things Stack Community Edition) you will not be able to see gateways registered by other users.
 
@@ -192,3 +192,22 @@ These are two different types of {{% lbs %}} connections. Since CUPS automatical
 **Official {{% lbs %}} documentation**: https://doc.sm.tc/station/
 
 **Forum**: https://www.thethingsnetwork.org/forum/
+
+## Why do my gateway's GPS location details not show in {{% tts %}} Console?
+
+[{{% lbs %}}]({{< ref "/gateways/lora-basics-station" >}}) protocol currently does not support GPS fields in Uplink messages, so the GPS location in {{% tts %}} Console for {{% lbs %}}-based gateways cannot be updated from status messages.
+
+Updating gateway location from status messages in supported only for gateways that establish authenticated connections (Basic Station and MQTT gateways), i.e. it is not supported for [UDP]({{< ref "/gateways/udp" >}}) gateways.
+
+Keep in mind that you can still set the gateway location [manually]({{< ref "/gateways/adding-gateways#set-gateway-location" >}}) from {{% tts %}} Console.
+
+## I set the gateway location manually in {{% tts %}} Console, why can't I see it in the gateway connection statistics?
+
+The connection statistics ([Gateway Server service API]({{< ref "/reference/api/gateway_server#a-namegsthe-gs-servicea" >}})) do not store the gateway locations.
+
+The gateway location is stored in the Identity Server instead. The updated location can be found by querying the Identity Server [GetGateway API]({{< ref "/reference/api/gateway" >}}).
+
+> For example, you can query the location with:
+>
+>```bash
+> curl -H "Authorization: Bearer <api-key>" https://example.thethings.com/api/v3/gateways/<gateway-id>?field_mask=antennas
