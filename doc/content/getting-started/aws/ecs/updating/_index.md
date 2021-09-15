@@ -52,7 +52,7 @@ It is strongly advised to backup your data before performing this update.
 
 You can update the template as any other. Make sure that the Change Set doesn't contain any changes to `Volume`, or you might experience data loss.
 
-Keep in mind that storage integration will not work until Application Server ECS service is restarted. If you're updating the stack to a new version (thus, changing the used image), Application Server service will be restarted during `5-4-ecs-services` update and you don't need to do this explicitly.
+Storage integration may report failures for a brief moment before new EC2 machine starts up (about two minutes) and Application Server picks up new DNS entry (TTL one minute).
 
 ### `5-1-ecs-cluster`
 
