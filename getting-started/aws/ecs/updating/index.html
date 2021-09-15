@@ -261,7 +261,7 @@
 </ol>
 <h5 id="updating-from-version-3150-or-higher">Updating from version 3.15.0 or higher</h5>
 <p>You can update the template as any other. Make sure that the Change Set doesn&rsquo;t contain any changes to <code>Volume</code>, or you might experience data loss.</p>
-<p>Keep in mind that storage integration will not work until Application Server ECS service is restarted. If you&rsquo;re updating the stack to a new version (thus, changing the used image), Application Server service will be restarted during <code>5-4-ecs-services</code> update and you don&rsquo;t need to do this explicitly.</p>
+<p>Storage integration may report failures for a brief moment before new EC2 machine starts up (about two minutes) and Application Server picks up new DNS entry (TTL one minute).</p>
 <h3 id="5-1-ecs-cluster"><code>5-1-ecs-cluster</code></h3>
 <p>In this template we use an autoscaling group. Updates to <code>LaunchConfiguration</code> do not cause any effect on already running machines that were created using said <code>LaunchConfiguration</code>. This means that if this template contains changes, e.g. different <code>UserData</code> or an updated AMI image, you should examine changes and apply them manually.</p>
 <div class="notification is-info is-light has-text-dark">
@@ -356,10 +356,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Michał Borkowski on 10 Sep 2021.
+  Last changed by Michał Borkowski on 15 Sep 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d71262f5e162383febdf9f4a05e74f3148f1b89">
-      doc: V3.15.0 TimescaleDB update (#555)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2f55d99a98c793a2ffad3a8c41f343993051a4da">
+      doc: Information on TimescaleDB improved update (#564)
     </a>
 </p>
 
