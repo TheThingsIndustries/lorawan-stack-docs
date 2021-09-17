@@ -46,4 +46,14 @@ Click **Review + Create**, then **Create**.
 
 When the deployment is done, you'll see the status `Your deployment is complete`.
 
+{{< figure src="../deployment-done.png" alt="Deployment Done" >}}
+
+After the deployment has finished, click **Outputs**.
+
+{{< figure src="../deployment-outputs.png" alt="Deployment Outputs" >}}
+
+The two outputs can now be copied into your integration settings as **Azure IoT Hub hostname** and **Azure IoT Hub access key**. Click on **Enable/Update Azure IoT Hub integration**.
+
+{{< figure src="../add-keys.png" alt="Add Deployment Outputs" >}}
+
 > Congratulations! 🎉 You have now set up the Azure IoT Hub integration for {{% tts %}}!
