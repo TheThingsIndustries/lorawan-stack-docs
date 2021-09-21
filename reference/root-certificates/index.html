@@ -205,7 +205,7 @@
 <h2 id="which-certificate-is-right-for-my-deployment">Which Certificate Is Right For My Deployment?</h2>
 <p>The <a href="https://curl.haxx.se/ca/cacert.pem">complete certificate list</a> contains all CA certificates trusted by modern browsers, so if you use certificates issued by a popular CA, you should be covered by this one.</p>
 <p>The <a href="ca.pem" download>minimal certificate list</a> contains a tailored list of certificates used in standard The Things Stack deployments for devices which do not support the larger list due to memory constraints.</p>
-<p>Unfortunately, some gateways do not support concatenated certificate lists at all. If your device will not connect using the complete or minimal certificate lists, you must use the specific certificate you use to configure TLS for your domain. If you use Let&rsquo;s Encrypt, use the <a href="#lets-encrypt">Let&rsquo;s Encrypt ISRG Root X1 or DST Root X3</a>.</p>
+<p>Unfortunately, some gateways do not support concatenated certificate lists at all. If your device will not connect using the complete or minimal certificate lists, you must use the specific certificate you use to configure TLS for your domain. If you use Let&rsquo;s Encrypt, use the <a href="#lets-encrypt">Let&rsquo;s Encrypt ISRG Root X1</a>.</p>
 <h2 id="complete-certificate-list">Complete Certificate List</h2>
 <p>This <code>.pem</code> file contains all common CA certificates trusted by Mozilla, and is extracted and hosted by <a href="https://curl.haxx.se/docs/caextract.html">curl</a>.</p>
 <p>Download the complete certificate list from curl <a href="https://curl.haxx.se/ca/cacert.pem">here</a>.</p>
@@ -213,7 +213,6 @@
 <p>This <code>.pem</code> file contains certificates used in standard The Things Stack deployments, and is small enough to fit on memory constrained devices such as Gateways. This list includes the following CA certificates:</p>
 <ul>
 <li>ISRG Root X1</li>
-<li>DST Root CA X3</li>
 <li>Baltimore CyberTrust Root</li>
 <li>Amazon Root CA 1, 2, 3 and 4</li>
 <li>The Things Industries Root CA</li>
@@ -223,13 +222,9 @@
 <h3 id="isrg-root-x1">ISRG Root X1</h3>
 <p>Many The Things Stack deployments use the Let&rsquo;s Encrypt ISRG Root X1 Trust. If using Let&rsquo;s Encrypt to secure your domain, you may download the ISRG Root X1 Trust file <a href="https://letsencrypt.org/certs/isrgrootx1.pem">here</a>.</p>
 <h3 id="dst-root-x3">DST Root X3</h3>
-<p>Some The Things Stack deployments use the Let&rsquo;s Encrypt DST Root X3 Trust, although it expires in 2021 and is being phased out. If your deployment uses the legacy DST Root X3 Trust, download it <a href="https://letsencrypt.org/certs/trustid-x3-root.pem">here</a>.</p>
 <div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  <p>Unfortunately, if you use a single certificate and that certificate expires, your gateway will stop connecting until you update the certificate.</p>
-<p>The minimal and complete certificate lists contain the ISRG Root X1 and DST Root X3 certificates, but some gateways do not support concatenated certificate lists, even though they are part of the <a href="https://tools.ietf.org/html/rfc1421">ietf spec</a>. :(</p>
-<p>If you know you are using Let&rsquo;s Encrypt to secure your domain, use one of these <code>.pem</code> files as your gateway&rsquo;s Server Certificate for maximum compatibility.</p>
-
+  DST Root CA X3 expires on the 29th September 2021 and is no longer in production use.
 </div>
         </div>
         
@@ -305,10 +300,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Hylke Visser on 26 Jan 2021.
+  Last changed by Krishna Iyer Easwaran on 21 Sep 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/8fdbc1f70a6022fda7d34de24bc8e2a805834328">
-      doc: Update common CA pem
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/47a4f4893f4742f79b9b35cf415a1844e44c1731">
+      Remove DST usage (#575)
     </a>
 </p>
 
