@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.14</p>
+        <p class="navbar-item is-size-7">v3.15</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -140,64 +140,41 @@
 <div class="whats-new">
   <div class="whats-new-content">
     <div class="whats-new-header">
-      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.14.2/>What's new in V3.14.2</a></h2>
+      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.15.0/>What's new in V3.15.0</a></h2>
       <a href="https://www.thethingsindustries.com/docs/whats-new/"><p class="see-more">See all release notes →</p></a>
     </div>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.14.2/">
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.15.0/">
       <div class="whats-new-body">
         <div class="whats-new-items-shadow whats-new-items-fade">
           <div class="whats-new-items">
             <h3 id="added">Added</h3>
 <ul>
-<li>CLI warnings about insecure connections.</li>
-<li>CLI warnings about using the <code>--all</code> flag.</li>
-<li>Packet Broker network listed switch in the Console.</li>
-<li>Improved errors for invalid command-line flags.</li>
-<li>Validation of entity attributes in the Console, with regards to maximum length for keys and values.</li>
-<li>Support limiting concurrent data plane application gRPC and MQTT connections by application and tenant ID. See the <code>resource-limiting</code> configuration section for details.</li>
-<li>CLI command to decode raw LoRaWAN frames (<code>ttn-lw-cli lorawan decode</code>), useful for debugging purposes.</li>
-<li>Options to restore or purge deleted applications, gateways and organizations in the Console.</li>
-<li>Handling of default mac settings values when manually registering end devices in the Console.</li>
-<li>Add a new <code>class_b_c_downlink_interval</code> field that can be configured to set the minimum interval between a network initiated downlink (Class B &amp; Class C) and an arbitrary downlink per device.</li>
-<li>Retrieve count of upstream messages from the Storage Integration by end device.
+<li>RPC to query supported PHY versions for a given Band ID.</li>
+<li>Non-TLS LNS endpoint support.</li>
+<li>New config option <code>is.user-login.disable-credentials-login</code> that disables login with credentials (can be set per tenant).
 <ul>
-<li>See the new <code>GetStoredApplicationUpCount</code> RPC.</li>
-<li>See the new <code>ttn-lw-cli applications storage count</code> and <code>ttn-lw-cli end-devices storage count</code> CLI commands.</li>
+<li>In case where only one authentication provider is configured and the config option is set to <code>true</code> the login screen redirects to provider login.</li>
 </ul>
 </li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
-<li>The Identity Server now returns a validation error when trying to update the EUIs of an end device.</li>
-<li>Network Server no longer accepts RX metadata from Packet Broker if the originating forwarder network equals the current Network Server (by NetID and cluster ID, based on<code>ns.net-id</code> and <code>ns.cluster-id</code> configuration). This avoids duplicate RX metadata as well as redundant downlink scheduling attempts through Packet Broker after the cluster&rsquo;s Gateway Server already failed to schedule.</li>
-<li>Usability of the end device import function in the Console.
-<ul>
-<li>Show a per-device report when errors occur.</li>
-<li>More structural changes to the process to improve UX.</li>
-</ul>
-</li>
-</ul>
-<h3 id="removed">Removed</h3>
-<ul>
-<li>Packet Broker mutual TLS authentication; only OAuth 2.0 is supported now.</li>
-<li><code>request_details</code> from errors in the Console.</li>
+<li>Update to Go 1.17.</li>
+<li>LBS timestamp rollover threshold.</li>
+<li>The Application Server worker pools may now drop workers if they are idle for too long.</li>
+<li>Improved error page UX in the Console.</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>Generated CLI configuration for The Things Stack Community Edition.</li>
-<li>End device access with limited rights in the Console.</li>
-<li>Parsing of ID6 encoded EUIs from Basic Station gateways.</li>
-<li>Warnings about unknown fields when getting or searching for gateways.</li>
-<li>Internal Server Errors from <code>pkg/identityserver/store</code>.</li>
-<li>Console rendering blank pages in outdated browsers due to missing or incomplete internationalization API.</li>
-<li>Error in edit user form (Console) when submitting without making any changes.</li>
-<li><code>description</code> field not being fetched in edit user form (admin only) in the Console.</li>
-<li>Ignore invalid configuration when printing configuration with <code>ttn-lw-cli config</code> or <code>ttn-lw-stack config</code>.</li>
-<li>Emails about API key changes.</li>
-<li>Avoid rendering blank pages in the Console for certain errors.</li>
-<li>Blank page crashes in the Console for certain browsers that do not fully support <code>Intl</code> API.</li>
-<li>End device session keys handling in the Console.</li>
-<li>Byte input width in Safari in the Console.</li>
+<li>Collaborator ID validation in gateway claiming form in the Console.</li>
+<li>Entity purge handling for non-admin users in the Console.</li>
+<li>URL field validation in webhook forms in the Console when value is not trimmed.</li>
+<li>Not rendering site header and footer for error pages in some situations.</li>
+<li>Not providing a copy button for error pages in some situations.</li>
+<li>Improved errors for invalid URLs.</li>
+<li>Limit length of search queries within tables in the Console to 50 to comply with API validation.</li>
+<li>External Join Server address handling in end device creation form in the Console.</li>
+<li>Updating <code>supports_class_b</code> field in the end device general settings page in the Console.</li>
 </ul>
 
           </div>
@@ -215,7 +192,7 @@
 <a href="https://www.thethingsindustries.com/docs/whats-new/">
   <div class="whats-new-800">
     <div class="whats-new-header-800">
-      <p>See what's new in V3.14.2</p>
+      <p>See what's new in V3.15.0</p>
       <p>-></p>
     </div>
   </div>

@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.14</p>
+        <p class="navbar-item is-size-7">v3.15</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -2150,6 +2150,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
 <details><summary>Show object example</summary>
 <pre><code>{
   "default_cluster": {},
+  "clusters": {},
   "pb": {},
 }</code></pre>
 </details>
@@ -2196,6 +2197,53 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
       </th>
       <td>
           <p>Default cluster configuration.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>clusters</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        map of 
+  <code>string</code>
+ to 
+  
+    
+    <a href="#message:Configuration.Cluster">
+  
+  <code>
+    
+    Configuration.Cluster
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Configuration per cluster (by ID).</p>
+        
+        
       </td>
     </tr>
     
@@ -2433,6 +2481,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
   "ui": {},
   "is": {},
   "ns": {},
+  "js": {},
 }</code></pre>
 </details>
 
@@ -2555,6 +2604,53 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
     </a>
   
 </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>js</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:Configuration.Cluster.JoinServer">
+  
+  <code>
+    
+    Configuration.Cluster.JoinServer
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>JoinServer</p>
+      </td>
     </tr>
     
   </tbody>
@@ -2874,6 +2970,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
   "end_device_picture": {},
   "user_rights": {},
   "admin_rights": {},
+  "user_login": {},
 }</code></pre>
 </details>
 
@@ -3058,6 +3155,44 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
   <code>
     
     Configuration.Cluster.IdentityServer.AdminRights
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>user_login</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:Configuration.Cluster.IdentityServer.UserLogin">
+  
+  <code>
+    
+    Configuration.Cluster.IdentityServer.UserLogin
   </code>
   
     </a>
@@ -3694,6 +3829,50 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
 
 
 
+<h3 id="message:Configuration.Cluster.IdentityServer.UserLogin">Message <code>Configuration.Cluster.IdentityServer.UserLogin</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "disable_credentials_login": null,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>disable_credentials_login</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    BoolValue
+  </code>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
 <h3 id="message:Configuration.Cluster.IdentityServer.EndDevicePicture">Message <code>Configuration.Cluster.IdentityServer.EndDevicePicture</code></h3>
 
 <details><summary>Show object example</summary>
@@ -3996,6 +4175,52 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
 
 
 
+<h3 id="message:Configuration.Cluster.JoinServer">Message <code>Configuration.Cluster.JoinServer</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "join_eui_prefixes": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>join_eui_prefixes</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+        
+        repeated 
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
 <h3 id="message:Configuration.Cluster.NetworkServer">Message <code>Configuration.Cluster.NetworkServer</code></h3>
 
 <details><summary>Show object example</summary>
@@ -4244,6 +4469,10 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
 
 	
 
+	
+
+	
+
 
         </div>
         <div class="is-clearfix">
@@ -4318,10 +4547,10 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 28 Jul 2021.
+  Last changed by Nejra Selimović on 22 Sep 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/9d8cffeb3d65851a4e7ce4446abcd9a700ed7bba">
-      doc: Create v3.14.0 release docs, add missing refs (#482)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/6162e7e1bd2688848299792d712a8e9371a5a754">
+      doc: Add v3.15.0 release docs (#572)
     </a>
 </p>
 
