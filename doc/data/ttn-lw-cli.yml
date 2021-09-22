@@ -4120,6 +4120,9 @@ ttn-lw-cli end-devices create:
   - name: mac-state.pending-application-downlink.class-b-c.absolute-time
     type: string
     usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: mac-state.pending-application-downlink.class-b-c.gateways
+    type: stringSlice
+    default_value: '[]'
   - name: mac-state.pending-application-downlink.confirmed
     type: bool
     default_value: "false"
@@ -7893,6 +7896,9 @@ ttn-lw-cli end-devices set:
   - name: mac-state.pending-application-downlink.class-b-c.absolute-time
     type: string
     usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: mac-state.pending-application-downlink.class-b-c.gateways
+    type: stringSlice
+    default_value: '[]'
   - name: mac-state.pending-application-downlink.confirmed
     type: bool
     default_value: "false"
@@ -13788,6 +13794,9 @@ ttn-lw-cli templates execute:
   - name: mac-state.pending-application-downlink.class-b-c.absolute-time
     type: string
     usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: mac-state.pending-application-downlink.class-b-c.gateways
+    type: stringSlice
+    default_value: '[]'
   - name: mac-state.pending-application-downlink.confirmed
     type: bool
     default_value: "false"
@@ -14647,6 +14656,9 @@ ttn-lw-cli templates extend:
   - name: mac-state.pending-application-downlink.class-b-c.absolute-time
     type: string
     usage: (YYYY-MM-DDTHH:MM:SSZ)
+  - name: mac-state.pending-application-downlink.class-b-c.gateways
+    type: stringSlice
+    default_value: '[]'
   - name: mac-state.pending-application-downlink.confirmed
     type: bool
     default_value: "false"
@@ -15225,6 +15237,9 @@ ttn-lw-cli tenants create:
   - name: configuration.default-cluster.is.profile-picture.use-gravatar
     type: bool
     default_value: "false"
+  - name: configuration.default-cluster.is.user-login.disable-credentials-login
+    type: bool
+    default_value: "false"
   - name: configuration.default-cluster.is.user-registration.admin-approval.required
     type: bool
     default_value: "false"
@@ -15274,6 +15289,9 @@ ttn-lw-cli tenants create:
   - name: configuration.default-cluster.is.user-rights.update-primary-email-address
     type: bool
     default_value: "false"
+  - name: configuration.default-cluster.js.join-eui-prefixes
+    type: stringSlice
+    default_value: '[]'
   - name: configuration.default-cluster.ns.cooldown-window
     type: duration
     usage: (1h2m3s)
@@ -15455,6 +15473,10 @@ ttn-lw-cli tenants get:
     type: bool
     usage: select the configuration field and all allowed sub-fields
     default_value: "false"
+  - name: configuration.clusters
+    type: bool
+    usage: select the configuration.clusters field
+    default_value: "false"
   - name: configuration.default-cluster
     type: bool
     usage: select the configuration.default_cluster field and all allowed sub-fields
@@ -15495,6 +15517,16 @@ ttn-lw-cli tenants get:
   - name: configuration.default-cluster.is.profile-picture.use-gravatar
     type: bool
     usage: select the configuration.default_cluster.is.profile_picture.use_gravatar
+      field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-login
+    type: bool
+    usage: select the configuration.default_cluster.is.user_login field and all allowed
+      sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-login.disable-credentials-login
+    type: bool
+    usage: select the configuration.default_cluster.is.user_login.disable_credentials_login
       field
     default_value: "false"
   - name: configuration.default-cluster.is.user-registration
@@ -15604,6 +15636,14 @@ ttn-lw-cli tenants get:
     type: bool
     usage: select the configuration.default_cluster.is.user_rights.update_primary_email_address
       field
+    default_value: "false"
+  - name: configuration.default-cluster.js
+    type: bool
+    usage: select the configuration.default_cluster.js field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.js.join-eui-prefixes
+    type: bool
+    usage: select the configuration.default_cluster.js.join_eui_prefixes field
     default_value: "false"
   - name: configuration.default-cluster.ns
     type: bool
@@ -15816,6 +15856,10 @@ ttn-lw-cli tenants list:
     type: bool
     usage: select the configuration field and all allowed sub-fields
     default_value: "false"
+  - name: configuration.clusters
+    type: bool
+    usage: select the configuration.clusters field
+    default_value: "false"
   - name: configuration.default-cluster
     type: bool
     usage: select the configuration.default_cluster field and all allowed sub-fields
@@ -15856,6 +15900,16 @@ ttn-lw-cli tenants list:
   - name: configuration.default-cluster.is.profile-picture.use-gravatar
     type: bool
     usage: select the configuration.default_cluster.is.profile_picture.use_gravatar
+      field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-login
+    type: bool
+    usage: select the configuration.default_cluster.is.user_login field and all allowed
+      sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-login.disable-credentials-login
+    type: bool
+    usage: select the configuration.default_cluster.is.user_login.disable_credentials_login
       field
     default_value: "false"
   - name: configuration.default-cluster.is.user-registration
@@ -15965,6 +16019,14 @@ ttn-lw-cli tenants list:
     type: bool
     usage: select the configuration.default_cluster.is.user_rights.update_primary_email_address
       field
+    default_value: "false"
+  - name: configuration.default-cluster.js
+    type: bool
+    usage: select the configuration.default_cluster.js field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.js.join-eui-prefixes
+    type: bool
+    usage: select the configuration.default_cluster.js.join_eui_prefixes field
     default_value: "false"
   - name: configuration.default-cluster.ns
     type: bool
@@ -16128,6 +16190,10 @@ ttn-lw-cli tenants search:
     type: bool
     usage: select the configuration field and all allowed sub-fields
     default_value: "false"
+  - name: configuration.clusters
+    type: bool
+    usage: select the configuration.clusters field
+    default_value: "false"
   - name: configuration.default-cluster
     type: bool
     usage: select the configuration.default_cluster field and all allowed sub-fields
@@ -16168,6 +16234,16 @@ ttn-lw-cli tenants search:
   - name: configuration.default-cluster.is.profile-picture.use-gravatar
     type: bool
     usage: select the configuration.default_cluster.is.profile_picture.use_gravatar
+      field
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-login
+    type: bool
+    usage: select the configuration.default_cluster.is.user_login field and all allowed
+      sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.is.user-login.disable-credentials-login
+    type: bool
+    usage: select the configuration.default_cluster.is.user_login.disable_credentials_login
       field
     default_value: "false"
   - name: configuration.default-cluster.is.user-registration
@@ -16277,6 +16353,14 @@ ttn-lw-cli tenants search:
     type: bool
     usage: select the configuration.default_cluster.is.user_rights.update_primary_email_address
       field
+    default_value: "false"
+  - name: configuration.default-cluster.js
+    type: bool
+    usage: select the configuration.default_cluster.js field and all allowed sub-fields
+    default_value: "false"
+  - name: configuration.default-cluster.js.join-eui-prefixes
+    type: bool
+    usage: select the configuration.default_cluster.js.join_eui_prefixes field
     default_value: "false"
   - name: configuration.default-cluster.ns
     type: bool
@@ -16423,6 +16507,9 @@ ttn-lw-cli tenants update:
   - name: configuration.default-cluster.is.profile-picture.use-gravatar
     type: bool
     default_value: "false"
+  - name: configuration.default-cluster.is.user-login.disable-credentials-login
+    type: bool
+    default_value: "false"
   - name: configuration.default-cluster.is.user-registration.admin-approval.required
     type: bool
     default_value: "false"
@@ -16472,6 +16559,9 @@ ttn-lw-cli tenants update:
   - name: configuration.default-cluster.is.user-rights.update-primary-email-address
     type: bool
     default_value: "false"
+  - name: configuration.default-cluster.js.join-eui-prefixes
+    type: stringSlice
+    default_value: '[]'
   - name: configuration.default-cluster.ns.cooldown-window
     type: duration
     usage: (1h2m3s)
