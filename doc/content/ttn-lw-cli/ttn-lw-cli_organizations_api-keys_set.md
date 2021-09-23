@@ -1,0 +1,100 @@
+---
+title: "ttn-lw-cli organizations api-keys set"
+slug: ttn-lw-cli_organizations_api-keys_set
+type: "commands"
+---
+
+## ttn-lw-cli organizations api-keys set
+
+Set properties of an organization API key
+
+```
+ttn-lw-cli organizations api-keys set [organization-id] [api-key-id] [flags]
+```
+
+### Options
+
+```
+      --api-key-expiry string                      (YYYY-MM-DDTHH:MM:SSZ)
+      --api-key-id string                          
+  -h, --help                                       help for set
+      --name string                                
+      --right-application-all                      
+      --right-application-delete                   
+      --right-application-devices-read             
+      --right-application-devices-read-keys        
+      --right-application-devices-write            
+      --right-application-devices-write-keys       
+      --right-application-info                     
+      --right-application-link                     
+      --right-application-settings-api-keys        
+      --right-application-settings-basic           
+      --right-application-settings-collaborators   
+      --right-application-settings-packages        
+      --right-application-traffic-down-write       
+      --right-application-traffic-read             
+      --right-application-traffic-up-write         
+      --right-client-all                           
+      --right-gateway-all                          
+      --right-gateway-delete                       
+      --right-gateway-info                         
+      --right-gateway-link                         
+      --right-gateway-location-read                
+      --right-gateway-read-secrets                 
+      --right-gateway-settings-api-keys            
+      --right-gateway-settings-basic               
+      --right-gateway-settings-collaborators       
+      --right-gateway-status-read                  
+      --right-gateway-traffic-down-write           
+      --right-gateway-traffic-read                 
+      --right-gateway-write-secrets                
+      --right-organization-add-as-collaborator     
+      --right-organization-all                     
+      --right-organization-applications-create     
+      --right-organization-applications-list       
+      --right-organization-clients-create          
+      --right-organization-clients-list            
+      --right-organization-delete                  
+      --right-organization-gateways-create         
+      --right-organization-gateways-list           
+      --right-organization-info                    
+      --right-organization-settings-api-keys       
+      --right-organization-settings-basic          
+      --right-organization-settings-members        
+```
+
+### Options inherited from parent commands
+
+```
+      --allow-unknown-hosts                             Allow sending credentials to unknown hosts
+      --application-server-enabled                      Application Server enabled (default true)
+      --application-server-grpc-address string          Application Server address (default "localhost:8884")
+      --ca string                                       CA certificate file
+  -c, --config strings                                  Location of the config files (default [.ttn-lw-cli.yml,/Users/ben/.ttn-lw-cli.yml,/Users/ben/Library/Application Support/.ttn-lw-cli.yml])
+      --credentials-id string                           Credentials ID (if using multiple configurations)
+      --device-claiming-server-grpc-address string      Device Claiming Server address (default "localhost:8884")
+      --device-template-converter-grpc-address string   Device Template Converter address (default "localhost:8884")
+      --dump-requests                                   When log level is set to debug, also dump request payload as JSON
+      --gateway-server-enabled                          Gateway Server enabled (default true)
+      --gateway-server-grpc-address string              Gateway Server address (default "localhost:8884")
+      --identity-server-grpc-address string             Identity Server address (default "localhost:8884")
+      --input-format string                             Input format (default "json")
+      --insecure                                        Connect without TLS
+      --join-server-enabled                             Join Server enabled (default true)
+      --join-server-grpc-address string                 Join Server address (default "localhost:8884")
+      --log.format string                               Log format to write (console, json) (default "console")
+      --log.level string                                The minimum level log messages must have to be shown (default "info")
+      --network-server-enabled                          Network Server enabled (default true)
+      --network-server-grpc-address string              Network Server address (default "localhost:8884")
+      --oauth-server-address string                     OAuth Server address (default "https://localhost/oauth")
+      --organization-id string                          
+      --output-format string                            Output format (default "json")
+      --packet-broker-agent-grpc-address string         Packet Broker Agent address (default "localhost:8884")
+      --qr-code-generator-grpc-address string           QR Code Generator address (default "localhost:8884")
+      --skip-version-check                              Do not perform version checks
+```
+
+### SEE ALSO
+
+* [ttn-lw-cli organizations api-keys]({{< relref "ttn-lw-cli_organizations_api-keys" >}})	 - Manage organization API keys
+
