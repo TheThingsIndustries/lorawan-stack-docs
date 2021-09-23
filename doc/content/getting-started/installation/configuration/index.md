@@ -150,7 +150,7 @@ The `ports` section exposes {{% tts %}}'s ports outside the Docker container. Po
 {{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=56 to=83 >}}
 {{< /highlight >}}
 
-## Understanding The Things Stack Configuration
+## Understanding {{% tts %}} Configuration
 
 Configuration options for running {{% tts %}} are specified in the `ttn-lw-stack-docker.yml` file. This section points out the required configuration options.
 
@@ -179,6 +179,19 @@ See the [TLS Options configuration reference]({{< ref "/reference/configuration/
 {{< note >}} Make sure that you use the correct `tls` configuration depending on whether you are using Let's Encrypt or your own certificate files. {{</ note >}}
 
 {{< note >}} If you are using your own certificate files, make sure to uncomment the lines that define `source` type, `root-ca`, `certificate` and `key`. The paths assigned to these do not need to be altered, because they point to the location of these files inside the Docker container, and not on your machine. {{</ note >}}
+
+{{< note >}} If you are using Let's Encrypt in a multi-tenant {{% tts %}} environment, all tenant addresses have to be specified in the `ttn-lw-stack-docker.yml` file using `tls.acme.hosts` configuration option. For example, for {{% tts %}} deployment with two tenants, TLS configuration would look like this:
+
+```yml
+tls:
+  source: 'acme'
+  acme:
+    dir: '/var/lib/acme'
+    email: 'you@thethings.example.com'
+    hosts: ['<tenant1>.thethings.example.com', '<tenant2>.thethings.example.com']
+    default-host: 'thethings.example.com'
+```
+{{</ note >}}
 
 ### HTTP
 
