@@ -1,16 +1,16 @@
 ---
-title: FAQ
+title: Migration FAQ
 ---
 
-This section will help answering some frequently asked questions regarding migration to {{% tts %}}.
+This section answers frequently asked questions regarding migration to {{% tts %}}.
 
 ### Why should I migrate my devices and gateways to {{% tts %}}? 
 
-{{% tts %}} is more scalable, more secure, and offers a lot of improved and brand new features comparing to {{% ttnv2 %}}. Also, the end of life of {{% ttnv2 %}} environment is planned for December 1, 2021.
+{{% tts %}} is more scalable, more secure, and supports more of the LoRaWAN specification than {{% ttnv2 %}}. The end of life for {{% ttnv2 %}} environment is planned for December 1, 2021.
 
-### When to migrate my devices and gateways to {{% tts %}}? 
+### When should I migrate my devices and gateways to {{% tts %}}? 
 
-Start migrating your devices and gateways as soon as possible! {{% ttnv2 %}} environment is already read-only so you cannot add new gateways, devices and applications anymore, and the final deadline for migrating is December 1, 2021, when {{% ttnv2 %}} machines are planned to be shut down.
+Start migrating your devices and gateways as soon as possible! {{% ttnv2 %}} is now read-only so you cannot add new gateways, devices and applications anymore, and the final deadline for migrating is December 1, 2021, when {{% ttnv2 %}} will be shut down.
 
 > Reading the [complete Migrating to {{% tts %}} guide]({{< ref "/getting-started/migrating" >}}) can help you with the migration process.
 
@@ -20,13 +20,13 @@ Yes, you will be able to normally register devices and gateways on {{% tts %}} a
 
 ### What is Packet Broker and what does it have to do with migrating to {{% tts %}}? 
 
-Packet Broker is a neutral and open LoRaWAN packet broker developed by The Things Industries. Packet Broker adopts the Passive Roaming specifications, as defined by the LoRa Alliance, so it can be used to exchange traffic with other LoRaWAN networks to share coverage and improve the overall network performance.
+[Packet Broker](https://packetbroker.net) is a neutral and open LoRaWAN packet broker developed by The Things Industries. Packet Broker adopts the Passive Roaming specifications, as defined by the LoRa Alliance, so it can be used to exchange traffic with other LoRaWAN networks to share coverage and improve overall network performance.
 
-> See [Packet Broker documentation]({{< ref "/getting-started/packet-broker" >}}) for detailed info.
+> See {{% tts %}} [Packet Broker documentation]({{< ref "/getting-started/packet-broker" >}}) for detailed info about connecting {{% tts %}} to Packet Broker.
 
-The Things Network {{% ttnv2 %}}, {{% tts %}} Community Edition and {{% tts %}} Cloud are connected to Packet Broker by default. {{% tts %}} Open Source and {{% tts %}} Enterprise can also be [connected]({{< ref "/getting-started/packet-broker/connect" >}}) to Packet Broker. Then, for certain scenarios, traffic can be exchanged between these networks. See [default Packet Broker routing tables]({{< ref "/reference/pb-routing" >}}).
+{{% ttnv2 %}}, {{% tts %}} Community Edition and {{% tts %}} Cloud are connected to Packet Broker by default. {{% tts %}} Open Source and {{% tts %}} Enterprise can also be [connected]({{< ref "/getting-started/packet-broker/connect" >}}) to Packet Broker. Traffic is then automatically exchanged between these networks. See [default Packet Broker routing tables]({{< ref "/reference/pb-routing" >}}).
 
-> For example, this means that you can migrate an end device from The Things Network V2 to {{% tts %}} Community Edition without immediately (or previously) having to migrate your gateway, because both of these deployments are connected to Packet Broker by default. However, there are certain requirements that need to be fulfilled in order for Packet Broker to route traffic from and to these devices properly and timely. [Read more about DevAddr and RX1 Delay requirements]({{< ref "/getting-started/migrating/migrating-from-v2/packet-broker-requirements" >}}).
+For example, this means that you can migrate an end device from The Things Network V2 to {{% tts %}} Community Edition without immediately (or previously) having to migrate your gateway, because both of these deployments are connected to Packet Broker by default. However, there are certain requirements that need to be fulfilled in order for Packet Broker to route traffic from and to these devices properly and timely. [Read more about DevAddr and RX1 Delay requirements]({{< ref "/getting-started/migrating/migrating-from-v2/packet-broker-requirements" >}}).
 
 ### I tried migrating my The Things Indoor Gateway (TTIG) to {{% tts %}}, but the Console shows status `Disconnected`. Does {{% tts %}} support connecting TTIGs?
 
