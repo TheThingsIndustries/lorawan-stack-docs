@@ -27,3 +27,7 @@ The Things Industries Cloud currently has the following clusters:
 | `au1`          | Australia 1     | Sydney, Australia |
 | `eu1`          | Europe 1        | Ireland           |
 | `nam1`         | North America 1 | California, USA   |
+
+## Status Page
+
+Visit [The Things Industries services status page](https://status.thethings.industries/) to check the current status of {{% tts %}} Cloud services. Be up do date with the recent {{% tts %}} Cloud upgrades, scheduled maintenances and reported incidents.
