@@ -7,6 +7,25 @@ This section provides help for common issues and frequently asked questions you 
 
 <!--more-->
 
+### I receive an error when registering an end device.
+
+Here are some common errors and solutions:
+
+- **ID already taken**: Another end device in the application is using this ID. Choose a different Device ID. See [ID and EUI constraints]({{< ref "reference/id-eui-constraints" >}}) for more information.
+- **An end device with JoinEUI `<join-eui>` and DevEUI `<dev-eui>` is already registered as `<device-id>` in application `<application-id>`**: Within {{% tts %}} deployment, only a single end device can be registered with a certain combination of DevEUI and JoinEUI/AppEUI. If you previously registered an end device with this combination of DevEUI and JoinEUI, you can delete the existing device and repeat the registration. You can also register the device using another JoinEUI, but keep in mind that you will need to configure that JoinEUI in the device as well.
+- **An end device with JoinEUI `<join-eui>` and DevEUI `<dev-eui>` is already registered in another tenant**: Within {{% tts %}} deployment, only a single end device can be registered with a certain combination of DevEUI and JoinEUI/AppEUI, across all tenants. If someone already registered an end device with this combination of DevEUI and JoinEUI, you can contact the manufacturer to check if your EUIs are correct and/or provide you new EUIs. You can also register the device using another JoinEUI, but keep in mind that you will need to configure that JoinEUI in the device as well.
+- **Duplicate identifiers**: This error occurs when an end device is deleted from the Identity Server, but the device entry persists in the Join Server, Network Server and Application Server databases. In this case, the device will not appear in {{% tts %}} Console, so you need to check if it is present in the Join Server/Network Server/Application Server components using the following command:
+
+    ```bash
+    curl -X 'GET' 'https://thethings.example.com/api/v3/<js/ns/as>/applications/<application_id>/devices/<end-device_id>' -H 'accept: application/json' -H 'Authorization: Bearer <api-key>'
+    ```
+
+    If the device entry is present in the above mentioned components, you can delete it with:
+
+    ```bash
+    curl 'https://thethings.example.com/api/v3/<js/ns/as>/applications/<application_id>/devices/<end-device_id>' -X DELETE -H 'Accept: application/json' -H 'Authorization: Bearer <api-key>'
+    ```
+
 ### How do I see device events?
 
 Device event logs can be found in the console in the device's general information page. See [Working with Events]({{< ref "getting-started/events" >}}) for other ways of subscribing to events.
