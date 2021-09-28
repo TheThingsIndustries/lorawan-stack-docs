@@ -79,3 +79,7 @@ Packet Broker supports LoRaWAN passive roaming, but it goes even beyond that:
 - Packet Broker separates traffic routing from billing and clearing: networks are free to put commercial agreements in place to settle balances. 
 - Packet Broker separates payload from metadata: networks only get charged for the value they need. 
 - {{% tts %}} has native support for Packet Broker and can access the global coverage provided by The Things Network.
+
+## Status Page
+
+Visit the [Packet Broker services status page](https://status.packetbroker.net/) to check the current status of Packet Broker services. Be up do date with the recent Packet Broker upgrades, scheduled maintenances and reported incidents.
