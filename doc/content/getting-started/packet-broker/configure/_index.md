@@ -156,10 +156,12 @@ You can register with Packet Broker if you are a tenant. This is the case for al
 To register or update your existing tenant registration:
 
 ```bash
-$ ttn-lw-cli packetbroker register
+$ ttn-lw-cli packetbroker register --listed
 ```
 
 This updates the registration with Packet Broker based on your {{% tts %}} environment. When using {{% tts %}} Cloud or Dedicated Cloud, the registration is based on your subscription. When using {{% tts %}} Enterprise or Open Source, the registration is based on [your configuration]({{< relref "configure" >}}).
+
+With `--listed`, you make your network publicly listed so it can be found by other network administrators. This flag is optional.
 
 #### Deregister Tenant
 
