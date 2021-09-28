@@ -160,6 +160,25 @@
         
         <div class="content">
           <p>This section provides help for common issues and frequently asked questions you may have when adding devices.</p>
+<h3 id="i-receive-an-error-when-registering-an-end-device">I receive an error when registering an end device.</h3>
+<p>Here are some common errors and solutions:</p>
+<ul>
+<li>
+<p><strong>ID already taken</strong>: Another end device in the application is using this ID. Choose a different Device ID. See <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">ID and EUI constraints</a> for more information.</p>
+</li>
+<li>
+<p><strong>An end device with JoinEUI <code>&lt;join-eui&gt;</code> and DevEUI <code>&lt;dev-eui&gt;</code> is already registered as <code>&lt;device-id&gt;</code> in application <code>&lt;application-id&gt;</code></strong>: Within The Things Stack deployment, only a single end device can be registered with a certain combination of DevEUI and JoinEUI/AppEUI. If you previously registered an end device with this combination of DevEUI and JoinEUI, you can delete the existing device and repeat the registration. You can also register the device using another JoinEUI, but keep in mind that you will need to configure that JoinEUI in the device as well.</p>
+</li>
+<li>
+<p><strong>An end device with JoinEUI <code>&lt;join-eui&gt;</code> and DevEUI <code>&lt;dev-eui&gt;</code> is already registered in another tenant</strong>: Within The Things Stack deployment, only a single end device can be registered with a certain combination of DevEUI and JoinEUI/AppEUI, across all tenants. If someone already registered an end device with this combination of DevEUI and JoinEUI, you can contact the manufacturer to check if your EUIs are correct and/or provide you new EUIs. You can also register the device using another JoinEUI, but keep in mind that you will need to configure that JoinEUI in the device as well.</p>
+</li>
+<li>
+<p><strong>Duplicate identifiers</strong>: This error occurs when an end device is deleted from the Identity Server, but the device entry persists in the Join Server, Network Server and Application Server databases. In this case, the device will not appear in The Things Stack Console, so you need to check if it is present in the Join Server/Network Server/Application Server components using the following command:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl -X <span class="s1">&#39;GET&#39;</span> <span class="s1">&#39;https://thethings.example.com/api/v3/&lt;js/ns/as&gt;/applications/&lt;application_id&gt;/devices/&lt;end-device_id&gt;&#39;</span> -H <span class="s1">&#39;accept: application/json&#39;</span> -H <span class="s1">&#39;Authorization: Bearer &lt;api-key&gt;&#39;</span>
+</code></pre></div><p>If the device entry is present in the above mentioned components, you can delete it with:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl <span class="s1">&#39;https://thethings.example.com/api/v3/&lt;js/ns/as&gt;/applications/&lt;application_id&gt;/devices/&lt;end-device_id&gt;&#39;</span> -X DELETE -H <span class="s1">&#39;Accept: application/json&#39;</span> -H <span class="s1">&#39;Authorization: Bearer &lt;api-key&gt;&#39;</span>
+</code></pre></div></li>
+</ul>
 <h3 id="how-do-i-see-device-events">How do I see device events?</h3>
 <p>Device event logs can be found in the console in the device&rsquo;s general information page. See <a href="https://www.thethingsindustries.com/docs/getting-started/events/">Working with Events</a> for other ways of subscribing to events.</p>
 <h3 id="my-device-wont-join-what-do-i-do">My device won&rsquo;t join. What do I do?</h3>
@@ -246,10 +265,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by i3mSuperMan on 27 Mar 2021.
+  Last changed by Nejra Selimović on 28 Sep 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/53846568e7c8c5ace6e72253896feac64518a7c6">
-      doc: Add troubleshooting points for join issues
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/d848360d6494fc6b75fb04415c9a2268668281c9">
+      doc: Add device registration troubleshooting (#582)
     </a>
 </p>
 
