@@ -150,7 +150,7 @@ $ ttn-lw-cli packetbroker info
 #### Register Tenant
 
 {{< note >}}
-You can register with Packet Broker if you are a tenant. This is the case for all users of {{% tts %}} Cloud and in other deployments where you are using a host `NetID`. If you are using your own `NetID` without tenancy, please reach out to [join@packetbroker.org](mailto:join@packetbroker.org) for registration.
+You can register with Packet Broker if you are a tenant. This is the case for all users of {{% tts %}} Cloud and in other deployments where you are using a host `NetID`. If you are using your own `NetID` without tenancy, please reach out to [join@packetbroker.net](mailto:join@packetbroker.net) for registration.
 {{< /note >}}
 
 To register or update your existing tenant registration:

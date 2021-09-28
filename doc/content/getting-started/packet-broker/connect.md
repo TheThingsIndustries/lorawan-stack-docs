@@ -45,7 +45,7 @@ The Packet Broker Agent component of {{% tts %}} connects to Packet Broker. The 
 
 # Packet Broker Agent configuration
 pba:
-  # See https://packetbroker.org for available hosts
+  # See https://packetbroker.net for available hosts
   data-plane-address: 'eu.packetbroker.io:443'
   net-id: '000013'
   tenant-id: 'my-tenant' # Leave empty if you own the NetID and you don't use tenants
