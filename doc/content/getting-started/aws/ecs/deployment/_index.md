@@ -172,6 +172,14 @@ As with the other templates, this one also asks for the re-used parameters from 
 
 For the other parameters, see the descriptions and the [Configuration reference]({{< ref "/reference/configuration" >}}).
 
+## Resource Limiting (optional)
+
+{{< new-in-version "3.15.1" >}} The `4-2c-configuration-resource-limiting` template allows setting resource limiting in the Application Server.
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/4-2c-configuration-resource-limiting.gen.template (replace `3.x` with the current minor version).
+
+More information can be found in the [Resource-limiting]({{< relref "/reference/resource-limiting" >}}) section.
+
 ## ECS Cluster
 
 Before deploying the ECS cluster, check the ECS settings in your AWS account by going to **Amazon ECS** > **Account Settings**. If you use multiple IAM users, you need to do this with your root account.
