@@ -205,6 +205,11 @@
 </figure>
 <p>Choose a <strong>Frequency plan</strong> appropriate for your region. Your device and gateway must use the same frequency plan to communicate.</p>
 <p>Enter a <strong>JoinEUI/AppEUI</strong> if provided by your manufacturer. If your device is programmable, you may use the <strong>Fill with zeros</strong> button, and then program the same JoinEUI/AppEUI (<code>0000000000000000</code>) in the device.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <p>Some devices do not support using <code>0000000000000000</code> as a JoinEUI/AppEUI, because technically, this value is invalid. However, The Things Stack supports using this value to indicate the absence of an actual JoinEUI/AppEUI.</p>
+<p>If your device gives an error when using <code>0000000000000000</code>, try using the DevEUI value as a JoinEUI/AppEUI, both in The Things Stack and on your device.</p>
+</div>
 <p>Enter your <strong>DevEUI</strong>. This should be provided by your manufacturer for commercial devices. If your device is programmable, you may generate an EUI using the <strong>Generate</strong> button, and program it in your device.</p>
 <p>For LoRaWAN version 1.0.x devices, you will see an <strong>AppKey</strong> field. If your manufacturer provides an <strong>AppKey</strong>, enter it. Otherwise, use the <strong>Generate</strong> button to create one, and program it in to your device.</p>
 <p>For LoRaWAN version 1.1.x devices, you will also see a <strong>NwkKey</strong> field. If it is provided by your manufacturer, enter it. Otherwise, use the <strong>Generate</strong> button to create one, and program it in to your device.</p>
@@ -532,10 +537,10 @@ $ ttn-lw-cli end-devices <span class="nb">set</span> <span class="nv">$APP_ID</s
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 23 Aug 2021.
+  Last changed by Nejra Selimović on 29 Sep 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/6204791787827dcc5d93d0103bc64dccbbae00e1">
-      doc: Update adding devices doc for console changes (#494)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3cbe1aac507cc16ef7da3e7f4656a08f415cb2b3">
+      doc: Add note about using all zeros JoinEUI (#590)
     </a>
 </p>
 
