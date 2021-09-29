@@ -131,7 +131,7 @@ This shows only the Home Networks that have been set to be visible to other netw
     "net_id": 19,
     "tenant_id": "ttn"
   },
-  "name": "The Things Network",
+  "name": "The Things Stack Community Edition",
   "dev_addr_blocks": [
     {
       "dev_addr_prefix": {
@@ -194,7 +194,7 @@ $ ttn-lw-cli packetbroker forwarder policies list
 
 <details><summary>Example output</summary>
 
-The following example shows that The Things Network forwards all messages to your network (`NetID` `000013` and tenant ID `my-company`) and that you can send all downlink messages via The Things Network to your end devices.
+The following example shows that The Things Stack Community Edition forwards all messages to your network (`NetID` `000013` and tenant ID `my-company`) and that you can send all downlink messages via The Things Stack Community Edition to your end devices.
 
 ```json
 [{
@@ -252,7 +252,7 @@ $ ttn-lw-cli packetbroker home-networks policies get <net-id> [<tenant-id>]
 Replace `<net-id>` with your network's `NetID`. The `tenant-id` is optional and represents the tenant within the `NetID`.
 
 {{< note >}}
-To view the routing policy configured between you (the Forwarder) and The Things Network (the Home Network):
+To view the routing policy configured between you (the Forwarder) and The Things Stack Community Edition (the Home Network):
 
 ```bash
 $ ttn-lw-cli packetbroker home-networks policies get 000013 ttn
@@ -270,7 +270,7 @@ $ ttn-lw-cli packetbroker home-network policies set <net-id> [<tenant-id>] --all
 To customize, see [Flags]({{< relref "#flags" >}}) below.
 
 {{< note >}}
-To enable forwarding of all packets between you (the Forwarder) and The Things Network (the Home Network):
+To enable forwarding of all packets between you (the Forwarder) and The Things Stack Community Edition (the Home Network):
 
 ```bash
 $ ttn-lw-cli packetbroker home-network policy set 000013 ttn --all
