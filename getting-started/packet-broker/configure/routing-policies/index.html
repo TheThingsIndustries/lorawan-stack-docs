@@ -1,1 +1,615 @@
-<!DOCTYPE html><html><head><title>https://www.thethingsindustries.com/docs/getting-started/packet-broker/configure/</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/configure/"/><meta name="robots" content="noindex"><meta charset="utf-8" /><meta http-equiv="refresh" content="0; url=https://www.thethingsindustries.com/docs/getting-started/packet-broker/configure/" /></head></html>
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.70.0" />
+  <title>Routing Policies | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/configure/routing-policies/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.2d48a00a1bde5893390ef3cf9ccc511ed5122027345ae0b25f087b114938b045.css" integrity="sha256-LUigChveWJM5DvPPnMxRHtUSICc0WuCyXwh7EUk4sEU=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Routing Policies">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Routing Policies">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/packet-broker/configure/routing-policies/">
+  <meta name="twitter:title" content="Routing Policies" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body><nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.15</p>
+      </a><div class="navbar-item navbar-search-brand">
+        <div class="field has-addons has-addons-centered">
+          <div class="control">
+            <input id="search-input-brand" class="input search-bar" type="text" placeholder="Search the docs..." type="text">
+          </div>
+        </div>
+      </div>
+      
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a><div class="navbar-item navbar-search-menu">
+            <div class="field has-addons has-addons-centered">
+              <div class="control">
+                <input id="search-input-menu" class="input search-bar" type="text" placeholder="Search the docs..." type="text">
+              </div>
+            </div>
+          </div></div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="/docs/download/">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+  <script type="text/javascript">
+    docsearch({
+      apiKey: "4372282a02970d8402d43457bf95d486",
+      indexName: "thethingsstack",
+      inputSelector: '#search-input-brand',
+      debug: false 
+    });
+    docsearch({
+      apiKey: "4372282a02970d8402d43457bf95d486",
+      indexName: "thethingsstack",
+      inputSelector: '#search-input-menu',
+      debug: false 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Getting Started</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/getting-started/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/quick-start/" class="">Quick Start</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/what-is-tts/" class="">What Is The Things Stack?</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/troubleshooting/" class="">Troubleshooting Getting Started</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/cli/" class="">Command-line Interface</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/console/" class="">Console</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/installation/" class="">Installing The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/" class="">Migrating to The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/" class="">Packet Broker</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/connect/" class="">Connect</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/configure/" class="">Configure</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/configure/routing-policies/" class="is-active">Routing Policies</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/configure/gateway-visibilities/" class="">Gateway Visibility Settings</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/server-addresses/" class="">Server Addresses</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/ttn/" class="">The Things Network</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/" class="">The Things Stack AWS Launcher</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/" class="">The Things Stack Cloud</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/upgrading/" class="">Upgrading The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/user-management/" class="">Users and Organizations</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/api/" class="">Using the API</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/events/" class="">Working with Events</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        <h1 class="title is-size-2">Routing Policies
+          
+        </h1>
+        
+        <h2 class="subtitle">
+          
+            
+            
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud, Dedicated Cloud, Enterprise and Open Source Only">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_dedicated_cloud.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_open_source.svg"></img>
+
+</a>
+
+
+          
+          
+            <span class="tag is-light">New in 3.13.3</span>
+
+          
+          
+        </h2>
+        
+        <div class="content">
+          <p>Routing policies define the rules that Forwarders configure for routing messages to Home Networks.</p>
+<!-- more -->
+<p>Routing policies are peer-to-peer: a Forwarder can define policies with each individual Home Network. Forwarders can also define an optional default routing policy that is used as a fallback when no specific policy is defined. <a href="/docs/getting-started/packet-broker/#routing-policies">Learn more about routing policies</a>.</p>
+<div class="notification is-primary is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Info:</h5>
+  Packet Broker Router uses a cache of the routing table. It takes up to 10 minutes for changes in routing policies to be fully propagated and effective. ☕
+</div>
+
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="console">
+      <a>
+        <span>Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="cli">
+      <a>
+        <span>CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="console">
+  <h3 id="configure-default-routing-policy">Configure Default Routing Policy</h3>
+<p>To configure a default routing policy, check the <strong>Use default routing policy for this network</strong> radio button. This routing policy will be used when no specific routing policy has been configured with a network.</p>
+<p>Choose which uplink and downlink messages you would like to exchange with other networks by default, by enabling the appropriate checkboxes.</p>
+<figure>
+    <img src="../default-policy.png"
+         alt="Default Routing Policy"/> 
+</figure>
+<h3 id="configure-network-specific-routing-policy">Configure Network Specific Routing Policy</h3>
+<p>To configure a routing policy with a specific network, click the <strong>Networks</strong> tab.</p>
+<p>All networks that are publicly listed will be shown when the <strong>All</strong> tab is activated. To list only networks with a configured policy, click the <strong>Networks with non-default policies</strong> tab.</p>
+<figure>
+    <img src="../pb-networks.png"
+         alt="Networks"/> 
+</figure>
+<p>To configure a routing policy for a specific network, first select the network. Activate the <strong>Use network specific routing policy</strong> radio button.</p>
+<p>Here, you may choose which uplink and downlink messages you would like to exchange with this network.</p>
+<figure>
+    <img src="../pb-custom.png"
+         alt="Network Specific Routing Policy"/> 
+</figure>
+<p>Click the <strong>Save routing policy</strong> button to store the routing policy.</p>
+</section>
+<section data-content="cli">
+  <h3 id="configure-default-routing-policy">Configure Default Routing Policy</h3>
+<p>The default routing policy defines rules for all Home Networks if there is no specific routing policy for a Home Network.</p>
+<h4 id="get-default-routing-policy">Get Default Routing Policy</h4>
+<p>To get the default routing policy:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-networks policies get default
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  If there is no default policy defined, the above command fails with <code>not found</code>.
+</div>
+<details><summary>Example output</summary>
+<p>The following example has all message types enabled:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2021-03-24T19:59:48.590521Z&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;uplink&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;join_request&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&#34;mac_data&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&#34;application_data&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&#34;signal_quality&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&#34;localization&#34;</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;downlink&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;join_accept&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&#34;mac_data&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&#34;application_data&#34;</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></details>
+<br>
+<h4 id="set-default-routing-policy">Set Default Routing Policy</h4>
+<p>To set the default routing policy to forward all uplink traffic and allow Home Networks to forward all downlink traffic:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-networks policies <span class="nb">set</span> default --all
+</code></pre></div><p>To customize, see <a href="#flags">Flags</a> below.</p>
+<h4 id="delete-default-routing-policy">Delete Default Routing Policy</h4>
+<p>To delete the default routing policy:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-networks policies delete default
+</code></pre></div><h3 id="list-home-networks">List Home Networks</h3>
+<p>In order to configure routing policies with Home Networks, you need to know which Home Networks are available in Packet Broker.</p>
+<p>To list Packet Broker Home Networks:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-networks list
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  This shows only the Home Networks that have been set to be visible to other networks. If you are using The Things Stack Cloud or Dedicated Cloud, <a href="mailto:support@thethingsindustries.com">contact The Things Industries support</a> to set your network to be listed or not. If you are using The Things Stack Open Source or Enterprise, see <a href="/docs/reference/configuration/packet-broker-agent/">Configuration</a>.
+</div>
+<details><summary>Example output</summary>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">[{</span>
+  <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;net_id&#34;</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span>
+    <span class="nt">&#34;tenant_id&#34;</span><span class="p">:</span> <span class="s2">&#34;ttn&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;The Things Stack Community Edition&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;dev_addr_blocks&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&#34;dev_addr_prefix&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span> <span class="s2">&#34;260B0000&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;length&#34;</span><span class="p">:</span> <span class="mi">16</span>
+      <span class="p">},</span>
+      <span class="nt">&#34;home_network_cluster_id&#34;</span><span class="p">:</span> <span class="s2">&#34;ttn-eu1&#34;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&#34;dev_addr_prefix&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span> <span class="s2">&#34;260C0000&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;length&#34;</span><span class="p">:</span> <span class="mi">16</span>
+      <span class="p">},</span>
+      <span class="nt">&#34;home_network_cluster_id&#34;</span><span class="p">:</span> <span class="s2">&#34;ttn-nam1&#34;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&#34;dev_addr_prefix&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span> <span class="s2">&#34;260D0000&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;length&#34;</span><span class="p">:</span> <span class="mi">16</span>
+      <span class="p">},</span>
+      <span class="nt">&#34;home_network_cluster_id&#34;</span><span class="p">:</span> <span class="s2">&#34;ttn-au1&#34;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&#34;contact_info&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&#34;contact_type&#34;</span><span class="p">:</span> <span class="s2">&#34;CONTACT_TYPE_TECHNICAL&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;contact_method&#34;</span><span class="p">:</span> <span class="s2">&#34;CONTACT_METHOD_EMAIL&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;ops@thethingsnetwork.org&#34;</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">},</span>
+<span class="p">{</span>
+  <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;net_id&#34;</span><span class="p">:</span> <span class="mi">8</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;KPN&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;dev_addr_blocks&#34;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&#34;dev_addr_prefix&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span> <span class="s2">&#34;10000000&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;length&#34;</span><span class="p">:</span> <span class="mi">7</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div></details>
+<h3 id="forwarder-routing-policies">Forwarder Routing Policies</h3>
+<p>You can see which routing policies Forwarders set for your network as the Home Network. This allows you to see from which networks you receive traffic, which data is being routed, and what downlink capabilities you have with those Forwarders.</p>
+<p>To list the routing policies set by Forwarders for your network:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker forwarder policies list
+</code></pre></div><details><summary>Example output</summary>
+<p>The following example shows that The Things Stack Community Edition forwards all messages to your network (<code>NetID</code> <code>000013</code> and tenant ID <code>my-company</code>) and that you can send all downlink messages via The Things Stack Community Edition to your end devices.</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">[{</span>
+  <span class="nt">&#34;forwarder_id&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;net_id&#34;</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span>
+    <span class="nt">&#34;tenant_id&#34;</span><span class="p">:</span> <span class="s2">&#34;ttn&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;home_network_id&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;net_id&#34;</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span>
+    <span class="nt">&#34;tenant_id&#34;</span><span class="p">:</span> <span class="s2">&#34;my-company&#34;</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2021-03-23T15:14:49.614025Z&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;uplink&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;join_request&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&#34;mac_data&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&#34;application_data&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&#34;signal_quality&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&#34;localization&#34;</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">},</span>
+  <span class="nt">&#34;downlink&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;join_accept&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&#34;mac_data&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&#34;application_data&#34;</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div></details>
+<h3 id="home-network-routing-policies">Home Network Routing Policies</h3>
+<p>You can manage the routing policies between you as Forwarder and any Home Network available in Packet Broker. This allows you to configure what uplink traffic is routed where, and to which extent those Home Networks can use your gateways for downlink traffic.</p>
+<h4 id="home-network-routing-policies-1">Home Network Routing Policies</h4>
+<p>Home Network routing policies take precedence over the default routing policy.</p>
+<h5 id="list-home-network-routing-policies">List Home Network Routing Policies</h5>
+<p>To list the routing policies for Home Networks:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-network policies list
+</code></pre></div><h5 id="get-home-network-routing-policy">Get Home Network Routing Policy</h5>
+<p>To get the routing policy for a Home Network:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-networks policies get &lt;net-id&gt; <span class="o">[</span>&lt;tenant-id&gt;<span class="o">]</span>
+</code></pre></div><p>Replace <code>&lt;net-id&gt;</code> with your network&rsquo;s <code>NetID</code>. The <code>tenant-id</code> is optional and represents the tenant within the <code>NetID</code>.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <p>To view the routing policy configured between you (the Forwarder) and The Things Stack Community Edition (the Home Network):</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-networks policies get <span class="m">000013</span> ttn
+</code></pre></div>
+</div>
+<h5 id="set-home-network-routing-policy">Set Home Network Routing Policy</h5>
+<p>To set the routing policy for a Home Network:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-network policies <span class="nb">set</span> &lt;net-id&gt; <span class="o">[</span>&lt;tenant-id&gt;<span class="o">]</span> --all
+</code></pre></div><p>To customize, see <a href="#flags">Flags</a> below.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <p>To enable forwarding of all packets between you (the Forwarder) and The Things Stack Community Edition (the Home Network):</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-network policy <span class="nb">set</span> <span class="m">000013</span> ttn --all
+</code></pre></div>
+</div>
+<h5 id="delete-home-network-routing-policy">Delete Home Network Routing Policy</h5>
+<p>To delete the routing policy for a Home Network:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-networks policies delete &lt;net-id&gt; <span class="o">[</span>&lt;tenant-id&gt;<span class="o">]</span>
+</code></pre></div><p>Replace <code>&lt;net-id&gt;</code> with your network&rsquo;s <code>NetID</code>. The <code>tenant-id</code> is optional and represents the tenant within the <code>NetID</code>.</p>
+<h4 id="flags">Flags</h4>
+<p>When setting a routing policy, you can specify a combination of the following flags:</p>
+<table>
+<thead>
+<tr>
+<th>Flag</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--all</code></td>
+<td>Enable all message types</td>
+</tr>
+<tr>
+<td><code>--join</code></td>
+<td>Enable join-request and join-accept</td>
+</tr>
+<tr>
+<td><code>--join-request</code></td>
+<td>Enable join-request</td>
+</tr>
+<tr>
+<td><code>--join-accept</code></td>
+<td>Enable join-accept</td>
+</tr>
+<tr>
+<td><code>--mac-data</code></td>
+<td>Enable MAC layer data messages (<code>FPort</code> <code>0</code>)</td>
+</tr>
+<tr>
+<td><code>--mac-data-up</code></td>
+<td>Enable MAC layer data uplink messages</td>
+</tr>
+<tr>
+<td><code>--mac-data-down</code></td>
+<td>Enable MAC layer data downlink messages</td>
+</tr>
+<tr>
+<td><code>--application-data</code></td>
+<td>Enable application layer data messages (<code>FPort</code> <code>1</code> or higher)</td>
+</tr>
+<tr>
+<td><code>--application-data-up</code></td>
+<td>Enable application layer data uplink messages</td>
+</tr>
+<tr>
+<td><code>--application-data-down</code></td>
+<td>Enable application layer data downlink messages</td>
+</tr>
+<tr>
+<td><code>--signal-quality</code></td>
+<td>Enable RSSI and SNR metadata (to pick the best downlink path)</td>
+</tr>
+<tr>
+<td><code>--localization</code></td>
+<td>Enable signal quality and gateway locations (for geolocation)</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+</div>
+
+
+        </div>
+        <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/getting-started/packet-broker/configure/">← Configure</a>
+<a class="button is-pulled-right" href="/docs/getting-started/packet-broker/configure/gateway-visibilities/">Gateway Visibility Settings →</a>
+</div>
+
+        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/network-and-routing/v3">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Johan Stokking on 29 Sep 2021.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/cde367bce9812e41d2791e668580e62678ff2112">
+      Document Packet Broker gateway visibility configuration (#583)
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/packet-broker/configure/routing-policies.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

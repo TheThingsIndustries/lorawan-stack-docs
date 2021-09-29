@@ -204,7 +204,7 @@
 
 <h3 id="routing-policies">Routing Policies</h3>
 <p>Routing policies define the rules that Forwarders configure for routing messages to Home Networks. Routing policies are peer-to-peer: a Forwarder can define policies with each individual Home Network. Forwarders can also define an optional default routing policy that is used as a fallback when no specific policy is defined.</p>
-<p>Forwarders can configure the following things in a routing policy:</p>
+<p>Forwarders can configure the following message types per direction in a routing policy:</p>
 <table>
 <thead>
 <tr>
@@ -255,6 +255,52 @@
 <li>A default policy (for all other networks): only uplink MAC and application payload messages. That would mean to not forward join-requests and join-accepts, and to not forward the metadata.</li>
 </ol>
 </blockquote>
+<h3 id="gateway-visibility-settings">Gateway Visibility Settings</h3>
+<p>Gateway visibility configuration allows network administrators to configure who sees which gateway-related information. Having gateways listed publicly on the map can help discovering partner networks, but it may also lead to privacy concerns. Therefore, Packet Broker allows configuring gateway visibility with fine-grained settings.</p>
+<p>Forwarders can configure the visibility of their gateways towards the public or specific Home Networks. Like routing policies, gateway visibility is configured peer-to-peer: a Forwarder can define gateway visibility with each individual Home Network. Forwarders can also define an optional default gateway visibility that is used as a fallback when no specific visibility is defined.</p>
+<p>Forwarders can configure the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Location</td>
+<td>Gateway coordinates</td>
+</tr>
+<tr>
+<td>Antenna placement</td>
+<td>Indoor/outdoor antenna placement</td>
+</tr>
+<tr>
+<td>Antenna count</td>
+<td>Number of antennas</td>
+</tr>
+<tr>
+<td>Fine timestamps</td>
+<td>Whether the gateway produces fine timestamps</td>
+</tr>
+<tr>
+<td>Contact information</td>
+<td>Administrative and technical contact information of the gateway</td>
+</tr>
+<tr>
+<td>Status</td>
+<td>Online/offline status</td>
+</tr>
+<tr>
+<td>Frequency plan</td>
+<td>Region and channel plan with frequencies that the gateway uses</td>
+</tr>
+<tr>
+<td>Packet rates</td>
+<td>Receive and transmission packet rates</td>
+</tr>
+</tbody>
+</table>
 <h2 id="getting-started">Getting Started</h2>
 <p>The Things Stack Community Edition and The Things Stack Cloud are already connected to Packet Broker. Proceed to <a href="/docs/getting-started/packet-broker/configure/">Configure</a> section to manage your registration and routing policies with other networks.</p>
 <div class="notification is-info is-light has-text-dark">
@@ -356,10 +402,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 28 Sep 2021.
+  Last changed by Johan Stokking on 29 Sep 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/041049ebc057522692492611806c4bac732d0b66">
-      doc: Add status page refs for Cloud Hosted and Packet Broker (#581)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/cde367bce9812e41d2791e668580e62678ff2112">
+      Document Packet Broker gateway visibility configuration (#583)
     </a>
 </p>
 
