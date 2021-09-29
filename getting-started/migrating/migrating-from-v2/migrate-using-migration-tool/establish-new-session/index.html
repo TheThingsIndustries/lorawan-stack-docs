@@ -295,10 +295,6 @@
 <div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
   <p>Note that this is <strong>not a recommended practice</strong>. We advise re-programming the ABP device to change the <strong>DevAddr</strong> to the one issued by The Things Stack and <strong>RX1 Delay</strong> to 5 seconds, even if you do not want your traffic to be routed by Packet Broker.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Use the <code>--ttnv2.resets-to-frequency-plan</code> flag to configure the factory preset frequencies of the device, so that it can keep working with The Things Stack. The list of uplink frequencies is inferred from the Frequency Plan.
-</div>
 <p>If you re-program the device, you will have to follow the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-console/">Migrate using the Console</a> guide. The reason for this is that when you re-program your ABP device, its <strong>DevAddr</strong> and other parameters will no longer match the device description stored in V2, so you will not be able to export the current device description using the <code>ttn-lw-migrate</code> tool.</p>
 </div>
 </section>
@@ -308,6 +304,11 @@
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   Before exporting end devices, you can first test the execution by appending the <code>--dry-run</code> and <code>--verbose</code> flags to the commands presented in the sections below.
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Use the <code>--ttnv2.resets-to-frequency-plan</code> flag to configure the factory preset frequencies of the device, so that it can keep working with The Things Stack. The list of uplink frequencies is inferred from the <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plan</a>.
 </div>
 
 <h3 id="export-a-single-end-device">Export a Single End Device</h3>
@@ -477,10 +478,10 @@ dev3
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Aggelos Kolaitis on 26 Aug 2021.
+  Last changed by Nejra Selimović on 29 Sep 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/c8b3c796e25e9b9ae6845540b95984c90a504bcc">
-      doc: Document --ttnv2.resets-to-frequency-plan flag (#538)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2997f29dd4a0edead2349707b4fba16b469b5639">
+      doc: Fix migration tool flag-related notes (#589)
     </a>
 </p>
 
