@@ -30,8 +30,6 @@ If you are not migrating from **The Things Industries V2 (SaaS)** to **{{% tts %
 
 {{< warning >}} Note that this is **not a recommended practice**. We advise re-programming the ABP device to change the **DevAddr** to the one issued by The Things Stack and **RX1 Delay** to 5 seconds, even if you do not want your traffic to be routed by Packet Broker.
 
-{{< note >}} Use the `--ttnv2.resets-to-frequency-plan` flag to configure the factory preset frequencies of the device, so that it can keep working with The Things Stack. The list of uplink frequencies is inferred from the Frequency Plan. {{</ note >}}
-
 If you re-program the device, you will have to follow the [Migrate using the Console]({{< ref "/getting-started/migrating/migrating-from-v2/migrate-using-console" >}}) guide. The reason for this is that when you re-program your ABP device, its **DevAddr** and other parameters will no longer match the device description stored in {{% ttnv2 %}}, so you will not be able to export the current device description using the `ttn-lw-migrate` tool. {{</ warning >}}
 
 {{< /tabs/tab >}}
@@ -39,6 +37,8 @@ If you re-program the device, you will have to follow the [Migrate using the Con
 {{< /tabs/container >}}
 
 {{< note >}} Before exporting end devices, you can first test the execution by appending the `--dry-run` and `--verbose` flags to the commands presented in the sections below. {{</ note >}}
+
+{{< note >}} Use the `--ttnv2.resets-to-frequency-plan` flag to configure the factory preset frequencies of the device, so that it can keep working with {{% tts %}}. The list of uplink frequencies is inferred from the [Frequency Plan]({{< ref "/reference/frequency-plans" >}}). {{</ note >}}
 
 ### Export a Single End Device
 

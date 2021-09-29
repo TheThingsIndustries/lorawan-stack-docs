@@ -37,6 +37,8 @@ Remember that if you are not migrating specifically from **The Things Industries
 
 {{< note >}} Before exporting end devices, you can first test the execution by appending the `--dry-run` and `--verbose` flags to the commands presented in the sections below. {{</ note >}}
 
+{{< note >}} Use the `--ttnv2.resets-to-frequency-plan` flag to configure the factory preset frequencies of the device, so that it can keep working with {{% tts %}}. The list of uplink frequencies is inferred from the [Frequency Plan]({{< ref "/reference/frequency-plans" >}}). {{</ note >}}
+
 ### Export a Single End Device
 
 To export a single end device from {{% ttnv2 %}} and clear its security keys:
