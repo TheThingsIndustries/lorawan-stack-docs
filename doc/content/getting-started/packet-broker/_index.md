@@ -57,9 +57,9 @@ Localization | O | | Gateway locations, timestamps and signal quality
 >2. With Home Network that has `NetID` `000013` and tenant ID `example-com`: only join-requests, join-accepts and uplink and downlink MAC and application payload messages. This would mean to not forward the metadata.
 >3. A default policy (for all other networks): only uplink MAC and application payload messages. That would mean to not forward join-requests and join-accepts, and to not forward the metadata.
 
-### Gateway Visibilities
+### Gateway Visibility Settings
 
-Gateway visibility configuration allows network administrators to configure who sees which information about gateways. Having gateways listed publicly on the map can help discovering partner networks, but it may also lead to privacy concerns. Therefore, Packet Broker allows configuring gateway visibilities with fine-grained settings.
+Gateway visibility configuration allows network administrators to configure who sees which gateway-related information. Having gateways listed publicly on the map can help discovering partner networks, but it may also lead to privacy concerns. Therefore, Packet Broker allows configuring gateway visibility with fine-grained settings.
 
 Forwarders can configure the visibility of their gateways towards the public or specific Home Networks. Like routing policies, gateway visibility is configured peer-to-peer: a Forwarder can define gateway visibility with each individual Home Network. Forwarders can also define an optional default gateway visibility that is used as a fallback when no specific visibility is defined.
 
@@ -67,8 +67,8 @@ Forwarders can configure the following fields:
 
 Type | Description
 --- | ---
-Location | Coordinates of the gateway
-Antenna placement | Placement of the antenna (indoor or outdoor)
+Location | Gateway coordinates
+Antenna placement | Indoor/outdoor antenna placement
 Antenna count | Number of antennas
 Fine timestamps | Whether the gateway produces fine timestamps
 Contact information | Administrative and technical contact information of the gateway

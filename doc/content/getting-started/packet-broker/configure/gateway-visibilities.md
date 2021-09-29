@@ -1,5 +1,5 @@
 ---
-title: Gateway Visibilities
+title: Gateway Visibility Settings
 description: ""
 weight: 2
 distributions:
@@ -10,31 +10,32 @@ distributions:
 new_in_version: 3.15.1
 ---
 
-Gateway visibility configuration allows network administrators to configure who sees which information about gateways. Having gateways listed publicly on the map can help discovering partner networks, but it may also lead to privacy concerns. Therefore, Packet Broker allows configuring gateway visibilities with fine-grained settings. [Learn more about gateway visibilities]({{< relref "../#gateway-visibilities" >}}).
+Gateway visibility configuration allows network administrators to configure who sees which gateway-related information. Having gateways listed publicly on the map can help discovering partner networks, but it may also lead to privacy concerns. Therefore, Packet Broker allows configuring gateway visibility with fine-grained settings. [Learn more about gateway visibility]({{< relref "../#gateway-visibilities" >}}).
 
 <!-- more -->
 
-{{< info >}}{{% tts %}} currently only allows configuring the default gateway visibility; configuring visibility per Home Network is not yet supported.{{< /info >}}
+{{< note >}}{{% tts %}} currently only allows configuring the default gateway visibility. Configuring visibility per Home Network is not yet supported.{{< /note >}}
 
 {{< cli-only >}}
 
 ### Configure Default Gateway Visibility
 
+#### Get Default Gateway Visibility
 The default gateway visibility defines rules for all Home Networks if there is no specific gateway visibility for a Home Network.
 
-To get the default routing policy:
+Use the following command in your terminal to get the default routing policy:
 
 ```bash
 $ ttn-lw-cli packetbroker home-networks gateway-visibilities get default
 ```
 
-{{< info >}}
-If there is no default gateway visibility defined, this command fails with `not found`.
-{{< /info >}}
+{{< note >}}
+If there is no default gateway visibility defined, the above command fails with `not found`.
+{{< /note >}}
 
 <details><summary>Example output</summary>
 
-This example has all fields enabled:
+In the following example, all gateway visibility configuration fields are enabled:
 
 ```json
 {
@@ -56,7 +57,7 @@ This example has all fields enabled:
 
 #### Set Default Gateway Visibility
 
-To set the default gateway visibility to enable all fields:
+To set the default gateway visibility and enable all fields:
 
 ```bash
 $ ttn-lw-cli packetbroker home-networks gateway-visibilities set default --all
@@ -79,8 +80,8 @@ When setting gateway visibility, you can specify a combination of the following 
 Flag | Meaning
 --- | ---
 `--all` | Enable all fields
-`--location` | Enable coordinates of the gateway
-`--antenna-placement` | Enable placement of the antenna (indoor or outdoor)
+`--location` | Enable gateway coordinates
+`--antenna-placement` | Enable indoor/outdoor antenna placement
 `--antenna-count` | Enable number of antennas
 `--fine-timestamps` | Enable whether the gateway produces fine timestamps
 `--contact-information` | Enable administrative and technical contact information of the gateway

@@ -10,9 +10,11 @@ distributions:
 new_in_version: 3.13.3
 ---
 
-Routing policies define the rules that Forwarders configure for routing messages to Home Networks. Routing policies are peer-to-peer: a Forwarder can define policies with each individual Home Network. Forwarders can also define an optional default routing policy that is used as a fallback when no specific policy is defined. [Learn more about routing policies]({{< relref "../#routing-policies" >}}).
+Routing policies define the rules that Forwarders configure for routing messages to Home Networks.
 
 <!-- more -->
+
+Routing policies are peer-to-peer: a Forwarder can define policies with each individual Home Network. Forwarders can also define an optional default routing policy that is used as a fallback when no specific policy is defined. [Learn more about routing policies]({{< relref "../#routing-policies" >}}).
 
 {{< info >}} Packet Broker Router uses a cache of the routing table. It takes up to 10 minutes for changes in routing policies to be fully propagated and effective. ☕ {{< /info >}}
 
@@ -36,7 +38,7 @@ All networks that are publicly listed will be shown when the **All** tab is acti
 
 {{< figure src="../pb-networks.png" alt="Networks" >}}
 
-To configure a routing policy for a specific network, click the network. Activate the **Use network specific routing policy** radio button.
+To configure a routing policy for a specific network, first select the network. Activate the **Use network specific routing policy** radio button.
 
 Here, you may choose which uplink and downlink messages you would like to exchange with this network.
 
@@ -60,13 +62,13 @@ To get the default routing policy:
 $ ttn-lw-cli packetbroker home-networks policies get default
 ```
 
-{{< info >}}
-If there is no default policy defined, this command fails with `not found`.
-{{< /info >}}
+{{< note >}}
+If there is no default policy defined, the above command fails with `not found`.
+{{< /note >}}
 
 <details><summary>Example output</summary>
 
-This example has all message types enabled:
+The following example has all message types enabled:
 
 ```json
 {
@@ -192,7 +194,7 @@ $ ttn-lw-cli packetbroker forwarder policies list
 
 <details><summary>Example output</summary>
 
-This example shows that The Things Network forwards all messages to your network (`NetID` `000013` and tenant ID `my-company`) and that you can send all downlink messages via The Things Network to your end devices.
+The following example shows that The Things Network forwards all messages to your network (`NetID` `000013` and tenant ID `my-company`) and that you can send all downlink messages via The Things Network to your end devices.
 
 ```json
 [{
@@ -247,7 +249,7 @@ To get the routing policy for a Home Network:
 $ ttn-lw-cli packetbroker home-networks policies get <net-id> [<tenant-id>]
 ```
 
-Replace `<net-id>` with the `NetID`. The `tenant-id` is optional and represents the tenant within the `NetID`.
+Replace `<net-id>` with your network's `NetID`. The `tenant-id` is optional and represents the tenant within the `NetID`.
 
 {{< note >}}
 To view the routing policy configured between you (the Forwarder) and The Things Network (the Home Network):
@@ -283,7 +285,7 @@ To delete the routing policy for a Home Network:
 $ ttn-lw-cli packetbroker home-networks policies delete <net-id> [<tenant-id>]
 ```
 
-Replace `<net-id>` with the `NetID`. The `tenant-id` is optional and represents the tenant within the `NetID`.
+Replace `<net-id>` with your network's `NetID`. The `tenant-id` is optional and represents the tenant within the `NetID`.
 
 #### Flags {#flags}
 
