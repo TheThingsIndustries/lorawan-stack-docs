@@ -41,7 +41,7 @@ Packet Broker routes uplink messages from Forwarders to Home Networks based on t
 
 Routing policies define the rules that Forwarders configure for routing messages to Home Networks. Routing policies are peer-to-peer: a Forwarder can define policies with each individual Home Network. Forwarders can also define an optional default routing policy that is used as a fallback when no specific policy is defined.
 
-Forwarders can configure the following things in a routing policy:
+Forwarders can configure the following message types per direction in a routing policy:
 
 Type | Uplink | Downlink | Description
 --- | :---: | :---: | ---
@@ -56,6 +56,25 @@ Localization | O | | Gateway locations, timestamps and signal quality
 >1. With Home Network that has `NetID` `000013` and tenant ID `ttn` (The Things Network): all message types. This would mean to forward join-requests and join-accepts, uplink and downlink MAC and application payload messages, and signal quality and localization information.
 >2. With Home Network that has `NetID` `000013` and tenant ID `example-com`: only join-requests, join-accepts and uplink and downlink MAC and application payload messages. This would mean to not forward the metadata.
 >3. A default policy (for all other networks): only uplink MAC and application payload messages. That would mean to not forward join-requests and join-accepts, and to not forward the metadata.
+
+### Gateway Visibility Settings
+
+Gateway visibility configuration allows network administrators to configure who sees which gateway-related information. Having gateways listed publicly on the map can help discovering partner networks, but it may also lead to privacy concerns. Therefore, Packet Broker allows configuring gateway visibility with fine-grained settings.
+
+Forwarders can configure the visibility of their gateways towards the public or specific Home Networks. Like routing policies, gateway visibility is configured peer-to-peer: a Forwarder can define gateway visibility with each individual Home Network. Forwarders can also define an optional default gateway visibility that is used as a fallback when no specific visibility is defined.
+
+Forwarders can configure the following fields:
+
+Type | Description
+--- | ---
+Location | Gateway coordinates
+Antenna placement | Indoor/outdoor antenna placement
+Antenna count | Number of antennas
+Fine timestamps | Whether the gateway produces fine timestamps
+Contact information | Administrative and technical contact information of the gateway
+Status | Online/offline status
+Frequency plan | Region and channel plan with frequencies that the gateway uses
+Packet rates | Receive and transmission packet rates
 
 ## Getting Started
 
