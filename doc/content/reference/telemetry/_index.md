@@ -25,11 +25,15 @@ Similar metrics exist for gRPC client connections opened by {{% tts %}}, and RPC
 
 ## General Metrics
 
-- {{< distributions "Enterprise" >}} `ttn_lw_license_expiry_seconds` can be used to keep track of license expiry 
-- {{< new-in-version "3.13.1" >}} `ttn_lw_log_messages_total` can be used to track the log messages written by different log namespaces at different log levels. 
+- {{< distributions "Enterprise" >}} `ttn_lw_license_expiry_seconds` can be used to keep track of license expiry
+- {{< new-in-version "3.13.1" >}} `ttn_lw_log_messages_total` can be used to track the log messages written by different log namespaces at different log levels.
   - Before version 3.13.1 this metric was called `ttn_lw_log_log_messages_total`.
 - `ttn_lw_events_publishes_total` can be used to track the published events by event type.
 - `ttn_lw_events_channel_dropped_total` can be used to watch for dropped events, which typically indicates that a consumer (such as a user's web browser) can't keep up.
+- `ttn_lw_workerpool_workers_started` and `ttn_lw_workerpool_workers_stopped` indicate the total number of workers started, and stopped, in the worker pools.
+- `ttn_lw_workerpool_workers_idle` indicates the number of workers which are idle (not currently processing any work item) in the worker pools.
+- `ttn_lw_workerpool_work_queue_size` indicates the number of elements found in the queue of the worker pools.
+- `ttn_lw_workerpool_work_processed` and `ttn_lw_workerpool_work_dropped` indicates the total amount of work processed, or dropped, by the worker pools.
 
 For the Gateway Server:
 
@@ -39,6 +43,8 @@ For the Gateway Server:
 - `ttn_lw_gs_status_received_total` indicates the number of status messages received from gateways.
 - `ttn_lw_gs_uplink_forwarded_total` indicates the number of uplink messages forwarded to the Network Server or Packet Broker.
 - `ttn_lw_gs_uplink_dropped_total` indicates the number of uplink messages that are dropped for various reasons.
+- `ttn_lw_gs_uplink_failed_total` indicates the number of uplink messages for which the processing has failed for various reasons.
+- `ttn_lw_gs_downlink_tx_success_total` and `ttn_lw_gs_downlink_tx_failed_total` indicates the number of successful transmissions, and failed transmissions for various reasons, reported by the gateways.
 
 For the Packet Broker Agent: {{< new-in-version "3.11.2" >}}
 
@@ -68,6 +74,10 @@ For the Application Server:
 - `ttn_lw_as_downlink_received_total` indicates the number of downlink messages received from integrations and external applications.
 - `ttn_lw_as_downlink_forwarded_total` indicates the number of downlink messages forwarded to the Network Server.
 - `ttn_lw_as_downlink_dropped_total` indicates the number of downlink messages dropped for various reasons.
+- `ttn_lw_as_subscription_sets_started_total` and `ttn_lw_as_subscription_sets_stopped_total` indicates the total number of subscriptions sets started and stopped.
+- `ttn_lw_as_packages_processed_total` and `ttn_lw_as_packages_failed_total` indicates the total number of uplink messages processed, or which have failed processing for various reasons, by application packages.
+- `ttn_lw_as_packages_storage_upstream_messages_stored` and `ttn_lw_as_packages_storage_upstream_messages_dropped` indicates the total number of uplink messages stored, or dropped for various reasons, by the Storage Integration.
+- `ttn_lw_as_webhook_sent_total` and `ttn_lw_as_webhook_failed_total` indicates the total number of webhook messages sent, or failed for various reasons.
 - `ttn_lw_javascript_run_latency_seconds` is a histogram that indicates the duration of executing JavaScript payload formatters.
 
 For the Join Server:
