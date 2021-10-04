@@ -54,7 +54,7 @@ The final JSON `properties.desired` object should look as follows:
 }
 ```
 
-When finished editing the JSON `tags` object, click on **Save** in the top-left corner.
+When finished editing the JSON `properties.desired` object, click on **Save** in the top-left corner.
 
 {{< figure src="../desired-properties.png" alt="Desired Properties" >}}
 
