@@ -28,4 +28,4 @@ See [Data Formats]({{< ref "reference/data-formats" >}}) for examples of uplink 
 
 Clicking the **Add Webhook** button will create the Webhook.
 
-{{< note >}} If you don't have an endpoint available for testing, you can test with a free service like [PostBin](https://postb.in). {{</ note >}}
+{{< note >}} If you don't have an endpoint available for testing, you can test with a free service like [Webhook.site](https://webhook.site). {{</ note >}}
