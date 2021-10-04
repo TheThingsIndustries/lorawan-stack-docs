@@ -9,6 +9,10 @@ This is the reference for the gRPC and HTTP APIs that {{% tts %}} exposes.
 
 {{< note >}} {{% tts %}} API is different from {{% ttnv2 %}} API. If migrating from V2, see [here]({{< ref "getting-started/migrating/major-changes" >}}) for an overview of changes. {{</ note >}}
 
+## Server Addresses
+
+The API examples in this section use the example URL `thethings.example.com`, which you will need to replace with the address of your {{% tts %}} instance. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}) for a list of URLs for all deployments.
+
 ## HTTP Queries
 
 ### Field Masks
