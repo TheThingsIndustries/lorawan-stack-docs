@@ -2,7 +2,7 @@
 
 Thank you for your interest in building this thing together with us. We're really happy with our active community and are glad that you're a part of it. There are many ways to contribute to our project, but given the fact that you're on Github looking at the code for The Things Stack Docs, you're probably here for one of the following reasons:
 
-- **Asking a question**: If you have questions, please use the [forum](https://www.thethingsnetwork.org/forum/). We have a special [category for The Things Stack](https://www.thethingsnetwork.org/forum/c/network-and-routing/v3).
+- **Asking a question**: If you have questions, please use the [forum](https://www.thethingsnetwork.org/forum/). We have a special [category for The Things Stack](https://www.thethingsnetwork.org/forum/c/ttn-network/v3/90).
 - **Writing documentation**: If you see that our documentation is lacking or incorrect, it would be great if you could help us improve it. This will help users and fellow contributors understand how to better work with our stack. Better documentation helps prevent making mistakes and introducing new bugs. Our documentation is spread across a number of places. Code documentation for The Things Stack lives together with the [code](https://github.com/TheThingsNetwork/lorawan-stack). User documentation for The Things Stack is built from the source files in the `doc` folder of this repository. More general documentation can be found on [The Things Network's official documentation pages](https://www.thethingsnetwork.org/docs). The source files for that documentation can be found in [the `docs` repository](https://github.com/TheThingsNetwork/docs).
 
 Style guidelines for contributing code and writing documentation can be found [here](README.md#style-guidelines).

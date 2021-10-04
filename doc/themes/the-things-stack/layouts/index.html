@@ -29,7 +29,12 @@
 
 {{ $documentation := dict "title" "Documentation" "button" "Get Started" "url" (.Site.GetPage "getting-started").RelPermalink "text" "The Things Stack is an open source LoRaWAN Network Server suitable for global, geo-distributed public and private deployments as well as for small, local networks. The architecture follows the LoRaWAN Network Reference Model for standards compliancy and interoperability. This project is actively maintained by [The Things Industries](https://www.thethingsindustries.com/). \n\n LoRaWAN is a protocol for low-power wide area networks. It allows for large scale Internet of Things deployments where low-powered devices efficiently communicate with Internet-connected applications over long range wireless connections." }}
 
-{{ $community := dict "title" "Community" "button" "Developer Forum" "url" "https://www.thethingsnetwork.org/forum/c/network-and-routing/v3" "text" "Thanks to a large developer community, The Things Stack is continuously being improved. There are many ways to contribute to the project, thinking of reporting issues, requesting and implementing new features and writing documentation. Read more on how to contribute in the [LoRaWAN stack repository](https://github.com/TheThingsNetwork/lorawan-stack). \n\n Hosted solutions, as well as commercial support and consultancy are offered by [The Things Industries](https://www.thethingsindustries.com/)." }}
+{{ $forumUrl := "" }}
+{{ range first 1 (where .Site.Menus.contributing "Name" "Forum") }}
+  {{ $forumUrl = .URL }}
+{{ end }}
+
+{{ $community := dict "title" "Community" "button" "Developer Forum" "url" $forumUrl "text" "Thanks to a large developer community, The Things Stack is continuously being improved. There are many ways to contribute to the project, thinking of reporting issues, requesting and implementing new features and writing documentation. Read more on how to contribute in the [LoRaWAN stack repository](https://github.com/TheThingsNetwork/lorawan-stack). \n\n Hosted solutions, as well as commercial support and consultancy are offered by [The Things Industries](https://www.thethingsindustries.com/)." }}
 
 {{ $cards := slice $features $documentation $community }}
 

@@ -8,7 +8,7 @@ This section provides help for common issues and frequently asked questions you 
 
 <!--more-->
 
-If you encounter a bug, please [file an issue](https://github.com/TheThingsNetwork/lorawan-stack/issues/new/choose). If you have questions not covered here, please ask in [{{% tts %}} Forum](https://www.thethingsnetwork.org/forum/c/network-and-routing/v3). To check the status of cloud services, see our [status page](https://status.thethings.industries/).
+If you encounter a bug, please [file an issue](https://github.com/TheThingsNetwork/lorawan-stack/issues/new/choose). If you have questions not covered here, please ask in [{{% tts %}} Forum]({{% forum-url %}}). To check the status of cloud services, see our [status page](https://status.thethings.industries/).
 
 ## Troubleshooting {{% tts %}}
 
