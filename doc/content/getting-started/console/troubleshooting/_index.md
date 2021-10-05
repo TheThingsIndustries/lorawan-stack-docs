@@ -7,19 +7,6 @@ This section provides help for common issues in {{% tts %}} Console.
 
 <!--more-->
 
-## What Are Last Seen / Last Activity?
-
-### Last activity
-
-For **end devices**, the `session` and `pending_session` populate the initial **Last activity** value, and it is updated by `uplink`, `join` or `rejoin` events 
-from the device.
-
-### Last seen
-
-For **gateways**, this is generated from the `stats` endpoint of the gateway server which is the more recent of either the `last_status_received_at` or `last_uplink_received_at` data. The value is updated by `downlink received`, `uplink sent` or `status received`. events.
-
-For **applications**, the initial value is populated by historical events from all devices within the application. This value is then updated by **Last activity** events from all devices within the application.
-
 ## Common Errors
 
 ### Network Error / Reconnecting / Stream errors
