@@ -11606,6 +11606,76 @@ ttn-lw-cli packetbroker home-networks:
   - homenetwork
   - hn
   short: Home Network commands
+ttn-lw-cli packetbroker home-networks gateway-visibilities:
+  path: ttn-lw-cli packetbroker home-networks gateway-visibilities
+  parent_path: ttn-lw-cli packetbroker home-networks
+  name: gateway-visibilities
+  aliases:
+  - gateway-visibility
+  - gatewayvisibilities
+  - gatewayvisibility
+  - gatewayvis
+  short: Manage Home Network gateway visibilities
+ttn-lw-cli packetbroker home-networks gateway-visibilities delete:
+  path: ttn-lw-cli packetbroker home-networks gateway-visibilities delete
+  parent_path: ttn-lw-cli packetbroker home-networks gateway-visibilities
+  name: delete
+  use: default
+  short: Delete a Home Network gateway visibility
+ttn-lw-cli packetbroker home-networks gateway-visibilities get:
+  path: ttn-lw-cli packetbroker home-networks gateway-visibilities get
+  parent_path: ttn-lw-cli packetbroker home-networks gateway-visibilities
+  name: get
+  use: default
+  short: Get a Home Network gateway visibility
+  example: |2-
+
+      To get the default gateway visibility:
+        $ ttn-lw-cli packetbroker home-network gateway-visibilities get default
+ttn-lw-cli packetbroker home-networks gateway-visibilities set:
+  path: ttn-lw-cli packetbroker home-networks gateway-visibilities set
+  parent_path: ttn-lw-cli packetbroker home-networks gateway-visibilities
+  name: set
+  use: default
+  short: Set a Home Network gateway visibility
+  long: |-
+    Set a Home Network gateway visibility
+
+    Specify default to configure the default gateway visibility.
+  example: |2-
+
+      To set the default gateway visibility to show location and online status:
+        $ ttn-lw-cli packetbroker home-network gateway-visibilities set default \
+          --location --status
+
+      To set the default gateway visibility to show all fields:
+        $ ttn-lw-cli packetbroker home-network gateway-visibilities set default \
+          --all
+  command_flags:
+  - name: all
+    type: bool
+    default_value: "false"
+  - name: antenna-count
+    type: bool
+    default_value: "false"
+  - name: antenna-placement
+    type: bool
+    default_value: "false"
+  - name: fine-timestamps
+    type: bool
+    default_value: "false"
+  - name: frequency-plan
+    type: bool
+    default_value: "false"
+  - name: location
+    type: bool
+    default_value: "false"
+  - name: packet-rates
+    type: bool
+    default_value: "false"
+  - name: status
+    type: bool
+    default_value: "false"
 ttn-lw-cli packetbroker home-networks list:
   path: ttn-lw-cli packetbroker home-networks list
   parent_path: ttn-lw-cli packetbroker home-networks
@@ -11638,7 +11708,7 @@ ttn-lw-cli packetbroker home-networks policies delete:
   path: ttn-lw-cli packetbroker home-networks policies delete
   parent_path: ttn-lw-cli packetbroker home-networks policies
   name: delete
-  use: '[default|net-id] [tenant-id]'
+  use: '[default|[net-id] [tenant-id]]'
   short: Delete a Home Network routing policy
   command_flags:
   - name: default
@@ -11653,7 +11723,7 @@ ttn-lw-cli packetbroker home-networks policies get:
   path: ttn-lw-cli packetbroker home-networks policies get
   parent_path: ttn-lw-cli packetbroker home-networks policies
   name: get
-  use: '[default|net-id] [tenant-id]'
+  use: '[default|[net-id] [tenant-id]]'
   short: Get a Home Network routing policy
   example: |2-
 
@@ -11694,7 +11764,7 @@ ttn-lw-cli packetbroker home-networks policies set:
   path: ttn-lw-cli packetbroker home-networks policies set
   parent_path: ttn-lw-cli packetbroker home-networks policies
   name: set
-  use: '[default|net-id] [tenant-id]'
+  use: '[default|[net-id] [tenant-id]]'
   short: Set a Home Network routing policy
   long: |-
     Set a Home Network routing policy

@@ -149,6 +149,48 @@ methods:
       path: /pba/home-networks/policies/{net_id}
     - method: DELETE
       path: /pba/home-networks/policies/{net_id}/{tenant_id}
+  GetHomeNetworkDefaultGatewayVisibility:
+    name: GetHomeNetworkDefaultGatewayVisibility
+    comment: |-
+      Get the default gateway visibility.
+      Getting gateway visibilities requires administrative access.
+    input:
+      package: google.protobuf
+      name: Empty
+    output:
+      name: PacketBrokerDefaultGatewayVisibility
+    http:
+    - method: GET
+      path: /pba/home-networks/gateway-visibilities/default
+  SetHomeNetworkDefaultGatewayVisibility:
+    name: SetHomeNetworkDefaultGatewayVisibility
+    comment: |-
+      Set the default gateway visibility.
+      Setting gateway visibilities requires administrative access.
+    input:
+      name: SetPacketBrokerDefaultGatewayVisibilityRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: PUT
+      path: /pba/home-networks/gateway-visibilities/default
+    - method: POST
+      path: /pba/home-networks/gateway-visibilities/default
+  DeleteHomeNetworkDefaultGatewayVisibility:
+    name: DeleteHomeNetworkDefaultGatewayVisibility
+    comment: |-
+      Deletes the default gateway visibility.
+      Deleting gateway visibilities requires administrative access.
+    input:
+      package: google.protobuf
+      name: Empty
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /pba/home-networks/gateway-visibilities/default
   ListNetworks:
     name: ListNetworks
     comment: |-
