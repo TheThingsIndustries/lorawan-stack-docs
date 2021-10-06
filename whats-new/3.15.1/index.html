@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>3.10.1 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/whats-new/3.10.1/" />
+  <title>3.15.1 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/whats-new/3.15.1/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.2d48a00a1bde5893390ef3cf9ccc511ed5122027345ae0b25f087b114938b045.css" integrity="sha256-LUigChveWJM5DvPPnMxRHtUSICc0WuCyXwh7EUk4sEU=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="The Things Stack for LoRaWAN">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="3.10.1">
+  <meta itemprop="name" content="3.15.1">
   <meta itemprop="description" content="The Things Stack for LoRaWAN">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="3.10.1">
+  <meta property="og:title" content="3.15.1">
   <meta property="og:description" content="The Things Stack for LoRaWAN">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/whats-new/3.10.1/">
-  <meta name="twitter:title" content="3.10.1" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/whats-new/3.15.1/">
+  <meta name="twitter:title" content="3.15.1" />
   <meta name="twitter:description" content="The Things Stack for LoRaWAN" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -92,7 +92,7 @@
 <ul class="menu-list">
 <a href="https://www.thethingsindustries.com/docs/whats-new/" class="">Overview</a>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.15.1/" class="">3.15.1</a>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.15.1/" class="is-active">3.15.1</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.15.0/" class="">3.15.0</a>
@@ -164,7 +164,7 @@
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.10.2/" class="">3.10.2</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.10.1/" class="is-active">3.10.1</a>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.10.1/" class="">3.10.1</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.10.0/" class="">3.10.0</a>
@@ -185,35 +185,25 @@
       </div>
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">3.10.1
+        <h1 class="title is-size-2">3.15.1
         </h1>
 
         <div class="content">
           <h3 id="added">Added</h3>
 <ul>
-<li>More password validation rules in the user management form in the Console.</li>
+<li>Packet Broker gateway visibility management (default settings only). See <code>ttn-lw-cli packetbroker home-networks gateway-visibilities --help</code> for more information.</li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
-<li>Limitation of displayed and stored events in the Console to 2000.</li>
-<li>Application Server will unwrap the AppSKey if it can, even if skipping payload crypto is enabled. This is to avoid upstream applications to receive wrapped keys they cannot unwrap. For end-to-end encryption, configure Join Servers with wrap keys unknown to the Application Server.</li>
-<li>More precise payload labels for event previews in the Console.</li>
+<li>The Gateway Server worker pools may now drop workers if they are idle for too long.</li>
+<li>FPort = 0 uplinks are no longer decoded by the Application Server, and the Network Server no longer provides the frame payload to the Application Server for these messages.</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>Next button title in the end device wizard in the Console.</li>
-<li>Navigation to the user edit page after creation in the Console.</li>
-<li>The port number of the <code>http.redirect-to-host</code> option was ignored when <code>http.redirect-to-tls</code> was used. This could lead to situations where the HTTPS server would always redirect to port 443, even if a different one was specified.
-<ul>
-<li>If the HTTPS server is available on <code>https://thethings.example.com:8443</code>, the following flags (or equivalent environment variables or configuration options) are required: <code>--http.redirect-to-tls --http.redirect-to-host=thethings.example.com:8443</code>.</li>
-</ul>
-</li>
-<li>Status display on the error view in the Console.</li>
-<li>Event views in the Console freezing after receiving thousands of events.</li>
-<li>Wrong FPort value displayed for downlink attempt events in the Console.</li>
-<li>Network Server sending duplicate application downlink NACKs.</li>
-<li>Network Server now sends downlink NACK when it assumes confirmed downlink is lost.</li>
-<li>Network Server application uplink drainage.</li>
+<li>Emails to admins about requested OAuth clients.</li>
+<li><code>session</code> handling for joined OTAA end devices in the Console.</li>
+<li>Empty Join Server address handling in end device creation form in the Console.</li>
+<li>Data Rate to data rate index matching for uplinks and downlinks.</li>
 </ul>
 
         </div>
@@ -267,14 +257,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 13 Jan 2021.
+  Last changed by Adrian-Stefan Mares on 06 Oct 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/938c9dd5c2cab0ca1080e8d0175e0b3a3d364794">
-      doc: Add whats-new
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/e24ba6c1874756816fa3d90932fc5024fc53bf89">
+      Release v3.15.1 (#599)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/whats-new/3.10.1.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/whats-new/3.15.1.md" class="button">Edit on Github</a>
 </div>
 
       </div>

@@ -251,6 +251,10 @@
 </li>
 <li><code>ttn_lw_events_publishes_total</code> can be used to track the published events by event type.</li>
 <li><code>ttn_lw_events_channel_dropped_total</code> can be used to watch for dropped events, which typically indicates that a consumer (such as a user&rsquo;s web browser) can&rsquo;t keep up.</li>
+<li><code>ttn_lw_workerpool_workers_started</code> and <code>ttn_lw_workerpool_workers_stopped</code> indicate the total number of workers started, and stopped, in the worker pools.</li>
+<li><code>ttn_lw_workerpool_workers_idle</code> indicates the number of workers which are idle (not currently processing any work item) in the worker pools.</li>
+<li><code>ttn_lw_workerpool_work_queue_size</code> indicates the number of elements found in the queue of the worker pools.</li>
+<li><code>ttn_lw_workerpool_work_processed</code> and <code>ttn_lw_workerpool_work_dropped</code> indicates the total amount of work processed, or dropped, by the worker pools.</li>
 </ul>
 <p>For the Gateway Server:</p>
 <ul>
@@ -260,6 +264,8 @@
 <li><code>ttn_lw_gs_status_received_total</code> indicates the number of status messages received from gateways.</li>
 <li><code>ttn_lw_gs_uplink_forwarded_total</code> indicates the number of uplink messages forwarded to the Network Server or Packet Broker.</li>
 <li><code>ttn_lw_gs_uplink_dropped_total</code> indicates the number of uplink messages that are dropped for various reasons.</li>
+<li><code>ttn_lw_gs_uplink_failed_total</code> indicates the number of uplink messages for which the processing has failed for various reasons.</li>
+<li><code>ttn_lw_gs_downlink_tx_success_total</code> and <code>ttn_lw_gs_downlink_tx_failed_total</code> indicates the number of successful transmissions, and failed transmissions for various reasons, reported by the gateways.</li>
 </ul>
 <p>For the Packet Broker Agent: <span class="tag is-light">New in 3.11.2</span>
 
@@ -291,6 +297,10 @@
 <li><code>ttn_lw_as_downlink_received_total</code> indicates the number of downlink messages received from integrations and external applications.</li>
 <li><code>ttn_lw_as_downlink_forwarded_total</code> indicates the number of downlink messages forwarded to the Network Server.</li>
 <li><code>ttn_lw_as_downlink_dropped_total</code> indicates the number of downlink messages dropped for various reasons.</li>
+<li><code>ttn_lw_as_subscription_sets_started_total</code> and <code>ttn_lw_as_subscription_sets_stopped_total</code> indicates the total number of subscriptions sets started and stopped.</li>
+<li><code>ttn_lw_as_packages_processed_total</code> and <code>ttn_lw_as_packages_failed_total</code> indicates the total number of uplink messages processed, or which have failed processing for various reasons, by application packages.</li>
+<li><code>ttn_lw_as_packages_storage_upstream_messages_stored</code> and <code>ttn_lw_as_packages_storage_upstream_messages_dropped</code> indicates the total number of uplink messages stored, or dropped for various reasons, by the Storage Integration.</li>
+<li><code>ttn_lw_as_webhook_sent_total</code> and <code>ttn_lw_as_webhook_failed_total</code> indicates the total number of webhook messages sent, or failed for various reasons.</li>
 <li><code>ttn_lw_javascript_run_latency_seconds</code> is a histogram that indicates the duration of executing JavaScript payload formatters.</li>
 </ul>
 <p>For the Join Server:</p>
@@ -368,10 +378,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 10 Jun 2021.
+  Last changed by Adrian-Stefan Mares on 06 Oct 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/1088c5144c03928eb7d97c6105895e620eab3d79">
-      Move inline shortcodes to next line (#382)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/e24ba6c1874756816fa3d90932fc5024fc53bf89">
+      Release v3.15.1 (#599)
     </a>
 </p>
 
