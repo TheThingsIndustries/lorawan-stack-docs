@@ -174,12 +174,17 @@
         </h1>
         
         <div class="content">
-          <p>This section explains the process of setting up a flow which publishes messages to a certain topic that the MQTT Server is subscribed to.</p>
+          <p>This section explains the process of setting up a flow which publishes messages to a certain topic that the MQTT server is subscribed to.</p>
 <p>Doing this schedules downlink messages to be sent to your end device. This section follows the example for publishing downlink traffic in <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a> guide.</p>
 <h2 id="configure-mqtt-out-node">Configure MQTT Out Node</h2>
 <p>Place the <strong>mqtt out</strong> node on the dashboard.</p>
 <p>Configure the <strong>Server</strong> options with the same settings as in the <a href="https://www.thethingsindustries.com/docs/integrations/node-red/#receive-events-and-messages">Receive Events and Messages</a> section.</p>
 <p>Set <strong>Topic</strong> to <code>v3/{application_id}/devices/{device_id}/down/push</code> to schedule downlink messages (as stated in <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a> guide).</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Please make sure to read a <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#note-on-using-the-tenant-id">note on using the tenant ID</a> in multi-tenant The Things Stack environments, because these topics can have a slightly different format.
+</div>
+
 <p>Choose a <strong>QoS</strong> from listed options and state whether you want the MQTT Server to retain messages.</p>
 <figure>
     <img src="mqtt_out_node_properties.png"
@@ -217,6 +222,11 @@
     <img src="send_downlink_flow.png"
          alt="send downlink flow"/> 
 </figure>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  If you do not see any output in the <strong>debug</strong> window on the right, make sure you activated your debug node.
+</div>
 
 
         </div>
@@ -289,10 +299,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 25 Nov 2020.
+  Last changed by Nejra Selimović on 08 Oct 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/71bd626b9b755ccbe2cbf6f6f0fc68df4cf38acd">
-      doc: Update notes in Integrations
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/18fa43a2ff60c843a1df1b286ce14b71034d244a">
+      doc: Add notes about using MQTT in multi-tenant envs (#607)
     </a>
 </p>
 
