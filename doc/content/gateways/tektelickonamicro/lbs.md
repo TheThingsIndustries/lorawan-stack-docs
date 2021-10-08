@@ -11,16 +11,6 @@ This section guides you to connect the Tektelic Kona Micro IoT LoRaWAN Gateway t
 
 Obtain the **ipk/bsp** package by contacting Tektelic's support team. Create an account on the [support portal](https://support.tektelic.com/portal/en/signin) or send an email to support@tektelic.com.
 
-## SSH in to the Gateway
-
-Find the IP address the gateway. This can be done in various ways. You can connect your machine to the same local network as that of the gateway ethernet connection and scan for open SSH ports or assign a static IP to the gateway and use that. Once the gateway IP address is found, SSH into it.
-
-```bash
-$ ssh root@<GatewayIP>
-```
-
-The password for the **root** user can be found on the back panel. It's typically a 9 character alphanumeric string starting with **1846XXXXX**.
-
 ## Install the Basic Station Package
 
 ### For BSP 3.0.x and 3.1.x
