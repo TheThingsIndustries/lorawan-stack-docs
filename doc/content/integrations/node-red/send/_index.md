@@ -4,7 +4,7 @@ description: ""
 weight: 3
 ---
 
-This section explains the process of setting up a flow which publishes messages to a certain topic that the MQTT Server is subscribed to.
+This section explains the process of setting up a flow which publishes messages to a certain topic that the MQTT server is subscribed to.
 
 Doing this schedules downlink messages to be sent to your end device. This section follows the example for publishing downlink traffic in [MQTT Server]({{< ref "/integrations/mqtt" >}}) guide.
 
@@ -14,7 +14,9 @@ Place the **mqtt out** node on the dashboard.
 
 Configure the **Server** options with the same settings as in the [Receive Events and Messages]({{< ref "/integrations/node-red#receive-events-and-messages" >}}) section.
 
-Set **Topic** to `v3/{application_id}/devices/{device_id}/down/push` to schedule downlink messages (as stated in [MQTT Server]({{< ref "/integrations/mqtt" >}}) guide). 
+Set **Topic** to `v3/{application_id}/devices/{device_id}/down/push` to schedule downlink messages (as stated in [MQTT Server]({{< ref "/integrations/mqtt" >}}) guide).
+
+{{< note >}} Please make sure to read a [note on using the tenant ID]({{< ref "/integrations/mqtt#note-on-using-the-tenant-id" >}}) in multi-tenant {{% tts %}} environments, because these topics can have a slightly different format. {{</ note >}}
 
 Choose a **QoS** from listed options and state whether you want the MQTT Server to retain messages. 
 
@@ -53,3 +55,5 @@ return {
 Connect the nodes and click **Deploy**. If the setup is correct, below the **mqtt out** node **connected** status will be reported and downlink messages will begin sending to your end device.
 
 {{< figure src="send_downlink_flow.png" alt="send downlink flow" >}}
+
+{{< note >}} If you do not see any output in the **debug** window on the right, make sure you activated your debug node. {{</ note >}}
