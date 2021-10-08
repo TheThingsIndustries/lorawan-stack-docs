@@ -68,7 +68,7 @@ To disallow claiming, click **Delete claim authentication code**.
 To configure claiming using the CLI, use the following command:
 
 ```bash
-$ ttn-lw-cli end-device <app-id> <device-id> --claim-authentication-code.value ABCD \
+$ ttn-lw-cli end-device set <app-id> <device-id> --claim-authentication-code.value ABCD \
   --claim-authentication-code.valid-from 2021-03-01T00:00:00Z \
   --claim-authentication-code.valid-from 2021-03-31T23:59:59Z
 ```
