@@ -126,6 +126,10 @@ If you are using **{{% lbs %}} or another TCP based gateway** then a simple rest
 
 If you are using a **UDP gateway** then there is no concept of a connection. {{% tts %}} assumes the connection is alive until no messages are received for the duration of the `DownlinkPathExpires`and `ConnectionExpires` settings. In this case, your gateway must be turned off for at least as long as the `ConnectionExpires` interval (default 1 minute) for {{% tts %}} to mark the gateway as disconnected clear the statistics for the old ID.
 
+## My gateway shows an "Other cluster" status. Why?
+
+If a gateway appears in the Console with the status of "Other cluster", it means that this gateway has been setup with a `Gateway Server address` that the Console determines as not belonging to the current deployment. This could mean that you accidentally visited the Console of a different cluster of this deployment (e.g. The Things Stack Community `au1` cluster instead of `eu1`). Make sure you either use the correct cluster (usually the one located closest to you), or to change the `Gateway Server address` of the Gateway to match the cluster that you want to use. You can do that via the Gateway's `General settings` page in the Console.
+
 ## No downlinks are reaching my UDP gateway. Why?
 
 With UDP gateways, if uplink messages are reaching {{% tts %}}, that does not mean the downlink messages are going to be received correctly by the gateway. 
