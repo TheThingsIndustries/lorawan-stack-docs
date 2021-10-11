@@ -283,6 +283,8 @@ packet forwarder</li>
 <p>If you are using <strong>LoRa Basics™ Station
 or another TCP based gateway</strong> then a simple restart/reconnection of the gateway will clear the statistics of the old ID and you create an entry for the new ID.</p>
 <p>If you are using a <strong>UDP gateway</strong> then there is no concept of a connection. The Things Stack assumes the connection is alive until no messages are received for the duration of the <code>DownlinkPathExpires</code>and <code>ConnectionExpires</code> settings. In this case, your gateway must be turned off for at least as long as the <code>ConnectionExpires</code> interval (default 1 minute) for The Things Stack to mark the gateway as disconnected clear the statistics for the old ID.</p>
+<h2 id="my-gateway-shows-an-other-cluster-status-why">My gateway shows an &ldquo;Other cluster&rdquo; status. Why?</h2>
+<p>If a gateway appears in the Console with the status of &ldquo;Other cluster&rdquo;, it means that this gateway has been setup with a <code>Gateway Server address</code> that the Console determines as not belonging to the current deployment. This could mean that you accidentally visited the Console of a different cluster of this deployment (e.g. The Things Stack Community <code>au1</code> cluster instead of <code>eu1</code>). Make sure you either use the correct cluster (usually the one located closest to you), or to change the <code>Gateway Server address</code> of the Gateway to match the cluster that you want to use. You can do that via the Gateway&rsquo;s <code>General settings</code> page in the Console.</p>
 <h2 id="no-downlinks-are-reaching-my-udp-gateway-why">No downlinks are reaching my UDP gateway. Why?</h2>
 <p>With UDP gateways, if uplink messages are reaching The Things Stack, that does not mean the downlink messages are going to be received correctly by the gateway.</p>
 <p>The Semtech UDP Packet Forwarder
@@ -395,6 +397,9 @@ documentation</strong>: <a href="https://doc.sm.tc/station/">https://doc.sm.tc/s
       <li><a href='#my-gateway-is-shown-as-disconnected-after-recreating-with-the-same-gateway-eui-what-do-i-do'>My gateway is shown as disconnected after recreating with the same Gateway EUI. What do I do?</a></li>
     
       
+      <li><a href='#my-gateway-shows-an-other-cluster-status-why'>My gateway shows an “Other cluster” status. Why?</a></li>
+    
+      
       <li><a href='#no-downlinks-are-reaching-my-udp-gateway-why'>No downlinks are reaching my UDP gateway. Why?</a></li>
     
       
@@ -465,10 +470,10 @@ documentation</strong>: <a href="https://doc.sm.tc/station/">https://doc.sm.tc/s
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 14 Sep 2021.
+  Last changed by Ben Olayinka on 11 Oct 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/002566ef61e91f23d7dfeeba59ee3d17411f86d1">
-      doc: Add gateway location troubleshooting (#563)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3d290036eecb93577c1ee4d49d60f93a58b82fda">
+      doc: Create console troubleshooting (#591)
     </a>
 </p>
 

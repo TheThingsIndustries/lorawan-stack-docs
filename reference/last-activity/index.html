@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>LoRa Cloud Device &amp; Application Services | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/application-packages/lora-cloud-device-and-application-services/" />
+  <title>Last Activity | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/last-activity/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.2d48a00a1bde5893390ef3cf9ccc511ed5122027345ae0b25f087b114938b045.css" integrity="sha256-LUigChveWJM5DvPPnMxRHtUSICc0WuCyXwh7EUk4sEU=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="LoRa Cloud Device &amp; Application Services">
+  <meta itemprop="name" content="Last Activity">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="LoRa Cloud Device &amp; Application Services">
+  <meta property="og:title" content="Last Activity">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/application-packages/lora-cloud-device-and-application-services/">
-  <meta name="twitter:title" content="LoRa Cloud Device &amp; Application Services" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/last-activity/">
+  <meta name="twitter:title" content="Last Activity" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -98,20 +98,6 @@
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/reference/application-packages/" class="">Application Packages</a>
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/application-packages/lora-cloud-device-and-application-services/" class="is-active">LoRa Cloud Device &amp; Application Services</a>
-    
-  </li>
-
-</ul>
-
-
-    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/reference/stripe/" class="">Billing with Stripe</a>
@@ -153,7 +139,12 @@
     <a href="https://www.thethingsindustries.com/docs/reference/interop-repository/" class="">Interoperability Repository</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/last-activity/" class="">Last Activity</a>
+    <a href="https://www.thethingsindustries.com/docs/reference/last-activity/" class="is-active">Last Activity</a>
+    
+
+
+
+    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/reference/lbs-implementation-guide/implementation-details/" class="">LoRa Basics Station Implementation Guide</a>
@@ -208,131 +199,46 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">LoRa Cloud Device &amp; Application Services
+        <h1 class="title is-size-2">Last Activity
           
         </h1>
         
         <div class="content">
-          <p>The LoRa Cloud Device &amp; Application Services v1 application package communicates the uplinks received from a compatible device to the LoRa Cloud Device &amp; Application Services, and schedules the downlinks received from the service back to the device.</p>
-<p>More information on the LoRa Cloud Device &amp; Application Services can be found in the <a href="https://www.loracloud.com/documentation/device_management?url=overview.html">official LoRa documentation</a>.</p>
-<h2 id="creating-a-new-uplink-token">Creating a New Uplink Token</h2>
-<p>In order to use the LoRa Cloud Device &amp; Application Services application package, a new access token must be created in order to allow the Application Server to send the uplinks to the Device &amp; Application Services.</p>
-<p>The new token can be created in the LoRa Cloud Device &amp; Application Services portal, in the <strong>Token Management</strong> section.</p>
-<figure>
-    <img src="../lora-dms-token-creation.png"
-         alt="Token creation"/> 
-</figure>
-
-<p>After filling in the token name and clicking the <strong>Add New Token</strong> button, the token will be created.</p>
-<figure>
-    <img src="../lora-dms-token-created.png"
-         alt="Token created"/> 
-</figure>
-
-<h2 id="enabling-the-package">Enabling the Package</h2>
-<div class="notification is-primary is-light has-text-dark">
-  <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
-  <p>The instructions below use the command-line interface (CLI).</p>
-  
-  
-  <div class="buttons">
-    <a class="button is-dark is-outlined" href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/">Learn how to install the CLI</a>
-  </div>
-</div>
-
-<p>The package can now be enabled using the <code>default-associations set</code> command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Create a JSON formatted file containing the uplink token</span>
-$ <span class="nb">echo</span> <span class="s1">&#39;{ &#34;token&#34;: &#34;AQEAdqwV67...&#34; }&#39;</span> &gt; package-data.json
-<span class="c1"># Create the association</span>
-$ ttn-lw-cli applications packages default-associations <span class="nb">set</span> app1 <span class="m">199</span> --package-name lora-cloud-device-management-v1 --data-local-file package-data.json
-</code></pre></div><p>This will enable the package on FPort <code>199</code> of all of the devices of application <code>app1</code>. You can now use the LoRa Cloud Device &amp; Application Services in order to manage your device!</p>
-<details><summary>Output</summary>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;app1&#34;</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">199</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-18T10:35:15.565807113Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-18T22:06:21.693359719Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;package_name&#34;</span><span class="p">:</span> <span class="s2">&#34;lora-cloud-device-management-v1&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;token&#34;</span><span class="p">:</span> <span class="s2">&#34;AQEAdqwV67...&#34;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></details>
-<h2 id="using-a-custom-server-url">Using a Custom Server URL</h2>
-<div class="notification is-primary is-light has-text-dark">
-  <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
-  <p>The instructions below use the command-line interface (CLI).</p>
-  
-  
-  <div class="buttons">
-    <a class="button is-dark is-outlined" href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/">Learn how to install the CLI</a>
-  </div>
-</div>
-
-<p>The package may be configured to use a custom server URL using the package data:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Create a JSON formatted file containing the uplink token and the server URL</span>
-$ <span class="nb">echo</span> <span class="s1">&#39;{ &#34;token&#34;: &#34;AQEAdqwV67...&#34;, &#34;server_url&#34;: &#34;https://app.example.com/&#34; }&#39;</span> &gt; package-data.json
-<span class="c1"># Create or update the default association</span>
-$ ttn-lw-cli applications packages default-associations <span class="nb">set</span> app1 <span class="m">199</span> --package-name lora-cloud-device-management-v1 --data-local-file package-data.json
-</code></pre></div><details><summary>Output</summary>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;app1&#34;</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">199</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-05-14T02:04:45.286874524Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-05-14T02:04:45.286874524Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;package_name&#34;</span><span class="p">:</span> <span class="s2">&#34;lora-cloud-device-management-v1&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;server_url&#34;</span><span class="p">:</span> <span class="s2">&#34;https://app.example.com&#34;</span><span class="p">,</span>
-      <span class="nt">&#34;token&#34;</span><span class="p">:</span> <span class="s2">&#34;AQEAdqwV67...&#34;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div></details>
-<h2 id="package-data-json-schema">Package Data JSON Schema</h2>
-<p>The package data format is common between both default associations and associations, and should contain the following fields:</p>
-<table>
-<thead>
-<tr>
-<th>Field</th>
-<th>Type</th>
-<th>Description</th>
-<th>Required</th>
-<th>Default value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>token</code></td>
-<td><code>string</code></td>
-<td>The acces token to be used by the package to submit uplinks to the LoRa Cloud Device &amp; Application Services</td>
-<td>Yes</td>
-<td>None.</td>
-</tr>
-<tr>
-<td><code>server_url</code></td>
-<td><code>URL</code></td>
-<td>The custom base URL to be used for service communication</td>
-<td>No</td>
-<td><code>https://das.loracloud.com</code></td>
-</tr>
-</tbody>
-</table>
-<p>Fields can be customized on a per device basis, by overriding the field in the package data of the association.</p>
-
+          <p>This guide provides some in depth information about how the <strong>Last activity</strong> values in the entity overviews of the Console are calculated.</p>
+<h2 id="what-does-last-activity-mean">What does &ldquo;Last Activity&rdquo; mean?</h2>
+<p>The Console provides indicators that help you identify when the last activity from the entity was registered by the network. This section explains how these values are determined in more detail.</p>
+<p>The Console will use the following data, whichever is most recent, to determine the <strong>Last activity</strong>:</p>
+<h3 id="end-devices">End devices</h3>
+<ol>
+<li>Starting time of the (pending) session of the end device. (Initial page load)</li>
+<li>Timestamp of the latest uplink stored in the MAC state data of the end device. (Initial page load)</li>
+<li>Timestamp of <code>ns.up.data.receive</code> (uplink received), <code>ns.up.join.receive</code> (join received) or <code>ns.up.rejoin.receive</code> (rejoin received). (Kept updated from the event stream)</li>
+</ol>
+<h3 id="gateways">Gateways</h3>
+<ol>
+<li>Timestamp of the last status message received, as provided by the gateway&rsquo;s status endpoint. (Initial page load)</li>
+<li>Timestamp of the last uplink received, as provided by the gateway&rsquo;s status endpoint. (Initial page load)</li>
+<li>Timestamp of <code>gs.downlink.send</code> (downlink sent), <code>gs.uplink.receive</code> (uplink received) or <code>gs.status.receive</code> (status received). (Kept updated from the event stream)</li>
+</ol>
+<h3 id="applications">Applications</h3>
+<ol>
+<li>Timestamp of <code>ns.up.data.receive</code> (uplink received), <code>ns.up.join.receive</code> (join received) or <code>ns.up.rejoin.receive</code> (rejoin received) of any end device of this application. (Initial page load using the stored historical data of the event stream)</li>
+<li>Timestamp of <code>ns.up.data.receive</code> (uplink received), <code>ns.up.join.receive</code> (join received) or <code>ns.up.rejoin.receive</code> (rejoin received) of any end device of this application. (Kept updated from the event stream)</li>
+</ol>
+<p>Note that whether an initial <strong>Last activity</strong> value can be displayed depends on whether:</p>
+<ol>
+<li>any relevant events have ever been sent by the end devices in the application (see end device section above)</li>
+<li>any relevant events have been retained by the retention policy configured for storing events via <code>--events.redis.store.*</code> config options that the deployment is running with.</li>
+</ol>
+<p>This means that when the <strong>Last activity</strong> value is not available for an application, it does not necessarily mean that the application&rsquo;s end devices did not have any activity yet. It is currently not possible to aggregate the derived <strong>Last activity</strong> information of all end devices in the application.</p>
         </div>
-        <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/reference/application-packages/">← Application Packages</a>
-<a class="button is-pulled-right" href="/docs/reference/stripe/">Billing with Stripe →</a>
+        
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/reference/interop-repository/">← Interoperability Repository</a>
+<a class="button is-pulled-right" href="/docs/reference/lbs-implementation-guide/implementation-details/">LoRa Basics Station Implementation Guide →</a>
 </div>
 
-        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
 <script src="https://cdn.emojicom.io/embed/widget.js" async></script>
 
 <div class='feedback has-vertical-space'>
@@ -350,16 +256,7 @@ $ ttn-lw-cli applications packages default-associations <span class="nb">set</sp
   <ul class="menu-list">
     
       
-      <li><a href='#creating-a-new-uplink-token'>Creating a New Uplink Token</a></li>
-    
-      
-      <li><a href='#enabling-the-package'>Enabling the Package</a></li>
-    
-      
-      <li><a href='#using-a-custom-server-url'>Using a Custom Server URL</a></li>
-    
-      
-      <li><a href='#package-data-json-schema'>Package Data JSON Schema</a></li>
+      <li><a href='#what-does-last-activity-mean'>What does “Last Activity” mean?</a></li>
     
   </ul>
 
@@ -399,14 +296,14 @@ $ ttn-lw-cli applications packages default-associations <span class="nb">set</sp
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 22 Oct 2020.
+  Last changed by Ben Olayinka on 11 Oct 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2f9bf3382c643b2e960a25490f74f1148ea28e65">
-      doc: Reorganize docs
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3d290036eecb93577c1ee4d49d60f93a58b82fda">
+      doc: Create console troubleshooting (#591)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/reference/application-packages/lora-cloud-device-and-application-services.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/reference/last-activity/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
