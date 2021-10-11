@@ -7,6 +7,10 @@ This section provides help for common issues in {{% tts %}} Console.
 
 <!--more-->
 
+## What does "Last activity/Last seen" mean?
+
+See [Last Activity]({{< ref "reference/last-activity" >}}).
+
 ## Common Errors
 
 ### Network Error / Reconnecting / Stream errors
