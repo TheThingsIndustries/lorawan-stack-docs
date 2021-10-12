@@ -21,7 +21,7 @@ End Device commands
       --application-server-enabled                      Application Server enabled (default true)
       --application-server-grpc-address string          Application Server address (default "localhost:8884")
       --ca string                                       CA certificate file
-  -c, --config strings                                  Location of the config files (default [.ttn-lw-cli.yml,/Users/ben/.ttn-lw-cli.yml,/Users/ben/Library/Application Support/.ttn-lw-cli.yml])
+  -c, --config strings                                  Location of the config files (default [.ttn-lw-cli.yml,$HOME/.ttn-lw-cli.yml,$HOME/Library/Application Support/.ttn-lw-cli.yml])
       --credentials-id string                           Credentials ID (if using multiple configurations)
       --device-claiming-server-grpc-address string      Device Claiming Server address (default "localhost:8884")
       --device-template-converter-grpc-address string   Device Template Converter address (default "localhost:8884")
@@ -46,7 +46,7 @@ End Device commands
 
 ### SEE ALSO
 
-* [ttn-lw-cli]({{< relref "ttn-lw-cli" >}})	 - The Things Network Command-line Interface
+* [ttn-lw-cli]({{< relref "ttn-lw-cli" >}})	 - The Things Industries Command-line Interface
 * [ttn-lw-cli end-devices claim]({{< relref "ttn-lw-cli_end-devices_claim" >}})	 - Claim an end device (EXPERIMENTAL)
 * [ttn-lw-cli end-devices create]({{< relref "ttn-lw-cli_end-devices_create" >}})	 - Create an end device
 * [ttn-lw-cli end-devices delete]({{< relref "ttn-lw-cli_end-devices_delete" >}})	 - Delete an end device
@@ -62,5 +62,6 @@ End Device commands
 * [ttn-lw-cli end-devices search]({{< relref "ttn-lw-cli_end-devices_search" >}})	 - Search for end devices
 * [ttn-lw-cli end-devices set]({{< relref "ttn-lw-cli_end-devices_set" >}})	 - Set properties of an end device
 * [ttn-lw-cli end-devices storage]({{< relref "ttn-lw-cli_end-devices_storage" >}})	 - Storage Integration
+* [ttn-lw-cli end-devices templates]({{< relref "ttn-lw-cli_templates" >}})	 - End Device template commands
 * [ttn-lw-cli end-devices use-external-join-server]({{< relref "ttn-lw-cli_end-devices_use-external-join-server" >}})	 - Disassociate and delete the device from Join Server
 

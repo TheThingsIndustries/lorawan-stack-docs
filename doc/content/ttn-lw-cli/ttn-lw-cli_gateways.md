@@ -21,7 +21,7 @@ Gateway commands
       --application-server-enabled                      Application Server enabled (default true)
       --application-server-grpc-address string          Application Server address (default "localhost:8884")
       --ca string                                       CA certificate file
-  -c, --config strings                                  Location of the config files (default [.ttn-lw-cli.yml,/Users/ben/.ttn-lw-cli.yml,/Users/ben/Library/Application Support/.ttn-lw-cli.yml])
+  -c, --config strings                                  Location of the config files (default [.ttn-lw-cli.yml,$HOME/.ttn-lw-cli.yml,$HOME/Library/Application Support/.ttn-lw-cli.yml])
       --credentials-id string                           Credentials ID (if using multiple configurations)
       --device-claiming-server-grpc-address string      Device Claiming Server address (default "localhost:8884")
       --device-template-converter-grpc-address string   Device Template Converter address (default "localhost:8884")
@@ -46,7 +46,7 @@ Gateway commands
 
 ### SEE ALSO
 
-* [ttn-lw-cli]({{< relref "ttn-lw-cli" >}})	 - The Things Network Command-line Interface
+* [ttn-lw-cli]({{< relref "ttn-lw-cli" >}})	 - The Things Industries Command-line Interface
 * [ttn-lw-cli gateways api-keys]({{< relref "ttn-lw-cli_gateways_api-keys" >}})	 - Manage gateway API keys
 * [ttn-lw-cli gateways claim]({{< relref "ttn-lw-cli_gateways_claim" >}})	 - Claim a gateway (EXPERIMENTAL)
 * [ttn-lw-cli gateways collaborators]({{< relref "ttn-lw-cli_gateways_collaborators" >}})	 - Manage gateway collaborators

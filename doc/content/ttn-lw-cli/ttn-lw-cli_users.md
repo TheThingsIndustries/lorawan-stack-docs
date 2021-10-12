@@ -21,7 +21,7 @@ User commands
       --application-server-enabled                      Application Server enabled (default true)
       --application-server-grpc-address string          Application Server address (default "localhost:8884")
       --ca string                                       CA certificate file
-  -c, --config strings                                  Location of the config files (default [.ttn-lw-cli.yml,/Users/ben/.ttn-lw-cli.yml,/Users/ben/Library/Application Support/.ttn-lw-cli.yml])
+  -c, --config strings                                  Location of the config files (default [.ttn-lw-cli.yml,$HOME/.ttn-lw-cli.yml,$HOME/Library/Application Support/.ttn-lw-cli.yml])
       --credentials-id string                           Credentials ID (if using multiple configurations)
       --device-claiming-server-grpc-address string      Device Claiming Server address (default "localhost:8884")
       --device-template-converter-grpc-address string   Device Template Converter address (default "localhost:8884")
@@ -46,7 +46,7 @@ User commands
 
 ### SEE ALSO
 
-* [ttn-lw-cli]({{< relref "ttn-lw-cli" >}})	 - The Things Network Command-line Interface
+* [ttn-lw-cli]({{< relref "ttn-lw-cli" >}})	 - The Things Industries Command-line Interface
 * [ttn-lw-cli users api-keys]({{< relref "ttn-lw-cli_users_api-keys" >}})	 - Manage user API keys
 * [ttn-lw-cli users contact-info]({{< relref "ttn-lw-cli_users_contact-info" >}})	 - Manage user contact info
 * [ttn-lw-cli users create]({{< relref "ttn-lw-cli_users_create" >}})	 - Create a user

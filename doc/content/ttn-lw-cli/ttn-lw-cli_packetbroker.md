@@ -21,7 +21,7 @@ Packet Broker commands
       --application-server-enabled                      Application Server enabled (default true)
       --application-server-grpc-address string          Application Server address (default "localhost:8884")
       --ca string                                       CA certificate file
-  -c, --config strings                                  Location of the config files (default [.ttn-lw-cli.yml,/Users/ben/.ttn-lw-cli.yml,/Users/ben/Library/Application Support/.ttn-lw-cli.yml])
+  -c, --config strings                                  Location of the config files (default [.ttn-lw-cli.yml,$HOME/.ttn-lw-cli.yml,$HOME/Library/Application Support/.ttn-lw-cli.yml])
       --credentials-id string                           Credentials ID (if using multiple configurations)
       --device-claiming-server-grpc-address string      Device Claiming Server address (default "localhost:8884")
       --device-template-converter-grpc-address string   Device Template Converter address (default "localhost:8884")
@@ -46,7 +46,7 @@ Packet Broker commands
 
 ### SEE ALSO
 
-* [ttn-lw-cli]({{< relref "ttn-lw-cli" >}})	 - The Things Network Command-line Interface
+* [ttn-lw-cli]({{< relref "ttn-lw-cli" >}})	 - The Things Industries Command-line Interface
 * [ttn-lw-cli packetbroker deregister]({{< relref "ttn-lw-cli_packetbroker_deregister" >}})	 - Deregister from Packet Broker
 * [ttn-lw-cli packetbroker forwarders]({{< relref "ttn-lw-cli_packetbroker_forwarders" >}})	 - Forwarder commands
 * [ttn-lw-cli packetbroker home-networks]({{< relref "ttn-lw-cli_packetbroker_home-networks" >}})	 - Home Network commands
