@@ -21,6 +21,8 @@ Go to your application in {{% tts %}} Console, navigate to **Integrations &#8594
 
 Copy the generated API key and store it in a safe place, because you will need it in the next section.
 
+Leave the integration page open, as you will need to copy in your **Azure IoT Hub hostname** and **Azure IoT Hub access key** before saving the integration.
+
 ## Deploy Azure Resource Manager Template
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fttsiothubintegration.blob.core.windows.net%2Fintegration-releases%2Flatest%2Fmain.json" target="_blank" class="button is-primary">Deploy template</a>
