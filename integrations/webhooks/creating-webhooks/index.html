@@ -183,21 +183,36 @@
 </div>
 
 </details>
-<p>Creating a webhook requires you to have an HTTP(S) endpoint available.</p>
-<p>In your application select the <strong>Webhooks</strong> submenu from the <strong>Integrations</strong> side menu. Clicking on the <strong>+ Add Webhook</strong> button will open the Webhook creation screen.</p>
-<p>Fill in your <strong>Webhook ID</strong>, choose <strong>Webhook Format</strong> and provide <strong>Base URL</strong>.</p>
+<p>Creating a webhook requires you to have an HTTP(S) endpoint available. If you don&rsquo;t have an endpoint available for testing, you can test with a free service like <a href="https://webhook.site">Webhook.site</a>.</p>
+<p>In your application select the <strong>Webhooks</strong> submenu from the <strong>Integrations</strong> side menu. Clicking on the <strong>+ Add Webhook</strong> button will open the list of Webhook templates.</p>
 <figure>
-    <img src="../webhook-creation.png"
+    <img src="../webhook-templates.png"
+         alt="Webhook templates"/> 
+</figure>
+
+<p>To use a <a href="/docs/integrations/webhooks/webhook-templates/">predefined webhook template</a>, choose it. Otherwise, to create your own custom webhook, choose <strong>Custom webhook</strong> and follow the instructions below.</p>
+<figure>
+    <img src="../add-webhook.png"
          alt="Webhook creation screen"/> 
 </figure>
 
-<p>The paths are appended to the base URL. For example, if you follow the example in the picture above, the Application Server will perform <code>POST</code> requests on the endpoint <code>https://app.example.com/lorahooks/join</code> for join-accepts and <code>https://app.example.com/lorahooks/up</code> for uplink messages.</p>
-<p>See <a href="https://www.thethingsindustries.com/docs/reference/data-formats/">Data Formats</a> for examples of uplink and downlink JSON messages.</p>
-<p>Clicking the <strong>Add Webhook</strong> button will create the Webhook.</p>
+<p>Give your webhook a <strong>Webhook ID</strong> so that you can identify it. Choose JSON as the <strong>Webhook format</strong>. For <strong>Base URL</strong>, provide the endpoint URL that the webhook should call, i.e the URL of your webhook integration.</p>
+<p>The <strong>Downlink API key</strong> field allows you to provide an API key which will be sent with all messages to the webhook endpoint. This can be useful to allow your integration to schedule downlinks without requiring you to hardcode an API key in the endpoint.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  If you don&rsquo;t have an endpoint available for testing, you can test with a free service like <a href="https://webhook.site">Webhook.site</a>.
+  Your integration may also <a href="/docs/integrations/webhooks/scheduling-downlinks/">schedule downlinks using an API key with appropriate rights</a>, regardless of the value in the <strong>Downlink API key</strong> field.
 </div>
+
+<p>To enable messages for different types of events, use the checkboxes in the <strong>Enabled messages</strong> section.</p>
+<figure>
+    <img src="../enabled-messages.png"
+         alt="Webhook creation screen"/> 
+</figure>
+
+<p>The paths are appended to the <strong>Base URL</strong>. In the example from the images above, the Application Server will perform <code>POST</code> requests on the endpoint <code>https://webhook.site/uplinks</code> for uplinks, <code>https://webhook.site/join-accept</code> for join-accept messages, and <code>https://webhook.site/downlink-ack</code> for downlink acknowledgement messages.</p>
+<p>If no path is specified, messages of that type will be sent to the <strong>Base URL</strong>.</p>
+<p>See <a href="https://www.thethingsindustries.com/docs/reference/data-formats/">Data Formats</a> for examples of uplink and downlink JSON messages.</p>
+<p>Clicking the <strong>Add Webhook</strong> button will create the Webhook.</p>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/webhooks/">← Webhooks</a>
@@ -255,10 +270,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 04 Oct 2021.
+  Last changed by Ben Olayinka on 12 Oct 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/217595085da4296479adc711b3dee9a89820df1c">
-      doc: Use webhook.site for testing (#602)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/dea7a78a92693756a08188d441281fbab6e78768">
+      doc: Update webhook creation guide (#604)
     </a>
 </p>
 
