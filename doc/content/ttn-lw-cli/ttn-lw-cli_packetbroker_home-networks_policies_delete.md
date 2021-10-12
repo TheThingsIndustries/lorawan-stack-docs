@@ -9,7 +9,7 @@ type: "commands"
 Delete a Home Network routing policy
 
 ```
-ttn-lw-cli packetbroker home-networks policies delete [default|net-id] [tenant-id] [flags]
+ttn-lw-cli packetbroker home-networks policies delete [default|[net-id] [tenant-id]] [flags]
 ```
 
 ### Options

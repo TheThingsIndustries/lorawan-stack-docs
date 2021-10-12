@@ -17,7 +17,7 @@ policy is a fallback routing policy when no specific policy has been defined
 for the Home Network (by NetID and tenant ID).
 
 ```
-ttn-lw-cli packetbroker home-networks policies set [default|net-id] [tenant-id] [flags]
+ttn-lw-cli packetbroker home-networks policies set [default|[net-id] [tenant-id]] [flags]
 ```
 
 ### Examples

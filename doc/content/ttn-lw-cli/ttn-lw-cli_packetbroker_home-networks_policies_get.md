@@ -9,7 +9,7 @@ type: "commands"
 Get a Home Network routing policy
 
 ```
-ttn-lw-cli packetbroker home-networks policies get [default|net-id] [tenant-id] [flags]
+ttn-lw-cli packetbroker home-networks policies get [default|[net-id] [tenant-id]] [flags]
 ```
 
 ### Examples

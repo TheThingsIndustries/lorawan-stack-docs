@@ -114,6 +114,7 @@ ttn-lw-cli templates extend [flags]
       --mac-state.last-network-initiated-downlink-at string                                   (YYYY-MM-DDTHH:MM:SSZ)
       --mac-state.lorawan-version string                                                      allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.1, 1.1.0, MAC_UNKNOWN, MAC_V1_0, MAC_V1_0_1, MAC_V1_0_2, MAC_V1_0_3, MAC_V1_0_4, MAC_V1_1, unknown
       --mac-state.pending-application-downlink.class-b-c.absolute-time string                 (YYYY-MM-DDTHH:MM:SSZ)
+      --mac-state.pending-application-downlink.class-b-c.gateways strings                     
       --mac-state.pending-application-downlink.confirmed                                      
       --mac-state.pending-application-downlink.correlation-ids strings                        
       --mac-state.pending-application-downlink.f-cnt uint32                                   

@@ -1,17 +1,18 @@
 ---
-title: "ttn-lw-cli end-devices"
-slug: ttn-lw-cli_end-devices
+title: "ttn-lw-cli tenants"
+slug: ttn-lw-cli_tenants
 type: "commands"
 ---
 
-## ttn-lw-cli end-devices
+## ttn-lw-cli tenants
 
-End Device commands
+Tenant commands
 
 ### Options
 
 ```
-  -h, --help   help for end-devices
+  -h, --help                      help for tenants
+      --tenant-admin-key string   Tenant Admin Key
 ```
 
 ### Options inherited from parent commands
@@ -47,20 +48,13 @@ End Device commands
 ### SEE ALSO
 
 * [ttn-lw-cli]({{< relref "ttn-lw-cli" >}})	 - The Things Network Command-line Interface
-* [ttn-lw-cli end-devices claim]({{< relref "ttn-lw-cli_end-devices_claim" >}})	 - Claim an end device (EXPERIMENTAL)
-* [ttn-lw-cli end-devices create]({{< relref "ttn-lw-cli_end-devices_create" >}})	 - Create an end device
-* [ttn-lw-cli end-devices delete]({{< relref "ttn-lw-cli_end-devices_delete" >}})	 - Delete an end device
-* [ttn-lw-cli end-devices downlink]({{< relref "ttn-lw-cli_end-devices_downlink" >}})	 - Application downlink commands
-* [ttn-lw-cli end-devices generate-qr]({{< relref "ttn-lw-cli_end-devices_generate-qr" >}})	 - Generate an end device QR code (EXPERIMENTAL)
-* [ttn-lw-cli end-devices get]({{< relref "ttn-lw-cli_end-devices_get" >}})	 - Get an end device
-* [ttn-lw-cli end-devices get-default-mac-settings]({{< relref "ttn-lw-cli_end-devices_get-default-mac-settings" >}})	 - Get Network Server default MAC settings for frequency plan and LoRaWAN version
-* [ttn-lw-cli end-devices list]({{< relref "ttn-lw-cli_end-devices_list" >}})	 - List end devices
-* [ttn-lw-cli end-devices list-frequency-plans]({{< relref "ttn-lw-cli_end-devices_list-frequency-plans" >}})	 - List available frequency plans for end devices
-* [ttn-lw-cli end-devices list-qr-formats]({{< relref "ttn-lw-cli_end-devices_list-qr-formats" >}})	 - List QR code formats (EXPERIMENTAL)
-* [ttn-lw-cli end-devices provision]({{< relref "ttn-lw-cli_end-devices_provision" >}})	 - Provision end devices using vendor-specific data
-* [ttn-lw-cli end-devices reset]({{< relref "ttn-lw-cli_end-devices_reset" >}})	 - Reset state of an end device to factory defaults
-* [ttn-lw-cli end-devices search]({{< relref "ttn-lw-cli_end-devices_search" >}})	 - Search for end devices
-* [ttn-lw-cli end-devices set]({{< relref "ttn-lw-cli_end-devices_set" >}})	 - Set properties of an end device
-* [ttn-lw-cli end-devices storage]({{< relref "ttn-lw-cli_end-devices_storage" >}})	 - Storage Integration
-* [ttn-lw-cli end-devices use-external-join-server]({{< relref "ttn-lw-cli_end-devices_use-external-join-server" >}})	 - Disassociate and delete the device from Join Server
+* [ttn-lw-cli tenants create]({{< relref "ttn-lw-cli_tenants_create" >}})	 - Create a tenant
+* [ttn-lw-cli tenants delete]({{< relref "ttn-lw-cli_tenants_delete" >}})	 - Delete a tenant
+* [ttn-lw-cli tenants get]({{< relref "ttn-lw-cli_tenants_get" >}})	 - Get a tenant
+* [ttn-lw-cli tenants get-identifiers-for-end-device-euis]({{< relref "ttn-lw-cli_tenants_get-identifiers-for-end-device-euis" >}})	 - Get tenant identifiers for Device EUIs
+* [ttn-lw-cli tenants get-identifiers-for-gateway-eui]({{< relref "ttn-lw-cli_tenants_get-identifiers-for-gateway-eui" >}})	 - Get tenant identifiers for a Gateway EUI
+* [ttn-lw-cli tenants get-registry-totals]({{< relref "ttn-lw-cli_tenants_get-registry-totals" >}})	 - Get registry totals of a tenant
+* [ttn-lw-cli tenants list]({{< relref "ttn-lw-cli_tenants_list" >}})	 - List tenants
+* [ttn-lw-cli tenants search]({{< relref "ttn-lw-cli_tenants_search" >}})	 - Search for tenants
+* [ttn-lw-cli tenants update]({{< relref "ttn-lw-cli_tenants_update" >}})	 - Update a tenant
 

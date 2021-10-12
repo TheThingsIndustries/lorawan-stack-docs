@@ -54,6 +54,7 @@ The Things Network Command-line Interface
 * [ttn-lw-cli packetbroker]({{< relref "ttn-lw-cli_packetbroker" >}})	 - Packet Broker commands
 * [ttn-lw-cli simulate]({{< relref "ttn-lw-cli_simulate" >}})	 - Simulation commands
 * [ttn-lw-cli templates]({{< relref "ttn-lw-cli_templates" >}})	 - End Device template commands
+* [ttn-lw-cli tenants]({{< relref "ttn-lw-cli_tenants" >}})	 - Tenant commands
 * [ttn-lw-cli use]({{< relref "ttn-lw-cli_use" >}})	 - Generate client configuration for The Things Stack
 * [ttn-lw-cli users]({{< relref "ttn-lw-cli_users" >}})	 - User commands
 * [ttn-lw-cli version]({{< relref "ttn-lw-cli_version" >}})	 - Print version information

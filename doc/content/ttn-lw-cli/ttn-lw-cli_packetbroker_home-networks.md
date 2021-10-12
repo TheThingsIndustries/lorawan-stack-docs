@@ -47,6 +47,7 @@ Home Network commands
 ### SEE ALSO
 
 * [ttn-lw-cli packetbroker]({{< relref "ttn-lw-cli_packetbroker" >}})	 - Packet Broker commands
+* [ttn-lw-cli packetbroker home-networks gateway-visibilities]({{< relref "ttn-lw-cli_packetbroker_home-networks_gateway-visibilities" >}})	 - Manage Home Network gateway visibilities
 * [ttn-lw-cli packetbroker home-networks list]({{< relref "ttn-lw-cli_packetbroker_home-networks_list" >}})	 - List Home Networks
 * [ttn-lw-cli packetbroker home-networks policies]({{< relref "ttn-lw-cli_packetbroker_home-networks_policies" >}})	 - Manage Home Network routing policies
 
