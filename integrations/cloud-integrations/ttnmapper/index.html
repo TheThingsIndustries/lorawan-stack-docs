@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Managing Devices | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/devices/" />
+  <title>TTN Mapper | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ttnmapper/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.2d48a00a1bde5893390ef3cf9ccc511ed5122027345ae0b25f087b114938b045.css" integrity="sha256-LUigChveWJM5DvPPnMxRHtUSICc0WuCyXwh7EUk4sEU=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Managing Devices">
+  <meta itemprop="name" content="TTN Mapper">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Managing Devices">
+  <meta property="og:title" content="TTN Mapper">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/devices/">
-  <meta name="twitter:title" content="Managing Devices" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ttnmapper/">
+  <meta name="twitter:title" content="TTN Mapper" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -111,45 +111,6 @@
   <li>
     <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/" class="">Azure IoT Hub</a>
     
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/architecture/" class="">Architecture</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/deployment/" class="">Deployment Guide</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/devices/" class="is-active">Managing Devices</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/device-twin/" class="">Messages and Device Twin</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/update/" class="">Update</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/uninstall/" class="">Uninstall</a>
-    
-  </li>
-
-</ul>
-
-
-    
   </li>
 
   <li>
@@ -223,7 +184,12 @@
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ttnmapper/" class="">TTN Mapper</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/ttnmapper/" class="is-active">TTN Mapper</a>
+    
+    
+
+
+
     
   </li>
 
@@ -283,111 +249,69 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Managing Devices
+        <h1 class="title is-size-2">TTN Mapper
           
         </h1>
         
         <div class="content">
-          <p>The Azure IoT Hub integration for The Things Stack synchronizes the device registry: you can create devices in Azure IoT Hub which trigger an Azure Function that creates the device in The Things Stack.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>Devices that you create in The Things Stack are automatically created as Azure IoT Hub devices as soon as they activate or send their first uplink message.</p>
-<p>In Azure IoT Hub, create only devices that are not yet in your The Things Stack application.</p>
-
-</div>
-
-<h2 id="device-names">Device Names</h2>
-<p>Devices are created automatically as they join the network or send an uplink message. For the name of new devices, the end device ID in The Things Stack is used as the device ID in Azure IoT Hub.</p>
-<h2 id="creating-devices">Creating Devices</h2>
-<p>You can use Azure IoT Hub to create and claim devices in The Things Stack. This is useful to manage all your devices in one place, without having to use The Things Stack Console, CLI or API.</p>
-<p><strong>Creating</strong> a device allows you to add any LoRaWAN device by manually entering its information and security keys.</p>
-<p>In the Azure Console, open your Azure IoT Hub resource. In the menu on the left, click <strong>IoT Devices</strong>.</p>
-<p>Click <strong>Add Device</strong>.</p>
-<figure>
-    <img src="../device-list.png"
-         alt="IoT Devices"/> 
-</figure>
-
-<p>As <strong>Device ID</strong>, enter any device ID you like. Hit <strong>Save</strong>.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  See <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">ID and EUI constraints</a> for guidelines about choosing a unique ID.
-</div>
-
-<figure>
-    <img src="../add-device.png"
-         alt="Add Device"/> 
-</figure>
-
-<p>You will now have to setup the LoRaWAN specific settings of the device. Click on <strong>Device Twin</strong>.</p>
-<figure>
-    <img src="../device-created.png"
-         alt="Device Created"/> 
-</figure>
-
-<p>You will now be presented with a JSON document containing the Device Twin. You now have to add a new object called <code>tags</code>, which will contain an object called <code>lorawan</code> with the LoRaWAN specific tags. You will have to specify the following tags:</p>
+          <p><a href="https://ttnmapper.org/">TTN Mapper</a> is a convenient tool used for mapping the network coverage of gateways connected to The Things Stack.</p>
+<p>Check the official <a href="https://docs.ttnmapper.org/">TTN Mapper documentation site</a>.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ol>
+<li>A LoRaWAN end device transmitting GPS coordinates (latitude, longitude and optionally altitude), and HDOP, GPS accuracy or satellite count.</li>
+<li>A LoRaWAN gateway with a <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/#set-gateway-location">public location</a>.</li>
+</ol>
+<h2 id="configure-the-things-stack">Configure The Things Stack</h2>
+<p>Your end device can be sending its GPS coordinates in an uplink message as part of the <code>frm_payload</code> field. In that case, before implementing the Webhook integration, you need to create an uplink <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">payload formatter</a> in order for TTN Mapper to be able to parse your data.</p>
 <ul>
-<li><code>devEui</code>: the hexadecimal LoRaWAN DevEUI.</li>
-<li><code>joinEui</code>: the hexadecimal LoRaWAN JoinEUI (or AppEUI).</li>
-<li><code>lorawanVersion</code>: either <code>1.0</code>, <code>1.0.1</code>, <code>1.0.2</code>, <code>1.0.3</code> or <code>1.1</code>.</li>
-<li><code>regionalParametersVersion</code>: either <code>1.0</code>, <code>1.0.1</code>, <code>1.0.2</code> (or <code>1.0.2-a</code>), <code>1.0.2-b</code>, <code>1.0.3-a</code>, <code>1.1-a</code> or <code>1.1-b</code>.</li>
-<li><code>appKey</code>: the hexadecimal LoRaWAN AppKey.</li>
-<li><code>nwkKey</code>: the hexadecimal LoRaWAN NwkKey (only when using LoRaWAN 1.1 or higher).</li>
-<li><code>frequencyPlanId</code>: the frequency plan ID. See <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plans</a> for the supported values.</li>
+<li>If your end device is sending data in Cayenne LPP format, choose <a href="(https://www.thethingsindustries.com/docs/integrations/payload-formatters/cayenne/)">Cayenne LPP payload formatter</a> in your device&rsquo;s settings on The Things Stack.</li>
+<li>Otherwise, create a custom <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/">JavaScript payload formatter</a>. This formatter will have to contain fields <code>latitude</code>, <code>longitude</code> and <code>altitude</code>. If possible, <code>hdop</code>, <code>accuracy</code> or <code>sats</code> fields should also be contained.</li>
 </ul>
-<p>If your end device is a part of the <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/device-repo/">LoRaWAN Device Repository</a>, you may provide the identifiers of the device as part of an optional <code>versionIdentifiers</code> object. You can specify the following information as part of the identifiers:</p>
-<ul>
-<li><code>bandId</code>: the band ID.</li>
-<li><code>brandId</code>: the brand ID.</li>
-<li><code>firmwareVersion</code>: the firmware version.</li>
-<li><code>hardwareVersion</code>: the hardware version.</li>
-<li><code>modelId</code>: the model ID.</li>
-</ul>
+<!--- Some devices, for example [LoRa Edge LR1110](https://www.semtech.com/products/wireless-rf/lora-edge/), obtain their location from [LoRa Cloud](https://www.loracloud.com/) platform using The Things Stack [LoRa Cloud integration](https://www.thethingsindustries.com/docs/integrations/lora-cloud/). As a result, device location solution is contained in the `location` field of the location solved message. In this case, there is no need to set up a payload formatter. --->
+<p>The next step is to instantiate the <strong>TTN Mapper</strong> <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a>.</p>
+<!--- <div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Both uplink and location solved message types are enabled by default in TTN Mapper webhook template.
+</div>
+ --->
+<p>Give a name to your integration by filling in the <strong>Webhook ID</strong> field.</p>
+<p>Fill in the <strong>Email address</strong> field with a valid email, needed for your data to be accepted by TTN Mapper. All data sent by your end device will be associated to this email address and it will provide some guarantees of the data quality.</p>
+<p>If you are testing some random setups (like launching and tracking an air balloon) and you do not want your mapping results to contribute to the main TTN Mapper network coverage map, provide the <strong>Experiment name</strong> field as well.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  If the version identifiers are provided, the end device will automatically load the <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">Payload Formatters</a> from <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/device-repo/">LoRaWAN Device Repository</a>.
+  To read more about experiments, read the <strong>Experiments</strong> section <a href="https://docs.ttnmapper.org/integration/tts-integration-v3.html">here</a>.
 </div>
 
-<p>The final JSON <code>tags</code> object should look as follows:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-   <span class="nt">&#34;lorawan&#34;</span><span class="p">:{</span>
-      <span class="nt">&#34;devEui&#34;</span><span class="p">:</span><span class="s2">&#34;0004A30B001C5838&#34;</span><span class="p">,</span>
-      <span class="nt">&#34;joinEui&#34;</span><span class="p">:</span><span class="s2">&#34;0000000000000000&#34;</span><span class="p">,</span>
-      <span class="nt">&#34;lorawanVersion&#34;</span><span class="p">:</span><span class="s2">&#34;1.0.2&#34;</span><span class="p">,</span>
-      <span class="nt">&#34;regionalParametersVersion&#34;</span><span class="p">:</span><span class="s2">&#34;1.0.2-b&#34;</span><span class="p">,</span>
-      <span class="nt">&#34;frequencyPlanId&#34;</span><span class="p">:</span><span class="s2">&#34;EU_863_870_TTN&#34;</span><span class="p">,</span>
-      <span class="nt">&#34;appKey&#34;</span><span class="p">:</span><span class="s2">&#34;459B77D46A08C427254822A33F6FA1A3&#34;</span><span class="p">,</span>
-      <span class="nt">&#34;versionIdentifiers&#34;</span><span class="p">:{</span>
-         <span class="nt">&#34;bandId&#34;</span><span class="p">:</span><span class="s2">&#34;EU_863_870&#34;</span><span class="p">,</span>
-         <span class="nt">&#34;brandId&#34;</span><span class="p">:</span><span class="s2">&#34;the-things-products&#34;</span><span class="p">,</span>
-         <span class="nt">&#34;firmwareVersion&#34;</span><span class="p">:</span><span class="s2">&#34;1.0&#34;</span><span class="p">,</span>
-         <span class="nt">&#34;hardwareVersion&#34;</span><span class="p">:</span><span class="s2">&#34;1.0&#34;</span><span class="p">,</span>
-         <span class="nt">&#34;modelId&#34;</span><span class="p">:</span><span class="s2">&#34;the-things-node&#34;</span>
-      <span class="p">}</span>
-   <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><figure>
-    <img src="../add-tags.png"
-         alt="Add Tags"/> 
-</figure>
-
-<p>Click on <strong>Save</strong> in the top-left corner. The end device will now be created in The Things Stack.</p>
-<h2 id="deleting-devices">Deleting Devices</h2>
-<p>In the Azure Console, open your Azure IoT Hub resource. In the menu on the left, click <strong>IoT Devices</strong>.</p>
-<p>Click on the checkbox in front of the device you want to delete, then click <strong>Delete</strong>.</p>
+<p>Finish by clicking the <strong>Create ttn mapper webhook</strong> button.</p>
 <figure>
-    <img src="../select-device.png"
-         alt="Select Device"/> 
+    <img src="webhook-template.png"
+         alt="TTN Mapper webhook template"/> 
 </figure>
 
-<p>The end device will be deleted from Azure IoT Hub and The Things Stack.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  To see the values of all parameters of the TTN Mapper integration, click on the integration after you created it with the Webhook template.
+</div>
+
+<h2 id="observe-the-network-coverage">Observe The Network Coverage</h2>
+<p>Now when you have configured the integration, go back to TTN Mapper website and select <strong>Advanced maps</strong> in the top menu.</p>
+<p>In the <strong>Device data</strong> section, fill in the <strong>Device ID</strong> field with the device ID from The Things Stack. Choose today as the <strong>Start Date</strong> and the <strong>End Date</strong>. Click the <strong>View Map</strong> button to see data points coming from your end device&rsquo;s uplink data.</p>
+<figure>
+    <img src="ttn-mapper-map.png"
+         alt="TTN Mapper coverage map"/> 
+</figure>
+
+<blockquote>
+<p>Read more info about integrating The Things Stack with TTN Mapper on <a href="https://github.com/ttnmapper/documentation/blob/master/integration/tts-integration-v3.md">Github</a> or on <a href="https://docs.ttnmapper.org/integration/tts-integration-v3.html">TTN Mapper documentation page</a>.</p>
+</blockquote>
         </div>
-        <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/azure-iot-hub/deployment/">← Deployment Guide</a>
-<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/azure-iot-hub/device-twin/">Messages and Device Twin →</a>
+        
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/thingspeak/">← ThingSpeak</a>
+<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/ubidots/">Ubidots →</a>
 </div>
 
-        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
 <script src="https://cdn.emojicom.io/embed/widget.js" async></script>
 
 <div class='feedback has-vertical-space'>
@@ -405,13 +329,13 @@
   <ul class="menu-list">
     
       
-      <li><a href='#device-names'>Device Names</a></li>
+      <li><a href='#prerequisites'>Prerequisites</a></li>
     
       
-      <li><a href='#creating-devices'>Creating Devices</a></li>
+      <li><a href='#configure-the-things-stack'>Configure The Things Stack</a></li>
     
       
-      <li><a href='#deleting-devices'>Deleting Devices</a></li>
+      <li><a href='#observe-the-network-coverage'>Observe The Network Coverage</a></li>
     
   </ul>
 
@@ -451,14 +375,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Adrian-Stefan Mares on 19 Aug 2021.
+  Last changed by Nejra Selimović on 14 Oct 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/8d58a6bf4e8a217741b2abfeec6b209ab851c0be">
-      Add Azure IoT Hub integration documentation (#528)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a495a71f5a5e7ba1c6eaf48c2c099cda6ae0a4e6">
+      doc: Add TTN Mapper integration doc (#596)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/cloud-integrations/azure-iot-hub/devices.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/cloud-integrations/ttnmapper/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
