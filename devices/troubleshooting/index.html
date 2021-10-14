@@ -181,6 +181,8 @@
 </ul>
 <h3 id="how-do-i-see-device-events">How do I see device events?</h3>
 <p>Device event logs can be found in the console in the device&rsquo;s general information page. See <a href="https://www.thethingsindustries.com/docs/getting-started/events/">Working with Events</a> for other ways of subscribing to events.</p>
+<h3 id="i-see-no-join-requests-from-my-device-in-the-things-stack">I see no Join Requests from my device in The Things Stack.</h3>
+<p>Check your network coverage, and if your device is activated and transmitting Join Requests.</p>
 <h3 id="my-device-wont-join-what-do-i-do">My device won&rsquo;t join. What do I do?</h3>
 <ul>
 <li>Double check your DevEUI, JoinEUI or AppEUI, LoRaWAN and Regional Parameters Version, root keys (AppKey, and with LoRaWAN 1.1 or higher, NwkKey)</li>
@@ -189,12 +191,19 @@
 <li><strong>MIC mismatch</strong> error in the device events: Possible mismatch of AppKey in device firmware to the AppKey registered in The Things Stack console. Update the AppKey in the console accordingly</li>
 <li><strong>Uplink channel not found</strong> error in the gateway events: Indicates there is a mismatch of the frequency plans. Double check frequency plan settings in your end device and gateways (they must be the same LoRaWAN band)</li>
 <li><strong>DevNonce has already been used</strong> error in the device events: Indicates a duplicate use of Devnonce. Generally happens when the device has sent too many unsuccessful Join Requests</li>
+<li><strong>DevNonce is too small</strong> error in the device events: If the device is using LoRaWAN MAC version 1.1 or 1.0.4, this error occurs when DevNonce is not being incremented, so the Join Server ignores Join Requests with the same or lower DevNonce value comparing to the previous one. Contact your device&rsquo;s manufacturer to find out the correct LoRaWAN MAC and PHY versions, and configure the device in The Things Stack accordingly</li>
 <li><strong>Uplink channel not found</strong> error in the device events: The device is transmitting Join Requests in the non-default channels of the band which is not in line with the LoRaWAN Specification. Contact the end-device manufacturer</li>
 </ul>
 </li>
 <li>Double check your network connection. If there is a slow connection from the server to the gateway, the join accept message may be sent too late (this can happen when a gateway uses 3G as a backhaul). If using the CLI, run <code>ttn-lw-cli gateways connection-stats &lt;gateway-id&gt;</code> to see the round trip time (RTT) for your gateway</li>
 <li>Check for duplicate use of JoinNonce (or AppNonce)</li>
 <li>Adjust ADR and link check settings to conditions which the device is located in</li>
+</ul>
+<h3 id="my-device-is-stuck-in-a-continuous-join-loop-what-can-i-do">My device is stuck in a continuous join loop. What can I do?</h3>
+<ul>
+<li>Check for the errors and solutions listed above</li>
+<li>If the Network Server is processing Join Requests and scheduling Join Accepts, check the gateway events and see whether the Join Accept downlink messages are being scheduled by the gateway</li>
+<li>If you see any deviation in scheduling Join Accept downlinks from the gateway, follow the <a href="https://www.thethingsindustries.com/docs/gateways/troubleshooting/">Troubleshooting Gateways</a></li>
 </ul>
 <h3 id="no-downlinks-are-reaching-my-device-what-do-i-do">No downlinks are reaching my device. What do I do?</h3>
 <ul>
@@ -293,8 +302,8 @@
 <p class="is-size-7">
   Last changed by Nejra Selimović on 14 Oct 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/c1fdd725524b7287307dd4f1f1d5dca4a003fac1">
-      doc: Add downlink troubleshooting entries (#609)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3e4d67754a73883d8b4dae7710071b7bba4f7145">
+      doc: Document join issues in troubleshooting devices (#595)
     </a>
 </p>
 
