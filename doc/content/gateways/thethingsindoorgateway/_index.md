@@ -137,7 +137,7 @@ $ ttn-lw-cli gateways claim unauthorize <gateway-id>
 
 #### Claim Authentication Code Mismatch
 
-Double-check the EUI and the WiFi Password. Sometimes an `8` looks like a `3` or a `B`, an `1` like an `l`, a `0` like an `O`, etc.
+Double-check the EUI and the WiFi Password. Sometimes an `8` looks like a `3` or a `B`, an `1` like an `l`, a `0` like an `O`, etc. Note that the `FFFE` string has an `e` at the end.
 
 #### Gateway Not Authorized for Claiming
 
