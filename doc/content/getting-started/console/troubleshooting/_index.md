@@ -7,6 +7,13 @@ This section provides help for common issues in {{% tts %}} Console.
 
 <!--more-->
 
+## I see some incorrectly displayed items in the Console.
+
+- Try clearing your web browser cache or using incognito mode.
+- Check if the issue persists after you change the web browser.
+
+If these steps do not help you solve the issue, please collect your browser console and network logs while reproducing the error, and use them to create an issue in [{{% tts %}} GitHub repository](https://github.com/TheThingsNetwork/lorawan-stack).
+
 ## What does "Last activity/Last seen" mean?
 
 See [Last Activity]({{< ref "reference/last-activity" >}}).
