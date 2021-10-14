@@ -207,12 +207,12 @@
         
         <div class="content">
           <p>This page guides you to connect Tektelic Kona Micro IoT LoRaWAN Gateway to The Things Stack.</p>
-<p>Tektelic Kona Micro IoT LoRaWAN Gateway is an 8 channel LoRaWAN gateway, whose technical specifications can be found in <a href="https://tektelic.com/catalog/kona-micro-lorawan-gateway">the official documentation</a>.</p>
 <figure class="float plain">
     <img src="kona-micro.jpg"
          alt="Tektelic Kona Micro IoT LoRaWAN Gateway"/> 
 </figure>
 
+<p>Tektelic Kona Micro IoT LoRaWAN Gateway is an 8 channel LoRaWAN gateway, whose technical specifications can be found in <a href="https://tektelic.com/catalog/kona-micro-iot-gateway">the official documentation</a>.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
 <li>User account on The Things Stack with rights to create Gateways.</li>
@@ -220,13 +220,35 @@
 </ol>
 <h2 id="registration">Registration</h2>
 <p>Create a gateway by following the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/">Adding Gateways</a>. The <strong>EUI</strong> of the gateway can be found on the back panel of the gateway under the field <strong>GW ID</strong>.</p>
+<h2 id="connect-to-the-gateway">Connect to the Gateway</h2>
+<p>To be able to configure your gateway to connect to The Things Stack, you first need to connect to the gateway itself. There are two ways you can connect to the Tektelic Kona Micro gateway - using the <a href="https://support.tektelic.com/portal/en/kb/articles/konaft">KonaFT tool</a> and via SSH.</p>
+<h3 id="using-konaft-tool">Using KonaFT Tool</h3>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  KonaFT application can be installed on Windows OS only, and supports connecting to The Things Stack using Semtech UDP Packet Forwarder
+only.
+</div>
+
+<p><strong>Step 1:</strong> Download the <a href="https://support.tektelic.com/portal/en/kb/articles/konaft">KonaFT application</a> and complete the installation.</p>
+<p><strong>Step 2:</strong> Connect your gateway to the KonaFT tool. <a href="https://support.tektelic.com/portal/en/kb/articles/konaft-instructional-videos">See <strong>KFT_Connect</strong> video instructions</a></p>
+<p><strong>Step 3:</strong> <a href="https://support.tektelic.com/portal/en/kb/articles/assigning-static-ip-to-kona-gateway-using-konaft">Assign a static IP address to the gateway using KonaFT</a>.</p>
+<p><strong>Step 4:</strong> Configure the gateway to connect to The Things Stack using <a href="/docs/gateways/tektelickonamicro/udp/">Semtech UDP Packet Forwarder
+</a>.</p>
+<h3 id="ssh-into-the-gateway">SSH into the Gateway</h3>
+<p>Find the gateway&rsquo;s IP address. This can be done in various ways. You can connect your machine to the same local network as that of the gateway ethernet connection and scan for open SSH ports, or assign a static IP to the gateway and use that one.</p>
+<p>Once the gateway IP address is found, SSH into it with the following command:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh root@&lt;GatewayIP&gt;
+</code></pre></div><p>The password for the <strong>root</strong> user can be found on the back panel of the gateway. It is typically a 9 character alphanumeric string starting with <strong>1846XXXXX</strong>.</p>
 <h2 id="connecting-the-gateway-to-the-things-stack">Connecting the Gateway to The Things Stack</h2>
 <p>The Tektelic Kona Micro supports LoRa Basics™ Station
-and the legacy UDP packet forwarder. LoRa Basics™ Station
-is more secure and supports configuration of custom channel plans, amongst other improvements. Please follow instructions for <a href="/docs/gateways/tektelickonamicro/lbs/">connecting the Tektelic Kona Micro with LoRa Basics™ Station
+and the legacy Semtech UDP Packet Forwarder
+.</p>
+<p>LoRa Basics™ Station
+is more secure and supports configuration of custom channel plans, amongst other improvements, so please follow instructions for <a href="/docs/gateways/tektelickonamicro/lbs/">connecting the Tektelic Kona Micro with LoRa Basics™ Station
 </a>.</p>
 <p>If for some reason LoRa Basics™ Station
-is not available to you, instructions for connecting with the legacy packet forwarder are <a href="/docs/gateways/tektelickonamicro/udp/">here</a>.</p>
+is not available to you, follow instructions for <a href="/docs/gateways/tektelickonamicro/udp/">connecting with the Semtech UDP Packet Forwarder
+</a>.</p>
         </div>
         
           <div class="is-clearfix">
@@ -256,6 +278,9 @@ is not available to you, instructions for connecting with the legacy packet forw
     
       
       <li><a href='#registration'>Registration</a></li>
+    
+      
+      <li><a href='#connect-to-the-gateway'>Connect to the Gateway</a></li>
     
       
       <li><a href='#connecting-the-gateway-to-the-things-stack'>Connecting the Gateway to The Things Stack</a></li>
@@ -298,10 +323,10 @@ is not available to you, instructions for connecting with the legacy packet forw
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Alexandre Rey on 11 Oct 2021.
+  Last changed by Nejra Selimović on 14 Oct 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7c03554dc99d63d3488a680bac1d076e84b495c4">
-      Update dead link (#613)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a549d6ddcf06aeefcaeb162796a0ee0374d39d43">
+      doc: Add KonaFT app instructions, modify sections (#611)
     </a>
 </p>
 
