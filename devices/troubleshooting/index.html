@@ -212,6 +212,14 @@
 <li>Device clock drift often occurs when SF12 is used</li>
 <li>Check your antenna connections</li>
 </ul>
+<h3 id="i-do-not-see-any-uplinks-from-my-device-in-the-gateway-live-data">I do not see any uplinks from my device in the Gateway Live data.</h3>
+<p>Here are some common causes and solutions:</p>
+<ul>
+<li>The device is not transmitting uplink messages. Check if your device is transmitting uplinks by observing its debug logs.</li>
+<li>The device has no network coverage. Check if your device has a network coverage from any of the gateways registered in your tenant.</li>
+<li>The gateway is not receiving uplinks due to hardware issues. Check if your gateway is receiving uplinks by observing its debug logs.</li>
+<li>The gateway is not forwarding received uplinks to the Network Server. Check your gateway&rsquo;s debug logs for any errors or warnings. Refer to the <a href="https://www.thethingsindustries.com/docs/gateways/troubleshooting/">Troubleshooting Gateways guide</a>.</li>
+</ul>
 <h3 id="the-things-stack-is-no-longer-receiving-uplinks-from-my-device-what-do-i-do">The Things Stack is no longer receiving uplinks from my device. What do I do?</h3>
 <ul>
 <li>Check <a href="#how-do-i-see-gateway-events">gateway events</a> and <a href="#how-do-i-see-device-events">device events</a> for traffic from your device</li>
@@ -243,6 +251,34 @@
 <h3 id="scheduling-a-downlink-from-the-things-stack-console-is-disabled-with-a-warning-simulation-is-disabled-for-devices-that-skip-paload-crypto">Scheduling a downlink from The Things Stack Console is disabled with a warning <code>Simulation is disabled for devices that skip paload crypto</code>.</h3>
 <p>When using the <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/">AWS IoT integration</a> with the <strong>End to End Encryption</strong> option enabled, scheduling downlink messages from The Things Stack Console is restricted by default.</p>
 <p>When this option is enabled, encryption and decryption at the Application Server is disabled, i.e. the <code>skip_payload_crypto</code> field for the end device is enabled on the application level. The downlinks are expected to be scheduled from the AWS IoT, and not from the The Things Stack.</p>
+<h3 id="the-things-stack-intermittently-receives-uplinks-from-my-device-but-with-the-fcnt-gap">The Things Stack intermittently receives uplinks from my device, but with the FCnt gap.</h3>
+<p>Your device probably does not have a good network coverage. Some common reasons:</p>
+<ul>
+<li>The device is using SF7, while it should be using a higher SF for better coverage and reach.</li>
+<li>There might be a conflict in receiving uplinks due to <a href="https://www.thethingsindustries.com/docs/devices/best-practices/#synchronization-backoff-and-jitter">synchronization of devices</a>.</li>
+</ul>
+<p>Check your network coverage, and make sure your devices are within your gateway&rsquo;s reach and are using a suitable SF.</p>
+<h3 id="i-can-see-some-received-uplinks-in-gateway-live-data-events-but-i-do-not-see-them-in-device-events">I can see some received uplinks in gateway Live data events, but I do not see them in device events.</h3>
+<p>Possible causes and solutions:</p>
+<ul>
+<li>The Network Server dropping uplink messages received from the gateway
+<ul>
+<li>The uplinks could be coming from other devices in the gateways range, that are not registered in The Things Stack. In this case, you can just ignore them.</li>
+<li>If you are facing this while trying to activate a device, please double-check that the DevEUI and JoinEUI/AppEUI on The Things Stack and on your device match.</li>
+</ul>
+</li>
+<li>FCnt mismatch
+<ul>
+<li>For ABP devices, the FCnt mismatch might occur if the device resets while the <strong>Reset Frame Counters</strong> option for the device is disabled. Try enabling the <strong>Reset Frame Counters</strong> option in the device&rsquo;s overview in The Things Stack Console, or by setting <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/#available-mac-settings">MAC commands</a> using the CLI.</li>
+<li>For OTAA devices, the FCnt mismatch might occur due to missing packets. The maximum FCnt gap between two consecutive uplinks is <code>16384</code> according to the LoRaWAN specification. Try re-joining your OTAA device.</li>
+</ul>
+</li>
+<li>Using inappropriate frequencies
+<ul>
+<li>This case applies only to ABP devices and EU/IN/AS frequency bands. Since the Network Server is initially accepting uplinks from devices only in default channels, uplinks from the device that is using non-default channels are dropped. In this case, <strong>Factory Preset Frequencies</strong> have to be set either in device&rsquo;s overview in The Things Stack Console, or by setting <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/#available-mac-settings">MAC commands</a> using the CLI. If these settings are applied to an existing device, you might need to reset the device as well.</li>
+</ul>
+</li>
+</ul>
         </div>
         
           <div class="is-clearfix">
@@ -302,8 +338,8 @@
 <p class="is-size-7">
   Last changed by Nejra Selimović on 14 Oct 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3e4d67754a73883d8b4dae7710071b7bba4f7145">
-      doc: Document join issues in troubleshooting devices (#595)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/209cb40e34ffef9f73be58b1b474e1eee820fde9">
+      doc: Document uplink issues in troubleshooting devices (#593)
     </a>
 </p>
 
