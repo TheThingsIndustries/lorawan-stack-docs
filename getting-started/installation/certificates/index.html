@@ -206,7 +206,12 @@ docker-compose.yml          <span class="c1"># defines Docker services for runni
 config/
 └── stack/
     └── ttn-lw-stack-docker.yml    <span class="c1"># configuration file for The Things Stack</span>
-</code></pre></div><p>Certificates will automatically be requested the first time you access The Things Stack. You will notice that the page takes some time to load while certificates are obtained in the background.</p>
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  If you are using Let&rsquo;s Encrypt in a multi-tenant The Things Stack environment, make sure you specify all tenant addresses in the TLS configuration of <code>ttn-lw-stack-docker.yml</code>. <a href="https://www.thethingsindustries.com/docs/getting-started/installation/configuration/#tls">Read more</a>
+</div>
+
+<p>Certificates will automatically be requested the first time you access The Things Stack. You will notice that the page takes some time to load while certificates are obtained in the background.</p>
 <h3 id="using-custom-certificates">Using Custom Certificates</h3>
 <p>To use <a href="#certificates-from-a-certificate-authority">CA certificates you already have</a> or <a href="#custom-certificate-authority">self-signed certificates</a>, you will need to uncomment the custom certificates section of <code>docker-compose.yml</code>:</p>
 <div class="highlight"><div class="chroma">
@@ -397,10 +402,10 @@ config/
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 22 Mar 2021.
+  Last changed by Nejra Selimović on 14 Oct 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/98e1435432f82ed8cb2d237cea436ba2d05a925a">
-      doc: Add ACME localhost note and improve certs docs
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/fb8f66bdae133d1bc85b023b3d675a12fdbbd134">
+      doc: Add notes for configuring TLS in multi-tenant TTS env (#580)
     </a>
 </p>
 

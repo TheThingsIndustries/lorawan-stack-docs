@@ -834,6 +834,19 @@ host, and also to use it as the default host.</p>
   If you are using your own certificate files, make sure to uncomment the lines that define <code>source</code> type, <code>root-ca</code>, <code>certificate</code> and <code>key</code>. The paths assigned to these do not need to be altered, because they point to the location of these files inside the Docker container, and not on your machine.
 </div>
 
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <p>If you are using Let&rsquo;s Encrypt in a multi-tenant The Things Stack environment, all tenant addresses have to be specified in the <code>ttn-lw-stack-docker.yml</code> file using <code>tls.acme.hosts</code> configuration option. For example, for The Things Stack deployment with two tenants, TLS configuration would look like this:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="k">tls</span><span class="p">:</span><span class="w">
+</span><span class="w">  </span><span class="k">source</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;acme&#39;</span><span class="w">
+</span><span class="w">  </span><span class="k">acme</span><span class="p">:</span><span class="w">
+</span><span class="w">    </span><span class="k">dir</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;/var/lib/acme&#39;</span><span class="w">
+</span><span class="w">    </span><span class="k">email</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;you@thethings.example.com&#39;</span><span class="w">
+</span><span class="w">    </span><span class="k">hosts</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;&lt;tenant1&gt;.thethings.example.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&lt;tenant2&gt;.thethings.example.com&#39;</span><span class="p">]</span><span class="w">
+</span><span class="w">    </span><span class="k">default-host</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com&#39;</span><span class="w">
+</span></code></pre></div>
+</div>
+
 <h3 id="http">HTTP</h3>
 <p>In the <code>http</code> section, HTTP server keys for encrypting and verifying cookies are configured, as well
 as passwords for endpoints that you may want to keep for the internal use.</p>
@@ -1005,10 +1018,10 @@ by the console client. These tell The Things Stack where all its components are 
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 13 Jul 2021.
+  Last changed by Nejra Selimović on 14 Oct 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/430ad02932a92fce19274ca58fa31485fecb2a83">
-      doc: Improve installation guide (#448)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/fb8f66bdae133d1bc85b023b3d675a12fdbbd134">
+      doc: Add notes for configuring TLS in multi-tenant TTS env (#580)
     </a>
 </p>
 
