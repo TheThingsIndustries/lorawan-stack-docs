@@ -30,6 +30,10 @@ Here are some common errors and solutions:
 
 Device event logs can be found in the console in the device's general information page. See [Working with Events]({{< ref "getting-started/events" >}}) for other ways of subscribing to events.
 
+### I see no Join Requests from my device in {{% tts %}}.
+
+Check your network coverage, and if your device is activated and transmitting Join Requests. 
+
 ### My device won't join. What do I do?
 
 - Double check your DevEUI, JoinEUI or AppEUI, LoRaWAN and Regional Parameters Version, root keys (AppKey, and with LoRaWAN 1.1 or higher, NwkKey)
@@ -37,10 +41,17 @@ Device event logs can be found in the console in the device's general informatio
     - **MIC mismatch** error in the device events: Possible mismatch of AppKey in device firmware to the AppKey registered in {{% tts %}} console. Update the AppKey in the console accordingly
     - **Uplink channel not found** error in the gateway events: Indicates there is a mismatch of the frequency plans. Double check frequency plan settings in your end device and gateways (they must be the same LoRaWAN band)
     - **DevNonce has already been used** error in the device events: Indicates a duplicate use of Devnonce. Generally happens when the device has sent too many unsuccessful Join Requests
+    - **DevNonce is too small** error in the device events: If the device is using LoRaWAN MAC version 1.1 or 1.0.4, this error occurs when DevNonce is not being incremented, so the Join Server ignores Join Requests with the same or lower DevNonce value comparing to the previous one. Contact your device's manufacturer to find out the correct LoRaWAN MAC and PHY versions, and configure the device in {{% tts %}} accordingly
     - **Uplink channel not found** error in the device events: The device is transmitting Join Requests in the non-default channels of the band which is not in line with the LoRaWAN Specification. Contact the end-device manufacturer
 - Double check your network connection. If there is a slow connection from the server to the gateway, the join accept message may be sent too late (this can happen when a gateway uses 3G as a backhaul). If using the CLI, run `ttn-lw-cli gateways connection-stats <gateway-id>` to see the round trip time (RTT) for your gateway
 - Check for duplicate use of JoinNonce (or AppNonce)
 - Adjust ADR and link check settings to conditions which the device is located in
+
+### My device is stuck in a continuous join loop. What can I do?
+
+- Check for the errors and solutions listed above
+- If the Network Server is processing Join Requests and scheduling Join Accepts, check the gateway events and see whether the Join Accept downlink messages are being scheduled by the gateway
+- If you see any deviation in scheduling Join Accept downlinks from the gateway, follow the [Troubleshooting Gateways]({{< ref "/gateways/troubleshooting" >}})
 
 ### No downlinks are reaching my device. What do I do?
 
