@@ -60,6 +60,15 @@ Check your network coverage, and if your device is activated and transmitting Jo
 - Device clock drift often occurs when SF12 is used
 - Check your antenna connections
 
+### I do not see any uplinks from my device in the Gateway Live data.
+
+Here are some common causes and solutions:
+
+- The device is not transmitting uplink messages. Check if your device is transmitting uplinks by observing its debug logs.
+- The device has no network coverage. Check if your device has a network coverage from any of the gateways registered in your tenant.
+- The gateway is not receiving uplinks due to hardware issues. Check if your gateway is receiving uplinks by observing its debug logs.
+- The gateway is not forwarding received uplinks to the Network Server. Check your gateway's debug logs for any errors or warnings. Refer to the [Troubleshooting Gateways guide]({{< ref "/gateways/troubleshooting" >}}).
+
 ### {{% tts %}} is no longer receiving uplinks from my device. What do I do?
 
 - Check [gateway events](#how-do-i-see-gateway-events) and [device events](#how-do-i-see-device-events) for traffic from your device
@@ -95,3 +104,24 @@ When using the [AWS IoT integration]({{< ref "/integrations/cloud-integrations/a
 
 When this option is enabled, encryption and decryption at the Application Server is disabled, i.e. the `skip_payload_crypto` field for the end device is enabled on the application level. The downlinks are expected to be scheduled from the AWS IoT, and not from the {{% tts %}}.
 
+### {{% tts %}} intermittently receives uplinks from my device, but with the FCnt gap.
+
+Your device probably does not have a good network coverage. Some common reasons:
+
+- The device is using SF7, while it should be using a higher SF for better coverage and reach.
+- There might be a conflict in receiving uplinks due to [synchronization of devices]({{< ref "/devices/best-practices#synchronization-backoff-and-jitter" >}}).
+
+Check your network coverage, and make sure your devices are within your gateway's reach and are using a suitable SF.
+
+### I can see some received uplinks in gateway Live data events, but I do not see them in device events.
+
+Possible causes and solutions:
+
+- The Network Server dropping uplink messages received from the gateway
+    - The uplinks could be coming from other devices in the gateways range, that are not registered in {{% tts %}}. In this case, you can just ignore them.
+    - If you are facing this while trying to activate a device, please double-check that the DevEUI and JoinEUI/AppEUI on {{% tts %}} and on your device match.
+- FCnt mismatch
+    - For ABP devices, the FCnt mismatch might occur if the device resets while the **Reset Frame Counters** option for the device is disabled. Try enabling the **Reset Frame Counters** option in the device's overview in {{% tts %}} Console, or by setting [MAC commands]({{< ref "/devices/mac-settings#available-mac-settings" >}}) using the CLI.
+    - For OTAA devices, the FCnt mismatch might occur due to missing packets. The maximum FCnt gap between two consecutive uplinks is `16384` according to the LoRaWAN specification. Try re-joining your OTAA device.
+- Using inappropriate frequencies
+    - This case applies only to ABP devices and EU/IN/AS frequency bands. Since the Network Server is initially accepting uplinks from devices only in default channels, uplinks from the device that is using non-default channels are dropped. In this case, **Factory Preset Frequencies** have to be set either in device's overview in {{% tts %}} Console, or by setting [MAC commands]({{< ref "/devices/mac-settings#available-mac-settings" >}}) using the CLI. If these settings are applied to an existing device, you might need to reset the device as well.
