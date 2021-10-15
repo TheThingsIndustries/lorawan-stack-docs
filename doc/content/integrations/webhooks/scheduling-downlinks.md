@@ -68,3 +68,17 @@ $ curl --location \
 {{< note >}} Downlinks scheduled using the `decoded_payload` Payload Formatter field are encrypted in the Application Server, and the content will not be comprehensible in the Network Server's `frm_payload` field when viewing events. {{</ note >}}
 
 You can also save the API key in the webhook configuration page using the the **Downlink API Key** field. The Application Server will provide it to your endpoint using the `X-Downlink-Apikey` header and the push and replace operations paths using the `X-Downlink-Push` and `X-Downlink-Replace` headers.
+
+{{% tts %}} keeps a queue of downlink messages per device. This queue can be replaced with a list of downlink messages. The queue can also be cleared by replacing it with an empty array.
+
+To clear the queue of downlink messages for an end device `dev1` of the application `app1` using the webhook `wh1`:
+
+```bash
+$ curl --location \
+  --header 'Authorization: Bearer NNSXS.XXXXXXXXX' \
+  --header 'Content-Type: application/json' \
+  --header 'User-Agent: my-integration/my-integration-version' \
+  --request POST \
+  --data '{"downlinks":[]}' \
+  'https://thethings.example.com/api/v3/as/applications/app1/webhooks/wh1/devices/dev1/down/replace'
+```
