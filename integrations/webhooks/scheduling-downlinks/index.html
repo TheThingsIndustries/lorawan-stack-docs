@@ -233,6 +233,16 @@
 </div>
 
 <p>You can also save the API key in the webhook configuration page using the the <strong>Downlink API Key</strong> field. The Application Server will provide it to your endpoint using the <code>X-Downlink-Apikey</code> header and the push and replace operations paths using the <code>X-Downlink-Push</code> and <code>X-Downlink-Replace</code> headers.</p>
+<p>The Things Stack keeps a queue of downlink messages per device. This queue can be replaced with a list of downlink messages. The queue can also be cleared by replacing it with an empty array.</p>
+<p>To clear the queue of downlink messages for an end device <code>dev1</code> of the application <code>app1</code> using the webhook <code>wh1</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
+</span><span class="se"></span>  --request POST <span class="se">\
+</span><span class="se"></span>  --data <span class="s1">&#39;{&#34;downlinks&#34;:[]}&#39;</span> <span class="se">\
+</span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/as/applications/app1/webhooks/wh1/devices/dev1/down/replace&#39;</span>
+</code></pre></div>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/webhooks/creating-webhooks/">← Creating Webhooks</a>
@@ -300,10 +310,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 29 Apr 2021.
+  Last changed by Nejra Selimović on 15 Oct 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5dee2ad1b069f152c90f32479aa97db2b3e16c58">
-      doc: Add API example for payload formatter
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/15ef4dc34e22ae9d22329e93b1e5690ce36fd9be">
+      doc: Note about replacing downlink queue (#624)
     </a>
 </p>
 
