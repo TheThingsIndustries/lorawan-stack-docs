@@ -16,10 +16,6 @@ First off, it's a good idea to understand what {{% tts %}} is. Learn that, and l
 
 In case you skipped the previous section, here is a quick summary: {{% tts %}} is a network server which implements the LoRaWAN protocol. To learn more about LoRaWAN, check out the [Learn section](https://thethingsnetwork.org/docs/lorawan) of The Things Network, or read up at the [LoRa Alliance](https://lora-alliance.org).
 
-Here is a video of Johan Stokking, the tech lead of The Things Industries and one of the core developers of {{% tts %}}, explaining LoRaWAN:
-
-{{< youtube "ZsVhYiX4_6o" >}}
-
 ## Start Using {{% tts %}}
 
 To get started with {{% tts %}}, you can simply [create an account](https://console.cloud.thethings.network) on The Things Network to start using [The Things Stack Community Edition]({{< ref "getting-started/ttn" >}}) for free.
