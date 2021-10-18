@@ -4,58 +4,87 @@ description: ""
 weight: 2
 ---
 
-{{% tts %}} CLI needs to be properly configured in order to connect to {{% tts %}}. To configure the CLI, you first have to create a configuration file, then make that file available to the CLI.
+{{% tts %}} CLI needs to be configured to connect to your {{% tts %}} deployment. To configure the CLI, you first have to create a configuration file, then make that file available to the CLI.
 
-The CLI configuration file can be generated or manually created. Keep reading for detailed instructions.
+The CLI configuration file can be generated or manually created.
 
-## Generate configuration file
+## Step 1 - Create a configuration file
+
+### Automatically generate configuration file
 
 To generate the CLI configuration file, use the following command in your terminal:
 
-{{< tabs/container "Open Source" "Enterprise" >}}
+{{< tabs/container "Cloud, Community Edition, and Open Source" "Enterprise" >}}
 
-{{< tabs/tab "Open Source" >}}
+{{< tabs/tab "Cloud, Community Edition, and Open Source" >}}
+
+If using {{% tts %}} Community Edition, use the following command as per your regional `cluster`:
 
 ```bash
-$ ttn-lw-cli use thethings.example.com [--fetch-ca] [--user] [--overwrite]
+$ ttn-lw-cli use <eu1/au1/nam1>.cloud.thethings.network
 ```
 
-{{< note >}} Keep in mind to use `ttn-lw-cli.exe` instead of `ttn-lw-cli` on Windows. {{</ note >}}
+or on Windows, this would be:
+
+```bash
+$ ttn-lw-cli.exe use <eu1/au1/nam1>.cloud.thethings.network
+```
+
+If you are using {{% tts %}} Cloud use the following command with your `tenant id` and regional `cluster`. 
+
+```bash
+$ ttn-lw-cli use <tenant_id>.<eu1/au1/nam1/>.cloud.thethings.industries
+```
+
+If you are hosting your own deployment, use the following, replacing `thethings.example.com` with your [server address]({{< ref "getting-started/server-addresses" >}}):
+
+```bash
+$ ttn-lw-cli use thethings.example.com
+```
 
 {{< /tabs/tab >}}
 
 {{< tabs/tab "Enterprise" >}}
 
+If you are hosting your own deployment, use the following, replacing `thethings.example.com` with your [server address]({{< ref "getting-started/server-addresses" >}}):
+
 ```bash
-$ tti-lw-cli use thethings.example.com [--fetch-ca] [--user] [--overwrite]
+$ tti-lw-cli use thethings.example.com
 ```
 
-{{< note >}} Keep in mind to use `tti-lw-cli.exe` instead of `tti-lw-cli` on Windows. {{</ note >}}
+or on Windows:
+
+```bash
+$ tti-lw-cli.exe use thethings.example.com
+```
 
 {{< /tabs/tab >}}
 
 {{< /tabs/container >}}
 
-{{< note >}} `thethings.example.com` represents your {{% tts %}} server address, so you need to replace it according to your setup. Here are few examples:
+This will generate the CLI configuration and save it to a file named `.ttn-lw-cli.yml`. By default, the file is saved on the current directory, add the `--user` flag to save it under the user `.config` directory.
 
-- if you are using {{% tts %}} Community Edition `eu1` cluster, you need to replace `thethings.example.com` with `eu1.cloud.thethings.network` (see [The Things Network addresses page]({{< ref "getting-started/ttn/addresses#command-line-interface" >}}) for more info about endpoints)
-
-- if you are using a tenant on {{% tts %}} Cloud `eu1` cluster, you need to replace it with `<tenant-id>.eu1.cloud.thethings.industries` (see [{{% tts %}} Cloud addresses page]({{< ref "getting-started/cloud-hosted/addresses#command-line-interface" >}}) for more info about endpoints)
-
-- if you are running {{% tts %}} on your localhost, you will need to replace it with `localhost`
+{{< note >}}
+The default configuration file for both `ttn-lw-cli` and `tti-lw-cli` CLI versions is named `.ttn-lw-cli.yml`.
 {{</ note >}}
 
-This will generate the CLI configuration and save it to a file named `.ttn-lw-cli.yml`. By default, the file is saved on the current directory, use the `--user` to save it under the user `.config` directory.
+{{< note >}}
+If you can't find the generated `.ttn-lw-cli.yml` file, take a look at your terminal. The last `INFO` line in response to running the command will contain the location of the generated file:
 
-{{< note >}} The default configuration file for both `ttn-lw-cli` and `tti-lw-cli` CLI versions is named `.ttn-lw-cli.yml`. {{</ note >}}
+```bash
+INFO	Config file for eu1.cloud.thethings.network written in /home/user/.config/.ttn-lw-cli.yml
+```
+{{</ note >}}
 
-> If you have a trouble finding the generated `.ttn-lw-cli.yml` file, take a look at your terminal. The last `INFO` line in response to running the command will contain the location of the generated file such as:
->
-> ```bash
-> INFO	Config file for eu1.cloud.thethings.network written in /home/user/.config/.ttn-lw-cli.yml
-> ```
+Once you have the configuration file, proceed to [Step 2 - Configure CLI](#step-2---configure-the-cli) to pass the configuration file to the CLI.
 
-If the deployment is using a CA that is not already trusted by your system, use the `--fetch-ca` flag to also connect to the server and retrieve the CA required for establishing secure communication.
+#### Additional Flags (Optional)
+
+If the deployment is using a CA that is not already trusted by your system, use the `--fetch-ca` flag to also connect to the server and retrieve the CA required for establishing secure communication, i.e:
+
+```bash
+$ tti-lw-cli use thethings.example.com --fetch-ca
+```
 
 If you are using a [custom certificate authority]({{< ref "/getting-started/installation/certificates#custom-certificate-authority" >}}), you will have to specify the path to the CA file with `--ca="/path/to/ca.pem"` flag when running the CLI.
 
@@ -66,15 +95,13 @@ If the configuration file already exists and you run the command to generate it 
 An example of having to specify the `--oauth-server-address` is if you are using an `https` port other than `443` (for example if you are [running {{% tts %}} on localhost]({{< ref "/getting-started/installation/configuration#running-the-things-stack-as-localhost" >}})). If running {{% tts %}} on localhost, you need to append `--oauth-server-address="https://localhost:8885/oauth` when running the CLI.
 {{</ note >}}
 
-## Manually create configuration file
+### Manually create configuration file
 
-First, create a `.ttn-lw-cli.yml` file.
+It is also possible to manually create a configuration file. For most configurations, this is not necessary, and it is preferable to [automatically generate the configuration](#automatically-generate-configuration-file). However, if you have separate component addresses, you can specify them in a manual configuration.
 
-If using {{% tts %}} Community Edition by The Things Network or {{% tts %}} Cloud, you can visit the addresses page for [The Things Network]({{< ref "getting-started/ttn/addresses#command-line-interface" >}}) or [{{% tts %}} Cloud]({{< ref "getting-started/cloud-hosted/addresses#command-line-interface" >}}) to find CLI configuration files for these deployments.
+To manually configure, first create a `.ttn-lw-cli.yml` file.
 
-{{< warning >}} Do not forget to change the **Cluster** (and enter the **Tenant ID** for Cloud deployment) on the top of the page when taking the CLI configuration contents from [The Things Network addresses page]({{< ref "getting-started/ttn/addresses#command-line-interface" >}}) or [{{% tts %}} Cloud addresses page]({{< ref "getting-started/cloud-hosted/addresses#command-line-interface" >}}). The addresses in the CLI configuration section will automatically adjust, so you can just copy the configuration and paste it in the `.ttn-lw-cli.yml` file you created. {{</ warning >}}
-
-If hosting your own deployment, copy and paste the following contents in the `.ttn-lw-cli.yml` file:
+Copy and paste the following contents in the `.ttn-lw-cli.yml` file, replacing `thethings.example.com` with the [server addresses]({{< ref "getting-started/server-addresses" >}}) of each component:
 
 ```yaml
 oauth-server-address: 'https://thethings.example.com/oauth'
@@ -88,15 +115,6 @@ device-claiming-server-grpc-address: 'thethings.example.com:8884'
 device-template-converter-grpc-address: 'thethings.example.com:8884'
 qr-code-generator-grpc-address: 'thethings.example.com:8884'
 ```
-
-{{< note >}} `thethings.example.com` represents your {{% tts %}} server address, so you need to replace it according to your setup. Here are few examples:
-
-- if you are using {{% tts %}} Community Edition `eu1` cluster, you need to replace `thethings.example.com` with `eu1.cloud.thethings.network` (see [The Things Network addresses page]({{< ref "getting-started/ttn/addresses#command-line-interface" >}}) for more info about endpoints)
-
-- if you are using a tenant on {{% tts %}} Cloud `eu1` cluster, you need to replace it with `<tenant-id>.eu1.cloud.thethings.industries` (see [{{% tts %}} Cloud addresses page]({{< ref "getting-started/cloud-hosted/addresses#command-line-interface" >}}) for more info about endpoints)
-
-- if you are running {{% tts %}} on your localhost, you will need to replace it with `localhost`
-{{</ note >}}
 
 If you are using an `https` port other than `443` (for example if running {{% tts %}} on localhost), you need to specify that port by adding the following line in `.ttn-lw-cli.yml`:
 
@@ -112,30 +130,45 @@ ca: /path/to/ca.pem
 
 For advanced options, see the [Configuration Reference]({{< ref "/reference/configuration/cli" >}}).
 
-## Configure the CLI
+## Step 2 - Configure the CLI
 
-Now, when you have the `.ttn-lw-cli.yml` file, you have multiple options to make this file available to the CLI in order to configure it:
+Once you have the `.ttn-lw-cli.yml` configuration file, you have multiple options to make this file available to the CLI in order to configure it:
 
-1. Set the environmental variable by typing `export TTN_LW_CONFIG=/path/to/.ttn-lw-cli.yml`
-2. Use command-line flag `-c /path/to/.ttn-lw-cli.yml` when running the CLI
-3. Save the configuration file as `.ttn-lw-cli.yml` in `$XDG_CONFIG_HOME`, your home directory, or the working directory.
+1. Save the configuration file as `.ttn-lw-cli.yml` in `$XDG_CONFIG_HOME`, your home directory, or the working directory. If you [automatically generate configuration using `ttn-lw-cli use`](#automatically-generate-configuration-file), the configuration will be saved in the working directory.
+2. Set the environmental variable by running:
 
-{{< note >}} On Windows, use `set TTN_LW_CONFIG=/path/to/.ttn-lw-cli.yml` to set the environmental variable. {{</ note >}}
+**macOS and Linux:**
+```bash
+export TTN_LW_CONFIG=/path/to/.ttn-lw-cli.yml
+```
+
+**Windows:**
+```bash
+set TTN_LW_CONFIG=/path/to/.ttn-lw-cli.yml
+```
+
+3. Use command-line flag `-c /path/to/.ttn-lw-cli.yml` when running the CLI
 
 {{< warning >}} When using the `snap` packages, `~/.ttn-lw-cli.yml` will fail with permission errors. Choose a different path for the configuration file. {{</ warning >}}
 
-{{< tabs/container "Open Source" "Enterprise" >}}
+To check if configuration is being properly loaded, use the following command:
 
-{{< tabs/tab "Open Source" >}}
+```bash
+$ ttn-lw-cli config
+```
 
-{{< note >}} Check if the wanted configuration file is being properly loaded using `ttn-lw-cli config` command. {{</ note >}}
+or on Windows:
 
-{{< /tabs/tab >}}
+```bash
+$ ttn-lw-cli.exe config
+```
 
-{{< tabs/tab "Enterprise" >}}
+or for Enterprise deployments:
 
-{{< note >}} Check if the wanted configuration file is being properly loaded using `tti-lw-cli config` command. {{</ note >}}
+```bash
+$ tti-lw-cli config
+```
 
-{{< /tabs/tab >}}
+## Step 3 - Login
 
-{{< /tabs/container >}}
+Once the CLI has been configured, proceed to [Login with the CLI]({{< relref "../login" >}}) to authorize and begin using the CLI.

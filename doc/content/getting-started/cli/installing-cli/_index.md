@@ -8,21 +8,19 @@ This section contains instructions for installing the command-line interface.
 
 <!--more-->
 
-{{< note >}} There are two versions of {{% tts %}} CLI: `ttn-lw-cli`and `tti-lw-cli`. For most users, `ttn-lw-cli` is sufficient, as it supports all commands to manage {{% tts %}}. `tti-lw-cli` has additional commands for tenant management, but is otherwise identical.
+There are two versions of {{% tts %}} CLI: `ttn-lw-cli`and `tti-lw-cli`. For most users, `ttn-lw-cli` is sufficient, as it supports all commands to manage {{% tts %}}. `tti-lw-cli` has additional commands for tenant management, but is otherwise identical.
 
-We recommend Cloud, Community Edition, and Open Source users to install `ttn-lw-cli`, and Enterprise users to install `tti-lw-cli`. {{</ note >}}
+We recommend Cloud, Community Edition, and Open Source users to install `ttn-lw-cli`, and Enterprise users to install `tti-lw-cli`.
 
-## Install using package managers (recommended)
+## Installing using a package manager (recommended)
+
+{{% tts %}} CLI can be installed using a package manager on macOS and Linux, and we recommend this over manual installation of binaries. Installation using a package manager enables [auto-completion](#auto-completion-optional) and makes it easy to upgrade or remove the CLI. Unfortunately, there is no package manager support in Windows, so Windows users must [use binaries](#windows).
 
 Read this section to find out how to install {{% tts %}} CLI on your operating system with commonly used package managers.
 
-{{< note >}} Using package managers (where possible) is a preferred installation method over installation using binaries. {{</ note >}}
-
 ### macOS
 
->Homebrew package manager is recommended for macOS. 
->
-> Check out the [official Homebrew documentation](https://brew.sh/) for package manager installation instructions.
+On macOS, Homebrew is the recommended package manager. See the [official Homebrew documentation](https://brew.sh/) for installation instructions.
 
 {{< tabs/container "Cloud, Community Edition, and Open Source" "Enterprise" >}}
 
@@ -40,7 +38,7 @@ To upgrade the CLI if it is already installed, use:
 $ brew upgrade TheThingsNetwork/lorawan-stack/ttn-lw-cli
 ```
 
-Now you can run the CLI using `ttn-lw-cli` in your terminal.
+Once installation is complete, you can run the CLI using `ttn-lw-cli` in your terminal.
 
 {{< /tabs/tab >}}
 
@@ -51,8 +49,6 @@ Once Homebrew is installed on your system, you can install {{% tts %}} CLI using
 ```bash
 $ brew install TheThingsIndustries/lorawan-stack/tti-lw-cli
 ```
-
-{{< note >}} When installing with `brew`, auto completion is enabled automatically. {{</ note >}}
 
 To upgrade the CLI if it is already installed, use:
 
@@ -68,9 +64,7 @@ Now you can run the CLI using `tti-lw-cli` in your terminal.
 
 ### Linux
 
-> `snap` package manager is recommended for Linux.
->
-> Check out the [official `snap` documentation](https://snapcraft.io/docs) for package manager installation instructions.
+On Linux, `snap` is the recommended package manager. See the [official `snap` documentation](https://snapcraft.io/docs) for installation instructions.
 
 {{< tabs/container "Cloud, Community Edition, and Open Source" "Enterprise" >}}
 
@@ -89,7 +83,7 @@ To upgrade the CLI if it is already installed, use:
 $ sudo snap refresh ttn-lw-stack
 ```
 
-Now you can run the CLI using `ttn-lw-cli` in your terminal.
+Once installation is complete, you can run the CLI using `ttn-lw-cli` in your terminal.
 
 {{< /tabs/tab >}}
 
@@ -101,8 +95,6 @@ Once `snap` is installed on your system, you can install {{% tts %}} CLI using t
 $ sudo snap install tti-lw-stack
 $ sudo snap alias tti-lw-stack.tti-lw-cli tti-lw-cli
 ```
-
-{{< note >}} When installing with `snap`, auto completion is enabled automatically. {{</ note >}}
 
 To upgrade the CLI if it is already installed, use:
 
@@ -116,73 +108,33 @@ Now you can run the CLI using `tti-lw-cli` in your terminal.
 
 {{< /tabs/container >}}
 
-## Install using pre-built binaries
+### Windows
 
-{{< tabs/container "Cloud, Community Edition, and Open Source" "Enterprise" >}}
+No package manager is available for Windows. Follow instructions in the next section to download the [pre-built binaries](https://github.com/TheThingsNetwork/lorawan-stack/releases) for Windows based on the processor architecture. To determine your windows system architecture, run the following in the Windows command prompt:
 
-{{< tabs/tab "Cloud, Community Edition, and Open Source" >}}
+```bash
+$ echo %PROCESSOR_ARCHITECTURE%
+```
 
-In case you are not using package managers as recommended above, you can still download [pre-built binaries](https://github.com/TheThingsNetwork/lorawan-stack/releases) for your operating system and processor architecture.
+Note that Windows binaries must be run with a `.exe` extension on the end, so if an example uses `ttn-lw-cli`, that will be `ttn-lw-cli.exe` on Windows.
 
-{{< /tabs/tab >}}
+## Installing using pre-built binaries
 
-{{< tabs/tab "Enterprise" >}}
+If your operating system does not support a package manager or you do not want to use one, you can still download [pre-built binaries](https://github.com/TheThingsNetwork/lorawan-stack/releases) for your operating system and processor architecture.
 
-In case you are not using package managers as recommended above, you can still download [pre-built binaries](https://github.com/TheThingsIndustries/lorawan-stack/releases) for your operating system and processor architecture.
+Find the [latest {{% tts %}} release](https://github.com/TheThingsNetwork/lorawan-stack/releases), scroll down and expand the **Assets** section to see the binaries. Search for archives starting with `lorawan-stack-cli` (usually on top), then search for the specific archive ending with your operating system and processor architecture label.
 
-{{< /tabs/tab >}}
+{{< figure src="binaries.png" >}}
 
-{{< /tabs/container >}}
+For example, if you are using a Linux operating system on a computer with an AMD64 processor, you need to download `lorawan-stack-cli_x.x.x_linux_amd64.tar.gz`.
 
-Find the latest {{% tts %}} release, scroll down and expand the **Assets** section to see the binaries. Search for archives starting with `lorawan-stack-cli` (usually on top), then search for the specific archive ending with your operating system and processor architecture label.
-
-> For example, if you are using a Linux operating system on a computer with an AMD64 processor, you need to download `lorawan-stack-cli_x.x.x_linux_amd64.tar.gz`.
-
-{{< note >}} There are various ways to find out your processor architecture depending on your operating system. For example, on Linux you can use `uname -m` in your terminal, while on Windows you can use `echo %PROCESSOR_ARCHITECTURE%`. {{</ note >}}
+{{< note >}} The commands to determine your processor architecture depend on your operating system. On Linux and macOS you can use `uname -m` in your terminal, while on Windows you can use `echo %PROCESSOR_ARCHITECTURE%`. {{</ note >}}
 
 Open the downloaded archive and extract it to the desired location. Enter the extracted directory.
 
 You can now run the CLI from inside that directory, or add that directory to `PATH` to run the CLI from any location.
 
-{{< tabs/container "Cloud, Community Edition, and Open Source" "Enterprise" >}}
-
-{{< tabs/tab "Cloud, Community Edition, and Open Source" >}}
-
-There are multiple ways to add the directory to `PATH`, depending on your operating system.
-
-> For example, in Linux, you can run the CLI from inside the installation directory with `.\ttn-lw-cli` in your terminal.
->
-> You can add the directory to `PATH` using the following command:
->
->```bash
->export PATH="$HOME/lorawan-stack-cli-installation-directory:$PATH"
->```
->
->Then, you can run the CLI using `ttn-lw-cli` in your terminal from any location.
-
 {{< note >}} On Windows, {{% tts %}} CLI is run using `.\ttn-lw-cli.exe` instead of `.\ttn-lw-cli`. {{</ note >}}
-
-{{< /tabs/tab >}}
-
-{{< tabs/tab "Enterprise" >}}
-
-There are multiple ways to add the directory to `PATH`, depending on your operating system.
-
-> For example, in Linux, you can run the CLI from inside the installation directory with `.\tti-lw-cli` in your terminal.
->
-> You can add the directory to `PATH` using the following command:
->
->```bash
->export PATH="$HOME/lorawan-stack-cli-installation-directory:$PATH"
->```
->
->Then, you can run the CLI using `tti-lw-cli` in your terminal from any location.
-
-{{< note >}} On Windows, {{% tts %}} CLI is run using `.\tti-lw-cli.exe` instead of `.\tti-lw-cli`. {{</ note >}}
-
-{{< /tabs/tab >}}
-
-{{< /tabs/container >}}
 
 ## Auto-completion (optional)
 
@@ -190,9 +142,7 @@ After you have installed the CLI, you can also enable [auto-completion](ttps://e
 
 {{< note >}} When installing {{% tts %}} CLI with `brew` and `snap` package managers, auto-completion is enabled automatically. {{</ note >}}
 
-{{< tabs/container "Cloud, Community Edition, and Open Source" "Enterprise" >}}
-
-{{< tabs/tab "Cloud, Community Edition, and Open Source" >}}
+### macOS and Linux
 
 Use `ttn-lw-cli complete` to generate an auto-completion script for the `ttn-lw-cli` command while specifying the shell you are using:
 
@@ -210,56 +160,22 @@ $ . ./ttn-lw-cli-autocomplete
 
 Alternatively, put in a default directory so that it gets loaded automatically (this directory depends on your operating system and your shell).
 
-> For example, for `bash`, this directory is typically `/etc/bash_completion.d/`:
->
-> ```bash
-> $ sudo cp ./ttn-lw-cli-autocomplete /etc/bash_completion.d/
-> ```
+For example, for `bash`, this directory is typically `/etc/bash_completion.d/`:
 
-{{< note >}} Generating and sourcing an auto-completion PowerShell script on Windows is slightly different. In addition to `ttn-lw-cli` being replaced with `ttn-lw-cli.exe`, `ttn-lw-cli-autocomplete` needs to be replaced with `ttn-lw-cli-autocomplete.ps1` as follows:
+```bash
+$ sudo cp ./ttn-lw-cli-autocomplete /etc/bash_completion.d/
+```
+
+### Windows
+
+Generating and sourcing an auto-completion PowerShell script on Windows is slightly different. In addition to `ttn-lw-cli` being replaced with `ttn-lw-cli.exe`, `ttn-lw-cli-autocomplete` needs to be replaced with `ttn-lw-cli-autocomplete.ps1` as follows:
 
 ```bash
 $ ttn-lw-cli.exe complete --shell powershell --executable ttn-lw-cli.exe > ttn-lw-cli-autocomplete.ps1
 
 $ . ./ttn-lw-cli-autocomplete.ps1
 ```
-{{</ note >}}
 
-{{< /tabs/tab >}}
+## Configuring the CLI
 
-{{< tabs/tab "Enterprise" >}}
-
-Use `tti-lw-cli complete` to generate an auto-completion script for the `tti-lw-cli` command while specifying the shell you are using:
-
-```bash
-$ tti-lw-cli complete --shell bash --executable tti-lw-cli > tti-lw-cli-autocomplete
-```
-
-{{< note >}} `bash`, `zsh`, `fish` and `powershell` shells are supported. {{</ note >}}
-
-Now you need to source the generated file to enable auto-completion:
-
-```bash
-$ . ./tti-lw-cli-autocomplete
-```
-
-Alternatively, put in a default directory so that it gets loaded automatically (this directory depends on your operating system and your shell).
-
-> For example, for `bash`, this directory is typically `/etc/bash_completion.d/`:
->
-> ```bash
-> $ sudo cp ./tti-lw-cli-autocomplete /etc/bash_completion.d/
-> ```
-
-{{< note >}} Generating and sourcing an auto-completion PowerShell script on Windows is slightly different. In addition to `tti-lw-cli` being replaced with `tti-lw-cli.exe`, `tti-lw-cli-autocomplete` needs to be replaced with `tti-lw-cli-autocomplete.ps1` as follows:
-
-```bash
-$ tti-lw-cli.exe complete --shell powershell --executable tti-lw-cli.exe > tti-lw-cli-autocomplete.ps1
-
-$ . ./tti-lw-cli-autocomplete.ps1
-```
-{{</ note >}}
-
-{{< /tabs/tab >}}
-
-{{< /tabs/container >}}
+Once you have installed the CLI, you need to configure it to connect to your {{% tts %}} deployment. Proceed to [Configuring the CLI]({{< relref "../configuring-cli" >}}).
