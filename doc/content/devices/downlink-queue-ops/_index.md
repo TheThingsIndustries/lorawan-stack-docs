@@ -8,6 +8,8 @@ weight: 7
 
 You can schedule a downlink using the CLI, MQTT or HTTP webhooks.
 
+To schedule downlinks using MQTT, see [MQTT Server]({{< ref "integrations/mqtt" >}}). To schedule downlinks using webhooks, see [Scheduling Downlinks with Webhooks]({{< ref "integrations/webhooks/scheduling-downlinks" >}}).
+
 This guide shows how to interact with the downlink queue from the command-line interface (CLI).
 
 <!--more-->
