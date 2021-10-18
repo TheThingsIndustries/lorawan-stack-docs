@@ -1,0 +1,279 @@
+---
+title: "ttn-lw-cli templates extend"
+slug: ttn-lw-cli_templates_extend
+type: "commands"
+---
+
+## ttn-lw-cli templates extend
+
+Extend an end device template (EXPERIMENTAL)
+
+```
+ttn-lw-cli templates extend [flags]
+```
+
+### Options
+
+```
+      --activated-at string                                                                   (YYYY-MM-DDTHH:MM:SSZ)
+      --application-server-address string                                                     
+      --application-server-id string                                                          
+      --application-server-kek-label string                                                   
+      --attributes strings                                                                    key=value
+      --battery-percentage float32                                                            
+      --claim-authentication-code.valid-from string                                           (YYYY-MM-DDTHH:MM:SSZ)
+      --claim-authentication-code.valid-to string                                             (YYYY-MM-DDTHH:MM:SSZ)
+      --claim-authentication-code.value string                                                
+      --description string                                                                    
+      --downlink-margin int32                                                                 
+      --formatters.down-formatter string                                                      allowed values: FORMATTER_CAYENNELPP, FORMATTER_GRPC_SERVICE, FORMATTER_JAVASCRIPT, FORMATTER_NONE, FORMATTER_REPOSITORY
+      --formatters.down-formatter-parameter string                                            
+      --formatters.up-formatter string                                                        allowed values: FORMATTER_CAYENNELPP, FORMATTER_GRPC_SERVICE, FORMATTER_JAVASCRIPT, FORMATTER_NONE, FORMATTER_REPOSITORY
+      --formatters.up-formatter-parameter string                                              
+      --frequency-plan-id string                                                              
+  -h, --help                                                                                  help for extend
+      --join-server-address string                                                            
+      --last-dev-nonce uint32                                                                 
+      --last-dev-status-received-at string                                                    (YYYY-MM-DDTHH:MM:SSZ)
+      --last-join-nonce uint32                                                                
+      --last-rj-count-0 uint32                                                                
+      --last-rj-count-1 uint32                                                                
+      --lorawan-phy-version string                                                            allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.2-a, 1.0.2-b, 1.0.3-a, 1.1-a, 1.1-b, 1.1.0-a, 1.1.0-b, PHY_UNKNOWN, PHY_V1_0, PHY_V1_0_1, PHY_V1_0_2_REV_A, PHY_V1_0_2_REV_B, PHY_V1_0_3_REV_A, PHY_V1_1_REV_A, PHY_V1_1_REV_B, RP001_V1_0_2, RP001_V1_0_2_REV_B, RP001_V1_0_3_REV_A, RP001_V1_1_REV_A, RP001_V1_1_REV_B, RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3, TS001_V1_0, TS001_V1_0_1, unknown
+      --lorawan-version string                                                                allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.1, 1.1.0, MAC_UNKNOWN, MAC_V1_0, MAC_V1_0_1, MAC_V1_0_2, MAC_V1_0_3, MAC_V1_0_4, MAC_V1_1, unknown
+      --mac-settings.adr-margin float32                                                       
+      --mac-settings.beacon-frequency uint                                                    
+      --mac-settings.class-b-c-downlink-interval duration                                     (1h2m3s)
+      --mac-settings.class-b-timeout duration                                                 (1h2m3s)
+      --mac-settings.class-c-timeout duration                                                 (1h2m3s)
+      --mac-settings.desired-adr-ack-delay-exponent string                                    allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192
+      --mac-settings.desired-adr-ack-limit-exponent string                                    allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192
+      --mac-settings.desired-beacon-frequency uint                                            
+      --mac-settings.desired-max-duty-cycle string                                            allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192
+      --mac-settings.desired-max-eirp string                                                  allowed values: DEVICE_EIRP_10, DEVICE_EIRP_12, DEVICE_EIRP_13, DEVICE_EIRP_14, DEVICE_EIRP_16, DEVICE_EIRP_18, DEVICE_EIRP_20, DEVICE_EIRP_21, DEVICE_EIRP_24, DEVICE_EIRP_26, DEVICE_EIRP_27, DEVICE_EIRP_29, DEVICE_EIRP_30, DEVICE_EIRP_33, DEVICE_EIRP_36, DEVICE_EIRP_8
+      --mac-settings.desired-ping-slot-data-rate-index string                                 allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --mac-settings.desired-ping-slot-frequency uint                                         
+      --mac-settings.desired-rx1-data-rate-offset string                                      allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7
+      --mac-settings.desired-rx1-delay string                                                 allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9
+      --mac-settings.desired-rx2-data-rate-index string                                       allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --mac-settings.desired-rx2-frequency uint                                               
+      --mac-settings.factory-preset-frequencies uints                                          (default [])
+      --mac-settings.max-duty-cycle string                                                    allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192
+      --mac-settings.ping-slot-data-rate-index string                                         allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --mac-settings.ping-slot-frequency uint                                                 
+      --mac-settings.ping-slot-periodicity string                                             allowed values: PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S
+      --mac-settings.resets-f-cnt                                                             
+      --mac-settings.rx1-data-rate-offset string                                              allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7
+      --mac-settings.rx1-delay string                                                         allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9
+      --mac-settings.rx2-data-rate-index string                                               allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --mac-settings.rx2-frequency uint                                                       
+      --mac-settings.status-count-periodicity uint32                                          
+      --mac-settings.status-time-periodicity duration                                         (1h2m3s)
+      --mac-settings.supports-32-bit-f-cnt                                                    
+      --mac-settings.use-adr                                                                  
+      --mac-state.current-parameters.adr-ack-delay-exponent string                            allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192
+      --mac-state.current-parameters.adr-ack-limit-exponent string                            allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192
+      --mac-state.current-parameters.adr-data-rate-index string                               allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --mac-state.current-parameters.adr-nb-trans uint32                                      
+      --mac-state.current-parameters.adr-tx-power-index uint32                                
+      --mac-state.current-parameters.beacon-frequency uint                                    
+      --mac-state.current-parameters.downlink-dwell-time                                      
+      --mac-state.current-parameters.max-duty-cycle string                                    allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192
+      --mac-state.current-parameters.max-eirp float32                                         
+      --mac-state.current-parameters.ping-slot-data-rate-index-value string                   allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --mac-state.current-parameters.ping-slot-frequency uint                                 
+      --mac-state.current-parameters.rejoin-count-periodicity string                          allowed values: REJOIN_COUNT_1024, REJOIN_COUNT_128, REJOIN_COUNT_131072, REJOIN_COUNT_16, REJOIN_COUNT_16384, REJOIN_COUNT_2048, REJOIN_COUNT_256, REJOIN_COUNT_262144, REJOIN_COUNT_32, REJOIN_COUNT_32768, REJOIN_COUNT_4096, REJOIN_COUNT_512, REJOIN_COUNT_524288, REJOIN_COUNT_64, REJOIN_COUNT_65536, REJOIN_COUNT_8192
+      --mac-state.current-parameters.rejoin-time-periodicity string                           allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9
+      --mac-state.current-parameters.rx1-data-rate-offset string                              allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7
+      --mac-state.current-parameters.rx1-delay string                                         allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9
+      --mac-state.current-parameters.rx2-data-rate-index string                               allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --mac-state.current-parameters.rx2-frequency uint                                       
+      --mac-state.current-parameters.uplink-dwell-time                                        
+      --mac-state.desired-parameters.adr-ack-delay-exponent string                            allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192
+      --mac-state.desired-parameters.adr-ack-limit-exponent string                            allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192
+      --mac-state.desired-parameters.adr-data-rate-index string                               allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --mac-state.desired-parameters.adr-nb-trans uint32                                      
+      --mac-state.desired-parameters.adr-tx-power-index uint32                                
+      --mac-state.desired-parameters.beacon-frequency uint                                    
+      --mac-state.desired-parameters.downlink-dwell-time                                      
+      --mac-state.desired-parameters.max-duty-cycle string                                    allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192
+      --mac-state.desired-parameters.max-eirp float32                                         
+      --mac-state.desired-parameters.ping-slot-data-rate-index-value string                   allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --mac-state.desired-parameters.ping-slot-frequency uint                                 
+      --mac-state.desired-parameters.rejoin-count-periodicity string                          allowed values: REJOIN_COUNT_1024, REJOIN_COUNT_128, REJOIN_COUNT_131072, REJOIN_COUNT_16, REJOIN_COUNT_16384, REJOIN_COUNT_2048, REJOIN_COUNT_256, REJOIN_COUNT_262144, REJOIN_COUNT_32, REJOIN_COUNT_32768, REJOIN_COUNT_4096, REJOIN_COUNT_512, REJOIN_COUNT_524288, REJOIN_COUNT_64, REJOIN_COUNT_65536, REJOIN_COUNT_8192
+      --mac-state.desired-parameters.rejoin-time-periodicity string                           allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9
+      --mac-state.desired-parameters.rx1-data-rate-offset string                              allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7
+      --mac-state.desired-parameters.rx1-delay string                                         allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9
+      --mac-state.desired-parameters.rx2-data-rate-index string                               allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --mac-state.desired-parameters.rx2-frequency uint                                       
+      --mac-state.desired-parameters.uplink-dwell-time                                        
+      --mac-state.device-class string                                                         allowed values: CLASS_A, CLASS_B, CLASS_C
+      --mac-state.last-adr-change-f-cnt-up uint32                                             
+      --mac-state.last-confirmed-downlink-at string                                           (YYYY-MM-DDTHH:MM:SSZ)
+      --mac-state.last-dev-status-f-cnt-up uint32                                             
+      --mac-state.last-downlink-at string                                                     (YYYY-MM-DDTHH:MM:SSZ)
+      --mac-state.last-network-initiated-downlink-at string                                   (YYYY-MM-DDTHH:MM:SSZ)
+      --mac-state.lorawan-version string                                                      allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.1, 1.1.0, MAC_UNKNOWN, MAC_V1_0, MAC_V1_0_1, MAC_V1_0_2, MAC_V1_0_3, MAC_V1_0_4, MAC_V1_1, unknown
+      --mac-state.pending-application-downlink.class-b-c.absolute-time string                 (YYYY-MM-DDTHH:MM:SSZ)
+      --mac-state.pending-application-downlink.class-b-c.gateways strings                     
+      --mac-state.pending-application-downlink.confirmed                                      
+      --mac-state.pending-application-downlink.correlation-ids strings                        
+      --mac-state.pending-application-downlink.f-cnt uint32                                   
+      --mac-state.pending-application-downlink.f-port uint32                                  
+      --mac-state.pending-application-downlink.frm-payload string                             (hex)
+      --mac-state.pending-application-downlink.priority string                                allowed values: ABOVE_NORMAL, BELOW_NORMAL, HIGH, HIGHEST, LOW, LOWEST, NORMAL
+      --mac-state.pending-application-downlink.session-key-id string                          (hex)
+      --mac-state.ping-slot-periodicity string                                                allowed values: PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S
+      --mac-state.rejected-adr-data-rate-indexes strings                                      allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --mac-state.rejected-adr-tx-power-indexes uints                                          (default [])
+      --mac-state.rejected-frequencies uints                                                   (default [])
+      --mac-state.rx-windows-available                                                        
+      --mapping-key string                                                                    
+      --max-frequency uint                                                                    
+      --min-frequency uint                                                                    
+      --multicast                                                                             
+      --name string                                                                           
+      --net-id string                                                                         (hex)
+      --network-server-address string                                                         
+      --network-server-kek-label string                                                       
+      --pending-mac-state.current-parameters.adr-ack-delay-exponent string                    allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192
+      --pending-mac-state.current-parameters.adr-ack-limit-exponent string                    allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192
+      --pending-mac-state.current-parameters.adr-data-rate-index string                       allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --pending-mac-state.current-parameters.adr-nb-trans uint32                              
+      --pending-mac-state.current-parameters.adr-tx-power-index uint32                        
+      --pending-mac-state.current-parameters.beacon-frequency uint                            
+      --pending-mac-state.current-parameters.downlink-dwell-time                              
+      --pending-mac-state.current-parameters.max-duty-cycle string                            allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192
+      --pending-mac-state.current-parameters.max-eirp float32                                 
+      --pending-mac-state.current-parameters.ping-slot-data-rate-index-value string           allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --pending-mac-state.current-parameters.ping-slot-frequency uint                         
+      --pending-mac-state.current-parameters.rejoin-count-periodicity string                  allowed values: REJOIN_COUNT_1024, REJOIN_COUNT_128, REJOIN_COUNT_131072, REJOIN_COUNT_16, REJOIN_COUNT_16384, REJOIN_COUNT_2048, REJOIN_COUNT_256, REJOIN_COUNT_262144, REJOIN_COUNT_32, REJOIN_COUNT_32768, REJOIN_COUNT_4096, REJOIN_COUNT_512, REJOIN_COUNT_524288, REJOIN_COUNT_64, REJOIN_COUNT_65536, REJOIN_COUNT_8192
+      --pending-mac-state.current-parameters.rejoin-time-periodicity string                   allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9
+      --pending-mac-state.current-parameters.rx1-data-rate-offset string                      allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7
+      --pending-mac-state.current-parameters.rx1-delay string                                 allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9
+      --pending-mac-state.current-parameters.rx2-data-rate-index string                       allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --pending-mac-state.current-parameters.rx2-frequency uint                               
+      --pending-mac-state.current-parameters.uplink-dwell-time                                
+      --pending-mac-state.desired-parameters.adr-ack-delay-exponent string                    allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192
+      --pending-mac-state.desired-parameters.adr-ack-limit-exponent string                    allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192
+      --pending-mac-state.desired-parameters.adr-data-rate-index string                       allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --pending-mac-state.desired-parameters.adr-nb-trans uint32                              
+      --pending-mac-state.desired-parameters.adr-tx-power-index uint32                        
+      --pending-mac-state.desired-parameters.beacon-frequency uint                            
+      --pending-mac-state.desired-parameters.downlink-dwell-time                              
+      --pending-mac-state.desired-parameters.max-duty-cycle string                            allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192
+      --pending-mac-state.desired-parameters.max-eirp float32                                 
+      --pending-mac-state.desired-parameters.ping-slot-data-rate-index-value string           allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --pending-mac-state.desired-parameters.ping-slot-frequency uint                         
+      --pending-mac-state.desired-parameters.rejoin-count-periodicity string                  allowed values: REJOIN_COUNT_1024, REJOIN_COUNT_128, REJOIN_COUNT_131072, REJOIN_COUNT_16, REJOIN_COUNT_16384, REJOIN_COUNT_2048, REJOIN_COUNT_256, REJOIN_COUNT_262144, REJOIN_COUNT_32, REJOIN_COUNT_32768, REJOIN_COUNT_4096, REJOIN_COUNT_512, REJOIN_COUNT_524288, REJOIN_COUNT_64, REJOIN_COUNT_65536, REJOIN_COUNT_8192
+      --pending-mac-state.desired-parameters.rejoin-time-periodicity string                   allowed values: REJOIN_TIME_0, REJOIN_TIME_1, REJOIN_TIME_10, REJOIN_TIME_11, REJOIN_TIME_12, REJOIN_TIME_13, REJOIN_TIME_14, REJOIN_TIME_15, REJOIN_TIME_2, REJOIN_TIME_3, REJOIN_TIME_4, REJOIN_TIME_5, REJOIN_TIME_6, REJOIN_TIME_7, REJOIN_TIME_8, REJOIN_TIME_9
+      --pending-mac-state.desired-parameters.rx1-data-rate-offset string                      allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7
+      --pending-mac-state.desired-parameters.rx1-delay string                                 allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9
+      --pending-mac-state.desired-parameters.rx2-data-rate-index string                       allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --pending-mac-state.desired-parameters.rx2-frequency uint                               
+      --pending-mac-state.desired-parameters.uplink-dwell-time                                
+      --pending-mac-state.device-class string                                                 allowed values: CLASS_A, CLASS_B, CLASS_C
+      --pending-mac-state.last-adr-change-f-cnt-up uint32                                     
+      --pending-mac-state.last-confirmed-downlink-at string                                   (YYYY-MM-DDTHH:MM:SSZ)
+      --pending-mac-state.last-dev-status-f-cnt-up uint32                                     
+      --pending-mac-state.last-downlink-at string                                             (YYYY-MM-DDTHH:MM:SSZ)
+      --pending-mac-state.last-network-initiated-downlink-at string                           (YYYY-MM-DDTHH:MM:SSZ)
+      --pending-mac-state.lorawan-version string                                              allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.1, 1.1.0, MAC_UNKNOWN, MAC_V1_0, MAC_V1_0_1, MAC_V1_0_2, MAC_V1_0_3, MAC_V1_0_4, MAC_V1_1, unknown
+      --pending-mac-state.pending-join-request.cf-list.ch-masks bools                          (default [])
+      --pending-mac-state.pending-join-request.cf-list.freq uints                              (default [])
+      --pending-mac-state.pending-join-request.cf-list.type string                            allowed values: CHANNEL_MASKS, FREQUENCIES
+      --pending-mac-state.pending-join-request.downlink-settings.opt-neg                      
+      --pending-mac-state.pending-join-request.downlink-settings.rx1-dr-offset string         allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7
+      --pending-mac-state.pending-join-request.downlink-settings.rx2-dr string                allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --pending-mac-state.pending-join-request.rx-delay string                                allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9
+      --pending-mac-state.ping-slot-periodicity string                                        allowed values: PING_EVERY_128S, PING_EVERY_16S, PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_32S, PING_EVERY_4S, PING_EVERY_64S, PING_EVERY_8S
+      --pending-mac-state.queued-join-accept.correlation-ids strings                          
+      --pending-mac-state.queued-join-accept.dev-addr string                                  (hex)
+      --pending-mac-state.queued-join-accept.keys.app-s-key.encrypted-key string              (hex)
+      --pending-mac-state.queued-join-accept.keys.app-s-key.kek-label string                  
+      --pending-mac-state.queued-join-accept.keys.app-s-key.key string                        (hex)
+      --pending-mac-state.queued-join-accept.keys.f-nwk-s-int-key.key string                  (hex)
+      --pending-mac-state.queued-join-accept.keys.nwk-s-enc-key.key string                    (hex)
+      --pending-mac-state.queued-join-accept.keys.s-nwk-s-int-key.key string                  (hex)
+      --pending-mac-state.queued-join-accept.keys.session-key-id string                       (hex)
+      --pending-mac-state.queued-join-accept.net-id string                                    (hex)
+      --pending-mac-state.queued-join-accept.payload string                                   (hex)
+      --pending-mac-state.queued-join-accept.request.cf-list.ch-masks bools                    (default [])
+      --pending-mac-state.queued-join-accept.request.cf-list.freq uints                        (default [])
+      --pending-mac-state.queued-join-accept.request.cf-list.type string                      allowed values: CHANNEL_MASKS, FREQUENCIES
+      --pending-mac-state.queued-join-accept.request.downlink-settings.opt-neg                
+      --pending-mac-state.queued-join-accept.request.downlink-settings.rx1-dr-offset string   allowed values: 0, 1, 2, 3, 4, 5, 6, 7, DATA_RATE_OFFSET_0, DATA_RATE_OFFSET_1, DATA_RATE_OFFSET_2, DATA_RATE_OFFSET_3, DATA_RATE_OFFSET_4, DATA_RATE_OFFSET_5, DATA_RATE_OFFSET_6, DATA_RATE_OFFSET_7
+      --pending-mac-state.queued-join-accept.request.downlink-settings.rx2-dr string          allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --pending-mac-state.queued-join-accept.request.rx-delay string                          allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9
+      --pending-mac-state.rejected-adr-data-rate-indexes strings                              allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --pending-mac-state.rejected-adr-tx-power-indexes uints                                  (default [])
+      --pending-mac-state.rejected-frequencies uints                                           (default [])
+      --pending-mac-state.rx-windows-available                                                
+      --pending-session.dev-addr string                                                       (hex)
+      --pending-session.keys.f-nwk-s-int-key.key string                                       (hex)
+      --pending-session.keys.nwk-s-enc-key.key string                                         (hex)
+      --pending-session.keys.s-nwk-s-int-key.key string                                       (hex)
+      --pending-session.keys.session-key-id string                                            (hex)
+      --provisioner-id string                                                                 
+      --resets-join-nonces                                                                    
+      --root-keys.app-key.key string                                                          (hex)
+      --root-keys.nwk-key.key string                                                          (hex)
+      --root-keys.root-key-id string                                                          
+      --service-profile-id string                                                             
+      --session.dev-addr string                                                               (hex)
+      --session.keys.app-s-key.key string                                                     (hex)
+      --session.keys.f-nwk-s-int-key.key string                                               (hex)
+      --session.keys.nwk-s-enc-key.key string                                                 (hex)
+      --session.keys.s-nwk-s-int-key.key string                                               (hex)
+      --session.keys.session-key-id string                                                    (hex)
+      --session.last-a-f-cnt-down uint32                                                      
+      --session.last-conf-f-cnt-down uint32                                                   
+      --session.last-f-cnt-up uint32                                                          
+      --session.last-n-f-cnt-down uint32                                                      
+      --session.started-at string                                                             (YYYY-MM-DDTHH:MM:SSZ)
+      --skip-payload-crypto                                                                   
+      --skip-payload-crypto-override                                                          
+      --supports-class-b                                                                      
+      --supports-class-c                                                                      
+      --supports-join                                                                         
+      --used-dev-nonces uints                                                                  (default [])
+      --version-ids.band-id string                                                            
+      --version-ids.brand-id string                                                           
+      --version-ids.firmware-version string                                                   
+      --version-ids.hardware-version string                                                   
+      --version-ids.model-id string                                                           
+```
+
+### Options inherited from parent commands
+
+```
+      --allow-unknown-hosts                             Allow sending credentials to unknown hosts
+      --application-server-enabled                      Application Server enabled (default true)
+      --application-server-grpc-address string          Application Server address (default "localhost:8884")
+      --ca string                                       CA certificate file
+  -c, --config strings                                  Location of the config files (default [.ttn-lw-cli.yml,$HOME/.ttn-lw-cli.yml,$HOME/Library/Application Support/.ttn-lw-cli.yml])
+      --credentials-id string                           Credentials ID (if using multiple configurations)
+      --device-claiming-server-grpc-address string      Device Claiming Server address (default "localhost:8884")
+      --device-template-converter-grpc-address string   Device Template Converter address (default "localhost:8884")
+      --dump-requests                                   When log level is set to debug, also dump request payload as JSON
+      --gateway-server-enabled                          Gateway Server enabled (default true)
+      --gateway-server-grpc-address string              Gateway Server address (default "localhost:8884")
+      --identity-server-grpc-address string             Identity Server address (default "localhost:8884")
+      --input-format string                             Input format (default "json")
+      --insecure                                        Connect without TLS
+      --join-server-enabled                             Join Server enabled (default true)
+      --join-server-grpc-address string                 Join Server address (default "localhost:8884")
+      --log.format string                               Log format to write (console, json) (default "console")
+      --log.level string                                The minimum level log messages must have to be shown (default "info")
+      --network-server-enabled                          Network Server enabled (default true)
+      --network-server-grpc-address string              Network Server address (default "localhost:8884")
+      --oauth-server-address string                     OAuth Server address (default "https://localhost/oauth")
+      --output-format string                            Output format (default "json")
+      --packet-broker-agent-grpc-address string         Packet Broker Agent address (default "localhost:8884")
+      --qr-code-generator-grpc-address string           QR Code Generator address (default "localhost:8884")
+      --skip-version-check                              Do not perform version checks
+```
+
+### SEE ALSO
+
+* [ttn-lw-cli templates]({{< relref "ttn-lw-cli_templates" >}})	 - End Device template commands
+

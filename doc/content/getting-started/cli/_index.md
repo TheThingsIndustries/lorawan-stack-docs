@@ -12,6 +12,6 @@ You can use the CLI on your local machine and on the server.
 
 For a complete list of CLI commands, see the [CLI reference]({{< ref "reference/cli" >}}).
 
-For troubleshooting common CLI errors, see the [Troubleshooting CLI]({{< ref "reference/cli/troubleshooting" >}}) section.
+For troubleshooting common CLI errors, see the [Troubleshooting CLI]({{< relref "troubleshooting" >}}) section.
 
 {{< note >}} If you need help with any CLI command, use the `--help` flag to get a list of subcommands, flags and their description and aliases. {{</ note >}}

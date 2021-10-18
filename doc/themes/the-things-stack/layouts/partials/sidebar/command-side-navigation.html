@@ -1,0 +1,50 @@
+{{ $currentPage := . }}
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Command-line Interface</h2>
+
+{{- range .Site.Data.commands }}
+  {{ range . }}
+  {{ template "details" dict "ctx" . "cP" $currentPage "cmd" .path }}
+  {{ end }}
+{{- end }}
+
+{{ define "details" }}
+  {{ $ctx := .ctx}}
+  {{ $cP := .cP }}
+  {{ $cmd := .cmd }}
+  {{ $replace := replace $ctx.path " " "_" }}
+  {{ $r := printf "%s/%s" $cmd $replace }}
+  {{ $short := index (last 1 (split $ctx.path " ")) 0 }}
+  <details>
+    <summary class="{{ if not $ctx.subCommands }}no-arrow{{ end }}">
+      {{ if not (eq $ctx.path $cP.Title) }}
+      <a href="{{ ref $cP $r }}">{{ $short }}
+      </a>
+      {{ else }}
+      <span class=is-active>{{ $short }}</span>
+      {{ end }}
+    </summary>
+    {{ with $ctx.subCommands }}
+      {{ range . }}
+        {{ template "details" dict "ctx" . "cP" $cP "cmd" $cmd }}
+      {{ end }}
+    {{ end }}
+  </details>
+{{ end }}
+</nav>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      function expandParentDetail(element){
+        let closest = element.closest("details")
+        if(closest) {
+          closest.open = true;
+          expandParentDetail(closest.parentNode)
+        }
+      }
+      let active = document.querySelector("span.is-active")
+      if (active) expandParentDetail(active)
+    });
+</script>

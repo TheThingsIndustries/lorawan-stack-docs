@@ -1,0 +1,340 @@
+---
+title: "ttn-lw-cli end-devices reset"
+slug: ttn-lw-cli_end-devices_reset
+type: "commands"
+---
+
+## ttn-lw-cli end-devices reset
+
+Reset state of an end device to factory defaults
+
+```
+ttn-lw-cli end-devices reset [application-id] [device-id] [flags]
+```
+
+### Options
+
+```
+      --activated-at                                                                   select the activated_at field
+      --all                                                                            select all end devices fields
+      --application-id string                                                          
+      --application-server-address                                                     select the application_server_address field
+      --application-server-id                                                          select the application_server_id field
+      --application-server-kek-label                                                   select the application_server_kek_label field
+      --attributes                                                                     select the attributes field
+      --battery-percentage                                                             select the battery_percentage field
+      --claim-authentication-code                                                      select the claim_authentication_code field and all allowed sub-fields
+      --claim-authentication-code.valid-from                                           select the claim_authentication_code.valid_from field
+      --claim-authentication-code.valid-to                                             select the claim_authentication_code.valid_to field
+      --claim-authentication-code.value                                                select the claim_authentication_code.value field
+      --description                                                                    select the description field
+      --dev-eui string                                                                 (hex)
+      --device-id string                                                               
+      --downlink-margin                                                                select the downlink_margin field
+      --formatters                                                                     select the formatters field and all allowed sub-fields
+      --formatters.down-formatter                                                      select the formatters.down_formatter field
+      --formatters.down-formatter-parameter                                            select the formatters.down_formatter_parameter field
+      --formatters.up-formatter                                                        select the formatters.up_formatter field
+      --formatters.up-formatter-parameter                                              select the formatters.up_formatter_parameter field
+      --frequency-plan-id                                                              select the frequency_plan_id field
+  -h, --help                                                                           help for reset
+      --join-eui string                                                                (hex)
+      --join-server-address                                                            select the join_server_address field
+      --last-dev-nonce                                                                 select the last_dev_nonce field
+      --last-dev-status-received-at                                                    select the last_dev_status_received_at field
+      --last-join-nonce                                                                select the last_join_nonce field
+      --last-rj-count-0                                                                select the last_rj_count_0 field
+      --last-rj-count-1                                                                select the last_rj_count_1 field
+      --locations                                                                      select the locations field
+      --lorawan-phy-version                                                            select the lorawan_phy_version field
+      --lorawan-version                                                                select the lorawan_version field
+      --mac-settings                                                                   select the mac_settings field and all allowed sub-fields
+      --mac-settings.adr-margin                                                        select the mac_settings.adr_margin field
+      --mac-settings.beacon-frequency                                                  select the mac_settings.beacon_frequency field
+      --mac-settings.class-b-c-downlink-interval                                       select the mac_settings.class_b_c_downlink_interval field
+      --mac-settings.class-b-timeout                                                   select the mac_settings.class_b_timeout field
+      --mac-settings.class-c-timeout                                                   select the mac_settings.class_c_timeout field
+      --mac-settings.desired-adr-ack-delay-exponent                                    select the mac_settings.desired_adr_ack_delay_exponent field
+      --mac-settings.desired-adr-ack-limit-exponent                                    select the mac_settings.desired_adr_ack_limit_exponent field
+      --mac-settings.desired-beacon-frequency                                          select the mac_settings.desired_beacon_frequency field
+      --mac-settings.desired-max-duty-cycle                                            select the mac_settings.desired_max_duty_cycle field
+      --mac-settings.desired-max-eirp                                                  select the mac_settings.desired_max_eirp field
+      --mac-settings.desired-ping-slot-data-rate-index                                 select the mac_settings.desired_ping_slot_data_rate_index field
+      --mac-settings.desired-ping-slot-frequency                                       select the mac_settings.desired_ping_slot_frequency field
+      --mac-settings.desired-rx1-data-rate-offset                                      select the mac_settings.desired_rx1_data_rate_offset field
+      --mac-settings.desired-rx1-delay                                                 select the mac_settings.desired_rx1_delay field
+      --mac-settings.desired-rx2-data-rate-index                                       select the mac_settings.desired_rx2_data_rate_index field
+      --mac-settings.desired-rx2-frequency                                             select the mac_settings.desired_rx2_frequency field
+      --mac-settings.factory-preset-frequencies                                        select the mac_settings.factory_preset_frequencies field
+      --mac-settings.max-duty-cycle                                                    select the mac_settings.max_duty_cycle field
+      --mac-settings.ping-slot-data-rate-index                                         select the mac_settings.ping_slot_data_rate_index field
+      --mac-settings.ping-slot-frequency                                               select the mac_settings.ping_slot_frequency field
+      --mac-settings.ping-slot-periodicity                                             select the mac_settings.ping_slot_periodicity field
+      --mac-settings.resets-f-cnt                                                      select the mac_settings.resets_f_cnt field
+      --mac-settings.rx1-data-rate-offset                                              select the mac_settings.rx1_data_rate_offset field
+      --mac-settings.rx1-delay                                                         select the mac_settings.rx1_delay field
+      --mac-settings.rx2-data-rate-index                                               select the mac_settings.rx2_data_rate_index field
+      --mac-settings.rx2-frequency                                                     select the mac_settings.rx2_frequency field
+      --mac-settings.status-count-periodicity                                          select the mac_settings.status_count_periodicity field
+      --mac-settings.status-time-periodicity                                           select the mac_settings.status_time_periodicity field
+      --mac-settings.supports-32-bit-f-cnt                                             select the mac_settings.supports_32_bit_f_cnt field
+      --mac-settings.use-adr                                                           select the mac_settings.use_adr field
+      --mac-state                                                                      select the mac_state field and all allowed sub-fields
+      --mac-state.current-parameters                                                   select the mac_state.current_parameters field and all allowed sub-fields
+      --mac-state.current-parameters.adr-ack-delay-exponent                            select the mac_state.current_parameters.adr_ack_delay_exponent field
+      --mac-state.current-parameters.adr-ack-limit-exponent                            select the mac_state.current_parameters.adr_ack_limit_exponent field
+      --mac-state.current-parameters.adr-data-rate-index                               select the mac_state.current_parameters.adr_data_rate_index field
+      --mac-state.current-parameters.adr-nb-trans                                      select the mac_state.current_parameters.adr_nb_trans field
+      --mac-state.current-parameters.adr-tx-power-index                                select the mac_state.current_parameters.adr_tx_power_index field
+      --mac-state.current-parameters.beacon-frequency                                  select the mac_state.current_parameters.beacon_frequency field
+      --mac-state.current-parameters.channels                                          select the mac_state.current_parameters.channels field
+      --mac-state.current-parameters.downlink-dwell-time                               select the mac_state.current_parameters.downlink_dwell_time field
+      --mac-state.current-parameters.max-duty-cycle                                    select the mac_state.current_parameters.max_duty_cycle field
+      --mac-state.current-parameters.max-eirp                                          select the mac_state.current_parameters.max_eirp field
+      --mac-state.current-parameters.ping-slot-data-rate-index-value                   select the mac_state.current_parameters.ping_slot_data_rate_index_value field
+      --mac-state.current-parameters.ping-slot-frequency                               select the mac_state.current_parameters.ping_slot_frequency field
+      --mac-state.current-parameters.rejoin-count-periodicity                          select the mac_state.current_parameters.rejoin_count_periodicity field
+      --mac-state.current-parameters.rejoin-time-periodicity                           select the mac_state.current_parameters.rejoin_time_periodicity field
+      --mac-state.current-parameters.rx1-data-rate-offset                              select the mac_state.current_parameters.rx1_data_rate_offset field
+      --mac-state.current-parameters.rx1-delay                                         select the mac_state.current_parameters.rx1_delay field
+      --mac-state.current-parameters.rx2-data-rate-index                               select the mac_state.current_parameters.rx2_data_rate_index field
+      --mac-state.current-parameters.rx2-frequency                                     select the mac_state.current_parameters.rx2_frequency field
+      --mac-state.current-parameters.uplink-dwell-time                                 select the mac_state.current_parameters.uplink_dwell_time field
+      --mac-state.desired-parameters                                                   select the mac_state.desired_parameters field and all allowed sub-fields
+      --mac-state.desired-parameters.adr-ack-delay-exponent                            select the mac_state.desired_parameters.adr_ack_delay_exponent field
+      --mac-state.desired-parameters.adr-ack-limit-exponent                            select the mac_state.desired_parameters.adr_ack_limit_exponent field
+      --mac-state.desired-parameters.adr-data-rate-index                               select the mac_state.desired_parameters.adr_data_rate_index field
+      --mac-state.desired-parameters.adr-nb-trans                                      select the mac_state.desired_parameters.adr_nb_trans field
+      --mac-state.desired-parameters.adr-tx-power-index                                select the mac_state.desired_parameters.adr_tx_power_index field
+      --mac-state.desired-parameters.beacon-frequency                                  select the mac_state.desired_parameters.beacon_frequency field
+      --mac-state.desired-parameters.channels                                          select the mac_state.desired_parameters.channels field
+      --mac-state.desired-parameters.downlink-dwell-time                               select the mac_state.desired_parameters.downlink_dwell_time field
+      --mac-state.desired-parameters.max-duty-cycle                                    select the mac_state.desired_parameters.max_duty_cycle field
+      --mac-state.desired-parameters.max-eirp                                          select the mac_state.desired_parameters.max_eirp field
+      --mac-state.desired-parameters.ping-slot-data-rate-index-value                   select the mac_state.desired_parameters.ping_slot_data_rate_index_value field
+      --mac-state.desired-parameters.ping-slot-frequency                               select the mac_state.desired_parameters.ping_slot_frequency field
+      --mac-state.desired-parameters.rejoin-count-periodicity                          select the mac_state.desired_parameters.rejoin_count_periodicity field
+      --mac-state.desired-parameters.rejoin-time-periodicity                           select the mac_state.desired_parameters.rejoin_time_periodicity field
+      --mac-state.desired-parameters.rx1-data-rate-offset                              select the mac_state.desired_parameters.rx1_data_rate_offset field
+      --mac-state.desired-parameters.rx1-delay                                         select the mac_state.desired_parameters.rx1_delay field
+      --mac-state.desired-parameters.rx2-data-rate-index                               select the mac_state.desired_parameters.rx2_data_rate_index field
+      --mac-state.desired-parameters.rx2-frequency                                     select the mac_state.desired_parameters.rx2_frequency field
+      --mac-state.desired-parameters.uplink-dwell-time                                 select the mac_state.desired_parameters.uplink_dwell_time field
+      --mac-state.device-class                                                         select the mac_state.device_class field
+      --mac-state.last-adr-change-f-cnt-up                                             select the mac_state.last_adr_change_f_cnt_up field
+      --mac-state.last-confirmed-downlink-at                                           select the mac_state.last_confirmed_downlink_at field
+      --mac-state.last-dev-status-f-cnt-up                                             select the mac_state.last_dev_status_f_cnt_up field
+      --mac-state.last-downlink-at                                                     select the mac_state.last_downlink_at field
+      --mac-state.last-network-initiated-downlink-at                                   select the mac_state.last_network_initiated_downlink_at field
+      --mac-state.lorawan-version                                                      select the mac_state.lorawan_version field
+      --mac-state.pending-application-downlink                                         select the mac_state.pending_application_downlink field and all allowed sub-fields
+      --mac-state.pending-application-downlink.class-b-c                               select the mac_state.pending_application_downlink.class_b_c field and all allowed sub-fields
+      --mac-state.pending-application-downlink.class-b-c.absolute-time                 select the mac_state.pending_application_downlink.class_b_c.absolute_time field
+      --mac-state.pending-application-downlink.class-b-c.gateways                      select the mac_state.pending_application_downlink.class_b_c.gateways field
+      --mac-state.pending-application-downlink.confirmed                               select the mac_state.pending_application_downlink.confirmed field
+      --mac-state.pending-application-downlink.correlation-ids                         select the mac_state.pending_application_downlink.correlation_ids field
+      --mac-state.pending-application-downlink.f-cnt                                   select the mac_state.pending_application_downlink.f_cnt field
+      --mac-state.pending-application-downlink.f-port                                  select the mac_state.pending_application_downlink.f_port field
+      --mac-state.pending-application-downlink.frm-payload                             select the mac_state.pending_application_downlink.frm_payload field
+      --mac-state.pending-application-downlink.priority                                select the mac_state.pending_application_downlink.priority field
+      --mac-state.pending-application-downlink.session-key-id                          select the mac_state.pending_application_downlink.session_key_id field
+      --mac-state.pending-requests                                                     select the mac_state.pending_requests field
+      --mac-state.ping-slot-periodicity                                                select the mac_state.ping_slot_periodicity field
+      --mac-state.queued-responses                                                     select the mac_state.queued_responses field
+      --mac-state.recent-downlinks                                                     select the mac_state.recent_downlinks field
+      --mac-state.recent-uplinks                                                       select the mac_state.recent_uplinks field
+      --mac-state.rejected-adr-data-rate-indexes                                       select the mac_state.rejected_adr_data_rate_indexes field
+      --mac-state.rejected-adr-tx-power-indexes                                        select the mac_state.rejected_adr_tx_power_indexes field
+      --mac-state.rejected-data-rate-ranges                                            select the mac_state.rejected_data_rate_ranges field
+      --mac-state.rejected-frequencies                                                 select the mac_state.rejected_frequencies field
+      --mac-state.rx-windows-available                                                 select the mac_state.rx_windows_available field
+      --max-frequency                                                                  select the max_frequency field
+      --min-frequency                                                                  select the min_frequency field
+      --multicast                                                                      select the multicast field
+      --name                                                                           select the name field
+      --net-id                                                                         select the net_id field
+      --network-server-address                                                         select the network_server_address field
+      --network-server-kek-label                                                       select the network_server_kek_label field
+      --pending-mac-state                                                              select the pending_mac_state field and all allowed sub-fields
+      --pending-mac-state.current-parameters                                           select the pending_mac_state.current_parameters field and all allowed sub-fields
+      --pending-mac-state.current-parameters.adr-ack-delay-exponent                    select the pending_mac_state.current_parameters.adr_ack_delay_exponent field
+      --pending-mac-state.current-parameters.adr-ack-limit-exponent                    select the pending_mac_state.current_parameters.adr_ack_limit_exponent field
+      --pending-mac-state.current-parameters.adr-data-rate-index                       select the pending_mac_state.current_parameters.adr_data_rate_index field
+      --pending-mac-state.current-parameters.adr-nb-trans                              select the pending_mac_state.current_parameters.adr_nb_trans field
+      --pending-mac-state.current-parameters.adr-tx-power-index                        select the pending_mac_state.current_parameters.adr_tx_power_index field
+      --pending-mac-state.current-parameters.beacon-frequency                          select the pending_mac_state.current_parameters.beacon_frequency field
+      --pending-mac-state.current-parameters.channels                                  select the pending_mac_state.current_parameters.channels field
+      --pending-mac-state.current-parameters.downlink-dwell-time                       select the pending_mac_state.current_parameters.downlink_dwell_time field
+      --pending-mac-state.current-parameters.max-duty-cycle                            select the pending_mac_state.current_parameters.max_duty_cycle field
+      --pending-mac-state.current-parameters.max-eirp                                  select the pending_mac_state.current_parameters.max_eirp field
+      --pending-mac-state.current-parameters.ping-slot-data-rate-index-value           select the pending_mac_state.current_parameters.ping_slot_data_rate_index_value field
+      --pending-mac-state.current-parameters.ping-slot-frequency                       select the pending_mac_state.current_parameters.ping_slot_frequency field
+      --pending-mac-state.current-parameters.rejoin-count-periodicity                  select the pending_mac_state.current_parameters.rejoin_count_periodicity field
+      --pending-mac-state.current-parameters.rejoin-time-periodicity                   select the pending_mac_state.current_parameters.rejoin_time_periodicity field
+      --pending-mac-state.current-parameters.rx1-data-rate-offset                      select the pending_mac_state.current_parameters.rx1_data_rate_offset field
+      --pending-mac-state.current-parameters.rx1-delay                                 select the pending_mac_state.current_parameters.rx1_delay field
+      --pending-mac-state.current-parameters.rx2-data-rate-index                       select the pending_mac_state.current_parameters.rx2_data_rate_index field
+      --pending-mac-state.current-parameters.rx2-frequency                             select the pending_mac_state.current_parameters.rx2_frequency field
+      --pending-mac-state.current-parameters.uplink-dwell-time                         select the pending_mac_state.current_parameters.uplink_dwell_time field
+      --pending-mac-state.desired-parameters                                           select the pending_mac_state.desired_parameters field and all allowed sub-fields
+      --pending-mac-state.desired-parameters.adr-ack-delay-exponent                    select the pending_mac_state.desired_parameters.adr_ack_delay_exponent field
+      --pending-mac-state.desired-parameters.adr-ack-limit-exponent                    select the pending_mac_state.desired_parameters.adr_ack_limit_exponent field
+      --pending-mac-state.desired-parameters.adr-data-rate-index                       select the pending_mac_state.desired_parameters.adr_data_rate_index field
+      --pending-mac-state.desired-parameters.adr-nb-trans                              select the pending_mac_state.desired_parameters.adr_nb_trans field
+      --pending-mac-state.desired-parameters.adr-tx-power-index                        select the pending_mac_state.desired_parameters.adr_tx_power_index field
+      --pending-mac-state.desired-parameters.beacon-frequency                          select the pending_mac_state.desired_parameters.beacon_frequency field
+      --pending-mac-state.desired-parameters.channels                                  select the pending_mac_state.desired_parameters.channels field
+      --pending-mac-state.desired-parameters.downlink-dwell-time                       select the pending_mac_state.desired_parameters.downlink_dwell_time field
+      --pending-mac-state.desired-parameters.max-duty-cycle                            select the pending_mac_state.desired_parameters.max_duty_cycle field
+      --pending-mac-state.desired-parameters.max-eirp                                  select the pending_mac_state.desired_parameters.max_eirp field
+      --pending-mac-state.desired-parameters.ping-slot-data-rate-index-value           select the pending_mac_state.desired_parameters.ping_slot_data_rate_index_value field
+      --pending-mac-state.desired-parameters.ping-slot-frequency                       select the pending_mac_state.desired_parameters.ping_slot_frequency field
+      --pending-mac-state.desired-parameters.rejoin-count-periodicity                  select the pending_mac_state.desired_parameters.rejoin_count_periodicity field
+      --pending-mac-state.desired-parameters.rejoin-time-periodicity                   select the pending_mac_state.desired_parameters.rejoin_time_periodicity field
+      --pending-mac-state.desired-parameters.rx1-data-rate-offset                      select the pending_mac_state.desired_parameters.rx1_data_rate_offset field
+      --pending-mac-state.desired-parameters.rx1-delay                                 select the pending_mac_state.desired_parameters.rx1_delay field
+      --pending-mac-state.desired-parameters.rx2-data-rate-index                       select the pending_mac_state.desired_parameters.rx2_data_rate_index field
+      --pending-mac-state.desired-parameters.rx2-frequency                             select the pending_mac_state.desired_parameters.rx2_frequency field
+      --pending-mac-state.desired-parameters.uplink-dwell-time                         select the pending_mac_state.desired_parameters.uplink_dwell_time field
+      --pending-mac-state.device-class                                                 select the pending_mac_state.device_class field
+      --pending-mac-state.last-adr-change-f-cnt-up                                     select the pending_mac_state.last_adr_change_f_cnt_up field
+      --pending-mac-state.last-confirmed-downlink-at                                   select the pending_mac_state.last_confirmed_downlink_at field
+      --pending-mac-state.last-dev-status-f-cnt-up                                     select the pending_mac_state.last_dev_status_f_cnt_up field
+      --pending-mac-state.last-downlink-at                                             select the pending_mac_state.last_downlink_at field
+      --pending-mac-state.last-network-initiated-downlink-at                           select the pending_mac_state.last_network_initiated_downlink_at field
+      --pending-mac-state.lorawan-version                                              select the pending_mac_state.lorawan_version field
+      --pending-mac-state.pending-join-request                                         select the pending_mac_state.pending_join_request field and all allowed sub-fields
+      --pending-mac-state.pending-join-request.cf-list                                 select the pending_mac_state.pending_join_request.cf_list field and all allowed sub-fields
+      --pending-mac-state.pending-join-request.cf-list.ch-masks                        select the pending_mac_state.pending_join_request.cf_list.ch_masks field
+      --pending-mac-state.pending-join-request.cf-list.freq                            select the pending_mac_state.pending_join_request.cf_list.freq field
+      --pending-mac-state.pending-join-request.cf-list.type                            select the pending_mac_state.pending_join_request.cf_list.type field
+      --pending-mac-state.pending-join-request.downlink-settings                       select the pending_mac_state.pending_join_request.downlink_settings field and all allowed sub-fields
+      --pending-mac-state.pending-join-request.downlink-settings.opt-neg               select the pending_mac_state.pending_join_request.downlink_settings.opt_neg field
+      --pending-mac-state.pending-join-request.downlink-settings.rx1-dr-offset         select the pending_mac_state.pending_join_request.downlink_settings.rx1_dr_offset field
+      --pending-mac-state.pending-join-request.downlink-settings.rx2-dr                select the pending_mac_state.pending_join_request.downlink_settings.rx2_dr field
+      --pending-mac-state.pending-join-request.rx-delay                                select the pending_mac_state.pending_join_request.rx_delay field
+      --pending-mac-state.ping-slot-periodicity                                        select the pending_mac_state.ping_slot_periodicity field
+      --pending-mac-state.queued-join-accept                                           select the pending_mac_state.queued_join_accept field and all allowed sub-fields
+      --pending-mac-state.queued-join-accept.correlation-ids                           select the pending_mac_state.queued_join_accept.correlation_ids field
+      --pending-mac-state.queued-join-accept.dev-addr                                  select the pending_mac_state.queued_join_accept.dev_addr field
+      --pending-mac-state.queued-join-accept.keys                                      select the pending_mac_state.queued_join_accept.keys field and all allowed sub-fields
+      --pending-mac-state.queued-join-accept.keys.app-s-key                            select the pending_mac_state.queued_join_accept.keys.app_s_key field and all allowed sub-fields
+      --pending-mac-state.queued-join-accept.keys.app-s-key.encrypted-key              select the pending_mac_state.queued_join_accept.keys.app_s_key.encrypted_key field
+      --pending-mac-state.queued-join-accept.keys.app-s-key.kek-label                  select the pending_mac_state.queued_join_accept.keys.app_s_key.kek_label field
+      --pending-mac-state.queued-join-accept.keys.app-s-key.key                        select the pending_mac_state.queued_join_accept.keys.app_s_key.key field
+      --pending-mac-state.queued-join-accept.keys.f-nwk-s-int-key                      select the pending_mac_state.queued_join_accept.keys.f_nwk_s_int_key field and all allowed sub-fields
+      --pending-mac-state.queued-join-accept.keys.f-nwk-s-int-key.key                  select the pending_mac_state.queued_join_accept.keys.f_nwk_s_int_key.key field
+      --pending-mac-state.queued-join-accept.keys.nwk-s-enc-key                        select the pending_mac_state.queued_join_accept.keys.nwk_s_enc_key field and all allowed sub-fields
+      --pending-mac-state.queued-join-accept.keys.nwk-s-enc-key.key                    select the pending_mac_state.queued_join_accept.keys.nwk_s_enc_key.key field
+      --pending-mac-state.queued-join-accept.keys.s-nwk-s-int-key                      select the pending_mac_state.queued_join_accept.keys.s_nwk_s_int_key field and all allowed sub-fields
+      --pending-mac-state.queued-join-accept.keys.s-nwk-s-int-key.key                  select the pending_mac_state.queued_join_accept.keys.s_nwk_s_int_key.key field
+      --pending-mac-state.queued-join-accept.keys.session-key-id                       select the pending_mac_state.queued_join_accept.keys.session_key_id field
+      --pending-mac-state.queued-join-accept.net-id                                    select the pending_mac_state.queued_join_accept.net_id field
+      --pending-mac-state.queued-join-accept.payload                                   select the pending_mac_state.queued_join_accept.payload field
+      --pending-mac-state.queued-join-accept.request                                   select the pending_mac_state.queued_join_accept.request field and all allowed sub-fields
+      --pending-mac-state.queued-join-accept.request.cf-list                           select the pending_mac_state.queued_join_accept.request.cf_list field and all allowed sub-fields
+      --pending-mac-state.queued-join-accept.request.cf-list.ch-masks                  select the pending_mac_state.queued_join_accept.request.cf_list.ch_masks field
+      --pending-mac-state.queued-join-accept.request.cf-list.freq                      select the pending_mac_state.queued_join_accept.request.cf_list.freq field
+      --pending-mac-state.queued-join-accept.request.cf-list.type                      select the pending_mac_state.queued_join_accept.request.cf_list.type field
+      --pending-mac-state.queued-join-accept.request.downlink-settings                 select the pending_mac_state.queued_join_accept.request.downlink_settings field and all allowed sub-fields
+      --pending-mac-state.queued-join-accept.request.downlink-settings.opt-neg         select the pending_mac_state.queued_join_accept.request.downlink_settings.opt_neg field
+      --pending-mac-state.queued-join-accept.request.downlink-settings.rx1-dr-offset   select the pending_mac_state.queued_join_accept.request.downlink_settings.rx1_dr_offset field
+      --pending-mac-state.queued-join-accept.request.downlink-settings.rx2-dr          select the pending_mac_state.queued_join_accept.request.downlink_settings.rx2_dr field
+      --pending-mac-state.queued-join-accept.request.rx-delay                          select the pending_mac_state.queued_join_accept.request.rx_delay field
+      --pending-mac-state.recent-downlinks                                             select the pending_mac_state.recent_downlinks field
+      --pending-mac-state.recent-uplinks                                               select the pending_mac_state.recent_uplinks field
+      --pending-mac-state.rejected-adr-data-rate-indexes                               select the pending_mac_state.rejected_adr_data_rate_indexes field
+      --pending-mac-state.rejected-adr-tx-power-indexes                                select the pending_mac_state.rejected_adr_tx_power_indexes field
+      --pending-mac-state.rejected-data-rate-ranges                                    select the pending_mac_state.rejected_data_rate_ranges field
+      --pending-mac-state.rejected-frequencies                                         select the pending_mac_state.rejected_frequencies field
+      --pending-mac-state.rx-windows-available                                         select the pending_mac_state.rx_windows_available field
+      --pending-session                                                                select the pending_session field and all allowed sub-fields
+      --pending-session.dev-addr                                                       select the pending_session.dev_addr field
+      --pending-session.keys                                                           select the pending_session.keys field and all allowed sub-fields
+      --pending-session.keys.app-s-key                                                 select the pending_session.keys.app_s_key field and all allowed sub-fields
+      --pending-session.keys.app-s-key.key                                             select the pending_session.keys.app_s_key.key field
+      --pending-session.keys.f-nwk-s-int-key                                           select the pending_session.keys.f_nwk_s_int_key field and all allowed sub-fields
+      --pending-session.keys.f-nwk-s-int-key.key                                       select the pending_session.keys.f_nwk_s_int_key.key field
+      --pending-session.keys.nwk-s-enc-key                                             select the pending_session.keys.nwk_s_enc_key field and all allowed sub-fields
+      --pending-session.keys.nwk-s-enc-key.key                                         select the pending_session.keys.nwk_s_enc_key.key field
+      --pending-session.keys.s-nwk-s-int-key                                           select the pending_session.keys.s_nwk_s_int_key field and all allowed sub-fields
+      --pending-session.keys.s-nwk-s-int-key.key                                       select the pending_session.keys.s_nwk_s_int_key.key field
+      --pending-session.keys.session-key-id                                            select the pending_session.keys.session_key_id field
+      --pending-session.last-a-f-cnt-down                                              select the pending_session.last_a_f_cnt_down field
+      --picture                                                                        select the picture field
+      --power-state                                                                    select the power_state field
+      --provisioner-id                                                                 select the provisioner_id field
+      --provisioning-data                                                              select the provisioning_data field and all allowed sub-fields
+      --resets-join-nonces                                                             select the resets_join_nonces field
+      --root-keys                                                                      select the root_keys field and all allowed sub-fields
+      --root-keys.app-key                                                              select the root_keys.app_key field and all allowed sub-fields
+      --root-keys.app-key.key                                                          select the root_keys.app_key.key field
+      --root-keys.nwk-key                                                              select the root_keys.nwk_key field and all allowed sub-fields
+      --root-keys.nwk-key.key                                                          select the root_keys.nwk_key.key field
+      --root-keys.root-key-id                                                          select the root_keys.root_key_id field
+      --service-profile-id                                                             select the service_profile_id field
+      --session                                                                        select the session field and all allowed sub-fields
+      --session.dev-addr                                                               select the session.dev_addr field
+      --session.keys                                                                   select the session.keys field and all allowed sub-fields
+      --session.keys.app-s-key                                                         select the session.keys.app_s_key field and all allowed sub-fields
+      --session.keys.app-s-key.key                                                     select the session.keys.app_s_key.key field
+      --session.keys.f-nwk-s-int-key                                                   select the session.keys.f_nwk_s_int_key field and all allowed sub-fields
+      --session.keys.f-nwk-s-int-key.key                                               select the session.keys.f_nwk_s_int_key.key field
+      --session.keys.nwk-s-enc-key                                                     select the session.keys.nwk_s_enc_key field and all allowed sub-fields
+      --session.keys.nwk-s-enc-key.key                                                 select the session.keys.nwk_s_enc_key.key field
+      --session.keys.s-nwk-s-int-key                                                   select the session.keys.s_nwk_s_int_key field and all allowed sub-fields
+      --session.keys.s-nwk-s-int-key.key                                               select the session.keys.s_nwk_s_int_key.key field
+      --session.keys.session-key-id                                                    select the session.keys.session_key_id field
+      --session.last-a-f-cnt-down                                                      select the session.last_a_f_cnt_down field
+      --session.last-conf-f-cnt-down                                                   select the session.last_conf_f_cnt_down field
+      --session.last-f-cnt-up                                                          select the session.last_f_cnt_up field
+      --session.last-n-f-cnt-down                                                      select the session.last_n_f_cnt_down field
+      --session.started-at                                                             select the session.started_at field
+      --skip-payload-crypto                                                            select the skip_payload_crypto field
+      --skip-payload-crypto-override                                                   select the skip_payload_crypto_override field
+      --supports-class-b                                                               select the supports_class_b field
+      --supports-class-c                                                               select the supports_class_c field
+      --supports-join                                                                  select the supports_join field
+      --used-dev-nonces                                                                select the used_dev_nonces field
+      --version-ids                                                                    select the version_ids field and all allowed sub-fields
+      --version-ids.band-id                                                            select the version_ids.band_id field
+      --version-ids.brand-id                                                           select the version_ids.brand_id field
+      --version-ids.firmware-version                                                   select the version_ids.firmware_version field
+      --version-ids.hardware-version                                                   select the version_ids.hardware_version field
+      --version-ids.model-id                                                           select the version_ids.model_id field
+```
+
+### Options inherited from parent commands
+
+```
+      --allow-unknown-hosts                             Allow sending credentials to unknown hosts
+      --application-server-enabled                      Application Server enabled (default true)
+      --application-server-grpc-address string          Application Server address (default "localhost:8884")
+      --ca string                                       CA certificate file
+  -c, --config strings                                  Location of the config files (default [.ttn-lw-cli.yml,$HOME/.ttn-lw-cli.yml,$HOME/Library/Application Support/.ttn-lw-cli.yml])
+      --credentials-id string                           Credentials ID (if using multiple configurations)
+      --device-claiming-server-grpc-address string      Device Claiming Server address (default "localhost:8884")
+      --device-template-converter-grpc-address string   Device Template Converter address (default "localhost:8884")
+      --dump-requests                                   When log level is set to debug, also dump request payload as JSON
+      --gateway-server-enabled                          Gateway Server enabled (default true)
+      --gateway-server-grpc-address string              Gateway Server address (default "localhost:8884")
+      --identity-server-grpc-address string             Identity Server address (default "localhost:8884")
+      --input-format string                             Input format (default "json")
+      --insecure                                        Connect without TLS
+      --join-server-enabled                             Join Server enabled (default true)
+      --join-server-grpc-address string                 Join Server address (default "localhost:8884")
+      --log.format string                               Log format to write (console, json) (default "console")
+      --log.level string                                The minimum level log messages must have to be shown (default "info")
+      --network-server-enabled                          Network Server enabled (default true)
+      --network-server-grpc-address string              Network Server address (default "localhost:8884")
+      --oauth-server-address string                     OAuth Server address (default "https://localhost/oauth")
+      --output-format string                            Output format (default "json")
+      --packet-broker-agent-grpc-address string         Packet Broker Agent address (default "localhost:8884")
+      --qr-code-generator-grpc-address string           QR Code Generator address (default "localhost:8884")
+      --skip-version-check                              Do not perform version checks
+```
+
+### SEE ALSO
+
+* [ttn-lw-cli end-devices]({{< relref "ttn-lw-cli_end-devices" >}})	 - End Device commands
+
