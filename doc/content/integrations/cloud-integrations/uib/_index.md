@@ -14,7 +14,7 @@ aliases: []
 1. A WhatsApp Business Account.
 2. The content of the notification message which you need to send to the customer has to be submitted and approved by WhatsApp, before it can be used.
 
-{{< info >}} Please send an email to [info@uib.ai](mailto:info@uib.ai) with your company details, Facebook Business Manager ID and an approximate number of messages you want to send per month. UIB's support team will respond you back with the pricing and the steps to proceed. {{</ info >}}
+{{< note >}} Please send an email to [info@uib.ai](mailto:info@uib.ai) with your company details, Facebook Business Manager ID and an approximate number of messages you want to send per month. UIB's support team will respond you back with the pricing and the steps to proceed. {{</ note >}}
 
 {{< note >}} Please note that the template/notification name, name space, access key, etc. will be provided once the notification message content is approved by WhatsApp. {{</ note >}}
 

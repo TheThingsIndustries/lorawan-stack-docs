@@ -7,7 +7,7 @@ aliases: "/getting-started/migrating-from-networks/device-json"
 
 {{% tts %}} allows you to import end devices from {{% ttnv2 %}}, ChirpStack and other LoRaWAN networks using a JSON file describing those devices.
 
-{{< info >}} Using JSON file with device descriptions, you can migrate end devices with or without their existing sessions. {{</ info >}}
+{{< note >}} Using JSON file with device descriptions, you can migrate end devices with or without their existing sessions. {{</ note >}}
 
 Here is an example of an OTAA device description in the `devices.json` file:
 

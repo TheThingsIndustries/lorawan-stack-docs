@@ -27,7 +27,7 @@ To make the gateway location public, tick the **Gateway location &#8594; Public*
 
 If your gateway is already added in {{% tts %}} Console, go to your gateway's settings, navigate to the **Location** tab on the left hand menu and tick the **Privacy &#8594; Publish location** box. {{</ note >}}
 
-{{< info >}} Using Semtech's [Modem-E firmware](https://lora-developers.semtech.com/library/tech-papers-and-guides/understanding-lora-basics-modem-e/) is recommended for LR1110-based devices, hence using the [LoRa Cloud Device & Application Services integration]({{< ref "/integrations/lora-cloud/das" >}}) instead of LoRa Cloud Geolocation is also recommended. {{</ info >}}
+{{< note >}} Using Semtech's [Modem-E firmware](https://lora-developers.semtech.com/library/tech-papers-and-guides/understanding-lora-basics-modem-e/) is recommended for LR1110-based devices, hence using the [LoRa Cloud Device & Application Services integration]({{< ref "/integrations/lora-cloud/das" >}}) instead of LoRa Cloud Geolocation is also recommended. {{</ note >}}
 
 ## LoRa Cloud Setup
 
@@ -51,11 +51,11 @@ Next, copy one of the aforementioned tokens from LoRa Cloud Geolocation portal. 
 
 Choose the **Query type** depending on the type of data you want to use for estimating the location of your device. As mentioned earlier, you can choose **LoRa TOA/RSSI**, **GNSS** or **TOA/WiFi** query type.
 
-{{< info >}} If you choose **LoRa TOA/RSSI**, you also have an option to enable **Multiframe** location lookups.
+{{< note >}} If you choose **LoRa TOA/RSSI**, you also have an option to enable **Multiframe** location lookups.
 
 Multiframe mode allows using the sequence of radio frames (instead of just a single frame) to improve the device's location estimation accuracy. Multiframe mode is reported to be more accurate than averaging multiple location results calculated from several single radio frames.
 
-If you choose multiframe mode, you can also set the **Multiframe window size** to tell how many historical messages should be sent as part of the final request, and **Multiframe time window** as the maximum age of considered historical messages. {{</ info >}}
+If you choose multiframe mode, you can also set the **Multiframe window size** to tell how many historical messages should be sent as part of the final request, and **Multiframe time window** as the maximum age of considered historical messages. {{</ note >}}
 
 Finish by clicking the **Set token** button.
 
