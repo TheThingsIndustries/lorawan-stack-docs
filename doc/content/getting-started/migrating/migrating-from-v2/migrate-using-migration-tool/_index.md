@@ -16,7 +16,7 @@ This section refers to migrating end devices to {{% tts %}} using [`ttn-lw-migra
 
 ## Configure the Environment
 
-First, you need to configure a few environmental variables. Navigate to the folder where you installed `ttn-lw-migrate` and execute:
+First, you need to configure a few environmental variables. Navigate to the folder where you installed `ttn-lw-migrate` and execute the following, replacing `ttn-v2-application-ID`, `ttn-v2-application-access-key`, and the `FREQUENCY_PLAN_ID` value:
 
 ```bash
 $ export TTNV2_APP_ID="ttn-v2-application-ID"
@@ -24,7 +24,7 @@ $ export TTNV2_APP_ACCESS_KEY="ttn-v2-application-access-key"
 $ export FREQUENCY_PLAN_ID="EU_863_870_TTN"
 ```
 
-{{< note >}} Change the `FREQUENCY_PLAN_ID` value to the frequency plan you are using. See the list of [supported Frequency Plans]({{< ref "/reference/frequency-plans" >}}). {{</ note >}}
+{{< note >}} See the list of [supported Frequency Plans]({{< ref "/reference/frequency-plans" >}}). {{</ note >}}
 
 If using Windows OS Command Prompt, replace `export` with `set` and remove the double-quotes in commands above:
 

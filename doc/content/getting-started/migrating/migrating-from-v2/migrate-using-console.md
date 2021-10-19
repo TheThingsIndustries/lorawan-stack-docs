@@ -4,31 +4,21 @@ description: ""
 weight: 2
 ---
 
-This section refers to migrating end devices to {{% tts %}} by using [{{% tts %}} Console]({{< ref "/getting-started/console" >}}).
+This section describes migrating end devices to {{% tts %}} by using [{{% tts %}} Console]({{< ref "/getting-started/console" >}}).
 
 <!--more-->
 
-Migrating your end devices using {{% tts %}} Console is easy, but it is convenient only if you have an intention of migrating few devices. 
-
-{{< note >}} This method comes down to adding end devices in {{% tts %}} Console one by one, and it is not possible to migrate groups of devices using Console only.
-
-It is possible to import groups of devices using {{% tts %}} Console, but that would require the usage of `ttn-lw-migrate` tool to export those devices from {{% ttnv2 %}}, which is already addressed in [Migrate using the Migration Tool]({{< ref "/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool"  >}}) guide. {{</ note >}}
-
-{{< note >}} Migrating active sessions using {{% tts %}} Console **only** is not fully achievable. You can migrate the device from {{% ttnv2 %}} to {{% tts %}} using the Console, but you will need `ttn-lw-migrate` tool to export session-related parameters (like session keys, frame counters, etc.) from {{% ttnv2 %}} to a [JSON file]({{< ref "/getting-started/migrating/device-json" >}}). You can later [import this file in {{% tts %}}]({{< ref "/getting-started/migrating/import-devices" >}}) using {{% tts %}} Console, or the CLI. That approach would be a combination of the migration methods described in this documentation, but for the sake of simplicity, and the fact that migrating active sessions is not recommended, we will not devote too much attention to it.
-
-Therefore, this section implies migrating devices without active sessions, as that can be fully achieved with using only {{% tts %}} Console. {{</ note >}}
+Migrating your end devices using {{% tts %}} Console is simple, but devices must be migrated one-by-one, so it is convenient only for migrating a few devices. 
 
 Follow the steps below to migrate your end device from {{% ttnv2 %}} to {{% tts %}} by using the Console.
 
+{{< note >}} It is not possible to migrate groups of devices, or to migrate devices with active sessions, using the Console only. To import groups of devices, or learn to export device sessions, see [Migrate using the Migration Tool]({{< ref "/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool"  >}}) guide. {{</ note >}}
+
 ## Add an End Device in {{% tts %}}
 
-The first step is to add your end device in {{% tts %}}. 
+The first step is to add your end device in {{% tts %}}. See [Adding Devices]({{< ref "/devices/adding-devices" >}}) section for more details on adding devices in {{% tts %}}.
 
-> See [Adding Devices]({{< ref "/devices/adding-devices" >}}) section for more details on adding devices in {{% tts %}}.
-
-In general, there are two ways to add devices in {{% tts %}} Console - **Manually** and via the **LoRaWAN Device Repository**. Configuring settings for end devices depends on their type - OTAA or ABP. 
-
-{{< note >}} We strongly recommend using OTAA over ABP. Read [why using OTAA is better than ABP]({{< ref "/devices/abp-vs-otaa" >}}). {{</ note >}}
+There are two ways to add devices in {{% tts %}} Console - **Manually** and via the **LoRaWAN Device Repository**. Configuring settings for end devices depends on their type - OTAA or ABP. We strongly recommend using OTAA over ABP. Read [why using OTAA is better than ABP]({{< ref "/devices/abp-vs-otaa" >}}).
 
 {{< tabs/container "OTAA" "ABP" >}}
 
@@ -79,11 +69,11 @@ If you want your end device traffic to be routed via Packet Broker to {{% tts %}
 
 If the existing **DevAddr** is not routable by the Packet Broker (i.e. you are not migrating from **The Things Industries V2** to **The Things Stack Cloud**), and/or **RX1 Delay** is different than 5 seconds (for {{% ttnv2 %}} the default is 1 second), you will need to auto-generate new **DevAddr** during device registration on {{% tts %}}, then re-program the device to assign it with that new **DevAddr** and **RX1 Delay** of 5 seconds. Otherwise, the traffic from your device will not be properly routed by the Packet Broker or will never reach your end device in time.
 
+Re-programming the ABP device to change **DevAddr** to the one issued by {{% tts %}} and **RX1 Delay** to 5 seconds is **recommended**. Re-programming the ABP device to do this might also be a good time to reconsider switching it to OTAA by flashing the firmware and adopting some [best practices]({{< ref "/devices/best-practices" >}}). [Check why using OTAA is recommended]({{< ref "/devices/abp-vs-otaa" >}}).
+
 If you do not want your traffic to be routed by the Packet Broker, i.e. you want to migrate your gateway to {{% tts %}} too, you do not have to re-program your device. You can keep the existing **DevAddr** and **RX1 Delay** of 1 second, and use these values when adding the device to {{% tts %}}. Be aware that if you are using a high-latency backhaul, keeping the **RX1 Delay** of 1 second might cause latency issues.
 
 The **NwkSKey** has to match the one used on {{% ttnv2 %}} if you are migrating an active ABP device session. If not, you can choose to keep the one used on {{% ttnv2 %}}, or to generate a new one in {{% tts %}} Console during the device registration process. {{</ note >}}
-
-{{< note >}} Note that re-programming the ABP device to change **DevAddr** to the one issued by {{% tts %}} and **RX1 Delay** to 5 seconds is **recommended**. Re-programming the ABP device to do this might also be a good time to reconsider switching it to OTAA by flashing the firmware and adopting some [best practices]({{< ref "/devices/best-practices" >}}). [Check why using OTAA is recommended]({{< ref "/devices/abp-vs-otaa" >}}). {{</ note >}}
 
 {{< /tabs/tab >}}
 
@@ -99,7 +89,7 @@ When your end device is registered in {{% tts %}}, it is necessary to prevent it
 
 {{< tabs/tab "OTAA" >}}
 
-To prevent OTAA device from re-joining {{% ttnv2 %}} network, the recommended practice is to change the **AppKey** in {{% ttnv2 %}}. By changing the **AppKey**, the existing session on {{% ttnv2 %}} will not be terminated yet, but the end device will not be able to re-join because {{% ttnv2 %}} cluster will reject its new Join Requests. 
+To prevent OTAA devices from re-joining {{% ttnv2 %}}, the recommended practice is to change the **AppKey** in {{% ttnv2 %}}. By changing the **AppKey**, the existing session on {{% ttnv2 %}} will not be terminated yet, but the end device will not be able to re-join because {{% ttnv2 %}} cluster will reject its new Join Requests. Swapping the last two bytes of the **AppKey** will prevent it from rejoining, and allow you to revert easily if you need to.
 
 ## Let the OTAA End Device Join {{% tts %}} Network
 
@@ -115,7 +105,7 @@ Some OTAA devices ocasionally perform new joins - with these end devices, you ca
 
 {{< tabs/tab "ABP" >}}
 
-{{< warning >}} For ABP device, you need to completely delete it from {{% ttnv2 %}}, especially if you have not re-programmed it for a new **DevAddr**. Having the device registered in both {{% ttnv2 %}} and {{% tts %}} would  introduce some serious conflicts. {{</ warning >}}
+ABP devices must be completely deleted from {{% ttnv2 %}}, especially if you have not re-programmed it for a new **DevAddr**. Having the device registered in both {{% ttnv2 %}} and {{% tts %}}  introduces serious conflicts, including race conditions for Joins and unpredictable, out-of-spec operation.
 
 {{< /tabs/tab >}}
 
@@ -135,11 +125,11 @@ Instead, these Join Requests are going to be routed to {{% tts %}} via Packet Br
 
 {{< tabs/tab "ABP" >}}
 
-ABP device does not perform the join procedure, so it does not get assigned with a new **DevAddr**, **RX1 Delay** and some other parameters like OTAA does (unless you re-program it). Instead, these values are hardcoded in the device itself. 
+ABP devices do not perform the join procedure, so they do not get assigned with a new **DevAddr**, **RX1 Delay** and some other parameters like OTAA devices do. These values must be coded in the device itself. 
 
 If you are not specifically migrating from **The Things Industries V2** to **{{% tts %}} Cloud**, your ABP device's **DevAddr** will not be routable by the Packet Broker. If the **RX1 Delay** of your device is not equal to 5 seconds, the device traffic will probably never reach {{% tts %}}. 
 
-If you want your traffic to be routed via Packet Broker, you will need to re-program your ABP device to use **DevAddr** issued by {{% tts %}} and **RX1 Delay** of 1 second. 
+If you want your traffic to be routed via Packet Broker, you will need to re-program your ABP device to use a **DevAddr** issued by {{% tts %}} and **RX1 Delay** of 5 seconds. 
 
 If you want to keep **DevAddr** and **RX1 Delay** as they were in {{% ttnv2 %}}, you will need to [migrate your gateway to {{% tts %}}]({{< ref "/getting-started/migrating/gateway-migration" >}}).
 
