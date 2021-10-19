@@ -10,12 +10,18 @@ This section explains how to login to {{% tts %}} using the command-line interfa
 
 The CLI needs to be logged on in order to create gateways, applications, devices and API keys. With {{% tts %}} running, login with the following command:
 
-{{< tabs/container "Open Source" "Enterprise" >}}
+{{< tabs/container "Cloud, Community Edition, and Open Source" "Enterprise" >}}
 
-{{< tabs/tab "Open Source" >}}
+{{< tabs/tab "Cloud, Community Edition, and Open Source" >}}
 
 ```bash
 $ ttn-lw-cli login
+```
+
+or on Windows:
+
+```bash
+$ ttn-lw-cli.exe login
 ```
 
 {{< /tabs/tab >}}
@@ -24,6 +30,12 @@ $ ttn-lw-cli login
 
 ```bash
 $ tti-lw-cli login
+```
+
+or on Windows:
+
+```bash
+$ tti-lw-cli.exe login
 ```
 
 {{< /tabs/tab >}}
