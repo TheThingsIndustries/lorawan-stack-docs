@@ -13,8 +13,8 @@ This section contains instructions for installing, configuring, and logging in w
 To use the CLI, you need to complete three steps:
 
 1. [Install the CLI]({{< relref "installing-cli" >}})
-2. [Configure the CLI]({{< relref "installing-cli" >}})
-3. [Login with the CLI]({{< relref "installing-cli" >}})
+2. [Configure the CLI]({{< relref "configuring-cli" >}})
+3. [Login with the CLI]({{< relref "login" >}})
 
 For a complete list of CLI commands, see the [CLI reference]({{< ref "reference/cli" >}}).
 
