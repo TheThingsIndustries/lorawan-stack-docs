@@ -209,8 +209,7 @@
 <h2 id="background">Background</h2>
 <p>Since The Things Stack communicates with gateways over the internet, a latency of transmitted messages is expected. This latency is not an issue for uplinks, but for downlinks, since the Rx windows are at specific intervals, the The Things Stack needs to be aware of network latency.</p>
 <p>For UDP gateways, the RTT is the time difference between the moment a downlink message was <strong>sent</strong> and the moment when a corresponding valid Tx ACK was <strong>received</strong>.</p>
-<p>For LoRa Basics™ Station
-gateways, the <code>RefTime</code> parameter that is sent on the Tx Confirmation message is used as the RTT. There are safeguards in place to make sure that a misbehaving gateway doesn&rsquo;t skew the RTT measurement. If the <code>RefTime</code> value is greater than 10 seconds, it is considered invalid.</p>
+<p>For LoRa Basics™ Station gateways, the <code>RefTime</code> parameter that is sent on the Tx Confirmation message is used as the RTT. There are safeguards in place to make sure that a misbehaving gateway doesn&rsquo;t skew the RTT measurement. If the <code>RefTime</code> value is greater than 10 seconds, it is considered invalid.</p>
 <h2 id="downlink-scheduling">Downlink Scheduling</h2>
 <p>The Gateway Server uses RTT values to adjust downlink time when scheduling downlinks. The Things Stack by default stores a maximum of 20 recent RTT entries. Also, only those that were recorded within the the last 30 mins are considered.</p>
 <p>When scheduling downlinks, if there are 5 or more RTT values that have been recorded in the last 30 mins, The Things Stack gets the 90th percentile value of these entries and uses that as the RTT. This value is then offset with either the gateway timestamp or the gateway absolute time (if the gateway has GPS) on the downlink that is scheduled.</p>

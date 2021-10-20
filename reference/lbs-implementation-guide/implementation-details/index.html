@@ -199,29 +199,22 @@
         </h1>
         
         <div class="content">
-          <p>This guide contains implementation details primarily for gateway manufacturers intending to implement the LoRa Basics™ Station
-protocol.</p>
+          <p>This guide contains implementation details primarily for gateway manufacturers intending to implement the LoRa Basics™ Station protocol.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The standard implementation of the LoRa Basics™ Station
-protocol found at the <a href="https://github.com/lorabasics/basicstation">Github page</a> is already compatible with the behaviour mentioned in this guide. Custom implementations must be aware of the following items and must ensure that these are accounted for.
+  The standard implementation of the LoRa Basics™ Station protocol found at the <a href="https://github.com/lorabasics/basicstation">Github page</a> is already compatible with the behaviour mentioned in this guide. Custom implementations must be aware of the following items and must ensure that these are accounted for.
 </div>
 
 <h2 id="downlink-scheduling">Downlink Scheduling</h2>
-<p>The Gateway Server component of The Things Stack contains a native downlink scheduler, that optimizes downlink capacity of gateways. Implementations of the LoRa Basics™ Station
-also contain a scheduler.
-The Things Stack prefers its own scheduler over the LoRa Basics™ Station
-scheduler for the following reasons:</p>
+<p>The Gateway Server component of The Things Stack contains a native downlink scheduler, that optimizes downlink capacity of gateways. Implementations of the LoRa Basics™ Station also contain a scheduler.
+The Things Stack prefers its own scheduler over the LoRa Basics™ Station scheduler for the following reasons:</p>
 <ul>
 <li>Only the The Things Stack has knowledge of all the possible downlink paths to a device via multiple gateways. An individual gateway has no knowledge of other gateways. If downlinks fail on a particular gateway, then the server will retry via a different gateway.</li>
 <li>Only the The Things Stack can effectively enforce duty cycling and make sure that gateways operate within regional limits. This prevents operators from manipulating gateways to circumvent regulations.</li>
 </ul>
-<p>The Things Stack enforces the use of its scheduler over the LoRa Basics™ Station
-scheduler by manipulating the downlink parameters.</p>
+<p>The Things Stack enforces the use of its scheduler over the LoRa Basics™ Station scheduler by manipulating the downlink parameters.</p>
 <h4 id="xtime">XTime</h4>
-<p>LoRa Basics™ Station
-uses the <a href="https://doc.sm.tc/station/tcproto.html#single-frame-downlink"><code>xtime</code></a> value to calculate the time a downlink is put on air. According to the LoRa Basics™ Station
-specification, the <code>xtime</code> value has to be echoed unchanged by the server to the gateway. However, The Things Stack  deviates from this expectation by manipulating the <code>xtime</code> to force the gateway to schedule downlinks based on the server&rsquo;s scheduler instead of the gateway scheduler.</p>
+<p>LoRa Basics™ Station uses the <a href="https://doc.sm.tc/station/tcproto.html#single-frame-downlink"><code>xtime</code></a> value to calculate the time a downlink is put on air. According to the LoRa Basics™ Station specification, the <code>xtime</code> value has to be echoed unchanged by the server to the gateway. However, The Things Stack  deviates from this expectation by manipulating the <code>xtime</code> to force the gateway to schedule downlinks based on the server&rsquo;s scheduler instead of the gateway scheduler.</p>
 <p>The <code>xtime</code> parameter is encoded as follows. The Things Stack only manipulates bits <code>47-0</code>, based on an internal clock that is maintained for each gateway. The rest of the upper bits are returned as-is.</p>
 <div class="fixed-table table-lbs-xtime">
 <table>
@@ -252,23 +245,17 @@ specification, the <code>xtime</code> value has to be echoed unchanged by the se
 </table>
 </div>
 <br>
-<p>Custom implementations of LoRa Basics™ Station
-working with The Things Stack must ensure that the <code>Session ID</code> bits (55-48) are never zero and take into account the fact that the bits 47-0 are modified.</p>
+<p>Custom implementations of LoRa Basics™ Station working with The Things Stack must ensure that the <code>Session ID</code> bits (55-48) are never zero and take into account the fact that the bits 47-0 are modified.</p>
 <h4 id="downlink-windows">Downlink Windows</h4>
-<p>LoRa Basics™ Station
-allows the server to provide both the RX1 and RX2 parameters of the downlink message, <a href="https://doc.sm.tc/station/tcproto.html#single-frame-downlink"><code>dnmsg</code></a>. This is so that the gateway can retry downlinks in RX2, if it failed in RX1. The Things Stack however only sets the RX1 values (<code>RX1DR</code> and <code>RX1Freq</code>), thereby forcing the gateway to schedule only once. Errors in scheduling and subsequent retries are handled in The Things Stack and not on the gateway. If The Things Stack wants to force the gateway to schedule in the RX2 window, it sends the RX2 parameters in the same RX1 fields of the <code>dnmsg</code> but offsets the downlink time (<code>xtime</code>) to make the gateway schedule in the correct window.</p>
-<p>Custom implementations of LoRa Basics™ Station
-working with The Things Stack only need to schedule downlink messages that are sent by the The Things Stack and let the latter handle retries and conflicts.</p>
+<p>LoRa Basics™ Station allows the server to provide both the RX1 and RX2 parameters of the downlink message, <a href="https://doc.sm.tc/station/tcproto.html#single-frame-downlink"><code>dnmsg</code></a>. This is so that the gateway can retry downlinks in RX2, if it failed in RX1. The Things Stack however only sets the RX1 values (<code>RX1DR</code> and <code>RX1Freq</code>), thereby forcing the gateway to schedule only once. Errors in scheduling and subsequent retries are handled in The Things Stack and not on the gateway. If The Things Stack wants to force the gateway to schedule in the RX2 window, it sends the RX2 parameters in the same RX1 fields of the <code>dnmsg</code> but offsets the downlink time (<code>xtime</code>) to make the gateway schedule in the correct window.</p>
+<p>Custom implementations of LoRa Basics™ Station working with The Things Stack only need to schedule downlink messages that are sent by the The Things Stack and let the latter handle retries and conflicts.</p>
 <h2 id="use-of-deveui-field-in-downlink-messages">Use of DevEui field in Downlink Messages</h2>
-<p>Gateways using the LoRa Basics™ Station
-protocol report the successful transmission of downlink messages via the Transmit Confirmation (<code>dntxed</code>) message. In order to correlate the confirmation message to a downlink, the LoRa Basics™ Station
-protocol provides two options to the LNS. The LNS is offered the flexibility to implement either of these mechanisms.</p>
+<p>Gateways using the LoRa Basics™ Station protocol report the successful transmission of downlink messages via the Transmit Confirmation (<code>dntxed</code>) message. In order to correlate the confirmation message to a downlink, the LoRa Basics™ Station protocol provides two options to the LNS. The LNS is offered the flexibility to implement either of these mechanisms.</p>
 <p>a. Using the <code>DevEui</code> and the <code>diid</code> fields</p>
 <ul>
 <li>In this mode, the LNS uses a per-device downlink counter. Gateways echo the <code>DevEui</code> and <code>diid</code> fields sent on the downlink message on the corresponding Transmit Confirmation message.</li>
 <li>The LNS then forwards the transmit confirmation upstream.</li>
-<li>This is useful for debugging using LoRa Basics™ Station
-gateway logs since the <code>DevEui</code> will be printed. However, this exposes the DevEui of end devices to gateways which is not desirable in cases where the gateway is not owned/operated by the device owner.</li>
+<li>This is useful for debugging using LoRa Basics™ Station gateway logs since the <code>DevEui</code> will be printed. However, this exposes the DevEui of end devices to gateways which is not desirable in cases where the gateway is not owned/operated by the device owner.</li>
 <li>The Things Stack does not use this method to correlate Transmit Confirmations.</li>
 </ul>
 <p>b. Using only the <code>diid</code> field</p>
