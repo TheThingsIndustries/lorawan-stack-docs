@@ -189,7 +189,7 @@ Currently, {{% tts %}} only supports [TLS Server Authentication and Client Token
 
 These are two different types of {{% lbs %}} connections. Since CUPS automatically also configures LNS, we recommend you configure CUPS and leave LNS blank.
 
-## Where can I learn more about {{% lbs %}}
+## Where can I learn more about {{% lbs %}}?
 
 **Gateway Demo**: https://www.youtube.com/watch?v=LGFFxPOuSJw
 
@@ -215,3 +215,7 @@ The gateway location is stored in the Identity Server instead. The updated locat
 >
 >```bash
 > curl -H "Authorization: Bearer <api-key>" https://example.thethings.com/api/v3/gateways/<gateway-id>?field_mask=antennas
+
+## When the connection on the main interface goes down, my gateway gets disconnected and it does not reconnect through the backup interface.
+
+Please try restarting your gateway's packet forwarder.
