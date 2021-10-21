@@ -9,6 +9,8 @@ Deployments may also have custom frequency plans configured.
 
 <!--more-->
 
+Read more about [Frequency Plans](https://www.thethingsnetwork.org/docs/lorawan/frequency-plans/) and see a list of [Frequency Plans by Country](https://www.thethingsnetwork.org/docs/lorawan/frequencies-by-country/).
+
 <!-- terms come from /data/frequency-plans. -->
 
 {{< frequency-plans >}}

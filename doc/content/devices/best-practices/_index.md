@@ -36,7 +36,7 @@ The duty cycle of radio devices is often regulated by government. If this is the
 
 For example, in Europe, duty cycles are regulated by section 7.2.3 of the ETSI EN300.220 standard.
 
-Additionally, the LoRaWAN specification dictates duty cycles for the join frequencies, the frequencies devices of all LoRaWAN-compliant devices use for over-the-air activation (OTAA). In most regions this duty cycle is set to 1%.
+Additionally, the LoRaWAN specification dictates duty cycles for the join frequencies, the frequencies devices of all LoRaWAN-compliant devices use for over-the-air activation (OTAA). In most regions this duty cycle is set to 1%. Learn more about duty cycles in [The Things Network LoRaWAN documentation](https://www.thethingsnetwork.org/docs/lorawan/duty-cycle/).
 
 ## Expect Packet Loss
 
@@ -80,7 +80,7 @@ For devices that don't move, the LoRaWAN specification recommends allowing the N
 
 For moving devices, ADR should not be used since RF conditions will likely change, but since many moving devices are temporarily stationary, it is possible to save additional power by requesting ADR only during the time a device is stationary. ([LoRaWAN Specification 1.0.3, line 438](https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf)).
 
-You may also use application specific knowledge to predict when ADR is appropriate. A tracking device can detect when it is moving, for example. A parked car sensor can detect when a parked car will affect RF conditions, and should fall back to another strategy. 
+You may also use application specific knowledge to predict when ADR is appropriate. A tracking device can detect when it is moving, for example. A parked car sensor can detect when a parked car will affect RF conditions, and should fall back to another strategy. [Learn more about how ADR is implemented in {{% tts %}}]({{< ref "/reference/adr" >}}).
 
 ## Use OTAA
 
@@ -94,7 +94,7 @@ Devices should also randomize initial power on delay (i.e. Join). See [Synchroni
 
 ## Frame Counters
 
-Devices must increment the frame counter after each uplink and downlink. Devices should use 32 bit counters for FCntUp and FCntDwn to prevent replay attacks.
+Devices must increment the frame counter after each uplink and downlink. Devices should use 32 bit counters for FCntUp and FCntDwn to prevent replay attacks. [Learn more about frame counters in The Things Network LoRaWAN documentation](https://www.thethingsnetwork.org/docs/lorawan/security/#frame-counters).
 
 ## Ack
 

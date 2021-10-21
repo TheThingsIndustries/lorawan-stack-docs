@@ -10,6 +10,8 @@ This guide shows how to enable or disable Class C for an and device, and how to 
 
 <!--more-->
 
+Read more about device classes in [The Things Network LoRaWAN documentation]](https://www.thethingsnetwork.org/docs/lorawan/classes/).
+
 ## Enabling and Disabling Class C
 
 In order to send Class C downlink messages to a single device, enable Class C support for the end device when creating or updating it with the `--supports-class-c` flag.

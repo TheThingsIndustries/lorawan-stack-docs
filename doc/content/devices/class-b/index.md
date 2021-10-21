@@ -8,6 +8,8 @@ Class B end devices listen for downlink messages during ping slots. This allows 
 
 <!--more-->
 
+Read more about device classes in [The Things Network LoRaWAN documentation](https://www.thethingsnetwork.org/docs/lorawan/classes/).
+
 ## Enabling and Disabling Class B
 
 In order to send Class B downlink messages to a single device, enable Class B support for the end device when creating or updating it with the `--supports-class-b` flag.
