@@ -9,6 +9,10 @@ This section contains instructions for adding Gateways in {{%tts%}}.
 
 <!--more-->
 
+{{< note >}}
+Some gateways, like [The Things Indoor Gateway]({{< ref "gateways/thethingsindoorgateway" >}}), have special instructions for claiming. Look for your gateway in the left hand menu for specific instructions, as this guide does not apply to those gateways.
+{{</ note >}}
+
 {{< tabs/container "Console" "CLI" >}}
 
 {{< tabs/tab "Console" >}}
