@@ -309,7 +309,7 @@ $ <span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer </sp
 <p>Currently, The Things Stack only supports <a href="https://doc.sm.tc/station/authmodes.html#tls-server-authentication-and-client-token">TLS Server Authentication and Client Token</a>. The gateway is authenticated using an HTTP header containing an API key generated in The Things Stack. See <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/cups/#configure-gateway">Configure CUPS</a> for instructions for setting this API key for CUPS.</p>
 <h2 id="should-i-set-cups-or-lns-credentials">Should I set CUPS or LNS credentials?</h2>
 <p>These are two different types of LoRa Basics™ Station connections. Since CUPS automatically also configures LNS, we recommend you configure CUPS and leave LNS blank.</p>
-<h2 id="where-can-i-learn-more-about-lora-basics-station">Where can I learn more about LoRa Basics™ Station</h2>
+<h2 id="where-can-i-learn-more-about-lora-basics-station">Where can I learn more about LoRa Basics™ Station?</h2>
 <p><strong>Gateway Demo</strong>: <a href="https://www.youtube.com/watch?v=LGFFxPOuSJw">https://www.youtube.com/watch?v=LGFFxPOuSJw</a></p>
 <p><strong>Official LoRa Basics™ Station documentation</strong>: <a href="https://doc.sm.tc/station/">https://doc.sm.tc/station/</a></p>
 <p><strong>Forum</strong>: <a href="https://www.thethingsnetwork.org/forum/">https://www.thethingsnetwork.org/forum/</a></p>
@@ -324,6 +324,8 @@ $ <span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer </sp
 <p>For example, you can query the location with:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl -H <span class="s2">&#34;Authorization: Bearer &lt;api-key&gt;&#34;</span> https://example.thethings.com/api/v3/gateways/&lt;gateway-id&gt;?field_mask<span class="o">=</span>antennas
 </code></pre></div></blockquote>
+<h2 id="when-the-connection-on-the-main-interface-goes-down-my-gateway-gets-disconnected-and-it-does-not-reconnect-through-the-backup-interface">When the connection on the main interface goes down, my gateway gets disconnected and it does not reconnect through the backup interface.</h2>
+<p>Please try restarting your gateway&rsquo;s packet forwarder.</p>
         </div>
         
           <div class="is-clearfix">
@@ -406,13 +408,16 @@ $ <span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer </sp
       <li><a href='#should-i-set-cups-or-lns-credentials'>Should I set CUPS or LNS credentials?</a></li>
     
       
-      <li><a href='#where-can-i-learn-more-about-lora-basics-station'>Where can I learn more about LoRa Basics™ Station</a></li>
+      <li><a href='#where-can-i-learn-more-about-lora-basics-station'>Where can I learn more about LoRa Basics™ Station?</a></li>
     
       
       <li><a href='#why-do-my-gateways-gps-location-details-not-show-in-the-things-stack-console'>Why do my gateway’s GPS location details not show in The Things Stack Console?</a></li>
     
       
       <li><a href='#i-set-the-gateway-location-manually-in-the-things-stack-console-why-cant-i-see-it-in-the-gateway-connection-statistics'>I set the gateway location manually in The Things Stack Console, why can’t I see it in the gateway connection statistics?</a></li>
+    
+      
+      <li><a href='#when-the-connection-on-the-main-interface-goes-down-my-gateway-gets-disconnected-and-it-does-not-reconnect-through-the-backup-interface'>When the connection on the main interface goes down, my gateway gets disconnected and it does not reconnect through the backup interface.</a></li>
     
   </ul>
 
@@ -452,10 +457,10 @@ $ <span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer </sp
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 11 Oct 2021.
+  Last changed by Nejra Selimović on 21 Oct 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3d290036eecb93577c1ee4d49d60f93a58b82fda">
-      doc: Create console troubleshooting (#591)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/e1b9ec2027c39781914aa10d80f79d317b316771">
+      doc: Add gateway troubleshooting entry (#629)
     </a>
 </p>
 
