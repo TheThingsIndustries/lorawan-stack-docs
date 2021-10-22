@@ -267,11 +267,12 @@ ttn-lw-cli end-devices create [application-id] [device-id] [flags]
       --application-server-enabled                      Application Server enabled (default true)
       --application-server-grpc-address string          Application Server address (default "localhost:8884")
       --ca string                                       CA certificate file
-  -c, --config strings                                  Location of the config files (default [.ttn-lw-cli.yml,$HOME/.ttn-lw-cli.yml,$HOME/Library/Application Support/.ttn-lw-cli.yml])
+  -c, --config strings                                  Location of the config files (default [.ttn-lw-cli.yml,$HOME/.ttn-lw-cli.yml,$HOME/.config/.ttn-lw-cli.yml])
       --credentials-id string                           Credentials ID (if using multiple configurations)
       --device-claiming-server-grpc-address string      Device Claiming Server address (default "localhost:8884")
       --device-template-converter-grpc-address string   Device Template Converter address (default "localhost:8884")
       --dump-requests                                   When log level is set to debug, also dump request payload as JSON
+      --experimental.features strings                   Experimental features to activate
       --gateway-server-enabled                          Gateway Server enabled (default true)
       --gateway-server-grpc-address string              Gateway Server address (default "localhost:8884")
       --identity-server-grpc-address string             Identity Server address (default "localhost:8884")
