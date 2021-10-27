@@ -8,7 +8,7 @@ This section explains how to export one or more of your end devices from {{% ttn
 
 <!--more-->
 
-{{< info >}} We strongly recommend migrating end devices without persisting active sessions. {{</ info >}}
+We strongly recommend migrating end devices without persisting active sessions.
 
 {{< tabs/container "OTAA" "ABP" >}}
 
@@ -96,9 +96,7 @@ To prevent OTAA device from re-joining the {{% ttnv2 %}} network, the recommende
 
 ## Import End Devices in {{% tts %}} Application
 
-Now that you have exported one or more of your devices to a `devices.json` file, you can continue by importing this file in {{% tts %}} via Console or via CLI.
-
-> See [Import End Devices in The Things Stack]({{< ref "/getting-started/migrating/import-devices" >}}) for detailed instructions on how to do this.
+Now that you have exported one or more of your devices to a `devices.json` file, you can continue by importing this file in {{% tts %}} via Console or via CLI. See [Import End Devices in The Things Stack]({{< ref "/getting-started/migrating/import-devices" >}}) for detailed instructions on how to do this.
 
 {{< tabs/container "OTAA" "ABP" >}}
 

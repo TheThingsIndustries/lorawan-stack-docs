@@ -35,7 +35,7 @@ Packet Broker routes uplink messages from Forwarders to Home Networks based on t
 
 > For example, a message with `DevAddr` `27ABCD12` has `NetID` `000013` (owned by The Things Network Foundation). The `DevAddr` block `27ABCD00` to `27ABCDFF` might be assigned to a private network `example-com`. That `DevAddr` block is noted as `27ABCD00/24`: 24 significant bits. Packet Broker identifies the Home Network then as `NetID` `000013` and tenant ID `example-com`.
 
-{{< info >}}The Things Network is identified by `NetID` is `000013` and tenant ID `ttn`.{{< /info >}}
+{{< note >}}The Things Network is identified by `NetID` is `000013` and tenant ID `ttn`.{{< /note >}}
 
 ### Routing Policies
 

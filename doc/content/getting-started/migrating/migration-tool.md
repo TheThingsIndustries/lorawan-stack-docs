@@ -66,4 +66,4 @@ $ ttn-lw-migrate sources
 
 Currently, supported sources are `ttnv2` and `chirpstack`.
 
-{{< info >}} For detailed instructions on migrating from {{% ttnv2 %}} and ChirpStack, read [Migrating End Devices from V2]({{< ref "/getting-started/migrating/migrating-from-v2" >}}) and [Migrating End Devices from ChirpStack]({{< ref "/getting-started/migrating/migrate-from-chirpstack" >}}) guides. {{</ info >}}
+{{< note >}} For detailed instructions on migrating from {{% ttnv2 %}} and ChirpStack, read [Migrating End Devices from V2]({{< ref "/getting-started/migrating/migrating-from-v2" >}}) and [Migrating End Devices from ChirpStack]({{< ref "/getting-started/migrating/migrate-from-chirpstack" >}}) guides. {{</ note >}}

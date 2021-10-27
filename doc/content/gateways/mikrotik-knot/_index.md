@@ -27,7 +27,7 @@ Create a gateway by following the instructions for [Adding Gateways]({{< ref "/g
 
 The MikroTik Routerboard exposes a WiFi Access Point (AP) with SSID `MikroTik-xxxxxx`, where `xxxxxx` are the last 6 digits of the device's MAC address. Use your PC, tablet or smartphone to connect to this AP. You will not need a password to connect to this AP. 
 
-{{< info >}} By opening your browser to `http://192.168.88.1/webfig` you will be able to access the RouterOS web interface and configure your gateway device. {{</ info >}}
+{{< note >}} By opening your browser to `http://192.168.88.1/webfig` you will be able to access the RouterOS web interface and configure your gateway device. {{</ note >}}
 
 ![MikroTik-portal.png](portal.png)
 

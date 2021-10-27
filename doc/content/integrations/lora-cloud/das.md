@@ -51,13 +51,13 @@ For LR1110 modem-based devices, location of the device can be estimated using Wi
 
 {{< note >}} Please keep in mind that this guide does not refer to  LoRa Cloud Geolocation. In case you are looking for geolocation solutions that use RSSI and TOA metadata, or you are using LR1110-based device with transceiver firmware (instead of Modem-E firmware), you should follow the [LoRa Cloud Geolocation guide]({{< ref "/integrations/lora-cloud/geolocation" >}}). {{</ note >}}
 
-{{< info >}}  The number of (useful) satellites detected when running the autonomous GNSS scan might not be enough to calculate the position of your device, so we will not include that case in this guide. However, if you want to read more about it, follow [this guide](https://lora-developers.semtech.com/learning-center/hands-on-labs/build-end-to-end-solution-using-lorawan-and-loraedge/find-the-location-of-your-tracking-device/#run-an-autonomous-gnss-scan-and-send-results). {{</ info >}}
+{{< note >}}  The number of (useful) satellites detected when running the autonomous GNSS scan might not be enough to calculate the position of your device, so we will not include that case in this guide. However, if you want to read more about it, follow [this guide](https://lora-developers.semtech.com/learning-center/hands-on-labs/build-end-to-end-solution-using-lorawan-and-loraedge/find-the-location-of-your-tracking-device/#run-an-autonomous-gnss-scan-and-send-results). {{</ note >}}
 
 After you obtain the location results, you can further integrate your {{% tts %}} application with other third-party IoT platforms to visualize them, etc.
 
 ### Wi-Fi Scans
 
-{{< info >}} To learn how to perform Wi-Fi scans with LoRa Edge LR1110 device, follow [this guide](https://lora-developers.semtech.com/learning-center/hands-on-labs/build-end-to-end-solution-using-lorawan-and-loraedge/find-the-location-of-your-tracking-device/#run-a-wi-fi-scan-and-send-results). {{</ info >}}
+{{< note >}} To learn how to perform Wi-Fi scans with LoRa Edge LR1110 device, follow [this guide](https://lora-developers.semtech.com/learning-center/hands-on-labs/build-end-to-end-solution-using-lorawan-and-loraedge/find-the-location-of-your-tracking-device/#run-a-wi-fi-scan-and-send-results). {{</ note >}}
 
 At this point, when your device performs a Wi-Fi scan and sends the resulting data in an uplink message, you will notice the location estimation results present in the `Location solved` message in {{% tts %}} **Live data** tab, as shown below.
 
@@ -69,7 +69,7 @@ At this point, when your device performs a Wi-Fi scan and sends the resulting da
 
 ### Assisted GNSS Scans
 
-{{< info >}} To learn how to perform GNSS assisted scans with LoRa Edge LR1110 device, follow [this guide](https://lora-developers.semtech.com/learning-center/hands-on-labs/build-end-to-end-solution-using-lorawan-and-loraedge/find-the-location-of-your-tracking-device/#configure-and-run-an-assisted-gnss-scan-and-send-results). {{</ info >}}
+{{< note >}} To learn how to perform GNSS assisted scans with LoRa Edge LR1110 device, follow [this guide](https://lora-developers.semtech.com/learning-center/hands-on-labs/build-end-to-end-solution-using-lorawan-and-loraedge/find-the-location-of-your-tracking-device/#configure-and-run-an-assisted-gnss-scan-and-send-results). {{</ note >}}
 
 {{< note >}} Keep in mind that in order to perform an assisted GNSS scan, you have to provide the approximate location coordinates to the LoRa Edge LR1110 device. {{</ note >}}
 

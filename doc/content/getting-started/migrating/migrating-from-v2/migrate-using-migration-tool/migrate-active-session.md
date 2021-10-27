@@ -13,7 +13,7 @@ Starting from {{% tts %}} version `3.12.0`, it is possible to migrate end device
 
 For all other scenarios, migrating active session is achievable only if you [migrate your gateway to {{% tts %}}]({{< ref "/getting-started/migrating/gateway-migration" >}}) too. {{</ warning >}}
 
-{{< info >}} We strongly recommend migrating end devices without persisting active sessions. {{</ info >}}
+{{< note >}} We strongly recommend migrating end devices without persisting active sessions. {{</ note >}}
 
 {{< tabs/container "OTAA" "ABP" >}}
 
