@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>3.10.2 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/whats-new/3.10.2/" />
+  <title>3.15.2 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/whats-new/3.15.2/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.e4983b11ba29ba596151c737417276febde11d0ad260a85ea1e39f0f473b9cfb.css" integrity="sha256-5Jg7EbopullhUcc3QXJ2/r3hHQrSYKheoeOfD0c7nPs=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="The Things Stack for LoRaWAN">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="3.10.2">
+  <meta itemprop="name" content="3.15.2">
   <meta itemprop="description" content="The Things Stack for LoRaWAN">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="3.10.2">
+  <meta property="og:title" content="3.15.2">
   <meta property="og:description" content="The Things Stack for LoRaWAN">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/whats-new/3.10.2/">
-  <meta name="twitter:title" content="3.10.2" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/whats-new/3.15.2/">
+  <meta name="twitter:title" content="3.15.2" />
   <meta name="twitter:description" content="The Things Stack for LoRaWAN" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -92,7 +92,7 @@
 <ul class="menu-list">
 <a href="https://www.thethingsindustries.com/docs/whats-new/" class="">Overview</a>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.15.2/" class="">3.15.2</a>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.15.2/" class="is-active">3.15.2</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.15.1/" class="">3.15.1</a>
@@ -164,7 +164,7 @@
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.10.3/" class="">3.10.3</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.10.2/" class="is-active">3.10.2</a>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.10.2/" class="">3.10.2</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.10.1/" class="">3.10.1</a>
@@ -188,25 +188,67 @@
       </div>
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">3.10.2
+        <h1 class="title is-size-2">3.15.2
         </h1>
 
         <div class="content">
           <h3 id="added">Added</h3>
 <ul>
-<li>gRPC middleware to extract proxy headers from trusted proxies. This adds a configuration <code>grpc.trusted-proxies</code> that is similar to the existing <code>http.trusted-proxies</code> option.</li>
+<li><code>tls.cipher-suites</code> config option to specify used cipher suites.</li>
+<li>Support for enhanced security policies of Packet Broker services.</li>
+<li>Handling of MAC and PHY versions in end device forms based on selected frequency plan in the Console.</li>
+<li>Support for scheduling downlink messages as JSON in the Console.</li>
+<li>Support for Packet Broker authentication through LoRaWAN Backend Interfaces. This adds the following configuration options:
+<ul>
+<li><code>interop.public-tls-address</code>: public address of the interop server. The audience in the incoming OAuth 2.0 token from Packet Broker is verified against this address to ensure that other networks cannot impersonate as Packet Broker;</li>
+<li><code>interop.packet-broker.enabled</code>: enable Packet Broker to authenticate;</li>
+<li><code>interop.packet-broker.token-issuer</code>: the issuer of the incoming OAuth 2.0 token from Packet Broker is verified against this value.</li>
+</ul>
+</li>
+<li>Support for LoRaWAN Backend Interfaces in Identity Server to obtain an end device&rsquo;s NetID, tenant ID and Network Server address with the use of a vendor-specifc extension (<code>VSExtension</code>). This adds the following configuration options:
+<ul>
+<li><code>is.network.net-id</code>: the NetID of the network. When running a Network Server, make sure that this is the same value as <code>ns.net-id</code>.</li>
+<li><code>is.network.tenant-id</code>: the Tenant ID in the host NetID. Leave blank if the NetID that you use is dedicated for this Identity Server.</li>
+</ul>
+</li>
+<li>Configuration option <code>experimental.features</code> to enable experimental features.</li>
+<li>Tooltip descriptions for &ldquo;Last activity&rdquo; values (formerly &ldquo;Last seen&rdquo;) and uplink/downlink counts in the Console.</li>
+<li>Status pulses being triggered by incoming data in the Console.</li>
+<li>Packet broker page crashing when networks with a NetID of <code>0</code> are present.</li>
+<li>Allowing to toggle visibility of sensitive values in text inputs in the Console.</li>
+<li>Webhook failed event.</li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
-<li>Log field consistency for HTTP and gRPC request logs.</li>
+<li>Searching for entity IDs is now case insensitive.</li>
+<li>Renamed entitie&rsquo;s &ldquo;Last seen&rdquo; to &ldquo;Last activity&rdquo; in the Console.</li>
+<li>The database queries for determining the rights of users on entities have been rewritten to reduce the number of round-trips to the database.</li>
+<li>The default downlink path expiration timeout for UDP gateway connections has been increased to 90 seconds, and the default connection timeout has been increased to 3 minutes.
+<ul>
+<li>The original downlink path expiration timeout was based on the fact that the default <code>PULL_DATA</code> interval is 5 seconds. In practice we have observed that most gateways actually send a <code>PULL_DATA</code> message every 30 seconds instead in order to preserve data transfer costs.</li>
+</ul>
+</li>
+<li>The default duration for storing (sparse) entity events has been increased to 24 hours.</li>
+</ul>
+<h3 id="removed">Removed</h3>
+<ul>
+<li>Option to select targeted stack components during end device import in the Console.</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>Uplink frame counter reset handling.</li>
-<li>Uplink retransmission handling in Network Server.</li>
-<li>DevAddr generation for NetID Type 3 and 4, according to errata.</li>
-<li>Packet Broker downlink in multi-tenant clusters.</li>
-<li>HTTP header propagation (such as Request ID) to gRPC services.</li>
+<li>LoRaWAN Backend Interfaces 1.1 fields that were used in 1.0 (most notably <code>SenderNSID</code> and <code>ReceiverNSID</code>). Usage of <code>NSID</code> is now only supported with LoRaWAN Backend Interfaces 1.1 as specified.</li>
+<li>Registering and logging in users with 2 character user IDs in the Account App.</li>
+<li>Frequency plan display for the gateway overview page in the Console.</li>
+<li>Frequency plan showing as <code>n/a</code> in the Console after creating a new gateway with assigned frequency plan.</li>
+<li>Header logo flickering in the Console when using Safari browser.</li>
+<li>Profile settings link not being present in the mobile menu in the Console.</li>
+<li>Calculation of &ldquo;Last activity&rdquo; values not using all available data in the Console.</li>
+<li>Layout jumps due to length of &ldquo;Last activity&rdquo; text.</li>
+<li>Invalid <code>session</code> handling in Network Layer settings form in the Console.</li>
+</ul>
+<h3 id="security">Security</h3>
+<ul>
+<li>Network Servers using LoRaWAN Backend Interfaces to interact with the Join Server can now provide a single Network Server address in the X.509 Common Name of the TLS client certificate (the old behavior) or multiple Network Server addresses in the X.509 DNS Subject Alternative Names (SANs). DNS names have precedence over an address in the Common Name.</li>
 </ul>
 
         </div>
@@ -260,14 +302,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 13 Jan 2021.
+  Last changed by Nejra Selimović on 27 Oct 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/938c9dd5c2cab0ca1080e8d0175e0b3a3d364794">
-      doc: Add whats-new
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/ba2251f5133a0c7f9ff64ea2900c5488deb47f9c">
+      doc: V3.15.2 release docs (#634)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/whats-new/3.10.2.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/whats-new/3.15.2.md" class="button">Edit on Github</a>
 </div>
 
       </div>

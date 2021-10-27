@@ -92,6 +92,9 @@
 <ul class="menu-list">
 <a href="https://www.thethingsindustries.com/docs/whats-new/" class="is-active">Overview</a>
 <li>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.15.2/" class="">3.15.2</a>
+  </li>
+<li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.15.1/" class="">3.15.1</a>
   </li>
 <li>
@@ -193,6 +196,77 @@
         </div>
 
         
+<section class="is-fullwidth whats-new has-vertical-space">
+  <div class="whats-new-content">
+    <div class="whats-new-header">
+      <h2 class="title is-size-5"><a href=https://www.thethingsindustries.com/docs/whats-new/3.15.2/>What's new in V3.15.2</a></h2>
+    </div>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.15.2/">
+      <div class="whats-new-items">
+        <h3 id="added">Added</h3>
+<ul>
+<li><code>tls.cipher-suites</code> config option to specify used cipher suites.</li>
+<li>Support for enhanced security policies of Packet Broker services.</li>
+<li>Handling of MAC and PHY versions in end device forms based on selected frequency plan in the Console.</li>
+<li>Support for scheduling downlink messages as JSON in the Console.</li>
+<li>Support for Packet Broker authentication through LoRaWAN Backend Interfaces. This adds the following configuration options:
+<ul>
+<li><code>interop.public-tls-address</code>: public address of the interop server. The audience in the incoming OAuth 2.0 token from Packet Broker is verified against this address to ensure that other networks cannot impersonate as Packet Broker;</li>
+<li><code>interop.packet-broker.enabled</code>: enable Packet Broker to authenticate;</li>
+<li><code>interop.packet-broker.token-issuer</code>: the issuer of the incoming OAuth 2.0 token from Packet Broker is verified against this value.</li>
+</ul>
+</li>
+<li>Support for LoRaWAN Backend Interfaces in Identity Server to obtain an end device&rsquo;s NetID, tenant ID and Network Server address with the use of a vendor-specifc extension (<code>VSExtension</code>). This adds the following configuration options:
+<ul>
+<li><code>is.network.net-id</code>: the NetID of the network. When running a Network Server, make sure that this is the same value as <code>ns.net-id</code>.</li>
+<li><code>is.network.tenant-id</code>: the Tenant ID in the host NetID. Leave blank if the NetID that you use is dedicated for this Identity Server.</li>
+</ul>
+</li>
+<li>Configuration option <code>experimental.features</code> to enable experimental features.</li>
+<li>Tooltip descriptions for &ldquo;Last activity&rdquo; values (formerly &ldquo;Last seen&rdquo;) and uplink/downlink counts in the Console.</li>
+<li>Status pulses being triggered by incoming data in the Console.</li>
+<li>Packet broker page crashing when networks with a NetID of <code>0</code> are present.</li>
+<li>Allowing to toggle visibility of sensitive values in text inputs in the Console.</li>
+<li>Webhook failed event.</li>
+</ul>
+<h3 id="changed">Changed</h3>
+<ul>
+<li>Searching for entity IDs is now case insensitive.</li>
+<li>Renamed entitie&rsquo;s &ldquo;Last seen&rdquo; to &ldquo;Last activity&rdquo; in the Console.</li>
+<li>The database queries for determining the rights of users on entities have been rewritten to reduce the number of round-trips to the database.</li>
+<li>The default downlink path expiration timeout for UDP gateway connections has been increased to 90 seconds, and the default connection timeout has been increased to 3 minutes.
+<ul>
+<li>The original downlink path expiration timeout was based on the fact that the default <code>PULL_DATA</code> interval is 5 seconds. In practice we have observed that most gateways actually send a <code>PULL_DATA</code> message every 30 seconds instead in order to preserve data transfer costs.</li>
+</ul>
+</li>
+<li>The default duration for storing (sparse) entity events has been increased to 24 hours.</li>
+</ul>
+<h3 id="removed">Removed</h3>
+<ul>
+<li>Option to select targeted stack components during end device import in the Console.</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>LoRaWAN Backend Interfaces 1.1 fields that were used in 1.0 (most notably <code>SenderNSID</code> and <code>ReceiverNSID</code>). Usage of <code>NSID</code> is now only supported with LoRaWAN Backend Interfaces 1.1 as specified.</li>
+<li>Registering and logging in users with 2 character user IDs in the Account App.</li>
+<li>Frequency plan display for the gateway overview page in the Console.</li>
+<li>Frequency plan showing as <code>n/a</code> in the Console after creating a new gateway with assigned frequency plan.</li>
+<li>Header logo flickering in the Console when using Safari browser.</li>
+<li>Profile settings link not being present in the mobile menu in the Console.</li>
+<li>Calculation of &ldquo;Last activity&rdquo; values not using all available data in the Console.</li>
+<li>Layout jumps due to length of &ldquo;Last activity&rdquo; text.</li>
+<li>Invalid <code>session</code> handling in Network Layer settings form in the Console.</li>
+</ul>
+<h3 id="security">Security</h3>
+<ul>
+<li>Network Servers using LoRaWAN Backend Interfaces to interact with the Join Server can now provide a single Network Server address in the X.509 Common Name of the TLS client certificate (the old behavior) or multiple Network Server addresses in the X.509 DNS Subject Alternative Names (SANs). DNS names have precedence over an address in the Common Name.</li>
+</ul>
+
+      </div>
+    </a>
+  </div>
+</section>
+
 <section class="is-fullwidth whats-new has-vertical-space">
   <div class="whats-new-content">
     <div class="whats-new-header">
