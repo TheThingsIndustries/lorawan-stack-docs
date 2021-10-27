@@ -30,11 +30,12 @@ ttn-lw-cli gateways contact-info request-validation [gateway-id] [flags]
       --application-server-enabled                      Application Server enabled (default true)
       --application-server-grpc-address string          Application Server address (default "localhost:8884")
       --ca string                                       CA certificate file
-  -c, --config strings                                  Location of the config files (default [.ttn-lw-cli.yml,$HOME/.ttn-lw-cli.yml,$HOME/Library/Application Support/.ttn-lw-cli.yml])
+  -c, --config strings                                  Location of the config files (default [.ttn-lw-cli.yml,$HOME/.ttn-lw-cli.yml,$HOME/.config/.ttn-lw-cli.yml])
       --credentials-id string                           Credentials ID (if using multiple configurations)
       --device-claiming-server-grpc-address string      Device Claiming Server address (default "localhost:8884")
       --device-template-converter-grpc-address string   Device Template Converter address (default "localhost:8884")
       --dump-requests                                   When log level is set to debug, also dump request payload as JSON
+      --experimental.features strings                   Experimental features to activate
       --gateway-eui string                              
       --gateway-id string                               
       --gateway-server-enabled                          Gateway Server enabled (default true)
