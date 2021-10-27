@@ -174,7 +174,7 @@
 <p>Avoid confirmed uplink messages. Confirmed uplinks should only be used in the case where 100% assurance of transmission is necessary, e.g. alarms.</p>
 <p>The duty cycle of radio devices is often regulated by government. If this is the case, the duty cycle is commonly set to 1%, but make sure to check the regulations of your local government to be sure.</p>
 <p>For example, in Europe, duty cycles are regulated by section 7.2.3 of the ETSI EN300.220 standard.</p>
-<p>Additionally, the LoRaWAN specification dictates duty cycles for the join frequencies, the frequencies devices of all LoRaWAN-compliant devices use for over-the-air activation (OTAA). In most regions this duty cycle is set to 1%.</p>
+<p>Additionally, the LoRaWAN specification dictates duty cycles for the join frequencies, the frequencies devices of all LoRaWAN-compliant devices use for over-the-air activation (OTAA). In most regions this duty cycle is set to 1%. Learn more about duty cycles in <a href="https://www.thethingsnetwork.org/docs/lorawan/duty-cycle/">The Things Network LoRaWAN documentation</a>.</p>
 <h2 id="expect-packet-loss">Expect Packet Loss</h2>
 <p>You should expect packet loss up to 10%. Implement Forward Error Correction if that&rsquo;s a problem.</p>
 <h2 id="synchronization-backoff-and-jitter">Synchronization, Backoff, and Jitter</h2>
@@ -196,14 +196,14 @@
 <h2 id="use-adr-for-stationary-devices">Use ADR for Stationary Devices</h2>
 <p>For devices that don&rsquo;t move, the LoRaWAN specification recommends allowing the Network Server to control the data rate to minimize power consumption.</p>
 <p>For moving devices, ADR should not be used since RF conditions will likely change, but since many moving devices are temporarily stationary, it is possible to save additional power by requesting ADR only during the time a device is stationary. (<a href="https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf">LoRaWAN Specification 1.0.3, line 438</a>).</p>
-<p>You may also use application specific knowledge to predict when ADR is appropriate. A tracking device can detect when it is moving, for example. A parked car sensor can detect when a parked car will affect RF conditions, and should fall back to another strategy.</p>
+<p>You may also use application specific knowledge to predict when ADR is appropriate. A tracking device can detect when it is moving, for example. A parked car sensor can detect when a parked car will affect RF conditions, and should fall back to another strategy. <a href="https://www.thethingsindustries.com/docs/reference/adr/">Learn more about how ADR is implemented in The Things Stack</a>.</p>
 <h2 id="use-otaa">Use OTAA</h2>
 <p>OTAA devices perform a join-procedure with the network, during which a dynamic Device Address is assigned and security keys are negotiated with the device. Activation by Personalization (ABP) requires hardcoding the Device Address as well as the security keys in the device, which is insecure. ABP also has the downside that devices can not switch network providers without manually changing keys in the device.</p>
 <h2 id="power-cycles">Power Cycles</h2>
 <p>Devices should save network parameters between regular power cycles. This includes session parameters like <code>DevAddr</code>, session keys, <code>FCnt</code>, and nonces. This allows the device to easily Join, as keys and counters remain synchronized.</p>
 <p>Devices should also randomize initial power on delay (i.e. Join). See <a href="#synchronization-backoff-jitter">Synchronization, Backoff, and Jitter</a></p>
 <h2 id="frame-counters">Frame Counters</h2>
-<p>Devices must increment the frame counter after each uplink and downlink. Devices should use 32 bit counters for FCntUp and FCntDwn to prevent replay attacks.</p>
+<p>Devices must increment the frame counter after each uplink and downlink. Devices should use 32 bit counters for FCntUp and FCntDwn to prevent replay attacks. <a href="https://www.thethingsnetwork.org/docs/lorawan/security/#frame-counters">Learn more about frame counters in The Things Network LoRaWAN documentation</a>.</p>
 <h2 id="ack">Ack</h2>
 <p>It is possible that you will not receive an ACK for every confirmed uplink or downlink. A good rule of thumb is to wait for at least <strong>three</strong> missed ACK&rsquo;s to assume link loss.</p>
 <p>In the case of link loss, do the following:</p>
@@ -314,10 +314,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Laurens Slats on 20 Jul 2021.
+  Last changed by Nejra Selimović on 27 Oct 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3f9a938bbb70457d5280aea089b83b852a5028f4">
-      doc: Additions to LoRaWAN Best Practices (#460)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/6fe0bd373404aae7b50d792dadf78149de657d17">
+      doc: Add ttn.org LoRaWAN links (#631)
     </a>
 </p>
 
