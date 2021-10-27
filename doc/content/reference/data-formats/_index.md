@@ -8,6 +8,8 @@ The streaming data integrations provide multiple formats for the delivery of app
 
 <!--more-->
 
+{{< note >}} Read about LoRaWAN message types in [The Things Network documentation](https://www.thethingsnetwork.org/docs/lorawan/message-types/). {{</ note >}}
+
 ## JSON
 
 The JSON message format is described in the sections below.

@@ -8,11 +8,13 @@ This section can help you understand the differences between ABP and OTAA activa
 
 <!--more-->
 
+{{< note >}} Learn more about device activation in general and details about OTAA and ABP flow in [The Things Network LoRaWAN documentation](https://www.thethingsnetwork.org/docs/lorawan/end-device-activation/). {{</ note >}}
+
 A `DevEUI` is a 64-bit unique ID assigned to an end device by the manufacturer. This value is linked to the hardware and it cannot be altered.
 
 Unlike `DevEUI`, which identifies an end device globally, a 32-bit `DevAddr` identifies the end device within the current network and all communication after joining the network is done with it. A `DevAddr` value consists of `NwkAddr` (end device address within network) prefixed by a `NwkID` (network identifier).
 
-**Note:** `DevAddr` is not unique - multiple devices can have the same `DevAddr`. 
+{{< note >}} `DevAddr` is not unique - multiple devices can have the same `DevAddr`. {{</ note >}} 
 
 A `DevAddr` and session keys are assigned to an end device during a procedure called **activation**. LoRaWAN supports two modes of activating an end device: **ABP (Activation By Personalization)** and **OTAA (Over-The-Air Activation)**.
 
@@ -44,6 +46,8 @@ ABP's drawbacks are arising as consequences of its main characteristics.
 
   Unlike ABP, OTAA end devices re-negotiate frame counters and session keys at establishing each new session. Hence, the lifetime of an OTAA device is not conditioned by the width of the frame counter.
 
+  Read more about LoRaWAN security in [The Things Network LoRaWAN documentation](https://www.thethingsnetwork.org/docs/lorawan/security/).
+  
   For enhancing security, you can use a dedicated [Join Server](https://www.thethingsindustries.com/docs/reference/components/join-server/) to handle the join flow, Network Server and Application Server authentication, store root keys and generate session keys. Using a dedicated Join Server also prevents the vendor lock-in. Another option is using Hardware Secured Elements (see [ATECC608A](https://www.thethingsindustries.com/docs/devices/claim-atecc608a/)) which prevent the exposure of keys to software, firmware, manufacturing sites, and other third parties. 
 
 3. **ABP end devices use fixed network parameters.**

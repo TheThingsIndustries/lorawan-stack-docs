@@ -30,7 +30,7 @@ See the [MAC settings guide]({{< ref "/devices/mac-settings" >}}) for more infor
 
 {{% tts %}} expects that all end devices comply with the LoRaWAN specification by default, which means that the end devices should respond to Network Server MAC command requests accordingly. If a device fails to answer a MAC Command in a timely manner, there may be disruptions to the device uplink or downlink traffic. As mentioned in the LoRaWAN specification, the Network Server of {{% tts %}} will always prioritize MAC commands over application payloads on downlink.
 
-In case a device is not fully compliant with the LORaWAN specification, it can still work on {{% tts %}}, but it may require custom MAC settings configuration.
+In case a device is not fully compliant with the LORaWAN specification, it can still work on {{% tts %}}, but it may require custom [MAC settings configuration]({{< ref "/devices/mac-settings" >}}).
 
 ### DevStatusReq
 

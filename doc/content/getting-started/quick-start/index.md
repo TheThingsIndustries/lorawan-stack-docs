@@ -16,6 +16,14 @@ First off, it's a good idea to understand what {{% tts %}} is. Learn that, and l
 
 In case you skipped the previous section, here is a quick summary: {{% tts %}} is a network server which implements the LoRaWAN protocol. To learn more about LoRaWAN, check out the [Learn section](https://thethingsnetwork.org/docs/lorawan) of The Things Network, or read up at the [LoRa Alliance](https://lora-alliance.org).
 
+Here is a video of Johan Stokking, the tech lead of The Things Industries and one of the core developers of {{% tts %}}, explaining LoRaWAN:
+
+{{< youtube "ZsVhYiX4_6o" >}}
+
+{{< note >}} Some common [use cases](https://www.thethingsnetwork.org/docs/lorawan/what-is-lorawan/#lorawan-use-cases) are explained in the video above, but there are certain limitations that make LoRaWAN not suitable for every use-case. Read about [LoRaWAN limitations in The Things Network LoRaWAN documentation](https://www.thethingsnetwork.org/docs/lorawan/limitations/). {{</ note >}}
+
+Make sure to get familiar about [LoRaWAN architecture](https://www.thethingsnetwork.org/docs/lorawan/architecture/) and [components]({{< ref "/reference/components" >}}), to understand how {{% tts %}} works.
+
 ## Start Using {{% tts %}}
 
 To get started with {{% tts %}}, you can simply [create an account](https://console.cloud.thethings.network) on The Things Network to start using [The Things Stack Community Edition]({{< ref "getting-started/ttn" >}}) for free.
@@ -39,6 +47,16 @@ Once you've added a device and it's connected to a gateway and to {{% tts %}}, s
 ## Scale Up
 
 When you're ready to start running your LoRaWAN solution commercially, get in touch with us at [The Things Industries](https://thethingsindustries.com) for an affordable, scalable, deployment which is SLA backed.
+
+## Learn and Get Certified
+
+The Things Network certification program allows you to officially certify your LoRaWAN knowledge and skills.
+
+Visit [The Things Network Learn hub](https://www.thethingsnetwork.org/docs/lorawan/) or [The Things Academy on Udemy](https://www.udemy.com/course/lorawan-fundamentals/) to learn all about LoRa and LoRaWAN, and get prepared for [The Things Fundamentals certification](https://www.thethingsnetwork.org/achievements/a/the-things-certified-fundamentals/).
+
+Check all available certifications on [The Things Certification site](https://www.thethingsnetwork.org/achievements/certificates/).
+
+A lot of academic research around LoRaWAN is being conducted nowadays. [Read some LoRaWAN-related academic papers and publications](https://www.thethingsnetwork.org/docs/lorawan/academic/).
 
 ## Useful Links
 

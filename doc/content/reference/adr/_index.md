@@ -17,8 +17,7 @@ The ADR mechanism controls the following transmission parameters of an end devic
 - Bandwidth
 - Transmission power
 
-See [The Things Network Learn](https://www.thethingsnetwork.org/docs/lorawan/adaptive-data-rate/) for a general description of ADR.
-
+See [The Things Network LoRaWAN documentation](https://www.thethingsnetwork.org/docs/lorawan/adaptive-data-rate/) for a general description of ADR. See the [Spreading Factors](https://www.thethingsnetwork.org/docs/lorawan/spreading-factors/) section to learn how spreading factor influence data rate, range and battery life.
 
 ## The Things Stack ADR Algorithm
 
