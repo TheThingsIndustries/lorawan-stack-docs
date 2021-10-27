@@ -238,34 +238,17 @@
         </h1>
         
         <div class="content">
-          <p>This section refers to migrating end devices to The Things Stack by using <a href="https://www.thethingsindustries.com/docs/getting-started/console/">The Things Stack Console</a>.</p>
-<p>Migrating your end devices using The Things Stack Console is easy, but it is convenient only if you have an intention of migrating few devices.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>This method comes down to adding end devices in The Things Stack Console one by one, and it is not possible to migrate groups of devices using Console only.</p>
-<p>It is possible to import groups of devices using The Things Stack Console, but that would require the usage of <code>ttn-lw-migrate</code> tool to export those devices from V2, which is already addressed in <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/">Migrate using the Migration Tool</a> guide.</p>
-
-</div>
-
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>Migrating active sessions using The Things Stack Console <strong>only</strong> is not fully achievable. You can migrate the device from V2 to The Things Stack using the Console, but you will need <code>ttn-lw-migrate</code> tool to export session-related parameters (like session keys, frame counters, etc.) from V2 to a <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON file</a>. You can later <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">import this file in The Things Stack</a> using The Things Stack Console, or the CLI. That approach would be a combination of the migration methods described in this documentation, but for the sake of simplicity, and the fact that migrating active sessions is not recommended, we will not devote too much attention to it.</p>
-<p>Therefore, this section implies migrating devices without active sessions, as that can be fully achieved with using only The Things Stack Console.</p>
-
-</div>
-
+          <p>This section describes migrating end devices to The Things Stack by using <a href="https://www.thethingsindustries.com/docs/getting-started/console/">The Things Stack Console</a>.</p>
+<p>Migrating your end devices using The Things Stack Console is simple, but devices must be migrated one-by-one, so it is convenient only for migrating a few devices.</p>
 <p>Follow the steps below to migrate your end device from V2 to The Things Stack by using the Console.</p>
-<h2 id="add-an-end-device-in-the-things-stack">Add an End Device in The Things Stack</h2>
-<p>The first step is to add your end device in The Things Stack.</p>
-<blockquote>
-<p>See <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> section for more details on adding devices in The Things Stack.</p>
-</blockquote>
-<p>In general, there are two ways to add devices in The Things Stack Console - <strong>Manually</strong> and via the <strong>LoRaWAN Device Repository</strong>. Configuring settings for end devices depends on their type - OTAA or ABP.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  We strongly recommend using OTAA over ABP. Read <a href="https://www.thethingsindustries.com/docs/devices/abp-vs-otaa/">why using OTAA is better than ABP</a>.
+  It is not possible to migrate groups of devices, or to migrate devices with active sessions, using the Console only. To import groups of devices, or learn to export device sessions, see <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/">Migrate using the Migration Tool</a> guide.
 </div>
 
+<h2 id="add-an-end-device-in-the-things-stack">Add an End Device in The Things Stack</h2>
+<p>The first step is to add your end device in The Things Stack. See <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> section for more details on adding devices in The Things Stack.</p>
+<p>There are two ways to add devices in The Things Stack Console - <strong>Manually</strong> and via the <strong>LoRaWAN Device Repository</strong>. Configuring settings for end devices depends on their type - OTAA or ABP. We strongly recommend using OTAA over ABP. Read <a href="https://www.thethingsindustries.com/docs/devices/abp-vs-otaa/">why using OTAA is better than ABP</a>.</p>
 <div class="tabs is-boxed">
   <ul>
     
@@ -331,12 +314,9 @@ Choose <strong>LoRaWAN version</strong> <code>MAC V1.0.2</code> (this is the ver
   <p>The <strong>DevAddr</strong> and <strong>RX1 Delay</strong> values depend on your specific use case.</p>
 <p>If you want your end device traffic to be routed via Packet Broker to The Things Stack, the <strong>DevAddr</strong> must be routable by the Packet Broker and the <strong>RX1 Delay</strong> value must be set to 5 seconds. Note that the <strong>DevAddr</strong> is routable only if you are using <strong>The Things Industries V2</strong> and migrating to <strong>The Things Stack Cloud</strong>, and even that is being achieved only on customer request by contacting <a href="mailto:support@thethingsindustries.com">The Things Industries support</a>.</p>
 <p>If the existing <strong>DevAddr</strong> is not routable by the Packet Broker (i.e. you are not migrating from <strong>The Things Industries V2</strong> to <strong>The Things Stack Cloud</strong>), and/or <strong>RX1 Delay</strong> is different than 5 seconds (for V2 the default is 1 second), you will need to auto-generate new <strong>DevAddr</strong> during device registration on The Things Stack, then re-program the device to assign it with that new <strong>DevAddr</strong> and <strong>RX1 Delay</strong> of 5 seconds. Otherwise, the traffic from your device will not be properly routed by the Packet Broker or will never reach your end device in time.</p>
+<p>Re-programming the ABP device to change <strong>DevAddr</strong> to the one issued by The Things Stack and <strong>RX1 Delay</strong> to 5 seconds is <strong>recommended</strong>. Re-programming the ABP device to do this might also be a good time to reconsider switching it to OTAA by flashing the firmware and adopting some <a href="https://www.thethingsindustries.com/docs/devices/best-practices/">best practices</a>. <a href="https://www.thethingsindustries.com/docs/devices/abp-vs-otaa/">Check why using OTAA is recommended</a>.</p>
 <p>If you do not want your traffic to be routed by the Packet Broker, i.e. you want to migrate your gateway to The Things Stack too, you do not have to re-program your device. You can keep the existing <strong>DevAddr</strong> and <strong>RX1 Delay</strong> of 1 second, and use these values when adding the device to The Things Stack. Be aware that if you are using a high-latency backhaul, keeping the <strong>RX1 Delay</strong> of 1 second might cause latency issues.</p>
 <p>The <strong>NwkSKey</strong> has to match the one used on V2 if you are migrating an active ABP device session. If not, you can choose to keep the one used on V2, or to generate a new one in The Things Stack Console during the device registration process.</p>
-</div>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Note that re-programming the ABP device to change <strong>DevAddr</strong> to the one issued by The Things Stack and <strong>RX1 Delay</strong> to 5 seconds is <strong>recommended</strong>. Re-programming the ABP device to do this might also be a good time to reconsider switching it to OTAA by flashing the firmware and adopting some <a href="https://www.thethingsindustries.com/docs/devices/best-practices/">best practices</a>. <a href="https://www.thethingsindustries.com/docs/devices/abp-vs-otaa/">Check why using OTAA is recommended</a>.
 </div>
 </section>
 
@@ -364,7 +344,7 @@ Choose <strong>LoRaWAN version</strong> <code>MAC V1.0.2</code> (this is the ver
 </div>
 <div class="tab-content content">
   <section data-content="otaa">
-  <p>To prevent OTAA device from re-joining V2 network, the recommended practice is to change the <strong>AppKey</strong> in V2. By changing the <strong>AppKey</strong>, the existing session on V2 will not be terminated yet, but the end device will not be able to re-join because V2 cluster will reject its new Join Requests.</p>
+  <p>To prevent OTAA devices from re-joining V2, the recommended practice is to change the <strong>AppKey</strong> in V2. By changing the <strong>AppKey</strong>, the existing session on V2 will not be terminated yet, but the end device will not be able to re-join because V2 cluster will reject its new Join Requests. Swapping the last two bytes of the <strong>AppKey</strong> will prevent it from rejoining, and allow you to revert easily if you need to.</p>
 <h2 id="let-the-otaa-end-device-join-the-things-stack-network">Let the OTAA End Device Join The Things Stack Network</h2>
 <p>Next, your end device needs to join The Things Stack network.</p>
 <p>Some OTAA devices ocasionally perform new joins - with these end devices, you can only wait for them to do this on their own. Depending on the end device, you can also:</p>
@@ -375,10 +355,7 @@ Choose <strong>LoRaWAN version</strong> <code>MAC V1.0.2</code> (this is the ver
 </ul>
 </section>
 <section data-content="abp">
-  <div class="notification is-warning is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  For ABP device, you need to completely delete it from V2, especially if you have not re-programmed it for a new <strong>DevAddr</strong>. Having the device registered in both V2 and The Things Stack would  introduce some serious conflicts.
-</div>
+  ABP devices must be completely deleted from V2, especially if you have not re-programmed it for a new <strong>DevAddr</strong>. Having the device registered in both V2 and The Things Stack  introduces serious conflicts, including race conditions for Joins and unpredictable, out-of-spec operation.
 </section>
 
 </div>
@@ -407,9 +384,9 @@ Choose <strong>LoRaWAN version</strong> <code>MAC V1.0.2</code> (this is the ver
 <p>Instead, these Join Requests are going to be routed to The Things Stack via Packet Broker and The Things Stack will accept them. Your OTAA device will negotiate with The Things Stack Network Server to obtain a new <strong>DevAddr</strong>, channel settings and other MAC parameters. The traffic from your end device can from now on be routed to The Things Stack thanks to the newly assigned <strong>DevAddr</strong> and <strong>RX1 Delay</strong> of 5 seconds, which fulfills the Packet Broker requirements.</p>
 </section>
 <section data-content="abp">
-  <p>ABP device does not perform the join procedure, so it does not get assigned with a new <strong>DevAddr</strong>, <strong>RX1 Delay</strong> and some other parameters like OTAA does (unless you re-program it). Instead, these values are hardcoded in the device itself.</p>
+  <p>ABP devices do not perform the join procedure, so they do not get assigned with a new <strong>DevAddr</strong>, <strong>RX1 Delay</strong> and some other parameters like OTAA devices do. These values must be coded in the device itself.</p>
 <p>If you are not specifically migrating from <strong>The Things Industries V2</strong> to <strong>The Things Stack Cloud</strong>, your ABP device&rsquo;s <strong>DevAddr</strong> will not be routable by the Packet Broker. If the <strong>RX1 Delay</strong> of your device is not equal to 5 seconds, the device traffic will probably never reach The Things Stack.</p>
-<p>If you want your traffic to be routed via Packet Broker, you will need to re-program your ABP device to use <strong>DevAddr</strong> issued by The Things Stack and <strong>RX1 Delay</strong> of 1 second.</p>
+<p>If you want your traffic to be routed via Packet Broker, you will need to re-program your ABP device to use a <strong>DevAddr</strong> issued by The Things Stack and <strong>RX1 Delay</strong> of 5 seconds.</p>
 <p>If you want to keep <strong>DevAddr</strong> and <strong>RX1 Delay</strong> as they were in V2, you will need to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway to The Things Stack</a>.</p>
 </section>
 
@@ -492,10 +469,10 @@ Choose <strong>LoRaWAN version</strong> <code>MAC V1.0.2</code> (this is the ver
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 30 Jun 2021.
+  Last changed by Ben Olayinka on 27 Oct 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4bdcb88f2a81c6408669ae47ef0613e3e7ef026c">
-      doc: Update migration docs (#386)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/900e879512739311ca9f8475628427f2e7e38216">
+      Clean up getting started (#627)
     </a>
 </p>
 

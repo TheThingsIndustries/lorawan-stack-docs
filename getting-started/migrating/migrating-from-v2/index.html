@@ -246,9 +246,9 @@
 
 </div>
 
-<div class="notification is-warning is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  We highly recommend to always test the migration on a single end device or a small batch of end devices in order to make sure the migration process goes as expected.
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Since The Things Stack v3.13, The Things Network community members can freely migrate their gateways from The Things Network V2 to The Things Stack Community Edition, while still providing uplink and downlink coverage to The Things Network V2. This means that the order of actions of migrating gateways and devices is no longer relevant - you can migrate your devices first and then your gateways, or vice versa.
 </div>
 
 <h2 id="prerequisites">Prerequisites</h2>
@@ -257,36 +257,19 @@
 <li>End device(s) and gateway(s) connected to a V2 network.</li>
 <li>User account in The Things Stack.</li>
 </ol>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  We <strong>highly recommend</strong> using The Things Stack version <code>3.12.0</code> or higher. Some of the features (like session migration) from this guide might not be available for prior versions.
-</div>
-
-<div class="notification is-primary is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Info:</h5>
-  Starting from The Things Stack <code>v3.13.0</code> release, The Things Network community members can freely migrate their gateways from The Things Network V2 to The Things Stack Community Edition, while still providing uplink and downlink coverage to The Things Network V2. This means that the order of actions of migrating gateways and devices is no longer relevant - you can migrate your devices first and then your gateways, or vice versa.
-</div>
-
+<p>We recommend testing migration on a single end device or a small batch of end devices in order to make sure the migration process goes as expected.</p>
+<p>We <strong>highly recommend</strong> using The Things Stack version <code>3.12.0</code> or higher. Some of the features (like session migration) from this guide might not be available for prior versions.</p>
 <h2 id="add-application-in-the-things-stack">Add Application in The Things Stack</h2>
-<p>Since end devices are being created within applications, you first need to add a new application in The Things Stack.</p>
+<p>Since end devices are being created within applications, you first need to add a new application in The Things Stack. See <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/">Adding Applications</a> for detailed instructions.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   When adding an application in The Things Stack, the <strong>Application ID</strong> does not have to be the same as the one in V2.
 </div>
 
-<blockquote>
-<p>See <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/">Adding Applications</a> for detailed instructions.</p>
-</blockquote>
 <h2 id="add-payload-formatters-and-integrations-in-the-things-stack">Add Payload Formatters and Integrations in The Things Stack</h2>
 <p>After creating an application, you need to add the associated elements like application-level payload formatters and integrations.</p>
-<div class="notification is-primary is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Info:</h5>
-  The payload formatters can be uplink and downlink, and they are what was known in V2 as encoders and decoders. In The Things Stack, it is also possible to add payload formatters per end device, which override application payload formatters. However, before devices are migrated to The Things Stack it is only possible to add a payload formatter per application.
-</div>
-
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>The format of V2 payload encoders and decoders is still supported in The Things Stack. You only need to add one additional line to the function code used in V2 to make it fully compatible with The Things Stack. For example, if your payload decoder function in V2 was:</p>
+<p>The payload formatters can be uplink and downlink, and they are what was known in V2 as encoders and decoders. In The Things Stack, it is also possible to add payload formatters per end device, which override application payload formatters. However, before devices are migrated to The Things Stack it is only possible to add a payload formatter per application.</p>
+<p>The format of V2 payload encoders and decoders is still supported in The Things Stack. You only need to add one additional line to the function code used in V2 to make it fully compatible with The Things Stack. For example, if your payload decoder function in V2 was:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">Decoder</span><span class="p">(</span><span class="nx">bytes</span><span class="p">)</span> <span class="p">{</span>
     <span class="kd">var</span> <span class="nx">temperature</span> <span class="o">=</span> <span class="nx">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">|</span> <span class="nx">bytes</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>  
     <span class="k">return</span> <span class="p">{</span>
@@ -301,30 +284,14 @@
         <span class="nx">temperature</span><span class="o">:</span> <span class="nx">temperature</span><span class="p">;</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</code></pre></div>
-</div>
-
-<blockquote>
-<p>See <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">Payload Formatters</a> guide for detailed instructions on how to add payload formatters and which types are supported by The Things Stack.</p>
-</blockquote>
-<blockquote>
+</code></pre></div><p>See <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">Payload Formatters</a> guide for detailed instructions on how to add payload formatters and which types are supported by The Things Stack.</p>
 <p>For detailed tutorials on the integrations that are available in The Things Stack, see <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">Integrations</a>.</p>
-</blockquote>
 <h2 id="migrate-end-devices">Migrate End Devices</h2>
 <p>When you have added your application and elements associated with it, it is time to migrate your end device(s) from V2 to The Things Stack.</p>
-<div class="notification is-primary is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Info:</h5>
-  <p>End devices connected to The Things Network V2 can be migrated to The Things Stack Cloud and The Things Stack Community Edition without the need for migrating a gateway, thanks to the default connection with <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/">Packet Broker</a>. The Things Industries V2 (SaaS) can also be connected to Packet Broker by contacting <a href="mailto:support@thethingsindustries.com">support</a>, while The Things Stack Enterprise or Open Source can be <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/connect/">configured</a> manually.</p>
+<p>End devices connected to The Things Network V2 can be migrated to The Things Stack Cloud and The Things Stack Community Edition without the need for migrating a gateway, thanks to the default connection with <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/">Packet Broker</a>. The Things Industries V2 (SaaS) can also be connected to Packet Broker by contacting <a href="mailto:support@thethingsindustries.com">support</a>, while The Things Stack Enterprise or Open Source can be <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/connect/">configured</a> manually.</p>
 <p>If you are using deployments connected to Packet Broker, the traffic from your end device(s) will be routed to The Things Stack after migrating your device(s). However, there are certain requirements that your devices need to meet for Packet Broker to route their traffic to The Things Stack correctly. See <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/packet-broker-requirements/">Packet Broker Requirements for End Device Migration</a> for detailed information.</p>
 <p>If you are using deployments that are not connected to Packet Broker, you will have to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway</a> to receive traffic from your end device in The Things Stack.</p>
-
-</div>
-
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Starting from The Things Stack <code>v3.13.0</code> release, The Things Network community members can freely migrate their gateways from The Things Network V2 to The Things Stack Community Edition, while still providing uplink and downlink coverage to The Things Network V2.
-</div>
-
+<p>Since The Things Stack <code>v3.13.0</code> release, The Things Network community members can freely migrate their gateways from The Things Network V2 to The Things Stack Community Edition, while still providing uplink and downlink coverage to The Things Network V2.</p>
 <p>There are two approaches for migrating devices, depending on how many end devices you intend to migrate and if you wish to migrate with or without active sessions, described in the following guides:</p>
 <ul>
 <li><a href="/docs/getting-started/migrating/migrating-from-v2/migrate-using-console/">Using The Things Stack Console</a></li>
@@ -359,7 +326,7 @@
           </h1>
           
           <div class="content has-text-grey">
-            This section refers to migrating end devices to The Things Stack by using The Things Stack Console.
+            This section describes migrating end devices to The Things Stack by using The Things Stack Console.
 
           </div>
         </div>
@@ -462,10 +429,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 14 Sep 2021.
+  Last changed by Ben Olayinka on 27 Oct 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f70f20780e3a119bc0bfb526bcf3036405b475e4">
-      doc: Fix migration deadline (#565)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/900e879512739311ca9f8475628427f2e7e38216">
+      Clean up getting started (#627)
     </a>
 </p>
 
