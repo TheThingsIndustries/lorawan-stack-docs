@@ -20,7 +20,11 @@
           </h2>
           {{ end }}
           <div class="content has-text-grey">
+            {{ if (eq .Section "whats-new") }}
+            See what's new in {{ .Title }}
+            {{ else }}
             {{ .Summary | plainify }}
+            {{ end }}
           </div>
         </div>
         <div class="buttons">
