@@ -160,7 +160,7 @@
         
         <div class="content">
           <p>This section provides help for common issues and frequently asked questions you may have when adding devices.</p>
-<h3 id="i-receive-an-error-when-registering-an-end-device">I receive an error when registering an end device.</h3>
+<h2 id="i-receive-an-error-when-registering-an-end-device">I receive an error when registering an end device.</h2>
 <p>Here are some common errors and solutions:</p>
 <ul>
 <li>
@@ -179,11 +179,11 @@
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl <span class="s1">&#39;https://thethings.example.com/api/v3/&lt;js/ns/as&gt;/applications/&lt;application_id&gt;/devices/&lt;end-device_id&gt;&#39;</span> -X DELETE -H <span class="s1">&#39;Accept: application/json&#39;</span> -H <span class="s1">&#39;Authorization: Bearer &lt;api-key&gt;&#39;</span>
 </code></pre></div></li>
 </ul>
-<h3 id="how-do-i-see-device-events">How do I see device events?</h3>
+<h2 id="how-do-i-see-device-events">How do I see device events?</h2>
 <p>Device event logs can be found in the console in the device&rsquo;s general information page. See <a href="https://www.thethingsindustries.com/docs/getting-started/events/">Working with Events</a> for other ways of subscribing to events.</p>
-<h3 id="i-see-no-join-requests-from-my-device-in-the-things-stack">I see no Join Requests from my device in The Things Stack.</h3>
+<h2 id="i-see-no-join-requests-from-my-device-in-the-things-stack">I see no Join Requests from my device in The Things Stack.</h2>
 <p>Check your network coverage, and if your device is activated and transmitting Join Requests.</p>
-<h3 id="my-device-wont-join-what-do-i-do">My device won&rsquo;t join. What do I do?</h3>
+<h2 id="my-device-will-not-join-what-do-i-do">My device will not join. What do I do?</h2>
 <ul>
 <li>Double check your DevEUI, JoinEUI or AppEUI, LoRaWAN and Regional Parameters Version, root keys (AppKey, and with LoRaWAN 1.1 or higher, NwkKey)</li>
 <li>Check gateway and device events for traffic from your device. Below are a few common issues
@@ -199,20 +199,20 @@
 <li>Check for duplicate use of JoinNonce (or AppNonce)</li>
 <li>Adjust ADR and link check settings to conditions which the device is located in</li>
 </ul>
-<h3 id="my-device-is-stuck-in-a-continuous-join-loop-what-can-i-do">My device is stuck in a continuous join loop. What can I do?</h3>
+<h2 id="my-device-is-stuck-in-a-continuous-join-loop-what-can-i-do">My device is stuck in a continuous join loop. What can I do?</h2>
 <ul>
 <li>Check for the errors and solutions listed above</li>
 <li>If the Network Server is processing Join Requests and scheduling Join Accepts, check the gateway events and see whether the Join Accept downlink messages are being scheduled by the gateway</li>
 <li>If you see any deviation in scheduling Join Accept downlinks from the gateway, follow the <a href="https://www.thethingsindustries.com/docs/gateways/troubleshooting/">Troubleshooting Gateways</a></li>
 </ul>
-<h3 id="no-downlinks-are-reaching-my-device-what-do-i-do">No downlinks are reaching my device. What do I do?</h3>
+<h2 id="no-downlinks-are-reaching-my-device-what-do-i-do">No downlinks are reaching my device. What do I do?</h2>
 <ul>
 <li>Check gateway and application events for traffic from your device</li>
 <li>Check duty cycle restrictions</li>
 <li>Device clock drift often occurs when SF12 is used</li>
 <li>Check your antenna connections</li>
 </ul>
-<h3 id="i-do-not-see-any-uplinks-from-my-device-in-the-gateway-live-data">I do not see any uplinks from my device in the Gateway Live data.</h3>
+<h2 id="i-do-not-see-any-uplinks-from-my-device-in-the-gateway-live-data">I do not see any uplinks from my device in the Gateway Live data.</h2>
 <p>Here are some common causes and solutions:</p>
 <ul>
 <li>The device is not transmitting uplink messages. Check if your device is transmitting uplinks by observing its debug logs.</li>
@@ -220,12 +220,12 @@
 <li>The gateway is not receiving uplinks due to hardware issues. Check if your gateway is receiving uplinks by observing its debug logs.</li>
 <li>The gateway is not forwarding received uplinks to the Network Server. Check your gateway&rsquo;s debug logs for any errors or warnings. Refer to the <a href="https://www.thethingsindustries.com/docs/gateways/troubleshooting/">Troubleshooting Gateways guide</a>.</li>
 </ul>
-<h3 id="the-things-stack-is-no-longer-receiving-uplinks-from-my-device-what-do-i-do">The Things Stack is no longer receiving uplinks from my device. What do I do?</h3>
+<h2 id="the-things-stack-is-no-longer-receiving-uplinks-from-my-device-what-do-i-do">The Things Stack is no longer receiving uplinks from my device. What do I do?</h2>
 <ul>
 <li>Check <a href="#how-do-i-see-gateway-events">gateway events</a> and <a href="#how-do-i-see-device-events">device events</a> for traffic from your device</li>
 <li>Check for FCnt mismatch on ABP devices</li>
 </ul>
-<h3 id="how-to-infer-a-downlink-flow-in-the-things-stack">How to infer a downlink flow in The Things Stack?</h3>
+<h2 id="how-to-infer-a-downlink-flow-in-the-things-stack">How to infer a downlink flow in The Things Stack?</h2>
 <p>When scheduling messages for downlink communication, different events are generated by different The Things Stack components, and they can be observed on a gateway or on a device level.</p>
 <p>Observe the following events in the Live data tab of the device overview in The Things Stack Console:</p>
 <ul>
@@ -240,7 +240,7 @@
 <p>For more information on different events in TTS, read <a href="https://www.thethingsindustries.com/docs/reference/api/events/">Events API</a>.</p>
 </blockquote>
 <p>If you did not encounter any deviations in this flow, that should be an indication of a successful downlink scheduling. However, if the downlink is not reaching your device, check the gateway packet forwarder logs and search for any errors that might help you identify the cause of the downlink failure.</p>
-<h3 id="when-i-schedule-a-downlink-i-see-the-nsdowndataschedulefail-event-in-the-live-data-tab-and-the-downlink-message-fails-to-be-transmitted">When I schedule a downlink, I see the <code>ns.down.data.schedule.fail</code> event in the Live data tab and the downlink message fails to be transmitted.</h3>
+<h2 id="when-i-schedule-a-downlink-i-see-the-nsdowndataschedulefail-event-in-the-live-data-tab-and-the-downlink-message-fails-to-be-transmitted">When I schedule a downlink, I see the <code>ns.down.data.schedule.fail</code> event in the Live data tab and the downlink message fails to be transmitted.</h2>
 <p>The <code>ns.down.data.schedule.fail</code> event, that can be noticed in the Live data tab of the device overview in The Things Stack Console, indicates the downlink scheduling failure at the Network Server.</p>
 <p>Double check your network connection. If the connection between the gateway and the Network Server is slow, downlink messages could be sent too late. For example, this can happen in case of:</p>
 <ul>
@@ -248,17 +248,17 @@
 <li>Cluster latencies</li>
 <li>Gateway level issues</li>
 </ul>
-<h3 id="scheduling-a-downlink-from-the-things-stack-console-is-disabled-with-a-warning-simulation-is-disabled-for-devices-that-skip-paload-crypto">Scheduling a downlink from The Things Stack Console is disabled with a warning <code>Simulation is disabled for devices that skip paload crypto</code>.</h3>
+<h2 id="scheduling-a-downlink-from-the-things-stack-console-is-disabled-with-a-warning-simulation-is-disabled-for-devices-that-skip-paload-crypto">Scheduling a downlink from The Things Stack Console is disabled with a warning <code>Simulation is disabled for devices that skip paload crypto</code>.</h2>
 <p>When using the <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/">AWS IoT integration</a> with the <strong>End to End Encryption</strong> option enabled, scheduling downlink messages from The Things Stack Console is restricted by default.</p>
 <p>When this option is enabled, encryption and decryption at the Application Server is disabled, i.e. the <code>skip_payload_crypto</code> field for the end device is enabled on the application level. The downlinks are expected to be scheduled from the AWS IoT, and not from the The Things Stack.</p>
-<h3 id="the-things-stack-intermittently-receives-uplinks-from-my-device-but-with-the-fcnt-gap">The Things Stack intermittently receives uplinks from my device, but with the FCnt gap.</h3>
+<h2 id="the-things-stack-intermittently-receives-uplinks-from-my-device-but-with-the-fcnt-gap">The Things Stack intermittently receives uplinks from my device, but with the FCnt gap.</h2>
 <p>Your device probably does not have a good network coverage. Some common reasons:</p>
 <ul>
 <li>The device is using SF7, while it should be using a higher SF for better coverage and reach.</li>
 <li>There might be a conflict in receiving uplinks due to <a href="https://www.thethingsindustries.com/docs/devices/best-practices/#synchronization-backoff-and-jitter">synchronization of devices</a>.</li>
 </ul>
 <p>Check your network coverage, and make sure your devices are within your gateway&rsquo;s reach and are using a suitable SF.</p>
-<h3 id="i-can-see-some-received-uplinks-in-gateway-live-data-events-but-i-do-not-see-them-in-device-events">I can see some received uplinks in gateway Live data events, but I do not see them in device events.</h3>
+<h2 id="i-can-see-some-received-uplinks-in-gateway-live-data-events-but-i-do-not-see-them-in-device-events">I can see some received uplinks in gateway Live data events, but I do not see them in device events.</h2>
 <p>Possible causes and solutions:</p>
 <ul>
 <li>The Network Server dropping uplink messages received from the gateway
@@ -300,6 +300,49 @@
     
 
 
+  <ul class="menu-list">
+    
+      
+      <li><a href='#i-receive-an-error-when-registering-an-end-device'>I receive an error when registering an end device.</a></li>
+    
+      
+      <li><a href='#how-do-i-see-device-events'>How do I see device events?</a></li>
+    
+      
+      <li><a href='#i-see-no-join-requests-from-my-device-in-the-things-stack'>I see no Join Requests from my device in The Things Stack.</a></li>
+    
+      
+      <li><a href='#my-device-will-not-join-what-do-i-do'>My device will not join. What do I do?</a></li>
+    
+      
+      <li><a href='#my-device-is-stuck-in-a-continuous-join-loop-what-can-i-do'>My device is stuck in a continuous join loop. What can I do?</a></li>
+    
+      
+      <li><a href='#no-downlinks-are-reaching-my-device-what-do-i-do'>No downlinks are reaching my device. What do I do?</a></li>
+    
+      
+      <li><a href='#i-do-not-see-any-uplinks-from-my-device-in-the-gateway-live-data'>I do not see any uplinks from my device in the Gateway Live data.</a></li>
+    
+      
+      <li><a href='#the-things-stack-is-no-longer-receiving-uplinks-from-my-device-what-do-i-do'>The Things Stack is no longer receiving uplinks from my device. What do I do?</a></li>
+    
+      
+      <li><a href='#how-to-infer-a-downlink-flow-in-the-things-stack'>How to infer a downlink flow in The Things Stack?</a></li>
+    
+      
+      <li><a href='#when-i-schedule-a-downlink-i-see-the-nsdowndataschedulefail-event-in-the-live-data-tab-and-the-downlink-message-fails-to-be-transmitted'>When I schedule a downlink, I see the ns.down.data.schedule.fail event in the Live data tab and the downlink message fails to be transmitted.</a></li>
+    
+      
+      <li><a href='#scheduling-a-downlink-from-the-things-stack-console-is-disabled-with-a-warning-simulation-is-disabled-for-devices-that-skip-paload-crypto'>Scheduling a downlink from The Things Stack Console is disabled with a warning Simulation is disabled for devices that skip paload crypto.</a></li>
+    
+      
+      <li><a href='#the-things-stack-intermittently-receives-uplinks-from-my-device-but-with-the-fcnt-gap'>The Things Stack intermittently receives uplinks from my device, but with the FCnt gap.</a></li>
+    
+      
+      <li><a href='#i-can-see-some-received-uplinks-in-gateway-live-data-events-but-i-do-not-see-them-in-device-events'>I can see some received uplinks in gateway Live data events, but I do not see them in device events.</a></li>
+    
+  </ul>
+
 
   </nav>
 
@@ -336,10 +379,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 14 Oct 2021.
+  Last changed by Nejra Selimović on 28 Oct 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/209cb40e34ffef9f73be58b1b474e1eee820fde9">
-      doc: Document uplink issues in troubleshooting devices (#593)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/c7972f47ec658866ebb3b12bf72831d5ff3ee91a">
+      doc: Fix troubleshooting entries (#639)
     </a>
 </p>
 
