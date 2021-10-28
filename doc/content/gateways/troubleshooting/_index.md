@@ -205,17 +205,79 @@ Updating gateway location from status messages in supported only for gateways th
 
 Keep in mind that you can still set the gateway location [manually]({{< ref "/gateways/adding-gateways#set-gateway-location" >}}) from {{% tts %}} Console.
 
-## I set the gateway location manually in {{% tts %}} Console, why can't I see it in the gateway connection statistics?
+## I set the gateway location manually in {{% tts %}} Console, why can I not see it in the gateway connection statistics?
 
 The connection statistics ([Gateway Server service API]({{< ref "/reference/api/gateway_server#a-namegsthe-gs-servicea" >}})) do not store the gateway locations.
 
 The gateway location is stored in the Identity Server instead. The updated location can be found by querying the Identity Server [GetGateway API]({{< ref "/reference/api/gateway" >}}).
 
-> For example, you can query the location with:
->
->```bash
-> curl -H "Authorization: Bearer <api-key>" https://example.thethings.com/api/v3/gateways/<gateway-id>?field_mask=antennas
+For example, you can query the location with:
 
+```bash
+curl -H "Authorization: Bearer <api-key>" https://example.thethings.com/api/v3/gateways/<gateway-id>?field_mask=antennas
+```
+
+## I do not see the downlink being scheduled by the Network Server. What do I do?
+
+If you notice your downlink is not being scheduled, check your gateway's Live data tab for the [`gs.down.send` event]({{< ref "/reference/api/events#event:gs.down.send" >}}). If you do not see this event, it means that the Network Server failed to schedule the downlink message to Gateway Server.
+
+You can simply try re-scheduling the downlink, and if the issue persists, check if the downlink is being properly scheduled from the Application Server to the Network Server.
+
+## When I schedule a downlink, I see the `gs.down.tx.fail` event in the Live data tab and the downlink message fails to be transmitted. Why?
+
+Seeing the [`gs.down.tx.fail` event]({{< ref "/reference/api/events#event:gs.down.tx.fail" >}}) in the gateway's Live data tab means the downlink message has been scheduled from the Gateway Server to the gateway, but the Gateway Server did not receive the ACK for that downlink. Some common causes and solutions for this issue:
+
+- High latency in the gateway backhaul - high latency usually occurs if the gateway and {{% tts %}} cluster are not geographically close, or the gateway is using a cellular or satellite backhaul. Always use {{% tts %}} cluster that is closest to your gateway's location, and make sure to check your gateway's Internet connection.
+- Gateway hardware issue - if the problem persists, your gateway could be malfunctioning. Try using another gateway or contacting the gateway manufacturer.
+
+## I'm noticing some errors in my UDP gateway's packet forwarder logs. What do they represent?
+
+The [`PULL_RESP` downlink packet](https://github.com/Lora-net/packet_forwarder/blob/master/PROTOCOL.TXT#L310) is used by the server to send RF packets and associated metadata that will have to be emitted by the gateway towards devices. When this packet is received by the gateway, the gateway sends a `TX_ACK` packet to the server to inform if a downlink request has been accepted or rejected by the gateway.
+
+If there has been an error, i.e. the downlink is rejected, `TX_ACK` packet will contain a JSON `txpx_ack` object that carries the status information concerning the associated `PULL_RESP` request. If there has been no errors and the packet is successfully programmed for downlink, no JSON object will be present, but an empty string.
+
+This JSON object will contain an `error` field describing the cause of the downlink rejection and the possible values are:
+
+- `TOO_LATE` - too late to program the packet for downlink
+- `TOO_EARLY` - downlink packet timestamp too much in advance
+- `COLLISION_PACKET` - there is already a packet programmed in the requested timeframe
+- `COLLISION_BEACON` - there is already a beacon planned in the requested timeframe
+- `TX_FREQ` - requested frequency not supported by the TX RF chain
+- `TX_power` - requested power not supported by the gateway
+- `GPS_UNLOCKED` - GPS is unlocked and GPS timestamp cannot be used
+
+Example:
+
+``` json
+{"txpk_ack":{
+	"error":"COLLISION_PACKET"
+}}
+```
+
+## I'm noticing "radio is not emitting frame - abandoning TX, trying alternative" error in the LoRa Basics Station gateway's packet forwarder logs. What is causing this?
+
+If you are seeing something like:
+
+```
+[S2E:WARN] ::0 diid=34946 [ant#0] - unable to place frame
+[S2E:VERB] ::0 diid=34946 [ant#0] - class A has no more alternate TX time
+[S2E:ERRO] ::0 diid=34946 [ant#0] - radio is not emitting frame - abandoning TX, trying alternative
+```
+
+in the packet forwarder logs on your {{% lbs %}} gateway, your gateway might have a hardware level issue.
+
+## I'm seeing "no DC in band" error in the LoRa Basics Station gateway's packet forwarder logs. What is causing this?
+
+If there is no direct channel in the band to send the downlink and no alternative downlink opportunities (RX2, back-off mechanism, etc.), the downlink will be dropped and the following messages will be printed in the logs:
+
+```
+[S2E:VERB] ::0 diid=2207 [ant#0] 867.5MHz - no DC in band: txtime=12:40:34.479 free=12:40:47.903
+[S2E:VERB] ::0 diid=2207 [ant#0] - class A has no more alternate TX time
+[S2E:WARN] ::0 diid=2207 [ant#0] - unable to place frame
+```
+
+If the gateway sends back a NACK, {{% tts %}} will retry sending in the next downlink window. This can also be caused by a hardware issue.
+ 
 ## When the connection on the main interface goes down, my gateway gets disconnected and it does not reconnect through the backup interface.
 
 Please try restarting your gateway's packet forwarder.
