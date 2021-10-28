@@ -317,13 +317,49 @@ $ <span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer </sp
 <p><a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/">LoRa Basics™ Station</a> protocol currently does not support GPS fields in Uplink messages, so the GPS location in The Things Stack Console for LoRa Basics™ Station-based gateways cannot be updated from status messages.</p>
 <p>Updating gateway location from status messages in supported only for gateways that establish authenticated connections (Basic Station and MQTT gateways), i.e. it is not supported for <a href="https://www.thethingsindustries.com/docs/gateways/udp/">UDP</a> gateways.</p>
 <p>Keep in mind that you can still set the gateway location <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/#set-gateway-location">manually</a> from The Things Stack Console.</p>
-<h2 id="i-set-the-gateway-location-manually-in-the-things-stack-console-why-cant-i-see-it-in-the-gateway-connection-statistics">I set the gateway location manually in The Things Stack Console, why can&rsquo;t I see it in the gateway connection statistics?</h2>
+<h2 id="i-set-the-gateway-location-manually-in-the-things-stack-console-why-can-i-not-see-it-in-the-gateway-connection-statistics">I set the gateway location manually in The Things Stack Console, why can I not see it in the gateway connection statistics?</h2>
 <p>The connection statistics (<a href="https://www.thethingsindustries.com/docs/reference/api/gateway_server/#a-namegsthe-gs-servicea">Gateway Server service API</a>) do not store the gateway locations.</p>
 <p>The gateway location is stored in the Identity Server instead. The updated location can be found by querying the Identity Server <a href="https://www.thethingsindustries.com/docs/reference/api/gateway/">GetGateway API</a>.</p>
-<blockquote>
 <p>For example, you can query the location with:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl -H <span class="s2">&#34;Authorization: Bearer &lt;api-key&gt;&#34;</span> https://example.thethings.com/api/v3/gateways/&lt;gateway-id&gt;?field_mask<span class="o">=</span>antennas
-</code></pre></div></blockquote>
+</code></pre></div><h2 id="i-do-not-see-the-downlink-being-scheduled-by-the-network-server-what-do-i-do">I do not see the downlink being scheduled by the Network Server. What do I do?</h2>
+<p>If you notice your downlink is not being scheduled, check your gateway&rsquo;s Live data tab for the <a href="https://www.thethingsindustries.com/docs/reference/api/events/#event:gs.down.send"><code>gs.down.send</code> event</a>. If you do not see this event, it means that the Network Server failed to schedule the downlink message to Gateway Server.</p>
+<p>You can simply try re-scheduling the downlink, and if the issue persists, check if the downlink is being properly scheduled from the Application Server to the Network Server.</p>
+<h2 id="when-i-schedule-a-downlink-i-see-the-gsdowntxfail-event-in-the-live-data-tab-and-the-downlink-message-fails-to-be-transmitted-why">When I schedule a downlink, I see the <code>gs.down.tx.fail</code> event in the Live data tab and the downlink message fails to be transmitted. Why?</h2>
+<p>Seeing the <a href="https://www.thethingsindustries.com/docs/reference/api/events/#event:gs.down.tx.fail"><code>gs.down.tx.fail</code> event</a> in the gateway&rsquo;s Live data tab means the downlink message has been scheduled from the Gateway Server to the gateway, but the Gateway Server did not receive the ACK for that downlink. Some common causes and solutions for this issue:</p>
+<ul>
+<li>High latency in the gateway backhaul - high latency usually occurs if the gateway and The Things Stack cluster are not geographically close, or the gateway is using a cellular or satellite backhaul. Always use The Things Stack cluster that is closest to your gateway&rsquo;s location, and make sure to check your gateway&rsquo;s Internet connection.</li>
+<li>Gateway hardware issue - if the problem persists, your gateway could be malfunctioning. Try using another gateway or contacting the gateway manufacturer.</li>
+</ul>
+<h2 id="im-noticing-some-errors-in-my-udp-gateways-packet-forwarder-logs-what-do-they-represent">I&rsquo;m noticing some errors in my UDP gateway&rsquo;s packet forwarder logs. What do they represent?</h2>
+<p>The <a href="https://github.com/Lora-net/packet_forwarder/blob/master/PROTOCOL.TXT#L310"><code>PULL_RESP</code> downlink packet</a> is used by the server to send RF packets and associated metadata that will have to be emitted by the gateway towards devices. When this packet is received by the gateway, the gateway sends a <code>TX_ACK</code> packet to the server to inform if a downlink request has been accepted or rejected by the gateway.</p>
+<p>If there has been an error, i.e. the downlink is rejected, <code>TX_ACK</code> packet will contain a JSON <code>txpx_ack</code> object that carries the status information concerning the associated <code>PULL_RESP</code> request. If there has been no errors and the packet is successfully programmed for downlink, no JSON object will be present, but an empty string.</p>
+<p>This JSON object will contain an <code>error</code> field describing the cause of the downlink rejection and the possible values are:</p>
+<ul>
+<li><code>TOO_LATE</code> - too late to program the packet for downlink</li>
+<li><code>TOO_EARLY</code> - downlink packet timestamp too much in advance</li>
+<li><code>COLLISION_PACKET</code> - there is already a packet programmed in the requested timeframe</li>
+<li><code>COLLISION_BEACON</code> - there is already a beacon planned in the requested timeframe</li>
+<li><code>TX_FREQ</code> - requested frequency not supported by the TX RF chain</li>
+<li><code>TX_power</code> - requested power not supported by the gateway</li>
+<li><code>GPS_UNLOCKED</code> - GPS is unlocked and GPS timestamp cannot be used</li>
+</ul>
+<p>Example:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span><span class="nt">&#34;txpk_ack&#34;</span><span class="p">:{</span>
+	<span class="nt">&#34;error&#34;</span><span class="p">:</span><span class="s2">&#34;COLLISION_PACKET&#34;</span>
+<span class="p">}}</span>
+</code></pre></div><h2 id="im-noticing-radio-is-not-emitting-frame---abandoning-tx-trying-alternative-error-in-the-lora-basics-station-gateways-packet-forwarder-logs-what-is-causing-this">I&rsquo;m noticing &ldquo;radio is not emitting frame - abandoning TX, trying alternative&rdquo; error in the LoRa Basics Station gateway&rsquo;s packet forwarder logs. What is causing this?</h2>
+<p>If you are seeing something like:</p>
+<pre><code>[S2E:WARN] ::0 diid=34946 [ant#0] - unable to place frame
+[S2E:VERB] ::0 diid=34946 [ant#0] - class A has no more alternate TX time
+[S2E:ERRO] ::0 diid=34946 [ant#0] - radio is not emitting frame - abandoning TX, trying alternative
+</code></pre><p>in the packet forwarder logs on your LoRa Basics™ Station gateway, your gateway might have a hardware level issue.</p>
+<h2 id="im-seeing-no-dc-in-band-error-in-the-lora-basics-station-gateways-packet-forwarder-logs-what-is-causing-this">I&rsquo;m seeing &ldquo;no DC in band&rdquo; error in the LoRa Basics Station gateway&rsquo;s packet forwarder logs. What is causing this?</h2>
+<p>If there is no direct channel in the band to send the downlink and no alternative downlink opportunities (RX2, back-off mechanism, etc.), the downlink will be dropped and the following messages will be printed in the logs:</p>
+<pre><code>[S2E:VERB] ::0 diid=2207 [ant#0] 867.5MHz - no DC in band: txtime=12:40:34.479 free=12:40:47.903
+[S2E:VERB] ::0 diid=2207 [ant#0] - class A has no more alternate TX time
+[S2E:WARN] ::0 diid=2207 [ant#0] - unable to place frame
+</code></pre><p>If the gateway sends back a NACK, The Things Stack will retry sending in the next downlink window. This can also be caused by a hardware issue.</p>
 <h2 id="when-the-connection-on-the-main-interface-goes-down-my-gateway-gets-disconnected-and-it-does-not-reconnect-through-the-backup-interface">When the connection on the main interface goes down, my gateway gets disconnected and it does not reconnect through the backup interface.</h2>
 <p>Please try restarting your gateway&rsquo;s packet forwarder.</p>
         </div>
@@ -414,7 +450,22 @@ $ <span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer </sp
       <li><a href='#why-do-my-gateways-gps-location-details-not-show-in-the-things-stack-console'>Why do my gateway’s GPS location details not show in The Things Stack Console?</a></li>
     
       
-      <li><a href='#i-set-the-gateway-location-manually-in-the-things-stack-console-why-cant-i-see-it-in-the-gateway-connection-statistics'>I set the gateway location manually in The Things Stack Console, why can’t I see it in the gateway connection statistics?</a></li>
+      <li><a href='#i-set-the-gateway-location-manually-in-the-things-stack-console-why-can-i-not-see-it-in-the-gateway-connection-statistics'>I set the gateway location manually in The Things Stack Console, why can I not see it in the gateway connection statistics?</a></li>
+    
+      
+      <li><a href='#i-do-not-see-the-downlink-being-scheduled-by-the-network-server-what-do-i-do'>I do not see the downlink being scheduled by the Network Server. What do I do?</a></li>
+    
+      
+      <li><a href='#when-i-schedule-a-downlink-i-see-the-gsdowntxfail-event-in-the-live-data-tab-and-the-downlink-message-fails-to-be-transmitted-why'>When I schedule a downlink, I see the gs.down.tx.fail event in the Live data tab and the downlink message fails to be transmitted. Why?</a></li>
+    
+      
+      <li><a href='#im-noticing-some-errors-in-my-udp-gateways-packet-forwarder-logs-what-do-they-represent'>I’m noticing some errors in my UDP gateway’s packet forwarder logs. What do they represent?</a></li>
+    
+      
+      <li><a href='#im-noticing-radio-is-not-emitting-frame---abandoning-tx-trying-alternative-error-in-the-lora-basics-station-gateways-packet-forwarder-logs-what-is-causing-this'>I’m noticing “radio is not emitting frame - abandoning TX, trying alternative” error in the LoRa Basics Station gateway’s packet forwarder logs. What is causing this?</a></li>
+    
+      
+      <li><a href='#im-seeing-no-dc-in-band-error-in-the-lora-basics-station-gateways-packet-forwarder-logs-what-is-causing-this'>I’m seeing “no DC in band” error in the LoRa Basics Station gateway’s packet forwarder logs. What is causing this?</a></li>
     
       
       <li><a href='#when-the-connection-on-the-main-interface-goes-down-my-gateway-gets-disconnected-and-it-does-not-reconnect-through-the-backup-interface'>When the connection on the main interface goes down, my gateway gets disconnected and it does not reconnect through the backup interface.</a></li>
@@ -457,10 +508,10 @@ $ <span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer </sp
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 21 Oct 2021.
+  Last changed by Nejra Selimović on 28 Oct 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/e1b9ec2027c39781914aa10d80f79d317b316771">
-      doc: Add gateway troubleshooting entry (#629)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/063a020d3d040b8f7bc407c3e55777776ae75c1f">
+      doc: Document downlink scheduling errors (#571)
     </a>
 </p>
 
