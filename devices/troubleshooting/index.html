@@ -242,7 +242,12 @@
 <p>If you did not encounter any deviations in this flow, that should be an indication of a successful downlink scheduling. However, if the downlink is not reaching your device, check the gateway packet forwarder logs and search for any errors that might help you identify the cause of the downlink failure.</p>
 <h2 id="when-i-schedule-a-downlink-i-see-the-nsdowndataschedulefail-event-in-the-live-data-tab-and-the-downlink-message-fails-to-be-transmitted">When I schedule a downlink, I see the <code>ns.down.data.schedule.fail</code> event in the Live data tab and the downlink message fails to be transmitted.</h2>
 <p>The <code>ns.down.data.schedule.fail</code> event, that can be noticed in the Live data tab of the device overview in The Things Stack Console, indicates the downlink scheduling failure at the Network Server.</p>
-<p>Double check your network connection. If the connection between the gateway and the Network Server is slow, downlink messages could be sent too late. For example, this can happen in case of:</p>
+<p>The <code>ns.down.data.schedule.fail</code> event usually occurs with the following errors:</p>
+<ul>
+<li><code>no_absolute_gateway_time</code>: Downlinks are being scheduled with the absolute time, and the absolute time of the Gateway Server is not in sync with the absolute time of the gateway. To sync them, a gateway has to either report its GPS time, or transmit five downlink frames in order for Gateway Server to infer its absolute time by observing RTTs.</li>
+<li><code>scheduling_conflict</code>: Devices are synchronized, i.e. a number of devices are sending joins or uplinks at the same time. To avoid device synchronization, devices need to be configured to initiate joins or send uplinks at random times or with random delays. You can also try with improving the network coverage in your area. See <a href="https://www.thethingsindustries.com/docs/devices/best-practices/#synchronization-backoff-and-jitter">Best Practices</a> for more info about device synchronization.</li>
+</ul>
+<p>We also advise to double check your network connection. If the connection between the gateway and the Network Server is slow, downlink messages could be sent too late. For example, this can happen in case of:</p>
 <ul>
 <li>Cellular or satellite gateway backhauls</li>
 <li>Cluster latencies</li>
@@ -379,10 +384,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 28 Oct 2021.
+  Last changed by Nejra Selimović on 03 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/c7972f47ec658866ebb3b12bf72831d5ff3ee91a">
-      doc: Fix troubleshooting entries (#639)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/03aa816eaa8911d023206180cdbc8d1ea0122ec1">
+      doc: Add device troubleshooting entry (#648)
     </a>
 </p>
 
