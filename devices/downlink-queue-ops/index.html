@@ -186,7 +186,12 @@
 </span><span class="se"></span>  --frm-payload <span class="m">01020304</span> <span class="se">\
 </span><span class="se"></span>  --priority NORMAL <span class="se">\
 </span><span class="se"></span>  --f-port <span class="m">42</span>
-</code></pre></div><h2 id="list-queue">List queue</h2>
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The Things Stack limits the application downlink queue on 10k messages per end device. When this limit is reached, no more scheduled downlinks can be placed in the queue and The Things Stack will drop them. In order to avoid hitting the application downlink queue limit and loosing downlinks, we advise scheduling downlink messages in batches.
+</div>
+
+<h2 id="list-queue">List queue</h2>
 <p>To see currently scheduled downlink messages:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices downlink list app1 dev1
 </code></pre></div><h2 id="clear-queue">Clear queue</h2>
@@ -264,10 +269,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 18 Oct 2021.
+  Last changed by Nejra Selimović on 03 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/1cd12f92182ff8cbeba4fe276786f39510bf72ed">
-      doc: Add links to MQTT and webhooks (#617)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/d395ba5d53ba290d9a62c6962b79123244ddf1e7">
+      doc: Document downlink queue limit (#646)
     </a>
 </p>
 
