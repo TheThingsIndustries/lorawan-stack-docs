@@ -1,6 +1,7 @@
 ---
 title: "Troubleshooting Installation"
 description: ""
+weight: 4
 ---
 
 This section contains help for common issues you may encounter while installing {{% tts %}}.

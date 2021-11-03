@@ -1,12 +1,12 @@
 ---
 title: "Configuration"
 description: ""
-weight: 2
+weight: 1
 ---
 
 This guide shows an example of configuring {{% tts %}} using configuration files, with an example domain `thethings.example.com` and TLS certificates from Let's Encrypt.
 
-{{< note >}} If configuring {{% tts %}} as `localhost` on a machine with no public IP or DNS address, see the [`localhost`](#running-the-things-stack-as-localhost) section. {{</ note >}}
+If configuring {{% tts %}} as `localhost` on a machine with no public IP or DNS address, see the [`localhost`](#running-the-things-stack-as-localhost) section.
 
 In addition to the written instructions below, video instructions for installing {{% tts %}} are available on [The Things Network youtube channel](https://youtu.be/bMT9n1-6dCc).
 
@@ -58,9 +58,9 @@ Download the example `ttn-lw-stack-docker.yml` for {{% tts %}} Open Source <a hr
 {{< /tabs/tab >}}
 {{< /tabs/container >}}
 
-{{< note >}} These example configuration files contain all of the configuration settings you need to run {{% tts %}} for development. Be sure to update `ttn-lw-stack-docker.yml` with your server address, generate keys in `http.cookie` and set `console.oauth.client-secret`.
+These example configuration files contain all of the configuration settings you need to run {{% tts %}} for development. Be sure to update `ttn-lw-stack-docker.yml` with your server address, generate keys in `http.cookie` and set `console.oauth.client-secret`.
 
-For an extended explanation of the configuration settings, keep reading. {{</ note >}}
+For an extended explanation of the configuration settings, keep reading.
 
 Settings in `docker-compose.yml` and `ttn-lw-stack-docker.yml` files are explained in detail in [Understanding Docker Configuration](#understanding-docker-configuration) and [Understanding The Things Stack Configuration](#understanding-the-things-stack-configuration) sections. Further, we provide tips for running {{% tts %}} in production.
 
@@ -154,13 +154,11 @@ The `ports` section exposes {{% tts %}}'s ports outside the Docker container. Po
 
 Configuration options for running {{% tts %}} are specified in the `ttn-lw-stack-docker.yml` file. This section points out the required configuration options.
 
-The example `ttn-lw-stack-docker.yml` file for {{% tts %}} Enterprise shown below contains details which help you follow this section.
+The example `ttn-lw-stack-docker.yml` file for {{% tts %}} Enterprise shown below contains details which help you follow this section. The example `ttn-lw-stack-docker.yml` file is also available for download in the [Example Configuration Files]({{< ref "/getting-started/installation/configuration#example-configuration-files" >}}) section.
 
 <details><summary>Example ttn-lw-stack-docker.yml file</summary>{{< highlight yaml "linenos=table" >}}
 {{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" >}}
 {{< /highlight >}}</details>
-
-{{< note >}} The example `ttn-lw-stack-docker.yml` file is available for download in the [Example Configuration Files]({{< ref "/getting-started/installation/configuration#example-configuration-files" >}}) section. {{</ note >}}
 
 ### License
 
@@ -176,11 +174,11 @@ If using Let's Encrypt, certificates will automatically be requested the first t
 
 See the [TLS Options configuration reference]({{< ref "/reference/configuration/the-things-stack#tls-options" >}}) for more information.
 
-{{< note >}} Make sure that you use the correct `tls` configuration depending on whether you are using Let's Encrypt or your own certificate files. {{</ note >}}
+Make sure that you use the correct `tls` configuration depending on whether you are using Let's Encrypt or your own certificate files.
 
-{{< note >}} If you are using your own certificate files, make sure to uncomment the lines that define `source` type, `root-ca`, `certificate` and `key`. The paths assigned to these do not need to be altered, because they point to the location of these files inside the Docker container, and not on your machine. {{</ note >}}
+If you are using your own certificate files, make sure to uncomment the lines that define `source` type, `root-ca`, `certificate` and `key`. The paths assigned to these do not need to be altered, because they point to the location of these files inside the Docker container, and not on your machine.
 
-{{< note >}} If you are using Let's Encrypt in a multi-tenant {{% tts %}} environment, all tenant addresses have to be specified in the `ttn-lw-stack-docker.yml` file using `tls.acme.hosts` configuration option. For example, for {{% tts %}} deployment with two tenants, TLS configuration would look like this:
+If you are using Let's Encrypt in a multi-tenant {{% tts %}} environment, all tenant addresses have to be specified in the `ttn-lw-stack-docker.yml` file using `tls.acme.hosts` configuration option. For example, for {{% tts %}} deployment with two tenants, TLS configuration would look like this:
 
 ```yml
 tls:
@@ -191,7 +189,6 @@ tls:
     hosts: ['<tenant1>.thethings.example.com', '<tenant2>.thethings.example.com']
     default-host: 'thethings.example.com'
 ```
-{{</ note >}}
 
 ### HTTP
 
@@ -209,7 +206,7 @@ You can use Sendgrid or an SMTP server. If you skip setting up an email provider
 Finally, the `console` section configures the URLs for the Web UI and the secret used
 by the console client. These tell {{% tts %}} where all its components are accessible.
 
-{{< note >}} The `client-secret` will be needed later when authorizing the Console. Be sure to set and remember it! {{</ note >}}
+The `client-secret` will be needed later when authorizing the Console. Be sure to set and remember it!
 
 {{< warning >}} Failure to correctly configure component URLs is a common problem that will prevent the stack from starting. Be sure to replace all instances of `thethings.example.com` with your domain name! {{</ warning >}}
 

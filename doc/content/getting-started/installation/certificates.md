@@ -1,7 +1,7 @@
 ---
 title: "Certificates"
 description: ""
-weight: 3
+weight: 2
 ---
 
 {{% tts %}} needs to be configured with Transport Layer Security (TLS) and HTTPS. This requires a TLS certificate and a corresponding key.
@@ -31,7 +31,7 @@ config/
     └── ttn-lw-stack-docker.yml    # configuration file for {{% tts %}}
 ```
 
-{{< note >}} If you are using Let's Encrypt in a multi-tenant {{% tts %}} environment, make sure you specify all tenant addresses in the TLS configuration of `ttn-lw-stack-docker.yml`. [Read more]({{< ref "/getting-started/installation/configuration#tls" >}}) {{</ note >}}
+If you are using Let's Encrypt in a multi-tenant {{% tts %}} environment, make sure you specify all tenant addresses in the TLS configuration of `ttn-lw-stack-docker.yml`. Read more in the [TLS section]({{< ref "/getting-started/installation/configuration#tls" >}}).
 
 Certificates will automatically be requested the first time you access {{% tts %}}. You will notice that the page takes some time to load while certificates are obtained in the background. 
 
