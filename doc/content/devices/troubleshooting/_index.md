@@ -93,10 +93,16 @@ If you did not encounter any deviations in this flow, that should be an indicati
 
 The `ns.down.data.schedule.fail` event, that can be noticed in the Live data tab of the device overview in {{% tts %}} Console, indicates the downlink scheduling failure at the Network Server.
 
-Double check your network connection. If the connection between the gateway and the Network Server is slow, downlink messages could be sent too late. For example, this can happen in case of:
+The `ns.down.data.schedule.fail` event usually occurs with the following errors:
+- `no_absolute_gateway_time`: Downlinks are being scheduled with the absolute time, and the absolute time of the Gateway Server is not in sync with the absolute time of the gateway. To sync them, a gateway has to either report its GPS time, or transmit five downlink frames in order for Gateway Server to infer its absolute time by observing RTTs.
+- `scheduling_conflict`: Devices are synchronized, i.e. a number of devices are sending joins or uplinks at the same time. To avoid device synchronization, devices need to be configured to initiate joins or send uplinks at random times or with random delays. You can also try with improving the network coverage in your area. See [Best Practices]({{< ref "/devices/best-practices#synchronization-backoff-and-jitter" >}}) for more info about device synchronization.
+
+We also advise to double check your network connection. If the connection between the gateway and the Network Server is slow, downlink messages could be sent too late. For example, this can happen in case of:
 - Cellular or satellite gateway backhauls
 - Cluster latencies
 - Gateway level issues
+
+
 
 ## Scheduling a downlink from {{% tts %}} Console is disabled with a warning `Simulation is disabled for devices that skip paload crypto`.
 
