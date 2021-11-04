@@ -132,6 +132,11 @@
     
   </li>
 
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/installation/balena/" class="">Balena</a>
+    
+  </li>
+
 </ul>
 
 
@@ -196,20 +201,12 @@
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose pull
 </code></pre></div><p>Next, you need to initialize the database of the Identity Server:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack is-db init
-</code></pre></div><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  If you receive an error running The Things Stack, make sure a The Things Stack container isn&rsquo;t already running. Use <code>docker ps</code> to see running containers.
-</div>
-
+</code></pre></div><p>If you receive an error running The Things Stack, make sure a The Things Stack container isn&rsquo;t already running. Use <code>docker ps</code> to see running containers.</p>
 <p>For the Storage Integration available in The Things Stack Enterprise, the database of the Application Server needs to be initialized as well:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack storage-db init
 </code></pre></div><p>The Things Stack Enterprise requires a tenant to be present, even if multi-tenancy is not included in the license. You create a tenant with:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack is-db create-tenant
-</code></pre></div><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  This will take the <code>tenancy.default-id</code> Tenant ID from the <a href="/docs/getting-started/installation/configuration/">configuration</a> in <code>ttn-lw-stack-docker.yml</code>. To specify another Tenant ID, use the <code>--id</code> parameter.
-</div>
-
+</code></pre></div><p>This will take the <code>tenancy.default-id</code> Tenant ID from the <a href="/docs/getting-started/installation/configuration/">configuration</a> in <code>ttn-lw-stack-docker.yml</code>. To specify another Tenant ID, use the <code>--id</code> parameter.</p>
 <p>Next, an initial <code>admin</code> user has to be created. Make sure to give it a good password.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack is-db create-admin-user <span class="se">\
 </span><span class="se"></span>  --id admin <span class="se">\
@@ -222,7 +219,7 @@
 </span><span class="se"></span>  --no-secret <span class="se">\
 </span><span class="se"></span>  --redirect-uri <span class="s2">&#34;local-callback&#34;</span> <span class="se">\
 </span><span class="se"></span>  --redirect-uri <span class="s2">&#34;code&#34;</span>
-</code></pre></div><p>Afterwards, the same needs to be done for the Console.</p>
+</code></pre></div><p>Afterwards, the same needs to be done for the Console. If running a multi-tenant environment, use option <code>--tenant-id NULL</code> to register the OAuth client for all tenants. For <code>--secret</code>, make sure to enter the same value as you set for <code>console.oauth.client-secret</code> in the <code>ttn-lw-stack-docker.yml</code> file in the <a href="/docs/getting-started/installation/configuration/">Configuration</a> step.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nv">CONSOLE_SECRET</span><span class="o">=</span><span class="s2">&#34;your-console-secret&#34;</span>
 $ <span class="nv">SERVER_ADDRESS</span><span class="o">=</span><span class="s2">&#34;your-server-address&#34;</span>
 $ docker-compose run --rm stack is-db create-oauth-client <span class="se">\
@@ -234,17 +231,7 @@ $ docker-compose run --rm stack is-db create-oauth-client <span class="se">\
 </span><span class="se"></span>  --redirect-uri <span class="s2">&#34;/console/oauth/callback&#34;</span> <span class="se">\
 </span><span class="se"></span>  --logout-redirect-uri <span class="s2">&#34;</span><span class="si">${</span><span class="nv">SERVER_ADDRESS</span><span class="si">}</span><span class="s2">/console&#34;</span> <span class="se">\
 </span><span class="se"></span>  --logout-redirect-uri <span class="s2">&#34;/console&#34;</span>
-</code></pre></div><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  If running a multi-tenant environment, use option <code>--tenant-id NULL</code> to register the OAuth client for all tenants.
-</div>
-
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  For <code>--secret</code>, make sure to enter the same value as you set for <code>console.oauth.client-secret</code> in the <code>ttn-lw-stack-docker.yml</code> file in the <a href="/docs/getting-started/installation/configuration/">Configuration</a> step.
-</div>
-
-<h2 id="running-the-things-stack">Running The Things Stack</h2>
+</code></pre></div><h2 id="running-the-things-stack">Running The Things Stack</h2>
 <p>Start The Things Stack with:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose up
 </code></pre></div><p>This starts the stack, so you will see the stack logs being printed to your terminal. You can also start the stack in detached mode by adding <code>-d</code> to the command above. In that case you can get logs with <a href="https://docs.docker.com/compose/reference/logs/"><code>docker-compose logs</code></a>.</p>
@@ -317,10 +304,10 @@ $ docker-compose run --rm stack is-db create-oauth-client <span class="se">\
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra on 19 Nov 2020.
+  Last changed by Ben Olayinka on 04 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/60741783ca4a6325d97c3e69eba6612176b03258">
-      doc: Improve the installation guide
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4efe30885736e9631aa2aa26043e3dac896854b7">
+      doc: Installation foreword (#645)
     </a>
 </p>
 

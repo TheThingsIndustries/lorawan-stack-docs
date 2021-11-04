@@ -132,6 +132,11 @@
     
   </li>
 
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/installation/balena/" class="">Balena</a>
+    
+  </li>
+
 </ul>
 
 
@@ -190,11 +195,7 @@
         
         <div class="content">
           <p>This guide shows an example of configuring The Things Stack using configuration files, with an example domain <code>thethings.example.com</code> and TLS certificates from Let&rsquo;s Encrypt.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  If configuring The Things Stack as <code>localhost</code> on a machine with no public IP or DNS address, see the <a href="#running-the-things-stack-as-localhost"><code>localhost</code></a> section.
-</div>
-
+<p>If configuring The Things Stack as <code>localhost</code> on a machine with no public IP or DNS address, see the <a href="#running-the-things-stack-as-localhost"><code>localhost</code></a> section.</p>
 <p>In addition to the written instructions below, video instructions for installing The Things Stack are available on <a href="https://youtu.be/bMT9n1-6dCc">The Things Network youtube channel</a>.</p>
 <details><summary>Show video</summary>
 
@@ -246,13 +247,8 @@ config/
 
 </div>
 
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>These example configuration files contain all of the configuration settings you need to run The Things Stack for development. Be sure to update <code>ttn-lw-stack-docker.yml</code> with your server address, generate keys in <code>http.cookie</code> and set <code>console.oauth.client-secret</code>.</p>
+<p>These example configuration files contain all of the configuration settings you need to run The Things Stack for development. Be sure to update <code>ttn-lw-stack-docker.yml</code> with your server address, generate keys in <code>http.cookie</code> and set <code>console.oauth.client-secret</code>.</p>
 <p>For an extended explanation of the configuration settings, keep reading.</p>
-
-</div>
-
 <p>Settings in <code>docker-compose.yml</code> and <code>ttn-lw-stack-docker.yml</code> files are explained in detail in <a href="#understanding-docker-configuration">Understanding Docker Configuration</a> and <a href="#understanding-the-things-stack-configuration">Understanding The Things Stack Configuration</a> sections. Further, we provide tips for running The Things Stack in production.</p>
 <h2 id="understanding-docker-configuration">Understanding Docker Configuration</h2>
 <p>In this section, configuring Docker is explained with an example <code>docker-compose.yml</code> file.</p>
@@ -466,7 +462,7 @@ config/
 </div>
 <h2 id="understanding-the-things-stack-configuration">Understanding The Things Stack Configuration</h2>
 <p>Configuration options for running The Things Stack are specified in the <code>ttn-lw-stack-docker.yml</code> file. This section points out the required configuration options.</p>
-<p>The example <code>ttn-lw-stack-docker.yml</code> file for The Things Stack Enterprise shown below contains details which help you follow this section.</p>
+<p>The example <code>ttn-lw-stack-docker.yml</code> file for The Things Stack Enterprise shown below contains details which help you follow this section. The example <code>ttn-lw-stack-docker.yml</code> file is also available for download in the <a href="https://www.thethingsindustries.com/docs/getting-started/installation/configuration/#example-configuration-files">Example Configuration Files</a> section.</p>
 <details><summary>Example ttn-lw-stack-docker.yml file</summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">  1
@@ -789,11 +785,6 @@ config/
 </span><span class="w">  </span><span class="k">default-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;default&#39;</span></code></pre></td></tr></table>
 </div>
 </div></details>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The example <code>ttn-lw-stack-docker.yml</code> file is available for download in the <a href="https://www.thethingsindustries.com/docs/getting-started/installation/configuration/#example-configuration-files">Example Configuration Files</a> section.
-</div>
-
 <h3 id="license">License</h3>
 <p>
 
@@ -824,19 +815,9 @@ config/
 host, and also to use it as the default host.</p>
 <p>If using Let&rsquo;s Encrypt, certificates will automatically be requested the first time you access The Things Stack. You will notice that the page takes some time to load while certificates are obtained in the background.</p>
 <p>See the <a href="https://www.thethingsindustries.com/docs/reference/configuration/the-things-stack/#tls-options">TLS Options configuration reference</a> for more information.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Make sure that you use the correct <code>tls</code> configuration depending on whether you are using Let&rsquo;s Encrypt or your own certificate files.
-</div>
-
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  If you are using your own certificate files, make sure to uncomment the lines that define <code>source</code> type, <code>root-ca</code>, <code>certificate</code> and <code>key</code>. The paths assigned to these do not need to be altered, because they point to the location of these files inside the Docker container, and not on your machine.
-</div>
-
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>If you are using Let&rsquo;s Encrypt in a multi-tenant The Things Stack environment, all tenant addresses have to be specified in the <code>ttn-lw-stack-docker.yml</code> file using <code>tls.acme.hosts</code> configuration option. For example, for The Things Stack deployment with two tenants, TLS configuration would look like this:</p>
+<p>Make sure that you use the correct <code>tls</code> configuration depending on whether you are using Let&rsquo;s Encrypt or your own certificate files.</p>
+<p>If you are using your own certificate files, make sure to uncomment the lines that define <code>source</code> type, <code>root-ca</code>, <code>certificate</code> and <code>key</code>. The paths assigned to these do not need to be altered, because they point to the location of these files inside the Docker container, and not on your machine.</p>
+<p>If you are using Let&rsquo;s Encrypt in a multi-tenant The Things Stack environment, all tenant addresses have to be specified in the <code>ttn-lw-stack-docker.yml</code> file using <code>tls.acme.hosts</code> configuration option. For example, for The Things Stack deployment with two tenants, TLS configuration would look like this:</p>
 <div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="k">tls</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="k">source</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;acme&#39;</span><span class="w">
 </span><span class="w">  </span><span class="k">acme</span><span class="p">:</span><span class="w">
@@ -844,10 +825,7 @@ host, and also to use it as the default host.</p>
 </span><span class="w">    </span><span class="k">email</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;you@thethings.example.com&#39;</span><span class="w">
 </span><span class="w">    </span><span class="k">hosts</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;&lt;tenant1&gt;.thethings.example.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&lt;tenant2&gt;.thethings.example.com&#39;</span><span class="p">]</span><span class="w">
 </span><span class="w">    </span><span class="k">default-host</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com&#39;</span><span class="w">
-</span></code></pre></div>
-</div>
-
-<h3 id="http">HTTP</h3>
+</span></code></pre></div><h3 id="http">HTTP</h3>
 <p>In the <code>http</code> section, HTTP server keys for encrypting and verifying cookies are configured, as well
 as passwords for endpoints that you may want to keep for the internal use.</p>
 <h3 id="email">Email</h3>
@@ -857,11 +835,7 @@ The Things Stack will print emails to the stack logs.</p>
 <h3 id="component-urls">Component URLs</h3>
 <p>Finally, the <code>console</code> section configures the URLs for the Web UI and the secret used
 by the console client. These tell The Things Stack where all its components are accessible.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The <code>client-secret</code> will be needed later when authorizing the Console. Be sure to set and remember it!
-</div>
-
+<p>The <code>client-secret</code> will be needed later when authorizing the Console. Be sure to set and remember it!</p>
 <div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
   Failure to correctly configure component URLs is a common problem that will prevent the stack from starting. Be sure to replace all instances of <code>thethings.example.com</code> with your domain name!
@@ -1018,10 +992,10 @@ by the console client. These tell The Things Stack where all its components are 
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 14 Oct 2021.
+  Last changed by Ben Olayinka on 04 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/fb8f66bdae133d1bc85b023b3d675a12fdbbd134">
-      doc: Add notes for configuring TLS in multi-tenant TTS env (#580)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4efe30885736e9631aa2aa26043e3dac896854b7">
+      doc: Installation foreword (#645)
     </a>
 </p>
 
