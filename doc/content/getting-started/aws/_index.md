@@ -13,4 +13,4 @@ After deploying {{% tts %}} on AWS, check the [AWS IoT]({{< ref "/integrations/c
 
 {{< figure src="available-at-amazon-badge.png" alt="available-at-amazon-badge.png" class="plain" >}}
 
-{{< note >}} Amazon's trademark is used under license from Amazon.com, Inc. or its affiliates. {{</ note >}}
+> Amazon's trademark is used under license from Amazon.com, Inc. or its affiliates.

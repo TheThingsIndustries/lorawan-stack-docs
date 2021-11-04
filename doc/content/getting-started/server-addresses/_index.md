@@ -26,28 +26,28 @@ The server addresses for the different {{% tts %}} deployments are listed below.
 
 To access the Console, simply enter the [server address of your deployment](#deployments) in a browser.
 
-> **Example 1**: to access the `eu1` Community Edition Console, enter `https://eu1.cloud.thethings.network` in your browser.
+**Example 1**: to access the `eu1` Community Edition Console, enter `https://eu1.cloud.thethings.network` in your browser.
 
-> **Example 2**: To access the `au1` Cloud Console, enter `https://tenant.au1.cloud.thethings.industries`, where `tenant` is your Tenant ID.
+**Example 2**: To access the `au1` Cloud Console, enter `https://tenant.au1.cloud.thethings.industries`, where `tenant` is your Tenant ID.
 
-> **Example 3**: If you installed {{% tts %}} Enterprise or Open Source, access the Console at the domain you used in place of `https://thethings.example.com`.
+**Example 3**: If you installed {{% tts %}} Enterprise or Open Source, access the Console at the domain you used in place of `https://thethings.example.com`.
 
 ## LNS
 
 The LNS gateway address is a combination of the **protocol** (wss), the **server address**, and the **port** (8887).
 
-> **Example 1**: the `eu1` Community Edition LNS address is `wss://eu1.cloud.thethings.network:8887`.
+**Example 1**: the `eu1` Community Edition LNS address is `wss://eu1.cloud.thethings.network:8887`.
 
-> **Example 2**: The LNS address for an `au1` Cloud tenant is `wss://tenant.au1.cloud.thethings.industries:8887`, where `tenant` should be replaced with your Tenant ID.
+**Example 2**: The LNS address for an `au1` Cloud tenant is `wss://tenant.au1.cloud.thethings.industries:8887`, where `tenant` should be replaced with your Tenant ID.
 
-> **Example 3**: If you installed {{% tts %}} Enterprise or Open Source, the LNS address is the domain you used in configuration, for example `wss://thethings.example.com:8887`.
+**Example 3**: If you installed {{% tts %}} Enterprise or Open Source, the LNS address is the domain you used in configuration, for example `wss://thethings.example.com:8887`.
 
 ## CUPS
 
 The CUPS gateway address is a combination of the **protocol** (https), the **server address**, and the **port** (443).
 
-> **Example 1**: the `eu1` Community Edition CUPS address is `https://eu1.cloud.thethings.network:443`.
+**Example 1**: the `eu1` Community Edition CUPS address is `https://eu1.cloud.thethings.network:443`.
 
-> **Example 2**: The CUPS address for an `au1` Cloud tenant is `https://tenant.au1.cloud.thethings.industries:443`, where `tenant` should be replaced with your Tenant ID.
+**Example 2**: The CUPS address for an `au1` Cloud tenant is `https://tenant.au1.cloud.thethings.industries:443`, where `tenant` should be replaced with your Tenant ID.
 
-> **Example 3**: If you installed {{% tts %}} Enterprise or Open Source, the CUPS address is the domain you used in configuration, for example `https://thethings.example.com:443`.
+**Example 3**: If you installed {{% tts %}} Enterprise or Open Source, the CUPS address is the domain you used in configuration, for example `https://thethings.example.com:443`.

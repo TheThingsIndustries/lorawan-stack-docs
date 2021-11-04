@@ -8,7 +8,7 @@ The streaming data integrations provide multiple formats for the delivery of app
 
 <!--more-->
 
-{{< note >}} Read about LoRaWAN message types in [The Things Network documentation](https://www.thethingsnetwork.org/docs/lorawan/message-types/). {{</ note >}}
+Read about LoRaWAN message types in [The Things Network documentation](https://www.thethingsnetwork.org/docs/lorawan/message-types/).
 
 ## JSON
 
@@ -365,7 +365,7 @@ The JSON downlink messages use the following format:
 }
 ```
 
-{{< note >}} The end device identifiers need to be supplied only to frontends that do not derive it from other sources (such as the URL for webhooks or topic name for MQTT). {{</ note >}}
+The end device identifiers need to be supplied only to frontends that do not derive it from other sources (such as the URL for webhooks or topic name for MQTT).
 
 <details><summary>Downlink message example</summary>
 

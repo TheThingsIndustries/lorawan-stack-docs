@@ -19,7 +19,7 @@ All of the webhook templates must contain the following fields which describe th
 - `info-url`: The URL of the main page of the service.
 - `documentation-url`: The URL of the documentation of the service. 
 
-{{< note >}} The difference between `documentation-url` and `info-url` is that `info-url` should lead to the home page of the service (i.e. `https://www.thethingsnetwork.org/`), while `documentation-url` should lead directly to the location of the documentation (i.e. `https://www.thethingsnetwork.org/docs/applications/example/`). {{</ note >}}
+The difference between `documentation-url` and `info-url` is that `info-url` should lead to the home page of the service (i.e. `https://www.thethingsnetwork.org/`), while `documentation-url` should lead directly to the location of the documentation (i.e. `https://www.thethingsnetwork.org/docs/applications/example/`).
 
 ## Template Fields
 

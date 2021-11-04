@@ -12,7 +12,7 @@ This section answers frequently asked questions regarding migration to {{% tts %
 
 Start migrating your devices and gateways as soon as possible! {{% ttnv2 %}} is now read-only so you cannot add new gateways, devices and applications anymore, and the final deadline for migrating is December 1, 2021, when {{% ttnv2 %}} will be shut down.
 
-> Reading the [complete Migrating to {{% tts %}} guide]({{< ref "/getting-started/migrating" >}}) can help you with the migration process.
+Reading the [complete Migrating to {{% tts %}} guide]({{< ref "/getting-started/migrating" >}}) can help you with the migration process.
 
 ### Will I still be able to register my devices and gateways on {{% tts %}} if I do not migrate them from {{% ttnv2 %}} until the migration deadline (December 1, 2021)?
 
@@ -22,7 +22,7 @@ Yes, you will be able to normally register devices and gateways on {{% tts %}} a
 
 [Packet Broker](https://packetbroker.net) is a neutral and open LoRaWAN packet broker developed by The Things Industries. Packet Broker adopts the Passive Roaming specifications, as defined by the LoRa Alliance, so it can be used to exchange traffic with other LoRaWAN networks to share coverage and improve overall network performance.
 
-> See {{% tts %}} [Packet Broker documentation]({{< ref "/getting-started/packet-broker" >}}) for detailed info about connecting {{% tts %}} to Packet Broker.
+See {{% tts %}} [Packet Broker documentation]({{< ref "/getting-started/packet-broker" >}}) for detailed info about connecting {{% tts %}} to Packet Broker.
 
 {{% ttnv2 %}}, {{% tts %}} Community Edition and {{% tts %}} Cloud are connected to Packet Broker by default. {{% tts %}} Open Source and {{% tts %}} Enterprise can also be [connected]({{< ref "/getting-started/packet-broker/connect" >}}) to Packet Broker. Traffic is then automatically exchanged between these networks. See [default Packet Broker routing tables]({{< ref "/reference/pb-routing" >}}).
 
@@ -32,7 +32,7 @@ For example, this means that you can migrate an end device from The Things Netwo
 
 Yes, TTIG can be migrated from {{% ttnv2 %}} to {{% tts %}}. Make sure you are not using the regular option of [adding gateways]({{< ref "/gateways/adding-gateways" >}}), but [gateway claiming]({{< ref "/gateways/gateway-claiming" >}}).
 
-> Read the full guide on how to [connect TTIG to {{% tts %}}]({{< ref "/gateways/thethingsindoorgateway" >}}). This guide also contains a troubleshooting section for common errors.
+Read the full guide on how to [connect TTIG to {{% tts %}}]({{< ref "/gateways/thethingsindoorgateway" >}}). This guide also contains a troubleshooting section for common errors.
 
 ### Can I delete my TTIG from {{% ttnv2 %}} Console after I have migrated it to {{% tts %}}?
 
@@ -42,9 +42,9 @@ Yes, you can delete your TTIG from {{% ttnv2 %}}, but keep in mind that you are 
 
 In a special case of migrating devices from The Things Industries V2 (SaaS) environment to {{% tts %}} Cloud, devices can be migrated with their existing session via Packet Broker, i.e. without having to re-program them (ABP) or trigger them to perform a new join (OTAA), and without having to migrate the gateway to {{% tts %}}. For all other migration scenarios, to migrate an active device session you would have to have the gateway migrated to {{% tts %}} as well.
 
-> Learn how to [Migrate Active Sessions]({{< ref "/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session" >}}).
+Learn how to [Migrate Active Sessions]({{< ref "/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session" >}}).
 
-{{< warning >}} Please keep in mind that migrating active sessions is not recommended. If you cannot access your device to trigger it to perform a new join, you can try contacting your device's manufacturer as the device might have "secret" options to enable remote access. {{</ warning >}}
+{{< note >}} Please keep in mind that migrating active sessions is not recommended. If you cannot access your device to trigger it to perform a new join, you can try contacting your device's manufacturer as the device might have "secret" options to enable remote access. {{</ note >}}
 
 ### I cannot access my gateway remotely, so I cannot migrate it to {{% tts %}} at this time. Is there anything I can do so I do not lose data after December 1, 2021?
 
@@ -64,10 +64,10 @@ In case of migrating active sessions using the `ttn-lw-migrate` tool, security k
 
 To export end device and/or application descriptions from {{% ttnv2 %}} and import them into {{% tts %}}, you cannot use `ttnctl` tool (command line tool for {{% ttnv2 %}}), but you need to use the `ttn-lw-migrate` migration tool.
 
-> Learn to work with the [migration tool]({{< ref "/getting-started/migrating/migration-tool" >}}).
+Learn to work with the [migration tool]({{< ref "/getting-started/migrating/migration-tool" >}}).
 
 ### Do all integrations from {{% ttnv2 %}} work with {{% tts %}} as well? Can I use integration guides for {{% ttnv2 %}} to implement integrations on {{% tts %}}?
 
 The short answer to this is - no. Not all integrations that were available for {{% ttnv2 %}} are available for {{% tts %}} at the moment, but they are a work in progress. All integrations that are enabled for {{% tts %}} are built from scratch and have new endpoints, so old integration guides (for {{% ttnv2 %}}) are not relevant anymore.
 
-> See [Integrations section]({{< ref "/integrations" >}}) for a complete documentation on available integrations and step-by-step guides for implementing them.
+See [Integrations section]({{< ref "/integrations" >}}) for a complete documentation on available integrations and step-by-step guides for implementing them.

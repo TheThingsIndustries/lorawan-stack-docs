@@ -10,7 +10,7 @@ This section explains how to configure a Pub/Sub integration using the built-in 
 
 Creating a Pub/Sub integration with the built in MQTT client requires you to have an MQTT server running with an available endpoint. [Mosquitto](https://mosquitto.org/) is a popular open source MQTT server you may use, but {{% tts %}} MQTT client works with any other MQTT server too.
 
-{{< note >}} No API key is needed for Pub/Sub messaging. All messages received by the Application Server are assumed to be authorized, so be sure to configure appropriate security on your MQTT server. {{</ note >}}
+No API key is needed for Pub/Sub messaging. All messages received by the Application Server are assumed to be authorized, so be sure to configure appropriate security on your MQTT server.
 
 In your application, select the **Pub/Subs** submenu from the **Integrations** side menu. Clicking on the **+ Add Pub/Sub** button will open the Pub/Sub creation screen.
 

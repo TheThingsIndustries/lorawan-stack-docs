@@ -24,17 +24,13 @@ First, you need to **Choose a device to start a project**. Choose **LoRa**.
 
 You will be presented with a list of LoRaWAN networks you can connect your devices from and a list of device models you can connect to Cayenne. Scroll through the list of networks on the left and choose **The Things Network**, then select the model of your end device.
 
-{{< note >}} You can choose the device model, but you can also choose **Cayenne LPP**. Most of devices in the list are associated with the Cayenne LPP codec, but if you are experiencing issues, try using the **Cayenne LPP** instead.
-
-In this guide, we chose **Cayenne LPP**. {{</ note >}}
+You can choose the device model, but you can also choose **Cayenne LPP**. If you choose a device model and you start experiencing issues, try using the **Cayenne LPP** instead. In this guide, we chose **Cayenne LPP**.
 
 {{< figure src="choose-ttn-device.png" alt="Choose network and device model" >}}
 
 To add your device, you will need to give it a **Name** (you can leave the pre-defined one) and provide its **DevEUI**. 
 
-Since in this guide we assume your end device is already connected to {{% tts %}}, choose **Already Registered** for the **Activation Mode**.
-
-{{< note >}} If your device is not connected to {{% tts %}}, see [Adding Devices]({{< ref "/devices/adding-devices" >}}) section for instructions on how to register it. {{</ note >}}
+Since in this guide we assume your end device is already connected to {{% tts %}}, choose **Already Registered** for the **Activation Mode**. If your device is not connected to {{% tts %}}, see [Adding Devices]({{< ref "/devices/adding-devices" >}}) section for instructions on how to register it.
 
 What you choose under **Tracking &#8594; Location** depends on the model of your device, i.e. if it can provide location coordinates or not. If you choose **This device doesn't move**, you will need to provide a static location of your device.
 
@@ -50,7 +46,7 @@ The **Data** tab will show the incoming live data, and you will be able to see h
 
 {{< figure src="device-overview.png" alt="Device overview" >}}
 
-{{< note >}} Note the **Last data packet sent: - -** in the bottom of the image below, indicating that {{% tts %}} data still has not reached Cayenne. {{</ note >}}
+Note the **Last data packet sent: - -** in the bottom of the image below, indicating that {{% tts %}} data still has not reached Cayenne.
 
 ## Configure {{% tts %}}
 
@@ -60,13 +56,13 @@ To integrate, you only need to fill out the **Webhook ID** field. The **Client I
 
 {{< figure src="cayenne-webhook-template.png" alt="Cayenne Webhook template" >}}
 
-{{< note >}} To see the values of all parameters of the Cayenne integration, click on the integration after you created it with the Webhook template. {{</ note >}}
+To see the values of all parameters of the Cayenne integration, click on the integration after you created it with the Webhook template.
 
 ## Monitor Your Data
 
 As soon as new uplink message containing CayenneLPP-encoded sensor data is sent from your end device, the widgets showing this data will automatically load on your device's Cayenne dashboard, enabling you to monitor your data in a user friendly way.
 
-{{< note >}} **RSSI** and **SNR** are loaded from uplink message metadata. {{</ note >}}
+**RSSI** and **SNR** are loaded from uplink message metadata.
 
 You can see the time of the arrival of the last message in the bottom.
 

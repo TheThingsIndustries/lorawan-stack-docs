@@ -33,7 +33,7 @@ Fill in the **Email address** field with a valid email, needed for your data to 
 
 If you are testing some random setups (like launching and tracking an air balloon) and you do not want your mapping results to contribute to the main TTN Mapper network coverage map, provide the **Experiment name** field as well.
 
-{{< note >}} To read more about experiments, read the **Experiments** section [here](https://docs.ttnmapper.org/integration/tts-integration-v3.html). {{</ note >}}
+To read more about experiments, read the **Experiments** section [here](https://docs.ttnmapper.org/integration/tts-integration-v3.html).
 
 Finish by clicking the **Create ttn mapper webhook** button.
 

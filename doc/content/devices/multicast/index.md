@@ -35,9 +35,9 @@ $ ttn-lw-cli end-devices create app1 mc1 \
   --supports-class-c # or --supports-class-b
 ```
 
-{{< note >}} A multicast group cannot be converted to a normal unicast device or the other way around. {{</ note >}}
+Please note that a multicast group cannot be converted to a normal unicast device or the other way around.
 
-{{< note >}} Since multicast does not support uplink, the Network Server does not know a downlink path. Therefore, you need to specify a downlink path when scheduling downlink message. {{</ note >}}
+{{< note >}} Since multicast does not support uplink, the Network Server does not know a downlink path. Therefore, you need to specify a downlink path when scheduling a downlink message. {{</ note >}}
 
 ## Example
 

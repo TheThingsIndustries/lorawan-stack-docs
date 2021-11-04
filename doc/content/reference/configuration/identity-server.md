@@ -123,7 +123,7 @@ It is also possible to disable uploads:
 
 By default, users can register their own user accounts. User accounts can also be registered by admin users in the network. The user registration process can be customized by requiring approval by admin users, requiring email validation or by requiring new users to be invited by existing users.
 
-- `is.user-registration.enabled` {{< new-in-version "3.11" >}}: Enable user registration. If user registration is disabled, admin users can still create users. 
+- `is.user-registration.enabled`: Enable user registration. If user registration is disabled, admin users can still create users. 
 - `is.user-registration.admin-approval.required`: Require admin approval for new users
 - `is.user-registration.contact-info-validation.required`: Require contact info validation for new users
 - `is.user-registration.invitation.required`: Require invitations for new users
@@ -136,8 +136,8 @@ There are several options to customize the requirements for user passwords.
 - `is.user-registration.password-requirements.min-length`: Minimum password length
 - `is.user-registration.password-requirements.min-special`: Minimum number of special characters
 - `is.user-registration.password-requirements.min-uppercase`: Minimum number of uppercase letters
-- `is.user-registration.password-requirements.reject-common` {{< new-in-version "3.12.1" >}}: Reject common passwords
-- `is.user-registration.password-requirements.reject-user-id` {{< new-in-version "3.12.1" >}}: Reject passwords that contain user ID
+- `is.user-registration.password-requirements.reject-common`: Reject common passwords
+- `is.user-registration.password-requirements.reject-user-id`: Reject passwords that contain user ID
 
 ## User Rights Options
 

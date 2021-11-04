@@ -45,9 +45,7 @@ Connect one side of an Ethernet cable to the LAN port of the CloudGate, and the 
    
 Now, open a web browser and navigate to to `192.168.1.1`.
    
-Log in using `admin` as both a username and a password.
-
-{{< note >}} It is highly recommended to change the default username and password. This can be done in the settings under the **System** tab. {{</ note >}}
+Log in using `admin` as both a username and a password. It is highly recommended to change the default username and password. This can be done in the settings under the **System** tab.
 
 Navigate to the **Home** tab and check if the CloudGate is connected.
 
@@ -73,7 +71,7 @@ Go to **Home &#8594; System Information** and make sure that the **Basics Statio
 
 Create a gateway by following the instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}).
 
-{{< note >}} The Gateway EUI is the MAC address of the CloudGate with `FFFE` in the middle. For example, if the gateway's MAC address is `1234567890AB`, the Gateway EUI is `123456FFFE7890AB`. {{</ note >}}
+The Gateway EUI is the MAC address of the CloudGate with `FFFE` in the middle. For example, if the gateway's MAC address is `1234567890AB`, the Gateway EUI is `123456FFFE7890AB`.
 
 ### Create an API key
 

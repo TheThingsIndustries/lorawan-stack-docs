@@ -22,4 +22,4 @@ Update the server address in the gateway configuration settings.
 
 Once your gateways are migrated, the traffic will be routed directly to {{% tts %}}.
 
-{{< note >}} If you migrated your end devices and gateways from {{% ttnv2 %}} (The Things Network V2 or The Things Industries V2 (SaaS), their traffic might still end up in {{% ttnv2 %}}. If this occurs, disable the devices in {{% ttnv2 %}} by deleting their session keys, or deleting the application completely. {{</ note >}}
+If you migrated your end devices and gateways from {{% ttnv2 %}} (The Things Network V2 or The Things Industries V2 (SaaS), their traffic might still end up in {{% ttnv2 %}}. If this occurs, disable the devices in {{% ttnv2 %}} by deleting their session keys, or deleting the application completely.

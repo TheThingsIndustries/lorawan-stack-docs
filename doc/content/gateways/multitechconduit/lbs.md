@@ -3,7 +3,7 @@ title: "Connect Multitech Conduit with LoRa Basics™ Station"
 description: ""
 ---
 
-This section contains instructions for connecting the Multitech Conduit AEP to {{% tts %}} using {{% lbs %}}.
+This section contains instructions for connecting the Multitech Conduit AEP to {{% tts %}} using [{{% lbs %}}]({{< ref "/gateways/lora-basics-station" >}}).
 
 <!--more-->
 

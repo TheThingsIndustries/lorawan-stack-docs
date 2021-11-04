@@ -58,7 +58,7 @@ To decode the payload that is being sent from your end device in uplink messages
 - to create an [uplink payload formatter]({{< ref "/integrations/payload-formatters" >}}) on {{% tts %}} (with a [Ubidots-friendly](https://ubidots.com/docs/hw/#send-data-to-a-device) format)
 - to edit the pre-loaded sample decoder on Ubidots in a way that it decodes the Base64-encoded raw payload received from {{% tts %}} in `uplink_message.frm_payload` field
 
-{{% note %}} In this section, we show you an example of how to do the first option. The pre-loaded sample payload decoder on Ubidots contains comments which can help you decode your payload either way. {{</ note>}}
+In this section, we show you an example of how to do the first option. The pre-loaded sample payload decoder on Ubidots contains comments which can help you decode your payload either way.
 
 If you are using an uplink payload formatter on {{% tts %}} to decode your payload, the decoded values will be contained in the `uplink_message.decoded_payload` field of your uplink message. See examples below.
 
@@ -142,7 +142,7 @@ let bytes =  Buffer.from(args['uplink_message']['frm_payload'], 'base64');
 var decoded_payload = decodeUplink(bytes)['data'];
 ```
 
-{{< note >}} You can find Ubidots' pre-loaded sample payload decoder in your newly created plugin's menu, if you navigate to **Decoder** on the left and scroll down to the **Decoding Function** window. There you can edit it and finish with **Save & Make Live**. {{</ note >}}
+You can find Ubidots' pre-loaded sample payload decoder in your newly created plugin's menu, if you navigate to **Decoder** on the left and scroll down to the **Decoding Function** window. There you can edit it and finish with **Save & Make Live**.
 
 {{< figure src="decoding-function.png" alt="Ubidots decoder function" >}}
 
@@ -160,7 +160,7 @@ Paste the **Plugin ID** and **Ubidots token** values from Ubidots.
 
 {{< figure src="ubidots-integration.png" alt="Ubidots webhook template" >}}
 
-{{< note >}} To see the values of all parameters of the Ubidots integration, click on the integration after you created it with the Webhook template. {{</ note >}}
+To see the values of all parameters of the Ubidots integration, click on the integration after you created it with the Webhook template.
 
 ## Monitor Your Data
 

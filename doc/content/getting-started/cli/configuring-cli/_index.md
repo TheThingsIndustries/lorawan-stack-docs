@@ -62,18 +62,16 @@ $ tti-lw-cli.exe use thethings.example.com
 
 {{< /tabs/container >}}
 
-This will generate the CLI configuration and save it to a file named `.ttn-lw-cli.yml`. By default, the file is saved on the current directory, add the `--user` flag to save it under the user `.config` directory.
+This will generate the CLI configuration and save it to a file named `.ttn-lw-cli.yml`.
 
-{{< note >}}
-The default configuration file for both `ttn-lw-cli` and `tti-lw-cli` CLI versions is named `.ttn-lw-cli.yml`.
-{{</ note >}}
-
-{{< note >}}
-If you can't find the generated `.ttn-lw-cli.yml` file, take a look at your terminal. The last `INFO` line in response to running the command will contain the location of the generated file:
+By default, the file is created in the current directory. Add the `--user` flag to save it under the user's `.config` directory. The last `INFO` line in response to running the command will contain the location of the generated file:
 
 ```bash
 INFO	Config file for eu1.cloud.thethings.network written in /home/user/.config/.ttn-lw-cli.yml
 ```
+
+{{< note >}}
+The default configuration file for both `ttn-lw-cli` and `tti-lw-cli` CLI versions is named `.ttn-lw-cli.yml`.
 {{</ note >}}
 
 Once you have the configuration file, proceed to [Step 2 - Configure CLI](#step-2---configure-the-cli) to pass the configuration file to the CLI.
@@ -90,10 +88,7 @@ If you are using a [custom certificate authority]({{< ref "/getting-started/inst
 
 If the configuration file already exists and you run the command to generate it again, it will not be overwritten by default and an error will be printed instead. Use `--overwrite` to overwrite the existing configuration file.
 
-{{< note >}} You can also use the `--grpc-port` and `--oauth-server-address` flags to override the default values for the gRPC port and the OAuth server address. These are not needed for standard deployments.
-
-An example of having to specify the `--oauth-server-address` is if you are using an `https` port other than `443` (for example if you are [running {{% tts %}} on localhost]({{< ref "/getting-started/installation/configuration#running-the-things-stack-as-localhost" >}})). If running {{% tts %}} on localhost, you need to append `--oauth-server-address="https://localhost:8885/oauth` when running the CLI.
-{{</ note >}}
+You can also use the `--grpc-port` and `--oauth-server-address` flags to override the default values for the gRPC port and the OAuth server address. Note that these are not needed for standard deployments. An example of having to specify the `--oauth-server-address` is if you are using an `https` port other than `443`, for example if you are [running {{% tts %}} on localhost]({{< ref "/getting-started/installation/configuration#running-the-things-stack-as-localhost" >}}). In case of running {{% tts %}} on localhost, you need to append `--oauth-server-address="https://localhost:8885/oauth` when running the CLI.
 
 ### Manually create configuration file
 

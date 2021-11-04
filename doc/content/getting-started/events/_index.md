@@ -48,7 +48,7 @@ $ curl https://thethings.example.com/api/v3/events \
   --data '{"identifiers":[{"application_ids":{"application_id":"app1"}},{"gateway_ids":{"gateway_id":"gtw1"}}]}'
 ```
 
-{{< note >}} The created API key for events is highly privileged - do not use it if you don't need it for events. {{</ note >}}
+{{< note >}} The created API key for events is highly privileged - do not use it if you do not need it for events. {{</ note >}}
 
 ## Example: Join Flow
 

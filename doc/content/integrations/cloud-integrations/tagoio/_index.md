@@ -17,9 +17,7 @@ aliases: ["/integrations/cloud-integrations/tagoio/tagoio-setup", "/integrations
 
 Log in to your TagoIO user account and click the **Devices** button on the left hand menu. 
 
-The list of available connectors will pop out immediately if you do not own any devices. 
-
-{{< note >}} If you already own some devices on TagoIO, select **Add Device** in the upper right to add a new device. {{</ note >}}
+The list of available connectors will pop out immediately if you do not own any devices. If you already own some devices on TagoIO, select **Add Device** in the upper right to add a new device.
 
 Choose **LoRaWAN TTI** connector and then select **Custom The Things Industries**.
 
@@ -53,6 +51,6 @@ Fill in the **Webhook ID** field, and then paste the TagoIO service authorizatio
 
 {{< figure src="creating-a-webhook.png" alt="TagoIO webhook" >}}
 
-{{< note >}} To see the values of all parameters of the TagoIO integration, click on the integration after you created it with the Webhook template. {{</ note >}}
+To see the values of all parameters of the TagoIO integration, click on the integration after you created it with the Webhook template.
 
 After following these steps, you will see messages arriving in the **Live Inspector** tab in TagoIO.

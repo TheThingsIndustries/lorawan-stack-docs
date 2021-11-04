@@ -24,9 +24,9 @@ $ ttn-lw-cli end-devices set app1 dev1 --supports-class-c
 
 This will enable the Class C downlink scheduling of the device. That's it! Downlink messages are now scheduled as soon as possible.
 
-To disable Class C scheduling, reset with `--supports-class-c=false`.
+For unicast devices, Class C downlink scheduling starts after the end device sends an uplink in the session. This means that an OTAA end device should send an uplink message after receiving the join-accept in order to enable Class C downlink scheduling.
 
-{{< note >}} For unicast devices, Class C downlink scheduling starts after the end device sends an uplink in the session. This means that an OTAA end device should send an uplink message after receiving the join-accept in order to enable Class C downlink scheduling. {{</ note >}}
+To disable Class C scheduling, reset with `--supports-class-c=false`.
 
 ## Multicast Group
 

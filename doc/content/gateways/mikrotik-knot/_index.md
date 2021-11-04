@@ -27,21 +27,19 @@ Create a gateway by following the instructions for [Adding Gateways]({{< ref "/g
 
 The MikroTik Routerboard exposes a WiFi Access Point (AP) with SSID `MikroTik-xxxxxx`, where `xxxxxx` are the last 6 digits of the device's MAC address. Use your PC, tablet or smartphone to connect to this AP. You will not need a password to connect to this AP. 
 
-{{< note >}} By opening your browser to `http://192.168.88.1/webfig` you will be able to access the RouterOS web interface and configure your gateway device. {{</ note >}}
+By opening your browser to `http://192.168.88.1/webfig` you will be able to access the RouterOS web interface and configure your gateway device.
 
-![MikroTik-portal.png](portal.png)
+{{< figure src="portal.png" alt="MikroTik portal" class="plain" >}}
 
 Select **LoRa** on the left hand menu. The status of the gateway should be **Disabled** - if needed, press the **D** button to disable it.
 
-![MikroTik-portal-lora.png](portal-lora.png)
+{{< figure src="portal-lora.png" alt="MikroTik LoRa portal" class="plain" >}}
 
-{{< note >}}
 The **Gateway ID** you see here is the **Gateway EUI** you need to register the gateway in The Things Stack.
-{{</ note >}}
 
 From the top menu, select the **Servers** tab and press the **Add New** button.
 
-![MikroTik-server](servers.png)
+{{< figure src="servers.png" alt="Servers" class="plain" >}}
 
 Edit the server parameters.
 
@@ -52,11 +50,11 @@ Edit the server parameters.
 
 Press **OK** to save the parameters.
 
-![MikroTik-paramters](parameters.png)
+{{< figure src="parameters.png" alt="MikroTik parameters" class="plain" >}}
 
 From the top menu, select the **Devices** tab. Click the **Gateway ID** to configure the gateway.
 
-![MikroTik-Devices](portal-lora-disable.png)
+{{< figure src="portal-lora-disable.png" alt="MikroTik devices" class="plain" >}}
 
 In the device settings, click the **Network Servers** drop-down menu to view available servers. Choose the server you created in the previous step.
 
@@ -66,10 +64,11 @@ Press the **E** button to enable the gateway device (it is enabled when **E** be
 
 If your configuration was successful, your gateway will connect to {{% tts %}} after a couple of seconds.
 
-## Set up LTE-M
-Connect an external antenna to the LTE-M antenna connector.
+{{< figure src="KNOT-antenna.png" alt="KNOT antennas" class="plain float" >}}
 
-<img src="KNOT-antenna.png" alt="KNOT Antennas"	title="KNOT Antennas" width="250" />
+## Set up LTE-M
+
+Connect an external antenna to the LTE-M antenna connector.
 
 Go to [**Interfaces**](http://192.168.88.1/webfig/#Interfaces), click on **PPP-out1** and fill out the **APN settings** of your operator.
 

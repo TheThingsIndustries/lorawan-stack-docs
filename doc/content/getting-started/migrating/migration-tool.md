@@ -14,7 +14,7 @@ This tool is used for exporting descriptions of end devices and applications to 
 
 The migration tool can be installed using package managers or manually from binary files. The following subsections contain instructions for recommended installation methods depending on your OS.
 
-{{< note >}} We highly recommend installing or upgrading to `ttn-lw-migrate` version `0.5.0` or newer, because some features like session migration are not available for prior versions. {{</ note >}}
+We highly recommend installing or upgrading to `ttn-lw-migrate` version `0.5.0` or newer, because some features like session migration are not available for prior versions.
 
 ### macOS
 
@@ -52,11 +52,9 @@ Extract the folder from ZIP archive and enter the folder. Double-click to run th
 
 After this, you will be notified that you can run `ttn-lw-migrate` from the command prompt. 
 
-{{< note >}} To use the `ttn-lw-migrate` tool after successful installation, use your terminal or command prompt to navigate to the folder where it is installed and run the commands from there.
+## Using the Migration Tool
 
-Run `ttn-lw-migrate help` to see all available commands and flags. {{</ note >}}
-
-## List Available Sources
+To use the `ttn-lw-migrate` tool after successful installation, use your terminal or command prompt to navigate to the folder where it is installed and run the commands from there. Run `ttn-lw-migrate help` to see all available commands and flags.
 
 To list available sources that you can migrate your end devices and applications from:
 
@@ -66,4 +64,4 @@ $ ttn-lw-migrate sources
 
 Currently, supported sources are `ttnv2` and `chirpstack`.
 
-{{< note >}} For detailed instructions on migrating from {{% ttnv2 %}} and ChirpStack, read [Migrating End Devices from V2]({{< ref "/getting-started/migrating/migrating-from-v2" >}}) and [Migrating End Devices from ChirpStack]({{< ref "/getting-started/migrating/migrate-from-chirpstack" >}}) guides. {{</ note >}}
+For detailed instructions on migrating from {{% ttnv2 %}} and ChirpStack, read [Migrating End Devices from V2]({{< ref "/getting-started/migrating/migrating-from-v2" >}}) and [Migrating End Devices from ChirpStack]({{< ref "/getting-started/migrating/migrate-from-chirpstack" >}}) guides.

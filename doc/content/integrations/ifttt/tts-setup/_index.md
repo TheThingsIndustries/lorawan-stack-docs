@@ -8,11 +8,9 @@ Follow this section to create a Webhook integration with the **http in** node fr
 
 <!--more-->
 
-{{< note >}} This section follows the [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}) guide. {{</ note >}}
+This section follows the [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}) guide.
 
-Give a name to your webhook by filling in the **Webhook ID** field. 
-
-For the **Webhook format**, choose **JSON**.
+Give a name to your webhook by filling in the **Webhook ID** field. For the **Webhook format**, choose **JSON**.
 
 Enter the **Base URL** value according to your Node-RED deployment.
 

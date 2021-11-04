@@ -33,7 +33,7 @@ In addition to the written instructions below, a video with instructions for add
 
 To use the device repository, make sure the **From the LoRaWAN Device Repository** tab is selected. Then, select the **Brand**, **Model**, **Hardware Version**, **Software Version**, and **Region** for your device.
 
-{{< note "If your device is not in the device repository, see [Manually Create End Device](#manually-create-end-device) below." />}}
+If your device is not in the device repository, see [Manually Create End Device](#manually-create-end-device) below.
 
 {{< figure src="device-repo.png" alt="Creating a new device with the Device Repository" >}}
 
@@ -53,11 +53,7 @@ For LoRaWAN version 1.1.x devices, you will also see a **NwkKey** field. If it i
 
 {{< figure src="device-repo-settings.png" alt="Device information" >}}
 
-Finally, give your device a unique **End device ID**, and click the **Register end device** button to create the end device.
-
-{{< note >}}
-See [ID and EUI constraints]({{< ref "reference/id-eui-constraints" >}}) for guidelines about choosing a unique ID.
-{{</ note >}}
+Finally, give your device a unique **End device ID**, and click the **Register end device** button to create the end device. See [ID and EUI constraints]({{< ref "reference/id-eui-constraints" >}}) for guidelines about choosing a unique ID.
 
 {{< figure src="device-repo-settings.png" alt="Device information" >}}
 
@@ -113,9 +109,7 @@ If using an External Join Server, enter its address in the **Join Server** field
 
 Over-the-Air-Activation (OTAA) is the secure, scalable way to activate LoRaWAN devices. All commercially available LoRaWAN devices support OTAA, and it is selected by default. If you are using a custom or DIY device, and cannot use OTAA, see the [Activation by Personalisation](#abp-devices) section.
 
-{{< note >}}
 The example in this guide covers adding a device using [OTAA]({{< ref "reference/glossary#over-the-air-activation" >}}) (the most secure and preferred activation method) and [LoRaWAN version]({{< ref "reference/glossary#lorawan-version" >}}) MAC V1.0.2 (the most common LoRaWAN version, although newer versions are better and more secure). Names and keys may vary slightly for other versions, but the process is the same and any differences are noted.
-{{</ note >}}
 
 Enter your **DevEUI**. This should be provided by your manufacturer for commercial devices. If your device is programmable, you may generate an EUI using the **Generate** button, and program it in your device.
 
@@ -123,11 +117,7 @@ Enter a **JoinEUI/AppEUI** if provided by your manufacturer. If your device is p
 
 If your manufacturer provides an **AppKey**, enter it. Otherwise, use the **Generate** button to create one, and program it in to your device.
 
-Give your device a unique **End device ID**.
-
-{{< note >}}
-See [ID and EUI constraints]({{< ref "reference/id-eui-constraints" >}}) for guidelines about choosing a unique ID.
-{{</ note >}}
+Give your device a unique **End device ID**. See [ID and EUI constraints]({{< ref "reference/id-eui-constraints" >}}) for guidelines about choosing a unique ID.
 
 {{< figure src="manual-network-settings-otaa.png" alt="Manually create OTAA end device" >}}
 
@@ -153,11 +143,7 @@ For LoRaWAN versions 1.0.x, generate an **AppSKey** and **NwkSKey** and program 
 
 For LoRaWAN versions 1.1.x, generate an **AppSKey**, **FNwkSIntKey**, **SNwkSIntKey**, and **NwkSEncKey**, and program them in your device.
 
-Finally, give your device a unique **End device ID**.
-
-{{< note >}}
-See [ID and EUI constraints]({{< ref "reference/id-eui-constraints" >}}) for guidelines about choosing a unique ID.
-{{</ note >}}
+Finally, give your device a unique **End device ID**. See [ID and EUI constraints]({{< ref "reference/id-eui-constraints" >}}) for guidelines about choosing a unique ID.
 
 {{< figure src="manual-network-settings-abp.png" alt="Manually create OTAA end device" >}}
 
@@ -208,15 +194,17 @@ $ ttn-lw-cli end-devices create app1 dev1 \
   --lorawan-phy-version 1.0.3-a
 ```
 
-This will create a LoRaWAN 1.0.3 end device `dev1` in application `app1` with the `EU_863_870` frequency plan.
+This will create a LoRaWAN 1.0.3 end device `dev1` in application `app1` with the `EU_863_870` frequency plan. Please note that the `AppEUI` is returned as `join_eui` ({{% tts %}} uses LoRaWAN 1.1 terminology).
+
+{{< note >}} If you do not have a `JoinEUI` or `AppEUI`, you could use `0000000000000000`. 
+
+Some devices do not support using `0000000000000000` as a JoinEUI/AppEUI, because technically, this value is invalid. However, {{% tts %}} supports using this value to indicate the absence of an actual JoinEUI/AppEUI.
+
+If your device gives an error when using `0000000000000000`, try using the DevEUI value as a JoinEUI/AppEUI, both in {{% tts %}} and on your device. {{</ note >}}
+
+You can also pass `--with-root-keys` to have root keys generated. In this case, you do not need to specify `--root-keys.app-key.key`.
 
 The end device should now be able to join the private network.
-
-{{< note >}} If you do not have a `JoinEUI` or `AppEUI`, it is okay to use `0000000000000000`. Be sure to use the same `JoinEUI` in your device as you enter in {{% tts %}}. {{</ note >}}
-
-{{< note >}} The `AppEUI` is returned as `join_eui` ({{% tts %}} uses LoRaWAN 1.1 terminology). {{</ note >}}
-
-{{< note >}} You can also pass `--with-root-keys` to have root keys generated. In this case, you do not need to specify `--root-keys.app-key.key`. {{</ note >}}
 
 **LoRaWAN 1.1.x:**
 
@@ -235,11 +223,15 @@ $ ttn-lw-cli end-devices create app1 dev1 \
 
 This will create a LoRaWAN 1.1.0 end device `dev1` in application `app1` with the `EU_863_870` frequency plan.
 
+{{< note >}} If you do not have a `JoinEUI` or `AppEUI`, you could use `0000000000000000`. 
+
+Some devices do not support using `0000000000000000` as a JoinEUI/AppEUI, because technically, this value is invalid. However, {{% tts %}} supports using this value to indicate the absence of an actual JoinEUI/AppEUI.
+
+If your device gives an error when using `0000000000000000`, try using the DevEUI value as a JoinEUI/AppEUI, both in {{% tts %}} and on your device. {{</ note >}}
+
+You can also pass `--with-root-keys` to have root keys generated. In this case, you do not need to specify `--root-keys.app-key.key` or `root-keys.nwk-key.key`.
+
 The end device should now be able to join the private network.
-
-{{< note >}} If you do not have a `JoinEUI` or `AppEUI`, it is okay to use `0000000000000000`. Be sure to use the same `JoinEUI` in your device as you enter in {{% tts %}}. {{</ note >}}
-
-{{< note >}} You can also pass `--with-root-keys` to have root keys generated. In this case, you do not need to specify `--root-keys.app-key.key` or `root-keys.nwk-key.key`. {{</ note >}}
 
 ### Activation By Personalization (ABP) Device
 
@@ -258,9 +250,9 @@ $ ttn-lw-cli end-devices create app1 dev2 \
   --session.keys.nwk-s-key.key B7F3E161BC9D4388E6C788A0C547F255
 ```
 
-{{< note >}} The `NwkSKey` is returned as `f_nwk_s_int_key` ({{% tts %}} uses LoRaWAN 1.1 terminology). {{</ note >}}
+Please note that the `NwkSKey` is returned as `f_nwk_s_int_key` ({{% tts %}} uses LoRaWAN 1.1 terminology).
 
-{{< note >}} You can also pass `--with-session` to have a session generated. {{</ note >}}
+You can also pass `--with-session` to have a session generated.
 
 **LoRaWAN 1.1.x:**
 
@@ -280,7 +272,7 @@ $ ttn-lw-cli end-devices create app1 dev2 \
   --session.keys.nwk-s-enc-key.key 01020304050607080102030405060708
 ```
 
-{{< note >}} You can also pass `--with-session` to have a session generated. {{</ note >}}
+You can also pass `--with-session` to have a session generated.
 
 ### Set Device Location with the CLI
 
@@ -297,11 +289,9 @@ $ ttn-lw-cli end-devices set $APP_ID $DEVICE_ID \
   --location.altitude 500 \
 ```
 
-You can also set the end device location to be updated from various sources with the `--location.source` flag. The source of the location data can be the registry, GPS data, results of the LoRa RSSI geolocation, etc. 
+You can also set the end device location to be updated from various sources with the `--location.source` flag.
 
-{{< note >}} Use `ttn-lw-cli end-devices set app1 dev1 --help` command to see the full list of the available location sources and other relatable info. 
-
-If you set the alternative location source, the location settings you manually set will be overwritten by the automatic updates from that source. {{</ note >}}
+The source of the location data can be the registry, GPS data, results of the LoRa RSSI geolocation, etc. Use `ttn-lw-cli end-devices set app1 dev1 --help` command to see the full list of the available location sources and other relatable info. If you set the alternative location source, the location settings you manually set will be overwritten by the automatic updates from that source.
 
 The CLI will return something like:
 

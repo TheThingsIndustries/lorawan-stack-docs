@@ -3,7 +3,7 @@ title: "Connect Laird Sentrius™ RG1xx with LoRa Basics™ Station"
 description: ""
 ---
 
-This section contains instructions for connecting to {{% tts %}} using {{% lbs %}}.
+This section contains instructions for connecting to {{% tts %}} using [{{% lbs %}}]({{< ref "/gateways/lora-basics-station" >}}).
 
 <!--more-->
 

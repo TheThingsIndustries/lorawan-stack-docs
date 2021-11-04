@@ -24,9 +24,9 @@ By establishing the new session with {{% tts %}}, an OTAA device gets assigned a
 
 The **DevAddr** and some other parameters (like **RX1 Delay**) are hardcoded for ABP devices. If you do not re-program the device to change these values, you can migrate it to {{% tts %}} without its security keys, network parameters, etc. which basically means you are migrating it without its active session.
 
-{{< note >}} If you want your end device traffic to be routed via Packet Broker to {{% tts %}}, the **DevAddr** must be routable by the Packet Broker and the **RX1 Delay** value must be 5 seconds. Note that the **DevAddr** is routable only if you are using **The Things Industries V2 (SaaS)** and migrating to **{{% tts %}} Cloud**, and even that is being achieved only on customer request by contacting [The Things Industries support](mailto:support@thethingsindustries.com).
+If you want your end device traffic to be routed via Packet Broker to {{% tts %}}, the **DevAddr** must be routable by the Packet Broker and the **RX1 Delay** value must be 5 seconds. Note that the **DevAddr** is routable only if you are using **The Things Industries V2 (SaaS)** and migrating to **{{% tts %}} Cloud**, and even that is being achieved only on customer request by contacting [The Things Industries support](mailto:support@thethingsindustries.com).
 
-If you are not migrating from **The Things Industries V2 (SaaS)** to **{{% tts %}} Cloud**, Packet Broker will not be able to route your ABP device's traffic properly, so you will have to [migrate your gateway]({{< ref "/getting-started/migrating/gateway-migration" >}}) to {{% tts %}} too. Be aware that in this case, even if you do migrate your gateway, you could still be experiencing latency issues if your gateway has a high latency backhaul. {{</ note >}}
+If you are not migrating from **The Things Industries V2 (SaaS)** to **{{% tts %}} Cloud**, Packet Broker will not be able to route your ABP device's traffic properly, so you will have to [migrate your gateway]({{< ref "/getting-started/migrating/gateway-migration" >}}) to {{% tts %}} too. Be aware that in this case, even if you do migrate your gateway, you could still be experiencing latency issues if your gateway has a high latency backhaul.
 
 {{< warning >}} Note that this is **not a recommended practice**. We advise re-programming the ABP device to change the **DevAddr** to the one issued by The Things Stack and **RX1 Delay** to 5 seconds, even if you do not want your traffic to be routed by Packet Broker.
 
@@ -38,7 +38,7 @@ If you re-program the device, you will have to follow the [Migrate using the Con
 
 {{< note >}} Before exporting end devices, you can first test the execution by appending the `--dry-run` and `--verbose` flags to the commands presented in the sections below. {{</ note >}}
 
-{{< note >}} Use the `--ttnv2.resets-to-frequency-plan` flag to configure the factory preset frequencies of the device, so that it can keep working with {{% tts %}}. The list of uplink frequencies is inferred from the [Frequency Plan]({{< ref "/reference/frequency-plans" >}}). {{</ note >}}
+Use the `--ttnv2.resets-to-frequency-plan` flag to configure the factory preset frequencies of the device, so that it can keep working with {{% tts %}}. The list of uplink frequencies is inferred from the [Frequency Plan]({{< ref "/reference/frequency-plans" >}}).
 
 ### Export a Single End Device
 
@@ -132,4 +132,4 @@ If you are not migrating from **The Things Industries {{% ttnv2 %}}** to **{{% t
 
 {{< /tabs/container >}}
 
-{{< note >}} Starting from {{% tts %}} `v3.13.0` release, The Things Network community members can freely migrate their gateways from The Things Network {{% ttnv2 %}} to {{% tts %}} Community Edition, while still providing uplink and downlink coverage to The Things Network {{% ttnv2 %}}. Even if you manage to get your end device traffic routed to {{% tts %}} by Packet Broker, we recommend to migrate your gateways as soon as possible. {{</ note >}}
+The Things Network community members can freely migrate their gateways from The Things Network {{% ttnv2 %}} to {{% tts %}} Community Edition, while still providing uplink and downlink coverage to The Things Network {{% ttnv2 %}}. Even if you manage to get your end device traffic routed to {{% tts %}} by Packet Broker, we recommend to migrate your gateways as soon as possible.

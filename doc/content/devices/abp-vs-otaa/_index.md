@@ -8,13 +8,13 @@ This section can help you understand the differences between ABP and OTAA activa
 
 <!--more-->
 
-{{< note >}} Learn more about device activation in general and details about OTAA and ABP flow in [The Things Network LoRaWAN documentation](https://www.thethingsnetwork.org/docs/lorawan/end-device-activation/). {{</ note >}}
+Learn more about device activation in general and details about OTAA and ABP flow in [The Things Network LoRaWAN documentation](https://www.thethingsnetwork.org/docs/lorawan/end-device-activation/).
 
 A `DevEUI` is a 64-bit unique ID assigned to an end device by the manufacturer. This value is linked to the hardware and it cannot be altered.
 
 Unlike `DevEUI`, which identifies an end device globally, a 32-bit `DevAddr` identifies the end device within the current network and all communication after joining the network is done with it. A `DevAddr` value consists of `NwkAddr` (end device address within network) prefixed by a `NwkID` (network identifier).
 
-{{< note >}} `DevAddr` is not unique - multiple devices can have the same `DevAddr`. {{</ note >}} 
+Please keep in mind that the `DevAddr` value is not unique - multiple devices can have the same `DevAddr`.
 
 A `DevAddr` and session keys are assigned to an end device during a procedure called **activation**. LoRaWAN supports two modes of activating an end device: **ABP (Activation By Personalization)** and **OTAA (Over-The-Air Activation)**.
 

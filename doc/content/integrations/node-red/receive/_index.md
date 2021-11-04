@@ -16,7 +16,7 @@ In the **Connection** tab, under **Server**, provide the address of the MQTT ser
 
 Provide the port in the **Port** field next to it, to define if you want an insecure or a TLS-secured connection with the server.
 
-{{< note >}} In this example, TLS-secured connection is to be established, so the **Port** value is set to 8883. In this case you should also check the **Enable secure (SSL/TLS) connection** box. {{</ note >}}
+In this example, TLS-secured connection is to be established, so the **Port** value is set to 8883. In this case you should also check the **Enable secure (SSL/TLS) connection** box.
 
 {{< figure src="mqtt_in_node_connection.png" alt="Configuring MQTT Server connection information" >}}
 
@@ -26,11 +26,9 @@ In the **Security** tab, enter the **Username** and **Password** according to th
 
 Go back to **Properties** and set the **Topic** value to `#` (to subscribe to all topics). 
 
-{{< note >}} A full list of topics that you can subscribe to can be found in [MQTT Server]({{< ref "/integrations/mqtt#mqtt-clients" >}}) guide.
+A full list of topics that you can subscribe to can be found in [MQTT Server]({{< ref "/integrations/mqtt#mqtt-clients" >}}) guide. Instead of subscribing to all uplink topics, you can choose the ones you want to listen. For example, you can subscribe to `v3/{application_id}/devices/{device_id}/up` to only listen to uplink messages.
 
-Instead of subscribing to all uplink topics, you can choose the ones you want to listen. For example, you can subscribe to `v3/{application_id}/devices/{device_id}/up` to only listen to uplink messages.
-
-Also, make sure to read a [note on using the tenant ID]({{< ref "/integrations/mqtt#note-on-using-the-tenant-id" >}}) in multi-tenant {{% tts %}} environments, because these topics can have a slightly different format. {{</ note >}}
+Also, make sure to read a [note on using the tenant ID]({{< ref "/integrations/mqtt#note-on-using-the-tenant-id" >}}) in multi-tenant {{% tts %}} environments, because these topics can have a slightly different format.
 
 Select the **QoS** value from the listed options and set **Output** parameter to **a parsed JSON object**. 
 
@@ -48,4 +46,4 @@ Click on **debug** icon in the upper right corner to see the published event mes
 
 {{< figure src="receive_uplink_flow.png" alt="Final flow scheme" >}}
 
-{{< note >}} If you do not see any output in the **debug** window on the right, make sure you activated your debug nodes. {{</ note >}}
+If you do not see any output in the **debug** window on the right, make sure you activated your debug nodes.

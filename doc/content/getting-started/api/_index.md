@@ -12,8 +12,8 @@ A complete list of API endpoints is available in the [API Reference]({{< ref "re
 {{< warning >}} If you are not getting the fields you expect in API responses, see the [Field Masks]({{< relref "field-mask" >}}) reference.
 {{</ warning >}}
 
-{{< note >}} If you're having trouble with the HTTP API, you can always inspect requests in the Console using your browser's inspector. All of the data displayed in the Console is pulled using HTTP API requests, and this should give you some insight in to how they are formed.
-{{</ note >}}
+
+If you are having trouble with the HTTP API, you can always inspect requests in the Console using your browser's inspector. All of the data displayed in the Console is pulled using HTTP API requests, and this should give you some insight in to how they are formed.
 
 ## Best Practices
 
@@ -77,7 +77,7 @@ $ curl --location \
   'https://thethings.example.com/api/v3/events'
 ```
 
-{{< note >}} See [here](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events) for a description of the `text/event-stream` MIME type. {{</ note >}}
+See [here](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events) a description of the `text/event-stream` MIME type.
 
 ### Schedule Downlink
 
@@ -115,9 +115,9 @@ $ curl --location \
   'https://thethings.example.com/api/v3/as/applications/app1/devices/dev1/down/push'
 ```
 
-{{< note >}} Downlinks scheduled using the `decoded_payload` Payload Formatter field are encrypted in the Application Server, and the content will not be comprehensible in the Network Server's `frm_payload` field when viewing events. {{</ note >}}
+Please note that downlinks scheduled using the `decoded_payload` Payload Formatter field are encrypted in the Application Server, and the content will not be comprehensible in the Network Server's `frm_payload` field when viewing events.
 
-{{< note >}} It's also possible to [schedule downlinks using HTTP Webhooks]({{< ref "integrations/webhooks/scheduling-downlinks" >}}), which give you flexibility to choose JSON or gRPC HTTP payloads. {{</ note >}}
+It is also possible to [schedule downlinks using HTTP Webhooks]({{< ref "integrations/webhooks/scheduling-downlinks" >}}), which give you flexibility to choose JSON or gRPC HTTP payloads.
 
 ### Multi-step Actions
 

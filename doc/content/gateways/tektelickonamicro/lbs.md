@@ -3,7 +3,7 @@ title: "Connect Tektelic Kona Micro with Lora Basics™ Station"
 description: ""
 ---
 
-This section guides you to connect the Tektelic Kona Micro IoT LoRaWAN Gateway to {{% tts %}} using {{% lbs %}}.
+This section guides you to connect the Tektelic Kona Micro IoT LoRaWAN Gateway to {{% tts %}} using [{{% lbs %}}]({{< ref "/gateways/lora-basics-station" >}}).
 
 <!--more-->
 
@@ -94,10 +94,7 @@ The Tektelic Kona Micro expects the Server Certificate to be named `cups.trust`,
 
 Upload the `cups.trust` and `cups.key` files to `/etc/bstn` on the gateway.
 
-{{< note >}}
-By default, CUPS is enabled in Basic Station to connect with {{% tts %}}. If you don’t want to use CUPS then you can disable that by setting “skip_cups=true” in /etc/default/bstn.toml file. If you disable CUPS and use LNS, you will need a `lns.key` file, rather than a `cups.key` file.
-{{</ note >}}
-
+By default, CUPS is enabled in Basic Station to connect with {{% tts %}}. If you don’t want to use CUPS then you can disable that by setting `skip_cups=true` in `/etc/default/bstn.toml` file. If you disable CUPS and use LNS, you will need a `lns.key` file, rather than a `cups.key` file.
 Finally, enter the following command to restart the Basic Station:
 
 ```bash

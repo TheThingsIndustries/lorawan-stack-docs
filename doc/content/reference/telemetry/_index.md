@@ -26,7 +26,7 @@ Similar metrics exist for gRPC client connections opened by {{% tts %}}, and RPC
 ## General Metrics
 
 - {{< distributions "Enterprise" >}} `ttn_lw_license_expiry_seconds` can be used to keep track of license expiry
-- {{< new-in-version "3.13.1" >}} `ttn_lw_log_messages_total` can be used to track the log messages written by different log namespaces at different log levels.
+- `ttn_lw_log_messages_total` can be used to track the log messages written by different log namespaces at different log levels.
   - Before version 3.13.1 this metric was called `ttn_lw_log_log_messages_total`.
 - `ttn_lw_events_publishes_total` can be used to track the published events by event type.
 - `ttn_lw_events_channel_dropped_total` can be used to watch for dropped events, which typically indicates that a consumer (such as a user's web browser) can't keep up.
@@ -46,7 +46,7 @@ For the Gateway Server:
 - `ttn_lw_gs_uplink_failed_total` indicates the number of uplink messages for which the processing has failed for various reasons.
 - `ttn_lw_gs_downlink_tx_success_total` and `ttn_lw_gs_downlink_tx_failed_total` indicates the number of successful transmissions, and failed transmissions for various reasons, reported by the gateways.
 
-For the Packet Broker Agent: {{< new-in-version "3.11.2" >}}
+For the Packet Broker Agent:
 
 - `ttn_lw_pba_uplink_received_total` indicates the number of uplink messages received from Packet Broker (as a home network).
 - `ttn_lw_pba_downlink_forwarded_total` indicates the number of downlink messages sent to Packet Broker (as a home network).

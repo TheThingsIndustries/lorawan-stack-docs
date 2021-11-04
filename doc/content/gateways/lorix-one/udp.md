@@ -3,7 +3,7 @@ title: "Connect LORIX One with UDP Packet Forwarder"
 description: ""
 ---
 
-This section contains instructions for connecting to {{% tts %}} using the UDP Packet Forwarder.
+This section contains instructions for connecting to {{% tts %}} using the [{{% udp-pf %}}]({{< ref "/gateways/udp" >}}).
 
 <!--more-->
 
@@ -19,5 +19,3 @@ On the **Global** tab of the configuration editor, set the following configurati
 
 
 Save the configuration and start the packet forwarder.
-
-{{< warning >}} the UDP Packet Forwarder does not correctly handle unstable connectivity and has no security. {{</ warning >}}

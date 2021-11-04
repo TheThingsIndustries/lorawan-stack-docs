@@ -59,9 +59,7 @@ If you do not mind your gateway's location to be publicly displayed, check the *
 
 The gateway location can be manually set by entering the **Latitude**, **Longitude** and **Altitude** values. 
 
-You can also check the **Update from status messages** box if you want to update the location based on the metadata from the incoming uplink gateway status messages. 
-
-{{< note >}} The location settings you manually entered will be overwritten by the updates from the gateway status messages. {{</ note >}}
+You can also check the **Update from status messages** box if you want to update the location based on the metadata from the incoming uplink gateway status messages. The location settings you manually entered will be overwritten by the updates from the gateway status messages.
 
 {{< note >}} {{% tts %}} Console currently supports setting one antenna location per gateway. {{</ note >}}
 
@@ -90,8 +88,6 @@ $ ttn-lw-cli gateways create gtw1 \
 ```
 
 This creates a gateway `gtw1` with user `admin` as collaborator, frequency plan `EU_863_870`, EUI `00800000A00009EF` and respecting duty-cycle limitations. You can now connect your gateway to {{% tts %}}.
-
-{{< note >}} The CLI returns the created and updated entities by default in JSON. This can be useful in scripts. {{</ note >}}
 
 ### Create Gateway API Key
 
@@ -125,11 +121,9 @@ $ ttn-lw-cli gateways set $GTW_ID \
 
 If you do not mind your gateway's location to be publicly displayed, append the `--location-public` flag.
 
-You can also set the gateway location to be updated from various sources with the `--antenna.location.source` flag. The source of the location data can be the registry, GPS data, results of the LoRa RSSI geolocation, etc. 
+You can also set the gateway location to be updated from various sources with the `--antenna.location.source` flag. The source of the location data can be the registry, GPS data, results of the LoRa RSSI geolocation, etc.
 
-{{< note >}} Use `ttn-lw-cli gateways set gtw1 --help` command to see the full list of the available location sources and other relatable info. 
-
-If you set the alternative location source, the location settings you manually set will be overwritten by the automatic updates from that source. {{</ note >}}
+Use `ttn-lw-cli gateways set gtw1 --help` command to see the full list of the available location sources and other relatable info. Keep in mind that if you set the alternative location source, the location settings you manually set will be overwritten by the automatic updates from that source.
 
 The CLI will return something like:
 
@@ -160,7 +154,7 @@ The CLI will return something like:
 
 {{< /tabs/container >}}
 
-{{< note >}} Keep in mind that if you change the physical location of your gateway, the location update in {{% tts %}} will take place only after you restart the gateway. {{</ note >}}
+Keep in mind that if you change the physical location of your gateway, the location update in {{% tts %}} will take place only after you restart the gateway.
 
 ## Set Gateway Antenna Gain
 
@@ -198,6 +192,6 @@ The CLI output will be similar to:
 }
 ```
 
-{{< note >}} Keep in mind that the `antennas.location` object will be empty if you have not previously set the gateway antenna location. {{</ note >}}
+Keep in mind that the `antennas.location` object will be empty if you have not previously set the gateway antenna location.
 
 Once a gateway has been added, get started with [Adding Devices]({{< ref "/devices/adding-devices" >}}) and [Integrations]({{< ref "/integrations" >}}) to process and act on data.

@@ -11,7 +11,7 @@ aliases: [/integrations/mqtt-clients/mqttbox]
 
 In this guide, we show how to create an MQTT client for subscribing or publishing to topics used by {{% tts %}} [MQTT Server]({{< ref "/integrations/mqtt" >}}).
 
-{{< note >}} The examples in this guide are suitable for {{% tts %}} Open Source deployment. If you are using a different {{% tts %}} deployment, make sure your read a [Note on Using the tenant ID]({{< ref "/integrations/mqtt#note-on-using-the-tenant-id" >}}). {{</ note >}} 
+The examples in this guide are suitable for {{% tts %}} Open Source deployment. If you are using a different {{% tts %}} deployment, make sure your read a [Note on Using the tenant ID]({{< ref "/integrations/mqtt#note-on-using-the-tenant-id" >}}).
 
 ## Prerequisites
 
@@ -19,7 +19,7 @@ In this guide, we show how to create an MQTT client for subscribing or publishin
 
 ## Configuring MQTTBox
 
-{{< note >}} This section follows the examples in the [MQTT Server]({{< ref "/integrations/mqtt" >}}) guide. {{</ note >}}
+This section follows the examples in the [MQTT Server]({{< ref "/integrations/mqtt" >}}) guide.
 
 In the MQTTBox application, click the **Create MQTT Client** button on the left to add a new MQTT client.
 
@@ -29,7 +29,7 @@ Choose **mqtt / tcp** from the **Protocol** drop down list, and enter the **Publ
 
 Fill in the **Username** and **Password** fields.
 
-{{< note >}} Keep in mind that password represents the value of the authentication API key. For more info, see [Creating an API Key]({{< ref "/integrations/mqtt#creating-an-api-key" >}}). {{</ note >}}
+Keep in mind that password represents the value of the authentication API key. For more info, see [Creating an API Key]({{< ref "/integrations/mqtt#creating-an-api-key" >}}).
 
 {{< figure src="mqttbox-config.png" alt="MQTTBox client configuration" >}}
 
@@ -43,7 +43,7 @@ If the MQTTBox client successfully connects to {{% tts %}} MQTT Server, the **Co
 
 Once connected, you can proceed with configuring the publishers or subscribers. 
 
-{{< note >}} You can add multiple MQTT clients, as well as multiple publishers and subscribers within those clients. {{</ note >}}
+You can add multiple MQTT clients, as well as multiple publishers and subscribers within those clients.
 
 ## Subscribe to Upstream Traffic
 
@@ -51,7 +51,7 @@ To listen to messages being sent by your device and published by the {{% tts %}}
 
 In this section, we use the `v3/{application id}/devices/{device id}/up` topic structure for listening to uplink messages. 
 
-{{< note >}} See [Subscribing to Upstream Traffic]({{< ref "/integrations/mqtt#subscribing-to-upstream-traffic" >}}) section of the MQTT Server guide for a list of available topics you can subscribe to. {{</ note >}}
+See [Subscribing to Upstream Traffic]({{< ref "/integrations/mqtt#subscribing-to-upstream-traffic" >}}) section of the MQTT Server guide for a list of available topics you can subscribe to.
 
 Choose an appropriate **QoS** value from the list, click the **Subscribe** button and messages from {{% tts %}} will begin arriving shortly.
 
@@ -63,7 +63,7 @@ To send messages to your end device, you need to schedule a downlink message as 
 
 Fill in the **Topic to publish** field with `v3/{application id}/devices/{device id}/down/push` and replace the variables with their values from the {{% tts %}} Console.
 
-{{< note >}} See the [Publishing Downlink Traffic]({{< ref "/integrations/mqtt#publishing-downlink-traffic" >}}) section to learn about using `/replace` instead of `/push`. {{</ note >}}
+See the [Publishing Downlink Traffic]({{< ref "/integrations/mqtt#publishing-downlink-traffic" >}}) section to learn about using `/replace` instead of `/push`.
 
 Choose an appropriate **QoS** value from the drop down menu.
 

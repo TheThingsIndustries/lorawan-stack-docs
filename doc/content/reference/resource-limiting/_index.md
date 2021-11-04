@@ -15,7 +15,7 @@ The resource limiting configuration is split into multiple profiles. For each pr
 
 Enable resource limiting by adding the following configuration to your `ttn-lw-stack.yml`.
 
-{{< note >}} The values shown below are only meant as an example. Make sure to adjust them accordingly, depending on the actual traffic of your deployment. {{</ note >}}
+The values shown below are only meant as an example. Make sure to adjust them accordingly, depending on the actual traffic of your deployment.
 
 ```yaml
 resource-limiting:
@@ -39,7 +39,7 @@ resource-limiting:
 
 {{< resource-limiting >}}
 
-{{< note >}} For resources where multiple classes are defined, the first matching profile will be used. For example, if profile `A` is associated with class `as:conn` and profile `B` is associated with `as:conn:app:my-application@my-tenant`, then connections for `my-application@my-tenant` will use the limits from profile `B`. {{< /note >}}
+For resources where multiple classes are defined, the first matching profile will be used. For example, if profile `A` is associated with class `as:conn` and profile `B` is associated with `as:conn:app:my-application@my-tenant`, then connections for `my-application@my-tenant` will use the limits from profile `B`.
 
 ## Resource Limiting Actions
 

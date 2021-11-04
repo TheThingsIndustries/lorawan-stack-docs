@@ -22,7 +22,7 @@ The MultiTech Conduit has two compatible firmwares - **AEP**, which is configure
 
 Create a gateway by following the instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}).
 
-> The gateway EUI can be found at the bottom of the gateway under the field &quot;LORA NODE&quot;.
+The gateway EUI can be found at the bottom of the gateway under the field &quot;LORA NODE&quot;.
 
 ## Setting Up the Gateway
 
@@ -101,7 +101,7 @@ Copy in the contents of the `global_conf.json` file you downloaded. While the fi
                 ...
 ```
 
->Warning: Multitech devices require a `clksrc` of `0`. Do not skip this step, or your device [will not work!](https://www.multitech.net/developer/software/lora/conduit-mlinux-convert-to-basic-packet-forwarder/#SX1301_conf) 
+Multitech devices require a `clksrc` of `0`. Do not skip this step, or your device [will not work!](https://www.multitech.net/developer/software/lora/conduit-mlinux-convert-to-basic-packet-forwarder/#SX1301_conf) 
 
 Finally, edit the configuration settings to start the `lora-packet-forwarder` by default, and disable the `lora-network-server`:
 

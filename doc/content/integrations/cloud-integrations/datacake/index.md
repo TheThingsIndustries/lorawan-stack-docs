@@ -51,11 +51,11 @@ To integrate, you only need to fill out the **Webhook ID** field and provide an 
 
 {{< figure src="tts-datacake-webhook.png" alt="Datacake webhook" >}}
 
-{{< note >}} To see the values of all parameters of the Datacake integration, click on the integration after you created it with the Webhook template. {{</ note >}}
+To see the values of all parameters of the Datacake integration, click on the integration after you created it with the Webhook template.
 
 Once the setup is finished, you can navigate to device's **Debug** tab on Datacake, where you can see the incoming messages and manipulate or monitor your data.
 
-{{< note >}} Check the official Datacake documentation to learn how to [decode the payload](https://docs.datacake.de/lorawan/payload-decoders) received from {{% tts %}}. {{</ note >}}
+Check the official Datacake documentation to learn how to [decode the payload](https://docs.datacake.de/lorawan/payload-decoders) received from {{% tts %}}.
 
 ## Scheduling Downlinks
 
@@ -67,7 +67,7 @@ Click the **Add Downlink** button.
 
 Next, fill in the **Name** field, define the **Payload encoder** and click **Save Downlink**. 
 
-{{< note >}} Learn to write payload decoders in the [official Datacake documentation](https://docs.datacake.de/lorawan/downlinks#writing-a-downlink-encoder). {{</ note >}}
+Learn to write payload decoders in the [official Datacake documentation](https://docs.datacake.de/lorawan/downlinks#writing-a-downlink-encoder).
 
 {{< figure src="downlink-configuration.png" alt="Configuring downlink" >}}
 

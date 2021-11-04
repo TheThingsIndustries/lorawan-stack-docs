@@ -57,7 +57,7 @@ Application Server can fetch information stored in the Identity Server. For exam
 
 ## Formatter Options
 
-{{< new-in-version "3.13.0" >}} Application Server can use Javascript payload formatters to decode uplink and encode downlink messages.
+Application Server can use Javascript payload formatters to decode uplink and encode downlink messages.
 
 - `as.formatters.max-parameter-length`: Maximum length (in bytes) for user-defined payload formatter scripts. A global cap of 16KB is enforced at the API level. This does not affect payload formatter scripts loaded from the [Device Repository]({{< ref "/integrations/payload-formatters/device-repo" >}}).
 

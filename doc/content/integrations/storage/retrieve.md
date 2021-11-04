@@ -37,7 +37,7 @@ $ curl -G "https://thethings.example.com/api/v3/as/applications/app1/devices/dev
 ```
 </details>
 
-{{< new-in-version "3.11" >}} Use field masks to specify a subset of fields that should be returned by the API. For example, to retrieve the decoded payload field only, set the field mask as shown below. Note that the end device identifiers and the timestamp are always included in the message.
+Use field masks to specify a subset of fields that should be returned by the API. For example, to retrieve the decoded payload field only, set the field mask as shown below. Note that the end device identifiers and the timestamp are always included in the message.
 
 ```bash
 $ curl -G "https://thethings.example.com/api/v3/as/applications/app1/packages/storage/uplink_message" \
