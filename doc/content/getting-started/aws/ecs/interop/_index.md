@@ -64,4 +64,4 @@ At this point interoperability should be working. It might be required to restar
 
 # Identity Server interoperability
 
-Identity Server interoperability doesn't need Crypto Server, therefore you don't need to set up two accounts and peer networks. Still, you need to set up TLS certificates in a similar fasion.
+Identity Server interoperability doesn't need Crypto Server, therefore you don't need to set up two accounts and peer networks. Still, you need to set up TLS certificates in a similar fashion.
