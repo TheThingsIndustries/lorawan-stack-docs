@@ -22,7 +22,7 @@ For the server certificate, use the certbot task. It will request a certificate 
 
 Client certificates are stored in the interop config bucket, created in template `2-4b-routing-s3`. In this bucket you need to place a file `config.yml`, which contains a map `<net-id>: <ca.pem>`. Example configuration:
 
-```
+```yaml
 000000: ca-000000.pem
 000009: ca-000009.pem
 ```
