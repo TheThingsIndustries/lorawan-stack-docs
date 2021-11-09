@@ -20,7 +20,7 @@ Deploy {{% tts %}} normally. For the `PeerRequesterAccountId` parameter in `1-1-
 
 For the server certificate, use the certbot task. It will request a certificate and put it into AWS Secrets Manager. If you do not want to use the certbot task, but prefer to provide your own certificate, look up the relevant secret created in template `4-1-secrets` and substitute the dummy value. Certificates are expected to be in PEM format.
 
-Client certificates are stored in the interop config bucket, created in template `2-4b-routing-s3`. In this bucket you need to place a file `config.yml`, which contains a dictionary `NetID -> filename_with_certificate_in_pem_format`. Example configuration:
+Client certificates are stored in the interop config bucket, created in template `2-4b-routing-s3`. In this bucket you need to place a file `config.yml`, which contains a map `<net-id>: <ca.pem>`. Example configuration:
 
 ```
 000000: ca-000000.pem
