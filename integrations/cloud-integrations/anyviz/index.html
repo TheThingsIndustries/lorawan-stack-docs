@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Architecture | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/architecture/" />
+  <title>AnyViz | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/anyviz/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Architecture">
+  <meta itemprop="name" content="AnyViz">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Architecture">
+  <meta property="og:title" content="AnyViz">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/architecture/">
-  <meta name="twitter:title" content="Architecture" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/anyviz/">
+  <meta name="twitter:title" content="AnyViz" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -111,45 +111,6 @@
   <li>
     <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/" class="">Azure IoT Hub</a>
     
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/architecture/" class="is-active">Architecture</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/deployment/" class="">Deployment Guide</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/devices/" class="">Managing Devices</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/device-twin/" class="">Messages and Device Twin</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/update/" class="">Update</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/uninstall/" class="">Uninstall</a>
-    
-  </li>
-
-</ul>
-
-
-    
   </li>
 
   <li>
@@ -163,7 +124,12 @@
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/anyviz/" class="">AnyViz</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/anyviz/" class="is-active">AnyViz</a>
+    
+    
+
+
+
     
   </li>
 
@@ -288,33 +254,44 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Architecture
+        <h1 class="title is-size-2">AnyViz
           
         </h1>
         
         <div class="content">
-          <p>The Azure IoT Hub integration is a serverless deployment that scales automatically as your deployment grows.</p>
-<figure class="plain">
-    <img src="../architecture.svg"
-         alt="Default integration architecture"/> 
+          <p><a href="https://www.anyviz.io/">AnyViz</a> offers an easy way to operate, monitor and analyze machine and plant controls remotely. Some of its features are real-time data visualization, data storage, automated reports, etc.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ol>
+<li>A <a href="https://www.portal.anyviz.io/">user account on AnyViz Portal</a>.</li>
+</ol>
+<h2 id="setup-anyviz">Setup AnyViz</h2>
+<p>When you log into your AnyViz account, the only thing you need to do is to create a new project.</p>
+<p>In the upper right corner of your AnyViz dashboard, click on the project name (next to the user profile), then click on the small nut icon next to the project name in the list. Your project&rsquo;s settings will appear, and you will be able to see the <strong>Project number</strong> you need in order to complete the integration.</p>
+<figure>
+    <img src="project.png"
+         alt="AnyViz project"/> 
 </figure>
 
-<p>The key resources deployed in your Azure account are:</p>
-<ul>
-<li>IoT Hub to manage your end devices and their Device Twins</li>
-<li>IoT Hub Shared Access Policy that allows The Things Stack to register devices, submit traffic and update Device Twins</li>
-<li>EventHub Namespace and EventHub for The Things Stack communication</li>
-<li>Azure Function to submit events to The Things Stack</li>
-<li>Storage Account used by the Azure Functions for trigger management</li>
-</ul>
-<p>This is a serverless deployment: there are no compute resources being deployed. The only continuous charges are by the Azure IoT Hub and the EventHub Namespace. All permissions are the minimum permissions for the integration to function.</p>
+<h2 id="configure-the-things-stack">Configure The Things Stack</h2>
+<p>Before implementing the Webhook integration, you need to create an uplink <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">payload formatter</a> in order to decode the uplink payload and set fields in the <code>decoded_payload</code> object of the uplink message.</p>
+<p>Next step is to create a Webhook integration on The Things Stack by using the <strong>AnyViz</strong> <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a>.</p>
+<p>Fill in the <strong>Webhook ID</strong> field. The <strong>AnyViz instance</strong> field is predefined with <code>portal.anyviz.io</code>. Provide the <strong>Project number</strong> you found in the previous step on AnyViz and copy it into the <strong>AnyViz project ID</strong> field.</p>
+<figure>
+    <img src="webhook-template.png"
+         alt="AnyViz webhook"/> 
+</figure>
+
+<p>To see the values of all parameters of the AnyViz integration, click on the integration after you created it with the Webhook template.</p>
+<p>As soon as the first uplink is sent from your end device, you will see an object named after your The Things Stack application appearing on the left hand menu in AnyViz. If you expand this object, you will see it contains the extracted variables from the <code>decoded_payload</code> object, as well as RSSI and SNR from uplink metadata.</p>
+<p>You can now continue using AnyViz features to monitor and process your sensor data. Have fun!</p>
         </div>
-        <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/azure-iot-hub/">← Azure IoT Hub</a>
-<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/azure-iot-hub/deployment/">Deployment Guide →</a>
+        
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/allthingstalk/">← AllThingsTalk Maker</a>
+<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/cayenne/">Cayenne →</a>
 </div>
 
-        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
 <script src="https://cdn.emojicom.io/embed/widget.js" async></script>
 
 <div class='feedback has-vertical-space'>
@@ -328,6 +305,19 @@
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#prerequisites'>Prerequisites</a></li>
+    
+      
+      <li><a href='#setup-anyviz'>Setup AnyViz</a></li>
+    
+      
+      <li><a href='#configure-the-things-stack'>Configure The Things Stack</a></li>
+    
+  </ul>
 
 
   </nav>
@@ -365,14 +355,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Adrian-Stefan Mares on 19 Aug 2021.
+  Last changed by Nejra Selimović on 11 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/8d58a6bf4e8a217741b2abfeec6b209ab851c0be">
-      Add Azure IoT Hub integration documentation (#528)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/eb1107a0e87b31446064e68e570267e1baaa60f6">
+      doc: Document AnyViz webhook integration (#655)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/cloud-integrations/azure-iot-hub/architecture.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/cloud-integrations/anyviz/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
