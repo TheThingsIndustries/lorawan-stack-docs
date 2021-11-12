@@ -1,0 +1,39 @@
+name: ExternalUserRegistry
+methods:
+  Create:
+    name: Create
+    input:
+      name: CreateExternalUserRequest
+    output:
+      name: ExternalUser
+    http:
+    - method: POST
+      path: /authentication_providers/{external_user.provider_ids.provider_id}/external_users
+  GetByUserID:
+    name: GetByUserID
+    input:
+      name: GetExternalUserByUserIDRequest
+    output:
+      name: ExternalUser
+    http:
+    - method: GET
+      path: /authentication_providers/{provider_ids.provider_id}/users/{user_ids.user_id}
+  GetByExternalID:
+    name: GetByExternalID
+    input:
+      name: GetExternalUserByExternalIDRequest
+    output:
+      name: ExternalUser
+    http:
+    - method: GET
+      path: /authentication_providers/{provider_ids.provider_id}/external_users/{external_id}
+  Delete:
+    name: Delete
+    input:
+      name: DeleteExternalUserRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /authentication_providers/{provider_ids.provider_id}/external_users/{external_id}

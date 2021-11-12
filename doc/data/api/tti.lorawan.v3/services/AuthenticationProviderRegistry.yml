@@ -1,0 +1,48 @@
+name: AuthenticationProviderRegistry
+methods:
+  Create:
+    name: Create
+    input:
+      name: CreateAuthenticationProviderRequest
+    output:
+      name: AuthenticationProvider
+    http:
+    - method: POST
+      path: /authentication_providers
+  Get:
+    name: Get
+    input:
+      name: GetAuthenticationProviderRequest
+    output:
+      name: AuthenticationProvider
+    http:
+    - method: GET
+      path: /authentication_providers/{ids.provider_id}
+  List:
+    name: List
+    input:
+      name: ListAuthenticationProvidersRequest
+    output:
+      name: AuthenticationProviders
+    http:
+    - method: GET
+      path: /authentication_providers
+  Update:
+    name: Update
+    input:
+      name: UpdateAuthenticationProviderRequest
+    output:
+      name: AuthenticationProvider
+    http:
+    - method: PUT
+      path: /authentication_providers/{provider.ids.provider_id}
+  Delete:
+    name: Delete
+    input:
+      name: AuthenticationProviderIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /authentication_providers/{provider_id}

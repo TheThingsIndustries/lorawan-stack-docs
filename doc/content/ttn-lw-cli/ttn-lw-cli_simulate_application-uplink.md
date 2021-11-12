@@ -36,7 +36,6 @@ ttn-lw-cli simulate application-uplink [application-id] [device-id] [flags]
       --received-at string                                                    (YYYY-MM-DDTHH:MM:SSZ)
       --session-key-id string                                                 (hex)
       --settings.coding-rate string                                           
-      --settings.data-rate-index string                                       allowed values: 0, 1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9, DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
       --settings.data-rate.modulation.fsk.bit-rate uint32                     
       --settings.data-rate.modulation.lora.bandwidth uint32                   
       --settings.data-rate.modulation.lora.spreading-factor uint32            

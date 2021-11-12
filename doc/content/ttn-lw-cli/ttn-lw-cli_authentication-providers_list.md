@@ -1,14 +1,34 @@
 ---
-title: "ttn-lw-cli"
-slug: ttn-lw-cli
+title: "ttn-lw-cli authentication-providers list"
+slug: ttn-lw-cli_authentication-providers_list
 type: "commands"
 ---
 
-## ttn-lw-cli
+## ttn-lw-cli authentication-providers list
 
-The Things Industries Command-line Interface
+List authentication providers
+
+```
+ttn-lw-cli authentication-providers list [flags]
+```
 
 ### Options
+
+```
+      --allow-registrations                         select the allow_registrations field
+      --configuration                               select the configuration field and all allowed sub-fields
+      --configuration.provider.oidc                 select the configuration.provider.oidc field and all allowed sub-fields
+      --configuration.provider.oidc.client-id       select the configuration.provider.oidc.client_id field
+      --configuration.provider.oidc.client-secret   select the configuration.provider.oidc.client_secret field
+      --configuration.provider.oidc.provider-url    select the configuration.provider.oidc.provider_url field
+  -h, --help                                        help for list
+      --limit uint32                                maximum number of results to get (default 50)
+      --name                                        select the name field
+      --order string                                order by this field
+      --page uint32                                 results page number (default 1)
+```
+
+### Options inherited from parent commands
 
 ```
       --allow-unknown-hosts                             Allow sending credentials to unknown hosts
@@ -23,7 +43,6 @@ The Things Industries Command-line Interface
       --experimental.features strings                   Experimental features to activate
       --gateway-server-enabled                          Gateway Server enabled (default true)
       --gateway-server-grpc-address string              Gateway Server address (default "localhost:8884")
-  -h, --help                                            help for ttn-lw-cli
       --identity-server-grpc-address string             Identity Server address (default "localhost:8884")
       --input-format string                             Input format (default "json")
       --insecure                                        Connect without TLS
@@ -42,23 +61,5 @@ The Things Industries Command-line Interface
 
 ### SEE ALSO
 
-* [ttn-lw-cli applications]({{< relref "ttn-lw-cli_applications" >}})	 - Application commands
 * [ttn-lw-cli authentication-providers]({{< relref "ttn-lw-cli_authentication-providers" >}})	 - Authentication Provider commands
-* [ttn-lw-cli clients]({{< relref "ttn-lw-cli_clients" >}})	 - Client commands
-* [ttn-lw-cli config]({{< relref "ttn-lw-cli_config" >}})	 - View the current configuration
-* [ttn-lw-cli end-devices]({{< relref "ttn-lw-cli_end-devices" >}})	 - End Device commands
-* [ttn-lw-cli events]({{< relref "ttn-lw-cli_events" >}})	 - Subscribe to events
-* [ttn-lw-cli external-users]({{< relref "ttn-lw-cli_external-users" >}})	 - External User commands
-* [ttn-lw-cli gateways]({{< relref "ttn-lw-cli_gateways" >}})	 - Gateway commands
-* [ttn-lw-cli login]({{< relref "ttn-lw-cli_login" >}})	 - Login
-* [ttn-lw-cli logout]({{< relref "ttn-lw-cli_logout" >}})	 - Logout
-* [ttn-lw-cli lorawan]({{< relref "ttn-lw-cli_lorawan" >}})	 - LoRaWAN commands
-* [ttn-lw-cli organizations]({{< relref "ttn-lw-cli_organizations" >}})	 - Organization commands
-* [ttn-lw-cli packetbroker]({{< relref "ttn-lw-cli_packetbroker" >}})	 - Packet Broker commands
-* [ttn-lw-cli simulate]({{< relref "ttn-lw-cli_simulate" >}})	 - Simulation commands
-* [ttn-lw-cli templates]({{< relref "ttn-lw-cli_templates" >}})	 - End Device template commands
-* [ttn-lw-cli tenants]({{< relref "ttn-lw-cli_tenants" >}})	 - Tenant commands
-* [ttn-lw-cli use]({{< relref "ttn-lw-cli_use" >}})	 - Generate client configuration for The Things Stack
-* [ttn-lw-cli users]({{< relref "ttn-lw-cli_users" >}})	 - User commands
-* [ttn-lw-cli version]({{< relref "ttn-lw-cli_version" >}})	 - Print version information
 

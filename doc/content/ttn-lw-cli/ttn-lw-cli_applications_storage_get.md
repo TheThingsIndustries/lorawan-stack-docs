@@ -153,7 +153,6 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --up.uplink-message.settings                                                       select the up.uplink_message.settings field and all allowed sub-fields
       --up.uplink-message.settings.coding-rate                                           select the up.uplink_message.settings.coding_rate field
       --up.uplink-message.settings.data-rate                                             select the up.uplink_message.settings.data_rate field and all allowed sub-fields
-      --up.uplink-message.settings.data-rate-index                                       select the up.uplink_message.settings.data_rate_index field
       --up.uplink-message.settings.data-rate.modulation.fsk                              select the up.uplink_message.settings.data_rate.modulation.fsk field and all allowed sub-fields
       --up.uplink-message.settings.data-rate.modulation.fsk.bit-rate                     select the up.uplink_message.settings.data_rate.modulation.fsk.bit_rate field
       --up.uplink-message.settings.data-rate.modulation.lora                             select the up.uplink_message.settings.data_rate.modulation.lora field and all allowed sub-fields
