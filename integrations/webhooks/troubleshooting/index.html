@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Creating Webhooks | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/webhooks/creating-webhooks/" />
+  <title>Troubleshooting Webhooks | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/webhooks/troubleshooting/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Creating Webhooks">
+  <meta itemprop="name" content="Troubleshooting Webhooks">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Creating Webhooks">
+  <meta property="og:title" content="Troubleshooting Webhooks">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/webhooks/creating-webhooks/">
-  <meta name="twitter:title" content="Creating Webhooks" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/webhooks/troubleshooting/">
+  <meta name="twitter:title" content="Troubleshooting Webhooks" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -128,7 +128,7 @@
 <ul class="menu-list">
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/creating-webhooks/" class="is-active">Creating Webhooks</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/creating-webhooks/" class="">Creating Webhooks</a>
     
   </li>
 
@@ -148,7 +148,7 @@
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/troubleshooting/" class="">Troubleshooting Webhooks</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/troubleshooting/" class="is-active">Troubleshooting Webhooks</a>
     
   </li>
 
@@ -174,54 +174,18 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Creating Webhooks
+        <h1 class="title is-size-2">Troubleshooting Webhooks
           
         </h1>
         
         <div class="content">
-          <p>This section provides instructions for creating a webhook in the console.</p>
-<p>In addition to the written instructions linked below, a video with instructions for creating webhooks is available on <a href="https://youtu.be/trNIzIf3TZo">The Things Network youtube channel</a>.</p>
-<details><summary>Show video</summary>
-
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/trNIzIf3TZo" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-
-</details>
-<p>Creating a webhook requires you to have an HTTP(S) endpoint available. If you don&rsquo;t have an endpoint available for testing, you can test with a free service like <a href="https://webhook.site">Webhook.site</a>.</p>
-<p>In your application select the <strong>Webhooks</strong> submenu from the <strong>Integrations</strong> side menu. Clicking on the <strong>+ Add Webhook</strong> button will open the list of Webhook templates.</p>
-<figure>
-    <img src="../webhook-templates.png"
-         alt="Webhook templates"/> 
-</figure>
-
-<p>To use a <a href="/docs/integrations/webhooks/webhook-templates/">predefined webhook template</a>, choose it. Otherwise, to create your own custom webhook, choose <strong>Custom webhook</strong> and follow the instructions below.</p>
-<figure>
-    <img src="../add-webhook.png"
-         alt="Webhook creation screen"/> 
-</figure>
-
-<p>Give your webhook a <strong>Webhook ID</strong> so that you can identify it. Choose JSON as the <strong>Webhook format</strong>. For <strong>Base URL</strong>, provide the endpoint URL that the webhook should call, i.e the URL of your webhook integration.</p>
-<p>The <strong>Downlink API key</strong> field allows you to provide an API key which will be sent with all messages to the webhook endpoint. This can be useful to allow your integration to schedule downlinks without requiring you to hardcode an API key in the endpoint.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Your integration may also <a href="/docs/integrations/webhooks/scheduling-downlinks/">schedule downlinks using an API key with appropriate rights</a>, regardless of the value in the <strong>Downlink API key</strong> field.
-</div>
-
-<p>To enable messages for different types of events, use the checkboxes in the <strong>Enabled messages</strong> section.</p>
-<figure>
-    <img src="../enabled-messages.png"
-         alt="Webhook creation screen"/> 
-</figure>
-
-<p>The paths are appended to the <strong>Base URL</strong>. In the example from the images above, the Application Server will perform <code>POST</code> requests on the endpoint <code>https://webhook.site/uplinks</code> for uplinks, <code>https://webhook.site/join-accept</code> for join-accept messages, and <code>https://webhook.site/downlink-ack</code> for downlink acknowledgement messages.</p>
-<p>If no path is specified, messages of that type will be sent to the <strong>Base URL</strong>.</p>
-<p>See <a href="https://www.thethingsindustries.com/docs/reference/data-formats/">Data Formats</a> for examples of uplink and downlink JSON messages.</p>
-<p>Clicking the <strong>Add Webhook</strong> button will create the Webhook.</p>
+          <p>This section provides help for common issues and frequently asked questions you may have when using Webhooks.</p>
+<h2 id="i-see-aswebhookfail-events-in-the-live-data-view-what-does-this-mean">I see <code>as.webhook.fail</code> events in the Live data view. What does this mean?</h2>
+<p>When sending an uplink via Webhooks fails, The Things Stack generates a failure event <code>as.webhook.fail</code>. You can find out about the failure cause by observing the event details. The Things Stack will return the request body up to 1KB.</p>
+<p>Besides the possibility that the webhook integration might be misconfigured, the most common failure cause is that the user&rsquo;s upstream endpoint cannot handle all uplinks received from The Things Stack fast enough, or cannot process the uplink message in 5 seconds (which is The Things Stack default timeout).</p>
         </div>
         <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/integrations/webhooks/">← Webhooks</a>
-<a class="button is-pulled-right" href="/docs/integrations/webhooks/scheduling-downlinks/">Scheduling Downlinks →</a>
+<a class="button is-pulled-left" href="/docs/integrations/webhooks/webhook-templates/">← Webhook Templates</a>
 </div>
 
         <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -238,6 +202,13 @@
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#i-see-aswebhookfail-events-in-the-live-data-view-what-does-this-mean'>I see as.webhook.fail events in the Live data view. What does this mean?</a></li>
+    
+  </ul>
 
 
   </nav>
@@ -275,14 +246,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 12 Oct 2021.
+  Last changed by Nejra Selimović on 12 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/dea7a78a92693756a08188d441281fbab6e78768">
-      doc: Update webhook creation guide (#604)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b9d1b1ef25ed562d6a1e09d5accf40907de9a0e4">
+      doc: Create Webhooks troubleshooting section (#654)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/webhooks/creating-webhooks.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/webhooks/troubleshooting.md" class="button">Edit on Github</a>
 </div>
 
       </div>
