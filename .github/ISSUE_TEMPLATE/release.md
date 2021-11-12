@@ -53,7 +53,7 @@ $ HOME='$HOME' ./tti-lw-cli gen-json-tree -o ../lorawan-stack-docs/doc/data/comm
 - [ ] Replace links to `end-devices/templates` with `templates` as they are not exported correctly:
 
 ```bash
-$ sed -i.bak 's/end-devices_templates/templates/g' ..lorawan-stack-docs/doc/content/ttn-lw-cli/ttn-lw-cli_end-devices.md
+$ sed -i.bak 's/end-devices_templates/templates/g' ../lorawan-stack-docs/doc/content/ttn-lw-cli/ttn-lw-cli_end-devices.md
 ```
 
 - [ ] Clean up:
