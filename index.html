@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.15</p>
+        <p class="navbar-item is-size-7">v3.16</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -140,70 +140,79 @@
 <div class="whats-new">
   <div class="whats-new-content">
     <div class="whats-new-header">
-      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.15.2/>What's new in V3.15.2</a></h2>
+      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.16.0/>What's new in V3.16.0</a></h2>
       <a href="https://www.thethingsindustries.com/docs/whats-new/"><p class="see-more">See all release notes →</p></a>
     </div>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.15.2/">
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.16.0/">
       <div class="whats-new-body">
         <div class="whats-new-items-shadow whats-new-items-fade">
           <div class="whats-new-items">
             <h3 id="added">Added</h3>
 <ul>
-<li><code>tls.cipher-suites</code> config option to specify used cipher suites.</li>
-<li>Support for enhanced security policies of Packet Broker services.</li>
-<li>Handling of MAC and PHY versions in end device forms based on selected frequency plan in the Console.</li>
-<li>Support for scheduling downlink messages as JSON in the Console.</li>
-<li>Support for Packet Broker authentication through LoRaWAN Backend Interfaces. This adds the following configuration options:
+<li><code>ttn_lw_as_subscription_sets_publish_success_total</code> and <code>ttn_lw_as_subscription_sets_publish_failed_total</code> metrics to track the number of subscription set publish attempts.</li>
+<li>Application Server advanced distribution settings:
 <ul>
-<li><code>interop.public-tls-address</code>: public address of the interop server. The audience in the incoming OAuth 2.0 token from Packet Broker is verified against this address to ensure that other networks cannot impersonate as Packet Broker;</li>
-<li><code>interop.packet-broker.enabled</code>: enable Packet Broker to authenticate;</li>
-<li><code>interop.packet-broker.token-issuer</code>: the issuer of the incoming OAuth 2.0 token from Packet Broker is verified against this value.</li>
+<li><code>as.distribution.global.individual.subscription-blocks</code> controls if the Application Server should block while publishing traffic to individual global subscribers (such as MQTT clients).</li>
+<li><code>as.distribution.global.individual.subscription-queue-size</code> controls how many uplinks the Application Server should buffer for an individual global subscriber. Note that when the buffer is full, the Application Server will drop the uplinks if <code>--as.distribution.global.individual.subscription-blocks</code> is not enabled. Use a negative value in order to disable the queue.</li>
+<li><code>as.distribution.local.broadcast.subscription-blocks</code> controls if the Application Server should block while publishing traffic to broadcast local subscribers (such as webhooks and application packages matching).</li>
+<li><code>as.distribution.local.broadcast.subscription-queue-size</code> controls how many uplinks the Application Server should buffer for an broadcast local subscriber. Has the same semantics as <code>--as.distribution.global.individual.subscription-queue-size</code>.</li>
+<li><code>as.distribution.local.individual.subscription-blocks</code> controls if the Application Server should block while publishing traffic to individual local subscribers (such as PubSub integrations).</li>
+<li><code>as.distribution.local.individual.subscription-queue-size</code> controls how many uplinks the Application Server should buffer for an individual local subscriber. Has the same semantics as <code>--as.distribution.global.individual.subscription-queue-size</code>.</li>
 </ul>
 </li>
-<li>Support for LoRaWAN Backend Interfaces in Identity Server to obtain an end device&rsquo;s NetID, tenant ID and Network Server address with the use of a vendor-specifc extension (<code>VSExtension</code>). This adds the following configuration options:
+<li><code>ttn_lw_gs_txack_received_total</code>, <code>ttn_lw_gs_txack_forwarded_total</code> and <code>ttn_lw_gs_txack_dropped_total</code> metrics, which track the transmission acknowledgements from gateways.</li>
+<li><code>gs.txack.receive</code>, <code>gs.txack.drop</code> and <code>gs.txack.forward</code> events, which track the transmission acknowledgements from gateways.</li>
+<li>Remote federated authentication providers and external user management.
 <ul>
-<li><code>is.network.net-id</code>: the NetID of the network. When running a Network Server, make sure that this is the same value as <code>ns.net-id</code>.</li>
-<li><code>is.network.tenant-id</code>: the Tenant ID in the host NetID. Leave blank if the NetID that you use is dedicated for this Identity Server.</li>
+<li>Authentication providers can be managed via the <code>AuthenticationProviderRegistry</code> service. See the <code>tti-lw-cli authentication-providers</code> commands for CLI support.</li>
+<li>External users can be managed via the <code>ExternalUserRegistry</code> service. See the <code>tti-lw-cli external-users</code> commands for CLI support.</li>
 </ul>
 </li>
-<li>Configuration option <code>experimental.features</code> to enable experimental features.</li>
-<li>Tooltip descriptions for &ldquo;Last activity&rdquo; values (formerly &ldquo;Last seen&rdquo;) and uplink/downlink counts in the Console.</li>
-<li>Status pulses being triggered by incoming data in the Console.</li>
-<li>Packet broker page crashing when networks with a NetID of <code>0</code> are present.</li>
-<li>Allowing to toggle visibility of sensitive values in text inputs in the Console.</li>
-<li>Webhook failed event.</li>
+<li>External users (users associated with a federated authentication provider) may no longer update their passwords, or request temporary passwords.</li>
+<li>External users will have their information (name and email) updated on login, based on the data provided by the authentication provider.</li>
+<li>Users may be associated to multiple authentication providers at the same time.
+<ul>
+<li>This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>) due to the relaxed unique constraint.</li>
+</ul>
+</li>
+<li><code>ttn-lw-stack as-db migrate</code> command to migrate the Application Server database. This command records the schema version and only performs migrations if on a newer version.
+<ul>
+<li>Use the <code>--force</code> flag to force perform migrations.</li>
+</ul>
+</li>
+<li>Server-side event filtering with the <code>names</code> field.</li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
-<li>Searching for entity IDs is now case insensitive.</li>
-<li>Renamed entitie&rsquo;s &ldquo;Last seen&rdquo; to &ldquo;Last activity&rdquo; in the Console.</li>
-<li>The database queries for determining the rights of users on entities have been rewritten to reduce the number of round-trips to the database.</li>
-<li>The default downlink path expiration timeout for UDP gateway connections has been increased to 90 seconds, and the default connection timeout has been increased to 3 minutes.
+<li>Gateway Server default UDP worker count has been increased to 1024, from 16.</li>
+<li>Application Server webhooks and application packages default worker count has been increased to 1024, from 16.</li>
+<li>Application Server no longer sets the end device&rsquo;s <code>session.started_at</code> and <code>pending_session.started_at</code>. The session start time should be retrieved from the Network Server, per API specification.
 <ul>
-<li>The original downlink path expiration timeout was based on the fact that the default <code>PULL_DATA</code> interval is 5 seconds. In practice we have observed that most gateways actually send a <code>PULL_DATA</code> message every 30 seconds instead in order to preserve data transfer costs.</li>
+<li>This requires an Application Server database migration (<code>ttn-lw-stack as-db migrate</code>) to clear the <code>started_at</code> field in existing (pending) sessions.</li>
 </ul>
 </li>
-<li>The default duration for storing (sparse) entity events has been increased to 24 hours.</li>
+<li>Console changing to server-side event filtering (used to be client-side).</li>
 </ul>
 <h3 id="removed">Removed</h3>
 <ul>
-<li>Option to select targeted stack components during end device import in the Console.</li>
+<li>The <code>ttn_lw_gs_status_failed_total</code>, <code>ttn_lw_gs_uplink_failed_total</code> metrics. <code>ttn_lw_gs_status_dropped_total</code> and <code>ttn_lw_gs_uplink_dropped_total</code> should be used instead, as they contain the failure cause.</li>
+<li>The <code>gs.status.fail</code> and <code>gs.up.fail</code> events. <code>gs.status.drop</code> and <code>gs.up.drop</code> should be used instead, as they contain the failure cause.</li>
+<li>The <code>data_rate_index</code> field in uplink message metadata. Observe the fully described data rate in the <code>data_rate</code> field instead.</li>
+<li>LoRaWAN data rate index reported to LoRa Cloud DMS.</li>
+<li>Dockerfile doesn&rsquo;t define environmental variables <code>TTN_LW_BLOB_LOCAL_DIRECTORY</code>, <code>TTN_LW_IS_DATABASE_URI</code> and <code>TTN_LW_REDIS_ADDRESS</code> anymore. They need to be set when running the container: please refer to <code>docker-compose.yml</code> for example values.</li>
+<li><code>CockroachDB</code> from development tooling as well as config option within <code>docker-compose.yml</code>.
+<ul>
+<li>This also changes the default value of the <code>--is.database-uri</code> option, so it can connect to the development Postgres database by default.</li>
+</ul>
+</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>LoRaWAN Backend Interfaces 1.1 fields that were used in 1.0 (most notably <code>SenderNSID</code> and <code>ReceiverNSID</code>). Usage of <code>NSID</code> is now only supported with LoRaWAN Backend Interfaces 1.1 as specified.</li>
-<li>Registering and logging in users with 2 character user IDs in the Account App.</li>
-<li>Frequency plan display for the gateway overview page in the Console.</li>
-<li>Frequency plan showing as <code>n/a</code> in the Console after creating a new gateway with assigned frequency plan.</li>
-<li>Header logo flickering in the Console when using Safari browser.</li>
-<li>Profile settings link not being present in the mobile menu in the Console.</li>
-<li>Calculation of &ldquo;Last activity&rdquo; values not using all available data in the Console.</li>
-<li>Layout jumps due to length of &ldquo;Last activity&rdquo; text.</li>
-<li>Invalid <code>session</code> handling in Network Layer settings form in the Console.</li>
-</ul>
-<h3 id="security">Security</h3>
-<ul>
-<li>Network Servers using LoRaWAN Backend Interfaces to interact with the Join Server can now provide a single Network Server address in the X.509 Common Name of the TLS client certificate (the old behavior) or multiple Network Server addresses in the X.509 DNS Subject Alternative Names (SANs). DNS names have precedence over an address in the Common Name.</li>
+<li>LoRaWAN Backend Interfaces <code>AppSKeyReq</code> and <code>HomeNSReq</code> interop calls in multi-tenant deployments.</li>
+<li>Handling of NaN values in our JSON API.</li>
+<li>Receiver metadata from more than one antenna is now available in messages received from Packet Broker.</li>
+<li>Unhelpful error message when aborting the OIDC Login in the Console.</li>
+<li>Parsing of multi-word description search queries.</li>
 </ul>
 
           </div>
@@ -221,7 +230,7 @@
 <a href="https://www.thethingsindustries.com/docs/whats-new/">
   <div class="whats-new-800">
     <div class="whats-new-header-800">
-      <p>See what's new in V3.15.2</p>
+      <p>See what's new in V3.16.0</p>
       <p>-></p>
     </div>
   </div>
