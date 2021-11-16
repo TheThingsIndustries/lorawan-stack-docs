@@ -20,6 +20,7 @@ ttn-lw-cli events [flags]
       --device-id strings         
       --gateway-id strings        
   -h, --help                      help for events
+      --names strings             
       --organization-id strings   
       --tail uint32               
       --user-id strings           
