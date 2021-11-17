@@ -10,8 +10,6 @@ This section contains instructions to upgrade a {{% tts %}} Enterprise or Open S
 
 <!--more-->
 
-{{< note >}} All commands explained here are executed in a terminal prompt in the same **directory** as your `docker-compose.yml` file. {{</ note >}}
-
 ### Pulling new images
 
 Replace the tag in your `docker-compose.yml` file with the newer version of {{% tts %}}.

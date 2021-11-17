@@ -19,9 +19,7 @@ The integration between {{% tts %}} and ThingsBoard is an example of an MQTT int
 
 ## Configure {{% tts %}}
 
-Before creating an integration setup on ThingsBoard, you need to prepare the uplink payload formatter on {{% tts %}}.
-
-{{< note >}} Learn to create a [payload formatter]({{< ref "/integrations/payload-formatters" >}}) in {{% tts %}} Console or with the CLI. {{</ note >}}
+Before creating an integration setup on ThingsBoard, you need to prepare the uplink [payload formatter]({{< ref "/integrations/payload-formatters" >}}) on {{% tts %}}.
 
 Define a [Javascript]({{< ref "/integrations/payload-formatters/javascript" >}}) payload formatter and take the following code as an example of the formatter parameter:
 
@@ -34,7 +32,8 @@ function decodeUplink(input) {
   };
 }
 ```
-{{< note >}} The payload formatter shown above extracts the first byte of your payload and sets it as a temperature value, but `data` object's contents can vary depending on the telemetry type your device is sending. {{</ note >}}
+
+The payload formatter shown above extracts the first byte of your payload and sets it as a temperature value, but `data` object's contents can vary depending on the telemetry type your device is sending.
 
 Also, note your credentials available under **MQTT** submenu of the **Integrations** menu on the left, because you will need them for further steps.
 
@@ -76,7 +75,7 @@ function decodeToJson(payload) {
 return result;
 ```
 
-{{< note >}} You can test the decoder by clicking the **Test decoder function** and submitting an uplink message from {{% tts %}} manually. {{</ note >}}
+You can test the decoder by clicking the **Test decoder function** and submitting an uplink message from {{% tts %}} manually.
 
 {{< figure src="uplink-converter.png" alt="Creating the uplink converter" >}}
 
@@ -104,7 +103,7 @@ var result = {
 return result;
 ```
 
-{{< note >}} Replace the `device_id` in the downlink converter function with the **End device ID** value from {{% tts %}}. {{</ note >}}
+Replace the `device_id` in the downlink converter function with the **End device ID** value from {{% tts %}}.
 
 {{< figure src="downlink-converter.png" alt="Creating a downlink converter" >}}
 
@@ -114,7 +113,7 @@ When you have defined data converters, navigate to the **Integrations** section 
 
 Give a name to your integration by filling in the **Name** field. For **Type**, choose **The Things Stack**.
 
-{{< note >}} Make sure the **Enabled** and **Allow create devices or assets** checkboxes are left ticked. {{</ note >}}
+Make sure the **Enabled** and **Allow create devices or assets** checkboxes are left ticked.
 
 For **Uplink data converter** and **Downlink data converter** choose the uplink and downlink converters you created in the previous step.
 
@@ -124,7 +123,7 @@ If you want to use TLS, enter `8883` for **Port**. Otherwise, enter `1883`.
 
 Use the credentials of your {{% tts %}} MQTT Server as **Username** and **Password**.
 
-{{< note >}} You can check the connection with your host via port you specified using credentials you provided by pressing the **Check connection** button. If it fails, make sure you fix it. {{</ note >}}
+You can check the connection with your host via port you specified using credentials you provided by pressing the **Check connection** button. If it fails, make sure you fix it.
 
 {{< figure src="creating-integration.png" alt="Creating the integration" >}}
 
@@ -136,7 +135,7 @@ A new device with your end device's ID will be created automatically. You can fi
 
 Besides listening to uplink messages, you can also schedule downlink messages to be sent to your end device from ThingsBoard.
 
-{{< note >}} This example shows the steps to create a setup that schedules a downlink message when the device attributes change. This requires modifying the **Root Rule Chain**. For more details, visit the [Getting Started with Rule Engine](https://thingsboard.io/docs/user-guide/rule-engine-2-0/re-getting-started/) section of the official ThingsBoard documentation page. {{</ note >}}
+This example shows the steps to create a setup that schedules a downlink message when the device attributes change. This requires modifying the **Root Rule Chain**. For more details, visit the [Getting Started with Rule Engine](https://thingsboard.io/docs/user-guide/rule-engine-2-0/re-getting-started/) section of the official ThingsBoard documentation page.
 
 First, navigate to **Rule chains** on the left hand menu.
 

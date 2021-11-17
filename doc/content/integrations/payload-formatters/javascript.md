@@ -51,7 +51,7 @@ The output object has the following structure:
 }
 ```
 
-{{< warning >}} If an error is present in `errors`, the payload is invalid and the message will be dropped. Any warnings in `warnings` are informative. {{</ warning >}}
+If an error is present in `errors`, the payload is invalid and the message will be dropped. Any warnings in `warnings` are informative.
 
 ### Decode Uplink Example: The Things Node
 
@@ -141,7 +141,7 @@ The output object has the following structure:
 }
 ```
 
-{{< warning >}} If an error is present in `errors`, the payload is invalid and the message will be dropped. Any warnings in `warnings` are informative. {{</ warning >}}
+If an error is present in `errors`, the payload is invalid and the message will be dropped. Any warnings in `warnings` are informative.
 
 ### Encode Downlink Example: The Things Node
 
@@ -204,7 +204,7 @@ The output object has the following structure:
 }
 ```
 
-> `decodeDownlink()` must be symmetric with `encodeDownlink()` and should therefore not return any errors.
+`decodeDownlink()` must be symmetric with `encodeDownlink()` and should therefore not return any errors.
 
 ### Decode Downlink Example: The Things Node
 

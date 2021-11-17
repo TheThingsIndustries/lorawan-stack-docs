@@ -88,7 +88,7 @@ To change the duty cycle, set the `desired-max-duty-cycle` parameter. For exampl
 $ ttn-lw-cli end-devices set <app-id> <device-id> --mac-settings.desired-max-duty-cycle DUTY_CYCLE_1024
 ```
 
-{{< note >}} See the [End Device API Reference]({{< ref "reference/api/end_device#message:MACSettings" >}}) for available fields and definitions of constants. DUTY_CYCLE_1024 represents 1/1024 ≈ 0.098%. {{</ note >}}
+See the [End Device API Reference]({{< ref "reference/api/end_device#message:MACSettings" >}}) for available fields and definitions of constants. `DUTY_CYCLE_1024` represents 1/1024 ≈ 0.098%.
 
 ### Enable ADR
 

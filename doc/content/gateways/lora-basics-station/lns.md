@@ -37,11 +37,9 @@ All {{% lbs %}} gateways support the following configuration options. Consult yo
 
 ### LNS Server Address
 
-The server address is the network endpoint of {{% tts %}} LNS. It is a combination of the **protocol** (wss), the **server address**, and the **port**:
+The server address is the network endpoint of {{% tts %}} LNS. It is a combination of the **protocol** (wss), the **server address**, and the **port**.
 
-Enter the following in your gateway as the LNS Server Address: `wss://<server-address>:8887`
-
-{{< note >}} The `<server-address>` is the address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}). {{</ note >}}
+Enter the following in your gateway as the LNS Server Address: `wss://<server-address>:8887`. The `<server-address>` is the address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}).
 
 ### LNS Server Certificate / LNS Trust
 
@@ -60,4 +58,4 @@ $ export LNS_KEY="your-lns-api-key"
 $ echo "Authorization: Bearer $LNS_KEY" | perl -p -e 's/\r\n|\n|\r/\r\n/g'  > lns.key
 ```
 
-{{< note >}} The above command creates a file called `lns.key`, terminated with a Carriage Return Line Feed (`0x0D0A`) character. Upload this file in your gateway as the LNS key. {{</ note >}}
+The above command creates a file called `lns.key`, terminated with a Carriage Return Line Feed (`0x0D0A`) character. Upload this file in your gateway as the LNS key.

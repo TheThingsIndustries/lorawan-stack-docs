@@ -46,9 +46,7 @@ See the [MAC settings guide]({{< ref "/devices/mac-settings" >}}) for more infor
 
 [Packet Broker]({{< ref "/getting-started/packet-broker" >}}) enables peering between networks, so traffic received by one network (The Things Network V2) but intended for a different network ({{% tts %}}) can be forwarded to and from that network. With Packet Broker enabled on both {{% tts %}} and The Things Network V2, you can receive traffic on {{% tts %}} without having to re-configure any of your gateways.
 
-{{< note >}} Packet Broker is already enabled on The Things Network V2 (public community network) and {{% tts %}} Cloud. 
-
-For {{% tts %}} Enterprise or {{% tts %}} Open Source, see how to [Connect]({{< ref "/getting-started/packet-broker/connect">}}) to Packet Broker.{{</ note >}}
+Packet Broker is already enabled on The Things Network V2 (public community network) and {{% tts %}} Cloud. For {{% tts %}} Enterprise or {{% tts %}} Open Source, see how to [Connect]({{< ref "/getting-started/packet-broker/connect">}}) to Packet Broker.
 
 For private {{% tts %}} deployments with Packet Broker disabled, you will need to re-configure your gateways to connect to {{% tts %}}, so that you can start receiving traffic from your end devices.
 
@@ -61,8 +59,6 @@ In order to connect a gateway to {{% tts %}}, first follow instructions for [Add
 For details on the data format of {{% ttnv2 %}}, see the documentation from [The Things Network](https://www.thethingsnetwork.org/docs/applications/mqtt/api.html).
 
 For details on the data format of {{% tts %}}, see [Data Formats]({{% ref "/reference/data-formats" %}}) section. It uses a different schema, different names, and has much richer metadata support.
-
-{{< note >}} When migrating to {{% tts %}}, ensure your application can properly handle the new {{% tts %}} data format. {{</ note >}}
 
 ### Payload Formats
 

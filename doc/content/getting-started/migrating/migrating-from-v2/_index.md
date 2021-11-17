@@ -9,13 +9,9 @@ This section documents the process of migrating end devices from {{% ttnv2 %}} t
 
 <!--more-->
 
-{{< note >}} As previously announced, on **July 1, 2021** users will no longer be able to add new applications, devices and gateways on {{% ttnv2 %}} deployments, i.e. {{% ttnv2 %}} is going to **read-only** mode.
+{{< note >}} As previously announced, from **July 1, 2021** {{% ttnv2 %}} deployments have gone to a **read-only** mode.
 
 Make sure to migrate your gateways and devices from {{% ttnv2 %}} to {{% tts %}} as soon as possible, since {{% ttnv2 %}} machines are planned to be completely shut down on **December 1, 2021**.
-{{</ note >}}
-
-{{< note >}}
-Since The Things Stack v3.13, The Things Network community members can freely migrate their gateways from The Things Network V2 to The Things Stack Community Edition, while still providing uplink and downlink coverage to The Things Network V2. This means that the order of actions of migrating gateways and devices is no longer relevant - you can migrate your devices first and then your gateways, or vice versa.
 {{</ note >}}
 
 ## Prerequisites
@@ -32,7 +28,7 @@ We **highly recommend** using {{% tts %}} version `3.12.0` or higher. Some of th
 
 Since end devices are being created within applications, you first need to add a new application in {{% tts %}}. See [Adding Applications]({{< ref "/integrations/adding-applications" >}}) for detailed instructions.
 
-{{< note >}} When adding an application in {{% tts %}}, the **Application ID** does not have to be the same as the one in {{% ttnv2 %}}. {{</ note >}}
+When adding an application in {{% tts %}}, the **Application ID** does not have to be the same as the one in {{% ttnv2 %}}.
 
 ## Add Payload Formatters and Integrations in {{% tts %}}
 

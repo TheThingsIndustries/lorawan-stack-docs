@@ -58,9 +58,7 @@ Create a gateway by following the instructions for [Adding Gateways]({{< ref "/g
 
 To connect to the LORIX One, open a web browser on your computer or device and enter the either the gateway hostname or the gateway IP address.
 
-The hostname is `lorix-one-abcdef.local` where `abcdef` are the 6 last digits of the Gateway EUI.
-
-{{< note >}} Hostname access is only available on networks that have mDNS enabled. On networks without mDNS, enter the IP address of the gateway in the web browser. {{</ note >}}
+The hostname is `lorix-one-abcdef.local` where `abcdef` are the 6 last digits of the Gateway EUI. Hostname access is only available on networks that have mDNS enabled. On networks without mDNS, enter the IP address of the gateway in the web browser.
 
 You will land on the login page. Log on using the following the default username **admin** and default password **lorix4u**.
 

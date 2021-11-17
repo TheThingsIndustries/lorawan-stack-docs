@@ -11,7 +11,7 @@ Connect to the LtAP’s built-in high power 2.4 GHz 802.11B/G/N wireless and acc
 
 <!--more-->
 
-For more info, see Mikrotik's [official product page](https://mikrotik.com/product/ltap_lte_kit)
+For more info, see Mikrotik's [official product page](https://mikrotik.com/product/ltap_lte_kit).
 
 **Features:**
 
@@ -45,26 +45,22 @@ Use your PC, tablet or smartphone to connect to this AP. You will not need a pas
 
 Open a browser to `http://192.168.88.1/webfig/#Interfaces`.
 
-![MikroTik-portal.png](portal.png)
+{{< figure src="portal.png" alt="MikroTik portal" class="plain" >}}
 
 Select **LoRa** on the left hand menu. The status of the gateway should be **Disabled** - if needed, press the **D** button to disable it.
 
-![MikroTik-portal-lora.png](portal-lora.png)
+{{< figure src="portal-lora.png" alt="MikroTik LoRa portal" class="plain" >}}
 
-{{< note >}}
-If you don't see any devices listed in the **Devices** tab of the **LoRa** menu, you will need to enable the LoRa interface first. To do so, click the **Terminal** button in the upper right corner and enter the command:
+If you do not see any devices listed in the **Devices** tab of the **LoRa** menu, you will need to enable the LoRa interface first. To do so, click the **Terminal** button in the upper right corner and enter the command:
 ```
 system routerboard usb set type=mini-PCIe
 ```
-{{</ note >}}
 
-{{< note >}}
 The Gateway ID you see here is the Gateway EUI you need to register the gateway in The Things Stack.
-{{</ note >}}
 
 From the top menu, select the **Servers** Tab and press the **Add New** button.
 
-![MikroTik-server](servers.png)
+{{< figure src="servers.png" alt="MikroTik servers" class="plain" >}}
 
 Edit the server parameters.
 
@@ -75,11 +71,11 @@ Edit the server parameters.
 
 Press **OK** to save the parameters.
 
-![MikroTik-paramters](parameters.png)
+{{< figure src="parameters.png" alt="MikroTik parameters" class="plain" >}}
 
 From the top menu, select the **Devices** tab. Click the **Gateway ID** to configure it.
 
-![MikroTik-Devices](portal-lora-disable.png)
+{{< figure src="portal-lora-disable.png" alt="MikroTik portal disable" class="plain" >}}
 
 In the device settings, click the **Network Servers** drop-down menu to view available servers. Choose the server you just created.
 

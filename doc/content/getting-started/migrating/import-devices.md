@@ -22,7 +22,7 @@ Open your application and click the button **Import end devices**
 
 Select `The Things Stack JSON` as the **File format** and upload the `devices.json` file.
 
-{{< note >}} You can also expand the **Advanced claiming and component settings** to set targeted components, and set the claim authentication code to be generated. {{</ note >}}
+You can also expand the **Advanced claiming and component settings** to set targeted components, and set the claim authentication code to be generated.
 
 Start the import by clicking the **Import end devices** button.
 
@@ -61,4 +61,4 @@ If the import was successful, you will see your devices added to the list of end
 
 Your devices are now registered on {{% tts %}}.
 
-{{< note >}} Keep in mind that you still might need to initiate a new join on {{% tts %}} network! See [Migrating End Devices from {{% ttnv2 %}}]({{< ref "/getting-started/migrating/migrating-from-v2" >}}) for detailed info on how to complete the migration of your devices. {{</ note >}}
+Keep in mind that you still might need to initiate a new join on {{% tts %}} network! See [Migrating End Devices from {{% ttnv2 %}}]({{< ref "/getting-started/migrating/migrating-from-v2" >}}) for detailed info on how to complete the migration of your devices.

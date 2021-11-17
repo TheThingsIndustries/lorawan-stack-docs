@@ -34,7 +34,7 @@ You also need to specify the action within the action service. For the **Android
 
 Complete the action fields by entering the phone number and SMS body, then click the **Create action** button.
 
-{{< note >}} ou may also pass the decoded payload values from {{% tts %}} as `value1`, `value2` and `value3`. Learn how to implement this by following the [Node-RED Setup]({{< ref "/integrations/ifttt/node-red-setup" >}}) section. {{</ note >}}
+You may also pass the decoded payload values from {{% tts %}} as `value1`, `value2` and `value3`. Learn how to implement this by following the [Node-RED Setup]({{< ref "/integrations/ifttt/node-red-setup" >}}) section.
 
 {{< figure src="completing-action-fields.png" alt="Completing the action fields" >}}
 
@@ -48,4 +48,4 @@ Here you will find the URL you will be sending the HTTP POST request to. Replace
 
 {{< figure src="webhooks-documentation-page.png" alt="Webhooks service documentation page" >}}
 
-{{< note >}} You can test the action service by triggering it manually with the **Test It** button on the bottom of this page. {{</ note >}}
+You can test the action service by triggering it manually with the **Test It** button on the bottom of this page.

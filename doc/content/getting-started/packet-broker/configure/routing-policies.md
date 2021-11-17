@@ -7,7 +7,6 @@ distributions:
   - Dedicated Cloud
   - Enterprise
   - Open Source
-new_in_version: 3.13.3
 ---
 
 Routing policies define the rules that Forwarders configure for routing messages to Home Networks.
@@ -16,7 +15,7 @@ Routing policies define the rules that Forwarders configure for routing messages
 
 Routing policies are peer-to-peer: a Forwarder can define policies with each individual Home Network. Forwarders can also define an optional default routing policy that is used as a fallback when no specific policy is defined. [Learn more about routing policies]({{< relref "../#routing-policies" >}}).
 
-{{< note >}} Packet Broker Router uses a cache of the routing table. It takes up to 10 minutes for changes in routing policies to be fully propagated and effective. ☕ {{< /note >}}
+Packet Broker Router uses a cache of the routing table. It takes up to 10 minutes for changes in routing policies to be fully propagated and effective. ☕
 
 {{< tabs/container "Console" "CLI" >}}
 
@@ -62,9 +61,7 @@ To get the default routing policy:
 $ ttn-lw-cli packetbroker home-networks policies get default
 ```
 
-{{< note >}}
 If there is no default policy defined, the above command fails with `not found`.
-{{< /note >}}
 
 <details><summary>Example output</summary>
 
@@ -119,9 +116,7 @@ To list Packet Broker Home Networks:
 $ ttn-lw-cli packetbroker home-networks list
 ```
 
-{{< note >}}
 This shows only the Home Networks that have been set to be visible to other networks. If you are using {{% tts %}} Cloud or Dedicated Cloud, [contact The Things Industries support](mailto:support@thethingsindustries.com) to set your network to be listed or not. If you are using {{% tts %}} Open Source or Enterprise, see [Configuration]({{< relref "/reference/configuration/packet-broker-agent" >}}).
-{{< /note >}}
 
 <details><summary>Example output</summary>
 
@@ -251,13 +246,11 @@ $ ttn-lw-cli packetbroker home-networks policies get <net-id> [<tenant-id>]
 
 Replace `<net-id>` with your network's `NetID`. The `tenant-id` is optional and represents the tenant within the `NetID`.
 
-{{< note >}}
 To view the routing policy configured between you (the Forwarder) and The Things Stack Community Edition (the Home Network):
 
 ```bash
 $ ttn-lw-cli packetbroker home-networks policies get 000013 ttn
 ```
-{{< /note >}}
 
 ##### Set Home Network Routing Policy
 
@@ -269,13 +262,11 @@ $ ttn-lw-cli packetbroker home-network policies set <net-id> [<tenant-id>] --all
 
 To customize, see [Flags]({{< relref "#flags" >}}) below.
 
-{{< note >}}
 To enable forwarding of all packets between you (the Forwarder) and The Things Stack Community Edition (the Home Network):
 
 ```bash
 $ ttn-lw-cli packetbroker home-network policy set 000013 ttn --all
 ```
-{{< /note >}}
 
 ##### Delete Home Network Routing Policy
 

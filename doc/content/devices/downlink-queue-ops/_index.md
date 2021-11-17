@@ -40,7 +40,7 @@ $ ttn-lw-cli end-devices downlink replace app1 dev1 \
   --f-port 42
 ```
 
-{{< note >}} {{% tts %}} limits the application downlink queue on 10k messages per end device. When this limit is reached, no more scheduled downlinks can be placed in the queue and {{% tts %}} will drop them. In order to avoid hitting the application downlink queue limit and loosing downlinks, we advise scheduling downlink messages in batches. {{</ note >}}
+{{% tts %}} limits the application downlink queue on 10k messages per end device. When this limit is reached, no more scheduled downlinks can be placed in the queue and {{% tts %}} will drop them. In order to avoid hitting the application downlink queue limit and loosing downlinks, we advise scheduling downlink messages in batches.
 
 ## List queue
 

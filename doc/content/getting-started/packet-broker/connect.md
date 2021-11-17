@@ -12,9 +12,7 @@ aliases:
 
 This section explains how to connect {{% tts %}} to Packet Broker.
 
-{{< note >}}
 {{% tts %}} Cloud and Community Edition are already connected to Packet Broker. If your deployment is already connected, proceed to [configure Packet Broker]({{< relref "configure" >}}).
-{{< /note >}}
 
 ## Prerequisites
 
@@ -28,15 +26,15 @@ This section explains how to connect {{% tts %}} to Packet Broker.
 
 ## Define DevAddr Prefix by NetID
 
+This guide uses The Things Network NetID `000013` as example, which has DevAddr prefix `26000000/7`.
+
 If you own a NetID, enter your NetID to obtain your DevAddr prefix:
 
 {{< dev-addr-prefix >}}
 
 Your DevAddr prefix is: <code><span data-content="dev-addr-prefix"></span></code>
 
-{{< note >}} See a full list of NetIDs, DevAddr Prefix assignments, operators, and regions they are allocated to in [The Things Network LoRaWAN documentation]](https://www.thethingsnetwork.org/docs/lorawan/prefix-assignments/). {{</ note >}}
-
-{{< note >}} This guide uses The Things Network NetID `000013` as example, which has DevAddr prefix `26000000/7`. {{</ note >}}
+See a full list of NetIDs, DevAddr Prefix assignments, operators, and regions they are allocated to in [The Things Network LoRaWAN documentation](https://www.thethingsnetwork.org/docs/lorawan/prefix-assignments/).
 
 ## Configure Packet Broker Agent
 
@@ -107,7 +105,7 @@ ns:
   - '27222200/16'
 ```
 
-{{< note >}} By default, the Network Server uses NetID `000000` which is intended for experimentation purposes. Only devices that are activated with a DevAddr that refers to a NetID will have their traffic routed by Packet Broker to your network. {{</ note >}}
+By default, the Network Server uses NetID `000000` which is intended for experimentation purposes. Only devices that are activated with a DevAddr that refers to a NetID will have their traffic routed by Packet Broker to your network.
 
 See [Network Server configuration]({{< ref "/reference/configuration/network-server" >}}) for all configuration options.
 

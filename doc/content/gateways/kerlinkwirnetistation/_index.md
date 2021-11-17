@@ -17,9 +17,7 @@ This page guides you to connect Kerlink Wirnet iStation to {{% tts %}}.
 1. User account on {{% tts %}} with rights to create Gateways.
 2. Kerlink Wirnet iStation gateway connected to the Internet via Ethernet or cellular network.
 
-Before registering a gateway in {{% tts %}}, you also need to find out the gateway's EUI. You can do so if you connect to the iStation by SSH-ing into it using `root` login and `pdmk-XXXXXX` passoword. `XXXXXX` represents the last six hexadecimal digits of the **Board ID** printed on the gateway's bottom. 
-
-> For example, if the **Board ID** is `921CHa010001`, the root password will be `pdmk-010001`.
+Before registering a gateway in {{% tts %}}, you also need to find out the gateway's EUI. You can do so if you connect to the iStation by SSH-ing into it using `root` login and `pdmk-XXXXXX` passoword. `XXXXXX` represents the last six hexadecimal digits of the **Board ID** printed on the gateway's bottom. For example, if the **Board ID** is `921CHa010001`, the root password will be `pdmk-010001`.
 
 To print the gateway's EUI, use the following command: 
 
@@ -35,9 +33,7 @@ Create an API Key with **View gateway information** rights for this gateway usin
 
 ## Configuration
 
-All further steps assume the gateway is available at `<gateway-ip>`, {{% tts %}} is available at `<server-address>`, gateway ID is `<gateway-id>` and gateway API key is `<gateway-api-key>`. For Wirnet iStation gateway, the `<gateway-model>` has value `'wirnet-istation'`.
-
-{{< note >}} Make sure to replace these with the values appropriate for your setup. {{</ note >}}
+All further steps assume the gateway is available at `<gateway-ip>`, {{% tts %}} is available at `<server-address>`, gateway ID is `<gateway-id>` and gateway API key is `<gateway-api-key>`. For Wirnet iStation gateway, the `<gateway-model>` has value `'wirnet-istation'`. Make sure to replace these with the values appropriate for your setup.
 
 ### Provisioning
 
@@ -49,6 +45,6 @@ To provision the iStation gateway at `<gateway-ip>` to use the configuration of 
 $ curl -sL 'https://raw.githubusercontent.com/TheThingsNetwork/kerlink-wirnet-firmware/v0.0.3/provision.sh' | bash -s -- <gateway-model> <gateway-ip> <server-address> <gateway-id> <gateway-api-key>
 ```
 
-{{< note >}} Please refer to [Kerlink Wirnet Firmware provisioning documentation](https://github.com/TheThingsNetwork/kerlink-wirnet-firmware/tree/v0.0.3#provisioning) for more detailed information on provisioning the Wirnet iStation. {{</ note >}}
+To avoid being prompted for `root` user password several times, you may add your SSH public key as authorized for `root` user on the gateway, for example, by `ssh-copy-id root@192.168.4.155`.
 
-{{< note >}} To avoid being prompted for `root` user password several times, you may add your SSH public key as authorized for `root` user on the gateway, for example, by `ssh-copy-id root@192.168.4.155`. {{</ note >}}
+Please refer to [Kerlink Wirnet Firmware provisioning documentation](https://github.com/TheThingsNetwork/kerlink-wirnet-firmware/tree/v0.0.3#provisioning) for more detailed information on provisioning the Wirnet iStation.

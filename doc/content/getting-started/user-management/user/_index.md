@@ -165,7 +165,7 @@ $ ttn-lw-cli users list --name --state --admin
 ```
 </details>
 
-{{< note >}} Use the pagination flags `--limit` and `--page` when there are many users. {{</ note >}}
+Use the pagination flags `--limit` and `--page` when there are many users.
 
 ## Searching for Users
 
@@ -189,7 +189,7 @@ $ ttn-lw-cli users search --id-contains new --name
 ```
 </details>
 
-{{< note >}} Use the pagination flags `--limit` and `--page` when there are many users. {{</ note >}}
+Use the pagination flags `--limit` and `--page` when there are many users.
 
 ## Updating Users
 

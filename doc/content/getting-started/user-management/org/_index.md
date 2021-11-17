@@ -10,7 +10,7 @@ This section contains instructions for managing organizations.
 
 To make it easier to manage groups of users, it is possible to create organizations with specific rights which apply to all users who are collaborators. To use organizations, users must be added as collaborators of the organization, and the organization must be added as a collaborator of an entity.
 
-{{< note >}} When a user is a collaborator of an organization which is a collaborator for an entity, the user's rights are the intersection of the user's rights in the organization and the organization's rights on the entity. {{</ note >}}
+When a user is a collaborator of an organization which is a collaborator for an entity, the user's rights are the intersection of the user's rights in the organization and the organization's rights on the entity.
 
 {{< tabs/container "Console" "CLI" >}}
 
@@ -28,7 +28,7 @@ To add an organization, click **Add organization**.
 
 Choose the rights you would like to grant the organization, and click the **Add organization** button to save your choices.
 
-{{< note >}} When a user is a member of an organization which is a collaborator for an entity, the user's rights are the intersection of the user's rights in the organization and the organization's rights on the entity. {{</ note >}}
+When a user is a member of an organization which is a collaborator for an entity, the user's rights are the intersection of the user's rights in the organization and the organization's rights on the entity.
 
 {{< /tabs/tab >}}
 
@@ -111,7 +111,7 @@ To add a user to an organization, use the  `organizations collaborators set` com
 $ ttn-lw-cli organizations collaborators set --organization-id org1 --user-id user1 --right-organization-all
 ```
 
-{{< note >}} You must specify rights when adding a collaborator. Use the `--help` flag to see the list of possible rights, e.g `$ ttn-lw-cli organizations collaborators set --help`. {{</ note >}}
+You must specify rights when adding a collaborator. Use the `--help` flag to see the list of possible rights, e.g `$ ttn-lw-cli organizations collaborators set --help`.
 
 ## Removing Users from Organizations
 

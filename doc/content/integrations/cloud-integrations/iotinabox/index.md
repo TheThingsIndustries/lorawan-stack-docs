@@ -8,7 +8,7 @@ weight:
 
 <!--more-->
 
-> Visit [IoT in a Box helpdesk](https://iotinabox.zendesk.com/hc/en-us) for detailed documentation.
+Visit [IoT in a Box helpdesk](https://iotinabox.zendesk.com/hc/en-us) for detailed documentation.
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ You will also be asked to add your device, which you can do by submitting the **
 
 {{< figure src="add-device.png" alt="Adding a device" >}}
 
-{{< note >}} Check the supported hardware in [myDevices online store](https://store.mydevices.com/). Devices that are not purchased from this store can be added by submitting their DevEUI/model, or by registering them through your IoT in a Box Whitelabel Console. {{</ note >}}
+Check the supported hardware in [myDevices online store](https://store.mydevices.com/). Devices that are not purchased from this store can be added by submitting their DevEUI/model, or by registering them through your IoT in a Box Whitelabel Console.
 
 ## Configure {{% tts %}}
 
@@ -40,6 +40,6 @@ To integrate, you only need to fill out the **Webhook ID** field with a desired 
 
 {{< figure src="iotinabox-template.png" alt="IoT in a Box webhook" >}}
 
-{{< note >}} To see the values of all parameters of the IoT in a Box integration, click on the integration after you created it with the Webhook template. {{</ note >}}
+To see the values of all parameters of the IoT in a Box integration, click on the integration after you created it with the Webhook template.
 
 At this point, you have set up everything to monitor your sensor devices, receive alerts and get daily reports on their status.

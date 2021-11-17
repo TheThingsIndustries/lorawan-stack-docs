@@ -16,8 +16,8 @@ To use the CLI, you need to complete three steps:
 2. [Configure the CLI]({{< relref "configuring-cli" >}})
 3. [Login with the CLI]({{< relref "login" >}})
 
+If you need help with any CLI command, use the `--help` flag to get a list of subcommands, flags and their description and aliases.
+
 For a complete list of CLI commands, see the [CLI reference]({{< ref "reference/cli" >}}).
 
 For troubleshooting common CLI errors, see the [Troubleshooting CLI]({{< relref "troubleshooting" >}}) section.
-
-{{< note >}} If you need help with any CLI command, use the `--help` flag to get a list of subcommands, flags and their description and aliases. {{</ note >}}

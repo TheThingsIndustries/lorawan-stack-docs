@@ -46,7 +46,7 @@ In addition to the [metrics exported by {{% tts %}}]({{< ref "/reference/telemet
 
 For all services the following metrics are recorded:
 
-- `ttn_lw_log_messages_rate` records the rate of log messages by job (service), namespace and level. This can be useful for monitoring warning and error rates. {{< new-in-version "3.13.1" >}}
+- `ttn_lw_log_messages_rate` records the rate of log messages by job (service), namespace and level. This can be useful for monitoring warning and error rates.
   - Before version 3.13.1 this metric was called `ttn_lw_log_log_messages_rate`.
 - `ttn_lw_events_publishes_rate` records the rate of published events by event name.
 
@@ -61,7 +61,7 @@ For the Gateway Server:
 
 For some of these metrics, there are also variants with `:avg` and `:stddev` suffixes that can be used for anomaly detection, and are therefore also used in alerting rules.
 
-For the Packet Broker Agent: {{< new-in-version "3.11.2" >}}
+For the Packet Broker Agent:
 
 - `ttn_lw_pba_uplink_received_rate` record the rate of uplink messages received from Packet Broker (as a home network).
 - `ttn_lw_pba_downlink_forwarded_rate` record the rate of downlink messages sent to Packet Broker (as a home network).

@@ -22,9 +22,9 @@ $ ttn-lw-cli end-devices set app1 dev1 --supports-class-b
 
 This will enable the Class B downlink scheduling of the device. Downlink messages are now scheduled during the next available ping slot.
 
-To disable Class B scheduling, reset with `--supports-class-b=false`.
+For unicast devices, Class B downlink scheduling starts when the end device sends an uplink with the Class B bit set. This means that an OTAA device should send an uplink message with the Class B bit set after receiving the join-accept in order to enable Class B downlink scheduling.
 
-{{< note >}} For unicast devices, Class B downlink scheduling starts when the end device sends an uplink with the Class B bit set. This means that an OTAA device should send an uplink message with the Class B bit set after receiving the join-accept in order to enable Class B downlink scheduling. {{</ note >}}
+To disable Class B scheduling, reset with `--supports-class-b=false`.
 
 ## Multicast Group
 

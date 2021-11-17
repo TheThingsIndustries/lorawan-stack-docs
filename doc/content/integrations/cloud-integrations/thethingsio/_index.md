@@ -23,13 +23,13 @@ Click the **Create new IoT product** button. Give it a **Name**, choose **LoRa**
 
 {{< figure src="create-new-iot-product.png" alt="Creating a new IoT product" >}}
 
-{{< note >}} To parse the data coming from {{% tts %}}, you will use thething.iO's [Cloud Code Function](https://developers.thethings.io/docs/cloud-code-functions). {{</ note >}}
+To parse the data coming from {{% tts %}}, we use thething.iO's [Cloud Code Function](https://developers.thethings.io/docs/cloud-code-functions).
 
 On the left hand menu, navigate to **Cloud Code**. Since you have created a new LoRa product, a `lora_parser` Cloud Code Function is automatically generated for you - you can find it under **Functions**.
 
 {{< figure src="cloud-code-function.png" alt="Auto-generated Cloud Code Function" >}}
 
-{{< note >}} To parse the data correctly, you need to modify this function according to the payload you are sending from {{% tts %}}. Checking [Data Formats](https://www.thethingsindustries.com/docs/reference/data-formats/) in the the official {{% tts %}} documentation might be useful. {{</ note >}}
+To parse the data correctly, you need to modify this function according to the payload you are sending from {{% tts %}}. Checking [Data Formats](https://www.thethingsindustries.com/docs/reference/data-formats/) in the the official {{% tts %}} documentation might be useful.
 
 To modify the `lora_parser` function code, click the **Edit** button on its right. 
 
@@ -72,9 +72,7 @@ Paste the **Product ID** and **Hash** values from thethings.iO into the equally 
 
 Hit the **Create thethings.io webhook** button to finish. 
 
-{{< note >}} To see the values of all parameters of the thethins.iO integration, click on the integration after you created it with the Webhook template. 
-
-If you do this, you will see that the final callback URL has the following structure: `https://subscription.thethings.io/lora/{Product ID}/{Hash}?idname=end_device_ids.dev_eui`. {{</ note >}}
+To see the values of all parameters of the thethins.iO integration, click on the integration after you created it with the Webhook template. If you do this, you will see that the final callback URL has the following structure: `https://subscription.thethings.io/lora/{Product ID}/{Hash}?idname=end_device_ids.dev_eui`.
 
 ## Monitor Your Data
 

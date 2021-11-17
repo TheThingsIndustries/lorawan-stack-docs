@@ -64,17 +64,14 @@ Save the **Gateway ID**, you will need this later when adding the gateway in {{%
 
 Set the network settings via **Network** > **WAN**. You can choose to connect via Ethernet or 3G/LTE. Reboot the gateway after configuring the network settings.
 
-{{< note >}}If you connect via 3G/LTE, it will take a few minutes before the gateway will start routing messages.
-{{</ note >}}
+If you connect via 3G/LTE, it will take a few minutes before the gateway will start routing messages.
 
-{{< note >}}
 To open the ODU GUI again, you can access the web interface via the fallback IP address: [`192.168.11.10`](http://192.168.11.10).
 
 You will need to set your PC's IP address in the same range, e.g.:
 - IP address: `192.168.11.100`
 - Subnet Mask: `255.255.255.0`
 - Router: `192.168.11.10`
-{{</ note >}}
  
 ## Registration
 

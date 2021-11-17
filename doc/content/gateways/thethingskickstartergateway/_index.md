@@ -32,12 +32,9 @@ In a web browser, open the gateway's configuration page by navigating to http://
 
 {{< figure src="ttkg-config-window.png" alt="TTKG Configuration Window" >}}
 
-Enter the following fields:
+Enter the **Gateway ID** that you chose earlier. To connect to a Cloud Hosted tenant, the **Gateway ID** field has to be in the following format: `<gateway-id@tenant-id>`.
 
-- **Name**: the **Gateway ID** that you chose earlier.
-- Choose the WiFi network from the drop down and enter a password if necessary.
-
-{{< note >}} To connect to a Cloud Hosted tenant, the tenant ID must be added to the  **Gateway ID** field in the format **Gateway ID**@**Tenant ID**. {{</ note >}}
+Choose the WiFi network from the drop down and enter a password if necessary.
 
 Click the **Show Advanced Options** button and enter the following fields:
 

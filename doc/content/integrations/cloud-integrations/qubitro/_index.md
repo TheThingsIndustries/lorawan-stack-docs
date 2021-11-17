@@ -54,7 +54,7 @@ Copy the **Project ID** and the **Webhook Signing Key** values from Qubitro. Pas
 
 {{< figure src="creating-a-webhook.png" alt="Qubitro webhook" >}}
 
-{{< note >}} To see or edit the values of all parameters of the Qubitro integration, click on the integration after you created it with the Webhook template. {{</ note >}}
+To see or edit the values of all parameters of the Qubitro integration, click on the integration after you created it with the Webhook template.
 
 ## Monitor Your Data
 

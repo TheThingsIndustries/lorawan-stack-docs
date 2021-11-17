@@ -110,11 +110,7 @@ Now you can run the CLI using `tti-lw-cli` in your terminal.
 
 ### Windows
 
-No package manager is available for Windows. Follow instructions in the next section to download the [pre-built binaries](https://github.com/TheThingsNetwork/lorawan-stack/releases) for Windows based on the processor architecture. To determine your windows system architecture, run the following in the Windows command prompt:
-
-```bash
-$ echo %PROCESSOR_ARCHITECTURE%
-```
+No package manager is available for Windows. Follow instructions in the [Installing using pre-built binaries]({{< ref "/getting-started/cli/installing-cli#installing-using-pre-built-binaries" >}}) section below to download the [pre-built binaries](https://github.com/TheThingsNetwork/lorawan-stack/releases) for Windows based on the processor architecture.
 
 Note that Windows binaries must be run with a `.exe` extension on the end, so if an example uses `ttn-lw-cli`, that will be `ttn-lw-cli.exe` on Windows.
 
@@ -124,21 +120,21 @@ If your operating system does not support a package manager or you do not want t
 
 Find the [latest {{% tts %}} release](https://github.com/TheThingsNetwork/lorawan-stack/releases), scroll down and expand the **Assets** section to see the binaries. Search for archives starting with `lorawan-stack-cli` (usually on top), then search for the specific archive ending with your operating system and processor architecture label.
 
+The commands to determine your processor architecture depend on your operating system. On Linux and macOS you can use `uname -m` in your terminal, while on Windows you can use `echo %PROCESSOR_ARCHITECTURE%`.
+
 {{< figure src="binaries.png" >}}
 
 For example, if you are using a Linux operating system on a computer with an AMD64 processor, you need to download `lorawan-stack-cli_x.x.x_linux_amd64.tar.gz`.
-
-{{< note >}} The commands to determine your processor architecture depend on your operating system. On Linux and macOS you can use `uname -m` in your terminal, while on Windows you can use `echo %PROCESSOR_ARCHITECTURE%`. {{</ note >}}
 
 Open the downloaded archive and extract it to the desired location. Enter the extracted directory.
 
 You can now run the CLI from inside that directory, or add that directory to `PATH` to run the CLI from any location.
 
-{{< note >}} On Windows, {{% tts %}} CLI is run using `.\ttn-lw-cli.exe` instead of `.\ttn-lw-cli`. {{</ note >}}
-
 ## Auto-completion (optional)
 
 After you have installed the CLI, you can also enable [auto-completion](ttps://en.wikipedia.org/wiki/Command-line_completion). Auto-completion allows the shell to automatically fill in commands after you type the first few letters. It is completely optional but can save you time entering commands.
+
+Supported shells are `bash`, `zsh`, `fish` and `powershell`.
 
 {{< note >}} When installing {{% tts %}} CLI with `brew` and `snap` package managers, auto-completion is enabled automatically. {{</ note >}}
 
@@ -149,8 +145,6 @@ Use `ttn-lw-cli complete` to generate an auto-completion script for the `ttn-lw-
 ```bash
 $ ttn-lw-cli complete --shell bash --executable ttn-lw-cli > ttn-lw-cli-autocomplete
 ```
-
-{{< note >}} `bash`, `zsh`, `fish` and `powershell` shells are supported. {{</ note >}}
 
 Now you need to source the generated file to enable auto-completion:
 

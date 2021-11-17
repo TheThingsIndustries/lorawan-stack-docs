@@ -33,9 +33,9 @@ The Laird Sentrius™ RG1xx LoRaWAN Gateway features a Wi-Fi quick config that a
 
 1. Depress and hold the user button for 7 seconds.
 2. From a wirelessly enabled device perform a scan.
-3. Connect to the access point rg1xx29378B, where “29378B” are the last six digits of the Ethernet MAC address found on the label on the bottom of the gateway
+3. Connect to the access point rg1xx29378B, where “29378B” are the last six digits of the Ethernet MAC address found on the label on the bottom of the gateway.
 
-{{< note >}} The network is secured with WPA2 with a password that is the same as the SSID.  It is recommended that the default password is changed for security reasons.  The password can be changed on the **Wi-Fi > Advanced** web page. {{</ note >}}
+The network is secured with WPA2 with a password that is the same as the SSID.  It is recommended that the default password is changed for security reasons.  The password can be changed on the **Wi-Fi > Advanced** web page.
 
 See [Laird's official documentation](https://www.lairdconnect.com/wireless-modules/lorawan-solutions/sentrius-rg1xx-lorawan-gateway-wi-fi-ethernet-optional-lte-us-only#documentation) for more information.
 

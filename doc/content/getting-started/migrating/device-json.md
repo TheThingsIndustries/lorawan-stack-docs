@@ -7,7 +7,7 @@ aliases: "/getting-started/migrating-from-networks/device-json"
 
 {{% tts %}} allows you to import end devices from {{% ttnv2 %}}, ChirpStack and other LoRaWAN networks using a JSON file describing those devices.
 
-{{< note >}} Using JSON file with device descriptions, you can migrate end devices with or without their existing sessions. {{</ note >}}
+Using JSON file with device descriptions, you can migrate end devices with or without their existing sessions.
 
 Here is an example of an OTAA device description in the `devices.json` file:
 
@@ -47,9 +47,7 @@ Multiple end devices can also be contained in a single `devices.json` file like 
 
 ## JSON End Device Format
 
-The full specification of the JSON format is defined in the API protos.
-
-> See the [EndDevice]({{< ref "/reference/api/end_device#message:EndDevice" >}}) message definition for details.
+The full specification of the JSON format is defined in the API protos. See the [EndDevice]({{< ref "/reference/api/end_device#message:EndDevice" >}}) message definition for details.
 
 The linked specification is quite extensive, and contains a lot of fields that are not required, or are only set and used internally by the Network Server. Below, the required and most commonly used fields are discussed.
 
@@ -81,7 +79,7 @@ The linked specification is quite extensive, and contains a lot of fields that a
 </div>
 <br>
 
-{{< note >}} The dots in the **Field** column imply an embedded object. For example, `root_keys.nwk_key.key` must be set as:
+Note that the dots in the **Field** column imply an embedded object. For example, `root_keys.nwk_key.key` must be set as:
 ```
 "root_keys": {
   "nwk_key:": {
@@ -89,4 +87,3 @@ The linked specification is quite extensive, and contains a lot of fields that a
   }
 }
 ```
-{{</ note >}}

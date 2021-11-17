@@ -21,8 +21,7 @@ INFO Waiting for your authorization...
 
 The solution to this issue would be to replace `thethings.example.com` occurrences with the server address of your {{% tts %}} deployment.
 
-{{< note >}} You will experience the same behavior if you are using an `https` port other than `443` and you have not specified that port in the `oauth-server-address` parameter in the CLI configuration file (or with `--oauth-server-address` flag when running the CLI). For example, if you are running {{% tts %}} on `localhost`, you would have to specify the OAuth server address as `'https://localhost:8885/oauth'`.
-{{</ note >}}
+You will experience the same issue if you are using an `https` port other than `443` and you have not specified that port in the `oauth-server-address` parameter in the CLI configuration file or with `--oauth-server-address` flag when running the CLI. For example, if you are running {{% tts %}} on `localhost`, you need to specify the OAuth server address as `'https://localhost:8885/oauth'`.
 
 ## Certificate Signed by Unknown Authority
 

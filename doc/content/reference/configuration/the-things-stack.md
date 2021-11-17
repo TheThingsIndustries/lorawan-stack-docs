@@ -17,13 +17,11 @@ Under normal circumstances, only `info`, `warn` and `error` logs are printed to 
 - `license.key`: Contents of the license key. Must be a base64-encoded string.
 - `license.file`: Location of the license file. Must be a binary file containing the raw license bytes.
 
-{{< note >}}
 Given the license key in base64 format, you can create the license file like this:
 
 ```bash
 $ echo "AzYFASd/Gcggs..." | base64 --decode > ttn-lw-stack-license.bin
 ```
-{{</ note >}}
 
 ## Key Vault
 
@@ -81,7 +79,7 @@ You can suppress log messages for successful gRPC method calls (e.g. to reduce t
 
 - `grpc.log-ignore-methods`: List of gRPC methods for which to suppress logs of successful requests.
 
-{{< note >}} If you are seeing a lot of logs with `grpc_service=/ttn.v3.lorawan.ServiceName` and `grpc_method=MethodName`, use `/ttn.v3.lorawan.ServiceName/MethodName` for this option. {{</ note >}}
+If you are seeing a lot of logs with `grpc_service=/ttn.v3.lorawan.ServiceName` and `grpc_method=MethodName`, use `/ttn.v3.lorawan.ServiceName/MethodName` for this option.
 
 ## HTTP Options
 
@@ -312,7 +310,7 @@ Tenants can have custom configuration, such as custom branding or custom user re
 
 ## Rate Limiting
 
-{{< new-in-version "3.12.0" >}} {{% tts %}} supports rate limiting external endpoints. Rate limiting configuration can only be set from the configuration file. See [Rate Limiting]({{< ref "/reference/rate-limiting" >}}) for more details.
+{{% tts %}} supports rate limiting external endpoints. Rate limiting configuration can only be set from the configuration file. See [Rate Limiting]({{< ref "/reference/rate-limiting" >}}) for more details.
 
 ## Resource Limiting
 

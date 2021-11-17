@@ -2,7 +2,6 @@
 title: "Gateway Claiming"
 description: ""
 distributions: ["Enterprise", "Cloud"]
-new_in_version: 3.12.0
 weight: -2
 --- 
 

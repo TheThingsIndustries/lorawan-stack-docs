@@ -25,8 +25,7 @@ Fields may be specified in HTTP requests by appending them as query string param
 curl -i -H "Authorization: Bearer NNSXS.XXXXXXXXX" https://thethings.example.com/api/v3/applications/app1/devices/dev1?field_mask=name,description,locations
 ```
 
-{{< warning >}} If you are not getting the fields you expect in API responses, see the [Field Masks]({{< relref "field-mask" >}}) section.
-{{</ warning >}}
+If you are not getting the fields you expect in API responses, see the [Fields and Field Masks]({{< relref "field-mask" >}}) section.
 
 ### Optional Fields
 
@@ -34,7 +33,7 @@ Identifiers specified in the request URL do not need to be specified again in th
 
 {{< note >}} Fields that are empty or zero are not returned in requests, even if they are specified in a field mask. {{</ note >}}
 
-{{< note >}} If you're having trouble with the HTTP API, you can always inspect requests in the Console using your browser's inspector. All of the data displayed in the Console is pulled using HTTP API requests, and this should give you some insight in to how they are formed. {{</ note >}}
+If you are having trouble with the HTTP API, you can always inspect requests in the Console using your browser's inspector. All of the data displayed in the Console is pulled using HTTP API requests, and this should give you some insight in to how they are formed.
 
 ## Examples
 

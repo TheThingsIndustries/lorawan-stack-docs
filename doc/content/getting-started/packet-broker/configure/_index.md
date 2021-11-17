@@ -7,7 +7,6 @@ distributions:
   - Dedicated Cloud
   - Enterprise
   - Open Source
-new_in_version: 3.13.3
 aliases:
   - "/reference/packet-broker/configure"
   - "/getting-started/packet-broker/configure/registration"

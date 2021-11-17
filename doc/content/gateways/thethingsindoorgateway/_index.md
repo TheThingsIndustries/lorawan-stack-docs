@@ -18,11 +18,11 @@ This page guides you to connect {{% ttig %}} to {{% tts %}}.
 1. User account on {{% tts %}} with rights to create Gateways and API Keys.
 2. The gateway EUI. The EUI of the gateway is **not** the WiFi MAC address printed on the back of the gateway, but is derived from the first number that typically is of the form **58A0CBxxxxxx**, printed on the top of the sticker below the QR code. For example, if that number is **58A0CB800BE7**, insert **FFFE** after the first 6 characters to make it a 16 character Gateway EUI (e.g. 58A0CBFFFE800BE7).
 
-{{< note >}} The gateway EUI can later be found at the bottom in the WiFi setup screen. {{</ note >}}
+The gateway EUI can later be found at the bottom in the WiFi setup screen.
+
 {{< figure src="TTIG_EUI.png" alt="{{% ttig %}} EUI" >}}
 
 3. The WiFi password of the {{% ttig %}}, typically printed on the back of the gateway. 
-
 
 ## Claiming {{% ttig %}}
 
@@ -62,11 +62,9 @@ tti-lw-cli gateways claim 00800000A00009EF \
 --user-id user1
 ```
 
-{{< note >}}
 For {{% tts %}} Cloud, you will also need to append the Tenant ID to `--target-cups-uri` and  `--target-gateway-server-address` fields.
 
 For example using `tenant1`, the `target-cups-uri` would be `https://tenant1.eu1.cloud.thethings.industries:443` and the `target-gateway-server-address` would become `tenant1.eu1.cloud.thethings.industries`.
-{{</ note >}}
 
 {{< /tabs/tab >}}
 
@@ -107,7 +105,7 @@ If your configuration is correct,
   * Then, it will blink from GREEN to RED and vice versa for a few seconds while it connects to the server and fetches the necessary configuration.
   * Please allow 5-10 minutes for the gateway to pick up the new configuration. 
 
-{{< note >}} If this is the first time your gateway is being powered on/connected to WiFi, it might pick up a new firmware depending on when it was last updated. This is indicated by alternating GREEN/RED blinks of the LED. Please leave the gateway powered on when this happens. {{</ note >}}
+If this is the first time your gateway is being powered on/connected to WiFi, it might pick up a new firmware depending on when it was last updated. This is indicated by alternating GREEN/RED blinks of the LED. Please leave the gateway powered on when this happens.
 
 ## Existing Gateways
 

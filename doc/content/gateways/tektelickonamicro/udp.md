@@ -3,7 +3,7 @@ title: "Connect Tektelic Kona Micro with UDP Packet Forwarder"
 description: ""
 ---
 
-This section guides you to connect the Tektelic Kona Micro IoT LoRaWAN Gateway to {{% tts %}} using the {{% udp-pf %}}.
+This section guides you to connect the Tektelic Kona Micro IoT LoRaWAN Gateway to {{% tts %}} using the [{{% udp-pf %}}]({{< ref "/gateways/udp" >}}).
 
 <!--more-->
 
@@ -15,7 +15,7 @@ Now you can edit the gateway configuration file.
 $ vi /etc/default/config.json
 ```
 
-{{< note >}} Press the `i` key on your keyboard to start insert mode. Once finished editing, press `ESC` and enter `:wq` to write the file and quit. {{</ note >}}
+Press the `i` key on your keyboard to start insert mode. Once finished editing, press `ESC` and enter `:wq` to write the file and quit.
 
 Edit the server parameters:
 

@@ -19,6 +19,8 @@ The matching from input to a mapping template is, in order, by mapping key (`map
 
 This example shows creating a generic device profile that is mapped with provisioning data for secure elements to create device templates.
 
+This example uses a **Microchip ATECC608A-MAHTN-T Manifest File**. This file contains provisioning data for The Things Join Server. You can download the example file [here](../microchip-atecc608a-mahtn-t-example.json).
+
 First, create a mapping file with a device profile:
 
 ```bash
@@ -71,8 +73,6 @@ The mapping file `profile.json` contains the following entries (omitting empty f
 </details>
 
 Second, convert the provisioning data to a device templates file to `provisioningdata.json`.
-
-{{< note >}} This example uses a **Microchip ATECC608A-MAHTN-T Manifest File**. This file contains provisioning data for The Things Join Server. You can download the example file [here](../microchip-atecc608a-mahtn-t-example.json). {{</ note >}}
 
 ```bash
 $ ttn-lw-cli end-devices template from-data microchip-atecc608a-mahtn-t --local-file example.json > provisioningdata.json

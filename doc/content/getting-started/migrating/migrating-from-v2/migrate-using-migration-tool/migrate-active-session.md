@@ -2,16 +2,15 @@
 title: "Migrate Active Sessions"
 description: ""
 weight: 2
-new_in_version: "3.12.0"
 ---
 
 Starting from {{% tts %}} version `3.12.0`, it is possible to migrate end devices together with their active sessions using the `ttn-lw-migrate` tool. This section explains how to export one or more of your end devices from {{% ttnv2 %}} to a [JSON file]({{< ref "/getting-started/migrating/device-json" >}}), with persisting their active sessions.
 
 <!--more-->
 
-{{< warning >}} Active device sessions can be migrated via Packet Broker only from **The Things Industries V2 (SaaS)** to **{{% tts %}} Cloud**, and this is achievable only on a customer request. Contact [The Things Industries support](mailto:support@thethingsindustries.com) for more information. 
+Active device sessions can be migrated via Packet Broker only from **The Things Industries V2 (SaaS)** to **{{% tts %}} Cloud**, and this is achievable only on a customer request. Contact [The Things Industries support](mailto:support@thethingsindustries.com) for more information. 
 
-For all other scenarios, migrating active session is achievable only if you [migrate your gateway to {{% tts %}}]({{< ref "/getting-started/migrating/gateway-migration" >}}) too. {{</ warning >}}
+For all other scenarios, migrating active session is achievable only if you [migrate your gateway to {{% tts %}}]({{< ref "/getting-started/migrating/gateway-migration" >}}) too.
 
 {{< note >}} We strongly recommend migrating end devices without persisting active sessions. {{</ note >}}
 
@@ -37,7 +36,7 @@ Remember that if you are not migrating specifically from **The Things Industries
 
 {{< note >}} Before exporting end devices, you can first test the execution by appending the `--dry-run` and `--verbose` flags to the commands presented in the sections below. {{</ note >}}
 
-{{< note >}} Use the `--ttnv2.resets-to-frequency-plan` flag to configure the factory preset frequencies of the device, so that it can keep working with {{% tts %}}. The list of uplink frequencies is inferred from the [Frequency Plan]({{< ref "/reference/frequency-plans" >}}). {{</ note >}}
+Use the `--ttnv2.resets-to-frequency-plan` flag to configure the factory preset frequencies of the device, so that it can keep working with {{% tts %}}. The list of uplink frequencies is inferred from the [Frequency Plan]({{< ref "/reference/frequency-plans" >}}).
 
 ### Export a Single End Device
 
@@ -101,4 +100,4 @@ If you are migrating an end device with its active session via Packet Broker (fr
 
 In any case, you can leave the **RX1 Delay** value as is (1 second from {{% ttnv2 %}}), but then you will need to [migrate your gateway to {{% tts %}}]({{< ref "/getting-started/migrating/gateway-migration" >}}) too.
 
-{{< note >}} Starting from {{% tts %}} `v3.13.0` release, The Things Network community members can freely migrate their gateways from The Things Network {{% ttnv2 %}} to {{% tts %}} Community Edition, while still providing uplink and downlink coverage to The Things Network {{% ttnv2 %}}. Even if you manage to get your end device traffic routed to {{% tts %}} by Packet Broker, we recommend to migrate your gateways as soon as possible. {{</ note >}}
+The Things Network community members can freely migrate their gateways from The Things Network {{% ttnv2 %}} to {{% tts %}} Community Edition, while still providing uplink and downlink coverage to The Things Network {{% ttnv2 %}}. Even if you manage to get your end device traffic routed to {{% tts %}} by Packet Broker, we recommend to migrate your gateways as soon as possible.

@@ -27,4 +27,4 @@ After pre-provisioning a device, device makers register it on The Things Join Se
 
 [Learn how to claim a device]({{< ref "/devices/device-claiming/claim-devices" >}})
 
-{{< note >}} Device claiming does not transfer a security session for a device, it only transfers ownership. The original LoRaWAN session is deleted. The device needs to join the network again for traffic to appear. {{</ note >}}
+Device claiming does not transfer a security session for a device, it only transfers ownership. The original LoRaWAN session is deleted. The device needs to join the network again for traffic to appear.

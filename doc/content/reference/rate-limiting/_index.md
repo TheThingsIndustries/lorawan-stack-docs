@@ -1,7 +1,6 @@
 ---
 title: "Rate Limiting"
 description: ""
-new_in_version: "3.12"
 ---
 
 {{% tts %}} supports rate limiting for all outward facing services. Access to each resource is limited by a unique identifier key, and it is possible to define rate limiting classes for fine-grained control.
@@ -14,7 +13,7 @@ The rate limiting configuration is split into multiple profiles. For each profil
 
 Enable rate limiting by adding the following configuration to your `ttn-lw-stack.yml`.
 
-{{< note >}} The values shown below are only meant as an example. Make sure to adjust them accordingly, depending on the actual traffic of your deployment. {{</ note >}}
+The values shown below are only meant as an example. Make sure to adjust them accordingly, depending on the actual traffic of your deployment.
 
 ```yaml
 rate-limiting:

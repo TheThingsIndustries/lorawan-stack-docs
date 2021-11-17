@@ -29,9 +29,7 @@ Use the following command in your terminal to get the default routing policy:
 $ ttn-lw-cli packetbroker home-networks gateway-visibilities get default
 ```
 
-{{< note >}}
 If there is no default gateway visibility defined, the above command fails with `not found`.
-{{< /note >}}
 
 <details><summary>Example output</summary>
 

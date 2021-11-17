@@ -4,15 +4,13 @@ description: ""
 weight: 2
 ---
 
-This section refers to migrating end devices to {{% tts %}} using [`ttn-lw-migrate` migration tool](https://github.com/TheThingsNetwork/lorawan-stack-migrate).
+This section refers to migrating end devices to {{% tts %}} using [`ttn-lw-migrate` migration tool](https://github.com/TheThingsNetwork/lorawan-stack-migrate). 
 
 <!--more-->
 
 ## Prerequisites
 
-1. [`ttn-lw-migrate` tool](https://github.com/TheThingsNetwork/lorawan-stack-migrate) version `0.5.0` or higher installed on your system.
-
-{{< note >}} See the [Migration Tool]({{< ref "/getting-started/migrating/migration-tool" >}}) guide for detailed installation instructions. {{</ note >}}
+1. [`ttn-lw-migrate` tool](https://github.com/TheThingsNetwork/lorawan-stack-migrate) version `0.5.0` or higher installed on your system. See the [Migration Tool]({{< ref "/getting-started/migrating/migration-tool" >}}) guide for detailed installation instructions.
 
 ## Configure the Environment
 
@@ -24,7 +22,7 @@ $ export TTNV2_APP_ACCESS_KEY="ttn-v2-application-access-key"
 $ export FREQUENCY_PLAN_ID="EU_863_870_TTN"
 ```
 
-{{< note >}} See the list of [supported Frequency Plans]({{< ref "/reference/frequency-plans" >}}). {{</ note >}}
+See the list of [supported Frequency Plans]({{< ref "/reference/frequency-plans" >}}).
 
 If using Windows OS Command Prompt, replace `export` with `set` and remove the double-quotes in commands above:
 
@@ -34,12 +32,11 @@ $ set TTNV2_APP_ACCESS_KEY=ttn-v2-application-access-key
 $ set FREQUENCY_PLAN_ID=EU_863_870_TTN
 ```
 
-{{< note >}} Be aware that setting environmental variables using Windows PowerShell is slightly different. For example, you would set the `TTNV2_APP_ID` variable as follows:
+Commands are slightly different if using Windows PowerShell, for example you could set the `TTNV2_APP_ID` variable as follows:
 
 ```powershell
 $ $env:TTNV2_APP_ID='ttn-v2-application-ID'
 ```
-{{</ note >}}
 
 If you are migrating end devices from a private The Things Industries V2 (SaaS) cluster, you need to configure one extra environmental variable:
 
@@ -47,7 +44,7 @@ If you are migrating end devices from a private The Things Industries V2 (SaaS) 
 $ export TTNV2_DISCOVERY_SERVER_ADDRESS="<instance-id>.thethings.industries:1900"
 ```
 
-{{< note >}} If the Discovery Server of your private The Things Industries V2 (SaaS) cluster does not use TLS, you will need to use `ttnv2.discovery-server-insecure` flag when running commands with the `ttn-lw-migrate` tool. {{</ note >}}
+If the Discovery Server of your private The Things Industries V2 (SaaS) cluster does not use TLS, you will need to use `ttnv2.discovery-server-insecure` flag when running commands with the `ttn-lw-migrate` tool.
 
 ## Export End Devices from {{% ttnv2 %}}
 

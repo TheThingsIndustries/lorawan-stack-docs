@@ -11,9 +11,7 @@ This section contains instructions on how to migrate end devices from ChirpStack
 
 ## Prerequisites
 
-1. [`ttn-lw-migrate` tool](https://github.com/TheThingsNetwork/lorawan-stack-migrate) version `0.5.0` or higher installed on your system.
-
-{{< note >}} See the [Migration Tool]({{< ref "/getting-started/migrating/migration-tool" >}}) guide for detailed installation instructions. {{</ note >}}
+1. [`ttn-lw-migrate` tool](https://github.com/TheThingsNetwork/lorawan-stack-migrate) version `0.5.0` or higher installed on your system. See the [Migration Tool]({{< ref "/getting-started/migrating/migration-tool" >}}) guide for detailed installation instructions.
 
 ## Configure ttn-lw-migrate
 
@@ -27,16 +25,13 @@ $ export FREQUENCY_PLAN_ID="EU_863_870"         # Set The Things Stack Frequency
 $ export CHIRPSTACK_API_INSECURE=0              # Set to 1 if not using TLS on ChirpStack
 ```
 
-{{< note >}} If using Windows OS, replace `export` with `set` and remove the double-quotes in commands above. For example, you would use:
+If using Windows OS, replace `export` with `set` and remove the double-quotes in commands above. For example, you would use:
 
 ```bash
 $ set CHIRPSTACK_API_TOKEN=7F0as987e61...
 ```
-{{</ note >}}
 
-{{< note >}} `JoinEUI` and `FrequencyPlanID` have to be set because ChirpStack does not store these variables. 
-
-See [Frequency Plans]({{< ref "/reference/frequency-plans" >}}) for a full list of frequency plans supported by {{% tts %}} (and their IDs). {{</ note >}}
+`JoinEUI` and `FrequencyPlanID` have to be set because ChirpStack does not store these variables. See [Frequency Plans]({{< ref "/reference/frequency-plans" >}}) for a full list of frequency plans supported by {{% tts %}} (and their IDs).
 
 ## Export End Devices
 
@@ -81,14 +76,8 @@ To export end devices from multiple applications to an `applications.json` file,
 $ ttn-lw-migrate --source chirpstack application < applications.txt > applications.json
 ```
 
-{{< note >}} 
+{{< warning >}} 
 ABP end devices without an active session can be exported from ChirpStack, but cannot be imported in {{% tts %}}.
-{{</ note >}}
-
-{{< warning >}}
-`MaxEIRP` parameter may not be always set properly.
 {{</ warning >}}
 
-{{< note >}}
-ChirpStack `variables` parameter related to payload formatting will always be converted to `null` when the end device is imported to {{% tts %}}.
-{{</ note >}}
+Please note that `MaxEIRP` parameter may not be always set properly, and that the ChirpStack `variables` parameter related to payload formatting will always be converted to `null` when the end device is imported to {{% tts %}}.

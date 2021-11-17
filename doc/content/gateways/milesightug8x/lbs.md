@@ -3,7 +3,7 @@ title: "Connect Milesight UG8X with Lora Basics™ Station"
 description: ""
 ---
 
-This section contains instructions for connecting the Milesight UG8X LoRaWAN gateway to {{% tts %}} using {{% lbs %}}.
+This section contains instructions for connecting the Milesight UG8X LoRaWAN gateway to {{% tts %}} using [{{% lbs %}}]({{< ref "/gateways/lora-basics-station" >}}).
 
 <!--more-->
 

@@ -15,11 +15,11 @@ Here, `XXXXX` is either a valid **API key**, a valid **OAuth access token** or a
 
 API keys and OAuth access tokens in {{% tts %}} have the following format: `<token-type>.<token-id>.<token-secret>`. **Token type** defines if the token is an API key (`NNSXS`) or an OAuth access token (`MFRWG`).
 
-> An example of a valid API key is `NNSXS.U4H3ZFFCMSR42BUAZPW2UWGFBV4WCNI5EXDJXDY.SHIF3PP5PBMJNZESN5XLR5TZJTJUIGKVUTM2I22IVBUVCD6VIQIA`, where `U4H3ZFFCMSR42BUAZPW2UWGFBV4WCNI5EXDJXDY` is a **token ID** and `SHIF3PP5PBMJNZESN5XLR5TZJTJUIGKVUTM2I22IVBUVCD6VIQIA` is a **token secret**.
+An example of a valid API key is `NNSXS.U4H3ZFFCMSR42BUAZPW2UWGFBV4WCNI5EXDJXDY.SHIF3PP5PBMJNZESN5XLR5TZJTJUIGKVUTM2I22IVBUVCD6VIQIA`, where `U4H3ZFFCMSR42BUAZPW2UWGFBV4WCNI5EXDJXDY` is a **token ID** and `SHIF3PP5PBMJNZESN5XLR5TZJTJUIGKVUTM2I22IVBUVCD6VIQIA` is a **token secret**.
 
 {{< warning >}} When authorizing an API call, make sure to use the whole token (including token type, ID and secret) and not only the token ID. Otherwise, you might face an error resembling `error:pkg/auth:token (invalid token)`. {{</ warning >}}
 
-{{< note >}} Please be careful not to expose your token secrets, so always censor the `<token-secret>` part of your token when posting examples, screenshots, etc. in public space. {{</ note >}}
+Please be careful not to expose your token secrets, so always censor the `<token-secret>` part of your token when posting examples, screenshots, etc. in public space.
 
 ## API keys
 

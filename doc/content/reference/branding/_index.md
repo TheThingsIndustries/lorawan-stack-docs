@@ -42,14 +42,13 @@ If the "branding base URL" option is set, "logo.svg" is used to display a second
 
 For the exact configuration options that are required to set a custom "branding base URL", see the [Identity Server configuration reference]({{< ref "/reference/configuration/identity-server#oauth-ui-options" >}}) and the [Console configuration reference]({{< ref "/reference/configuration/console" >}}).
 
-{{< note >}} If you have your favicon as a PNG, use ImageMagick to convert it to ICO:
+If you have your favicon as a PNG, use ImageMagick to convert it to ICO:
  
 ```bash
 $ convert console-favicon.png \
     -define icon:auto-resize=64,48,32,16 \
     console-favicon.ico
 ```
-{{</ note >}}
 
 ## Deployment Information and Disclaimers
 

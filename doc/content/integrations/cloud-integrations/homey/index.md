@@ -8,7 +8,7 @@ weight:
 
 <!--more-->
 
-> See [Homey support page](https://support.athom.com/hc/en-us/categories/360000886494) for detailed documentation.
+See [Homey support page](https://support.athom.com/hc/en-us/categories/360000886494) for detailed documentation.
 
 ## Prerequisites
 
@@ -60,7 +60,7 @@ function decodeUplink(input) {
 ```
 </details>
 
-> To see the payload formatter output (`decoded_payload` field contents) for input `00 01 05 1A`, expand the example below.
+To see the payload formatter output (`decoded_payload` field contents) for input `00 01 05 1A`, expand the example below.
 
 <details><summary>Example payload formatter output</summary>
 
@@ -80,8 +80,8 @@ To integrate, you need to fill in the **Webhook ID** with an arbitrary value, an
 
 {{< figure src="homey-template.png" alt="Homey Webhook template" >}}
 
-{{< note >}} To see the values of all parameters of the Homey integration, click on the integration after you created it with the Webhook template. {{</ note >}}
+To see the values of all parameters of the Homey integration, click on the integration after you created it with the Webhook template.
 
 Now your Homey is finally a part of your LoRaWAN network!
 
-> For details on setting up a Webhook integration with Homey using {{% tts %}} Custom webhook, see this [link](https://github.com/OOHehir/connector.ttn).
+For details on setting up a Webhook integration with Homey using {{% tts %}} Custom webhook, see this [link](https://github.com/OOHehir/connector.ttn).

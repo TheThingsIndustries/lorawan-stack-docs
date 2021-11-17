@@ -33,7 +33,7 @@ Your {{% tts %}} deployment can be a Forwarder, a Home Network or both. This mea
 
 Packet Broker routes uplink messages from Forwarders to Home Networks based on the 32-bit `DevAddr` in the uplink message. The first part of the `DevAddr` is the `NetID`, a globally unique identifier of a LoRaWAN network. Packet Broker uses the `NetID` to lookup the Home Network. Besides identifying Home Networks by `NetID`, Packet Broker also supports tenants. Tenants use a `DevAddr` block of a Home Network host.
 
-> For example, a message with `DevAddr` `27ABCD12` has `NetID` `000013` (owned by The Things Network Foundation). The `DevAddr` block `27ABCD00` to `27ABCDFF` might be assigned to a private network `example-com`. That `DevAddr` block is noted as `27ABCD00/24`: 24 significant bits. Packet Broker identifies the Home Network then as `NetID` `000013` and tenant ID `example-com`.
+For example, a message with `DevAddr` `27ABCD12` has `NetID` `000013` (owned by The Things Network Foundation). The `DevAddr` block `27ABCD00` to `27ABCDFF` might be assigned to a private network `example-com`. That `DevAddr` block is noted as `27ABCD00/24`: 24 significant bits. Packet Broker identifies the Home Network then as `NetID` `000013` and tenant ID `example-com`.
 
 {{< note >}}The Things Network is identified by `NetID` is `000013` and tenant ID `ttn`.{{< /note >}}
 
@@ -51,11 +51,11 @@ Application payload | O | O | Data messages with `FPort` `1` or higher (for appl
 Signal quality | O | | RSSI and SNR information
 Localization | O | | Gateway locations, timestamps and signal quality
 
->For instance, a Forwarder may wish to configure three policies:
->
->1. With Home Network that has `NetID` `000013` and tenant ID `ttn` (The Things Network): all message types. This would mean to forward join-requests and join-accepts, uplink and downlink MAC and application payload messages, and signal quality and localization information.
->2. With Home Network that has `NetID` `000013` and tenant ID `example-com`: only join-requests, join-accepts and uplink and downlink MAC and application payload messages. This would mean to not forward the metadata.
->3. A default policy (for all other networks): only uplink MAC and application payload messages. That would mean to not forward join-requests and join-accepts, and to not forward the metadata.
+For instance, a Forwarder may wish to configure three policies:
+
+1. With Home Network that has `NetID` `000013` and tenant ID `ttn` (The Things Network): all message types. This would mean to forward join-requests and join-accepts, uplink and downlink MAC and application payload messages, and signal quality and localization information.
+2. With Home Network that has `NetID` `000013` and tenant ID `example-com`: only join-requests, join-accepts and uplink and downlink MAC and application payload messages. This would mean to not forward the metadata.
+3. A default policy (for all other networks): only uplink MAC and application payload messages. That would mean to not forward join-requests and join-accepts, and to not forward the metadata.
 
 ### Gateway Visibility Settings
 

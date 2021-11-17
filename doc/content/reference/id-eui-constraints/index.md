@@ -12,7 +12,7 @@ This reference explains how {{% tts %}} deals with IDs and EUIs, including regul
 An ID or EUI in {{% tts %}} must:
 
 - Have a length of between 3 and 36 characters (inclusive)
-  - Exception: User IDs can have a length between 2 and 36 characters (inclusive) {{< new-in-version "3.13" >}}
+  - Exception: User IDs can have a length between 2 and 36 characters (inclusive)
 - Consist of lowercase letters, numbers, and non-consecutive dashes
 - **NOT** begin or end with a dash
 

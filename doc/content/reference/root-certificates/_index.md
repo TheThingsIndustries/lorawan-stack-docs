@@ -37,7 +37,3 @@ Download the minimal certificate list <a href="ca.pem" download>here</a>.
 ### ISRG Root X1
 
 Many {{% tts %}} deployments use the Let's Encrypt ISRG Root X1 Trust. If using Let's Encrypt to secure your domain, you may download the ISRG Root X1 Trust file [here](https://letsencrypt.org/certs/isrgrootx1.pem).
-
-### DST Root X3
-
-{{< warning >}} DST Root CA X3 expires on the 29th September 2021 and is no longer in production use. {{< /warning >}}
