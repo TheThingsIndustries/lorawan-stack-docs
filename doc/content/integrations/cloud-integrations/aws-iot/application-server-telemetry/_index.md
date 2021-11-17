@@ -79,7 +79,6 @@ The following is an example payload in JSON format:
             "spreading_factor": 7
           }
         },
-        "data_rate_index": 5,
         "coding_rate": "4/5",
         "frequency": "867300000",
         "timestamp": 1453994219
