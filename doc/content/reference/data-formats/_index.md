@@ -122,7 +122,6 @@ The JSON uplink messages use the following format:
           "spreading_factor": 7              // Spreading factor
         }
       },
-      "data_rate_index": 5,                  // LoRaWAN data rate index
       "coding_rate": "4/6",                  // LoRa coding rate
       "frequency": "868300000",              // Frequency (Hz)
     },
@@ -190,7 +189,6 @@ The JSON uplink messages use the following format:
           "spreading_factor" : 7
         }
       },
-      "data_rate_index" : 5,
       "coding_rate" : "4/6",
       "frequency" : "868300000",
       "timestamp" : 2463457000,

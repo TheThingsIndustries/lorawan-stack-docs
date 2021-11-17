@@ -149,7 +149,6 @@ When a device `dev1` sends an uplink message, that message is being published on
           "spreading_factor": 7
         }
       },
-      "data_rate_index": 5,
       "coding_rate": "4/6",
       "frequency": "868500000",
       "gateway_channel_index": 2,
