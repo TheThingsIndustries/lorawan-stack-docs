@@ -243,7 +243,7 @@ This JSON object will contain an `error` field describing the cause of the downl
 - `COLLISION_PACKET` - there is already a packet programmed in the requested timeframe
 - `COLLISION_BEACON` - there is already a beacon planned in the requested timeframe
 - `TX_FREQ` - requested frequency not supported by the TX RF chain
-- `TX_power` - requested power not supported by the gateway
+- `TX_POWER` - requested power not supported by the gateway
 - `GPS_UNLOCKED` - GPS is unlocked and GPS timestamp cannot be used
 
 Example:
@@ -253,6 +253,10 @@ Example:
 	"error":"COLLISION_PACKET"
 }}
 ```
+
+If you are facing `TX_FREQ` or `TX_POWER` errors, please make sure that your gateway's `global_conf.json` file is properly configured. See [{{% udp-pf %}} Configuration]({{< ref "/gateways/udp#configuration" >}}) section for more info.
+
+For the rest of errors in the list above, please create an issue in [{{% tts %}} GitHub repository](https://github.com/TheThingsNetwork/lorawan-stack) or contact [The Things Industries support](support@thethingsindustries.com).
 
 ## I'm noticing "radio is not emitting frame - abandoning TX, trying alternative" error in the LoRa Basics Station gateway's packet forwarder logs. What is causing this?
 
