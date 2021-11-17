@@ -341,14 +341,16 @@ $ <span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer </sp
 <li><code>COLLISION_PACKET</code> - there is already a packet programmed in the requested timeframe</li>
 <li><code>COLLISION_BEACON</code> - there is already a beacon planned in the requested timeframe</li>
 <li><code>TX_FREQ</code> - requested frequency not supported by the TX RF chain</li>
-<li><code>TX_power</code> - requested power not supported by the gateway</li>
+<li><code>TX_POWER</code> - requested power not supported by the gateway</li>
 <li><code>GPS_UNLOCKED</code> - GPS is unlocked and GPS timestamp cannot be used</li>
 </ul>
 <p>Example:</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span><span class="nt">&#34;txpk_ack&#34;</span><span class="p">:{</span>
 	<span class="nt">&#34;error&#34;</span><span class="p">:</span><span class="s2">&#34;COLLISION_PACKET&#34;</span>
 <span class="p">}}</span>
-</code></pre></div><h2 id="im-noticing-radio-is-not-emitting-frame---abandoning-tx-trying-alternative-error-in-the-lora-basics-station-gateways-packet-forwarder-logs-what-is-causing-this">I&rsquo;m noticing &ldquo;radio is not emitting frame - abandoning TX, trying alternative&rdquo; error in the LoRa Basics Station gateway&rsquo;s packet forwarder logs. What is causing this?</h2>
+</code></pre></div><p>If you are facing <code>TX_FREQ</code> or <code>TX_POWER</code> errors, please make sure that your gateway&rsquo;s <code>global_conf.json</code> file is properly configured. See <a href="https://www.thethingsindustries.com/docs/gateways/udp/#configuration">Semtech UDP Packet Forwarder Configuration</a> section for more info.</p>
+<p>For the rest of errors in the list above, please create an issue in <a href="https://github.com/TheThingsNetwork/lorawan-stack">The Things Stack GitHub repository</a> or contact <a href="support@thethingsindustries.com">The Things Industries support</a>.</p>
+<h2 id="im-noticing-radio-is-not-emitting-frame---abandoning-tx-trying-alternative-error-in-the-lora-basics-station-gateways-packet-forwarder-logs-what-is-causing-this">I&rsquo;m noticing &ldquo;radio is not emitting frame - abandoning TX, trying alternative&rdquo; error in the LoRa Basics Station gateway&rsquo;s packet forwarder logs. What is causing this?</h2>
 <p>If you are seeing something like:</p>
 <pre><code>[S2E:WARN] ::0 diid=34946 [ant#0] - unable to place frame
 [S2E:VERB] ::0 diid=34946 [ant#0] - class A has no more alternate TX time
@@ -508,10 +510,10 @@ $ <span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer </sp
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 28 Oct 2021.
+  Last changed by Nejra Selimović on 17 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/063a020d3d040b8f7bc407c3e55777776ae75c1f">
-      doc: Document downlink scheduling errors (#571)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3f564423845d1115deb8a01270afce3719a7bcfb">
+      doc: Add support info (#661)
     </a>
 </p>
 
