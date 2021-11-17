@@ -284,6 +284,13 @@
 </ul>
 </li>
 </ul>
+<h2 id="i-notice-a-delay-in-scheduling-class-c-downlinks-what-can-i-do-to-fix-it">I notice a delay in scheduling Class C downlinks. What can I do to fix it?</h2>
+<p>Here are some common causes of a delay in scheduling downlinks for Class C devices:</p>
+<ul>
+<li><strong>The <code>Supports class C</code> option not enabled in device settings</strong>: If this option is not enabled, The Things Stack treats the device as a class A device, so it schedules a downlink only after receiving an uplink. Find and enable this option under <strong>General settings → Network layer → LoRaWAN class capabilities</strong>, then trigger your device for a re-join in order for changes to have an effect.</li>
+<li><strong>Device not responding immediately on a confirmed downlink or a MAC command</strong>: Your device might be configured to respond to confirmed downlinks and/or MAC commands with the next uplink, instead of immediately. All downlinks scheduled after the confirmed downlink or a MAC command will be in a pending state until the device responds with an ACK or a MAC answer. You can check pending requests with <code>ttn-lw-cli end-devices get --application-id &lt;app-id&gt; --device-id &lt;dev-id&gt; --mac-state &gt; &lt;dev-id&gt;.mac-state.txt</code>. If the device does not respond in the <code>class-c-timeout</code> interval (5 minutes by default), all pending downlinks will be discarded. In this case, you need to configure your device to immediately answer confirmed downlinks and MAC commands.</li>
+<li><strong>Downlink failure</strong>: If you have already addressed the above mentioned cases, but you are still experiencing a delay in scheduling downlinks, the downlinks might not be reaching the device. Please check your end device&rsquo;s debug logs, and your gateway&rsquo;s packet forwarder logs for errors. Find the common gateway-related issues and solutions in the <a href="https://www.thethingsindustries.com/docs/gateways/troubleshooting/">Troubleshooting Gateways</a> section.</li>
+</ul>
         </div>
         
           <div class="is-clearfix">
@@ -346,6 +353,9 @@
       
       <li><a href='#i-can-see-some-received-uplinks-in-gateway-live-data-events-but-i-do-not-see-them-in-device-events'>I can see some received uplinks in gateway Live data events, but I do not see them in device events.</a></li>
     
+      
+      <li><a href='#i-notice-a-delay-in-scheduling-class-c-downlinks-what-can-i-do-to-fix-it'>I notice a delay in scheduling Class C downlinks. What can I do to fix it?</a></li>
+    
   </ul>
 
 
@@ -384,10 +394,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 03 Nov 2021.
+  Last changed by Nejra Selimović on 17 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/03aa816eaa8911d023206180cdbc8d1ea0122ec1">
-      doc: Add device troubleshooting entry (#648)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/0d3c0a224b9cb86e6a5a3af83a2325c1fbcf244e">
+      doc: Add a device troubleshooting entry (#642)
     </a>
 </p>
 
