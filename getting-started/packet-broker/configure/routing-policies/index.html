@@ -247,9 +247,6 @@
 
           
           
-            <span class="tag is-light">New in 3.13.3</span>
-
-          
           
         </h2>
         
@@ -257,11 +254,7 @@
           <p>Routing policies define the rules that Forwarders configure for routing messages to Home Networks.</p>
 <!-- more -->
 <p>Routing policies are peer-to-peer: a Forwarder can define policies with each individual Home Network. Forwarders can also define an optional default routing policy that is used as a fallback when no specific policy is defined. <a href="/docs/getting-started/packet-broker/#routing-policies">Learn more about routing policies</a>.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Packet Broker Router uses a cache of the routing table. It takes up to 10 minutes for changes in routing policies to be fully propagated and effective. ☕
-</div>
-
+<p>Packet Broker Router uses a cache of the routing table. It takes up to 10 minutes for changes in routing policies to be fully propagated and effective. ☕</p>
 <div class="tabs is-boxed">
   <ul>
     
@@ -309,10 +302,7 @@
 <h4 id="get-default-routing-policy">Get Default Routing Policy</h4>
 <p>To get the default routing policy:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-networks policies get default
-</code></pre></div><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  If there is no default policy defined, the above command fails with <code>not found</code>.
-</div>
+</code></pre></div><p>If there is no default policy defined, the above command fails with <code>not found</code>.</p>
 <details><summary>Example output</summary>
 <p>The following example has all message types enabled:</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
@@ -343,10 +333,7 @@
 <p>In order to configure routing policies with Home Networks, you need to know which Home Networks are available in Packet Broker.</p>
 <p>To list Packet Broker Home Networks:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-networks list
-</code></pre></div><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  This shows only the Home Networks that have been set to be visible to other networks. If you are using The Things Stack Cloud or Dedicated Cloud, <a href="mailto:support@thethingsindustries.com">contact The Things Industries support</a> to set your network to be listed or not. If you are using The Things Stack Open Source or Enterprise, see <a href="/docs/reference/configuration/packet-broker-agent/">Configuration</a>.
-</div>
+</code></pre></div><p>This shows only the Home Networks that have been set to be visible to other networks. If you are using The Things Stack Cloud or Dedicated Cloud, <a href="mailto:support@thethingsindustries.com">contact The Things Industries support</a> to set your network to be listed or not. If you are using The Things Stack Open Source or Enterprise, see <a href="/docs/reference/configuration/packet-broker-agent/">Configuration</a>.</p>
 <details><summary>Example output</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">[{</span>
   <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -443,23 +430,15 @@
 <p>To get the routing policy for a Home Network:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-networks policies get &lt;net-id&gt; <span class="o">[</span>&lt;tenant-id&gt;<span class="o">]</span>
 </code></pre></div><p>Replace <code>&lt;net-id&gt;</code> with your network&rsquo;s <code>NetID</code>. The <code>tenant-id</code> is optional and represents the tenant within the <code>NetID</code>.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>To view the routing policy configured between you (the Forwarder) and The Things Stack Community Edition (the Home Network):</p>
+<p>To view the routing policy configured between you (the Forwarder) and The Things Stack Community Edition (the Home Network):</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-networks policies get <span class="m">000013</span> ttn
-</code></pre></div>
-</div>
-<h5 id="set-home-network-routing-policy">Set Home Network Routing Policy</h5>
+</code></pre></div><h5 id="set-home-network-routing-policy">Set Home Network Routing Policy</h5>
 <p>To set the routing policy for a Home Network:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-network policies <span class="nb">set</span> &lt;net-id&gt; <span class="o">[</span>&lt;tenant-id&gt;<span class="o">]</span> --all
 </code></pre></div><p>To customize, see <a href="#flags">Flags</a> below.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>To enable forwarding of all packets between you (the Forwarder) and The Things Stack Community Edition (the Home Network):</p>
+<p>To enable forwarding of all packets between you (the Forwarder) and The Things Stack Community Edition (the Home Network):</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-network policy <span class="nb">set</span> <span class="m">000013</span> ttn --all
-</code></pre></div>
-</div>
-<h5 id="delete-home-network-routing-policy">Delete Home Network Routing Policy</h5>
+</code></pre></div><h5 id="delete-home-network-routing-policy">Delete Home Network Routing Policy</h5>
 <p>To delete the routing policy for a Home Network:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli packetbroker home-networks policies delete &lt;net-id&gt; <span class="o">[</span>&lt;tenant-id&gt;<span class="o">]</span>
 </code></pre></div><p>Replace <code>&lt;net-id&gt;</code> with your network&rsquo;s <code>NetID</code>. The <code>tenant-id</code> is optional and represents the tenant within the <code>NetID</code>.</p>
@@ -585,10 +564,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 27 Oct 2021.
+  Last changed by Nejra Selimović on 17 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/900e879512739311ca9f8475628427f2e7e38216">
-      Clean up getting started (#627)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
+      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
     </a>
 </p>
 

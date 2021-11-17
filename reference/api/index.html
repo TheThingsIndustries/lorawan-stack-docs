@@ -306,11 +306,7 @@
 <p>The Things Stack APIs use field masks to specify a subset of fields that should be returned by a reading request, or to specify fields that should be updated in a writing request. See the <a href="/docs/reference/api/field-mask/">Field Masks section</a> to learn how they control which fields are returned in API requests.</p>
 <p>Fields may be specified in HTTP requests by appending them as query string parameters. For example, to request the <code>name</code>, <code>description</code>, and <code>locations</code> of devices in an <code>EndDeviceRegistry.Get</code> request, add these fields to the <code>field_mask</code> field. To get this data for device <code>dev1</code> in application <code>app1</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl -i -H <span class="s2">&#34;Authorization: Bearer NNSXS.XXXXXXXXX&#34;</span> https://thethings.example.com/api/v3/applications/app1/devices/dev1?field_mask<span class="o">=</span>name,description,locations
-</code></pre></div><div class="notification is-warning is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  If you are not getting the fields you expect in API responses, see the <a href="/docs/reference/api/field-mask/">Field Masks</a> section.
-</div>
-
+</code></pre></div><p>If you are not getting the fields you expect in API responses, see the <a href="/docs/reference/api/field-mask/">Fields and Field Masks</a> section.</p>
 <h3 id="optional-fields">Optional Fields</h3>
 <p>Identifiers specified in the request URL do not need to be specified again in the message body. For example, <a href="reference/api/end_device/#message:GetEndDeviceRequest"><code>GetEndDeviceRequest</code></a> has an <code>end_device_ids</code> field and a <code>field_mask</code> field which are not required in the message body if they are specified in the URL. From the above example: <code>https://thethings.example.com/api/v3/applications/app1/devices/dev1?field_mask=name,description,locations</code> requests device <code>dev1</code> in application <code>app1</code> and so no message body is required. These message body fields are only used in gRPC requests.</p>
 <div class="notification is-info is-light has-text-dark">
@@ -318,11 +314,7 @@
   Fields that are empty or zero are not returned in requests, even if they are specified in a field mask.
 </div>
 
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  If you&rsquo;re having trouble with the HTTP API, you can always inspect requests in the Console using your browser&rsquo;s inspector. All of the data displayed in the Console is pulled using HTTP API requests, and this should give you some insight in to how they are formed.
-</div>
-
+<p>If you are having trouble with the HTTP API, you can always inspect requests in the Console using your browser&rsquo;s inspector. All of the data displayed in the Console is pulled using HTTP API requests, and this should give you some insight in to how they are formed.</p>
 <h2 id="examples">Examples</h2>
 <p>Examples are provided in the <a href="https://www.thethingsindustries.com/docs/getting-started/api/">Using the API</a> Getting Started section.</p>
         </div>
@@ -396,10 +388,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 12 Oct 2021.
+  Last changed by Nejra Selimović on 17 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b709f0ab02f5146ff7ad7fa120e9a464f7f93ef8">
-      doc: Add server address note to API (#601)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
+      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
     </a>
 </p>
 

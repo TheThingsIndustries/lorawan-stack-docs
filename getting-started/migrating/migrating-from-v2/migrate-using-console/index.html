@@ -239,13 +239,8 @@
         
         <div class="content">
           <p>This section describes migrating end devices to The Things Stack by using <a href="https://www.thethingsindustries.com/docs/getting-started/console/">The Things Stack Console</a>.</p>
-<p>Migrating your end devices using The Things Stack Console is simple, but devices must be migrated one-by-one, so it is convenient only for migrating a few devices.</p>
+<p>Migrating your end devices using The Things Stack Console is simple, but devices must be migrated one-by-one, so it is convenient only for migrating a fewer number of devices. This method also does not support migrating active device sessions. To learn to export device sessions and groups of devices from V2, see <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/">Migrate using the Migration Tool</a> guide.</p>
 <p>Follow the steps below to migrate your end device from V2 to The Things Stack by using the Console.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  It is not possible to migrate groups of devices, or to migrate devices with active sessions, using the Console only. To import groups of devices, or learn to export device sessions, see <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/">Migrate using the Migration Tool</a> guide.
-</div>
-
 <h2 id="add-an-end-device-in-the-things-stack">Add an End Device in The Things Stack</h2>
 <p>The first step is to add your end device in The Things Stack. See <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> section for more details on adding devices in The Things Stack.</p>
 <p>There are two ways to add devices in The Things Stack Console - <strong>Manually</strong> and via the <strong>LoRaWAN Device Repository</strong>. Configuring settings for end devices depends on their type - OTAA or ABP. We strongly recommend using OTAA over ABP. Read <a href="https://www.thethingsindustries.com/docs/devices/abp-vs-otaa/">why using OTAA is better than ABP</a>.</p>
@@ -278,13 +273,10 @@
 <li>Select <strong>Regional Parameters version</strong> <code>PHY V1.0.2 REV B</code> (this is the version used in V2)</li>
 <li>Do not check the boxes <strong>Supports class B/C</strong></li>
 <li>Keep the default Advanced settings as OTAA devices commonly negotiate about these with The Things Stack Network Server</li>
-<li>Enter your end device’s <strong>AppKey</strong> (see the note below)</li>
+<li>Enter your end device’s <strong>AppKey</strong> (see considerations below)</li>
 </ul>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>The <strong>AppKey</strong> value can match the one used in V2, as this info is usually provided by the device manufacturer. The <strong>AppKey</strong> can also be generated in the Console as the last step of the OTAA device registration process. If you decide to generate it, do not forget to program your OTAA device to use the new <strong>AppKey</strong> issued by The Things Stack.</p>
+<p>The <strong>AppKey</strong> value can match the one used in V2, as this info is usually provided by the device manufacturer. The <strong>AppKey</strong> can also be generated in the Console as the last step of the OTAA device registration process. If you decide to generate it, do not forget to program your OTAA device to use the new <strong>AppKey</strong> issued by The Things Stack.</p>
 <p>If you are migrating an active OTAA device session, the <strong>AppKey</strong> must match the one used on V2, otherwise you can choose to keep one from V2 or not.</p>
-</div>
 </section>
 <section data-content="abp">
   <p>If you still have a good reason to use ABP device, you can add it in The Things Stack by following next few steps:</p>
@@ -296,11 +288,11 @@ Choose <strong>LoRaWAN version</strong> <code>MAC V1.0.2</code> (this is the ver
 <li>Select your <strong>Frequency plan</strong></li>
 <li>Select <strong>Regional Parameters version</strong> <code>PHY V1.0.2 REV B</code> (this is the version used in V2)</li>
 <li>Do not check the boxes <strong>Supports class B/C</strong></li>
-<li>Enter your device’s <strong>DevAddr</strong> and <strong>NwkSKey</strong> (see the note below)</li>
+<li>Enter your device’s <strong>DevAddr</strong> and <strong>NwkSKey</strong> (see considerations below)</li>
 <li>Advanced settings must be set on registration (beware that changing these settings might not work later)
 <ul>
 <li>Set <strong>Frame counter width</strong> to <code>32 bit</code> (this is the value used in V2)</li>
-<li>Set <strong>RX1 Delay</strong> to <code>1</code> (see the note below)</li>
+<li>Set <strong>RX1 Delay</strong> to <code>1</code> (see considerations below)</li>
 <li>Set <strong>RX1 Data Rate Offset</strong> to <code>0</code></li>
 <li>Your device probably resets frame counters, so check the <strong>Resets Frame Counters</strong> box</li>
 <li>Set <strong>RX2 Data Rate Index</strong> to <code>3</code> if your frequency plan is EU868</li>
@@ -309,15 +301,12 @@ Choose <strong>LoRaWAN version</strong> <code>MAC V1.0.2</code> (this is the ver
 </ul>
 </li>
 </ul>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>The <strong>DevAddr</strong> and <strong>RX1 Delay</strong> values depend on your specific use case.</p>
+<p>The <strong>DevAddr</strong> and <strong>RX1 Delay</strong> values depend on your specific use case.</p>
 <p>If you want your end device traffic to be routed via Packet Broker to The Things Stack, the <strong>DevAddr</strong> must be routable by the Packet Broker and the <strong>RX1 Delay</strong> value must be set to 5 seconds. Note that the <strong>DevAddr</strong> is routable only if you are using <strong>The Things Industries V2</strong> and migrating to <strong>The Things Stack Cloud</strong>, and even that is being achieved only on customer request by contacting <a href="mailto:support@thethingsindustries.com">The Things Industries support</a>.</p>
 <p>If the existing <strong>DevAddr</strong> is not routable by the Packet Broker (i.e. you are not migrating from <strong>The Things Industries V2</strong> to <strong>The Things Stack Cloud</strong>), and/or <strong>RX1 Delay</strong> is different than 5 seconds (for V2 the default is 1 second), you will need to auto-generate new <strong>DevAddr</strong> during device registration on The Things Stack, then re-program the device to assign it with that new <strong>DevAddr</strong> and <strong>RX1 Delay</strong> of 5 seconds. Otherwise, the traffic from your device will not be properly routed by the Packet Broker or will never reach your end device in time.</p>
 <p>Re-programming the ABP device to change <strong>DevAddr</strong> to the one issued by The Things Stack and <strong>RX1 Delay</strong> to 5 seconds is <strong>recommended</strong>. Re-programming the ABP device to do this might also be a good time to reconsider switching it to OTAA by flashing the firmware and adopting some <a href="https://www.thethingsindustries.com/docs/devices/best-practices/">best practices</a>. <a href="https://www.thethingsindustries.com/docs/devices/abp-vs-otaa/">Check why using OTAA is recommended</a>.</p>
 <p>If you do not want your traffic to be routed by the Packet Broker, i.e. you want to migrate your gateway to The Things Stack too, you do not have to re-program your device. You can keep the existing <strong>DevAddr</strong> and <strong>RX1 Delay</strong> of 1 second, and use these values when adding the device to The Things Stack. Be aware that if you are using a high-latency backhaul, keeping the <strong>RX1 Delay</strong> of 1 second might cause latency issues.</p>
 <p>The <strong>NwkSKey</strong> has to match the one used on V2 if you are migrating an active ABP device session. If not, you can choose to keep the one used on V2, or to generate a new one in The Things Stack Console during the device registration process.</p>
-</div>
 </section>
 
 </div>
@@ -392,10 +381,7 @@ Choose <strong>LoRaWAN version</strong> <code>MAC V1.0.2</code> (this is the ver
 
 </div>
 
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Starting from The Things Stack <code>v3.13.0</code> release, The Things Network community members can freely migrate their gateways from The Things Network V2 to The Things Stack Community Edition, while still providing uplink and downlink coverage to The Things Network V2. Even if you manage to get your end device traffic routed to The Things Stack by Packet Broker, we recommend to migrate your gateways as soon as possible.
-</div>
+<p>The Things Network community members can freely migrate their gateways from The Things Network V2 to The Things Stack Community Edition, while still providing uplink and downlink coverage to The Things Network V2. Even if you manage to get your end device traffic routed to The Things Stack by Packet Broker, we still recommend to migrate your gateways as soon as possible.</p>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/getting-started/migrating/migrating-from-v2/packet-broker-requirements/">← Packet Broker Requirements for End Device Migration</a>
@@ -469,10 +455,10 @@ Choose <strong>LoRaWAN version</strong> <code>MAC V1.0.2</code> (this is the ver
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 27 Oct 2021.
+  Last changed by Nejra Selimović on 17 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/900e879512739311ca9f8475628427f2e7e38216">
-      Clean up getting started (#627)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
+      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
     </a>
 </p>
 

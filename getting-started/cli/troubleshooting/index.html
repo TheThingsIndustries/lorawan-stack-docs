@@ -197,11 +197,7 @@
 INFO After logging in and authorizing the CLI, we'll get an access token for future commands.
 INFO Waiting for your authorization...
 </code></pre><p>The solution to this issue would be to replace <code>thethings.example.com</code> occurrences with the server address of your The Things Stack deployment.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  You will experience the same behavior if you are using an <code>https</code> port other than <code>443</code> and you have not specified that port in the <code>oauth-server-address</code> parameter in the CLI configuration file (or with <code>--oauth-server-address</code> flag when running the CLI). For example, if you are running The Things Stack on <code>localhost</code>, you would have to specify the OAuth server address as <code>'https://localhost:8885/oauth'</code>.
-</div>
-
+<p>You will experience the same issue if you are using an <code>https</code> port other than <code>443</code> and you have not specified that port in the <code>oauth-server-address</code> parameter in the CLI configuration file or with <code>--oauth-server-address</code> flag when running the CLI. For example, if you are running The Things Stack on <code>localhost</code>, you need to specify the OAuth server address as <code>'https://localhost:8885/oauth'</code>.</p>
 <h2 id="certificate-signed-by-unknown-authority">Certificate Signed by Unknown Authority</h2>
 <p>If the CA file path is not specified in the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/#configuration">CLI configuration file</a> (or with <code>--ca</code> flag when running the CLI), or if you are using self-signed certificates, using <code>ttn-lw-cli login</code> might result in the following error:</p>
 <pre><code>ERROR Could not exchange OAuth access token    error=Post &quot;https://thethings.example.com:8885/oauth/token&quot;: x509: certificate signed by unknown authority
@@ -297,10 +293,10 @@ reason=value does not match regex pattern &quot;^[a-z0-9](?:[-]?[a-z0-9]){2,}$&q
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 18 Oct 2021.
+  Last changed by Nejra Selimović on 17 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/96c49413305ee930bf3abaefc5bdf3c806df3ce3">
-      Improve cli doc layout (#594)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
+      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
     </a>
 </p>
 

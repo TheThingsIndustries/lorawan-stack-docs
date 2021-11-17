@@ -260,41 +260,23 @@
           <p>This section refers to migrating end devices to The Things Stack using <a href="https://github.com/TheThingsNetwork/lorawan-stack-migrate"><code>ttn-lw-migrate</code> migration tool</a>.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
-<li><a href="https://github.com/TheThingsNetwork/lorawan-stack-migrate"><code>ttn-lw-migrate</code> tool</a> version <code>0.5.0</code> or higher installed on your system.</li>
+<li><a href="https://github.com/TheThingsNetwork/lorawan-stack-migrate"><code>ttn-lw-migrate</code> tool</a> version <code>0.5.0</code> or higher installed on your system. See the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/">Migration Tool</a> guide for detailed installation instructions.</li>
 </ol>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  See the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/">Migration Tool</a> guide for detailed installation instructions.
-</div>
-
 <h2 id="configure-the-environment">Configure the Environment</h2>
 <p>First, you need to configure a few environmental variables. Navigate to the folder where you installed <code>ttn-lw-migrate</code> and execute the following, replacing <code>ttn-v2-application-ID</code>, <code>ttn-v2-application-access-key</code>, and the <code>FREQUENCY_PLAN_ID</code> value:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">TTNV2_APP_ID</span><span class="o">=</span><span class="s2">&#34;ttn-v2-application-ID&#34;</span>
 $ <span class="nb">export</span> <span class="nv">TTNV2_APP_ACCESS_KEY</span><span class="o">=</span><span class="s2">&#34;ttn-v2-application-access-key&#34;</span>
 $ <span class="nb">export</span> <span class="nv">FREQUENCY_PLAN_ID</span><span class="o">=</span><span class="s2">&#34;EU_863_870_TTN&#34;</span>
-</code></pre></div><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  See the list of <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">supported Frequency Plans</a>.
-</div>
-
+</code></pre></div><p>See the list of <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">supported Frequency Plans</a>.</p>
 <p>If using Windows OS Command Prompt, replace <code>export</code> with <code>set</code> and remove the double-quotes in commands above:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">set</span> <span class="nv">TTNV2_APP_ID</span><span class="o">=</span>ttn-v2-application-ID
 $ <span class="nb">set</span> <span class="nv">TTNV2_APP_ACCESS_KEY</span><span class="o">=</span>ttn-v2-application-access-key
 $ <span class="nb">set</span> <span class="nv">FREQUENCY_PLAN_ID</span><span class="o">=</span>EU_863_870_TTN
-</code></pre></div><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>Be aware that setting environmental variables using Windows PowerShell is slightly different. For example, you would set the <code>TTNV2_APP_ID</code> variable as follows:</p>
+</code></pre></div><p>Commands are slightly different if using Windows PowerShell, for example you could set the <code>TTNV2_APP_ID</code> variable as follows:</p>
 <div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="p">$</span> <span class="nv">$env:TTNV2_APP_ID</span><span class="p">=</span><span class="s1">&#39;ttn-v2-application-ID&#39;</span>
-</code></pre></div>
-</div>
-
-<p>If you are migrating end devices from a private The Things Industries V2 (SaaS) cluster, you need to configure one extra environmental variable:</p>
+</code></pre></div><p>If you are migrating end devices from a private The Things Industries V2 (SaaS) cluster, you need to configure one extra environmental variable:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">TTNV2_DISCOVERY_SERVER_ADDRESS</span><span class="o">=</span><span class="s2">&#34;&lt;instance-id&gt;.thethings.industries:1900&#34;</span>
-</code></pre></div><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  If the Discovery Server of your private The Things Industries V2 (SaaS) cluster does not use TLS, you will need to use <code>ttnv2.discovery-server-insecure</code> flag when running commands with the <code>ttn-lw-migrate</code> tool.
-</div>
-
+</code></pre></div><p>If the Discovery Server of your private The Things Industries V2 (SaaS) cluster does not use TLS, you will need to use <code>ttnv2.discovery-server-insecure</code> flag when running commands with the <code>ttn-lw-migrate</code> tool.</p>
 <h2 id="export-end-devices-from-v2">Export End Devices from V2</h2>
 <p>Next, you can proceed with exporting one or more end devices, with or without their active session, from V2 to a <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON file</a>.</p>
 <div class="notification is-info is-light has-text-dark">
@@ -336,15 +318,6 @@ $ <span class="nb">set</span> <span class="nv">FREQUENCY_PLAN_ID</span><span cla
         <div class="title-content">
           <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session/">Migrate Active Sessions</a>
           </h1>
-          
-          <h2 class="subtitle">
-            
-            
-              <span class="tag is-light">New in 3.12.0</span>
-
-            
-            
-          </h2>
           
           <div class="content has-text-grey">
             
@@ -431,10 +404,10 @@ $ <span class="nb">set</span> <span class="nv">FREQUENCY_PLAN_ID</span><span cla
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 27 Oct 2021.
+  Last changed by Nejra Selimović on 17 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/900e879512739311ca9f8475628427f2e7e38216">
-      Clean up getting started (#627)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
+      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
     </a>
 </p>
 

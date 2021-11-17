@@ -210,23 +210,13 @@
 </ol>
 <h2 id="registration">Registration</h2>
 <p>Create a gateway by following the instructions for the <a href="https://www.thethingsindustries.com/docs/getting-started/console/#create-gateway">Console</a> or the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/#create-gateway">CLI</a>.</p>
-<p>The <strong>EUI</strong> is derived from the <strong>MAC_ADDRESS</strong> that can be found on the back panel of the gateway. To get the EUI from the MAC_ADDRESS insert <code>FFFE</code> <strong>after the first 6 characters</strong> to make it a 64bit EUI.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  If your <strong>MAC_ADDRESS</strong> is <code>5B:A0:CB:80:04:2B</code> then the <strong>EUI</strong> is <code>5B A0 CB FF FE 80 04 2B</code>.
-</div>
-
+<p>The gateway EUI is derived from the MAC address that can be found on the back panel of the gateway. To get the EUI from the MAC address insert <code>FFFE</code> after the first 6 characters to make it a 64-bit EUI. For example, if the gateway&rsquo;s MAC address is <code>5B:A0:CB:80:04:2B</code> then the EUI is <code>5B A0 CB FF FE 80 04 2B</code>.</p>
 <p>The <strong>Gateway Server Address</strong> is the address of your The Things Stack deployment. See <a href="https://www.thethingsindustries.com/docs/getting-started/server-addresses/">Server Addresses</a>.</p>
 <h2 id="configuration">Configuration</h2>
-<p>Plug the RJ45 end of the cable in the <strong>Console</strong> port at the side of the gateway, and the USB port to your computer.</p>
+<p>Plug the RJ45 end of the cable in the Console port at the side of the gateway, and the USB port to your computer.</p>
 <p>If you are using MacOS or Linux, connect to the Gateway by opening a terminal and a executing the following commands:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ls /dev/tty.usb*
-</code></pre></div><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  This displays the list of available USB serial devices.
-</div>
-
-<p>Once you have found the one matching the Cisco console, connect using the following command:</p>
+</code></pre></div><p>This will display the list of available USB serial devices. Once you have found the one matching the Cisco console, connect using the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ screen /dev/tty.usbserial-AO001X6M <span class="m">115200</span>
 </code></pre></div><p>Use PuTTy if you are using Windows.</p>
 <p>You are now in the gateway&rsquo;s shell, called <code>standalone mode</code>.</p>
@@ -237,30 +227,25 @@
 <p>To configure your Cisco Gateway to your network, type the following commands:</p>
 <pre><code>Gateway# configure terminal 
 Gateway(config)# interface FastEthernet 0/1
-</code></pre><p>If your local network has a <strong>DHCP server</strong> attributing IPs:</p>
+</code></pre><p>If your local network has a DHCP server attributing IPs:</p>
 <pre><code>Gateway(config-if)# ip address dhcp
-</code></pre><p>Otherwise, if you know the <strong>static IP address</strong> of your gateway:</p>
+</code></pre><p>Otherwise, if you know the static IP address of your gateway:</p>
 <pre><code>Gateway(config-if)# ip address &lt;ip-address&gt; &lt;subnet-mask&gt;
 </code></pre><p>Next, type the following to save the network configuration of your gateway:</p>
 <pre><code>Gateway(config-if)# description Ethernet
 Gateway(config)# exit
 Gateway# exit
 Gateway# copy running-config startup-config
-</code></pre><p>You can test your Internet configuration with the <code>ping</code> command, for example ping Google&rsquo;s DNS server</p>
+</code></pre><p>You can test your Internet configuration with the <code>ping</code> command, for example ping Google&rsquo;s DNS server:</p>
 <pre><code>Gateway# ping ip 8.8.8.8
-</code></pre><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>To see more information about the gateway&rsquo;s IP and the network, you can use</p>
+</code></pre><p>To see more information about the gateway&rsquo;s IP and the network, you can use:</p>
 <ul>
 <li><code>show interfaces FastEthernet 0/1</code></li>
 <li><code>show ip interfaces FastEthernet 0/1</code> or</li>
 <li><code>show ip route</code></li>
 </ul>
-
-</div>
-
 <h4 id="date-and-time">Date and Time</h4>
-<p>To configure your system&rsquo;s date and time, you can use <strong>ntp</strong>:</p>
+<p>To configure your system&rsquo;s date and time, you can use <code>ntp</code>:</p>
 <pre><code>Gateway# configure terminal
 Gateway(config)# ntp server address &lt;NTP server address&gt;
 Gateway(config)# exit
@@ -268,7 +253,7 @@ Gateway(config)# exit
 <pre><code>Gateway# configure terminal
 Gateway(config)# ntp server ip &lt;NTP server IP&gt;
 Gateway(config)# exit
-</code></pre><p>If you don&rsquo;t have production-grade ntp servers available, you can use <a href="http://www.pool.ntp.org/en/use.html">pool.ntp.org</a>&lsquo;s servers.</p>
+</code></pre><p>If you do not have production-grade ntp servers available, you can use <a href="http://www.pool.ntp.org/en/use.html">pool.ntp.org</a>&lsquo;s servers.</p>
 <h4 id="fpga">FPGA</h4>
 <p>If you needed to update your gateway firmware previously, your FPGA will need ~20 minutes to update once the new firmware is installed. The packet forwarder will not work until then, so we recommend at this point waiting until the FPGA is upgraded.To show the status of the FPGA, you can use the following command:</p>
 <pre><code>Gateway# show inventory
@@ -278,13 +263,9 @@ Gateway(config)# exit
 <pre><code>Gateway# configure terminal
 Gateway(config)# gps ubx enable
 Gateway(config)# exit
-</code></pre><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  This command may return the message <code>packet-forwarder firmware is not installed</code>, which can be ignored.
-</div>
-
+</code></pre><p>This command may return the message <code>packet-forwarder firmware is not installed</code>, which can be ignored.</p>
 <h4 id="enable-radio">Enable Radio</h4>
-<p>As a final step before setting up the packet forwarder software, we&rsquo;re going to <strong>enable the radio</strong>. You can see radio information with the <code>show radio</code> command:</p>
+<p>As a final step before setting up the packet forwarder software, we are going to enable the radio. You can see radio information with the <code>show radio</code> command:</p>
 <pre><code>Gateway# show radio 
 ORA_SN: FOC21028R8S
 ORA_PN: 95.1602T01
@@ -298,37 +279,33 @@ SSI_OFFSET_AUS: -203.00,-204.00
 
 radio status:
 on
-</code></pre><p>If the radio is off, enable it with</p>
+</code></pre><p>If the radio is off, enable it with:</p>
 <pre><code>Gateway# configure terminal 
 Gateway(config)# no radio off
 Gateway(config)# exit
-</code></pre><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The <code>show radio</code> command also shows you more information about the LoRa concentrator powering the gateway. For example, <strong>LORA_SKU</strong> indicates the base frequency of the concentrator.
-</div>
-
+</code></pre><p>The <code>show radio</code> command also shows you more information about the LoRa concentrator powering the gateway. For example, <code>LORA_SKU</code> indicates the base frequency of the concentrator.</p>
 <h4 id="enable-authentication">Enable Authentication</h4>
-<p>To prevent unauthorized access to the gateway, you&rsquo;ll want to set up user authentication. The Cisco gateway has a <strong>secret</strong> system, that requires users to enter a secret to access privileged commands.</p>
+<p>To prevent unauthorized access to the gateway, you&rsquo;ll want to set up user authentication. The Cisco gateway has a secret system, that requires users to enter a secret to access privileged commands.</p>
 <p>To enable this secret system, you can use the following commands:</p>
 <ul>
 <li><code>Gateway# configure terminal</code> to enter global configuration mode.</li>
 <li>To set the secret, you can use different commands:
 <code>Gateway(config)# enable secret &lt;secret&gt;</code> to enter in plaintext the secret you wish to set, instead of <code>&lt;secret&gt;</code>. <em>Note</em>: Special characters cannot be used in plain secrets.
-<code>Gateway(config)# enable secret 5 &lt;secret&gt;</code> to enter the secret <strong>md5-encrypted</strong>.
-<code>Gateway(config)# enable secret 8 &lt;secret&gt;</code> to enter the secret <strong>SHA512-encrypted</strong>.</li>
+<code>Gateway(config)# enable secret 5 &lt;secret&gt;</code> to enter the md5-encrypted secret.
+<code>Gateway(config)# enable secret 8 &lt;secret&gt;</code> to enter the SHA512-encrypted secret.</li>
 <li><code>Gateway(config)# exit</code> to exit global configuration mode.</li>
 <li><code>Gateway#copy running-config startup-config</code> to save the configuration.</li>
 </ul>
 <h4 id="verification">Verification</h4>
 <p>Before we install the packet forwarder, let&rsquo;s run verification to ensure that the gateway is ready.</p>
 <ul>
-<li>Type <code>show radio</code> to verify that the <strong>radio is enabled</strong>. The result should indicate <strong>radio status: on</strong>.</li>
-<li>Type <code>show inventory</code> to verify that the <strong>FPGAStatus is Ready</strong>.</li>
-<li>Type <code>show gps status</code> to verify that the <strong>GPS is correctly connected</strong>. You can get additional GPS metadata by typing <code>show gps info</code>.</li>
-<li>Verify that the <strong>network connection is working</strong>. You can test this by pinging common ping servers with <code>ping ip &lt;IP&gt;</code>, if your local network does not block ping commands. For example, you can ping Google&rsquo;s servers with <code>ping ip 8.8.8.8</code>.</li>
+<li>Type <code>show radio</code> to verify that the radio is enabled. The result should indicate <strong>radio status: on</strong>.</li>
+<li>Type <code>show inventory</code> to verify that the <strong>FPGAStatus</strong> is <strong>Ready</strong>.</li>
+<li>Type <code>show gps status</code> to verify that the GPS is correctly connected. You can get additional GPS metadata by typing <code>show gps info</code>.</li>
+<li>Verify that the network connection is working. You can test this by pinging common ping servers with <code>ping ip &lt;IP&gt;</code>, if your local network does not block ping commands. For example, you can ping Google&rsquo;s servers with <code>ping ip 8.8.8.8</code>.</li>
 </ul>
 <p>If some of those checks fail, go back to the appropriate section earlier in order to fix it.</p>
-<p>Then save the configuration by executing</p>
+<p>Then save the configuration by executing:</p>
 <pre><code>Gateway# copy running-config startup-config
 </code></pre><h3 id="packet-forwarder-configuration">Packet Forwarder Configuration</h3>
 <div class="notification is-warning is-light has-text-dark">
@@ -336,33 +313,24 @@ Gateway(config)# exit
   Keep in mind that the pre-installed packet forwarder is not supported by Cisco for production purposes.
 </div>
 
-<p>To run the packet forwarder, we&rsquo;ll make use of the <strong>container</strong> that is running on the gateway at all times.</p>
+<p>To run the packet forwarder, we&rsquo;ll make use of the container that is running on the gateway at all times.</p>
 <pre><code>Gateway# request shell container-console
-</code></pre><p>You will be requested to enter the System Password. By default this is <strong>admin</strong>.</p>
+</code></pre><p>You will be requested to enter the System Password. By default this is <code>admin</code>.</p>
 <p>Create the directory to store the Packet Forwarder configuration:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">bash-3.2# mkdir /etc/pktfwd
-</code></pre></div><p>Copy the packet forwarder to <strong>/etc/pktfwd</strong>:</p>
+</code></pre></div><p>Copy the packet forwarder to <code>/etc/pktfwd</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">bash-3.2# cp /tools/pkt_forwarder /etc/pktfwd/pkt_forwarder
-</code></pre></div><p><strong>Retrieve configuration from the Gateway Configuration Server</strong>
-The Gateway Configuration Server can be used to retrieve a proper <code>global_conf.json</code> configuration file for your gateway. Follow instructions <a href="https://www.thethingsindustries.com/docs/gateways/udp/">here</a>.</p>
-<p>Copy the downloaded <code>global_conf.json</code> configuration template as <strong>config.json</strong> to <strong>/etc/pktfwd</strong></p>
+</code></pre></div><h4 id="retrieve-configuration-from-the-gateway-configuration-server">Retrieve configuration from the Gateway Configuration Server</h4>
+<p>The Gateway Configuration Server can be used to retrieve a proper <code>global_conf.json</code> configuration file for your gateway. Follow instructions <a href="https://www.thethingsindustries.com/docs/gateways/udp/">here</a>.</p>
+<p>Copy the downloaded <code>global_conf.json</code> configuration template as <code>config.json </code>to <code>/etc/pktfwd</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">bash-3.2# cp config.json /etc/pktfwd/config.json
 </code></pre></div><p>You can now test the packet forwarder by executing:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">bash-3.2# /etc/pktfwd/pkt_forwarder -c /etc/pktfwd/config.json -g/dev/ttyS1
 </code></pre></div><p>Your gateway will connect to The Things Stack after a couple of minutes.</p>
 <p>Now that we know the packet forwarder is running, let&rsquo;s make it run automatically. Use this command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">bash-3.2# vi /etc/init.d/S60pkt_forwarder
-</code></pre></div><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Press the <code>i</code> key on your keyboard to start insert mode. Once finished editing, press <code>ESC</code> and enter <code>:wq</code> to write the file and quit.
-</div>
-
-<p>Then copy paste the code below.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Replace <code>things.example.com</code> with the name of your network after <code>nslookup</code>.
-</div>
-
+</code></pre></div><p>Press the <code>i</code> key on your keyboard to start insert mode. Once finished editing, press <code>ESC</code> and enter <code>:wq</code> to write the file and quit.</p>
+<p>Then copy paste the code below. Replace <code>things.example.com</code> with the name of your network after <code>nslookup</code>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">SCRIPT_DIR</span><span class="o">=</span>/etc/pktfwd
 <span class="nv">SCRIPT</span><span class="o">=</span><span class="nv">$SCRIPT_DIR</span>/pkt_forwarder
 <span class="nv">CONFIG</span><span class="o">=</span><span class="nv">$SCRIPT_DIR</span>/config.json
@@ -419,17 +387,13 @@ restart<span class="o">()</span> <span class="o">{</span>
 
 </code></pre></div><p>Then make the init script executable:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">bash-3.2# chmod +x /etc/init.d/S60pkt_forwarder
-</code></pre></div><p>To enable it immediately, execute</p>
+</code></pre></div><p>To enable it immediately, execute:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">bash-3.2# /etc/init.d/S60pkt_forwarder start
 </code></pre></div><p>You can now reboot the gateway, it can take up to 4 minutes.</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
-<p>If the gateway does not connect to the The Things Stack after a few minutes, you can check the <strong>log file</strong> to see if the packet forwarder started properly.</p>
+<p>If the gateway does not connect to the The Things Stack after a few minutes, you can check the log file to see if the packet forwarder started properly.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">bash-3.2# tail -100 var/log/pkt_forwarder.log
-</code></pre></div><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  GPS warnings may appear, which means the packet forwarder started.
-</div>
-
+</code></pre></div><p>GPS warnings may appear, which means the packet forwarder started.</p>
 <p>If the radio failed to start, disconnect and reconnect the power supply to power-cycle the gateway.</p>
 <p>For further information and troubleshooting, have a look at <a href="https://www.cisco.com/c/en/us/td/docs/routers/interface-module-lorawan/software/configuration/guide/b_lora_scg.pdf">Cisco&rsquo;s Configuration Guide</a>.</p>
         </div>
@@ -506,10 +470,10 @@ restart<span class="o">()</span> <span class="o">{</span>
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 16 Aug 2021.
+  Last changed by Nejra Selimović on 17 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/799ef67bd497c621ea87a62feca00535c066f4e2">
-      Improve multitech docs (#489)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
+      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
     </a>
 </p>
 

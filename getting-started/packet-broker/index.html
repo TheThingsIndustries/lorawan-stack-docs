@@ -194,9 +194,7 @@
 <p>Packet Broker distinguishes two types of networks: Forwarders and Home Networks. Forwarders are networks with gateways: they forward uplink messages from the gateways to Packet Broker, and downlink messages from Packet Broker back to the gateways. Home Networks are networks with end devices.</p>
 <p>Your The Things Stack deployment can be a Forwarder, a Home Network or both. This means that you can make your physical gateway infrastructure available to other networks without having end devices. Likewise, you can deploy end devices as a Home Network, without physical gateway infrastructure.</p>
 <p>Packet Broker routes uplink messages from Forwarders to Home Networks based on the 32-bit <code>DevAddr</code> in the uplink message. The first part of the <code>DevAddr</code> is the <code>NetID</code>, a globally unique identifier of a LoRaWAN network. Packet Broker uses the <code>NetID</code> to lookup the Home Network. Besides identifying Home Networks by <code>NetID</code>, Packet Broker also supports tenants. Tenants use a <code>DevAddr</code> block of a Home Network host.</p>
-<blockquote>
 <p>For example, a message with <code>DevAddr</code> <code>27ABCD12</code> has <code>NetID</code> <code>000013</code> (owned by The Things Network Foundation). The <code>DevAddr</code> block <code>27ABCD00</code> to <code>27ABCDFF</code> might be assigned to a private network <code>example-com</code>. That <code>DevAddr</code> block is noted as <code>27ABCD00/24</code>: 24 significant bits. Packet Broker identifies the Home Network then as <code>NetID</code> <code>000013</code> and tenant ID <code>example-com</code>.</p>
-</blockquote>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   The Things Network is identified by <code>NetID</code> is <code>000013</code> and tenant ID <code>ttn</code>.
@@ -247,14 +245,12 @@
 </tr>
 </tbody>
 </table>
-<blockquote>
 <p>For instance, a Forwarder may wish to configure three policies:</p>
 <ol>
 <li>With Home Network that has <code>NetID</code> <code>000013</code> and tenant ID <code>ttn</code> (The Things Network): all message types. This would mean to forward join-requests and join-accepts, uplink and downlink MAC and application payload messages, and signal quality and localization information.</li>
 <li>With Home Network that has <code>NetID</code> <code>000013</code> and tenant ID <code>example-com</code>: only join-requests, join-accepts and uplink and downlink MAC and application payload messages. This would mean to not forward the metadata.</li>
 <li>A default policy (for all other networks): only uplink MAC and application payload messages. That would mean to not forward join-requests and join-accepts, and to not forward the metadata.</li>
 </ol>
-</blockquote>
 <h3 id="gateway-visibility-settings">Gateway Visibility Settings</h3>
 <p>Gateway visibility configuration allows network administrators to configure who sees which gateway-related information. Having gateways listed publicly on the map can help discovering partner networks, but it may also lead to privacy concerns. Therefore, Packet Broker allows configuring gateway visibility with fine-grained settings.</p>
 <p>Forwarders can configure the visibility of their gateways towards the public or specific Home Networks. Like routing policies, gateway visibility is configured peer-to-peer: a Forwarder can define gateway visibility with each individual Home Network. Forwarders can also define an optional default gateway visibility that is used as a fallback when no specific visibility is defined.</p>
@@ -402,10 +398,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 27 Oct 2021.
+  Last changed by Nejra Selimović on 17 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/900e879512739311ca9f8475628427f2e7e38216">
-      Clean up getting started (#627)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
+      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
     </a>
 </p>
 

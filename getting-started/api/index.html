@@ -172,11 +172,7 @@
   If you are not getting the fields you expect in API responses, see the <a href="/docs/reference/api/field-mask/">Field Masks</a> reference.
 </div>
 
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  If you&rsquo;re having trouble with the HTTP API, you can always inspect requests in the Console using your browser&rsquo;s inspector. All of the data displayed in the Console is pulled using HTTP API requests, and this should give you some insight in to how they are formed.
-</div>
-
+<p>If you are having trouble with the HTTP API, you can always inspect requests in the Console using your browser&rsquo;s inspector. All of the data displayed in the Console is pulled using HTTP API requests, and this should give you some insight in to how they are formed.</p>
 <h2 id="best-practices">Best Practices</h2>
 <h3 id="send-a-user-agent-header">Send a <code>User-Agent</code> Header</h3>
 <p>Set the <code>User-Agent</code> HTTP header containing your integration name and version. That way, a network operator can help finding out potential issues using the logs.</p>
@@ -216,11 +212,7 @@
 </span><span class="s1">    }]
 </span><span class="s1">  }&#39;</span> <span class="se">\
 </span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/events&#39;</span>
-</code></pre></div><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events">here</a> for a description of the <code>text/event-stream</code> MIME type.
-</div>
-
+</code></pre></div><p>See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events">here</a> a description of the <code>text/event-stream</code> MIME type.</p>
 <h3 id="schedule-downlink">Schedule Downlink</h3>
 <p>To schedule a downlink, you may use the <code>DownlinkQueuePush</code> or <code>DownlinkQueueReplace</code> endpoints of the <a href="https://www.thethingsindustries.com/docs/reference/api/application_server/#the-appas-service">Application Server API</a>. For example, to schedule a downlink queue push to device <code>dev1</code> in application <code>app1</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
@@ -248,16 +240,8 @@
 </span><span class="s1">    }]
 </span><span class="s1">  }&#39;</span> <span class="se">\
 </span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/as/applications/app1/devices/dev1/down/push&#39;</span>
-</code></pre></div><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Downlinks scheduled using the <code>decoded_payload</code> Payload Formatter field are encrypted in the Application Server, and the content will not be comprehensible in the Network Server&rsquo;s <code>frm_payload</code> field when viewing events.
-</div>
-
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  It&rsquo;s also possible to <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/scheduling-downlinks/">schedule downlinks using HTTP Webhooks</a>, which give you flexibility to choose JSON or gRPC HTTP payloads.
-</div>
-
+</code></pre></div><p>Please note that downlinks scheduled using the <code>decoded_payload</code> Payload Formatter field are encrypted in the Application Server, and the content will not be comprehensible in the Network Server&rsquo;s <code>frm_payload</code> field when viewing events.</p>
+<p>It is also possible to <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/scheduling-downlinks/">schedule downlinks using HTTP Webhooks</a>, which give you flexibility to choose JSON or gRPC HTTP payloads.</p>
 <h3 id="multi-step-actions">Multi-step Actions</h3>
 <p>If you want to create a device, perform multi-step actions, or write shell scripts, it&rsquo;s best to use the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">CLI</a>.</p>
 <p>If you want to do something like registering a device directly via the API, you need to make calls to the Identity Server, Join Server, Network Server and Application Server. See the <a href="https://www.thethingsindustries.com/docs/reference/api/">API Reference</a> for detailed information about which messages go to which endpoints.</p>
@@ -447,10 +431,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 16 Aug 2021.
+  Last changed by Nejra Selimović on 17 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5a835dc32881e8370322cd2fe18a18130caac35f">
-      Improve description of field masks in API documentation (#475)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
+      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
     </a>
 </p>
 

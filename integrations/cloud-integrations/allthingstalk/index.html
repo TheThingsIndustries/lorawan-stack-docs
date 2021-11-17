@@ -281,11 +281,7 @@
 </figure>
 
 <p>Last, you need to fill in the <strong>Device name</strong> with a desired value and provide your device&rsquo;s EUI in the <strong>Device EUI</strong> field.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  In this step, you can also note down the <strong>Network Token</strong> value as you will need it in further integration process.
-</div>
-
+<p>In this step, you can also note down the <strong>Network Token</strong> value as you will need it in further integration process.</p>
 <figure>
     <img src="device-settings.png"
          alt="Device settings"/> 
@@ -300,40 +296,19 @@
          alt="AllThingsTalk Maker webhook template"/> 
 </figure>
 
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  To see the values of all parameters of the AllThingsTalk Maker integration, click on the integration after you created it with the Webhook template.
-</div>
-
+<p>To see the values of all parameters of the AllThingsTalk Maker integration, click on the integration after you created it with the Webhook template.</p>
 <h2 id="monitoring-sensor-data">Monitoring Sensor Data</h2>
 <p>Enter your newly created device&rsquo;s dashboard, navigate to <strong>Assets</strong> and select <strong>Create asset</strong> to create a new device asset.</p>
-<p>Choose <strong>Sensor</strong>, add a <strong>Name</strong> depending on the type of your sensor data and choose the type of data.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  In this guide, we demonstrate sending numerical data from a temperature sensor.
-</div>
-
+<p>Choose <strong>Sensor</strong>, add a <strong>Name</strong> depending on the type of your sensor data and choose the type of data. In this guide, we demonstrate sending numerical data from a temperature sensor.</p>
 <figure>
     <img src="asset.png"
          alt="Device asset"/> 
 </figure>
 
 <p>In order for your sensor data to be properly decoded on the AllThingsTalk Maker end, it needs to be converted to CBOR format, as mentioned in the <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/allthingstalk/#prerequisites">Prerequisites</a>. According to the <a href="https://docs.allthingstalk.com/developers/data-formats/">AllThingsTalk data formats documentation</a>, the payload should be constructed using <code>{&quot;&lt;asset-name&gt;&quot;: &lt;value&gt;}</code> structures, which after need to be converted to CBOR.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Please keep in mind that the <code>&lt;asset-name&gt;</code> is the name you provided when you created a sensor asset.
-</div>
-
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>In this guide, we demonstrate sending <code>{&quot;temperature&quot;: &lt;value&gt;}</code> records converted to CBOR format.</p>
-<p>For example, if the temperature sensor measurement results in <code>{&quot;temperature&quot;: 36}</code>, after a conversion to CBOR the uplink message payload will be <code>A1 6B 74 65 6D 70 65 72 61 74 75 72 65 18 24</code>.</p>
-
-</div>
-
-<blockquote>
+<p>Remember that the <code>&lt;asset-name&gt;</code> is the name you provided when you created a sensor asset.</p>
+<p>In this guide, we demonstrate sending <code>{&quot;temperature&quot;: &lt;value&gt;}</code> records converted to CBOR format. For example, if the temperature sensor measurement results in <code>{&quot;temperature&quot;: 36}</code>, after a conversion to CBOR the uplink message payload will be <code>A1 6B 74 65 6D 70 65 72 61 74 75 72 65 18 24</code>.</p>
 <p>You can use free online tools such as <a href="http://cbor.me/">cbor.me</a> to easily convert data to CBOR.</p>
-</blockquote>
 <p>After this data reaches AllThingsTalk Maker, the asset sensor value will automatically be updated, as shown on the image below. You can now continue monitoring this data, creating visual charts, etc.</p>
 <figure>
     <img src="sensor-data.png"
@@ -343,11 +318,7 @@
 <h2 id="actuating-your-device">Actuating Your Device</h2>
 <p>If your device is an actuator, you can actuate it by scheduling a downlink message to be sent to it from AllThingsTalk Maker.</p>
 <p>First, enter your device&rsquo;s dashboard on AllThingsTalk Maker, navigate to <strong>Assets</strong> and select <strong>Create asset</strong> to create a new device asset. Choose <strong>Actuator</strong>, add a <strong>Name</strong> depending on the variable name you are actuating your device from, and choose the type of data.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  In this guide, we demonstrate turning on a LED on an end device by setting the <code>LED</code> asset value to <code>true</code> and sending it through a downlink message.
-</div>
-
+<p>In this guide, we demonstrate turning on a LED on an end device by setting the <code>LED</code> asset value to <code>true</code> and sending it through a downlink message.</p>
 <figure>
     <img src="actuator.png"
          alt="Actuating a device"/> 
@@ -360,14 +331,8 @@
 </figure>
 
 <p>If you check The Things Stack <strong>Live data</strong> tab, you will see downlink messages being scheduled to be sent to your end device.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  You will notice that payloads of the scheduled downlink messages are in CBOR format. You will need to decode this data and implement the logic that actuates your device using the decoded data.
-</div>
-
-<blockquote>
+<p>You will notice that payloads of the scheduled downlink messages are in CBOR format. You will need to decode this data and implement the logic that actuates your device using the decoded data.</p>
 <p>You can also actuate your device using <a href="https://docs.allthingstalk.com/dl/AllThingsTalk_Binary_Conversion_Language_1_0_0.pdf">AllThingsTalk Binary Conversion Language (ABCL)</a>. For more information on using this format, as well as the integration in general, visit the <a href="https://docs.allthingstalk.com/networks/use-the-things-network-v3/">Use The Things Network V3 with AllThingsTalk guide</a> on the official AllThingsTalk Maker documentation site.</p>
-</blockquote>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/akenza-core/">← Akenza Core</a>
@@ -444,10 +409,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 09 Aug 2021.
+  Last changed by Nejra Selimović on 17 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b74497ddc59c4c3b1c11c7f631eefe2e1cd2660f">
-      doc: Add AllThingsTalk integration guide (#488)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
+      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
     </a>
 </p>
 

@@ -201,21 +201,13 @@
   Eclipse Mosquitto MQTT server supports 3.1, 3.1.1 and 5.0 MQTT protocol versions.
 </div>
 
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The examples in this guide are suitable for The Things Stack Open Source deployment. If you are using a different The Things Stack deployment, make sure your read a <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#note-on-using-the-tenant-id">Note on Using the tenant ID</a>.
-</div>
-
+<p>The examples in this guide are suitable for The Things Stack Open Source deployment. If you are using a different The Things Stack deployment, make sure your read a <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#note-on-using-the-tenant-id">Note on Using the tenant ID</a>.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
 <li><a href="https://github.com/eclipse/mosquitto">Eclipse Mosquitto MQTT server</a> installed on your system.</li>
 </ol>
 <h2 id="subscribing-to-upstream-traffic">Subscribing to Upstream Traffic</h2>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  This section follows the example for subscribing to upstream traffic in the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#subscribing-to-upstream-traffic">MQTT Server</a> guide.
-</div>
-
+<p>This section follows the example for subscribing to upstream traffic in the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#subscribing-to-upstream-traffic">MQTT Server</a> guide.</p>
 <p>The command for connecting to a host and subscribing to a topic has using <code>mosquitto_sub</code> has the following syntax:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mosquitto_sub -h &lt;hostname&gt; -p &lt;port&gt; -u &lt;username&gt; -P &lt;password&gt; -t &lt;topic&gt;
 </code></pre></div><p>For example, to subscribe to all topics in the application <code>app1</code>:</p>
@@ -223,15 +215,9 @@
 <span class="c1"># For example:</span>
 $ mosquitto_sub -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <span class="s2">&#34;1883&#34;</span> -u <span class="s2">&#34;app1&#34;</span> -P <span class="s2">&#34;NNSXS.VEEBURF3KR77ZR..&#34;</span> -t <span class="s2">&#34;#&#34;</span> -d
 </code></pre></div><p>In you want to use TLS, you need to change the port value to <code>8883</code> and add the <code>--cafile</code> option to the command. <code>--cafile</code> option is used to define a path to the file containing trusted CA certificates that are PEM encoded.</p>
-<blockquote>
 <p>Read more about the command line options in the <a href="https://mosquitto.org/man/mosquitto_sub-1.html">mosquitto_sub manual</a>.</p>
-</blockquote>
 <h2 id="publishing-downlink-messages">Publishing Downlink Messages</h2>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  This section follows the example for publishing downlink traffic in the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a> guide. See <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#publishing-downlink-traffic">Publishing Downlink Messages</a> for a list of available topics.
-</div>
-
+<p>This section follows the example for publishing downlink traffic in the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a> guide. See <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#publishing-downlink-traffic">Publishing Downlink Messages</a> for a list of available topics.</p>
 <p>For connecting to a host and publishing a message, <strong>mosquitto_pub</strong> client defines a command with the following syntax:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mosquitto_pub -h &lt;hostname&gt; -p &lt;port&gt; -u &lt;username&gt; -P &lt;password&gt; -t &lt;topic&gt; -m &lt;message&gt;
 </code></pre></div><p>For example, to send an unconfirmed downlink message to the device <code>dev1</code> in application <code>app1</code> with the hexadecimal payload <code>BE EF</code> on <code>FPort</code> 15 with normal priority, use the topic <code>v3/app1/devices/dev1/down/push</code> with the following contents:</p>
@@ -242,9 +228,7 @@ $ mosquitto_sub -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <s
 </div>
 
 <p>If TLS is being used, change the port value to <code>8883</code> and add the <code>--cafile</code> option to the command.</p>
-<blockquote>
 <p>Read more about the command line options in the <a href="https://mosquitto.org/man/mosquitto_pub-1.html">mosquitto_pub manual</a>.</p>
-</blockquote>
         </div>
         
           <div class="is-clearfix">
@@ -316,10 +300,10 @@ $ mosquitto_sub -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <s
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 02 Sep 2021.
+  Last changed by Nejra Selimović on 17 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/6e632e2d2b4a2ae99f59672341067fc7b3fee321">
-      doc: Add fport note, equalize MQTT  docs (#552)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
+      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
     </a>
 </p>
 

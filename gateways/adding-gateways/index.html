@@ -256,11 +256,7 @@
 <p>Once you have added your gateway to The Things Stack, you can also set its location to be displayed on a map widget by clicking <strong>Change location settings</strong>.</p>
 <p>If you do not mind your gateway&rsquo;s location to be publicly displayed, check the <strong>Publish location</strong> box.</p>
 <p>The gateway location can be manually set by entering the <strong>Latitude</strong>, <strong>Longitude</strong> and <strong>Altitude</strong> values.</p>
-<p>You can also check the <strong>Update from status messages</strong> box if you want to update the location based on the metadata from the incoming uplink gateway status messages.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The location settings you manually entered will be overwritten by the updates from the gateway status messages.
-</div>
+<p>You can also check the <strong>Update from status messages</strong> box if you want to update the location based on the metadata from the incoming uplink gateway status messages. The location settings you manually entered will be overwritten by the updates from the gateway status messages.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   The Things Stack Console currently supports setting one antenna location per gateway.
@@ -281,10 +277,6 @@
 </span><span class="se"></span>  --gateway-eui 00800000A00009EF <span class="se">\
 </span><span class="se"></span>  --enforce-duty-cycle
 </code></pre></div><p>This creates a gateway <code>gtw1</code> with user <code>admin</code> as collaborator, frequency plan <code>EU_863_870</code>, EUI <code>00800000A00009EF</code> and respecting duty-cycle limitations. You can now connect your gateway to The Things Stack.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The CLI returns the created and updated entities by default in JSON. This can be useful in scripts.
-</div>
 <h3 id="create-gateway-api-key">Create Gateway API Key</h3>
 <p>Some gateways require an API Key with Link Gateway Rights to be able to connect to The Things Stack.</p>
 <p>Create an API key for the gateway:</p>
@@ -304,11 +296,7 @@ $ ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span
 </span><span class="se"></span>  --antenna.add <span class="se">\
 </span></code></pre></div><p>If you do not mind your gateway&rsquo;s location to be publicly displayed, append the <code>--location-public</code> flag.</p>
 <p>You can also set the gateway location to be updated from various sources with the <code>--antenna.location.source</code> flag. The source of the location data can be the registry, GPS data, results of the LoRa RSSI geolocation, etc.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>Use <code>ttn-lw-cli gateways set gtw1 --help</code> command to see the full list of the available location sources and other relatable info.</p>
-<p>If you set the alternative location source, the location settings you manually set will be overwritten by the automatic updates from that source.</p>
-</div>
+<p>Use <code>ttn-lw-cli gateways set gtw1 --help</code> command to see the full list of the available location sources and other relatable info. Keep in mind that if you set the alternative location source, the location settings you manually set will be overwritten by the automatic updates from that source.</p>
 <p>The CLI will return something like:</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -335,11 +323,7 @@ $ ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span
 
 </div>
 
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Keep in mind that if you change the physical location of your gateway, the location update in The Things Stack will take place only after you restart the gateway.
-</div>
-
+<p>Keep in mind that if you change the physical location of your gateway, the location update in The Things Stack will take place only after you restart the gateway.</p>
 <h2 id="set-gateway-antenna-gain">Set Gateway Antenna Gain</h2>
 <div class="notification is-primary is-light has-text-dark">
   <h3 class="title has-text-dark mb-1">Command-line interface only</h3>
@@ -372,11 +356,7 @@ $ ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span
   <span class="p">],</span>
   <span class="nt">&#34;location_public&#34;</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">}</span>
-</code></pre></div><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Keep in mind that the <code>antennas.location</code> object will be empty if you have not previously set the gateway antenna location.
-</div>
-
+</code></pre></div><p>Keep in mind that the <code>antennas.location</code> object will be empty if you have not previously set the gateway antenna location.</p>
 <p>Once a gateway has been added, get started with <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> and <a href="https://www.thethingsindustries.com/docs/integrations/">Integrations</a> to process and act on data.</p>
         </div>
         
@@ -455,10 +435,10 @@ $ ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 21 Oct 2021.
+  Last changed by Nejra Selimović on 17 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f9a8c6b429223b3d1481cd7c72ab02d760c5b99d">
-      doc: Add note about TTIG to adding gateways (#630)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
+      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
     </a>
 </p>
 

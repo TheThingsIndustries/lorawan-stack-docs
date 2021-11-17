@@ -256,24 +256,10 @@
           
         </h1>
         
-        <h2 class="subtitle">
-          
-          
-            <span class="tag is-light">New in 3.12.0</span>
-
-          
-          
-        </h2>
-        
         <div class="content">
           <p>Starting from The Things Stack version <code>3.12.0</code>, it is possible to migrate end devices together with their active sessions using the <code>ttn-lw-migrate</code> tool. This section explains how to export one or more of your end devices from V2 to a <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON file</a>, with persisting their active sessions.</p>
-<div class="notification is-warning is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  <p>Active device sessions can be migrated via Packet Broker only from <strong>The Things Industries V2 (SaaS)</strong> to <strong>The Things Stack Cloud</strong>, and this is achievable only on a customer request. Contact <a href="mailto:support@thethingsindustries.com">The Things Industries support</a> for more information.</p>
+<p>Active device sessions can be migrated via Packet Broker only from <strong>The Things Industries V2 (SaaS)</strong> to <strong>The Things Stack Cloud</strong>, and this is achievable only on a customer request. Contact <a href="mailto:support@thethingsindustries.com">The Things Industries support</a> for more information.</p>
 <p>For all other scenarios, migrating active session is achievable only if you <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway to The Things Stack</a> too.</p>
-
-</div>
-
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   We strongly recommend migrating end devices without persisting active sessions.
@@ -317,11 +303,7 @@
   Before exporting end devices, you can first test the execution by appending the <code>--dry-run</code> and <code>--verbose</code> flags to the commands presented in the sections below.
 </div>
 
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Use the <code>--ttnv2.resets-to-frequency-plan</code> flag to configure the factory preset frequencies of the device, so that it can keep working with The Things Stack. The list of uplink frequencies is inferred from the <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plan</a>.
-</div>
-
+<p>Use the <code>--ttnv2.resets-to-frequency-plan</code> flag to configure the factory preset frequencies of the device, so that it can keep working with The Things Stack. The list of uplink frequencies is inferred from the <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plan</a>.</p>
 <h3 id="export-a-single-end-device">Export a Single End Device</h3>
 <p>To export a single end device from V2 and clear its security keys:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-migrate device --source ttnv2 <span class="s2">&#34;v2-end-device-ID&#34;</span> &gt; devices.json
@@ -371,10 +353,7 @@ dev3
 
 <p>If you are migrating an end device with its active session via Packet Broker (from <strong>The Things Industries V2</strong> to <strong>The Things Stack Cloud</strong>), you might need to set the <strong>RX1 Delay</strong> of the device to 5 seconds by <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/configure-mac-settings/">configuring MAC settings</a>, otherwise the traffic might not reach The Things Stack in time via Packet Broker.</p>
 <p>In any case, you can leave the <strong>RX1 Delay</strong> value as is (1 second from V2), but then you will need to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway to The Things Stack</a> too.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Starting from The Things Stack <code>v3.13.0</code> release, The Things Network community members can freely migrate their gateways from The Things Network V2 to The Things Stack Community Edition, while still providing uplink and downlink coverage to The Things Network V2. Even if you manage to get your end device traffic routed to The Things Stack by Packet Broker, we recommend to migrate your gateways as soon as possible.
-</div>
+<p>The Things Network community members can freely migrate their gateways from The Things Network V2 to The Things Stack Community Edition, while still providing uplink and downlink coverage to The Things Network V2. Even if you manage to get your end device traffic routed to The Things Stack by Packet Broker, we recommend to migrate your gateways as soon as possible.</p>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/establish-new-session/">← Migrate without Persisting Active Sessions</a>
@@ -441,10 +420,10 @@ dev3
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 27 Oct 2021.
+  Last changed by Nejra Selimović on 17 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/900e879512739311ca9f8475628427f2e7e38216">
-      Clean up getting started (#627)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
+      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
     </a>
 </p>
 

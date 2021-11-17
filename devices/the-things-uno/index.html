@@ -164,18 +164,14 @@
          alt="The Things Uno"/> 
 </figure>
 
-<p><strong>The Things Uno</strong> is based on the <a href="https://store.arduino.cc/usa/leonardo">Arduino Leonardo</a> (not the Arduino Uno) with an added <strong>Microchip</strong> LoRaWAN module (<a href="https://www.microchip.com/wwwproducts/en/RN2483">RN2483</a> or <a href="https://www.microchip.com/wwwproducts/en/RN2903">RN2903</a>).</p>
-<p>The Things Uno is fully compatible with the <strong>Arduino software</strong> also known as the <strong>Arduino Integrated Development Environment (IDE)</strong> and the existing <strong>Arduino shields</strong>.</p>
-<p>The Things Uno lets you easily get started with <strong>LoRaWAN</strong> application development using the <strong>Arduino IDE</strong>. First, choose the correct Things Uno board to suit the recommended frequency plan of your country/region. It is currently available for <strong>EU868</strong> and <strong>US915</strong> frequency bands.</p>
+<p><strong>The Things Uno</strong> is based on the <a href="https://store.arduino.cc/usa/leonardo">Arduino Leonardo</a> (not the Arduino Uno) with an added Microchip LoRaWAN module (<a href="https://www.microchip.com/wwwproducts/en/RN2483">RN2483</a> or <a href="https://www.microchip.com/wwwproducts/en/RN2903">RN2903</a>).</p>
+<p>The Things Uno is fully compatible with the Arduino software also known as the Arduino Integrated Development Environment (IDE) and the existing Arduino shields.</p>
+<p>The Things Uno lets you easily get started with LoRaWAN application development using the Arduino IDE. First, choose the correct Things Uno board to suit the recommended frequency plan of your country/region. It is currently available for EU868 and US915 frequency bands.</p>
 <h2 id="setting-up-arduino-ide">Setting up Arduino IDE</h2>
 <p>The Arduino IDE allows you to write code using the Arduino programming language (C/C++), compile (verify), and upload it to the Things Uno board. It supports Windows, Mac OS, Linux, and Chrome OS.</p>
-<p><strong>Download</strong> the latest release of the <a href="https://www.arduino.cc/en/Main/Software">Arduino Software (IDE)</a> and <a href="https://www.arduino.cc/en/Guide">install</a> it on your operating system.</p>
-<p><strong>Start</strong> the Arduino Software (IDE).</p>
+<p>Download the latest release of the <a href="https://www.arduino.cc/en/Main/Software">Arduino Software (IDE)</a>, <a href="https://www.arduino.cc/en/Guide">install</a> it on your operating system and run it.</p>
 <p>In the Arduino IDE, select <strong>Sketch → Include Library → Manage Libraries&hellip;</strong> or <strong>Tools → Manage Libraries&hellip;</strong> from the menu bar.</p>
-<p>In the <strong>Library Manager</strong> window, search for <strong>TheThingsNetwork</strong>.</p>
-<p>Select <strong>TheThingsNetwork</strong> Arduino library from the search results.</p>
-<p>Select the <strong>Install</strong> button.</p>
-<p>When the installation finishes, close the <strong>Library Manager</strong> by selecting the <strong>Close</strong> button.</p>
+<p>In the <strong>Library Manager</strong> window, search for <code>TheThingsNetwork</code> Arduino library and install it from the search results. When the installation finishes, select the <strong>Close</strong> button.</p>
 <figure class="plain">
     <img src="LibraryManager.png"
          alt="Library Manager"/> 
@@ -215,11 +211,7 @@ void loop() {
 <p>Type the following lines to create two serial port objects for <strong>Serial</strong> and <strong>Serial1</strong>.</p>
 <pre><code>#define loraSerial Serial1
 #define debugSerial Serial
-</code></pre><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The <strong>Serial</strong> object allows communication between <strong>The Things Uno</strong> and your <strong>computer</strong>. Also, the <strong>Serial1</strong> object allows communication between <strong>The Things Uno</strong> and the <strong>Microchip LoRa module</strong>.
-</div>
-
+</code></pre><p>The <strong>Serial</strong> object allows communication between <strong>The Things Uno</strong> and your <strong>computer</strong>. Also, the <strong>Serial1</strong> object allows communication between <strong>The Things Uno</strong> and the <strong>Microchip LoRa module</strong>.</p>
 <p>Type the following line to define the frequency plan of your Things Uno. Replace <code>REPLACE_ME</code> with <code>TTN_FP_EU868</code> or <code>TTN_FP_US915</code> depending on the frequency plan of your Things Uno and your country/region.</p>
 <pre><code>// Replace REPLACE_ME with TTN_FP_EU868 or TTN_FP_US915
 #define freqPlan REPLACE_ME
@@ -240,7 +232,7 @@ loraSerial.begin(57600);
     ;
 }
 </code></pre><p>This will tell your code not to jump to the next line until the <strong>Serial Monitor</strong> is ready.</p>
-<p>Type the following code snippet just after the <strong>while loop</strong>.</p>
+<p>Type the following code snippet just after the <strong>while</strong> loop.</p>
 <pre><code>debugSerial.println(&quot;-- STATUS&quot;);
 ttn.showStatus();
 </code></pre><p>The <code>showStatus()</code> function retrieves some useful device-specific information from the Microchip LoRa module and prints them on the <strong>Serial Monitor</strong>.</p>
@@ -530,10 +522,10 @@ Successful transmission
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Pradeeka Seneviratne on 23 Aug 2021.
+  Last changed by Nejra Selimović on 17 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/101d17fb624cb34a1b7e727b02723cad1056d7cb">
-      doc: Add The Things Uno quickstart (#496)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
+      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
     </a>
 </p>
 

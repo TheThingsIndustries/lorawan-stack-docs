@@ -219,32 +219,24 @@
 <p>The Things Stack is more scalable, more secure, and supports more of the LoRaWAN specification than V2. The end of life for V2 environment is planned for December 1, 2021.</p>
 <h3 id="when-should-i-migrate-my-devices-and-gateways-to-the-things-stack">When should I migrate my devices and gateways to The Things Stack?</h3>
 <p>Start migrating your devices and gateways as soon as possible! V2 is now read-only so you cannot add new gateways, devices and applications anymore, and the final deadline for migrating is December 1, 2021, when V2 will be shut down.</p>
-<blockquote>
 <p>Reading the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/">complete Migrating to The Things Stack guide</a> can help you with the migration process.</p>
-</blockquote>
 <h3 id="will-i-still-be-able-to-register-my-devices-and-gateways-on-the-things-stack-if-i-do-not-migrate-them-from-v2-until-the-migration-deadline-december-1-2021">Will I still be able to register my devices and gateways on The Things Stack if I do not migrate them from V2 until the migration deadline (December 1, 2021)?</h3>
 <p>Yes, you will be able to normally register devices and gateways on The Things Stack after December 1, 2021, but you might lose some data because of the V2 shutdown if you do not migrate on time. Also, keep in mind that after this deadline, you will no longer be able to transfer your devices to The Things Stack in bulk, nor to preserve existing device sessions.</p>
 <h3 id="what-is-packet-broker-and-what-does-it-have-to-do-with-migrating-to-the-things-stack">What is Packet Broker and what does it have to do with migrating to The Things Stack?</h3>
 <p><a href="https://packetbroker.net">Packet Broker</a> is a neutral and open LoRaWAN packet broker developed by The Things Industries. Packet Broker adopts the Passive Roaming specifications, as defined by the LoRa Alliance, so it can be used to exchange traffic with other LoRaWAN networks to share coverage and improve overall network performance.</p>
-<blockquote>
 <p>See The Things Stack <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/">Packet Broker documentation</a> for detailed info about connecting The Things Stack to Packet Broker.</p>
-</blockquote>
 <p>V2, The Things Stack Community Edition and The Things Stack Cloud are connected to Packet Broker by default. The Things Stack Open Source and The Things Stack Enterprise can also be <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/connect/">connected</a> to Packet Broker. Traffic is then automatically exchanged between these networks. See <a href="https://www.thethingsindustries.com/docs/reference/pb-routing/">default Packet Broker routing tables</a>.</p>
 <p>For example, this means that you can migrate an end device from The Things Network V2 to The Things Stack Community Edition without immediately (or previously) having to migrate your gateway, because both of these deployments are connected to Packet Broker by default. However, there are certain requirements that need to be fulfilled in order for Packet Broker to route traffic from and to these devices properly and timely. <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/packet-broker-requirements/">Read more about DevAddr and RX1 Delay requirements</a>.</p>
 <h3 id="i-tried-migrating-my-the-things-indoor-gateway-ttig-to-the-things-stack-but-the-console-shows-status-disconnected-does-the-things-stack-support-connecting-ttigs">I tried migrating my The Things Indoor Gateway (TTIG) to The Things Stack, but the Console shows status <code>Disconnected</code>. Does The Things Stack support connecting TTIGs?</h3>
 <p>Yes, TTIG can be migrated from V2 to The Things Stack. Make sure you are not using the regular option of <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/">adding gateways</a>, but <a href="https://www.thethingsindustries.com/docs/gateways/gateway-claiming/">gateway claiming</a>.</p>
-<blockquote>
 <p>Read the full guide on how to <a href="https://www.thethingsindustries.com/docs/gateways/thethingsindoorgateway/">connect TTIG to The Things Stack</a>. This guide also contains a troubleshooting section for common errors.</p>
-</blockquote>
 <h3 id="can-i-delete-my-ttig-from-v2-console-after-i-have-migrated-it-to-the-things-stack">Can I delete my TTIG from V2 Console after I have migrated it to The Things Stack?</h3>
 <p>Yes, you can delete your TTIG from V2, but keep in mind that you are no longer able to add new gateways on V2 as this environment is already in read-only mode.</p>
 <h3 id="can-i-migrate-my-device-to-the-things-stack-without-having-to-re-program-it-or-trigger-it-to-perform-a-new-join">Can I migrate my device to The Things Stack without having to re-program it or trigger it to perform a new join?</h3>
 <p>In a special case of migrating devices from The Things Industries V2 (SaaS) environment to The Things Stack Cloud, devices can be migrated with their existing session via Packet Broker, i.e. without having to re-program them (ABP) or trigger them to perform a new join (OTAA), and without having to migrate the gateway to The Things Stack. For all other migration scenarios, to migrate an active device session you would have to have the gateway migrated to The Things Stack as well.</p>
-<blockquote>
 <p>Learn how to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session/">Migrate Active Sessions</a>.</p>
-</blockquote>
-<div class="notification is-warning is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   Please keep in mind that migrating active sessions is not recommended. If you cannot access your device to trigger it to perform a new join, you can try contacting your device&rsquo;s manufacturer as the device might have &ldquo;secret&rdquo; options to enable remote access.
 </div>
 
@@ -257,14 +249,10 @@
 <p>In case of migrating active sessions using the <code>ttn-lw-migrate</code> tool, security keys are automatically cleared from V2, so you do not have to take any of above mentioned actions.</p>
 <h3 id="exporting-devices-on-v2-using-ttnctl-does-not-work-for-me-what-am-i-doing-wrong">Exporting devices on V2 using <code>ttnctl</code> does not work for me. What am I doing wrong?</h3>
 <p>To export end device and/or application descriptions from V2 and import them into The Things Stack, you cannot use <code>ttnctl</code> tool (command line tool for V2), but you need to use the <code>ttn-lw-migrate</code> migration tool.</p>
-<blockquote>
 <p>Learn to work with the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/">migration tool</a>.</p>
-</blockquote>
 <h3 id="do-all-integrations-from-v2-work-with-the-things-stack-as-well-can-i-use-integration-guides-for-v2-to-implement-integrations-on-the-things-stack">Do all integrations from V2 work with The Things Stack as well? Can I use integration guides for V2 to implement integrations on The Things Stack?</h3>
 <p>The short answer to this is - no. Not all integrations that were available for V2 are available for The Things Stack at the moment, but they are a work in progress. All integrations that are enabled for The Things Stack are built from scratch and have new endpoints, so old integration guides (for V2) are not relevant anymore.</p>
-<blockquote>
 <p>See <a href="https://www.thethingsindustries.com/docs/integrations/">Integrations section</a> for a complete documentation on available integrations and step-by-step guides for implementing them.</p>
-</blockquote>
 
         </div>
         <div class="is-clearfix">
@@ -323,10 +311,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 23 Sep 2021.
+  Last changed by Nejra Selimović on 17 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3a9cd55e9d1eb70ce3dbee04ccc6c02a405e3378">
-      Migration FAQ doc (#573)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
+      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
     </a>
 </p>
 

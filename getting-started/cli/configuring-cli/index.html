@@ -238,17 +238,12 @@
 
 </div>
 
-<p>This will generate the CLI configuration and save it to a file named <code>.ttn-lw-cli.yml</code>. By default, the file is saved on the current directory, add the <code>--user</code> flag to save it under the user <code>.config</code> directory.</p>
-<div class="notification is-info is-light has-text-dark">
+<p>This will generate the CLI configuration and save it to a file named <code>.ttn-lw-cli.yml</code>.</p>
+<p>By default, the file is created in the current directory. Add the <code>--user</code> flag to save it under the user&rsquo;s <code>.config</code> directory. The last <code>INFO</code> line in response to running the command will contain the location of the generated file:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">INFO	Config file <span class="k">for</span> eu1.cloud.thethings.network written in /home/user/.config/.ttn-lw-cli.yml
+</code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   The default configuration file for both <code>ttn-lw-cli</code> and <code>tti-lw-cli</code> CLI versions is named <code>.ttn-lw-cli.yml</code>.
-</div>
-
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>If you can&rsquo;t find the generated <code>.ttn-lw-cli.yml</code> file, take a look at your terminal. The last <code>INFO</code> line in response to running the command will contain the location of the generated file:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">INFO	Config file <span class="k">for</span> eu1.cloud.thethings.network written in /home/user/.config/.ttn-lw-cli.yml
-</code></pre></div>
 </div>
 
 <p>Once you have the configuration file, proceed to <a href="#step-2---configure-the-cli">Step 2 - Configure CLI</a> to pass the configuration file to the CLI.</p>
@@ -257,13 +252,7 @@
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ tti-lw-cli use thethings.example.com --fetch-ca
 </code></pre></div><p>If you are using a <a href="https://www.thethingsindustries.com/docs/getting-started/installation/certificates/#custom-certificate-authority">custom certificate authority</a>, you will have to specify the path to the CA file with <code>--ca=&quot;/path/to/ca.pem&quot;</code> flag when running the CLI.</p>
 <p>If the configuration file already exists and you run the command to generate it again, it will not be overwritten by default and an error will be printed instead. Use <code>--overwrite</code> to overwrite the existing configuration file.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>You can also use the <code>--grpc-port</code> and <code>--oauth-server-address</code> flags to override the default values for the gRPC port and the OAuth server address. These are not needed for standard deployments.</p>
-<p>An example of having to specify the <code>--oauth-server-address</code> is if you are using an <code>https</code> port other than <code>443</code> (for example if you are <a href="https://www.thethingsindustries.com/docs/getting-started/installation/configuration/#running-the-things-stack-as-localhost">running The Things Stack on localhost</a>). If running The Things Stack on localhost, you need to append <code>--oauth-server-address=&quot;https://localhost:8885/oauth</code> when running the CLI.</p>
-
-</div>
-
+<p>You can also use the <code>--grpc-port</code> and <code>--oauth-server-address</code> flags to override the default values for the gRPC port and the OAuth server address. Note that these are not needed for standard deployments. An example of having to specify the <code>--oauth-server-address</code> is if you are using an <code>https</code> port other than <code>443</code>, for example if you are <a href="https://www.thethingsindustries.com/docs/getting-started/installation/configuration/#running-the-things-stack-as-localhost">running The Things Stack on localhost</a>. In case of running The Things Stack on localhost, you need to append <code>--oauth-server-address=&quot;https://localhost:8885/oauth</code> when running the CLI.</p>
 <h3 id="manually-create-configuration-file">Manually create configuration file</h3>
 <p>It is also possible to manually create a configuration file. For most configurations, this is not necessary, and it is preferable to <a href="#automatically-generate-configuration-file">automatically generate the configuration</a>. However, if you have separate component addresses, you can specify them in a manual configuration.</p>
 <p>To manually configure, first create a <code>.ttn-lw-cli.yml</code> file.</p>
@@ -381,10 +370,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 19 Oct 2021.
+  Last changed by Nejra Selimović on 17 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/e0c8d86799a8898e31109f50a94c5b77f32c1167">
-      doc: Improve and reorganize CLI docs (#561)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
+      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
     </a>
 </p>
 

@@ -217,21 +217,25 @@
 <p>Create a gateway by following the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/">Adding Gateways</a>. The <strong>EUI</strong> of the gateway can be found on the back panel of the gateway under the field <strong>GW ID</strong>, or under the <strong>Gateway ID</strong> in the LoRa tab of the MikroTik web GUI.</p>
 <h2 id="configuration-via-browser">Configuration via Browser</h2>
 <p>The MikroTik Routerboard exposes a WiFi Access Point (AP) with SSID <code>MikroTik-xxxxxx</code>, where <code>xxxxxx</code> are the last 6 digits of the device&rsquo;s MAC address. Use your PC, tablet or smartphone to connect to this AP. You will not need a password to connect to this AP.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  By opening your browser to <code>http://192.168.88.1/webfig</code> you will be able to access the RouterOS web interface and configure your gateway device.
-</div>
+<p>By opening your browser to <code>http://192.168.88.1/webfig</code> you will be able to access the RouterOS web interface and configure your gateway device.</p>
+<figure class="plain">
+    <img src="portal.png"
+         alt="MikroTik portal"/> 
+</figure>
 
-<p><img src="portal.png" alt="MikroTik-portal.png"></p>
 <p>Select <strong>LoRa</strong> on the left hand menu. The status of the gateway should be <strong>Disabled</strong> - if needed, press the <strong>D</strong> button to disable it.</p>
-<p><img src="portal-lora.png" alt="MikroTik-portal-lora.png"></p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The <strong>Gateway ID</strong> you see here is the <strong>Gateway EUI</strong> you need to register the gateway in The Things Stack.
-</div>
+<figure class="plain">
+    <img src="portal-lora.png"
+         alt="MikroTik LoRa portal"/> 
+</figure>
 
+<p>The <strong>Gateway ID</strong> you see here is the <strong>Gateway EUI</strong> you need to register the gateway in The Things Stack.</p>
 <p>From the top menu, select the <strong>Servers</strong> tab and press the <strong>Add New</strong> button.</p>
-<p><img src="servers.png" alt="MikroTik-server"></p>
+<figure class="plain">
+    <img src="servers.png"
+         alt="Servers"/> 
+</figure>
+
 <p>Edit the server parameters.</p>
 <ul>
 <li><strong>Name</strong>: A distinct name which you can define yourself</li>
@@ -240,16 +244,28 @@
 <li><strong>Down port</strong>: UDP downstream port of the Gateway Server, typically <code>1700</code>.</li>
 </ul>
 <p>Press <strong>OK</strong> to save the parameters.</p>
-<p><img src="parameters.png" alt="MikroTik-paramters"></p>
+<figure class="plain">
+    <img src="parameters.png"
+         alt="MikroTik parameters"/> 
+</figure>
+
 <p>From the top menu, select the <strong>Devices</strong> tab. Click the <strong>Gateway ID</strong> to configure the gateway.</p>
-<p><img src="portal-lora-disable.png" alt="MikroTik-Devices"></p>
+<figure class="plain">
+    <img src="portal-lora-disable.png"
+         alt="MikroTik devices"/> 
+</figure>
+
 <p>In the device settings, click the <strong>Network Servers</strong> drop-down menu to view available servers. Choose the server you created in the previous step.</p>
 <p>Select <strong>Public</strong> for the <strong>Network</strong> and click <strong>OK</strong> to save these parameters.</p>
 <p>Press the <strong>E</strong> button to enable the gateway device (it is enabled when <strong>E</strong> becomes <strong>D</strong>) and the device status will update.</p>
 <p>If your configuration was successful, your gateway will connect to The Things Stack after a couple of seconds.</p>
+<figure class="plain float">
+    <img src="KNOT-antenna.png"
+         alt="KNOT antennas"/> 
+</figure>
+
 <h2 id="set-up-lte-m">Set up LTE-M</h2>
 <p>Connect an external antenna to the LTE-M antenna connector.</p>
-<p><img src="KNOT-antenna.png" alt="KNOT Antennas"	title="KNOT Antennas" width="250" /></p>
 <p>Go to <a href="http://192.168.88.1/webfig/#Interfaces"><strong>Interfaces</strong></a>, click on <strong>PPP-out1</strong> and fill out the <strong>APN settings</strong> of your operator.</p>
 <p>To test whether a connection with your LTE-M network is established, go to the <strong>Terminal</strong> tab in the RouterOS web interface and run the command:</p>
 <pre><code>$ /interface ppp-client info ppp-out1
@@ -337,10 +353,10 @@ signal-strength: -67 dBm
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 27 Oct 2021.
+  Last changed by Nejra Selimović on 17 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/900e879512739311ca9f8475628427f2e7e38216">
-      Clean up getting started (#627)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
+      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
     </a>
 </p>
 

@@ -317,10 +317,7 @@
 <li>to create an <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">uplink payload formatter</a> on The Things Stack (with a <a href="https://ubidots.com/docs/hw/#send-data-to-a-device">Ubidots-friendly</a> format)</li>
 <li>to edit the pre-loaded sample decoder on Ubidots in a way that it decodes the Base64-encoded raw payload received from The Things Stack in <code>uplink_message.frm_payload</code> field</li>
 </ul>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  In this section, we show you an example of how to do the first option. The pre-loaded sample payload decoder on Ubidots contains comments which can help you decode your payload either way.
-</div>
+<p>In this section, we show you an example of how to do the first option. The pre-loaded sample payload decoder on Ubidots contains comments which can help you decode your payload either way.</p>
 <p>If you are using an uplink payload formatter on The Things Stack to decode your payload, the decoded values will be contained in the <code>uplink_message.decoded_payload</code> field of your uplink message. See examples below.</p>
 <details><summary>Example JavaScript uplink payload formatter</summary>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
@@ -386,11 +383,7 @@
 </code></pre></div><p>and you need to comment (or remove) the following lines in the same function:</p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">let</span> <span class="nx">bytes</span> <span class="o">=</span>  <span class="nx">Buffer</span><span class="p">.</span><span class="nx">from</span><span class="p">(</span><span class="nx">args</span><span class="p">[</span><span class="s1">&#39;uplink_message&#39;</span><span class="p">][</span><span class="s1">&#39;frm_payload&#39;</span><span class="p">],</span> <span class="s1">&#39;base64&#39;</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">decoded_payload</span> <span class="o">=</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">bytes</span><span class="p">)[</span><span class="s1">&#39;data&#39;</span><span class="p">];</span>
-</code></pre></div><div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  You can find Ubidots&rsquo; pre-loaded sample payload decoder in your newly created plugin&rsquo;s menu, if you navigate to <strong>Decoder</strong> on the left and scroll down to the <strong>Decoding Function</strong> window. There you can edit it and finish with <strong>Save &amp; Make Live</strong>.
-</div>
-
+</code></pre></div><p>You can find Ubidots&rsquo; pre-loaded sample payload decoder in your newly created plugin&rsquo;s menu, if you navigate to <strong>Decoder</strong> on the left and scroll down to the <strong>Decoding Function</strong> window. There you can edit it and finish with <strong>Save &amp; Make Live</strong>.</p>
 <figure>
     <img src="decoding-function.png"
          alt="Ubidots decoder function"/> 
@@ -411,11 +404,7 @@
          alt="Ubidots webhook template"/> 
 </figure>
 
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  To see the values of all parameters of the Ubidots integration, click on the integration after you created it with the Webhook template.
-</div>
-
+<p>To see the values of all parameters of the Ubidots integration, click on the integration after you created it with the Webhook template.</p>
 <h2 id="monitor-your-data">Monitor Your Data</h2>
 <p>After you have completed the integration, navigate to <strong>Devices</strong> menu. You will see your end device appearing in the end devices list as soon as it sends an uplink message.</p>
 <figure>
@@ -507,10 +496,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 14 Jul 2021.
+  Last changed by Nejra Selimović on 17 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/75f06fe4e087db0b6fbad73f0075518d8001a369">
-      doc: Update Ubidots integration to use Plugins (#429)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
+      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
     </a>
 </p>
 
