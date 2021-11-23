@@ -1,5 +1,5 @@
 ---
-title: Retrieve messages
+title: Retrieve Messages
 summary: Retrieve historical data using the HTTP API
 weight: 30
 ---
@@ -8,7 +8,7 @@ The Storage Integration offers the `ApplicationUpStorage` gRPC service and the r
 
 See the [API Reference]({{< ref "/reference/api/storage_integration" >}}) for more details.
 
-## Retrieve uplinks using the HTTP API
+## Retrieve Uplinks using the HTTP API
 
 A valid API key with the `RIGHT_APPLICATION_TRAFFIC_READ` rights is required.
 
@@ -56,10 +56,9 @@ $ curl -G "https://thethings.example.com/api/v3/as/applications/app1/packages/st
 ```
 </details>
 
-## Retrieve uplinks using the CLI
+## Retrieve Uplinks using the CLI
 
-{{< warning >}}The Storage Integration is new in {{% tts %}} 3.10. You may need to update the CLI to use the new features. See instructions in [Installing the CLI]({{< ref "/getting-started/cli/installing-cli" >}})
-{{</ warning >}}
+You can retrieve uplinks for an application or an end device with:
 
 ```bash
 # Retrieve stored uplinks for application "app1"

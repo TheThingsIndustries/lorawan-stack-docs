@@ -31,9 +31,9 @@ Set up a default association between the desired application and the `storage-in
 $ ttn-lw-cli applications packages default-associations set "app1" 100 --package-name storage-integration
 ```
 
-{{< note >}} The `f_port` for the default association is set to `100`. This value is irrelevant. **The storage integration will receive and store all uplink messages, regardless of `f_port`**. The `f_port` value is only needed because of the way application packages work with {{% tts %}}. {{</ note >}}
+{{< note >}} The `f_port` for the default association is set to `100`. This value is irrelevant, i.e. the storage integration will receive and store all uplink messages, regardless of `f_port`. The `f_port` value is only needed because of the way application packages work with {{% tts %}}. {{</ note >}}
 
-{{< warning >}} **Do not configure more than one default association for the same application**, since that will lead to storing duplicate messages in the persistent storage. {{</ warning >}}
+{{< warning >}} Do not configure more than one default association for the same application, since that will lead to storing duplicate messages in the persistent storage. {{</ warning >}}
 
 {{< /tabs/tab >}}
 
@@ -51,7 +51,7 @@ $ ttn-lw-cli applications packages associations set "app1" "dev1" 100 --package-
 
 {{< note >}} The `f_port` value is irrelevant. {{</ note >}}
 
-{{< warning >}} **Do not configure multiple associations for the same end device**, since that will lead to storing duplicate uplinks in the persistent storage. {{</ warning >}}
+{{< warning >}} Do not configure multiple associations for the same end device, since that will lead to storing duplicate uplinks in the persistent storage. {{</ warning >}}
 
 ## Disable for an Application
 
@@ -67,7 +67,7 @@ To disable the integration, you only need to click the **Deactivate Storage Inte
 
 {{< tabs/tab "CLI" >}}
 
-To disable the integration, delete the package association, or the default association:
+To disable the integration, delete the package association or the default association. First, list associations:
 
 ```bash
 # List default associations
@@ -88,6 +88,8 @@ $ ttn-lw-cli applications packages default-associations list "app1"
   ]
 }
 ```
+
+Then delete the association with:
 
 ```bash
 $ ttn-lw-cli applications packages default-associations delete "app1" 100
