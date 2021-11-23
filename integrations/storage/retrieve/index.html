@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Retrieve messages | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/storage/retrieve/" />
+  <title>Retrieve Messages | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/storage/retrieve/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="The Things Stack for LoRaWAN">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Retrieve messages">
+  <meta itemprop="name" content="Retrieve Messages">
   <meta itemprop="description" content="The Things Stack for LoRaWAN">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Retrieve messages">
+  <meta property="og:title" content="Retrieve Messages">
   <meta property="og:description" content="The Things Stack for LoRaWAN">
   <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/storage/retrieve/">
-  <meta name="twitter:title" content="Retrieve messages" />
+  <meta name="twitter:title" content="Retrieve Messages" />
   <meta name="twitter:description" content="The Things Stack for LoRaWAN" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -135,7 +135,7 @@
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/storage/retrieve/" class="is-active">Retrieve messages</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/storage/retrieve/" class="is-active">Retrieve Messages</a>
     
   </li>
 
@@ -164,14 +164,14 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Retrieve messages
+        <h1 class="title is-size-2">Retrieve Messages
           
         </h1>
         
         <div class="content">
           <p>The Storage Integration offers the <code>ApplicationUpStorage</code> gRPC service and the respective HTTP endpoints for retrieving historical data.</p>
 <p>See the <a href="https://www.thethingsindustries.com/docs/reference/api/storage_integration/">API Reference</a> for more details.</p>
-<h2 id="retrieve-uplinks-using-the-http-api">Retrieve uplinks using the HTTP API</h2>
+<h2 id="retrieve-uplinks-using-the-http-api">Retrieve Uplinks using the HTTP API</h2>
 <p>A valid API key with the <code>RIGHT_APPLICATION_TRAFFIC_READ</code> rights is required.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Retrieve stored uplinks for application &#34;app1&#34;</span>
 $ curl -G <span class="s2">&#34;https://thethings.example.com/api/v3/as/applications/app1/packages/storage/uplink_message&#34;</span> <span class="se">\
@@ -202,12 +202,8 @@ $ curl -G <span class="s2">&#34;https://thethings.example.com/api/v3/as/applicat
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span><span class="nt">&#34;result&#34;</span><span class="p">:{</span><span class="nt">&#34;end_device_ids&#34;</span><span class="p">:{</span><span class="nt">&#34;device_id&#34;</span><span class="p">:</span><span class="s2">&#34;dev1&#34;</span><span class="p">,</span><span class="nt">&#34;application_ids&#34;</span><span class="p">:{}},</span><span class="nt">&#34;received_at&#34;</span><span class="p">:</span><span class="s2">&#34;2021-02-04T19:19:28.681910909Z&#34;</span><span class="p">,</span><span class="nt">&#34;uplink_message&#34;</span><span class="p">:{</span><span class="nt">&#34;decoded_payload&#34;</span><span class="p">:{</span><span class="nt">&#34;occupied&#34;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="nt">&#34;type&#34;</span><span class="p">:</span><span class="s2">&#34;parking status&#34;</span><span class="p">},</span><span class="nt">&#34;settings&#34;</span><span class="p">:{</span><span class="nt">&#34;data_rate&#34;</span><span class="p">:{}}}}}</span>
 
 </code></pre></div></details>
-<h2 id="retrieve-uplinks-using-the-cli">Retrieve uplinks using the CLI</h2>
-<div class="notification is-warning is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  The Storage Integration is new in The Things Stack 3.10. You may need to update the CLI to use the new features. See instructions in <a href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/">Installing the CLI</a>
-</div>
-
+<h2 id="retrieve-uplinks-using-the-cli">Retrieve Uplinks using the CLI</h2>
+<p>You can retrieve uplinks for an application or an end device with:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Retrieve stored uplinks for application &#34;app1&#34;</span>
 $ ttn-lw-cli applications storage get <span class="s2">&#34;app1&#34;</span> --limit <span class="m">10</span> --order <span class="s2">&#34;-received_at&#34;</span> --after <span class="s2">&#34;2018-08-20 00:00:00&#34;</span>
 
@@ -286,10 +282,10 @@ $ ttn-lw-cli end-devices storage get <span class="s2">&#34;app1&#34;</span> <spa
   <ul class="menu-list">
     
       
-      <li><a href='#retrieve-uplinks-using-the-http-api'>Retrieve uplinks using the HTTP API</a></li>
+      <li><a href='#retrieve-uplinks-using-the-http-api'>Retrieve Uplinks using the HTTP API</a></li>
     
       
-      <li><a href='#retrieve-uplinks-using-the-cli'>Retrieve uplinks using the CLI</a></li>
+      <li><a href='#retrieve-uplinks-using-the-cli'>Retrieve Uplinks using the CLI</a></li>
     
   </ul>
 
@@ -329,10 +325,10 @@ $ ttn-lw-cli end-devices storage get <span class="s2">&#34;app1&#34;</span> <spa
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Nov 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/98e31b06eef82e260beecfc0dc9d4f33639d7f52">
+      doc: Add retention period info, improve readability (#663)
     </a>
 </p>
 
