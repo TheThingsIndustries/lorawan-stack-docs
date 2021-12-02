@@ -9,7 +9,7 @@ type: "commands"
 Delete an external user
 
 ```
-ttn-lw-cli external-users delete [provider-id] [external-id] [user-id] [flags]
+ttn-lw-cli external-users delete [provider-id] [external-id] [flags]
 ```
 
 ### Options
