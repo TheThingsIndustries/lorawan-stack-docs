@@ -140,79 +140,41 @@
 <div class="whats-new">
   <div class="whats-new-content">
     <div class="whats-new-header">
-      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.16.0/>What's new in V3.16.0</a></h2>
+      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.16.1/>What's new in V3.16.1</a></h2>
       <a href="https://www.thethingsindustries.com/docs/whats-new/"><p class="see-more">See all release notes →</p></a>
     </div>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.16.0/">
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.16.1/">
       <div class="whats-new-body">
         <div class="whats-new-items-shadow whats-new-items-fade">
           <div class="whats-new-items">
             <h3 id="added">Added</h3>
 <ul>
-<li><code>ttn_lw_as_subscription_sets_publish_success_total</code> and <code>ttn_lw_as_subscription_sets_publish_failed_total</code> metrics to track the number of subscription set publish attempts.</li>
-<li>Application Server advanced distribution settings:
+<li>Support for fine timestamps and frequency offsets sent by gateways with SX1303 concentrator using the legacy UDP protocol.</li>
+<li>Support for resetting end device session context and MAC state in the Console.</li>
+<li>The Content-Security-Policy header (that was previously behind the <code>webui.csp</code> feature flag) is now enabled by default.</li>
+<li>Default <code>Cache-Control: no-store</code> headers.</li>
+<li><code>Cache-Control: public, max-age=604800, immutable</code> headers for hashed static files.</li>
+<li>Experimental support for BasicStation GPS timestamps which use the wrong precision (milliseconds instead of microseconds).
 <ul>
-<li><code>as.distribution.global.individual.subscription-blocks</code> controls if the Application Server should block while publishing traffic to individual global subscribers (such as MQTT clients).</li>
-<li><code>as.distribution.global.individual.subscription-queue-size</code> controls how many uplinks the Application Server should buffer for an individual global subscriber. Note that when the buffer is full, the Application Server will drop the uplinks if <code>--as.distribution.global.individual.subscription-blocks</code> is not enabled. Use a negative value in order to disable the queue.</li>
-<li><code>as.distribution.local.broadcast.subscription-blocks</code> controls if the Application Server should block while publishing traffic to broadcast local subscribers (such as webhooks and application packages matching).</li>
-<li><code>as.distribution.local.broadcast.subscription-queue-size</code> controls how many uplinks the Application Server should buffer for an broadcast local subscriber. Has the same semantics as <code>--as.distribution.global.individual.subscription-queue-size</code>.</li>
-<li><code>as.distribution.local.individual.subscription-blocks</code> controls if the Application Server should block while publishing traffic to individual local subscribers (such as PubSub integrations).</li>
-<li><code>as.distribution.local.individual.subscription-queue-size</code> controls how many uplinks the Application Server should buffer for an individual local subscriber. Has the same semantics as <code>--as.distribution.global.individual.subscription-queue-size</code>.</li>
+<li>The Gateway Server will attempt to determine the correct GPS timestamp from the provided <code>gpstime</code> based on the time at which the upstream message has been received.</li>
+<li>This workaround will be available until the related gateway vendors will release patches for this issue.</li>
 </ul>
 </li>
-<li><code>ttn_lw_gs_txack_received_total</code>, <code>ttn_lw_gs_txack_forwarded_total</code> and <code>ttn_lw_gs_txack_dropped_total</code> metrics, which track the transmission acknowledgements from gateways.</li>
-<li><code>gs.txack.receive</code>, <code>gs.txack.drop</code> and <code>gs.txack.forward</code> events, which track the transmission acknowledgements from gateways.</li>
-<li>Remote federated authentication providers and external user management.
-<ul>
-<li>Authentication providers can be managed via the <code>AuthenticationProviderRegistry</code> service. See the <code>tti-lw-cli authentication-providers</code> commands for CLI support.</li>
-<li>External users can be managed via the <code>ExternalUserRegistry</code> service. See the <code>tti-lw-cli external-users</code> commands for CLI support.</li>
-</ul>
-</li>
-<li>External users (users associated with a federated authentication provider) may no longer update their passwords, or request temporary passwords.</li>
-<li>External users will have their information (name and email) updated on login, based on the data provided by the authentication provider.</li>
-<li>Users may be associated to multiple authentication providers at the same time.
-<ul>
-<li>This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>) due to the relaxed unique constraint.</li>
-</ul>
-</li>
-<li><code>ttn-lw-stack as-db migrate</code> command to migrate the Application Server database. This command records the schema version and only performs migrations if on a newer version.
-<ul>
-<li>Use the <code>--force</code> flag to force perform migrations.</li>
-</ul>
-</li>
-<li>Server-side event filtering with the <code>names</code> field.</li>
+<li>Firmware version of The Things Kickstarter Gateway are written to the gateway attributes upon receiving a valid status message.</li>
+<li>Desired mac settings to end device general settings in the Console.</li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
-<li>Gateway Server default UDP worker count has been increased to 1024, from 16.</li>
-<li>Application Server webhooks and application packages default worker count has been increased to 1024, from 16.</li>
-<li>Application Server no longer sets the end device&rsquo;s <code>session.started_at</code> and <code>pending_session.started_at</code>. The session start time should be retrieved from the Network Server, per API specification.
-<ul>
-<li>This requires an Application Server database migration (<code>ttn-lw-stack as-db migrate</code>) to clear the <code>started_at</code> field in existing (pending) sessions.</li>
-</ul>
-</li>
-<li>Console changing to server-side event filtering (used to be client-side).</li>
-</ul>
-<h3 id="removed">Removed</h3>
-<ul>
-<li>The <code>ttn_lw_gs_status_failed_total</code>, <code>ttn_lw_gs_uplink_failed_total</code> metrics. <code>ttn_lw_gs_status_dropped_total</code> and <code>ttn_lw_gs_uplink_dropped_total</code> should be used instead, as they contain the failure cause.</li>
-<li>The <code>gs.status.fail</code> and <code>gs.up.fail</code> events. <code>gs.status.drop</code> and <code>gs.up.drop</code> should be used instead, as they contain the failure cause.</li>
-<li>The <code>data_rate_index</code> field in uplink message metadata. Observe the fully described data rate in the <code>data_rate</code> field instead.</li>
-<li>LoRaWAN data rate index reported to LoRa Cloud DMS.</li>
-<li>Dockerfile doesn&rsquo;t define environmental variables <code>TTN_LW_BLOB_LOCAL_DIRECTORY</code>, <code>TTN_LW_IS_DATABASE_URI</code> and <code>TTN_LW_REDIS_ADDRESS</code> anymore. They need to be set when running the container: please refer to <code>docker-compose.yml</code> for example values.</li>
-<li><code>CockroachDB</code> from development tooling as well as config option within <code>docker-compose.yml</code>.
-<ul>
-<li>This also changes the default value of the <code>--is.database-uri</code> option, so it can connect to the development Postgres database by default.</li>
-</ul>
-</li>
+<li>Gateway server disconnects LoRa Basics Station gateways that stop sending pongs to server pings. This does not apply to gateways that don&rsquo;t support pongs.</li>
+<li>The new plugin for reading/writing JSON in our API (that was previously behind the <code>jsonpb.jsonplugin</code> feature flag) is now enabled by default. All API responses should be equivalent, but in some cases object fields may be in a different order.</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>LoRaWAN Backend Interfaces <code>AppSKeyReq</code> and <code>HomeNSReq</code> interop calls in multi-tenant deployments.</li>
-<li>Handling of NaN values in our JSON API.</li>
-<li>Receiver metadata from more than one antenna is now available in messages received from Packet Broker.</li>
-<li>Unhelpful error message when aborting the OIDC Login in the Console.</li>
-<li>Parsing of multi-word description search queries.</li>
+<li>The reported sub-band&rsquo;s <code>downlink_utilization</code> in gateway connection stats now represents the utilization of the available duty-cycle time.</li>
+<li>Missing fields when admins list non-owned entities.</li>
+<li>Using the correct timestamp when retreiving the &ldquo;Last activity&rdquo; data point for Gateways on initial page loads in the Console.</li>
+<li>Events reappearing in the end device data view after clearing them when navigating back and forth.</li>
+<li>Editing AWS IoT Integration region, stack name or cross-account role ARN makes The Things Stack re-initialize the integration correctly. Previously, the old AWS IoT Core endpoint was being contacted after editing these values.</li>
 </ul>
 
           </div>
@@ -230,7 +192,7 @@
 <a href="https://www.thethingsindustries.com/docs/whats-new/">
   <div class="whats-new-800">
     <div class="whats-new-header-800">
-      <p>See what's new in V3.16.0</p>
+      <p>See what's new in V3.16.1</p>
       <p>-></p>
     </div>
   </div>
