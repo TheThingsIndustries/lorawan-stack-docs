@@ -9,11 +9,6 @@ This section documents the process of migrating end devices from {{% ttnv2 %}} t
 
 <!--more-->
 
-{{< note >}} As previously announced, from **July 1, 2021** {{% ttnv2 %}} deployments have gone to a **read-only** mode.
-
-Make sure to migrate your gateways and devices from {{% ttnv2 %}} to {{% tts %}} as soon as possible, since {{% ttnv2 %}} machines are planned to be completely shut down on **December 1, 2021**.
-{{</ note >}}
-
 ## Prerequisites
 
 1. User account on The Things Network {{% ttnv2 %}} or The Things Industries {{% ttnv2 %}}.
@@ -67,7 +62,7 @@ For detailed tutorials on the integrations that are available in {{% tts %}}, se
 
 When you have added your application and elements associated with it, it is time to migrate your end device(s) from {{% ttnv2 %}} to {{% tts %}}.
 
-End devices connected to The Things Network V2 can be migrated to {{% tts %}} Cloud and {{% tts %}} Community Edition without the need for migrating a gateway, thanks to the default connection with [Packet Broker]({{< ref "/getting-started/packet-broker" >}}). The Things Industries V2 (SaaS) can also be connected to Packet Broker by contacting [support](mailto:support@thethingsindustries.com), while {{% tts %}} Enterprise or Open Source can be [configured]({{< ref "/getting-started/packet-broker/connect" >}}) manually.
+End devices connected to The Things Network V2 can be migrated to {{% tts %}} Cloud and {{% tts %}} Community Edition without the need for migrating a gateway, thanks to the default connection with [Packet Broker]({{< ref "/getting-started/packet-broker" >}}) which forwards all messages received on {{% ttnv2 %}} to The Things Stack. The Things Industries V2 (SaaS) can also be connected to Packet Broker by contacting [support](mailto:support@thethingsindustries.com), while {{% tts %}} Enterprise or Open Source can be [configured]({{< ref "/getting-started/packet-broker/connect" >}}) manually.
 
 If you are using deployments connected to Packet Broker, the traffic from your end device(s) will be routed to {{% tts %}} after migrating your device(s). However, there are certain requirements that your devices need to meet for Packet Broker to route their traffic to {{% tts %}} correctly. See [Packet Broker Requirements for End Device Migration]({{< ref "/getting-started/migrating/migrating-from-v2/packet-broker-requirements" >}}) for detailed information.
 

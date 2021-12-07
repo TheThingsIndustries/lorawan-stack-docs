@@ -9,6 +9,10 @@ This is the reference for the gRPC and HTTP APIs that {{% tts %}} exposes.
 
 {{< note >}} {{% tts %}} API is different from {{% ttnv2 %}} API. If migrating from V2, see [here]({{< ref "getting-started/migrating/major-changes" >}}) for an overview of changes. {{</ note >}}
 
+## Examples
+
+Examples are provided in the [Using the API]({{< ref "getting-started/api" >}}) Getting Started section.
+
 ## Server Addresses
 
 The API examples in this section use the example URL `thethings.example.com`, which you will need to replace with the address of your {{% tts %}} instance. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}) for a list of URLs for all deployments.
@@ -34,7 +38,3 @@ Identifiers specified in the request URL do not need to be specified again in th
 {{< note >}} Fields that are empty or zero are not returned in requests, even if they are specified in a field mask. {{</ note >}}
 
 If you are having trouble with the HTTP API, you can always inspect requests in the Console using your browser's inspector. All of the data displayed in the Console is pulled using HTTP API requests, and this should give you some insight in to how they are formed.
-
-## Examples
-
-Examples are provided in the [Using the API]({{< ref "getting-started/api" >}}) Getting Started section.
