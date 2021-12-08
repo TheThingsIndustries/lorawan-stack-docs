@@ -136,11 +136,6 @@
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/api/end_device_claiming/" class="">End Device Claiming APIs</a>
-    
-  </li>
-
-  <li>
     <a href="https://www.thethingsindustries.com/docs/reference/api/events/" class="">Events API</a>
     
   </li>
@@ -600,7 +595,7 @@ This is NOT done automatically.</p>
 <li><code>application_server_address</code></li>
 <li><code>application_server_id</code></li>
 <li><code>application_server_kek_label</code></li>
-<li><code>claim_authentication_code</code> (when using <a href="/docs/reference/api/end_device_claiming/">end device claiming</a>)</li>
+<li><code>claim_authentication_code</code> (when using end device claiming)</li>
 </ul>
 <p>See the <a href="#message:EndDevice">EndDevice message</a> and its sub-messages for additional fields that can be read from the Join Server&rsquo;s <code>JsEndDeviceRegistry</code>.</p>
 
@@ -1102,6 +1097,161 @@ If there are multiple matches, an error will be returned.
       </th>
       <td>
         <p><code>DELETE</code> <code>/api/v3/as/applications/{application_ids.application_id}/devices/{device_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="the-enddeviceclaimingserver-service">The <code>EndDeviceClaimingServer</code> service</h2>
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>EndDeviceClaimingServer.Claim</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Claims the end device by claim authentication code or QR code and transfers the device to the target application.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:ClaimEndDeviceRequest"><code>ClaimEndDeviceRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:EndDeviceIdentifiers"><code>EndDeviceIdentifiers</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/edcs/claim</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>EndDeviceClaimingServer.AuthorizeApplication</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Authorize the End Device Claiming Server to claim devices registered in the given application. The application
+identifiers are the source application, where the devices are registered before they are claimed.
+The API key is used to access the application, find the device, verify the claim request and delete the end device
+from the source application.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:AuthorizeApplicationRequest"><code>AuthorizeApplicationRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/edcs/applications/{application_ids.application_id}/authorize</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>EndDeviceClaimingServer.UnauthorizeApplication</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Unauthorize the End Device Claiming Server to claim devices in the given application.
+This reverts the authorization given with rpc AuthorizeApplication.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:ApplicationIdentifiers"><code>ApplicationIdentifiers</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>DELETE</code> <code>/api/v3/edcs/applications/{application_id}/authorize</code></p>
       </td>
     </tr>
   </tbody>
@@ -1824,6 +1974,99 @@ If null, the time is selected based on slot availability. This is recommended in
 
 
 
+<h3 id="message:AuthorizeApplicationRequest">Message <code>AuthorizeApplicationRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "application_ids": {},
+  "api_key": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>application_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ApplicationIdentifiers">
+  
+  <code>
+    
+    ApplicationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>api_key</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>128</code></p>
+          <p><code>min_len</code>: <code>1</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
 <h3 id="message:BoolValue">Message <code>BoolValue</code></h3>
 
 <details><summary>Show object example</summary>
@@ -2045,6 +2288,549 @@ This field should not contain default values.</p>
 Length of this field must be equal to the amount of uplink channels
 defined by the selected frequency plan.</p>
         
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:ClaimEndDeviceRequest">Message <code>ClaimEndDeviceRequest</code></h3>
+<b>Restrictions:</b>
+<ul>
+  <li>Only one of <code>authenticated_identifiers</code>, <code>qr_code</code> can be set.</li>
+</ul>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "authenticated_identifiers": {},
+  "qr_code": "",
+  "target_application_ids": {},
+  "target_device_id": "",
+  "target_network_server_address": "",
+  "target_network_server_kek_label": "",
+  "target_application_server_address": "",
+  "target_application_server_kek_label": "",
+  "target_application_server_id": "",
+  "target_net_id": "",
+  "invalidate_authentication_code": false,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>authenticated_identifiers</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ClaimEndDeviceRequest.AuthenticatedIdentifiers">
+  
+  <code>
+    
+    ClaimEndDeviceRequest.AuthenticatedIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Authenticated identifiers.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>qr_code</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Raw QR code contents.</p>
+          <p><code>max_len</code>: <code>1024</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>target_application_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ApplicationIdentifiers">
+  
+  <code>
+    
+    ApplicationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Application identifiers of the target end device.</p>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>target_device_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>End device ID of the target end device. If empty, use the source device ID.</p>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$|^$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>target_network_server_address</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The address of the Network Server where the device will be registered.
+If set and if the source device is currently registered on a Network Server, settings will be transferred.
+If not set, the device shall not be registered on a Network Server.</p>
+          <p><code>pattern</code>: <code>^(?:(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*(?:[A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])(?::[0-9]{1,5})?$|^$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>target_network_server_kek_label</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The KEK label of the Network Server to use for wrapping network session keys.</p>
+          <p><code>max_len</code>: <code>2048</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>target_application_server_address</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The address of the Application Server where the device will be registered.
+If set and if the source device is currently registered on an Application Server, settings will be transferred.
+If not set, the device shall not be registered on an Application Server.</p>
+          <p><code>pattern</code>: <code>^(?:(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*(?:[A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])(?::[0-9]{1,5})?$|^$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>target_application_server_kek_label</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The KEK label of the Application Server to use for wrapping the application session key.</p>
+          <p><code>max_len</code>: <code>2048</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>target_application_server_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The AS-ID of the Application Server to use.</p>
+          <p><code>max_len</code>: <code>100</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>target_net_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Home NetID.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>invalidate_authentication_code</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>If set, invalidate the authentication code with which the device gets claimed. This prohibits subsequent claiming requests.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:ClaimEndDeviceRequest.AuthenticatedIdentifiers">Message <code>ClaimEndDeviceRequest.AuthenticatedIdentifiers</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "join_eui": "",
+  "dev_eui": "",
+  "authentication_code": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>join_eui</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>JoinEUI (or AppEUI) of the device to claim.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>dev_eui</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>DevEUI of the device to claim.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>authentication_code</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Authentication code to prove ownership.
+In the LoRa Alliance TR005 specification, this equals the OwnerToken.</p>
+          <p><code>pattern</code>: <code>^[A-Z0-9]{1,32}$</code></p>
       </td>
     </tr>
     
@@ -21657,11 +22443,17 @@ Set by Network Server.</p>
 
 	
 
+	
+
+	
+
+	
+
 
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/reference/api/application_webhooks/">← Application Webhook APIs</a>
-<a class="button is-pulled-right" href="/docs/reference/api/end_device_claiming/">End Device Claiming APIs →</a>
+<a class="button is-pulled-right" href="/docs/reference/api/events/">Events API →</a>
 </div>
 
         <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -21692,6 +22484,9 @@ Set by Network Server.</p>
     
       
       <li><a href='#the-asenddeviceregistry-service'>The AsEndDeviceRegistry service</a></li>
+    
+      
+      <li><a href='#the-enddeviceclaimingserver-service'>The EndDeviceClaimingServer service</a></li>
     
       
       <li><a href='#messages'>Messages</a></li>
@@ -21737,10 +22532,10 @@ Set by Network Server.</p>
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 16 Aug 2021.
+  Last changed by Nejra Selimović on 08 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5a835dc32881e8370322cd2fe18a18130caac35f">
-      Improve description of field masks in API documentation (#475)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/438514b7cae7e06699e07e210f50b1e3395e464e">
+      doc: Include gateway claiming APIs, move end device claiming APIs (#673)
     </a>
 </p>
 
