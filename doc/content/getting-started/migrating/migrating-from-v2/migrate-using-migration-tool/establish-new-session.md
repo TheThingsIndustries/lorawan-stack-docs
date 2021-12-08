@@ -22,21 +22,21 @@ By establishing the new session with {{% tts %}}, an OTAA device gets assigned a
 
 {{< tabs/tab "ABP" >}}
 
-The **DevAddr** and some other parameters (like **RX1 Delay**) are hardcoded for ABP devices. If you do not re-program the device to change these values, you can migrate it to {{% tts %}} without its security keys, network parameters, etc. which basically means you are migrating it without its active session.
+The **DevAddr** and some other parameters (like **RX1 Delay**) are hardcoded for ABP devices. If you do not re-program the device to change these values, you can migrate it to {{% tts %}} using the migration tool without its security keys, network parameters, etc. without its active session.
 
 If you want your end device traffic to be routed via Packet Broker to {{% tts %}}, the **DevAddr** must be routable by the Packet Broker and the **RX1 Delay** value must be 5 seconds. Note that the **DevAddr** is routable only if you are using **The Things Industries V2 (SaaS)** and migrating to **{{% tts %}} Cloud**, and even that is being achieved only on customer request by contacting [The Things Industries support](mailto:support@thethingsindustries.com).
 
-If you are not migrating from **The Things Industries V2 (SaaS)** to **{{% tts %}} Cloud**, Packet Broker will not be able to route your ABP device's traffic properly, so you will have to [migrate your gateway]({{< ref "/getting-started/migrating/gateway-migration" >}}) to {{% tts %}} too. Be aware that in this case, even if you do migrate your gateway, you could still be experiencing latency issues if your gateway has a high latency backhaul.
+If you are not migrating from **The Things Industries V2 (SaaS)** to **{{% tts %}} Cloud**, Packet Broker will not be able to route your ABP device's traffic properly, so you will have to [migrate your gateway]({{< ref "/getting-started/migrating/gateway-migration" >}}) to {{% tts %}} too. Be aware that in this case the **RX1 Delay** value of 1 second is persisted, and even if you do migrate your gateway, you could still be experiencing latency issues if your gateway has a high latency backhaul.
 
-{{< warning >}} Note that this is **not a recommended practice**. We advise re-programming the ABP device to change the **DevAddr** to the one issued by The Things Stack and **RX1 Delay** to 5 seconds, even if you do not want your traffic to be routed by Packet Broker.
+{{< warning >}} This is **not a recommended practice**. We advise re-programming the ABP device to change the **DevAddr** to the one issued by The Things Stack and **RX1 Delay** to 5 seconds, even if you do not want your traffic to be routed by Packet Broker.
 
-If you re-program the device, you will have to follow the [Migrate using the Console]({{< ref "/getting-started/migrating/migrating-from-v2/migrate-using-console" >}}) guide. The reason for this is that when you re-program your ABP device, its **DevAddr** and other parameters will no longer match the device description stored in {{% ttnv2 %}}, so you will not be able to export the current device description using the `ttn-lw-migrate` tool. {{</ warning >}}
+In case you are able to re-program your ABP device, you will have to follow the [Migrate using the Console]({{< ref "/getting-started/migrating/migrating-from-v2/migrate-using-console" >}}) guide. The reason for this is that when you re-program your ABP device, its **DevAddr** and other parameters will no longer match the device description stored in {{% ttnv2 %}}, so you will not be able to export the current device description using the `ttn-lw-migrate` tool. {{</ warning >}}
 
 {{< /tabs/tab >}}
 
 {{< /tabs/container >}}
 
-{{< note >}} Before exporting end devices, you can first test the execution by appending the `--dry-run` and `--verbose` flags to the commands presented in the sections below. {{</ note >}}
+Before exporting end devices, you can first test the execution by appending the `--dry-run` and `--verbose` flags to the commands presented in the sections below.
 
 Use the `--ttnv2.resets-to-frequency-plan` flag to configure the factory preset frequencies of the device, so that it can keep working with {{% tts %}}. The list of uplink frequencies is inferred from the [Frequency Plan]({{< ref "/reference/frequency-plans" >}}).
 
@@ -88,7 +88,7 @@ To prevent OTAA device from re-joining the {{% ttnv2 %}} network, the recommende
 
 {{< tabs/tab "ABP" >}}
 
-{{< warning >}} For ABP device, you need to completely delete it from V2, especially because this section assumes that you have not re-programmed it for a new **DevAddr**. Having this device registered in V2 and The Things Stack would introduce some serious conflicts. {{</ warning >}}
+ABP devices must be completely deleted from {{% ttnv2 %}}, especially if you have not re-programmed them with a new **DevAddr**. Having a device registered in {{% ttnv2 %}} and {{% tts %}} will cause a race condition and communication issues.
 
 {{< /tabs/tab >}}
 
@@ -132,4 +132,4 @@ If you are not migrating from **The Things Industries {{% ttnv2 %}}** to **{{% t
 
 {{< /tabs/container >}}
 
-The Things Network community members can freely migrate their gateways from The Things Network {{% ttnv2 %}} to {{% tts %}} Community Edition, while still providing uplink and downlink coverage to The Things Network {{% ttnv2 %}}. Even if you manage to get your end device traffic routed to {{% tts %}} by Packet Broker, we recommend to migrate your gateways as soon as possible.
+Even if you manage to get your end device traffic routed to {{% tts %}} by Packet Broker, we recommend to migrate your gateways as soon as possible.
