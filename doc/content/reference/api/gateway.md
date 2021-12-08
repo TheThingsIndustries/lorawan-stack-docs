@@ -43,11 +43,25 @@ The Gateway Server exposes the list of available frequency plans with the `Confi
 
 {{< proto/method service="Configuration" method="ListFrequencyPlans" >}}
 
+## The `GatewayClaimingServer` service
+
+{{< proto/method service="GatewayClaimingServer" method="AuthorizeGateway" >}}
+
+{{< proto/method service="GatewayClaimingServer" method="Claim" >}}
+
+{{< proto/method service="GatewayClaimingServer" method="UnauthorizeGateway" >}}
+
 ## Messages
 
 {{< proto/message message="APIKey" >}}
 
 {{< proto/message message="APIKeys" >}}
+
+{{< proto/message message="AuthorizeGatewayRequest" >}}
+
+{{< proto/message message="ClaimGatewayRequest" >}}
+
+{{< proto/message message="ClaimGatewayRequest.AuthenticatedIdentifiers" >}}
 
 {{< proto/message message="Collaborator" >}}
 
@@ -58,6 +72,10 @@ The Gateway Server exposes the list of available frequency plans with the `Confi
 {{< proto/message message="CreateGatewayAPIKeyRequest" >}}
 
 {{< proto/message message="CreateGatewayRequest" >}}
+
+{{< proto/message message="CUPSRedirection" >}}
+
+{{< proto/message message="CUPSRedirection.ClientTLS" >}}
 
 {{< proto/message message="FrequencyPlanDescription" >}}
 
