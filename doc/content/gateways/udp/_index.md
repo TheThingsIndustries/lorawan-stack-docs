@@ -42,7 +42,7 @@ Open the command prompt in Windows or any Linux terminal to run a curl command (
 Make sure you replace `thethings.example.com` with your server address, `{GATEWAY_ID}` with your Gateway ID, and `{GATEWAY_API_KEY}` with the API key you generated:
 
 ```bash
-$ curl -XGET \
+curl -XGET \
     "https://thethings.example.com/api/v3/gcs/gateways/{GATEWAY_ID}/semtechudp/global_conf.json" \
     -H "Authorization: Bearer {GATEWAY_API_KEY}" > global_conf.json
 ```

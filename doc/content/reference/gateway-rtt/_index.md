@@ -32,7 +32,7 @@ To query the RTT Values for each gateway can be found in the Gateway Connection 
  {{< cli-only >}}
 
 ```bash
-$ ttn-lw-cli gateways get-connection-stats [gateway-id]
+ttn-lw-cli gateways get-connection-stats <gateway-id>
 ```
 
 The following is an example:

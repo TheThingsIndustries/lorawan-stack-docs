@@ -14,14 +14,14 @@ A valid API key with the `RIGHT_APPLICATION_TRAFFIC_READ` rights is required.
 
 ```bash
 # Retrieve stored uplinks for application "app1"
-$ curl -G "https://thethings.example.com/api/v3/as/applications/app1/packages/storage/uplink_message" \
+curl -G "https://thethings.example.com/api/v3/as/applications/<application-id>/packages/storage/uplink_message" \
     -H "Authorization: Bearer $API_KEY" \
     -H "Accept: text/event-stream" \
     -d "limit=10" \
     -d "after=2020-08-20T00:00:00Z"
 
 # Retrieve stored uplinks for device "dev1" of application "app1"
-$ curl -G "https://thethings.example.com/api/v3/as/applications/app1/devices/dev1/packages/storage/uplink_message" \
+curl -G "https://thethings.example.com/api/v3/as/applications/<application-id>/devices/<device-id>/packages/storage/uplink_message" \
     -H "Authorization: Bearer $API_KEY" \
     -H "Accept: text/event-stream" \
     -d "limit=10" \
@@ -40,7 +40,7 @@ $ curl -G "https://thethings.example.com/api/v3/as/applications/app1/devices/dev
 Use field masks to specify a subset of fields that should be returned by the API. For example, to retrieve the decoded payload field only, set the field mask as shown below. Note that the end device identifiers and the timestamp are always included in the message.
 
 ```bash
-$ curl -G "https://thethings.example.com/api/v3/as/applications/app1/packages/storage/uplink_message" \
+curl -G "https://thethings.example.com/api/v3/as/applications/<application-id>/packages/storage/uplink_message" \
     -H "Authorization: Bearer $API_KEY" \
     -H "Accept: text/event-stream" \
     -d "limit=10" \
@@ -58,14 +58,23 @@ $ curl -G "https://thethings.example.com/api/v3/as/applications/app1/packages/st
 
 ## Retrieve Uplinks using the CLI
 
+We define some user parameters that are used below:
+
+```bash
+APP_ID="app1"
+DEVICE_ID="dev1"
+```
+
+Make sure to modify these according to your setup.
+
 You can retrieve uplinks for an application or an end device with:
 
 ```bash
-# Retrieve stored uplinks for application "app1"
-$ ttn-lw-cli applications storage get "app1" --limit 10 --order "-received_at" --after "2018-08-20 00:00:00"
+# Retrieve 10 stored uplinks for application "app1"
+ttn-lw-cli applications storage get $APP_ID --limit 10 --order "-received_at" --after "2018-08-20 00:00:00"
 
-# Retrieve stored uplinks for end device "dev1" of application "app1"
-$ ttn-lw-cli end-devices storage get "app1" "dev1" --limit 2 --order "-received_at" --after "2020-08-20 00:00:00"
+# Retrieve 2 stored uplinks for end device "dev1" of application "app1"
+ttn-lw-cli end-devices storage get $APP_ID $DEVICE_ID --limit 2 --order "-received_at" --after "2020-08-20 00:00:00"
 ```
 
 <details><summary><b>See example output</b></summary>

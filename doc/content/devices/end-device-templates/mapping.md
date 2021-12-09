@@ -21,19 +21,36 @@ This example shows creating a generic device profile that is mapped with provisi
 
 This example uses a **Microchip ATECC608A-MAHTN-T Manifest File**. This file contains provisioning data for The Things Join Server. You can download the example file [here](../microchip-atecc608a-mahtn-t-example.json).
 
+We define some user parameters that will be used below:
+
+```bash
+APP_ID="test-app" 
+FREQUENCY_PLAN="EU_863_870"
+LORAWAN_VERSION="1.0.3"
+LORAWAN_PHY_VERSION="1.0.3-a"
+DEV_EUI="70b3d57ed0000000"
+JOIN_EUI="70b3d57ed0000001"
+DEVICE_BRAND_ID="thethingsproducts"
+DEVICE_MODEL_ID="genericnode"
+DEVICE_HARDWARE_VERSION="1.0"
+DEVICE_FIRMWARE_VERSION="1.0"
+```
+
+Make sure to modify these according to your setup.
+
 First, create a mapping file with a device profile:
 
 ```bash
-$ ttn-lw-cli end-devices template extend \
-  --frequency-plan-id EU_863_870 \
-  --lorawan-version 1.0.3 \
-  --lorawan-phy-version 1.0.3-a \
+ttn-lw-cli end-devices template extend \
+  --frequency-plan-id $FREQUENCY_PLAN \
+  --lorawan-version $LORAWAN_VERSION \
+  --lorawan-phy-version $LORAWAN_PHY_VERSION \
   --supports-join \
   --supports-class-c \
-  --version-ids.brand-id "thethingsproducts" \
-  --version-ids.model-id "genericnode" \
-  --version-ids.hardware-version "1.0" \
-  --version-ids.firmware-version "1.0" > profile.json
+  --version-ids.brand-id $DEVICE_BRAND_ID \
+  --version-ids.model-id $DEVICE_MODEL_ID \
+  --version-ids.hardware-version $DEVICE_HARDWARE_VERSION \
+  --version-ids.firmware-version $DEVICE_FIRMWARE_VERSION > profile.json
 ```
 
 The mapping file `profile.json` contains the following entries (omitting empty fields).
@@ -75,13 +92,13 @@ The mapping file `profile.json` contains the following entries (omitting empty f
 Second, convert the provisioning data to a device templates file to `provisioningdata.json`.
 
 ```bash
-$ ttn-lw-cli end-devices template from-data microchip-atecc608a-mahtn-t --local-file example.json > provisioningdata.json
+ttn-lw-cli end-devices template from-data microchip-atecc608a-mahtn-t --local-file example.json > provisioningdata.json
 ```
 
 Third, map the two files to `templates.json`:
 
 ```bash
-$ cat provisioningdata.json \
+cat provisioningdata.json \
   | ttn-lw-cli end-devices template map --mapping-local-file profile.json > templates.json
 ```
 
@@ -202,8 +219,8 @@ This returns the device templates with provisioning data and device profile comb
 Fourth, you can personalize these devices by assigning the `JoinEUI` and `DevEUI` to `devices.json`, see [Assigning EUIs]({{< relref "assigning-euis.md" >}}):
 
 ```bash
-$ cat templates.json \
-  | ttn-lw-cli end-devices template assign-euis 70b3d57ed0000000 70b3d57ed0000001 > devices.json
+cat templates.json \
+  | ttn-lw-cli end-devices template assign-euis $JOIN_EUI $DEV_EUI > devices.json
 ```
 
 <details><summary>Show output</summary>
@@ -333,7 +350,7 @@ $ cat templates.json \
 Finally, you can create these devices in your {{% tts %}} application `test-app`, see [Executing Templates]({{< relref "executing.md" >}}).
 
 ```bash
-$ cat devices.json \
+cat devices.json \
   | ttn-lw-cli end-devices template execute \
-  | ttn-lw-cli end-devices create --application-id test-app
+  | ttn-lw-cli end-devices create --application-id $APP_ID
 ```

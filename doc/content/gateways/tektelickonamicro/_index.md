@@ -43,7 +43,7 @@ Find the gateway's IP address. This can be done in various ways. You can connect
 Once the gateway IP address is found, SSH into it with the following command:
 
 ```bash
-$ ssh root@<GatewayIP>
+ssh root@<GatewayIP>
 ```
 
 The password for the **root** user can be found on the back panel of the gateway. It is typically a 9 character alphanumeric string starting with **1846XXXXX**.

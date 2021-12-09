@@ -24,7 +24,9 @@ See the following video from [The Things Network youtube channel](https://youtu.
 To follow your gateway `gtw1` and application `app1` events at the same time:
 
 ```bash
-$ ttn-lw-cli events subscribe --gateway-id gtw1 --application-id app1
+GTW_ID="gtw1"
+APP_ID="app1"
+ttn-lw-cli events subscribe --gateway-id $GTW_ID --application-id $APP_ID
 ```
 
 ## Subscribe with HTTP
@@ -32,7 +34,7 @@ $ ttn-lw-cli events subscribe --gateway-id gtw1 --application-id app1
 You can get streaming events with `curl`. For this, you need an API key for the entities you want to watch, for example:
 
 ```bash
-$ ttn-lw-cli users api-key create \
+ttn-lw-cli users api-key create \
   --user-id admin \
   --right-application-all \
   --right-gateway-all
@@ -41,7 +43,7 @@ $ ttn-lw-cli users api-key create \
 With the created API key:
 
 ```bash
-$ curl https://thethings.example.com/api/v3/events \
+curl https://thethings.example.com/api/v3/events \
   -X POST \
   -H "Authorization: Bearer NNSXS.BR55PTYILPPVXY.." \
   -H "Accept: text/event-stream" \

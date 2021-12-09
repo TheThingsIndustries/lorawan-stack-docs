@@ -17,9 +17,9 @@ This section refers to migrating end devices to {{% tts %}} using [`ttn-lw-migra
 First, you need to configure a few environmental variables. Navigate to the folder where you installed `ttn-lw-migrate` and execute the following, replacing `ttn-v2-application-ID`, `ttn-v2-application-access-key`, and the `FREQUENCY_PLAN_ID` value:
 
 ```bash
-$ export TTNV2_APP_ID="ttn-v2-application-ID"
-$ export TTNV2_APP_ACCESS_KEY="ttn-v2-application-access-key"
-$ export FREQUENCY_PLAN_ID="EU_863_870_TTN"
+export TTNV2_APP_ID="ttn-v2-application-ID"
+export TTNV2_APP_ACCESS_KEY="ttn-v2-application-access-key"
+export FREQUENCY_PLAN_ID="EU_863_870_TTN"
 ```
 
 See the list of [supported Frequency Plans]({{< ref "/reference/frequency-plans" >}}).
@@ -27,21 +27,21 @@ See the list of [supported Frequency Plans]({{< ref "/reference/frequency-plans"
 If using Windows OS Command Prompt, replace `export` with `set` and remove the double-quotes in commands above:
 
 ```bash
-$ set TTNV2_APP_ID=ttn-v2-application-ID
-$ set TTNV2_APP_ACCESS_KEY=ttn-v2-application-access-key
-$ set FREQUENCY_PLAN_ID=EU_863_870_TTN
+set TTNV2_APP_ID=ttn-v2-application-ID
+set TTNV2_APP_ACCESS_KEY=ttn-v2-application-access-key
+set FREQUENCY_PLAN_ID=EU_863_870_TTN
 ```
 
 Commands are slightly different if using Windows PowerShell, for example you could set the `TTNV2_APP_ID` variable as follows:
 
 ```powershell
-$ $env:TTNV2_APP_ID='ttn-v2-application-ID'
+$env:TTNV2_APP_ID='ttn-v2-application-ID'
 ```
 
 Since migration is still possible only from a private The Things Industries V2 (SaaS) cluster, you need to configure one extra environmental variable:
 
 ```bash
-$ export TTNV2_DISCOVERY_SERVER_ADDRESS="<instance-id>.thethings.industries:1900"
+export TTNV2_DISCOVERY_SERVER_ADDRESS="<instance-id>.thethings.industries:1900"
 ```
 
 If the Discovery Server of your private The Things Industries V2 (SaaS) cluster does not use TLS, you will need to use `ttnv2.discovery-server-insecure` flag when running commands with the `ttn-lw-migrate` tool.

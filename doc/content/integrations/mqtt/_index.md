@@ -69,7 +69,7 @@ Subscribing to all topics with the `mosquitto_sub` client can be done with:
 ```bash
 # Tip: when using `mosquitto_sub`, pass the `-d` flag to see the topics messages get published on.
 # For example:
-$ mosquitto_sub -h thethings.example.com -t "#" -u "app1@tenant1" -P "NNSXS.VEEBURF3KR77ZR.." -d
+mosquitto_sub -h thethings.example.com -t "#" -u "app1@tenant1" -P "NNSXS.VEEBURF3KR77ZR.." -d
 ```
 
 ### Example 
@@ -189,7 +189,7 @@ Use [this handy tool](https://v2.cryptii.com/hexadecimal/base64) to convert hexa
 
 ```bash
 # If you use `mosquitto_pub`, use the following command:
-$ mosquitto_pub -h thethings.example.com \
+mosquitto_pub -h thethings.example.com \
   -t "v3/app1@tenant1/devices/dev1/down/push" \
   -u "app1@tenant1" -P "NNSXS.VEEBURF3KR77ZR.." \
   -m '{"downlinks":[{"f_port": 15,"frm_payload":"vu8=","priority": "NORMAL"}]}' \

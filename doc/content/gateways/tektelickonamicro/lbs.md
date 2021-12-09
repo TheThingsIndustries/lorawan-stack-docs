@@ -18,14 +18,14 @@ Obtain the **ipk/bsp** package by contacting Tektelic's support team. Create an 
 Upload the `Basic-Station-packages-vx.x.x-for-Tektelic-gateways.tar.gz` to the directory `/lib/firmware` on the target gateway and extract it using following command:
 
 ```bash 
-$ tar -C /lib/firmware \
+tar -C /lib/firmware \
 -zxvf /lib/firmware/Basic-Station-packages-vx.x.x-for-Tektelic-gateways.tar.gz
 ```
 
 Add the feed location to the package manager configuration file by using the following command:
 
 ```bash
-$ echo "src/gz bstn file:///lib/firmware/Basic-Station-packages-vx.x.x-for-Tektelic-gateways" \
+echo "src/gz bstn file:///lib/firmware/Basic-Station-packages-vx.x.x-for-Tektelic-gateways" \
 > /etc/opkg/bstn-feed.conf
 ```
 
@@ -48,7 +48,7 @@ Upload the `ipk/bsp` folder to the gateway and extract it in to `/lib/firmware`.
 Add the feed location to the package manager configuration file by using the following command:
 
 ```bash
-$ echo "src/gz bstn file:///lib/firmware/bsp" > /etc/opkg/bstn-feed.conf
+echo "src/gz bstn file:///lib/firmware/bsp" > /etc/opkg/bstn-feed.conf
 ```
 
 Enter the following command:
@@ -68,7 +68,7 @@ opkg install tektelic-bstn curl libcurl4
 Make sure Basic Station is installed by using the following command:
 
 ```bash
-$ opkg list-installed | grep bstn
+opkg list-installed | grep bstn
 ```
 
 The version of the Basic Station package should be displayed.
@@ -76,7 +76,7 @@ The version of the Basic Station package should be displayed.
 Then, make sure Basic Station is running by using the following command:
 
 ```bash
-$ ps aux | grep bstn
+ps aux | grep bstn
 ```
 
 The Basic Station process ID should be displayed.
@@ -100,7 +100,7 @@ By default, CUPS is enabled in Basic Station to connect with {{% tts %}}. If you
 Finally, enter the following command to restart the Basic Station:
 
 ```bash
-$ /etc/init.d/tektelic-bstn restart
+/etc/init.d/tektelic-bstn restart
 ```
 
 Now your Gateway should be able to connect to {{% tts %}}.

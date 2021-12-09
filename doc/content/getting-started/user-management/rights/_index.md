@@ -40,26 +40,37 @@ Rights apply to entities which a user or organization is a member (collaborator)
 
 ## Managing Rights using the CLI
 
+We define some user parameters that will be used below:
+
+```bash
+ORGANIZATION_ID="org1"
+USER_ID="user1"
+APP_ID="app1"
+GTW_ID="gateway1"
+```
+
+Make sure to modify these according to your setup.
+
 ## Adding Collaborators
 
 To add collaborators for Gateways, End Devices, or Applications, use the `collaborators add` command. For example, to add a collaborator `user1` to the application `app1` with rights to read and write device info and delete applications, use the command
 
 ```bash
-$ ttn-lw-cli applications collaborators set --application-id app1 \
-  --user-id user1 \
+ttn-lw-cli applications collaborators set --application-id $APP_ID \
+  --user-id $USER_ID \
   --right-application-delete \
   --right-application-devices-read \
   --right-application-devices-write
 ```
 
-To see the list of possible rights for an entity, use the `--help` flag, e.g `$ ttn-lw-cli applications collaborators set --help`.
+To see the list of possible rights for an entity, use the `--help` flag, e.g `ttn-lw-cli applications collaborators set --help`.
 
 ## Listing Collaborators
 
 To see which rights a user has on an entity, use the `collaborators list` command. For example, to see collaborators for the gateway `gateway1`, use the command:
 
 ```bash
-$ ttn-lw-cli gateways collaborators list --gateway-id gateway1
+ttn-lw-cli gateways collaborators list --gateway-id $GTW_ID
 ```
 
 {{< /tabs/tab >}}

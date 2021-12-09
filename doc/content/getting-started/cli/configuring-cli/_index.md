@@ -21,25 +21,25 @@ To generate the CLI configuration file, use the following command in your termin
 If using {{% tts %}} Community Edition, use the following command as per your regional `cluster`:
 
 ```bash
-$ ttn-lw-cli use <eu1/au1/nam1>.cloud.thethings.network
+ttn-lw-cli use <eu1/au1/nam1>.cloud.thethings.network
 ```
 
 or on Windows, this would be:
 
 ```bash
-$ ttn-lw-cli.exe use <eu1/au1/nam1>.cloud.thethings.network
+ttn-lw-cli.exe use <eu1/au1/nam1>.cloud.thethings.network
 ```
 
 If you are using {{% tts %}} Cloud use the following command with your `tenant id` and regional `cluster`. 
 
 ```bash
-$ ttn-lw-cli use <tenant_id>.<eu1/au1/nam1/>.cloud.thethings.industries
+ttn-lw-cli use <tenant_id>.<eu1/au1/nam1/>.cloud.thethings.industries
 ```
 
 If you are hosting your own deployment, use the following, replacing `thethings.example.com` with your [server address]({{< ref "getting-started/server-addresses" >}}):
 
 ```bash
-$ ttn-lw-cli use thethings.example.com
+ttn-lw-cli use thethings.example.com
 ```
 
 {{< /tabs/tab >}}
@@ -49,13 +49,13 @@ $ ttn-lw-cli use thethings.example.com
 If you are hosting your own deployment, use the following, replacing `thethings.example.com` with your [server address]({{< ref "getting-started/server-addresses" >}}):
 
 ```bash
-$ tti-lw-cli use thethings.example.com
+tti-lw-cli use thethings.example.com
 ```
 
 or on Windows:
 
 ```bash
-$ tti-lw-cli.exe use thethings.example.com
+tti-lw-cli.exe use thethings.example.com
 ```
 
 {{< /tabs/tab >}}
@@ -81,7 +81,7 @@ Once you have the configuration file, proceed to [Step 2 - Configure CLI](#step-
 If the deployment is using a CA that is not already trusted by your system, use the `--fetch-ca` flag to also connect to the server and retrieve the CA required for establishing secure communication, i.e:
 
 ```bash
-$ tti-lw-cli use thethings.example.com --fetch-ca
+tti-lw-cli use thethings.example.com --fetch-ca
 ```
 
 If you are using a [custom certificate authority]({{< ref "/getting-started/installation/certificates#custom-certificate-authority" >}}), you will have to specify the path to the CA file with `--ca="/path/to/ca.pem"` flag when running the CLI.
@@ -149,19 +149,19 @@ set TTN_LW_CONFIG=/path/to/.ttn-lw-cli.yml
 To check if configuration is being properly loaded, use the following command:
 
 ```bash
-$ ttn-lw-cli config
+ttn-lw-cli config
 ```
 
 or on Windows:
 
 ```bash
-$ ttn-lw-cli.exe config
+ttn-lw-cli.exe config
 ```
 
 or for Enterprise deployments:
 
 ```bash
-$ tti-lw-cli config
+tti-lw-cli config
 ```
 
 ## Step 3 - Login

@@ -32,13 +32,13 @@ Plug the RJ45 end of the cable in the Console port at the side of the gateway, a
 If you are using MacOS or Linux, connect to the Gateway by opening a terminal and a executing the following commands:
 
 ```bash
-$ ls /dev/tty.usb*
+ls /dev/tty.usb*
 ```
 
 This will display the list of available USB serial devices. Once you have found the one matching the Cisco console, connect using the following command:
 
 ```bash
-$ screen /dev/tty.usbserial-AO001X6M 115200
+screen /dev/tty.usbserial-AO001X6M 115200
 ```
 
 Use PuTTy if you are using Windows.

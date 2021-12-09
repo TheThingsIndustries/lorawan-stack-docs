@@ -36,7 +36,7 @@ Set the `User-Agent` HTTP header containing your integration name and version. T
 Fields may be specified in HTTP requests by appending them as query string parameters. For example, to request the `name`, `description`, and `locations` of devices in an `EndDeviceRegistry.Get` request, add these fields to the `field_mask` field. To get this data for device `dev1` in application `app1`:
 
 ```bash
-$ curl --location \
+curl --location \
   --header "Authorization: Bearer NNSXS.XXXXXXXXX" \
   --header 'Accept: application/json' \
   --header 'User-Agent: my-integration/my-integration-version' \
@@ -46,7 +46,7 @@ $ curl --location \
 The same request in tenant `tenant1` on a multi-tenant deployment:
 
 ```bash
-$ curl --location \
+curl --location \
   --header "Authorization: Bearer NNSXS.XXXXXXXXX" \
   --header 'Accept: application/json' \
   --header 'User-Agent: my-integration/my-integration-version' \
@@ -60,7 +60,7 @@ Fields may also be specified as a JSON object in a POST request.
 To get a stream of events for device `dev1` in application `app1` :
 
 ```bash
-$ curl --location \
+curl --location \
   --header 'Authorization: Bearer NNSXS.XXXXXXXXX' \
   --header 'Accept: text/event-stream' \
   --header 'Content-Type: application/json' \
@@ -84,7 +84,7 @@ See [here](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/U
 To schedule a downlink, you may use the `DownlinkQueuePush` or `DownlinkQueueReplace` endpoints of the [Application Server API]({{< ref "reference/api/application_server#the-appas-service" >}}). For example, to schedule a downlink queue push to device `dev1` in application `app1`:
 
 ```bash
-$ curl --location \
+curl --location \
   --header 'Authorization: Bearer NNSXS.XXXXXXXXX' \
   --header 'Content-Type: application/json' \
   --header 'User-Agent: my-integration/my-integration-version' \
@@ -101,7 +101,7 @@ $ curl --location \
 To schedule a human readable downlink to the same device using a downlink [Payload Formatter]({{< ref "integrations/payload-formatters" >}}):
 
 ```bash
-$ curl --location \
+curl --location \
   --header 'Authorization: Bearer NNSXS.XXXXXXXXX' \
   --header 'Content-Type: application/json' \
   --header 'User-Agent: my-integration/my-integration-version' \
@@ -128,7 +128,7 @@ If you want to do something like registering a device directly via the API, you 
 To register a device `newdev1` in application `app1`, first, register the `DevEUI`, `JoinEUI` and cluster addresses in the Identity Server. This is also where you register a friendly name, description, attributes, location, and more - see all fields in the [API Reference]({{< ref "reference/api" >}}):
 
 ```bash
-$ curl --location \
+curl --location \
   --header 'Accept: application/json' \
   --header 'Authorization: Bearer NNSXS.XXXXXXXXX' \
   --header 'Content-Type: application/json' \
@@ -161,7 +161,7 @@ $ curl --location \
 Register LoRaWAN settings in the Network Server:
 
 ```bash
-$ curl --location \
+curl --location \
   --header 'Accept: application/json' \
   --header 'Authorization: Bearer NNSXS.XXXXXXXXX' --header 'Content-Type: application/json' \
   --header 'User-Agent: my-integration/my-integration-version' \
@@ -196,7 +196,7 @@ $ curl --location \
 Register the `DevEUI` and `JoinEUI` in the Application Server:
 
 ```bash
-$ curl --location \
+curl --location \
   --header 'Authorization: Bearer NNSXS.XXXXXXXXX' --header 'Content-Type: application/json' \
   --header 'User-Agent: my-integration/my-integration-version' \
   --request PUT \
@@ -222,7 +222,7 @@ $ curl --location \
 Finally, for OTAA devices, register the `DevEUI`, `JoinEUI`, cluster addresses, and keys in the Join Server:
 
 ```bash
-$ curl --location \
+curl --location \
   --header 'Authorization: Bearer NNSXS.XXXXXXXXX' --header 'Content-Type: application/json' \
   --header 'User-Agent: my-integration/my-integration-version' \
   --request PUT \

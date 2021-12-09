@@ -23,32 +23,37 @@ You can SSH into the EC2 machine using the public IP output value.
 
 Log in AWS Console and open the CloudFormation resource and click on your recently deployed stack. Navigate to the **Outputs** tab and copy the value of the **PublicIP** field. 
 
-Now, using the private key of the **SSH Key** value that you entered during deployment, you can SSH into the machine using
+Now, using the private key of the **SSH Key** value that you entered during deployment, you can SSH into the machine using:
+
 ```bash
-$ ssh -i <path-to-private-key> ec2-user@<PublicIP>
+ssh -i <path-to-private-key> ec2-user@<PublicIP>
 ```
 
 ### How can I see logs of {{% tts %}}?
 
-{{% tts %}} binary runs as a `systemd` service. In order to access the logs, SSH into the machine as described above and use the following command.
+{{% tts %}} binary runs as a `systemd` service. In order to access the logs, SSH into the machine as described above and use the following command:
 ```bash
-  $ sudo journalctl -f -u lorawan-stack.service
+sudo journalctl -f -u lorawan-stack.service
 ```
 
 ### How do I see more detailed debug logs of {{% tts %}}?
 
 By default, {{% tts %}} does not log detailed `DEBUG` messages. In order to enable this, SSH into the EC2 instance as described above and add the following lines to the file `/tti/lorawan-stack/config.yml` using an editor such as `nano`.
+
 ```bash
 log:
   level: debug
 ```
-- Restart the service for this to take effect.
+Restart the service for this to take effect:
+
 ```bash
-$ sudo systemctl restart lorawan-stack.service
+sudo systemctl restart lorawan-stack.service
 ```
-- The debug logs can be read using the `journalctl`, same as above:
+
+The debug logs can be read using the `journalctl`, same as above:
+
 ```bash
-$ sudo journalctl -f -u lorawan-stack.service
+sudo journalctl -f -u lorawan-stack.service
   ```
 
 ### My Gateway doesn't connect. What do I do?

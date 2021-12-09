@@ -26,7 +26,7 @@ The default gateway visibility defines rules for all Home Networks if there is n
 Use the following command in your terminal to get the default routing policy:
 
 ```bash
-$ ttn-lw-cli packetbroker home-networks gateway-visibilities get default
+ttn-lw-cli packetbroker home-networks gateway-visibilities get default
 ```
 
 If there is no default gateway visibility defined, the above command fails with `not found`.
@@ -58,7 +58,7 @@ In the following example, all gateway visibility configuration fields are enable
 To set the default gateway visibility and enable all fields:
 
 ```bash
-$ ttn-lw-cli packetbroker home-networks gateway-visibilities set default --all
+ttn-lw-cli packetbroker home-networks gateway-visibilities set default --all
 ```
 
 To customize, see [Flags]({{< relref "#flags" >}}) below.
@@ -68,7 +68,7 @@ To customize, see [Flags]({{< relref "#flags" >}}) below.
 To delete the default gateway visibility:
 
 ```bash
-$ ttn-lw-cli packetbroker home-networks gateway-visibilities delete default
+ttn-lw-cli packetbroker home-networks gateway-visibilities delete default
 ```
 
 #### Flags {#flags}

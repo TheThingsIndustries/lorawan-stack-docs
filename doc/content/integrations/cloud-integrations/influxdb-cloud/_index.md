@@ -82,13 +82,13 @@ Once you have downloaded the Telegraf configuration file as described in [Influx
 Next, you need to copy the previously generated token from the **Tokens** tab and export it to an environmental variable to be used by the InfluxDB **output plugin**, or you can simply pass it directly as a `token` value in the configuration file. You can set the environmental variable by using the following command in your terminal:
 
 ```bash
-$ export INFLUX_TOKEN="paste your token here"
+INFLUX_TOKEN="paste your token here"
 ```
 
 Run the Telegraf agent in your terminal with the following command:
 
 ```bash
-$ telegraf --config /path/to/custom/telegraf.conf
+telegraf --config /path/to/custom/telegraf.conf
 ```
 
 ## Configure Telegraf and The Things Stack for Webhook Integration
@@ -119,13 +119,13 @@ Update the Telegraf configuration you previously downloaded as described in [Inf
 Copy the generated token from the **Tokens** tab and use it as a `token` value for the **output plugin** in your Telegraf configuration file, or export it to an environmental variable with the following command in your terminal:
 
 ```bash
-$ export INFLUX_TOKEN="paste your token here"
+INFLUX_TOKEN="paste your token here"
 ```
 
 Start the Telegraf agent by running the following command in the terminal:
 
 ```bash
-$ telegraf --config /path/to/custom/telegraf.conf
+telegraf --config /path/to/custom/telegraf.conf
 ```
 In {{% tts %}} Console, [create a new webhook]({{< ref "/integrations/webhooks/creating-webhooks" >}}) with JSON **Webhook format**, set the **Base URL** to `http://localhost:8080/telegraf` and tick the box next to the message types you want to enable this webhook for.
 

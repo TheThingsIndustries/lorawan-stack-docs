@@ -15,13 +15,13 @@ The CLI needs to be logged on in order to create gateways, applications, devices
 {{< tabs/tab "Cloud, Community Edition, and Open Source" >}}
 
 ```bash
-$ ttn-lw-cli login
+ttn-lw-cli login
 ```
 
 or on Windows:
 
 ```bash
-$ ttn-lw-cli.exe login
+ttn-lw-cli.exe login
 ```
 
 {{< /tabs/tab >}}
@@ -29,13 +29,13 @@ $ ttn-lw-cli.exe login
 {{< tabs/tab "Enterprise" >}}
 
 ```bash
-$ tti-lw-cli login
+tti-lw-cli login
 ```
 
 or on Windows:
 
 ```bash
-$ tti-lw-cli.exe login
+tti-lw-cli.exe login
 ```
 
 {{< /tabs/tab >}}

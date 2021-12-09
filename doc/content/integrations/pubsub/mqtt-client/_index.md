@@ -41,7 +41,7 @@ After enabling events, click the **Add Pub/Sub** button to enable the integratio
 The Application Server publishes messages for any enabled events. For example, when a device sends an uplink, an `uplink` message is published. To view these using a `mosquitto_sub` client connected to your MQTT server:
 
 ```bash
-$ mosquitto_sub -h <server_hostname> -p <port> -t '#' -v
+mosquitto_sub -h <server_hostname> -p <port> -t '#' -v
 # base-topic/uplink {"end_device_ids":{"device_id":"dev1","application_ids":{"application_id":"app1"}},"received_at":"2020-05-12T12:23:07.087614Z","uplink_message":{"session_key_id":"AXIDznz4bnQqtW8T3NsIVg==","f_port":1,"f_cnt":327,"frm_payload":"AQ=="}}
 ```
 
@@ -50,7 +50,7 @@ $ mosquitto_sub -h <server_hostname> -p <port> -t '#' -v
 You can schedule downlink messages by publishing to a topic. For example, using a `mosquitto_pub` client connected to your MQTT server:
 
 ```bash
-$ mosquitto_pub -h <server_hostname> -p <port> -t 'base-topic/push-subtopic' -m '{"end_device_ids":{"device_id":"dev1","application_ids":{"application_id":"app1"}},"downlinks":[{"f_port":1,"frm_payload":"AA==","priority":"NORMAL"}]}'
+mosquitto_pub -h <server_hostname> -p <port> -t 'base-topic/push-subtopic' -m '{"end_device_ids":{"device_id":"dev1","application_ids":{"application_id":"app1"}},"downlinks":[{"f_port":1,"frm_payload":"AA==","priority":"NORMAL"}]}'
 ```
 
 will push a downlink to the end device `dev1` of the application `app1` with a base64 encoded payload of `AA==`, if ```push-subtopic```is configured as the Sub topic for Downlink queue push.

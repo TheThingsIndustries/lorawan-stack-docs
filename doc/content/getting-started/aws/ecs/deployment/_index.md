@@ -119,8 +119,8 @@ In addition to the re-used parameters (see [Prerequisites]({{< relref "../prereq
 After deploying the `2-4b-routing-s3` template, you need to upload the interop configuration to the interop bucket. For details on this configuration, see the [Interoperability Repository reference]({{< ref "/reference/interop-repository" >}}). If you do not have such configuration, you can upload an empty configuration file:
 
 ```bash
-$ touch config.yml
-$ aws s3 cp config.yml s3://${InteropConfigBucket}/config.yml
+touch config.yml
+aws s3 cp config.yml s3://${InteropConfigBucket}/config.yml
 ```
 
 {{< note >}} If you did not set a bucket name, see the `InteropConfigBucket` output of the `2-4b-routing-s3` stack for the name of the bucket. {{</ note >}}
@@ -156,7 +156,7 @@ For multi-tenant deployments that use tenant billing through Stripe (see the [St
 For the **Gateway Secrets Encryption Key Value** parameter, provide an AES-128 Key in Base64. The following command can be used to randomly generate one:
 
 ```bash
-$ openssl rand -base64 16
+openssl rand -base64 16
 ```
 
 ## Configuration
@@ -189,10 +189,10 @@ Under **Amazon ECS ARN and resource ID settings** the **new ARN and resource ID 
 Alternatively, you can configure these settings for the entire AWS account using the AWS CLI:
 
 ```bash
-$ aws ecs put-account-setting-default --name serviceLongArnFormat --value enabled --region $AWS_REGION
-$ aws ecs put-account-setting-default --name taskLongArnFormat --value enabled --region $AWS_REGION
-$ aws ecs put-account-setting-default --name containerInstanceLongArnFormat --value enabled --region $AWS_REGION
-$ aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --region $AWS_REGION
+aws ecs put-account-setting-default --name serviceLongArnFormat --value enabled --region $AWS_REGION
+aws ecs put-account-setting-default --name taskLongArnFormat --value enabled --region $AWS_REGION
+aws ecs put-account-setting-default --name containerInstanceLongArnFormat --value enabled --region $AWS_REGION
+aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --region $AWS_REGION
 ```
 
 {{< note >}} These settings need to be applied in **each** AWS region where you want to deploy a cluster. {{</ note >}}

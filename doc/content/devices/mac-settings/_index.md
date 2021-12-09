@@ -31,7 +31,7 @@ If no settings are provided on device creation or unset, defaults are first take
 Run the following command to get a list of all available MAC settings and available parameter values:
 
 ```bash
-$ ttn-lw-cli end-devices set --help
+ttn-lw-cli end-devices set --help
 ```
 
 You can also refer to the [End Device API Reference page]({{< ref "reference/api/end_device#message:MACSettings" >}}) for documentation on the available MAC settings and MAC state parameters.
@@ -75,7 +75,7 @@ Some additional examples are included below. All settings are available at the [
 To tell {{% tts %}} which frequencies are configured in an ABP device, set the `mac-settings.factory-preset-frequencies` parameter. For example, to configure a device using the default EU868 frequencies, use the following command:
 
 ```bash
-$ ttn-lw-cli devices update <app-id> <device-id> --mac-settings.factory-preset-frequencies 868100000,868300000,868500000,867100000,867300000,867500000,867700000,867900000
+ttn-lw-cli devices update <app-id> <device-id> --mac-settings.factory-preset-frequencies 868100000,868300000,868500000,867100000,867300000,867500000,867700000,867900000
 ```
 
 {{< note >}} For ABP devices, `mac-settings.factory-preset-frequencies` should be specified on `device create` or the settings will only take effect after MAC reset. {{</ note >}}
@@ -85,7 +85,7 @@ $ ttn-lw-cli devices update <app-id> <device-id> --mac-settings.factory-preset-f
 To change the duty cycle, set the `desired-max-duty-cycle` parameter. For example, to set the duty cycle to 0.098%, use the following command:
 
 ```bash
-$ ttn-lw-cli end-devices set <app-id> <device-id> --mac-settings.desired-max-duty-cycle DUTY_CYCLE_1024
+ttn-lw-cli end-devices set <app-id> <device-id> --mac-settings.desired-max-duty-cycle DUTY_CYCLE_1024
 ```
 
 See the [End Device API Reference]({{< ref "reference/api/end_device#message:MACSettings" >}}) for available fields and definitions of constants. `DUTY_CYCLE_1024` represents 1/1024 ≈ 0.098%.
@@ -95,7 +95,7 @@ See the [End Device API Reference]({{< ref "reference/api/end_device#message:MAC
 To enable ADR, set the `mac-settings.use-adr` parameter
 
 ```bash
-$ ttn-lw-cli end-devices set <app-id> <device-id> --mac-settings.use-adr=true 
+ttn-lw-cli end-devices set <app-id> <device-id> --mac-settings.use-adr=true 
 ```
 
 ### Set RX1 Delay
@@ -103,7 +103,7 @@ $ ttn-lw-cli end-devices set <app-id> <device-id> --mac-settings.use-adr=true
 The RX1 delay of end devices is set to 5 second by default. To change it, set the `desired-rx1-delay` parameter:
 
 ```bash
-$ ttn-lw-cli end-devices set <app-id> <device-id> --mac-settings.desired-rx1-delay RX_DELAY_5
+ttn-lw-cli end-devices set <app-id> <device-id> --mac-settings.desired-rx1-delay RX_DELAY_5
 ```
 
 ### Unset MAC settings
@@ -111,5 +111,5 @@ $ ttn-lw-cli end-devices set <app-id> <device-id> --mac-settings.desired-rx1-del
 The CLI can also be used to unset MAC settings (so that the default ones are used):
 
 ```bash
-$ ttn-lw-cli end-devices set <app-id> <device-id> --unset mac-settings.rx1-delay
+ttn-lw-cli end-devices set <app-id> <device-id> --unset mac-settings.rx1-delay
 ```

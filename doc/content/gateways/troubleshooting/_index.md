@@ -32,8 +32,8 @@ See the [Root Certificates Reference]({{< ref "/reference/root-certificates" >}}
 Use the following commands to generate a `api.key` file which is correctly formatted ({{% lbs %}} requires that `.key` files end with a CRLF character).
 
 ```bash
-$ export API_KEY="your-api-key"
-$ echo "Authorization: Bearer $API_KEY" | perl -p -e 's/\r\n|\n|\r/\r\n/g'  > api.key
+API_KEY="your-api-key"
+echo "Authorization: Bearer $API_KEY" | perl -p -e 's/\r\n|\n|\r/\r\n/g'  > api.key
 ```
 
 Upload or copy the contents of this file in to your gateway as the **Gateway Key**.

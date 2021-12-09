@@ -48,9 +48,9 @@ To forward uplink traffic to the Gateway Server, the MQTT client must publish a 
 Below is an example that connects to the Gateway Server as `$GATEWAY_ID`, publishes an uplink message (Protocol Buffer stored as binary file `test-uplink-message`) and disconnects:
 
 ```bash
-$ export GATEWAY_ID="test-gtw@my-tenant"
-$ export GATEWAY_API_KEY="NNSXS.VEEBURF3KR77ZR..." # API key with RIGHT_GATEWAY_LINK rights
-$ mosquitto_pub \
+GATEWAY_ID="test-gtw@my-tenant"
+GATEWAY_API_KEY="NNSXS.VEEBURF3KR77ZR..." # API key with RIGHT_GATEWAY_LINK rights
+mosquitto_pub \
     -h "thethings.example.com" -p 1882 \
     -u "$GATEWAY_ID" -P "$GATEWAY_API_KEY" \
     -t "v3/$GATEWAY_ID/up" -f test-uplink-message
@@ -67,9 +67,9 @@ The Gateway Server instructs the gateway to send a downlink packet by publishing
 The MQTT client must subscribe to this topic after connecting to the Gateway Server. It must also listen for incoming `ttnpb.GatewayDown` messages (which contain both the packet data payload as well as any desired transmission settings). Upon receiving a scheduling request, it must trasmit that message, and [send back a `TxAck` packet]({{< ref "#txack-messages" >}}) on success.
 
 ```bash
-$ export GATEWAY_ID="test-gtw@my-tenant"
-$ export GATEWAY_API_KEY="NNSXS.VEEBURF3KR77ZR..." # API key with RIGHT_GATEWAY_LINK rights
-$ mosquitto_sub \
+GATEWAY_ID="test-gtw@my-tenant"
+GATEWAY_API_KEY="NNSXS.VEEBURF3KR77ZR..." # API key with RIGHT_GATEWAY_LINK rights
+mosquitto_sub \
     -h "thethings.example.com" -p 1882 \
     -u "$GATEWAY_ID" -P "$GATEWAY_API_KEY" \
     -t "v3/$GATEWAY_ID/down" -v
@@ -86,9 +86,9 @@ To forward a gateway status message to the Gateway Server, the MQTT client must 
 Below is an example that connects to the Gateway Server as `$GATEWAY_ID`, publishes a gateway status message (Protocol Buffer stored as binary file `test-gateway-status`) and disconnects:
 
 ```bash
-$ export GATEWAY_ID="test-gtw@my-tenant"
-$ export GATEWAY_API_KEY="NNSXS.VEEBURF3KR77ZR..." # API key with RIGHT_GATEWAY_LINK rights
-$ mosquitto_pub \
+GATEWAY_ID="test-gtw@my-tenant"
+GATEWAY_API_KEY="NNSXS.VEEBURF3KR77ZR..." # API key with RIGHT_GATEWAY_LINK rights
+mosquitto_pub \
     -h "thethings.example.com" -p 1882 \
     -u "$GATEWAY_ID" -P "$GATEWAY_API_KEY" \
     -t "v3/$GATEWAY_ID/status" -f test-gateway-status
@@ -103,9 +103,9 @@ $ mosquitto_pub \
 To forward a `TxAck` packet to the Gateway Server, the MQTT client must publish a Protocol Buffer of type `ttnpb.TxAcknowledgement` under the topic `v3/<gateway-id>@<tenant-id>/down/ack`.
 
 ```bash
-$ export GATEWAY_ID="test-gtw@my-tenant"
-$ export GATEWAY_API_KEY="NNSXS.VEEBURF3KR77ZR..." # API key with RIGHT_GATEWAY_LINK rights
-$ mosquitto_pub \
+GATEWAY_ID="test-gtw@my-tenant"
+GATEWAY_API_KEY="NNSXS.VEEBURF3KR77ZR..." # API key with RIGHT_GATEWAY_LINK rights
+mosquitto_pub \
     -h "thethings.example.com" -p 1882 \
     -u "$GATEWAY_ID" -P "$GATEWAY_API_KEY" \
     -t "v3/$GATEWAY_ID/down/ack" -f example-tx-ack

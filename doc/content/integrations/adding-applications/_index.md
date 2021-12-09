@@ -40,10 +40,12 @@ Your application will be created and you will be redirected to the application o
 Create the first application:
 
 ```bash
-$ ttn-lw-cli applications create app1 --user-id admin
+APP_ID="app1"
+USER_ID="admin"
+ttn-lw-cli applications create $APP_ID --user-id $USER_ID
 ```
 
-This creates an application `app1` with the `admin` user as collaborator.
+This creates an application `app1` with the `admin` user as collaborator. Make sure to modify user parameters according to your setup.
 
 {{< /tabs/tab >}}
 

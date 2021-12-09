@@ -35,7 +35,7 @@ Connect your machine to the same local network as that of the gateway, and enter
 
 {{< figure src="login.png" alt="Login" >}}
 
-> See [Milesight's official documentation](https://www.milesight-iot.com/documents-download) for more information.
+See [Milesight's official documentation](https://www.milesight-iot.com/documents-download) for more information.
 
 ### Disable Default Server
 
