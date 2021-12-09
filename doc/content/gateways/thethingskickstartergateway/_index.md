@@ -12,7 +12,7 @@ The Things Kickstarter Gateway is a LoRaWAN gateway, whose technical specificati
 ## Prerequisites
 
 1. User account on {{% tts %}} with rights to create Gateways and API Keys.
-2. The Things Gateway running the latest firmware (a minimum of `v1.0.8` is necessary).
+2. The Things Gateway running the latest firmware (a minimum of `v1.0.8` is necessary). See [firmware installation instructions](https://github.com/TheThingsProducts/gateway/tree/develop/firmware/).
 
 ## Registration
 
