@@ -8,7 +8,7 @@ This section contains instructions for installing the command-line interface.
 
 <!--more-->
 
-There are two versions of {{% tts %}} CLI: `ttn-lw-cli`and `tti-lw-cli`. For most users, `ttn-lw-cli` is sufficient, as it supports all commands to manage {{% tts %}}. `tti-lw-cli` has additional commands for tenant management, but is otherwise identical.
+There are two versions of {{% tts %}} CLI: `ttn-lw-cli`and `tti-lw-cli`. For most users, `ttn-lw-cli` is sufficient, as it supports all commands to manage {{% tts %}}. `tti-lw-cli` has additional commands for tenant management and OpenID Connect but is otherwise identical.
 
 We recommend Cloud, Community Edition, and Open Source users to install `ttn-lw-cli`, and Enterprise users to install `tti-lw-cli`.
 
