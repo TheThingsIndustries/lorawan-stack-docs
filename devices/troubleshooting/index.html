@@ -284,6 +284,19 @@
 </ul>
 </li>
 </ul>
+<p>This problem can also occur after <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session/">migrating an active device session</a> from V2 to The Things Stack, for devices that transmit uplinks on frequencies that are not part of the standard <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">frequency plans</a> used by The Things Stack. The issue arises from the fact that factory preset frequencies were not stored in V2, so they are not present in the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON file</a> used for importing devices in The Things Stack. There are two possible solutions:</p>
+<ul>
+<li>If the end device can be reset, i.e. if it can perform a re-join to The Things Stack network or at least reset frame counters (for ABP devices)
+<ul>
+<li>Go to <strong>General settings</strong> in the device overview in The Things Stack Console, navigate to <strong>Network layer → Advanced MAC settings</strong> and set the <strong>Factory preset frequencies</strong>, then click the <strong>Reset session and MAC state</strong> button. By resetting the device, a new session will be established with The Things Stack Network Server and the uplinks on the defined frequencies will be accepted.</li>
+</ul>
+</li>
+<li>If the end device cannot be reset
+<ul>
+<li>Changes related to factory preset frequencies take effect only after a device reset, but applying the fix explained above will break the existing device session. If you really want to keep the active session or simply cannot reset the device physically, you can try adding the frequency channels manually in the <code>mac_state.current.channels</code> and <code>mac_state.desired_channels</code> parameters of the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON file</a> before you import it to The Things Stack.</li>
+</ul>
+</li>
+</ul>
 <h2 id="i-notice-a-delay-in-scheduling-class-c-downlinks-what-can-i-do-to-fix-it">I notice a delay in scheduling Class C downlinks. What can I do to fix it?</h2>
 <p>Here are some common causes of a delay in scheduling downlinks for Class C devices:</p>
 <ul>
@@ -394,10 +407,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 10 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/0d3c0a224b9cb86e6a5a3af83a2325c1fbcf244e">
-      doc: Add a device troubleshooting entry (#642)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/0c0b54383dbd0714243fab915f76cb1ab7fe3b18">
+      doc: Document fixes for missing uplinks (#679)
     </a>
 </p>
 
