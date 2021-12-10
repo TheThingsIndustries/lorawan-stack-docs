@@ -101,3 +101,5 @@ If you are migrating an end device with its active session via Packet Broker (fr
 In any case, you can leave the **RX1 Delay** value as is (1 second from {{% ttnv2 %}}), but then you will need to [migrate your gateway to {{% tts %}}]({{< ref "/getting-started/migrating/gateway-migration" >}}) too.
 
 The Things Network community members can freely migrate their gateways from The Things Network {{% ttnv2 %}} to {{% tts %}} Community Edition, while still providing uplink and downlink coverage to The Things Network {{% ttnv2 %}}. Even if you manage to get your end device traffic routed to {{% tts %}} by Packet Broker, we recommend to migrate your gateways as soon as possible.
+
+{{< note >}} If you have migrated your device from {{% ttnv2 %}} to {{% tts %}} with an active session but cannot see any uplinks from the device on {{% tts %}}, see [Troubleshooting Devices]({{< ref "/devices/troubleshooting#i-can-see-some-received-uplinks-in-gateway-live-data-events-but-i-do-not-see-them-in-device-events" >}}). {{</ note >}}

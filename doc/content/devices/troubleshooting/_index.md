@@ -102,8 +102,6 @@ We also advise to double check your network connection. If the connection betwee
 - Cluster latencies
 - Gateway level issues
 
-
-
 ## Scheduling a downlink from {{% tts %}} Console is disabled with a warning `Simulation is disabled for devices that skip paload crypto`.
 
 When using the [AWS IoT integration]({{< ref "/integrations/cloud-integrations/aws-iot" >}}) with the **End to End Encryption** option enabled, scheduling downlink messages from {{% tts %}} Console is restricted by default.
@@ -131,6 +129,12 @@ Possible causes and solutions:
     - For OTAA devices, the FCnt mismatch might occur due to missing packets. The maximum FCnt gap between two consecutive uplinks is `16384` according to the LoRaWAN specification. Try re-joining your OTAA device.
 - Using inappropriate frequencies
     - This case applies only to ABP devices and EU/IN/AS frequency bands. Since the Network Server is initially accepting uplinks from devices only in default channels, uplinks from the device that is using non-default channels are dropped. In this case, **Factory Preset Frequencies** have to be set either in device's overview in {{% tts %}} Console, or by setting [MAC commands]({{< ref "/devices/mac-settings#available-mac-settings" >}}) using the CLI. If these settings are applied to an existing device, you might need to reset the device as well.
+
+This problem can also occur after [migrating an active device session]({{< ref "/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session" >}}) from {{% ttnv2 %}} to {{% tts %}}, for devices that transmit uplinks on frequencies that are not part of the standard [frequency plans]({{< ref "/reference/frequency-plans" >}}) used by {{% tts %}}. The issue arises from the fact that factory preset frequencies were not stored in {{% ttnv2 %}}, so they are not present in the [JSON file]({{< ref "/getting-started/migrating/device-json" >}}) used for importing devices in {{% tts %}}. There are two possible solutions:
+- If the end device can be reset, i.e. if it can perform a re-join to {{% tts %}} network or at least reset frame counters (for ABP devices)
+    - Go to **General settings** in the device overview in {{% tts %}} Console, navigate to **Network layer &#8594; Advanced MAC settings** and set the **Factory preset frequencies**, then click the **Reset session and MAC state** button. By resetting the device, a new session will be established with {{% tts %}} Network Server and the uplinks on the defined frequencies will be accepted.
+- If the end device cannot be reset
+    - Changes related to factory preset frequencies take effect only after a device reset, but applying the fix explained above will break the existing device session. If you really want to keep the active session or simply cannot reset the device physically, you can try adding the frequency channels manually in the `mac_state.current.channels` and `mac_state.desired_channels` parameters of the [JSON file]({{< ref "/getting-started/migrating/device-json" >}}) before you import it to {{% tts %}}.
 
 ## I notice a delay in scheduling Class C downlinks. What can I do to fix it?
 
