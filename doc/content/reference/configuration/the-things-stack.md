@@ -124,7 +124,9 @@ You can suppress log messages for successful HTTP requests (e.g. to reduce the n
 
 {{% tts %}} supports interoperability according to LoRaWAN Backend Interfaces specification. The following options are used to configure the server for this.
 
-- `interop.listen-tls`: Address for the interop server to listen on
+- `interop.listen`: Address for the interop server to listen on for non-TLS connections
+
+- `interop.listen-tls`: Address for the interop server to listen on for TLS connections
 
 - `interop.sender-client-ca.source`: Source of the interop server sender client CAs configuration (static, directory, url, blob)
 
