@@ -15,36 +15,42 @@ ttn-lw-cli applications webhooks list [application-id] [flags]
 ### Options
 
 ```
-      --all                               select all application webhook fields
-      --application-id string             
-      --base-url                          select the base_url field
-      --downlink-ack                      select the downlink_ack field and all allowed sub-fields
-      --downlink-ack.path                 select the downlink_ack.path field
-      --downlink-api-key                  select the downlink_api_key field
-      --downlink-failed                   select the downlink_failed field and all allowed sub-fields
-      --downlink-failed.path              select the downlink_failed.path field
-      --downlink-nack                     select the downlink_nack field and all allowed sub-fields
-      --downlink-nack.path                select the downlink_nack.path field
-      --downlink-queue-invalidated        select the downlink_queue_invalidated field and all allowed sub-fields
-      --downlink-queue-invalidated.path   select the downlink_queue_invalidated.path field
-      --downlink-queued                   select the downlink_queued field and all allowed sub-fields
-      --downlink-queued.path              select the downlink_queued.path field
-      --downlink-sent                     select the downlink_sent field and all allowed sub-fields
-      --downlink-sent.path                select the downlink_sent.path field
-      --format                            select the format field
-      --headers                           select the headers field
-  -h, --help                              help for list
-      --join-accept                       select the join_accept field and all allowed sub-fields
-      --join-accept.path                  select the join_accept.path field
-      --location-solved                   select the location_solved field and all allowed sub-fields
-      --location-solved.path              select the location_solved.path field
-      --service-data                      select the service_data field and all allowed sub-fields
-      --service-data.path                 select the service_data.path field
-      --template-fields                   select the template_fields field
-      --template-ids                      select the template_ids field and all allowed sub-fields
-      --template-ids.template-id          select the template_ids.template_id field
-      --uplink-message                    select the uplink_message field and all allowed sub-fields
-      --uplink-message.path               select the uplink_message.path field
+      --all                                                          select all application webhook fields
+      --application-id string                                        
+      --base-url                                                     select the base_url field
+      --downlink-ack                                                 select the downlink_ack field and all allowed sub-fields
+      --downlink-ack.path                                            select the downlink_ack.path field
+      --downlink-api-key                                             select the downlink_api_key field
+      --downlink-failed                                              select the downlink_failed field and all allowed sub-fields
+      --downlink-failed.path                                         select the downlink_failed.path field
+      --downlink-nack                                                select the downlink_nack field and all allowed sub-fields
+      --downlink-nack.path                                           select the downlink_nack.path field
+      --downlink-queue-invalidated                                   select the downlink_queue_invalidated field and all allowed sub-fields
+      --downlink-queue-invalidated.path                              select the downlink_queue_invalidated.path field
+      --downlink-queued                                              select the downlink_queued field and all allowed sub-fields
+      --downlink-queued.path                                         select the downlink_queued.path field
+      --downlink-sent                                                select the downlink_sent field and all allowed sub-fields
+      --downlink-sent.path                                           select the downlink_sent.path field
+      --format                                                       select the format field
+      --headers                                                      select the headers field
+      --health-status                                                select the health_status field and all allowed sub-fields
+      --health-status.status.healthy                                 select the health_status.status.healthy field and all allowed sub-fields
+      --health-status.status.unhealthy                               select the health_status.status.unhealthy field and all allowed sub-fields
+      --health-status.status.unhealthy.failed-attempts               select the health_status.status.unhealthy.failed_attempts field
+      --health-status.status.unhealthy.last-failed-attempt-at        select the health_status.status.unhealthy.last_failed_attempt_at field
+      --health-status.status.unhealthy.last-failed-attempt-details   select the health_status.status.unhealthy.last_failed_attempt_details field and all allowed sub-fields
+  -h, --help                                                         help for list
+      --join-accept                                                  select the join_accept field and all allowed sub-fields
+      --join-accept.path                                             select the join_accept.path field
+      --location-solved                                              select the location_solved field and all allowed sub-fields
+      --location-solved.path                                         select the location_solved.path field
+      --service-data                                                 select the service_data field and all allowed sub-fields
+      --service-data.path                                            select the service_data.path field
+      --template-fields                                              select the template_fields field
+      --template-ids                                                 select the template_ids field and all allowed sub-fields
+      --template-ids.template-id                                     select the template_ids.template_id field
+      --uplink-message                                               select the uplink_message field and all allowed sub-fields
+      --uplink-message.path                                          select the uplink_message.path field
 ```
 
 ### Options inherited from parent commands

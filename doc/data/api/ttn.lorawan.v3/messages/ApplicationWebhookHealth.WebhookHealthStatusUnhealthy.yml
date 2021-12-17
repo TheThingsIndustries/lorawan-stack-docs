@@ -1,0 +1,16 @@
+name: ApplicationWebhookHealth.WebhookHealthStatusUnhealthy
+fields:
+- name: failed_attempts
+  type: uint64
+  default: 0
+- name: last_failed_attempt_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  rules:
+    required: true
+  default: "0001-01-01T00:00:00Z"
+- name: last_failed_attempt_details
+  message:
+    name: ErrorDetails
+  default: {}
