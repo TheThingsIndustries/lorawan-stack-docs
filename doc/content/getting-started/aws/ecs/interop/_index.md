@@ -8,9 +8,25 @@ weight: 3
 
 Join Server is capable of handling the join flow, that is `HomeNSReq`, `JoinReq` and `AppSKeyReq` requests. Identity Server can only answer to `HomeNSReq`. Typically, you should enable interoperability if you want to use device activations through Packet Broker. You can use Join Server interoperability if you want to expose the entire join flow to other LoRaWAN network servers.
 
+# TLS
+
+Normally, AWS Load Balancer terminates TLS, and then forwards unencrypted packets to {{% tts %}} via AWS internal network. This assures that all clients connecting to {{% tts %}} are certain of its authenticity.
+
+This doesn't work the other way around though, as AWS Load Balancer doesn't verify client certificates. It is up to you where you choose to terminate TLS:
+
+## TLS termination by the AWS Load Balancer
+
+When parameters `InteropEnabled`, `InteropEnabledIS` and `InteropEnabledJS` in templates `3-2-load-balancer`, `5-3a-ecs-is-service` and `5-4-ecs-services` are set to `server-only-authentication`, TLS is terminated by the AWS Load Balancer, just like any other connection. This is only suitable for use cases where you don't need to verify client authenticity.
+
+## TLS termination by {{% tts %}}
+
+When parameters `InteropEnabled`, `InteropEnabledIS` and `InteropEnabledJS` in templates `3-2-load-balancer`, `5-3a-ecs-is-service` and `5-4-ecs-services` are set to `mutual-authentication`, TLS-encrypted connections are forwarded to {{% tts %}}, which terminates the encryption. This allows the stack to verify client certificates stored in the S3 bucket.
+
 # Join Server interoperability
 
 ## Deployment
+
+In this setup, you are assumed to use two accounts: one account for {{% tts %}}, and another one only for the Crypto Server.
 
 ### Step 1: deploy {{% tts %}}
 
@@ -18,9 +34,11 @@ Deploy {{% tts %}} normally. For the `PeerRequesterAccountId` parameter in `1-1-
 
 ### Step 2: add certificates
 
-For the server certificate, use the certbot task. It will request a certificate and put it into AWS Secrets Manager. If you do not want to use the certbot task, but prefer to provide your own certificate, look up the relevant secret created in template `4-1-secrets` and substitute the dummy value. Certificates are expected to be in PEM format.
+For the server certificate:
+- if you use `server-only-authentication`, AWS Load Balancer will use existing certificate
+- if you use `mutual-authentication`, then use the certbot task to request a certificate. It will be put into AWS Secrets Manager, and then fetched by {{% tts %}}
 
-Client certificates are stored in the interop config bucket, created in template `2-4b-routing-s3`. In this bucket you need to place a file `config.yml`, which contains a map `<net-id>: <ca.pem>`. Example configuration:
+If you're using `mutual-authentication`, you need to populate client certificates stored in the interop config bucket, created in template `2-4b-routing-s3`. In this bucket you need to place a file `config.yml`, which contains a map `<net-id>: <ca.pem>`. Example configuration:
 
 ```yaml
 000000: ca-000000.pem
@@ -47,9 +65,16 @@ Deploy the template `6-1-vpc-peering` where you had deployed the Join Server to 
 
 ### Step 5: activate the connection
 
-Go through the Join Server stack and turn on switches for Interop and Crypto Server connection. The `CryptoServerDNSName` parameter in template `5-4-services` is expected to be in format `cs.${NetworkName}.${Environment}.${Cluster}.cluster.local`.
+Go through the Join Server stack and turn on switches for Interop:
+- `3-2-load-balancer`: set `InteropEnabled` to value other than `disabled`
+- `5-3a-ecs-is-service`: since you're setting up Join Server, not Identity Server interoperability, leave `InteropEnabledIS` as `disabled`
+- `5-4-ecs-services`:
+    - set `InteropEnabledJS` to the same value as previously `InteropEnabled`
+    - set `CryptoServerDNSName` to `cs.${NetworkName}.${Environment}.${Cluster}.cluster.local`, where values for tuple `${NetworkName}.${Environment}.${Cluster}` come from the Crypto Server deployment
+    - set `InteropPacketBrokerEnabled` to a value relevant for your use case
+    - set `InteropPacketBrokerTokenIssuer` to a value relevant for your use case
 
-Go through the Crypto Server template and turn on switches for Join Server connection. The `ServicesDNSZone` parameter is expected to be in format `${NetworkName}.${Environment}.${Cluster}.cluster.local`.
+Set the `ServicesDNSZone` parameter in the Crypto Server deployment. The value is expected to be in format `${NetworkName}.${Environment}.${Cluster}.cluster.local`, where where values for the tuple `${NetworkName}.${Environment}.${Cluster}` come from the Join Server deployment
 
 ### Step 6: encrypt key values for secure element parts
 
@@ -64,4 +89,32 @@ At this point interoperability should be working. It might be required to restar
 
 # Identity Server interoperability
 
-Identity Server interoperability doesn't need Crypto Server, therefore you don't need to set up two accounts and peer networks. Still, you need to set up TLS certificates in a similar fashion.
+As opposed to Join Server interoperability, this setup doesn't expect you to use two accounts.
+
+### Step 1: deploy {{% tts %}}
+
+Deploy {{% tts %}} normally.
+
+### Step 2: add certificates
+
+For the server certificate:
+- if you use `server-only-authentication`, AWS Load Balancer will use existing certificate
+- if you use `mutual-authentication`, then use the certbot task to request a certificate. It will be put into AWS Secrets Manager, and then fetched by {{% tts %}}
+
+If you're using `mutual-authentication`, you need to populate client certificates stored in the interop config bucket, created in template `2-4b-routing-s3`. In this bucket you need to place a file `config.yml`, which contains a map `<net-id>: <ca.pem>`. Example configuration:
+
+```yaml
+000000: ca-000000.pem
+000009: ca-000009.pem
+```
+
+### Step 3: activate the connection
+
+Go through the stack and turn on switches for Interop:
+- `3-2-load-balancer`: set `InteropEnabled` to value other than `disabled`
+- `5-3a-ecs-is-service`: set `InteropEnabledIS` to the same value as previously `InteropEnabled`
+- `5-4-ecs-services`:
+    - leave `InteropEnabledJS` as `disabled`, since you're setting up Identity Server, not Join Server interoperability
+    - leave `CryptoServerDNSName` empty, as Crypto Server is not used by the Identity Server
+    - set `InteropPacketBrokerEnabled` to a value relevant for your use case
+    - set `InteropPacketBrokerTokenIssuer` to a value relevant for your use case
