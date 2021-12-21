@@ -40,9 +40,15 @@ Click **Subscribe to topic**.
 
 ## Downlink Messages
 
-The AWS IoT Integration for {{% tts %}} uses the following topic for downstream traffic:
+The AWS IoT Integration for {{% tts %}} uses the `lorawan/downlink` topic for downstream traffic.
 
-- `lorawan/downlink`
+{{< new-in-version "1.1.8" >}} Feedback events are published on the following topics:
+
+- `lorawan/<thing>/downlink/queued` (when any downlink has been queued)
+- `lorawan/<thing>/downlink/sent` (when the downlink has been sent by the Network Server)
+- `lorawan/<thing>/downlink/failed` (when the Network Server failed to send the downlink message)
+- `lorawan/<thing>/downlink/ack` (when the end device acknowledged the confirmed downlink message)
+- `lorawan/<thing>/downlink/ack` (when the end device did not acknowledge the confirmed downlink message)
 
 {{< note >}} Publish downlink messages from your application to IoT Core using [**AWS IoT Data Plane**](https://docs.aws.amazon.com/iot/latest/apireference/Welcome.html#Welcome_AWS_IoT_Data_Plane) using the [**Publish**](https://docs.aws.amazon.com/iot/latest/apireference/API_iotdata_Publish.html) action. {{</ note >}}
 
@@ -70,5 +76,7 @@ The message is a JSON object with the following format:
 ```
 
 {{< note >}} You can only send JSON encoded payload using the `payload` field when end-to-end encryption is **not enabled**. See [Deployment Guide]({{< relref "deployment-guide" >}}) on how to enable and disable end-to-end encryption. {{</ note >}}
+
+When you publish downlink this way, you will immediately see a message on `lorawan/<thing>/downlink/queued`. Keep an eye on other messages published to `lorawan/<thing>/downlink/#` for the sent, failed, acknowledged and not acknowledged events.
 
 See [Manage Things]({{< relref "things" >}}) to find the `thingName` for the end device.
