@@ -362,9 +362,16 @@
 </figure>
 
 <h2 id="downlink-messages">Downlink Messages</h2>
-<p>The AWS IoT Integration for The Things Stack uses the following topic for downstream traffic:</p>
+<p>The AWS IoT Integration for The Things Stack uses the <code>lorawan/downlink</code> topic for downstream traffic.</p>
+<p><span class="tag is-light">New in 1.1.8</span>
+
+ Feedback events are published on the following topics:</p>
 <ul>
-<li><code>lorawan/downlink</code></li>
+<li><code>lorawan/&lt;thing&gt;/downlink/queued</code> (when any downlink has been queued)</li>
+<li><code>lorawan/&lt;thing&gt;/downlink/sent</code> (when the downlink has been sent by the Network Server)</li>
+<li><code>lorawan/&lt;thing&gt;/downlink/failed</code> (when the Network Server failed to send the downlink message)</li>
+<li><code>lorawan/&lt;thing&gt;/downlink/ack</code> (when the end device acknowledged the confirmed downlink message)</li>
+<li><code>lorawan/&lt;thing&gt;/downlink/ack</code> (when the end device did not acknowledge the confirmed downlink message)</li>
 </ul>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
@@ -397,6 +404,7 @@
   You can only send JSON encoded payload using the <code>payload</code> field when end-to-end encryption is <strong>not enabled</strong>. See <a href="/docs/integrations/cloud-integrations/aws-iot/default/deployment-guide/">Deployment Guide</a> on how to enable and disable end-to-end encryption.
 </div>
 
+<p>When you publish downlink this way, you will immediately see a message on <code>lorawan/&lt;thing&gt;/downlink/queued</code>. Keep an eye on other messages published to <code>lorawan/&lt;thing&gt;/downlink/#</code> for the sent, failed, acknowledged and not acknowledged events.</p>
 <p>See <a href="/docs/integrations/cloud-integrations/aws-iot/default/things/">Manage Things</a> to find the <code>thingName</code> for the end device.</p>
         </div>
         <div class="is-clearfix">
@@ -465,10 +473,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by i3mSuperMan on 09 Jul 2021.
+  Last changed by Johan Stokking on 21 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/9381bc2cd7f1cccbd30585f06ca0042ce561d8a0">
-      doc: Update AWS IoT integration documentation with minor changes (#432)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/1c46bb0d82bba17354a6862a408ae00257f2ca04">
+      doc: Update AWS IoT Core integration documentation (#690)
     </a>
 </p>
 
