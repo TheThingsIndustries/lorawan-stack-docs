@@ -230,13 +230,25 @@
         <div class="content">
           <p>The Things Stack exposes the Join Server API defined by LoRaWAN Backend Interfaces 1.0 and 1.1. This is used for interoperability between LoRaWAN networks. The functionality can be exposed either by the Join Server or by the Identity Server, but not both at once.</p>
 <p>Join Server is capable of handling the join flow, that is <code>HomeNSReq</code>, <code>JoinReq</code> and <code>AppSKeyReq</code> requests. Identity Server can only answer to <code>HomeNSReq</code>. Typically, you should enable interoperability if you want to use device activations through Packet Broker. You can use Join Server interoperability if you want to expose the entire join flow to other LoRaWAN network servers.</p>
+<h1 id="tls">TLS</h1>
+<p>Normally, AWS Load Balancer terminates TLS, and then forwards unencrypted packets to The Things Stack via AWS internal network. This assures that all clients connecting to The Things Stack are certain of its authenticity.</p>
+<p>This doesn&rsquo;t work the other way around though, as AWS Load Balancer doesn&rsquo;t verify client certificates. It is up to you where you choose to terminate TLS:</p>
+<h2 id="tls-termination-by-the-aws-load-balancer">TLS termination by the AWS Load Balancer</h2>
+<p>When parameters <code>InteropEnabled</code>, <code>InteropEnabledIS</code> and <code>InteropEnabledJS</code> in templates <code>3-2-load-balancer</code>, <code>5-3a-ecs-is-service</code> and <code>5-4-ecs-services</code> are set to <code>server-only-authentication</code>, TLS is terminated by the AWS Load Balancer, just like any other connection. This is only suitable for use cases where you don&rsquo;t need to verify client authenticity.</p>
+<h2 id="tls-termination-by-the-things-stack">TLS termination by The Things Stack</h2>
+<p>When parameters <code>InteropEnabled</code>, <code>InteropEnabledIS</code> and <code>InteropEnabledJS</code> in templates <code>3-2-load-balancer</code>, <code>5-3a-ecs-is-service</code> and <code>5-4-ecs-services</code> are set to <code>mutual-authentication</code>, TLS-encrypted connections are forwarded to The Things Stack, which terminates the encryption. This allows the stack to verify client certificates stored in the S3 bucket.</p>
 <h1 id="join-server-interoperability">Join Server interoperability</h1>
 <h2 id="deployment">Deployment</h2>
+<p>In this setup, you are assumed to use two accounts: one account for The Things Stack, and another one only for the Crypto Server.</p>
 <h3 id="step-1-deploy-the-things-stack">Step 1: deploy The Things Stack</h3>
 <p>Deploy The Things Stack normally. For the <code>PeerRequesterAccountId</code> parameter in <code>1-1-vpc</code>, use the ID of the account where you want to deploy Crypto Server. Do not enable interop and assume that The Things Stack doesn&rsquo;t connect to the Crypto Server.</p>
 <h3 id="step-2-add-certificates">Step 2: add certificates</h3>
-<p>For the server certificate, use the certbot task. It will request a certificate and put it into AWS Secrets Manager. If you do not want to use the certbot task, but prefer to provide your own certificate, look up the relevant secret created in template <code>4-1-secrets</code> and substitute the dummy value. Certificates are expected to be in PEM format.</p>
-<p>Client certificates are stored in the interop config bucket, created in template <code>2-4b-routing-s3</code>. In this bucket you need to place a file <code>config.yml</code>, which contains a map <code>&lt;net-id&gt;: &lt;ca.pem&gt;</code>. Example configuration:</p>
+<p>For the server certificate:</p>
+<ul>
+<li>if you use <code>server-only-authentication</code>, AWS Load Balancer will use existing certificate</li>
+<li>if you use <code>mutual-authentication</code>, then use the certbot task to request a certificate. It will be put into AWS Secrets Manager, and then fetched by The Things Stack</li>
+</ul>
+<p>If you&rsquo;re using <code>mutual-authentication</code>, you need to populate client certificates stored in the interop config bucket, created in template <code>2-4b-routing-s3</code>. In this bucket you need to place a file <code>config.yml</code>, which contains a map <code>&lt;net-id&gt;: &lt;ca.pem&gt;</code>. Example configuration:</p>
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">000000</span><span class="p">:</span><span class="w"> </span>ca<span class="m">-000000.</span>pem<span class="w">
 </span><span class="w"></span><span class="k">000009</span><span class="p">:</span><span class="w"> </span>ca<span class="m">-000009.</span>pem<span class="w">
 </span></code></pre></div><h3 id="step-3-deploy-the-crypto-server">Step 3: deploy the Crypto Server</h3>
@@ -254,8 +266,20 @@
 <p>Deploy the template <code>6-1-vpc-peering</code> where you had deployed the Join Server to create the peering association. Refer to the Crypto Server stack for inputs of <code>6-1-vpc-peering</code>.</p>
 <p>The Things Stack uses Route53 for service discovery. In order to enable the Join Server &lt;-&gt; Crypto Server service discovery, you need to associate the <code>${NetworkName}.${Environment}.${Cluster}.cluster.local</code> hosted zone of Join Server with the VPC of Crypto Server and vice versa. For details on how to do it, refer to the <a href="https://aws.amazon.com/premiumsupport/knowledge-center/route53-private-hosted-zone/">AWS Documentation</a>.</p>
 <h3 id="step-5-activate-the-connection">Step 5: activate the connection</h3>
-<p>Go through the Join Server stack and turn on switches for Interop and Crypto Server connection. The <code>CryptoServerDNSName</code> parameter in template <code>5-4-services</code> is expected to be in format <code>cs.${NetworkName}.${Environment}.${Cluster}.cluster.local</code>.</p>
-<p>Go through the Crypto Server template and turn on switches for Join Server connection. The <code>ServicesDNSZone</code> parameter is expected to be in format <code>${NetworkName}.${Environment}.${Cluster}.cluster.local</code>.</p>
+<p>Go through the Join Server stack and turn on switches for Interop:</p>
+<ul>
+<li><code>3-2-load-balancer</code>: set <code>InteropEnabled</code> to value other than <code>disabled</code></li>
+<li><code>5-3a-ecs-is-service</code>: since you&rsquo;re setting up Join Server, not Identity Server interoperability, leave <code>InteropEnabledIS</code> as <code>disabled</code></li>
+<li><code>5-4-ecs-services</code>:
+<ul>
+<li>set <code>InteropEnabledJS</code> to the same value as previously <code>InteropEnabled</code></li>
+<li>set <code>CryptoServerDNSName</code> to <code>cs.${NetworkName}.${Environment}.${Cluster}.cluster.local</code>, where values for tuple <code>${NetworkName}.${Environment}.${Cluster}</code> come from the Crypto Server deployment</li>
+<li>set <code>InteropPacketBrokerEnabled</code> to a value relevant for your use case</li>
+<li>set <code>InteropPacketBrokerTokenIssuer</code> to a value relevant for your use case</li>
+</ul>
+</li>
+</ul>
+<p>Set the <code>ServicesDNSZone</code> parameter in the Crypto Server deployment. The value is expected to be in format <code>${NetworkName}.${Environment}.${Cluster}.cluster.local</code>, where where values for the tuple <code>${NetworkName}.${Environment}.${Cluster}</code> come from the Join Server deployment</p>
 <h3 id="step-6-encrypt-key-values-for-secure-element-parts">Step 6: encrypt key values for secure element parts</h3>
 <p>Go to the Crypto Server stack and encrypt secure element parts keys using the AWS KMS key from stack output <code>MicrochipPartsTableKey</code> and put them into the DynamoDB table from output <code>MicrochipPartsTable</code>. You can do it in the following way:</p>
 <ol>
@@ -267,7 +291,32 @@
 </ol>
 <p>At this point interoperability should be working. It might be required to restart the containers before they pick up new configuration.</p>
 <h1 id="identity-server-interoperability">Identity Server interoperability</h1>
-<p>Identity Server interoperability doesn&rsquo;t need Crypto Server, therefore you don&rsquo;t need to set up two accounts and peer networks. Still, you need to set up TLS certificates in a similar fashion.</p>
+<p>As opposed to Join Server interoperability, this setup doesn&rsquo;t expect you to use two accounts.</p>
+<h3 id="step-1-deploy-the-things-stack-1">Step 1: deploy The Things Stack</h3>
+<p>Deploy The Things Stack normally.</p>
+<h3 id="step-2-add-certificates-1">Step 2: add certificates</h3>
+<p>For the server certificate:</p>
+<ul>
+<li>if you use <code>server-only-authentication</code>, AWS Load Balancer will use existing certificate</li>
+<li>if you use <code>mutual-authentication</code>, then use the certbot task to request a certificate. It will be put into AWS Secrets Manager, and then fetched by The Things Stack</li>
+</ul>
+<p>If you&rsquo;re using <code>mutual-authentication</code>, you need to populate client certificates stored in the interop config bucket, created in template <code>2-4b-routing-s3</code>. In this bucket you need to place a file <code>config.yml</code>, which contains a map <code>&lt;net-id&gt;: &lt;ca.pem&gt;</code>. Example configuration:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">000000</span><span class="p">:</span><span class="w"> </span>ca<span class="m">-000000.</span>pem<span class="w">
+</span><span class="w"></span><span class="k">000009</span><span class="p">:</span><span class="w"> </span>ca<span class="m">-000009.</span>pem<span class="w">
+</span></code></pre></div><h3 id="step-3-activate-the-connection">Step 3: activate the connection</h3>
+<p>Go through the stack and turn on switches for Interop:</p>
+<ul>
+<li><code>3-2-load-balancer</code>: set <code>InteropEnabled</code> to value other than <code>disabled</code></li>
+<li><code>5-3a-ecs-is-service</code>: set <code>InteropEnabledIS</code> to the same value as previously <code>InteropEnabled</code></li>
+<li><code>5-4-ecs-services</code>:
+<ul>
+<li>leave <code>InteropEnabledJS</code> as <code>disabled</code>, since you&rsquo;re setting up Identity Server, not Join Server interoperability</li>
+<li>leave <code>CryptoServerDNSName</code> empty, as Crypto Server is not used by the Identity Server</li>
+<li>set <code>InteropPacketBrokerEnabled</code> to a value relevant for your use case</li>
+<li>set <code>InteropPacketBrokerTokenIssuer</code> to a value relevant for your use case</li>
+</ul>
+</li>
+</ul>
 
         </div>
         
@@ -292,6 +341,12 @@
 
 
   <ul class="menu-list">
+    
+      
+      <li><a href='#tls-termination-by-the-aws-load-balancer'>TLS termination by the AWS Load Balancer</a></li>
+    
+      
+      <li><a href='#tls-termination-by-the-things-stack'>TLS termination by The Things Stack</a></li>
     
       
       <li><a href='#deployment'>Deployment</a></li>
@@ -334,10 +389,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Michał Borkowski on 10 Nov 2021.
+  Last changed by Michał Borkowski on 21 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a7d3e2053ddb5a1bc41e6618e14e207b459b2229">
-      doc: Add interop deployment documentation (#649)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/76b157a926fa5ed4e7e2a16ed00ed35c164b5c2d">
+      doc: Update interop documentation (#687)
     </a>
 </p>
 
