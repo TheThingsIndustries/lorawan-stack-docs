@@ -49,7 +49,7 @@ If you're using `mutual-authentication`, you need to populate client certificate
 
 Deploy the template `200-1-crypto`. This template is designed to be deployed in a separate account, but same region. No other templates are needed for Crypto Server, this is a self-contained deployment.
 
-- the tuple `{NetworkName}.${Environment}.${Cluster}` should NOT be identical. We suggest using the same `NetworkName` and `Environment`, but different `Cluster`
+- the tuple `${Cluster}.${Environment}.${NetworkName}` should NOT be identical. We suggest using the same `NetworkName` and `Environment`, but different `Cluster`
 - the `CidrBlock` parameter should NOT be identical
 - the `ClusterSecretValue` parameter MUST be identical
 - the `DefaultTenantID` parameter MUST be identical
@@ -61,7 +61,7 @@ Deploy the template `200-1-crypto`. This template is designed to be deployed in 
 
 Deploy the template `6-1-vpc-peering` where you had deployed the Join Server to create the peering association. Refer to the Crypto Server stack for inputs of `6-1-vpc-peering`.
 
-{{% tts %}} uses Route53 for service discovery. In order to enable the Join Server <-> Crypto Server service discovery, you need to associate the `${NetworkName}.${Environment}.${Cluster}.cluster.local` hosted zone of Join Server with the VPC of Crypto Server and vice versa. For details on how to do it, refer to the [AWS Documentation](https://aws.amazon.com/premiumsupport/knowledge-center/route53-private-hosted-zone/).
+{{% tts %}} uses Route53 for service discovery. In order to enable the Join Server <-> Crypto Server service discovery, you need to associate the `${Cluster}.${Environment}.${NetworkName}.cluster.local` hosted zone of Join Server with the VPC of Crypto Server and vice versa. For details on how to do it, refer to the [AWS Documentation](https://aws.amazon.com/premiumsupport/knowledge-center/route53-private-hosted-zone/).
 
 ### Step 5: activate the connection
 
@@ -70,11 +70,11 @@ Go through the Join Server stack and turn on switches for Interop:
 - `5-3a-ecs-is-service`: since you're setting up Join Server, not Identity Server interoperability, leave `InteropEnabledIS` as `disabled`
 - `5-4-ecs-services`:
     - set `InteropEnabledJS` to the same value as previously `InteropEnabled`
-    - set `CryptoServerDNSName` to `cs.${NetworkName}.${Environment}.${Cluster}.cluster.local`, where values for tuple `${NetworkName}.${Environment}.${Cluster}` come from the Crypto Server deployment
+    - set `CryptoServerDNSName` to `cs.${Cluster}.${Environment}.${NetworkName}.cluster.local`, where values for tuple `${Cluster}.${Environment}.${NetworkName}` come from the Crypto Server deployment
     - set `InteropPacketBrokerEnabled` to a value relevant for your use case
     - set `InteropPacketBrokerTokenIssuer` to a value relevant for your use case
 
-Set the `ServicesDNSZone` parameter in the Crypto Server deployment. The value is expected to be in format `${NetworkName}.${Environment}.${Cluster}.cluster.local`, where where values for the tuple `${NetworkName}.${Environment}.${Cluster}` come from the Join Server deployment
+Set the `ServicesDNSZone` parameter in the Crypto Server deployment. The value is expected to be in format `${Cluster}.${Environment}.${NetworkName}.cluster.local`, where where values for the tuple `${Cluster}.${Environment}.${NetworkName}` come from the Join Server deployment
 
 ### Step 6: encrypt key values for secure element parts
 
