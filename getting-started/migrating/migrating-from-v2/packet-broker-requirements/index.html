@@ -250,16 +250,6 @@
 </thead>
 <tbody>
 <tr>
-<td>The Things Network V2</td>
-<td align="left">The Things Stack Community Edition</td>
-<td align="left">Only without persisting active device sessions</td>
-</tr>
-<tr>
-<td>The Things Network V2</td>
-<td align="left">The Things Stack Cloud</td>
-<td align="left">Only without persisting active device sessions</td>
-</tr>
-<tr>
 <td>The Things Industries V2</td>
 <td align="left">The Things Stack Community Edition</td>
 <td align="left">Only without persisting active device sessions</td>
@@ -276,18 +266,16 @@
 <p><strong>V2 DevAddr of your end device needs to be routable by Packet Broker.</strong></p>
 <p>OTAA devices migrated without an active session will acquire a new <strong>DevAddr</strong> from The Things Stack during the join procedure. Packet Broker will always be able to route the traffic with DevAddrs assigned by The Things Stack Community Edition or The Things Stack Cloud.</p>
 <p>When registering ABP devices on The Things Stack, it is possible to auto-generate new <strong>DevAddr</strong> which can be routed by Packet Broker. ABP devices can be re-programmed to use this new <strong>DevAddr</strong>. This implies breaking their existing session on V2.</p>
-<p>Migrating OTAA and ABP devices with their active sessions implies keeping their <strong>DevAddr</strong> values from V2. Packet Broker will be able to route traffic for these <strong>DevAddr</strong> values only if these devices were registered on <strong>The Things Industries V2 (SaaS)</strong> and you are migrating them to <strong>The Things Stack Cloud</strong>. If you are not using these deployments and you still want your traffic to be routed by Packet Broker, end devices can only be migrated without their active sessions.</p>
+<p>Migrating OTAA and ABP devices with their active sessions implies keeping their <strong>DevAddr</strong> values from V2. Packet Broker will be able to route traffic for these <strong>DevAddr</strong> values only if these devices were registered on <strong>The Things Industries V2 (SaaS)</strong> and you are migrating them to <strong>The Things Stack Cloud</strong>. If you are not using these deployments and you still want your traffic to be routed by Packet Broker, end devices can only be migrated without their active sessions. The alternative option is to migrate your gateway instead of using Packet Broker.</p>
 <h2 id="rx1-delay">RX1 Delay</h2>
 <p><strong>The <strong>RX1 delay</strong> value for your end device needs to be set to 5 seconds, which is a default for The Things Stack (V2 is using 1 second).</strong></p>
 <p>The RX1 delay of OTAA devices migrated without their active session will be automatically set to 5 seconds without your intervention.</p>
 <p>However, this needs to be manually set for OTAA devices migrated with an active session by <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/configure-mac-settings/">configuring their MAC settings</a>. It is also possible to re-program ABP devices to enforce the <strong>RX1 Delay</strong> of 5 seconds (this basically implies starting a new ABP session, i.e. migrating ABP devices without their active session from V2).</p>
-<p>If devices keep on using an <strong>RX1 Delay</strong> of 1 second, downlinks routed via the Packet Broker will probably never reach the end device in time. The solution to enable downlinks is to migrate your gateway to The Things Stack too. Even if you migrate your gateways to The Things Stack, you might still experience issues if you are using a high-latency backhaul.</p>
+<p>If devices keep on using an <strong>RX1 Delay</strong> of 1 second, downlinks routed via the Packet Broker will probably never reach the end device in time. The alternative solution to enable downlinks is to migrate your gateway to The Things Stack too. Remember that even if you migrate your gateways to The Things Stack, you might still experience issues if you are using a high-latency backhaul in a combination with an <strong>RX1 Delay</strong> of 1 second.</p>
 <p>If DevAddr and RX1 Delay conditions stated above are not met, it is likely that you will experience difficulties in communication between your end device and The Things Stack via Packet Broker. If you are using deployments that are not connected to Packet Broker, you will have to migrate your devices as well as <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">your gateways</a> in order to receive the traffic from your end device on The Things Stack.</p>
 <div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  <p>It is possible to migrate active device sessions from The Things Network V2 (public community network) to any The Things Stack deployment. But, this is achievable only if you <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway to The Things Stack</a>, as Packet Broker cannot route this traffic properly.</p>
-<p>We strongly recommend to migrate devices without their active sessions, to make sure Packet Broker can route the traffic properly and that it reaches The Things Stack in time.</p>
-
+  We strongly recommend to migrate devices without their active sessions, to make sure Packet Broker can route the traffic properly and that it reaches The Things Stack in time.
 </div>
         </div>
         <div class="is-clearfix">
@@ -356,10 +344,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 22 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/533e2e4b2631f5e69fdc1cf3e1209cfedf9616cb">
+      doc: Update migration docs post TTN V2 shutdown (#676)
     </a>
 </p>
 

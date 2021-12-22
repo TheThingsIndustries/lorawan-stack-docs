@@ -282,23 +282,19 @@
 <p>By establishing the new session with The Things Stack, an OTAA device gets assigned a new <strong>DevAddr</strong> and default values of some other parameters (like 5 seconds <strong>RX1 Delay</strong>). This ensures that the traffic sent by these end devices can be properly routed by the Packet Broker to and from The Things Stack.</p>
 </section>
 <section data-content="abp">
-  <p>The <strong>DevAddr</strong> and some other parameters (like <strong>RX1 Delay</strong>) are hardcoded for ABP devices. If you do not re-program the device to change these values, you can migrate it to The Things Stack without its security keys, network parameters, etc. which basically means you are migrating it without its active session.</p>
+  <p>The <strong>DevAddr</strong> and some other parameters (like <strong>RX1 Delay</strong>) are hardcoded for ABP devices. If you do not re-program the device to change these values, you can migrate it to The Things Stack using the migration tool without its security keys, network parameters, etc. without its active session.</p>
 <p>If you want your end device traffic to be routed via Packet Broker to The Things Stack, the <strong>DevAddr</strong> must be routable by the Packet Broker and the <strong>RX1 Delay</strong> value must be 5 seconds. Note that the <strong>DevAddr</strong> is routable only if you are using <strong>The Things Industries V2 (SaaS)</strong> and migrating to <strong>The Things Stack Cloud</strong>, and even that is being achieved only on customer request by contacting <a href="mailto:support@thethingsindustries.com">The Things Industries support</a>.</p>
-<p>If you are not migrating from <strong>The Things Industries V2 (SaaS)</strong> to <strong>The Things Stack Cloud</strong>, Packet Broker will not be able to route your ABP device&rsquo;s traffic properly, so you will have to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway</a> to The Things Stack too. Be aware that in this case, even if you do migrate your gateway, you could still be experiencing latency issues if your gateway has a high latency backhaul.</p>
+<p>If you are not migrating from <strong>The Things Industries V2 (SaaS)</strong> to <strong>The Things Stack Cloud</strong>, Packet Broker will not be able to route your ABP device&rsquo;s traffic properly, so you will have to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway</a> to The Things Stack too. Be aware that in this case the <strong>RX1 Delay</strong> value of 1 second is persisted, and even if you do migrate your gateway, you could still be experiencing latency issues if your gateway has a high latency backhaul.</p>
 <div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  <p>Note that this is <strong>not a recommended practice</strong>. We advise re-programming the ABP device to change the <strong>DevAddr</strong> to the one issued by The Things Stack and <strong>RX1 Delay</strong> to 5 seconds, even if you do not want your traffic to be routed by Packet Broker.</p>
-<p>If you re-program the device, you will have to follow the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-console/">Migrate using the Console</a> guide. The reason for this is that when you re-program your ABP device, its <strong>DevAddr</strong> and other parameters will no longer match the device description stored in V2, so you will not be able to export the current device description using the <code>ttn-lw-migrate</code> tool.</p>
+  <p>This is <strong>not a recommended practice</strong>. We advise re-programming the ABP device to change the <strong>DevAddr</strong> to the one issued by The Things Stack and <strong>RX1 Delay</strong> to 5 seconds, even if you do not want your traffic to be routed by Packet Broker.</p>
+<p>In case you are able to re-program your ABP device, you will have to follow the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-console/">Migrate using the Console</a> guide. The reason for this is that when you re-program your ABP device, its <strong>DevAddr</strong> and other parameters will no longer match the device description stored in V2, so you will not be able to export the current device description using the <code>ttn-lw-migrate</code> tool.</p>
 </div>
 </section>
 
 </div>
 
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Before exporting end devices, you can first test the execution by appending the <code>--dry-run</code> and <code>--verbose</code> flags to the commands presented in the sections below.
-</div>
-
+<p>Before exporting end devices, you can first test the execution by appending the <code>--dry-run</code> and <code>--verbose</code> flags to the commands presented in the sections below.</p>
 <p>Use the <code>--ttnv2.resets-to-frequency-plan</code> flag to configure the factory preset frequencies of the device, so that it can keep working with The Things Stack. The list of uplink frequencies is inferred from the <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plan</a>.</p>
 <h3 id="export-a-single-end-device">Export a Single End Device</h3>
 <p>To export a single end device from V2:</p>
@@ -338,10 +334,7 @@ dev3
   To prevent OTAA device from re-joining the V2 network, the recommended practice is to change the <strong>AppKey</strong> in the V2. By changing the <strong>AppKey</strong>, the existing session on V2 will not be terminated yet, but the end device will not be able to re-join because the V2 cluster will reject its new Join Requests.
 </section>
 <section data-content="abp">
-  <div class="notification is-warning is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  For ABP device, you need to completely delete it from V2, especially because this section assumes that you have not re-programmed it for a new <strong>DevAddr</strong>. Having this device registered in V2 and The Things Stack would introduce some serious conflicts.
-</div>
+  ABP devices must be completely deleted from V2, especially if you have not re-programmed them with a new <strong>DevAddr</strong>. Having a device registered in V2 and The Things Stack will cause a race condition and communication issues.
 </section>
 
 </div>
@@ -384,7 +377,7 @@ dev3
 
 </div>
 
-<p>The Things Network community members can freely migrate their gateways from The Things Network V2 to The Things Stack Community Edition, while still providing uplink and downlink coverage to The Things Network V2. Even if you manage to get your end device traffic routed to The Things Stack by Packet Broker, we recommend to migrate your gateways as soon as possible.</p>
+<p>Even if you manage to get your end device traffic routed to The Things Stack by Packet Broker, we recommend to migrate your gateways as soon as possible.</p>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/">← Migrate using the Migration Tool</a>
@@ -461,10 +454,10 @@ dev3
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 22 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/533e2e4b2631f5e69fdc1cf3e1209cfedf9616cb">
+      doc: Update migration docs post TTN V2 shutdown (#676)
     </a>
 </p>
 

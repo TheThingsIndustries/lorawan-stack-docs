@@ -239,11 +239,13 @@
         
         <div class="content">
           <p>This section documents the process of migrating end devices from V2 to The Things Stack.</p>
+<p>The Things Network V2 machines have been completely shut down on <strong>December 8, 2021</strong>, so it is not possible to migrate devices from The Things Network V2 to The Things Stack anymore. See <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> section to start adding devices to The Things Stack from scratch.</p>
+<p>If your private V2 deployment is still running, this section can guide you through the process of migrating devices from private V2 deployment to The Things Stack.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
-<li>User account on The Things Network V2 or The Things Industries V2.</li>
-<li>End device(s) and gateway(s) connected to a V2 network.</li>
-<li>User account in The Things Stack.</li>
+<li>The Things Industries V2 user account.</li>
+<li>End device(s) and gateway(s) connected to a private The Things Industries V2 network.</li>
+<li>The Things Stack user account.</li>
 </ol>
 <p>We recommend testing migration on a single end device or a small batch of end devices in order to make sure the migration process goes as expected.</p>
 <p>We <strong>highly recommend</strong> using The Things Stack version <code>3.12.0</code> or higher. Some of the features (like session migration) from this guide might not be available for prior versions.</p>
@@ -272,10 +274,9 @@
 <p>For detailed tutorials on the integrations that are available in The Things Stack, see <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">Integrations</a>.</p>
 <h2 id="migrate-end-devices">Migrate End Devices</h2>
 <p>When you have added your application and elements associated with it, it is time to migrate your end device(s) from V2 to The Things Stack.</p>
-<p>End devices connected to The Things Network V2 can be migrated to The Things Stack Cloud and The Things Stack Community Edition without the need for migrating a gateway, thanks to the default connection with <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/">Packet Broker</a> which forwards all messages received on V2 to The Things Stack. The Things Industries V2 (SaaS) can also be connected to Packet Broker by contacting <a href="mailto:support@thethingsindustries.com">support</a>, while The Things Stack Enterprise or Open Source can be <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/connect/">configured</a> manually.</p>
+<p>Thanks to <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/">Packet Broker</a>, end devices connected to private The Things Industries V2 network can be migrated to The Things Stack deployments without migrating gateways. The Things Industries V2 deployments can be connected to Packet Broker on a customer request - please contact <a href="mailto:support@thethingsindustries.com">The Things Industries support</a>. The Things Stack Community Edition and The Things Stack Cloud are connected to Packet Broker by default, while The Things Stack Enterprise and The Things Stack Open Source can be <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/connect/">configured</a> manually.</p>
 <p>If you are using deployments connected to Packet Broker, the traffic from your end device(s) will be routed to The Things Stack after migrating your device(s). However, there are certain requirements that your devices need to meet for Packet Broker to route their traffic to The Things Stack correctly. See <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/packet-broker-requirements/">Packet Broker Requirements for End Device Migration</a> for detailed information.</p>
-<p>If you are using deployments that are not connected to Packet Broker, you will have to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway</a> to receive traffic from your end device in The Things Stack.</p>
-<p>Since The Things Stack <code>v3.13.0</code> release, The Things Network community members can freely migrate their gateways from The Things Network V2 to The Things Stack Community Edition, while still providing uplink and downlink coverage to The Things Network V2.</p>
+<p>On the other hand, if you are using deployments that are not connected to Packet Broker, you will have to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway</a> to receive traffic from your end device in The Things Stack.</p>
 <p>There are two approaches for migrating devices, depending on how many end devices you intend to migrate and if you wish to migrate with or without active sessions, described in the following guides:</p>
 <ul>
 <li><a href="/docs/getting-started/migrating/migrating-from-v2/migrate-using-console/">Using The Things Stack Console</a></li>
@@ -419,10 +420,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 07 Dec 2021.
+  Last changed by Nejra Selimović on 22 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/6aef462dd8c0cb21b6cc0ea1aab079315b544b86">
-      Minor updates to migration docs (#675)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/533e2e4b2631f5e69fdc1cf3e1209cfedf9616cb">
+      doc: Update migration docs post TTN V2 shutdown (#676)
     </a>
 </p>
 
