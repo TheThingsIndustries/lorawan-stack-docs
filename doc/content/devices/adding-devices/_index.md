@@ -211,11 +211,13 @@ This will create an end device `dev1` in application `app1` with the `EU_863_870
 
 Please note that the `AppEUI` is returned as `join_eui` ({{% tts %}} uses LoRaWAN 1.1 terminology).
 
-{{< note >}} If you do not have a `JoinEUI` or `AppEUI`, you could use `0000000000000000`. 
+{{< new-in-version "3.17.0">}} If your device does not have a JoinEUI, you can use the default Join EUI of the Join Server. To use this, leave the `--join-eui`/`--app-eui` field empty. The CLI will contact the Join Server and get it's default.
 
-Some devices do not support using `0000000000000000` as a JoinEUI/AppEUI, because technically, this value is invalid. However, {{% tts %}} supports using this value to indicate the absence of an actual JoinEUI/AppEUI.
+If your device does not have a DevEUI, set the `--request-dev-eui` flag, which will contact the server and fetch a DevEUI.
 
-If your device gives an error when using `0000000000000000`, try using the DevEUI value as a JoinEUI/AppEUI, both in {{% tts %}} and on your device. {{</ note >}}
+{{< warning >}}
+You must either use the value DevEUI/JoinEUI that's allotted to your device or let the server define these values as described above. Do not use `0000000000000000` or other randomly generated values as this is not LoRaWAN compliant and your devices will not be interoperable with other networks in the LoRaWAN ecosystem.
+{{</ warning >}}
 
 You can also pass `--with-root-keys` to have root keys generated. In this case, you do not need to specify `--root-keys.app-key.key`.
 
