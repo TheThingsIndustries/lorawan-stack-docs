@@ -140,41 +140,55 @@
 <div class="whats-new">
   <div class="whats-new-content">
     <div class="whats-new-header">
-      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.16.1/>What's new in V3.16.1</a></h2>
+      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.16.2/>What's new in V3.16.2</a></h2>
       <a href="https://www.thethingsindustries.com/docs/whats-new/"><p class="see-more">See all release notes →</p></a>
     </div>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.16.1/">
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.16.2/">
       <div class="whats-new-body">
         <div class="whats-new-items-shadow whats-new-items-fade">
           <div class="whats-new-items">
             <h3 id="added">Added</h3>
 <ul>
-<li>Support for fine timestamps and frequency offsets sent by gateways with SX1303 concentrator using the legacy UDP protocol.</li>
-<li>Support for resetting end device session context and MAC state in the Console.</li>
-<li>The Content-Security-Policy header (that was previously behind the <code>webui.csp</code> feature flag) is now enabled by default.</li>
-<li>Default <code>Cache-Control: no-store</code> headers.</li>
-<li><code>Cache-Control: public, max-age=604800, immutable</code> headers for hashed static files.</li>
-<li>Experimental support for BasicStation GPS timestamps which use the wrong precision (milliseconds instead of microseconds).
+<li>User defined antenna gain for LBS gateways.</li>
+<li>Support for the Authorization Code flow for the OIDC authentication providers.
 <ul>
-<li>The Gateway Server will attempt to determine the correct GPS timestamp from the provided <code>gpstime</code> based on the time at which the upstream message has been received.</li>
-<li>This workaround will be available until the related gateway vendors will release patches for this issue.</li>
+<li>Previously only the Hybrid flow was supported.</li>
 </ul>
 </li>
-<li>Firmware version of The Things Kickstarter Gateway are written to the gateway attributes upon receiving a valid status message.</li>
-<li>Desired mac settings to end device general settings in the Console.</li>
+<li>Better support for user claims provided by OIDC authentication providers.</li>
+<li>Non-TLS interop listener. Default port is 1886.</li>
+<li>Webhooks now have a health status associated with them. Webhooks that fail successively are now disabled for a period of time.
+<ul>
+<li>Failure in this context means that the HTTP endpoint returned a non-2xx status code.</li>
+<li>A successful HTTP request will reset the failure counter.</li>
+<li>The number of allowed successive failures and cooldown period can be configured using the <code>--as.webhooks.unhealthy-attempts-threshold</code> and <code>--as.webhooks.unhealthy-retry-interval</code> configuration options.</li>
+</ul>
+</li>
+<li>Webhook enabled path validation in the Console.</li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
-<li>Gateway server disconnects LoRa Basics Station gateways that stop sending pongs to server pings. This does not apply to gateways that don&rsquo;t support pongs.</li>
-<li>The new plugin for reading/writing JSON in our API (that was previously behind the <code>jsonpb.jsonplugin</code> feature flag) is now enabled by default. All API responses should be equivalent, but in some cases object fields may be in a different order.</li>
+<li>Increased the maximum gRPC message size to 16MB.</li>
+<li>Gateways which have been deleted are now automatically disconnected by the Gateway Server.</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>The reported sub-band&rsquo;s <code>downlink_utilization</code> in gateway connection stats now represents the utilization of the available duty-cycle time.</li>
-<li>Missing fields when admins list non-owned entities.</li>
-<li>Using the correct timestamp when retreiving the &ldquo;Last activity&rdquo; data point for Gateways on initial page loads in the Console.</li>
-<li>Events reappearing in the end device data view after clearing them when navigating back and forth.</li>
-<li>Editing AWS IoT Integration region, stack name or cross-account role ARN makes The Things Stack re-initialize the integration correctly. Previously, the old AWS IoT Core endpoint was being contacted after editing these values.</li>
+<li>Access to application payload formatters for users with <code>RIGHT_APPLICATION_SETTINGS_BASIC</code> right.</li>
+<li>End device mac settings handling in the Console.</li>
+<li>Uplink and downlink counters display on end device activity in the Console.</li>
+<li>External users unique constraint taking into account the wrong columns.
+<ul>
+<li>This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>).</li>
+</ul>
+</li>
+<li>Invitations unique constraint taking into account the wrong columns.
+<ul>
+<li>This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>).</li>
+</ul>
+</li>
+<li>Join settings handling in JS-only deployments in the Console.</li>
+<li>Configuring Packet Broker listed option when Packet Broker Agent is configured with a Packet Broker tenant API key.</li>
+<li>Contact info validation through the Account app.</li>
 </ul>
 
           </div>
@@ -192,7 +206,7 @@
 <a href="https://www.thethingsindustries.com/docs/whats-new/">
   <div class="whats-new-800">
     <div class="whats-new-header-800">
-      <p>See what's new in V3.16.1</p>
+      <p>See what's new in V3.16.2</p>
       <p>-></p>
     </div>
   </div>

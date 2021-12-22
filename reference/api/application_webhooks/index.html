@@ -570,6 +570,7 @@
   "downlink_queue_invalidated": {},
   "location_solved": {},
   "service_data": {},
+  "health_status": {},
 }</code></pre>
 </details>
 
@@ -750,7 +751,10 @@
       </th>
       <td>
           <p>HTTP headers to use.</p>
+          <p><code>max_pairs</code>: <code>50</code></p>
+            <p><code>max_len</code> (key): <code>64</code></p>
         
+            <p><code>max_len</code> (value): <code>256</code></p>
         
       </td>
     </tr>
@@ -1293,6 +1297,44 @@ The field is provided for convenience reasons, and can contain API keys with add
   </tbody>
 </table>
 
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>health_status</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ApplicationWebhookHealth">
+  
+  <code>
+    
+    ApplicationWebhookHealth
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
 
 
 <h3 id="message:ApplicationWebhook.Message">Message <code>ApplicationWebhook.Message</code></h3>
@@ -1386,6 +1428,225 @@ The field is provided for convenience reasons, and can contain API keys with add
   </tbody>
 </table>
 
+
+
+<h3 id="message:ApplicationWebhookHealth">Message <code>ApplicationWebhookHealth</code></h3>
+<b>Restrictions:</b>
+<ul>
+  <li>Only one of <code>healthy</code>, <code>unhealthy</code> can be set.</li>
+</ul>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "healthy": {},
+  "unhealthy": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>healthy</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ApplicationWebhookHealth.WebhookHealthStatusHealthy">
+  
+  <code>
+    
+    ApplicationWebhookHealth.WebhookHealthStatusHealthy
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>unhealthy</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ApplicationWebhookHealth.WebhookHealthStatusUnhealthy">
+  
+  <code>
+    
+    ApplicationWebhookHealth.WebhookHealthStatusUnhealthy
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:ApplicationWebhookHealth.WebhookHealthStatusUnhealthy">Message <code>ApplicationWebhookHealth.WebhookHealthStatusUnhealthy</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "failed_attempts": 0,
+  "last_failed_attempt_at": "0001-01-01T00:00:00Z",
+  "last_failed_attempt_details": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>failed_attempts</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint64</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>last_failed_attempt_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>last_failed_attempt_details</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ErrorDetails">
+  
+  <code>
+    
+    ErrorDetails
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:ApplicationWebhookHealth.WebhookHealthStatusHealthy">Message <code>ApplicationWebhookHealth.WebhookHealthStatusHealthy</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
 
 
 <h3 id="message:ApplicationWebhookIdentifiers">Message <code>ApplicationWebhookIdentifiers</code></h3>
@@ -1578,6 +1839,328 @@ The field is provided for convenience reasons, and can contain API keys with add
       <td>
           <p><code>max_len</code>: <code>36</code></p>
           <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:ErrorDetails">Message <code>ErrorDetails</code></h3>
+<p>Error details that are communicated over gRPC (and HTTP) APIs.
+The messages (for translation) are stored as &ldquo;error:<namespace>:<name>&rdquo;.</p>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "namespace": "",
+  "name": "",
+  "message_format": "",
+  "attributes": {},
+  "correlation_id": "",
+  "cause": {},
+  "code": 0,
+  "details": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>namespace</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Namespace of the error (typically the package name in The Things Stack).</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>name</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Name of the error.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>message_format</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The default (fallback) message format that should be used for the error.
+This is also used if the client does not have a translation for the error.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>attributes</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Struct
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Attributes that should be filled into the message format. Any extra attributes
+can be displayed as error details.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>correlation_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The correlation ID of the error can be used to correlate the error to stack
+traces the network may (or may not) store about recent errors.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>cause</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ErrorDetails">
+  
+  <code>
+    
+    ErrorDetails
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The error that caused this error.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>code</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The status code of the error.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>details</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+          
+        
+        repeated 
+  
+  <code>
+    
+      google.protobuf.
+    
+    Any
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The details of the error.</p>
+        
       </td>
     </tr>
     
@@ -1881,6 +2464,14 @@ The field is provided for convenience reasons, and can contain API keys with add
 
 	
 
+	
+
+	
+
+	
+
+	
+
 
         </div>
         <div class="is-clearfix">
@@ -1949,10 +2540,10 @@ The field is provided for convenience reasons, and can contain API keys with add
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 12 Jul 2021.
+  Last changed by Nejra Selimović on 22 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f3394edb26008b428a8fc5d32c7691290353445b">
-      Add missing API messages and enums (fix broken links) (#442)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/24a76ce6db91fd57af5f0c8e74d2ff226b09c973">
+      doc: Add v3.16.2 release docs (#686)
     </a>
 </p>
 
