@@ -38,7 +38,7 @@ Commands are slightly different if using Windows PowerShell, for example you cou
 $ $env:TTNV2_APP_ID='ttn-v2-application-ID'
 ```
 
-If you are migrating end devices from a private The Things Industries V2 (SaaS) cluster, you need to configure one extra environmental variable:
+Since migration is still possible only from a private The Things Industries V2 (SaaS) cluster, you need to configure one extra environmental variable:
 
 ```bash
 $ export TTNV2_DISCOVERY_SERVER_ADDRESS="<instance-id>.thethings.industries:1900"

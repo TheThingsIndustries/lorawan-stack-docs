@@ -9,11 +9,15 @@ This section documents the process of migrating end devices from {{% ttnv2 %}} t
 
 <!--more-->
 
+The Things Network {{% ttnv2 %}} machines have been completely shut down on **December 8, 2021**, so it is not possible to migrate devices from The Things Network {{% ttnv2 %}} to {{% tts %}} anymore. See [Adding Devices]({{< ref "/devices/adding-devices" >}}) section to start adding devices to {{% tts %}} from scratch.
+
+If your private {{% ttnv2 %}} deployment is still running, this section can guide you through the process of migrating devices from private {{% ttnv2 %}} deployment to {{% tts %}}.
+
 ## Prerequisites
 
-1. User account on The Things Network {{% ttnv2 %}} or The Things Industries {{% ttnv2 %}}.
-2. End device(s) and gateway(s) connected to a {{% ttnv2 %}} network.
-3. User account in {{% tts %}}.
+1. The Things Industries {{% ttnv2 %}} user account.
+2. End device(s) and gateway(s) connected to a private The Things Industries {{% ttnv2 %}} network.
+3. {{% tts %}} user account.
 
 We recommend testing migration on a single end device or a small batch of end devices in order to make sure the migration process goes as expected.
 
@@ -62,13 +66,11 @@ For detailed tutorials on the integrations that are available in {{% tts %}}, se
 
 When you have added your application and elements associated with it, it is time to migrate your end device(s) from {{% ttnv2 %}} to {{% tts %}}.
 
-End devices connected to The Things Network V2 can be migrated to {{% tts %}} Cloud and {{% tts %}} Community Edition without the need for migrating a gateway, thanks to the default connection with [Packet Broker]({{< ref "/getting-started/packet-broker" >}}) which forwards all messages received on {{% ttnv2 %}} to The Things Stack. The Things Industries V2 (SaaS) can also be connected to Packet Broker by contacting [support](mailto:support@thethingsindustries.com), while {{% tts %}} Enterprise or Open Source can be [configured]({{< ref "/getting-started/packet-broker/connect" >}}) manually.
+Thanks to [Packet Broker]({{< ref "/getting-started/packet-broker" >}}), end devices connected to private The Things Industries {{% ttnv2 %}} network can be migrated to {{% tts %}} deployments without migrating gateways. The Things Industries {{% ttnv2 %}} deployments can be connected to Packet Broker on a customer request - please contact [The Things Industries support](mailto:support@thethingsindustries.com). {{% tts %}} Community Edition and {{% tts %}} Cloud are connected to Packet Broker by default, while {{% tts %}} Enterprise and {{% tts %}} Open Source can be [configured]({{< ref "/getting-started/packet-broker/connect" >}}) manually.
 
 If you are using deployments connected to Packet Broker, the traffic from your end device(s) will be routed to {{% tts %}} after migrating your device(s). However, there are certain requirements that your devices need to meet for Packet Broker to route their traffic to {{% tts %}} correctly. See [Packet Broker Requirements for End Device Migration]({{< ref "/getting-started/migrating/migrating-from-v2/packet-broker-requirements" >}}) for detailed information.
 
-If you are using deployments that are not connected to Packet Broker, you will have to [migrate your gateway]({{< ref "/getting-started/migrating/gateway-migration" >}}) to receive traffic from your end device in {{% tts %}}.
-
-Since {{% tts %}} `v3.13.0` release, The Things Network community members can freely migrate their gateways from The Things Network {{% ttnv2 %}} to {{% tts %}} Community Edition, while still providing uplink and downlink coverage to The Things Network {{% ttnv2 %}}.
+On the other hand, if you are using deployments that are not connected to Packet Broker, you will have to [migrate your gateway]({{< ref "/getting-started/migrating/gateway-migration" >}}) to receive traffic from your end device in {{% tts %}}.
 
 There are two approaches for migrating devices, depending on how many end devices you intend to migrate and if you wish to migrate with or without active sessions, described in the following guides:
 

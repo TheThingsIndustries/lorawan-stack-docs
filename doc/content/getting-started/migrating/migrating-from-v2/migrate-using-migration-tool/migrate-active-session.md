@@ -26,15 +26,15 @@ In the case of persisting active sessions during migration, OTAA devices do not 
 
 The **DevAddr** and some other parameters (like **RX1 Delay**) are hardcoded for ABP devices. If you do not re-program the device to change these values, you can migrate it to {{% tts %}} with its active session. 
 
-Remember that if you are not migrating specifically from **The Things Industries V2 (SaaS)** to **{{% tts %}} Cloud**, you will have to [migrate your gateway]({{< ref "/getting-started/migrating/gateway-migration" >}}) to successfully migrate your end device with its active session.
-
 {{< /tabs/tab >}}
 
 {{< /tabs/container >}}
 
+Remember that if you are not migrating specifically from **The Things Industries V2 (SaaS)** to **{{% tts %}} Cloud**, you will have to [migrate your gateway]({{< ref "/getting-started/migrating/gateway-migration" >}}) to successfully migrate your end device with its active session.
+
 {{< warning >}} Exporting end devices with their active sessions will clear their root and session keys from {{% ttnv2 %}}, so these devices will automatically no longer work on {{% ttnv2 %}}. {{</ warning >}}
 
-{{< note >}} Before exporting end devices, you can first test the execution by appending the `--dry-run` and `--verbose` flags to the commands presented in the sections below. {{</ note >}}
+Before exporting end devices, you can first test the execution by appending the `--dry-run` and `--verbose` flags to the commands presented in the sections below.
 
 Use the `--ttnv2.resets-to-frequency-plan` flag to configure the factory preset frequencies of the device, so that it can keep working with {{% tts %}}. The list of uplink frequencies is inferred from the [Frequency Plan]({{< ref "/reference/frequency-plans" >}}).
 
@@ -98,8 +98,8 @@ Migrating your ABP device from {{% ttnv2 %}} to {{% tts %}} with its active sess
 
 If you are migrating an end device with its active session via Packet Broker (from **The Things Industries V2** to **{{% tts %}} Cloud**), you might need to set the **RX1 Delay** of the device to 5 seconds by [configuring MAC settings]({{< ref "/getting-started/migrating/configure-mac-settings" >}}), otherwise the traffic might not reach {{% tts %}} in time via Packet Broker. 
 
-In any case, you can leave the **RX1 Delay** value as is (1 second from {{% ttnv2 %}}), but then you will need to [migrate your gateway to {{% tts %}}]({{< ref "/getting-started/migrating/gateway-migration" >}}) too.
+In case you want to leave the **RX1 Delay** value as is (1 second from {{% ttnv2 %}}), you will need to [migrate your gateway to {{% tts %}}]({{< ref "/getting-started/migrating/gateway-migration" >}}) too.
 
-The Things Network community members can freely migrate their gateways from The Things Network {{% ttnv2 %}} to {{% tts %}} Community Edition, while still providing uplink and downlink coverage to The Things Network {{% ttnv2 %}}. Even if you manage to get your end device traffic routed to {{% tts %}} by Packet Broker, we recommend to migrate your gateways as soon as possible.
+Even if you manage to get your end device traffic routed to {{% tts %}} by Packet Broker, we recommend to migrate your gateways as soon as possible.
 
 {{< note >}} If you have migrated your device from {{% ttnv2 %}} to {{% tts %}} with an active session but cannot see any uplinks from the device on {{% tts %}}, see [Troubleshooting Devices]({{< ref "/devices/troubleshooting#i-can-see-some-received-uplinks-in-gateway-live-data-events-but-i-do-not-see-them-in-device-events" >}}). {{</ note >}}
