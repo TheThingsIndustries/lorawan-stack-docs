@@ -4,7 +4,7 @@ description: ""
 weight:
 ---
 
-This sections contains instructions to configure Amazon Cognito to work with {{% tts %}}.
+This section contains instructions to configure Amazon Cognito to work with {{% tts %}}.
 
 <!-- more -->
 
@@ -16,17 +16,17 @@ From the [Amazon Cognito Management Page](https://console.aws.amazon.com/cognito
 
 {{< figure src="manage-user-pools.png" >}}
 
-Click **Create User Pool** in the top right.
+Click **Create a user pool** in the top right.
 
 {{< figure src="create-user-pool.png" >}}
 
 Give the user pool a name of your choosing. You will not need this later, you may pick any name.
 
-Click **Review Defaults**.
+Click **Review defaults**.
 
 {{< figure src="name.png" >}}
 
-Leave all default settings, but click **Add App Client**.
+Leave all default settings, but click **Add app client**.
 
 {{< figure src="add-app-client.png" >}}
 
@@ -34,7 +34,7 @@ Click **Add an app client**.
 
 {{< figure src="add-app-client-2.png" >}}
 
-Give the App Client a name and leave all settings default. Click **Create App Client**.
+Give the App Client a name and leave all settings default. Click **Create app client**.
 
 {{< figure src="add-app-client-3.png" >}}
 
@@ -42,7 +42,7 @@ You will be taken back to the App Clients screen, where you should see the App C
 
 {{< figure src= "app-clients.png" >}}
 
-Verify that the App Client you added is listed in the pool. Click **Create Pool**.
+Verify that the App Client you added is listed in the pool. Click **Create pool**.
 
 {{< figure src= "create-pool.png" >}}
 
@@ -80,11 +80,15 @@ Choose **Domain name** from the left hand menu.
 
 Choose a domain name. You will not need to remember it, but **login will fail if no domain is configured**.
 
+{{< warning >}}
+Failing to configure a domain name will cause login to fail.
+{{</ warning >}}
+
 Click **Save changes**.
 
 {{< figure src="domain.png" >}}
 
-Finally, go to **App Clients** and choose your **App Client** to view your Client ID and Client Secret.
+Finally, go to **App clients** and choose your **App Client** to view your Client ID and Client Secret.
 
 {{< figure src="secret.png" >}}
 
@@ -92,8 +96,8 @@ Proceed to [Configure {{% tts %}} for SSO]({{< relref "../../sso#configure-the-t
 
 - **Client ID**: Provided by Cognito
 - **Client Secret**: Provided by Cognito
-- **Authentication Provider ID**: Of your choosing, above
-- **OpenID Discovery Address**: https://cognito-idp.{REGION_ID}.amazonaws.com/{POOL_ID}. That should look like https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_KcLwCelr7. Your Pool Id is visible in **General Settings**.
+- **Authentication Provider ID**: Of your choosing (see above)
+- **OpenID Discovery Address**: `https://cognito-idp.{REGION_ID}.amazonaws.com/{POOL_ID}`. That should look like `https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_KcLwCelr7`. Your Pool ID is visible in **General settings**.
 
 ## Troubleshooting Amazon Cognito
 

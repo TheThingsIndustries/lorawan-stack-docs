@@ -4,7 +4,7 @@ description: ""
 weight: 
 ---
 
-This sections contains instructions to configure Google OpenID Connect to work with {{% tts %}}.
+This section contains instructions to configure Google OpenID Connect to work with {{% tts %}}.
 
 <!-- more -->
 
@@ -14,11 +14,11 @@ Configuring OpenID Connect with your Google account will allow single sign-on fr
 
 From the [Google Cloud Console](https://console.cloud.google.com/apis/credentials), navigate to **APIs and Services**, and choose **Credentials** in the left hand menu.
 
-Click **Create Credentials** and choose **OAuth Client ID**.
+Click **Create Credentials** and choose **OAuth client ID**.
 
 {{< figure src="oauth-client-id.png" >}}
 
-Choose **Web Application** for the **Application Type**.
+Choose **Web application** for the **Application type**.
 
 {{< figure src="web-app.png" >}}
 
@@ -44,6 +44,6 @@ Proceed to [Configure {{% tts %}} for SSO]({{< relref "../../sso#configure-the-t
 
 - **Client ID**: Provided by Google
 - **Client Secret**: Provided by Google
-- **Authentication Provider ID**: Of your choosing, above
-- **Callback URL**: Above, includes your Authentication Provider ID
-- **OpenID Discovery Address**: https://accounts.google.com
+- **Authentication Provider ID**: Of your choosing (see above)
+- **Callback URL**: Includes your Authentication Provider ID (see above)
+- **OpenID Discovery Address**: `https://accounts.google.com`

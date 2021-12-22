@@ -22,13 +22,13 @@ new_in_version: "3.16"
 
 First, you must configure your OpenID Connect Provider to accept login requests from {{% tts %}} and to forward authentication to the callback address of your {{% tts %}} deployment.
 
-{{% tts %}} requires the following from the OpenID Connect Provider
+{{% tts %}} requires the following from the OpenID Connect Provider:
 
 - OpenID Discovery Address
 - Client ID
 - Client Secret
 
-And you must enter the following in the OpenID Connect Provider configuration
+And you must enter the following in the OpenID Connect Provider configuration:
 
 - Callback URL
 
@@ -76,7 +76,7 @@ $ tti-lw-cli authentication-providers create goog \
 --name Goog
 ```
 
-A list of provider discovery URLs is available from AWS [here](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-oidc-idp.html#cognito-user-pools-oidc-idp-step-1)
+A list of provider discovery URLs is available from AWS [here](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-oidc-idp.html#cognito-user-pools-oidc-idp-step-1).
 
 If succesful, `tti-lw-cli` will return a list of Authentication Providers. When you go to login, you will see the login option using the `name` you registered the Authentication Provider with.
 
