@@ -220,17 +220,17 @@
 </code></pre></div><p>Add the feed location to the package manager configuration file by using the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s2">&#34;src/gz bstn file:///lib/firmware/Basic-Station-packages-vx.x.x-for-Tektelic-gateways&#34;</span> <span class="se">\
 </span><span class="se"></span>&gt; /etc/opkg/bstn-feed.conf
-</code></pre></div><p>Enter the following command</p>
+</code></pre></div><p>Enter the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">opkg update
-</code></pre></div><p>Install the package using the following command</p>
+</code></pre></div><p>Install the package using the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">opkg install tektelic-bstn curl libcurl4
 </code></pre></div><h3 id="for-bsp-32x">For BSP 3.2.x</h3>
 <p>Upload the <code>ipk/bsp</code> folder to the gateway and extract it in to <code>/lib/firmware</code>.</p>
-<p>Add the feed location to the package manager configuration file by using the following command</p>
+<p>Add the feed location to the package manager configuration file by using the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">echo</span> <span class="s2">&#34;src/gz bstn file:///lib/firmware/bsp&#34;</span> &gt; /etc/opkg/bstn-feed.conf
-</code></pre></div><p>Enter the following command</p>
+</code></pre></div><p>Enter the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">opkg update
-</code></pre></div><p>Install the package using the following command</p>
+</code></pre></div><p>Install the package using the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">opkg install tektelic-bstn curl libcurl4
 </code></pre></div><h2 id="configure-gateway">Configure Gateway</h2>
 <p>Make sure Basic Station is installed by using the following command:</p>
@@ -240,26 +240,24 @@
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ps aux <span class="p">|</span> grep bstn
 </code></pre></div><p>The Basic Station process ID should be displayed.</p>
 <h3 id="upload-configuration-files">Upload Configuration Files</h3>
-<p>On Basic Station gateways, only CUPS <strong>or</strong> LNS can be configured. Configuring CUPS will automatically configure LNS, so to use The Things Stack, just follow the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/cups/">Connecting CUPS</a>.</p>
+<p>On Basic Station gateways, only CUPS or LNS can be configured. Configuring CUPS will automatically configure LNS, so to use The Things Stack, just follow the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/cups/">Connecting CUPS</a>.</p>
 <p>After completing the instructions for CUPS, you should have the following files:</p>
 <ul>
 <li><code>cert.pem</code> (Server Certificate)</li>
 <li><code>cups.key</code> or <code>lns.key</code> (Key File)</li>
+<li><code>cups.uri</code> (CUPS Server URL)</li>
 </ul>
 <p>The Tektelic Kona Micro expects the Server Certificate to be named <code>cups.trust</code>, so rename <code>cert.pem</code> to <code>cups.trust</code>.</p>
-<p>Upload the <code>cups.trust</code> and <code>cups.key</code> files to <code>/etc/bstn</code> on the gateway.</p>
-<p>By default, CUPS is enabled in Basic Station to connect with The Things Stack. If you don’t want to use CUPS then you can disable that by setting <code>skip_cups=true</code> in <code>/etc/default/bstn.toml</code> file. If you disable CUPS and use LNS, you will need a <code>lns.key</code> file, rather than a <code>cups.key</code> file.
-Finally, enter the following command to restart the Basic Station:</p>
+<p>Upload the <code>cups.trust</code>, <code>cups.key</code> and <code>cups.uri</code> files to <code>/etc/bstn</code> on the gateway.</p>
+<p>By default, CUPS is enabled in Basic Station to connect with The Things Stack. If you do not want to use CUPS then you can disable that by setting <code>skip_cups=true</code> in <code>/etc/default/bstn.toml</code> file. If you disable CUPS and use LNS, you will need a <code>lns.key</code> file, rather than a <code>cups.key</code> file.</p>
+<p>Finally, enter the following command to restart the Basic Station:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ /etc/init.d/tektelic-bstn restart
 </code></pre></div><p>Now your Gateway should be able to connect to The Things Stack.</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="where-can-i-find-log-files">Where can I find log files?</h3>
-<p>You can find the Basic Station log in <code>/var/log/syslog</code> (If your GW has 3.0.x, 3.1.x, 4.0.x
-and 4.1.x BSPs)</p>
-<p>You can find the Basic Station log in <code>/var/log/bstn.log</code> (If your GW has 3.2.x and 4.2.x or
-later)</p>
+<p>If your gateway has 3.0.x, 3.1.x, 4.0.x or 4.1.x BSPs, you can find the Basic Station log in <code>/var/log/syslog</code>. If your gateway&rsquo;s BSP version is 3.2.x, 4.2.x or later, Basic Station logs can be found in <code>/var/log/bstn.log</code>.</p>
 <h3 id="what-do-i-do-if-basic-station-wont-run">What do I do if Basic Station won&rsquo;t run?</h3>
-<p>If it is not running, please reach out to Tektelic on their <a href="https://support.tektelic.com/portal/en/signin">support portal</a>, or support email – <a href="mailto:support@tektelic.com">support@tektelic.com</a></p>
+<p>If it is not running, please reach out to Tektelic on <a href="https://support.tektelic.com/portal/en/signin">Tektelic support portal</a> or <a href="mailto:support@tektelic.com">Tektelic support email</a>.</p>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/gateways/tektelickonamicro/">← Tektelic Kona Micro IoT LoRaWAN Gateway</a>
@@ -333,10 +331,10 @@ later)</p>
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 22 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/8a0b02a3c5bda896ea673dec60691f8d85e40286">
+      doc: Add CUPS server info, minor readability fixes (#664)
     </a>
 </p>
 
