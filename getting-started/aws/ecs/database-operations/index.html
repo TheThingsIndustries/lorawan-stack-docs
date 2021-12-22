@@ -263,6 +263,42 @@
 </span><span class="s1">    ]
 </span><span class="s1">  }&#39;</span>
 </code></pre></div><p>In this case, the command, arguments and flags need to be written as a JSON array.</p>
+<h2 id="initialize-events-storage">Initialize Events Storage</h2>
+<p>If you use events storage (template <code>timescale</code>), you need to initialize the database.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="aws-console">
+      <a>
+        <span>AWS Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="aws-cli">
+      <a>
+        <span>AWS CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="aws-console">
+  <pre><code>tti-lw-stack,storage-db,init,--timescaledb.chunk-time-interval,12h,--timescaledb.enable-retention-policy,--timescaledb.retention-days,31
+</code></pre>
+</section>
+<section data-content="aws-cli">
+  <pre><code>[&quot;tti-lw-stack&quot;,&quot;storage-db&quot;,&quot;init&quot;,&quot;--timescaledb.chunk-time-interval&quot;,&quot;12h&quot;,&quot;--timescaledb.enable-retention-policy&quot;,&quot;--timescaledb.retention-days&quot;,&quot;31&quot;]
+</code></pre>
+</section>
+
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Depending on your use case, feel free to adjust parameter values.
+</div>
+
 <h2 id="initialize-identity-server-database">Initialize Identity Server Database</h2>
 <p>When deploying your main cluster with Identity Server for the first time, the database needs to be initialized.</p>
 <div class="tabs is-boxed">
@@ -391,11 +427,11 @@
 </div>
 <div class="tab-content content">
   <section data-content="aws-console">
-  <pre><code>tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=$ID,--name=$NAME,--secret=$CLIENT_SECRET,--redirect-uri=/console/oauth/callback,--redirect-uri=https://domain/console/oauth/callback,--logout-redirect-uri=/console,--logout-redirect-uri=https://domain/console
+  <pre><code>tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=$ID,--name=$NAME,--secret=$CLIENT_SECRET,--redirect-uri=/console/oauth/callback,--redirect-uri=https://$DOMAIN/console/oauth/callback,--logout-redirect-uri=/console,--logout-redirect-uri=https://$DOMAIN/console
 </code></pre>
 </section>
 <section data-content="aws-cli">
-  <pre><code>[&quot;tti-lw-stack&quot;,&quot;is-db&quot;,&quot;create-oauth-client&quot;,&quot;--tenant-id=NULL&quot;,&quot;--id=$ID&quot;,&quot;--name=$NAME&quot;,&quot;--secret=$CLIENT_SECRET&quot;,&quot;--redirect-uri=/console/oauth/callback&quot;,&quot;--redirect-uri=https://domain/console/oauth/callback&quot;,&quot;--logout-redirect-uri=/console&quot;,&quot;--logout-redirect-uri=https://domain/console&quot;]
+  <pre><code>[&quot;tti-lw-stack&quot;,&quot;is-db&quot;,&quot;create-oauth-client&quot;,&quot;--tenant-id=NULL&quot;,&quot;--id=$ID&quot;,&quot;--name=$NAME&quot;,&quot;--secret=$CLIENT_SECRET&quot;,&quot;--redirect-uri=/console/oauth/callback&quot;,&quot;--redirect-uri=https://$DOMAIN/console/oauth/callback&quot;,&quot;--logout-redirect-uri=/console&quot;,&quot;--logout-redirect-uri=https://$DOMAIN/console&quot;]
 </code></pre>
 </section>
 
@@ -626,6 +662,9 @@
   <ul class="menu-list">
     
       
+      <li><a href='#initialize-events-storage'>Initialize Events Storage</a></li>
+    
+      
       <li><a href='#initialize-identity-server-database'>Initialize Identity Server Database</a></li>
     
       
@@ -693,10 +732,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Adrian-Stefan Mares on 19 Feb 2021.
+  Last changed by Michał Borkowski on 22 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/afa9207e0074ada40fb8f45e86d575cf2f5182c2">
-      doc: Document the ns-db,as-db,dcs-db commands
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/efaf788e553e4222535b711214768e7879862d48">
+      doc: Document storage-db intialization (#650)
     </a>
 </p>
 
