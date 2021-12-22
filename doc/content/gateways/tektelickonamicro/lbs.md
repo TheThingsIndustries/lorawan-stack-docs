@@ -29,13 +29,13 @@ $ echo "src/gz bstn file:///lib/firmware/Basic-Station-packages-vx.x.x-for-Tekte
 > /etc/opkg/bstn-feed.conf
 ```
 
-Enter the following command
+Enter the following command:
 
 ```bash
 opkg update
 ```
 
-Install the package using the following command
+Install the package using the following command:
 
 ```bash
 opkg install tektelic-bstn curl libcurl4
@@ -45,19 +45,19 @@ opkg install tektelic-bstn curl libcurl4
 
 Upload the `ipk/bsp` folder to the gateway and extract it in to `/lib/firmware`.
 
-Add the feed location to the package manager configuration file by using the following command
+Add the feed location to the package manager configuration file by using the following command:
 
 ```bash
 $ echo "src/gz bstn file:///lib/firmware/bsp" > /etc/opkg/bstn-feed.conf
 ```
 
-Enter the following command
+Enter the following command:
 
 ```bash
 opkg update
 ```
 
-Install the package using the following command
+Install the package using the following command:
 
 ```bash
 opkg install tektelic-bstn curl libcurl4
@@ -83,18 +83,20 @@ The Basic Station process ID should be displayed.
 
 ### Upload Configuration Files
 
-On Basic Station gateways, only CUPS **or** LNS can be configured. Configuring CUPS will automatically configure LNS, so to use {{% tts %}}, just follow the instructions for [Connecting CUPS]({{< ref "/gateways/lora-basics-station/cups" >}}).
+On Basic Station gateways, only CUPS or LNS can be configured. Configuring CUPS will automatically configure LNS, so to use {{% tts %}}, just follow the instructions for [Connecting CUPS]({{< ref "/gateways/lora-basics-station/cups" >}}).
 
 After completing the instructions for CUPS, you should have the following files:
 
 - `cert.pem` (Server Certificate)
 - `cups.key` or `lns.key` (Key File)
+- `cups.uri` (CUPS Server URL)
 
 The Tektelic Kona Micro expects the Server Certificate to be named `cups.trust`, so rename `cert.pem` to `cups.trust`.
 
-Upload the `cups.trust` and `cups.key` files to `/etc/bstn` on the gateway.
+Upload the `cups.trust`, `cups.key` and `cups.uri` files to `/etc/bstn` on the gateway.
 
-By default, CUPS is enabled in Basic Station to connect with {{% tts %}}. If you don’t want to use CUPS then you can disable that by setting `skip_cups=true` in `/etc/default/bstn.toml` file. If you disable CUPS and use LNS, you will need a `lns.key` file, rather than a `cups.key` file.
+By default, CUPS is enabled in Basic Station to connect with {{% tts %}}. If you do not want to use CUPS then you can disable that by setting `skip_cups=true` in `/etc/default/bstn.toml` file. If you disable CUPS and use LNS, you will need a `lns.key` file, rather than a `cups.key` file.
+
 Finally, enter the following command to restart the Basic Station:
 
 ```bash
@@ -107,12 +109,8 @@ Now your Gateway should be able to connect to {{% tts %}}.
 
 ### Where can I find log files?
 
-You can find the Basic Station log in `/var/log/syslog` (If your GW has 3.0.x, 3.1.x, 4.0.x
-and 4.1.x BSPs)
-
-You can find the Basic Station log in `/var/log/bstn.log` (If your GW has 3.2.x and 4.2.x or
-later)
+If your gateway has 3.0.x, 3.1.x, 4.0.x or 4.1.x BSPs, you can find the Basic Station log in `/var/log/syslog`. If your gateway's BSP version is 3.2.x, 4.2.x or later, Basic Station logs can be found in `/var/log/bstn.log`.
 
 ### What do I do if Basic Station won't run?
 
-If it is not running, please reach out to Tektelic on their [support portal](https://support.tektelic.com/portal/en/signin), or support email – support@tektelic.com
+If it is not running, please reach out to Tektelic on [Tektelic support portal](https://support.tektelic.com/portal/en/signin) or [Tektelic support email](mailto:support@tektelic.com).

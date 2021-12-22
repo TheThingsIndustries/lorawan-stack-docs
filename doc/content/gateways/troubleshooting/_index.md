@@ -256,7 +256,7 @@ Example:
 
 If you are facing `TX_FREQ` or `TX_POWER` errors, please make sure that your gateway's `global_conf.json` file is properly configured. See [{{% udp-pf %}} Configuration]({{< ref "/gateways/udp#configuration" >}}) section for more info.
 
-For the rest of errors in the list above, please create an issue in [{{% tts %}} GitHub repository](https://github.com/TheThingsNetwork/lorawan-stack) or contact [The Things Industries support](support@thethingsindustries.com).
+For the rest of errors in the list above, please create an issue in [{{% tts %}} GitHub repository](https://github.com/TheThingsNetwork/lorawan-stack) or contact [The Things Industries support](mailto:support@thethingsindustries.com).
 
 ## I'm noticing "radio is not emitting frame - abandoning TX, trying alternative" error in the LoRa Basics Station gateway's packet forwarder logs. What is causing this?
 
