@@ -254,7 +254,7 @@
 </span></code></pre></div><h3 id="step-3-deploy-the-crypto-server">Step 3: deploy the Crypto Server</h3>
 <p>Deploy the template <code>200-1-crypto</code>. This template is designed to be deployed in a separate account, but same region. No other templates are needed for Crypto Server, this is a self-contained deployment.</p>
 <ul>
-<li>the tuple <code>{NetworkName}.${Environment}.${Cluster}</code> should NOT be identical. We suggest using the same <code>NetworkName</code> and <code>Environment</code>, but different <code>Cluster</code></li>
+<li>the tuple <code>${Cluster}.${Environment}.${NetworkName}</code> should NOT be identical. We suggest using the same <code>NetworkName</code> and <code>Environment</code>, but different <code>Cluster</code></li>
 <li>the <code>CidrBlock</code> parameter should NOT be identical</li>
 <li>the <code>ClusterSecretValue</code> parameter MUST be identical</li>
 <li>the <code>DefaultTenantID</code> parameter MUST be identical</li>
@@ -264,7 +264,7 @@
 </ul>
 <h3 id="step-4-peer-networks">Step 4: peer networks</h3>
 <p>Deploy the template <code>6-1-vpc-peering</code> where you had deployed the Join Server to create the peering association. Refer to the Crypto Server stack for inputs of <code>6-1-vpc-peering</code>.</p>
-<p>The Things Stack uses Route53 for service discovery. In order to enable the Join Server &lt;-&gt; Crypto Server service discovery, you need to associate the <code>${NetworkName}.${Environment}.${Cluster}.cluster.local</code> hosted zone of Join Server with the VPC of Crypto Server and vice versa. For details on how to do it, refer to the <a href="https://aws.amazon.com/premiumsupport/knowledge-center/route53-private-hosted-zone/">AWS Documentation</a>.</p>
+<p>The Things Stack uses Route53 for service discovery. In order to enable the Join Server &lt;-&gt; Crypto Server service discovery, you need to associate the <code>${Cluster}.${Environment}.${NetworkName}.cluster.local</code> hosted zone of Join Server with the VPC of Crypto Server and vice versa. For details on how to do it, refer to the <a href="https://aws.amazon.com/premiumsupport/knowledge-center/route53-private-hosted-zone/">AWS Documentation</a>.</p>
 <h3 id="step-5-activate-the-connection">Step 5: activate the connection</h3>
 <p>Go through the Join Server stack and turn on switches for Interop:</p>
 <ul>
@@ -273,13 +273,13 @@
 <li><code>5-4-ecs-services</code>:
 <ul>
 <li>set <code>InteropEnabledJS</code> to the same value as previously <code>InteropEnabled</code></li>
-<li>set <code>CryptoServerDNSName</code> to <code>cs.${NetworkName}.${Environment}.${Cluster}.cluster.local</code>, where values for tuple <code>${NetworkName}.${Environment}.${Cluster}</code> come from the Crypto Server deployment</li>
+<li>set <code>CryptoServerDNSName</code> to <code>cs.${Cluster}.${Environment}.${NetworkName}.cluster.local</code>, where values for tuple <code>${Cluster}.${Environment}.${NetworkName}</code> come from the Crypto Server deployment</li>
 <li>set <code>InteropPacketBrokerEnabled</code> to a value relevant for your use case</li>
 <li>set <code>InteropPacketBrokerTokenIssuer</code> to a value relevant for your use case</li>
 </ul>
 </li>
 </ul>
-<p>Set the <code>ServicesDNSZone</code> parameter in the Crypto Server deployment. The value is expected to be in format <code>${NetworkName}.${Environment}.${Cluster}.cluster.local</code>, where where values for the tuple <code>${NetworkName}.${Environment}.${Cluster}</code> come from the Join Server deployment</p>
+<p>Set the <code>ServicesDNSZone</code> parameter in the Crypto Server deployment. The value is expected to be in format <code>${Cluster}.${Environment}.${NetworkName}.cluster.local</code>, where where values for the tuple <code>${Cluster}.${Environment}.${NetworkName}</code> come from the Join Server deployment</p>
 <h3 id="step-6-encrypt-key-values-for-secure-element-parts">Step 6: encrypt key values for secure element parts</h3>
 <p>Go to the Crypto Server stack and encrypt secure element parts keys using the AWS KMS key from stack output <code>MicrochipPartsTableKey</code> and put them into the DynamoDB table from output <code>MicrochipPartsTable</code>. You can do it in the following way:</p>
 <ol>
@@ -389,10 +389,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Michał Borkowski on 21 Dec 2021.
+  Last changed by Michał Borkowski on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/76b157a926fa5ed4e7e2a16ed00ed35c164b5c2d">
-      doc: Update interop documentation (#687)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b6a127cd0cc6f22a10cfd29c1a384dc7c5d20c36">
+      doc: Update interop documentation (#689)
     </a>
 </p>
 
