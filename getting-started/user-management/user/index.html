@@ -260,11 +260,15 @@
 </section>
 <section data-content="cli">
   <h2 id="managing-users-using-the-cli">Managing Users using the CLI</h2>
+<p>We define some user parameters that will be used below:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">NAME</span><span class="o">=</span><span class="s2">&#34;My Colleague&#34;</span>
+<span class="nv">EMAIL</span><span class="o">=</span><span class="s2">&#34;colleague@thethings.network&#34;</span>
+</code></pre></div><p>Make sure to modify these according to your setup.</p>
 <h2 id="creating-users">Creating Users</h2>
 <p>Network Administrators can create user accounts as follows:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli users create colleague <span class="se">\
-</span><span class="se"></span>  --name <span class="s2">&#34;My Colleague&#34;</span> <span class="se">\
-</span><span class="se"></span>  --primary-email-address colleague@thethings.network
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli users create colleague <span class="se">\
+</span><span class="se"></span>  --name <span class="nv">$NAME</span> <span class="se">\
+</span><span class="se"></span>  --primary-email-address <span class="nv">$EMAIL</span>
 </code></pre></div><p>You will be prompted to enter the password:</p>
 <pre><code>Please enter password:***************
 Please confirm password:***************
@@ -289,7 +293,7 @@ Please confirm password:***************
 </code></pre></div></details>
 <h2 id="inviting-users">Inviting Users</h2>
 <p>You can create invitations for users to join the network with the <code>users invitations create</code> command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli users invitations create colleague@thethings.network
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli users invitations create <span class="nv">$EMAIL</span>
 </code></pre></div><p>After you do this, you will be able to list the invitations you&rsquo;ve sent:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">% ttn-lw-cli users invitations list
 </code></pre></div><details><summary>Output</summary>
@@ -302,10 +306,10 @@ Please confirm password:***************
 <span class="p">}]</span>
 </code></pre></div></details>
 <p>You will also be able to delete an invitation if you want to revoke it:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli users invitations delete colleague@thethings.network
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli users invitations delete <span class="nv">$EMAIL</span>
 </code></pre></div><h2 id="listing-users">Listing Users</h2>
 <p>To list users with the CLI, use the <code>users list</code> command. Make sure to specify the fields you&rsquo;re interested in.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli users list --name --state --admin
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli users list --name --state --admin
 </code></pre></div><details><summary>Output</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">[{</span>
   <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -327,7 +331,7 @@ Please confirm password:***************
 <p>Use the pagination flags <code>--limit</code> and <code>--page</code> when there are many users.</p>
 <h2 id="searching-for-users">Searching for Users</h2>
 <p>To search for users with the CLI, use the <code>users search</code> command. Make sure to specify the fields you&rsquo;re interested in. We&rsquo;ll search for users with IDs that contain &ldquo;new&rdquo;:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli users search --id-contains new --name
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli users search --id-contains new --name
 </code></pre></div><details><summary>Output</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">[{</span>
   <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -341,7 +345,7 @@ Please confirm password:***************
 <p>Use the pagination flags <code>--limit</code> and <code>--page</code> when there are many users.</p>
 <h2 id="updating-users">Updating Users</h2>
 <p>To update users with the CLI, use the <code>users update</code> command. The following command updates the state of user <code>new-user</code> to &ldquo;approved&rdquo; and makes them admin of the network:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli users update new-user --state APPROVED --admin <span class="nb">true</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli users update new-user --state APPROVED --admin <span class="nb">true</span>
 </code></pre></div><details><summary>Output</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -465,10 +469,10 @@ Please confirm password:***************
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

@@ -228,9 +228,9 @@
 </div>
 
 <p>Replace <code>&lt;app-id&gt;</code> with the <strong>Application ID</strong> of the application that you created in prerequisites, and run the following command in the CLI:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications claim authorize &lt;app-id&gt;
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli applications claim authorize &lt;app-id&gt;
 </code></pre></div><p>To undo the action:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli application claim unauthorize &lt;app-id&gt;
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli application claim unauthorize &lt;app-id&gt;
 </code></pre></div><h2 id="register-device">Register Device</h2>
 <p>In order to make a device claimable, the device first needs to be added first in the application that has been authorized for claiming.</p>
 <p>If you already have devices in your application that can be claimed, i.e. to transfer the ownership, you can go ahead to the next section.</p>
@@ -272,7 +272,8 @@
 </section>
 <section data-content="cli">
   <p>To configure claiming using the CLI, use the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-device <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --claim-authentication-code.value ABCD <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">CLAIM_AUTHENTICATION_CODE</span><span class="o">=</span><span class="s2">&#34;ABCD&#34;</span>
+ttn-lw-cli end-device <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --claim-authentication-code.value <span class="nv">$CLAIM_AUTHENTICATION_CODE</span> <span class="se">\
 </span><span class="se"></span>  --claim-authentication-code.valid-from 2021-03-01T00:00:00Z <span class="se">\
 </span><span class="se"></span>  --claim-authentication-code.valid-from 2021-03-31T23:59:59Z
 </code></pre></div><p>This sets the secret claim authentication code to <code>ABCD</code>, that can be used in March 2021.</p>
@@ -358,10 +359,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 08 Oct 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/9f319ea2ea00fef53b3a27fa24bd8d26f1661383">
-      doc: Add note about deployments, fix CLI command (#610)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

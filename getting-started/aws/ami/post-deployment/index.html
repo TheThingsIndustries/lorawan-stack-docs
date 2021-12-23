@@ -287,9 +287,9 @@
 <p>In most cases, you will interact with The Things Enterprise Stack only via the Console or the CLI. However, in case there is a need to directly access the EC2 instance, there is an option to do so via SSH.</p>
 <p>SSH access is possible only via the IP addresses set using the <strong>Restrict SSH Access to IP Range</strong> parameter during deployment. Also, the SSH client needs access to the private key corresponding to the public key that was chosen in the <strong>SSH Key</strong> parameter during deployment. The SSH username is <code>ec2-user</code>.</p>
 <p>For example, you can use the OpenSSH client via the terminal and login using:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh -i &lt;private-key-file&gt; ec2-user@PublicIP
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ssh -i &lt;private-key-file&gt; ec2-user@PublicIP
 </code></pre></div><p>Upon accessing the machine, navigate to the <code>tti</code> directory:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">cd</span> /tti
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> /tti
 </code></pre></div><p>This directory is structured as follows:</p>
 <pre><code>├── acme                        # contains SSL certificates and related files
 ├── bootstrap                   # contains logs generated during deployment and restarts
@@ -300,7 +300,7 @@
     ├── public                  # contains the static assets
     └── tti-lw-stack            # The Things Enterprise Stack binary
 </code></pre><p>The Things Enterprise Stack binary is run as a <code>systemd</code> service. In order to check the logs, run the following:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo journalctl -f -u lorawan-stack.service
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo journalctl -f -u lorawan-stack.service
 </code></pre></div><h2 id="routing-lorawan-traffic">Routing LoRaWAN Traffic</h2>
 <p>Now that your stack has been successfully deployed, let&rsquo;s look at how to connect a LoRaWAN Gateway, Register a LoRaWAN Device and read traffic from this device.</p>
 <h3 id="connecting-a-gateway">Connecting a Gateway</h3>
@@ -390,10 +390,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Michał Borkowski on 24 Aug 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/83736a9394ec098e471a8a3f7cb9265648c485ce">
-      doc: Fixes to AMI update docs (#539)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

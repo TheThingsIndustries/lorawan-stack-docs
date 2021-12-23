@@ -207,7 +207,7 @@
 <li>For replace: <code>/api/v3/as/applications/{application_id}/webhooks/{webhook_id}/devices/{device_id}/down/replace</code></li>
 </ul>
 <p>For example, to push a downlink to the end device <code>dev1</code> of the application <code>app1</code> using the webhook <code>wh1</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
@@ -220,7 +220,7 @@
 </span><span class="s1">  }&#39;</span> <span class="se">\
 </span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/as/applications/app1/webhooks/wh1/devices/dev1/down/push&#39;</span>
 </code></pre></div><p>To schedule a human readable downlink to the same device using a downlink <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">Payload Formatter</a>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
@@ -240,7 +240,7 @@
 <p>You can also save the API key in the webhook configuration page using the the <strong>Downlink API Key</strong> field. The Application Server will provide it to your endpoint using the <code>X-Downlink-Apikey</code> header and the push and replace operations paths using the <code>X-Downlink-Push</code> and <code>X-Downlink-Replace</code> headers.</p>
 <p>The Things Stack keeps a queue of downlink messages per device. This queue can be replaced with a list of downlink messages. The queue can also be cleared by replacing it with an empty array.</p>
 <p>To clear the queue of downlink messages for an end device <code>dev1</code> of the application <code>app1</code> using the webhook <code>wh1</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
@@ -315,10 +315,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 15 Oct 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/15ef4dc34e22ae9d22329e93b1e5690ce36fd9be">
-      doc: Note about replacing downlink queue (#624)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

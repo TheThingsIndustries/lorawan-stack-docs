@@ -224,9 +224,13 @@
   </div>
 </div>
 
+<p>We first define some user parameters used below:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;app1&#34;</span>
+<span class="nv">DEVICE_ID</span><span class="o">=</span><span class="s2">&#34;dev1&#34;</span>
+</code></pre></div><p>Make sure to modify these according to your setup.</p>
 <h2 id="listing-the-available-packages">Listing the Available Packages</h2>
 <p>The application packages available for a given device <code>dev1</code> of application <code>app1</code> can be obtained as follows:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications packages list app1 dev1
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli applications packages list <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span>
 </code></pre></div><p>This gives the result in the JSON format:</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;packages&#34;</span><span class="p">:</span> <span class="p">[</span>
@@ -242,7 +246,9 @@
 <p>All of the commands for managing associations and default associations are symmetric, and may be switched one with another. For the rest of this reference we will consider default associations.</p>
 <h2 id="creating-and-updating-an-association">Creating and Updating an Association</h2>
 <p>In order to associate a given application package to a FPort of an application, you can use the <code>default-associations set</code> command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications packages default-associations <span class="nb">set</span> app1 <span class="m">25</span> --package-name test-package
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">F_PORT</span><span class="o">=</span><span class="m">25</span>
+<span class="nv">APP_PACKAGE_NAME</span><span class="o">=</span><span class="s2">&#34;test-package&#34;</span>
+ttn-lw-cli applications packages default-associations <span class="nb">set</span> <span class="nv">$APP_ID</span> <span class="nv">$F_PORT</span> --package-name <span class="nv">$APP_PACKAGE_NAME</span>
 </code></pre></div><p>This will associate FPort <code>25</code> of application <code>app1</code> with the application package <code>test-package</code>, as shown by the command output:</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -257,9 +263,9 @@
 <span class="p">}</span>
 </code></pre></div><p>Some application packages are stateful, and as such their state can be updated using the <code>data-*</code> parameters:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Create a JSON formatted file containing package data</span>
-$ <span class="nb">echo</span> <span class="s1">&#39;{ &#34;api_key&#34;: &#34;AQEA8+q0v...&#34; }&#39;</span> &gt; package-data.json
+<span class="nb">echo</span> <span class="s1">&#39;{ &#34;api_key&#34;: &#34;AQEA8+q0v...&#34; }&#39;</span> &gt; package-data.json
 <span class="c1"># Update the association with the new package data</span>
-$ ttn-lw-cli applications packages default-associations <span class="nb">set</span> app1 <span class="m">25</span> --data-local-file package-data.json
+ttn-lw-cli applications packages default-associations <span class="nb">set</span> <span class="nv">$APP_ID</span> <span class="nv">$F_PORT</span> --data-local-file package-data.json
 </code></pre></div><p>This will update the association to use the given <code>api_key</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -277,7 +283,7 @@ $ ttn-lw-cli applications packages default-associations <span class="nb">set</sp
 <span class="p">}</span>
 </code></pre></div><h2 id="listing-the-associations">Listing the Associations</h2>
 <p>The package associations of a given device can be listed using the <code>default-associations list</code> command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications packages default-associations list app1
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli applications packages default-associations list <span class="nv">$APP_ID</span>
 </code></pre></div><details><summary>Output</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;associations&#34;</span><span class="p">:</span> <span class="p">[</span>
@@ -297,7 +303,7 @@ $ ttn-lw-cli applications packages default-associations <span class="nb">set</sp
 </code></pre></div></details>
 <h2 id="retrieving-an-association">Retrieving an Association</h2>
 <p>The associations can be retrieved using the <code>default-associations get</code> command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications packages default-associations get app1 <span class="m">25</span> --data
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli applications packages default-associations get <span class="nv">$APP_ID</span> <span class="nv">$F_PORT</span> --data
 </code></pre></div><details><summary>Output</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -316,7 +322,7 @@ $ ttn-lw-cli applications packages default-associations <span class="nb">set</sp
 </code></pre></div></details>
 <h2 id="deleting-an-association">Deleting an Association</h2>
 <p>The associations can be deleted using the <code>default-associations delete</code> command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications packages associations delete app1 <span class="m">25</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli applications packages associations delete <span class="nv">$APP_ID</span> <span class="nv">$F_PORT</span>
 </code></pre></div>
         </div>
         
@@ -398,10 +404,10 @@ $ ttn-lw-cli applications packages default-associations <span class="nb">set</sp
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 22 Oct 2020.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2f9bf3382c643b2e960a25490f74f1148ea28e65">
-      doc: Reorganize docs
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

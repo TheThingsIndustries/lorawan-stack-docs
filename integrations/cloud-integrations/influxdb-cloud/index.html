@@ -343,9 +343,9 @@
 <span class="c1"># Define the message format</span>
   <span class="nv">data_format</span> <span class="o">=</span> <span class="s2">&#34;json&#34;</span>
 </code></pre></div><p>Next, you need to copy the previously generated token from the <strong>Tokens</strong> tab and export it to an environmental variable to be used by the InfluxDB <strong>output plugin</strong>, or you can simply pass it directly as a <code>token</code> value in the configuration file. You can set the environmental variable by using the following command in your terminal:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">INFLUX_TOKEN</span><span class="o">=</span><span class="s2">&#34;paste your token here&#34;</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">INFLUX_TOKEN</span><span class="o">=</span><span class="s2">&#34;paste your token here&#34;</span>
 </code></pre></div><p>Run the Telegraf agent in your terminal with the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ telegraf --config /path/to/custom/telegraf.conf
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">telegraf --config /path/to/custom/telegraf.conf
 </code></pre></div><h2 id="configure-telegraf-and-the-things-stack-for-webhook-integration">Configure Telegraf and The Things Stack for Webhook Integration</h2>
 <p>This section shows you how to configure the Telegraf agent with <a href="https://github.com/influxdata/telegraf/blob/master/plugins/inputs/http_listener_v2/">HTTP Listener v2</a> plugin and how to create a belonging <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/creating-webhooks/">Webhook integration</a> on The Things Stack.</p>
 <p>Update the Telegraf configuration you previously downloaded as described in <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/influxdb-cloud/">InfluxDB Cloud 2.0 Setup</a> by adding the following lines and modifying them according to your setup:</p>
@@ -366,9 +366,9 @@
 <span class="c1"># Define the message format</span>
   <span class="nv">data_format</span> <span class="o">=</span> <span class="s2">&#34;json&#34;</span>
 </code></pre></div><p>Copy the generated token from the <strong>Tokens</strong> tab and use it as a <code>token</code> value for the <strong>output plugin</strong> in your Telegraf configuration file, or export it to an environmental variable with the following command in your terminal:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">INFLUX_TOKEN</span><span class="o">=</span><span class="s2">&#34;paste your token here&#34;</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">INFLUX_TOKEN</span><span class="o">=</span><span class="s2">&#34;paste your token here&#34;</span>
 </code></pre></div><p>Start the Telegraf agent by running the following command in the terminal:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ telegraf --config /path/to/custom/telegraf.conf
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">telegraf --config /path/to/custom/telegraf.conf
 </code></pre></div><p>In The Things Stack Console, <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/creating-webhooks/">create a new webhook</a> with JSON <strong>Webhook format</strong>, set the <strong>Base URL</strong> to <code>http://localhost:8080/telegraf</code> and tick the box next to the message types you want to enable this webhook for.</p>
 <figure>
     <img src="tts-webhook-info.png"
@@ -466,10 +466,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

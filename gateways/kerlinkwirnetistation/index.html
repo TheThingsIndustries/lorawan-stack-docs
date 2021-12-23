@@ -209,7 +209,7 @@
 </ol>
 <p>Before registering a gateway in The Things Stack, you also need to find out the gateway&rsquo;s EUI. You can do so if you connect to the iStation by SSH-ing into it using <code>root</code> login and <code>pdmk-XXXXXX</code> passoword. <code>XXXXXX</code> represents the last six hexadecimal digits of the <strong>Board ID</strong> printed on the gateway&rsquo;s bottom. For example, if the <strong>Board ID</strong> is <code>921CHa010001</code>, the root password will be <code>pdmk-010001</code>.</p>
 <p>To print the gateway&rsquo;s EUI, use the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ grep EUI /tmp/board_info.json
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">grep EUI /tmp/board_info.json
 </code></pre></div><h2 id="registration">Registration</h2>
 <p>Create a gateway by following the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/">Adding Gateways</a> via Console or CLI. Choose a <strong>Gateway ID</strong> and paste the <strong>Gateway EUI</strong> you printed in the previous step.</p>
 <p>Create an API Key with <strong>View gateway information</strong> rights for this gateway using the same instructions. Copy the API key and save it for later use.</p>
@@ -218,7 +218,7 @@
 <h3 id="provisioning">Provisioning</h3>
 <p>In order to ease the process of connecting Wirnet iStation to The Things Stack, we provide the provisioning script <code>provision.sh</code> you can configure your gateway with. This script is compatible with any Wirnet iStation gateway.</p>
 <p>To provision the iStation gateway at <code>&lt;gateway-ip&gt;</code> to use the configuration of <code>&lt;gateway-id&gt;</code> provided by The Things Stack deployed at <code>&lt;server-address&gt;</code>, execute:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl -sL <span class="s1">&#39;https://raw.githubusercontent.com/TheThingsNetwork/kerlink-wirnet-firmware/v0.0.3/provision.sh&#39;</span> <span class="p">|</span> bash -s -- &lt;gateway-model&gt; &lt;gateway-ip&gt; &lt;server-address&gt; &lt;gateway-id&gt; &lt;gateway-api-key&gt;
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl -sL <span class="s1">&#39;https://raw.githubusercontent.com/TheThingsNetwork/kerlink-wirnet-firmware/v0.0.3/provision.sh&#39;</span> <span class="p">|</span> bash -s -- &lt;gateway-model&gt; &lt;gateway-ip&gt; &lt;server-address&gt; &lt;gateway-id&gt; &lt;gateway-api-key&gt;
 </code></pre></div><p>To avoid being prompted for <code>root</code> user password several times, you may add your SSH public key as authorized for <code>root</code> user on the gateway, for example, by <code>ssh-copy-id root@192.168.4.155</code>.</p>
 <p>Please refer to <a href="https://github.com/TheThingsNetwork/kerlink-wirnet-firmware/tree/v0.0.3#provisioning">Kerlink Wirnet Firmware provisioning documentation</a> for more detailed information on provisioning the Wirnet iStation.</p>
         </div>
@@ -292,10 +292,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

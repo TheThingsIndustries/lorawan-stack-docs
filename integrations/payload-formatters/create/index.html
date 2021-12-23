@@ -218,24 +218,39 @@
 </figure>
 </section>
 <section data-content="cli">
-  <h2 id="create-an-application-payload-formatter-using-the-cli">Create an Application Payload Formatter using the CLI</h2>
+  <p>We define some user parameters that will be used below:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;app1&#34;</span> 
+<span class="nv">API_KEY</span><span class="o">=</span><span class="s2">&#34;NNSXS.VEEBURF3KR77ZR..&#34;</span>
+<span class="nv">GTW_EUI</span><span class="o">=</span><span class="s2">&#34;00800000A00009EF&#34;</span>
+<span class="nv">USER_ID</span><span class="o">=</span><span class="s2">&#34;admin&#34;</span>
+</code></pre></div><p>Make sure to modify these according to your setup.</p>
+<h2 id="create-an-application-payload-formatter-using-the-cli">Create an Application Payload Formatter using the CLI</h2>
 <p>To create an application specific payload formatter, use the following command when linking an application. If creating a <a href="/docs/integrations/payload-formatters/javascript/">Javascript payload formatter</a>, save your <code>Encoder</code> and <code>Decoder</code> functions to files and load them using the <code>formatter-parameter-local-file</code> parameter:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications link <span class="nb">set</span> app1 <span class="se">\
-</span><span class="se"></span>  --api-key NNSXS.VEEBURF3KR77ZR..
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli applications link <span class="nb">set</span> <span class="nv">$APP_ID</span> <span class="se">\
+</span><span class="se"></span>  --api-key <span class="nv">$API_KEY</span>
   --default-formatters.down-formatter FORMATTER_JAVASCRIPT <span class="se">\
 </span><span class="se"></span>  --default-formatters.down-formatter-parameter-local-file <span class="s2">&#34;encoder.js&#34;</span> <span class="se">\
 </span><span class="se"></span>  --default-formatters.up-formatter FORMATTER_JAVASCRIPT <span class="se">\
 </span><span class="se"></span>  --default-formatters.up-formatter-parameter-local-file <span class="s2">&#34;decoder.js&#34;</span>
 </code></pre></div><p>To create a <a href="/docs/integrations/payload-formatters/cayenne/">CayenneLPP</a> or <a href="/docs/integrations/payload-formatters/device-repo/">Device Repository</a> application payload formatter, use the <code>FORMATTER_CAYENNELPP</code> or <code>FORMATTER_DEVICEREPO</code> constants. No <code>formatter-parameter-local-file</code> parameter is needed.</p>
 <h2 id="create-a-device-specific-payload-formatter">Create a Device Specific Payload Formatter</h2>
+<p>We first define some device-related user parameters:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">DEVICE_ID</span><span class="o">=</span><span class="s2">&#34;dev1-with-formatter&#34;</span>
+<span class="nv">DEV_EUI</span><span class="o">=</span><span class="s2">&#34;0004A30B001C0530&#34;</span>
+<span class="nv">APP_EUI</span><span class="o">=</span><span class="s2">&#34;800000000000000C&#34;</span>
+<span class="nv">FREQUENCY_PLAN</span><span class="o">=</span><span class="s2">&#34;EU_863_870&#34;</span>
+<span class="nv">APP_KEY</span><span class="o">=</span><span class="s2">&#34;752BAEC23EAE7964AF27C325F4C23C9A&#34;</span>
+<span class="nv">LORAWAN_VERSION</span><span class="o">=</span><span class="s2">&#34;1.0.3&#34;</span>
+<span class="nv">LORAWAN_PHY_VERSION</span><span class="o">=</span><span class="s2">&#34;1.0.3-a&#34;</span>
+</code></pre></div><p>Make sure you modify these according to your setup.</p>
 <p>It is possible to assign a device specific payload formatter when creating a device using the CLI. Use the following parameters during device creation, and if creating a <a href="/docs/integrations/payload-formatters/javascript/">Javascript payload formatter</a>, save your <code>Encoder</code> and <code>Decoder</code> functions to files and load them using the <code>formatter-parameter-local-file</code> parameter:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices create app1 dev1-with-formatter <span class="se">\
-</span><span class="se"></span>  --dev-eui 0004A30B001C0530 <span class="se">\
-</span><span class="se"></span>  --app-eui 800000000000000C <span class="se">\
-</span><span class="se"></span>  --frequency-plan-id EU_863_870 <span class="se">\
-</span><span class="se"></span>  --root-keys.app-key.key 752BAEC23EAE7964AF27C325F4C23C9A <span class="se">\
-</span><span class="se"></span>  --lorawan-version 1.0.3 <span class="se">\
-</span><span class="se"></span>  --lorawan-phy-version 1.0.3-a <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices create <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
+</span><span class="se"></span>  --dev-eui <span class="nv">$DEV_EUI</span> <span class="se">\
+</span><span class="se"></span>  --app-eui <span class="nv">$APP_EUI</span> <span class="se">\
+</span><span class="se"></span>  --frequency-plan-id <span class="nv">$FREQUENCY_PLAN</span> <span class="se">\
+</span><span class="se"></span>  --root-keys.app-key.key <span class="nv">$APP_KEY</span> <span class="se">\
+</span><span class="se"></span>  --lorawan-version <span class="nv">$LORAWAN_VERSION</span> <span class="se">\
+</span><span class="se"></span>  --lorawan-phy-version <span class="nv">$LORAWAN_PHY_VERSION</span> <span class="se">\
 </span><span class="se"></span>  --formatters.down-formatter FORMATTER_JAVASCRIPT <span class="se">\
 </span><span class="se"></span>  --formatters.down-formatter-parameter-local-file <span class="s2">&#34;encoder.js&#34;</span> <span class="se">\
 </span><span class="se"></span>  --formatters.up-formatter FORMATTER_JAVASCRIPT <span class="se">\
@@ -243,16 +258,16 @@
 </code></pre></div><p>To create a <a href="/docs/integrations/payload-formatters/cayenne/">CayenneLPP</a> or <a href="/docs/integrations/payload-formatters/device-repo/">Device Repository</a> device payload formatter, use the <code>FORMATTER_CAYENNELPP</code> or <code>FORMATTER_DEVICEREPO</code> constants. No <code>formatter-parameter-local-file</code> parameter is needed.</p>
 <h2 id="edit-a-device-specific-payload-formatter">Edit a Device Specific Payload Formatter</h2>
 <p>To change the payload formatter for an existing device, use the <code>end-devices update</code> command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices <span class="nb">set</span> app1 dev1-with-formatter <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
 </span><span class="se"></span>  --formatters.down-formatter FORMATTER_JAVASCRIPT <span class="se">\
 </span><span class="se"></span>  --formatters.down-formatter-parameter-local-file <span class="s2">&#34;encoder.js&#34;</span> <span class="se">\
 </span><span class="se"></span>  --formatters.up-formatter FORMATTER_JAVASCRIPT <span class="se">\
 </span><span class="se"></span>  --formatters.up-formatter-parameter-local-file <span class="s2">&#34;decoder.js&#34;</span>
 </code></pre></div><p>To unset the payload formatters, use the <code>--unset</code> flag. The command below will unset all device specific payload formatters:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices <span class="nb">set</span> app1 dev1-with-formatter <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
 </span><span class="se"></span>  --unset <span class="s2">&#34;formatters&#34;</span>
 </code></pre></div><p>It is also possible to unset the uplink or downlink formatters separately:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices <span class="nb">set</span> app1 dev1-with-formatter <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
 </span><span class="se"></span>  --unset <span class="s2">&#34;formatters.up-formatter,formatters.up-formatter-parameter&#34;</span>
 </code></pre></div>
 </section>
@@ -334,10 +349,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

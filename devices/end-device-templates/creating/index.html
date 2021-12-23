@@ -199,14 +199,21 @@
 </div>
 
 <p>You can create a device template from an existing device or extend an existing device template. You can also create a new template from scratch.</p>
+<p>We define some user parameters that will be used below:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;app1&#34;</span> 
+<span class="nv">DEVICE_ID</span><span class="o">=</span><span class="s2">&#34;dev1&#34;</span>
+<span class="nv">FREQUENCY_PLAN</span><span class="o">=</span><span class="s2">&#34;EU_863_870&#34;</span>
+<span class="nv">LORAWAN_VERSION</span><span class="o">=</span><span class="s2">&#34;1.0.3&#34;</span>
+<span class="nv">LORAWAN_PHY_VERSION</span><span class="o">=</span><span class="s2">&#34;1.0.3-a&#34;</span>
+</code></pre></div><p>Make sure to modify these according to your setup.</p>
 <h2 id="create-from-existing-device">Create from existing device</h2>
 <p>You can use the <code>end-device template create</code> command to create a template from an existing device.</p>
 <p>By default, <code>end-device template create</code> strips the device&rsquo;s application ID, device ID, <code>JoinEUI</code>, <code>DevEUI</code> and server addresses to create a generic template.</p>
 <p>You can include the end device identifiers by passing the concerning flags: <code>--application-id</code>, <code>--device-id</code>, <code>--join-eui</code> and <code>--dev-eui</code>.</p>
 <p>Pipe the output from getting a device to create a template, for example:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices get test-app test-dev <span class="se">\
-</span><span class="se"></span>  --lorawan-version <span class="se">\
-</span><span class="se"></span>  --lorawan-phy-version <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices get <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
+</span><span class="se"></span>  --lorawan-version <span class="nv">$LORAWAN_VERSION</span> <span class="se">\
+</span><span class="se"></span>  --lorawan-phy-version <span class="nv">$LORAWAN_PHY_VERSION</span> <span class="se">\
 </span><span class="se"></span>  <span class="p">|</span> ttn-lw-cli end-devices template create &gt; template.json
 </code></pre></div><details><summary>Output</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
@@ -231,9 +238,9 @@
 </code></pre></div></details>
 <h2 id="extend-existing-template">Extend existing template</h2>
 <p>Use the <code>end-device template extend</code> command to extend a template:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ cat template.json <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cat template.json <span class="se">\
 </span><span class="se"></span>  <span class="p">|</span> ttn-lw-cli end-devices template extend <span class="se">\
-</span><span class="se"></span>  --frequency-plan-id EU_863_870
+</span><span class="se"></span>  --frequency-plan-id <span class="nv">$FREQUENCY_PLAN</span>
 </code></pre></div><details><summary>Output</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;end_device&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -259,14 +266,14 @@
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></details>
-<p>See <code>$ ttn-lw-cli end-devices template extend --help</code> for all the fields that can be set.</p>
+<p>See <code>ttn-lw-cli end-devices template extend --help</code> for all the fields that can be set.</p>
 <h2 id="create-from-scratch">Create from scratch</h2>
 <p>The <code>end-device template extend</code> can also be used to create a new template from scratch by simply not piping an existing device as input.</p>
 <p>For example, create a new template from scratch:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices template extend <span class="se">\
-</span><span class="se"></span>  --lorawan-version 1.0.3 <span class="se">\
-</span><span class="se"></span>  --lorawan-phy-version 1.0.3-a <span class="se">\
-</span><span class="se"></span>  --frequency-plan-id EU_863_870
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices template extend <span class="se">\
+</span><span class="se"></span>  --lorawan-version <span class="nv">$LORAWAN_VERSION</span> <span class="se">\
+</span><span class="se"></span>  --lorawan-phy-version <span class="nv">$LORAWAN_PHY_VERSION</span> <span class="se">\
+</span><span class="se"></span>  --frequency-plan-id <span class="nv">$FREQUENCY_PLAN</span>
 </code></pre></div><details><summary>Output</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;end_device&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -363,10 +370,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

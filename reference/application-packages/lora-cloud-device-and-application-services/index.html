@@ -241,10 +241,12 @@
 </div>
 
 <p>The package can now be enabled using the <code>default-associations set</code> command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Create a JSON formatted file containing the uplink token</span>
-$ <span class="nb">echo</span> <span class="s1">&#39;{ &#34;token&#34;: &#34;AQEAdqwV67...&#34; }&#39;</span> &gt; package-data.json
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;app1&#34;</span>
+<span class="nv">F_PORT</span><span class="o">=</span><span class="m">199</span>
+<span class="c1"># Create a JSON formatted file containing the uplink token</span>
+<span class="nb">echo</span> <span class="s1">&#39;{ &#34;token&#34;: &#34;AQEAdqwV67...&#34; }&#39;</span> &gt; package-data.json
 <span class="c1"># Create the association</span>
-$ ttn-lw-cli applications packages default-associations <span class="nb">set</span> app1 <span class="m">199</span> --package-name lora-cloud-device-management-v1 --data-local-file package-data.json
+ttn-lw-cli applications packages default-associations <span class="nb">set</span> <span class="nv">$APP_ID</span> <span class="nv">$F_PORT</span> --package-name lora-cloud-device-management-v1 --data-local-file package-data.json
 </code></pre></div><p>This will enable the package on FPort <code>199</code> of all of the devices of application <code>app1</code>. You can now use the LoRa Cloud Device &amp; Application Services in order to manage your device!</p>
 <details><summary>Output</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
@@ -275,9 +277,9 @@ $ ttn-lw-cli applications packages default-associations <span class="nb">set</sp
 
 <p>The package may be configured to use a custom server URL using the package data:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Create a JSON formatted file containing the uplink token and the server URL</span>
-$ <span class="nb">echo</span> <span class="s1">&#39;{ &#34;token&#34;: &#34;AQEAdqwV67...&#34;, &#34;server_url&#34;: &#34;https://app.example.com/&#34; }&#39;</span> &gt; package-data.json
+<span class="nb">echo</span> <span class="s1">&#39;{ &#34;token&#34;: &#34;AQEAdqwV67...&#34;, &#34;server_url&#34;: &#34;https://app.example.com/&#34; }&#39;</span> &gt; package-data.json
 <span class="c1"># Create or update the default association</span>
-$ ttn-lw-cli applications packages default-associations <span class="nb">set</span> app1 <span class="m">199</span> --package-name lora-cloud-device-management-v1 --data-local-file package-data.json
+ttn-lw-cli applications packages default-associations <span class="nb">set</span> <span class="nv">$APP_ID</span> <span class="nv">$F_PORT</span> --package-name lora-cloud-device-management-v1 --data-local-file package-data.json
 </code></pre></div><details><summary>Output</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -399,10 +401,10 @@ $ ttn-lw-cli applications packages default-associations <span class="nb">set</sp
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 22 Oct 2020.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2f9bf3382c643b2e960a25490f74f1148ea28e65">
-      doc: Reorganize docs
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

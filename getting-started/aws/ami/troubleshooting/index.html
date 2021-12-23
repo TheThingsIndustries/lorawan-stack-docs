@@ -226,23 +226,19 @@ Move to generic getting started guide once ready.
 <h3 id="how-can-i-ssh-into-my-machine">How can I SSH into my machine?</h3>
 <p>You can SSH into the EC2 machine using the public IP output value.</p>
 <p>Log in AWS Console and open the CloudFormation resource and click on your recently deployed stack. Navigate to the <strong>Outputs</strong> tab and copy the value of the <strong>PublicIP</strong> field.</p>
-<p>Now, using the private key of the <strong>SSH Key</strong> value that you entered during deployment, you can SSH into the machine using</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh -i &lt;path-to-private-key&gt; ec2-user@&lt;PublicIP&gt;
+<p>Now, using the private key of the <strong>SSH Key</strong> value that you entered during deployment, you can SSH into the machine using:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ssh -i &lt;path-to-private-key&gt; ec2-user@&lt;PublicIP&gt;
 </code></pre></div><h3 id="how-can-i-see-logs-of-the-things-stack">How can I see logs of The Things Stack?</h3>
-<p>The Things Stack binary runs as a <code>systemd</code> service. In order to access the logs, SSH into the machine as described above and use the following command.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">  $ sudo journalctl -f -u lorawan-stack.service
+<p>The Things Stack binary runs as a <code>systemd</code> service. In order to access the logs, SSH into the machine as described above and use the following command:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo journalctl -f -u lorawan-stack.service
 </code></pre></div><h3 id="how-do-i-see-more-detailed-debug-logs-of-the-things-stack">How do I see more detailed debug logs of The Things Stack?</h3>
 <p>By default, The Things Stack does not log detailed <code>DEBUG</code> messages. In order to enable this, SSH into the EC2 instance as described above and add the following lines to the file <code>/tti/lorawan-stack/config.yml</code> using an editor such as <code>nano</code>.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">log:
   level: debug
-</code></pre></div><ul>
-<li>Restart the service for this to take effect.</li>
-</ul>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo systemctl restart lorawan-stack.service
-</code></pre></div><ul>
-<li>The debug logs can be read using the <code>journalctl</code>, same as above:</li>
-</ul>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo journalctl -f -u lorawan-stack.service
+</code></pre></div><p>Restart the service for this to take effect:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl restart lorawan-stack.service
+</code></pre></div><p>The debug logs can be read using the <code>journalctl</code>, same as above:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo journalctl -f -u lorawan-stack.service
 </code></pre></div><h3 id="my-gateway-doesnt-connect-what-do-i-do">My Gateway doesn&rsquo;t connect. What do I do?</h3>
 <!--
 TODO: https://github.com/TheThingsNetwork/lorawan-stack/issues/2714
@@ -334,10 +330,10 @@ Link to relevant section when available.
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Michał Borkowski on 31 Aug 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5e4f5ee0b4d12267f0b9f351a4dfd13b2d34031a">
-      doc: Improve documentation regarding RDS and Redis (#548)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

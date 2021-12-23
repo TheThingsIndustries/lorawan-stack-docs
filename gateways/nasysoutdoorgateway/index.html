@@ -206,20 +206,20 @@
 <p>Create a gateway by following the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/">Adding Gateways</a>. Typically, the <strong>EUI</strong> field for your gateway should exist on the sticker at the bottom. Make note of the Gateway ID you choose, because it will be needed later.</p>
 <h2 id="configuration-using-a-terminal">Configuration using a Terminal</h2>
 <p>Find the IP address the gateway. This can be done in various ways. You can connect your machine to the same local network as that of the gateway Ethernet connection and scan for open SSH ports or assign a static IP to the gateway and use that. Once the gateway IP address is found, ssh into it.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh root@&lt;GatewayIP&gt;
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ssh root@&lt;GatewayIP&gt;
 </code></pre></div><p>The default username is <strong>root</strong>, and the default password can be also found in the sticker.</p>
 <p>Your gateway should come with a slightly modified version of the <a href="https://github.com/Lora-net/packet_forwarder">Lora-net UDP packet forwarder</a> pre-installed at <code>/opt/nas-lgw</code>. There are two configuration files <code>global_conf.json</code> and <code>local_conf.json</code>, both located in <code>/opt/nas_lgw</code>.</p>
 <p>The Gateway Configuration Server can be used to retrieve a proper <code>global_conf.json</code> configuration file for your gateway. Follow instructions <a href="">here</a>.</p>
 <p>Update the configuration files on the gateway with your downloaded <code>global_conf.json</code> and restart the packet forwarder:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mv /opt/nas-lgw/local_conf.json /opt/nas-lgw/local_conf.json.old
-$ cp global_conf.json /opt/nas-lgw/global_conf.json
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mv /opt/nas-lgw/local_conf.json /opt/nas-lgw/local_conf.json.old
+cp global_conf.json /opt/nas-lgw/global_conf.json
 
-$ systemctl restart nas-lgw
+systemctl restart nas-lgw
 </code></pre></div><p>If your configuration was successful, your gateway will connect to The Things Stack after a couple of seconds.</p>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <p>If the gateway does not connect to The Things Stack after a few minutes, issue a <code>reboot</code> command, or disconnect and reconnect the power supply to power-cycle the gateway.</p>
 <p>If you still have trouble connecting to The Things Stack, then try editing the <code>gateway_conf</code> section:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ vi /opt/nas-lgw/global_conf.json
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">vi /opt/nas-lgw/global_conf.json
 </code></pre></div><p>Edit the server parameters:</p>
 <ul>
 <li><strong>gateway_ID</strong>: Make sure this is the same as the GatewayEUI (in lowercase).</li>
@@ -228,9 +228,9 @@ $ systemctl restart nas-lgw
 <li><strong>serv_port_down</strong>: UDP downstream port of the Gateway Server, typically 1700.</li>
 </ul>
 <p>You can access the gateway system logs using journalctl. See <code>journalctl --help</code> for details</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ journalctl -f -u nas_lgw -n <span class="m">1000</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">journalctl -f -u nas_lgw -n <span class="m">1000</span>
 </code></pre></div><p>The gateway logs will rotate when they reach about 15M in size, which means that you will generally not be able to access very old logs. At times of dense traffic (e.g. ~1000s of devices) this typically means that you will only have logs for 2-3 hours. If you want to keep historical data (for whatever reason), then you will have to forward the logs to an external server. If you decide to do so, then <code>netcat</code> may be useful:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ journalctl -f <span class="p">|</span> nc server-hostname server-port
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">journalctl -f <span class="p">|</span> nc server-hostname server-port
 </code></pre></div>
         </div>
         
@@ -306,10 +306,10 @@ $ systemctl restart nas-lgw
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

@@ -183,7 +183,7 @@
 <p>If no settings are provided on device creation or unset, defaults are first taken from the device Frequency Plan if available, and finally from <a href="https://www.thethingsindustries.com/docs/reference/configuration/network-server/">Network Server Configuration</a>.</p>
 <h3 id="available-mac-settings">Available MAC settings</h3>
 <p>Run the following command to get a list of all available MAC settings and available parameter values:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices <span class="nb">set</span> --help
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> --help
 </code></pre></div><p>You can also refer to the <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#message:MACSettings">End Device API Reference page</a> for documentation on the available MAC settings and MAC state parameters.</p>
 <h3 id="class-specific-settings">Class Specific Settings</h3>
 <p>Settings that are useful based on device class are:</p>
@@ -218,7 +218,7 @@
 <p>Some additional examples are included below. All settings are available at the <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#message:MACSettings">End Device API Reference page</a> and can be viewed using the <code>ttn-lw-cli end-devices set --help</code> command.</p>
 <h3 id="configure-factory-preset-frequencies-for-abp-devices">Configure Factory Preset Frequencies for ABP Devices</h3>
 <p>To tell The Things Stack which frequencies are configured in an ABP device, set the <code>mac-settings.factory-preset-frequencies</code> parameter. For example, to configure a device using the default EU868 frequencies, use the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli devices update &lt;app-id&gt; &lt;device-id&gt; --mac-settings.factory-preset-frequencies 868100000,868300000,868500000,867100000,867300000,867500000,867700000,867900000
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli devices update &lt;app-id&gt; &lt;device-id&gt; --mac-settings.factory-preset-frequencies 868100000,868300000,868500000,867100000,867300000,867500000,867700000,867900000
 </code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   For ABP devices, <code>mac-settings.factory-preset-frequencies</code> should be specified on <code>device create</code> or the settings will only take effect after MAC reset.
@@ -226,17 +226,17 @@
 
 <h3 id="set-duty-cycle">Set Duty Cycle</h3>
 <p>To change the duty cycle, set the <code>desired-max-duty-cycle</code> parameter. For example, to set the duty cycle to 0.098%, use the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --mac-settings.desired-max-duty-cycle DUTY_CYCLE_1024
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --mac-settings.desired-max-duty-cycle DUTY_CYCLE_1024
 </code></pre></div><p>See the <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#message:MACSettings">End Device API Reference</a> for available fields and definitions of constants. <code>DUTY_CYCLE_1024</code> represents 1/1024 ≈ 0.098%.</p>
 <h3 id="enable-adr">Enable ADR</h3>
 <p>To enable ADR, set the <code>mac-settings.use-adr</code> parameter</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --mac-settings.use-adr<span class="o">=</span><span class="nb">true</span> 
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --mac-settings.use-adr<span class="o">=</span><span class="nb">true</span> 
 </code></pre></div><h3 id="set-rx1-delay">Set RX1 Delay</h3>
 <p>The RX1 delay of end devices is set to 5 second by default. To change it, set the <code>desired-rx1-delay</code> parameter:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --mac-settings.desired-rx1-delay RX_DELAY_5
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --mac-settings.desired-rx1-delay RX_DELAY_5
 </code></pre></div><h3 id="unset-mac-settings">Unset MAC settings</h3>
 <p>The CLI can also be used to unset MAC settings (so that the default ones are used):</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --unset mac-settings.rx1-delay
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --unset mac-settings.rx1-delay
 </code></pre></div>
         </div>
         
@@ -296,10 +296,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

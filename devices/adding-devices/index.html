@@ -315,19 +315,28 @@
 <section data-content="cli">
   <h2 id="adding-devices-using-the-cli">Adding Devices using the CLI</h2>
 <p>First, list the available frequency plans and LoRaWAN versions:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices list-frequency-plans
-$ ttn-lw-cli end-devices create --help
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices list-frequency-plans
+ttn-lw-cli end-devices create --help
 </code></pre></div><h3 id="over-the-air-activation-otaa-device">Over-The-Air-Activation (OTAA) Device</h3>
+<p>We define some user parameters that will be used below:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;app1&#34;</span> 
+<span class="nv">DEVICE_ID</span><span class="o">=</span><span class="s2">&#34;dev1&#34;</span>
+<span class="nv">FREQUENCY_PLAN</span><span class="o">=</span><span class="s2">&#34;EU_863_870&#34;</span>
+<span class="nv">DEV_EUI</span><span class="o">=</span><span class="s2">&#34;0004A30B001C0530&#34;</span>
+<span class="nv">APP_EUI</span><span class="o">=</span><span class="s2">&#34;800000000000000C&#34;</span>
+<span class="nv">APP_KEY</span><span class="o">=</span><span class="s2">&#34;752BAEC23EAE7964AF27C325F4C23C9A&#34;</span>
+</code></pre></div><p>Make sure to modify these according to your setup.</p>
 <p><strong>LoRaWAN 1.0.x:</strong></p>
 <p>To create an end device using over-the-air-activation (OTAA):</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices create app1 dev1 <span class="se">\
-</span><span class="se"></span>  --dev-eui 0004A30B001C0530 <span class="se">\
-</span><span class="se"></span>  --app-eui 800000000000000C <span class="se">\
-</span><span class="se"></span>  --frequency-plan-id EU_863_870 <span class="se">\
-</span><span class="se"></span>  --root-keys.app-key.key 752BAEC23EAE7964AF27C325F4C23C9A <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices create <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
+</span><span class="se"></span>  --dev-eui <span class="nv">$DEV_EUI</span> <span class="se">\
+</span><span class="se"></span>  --app-eui <span class="nv">$APP_EUI</span> <span class="se">\
+</span><span class="se"></span>  --frequency-plan-id <span class="nv">$FREQUENCY_PLAN</span> <span class="se">\
+</span><span class="se"></span>  --root-keys.app-key.key <span class="nv">$APP_KEY</span> <span class="se">\
 </span><span class="se"></span>  --lorawan-version 1.0.3 <span class="se">\
 </span><span class="se"></span>  --lorawan-phy-version 1.0.3-a
-</code></pre></div><p>This will create a LoRaWAN 1.0.3 end device <code>dev1</code> in application <code>app1</code> with the <code>EU_863_870</code> frequency plan. Please note that the <code>AppEUI</code> is returned as <code>join_eui</code> (The Things Stack uses LoRaWAN 1.1 terminology).</p>
+</code></pre></div><p>This will create an end device <code>dev1</code> in application <code>app1</code> with the <code>EU_863_870</code> frequency plan, that uses LoRaWAN 1.0.3 MAC version and 1.0.3-a PHY versions. Make sure to replace the LoRaWAN MAC and PHY versions according to your setup.</p>
+<p>Please note that the <code>AppEUI</code> is returned as <code>join_eui</code> (The Things Stack uses LoRaWAN 1.1 terminology).</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   <p>If you do not have a <code>JoinEUI</code> or <code>AppEUI</code>, you could use <code>0000000000000000</code>.</p>
@@ -338,15 +347,16 @@ $ ttn-lw-cli end-devices create --help
 <p>The end device should now be able to join the private network.</p>
 <p><strong>LoRaWAN 1.1.x:</strong></p>
 <p>To create an end device using over-the-air-activation (OTAA):</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices create app1 dev1 <span class="se">\
-</span><span class="se"></span>  --dev-eui 0004A30B001C0530 <span class="se">\
-</span><span class="se"></span>  --app-eui 800000000000000C <span class="se">\
-</span><span class="se"></span>  --frequency-plan-id EU_863_870 <span class="se">\
-</span><span class="se"></span>  --root-keys.app-key.key 752BAEC23EAE7964AF27C325F4C23C9A <span class="se">\
-</span><span class="se"></span>  --root-keys.nwk-key.key <span class="m">01020304050607080102030405060708</span> <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">NWK_KEY</span><span class="o">=</span><span class="s2">&#34;01020304050607080102030405060708&#34;</span>
+ttn-lw-cli end-devices create <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
+</span><span class="se"></span>  --dev-eui <span class="nv">$DEV_EUI</span> <span class="se">\
+</span><span class="se"></span>  --app-eui <span class="nv">$APP_EUI</span> <span class="se">\
+</span><span class="se"></span>  --frequency-plan-id <span class="nv">$FREQUENCY_PLAN</span> <span class="se">\
+</span><span class="se"></span>  --root-keys.app-key.key <span class="nv">$APP_KEY</span> <span class="se">\
+</span><span class="se"></span>  --root-keys.nwk-key.key <span class="nv">$NWK_KEY</span> <span class="se">\
 </span><span class="se"></span>  --lorawan-version 1.1.0 <span class="se">\
 </span><span class="se"></span>  --lorawan-phy-version 1.1.0-b
-</code></pre></div><p>This will create a LoRaWAN 1.1.0 end device <code>dev1</code> in application <code>app1</code> with the <code>EU_863_870</code> frequency plan.</p>
+</code></pre></div><p>This will create an end device <code>dev1</code> in application <code>app1</code> with the <code>EU_863_870</code> frequency plan, that uses LoRaWAN 1.1.0 MAC and 1.1.0-b PHY versions. Make sure you replace these versions according to your setup.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   <p>If you do not have a <code>JoinEUI</code> or <code>AppEUI</code>, you could use <code>0000000000000000</code>.</p>
@@ -356,43 +366,57 @@ $ ttn-lw-cli end-devices create --help
 <p>You can also pass <code>--with-root-keys</code> to have root keys generated. In this case, you do not need to specify <code>--root-keys.app-key.key</code> or <code>root-keys.nwk-key.key</code>.</p>
 <p>The end device should now be able to join the private network.</p>
 <h3 id="activation-by-personalization-abp-device">Activation By Personalization (ABP) Device</h3>
+<p>For adding ABP devices, we can define the following parameters:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;app1&#34;</span> 
+<span class="nv">DEVICE_ID</span><span class="o">=</span><span class="s2">&#34;dev1&#34;</span>
+<span class="nv">FREQUENCY_PLAN</span><span class="o">=</span><span class="s2">&#34;EU_863_870&#34;</span>
+<span class="nv">DEV_ADDR</span><span class="o">=</span><span class="s2">&#34;00E4304D&#34;</span>
+<span class="nv">APP_SESSION_KEY</span><span class="o">=</span><span class="s2">&#34;A0CAD5A30036DBE03096EB67CA975BAA&#34;</span>
+<span class="nv">NWK_SESSION_KEY</span><span class="o">=</span><span class="s2">&#34;B7F3E161BC9D4388E6C788A0C547F255&#34;</span>
+</code></pre></div><p>Make sure you modify these according to your setup.</p>
 <p><strong>LoRaWAN 1.0.x:</strong></p>
 <p>It is also possible to register an ABP activated device using the <code>--abp</code> flag as follows:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices create app1 dev2 <span class="se">\
-</span><span class="se"></span>  --frequency-plan-id EU_863_870 <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices create <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
+</span><span class="se"></span>  --frequency-plan-id <span class="nv">$FREQUENCY_PLAN</span> <span class="se">\
 </span><span class="se"></span>  --lorawan-version 1.0.3 <span class="se">\
 </span><span class="se"></span>  --lorawan-phy-version 1.0.3-a <span class="se">\
 </span><span class="se"></span>  --abp <span class="se">\
-</span><span class="se"></span>  --session.dev-addr 00E4304D <span class="se">\
-</span><span class="se"></span>  --session.keys.app-s-key.key A0CAD5A30036DBE03096EB67CA975BAA <span class="se">\
-</span><span class="se"></span>  --session.keys.nwk-s-key.key B7F3E161BC9D4388E6C788A0C547F255
-</code></pre></div><p>Please note that the <code>NwkSKey</code> is returned as <code>f_nwk_s_int_key</code> (The Things Stack uses LoRaWAN 1.1 terminology).</p>
+</span><span class="se"></span>  --session.dev-addr <span class="nv">$DEV_ADDR</span> <span class="se">\
+</span><span class="se"></span>  --session.keys.app-s-key.key <span class="nv">$APP_SESSION_KEY</span> <span class="se">\
+</span><span class="se"></span>  --session.keys.nwk-s-key.key <span class="nv">$NWK_SESSION_KEY</span>
+</code></pre></div><p>This will create an end device <code>dev1</code> in application <code>app1</code> with the <code>EU_863_870</code> frequency plan, that uses LoRaWAN 1.0.3 MAC and 1.0.3-a PHY versions. Make sure you replace these versions according to your setup.</p>
+<p>Please note that the <code>NwkSKey</code> is returned as <code>f_nwk_s_int_key</code> (The Things Stack uses LoRaWAN 1.1 terminology).</p>
 <p>You can also pass <code>--with-session</code> to have a session generated.</p>
 <p><strong>LoRaWAN 1.1.x:</strong></p>
 <p>To register a LoRaWAN 1.1.x end device using ABP:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices create app1 dev2 <span class="se">\
-</span><span class="se"></span>  --frequency-plan-id EU_863_870 <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">F_NWK_SESSION_INT_KEY</span><span class="o">=</span><span class="s2">&#34;01020304050607080102030405060708&#34;</span>
+<span class="nv">S_NWK_SESSION_INT_KEY</span><span class="o">=</span><span class="s2">&#34;01020304050607080102030405060708&#34;</span>
+<span class="nv">NWK_SESSION_ENC_KEY</span><span class="o">=</span><span class="s2">&#34;01020304050607080102030405060708&#34;</span>
+ttn-lw-cli end-devices create <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
+</span><span class="se"></span>  --frequency-plan-id <span class="nv">$FREQUENCY_PLAN</span> <span class="se">\
 </span><span class="se"></span>  --lorawan-version 1.1.0 <span class="se">\
 </span><span class="se"></span>  --lorawan-phy-version 1.1.0-b <span class="se">\
 </span><span class="se"></span>  --abp <span class="se">\
-</span><span class="se"></span>  --session.dev-addr 00E4304D <span class="se">\
-</span><span class="se"></span>  --session.keys.app-s-key.key A0CAD5A30036DBE03096EB67CA975BAA <span class="se">\
-</span><span class="se"></span>  --session.keys.nwk-s-key.key B7F3E161BC9D4388E6C788A0C547F255
-  --session.keys.f-nwk-s-int-key.key <span class="m">01020304050607080102030405060708</span> <span class="se">\
-</span><span class="se"></span>  --session.keys.s-nwk-s-int-key.key <span class="m">01020304050607080102030405060708</span> <span class="se">\
-</span><span class="se"></span>  --session.keys.nwk-s-enc-key.key <span class="m">01020304050607080102030405060708</span>
-</code></pre></div><p>You can also pass <code>--with-session</code> to have a session generated.</p>
+</span><span class="se"></span>  --session.dev-addr <span class="nv">$DEV_ADDR</span> <span class="se">\
+</span><span class="se"></span>  --session.keys.app-s-key.key <span class="nv">$APP_SESSION_KEY</span> <span class="se">\
+</span><span class="se"></span>  --session.keys.nwk-s-key.key <span class="nv">$NWK_SESSION_KEY</span>
+  --session.keys.f-nwk-s-int-key.key <span class="nv">$F_NWK_SESSION_INT_KEY</span> <span class="se">\
+</span><span class="se"></span>  --session.keys.s-nwk-s-int-key.key <span class="nv">$S_NWK_SESSION_INT_KEY</span> <span class="se">\
+</span><span class="se"></span>  --session.keys.nwk-s-enc-key.key <span class="nv">$NWK_SESSION_ENC_KEY</span>
+</code></pre></div><p>This will create an end device <code>dev1</code> in application <code>app1</code> with the <code>EU_863_870</code> frequency plan, that uses LoRaWAN 1.1.0 MAC and 1.1.0-b PHY versions. Make sure you replace these versions according to your setup.</p>
+<p>You can also pass <code>--with-session</code> to have a session generated.</p>
 <h3 id="set-device-location-with-the-cli">Set Device Location with the CLI</h3>
 <p>Once you have added your end device to The Things Stack, you can also set its location.</p>
 <p>Set your end device&rsquo;s location with:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;your-application-id&#34;</span> 
-$ <span class="nv">DEVICE_ID</span><span class="o">=</span><span class="s2">&#34;your-device-id&#34;</span>
-$ ttn-lw-cli end-devices <span class="nb">set</span> <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
-</span><span class="se"></span>  --location.latitude 43.84 <span class="se">\
-</span><span class="se"></span>  --location.longitude 18.32 <span class="se">\
-</span><span class="se"></span>  --location.altitude <span class="m">500</span> <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">LAT</span><span class="o">=</span><span class="s2">&#34;43.84&#34;</span>
+<span class="nv">LONG</span><span class="o">=</span><span class="s2">&#34;18.32&#34;</span>
+<span class="nv">ALT</span><span class="o">=</span><span class="s2">&#34;500&#34;</span>
+ttn-lw-cli end-devices <span class="nb">set</span> <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
+</span><span class="se"></span>  --location.latitude <span class="nv">$LAT</span> <span class="se">\
+</span><span class="se"></span>  --location.longitude <span class="nv">$LONG</span> <span class="se">\
+</span><span class="se"></span>  --location.altitude <span class="nv">$ALT</span> <span class="se">\
 </span></code></pre></div><p>You can also set the end device location to be updated from various sources with the <code>--location.source</code> flag.</p>
-<p>The source of the location data can be the registry, GPS data, results of the LoRa RSSI geolocation, etc. Use <code>ttn-lw-cli end-devices set app1 dev1 --help</code> command to see the full list of the available location sources and other relatable info. If you set the alternative location source, the location settings you manually set will be overwritten by the automatic updates from that source.</p>
+<p>The source of the location data can be the registry, GPS data, results of the LoRa RSSI geolocation, etc. Use <code>ttn-lw-cli end-devices set $APP_ID $DEVICE_ID --help</code> command to see the full list of the available location sources and other relatable info. If you set the alternative location source, the location settings you manually set will be overwritten by the automatic updates from that source.</p>
 <p>The CLI will return something like:</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -500,10 +524,10 @@ $ ttn-lw-cli end-devices <span class="nb">set</span> <span class="nv">$APP_ID</s
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

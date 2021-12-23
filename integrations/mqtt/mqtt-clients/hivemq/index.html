@@ -210,9 +210,9 @@
 <h2 id="connecting-to-mqtt-server-in-mqtt-cli-shell-mode">Connecting to MQTT Server in MQTT CLI Shell Mode</h2>
 <p>Learn how to connect to The Things Stack MQTT Server by reading the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a> guide.</p>
 <p>Enter the HiveMQ MQTT CLI shell mode by typing the following command in your terminal:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mqtt shell
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mqtt shell
 </code></pre></div><p>Once in shell mode, you can connect to The Things Stack MQTT Server by using the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ con -h &lt;hostname&gt; -p &lt;port&gt; -V <span class="m">3</span> -u &lt;username&gt; -pw &lt;password&gt;
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">con -h &lt;hostname&gt; -p &lt;port&gt; -V <span class="m">3</span> -u &lt;username&gt; -pw &lt;password&gt;
 </code></pre></div><p>Keep in mind that <code>password</code> is the value of the authentication API key. For more info, see <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#creating-an-api-key">Creating an API Key</a>.</p>
 <p>The <code>-V 3</code> flag is used here because the The Things Stack MQTT Server supports the 3.1.1 MQTT protocol version, as mentioned in the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT Server guide</a>. For detailed descriptions of other parameters used with the <code>con</code> command, see the <a href="https://hivemq.github.io/mqtt-cli/docs/shell/connect.html">official MQTT CLI documentation</a>.</p>
 <p>For example, you can connect to The Things Stack MQTT Server over its public address with the following command:</p>
@@ -222,13 +222,13 @@
 <h2 id="subscribe-to-upstream-traffic">Subscribe to Upstream Traffic</h2>
 <p>Use the <code>sub</code> command to subscribe to topics and listen to messages being sent from your end device.</p>
 <p>For example, if you want to listen to the uplink messages being sent from <code>dev1</code> device in <code>app1</code> application, use the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sub -t <span class="s2">&#34;v3/app1/devices/dev1/up&#34;</span> -s
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sub -t <span class="s2">&#34;v3/app1/devices/dev1/up&#34;</span> -s
 </code></pre></div><p><code>-s</code> flag is used to subscribe with a context to the given topic, e.g. to stop the console being blocked by subscribing without a context. For detailed descriptions of all the available <code>sub</code> command parameters, see the <a href="https://hivemq.github.io/mqtt-cli/docs/shell/subscribe.html">Subscribe</a> section of the HiveMQ MQTT CLI documentation.</p>
 <p>See the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#subscribing-to-upstream-traffic">Subscribing to Upstream Traffic</a> section of the MQTT Server guide for a full list of available topics you can subscribe to.</p>
 <h2 id="schedule-downlink-messages">Schedule Downlink Messages</h2>
 <p>Use the <code>pub</code> command to publish to topics, e.g. to schedule downlink messages to be sent to your end device.</p>
 <p>For example, to push an unconfirmed downlink message with the hexadecimal payload <code>BE EF</code> on <code>FPort</code> 15 with normal priority to the <code>dev1</code> device, use the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ pub -t <span class="s2">&#34;v3/app1/devices/dev1/down/push&#34;</span> -m <span class="s1">&#39;{&#34;downlinks&#34;:[{&#34;f_port&#34;: 15,&#34;frm_payload&#34;:&#34;vu8=&#34;,&#34;priority&#34;: &#34;NORMAL&#34;}]}&#39;</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">pub -t <span class="s2">&#34;v3/app1/devices/dev1/down/push&#34;</span> -m <span class="s1">&#39;{&#34;downlinks&#34;:[{&#34;f_port&#34;: 15,&#34;frm_payload&#34;:&#34;vu8=&#34;,&#34;priority&#34;: &#34;NORMAL&#34;}]}&#39;</span>
 </code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   For scheduling downlink messages, the <code>f_port</code> values from <code>1</code> to <code>233</code> are allowed.
@@ -310,10 +310,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

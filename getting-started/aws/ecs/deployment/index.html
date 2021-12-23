@@ -305,8 +305,8 @@
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/2-4b-routing-s3.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/2-4b-routing-s3.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
 <p>In addition to the re-used parameters (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>), this template asks for the name of the bucket you want to create. It is typically fine to leave this parameter empty, and have a automatically generated bucket name.</p>
 <p>After deploying the <code>2-4b-routing-s3</code> template, you need to upload the interop configuration to the interop bucket. For details on this configuration, see the <a href="https://www.thethingsindustries.com/docs/reference/interop-repository/">Interoperability Repository reference</a>. If you do not have such configuration, you can upload an empty configuration file:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ touch config.yml
-$ aws s3 cp config.yml s3://<span class="si">${</span><span class="nv">InteropConfigBucket</span><span class="si">}</span>/config.yml
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">touch config.yml
+aws s3 cp config.yml s3://<span class="si">${</span><span class="nv">InteropConfigBucket</span><span class="si">}</span>/config.yml
 </code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   If you did not set a bucket name, see the <code>InteropConfigBucket</code> output of the <code>2-4b-routing-s3</code> stack for the name of the bucket.
@@ -327,7 +327,7 @@ $ aws s3 cp config.yml s3://<span class="si">${</span><span class="nv">InteropCo
 <p>For deployments that connect to Packet Broker, you need to configure your Packet Broker secrets here. If you don&rsquo;t have this, you can leave these parameters empty. It is possible to add or update this in the future.</p>
 <p>For multi-tenant deployments that use tenant billing through Stripe (see the <a href="https://www.thethingsindustries.com/docs/reference/stripe/">Stripe Billing reference</a>), you need to configure the Stripe API key (starting with <code>sk_</code>) and Stripe endpoint secret key (starting with <code>whsec_</code>). It is possible to add or update this in the future.</p>
 <p>For the <strong>Gateway Secrets Encryption Key Value</strong> parameter, provide an AES-128 Key in Base64. The following command can be used to randomly generate one:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ openssl rand -base64 <span class="m">16</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">openssl rand -base64 <span class="m">16</span>
 </code></pre></div><h2 id="configuration">Configuration</h2>
 <p>The <code>4-2a-configuration</code> template creates several configuration parameters in AWS Systems Manager Parameter Store.</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/4-2a-configuration.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/4-2a-configuration.gen.template</a> (replace <code>3.x</code> with the current minor version).</p>
@@ -347,10 +347,10 @@ $ aws s3 cp config.yml s3://<span class="si">${</span><span class="nv">InteropCo
 <p>Before deploying the ECS cluster, check the ECS settings in your AWS account by going to <strong>Amazon ECS</strong> &gt; <strong>Account Settings</strong>. If you use multiple IAM users, you need to do this with your root account.</p>
 <p>Under <strong>Amazon ECS ARN and resource ID settings</strong> the <strong>new ARN and resource ID format</strong> needs to be enabled for <strong>container instances</strong>, <strong>services</strong> and <strong>tasks</strong>. If you plan to deploy The Things Stack on container instances, <strong>AWSVPC Trunking</strong> needs to be enabled.</p>
 <p>Alternatively, you can configure these settings for the entire AWS account using the AWS CLI:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ aws ecs put-account-setting-default --name serviceLongArnFormat --value enabled --region <span class="nv">$AWS_REGION</span>
-$ aws ecs put-account-setting-default --name taskLongArnFormat --value enabled --region <span class="nv">$AWS_REGION</span>
-$ aws ecs put-account-setting-default --name containerInstanceLongArnFormat --value enabled --region <span class="nv">$AWS_REGION</span>
-$ aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --region <span class="nv">$AWS_REGION</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">aws ecs put-account-setting-default --name serviceLongArnFormat --value enabled --region <span class="nv">$AWS_REGION</span>
+aws ecs put-account-setting-default --name taskLongArnFormat --value enabled --region <span class="nv">$AWS_REGION</span>
+aws ecs put-account-setting-default --name containerInstanceLongArnFormat --value enabled --region <span class="nv">$AWS_REGION</span>
+aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --region <span class="nv">$AWS_REGION</span>
 </code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   These settings need to be applied in <strong>each</strong> AWS region where you want to deploy a cluster.
@@ -577,10 +577,10 @@ $ aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --re
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

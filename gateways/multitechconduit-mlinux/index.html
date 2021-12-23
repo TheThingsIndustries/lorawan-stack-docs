@@ -225,9 +225,9 @@
 <p>After connecting to the gateway, it must be commissioned, or you will not be able to login to the gateway. See instructions <a href="https://www.multitech.net/developer/software/mlinux/getting-started-with-conduit-mlinux/commissioning-for-mlinux-devices/">here</a>. In short, open a browser to the gateway&rsquo;s IP, 192.168.2.1, and set a username and password.</p>
 <h3 id="configuring-the-gateway-as-a-dhcp-client">Configuring the Gateway as a DHCP Client</h3>
 <p>To connect the gateway to your network, you must reconfigure it as a DHCP client. After commissioning the device, ssh in using the username and password you set up:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh username@192.168.2.1
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ssh username@192.168.2.1
 </code></pre></div><p>Modify the network configuration file, <code>/etc/network/interfaces</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo nano /etc/network/interfaces
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo nano /etc/network/interfaces
 </code></pre></div><p>Configure the eth0 peripheral as dhcp, and comment out the static configuration:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Wired interface</span>
 auto eth0
@@ -244,10 +244,10 @@ iface eth0 inet dhcp
 <h3 id="configuring-the-packet-forwarder">Configuring the Packet Forwarder</h3>
 <p>Once the <code>global_conf.json</code> file is generated, you will need to add this to your gateway.</p>
 <p>Login to your router at its IP address on your local network, and copy the <code>global_conf.json</code> contents in to a file at <code>/var/config/lora/global_conf.json</code></p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ssh username@&lt;GATEWAY_IP_ADDRESS&gt;
-$ sudo mkdir /var/config/lora
-$ sudo touch /var/config/lora/global_conf.json
-$ sudo nano /var/config/lora/global_conf.json
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ssh username@&lt;GATEWAY_IP_ADDRESS&gt;
+sudo mkdir /var/config/lora
+sudo touch /var/config/lora/global_conf.json
+sudo nano /var/config/lora/global_conf.json
 </code></pre></div><p>Copy in the contents of the <code>global_conf.json</code> file you downloaded. While the file is open, change the value of <code>clksrc</code> to <code>0</code>:</p>
 <pre><code>&quot;SX1301_conf&quot;: {
                 &quot;lorawan_public&quot;: true,
@@ -256,14 +256,14 @@ $ sudo nano /var/config/lora/global_conf.json
                 ...
 </code></pre><p>Multitech devices require a <code>clksrc</code> of <code>0</code>. Do not skip this step, or your device <a href="https://www.multitech.net/developer/software/lora/conduit-mlinux-convert-to-basic-packet-forwarder/#SX1301_conf">will not work!</a></p>
 <p>Finally, edit the configuration settings to start the <code>lora-packet-forwarder</code> by default, and disable the <code>lora-network-server</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ /etc/init.d/lora-network-server stop
-$ sudo nano /etc/defaults/lora-network-server
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">/etc/init.d/lora-network-server stop
+sudo nano /etc/defaults/lora-network-server
 <span class="c1">#ENABLED=”no”</span>
 
-$ sudo nano /etc/defaults/lora-packet-forwarder
+sudo nano /etc/defaults/lora-packet-forwarder
 <span class="c1">#ENABLED=”yes”</span>
 </code></pre></div><p>Start the packet forwarder, and The Things Stack will begin receiving packets from your gateway:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo /etc/init.d/lora-packet-forwarder start
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo /etc/init.d/lora-packet-forwarder start
 </code></pre></div><h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="lora-card-not-detected">LORA card not detected</h3>
 <p>If you receive a <code>LORA card not detected</code> error, make sure you start the <code>lora-packet-forwarder</code> as <code>sudo</code>.</p>
@@ -344,10 +344,10 @@ $ sudo nano /etc/defaults/lora-packet-forwarder
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

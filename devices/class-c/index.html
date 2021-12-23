@@ -162,10 +162,20 @@
           <p>Class C end devices continuously listen for downlink messages. This allows applications to send messages to devices at any time, instead of having to wait for a Class A uplink. When combined with <a href="https://www.thethingsindustries.com/docs/devices/multicast/">multicast groups</a>, this allows applications to send immediate downlinks to many devices at the same time.</p>
 <p>This guide shows how to enable or disable Class C for an and device, and how to work with multicast groups.</p>
 <p>Read more about device classes in [The Things Network LoRaWAN documentation]](<a href="https://www.thethingsnetwork.org/docs/lorawan/classes/)">https://www.thethingsnetwork.org/docs/lorawan/classes/)</a>.</p>
+<p>We define some user parameters that will be used below:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;app1&#34;</span> 
+<span class="nv">DEVICE_ID</span><span class="o">=</span><span class="s2">&#34;dev1&#34;</span>
+<span class="nv">FREQUENCY_PLAN</span><span class="o">=</span><span class="s2">&#34;EU_863_870&#34;</span>
+<span class="nv">LORAWAN_VERSION</span><span class="o">=</span><span class="s2">&#34;1.0.3&#34;</span>
+<span class="nv">LORAWAN_PHY_VERSION</span><span class="o">=</span><span class="s2">&#34;1.0.3-a&#34;</span>
+<span class="nv">DEV_ADDR</span><span class="o">=</span><span class="s2">&#34;00E4304D&#34;</span>
+<span class="nv">APP_SESSION_KEY</span><span class="o">=</span><span class="s2">&#34;A0CAD5A30036DBE03096EB67CA975BAA&#34;</span>
+<span class="nv">NWK_SESSION_KEY</span><span class="o">=</span><span class="s2">&#34;B7F3E161BC9D4388E6C788A0C547F255&#34;</span>
+</code></pre></div><p>Make sure to modify these according to your setup.</p>
 <h2 id="enabling-and-disabling-class-c">Enabling and Disabling Class C</h2>
 <p>In order to send Class C downlink messages to a single device, enable Class C support for the end device when creating or updating it with the <code>--supports-class-c</code> flag.</p>
 <p>For example, when enabling Class C for an existing device:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices <span class="nb">set</span> app1 dev1 --supports-class-c
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> --supports-class-c
 </code></pre></div><p>This will enable the Class C downlink scheduling of the device. That&rsquo;s it! Downlink messages are now scheduled as soon as possible.</p>
 <p>For unicast devices, Class C downlink scheduling starts after the end device sends an uplink in the session. This means that an OTAA end device should send an uplink message after receiving the join-accept in order to enable Class C downlink scheduling.</p>
 <p>To disable Class C scheduling, reset with <code>--supports-class-c=false</code>.</p>
@@ -187,13 +197,13 @@
 </div>
 
 <p>First, create a Class C device:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices create app1 dev1 <span class="se">\
-</span><span class="se"></span>  --frequency-plan-id EU_863_870 <span class="se">\
-</span><span class="se"></span>  --lorawan-version 1.0.3 <span class="se">\
-</span><span class="se"></span>  --lorawan-phy-version 1.0.3-a <span class="se">\
-</span><span class="se"></span>  --session.dev-addr 00E4304D <span class="se">\
-</span><span class="se"></span>  --session.keys.app-s-key.key A0CAD5A30036DBE03096EB67CA975BAA <span class="se">\
-</span><span class="se"></span>  --session.keys.nwk-s-key.key B7F3E161BC9D4388E6C788A0C547F255 <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices create <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
+</span><span class="se"></span>  --frequency-plan-id <span class="nv">$FREQUENCY_PLAN</span> <span class="se">\
+</span><span class="se"></span>  --lorawan-version <span class="nv">$LORAWAN_VERSION</span> <span class="se">\
+</span><span class="se"></span>  --lorawan-phy-version <span class="nv">$LORAWAN_PHY_VERSION</span> <span class="se">\
+</span><span class="se"></span>  --session.dev-addr <span class="nv">$DEV_ADDR</span> <span class="se">\
+</span><span class="se"></span>  --session.keys.app-s-key.key <span class="nv">$APP_SESSION_KEY</span> <span class="se">\
+</span><span class="se"></span>  --session.keys.nwk-s-key.key <span class="nv">$NWK_SESSION_KEY</span> <span class="se">\
 </span><span class="se"></span>  --supports-class-c
 </code></pre></div><p>Then, schedule the following message to the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">Application Server MQTT server</a> or <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/">HTTP webhooks</a>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
@@ -293,10 +303,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

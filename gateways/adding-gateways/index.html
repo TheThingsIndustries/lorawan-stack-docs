@@ -268,35 +268,44 @@
 </section>
 <section data-content="cli">
   <h2 id="adding-gateways-using-the-cli">Adding Gateways using the CLI</h2>
+<p>We define some user parameters that will be used below:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">GTW_ID</span><span class="o">=</span><span class="s2">&#34;gtw1&#34;</span> 
+<span class="nv">FREQUENCY_PLAN</span><span class="o">=</span><span class="s2">&#34;EU_863_870&#34;</span>
+<span class="nv">GTW_EUI</span><span class="o">=</span><span class="s2">&#34;00800000A00009EF&#34;</span>
+<span class="nv">USER_ID</span><span class="o">=</span><span class="s2">&#34;admin&#34;</span>
+</code></pre></div><p>Make sure to modify these according to your setup.</p>
 <p>First, list the available frequency plans:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli gateways list-frequency-plans
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli gateways list-frequency-plans
 </code></pre></div><p>Then, create the first gateway with the chosen frequency plan:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli gateways create gtw1 <span class="se">\
-</span><span class="se"></span>  --user-id admin <span class="se">\
-</span><span class="se"></span>  --frequency-plan-id EU_863_870 <span class="se">\
-</span><span class="se"></span>  --gateway-eui 00800000A00009EF <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli gateways create <span class="nv">$GTW_ID</span> <span class="se">\
+</span><span class="se"></span>  --user-id <span class="nv">$USER_ID</span> <span class="se">\
+</span><span class="se"></span>  --frequency-plan-id <span class="nv">$FREQUENCY_PLAN</span> <span class="se">\
+</span><span class="se"></span>  --gateway-eui <span class="nv">$GTW_EUI</span> <span class="se">\
 </span><span class="se"></span>  --enforce-duty-cycle
 </code></pre></div><p>This creates a gateway <code>gtw1</code> with user <code>admin</code> as collaborator, frequency plan <code>EU_863_870</code>, EUI <code>00800000A00009EF</code> and respecting duty-cycle limitations. You can now connect your gateway to The Things Stack.</p>
 <h3 id="create-gateway-api-key">Create Gateway API Key</h3>
 <p>Some gateways require an API Key with Link Gateway Rights to be able to connect to The Things Stack.</p>
 <p>Create an API key for the gateway:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli gateways api-keys create <span class="se">\
-</span><span class="se"></span>  --name link <span class="se">\
-</span><span class="se"></span>  --gateway-id gtw1 <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">API_KEY_NAME</span><span class="o">=</span><span class="s2">&#34;API key for connecting my gateway&#34;</span>
+ttn-lw-cli gateways api-keys create <span class="se">\
+</span><span class="se"></span>  --name <span class="nv">$API_KEY_NAME</span> <span class="se">\
+</span><span class="se"></span>  --gateway-id <span class="nv">$GTW_ID</span> <span class="se">\
 </span><span class="se"></span>  --right-gateway-link
 </code></pre></div><p>The CLI will return an API key such as <code>NNSXS.VEEBURF3KR77ZR...</code>. This API key has only link rights and can therefore only be used for linking this gateway. Make sure to copy the key and save it in a safe place. You will not be able to see this key again in the future, and if you lose it, you can create a new one to replace it in the gateway configuration.</p>
 <h2 id="set-gateway-location">Set Gateway Location</h2>
 <p>Once you have added your gateway to The Things Stack, you can also set the locations of the gateway antennas.</p>
 <p>Add an antenna and set its location  with:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nv">GTW_ID</span><span class="o">=</span><span class="s2">&#34;your-gateway-id&#34;</span>
-$ ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span> <span class="se">\
-</span><span class="se"></span>  --antenna.location.latitude 43.84 <span class="se">\
-</span><span class="se"></span>  --antenna.location.longitude 18.32 <span class="se">\
-</span><span class="se"></span>  --antenna.location.altitude <span class="m">500</span> <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">LAT</span><span class="o">=</span><span class="s2">&#34;43.84&#34;</span>
+<span class="nv">LONG</span><span class="o">=</span><span class="s2">&#34;18.32&#34;</span>
+<span class="nv">ALT</span><span class="o">=</span><span class="s2">&#34;500&#34;</span>
+ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span> <span class="se">\
+</span><span class="se"></span>  --antenna.location.latitude <span class="nv">$LAT</span> <span class="se">\
+</span><span class="se"></span>  --antenna.location.longitude <span class="nv">$LONG</span> <span class="se">\
+</span><span class="se"></span>  --antenna.location.altitude <span class="nv">$ALT</span> <span class="se">\
 </span><span class="se"></span>  --antenna.add <span class="se">\
 </span></code></pre></div><p>If you do not mind your gateway&rsquo;s location to be publicly displayed, append the <code>--location-public</code> flag.</p>
 <p>You can also set the gateway location to be updated from various sources with the <code>--antenna.location.source</code> flag. The source of the location data can be the registry, GPS data, results of the LoRa RSSI geolocation, etc.</p>
-<p>Use <code>ttn-lw-cli gateways set gtw1 --help</code> command to see the full list of the available location sources and other relatable info. Keep in mind that if you set the alternative location source, the location settings you manually set will be overwritten by the automatic updates from that source.</p>
+<p>Use <code>ttn-lw-cli gateways set $GTW_ID --help</code> command to see the full list of the available location sources and other relatable info. Keep in mind that if you set the alternative location source, the location settings you manually set will be overwritten by the automatic updates from that source.</p>
 <p>The CLI will return something like:</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -333,7 +342,8 @@ $ ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span
   </div>
 </div>
 <p>A preffered way for adjusting a downlink path gain is setting the gateway antenna gain, instead of changing the gateway Tx power. The following command will set the gateway antenna gain to 3 dB:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span> --antenna.gain <span class="m">3</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">GAIN</span><span class="o">=</span><span class="s2">&#34;3&#34;</span>
+ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span> --antenna.gain <span class="nv">$GAIN</span>
 </code></pre></div><p>The CLI output will be similar to:</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -435,10 +445,10 @@ $ ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

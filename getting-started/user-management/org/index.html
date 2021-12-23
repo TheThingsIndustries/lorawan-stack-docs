@@ -235,9 +235,13 @@
 </section>
 <section data-content="cli">
   <h2 id="managing-organizations-using-the-cli">Managing Organizations using the CLI</h2>
+<p>We define some user parameters that will be used below:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">ORGANIZATION_ID</span><span class="o">=</span><span class="s2">&#34;org1&#34;</span>
+<span class="nv">USER_ID</span><span class="o">=</span><span class="s2">&#34;user1&#34;</span>
+</code></pre></div><p>Make sure to modify these according to your setup.</p>
 <h2 id="creating-organizations">Creating Organizations</h2>
 <p>Administrators can create organizations as follows:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli organizations create org1 --user-id user1
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli organizations create <span class="nv">$ORGANIZATION_ID</span> --user-id <span class="nv">$USER_ID</span>
 </code></pre></div><p>This will create an organization <code>org1</code> with all the rights of <code>user1</code> and make <code>user1</code> a collaborator within the organization.</p>
 <p>Output:</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
@@ -249,7 +253,7 @@
 <span class="p">}</span>
 </code></pre></div><h2 id="listing-organizations">Listing Organizations</h2>
 <p>To list organizations with the CLI, use the <code>organizations list</code> command.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli organizations list
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli organizations list
 </code></pre></div><div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">[{</span>
   <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
     <span class="nt">&#34;organization_id&#34;</span><span class="p">:</span> <span class="s2">&#34;org1&#34;</span>
@@ -266,7 +270,7 @@
 <span class="p">}]</span>
 </code></pre></div><h2 id="searching-for-organizations">Searching for Organizations</h2>
 <p>To search for organizations with the CLI, use the <code>organizations search</code> command. Make sure to specify the fields you&rsquo;re interested in. This example will search for organizations with IDs that contain <code>org1</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli organizations search --id-contains org1
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli organizations search --id-contains <span class="nv">$ORGANIZATION_ID</span>
 </code></pre></div><p>Output:</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">[{</span>
   <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -277,15 +281,15 @@
 <span class="p">}]</span>
 </code></pre></div><h2 id="adding-users-to-organizations">Adding Users to Organizations</h2>
 <p>To add a user to an organization, use the  <code>organizations collaborators set</code> command. This will add user <code>user1</code> as a collaborator of organization <code>org1</code> with all organization rights:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli organizations collaborators <span class="nb">set</span> --organization-id org1 --user-id user1 --right-organization-all
-</code></pre></div><p>You must specify rights when adding a collaborator. Use the <code>--help</code> flag to see the list of possible rights, e.g <code>$ ttn-lw-cli organizations collaborators set --help</code>.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli organizations collaborators <span class="nb">set</span> --organization-id <span class="nv">$ORGANIZATION_ID</span> --user-id <span class="nv">$USER_ID</span> --right-organization-all
+</code></pre></div><p>You must specify rights when adding a collaborator. Use the <code>--help</code> flag to see the list of possible rights, e.g <code>ttn-lw-cli organizations collaborators set --help</code>.</p>
 <h2 id="removing-users-from-organizations">Removing Users from Organizations</h2>
 <p>To remove a user from an organization, use the  <code>organizations collaborators delete</code> command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli organizations collaborators delete --organization-id org1 --user-id user1
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli organizations collaborators delete --organization-id <span class="nv">$ORGANIZATION_ID</span> --user-id <span class="nv">$USER_ID</span>
 </code></pre></div><p>This will remove user <code>user1</code> as a collaborator of organization <code>org1</code></p>
 <h2 id="deleting-organizations">Deleting Organizations</h2>
 <p>To delete an organization, use the <code>organizations delete</code> command.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli organizations delete --organization-id org1
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli organizations delete --organization-id <span class="nv">$ORGANIZATION_ID</span>
 </code></pre></div><div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
   When deleting organizations, their IDs stay reserved in the system. For security reasons, it is not possible to create a new organization with the same ID.
@@ -379,10 +383,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

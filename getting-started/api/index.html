@@ -186,13 +186,13 @@
 <h2 id="http-query-examples">HTTP Query Examples</h2>
 <h2 id="get-device-info">Get Device Info</h2>
 <p>Fields may be specified in HTTP requests by appending them as query string parameters. For example, to request the <code>name</code>, <code>description</code>, and <code>locations</code> of devices in an <code>EndDeviceRegistry.Get</code> request, add these fields to the <code>field_mask</code> field. To get this data for device <code>dev1</code> in application <code>app1</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s2">&#34;Authorization: Bearer NNSXS.XXXXXXXXX&#34;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Accept: application/json&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
 </span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/applications/app1/devices/dev1?field_mask=name,description,locations&#39;</span>
 </code></pre></div><p>The same request in tenant <code>tenant1</code> on a multi-tenant deployment:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s2">&#34;Authorization: Bearer NNSXS.XXXXXXXXX&#34;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Accept: application/json&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
@@ -200,7 +200,7 @@
 </code></pre></div><p>Fields may also be specified as a JSON object in a POST request.</p>
 <h3 id="get-event-stream">Get Event Stream</h3>
 <p>To get a stream of events for device <code>dev1</code> in application <code>app1</code> :</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Accept: text/event-stream&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
@@ -218,7 +218,7 @@
 </code></pre></div><p>See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events">here</a> a description of the <code>text/event-stream</code> MIME type.</p>
 <h3 id="schedule-downlink">Schedule Downlink</h3>
 <p>To schedule a downlink, you may use the <code>DownlinkQueuePush</code> or <code>DownlinkQueueReplace</code> endpoints of the <a href="https://www.thethingsindustries.com/docs/reference/api/application_server/#the-appas-service">Application Server API</a>. For example, to schedule a downlink queue push to device <code>dev1</code> in application <code>app1</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
@@ -231,7 +231,7 @@
 </span><span class="s1">  }&#39;</span> <span class="se">\
 </span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/as/applications/app1/devices/dev1/down/push&#39;</span>
 </code></pre></div><p>To schedule a human readable downlink to the same device using a downlink <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">Payload Formatter</a>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
@@ -249,7 +249,7 @@
 <p>If you want to create a device, perform multi-step actions, or write shell scripts, it&rsquo;s best to use the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">CLI</a>.</p>
 <p>If you want to do something like registering a device directly via the API, you need to make calls to the Identity Server, Join Server, Network Server and Application Server. See the <a href="https://www.thethingsindustries.com/docs/reference/api/">API Reference</a> for detailed information about which messages go to which endpoints.</p>
 <p>To register a device <code>newdev1</code> in application <code>app1</code>, first, register the <code>DevEUI</code>, <code>JoinEUI</code> and cluster addresses in the Identity Server. This is also where you register a friendly name, description, attributes, location, and more - see all fields in the <a href="https://www.thethingsindustries.com/docs/reference/api/">API Reference</a>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Accept: application/json&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
@@ -278,7 +278,7 @@
 </span><span class="s1">  }&#39;</span> <span class="se">\
 </span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/applications/app1/devices&#39;</span>
 </code></pre></div><p>Register LoRaWAN settings in the Network Server:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Accept: application/json&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
@@ -309,7 +309,7 @@
 </span><span class="s1">  }&#39;</span> <span class="se">\
 </span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/ns/applications/app1/devices/newdev1&#39;</span>
 </code></pre></div><p>Register the <code>DevEUI</code> and <code>JoinEUI</code> in the Application Server:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
 </span><span class="se"></span>  --request PUT <span class="se">\
@@ -331,7 +331,7 @@
 </span><span class="s1">  }&#39;</span> <span class="se">\
 </span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/as/applications/app1/devices/newdev1&#39;</span>
 </code></pre></div><p>Finally, for OTAA devices, register the <code>DevEUI</code>, <code>JoinEUI</code>, cluster addresses, and keys in the Join Server:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl --location <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
 </span><span class="se"></span>  --request PUT <span class="se">\
@@ -434,10 +434,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

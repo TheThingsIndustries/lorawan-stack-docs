@@ -199,11 +199,11 @@
 <p>After enabling events, click the <strong>Add Pub/Sub</strong> button to enable the integration.</p>
 <h2 id="subscribing-to-upstream-traffic">Subscribing to Upstream Traffic</h2>
 <p>The Application Server publishes messages for any enabled events. For example, when a device sends an uplink, an <code>uplink</code> message is published. To view these using a <code>mosquitto_sub</code> client connected to your MQTT server:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mosquitto_sub -h &lt;server_hostname&gt; -p &lt;port&gt; -t <span class="s1">&#39;#&#39;</span> -v
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mosquitto_sub -h &lt;server_hostname&gt; -p &lt;port&gt; -t <span class="s1">&#39;#&#39;</span> -v
 <span class="c1"># base-topic/uplink {&#34;end_device_ids&#34;:{&#34;device_id&#34;:&#34;dev1&#34;,&#34;application_ids&#34;:{&#34;application_id&#34;:&#34;app1&#34;}},&#34;received_at&#34;:&#34;2020-05-12T12:23:07.087614Z&#34;,&#34;uplink_message&#34;:{&#34;session_key_id&#34;:&#34;AXIDznz4bnQqtW8T3NsIVg==&#34;,&#34;f_port&#34;:1,&#34;f_cnt&#34;:327,&#34;frm_payload&#34;:&#34;AQ==&#34;}}</span>
 </code></pre></div><h2 id="scheduling-downlinks">Scheduling Downlinks</h2>
 <p>You can schedule downlink messages by publishing to a topic. For example, using a <code>mosquitto_pub</code> client connected to your MQTT server:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mosquitto_pub -h &lt;server_hostname&gt; -p &lt;port&gt; -t <span class="s1">&#39;base-topic/push-subtopic&#39;</span> -m <span class="s1">&#39;{&#34;end_device_ids&#34;:{&#34;device_id&#34;:&#34;dev1&#34;,&#34;application_ids&#34;:{&#34;application_id&#34;:&#34;app1&#34;}},&#34;downlinks&#34;:[{&#34;f_port&#34;:1,&#34;frm_payload&#34;:&#34;AA==&#34;,&#34;priority&#34;:&#34;NORMAL&#34;}]}&#39;</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mosquitto_pub -h &lt;server_hostname&gt; -p &lt;port&gt; -t <span class="s1">&#39;base-topic/push-subtopic&#39;</span> -m <span class="s1">&#39;{&#34;end_device_ids&#34;:{&#34;device_id&#34;:&#34;dev1&#34;,&#34;application_ids&#34;:{&#34;application_id&#34;:&#34;app1&#34;}},&#34;downlinks&#34;:[{&#34;f_port&#34;:1,&#34;frm_payload&#34;:&#34;AA==&#34;,&#34;priority&#34;:&#34;NORMAL&#34;}]}&#39;</span>
 </code></pre></div><p>will push a downlink to the end device <code>dev1</code> of the application <code>app1</code> with a base64 encoded payload of <code>AA==</code>, if <code>push-subtopic</code>is configured as the Sub topic for Downlink queue push.</p>
 <p>This will also result in the following message being published by the Application Server:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Received on [base-topic/downlink-queued-subtopic] :</span> 
@@ -280,10 +280,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

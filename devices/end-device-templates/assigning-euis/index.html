@@ -209,15 +209,24 @@
 <p>If you intend to operate your own LoRaWAN Join Server, use a <code>JoinEUI</code> from your IEEE assigned MAC address block as LoRa Alliance requires that for DNS lookup. <a href="https://standards.ieee.org/products-services/index.html">Learn how to apply for a IEEE issued MAC address block</a>.</p>
 <h2 id="example">Example</h2>
 <p>This example illustrates creating a device profile template, assigning 5 <code>DevEUI</code>s and creating them in your The Things Stack application.</p>
+<p>We define some user parameters that will be used below:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;test-app&#34;</span> 
+<span class="nv">FREQUENCY_PLAN</span><span class="o">=</span><span class="s2">&#34;EU_863_870&#34;</span>
+<span class="nv">LORAWAN_VERSION</span><span class="o">=</span><span class="s2">&#34;1.0.3&#34;</span>
+<span class="nv">LORAWAN_PHY_VERSION</span><span class="o">=</span><span class="s2">&#34;1.0.3-a&#34;</span>
+<span class="nv">DEV_EUI</span><span class="o">=</span><span class="s2">&#34;70b3d57ed0000000&#34;</span>
+<span class="nv">JOIN_EUI</span><span class="o">=</span><span class="s2">&#34;70b3d57ed0000001&#34;</span>
+<span class="nv">COUNT</span><span class="o">=</span><span class="s2">&#34;5&#34;</span>
+</code></pre></div><p>Make sure to modify these according to your setup.</p>
 <p>First, create a mapping file with a device profile in <code>profile.json</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices template extend <span class="se">\
-</span><span class="se"></span>  --frequency-plan-id EU_863_870 <span class="se">\
-</span><span class="se"></span>  --lorawan-version 1.0.3 <span class="se">\
-</span><span class="se"></span>  --lorawan-phy-version 1.0.3-a <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices template extend <span class="se">\
+</span><span class="se"></span>  --frequency-plan-id <span class="nv">$FREQUENCY_PLAN</span> <span class="se">\
+</span><span class="se"></span>  --lorawan-version <span class="nv">$LORAWAN_VERSION</span> <span class="se">\
+</span><span class="se"></span>  --lorawan-phy-version <span class="nv">$LORAWAN_PHY_VERSION</span> <span class="se">\
 </span><span class="se"></span>  --supports-join &gt; profile.json
 </code></pre></div><p>Second, assign the EUIs. The first argument is the <code>JoinEUI</code>, the second argument is the first <code>DevEUI</code>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ cat profile.json <span class="se">\
-</span><span class="se"></span>  <span class="p">|</span> ttn-lw-cli end-devices template assign-euis 70b3d57ed0000000 70b3d57ed0000001 --count <span class="m">5</span> &gt; devices.json
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cat profile.json <span class="se">\
+</span><span class="se"></span>  <span class="p">|</span> ttn-lw-cli end-devices template assign-euis <span class="nv">$JOIN_EUI</span> <span class="nv">$DEV_EUI</span> --count <span class="nv">$COUNT</span> &gt; devices.json
 </code></pre></div><details><summary>Show output</summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;end_device&#34;</span><span class="p">:</span> <span class="p">{</span>
@@ -376,9 +385,9 @@
 <span class="p">}</span>
 </code></pre></div></details>
 <p>Finally, you can create these devices in your The Things Stack application <code>test-app</code>, see <a href="/docs/devices/end-device-templates/executing/">Executing Templates</a>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ cat devices.json <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cat devices.json <span class="se">\
 </span><span class="se"></span>  <span class="p">|</span> ttn-lw-cli end-devices template execute <span class="se">\
-</span><span class="se"></span>  <span class="p">|</span> ttn-lw-cli end-devices create --application-id test-app
+</span><span class="se"></span>  <span class="p">|</span> ttn-lw-cli end-devices create --application-id <span class="nv">$APP_ID</span>
 </code></pre></div>
         </div>
         <div class="is-clearfix">
@@ -444,10 +453,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

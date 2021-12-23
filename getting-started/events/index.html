@@ -182,15 +182,17 @@
 </details>
 <h2 id="subscribe-with-cli">Subscribe with CLI</h2>
 <p>To follow your gateway <code>gtw1</code> and application <code>app1</code> events at the same time:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli events subscribe --gateway-id gtw1 --application-id app1
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">GTW_ID</span><span class="o">=</span><span class="s2">&#34;gtw1&#34;</span>
+<span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;app1&#34;</span>
+ttn-lw-cli events subscribe --gateway-id <span class="nv">$GTW_ID</span> --application-id <span class="nv">$APP_ID</span>
 </code></pre></div><h2 id="subscribe-with-http">Subscribe with HTTP</h2>
 <p>You can get streaming events with <code>curl</code>. For this, you need an API key for the entities you want to watch, for example:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli users api-key create <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli users api-key create <span class="se">\
 </span><span class="se"></span>  --user-id admin <span class="se">\
 </span><span class="se"></span>  --right-application-all <span class="se">\
 </span><span class="se"></span>  --right-gateway-all
 </code></pre></div><p>With the created API key:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl https://thethings.example.com/api/v3/events <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl https://thethings.example.com/api/v3/events <span class="se">\
 </span><span class="se"></span>  -X POST <span class="se">\
 </span><span class="se"></span>  -H <span class="s2">&#34;Authorization: Bearer NNSXS.BR55PTYILPPVXY..&#34;</span> <span class="se">\
 </span><span class="se"></span>  -H <span class="s2">&#34;Accept: text/event-stream&#34;</span> <span class="se">\
@@ -441,10 +443,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

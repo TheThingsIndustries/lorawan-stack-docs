@@ -201,8 +201,8 @@
 <p>In this guide, we show you how to request a free, trusted certificate from <a href="https://letsencrypt.org/getting-started/">Let&rsquo;s Encrypt</a>, but if you already have a certificate (<code>cert.pem</code>) and a corresponding key (<code>key.pem</code>), you can also use those. For local deployments, you can set up your own Certificate Authority and issue a certificate-key pair.</p>
 <h2 id="automatic-certificate-management">Automatic Certificate Management</h2>
 <p>The Things Stack can be configured to automatically retrieve and update Let&rsquo;s Encrypt certificates. Assuming you followed the <a href="/docs/getting-started/installation/configuration/">configuration</a> steps, create an <code>acme</code> directory where The Things Stack can store the certificate data:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ mkdir ./acme
-$ sudo chown 886:886 ./acme
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mkdir ./acme
+sudo chown 886:886 ./acme
 </code></pre></div><div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
   <code>886</code> is the <code>UID</code> and the <code>GID</code> of the user that runs The Things Stack in the Docker container. If you don&rsquo;t set these permissions, you may encounter an error resembling <code>open /var/lib/acme/acme_account+key&lt;...&gt;: permission denied</code>.
@@ -291,7 +291,7 @@ config/
 </div>
 <h3 id="certificates-from-a-certificate-authority">Certificates from a Certificate Authority</h3>
 <p>If you want to use the certificate (<code>cert.pem</code>) and key (<code>key.pem</code>) that you already have, you also need to set these permissions.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ sudo chown 886:886 ./cert.pem ./key.pem
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo chown 886:886 ./cert.pem ./key.pem
 </code></pre></div><div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
   If you don&rsquo;t set these permissions, you may encounter an error resembling <code>/run/secrets/key.pem: permission denied</code>.
@@ -314,7 +314,7 @@ config/
   <span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div><p>Then use the following command to generate the CA key and certificate:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ cfssl genkey -initca ca.json <span class="p">|</span> cfssljson -bare ca
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cfssl genkey -initca ca.json <span class="p">|</span> cfssljson -bare ca
 </code></pre></div><p>Now write the configuration for your certificate to <code>cert.json</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
   <span class="nt">&#34;hosts&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;thethings.example.com&#34;</span><span class="p">],</span>
@@ -328,7 +328,7 @@ config/
 </div>
 
 <p>Then, run the following command to generate the server key and certificate:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ cfssl gencert -ca ca.pem -ca-key ca-key.pem cert.json <span class="p">|</span> cfssljson -bare cert
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cfssl gencert -ca ca.pem -ca-key ca-key.pem cert.json <span class="p">|</span> cfssljson -bare cert
 </code></pre></div><p>The next steps assume the certificate key is called <code>key.pem</code>, so you&rsquo;ll need to rename <code>cert-key.pem</code> to <code>key.pem</code>.</p>
 <p>At the end, your directory should look like this:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cert.pem
@@ -406,10 +406,10 @@ config/
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 04 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4efe30885736e9631aa2aa26043e3dac896854b7">
-      doc: Installation foreword (#645)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

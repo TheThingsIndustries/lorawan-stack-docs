@@ -249,7 +249,7 @@
 </div>
 
 <p>Pull the docker images of the new version.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose pull stack
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose pull stack
 Pulling stack     ... <span class="k">done</span>
 </code></pre></div><p>The new version will be pulled locally but not run yet.</p>
 <h3 id="backup">Backup</h3>
@@ -259,28 +259,28 @@ Pulling stack     ... <span class="k">done</span>
 </div>
 
 <p>Stop <code>The Things Stack</code> container.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose stop stack
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose stop stack
 Stopping &lt;directory&gt;_stack_1 ... <span class="k">done</span>
 </code></pre></div><h4 id="redis">Redis</h4>
 <p>Navigate to the Redis data folder, which can be found in the <code>docker-compose.yml</code> for the <code>redis</code> service (ex: <code>${DEV_DATA_DIR:-.env/data}/redis</code>)</p>
 <p>Stop the <code>redis</code> container.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose stop redis
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose stop redis
 Stopping &lt;directory&gt;_redis_1 ... <span class="k">done</span>
 </code></pre></div><p>Copy the <code>${DEV_DATA_DIR:-.env/data}/redis/appendonly.aof</code> file to a location of your choice. This file is now a snapshot of the database at the time that it is copied.</p>
 <p>To restore <code>redis</code> from this file, simply place the file back in the data folder (replacing the <code>appendonly.aof</code> file) and start <code>redis</code>. The contents of the backup will be read and restored.</p>
 <p>Start the <code>redis</code> container.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose up -d redis
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose up -d redis
 Starting &lt;directory&gt;_redis_1 ... <span class="k">done</span>
 </code></pre></div><h4 id="cockroach">Cockroach</h4>
 <p>Keep the <code>cockroach</code> container running and enter a cockroach CLI shell.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it &lt;directory&gt;_cockroach_1 ./cockroach sql --insecure
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker <span class="nb">exec</span> -it &lt;directory&gt;_cockroach_1 ./cockroach sql --insecure
 </code></pre></div><p>Backup the database.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">root@:26257/defaultdb&gt; BACKUP * TO <span class="s1">&#39;nodelocal://self/&lt;backup_name&gt;&#39;</span><span class="p">;</span>
 </code></pre></div><p>A folder with the chosen <code>&lt;backup_name&gt;</code> will be created at the location <code>${DEV_DATA_DIR:-.env/data}/cockroach/extern</code>.</p>
 <p>Copy this folder (<code>${DEV_DATA_DIR:-.env/data}/cockroach/extern/&lt;backup_name&gt;</code>) to a location of your choice. This folder is now a snapshot of the database at the time that it is copied.</p>
 <p>In order to restore from a backup, copy the backup folder to <code>${DEV_DATA_DIR:-.env/data}/cockroach/extern</code>.</p>
 <p>Now, again enter a cockroach CLI shell again with the <code>cockroach</code> container running.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker <span class="nb">exec</span> -it &lt;directory&gt;_cockroach_1 ./cockroach sql --insecure
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker <span class="nb">exec</span> -it &lt;directory&gt;_cockroach_1 ./cockroach sql --insecure
 </code></pre></div><p>Delete (or rename) the existing database to prevent conflicts.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">root@:26257/defaultdb&gt;  DROP DATABASE ttn_lorawan CASCADE<span class="p">;</span>
 </code></pre></div><p>Restore from the backup.</p>
@@ -312,20 +312,20 @@ Starting &lt;directory&gt;_redis_1 ... <span class="k">done</span>
 <div class="tab-content content">
   <section data-content="enterprise">
   <p>Migrate the Identity Server Database.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack is-db migrate
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose run --rm stack is-db migrate
 </code></pre></div><p>Migrate the Network Server Database.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack ns-db migrate
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose run --rm stack ns-db migrate
 </code></pre></div><p>Migrate the Device Claiming Server Database.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack dcs-db migrate
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose run --rm stack dcs-db migrate
 </code></pre></div><p>Migrate the Application Server Database.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack as-db migrate
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose run --rm stack as-db migrate
 </code></pre></div>
 </section>
 <section data-content="open-source">
   <p>Migrate the Identity Server Database.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack is-db migrate
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose run --rm stack is-db migrate
 </code></pre></div><p>Migrate the Network Server Database.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose run --rm stack ns-db migrate
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose run --rm stack ns-db migrate
 </code></pre></div>
 </section>
 
@@ -333,7 +333,7 @@ Starting &lt;directory&gt;_redis_1 ... <span class="k">done</span>
 
 <h3 id="running-the-new-version">Running the new version</h3>
 <p>Once the above steps are successfully completed, start The Things Stack.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ docker-compose up -d stack
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose up -d stack
 </code></pre></div>
         </div>
         
@@ -393,10 +393,10 @@ Starting &lt;directory&gt;_redis_1 ... <span class="k">done</span>
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

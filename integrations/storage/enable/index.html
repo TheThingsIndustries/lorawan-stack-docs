@@ -204,7 +204,7 @@
 </section>
 <section data-content="cli">
   <p>Set up a default association between the desired application and the <code>storage-integration</code> package.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications packages default-associations <span class="nb">set</span> <span class="s2">&#34;app1&#34;</span> <span class="m">100</span> --package-name storage-integration
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli applications packages default-associations <span class="nb">set</span> &lt;application-id&gt; &lt;f_port&gt; --package-name storage-integration
 </code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   The <code>f_port</code> for the default association is set to <code>100</code>. This value is irrelevant, i.e. the storage integration will receive and store all uplink messages, regardless of <code>f_port</code>. The <code>f_port</code> value is only needed because of the way application packages work with The Things Stack.
@@ -231,7 +231,7 @@
 </div>
 
 <p>Set up an association between the desired end device and the <code>storage-integration</code> package.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications packages associations <span class="nb">set</span> <span class="s2">&#34;app1&#34;</span> <span class="s2">&#34;dev1&#34;</span> <span class="m">100</span> --package-name storage-integration
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli applications packages associations <span class="nb">set</span> &lt;application-id&gt; &lt;device-id&gt; &lt;f_port&gt; --package-name storage-integration
 </code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   The <code>f_port</code> value is irrelevant.
@@ -269,10 +269,11 @@
 </figure>
 </section>
 <section data-content="cli">
-  <p>To disable the integration, delete the package association or the default association. First, list associations:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># List default associations</span>
-$ ttn-lw-cli applications packages default-associations list <span class="s2">&#34;app1&#34;</span>
-<span class="o">{</span>
+  <p>To disable the integration, delete the package association or the default association.</p>
+<p>To list associations:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli applications packages default-associations list <span class="nv">$APP_ID</span>
+</code></pre></div><p>The output will be something like:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">{</span>
   <span class="s2">&#34;defaults&#34;</span>: <span class="o">[</span>
     <span class="o">{</span>
       <span class="s2">&#34;ids&#34;</span>: <span class="o">{</span>
@@ -288,7 +289,7 @@ $ ttn-lw-cli applications packages default-associations list <span class="s2">&#
   <span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div><p>Then delete the association with:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications packages default-associations delete <span class="s2">&#34;app1&#34;</span> <span class="m">100</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli applications packages default-associations delete &lt;application-id&gt; &lt;f_port&gt;
 </code></pre></div>
 </section>
 
@@ -305,10 +306,11 @@ $ ttn-lw-cli applications packages default-associations list <span class="s2">&#
   </div>
 </div>
 
-<p>To disable the integration, delete the association. First, list associations:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># List associations</span>
-$ ttn-lw-cli applications packages associations list <span class="s2">&#34;app1&#34;</span> <span class="s2">&#34;dev1&#34;</span>
-<span class="o">{</span>
+<p>To disable the integration, delete the association.</p>
+<p>To list associations:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli applications packages associations list <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span>
+</code></pre></div><p>The output will be something like:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">{</span>
   <span class="s2">&#34;associations&#34;</span>: <span class="o">[</span>
     <span class="o">{</span>
       <span class="s2">&#34;ids&#34;</span>: <span class="o">{</span>
@@ -327,8 +329,7 @@ $ ttn-lw-cli applications packages associations list <span class="s2">&#34;app1&
   <span class="o">]</span>
 <span class="o">}</span>
 </code></pre></div><p>Delete the association with:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Delete association between &#34;app1&#34; and &#34;dev1&#34;</span>
-$ ttn-lw-cli applications packages associations delete <span class="s2">&#34;app1&#34;</span> <span class="s2">&#34;dev1&#34;</span> <span class="m">100</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli applications packages associations delete &lt;application-id&gt; &lt;device-id&gt; &lt;f_port&gt;
 </code></pre></div>
         </div>
         <div class="is-clearfix">
@@ -403,10 +404,10 @@ $ ttn-lw-cli applications packages associations delete <span class="s2">&#34;app
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 23 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/98e31b06eef82e260beecfc0dc9d4f33639d7f52">
-      doc: Add retention period info, improve readability (#663)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

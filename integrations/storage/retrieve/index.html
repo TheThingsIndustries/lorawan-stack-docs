@@ -174,14 +174,14 @@
 <h2 id="retrieve-uplinks-using-the-http-api">Retrieve Uplinks using the HTTP API</h2>
 <p>A valid API key with the <code>RIGHT_APPLICATION_TRAFFIC_READ</code> rights is required.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Retrieve stored uplinks for application &#34;app1&#34;</span>
-$ curl -G <span class="s2">&#34;https://thethings.example.com/api/v3/as/applications/app1/packages/storage/uplink_message&#34;</span> <span class="se">\
+curl -G <span class="s2">&#34;https://thethings.example.com/api/v3/as/applications/&lt;application-id&gt;/packages/storage/uplink_message&#34;</span> <span class="se">\
 </span><span class="se"></span>    -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
 </span><span class="se"></span>    -H <span class="s2">&#34;Accept: text/event-stream&#34;</span> <span class="se">\
 </span><span class="se"></span>    -d <span class="s2">&#34;limit=10&#34;</span> <span class="se">\
 </span><span class="se"></span>    -d <span class="s2">&#34;after=2020-08-20T00:00:00Z&#34;</span>
 
 <span class="c1"># Retrieve stored uplinks for device &#34;dev1&#34; of application &#34;app1&#34;</span>
-$ curl -G <span class="s2">&#34;https://thethings.example.com/api/v3/as/applications/app1/devices/dev1/packages/storage/uplink_message&#34;</span> <span class="se">\
+curl -G <span class="s2">&#34;https://thethings.example.com/api/v3/as/applications/&lt;application-id&gt;/devices/&lt;device-id&gt;/packages/storage/uplink_message&#34;</span> <span class="se">\
 </span><span class="se"></span>    -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
 </span><span class="se"></span>    -H <span class="s2">&#34;Accept: text/event-stream&#34;</span> <span class="se">\
 </span><span class="se"></span>    -d <span class="s2">&#34;limit=10&#34;</span> <span class="se">\
@@ -192,7 +192,7 @@ $ curl -G <span class="s2">&#34;https://thethings.example.com/api/v3/as/applicat
 <span class="p">{</span><span class="nt">&#34;result&#34;</span><span class="p">:{</span><span class="nt">&#34;end_device_ids&#34;</span><span class="p">:{</span><span class="nt">&#34;device_id&#34;</span><span class="p">:</span><span class="s2">&#34;dev1&#34;</span><span class="p">,</span><span class="nt">&#34;application_ids&#34;</span><span class="p">:{</span><span class="nt">&#34;application_id&#34;</span><span class="p">:</span><span class="s2">&#34;app1&#34;</span><span class="p">},</span><span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span><span class="s2">&#34;1111111111111111&#34;</span><span class="p">,</span><span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span><span class="s2">&#34;014457CB&#34;</span><span class="p">},</span><span class="nt">&#34;received_at&#34;</span><span class="p">:</span><span class="s2">&#34;2020-08-24T10:08:49.144907967Z&#34;</span><span class="p">,</span><span class="nt">&#34;uplink_message&#34;</span><span class="p">:{</span><span class="nt">&#34;session_key_id&#34;</span><span class="p">:</span><span class="s2">&#34;AXPoziFRvbcEguvZQoCCZw==&#34;</span><span class="p">,</span><span class="nt">&#34;f_port&#34;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span><span class="nt">&#34;f_cnt&#34;</span><span class="p">:</span><span class="mi">44</span><span class="p">,</span><span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span><span class="s2">&#34;AQoBCgEKAQo=&#34;</span><span class="p">,</span><span class="nt">&#34;rx_metadata&#34;</span><span class="p">:[{</span><span class="nt">&#34;gateway_ids&#34;</span><span class="p">:{</span><span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span><span class="s2">&#34;gtw1&#34;</span><span class="p">},</span><span class="nt">&#34;time&#34;</span><span class="p">:</span><span class="s2">&#34;2020-08-24T10:08:48.891099194Z&#34;</span><span class="p">,</span><span class="nt">&#34;timestamp&#34;</span><span class="p">:</span><span class="mi">3318834395</span><span class="p">,</span><span class="nt">&#34;uplink_token&#34;</span><span class="p">:</span><span class="s2">&#34;ChIKEAoEZ3R3MRIIEREREREREREQ28nFrgwaDAiwo476BRCoqe67AyD47sfPy2A=&#34;</span><span class="p">}],</span><span class="nt">&#34;settings&#34;</span><span class="p">:{</span><span class="nt">&#34;data_rate&#34;</span><span class="p">:{</span><span class="nt">&#34;lora&#34;</span><span class="p">:{</span><span class="nt">&#34;bandwidth&#34;</span><span class="p">:</span><span class="mi">125000</span><span class="p">,</span><span class="nt">&#34;spreading_factor&#34;</span><span class="p">:</span><span class="mi">12</span><span class="p">}},</span><span class="nt">&#34;coding_rate&#34;</span><span class="p">:</span><span class="s2">&#34;4/5&#34;</span><span class="p">,</span><span class="nt">&#34;frequency&#34;</span><span class="p">:</span><span class="s2">&#34;868100000&#34;</span><span class="p">,</span><span class="nt">&#34;timestamp&#34;</span><span class="p">:</span><span class="mi">3318834395</span><span class="p">,</span><span class="nt">&#34;time&#34;</span><span class="p">:</span><span class="s2">&#34;2020-08-24T10:08:48.891099194Z&#34;</span><span class="p">},</span><span class="nt">&#34;received_at&#34;</span><span class="p">:</span><span class="s2">&#34;2020-08-24T10:08:48.931407608Z&#34;</span><span class="p">}}}</span>
 </code></pre></div></details>
 <p>Use field masks to specify a subset of fields that should be returned by the API. For example, to retrieve the decoded payload field only, set the field mask as shown below. Note that the end device identifiers and the timestamp are always included in the message.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ curl -G <span class="s2">&#34;https://thethings.example.com/api/v3/as/applications/app1/packages/storage/uplink_message&#34;</span> <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl -G <span class="s2">&#34;https://thethings.example.com/api/v3/as/applications/&lt;application-id&gt;/packages/storage/uplink_message&#34;</span> <span class="se">\
 </span><span class="se"></span>    -H <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="se">\
 </span><span class="se"></span>    -H <span class="s2">&#34;Accept: text/event-stream&#34;</span> <span class="se">\
 </span><span class="se"></span>    -d <span class="s2">&#34;limit=10&#34;</span> <span class="se">\
@@ -203,12 +203,16 @@ $ curl -G <span class="s2">&#34;https://thethings.example.com/api/v3/as/applicat
 
 </code></pre></div></details>
 <h2 id="retrieve-uplinks-using-the-cli">Retrieve Uplinks using the CLI</h2>
+<p>We define some user parameters that are used below:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;app1&#34;</span>
+<span class="nv">DEVICE_ID</span><span class="o">=</span><span class="s2">&#34;dev1&#34;</span>
+</code></pre></div><p>Make sure to modify these according to your setup.</p>
 <p>You can retrieve uplinks for an application or an end device with:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Retrieve stored uplinks for application &#34;app1&#34;</span>
-$ ttn-lw-cli applications storage get <span class="s2">&#34;app1&#34;</span> --limit <span class="m">10</span> --order <span class="s2">&#34;-received_at&#34;</span> --after <span class="s2">&#34;2018-08-20 00:00:00&#34;</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Retrieve 10 stored uplinks for application &#34;app1&#34;</span>
+ttn-lw-cli applications storage get <span class="nv">$APP_ID</span> --limit <span class="m">10</span> --order <span class="s2">&#34;-received_at&#34;</span> --after <span class="s2">&#34;2018-08-20 00:00:00&#34;</span>
 
-<span class="c1"># Retrieve stored uplinks for end device &#34;dev1&#34; of application &#34;app1&#34;</span>
-$ ttn-lw-cli end-devices storage get <span class="s2">&#34;app1&#34;</span> <span class="s2">&#34;dev1&#34;</span> --limit <span class="m">2</span> --order <span class="s2">&#34;-received_at&#34;</span> --after <span class="s2">&#34;2020-08-20 00:00:00&#34;</span>
+<span class="c1"># Retrieve 2 stored uplinks for end device &#34;dev1&#34; of application &#34;app1&#34;</span>
+ttn-lw-cli end-devices storage get <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> --limit <span class="m">2</span> --order <span class="s2">&#34;-received_at&#34;</span> --after <span class="s2">&#34;2020-08-20 00:00:00&#34;</span>
 </code></pre></div><details><summary><b>See example output</b></summary>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">[</span>
   <span class="p">{</span>
@@ -325,10 +329,10 @@ $ ttn-lw-cli end-devices storage get <span class="s2">&#34;app1&#34;</span> <spa
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 23 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/98e31b06eef82e260beecfc0dc9d4f33639d7f52">
-      doc: Add retention period info, improve readability (#663)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

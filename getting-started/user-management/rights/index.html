@@ -238,17 +238,23 @@
 </section>
 <section data-content="cli">
   <h2 id="managing-rights-using-the-cli">Managing Rights using the CLI</h2>
+<p>We define some user parameters that will be used below:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">ORGANIZATION_ID</span><span class="o">=</span><span class="s2">&#34;org1&#34;</span>
+<span class="nv">USER_ID</span><span class="o">=</span><span class="s2">&#34;user1&#34;</span>
+<span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;app1&#34;</span>
+<span class="nv">GTW_ID</span><span class="o">=</span><span class="s2">&#34;gateway1&#34;</span>
+</code></pre></div><p>Make sure to modify these according to your setup.</p>
 <h2 id="adding-collaborators">Adding Collaborators</h2>
 <p>To add collaborators for Gateways, End Devices, or Applications, use the <code>collaborators add</code> command. For example, to add a collaborator <code>user1</code> to the application <code>app1</code> with rights to read and write device info and delete applications, use the command</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications collaborators <span class="nb">set</span> --application-id app1 <span class="se">\
-</span><span class="se"></span>  --user-id user1 <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli applications collaborators <span class="nb">set</span> --application-id <span class="nv">$APP_ID</span> <span class="se">\
+</span><span class="se"></span>  --user-id <span class="nv">$USER_ID</span> <span class="se">\
 </span><span class="se"></span>  --right-application-delete <span class="se">\
 </span><span class="se"></span>  --right-application-devices-read <span class="se">\
 </span><span class="se"></span>  --right-application-devices-write
-</code></pre></div><p>To see the list of possible rights for an entity, use the <code>--help</code> flag, e.g <code>$ ttn-lw-cli applications collaborators set --help</code>.</p>
+</code></pre></div><p>To see the list of possible rights for an entity, use the <code>--help</code> flag, e.g <code>ttn-lw-cli applications collaborators set --help</code>.</p>
 <h2 id="listing-collaborators">Listing Collaborators</h2>
 <p>To see which rights a user has on an entity, use the <code>collaborators list</code> command. For example, to see collaborators for the gateway <code>gateway1</code>, use the command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli gateways collaborators list --gateway-id gateway1
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli gateways collaborators list --gateway-id <span class="nv">$GTW_ID</span>
 </code></pre></div>
 </section>
 
@@ -330,10 +336,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

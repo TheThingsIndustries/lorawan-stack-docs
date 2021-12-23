@@ -317,9 +317,9 @@
 <h2 id="uplink-messages">Uplink Messages</h2>
 <p>To forward uplink traffic to the Gateway Server, the MQTT client must publish a Protocol Buffer of type <code>ttnpb.UplinkMessage</code> under the topic <code>v3/&lt;gateway-id&gt;@&lt;tenant-id&gt;/up</code>.</p>
 <p>Below is an example that connects to the Gateway Server as <code>$GATEWAY_ID</code>, publishes an uplink message (Protocol Buffer stored as binary file <code>test-uplink-message</code>) and disconnects:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">GATEWAY_ID</span><span class="o">=</span><span class="s2">&#34;test-gtw@my-tenant&#34;</span>
-$ <span class="nb">export</span> <span class="nv">GATEWAY_API_KEY</span><span class="o">=</span><span class="s2">&#34;NNSXS.VEEBURF3KR77ZR...&#34;</span> <span class="c1"># API key with RIGHT_GATEWAY_LINK rights</span>
-$ mosquitto_pub <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">GATEWAY_ID</span><span class="o">=</span><span class="s2">&#34;test-gtw@my-tenant&#34;</span>
+<span class="nv">GATEWAY_API_KEY</span><span class="o">=</span><span class="s2">&#34;NNSXS.VEEBURF3KR77ZR...&#34;</span> <span class="c1"># API key with RIGHT_GATEWAY_LINK rights</span>
+mosquitto_pub <span class="se">\
 </span><span class="se"></span>    -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <span class="m">1882</span> <span class="se">\
 </span><span class="se"></span>    -u <span class="s2">&#34;</span><span class="nv">$GATEWAY_ID</span><span class="s2">&#34;</span> -P <span class="s2">&#34;</span><span class="nv">$GATEWAY_API_KEY</span><span class="s2">&#34;</span> <span class="se">\
 </span><span class="se"></span>    -t <span class="s2">&#34;v3/</span><span class="nv">$GATEWAY_ID</span><span class="s2">/up&#34;</span> -f test-uplink-message
@@ -336,9 +336,9 @@ $ mosquitto_pub <span class="se">\
 <h2 id="downlink-messages">Downlink Messages</h2>
 <p>The Gateway Server instructs the gateway to send a downlink packet by publishing a Protocol Buffer of type <code>ttnpb.GatewayDown</code> under the topic <code>v3/&lt;gateway-id&gt;@&lt;tenant-id&gt;/down</code>.</p>
 <p>The MQTT client must subscribe to this topic after connecting to the Gateway Server. It must also listen for incoming <code>ttnpb.GatewayDown</code> messages (which contain both the packet data payload as well as any desired transmission settings). Upon receiving a scheduling request, it must trasmit that message, and <a href="#txack-messages">send back a <code>TxAck</code> packet</a> on success.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">GATEWAY_ID</span><span class="o">=</span><span class="s2">&#34;test-gtw@my-tenant&#34;</span>
-$ <span class="nb">export</span> <span class="nv">GATEWAY_API_KEY</span><span class="o">=</span><span class="s2">&#34;NNSXS.VEEBURF3KR77ZR...&#34;</span> <span class="c1"># API key with RIGHT_GATEWAY_LINK rights</span>
-$ mosquitto_sub <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">GATEWAY_ID</span><span class="o">=</span><span class="s2">&#34;test-gtw@my-tenant&#34;</span>
+<span class="nv">GATEWAY_API_KEY</span><span class="o">=</span><span class="s2">&#34;NNSXS.VEEBURF3KR77ZR...&#34;</span> <span class="c1"># API key with RIGHT_GATEWAY_LINK rights</span>
+mosquitto_sub <span class="se">\
 </span><span class="se"></span>    -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <span class="m">1882</span> <span class="se">\
 </span><span class="se"></span>    -u <span class="s2">&#34;</span><span class="nv">$GATEWAY_ID</span><span class="s2">&#34;</span> -P <span class="s2">&#34;</span><span class="nv">$GATEWAY_API_KEY</span><span class="s2">&#34;</span> <span class="se">\
 </span><span class="se"></span>    -t <span class="s2">&#34;v3/</span><span class="nv">$GATEWAY_ID</span><span class="s2">/down&#34;</span> -v
@@ -355,9 +355,9 @@ $ mosquitto_sub <span class="se">\
 <h2 id="gateway-status-messages">Gateway Status Messages</h2>
 <p>To forward a gateway status message to the Gateway Server, the MQTT client must publish a Protocol Buffer of type <code>ttnpb.GatewayStatus</code> under the topic <code>v3/&lt;gateway-id&gt;@&lt;tenant-id&gt;/status</code>.</p>
 <p>Below is an example that connects to the Gateway Server as <code>$GATEWAY_ID</code>, publishes a gateway status message (Protocol Buffer stored as binary file <code>test-gateway-status</code>) and disconnects:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">GATEWAY_ID</span><span class="o">=</span><span class="s2">&#34;test-gtw@my-tenant&#34;</span>
-$ <span class="nb">export</span> <span class="nv">GATEWAY_API_KEY</span><span class="o">=</span><span class="s2">&#34;NNSXS.VEEBURF3KR77ZR...&#34;</span> <span class="c1"># API key with RIGHT_GATEWAY_LINK rights</span>
-$ mosquitto_pub <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">GATEWAY_ID</span><span class="o">=</span><span class="s2">&#34;test-gtw@my-tenant&#34;</span>
+<span class="nv">GATEWAY_API_KEY</span><span class="o">=</span><span class="s2">&#34;NNSXS.VEEBURF3KR77ZR...&#34;</span> <span class="c1"># API key with RIGHT_GATEWAY_LINK rights</span>
+mosquitto_pub <span class="se">\
 </span><span class="se"></span>    -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <span class="m">1882</span> <span class="se">\
 </span><span class="se"></span>    -u <span class="s2">&#34;</span><span class="nv">$GATEWAY_ID</span><span class="s2">&#34;</span> -P <span class="s2">&#34;</span><span class="nv">$GATEWAY_API_KEY</span><span class="s2">&#34;</span> <span class="se">\
 </span><span class="se"></span>    -t <span class="s2">&#34;v3/</span><span class="nv">$GATEWAY_ID</span><span class="s2">/status&#34;</span> -f test-gateway-status
@@ -373,9 +373,9 @@ $ mosquitto_pub <span class="se">\
 
 <h2 id="txack-messages">TxAck Messages</h2>
 <p>To forward a <code>TxAck</code> packet to the Gateway Server, the MQTT client must publish a Protocol Buffer of type <code>ttnpb.TxAcknowledgement</code> under the topic <code>v3/&lt;gateway-id&gt;@&lt;tenant-id&gt;/down/ack</code>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ <span class="nb">export</span> <span class="nv">GATEWAY_ID</span><span class="o">=</span><span class="s2">&#34;test-gtw@my-tenant&#34;</span>
-$ <span class="nb">export</span> <span class="nv">GATEWAY_API_KEY</span><span class="o">=</span><span class="s2">&#34;NNSXS.VEEBURF3KR77ZR...&#34;</span> <span class="c1"># API key with RIGHT_GATEWAY_LINK rights</span>
-$ mosquitto_pub <span class="se">\
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">GATEWAY_ID</span><span class="o">=</span><span class="s2">&#34;test-gtw@my-tenant&#34;</span>
+<span class="nv">GATEWAY_API_KEY</span><span class="o">=</span><span class="s2">&#34;NNSXS.VEEBURF3KR77ZR...&#34;</span> <span class="c1"># API key with RIGHT_GATEWAY_LINK rights</span>
+mosquitto_pub <span class="se">\
 </span><span class="se"></span>    -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <span class="m">1882</span> <span class="se">\
 </span><span class="se"></span>    -u <span class="s2">&#34;</span><span class="nv">$GATEWAY_ID</span><span class="s2">&#34;</span> -P <span class="s2">&#34;</span><span class="nv">$GATEWAY_API_KEY</span><span class="s2">&#34;</span> <span class="se">\
 </span><span class="se"></span>    -t <span class="s2">&#34;v3/</span><span class="nv">$GATEWAY_ID</span><span class="s2">/down/ack&#34;</span> -f example-tx-ack
@@ -482,10 +482,10 @@ $ mosquitto_pub <span class="se">\
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 12 Jul 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f3394edb26008b428a8fc5d32c7691290353445b">
-      Add missing API messages and enums (fix broken links) (#442)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

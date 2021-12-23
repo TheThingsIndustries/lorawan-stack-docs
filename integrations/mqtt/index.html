@@ -215,7 +215,7 @@
 <p>Subscribing to all topics with the <code>mosquitto_sub</code> client can be done with:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Tip: when using `mosquitto_sub`, pass the `-d` flag to see the topics messages get published on.</span>
 <span class="c1"># For example:</span>
-$ mosquitto_sub -h thethings.example.com -t <span class="s2">&#34;#&#34;</span> -u <span class="s2">&#34;app1@tenant1&#34;</span> -P <span class="s2">&#34;NNSXS.VEEBURF3KR77ZR..&#34;</span> -d
+mosquitto_sub -h thethings.example.com -t <span class="s2">&#34;#&#34;</span> -u <span class="s2">&#34;app1@tenant1&#34;</span> -P <span class="s2">&#34;NNSXS.VEEBURF3KR77ZR..&#34;</span> -d
 </code></pre></div><h3 id="example">Example</h3>
 <p>This example is suitable for The Things Stack deployments other than Open Source. If you are using The Things Stack Open source, make sure your read a <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#note-on-using-the-tenant-id">Note on Using the tenant ID</a>.</p>
 <p>When a device <code>dev1</code> (in application <code>app1</code> in tenant <code>tenant1</code>) joins the network, the <code>join</code> message is published on the topic <code>v3/app1@tenant1/devices/dev1/join</code>. With your MQTT client subscribed to that topic (or all topics), you can catch that <code>join</code> message.</p>
@@ -312,7 +312,7 @@ $ mosquitto_sub -h thethings.example.com -t <span class="s2">&#34;#&#34;</span> 
 
 <p>Use <a href="https://v2.cryptii.com/hexadecimal/base64">this handy tool</a> to convert hexadecimal to base64.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># If you use `mosquitto_pub`, use the following command:</span>
-$ mosquitto_pub -h thethings.example.com <span class="se">\
+mosquitto_pub -h thethings.example.com <span class="se">\
 </span><span class="se"></span>  -t <span class="s2">&#34;v3/app1@tenant1/devices/dev1/down/push&#34;</span> <span class="se">\
 </span><span class="se"></span>  -u <span class="s2">&#34;app1@tenant1&#34;</span> -P <span class="s2">&#34;NNSXS.VEEBURF3KR77ZR..&#34;</span> <span class="se">\
 </span><span class="se"></span>  -m <span class="s1">&#39;{&#34;downlinks&#34;:[{&#34;f_port&#34;: 15,&#34;frm_payload&#34;:&#34;vu8=&#34;,&#34;priority&#34;: &#34;NORMAL&#34;}]}&#39;</span> <span class="se">\
@@ -437,10 +437,10 @@ $ mosquitto_pub -h thethings.example.com <span class="se">\
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer Easwaran on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/48ead23f8ec85e8bd178f8f0c89459349beb7d96">
-      doc: Remove data_rate_index from uplink message examples (#662)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

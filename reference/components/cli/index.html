@@ -284,7 +284,7 @@
 <h2 id="input-and-output-formats">Input and Output Formats</h2>
 <p>By default the CLI outputs results as one or more JSON objects. These JSON objects are equivalent to the JSON objects that would be returned when using the HTTP API of The Things Stack. Some commands accept one or more JSON objects as input. These JSON objects are equivalent to the JSON objects that can be sent to the HTTP API. This way of handling input and output is used by the <a href="https://www.thethingsindustries.com/docs/devices/end-device-templates/">End Device Templates feature</a>.</p>
 <p>The <code>--output-format</code> flag allows you to specify a <a href="https://golang.org/pkg/text/template/">Go template</a> that is executed for the result(s) of a command. The example below executes lists applications and outputs their IDs and names:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli applications list --name --output-format <span class="s2">&#34;{{ .ApplicationID }}: {{ .Name }}&#34;</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli applications list --name --output-format <span class="s2">&#34;{{ .ApplicationID }}: {{ .Name }}&#34;</span>
 </code></pre></div><h2 id="login-and-logout">Login and Logout</h2>
 <p>The <code>login</code> command starts the OAuth authorization flow with the configured OAuth server. By default this makes use of an endpoint on <code>localhost</code> for the OAuth callback. If you are not running the CLI on the machine that is <code>localhost</code>, you can add the flag <code>--callback=false</code> to the <code>login</code> command. This will disable the callback endpoint, and instead ask you to copy/paste the authorization code that you will receive from the OAuth server.</p>
 <p>It is also possible to use an API key instead of OAuth. To do this, add the flag <code>--api-key=NNSXS.AAAA.BBBB</code> to the <code>login</code> command (replacing <code>NNSXS.AAAA.BBBB</code> with your API key).</p>
@@ -404,10 +404,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 

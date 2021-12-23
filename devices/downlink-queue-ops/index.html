@@ -174,25 +174,32 @@
 </div>
 
 <p>If there are more application downlink messages in the queue, the Network Server sets the LoRaWAN <code>FPending</code> bit to indicate end devices that there is more downlinks available. In class A downlink, this typically triggers the device to send an uplink message to receive the downlink message. In class C, the Network Server automatically transmits all queued downlink messages.</p>
+<p>We define some user parameters that will be used below:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;app1&#34;</span> 
+<span class="nv">DEVICE_ID</span><span class="o">=</span><span class="s2">&#34;dev1&#34;</span>
+<span class="nv">PAYLOAD</span><span class="o">=</span><span class="s2">&#34;01020304&#34;</span>
+<span class="nv">PRIORITY</span><span class="o">=</span><span class="s2">&#34;NORMAL&#34;</span>
+<span class="nv">F_PORT</span><span class="o">=</span><span class="s2">&#34;42&#34;</span>
+</code></pre></div><p>Make sure to modify these according to your setup.</p>
 <h2 id="push-and-replace-downlink-queue">Push and replace downlink queue</h2>
 <p>To push downlink to the end of the queue:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices downlink push app1 dev1 <span class="se">\
-</span><span class="se"></span>  --frm-payload <span class="m">01020304</span> <span class="se">\
-</span><span class="se"></span>  --priority NORMAL <span class="se">\
-</span><span class="se"></span>  --f-port <span class="m">42</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices downlink push <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
+</span><span class="se"></span>  --frm-payload <span class="nv">$PAYLOAD</span> <span class="se">\
+</span><span class="se"></span>  --priority <span class="nv">$PRIORITY</span> <span class="se">\
+</span><span class="se"></span>  --f-port <span class="nv">$F_PORT</span>
 </code></pre></div><p>You must pass an <code>FPort</code> with the <code>--f-port</code> flag. Confirmed downlinks can be set using <code>--confirmed</code>.</p>
 <p>To replace the existing queue with a new item:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices downlink replace app1 dev1 <span class="se">\
-</span><span class="se"></span>  --frm-payload <span class="m">01020304</span> <span class="se">\
-</span><span class="se"></span>  --priority NORMAL <span class="se">\
-</span><span class="se"></span>  --f-port <span class="m">42</span>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices downlink replace <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
+</span><span class="se"></span>  --frm-payload <span class="nv">$PAYLOAD</span> <span class="se">\
+</span><span class="se"></span>  --priority <span class="nv">$PRIORITY</span> <span class="se">\
+</span><span class="se"></span>  --f-port <span class="nv">$F_PORT</span>
 </code></pre></div><p>The Things Stack limits the application downlink queue on 10k messages per end device. When this limit is reached, no more scheduled downlinks can be placed in the queue and The Things Stack will drop them. In order to avoid hitting the application downlink queue limit and loosing downlinks, we advise scheduling downlink messages in batches.</p>
 <h2 id="list-queue">List queue</h2>
 <p>To see currently scheduled downlink messages:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices downlink list app1 dev1
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices downlink list <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span>
 </code></pre></div><h2 id="clear-queue">Clear queue</h2>
 <p>To clear scheduled downlink messages:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-cli end-devices downlink clear app1 dev1
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices downlink clear <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span>
 </code></pre></div>
         </div>
         
@@ -265,10 +272,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
+      doc: Remove $ character from code blocks, add variables (#678)
     </a>
 </p>
 
