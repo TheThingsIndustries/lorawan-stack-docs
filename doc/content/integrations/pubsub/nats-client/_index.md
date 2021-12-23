@@ -39,7 +39,7 @@ After enabling events, click the **Add Pub/Sub** button to enable the integratio
 The Application Server publishes messages for any enabled events. For example, when a device sends an uplink, an `uplink` message is published. To view these using a `nats-sub` client connected to your NATS server:
 
 ```bash
-$ nats-sub -s nats://<server_hostname>:<port> '>'
+nats-sub -s nats://<server_hostname>:<port> '>'
 # Listening on [>]
 # [#1] Received on [base-topic.uplink-subtopic] : '{"end_device_ids":{"device_id":"dev1","application_ids":{"application_id":"app1"}, "received_at":"2020-05-12T10:12:42.063941Z","uplink_message":{"session_key_id":"AXIDznz4bnQqtW8T3NsIVg==","f_port":1,"f_cnt":102,"frm_payload":"AQ=="}]}'
 ```
@@ -49,7 +49,7 @@ $ nats-sub -s nats://<server_hostname>:<port> '>'
 You can schedule downlink messages by publishing to a topic. For example, using a `nats-pub` client connected to your NATS server:
 
 ```bash
-$ nats-pub -s nats://<server_hostname>:<port> base-topic.push-subtopic '{"end_device_ids":{"device_id":"dev1","application_ids":{"application_id":"app1"}},"downlinks":[{"f_port":1,"frm_payload":"AA==","priority":"NORMAL"}]}'
+nats-pub -s nats://<server_hostname>:<port> base-topic.push-subtopic '{"end_device_ids":{"device_id":"dev1","application_ids":{"application_id":"app1"}},"downlinks":[{"f_port":1,"frm_payload":"AA==","priority":"NORMAL"}]}'
 ```
 
 will push a downlink to the end device `dev1` of the application `app1` with a base64 encoded payload of `AA==`, if ```push-subtopic```is configured as the Sub topic for **Downlink queue push**.

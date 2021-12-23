@@ -10,12 +10,21 @@ Application packages specify state machines running both on the end device and t
 
 {{< cli-only >}}
 
+We first define some user parameters used below:
+
+```bash
+APP_ID="app1"
+DEVICE_ID="dev1"
+```
+
+Make sure to modify these according to your setup.
+
 ## Listing the Available Packages
 
 The application packages available for a given device `dev1` of application `app1` can be obtained as follows:
 
 ```bash
-$ ttn-lw-cli applications packages list app1 dev1
+ttn-lw-cli applications packages list $APP_ID $DEVICE_ID
 ```
 
 This gives the result in the JSON format:
@@ -44,7 +53,9 @@ All of the commands for managing associations and default associations are symme
 In order to associate a given application package to a FPort of an application, you can use the `default-associations set` command:
 
 ```bash
-$ ttn-lw-cli applications packages default-associations set app1 25 --package-name test-package
+F_PORT=25
+APP_PACKAGE_NAME="test-package"
+ttn-lw-cli applications packages default-associations set $APP_ID $F_PORT --package-name $APP_PACKAGE_NAME
 ```
 
 This will associate FPort `25` of application `app1` with the application package `test-package`, as shown by the command output:
@@ -67,9 +78,9 @@ Some application packages are stateful, and as such their state can be updated u
 
 ```bash
 # Create a JSON formatted file containing package data
-$ echo '{ "api_key": "AQEA8+q0v..." }' > package-data.json
+echo '{ "api_key": "AQEA8+q0v..." }' > package-data.json
 # Update the association with the new package data
-$ ttn-lw-cli applications packages default-associations set app1 25 --data-local-file package-data.json
+ttn-lw-cli applications packages default-associations set $APP_ID $F_PORT --data-local-file package-data.json
 ```
 
 This will update the association to use the given `api_key`:
@@ -96,7 +107,7 @@ This will update the association to use the given `api_key`:
 The package associations of a given device can be listed using the `default-associations list` command:
 
 ```bash
-$ ttn-lw-cli applications packages default-associations list app1
+ttn-lw-cli applications packages default-associations list $APP_ID
 ```
 
 <details><summary>Output</summary>
@@ -125,7 +136,7 @@ $ ttn-lw-cli applications packages default-associations list app1
 The associations can be retrieved using the `default-associations get` command:
 
 ```bash
-$ ttn-lw-cli applications packages default-associations get app1 25 --data
+ttn-lw-cli applications packages default-associations get $APP_ID $F_PORT --data
 ```
 
 <details><summary>Output</summary>
@@ -153,5 +164,5 @@ $ ttn-lw-cli applications packages default-associations get app1 25 --data
 The associations can be deleted using the `default-associations delete` command:
 
 ```bash
-$ ttn-lw-cli applications packages associations delete app1 25
+ttn-lw-cli applications packages associations delete $APP_ID $F_PORT
 ```

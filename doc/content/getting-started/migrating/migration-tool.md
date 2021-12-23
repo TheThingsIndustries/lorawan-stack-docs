@@ -21,13 +21,13 @@ We highly recommend installing or upgrading to `ttn-lw-migrate` version `0.5.0` 
 To install `ttn-lw-migrate` tool with `brew`:
 
 ```bash
-$ brew install TheThingsNetwork/homebrew-lorawan-stack/ttn-lw-migrate
+brew install TheThingsNetwork/homebrew-lorawan-stack/ttn-lw-migrate
 ```
 
 To upgrade `ttn-lw-migrate` tool if updates are available:
 
 ```bash
-$ brew upgrade TheThingsNetwork/homebrew-lorawan-stack/ttn-lw-migrate
+brew upgrade TheThingsNetwork/homebrew-lorawan-stack/ttn-lw-migrate
 ```
 
 ### Linux
@@ -35,13 +35,13 @@ $ brew upgrade TheThingsNetwork/homebrew-lorawan-stack/ttn-lw-migrate
 To install `ttn-lw-migrate` tool with `snap`:
 
 ```bash
-$ sudo snap install ttn-lw-migrate
+sudo snap install ttn-lw-migrate
 ```
 
 To upgrade `ttn-lw-migrate` tool if updates are available:
 
 ```bash
-$ sudo snap refresh ttn-lw-migrate
+sudo snap refresh ttn-lw-migrate
 ```
 
 ### Windows
@@ -59,7 +59,7 @@ To use the `ttn-lw-migrate` tool after successful installation, use your termina
 To list available sources that you can migrate your end devices and applications from:
 
 ```bash
-$ ttn-lw-migrate sources
+ttn-lw-migrate sources
 ```
 
 Currently, supported sources are `ttnv2` and `chirpstack`.

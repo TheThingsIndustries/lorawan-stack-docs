@@ -20,15 +20,17 @@ ttn-lw-cli packetbroker home-networks gateway-visibilities set default [flags]
 
 ### Examples
 
+To set the default gateway visibility to show location and online status:
+
+```
+ttn-lw-cli packetbroker home-network gateway-visibilities set default \
+  --location --status
 ```
 
-  To set the default gateway visibility to show location and online status:
-    $ ttn-lw-cli packetbroker home-network gateway-visibilities set default \
-      --location --status
-
-  To set the default gateway visibility to show all fields:
-    $ ttn-lw-cli packetbroker home-network gateway-visibilities set default \
-      --all
+To set the default gateway visibility to show all fields:
+```
+ttn-lw-cli packetbroker home-network gateway-visibilities set default \
+  --all
 ```
 
 ### Options

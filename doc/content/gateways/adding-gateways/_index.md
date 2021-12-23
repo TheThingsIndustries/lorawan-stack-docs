@@ -71,19 +71,30 @@ You can also check the **Update from status messages** box if you want to update
 
 ## Adding Gateways using the CLI
 
+We define some user parameters that will be used below:
+
+```bash
+GTW_ID="gtw1" 
+FREQUENCY_PLAN="EU_863_870"
+GTW_EUI="00800000A00009EF"
+USER_ID="admin"
+```
+
+Make sure to modify these according to your setup.
+
 First, list the available frequency plans:
 
 ```bash
-$ ttn-lw-cli gateways list-frequency-plans
+ttn-lw-cli gateways list-frequency-plans
 ```
 
 Then, create the first gateway with the chosen frequency plan:
 
 ```bash
-$ ttn-lw-cli gateways create gtw1 \
-  --user-id admin \
-  --frequency-plan-id EU_863_870 \
-  --gateway-eui 00800000A00009EF \
+ttn-lw-cli gateways create $GTW_ID \
+  --user-id $USER_ID \
+  --frequency-plan-id $FREQUENCY_PLAN \
+  --gateway-eui $GTW_EUI \
   --enforce-duty-cycle
 ```
 
@@ -96,9 +107,10 @@ Some gateways require an API Key with Link Gateway Rights to be able to connect 
 Create an API key for the gateway:
 
 ```bash
-$ ttn-lw-cli gateways api-keys create \
-  --name link \
-  --gateway-id gtw1 \
+API_KEY_NAME="API key for connecting my gateway"
+ttn-lw-cli gateways api-keys create \
+  --name $API_KEY_NAME \
+  --gateway-id $GTW_ID \
   --right-gateway-link
 ```
 
@@ -111,11 +123,13 @@ Once you have added your gateway to {{% tts %}}, you can also set the locations 
 Add an antenna and set its location  with:
 
 ```bash
-$ GTW_ID="your-gateway-id"
-$ ttn-lw-cli gateways set $GTW_ID \
-  --antenna.location.latitude 43.84 \
-  --antenna.location.longitude 18.32 \
-  --antenna.location.altitude 500 \
+LAT="43.84"
+LONG="18.32"
+ALT="500"
+ttn-lw-cli gateways set $GTW_ID \
+  --antenna.location.latitude $LAT \
+  --antenna.location.longitude $LONG \
+  --antenna.location.altitude $ALT \
   --antenna.add \
 ```
 
@@ -123,7 +137,7 @@ If you do not mind your gateway's location to be publicly displayed, append the 
 
 You can also set the gateway location to be updated from various sources with the `--antenna.location.source` flag. The source of the location data can be the registry, GPS data, results of the LoRa RSSI geolocation, etc.
 
-Use `ttn-lw-cli gateways set gtw1 --help` command to see the full list of the available location sources and other relatable info. Keep in mind that if you set the alternative location source, the location settings you manually set will be overwritten by the automatic updates from that source.
+Use `ttn-lw-cli gateways set $GTW_ID --help` command to see the full list of the available location sources and other relatable info. Keep in mind that if you set the alternative location source, the location settings you manually set will be overwritten by the automatic updates from that source.
 
 The CLI will return something like:
 
@@ -163,7 +177,8 @@ Keep in mind that if you change the physical location of your gateway, the locat
 A preffered way for adjusting a downlink path gain is setting the gateway antenna gain, instead of changing the gateway Tx power. The following command will set the gateway antenna gain to 3 dB:
 
 ```bash
-$ ttn-lw-cli gateways set $GTW_ID --antenna.gain 3
+GAIN="3"
+ttn-lw-cli gateways set $GTW_ID --antenna.gain $GAIN
 ```
 
 The CLI output will be similar to:

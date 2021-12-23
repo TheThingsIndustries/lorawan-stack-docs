@@ -23,7 +23,7 @@ Create a gateway by following the instructions for [Adding Gateways]({{< ref "/g
 Find the IP address the gateway. This can be done in various ways. You can connect your machine to the same local network as that of the gateway Ethernet connection and scan for open SSH ports or assign a static IP to the gateway and use that. Once the gateway IP address is found, ssh into it.
 
 ```bash
-$ ssh root@<GatewayIP>
+ssh root@<GatewayIP>
 ```
 
 The default username is **root**, and the default password can be also found in the sticker.
@@ -35,10 +35,10 @@ The Gateway Configuration Server can be used to retrieve a proper `global_conf.j
 Update the configuration files on the gateway with your downloaded `global_conf.json` and restart the packet forwarder:
 
 ```bash
-$ mv /opt/nas-lgw/local_conf.json /opt/nas-lgw/local_conf.json.old
-$ cp global_conf.json /opt/nas-lgw/global_conf.json
+mv /opt/nas-lgw/local_conf.json /opt/nas-lgw/local_conf.json.old
+cp global_conf.json /opt/nas-lgw/global_conf.json
 
-$ systemctl restart nas-lgw
+systemctl restart nas-lgw
 ```
 
 If your configuration was successful, your gateway will connect to {{% tts %}} after a couple of seconds.
@@ -50,7 +50,7 @@ If the gateway does not connect to {{% tts %}} after a few minutes, issue a `reb
 If you still have trouble connecting to {{% tts %}}, then try editing the `gateway_conf` section:
 
 ```bash
-$ vi /opt/nas-lgw/global_conf.json
+vi /opt/nas-lgw/global_conf.json
 ```
 
 Edit the server parameters:
@@ -63,11 +63,11 @@ Edit the server parameters:
 You can access the gateway system logs using journalctl. See `journalctl --help` for details
 
 ```bash
-$ journalctl -f -u nas_lgw -n 1000
+journalctl -f -u nas_lgw -n 1000
 ```
 
 The gateway logs will rotate when they reach about 15M in size, which means that you will generally not be able to access very old logs. At times of dense traffic (e.g. ~1000s of devices) this typically means that you will only have logs for 2-3 hours. If you want to keep historical data (for whatever reason), then you will have to forward the logs to an external server. If you decide to do so, then `netcat` may be useful:
 
 ```bash
-$ journalctl -f | nc server-hostname server-port
+journalctl -f | nc server-hostname server-port
 ```

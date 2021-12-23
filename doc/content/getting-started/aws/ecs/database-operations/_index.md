@@ -25,7 +25,7 @@ Under **Advanced Options** > **Container Overrides** > `ttes`, set the **Command
 Alternatively, you can run ops commands using the AWS CLI:
 
 ```bash
-$ aws ecs run-task \
+aws ecs run-task \
   --task-definition TASK_DEFINITION \
   --cluster CLUSTER_NAME \
   --launch-type EC2 \

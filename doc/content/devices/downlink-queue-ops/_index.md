@@ -6,27 +6,39 @@ weight: 7
 
 {{% tts %}} keeps a queue of downlink messages per device. Applications can keep pushing downlink messages or replace the queue with a list of downlink messages.
 
+<!--more-->
+
 You can schedule a downlink using the CLI, MQTT or HTTP webhooks.
 
 To schedule downlinks using MQTT, see [MQTT Server]({{< ref "integrations/mqtt" >}}). To schedule downlinks using webhooks, see [Scheduling Downlinks with Webhooks]({{< ref "integrations/webhooks/scheduling-downlinks" >}}).
 
 This guide shows how to interact with the downlink queue from the command-line interface (CLI).
 
-<!--more-->
-
 {{< cli-only >}}
 
 If there are more application downlink messages in the queue, the Network Server sets the LoRaWAN `FPending` bit to indicate end devices that there is more downlinks available. In class A downlink, this typically triggers the device to send an uplink message to receive the downlink message. In class C, the Network Server automatically transmits all queued downlink messages.
+
+We define some user parameters that will be used below:
+
+```bash
+APP_ID="app1" 
+DEVICE_ID="dev1"
+PAYLOAD="01020304"
+PRIORITY="NORMAL"
+F_PORT="42"
+```
+
+Make sure to modify these according to your setup.
 
 ## Push and replace downlink queue
 
 To push downlink to the end of the queue:
 
 ```bash
-$ ttn-lw-cli end-devices downlink push app1 dev1 \
-  --frm-payload 01020304 \
-  --priority NORMAL \
-  --f-port 42
+ttn-lw-cli end-devices downlink push $APP_ID $DEVICE_ID \
+  --frm-payload $PAYLOAD \
+  --priority $PRIORITY \
+  --f-port $F_PORT
 ```
 
 You must pass an `FPort` with the `--f-port` flag. Confirmed downlinks can be set using `--confirmed`.
@@ -34,10 +46,10 @@ You must pass an `FPort` with the `--f-port` flag. Confirmed downlinks can be se
 To replace the existing queue with a new item:
 
 ```bash
-$ ttn-lw-cli end-devices downlink replace app1 dev1 \
-  --frm-payload 01020304 \
-  --priority NORMAL \
-  --f-port 42
+ttn-lw-cli end-devices downlink replace $APP_ID $DEVICE_ID \
+  --frm-payload $PAYLOAD \
+  --priority $PRIORITY \
+  --f-port $F_PORT
 ```
 
 {{% tts %}} limits the application downlink queue on 10k messages per end device. When this limit is reached, no more scheduled downlinks can be placed in the queue and {{% tts %}} will drop them. In order to avoid hitting the application downlink queue limit and loosing downlinks, we advise scheduling downlink messages in batches.
@@ -47,7 +59,7 @@ $ ttn-lw-cli end-devices downlink replace app1 dev1 \
 To see currently scheduled downlink messages:
 
 ```bash
-$ ttn-lw-cli end-devices downlink list app1 dev1
+ttn-lw-cli end-devices downlink list $APP_ID $DEVICE_ID
 ```
 
 ## Clear queue
@@ -55,5 +67,5 @@ $ ttn-lw-cli end-devices downlink list app1 dev1
 To clear scheduled downlink messages:
 
 ```bash
-$ ttn-lw-cli end-devices downlink clear app1 dev1
+ttn-lw-cli end-devices downlink clear $APP_ID $DEVICE_ID
 ```

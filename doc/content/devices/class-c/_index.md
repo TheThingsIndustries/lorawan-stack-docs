@@ -12,6 +12,21 @@ This guide shows how to enable or disable Class C for an and device, and how to 
 
 Read more about device classes in [The Things Network LoRaWAN documentation]](https://www.thethingsnetwork.org/docs/lorawan/classes/).
 
+We define some user parameters that will be used below:
+
+```bash
+APP_ID="app1" 
+DEVICE_ID="dev1"
+FREQUENCY_PLAN="EU_863_870"
+LORAWAN_VERSION="1.0.3"
+LORAWAN_PHY_VERSION="1.0.3-a"
+DEV_ADDR="00E4304D"
+APP_SESSION_KEY="A0CAD5A30036DBE03096EB67CA975BAA"
+NWK_SESSION_KEY="B7F3E161BC9D4388E6C788A0C547F255"
+```
+
+Make sure to modify these according to your setup.
+
 ## Enabling and Disabling Class C
 
 In order to send Class C downlink messages to a single device, enable Class C support for the end device when creating or updating it with the `--supports-class-c` flag.
@@ -19,7 +34,7 @@ In order to send Class C downlink messages to a single device, enable Class C su
 For example, when enabling Class C for an existing device:
 
 ```bash
-$ ttn-lw-cli end-devices set app1 dev1 --supports-class-c
+ttn-lw-cli end-devices set $APP_ID $DEVICE_ID --supports-class-c
 ```
 
 This will enable the Class C downlink scheduling of the device. That's it! Downlink messages are now scheduled as soon as possible.
@@ -47,13 +62,13 @@ The time to transmit is an absolute timestamp in ISO 8601 format to send the mes
 First, create a Class C device:
 
 ```bash
-$ ttn-lw-cli end-devices create app1 dev1 \
-  --frequency-plan-id EU_863_870 \
-  --lorawan-version 1.0.3 \
-  --lorawan-phy-version 1.0.3-a \
-  --session.dev-addr 00E4304D \
-  --session.keys.app-s-key.key A0CAD5A30036DBE03096EB67CA975BAA \
-  --session.keys.nwk-s-key.key B7F3E161BC9D4388E6C788A0C547F255 \
+ttn-lw-cli end-devices create $APP_ID $DEVICE_ID \
+  --frequency-plan-id $FREQUENCY_PLAN \
+  --lorawan-version $LORAWAN_VERSION \
+  --lorawan-phy-version $LORAWAN_PHY_VERSION \
+  --session.dev-addr $DEV_ADDR \
+  --session.keys.app-s-key.key $APP_SESSION_KEY \
+  --session.keys.nwk-s-key.key $NWK_SESSION_KEY \
   --supports-class-c
 ```
 

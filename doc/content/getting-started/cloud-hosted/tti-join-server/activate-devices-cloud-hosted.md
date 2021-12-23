@@ -23,7 +23,7 @@ The Things Join Server is a LoRaWAN Join Server. Learn how to activate devices o
 Use the command-line interface (CLI) configuration file with Cloud cluster. 
 
 ```bash
-$ ttn-lw-cli login
+ttn-lw-cli login
 ```
 
 ## Register
@@ -37,14 +37,14 @@ When registering the devices on a Network Server and Application Server, you nee
    
 List the supported LoRaWAN versions, regional parameters versions, frequency plans and other options with:
 ```bash
-$ ttn-lw-cli end-devices list-frequency-plans
-$ ttn-lw-cli end-devices set --help
+ttn-lw-cli end-devices list-frequency-plans
+ttn-lw-cli end-devices set --help
 ```
 
 To register the device in application `test-app` with device ID `eui-0004a310001ff9e0`:
 
 ```bash
-$ ttn-lw-cli end-devices set test-app eui-0004a310001ff9e0 \
+ttn-lw-cli end-devices set test-app eui-0004a310001ff9e0 \
   --net-id 000013 \
   --lorawan-version 1.0.2 \
   --lorawan-phy-version 1.0.2-b \

@@ -4,9 +4,11 @@ description: "LoRaWAN Backend Interfaces"
 weight: 3
 ---
 
-{{% tts %}} exposes the Join Server API defined by LoRaWAN Backend Interfaces 1.0 and 1.1. This is used for interoperability between LoRaWAN networks. The functionality can be exposed either by the Join Server or by the Identity Server, but not both at once.
+{{% tts %}} exposes the Join Server API defined by LoRaWAN Backend Interfaces 1.0 and 1.1. This is used for interoperability between LoRaWAN networks.
 
-Join Server is capable of handling the join flow, that is `HomeNSReq`, `JoinReq` and `AppSKeyReq` requests. Identity Server can only answer to `HomeNSReq`. Typically, you should enable interoperability if you want to use device activations through Packet Broker. You can use Join Server interoperability if you want to expose the entire join flow to other LoRaWAN network servers.
+<!--more-->
+
+The functionality can be exposed either by the Join Server or by the Identity Server, but not both at once. Join Server is capable of handling the join flow, that is `HomeNSReq`, `JoinReq` and `AppSKeyReq` requests. Identity Server can only answer to `HomeNSReq`. Typically, you should enable interoperability if you want to use device activations through Packet Broker. You can use Join Server interoperability if you want to expose the entire join flow to other LoRaWAN network servers.
 
 # TLS
 

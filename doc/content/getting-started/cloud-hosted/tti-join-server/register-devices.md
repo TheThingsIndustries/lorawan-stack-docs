@@ -25,7 +25,7 @@ Learn more about [obtaining a IEEE MAC Address Block](https://standards.ieee.org
 Use the command-line interface (CLI) configuration file with Join Server only. 
 
 ```bash
-$ ttn-lw-cli login
+ttn-lw-cli login
 ```
 
 ## Register
@@ -39,7 +39,7 @@ It is recommended to provision the LoRaWAN 1.1.x NwkKey for future compliance. T
 To register a LoRaWAN 1.0.x device in application `test-app`, device ID `test-device`, AppEUI `70B3D57ED0000000` and DevEUI `0004A310001FF9E0` and an AppKey:
 
 ```bash
-$ ttn-lw-cli end-devices create test-app test-device \
+ttn-lw-cli end-devices create test-app test-device \
   --app-eui 70B3D57ED0000000 \
   --dev-eui 0004A310001FF9E0 \
   --root-keys.app-key.key D3FD8EEED7E8880025CC63D5E8E1D7FB
@@ -79,7 +79,7 @@ $ ttn-lw-cli end-devices create test-app test-device \
 To register a LoRaWAN 1.1.x device in application `test-app`, device ID `test-device`, JoinEUI `70B3D57ED0000000` and DevEUI `0004A310001FF9E0` and an AppKey:
 
 ```bash
-$ ttn-lw-cli end-devices create test-app test-device \
+ttn-lw-cli end-devices create test-app test-device \
   --join-eui 70B3D57ED0000000 \
   --dev-eui 0004A310001FF9E0 \
   --root-keys.app-key.key D3FD8EEED7E8880025CC63D5E8E1D7FB \

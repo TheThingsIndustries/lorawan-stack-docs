@@ -45,7 +45,7 @@ Use the `--ttnv2.resets-to-frequency-plan` flag to configure the factory preset 
 To export a single end device from {{% ttnv2 %}}:
 
 ```bash
-$ ttn-lw-migrate device --source ttnv2 "v2-end-device-ID" --ttnv2.with-session=false > devices.json
+ttn-lw-migrate device --source ttnv2 "v2-end-device-ID" --ttnv2.with-session=false > devices.json
 ```
 
 ### Export a Batch of End Devices
@@ -63,7 +63,7 @@ dev3
 To export a batch of end devices from {{% ttnv2 %}}:
 
 ```bash
-$ ttn-lw-migrate device --source ttnv2 --ttnv2.with-session=false < device_ids.txt > devices.json
+ttn-lw-migrate device --source ttnv2 --ttnv2.with-session=false < device_ids.txt > devices.json
 ```
 
 ### Export All End Devices Associated With {{% ttnv2 %}} Application
@@ -71,7 +71,7 @@ $ ttn-lw-migrate device --source ttnv2 --ttnv2.with-session=false < device_ids.t
 To export all devices contained in {{% ttnv2 %}} application:
 
 ```bash
-$ ttn-lw-migrate application --source ttnv2 "ttn-v2-application-ID" --ttnv2.with-session=false > devices.json
+ttn-lw-migrate application --source ttnv2 "ttn-v2-application-ID" --ttnv2.with-session=false > devices.json
 ```
 
 ## Prevent the End Device from Joining {{% ttnv2 %}} Network

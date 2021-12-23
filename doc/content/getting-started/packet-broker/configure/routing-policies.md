@@ -58,7 +58,7 @@ The default routing policy defines rules for all Home Networks if there is no sp
 To get the default routing policy:
 
 ```bash
-$ ttn-lw-cli packetbroker home-networks policies get default
+ttn-lw-cli packetbroker home-networks policies get default
 ```
 
 If there is no default policy defined, the above command fails with `not found`.
@@ -93,7 +93,7 @@ The following example has all message types enabled:
 To set the default routing policy to forward all uplink traffic and allow Home Networks to forward all downlink traffic:
 
 ```bash
-$ ttn-lw-cli packetbroker home-networks policies set default --all
+ttn-lw-cli packetbroker home-networks policies set default --all
 ```
 
 To customize, see [Flags]({{< relref "#flags" >}}) below.
@@ -103,7 +103,7 @@ To customize, see [Flags]({{< relref "#flags" >}}) below.
 To delete the default routing policy:
 
 ```bash
-$ ttn-lw-cli packetbroker home-networks policies delete default
+ttn-lw-cli packetbroker home-networks policies delete default
 ```
 
 ### List Home Networks
@@ -113,7 +113,7 @@ In order to configure routing policies with Home Networks, you need to know whic
 To list Packet Broker Home Networks:
 
 ```bash
-$ ttn-lw-cli packetbroker home-networks list
+ttn-lw-cli packetbroker home-networks list
 ```
 
 This shows only the Home Networks that have been set to be visible to other networks. If you are using {{% tts %}} Cloud or Dedicated Cloud, [contact The Things Industries support](mailto:support@thethingsindustries.com) to set your network to be listed or not. If you are using {{% tts %}} Open Source or Enterprise, see [Configuration]({{< relref "/reference/configuration/packet-broker-agent" >}}).
@@ -184,7 +184,7 @@ You can see which routing policies Forwarders set for your network as the Home N
 To list the routing policies set by Forwarders for your network:
 
 ```bash
-$ ttn-lw-cli packetbroker forwarder policies list
+ttn-lw-cli packetbroker forwarder policies list
 ```
 
 <details><summary>Example output</summary>
@@ -233,7 +233,7 @@ Home Network routing policies take precedence over the default routing policy.
 To list the routing policies for Home Networks:
 
 ```bash
-$ ttn-lw-cli packetbroker home-network policies list
+ttn-lw-cli packetbroker home-network policies list
 ```
 
 ##### Get Home Network Routing Policy
@@ -241,7 +241,7 @@ $ ttn-lw-cli packetbroker home-network policies list
 To get the routing policy for a Home Network:
 
 ```bash
-$ ttn-lw-cli packetbroker home-networks policies get <net-id> [<tenant-id>]
+ttn-lw-cli packetbroker home-networks policies get <net-id> [<tenant-id>]
 ```
 
 Replace `<net-id>` with your network's `NetID`. The `tenant-id` is optional and represents the tenant within the `NetID`.
@@ -249,7 +249,7 @@ Replace `<net-id>` with your network's `NetID`. The `tenant-id` is optional and 
 To view the routing policy configured between you (the Forwarder) and The Things Stack Community Edition (the Home Network):
 
 ```bash
-$ ttn-lw-cli packetbroker home-networks policies get 000013 ttn
+ttn-lw-cli packetbroker home-networks policies get 000013 ttn
 ```
 
 ##### Set Home Network Routing Policy
@@ -257,7 +257,7 @@ $ ttn-lw-cli packetbroker home-networks policies get 000013 ttn
 To set the routing policy for a Home Network:
 
 ```bash
-$ ttn-lw-cli packetbroker home-network policies set <net-id> [<tenant-id>] --all
+ttn-lw-cli packetbroker home-network policies set <net-id> [<tenant-id>] --all
 ```
 
 To customize, see [Flags]({{< relref "#flags" >}}) below.
@@ -265,7 +265,7 @@ To customize, see [Flags]({{< relref "#flags" >}}) below.
 To enable forwarding of all packets between you (the Forwarder) and The Things Stack Community Edition (the Home Network):
 
 ```bash
-$ ttn-lw-cli packetbroker home-network policy set 000013 ttn --all
+ttn-lw-cli packetbroker home-network policy set 000013 ttn --all
 ```
 
 ##### Delete Home Network Routing Policy
@@ -273,7 +273,7 @@ $ ttn-lw-cli packetbroker home-network policy set 000013 ttn --all
 To delete the routing policy for a Home Network:
 
 ```bash
-$ ttn-lw-cli packetbroker home-networks policies delete <net-id> [<tenant-id>]
+ttn-lw-cli packetbroker home-networks policies delete <net-id> [<tenant-id>]
 ```
 
 Replace `<net-id>` with your network's `NetID`. The `tenant-id` is optional and represents the tenant within the `NetID`.

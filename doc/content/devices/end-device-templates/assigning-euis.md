@@ -23,21 +23,35 @@ If you intend to operate your own LoRaWAN Join Server, use a `JoinEUI` from your
 
 This example illustrates creating a device profile template, assigning 5 `DevEUI`s and creating them in your {{% tts %}} application.
 
+We define some user parameters that will be used below:
+
+```bash
+APP_ID="test-app" 
+FREQUENCY_PLAN="EU_863_870"
+LORAWAN_VERSION="1.0.3"
+LORAWAN_PHY_VERSION="1.0.3-a"
+DEV_EUI="70b3d57ed0000000"
+JOIN_EUI="70b3d57ed0000001"
+COUNT="5"
+```
+
+Make sure to modify these according to your setup.
+
 First, create a mapping file with a device profile in `profile.json`:
 
 ```bash
-$ ttn-lw-cli end-devices template extend \
-  --frequency-plan-id EU_863_870 \
-  --lorawan-version 1.0.3 \
-  --lorawan-phy-version 1.0.3-a \
+ttn-lw-cli end-devices template extend \
+  --frequency-plan-id $FREQUENCY_PLAN \
+  --lorawan-version $LORAWAN_VERSION \
+  --lorawan-phy-version $LORAWAN_PHY_VERSION \
   --supports-join > profile.json
 ```
 
 Second, assign the EUIs. The first argument is the `JoinEUI`, the second argument is the first `DevEUI`.
 
 ```bash
-$ cat profile.json \
-  | ttn-lw-cli end-devices template assign-euis 70b3d57ed0000000 70b3d57ed0000001 --count 5 > devices.json
+cat profile.json \
+  | ttn-lw-cli end-devices template assign-euis $JOIN_EUI $DEV_EUI --count $COUNT > devices.json
 ```
 
 <details><summary>Show output</summary>
@@ -204,7 +218,7 @@ $ cat profile.json \
 Finally, you can create these devices in your {{% tts %}} application `test-app`, see [Executing Templates]({{< relref "executing.md" >}}).
 
 ```bash
-$ cat devices.json \
+cat devices.json \
   | ttn-lw-cli end-devices template execute \
-  | ttn-lw-cli end-devices create --application-id test-app
+  | ttn-lw-cli end-devices create --application-id $APP_ID
 ```

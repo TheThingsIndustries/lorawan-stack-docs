@@ -49,40 +49,40 @@ If you are an administrator, you will be presented with the option to purge the 
 To view soft-deleted users:
 
 ```bash
-$ ttn-lw-cli user list --deleted --all
+ttn-lw-cli user list --deleted --all
 ```
 
 To purge an application:
 
 ```bash
-$ ttn-lw-cli applications purge --application-id <APPLICATION_ID>
+ttn-lw-cli applications purge --application-id <application-id>
 ```
 
 To purge a client:
 
 ```bash
-$ ttn-lw-cli clients purge --client-id <CLIENT_ID>
+ttn-lw-cli clients purge --client-id <client-id>
 ```
 
 To purge a gateway:
 
 ```bash
 # By EUI
-$ ttn-lw-cli gateways purge --gateway-eui <GATEWAY_EUI>
+ttn-lw-cli gateways purge --gateway-eui <gateway-eui>
 # Or by ID
-$ ttn-lw-cli gateways purge --gateway-id <GATEWAY_ID>
+ttn-lw-cli gateways purge --gateway-id <gateway-id>
 ```
 
 To purge an organization:
 
 ```bash
-$ ttn-lw-cli organizations purge --organization-id <ORGANIZATION_ID>
+ttn-lw-cli organizations purge --organization-id <organization-id>
 ```
 
 To purge a user:
 
 ```bash
-$ ttn-lw-cli users purge --user-id <USER_ID>
+ttn-lw-cli users purge --user-id <user-id>
 ```
 
 {{</ tabs/tab >}}

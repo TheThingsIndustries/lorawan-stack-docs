@@ -14,16 +14,22 @@ ttn-lw-cli packetbroker home-networks policies get [default|[net-id] [tenant-id]
 
 ### Examples
 
+To get the default routing policy:
+
+```
+ttn-lw-cli packetbroker home-network policies get default
 ```
 
-  To get the default routing policy:
-    $ ttn-lw-cli packetbroker home-network policies get default
+To get the routing policy with NetID 000013:
 
-  To get the routing policy with NetID 000013:
-    $ ttn-lw-cli packetbroker home-network policies get 000013
+```
+ttn-lw-cli packetbroker home-network policies get 000013
+```
 
-  To get the routing policy with NetID 000013 and tenant ttn (The Things Network):
-    $ ttn-lw-cli packetbroker home-network policies get 000013 ttn
+To get the routing policy with NetID 000013 and tenant ttn (The Things Network):
+
+```
+ttn-lw-cli packetbroker home-network policies get 000013 ttn
 ```
 
 ### Options

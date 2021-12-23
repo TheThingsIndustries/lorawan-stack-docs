@@ -29,7 +29,7 @@ By default the CLI outputs results as one or more JSON objects. These JSON objec
 The `--output-format` flag allows you to specify a [Go template](https://golang.org/pkg/text/template/) that is executed for the result(s) of a command. The example below executes lists applications and outputs their IDs and names:
 
 ```bash
-$ ttn-lw-cli applications list --name --output-format "{{ .ApplicationID }}: {{ .Name }}"
+ttn-lw-cli applications list --name --output-format "{{ .ApplicationID }}: {{ .Name }}"
 ```
 
 ## Login and Logout

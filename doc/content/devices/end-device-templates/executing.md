@@ -8,18 +8,31 @@ weight: 4
 
 Once you created or converted a template, you can execute the template with the `end-device templates execute` command to obtain an end device that can be created.
 
+We define some user parameters that will be used below:
+
+```bash
+APP_ID="test-app" 
+FREQUENCY_PLAN="US_902_928"
+LORAWAN_VERSION="1.0.3"
+LORAWAN_PHY_VERSION="1.0.3-a"
+DEV_EUI="70b3d57ed0000000"
+JOIN_EUI="70b3d57ed0000001"
+```
+
+Make sure to modify these according to your setup.
+
 ```bash
 # The examples use a template that has been created as follows:
-$ ttn-lw-cli end-devices template extend \
-  --lorawan-version 1.0.3 \
-  --lorawan-phy-version 1.0.3-a \
-  --frequency-plan-id US_902_928 > example.json
+ttn-lw-cli end-devices template extend \
+  --lorawan-version $LORAWAN_VERSION \
+  --lorawan-phy-version $LORAWAN_PHY_VERSION \
+  --frequency-plan-id $FREQUENCY_PLAN > example.json
 ```
 
 You can execute an end device as follows:
 
 ```bash
-$ cat example.json | ttn-lw-cli end-devices template execute
+cat example.json | ttn-lw-cli end-devices template execute
 ```
 
 <details><summary>Output</summary>
@@ -43,10 +56,10 @@ $ cat example.json | ttn-lw-cli end-devices template execute
 The `end-device template execute` command **does not actually create** the end device. You can, however, easily pipe the output of `end-device template execute` to create the device. But first, you need to personalize the devices by assigning EUIs since this is a generic device template - see [Assigning EUIs]({{< relref "assigning-euis.md" >}}).
 
 ```bash
-$ cat example.json \
-  | ttn-lw-cli end-devices template assign-euis 70b3d57ed0000000 70b3d57ed0000001 \
+cat example.json \
+  | ttn-lw-cli end-devices template assign-euis $JOIN_EUI $DEV_EUI \
   | ttn-lw-cli end-devices template execute \
-  | ttn-lw-cli end-devices create --application-id test-app
+  | ttn-lw-cli end-devices create --application-id $APP_ID
 ```
 
 <details><summary>Output</summary>

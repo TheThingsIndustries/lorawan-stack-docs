@@ -13,13 +13,13 @@ Begin by opening a terminal prompt in the same directory as your `docker-compose
 The first time {{% tts %}} is started, it requires some initialization. Start by pulling the Docker images:
 
 ```bash
-$ docker-compose pull
+docker-compose pull
 ```
 
 Next, you need to initialize the database of the Identity Server:
 
 ```bash
-$ docker-compose run --rm stack is-db init
+docker-compose run --rm stack is-db init
 ```
 
 If you receive an error running {{% tts %}}, make sure a {{% tts %}} container isn't already running. Use `docker ps` to see running containers.
@@ -27,13 +27,13 @@ If you receive an error running {{% tts %}}, make sure a {{% tts %}} container i
 For the Storage Integration available in {{% tts %}} Enterprise, the database of the Application Server needs to be initialized as well:
 
 ```bash
-$ docker-compose run --rm stack storage-db init
+docker-compose run --rm stack storage-db init
 ```
 
 {{% tts %}} Enterprise requires a tenant to be present, even if multi-tenancy is not included in the license. You create a tenant with:
 
 ```bash
-$ docker-compose run --rm stack is-db create-tenant
+docker-compose run --rm stack is-db create-tenant
 ```
 
 This will take the `tenancy.default-id` Tenant ID from the [configuration]({{< relref "configuration" >}}) in `ttn-lw-stack-docker.yml`. To specify another Tenant ID, use the `--id` parameter.
@@ -41,7 +41,7 @@ This will take the `tenancy.default-id` Tenant ID from the [configuration]({{< r
 Next, an initial `admin` user has to be created. Make sure to give it a good password.
 
 ```bash
-$ docker-compose run --rm stack is-db create-admin-user \
+docker-compose run --rm stack is-db create-admin-user \
   --id admin \
   --email your@email.com
 ```
@@ -49,7 +49,7 @@ $ docker-compose run --rm stack is-db create-admin-user \
 Then the command-line interface needs to be registered as an OAuth client:
 
 ```bash
-$ docker-compose run --rm stack is-db create-oauth-client \
+docker-compose run --rm stack is-db create-oauth-client \
   --id cli \
   --name "Command Line Interface" \
   --owner admin \
@@ -61,9 +61,9 @@ $ docker-compose run --rm stack is-db create-oauth-client \
 Afterwards, the same needs to be done for the Console. If running a multi-tenant environment, use option `--tenant-id NULL` to register the OAuth client for all tenants. For `--secret`, make sure to enter the same value as you set for `console.oauth.client-secret` in the `ttn-lw-stack-docker.yml` file in the [Configuration]({{< relref "configuration" >}}) step. 
 
 ```bash
-$ CONSOLE_SECRET="your-console-secret"
-$ SERVER_ADDRESS="your-server-address"
-$ docker-compose run --rm stack is-db create-oauth-client \
+CONSOLE_SECRET="your-console-secret"
+SERVER_ADDRESS="your-server-address"
+docker-compose run --rm stack is-db create-oauth-client \
   --id console \
   --name "Console" \
   --owner admin \
@@ -79,7 +79,7 @@ $ docker-compose run --rm stack is-db create-oauth-client \
 Start {{% tts %}} with:
 
 ```bash
-$ docker-compose up
+docker-compose up
 ```
 
 This starts the stack, so you will see the stack logs being printed to your terminal. You can also start the stack in detached mode by adding `-d` to the command above. In that case you can get logs with [`docker-compose logs`](https://docs.docker.com/compose/reference/logs/).

@@ -22,13 +22,13 @@ In order for anyone to claim a gateway that is owned by you, you need to authori
 Replace `<gateway-id>` with the **Gateway ID** of the gateway that you created in prerequisites, and run the following command in the CLI:
 
 ```bash
-$ ttn-lw-cli gateways claim authorize <gateway-id>
+ttn-lw-cli gateways claim authorize <gateway-id>
 ```
 
 To undo the action:
 
 ```bash
-$ ttn-lw-cli gateways claim unauthorize <gateway-id>
+ttn-lw-cli gateways claim unauthorize <gateway-id>
 ```
 
 ## Claiming Settings
@@ -40,9 +40,9 @@ This is comprised of a claim authentication code and a validity window. The clai
 The claim authentication code value should be in hex while updating the gateway. Refer to the following example.
 
 ```bash
-$ CAC=ABCD
-$ CAC_IN_HEX=$(echo -n "$CAC" | xxd -ps -u -c 8192)
-$ ttn-lw-cli gateways update <gateway-id> --claim-authentication-code.secret.value $CAC_IN_HEX \
+CAC=ABCD
+CAC_IN_HEX=$(echo -n "$CAC" | xxd -ps -u -c 8192)
+ttn-lw-cli gateways update <gateway-id> --claim-authentication-code.secret.value $CAC_IN_HEX \
   --claim-authentication-code.valid-from 2021-03-01T00:00:00Z \
   --claim-authentication-code.valid-from 2021-03-31T23:59:59Z
 ```

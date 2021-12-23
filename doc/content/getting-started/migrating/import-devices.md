@@ -47,7 +47,7 @@ To complete these steps, you need the have the latest version of `ttn-lw-cli` in
 To import `devices.json` file in {{% tts %}}, run the following command with `ttn-lw-cli`:
 
 ```bash
-$ ttn-lw-cli end-devices create --application-id "imported-application" < devices.json
+ttn-lw-cli end-devices create --application-id <application-id> < devices.json
 ```
 
 This will import your devices in {{% tts %}}. In case any device import fails, you will see a relevant error message at the end of the output.
