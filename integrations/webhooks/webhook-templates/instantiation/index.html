@@ -204,25 +204,14 @@
         
         <div class="content">
           <p>The process through which a webhook template becomes a webhook integration is called instantiation. Instantiation is done by the Console after the user has filled in the values of the the template fields. This page describes how the template and the values are combined into the final webhook instance.</p>
-<h2 id="instantiation-of-header-values">Instantiation of Header Values</h2>
-<p>The fields are directly replaced in the values of the headers using the syntax <code>{field-id}</code>. Consider the following fragment of a webhook template, describing the available template fields and the headers to be sent to the endpoint:</p>
+<h2 id="instantiation-of-fields">Instantiation of Fields</h2>
+<p>Here is an example of instantiating webhook template fields:</p>
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">fields</span><span class="p">:</span><span class="w">
 </span><span class="w"></span>- <span class="k">id</span><span class="p">:</span><span class="w"> </span>token<span class="w">
 </span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>Authentication<span class="w"> </span>token<span class="w">
 </span><span class="w">  </span><span class="k">description</span><span class="p">:</span><span class="w"> </span>The<span class="w"> </span>token<span class="w"> </span>used<span class="w"> </span>for<span class="w"> </span>authentication<span class="w">
 </span><span class="w">  </span><span class="k">secret</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
 </span><span class="w">  </span><span class="k">default-value</span><span class="p">:</span><span class="w">
-</span><span class="w"></span><span class="k">headers</span><span class="p">:</span><span class="w">
-</span><span class="w"></span>- <span class="k">Authorization</span><span class="p">:</span><span class="w"> </span>Bearer<span class="w"> </span>{token}<span class="w">
-</span></code></pre></div><p>If the user has filled in the value of <code>token</code> with <code>Zpdc7jWMvYzVTeNQ</code>, then the resulting webhook will contain a header named <code>Authorization</code> with the value <code>Bearer Zpdc7jWMvYzVTeNQ</code>.</p>
-<p>Keep in mind that if you need to use a field directly as header value, you should wrap it with hyphens as follows:</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">headers</span><span class="p">:</span><span class="w">
-</span><span class="w"></span>- <span class="k">Authorization</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{token}&#34;</span><span class="w">
-</span></code></pre></div><p>If the webhook template is to be defined without header entries, define the <code>headers</code> field as follows:</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">headers</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
-</span></code></pre></div><h2 id="instantiation-of-urls-and-paths">Instantiation of URLs and Paths</h2>
-<p>The fields are replaced inside the URLs and the paths according to the <a href="https://tools.ietf.org/html/rfc6570">RFC6570</a> format. Consider the following fragment of a webhook template, describing the available template fields and the paths of the endpoint.</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">fields</span><span class="p">:</span><span class="w">
 </span><span class="w"></span>- <span class="k">id</span><span class="p">:</span><span class="w"> </span>username<span class="w">
 </span><span class="w">  </span><span class="k">name</span><span class="p">:</span><span class="w"> </span>Username<span class="w">
 </span><span class="w">  </span><span class="k">description</span><span class="p">:</span><span class="w"> </span>The<span class="w"> </span>username<span class="w"> </span>used<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>service<span class="w">
@@ -233,7 +222,26 @@
 </span><span class="w">  </span><span class="k">description</span><span class="p">:</span><span class="w"> </span>If<span class="w"> </span>set<span class="w"> </span>to<span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span>the<span class="w"> </span>device<span class="w"> </span>will<span class="w"> </span>automatically<span class="w"> </span>be<span class="w"> </span>created<span class="w"> </span>on<span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>uplink<span class="w">
 </span><span class="w">  </span><span class="k">secret</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
 </span><span class="w">  </span><span class="k">default-value</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;true&#34;</span><span class="w">
-</span><span class="w"></span><span class="k">baseurl</span><span class="p">:</span><span class="w"> </span>https<span class="p">:</span>//www.example.com/lora{/username}<span class="w">
+</span></code></pre></div><p>Instantiation of header values, URLs and paths will be explained below using this example.</p>
+<p>If the webhook template is to be defined without fields, define the <code>fields</code> as follows:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">fields</span><span class="p">:</span><span class="w"> </span><span class="p">[]</span><span class="w">
+</span></code></pre></div><p>or</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">fields</span><span class="p">:</span><span class="w">
+</span></code></pre></div><h2 id="instantiation-of-header-values">Instantiation of Header Values</h2>
+<p>The fields are directly replaced in the values of the headers using the syntax <code>{field-id}</code>. Consider the fragment of a webhook template presented above - the headers to be sent to the endpoint can be defined, using the available template fields, for example as:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">headers</span><span class="p">:</span><span class="w">
+</span><span class="w"></span>- <span class="k">Authorization</span><span class="p">:</span><span class="w"> </span>Bearer<span class="w"> </span>{token}<span class="w">
+</span></code></pre></div><p>If the user has filled in the value of <code>token</code> with <code>Zpdc7jWMvYzVTeNQ</code>, then the resulting webhook will contain a header named <code>Authorization</code> with the value <code>Bearer Zpdc7jWMvYzVTeNQ</code>.</p>
+<p>Keep in mind that if you need to use a field directly as header value, you should wrap it with hyphens as follows:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">headers</span><span class="p">:</span><span class="w">
+</span><span class="w"></span>- <span class="k">Authorization</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{token}&#34;</span><span class="w">
+</span></code></pre></div><p>If the webhook template is to be defined without header entries, define the <code>headers</code> field as follows:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">headers</span><span class="p">:</span><span class="w"> </span>{}<span class="w">
+</span></code></pre></div><p>or</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">headers</span><span class="p">:</span><span class="w">
+</span></code></pre></div><h2 id="instantiation-of-urls-and-paths">Instantiation of URLs and Paths</h2>
+<p>The fields are replaced inside the URLs and the paths according to the <a href="https://tools.ietf.org/html/rfc6570">RFC6570</a> format. Consider the fragment of a webhook template shown above - the base URL and paths of the endpoint can be defined, using the available template fields, for example as:</p>
+<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">baseurl</span><span class="p">:</span><span class="w"> </span>https<span class="p">:</span>//www.example.com/lora{/username}<span class="w">
 </span><span class="w"></span><span class="k">paths</span><span class="p">:</span><span class="w">
 </span><span class="w"></span>- <span class="k">uplink-message</span><span class="p">:</span><span class="w"> </span>/uplink{<span class="p">?</span>create}<span class="w">
 </span></code></pre></div><p>If the user has filled in the value of <code>username</code> with <code>user1</code> and the value of <code>create</code> with <code>true</code>, then the resulting webhook will have its base URL set to <code>https://www.example.com/lora/user1</code> and the uplink messages will be sent to <code>https://www.example.com/lora/user1?create=true</code> (the uplink messages path will be set to <code>/uplink?create=true</code>).</p>
@@ -259,6 +267,9 @@
 
 
   <ul class="menu-list">
+    
+      
+      <li><a href='#instantiation-of-fields'>Instantiation of Fields</a></li>
     
       
       <li><a href='#instantiation-of-header-values'>Instantiation of Header Values</a></li>
@@ -304,10 +315,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 21 Sep 2020.
+  Last changed by Nejra Selimović on 23 Dec 2021.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3459237237abaaeb07a0d27a14ada3adba71022a">
-      doc: Add pierre styles
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/0320c4aa84c00e5b3dce873abc3dea4ba1e95986">
+      doc: Add info about creating empty headers and fields (#692)
     </a>
 </p>
 
