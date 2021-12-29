@@ -48,7 +48,7 @@ The AWS IoT Integration for {{% tts %}} uses the `lorawan/downlink` topic for do
 - `lorawan/<thing>/downlink/sent` (when the downlink has been sent by the Network Server)
 - `lorawan/<thing>/downlink/failed` (when the Network Server failed to send the downlink message)
 - `lorawan/<thing>/downlink/ack` (when the end device acknowledged the confirmed downlink message)
-- `lorawan/<thing>/downlink/ack` (when the end device did not acknowledge the confirmed downlink message)
+- `lorawan/<thing>/downlink/nack` (when the end device did not acknowledge the confirmed downlink message)
 
 {{< note >}} Publish downlink messages from your application to IoT Core using [**AWS IoT Data Plane**](https://docs.aws.amazon.com/iot/latest/apireference/Welcome.html#Welcome_AWS_IoT_Data_Plane) using the [**Publish**](https://docs.aws.amazon.com/iot/latest/apireference/API_iotdata_Publish.html) action. {{</ note >}}
 
