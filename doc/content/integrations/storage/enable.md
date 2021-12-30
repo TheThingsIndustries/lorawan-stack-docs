@@ -7,7 +7,9 @@ weight: 20
 
 The Storage Integration is implemented as an [Application Package]({{< ref "/reference/application-packages" >}}).
 
-{{< note >}} Enabling/disabling Storage Integration for applications can be done using {{% tts %}} Console or CLI. Enabling/disabling Storage Integration for individual end devices is available only via CLI. {{</ note >}}
+{{< note >}} Enabling/disabling Storage Integration for applications can be done using {{% tts %}} Console or CLI. Enabling/disabling Storage Integration for individual end devices is available only via CLI.
+
+Note that the instructions for CLI here are following generic instructions for [using the CLI]({{< ref "/reference/application-packages/using-the-cli" >}}) to manage application packages, just specified for the `storage-integration` application package. {{</ note >}}
 
 ## Enable for an Application
 
@@ -145,3 +147,7 @@ Delete the association with:
 ```bash
 ttn-lw-cli applications packages associations delete <application-id> <device-id> <f_port>
 ```
+
+## Enable and Disable using the API
+
+See instructions on how to create/delete associations and default associations with the `storage-integration` application package [using the API]({{< ref "/reference/application-packages/using-the-api" >}}).
