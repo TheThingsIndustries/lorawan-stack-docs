@@ -8,8 +8,6 @@ weight: -1
 
 <!--more-->
 
-{{< note >}} CUPS is **not required** for sending and receiving LoRaWAN data, but it simplifies gateway management. CUPS support in {{% tts %}} is in beta and is subject to change. {{</ note >}}
-
 {{< warning >}} Configuring CUPS automatically retrieves LNS credentials and configures LNS on your gateway. If you configure CUPS, your gateway will override LNS credentials in case of successful CUPS connection. {{</ warning >}}
 
 ## Requirements
