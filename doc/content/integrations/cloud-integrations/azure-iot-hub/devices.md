@@ -66,7 +66,7 @@ The final JSON `tags` object should look as follows:
 {
    "lorawan":{
       "devEui":"0004A30B001C5838",
-      "joinEui":"0000000000000000",
+      "joinEui":"800000000000000C",
       "lorawanVersion":"1.0.2",
       "regionalParametersVersion":"1.0.2-b",
       "frequencyPlanId":"EU_863_870_TTN",

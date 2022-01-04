@@ -39,11 +39,9 @@ If your device is not in the device repository, see [Manually Create End Device]
 
 Choose a **Frequency plan** appropriate for your region. Your device and gateway must use the same frequency plan to communicate.
 
-Enter a **JoinEUI/AppEUI** if provided by your manufacturer. If your device is programmable, you may use the **Fill with zeros** button, and then program the same JoinEUI/AppEUI (`0000000000000000`) in the device.
+Enter a **JoinEUI/AppEUI** if provided by your manufacturer.
 
-{{< note >}} Some devices do not support using `0000000000000000` as a JoinEUI/AppEUI, because technically, this value is invalid. However, {{% tts %}} supports using this value to indicate the absence of an actual JoinEUI/AppEUI.
-
-If your device gives an error when using `0000000000000000`, try using the DevEUI value as a JoinEUI/AppEUI, both in {{% tts %}} and on your device. {{</ note >}}
+{{< note >}} Make sure to use a valid DevEUI/JoinEUI. If you device does not have one, you can generate a random one in accordance with the test ranges defined by the [IEEE 802 standards](https://ieee802.org/). {{</ note >}}
 
 Enter your **DevEUI**. This should be provided by your manufacturer for commercial devices. If your device is programmable, you may generate an EUI using the **Generate** button, and program it in your device.
 
@@ -113,7 +111,7 @@ The example in this guide covers adding a device using [OTAA]({{< ref "reference
 
 Enter your **DevEUI**. This should be provided by your manufacturer for commercial devices. If your device is programmable, you may generate an EUI using the **Generate** button, and program it in your device.
 
-Enter a **JoinEUI/AppEUI** if provided by your manufacturer. If your device is programmable, you may use the **Fill with zeros** button, and then program the same JoinEUI/AppEUI (`0000000000000000`) in the device.
+Enter a **JoinEUI/AppEUI** if provided by your manufacturer.
 
 If your manufacturer provides an **AppKey**, enter it. Otherwise, use the **Generate** button to create one, and program it in to your device.
 
@@ -211,9 +209,9 @@ This will create an end device `dev1` in application `app1` with the `EU_863_870
 
 Please note that the `AppEUI` is returned as `join_eui` ({{% tts %}} uses LoRaWAN 1.1 terminology).
 
-{{< new-in-version "3.17.0">}} If your device does not have a JoinEUI, you can use the default Join EUI of the Join Server. To use this, leave the `--join-eui`/`--app-eui` field empty. The CLI will contact the Join Server and get it's default.
+{{< new-in-version "3.17.0">}} If your device does not have a JoinEUI, you can use the default Join EUI of the Join Server. To use this, leave the `--join-eui`/`--app-eui` field empty. The CLI will contact the Join Server and get its default.
 
-If your device does not have a DevEUI, set the `--request-dev-eui` flag, which will contact the server and fetch a DevEUI.
+If your device does not have a DevEUI, set the `--request-dev-eui` flag. The CLI will contact the server and fetch a DevEUI.
 
 {{< warning >}}
 You must either use the value DevEUI/JoinEUI that's allotted to your device or let the server define these values as described above. Do not use `0000000000000000` or other randomly generated values as this is not LoRaWAN compliant and your devices will not be interoperable with other networks in the LoRaWAN ecosystem.
@@ -240,12 +238,6 @@ ttn-lw-cli end-devices create $APP_ID $DEVICE_ID \
 ```
 
 This will create an end device `dev1` in application `app1` with the `EU_863_870` frequency plan, that uses LoRaWAN 1.1.0 MAC and 1.1.0-b PHY versions. Make sure you replace these versions according to your setup.
-
-{{< note >}} If you do not have a `JoinEUI` or `AppEUI`, you could use `0000000000000000`. 
-
-Some devices do not support using `0000000000000000` as a JoinEUI/AppEUI, because technically, this value is invalid. However, {{% tts %}} supports using this value to indicate the absence of an actual JoinEUI/AppEUI.
-
-If your device gives an error when using `0000000000000000`, try using the DevEUI value as a JoinEUI/AppEUI, both in {{% tts %}} and on your device. {{</ note >}}
 
 You can also pass `--with-root-keys` to have root keys generated. In this case, you do not need to specify `--root-keys.app-key.key` or `root-keys.nwk-key.key`.
 
