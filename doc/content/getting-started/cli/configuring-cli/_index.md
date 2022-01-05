@@ -33,7 +33,7 @@ ttn-lw-cli.exe use <eu1/au1/nam1>.cloud.thethings.network
 If you are using {{% tts %}} Cloud use the following command with your `tenant id` and regional `cluster`. 
 
 ```bash
-ttn-lw-cli use <tenant_id>.<eu1/au1/nam1/>.cloud.thethings.industries
+ttn-lw-cli use <tenant_id>.<eu1/eu2/au1/nam1/>.cloud.thethings.industries
 ```
 
 If you are hosting your own deployment, use the following, replacing `thethings.example.com` with your [server address]({{< ref "getting-started/server-addresses" >}}):

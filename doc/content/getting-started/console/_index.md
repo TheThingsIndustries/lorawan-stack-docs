@@ -14,7 +14,7 @@ The Console is the management application of {{% tts %}} for LoRaWAN. It is a we
 
 If you are using {{% tts %}} Cloud, the Console is available at the following URL with your `tenant_id` and region:
 
-`<tenant_id>.<eu1/au1/nam1/>.cloud.thethings.industries`
+`<tenant_id>.<eu1/eu2/au1/nam1/>.cloud.thethings.industries`
 
 See [Cloud Addresses]({{< ref "getting-started/cloud-hosted/addresses" >}}) for more information about cluster addresses.
 
