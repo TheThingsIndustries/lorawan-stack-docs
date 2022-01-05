@@ -201,11 +201,10 @@
          alt="Creating a new device with the Device Repository"/> 
 </figure>
 <p>Choose a <strong>Frequency plan</strong> appropriate for your region. Your device and gateway must use the same frequency plan to communicate.</p>
-<p>Enter a <strong>JoinEUI/AppEUI</strong> if provided by your manufacturer. If your device is programmable, you may use the <strong>Fill with zeros</strong> button, and then program the same JoinEUI/AppEUI (<code>0000000000000000</code>) in the device.</p>
+<p>Enter a <strong>JoinEUI/AppEUI</strong> if provided by your manufacturer.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>Some devices do not support using <code>0000000000000000</code> as a JoinEUI/AppEUI, because technically, this value is invalid. However, The Things Stack supports using this value to indicate the absence of an actual JoinEUI/AppEUI.</p>
-<p>If your device gives an error when using <code>0000000000000000</code>, try using the DevEUI value as a JoinEUI/AppEUI, both in The Things Stack and on your device.</p>
+  Make sure to use a valid DevEUI/JoinEUI. If you device does not have one, you can generate a random one in accordance with the test ranges defined by the <a href="https://ieee802.org/">IEEE 802 standards</a>.
 </div>
 <p>Enter your <strong>DevEUI</strong>. This should be provided by your manufacturer for commercial devices. If your device is programmable, you may generate an EUI using the <strong>Generate</strong> button, and program it in your device.</p>
 <p>For LoRaWAN version 1.0.x devices, you will see an <strong>AppKey</strong> field. If your manufacturer provides an <strong>AppKey</strong>, enter it. Otherwise, use the <strong>Generate</strong> button to create one, and program it in to your device.</p>
@@ -267,7 +266,7 @@
 <p>Over-the-Air-Activation (OTAA) is the secure, scalable way to activate LoRaWAN devices. All commercially available LoRaWAN devices support OTAA, and it is selected by default. If you are using a custom or DIY device, and cannot use OTAA, see the <a href="#abp-devices">Activation by Personalisation</a> section.</p>
 <p>The example in this guide covers adding a device using <a href="https://www.thethingsindustries.com/docs/reference/glossary/#over-the-air-activation">OTAA</a> (the most secure and preferred activation method) and <a href="https://www.thethingsindustries.com/docs/reference/glossary/#lorawan-version">LoRaWAN version</a> MAC V1.0.2 (the most common LoRaWAN version, although newer versions are better and more secure). Names and keys may vary slightly for other versions, but the process is the same and any differences are noted.</p>
 <p>Enter your <strong>DevEUI</strong>. This should be provided by your manufacturer for commercial devices. If your device is programmable, you may generate an EUI using the <strong>Generate</strong> button, and program it in your device.</p>
-<p>Enter a <strong>JoinEUI/AppEUI</strong> if provided by your manufacturer. If your device is programmable, you may use the <strong>Fill with zeros</strong> button, and then program the same JoinEUI/AppEUI (<code>0000000000000000</code>) in the device.</p>
+<p>Enter a <strong>JoinEUI/AppEUI</strong> if provided by your manufacturer.</p>
 <p>If your manufacturer provides an <strong>AppKey</strong>, enter it. Otherwise, use the <strong>Generate</strong> button to create one, and program it in to your device.</p>
 <p>Give your device a unique <strong>End device ID</strong>. See <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">ID and EUI constraints</a> for guidelines about choosing a unique ID.</p>
 <figure>
@@ -337,11 +336,12 @@ ttn-lw-cli end-devices create --help
 </span><span class="se"></span>  --lorawan-phy-version 1.0.3-a
 </code></pre></div><p>This will create an end device <code>dev1</code> in application <code>app1</code> with the <code>EU_863_870</code> frequency plan, that uses LoRaWAN 1.0.3 MAC version and 1.0.3-a PHY versions. Make sure to replace the LoRaWAN MAC and PHY versions according to your setup.</p>
 <p>Please note that the <code>AppEUI</code> is returned as <code>join_eui</code> (The Things Stack uses LoRaWAN 1.1 terminology).</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>If you do not have a <code>JoinEUI</code> or <code>AppEUI</code>, you could use <code>0000000000000000</code>.</p>
-<p>Some devices do not support using <code>0000000000000000</code> as a JoinEUI/AppEUI, because technically, this value is invalid. However, The Things Stack supports using this value to indicate the absence of an actual JoinEUI/AppEUI.</p>
-<p>If your device gives an error when using <code>0000000000000000</code>, try using the DevEUI value as a JoinEUI/AppEUI, both in The Things Stack and on your device.</p>
+<p><span class="tag is-light">New in 3.17.0</span></p>
+<p>If your device does not have a JoinEUI, you can use the default Join EUI of the Join Server. To use this, leave the <code>--join-eui</code>/<code>--app-eui</code> field empty. The CLI will contact the Join Server and get its default.</p>
+<p>If your device does not have a DevEUI, set the <code>--request-dev-eui</code> flag. The CLI will contact the server and fetch a DevEUI.</p>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  You must either use the value DevEUI/JoinEUI that&rsquo;s allotted to your device or let the server define these values as described above. Do not use <code>0000000000000000</code> or other randomly generated values as this is not LoRaWAN compliant and your devices will not be interoperable with other networks in the LoRaWAN ecosystem.
 </div>
 <p>You can also pass <code>--with-root-keys</code> to have root keys generated. In this case, you do not need to specify <code>--root-keys.app-key.key</code>.</p>
 <p>The end device should now be able to join the private network.</p>
@@ -357,12 +357,6 @@ ttn-lw-cli end-devices create <span class="nv">$APP_ID</span> <span class="nv">$
 </span><span class="se"></span>  --lorawan-version 1.1.0 <span class="se">\
 </span><span class="se"></span>  --lorawan-phy-version 1.1.0-b
 </code></pre></div><p>This will create an end device <code>dev1</code> in application <code>app1</code> with the <code>EU_863_870</code> frequency plan, that uses LoRaWAN 1.1.0 MAC and 1.1.0-b PHY versions. Make sure you replace these versions according to your setup.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <p>If you do not have a <code>JoinEUI</code> or <code>AppEUI</code>, you could use <code>0000000000000000</code>.</p>
-<p>Some devices do not support using <code>0000000000000000</code> as a JoinEUI/AppEUI, because technically, this value is invalid. However, The Things Stack supports using this value to indicate the absence of an actual JoinEUI/AppEUI.</p>
-<p>If your device gives an error when using <code>0000000000000000</code>, try using the DevEUI value as a JoinEUI/AppEUI, both in The Things Stack and on your device.</p>
-</div>
 <p>You can also pass <code>--with-root-keys</code> to have root keys generated. In this case, you do not need to specify <code>--root-keys.app-key.key</code> or <code>root-keys.nwk-key.key</code>.</p>
 <p>The end device should now be able to join the private network.</p>
 <h3 id="activation-by-personalization-abp-device">Activation By Personalization (ABP) Device</h3>
@@ -524,10 +518,10 @@ ttn-lw-cli end-devices <span class="nb">set</span> <span class="nv">$APP_ID</spa
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 23 Dec 2021.
+  Last changed by Krishna Iyer Easwaran on 05 Jan 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
-      doc: Remove $ character from code blocks, add variables (#678)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/640bd9663fb6b335bcc9d2ca463b68a8a1fff869">
+      Update EUI description for end device creation (#693)
     </a>
 </p>
 
