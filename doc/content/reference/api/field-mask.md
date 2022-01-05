@@ -42,8 +42,8 @@ This will return the following:
       "application_ids":{
          "application_id":"app1"
       },
-      "dev_eui":"0000000000000000",
-      "join_eui":"0000000000000000"
+      "dev_eui":"46CF72F61862CBB0",
+      "join_eui":"66209794D18AE087"
    },
    "created_at":"2020-07-31T12:17:51.645Z",
    "updated_at":"2021-07-20T14:14:56.318Z",
@@ -71,8 +71,8 @@ Without the field masks specified, this request would not return the `name`, `de
       "application_ids":{
          "application_id":"tti-playground"
       },
-      "dev_eui":"0004A30B001C35EC",
-      "join_eui":"1234567891234567"
+      "dev_eui":"46CF72F61862CBB0",
+      "join_eui":"66209794D18AE087"
    },
    "created_at":"2020-07-31T12:17:51.645Z",
    "updated_at":"2020-07-31T12:17:51.645Z"
@@ -130,8 +130,8 @@ This request will update the `name` field of the device, but will not update the
       "application_ids":{
          "application_id":"app1"
       },
-      "dev_eui":"0000000000000000",
-      "join_eui":"0000000000000000"
+      "dev_eui":"46CF72F61862CBB0",
+      "join_eui":"66209794D18AE087"
    },
    "created_at":"2020-07-31T12:17:51.645Z",
    "updated_at":"2021-07-20T15:04:26.339Z",
@@ -173,8 +173,8 @@ This would return the following confirmation:
       "application_ids":{
          "application_id":"app1"
       },
-      "dev_eui":"0000000000000000",
-      "join_eui":"0000000000000000"
+      "dev_eui":"46CF72F61862CBB0",
+      "join_eui":"66209794D18AE087"
    },
    "created_at":"2020-07-31T12:17:51.645Z",
    "updated_at":"2021-07-20T15:04:26.339Z",
