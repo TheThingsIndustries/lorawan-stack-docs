@@ -155,11 +155,13 @@ To solve this, use a different gateway ID. If you are an administrator and wish 
 
 ## I get a "Gateway with EUI is Already Registered" error when adding a gateway.
 
-Another gateway is already registered with the same Gateway EUI. This gateway may be registered by another user, but if you are not an administrator (e.g if you are using The Things Stack Community Edition) you will not be able to see gateways registered by other users.
+Another gateway is already registered with the same Gateway EUI. This gateway may be registered by another user, but if you are not an administrator (e.g if you are using {{% tts %}} Community Edition) you will not be able to see gateways registered by other users.
 
 If the gateway is registered with the same EUI in some other tenant, the error will reflect that as well.
 
-First, double check that you have entered the EUI correctly. Then, double check that you have not already registered the gateway. Finally, if you have purchased the gateway secondhand, it is possible someone before you registered the gateway. Contact them to unregister it. If they are unavailable, contact [The Things Industries](mailto:info@thethingsindustries.com).
+First, double check that you have entered the EUI correctly. Then, double check that you have not already registered the gateway. Finally, if you have purchased the gateway secondhand, it is possible someone before you registered the gateway. Contact them to unregister it. If they are unavailable, we recommend you to cantact the gateway manufacturer, who can help you configure your gateway with a new EUI or trace the supply chain.
+
+A temporary workaround would be to define a custom Gateway EUI in physical gateway settings (if the gateway allows it), and register the gateway on {{% tts %}} using the new EUI. Note that a custom Gateway EUI should be issued from an IEEE block owned by the user.
 
 ## What is Radio Configuration?
 
