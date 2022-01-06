@@ -59,9 +59,10 @@ This template allows the user to customize the deployment. The following is a li
 
 |Parameter|Description|Default|
 |---|---|---|
-| EC2 Instance Name | Name of the EC2 instance. | `the-things-enterprise-stack` |
+|EC2 Instance Name|Name of the EC2 instance.|`the-things-enterprise-stack`|
 |Domain|Domain name. You should be able to configure DNS for the domain. TLS certificates from Let's Encrypt will automatically be requested.|-|
 |Network Title*|The title of your deployment.|`The Things Enterprise Stack for LoRaWAN`|
+|CIDR block|CIDR block used by the VPC.|10.0.0.0/16|
 
 > \* Optional field
 
@@ -76,6 +77,8 @@ This template allows the user to customize the deployment. The following is a li
 |Amazon RDS Database Password|Password for the relational database. This password is used to access the Amazon RDS database.|-|
 |SSH Key|Name of an existing EC2 KeyPair to enable SSH access to your instance.|-|
 |SendGrid API Key*|API key for [SendGrid](https://sendgrid.com/) to send emails.|-|
+|Amazon ElastiCache KMS Key ID*|Key used for Redis at-rest encryption. Leave empty to disable encryption.|-|
+|Amazon ElastiCache Password*|Password used to access Redis. Leave empty to disable TLS connection.|-|
 
 > \* Optional field
 
