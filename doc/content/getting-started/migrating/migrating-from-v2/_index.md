@@ -9,16 +9,14 @@ This section documents the process of migrating end devices from {{% ttnv2 %}} t
 
 <!--more-->
 
-{{< note >}} As previously announced, from **July 1, 2021** {{% ttnv2 %}} deployments have gone to a **read-only** mode.
+{{% ttnv2 %}} machines were shut down on December 1, 2021. `ttn-lw-migrate` is no longer able to migrate devices from these servers.
 
-Make sure to migrate your gateways and devices from {{% ttnv2 %}} to {{% tts %}} as soon as possible, since {{% ttnv2 %}} machines are planned to be completely shut down on **December 1, 2021**.
-{{</ note >}}
+To view applications, devices, and gateways which were still registered The Things Network V2 before shutdown, see [Migrate using the V2 Takeout Tool]({{< relref "migrate-using-takeout-tool" >}}). You may migrate these entities simply by adding them in {{% tts %}}.
 
 ## Prerequisites
 
-1. User account on The Things Network {{% ttnv2 %}} or The Things Industries {{% ttnv2 %}}.
-2. End device(s) and gateway(s) connected to a {{% ttnv2 %}} network.
-3. User account in {{% tts %}}.
+1. User account on deprecated The Things Network {{% ttnv2 %}} or The Things Industries {{% ttnv2 %}}.
+2. User account in {{% tts %}}.
 
 We recommend testing migration on a single end device or a small batch of end devices in order to make sure the migration process goes as expected.
 
@@ -67,15 +65,10 @@ For detailed tutorials on the integrations that are available in {{% tts %}}, se
 
 When you have added your application and elements associated with it, it is time to migrate your end device(s) from {{% ttnv2 %}} to {{% tts %}}.
 
-End devices connected to The Things Network V2 can be migrated to {{% tts %}} Cloud and {{% tts %}} Community Edition without the need for migrating a gateway, thanks to the default connection with [Packet Broker]({{< ref "/getting-started/packet-broker" >}}). The Things Industries V2 (SaaS) can also be connected to Packet Broker by contacting [support](mailto:support@thethingsindustries.com), while {{% tts %}} Enterprise or Open Source can be [configured]({{< ref "/getting-started/packet-broker/connect" >}}) manually.
+Since the {{% ttnv2 %}} machines were shut down, `ttn-lw-migrate` is no longer able to migrate devices from these servers.
 
-If you are using deployments connected to Packet Broker, the traffic from your end device(s) will be routed to {{% tts %}} after migrating your device(s). However, there are certain requirements that your devices need to meet for Packet Broker to route their traffic to {{% tts %}} correctly. See [Packet Broker Requirements for End Device Migration]({{< ref "/getting-started/migrating/migrating-from-v2/packet-broker-requirements" >}}) for detailed information.
+To migrate applications, devices, and gateways which were still registered The Things Network V2 before shutdown, see [Migrate using the V2 Takeout Tool]({{< relref "migrate-using-takeout-tool" >}}).
 
-If you are using deployments that are not connected to Packet Broker, you will have to [migrate your gateway]({{< ref "/getting-started/migrating/gateway-migration" >}}) to receive traffic from your end device in {{% tts %}}.
-
-Since {{% tts %}} `v3.13.0` release, The Things Network community members can freely migrate their gateways from The Things Network {{% ttnv2 %}} to {{% tts %}} Community Edition, while still providing uplink and downlink coverage to The Things Network {{% ttnv2 %}}.
+You may migrate these entities simply by adding them in {{% tts %}}.
 
 There are two approaches for migrating devices, depending on how many end devices you intend to migrate and if you wish to migrate with or without active sessions, described in the following guides:
-
-- [Using {{% tts %}} Console]({{< relref "migrate-using-console" >}})
-- [Using `ttn-lw-migrate` tool]({{< relref "migrate-using-migration-tool" >}})
