@@ -8,15 +8,15 @@ Before going in detail with the migration process, this section will give you a 
 
 ## Architecture
 
-{{% tts %}} is using a new architecture. See [Components]({{< ref "/reference/components" >}}) for a complete overview of the different components of {{% tts %}}.
+{{% tts %}} is made up of several components, which can be run redundantly and on distributed servers to improve scalability and robustness. See [Components]({{< ref "/reference/components" >}}) for a complete overview of the different components of {{% tts %}}.
 
 ## LoRaWAN support
+
+{{% tts %}} brings full support for all LoRaWAN versions, as well as modes to support class B and class C capabilities. 
 
 {{% tts %}} requires the LoRaWAN version (MAC) and Regional Parameters version (LoRaWAN PHY version) to be set per end device. These default to LoRaWAN version **MAC V1.0.2** and LoRaWAN Regional Parameters version **PHY V1.0.2 Rev B** for end devices imported from {{% ttnv2 %}}, because this configuration is the most commonly used one.
 
 End devices also need to be set with a frequency plan. You will have to choose the frequency plan corresponding to your region. See [Frequency Plans]({{< ref "/reference/frequency-plans" >}}) for a list of supported Frequency Plans and their respective IDs.
-
-Furthermore, {{% tts %}} brings full support for all LoRaWAN versions, as well as modes to support class B and class C capabilities. 
 
 ## RX1 Delay
 

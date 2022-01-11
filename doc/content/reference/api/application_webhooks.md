@@ -25,11 +25,19 @@ description: ""
 
 {{< proto/message message="ApplicationWebhookFormats" >}}
 
+{{< proto/message message="ApplicationWebhookHealth" >}}
+
+{{< proto/message message="ApplicationWebhookHealth.WebhookHealthStatusUnhealthy" >}}
+
+{{< proto/message message="ApplicationWebhookHealth.WebhookHealthStatusHealthy" >}}
+
 {{< proto/message message="ApplicationWebhookIdentifiers" >}}
 
 {{< proto/message message="ApplicationWebhooks" >}}
 
 {{< proto/message message="ApplicationWebhookTemplateIdentifiers" >}}
+
+{{< proto/message message="ErrorDetails" >}}
 
 {{< proto/message message="GetApplicationWebhookRequest" >}}
 

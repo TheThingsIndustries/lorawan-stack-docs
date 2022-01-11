@@ -19,7 +19,7 @@ The following table lists the default ports used.
 | Application data, events | MQTT | API key, token | 1883 | 8883 |
 | Management, data, events | gRPC | API key, token | 1884 | 8884 |
 | Management | HTTP | API key, token | 1885 | 8885 |
-| Backend Interfaces | HTTP | Custom | N/A | 8886 |
+| Backend Interfaces | HTTP | Custom | 1886 | 8886 |
 | {{% lbs %}} LNS | Web Sockets | Auth Token, Custom | 1887 | 8887 |
 | Tabs Hubs LNS {{< distributions "Cloud" "Enterprise" >}} | Web Sockets | Auth Token, Custom | 1888 | 8888 |
 

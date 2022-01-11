@@ -25,7 +25,7 @@ Under **Advanced Options** > **Container Overrides** > `ttes`, set the **Command
 Alternatively, you can run ops commands using the AWS CLI:
 
 ```bash
-$ aws ecs run-task \
+aws ecs run-task \
   --task-definition TASK_DEFINITION \
   --cluster CLUSTER_NAME \
   --launch-type EC2 \
@@ -54,6 +54,25 @@ $ aws ecs run-task \
 ```
 
 In this case, the command, arguments and flags need to be written as a JSON array.
+
+## Initialize Events Storage
+
+If you use events storage (template `timescale`), you need to initialize the database.
+
+{{< tabs/container "AWS Console" "AWS CLI">}}
+{{< tabs/tab "AWS Console" >}}
+```
+tti-lw-stack,storage-db,init,--timescaledb.chunk-time-interval,12h,--timescaledb.enable-retention-policy,--timescaledb.retention-days,31
+```
+{{</ tabs/tab >}}
+{{< tabs/tab "AWS CLI" >}}
+```
+["tti-lw-stack","storage-db","init","--timescaledb.chunk-time-interval","12h","--timescaledb.enable-retention-policy","--timescaledb.retention-days","31"]
+```
+{{</ tabs/tab >}}
+{{</ tabs/container >}}
+
+{{< note >}} Depending on your use case, feel free to adjust parameter values. {{</ note >}}
 
 ## Initialize Identity Server Database
 
@@ -117,12 +136,12 @@ tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=cli,--name=Command 
 {{< tabs/container "AWS Console" "AWS CLI">}}
 {{< tabs/tab "AWS Console" >}}
 ```
-tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=$ID,--name=$NAME,--secret=$CLIENT_SECRET,--redirect-uri=/console/oauth/callback,--redirect-uri=https://domain/console/oauth/callback,--logout-redirect-uri=/console,--logout-redirect-uri=https://domain/console
+tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=$ID,--name=$NAME,--secret=$CLIENT_SECRET,--redirect-uri=/console/oauth/callback,--redirect-uri=https://$DOMAIN/console/oauth/callback,--logout-redirect-uri=/console,--logout-redirect-uri=https://$DOMAIN/console
 ```
 {{</ tabs/tab >}}
 {{< tabs/tab "AWS CLI" >}}
 ```
-["tti-lw-stack","is-db","create-oauth-client","--tenant-id=NULL","--id=$ID","--name=$NAME","--secret=$CLIENT_SECRET","--redirect-uri=/console/oauth/callback","--redirect-uri=https://domain/console/oauth/callback","--logout-redirect-uri=/console","--logout-redirect-uri=https://domain/console"]
+["tti-lw-stack","is-db","create-oauth-client","--tenant-id=NULL","--id=$ID","--name=$NAME","--secret=$CLIENT_SECRET","--redirect-uri=/console/oauth/callback","--redirect-uri=https://$DOMAIN/console/oauth/callback","--logout-redirect-uri=/console","--logout-redirect-uri=https://$DOMAIN/console"]
 ```
 {{</ tabs/tab >}}
 {{</ tabs/container >}}

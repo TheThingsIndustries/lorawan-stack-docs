@@ -8,7 +8,7 @@ This section contains instructions for installing the command-line interface.
 
 <!--more-->
 
-There are two versions of {{% tts %}} CLI: `ttn-lw-cli`and `tti-lw-cli`. For most users, `ttn-lw-cli` is sufficient, as it supports all commands to manage {{% tts %}}. `tti-lw-cli` has additional commands for tenant management, but is otherwise identical.
+There are two versions of {{% tts %}} CLI: `ttn-lw-cli`and `tti-lw-cli`. For most users, `ttn-lw-cli` is sufficient, as it supports all commands to manage {{% tts %}}. `tti-lw-cli` has additional commands for tenant management and OpenID Connect but is otherwise identical.
 
 We recommend Cloud, Community Edition, and Open Source users to install `ttn-lw-cli`, and Enterprise users to install `tti-lw-cli`.
 
@@ -29,13 +29,13 @@ On macOS, Homebrew is the recommended package manager. See the [official Homebre
 Once Homebrew is installed on your system, you can install {{% tts %}} CLI using the following command in your terminal:
 
 ```bash
-$ brew install TheThingsNetwork/lorawan-stack/ttn-lw-cli
+brew install TheThingsNetwork/lorawan-stack/ttn-lw-cli
 ```
 
 To upgrade the CLI if it is already installed, use:
 
 ```bash
-$ brew upgrade TheThingsNetwork/lorawan-stack/ttn-lw-cli
+brew upgrade TheThingsNetwork/lorawan-stack/ttn-lw-cli
 ```
 
 Once installation is complete, you can run the CLI using `ttn-lw-cli` in your terminal.
@@ -47,13 +47,13 @@ Once installation is complete, you can run the CLI using `ttn-lw-cli` in your te
 Once Homebrew is installed on your system, you can install {{% tts %}} CLI using the following command in your terminal:
 
 ```bash
-$ brew install TheThingsIndustries/lorawan-stack/tti-lw-cli
+brew install TheThingsIndustries/lorawan-stack/tti-lw-cli
 ```
 
 To upgrade the CLI if it is already installed, use:
 
 ```bash
-$ brew upgrade TheThingsIndustries/lorawan-stack/tti-lw-cli
+brew upgrade TheThingsIndustries/lorawan-stack/tti-lw-cli
 ```
 
 Now you can run the CLI using `tti-lw-cli` in your terminal.
@@ -73,14 +73,14 @@ On Linux, `snap` is the recommended package manager. See the [official `snap` do
 Once `snap` is installed on your system, you can install {{% tts %}} CLI using the following command in your terminal:
 
 ```bash
-$ sudo snap install ttn-lw-stack
-$ sudo snap alias ttn-lw-stack.ttn-lw-cli ttn-lw-cli
+sudo snap install ttn-lw-stack
+sudo snap alias ttn-lw-stack.ttn-lw-cli ttn-lw-cli
 ```
 
 To upgrade the CLI if it is already installed, use:
 
 ```bash
-$ sudo snap refresh ttn-lw-stack
+sudo snap refresh ttn-lw-stack
 ```
 
 Once installation is complete, you can run the CLI using `ttn-lw-cli` in your terminal.
@@ -92,14 +92,14 @@ Once installation is complete, you can run the CLI using `ttn-lw-cli` in your te
 Once `snap` is installed on your system, you can install {{% tts %}} CLI using the following command in your terminal:
 
 ```bash
-$ sudo snap install tti-lw-stack
-$ sudo snap alias tti-lw-stack.tti-lw-cli tti-lw-cli
+sudo snap install tti-lw-stack
+sudo snap alias tti-lw-stack.tti-lw-cli tti-lw-cli
 ```
 
 To upgrade the CLI if it is already installed, use:
 
 ```bash
-$ sudo snap refresh tti-lw-stack
+sudo snap refresh tti-lw-stack
 ```
 
 Now you can run the CLI using `tti-lw-cli` in your terminal.
@@ -143,13 +143,13 @@ Supported shells are `bash`, `zsh`, `fish` and `powershell`.
 Use `ttn-lw-cli complete` to generate an auto-completion script for the `ttn-lw-cli` command while specifying the shell you are using:
 
 ```bash
-$ ttn-lw-cli complete --shell bash --executable ttn-lw-cli > ttn-lw-cli-autocomplete
+ttn-lw-cli complete --shell bash --executable ttn-lw-cli > ttn-lw-cli-autocomplete
 ```
 
 Now you need to source the generated file to enable auto-completion:
 
 ```bash
-$ . ./ttn-lw-cli-autocomplete
+. ./ttn-lw-cli-autocomplete
 ```
 
 Alternatively, put in a default directory so that it gets loaded automatically (this directory depends on your operating system and your shell).
@@ -157,7 +157,7 @@ Alternatively, put in a default directory so that it gets loaded automatically (
 For example, for `bash`, this directory is typically `/etc/bash_completion.d/`:
 
 ```bash
-$ sudo cp ./ttn-lw-cli-autocomplete /etc/bash_completion.d/
+sudo cp ./ttn-lw-cli-autocomplete /etc/bash_completion.d/
 ```
 
 ### Windows
@@ -165,9 +165,9 @@ $ sudo cp ./ttn-lw-cli-autocomplete /etc/bash_completion.d/
 Generating and sourcing an auto-completion PowerShell script on Windows is slightly different. In addition to `ttn-lw-cli` being replaced with `ttn-lw-cli.exe`, `ttn-lw-cli-autocomplete` needs to be replaced with `ttn-lw-cli-autocomplete.ps1` as follows:
 
 ```bash
-$ ttn-lw-cli.exe complete --shell powershell --executable ttn-lw-cli.exe > ttn-lw-cli-autocomplete.ps1
+ttn-lw-cli.exe complete --shell powershell --executable ttn-lw-cli.exe > ttn-lw-cli-autocomplete.ps1
 
-$ . ./ttn-lw-cli-autocomplete.ps1
+. ./ttn-lw-cli-autocomplete.ps1
 ```
 
 ## Configuring the CLI

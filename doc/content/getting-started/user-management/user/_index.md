@@ -62,14 +62,23 @@ In the bottom of the edit view, you can click **Delete user** to delete the user
 
 ## Managing Users using the CLI
 
+We define some user parameters that will be used below:
+
+```bash
+NAME="My Colleague"
+EMAIL="colleague@thethings.network"
+```
+
+Make sure to modify these according to your setup.
+
 ## Creating Users
 
 Network Administrators can create user accounts as follows:
 
 ```bash
-$ ttn-lw-cli users create colleague \
-  --name "My Colleague" \
-  --primary-email-address colleague@thethings.network
+ttn-lw-cli users create colleague \
+  --name $NAME \
+  --primary-email-address $EMAIL
 ```
 
 You will be prompted to enter the password:
@@ -107,7 +116,7 @@ Please confirm password:***************
 You can create invitations for users to join the network with the `users invitations create` command:
 
 ```bash
-$ ttn-lw-cli users invitations create colleague@thethings.network
+ttn-lw-cli users invitations create $EMAIL
 ```
 
 After you do this, you will be able to list the invitations you've sent:
@@ -132,7 +141,7 @@ After you do this, you will be able to list the invitations you've sent:
 You will also be able to delete an invitation if you want to revoke it:
 
 ```bash
-$ ttn-lw-cli users invitations delete colleague@thethings.network
+ttn-lw-cli users invitations delete $EMAIL
 ```
 
 ## Listing Users
@@ -140,7 +149,7 @@ $ ttn-lw-cli users invitations delete colleague@thethings.network
 To list users with the CLI, use the `users list` command. Make sure to specify the fields you're interested in.
 
 ```bash
-$ ttn-lw-cli users list --name --state --admin
+ttn-lw-cli users list --name --state --admin
 ```
 
 <details><summary>Output</summary>
@@ -172,7 +181,7 @@ Use the pagination flags `--limit` and `--page` when there are many users.
 To search for users with the CLI, use the `users search` command. Make sure to specify the fields you're interested in. We'll search for users with IDs that contain "new":
 
 ```bash
-$ ttn-lw-cli users search --id-contains new --name
+ttn-lw-cli users search --id-contains new --name
 ```
 
 <details><summary>Output</summary>
@@ -196,7 +205,7 @@ Use the pagination flags `--limit` and `--page` when there are many users.
 To update users with the CLI, use the `users update` command. The following command updates the state of user `new-user` to "approved" and makes them admin of the network:
 
 ```bash
-$ ttn-lw-cli users update new-user --state APPROVED --admin true
+ttn-lw-cli users update new-user --state APPROVED --admin true
 ```
 
 <details><summary>Output</summary>

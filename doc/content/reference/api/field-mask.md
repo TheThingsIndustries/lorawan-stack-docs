@@ -28,7 +28,7 @@ For more information, see Google's [Protocol Buffers reference](https://develope
 Fields may be specified in HTTP `GET` requests by appending them as query string parameters. For example, to request the `name`, `description`, and `locations` of devices in an [`EndDeviceRegistry.Get`]({{< ref "reference/api/end_device#the-enddeviceregistry-service" >}}) request, add these fields to the `field_mask` field. To get this data for device `dev1` in application `app1`:
 
 ```bash
-$ curl --location --header "Authorization: Bearer NNSXS.XXXXXXXXX" "https://thethings.example.com/api/v3/applications/app1/devices/dev1?field_mask=name,description,locations"
+curl --location --header "Authorization: Bearer NNSXS.XXXXXXXXX" "https://thethings.example.com/api/v3/applications/app1/devices/dev1?field_mask=name,description,locations"
 ```
 
 This will return the following:
@@ -42,8 +42,8 @@ This will return the following:
       "application_ids":{
          "application_id":"app1"
       },
-      "dev_eui":"0000000000000000",
-      "join_eui":"0000000000000000"
+      "dev_eui":"46CF72F61862CBB0",
+      "join_eui":"66209794D18AE087"
    },
    "created_at":"2020-07-31T12:17:51.645Z",
    "updated_at":"2021-07-20T14:14:56.318Z",
@@ -71,8 +71,8 @@ Without the field masks specified, this request would not return the `name`, `de
       "application_ids":{
          "application_id":"tti-playground"
       },
-      "dev_eui":"0004A30B001C35EC",
-      "join_eui":"1234567891234567"
+      "dev_eui":"46CF72F61862CBB0",
+      "join_eui":"66209794D18AE087"
    },
    "created_at":"2020-07-31T12:17:51.645Z",
    "updated_at":"2020-07-31T12:17:51.645Z"
@@ -101,7 +101,7 @@ Where `ids.device_id`, `name`, and `description` are fields to be updated.
 For example, to update the `name` field of device `dev1` in application `app1`with an [`EndDeviceRegistry.Update`]({{< ref "reference/api/end_device#the-enddeviceregistry-service" >}}) request:
 
 ```bash
-$ curl --location \
+curl --location \
   --header 'Authorization: Bearer NNSXS.XXXXXXXXX' \
   --header 'Content-Type: application/json' \
   --request PUT \
@@ -130,8 +130,8 @@ This request will update the `name` field of the device, but will not update the
       "application_ids":{
          "application_id":"app1"
       },
-      "dev_eui":"0000000000000000",
-      "join_eui":"0000000000000000"
+      "dev_eui":"46CF72F61862CBB0",
+      "join_eui":"66209794D18AE087"
    },
    "created_at":"2020-07-31T12:17:51.645Z",
    "updated_at":"2021-07-20T15:04:26.339Z",
@@ -173,8 +173,8 @@ This would return the following confirmation:
       "application_ids":{
          "application_id":"app1"
       },
-      "dev_eui":"0000000000000000",
-      "join_eui":"0000000000000000"
+      "dev_eui":"46CF72F61862CBB0",
+      "join_eui":"66209794D18AE087"
    },
    "created_at":"2020-07-31T12:17:51.645Z",
    "updated_at":"2021-07-20T15:04:26.339Z",
@@ -189,7 +189,7 @@ This would return the following confirmation:
 Some endpoints require a message to be sent as part of the request. For example, to request an [Event Stream]({{< ref "reference/api/events#the-event-service" >}}), you must `POST` a [StreamEventsRequest message]({{< ref "reference/api/events#message:StreamEventsRequest" >}}):
 
 ```bash
-$ curl --location \
+curl --location \
   --header 'Authorization: Bearer NNSXS.XXXXXXXXX' \
   --header 'Content-Type: application/json' \
   --request POST \

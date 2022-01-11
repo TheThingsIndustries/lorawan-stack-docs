@@ -61,13 +61,13 @@ SSH access is possible only via the IP addresses set using the **Restrict SSH Ac
 For example, you can use the OpenSSH client via the terminal and login using:
 
 ```bash
-$ ssh -i <private-key-file> ec2-user@PublicIP
+ssh -i <private-key-file> ec2-user@PublicIP
 ```
 
 Upon accessing the machine, navigate to the `tti` directory:
 
 ```bash
-$ cd /tti
+cd /tti
 ```
 
 This directory is structured as follows:
@@ -86,7 +86,7 @@ This directory is structured as follows:
 The Things Enterprise Stack binary is run as a `systemd` service. In order to check the logs, run the following:
 
 ```bash
-$ sudo journalctl -f -u lorawan-stack.service
+sudo journalctl -f -u lorawan-stack.service
 ```
 
 ## Routing LoRaWAN Traffic

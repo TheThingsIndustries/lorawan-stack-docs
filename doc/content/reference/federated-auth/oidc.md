@@ -14,24 +14,36 @@ weight: 3
 A new OAuth 2.0 client must be created in the provider and the client ID and client secret must be noted down. While creating the OAuth2 client, you will be asked to provide a redirect URL, which should have the following format:
 
 ```
-https://thethings.example.com/oauth/login/my-oidc-provider/callback
+https://thethings.example.com/oauth/login/<oidc-provider-id>/callback
 ```
 
-Where `my-oidc-provider` is the ID that you have chosen for this OpenID Connect provider.
+Replace `<oidc-provider-id>` with the ID that you have chosen for this OpenID Connect provider, for example `my-oidc-provider`.
 
 ## How can I register an OpenID Connect provider ?
+
+We first define some user parameters used below:
+
+```bash
+OIDC_PROVIDER_ID="my-oidc-provider"
+OIDC_PROVIDER_NAME="My OIDC Provider"
+OIDC_CLIENT_ID="client123"
+OIDC_CLIENT_SECRET="secret123"
+OIDC_PROVIDER_URL="https://oidc.example.com"
+```
+
+Make sure you modify these according to your setup.
 
 After you have created the OAuth2 client you may register the provider using the `is-db` stack command:
 
 ```bash
-$ tti-lw-stack is-db create-auth-provider
-    --id my-oidc-provider
-    --name "My OIDC Provider"
+tti-lw-stack is-db create-auth-provider
+    --id $OIDC_PROVIDER_ID
+    --name $OIDC_PROVIDER_NAME
     --allow-registrations true
     --oidc
-    --oidc.client-id client123
-    --oidc.client-secret secret123
-    --oidc.provider-url https://oidc.example.com
+    --oidc.client-id $OIDC_CLIENT_ID
+    --oidc.client-secret $OIDC_CLIENT_SECRET
+    --oidc.provider-url $OIDC_PROVIDER_URL
 ```
 
 ## How are usernames generated for external users ?

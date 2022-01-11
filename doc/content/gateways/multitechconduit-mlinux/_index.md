@@ -47,13 +47,13 @@ After connecting to the gateway, it must be commissioned, or you will not be abl
 To connect the gateway to your network, you must reconfigure it as a DHCP client. After commissioning the device, ssh in using the username and password you set up:
 
 ```bash
-$ ssh username@192.168.2.1
+ssh username@192.168.2.1
 ```
 
 Modify the network configuration file, `/etc/network/interfaces`:
 
 ```bash
-$ sudo nano /etc/network/interfaces
+sudo nano /etc/network/interfaces
 ```
 
 Configure the eth0 peripheral as dhcp, and comment out the static configuration:
@@ -85,10 +85,10 @@ Once the `global_conf.json` file is generated, you will need to add this to your
 Login to your router at its IP address on your local network, and copy the `global_conf.json` contents in to a file at `/var/config/lora/global_conf.json`
 
 ```bash
-$ ssh username@<GATEWAY_IP_ADDRESS>
-$ sudo mkdir /var/config/lora
-$ sudo touch /var/config/lora/global_conf.json
-$ sudo nano /var/config/lora/global_conf.json
+ssh username@<GATEWAY_IP_ADDRESS>
+sudo mkdir /var/config/lora
+sudo touch /var/config/lora/global_conf.json
+sudo nano /var/config/lora/global_conf.json
 ```
 
 Copy in the contents of the `global_conf.json` file you downloaded. While the file is open, change the value of `clksrc` to `0`:
@@ -106,18 +106,18 @@ Multitech devices require a `clksrc` of `0`. Do not skip this step, or your devi
 Finally, edit the configuration settings to start the `lora-packet-forwarder` by default, and disable the `lora-network-server`:
 
 ```bash
-$ /etc/init.d/lora-network-server stop
-$ sudo nano /etc/defaults/lora-network-server
+/etc/init.d/lora-network-server stop
+sudo nano /etc/defaults/lora-network-server
 #ENABLED=”no”
 
-$ sudo nano /etc/defaults/lora-packet-forwarder
+sudo nano /etc/defaults/lora-packet-forwarder
 #ENABLED=”yes”
 ```
 
 Start the packet forwarder, and {{% tts %}} will begin receiving packets from your gateway:
 
 ```bash
-$ sudo /etc/init.d/lora-packet-forwarder start
+sudo /etc/init.d/lora-packet-forwarder start
 ```
 
 ## Troubleshooting

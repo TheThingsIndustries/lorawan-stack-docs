@@ -116,7 +116,7 @@ For this, you need to authorize your gateways for claiming. This is currently on
 {{< cli-only >}}
 
 ```bash
-$ ttn-lw-cli gateways claim authorize <gateway-id>
+ttn-lw-cli gateways claim authorize <gateway-id>
 ```
 
 Now claim the gateway as described in the [Claiming {{% ttig %}}]({{< ref "#claiming-the-things-indoor-gateway" >}}) section.
@@ -125,7 +125,7 @@ Once complete, make sure to unauthorize the gateway to prevent further claiming.
 
 
 ```bash
-$ ttn-lw-cli gateways claim unauthorize <gateway-id>
+ttn-lw-cli gateways claim unauthorize <gateway-id>
 ```
 
 

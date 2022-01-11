@@ -39,11 +39,9 @@ If your device is not in the device repository, see [Manually Create End Device]
 
 Choose a **Frequency plan** appropriate for your region. Your device and gateway must use the same frequency plan to communicate.
 
-Enter a **JoinEUI/AppEUI** if provided by your manufacturer. If your device is programmable, you may use the **Fill with zeros** button, and then program the same JoinEUI/AppEUI (`0000000000000000`) in the device.
+Enter a **JoinEUI/AppEUI** if provided by your manufacturer.
 
-{{< note >}} Some devices do not support using `0000000000000000` as a JoinEUI/AppEUI, because technically, this value is invalid. However, {{% tts %}} supports using this value to indicate the absence of an actual JoinEUI/AppEUI.
-
-If your device gives an error when using `0000000000000000`, try using the DevEUI value as a JoinEUI/AppEUI, both in {{% tts %}} and on your device. {{</ note >}}
+{{< note >}} Make sure to use a valid DevEUI/JoinEUI. If you device does not have one, you can generate a random one in accordance with the test ranges defined by the [IEEE 802 standards](https://ieee802.org/). {{</ note >}}
 
 Enter your **DevEUI**. This should be provided by your manufacturer for commercial devices. If your device is programmable, you may generate an EUI using the **Generate** button, and program it in your device.
 
@@ -113,7 +111,7 @@ The example in this guide covers adding a device using [OTAA]({{< ref "reference
 
 Enter your **DevEUI**. This should be provided by your manufacturer for commercial devices. If your device is programmable, you may generate an EUI using the **Generate** button, and program it in your device.
 
-Enter a **JoinEUI/AppEUI** if provided by your manufacturer. If your device is programmable, you may use the **Fill with zeros** button, and then program the same JoinEUI/AppEUI (`0000000000000000`) in the device.
+Enter a **JoinEUI/AppEUI** if provided by your manufacturer.
 
 If your manufacturer provides an **AppKey**, enter it. Otherwise, use the **Generate** button to create one, and program it in to your device.
 
@@ -174,33 +172,50 @@ The end device location can be manually set by pinning on the map widget, or ent
 First, list the available frequency plans and LoRaWAN versions:
 
 ```bash
-$ ttn-lw-cli end-devices list-frequency-plans
-$ ttn-lw-cli end-devices create --help
+ttn-lw-cli end-devices list-frequency-plans
+ttn-lw-cli end-devices create --help
 ```
 
 ### Over-The-Air-Activation (OTAA) Device
+
+We define some user parameters that will be used below:
+
+```bash
+APP_ID="app1" 
+DEVICE_ID="dev1"
+FREQUENCY_PLAN="EU_863_870"
+DEV_EUI="0004A30B001C0530"
+APP_EUI="800000000000000C"
+APP_KEY="752BAEC23EAE7964AF27C325F4C23C9A"
+```
+
+Make sure to modify these according to your setup.
 
 **LoRaWAN 1.0.x:**
 
 To create an end device using over-the-air-activation (OTAA):
 
 ```bash
-$ ttn-lw-cli end-devices create app1 dev1 \
-  --dev-eui 0004A30B001C0530 \
-  --app-eui 800000000000000C \
-  --frequency-plan-id EU_863_870 \
-  --root-keys.app-key.key 752BAEC23EAE7964AF27C325F4C23C9A \
+ttn-lw-cli end-devices create $APP_ID $DEVICE_ID \
+  --dev-eui $DEV_EUI \
+  --app-eui $APP_EUI \
+  --frequency-plan-id $FREQUENCY_PLAN \
+  --root-keys.app-key.key $APP_KEY \
   --lorawan-version 1.0.3 \
   --lorawan-phy-version 1.0.3-a
 ```
 
-This will create a LoRaWAN 1.0.3 end device `dev1` in application `app1` with the `EU_863_870` frequency plan. Please note that the `AppEUI` is returned as `join_eui` ({{% tts %}} uses LoRaWAN 1.1 terminology).
+This will create an end device `dev1` in application `app1` with the `EU_863_870` frequency plan, that uses LoRaWAN 1.0.3 MAC version and 1.0.3-a PHY versions. Make sure to replace the LoRaWAN MAC and PHY versions according to your setup.
 
-{{< note >}} If you do not have a `JoinEUI` or `AppEUI`, you could use `0000000000000000`. 
+Please note that the `AppEUI` is returned as `join_eui` ({{% tts %}} uses LoRaWAN 1.1 terminology).
 
-Some devices do not support using `0000000000000000` as a JoinEUI/AppEUI, because technically, this value is invalid. However, {{% tts %}} supports using this value to indicate the absence of an actual JoinEUI/AppEUI.
+{{< new-in-version "3.17.0">}} If your device does not have a JoinEUI, you can use the default Join EUI of the Join Server. To use this, leave the `--join-eui`/`--app-eui` field empty. The CLI will contact the Join Server and get its default.
 
-If your device gives an error when using `0000000000000000`, try using the DevEUI value as a JoinEUI/AppEUI, both in {{% tts %}} and on your device. {{</ note >}}
+If your device does not have a DevEUI, set the `--request-dev-eui` flag. The CLI will contact the server and fetch a DevEUI.
+
+{{< warning >}}
+You must either use the value DevEUI/JoinEUI that's allotted to your device or let the server define these values as described above. Do not use `0000000000000000` or other randomly generated values as this is not LoRaWAN compliant and your devices will not be interoperable with other networks in the LoRaWAN ecosystem.
+{{</ warning >}}
 
 You can also pass `--with-root-keys` to have root keys generated. In this case, you do not need to specify `--root-keys.app-key.key`.
 
@@ -211,23 +226,18 @@ The end device should now be able to join the private network.
 To create an end device using over-the-air-activation (OTAA):
 
 ```bash
-$ ttn-lw-cli end-devices create app1 dev1 \
-  --dev-eui 0004A30B001C0530 \
-  --app-eui 800000000000000C \
-  --frequency-plan-id EU_863_870 \
-  --root-keys.app-key.key 752BAEC23EAE7964AF27C325F4C23C9A \
-  --root-keys.nwk-key.key 01020304050607080102030405060708 \
+NWK_KEY="01020304050607080102030405060708"
+ttn-lw-cli end-devices create $APP_ID $DEVICE_ID \
+  --dev-eui $DEV_EUI \
+  --app-eui $APP_EUI \
+  --frequency-plan-id $FREQUENCY_PLAN \
+  --root-keys.app-key.key $APP_KEY \
+  --root-keys.nwk-key.key $NWK_KEY \
   --lorawan-version 1.1.0 \
   --lorawan-phy-version 1.1.0-b
 ```
 
-This will create a LoRaWAN 1.1.0 end device `dev1` in application `app1` with the `EU_863_870` frequency plan.
-
-{{< note >}} If you do not have a `JoinEUI` or `AppEUI`, you could use `0000000000000000`. 
-
-Some devices do not support using `0000000000000000` as a JoinEUI/AppEUI, because technically, this value is invalid. However, {{% tts %}} supports using this value to indicate the absence of an actual JoinEUI/AppEUI.
-
-If your device gives an error when using `0000000000000000`, try using the DevEUI value as a JoinEUI/AppEUI, both in {{% tts %}} and on your device. {{</ note >}}
+This will create an end device `dev1` in application `app1` with the `EU_863_870` frequency plan, that uses LoRaWAN 1.1.0 MAC and 1.1.0-b PHY versions. Make sure you replace these versions according to your setup.
 
 You can also pass `--with-root-keys` to have root keys generated. In this case, you do not need to specify `--root-keys.app-key.key` or `root-keys.nwk-key.key`.
 
@@ -235,20 +245,35 @@ The end device should now be able to join the private network.
 
 ### Activation By Personalization (ABP) Device
 
+For adding ABP devices, we can define the following parameters:
+
+```bash
+APP_ID="app1" 
+DEVICE_ID="dev1"
+FREQUENCY_PLAN="EU_863_870"
+DEV_ADDR="00E4304D"
+APP_SESSION_KEY="A0CAD5A30036DBE03096EB67CA975BAA"
+NWK_SESSION_KEY="B7F3E161BC9D4388E6C788A0C547F255"
+```
+
+Make sure you modify these according to your setup.
+
 **LoRaWAN 1.0.x:**
 
 It is also possible to register an ABP activated device using the `--abp` flag as follows:
 
 ```bash
-$ ttn-lw-cli end-devices create app1 dev2 \
-  --frequency-plan-id EU_863_870 \
+ttn-lw-cli end-devices create $APP_ID $DEVICE_ID \
+  --frequency-plan-id $FREQUENCY_PLAN \
   --lorawan-version 1.0.3 \
   --lorawan-phy-version 1.0.3-a \
   --abp \
-  --session.dev-addr 00E4304D \
-  --session.keys.app-s-key.key A0CAD5A30036DBE03096EB67CA975BAA \
-  --session.keys.nwk-s-key.key B7F3E161BC9D4388E6C788A0C547F255
+  --session.dev-addr $DEV_ADDR \
+  --session.keys.app-s-key.key $APP_SESSION_KEY \
+  --session.keys.nwk-s-key.key $NWK_SESSION_KEY
 ```
+
+This will create an end device `dev1` in application `app1` with the `EU_863_870` frequency plan, that uses LoRaWAN 1.0.3 MAC and 1.0.3-a PHY versions. Make sure you replace these versions according to your setup.
 
 Please note that the `NwkSKey` is returned as `f_nwk_s_int_key` ({{% tts %}} uses LoRaWAN 1.1 terminology).
 
@@ -259,18 +284,23 @@ You can also pass `--with-session` to have a session generated.
 To register a LoRaWAN 1.1.x end device using ABP:
 
 ```bash
-$ ttn-lw-cli end-devices create app1 dev2 \
-  --frequency-plan-id EU_863_870 \
+F_NWK_SESSION_INT_KEY="01020304050607080102030405060708"
+S_NWK_SESSION_INT_KEY="01020304050607080102030405060708"
+NWK_SESSION_ENC_KEY="01020304050607080102030405060708"
+ttn-lw-cli end-devices create $APP_ID $DEVICE_ID \
+  --frequency-plan-id $FREQUENCY_PLAN \
   --lorawan-version 1.1.0 \
   --lorawan-phy-version 1.1.0-b \
   --abp \
-  --session.dev-addr 00E4304D \
-  --session.keys.app-s-key.key A0CAD5A30036DBE03096EB67CA975BAA \
-  --session.keys.nwk-s-key.key B7F3E161BC9D4388E6C788A0C547F255
-  --session.keys.f-nwk-s-int-key.key 01020304050607080102030405060708 \
-  --session.keys.s-nwk-s-int-key.key 01020304050607080102030405060708 \
-  --session.keys.nwk-s-enc-key.key 01020304050607080102030405060708
+  --session.dev-addr $DEV_ADDR \
+  --session.keys.app-s-key.key $APP_SESSION_KEY \
+  --session.keys.nwk-s-key.key $NWK_SESSION_KEY
+  --session.keys.f-nwk-s-int-key.key $F_NWK_SESSION_INT_KEY \
+  --session.keys.s-nwk-s-int-key.key $S_NWK_SESSION_INT_KEY \
+  --session.keys.nwk-s-enc-key.key $NWK_SESSION_ENC_KEY
 ```
+
+This will create an end device `dev1` in application `app1` with the `EU_863_870` frequency plan, that uses LoRaWAN 1.1.0 MAC and 1.1.0-b PHY versions. Make sure you replace these versions according to your setup.
 
 You can also pass `--with-session` to have a session generated.
 
@@ -281,17 +311,18 @@ Once you have added your end device to {{% tts %}}, you can also set its locatio
 Set your end device's location with:
 
 ```bash
-$ APP_ID="your-application-id" 
-$ DEVICE_ID="your-device-id"
-$ ttn-lw-cli end-devices set $APP_ID $DEVICE_ID \
-  --location.latitude 43.84 \
-  --location.longitude 18.32 \
-  --location.altitude 500 \
+LAT="43.84"
+LONG="18.32"
+ALT="500"
+ttn-lw-cli end-devices set $APP_ID $DEVICE_ID \
+  --location.latitude $LAT \
+  --location.longitude $LONG \
+  --location.altitude $ALT \
 ```
 
 You can also set the end device location to be updated from various sources with the `--location.source` flag.
 
-The source of the location data can be the registry, GPS data, results of the LoRa RSSI geolocation, etc. Use `ttn-lw-cli end-devices set app1 dev1 --help` command to see the full list of the available location sources and other relatable info. If you set the alternative location source, the location settings you manually set will be overwritten by the automatic updates from that source.
+The source of the location data can be the registry, GPS data, results of the LoRa RSSI geolocation, etc. Use `ttn-lw-cli end-devices set $APP_ID $DEVICE_ID --help` command to see the full list of the available location sources and other relatable info. If you set the alternative location source, the location settings you manually set will be overwritten by the automatic updates from that source.
 
 The CLI will return something like:
 

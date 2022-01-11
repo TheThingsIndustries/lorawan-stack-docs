@@ -75,7 +75,7 @@ Go to [**Interfaces**](http://192.168.88.1/webfig/#Interfaces), click on **PPP-o
 To test whether a connection with your LTE-M network is established, go to the **Terminal** tab in the RouterOS web interface and run the command:
 
 ```
-$ /interface ppp-client info ppp-out1
+/interface ppp-client info ppp-out1
 ```
 If the gateway is set up correctly, it will respond with a message like:
 

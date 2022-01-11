@@ -43,7 +43,7 @@ The additional fields that need to be set are
 Replace `<gateway-id>` with the **Gateway ID** of the gateway that you created in prerequisites, and run the following command in the CLI:
 
 ```bash
-$ ttn-lw-cli gateways claim <gateway-eui> --authentication-code <claim-authentication-code> --user-id <user-id> --target-gateway-id [target-gateway-id] --target-cups-uri <target-cups-uri> --current-gateway-key <current-cups-key>
+ttn-lw-cli gateways claim <gateway-eui> --authentication-code <claim-authentication-code> --user-id <user-id> --target-gateway-id [target-gateway-id] --target-cups-uri <target-cups-uri> --current-gateway-key <current-cups-key>
 ```
 
 ### Claim a Gateway (non LoRa Basics Station)
@@ -51,5 +51,5 @@ $ ttn-lw-cli gateways claim <gateway-eui> --authentication-code <claim-authentic
 Replace `<gateway-id>` with the **Gateway ID** of the gateway that you created in prerequisites, and run the following command in the CLI:
 
 ```bash
-$ ttn-lw-cli gateways claim <gateway-eui> --authentication-code <claim-authentication-code> --user-id <user-id> --target-gateway-id [target-gateway-id]
+ttn-lw-cli gateways claim <gateway-eui> --authentication-code <claim-authentication-code> --user-id <user-id> --target-gateway-id [target-gateway-id]
 ```

@@ -22,13 +22,13 @@ In order for anyone to claim devices that are registered in your application, yo
 Replace `<app-id>` with the **Application ID** of the application that you created in prerequisites, and run the following command in the CLI:
 
 ```bash
-$ ttn-lw-cli applications claim authorize <app-id>
+ttn-lw-cli applications claim authorize <app-id>
 ```
 
 To undo the action:
 
 ```bash
-$ ttn-lw-cli application claim unauthorize <app-id>
+ttn-lw-cli application claim unauthorize <app-id>
 ```
 
 ## Register Device
@@ -68,7 +68,8 @@ To disallow claiming, click **Delete claim authentication code**.
 To configure claiming using the CLI, use the following command:
 
 ```bash
-$ ttn-lw-cli end-device set <app-id> <device-id> --claim-authentication-code.value ABCD \
+CLAIM_AUTHENTICATION_CODE="ABCD"
+ttn-lw-cli end-device set <app-id> <device-id> --claim-authentication-code.value $CLAIM_AUTHENTICATION_CODE \
   --claim-authentication-code.valid-from 2021-03-01T00:00:00Z \
   --claim-authentication-code.valid-from 2021-03-31T23:59:59Z
 ```

@@ -40,7 +40,7 @@ You can also run the CLI with the `--fetch-ca` flag which will make sure to conn
 Many CLI commands require that a user or organization is set to grant permissions over an entity. For example, to create an application:
 
 ```bash
-$ ttn-lw-cli applications create app1 --user-id user1
+ttn-lw-cli applications create <application-id> --user-id <user-id>
 ```
 
 ## Permission Denied

@@ -58,7 +58,7 @@ OTAA devices are registered in the Join Server's `JsEndDeviceRegistry`. The foll
 - `application_server_address`
 - `application_server_id`
 - `application_server_kek_label`
-- `claim_authentication_code` (when using [end device claiming]({{< relref "end_device_claiming.md" >}}))
+- `claim_authentication_code` (when using end device claiming)
 
 See the [EndDevice message](#message:EndDevice) and its sub-messages for additional fields that can be read from the Join Server's `JsEndDeviceRegistry`.
 
@@ -120,6 +120,15 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/method service="AsEndDeviceRegistry" method="Delete" >}}
 
+
+## The `EndDeviceClaimingServer` service
+
+{{< proto/method service="EndDeviceClaimingServer" method="Claim" >}}
+
+{{< proto/method service="EndDeviceClaimingServer" method="AuthorizeApplication" >}}
+
+{{< proto/method service="EndDeviceClaimingServer" method="UnauthorizeApplication" >}}
+
 ## Messages
 
 {{< proto/message message="ApplicationIdentifiers" >}}
@@ -134,11 +143,17 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="AggregatedDutyCycleValue" >}}
 
+{{< proto/message message="AuthorizeApplicationRequest" >}}
+
 {{< proto/message message="BoolValue" >}}
 
 {{< proto/message message="CreateEndDeviceRequest" >}}
 
 {{< proto/message message="CFList" >}}
+
+{{< proto/message message="ClaimEndDeviceRequest" >}}
+
+{{< proto/message message="ClaimEndDeviceRequest.AuthenticatedIdentifiers" >}}
 
 {{< proto/message message="DataRate" >}}
 

@@ -8,6 +8,18 @@ weight: 2
 
 You can create a device template from an existing device or extend an existing device template. You can also create a new template from scratch.
 
+We define some user parameters that will be used below:
+
+```bash
+APP_ID="app1" 
+DEVICE_ID="dev1"
+FREQUENCY_PLAN="EU_863_870"
+LORAWAN_VERSION="1.0.3"
+LORAWAN_PHY_VERSION="1.0.3-a"
+```
+
+Make sure to modify these according to your setup.
+
 ## Create from existing device
 
 You can use the `end-device template create` command to create a template from an existing device.
@@ -19,9 +31,9 @@ You can include the end device identifiers by passing the concerning flags: `--a
 Pipe the output from getting a device to create a template, for example:
 
 ```bash
-$ ttn-lw-cli end-devices get test-app test-dev \
-  --lorawan-version \
-  --lorawan-phy-version \
+ttn-lw-cli end-devices get $APP_ID $DEVICE_ID \
+  --lorawan-version $LORAWAN_VERSION \
+  --lorawan-phy-version $LORAWAN_PHY_VERSION \
   | ttn-lw-cli end-devices template create > template.json
 ```
 
@@ -55,9 +67,9 @@ $ ttn-lw-cli end-devices get test-app test-dev \
 Use the `end-device template extend` command to extend a template:
 
 ```bash
-$ cat template.json \
+cat template.json \
   | ttn-lw-cli end-devices template extend \
-  --frequency-plan-id EU_863_870
+  --frequency-plan-id $FREQUENCY_PLAN
 ```
 
 <details><summary>Output</summary>
@@ -89,7 +101,7 @@ $ cat template.json \
 ```
 </details>
 
-See `$ ttn-lw-cli end-devices template extend --help` for all the fields that can be set.
+See `ttn-lw-cli end-devices template extend --help` for all the fields that can be set.
 
 ## Create from scratch
 
@@ -98,10 +110,10 @@ The `end-device template extend` can also be used to create a new template from 
 For example, create a new template from scratch:
 
 ```bash
-$ ttn-lw-cli end-devices template extend \
-  --lorawan-version 1.0.3 \
-  --lorawan-phy-version 1.0.3-a \
-  --frequency-plan-id EU_863_870
+ttn-lw-cli end-devices template extend \
+  --lorawan-version $LORAWAN_VERSION \
+  --lorawan-phy-version $LORAWAN_PHY_VERSION \
+  --frequency-plan-id $FREQUENCY_PLAN
 ```
 
 <details><summary>Output</summary>

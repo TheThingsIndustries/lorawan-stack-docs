@@ -26,6 +26,7 @@ The Things Industries Cloud currently has the following clusters:
 | -------------- | --------------- | ---------------   |
 | `au1`          | Australia 1     | Sydney, Australia |
 | `eu1`          | Europe 1        | Ireland           |
+| `eu2`          | Europe 2        | UK           |
 | `nam1`         | North America 1 | California, USA   |
 
 ## Status Page

@@ -15,8 +15,8 @@ In this guide, we show you how to request a free, trusted certificate from [Let'
 {{% tts %}} can be configured to automatically retrieve and update Let's Encrypt certificates. Assuming you followed the [configuration]({{< relref "configuration" >}}) steps, create an `acme` directory where {{% tts %}} can store the certificate data:
 
 ```bash
-$ mkdir ./acme
-$ sudo chown 886:886 ./acme
+mkdir ./acme
+sudo chown 886:886 ./acme
 ```
 
 {{< warning >}} `886` is the `UID` and the `GID` of the user that runs {{% tts %}} in the Docker container. If you don't set these permissions, you may encounter an error resembling `open /var/lib/acme/acme_account+key<...>: permission denied`. {{</ warning >}}
@@ -54,7 +54,7 @@ You will also need to comment out the Let's Encrypt section of `ttn-lw-stack-doc
 If you want to use the certificate (`cert.pem`) and key (`key.pem`) that you already have, you also need to set these permissions.
 
 ```bash
-$ sudo chown 886:886 ./cert.pem ./key.pem
+sudo chown 886:886 ./cert.pem ./key.pem
 ```
 
 {{< warning >}} If you don't set these permissions, you may encounter an error resembling `/run/secrets/key.pem: permission denied`. {{</ warning >}}
@@ -89,7 +89,7 @@ Write the configuration for your CA to `ca.json`:
 Then use the following command to generate the CA key and certificate:
 
 ```bash
-$ cfssl genkey -initca ca.json | cfssljson -bare ca
+cfssl genkey -initca ca.json | cfssljson -bare ca
 ```
 
 Now write the configuration for your certificate to `cert.json`:
@@ -108,7 +108,7 @@ Now write the configuration for your certificate to `cert.json`:
 Then, run the following command to generate the server key and certificate:
 
 ```bash
-$ cfssl gencert -ca ca.pem -ca-key ca-key.pem cert.json | cfssljson -bare cert
+cfssl gencert -ca ca.pem -ca-key ca-key.pem cert.json | cfssljson -bare cert
 ```
 
 The next steps assume the certificate key is called `key.pem`, so you'll need to rename `cert-key.pem` to `key.pem`.

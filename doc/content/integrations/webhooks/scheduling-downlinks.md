@@ -34,7 +34,7 @@ The downlink queue operation paths are:
 For example, to push a downlink to the end device `dev1` of the application `app1` using the webhook `wh1`:
 
 ```bash
-$ curl --location \
+curl --location \
   --header 'Authorization: Bearer NNSXS.XXXXXXXXX' \
   --header 'Content-Type: application/json' \
   --header 'User-Agent: my-integration/my-integration-version' \
@@ -51,7 +51,7 @@ $ curl --location \
 To schedule a human readable downlink to the same device using a downlink [Payload Formatter]({{< ref "integrations/payload-formatters" >}}):
 
 ```bash
-$ curl --location \
+curl --location \
   --header 'Authorization: Bearer NNSXS.XXXXXXXXX' \
   --header 'Content-Type: application/json' \
   --header 'User-Agent: my-integration/my-integration-version' \
@@ -74,7 +74,7 @@ You can also save the API key in the webhook configuration page using the the **
 To clear the queue of downlink messages for an end device `dev1` of the application `app1` using the webhook `wh1`:
 
 ```bash
-$ curl --location \
+curl --location \
   --header 'Authorization: Bearer NNSXS.XXXXXXXXX' \
   --header 'Content-Type: application/json' \
   --header 'User-Agent: my-integration/my-integration-version' \

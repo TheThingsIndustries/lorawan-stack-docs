@@ -54,8 +54,8 @@ This is a file which {{% tts %}} uses to verify the identity of your gateway.
 Use the following command to create a file called `lns.key`, replacing `"your-lns-api-key"` with the LNS API key you created above.
 
 ```bash
-$ export LNS_KEY="your-lns-api-key"
-$ echo "Authorization: Bearer $LNS_KEY" | perl -p -e 's/\r\n|\n|\r/\r\n/g'  > lns.key
+LNS_KEY="your-lns-api-key"
+echo "Authorization: Bearer $LNS_KEY" | perl -p -e 's/\r\n|\n|\r/\r\n/g'  > lns.key
 ```
 
 The above command creates a file called `lns.key`, terminated with a Carriage Return Line Feed (`0x0D0A`) character. Upload this file in your gateway as the LNS key.

@@ -9,6 +9,21 @@ It is also possible to create a [Class B]({{< ref "devices/class-b" >}}) or [Cla
 
 <!--more-->
 
+We define some user parameters that will be used below:
+
+```bash
+APP_ID="app1" 
+DEVICE_ID="dev1"
+FREQUENCY_PLAN="EU_863_870"
+LORAWAN_VERSION="1.0.3"
+LORAWAN_PHY_VERSION="1.0.3-a"
+DEV_ADDR="00E4304D"
+APP_SESSION_KEY="A0CAD5A30036DBE03096EB67CA975BAA"
+NWK_SESSION_KEY="B7F3E161BC9D4388E6C788A0C547F255"
+```
+
+Make sure to modify these according to your setup.
+
 ## Class B and Multicast
 
 Since there are no uplinks in multicast groups, there is no MAC layer communication between the end device and {{% tts %}}. Therefore, it is necessary to specify the ping slot periodicity by setting the following parameter:
@@ -24,13 +39,13 @@ When creating a device, you can specify in the Console and CLI whether it's a mu
 CLI example:
 
 ```bash
-$ ttn-lw-cli end-devices create app1 mc1 \
-  --frequency-plan-id EU_863_870 \
-  --lorawan-version 1.0.3 \
-  --lorawan-phy-version 1.0.3-a \
-  --session.dev-addr 00E4304D \
-  --session.keys.app-s-key.key A0CAD5A30036DBE03096EB67CA975BAA \
-  --session.keys.nwk-s-key.key B7F3E161BC9D4388E6C788A0C547F255 \
+ttn-lw-cli end-devices create $APP_ID $DEVICE_ID \
+  --frequency-plan-id $FREQUENCY_PLAN \
+  --lorawan-version $LORAWAN_VERSION \
+  --lorawan-phy-version $LORAWAN_PHY_VERSION \
+  --session.dev-addr $DEV_ADDR \
+  --session.keys.app-s-key.key $APP_SESSION_KEY \
+  --session.keys.nwk-s-key.key $NWK_SESSION_KEY \
   --multicast \
   --supports-class-c # or --supports-class-b
 ```
@@ -46,13 +61,13 @@ Please note that a multicast group cannot be converted to a normal unicast devic
 First, create a multicast group:
 
 ```bash
-$ ttn-lw-cli end-devices create app1 mc1 \
-  --frequency-plan-id EU_863_870 \
-  --lorawan-version 1.0.3 \
-  --lorawan-phy-version 1.0.3-a \
-  --session.dev-addr 00E4304D \
-  --session.keys.app-s-key.key A0CAD5A30036DBE03096EB67CA975BAA \
-  --session.keys.nwk-s-key.key B7F3E161BC9D4388E6C788A0C547F255 \
+ttn-lw-cli end-devices create $APP_ID $DEVICE_ID \
+  --frequency-plan-id $FREQUENCY_PLAN \
+  --lorawan-version $LORAWAN_VERSION \
+  --lorawan-phy-version $LORAWAN_PHY_VERSION \
+  --session.dev-addr $DEV_ADDR \
+  --session.keys.app-s-key.key $APP_SESSION_KEY \
+  --session.keys.nwk-s-key.key $NWK_SESSION_KEY \
   --multicast \
   --supports-class-c
 ```

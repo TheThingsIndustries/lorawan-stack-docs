@@ -237,7 +237,7 @@ The best solution is to configure and use a static IP address for your machine o
 Follow instructions [here](https://uk.pcmag.com/news/124250/how-to-set-up-a-static-ip-address) for configuring a static IP address on your computer. Use that IP address as your server address, i.e replace `thethings.example.com` with that IP address. You may also generate a self-signed certificate for that IP address by following instructions in the [Certificates]({{< relref "certificates" >}}) section.
 
 {{< note >}}
-ACME will not work on `localhost`, so you must either generate custom certificates for your IP address as shown in the [Custom Certificate Authority](({{< relref "certificates#custom-certificate-authority" >}})) instructions, or use `http` (unsecure) in your configuration.
+ACME will not work on `localhost`, so you must either generate custom certificates for your IP address as shown in the [Custom Certificate Authority]({{< relref "certificates#custom-certificate-authority" >}}) instructions, or use `http` (unsecure) in your configuration.
 {{</ note >}}
 
 This will still allow you to see {{% tts %}} Console by entering `localhost` or your local IP address in your browser. It will also allow you to connect to {{% tts %}} from any machine inside your local network.

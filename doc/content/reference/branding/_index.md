@@ -45,7 +45,7 @@ For the exact configuration options that are required to set a custom "branding 
 If you have your favicon as a PNG, use ImageMagick to convert it to ICO:
  
 ```bash
-$ convert console-favicon.png \
+convert console-favicon.png \
     -define icon:auto-resize=64,48,32,16 \
     console-favicon.ico
 ```

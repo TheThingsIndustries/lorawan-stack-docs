@@ -16,7 +16,7 @@ This guide shows how to list QR code formats and generate QR codes with the CLI.
 To show supported QR code formats for end devices:
 
 ```bash
-$ ttn-lw-cli end-devices list-qr-formats
+ttn-lw-cli end-devices list-qr-formats
 ```
 
 <details><summary>Output</summary>
@@ -47,10 +47,10 @@ The formats show the fields of the end device that are used in the QR code.
 To generate a QR code for identification:
 
 ```
-$ ttn-lw-cli end-devices generate-qr app1 dev1 --format-id tr005
+ttn-lw-cli end-devices generate-qr <application-id> <device-id> --format-id <qr-code-format>
 ```
 
-<details><summary>Example</summary>
+<details><summary>Example of a generated identification QR code</summary>
 
 {{< figure src="qr-identification.png" alt="Device QR Code for Identification" >}}
 
@@ -65,10 +65,10 @@ Device claiming is a mechanism to transfer devices securely from one application
 When a device is claimable (it contains a claim authentication code), you can use the same command as above to generate a QR code:
 
 ```bash
-$ ttn-lw-cli end-devices generate-qr app1 dev1 --format-id tr005
+ttn-lw-cli end-devices generate-qr <application-id> <device-id> --format-id <qr-code-format>
 ```
 
-<details><summary>Example</summary>
+<details><summary>Example of a generated claiming QR code</summary>
 
 {{< figure src="qr-claiming.png" alt="Device QR Code for Claiming" >}}
 

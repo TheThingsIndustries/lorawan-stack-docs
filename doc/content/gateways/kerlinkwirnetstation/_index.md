@@ -39,7 +39,7 @@ In case the CPF (Common Packet Forwarder) is not installed on the Wirnet Station
 To provision the Wirnet Station gateway at `<gateway-ip>` to use the configuration of `<gateway-id>` provided by {{% tts %}} deployed at `<server-address>`, execute: 
 
 ```bash
-$ curl -sL 'https://raw.githubusercontent.com/TheThingsNetwork/kerlink-wirnet-firmware/v0.0.3/provision.sh' | bash -s -- <gateway-model> <gateway-ip> <server-address> <gateway-id> <gateway-api-key>
+curl -sL 'https://raw.githubusercontent.com/TheThingsNetwork/kerlink-wirnet-firmware/v0.0.3/provision.sh' | bash -s -- <gateway-model> <gateway-ip> <server-address> <gateway-id> <gateway-api-key>
 ```
 
 To avoid being prompted for `root` user password several times, you may add your SSH public key as authorized for `root` user on the gateway, for example, by `ssh-copy-id root@192.168.4.155`.

@@ -8,8 +8,6 @@ weight: -1
 
 <!--more-->
 
-{{< note >}} CUPS is **not required** for sending and receiving LoRaWAN data, but it simplifies gateway management. CUPS support in {{% tts %}} is in beta and is subject to change. {{</ note >}}
-
 {{< warning >}} Configuring CUPS automatically retrieves LNS credentials and configures LNS on your gateway. If you configure CUPS, your gateway will override LNS credentials in case of successful CUPS connection. {{</ warning >}}
 
 ## Requirements
@@ -62,10 +60,10 @@ Press **Save Changes** to update the gateway settings. When your gateway connect
 We need to configure CUPS in {{% tts %}} to transmit the LNS API key when a gateway connects. Use the following command to do so, replacing `"your-gateway-id"` with your gateway ID in {{% tts %}} and  `"your-lns-api-key"` with the LNS API key you created in the last step:
 
 ```bash
-$ export GTW_ID="your-gateway-id"
-$ export LNS_KEY="your-lns-api-key"
-$ export SECRET=$(echo -n $LNS_KEY | xxd -ps -u -c 8192)
-$ ttn-lw-cli gateways update $GTW_ID --lbs-lns-secret.value $SECRET
+GTW_ID="your-gateway-id"
+LNS_KEY="your-lns-api-key"
+SECRET=$(echo -n $LNS_KEY | xxd -ps -u -c 8192)
+ttn-lw-cli gateways update $GTW_ID --lbs-lns-secret.value $SECRET
 ```
 
 {{< note >}}If you receive an error running `ttn-lw-cli gateways update`, you may need to update the CLI. See instructions in [Installing the CLI]({{< ref "/getting-started/cli/installing-cli" >}}).{{</ note >}}
@@ -120,8 +118,8 @@ This is a file which {{% tts %}} uses to verify the identity of your gateway.
 Use the following commands to create a file called `cups.key`, replacing `"your-cups-api-key"` with the CUPS API key you created above.
 
 ```bash
-$ export CUPS_KEY="your-cups-api-key"
-$ echo "Authorization: Bearer $CUPS_KEY" | perl -p -e 's/\r\n|\n|\r/\r\n/g'  > cups.key
+CUPS_KEY="your-cups-api-key"
+echo "Authorization: Bearer $CUPS_KEY" | perl -p -e 's/\r\n|\n|\r/\r\n/g'  > cups.key
 ```
 
 The above command creates a file called `cups.key`, terminated with a Carriage Return Line Feed (`0x0D0A`) character. Upload this file in your gateway as the CUPS key.

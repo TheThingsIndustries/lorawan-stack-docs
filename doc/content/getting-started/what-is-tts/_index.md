@@ -14,13 +14,19 @@ Welcome to {{% tts %}}! In this section, we help you to understand how to use {{
 
 ### {{% tts %}} Deployments
 
-{{% tts %}} comes in many different flavors to meet different requirements. For all available deployments, see [Deployments](https://www.thethingsindustries.com/deployment/). The most common are:
+{{% tts %}} comes in many different flavors to meet different requirements. For information about all available deployments, see [Deployments](https://www.thethingsindustries.com/deployment/). These are:
 
-**Cloud**: SLA backed network server hosted by The Things Industries. See [Cloud]({{< ref "getting-started/cloud-hosted" >}}).
+{{< distributions "Cloud" >}} **Cloud**: SLA backed network server hosted by The Things Industries. See [Cloud]({{< ref "getting-started/cloud-hosted" >}}).
 
-**Enterprise**: Install the network server on your own hardware, with professional support from The Things Industries.
+{{< distributions "Dedicated Cloud" >}} **Dedicated Cloud**: All the benefits of **Cloud** on a dedicated cluster.
 
-**Community Edition**: Run by The Things Network, this is our free to use network server which provides the world's largest community based LoRaWAN network. To learn more and sign up, see [The Things Network]({{< ref "getting-started/ttn" >}}).
+{{< distributions "AWS Launcher" >}} **AWS Launcher**: AWS marketplace makes it easy to deploy in one click on new or existing EC2 cluster. Integrates effortlessly with AWS IOT, so you can keep using tools you're already familiar with.
+
+{{< distributions "Enterprise" >}} **Enterprise**: Install the network server on your own hardware, with professional support from The Things Industries.
+
+{{< distributions "Community" >}} **Community Edition**: Run by The Things Network, this is our free to use network server which provides the world's largest community based LoRaWAN network. To learn more and sign up, see [The Things Network]({{< ref "getting-started/ttn" >}}).
+
+{{< distributions "Open Source" >}} **Open Source**: For DIY'ers, the core of {{% tts %}} is [open source](https://github.com/thethingsnetwork/lorawan-stack). If you want to get your hands dirty and understand how {{% tts %}} works, clone away and get hacking.
 
 ## Who makes {{% tts %}}?
 

@@ -22,20 +22,24 @@ ttn-lw-cli packetbroker home-networks policies set [default|[net-id] [tenant-id]
 
 ### Examples
 
+To set the default routing policy to pass join, MAC and application data, signal quality and gateway locations:
+
+```
+ttn-lw-cli packetbroker home-network policy set default \
+  --join --mac-data --application-data --signal-quality --localization
 ```
 
-  To set the default routing policy to pass join, MAC and application data,
-  signal quality and gateway locations:
-    $ ttn-lw-cli packetbroker home-network policy set default \
-      --join --mac-data --application-data --signal-quality --localization
+To set the routing policy with NetID 000013 and tenant ID ttn (The Things Network), allowing all data:
 
-  To set the routing policy with NetID 000013 and tenant ID ttn (The Things
-  Network), allowing all data:
-    $ ttn-lw-cli packetbroker home-network policy set 000013 ttn --all
+```
+ttn-lw-cli packetbroker home-network policy set 000013 ttn --all
+```
 
-  To set the routing policy with NetID C00001 to allow only uplink:
-    $ ttn-lw-cli packetbroker home-network policy set C00001 \
-      --mac-data-up --application-data-up --signal-quality --localization
+To set the routing policy with NetID C00001 to allow only uplink:
+
+```
+ttn-lw-cli packetbroker home-network policy set C00001 \
+  --mac-data-up --application-data-up --signal-quality --localization
 ```
 
 ### Options

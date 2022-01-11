@@ -46,7 +46,7 @@ for a in m:
 Save the file and run it with:
 
 ```bash
-$ python subscribe.py
+python subscribe.py
 ```
 
 Running this script will show the most recent `msg_count` messages published during the last 60 seconds.
@@ -73,7 +73,7 @@ publish.single("v3/{application-id}/devices/{device-id}/down/push", '{"downlinks
 Save the file and run it the terminal with:
 
 ```bash
-$ python publish.py
+python publish.py
 ```
 
 You will see the scheduled message in the console under the **Live data** tab and your end device will receive the message after a short time.

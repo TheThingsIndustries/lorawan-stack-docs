@@ -7,7 +7,9 @@ weight: 20
 
 The Storage Integration is implemented as an [Application Package]({{< ref "/reference/application-packages" >}}).
 
-{{< note >}} Enabling/disabling Storage Integration for applications can be done using {{% tts %}} Console or CLI. Enabling/disabling Storage Integration for individual end devices is available only via CLI. {{</ note >}}
+{{< note >}} Enabling/disabling Storage Integration for applications can be done using {{% tts %}} Console or CLI. Enabling/disabling Storage Integration for individual end devices is available only via CLI.
+
+Note that the instructions for CLI here are following generic instructions for [using the CLI]({{< ref "/reference/application-packages/using-the-cli" >}}) to manage application packages, just specified for the `storage-integration` application package. {{</ note >}}
 
 ## Enable for an Application
 
@@ -28,7 +30,7 @@ Click on **Activate Storage Integration** to enable the storage integration for 
 Set up a default association between the desired application and the `storage-integration` package.
 
 ```bash
-$ ttn-lw-cli applications packages default-associations set "app1" 100 --package-name storage-integration
+ttn-lw-cli applications packages default-associations set <application-id> <f_port> --package-name storage-integration
 ```
 
 {{< note >}} The `f_port` for the default association is set to `100`. This value is irrelevant, i.e. the storage integration will receive and store all uplink messages, regardless of `f_port`. The `f_port` value is only needed because of the way application packages work with {{% tts %}}. {{</ note >}}
@@ -46,7 +48,7 @@ $ ttn-lw-cli applications packages default-associations set "app1" 100 --package
 Set up an association between the desired end device and the `storage-integration` package.
 
 ```bash
-$ ttn-lw-cli applications packages associations set "app1" "dev1" 100 --package-name storage-integration
+ttn-lw-cli applications packages associations set <application-id> <device-id> <f_port> --package-name storage-integration
 ```
 
 {{< note >}} The `f_port` value is irrelevant. {{</ note >}}
@@ -67,11 +69,17 @@ To disable the integration, you only need to click the **Deactivate Storage Inte
 
 {{< tabs/tab "CLI" >}}
 
-To disable the integration, delete the package association or the default association. First, list associations:
+To disable the integration, delete the package association or the default association. 
+
+To list associations:
 
 ```bash
-# List default associations
-$ ttn-lw-cli applications packages default-associations list "app1"
+ttn-lw-cli applications packages default-associations list $APP_ID
+```
+
+The output will be something like:
+
+```bash
 {
   "defaults": [
     {
@@ -92,7 +100,7 @@ $ ttn-lw-cli applications packages default-associations list "app1"
 Then delete the association with:
 
 ```bash
-$ ttn-lw-cli applications packages default-associations delete "app1" 100
+ttn-lw-cli applications packages default-associations delete <application-id> <f_port>
 ```
 
 {{< /tabs/tab >}}
@@ -103,11 +111,17 @@ $ ttn-lw-cli applications packages default-associations delete "app1" 100
 
 {{< cli-only >}}
 
-To disable the integration, delete the association. First, list associations:
+To disable the integration, delete the association.
+
+To list associations:
 
 ```bash
-# List associations
-$ ttn-lw-cli applications packages associations list "app1" "dev1"
+ttn-lw-cli applications packages associations list $APP_ID $DEVICE_ID
+```
+
+The output will be something like:
+
+```bash
 {
   "associations": [
     {
@@ -131,6 +145,9 @@ $ ttn-lw-cli applications packages associations list "app1" "dev1"
 Delete the association with:
 
 ```bash
-# Delete association between "app1" and "dev1"
-$ ttn-lw-cli applications packages associations delete "app1" "dev1" 100
+ttn-lw-cli applications packages associations delete <application-id> <device-id> <f_port>
 ```
+
+## Enable and Disable using the API
+
+See instructions on how to create/delete associations and default associations with the `storage-integration` application package [using the API]({{< ref "/reference/application-packages/using-the-api" >}}).

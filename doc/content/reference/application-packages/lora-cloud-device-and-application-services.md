@@ -27,10 +27,12 @@ After filling in the token name and clicking the **Add New Token** button, the t
 The package can now be enabled using the `default-associations set` command:
 
 ```bash
+APP_ID="app1"
+F_PORT=199
 # Create a JSON formatted file containing the uplink token
-$ echo '{ "token": "AQEAdqwV67..." }' > package-data.json
+echo '{ "token": "AQEAdqwV67..." }' > package-data.json
 # Create the association
-$ ttn-lw-cli applications packages default-associations set app1 199 --package-name lora-cloud-device-management-v1 --data-local-file package-data.json
+ttn-lw-cli applications packages default-associations set $APP_ID $F_PORT --package-name lora-cloud-device-management-v1 --data-local-file package-data.json
 ```
 
 This will enable the package on FPort `199` of all of the devices of application `app1`. You can now use the LoRa Cloud Device & Application Services in order to manage your device!
@@ -63,9 +65,9 @@ The package may be configured to use a custom server URL using the package data:
 
 ```bash
 # Create a JSON formatted file containing the uplink token and the server URL
-$ echo '{ "token": "AQEAdqwV67...", "server_url": "https://app.example.com/" }' > package-data.json
+echo '{ "token": "AQEAdqwV67...", "server_url": "https://app.example.com/" }' > package-data.json
 # Create or update the default association
-$ ttn-lw-cli applications packages default-associations set app1 199 --package-name lora-cloud-device-management-v1 --data-local-file package-data.json
+ttn-lw-cli applications packages default-associations set $APP_ID $F_PORT --package-name lora-cloud-device-management-v1 --data-local-file package-data.json
 ```
 
 <details><summary>Output</summary>

@@ -30,13 +30,13 @@ Learn how to connect to {{% tts %}} MQTT Server by reading the [MQTT Server]({{<
 Enter the HiveMQ MQTT CLI shell mode by typing the following command in your terminal:
 
 ```bash
-$ mqtt shell
+mqtt shell
 ```
 
 Once in shell mode, you can connect to {{% tts %}} MQTT Server by using the following command:
 
 ```bash
-$ con -h <hostname> -p <port> -V 3 -u <username> -pw <password>
+con -h <hostname> -p <port> -V 3 -u <username> -pw <password>
 ```
 
 Keep in mind that `password` is the value of the authentication API key. For more info, see [Creating an API Key]({{< ref "/integrations/mqtt#creating-an-api-key" >}}).
@@ -60,7 +60,7 @@ Use the `sub` command to subscribe to topics and listen to messages being sent f
 For example, if you want to listen to the uplink messages being sent from `dev1` device in `app1` application, use the following command:
 
 ```bash
-$ sub -t "v3/app1/devices/dev1/up" -s
+sub -t "v3/app1/devices/dev1/up" -s
 ```
 
 `-s` flag is used to subscribe with a context to the given topic, e.g. to stop the console being blocked by subscribing without a context. For detailed descriptions of all the available `sub` command parameters, see the [Subscribe](https://hivemq.github.io/mqtt-cli/docs/shell/subscribe.html) section of the HiveMQ MQTT CLI documentation.
@@ -74,7 +74,7 @@ Use the `pub` command to publish to topics, e.g. to schedule downlink messages t
 For example, to push an unconfirmed downlink message with the hexadecimal payload `BE EF` on `FPort` 15 with normal priority to the `dev1` device, use the following command:
 
 ```bash
-$ pub -t "v3/app1/devices/dev1/down/push" -m '{"downlinks":[{"f_port": 15,"frm_payload":"vu8=","priority": "NORMAL"}]}'
+pub -t "v3/app1/devices/dev1/down/push" -m '{"downlinks":[{"f_port": 15,"frm_payload":"vu8=","priority": "NORMAL"}]}'
 ```
 
 {{< note >}} For scheduling downlink messages, the `f_port` values from `1` to `233` are allowed. {{</ note >}}

@@ -35,7 +35,7 @@ For example, to subscribe to all topics in the application `app1`:
 ```bash
 # Tip: when using `mosquitto_sub`, pass the `-d` flag to see the topics messages get published on.
 # For example:
-$ mosquitto_sub -h "thethings.example.com" -p "1883" -u "app1" -P "NNSXS.VEEBURF3KR77ZR.." -t "#" -d
+mosquitto_sub -h "thethings.example.com" -p "1883" -u "app1" -P "NNSXS.VEEBURF3KR77ZR.." -t "#" -d
 ```
 
 In you want to use TLS, you need to change the port value to `8883` and add the `--cafile` option to the command. `--cafile` option is used to define a path to the file containing trusted CA certificates that are PEM encoded.
