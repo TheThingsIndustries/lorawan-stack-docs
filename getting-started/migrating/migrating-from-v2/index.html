@@ -143,6 +143,11 @@
     
   </li>
 
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-takeout-tool/" class="">Migrate using the V2 Takeout Tool</a>
+    
+  </li>
+
 </ul>
 
 
@@ -242,13 +247,12 @@
         
         <div class="content">
           <p>This section documents the process of migrating end devices from V2 to The Things Stack.</p>
-<p>The Things Network V2 machines have been completely shut down on <strong>December 8, 2021</strong>, so it is not possible to migrate devices from The Things Network V2 to The Things Stack anymore. See <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> section to start adding devices to The Things Stack from scratch.</p>
-<p>If your private V2 deployment is still running, this section can guide you through the process of migrating devices from private V2 deployment to The Things Stack.</p>
+<p>V2 machines were shut down on December 1, 2021. <code>ttn-lw-migrate</code> is no longer able to migrate devices from these servers.</p>
+<p>To view applications, devices, and gateways which were still registered on The Things Network V2 before shutdown, see <a href="/docs/getting-started/migrating/migrating-from-v2/migrate-using-takeout-tool/">Migrate using the V2 Takeout Tool</a>. You may migrate these entities simply by adding them in The Things Stack.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
-<li>The Things Industries V2 user account.</li>
-<li>End device(s) and gateway(s) connected to a private The Things Industries V2 network.</li>
-<li>The Things Stack user account.</li>
+<li>User account on deprecated The Things Network V2 or The Things Industries V2.</li>
+<li>User account in The Things Stack.</li>
 </ol>
 <p>We recommend testing migration on a single end device or a small batch of end devices in order to make sure the migration process goes as expected.</p>
 <p>We <strong>highly recommend</strong> using The Things Stack version <code>3.12.0</code> or higher. Some of the features (like session migration) from this guide might not be available for prior versions.</p>
@@ -277,14 +281,10 @@
 <p>For detailed tutorials on the integrations that are available in The Things Stack, see <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">Integrations</a>.</p>
 <h2 id="migrate-end-devices">Migrate End Devices</h2>
 <p>When you have added your application and elements associated with it, it is time to migrate your end device(s) from V2 to The Things Stack.</p>
-<p>Thanks to <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/">Packet Broker</a>, end devices connected to private The Things Industries V2 network can be migrated to The Things Stack deployments without migrating gateways. The Things Industries V2 deployments can be connected to Packet Broker on a customer request - please contact <a href="mailto:support@thethingsindustries.com">The Things Industries support</a>. The Things Stack Community Edition and The Things Stack Cloud are connected to Packet Broker by default, while The Things Stack Enterprise and The Things Stack Open Source can be <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/connect/">configured</a> manually.</p>
-<p>If you are using deployments connected to Packet Broker, the traffic from your end device(s) will be routed to The Things Stack after migrating your device(s). However, there are certain requirements that your devices need to meet for Packet Broker to route their traffic to The Things Stack correctly. See <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/packet-broker-requirements/">Packet Broker Requirements for End Device Migration</a> for detailed information.</p>
-<p>On the other hand, if you are using deployments that are not connected to Packet Broker, you will have to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">migrate your gateway</a> to receive traffic from your end device in The Things Stack.</p>
+<p>Since the V2 machines were shut down, <code>ttn-lw-migrate</code> is no longer able to migrate devices from these servers.</p>
+<p>To migrate applications, devices, and gateways which were still registered on The Things Network V2 before shutdown, see <a href="/docs/getting-started/migrating/migrating-from-v2/migrate-using-takeout-tool/">Migrate using the V2 Takeout Tool</a>.</p>
+<p>You may migrate these entities simply by adding them in The Things Stack.</p>
 <p>There are two approaches for migrating devices, depending on how many end devices you intend to migrate and if you wish to migrate with or without active sessions, described in the following guides:</p>
-<ul>
-<li><a href="/docs/getting-started/migrating/migrating-from-v2/migrate-using-console/">Using The Things Stack Console</a></li>
-<li><a href="/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/">Using <code>ttn-lw-migrate</code> tool</a></li>
-</ul>
         </div>
         
           <div class="columns is-multiline">
@@ -344,6 +344,26 @@
         </div>
         <div class="buttons">
           <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-takeout-tool/">Migrate using the V2 Takeout Tool</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            This section contains instructions for viewing historical data about applications, devices, and gateways in The Things Network V2 using the V2 Takeout Tool, to migrate these devices to The Things Stack.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-takeout-tool/" class="button is-primary is-outlined">Read</a>
         </div>
       </div>
     </div>
@@ -423,10 +443,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 22 Dec 2021.
+  Last changed by Ben Olayinka on 11 Jan 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/533e2e4b2631f5e69fdc1cf3e1209cfedf9616cb">
-      doc: Update migration docs post TTN V2 shutdown (#676)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/0560cc6ae1a083fd70748080a037451d5f24d493">
+      Add V2 Takeout Doc (#707)
     </a>
 </p>
 
