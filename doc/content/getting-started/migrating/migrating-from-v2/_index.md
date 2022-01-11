@@ -11,7 +11,7 @@ This section documents the process of migrating end devices from {{% ttnv2 %}} t
 
 {{% ttnv2 %}} machines were shut down on December 1, 2021. `ttn-lw-migrate` is no longer able to migrate devices from these servers.
 
-To view applications, devices, and gateways which were still registered The Things Network V2 before shutdown, see [Migrate using the V2 Takeout Tool]({{< relref "migrate-using-takeout-tool" >}}). You may migrate these entities simply by adding them in {{% tts %}}.
+To view applications, devices, and gateways which were still registered on The Things Network V2 before shutdown, see [Migrate using the V2 Takeout Tool]({{< relref "migrate-using-takeout-tool" >}}). You may migrate these entities simply by adding them in {{% tts %}}.
 
 ## Prerequisites
 
@@ -67,7 +67,7 @@ When you have added your application and elements associated with it, it is time
 
 Since the {{% ttnv2 %}} machines were shut down, `ttn-lw-migrate` is no longer able to migrate devices from these servers.
 
-To migrate applications, devices, and gateways which were still registered The Things Network V2 before shutdown, see [Migrate using the V2 Takeout Tool]({{< relref "migrate-using-takeout-tool" >}}).
+To migrate applications, devices, and gateways which were still registered on The Things Network V2 before shutdown, see [Migrate using the V2 Takeout Tool]({{< relref "migrate-using-takeout-tool" >}}).
 
 You may migrate these entities simply by adding them in {{% tts %}}.
 
