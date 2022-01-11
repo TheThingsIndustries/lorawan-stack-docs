@@ -17,7 +17,7 @@ This is a checklist for releases. This is filled in by both the releaser and the
 
 - [ ] Create a new release in the [`whats-new` section](https://github.com/TheThingsIndustries/lorawan-stack-docs/tree/master/doc/content/whats-new) and copy the release CHANGELOG from [TheThingsIndustries/lorawan-stack](https://github.com/TheThingsIndustries/lorawan-stack). The title is the release version and the date is the release date.
 - [ ] Remove empty sections from the created release file.
-- [ ] Update the [documentation version](https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/config/_default/config.toml#L28) to match the current minor, if necessary (`v3.${minor}`).
+- [ ] Update the [documentation version](https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/config/_default/config.toml#L28) to match the current PATCH, if necessary (`v3.${minor}.${patch}`). Note that this previously only included a minor, but the patch must be included or repository and CLI links will break.
 - [ ] To generate documentation, create a clone of [TheThingsIndustries/lorawan-stack](https://github.com/TheThingsIndustries/lorawan-stack), and **checkout the git tag of the release**.
 - [ ] To generate API documentation, run the following from within the clone of [TheThingsIndustries/lorawan-stack](https://github.com/TheThingsIndustries/lorawan-stack): 
 
@@ -67,7 +67,7 @@ $ rm ../lorawan-stack-docs/doc/content/ttn-lw-cli/ttn-lw-cli_end-devices.md.bak
 #### Check (for reviewers)
 
 - [ ] A new section has been created in [`whats-new`](doc/content/whats-new) with the corresponding CHANGELOG from [TheThingsIndustries/lorawan-stack](https://github.com/TheThingsIndustries/lorawan-stack). The title is the release version and the date is the release date.
-- [ ] The documentation version is up to date.
+- [ ] The documentation version is up to date with the latest PATCH (`v3.${minor}.${patch}`).
 - [ ] The TTI and TTN API documentation has been generated and updated in [doc/data/api](https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/data/api). This includes the following files:
 
 ```
