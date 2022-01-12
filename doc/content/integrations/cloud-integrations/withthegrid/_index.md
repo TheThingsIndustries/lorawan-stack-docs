@@ -122,7 +122,7 @@ Follow the same steps as before to **ADD** the new report type.
 
 In the report parser, we will correctly parse the incoming payload into a measurement report. A new report type will be given a hashID (e.g. **eyr96d**). Note that the hashID is automatically created and will be different for everyone.
 
-The quantities of interest in this example are *voltage, leak status*, *total leak events*, and *last leak duration*. Custom quantities can be found in the panel under option **Quantities**. To create a new quantity, select **+**.
+The quantities of interest in this example are voltage, leak status, total leak events and last leak duration. Custom quantities can be found in the panel under option **Quantities**. To create a new quantity, select **+**.
 
 {{< figure src="quantities_1.png" alt="Quantities" >}}
 
