@@ -62,6 +62,8 @@ A simplified dataflow model is shown in the figure below. An HTTP request from {
 
 {{< figure src="dataFlow.png" alt="WTG dataflow" >}}
 
+Now, let's implement the integration!
+
 ## Step 1: Creating environments (monitoring + connectivity)
 
 To create a new connectivity environment, simply enter the desired name and select **CREATE**.
