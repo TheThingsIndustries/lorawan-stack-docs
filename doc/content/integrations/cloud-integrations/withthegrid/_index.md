@@ -337,7 +337,7 @@ You can click on **Parse report** to view more information and verify that the p
 
 ## Step 10: Claiming device tokens
 
-When the sensor is linked for the first time, the instance of the device is created in the platform. This can be found in **Devices**. The corresponding device will have a unique hashID (e.g. *dxrwmd*), Identifier (in our case IMEI of the device), and will be of device type: *Dragino - LWL02.* The device can be easily placed in any monitoring environment by selecting **GET CLAIM TOKEN(S)** in the bottom right corner.
+When the sensor is linked for the first time, the instance of the device is created in the platform and can be found in **Devices**. The corresponding device will have a unique hashID (e.g. **dxrwmd**), Identifier (in our case IMEI of the device), and will be of device type **Dragino - LWL02**. The device can be easily placed in any monitoring environment by selecting **GET CLAIM TOKEN(S)** in the bottom right corner.
 
 {{< figure src="tokens_1.png" alt="Tokens for devices" >}}
 
