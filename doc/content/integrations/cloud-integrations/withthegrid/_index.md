@@ -64,7 +64,7 @@ A simplified dataflow model is shown in the figure below. An HTTP request from {
 
 Now, let's implement the integration!
 
-## Step 1: Creating environments (monitoring + connectivity)
+## Step 1: Creating monitoring and connectivity environments
 
 To create a new connectivity environment, simply enter the desired name and select **CREATE**.
 
