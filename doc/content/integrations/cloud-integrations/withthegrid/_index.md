@@ -96,7 +96,7 @@ A new device type can be created in a connectivity environment by navigating to 
 
 {{< figure src="5_c_environment_deviceType.png" alt="New device type" >}}
 
-Name the new device type. At this point, we can also change the default name of the device channel to *Internal Sensor*. Use the same name for default name for port. This is where internal battery voltage measurements will be pushed. 
+Name the new device type. At this point, we can also change the default name of the device channel to `Internal Sensor`. Use the same name for default name for port. This is where internal battery voltage measurements will be pushed. 
 
 {{< figure src="device_type_1.png" alt="Device type overview" >}}
 
