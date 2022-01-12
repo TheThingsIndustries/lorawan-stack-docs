@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.16</p>
+        <p class="navbar-item is-size-7">v3.17</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -140,14 +140,34 @@
 <div class="whats-new">
   <div class="whats-new-content">
     <div class="whats-new-header">
-      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.16.3/>What's new in V3.16.3</a></h2>
+      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.17.0/>What's new in V3.17.0</a></h2>
       <a href="https://www.thethingsindustries.com/docs/whats-new/"><p class="see-more">See all release notes →</p></a>
     </div>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.16.3/">
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.17.0/">
       <div class="whats-new-body">
         <div class="whats-new-items-shadow whats-new-items-fade">
           <div class="whats-new-items">
-            <h3 id="fixed">Fixed</h3>
+            <h3 id="added">Added</h3>
+<ul>
+<li>Support reading the Join Server&rsquo;s default JoinEUI and using this in the CLI for end device creation.
+<ul>
+<li>The Join Server has a new API <code>GetDefaultJoinEUI</code>.</li>
+<li>The default JoinEUI can be configured on the Join Server using the option <code>--js.default-join-eui</code>.</li>
+</ul>
+</li>
+<li>Filtering of end device frequency plans in end device forms based on band id in the Console.</li>
+<li>Showing automatically set entity locations in the Console.</li>
+<li>Applications, OAuth clients, gateways and organizations now have an <code>administrative_contact</code> and <code>technical_contact</code>.
+<ul>
+<li>This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>) because of the added columns.</li>
+</ul>
+</li>
+</ul>
+<h3 id="deprecated">Deprecated</h3>
+<ul>
+<li>The <code>contact_info</code> fields of applications, OAuth clients, gateways, organizations and users.</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
 <ul>
 <li>CLI panic when getting devices.</li>
 <li>Application uplink processing serialization behavior in the Application Server.</li>
@@ -168,7 +188,7 @@
 <a href="https://www.thethingsindustries.com/docs/whats-new/">
   <div class="whats-new-800">
     <div class="whats-new-header-800">
-      <p>See what's new in V3.16.3</p>
+      <p>See what's new in V3.17.0</p>
       <p>-></p>
     </div>
   </div>
