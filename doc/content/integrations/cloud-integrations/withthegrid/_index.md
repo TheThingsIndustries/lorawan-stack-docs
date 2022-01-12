@@ -134,7 +134,7 @@ After selecting **ADD**, a hashID will be created for the newly created quantity
 
 {{< figure src="quantity_2.png" alt="Created quantities overview" >}}
 
-## Step 5: Configuring new webhook
+## Step 5: Configuring the created webhook
 
 The webhook can be edited by navigating to webhooks, selecting the newly created **The Things Network** webhook, and clicking **EDIT THE IDENTIFIER**. The platform provides a template and a direct link to the webhook documentation. The following webhook will pass the **TTN** payload, together with the device type hashID to the appropriate event handler. Lastly, the webhook will also return a `deviceIdentifier` as the IMEI of the device.
 
