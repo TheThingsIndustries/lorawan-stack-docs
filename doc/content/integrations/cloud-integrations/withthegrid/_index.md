@@ -42,7 +42,9 @@ Locations form the core of the asset monitoring platform. At each location, meas
 
 Figure 1. Example of a setup of monitoring environment
 
-- **Connectivity environment:** Where users configure their devices or data streams and assign them to one or multiple monitoring environments.
+### Connectivity environments
+
+Connectivity environments are environments where users configure their devices or data streams and assign them to one or multiple monitoring environments.
 
 In the connectivity environment, you can configure secure access for your devices through HTTPS webhooks or client certificates. You can define event handlers in TypeScript that parse incoming payloads into measurement reports, return instructions to devices and monitor device health.
 
