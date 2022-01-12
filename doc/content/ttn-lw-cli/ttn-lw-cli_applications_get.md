@@ -15,15 +15,27 @@ ttn-lw-cli applications get [application-id] [flags]
 ### Options
 
 ```
-      --all                     select all application fields
-      --application-id string   
-      --attributes              select the attributes field
-      --contact-info            select the contact_info field
-      --deleted-at              select the deleted_at field
-      --description             select the description field
-      --dev-eui-counter         select the dev_eui_counter field
-  -h, --help                    help for get
-      --name                    select the name field
+      --administrative-contact                                        select the administrative_contact field and all allowed sub-fields
+      --administrative-contact.ids.organization-ids                   select the administrative_contact.ids.organization_ids field and all allowed sub-fields
+      --administrative-contact.ids.organization-ids.organization-id   select the administrative_contact.ids.organization_ids.organization_id field
+      --administrative-contact.ids.user-ids                           select the administrative_contact.ids.user_ids field and all allowed sub-fields
+      --administrative-contact.ids.user-ids.email                     select the administrative_contact.ids.user_ids.email field
+      --administrative-contact.ids.user-ids.user-id                   select the administrative_contact.ids.user_ids.user_id field
+      --all                                                           select all application fields
+      --application-id string                                         
+      --attributes                                                    select the attributes field
+      --contact-info                                                  select the contact_info field
+      --deleted-at                                                    select the deleted_at field
+      --description                                                   select the description field
+      --dev-eui-counter                                               select the dev_eui_counter field
+  -h, --help                                                          help for get
+      --name                                                          select the name field
+      --technical-contact                                             select the technical_contact field and all allowed sub-fields
+      --technical-contact.ids.organization-ids                        select the technical_contact.ids.organization_ids field and all allowed sub-fields
+      --technical-contact.ids.organization-ids.organization-id        select the technical_contact.ids.organization_ids.organization_id field
+      --technical-contact.ids.user-ids                                select the technical_contact.ids.user_ids field and all allowed sub-fields
+      --technical-contact.ids.user-ids.email                          select the technical_contact.ids.user_ids.email field
+      --technical-contact.ids.user-ids.user-id                        select the technical_contact.ids.user_ids.user_id field
 ```
 
 ### Options inherited from parent commands

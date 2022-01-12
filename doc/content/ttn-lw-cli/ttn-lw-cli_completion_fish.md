@@ -1,48 +1,36 @@
 ---
-title: "ttn-lw-cli packetbroker home-networks gateway-visibilities set"
-slug: ttn-lw-cli_packetbroker_home-networks_gateway-visibilities_set
+title: "ttn-lw-cli completion fish"
+slug: ttn-lw-cli_completion_fish
 type: "commands"
 ---
 
-## ttn-lw-cli packetbroker home-networks gateway-visibilities set
+## ttn-lw-cli completion fish
 
-Set a Home Network gateway visibility
+generate the autocompletion script for fish
 
 ### Synopsis
 
-Set a Home Network gateway visibility
 
-Specify default to configure the default gateway visibility.
+Generate the autocompletion script for the fish shell.
+
+To load completions in your current shell session:
+$ ttn-lw-cli completion fish | source
+
+To load completions for every new session, execute once:
+$ ttn-lw-cli completion fish > ~/.config/fish/completions/ttn-lw-cli.fish
+
+You will need to start a new shell for this setup to take effect.
+
 
 ```
-ttn-lw-cli packetbroker home-networks gateway-visibilities set default [flags]
-```
-
-### Examples
-
-```
-
-  To set the default gateway visibility to show location and online status:
-    $ ttn-lw-cli packetbroker home-network gateway-visibilities set default \
-      --location --status
-
-  To set the default gateway visibility to show all fields:
-    $ ttn-lw-cli packetbroker home-network gateway-visibilities set default \
-      --all
+ttn-lw-cli completion fish [flags]
 ```
 
 ### Options
 
 ```
-      --all                 
-      --antenna-count       
-      --antenna-placement   
-      --fine-timestamps     
-      --frequency-plan      
-  -h, --help                help for set
-      --location            
-      --packet-rates        
-      --status              
+  -h, --help              help for fish
+      --no-descriptions   disable completion descriptions
 ```
 
 ### Options inherited from parent commands
@@ -78,5 +66,5 @@ ttn-lw-cli packetbroker home-networks gateway-visibilities set default [flags]
 
 ### SEE ALSO
 
-* [ttn-lw-cli packetbroker home-networks gateway-visibilities]({{< relref "ttn-lw-cli_packetbroker_home-networks_gateway-visibilities" >}})	 - Manage Home Network gateway visibilities
+* [ttn-lw-cli completion]({{< relref "ttn-lw-cli_completion" >}})	 - generate the autocompletion script for the specified shell
 

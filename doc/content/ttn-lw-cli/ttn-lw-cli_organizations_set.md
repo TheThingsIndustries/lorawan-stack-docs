@@ -15,12 +15,19 @@ ttn-lw-cli organizations set [organization-id] [flags]
 ### Options
 
 ```
-      --attributes strings       key=value
-      --deleted-at string        (YYYY-MM-DDTHH:MM:SSZ)
-      --description string       
-  -h, --help                     help for set
-      --name string              
-      --organization-id string   
+      --administrative-contact.ids.organization-ids.organization-id string   
+      --administrative-contact.ids.user-ids.email string                     
+      --administrative-contact.ids.user-ids.user-id string                   
+      --attributes strings                                                   key=value
+      --deleted-at string                                                    (YYYY-MM-DDTHH:MM:SSZ)
+      --description string                                                   
+  -h, --help                                                                 help for set
+      --name string                                                          
+      --organization-id string                                               
+      --technical-contact.ids.organization-ids.organization-id string        
+      --technical-contact.ids.user-ids.email string                          
+      --technical-contact.ids.user-ids.user-id string                        
+      --unset strings                                                        list of fields to unset
 ```
 
 ### Options inherited from parent commands
