@@ -36,7 +36,7 @@ The Withthegrid asset monitoring platform has two types of environments, monitor
 
 Monitoring environments are environments where the end users obtain an overview of all the issues and actions related to its assets.
 
-Locations form the core of the asset monitoring platform. At each location, measurements are recorded. In our example, a monitoring environment with the name *Infrastructure company ACME* will be created (Figure 1). We will create a location *ACME Headquarters* where we will connect a device, *Dragino - LWL02* water leak sensor. Each location can consist of multiple location ports. These are ports onto which measurements are recorded. Here, we create a location port *Entrance* where the sensor is located. The device can be assigned several channels that can be linked with any location port. This way, the right measurements can be pushed to desired locations.
+Locations form the core of the asset monitoring platform. At each location, measurements are recorded. In our example, a monitoring environment with the name **Infrastructure company ACME** will be created (Figure 1). We will create a location **ACME Headquarters** where we will connect a **Dragino - LWL02** water leak sensor device. Each location can be consisted of multiple location ports. These are ports onto which measurements are recorded. Here, we create a location port **Entrance** where the sensor is located. The device can be assigned with several channels that can be linked with any location port. This way, the right measurements can be pushed to desired locations.
 
 {{< figure src="monnEnvironment.png" alt="Monitoring environment example" >}}
 
