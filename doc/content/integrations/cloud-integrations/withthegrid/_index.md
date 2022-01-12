@@ -70,7 +70,7 @@ To create a new connectivity environment, simply enter the desired name and sele
 
 {{< figure src="1_c_environment.png" alt="Create new connectivity environment" >}}
 
-The same step can be followed to create a new monitoring environment. To create the first location in the monitoring environment, locate the desired place on the map and **Add new location**.
+The same procedure can be followed to create a new monitoring environment. To create the first location in the monitoring environment, locate the desired place on the map and **Add a new location**.
 
 {{< figure src="claim6.png" alt="Add new location" >}}
 
