@@ -52,7 +52,9 @@ In the connectivity environment, you can configure secure access for your device
 
 Figure 2. Example of the setup of connectivity environment
 
-In the following example, *Dragino - LWL02* will be connected to the platform. Every instance of this device type (the physical device) will obtain a unique device ID by the platform which we call a hashID. Each device can have multiple device channels where measurements are pushed. An example of a device channel is *Internal Sensor*. A user can define which measurements will be stored in this channel. The quantity which will be stored in this channel will be the operating voltage. Quantities related to the sensors *Probe* are leak status, total leak events, and last leak duration. Custom commands can be defined in the connectivity environments such as a request to change the measurement interval of a connected device but this is out of the scope of this tutorial. Finally, the connectivity environment is used to define the structure of measurement reports.
+In the following example, **Dragino - LWL02** device will be connected to the platform. Every instance of this device type (the physical device) will obtain a unique device ID by the platform which we call a **hashID**. Each device can have multiple device channels where measurements are pushed. An example of a device channel is **Internal Sensor**. A user can define which measurements will be stored in this channel. The quantity which will be stored in this channel will be the operating voltage. Quantities related to the channel **Probe** are leak status, total leak events, and last leak duration. Custom commands can be defined in the connectivity environments such as a request to change the measurement interval of a connected device but this is out of the scope of this tutorial.
+
+Finally, the connectivity environment is used to define the structure of measurement reports.
 
 ## Simplified dataflow model
 
