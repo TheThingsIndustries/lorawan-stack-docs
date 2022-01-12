@@ -4,7 +4,7 @@ description: ""
 weight: 
 ---
 
-[Withthegrid](https://withthegrid.com/) is a IoT asset monitoring platform for infrastructure - Monitor assets, connect IoT sensors, visualize data, detect anomalies and manage workflows. In this chapter, we describe how to configure {{% tts %}} with the Withthegrid platform.
+[Withthegrid](https://withthegrid.com/) is a IoT asset monitoring platform for infrastructure - it allows you to monitor assets, connect IoT sensors, visualize data, detect anomalies and manage workflows. In this section, we describe how to implement {{% tts %}} integration with the Withthegrid platform.
 
 <!--more-->
 
