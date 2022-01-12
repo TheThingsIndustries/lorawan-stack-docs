@@ -76,7 +76,7 @@ The same procedure can be followed to create a new monitoring environment. To cr
 
 To navigate between the environments, click on the arrows located in the top left corner.
 
-## Step 2: Creating and configuring a new webhook
+## Step 2: Creating a new webhook
 
 The first step in integrating the Withthegrid platform with The Things Network is to create a new webhook. Webhooks can be found in the connectivity environment, under **Device access/Webhooks**. To create a new webhook, click **+** in the right bottom corner.
 
