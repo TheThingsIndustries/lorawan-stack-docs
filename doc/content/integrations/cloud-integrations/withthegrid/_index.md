@@ -106,7 +106,7 @@ Let’s create one additional channel (`Probe`), where we will push measurements
 
 Click **ADD** to set the channel and click **ADD** to update and save the changes.
 
-Our new event handler will validate the incoming request and pass the payload to the corresponding report parser which will parse incoming payloads into measurement reports. The new device type will be given a new hashID (e.g. **4djrvd**) which is a unique ID that identifies the event handler of *Dragino - LWL02*.
+Withthegrid's new event handler will validate the incoming request and pass the payload to the corresponding report parser which will parse incoming payloads into measurement reports. The new device type will be given a new hashID (e.g. **4djrvd**) which is a unique ID that identifies the event handler of **Dragino - LWL02**.
 
 {{< figure src="device_type_3.png" alt="Device type" >}}
 
