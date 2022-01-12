@@ -45,6 +45,7 @@ The Things Industries Command-line Interface
 * [ttn-lw-cli applications]({{< relref "ttn-lw-cli_applications" >}})	 - Application commands
 * [ttn-lw-cli authentication-providers]({{< relref "ttn-lw-cli_authentication-providers" >}})	 - Authentication Provider commands
 * [ttn-lw-cli clients]({{< relref "ttn-lw-cli_clients" >}})	 - Client commands
+* [ttn-lw-cli completion]({{< relref "ttn-lw-cli_completion" >}})	 - generate the autocompletion script for the specified shell
 * [ttn-lw-cli config]({{< relref "ttn-lw-cli_config" >}})	 - View the current configuration
 * [ttn-lw-cli end-devices]({{< relref "ttn-lw-cli_end-devices" >}})	 - End Device commands
 * [ttn-lw-cli events]({{< relref "ttn-lw-cli_events" >}})	 - Subscribe to events

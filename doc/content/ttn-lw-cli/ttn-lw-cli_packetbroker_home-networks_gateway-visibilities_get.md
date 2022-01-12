@@ -14,10 +14,10 @@ ttn-lw-cli packetbroker home-networks gateway-visibilities get default [flags]
 
 ### Examples
 
-To get the default gateway visibility:
-
 ```
-ttn-lw-cli packetbroker home-network gateway-visibilities get default
+
+  To get the default gateway visibility:
+    $ ttn-lw-cli packetbroker home-network gateway-visibilities get default
 ```
 
 ### Options

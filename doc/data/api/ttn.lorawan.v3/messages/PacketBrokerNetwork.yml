@@ -16,11 +16,23 @@ fields:
       name: PacketBrokerDevAddrBlock
   default: []
 - name: contact_info
-  comment: Contact information.
+  comment: |-
+    Contact information.
+    This field is deprecated. Use administrative_contact and technical_contact instead.
+  rules:
+    max_items: 10
   repeated:
     message:
       name: ContactInfo
   default: []
+- name: administrative_contact
+  message:
+    name: ContactInfo
+  default: {}
+- name: technical_contact
+  message:
+    name: ContactInfo
+  default: {}
 - name: listed
   comment: Whether the network is listed so it can be viewed by other networks.
   type: bool

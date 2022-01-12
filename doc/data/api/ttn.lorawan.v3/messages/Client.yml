@@ -63,12 +63,21 @@ fields:
   comment: |-
     Contact information for this client. Typically used to indicate who to contact with technical/security questions about the application.
     This information is public and can be seen by any authenticated user in the network.
+    This field is deprecated. Use administrative_contact and technical_contact instead.
   rules:
     max_items: 10
   repeated:
     message:
       name: ContactInfo
   default: []
+- name: administrative_contact
+  message:
+    name: OrganizationOrUserIdentifiers
+  default: {}
+- name: technical_contact
+  message:
+    name: OrganizationOrUserIdentifiers
+  default: {}
 - name: secret
   comment: The client secret is only visible to collaborators of the client.
   type: string

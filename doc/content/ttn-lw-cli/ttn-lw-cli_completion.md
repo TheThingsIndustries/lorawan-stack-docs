@@ -1,48 +1,24 @@
 ---
-title: "ttn-lw-cli packetbroker home-networks gateway-visibilities set"
-slug: ttn-lw-cli_packetbroker_home-networks_gateway-visibilities_set
+title: "ttn-lw-cli completion"
+slug: ttn-lw-cli_completion
 type: "commands"
 ---
 
-## ttn-lw-cli packetbroker home-networks gateway-visibilities set
+## ttn-lw-cli completion
 
-Set a Home Network gateway visibility
+generate the autocompletion script for the specified shell
 
 ### Synopsis
 
-Set a Home Network gateway visibility
 
-Specify default to configure the default gateway visibility.
+Generate the autocompletion script for ttn-lw-cli for the specified shell.
+See each sub-command's help for details on how to use the generated script.
 
-```
-ttn-lw-cli packetbroker home-networks gateway-visibilities set default [flags]
-```
-
-### Examples
-
-```
-
-  To set the default gateway visibility to show location and online status:
-    $ ttn-lw-cli packetbroker home-network gateway-visibilities set default \
-      --location --status
-
-  To set the default gateway visibility to show all fields:
-    $ ttn-lw-cli packetbroker home-network gateway-visibilities set default \
-      --all
-```
 
 ### Options
 
 ```
-      --all                 
-      --antenna-count       
-      --antenna-placement   
-      --fine-timestamps     
-      --frequency-plan      
-  -h, --help                help for set
-      --location            
-      --packet-rates        
-      --status              
+  -h, --help   help for completion
 ```
 
 ### Options inherited from parent commands
@@ -78,5 +54,9 @@ ttn-lw-cli packetbroker home-networks gateway-visibilities set default [flags]
 
 ### SEE ALSO
 
-* [ttn-lw-cli packetbroker home-networks gateway-visibilities]({{< relref "ttn-lw-cli_packetbroker_home-networks_gateway-visibilities" >}})	 - Manage Home Network gateway visibilities
+* [ttn-lw-cli]({{< relref "ttn-lw-cli" >}})	 - The Things Industries Command-line Interface
+* [ttn-lw-cli completion bash]({{< relref "ttn-lw-cli_completion_bash" >}})	 - generate the autocompletion script for bash
+* [ttn-lw-cli completion fish]({{< relref "ttn-lw-cli_completion_fish" >}})	 - generate the autocompletion script for fish
+* [ttn-lw-cli completion powershell]({{< relref "ttn-lw-cli_completion_powershell" >}})	 - generate the autocompletion script for powershell
+* [ttn-lw-cli completion zsh]({{< relref "ttn-lw-cli_completion_zsh" >}})	 - generate the autocompletion script for zsh
 

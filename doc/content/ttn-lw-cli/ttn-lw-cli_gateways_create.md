@@ -15,51 +15,57 @@ ttn-lw-cli gateways create [gateway-id] [flags]
 ### Options
 
 ```
-      --antenna.gain float32                             
-      --antenna.location.accuracy int32                  
-      --antenna.location.altitude int32                  
-      --antenna.location.latitude float                  
-      --antenna.location.longitude float                 
-      --antenna.location.source string                   allowed values: SOURCE_BT_RSSI_GEOLOCATION, SOURCE_COMBINED_GEOLOCATION, SOURCE_GPS, SOURCE_IP_GEOLOCATION, SOURCE_LORA_RSSI_GEOLOCATION, SOURCE_LORA_TDOA_GEOLOCATION, SOURCE_REGISTRY, SOURCE_UNKNOWN, SOURCE_WIFI_RSSI_GEOLOCATION
-      --antenna.placement string                         allowed values: INDOOR, OUTDOOR, PLACEMENT_UNKNOWN
-      --attributes strings                               key=value
-      --auto-update                                      
-      --claim-authentication-code.secret.key-id string   
-      --claim-authentication-code.secret.value string    (hex)
-      --claim-authentication-code.valid-from string      (YYYY-MM-DDTHH:MM:SSZ)
-      --claim-authentication-code.valid-to string        (YYYY-MM-DDTHH:MM:SSZ)
-      --defaults                                         configure gateway with defaults (default true)
-      --deleted-at string                                (YYYY-MM-DDTHH:MM:SSZ)
-      --description string                               
-      --disable-packet-broker-forwarding                 
-      --downlink-path-constraint string                  allowed values: DOWNLINK_PATH_CONSTRAINT_NEVER, DOWNLINK_PATH_CONSTRAINT_NONE, DOWNLINK_PATH_CONSTRAINT_PREFER_OTHER
-      --enforce-duty-cycle                               
-      --frequency-plan-id string                         
-      --frequency-plan-ids strings                       
-      --gateway-eui string                               
-      --gateway-id string                                
-      --gateway-server-address string                    
-  -h, --help                                             help for create
-      --lbs-lns-secret.key-id string                     
-      --lbs-lns-secret.value string                      (hex)
-      --location-public                                  
-      --lrfhss.supported                                 
-      --name string                                      
-      --organization-id string                           
-      --require-authenticated-connection                 
-      --schedule-anytime-delay duration                  (1h2m3s)
-      --schedule-downlink-late                           
-      --status-public                                    
-      --target-cups-key.key-id string                    
-      --target-cups-key.value string                     (hex)
-      --target-cups-uri string                           
-      --update-channel string                            
-      --update-location-from-status                      
-      --user-id string                                   
-      --version-ids.brand-id string                      
-      --version-ids.firmware-version string              
-      --version-ids.hardware-version string              
-      --version-ids.model-id string                      
+      --administrative-contact.ids.organization-ids.organization-id string   
+      --administrative-contact.ids.user-ids.email string                     
+      --administrative-contact.ids.user-ids.user-id string                   
+      --antenna.gain float32                                                 
+      --antenna.location.accuracy int32                                      
+      --antenna.location.altitude int32                                      
+      --antenna.location.latitude float                                      
+      --antenna.location.longitude float                                     
+      --antenna.location.source string                                       allowed values: SOURCE_BT_RSSI_GEOLOCATION, SOURCE_COMBINED_GEOLOCATION, SOURCE_GPS, SOURCE_IP_GEOLOCATION, SOURCE_LORA_RSSI_GEOLOCATION, SOURCE_LORA_TDOA_GEOLOCATION, SOURCE_REGISTRY, SOURCE_UNKNOWN, SOURCE_WIFI_RSSI_GEOLOCATION
+      --antenna.placement string                                             allowed values: INDOOR, OUTDOOR, PLACEMENT_UNKNOWN
+      --attributes strings                                                   key=value
+      --auto-update                                                          
+      --claim-authentication-code.secret.key-id string                       
+      --claim-authentication-code.secret.value string                        (hex)
+      --claim-authentication-code.valid-from string                          (YYYY-MM-DDTHH:MM:SSZ)
+      --claim-authentication-code.valid-to string                            (YYYY-MM-DDTHH:MM:SSZ)
+      --defaults                                                             configure gateway with defaults (default true)
+      --deleted-at string                                                    (YYYY-MM-DDTHH:MM:SSZ)
+      --description string                                                   
+      --disable-packet-broker-forwarding                                     
+      --downlink-path-constraint string                                      allowed values: DOWNLINK_PATH_CONSTRAINT_NEVER, DOWNLINK_PATH_CONSTRAINT_NONE, DOWNLINK_PATH_CONSTRAINT_PREFER_OTHER
+      --enforce-duty-cycle                                                   
+      --frequency-plan-id string                                             
+      --frequency-plan-ids strings                                           
+      --gateway-eui string                                                   
+      --gateway-id string                                                    
+      --gateway-server-address string                                        
+  -h, --help                                                                 help for create
+      --lbs-lns-secret.key-id string                                         
+      --lbs-lns-secret.value string                                          (hex)
+      --location-public                                                      
+      --lrfhss.supported                                                     
+      --name string                                                          
+      --organization-id string                                               
+      --require-authenticated-connection                                     
+      --schedule-anytime-delay duration                                      (1h2m3s)
+      --schedule-downlink-late                                               
+      --status-public                                                        
+      --target-cups-key.key-id string                                        
+      --target-cups-key.value string                                         (hex)
+      --target-cups-uri string                                               
+      --technical-contact.ids.organization-ids.organization-id string        
+      --technical-contact.ids.user-ids.email string                          
+      --technical-contact.ids.user-ids.user-id string                        
+      --update-channel string                                                
+      --update-location-from-status                                          
+      --user-id string                                                       
+      --version-ids.brand-id string                                          
+      --version-ids.firmware-version string                                  
+      --version-ids.hardware-version string                                  
+      --version-ids.model-id string                                          
 ```
 
 ### Options inherited from parent commands

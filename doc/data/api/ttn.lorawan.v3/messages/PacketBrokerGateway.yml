@@ -11,12 +11,22 @@ fields:
     required: true
   default: {}
 - name: contact_info
+  comment: This field is deprecated. Use administrative_contact and technical_contact
+    instead.
   rules:
     max_items: 10
   repeated:
     message:
       name: ContactInfo
   default: []
+- name: administrative_contact
+  message:
+    name: OrganizationOrUserIdentifiers
+  default: {}
+- name: technical_contact
+  message:
+    name: OrganizationOrUserIdentifiers
+  default: {}
 - name: antennas
   rules:
     max_items: 8
