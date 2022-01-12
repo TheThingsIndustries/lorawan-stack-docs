@@ -365,7 +365,7 @@ To install a device, navigate to the created location (**ACME Headquarters**) an
 
 {{< figure src="claim7.png" alt="Create location" >}}
 
-In **Link to a device**, select the *Dragino - LWL02*. Finally, we would like to track the *Internal Sensor* port and *Probe* port onto which measurements are pushed. Click **+PORT** add Internal Sensor channel and repeat to add Probe channel. Finalize the device installation with **SET**.
+In **Link to a device**, select the **Dragino - LWL02**. Finally, we would like to track the **Internal Sensor** port and **Probe** port onto which measurements are pushed. Click **+ PORT** to add the **Internal Sensor** channel and repeat to add the **Probe** channel. Finalize the device installation with **SET**.
 
 {{< figure src="Mon_2.png" alt="Set device ports" >}}
 
