@@ -361,7 +361,7 @@ The following image shows that the device is registered in the monitoring enviro
 
 {{< figure src="Mon_1.png" alt="Claim device in monitoring environment" >}}
 
-To install a device, navigate to the created location (*ACME Headquarters*) and select Devices.
+To install a device, navigate to the created location (**ACME Headquarters**) and select **Devices**.
 
 {{< figure src="claim7.png" alt="Create location" >}}
 
