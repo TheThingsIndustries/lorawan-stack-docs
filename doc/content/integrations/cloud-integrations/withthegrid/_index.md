@@ -130,7 +130,7 @@ Enter the quantity name `Voltage` and unit `V`. To create the quantity, select *
 
 {{< figure src="quantity_1.png" alt="Create a quantity" >}}
 
-After selecting **ADD**, a hashID will be created for the newly created quantity. We will create *leak status*, *total leak events*, and *last leak duration* quantities by following the same procedure. For unitless quantities, enter space. Leak duration is in min according to the datasheet. In this example, the voltage, leak status, total leak events, and last leak duration hashIDs are **yl4wwy**, **dp2v9d**, **yzrwny**, and **d4rwrd** respectively. The hashIDs will be used in the report to identify the correct measurement quantity.
+After selecting **ADD**, a hashID will be created for the newly created quantity. We will create `Leak status`, `Total leak events`, and `Last leak duration` quantities by following the same procedure. For unitless quantities, just enter space. Leak duration is in min according to the datasheet. In this example, the voltage, leak status, total leak events, and last leak duration hashIDs are **yl4wwy**, **dp2v9d**, **yzrwny**, and **d4rwrd**, respectively. The hashIDs will be used in the report to identify the correct measurement quantity.
 
 {{< figure src="quantity_2.png" alt="Created quantities overview" >}}
 
