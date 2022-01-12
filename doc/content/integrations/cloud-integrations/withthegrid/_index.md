@@ -12,7 +12,7 @@ weight:
 
 Use a requirements subheading to list requirements/prerequisites.
 
-1. Access to the Withthegrid platform. To get started go to: https://app.withthegrid.com/ and login with your credentials. If you did not receive any credentials via e-mail you can sign up [here](https://app.withthegrid.com/#/sign-up) for a 14 day free trial. 
+1. Access to the Withthegrid platform. To get started go to `https://app.withthegrid.com/` and login with your credentials. If you did not receive any credentials via e-mail you can sign up [here](https://app.withthegrid.com/#/sign-up) for a 14 day free trial. 
 
 ## Steps
 
