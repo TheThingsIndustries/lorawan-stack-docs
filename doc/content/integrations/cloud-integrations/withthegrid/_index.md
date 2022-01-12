@@ -252,7 +252,7 @@ function handle(args: Arguments, exec: Exec): IncomingRequestResponse | void {
 
 ## Step 7: Configuring TTN and registering the device
 
-Now that the webhook and the event handler of Dragino - LWL02 are configured, we can set up  TTN project. 
+Now that the webhook and the event handler of the Dragino - LWL02 device are configured, we can proceed with setting up {{% tts %}}. 
 
 {{< figure src="Add_app.png" alt="TTN add app" >}}
 
