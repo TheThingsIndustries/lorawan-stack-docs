@@ -369,7 +369,7 @@ In **Link to a device**, select the *Dragino - LWL02*. Finally, we would like to
 
 {{< figure src="Mon_2.png" alt="Set device ports" >}}
 
-From this point on, all measurements pushed to channels of *Dragino - LWL02* sensor with the unique IMEI will be available in the monitoring environments ready to be visualized in graphs. Try shorting the 2 pins on the sensor to see if a measurement is recorded.
+From this point on, all measurements pushed to channels of Dragino - LWL02 sensor with the unique IMEI will be available in the monitoring environments, ready to be visualized in graphs. Try shorting the two pins on the sensor to see if a measurement is recorded.
 
 {{< figure src="Graphs.png" alt="Overview of the graph" >}}
 
