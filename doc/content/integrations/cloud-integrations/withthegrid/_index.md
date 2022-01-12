@@ -58,7 +58,7 @@ Finally, the connectivity environment is used to define the structure of measure
 
 ## Simplified dataflow model
 
-A simplified dataflow model is shown in figure below. An HTTP request from The Things Network is processed by the **webhook**. Webhooks identify the communicating device type of the device, it’s unique identifier (e.g. IMEI number) and forward this information together with the payload to the corresponding **device type event handler**. Subsequently, the event handler runs a **report parser**. The platform offers full flexibility on how to parse payload into condition reports, using a custom Typescript parser function. The parser should then convert the payload string (probably applying `JSON.parse` first) into an actual report with measurements.
+A simplified dataflow model is shown in the figure below. An HTTP request from {{% tts %}} is processed by the **webhook**. Webhooks define the communicating device type, its unique identifier (e.g. IMEI number) and forward this information together with the payload to the corresponding **device type event handler**. Subsequently, the event handler runs a **report parser**. The platform offers full flexibility on how to parse payload into condition reports, using a custom TypeScript parser function. The parser should then convert the payload string (probably applying `JSON.parse` first) into an actual report with measurements.
 
 {{< figure src="dataFlow.png" alt="WTG dataflow" >}}
 
