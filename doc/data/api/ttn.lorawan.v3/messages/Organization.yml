@@ -58,11 +58,20 @@ fields:
       max_len: 200
   default: {}
 - name: contact_info
-  comment: Contact information for this organization. Typically used to indicate who
-    to contact with security/billing questions about the organization.
+  comment: |-
+    Contact information for this organization. Typically used to indicate who to contact with security/billing questions about the organization.
+    This field is deprecated. Use administrative_contact and technical_contact instead.
   rules:
     max_items: 10
   repeated:
     message:
       name: ContactInfo
   default: []
+- name: administrative_contact
+  message:
+    name: OrganizationOrUserIdentifiers
+  default: {}
+- name: technical_contact
+  message:
+    name: OrganizationOrUserIdentifiers
+  default: {}

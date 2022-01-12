@@ -15,21 +15,28 @@ ttn-lw-cli clients set [client-id] [flags]
 ### Options
 
 ```
-      --attributes strings             key=value
-      --client-id string               
-      --deleted-at string              (YYYY-MM-DDTHH:MM:SSZ)
-      --description string             
-      --endorsed                       
-      --grants strings                 allowed values: GRANT_AUTHORIZATION_CODE, GRANT_PASSWORD, GRANT_REFRESH_TOKEN (default GRANT_AUTHORIZATION_CODE)
-  -h, --help                           help for set
-      --logout-redirect-uris strings   
-      --name string                    
-      --redirect-uris strings          
-      --rights strings                 allowed values: RIGHT_ALL, RIGHT_APPLICATION_ALL, RIGHT_APPLICATION_DELETE, RIGHT_APPLICATION_DEVICES_READ, RIGHT_APPLICATION_DEVICES_READ_KEYS, RIGHT_APPLICATION_DEVICES_WRITE, RIGHT_APPLICATION_DEVICES_WRITE_KEYS, RIGHT_APPLICATION_INFO, RIGHT_APPLICATION_LINK, RIGHT_APPLICATION_SETTINGS_API_KEYS, RIGHT_APPLICATION_SETTINGS_BASIC, RIGHT_APPLICATION_SETTINGS_COLLABORATORS, RIGHT_APPLICATION_SETTINGS_PACKAGES, RIGHT_APPLICATION_TRAFFIC_DOWN_WRITE, RIGHT_APPLICATION_TRAFFIC_READ, RIGHT_APPLICATION_TRAFFIC_UP_WRITE, RIGHT_CLIENT_ALL, RIGHT_GATEWAY_ALL, RIGHT_GATEWAY_DELETE, RIGHT_GATEWAY_INFO, RIGHT_GATEWAY_LINK, RIGHT_GATEWAY_LOCATION_READ, RIGHT_GATEWAY_READ_SECRETS, RIGHT_GATEWAY_SETTINGS_API_KEYS, RIGHT_GATEWAY_SETTINGS_BASIC, RIGHT_GATEWAY_SETTINGS_COLLABORATORS, RIGHT_GATEWAY_STATUS_READ, RIGHT_GATEWAY_TRAFFIC_DOWN_WRITE, RIGHT_GATEWAY_TRAFFIC_READ, RIGHT_GATEWAY_WRITE_SECRETS, RIGHT_ORGANIZATION_ADD_AS_COLLABORATOR, RIGHT_ORGANIZATION_ALL, RIGHT_ORGANIZATION_APPLICATIONS_CREATE, RIGHT_ORGANIZATION_APPLICATIONS_LIST, RIGHT_ORGANIZATION_CLIENTS_CREATE, RIGHT_ORGANIZATION_CLIENTS_LIST, RIGHT_ORGANIZATION_DELETE, RIGHT_ORGANIZATION_GATEWAYS_CREATE, RIGHT_ORGANIZATION_GATEWAYS_LIST, RIGHT_ORGANIZATION_INFO, RIGHT_ORGANIZATION_SETTINGS_API_KEYS, RIGHT_ORGANIZATION_SETTINGS_BASIC, RIGHT_ORGANIZATION_SETTINGS_MEMBERS, RIGHT_SEND_INVITES, RIGHT_USER_ALL, RIGHT_USER_APPLICATIONS_CREATE, RIGHT_USER_APPLICATIONS_LIST, RIGHT_USER_AUTHORIZED_CLIENTS, RIGHT_USER_CLIENTS_CREATE, RIGHT_USER_CLIENTS_LIST, RIGHT_USER_DELETE, RIGHT_USER_GATEWAYS_CREATE, RIGHT_USER_GATEWAYS_LIST, RIGHT_USER_INFO, RIGHT_USER_ORGANIZATIONS_CREATE, RIGHT_USER_ORGANIZATIONS_LIST, RIGHT_USER_SETTINGS_API_KEYS, RIGHT_USER_SETTINGS_BASIC, right_invalid
-      --secret string                  
-      --skip-authorization             
-      --state string                   allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED (default "STATE_APPROVED")
-      --state-description string       
+      --administrative-contact.ids.organization-ids.organization-id string   
+      --administrative-contact.ids.user-ids.email string                     
+      --administrative-contact.ids.user-ids.user-id string                   
+      --attributes strings                                                   key=value
+      --client-id string                                                     
+      --deleted-at string                                                    (YYYY-MM-DDTHH:MM:SSZ)
+      --description string                                                   
+      --endorsed                                                             
+      --grants strings                                                       allowed values: GRANT_AUTHORIZATION_CODE, GRANT_PASSWORD, GRANT_REFRESH_TOKEN (default GRANT_AUTHORIZATION_CODE)
+  -h, --help                                                                 help for set
+      --logout-redirect-uris strings                                         
+      --name string                                                          
+      --redirect-uris strings                                                
+      --rights strings                                                       allowed values: RIGHT_ALL, RIGHT_APPLICATION_ALL, RIGHT_APPLICATION_DELETE, RIGHT_APPLICATION_DEVICES_READ, RIGHT_APPLICATION_DEVICES_READ_KEYS, RIGHT_APPLICATION_DEVICES_WRITE, RIGHT_APPLICATION_DEVICES_WRITE_KEYS, RIGHT_APPLICATION_INFO, RIGHT_APPLICATION_LINK, RIGHT_APPLICATION_SETTINGS_API_KEYS, RIGHT_APPLICATION_SETTINGS_BASIC, RIGHT_APPLICATION_SETTINGS_COLLABORATORS, RIGHT_APPLICATION_SETTINGS_PACKAGES, RIGHT_APPLICATION_TRAFFIC_DOWN_WRITE, RIGHT_APPLICATION_TRAFFIC_READ, RIGHT_APPLICATION_TRAFFIC_UP_WRITE, RIGHT_CLIENT_ALL, RIGHT_GATEWAY_ALL, RIGHT_GATEWAY_DELETE, RIGHT_GATEWAY_INFO, RIGHT_GATEWAY_LINK, RIGHT_GATEWAY_LOCATION_READ, RIGHT_GATEWAY_READ_SECRETS, RIGHT_GATEWAY_SETTINGS_API_KEYS, RIGHT_GATEWAY_SETTINGS_BASIC, RIGHT_GATEWAY_SETTINGS_COLLABORATORS, RIGHT_GATEWAY_STATUS_READ, RIGHT_GATEWAY_TRAFFIC_DOWN_WRITE, RIGHT_GATEWAY_TRAFFIC_READ, RIGHT_GATEWAY_WRITE_SECRETS, RIGHT_ORGANIZATION_ADD_AS_COLLABORATOR, RIGHT_ORGANIZATION_ALL, RIGHT_ORGANIZATION_APPLICATIONS_CREATE, RIGHT_ORGANIZATION_APPLICATIONS_LIST, RIGHT_ORGANIZATION_CLIENTS_CREATE, RIGHT_ORGANIZATION_CLIENTS_LIST, RIGHT_ORGANIZATION_DELETE, RIGHT_ORGANIZATION_GATEWAYS_CREATE, RIGHT_ORGANIZATION_GATEWAYS_LIST, RIGHT_ORGANIZATION_INFO, RIGHT_ORGANIZATION_SETTINGS_API_KEYS, RIGHT_ORGANIZATION_SETTINGS_BASIC, RIGHT_ORGANIZATION_SETTINGS_MEMBERS, RIGHT_SEND_INVITES, RIGHT_USER_ALL, RIGHT_USER_APPLICATIONS_CREATE, RIGHT_USER_APPLICATIONS_LIST, RIGHT_USER_AUTHORIZED_CLIENTS, RIGHT_USER_CLIENTS_CREATE, RIGHT_USER_CLIENTS_LIST, RIGHT_USER_DELETE, RIGHT_USER_GATEWAYS_CREATE, RIGHT_USER_GATEWAYS_LIST, RIGHT_USER_INFO, RIGHT_USER_ORGANIZATIONS_CREATE, RIGHT_USER_ORGANIZATIONS_LIST, RIGHT_USER_SETTINGS_API_KEYS, RIGHT_USER_SETTINGS_BASIC, right_invalid
+      --secret string                                                        
+      --skip-authorization                                                   
+      --state string                                                         allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED (default "STATE_APPROVED")
+      --state-description string                                             
+      --technical-contact.ids.organization-ids.organization-id string        
+      --technical-contact.ids.user-ids.email string                          
+      --technical-contact.ids.user-ids.user-id string                        
+      --unset strings                                                        list of fields to unset
 ```
 
 ### Options inherited from parent commands

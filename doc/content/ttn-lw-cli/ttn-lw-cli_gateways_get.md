@@ -15,50 +15,62 @@ ttn-lw-cli gateways get [gateway-id] [flags]
 ### Options
 
 ```
-      --all                                       select all gateway fields
-      --antennas                                  select the antennas field
-      --attributes                                select the attributes field
-      --auto-update                               select the auto_update field
-      --claim-authentication-code                 select the claim_authentication_code field and all allowed sub-fields
-      --claim-authentication-code.secret          select the claim_authentication_code.secret field and all allowed sub-fields
-      --claim-authentication-code.secret.key-id   select the claim_authentication_code.secret.key_id field
-      --claim-authentication-code.secret.value    select the claim_authentication_code.secret.value field
-      --claim-authentication-code.valid-from      select the claim_authentication_code.valid_from field
-      --claim-authentication-code.valid-to        select the claim_authentication_code.valid_to field
-      --contact-info                              select the contact_info field
-      --deleted-at                                select the deleted_at field
-      --description                               select the description field
-      --disable-packet-broker-forwarding          select the disable_packet_broker_forwarding field
-      --downlink-path-constraint                  select the downlink_path_constraint field
-      --enforce-duty-cycle                        select the enforce_duty_cycle field
-      --frequency-plan-id                         select the frequency_plan_id field
-      --frequency-plan-ids                        select the frequency_plan_ids field
-      --gateway-eui string                        
-      --gateway-id string                         
-      --gateway-server-address                    select the gateway_server_address field
-  -h, --help                                      help for get
-      --lbs-lns-secret                            select the lbs_lns_secret field and all allowed sub-fields
-      --lbs-lns-secret.key-id                     select the lbs_lns_secret.key_id field
-      --lbs-lns-secret.value                      select the lbs_lns_secret.value field
-      --location-public                           select the location_public field
-      --lrfhss                                    select the lrfhss field and all allowed sub-fields
-      --lrfhss.supported                          select the lrfhss.supported field
-      --name                                      select the name field
-      --require-authenticated-connection          select the require_authenticated_connection field
-      --schedule-anytime-delay                    select the schedule_anytime_delay field
-      --schedule-downlink-late                    select the schedule_downlink_late field
-      --status-public                             select the status_public field
-      --target-cups-key                           select the target_cups_key field and all allowed sub-fields
-      --target-cups-key.key-id                    select the target_cups_key.key_id field
-      --target-cups-key.value                     select the target_cups_key.value field
-      --target-cups-uri                           select the target_cups_uri field
-      --update-channel                            select the update_channel field
-      --update-location-from-status               select the update_location_from_status field
-      --version-ids                               select the version_ids field and all allowed sub-fields
-      --version-ids.brand-id                      select the version_ids.brand_id field
-      --version-ids.firmware-version              select the version_ids.firmware_version field
-      --version-ids.hardware-version              select the version_ids.hardware_version field
-      --version-ids.model-id                      select the version_ids.model_id field
+      --administrative-contact                                        select the administrative_contact field and all allowed sub-fields
+      --administrative-contact.ids.organization-ids                   select the administrative_contact.ids.organization_ids field and all allowed sub-fields
+      --administrative-contact.ids.organization-ids.organization-id   select the administrative_contact.ids.organization_ids.organization_id field
+      --administrative-contact.ids.user-ids                           select the administrative_contact.ids.user_ids field and all allowed sub-fields
+      --administrative-contact.ids.user-ids.email                     select the administrative_contact.ids.user_ids.email field
+      --administrative-contact.ids.user-ids.user-id                   select the administrative_contact.ids.user_ids.user_id field
+      --all                                                           select all gateway fields
+      --antennas                                                      select the antennas field
+      --attributes                                                    select the attributes field
+      --auto-update                                                   select the auto_update field
+      --claim-authentication-code                                     select the claim_authentication_code field and all allowed sub-fields
+      --claim-authentication-code.secret                              select the claim_authentication_code.secret field and all allowed sub-fields
+      --claim-authentication-code.secret.key-id                       select the claim_authentication_code.secret.key_id field
+      --claim-authentication-code.secret.value                        select the claim_authentication_code.secret.value field
+      --claim-authentication-code.valid-from                          select the claim_authentication_code.valid_from field
+      --claim-authentication-code.valid-to                            select the claim_authentication_code.valid_to field
+      --contact-info                                                  select the contact_info field
+      --deleted-at                                                    select the deleted_at field
+      --description                                                   select the description field
+      --disable-packet-broker-forwarding                              select the disable_packet_broker_forwarding field
+      --downlink-path-constraint                                      select the downlink_path_constraint field
+      --enforce-duty-cycle                                            select the enforce_duty_cycle field
+      --frequency-plan-id                                             select the frequency_plan_id field
+      --frequency-plan-ids                                            select the frequency_plan_ids field
+      --gateway-eui string                                            
+      --gateway-id string                                             
+      --gateway-server-address                                        select the gateway_server_address field
+  -h, --help                                                          help for get
+      --lbs-lns-secret                                                select the lbs_lns_secret field and all allowed sub-fields
+      --lbs-lns-secret.key-id                                         select the lbs_lns_secret.key_id field
+      --lbs-lns-secret.value                                          select the lbs_lns_secret.value field
+      --location-public                                               select the location_public field
+      --lrfhss                                                        select the lrfhss field and all allowed sub-fields
+      --lrfhss.supported                                              select the lrfhss.supported field
+      --name                                                          select the name field
+      --require-authenticated-connection                              select the require_authenticated_connection field
+      --schedule-anytime-delay                                        select the schedule_anytime_delay field
+      --schedule-downlink-late                                        select the schedule_downlink_late field
+      --status-public                                                 select the status_public field
+      --target-cups-key                                               select the target_cups_key field and all allowed sub-fields
+      --target-cups-key.key-id                                        select the target_cups_key.key_id field
+      --target-cups-key.value                                         select the target_cups_key.value field
+      --target-cups-uri                                               select the target_cups_uri field
+      --technical-contact                                             select the technical_contact field and all allowed sub-fields
+      --technical-contact.ids.organization-ids                        select the technical_contact.ids.organization_ids field and all allowed sub-fields
+      --technical-contact.ids.organization-ids.organization-id        select the technical_contact.ids.organization_ids.organization_id field
+      --technical-contact.ids.user-ids                                select the technical_contact.ids.user_ids field and all allowed sub-fields
+      --technical-contact.ids.user-ids.email                          select the technical_contact.ids.user_ids.email field
+      --technical-contact.ids.user-ids.user-id                        select the technical_contact.ids.user_ids.user_id field
+      --update-channel                                                select the update_channel field
+      --update-location-from-status                                   select the update_location_from_status field
+      --version-ids                                                   select the version_ids field and all allowed sub-fields
+      --version-ids.brand-id                                          select the version_ids.brand_id field
+      --version-ids.firmware-version                                  select the version_ids.firmware_version field
+      --version-ids.hardware-version                                  select the version_ids.hardware_version field
+      --version-ids.model-id                                          select the version_ids.model_id field
 ```
 
 ### Options inherited from parent commands
