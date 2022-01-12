@@ -256,7 +256,9 @@ Now that the webhook and the event handler of the Dragino - LWL02 device are con
 
 {{< figure src="Add_app.png" alt="TTN add app" >}}
 
-The second step is to add end device to the newly created application. For this you will need the AppEUI, DevEUI and the AppKey which is provided by the Dragino. After the device is registered, we can configure the application server by creating a new webhook. Set the webhook format to JSON and enter the Base URL listed in the Withthegrid webhook of TTN (step 2).
+[Create an application]({{< ref "/integrations/adding-applications" >}} and [add the Dragino device]({{< ref "/devices/adding-devices" >}}.
+
+After the device is registered, we can configure a new webhook on {{% tts %}}. Set the webhook format to **JSON** and enter the **Base URL** provided with the Withthegrid webhook we created in step 2.
 
 {{< figure src="TTN_Webhook.png" alt="TTN set up webhook" >}}
 
