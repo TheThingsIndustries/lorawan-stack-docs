@@ -126,7 +126,7 @@ The quantities of interest in this example are voltage, leak status, total leak 
 
 {{< figure src="quantities_1.png" alt="Quantities" >}}
 
-Enter the quantity name (Voltage) and unit (V). To create the quantity, select **ADD**.
+Enter the quantity name `Voltage` and unit `V`. To create the quantity, select **ADD**.
 
 {{< figure src="quantity_1.png" alt="Create a quantity" >}}
 
