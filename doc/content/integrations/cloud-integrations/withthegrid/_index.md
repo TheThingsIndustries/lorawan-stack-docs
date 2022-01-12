@@ -100,7 +100,7 @@ Name the new device type. At this point, we can also change the default name of 
 
 {{< figure src="device_type_1.png" alt="Device type overview" >}}
 
-Let’s create one additional channel (Probe), where we will push measurements related to the water leak.
+Let’s create one additional channel (`Probe`), where we will push measurements related to the water leak.
 
 {{< figure src="device_type_2.png" alt="Set channels" >}}
 
