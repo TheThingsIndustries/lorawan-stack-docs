@@ -327,7 +327,7 @@ function pushMeasurement(measurements: Result['measurements'], channelIndex: num
 
 ## Step 9: Powering up the device
 
-After powering up the device it should connect to the application. You can see the successful connection in the connectivity environment in **Activity** and will look like this.
+After powering up the device it should automatically connect to the Withthegrid application. The successful connection can be observed in the connectivity environment under **Activity** and it will look like this:
 
 {{< figure src="activity_1.png" alt="Activity" >}}
 
