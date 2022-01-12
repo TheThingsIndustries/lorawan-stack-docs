@@ -30,7 +30,7 @@ Use a requirements subheading to list requirements/prerequisites.
 
 ## Architecture
 
-The Withthegrid asset monitoring platform has two types of environments:
+The Withthegrid asset monitoring platform has two types of environments, monitoring environments and connectivity environments.
 
 - **Monitoring environments:** Where the end users obtain an overview of all the issues and actions related to its assets:
 
