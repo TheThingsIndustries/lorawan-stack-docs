@@ -2,6 +2,7 @@
 title: "LoRa Basics™ Station"
 description: ""
 weight: -1
+aliases: "gateways/lbs"
 ---
 
 The [{{% lbs %}}](https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/) protocol simplifies management of large scale LoRaWAN networks. {{% lbs %}} is the preferred way of connecting Gateways to {{% tts %}}.

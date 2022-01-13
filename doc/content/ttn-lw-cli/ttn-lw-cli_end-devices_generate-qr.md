@@ -23,17 +23,14 @@ ttn-lw-cli end-devices generate-qr [application-id] [device-id] [flags]
 
 ### Examples
 
-To generate a QR code for a single end device:
-
-```
-ttn-lw-cli end-devices generate-qr app1 dev1
 ```
 
-To generate a QR code for multiple end devices:
+  To generate a QR code for a single end device:
+    $ ttn-lw-cli end-devices generate-qr app1 dev1
 
-```
-ttn-lw-cli end-devices list app1 \
-  | ttn-lw-cli end-devices generate-qr
+  To generate a QR code for multiple end devices:
+    $ ttn-lw-cli end-devices list app1 \
+      | ttn-lw-cli end-devices generate-qr
 ```
 
 ### Options

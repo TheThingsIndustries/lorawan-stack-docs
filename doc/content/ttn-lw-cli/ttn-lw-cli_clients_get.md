@@ -15,23 +15,35 @@ ttn-lw-cli clients get [client-id] [flags]
 ### Options
 
 ```
-      --all                    select all client fields
-      --attributes             select the attributes field
-      --client-id string       
-      --contact-info           select the contact_info field
-      --deleted-at             select the deleted_at field
-      --description            select the description field
-      --endorsed               select the endorsed field
-      --grants                 select the grants field
-  -h, --help                   help for get
-      --logout-redirect-uris   select the logout_redirect_uris field
-      --name                   select the name field
-      --redirect-uris          select the redirect_uris field
-      --rights                 select the rights field
-      --secret                 select the secret field
-      --skip-authorization     select the skip_authorization field
-      --state                  select the state field
-      --state-description      select the state_description field
+      --administrative-contact                                        select the administrative_contact field and all allowed sub-fields
+      --administrative-contact.ids.organization-ids                   select the administrative_contact.ids.organization_ids field and all allowed sub-fields
+      --administrative-contact.ids.organization-ids.organization-id   select the administrative_contact.ids.organization_ids.organization_id field
+      --administrative-contact.ids.user-ids                           select the administrative_contact.ids.user_ids field and all allowed sub-fields
+      --administrative-contact.ids.user-ids.email                     select the administrative_contact.ids.user_ids.email field
+      --administrative-contact.ids.user-ids.user-id                   select the administrative_contact.ids.user_ids.user_id field
+      --all                                                           select all client fields
+      --attributes                                                    select the attributes field
+      --client-id string                                              
+      --contact-info                                                  select the contact_info field
+      --deleted-at                                                    select the deleted_at field
+      --description                                                   select the description field
+      --endorsed                                                      select the endorsed field
+      --grants                                                        select the grants field
+  -h, --help                                                          help for get
+      --logout-redirect-uris                                          select the logout_redirect_uris field
+      --name                                                          select the name field
+      --redirect-uris                                                 select the redirect_uris field
+      --rights                                                        select the rights field
+      --secret                                                        select the secret field
+      --skip-authorization                                            select the skip_authorization field
+      --state                                                         select the state field
+      --state-description                                             select the state_description field
+      --technical-contact                                             select the technical_contact field and all allowed sub-fields
+      --technical-contact.ids.organization-ids                        select the technical_contact.ids.organization_ids field and all allowed sub-fields
+      --technical-contact.ids.organization-ids.organization-id        select the technical_contact.ids.organization_ids.organization_id field
+      --technical-contact.ids.user-ids                                select the technical_contact.ids.user_ids field and all allowed sub-fields
+      --technical-contact.ids.user-ids.email                          select the technical_contact.ids.user_ids.email field
+      --technical-contact.ids.user-ids.user-id                        select the technical_contact.ids.user_ids.user_id field
 ```
 
 ### Options inherited from parent commands
