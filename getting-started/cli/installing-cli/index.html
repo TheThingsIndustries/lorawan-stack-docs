@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.17</p>
+        <p class="navbar-item is-size-7">v3.17.0</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -283,9 +283,131 @@ sudo snap <span class="nb">alias</span> tti-lw-stack.tti-lw-cli tti-lw-cli
 <p>No package manager is available for Windows. Follow instructions in the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/#installing-using-pre-built-binaries">Installing using pre-built binaries</a> section below to download the <a href="https://github.com/TheThingsNetwork/lorawan-stack/releases">pre-built binaries</a> for Windows based on the processor architecture.</p>
 <p>Note that Windows binaries must be run with a <code>.exe</code> extension on the end, so if an example uses <code>ttn-lw-cli</code>, that will be <code>ttn-lw-cli.exe</code> on Windows.</p>
 <h2 id="installing-using-pre-built-binaries">Installing using pre-built binaries</h2>
-<p>If your operating system does not support a package manager or you do not want to use one, you can still download <a href="https://github.com/TheThingsNetwork/lorawan-stack/releases">pre-built binaries</a> for your operating system and processor architecture.</p>
-<p>Find the <a href="https://github.com/TheThingsNetwork/lorawan-stack/releases">latest The Things Stack release</a>, scroll down and expand the <strong>Assets</strong> section to see the binaries. Search for archives starting with <code>lorawan-stack-cli</code> (usually on top), then search for the specific archive ending with your operating system and processor architecture label.</p>
+<p>If your operating system does not support a package manager or you do not want to use one, you can still download pre-built binaries for your operating system and processor architecture.</p>
 <p>The commands to determine your processor architecture depend on your operating system. On Linux and macOS you can use <code>uname -m</code> in your terminal, while on Windows you can use <code>echo %PROCESSOR_ARCHITECTURE%</code>.</p>
+<p>Use the following form to select the correct binaries for your architecture.</p>
+<div class="field">
+  <label class="label">Deployment</label>
+  <div class="control">
+    <div class="select">
+      <select data-content="deployment">
+        <option value="the-things-stack-releases">Open Source</option>
+        <option value="the-things-enterprise-stack-releases">Enterprise</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="field">
+  <label class="label">OS</label>
+  <div class="control">
+    <div class="select">
+      <select data-content="os">
+        <option value="darwin">macOS</option>
+        <option value="linux">Linux</option>
+        <option value="windows">Windows</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="field">
+  <label class="label">Arch</label>
+  <div class="control">
+    <div class="select">
+      <select data-content="arch">
+        <option value="amd64">amd64 (64-bit Intel)</option>
+        <option value="arm64">arm64 (64-bit ARM)</option>
+        <option value="386">386 (32-bit Intel)</option>
+        <option value="armv7">armv7</option>
+        <option value="armv6">armv6</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="field">
+  <label class="label">Download:</label>
+  <a
+    class="button is-primary"
+    id="cli-url"
+    href="https://github.com/TheThingsNetwork/lorawan-stack/releases"
+    >Download CLI</a
+  >.
+</div>
+Download:
+<span id="deployment">Open Source</span>
+<span id="os">macOS</span>
+<span id="arch">amd64 (64-bit Intel)</span>
+
+<script>
+  window.addEventListener("load", function (e) {
+    var $deploymentSpan = document.getElementById("deployment");
+    var $osSpan = document.getElementById("os");
+    var $archSpan = document.getElementById("arch");
+
+    var $deploymentInput = document.querySelector('select[data-content="deployment"]');
+    var $osInput = document.querySelector('select[data-content="os"]');
+    var $archInput = document.querySelector('select[data-content="arch"]');
+
+    $deploymentInput.addEventListener("change", (event) => {
+      updateURL();
+    });
+
+    $archInput.addEventListener("change", (event) => {
+      updateURL();
+    });
+
+    $osInput.addEventListener("change", (event) => {
+      resetFilter();
+      filterArch();
+      updateURL();
+    });
+
+    resetFilter();
+    filterArch();
+    updateURL();
+
+    function resetFilter() {
+      for (var i = 0; i < $archInput.length; i++) {
+        $archInput.options[i].removeAttribute("disabled");
+      }
+    }
+
+    function filterArch() {
+      const osFilter = {
+        darwin: ["386", "armv7", "armv6"],
+        linux: [],
+        windows: ["armv7", "armv6"],
+      };
+      const os = $osInput.value;
+      for (var i = 0; i < $archInput.length; i++) {
+        var value = $archInput.options[i].value;
+        if (osFilter[os].includes(value)) {
+          $archInput.options[i].setAttribute("disabled", "true");
+        }
+      }
+    }
+
+    function updateURL() {
+      const deployment = $deploymentInput.value;
+      const version = "3.17.0";
+      const os = $osInput.value;
+      const arch = $archInput.value;
+      const ext = os === "windows" ? "zip" : "tar.gz";
+
+      $deploymentSpan.textContent = $deploymentInput.options[$deploymentInput.selectedIndex].text;
+      $osSpan.textContent = $osInput.options[$osInput.selectedIndex].text;
+      $archSpan.textContent = $archInput.options[$archInput.selectedIndex].text;
+
+      var url = `https:\/\/${deployment}.s3.eu-west-1.amazonaws.com/${version}/lorawan-stack-cli_${version}_${os}_${arch}.${ext}`;
+
+      var $cliUrl = document.getElementById("cli-url");
+      $cliUrl.setAttribute("href", url);
+    }
+  });
+</script>
+
+<h3 id="see-binaries-for-all-releases">See binaries for all releases</h3>
+<p>To see old versions of the CLI, or if the binary selector above does not work, find all releases of <code>ttn-lw-cli</code> <a href="https://github.com/TheThingsNetwork/lorawan-stack/releases">here</a>.</p>
+<p>Scroll down and expand the <strong>Assets</strong> section to see the binaries. Search for archives starting with <code>lorawan-stack-cli</code> (usually on top), then search for the specific archive ending with your operating system and processor architecture label.</p>
 <figure>
     <img src="binaries.png"/> 
 </figure>
@@ -390,10 +512,10 @@ sudo snap <span class="nb">alias</span> tti-lw-stack.tti-lw-cli tti-lw-cli
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 23 Dec 2021.
+  Last changed by Ben Olayinka on 13 Jan 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
-      doc: Remove $ character from code blocks, add variables (#678)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/37a7764d5edd27ed20a432fbfb07d88b5b263dba">
+      Add enterprise &#43; open source CLI download link builder (#718)
     </a>
 </p>
 
