@@ -338,6 +338,7 @@
         
         <div class="content">
           <p>The AWS IoT Integration for The Things Stack puts logs to AWS CloudWatch where you can find detailed traces and errors.</p>
+<h2 id="cloudwatch-logs">CloudWatch logs</h2>
 <p>In the AWS Console, open <strong>Services</strong> and go to <strong>CloudWatch</strong>.</p>
 <p>In the menu on the left, under <strong>Logs</strong>, go to <strong>Log Groups</strong>.</p>
 <figure>
@@ -347,7 +348,7 @@
 
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  <strong>Not seeing all log groups?</strong> The log groups are created automatically as log entries are written to an underlying log streams.
+  <strong>Not seeing all log groups?</strong> The log groups are created automatically when a Lambda function runs. If the function did not run yet, the log group is not there.
 </div>
 
 <p>First place to look for issues with thing creation or claiming is the <code>/thethings/lorawan/&lt;stack-name&gt;/things</code> log group. Each thing has its own log stream in this log group. For example, if you <a href="/docs/integrations/cloud-integrations/aws-iot/default/things/">created or claimed a thing</a> but it doesn&rsquo;t show up in The Things Stack, you can find the cause in the thing&rsquo;s log stream.</p>
@@ -360,6 +361,31 @@
 <li><code>/aws/lambda/&lt;stack-name&gt;-HandleDownlinkFunction...</code>: downlink handling</li>
 <li><code>/aws/lambda/&lt;stack-name&gt;-HandleUplinkFunction...</code>: uplink handling</li>
 </ul>
+<h2 id="resolving-issues">Resolving issues</h2>
+<h3 id="resolve-deveui--is-registered-for-mismatching-stack">Resolve &ldquo;DevEUI <code>...</code> is registered for mismatching stack&rdquo;</h3>
+<p>This error occurs when the AWS IoT Integration wants to process an event for an IoT Core thing, but that thing is not managed by the AWS IoT Integration.</p>
+<p>AWS IoT Core things used by the AWS IoT Integration are unique in the AWS account. They must have an attribute <code>stackName</code> that equals the <strong>Stack name</strong> of the integration.</p>
+<p>There are three possible causes, with a each a solution:</p>
+<ol>
+<li>There was a previous AWS IoT Integration in the same AWS account that created the things in IoT Core, and that integration used a different <strong>Stack name</strong>
+<ul>
+<li><strong>Solution 1:</strong> Delete the IoT Core things. They will be recreated automatically</li>
+<li><strong>Solution 2:</strong> Update the <code>stackName</code> attribute of the concerning IoT Core things to match the <strong>Stack name</strong> of the new integration. See <a href="./deploy-ment-guide">Deployment guide</a></li>
+</ul>
+</li>
+<li>There is another AWS IoT Integration deployed in the same AWS account, possibly connected to the same The Things Stack application
+<ul>
+<li><strong>Solution:</strong> No two AWS IoT Integrations can manage the same IoT Core things. The IoT Core thing name is the DevEUI, and that must be globally unique. If you must, deploy the second AWS IoT Integration in different AWS account</li>
+</ul>
+</li>
+<li>The IoT core thing has been created via another way, e.g. manual create or another application
+<ul>
+<li><strong>Solution 1:</strong> Update the <code>stackName</code> attribute of the concerning IoT Core things to match the <strong>Stack name</strong> of the new integration. See <a href="./deploy-ment-guide">Deployment guide</a></li>
+<li><strong>Solution 2:</strong> Use a different AWS account</li>
+<li><strong>Solution 3:</strong> If you do not longer need the (manually) created IoT Core thing, delete it</li>
+</ul>
+</li>
+</ol>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/aws-iot/default/uninstall/">← Uninstall</a>
@@ -380,6 +406,16 @@
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#cloudwatch-logs'>CloudWatch logs</a></li>
+    
+      
+      <li><a href='#resolving-issues'>Resolving issues</a></li>
+    
+  </ul>
 
 
   </nav>
@@ -417,10 +453,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 10 Jun 2021.
+  Last changed by Johan Stokking on 13 Jan 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/aea847e4a5b06db18fe91950625da9cc60eaf291">
-      Docs reorganization (#374)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b829ca79b1138fbe79508fa5820196b459061c04">
+      doc: Document mismatching stack error
     </a>
 </p>
 
