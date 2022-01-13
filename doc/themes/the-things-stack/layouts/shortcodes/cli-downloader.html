@@ -1,0 +1,118 @@
+<div class="field">
+  <label class="label">Deployment</label>
+  <div class="control">
+    <div class="select">
+      <select data-content="deployment">
+        <option value="the-things-stack-releases">Open Source</option>
+        <option value="the-things-enterprise-stack-releases">Enterprise</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="field">
+  <label class="label">OS</label>
+  <div class="control">
+    <div class="select">
+      <select data-content="os">
+        <option value="darwin">macOS</option>
+        <option value="linux">Linux</option>
+        <option value="windows">Windows</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="field">
+  <label class="label">Arch</label>
+  <div class="control">
+    <div class="select">
+      <select data-content="arch">
+        <option value="amd64">amd64 (64-bit Intel)</option>
+        <option value="arm64">arm64 (64-bit ARM)</option>
+        <option value="386">386 (32-bit Intel)</option>
+        <option value="armv7">armv7</option>
+        <option value="armv6">armv6</option>
+      </select>
+    </div>
+  </div>
+</div>
+<div class="field">
+  <label class="label">Download:</label>
+  <a
+    class="button is-primary"
+    id="cli-url"
+    href="https://github.com/TheThingsNetwork/lorawan-stack/releases"
+    >Download CLI</a
+  >.
+</div>
+Download:
+<span id="deployment">Open Source</span>
+<span id="os">macOS</span>
+<span id="arch">amd64 (64-bit Intel)</span>
+
+<script>
+  window.addEventListener("load", function (e) {
+    var $deploymentSpan = document.getElementById("deployment");
+    var $osSpan = document.getElementById("os");
+    var $archSpan = document.getElementById("arch");
+
+    var $deploymentInput = document.querySelector('select[data-content="deployment"]');
+    var $osInput = document.querySelector('select[data-content="os"]');
+    var $archInput = document.querySelector('select[data-content="arch"]');
+
+    $deploymentInput.addEventListener("change", (event) => {
+      updateURL();
+    });
+
+    $archInput.addEventListener("change", (event) => {
+      updateURL();
+    });
+
+    $osInput.addEventListener("change", (event) => {
+      resetFilter();
+      filterArch();
+      updateURL();
+    });
+
+    resetFilter();
+    filterArch();
+    updateURL();
+
+    function resetFilter() {
+      for (var i = 0; i < $archInput.length; i++) {
+        $archInput.options[i].removeAttribute("disabled");
+      }
+    }
+
+    function filterArch() {
+      const osFilter = {
+        darwin: ["386", "armv7", "armv6"],
+        linux: [],
+        windows: ["armv7", "armv6"],
+      };
+      const os = $osInput.value;
+      for (var i = 0; i < $archInput.length; i++) {
+        var value = $archInput.options[i].value;
+        if (osFilter[os].includes(value)) {
+          $archInput.options[i].setAttribute("disabled", "true");
+        }
+      }
+    }
+
+    function updateURL() {
+      const deployment = $deploymentInput.value;
+      const version = "{{ .Site.Params.version }}";
+      const os = $osInput.value;
+      const arch = $archInput.value;
+      const ext = os === "windows" ? "zip" : "tar.gz";
+
+      $deploymentSpan.textContent = $deploymentInput.options[$deploymentInput.selectedIndex].text;
+      $osSpan.textContent = $osInput.options[$osInput.selectedIndex].text;
+      $archSpan.textContent = $archInput.options[$archInput.selectedIndex].text;
+
+      var url = `https:\/\/${deployment}.s3.eu-west-1.amazonaws.com/${version}/lorawan-stack-cli_${version}_${os}_${arch}.${ext}`;
+
+      var $cliUrl = document.getElementById("cli-url");
+      $cliUrl.setAttribute("href", url);
+    }
+  });
+</script>
