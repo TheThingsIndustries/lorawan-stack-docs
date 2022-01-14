@@ -238,7 +238,7 @@ Now that the webhook and the event handler of the Dragino - LWL02 device are con
 
 After the device is registered, we can configure a new webhook on {{% tts %}}. Set the webhook format to **JSON** and enter the **Base URL** provided with the Withthegrid webhook we created in step 2.
 
-{{< figure src="TTN_Webhook.png" alt="TTN set up webhook" caption=Figure 20. Configure The Things Stack webhook >}}
+{{< figure src="TTS_Webhook.png" alt="TTS set up webhook" caption=Figure 20. Configure The Things Stack webhook >}}
 
 ## Step 8: Configuring report type
 
