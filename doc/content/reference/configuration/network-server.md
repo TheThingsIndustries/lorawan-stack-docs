@@ -7,7 +7,7 @@ description: ""
 
 - `ns.dev-addr-prefixes`: Device address prefixes of this Network Server
 - `ns.net-id`: NetID of this Network Server
-- `ns.cluster-id`: {{< new-in-version "3.14.0" >}} ClusterID of this Network Server. This is purely informative and is added as metadata to messages forwarded to the Application Server
+- `ns.cluster-id`: ClusterID of this Network Server. This is purely informative and is added as metadata to messages forwarded to the Application Server
 
 ## Uplink Options
 
