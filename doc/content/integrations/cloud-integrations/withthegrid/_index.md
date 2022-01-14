@@ -50,11 +50,11 @@ Now, let's implement the integration!
 
 To create a new connectivity environment, simply enter the desired name and select **CREATE**.
 
-{{< figure src="1_c_environment.png" alt="Create new connectivity environment" caption=Figure 4. New connectivity environment >}}
+{{< figure src="1_c_environment.png" alt="Create new connectivity environment" caption="Figure 4. New connectivity environment" >}}
 
 The same procedure can be followed to create a new monitoring environment. To create the first location in the monitoring environment, locate the desired place on the map and **Add a new location**.
 
-{{< figure src="claim6.png" alt="Add new location" caption=Figure 5. Add new location >}}
+{{< figure src="claim6.png" alt="Add new location" caption="Figure 5. Add new location" >}}
 
 To navigate between the environments, click on the arrows located in the top left corner.
 
@@ -62,59 +62,59 @@ To navigate between the environments, click on the arrows located in the top lef
 
 The first step in integrating the Withthegrid platform with {{% tts %}} is to create a new webhook. Webhooks can be found in the connectivity environment, under **Device access/Webhooks**. To create a new webhook, click **+** in the right bottom corner.
 
-{{< figure src="2_c_environment.png" alt="Webhooks" caption=Figure 6. Webhooks overview >}}
+{{< figure src="2_c_environment.png" alt="Webhooks" caption="Figure 6. Webhooks overview" >}}
 
 Select the desired webhook name and click **ADD**.
 
-{{< figure src="webhook_1.png" alt="Add webhook" caption=Figure 7. Add a new webhook >}}
+{{< figure src="webhook_1.png" alt="Add webhook" caption="Figure 7. Add a new webhook" >}}
 
 The platform will generate a webhook URL which we can use later to connect with {{% tts %}}.
 
-{{< figure src="webhook_2.png" alt="Webhook URL" caption=Figure 8. New webhook >}}
+{{< figure src="webhook_2.png" alt="Webhook URL" caption="Figure 8. New webhook" >}}
 
 ## Step 3: Creating and configuring a new device type
 
 A new device type can be created in a connectivity environment by navigating to **Device types**. This page shows an overview of all the device types that are available in your environment. Let’s create the first device type by clicking **+** in the bottom right corner. 
 
-{{< figure src="5_c_environment_deviceType.png" alt="New device type" caption=Figure 9. Device types overview >}}
+{{< figure src="5_c_environment_deviceType.png" alt="New device type" caption="Figure 9. Device types overview" >}}
 
 Name the new device type. At this point, we can also change the default name of the device channel to `Internal Sensor`. Use the same name for default name for port. This is where internal battery voltage measurements will be pushed. 
 
-{{< figure src="device_type_1.png" alt="Device type overview" caption=Figure 10. Add a new device type >}}
+{{< figure src="device_type_1.png" alt="Device type overview" caption="Figure 10. Add a new device type" >}}
 
 Let’s create one additional channel (`Probe`), where we will push measurements related to the water leak.
 
-{{< figure src="device_type_2.png" alt="Set channels" caption=Figure 11. Set channels >}}
+{{< figure src="device_type_2.png" alt="Set channels" caption="Figure 11. Set channels" >}}
 
 Click **ADD** to set the channel and click **ADD** to update and save the changes.
 
 Withthegrid's new event handler will validate the incoming request and pass the payload to the corresponding report parser which will parse incoming payloads into measurement reports. The new device type will be given a new hashID (e.g. **4djrvd**) which is a unique ID that identifies the event handler of **Dragino - LWL02**.
 
-{{< figure src="device_type_3.png" alt="Device type" caption=Figure 12. List of existing device types >}}
+{{< figure src="device_type_3.png" alt="Device type" caption="Figure 12. List of existing device types" >}}
 
 ## Step 4: Creating a new report type and quantities
 
 For each report, a report parser can parse the incoming payload. To create a new report, click **+** in the bottom right corner.
 
-{{< figure src="8_c_environment_report.png" alt="Create a report parser" caption=Figure 13. Report types overview >}}
+{{< figure src="8_c_environment_report.png" alt="Create a report parser" caption="Figure 13. Report types overview" >}}
 
 Follow the same steps as before to **ADD** the new report type.
 
-{{< figure src="10_c_environment_report.png" alt="Report parser" caption=Figure 14. Add a new report parser >}}
+{{< figure src="10_c_environment_report.png" alt="Report parser" caption="Figure 14. Add a new report parser" >}}
 
 In the report parser, we will correctly parse the incoming payload into a measurement report. A new report type will be given a hashID (e.g. **eyr96d**). Note that the hashID is automatically created and will be different for everyone.
 
 The quantities of interest in this example are voltage, leak status, total leak events and last leak duration. Custom quantities can be found in the panel under option **Quantities**. To create a new quantity, select **+**.
 
-{{< figure src="quantities_1.png" alt="Quantities" caption=Figure 15. Quantities overview >}}
+{{< figure src="quantities_1.png" alt="Quantities" caption="Figure 15. Quantities overview" >}}
 
 Enter the quantity name `Voltage` and unit `V`. To create the quantity, select **ADD**.
 
-{{< figure src="quantity_1.png" alt="Create a quantity" caption=Figure 16. Add a new quantity >}}
+{{< figure src="quantity_1.png" alt="Create a quantity" caption="Figure 16. Add a new quantity" >}}
 
 After selecting **ADD**, a hashID will be created for the newly created quantity. We will create `Leak status`, `Total leak events`, and `Last leak duration` quantities by following the same procedure. For unitless quantities, just enter space. Leak duration is in min according to the datasheet. In this example, the voltage, leak status, total leak events, and last leak duration hashIDs are **yl4wwy**, **dp2v9d**, **yzrwny**, and **d4rwrd**, respectively. The hashIDs will be used in the report to identify the correct measurement quantity.
 
-{{< figure src="quantity_2.png" alt="Created quantities overview" caption=Figure 17. List of existing quantities >}}
+{{< figure src="quantity_2.png" alt="Created quantities overview" caption="Figure 17. List of existing quantities" >}}
 
 ## Step 5: Configuring the created webhook
 
@@ -238,7 +238,7 @@ Now that the webhook and the event handler of the Dragino - LWL02 device are con
 
 After the device is registered, we can configure a new webhook on {{% tts %}}. Set the webhook format to **JSON** and enter the **Base URL** provided with the Withthegrid webhook we created in step 2.
 
-{{< figure src="TTS_Webhook.png" alt="TTS set up webhook" caption=Figure 20. Configure The Things Stack webhook >}}
+{{< figure src="TTS_Webhook.png" alt="TTS set up webhook" caption="Figure 20. Configure The Things Stack webhook" >}}
 
 ## Step 8: Configuring report type
 
@@ -350,25 +350,25 @@ function pushMeasurement(
 
 After powering up the device it should automatically connect to the Withthegrid application. The successful connection can be observed in the connectivity environment under **Activity** and it will look like this:
 
-{{< figure src="activity_1.png" alt="Activity" caption=Figure 20. Activity overview >}}
+{{< figure src="activity_1.png" alt="Activity" caption="Figure 20. Activity overview" >}}
 
 You can click on **Parse report** to view more information and verify that the parsing is correct.
 
-{{< figure src="activity_2.png" alt="Snipet of parsed report" caption=Figure 21. Example of the parsed report >}}
+{{< figure src="activity_2.png" alt="Snipet of parsed report" caption="Figure 21. Example of the parsed report" >}}
 
 ## Step 10: Claiming device tokens
 
 When the sensor is linked for the first time, the instance of the device is created in the platform and can be found in **Devices**. The corresponding device will have a unique hashID (e.g. **dxrwmd**), Identifier (in our case IMEI of the device), and will be of device type **Dragino - LWL02**. The device can be easily placed in any monitoring environment by selecting **GET CLAIM TOKEN(S)** in the bottom right corner.
 
-{{< figure src="tokens_1.png" alt="Tokens for devices" caption=Figure 22. Devices overview >}}
+{{< figure src="tokens_1.png" alt="Tokens for devices" caption="Figure 22. Devices overview" >}}
 
 Enter the hashID of a device to be claimed and click **REQUEST**.
 
-{{< figure src="tokens_2.png" alt="HashID for claim token" caption=Figure 23. Get claim tokens with device hash IDs >}}
+{{< figure src="tokens_2.png" alt="HashID for claim token" caption="Figure 23. Get claim tokens with device hash IDs" >}}
 
 The platform will output a claim token that can be copied.
 
-{{< figure src="token_3.png" alt="Get claim token" caption=Figure 24. Claim generated token >}}
+{{< figure src="token_3.png" alt="Get claim token" caption="Figure 24. Claim generated token" >}}
 
 In the last step, we will configure the monitoring environment and add the newly connected sensor. 
 
@@ -376,22 +376,22 @@ In the last step, we will configure the monitoring environment and add the newly
 
 To add a device into the monitoring environment, navigate to **Devices**, click **+**, and enter the previously copied claim token. Click **ADD**.
 
-{{< figure src="claim4.png" alt="Claim token" caption=Figure 25. Claim device in the monitoring environment >}}
+{{< figure src="claim4.png" alt="Claim token" caption="Figure 25. Claim device in the monitoring environment" >}}
 
 The following image shows that the device is registered in the monitoring environment, however, is not installed yet.
 
-{{< figure src="Mon_1.png" alt="Claim device in monitoring environment" caption=Figure 26. Available devices >}}
+{{< figure src="Mon_1.png" alt="Claim device in monitoring environment" caption="Figure 26. Available devices" >}}
 
 To install a device, navigate to the created location (**ACME Headquarters**) and select **Devices**.
 
-{{< figure src="claim7.png" alt="Create location" caption=Figure 27. Add a device to location >}}
+{{< figure src="claim7.png" alt="Create location" caption="Figure 27. Add a device to location" >}}
 
 In **Link to a device**, select the **Dragino - LWL02**. Finally, we would like to track the **Internal Sensor** port and **Probe** port onto which measurements are pushed. Click **+ PORT** to add the **Internal Sensor** channel and repeat to add the **Probe** channel. Finalize the device installation with **SET**.
 
-{{< figure src="Mon_2.png" alt="Set device ports" caption=Figure 28. Set device ports >}}
+{{< figure src="Mon_2.png" alt="Set device ports" caption="Figure 28. Set device ports" >}}
 
 From this point on, all measurements pushed to channels of Dragino - LWL02 sensor with the unique IMEI will be available in the monitoring environments, ready to be visualized in graphs. Try shorting the two pins on the sensor to see if a measurement is recorded.
 
-{{< figure src="Graphs.png" alt="Overview of the graph" caption=Figure 29. Visualize data >}}
+{{< figure src="Graphs.png" alt="Overview of the graph" caption="Figure 29. Visualize data" >}}
 
 Congratulations! If you can see measurements in the graphs, you have successfully finished the tutorial. If you want to learn more about all the cool functionalities that the Withthegrid platform offers, do not hesitate to look at our [documentation](http://docs.withthegrid.com/) or contact us directly through [withthegrid.com](http://withthegrid.com/).
