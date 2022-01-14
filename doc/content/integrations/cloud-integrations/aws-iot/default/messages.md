@@ -42,7 +42,7 @@ Click **Subscribe to topic**.
 
 The AWS IoT Integration for {{% tts %}} uses the `lorawan/downlink` topic for downstream traffic.
 
-{{< new-in-version "1.1.8" >}} Feedback events are published on the following topics:
+Feedback events are published on the following topics:
 
 - `lorawan/<thing>/downlink/queued` (when any downlink has been queued)
 - `lorawan/<thing>/downlink/sent` (when the downlink has been sent by the Network Server)

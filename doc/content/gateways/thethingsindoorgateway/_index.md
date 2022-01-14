@@ -28,11 +28,11 @@ The gateway EUI can later be found at the bottom in the WiFi setup screen.
 
 {{% ttig %}} is added to The Things Stack via a process called **Gateway Claiming**.
 
+{{< warning >}} Do not register your TTIGs via the regular option of **Adding Gateways**. {{</ warning >}}
+
 {{< tabs/container "Console" "CLI" >}}
 
 {{< tabs/tab "Console" >}}
-
-{{< warning >}} Do not register your TTIGs via the regular option of **Adding Gateways**. {{</ warning >}}
 
 Go to **Gateways** in the top menu, and click the **Claim Gateway** button on the upper right to reach the gateway claiming page.
 
@@ -109,7 +109,7 @@ If this is the first time your gateway is being powered on/connected to WiFi, it
 
 ## Existing Gateways
 
-{{< new-in-version "3.14.1" >}} You can also claim gateways that have been previously claimed or registered to {{% tts %}}.
+You can also claim gateways that have been previously claimed or registered to {{% tts %}}.
 
 For this, you need to authorize your gateways for claiming. This is currently only supported via the CLI.
 
