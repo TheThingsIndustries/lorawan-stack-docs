@@ -65,7 +65,7 @@ Open the file you created and paste the code below:
 import context
 import paho.mqtt.publish as publish
 
-publish.single("v3/{application-id}/devices/{device-id}/down/push", '{"downlinks":[{"f_port": 15,"frm_payload":"vu8=","priority": "NORMAL"}]}', hostname="thethings.example.com", port=1883, {'username':"app1",'password':"NNSXS.VEEBURF3KR77ZR.."})
+publish.single("v3/{application-id}/devices/{device-id}/down/push", '{"downlinks":[{"f_port": 15,"frm_payload":"vu8=","priority": "NORMAL"}]}', hostname="thethings.example.com", port=1883, auth={'username':"app1",'password':"NNSXS.VEEBURF3KR77ZR.."})
 ```
 
 {{< note >}} For scheduling downlink messages, the `f_port` values from `1` to `233` are allowed. {{</ note >}}
