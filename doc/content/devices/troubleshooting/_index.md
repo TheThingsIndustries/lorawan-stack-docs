@@ -32,7 +32,9 @@ Device event logs can be found in the console in the device's general informatio
 
 ## I see no Join Requests from my device in {{% tts %}}.
 
-Check your network coverage, and if your device is activated and transmitting Join Requests. 
+Check your network coverage, and if your device is activated and transmitting Join Requests.
+
+If your device uses ABP, it is also possible that it is sending join requests on frequencies that {{% tts %}} is not listening on. See [using inappropriate frequencies](#i-can-see-some-received-uplinks-in-gateway-live-data-events-but-i-do-not-see-them-in-device-events) below.
 
 ## My device will not join. What do I do?
 

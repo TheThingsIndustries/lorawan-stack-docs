@@ -234,17 +234,15 @@ function handle(args: Arguments, exec: Exec): IncomingRequestResponse | void {
 
 Now that the webhook and the event handler of the Dragino - LWL02 device are configured, we can proceed with setting up {{% tts %}}. 
 
-{{< figure src="Add_app.png" alt="The Things Stack add app" caption=Figure 18. Create The Things Stack application >}}
-
-[Create an application]({{< ref "/integrations/adding-applications" >}} and [add the Dragino device]({{< ref "/devices/adding-devices" >}}.
+[Create an application]({{< ref "/integrations/adding-applications" >}}) and [add the Dragino device]({{< ref "/devices/adding-devices" >}}) by following linked tutorials.
 
 After the device is registered, we can configure a new webhook on {{% tts %}}. Set the webhook format to **JSON** and enter the **Base URL** provided with the Withthegrid webhook we created in step 2.
 
-{{< figure src="TTN_Webhook.png" alt="The Things Stack set up webhook" caption=Figure 19. Configure The Things Stack webhook >}}
+{{< figure src="TTN_Webhook.png" alt="TTN set up webhook" caption=Figure 20. Configure The Things Stack webhook >}}
 
 ## Step 8: Configuring report type
 
-The next step is to correctly configure the created report type such that it can decode the incoming payload into physical measurements. {{% tts %}} makes this easy because Dragino provides a payload decoder for this specific device, therefore, the payload is already decoded. We only need to push the measurements to correct channels. Voltage measurement should be pushed into *Internal Sensor* channel which is the first channel, therefore, has a `channelIndex` of 0. Measurements related to *Probe* should be pushed to a `channelIndex` of 1.
+The next step is to correctly configure the created report type such that it can decode the incoming payload into physical measurements. **The Things Network** makes this easy because the payload is already decoded. We only need to push the measurements to correct channels. Voltage measurement should be pushed into *Internal Sensor* channel which is the first channel, therefore, has a `channelIndex` of 0. Measurements related to *Probe* should be pushed to a `channelIndex` of 1.
 
 ```tsx
 /**

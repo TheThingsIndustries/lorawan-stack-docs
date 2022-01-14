@@ -116,11 +116,19 @@ Note that Windows binaries must be run with a `.exe` extension on the end, so if
 
 ## Installing using pre-built binaries
 
-If your operating system does not support a package manager or you do not want to use one, you can still download [pre-built binaries](https://github.com/TheThingsNetwork/lorawan-stack/releases) for your operating system and processor architecture.
-
-Find the [latest {{% tts %}} release](https://github.com/TheThingsNetwork/lorawan-stack/releases), scroll down and expand the **Assets** section to see the binaries. Search for archives starting with `lorawan-stack-cli` (usually on top), then search for the specific archive ending with your operating system and processor architecture label.
+If your operating system does not support a package manager or you do not want to use one, you can still download pre-built binaries for your operating system and processor architecture.
 
 The commands to determine your processor architecture depend on your operating system. On Linux and macOS you can use `uname -m` in your terminal, while on Windows you can use `echo %PROCESSOR_ARCHITECTURE%`.
+
+Use the following form to select the correct binaries for your architecture.
+
+{{< cli-downloader >}}
+
+### See binaries for all releases
+
+To see old versions of the CLI, or if the binary selector above does not work, find all releases of `ttn-lw-cli` [here](https://github.com/TheThingsNetwork/lorawan-stack/releases).
+
+Scroll down and expand the **Assets** section to see the binaries. Search for archives starting with `lorawan-stack-cli` (usually on top), then search for the specific archive ending with your operating system and processor architecture label.
 
 {{< figure src="binaries.png" >}}
 
