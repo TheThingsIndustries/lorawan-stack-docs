@@ -287,3 +287,7 @@ If the gateway sends back a NACK, {{% tts %}} will retry sending in the next dow
 ## When the connection on the main interface goes down, my gateway gets disconnected and it does not reconnect through the backup interface.
 
 Please try restarting your gateway's packet forwarder.
+
+## Why do I still see connection stats of a gateway I previously disconnected?
+
+After disconnecting a gateway, the connection stats will still be available for 48 hours. The HTTP endpoint will return the status code `200 OK` and the connection stats will contain the `disconnected_at` field. If the gateway remains inactive for more than 48 hours, the HTTP endpoint will then return the `404 Not Found (gateway <gtw_id> not connected)` status.
