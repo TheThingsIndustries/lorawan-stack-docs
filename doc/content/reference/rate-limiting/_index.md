@@ -7,6 +7,8 @@ description: ""
 
 <!--more-->
 
+For more details about the algorithm used, read [here](https://en.wikipedia.org/wiki/Generic_cell_rate_algorithm).
+
 ## Example configuration
 
 The rate limiting configuration is split into multiple profiles. For each profile, we provide a name, the maximum allowed rate per minute, and optionally a maximum burst rate. Finally, we associate the profile with a number of rate limiting classes. Refer to the [Rate Limited Entities]({{< ref "#rate-limited-entities" >}}) section below for a list of all available rate limiting classes and what they mean.
