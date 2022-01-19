@@ -78,13 +78,19 @@ Device join failure could be due to a number of reasons. Ensure that the device 
 
 In our stack we use Let's Encrypt certificates, which are requested upon stack deployment. There are quotas in place, once you hit them you need to wait before requesting a certificate again. If you're redeploying the stack multiple times for testing purposes, use a different domain, so that you don't hit the limit in your production environment. For details, please refer to the [Let's Encrypt website](https://letsencrypt.org/docs/rate-limits/).
 
-## My update has failed, and I don't know the details
+### My update has failed, and I don't know the details
 
 You can find logs in the `/tti/bootstrap/*.log` files.
 
-## There are store errors in {{% tts %}} logs
+### There are store errors in {{% tts %}} logs
 
 This means that {{% tts %}} fails to connect to the database and/or Redis. For details of your database and Redis, go to Amazon RDS and ElastiCache respectively. Refer to the `Resources` tab in the CloudFormation stack to know which RDS and ElastiCache instances belong to the {{% tts %}} instance. Make sure that Amazon does not signal any issues, and all metrics are within expected values. This includes, but is not limited to CPU, memory, free disk, available connections.
+
+### Migration has failed with `dial tcp 127.0.0.1:5432: connect: connection refused`
+
+This error occurs when the stack executable doesn't properly read the configuration file.
+
+To resolve this issue, you can do `export TTN_LW_CONFIG=/tti/lorawan-stack/config.yml` before running the migration command. See [Database Schema Migrations]({{< ref "getting-started/aws/ami/updating#database-schema-migrations" >}}).
 
 ## Professional Support
 
