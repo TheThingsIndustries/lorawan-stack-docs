@@ -21,6 +21,10 @@ description: ""
 - `pba.cluster-id`: Cluster ID uniquely identifying this cluster within a NetID and tenant. The cluster ID is used for shared subscriptions (i.e. splitting traffic over multiple Packet Broker Agents) and as Forwarder ID to route downlink traffic to the right cluster
 - `pba.home-network-cluster-id`: Home Network Cluster ID, if different from the Cluster ID. Leave empty to fallback to `cluster-id`
 
+Gateway identity, status, antennas, frequency plan, location, Tx and Rx rates can be reported to Packet Broker Mapper. Mapping is enabled when the Forwarder role is enabled.
+
+- `pba.mapper-address`: Address of Packet Broker Mapper
+
 ## Authentication Options
 
 - `pba.authentication-mode`: Set this to `oauth2`
@@ -36,9 +40,11 @@ description: ""
 - `pba.forwarder.include-gateway-eui`: Indicates whether to include the gateway EUI in forwarded uplink messages
 - `pba.forwarder.include-gateway-id`: Indicates whether to include the gateway ID (plain or hashed) in forwarded uplink messages
 - `pba.forwarder.hash-gateway-id`: Indicates whether the forwarded gateway ID should be hashed. This setting is ineffective if `include-gateway-id` is `false`
+- `pba.forwarder.gateway-online-ttl`: TTL of online status reported to Packet Broker
 
 ## Home Network Options
 
 - `pba.home-network.enable`: Enable Home Network role
 - `pba.home-network.dev-addr-prefixes`: DevAddr prefixes to subscribe to
 - `pba.home-network.worker-pool.limit`: Limit of active workers concurrently processing uplink messages and publishing downlink messages
+- `pba.home-network.include-hops`: Include hops in the metadata. This option is disabled by default

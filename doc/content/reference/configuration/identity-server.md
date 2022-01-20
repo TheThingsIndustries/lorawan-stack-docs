@@ -3,6 +3,10 @@ title: 'Identity Server Options'
 description: ''
 ---
 
+## General Options
+
+- `is.delete.restore`: Defines how long after soft-deletion an entity can be restored
+
 ## Database Options
 
 The Identity Server needs to be connected to a PostgreSQL-compatible database. Details for the form of the URI can be found in the [PostgreSQL documentation](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING).
@@ -56,7 +60,9 @@ If your custom templates rely on other files, such as headers or footers, those 
 The OAuth user interface needs to be configured with at least the canonical URL and the base URL of the Identity Server's HTTP API. The canonical URL needs to be the full URL of the UI, and looks like `https://thethings.example.com/oauth`. The base URL of the Identity Server's HTTP API looks like `https://thethings.example.com/api/v3`.
 
 - `is.oauth.ui.canonical-url`: The page canonical URL
+- `is.oauth.ui.console-url`: The URL that points to the root of the Console
 - `is.oauth.ui.is.base-url`: Base URL to the HTTP API
+- `is.oauth.ui.is.enabled`: Enable this API (default `true`)
 
 If you do not want to serve the OAuth user interface on `/oauth`, you may customize the mount path.
 
@@ -93,6 +99,10 @@ It is possible to highlight some deployment information and disclaimers in the h
 - `is.oauth.ui.support-plan-applies`: The applicable support plan of this deployment, e.g. `priority`, `24h`
 - `is.oauth.ui.support-plan-information-url`: A URL with information about the support plan applicable for this deployment
 
+It is possible to configure Identity Server to use Sentry for monitoring events.
+
+- `is.oauth.ui.sentry-dsn`: The Sentry DSN
+
 ## Profile Picture Storage Options
 
 The profile pictures that users upload for their accounts are stored in a blob bucket. The global [blob configuration]({{< relref "the-things-stack.md#blob-options" >}}) is used for this. In addition to those options, specify the name of the bucket and the public URL to the bucket.
@@ -126,6 +136,7 @@ By default, users can register their own user accounts. User accounts can also b
 - `is.user-registration.enabled`: Enable user registration. If user registration is disabled, admin users can still create users. 
 - `is.user-registration.admin-approval.required`: Require admin approval for new users
 - `is.user-registration.contact-info-validation.required`: Require contact info validation for new users
+- `is.user-registration.contact-info-validation.token-ttl`: TTL of contact info validation tokens
 - `is.user-registration.invitation.required`: Require invitations for new users
 - `is.user-registration.invitation.token-ttl`: TTL of user invitation tokens
 
@@ -163,3 +174,28 @@ By default admins are granted _almost_ all rights on all entities in the network
 {{< distributions "Cloud" "Enterprise" >}} In multi-tenant deployments, tenants are managed with "tenant admin keys". These keys need to be configured in the Identity Server.
 
 - `is.tenancy.admin-keys` {{< distributions "Cloud" "Enterprise" >}}: Keys that can be used for tenant administration (16, 24 or 32 hex-encoded bytes)
+
+## Cache Options
+
+- `is.auth-cache.membership-ttl`: TTL of membership caches
+
+## DevEUI Issuer Options
+
+- `is.dev-eui-block.enabled`: Enable DevEUI address issuing from IEEE MAC block
+- `is.dev-eui-block.application-limit`: Maximum DevEUI addresses to be issued per application
+- `is.dev-eui-block.init-counter`: Initial counter value for the addresses to be issued (default 0)
+- `is.dev-eui-block.prefix`: DevEUI block prefix (default "0000000000000000/0")
+
+## Login Tokens
+
+{{% tts %}} allows using login tokens (magic login links) for password-less login.
+
+- `is.login-tokens.enabled`: Enable users requesting login tokens
+- `is.login-tokens.token-ttl`: TTL of login tokens
+
+## Network Options
+
+{{% tts %}} Identity Server supports LoRaWAN Backend Interfaces, so it is possible to obtain an end device's NetID, Tenant ID and Network Server address with the use of a vendor-specific extension.
+
+- `is.network.net-id`: The NetID of the network. When running a Network Server, this needs to be the same value as `ns.net-id`.
+- `is.network.tenant-id`: The Tenant ID in the host NetID. Leave blank if the used NetID is dedicated for this Identity Server.

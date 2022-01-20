@@ -3,6 +3,15 @@ title: "Gateway Server Options"
 description: ""
 ---
 
+## General Options
+
+- `gs.update-version-info-delay`
+
+Gateways are disconnected from {{% tts %}} when settings affecting the connection with the Gateway Server change. You can configure how often the gateway gets fetched from the entity registry.
+
+- `gs.fetch-gateway-interval`: Update gateway fetching interval
+- `gs.fetch-gateway-jitter`: Jitter to apply to the update interval to randomize intervals
+
 ## Forwarding Options
 
 The Gateway Server forwards traffic to upstream hosts based on the `gs.forward` parameter.
@@ -41,6 +50,16 @@ The frequency plan to use for unregistered gateways can be set using `gs.basic-s
 
 - `gs.basic-station.fallback-frequency-plan-id`: Fallback frequency plan ID for non-registered gateways
 
+{{% tts %}} provides RTT recording for {{% lbs %}} gateways.
+
+- `gs.basic-station.max-valid-round-trip-delay`: Defines the maximum valid round trip delay to qualify for RTT calculations
+
+{{% tts %}} offers a WebSocket Ping-Pong support for {{% lbs %}} gateways. The Gateway Servers sends pings to {{% lbs %}} gateway, and the gateway responds with a pong. The gateway that stops sending pongs to server pings gets disconnected by the Gateway Server after a configurable time period. This does not apply for gateways that don't support pongs.
+
+- `gs.basic-station.missed-pong-threshold`: Defines a number of consecutive missed pongs before disconnection. This value is used only if the gateway sends at least one pong.
+- `gs.basic-station.time-sync-interval`: Interval to send time transfer messages
+- `gs.basic-station.ws-ping-interval`: Interval to send WS ping messages
+
 ## MQTT Options
 
 The Gateway Server exposes an MQTT server for connecting gateways via MQTT.
@@ -69,6 +88,7 @@ The Gateway Server supports the connection of gateways using the Semtech UDP pro
 Options are available to configure connection behavior of UDP gateways.
 
 - `gs.udp.connection-expires`: Time after which a connection of a gateway expires
+- `gs.udp.connection-error-expires`: Time after which a connection error of a gateway expires
 - `gs.udp.downlink-path-expires`: Time after which a downlink path to a gateway expires
 - `gs.udp.addr-change-block`: Time to block traffic when a gateway's address changes
 
@@ -82,6 +102,7 @@ Using the `packet-buffer` and `packet-handlers` options, the throughput of UDP p
 Specify options for gateway connection statistics:
 
 - `gs.update-connection-stats-debounce-time`: Time before repeated refresh of the gateway connection stats
+- `gs.connection-stats-disconnect-ttl`: TTL of the gateway connection stats after disconnecting
 
 ## UDP Rate Limiting Options
 
@@ -90,3 +111,9 @@ The Gateway Server supports rate limiting traffic for gateways that are using th
 - `gs.udp.rate-limiting.enable`: Enable rate limiting for gateways
 - `gs.udp.rate-limiting.messages`: Number of past messages to check timestamp for
 - `gs.udp.rate-limiting.threshold`: Filter packet if timestamp is not newer than the older timestamps of the previous messages by this threshold
+
+## Packet Broker Options
+
+- `gs.packetbroker.online-ttl-margin`: Time to extend the online status before it expires
+- `gs.packetbroker.update-gateway-interval`: Update gateway interval
+- `gs.packetbroker.update-gateway-jitter`: Jitter (fraction) to apply to the update interval to randomize intervals

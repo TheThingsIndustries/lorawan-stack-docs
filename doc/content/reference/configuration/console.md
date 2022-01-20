@@ -18,6 +18,7 @@ The Console app uses the [OAuth 2.0 authorization flow](https://en.wikipedia.org
 - `console.oauth.client-secret`: The OAuth client secret
 - `console.oauth.token-url`: The OAuth Token Exchange URL
 - `console.oauth.logout-url`: The logout URL of the OAuth server used to perform client initiated logouts
+- `console.oauth.cross-site-cookie`: Controls access to OAuth state cookie between origins. Set to `true` in multi-cluster deployments in order to support OAuth clients that use POST callbacks. The default is `false`.
 
 ## Frontend Setup
 
@@ -27,6 +28,7 @@ You can change various values that will be passed to the JavaScript logic and HT
 
 The Console needs to know how the individual {{% tts %}} components are configured, so it can execute API calls correctly. Likewise, disabled components will cause possible respective options and menus in the Console frontend to be disabled.
 
+- `console.ui.account-url`: The URL that points to the root of the Account app
 - `console.ui.as.base-url`: Base URL to the HTTP API
 - `console.ui.as.enabled`: Enable Application Server related functionality in the Console
 - `console.ui.gs.base-url`: Base URL to the HTTP API
@@ -80,3 +82,20 @@ It is possible to highlight some deployment information and disclaimers in the h
 - `console.ui.sla-information-url`: A URL with information about the SLA applicable for this deployment
 - `console.ui.support-plan-applies`: The applicable support plan of this deployment, e.g. `priority`, `24h`
 - `console.ui.support-plan-information-url`: A URL with information about the support plan applicable for this deployment
+- `console.ui.sentry-dsn`: The Sentry DSN
+
+### DevEUI Generation Support
+
+Console supports generating DevEUIs from the configured DevEUI address block.
+
+- `console.ui.dev-eui-issuing-enabled`: To enable DevEUI issuing
+- `console.ui.dev-eui-app-limit`: Controls how many DevEUIs can be issued per an application
+
+### Device Repository Options
+
+Device Repository component allows integrating Device Repository with {{% tts %}}.
+
+- `dr.assets-base-url`: The BaseURL of the Device Repository assets
+- `dr.directory`: Retrieve Device Repository from the filesystem
+- `dr.source`: Source of the Device Repository
+- `dr.store.bleve.search-paths`: Search paths for the Device Repository index files
