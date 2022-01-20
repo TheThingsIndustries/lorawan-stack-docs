@@ -5,7 +5,7 @@ description: ""
 
 {{< figure src="lorix-one.png" alt="LORIX One" class="plain float" >}}
 
-The LORIX One is a robust and professional grade outdoor LoRaWAN® gateway in an ultra compact form factor, designed and assembled in Switzerland. The LORIX One supports ethernet, wireless, and cellular backhauls.
+The LORIX One is a robust and professional grade outdoor LoRaWAN® gateway in an ultra compact form factor, designed and assembled in Switzerland.
 
 This page will guide you through the steps required to connect the gateway to {{% tts %}}.
 
@@ -52,7 +52,7 @@ To get the Gateway EUI from the Manager UI, connect to your gateway and check th
 
 ## Registration
 
-Create a gateway by following the instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}).
+Create a gateway in the TTN console by following the instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}). Copy the API Key to a notepad, we will need it later.
 
 ## Configuration
 
@@ -79,4 +79,5 @@ In the **Antenna** field, select the antenna you have connected.
 
 ## Configure the Packet Forwarder
 
-After completing basic configuration, follow the instructions for connecting using [{{% lbs %}}]({{< relref "lbs" >}}) or the [UDP Packet Forwarder]({{< relref "udp" >}}).
+After completing basic configuration, follow the instructions for connecting using [{{% lbs %}}]({{< relref "lbs" >}}).
+It is also possible to connect the gateway usgin the legacy [UDP Packet Forwarder]({{< relref "udp" >}}) if necessary.
