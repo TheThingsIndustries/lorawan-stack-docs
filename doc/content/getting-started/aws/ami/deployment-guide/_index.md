@@ -77,8 +77,8 @@ This template allows the user to customize the deployment. The following is a li
 |Amazon RDS Database Password|Password for the relational database. This password is used to access the Amazon RDS database.|-|
 |SSH Key|Name of an existing EC2 KeyPair to enable SSH access to your instance.|-|
 |SendGrid API Key*|API key for [SendGrid](https://sendgrid.com/) to send emails.|-|
-|Amazon ElastiCache KMS Key ID*|Key used for Redis at-rest encryption. Leave empty to disable encryption.|-|
-|Amazon ElastiCache Password*|Password used to access Redis. Leave empty to disable TLS connection.|-|
+|Amazon ElastiCache KMS Key ID*|Key used for Redis at-rest encryption. Leave empty to disable encryption. (Warning) A change to this field requires manual migration of the database.|-|
+|Amazon ElastiCache Password*|Password used to access Redis. Leave empty to disable TLS connection. (Warning) A change to this field requires manual migration of the database.|-|
 
 > \* Optional field
 
