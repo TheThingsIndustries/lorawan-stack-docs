@@ -218,7 +218,7 @@
         <div class="content">
           <p>This section contains information to update The Things Stack deployment on AWS Marketplace.</p>
 <h2 id="updating-the-cloudformation-stack">Updating the CloudFormation Stack</h2>
-<p>We recommend using <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html">Change Sets</a> to to update the CloudFormation Stack.</p>
+<p>We recommend using <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html">Change Sets</a> to update the CloudFormation Stack.</p>
 <p>On the AWS Console, open the <strong>CloudFormation</strong> service, navigate to the <strong>Change sets</strong> tab and select <strong>Create change set</strong>. There are two choices that can be made here:</p>
 <ul>
 <li>Use current template: Choose this option to update input parameters on an existing template.</li>
@@ -226,6 +226,13 @@
 </ul>
 <p>Once the necessary options are updated, select the <strong>Create Change Set</strong> option. This will create a change set that describes the resources that will be updated by this change and if any of these resources need to be replaced.</p>
 <p>After confirming the changes, select <strong>Execute</strong>. Depending on the resources, this will take some time to complete and can be tracked using the <strong>Events</strong> tab on the AWS Console.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  We recommend to only update the AWS resource configuration via the CloudFormation template. Updating resources outside CloudFormation causes unpredicted behavior during updates or EC2 instance restart, and limits the possible support we can provide.
+</div>
+
+<h2 id="new-cloudformation-template">New CloudFormation template</h2>
+<p>New CloudFormation template version can be downloaded from <a href="https://aws.amazon.com/marketplace/pp/prodview-okhh3ofzhqj56?qid=1593444260869&amp;sr=0-1&amp;ref_=srh_res_product_title#pdp-usage">AWS Marketplace</a>. Click <strong>View CloudFormation Template</strong> and then <strong>Download CloudFormation Template</strong> to download the most recent template.</p>
 <h2 id="manual-upgrade-of-databases-amazon-rds-and-elasticache-using-snapshots">Manual Upgrade of Databases (Amazon RDS and ElastiCache) using snapshots</h2>
 <p>The update of certain fields of the CloudFormation stack necessitates the recreation of the database. AWS does not automatically migrate the data and hence, this must be done manually. This section applies only when CloudFormation plans to recreate the database.</p>
 <p>In order to migrate the database without the loss of data, first create a snapshot of your database before running a change set on these fields.</p>
@@ -236,13 +243,18 @@
 <p>Now run a change set on CloudFormation.</p>
 <ul>
 <li>For RDS, enter the ARN (Amazon Resource Name) of the snapshot into the <strong>Amazon RDS Snapshot</strong> field and run the change set.</li>
-<li>For Redis (ElastiCache), enter the Name of the backup into the <strong>Amazon RDS Database Name</strong> and run the change set.</li>
+<li>For Redis (ElastiCache), enter the Name of the backup into the <strong>Amazon ElastiCache Redis Snapshot</strong> and run the change set.</li>
 </ul>
-<h2 id="database-migrations">Database Migrations</h2>
+<h2 id="database-schema-migrations">Database Schema Migrations</h2>
 <p>When updating minor version of the stack, you might be required to perform database migrations. Please refer to the changelog for information which migrations are needed when updating to given version. Remember that you need to perform migrations mentioned not only in the latest version, but also those mentioned in versions between your current and target version. Database migrations are run by logging into the EC2 machine that the stack runs on, and executing relevant commands. Required command you need to run is also mentioned in the changelog, for example:</p>
 <blockquote>
 <p>This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>) because of the added columns.</p>
 </blockquote>
+<p>The <code>tti-lw-stack</code> executable is located in <code>/tti/lorawan-stack/</code>. When running it, in the environment you need to have the <code>TTN_LW_CONFIG=/tti/lorawan-stack/config.yml</code> variable exported. Example use:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">export</span> <span class="nv">TTN_LW_CONFIG</span><span class="o">=</span>/tti/lorawan-stack/config.yml
+
+/tti/lorawan-stack/tti-lw-stack is-db migrate
+</code></pre></div><p>If you encounter any issues, please refer to <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ami/troubleshooting/">Troubleshooting</a>.</p>
         </div>
         
           <div class="is-clearfix">
@@ -270,10 +282,13 @@
       <li><a href='#updating-the-cloudformation-stack'>Updating the CloudFormation Stack</a></li>
     
       
+      <li><a href='#new-cloudformation-template'>New CloudFormation template</a></li>
+    
+      
       <li><a href='#manual-upgrade-of-databases-amazon-rds-and-elasticache-using-snapshots'>Manual Upgrade of Databases (Amazon RDS and ElastiCache) using snapshots</a></li>
     
       
-      <li><a href='#database-migrations'>Database Migrations</a></li>
+      <li><a href='#database-schema-migrations'>Database Schema Migrations</a></li>
     
   </ul>
 
@@ -313,10 +328,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Michał Borkowski on 24 Aug 2021.
+  Last changed by Michał Borkowski on 20 Jan 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/83736a9394ec098e471a8a3f7cb9265648c485ce">
-      doc: Fixes to AMI update docs (#539)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/72acd6a9d55dd97ef3004d8a7c6a9d9cf2131abf">
+      Fixes to the AWS Marketplace documentation (#735)
     </a>
 </p>
 
