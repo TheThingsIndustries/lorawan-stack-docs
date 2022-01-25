@@ -40,7 +40,7 @@ To register a LoRaWAN 1.0.x device in application `test-app`, device ID `test-de
 
 ```bash
 ttn-lw-cli end-devices create test-app test-device \
-  --app-eui 70B3D57ED0000000 \
+  --join-eui 70B3D57ED0000000 \
   --dev-eui 0004A310001FF9E0 \
   --root-keys.app-key.key D3FD8EEED7E8880025CC63D5E8E1D7FB
 ```
