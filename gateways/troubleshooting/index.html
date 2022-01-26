@@ -365,6 +365,8 @@
 </code></pre><p>If the gateway sends back a NACK, The Things Stack will retry sending in the next downlink window. This can also be caused by a hardware issue.</p>
 <h2 id="when-the-connection-on-the-main-interface-goes-down-my-gateway-gets-disconnected-and-it-does-not-reconnect-through-the-backup-interface">When the connection on the main interface goes down, my gateway gets disconnected and it does not reconnect through the backup interface.</h2>
 <p>Please try restarting your gateway&rsquo;s packet forwarder.</p>
+<h2 id="why-do-i-still-see-connection-stats-of-a-gateway-i-previously-disconnected">Why do I still see connection stats of a gateway I previously disconnected?</h2>
+<p>After disconnecting a gateway, the connection stats will still be available for 48 hours. The HTTP endpoint will return the status code <code>200 OK</code> and the connection stats will contain the <code>disconnected_at</code> field. If the gateway remains inactive for more than 48 hours, the HTTP endpoint will then return the <code>404 Not Found (gateway &lt;gtw_id&gt; not connected)</code> status.</p>
         </div>
         
           <div class="is-clearfix">
@@ -473,6 +475,9 @@
       
       <li><a href='#when-the-connection-on-the-main-interface-goes-down-my-gateway-gets-disconnected-and-it-does-not-reconnect-through-the-backup-interface'>When the connection on the main interface goes down, my gateway gets disconnected and it does not reconnect through the backup interface.</a></li>
     
+      
+      <li><a href='#why-do-i-still-see-connection-stats-of-a-gateway-i-previously-disconnected'>Why do I still see connection stats of a gateway I previously disconnected?</a></li>
+    
   </ul>
 
 
@@ -511,10 +516,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 06 Jan 2022.
+  Last changed by Nejra Selimović on 26 Jan 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/6d24964410f9b3d59df03d122fde51ca6df5dfd8">
-      doc: Remove TTI contact info, add temporary workaround (#705)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a1b5ca7e1b958b80afb1e64bc1199993aa6eef3f">
+      doc: Document connection stats for disconnected gtw (#734)
     </a>
 </p>
 
