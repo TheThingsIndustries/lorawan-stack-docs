@@ -208,6 +208,7 @@
 <li>If running on <code>localhost</code>, see the <a href="https://www.thethingsindustries.com/docs/getting-started/installation/configuration/#localhost">Localhost</a> section for additional info.</li>
 <li>You may have invalid certificates. Verify using <code>openssl verify -CAfile ca.pem cert.pem</code>.</li>
 <li>If you configure The Things Stack without TLS and attempt to connect using <code>https</code> you will receive this error. Configure TLS or use <code>http</code>.</li>
+<li>If you are running an offline The Things Stack deployment, generating <a href="https://www.thethingsindustries.com/docs/getting-started/installation/certificates/#automatic-certificate-management">Let&rsquo;s Encrypt certificates</a> for your domain name might fail because of lack of the Internet connection. Try using certificates from a <a href="https://www.thethingsindustries.com/docs/getting-started/installation/certificates/#custom-certificate-authority">Custom Certificate Authority</a>.</li>
 </ol>
 <h2 id="cant-access-the-server">Can&rsquo;t access the server</h2>
 <p>Ensure you have a DNS record pointing to your server&rsquo;s public IP address. See your domain registrar&rsquo;s help section for instructions, or <a href="https://www.name.com/support/articles/205188538-Pointing-your-domain-to-hosting-with-A-records">name.com&rsquo;s DNS guide</a> for general information about pointing records to your IP address.</p>
@@ -222,6 +223,8 @@
 <p>The client is not authorized to request a token using this method</p>
 </blockquote>
 <p>while trying to log into the Console, make sure you used the same <code>client-secret</code> in your The Things Stack configuration (<code>ttn-lw-stack-docker.yml</code> file) and for authorizing the Console client in <a href="/docs/getting-started/installation/running-the-stack/">Running The Things Stack</a>.</p>
+<h2 id="missing-tenant-id">Missing tenant ID</h2>
+<p>If you are facing the <code>missing_tenant_id</code> error, that means you are trying to access the Console in a multi-tenant The Things Stack environment on an address that doesn&rsquo;t contain any tenant ID, e.g. <code>https://thethings.example.com</code>. To access the Console of a particular tenant in a multi-tenant environment, you have to specify a tenant ID as a URL subdomain, e.g. <code>https://&lt;tenant-id&gt;.thethings.network.com</code>.</p>
 
         </div>
         <div class="is-clearfix">
@@ -261,6 +264,9 @@
       
       <li><a href='#forbidden'>Forbidden</a></li>
     
+      
+      <li><a href='#missing-tenant-id'>Missing tenant ID</a></li>
+    
   </ul>
 
 
@@ -299,10 +305,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 04 Nov 2021.
+  Last changed by Nejra Selimović on 27 Jan 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4efe30885736e9631aa2aa26043e3dac896854b7">
-      doc: Installation foreword (#645)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f57a95cb76c4737ee5705003d5a5f4fb281bf8bb">
+      doc: Add installation note and troubleshooting entries (#736)
     </a>
 </p>
 
