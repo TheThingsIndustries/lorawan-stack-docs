@@ -273,6 +273,10 @@
 <ul>
 <li><code>log.level</code>: The minimum level log messages must have to be shown (default &ldquo;info&rdquo;)</li>
 </ul>
+<p>The format of logs is also configurable. The Things Stack supports <code>console</code> format (that prints logs as a human-friendly text) and <code>json</code> format (that prints logs as JSON).</p>
+<ul>
+<li><code>log.format</code>: Log format to write</li>
+</ul>
 <h2 id="license">License</h2>
 <p>
 
@@ -342,10 +346,12 @@
 </a>
 
 
- The key vault is used to store secrets, such as TLS certificates and the keys for encrypting LoRaWAN root keys in the database. The Things Stack supports keys stored in AWS Secrets Manager, or static configuration for development purposes.</p>
+ The key vault is used to store secrets, such as TLS certificates and the keys for encrypting LoRaWAN root keys in the database. These secrets can also be cached. The Things Stack supports keys stored in AWS Secrets Manager, or static configuration for development purposes.</p>
 <ul>
 <li><code>key-vault.provider</code>: Provider (static or aws)</li>
 <li><code>key-vault.static</code>: Static key encryption keys; values use hex encoding</li>
+<li><code>key-vault.cache.size</code>: Cache size (caching is disabled if size is 0)</li>
+<li><code>key-vault.cache.ttl</code>: TTL for cached elements (no expiration mechanism is used if TTL is 0)</li>
 <li><code>key-vault.aws.region</code>: AWS region</li>
 <li><code>key-vault.aws.secret-id-prefix</code>: Secret ID prefix</li>
 </ul>
@@ -458,6 +464,12 @@
 <ul>
 <li><code>interop.sender-client-ca.blob.bucket</code>: Bucket to use</li>
 <li><code>interop.sender-client-ca.blob.path</code>: Path to use</li>
+</ul>
+<p>Packet Broker support is also available through LoRaWAN Backend Interfaces.</p>
+<ul>
+<li><code>interop.public-tls-address</code>: A public address of the Interop server. The audience in the incoming OAuth 2.0 token from Packet Broker is verified against this address to ensure that other networks cannot impersonate as Packet Broker.</li>
+<li><code>interop.packet-broker.enabled</code>: Enable Packet Broker to authenticate</li>
+<li><code>interop.packet-broker.token-issuer</code>: The issuer of the incoming OAuth 2.0 token from Packet Broker is verified against this value.</li>
 </ul>
 <h2 id="redis-options">Redis Options</h2>
 <p>Redis is the main data store for the <a href="/docs/reference/configuration/network-server/">Network Server</a>, <a href="/docs/reference/configuration/application-server/">Application Server</a> and <a href="/docs/reference/configuration/join-server/">Join Server</a>. Redis is also used by the <a href="/docs/reference/configuration/identity-server/">Identity Server</a> for caching and can be used by the <a href="#events-options">events system</a> for exchanging events between components.</p>
@@ -615,22 +627,28 @@
 <h2 id="blob-options">Blob Options</h2>
 <p>The <code>blob</code> options configure how The Things Stack reads or writes files such as pictures, the frequency plans repository or files required for Backend Interfaces interoperability. The <code>provider</code> field selects the provider that is used, and which other options are read.</p>
 <ul>
-<li><code>blob.provider</code>: Blob store provider (local, aws, gcp) (default &ldquo;local&rdquo;)</li>
+<li><code>blob.provider</code>: Blob store provider (local, aws, gcp, azure) (default <code>local</code>)</li>
 </ul>
 <p>If the blob provider is <code>local</code>, you need to specify the directory to use.</p>
 <ul>
-<li><code>blob.local.directory</code>: Local directory that holds the buckets (default &ldquo;./public/blob&rdquo;)</li>
+<li><code>blob.local.directory</code>: Local directory that holds the buckets (default <code>./public/blob</code>)</li>
 </ul>
 <p>If the blob provider is <code>aws</code>, you need to specify the S3 region, the access key ID and secret access key.</p>
 <ul>
 <li><code>blob.aws.region</code>: S3 region</li>
 <li><code>blob.aws.access-key-id</code>: Access key ID</li>
 <li><code>blob.aws.secret-access-key</code>: Secret access key</li>
+<li><code>blob.aws.endpoint</code>: S3 endpoint</li>
+<li><code>blob.aws.session-token</code>: Session token</li>
 </ul>
 <p>If the blob provider is <code>gcp</code>, you can specify the credentials with either the credentials data, or with the path to the credentials file.</p>
 <ul>
 <li><code>blob.gcp.credentials</code>: JSON data of the GCP credentials, if not using JSON file</li>
 <li><code>blob.gcp.credentials-file</code>: Path to the GCP credentials JSON file</li>
+</ul>
+<p>There is also an experimental support for <code>azure</code> provider. Only authentication via Managed Identity is supported.</p>
+<ul>
+<li><code>blob.azure.account-name</code>: Azure storage account name</li>
 </ul>
 <h2 id="events-options">Events Options</h2>
 <p>The <code>events</code> options configure how events are shared between components. When using a single instance of The Things Stack, the <code>internal</code> backend is the best option. If you need to communicate in a cluster, you can use the <code>redis</code> or <code>cloud</code> backend.</p>
@@ -644,6 +662,7 @@
 <li><code>events.redis.database</code>: Redis database to use</li>
 <li><code>events.redis.namespace</code>: Namespace for Redis keys</li>
 <li><code>events.redis.pool-size</code>: The maximum size of the connection pool</li>
+<li><code>events.redis.workers</code>: Number of workers to process request</li>
 </ul>
 <p>Similar to the global Redis configuration, you can reduce the load on the Redis master by specifying read-only configuration:</p>
 <ul>
@@ -772,6 +791,14 @@
 
 : The maximum size of the connection pool</li>
 </ul>
+<p>Redis events backend also provides event storage where retention can be configured.</p>
+<ul>
+<li><code>events.redis.store.enable</code>: Enable events store</li>
+<li><code>events.redis.store.correlation-id-count</code>: Defines how many events are indexed for a correlation ID</li>
+<li><code>events.redis.store.entity-count</code>: Defines how many events are indexed for an entity ID</li>
+<li><code>events.redis.store.entity-ttl</code>: Defines how long events are indexed for an entity ID</li>
+<li><code>events.redis.store.ttl</code>: Defines how long event payloads are retained</li>
+</ul>
 <p>If your Redis server uses TLS, use the following options:</p>
 <ul>
 <li><code>events.redis.tls.require</code>: Require TLS when connecting to Redis</li>
@@ -805,12 +832,16 @@
 <h2 id="cluster-options">Cluster Options</h2>
 <p>The <code>cluster</code> options configure how The Things Stack communicates with other components in the cluster. These options do not need to be set when running a single instance of The Things Stack. The most important options are the ones to configure the addresses of the other components in the cluster.</p>
 <ul>
+<li><code>cluster.address</code>: Address to use for cluster communication</li>
+<li><code>cluster.name</code>: Name of the current cluster peer</li>
 <li><code>cluster.identity-server</code>: Address for the Identity Server</li>
 <li><code>cluster.gateway-server</code>: Address for the Gateway Server</li>
 <li><code>cluster.network-server</code>: Address for the Network Server</li>
 <li><code>cluster.application-server</code>: Address for the Application Server</li>
 <li><code>cluster.join-server</code>: Address for the Join Server</li>
 <li><code>cluster.crypto-server</code>: Address for the Crypto Server</li>
+<li><code>cluster.gateway-contiguration-server</code>: Address of the Gateway Configuration Server</li>
+<li><code>cluster.join</code>: Addresses of cluster peers to join</li>
 </ul>
 <p>The next thing to configure is how peers discover each other, and how peers claim IDs.</p>
 <p>The Things Stack currently only supports <code>DNS</code> discovery. In this discovery mechanism cluster peers periodically perform DNS lookups for the configured addresses. If an address is of the form <code>host:port</code> the peers will be discovered by looking up the <code>A</code> records for that address, and connecting to the configured port. If an address is only a hostname, the peers will be discovered by looking up the <code>SRV</code> records for that address, then looking up the <code>A</code> records for each returned address and connecting to the port that was set on the <code>SRV</code> record.</p>
@@ -832,6 +863,14 @@
 <li><code>cluster.tls</code>: Do cluster gRPC over TLS</li>
 <li><code>cluster.tls-server-name</code>: Server name to use in TLS handshake to cluster peers</li>
 </ul>
+<p>The Things Stack can be configured to connect to Packet Broker via Packet Broker Agent component.</p>
+<ul>
+<li><code>cluster.packet-broker-agent</code>: Defines the address of the Packet Broker Agent</li>
+</ul>
+<p>It is possible to configure The Things Stack with Device Repository profiles from different vendors. This allows reusing standard end device profiles for module makers and LoRaWAN end device stack vendors.</p>
+<ul>
+<li><code>cluster.device-repository</code>: Defines the address of the Device Repository</li>
+</ul>
 <h2 id="cache-options">Cache Options</h2>
 <p>The Things Stack can optionally be configured to use a cache.</p>
 <ul>
@@ -845,6 +884,7 @@
 <li><code>cache.redis.namespace</code>: Namespace for Redis keys</li>
 <li><code>cache.redis.pool-size</code>: The maximum size of the connection pool</li>
 </ul>
+<p>See <a href="#redis-options">Redis configuration</a> for more options.</p>
 <h2 id="multi-tenancy">Multi-Tenancy</h2>
 <p>
 
@@ -976,7 +1016,15 @@
 </li>
 </ul>
 <h2 id="rate-limiting">Rate Limiting</h2>
-<p>The Things Stack supports rate limiting external endpoints. Rate limiting configuration can only be set from the configuration file. See <a href="https://www.thethingsindustries.com/docs/reference/rate-limiting/">Rate Limiting</a> for more details.</p>
+<p>The Things Stack supports rate limiting external endpoints. See <a href="https://www.thethingsindustries.com/docs/reference/rate-limiting/">Rate Limiting</a> for more details.</p>
+<ul>
+<li><code>rate-limiting.blob.bucket</code>: Bucket to use</li>
+<li><code>rate-limiting.blob.path</code>: Path to use</li>
+<li><code>rate-limiting.config-source</code>: Source of the <code>rate-limiting.yml</code> file (directory, url, blob)</li>
+<li><code>rate-limiting.directory</code>: Filesystem directory which contains rate limiting configuration</li>
+<li><code>rate-limiting.memory.max-size</code>: Maximum store size for the rate limiter</li>
+<li><code>rate-limiting.url</code>: URL which contains rate limiting configuration</li>
+</ul>
 <h2 id="resource-limiting">Resource Limiting</h2>
 <p><span class="tag is-light">New in 3.15.0</span>
 
@@ -1023,6 +1071,11 @@
 <p>The Things Stack performs a version check upon running by default, and prints a corresponding message if a newer version is available.</p>
 <ul>
 <li><code>skip-version-check</code>: Set to <code>true</code> to skip version check</li>
+</ul>
+<h2 id="experimental-features">Experimental Features</h2>
+<p>The Things Stack supports experimental features.</p>
+<ul>
+<li><code>experimental.features</code>: Experimental features to activate</li>
 </ul>
 
         </div>
@@ -1099,6 +1152,9 @@
       
       <li><a href='#version-check'>Version Check</a></li>
     
+      
+      <li><a href='#experimental-features'>Experimental Features</a></li>
+    
   </ul>
 
 
@@ -1137,10 +1193,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Michał Borkowski on 14 Dec 2021.
+  Last changed by Nejra Selimović on 27 Jan 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/232c730103e415f27658d3d8bf72ee351cfd0eae">
-      doc: Add information about non-TLS interop port (#681)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/898f49e5bfbf543be6c451425afa4b837c85dcf1">
+      doc: Add missing configuration options (#744)
     </a>
 </p>
 

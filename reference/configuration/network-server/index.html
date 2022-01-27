@@ -273,11 +273,14 @@
 <li><code>ns.dev-addr-prefixes</code>: Device address prefixes of this Network Server</li>
 <li><code>ns.net-id</code>: NetID of this Network Server</li>
 <li><code>ns.cluster-id</code>: ClusterID of this Network Server. This is purely informative and is added as metadata to messages forwarded to the Application Server</li>
+<li><code>ns.device-kek-label</code>: Label of KEK used to encrypt device keys at rest</li>
 </ul>
 <h2 id="uplink-options">Uplink Options</h2>
 <ul>
 <li><code>ns.cooldown-window</code>: Time window starting right after deduplication window, during which, duplicate messages are discarded</li>
 <li><code>ns.deduplication-window</code>: Time window during which, duplicate messages are collected for metadata</li>
+<li><code>ns.application-uplink-queue.buffer-size</code>: Application uplink queue buffer size (default 1000)</li>
+<li><code>ns.application-uplink-queue.num-consumers</code>: Number of consumers for the application uplink queue (default 1)</li>
 </ul>
 <h2 id="downlink-options">Downlink Options</h2>
 <p>The <code>ns.downlink-priorities</code> options configure priorities Network Server assigns downlinks when scheduling them on Gateway Server. In case when several downlinks are available for scheduling, Gateway Server will schedule higher priority downlink first.</p>
@@ -285,6 +288,14 @@
 <li><code>ns.downlink-priorities.join-accept</code>: Priority for join-accept messages (lowest, low, below_normal, normal, above_normal, high, highest)</li>
 <li><code>ns.downlink-priorities.mac-commands</code>: Priority for messages carrying MAC commands (lowest, low, below_normal, normal, above_normal, high, highest)</li>
 <li><code>ns.downlink-priorities.max-application-downlink</code>: Maximum priority for application downlink messages (lowest, low, below_normal, normal, above_normal, high, highest)</li>
+</ul>
+<p>Network Server downlink queue capacity is configurable.</p>
+<ul>
+<li><code>ns.downlink-queue-capacity</code>: Maximum downlink queue size per session (default 10000)</li>
+</ul>
+<p>Network Server maintains an internal downlink task queue, where tasks have an execution time associated with them.</p>
+<ul>
+<li><code>ns.downlink-task-queue.num-consumers</code>: Number of consumers for the downlink task queue (default 1)</li>
 </ul>
 <h2 id="mac-options">MAC Options</h2>
 <p>The <code>ns.default-mac-settings</code> options configure default device MAC configuration parameters Network Server uses if not configured in device&rsquo;s MAC settings.</p>
@@ -453,10 +464,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 14 Jan 2022.
+  Last changed by Nejra Selimović on 27 Jan 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/c9b7789b9f93d29e95d22010556cbdc554dc2c80">
-      doc: Add note about claiming TTIG on distributions other than TTS CH and CE (#724)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/898f49e5bfbf543be6c451425afa4b837c85dcf1">
+      doc: Add missing configuration options (#744)
     </a>
 </p>
 

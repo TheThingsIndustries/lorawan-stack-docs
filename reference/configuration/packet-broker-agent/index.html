@@ -286,6 +286,10 @@
 <li><code>pba.cluster-id</code>: Cluster ID uniquely identifying this cluster within a NetID and tenant. The cluster ID is used for shared subscriptions (i.e. splitting traffic over multiple Packet Broker Agents) and as Forwarder ID to route downlink traffic to the right cluster</li>
 <li><code>pba.home-network-cluster-id</code>: Home Network Cluster ID, if different from the Cluster ID. Leave empty to fallback to <code>cluster-id</code></li>
 </ul>
+<p>Gateway identity, status, antennas, frequency plan, location, Tx and Rx rates can be reported to Packet Broker Mapper. Mapping is enabled when the Forwarder role is enabled.</p>
+<ul>
+<li><code>pba.mapper-address</code>: Address of Packet Broker Mapper</li>
+</ul>
 <h2 id="authentication-options">Authentication Options</h2>
 <ul>
 <li><code>pba.authentication-mode</code>: Set this to <code>oauth2</code></li>
@@ -301,12 +305,14 @@
 <li><code>pba.forwarder.include-gateway-eui</code>: Indicates whether to include the gateway EUI in forwarded uplink messages</li>
 <li><code>pba.forwarder.include-gateway-id</code>: Indicates whether to include the gateway ID (plain or hashed) in forwarded uplink messages</li>
 <li><code>pba.forwarder.hash-gateway-id</code>: Indicates whether the forwarded gateway ID should be hashed. This setting is ineffective if <code>include-gateway-id</code> is <code>false</code></li>
+<li><code>pba.forwarder.gateway-online-ttl</code>: TTL of online status reported to Packet Broker</li>
 </ul>
 <h2 id="home-network-options">Home Network Options</h2>
 <ul>
 <li><code>pba.home-network.enable</code>: Enable Home Network role</li>
 <li><code>pba.home-network.dev-addr-prefixes</code>: DevAddr prefixes to subscribe to</li>
 <li><code>pba.home-network.worker-pool.limit</code>: Limit of active workers concurrently processing uplink messages and publishing downlink messages</li>
+<li><code>pba.home-network.include-hops</code>: Include hops in the metadata. This option is disabled by default</li>
 </ul>
 
         </div>
@@ -385,10 +391,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 27 Jan 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/898f49e5bfbf543be6c451425afa4b837c85dcf1">
+      doc: Add missing configuration options (#744)
     </a>
 </p>
 

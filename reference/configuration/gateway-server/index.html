@@ -268,7 +268,16 @@
         </h1>
         
         <div class="content">
-          <h2 id="forwarding-options">Forwarding Options</h2>
+          <h2 id="general-options">General Options</h2>
+<ul>
+<li><code>gs.update-version-info-delay</code></li>
+</ul>
+<p>Gateways are disconnected from The Things Stack when settings affecting the connection with the Gateway Server change. You can configure how often the gateway gets fetched from the entity registry.</p>
+<ul>
+<li><code>gs.fetch-gateway-interval</code>: Update gateway fetching interval</li>
+<li><code>gs.fetch-gateway-jitter</code>: Jitter to apply to the update interval to randomize intervals</li>
+</ul>
+<h2 id="forwarding-options">Forwarding Options</h2>
 <p>The Gateway Server forwards traffic to upstream hosts based on the <code>gs.forward</code> parameter.</p>
 <ul>
 <li><code>gs.forward</code>: Forward the DevAddr prefixes to the specified hosts. This parameter accepts a list of strings in the format <code>&quot;target=dev-addr-prefix1 target=dev-addr-prefix2&quot;</code></li>
@@ -343,6 +352,16 @@
 <ul>
 <li><code>gs.basic-station.fallback-frequency-plan-id</code>: Fallback frequency plan ID for non-registered gateways</li>
 </ul>
+<p>The Things Stack provides RTT recording for LoRa Basics™ Station gateways.</p>
+<ul>
+<li><code>gs.basic-station.max-valid-round-trip-delay</code>: Defines the maximum valid round trip delay to qualify for RTT calculations</li>
+</ul>
+<p>The Things Stack offers a WebSocket Ping-Pong support for LoRa Basics™ Station gateways. The Gateway Servers sends pings to LoRa Basics™ Station gateway, and the gateway responds with a pong. The gateway that stops sending pongs to server pings gets disconnected by the Gateway Server after a configurable time period. This does not apply for gateways that don&rsquo;t support pongs.</p>
+<ul>
+<li><code>gs.basic-station.missed-pong-threshold</code>: Defines a number of consecutive missed pongs before disconnection. This value is used only if the gateway sends at least one pong.</li>
+<li><code>gs.basic-station.time-sync-interval</code>: Interval to send time transfer messages</li>
+<li><code>gs.basic-station.ws-ping-interval</code>: Interval to send WS ping messages</li>
+</ul>
 <h2 id="mqtt-options">MQTT Options</h2>
 <p>The Gateway Server exposes an MQTT server for connecting gateways via MQTT.</p>
 <ul>
@@ -368,6 +387,7 @@
 <p>Options are available to configure connection behavior of UDP gateways.</p>
 <ul>
 <li><code>gs.udp.connection-expires</code>: Time after which a connection of a gateway expires</li>
+<li><code>gs.udp.connection-error-expires</code>: Time after which a connection error of a gateway expires</li>
 <li><code>gs.udp.downlink-path-expires</code>: Time after which a downlink path to a gateway expires</li>
 <li><code>gs.udp.addr-change-block</code>: Time to block traffic when a gateway&rsquo;s address changes</li>
 </ul>
@@ -380,6 +400,7 @@
 <p>Specify options for gateway connection statistics:</p>
 <ul>
 <li><code>gs.update-connection-stats-debounce-time</code>: Time before repeated refresh of the gateway connection stats</li>
+<li><code>gs.connection-stats-disconnect-ttl</code>: TTL of the gateway connection stats after disconnecting</li>
 </ul>
 <h2 id="udp-rate-limiting-options">UDP Rate Limiting Options</h2>
 <p>The Gateway Server supports rate limiting traffic for gateways that are using the Semtech UDP protocol.</p>
@@ -387,6 +408,12 @@
 <li><code>gs.udp.rate-limiting.enable</code>: Enable rate limiting for gateways</li>
 <li><code>gs.udp.rate-limiting.messages</code>: Number of past messages to check timestamp for</li>
 <li><code>gs.udp.rate-limiting.threshold</code>: Filter packet if timestamp is not newer than the older timestamps of the previous messages by this threshold</li>
+</ul>
+<h2 id="packet-broker-options">Packet Broker Options</h2>
+<ul>
+<li><code>gs.packetbroker.online-ttl-margin</code>: Time to extend the online status before it expires</li>
+<li><code>gs.packetbroker.update-gateway-interval</code>: Update gateway interval</li>
+<li><code>gs.packetbroker.update-gateway-jitter</code>: Jitter (fraction) to apply to the update interval to randomize intervals</li>
 </ul>
 
         </div>
@@ -411,6 +438,9 @@
 
 
   <ul class="menu-list">
+    
+      
+      <li><a href='#general-options'>General Options</a></li>
     
       
       <li><a href='#forwarding-options'>Forwarding Options</a></li>
@@ -438,6 +468,9 @@
     
       
       <li><a href='#udp-rate-limiting-options'>UDP Rate Limiting Options</a></li>
+    
+      
+      <li><a href='#packet-broker-options'>Packet Broker Options</a></li>
     
   </ul>
 
@@ -477,10 +510,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna on 10 Aug 2020.
+  Last changed by Nejra Selimović on 27 Jan 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/0869d1130c2e4868f69929964114aa5829745cd2">
-      doc: Fix basic station connection description
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/898f49e5bfbf543be6c451425afa4b837c85dcf1">
+      doc: Add missing configuration options (#744)
     </a>
 </p>
 

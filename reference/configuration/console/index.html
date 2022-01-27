@@ -281,12 +281,14 @@
 <li><code>console.oauth.client-secret</code>: The OAuth client secret</li>
 <li><code>console.oauth.token-url</code>: The OAuth Token Exchange URL</li>
 <li><code>console.oauth.logout-url</code>: The logout URL of the OAuth server used to perform client initiated logouts</li>
+<li><code>console.oauth.cross-site-cookie</code>: Controls access to OAuth state cookie between origins. Set to <code>true</code> in multi-cluster deployments in order to support OAuth clients that use POST callbacks. The default is <code>false</code>.</li>
 </ul>
 <h2 id="frontend-setup">Frontend Setup</h2>
 <p>You can change various values that will be passed to the JavaScript logic and HTML Head tags of the Web UI:</p>
 <h3 id="component-configuration">Component Configuration</h3>
 <p>The Console needs to know how the individual The Things Stack components are configured, so it can execute API calls correctly. Likewise, disabled components will cause possible respective options and menus in the Console frontend to be disabled.</p>
 <ul>
+<li><code>console.ui.account-url</code>: The URL that points to the root of the Account app</li>
 <li><code>console.ui.as.base-url</code>: Base URL to the HTTP API</li>
 <li><code>console.ui.as.enabled</code>: Enable Application Server related functionality in the Console</li>
 <li><code>console.ui.gs.base-url</code>: Base URL to the HTTP API</li>
@@ -397,6 +399,21 @@
 <li><code>console.ui.sla-information-url</code>: A URL with information about the SLA applicable for this deployment</li>
 <li><code>console.ui.support-plan-applies</code>: The applicable support plan of this deployment, e.g. <code>priority</code>, <code>24h</code></li>
 <li><code>console.ui.support-plan-information-url</code>: A URL with information about the support plan applicable for this deployment</li>
+<li><code>console.ui.sentry-dsn</code>: The Sentry DSN</li>
+</ul>
+<h3 id="deveui-generation-support">DevEUI Generation Support</h3>
+<p>Console supports generating DevEUIs from the configured DevEUI address block.</p>
+<ul>
+<li><code>console.ui.dev-eui-issuing-enabled</code>: To enable DevEUI issuing</li>
+<li><code>console.ui.dev-eui-app-limit</code>: Controls how many DevEUIs can be issued per an application</li>
+</ul>
+<h3 id="device-repository-options">Device Repository Options</h3>
+<p>Device Repository component allows integrating Device Repository with The Things Stack.</p>
+<ul>
+<li><code>dr.assets-base-url</code>: The BaseURL of the Device Repository assets</li>
+<li><code>dr.directory</code>: Retrieve Device Repository from the filesystem</li>
+<li><code>dr.source</code>: Source of the Device Repository</li>
+<li><code>dr.store.bleve.search-paths</code>: Search paths for the Device Repository index files</li>
 </ul>
 
         </div>
@@ -469,10 +486,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 10 Jun 2021.
+  Last changed by Nejra Selimović on 27 Jan 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/1088c5144c03928eb7d97c6105895e620eab3d79">
-      Move inline shortcodes to next line (#382)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/898f49e5bfbf543be6c451425afa4b837c85dcf1">
+      doc: Add missing configuration options (#744)
     </a>
 </p>
 
