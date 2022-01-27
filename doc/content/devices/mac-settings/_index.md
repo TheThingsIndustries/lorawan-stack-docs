@@ -10,11 +10,11 @@ This section provides guidelines for configuring MAC settings for end devices fr
 
 {{< cli-only >}}
 
-### MAC Settings and MAC State
+## MAC Settings and MAC State
 
 MAC settings on {{% tts %}} are configurable per end device. To configure persistent MAC settings, make changes to `mac-settings.desired_<parameter>`. Updates to `mac-settings.desired_<parameter>` take effect on device creation, after OTAA join or ABP FCnt reset, ResetInd, or after MAC state reset.
 
-`mac-settings.<parameter>` represents what the Network Server believes is configured on the end device, and should not be changed, unless the device does not conform to spec. It may however be necessary to set `mac-settings.RX1_delay` for ABP devices where this is not configured as part of activation.
+`mac-settings.<parameter>` represents what the Network Server believes is configured on the end device, and should not be changed, unless the device does not conform to the LoRaWAN specification. It may however be necessary to set `mac-settings.RX1_delay` for ABP devices where this is not configured as part of activation.
 
 `mac-state` can be used to test MAC settings in the current session. To update settings for testing in the current session, make changes to the `mac-state.desired_parameters.<parameter>`. Updates to the `mac-state.desired_parameters.<parameter>` are applied on the next uplink, and lost on reset.
 
@@ -24,9 +24,37 @@ The expected procedure for testing and updating settings is:
 2. Test that everything works as expected
 3. Modify `mac-settings.desired_<parameter>` to make the change permanent
 
-If no settings are provided on device creation or unset, defaults are first taken from the device Frequency Plan if available, and finally from [Network Server Configuration]({{< ref "/reference/configuration/network-server" >}}).
+See how this applies to the Rx1 delay parameter in the example below. If no settings are provided on device creation or unset, defaults are first taken from the device Frequency Plan if available, and finally from [Network Server Configuration]({{< ref "/reference/configuration/network-server" >}}).
 
-### Available MAC settings
+### Example: Configure Rx1 Delay
+
+{{< note >}} {{% tts %}} configures the `Rx1Delay` to 5 seconds by default to accomodate for high latency backhauls and/or peering with Packet Broker, so this is the recommended configuration. For demonstration purposes, in this example we use 6 seconds. {{</ note >}}
+
+To see Rx1 delay change in the current session, modify the `mac-state.desired-parameters.rx1-delay` parameter:
+
+```
+ttn-lw-cli end-devices update --application-id <application-id> --device-id <device-id> --mac-state.desired-parameters.rx1-delay RX_DELAY_6
+```
+
+The Network Server will schedule an `RxTimingSetupReq` MAC command to communicate a new `Rx1Delay` of 6 seconds to the device. The end device will answer with an `RxTimingSetupAns` MAC command in the next uplink. The Network Server will then start using the `Rx1Delay` of 6 seconds for scheduling downlinks. For this change to take effect, the end device does not need to perform a re-join.
+
+To make the Rx1 delay change persistent upon end device re-join, modify the `mac-settings.desired-rx1-delay` parameter:
+
+```
+ttn-lw-cli end-devices update --application-id <application-id> --device-id <device-id> --mac-settings.desired-rx1-delay RX_DELAY_6
+```
+
+The Rx1 delay change will take effect only after the end device performs a re-join, i.e. in the new session. The `Rx1Delay` of 6 seconds will be communicated to the device during join procedure via Join-accept downlink message.
+
+If the end device does not conform to the LoRaWAN Specification and has a custom Rx1 delay configured in it (6 seconds in this example), modify the `mac-settings.rx1-delay` parameter:
+
+```
+ttn-lw-cli end-devices update --application-id <application-id> --device-id <device-id> --mac-settings.rx1-delay RX_DELAY_6
+```
+
+The Network Server will start using the `Rx1Delay` of 6 seconds for downlink communication with the end device.
+
+## Available MAC settings
 
 Run the following command to get a list of all available MAC settings and available parameter values:
 
@@ -36,7 +64,7 @@ ttn-lw-cli end-devices set --help
 
 You can also refer to the [End Device API Reference page]({{< ref "reference/api/end_device#message:MACSettings" >}}) for documentation on the available MAC settings and MAC state parameters.
 
-### Class Specific Settings
+## Class Specific Settings
 
 Settings that are useful based on device class are:
 
