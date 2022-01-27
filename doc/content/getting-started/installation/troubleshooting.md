@@ -20,6 +20,7 @@ Our `docker-compose.yml` file uses [Compose file version 3.7](https://docs.docke
 2. If running on `localhost`, see the [Localhost]({{< ref "getting-started/installation/configuration#localhost" >}}) section for additional info.
 3. You may have invalid certificates. Verify using `openssl verify -CAfile ca.pem cert.pem`.
 4. If you configure {{% tts %}} without TLS and attempt to connect using `https` you will receive this error. Configure TLS or use `http`.
+5. If you are running an offline {{% tts %}} deployment, generating [Let's Encrypt certificates]({{< ref "/getting-started/installation/certificates#automatic-certificate-management" >}}) for your domain name might fail because of lack of the Internet connection. Try using certificates from a [Custom Certificate Authority]({{< ref "/getting-started/installation/certificates#custom-certificate-authority" >}}).
 
 ## Can't access the server
 
@@ -38,3 +39,7 @@ If you see an error reading:
 > The client is not authorized to request a token using this method
 
 while trying to log into the Console, make sure you used the same `client-secret` in your {{% tts %}} configuration (`ttn-lw-stack-docker.yml` file) and for authorizing the Console client in [Running {{% tts %}}]({{< relref "running-the-stack" >}}).
+
+## Missing tenant ID
+
+If you are facing the `missing_tenant_id` error, that means you are trying to access the Console in a multi-tenant {{% tts %}} environment on an address that doesn't contain any tenant ID, e.g. `https://thethings.example.com`. To access the Console of a particular tenant in a multi-tenant environment, you have to specify a tenant ID as a URL subdomain, e.g. `https://<tenant-id>.thethings.network.com`.
