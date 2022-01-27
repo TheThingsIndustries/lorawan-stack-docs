@@ -8,11 +8,14 @@ description: ""
 - `ns.dev-addr-prefixes`: Device address prefixes of this Network Server
 - `ns.net-id`: NetID of this Network Server
 - `ns.cluster-id`: ClusterID of this Network Server. This is purely informative and is added as metadata to messages forwarded to the Application Server
+- `ns.device-kek-label`: Label of KEK used to encrypt device keys at rest
 
 ## Uplink Options
 
 - `ns.cooldown-window`: Time window starting right after deduplication window, during which, duplicate messages are discarded
 - `ns.deduplication-window`: Time window during which, duplicate messages are collected for metadata
+- `ns.application-uplink-queue.buffer-size`: Application uplink queue buffer size (default 1000)
+- `ns.application-uplink-queue.num-consumers`: Number of consumers for the application uplink queue (default 1)
 
 ## Downlink Options
 
@@ -21,6 +24,14 @@ The `ns.downlink-priorities` options configure priorities Network Server assigns
 - `ns.downlink-priorities.join-accept`: Priority for join-accept messages (lowest, low, below_normal, normal, above_normal, high, highest)
 - `ns.downlink-priorities.mac-commands`: Priority for messages carrying MAC commands (lowest, low, below_normal, normal, above_normal, high, highest)
 - `ns.downlink-priorities.max-application-downlink`: Maximum priority for application downlink messages (lowest, low, below_normal, normal, above_normal, high, highest)
+
+Network Server downlink queue capacity is configurable. 
+
+- `ns.downlink-queue-capacity`: Maximum downlink queue size per session (default 10000)
+
+Network Server maintains an internal downlink task queue, where tasks have an execution time associated with them.
+
+- `ns.downlink-task-queue.num-consumers`: Number of consumers for the downlink task queue (default 1)
 
 ## MAC Options
 
@@ -35,7 +46,6 @@ The `ns.default-mac-settings` options configure default device MAC configuration
 - `ns.default-mac-settings.desired-rx1-delay`: Desired Rx1Delay value Network Server should use (`RX_DELAY_<X>`)
 - `ns.default-mac-settings.status-count-periodicity`: Number of uplink messages after which a DevStatusReq MACCommand shall be sent by Network Server
 - `ns.default-mac-settings.status-time-periodicity`: The interval after which a DevStatusReq MACCommand shall be sent by Network Server
-
 
 ## Interoperability
 

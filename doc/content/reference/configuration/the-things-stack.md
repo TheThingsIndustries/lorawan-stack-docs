@@ -10,6 +10,10 @@ Under normal circumstances, only `info`, `warn` and `error` logs are printed to 
 
 - `log.level`: The minimum level log messages must have to be shown (default "info")
 
+The format of logs is also configurable. {{% tts %}} supports `console` format (that prints logs as a human-friendly text) and `json` format (that prints logs as JSON).
+
+- `log.format`: Log format to write
+
 ## License
 
 {{< distributions "Cloud" "Enterprise" >}} {{% tts %}} requires a license key for production use. For development purposes, it will work for a limited time on `localhost` without a license key.
@@ -25,10 +29,12 @@ $ echo "AzYFASd/Gcggs..." | base64 --decode > ttn-lw-stack-license.bin
 
 ## Key Vault
 
-{{< distributions "Cloud" "Enterprise" >}} The key vault is used to store secrets, such as TLS certificates and the keys for encrypting LoRaWAN root keys in the database. {{% tts %}} supports keys stored in AWS Secrets Manager, or static configuration for development purposes.
+{{< distributions "Cloud" "Enterprise" >}} The key vault is used to store secrets, such as TLS certificates and the keys for encrypting LoRaWAN root keys in the database. These secrets can also be cached. {{% tts %}} supports keys stored in AWS Secrets Manager, or static configuration for development purposes.
 
 - `key-vault.provider`: Provider (static or aws)
 - `key-vault.static`: Static key encryption keys; values use hex encoding
+- `key-vault.cache.size`: Cache size (caching is disabled if size is 0)
+- `key-vault.cache.ttl`: TTL for cached elements (no expiration mechanism is used if TTL is 0)
 - `key-vault.aws.region`: AWS region
 - `key-vault.aws.secret-id-prefix`: Secret ID prefix
 
@@ -143,6 +149,12 @@ The `blob` source loads from the given path in a bucket. This requires the globa
 - `interop.sender-client-ca.blob.bucket`: Bucket to use
 - `interop.sender-client-ca.blob.path`: Path to use
 
+Packet Broker support is also available through LoRaWAN Backend Interfaces.
+
+- `interop.public-tls-address`: A public address of the Interop server. The audience in the incoming OAuth 2.0 token from Packet Broker is verified against this address to ensure that other networks cannot impersonate as Packet Broker.
+- `interop.packet-broker.enabled`: Enable Packet Broker to authenticate
+- `interop.packet-broker.token-issuer`: The issuer of the incoming OAuth 2.0 token from Packet Broker is verified against this value.
+
 ## Redis Options
 
 Redis is the main data store for the [Network Server]({{< relref "network-server.md" >}}), [Application Server]({{< relref "application-server.md" >}}) and [Join Server]({{< relref "join-server.md" >}}). Redis is also used by the [Identity Server]({{< relref "identity-server.md" >}}) for caching and can be used by the [events system]({{< ref "#events-options" >}}) for exchanging events between components.
@@ -183,22 +195,28 @@ Mutual TLS is not supported yet.
 
 The `blob` options configure how {{% tts %}} reads or writes files such as pictures, the frequency plans repository or files required for Backend Interfaces interoperability. The `provider` field selects the provider that is used, and which other options are read.
 
-- `blob.provider`: Blob store provider (local, aws, gcp) (default "local")
+- `blob.provider`: Blob store provider (local, aws, gcp, azure) (default `local`)
 
 If the blob provider is `local`, you need to specify the directory to use.
 
-- `blob.local.directory`: Local directory that holds the buckets (default "./public/blob")
+- `blob.local.directory`: Local directory that holds the buckets (default `./public/blob`)
 
 If the blob provider is `aws`, you need to specify the S3 region, the access key ID and secret access key.
 
 - `blob.aws.region`: S3 region
 - `blob.aws.access-key-id`: Access key ID
 - `blob.aws.secret-access-key`: Secret access key
+- `blob.aws.endpoint`: S3 endpoint
+- `blob.aws.session-token`: Session token
 
 If the blob provider is `gcp`, you can specify the credentials with either the credentials data, or with the path to the credentials file.
 
 - `blob.gcp.credentials`: JSON data of the GCP credentials, if not using JSON file
 - `blob.gcp.credentials-file`: Path to the GCP credentials JSON file
+
+There is also an experimental support for `azure` provider. Only authentication via Managed Identity is supported.
+
+- `blob.azure.account-name`: Azure storage account name
 
 ## Events Options
 
@@ -213,6 +231,7 @@ When using the `redis` backend, the global [Redis configuration]({{< ref "#redis
 - `events.redis.database`: Redis database to use
 - `events.redis.namespace`: Namespace for Redis keys
 - `events.redis.pool-size`: The maximum size of the connection pool
+- `events.redis.workers`: Number of workers to process request
 
 Similar to the global Redis configuration, you can reduce the load on the Redis master by specifying read-only configuration:
 
@@ -220,6 +239,14 @@ Similar to the global Redis configuration, you can reduce the load on the Redis 
 - `events.redis.readonly.password` {{< distributions "Cloud" "Enterprise" >}}: Password of the Redis server
 - `events.redis.readonly.database` {{< distributions "Cloud" "Enterprise" >}}: Redis database to use 
 - `events.redis.readonly.pool-size` {{< distributions "Cloud" "Enterprise" >}}: The maximum size of the connection pool
+
+Redis events backend also provides event storage where retention can be configured.
+
+- `events.redis.store.enable`: Enable events store 
+- `events.redis.store.correlation-id-count`: Defines how many events are indexed for a correlation ID
+- `events.redis.store.entity-count`: Defines how many events are indexed for an entity ID
+- `events.redis.store.entity-ttl`: Defines how long events are indexed for an entity ID
+- `events.redis.store.ttl`: Defines how long event payloads are retained
 
 If your Redis server uses TLS, use the following options:
 
@@ -257,12 +284,16 @@ The `blob` source loads from the given path in a bucket. This requires the globa
 
 The `cluster` options configure how {{% tts %}} communicates with other components in the cluster. These options do not need to be set when running a single instance of {{% tts %}}. The most important options are the ones to configure the addresses of the other components in the cluster.
 
+- `cluster.address`: Address to use for cluster communication
+- `cluster.name`: Name of the current cluster peer
 - `cluster.identity-server`: Address for the Identity Server
 - `cluster.gateway-server`: Address for the Gateway Server
 - `cluster.network-server`: Address for the Network Server
 - `cluster.application-server`: Address for the Application Server
 - `cluster.join-server`: Address for the Join Server
 - `cluster.crypto-server`: Address for the Crypto Server
+- `cluster.gateway-contiguration-server`: Address of the Gateway Configuration Server
+- `cluster.join`: Addresses of cluster peers to join
 
 The next thing to configure is how peers discover each other, and how peers claim IDs.
 
@@ -285,6 +316,14 @@ It is possible to configure the cluster to use TLS or not. We recommend to enabl
 - `cluster.tls`: Do cluster gRPC over TLS
 - `cluster.tls-server-name`: Server name to use in TLS handshake to cluster peers
 
+{{% tts %}} can be configured to connect to Packet Broker via Packet Broker Agent component.
+
+- `cluster.packet-broker-agent`: Defines the address of the Packet Broker Agent
+
+It is possible to configure {{% tts %}} with Device Repository profiles from different vendors. This allows reusing standard end device profiles for module makers and LoRaWAN end device stack vendors.
+
+- `cluster.device-repository`: Defines the address of the Device Repository
+
 ## Cache Options
 
 {{% tts %}} can optionally be configured to use a cache.
@@ -299,6 +338,8 @@ When using the `redis` backend, the global [Redis configuration]({{< ref "#redis
 - `cache.redis.namespace`: Namespace for Redis keys
 - `cache.redis.pool-size`: The maximum size of the connection pool
 
+See [Redis configuration]({{< ref "#redis-options" >}}) for more options.
+
 ## Multi-Tenancy 
 
 {{< distributions "Cloud" "Enterprise" >}} In multi-tenant deployments, some additional configuration is required.
@@ -312,7 +353,14 @@ Tenants can have custom configuration, such as custom branding or custom user re
 
 ## Rate Limiting
 
-{{% tts %}} supports rate limiting external endpoints. Rate limiting configuration can only be set from the configuration file. See [Rate Limiting]({{< ref "/reference/rate-limiting" >}}) for more details.
+{{% tts %}} supports rate limiting external endpoints. See [Rate Limiting]({{< ref "/reference/rate-limiting" >}}) for more details.
+
+- `rate-limiting.blob.bucket`: Bucket to use
+- `rate-limiting.blob.path`: Path to use
+- `rate-limiting.config-source`: Source of the `rate-limiting.yml` file (directory, url, blob)
+- `rate-limiting.directory`: Filesystem directory which contains rate limiting configuration
+- `rate-limiting.memory.max-size`: Maximum store size for the rate limiter
+- `rate-limiting.url`: URL which contains rate limiting configuration
 
 ## Resource Limiting
 
@@ -323,3 +371,9 @@ Tenants can have custom configuration, such as custom branding or custom user re
 {{% tts %}} performs a version check upon running by default, and prints a corresponding message if a newer version is available.
 
 - `skip-version-check`: Set to `true` to skip version check
+
+## Experimental Features
+
+{{% tts %}} supports experimental features.
+
+- `experimental.features`: Experimental features to activate
