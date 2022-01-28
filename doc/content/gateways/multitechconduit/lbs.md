@@ -33,7 +33,7 @@ The entire configuration should look like:
 - Station Config: Leave it as-is (will be overwritten by CUPS)
 - Server Cert: Use the [ISRG Root X1 Certificate]({{< ref "reference/root-certificates#isrg-root-x1" >}})
 - Gateway Cert: Leave blank
-- Gateway Key: See [CUPS Key]({{< ref "gateways/lora-basics-station/cups#cups-key-file" >}}) instructions. Be sure you have also configured CUPS to [transmit an LNS API Key]({{< ref "gateways/lora-basics-station/cups#configure-cups-to-send-the-lns-api-key" >}}).
+- Gateway Key: [Create a CUPS API key]({{< ref "/gateways/lora-basics-station/cups#create-separate-cups-and-lns-api-keys" >}}). Copy the API key and paste it to this field in the following format: `Authorization: Bearer <cups-api-key>`. Be sure you have also configured CUPS to [transmit an LNS API Key]({{< ref "gateways/lora-basics-station/cups#configure-cups-to-send-the-lns-api-key" >}}).
 
 {{< figure src="../lbs-cups.png" alt="LoRa Basics Station" >}}
 
