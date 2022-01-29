@@ -23,15 +23,15 @@ Check the [Blockbax documentation page](https://blockbax.com/docs/) for more inf
 
 [Login](https://login.blockbax.com/) to the Blockbax Platform.
 
-Create a [subject type](https://blockbax.com/docs/subjects/#managing-subject-types) and configure metrics. External IDs for these metrics  need to match the property names returned by the uplink payload formatter that will be [configured on {{% tts %}}]({{< ref "/integrations/cloud-integrations/blockbax#configure-the-things-stack" >}}).
+Create a [subject type](https://blockbax.com/docs/subjects/#managing-subject-types) and configure metrics. External IDs for these metrics need to match the property names returned by the uplink payload formatter that will be [configured on {{% tts %}}]({{< ref "/integrations/cloud-integrations/blockbax#configure-the-things-stack" >}}).
 
 {{< figure src="blockbax-metric-external-id-in-payload.png" alt="Relating Blockbax metrics to the Things Stack" >}}
 
-Additionally, you can choose to [create subjects](https://blockbax.com/docs/subjects/#creating-subjects) manually with external IDs matching the device IDs. You can also set the `autoCreateSubjects` option in {{% tts %}} payload formatter function to `true`, so in case a subject does not exist, an automatic subject creation will be performed.
-
 ## Configure {{% tts %}}
 
-Make sure your device is added to {{% tts %}}. See [Adding Devices](https://www.thethingsindustries.com/docs/devices/adding-devices/) for more info.
+Make sure your device is added to {{% tts %}}. See [Adding Devices]({{< ref "/devices/adding-devices" >}}) for more info. Many [Device Repository]({{< ref "/integrations/payload-formatters/device-repo" >}}) payload formatters output payloads such that it can be directly ingested by the Blockbax Platform. If this is not the case, then please follow the instruction below to create a custom payload formatter.
+
+### Create payload formatter
 
 On the left menu of your {{% tts %}} application, select **Payload formatters &#8594; Uplink**.
 
@@ -44,11 +44,6 @@ function decodeUplink(input) {
     decoded = decoder(input.bytes)
     return {
         data: {
-            options: {
-                // Set this option to true to create subjects automatically
-                autoCreateSubjects: false
-            },
-
             // For numeric metrics
             <Blockbax-external-metric-ID>: decoded.exampleNumber,
 
@@ -79,10 +74,6 @@ The functions presented above need to be modified against your setup. See exampl
       decoded = decoder(input.bytes)
       return {
         data: {
-          options: {
-          // Set this option to true to create subjects automatically
-            autoCreateSubjects: false
-          },
           battery: decoded.battery,
           temperature: decoded.temperature,
           humidity: decoded.humidity,
@@ -145,9 +136,15 @@ When done, click **Save changes**.
 
 {{< figure src="payload-formatter.png" alt="Setting up the payload formatter" >}}
 
-After preparing the payload formatter, use the Blockbax [Webhook template]({{< ref "/integrations/webhooks/webhook-templates" >}}) to create a Webhook integration on {{% tts %}}. Select **Integrations &#8594; Webhooks** on the left hand menu. Click **Add webhook** and select the **Blockbax** tile.
+### Create webhook
+
+Use the Blockbax [Webhook template]({{< ref "/integrations/webhooks/webhook-templates" >}}) to create a Webhook integration on {{% tts %}}. Select **Integrations &#8594; Webhooks** on the left hand menu. Click **Add webhook** and select the **Blockbax** tile.
+
+{{< figure src="webhook.png" alt="Setting up the webhook" >}}
 
 Enter an arbitrary **Webhook ID**, enter your **Project ID** and **[Access token](https://blockbax.com/docs/project-settings/#access-tokens)**. The project ID is contained in your project's URL, e.g. if the project URL is `app.blockbax.com/projects/40edc099-7a41-4af3-9fa4-2fa4bc23a87a/`, the project ID is `40edc099-7a41-4af3-9fa4-2fa4bc23a87a`.
+
+Additionally, you can choose to [create subjects](https://blockbax.com/docs/subjects/#creating-subjects) manually with external IDs matching the device IDs. In that case set the **Automatically create subjects?** option to `false`. The default `true` will create a subject automatically if a subject does not exist and if the property names returned by the uplink payload formatter match the external IDs for these metrics in the Blockbax platform (see above).
 
 To see the values of all parameters of the Blockbax integration, click on the integration after you created it with the Webhook template.
 
