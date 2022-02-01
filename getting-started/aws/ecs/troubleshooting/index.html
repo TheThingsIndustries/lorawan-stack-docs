@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>AWS ECS | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/" />
+  <title>Troubleshooting AWS ECS Deployment | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/troubleshooting/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="AWS ECS">
+  <meta itemprop="name" content="Troubleshooting AWS ECS Deployment">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="AWS ECS">
+  <meta property="og:title" content="Troubleshooting AWS ECS Deployment">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/">
-  <meta name="twitter:title" content="AWS ECS" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/troubleshooting/">
+  <meta name="twitter:title" content="Troubleshooting AWS ECS Deployment" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -136,7 +136,7 @@
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/" class="is-active">AWS ECS</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/" class="">AWS ECS</a>
     
     
 
@@ -164,7 +164,12 @@
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/troubleshooting/" class="">Troubleshooting AWS ECS Deployment</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/troubleshooting/" class="is-active">Troubleshooting AWS ECS Deployment</a>
+    
+    
+
+
+
     
   </li>
 
@@ -226,226 +231,33 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">AWS ECS
+        <h1 class="title is-size-2">Troubleshooting AWS ECS Deployment
           
         </h1>
         
-        <h2 class="subtitle">
-          
-            
-            
-
-  
-
-
-
-
-
-  
-    
-  
-
-
-
-  
-
-<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Enterprise Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
-
-</a>
-
-
-          
-          
-          
-        </h2>
-        
         <div class="content">
-          <p>The Things Stack can be deployed to AWS as a set of highly available services on AWS ECS using AWS CloudFormation.</p>
-<p>This guide gives an overview of the architecture and shows how to deploy your own highly available The Things Stack cluster.</p>
-<h2 id="who-is-it-for">Who is it for?</h2>
-<p>The AWS ECS deployment option is for professional, large-scale and multi-tenant deployments.</p>
-<p>This deployment option is significantly more complicated than other deployment options. In order to deploy and operate The Things Stack in this configuration, you will need to be comfortable working with and operating the following concepts:</p>
-<ul>
-<li>AWS VPC</li>
-<li>AWS RDS</li>
-<li>AWS ElastiCache</li>
-<li>AWS EC2</li>
-<li>AWS ECS</li>
-<li>AWS CloudFormation</li>
-<li>Shell and command line usage</li>
-<li>AWS command line interface</li>
-</ul>
-        </div>
-        
-          <div class="columns is-multiline">
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/architecture/">Architecture</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            
-            This page describes the architecture of a The Things Stack deployment on AWS ECS.
+          <p>This section contains information to troubleshoot The Things Stack deployment.</p>
+<h3 id="ecs-pulled-wrong-image-version">ECS pulled wrong image version</h3>
+<p>The image tags starting with <code>3.x</code> contain the latest patch version. For this reason, you should use images starting with <code>3.x.y</code>, where you specify the desired patch version yourself. Otherwise, when for some reason an ECS task restarts, it can pull the <code>3.x</code> image again, which could be in the meantime updated to a new patch version.</p>
+<h3 id="identity-server-fails-with-errorpkgidentityserverstoredatabase-database-error">Identity Server fails with <code>error:pkg/identityserver/store:database (database error)</code></h3>
+<p>This error is usually caused by a network failure. In this case, and in case of similar connection errors, we recommend:</p>
+<ol>
+<li>Restarting relevant ECS tasks</li>
+<li>Waiting for all startup processes to complete, as sometimes certain elements might start in wrong order</li>
+</ol>
+<p>If this doesn&rsquo;t help, please start troubleshooting the network connection (for example, in this case between the Identity Server and the Aurora database).</p>
+<h3 id="the-session-information-is-lost-for-all-devices-and-the-uplinks-are-dropped-by-the-network-server">The session information is lost for all devices, and the uplinks are dropped by the Network Server</h3>
+<p>While intuitively ElastiCache seems to be just cache, in fact it is a fully capable database, and The Things Stack uses it as such. In particular, among other things, Network Server uses it for storing the session information for devices. If there is any issue with the Redis database, it causes loss of devices session data.</p>
+<p>This is why, by default, we enable periodic backups. If you&rsquo;re experiencing data loss, restore the database from one of automatic snapshots, by entering the snapshot ID into relevant parameter in the Redis CloudFormation template.</p>
+<h3 id="i-have-an-issue-with-certain-aws-resources">I have an issue with certain AWS resources</h3>
+<p>It is assumed that customers who wish to deploy their own AWS ECS setup already have in-depth knowledge about AWS. We do not offer support on AWS itself. In order to receive best support from us, before reaching out please narrow down your issue to particular elements of The Things Stack. For help on AWS itself, please refer to:</p>
+<p><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/troubleshooting.html">https://docs.aws.amazon.com/AmazonECS/latest/developerguide/troubleshooting.html</a></p>
 
-            
-          </div>
         </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/architecture/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            
-            This page describes what you need for deploying The Things Stack on AWS ECS.
-
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/prerequisites/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/deployment/">Deployment</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            
-            This page describes the steps for deploying The Things Stack on AWS ECS.
-
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/deployment/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/interop/">Interoperability</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            
-            The Things Stack exposes the Join Server API defined by LoRaWAN Backend Interfaces 1.0 and 1.1. This is used for interoperability between LoRaWAN networks.
-
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/interop/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/troubleshooting/">Troubleshooting AWS ECS Deployment</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            
-            This section contains information to troubleshoot The Things Stack deployment.
-ECS pulled wrong image version The image tags starting with 3.x contain the latest patch version. For this reason, you should use images starting with 3.x.y, where you specify the desired patch version yourself. Otherwise, when for some reason an ECS task restarts, it can pull the 3.x image again, which could be in the meantime updated to a new patch version.
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/troubleshooting/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/updating/">Updating</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            
-            This page describes the steps for updating The Things Stack on AWS ECS.
-
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/updating/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/database-operations/">Database Operations</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            
-            This page describes the steps for performing database operations on an AWS ECS deployment.
-
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/database-operations/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/monitoring/">Monitoring</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            
-            This page describes how you can monitor a The Things Stack deployment on AWS ECS.
-
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/monitoring/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
         
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/getting-started/aws/ami/updating/">← Updating AWS AMI Deployment</a>
-<a class="button is-pulled-right" href="/docs/getting-started/aws/ecs/architecture/">Architecture →</a>
+<a class="button is-pulled-left" href="/docs/getting-started/aws/ecs/interop/">← Interoperability</a>
+<a class="button is-pulled-right" href="/docs/getting-started/aws/ecs/updating/">Updating →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -462,13 +274,6 @@ ECS pulled wrong image version The image tags starting with 3.x contain the late
     <h2 class="title is-size-6">On this page</h2>
     
 
-
-  <ul class="menu-list">
-    
-      
-      <li><a href='#who-is-it-for'>Who is it for?</a></li>
-    
-  </ul>
 
 
   </nav>
@@ -506,14 +311,14 @@ ECS pulled wrong image version The image tags starting with 3.x contain the late
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Hylke Visser on 27 Oct 2020.
+  Last changed by Michał Borkowski on 01 Feb 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/97f75f4fe2e3c4e75c35655dd74896e3cdd6e395">
-      doc: Fix AWS description and subsection weights
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/6ff109fc58d966846a36975076e0b8a71dbbe475">
+      doc: Add infomation on AWS ECS troubleshooting (#752)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/aws/ecs/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/aws/ecs/troubleshooting/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
