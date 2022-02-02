@@ -288,6 +288,13 @@
 <li><code>input-format</code>: Input format</li>
 <li><code>output-format</code>: Output format</li>
 </ul>
+<p>The CLI is capable of retrying requests that were rejected by the rate limiter: errors of type <code>ResourceExausthed</code> and <code>Unavailable</code>. By default, this behavior is disabled but can be set through the following configurations:</p>
+<ul>
+<li><code>retry-config.max</code>: Maximum amount of times that a request can be reattempted.</li>
+<li><code>retry-config.default-timeout</code>: Default timeout between retry attempts.</li>
+<li><code>retry-config.enable-metadata</code>: Enables use of the request response metadata to dynamically calculate a timeout for the retry attempts.</li>
+<li><code>retry-config.jitter</code>: Fraction that creates a deviation of the timeout used between retry attempts.</li>
+</ul>
 <h2 id="api-options">API Options</h2>
 <p>The CLI needs to be configured with the addresses of the OAuth server. The <a href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/">Getting Started guide</a> gives a good example configuration for a typical deployment.</p>
 <ul>
@@ -373,10 +380,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by benolayinka on 01 May 2020.
+  Last changed by Nicholas Cristofaro on 02 Feb 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f5f2f2eb2c51621c3dd115a636cb73f2c0f8ee0d">
-      doc: Restructure console for readability
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f61f39b62076060dd8c51b658caf485085574f80">
+      doc: Add retry options to cli configuration (#741)
     </a>
 </p>
 
