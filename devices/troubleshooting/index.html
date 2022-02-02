@@ -284,6 +284,11 @@
 <li>This case applies only to ABP devices and EU/IN/AS frequency bands. Since the Network Server is initially accepting uplinks from devices only in default channels, uplinks from the device that is using non-default channels are dropped. In this case, <strong>Factory Preset Frequencies</strong> have to be set either in device&rsquo;s overview in The Things Stack Console, or by setting <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/#available-mac-settings">MAC commands</a> using the CLI. If these settings are applied to an existing device, you might need to reset the device as well.</li>
 </ul>
 </li>
+<li>Session keys mismatch
+<ul>
+<li>For ABP devices, if there is a mismatch between session keys (AppSKey and NwkSKey) that are hardcoded in the device and those used when registering the device on The Things Stack, uplinks will not be seen in the device&rsquo;s Live data tab. Please cross-check that your device&rsquo;s session keys match the ones used upon registration on The Things Stack.</li>
+</ul>
+</li>
 </ul>
 <p>This problem can also occur after <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session/">migrating an active device session</a> from V2 to The Things Stack, for devices that transmit uplinks on frequencies that are not part of the standard <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">frequency plans</a> used by The Things Stack. The issue arises from the fact that factory preset frequencies were not stored in V2, so they are not present in the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON file</a> used for importing devices in The Things Stack. There are two possible solutions:</p>
 <ul>
@@ -408,10 +413,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 13 Jan 2022.
+  Last changed by Nejra Selimović on 02 Feb 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/183ab9124b2ffcd8e30b74c118c658c1bae80476">
-      doc: Add note for dropped msgs on ABP (#717)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f8bf2f90de0b3014162cf4be191f6d17113474b7">
+      doc: Add session keys mismatch troubleshooting entry (#760)
     </a>
 </p>
 
