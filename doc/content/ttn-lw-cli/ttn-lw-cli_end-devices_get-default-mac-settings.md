@@ -17,7 +17,7 @@ ttn-lw-cli end-devices get-default-mac-settings [flags]
 ```
       --frequency-plan-id string     
   -h, --help                         help for get-default-mac-settings
-      --lorawan-phy-version string   allowed values: 1.0, 1.0.0, 1.0.1, 1.0.2, 1.0.2-a, 1.0.2-b, 1.0.3-a, 1.1-a, 1.1-b, 1.1.0-a, 1.1.0-b, PHY_UNKNOWN, PHY_V1_0, PHY_V1_0_1, PHY_V1_0_2_REV_A, PHY_V1_0_2_REV_B, PHY_V1_0_3_REV_A, PHY_V1_1_REV_A, PHY_V1_1_REV_B, RP001_V1_0_2, RP001_V1_0_2_REV_B, RP001_V1_0_3_REV_A, RP001_V1_1_REV_A, RP001_V1_1_REV_B, RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3, TS001_V1_0, TS001_V1_0_1, unknown
+      --lorawan-phy-version string   allowed values: PHY_UNKNOWN, PHY_V1_0, PHY_V1_0_1, PHY_V1_0_2_REV_A, PHY_V1_0_2_REV_B, PHY_V1_0_3_REV_A, PHY_V1_1_REV_A, PHY_V1_1_REV_B, RP001_V1_0_2, RP001_V1_0_2_REV_B, RP001_V1_0_3_REV_A, RP001_V1_1_REV_A, RP001_V1_1_REV_B, RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3, TS001_V1_0, TS001_V1_0_1
 ```
 
 ### Options inherited from parent commands
@@ -48,6 +48,10 @@ ttn-lw-cli end-devices get-default-mac-settings [flags]
       --output-format string                            Output format (default "json")
       --packet-broker-agent-grpc-address string         Packet Broker Agent address (default "localhost:8884")
       --qr-code-generator-grpc-address string           QR Code Generator address (default "localhost:8884")
+      --retry-config.default-timeout duration           Default timeout between retry attempts (default 100ms)
+      --retry-config.enable-metadata                    Use request response metadata to dynamically calculate timeout between retry attempts (default true)
+      --retry-config.jitter float                       Fraction that creates a deviation of the timeout used between retry attempts
+      --retry-config.max uint                           Maximum amount of times that a request can be reattempted
       --skip-version-check                              Do not perform version checks
 ```
 
