@@ -288,15 +288,15 @@
 </ol>
 <h2 id="blockbax-setup">Blockbax Setup</h2>
 <p><a href="https://login.blockbax.com/">Login</a> to the Blockbax Platform.</p>
-<p>Create a <a href="https://blockbax.com/docs/subjects/#managing-subject-types">subject type</a> and configure metrics. External IDs for these metrics  need to match the property names returned by the uplink payload formatter that will be <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blockbax/#configure-the-things-stack">configured on The Things Stack</a>.</p>
+<p>Create a <a href="https://blockbax.com/docs/subjects/#managing-subject-types">subject type</a> and configure metrics. External IDs for these metrics need to match the property names returned by the uplink payload formatter that will be <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blockbax/#configure-the-things-stack">configured on The Things Stack</a>.</p>
 <figure>
     <img src="blockbax-metric-external-id-in-payload.png"
          alt="Relating Blockbax metrics to the Things Stack"/> 
 </figure>
 
-<p>Additionally, you can choose to <a href="https://blockbax.com/docs/subjects/#creating-subjects">create subjects</a> manually with external IDs matching the device IDs. You can also set the <code>autoCreateSubjects</code> option in The Things Stack payload formatter function to <code>true</code>, so in case a subject does not exist, an automatic subject creation will be performed.</p>
 <h2 id="configure-the-things-stack">Configure The Things Stack</h2>
-<p>Make sure your device is added to The Things Stack. See <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> for more info.</p>
+<p>Make sure your device is added to The Things Stack. See <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> for more info. Many <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/device-repo/">Device Repository</a> payload formatters output payloads such that it can be directly ingested by the Blockbax Platform. If this is not the case, then please follow the instruction below to create a custom payload formatter.</p>
+<h3 id="create-payload-formatter">Create payload formatter</h3>
 <p>On the left menu of your The Things Stack application, select <strong>Payload formatters → Uplink</strong>.</p>
 <p>Select <strong>Javascript</strong> payload formatter type.</p>
 <p>Paste the following contents in the <strong>Formatter parameter</strong> window:</p>
@@ -304,11 +304,6 @@
     <span class="nx">decoded</span> <span class="o">=</span> <span class="nx">decoder</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">)</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
-                <span class="c1">// Set this option to true to create subjects automatically
-</span><span class="c1"></span>                <span class="nx">autoCreateSubjects</span><span class="o">:</span> <span class="kc">false</span>
-            <span class="p">},</span>
-
             <span class="c1">// For numeric metrics
 </span><span class="c1"></span>            <span class="o">&lt;</span><span class="nx">Blockbax</span><span class="o">-</span><span class="nx">external</span><span class="o">-</span><span class="nx">metric</span><span class="o">-</span><span class="nx">ID</span><span class="o">&gt;:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">exampleNumber</span><span class="p">,</span>
 
@@ -334,10 +329,6 @@
       <span class="nx">decoded</span> <span class="o">=</span> <span class="nx">decoder</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">)</span>
       <span class="k">return</span> <span class="p">{</span>
         <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
-          <span class="nx">options</span><span class="o">:</span> <span class="p">{</span>
-          <span class="c1">// Set this option to true to create subjects automatically
-</span><span class="c1"></span>            <span class="nx">autoCreateSubjects</span><span class="o">:</span> <span class="kc">false</span>
-          <span class="p">},</span>
           <span class="nx">battery</span><span class="o">:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">battery</span><span class="p">,</span>
           <span class="nx">temperature</span><span class="o">:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">temperature</span><span class="p">,</span>
           <span class="nx">humidity</span><span class="o">:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">humidity</span><span class="p">,</span>
@@ -400,8 +391,15 @@
          alt="Setting up the payload formatter"/> 
 </figure>
 
-<p>After preparing the payload formatter, use the Blockbax <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a> to create a Webhook integration on The Things Stack. Select <strong>Integrations → Webhooks</strong> on the left hand menu. Click <strong>Add webhook</strong> and select the <strong>Blockbax</strong> tile.</p>
+<h3 id="create-webhook">Create webhook</h3>
+<p>Use the Blockbax <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a> to create a Webhook integration on The Things Stack. Select <strong>Integrations → Webhooks</strong> on the left hand menu. Click <strong>Add webhook</strong> and select the <strong>Blockbax</strong> tile.</p>
+<figure>
+    <img src="webhook.png"
+         alt="Setting up the webhook"/> 
+</figure>
+
 <p>Enter an arbitrary <strong>Webhook ID</strong>, enter your <strong>Project ID</strong> and <strong><a href="https://blockbax.com/docs/project-settings/#access-tokens">Access token</a></strong>. The project ID is contained in your project&rsquo;s URL, e.g. if the project URL is <code>app.blockbax.com/projects/40edc099-7a41-4af3-9fa4-2fa4bc23a87a/</code>, the project ID is <code>40edc099-7a41-4af3-9fa4-2fa4bc23a87a</code>.</p>
+<p>Additionally, you can choose to <a href="https://blockbax.com/docs/subjects/#creating-subjects">create subjects</a> manually with external IDs matching the device IDs. In that case set the <strong>Automatically create subjects?</strong> option to <code>false</code>. The default <code>true</code> will create a subject automatically if a subject does not exist and if the property names returned by the uplink payload formatter match the external IDs for these metrics in the Blockbax platform (see above).</p>
 <p>To see the values of all parameters of the Blockbax integration, click on the integration after you created it with the Webhook template.</p>
 <p>Once you have added the integration, check your Blockbax project to see the measurements coming in!</p>
         </div>
@@ -475,10 +473,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Blockbax on 10 Dec 2021.
+  Last changed by Blockbax on 02 Feb 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/54cd9268813162270d018b0bf01095ff2aa2e694">
-      doc: Document Blockbax integration (#674)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/398b8a2e4555d59659201c6cc4f7863cab75a40b">
+      doc: Update Blockbax integration docs (#753)
     </a>
 </p>
 
