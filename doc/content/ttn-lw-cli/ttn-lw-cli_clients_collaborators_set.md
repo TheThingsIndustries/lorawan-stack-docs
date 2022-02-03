@@ -50,6 +50,10 @@ ttn-lw-cli clients collaborators set [flags]
       --output-format string                            Output format (default "json")
       --packet-broker-agent-grpc-address string         Packet Broker Agent address (default "localhost:8884")
       --qr-code-generator-grpc-address string           QR Code Generator address (default "localhost:8884")
+      --retry-config.default-timeout duration           Default timeout between retry attempts (default 100ms)
+      --retry-config.enable-metadata                    Use request response metadata to dynamically calculate timeout between retry attempts (default true)
+      --retry-config.jitter float                       Fraction that creates a deviation of the timeout used between retry attempts
+      --retry-config.max uint                           Maximum amount of times that a request can be reattempted
       --skip-version-check                              Do not perform version checks
 ```
 

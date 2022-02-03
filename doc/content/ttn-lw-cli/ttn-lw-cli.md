@@ -37,6 +37,10 @@ The Things Industries Command-line Interface
       --output-format string                            Output format (default "json")
       --packet-broker-agent-grpc-address string         Packet Broker Agent address (default "localhost:8884")
       --qr-code-generator-grpc-address string           QR Code Generator address (default "localhost:8884")
+      --retry-config.default-timeout duration           Default timeout between retry attempts (default 100ms)
+      --retry-config.enable-metadata                    Use request response metadata to dynamically calculate timeout between retry attempts (default true)
+      --retry-config.jitter float                       Fraction that creates a deviation of the timeout used between retry attempts
+      --retry-config.max uint                           Maximum amount of times that a request can be reattempted
       --skip-version-check                              Do not perform version checks
 ```
 
@@ -45,7 +49,6 @@ The Things Industries Command-line Interface
 * [ttn-lw-cli applications]({{< relref "ttn-lw-cli_applications" >}})	 - Application commands
 * [ttn-lw-cli authentication-providers]({{< relref "ttn-lw-cli_authentication-providers" >}})	 - Authentication Provider commands
 * [ttn-lw-cli clients]({{< relref "ttn-lw-cli_clients" >}})	 - Client commands
-* [ttn-lw-cli completion]({{< relref "ttn-lw-cli_completion" >}})	 - generate the autocompletion script for the specified shell
 * [ttn-lw-cli config]({{< relref "ttn-lw-cli_config" >}})	 - View the current configuration
 * [ttn-lw-cli end-devices]({{< relref "ttn-lw-cli_end-devices" >}})	 - End Device commands
 * [ttn-lw-cli events]({{< relref "ttn-lw-cli_events" >}})	 - Subscribe to events
