@@ -29,7 +29,7 @@ LNS requires an API Key with the following rights:
 
 {{< figure src="../lns-rights.png" alt="LNS API Key Rights" >}}
 
-To create an API key for your gateway, follow instructions for Creating a Gateway API key in [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}).
+To create this API key for your gateway, follow instructions for [Creating a Gateway API key ]({{< ref "/gateways/adding-gateways#create-gateway-api-key" >}}).
 
 ## Configure Gateway
 
@@ -39,23 +39,41 @@ All {{% lbs %}} gateways support the following configuration options. Consult yo
 
 The server address is the network endpoint of {{% tts %}} LNS. It is a combination of the **protocol** (wss), the **server address**, and the **port**.
 
-Enter the following in your gateway as the LNS Server Address: `wss://<server-address>:8887`. The `<server-address>` is the address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}).
+Enter the following in your gateway as the LNS Server Address: `wss://<server-address>:8887`.
+
+The `<server-address>` is the address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}) for more info.
 
 ### LNS Server Certificate / LNS Trust
 
 This is the [CA certificate](https://en.wikipedia.org/wiki/Certificate_authority) which secures your domain. A `.pem` file containing common certificates is available in the [Root Certificates Reference]({{< ref "/reference/root-certificates" >}}).
 
-Upload the `.pem` file in your gateway as the LNS Server Certificate / LNS Trust.
+Upload the `.pem` file in your gateway as the LNS Server Certificate, i.e. LNS Trust.
 
 ### LNS Key File
 
 This is a file which {{% tts %}} uses to verify the identity of your gateway.
 
-Use the following command to create a file called `lns.key`, replacing `"your-lns-api-key"` with the LNS API key you created above.
+Instructions below show how to create a file called `lns.key`, replacing `"your-lns-api-key"` with the [LNS API key]({{< ref "/gateways/lora-basics-station/lns#create-an-api-key" >}}) you created above.
+
+On Linux or macOS use the following commands:
 
 ```bash
 LNS_KEY="your-lns-api-key"
 echo "Authorization: Bearer $LNS_KEY" | perl -p -e 's/\r\n|\n|\r/\r\n/g'  > lns.key
 ```
 
-The above command creates a file called `lns.key`, terminated with a Carriage Return Line Feed (`0x0D0A`) character. Upload this file in your gateway as the LNS key.
+On Windows, you can use Command Prompt:
+
+```bash
+set LNS_KEY=your-lns-api-key
+echo Authorization: Bearer %LNS_KEY% > lns.key
+```
+
+or PowerShell:
+
+```powershell
+$env:LNS_KEY='your-lns-api-key'
+write-output "Authorization: Bearer $env:LNS_KEY" | set-content lns.key
+```
+
+The commands above create a file called `lns.key`, terminated with a Carriage Return Line Feed (`0x0D0A`) character. Upload this file in your gateway as the LNS key.

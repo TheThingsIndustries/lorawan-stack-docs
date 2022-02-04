@@ -37,7 +37,7 @@ LNS requires an API Key with the following rights:
 
 {{< figure src="../lns-rights.png" alt="LNS API Key Rights" >}}
 
-To create an API key for your gateway, follow instructions for Creating a Gateway API key in [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}).
+To create these API keys for your gateway, follow instructions for [Creating a Gateway API key]({{< ref "/gateways/adding-gateways#create-gateway-api-key" >}}).
 
 ## Configure CUPS to Send the LNS API Key
 
@@ -47,7 +47,7 @@ To create an API key for your gateway, follow instructions for Creating a Gatewa
 
 We need to configure CUPS in {{% tts %}} to transmit the LNS API key when a gateway connects. To do so in the Console, go to the **General Settings** page of your gateway.
 
-In the **LoRa Basics Station LNS Authentication Key** field, paste the LNS API key you generated in the previous step.
+In the **LoRa Basics Station LNS Authentication Key** field, paste the [LNS API key]({{< ref "/gateways/lora-basics-station/cups#create-separate-cups-and-lns-api-keys" >}}) you generated in the previous step.
 
 {{< figure src="../lns-key.png" alt="LoRa Basics Station LNS Authentication Key" >}}
 
@@ -57,7 +57,7 @@ Press **Save Changes** to update the gateway settings. When your gateway connect
 
 {{< tabs/tab "CLI" >}}
 
-We need to configure CUPS in {{% tts %}} to transmit the LNS API key when a gateway connects. Use the following command to do so, replacing `"your-gateway-id"` with your gateway ID in {{% tts %}} and  `"your-lns-api-key"` with the LNS API key you created in the last step:
+We need to configure CUPS in {{% tts %}} to transmit the LNS API key when a gateway connects. Use the following command to do so, replacing `"your-gateway-id"` with your gateway ID in {{% tts %}} and  `"your-lns-api-key"` with the [LNS API key]({{< ref "/gateways/lora-basics-station/cups#create-separate-cups-and-lns-api-keys" >}}) you created in the last step:
 
 ```bash
 GTW_ID="your-gateway-id"
@@ -103,25 +103,43 @@ All {{% lbs %}} gateways support the following configuration options. Consult yo
 
 The server address is the network endpoint of {{% tts %}} CUPS. It is a combination of the **protocol** (https), the **server address**, and the **port**.
 
-Enter the following in your gateway as CUPS Server Address: `https://<server-address>:443`. The `<server-address>` is the address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}).
+Enter the following in your gateway as CUPS Server Address: `https://<server-address>:443`. 
+
+The `<server-address>` is the address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}) for more info.
 
 ### CUPS Server Certificate / CUPS Trust
 
 This is the [CA certificate](https://en.wikipedia.org/wiki/Certificate_authority) which secures your domain. A `.pem` file containing common certificates is available in the [Root Certificates Reference]({{< ref "/reference/root-certificates" >}}).
 
-Upload the `.pem` file in your gateway as the CUPS Server Certificate / CUPS Trust.
+Upload the `.pem` file in your gateway as the CUPS Server Certificate, i.e. CUPS Trust.
 
 ### CUPS Key File
 
 This is a file which {{% tts %}} uses to verify the identity of your gateway.
 
-Use the following commands to create a file called `cups.key`, replacing `"your-cups-api-key"` with the CUPS API key you created above.
+Instructions below show how to create a file called `cups.key`, replacing `"your-cups-api-key"` with the [CUPS API key]({{< ref "/gateways/lora-basics-station/cups#create-separate-cups-and-lns-api-keys" >}}) you created above.
+
+On Linux or macOS use the following commands:
 
 ```bash
 CUPS_KEY="your-cups-api-key"
 echo "Authorization: Bearer $CUPS_KEY" | perl -p -e 's/\r\n|\n|\r/\r\n/g'  > cups.key
 ```
 
-The above command creates a file called `cups.key`, terminated with a Carriage Return Line Feed (`0x0D0A`) character. Upload this file in your gateway as the CUPS key.
+On Windows, you can use Command Prompt:
+
+```bash
+set CUPS_KEY=your-cups-api-key
+echo Authorization: Bearer %CUPS_KEY% > cups.key
+```
+
+or PowerShell:
+
+```powershell
+$env:CUPS_KEY='your-cups-api-key'
+write-output "Authorization: Bearer $env:CUPS_KEY" | set-content cups.key
+```
+
+The commands above create a file called `cups.key`, terminated with a Carriage Return Line Feed (`0x0D0A`) character. Upload this file in your gateway as the CUPS key.
 
 If the connection is successful, the CUPS server will send the LNS Server Address, LNS Trust and the LNS API Key to the gateway and it will automatically attempt to connect to the LNS Server.
