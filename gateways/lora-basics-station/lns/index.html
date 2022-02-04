@@ -234,21 +234,29 @@
          alt="LNS API Key Rights"/> 
 </figure>
 
-<p>To create an API key for your gateway, follow instructions for Creating a Gateway API key in <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/">Adding Gateways</a>.</p>
+<p>To create this API key for your gateway, follow instructions for <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/#create-gateway-api-key">Creating a Gateway API key </a>.</p>
 <h2 id="configure-gateway">Configure Gateway</h2>
 <p>All LoRa Basics™ Station gateways support the following configuration options. Consult your gateway documentation for more information about configuring your specific gateway.</p>
 <h3 id="lns-server-address">LNS Server Address</h3>
 <p>The server address is the network endpoint of The Things Stack LNS. It is a combination of the <strong>protocol</strong> (wss), the <strong>server address</strong>, and the <strong>port</strong>.</p>
-<p>Enter the following in your gateway as the LNS Server Address: <code>wss://&lt;server-address&gt;:8887</code>. The <code>&lt;server-address&gt;</code> is the address of your The Things Stack deployment. See <a href="https://www.thethingsindustries.com/docs/getting-started/server-addresses/">Server Addresses</a>.</p>
+<p>Enter the following in your gateway as the LNS Server Address: <code>wss://&lt;server-address&gt;:8887</code>.</p>
+<p>The <code>&lt;server-address&gt;</code> is the address of your The Things Stack deployment. See <a href="https://www.thethingsindustries.com/docs/getting-started/server-addresses/">Server Addresses</a> for more info.</p>
 <h3 id="lns-server-certificate--lns-trust">LNS Server Certificate / LNS Trust</h3>
 <p>This is the <a href="https://en.wikipedia.org/wiki/Certificate_authority">CA certificate</a> which secures your domain. A <code>.pem</code> file containing common certificates is available in the <a href="https://www.thethingsindustries.com/docs/reference/root-certificates/">Root Certificates Reference</a>.</p>
-<p>Upload the <code>.pem</code> file in your gateway as the LNS Server Certificate / LNS Trust.</p>
+<p>Upload the <code>.pem</code> file in your gateway as the LNS Server Certificate, i.e. LNS Trust.</p>
 <h3 id="lns-key-file">LNS Key File</h3>
 <p>This is a file which The Things Stack uses to verify the identity of your gateway.</p>
-<p>Use the following command to create a file called <code>lns.key</code>, replacing <code>&quot;your-lns-api-key&quot;</code> with the LNS API key you created above.</p>
+<p>Instructions below show how to create a file called <code>lns.key</code>, replacing <code>&quot;your-lns-api-key&quot;</code> with the <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/lns/#create-an-api-key">LNS API key</a> you created above.</p>
+<p>On Linux or macOS use the following commands:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">LNS_KEY</span><span class="o">=</span><span class="s2">&#34;your-lns-api-key&#34;</span>
 <span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$LNS_KEY</span><span class="s2">&#34;</span> <span class="p">|</span> perl -p -e <span class="s1">&#39;s/\r\n|\n|\r/\r\n/g&#39;</span>  &gt; lns.key
-</code></pre></div><p>The above command creates a file called <code>lns.key</code>, terminated with a Carriage Return Line Feed (<code>0x0D0A</code>) character. Upload this file in your gateway as the LNS key.</p>
+</code></pre></div><p>On Windows, you can use Command Prompt:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">set</span> <span class="nv">LNS_KEY</span><span class="o">=</span>your-lns-api-key
+<span class="nb">echo</span> Authorization: Bearer %LNS_KEY% &gt; lns.key
+</code></pre></div><p>or PowerShell:</p>
+<div class="highlight"><pre class="chroma"><code class="language-powershell" data-lang="powershell"><span class="nv">$env:LNS_KEY</span><span class="p">=</span><span class="s1">&#39;your-lns-api-key&#39;</span>
+<span class="nb">write-output</span> <span class="s2">&#34;Authorization: Bearer $env:LNS_KEY&#34;</span> <span class="p">|</span> <span class="nb">set-content</span> <span class="n">lns</span><span class="p">.</span><span class="n">key</span>
+</code></pre></div><p>The commands above create a file called <code>lns.key</code>, terminated with a Carriage Return Line Feed (<code>0x0D0A</code>) character. Upload this file in your gateway as the LNS key.</p>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/gateways/lora-basics-station/cups/">← Configuration and Update Server (CUPS)</a>
@@ -322,10 +330,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 23 Dec 2021.
+  Last changed by Nejra Selimović on 04 Feb 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
-      doc: Remove $ character from code blocks, add variables (#678)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/448225a2ec4bc72ecce2a9c8710f6d95fd9391fa">
+      doc: Add steps for Windows, cross-link sections (#763)
     </a>
 </p>
 
