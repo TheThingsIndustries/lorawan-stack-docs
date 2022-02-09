@@ -13,6 +13,8 @@ This section contains instructions for adding Gateways in {{%tts%}}.
 Some gateways, like [The Things Indoor Gateway]({{< ref "gateways/thethingsindoorgateway" >}}), have special instructions for claiming. Look for your gateway in the left hand menu for specific instructions, as this guide does not apply to those gateways.
 {{</ note >}}
 
+Adding gateways using the Console or the CLI is usually most convenient, so those methods are extensively explained in this section. However, it is also possible to add gateways [using the API]({{< ref "/getting-started/api#register-a-gateway" >}}).
+
 {{< tabs/container "Console" "CLI" >}}
 
 {{< tabs/tab "Console" >}}

@@ -11,6 +11,8 @@ This section contains instructions for adding devices in {{% tts %}}.
 
 Devices are managed under applications. An application can contain an unlimited number of devices, but it can be helpful to sort devices in to applications by function or geographical area, to make the integrations and live data views more useful.
 
+Adding devices using the Console or the CLI is usually most convenient, so those methods are extensively explained in this section. However, it is also possible to add devices [using the API]({{< ref "/getting-started/api#multi-step-actions" >}}).
+
 {{< tabs/container "Console" "CLI" >}}
 
 {{< tabs/tab "Console" >}}
