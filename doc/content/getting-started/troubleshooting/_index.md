@@ -18,6 +18,18 @@ See the [authentication reference]({{< ref "reference/api/authentication" >}}).
 
 See [user and organization management]({{< ref "getting-started/user-management" >}}).
 
-## Troubleshooting Common Errors in the Console
+## Troubleshooting common errors in the Console
 
-See [Troubleshooting Console]({{< ref "getting-started/console/troubleshooting" >}})
+See [Troubleshooting Console]({{< ref "getting-started/console/troubleshooting" >}}).
+
+## Troubleshooting common device errors
+
+See [Troubleshooting Devices]({{< ref "/devices/troubleshooting" >}}).
+
+## Troubleshooting common gateway errors
+
+See [Troubleshooting Gateways]({{< ref "/gateways/troubleshooting" >}}).
+
+## Tenant is not active
+
+For [{{% tts %}} Cloud]({{< ref "/getting-started/cloud-hosted" >}}) customers, this error indicates that the payment is probably overdue. If you are experiencing payment issues, please contact your Account Manager directly for further assistance.
