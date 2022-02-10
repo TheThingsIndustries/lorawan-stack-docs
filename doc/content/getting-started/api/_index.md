@@ -254,3 +254,16 @@ curl --location \
   }' \
   'https://thethings.example.com/api/v3/js/applications/app1/devices/newdev1'
 ```
+
+## Purge Entities
+
+An admin user can [purge entities]({{< ref "/reference/purge" >}}) such as [applications]({{< ref "/reference/api/application" >}}), [clients]({{< ref "/reference/api/client" >}}), [gateways]({{< ref "/reference/api/gateway" >}}), [organizations]({{< ref "/reference/api/organization" >}}) or [users]({{< ref "/reference/api/user" >}}).
+
+For example, to purge the application `app1`:
+
+```bash
+curl --location \
+  --header "Authorization: Bearer NNSXS.XXXXXXXXX" \
+  --request DELETE \
+  'https://thethings.example.com/api/v3/applications/app1/purge'
+```

@@ -30,6 +30,8 @@ Purging entites deletes them **permanently** and is irreversible!
 
 ## How to Purge Entities
 
+Purging entities using the Console or the CLI is usually most convenient, so those methods are explained in this section. However, it is also possible to purge entities [using the API]({{< ref "/getting-started/api#purge-entities" >}}).
+
 {{< tabs/container "Console" "CLI" >}}
 
 {{< tabs/tab "Console" >}}

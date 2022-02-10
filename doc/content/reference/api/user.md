@@ -15,6 +15,14 @@ description: ""
 
 {{< proto/method service="UserRegistry" method="Delete" >}}
 
+{{< proto/method service="UserRegistry" method="Restore" >}}
+
+{{< proto/method service="UserRegistry" method="Purge" >}}
+
+{{< proto/method service="UserRegistry" method="UpdatePassword" >}}
+
+{{< proto/method service="UserRegistry" method="CreateTemporaryPassword" >}}
+
 ## The `EntityRegistrySearch` service
 
 {{< proto/method service="EntityRegistrySearch" method="SearchUsers" >}}
@@ -49,6 +57,8 @@ description: ""
 
 {{< proto/message message="ContactInfo" >}}
 
+{{< proto/message message="CreateTemporaryPasswordRequest" >}}
+
 {{< proto/message message="CreateUserRequest" >}}
 
 {{< proto/message message="DeleteInvitationRequest" >}}
@@ -78,6 +88,8 @@ description: ""
 {{< proto/message message="SendInvitationRequest" >}}
 
 {{< proto/message message="UpdateUserAPIKeyRequest" >}}
+
+{{< proto/message message="UpdateUserPasswordRequest" >}}
 
 {{< proto/message message="UpdateUserRequest" >}}
 

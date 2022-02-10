@@ -15,6 +15,12 @@ description: ""
 
 {{< proto/method service="GatewayRegistry" method="Delete" >}}
 
+{{< proto/method service="GatewayRegistry" method="Restore" >}}
+
+{{< proto/method service="GatewayRegistry" method="Purge" >}}
+
+{{< proto/method service="GatewayRegistry" method="GetIdentifiersForEUI" >}}
+
 ## The `EntityRegistrySearch` service
 
 {{< proto/method service="EntityRegistrySearch" method="SearchGateways" >}}
@@ -100,6 +106,8 @@ The Gateway Server exposes the list of available frequency plans with the `Confi
 {{< proto/message message="GetGatewayCollaboratorRequest" >}}
 
 {{< proto/message message="GetGatewayRequest" >}}
+
+{{< proto/message message="GetGatewayIdentifiersForEUIRequest" >}}
 
 {{< proto/message message="ListFrequencyPlansRequest" >}}
 

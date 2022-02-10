@@ -15,6 +15,12 @@ description: ""
 
 {{< proto/method service="ApplicationRegistry" method="Delete" >}}
 
+{{< proto/method service="ApplicationRegistry" method="Restore" >}}
+
+{{< proto/method service="ApplicationRegistry" method="Purge" >}}
+
+{{< proto/method service="ApplicationRegistry" method="IssueDevEUI" >}}
+
 ## The `EntityRegistrySearch` service
 
 {{< proto/method service="EntityRegistrySearch" method="SearchApplications" >}}
