@@ -318,8 +318,20 @@
 </span><span class="c1"></span>        <span class="s2">&#34;altitude&#34;</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>                      <span class="c1">// Location altitude
 </span><span class="c1"></span>        <span class="s2">&#34;source&#34;</span><span class="o">:</span> <span class="s2">&#34;SOURCE_REGISTRY&#34;</span>          <span class="c1">// Location source. SOURCE_REGISTRY is the location from the Identity Server.
 </span><span class="c1"></span>      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s2">&#34;version_ids&#34;</span><span class="o">:</span> <span class="p">{</span>                          <span class="c1">// End device version information
+</span><span class="c1"></span>        <span class="s2">&#34;brand_id&#34;</span><span class="o">:</span> <span class="s2">&#34;the-things-products&#34;</span><span class="p">,</span>    <span class="c1">// Device brand
+</span><span class="c1"></span>        <span class="s2">&#34;model_id&#34;</span><span class="o">:</span> <span class="s2">&#34;the-things-uno&#34;</span><span class="p">,</span>         <span class="c1">// Device model
+</span><span class="c1"></span>        <span class="s2">&#34;hardware_version&#34;</span><span class="o">:</span> <span class="s2">&#34;1.0&#34;</span><span class="p">,</span>            <span class="c1">// Device hardware version
+</span><span class="c1"></span>        <span class="s2">&#34;firmware_version&#34;</span><span class="o">:</span> <span class="s2">&#34;quickstart&#34;</span><span class="p">,</span>     <span class="c1">// Device firmware version
+</span><span class="c1"></span>        <span class="s2">&#34;band_id&#34;</span><span class="o">:</span> <span class="s2">&#34;EU_863_870&#34;</span>               <span class="c1">// Supported band ID
+</span><span class="c1"></span>    <span class="p">},</span>
+    <span class="s2">&#34;network_ids&#34;</span><span class="o">:</span> <span class="p">{</span>                          <span class="c1">// Network information
+</span><span class="c1"></span>      <span class="s2">&#34;net_id&#34;</span><span class="o">:</span> <span class="s2">&#34;000013&#34;</span><span class="p">,</span>                     <span class="c1">// Network ID
+</span><span class="c1"></span>      <span class="s2">&#34;tenant_id&#34;</span><span class="o">:</span> <span class="s2">&#34;tenant1&#34;</span><span class="p">,</span>                 <span class="c1">// Tenant ID
+</span><span class="c1"></span>      <span class="s2">&#34;cluster_id&#34;</span><span class="o">:</span> <span class="s2">&#34;eu1&#34;</span>                     <span class="c1">// Cluster ID
+</span><span class="c1"></span>    <span class="p">}</span>
+  <span class="p">},</span>
   <span class="s2">&#34;simulated&#34;</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>                         <span class="c1">// Signals if the message is coming from the Network Server or is simulated.
 </span><span class="c1"></span><span class="p">}</span>
 </code></pre></div><details><summary>Uplink message example</summary>
@@ -383,10 +395,31 @@
         <span class="nt">&#34;source&#34;</span><span class="p">:</span> <span class="s2">&#34;SOURCE_REGISTRY&#34;</span>
       <span class="p">}</span>
     <span class="p">},</span>
+    <span class="nt">&#34;version_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&#34;brand_id&#34;</span><span class="p">:</span> <span class="s2">&#34;the-things-products&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;model_id&#34;</span><span class="p">:</span> <span class="s2">&#34;the-things-uno&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;hardware_version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;firmware_version&#34;</span><span class="p">:</span> <span class="s2">&#34;quickstart&#34;</span><span class="p">,</span>
+        <span class="nt">&#34;band_id&#34;</span><span class="p">:</span> <span class="s2">&#34;US_902_928&#34;</span>
+    <span class="p">},</span>
+    <span class="nt">&#34;network_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&#34;net_id&#34;</span><span class="p">:</span> <span class="s2">&#34;000013&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;tenant_id&#34;</span><span class="p">:</span> <span class="s2">&#34;tenant1&#34;</span><span class="p">,</span>
+      <span class="nt">&#34;cluster_id&#34;</span><span class="p">:</span> <span class="s2">&#34;nam1&#34;</span>
+    <span class="p">},</span>
     <span class="nt">&#34;received_at&#34;</span> <span class="p">:</span> <span class="s2">&#34;2020-02-12T15:15:45.789585559Z&#34;</span>
   <span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div></details>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <p>End device key-value attributes are not included in uplink messages, because these attributes are stored in the Identity Server and normally they are static, so sending that data with every uplink is inefficient. Users can instead fetch device&rsquo;s attributes using the API:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --request GET /
+  --location <span class="s1">&#39;https://thethings.example.com/api/v3/applications/&lt;application-id&gt;/devices/&lt;device-id&gt;?field_mask=attributes&#39;</span> /
+  --header <span class="s2">&#34;Authorization: Bearer &lt;api-key&gt;&#34;</span>
+</code></pre></div>
+</div>
+
 <h3 id="downlink-events-messages">Downlink Events Messages</h3>
 <p>The JSON downlink <code>ack</code>, <code>nack</code>, <code>queued</code> and <code>sent</code> events messages use the following format:</p>
 <div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
@@ -603,10 +636,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer Easwaran on 17 Nov 2021.
+  Last changed by Nejra Selimović on 11 Feb 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/48ead23f8ec85e8bd178f8f0c89459349beb7d96">
-      doc: Remove data_rate_index from uplink message examples (#662)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/be864b64d9055c1b6c8c0b8e727273ac927312da">
+      doc: Add network and device hardware info to uplink data format (#775)
     </a>
 </p>
 
