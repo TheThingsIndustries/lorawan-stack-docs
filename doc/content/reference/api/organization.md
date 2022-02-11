@@ -15,6 +15,10 @@ description: ""
 
 {{< proto/method service="OrganizationRegistry" method="Delete" >}}
 
+{{< proto/method service="OrganizationRegistry" method="Restore" >}}
+
+{{< proto/method service="OrganizationRegistry" method="Purge" >}}
+
 ## The `EntityRegistrySearch` service
 
 {{< proto/method service="EntityRegistrySearch" method="SearchOrganizations" >}}
