@@ -136,6 +136,11 @@
   </li>
 
   <li>
+    <a href="https://www.thethingsindustries.com/docs/reference/api/client/" class="">Client APIs</a>
+    
+  </li>
+
+  <li>
     <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/" class="">End Device APIs</a>
     
   </li>
@@ -549,6 +554,161 @@ More or less fields may be returned, depending on the rights of the caller.
       </th>
       <td>
         <p><code>DELETE</code> <code>/api/v3/gateways/{gateway_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>GatewayRegistry.Restore</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        <p>Restore a recently deleted gateway. This does not restore the EUI,
+as that was released when deleting the gateway.</p>
+<p>Deployment configuration may specify if, and for how long after deletion,
+entities can be restored.</p>
+
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GatewayIdentifiers"><code>GatewayIdentifiers</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/gateways/{gateway_id}/restore</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>GatewayRegistry.Purge</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Purge the gateway. This will release both gateway ID and EUI for reuse.
+The gateway owner is responsible for clearing data from any (external) integrations
+that may store and expose data by gateway ID.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GatewayIdentifiers"><code>GatewayIdentifiers</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>DELETE</code> <code>/api/v3/gateways/{gateway_id}/purge</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>GatewayRegistry.GetIdentifiersForEUI</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Get the identifiers of the gateway that has the given EUI registered.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GetGatewayIdentifiersForEUIRequest"><code>GetGatewayIdentifiersForEUIRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:GatewayIdentifiers"><code>GatewayIdentifiers</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
       </td>
     </tr>
   </tbody>
@@ -5352,6 +5512,41 @@ Requires the RIGHT_GATEWAY_READ_SECRETS for reading and RIGHT_GATEWAY_WRITE_SECR
 
 
 
+<h3 id="message:GetGatewayIdentifiersForEUIRequest">Message <code>GetGatewayIdentifiersForEUIRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "eui": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>eui</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
 <h3 id="message:ListFrequencyPlansRequest">Message <code>ListFrequencyPlansRequest</code></h3>
 
 <details><summary>Show object example</summary>
@@ -7819,6 +8014,8 @@ Note that this is not prefixed with &ldquo;USER_&quot;; it is not a right on the
 
 	
 
+	
+
 
         </div>
         <div class="is-clearfix">
@@ -7902,10 +8099,10 @@ Note that this is not prefixed with &ldquo;USER_&quot;; it is not a right on the
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 08 Dec 2021.
+  Last changed by Nejra Selimović on 11 Feb 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/438514b7cae7e06699e07e210f50b1e3395e464e">
-      doc: Include gateway claiming APIs, move end device claiming APIs (#673)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/268e3c3ce15a774d0fee8c56a50fa555aae5d842">
+      doc: Add missing API entries for purging entities, cross-link sections (#773)
     </a>
 </p>
 

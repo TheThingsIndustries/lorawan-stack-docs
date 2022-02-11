@@ -136,6 +136,11 @@
   </li>
 
   <li>
+    <a href="https://www.thethingsindustries.com/docs/reference/api/client/" class="">Client APIs</a>
+    
+  </li>
+
+  <li>
     <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/" class="">End Device APIs</a>
     
   </li>
@@ -547,6 +552,111 @@ More or less fields may be returned, depending on the rights of the caller.
       </th>
       <td>
         <p><code>DELETE</code> <code>/api/v3/organizations/{organization_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OrganizationRegistry.Restore</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        <p>Restore a recently deleted organization.</p>
+<p>Deployment configuration may specify if, and for how long after deletion,
+entities can be restored.</p>
+
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:OrganizationIdentifiers"><code>OrganizationIdentifiers</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/organizations/{organization_id}/restore</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OrganizationRegistry.Purge</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Purge the organization. This will release the organization ID for reuse.
+The user is responsible for clearing data from any (external) integrations
+that may store and expose data by user or organization ID.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:OrganizationIdentifiers"><code>OrganizationIdentifiers</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>DELETE</code> <code>/api/v3/organizations/{organization_id}/purge</code></p>
       </td>
     </tr>
   </tbody>
@@ -4886,10 +4996,10 @@ Note that this is not prefixed with &ldquo;USER_&quot;; it is not a right on the
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 16 Aug 2021.
+  Last changed by Nejra Selimović on 11 Feb 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5a835dc32881e8370322cd2fe18a18130caac35f">
-      Improve description of field masks in API documentation (#475)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/268e3c3ce15a774d0fee8c56a50fa555aae5d842">
+      doc: Add missing API entries for purging entities, cross-link sections (#773)
     </a>
 </p>
 
