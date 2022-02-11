@@ -134,8 +134,20 @@ The JSON uplink messages use the following format:
         "altitude": 10,                      // Location altitude
         "source": "SOURCE_REGISTRY"          // Location source. SOURCE_REGISTRY is the location from the Identity Server.
       }
+    },
+    "version_ids": {                          // End device version information
+        "brand_id": "the-things-products",    // Device brand
+        "model_id": "the-things-uno",         // Device model
+        "hardware_version": "1.0",            // Device hardware version
+        "firmware_version": "quickstart",     // Device firmware version
+        "band_id": "EU_863_870"               // Supported band ID
+    },
+    "network_ids": {                          // Network information
+      "net_id": "000013",                     // Network ID
+      "tenant_id": "tenant1",                 // Tenant ID
+      "cluster_id": "eu1"                     // Cluster ID
     }
-  }
+  },
   "simulated": true,                         // Signals if the message is coming from the Network Server or is simulated.
 }
 ```
@@ -203,12 +215,33 @@ The JSON uplink messages use the following format:
         "source": "SOURCE_REGISTRY"
       }
     },
+    "version_ids": {
+        "brand_id": "the-things-products",
+        "model_id": "the-things-uno",
+        "hardware_version": "1.0",
+        "firmware_version": "quickstart",
+        "band_id": "US_902_928"
+    },
+    "network_ids": {
+      "net_id": "000013",
+      "tenant_id": "tenant1",
+      "cluster_id": "nam1"
+    },
     "received_at" : "2020-02-12T15:15:45.789585559Z"
   }
 }
 ```
 
 </details>
+
+{{< note >}} End device key-value attributes are not included in uplink messages, because these attributes are stored in the Identity Server and normally they are static, so sending that data with every uplink is inefficient. Users can instead fetch device's attributes using the API:
+
+```bash
+curl --request GET /
+  --location 'https://thethings.example.com/api/v3/applications/<application-id>/devices/<device-id>?field_mask=attributes' /
+  --header "Authorization: Bearer <api-key>"
+```
+{{</ note >}}
 
 ### Downlink Events Messages
 
