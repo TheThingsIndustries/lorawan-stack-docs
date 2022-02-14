@@ -182,7 +182,26 @@
           <p>This section provides help for common issues and frequently asked questions you may have when using Webhooks.</p>
 <h2 id="i-see-aswebhookfail-events-in-the-live-data-view-what-does-this-mean">I see <code>as.webhook.fail</code> events in the Live data view. What does this mean?</h2>
 <p>When sending an uplink via Webhooks fails, The Things Stack generates a failure event <code>as.webhook.fail</code>. You can find out about the failure cause by observing the event details. The Things Stack will return the request body up to 1KB.</p>
-<p>Besides the possibility that the webhook integration might be misconfigured, the most common failure cause is that the user&rsquo;s upstream endpoint cannot handle all uplinks received from The Things Stack fast enough, or cannot process the uplink message in 5 seconds (which is The Things Stack default timeout).</p>
+<p>Besides the possibility that the Webhook integration might be misconfigured, the most common failure cause is that the user&rsquo;s upstream endpoint cannot handle all uplinks received from The Things Stack fast enough, or cannot process the uplink message in 5 seconds (which is The Things Stack default timeout).</p>
+<p>An example of a Webhook failure event is shown on the image below.</p>
+<figure>
+    <img src="../webhook-failed-example.png"
+         alt="Webhook failure"/> 
+</figure>
+
+<p>The event details contain a detailed description of a failure cause:</p>
+<pre><code>&quot;details&quot;:[
+    {
+        &quot;@type&quot;: &quot;type.googleapis.com/google.protobuf.Struct&quot;,
+        &quot;value&quot;: {
+            &quot;body&quot;: &quot;{\&quot;success\&quot;:false,\&quot;error\&quot;:{\&quot;message\&quot;:\&quot;Alias ed2d46a2-00fc-4b2d-98f8-83a9fe7590c not found\&quot;,\&quot;id\&quot;:null}}&quot;,
+            &quot;status_code&quot;: 404,
+            &quot;url&quot;: &quot;https://webhook.site/ed2d46a2-00fc-4b2d-98f8-83a9fe7590c&quot;,
+            &quot;webhook_id&quot;: &quot;test&quot;
+        }
+    }
+]
+</code></pre><p>By inspecting details shown above, you can see that the Webhook failed with a status code <code>404</code>, indicating that the configured BaseURL is not found. To avoid this error, always make sure to check if the upstream endpoint URL is accessible.</p>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/webhooks/webhook-templates/">← Webhook Templates</a>
@@ -246,10 +265,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 12 Nov 2021.
+  Last changed by Nejra Selimović on 14 Feb 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b9d1b1ef25ed562d6a1e09d5accf40907de9a0e4">
-      doc: Create Webhooks troubleshooting section (#654)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f39346c5891ebafae4586665286e40e9be78abc1">
+      doc: Update Webhooks documentation (#774)
     </a>
 </p>
 

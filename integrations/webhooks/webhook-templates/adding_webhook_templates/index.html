@@ -203,34 +203,43 @@
         </h1>
         
         <div class="content">
-          <p>The Things Stack uses webhook templates from the <a href="https://github.com/TheThingsNetwork/lorawan-webhook-templates/"><code>lorawan-webhook-templates</code> Github repository</a>.</p>
-<p>Once you have created a new webhook template with a proper <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/format/">format</a>, you can easily test it locally by following the next steps:</p>
+          <p>The Things Stack uses Webhook templates from the <a href="https://github.com/TheThingsNetwork/lorawan-webhook-templates/"><code>lorawan-webhook-templates</code> Github repository</a>.</p>
+<p>The <code>lorawan-webhook-templates</code> repository is open source, so users are free to submit pull requests to add new Webhook templates. Naturally, before submitting a new Webhook template in a pull request, one would want to test if the template is correct, i.e. if it yields an integration that is working as expected. A common way to test a newly built Webhook template is to deploy The Things Stack on a local machine (see <a href="https://www.thethingsindustries.com/docs/getting-started/installation/">installation</a>), while configuring the deployment to use the locally stored Webhook templates.</p>
+<p>Once you have created a new Webhook template with a proper <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/format/">format</a>, follow these steps:</p>
 <ol>
 <li>
-<p>Clone the <a href="https://github.com/TheThingsNetwork/lorawan-webhook-templates/"><code>lorawan-webhook-templates</code> Github repository</a> to a local folder.</p>
+<p>Clone the <a href="https://github.com/TheThingsNetwork/lorawan-webhook-templates/"><code>lorawan-webhook-templates</code> Github repository</a> to a local folder (e.g. <code>/home/webhook-templates</code>).</p>
 </li>
 <li>
-<p>Store your webhook template in the previously mentioned folder.</p>
+<p>Store your Webhook template as a YAML file in the previously mentioned folder (e.g. <code>/home/webhook-templates/my-template.yml</code>).</p>
 </li>
 <li>
-<p>Include your webhook template in the <code>templates.yml</code> file.</p>
+<p>Include your Webhook template in the pre-existing <code>templates.yml</code> file contained in the previously mentioned folder.</p>
 </li>
 <li>
-<p>Update your The Things Stack configuration file by adding the following lines:</p>
+<p>Include the following lines in <a href="https://www.thethingsindustries.com/docs/getting-started/installation/configuration/">The Things Stack configuration file</a> (<code>ttn-lw-stack.yml</code>):</p>
 </li>
 </ol>
 <div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">as</span><span class="p">:</span><span class="w">
 </span><span class="w">  </span><span class="k">webhooks</span><span class="p">:</span><span class="w">
 </span><span class="w">    </span><span class="k">templates</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">directory</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;path-to-the-folder-containing-your-webhook-template&#34;</span><span class="w">
-</span></code></pre></div><p>or use <code>--as.webhooks.templates.directory</code> command line option when running The Things Stack instead.</p>
-<p>Go to the Console and select <strong>Webhooks</strong> tab in <strong>Integrations</strong> menu. Click the <strong>Add webhook</strong> button and you will see your template. At this point, you can test your webhook template.</p>
+</span><span class="w">      </span><span class="k">directory</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/home/webhook-templates&#34;</span><span class="w">   </span><span class="c"># replace with a path to a local folder where you stored Webhook templates</span><span class="w">
+</span></code></pre></div><p>Note that you can skip this step and use <code>--as.webhooks.templates.directory</code> command line option when running The Things Stack (step 5) instead.</p>
+<ol start="5">
+<li>Run The Things Stack.</li>
+</ol>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  If you followed the steps above but cannot see your template deployed, make sure that The Things Stack instance you&rsquo;re running is actually using the configuration file mentioned in step 4.
+</div>
+
+<p>Finally, when The Things Stack is running, go to the Console and select <strong>Webhooks</strong> tab in <strong>Integrations</strong> menu. Click the <strong>Add webhook</strong> button and you will see your newly created template as an integration tile. At this point, you can test your Webhook template.</p>
 <figure>
     <img src="../adding-webhook-template.png"
          alt="Webhook template successfully added"/> 
 </figure>
 
-<p>To make your webhook template available in most deployments when the next version is deployed, open a pull request on the <a href="https://github.com/TheThingsNetwork/lorawan-webhook-templates/"><code>lorawan-webhook-templates</code> Github repository</a>.</p>
+<p>To make your Webhook template publicly available when the next The Things Stack version is deployed, open a pull request in the <a href="https://github.com/TheThingsNetwork/lorawan-webhook-templates/"><code>lorawan-webhook-templates</code> Github repository</a>.</p>
 
         </div>
         <div class="is-clearfix">
@@ -289,10 +298,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Hylke Visser on 25 Aug 2020.
+  Last changed by Nejra Selimović on 14 Feb 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/dbea4172ab812e881ffdd0dd325517c907c6e836">
-      doc: Fix broken links
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f39346c5891ebafae4586665286e40e9be78abc1">
+      doc: Update Webhooks documentation (#774)
     </a>
 </p>
 
