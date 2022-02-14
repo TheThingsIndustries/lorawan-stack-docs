@@ -24,7 +24,9 @@ To use a [predefined webhook template]({{< relref "webhook-templates" >}}), choo
 
 {{< figure src="../add-webhook.png" alt="Webhook creation screen" >}}
 
-Give your webhook a **Webhook ID** so that you can identify it. Choose JSON as the **Webhook format**. For **Base URL**, provide the endpoint URL that the webhook should call, i.e the URL of your webhook integration.
+Give your webhook a **Webhook ID** to identify it. Choose JSON as the **Webhook format**.
+
+For **Base URL**, provide the upstream endpoint URL that the webhook should call. Make sure to always check if the endpoint is accessible beforehand, using tools like cURL or Postman. The `200 OK` status code response must be received from the endpoint URL for a Webhook integration to be successful.
 
 The **Downlink API key** field allows you to provide an API key which will be sent with all messages to the webhook endpoint. This can be useful to allow your integration to schedule downlinks without requiring you to hardcode an API key in the endpoint.
 
