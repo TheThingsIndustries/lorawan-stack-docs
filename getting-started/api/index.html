@@ -198,7 +198,7 @@
 </span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
 </span><span class="se"></span>  <span class="s1">&#39;https://tenant1.thethings.example.com/api/v3/applications/app1/devices/dev1?field_mask=name,description,locations&#39;</span>
 </code></pre></div><p>Fields may also be specified as a JSON object in a POST request.</p>
-<h3 id="get-event-stream">Get Event Stream</h3>
+<h2 id="get-event-stream">Get Event Stream</h2>
 <p>To get a stream of events for device <code>dev1</code> in application <code>app1</code> :</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
@@ -216,7 +216,7 @@
 </span><span class="s1">  }&#39;</span> <span class="se">\
 </span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/events&#39;</span>
 </code></pre></div><p>See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events">here</a> a description of the <code>text/event-stream</code> MIME type.</p>
-<h3 id="schedule-downlink">Schedule Downlink</h3>
+<h2 id="schedule-downlink">Schedule Downlink</h2>
 <p>To schedule a downlink, you may use the <code>DownlinkQueuePush</code> or <code>DownlinkQueueReplace</code> endpoints of the <a href="https://www.thethingsindustries.com/docs/reference/api/application_server/#the-appas-service">Application Server API</a>. For example, to schedule a downlink queue push to device <code>dev1</code> in application <code>app1</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
@@ -245,10 +245,29 @@
 </span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/as/applications/app1/devices/dev1/down/push&#39;</span>
 </code></pre></div><p>Please note that downlinks scheduled using the <code>decoded_payload</code> Payload Formatter field are encrypted in the Application Server, and the content will not be comprehensible in the Network Server&rsquo;s <code>frm_payload</code> field when viewing events.</p>
 <p>It is also possible to <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/scheduling-downlinks/">schedule downlinks using HTTP Webhooks</a>, which give you flexibility to choose JSON or gRPC HTTP payloads.</p>
-<h3 id="multi-step-actions">Multi-step Actions</h3>
+<h2 id="multi-step-actions">Multi-step Actions</h2>
 <p>If you want to create a device, perform multi-step actions, or write shell scripts, it&rsquo;s best to use the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">CLI</a>.</p>
 <p>If you want to do something like registering a device directly via the API, you need to make calls to the Identity Server, Join Server, Network Server and Application Server. See the <a href="https://www.thethingsindustries.com/docs/reference/api/">API Reference</a> for detailed information about which messages go to which endpoints.</p>
-<p>To register a device <code>newdev1</code> in application <code>app1</code>, first, register the <code>DevEUI</code>, <code>JoinEUI</code> and cluster addresses in the Identity Server. This is also where you register a friendly name, description, attributes, location, and more - see all fields in the <a href="https://www.thethingsindustries.com/docs/reference/api/">API Reference</a>:</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="otaa">
+      <a>
+        <span>OTAA</span>
+      </a>
+    </li>
+    
+    <li data-tab="abp">
+      <a>
+        <span>ABP</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="otaa">
+  <p>To register a device <code>newdev1</code> in application <code>app1</code>, first, register the <code>DevEUI</code>, <code>JoinEUI</code> and cluster addresses in the Identity Server. This is also where you register a friendly name, description, attributes, location, and more - see all fields in the <a href="https://www.thethingsindustries.com/docs/reference/api/">API Reference</a>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Accept: application/json&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
@@ -277,62 +296,10 @@
 </span><span class="s1">    }
 </span><span class="s1">  }&#39;</span> <span class="se">\
 </span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/applications/app1/devices&#39;</span>
-</code></pre></div><p>Register LoRaWAN settings in the Network Server:</p>
+</code></pre></div><p>Next, you need to register the <code>DevEUI</code>, <code>JoinEUI</code>, cluster addresses and keys in the Join Server:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
-</span><span class="se"></span>  --header <span class="s1">&#39;Accept: application/json&#39;</span> <span class="se">\
-</span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
-</span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
-</span><span class="se"></span>  --request PUT <span class="se">\
-</span><span class="se"></span>  --data-raw <span class="s1">&#39;{
-</span><span class="s1">    &#34;end_device&#34;: {
-</span><span class="s1">      &#34;supports_join&#34;: true,
-</span><span class="s1">      &#34;lorawan_version&#34;: &#34;1.0.2&#34;,
-</span><span class="s1">      &#34;ids&#34;: {
-</span><span class="s1">        &#34;device_id&#34;: &#34;newdev1&#34;,
-</span><span class="s1">        &#34;dev_eui&#34;: &#34;XXXXXXXXXXXXXXXX&#34;,
-</span><span class="s1">        &#34;join_eui&#34;: &#34;XXXXXXXXXXXXXXXX&#34;
-</span><span class="s1">      },
-</span><span class="s1">      &#34;lorawan_phy_version&#34;: &#34;1.0.2-b&#34;,
-</span><span class="s1">      &#34;frequency_plan_id&#34;: &#34;EU_863_870_TTN&#34;
-</span><span class="s1">    },
-</span><span class="s1">    &#34;field_mask&#34;: {
-</span><span class="s1">      &#34;paths&#34;: [
-</span><span class="s1">        &#34;supports_join&#34;,
-</span><span class="s1">        &#34;lorawan_version&#34;,
-</span><span class="s1">        &#34;ids.device_id&#34;,
-</span><span class="s1">        &#34;ids.dev_eui&#34;,
-</span><span class="s1">        &#34;ids.join_eui&#34;,
-</span><span class="s1">        &#34;lorawan_phy_version&#34;,
-</span><span class="s1">        &#34;frequency_plan_id&#34;
-</span><span class="s1">      ]
-</span><span class="s1">    }
-</span><span class="s1">  }&#39;</span> <span class="se">\
-</span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/ns/applications/app1/devices/newdev1&#39;</span>
-</code></pre></div><p>Register the <code>DevEUI</code> and <code>JoinEUI</code> in the Application Server:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
-</span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
-</span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
-</span><span class="se"></span>  --request PUT <span class="se">\
-</span><span class="se"></span>  --data-raw <span class="s1">&#39;{
-</span><span class="s1">    &#34;end_device&#34;: {
-</span><span class="s1">      &#34;ids&#34;: {
-</span><span class="s1">        &#34;device_id&#34;: &#34;newdev1&#34;,
-</span><span class="s1">        &#34;dev_eui&#34;: &#34;XXXXXXXXXXXXXXXX&#34;,
-</span><span class="s1">        &#34;join_eui&#34;: &#34;XXXXXXXXXXXXXXXX&#34;
-</span><span class="s1">      }
-</span><span class="s1">    },
-</span><span class="s1">    &#34;field_mask&#34;: {
-</span><span class="s1">      &#34;paths&#34;: [
-</span><span class="s1">        &#34;ids.device_id&#34;,
-</span><span class="s1">        &#34;ids.dev_eui&#34;,
-</span><span class="s1">        &#34;ids.join_eui&#34;
-</span><span class="s1">      ]
-</span><span class="s1">    }
-</span><span class="s1">  }&#39;</span> <span class="se">\
-</span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/as/applications/app1/devices/newdev1&#39;</span>
-</code></pre></div><p>Finally, for OTAA devices, register the <code>DevEUI</code>, <code>JoinEUI</code>, cluster addresses, and keys in the Join Server:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
-</span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
 </span><span class="se"></span>  --request PUT <span class="se">\
 </span><span class="se"></span>  --data-raw <span class="s1">&#39;{
@@ -362,7 +329,204 @@
 </span><span class="s1">    }
 </span><span class="s1">  }&#39;</span> <span class="se">\
 </span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/js/applications/app1/devices/newdev1&#39;</span>
-</code></pre></div><h2 id="purge-entities">Purge Entities</h2>
+</code></pre></div><p>Register LoRaWAN settings in the Network Server:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Accept: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
+</span><span class="se"></span>  --request PUT <span class="se">\
+</span><span class="se"></span>  --data-raw <span class="s1">&#39;{
+</span><span class="s1">    &#34;end_device&#34;: {
+</span><span class="s1">      &#34;supports_join&#34;: true,
+</span><span class="s1">      &#34;lorawan_version&#34;: &#34;1.0.2&#34;,
+</span><span class="s1">      &#34;ids&#34;: {
+</span><span class="s1">        &#34;device_id&#34;: &#34;newdev1&#34;,
+</span><span class="s1">        &#34;dev_eui&#34;: &#34;XXXXXXXXXXXXXXXX&#34;,
+</span><span class="s1">        &#34;join_eui&#34;: &#34;XXXXXXXXXXXXXXXX&#34;
+</span><span class="s1">      },
+</span><span class="s1">      &#34;lorawan_phy_version&#34;: &#34;1.0.2-b&#34;,
+</span><span class="s1">      &#34;frequency_plan_id&#34;: &#34;EU_863_870_TTN&#34;
+</span><span class="s1">    },
+</span><span class="s1">    &#34;field_mask&#34;: {
+</span><span class="s1">      &#34;paths&#34;: [
+</span><span class="s1">        &#34;supports_join&#34;,
+</span><span class="s1">        &#34;lorawan_version&#34;,
+</span><span class="s1">        &#34;ids.device_id&#34;,
+</span><span class="s1">        &#34;ids.dev_eui&#34;,
+</span><span class="s1">        &#34;ids.join_eui&#34;,
+</span><span class="s1">        &#34;lorawan_phy_version&#34;,
+</span><span class="s1">        &#34;frequency_plan_id&#34;
+</span><span class="s1">      ]
+</span><span class="s1">    }
+</span><span class="s1">  }&#39;</span> <span class="se">\
+</span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/ns/applications/app1/devices/newdev1&#39;</span>
+</code></pre></div><p>Register the <code>DevEUI</code> and <code>JoinEUI</code> in the Application Server:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
+</span><span class="se"></span>  --request PUT <span class="se">\
+</span><span class="se"></span>  --data-raw <span class="s1">&#39;{
+</span><span class="s1">    &#34;end_device&#34;: {
+</span><span class="s1">      &#34;ids&#34;: {
+</span><span class="s1">        &#34;device_id&#34;: &#34;newdev1&#34;,
+</span><span class="s1">        &#34;dev_eui&#34;: &#34;XXXXXXXXXXXXXXXX&#34;,
+</span><span class="s1">        &#34;join_eui&#34;: &#34;XXXXXXXXXXXXXXXX&#34;
+</span><span class="s1">      }
+</span><span class="s1">    },
+</span><span class="s1">    &#34;field_mask&#34;: {
+</span><span class="s1">      &#34;paths&#34;: [
+</span><span class="s1">        &#34;ids.device_id&#34;,
+</span><span class="s1">        &#34;ids.dev_eui&#34;,
+</span><span class="s1">        &#34;ids.join_eui&#34;
+</span><span class="s1">      ]
+</span><span class="s1">    }
+</span><span class="s1">  }&#39;</span> <span class="se">\
+</span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/as/applications/app1/devices/newdev1&#39;</span>
+</code></pre></div>
+</section>
+<section data-content="abp">
+  <p>To register a device <code>newdev1</code> in application <code>app1</code>, first, register the <code>DevEUI</code> and cluster addresses in the Identity Server. This is also where you register a friendly name, description, attributes, location, and more - see all fields in the <a href="https://www.thethingsindustries.com/docs/reference/api/">API Reference</a>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Accept: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
+</span><span class="se"></span>  --request POST <span class="se">\
+</span><span class="se"></span>  --data-raw <span class="s1">&#39;{
+</span><span class="s1">    &#34;end_device&#34;: {
+</span><span class="s1">      &#34;ids&#34;: {
+</span><span class="s1">        &#34;device_id&#34;: &#34;newdev1&#34;,
+</span><span class="s1">        &#34;dev_eui&#34;: &#34;XXXXXXXXXXXXXXXX&#34;
+</span><span class="s1">      },
+</span><span class="s1">      &#34;network_server_address&#34;: &#34;thethings.example.com&#34;,
+</span><span class="s1">      &#34;application_server_address&#34;: &#34;thethings.example.com&#34;
+</span><span class="s1">    },
+</span><span class="s1">    &#34;field_mask&#34;: {
+</span><span class="s1">      &#34;paths&#34;: [
+</span><span class="s1">        &#34;network_server_address&#34;,
+</span><span class="s1">        &#34;application_server_address&#34;,
+</span><span class="s1">        &#34;ids.dev_eui&#34;
+</span><span class="s1">      ]
+</span><span class="s1">    }
+</span><span class="s1">  }&#39;</span> <span class="se">\
+</span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/applications/app1/devices&#39;</span>
+</code></pre></div><p>Register LoRaWAN settings in the Network Server:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Accept: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
+</span><span class="se"></span>  --request PUT <span class="se">\
+</span><span class="se"></span>  --data-raw <span class="s1">&#39;{
+</span><span class="s1">    &#34;end_device&#34;: {
+</span><span class="s1">      &#34;supports_join&#34;: false,
+</span><span class="s1">      &#34;lorawan_version&#34;: &#34;1.0.2&#34;,
+</span><span class="s1">      &#34;ids&#34;: {
+</span><span class="s1">        &#34;device_id&#34;: &#34;newdev1&#34;,
+</span><span class="s1">        &#34;dev_eui&#34;: &#34;XXXXXXXXXXXXXXXX&#34;
+</span><span class="s1">      },
+</span><span class="s1">      &#34;session&#34;: {
+</span><span class="s1">        &#34;keys&#34;: {
+</span><span class="s1">          &#34;f_nwk_s_int_key&#34;: {
+</span><span class="s1">            &#34;key&#34;: &#34;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&#34;
+</span><span class="s1">          }
+</span><span class="s1">        },
+</span><span class="s1">        &#34;dev_addr&#34;: &#34;XXXXXXXX&#34;
+</span><span class="s1">      },
+</span><span class="s1">      &#34;mac_settings&#34;: {
+</span><span class="s1">        &#34;resets_f_cnt&#34;: true,
+</span><span class="s1">        &#34;factory_preset_frequencies&#34;: [
+</span><span class="s1">          &#34;868100000&#34;,
+</span><span class="s1">          &#34;868300000&#34;,
+</span><span class="s1">          &#34;868500000&#34;,
+</span><span class="s1">          &#34;867100000&#34;,
+</span><span class="s1">          &#34;867300000&#34;,
+</span><span class="s1">          &#34;867500000&#34;,
+</span><span class="s1">          &#34;867700000&#34;,
+</span><span class="s1">          &#34;867900000&#34;
+</span><span class="s1">        ]
+</span><span class="s1">      },
+</span><span class="s1">      &#34;resets_f_cnt&#34;: false,
+</span><span class="s1">      &#34;lorawan_phy_version&#34;: &#34;1.0.2-b&#34;,
+</span><span class="s1">      &#34;frequency_plan_id&#34;: &#34;EU_863_870_TTN&#34;
+</span><span class="s1">    },
+</span><span class="s1">    &#34;field_mask&#34;: {
+</span><span class="s1">      &#34;paths&#34;: [
+</span><span class="s1">        &#34;supports_join&#34;,
+</span><span class="s1">        &#34;lorawan_version&#34;,
+</span><span class="s1">        &#34;ids.device_id&#34;,
+</span><span class="s1">        &#34;ids.dev_eui&#34;,
+</span><span class="s1">        &#34;session.keys.f_nwk_s_int_key.key&#34;,
+</span><span class="s1">        &#34;session.dev_addr&#34;,
+</span><span class="s1">        &#34;mac_settings.resets_f_cnt&#34;,
+</span><span class="s1">        &#34;mac_settings.factory_preset_frequencies&#34;,
+</span><span class="s1">        &#34;lorawan_phy_version&#34;,
+</span><span class="s1">        &#34;frequency_plan_id&#34;
+</span><span class="s1">      ]
+</span><span class="s1">    }
+</span><span class="s1">  }&#39;</span> <span class="se">\
+</span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/ns/applications/app1/devices/newdev1&#39;</span>
+</code></pre></div><p>Register the <code>DevEUI</code> in the Application Server:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
+</span><span class="se"></span>  --request PUT <span class="se">\
+</span><span class="se"></span>  --data-raw <span class="s1">&#39;{
+</span><span class="s1">    &#34;end_device&#34;: {
+</span><span class="s1">      &#34;ids&#34;: {
+</span><span class="s1">        &#34;device_id&#34;: &#34;newdev1&#34;,
+</span><span class="s1">        &#34;dev_eui&#34;: &#34;XXXXXXXXXXXXXXXX&#34;
+</span><span class="s1">      },
+</span><span class="s1">      &#34;session&#34;: {
+</span><span class="s1">        &#34;keys&#34;: {
+</span><span class="s1">          &#34;app_s_key&#34;: {
+</span><span class="s1">            &#34;key&#34;: &#34;XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX&#34;
+</span><span class="s1">          }
+</span><span class="s1">        },
+</span><span class="s1">        &#34;dev_addr&#34;: &#34;XXXXXXXX&#34;
+</span><span class="s1">      },
+</span><span class="s1">      &#34;skip_payload_crypto&#34;: false
+</span><span class="s1">    },
+</span><span class="s1">    &#34;field_mask&#34;: {
+</span><span class="s1">      &#34;paths&#34;: [
+</span><span class="s1">        &#34;ids.device_id&#34;,
+</span><span class="s1">        &#34;ids.dev_eui&#34;,
+</span><span class="s1">        &#34;session.keys.app_s_key.key&#34;,
+</span><span class="s1">        &#34;session.dev_addr&#34;,
+</span><span class="s1">        &#34;skip_payload_crypto&#34;
+</span><span class="s1">      ]
+</span><span class="s1">    }
+</span><span class="s1">  }&#39;</span> <span class="se">\
+</span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/as/applications/app1/devices/newdev1&#39;</span>
+</code></pre></div>
+</section>
+
+</div>
+
+<h2 id="register-a-gateway">Register a Gateway</h2>
+<p>To register a gateway <code>gtw1</code> using the <code>GatewayRegistry.Create</code> request:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Accept: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
+</span><span class="se"></span>  --header <span class="s1">&#39;Content-Type: application/json&#39;</span> <span class="se">\
+</span><span class="se"></span>  --request POST <span class="se">\
+</span><span class="se"></span>  --data-raw <span class="s1">&#39;{
+</span><span class="s1">    &#34;gateway&#34;: {
+</span><span class="s1">      &#34;ids&#34;: {
+</span><span class="s1">        &#34;gateway_id&#34;: &#34;gtw1&#34;,
+</span><span class="s1">        &#34;eui&#34;: &#34;XXXXXXXXXXXXXXXX&#34;
+</span><span class="s1">      },
+</span><span class="s1">      &#34;name&#34;: &#34;my gateway&#34;,
+</span><span class="s1">      &#34;gateway_server_address&#34;: &#34;thethings.example.com&#34;,
+</span><span class="s1">      &#34;frequency_plan_id&#34;: &#34;EU_863_870_TTN&#34;
+</span><span class="s1">    }
+</span><span class="s1">  }&#39;</span> <span class="se">\
+</span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/users/user1/gateways&#39;</span>
+</code></pre></div><p>See <a href="https://www.thethingsindustries.com/docs/reference/api/gateway/">here</a> for more info about gateway APIs.</p>
+<h2 id="purge-entities">Purge Entities</h2>
 <p>An admin user can <a href="https://www.thethingsindustries.com/docs/reference/purge/">purge entities</a> such as <a href="https://www.thethingsindustries.com/docs/reference/api/application/">applications</a>, <a href="https://www.thethingsindustries.com/docs/reference/api/client/">clients</a>, <a href="https://www.thethingsindustries.com/docs/reference/api/gateway/">gateways</a>, <a href="https://www.thethingsindustries.com/docs/reference/api/organization/">organizations</a> or <a href="https://www.thethingsindustries.com/docs/reference/api/user/">users</a>.</p>
 <p>For example, to purge the application <code>app1</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
@@ -402,6 +566,18 @@
     
       
       <li><a href='#get-device-info'>Get Device Info</a></li>
+    
+      
+      <li><a href='#get-event-stream'>Get Event Stream</a></li>
+    
+      
+      <li><a href='#schedule-downlink'>Schedule Downlink</a></li>
+    
+      
+      <li><a href='#multi-step-actions'>Multi-step Actions</a></li>
+    
+      
+      <li><a href='#register-a-gateway'>Register a Gateway</a></li>
     
       
       <li><a href='#purge-entities'>Purge Entities</a></li>
@@ -444,10 +620,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 11 Feb 2022.
+  Last changed by Nejra Selimović on 16 Feb 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/268e3c3ce15a774d0fee8c56a50fa555aae5d842">
-      doc: Add missing API entries for purging entities, cross-link sections (#773)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/fbf62aca450a5ef62b545b8d4f3ca6608bde24c9">
+      doc: Document adding ABP devices and gateways using the API, rearranging doc (#772)
     </a>
 </p>
 
