@@ -10,6 +10,8 @@ Class B end devices listen for downlink messages during ping slots. This allows 
 
 Read more about device classes in [The Things Network LoRaWAN documentation](https://www.thethingsnetwork.org/docs/lorawan/classes/).
 
+{{< note >}} See the [Confirmed Downlinks Behavior]({{< ref "/devices/confirmed-downlinks-behavior" >}}) section to learn how confirmed downlinks behavior for class B devices differs from confirmed downlinks behavior for class A devices. {{</ note >}}
+
 We define some user parameters that will be used below:
 
 ```bash

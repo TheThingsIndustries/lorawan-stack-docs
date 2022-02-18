@@ -12,6 +12,8 @@ You can schedule a downlink using the CLI, MQTT or HTTP webhooks.
 
 To schedule downlinks using MQTT, see [MQTT Server]({{< ref "integrations/mqtt" >}}). To schedule downlinks using webhooks, see [Scheduling Downlinks with Webhooks]({{< ref "integrations/webhooks/scheduling-downlinks" >}}).
 
+{{< note >}} See the [Confirmed Downlinks Behavior]({{< ref "/devices/confirmed-downlinks-behavior" >}}) section to learn how confirmed downlinks behavior for class B and class C devices differs from confirmed downlinks behavior for class A devices. {{</ note >}}
+
 This guide shows how to interact with the downlink queue from the command-line interface (CLI).
 
 {{< cli-only >}}
