@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Transfer to new Join Server | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/atecc608a/transfer/" />
+  <title>Confirmed Downlinks Behavior | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/confirmed-downlinks-behavior/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Transfer to new Join Server">
+  <meta itemprop="name" content="Confirmed Downlinks Behavior">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Transfer to new Join Server">
+  <meta property="og:title" content="Confirmed Downlinks Behavior">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/devices/atecc608a/transfer/">
-  <meta name="twitter:title" content="Transfer to new Join Server" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/devices/confirmed-downlinks-behavior/">
+  <meta name="twitter:title" content="Confirmed Downlinks Behavior" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -112,32 +112,18 @@
     <a href="https://www.thethingsindustries.com/docs/devices/downlink-queue-ops/" class="">Downlink Queue Operations</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/confirmed-downlinks-behavior/" class="">Confirmed Downlinks Behavior</a>
+    <a href="https://www.thethingsindustries.com/docs/devices/confirmed-downlinks-behavior/" class="is-active">Confirmed Downlinks Behavior</a>
+    
+
+
+
+    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/" class="">MAC Settings</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/devices/atecc608a/" class="">ATECC608A/B Secure Elements</a>
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/atecc608a/claim/" class="">Claim</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/atecc608a/transfer/" class="is-active">Transfer to new Join Server</a>
-    
-  </li>
-
-</ul>
-
-
-    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/devices/device-claiming/" class="">Device Claiming</a>
@@ -171,78 +157,28 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Transfer to new Join Server
+        <h1 class="title is-size-2">Confirmed Downlinks Behavior
           
         </h1>
         
-        <h2 class="subtitle">
-          
-            
-            
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-  
-
-  
-
-<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud and Enterprise Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
-
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
-
-</a>
-
-
-          
-          
-          
-        </h2>
-        
         <div class="content">
-          <p>ATECC608A/B secure elements are provisioned to The Things Join Server. This Join Server supports activation with all LoRaWAN Backend Interfaces compliant Network Servers. You don&rsquo;t need to be a user of The Things Stack to activate devices with a secure element via The Things Join Server.</p>
-<p>In some scenarios, it is not feasible to use The Things Join Server. For instance, when the Network Server is deployed in a network with no internet access, when the LoRaWAN Network Server does not support the LoRaWAN Backend Interfaces, or when the LoRaWAN network operator wants to have access to the root keys.</p>
-<p>To use the ATECC608A/B secure elements in these scenarios, you can transfer the root keys from The Things Join Server to a new Join Server. There are two options for doing so, which are both explained in this section.</p>
-<h2 id="new-joineui">New <code>JoinEUI</code></h2>
-<p>Regardless of how the root keys are transferred, a new Join Server requires a new <code>JoinEUI</code> (or <code>AppEUI</code>) for the end devices. This is because the <code>JoinEUI</code>, with which the secure elements are provisioned with, points exclusively to The Things Join Server.</p>
-<p>The <code>JoinEUI</code>, just like <code>DevEUI</code>, is issued from an MAC-S (OUI-36), MAC-M (OUI-28) or MAC-L (OUI) block that can be obtained from IEEE. <a href="https://regauth.standards.ieee.org/standards-ra-web/pub/view.html#registries">Apply for an assignment</a>.</p>
-<h2 id="export-root-keys">Export Root Keys</h2>
-<p>The first option is to export the root keys from The Things Join Server. The root keys are normally not exposed to users, but they can be exported with the purpose of transferring to a different Join Server.</p>
-<p>The requester must provide an RSA public key (see <a href="https://tools.ietf.org/html/rfc3447">RFC 3447</a>) with which The Things Join Server will encrypt the root keys with. The root keys are returned as a <a href="https://openid.net/specs/draft-jones-json-web-encryption-02.html#sec.asymmetric_encryption">JSON Web Encryption (JWE)</a> per end device.</p>
-<p>Once the keys are exported, they are retained in The Things Join Server. The end devices should be deleted from The Things Join Server to ensure that activations of those devices will not be handled by The Things Join Server anymore.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Currently, this process is not readily available for self service with The Things Stack CLI or Console. Please <a href="mailto:support@thethingsindustries.com">contact The Things Industries support</a> for help.
-</div>
-
-<h2 id="rekeying">Rekeying</h2>
-<div class="notification is-warning is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  Rekeying requires LoRaWAN 1.1.1 and this specification revision is not expected to be available before Q4 2021. However, ATECC608A/B secure elements are already prepared to support the rekeying procedure.
-</div>
-
-<p>The second option is to rekey the secure elements. This works by sending an instruction to rekey to the end device as part of the LoRaWAN 1.1.1 join-accept. This instruction contains the new <code>JoinEUI</code> and a security cookie, or number used once (nonce), that the end device calculates as (non-secret) input to a key derivation function to derive new root keys. The join-accept does not contain the new root key(s): the ATECC608A/B is provisioned with a secret rekeying key from which new root keys can be derived.</p>
-<p>The requester can instruct The Things Join Server to rekey the end device. The requester must provide a new <code>JoinEUI</code> pointing to the new Join Server. The Things Join Server generates a new security cookie with which it derives the new root keys. The new root keys are exported as JWE (see above), that the requester can use to import the new root keys in the new Join Server. Whenever the end device joins next, The Things Join Server will send the rekey instruction as part of the join-accept. The end device will then use the security cookie from the rekey instruction to derive the new root keys. Also, the end device sets the new <code>JoinEUI</code> from the rekey instruction. The end device will then perform a second join-request which will be answered by the new Join Server.</p>
+          <p>This section describes differences in behavior of class A, B and C devices when scheduling confirmed downlink messages.</p>
+<p>Let&rsquo;s consider scheduling a confirmed downlink message from the Network Server. The end device that receives this downlink is requested to send a confirmation upon its reception.</p>
+<p>To confirm a reception of the above mentioned downlink, a confirmation flag is attached to device&rsquo;s next uplink message. The confirmation flag is part of the standard LoRaWAN frame header. If the flag is an NACK, the end device indicates that it has not previously received a downlink message that required acknowledgement. If the flag is a ACK, the end device indicates that it wants to provide the acknowledgement for the previously received downlink message that requested it. This applies to all <a href="https://www.thethingsnetwork.org/docs/lorawan/classes/">device classes</a>.</p>
+<p>In general, upon receiving the next uplink message with an ACK flag, the Network Server decrypts the uplink message and generates the <code>downlink ack</code> message. The Application Server receives the <code>downlink ack</code> message and  forwards it further to the integrations.</p>
+<p>Similar to that, if the next uplink message with a NACK flag is received, the Network Server decrypts the uplink, generates the <code>downlink nack</code> message and sends it to the Application Server. The Application Server then forwards the <code>downlink nack</code> to integrations and regenerates the downlink.</p>
+<p>Sending a downlink happens only after an uplink for class A devices. If a NACK is received from a class A device, the downlink will automatically be re-encrypted and resent.</p>
+<p>On the other hand, for class B and class C devices, the server behavior for confirmed downlinks is a bit different. The difference arises from the fact that downlinks for class B and class C devices can be sent as part of the network-initiated downlink slot, without previously receiving an uplink. Uplinks, that carry the ACK/NACK flag, can be sent by these devices at irregular intervals. After the confirmed downlink is transmitted to the end device, the Network Server will not generate the <code>downlink ack/nack</code> message until the next uplink arrives, so the downlink will not be automatically resent in case the end device does not reply to the transmission.</p>
+<p>Re-attempting downlinks without constraint for class B and class C devices is a bad practice, because it might cause an infinite loop if the end device is powered off or out of the gateway range. Consequences of this practice would be creating noise in the area for no good reason, and consuming gateway&rsquo;s duty cycle.</p>
+<p>Whether a confirmed downlink will be resent and how many times depends on the application. The application can conclude if the Network Server has generated the <code>downlink ack/nack</code> message using dedicated message paths - see <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#subscribing-to-upstream-traffic">MQTT</a> or <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/format/#endpoint">Webhooks</a> documentation. If the Application Server has received the <code>downlink nack</code> message, no action is required, because the Application Server will try to resend the downlink on its own. However, if the Application Server has not received the <code>downlink ack/nack</code>, it can not decide on its own if it should retry the downlink.</p>
         </div>
-        <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/devices/atecc608a/claim/">← Claim</a>
-<a class="button is-pulled-right" href="/docs/devices/device-claiming/">Device Claiming →</a>
+        
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/devices/downlink-queue-ops/">← Downlink Queue Operations</a>
+<a class="button is-pulled-right" href="/docs/devices/mac-settings/">MAC Settings →</a>
 </div>
 
-        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
 <script src="https://cdn.emojicom.io/embed/widget.js" async></script>
 
 <div class='feedback has-vertical-space'>
@@ -256,19 +192,6 @@
     <h2 class="title is-size-6">On this page</h2>
     
 
-
-  <ul class="menu-list">
-    
-      
-      <li><a href='#new-joineui'>New JoinEUI</a></li>
-    
-      
-      <li><a href='#export-root-keys'>Export Root Keys</a></li>
-    
-      
-      <li><a href='#rekeying'>Rekeying</a></li>
-    
-  </ul>
 
 
   </nav>
@@ -306,14 +229,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Johan Stokking on 28 Mar 2021.
+  Last changed by Nejra Selimović on 18 Feb 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/ae37cc9a5f3ca0e2ce3c8a0e164cd2a9586b1b69">
-      doc: Small textual improvements
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f1234f5ed1c807fc36bfad21f0110e4f46f56b7f">
+      doc: Document server behavior for scheduling confirmed downlinks towards class B and C devices (#778)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/devices/atecc608a/transfer.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/devices/confirmed-downlinks-behavior/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
