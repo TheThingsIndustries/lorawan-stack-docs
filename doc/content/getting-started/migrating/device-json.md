@@ -35,15 +35,17 @@ Here is an example of an OTAA device description in the `devices.json` file:
 Multiple end devices can also be contained in a single `devices.json` file like so:
 
 ```js
-[
-  {
-    /* device 1 */
-  },
-  {
-    /* device 2 */
-  }
-]
+{
+  /* device 1 */
+}
+{
+  /* device 2 */
+}
 ```
+
+The format above is considered by the Console and CLI as a JSON stream, processing one object at a time.
+For more details in how to use the file, please refer to [Import End Devices]({{< ref "/getting-started/migrating/import-devices" >}}).
+
 
 ## JSON End Device Format
 
