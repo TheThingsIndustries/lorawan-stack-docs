@@ -28,13 +28,13 @@ See [Manage Things]({{< relref "things" >}}) to learn about the thing names.
 
 In the AWS Console, open **Services** and go to **IoT Core**.
 
-In the menu on the left, click **Test**. This opens the **MQTT client**.
+In the menu on the left, open **Test** and click **MQTT test client**.
 
 {{< figure src="../subscribe-uplink.png" alt="Subscribe Uplink" >}}
 
 In **Subscription topic**, enter `lorawan/#` to subscribe to all events from all LoRaWAN things in your account.
 
-Click **Subscribe to topic**.
+Click **Subscribe**.
 
 {{< figure src="../uplink-message.png" alt="Uplink Message" >}}
 

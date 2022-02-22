@@ -36,9 +36,9 @@ In the AWS Console, open **Services** and go to **IoT Core**.
 
 In the menu on the left, in the bottom, click **Settings**.
 
-In the **Event-based messages** pane, click **Edit**.
+In the **Event-based messages** pane, click **Manage events**.
 
-Make sure that at least **Thing: Created, updated, deleted** is checked.
+Make sure that at least **Thing: created, updated, deleted** is checked.
 
 {{< figure src="../topic-settings.png" alt="Thing Topics" >}}
 
@@ -50,17 +50,17 @@ You can use AWS IoT to create and claim devices in {{% tts %}}. This is useful t
 
 In the AWS Console, open **Services** and go to **IoT Core**.
 
-In the menu on the left, click **Manage**, go to **Things** and click **Create** in the top-right.
+In the menu on the left, click **Manage**, go to **Things** and click **Create things** in the top-right.
 
-Click **Create a single thing**.
+Select **Create a single thing** and click **Next**.
 
 {{< figure src="../create-thing-1.png" alt="Create Thing" >}}
 
 As **Name**, enter any thing name you like.
 
-Make sure that **Thing Type** is set to the correct thing type, by default `lorawan`.
+Make sure that **Thing type** is set to the correct thing type, by default `lorawan`.
 
-There are two mandatory attributes that come with the thing type: `devEUI` and `stackName`:
+There are two **Searchable attributes** that come with the thing type: `devEUI` and `stackName`:
 
 - `devEUI`: the hexadecimal LoRaWAN DevEUI.
 - `stackName`: the AWS CloudFormation stack name of your deployment. This makes sure that the things are unique and kept apart if you use multiple AWS IoT Integrations side-by-side in your AWS account.
@@ -71,7 +71,7 @@ Next, you can create a new device by specifying all required attributes, or your
 
 ### Creating Things
 
-When creating things, you need to specify the minimum attributes for creating LoRaWAN devices:
+When creating things, you need to specify attributes under **Non-searchable thing attributes** for creating LoRaWAN devices:
 
 - `joinEUI`: the hexadecimal LoRaWAN JoinEUI (or AppEUI). You may also specify `appEUI` instead.
 - `lorawanVersion`: either `1.0`, `1.0.1`, `1.0.2`, `1.0.3` or `1.1`
@@ -93,7 +93,7 @@ Any errors during Creating Things will be propagated to CloudWatch. See [Trouble
 
 First, follow [the steps above]({{< relref "#creating-and-claiming-things" >}}).
 
-When claiming things, you need to specify the minimum attributes for claiming LoRaWAN devices:
+When claiming things, you need to specify attributes under **Non-searchable thing attributes** for claiming LoRaWAN devices:
 
 - `joinEUI`: the hexadecimal LoRaWAN JoinEUI (or AppEUI). You may also specify `appEUI` instead.
 - `claimAuthenticationCode`: the claim authentication code, also known as owner token or pin code.
