@@ -2,7 +2,9 @@
 title: "Messages"
 description: ""
 weight: 40
-aliases: ["/integrations/aws-iot/default/messages"]
+aliases:
+  - /integrations/aws-iot/default/messages
+  - /integrations/cloud-integrations/aws-iot/default/messages/
 ---
 
 {{% tts %}} publishes uplink messages to AWS IoT Core MQTT. An IoT Core rule triggers a Lambda function which processes the message, creates a new IoT Core thing if it doesn't exist, and updates the shadow state with metrics. Device activations and uplink messages get republished so your application can act on them.

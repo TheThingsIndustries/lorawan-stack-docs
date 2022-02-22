@@ -1,14 +1,16 @@
 ---
 title: "Application Server Telemetry"
 description: ""
-distributions: "AWS Launcher"
+weight: 4
 deprecated_in_version: "3.11.1"
-aliases: ["/integrations/aws-iot/application-server-telemetry"]
+aliases:
+  - /integrations/aws-iot/application-server-telemetry
+  - /integrations/cloud-integrations/aws-iot/application-server-telemetry/
 ---
 
 {{% tts %}} supports publishing of uplink messages directly to the AWS IoT suite.
 
-{{< warning >}} This integration will be removed in a next version. Please switch to the [Default Integration]({{< relref "../default" >}}) instead. {{</ warning >}}
+{{< warning >}} This integration will be removed in a next version. Please switch to the [Default Integration]({{< ref "/integrations/cloud-integrations/aws-iot" >}}) instead. {{</ warning >}}
 
 AWS IoT suite can be used to subscribe to detailed uplink messages as well as get insights into aggregated metrics of your uplink data.
 

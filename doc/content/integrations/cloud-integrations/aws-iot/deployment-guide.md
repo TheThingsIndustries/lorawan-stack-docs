@@ -2,7 +2,9 @@
 title: "Deployment Guide"
 description: ""
 weight: 20
-aliases: ["/integrations/aws-iot/default/deployment-guide"]
+aliases:
+  - /integrations/aws-iot/default/deployment-guide
+  - /integrations/cloud-integrations/aws-iot/default/deployment-guide/
 ---
 
 Learn how to deploy the AWS IoT integration for {{% tts %}}.

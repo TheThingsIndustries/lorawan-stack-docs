@@ -2,7 +2,9 @@
 title: "Metrics"
 description: ""
 weight: 50
-aliases: ["/integrations/aws-iot/default/metrics"]
+aliases:
+  - /integrations/aws-iot/default/metrics
+  - /integrations/cloud-integrations/aws-iot/default/metrics/
 ---
 
 The AWS IoT integration for {{% tts %}} reports device metrics to the shadow state. This is useful to retrieve information about the session and radio-frequency performance.

@@ -2,7 +2,9 @@
 title: "Uninstall"
 description: ""
 weight: 70
-aliases: ["/integrations/aws-iot/default/uninstall"]
+aliases:
+  - /integrations/aws-iot/default/uninstall/
+  - /integrations/cloud-integrations/aws-iot/default/uninstall/
 ---
 
 You can uninstall the AWS IoT integration for {{% tts %}} using AWS CloudFormation.

@@ -2,7 +2,6 @@
 title: "Azure IoT Hub"
 description: ""
 distributions: ["Cloud", "Dedicated Cloud", "Enterprise", "Community"]
-weight: 1
 ---
 
 This guide will help you setup the [Azure IoT Hub](https://azure.microsoft.com/en-us/services/iot-hub/) integration.
