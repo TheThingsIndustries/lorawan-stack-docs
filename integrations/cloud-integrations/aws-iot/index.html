@@ -104,35 +104,6 @@
 <ul class="menu-list">
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/" class="is-active">AWS IoT</a>
-    
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/default/" class="">Default Integration</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/application-server-telemetry/" class="">Application Server Telemetry</a>
-    
-  </li>
-
-</ul>
-
-
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/" class="">Azure IoT Hub</a>
-    
-  </li>
-
-  <li>
     <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/akenza-core/" class="">Akenza Core</a>
     
   </li>
@@ -144,6 +115,65 @@
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/anyviz/" class="">AnyViz</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/" class="is-active">AWS IoT</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/architecture/" class="">Architecture</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/deployment-guide/" class="">Deployment Guide</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/things/" class="">Managing Things</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/messages/" class="">Messages</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/metrics/" class="">Metrics</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/update/" class="">Update</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/uninstall/" class="">Uninstall</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/troubleshooting/" class="">Troubleshooting AWS IoT Integration</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/" class="">Azure IoT Hub</a>
     
   </li>
 
@@ -292,17 +322,10 @@
           
         </h1>
         
-        <div class="content">
-          <p>The Things Stack integrates directly with AWS IoT via a default integration that you deploy in your AWS account via CloudFormation.</p>
-<p>You can also configure The Things Stack to connect to your AWS IoT Core endpoint via AWS access keys and role-based access control using custom configuration.</p>
-<p>When running The Things Stack in your AWS account, you can publish Application Server telemetry to your IoT Core endpoint.</p>
-<h2 id="prerequisites">Prerequisites</h2>
-<ol>
-<li>You need to have The Things Stack deployed in AWS. See the <a href="https://www.thethingsindustries.com/docs/getting-started/aws/">AWS</a> guide to learn how.</li>
-</ol>
-<h2 id="default-integration">Default Integration</h2>
-<p>
-
+        <h2 class="subtitle">
+          
+            
+            
 
 
 
@@ -347,35 +370,26 @@
 </a>
 
 
- The recommended way to integrate with AWS IoT is by using the <strong>Default Integration</strong> for The Things Stack. This integration is the most feature rich and supports all deployments of The Things Stack. The Default Integration comes with a AWS CloudFormation template to deploy in your AWS account.</p>
-<p><a href="/docs/integrations/cloud-integrations/aws-iot/default/">Learn how to set up the default AWS IoT integration</a></p>
-<h2 id="application-server-telemetry">Application Server Telemetry</h2>
-<p>
+          
+          
+          
+        </h2>
+        
+        <div class="content">
+          <p>The key features of the Default Integration are:</p>
+<ul>
+<li><strong>Handling uplink and downlink messages</strong>: The Things Stack publishes uplink messages to IoT Core and subscribes to downlink messages that you sent from IoT Core. Also, you receive all downlink queued, sent, failed, acknowledged and not acknowledged events in IoT Core</li>
+<li><strong>Creating and claiming devices</strong>: manage things in IoT Core, or claim things securely on The Things Join Server by proving ownership</li>
+<li><strong>Encrypting and decrypting message payloads</strong>: leverage true LoRaWAN end-to-end encryption by unwrapping the AppSKey from the Join Server</li>
+<li><strong>Updating device state in shadow</strong>: monitor devices using useful metrics reported in the shadow state, like signal quality and number of covering gateways</li>
+</ul>
+<p>This integration comes with a AWS CloudFormation template to deploy in your AWS account.</p>
+<figure class="plain">
+    <img src="overview.svg"
+         alt="Default integration overview"/> 
+</figure>
 
 
-
-
-
-
-  
-    
-  
-
-
-
-  
-
-<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="AWS Launcher Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_aws.svg"></img>
-
-</a>
-
-
- <span class="tag is-danger is-light">Deprecated in 3.11.1</span>
-
- This is a simple integration that only supports publishing uplink messages and requires The Things Stack to run in your AWS account. This is typically only used for <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ami/">AWS Marketplace AMI</a> deployments.</p>
-<p><a href="/docs/integrations/cloud-integrations/aws-iot/application-server-telemetry/">Learn how to use Application Server Telemetry</a></p>
         </div>
         
           <div class="columns is-multiline">
@@ -383,70 +397,18 @@
     <div class="card has-radius is-fullwidth">
       <div class="card-content">
         <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/default/">Default Integration</a>
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/architecture/">Architecture</a>
           </h1>
-          
-          <h2 class="subtitle">
-            
-              
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-  
-
-  
-
-  
-
-  
-
-<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud, Dedicated Cloud, Enterprise and Community Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
-
-  <img class="badge" src="/docs/img/tts_frames/frame_dedicated_cloud.svg"></img>
-
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
-
-  <img class="badge" src="/docs/img/tts_frames/frame_ttn.svg"></img>
-
-</a>
-
-
-            
-            
-            
-          </h2>
           
           <div class="content has-text-grey">
             
-            The key features of the Default Integration are:
- Handling uplink and downlink messages: The Things Stack publishes uplink messages to IoT Core and subscribes to downlink messages that you sent from IoT Core. Also, you receive all downlink queued, sent, failed, acknowledged and not acknowledged events in IoT Core Creating and claiming devices: manage things in IoT Core, or claim things securely on The Things Join Server by proving ownership Encrypting and decrypting message payloads: leverage true LoRaWAN end-to-end encryption by unwrapping the AppSKey from the Join Server Updating device state in shadow: monitor devices using useful metrics reported in the shadow state, like signal quality and number of covering gateways  This integration comes with a AWS CloudFormation template to deploy in your AWS account.
+            The AWS IoT Core integration is a serverless deployment that scales automatically as your deployment grows.
+
             
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/default/" class="button is-primary is-outlined">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/architecture/" class="button is-primary is-outlined">Read</a>
         </div>
       </div>
     </div>
@@ -455,52 +417,138 @@
     <div class="card has-radius is-fullwidth">
       <div class="card-content">
         <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/application-server-telemetry/">Application Server Telemetry</a>
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/deployment-guide/">Deployment Guide</a>
           </h1>
-          
-          <h2 class="subtitle">
-            
-              
-
-  
-
-
-
-
-
-  
-    
-  
-
-
-
-  
-
-<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="AWS Launcher Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_aws.svg"></img>
-
-</a>
-
-
-            
-            
-            
-              <span class="tag is-danger is-light">Deprecated in 3.11.1</span>
-
-            
-          </h2>
           
           <div class="content has-text-grey">
             
-            The Things Stack supports publishing of uplink messages directly to the AWS IoT suite.
-Warning: This integration will be removed in a next version. Please switch to the Default Integration instead.  AWS IoT suite can be used to subscribe to detailed uplink messages as well as get insights into aggregated metrics of your uplink data.
-Note: This only works if The Things Stack runs in your AWS account, i.e. in a Enterprise or AWS Launcher deployment.
+            Learn how to deploy the AWS IoT integration for The Things Stack.
+
             
           </div>
         </div>
         <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/application-server-telemetry/" class="button is-primary is-outlined">Read</a>
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/deployment-guide/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/things/">Managing Things</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The AWS IoT Integration for The Things Stack synchronizes the device registry: you can create and claim things in AWS IoT Core which trigger a Lambda function that creates or claims the device in The Things Stack.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/things/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/messages/">Messages</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The Things Stack publishes uplink messages to AWS IoT Core MQTT. An IoT Core rule triggers a Lambda function which processes the message, creates a new IoT Core thing if it doesn&amp;rsquo;t exist, and updates the shadow state with metrics. Device activations and uplink messages get republished so your application can act on them.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/messages/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/metrics/">Metrics</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The AWS IoT integration for The Things Stack reports device metrics to the shadow state. This is useful to retrieve information about the session and radio-frequency performance.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/metrics/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/update/">Update</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            You can update the AWS IoT integration for The Things Stack using AWS CloudFormation easily. In most cases, this is without service interruptions.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/update/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/uninstall/">Uninstall</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            You can uninstall the AWS IoT integration for The Things Stack using AWS CloudFormation.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/uninstall/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/troubleshooting/">Troubleshooting AWS IoT Integration</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The AWS IoT Integration for The Things Stack puts logs to AWS CloudWatch where you can find detailed traces and errors.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/troubleshooting/" class="button is-primary is-outlined">Read</a>
         </div>
       </div>
     </div>
@@ -509,8 +557,8 @@ Note: This only works if The Things Stack runs in your AWS account, i.e. in a En
 
         
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/">← Cloud Integrations</a>
-<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/aws-iot/default/">Default Integration →</a>
+<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/anyviz/">← AnyViz</a>
+<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/aws-iot/architecture/">Architecture →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -527,19 +575,6 @@ Note: This only works if The Things Stack runs in your AWS account, i.e. in a En
     <h2 class="title is-size-6">On this page</h2>
     
 
-
-  <ul class="menu-list">
-    
-      
-      <li><a href='#prerequisites'>Prerequisites</a></li>
-    
-      
-      <li><a href='#default-integration'>Default Integration</a></li>
-    
-      
-      <li><a href='#application-server-telemetry'>Application Server Telemetry</a></li>
-    
-  </ul>
 
 
   </nav>
@@ -577,10 +612,10 @@ Note: This only works if The Things Stack runs in your AWS account, i.e. in a En
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 10 Jun 2021.
+  Last changed by Johan Stokking on 23 Feb 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/aea847e4a5b06db18fe91950625da9cc60eaf291">
-      Docs reorganization (#374)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/8dcaa1916de4d00ce23fbf8e2f8f58a79092f299">
+      Update AWS IoT Core to new console (#784)
     </a>
 </p>
 
