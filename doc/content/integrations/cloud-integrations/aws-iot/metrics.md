@@ -2,7 +2,9 @@
 title: "Metrics"
 description: ""
 weight: 50
-aliases: ["/integrations/aws-iot/default/metrics"]
+aliases:
+  - /integrations/aws-iot/default/metrics
+  - /integrations/cloud-integrations/aws-iot/default/metrics/
 ---
 
 The AWS IoT integration for {{% tts %}} reports device metrics to the shadow state. This is useful to retrieve information about the session and radio-frequency performance.
@@ -13,7 +15,7 @@ In the AWS Console, open **Services** and go to **IoT Core**.
 
 In the menu on the left, open **Manage**, go to **Things** and click the thing of interest.
 
-In the menu on the left, click **Shadows** and go to **lorawan**. This opens the LoRaWAN shadow state that is maintained by {{% tts %}}.
+Click the **Device Shadows** tab and go to **lorawan**. This opens the LoRaWAN shadow state that is maintained by {{% tts %}}.
 
 {{< figure src="../shadow-state.png" alt="Shadow State" >}}
 
