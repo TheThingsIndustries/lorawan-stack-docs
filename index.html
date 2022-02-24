@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.17.2</p>
+        <p class="navbar-item is-size-7">v3.18.0</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -140,48 +140,47 @@
 <div class="whats-new">
   <div class="whats-new-content">
     <div class="whats-new-header">
-      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.17.2/>What's new in V3.17.2</a></h2>
+      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.18.0/>What's new in V3.18.0</a></h2>
       <a href="https://www.thethingsindustries.com/docs/whats-new/"><p class="see-more">See all release notes →</p></a>
     </div>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.17.2/">
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.18.0/">
       <div class="whats-new-body">
         <div class="whats-new-items-shadow whats-new-items-fade">
           <div class="whats-new-items">
             <h3 id="added">Added</h3>
 <ul>
-<li>
-<p>Add configurable storage limit to device&rsquo;s DevNonce in the JoinServer. Can be configured using the option <code>js.dev-nonce-limit</code>.</p>
+<li>Retain at most 10 recent session keys in the Join Server. This avoids a slowly growing number of session keys in the Join Server&rsquo;s database.
+<ul>
+<li>This requires a database migration (<code>ttn-lw-stack js-db migrate</code>).</li>
+</ul>
 </li>
-<li>
-<p>Fix copy button in API key modal in the Console.</p>
+<li>Add TTL for gateway connection stats. Can be configured with the option <code>gs.connection-stats-ttl</code>.</li>
+<li>AWS Cloud Map cluster service discovery support:
+<ul>
+<li>This method is meant to be used when DNS service discovery is unreliable. This can occur with AWS Route53 if more than 8 instances are available per service.</li>
+<li>The peer address should contain the service names. Ports may be specified if the service discovery entry does not have a port specified.</li>
+<li>The <code>--cluster.aws.cloud-map.namespace</code> configuration option can be used to configure the namespace name.</li>
+</ul>
 </li>
-<li>
-<p>Enable copying and format transformations of byte values in the event previews in the Console.</p>
-</li>
-<li>
-<p>Attribute <code>administrative_contact</code> on &ldquo;gateway eui taken&rdquo; error to help users resolve gateway EUI conflicts.</p>
-</li>
-<li>
-<p>Add retry capability for cli requests. Can be configured with the options found in <code>retry-config</code>, some of the configuration options are <code>retry-config.max</code> and <code>retry-config.default-timeout</code>.</p>
-</li>
-<li>
-<p>Tenant settings in the Console.</p>
-</li>
+<li>Configuration options <code>is.database-max-idle-conns</code> and <code>is.database-max-open-conns</code> to control the database connection pool of the Identity Server.</li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
-<li>Webhook maximum header value length extended to 4096 characters.</li>
-<li>Limited the end device event types that are included in application event streams to only application layer events, errors and warnings. Other end device events can still be received when subscribing to end device device events.</li>
+<li>The minimum required Redis version is now 6.2.</li>
 </ul>
-<h3 id="removed">Removed</h3>
+<h3 id="deprecated">Deprecated</h3>
 <ul>
-<li>Amazon Partner Network identifier and DevEUI metadata from the AWS IoT Integration. Removal of this telemetry is to improve privacy for customers using the AWS IoT Integration.</li>
+<li>Gateway Server setting <code>gs.update-connection-stats-debounce-time</code> is no longer valid.</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>CLI Completion and Documentation commands no longer try to make a server connection.</li>
-<li>When an end device has both <code>NwkKey</code> and <code>AppKey</code> provisioned in the Join Server, <code>NwkKey</code> is used for MIC and session key derivation when activating the device in LoRaWAN 1.0.x. This is per LoRaWAN 1.1 specification.</li>
-<li>Gateway Server will no longer report the gateways as being both connected and disconnected at the same time.</li>
+<li>Device activation flow with a LoRaWAN Backend Interfaces 1.1 capable Join Server.
+<ul>
+<li>Join Servers using Backend Interfaces 1.1 (protocol <code>BI1.1</code>) must be configured with a <code>sender-ns-id</code> containing the EUI of the Network Server.</li>
+</ul>
+</li>
+<li>Fix <code>time.Duration</code> flags in CLI.</li>
+<li>Gateway Server will no longer leave permanent gateway connection stats data on the registry when crashing.</li>
 </ul>
 
           </div>
@@ -199,7 +198,7 @@
 <a href="https://www.thethingsindustries.com/docs/whats-new/">
   <div class="whats-new-800">
     <div class="whats-new-header-800">
-      <p>See what's new in V3.17.2</p>
+      <p>See what's new in V3.18.0</p>
       <p>-></p>
     </div>
   </div>
