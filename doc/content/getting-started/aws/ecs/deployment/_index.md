@@ -174,7 +174,7 @@ For the other parameters, see the descriptions and the [Configuration reference]
 
 ## Resource Limiting (optional)
 
-{{< new-in-version "3.15.1" >}} The `4-2c-configuration-resource-limiting` template allows setting resource limiting in the Application Server.
+The `4-2c-configuration-resource-limiting` template allows setting resource limiting in the Application Server.
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x/4-2c-configuration-resource-limiting.gen.template (replace `3.x` with the current minor version).
 
