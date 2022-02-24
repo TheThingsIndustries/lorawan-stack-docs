@@ -14,7 +14,7 @@ All deployments of {{% tts %}} except Open Source support multi-tenancy, which a
 
 Continue following these instructions to run {{% tts %}} Enterprise or Open Source on your own hardware, using Docker.
 
-In addition to the following written instructions, video instructions for installing {{% tts %}} are available on [The Things Network youtube channel](https://youtu.be/bMT9n1-6dCc).
+In addition to the following written instructions, video instructions for installing {{% tts %}} are available on [The Things Network youtube channel](https://www.youtube.com/watch?v=XgPSU4UkDuE).
 
 <details><summary>Show video</summary>
 {{< youtube "XgPSU4UkDuE" >}}
