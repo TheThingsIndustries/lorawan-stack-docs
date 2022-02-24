@@ -184,7 +184,7 @@
 <h3 id="mind-the-x-warning-headers">Mind the <code>X-Warning</code> Headers</h3>
 <p>The Things Stack sends responses containing this header to warn about issues that may become errors in the future.</p>
 <h2 id="http-query-examples">HTTP Query Examples</h2>
-<h2 id="get-device-info">Get Device Info</h2>
+<h3 id="get-device-info">Get Device Info</h3>
 <p>Fields may be specified in HTTP requests by appending them as query string parameters. For example, to request the <code>name</code>, <code>description</code>, and <code>locations</code> of devices in an <code>EndDeviceRegistry.Get</code> request, add these fields to the <code>field_mask</code> field. To get this data for device <code>dev1</code> in application <code>app1</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s2">&#34;Authorization: Bearer NNSXS.XXXXXXXXX&#34;</span> <span class="se">\
@@ -198,7 +198,7 @@
 </span><span class="se"></span>  --header <span class="s1">&#39;User-Agent: my-integration/my-integration-version&#39;</span> <span class="se">\
 </span><span class="se"></span>  <span class="s1">&#39;https://tenant1.thethings.example.com/api/v3/applications/app1/devices/dev1?field_mask=name,description,locations&#39;</span>
 </code></pre></div><p>Fields may also be specified as a JSON object in a POST request.</p>
-<h2 id="get-event-stream">Get Event Stream</h2>
+<h3 id="get-event-stream">Get Event Stream</h3>
 <p>To get a stream of events for device <code>dev1</code> in application <code>app1</code> :</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
@@ -216,7 +216,7 @@
 </span><span class="s1">  }&#39;</span> <span class="se">\
 </span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/events&#39;</span>
 </code></pre></div><p>See <a href="https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events">here</a> a description of the <code>text/event-stream</code> MIME type.</p>
-<h2 id="schedule-downlink">Schedule Downlink</h2>
+<h3 id="schedule-downlink">Schedule Downlink</h3>
 <p>To schedule a downlink, you may use the <code>DownlinkQueuePush</code> or <code>DownlinkQueueReplace</code> endpoints of the <a href="https://www.thethingsindustries.com/docs/reference/api/application_server/#the-appas-service">Application Server API</a>. For example, to schedule a downlink queue push to device <code>dev1</code> in application <code>app1</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Authorization: Bearer NNSXS.XXXXXXXXX&#39;</span> <span class="se">\
@@ -245,7 +245,7 @@
 </span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/as/applications/app1/devices/dev1/down/push&#39;</span>
 </code></pre></div><p>Please note that downlinks scheduled using the <code>decoded_payload</code> Payload Formatter field are encrypted in the Application Server, and the content will not be comprehensible in the Network Server&rsquo;s <code>frm_payload</code> field when viewing events.</p>
 <p>It is also possible to <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/scheduling-downlinks/">schedule downlinks using HTTP Webhooks</a>, which give you flexibility to choose JSON or gRPC HTTP payloads.</p>
-<h2 id="multi-step-actions">Multi-step Actions</h2>
+<h3 id="multi-step-actions">Multi-step Actions</h3>
 <p>If you want to create a device, perform multi-step actions, or write shell scripts, it&rsquo;s best to use the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">CLI</a>.</p>
 <p>If you want to do something like registering a device directly via the API, you need to make calls to the Identity Server, Join Server, Network Server and Application Server. See the <a href="https://www.thethingsindustries.com/docs/reference/api/">API Reference</a> for detailed information about which messages go to which endpoints.</p>
 <div class="tabs is-boxed">
@@ -506,7 +506,7 @@
 
 </div>
 
-<h2 id="register-a-gateway">Register a Gateway</h2>
+<h3 id="register-a-gateway">Register a Gateway</h3>
 <p>To register a gateway <code>gtw1</code> using the <code>GatewayRegistry.Create</code> request:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s1">&#39;Accept: application/json&#39;</span> <span class="se">\
@@ -526,14 +526,25 @@
 </span><span class="s1">  }&#39;</span> <span class="se">\
 </span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/users/user1/gateways&#39;</span>
 </code></pre></div><p>See <a href="https://www.thethingsindustries.com/docs/reference/api/gateway/">here</a> for more info about gateway APIs.</p>
-<h2 id="purge-entities">Purge Entities</h2>
+<h3 id="purge-entities">Purge Entities</h3>
 <p>An admin user can <a href="https://www.thethingsindustries.com/docs/reference/purge/">purge entities</a> such as <a href="https://www.thethingsindustries.com/docs/reference/api/application/">applications</a>, <a href="https://www.thethingsindustries.com/docs/reference/api/client/">clients</a>, <a href="https://www.thethingsindustries.com/docs/reference/api/gateway/">gateways</a>, <a href="https://www.thethingsindustries.com/docs/reference/api/organization/">organizations</a> or <a href="https://www.thethingsindustries.com/docs/reference/api/user/">users</a>.</p>
 <p>For example, to purge the application <code>app1</code>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl --location <span class="se">\
 </span><span class="se"></span>  --header <span class="s2">&#34;Authorization: Bearer NNSXS.XXXXXXXXX&#34;</span> <span class="se">\
 </span><span class="se"></span>  --request DELETE <span class="se">\
 </span><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/applications/app1/purge&#39;</span>
-</code></pre></div>
+</code></pre></div><h2 id="api-usage-troubleshooting">API Usage Troubleshooting</h2>
+<p>This section provides help for common issues and frequently asked questions you may have when using the API.</p>
+<h3 id="i-get-a-forbidden-paths-in-field-mask-error">I get a <code>forbidden path(s) in field mask</code> error.</h3>
+<p>This error usually occurs when wrong path(s) are specified in the <code>field_mask</code> object in the API request body. See <a href="https://www.thethingsindustries.com/docs/reference/api/field-mask/">Fields and Field Masks</a> section and make sure that paths listed under your <code>field_mask</code> are correct.</p>
+<h3 id="when-adding-a-device-i-get-an-invalid-end_device-embedded-message-failed-validation-error">When adding a device, I get an <code>invalid end_device: embedded message failed validation</code> error.</h3>
+<p>The most common cause for this error is not following the regex pattern in the <code>device_id</code> field. See <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#message:EndDeviceIdentifiers">End Device APIs</a> section and make sure your <code>device_id</code> is in line with the defined regex pattern. See also <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">ID and EUI constaints</a> documentation.</p>
+<h3 id="listing-gateways-via-api-call-works-for-the-eu1-the-things-stack-cloud-cluster-but-wont-work-for-the-nam1-cluster">Listing gateways via API call works for the <code>eu1</code> The Things Stack Cloud cluster, but won&rsquo;t work for the <code>nam1</code> cluster.</h3>
+<p>Unlike other server components, the Identity Server component of The Things Stack is hosted only in the <code>eu1</code> cluster for <a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/addresses/#api-endpoints">The Things Stack Cloud</a> and <a href="https://www.thethingsindustries.com/docs/getting-started/ttn/addresses/#api-endpoints">The Things Stack Community Edition</a>. This is the reason why Identity Server API request to any cluster other than <code>eu1</code> will fail.</p>
+<h3 id="i-see-a-426-upgrade-required-error-when-making-an-api-call">I see a <code>426 Upgrade Required</code> error when making an API call.</h3>
+<p>This error indicates that the client HTTP protocol version is old, so the server refuses to perform the request and requires a client update to HTTP 1.1 version or higher.</p>
+<h3 id="i-get-an-insufficient_application_rights-error">I get an <code>insufficient_application_rights</code> error.</h3>
+<p>The API key you are using doesn&rsquo;t have sufficient rights. Go to the Console, enter your API key settings on the left hand menu and edit them to provide rights needed to perform the desired action.</p>
         </div>
         
           <div class="is-clearfix">
@@ -565,22 +576,7 @@
       <li><a href='#http-query-examples'>HTTP Query Examples</a></li>
     
       
-      <li><a href='#get-device-info'>Get Device Info</a></li>
-    
-      
-      <li><a href='#get-event-stream'>Get Event Stream</a></li>
-    
-      
-      <li><a href='#schedule-downlink'>Schedule Downlink</a></li>
-    
-      
-      <li><a href='#multi-step-actions'>Multi-step Actions</a></li>
-    
-      
-      <li><a href='#register-a-gateway'>Register a Gateway</a></li>
-    
-      
-      <li><a href='#purge-entities'>Purge Entities</a></li>
+      <li><a href='#api-usage-troubleshooting'>API Usage Troubleshooting</a></li>
     
   </ul>
 
@@ -620,10 +616,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 16 Feb 2022.
+  Last changed by Nejra Selimović on 24 Feb 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/fbf62aca450a5ef62b545b8d4f3ca6608bde24c9">
-      doc: Document adding ABP devices and gateways using the API, rearranging doc (#772)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/53eb0102d2f0a111dbdc43953c3cc7d1d88ce8ed">
+      doc: Add API calls troubleshooting (#790)
     </a>
 </p>
 
