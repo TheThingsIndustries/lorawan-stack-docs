@@ -65,6 +65,7 @@ ttn-lw-cli end-devices get [application-id] [device-id] [flags]
       --mac-settings.desired-rx1-delay                                                 select the mac_settings.desired_rx1_delay field
       --mac-settings.desired-rx2-data-rate-index                                       select the mac_settings.desired_rx2_data_rate_index field
       --mac-settings.desired-rx2-frequency                                             select the mac_settings.desired_rx2_frequency field
+      --mac-settings.downlink-dwell-time                                               select the mac_settings.downlink_dwell_time field
       --mac-settings.factory-preset-frequencies                                        select the mac_settings.factory_preset_frequencies field
       --mac-settings.max-duty-cycle                                                    select the mac_settings.max_duty_cycle field
       --mac-settings.ping-slot-data-rate-index                                         select the mac_settings.ping_slot_data_rate_index field
@@ -78,6 +79,7 @@ ttn-lw-cli end-devices get [application-id] [device-id] [flags]
       --mac-settings.status-count-periodicity                                          select the mac_settings.status_count_periodicity field
       --mac-settings.status-time-periodicity                                           select the mac_settings.status_time_periodicity field
       --mac-settings.supports-32-bit-f-cnt                                             select the mac_settings.supports_32_bit_f_cnt field
+      --mac-settings.uplink-dwell-time                                                 select the mac_settings.uplink_dwell_time field
       --mac-settings.use-adr                                                           select the mac_settings.use_adr field
       --mac-state                                                                      select the mac_state field and all allowed sub-fields
       --mac-state.current-parameters                                                   select the mac_state.current_parameters field and all allowed sub-fields

@@ -56,6 +56,7 @@ ttn-lw-cli templates extend [flags]
       --mac-settings.desired-rx1-delay string                                                 allowed values: RX_DELAY_0, RX_DELAY_1, RX_DELAY_10, RX_DELAY_11, RX_DELAY_12, RX_DELAY_13, RX_DELAY_14, RX_DELAY_15, RX_DELAY_2, RX_DELAY_3, RX_DELAY_4, RX_DELAY_5, RX_DELAY_6, RX_DELAY_7, RX_DELAY_8, RX_DELAY_9
       --mac-settings.desired-rx2-data-rate-index string                                       allowed values: DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
       --mac-settings.desired-rx2-frequency uint                                               
+      --mac-settings.downlink-dwell-time                                                      
       --mac-settings.factory-preset-frequencies uints                                          (default [])
       --mac-settings.max-duty-cycle string                                                    allowed values: DUTY_CYCLE_1, DUTY_CYCLE_1024, DUTY_CYCLE_128, DUTY_CYCLE_16, DUTY_CYCLE_16384, DUTY_CYCLE_2, DUTY_CYCLE_2048, DUTY_CYCLE_256, DUTY_CYCLE_32, DUTY_CYCLE_32768, DUTY_CYCLE_4, DUTY_CYCLE_4096, DUTY_CYCLE_512, DUTY_CYCLE_64, DUTY_CYCLE_8, DUTY_CYCLE_8192
       --mac-settings.ping-slot-data-rate-index string                                         allowed values: DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
@@ -69,6 +70,7 @@ ttn-lw-cli templates extend [flags]
       --mac-settings.status-count-periodicity uint32                                          
       --mac-settings.status-time-periodicity duration                                         (1h2m3s)
       --mac-settings.supports-32-bit-f-cnt                                                    
+      --mac-settings.uplink-dwell-time                                                        
       --mac-settings.use-adr                                                                  
       --mac-state.current-parameters.adr-ack-delay-exponent string                            allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192
       --mac-state.current-parameters.adr-ack-limit-exponent string                            allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192
