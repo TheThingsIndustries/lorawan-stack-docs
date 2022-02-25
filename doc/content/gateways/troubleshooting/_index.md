@@ -70,7 +70,7 @@ LBS uses a TCP keepalive to indicate that the connection is still alive.
 
 **For UDP gateways:**
 
-UDP is a connectionless protocol. {{% tts %}} expects a UDP gateway to occasionally send a `pull_data` message. This is typically every 5 seconds. By default, if a gateway misses 3 of these consecutively (15s) then the gateway is shown as disconnected and this indicates there’s potentially an issue with gateway connectivity.
+UDP is a connectionless protocol. {{% tts %}} expects a UDP gateway to occasionally send a `PULL_DATA` message. This is typically every 5 seconds. By default, if a gateway misses 3 of these consecutively (15s) then the gateway is shown as disconnected and this indicates there’s potentially an issue with gateway connectivity.
 
 ## My gateway is shown as connected in the console but I don’t see any events (including the gateway connection stats). What do I do?
 
@@ -136,7 +136,7 @@ With UDP gateways, if uplink messages are reaching {{% tts %}}, that does not me
 
 The {{% udp-pf %}} sends a `PULL_DATA` request every ~5 seconds to pull the data scheduled for a downlink transmission on {{% tts %}}.
 
-If downlink messages are reaching your gateway, the {{% udp-pf %}} should be sending `PULL_ACK` messages with a reasonable latency, usually way lower than 500 ms. If this latency is high, pulling the downlink data will fail. One of the drawbacks of using the {{% udp-pf %}} is that it does not have an implemented mechanism to detect if pulling the downlink data fails, so your data might end up lost. 
+The server reponds with a `PULL_ACK` message to confirm that the network route is open and that the data can be sent through `PULL_RESP` packets any time. In order to pull the data, `PULL_ACK` messages have to reach the gateway with a reasonable latency, usually way lower than 500 ms. If this latency is high, pulling the downlink data will fail. One of the drawbacks of using the {{% udp-pf %}} is that it does not have an implemented mechanism to detect if pulling the downlink data fails, so your data might end up lost. 
 
 Common reasons for having latency issues between the gateway and {{% tts %}} cluster are that the gateway is geographically far from the cluster, and using cellular or satellite backhauls for gateways.
 
