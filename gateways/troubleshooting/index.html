@@ -231,7 +231,7 @@
 <p><strong>For LBS gateways:</strong></p>
 <p>LBS uses a TCP keepalive to indicate that the connection is still alive.</p>
 <p><strong>For UDP gateways:</strong></p>
-<p>UDP is a connectionless protocol. The Things Stack expects a UDP gateway to occasionally send a <code>pull_data</code> message. This is typically every 5 seconds. By default, if a gateway misses 3 of these consecutively (15s) then the gateway is shown as disconnected and this indicates there’s potentially an issue with gateway connectivity.</p>
+<p>UDP is a connectionless protocol. The Things Stack expects a UDP gateway to occasionally send a <code>PULL_DATA</code> message. This is typically every 5 seconds. By default, if a gateway misses 3 of these consecutively (15s) then the gateway is shown as disconnected and this indicates there’s potentially an issue with gateway connectivity.</p>
 <h2 id="my-gateway-is-shown-as-connected-in-the-console-but-i-dont-see-any-events-including-the-gateway-connection-stats-what-do-i-do">My gateway is shown as connected in the console but I don’t see any events (including the gateway connection stats). What do I do?</h2>
 <p>We have observed this with <strong>UDP gateways only</strong>. We recommend using <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/">LoRa Basics™ Station</a> instead if possible, as the Semtech UDP Packet Forwarder has many security and scalability drawbacks.</p>
 <p>Check the following in the The Things Stack console:</p>
@@ -280,7 +280,7 @@
 <h2 id="no-downlinks-are-reaching-my-udp-gateway-why">No downlinks are reaching my UDP gateway. Why?</h2>
 <p>With UDP gateways, if uplink messages are reaching The Things Stack, that does not mean the downlink messages are going to be received correctly by the gateway.</p>
 <p>The Semtech UDP Packet Forwarder sends a <code>PULL_DATA</code> request every ~5 seconds to pull the data scheduled for a downlink transmission on The Things Stack.</p>
-<p>If downlink messages are reaching your gateway, the Semtech UDP Packet Forwarder should be sending <code>PULL_ACK</code> messages with a reasonable latency, usually way lower than 500 ms. If this latency is high, pulling the downlink data will fail. One of the drawbacks of using the Semtech UDP Packet Forwarder is that it does not have an implemented mechanism to detect if pulling the downlink data fails, so your data might end up lost.</p>
+<p>The server reponds with a <code>PULL_ACK</code> message to confirm that the network route is open and that the data can be sent through <code>PULL_RESP</code> packets any time. In order to pull the data, <code>PULL_ACK</code> messages have to reach the gateway with a reasonable latency, usually way lower than 500 ms. If this latency is high, pulling the downlink data will fail. One of the drawbacks of using the Semtech UDP Packet Forwarder is that it does not have an implemented mechanism to detect if pulling the downlink data fails, so your data might end up lost.</p>
 <p>Common reasons for having latency issues between the gateway and The Things Stack cluster are that the gateway is geographically far from the cluster, and using cellular or satellite backhauls for gateways.</p>
 <p>Try solving this issue by:</p>
 <ul>
@@ -516,10 +516,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 26 Jan 2022.
+  Last changed by Nejra Selimović on 25 Feb 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a1b5ca7e1b958b80afb1e64bc1199993aa6eef3f">
-      doc: Document connection stats for disconnected gtw (#734)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/29024ab683cb0046abb51a903a4ec6bbd44b9b4d">
+      doc: Fix troubleshooting downlinks (#725)
     </a>
 </p>
 
