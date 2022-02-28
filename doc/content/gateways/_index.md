@@ -8,4 +8,6 @@ menu:
 aliases: [/guides/connecting-gateways]
 ---
 
-This section contains information to help you work with gateways in {{% tts %}}. Here, you'll find guides for connecting gateways using {{% lbs %}} or the {{% udp-pf %}}, and instructions for connecting many popular LoRaWAN gateways.
+This section contains information to help you work with gateways in {{% tts %}}. Here, you'll find guides for connecting gateways using {{% lbs %}} or the {{% udp-pf %}}, and instructions for connecting many popular LoRaWAN gateways.
+
+If your {{% tts %}} deployment is connected to [Packet Broker]({{< ref "getting-started/packet-broker" >}}), you can take advantage of coverage from The Things Network without adding any gateways of your own. See [TTN Mapper](ttnmapper.org) to find out if your location has nearby gateways.
