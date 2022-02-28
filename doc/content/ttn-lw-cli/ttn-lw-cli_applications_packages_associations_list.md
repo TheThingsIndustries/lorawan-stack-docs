@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli applications packages associations list"
 slug: ttn-lw-cli_applications_packages_associations_list
-type: "commands"
+
 ---
 
 ## ttn-lw-cli applications packages associations list

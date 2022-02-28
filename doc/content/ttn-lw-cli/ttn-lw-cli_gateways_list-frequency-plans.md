@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli gateways list-frequency-plans"
 slug: ttn-lw-cli_gateways_list-frequency-plans
-type: "commands"
+
 ---
 
 ## ttn-lw-cli gateways list-frequency-plans

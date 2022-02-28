@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli users restore"
 slug: ttn-lw-cli_users_restore
-type: "commands"
+
 ---
 
 ## ttn-lw-cli users restore

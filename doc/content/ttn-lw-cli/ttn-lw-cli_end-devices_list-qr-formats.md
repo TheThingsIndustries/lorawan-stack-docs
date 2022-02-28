@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli end-devices list-qr-formats"
 slug: ttn-lw-cli_end-devices_list-qr-formats
-type: "commands"
+
 ---
 
 ## ttn-lw-cli end-devices list-qr-formats

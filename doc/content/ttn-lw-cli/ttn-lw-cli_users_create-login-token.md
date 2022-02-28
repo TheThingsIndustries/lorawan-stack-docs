@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli users create-login-token"
 slug: ttn-lw-cli_users_create-login-token
-type: "commands"
+
 ---
 
 ## ttn-lw-cli users create-login-token

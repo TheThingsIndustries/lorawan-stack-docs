@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli config"
 slug: ttn-lw-cli_config
-type: "commands"
+
 ---
 
 ## ttn-lw-cli config

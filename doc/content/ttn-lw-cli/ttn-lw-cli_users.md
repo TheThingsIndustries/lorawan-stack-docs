@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli users"
 slug: ttn-lw-cli_users
-type: "commands"
+
 ---
 
 ## ttn-lw-cli users

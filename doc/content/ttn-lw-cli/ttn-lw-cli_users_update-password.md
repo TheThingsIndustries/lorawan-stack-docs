@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli users update-password"
 slug: ttn-lw-cli_users_update-password
-type: "commands"
+
 ---
 
 ## ttn-lw-cli users update-password

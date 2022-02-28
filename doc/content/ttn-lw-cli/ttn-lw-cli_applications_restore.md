@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli applications restore"
 slug: ttn-lw-cli_applications_restore
-type: "commands"
+
 ---
 
 ## ttn-lw-cli applications restore

@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli simulate application-uplink"
 slug: ttn-lw-cli_simulate_application-uplink
-type: "commands"
+
 ---
 
 ## ttn-lw-cli simulate application-uplink

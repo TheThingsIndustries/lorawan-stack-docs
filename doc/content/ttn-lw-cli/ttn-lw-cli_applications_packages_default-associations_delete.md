@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli applications packages default-associations delete"
 slug: ttn-lw-cli_applications_packages_default-associations_delete
-type: "commands"
+
 ---
 
 ## ttn-lw-cli applications packages default-associations delete

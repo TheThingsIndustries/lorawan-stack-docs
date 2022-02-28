@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli applications api-keys create"
 slug: ttn-lw-cli_applications_api-keys_create
-type: "commands"
+
 ---
 
 ## ttn-lw-cli applications api-keys create

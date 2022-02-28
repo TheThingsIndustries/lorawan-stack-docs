@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli end-devices downlink clear"
 slug: ttn-lw-cli_end-devices_downlink_clear
-type: "commands"
+
 ---
 
 ## ttn-lw-cli end-devices downlink clear

@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli applications set"
 slug: ttn-lw-cli_applications_set
-type: "commands"
+
 ---
 
 ## ttn-lw-cli applications set

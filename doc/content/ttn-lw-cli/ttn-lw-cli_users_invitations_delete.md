@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli users invitations delete"
 slug: ttn-lw-cli_users_invitations_delete
-type: "commands"
+
 ---
 
 ## ttn-lw-cli users invitations delete

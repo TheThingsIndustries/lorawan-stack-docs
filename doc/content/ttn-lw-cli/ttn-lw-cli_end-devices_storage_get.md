@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli end-devices storage get"
 slug: ttn-lw-cli_end-devices_storage_get
-type: "commands"
+
 ---
 
 ## ttn-lw-cli end-devices storage get

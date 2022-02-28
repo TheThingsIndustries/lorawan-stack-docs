@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli gateways contact-info request-validation"
 slug: ttn-lw-cli_gateways_contact-info_request-validation
-type: "commands"
+
 ---
 
 ## ttn-lw-cli gateways contact-info request-validation

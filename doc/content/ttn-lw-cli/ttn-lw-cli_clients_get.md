@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli clients get"
 slug: ttn-lw-cli_clients_get
-type: "commands"
+
 ---
 
 ## ttn-lw-cli clients get

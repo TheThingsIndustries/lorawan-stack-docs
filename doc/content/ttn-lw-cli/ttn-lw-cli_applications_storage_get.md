@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli applications storage get"
 slug: ttn-lw-cli_applications_storage_get
-type: "commands"
+
 ---
 
 ## ttn-lw-cli applications storage get

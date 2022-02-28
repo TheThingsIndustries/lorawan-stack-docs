@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli lorawan"
 slug: ttn-lw-cli_lorawan
-type: "commands"
+
 ---
 
 ## ttn-lw-cli lorawan

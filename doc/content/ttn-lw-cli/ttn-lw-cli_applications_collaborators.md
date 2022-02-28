@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli applications collaborators"
 slug: ttn-lw-cli_applications_collaborators
-type: "commands"
+
 ---
 
 ## ttn-lw-cli applications collaborators

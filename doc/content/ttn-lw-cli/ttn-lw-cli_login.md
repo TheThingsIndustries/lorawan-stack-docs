@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli login"
 slug: ttn-lw-cli_login
-type: "commands"
+
 ---
 
 ## ttn-lw-cli login

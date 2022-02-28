@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli users api-keys get"
 slug: ttn-lw-cli_users_api-keys_get
-type: "commands"
+
 ---
 
 ## ttn-lw-cli users api-keys get

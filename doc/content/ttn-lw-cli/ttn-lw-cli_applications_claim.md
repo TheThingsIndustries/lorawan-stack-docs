@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli applications claim"
 slug: ttn-lw-cli_applications_claim
-type: "commands"
+
 ---
 
 ## ttn-lw-cli applications claim

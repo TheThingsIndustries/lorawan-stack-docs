@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli organizations contact-info request-validation"
 slug: ttn-lw-cli_organizations_contact-info_request-validation
-type: "commands"
+
 ---
 
 ## ttn-lw-cli organizations contact-info request-validation

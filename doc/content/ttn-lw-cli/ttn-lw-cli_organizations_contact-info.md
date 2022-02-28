@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli organizations contact-info"
 slug: ttn-lw-cli_organizations_contact-info
-type: "commands"
+
 ---
 
 ## ttn-lw-cli organizations contact-info

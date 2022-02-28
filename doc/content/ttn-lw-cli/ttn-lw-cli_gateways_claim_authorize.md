@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli gateways claim authorize"
 slug: ttn-lw-cli_gateways_claim_authorize
-type: "commands"
+
 ---
 
 ## ttn-lw-cli gateways claim authorize

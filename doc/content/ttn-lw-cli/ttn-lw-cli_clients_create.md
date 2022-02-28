@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli clients create"
 slug: ttn-lw-cli_clients_create
-type: "commands"
+
 ---
 
 ## ttn-lw-cli clients create

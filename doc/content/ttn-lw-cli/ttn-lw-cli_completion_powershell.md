@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli completion powershell"
 slug: ttn-lw-cli_completion_powershell
-type: "commands"
+
 ---
 
 ## ttn-lw-cli completion powershell

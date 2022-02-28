@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli end-devices get-default-mac-settings"
 slug: ttn-lw-cli_end-devices_get-default-mac-settings
-type: "commands"
+
 ---
 
 ## ttn-lw-cli end-devices get-default-mac-settings

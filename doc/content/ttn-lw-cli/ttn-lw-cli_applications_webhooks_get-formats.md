@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli applications webhooks get-formats"
 slug: ttn-lw-cli_applications_webhooks_get-formats
-type: "commands"
+
 ---
 
 ## ttn-lw-cli applications webhooks get-formats

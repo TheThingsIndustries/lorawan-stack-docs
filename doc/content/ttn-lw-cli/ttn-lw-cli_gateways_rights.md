@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli gateways rights"
 slug: ttn-lw-cli_gateways_rights
-type: "commands"
+
 ---
 
 ## ttn-lw-cli gateways rights

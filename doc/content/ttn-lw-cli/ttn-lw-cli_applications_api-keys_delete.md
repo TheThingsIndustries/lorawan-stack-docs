@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli applications api-keys delete"
 slug: ttn-lw-cli_applications_api-keys_delete
-type: "commands"
+
 ---
 
 ## ttn-lw-cli applications api-keys delete

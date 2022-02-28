@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli packetbroker forwarders policies list"
 slug: ttn-lw-cli_packetbroker_forwarders_policies_list
-type: "commands"
+
 ---
 
 ## ttn-lw-cli packetbroker forwarders policies list

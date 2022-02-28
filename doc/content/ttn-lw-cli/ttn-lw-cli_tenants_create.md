@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli tenants create"
 slug: ttn-lw-cli_tenants_create
-type: "commands"
+
 ---
 
 ## ttn-lw-cli tenants create

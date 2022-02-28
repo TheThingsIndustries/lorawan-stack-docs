@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli applications search"
 slug: ttn-lw-cli_applications_search
-type: "commands"
+
 ---
 
 ## ttn-lw-cli applications search

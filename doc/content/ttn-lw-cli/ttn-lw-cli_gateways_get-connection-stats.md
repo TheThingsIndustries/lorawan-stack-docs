@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli gateways get-connection-stats"
 slug: ttn-lw-cli_gateways_get-connection-stats
-type: "commands"
+
 ---
 
 ## ttn-lw-cli gateways get-connection-stats

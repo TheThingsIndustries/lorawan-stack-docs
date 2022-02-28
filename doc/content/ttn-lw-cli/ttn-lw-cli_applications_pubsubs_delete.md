@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli applications pubsubs delete"
 slug: ttn-lw-cli_applications_pubsubs_delete
-type: "commands"
+
 ---
 
 ## ttn-lw-cli applications pubsubs delete
