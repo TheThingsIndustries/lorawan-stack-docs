@@ -234,6 +234,7 @@
 <li><code>mac-settings.class-c-timeout</code></li>
 </ul>
 <p>Some additional examples are included below. All settings are available at the <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#message:MACSettings">End Device API Reference page</a> and can be viewed using the <code>ttn-lw-cli end-devices set --help</code> command.</p>
+<h2 id="examples">Examples</h2>
 <h3 id="configure-factory-preset-frequencies-for-abp-devices">Configure Factory Preset Frequencies for ABP Devices</h3>
 <p>To tell The Things Stack which frequencies are configured in an ABP device, set the <code>mac-settings.factory-preset-frequencies</code> parameter. For example, to configure a device using the default EU868 frequencies, use the following command:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli devices update &lt;app-id&gt; &lt;device-id&gt; --mac-settings.factory-preset-frequencies 868100000,868300000,868500000,867100000,867300000,867500000,867700000,867900000
@@ -247,9 +248,10 @@
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --mac-settings.desired-max-duty-cycle DUTY_CYCLE_1024
 </code></pre></div><p>See the <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#message:MACSettings">End Device API Reference</a> for available fields and definitions of constants. <code>DUTY_CYCLE_1024</code> represents 1/1024 ≈ 0.098%.</p>
 <h3 id="enable-adr">Enable ADR</h3>
-<p>To enable ADR, set the <code>mac-settings.use-adr</code> parameter</p>
+<p>To enable ADR, set the <code>mac-settings.use-adr</code> parameter:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --mac-settings.use-adr<span class="o">=</span><span class="nb">true</span> 
-</code></pre></div><h3 id="set-rx1-delay">Set RX1 Delay</h3>
+</code></pre></div><p>See the <a href="https://www.thethingsindustries.com/docs/reference/adr/">Adaptive Data Rate</a> section for detailed information on configuring ADR parameters and ADR margin using MAC settings.</p>
+<h3 id="set-rx1-delay">Set RX1 Delay</h3>
 <p>The RX1 delay of end devices is set to 5 second by default. To change it, set the <code>desired-rx1-delay</code> parameter:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --mac-settings.desired-rx1-delay RX_DELAY_5
 </code></pre></div><h3 id="unset-mac-settings">Unset MAC settings</h3>
@@ -289,6 +291,9 @@
       
       <li><a href='#class-specific-settings'>Class Specific Settings</a></li>
     
+      
+      <li><a href='#examples'>Examples</a></li>
+    
   </ul>
 
 
@@ -327,10 +332,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Feb 2022.
+  Last changed by Nejra Selimović on 04 Mar 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/e991abb900ab5bc93ca0559db9a142338cbb5764">
-      doc: Add Rx1 delay setting example (#748)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/afbe9d9b92fa6cb11cf056be316dddc56382e0a5">
+      doc: Document setting custom ADR params (#798)
     </a>
 </p>
 
