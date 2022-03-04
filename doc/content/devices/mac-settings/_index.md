@@ -98,6 +98,8 @@ Class C:
 
 Some additional examples are included below. All settings are available at the [End Device API Reference page]({{< ref "reference/api/end_device#message:MACSettings" >}}) and can be viewed using the `ttn-lw-cli end-devices set --help` command.
 
+## Examples
+
 ### Configure Factory Preset Frequencies for ABP Devices
 
 To tell {{% tts %}} which frequencies are configured in an ABP device, set the `mac-settings.factory-preset-frequencies` parameter. For example, to configure a device using the default EU868 frequencies, use the following command:
@@ -120,11 +122,13 @@ See the [End Device API Reference]({{< ref "reference/api/end_device#message:MAC
 
 ### Enable ADR
 
-To enable ADR, set the `mac-settings.use-adr` parameter
+To enable ADR, set the `mac-settings.use-adr` parameter:
 
 ```bash
 ttn-lw-cli end-devices set <app-id> <device-id> --mac-settings.use-adr=true 
 ```
+
+See the [Adaptive Data Rate]({{< ref "/reference/adr" >}}) section for detailed information on configuring ADR parameters and ADR margin using MAC settings.
 
 ### Set RX1 Delay
 
