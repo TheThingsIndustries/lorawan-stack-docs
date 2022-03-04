@@ -361,7 +361,35 @@
 </code></pre></div><p>Now claim the gateway as described in the <a href="#claiming-the-things-indoor-gateway">Claiming The Things Indoor Gateway</a> section.</p>
 <p>Once complete, make sure to unauthorize the gateway to prevent further claiming.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli gateways claim unauthorize &lt;gateway-id&gt;
-</code></pre></div><h2 id="troubleshooting">Troubleshooting</h2>
+</code></pre></div><h2 id="using-the-things-indoor-gateway-with-different-lns">Using The Things Indoor Gateway with Different LNS</h2>
+<p>Once The Things Indoor Gateway is claimed on a The Things Stack cluster, the following steps will allow it to be used with a different LNS Server.</p>
+<h3 id="connecting-to-an-lns-on-a-local-network">Connecting to an LNS on a Local Network</h3>
+<p>If you want to connect your gateway to an LNS on a local network (for example if you have The Things Stack installed for debugging on your laptop), use the steps below.</p>
+<p>First, register the The Things Indoor Gateway on your target LNS by following <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/">the instructions</a>.</p>
+<p>In order for this to work, both the The Things Indoor Gateway and the local machine where the LNS is running must be connected to the same WiFi access point.</p>
+<p>Find the IP address of the machine on which the LNS is installed. You can do this either on the network page of the settings of your operating system or use a command line tool like <code>ifconfig</code>.</p>
+<p>On the The Things Stack cluster where the gateway is claimed, head over to the <strong>General settings</strong> tab on the navigation panel of the gateway.</p>
+<p>Set the <strong>Gateway Server Address</strong> in the format <code>ws://&lt;ip-address&gt;:&lt;port&gt;</code>. Here, the port is the plain text web socket port that is exposed by the LNS. For example, if you are using a locally installed The Things Stack instance and the machine&rsquo;s IP address is <code>192.168.2.2</code>, then Gateway Server address would be <code>ws://192.168.2.2:1887</code>. If you are using a different port, then set that in the address.</p>
+<p>Now, clear the <strong>LoRa Basics Station LNS Authentication Key</strong> value and press <strong>Save changes</strong>.</p>
+<p>Restart the The Things Indoor Gateway by removing and reinserting the power supply and if your configuration is correct, your The Things Indoor Gateway will be connected to the LNS on the local machine.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Connecting the The Things Indoor Gateway with TLS and/or with an authentication key to a local machine is not easy since that requires setting up local certificates and a DNS resolver. This is out of the scope of the documentation and hence is not explained here.
+</div>
+
+<h3 id="connecting-to-a-remote-lns">Connecting to a Remote LNS</h3>
+<p>If you want to connect your gateway to a remotely hosted LNS, use the steps below.</p>
+<p>First, register the The Things Indoor Gateway on your target LNS. If the target LNS requires authenticated connections, then create an auth token for the gateway. If the target LNS is a The Things Stack instance, then create an API Key with Link Gateway Rights. Follow the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/#create-gateway-api-key">Creating a Gateway API key</a>.</p>
+<p>On the The Things Stack cluster where the gateway is claimed, head over to the <strong>General settings</strong> tab on the navigation panel of the gateway.</p>
+<p>Set the <strong>Gateway Server Address</strong> to the DNS of the target LNS. For example, if the LNS is hosted at <code>thethings.example.com</code> and is using port <code>8887</code> for WebSocket traffic with TLS, then the address would be <code>thethings.example.com:8887</code>.</p>
+<p>If the target LNS requires authenticated connections, set the <strong>LoRa Basics Station LNS Authentication Key</strong> field with the auth token for the gateway on the target LNS and press <strong>Save changes</strong>.</p>
+<p>Either restart the The Things Indoor Gateway or wait upto 24 hours for it to reconnect to the CUPS server. If your configuration is correct, your The Things Indoor Gateway will be connected to the target LNS.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The Things Stack automatically fetches the server certificate chain of the target LNS. This chain should be a standard certificate chain trusted by most browsers. At the moment, we don&rsquo;t support using self-signed custom certificates in this mode of operation.
+</div>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
 <h3 id="common-errors">Common Errors</h3>
 <h4 id="claim-authentication-code-mismatch">Claim Authentication Code Mismatch</h4>
 <p>Double-check the EUI and the WiFi Password. Sometimes an <code>8</code> looks like a <code>3</code> or a <code>B</code>, an <code>1</code> like an <code>l</code>, a <code>0</code> like an <code>O</code>, etc. Note that the <code>FFFE</code> string has an <code>e</code> at the end.</p>
@@ -527,6 +555,9 @@
       <li><a href='#existing-gateways'>Existing Gateways</a></li>
     
       
+      <li><a href='#using-the-things-indoor-gateway-with-different-lns'>Using The Things Indoor Gateway with Different LNS</a></li>
+    
+      
       <li><a href='#troubleshooting'>Troubleshooting</a></li>
     
   </ul>
@@ -567,10 +598,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 14 Jan 2022.
+  Last changed by Krishna Iyer Easwaran on 04 Mar 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/c9b7789b9f93d29e95d22010556cbdc554dc2c80">
-      doc: Add note about claiming TTIG on distributions other than TTS CH and CE (#724)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/ad0f30911a7243b351be588a3c083cd3bff8a184">
+      doc: Add notes for TTIGs on different LNS (#793)
     </a>
 </p>
 
