@@ -54,3 +54,13 @@ This creates an application `app1` with the `admin` user as collaborator. Make s
 Next, see [Adding Integrations]({{< ref "/integrations/adding-integrations" >}}) to proceed with using the built-in [MQTT Server]({{< ref "/integrations/mqtt" >}}) and [HTTP Webhooks]({{< ref "/integrations/webhooks" >}}) for receiving uplink and sending downlink traffic.
 
 End devices are also created within applications. See [Adding Devices]({{< ref "/devices/adding-devices" >}}) for more information.
+
+## Payload Encryption and Decryption
+
+LoRaWAN frames are encrypted and decrypted on the application layer using the AppSKey by default.
+
+Once the application is created, you can update your application settings to skip uplink payload decryption and downlink payload encryption. This will cause the Application Server to forward messages to integrations without any processing, for example it will neglect [payload formatters]({{< ref "/integrations/payload-formatters" >}}), meaning the integrations will be responsible for decrypting uplink messages in order to understand them. Also, scheduling downlinks from {{% tts %}} will be restricted, as it is expected for downlinks in that case to be scheduled from integrations.
+
+To configure this setting, navigate to your applications's **General settings** tab in the Console and check the **Enabled** box under **Skip payload encryption and decryption** section.
+
+{{< figure src="skip-payload-crypto.png" alt="Skip payload encryption and decryption" >}}

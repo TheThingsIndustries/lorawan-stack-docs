@@ -116,6 +116,8 @@ When using the [AWS IoT integration]({{< ref "/integrations/cloud-integrations/a
 
 When this option is enabled, encryption and decryption at the Application Server is disabled, i.e. the `skip_payload_crypto` field for the end device is enabled on the application level. The downlinks are expected to be scheduled from the AWS IoT, and not from the {{% tts %}}.
 
+Read more about skipping payload crypto option on an [application level]({{< ref "/integrations/adding-applications#payload-encryption-and-decryption" >}}) or on a [device level]({{< ref "/devices/adding-devices#application-layer-settings" >}}).
+
 ## {{% tts %}} intermittently receives uplinks from my device, but with the FCnt gap.
 
 Your device probably does not have a good network coverage. Some common reasons:
