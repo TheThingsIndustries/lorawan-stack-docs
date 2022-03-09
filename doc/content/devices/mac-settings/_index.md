@@ -54,7 +54,7 @@ ttn-lw-cli end-devices update --application-id <application-id> --device-id <dev
 
 The Network Server will start using the `Rx1Delay` of 6 seconds for downlink communication with the end device.
 
-## Available MAC settings
+## Available MAC Settings
 
 Run the following command to get a list of all available MAC settings and available parameter values:
 
@@ -144,4 +144,16 @@ The CLI can also be used to unset MAC settings (so that the default ones are use
 
 ```bash
 ttn-lw-cli end-devices set <app-id> <device-id> --unset mac-settings.rx1-delay
+```
+
+## Session and MAC State Reset
+
+Resetting session and MAC state for OTAA devices will wipe out all session and MAC data, and the end device will need to perform a rejoin on {{% tts %}} network. For ABP devices, only MAC state gets reset, while session keys, DevAddr and downlink queue are preserved.
+
+Session and MAC state can be reset through the Console - navigate to your end device's **General settings** tab, scroll down to the **Network layer** section, press the **Reset session and MAC state** button and confirm.
+
+To reset session and MAC state using the CLI:
+
+```bash
+ttn-lw-cli end-devices reset --application-id <application-id> --device-id <device-id>
 ```
