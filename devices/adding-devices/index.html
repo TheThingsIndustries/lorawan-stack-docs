@@ -244,27 +244,31 @@
 <p>If you need to use a method of activation other than OTAA, create a multicast group, specify a Class B or Class C device, or change Rx Delay and Frequency plan settings, see the <a href="#advanced-settings">Advanced settings</a> section below. Otherwise, proceed to <a href="#otaa-devices">OTAA devices</a>.</p>
 <h3 id="advanced-settings">Advanced Settings</h3>
 <p>To modify advanced settings, expand the <strong>Show advanced activation, LoRaWAN class and cluster settings</strong> dropdown.</p>
-<p>Here, you may choose your <strong>Activation Mode</strong>.</p>
+<p>Here, you may choose your <strong>Activation Mode</strong>. If you choose <strong>OTAA</strong>, follow the <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/#otaa-devices">OTAA Devices</a> subsection after this one, and if you choose <strong>ABP</strong>, follow the <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/#abp-devices">ABP Devices</a> subsection.</p>
 <figure>
     <img src="advanced.png"
          alt="Advanced settings"/> 
 </figure>
-<p>If your device supports <strong>Class B</strong> or <strong>Class C</strong> features, you may enable them using the dropdown.</p>
+<p>If your device supports <strong>Class B</strong> or <strong>Class C</strong> features, you may enable them using the dropdown <strong>Additional LoRaWAN class capabilities</strong>.</p>
 <figure>
     <img src="class.png"
          alt="Choose device class"/> 
 </figure>
-<p>To modify <strong>Rx2 data rate</strong> or <strong>Rx2 frequency</strong>, uncheck <strong>Use network&rsquo;s Rx and frequency defaults</strong>. If using <strong><a href="#abp-devices">ABP</a></strong>, this will also allow you to configure <strong>Rx1 settings</strong>.</p>
+<p>Under <strong>Network defaults</strong>, you can choose to <strong>Use network&rsquo;s default MAC settings</strong>. This option is enabled by default because for most deployments, The Things Stack defaults for Rx delay and other MAC settings will be suitable. However, if you want to modify <strong>Rx2 data rate</strong> or <strong>Rx2 frequency</strong>, uncheck this option and provide your custom values. If using <a href="#abp-devices">ABP activation mode</a>, this will also allow you to configure <strong>Rx1 settings</strong>.</p>
 <figure>
     <img src="default-frequencies.png"
          alt="Use default frequencies"/> 
 </figure>
-<p>To use an external join server or an external network server, check <strong>Use external LoRaWAN backend servers</strong>.</p>
-<p>The <strong>Network Server</strong> and <strong>Join Server</strong> addresses should correctly point to the address of The Things Stack deployment you are using.</p>
-<p>If using an External Join Server, enter its address in the <strong>Join Server</strong> field.</p>
+<p>By default, server components of the current cluster are used, but if you want to use an external Join Server or an external Network Server, check <strong>Use external LoRaWAN backend servers</strong>.</p>
+<p>The <strong>Network Server address</strong> and <strong>Join Server address</strong> should correctly point to the address of The Things Stack deployment you are using. If using an External Join Server, enter its address in the <strong>Join Server address</strong> field.</p>
 <figure>
     <img src="external-servers.png"
          alt="Use external backend servers"/> 
+</figure>
+<p>Once your device is registered, you can navigate to the <strong>General settings</strong> tab in your end device&rsquo;s settings, scroll down to the <strong>Network layer</strong> section and expand <strong>Advanced MAC settings</strong> to modify more MAC settings like <strong>Frame counter width</strong>, <strong>Desired maximum duty cycle</strong>, <strong>ADR margin</strong>, etc. See the <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/">MAC Settings</a> section to learn about available MAC settings for your end devices.</p>
+<figure>
+    <img src="mac-settings.png"
+         alt="Additional MAC settings"/> 
 </figure>
 <h3 id="otaa-devices">OTAA Devices</h3>
 <p>Over-the-Air-Activation (OTAA) is the secure, scalable way to activate LoRaWAN devices. All commercially available LoRaWAN devices support OTAA, and it is selected by default. If you are using a custom or DIY device, and cannot use OTAA, see the <a href="#abp-devices">Activation by Personalisation</a> section.</p>
@@ -442,6 +446,16 @@ ttn-lw-cli end-devices <span class="nb">set</span> <span class="nv">$APP_ID</spa
 </div>
 
 <p>Once a device has been added, get started with <a href="https://www.thethingsindustries.com/docs/integrations/">Integrations</a> to process and act on data.</p>
+<h2 id="application-layer-settings">Application Layer Settings</h2>
+<h3 id="payload-crypto-override">Payload Crypto Override</h3>
+<p>LoRaWAN frames are encrypted on the application layer using the AppSKey. Once the end device is registered, you can choose to enforce or skip payload encryption. Skipping payload encryption will cause the Application Server to forward messages to integrations without any processing, for example it will neglect <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">payload formatters</a>. If you choose to skip payload encryption, integrations will be responsible for processing the message in order to understand it.</p>
+<p>To configure these settings, navigate to your end device&rsquo;s <strong>General settings</strong> tab in the Console and scroll down to the <strong>Application layer</strong> section.</p>
+<p>Skipping payload encryption and decryption option is also available on an <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/#payload-encryption-and-decryption">application level</a>, so if you want the end device to inherit this setting from its application, choose <strong>Use application default</strong>.</p>
+<p>Otherwise, choose to <strong>Enforce skipping payload crypto</strong> or to <strong>Enforce payload crypto</strong> for a single device only.</p>
+<figure>
+    <img src="skip-payload-crypto.png"
+         alt="Skip payload encryption and decryption"/> 
+</figure>
         </div>
         
           <div class="is-clearfix">
@@ -484,6 +498,9 @@ ttn-lw-cli end-devices <span class="nb">set</span> <span class="nv">$APP_ID</spa
       
       <li><a href='#adding-devices-using-the-cli'>Adding Devices using the CLI</a></li>
     
+      
+      <li><a href='#application-layer-settings'>Application Layer Settings</a></li>
+    
   </ul>
 
 
@@ -522,10 +539,10 @@ ttn-lw-cli end-devices <span class="nb">set</span> <span class="nv">$APP_ID</spa
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 16 Feb 2022.
+  Last changed by Nejra Selimović on 09 Mar 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/fbf62aca450a5ef62b545b8d4f3ca6608bde24c9">
-      doc: Document adding ABP devices and gateways using the API, rearranging doc (#772)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/cf63dd58b7dd6b5802c057d7df7110a693acad05">
+      doc: Modify MAC settings and skip payload crypto info (#799)
     </a>
 </p>
 
