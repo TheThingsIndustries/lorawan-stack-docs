@@ -22,9 +22,9 @@ DEVICE_ID="dev1"
 FREQUENCY_PLAN="EU_863_870"
 LORAWAN_VERSION="1.0.3"
 LORAWAN_PHY_VERSION="1.0.3-a"
-DEV_ADDR="00E4304D"
-APP_SESSION_KEY="A0CAD5A30036DBE03096EB67CA975BAA"
-NWK_SESSION_KEY="B7F3E161BC9D4388E6C788A0C547F255"
+DEV_EUI="70B3D57ED004E201"
+JOIN_EUI="0000000000000000"
+APP_KEY="E307CC06F5B60B2C9E11BF640B1BF5D3"
 ```
 
 Make sure to modify these according to your setup.
@@ -36,7 +36,7 @@ In order to send Class C downlink messages to a single device, enable Class C su
 For example, when enabling Class C for an existing device:
 
 ```bash
-ttn-lw-cli end-devices set $APP_ID $DEVICE_ID --supports-class-c
+ttn-lw-cli end-devices set --application-id $APP_ID --device-id $DEVICE_ID --supports-class-c
 ```
 
 This will enable the Class C downlink scheduling of the device. That's it! Downlink messages are now scheduled as soon as possible.
@@ -61,16 +61,16 @@ The time to transmit is an absolute timestamp in ISO 8601 format to send the mes
 
 {{< cli-only >}}
 
-First, create a Class C device:
+First, create a Class C OTAA device:
 
 ```bash
-ttn-lw-cli end-devices create $APP_ID $DEVICE_ID \
+ttn-lw-cli end-devices create --application-id $APP_ID --device-id $DEVICE_ID \
+  --dev-eui $DEV_EUI \
+  --join-eui $JOIN_EUI \
   --frequency-plan-id $FREQUENCY_PLAN \
   --lorawan-version $LORAWAN_VERSION \
   --lorawan-phy-version $LORAWAN_PHY_VERSION \
-  --session.dev-addr $DEV_ADDR \
-  --session.keys.app-s-key.key $APP_SESSION_KEY \
-  --session.keys.nwk-s-key.key $NWK_SESSION_KEY \
+  --root-keys.app-key.key $APP_KEY \
   --supports-class-c
 ```
 
