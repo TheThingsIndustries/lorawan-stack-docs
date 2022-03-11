@@ -14,7 +14,7 @@ The Things Join Server is a LoRaWAN Join Server. Learn how to register devices t
 ## Prerequisites
 
 1. CLI needs to be properly configured. If you want to use The Things Join Server with [{{% tts %}} Cloud]({{< ref "/getting-started/cloud-hosted" >}}) cluster, use the [CLI configuration with Cloud cluster file]({{< ref "/getting-started/cloud-hosted/tti-join-server#cli-configuration-with-cloud-cluster" >}}). If you want to use The Things Join Server without Cloud cluster or with a third-party LoRaWAN network, use the [CLI configuration with Join Server only file]({{< ref "/getting-started/cloud-hosted/tti-join-server#cli-configuration-with-join-server-only" >}}).
-2. JoinEUI/AppEUI is prefixed from `70B3D57ED0000000/40`, i.e. in the range from `70B3D57ED0000000` to `70B3D57ED0FFFFFF`.
+2. JoinEUI/AppEUI needs to be set to `70B3D57ED0000000`. No other EUI value is supported.
 3. DevEUIs are issued from a IEEE block that you own.
 4. Root keys are generated randomly per device.
 
