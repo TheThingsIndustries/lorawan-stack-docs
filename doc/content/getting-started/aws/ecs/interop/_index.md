@@ -1,7 +1,7 @@
 ---
 title: "Interoperability"
 description: "LoRaWAN Backend Interfaces"
-weight: 3
+weight: 8
 ---
 
 {{% tts %}} exposes the Join Server API defined by LoRaWAN Backend Interfaces 1.0 and 1.1. This is used for interoperability between LoRaWAN networks.

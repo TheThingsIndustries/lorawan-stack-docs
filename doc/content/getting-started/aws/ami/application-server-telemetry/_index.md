@@ -1,7 +1,7 @@
 ---
 title: "Application Server Telemetry"
 description: ""
-weight: 4
+weight: 5
 deprecated_in_version: "3.11.1"
 aliases:
   - /integrations/aws-iot/application-server-telemetry

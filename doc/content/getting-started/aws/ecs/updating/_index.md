@@ -1,7 +1,7 @@
 ---
 title: "Updating"
 description: ""
-weight: 3
+weight: 6
 ---
 
 This page describes the steps for updating {{% tts %}} on AWS ECS.
