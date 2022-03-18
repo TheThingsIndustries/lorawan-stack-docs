@@ -21,7 +21,7 @@ In addition to the written instructions linked below, a video with instructions 
 
 ### Javascript
 
-{{% tts %}} allows you to write your own custom payload formatters in Javascript. To find out how to write a custom Javascript payload formatter, see the [Javascript Payload Formatters]({{< relref "javascript" >}}) section.
+{{% tts %}} allows you to write your own custom payload formatters in Javascript. To find out how to write a custom Javascript payload formatter, see the [Javascript Payload Formatters]({{< ref "/integrations/payload-formatters/javascript" >}}) section.
 
 ### CayeneLPP
 
