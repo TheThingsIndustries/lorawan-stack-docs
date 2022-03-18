@@ -170,14 +170,14 @@
 <span class="nv">FREQUENCY_PLAN</span><span class="o">=</span><span class="s2">&#34;EU_863_870&#34;</span>
 <span class="nv">LORAWAN_VERSION</span><span class="o">=</span><span class="s2">&#34;1.0.3&#34;</span>
 <span class="nv">LORAWAN_PHY_VERSION</span><span class="o">=</span><span class="s2">&#34;1.0.3-a&#34;</span>
-<span class="nv">DEV_ADDR</span><span class="o">=</span><span class="s2">&#34;00E4304D&#34;</span>
-<span class="nv">APP_SESSION_KEY</span><span class="o">=</span><span class="s2">&#34;A0CAD5A30036DBE03096EB67CA975BAA&#34;</span>
-<span class="nv">NWK_SESSION_KEY</span><span class="o">=</span><span class="s2">&#34;B7F3E161BC9D4388E6C788A0C547F255&#34;</span>
+<span class="nv">DEV_EUI</span><span class="o">=</span><span class="s2">&#34;70B3D57ED004E201&#34;</span>
+<span class="nv">JOIN_EUI</span><span class="o">=</span><span class="s2">&#34;0000000000000000&#34;</span>
+<span class="nv">APP_KEY</span><span class="o">=</span><span class="s2">&#34;E307CC06F5B60B2C9E11BF640B1BF5D3&#34;</span>
 </code></pre></div><p>Make sure to modify these according to your setup.</p>
 <h2 id="enabling-and-disabling-class-b">Enabling and Disabling Class B</h2>
 <p>In order to send Class B downlink messages to a single device, enable Class B support for the end device when creating or updating it with the <code>--supports-class-b</code> flag.</p>
 <p>For example, when enabling Class B for an existing device:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> --supports-class-b
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> --application-id <span class="nv">$APP_ID</span> --device-id <span class="nv">$DEVICE_ID</span> --supports-class-b
 </code></pre></div><p>This will enable the Class B downlink scheduling of the device. Downlink messages are now scheduled during the next available ping slot.</p>
 <p>For unicast devices, Class B downlink scheduling starts when the end device sends an uplink with the Class B bit set. This means that an OTAA device should send an uplink message with the Class B bit set after receiving the join-accept in order to enable Class B downlink scheduling.</p>
 <p>To disable Class B scheduling, reset with <code>--supports-class-b=false</code>.</p>
@@ -198,14 +198,14 @@
   </div>
 </div>
 
-<p>First, create a Class B device:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices create <span class="nv">$APP_ID</span> <span class="nv">$DEVICE_ID</span> <span class="se">\
+<p>First, create a Class B OTAA device:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices create --application-id <span class="nv">$APP_ID</span> --device-id <span class="nv">$DEVICE_ID</span> <span class="se">\
+</span><span class="se"></span>  --dev-eui <span class="nv">$DEV_EUI</span> <span class="se">\
+</span><span class="se"></span>  --join-eui <span class="nv">$JOIN_EUI</span> <span class="se">\
 </span><span class="se"></span>  --frequency-plan-id <span class="nv">$FREQUENCY_PLAN</span> <span class="se">\
 </span><span class="se"></span>  --lorawan-version <span class="nv">$LORAWAN_VERSION</span> <span class="se">\
 </span><span class="se"></span>  --lorawan-phy-version <span class="nv">$LORAWAN_PHY_VERSION</span> <span class="se">\
-</span><span class="se"></span>  --session.dev-addr <span class="nv">$DEV_ADDR</span> <span class="se">\
-</span><span class="se"></span>  --session.keys.app-s-key.key <span class="nv">$APP_SESSION_KEY</span> <span class="se">\
-</span><span class="se"></span>  --session.keys.nwk-s-key.key <span class="nv">$NWK_SESSION_KEY</span> <span class="se">\
+</span><span class="se"></span>  --root-keys.app-key.key <span class="nv">$APP_KEY</span> <span class="se">\
 </span><span class="se"></span>  --supports-class-b
 </code></pre></div><p>Then, schedule the following message to the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">Application Server MQTT server</a> or <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/">HTTP webhooks</a>:</p>
 <div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
@@ -304,10 +304,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 18 Feb 2022.
+  Last changed by Nejra Selimović on 18 Mar 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f1234f5ed1c807fc36bfad21f0110e4f46f56b7f">
-      doc: Document server behavior for scheduling confirmed downlinks towards class B and C devices (#778)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/48d19e1c5fb7cebf8ac5bfa9fa9ad1d014d5c3a1">
+      doc: Update Gateways and Devices docs and troubleshooting (#808)
     </a>
 </p>
 

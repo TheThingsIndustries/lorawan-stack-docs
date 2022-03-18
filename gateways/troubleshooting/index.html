@@ -198,95 +198,81 @@
           <p>This section provides help for common issues and frequently asked questions you may have when adding gateways.</p>
 <h2 id="what-is-my-server-address">What is my server address?</h2>
 <p>This is the address you use to access The Things Stack. See <a href="https://www.thethingsindustries.com/docs/getting-started/server-addresses/">Server Addresses</a>.</p>
-<p>For <strong>LoRa Basics™ Station:</strong></p>
+<p>For LoRa Basics™ Station:</p>
+<ul>
+<li>
 <p>CUPS uses the URI: <code>https://&lt;server-address&gt;:443</code></p>
+</li>
+<li>
 <p>LNS uses the URI: <code>wss://&lt;server-address&gt;:8887</code></p>
-<p>For <strong>Semtech UDP Packet Forwarder:</strong>:</p>
-<p>Use <code>&lt;server-address&gt;</code>. The <strong>Up Port</strong> and <strong>Down Port</strong> are typically <strong>1700</strong>.</p>
-<h2 id="how-do-i-find-the-ca-trust">How do I find the CA Trust?</h2>
-<p>See the <a href="https://www.thethingsindustries.com/docs/reference/root-certificates/">Root Certificates Reference</a>.</p>
-<h2 id="how-do-i-use-an-api-key-for-lbs-gateways">How do I use an API Key for LBS gateways?</h2>
-<p>Use the following commands to generate a <code>api.key</code> file which is correctly formatted (LoRa Basics™ Station requires that <code>.key</code> files end with a CRLF character).</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">API_KEY</span><span class="o">=</span><span class="s2">&#34;your-api-key&#34;</span>
-<span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="p">|</span> perl -p -e <span class="s1">&#39;s/\r\n|\n|\r/\r\n/g&#39;</span>  &gt; api.key
-</code></pre></div><p>Upload or copy the contents of this file in to your gateway as the <strong>Gateway Key</strong>.</p>
-<p>See the <a href="https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/?url=authmodes.html">LoRa Basics™ Station Authorization documentation</a> or your manufacturers guidelines for additional information.</p>
-<h2 id="is-an-api-key-required">Is an API Key required?</h2>
-<p><strong>LoRa Basics™ Station CUPS</strong> requires an API key for your gateway with the following rights:</p>
-<ul>
-<li>View gateway information</li>
-<li>Edit basic gateway settings</li>
-<li>Retrieve secrets associated with a gateway</li>
+</li>
 </ul>
-<p><strong>LoRa Basics™ Station LNS</strong> requires an API Key with the following rights:</p>
-<ul>
-<li>Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink</li>
-</ul>
-<p><strong>UDP gateways</strong> are unsecured and require no API key.</p>
+<p>For Semtech UDP Packet Forwarder use <code>&lt;server-address&gt;</code>. The <strong>Up Port</strong> and <strong>Down Port</strong> are typically <strong>1700</strong>.</p>
+<h2 id="which-packet-forwarders-does-the-things-stack-support">Which packet forwarders does The Things Stack support?</h2>
+<p>Read the <a href="https://www.thethingsindustries.com/docs/reference/packet-forwarder/">Packet Forwarders section</a>.</p>
+<h2 id="where-can-i-learn-more-about-lora-basics-station">Where can I learn more about LoRa Basics™ Station?</h2>
+<p><strong>Gateway Demo</strong>: <a href="https://www.youtube.com/watch?v=LGFFxPOuSJw">https://www.youtube.com/watch?v=LGFFxPOuSJw</a></p>
+<p><strong>Official LoRa Basics™ Station documentation</strong>: <a href="https://doc.sm.tc/station/">https://doc.sm.tc/station/</a></p>
+<p><strong>Forum</strong>: <a href="https://www.thethingsnetwork.org/forum/">https://www.thethingsnetwork.org/forum/</a></p>
+<h2 id="what-is-lora-basics-station-radio-configuration">What is LoRa Basics™ Station Radio Configuration?</h2>
+<p>There are three types of radio configuration. All types are typically defined in the same <code>station.conf</code> file.</p>
+<p><strong>Hardware Specific</strong> is a configuration unique to the hardware. This is defined in a file shipped with the gateway and should not be modified. Examples are <code>clksrc</code> and RSSI offset.</p>
+<p><strong>LoRaWAN Regional</strong> is a configuration according to LoRaWAN Regional Parameters. This is common to all gateways using the same Regional Parameters, and is provided by the network server automatically when using LoRa Basics™ Station. It must be configured manually for UDP gateways. Examples are data rates and mandatory channels.</p>
+<p><strong>User Defined</strong> is a configuration which the user is free to choose. Examples are non-mandatory channels and sub-bands.</p>
+<p>For an example configuration file, see <a href="https://doc.sm.tc/station/gw_v1.5.html#single-board-sample-configuration">Semtech&rsquo;s LoRa Basics™ Station documentation</a>.</p>
 <h2 id="how-do-i-see-gateway-events">How do I see gateway events?</h2>
-<p>Gateway event logs can be found in the console in the gateway&rsquo;s general information page. See <a href="https://www.thethingsindustries.com/docs/getting-started/events/">Working with Events</a> for other ways of subscribing to events.</p>
-<h2 id="how-does-the-things-stack-console-know-whether-a-gateway-is-connected">How does The Things Stack console know whether a gateway is connected?</h2>
-<p>For both <a href="https://www.thethingsindustries.com/docs/gateways/udp/">UDP</a> and <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/">LoRa Basics™ Station</a> gateways, The Things Stack creates a <code>GatewayConnectionStats</code> database entry when a gateway connects and removes that entry when the gateway disconnects. The console checks whether this database entry exists and shows the gateway as connected or disconnected accordingly.</p>
-<p>The mechanism for determining whether a gateway remains connected differs for UDP and LBS gateways:</p>
-<p><strong>For LBS gateways:</strong></p>
-<p>LBS uses a TCP keepalive to indicate that the connection is still alive.</p>
-<p><strong>For UDP gateways:</strong></p>
+<p>Gateway event logs can be found in the Live Data tab in the gateway&rsquo;s general information page. See <a href="https://www.thethingsindustries.com/docs/getting-started/events/">Working with Events</a> for other ways of subscribing to events.</p>
+<h2 id="how-does-the-things-stack-console-know-whether-a-gateway-is-connected">How does The Things Stack Console know whether a gateway is connected?</h2>
+<p>For both <a href="https://www.thethingsindustries.com/docs/gateways/udp/">Semtech UDP Packet Forwarder</a> and <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/">LoRa Basics™ Station</a> gateways, The Things Stack creates a <code>GatewayConnectionStats</code> database entry when a gateway connects and removes that entry when the gateway disconnects. The Console checks whether this database entry exists and shows the gateway as connected or disconnected accordingly.</p>
+<p>The mechanism for determining whether a gateway remains connected differs for UDP and LoRa Basics™ Station gateways.</p>
+<p>LoRa Basics™ Station uses a TCP keepalive to indicate that the connection is still alive.</p>
 <p>UDP is a connectionless protocol. The Things Stack expects a UDP gateway to occasionally send a <code>PULL_DATA</code> message. This is typically every 5 seconds. By default, if a gateway misses 3 of these consecutively (15s) then the gateway is shown as disconnected and this indicates there’s potentially an issue with gateway connectivity.</p>
-<h2 id="my-gateway-is-shown-as-connected-in-the-console-but-i-dont-see-any-events-including-the-gateway-connection-stats-what-do-i-do">My gateway is shown as connected in the console but I don’t see any events (including the gateway connection stats). What do I do?</h2>
-<p>We have observed this with <strong>UDP gateways only</strong>. We recommend using <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/">LoRa Basics™ Station</a> instead if possible, as the Semtech UDP Packet Forwarder has many security and scalability drawbacks.</p>
-<p>Check the following in the The Things Stack console:</p>
-<ul>
-<li>Did you select <strong>Require authenticated connection</strong> in gateway settings? This prevents UDP gateways from working (and for gateways connected with Basic Station or MQTT, this prevents unauthenticated connections)</li>
-</ul>
-<p>Otherwise, try restarting the gateway. Sometimes, the gateway reports its status but still fails to forward packets, and this may fix that.</p>
-<h2 id="my-gateway-is-offline-but-still-shows-as-connected-in-the-console-why">My gateway is offline, but still shows as connected in the console. Why?</h2>
-<p>If you are using a UDP gateway, it is possible that another gateway with the same EUI is transmitting data. UDP has no authentication, so there is no way to prevent this from happening, although it is unlikely that another gateway with the same EUI will be registered on the same network server. If this is the case, the solutions are</p>
-<ul>
-<li>Use the LoRa Basics™ Station packet forwarder</li>
-<li>Change your gateway EUI</li>
-</ul>
 <h2 id="my-gateway-wont-connect-what-do-i-do">My gateway won&rsquo;t connect. What do I do?</h2>
-<p>Check the following in <strong>The Things Stack console:</strong></p>
+<p>Check the following in The Things Stack Console:</p>
 <ul>
 <li>Does the Gateway EUI in the console match with the EUI of the gateway?</li>
-<li>Does the Frequency Plan selected match with the configuration in the gateway? Refer to the <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plans section</a> for plans that are officially supported by The Things Stack</li>
-<li>Did you select <strong>Require authenticated connection</strong> in gateway settings? This prevents UDP gateways from working (and for gateways connected with Basic Station or MQTT, this prevents unauthenticated connections)</li>
+<li>Does the Frequency Plan selected match with the configuration in the gateway? Refer to the <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plans section</a> for plans that are officially supported by The Things Stack.</li>
+<li>Did you select <strong>Require authenticated connection</strong> in gateway settings? This prevents UDP gateways from working (and for gateways connected with Basic Station or MQTT, this prevents unauthenticated connections).</li>
 <li>Do you see any warnings/errors in the Gateway live data section?</li>
 </ul>
-<p>Check the following in your <strong>Gateway configuration:</strong></p>
-<p><strong>For UDP gateways:</strong></p>
+<p>Check the following in your gateway configuration.</p>
+<p>For Semtech UDP Packet Forwarder gateways:</p>
 <ul>
 <li>Does the Gateway Server address match with the address mentioned in the gateway overview in The Things Stack Console?</li>
 <li>Are the upstream and downstream ports set to 1700?</li>
 </ul>
-<p><strong>For LoRa Basics™ Station Gateways:</strong></p>
+<p>For LoRa Basics™ Station gateways:</p>
 <ul>
 <li>Are the CUPS server address and LNS server address correctly configured? See <a href="#whats-my-server-address">What&rsquo;s my server address</a>.</li>
 <li>Are the CUPS and LNS ports configured with 443 and 8887 respectively? See <a href="#whats-my-server-address">What&rsquo;s my server address</a>.</li>
-<li>Are API keys assigned with necessary rights? See <a href="#is-an-api-key-required">Is an API key required</a></li>
+<li>Are API keys assigned with necessary rights? See <a href="#is-an-api-key-required">Is an API key required</a>.</li>
 <li>Did you select the correct root certificates? See the <a href="https://www.thethingsindustries.com/docs/reference/root-certificates/">Root Certificates Reference</a>.</li>
 <li>Is the backhaul used in the Gateway stable?</li>
 <li>Does the Gateway run with the latest firmware?</li>
-<li>Does the Frequency Plan selected match with the configuration in the gateway? Refer to the <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plans section</a> for plans that are officially supported by The Things Stack</li>
+<li>Does the Frequency Plan selected match with the configuration in the gateway? Refer to the <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plans section</a> for plans that are officially supported by The Things Stack.</li>
 <li>Are both CUPS and LNS are configured? There is no need to configure both, as CUPS will automatically configure LNS. Follow the instructions for <a href="/docs/gateways/lora-basics-station/cups/">configuring CUPS</a>.</li>
 </ul>
 <p>Check your manufacturer&rsquo;s documentation to access the gateway logs on your gateway, which will help to diagnose the issue.</p>
+<h2 id="when-the-connection-on-the-main-interface-goes-down-my-gateway-gets-disconnected-and-it-does-not-reconnect-through-the-backup-interface">When the connection on the main interface goes down, my gateway gets disconnected and it does not reconnect through the backup interface.</h2>
+<p>Please try restarting your gateway&rsquo;s packet forwarder.</p>
+<h2 id="my-gateway-is-shown-as-connected-in-the-console-but-i-dont-see-any-events-including-the-gateway-connection-stats-what-do-i-do">My gateway is shown as connected in the Console but I don’t see any events (including the gateway connection stats). What do I do?</h2>
+<p>We have observed this with Semtech UDP Packet Forwarder gateways only. We recommend using <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/">LoRa Basics™ Station</a> instead if possible, as the Semtech UDP Packet Forwarder has many security and scalability drawbacks.</p>
+<p>Check if you have selected <strong>Require authenticated connection</strong> in the gateway settings in the Console. This prevents UDP gateways from working (and for gateways connected with Basic Station or MQTT, this prevents unauthenticated connections)</p>
+<p>Otherwise, try restarting the gateway. Sometimes, the gateway reports its status but still fails to forward packets, and this may fix that.</p>
 <h2 id="my-gateway-is-shown-as-disconnected-after-recreating-with-the-same-gateway-eui-what-do-i-do">My gateway is shown as disconnected after recreating with the same Gateway EUI. What do I do?</h2>
 <p>If a gateway is deleted when it’s still connected, the connection statistics for the gateway will continue to exist under the old ID until the gateway actually reconnects.</p>
-<p>If you are using <strong>LoRa Basics™ Station or another TCP based gateway</strong> then a simple restart/reconnection of the gateway will clear the statistics of the old ID and you create an entry for the new ID.</p>
-<p>If you are using a <strong>UDP gateway</strong> then there is no concept of a connection. The Things Stack assumes the connection is alive until no messages are received for the duration of the <code>DownlinkPathExpires</code>and <code>ConnectionExpires</code> settings. In this case, your gateway must be turned off for at least as long as the <code>ConnectionExpires</code> interval (default 1 minute) for The Things Stack to mark the gateway as disconnected clear the statistics for the old ID.</p>
+<p>If you are using LoRa Basics™ Station or another TCP based gateway then a simple restart/reconnection of the gateway will clear the statistics of the old ID and you create an entry for the new ID.</p>
+<p>If you are using a UDP gateway then there is no concept of a connection. The Things Stack assumes the connection is alive until no messages are received for the duration of the <code>DownlinkPathExpires</code>and <code>ConnectionExpires</code> settings. In this case, your gateway must be turned off for at least as long as the <code>ConnectionExpires</code> interval (default 1 minute) for The Things Stack to mark the gateway as disconnected clear the statistics for the old ID.</p>
+<h2 id="my-gateway-is-offline-but-still-shows-as-connected-in-the-console-why">My gateway is offline, but still shows as connected in the Console. Why?</h2>
+<p>If you are using a Semtech UDP Packet Forwarder gateway, it is possible that another gateway with the same EUI is transmitting data. UDP has no authentication, so there is no way to prevent this from happening, although it is unlikely that another gateway with the same EUI will be registered on the same network server. If this is the case, the solutions are:</p>
+<ul>
+<li>Use the LoRa Basics™ Station packet forwarder</li>
+<li>Change your gateway EUI</li>
+</ul>
+<h2 id="why-do-i-still-see-connection-stats-of-a-gateway-i-previously-disconnected">Why do I still see connection stats of a gateway I previously disconnected?</h2>
+<p>After disconnecting a gateway, the connection stats will still be available for 48 hours. The HTTP endpoint will return the status code <code>200 OK</code> and the connection stats will contain the <code>disconnected_at</code> field. If the gateway remains inactive for more than 48 hours, the HTTP endpoint will then return the <code>404 Not Found (gateway &lt;gtw_id&gt; not connected)</code> status.</p>
 <h2 id="my-gateway-shows-an-other-cluster-status-why">My gateway shows an &ldquo;Other cluster&rdquo; status. Why?</h2>
 <p>If a gateway appears in the Console with the status of &ldquo;Other cluster&rdquo;, it means that this gateway has been setup with a <code>Gateway Server address</code> that the Console determines as not belonging to the current deployment. This could mean that you accidentally visited the Console of a different cluster of this deployment (e.g. The Things Stack Community <code>au1</code> cluster instead of <code>eu1</code>). Make sure you either use the correct cluster (usually the one located closest to you), or to change the <code>Gateway Server address</code> of the Gateway to match the cluster that you want to use. You can do that via the Gateway&rsquo;s <code>General settings</code> page in the Console.</p>
-<h2 id="no-downlinks-are-reaching-my-udp-gateway-why">No downlinks are reaching my UDP gateway. Why?</h2>
-<p>With UDP gateways, if uplink messages are reaching The Things Stack, that does not mean the downlink messages are going to be received correctly by the gateway.</p>
-<p>The Semtech UDP Packet Forwarder sends a <code>PULL_DATA</code> request every ~5 seconds to pull the data scheduled for a downlink transmission on The Things Stack.</p>
-<p>The server reponds with a <code>PULL_ACK</code> message to confirm that the network route is open and that the data can be sent through <code>PULL_RESP</code> packets any time. In order to pull the data, <code>PULL_ACK</code> messages have to reach the gateway with a reasonable latency, usually way lower than 500 ms. If this latency is high, pulling the downlink data will fail. One of the drawbacks of using the Semtech UDP Packet Forwarder is that it does not have an implemented mechanism to detect if pulling the downlink data fails, so your data might end up lost.</p>
-<p>Common reasons for having latency issues between the gateway and The Things Stack cluster are that the gateway is geographically far from the cluster, and using cellular or satellite backhauls for gateways.</p>
-<p>Try solving this issue by:</p>
-<ul>
-<li>Checking your internet connection</li>
-<li>Using The Things Stack cluster closest to the location of your gateway</li>
-</ul>
 <h2 id="i-get-an-id-already-taken-error-when-adding-a-gateway">I get an &ldquo;ID Already Taken&rdquo; error when adding a gateway.</h2>
 <p>Another gateway is already registered with this ID. This gateway may have been deleted already, but The Things Stack reserves previously used IDs for <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">security reasons</a>.</p>
 <p>This gateway may also be registered by another user, but you are not able to see gateways registered by other users if you are not an administrator (e.g. if you are using The Things Stack Community Edition).</p>
@@ -294,15 +280,9 @@
 <h2 id="i-get-a-gateway-with-eui-is-already-registered-error-when-adding-a-gateway">I get a &ldquo;Gateway with EUI is Already Registered&rdquo; error when adding a gateway.</h2>
 <p>Another gateway is already registered with the same Gateway EUI. This gateway may be registered by another user, but if you are not an administrator (e.g if you are using The Things Stack Community Edition) you will not be able to see gateways registered by other users.</p>
 <p>If the gateway is registered with the same EUI in some other tenant, the error will reflect that as well.</p>
-<p>First, double check that you have entered the EUI correctly. Then, double check that you have not already registered the gateway. Finally, if you have purchased the gateway secondhand, it is possible someone before you registered the gateway. Contact them to unregister it. If they are unavailable, we recommend you to cantact the gateway manufacturer, who can help you configure your gateway with a new EUI or trace the supply chain.</p>
+<p>First, double check that you have entered the EUI correctly. Then, double check that you have not already registered the gateway. Finally, if you have purchased the gateway secondhand, it is possible someone before you registered the gateway. Contact them to unregister it. If they are unavailable, we recommend you to contact the gateway manufacturer, who can help you configure your gateway with a new EUI or trace the supply chain.</p>
 <p>A temporary workaround would be to define a custom Gateway EUI in physical gateway settings (if the gateway allows it), and register the gateway on The Things Stack using the new EUI. Note that a custom Gateway EUI should be issued from an IEEE block owned by the user.</p>
-<h2 id="what-is-radio-configuration">What is Radio Configuration?</h2>
-<p>There are three types of radio configuration. All types are typically defined in the same <code>station.conf</code> file.</p>
-<p><strong>Hardware Specific</strong>: configuration unique to the hardware. This is defined in a file shipped with the gateway and should not be modified. Examples are <code>clksrc</code> and RSSI offset.</p>
-<p><strong>LoRaWAN Regional</strong>: configuration according to LoRaWAN Regional Parameters. This is common to all gateways using the same Regional Parameters, and is provided by the network server automatically when using LoRa Basics™ Station. It must be configured manually for UDP gateways. Examples are data rates and mandatory channels.</p>
-<p><strong>User Defined</strong>: configuration which the user is free to choose. Examples are non-mandatory channels and sub-bands.</p>
-<p>For an example configuration file, see <a href="https://doc.sm.tc/station/gw_v1.5.html#single-board-sample-configuration">Semtech&rsquo;s LoRa Basics™ Station documentation</a>.</p>
-<h2 id="what-modes-of-authentication-are-supported">What modes of authentication are supported?</h2>
+<h2 id="which-lora-basics-station-authentication-modes-are-supported-by-the-things-stack">Which LoRa Basics™ Station authentication modes are supported by The Things Stack?</h2>
 <p>LoRa Basics™ Station defines bi-directional authentication at the server (The Things Stack) and client (gateway). The server is authenticated with a trusted certificate and the client is authenticated either by HTTP token or certificate. See <a href="https://doc.sm.tc/station/authmodes.html#authentication-modes">Semtech&rsquo;s documentation</a>.</p>
 <h2 id="how-is-the-server-authenticated">How is the server authenticated?</h2>
 <p>The server is authenticated by a certificate signed by a Root Certificate Authority. The Root CA certificate is installed in the client (gateway). This is set using the <code>cups.trust</code> or <code>tc.trust</code> file for CUPS or LNS respectively.</p>
@@ -310,28 +290,49 @@
 <p>Currently, The Things Stack only supports <a href="https://doc.sm.tc/station/authmodes.html#tls-server-authentication-and-client-token">TLS Server Authentication and Client Token</a>. The gateway is authenticated using an HTTP header containing an API key generated in The Things Stack. See <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/cups/#configure-gateway">Configure CUPS</a> for instructions for setting this API key for CUPS.</p>
 <h2 id="should-i-set-cups-or-lns-credentials">Should I set CUPS or LNS credentials?</h2>
 <p>These are two different types of LoRa Basics™ Station connections. Since CUPS automatically also configures LNS, we recommend you configure CUPS and leave LNS blank.</p>
-<h2 id="where-can-i-learn-more-about-lora-basics-station">Where can I learn more about LoRa Basics™ Station?</h2>
-<p><strong>Gateway Demo</strong>: <a href="https://www.youtube.com/watch?v=LGFFxPOuSJw">https://www.youtube.com/watch?v=LGFFxPOuSJw</a></p>
-<p><strong>Official LoRa Basics™ Station documentation</strong>: <a href="https://doc.sm.tc/station/">https://doc.sm.tc/station/</a></p>
-<p><strong>Forum</strong>: <a href="https://www.thethingsnetwork.org/forum/">https://www.thethingsnetwork.org/forum/</a></p>
-<h2 id="why-do-my-gateways-gps-location-details-not-show-in-the-things-stack-console">Why do my gateway&rsquo;s GPS location details not show in The Things Stack Console?</h2>
-<p><a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/">LoRa Basics™ Station</a> protocol currently does not support GPS fields in Uplink messages, so the GPS location in The Things Stack Console for LoRa Basics™ Station-based gateways cannot be updated from status messages.</p>
-<p>Updating gateway location from status messages in supported only for gateways that establish authenticated connections (Basic Station and MQTT gateways), i.e. it is not supported for <a href="https://www.thethingsindustries.com/docs/gateways/udp/">UDP</a> gateways.</p>
-<p>Keep in mind that you can still set the gateway location <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/#set-gateway-location">manually</a> from The Things Stack Console.</p>
-<h2 id="i-set-the-gateway-location-manually-in-the-things-stack-console-why-can-i-not-see-it-in-the-gateway-connection-statistics">I set the gateway location manually in The Things Stack Console, why can I not see it in the gateway connection statistics?</h2>
-<p>The connection statistics (<a href="https://www.thethingsindustries.com/docs/reference/api/gateway_server/#a-namegsthe-gs-servicea">Gateway Server service API</a>) do not store the gateway locations.</p>
-<p>The gateway location is stored in the Identity Server instead. The updated location can be found by querying the Identity Server <a href="https://www.thethingsindustries.com/docs/reference/api/gateway/">GetGateway API</a>.</p>
-<p>For example, you can query the location with:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl -H <span class="s2">&#34;Authorization: Bearer &lt;api-key&gt;&#34;</span> https://example.thethings.com/api/v3/gateways/&lt;gateway-id&gt;?field_mask<span class="o">=</span>antennas
-</code></pre></div><h2 id="i-do-not-see-the-downlink-being-scheduled-by-the-network-server-what-do-i-do">I do not see the downlink being scheduled by the Network Server. What do I do?</h2>
-<p>If you notice your downlink is not being scheduled, check your gateway&rsquo;s Live data tab for the <a href="https://www.thethingsindustries.com/docs/reference/api/events/#event:gs.down.send"><code>gs.down.send</code> event</a>. If you do not see this event, it means that the Network Server failed to schedule the downlink message to Gateway Server.</p>
-<p>You can simply try re-scheduling the downlink, and if the issue persists, check if the downlink is being properly scheduled from the Application Server to the Network Server.</p>
-<h2 id="when-i-schedule-a-downlink-i-see-the-gsdowntxfail-event-in-the-live-data-tab-and-the-downlink-message-fails-to-be-transmitted-why">When I schedule a downlink, I see the <code>gs.down.tx.fail</code> event in the Live data tab and the downlink message fails to be transmitted. Why?</h2>
-<p>Seeing the <a href="https://www.thethingsindustries.com/docs/reference/api/events/#event:gs.down.tx.fail"><code>gs.down.tx.fail</code> event</a> in the gateway&rsquo;s Live data tab means the downlink message has been scheduled from the Gateway Server to the gateway, but the Gateway Server did not receive the ACK for that downlink. Some common causes and solutions for this issue:</p>
+<h2 id="how-do-i-find-the-ca-trust">How do I find the CA Trust?</h2>
+<p>See the <a href="https://www.thethingsindustries.com/docs/reference/root-certificates/">Root Certificates Reference</a>.</p>
+<h2 id="is-an-api-key-required">Is an API Key required?</h2>
+<p>LoRa Basics™ Station CUPS requires an API key for your gateway with the following rights:</p>
 <ul>
-<li>High latency in the gateway backhaul - high latency usually occurs if the gateway and The Things Stack cluster are not geographically close, or the gateway is using a cellular or satellite backhaul. Always use The Things Stack cluster that is closest to your gateway&rsquo;s location, and make sure to check your gateway&rsquo;s Internet connection.</li>
-<li>Gateway hardware issue - if the problem persists, your gateway could be malfunctioning. Try using another gateway or contacting the gateway manufacturer.</li>
+<li>View gateway information</li>
+<li>Edit basic gateway settings</li>
+<li>Retrieve secrets associated with a gateway</li>
 </ul>
+<p>LoRa Basics™ Station LNS also requires an API Key, with the following rights:</p>
+<ul>
+<li>Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink</li>
+</ul>
+<p>Semtech UDP Packet Forwarder gateways are unsecured and require no API key.</p>
+<h2 id="how-do-i-use-an-api-key-for-lbs-gateways">How do I use an API Key for LBS gateways?</h2>
+<p>Use the following commands to generate a <code>api.key</code> file which is correctly formatted (LoRa Basics™ Station requires that <code>.key</code> files end with a CRLF character).</p>
+<p>On Linux and macOS:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">API_KEY</span><span class="o">=</span><span class="s2">&#34;your-api-key&#34;</span>
+<span class="nb">echo</span> <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$API_KEY</span><span class="s2">&#34;</span> <span class="p">|</span> perl -p -e <span class="s1">&#39;s/\r\n|\n|\r/\r\n/g&#39;</span>  &gt; api.key
+</code></pre></div><p>On Windows, you can use Command Prompt:</p>
+<pre><code>set LNS_KEY=your-lns-api-key
+echo Authorization: Bearer %LNS_KEY% &gt; lns.key
+</code></pre><p>or PowerShell:</p>
+<div class="highlight"><pre class="chroma"><code class="language-shell" data-lang="shell"><span class="nv">$env</span>:LNS_KEY<span class="o">=</span><span class="s1">&#39;your-lns-api-key&#39;</span>
+write-output <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$env</span><span class="s2">:LNS_KEY&#34;</span> <span class="p">|</span> set-content lns.key
+</code></pre></div><p>Upload or copy the contents of this file in to your gateway as the <strong>Gateway Key</strong>.</p>
+<p>See the <a href="https://lora-developers.semtech.com/build/software/lora-basics/lora-basics-for-gateways/?url=authmodes.html">LoRa Basics™ Station Authorization documentation</a> or your manufacturers guidelines for additional information.</p>
+<h2 id="lora-basics-station-packet-forwarder-logs-mention-the-send-failed-x509---certificate-verification-failed-eg-crl-ca-or-signature-check-failed-error-what-does-it-mean">LoRa Basics™ Station packet forwarder logs mention the &ldquo;Send failed: X509 - Certificate verification failed, e.g. CRL, CA, or signature check failed&rdquo; error. What does it mean?</h2>
+<p>The cause of this issue is that the gateway is configured with a server certificate that The Things Stack does not support. It is recommended to use the <a href="https://letsencrypt.org/certs/isrgrootx1.pem.txt">Let&rsquo;s Encrypt ISRG Root X1 Trust certificate</a>. Make sure to restart your gateway after changing the certificate.</p>
+<h2 id="im-seeing-radio-is-not-emitting-frame---abandoning-tx-trying-alternative-error-in-the-lora-basics-station-gateways-packet-forwarder-logs-what-is-causing-this">I&rsquo;m seeing &ldquo;Radio is not emitting frame - abandoning TX, trying alternative&rdquo; error in the LoRa Basics™ Station gateway&rsquo;s packet forwarder logs. What is causing this?</h2>
+<p>If you are seeing something like:</p>
+<pre><code>[S2E:WARN] ::0 diid=34946 [ant#0] - unable to place frame
+[S2E:VERB] ::0 diid=34946 [ant#0] - class A has no more alternate TX time
+[S2E:ERRO] ::0 diid=34946 [ant#0] - radio is not emitting frame - abandoning TX, trying alternative
+</code></pre><p>in the packet forwarder logs on your LoRa Basics™ Station gateway, your gateway might have a hardware level issue.</p>
+<h2 id="im-seeing-no-dc-in-band-error-in-the-lora-basics-station-gateways-packet-forwarder-logs-what-is-causing-this">I&rsquo;m seeing &ldquo;No DC in band&rdquo; error in the LoRa Basics™ Station gateway&rsquo;s packet forwarder logs. What is causing this?</h2>
+<p>If there is no direct channel in the band to send the downlink and no alternative downlink opportunities (RX2, back-off mechanism, etc.), the downlink will be dropped and the following messages will be printed in the logs:</p>
+<pre><code>[S2E:VERB] ::0 diid=2207 [ant#0] 867.5MHz - no DC in band: txtime=12:40:34.479 free=12:40:47.903
+[S2E:VERB] ::0 diid=2207 [ant#0] - class A has no more alternate TX time
+[S2E:WARN] ::0 diid=2207 [ant#0] - unable to place frame
+</code></pre><p>If the gateway sends back a NACK, The Things Stack will retry sending in the next downlink window. This can also be caused by a hardware issue.</p>
+<h2 id="lora-basics-station-packet-forwarder-logs-mention-the-http-connect-failed-net---failed-to-get-an-ip-address-for-the-given-hostname-error-what-does-it-mean">LoRa Basics™ Station packet forwarder logs mention the &ldquo;HTTP connect failed: NET - Failed to get an IP address for the given hostname&rdquo; error. What does it mean?</h2>
+<p>This error indicates that the gateway was unable to resolve the CUPS URI. Please double check that your network is not blocking the CUPS URI and ports.</p>
 <h2 id="im-noticing-some-errors-in-my-udp-gateways-packet-forwarder-logs-what-do-they-represent">I&rsquo;m noticing some errors in my UDP gateway&rsquo;s packet forwarder logs. What do they represent?</h2>
 <p>The <a href="https://github.com/Lora-net/packet_forwarder/blob/master/PROTOCOL.TXT#L310"><code>PULL_RESP</code> downlink packet</a> is used by the server to send RF packets and associated metadata that will have to be emitted by the gateway towards devices. When this packet is received by the gateway, the gateway sends a <code>TX_ACK</code> packet to the server to inform if a downlink request has been accepted or rejected by the gateway.</p>
 <p>If there has been an error, i.e. the downlink is rejected, <code>TX_ACK</code> packet will contain a JSON <code>txpx_ack</code> object that carries the status information concerning the associated <code>PULL_RESP</code> request. If there has been no errors and the packet is successfully programmed for downlink, no JSON object will be present, but an empty string.</p>
@@ -346,27 +347,38 @@
 <li><code>GPS_UNLOCKED</code> - GPS is unlocked and GPS timestamp cannot be used</li>
 </ul>
 <p>Example:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span><span class="nt">&#34;txpk_ack&#34;</span><span class="p">:{</span>
-	<span class="nt">&#34;error&#34;</span><span class="p">:</span><span class="s2">&#34;COLLISION_PACKET&#34;</span>
-<span class="p">}}</span>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span><span class="nt">&#34;txpk_ack&#34;</span><span class="p">:{</span><span class="nt">&#34;error&#34;</span><span class="p">:</span><span class="s2">&#34;COLLISION_PACKET&#34;</span><span class="p">}}</span>
 </code></pre></div><p>If you are facing <code>TX_FREQ</code> or <code>TX_POWER</code> errors, please make sure that your gateway&rsquo;s <code>global_conf.json</code> file is properly configured. See <a href="https://www.thethingsindustries.com/docs/gateways/udp/#configuration">Semtech UDP Packet Forwarder Configuration</a> section for more info.</p>
 <p>For the rest of errors in the list above, please create an issue in <a href="https://github.com/TheThingsNetwork/lorawan-stack">The Things Stack GitHub repository</a> or contact <a href="mailto:support@thethingsindustries.com">The Things Industries support</a>.</p>
-<h2 id="im-noticing-radio-is-not-emitting-frame---abandoning-tx-trying-alternative-error-in-the-lora-basics-station-gateways-packet-forwarder-logs-what-is-causing-this">I&rsquo;m noticing &ldquo;radio is not emitting frame - abandoning TX, trying alternative&rdquo; error in the LoRa Basics Station gateway&rsquo;s packet forwarder logs. What is causing this?</h2>
-<p>If you are seeing something like:</p>
-<pre><code>[S2E:WARN] ::0 diid=34946 [ant#0] - unable to place frame
-[S2E:VERB] ::0 diid=34946 [ant#0] - class A has no more alternate TX time
-[S2E:ERRO] ::0 diid=34946 [ant#0] - radio is not emitting frame - abandoning TX, trying alternative
-</code></pre><p>in the packet forwarder logs on your LoRa Basics™ Station gateway, your gateway might have a hardware level issue.</p>
-<h2 id="im-seeing-no-dc-in-band-error-in-the-lora-basics-station-gateways-packet-forwarder-logs-what-is-causing-this">I&rsquo;m seeing &ldquo;no DC in band&rdquo; error in the LoRa Basics Station gateway&rsquo;s packet forwarder logs. What is causing this?</h2>
-<p>If there is no direct channel in the band to send the downlink and no alternative downlink opportunities (RX2, back-off mechanism, etc.), the downlink will be dropped and the following messages will be printed in the logs:</p>
-<pre><code>[S2E:VERB] ::0 diid=2207 [ant#0] 867.5MHz - no DC in band: txtime=12:40:34.479 free=12:40:47.903
-[S2E:VERB] ::0 diid=2207 [ant#0] - class A has no more alternate TX time
-[S2E:WARN] ::0 diid=2207 [ant#0] - unable to place frame
-</code></pre><p>If the gateway sends back a NACK, The Things Stack will retry sending in the next downlink window. This can also be caused by a hardware issue.</p>
-<h2 id="when-the-connection-on-the-main-interface-goes-down-my-gateway-gets-disconnected-and-it-does-not-reconnect-through-the-backup-interface">When the connection on the main interface goes down, my gateway gets disconnected and it does not reconnect through the backup interface.</h2>
-<p>Please try restarting your gateway&rsquo;s packet forwarder.</p>
-<h2 id="why-do-i-still-see-connection-stats-of-a-gateway-i-previously-disconnected">Why do I still see connection stats of a gateway I previously disconnected?</h2>
-<p>After disconnecting a gateway, the connection stats will still be available for 48 hours. The HTTP endpoint will return the status code <code>200 OK</code> and the connection stats will contain the <code>disconnected_at</code> field. If the gateway remains inactive for more than 48 hours, the HTTP endpoint will then return the <code>404 Not Found (gateway &lt;gtw_id&gt; not connected)</code> status.</p>
+<h2 id="i-do-not-see-the-downlink-being-scheduled-by-the-network-server-what-do-i-do">I do not see the downlink being scheduled by the Network Server. What do I do?</h2>
+<p>If you notice your downlink is not being scheduled, check your gateway&rsquo;s Live data tab for the <a href="https://www.thethingsindustries.com/docs/reference/api/events/#event:gs.down.send"><code>gs.down.send</code> event</a>. If you do not see this event, it means that the Network Server failed to schedule the downlink message to Gateway Server.</p>
+<p>You can simply try re-scheduling the downlink, and if the issue persists, check if the downlink is being properly scheduled from the Application Server to the Network Server.</p>
+<h2 id="when-i-schedule-a-downlink-i-see-the-downlink-transmission-failed-event-in-the-live-data-tab-and-the-downlink-message-fails-to-be-transmitted-why">When I schedule a downlink, I see the downlink transmission failed event in the Live data tab and the downlink message fails to be transmitted. Why?</h2>
+<p>Seeing the <a href="https://www.thethingsindustries.com/docs/reference/api/events/#event:gs.down.tx.fail"><code>gs.down.tx.fail</code> event</a> in the gateway&rsquo;s Live data tab means the downlink message has been scheduled from the Gateway Server to the gateway, but the Gateway Server did not receive the ACK for that downlink. Some common causes and solutions for this issue:</p>
+<ul>
+<li>High latency in the gateway backhaul - high latency usually occurs if the gateway and The Things Stack cluster are not geographically close, or the gateway is using a cellular or satellite backhaul. Always use The Things Stack cluster that is closest to your gateway&rsquo;s location, and make sure to check your gateway&rsquo;s Internet connection.</li>
+<li>Gateway hardware issue - if the problem persists, your gateway could be malfunctioning. Try using another gateway or contacting the gateway manufacturer.</li>
+</ul>
+<h2 id="no-downlinks-are-reaching-my-udp-gateway-why">No downlinks are reaching my UDP gateway. Why?</h2>
+<p>With UDP gateways, if uplink messages are reaching The Things Stack, that does not mean the downlink messages are going to be received correctly by the gateway.</p>
+<p>The Semtech UDP Packet Forwarder sends a <code>PULL_DATA</code> request every ~5 seconds to pull the data scheduled for a downlink transmission on The Things Stack.</p>
+<p>The server reponds with a <code>PULL_ACK</code> message to confirm that the network route is open and that the data can be sent through <code>PULL_RESP</code> packets any time. In order to pull the data, <code>PULL_ACK</code> messages have to reach the gateway with a reasonable latency, usually way lower than 500 ms. If this latency is high, pulling the downlink data will fail. One of the drawbacks of using the Semtech UDP Packet Forwarder is that it does not have an implemented mechanism to detect if pulling the downlink data fails, so your data might end up lost.</p>
+<p>Common reasons for having latency issues between the gateway and The Things Stack cluster are that the gateway is geographically far from the cluster, and using cellular or satellite backhauls for gateways.</p>
+<p>Try solving this issue by:</p>
+<ul>
+<li>Checking your internet connection</li>
+<li>Using The Things Stack cluster closest to the location of your gateway</li>
+</ul>
+<h2 id="why-are-my-gateways-gps-location-details-not-shown-in-the-things-stack-console">Why are my gateway&rsquo;s GPS location details not shown in The Things Stack Console?</h2>
+<p><a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/">LoRa Basics™ Station</a> protocol currently does not support GPS fields in Uplink messages, so the GPS location in The Things Stack Console for LoRa Basics™ Station-based gateways cannot be updated from status messages.</p>
+<p>Updating gateway location from status messages in supported only for gateways that establish authenticated connections (Basic Station and MQTT gateways), i.e. it is not supported for <a href="https://www.thethingsindustries.com/docs/gateways/udp/">UDP</a> gateways.</p>
+<p>Keep in mind that you can still set the gateway location <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/#set-gateway-location">manually</a> from The Things Stack Console.</p>
+<h2 id="i-set-the-gateway-location-manually-in-the-things-stack-console-why-can-i-not-see-it-in-the-gateway-connection-statistics">I set the gateway location manually in The Things Stack Console. Why can I not see it in the gateway connection statistics?</h2>
+<p>The connection statistics (<a href="https://www.thethingsindustries.com/docs/reference/api/gateway_server/#a-namegsthe-gs-servicea">Gateway Server service API</a>) do not store the gateway locations.</p>
+<p>The gateway location is stored in the Identity Server instead. The updated location can be found by querying the Identity Server <a href="https://www.thethingsindustries.com/docs/reference/api/gateway/">GetGateway API</a>.</p>
+<p>For example, you can query the location with:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl -H <span class="s2">&#34;Authorization: Bearer &lt;api-key&gt;&#34;</span> https://example.thethings.com/api/v3/gateways/&lt;gateway-id&gt;?field_mask<span class="o">=</span>antennas
+</code></pre></div>
         </div>
         
           <div class="is-clearfix">
@@ -395,37 +407,40 @@
       <li><a href='#what-is-my-server-address'>What is my server address?</a></li>
     
       
-      <li><a href='#how-do-i-find-the-ca-trust'>How do I find the CA Trust?</a></li>
+      <li><a href='#which-packet-forwarders-does-the-things-stack-support'>Which packet forwarders does The Things Stack support?</a></li>
     
       
-      <li><a href='#how-do-i-use-an-api-key-for-lbs-gateways'>How do I use an API Key for LBS gateways?</a></li>
+      <li><a href='#where-can-i-learn-more-about-lora-basics-station'>Where can I learn more about LoRa Basics™ Station?</a></li>
     
       
-      <li><a href='#is-an-api-key-required'>Is an API Key required?</a></li>
+      <li><a href='#what-is-lora-basics-station-radio-configuration'>What is LoRa Basics™ Station Radio Configuration?</a></li>
     
       
       <li><a href='#how-do-i-see-gateway-events'>How do I see gateway events?</a></li>
     
       
-      <li><a href='#how-does-the-things-stack-console-know-whether-a-gateway-is-connected'>How does The Things Stack console know whether a gateway is connected?</a></li>
-    
-      
-      <li><a href='#my-gateway-is-shown-as-connected-in-the-console-but-i-dont-see-any-events-including-the-gateway-connection-stats-what-do-i-do'>My gateway is shown as connected in the console but I don’t see any events (including the gateway connection stats). What do I do?</a></li>
-    
-      
-      <li><a href='#my-gateway-is-offline-but-still-shows-as-connected-in-the-console-why'>My gateway is offline, but still shows as connected in the console. Why?</a></li>
+      <li><a href='#how-does-the-things-stack-console-know-whether-a-gateway-is-connected'>How does The Things Stack Console know whether a gateway is connected?</a></li>
     
       
       <li><a href='#my-gateway-wont-connect-what-do-i-do'>My gateway won’t connect. What do I do?</a></li>
     
       
+      <li><a href='#when-the-connection-on-the-main-interface-goes-down-my-gateway-gets-disconnected-and-it-does-not-reconnect-through-the-backup-interface'>When the connection on the main interface goes down, my gateway gets disconnected and it does not reconnect through the backup interface.</a></li>
+    
+      
+      <li><a href='#my-gateway-is-shown-as-connected-in-the-console-but-i-dont-see-any-events-including-the-gateway-connection-stats-what-do-i-do'>My gateway is shown as connected in the Console but I don’t see any events (including the gateway connection stats). What do I do?</a></li>
+    
+      
       <li><a href='#my-gateway-is-shown-as-disconnected-after-recreating-with-the-same-gateway-eui-what-do-i-do'>My gateway is shown as disconnected after recreating with the same Gateway EUI. What do I do?</a></li>
     
       
-      <li><a href='#my-gateway-shows-an-other-cluster-status-why'>My gateway shows an “Other cluster” status. Why?</a></li>
+      <li><a href='#my-gateway-is-offline-but-still-shows-as-connected-in-the-console-why'>My gateway is offline, but still shows as connected in the Console. Why?</a></li>
     
       
-      <li><a href='#no-downlinks-are-reaching-my-udp-gateway-why'>No downlinks are reaching my UDP gateway. Why?</a></li>
+      <li><a href='#why-do-i-still-see-connection-stats-of-a-gateway-i-previously-disconnected'>Why do I still see connection stats of a gateway I previously disconnected?</a></li>
+    
+      
+      <li><a href='#my-gateway-shows-an-other-cluster-status-why'>My gateway shows an “Other cluster” status. Why?</a></li>
     
       
       <li><a href='#i-get-an-id-already-taken-error-when-adding-a-gateway'>I get an “ID Already Taken” error when adding a gateway.</a></li>
@@ -434,10 +449,7 @@
       <li><a href='#i-get-a-gateway-with-eui-is-already-registered-error-when-adding-a-gateway'>I get a “Gateway with EUI is Already Registered” error when adding a gateway.</a></li>
     
       
-      <li><a href='#what-is-radio-configuration'>What is Radio Configuration?</a></li>
-    
-      
-      <li><a href='#what-modes-of-authentication-are-supported'>What modes of authentication are supported?</a></li>
+      <li><a href='#which-lora-basics-station-authentication-modes-are-supported-by-the-things-stack'>Which LoRa Basics™ Station authentication modes are supported by The Things Stack?</a></li>
     
       
       <li><a href='#how-is-the-server-authenticated'>How is the server authenticated?</a></li>
@@ -449,34 +461,43 @@
       <li><a href='#should-i-set-cups-or-lns-credentials'>Should I set CUPS or LNS credentials?</a></li>
     
       
-      <li><a href='#where-can-i-learn-more-about-lora-basics-station'>Where can I learn more about LoRa Basics™ Station?</a></li>
+      <li><a href='#how-do-i-find-the-ca-trust'>How do I find the CA Trust?</a></li>
     
       
-      <li><a href='#why-do-my-gateways-gps-location-details-not-show-in-the-things-stack-console'>Why do my gateway’s GPS location details not show in The Things Stack Console?</a></li>
+      <li><a href='#is-an-api-key-required'>Is an API Key required?</a></li>
     
       
-      <li><a href='#i-set-the-gateway-location-manually-in-the-things-stack-console-why-can-i-not-see-it-in-the-gateway-connection-statistics'>I set the gateway location manually in The Things Stack Console, why can I not see it in the gateway connection statistics?</a></li>
+      <li><a href='#how-do-i-use-an-api-key-for-lbs-gateways'>How do I use an API Key for LBS gateways?</a></li>
     
       
-      <li><a href='#i-do-not-see-the-downlink-being-scheduled-by-the-network-server-what-do-i-do'>I do not see the downlink being scheduled by the Network Server. What do I do?</a></li>
+      <li><a href='#lora-basics-station-packet-forwarder-logs-mention-the-send-failed-x509---certificate-verification-failed-eg-crl-ca-or-signature-check-failed-error-what-does-it-mean'>LoRa Basics™ Station packet forwarder logs mention the “Send failed: X509 - Certificate verification failed, e.g. CRL, CA, or signature check failed” error. What does it mean?</a></li>
     
       
-      <li><a href='#when-i-schedule-a-downlink-i-see-the-gsdowntxfail-event-in-the-live-data-tab-and-the-downlink-message-fails-to-be-transmitted-why'>When I schedule a downlink, I see the gs.down.tx.fail event in the Live data tab and the downlink message fails to be transmitted. Why?</a></li>
+      <li><a href='#im-seeing-radio-is-not-emitting-frame---abandoning-tx-trying-alternative-error-in-the-lora-basics-station-gateways-packet-forwarder-logs-what-is-causing-this'>I’m seeing “Radio is not emitting frame - abandoning TX, trying alternative” error in the LoRa Basics™ Station gateway’s packet forwarder logs. What is causing this?</a></li>
+    
+      
+      <li><a href='#im-seeing-no-dc-in-band-error-in-the-lora-basics-station-gateways-packet-forwarder-logs-what-is-causing-this'>I’m seeing “No DC in band” error in the LoRa Basics™ Station gateway’s packet forwarder logs. What is causing this?</a></li>
+    
+      
+      <li><a href='#lora-basics-station-packet-forwarder-logs-mention-the-http-connect-failed-net---failed-to-get-an-ip-address-for-the-given-hostname-error-what-does-it-mean'>LoRa Basics™ Station packet forwarder logs mention the “HTTP connect failed: NET - Failed to get an IP address for the given hostname” error. What does it mean?</a></li>
     
       
       <li><a href='#im-noticing-some-errors-in-my-udp-gateways-packet-forwarder-logs-what-do-they-represent'>I’m noticing some errors in my UDP gateway’s packet forwarder logs. What do they represent?</a></li>
     
       
-      <li><a href='#im-noticing-radio-is-not-emitting-frame---abandoning-tx-trying-alternative-error-in-the-lora-basics-station-gateways-packet-forwarder-logs-what-is-causing-this'>I’m noticing “radio is not emitting frame - abandoning TX, trying alternative” error in the LoRa Basics Station gateway’s packet forwarder logs. What is causing this?</a></li>
+      <li><a href='#i-do-not-see-the-downlink-being-scheduled-by-the-network-server-what-do-i-do'>I do not see the downlink being scheduled by the Network Server. What do I do?</a></li>
     
       
-      <li><a href='#im-seeing-no-dc-in-band-error-in-the-lora-basics-station-gateways-packet-forwarder-logs-what-is-causing-this'>I’m seeing “no DC in band” error in the LoRa Basics Station gateway’s packet forwarder logs. What is causing this?</a></li>
+      <li><a href='#when-i-schedule-a-downlink-i-see-the-downlink-transmission-failed-event-in-the-live-data-tab-and-the-downlink-message-fails-to-be-transmitted-why'>When I schedule a downlink, I see the downlink transmission failed event in the Live data tab and the downlink message fails to be transmitted. Why?</a></li>
     
       
-      <li><a href='#when-the-connection-on-the-main-interface-goes-down-my-gateway-gets-disconnected-and-it-does-not-reconnect-through-the-backup-interface'>When the connection on the main interface goes down, my gateway gets disconnected and it does not reconnect through the backup interface.</a></li>
+      <li><a href='#no-downlinks-are-reaching-my-udp-gateway-why'>No downlinks are reaching my UDP gateway. Why?</a></li>
     
       
-      <li><a href='#why-do-i-still-see-connection-stats-of-a-gateway-i-previously-disconnected'>Why do I still see connection stats of a gateway I previously disconnected?</a></li>
+      <li><a href='#why-are-my-gateways-gps-location-details-not-shown-in-the-things-stack-console'>Why are my gateway’s GPS location details not shown in The Things Stack Console?</a></li>
+    
+      
+      <li><a href='#i-set-the-gateway-location-manually-in-the-things-stack-console-why-can-i-not-see-it-in-the-gateway-connection-statistics'>I set the gateway location manually in The Things Stack Console. Why can I not see it in the gateway connection statistics?</a></li>
     
   </ul>
 
@@ -516,10 +537,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 25 Feb 2022.
+  Last changed by Nejra Selimović on 18 Mar 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/29024ab683cb0046abb51a903a4ec6bbd44b9b4d">
-      doc: Fix troubleshooting downlinks (#725)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/48d19e1c5fb7cebf8ac5bfa9fa9ad1d014d5c3a1">
+      doc: Update Gateways and Devices docs and troubleshooting (#808)
     </a>
 </p>
 

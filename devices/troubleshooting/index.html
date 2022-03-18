@@ -186,7 +186,7 @@
 <p>Device event logs can be found in the console in the device&rsquo;s general information page. See <a href="https://www.thethingsindustries.com/docs/getting-started/events/">Working with Events</a> for other ways of subscribing to events.</p>
 <h2 id="i-see-no-join-requests-from-my-device-in-the-things-stack">I see no Join Requests from my device in The Things Stack.</h2>
 <p>Check your network coverage, and if your device is activated and transmitting Join Requests.</p>
-<p>If your device uses ABP, it is also possible that it is sending join requests on frequencies that The Things Stack is not listening on. See <a href="#i-can-see-some-received-uplinks-in-gateway-live-data-events-but-i-do-not-see-them-in-device-events">using inappropriate frequencies</a> below.</p>
+<p>It is possible that your device is sending Join Requests on non-default frequencies, i.e. on frequencies that The Things Stack is not listening on by default. If this is the case, Join Requests will be dropped on a gateway level. As per LoRaWAN specification, devices should be sending Join Requests on default frequencies of the defined frequency band. To fix this issue, reach out to your device manufacturer and find out which are the default frequencies for your device. Also, check out <a href="#i-can-see-some-received-uplinks-in-gateway-live-data-events-but-i-do-not-see-them-in-device-events">using inappropriate frequencies</a> below.</p>
 <h2 id="my-device-will-not-join-what-do-i-do">My device will not join. What do I do?</h2>
 <ul>
 <li>
@@ -222,6 +222,8 @@
 <li>If you see any deviation in scheduling Join Accept downlinks from the gateway, follow the <a href="https://www.thethingsindustries.com/docs/gateways/troubleshooting/">Troubleshooting Gateways</a></li>
 <li>Did you schedule a command to reset your device as a confirmed downlink? If yes, the downlink confirmation will never arrive. You should always schedule the reset command as an unconfirmed downlink. However, if your device is already affected, use the <strong>Reset session and MAC state</strong> option under <strong>Network layer</strong> in your device&rsquo;s settings, then manually re-join the device.</li>
 </ul>
+<h2 id="i-see-the-the-lorawan-version-mac-version-does-not-support-the-frequency-plan-id-frequency-plan-please-choose-a-different-mac-version-or-frequency-plan-error-while-registering-a-device-in-the-things-stack">I see the &ldquo;The LoRaWAN version <code>&lt;mac-version&gt;</code> does not support the <code>&lt;frequency-plan-id&gt;</code> frequency plan. Please choose a different MAC version or frequency plan&rdquo; error while registering a device in The Things Stack.</h2>
+<p>The Things Stack returns this error when the frequency plan that you are using is not supported by the LoRaWAN MAC and PHY versions you specified. We suggest you to check your device&rsquo;s datasheet or user manual, or to contact your device manufacturer to find out correct MAC and PHY versions. You can also find your Regional Parameters document on the <a href="https://lora-alliance.org/search-site/">LoRa Alliance site</a> and find out which frequency plans are supported by it.</p>
 <h2 id="no-downlinks-are-reaching-my-device-what-do-i-do">No downlinks are reaching my device. What do I do?</h2>
 <ul>
 <li>Check gateway and application events for traffic from your device</li>
@@ -270,7 +272,7 @@
 <li>Cluster latencies</li>
 <li>Gateway level issues</li>
 </ul>
-<h2 id="scheduling-a-downlink-from-the-things-stack-console-is-disabled-with-a-warning-simulation-is-disabled-for-devices-that-skip-payload-crypto">Scheduling a downlink from The Things Stack Console is disabled with a warning <code>Simulation is disabled for devices that skip payload crypto</code>.</h2>
+<h2 id="scheduling-a-downlink-from-the-things-stack-console-is-disabled-with-a-warning-simulation-is-disabled-for-devices-that-skip-payload-crypto">Scheduling a downlink from The Things Stack Console is disabled with a warning &ldquo;Simulation is disabled for devices that skip payload crypto&rdquo;.</h2>
 <p>When using the <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/">AWS IoT integration</a> with the <strong>End to End Encryption</strong> option enabled, scheduling downlink messages from The Things Stack Console is restricted by default.</p>
 <p>When this option is enabled, encryption and decryption at the Application Server is disabled, i.e. the <code>skip_payload_crypto</code> field for the end device is enabled on the application level. The downlinks are expected to be scheduled from the AWS IoT, and not from the The Things Stack.</p>
 <p>Read more about skipping payload crypto option on an <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/#payload-encryption-and-decryption">application level</a> or on a <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/#application-layer-settings">device level</a>.</p>
@@ -331,7 +333,7 @@
 <p>One of the possible causes might be that your end device is not answering MAC commands sent by the Network Server. The Network Server will continuously re-send those MAC commands, until the end device answers them. The recommended practice is to contact device manufacturer to resolve the issue.</p>
 <h2 id="i-changed-my-devices-frequency-plan-in-the-console-and-now-i-am-facing-errors">I changed my device&rsquo;s frequency plan in the Console and now I am facing errors.</h2>
 <p>The Network Server performs a lot of checks to ensure that the end device MAC state and MAC settings are valid with respect to the frequency plan, so that might be the source of the errors you are facing. Updating device&rsquo;s frequency plan is not supported in The Things Stack and should always be achieved by re-creating the end device in the Console.</p>
-<h2 id="i-see-a-no-decoder-defined-for-codec-codec_id-error-after-very-downlink-message">I see a <code>no decoder defined for codec {codec_id}</code> error after very downlink message.</h2>
+<h2 id="i-see-a-no-decoder-defined-for-codec-codec_id-error-after-very-downlink-message">I see a &ldquo;no decoder defined for codec {codec_id}&rdquo; error after very downlink message.</h2>
 <p>This error indicates that your end device was added from the <a href="https://github.com/TheThingsNetwork/lorawan-devices">Device Repository</a>, but in the device&rsquo;s codec file there are no <code>downlinkEncoder</code> and <code>downlinkDecoder</code> functions defined. To fix this, you can reach out to the device manufacturer to update your device&rsquo;s codec file in the Device Repository. Alternatively, you can define the <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">payload formatter</a> on your own.</p>
         </div>
         
@@ -372,6 +374,9 @@
       <li><a href='#my-device-is-stuck-in-a-continuous-join-loop-what-can-i-do'>My device is stuck in a continuous join loop. What can I do?</a></li>
     
       
+      <li><a href='#i-see-the-the-lorawan-version-mac-version-does-not-support-the-frequency-plan-id-frequency-plan-please-choose-a-different-mac-version-or-frequency-plan-error-while-registering-a-device-in-the-things-stack'>I see the “The LoRaWAN version &lt;mac-version&gt; does not support the &lt;frequency-plan-id&gt; frequency plan. Please choose a different MAC version or frequency plan” error while registering a device in The Things Stack.</a></li>
+    
+      
       <li><a href='#no-downlinks-are-reaching-my-device-what-do-i-do'>No downlinks are reaching my device. What do I do?</a></li>
     
       
@@ -387,7 +392,7 @@
       <li><a href='#when-i-schedule-a-downlink-i-see-the-nsdowndataschedulefail-event-in-the-live-data-tab-and-the-downlink-message-fails-to-be-transmitted'>When I schedule a downlink, I see the ns.down.data.schedule.fail event in the Live data tab and the downlink message fails to be transmitted.</a></li>
     
       
-      <li><a href='#scheduling-a-downlink-from-the-things-stack-console-is-disabled-with-a-warning-simulation-is-disabled-for-devices-that-skip-payload-crypto'>Scheduling a downlink from The Things Stack Console is disabled with a warning Simulation is disabled for devices that skip payload crypto.</a></li>
+      <li><a href='#scheduling-a-downlink-from-the-things-stack-console-is-disabled-with-a-warning-simulation-is-disabled-for-devices-that-skip-payload-crypto'>Scheduling a downlink from The Things Stack Console is disabled with a warning “Simulation is disabled for devices that skip payload crypto”.</a></li>
     
       
       <li><a href='#the-things-stack-intermittently-receives-uplinks-from-my-device-but-with-the-fcnt-gap'>The Things Stack intermittently receives uplinks from my device, but with the FCnt gap.</a></li>
@@ -405,7 +410,7 @@
       <li><a href='#i-changed-my-devices-frequency-plan-in-the-console-and-now-i-am-facing-errors'>I changed my device’s frequency plan in the Console and now I am facing errors.</a></li>
     
       
-      <li><a href='#i-see-a-no-decoder-defined-for-codec-codec_id-error-after-very-downlink-message'>I see a no decoder defined for codec {codec_id} error after very downlink message.</a></li>
+      <li><a href='#i-see-a-no-decoder-defined-for-codec-codec_id-error-after-very-downlink-message'>I see a “no decoder defined for codec {codec_id}” error after very downlink message.</a></li>
     
   </ul>
 
@@ -445,10 +450,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 09 Mar 2022.
+  Last changed by Nejra Selimović on 18 Mar 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/cf63dd58b7dd6b5802c057d7df7110a693acad05">
-      doc: Modify MAC settings and skip payload crypto info (#799)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/48d19e1c5fb7cebf8ac5bfa9fa9ad1d014d5c3a1">
+      doc: Update Gateways and Devices docs and troubleshooting (#808)
     </a>
 </p>
 
