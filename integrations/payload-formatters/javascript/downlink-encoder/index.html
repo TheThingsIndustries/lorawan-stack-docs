@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Javascript | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/" />
+  <title>Downlink Encoder | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/downlink-encoder/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Javascript">
+  <meta itemprop="name" content="Downlink Encoder">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Javascript">
+  <meta property="og:title" content="Downlink Encoder">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/">
-  <meta name="twitter:title" content="Javascript" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/downlink-encoder/">
+  <meta name="twitter:title" content="Downlink Encoder" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -137,7 +137,7 @@
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/" class="is-active">Javascript</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/" class="">Javascript</a>
     
     
 
@@ -150,7 +150,12 @@
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/downlink-encoder/" class="">Downlink Encoder</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/downlink-encoder/" class="is-active">Downlink Encoder</a>
+    
+    
+
+
+
     
   </li>
 
@@ -193,109 +198,82 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Javascript
+        <h1 class="title is-size-2">Downlink Encoder
           
         </h1>
         
         <div class="content">
-          <p>Javascript payload formatters allow you to write your own functions to encode or decode messages. Javascript functions are executed using an <a href="https://www.ecma-international.org/ecma-262/5.1/">JavaScript ECMAScript 5.1</a> engine.</p>
-<p>Tips:</p>
-<ul>
-<li>The payload formatters should be simple and lightweight.</li>
-<li>Use arithmetic operations and bit shifts to convert binary data to fields.</li>
-<li>Avoid using non-trivial logic or polyfills.</li>
-</ul>
+          <p>The <code>encodeDownlink()</code> function is called when a downlink message, with a payload in JSON format, is scheduled to be sent to the end device. The <code>encodeDownlink()</code> function encodes the JSON object of the downlink message to binary payload that gets transmitted to the end device.</p>
+<p>The function takes an input object and returns an output object:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">encodeDownlink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">bytes</span><span class="o">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="nx">fPort</span><span class="o">:</span> <span class="mi">1</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>The input object has the following structure:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;field&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span>
+<span class="p">}</span>
+</code></pre></div><p>The output object has the following structure:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;bytes&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+  <span class="nt">&#34;fPort&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nt">&#34;warnings&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;warning 1&#34;</span><span class="p">,</span> <span class="s2">&#34;warning 2&#34;</span><span class="p">],</span>
+  <span class="nt">&#34;errors&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;error 1&#34;</span><span class="p">,</span> <span class="s2">&#34;error 2&#34;</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div><p>The function&rsquo;s input and output shown above are incorporated in the <a href="https://www.thethingsindustries.com/docs/reference/api/events/#event:as.down.data.receive"><code>as.down.data.receive</code></a> event, where the <code>data</code> object contains:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;AQID&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;decoded_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;field&#34;</span><span class="p">:</span> <span class="s2">&#34;value&#34;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>One can clearly see that the JSON payload (input) is contained in the <code>decoded_payload</code> field, while the output of the <code>encodeDownlink()</code> function is translated from hexadecimal to Base64 and as such contained in the <code>frm_payload</code> field. When the downlink reaches end device, it gets translated vice versa, from Base64 to hexadecimal, e.g. for example shown above, the received payload on the end device side is <code>01 02 03</code>.</p>
+<p>If an error is present in <code>errors</code>, the payload is invalid and the message will be dropped. Any warnings in <code>warnings</code> are informative.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Payload formatters use ECMAScript 5 (2009), which has some distinct differences compared to newer, commonly used ECMAScript revisions. See <a href="https://www.javatpoint.com/es5-vs-es6">here</a> for a quick comparison. Notably, <code>let</code>, <code>const</code>, and arrow functions are not supported by ES5.
+  Keep in mind that you can test your downlink encoder, as well as schedule downlinks from The Things Stack Console.
 </div>
 
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Javascript payload formatters from V2 will work in The Things Stack. The Things Stack has a new payload formatter signature, but it is also backwards compatible.
-</div>
+<h2 id="encode-downlink-example-the-things-node">Encode Downlink Example: The Things Node</h2>
+<p>Here is an example of an encoder function that uses the <code>color</code> field to send a byte on a specific FPort:</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">encodeDownlink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;red&#34;</span><span class="p">,</span> <span class="s2">&#34;green&#34;</span><span class="p">,</span> <span class="s2">&#34;blue&#34;</span><span class="p">];</span>
+  <span class="k">return</span> <span class="p">{</span>
+    <span class="nx">bytes</span><span class="o">:</span> <span class="p">[</span><span class="nx">colors</span><span class="p">.</span><span class="nx">indexOf</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">color</span><span class="p">)],</span>
+    <span class="nx">fPort</span><span class="o">:</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="p">};</span>
+<span class="p">}</span>
+</code></pre></div><p>If the downlink with the following JSON payload is sent by the application on any FPort:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;color&#34;</span><span class="p">:</span> <span class="s2">&#34;green&#34;</span>
+<span class="p">}</span>
+</code></pre></div><p>The output of the <code>encodeDownlink()</code> function will have the following structure:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;bytes&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+  <span class="nt">&#34;fPort&#34;</span><span class="p">:</span> <span class="mi">4</span>
+<span class="p">}</span>
+</code></pre></div><figure>
+    <img src="downlink-encoder.png"
+         alt="Testing a downlink encoder"/> 
+</figure>
 
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  For security, the runtime does not support modules, <code>require</code> syntax, or any input/output other than defined below.
-</div>
-
-<p>There are three different types of The Things Stack JavaScript payload formatters:</p>
-<ul>
-<li><a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/uplink-decoder/">Uplink Decoder</a></li>
-<li><a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/downlink-encoder/">Downlink Encoder</a></li>
-<li><a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/downlink-decoder/">Downlink Decoder</a></li>
-</ul>
-<p>Read the documentation below to further learn about these formatters and find associated examples.</p>
+<p>The <code>data</code> object of the <code>as.down.data.receive</code> event will therefore contain:</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
+  <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+  <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;AQ==&#34;</span><span class="p">,</span>
+  <span class="nt">&#34;decoded_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&#34;color&#34;</span><span class="p">:</span> <span class="s2">&#34;green&#34;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div><p>From the output above, you can see that the JSON payload of the scheduled downlink is contained in the <code>decoded_payload</code> field. The <code>encodeDownlink()</code> function takes this value as input and outputs the index of the color <code>green</code> in the <code>colors</code> array. The index of <code>green</code> in <code>colors</code> is <code>01</code> in bytes, so that value is Base64-encoded to <code>AQ==</code> and stored in the <code>frm_payload</code> field. When the downlink reaches the end device, the payload gets translated from Base64 back to hexadecimal, so you will see the payload in bytes (<code>01</code>). Note also that, in this example, the message is always sent on the FPort 4 because this is explicitly defined in the downlink encoder function.</p>
         </div>
-        
-          <div class="columns is-multiline">
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/uplink-decoder/">Uplink Decoder</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            
-            The Javascript decodeUplink() function is called when a data uplink message is received from a device. This function decodes the binary payload received from the end device to a human-readable JSON object that gets send upstream to the application.
-
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/uplink-decoder/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/downlink-encoder/">Downlink Encoder</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            
-            The encodeDownlink() function is called when a downlink message, with a payload in JSON format, is scheduled to be sent to the end device. The encodeDownlink() function encodes the JSON object of the downlink message to binary payload that gets transmitted to the end device.
-
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/downlink-encoder/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/downlink-decoder/">Downlink Decoder</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            
-            The decodeDownlink() function is called to decode a downlink message to JSON format, if it was scheduled with payload as bytes, or if it was scheduled with human-readable JSON payload but also was encoded with the encodeDownlink() function.
-
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/downlink-decoder/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
         
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/integrations/payload-formatters/device-repo/">← Device Repository</a>
-<a class="button is-pulled-right" href="/docs/integrations/payload-formatters/javascript/uplink-decoder/">Uplink Decoder →</a>
+<a class="button is-pulled-left" href="/docs/integrations/payload-formatters/javascript/uplink-decoder/">← Uplink Decoder</a>
+<a class="button is-pulled-right" href="/docs/integrations/payload-formatters/javascript/downlink-decoder/">Downlink Decoder →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -312,6 +290,13 @@
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#encode-downlink-example-the-things-node'>Encode Downlink Example: The Things Node</a></li>
+    
+  </ul>
 
 
   </nav>
@@ -356,7 +341,7 @@
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/payload-formatters/javascript/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/payload-formatters/javascript/downlink-encoder/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
