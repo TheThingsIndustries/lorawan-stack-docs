@@ -1,7 +1,7 @@
 ---
 title: "Troubleshooting AWS AMI Deployment"
 description: ""
-weight: 3
+weight: 6
 ---
 
 <!--

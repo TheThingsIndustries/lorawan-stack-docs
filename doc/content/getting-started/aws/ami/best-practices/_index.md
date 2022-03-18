@@ -1,7 +1,7 @@
 ---
 title: "Best Practices"
 description: ""
-weight: 1
+weight: 4
 ---
 
 This page describes best practices of a {{% tts %}} deployment on AWS AMI.
