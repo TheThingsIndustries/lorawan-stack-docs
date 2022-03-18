@@ -184,7 +184,7 @@ If you have already registered/claimed your {{% ttig %}} in {{% tts %}} cluster 
 
 This means that either you or another user has already used the Gateway ID. Please choose another ID and try again.
 
-### Gateway shows status `Disconnected` and the LED status is solid green. What do I do?
+#### Gateway shows status `Disconnected` and the LED status is solid green. What do I do?
 
 Reboot your {{% ttig %}}. If the gateway status is still `Disconnected` after a reboot, try performing a factory reset and reconfiguring the gateway.
 

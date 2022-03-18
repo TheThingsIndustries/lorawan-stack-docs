@@ -44,7 +44,7 @@ You should expect packet loss up to 10%. Implement Forward Error Correction if t
 
 ## Synchronization, Backoff, and Jitter
 
-([See LoRaWAN Specification 1.0.3, line 1065](https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf)).
+[See LoRaWAN Specification 1.0.3, line 1065](https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf)
 
 Synchronization of devices happens if end devices respond to a large-scale external event - for example, hundreds of end devices that are connected to the same power source and the power is switched off and on again, or hundreds of end devices that are connected to the same gateway, and the firmware of the gateway needs to be updated.
 
@@ -70,15 +70,17 @@ An implementation like this prevents persistent failures of sites and the networ
 
 True randomness in a device's random number generator is especially important for preventing network congestion. If devices share a seed for a pseudorandom number generator, they will choose the same random numbers. Devices should use a unique seed such as the device address.
 
-Bad randomization will result in an uneven distribution of channels selected for random channel selection, causing subpar network performance. ([LoRaWAN Specification 1.0.3, line 244](https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf)).
+Bad randomization will result in an uneven distribution of channels selected for random channel selection, causing subpar network performance. Bad randomization will also result in transmission synchronization if devices respond to a large scale external event (for example, if they are all powered on at the same time).
 
-Bad randomization will also result in transmission synchronization if devices respond to a large scale external event (for example, if they are all powered on at the same time).
+See [LoRaWAN Specification 1.0.3, line 244](https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf)
 
 ## Use ADR for Stationary Devices
 
+See [LoRaWAN Specification 1.0.3, line 438](https://lora-alliance.org/wp-content/uploads/2020/11/lorawan1.0.3.pdf)
+
 For devices that don't move, the LoRaWAN specification recommends allowing the Network Server to control the data rate to minimize power consumption.
 
-For moving devices, ADR should not be used since RF conditions will likely change, but since many moving devices are temporarily stationary, it is possible to save additional power by requesting ADR only during the time a device is stationary. ([LoRaWAN Specification 1.0.3, line 438](https://lora-alliance.org/sites/default/files/2018-07/lorawan1.0.3.pdf)).
+For moving devices, ADR should not be used since RF conditions will likely change, but since many moving devices are temporarily stationary, it is possible to save additional power by requesting ADR only during the time a device is stationary.
 
 You may also use application specific knowledge to predict when ADR is appropriate. A tracking device can detect when it is moving, for example. A parked car sensor can detect when a parked car will affect RF conditions, and should fall back to another strategy. [Learn more about how ADR is implemented in {{% tts %}}]({{< ref "/reference/adr" >}}).
 
@@ -90,7 +92,7 @@ OTAA devices perform a join-procedure with the network, during which a dynamic D
 
 Devices should save network parameters between regular power cycles. This includes session parameters like `DevAddr`, session keys, `FCnt`, and nonces. This allows the device to easily Join, as keys and counters remain synchronized.
 
-Devices should also randomize initial power on delay (i.e. Join). See [Synchronization, Backoff, and Jitter](#synchronization-backoff-jitter)
+Devices should also randomize initial power on delay (i.e. Join). See [Synchronization, Backoff, and Jitter]({{< ref "/devices/best-practices#synchronization-backoff-and-jitter" >}}).
 
 ## Frame Counters
 
