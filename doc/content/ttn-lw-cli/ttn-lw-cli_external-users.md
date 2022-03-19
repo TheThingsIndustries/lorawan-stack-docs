@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli external-users"
 slug: ttn-lw-cli_external-users
-type: "commands"
+
 ---
 
 ## ttn-lw-cli external-users

@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli tenants delete"
 slug: ttn-lw-cli_tenants_delete
-type: "commands"
+
 ---
 
 ## ttn-lw-cli tenants delete

@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli logout"
 slug: ttn-lw-cli_logout
-type: "commands"
+
 ---
 
 ## ttn-lw-cli logout

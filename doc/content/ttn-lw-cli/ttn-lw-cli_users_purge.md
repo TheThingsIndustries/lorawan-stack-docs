@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli users purge"
 slug: ttn-lw-cli_users_purge
-type: "commands"
+
 ---
 
 ## ttn-lw-cli users purge

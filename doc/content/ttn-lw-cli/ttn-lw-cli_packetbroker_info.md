@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli packetbroker info"
 slug: ttn-lw-cli_packetbroker_info
-type: "commands"
+
 ---
 
 ## ttn-lw-cli packetbroker info

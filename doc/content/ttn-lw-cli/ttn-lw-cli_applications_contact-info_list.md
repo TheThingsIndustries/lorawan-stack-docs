@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli applications contact-info list"
 slug: ttn-lw-cli_applications_contact-info_list
-type: "commands"
+
 ---
 
 ## ttn-lw-cli applications contact-info list

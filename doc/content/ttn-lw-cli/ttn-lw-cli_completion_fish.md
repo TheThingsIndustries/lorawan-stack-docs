@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli completion fish"
 slug: ttn-lw-cli_completion_fish
-type: "commands"
+
 ---
 
 ## ttn-lw-cli completion fish

@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli completion zsh"
 slug: ttn-lw-cli_completion_zsh
-type: "commands"
+
 ---
 
 ## ttn-lw-cli completion zsh

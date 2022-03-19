@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli templates from-data"
 slug: ttn-lw-cli_templates_from-data
-type: "commands"
+
 ---
 
 ## ttn-lw-cli templates from-data

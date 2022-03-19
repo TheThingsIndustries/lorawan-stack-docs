@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli applications storage count"
 slug: ttn-lw-cli_applications_storage_count
-type: "commands"
+
 ---
 
 ## ttn-lw-cli applications storage count

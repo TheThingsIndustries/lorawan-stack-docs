@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli gateways collaborators set"
 slug: ttn-lw-cli_gateways_collaborators_set
-type: "commands"
+
 ---
 
 ## ttn-lw-cli gateways collaborators set

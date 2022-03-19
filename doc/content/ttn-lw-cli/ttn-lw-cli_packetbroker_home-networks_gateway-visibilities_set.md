@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli packetbroker home-networks gateway-visibilities set"
 slug: ttn-lw-cli_packetbroker_home-networks_gateway-visibilities_set
-type: "commands"
+
 ---
 
 ## ttn-lw-cli packetbroker home-networks gateway-visibilities set

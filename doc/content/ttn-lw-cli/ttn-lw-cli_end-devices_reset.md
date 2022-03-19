@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli end-devices reset"
 slug: ttn-lw-cli_end-devices_reset
-type: "commands"
+
 ---
 
 ## ttn-lw-cli end-devices reset

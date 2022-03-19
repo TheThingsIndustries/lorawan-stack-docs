@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli applications contact-info validate"
 slug: ttn-lw-cli_applications_contact-info_validate
-type: "commands"
+
 ---
 
 ## ttn-lw-cli applications contact-info validate

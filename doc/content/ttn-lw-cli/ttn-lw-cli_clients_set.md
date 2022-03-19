@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli clients set"
 slug: ttn-lw-cli_clients_set
-type: "commands"
+
 ---
 
 ## ttn-lw-cli clients set

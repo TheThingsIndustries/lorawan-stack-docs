@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli clients delete"
 slug: ttn-lw-cli_clients_delete
-type: "commands"
+
 ---
 
 ## ttn-lw-cli clients delete

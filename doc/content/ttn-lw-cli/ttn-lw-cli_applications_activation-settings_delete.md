@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli applications activation-settings delete"
 slug: ttn-lw-cli_applications_activation-settings_delete
-type: "commands"
+
 ---
 
 ## ttn-lw-cli applications activation-settings delete

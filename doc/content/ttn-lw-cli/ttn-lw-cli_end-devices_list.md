@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli end-devices list"
 slug: ttn-lw-cli_end-devices_list
-type: "commands"
+
 ---
 
 ## ttn-lw-cli end-devices list

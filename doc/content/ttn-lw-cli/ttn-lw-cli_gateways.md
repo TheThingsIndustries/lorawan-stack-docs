@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli gateways"
 slug: ttn-lw-cli_gateways
-type: "commands"
+
 ---
 
 ## ttn-lw-cli gateways

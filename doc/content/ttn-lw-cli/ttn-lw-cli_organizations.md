@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli organizations"
 slug: ttn-lw-cli_organizations
-type: "commands"
+
 ---
 
 ## ttn-lw-cli organizations

@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli users contact-info delete"
 slug: ttn-lw-cli_users_contact-info_delete
-type: "commands"
+
 ---
 
 ## ttn-lw-cli users contact-info delete

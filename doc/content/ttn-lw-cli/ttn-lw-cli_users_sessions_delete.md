@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli users sessions delete"
 slug: ttn-lw-cli_users_sessions_delete
-type: "commands"
+
 ---
 
 ## ttn-lw-cli users sessions delete

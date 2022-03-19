@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli gateways create"
 slug: ttn-lw-cli_gateways_create
-type: "commands"
+
 ---
 
 ## ttn-lw-cli gateways create

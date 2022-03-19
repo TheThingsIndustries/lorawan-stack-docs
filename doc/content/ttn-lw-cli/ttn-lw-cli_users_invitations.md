@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli users invitations"
 slug: ttn-lw-cli_users_invitations
-type: "commands"
+
 ---
 
 ## ttn-lw-cli users invitations

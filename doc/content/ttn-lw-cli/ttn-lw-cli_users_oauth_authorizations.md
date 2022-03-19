@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli users oauth authorizations"
 slug: ttn-lw-cli_users_oauth_authorizations
-type: "commands"
+
 ---
 
 ## ttn-lw-cli users oauth authorizations

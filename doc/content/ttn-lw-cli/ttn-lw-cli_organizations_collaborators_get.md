@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli organizations collaborators get"
 slug: ttn-lw-cli_organizations_collaborators_get
-type: "commands"
+
 ---
 
 ## ttn-lw-cli organizations collaborators get

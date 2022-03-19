@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli completion bash"
 slug: ttn-lw-cli_completion_bash
-type: "commands"
+
 ---
 
 ## ttn-lw-cli completion bash

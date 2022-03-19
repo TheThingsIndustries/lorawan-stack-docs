@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli tenants update"
 slug: ttn-lw-cli_tenants_update
-type: "commands"
+
 ---
 
 ## ttn-lw-cli tenants update

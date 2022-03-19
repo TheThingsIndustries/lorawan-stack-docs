@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli end-devices downlink push"
 slug: ttn-lw-cli_end-devices_downlink_push
-type: "commands"
+
 ---
 
 ## ttn-lw-cli end-devices downlink push

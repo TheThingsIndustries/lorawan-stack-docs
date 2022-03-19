@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli templates map"
 slug: ttn-lw-cli_templates_map
-type: "commands"
+
 ---
 
 ## ttn-lw-cli templates map

@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli applications subscribe"
 slug: ttn-lw-cli_applications_subscribe
-type: "commands"
+
 ---
 
 ## ttn-lw-cli applications subscribe

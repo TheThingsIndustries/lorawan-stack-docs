@@ -1,7 +1,7 @@
 ---
 title: "ttn-lw-cli users forgot-password"
 slug: ttn-lw-cli_users_forgot-password
-type: "commands"
+
 ---
 
 ## ttn-lw-cli users forgot-password
