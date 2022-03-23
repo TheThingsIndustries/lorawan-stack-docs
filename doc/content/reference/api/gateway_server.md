@@ -7,7 +7,7 @@ description: ""
 
 {{< proto/method service="Gs" method="GetGatewayConnectionStats" >}}
 
-## The `GatewayConfigurationService` service
+## The `GatewayConfigurator` service
 
 {{< proto/method service="GatewayConfigurator" method="PullConfiguration" >}}
 
