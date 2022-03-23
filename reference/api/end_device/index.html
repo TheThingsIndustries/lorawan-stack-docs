@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.18.0</p>
+        <p class="navbar-item is-size-7">v3.18.1</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -1123,56 +1123,6 @@ If there are multiple matches, an error will be returned.
         Method
       </th>
       <td>
-        <code>EndDeviceClaimingServer.Claim</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-        Claims the end device by claim authentication code or QR code and transfers the device to the target application.
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Request type
-      </th>
-      <td>
-        <a href="#message:ClaimEndDeviceRequest"><code>ClaimEndDeviceRequest</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Response type
-      </th>
-      <td>
-        <a href="#message:EndDeviceIdentifiers"><code>EndDeviceIdentifiers</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        HTTP bindings
-      </th>
-      <td>
-        <p><code>POST</code> <code>/api/v3/edcs/claim</code></p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
-
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Method
-      </th>
-      <td>
         <code>EndDeviceClaimingServer.AuthorizeApplication</code>
       </td>
     </tr>
@@ -1226,6 +1176,156 @@ from the source application.
         Method
       </th>
       <td>
+        <code>EndDeviceClaimingServer.Claim</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Claims the end device on a Join Server by claim authentication code or QR code.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:ClaimEndDeviceRequest"><code>ClaimEndDeviceRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:EndDeviceIdentifiers"><code>EndDeviceIdentifiers</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/edcs/claim</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>EndDeviceClaimingServer.GetClaimStatus</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Gets the claim status of an end device.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:EndDeviceIdentifiers"><code>EndDeviceIdentifiers</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:GetClaimStatusResponse"><code>GetClaimStatusResponse</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/edcs/claim/{application_ids.application_id}/devices/{device_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>EndDeviceClaimingServer.GetInfoByJoinEUI</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Return whether claiming is available for a given JoinEUI.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GetInfoByJoinEUIRequest"><code>GetInfoByJoinEUIRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:GetInfoByJoinEUIResponse"><code>GetInfoByJoinEUIResponse</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/edcs/claim/info</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
         <code>EndDeviceClaimingServer.UnauthorizeApplication</code>
       </td>
     </tr>
@@ -1262,6 +1362,56 @@ This reverts the authorization given with rpc AuthorizeApplication.
       </th>
       <td>
         <p><code>DELETE</code> <code>/api/v3/edcs/applications/{application_id}/authorize</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>EndDeviceClaimingServer.Unclaim</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Unclaims the end device on a Join Server.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:EndDeviceIdentifiers"><code>EndDeviceIdentifiers</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>DELETE</code> <code>/api/v3/edcs/claim/{application_ids.application_id}/devices/{device_id}</code></p>
       </td>
     </tr>
   </tbody>
@@ -6932,6 +7082,335 @@ The field cannot be unset once set.</p>
         
   <code>uint32</code>
 </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:GetClaimStatusResponse">Message <code>GetClaimStatusResponse</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "end_device_ids": {},
+  "home_net_id": "",
+  "home_ns_id": "",
+  "vendor_specific": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>end_device_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:EndDeviceIdentifiers">
+  
+  <code>
+    
+    EndDeviceIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>home_net_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>home_ns_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>vendor_specific</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:GetClaimStatusResponse.VendorSpecific">
+  
+  <code>
+    
+    GetClaimStatusResponse.VendorSpecific
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:GetClaimStatusResponse.VendorSpecific">Message <code>GetClaimStatusResponse.VendorSpecific</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "organization_unique_identifier": 0,
+  "data": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organization_unique_identifier</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>data</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Struct
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Vendor Specific data in JSON format.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:GetInfoByJoinEUIRequest">Message <code>GetInfoByJoinEUIRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "join_eui": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>join_eui</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:GetInfoByJoinEUIResponse">Message <code>GetInfoByJoinEUIResponse</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "join_eui": "",
+  "supports_claiming": false,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>join_eui</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>supports_claiming</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>If set, this Join EUI is available for claiming on one of the configured Join Servers.</p>
+      </td>
     </tr>
     
   </tbody>
@@ -19859,6 +20338,7 @@ On downlink, this is a scheduled transmission.</p>
   "timestamp": 0,
   "time": "0001-01-01T00:00:00Z",
   "downlink": {},
+  "concentrator_timestamp": 0,
 }</code></pre>
 </details>
 
@@ -20128,6 +20608,41 @@ For downlink, this requires the gateway to have GPS time synchronization.</p>
       </th>
       <td>
           <p>Transmission settings for downlink.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>concentrator_timestamp</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>int64</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Concentrator timestamp for the downlink as calculated by the Gateway Server scheduler.
+This value takes into account necessary offsets such as the RTT (Round Trip Time) and TOA (Time Of Arrival).
+This field is set and used only by the Gateway Server.</p>
       </td>
     </tr>
     
@@ -22601,6 +23116,10 @@ Set by Network Server.</p>
 
 	
 
+	
+
+	
+
 
         </div>
         <div class="is-clearfix">
@@ -22684,10 +23203,10 @@ Set by Network Server.</p>
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 08 Dec 2021.
+  Last changed by Nejra Selimović on 23 Mar 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/438514b7cae7e06699e07e210f50b1e3395e464e">
-      doc: Include gateway claiming APIs, move end device claiming APIs (#673)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/80d65a1d51e988b2f7b02b0440e3855d848bd255">
+      Doc/3.18.1 release (#825)
     </a>
 </p>
 

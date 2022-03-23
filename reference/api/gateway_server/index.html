@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.18.0</p>
+        <p class="navbar-item is-size-7">v3.18.1</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -298,7 +298,7 @@
         </h1>
         
         <div class="content">
-          <h2 id="a-namegsthe-gs-servicea"><a name="Gs">The <code>Gs</code> service</a></h2>
+          <h2 id="the-gs-service">The <code>Gs</code> service</h2>
 
 
 
@@ -345,6 +345,93 @@ This is not persisted between reconnects.
       </th>
       <td>
         <p><code>GET</code> <code>/api/v3/gs/gateways/{gateway_id}/connection/stats</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="the-gatewayconfigurator-service">The <code>GatewayConfigurator</code> service</h2>
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>GatewayConfigurator.PullConfiguration</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:PullGatewayConfigurationRequest"><code>PullGatewayConfigurationRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        Stream of <a href="#message:Gateway"><code>Gateway</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="the-gatewayconfigurationservice-service">The <code>GatewayConfigurationService</code> service</h2>
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>GatewayConfigurationService.GetGatewayConfiguration</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GetGatewayConfigurationRequest"><code>GetGatewayConfigurationRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:GetGatewayConfigurationResponse"><code>GetGatewayConfigurationResponse</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code></code> <code>/api/v3</code></p>
+        <p><code>GET</code> <code>/api/v3/gcs/gateways/configuration/{gateway_ids.gateway_id}/{format}/{filename}</code></p>
+        <p><code>GET</code> <code>/api/v3/gcs/gateways/configuration/{gateway_ids.gateway_id}/{format}/{type}/{filename}</code></p>
       </td>
     </tr>
   </tbody>
@@ -424,6 +511,204 @@ This is not persisted between reconnects.
       <td>
           <p>Secondary identifier, which can only be used in specific requests.</p>
       </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:GetGatewayConfigurationRequest">Message <code>GetGatewayConfigurationRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "gateway_ids": {},
+  "format": "",
+  "type": "",
+  "filename": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>gateway_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:GatewayIdentifiers">
+  
+  <code>
+    
+    GatewayIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>format</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$|^$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>type</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$|^$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>filename</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-._]?[a-z0-9]){2,}$|^$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:GetGatewayConfigurationResponse">Message <code>GetGatewayConfigurationResponse</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "contents": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>contents</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
     </tr>
     
   </tbody>
@@ -1631,6 +1916,89 @@ Repeated addresses can be used to communicate addresses of multiple interfaces (
 </table>
 
 
+
+<h3 id="message:PullGatewayConfigurationRequest">Message <code>PullGatewayConfigurationRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "gateway_ids": {},
+  "field_mask": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>gateway_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:GatewayIdentifiers">
+  
+  <code>
+    
+    GatewayIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>field_mask</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    FieldMask
+  </code>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
 <h2 id="enums">Enums</h2>
 
 
@@ -1708,6 +2076,10 @@ Repeated addresses can be used to communicate addresses of multiple interfaces (
 
 	
 
+	
+
+	
+
 
         </div>
         <div class="is-clearfix">
@@ -1734,6 +2106,12 @@ Repeated addresses can be used to communicate addresses of multiple interfaces (
     
       
       <li><a href='#the-gs-service'>The Gs service</a></li>
+    
+      
+      <li><a href='#the-gatewayconfigurator-service'>The GatewayConfigurator service</a></li>
+    
+      
+      <li><a href='#the-gatewayconfigurationservice-service'>The GatewayConfigurationService service</a></li>
     
       
       <li><a href='#messages'>Messages</a></li>
@@ -1779,10 +2157,10 @@ Repeated addresses can be used to communicate addresses of multiple interfaces (
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 16 Aug 2021.
+  Last changed by Nejra Selimović on 23 Mar 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5a835dc32881e8370322cd2fe18a18130caac35f">
-      Improve description of field masks in API documentation (#475)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/80d65a1d51e988b2f7b02b0440e3855d848bd255">
+      Doc/3.18.1 release (#825)
     </a>
 </p>
 
