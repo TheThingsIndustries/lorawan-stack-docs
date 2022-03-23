@@ -8,7 +8,7 @@ This guide shows an example of configuring {{% tts %}} using configuration files
 
 If configuring {{% tts %}} as `localhost` on a machine with no public IP or DNS address, see the [`localhost`](#running-the-things-stack-as-localhost) section.
 
-In addition to the written instructions below, video instructions for installing {{% tts %}} are available on [The Things Network youtube channel](https://youtu.be/bMT9n1-6dCc).
+In addition to the written instructions below, video instructions for installing {{% tts %}} are available on [The Things Network youtube channel](https://www.youtube.com/c/TheThingsNetworkCommunity).
 
 <details><summary>Show video</summary>
 {{< youtube "XgPSU4UkDuE" >}}
@@ -68,7 +68,9 @@ Settings in `docker-compose.yml` and `ttn-lw-stack-docker.yml` files are explain
 
 In this section, configuring Docker is explained with an example `docker-compose.yml` file.
 
-Docker runs an instance of {{% tts %}}, as well as an SQL database and a Redis database, which {{% tts %}} depends on to store data.
+Docker runs an instance of {{% tts %}}, as well as an SQL database and a Redis database. {{% tts %}} components are inherently stateless and depend on the underlying SQL and Redis databases to store data.
+
+{{< note >}} For high deployment availability, it is recommended to set up redundancy in above mentioned databases. {{</ note >}}
 
 In `docker-compose.yml` file, Docker is configured to run three services:
 
@@ -78,9 +80,11 @@ In `docker-compose.yml` file, Docker is configured to run three services:
  
 ### SQL Database
 
+{{< note >}} We strongly recommended using PostgreSQL instead of CockroachDB in production environments. {{</ note >}}
+
 To configure an SQL database, a single instance of [CockroachDB](https://www.cockroachlabs.com/) is used in this guide. Note that the `volumes` need to be set up correctly so that the database is persisted on your server's disk.
 
-In production, replace the `image` with a working, stable tag from [Docker Hub - CoackroachDB](https://hub.docker.com/r/cockroachdb/cockroach/tags).
+In production, replace the `image` with a working, stable tag from [Docker Hub - CockroachDB](https://hub.docker.com/r/cockroachdb/cockroach/tags).
 
 It is also possible (and even preferred) to use a managed SQL database. In this case, you will need to configure the managed database URI with the `is.database-uri` [configuration option]({{< ref "reference/configuration/identity-server#database-options" >}}) or `TTN_LW_IS_DATABASE_URI` environment variable.
 
@@ -94,7 +98,7 @@ The simplest configuration for CockroachDB looks like this (excerpted from the e
 
 The configuration in this guide uses a single instance of [Redis](https://redis.io/). Again, note that the `volumes` need to be set up correctly so that the datastore is persisted on your server's disk. 
 
-{{< note >}} {{% tts %}} requires Redis version 5.0 or newer. {{</ note >}}
+{{< note >}} {{% tts %}} requires Redis version 6.2 or newer. {{</ note >}}
 
 In production, replace the `image` with a working, stable tag from [Docker Hub - Redis](https://hub.docker.com/_/redis?tab=tags).
 
@@ -201,6 +205,8 @@ as passwords for endpoints that you may want to keep for the internal use.
 You can use Sendgrid or an SMTP server. If you skip setting up an email provider,
 {{% tts %}} will print emails to the stack logs.
 
+See [Email Templates]({{< ref "/reference/email-templates" >}}) section for additional info.
+
 ### Component URLs
 
 Finally, the `console` section configures the URLs for the Web UI and the secret used
@@ -218,7 +224,7 @@ The `client-secret` will be needed later when authorizing the Console. Be sure t
 
 Follow this section if you are configuring and running {{% tts %}} on a local machine with no public IP or DNS address.
 
-In addition to the written instructions below, video instructions for installing on `localhost` are available on [The Things Network youtube channel](https://youtu.be/bMT9n1-6dCc).
+In addition to the written instructions below, video instructions for installing on `localhost` are available on [The Things Network youtube channel](https://www.youtube.com/c/TheThingsNetworkCommunity).
 
 <details><summary>Show video</summary>
 {{< youtube "Owm5IUtQTx8" >}}
