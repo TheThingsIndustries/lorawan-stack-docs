@@ -1,6 +1,7 @@
 ---
 title: "Server Addresses"
 description: ""
+weight: 9
 ---
 
 To access the [Console]({{< ref "getting-started/console" >}}), register a [command line client]({{< ref "getting-started/cli" >}}), [connect gateways]({{< ref "gateways/adding-gateways" >}}), or schedule uplinks via [webhooks]({{< ref "integrations/webhooks" >}}), it is necessary to know the server address of your {{% tts %}} instance. This section contains information about addresses for different {{% tts %}} deployments.
@@ -20,7 +21,7 @@ The server addresses for the different {{% tts %}} deployments are listed below.
 
 **Community Edition**: See [Community Edition Addresses]({{< ref "getting-started/ttn/addresses" >}})
 
-**Enterprise and Open Source**: This is the domain you configure when installing {{% tts %}}. If you followed the [Getting Started guide]({{< ref "/getting-started" >}}), this is what you use instead of `thethings.example.com`.
+**Enterprise and Open Source**: This is the domain you configure when installing {{% tts %}}. If you followed the [Getting Started guide]({{< ref "/getting-started/installation" >}}), this is what you use instead of `thethings.example.com`.
 
 ## Console
 

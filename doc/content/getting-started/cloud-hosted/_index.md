@@ -2,6 +2,7 @@
 title: "The Things Stack Cloud"
 description: ""
 aliases: [/guides/cloud-hosted/cloud-hosted]
+weight: 6
 ---
 
 The Things Industries offers The Things Enterprise Stack as hosted software as a service (SaaS). 

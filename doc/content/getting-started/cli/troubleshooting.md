@@ -9,7 +9,7 @@ This section contains help for common errors encountered when using the CLI.
 
 ## Faulty OAuth Server Address
 
-In the [CLI configuration file]({{< ref "/getting-started/cli/installing-cli#configuration" >}}), the server address is set to `thethings.example.com` by default. If you do not change this server address to the address of your own deployment, using `ttn-lw-cli login` command will redirect to `https://thethings.example.com/oauth/authorize?client_id=cli&redirect_uri=local-callback&response_type=code` in your web browser, where the CLI needs to be authorized for exchanging an access token.
+In the [CLI configuration file]({{< ref "/getting-started/cli/configuring-cli" >}}), the server address is set to `thethings.example.com` by default. If you do not change this server address to the address of your own deployment, using `ttn-lw-cli login` command will redirect to `https://thethings.example.com/oauth/authorize?client_id=cli&redirect_uri=local-callback&response_type=code` in your web browser, where the CLI needs to be authorized for exchanging an access token.
 
 Since your server address is most likely different than `thethings.example.com`, you will see an error about that URL not being found in your browser, the access token will not be obtained and you will not be able to execute any further CLI commands. In your terminal, you will see something like:
 
@@ -25,7 +25,7 @@ You will experience the same issue if you are using an `https` port other than `
 
 ## Certificate Signed by Unknown Authority
 
-If the CA file path is not specified in the [CLI configuration file]({{< ref "/getting-started/cli/installing-cli#configuration" >}}) (or with `--ca` flag when running the CLI), or if you are using self-signed certificates, using `ttn-lw-cli login` might result in the following error:
+If the CA file path is not specified in the [CLI configuration file]({{< ref "/getting-started/cli/configuring-cli" >}}) (or with `--ca` flag when running the CLI), or if you are using self-signed certificates, using `ttn-lw-cli login` might result in the following error:
 
 ```
 ERROR Could not exchange OAuth access token    error=Post "https://thethings.example.com:8885/oauth/token": x509: certificate signed by unknown authority

@@ -6,6 +6,7 @@ aliases:
   - "/integrations/peering"
   - "/reference/peering"
   - "/reference/packet-broker"
+weight: 10
 ---
 
 ## What is it?
