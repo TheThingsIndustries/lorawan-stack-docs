@@ -2,6 +2,7 @@
 title: "Upgrading The Things Stack"
 description: ""
 distributions: ["Enterprise", "Open Source"]
+weight: 4
 ---
 
 This section contains instructions to upgrade a {{% tts %}} Enterprise or Open Source deployment, that was installed using the [installation guide]({{< relref "installation" >}}).

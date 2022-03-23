@@ -31,7 +31,3 @@ EC2 machine included in CloudFormation template can be accessed via SSH. It is s
 ## Alerting
 
 It is advised to set up an alerting system for basic values like CPU/Memory usage or number of uplinks. Currently the single-AMI template does not offer an alerting solution out of the box, but you can refer to the [AWS ECS deployment]({{< ref "/getting-started/aws/ecs/monitoring" >}}) for an example setup.
-
-## Multi-tenancy
-
-When purchasing an Enterprise license, consider setting up a multi-tenant environment from the beginning if you plan to add tenants later. Switching from a single-tenant to a multi-tenant environment requires a database migration.
