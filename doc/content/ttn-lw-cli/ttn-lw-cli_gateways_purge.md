@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli gateways purge"
 slug: ttn-lw-cli_gateways_purge
-
 ---
 
 ## ttn-lw-cli gateways purge

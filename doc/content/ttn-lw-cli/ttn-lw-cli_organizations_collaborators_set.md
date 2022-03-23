@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli organizations collaborators set"
 slug: ttn-lw-cli_organizations_collaborators_set
-
 ---
 
 ## ttn-lw-cli organizations collaborators set

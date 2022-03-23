@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli users get"
 slug: ttn-lw-cli_users_get
-
 ---
 
 ## ttn-lw-cli users get

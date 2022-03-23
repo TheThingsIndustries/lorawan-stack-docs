@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications create"
 slug: ttn-lw-cli_applications_create
-
 ---
 
 ## ttn-lw-cli applications create

@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli templates extend"
 slug: ttn-lw-cli_templates_extend
-
 ---
 
 ## ttn-lw-cli templates extend

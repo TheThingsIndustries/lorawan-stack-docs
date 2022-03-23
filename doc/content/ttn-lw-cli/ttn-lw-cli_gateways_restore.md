@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli gateways restore"
 slug: ttn-lw-cli_gateways_restore
-
 ---
 
 ## ttn-lw-cli gateways restore

@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli clients contact-info delete"
 slug: ttn-lw-cli_clients_contact-info_delete
-
 ---
 
 ## ttn-lw-cli clients contact-info delete

@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli gateways collaborators"
 slug: ttn-lw-cli_gateways_collaborators
-
 ---
 
 ## ttn-lw-cli gateways collaborators

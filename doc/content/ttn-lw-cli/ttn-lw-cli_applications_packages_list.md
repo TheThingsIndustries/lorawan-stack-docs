@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications packages list"
 slug: ttn-lw-cli_applications_packages_list
-
 ---
 
 ## ttn-lw-cli applications packages list

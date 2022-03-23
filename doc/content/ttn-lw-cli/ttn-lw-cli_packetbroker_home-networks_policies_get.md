@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli packetbroker home-networks policies get"
 slug: ttn-lw-cli_packetbroker_home-networks_policies_get
-
 ---
 
 ## ttn-lw-cli packetbroker home-networks policies get

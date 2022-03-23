@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli end-devices downlink"
 slug: ttn-lw-cli_end-devices_downlink
-
 ---
 
 ## ttn-lw-cli end-devices downlink

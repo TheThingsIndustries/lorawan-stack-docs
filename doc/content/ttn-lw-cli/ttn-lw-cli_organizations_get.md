@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli organizations get"
 slug: ttn-lw-cli_organizations_get
-
 ---
 
 ## ttn-lw-cli organizations get

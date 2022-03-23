@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli organizations purge"
 slug: ttn-lw-cli_organizations_purge
-
 ---
 
 ## ttn-lw-cli organizations purge

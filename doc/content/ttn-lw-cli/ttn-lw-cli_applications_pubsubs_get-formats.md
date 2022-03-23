@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications pubsubs get-formats"
 slug: ttn-lw-cli_applications_pubsubs_get-formats
-
 ---
 
 ## ttn-lw-cli applications pubsubs get-formats

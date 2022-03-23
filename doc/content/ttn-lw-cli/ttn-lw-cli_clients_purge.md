@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli clients purge"
 slug: ttn-lw-cli_clients_purge
-
 ---
 
 ## ttn-lw-cli clients purge

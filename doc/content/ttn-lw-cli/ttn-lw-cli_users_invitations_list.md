@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli users invitations list"
 slug: ttn-lw-cli_users_invitations_list
-
 ---
 
 ## ttn-lw-cli users invitations list

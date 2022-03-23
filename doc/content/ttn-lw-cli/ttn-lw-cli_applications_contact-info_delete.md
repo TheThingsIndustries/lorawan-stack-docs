@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications contact-info delete"
 slug: ttn-lw-cli_applications_contact-info_delete
-
 ---
 
 ## ttn-lw-cli applications contact-info delete

@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications claim authorize"
 slug: ttn-lw-cli_applications_claim_authorize
-
 ---
 
 ## ttn-lw-cli applications claim authorize

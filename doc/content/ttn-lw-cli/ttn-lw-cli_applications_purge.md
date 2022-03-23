@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications purge"
 slug: ttn-lw-cli_applications_purge
-
 ---
 
 ## ttn-lw-cli applications purge

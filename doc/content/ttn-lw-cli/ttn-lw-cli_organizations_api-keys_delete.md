@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli organizations api-keys delete"
 slug: ttn-lw-cli_organizations_api-keys_delete
-
 ---
 
 ## ttn-lw-cli organizations api-keys delete

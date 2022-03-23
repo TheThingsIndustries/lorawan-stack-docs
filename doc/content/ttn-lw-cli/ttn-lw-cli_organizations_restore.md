@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli organizations restore"
 slug: ttn-lw-cli_organizations_restore
-
 ---
 
 ## ttn-lw-cli organizations restore

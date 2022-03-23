@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli clients list"
 slug: ttn-lw-cli_clients_list
-
 ---
 
 ## ttn-lw-cli clients list

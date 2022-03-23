@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications collaborators list"
 slug: ttn-lw-cli_applications_collaborators_list
-
 ---
 
 ## ttn-lw-cli applications collaborators list

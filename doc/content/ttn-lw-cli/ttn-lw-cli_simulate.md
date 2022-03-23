@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli simulate"
 slug: ttn-lw-cli_simulate
-
 ---
 
 ## ttn-lw-cli simulate

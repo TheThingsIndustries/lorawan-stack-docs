@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli gateways rights"
 slug: ttn-lw-cli_gateways_rights
-
 ---
 
 ## ttn-lw-cli gateways rights

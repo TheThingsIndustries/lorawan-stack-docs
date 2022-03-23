@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli gateways claim"
 slug: ttn-lw-cli_gateways_claim
-
 ---
 
 ## ttn-lw-cli gateways claim

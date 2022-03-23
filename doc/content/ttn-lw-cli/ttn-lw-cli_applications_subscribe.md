@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications subscribe"
 slug: ttn-lw-cli_applications_subscribe
-
 ---
 
 ## ttn-lw-cli applications subscribe

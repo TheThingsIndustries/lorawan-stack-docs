@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli tenants get"
 slug: ttn-lw-cli_tenants_get
-
 ---
 
 ## ttn-lw-cli tenants get

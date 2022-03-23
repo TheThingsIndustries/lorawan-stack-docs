@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications collaborators get"
 slug: ttn-lw-cli_applications_collaborators_get
-
 ---
 
 ## ttn-lw-cli applications collaborators get

@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli authentication-providers create"
 slug: ttn-lw-cli_authentication-providers_create
-
 ---
 
 ## ttn-lw-cli authentication-providers create

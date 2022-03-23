@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli authentication-providers update"
 slug: ttn-lw-cli_authentication-providers_update
-
 ---
 
 ## ttn-lw-cli authentication-providers update

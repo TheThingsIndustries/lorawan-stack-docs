@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications packages associations get"
 slug: ttn-lw-cli_applications_packages_associations_get
-
 ---
 
 ## ttn-lw-cli applications packages associations get

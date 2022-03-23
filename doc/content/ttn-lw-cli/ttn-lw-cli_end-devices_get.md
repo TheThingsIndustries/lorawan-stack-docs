@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli end-devices get"
 slug: ttn-lw-cli_end-devices_get
-
 ---
 
 ## ttn-lw-cli end-devices get
