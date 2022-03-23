@@ -9,7 +9,7 @@ description: ""
 
 ## The `GatewayConfigurationService` service
 
-{{< proto/method service="GatewayConfigurationService" method="GetGatewayConfiguration" >}}
+{{< proto/method service="GatewayConfigurator" method="PullConfiguration" >}}
 
 ## Messages
 
@@ -23,11 +23,9 @@ description: ""
 
 {{< proto/message message="GatewayStatus" >}}
 
-{{< proto/message message="GetGatewayConfigurationRequest" >}}
-
-{{< proto/message message="GetGatewayConfigurationResponse" >}}
-
 {{< proto/message message="Location" >}}
+
+{{< proto/message message="PullGatewayConfigurationRequest" >}}
 
 ## Enums
 
