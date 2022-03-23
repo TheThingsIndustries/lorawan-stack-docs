@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications storage get"
 slug: ttn-lw-cli_applications_storage_get
-
 ---
 
 ## ttn-lw-cli applications storage get
@@ -152,6 +151,7 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --up.uplink-message.session-key-id                                                 select the up.uplink_message.session_key_id field
       --up.uplink-message.settings                                                       select the up.uplink_message.settings field and all allowed sub-fields
       --up.uplink-message.settings.coding-rate                                           select the up.uplink_message.settings.coding_rate field
+      --up.uplink-message.settings.concentrator-timestamp                                select the up.uplink_message.settings.concentrator_timestamp field
       --up.uplink-message.settings.data-rate                                             select the up.uplink_message.settings.data_rate field and all allowed sub-fields
       --up.uplink-message.settings.data-rate.modulation.fsk                              select the up.uplink_message.settings.data_rate.modulation.fsk field and all allowed sub-fields
       --up.uplink-message.settings.data-rate.modulation.fsk.bit-rate                     select the up.uplink_message.settings.data_rate.modulation.fsk.bit_rate field

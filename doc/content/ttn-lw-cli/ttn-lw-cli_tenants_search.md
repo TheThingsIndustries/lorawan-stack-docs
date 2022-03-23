@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli tenants search"
 slug: ttn-lw-cli_tenants_search
-
 ---
 
 ## ttn-lw-cli tenants search

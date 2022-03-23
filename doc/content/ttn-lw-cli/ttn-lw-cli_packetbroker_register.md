@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli packetbroker register"
 slug: ttn-lw-cli_packetbroker_register
-
 ---
 
 ## ttn-lw-cli packetbroker register

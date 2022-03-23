@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli end-devices generate-qr"
 slug: ttn-lw-cli_end-devices_generate-qr
-
 ---
 
 ## ttn-lw-cli end-devices generate-qr

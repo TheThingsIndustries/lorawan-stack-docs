@@ -123,11 +123,17 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 ## The `EndDeviceClaimingServer` service
 
-{{< proto/method service="EndDeviceClaimingServer" method="Claim" >}}
-
 {{< proto/method service="EndDeviceClaimingServer" method="AuthorizeApplication" >}}
 
+{{< proto/method service="EndDeviceClaimingServer" method="Claim" >}}
+
+{{< proto/method service="EndDeviceClaimingServer" method="GetClaimStatus" >}}
+
+{{< proto/method service="EndDeviceClaimingServer" method="GetInfoByJoinEUI" >}}
+
 {{< proto/method service="EndDeviceClaimingServer" method="UnauthorizeApplication" >}}
+
+{{< proto/method service="EndDeviceClaimingServer" method="Unclaim" >}}
 
 ## Messages
 
@@ -192,6 +198,14 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 {{< proto/message message="GatewayIdentifiers" >}}
 
 {{< proto/message message="GatewayAntennaIdentifiers" >}}
+
+{{< proto/message message="GetClaimStatusResponse" >}}
+
+{{< proto/message message="GetClaimStatusResponse.VendorSpecific" >}}
+
+{{< proto/message message="GetInfoByJoinEUIRequest" >}}
+
+{{< proto/message message="GetInfoByJoinEUIResponse" >}}
 
 {{< proto/message message="GetEndDeviceRequest" >}}
 

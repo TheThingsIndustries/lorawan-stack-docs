@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli users oauth access-tokens list"
 slug: ttn-lw-cli_users_oauth_access-tokens_list
-
 ---
 
 ## ttn-lw-cli users oauth access-tokens list

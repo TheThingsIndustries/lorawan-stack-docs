@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli templates create"
 slug: ttn-lw-cli_templates_create
-
 ---
 
 ## ttn-lw-cli templates create

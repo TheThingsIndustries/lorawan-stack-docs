@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli tenants get-identifiers-for-gateway-eui"
 slug: ttn-lw-cli_tenants_get-identifiers-for-gateway-eui
-
 ---
 
 ## ttn-lw-cli tenants get-identifiers-for-gateway-eui

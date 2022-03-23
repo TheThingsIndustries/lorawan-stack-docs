@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli end-devices create"
 slug: ttn-lw-cli_end-devices_create
-
 ---
 
 ## ttn-lw-cli end-devices create

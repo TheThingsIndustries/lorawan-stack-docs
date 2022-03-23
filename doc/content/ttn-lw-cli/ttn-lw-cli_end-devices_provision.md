@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli end-devices provision"
 slug: ttn-lw-cli_end-devices_provision
-
 ---
 
 ## ttn-lw-cli end-devices provision

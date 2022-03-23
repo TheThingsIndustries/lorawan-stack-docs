@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli clients rights"
 slug: ttn-lw-cli_clients_rights
-
 ---
 
 ## ttn-lw-cli clients rights

@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli authentication-providers get"
 slug: ttn-lw-cli_authentication-providers_get
-
 ---
 
 ## ttn-lw-cli authentication-providers get

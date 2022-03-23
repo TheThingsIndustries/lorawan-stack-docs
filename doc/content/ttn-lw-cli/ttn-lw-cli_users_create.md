@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli users create"
 slug: ttn-lw-cli_users_create
-
 ---
 
 ## ttn-lw-cli users create

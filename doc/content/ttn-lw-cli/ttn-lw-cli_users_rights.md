@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli users rights"
 slug: ttn-lw-cli_users_rights
-
 ---
 
 ## ttn-lw-cli users rights

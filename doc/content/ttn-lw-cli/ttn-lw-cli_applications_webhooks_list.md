@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications webhooks list"
 slug: ttn-lw-cli_applications_webhooks_list
-
 ---
 
 ## ttn-lw-cli applications webhooks list

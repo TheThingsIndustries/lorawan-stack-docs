@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli gateways search"
 slug: ttn-lw-cli_gateways_search
-
 ---
 
 ## ttn-lw-cli gateways search

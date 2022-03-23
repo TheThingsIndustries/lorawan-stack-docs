@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli clients contact-info validate"
 slug: ttn-lw-cli_clients_contact-info_validate
-
 ---
 
 ## ttn-lw-cli clients contact-info validate

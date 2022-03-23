@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli end-devices delete"
 slug: ttn-lw-cli_end-devices_delete
-
 ---
 
 ## ttn-lw-cli end-devices delete

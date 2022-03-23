@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli organizations create"
 slug: ttn-lw-cli_organizations_create
-
 ---
 
 ## ttn-lw-cli organizations create

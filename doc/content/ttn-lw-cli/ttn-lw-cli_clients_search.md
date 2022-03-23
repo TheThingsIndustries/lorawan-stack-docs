@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli clients search"
 slug: ttn-lw-cli_clients_search
-
 ---
 
 ## ttn-lw-cli clients search

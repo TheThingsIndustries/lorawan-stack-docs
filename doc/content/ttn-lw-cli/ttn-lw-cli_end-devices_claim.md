@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli end-devices claim"
 slug: ttn-lw-cli_end-devices_claim
-
 ---
 
 ## ttn-lw-cli end-devices claim

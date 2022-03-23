@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli templates assign-euis"
 slug: ttn-lw-cli_templates_assign-euis
-
 ---
 
 ## ttn-lw-cli templates assign-euis

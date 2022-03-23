@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli organizations list"
 slug: ttn-lw-cli_organizations_list
-
 ---
 
 ## ttn-lw-cli organizations list

@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli packetbroker forwarders"
 slug: ttn-lw-cli_packetbroker_forwarders
-
 ---
 
 ## ttn-lw-cli packetbroker forwarders

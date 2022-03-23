@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli organizations search"
 slug: ttn-lw-cli_organizations_search
-
 ---
 
 ## ttn-lw-cli organizations search

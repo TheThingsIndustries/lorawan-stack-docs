@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli external-users get-by-user-id"
 slug: ttn-lw-cli_external-users_get-by-user-id
-
 ---
 
 ## ttn-lw-cli external-users get-by-user-id

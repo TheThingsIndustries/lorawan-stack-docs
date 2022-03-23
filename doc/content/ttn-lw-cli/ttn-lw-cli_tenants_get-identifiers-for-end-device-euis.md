@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli tenants get-identifiers-for-end-device-euis"
 slug: ttn-lw-cli_tenants_get-identifiers-for-end-device-euis
-
 ---
 
 ## ttn-lw-cli tenants get-identifiers-for-end-device-euis

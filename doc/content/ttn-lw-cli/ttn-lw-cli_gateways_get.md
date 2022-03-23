@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli gateways get"
 slug: ttn-lw-cli_gateways_get
-
 ---
 
 ## ttn-lw-cli gateways get

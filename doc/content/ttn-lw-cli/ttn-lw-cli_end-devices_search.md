@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli end-devices search"
 slug: ttn-lw-cli_end-devices_search
-
 ---
 
 ## ttn-lw-cli end-devices search

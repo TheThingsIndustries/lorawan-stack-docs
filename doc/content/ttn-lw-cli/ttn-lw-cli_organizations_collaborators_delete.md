@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli organizations collaborators delete"
 slug: ttn-lw-cli_organizations_collaborators_delete
-
 ---
 
 ## ttn-lw-cli organizations collaborators delete

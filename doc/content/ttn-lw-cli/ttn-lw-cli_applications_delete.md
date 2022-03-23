@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications delete"
 slug: ttn-lw-cli_applications_delete
-
 ---
 
 ## ttn-lw-cli applications delete

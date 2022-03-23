@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications webhooks delete"
 slug: ttn-lw-cli_applications_webhooks_delete
-
 ---
 
 ## ttn-lw-cli applications webhooks delete

@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli gateways contact-info list"
 slug: ttn-lw-cli_gateways_contact-info_list
-
 ---
 
 ## ttn-lw-cli gateways contact-info list

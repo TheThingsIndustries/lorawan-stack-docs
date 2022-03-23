@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli authentication-providers delete"
 slug: ttn-lw-cli_authentication-providers_delete
-
 ---
 
 ## ttn-lw-cli authentication-providers delete

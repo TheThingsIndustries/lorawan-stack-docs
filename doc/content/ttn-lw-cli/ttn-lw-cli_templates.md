@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli templates"
 slug: ttn-lw-cli_templates
-
 ---
 
 ## ttn-lw-cli templates
