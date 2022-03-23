@@ -199,7 +199,7 @@
         <div class="content">
           <p>This guide shows an example of configuring The Things Stack using configuration files, with an example domain <code>thethings.example.com</code> and TLS certificates from Let&rsquo;s Encrypt.</p>
 <p>If configuring The Things Stack as <code>localhost</code> on a machine with no public IP or DNS address, see the <a href="#running-the-things-stack-as-localhost"><code>localhost</code></a> section.</p>
-<p>In addition to the written instructions below, video instructions for installing The Things Stack are available on <a href="https://youtu.be/bMT9n1-6dCc">The Things Network youtube channel</a>.</p>
+<p>In addition to the written instructions below, video instructions for installing The Things Stack are available on <a href="https://www.youtube.com/c/TheThingsNetworkCommunity">The Things Network youtube channel</a>.</p>
 <details><summary>Show video</summary>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
@@ -255,7 +255,12 @@ config/
 <p>Settings in <code>docker-compose.yml</code> and <code>ttn-lw-stack-docker.yml</code> files are explained in detail in <a href="#understanding-docker-configuration">Understanding Docker Configuration</a> and <a href="#understanding-the-things-stack-configuration">Understanding The Things Stack Configuration</a> sections. Further, we provide tips for running The Things Stack in production.</p>
 <h2 id="understanding-docker-configuration">Understanding Docker Configuration</h2>
 <p>In this section, configuring Docker is explained with an example <code>docker-compose.yml</code> file.</p>
-<p>Docker runs an instance of The Things Stack, as well as an SQL database and a Redis database, which The Things Stack depends on to store data.</p>
+<p>Docker runs an instance of The Things Stack, as well as an SQL database and a Redis database. The Things Stack components are inherently stateless and depend on the underlying SQL and Redis databases to store data.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  For high deployment availability, it is recommended to set up redundancy in above mentioned databases.
+</div>
+
 <p>In <code>docker-compose.yml</code> file, Docker is configured to run three services:</p>
 <ul>
 <li>An SQL database (CockroachDB and PostgreSQL are supported)</li>
@@ -263,8 +268,13 @@ config/
 <li>The Things Stack</li>
 </ul>
 <h3 id="sql-database">SQL Database</h3>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  We strongly recommended using PostgreSQL instead of CockroachDB in production environments.
+</div>
+
 <p>To configure an SQL database, a single instance of <a href="https://www.cockroachlabs.com/">CockroachDB</a> is used in this guide. Note that the <code>volumes</code> need to be set up correctly so that the database is persisted on your server&rsquo;s disk.</p>
-<p>In production, replace the <code>image</code> with a working, stable tag from <a href="https://hub.docker.com/r/cockroachdb/cockroach/tags">Docker Hub - CoackroachDB</a>.</p>
+<p>In production, replace the <code>image</code> with a working, stable tag from <a href="https://hub.docker.com/r/cockroachdb/cockroach/tags">Docker Hub - CockroachDB</a>.</p>
 <p>It is also possible (and even preferred) to use a managed SQL database. In this case, you will need to configure the managed database URI with the <code>is.database-uri</code> <a href="https://www.thethingsindustries.com/docs/reference/configuration/identity-server/#database-options">configuration option</a> or <code>TTN_LW_IS_DATABASE_URI</code> environment variable.</p>
 <p>The simplest configuration for CockroachDB looks like this (excerpted from the example <code>docker-compose.yml</code>):</p>
 <div class="highlight"><div class="chroma">
@@ -297,7 +307,7 @@ config/
 <p>The configuration in this guide uses a single instance of <a href="https://redis.io/">Redis</a>. Again, note that the <code>volumes</code> need to be set up correctly so that the datastore is persisted on your server&rsquo;s disk.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The Things Stack requires Redis version 5.0 or newer.
+  The Things Stack requires Redis version 6.2 or newer.
 </div>
 
 <p>In production, replace the <code>image</code> with a working, stable tag from <a href="https://hub.docker.com/_/redis?tab=tags">Docker Hub - Redis</a>.</p>
@@ -835,6 +845,7 @@ as passwords for endpoints that you may want to keep for the internal use.</p>
 <p>The Things Stack sends emails to users, so the <code>email</code> section of the configuration defines how these are sent.
 You can use Sendgrid or an SMTP server. If you skip setting up an email provider,
 The Things Stack will print emails to the stack logs.</p>
+<p>See <a href="https://www.thethingsindustries.com/docs/reference/email-templates/">Email Templates</a> section for additional info.</p>
 <h3 id="component-urls">Component URLs</h3>
 <p>Finally, the <code>console</code> section configures the URLs for the Web UI and the secret used
 by the console client. These tell The Things Stack where all its components are accessible.</p>
@@ -870,7 +881,7 @@ by the console client. These tell The Things Stack where all its components are 
  If running a multi-tenant environment, we need to configure the default tenant ID, and the base domain from which tenant IDs are inferred. See the <a href="https://www.thethingsindustries.com/docs/reference/configuration/the-things-stack/#multi-tenancy"><code>tenancy</code> configuration reference</a>.</p>
 <h2 id="running-the-things-stack-as-localhost">Running The Things Stack as <code>localhost</code></h2>
 <p>Follow this section if you are configuring and running The Things Stack on a local machine with no public IP or DNS address.</p>
-<p>In addition to the written instructions below, video instructions for installing on <code>localhost</code> are available on <a href="https://youtu.be/bMT9n1-6dCc">The Things Network youtube channel</a>.</p>
+<p>In addition to the written instructions below, video instructions for installing on <code>localhost</code> are available on <a href="https://www.youtube.com/c/TheThingsNetworkCommunity">The Things Network youtube channel</a>.</p>
 <details><summary>Show video</summary>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
@@ -995,10 +1006,10 @@ by the console client. These tell The Things Stack where all its components are 
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Febrian Setianto on 22 Dec 2021.
+  Last changed by Nejra Selimović on 23 Mar 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/bd75fbcef29959b4c8c828bdb8332c274ad95f1b">
-      doc: Fix broken link custom-certificate-authority (#665)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/60b1fdbfb69a93f576b466dde6e0c152550ed279">
+      doc: Address installation section feedback (#829)
     </a>
 </p>
 
