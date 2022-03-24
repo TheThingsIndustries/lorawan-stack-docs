@@ -121,6 +121,10 @@ Restore from the backup.
 root@:26257/defaultdb>  RESTORE DATABASE ttn_lorawan FROM 'nodelocal://self/<backup_name>';
 ```
 
+#### Postgres
+
+Please refer to the [official postgres documentation](https://www.postgresql.org/docs/14/backup.html) for the specific version that you are using.
+
 #### Optional
 
 Updates to {{< tts >}} do not modify static (user-uploaded) assets. But those can be backed up as well.
