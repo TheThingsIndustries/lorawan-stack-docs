@@ -212,3 +212,19 @@ The CLI output will be similar to:
 Keep in mind that the `antennas.location` object will be empty if you have not previously set the gateway antenna location.
 
 Once a gateway has been added, get started with [Adding Devices]({{< ref "/devices/adding-devices" >}}) and [Integrations]({{< ref "/integrations" >}}) to process and act on data.
+
+## Forwarding Uplinks to Packet Broker
+
+In deployments connected to [Packet Broker]({{< ref "/getting-started/packet-broker" >}}), you can control if you want uplinks received by your gateway to be forwarded to Packet Broker or not. In these deployments, uplinks received by your gateway are being forwarded to Packet Broker by default, but you can choose to disable this behavior.
+
+To disable forwarding uplink messages from your gateway to Packet Broker in {{% tts %}} Console, navigate to the **General settings** tab on the left hand menu in your gateway's overview, scroll to the bottom of the **Basic settings** section and tick the **Disabled** box under **Packet Broker** option.
+
+{{< figure src="pb-forwarding.png" alt="Forwarding uplinks to Packet Broker" >}}
+
+To disable forwarding uplink messages from your gateways to Packet Broker using the CLI, use the following command:
+
+```bash
+ttn-lw-cli gateways set $GTW_ID --disable-packet-broker-forwarding
+```
+
+Keep in mind that changes will apply only after restarting the gateway.

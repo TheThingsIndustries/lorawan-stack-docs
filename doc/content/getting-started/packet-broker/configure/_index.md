@@ -30,23 +30,21 @@ To see which routing policies are configured by default for all deployments, see
 
 Packet Broker can be configured using either the Console or the CLI.
 
+## Configure Packet Broker
+
 {{< tabs/container "Console" "CLI" >}}
 
 {{< tabs/tab "Console" >}}
-
-## Configure Packet Broker in the Console
 
 To configure Packet Broker, click the **Packet Broker** button in the top right menu.
 
 {{< figure src="pb-menu.png" alt="Packet Broker Menu Button" >}}
 
-This will take you to the Packet Broker configuration page.
+This will take you to the dedicated Packet Broker configuration page.
 
-{{< figure src="pb-config.png" alt="Packet Broker Menu" >}}
+### Register or Deregister Tenant
 
-### Register or Deregister
-
-To configure routing policies, you must first register your tenant with Packet Broker.
+Before configuring routing policies, you must first register your tenant with Packet Broker. To register it, toggle the **Register network** switch and make sure that **Forwarder** and **Home network** are **enabled**.
 
 {{< figure src="pb-register.png" alt="Register Packet Broker" >}}
 
@@ -54,7 +52,7 @@ To configure routing policies, you must first register your tenant with Packet B
 Deregistering from Packet Broker will delete any routing policies associated with a tenant. Security settings may disable deregistering a network from Packet Broker.
 {{</ note >}}
 
-### Publicly List Your Network
+### Network Visibility
 
 To publicly list your tenant, enable the **List network publicly** switch. This will allow other networks to easily find and configure routing policies with your network.
 
@@ -63,8 +61,6 @@ To publicly list your tenant, enable the **List network publicly** switch. This 
 {{< /tabs/tab >}}
 
 {{< tabs/tab "CLI" >}}
-
-## Configure Packet Broker using the CLI
 
 ### View Registration
 
@@ -122,7 +118,7 @@ ttn-lw-cli packetbroker info
 
 </details>
 
-#### Register Tenant
+### Register Tenant
 
 {{< note >}}
 You can register with Packet Broker if you are a tenant. This is the case for all users of {{% tts %}} Cloud and in other deployments where you are using a host `NetID`. If you are using your own `NetID` without tenancy, please reach out to [join@packetbroker.net](mailto:join@packetbroker.net) for registration.
@@ -138,7 +134,7 @@ This updates the registration with Packet Broker based on your {{% tts %}} envir
 
 With `--listed`, you make your network publicly listed so it can be found by other network administrators. This flag is optional.
 
-#### Deregister Tenant
+### Deregister Tenant
 
 {{< warning >}}
 This permanently deletes all routing policies that you configured as Forwarder to other Home Networks. It also permanently deletes all routing policies configured by other Forwarders for you as Home Network.
