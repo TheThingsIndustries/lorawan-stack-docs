@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.70.0" />
-  <title>Profile Settings | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/console/profile-settings/" />
+  <title>Tenant Settings | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/console/tenant-settings/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Profile Settings">
+  <meta itemprop="name" content="Tenant Settings">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Profile Settings">
+  <meta property="og:title" content="Tenant Settings">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/console/profile-settings/">
-  <meta name="twitter:title" content="Profile Settings" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/console/tenant-settings/">
+  <meta name="twitter:title" content="Tenant Settings" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -109,17 +109,17 @@
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/console/profile-settings/" class="is-active">Profile Settings</a>
-    
-    
-
-
-
+    <a href="https://www.thethingsindustries.com/docs/getting-started/console/profile-settings/" class="">Profile Settings</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/console/tenant-settings/" class="">Tenant Settings</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/console/tenant-settings/" class="is-active">Tenant Settings</a>
+    
+    
+
+
+
     
   </li>
 
@@ -192,45 +192,122 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Profile Settings
+        <h1 class="title is-size-2">Tenant Settings
           
         </h1>
         
+        <h2 class="subtitle">
+          
+            
+            
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+  
+
+  
+
+<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud and Enterprise Only">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+
+</a>
+
+
+          
+          
+          
+        </h2>
+        
         <div class="content">
-          <p>This section explains how to modify profile settings in The Things Stack Console.</p>
-<p>Once you are logged into the Console, you can adjust profile settings. Click on your avatar in the upper right corner and select <strong>Profile settings</strong>.</p>
+          <p>This section explains how to modify tenant settings in The Things Stack Console.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Only tenant admins have access to tenant settings.
+</div>
+
+<p>Once you are logged into the Console, click on your avatar in the upper right corner and select <strong>Tenant settings</strong>.</p>
 <figure>
-    <img src="profile-settings.png"
-         alt="Navigate to profile settings"/> 
+    <img src="tenant-settings.png"
+         alt="Navigate to tenant settings"/> 
 </figure>
 
-<p>You will be redirected to a dedicated profile settings page.</p>
-<h2 id="general-settings">General Settings</h2>
-<p>To change basic info such as your profile picture, name or email address, click the <strong>Expand</strong> button next to the <strong>General settings</strong> section.</p>
-<p>For profile picture, the <a href="https://en.gravatar.com/">Gravatar</a> image associated with your email address is used by default. You can choose to <strong>Upload an image</strong> to change your profile picture.</p>
-<p>You cannot change the <strong>User ID</strong>, but you can set your name to be displayed instead by filling in the <strong>Name</strong> field.</p>
-<p>You can change the primary email address associated with your The Things Stack account by entering a new one in the <strong>Email address</strong> field.</p>
+<p>You will be redirected to a dedicated tenant settings page, where you can configure general The Things Stack settings such as user registration rules, global rights or network configuration for your tenant.</p>
+<p>For all below mentioned options, you can choose to <strong>Use global default settings</strong> to keep the defaults set by the deployment owners.</p>
+<h2 id="user-registration">User registration</h2>
+<p>In this section, you can customize how new user accounts are created, handled and validated.</p>
+<p>To enable user registration via registration screen, check the <strong>Enable user registration</strong> box. If you leave this option disabled, users will no longer see the registration screen, so they will not be able to register on their own, but the admin user will still be able to create new users manually.</p>
+<p>If the <strong>Require admin approval of new users</strong> option is enabled, new users will have to be approved by admin upon registration. If this option is disabled, new users are automatically approved.</p>
+<p>If the <strong>Require validation of user contact information</strong> option is disabled, new users will have to verify email they provided during registration.</p>
+<p>An admin can also choose to <strong>Allow user registration via invitation only</strong>. Admin can also configure the <strong>Duration of the invitation token</strong> to define how long the invitation token will be valid after being sent via email. Sending an invitation is currently available only via CLI.</p>
 <figure>
-    <img src="general-settings.png"
-         alt="General settings"/> 
+    <img src="user-registration.png"
+         alt="User registration settings"/> 
 </figure>
 
-<p>Click <strong>Save changes</strong> to save any modified info.</p>
-<h2 id="change-password">Change password</h2>
-<p>To set up a new password for your account, click the <strong>Expand</strong> button next to the <strong>Change password</strong> section.</p>
-<p>Type in your <strong>Current password</strong>, then create a <strong>New password</strong> and confirm it. We highly recommend you create a strong password to enhance your profile&rsquo;s security.</p>
-<p>You can also choose to revoke all currently active sessions and access tokens by ticking the <strong>Enabled</strong> checkbox under <strong>Revoke all access</strong>. This will require you to log into the Console again using your newly created password.</p>
+<h2 id="password-requirement">Password requirement</h2>
+<p>In this section, you can control security characteristics of user defined passwords.</p>
+<p>Configurable parameters of user defined passwords are minimum and maximum length, minimum number of digits, special characters and uppercase letters.</p>
 <figure>
-    <img src="change-password.png"
-         alt="Change password"/> 
+    <img src="password-requirements.png"
+         alt="Password requirements"/> 
 </figure>
 
-<p>Select <strong>Change password</strong> to finish.</p>
+<h2 id="user-rights">User rights</h2>
+<p>In this section, you can manage global rights for regular users and administrators.</p>
+<p>If you want to provide admins with a full access to all information (including keys) of entities not owned by admins, check the <strong>Grant all rights to admins</strong> box.</p>
+<p>You can choose to allow users to create applications, organizations, gateways and OAuth clients.</p>
+<figure>
+    <img src="user-rights.png"
+         alt="User rights settings"/> 
+</figure>
+
+<h2 id="uploads">Uploads</h2>
+<p>In this section, you can control user image uploads and Gravatar settings.</p>
+<p>If you want to enable users to upload images of end devices, leave the <strong>Disable user upload of end device pictures</strong> box unchecked. Note that uploading end device images is currently available only via CLI.</p>
+<p>If you want to enable users to upload profile pictures, leave the <strong>Disable profile picture uploads</strong> box unchecked.</p>
+<p>If you want to enable users to use a <a href="https://en.gravatar.com/">Gravatar</a> associated with the email address they registered with, check the <strong>Enable Gravatar for profile pictures</strong> box.</p>
+<figure>
+    <img src="user-uploads.png"
+         alt="User uploads settings"/> 
+</figure>
+
+<h2 id="network-settings">Network settings</h2>
+<p>In this section, you can manage deduplication windows and end device address prefixes.</p>
+<p>The <strong>Deduplication windows</strong> sets the time period during which duplicate uplinks are collected as metadata (<code>rx_metadata</code>).</p>
+<p>The <strong>Cooldown window</strong> sets a time period after the deduplication window during which duplicate uplinks are discarded.</p>
+<p>Deduplication and cooldown windows affect the initial delay of uplink forwarding for the sake of collecting metadata and are typically modified to align this trade-off with network requirements.</p>
+<p><strong>Device address prefixes</strong> are used to generate the end device address of an end device when it joins to The Things Stack network. These prefixes are used to identify traffic from the associated network. When using <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/">Packet Broker</a>, it may be required to reregister the network if the device address prefixes are changed.</p>
+<figure>
+    <img src="network-settings.png"
+         alt="Network settings"/> 
+</figure>
+
+<h2 id="branding">Branding</h2>
+<p>If you want to customize the <a href="https://www.thethingsindustries.com/docs/reference/branding/">Web UI Branding</a> of your tenant&rsquo;s Console, you need to provide the source of your branding assets. Paste the source URL into the <strong>Branding base URL</strong> field.</p>
+<figure>
+    <img src="branding.png"
+         alt="Branding assets source URL"/> 
+</figure>
         </div>
         
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/getting-started/console/login/">← Login</a>
-<a class="button is-pulled-right" href="/docs/getting-started/console/tenant-settings/">Tenant Settings →</a>
+<a class="button is-pulled-left" href="/docs/getting-started/console/profile-settings/">← Profile Settings</a>
+<a class="button is-pulled-right" href="/docs/getting-started/console/troubleshooting/">Troubleshooting Console →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -251,10 +328,22 @@
   <ul class="menu-list">
     
       
-      <li><a href='#general-settings'>General Settings</a></li>
+      <li><a href='#user-registration'>User registration</a></li>
     
       
-      <li><a href='#change-password'>Change password</a></li>
+      <li><a href='#password-requirement'>Password requirement</a></li>
+    
+      
+      <li><a href='#user-rights'>User rights</a></li>
+    
+      
+      <li><a href='#uploads'>Uploads</a></li>
+    
+      
+      <li><a href='#network-settings'>Network settings</a></li>
+    
+      
+      <li><a href='#branding'>Branding</a></li>
     
   </ul>
 
@@ -301,7 +390,7 @@
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/console/profile-settings/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/console/tenant-settings/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
