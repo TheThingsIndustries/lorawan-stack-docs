@@ -4,7 +4,7 @@ description: ""
 weight: 1
 ---
 
-This section explains how to modify profile settings on in {{% tts %}} Console.
+This section explains how to modify profile settings in {{% tts %}} Console.
 
 <!--more-->
 
