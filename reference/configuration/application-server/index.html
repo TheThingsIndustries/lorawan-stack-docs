@@ -290,6 +290,49 @@
 <li><code>as.mqtt.public-address</code>: Public address of the MQTT frontend (default &ldquo;localhost:1883&rdquo;)</li>
 <li><code>as.mqtt.public-tls-address</code>: Public address of the MQTTs frontend (default &ldquo;localhost:8883&rdquo;)</li>
 </ul>
+<h2 id="pubsub-options">PubSub Options</h2>
+<ul>
+<li><code>as.pubsub.providers.mqtt</code>: Controls the status of MQTT provider (default <code>enabled</code>)</li>
+<li><code>as.pubsub.providers.nats</code>: Controls the status of NATS provider (default <code>enabled</code>)</li>
+</ul>
+<h2 id="aws-iot-integration-options">AWS IoT Integration Options</h2>
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+  
+
+  
+
+<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Enterprise and AWS Launcher Only">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_aws.svg"></img>
+
+</a>
+
+
+
+<ul>
+<li><code>as.aws.iot.telemetry</code> <span class="tag is-danger is-light">Deprecated in 3.11.1</span>
+
+: Enable publishing telemetry to AWS IoT</li>
+<li><code>as.aws.region</code>: AWS region (optional)</li>
+</ul>
 <h2 id="http-webhooks-options">HTTP Webhooks Options</h2>
 <p>Application Server has an internal queue with worker routines for outgoing requests. When remote endpoints are not fast enough and queue (with <code>queue-size</code>) gets full, new traffic gets discarded. You can tune these parameters for optimal performance, considering memory consumption with a large queue size and number of workers.</p>
 <ul>
@@ -317,11 +360,13 @@
 <h2 id="entity-fetcher-options">Entity Fetcher Options</h2>
 <p>Application Server can fetch information stored in the Identity Server. For example, it may be fetch end devices, in order to add their location as metadata to forwarded upstream messages. This information can be cached locally to improve performance:</p>
 <ul>
+<li><code>as.fetcher.timeout</code>: Timeout of the end device retrieval operation</li>
 <li><code>as.fetcher.cache.enable</code>: Set to <code>true</code> to enable end device caching</li>
 <li><code>as.fetcher.cache.size</code>: Number of cache entries. In case the cache is full, the Least Frequently Used entry will be evicted. Set to <code>0</code> to disable.</li>
 <li><code>as.fetcher.cache.ttl</code>: TTL for cache entries</li>
 <li><code>as.fetcher.circuit-breaker.enable</code>: Enable circuit breaker behavior on burst errors</li>
 <li><code>as.fetcher.circuit-breaker.threshold</code>: Number of failed fetching attempts after which the circuit breaker opens</li>
+<li><code>as.fetcher.circuit-breaker.timeout</code>: Timeout after which the circuit breaker closes</li>
 </ul>
 <h2 id="formatter-options">Formatter Options</h2>
 <p>Application Server can use Javascript payload formatters to decode uplink and encode downlink messages.</p>
@@ -331,6 +376,44 @@
 <h2 id="application-packages-options">Application Packages Options</h2>
 <ul>
 <li><code>as.packages.workers</code>: Number of workers per application package to process requests (default 1024)</li>
+<li><code>as.packages.timeout</code>: Message processing timeout (default <code>10s</code>)</li>
+</ul>
+<h2 id="azure-iot-hub-integration-options">Azure IoT Hub Integration Options</h2>
+
+
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+  
+
+  
+
+<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud and Enterprise Only">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+
+</a>
+
+
+
+<ul>
+<li><code>as.packages.azure-iot-hub.cluster.application-server</code>: Application Server cluster address (default <code>localhost</code>)</li>
+<li><code>as.packages.azure-iot-hub.cluster.join-server</code>: Join Server cluster address (default <code>localhost</code>)</li>
+<li><code>as.packages.azure-iot-hub.cluster.network-server</code>: Network Server cluster address (default <code>localhost</code>)</li>
 </ul>
 <h2 id="storage-integration-options">Storage Integration Options</h2>
 <p>
@@ -401,11 +484,10 @@
 <li><code>as.packages.storage.enable.location-solved</code>: Set to <code>true</code> to store <code>LocationSolved</code> messages</li>
 <li><code>as.packages.storage.enable.service-data</code>: Set to <code>true</code> to store <code>ServiceData</code> messages</li>
 </ul>
-<h2 id="advanced-distribution-options-hahahugoshortcode-s2-hbhb">Advanced Distribution Options <span class="tag is-light">New in 3.16.0</span>
-
-</h2>
+<h2 id="advanced-distribution-options">Advanced Distribution Options</h2>
 <p>The Application Server can be configured to block while publishing traffic to global or local subscribers, as well as the number of uplinks that the Application Server buffers for those subscribers.</p>
 <ul>
+<li><code>as.distribution.timeout</code>: Wait timeout of any empty subscription set (default <code>10ms</code>)</li>
 <li><code>as.distribution.global.individual.subscription-blocks</code>: Controls if the Application Server should block while publishing traffic to individual global subscribers (such as MQTT clients).</li>
 <li><code>as.distribution.global.individual.subscription-queue-size</code>: Controls how many uplinks the Application Server should buffer for an individual global subscriber. Note that when the buffer is full, the Application Server will drop the uplinks if <code>--as.distribution.global.individual.subscription-blocks</code> is not enabled. Use a negative value in order to disable the queue.</li>
 <li><code>as.distribution.local.broadcast.subscription-blocks</code>: Controls if the Application Server should block while publishing traffic to broadcast local subscribers (such as webhooks and application packages matching).</li>
@@ -415,6 +497,7 @@
 </ul>
 <h2 id="end-device-location-caching-options">End Device Location Caching Options</h2>
 <ul>
+<li><code>as.end-device-metadata-storage.location.timeout</code>: Timeout of the end device retrieval operation (default <code>5s</code>)</li>
 <li><code>as.end-device-metadata-storage.location.cache.enable</code>: Enable caching of end device locations (default <code>true</code>)</li>
 <li><code>as.end-device-metadata-storage.location.cache.eviction-ttl</code>: TTL of cached end device locations</li>
 <li><code>as.end-device-metadata-storage.location.cache.max-refresh-interval</code>: Maximum time interval between two asynchronous refreshes</li>
@@ -458,6 +541,12 @@
       <li><a href='#mqtt-options'>MQTT Options</a></li>
     
       
+      <li><a href='#pubsub-options'>PubSub Options</a></li>
+    
+      
+      <li><a href='#aws-iot-integration-options'>AWS IoT Integration Options</a></li>
+    
+      
       <li><a href='#http-webhooks-options'>HTTP Webhooks Options</a></li>
     
       
@@ -470,7 +559,13 @@
       <li><a href='#application-packages-options'>Application Packages Options</a></li>
     
       
+      <li><a href='#azure-iot-hub-integration-options'>Azure IoT Hub Integration Options</a></li>
+    
+      
       <li><a href='#storage-integration-options'>Storage Integration Options</a></li>
+    
+      
+      <li><a href='#advanced-distribution-options'>Advanced Distribution Options</a></li>
     
       
       <li><a href='#end-device-location-caching-options'>End Device Location Caching Options</a></li>
@@ -516,10 +611,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 27 Jan 2022.
+  Last changed by Nejra Selimović on 30 Mar 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/898f49e5bfbf543be6c451425afa4b837c85dcf1">
-      doc: Add missing configuration options (#744)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/077a39a95e121ec18e2a034fca19db748350a348">
+      doc: Add missing config options (#831)
     </a>
 </p>
 
