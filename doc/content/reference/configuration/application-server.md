@@ -27,6 +27,18 @@ Application Server exposes an MQTT server for streaming data.
 - `as.mqtt.public-address`: Public address of the MQTT frontend (default "localhost:1883")
 - `as.mqtt.public-tls-address`: Public address of the MQTTs frontend (default "localhost:8883")
 
+## PubSub Options
+
+- `as.pubsub.providers.mqtt`: Controls the status of MQTT provider (default `enabled`)
+- `as.pubsub.providers.nats`: Controls the status of NATS provider (default `enabled`)
+
+## AWS IoT Integration Options
+
+{{< distributions "Enterprise" "AWS Launcher" >}}
+
+- `as.aws.iot.telemetry` {{< deprecated-in-version "3.11.1" >}}: Enable publishing telemetry to AWS IoT
+- `as.aws.region`: AWS region (optional)
+
 ## HTTP Webhooks Options
 
 Application Server has an internal queue with worker routines for outgoing requests. When remote endpoints are not fast enough and queue (with `queue-size`) gets full, new traffic gets discarded. You can tune these parameters for optimal performance, considering memory consumption with a large queue size and number of workers.
@@ -56,11 +68,13 @@ Webhooks have a health status associated with them, so the webhooks that fail su
 
 Application Server can fetch information stored in the Identity Server. For example, it may be fetch end devices, in order to add their location as metadata to forwarded upstream messages. This information can be cached locally to improve performance:
 
+- `as.fetcher.timeout`: Timeout of the end device retrieval operation
 - `as.fetcher.cache.enable`: Set to `true` to enable end device caching
 - `as.fetcher.cache.size`: Number of cache entries. In case the cache is full, the Least Frequently Used entry will be evicted. Set to `0` to disable.
 - `as.fetcher.cache.ttl`: TTL for cache entries
 - `as.fetcher.circuit-breaker.enable`: Enable circuit breaker behavior on burst errors
 - `as.fetcher.circuit-breaker.threshold`: Number of failed fetching attempts after which the circuit breaker opens
+- `as.fetcher.circuit-breaker.timeout`: Timeout after which the circuit breaker closes
 
 ## Formatter Options
 
@@ -71,6 +85,15 @@ Application Server can use Javascript payload formatters to decode uplink and en
 ## Application Packages Options
 
 - `as.packages.workers`: Number of workers per application package to process requests (default 1024)
+- `as.packages.timeout`: Message processing timeout (default `10s`)
+
+## Azure IoT Hub Integration Options
+
+{{< distributions "Cloud" "Enterprise" >}}
+
+- `as.packages.azure-iot-hub.cluster.application-server`: Application Server cluster address (default `localhost`)
+- `as.packages.azure-iot-hub.cluster.join-server`: Join Server cluster address (default `localhost`)
+- `as.packages.azure-iot-hub.cluster.network-server`: Network Server cluster address (default `localhost`)
 
 ## Storage Integration Options
 
@@ -104,10 +127,11 @@ The Storage Integration can be configured to store only specific types of upstre
 - `as.packages.storage.enable.location-solved`: Set to `true` to store `LocationSolved` messages
 - `as.packages.storage.enable.service-data`: Set to `true` to store `ServiceData` messages
 
-## Advanced Distribution Options {{< new-in-version "3.16.0" >}}
+## Advanced Distribution Options
 
 The Application Server can be configured to block while publishing traffic to global or local subscribers, as well as the number of uplinks that the Application Server buffers for those subscribers.
 
+- `as.distribution.timeout`: Wait timeout of any empty subscription set (default `10ms`)
 - `as.distribution.global.individual.subscription-blocks`: Controls if the Application Server should block while publishing traffic to individual global subscribers (such as MQTT clients).
 - `as.distribution.global.individual.subscription-queue-size`: Controls how many uplinks the Application Server should buffer for an individual global subscriber. Note that when the buffer is full, the Application Server will drop the uplinks if `--as.distribution.global.individual.subscription-blocks` is not enabled. Use a negative value in order to disable the queue.
 - `as.distribution.local.broadcast.subscription-blocks`: Controls if the Application Server should block while publishing traffic to broadcast local subscribers (such as webhooks and application packages matching).
@@ -117,6 +141,7 @@ The Application Server can be configured to block while publishing traffic to gl
 
 ## End Device Location Caching Options
 
+- `as.end-device-metadata-storage.location.timeout`: Timeout of the end device retrieval operation (default `5s`)
 - `as.end-device-metadata-storage.location.cache.enable`: Enable caching of end device locations (default `true`)
 - `as.end-device-metadata-storage.location.cache.eviction-ttl`: TTL of cached end device locations
 - `as.end-device-metadata-storage.location.cache.max-refresh-interval`: Maximum time interval between two asynchronous refreshes

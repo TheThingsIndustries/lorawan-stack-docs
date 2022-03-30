@@ -12,7 +12,9 @@ description: ''
 The Identity Server needs to be connected to a PostgreSQL-compatible database. Details for the form of the URI can be found in the [PostgreSQL documentation](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING).
 
 - `is.database-uri`: Database connection URI
-- `is.read-database-uri` {{< distributions "Cloud" "Enterprise" >}}: Read-Only database connection URI 
+- `is.database-max-idle-conns` {{< distributions "Cloud" "Enterprise" >}}: Maximum number of idle database connections (default `10`)
+- `is.database-max-open-conns` {{< distributions "Cloud" "Enterprise" >}}: Maximum number of open database connections (default `20`)
+- `is.read-database-uri` {{< distributions "Cloud" "Enterprise" >}}: Read-Only database connection URI
 
 ## Email Options
 
@@ -149,6 +151,10 @@ There are several options to customize the requirements for user passwords.
 - `is.user-registration.password-requirements.min-uppercase`: Minimum number of uppercase letters
 - `is.user-registration.password-requirements.reject-common`: Reject common passwords
 - `is.user-registration.password-requirements.reject-user-id`: Reject passwords that contain user ID
+
+There is also an option to disable login with credentials. In that case, {{% tts %}} will only allow a login with configured external (OpenID Connect) providers.
+
+- `is.user-login.disable-credentials-login` {{< distributions "Cloud" "Enterprise" >}}: Disable login with credentials
 
 ## User Rights Options
 
