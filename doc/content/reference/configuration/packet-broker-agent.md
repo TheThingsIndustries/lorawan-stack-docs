@@ -19,6 +19,7 @@ description: ""
 - `pba.net-id`: LoRa Alliance NetID
 - `pba.tenant-id`: Tenant ID within the NetID
 - `pba.cluster-id`: Cluster ID uniquely identifying this cluster within a NetID and tenant. The cluster ID is used for shared subscriptions (i.e. splitting traffic over multiple Packet Broker Agents) and as Forwarder ID to route downlink traffic to the right cluster
+- `pba.cluster-id-template`: Use a Go template for constructing Packet Broker Cluster ID from {{% tts %}} Cluster ID (e.g. `{{.}}.thethings.example.com` with cluster ID `eu1` results in Packet Broker Cluster ID `eu1.thethings.example.com`)
 - `pba.home-network-cluster-id`: Home Network Cluster ID, if different from the Cluster ID. Leave empty to fallback to `cluster-id`
 
 Gateway identity, status, antennas, frequency plan, location, Tx and Rx rates can be reported to Packet Broker Mapper. Mapping is enabled when the Forwarder role is enabled.
