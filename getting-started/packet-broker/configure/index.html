@@ -159,6 +159,11 @@
     
   </li>
 
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/troubleshooting/" class="">Troubleshooting</a>
+    
+  </li>
+
 </ul>
 
 
@@ -345,6 +350,7 @@
 <li>An admin account for the The Things Stack deployment. All Packet Broker configuration requires administrative access.</li>
 </ol>
 <p>Packet Broker can be configured using either the Console or the CLI.</p>
+<h2 id="configure-packet-broker">Configure Packet Broker</h2>
 <div class="tabs is-boxed">
   <ul>
     
@@ -364,19 +370,14 @@
 </div>
 <div class="tab-content content">
   <section data-content="console">
-  <h2 id="configure-packet-broker-in-the-console">Configure Packet Broker in the Console</h2>
-<p>To configure Packet Broker, click the <strong>Packet Broker</strong> button in the top right menu.</p>
+  <p>To configure Packet Broker, click the <strong>Packet Broker</strong> button in the top right menu.</p>
 <figure>
     <img src="pb-menu.png"
          alt="Packet Broker Menu Button"/> 
 </figure>
-<p>This will take you to the Packet Broker configuration page.</p>
-<figure>
-    <img src="pb-config.png"
-         alt="Packet Broker Menu"/> 
-</figure>
-<h3 id="register-or-deregister">Register or Deregister</h3>
-<p>To configure routing policies, you must first register your tenant with Packet Broker.</p>
+<p>This will take you to the dedicated Packet Broker configuration page.</p>
+<h3 id="register-or-deregister-tenant">Register or Deregister Tenant</h3>
+<p>Before configuring routing policies, you must first register your tenant with Packet Broker. To register it, toggle the <strong>Register network</strong> switch and make sure that <strong>Forwarder</strong> and <strong>Home network</strong> are <strong>enabled</strong>.</p>
 <figure>
     <img src="pb-register.png"
          alt="Register Packet Broker"/> 
@@ -385,7 +386,7 @@
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   Deregistering from Packet Broker will delete any routing policies associated with a tenant. Security settings may disable deregistering a network from Packet Broker.
 </div>
-<h3 id="publicly-list-your-network">Publicly List Your Network</h3>
+<h3 id="network-visibility">Network Visibility</h3>
 <p>To publicly list your tenant, enable the <strong>List network publicly</strong> switch. This will allow other networks to easily find and configure routing policies with your network.</p>
 <figure>
     <img src="pb-public.png"
@@ -393,8 +394,7 @@
 </figure>
 </section>
 <section data-content="cli">
-  <h2 id="configure-packet-broker-using-the-cli">Configure Packet Broker using the CLI</h2>
-<h3 id="view-registration">View Registration</h3>
+  <h3 id="view-registration">View Registration</h3>
 <p>To view the current registration with Packet Broker:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli packetbroker info
 </code></pre></div><details><summary>Example output with registration</summary>
@@ -435,7 +435,7 @@
   <span class="nt">&#34;home_network_enabled&#34;</span><span class="p">:</span> <span class="kc">true</span>
 <span class="p">}</span>
 </code></pre></div></details>
-<h4 id="register-tenant">Register Tenant</h4>
+<h3 id="register-tenant">Register Tenant</h3>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   You can register with Packet Broker if you are a tenant. This is the case for all users of The Things Stack Cloud and in other deployments where you are using a host <code>NetID</code>. If you are using your own <code>NetID</code> without tenancy, please reach out to <a href="mailto:join@packetbroker.net">join@packetbroker.net</a> for registration.
@@ -444,7 +444,7 @@
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli packetbroker register --listed
 </code></pre></div><p>This updates the registration with Packet Broker based on your The Things Stack environment. When using The Things Stack Cloud or Dedicated Cloud, the registration is based on your subscription. When using The Things Stack Enterprise or Open Source, the registration is based on <a href="/docs/getting-started/packet-broker/configure/">your configuration</a>.</p>
 <p>With <code>--listed</code>, you make your network publicly listed so it can be found by other network administrators. This flag is optional.</p>
-<h4 id="deregister-tenant">Deregister Tenant</h4>
+<h3 id="deregister-tenant">Deregister Tenant</h3>
 <div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
   This permanently deletes all routing policies that you configured as Forwarder to other Home Networks. It also permanently deletes all routing policies configured by other Forwarders for you as Home Network.
@@ -598,7 +598,7 @@ Packet Broker Router uses a cache of the routing table. It takes up to 10 minute
           <div class="content has-text-grey">
             
             Gateway visibility configuration allows network administrators to configure who sees which gateway-related information. Having gateways listed publicly on the map can help discovering partner networks, but it may also lead to privacy concerns. Therefore, Packet Broker allows configuring gateway visibility with fine-grained settings. Learn more about gateway visibility.
-Note: The Things Stack currently only allows configuring the default gateway visibility. Configuring visibility per Home Network is not yet supported.  Command-line interface only The instructions below use the command-line interface (CLI).
+Note: The Things Stack currently only allows configuring the default gateway visibility. Configuring visibility per Home Network is not yet supported.  Configure Default Gateway Visibility   Console    CLI     In the Packer Broker settings page, navigate to the Default gateway visibility tab to control what information of your gateways will be publicly visible.
             
           </div>
         </div>
@@ -637,10 +637,7 @@ Note: The Things Stack currently only allows configuring the default gateway vis
       <li><a href='#prerequisites'>Prerequisites</a></li>
     
       
-      <li><a href='#configure-packet-broker-in-the-console'>Configure Packet Broker in the Console</a></li>
-    
-      
-      <li><a href='#configure-packet-broker-using-the-cli'>Configure Packet Broker using the CLI</a></li>
+      <li><a href='#configure-packet-broker'>Configure Packet Broker</a></li>
     
   </ul>
 
@@ -680,10 +677,10 @@ Note: The Things Stack currently only allows configuring the default gateway vis
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 23 Dec 2021.
+  Last changed by Nejra Selimović on 31 Mar 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
-      doc: Remove $ character from code blocks, add variables (#678)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2579561dc9a38b9d72124b1e8eddfa386a6587f5">
+      doc: Update PB doc (#833)
     </a>
 </p>
 

@@ -369,6 +369,17 @@ ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span> 
 <span class="p">}</span>
 </code></pre></div><p>Keep in mind that the <code>antennas.location</code> object will be empty if you have not previously set the gateway antenna location.</p>
 <p>Once a gateway has been added, get started with <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> and <a href="https://www.thethingsindustries.com/docs/integrations/">Integrations</a> to process and act on data.</p>
+<h2 id="forwarding-uplinks-to-packet-broker">Forwarding Uplinks to Packet Broker</h2>
+<p>In deployments connected to <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/">Packet Broker</a>, you can control if you want uplinks received by your gateway to be forwarded to Packet Broker or not. In these deployments, uplinks received by your gateway are being forwarded to Packet Broker by default, but you can choose to disable this behavior.</p>
+<p>To disable forwarding uplink messages from your gateway to Packet Broker in The Things Stack Console, navigate to the <strong>General settings</strong> tab on the left hand menu in your gateway&rsquo;s overview, scroll to the bottom of the <strong>Basic settings</strong> section and tick the <strong>Disabled</strong> box under <strong>Packet Broker</strong> option.</p>
+<figure>
+    <img src="pb-forwarding.png"
+         alt="Forwarding uplinks to Packet Broker"/> 
+</figure>
+
+<p>To disable forwarding uplink messages from your gateways to Packet Broker using the CLI, use the following command:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span> --disable-packet-broker-forwarding
+</code></pre></div><p>Keep in mind that changes will apply only after restarting the gateway.</p>
         </div>
         
           <div class="is-clearfix">
@@ -408,6 +419,9 @@ ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span> 
       
       <li><a href='#set-gateway-antenna-gain'>Set Gateway Antenna Gain</a></li>
     
+      
+      <li><a href='#forwarding-uplinks-to-packet-broker'>Forwarding Uplinks to Packet Broker</a></li>
+    
   </ul>
 
 
@@ -446,10 +460,10 @@ ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span> 
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 16 Feb 2022.
+  Last changed by Nejra Selimović on 31 Mar 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/fbf62aca450a5ef62b545b8d4f3ca6608bde24c9">
-      doc: Document adding ABP devices and gateways using the API, rearranging doc (#772)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2579561dc9a38b9d72124b1e8eddfa386a6587f5">
+      doc: Update PB doc (#833)
     </a>
 </p>
 
