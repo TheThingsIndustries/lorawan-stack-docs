@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.18.1</p>
+        <p class="navbar-item is-size-7">v3.18.2</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -140,53 +140,30 @@
 <div class="whats-new">
   <div class="whats-new-content">
     <div class="whats-new-header">
-      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.18.1/>What's new in V3.18.1</a></h2>
+      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.18.2/>What's new in V3.18.2</a></h2>
       <a href="https://www.thethingsindustries.com/docs/whats-new/"><p class="see-more">See all release notes →</p></a>
     </div>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.18.1/">
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.18.2/">
       <div class="whats-new-body">
         <div class="whats-new-items-shadow whats-new-items-fade">
           <div class="whats-new-items">
             <h3 id="added">Added</h3>
 <ul>
-<li>Add HTTP basic authentication configuration to the webhooks form in the Console.</li>
-<li>Show repository formatter code in the payload formatter form in the Console and allow pasting the application and payload formatter code when using the JavaScript option.</li>
-<li>Add <code>query</code> field to search requests, allowing to search for a string in any of ID, Name, Description and EUI (for entities that have EUIs).</li>
-<li>gRPC service to Gateway Configuration Server so that gateway configurations can be obtained via gRPC requests.</li>
-<li>The option to configure the Redis idle connection pool timeout, using the <code>redis.idle-timeout</code> setting.</li>
-<li>New RP002 regional parameters as options during device registration in the Console.</li>
-<li>Fallback for frequency plan, MAC and PHY version values for end device import in the Console.</li>
-<li>Default gateway visibility configuration in Packet Broker agent in the Console.</li>
+<li>Support for using Go templates to construct the Packet Broker Cluster ID from The Things Stack&rsquo;s Cluster ID using the <code>pba.cluster-id-template</code> setting.</li>
+<li>Support for importing end devices using a CSV file. See <a href="https://www.thethingsindustries.com/docs/reference/data-formats/#csv">documentation</a> for the data format.</li>
+<li>Support claiming end devices in an external Join Server (ex: The Things Join Server).</li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
-<li>The custom webhook option is now shown at the top of the list in the Console when adding new webhooks.</li>
-<li>Wording around webhook statuses to <code>Healthy</code>, <code>Requests failing</code> and <code>Pending</code>.</li>
-<li>The uplink event preview in the Console now shows the highest SNR.</li>
-<li>When scheduling downlink messages with decoded payload, the downlink queued event now contains the encoded, plain binary payload.</li>
-<li>When Application Server forwards downlink messages to Network Server, the event payload now contains the encrypted LoRaWAN <code>FRMPayload</code>.</li>
-<li>Integration settings are now retrieved from the read-only Redis replica.</li>
-<li>The Network Server will now match downlink acknowledgements on the <code>cache</code> redis cluster (previously the <code>general</code> cluster was used).</li>
-<li>Gateway Connection statistics updates are now debounced. The debounce period occurs before the statistics are stored, and can be configured using the <code>gs.update-connection-stats-debounce-time</code> setting (default 5 seconds).</li>
-<li>Event publication when the Redis backend is used may no longer block the hot path. Instead, the events are now asynchronously published, which may render their ordering to change.
-<ul>
-<li>The events are queued and published using the worker pool mechanism, under the <code>redis_events_transactions</code> pool.</li>
-<li>The length of the queue used by the pool may be configured using the <code>events.redis.publish.queue-size</code> setting.</li>
-<li>The maximum worker count used by the pool may be configured using the <code>events.redis.publish.max-workers</code> setting.</li>
-</ul>
-</li>
-<li>Payload formatter form layout in the Console.</li>
-</ul>
-<h3 id="removed">Removed</h3>
-<ul>
-<li>Ability to select the <code>Repository</code> payload formatter type for end devices that have no Device Repository association or have no associated repository payload formatter.</li>
+<li>Replace <code>as.down.data.forward</code> to <code>as.down.data.receive</code> in default event filter, so that decrypted and decoded dowlink payload can be examined in the Console.</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>Webhook statuses being shown as pending regardless of their actual condition.</li>
-<li>Consistent ordering of entities with equal values for the sort field.</li>
-<li>Fix <code>xtime</code> sent to LBS gateways for Class C downlinks.</li>
-<li>Tenant settings being available in non-multi-tenancy environments in the Console.</li>
+<li>Join-accept scheduling if it took more than ~1.2 seconds to process the device activation with default configuration. These slow device activations can be observed when using external Join Servers.</li>
+<li>Fix issues in the webhook forms causing webhooks to be created with all message types enabled and no way of deactivating message types.</li>
+<li>Fix validation issue in the webhook form not detecting message type paths with more than 64 characters.</li>
+<li>Fix &ldquo;reactivate&rdquo;-webhook button in the Console.</li>
+<li>Port returned by the LBS LNS discovery message if standard 80/443 ports are used.</li>
 </ul>
 
           </div>
@@ -204,7 +181,7 @@
 <a href="https://www.thethingsindustries.com/docs/whats-new/">
   <div class="whats-new-800">
     <div class="whats-new-header-800">
-      <p>See what's new in V3.18.1</p>
+      <p>See what's new in V3.18.2</p>
       <p>-></p>
     </div>
   </div>
