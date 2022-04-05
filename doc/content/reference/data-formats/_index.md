@@ -428,7 +428,7 @@ The end device identifiers need to be supplied only to frontends that do not der
 
 {{% tts %}} has support for importing end devices from CSV (comma-separated values) files. This is useful when batches of end devices are managed in Microsoft Excel or any other spreadsheet or database that can export to CSV file.
 
-### End Devices {{< new-in-version "3.8.2" >}}
+### End Devices {{< new-in-version "3.18.2" >}}
 
 The CSV import in {{% tts %}} uses the following settings:
 
