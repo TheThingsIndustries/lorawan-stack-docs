@@ -57,7 +57,7 @@ ttn-lw-cli end-devices create --application-id <application-id> < devices.json
 # CSV format
 ttn-lw-cli end-devices template from-data --local-file devices.csv --format-id the-things-stack-csv \
   | ttn-lw-cli end-devices template execute \
-  | ttn-lw-cli end-devices create --application-id $APP_ID
+  | ttn-lw-cli end-devices create --application-id <application-id>
 ```
 
 {{< note >}}
