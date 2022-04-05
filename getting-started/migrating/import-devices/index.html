@@ -156,6 +156,11 @@
   </li>
 
   <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-csv/" class="">CSV File Reference</a>
+    
+  </li>
+
+  <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/faq/" class="">Migration FAQ</a>
     
   </li>
@@ -218,8 +223,12 @@
         
         <div class="content">
           <p>To import end devices, you need access to an application in The Things Stack. If you have not created one previously, see the <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/">Adding Applications</a> guide for detailed instructions.</p>
-<p>To import devices in The Things Stack, use the <code>devices.json</code> file you created by following <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/">Migrating End Devices from V2</a> or <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrate-from-chirpstack/">Migrating End Devices from ChirpStack</a>.</p>
 <p>There are two ways to import devices in The Things Stack - using <a href="https://www.thethingsindustries.com/docs/getting-started/console/">Console</a> or <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">CLI</a>.</p>
+<p>The Things Stack supports importing end devices in JSON and CSV format:</p>
+<ul>
+<li>To import devices you created by following <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/">Migrating End Devices from V2</a> or <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrate-from-chirpstack/">Migrating End Devices from ChirpStack</a>, use <strong>The Things Stack JSON</strong> format (identified by <code>the-things-stack</code>).</li>
+<li>To import devices that are in a CSV file, use the <strong>The Things Stack CSV</strong> (identified by <code>the-things-stack-csv</code>). The CSV data format is documented in <a href="https://www.thethingsindustries.com/docs/reference/data-formats/#csv">Data Formats</a>, including a handy Excel template.</li>
+</ul>
 <div class="tabs is-boxed">
   <ul>
     
@@ -245,7 +254,8 @@
     <img src="../import-end-devices.png"
          alt="import devices"/> 
 </figure>
-<p>Select <code>The Things Stack JSON</code> as the <strong>File format</strong> and upload the <code>devices.json</code> file.</p>
+<p>Select the <strong>File format</strong> and upload the file (e.g. <code>devices.json</code> or <code>devices.csv</code>).</p>
+<p>You can specify <strong>Fallback values</strong> for Frequency plan and LoRaWAN and Regional Parameters version, in case the import file does not specify these settings for the device.</p>
 <p>You can also expand the <strong>Advanced claiming and component settings</strong> to set targeted components, and set the claim authentication code to be generated.</p>
 <p>Start the import by clicking the <strong>Import end devices</strong> button.</p>
 <figure>
@@ -269,9 +279,18 @@
     <a class="button is-dark is-outlined" href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/">Learn how to install the CLI</a>
   </div>
 </div>
-<p>To import <code>devices.json</code> file in The Things Stack, run the following command with <code>ttn-lw-cli</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices create --application-id &lt;application-id&gt; &lt; devices.json
-</code></pre></div><p>This will import your devices in The Things Stack. In case any device import fails, you will see a relevant error message at the end of the output.</p>
+<p>To import a file in The Things Stack, run the following command with <code>ttn-lw-cli</code>:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># JSON format</span>
+ttn-lw-cli end-devices create --application-id &lt;application-id&gt; &lt; devices.json
+<span class="c1"># CSV format</span>
+ttn-lw-cli end-devices template from-data --local-file devices.csv --format-id the-things-stack-csv <span class="se">\
+</span><span class="se"></span>  <span class="p">|</span> ttn-lw-cli end-devices template execute <span class="se">\
+</span><span class="se"></span>  <span class="p">|</span> ttn-lw-cli end-devices create --application-id &lt;application-id&gt;
+</code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  See <a href="https://www.thethingsindustries.com/docs/devices/end-device-templates/">Device Templates</a> for advanced templating scenarios.
+</div>
+<p>This will import your devices in The Things Stack. In case any device import fails, you will see a relevant error message at the end of the output.</p>
 <p>If the import was successful, you will see your devices added to the list of end devices in your application.</p>
 </section>
 <figure>
@@ -341,10 +360,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 23 Dec 2021.
+  Last changed by Johan Stokking on 05 Apr 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
-      doc: Remove $ character from code blocks, add variables (#678)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/325271ec886e0fa17aaf6bff3dbd6c2287104aeb">
+      Document CSV data format and import (#821)
     </a>
 </p>
 
