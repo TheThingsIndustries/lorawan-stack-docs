@@ -12,7 +12,7 @@ description: ""
 ```yml
 join-servers:                 # list of Join Server interoperability configurations,
                               # used to map a JoinEUI to the Join Server
-  - file: './path/js.yml'     # relative path to a file containing Join Server configiration
+  - file: './path/js.yml'     # relative path to a file containing Join Server configuration
     join-euis:                # list of Join EUI prefixes the Join Server should handle
     - '11aa000000000000/16'
 ```
