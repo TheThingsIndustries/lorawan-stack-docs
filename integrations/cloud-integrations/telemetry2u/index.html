@@ -298,21 +298,34 @@
 <h2 id="setup-telemetry2u">Setup Telemetry2U</h2>
 <p>First <a href="https://telemetry2u.com/Identity/Account/Login">login</a> to your Telemetry2U account and navigate to <strong>Node Maintenance</strong> via <strong>Admin</strong> tab from the top menu.</p>
 <p>Click the <strong>Create New</strong> link in the top right corner to add a new LoRaWAN device.</p>
-<p>Complete the form as required.  The <strong>Description</strong>, <strong>Profile</strong>, <strong>Device EUI</strong>, <strong>Network Provider</strong> and <strong>Device Configuration</strong> are the minimum requirements. If your device is currently unsupported leave <strong>Device Configuration</strong> at the default value.  Click the <strong>Create</strong> button when complete.</p>
-<p><img src="add-device.png" alt="Add a device in Telemetry2U" title="Add a device in Telemetry2U"></p>
-<h2 id="setup-the-things-stack-integration">Setup The Things Stack Integration</h2>
-<p>From your Telemetry2U account, navigate to <strong>Setup Integration</strong> via <strong>Admin</strong> from the top menu. Select <strong>The Things Network</strong> from the <strong>Network Provider</strong> drop down box and hit the <strong>Add Integration</strong> button.</p>
-<p><img src="add-integration.png" alt="Add an integration" title="Add an integration"></p>
-<p>Select the <strong>Region</strong> your TTN account is registered under and make a copy of the <strong>Telemetry2U Token</strong> with the <strong>Copy to clipboard</strong> button.</p>
-<p>Retrieve your <strong>Application ID</strong> from The Things Stack and enter it into the <strong>Application ID</strong> field.</p>
-<p>The <strong>API Key</strong> won&rsquo;t be known until the TTN integration has been created so click the <strong>Save</strong> button and leave the browser tab open.</p>
-<p><img src="setup-integration.png" alt="Setup the integration" title="Setup the integration"></p>
-<p>Log into The Things Stack and open your application.  Using the side menu, navigate to <strong>Webhooks</strong> via <strong>Integrations</strong> and click the <strong>Add webhook</strong> button in the top right corner.</p>
-<p>Choose <strong>Telemetry2U</strong> Webhook template.</p>
-<p>Use <strong>telemetry2u</strong> as the <strong>Webhook ID</strong> and enter the <strong>Telemetry2U Token</strong> you copied to the clipboard earlier. This will be an alphanumeric string approximately 100 characters long.</p>
-<p>Use The Things Stack left hand menu to navigate to <strong>API Keys</strong>, select the downlink API key and copy its <strong>Key ID</strong> into the <strong>API Key</strong> section in the integration configuration page on Telemetry2U. Click the <strong>Save</strong> button to complete the integration.</p>
-<p><img src="ttn-api.png" alt="TTN API" title="TTN API"></p>
-<p><strong>Congratulations</strong>! Your integration is now complete and once data has been received by The Things Stack, it should become available under the <a href="https://telemetry2u.com/Reports">Telemetry2U Reports Page</a>.</p>
+<p>Next, you need to complete the device creation form.  The <strong>Description</strong>, <strong>Profile</strong>, <strong>Device EUI</strong>, <strong>Network Provider</strong> and <strong>Device Configuration</strong> are required fields. If your device is currently unsupported leave <strong>Device Configuration</strong> at the default value.  Click the <strong>Create</strong> button to finish.</p>
+<figure><img src="add-device.png"
+         alt="Add a device in Telemetry2U"/>
+</figure>
+
+<h2 id="configure-the-integration-on-the-things-stack-and-telemetry2u">Configure the Integration on The Things Stack and Telemetry2U</h2>
+<p>From your Telemetry2U account, navigate to <strong>Setup Integration</strong> via <strong>Admin</strong> tab from the top menu. Select <strong>The Things Network</strong> from the <strong>Network Provider</strong> drop down menu and hit the <strong>Add Integration</strong> button.</p>
+<p>Select the <strong>Region</strong> your The Things Stack account is registered under.</p>
+<p>Next, make a copy of the <strong>Telemetry2U Token</strong> using the <strong>Copy to clipboard</strong> button.</p>
+<p>Retrieve The Things Stack application ID and enter it into the <strong>Application ID</strong> field.</p>
+<p>To obtain the <strong>API Key</strong>, you need to configure the integration on The Things Stack end first.</p>
+<figure><img src="setup-integration.png"
+         alt="Setup the integration"/>
+</figure>
+
+<p>Log into The Things Stack and open your application. Using the left hand menu, navigate to <strong>Webhooks</strong> under <strong>Integrations</strong> on the left hand menu and click the <strong>Add webhook</strong> button in the top right corner. Choose the <strong>Telemetry2U</strong> Webhook template.</p>
+<p>Use <code>telemetry2u</code> as the <strong>Webhook ID</strong> and enter the <strong>Telemetry2U Token</strong> you copied to the clipboard in earlier steps.</p>
+<figure><img src="telemetry2u-webhook-template.png"
+         alt="Telemetry2U webhook template"/>
+</figure>
+
+<p>When you have created the integration, use The Things Stack left hand menu to navigate to <strong>API Keys</strong>, select the downlink API key that was automatically created upon instantiating the Telemetry2U Webhook template and copy its <strong>Key ID</strong> .</p>
+<figure><img src="ttn-api.png"
+         alt="TTN API"/>
+</figure>
+
+<p>Now go back to Telemetry2U and paste the key ID you copied into the <strong>API Key</strong> field in the integration configuration page.</p>
+<p>Click the <strong>Save</strong> button to complete the integration. <strong>Congratulations</strong>! Your integration is now complete and once data has been received by The Things Stack, it should become available under the <a href="https://telemetry2u.com/Reports">Telemetry2U Reports Page</a>.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   If you&rsquo;re using an unsupported device on Telemetry2U, you can select <strong>Raw Data</strong> as the report type to confirm data is being received. You may then forward a copy of the device documentation including the payload format and device EUI to Telemetry2U support via <a href="mailto:support@telemetry2u.com">email</a> and they will get your device&rsquo;s support added ASAP.
@@ -349,7 +362,7 @@
       <li><a href='#setup-telemetry2u'>Setup Telemetry2U</a></li>
     
       
-      <li><a href='#setup-the-things-stack-integration'>Setup The Things Stack Integration</a></li>
+      <li><a href='#configure-the-integration-on-the-things-stack-and-telemetry2u'>Configure the Integration on The Things Stack and Telemetry2U</a></li>
     
   </ul>
 
@@ -389,10 +402,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by telemetry2u on 06 Apr 2022.
+  Last changed by Nejra Selimović on 06 Apr 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a610c71d409cb54466cba3569fe1d72324ba1568">
-      Add Telemetry2U integration documentation (#841)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2dfe3635674c456a68e6a8a8d856032ddfb6da93">
+      doc: Nejra&#39;s updates (#845)
     </a>
 </p>
 
