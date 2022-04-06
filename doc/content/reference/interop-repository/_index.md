@@ -1,5 +1,5 @@
 ---
-title: "LoRaWAN Backend Interfaces interoperability"
+title: "LoRaWAN Backend Interfaces Interoperability"
 description: ""
 ---
 
@@ -8,8 +8,6 @@ description: ""
 <!-- more -->
 
 {{% tts %}} reads configuration from a file system. The root should contain `config.yml`, which contains various Join Servers.
-
-<!--more-->
 
 ```yml
 join-servers:                 # list of Join Server interoperability configurations,
@@ -67,7 +65,7 @@ headers:                                 # HTTP headers to send, defined as key-
   Some-Header: 'SomeValue'
 ```
 
-### The Things Join Server
+## Interoperability with The Things Join Server
 
 The Things Join Server is a stand-alone LoRaWAN Join Server that can be deployed by device makers, distributors and integrators.
 
@@ -93,7 +91,7 @@ basic-auth:
   password: 'secret'
 ```
 
-### Semtech Join Server
+## Interoperability with Semtech Join Server
 
 Semtech Join Server is a hosted LoRaWAN Join Server by Semtech for use with pre-provisioned LoRa Edge modems.
 
