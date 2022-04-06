@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Metrics | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/metrics/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Metrics">
@@ -148,6 +148,11 @@
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/metrics/" class="is-active">Metrics</a>
+    
+    
+
+
+
     
   </li>
 
@@ -332,37 +337,36 @@
 <p>In the AWS Console, open <strong>Services</strong> and go to <strong>IoT Core</strong>.</p>
 <p>In the menu on the left, open <strong>Manage</strong>, go to <strong>Things</strong> and click the thing of interest.</p>
 <p>Click the <strong>Device Shadows</strong> tab and go to <strong>lorawan</strong>. This opens the LoRaWAN shadow state that is maintained by The Things Stack.</p>
-<figure>
-    <img src="../shadow-state.png"
-         alt="Shadow State"/> 
+<figure><img src="../shadow-state.png"
+         alt="Shadow State"/>
 </figure>
 
 <p>The shadow state contains the following fields:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="p">{</span>
-  <span class="s2">&#34;reported&#34;</span><span class="o">:</span> <span class="p">{</span>
-    <span class="c1">// Timestamp when the device was last seen (activation or uplink)
-</span><span class="c1"></span>    <span class="s2">&#34;lastSeen&#34;</span><span class="o">:</span> <span class="s2">&#34;2020-08-05T13:03:22.064376156Z&#34;</span><span class="p">,</span>
-    <span class="c1">// Number of gateways that cover the device
-</span><span class="c1"></span>    <span class="s2">&#34;gateways&#34;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
-    <span class="c1">// Uplink frame counter of the session
-</span><span class="c1"></span>    <span class="s2">&#34;fCntUp&#34;</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
-    <span class="c1">// Downlink frame counter of the session (only when using end-to-end encryption)
-</span><span class="c1"></span>    <span class="s2">&#34;fCntDown&#34;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="c1">// LoRaWAN DevAddr (hex)
-</span><span class="c1"></span>    <span class="s2">&#34;devAddr&#34;</span><span class="o">:</span> <span class="s2">&#34;270000B0&#34;</span><span class="p">,</span>
-    <span class="c1">// Unique session ID
-</span><span class="c1"></span>    <span class="s2">&#34;sessionID&#34;</span><span class="o">:</span> <span class="s2">&#34;AXVvI/CZfJfog5g2zvVKfw==&#34;</span><span class="p">,</span>
-    <span class="c1">// LoRaWAN AppSKey (only when using end-to-end encryption)
-</span><span class="c1"></span>    <span class="s2">&#34;appSKey&#34;</span><span class="o">:</span> <span class="s2">&#34;F6AEEDFFA15F51C84B28EA2FA72716C8&#34;</span><span class="p">,</span>
-    <span class="c1">// Best RSSI (received signal strength indicator) of the last uplink message
-</span><span class="c1"></span>    <span class="s2">&#34;rssi&#34;</span><span class="o">:</span> <span class="o">-</span><span class="mi">38</span><span class="p">,</span>
-    <span class="c1">// Best SNR (signal-to-noise ratio) of the last uplink message
-</span><span class="c1"></span>    <span class="s2">&#34;snr&#34;</span><span class="o">:</span> <span class="mi">9</span><span class="p">,</span>
-    <span class="c1">// Timestamp when the device joined the network
-</span><span class="c1"></span>    <span class="s2">&#34;activated&#34;</span><span class="o">:</span> <span class="s2">&#34;2020-08-05T13:01:57.252799045Z&#34;</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;reported&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Timestamp when the device was last seen (activation or uplink)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;lastSeen&#34;</span><span class="o">:</span> <span class="s2">&#34;2020-08-05T13:03:22.064376156Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Number of gateways that cover the device
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;gateways&#34;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Uplink frame counter of the session
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;fCntUp&#34;</span><span class="o">:</span> <span class="mi">3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Downlink frame counter of the session (only when using end-to-end encryption)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;fCntDown&#34;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// LoRaWAN DevAddr (hex)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;devAddr&#34;</span><span class="o">:</span> <span class="s2">&#34;270000B0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Unique session ID
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;sessionID&#34;</span><span class="o">:</span> <span class="s2">&#34;AXVvI/CZfJfog5g2zvVKfw==&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// LoRaWAN AppSKey (only when using end-to-end encryption)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;appSKey&#34;</span><span class="o">:</span> <span class="s2">&#34;F6AEEDFFA15F51C84B28EA2FA72716C8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Best RSSI (received signal strength indicator) of the last uplink message
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;rssi&#34;</span><span class="o">:</span> <span class="o">-</span><span class="mi">38</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Best SNR (signal-to-noise ratio) of the last uplink message
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;snr&#34;</span><span class="o">:</span> <span class="mi">9</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Timestamp when the device joined the network
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;activated&#34;</span><span class="o">:</span> <span class="s2">&#34;2020-08-05T13:01:57.252799045Z&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/aws-iot/messages/">← Messages</a>
@@ -435,7 +439,7 @@
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

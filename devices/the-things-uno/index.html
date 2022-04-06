@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>The Things Uno | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/the-things-uno/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="The Things Uno">
@@ -162,9 +162,8 @@
         </h1>
         
         <div class="content">
-          <figure class="float plain">
-    <img src="TheThingsUno.png"
-         alt="The Things Uno"/> 
+          <figure class="float plain"><img src="TheThingsUno.png"
+         alt="The Things Uno"/>
 </figure>
 
 <p>This section will help you get started with using The Things Uno on The Things Stack.</p>
@@ -176,23 +175,20 @@
 <p>Download the latest release of the <a href="https://www.arduino.cc/en/Main/Software">Arduino Software (IDE)</a>, <a href="https://www.arduino.cc/en/Guide">install</a> it on your operating system and run it.</p>
 <p>In the Arduino IDE, select <strong>Sketch → Include Library → Manage Libraries&hellip;</strong> or <strong>Tools → Manage Libraries&hellip;</strong> from the menu bar.</p>
 <p>In the <strong>Library Manager</strong> window, search for <code>TheThingsNetwork</code> Arduino library and install it from the search results. When the installation finishes, select the <strong>Close</strong> button.</p>
-<figure class="plain">
-    <img src="LibraryManager.png"
-         alt="Library Manager"/> 
+<figure class="plain"><img src="LibraryManager.png"
+         alt="Library Manager"/>
 </figure>
 
 <h2 id="connecting-things-uno-to-your-computer">Connecting Things Uno to your Computer</h2>
 <p>To begin, connect your Things Uno to the computer using a micro-USB cable.</p>
 <p>In the Arduino IDE, select <strong>Tools → Board → Arduino Leonardo</strong> from the menu bar. This will tell your Arduino IDE to upload sketches to your Things Uno board.</p>
-<figure>
-    <img src="Board.png"
-         alt="Selecting board"/> 
+<figure><img src="Board.png"
+         alt="Selecting board"/>
 </figure>
 
 <p>Select <strong>Tools → Port → Serial port</strong> (the serial port associated with your Things Uno) from the menu bar.</p>
-<figure>
-    <img src="Port.png"
-         alt="Selecting port"/> 
+<figure><img src="Port.png"
+         alt="Selecting port"/>
 </figure>
 
 <h2 id="creating-an-application">Creating an Application</h2>
@@ -200,7 +196,7 @@
 <h2 id="writing-your-first-sketch-to-get-the-deveui-and-appeui">Writing your First Sketch to Get the DevEUI and AppEUI</h2>
 <p>In this section, you will learn how to write and upload your first sketch to The Things Uno. This sketch prints <strong>DevEUI</strong>, <strong>AppEUI</strong>, and some useful information that you will need to register your Things Uno with The Things Stack.</p>
 <p>In the Arduino IDE, select <strong>File → New</strong> from the menu bar. A new window will open with the default Arduino sketch.</p>
-<pre><code>void setup() {
+<pre tabindex="0"><code>void setup() {
   // put your setup code here, to run once:
 
 }
@@ -210,14 +206,14 @@ void loop() {
 
 }
 </code></pre><p>Select <strong>Sketch → Include Library → The Things Network</strong> from the menu bar. The following code will add to the top of the sketch.</p>
-<pre><code>#include &lt;TheThingsNetwork.h&gt;
+<pre tabindex="0"><code>#include &lt;TheThingsNetwork.h&gt;
 </code></pre><p>This will import <strong>The Things Network</strong> Arduino library to your sketch and provide you with some useful functions to work with LoRaWAN.</p>
 <p>Type the following lines to create two serial port objects for <strong>Serial</strong> and <strong>Serial1</strong>.</p>
-<pre><code>#define loraSerial Serial1
+<pre tabindex="0"><code>#define loraSerial Serial1
 #define debugSerial Serial
 </code></pre><p>The <strong>Serial</strong> object allows communication between <strong>The Things Uno</strong> and your <strong>computer</strong>. Also, the <strong>Serial1</strong> object allows communication between <strong>The Things Uno</strong> and the <strong>Microchip LoRa module</strong>.</p>
 <p>Type the following line to define the frequency plan of your Things Uno. Replace <code>REPLACE_ME</code> with <code>TTN_FP_EU868</code> or <code>TTN_FP_US915</code> depending on the frequency plan of your Things Uno and your country/region.</p>
-<pre><code>// Replace REPLACE_ME with TTN_FP_EU868 or TTN_FP_US915
+<pre tabindex="0"><code>// Replace REPLACE_ME with TTN_FP_EU868 or TTN_FP_US915
 #define freqPlan REPLACE_ME
 </code></pre><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
@@ -225,25 +221,25 @@ void loop() {
 </div>
 
 <p>Type the following line after the <code>freqPlan</code>.</p>
-<pre><code>TheThingsNetwork ttn(loraSerial, debugSerial, freqPlan);
+<pre tabindex="0"><code>TheThingsNetwork ttn(loraSerial, debugSerial, freqPlan);
 </code></pre><p>This will create a <code>TheThingsNetwork</code> object named <code>ttn</code> with <code>loraSerial</code>, <code>debugSerial</code>, and <code>freqPlan</code> as inputs.</p>
 <p>Type the following lines inside the <code>setup()</code> function.</p>
-<pre><code>debugSerial.begin(9600);
+<pre tabindex="0"><code>debugSerial.begin(9600);
 loraSerial.begin(57600);
 </code></pre><p>This will call the <code>begin()</code> function for each serial port object to set the baud rate for serial data transmission. Use <code>9600</code> and <code>57600</code> bits per second for <code>debugSerial</code> and <code>loraSerial</code> respectively.</p>
 <p>Type the following lines just after the <code>loraSerial.begin(57600);</code>.</p>
-<pre><code>while (!debugSerial) {
+<pre tabindex="0"><code>while (!debugSerial) {
     ;
 }
 </code></pre><p>This will tell your code not to jump to the next line until the <strong>Serial Monitor</strong> is ready.</p>
 <p>Type the following code snippet just after the <strong>while</strong> loop.</p>
-<pre><code>debugSerial.println(&quot;-- STATUS&quot;);
+<pre tabindex="0"><code>debugSerial.println(&#34;-- STATUS&#34;);
 ttn.showStatus();
 </code></pre><p>The <code>showStatus()</code> function retrieves some useful device-specific information from the Microchip LoRa module and prints them on the <strong>Serial Monitor</strong>.</p>
 <p>After editing your sketch, <strong>save</strong> it as <code>TheThingsUnoTest</code> by selecting <strong>File → Save As</strong> from the menu bar.</p>
 <p>Once completed your Arduino sketch should look something like this:</p>
 <p><em><strong>TheThingsUnoTest.ino</strong></em></p>
-<pre><code>#include &lt;TheThingsNetwork.h&gt;
+<pre tabindex="0"><code>#include &lt;TheThingsNetwork.h&gt;
  
 #define loraSerial Serial1
 #define debugSerial Serial
@@ -262,7 +258,7 @@ void setup()
     ;
     }
 
-  debugSerial.println(&quot;-- STATUS&quot;);
+  debugSerial.println(&#34;-- STATUS&#34;);
   ttn.showStatus();
 
 }
@@ -273,7 +269,7 @@ void loop()
 </code></pre><p>Make sure that your Things Uno board is connected to your computer and select the <strong>Upload</strong> button in the toolbar. The IDE verifies your sketch again and uploads it to your Things Uno. During this process, the <strong>TX/RX</strong> LEDs on your Things Uno board should blink, indicating the information is traveling between the Things Uno and your computer.</p>
 <p>Once uploaded, your sketch will immediately start to run but you cannot see any output unless you open the Arduino <strong>Serial Monitor</strong>. The Arduino Serial Monitor is a tool that can be used to print information passing through the serial port.</p>
 <p>In the Arduino IDE, select <strong>Tools → Serial Monitor</strong> from the menu bar. Once open the Serial Monitor prints something similar to the following output.</p>
-<pre><code>-- STATUS
+<pre tabindex="0"><code>-- STATUS
 EUI: 0004A30B001B7AD2
 Battery: 3223
 AppEUI: 70B3D57EF000001C
@@ -288,9 +284,8 @@ Total airtime: 0.00 s
 <p>It’s time to register your Things Uno with The Things Stack.</p>
 <p>On the <strong>Applications</strong> page, select your application to go to its overview page.</p>
 <p>Select <strong>+ Add end device</strong> in the bottom-right of the page.</p>
-<figure>
-    <img src="AddEndDevice.png"
-         alt="Add end device"/> 
+<figure><img src="AddEndDevice.png"
+         alt="Add end device"/>
 </figure>
 
 <p>The Things Stack provides two options to register your end device.</p>
@@ -308,9 +303,8 @@ Total airtime: 0.00 s
 <li>Firmware Ver. – <code>quickstart</code> or <code>abp</code>. We recommend you to use <code>quickstart</code> as it supports <a href="https://www.thethingsindustries.com/docs/devices/abp-vs-otaa/#otaa">OTAA</a>.</li>
 <li>Profile (Region) – Choose <code>EU_863_870</code> or <code>US_902_928</code> to match with your board.</li>
 </ul>
-<figure>
-    <img src="RegisterEndDeviceRepo.png"
-         alt="Register End Device from LoRaWAN repository"/> 
+<figure><img src="RegisterEndDeviceRepo.png"
+         alt="Register End Device from LoRaWAN repository"/>
 </figure>
 
 <p>Under the <strong>Enter registration data</strong>, select/fill the following mandatory fields.</p>
@@ -323,9 +317,8 @@ Total airtime: 0.00 s
 <li>End device ID – Give your device a unique human-readable <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">identifier</a>.</li>
 </ul>
 <p>Select the <strong>Register end device</strong> button.</p>
-<figure>
-    <img src="RegisterEndDeviceRepoOTAA.png"
-         alt="Register End Device from LoRaWAN repository OTAA"/> 
+<figure><img src="RegisterEndDeviceRepoOTAA.png"
+         alt="Register End Device from LoRaWAN repository OTAA"/>
 </figure>
 
 <p>If you have selected <code>abp</code> from the <strong>Firmware Ver.</strong> in the previous step:</p>
@@ -337,9 +330,8 @@ Total airtime: 0.00 s
 <li>End device ID – Give your device a unique human-readable <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">identifier</a>.</li>
 </ul>
 <p>Select the <strong>Register end device</strong> button.</p>
-<figure>
-    <img src="RegisterEndDeviceRepoABP.png"
-         alt="Register End Device from LoRaWAN repository ABP"/> 
+<figure><img src="RegisterEndDeviceRepoABP.png"
+         alt="Register End Device from LoRaWAN repository ABP"/>
 </figure>
 
 <p>Once registered, you will be redirected to the overview page of the newly registered device, where you can find the generated <strong>AppKey</strong> which we’ll need next.</p>
@@ -347,16 +339,16 @@ Total airtime: 0.00 s
 <p>In this section, you will learn how to use the <strong>Over the air activation (OTAA)</strong> method to activate your Things Uno with The Things Stack. To do so you had to register your Things Uno with The Things Stack using <strong>From the LoRaWAN Device Repository</strong> with the <code>quickstart</code> firmware version.</p>
 <p>Open the <em><strong>TheThingsUnoTest</strong></em> sketch with your Arduino IDE if not already open.</p>
 <p>Type the following code after the <code>#include &lt;TheThingsNetwork.h&gt;</code>.</p>
-<pre><code>// Set your AppEUI and AppKey
-const char *appEui = &quot;0000000000000000&quot;;
-const char *appKey = &quot;00000000000000000000000000000000&quot;;
+<pre tabindex="0"><code>// Set your AppEUI and AppKey
+const char *appEui = &#34;0000000000000000&#34;;
+const char *appKey = &#34;00000000000000000000000000000000&#34;;
 </code></pre><p>Replace the <code>appEUI</code> with the <strong>AppEUI</strong> you have copied from the previous sketch’s output.</p>
 <p>Replace the <code>appKey</code> with the <strong>AppKey</strong> you have generated with the <strong>From the LoRaWAN device repository</strong> option.</p>
 <p>Type the following code in the <code>setup()</code> function just after the <code>loraSerial.begin(57600)</code>.</p>
-<pre><code>debugSerial.println(&quot;-- JOIN&quot;);
+<pre tabindex="0"><code>debugSerial.println(&#34;-- JOIN&#34;);
 ttn.join(appEui, appKey);
 </code></pre><p>Upload the sketch to your <strong>Things Uno</strong> and then open the <strong>Serial Monitor</strong>. You should see something like this.</p>
-<pre><code>-- STATUS
+<pre tabindex="0"><code>-- STATUS
 EUI: 0004A30B001B7AD2
 Battery: 3223
 AppEUI: 70B3D57EF000001C
@@ -376,16 +368,15 @@ Sending: mac join otaa
 Join accepted. Status: 00000401
 DevAddr: 26012E93
 </code></pre><p>Meanwhile, you should see something like this in the <strong>Live data</strong> section on your <strong>application overview</strong> page.</p>
-<figure>
-    <img src="TheThingsUnoJoinAccept.png"
-         alt="Join accept"/> 
+<figure><img src="TheThingsUnoJoinAccept.png"
+         alt="Join accept"/>
 </figure>
 
 <p>Your device is now activated and ready to send/receive messages to/from The Things Stack!.</p>
 <h2 id="sending-messages">Sending Messages</h2>
 <p>With The Things Stack, you can send small packets of data under certain limitations. The following example will explain to you how to send the status of the Things Uno’s built-in LED (pin 13) as a simple message.</p>
 <p>In the Arduino IDE, go back to your <em><strong>TheThingsUnoTest</strong></em> sketch and replace the <code>loop()</code> function with the following lines:</p>
-<pre><code>debugSerial.println(&quot;-- LOOP&quot;);
+<pre tabindex="0"><code>debugSerial.println(&#34;-- LOOP&#34;);
     
 // Prepare array of 1 byte to indicate LED status
 byte data[1];
@@ -402,22 +393,21 @@ delay(10000);
 <li>The <code>delay(10000)</code> makes <strong>10 seconds</strong> delay between each message</li>
 </ul>
 <p>After editing, <strong>upload</strong> the sketch to your <strong>Things Uno</strong>. Then in the Arduino IDE, open the <strong>Serial Monitor</strong>. You should see something like this:</p>
-<pre><code>-- LOOP
+<pre tabindex="0"><code>-- LOOP
 Sending: mac tx uncnf 1 with 1 bytes
 Successful transmission
 </code></pre><p>The above output indicates that the data has been sent from your Things Uno side to The Things Stack.</p>
 <h2 id="decoding-the-received-messages">Decoding the received messages</h2>
 <p>Now let’s confirm whether the data has been received to The Things Stack. On the <strong>Applications</strong> page, select the <strong>Live data</strong> tab. You should now see the messages come in. What you see on the <strong>Live data</strong> tab are the raw payloads in hex-formatted, space-separated bytes.</p>
-<figure>
-    <img src="TheThingsUnoRawData.png"
-         alt="Raw payload"/> 
+<figure><img src="TheThingsUnoRawData.png"
+         alt="Raw payload"/>
 </figure>
 
 <p>These payloads are difficult to understand so let’s decode them into meaningful fields.</p>
 <p>On the <strong>Applications</strong> page, select the <strong>Payload formatter</strong> tab and then select <strong>Uplink</strong>.</p>
 <p>Under <strong>Setup</strong>, from the <strong>Formatter type</strong> drop-down list select <strong>Javascript</strong>.</p>
 <p>Copy and paste the following <strong>JavaScript</strong> code in the <strong>Formatter parameter</strong> box.</p>
-<pre><code>function Decoder(bytes, port) {
+<pre tabindex="0"><code>function Decoder(bytes, port) {
   // Decode an uplink message from a buffer
   // (array) of bytes to an object of fields.
   var decoded = {};
@@ -427,15 +417,13 @@ Successful transmission
   return decoded;
 }
 </code></pre><p>Select the <strong>Save changes</strong> button.</p>
-<figure>
-    <img src="PayloadFormatter.png"
-         alt="Payload Formatter"/> 
+<figure><img src="PayloadFormatter.png"
+         alt="Payload Formatter"/>
 </figure>
 
 <p>Now go back again to the <strong>Live data</strong> tab. The new messages should now show their <strong>decoded</strong> payload.</p>
-<figure>
-    <img src="TheThingsUnoLiveData.png"
-         alt="Formatted Data"/> 
+<figure><img src="TheThingsUnoLiveData.png"
+         alt="Formatted Data"/>
 </figure>
 
 <p>You have now completed the quickstart and are able to activate the Things Uno, send messages to an application, and decode them from the server side to get meaningful data. Go build something!</p>
@@ -540,7 +528,7 @@ Successful transmission
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

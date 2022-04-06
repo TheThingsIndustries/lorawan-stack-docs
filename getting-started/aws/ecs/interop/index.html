@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Interoperability | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/interop/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="LoRaWAN Backend Interfaces">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Interoperability">
@@ -267,9 +267,9 @@
 <li>if you use <code>mutual-authentication</code>, then use the certbot task to request a certificate. It will be put into AWS Secrets Manager, and then fetched by The Things Stack</li>
 </ul>
 <p>If you&rsquo;re using <code>mutual-authentication</code>, you need to populate client certificates stored in the interop config bucket, created in template <code>2-4b-routing-s3</code>. In this bucket you need to place a file <code>config.yml</code>, which contains a map <code>&lt;net-id&gt;: &lt;ca.pem&gt;</code>. Example configuration:</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">000000</span><span class="p">:</span><span class="w"> </span>ca<span class="m">-000000.</span>pem<span class="w">
-</span><span class="w"></span><span class="k">000009</span><span class="p">:</span><span class="w"> </span>ca<span class="m">-000009.</span>pem<span class="w">
-</span></code></pre></div><h3 id="step-3-deploy-the-crypto-server">Step 3: deploy the Crypto Server</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">000000</span><span class="p">:</span><span class="w"> </span><span class="l">ca-000000.pem</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">000009</span><span class="p">:</span><span class="w"> </span><span class="l">ca-000009.pem</span><span class="w">
+</span></span></span></code></pre></div><h3 id="step-3-deploy-the-crypto-server">Step 3: deploy the Crypto Server</h3>
 <p>Deploy the template <code>200-1-crypto</code>. This template is designed to be deployed in a separate account, but same region. No other templates are needed for Crypto Server, this is a self-contained deployment.</p>
 <ul>
 <li>the tuple <code>${Cluster}.${Environment}.${NetworkName}</code> should NOT be identical. We suggest using the same <code>NetworkName</code> and <code>Environment</code>, but different <code>Cluster</code></li>
@@ -319,9 +319,9 @@
 <li>if you use <code>mutual-authentication</code>, then use the certbot task to request a certificate. It will be put into AWS Secrets Manager, and then fetched by The Things Stack</li>
 </ul>
 <p>If you&rsquo;re using <code>mutual-authentication</code>, you need to populate client certificates stored in the interop config bucket, created in template <code>2-4b-routing-s3</code>. In this bucket you need to place a file <code>config.yml</code>, which contains a map <code>&lt;net-id&gt;: &lt;ca.pem&gt;</code>. Example configuration:</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">000000</span><span class="p">:</span><span class="w"> </span>ca<span class="m">-000000.</span>pem<span class="w">
-</span><span class="w"></span><span class="k">000009</span><span class="p">:</span><span class="w"> </span>ca<span class="m">-000009.</span>pem<span class="w">
-</span></code></pre></div><h3 id="step-3-activate-the-connection">Step 3: activate the connection</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">000000</span><span class="p">:</span><span class="w"> </span><span class="l">ca-000000.pem</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">000009</span><span class="p">:</span><span class="w"> </span><span class="l">ca-000009.pem</span><span class="w">
+</span></span></span></code></pre></div><h3 id="step-3-activate-the-connection">Step 3: activate the connection</h3>
 <p>Go through the stack and turn on switches for Interop:</p>
 <ul>
 <li><code>3-2-load-balancer</code>: set <code>InteropEnabled</code> to value other than <code>disabled</code></li>
@@ -421,7 +421,7 @@
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

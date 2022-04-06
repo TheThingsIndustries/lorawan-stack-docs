@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>InfluxDB Cloud 2.0 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/influxdb-cloud/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="InfluxDB Cloud 2.0">
@@ -298,111 +298,102 @@
 </ol>
 <h2 id="setup-influxdb-cloud-20">Setup InfluxDB Cloud 2.0</h2>
 <p>Log in to your InfluxDB Cloud 2.0 account and select the <strong>Data</strong> on the left hand menu.</p>
-<figure>
-    <img src="influxdb-data-dashboard.png"
-         alt="InfluxDB Data dashboard"/> 
+<figure><img src="influxdb-data-dashboard.png"
+         alt="InfluxDB Data dashboard"/>
 </figure>
 
 <p>On the <strong>Buckets</strong> tab, click the <strong>Create Bucket</strong> button to create a new bucket.</p>
 <p>Give your bucket a name, choose how long the data will remain in the database and finish by clicking <strong>Create</strong>.</p>
-<figure>
-    <img src="creating-a-bucket.png"
-         alt="Creating a bucket"/> 
+<figure><img src="creating-a-bucket.png"
+         alt="Creating a bucket"/>
 </figure>
 
 <p>Next, on the <strong>Tokens</strong> tab, select <strong>Generate</strong> to generate a new <strong>Read/Write Token</strong>.</p>
 <p>Enter the <strong>Description</strong> and select the bucket you wish to enable reading and writing for.</p>
-<figure>
-    <img src="generating-a-token.png"
-         alt="Generating a read/write token"/> 
+<figure><img src="generating-a-token.png"
+         alt="Generating a read/write token"/>
 </figure>
 
 <p>Go to the <strong>Telegraf</strong> tab and select <strong>Create Configuration</strong>.</p>
 <p>When asked <strong>What do you want to monitor?</strong>, select <strong>System</strong>.</p>
-<figure>
-    <img src="monitoring-system.png"
-         alt="Selecting to monitor a system"/> 
+<figure><img src="monitoring-system.png"
+         alt="Selecting to monitor a system"/>
 </figure>
 
 <p>Name your configuration, select <strong>Create and Verify</strong> and then <strong>Finish</strong>.</p>
 <p>Once the configuration is created, you can simply click on its name in the <strong>Telegraf</strong> tab and download the configuration file. You can further edit this file for usage with the MQTT or Webhook integration.</p>
-<figure>
-    <img src="telegraf-config.png"
-         alt="Auto-generated Telegraf configuration"/> 
+<figure><img src="telegraf-config.png"
+         alt="Auto-generated Telegraf configuration"/>
 </figure>
 
 <h2 id="configure-telegraf-for-mqtt-integration">Configure Telegraf for MQTT Integration</h2>
 <p>This section shows you how to configure your Telegraf agent with <a href="https://github.com/influxdata/telegraf/tree/master/plugins/inputs/mqtt_consumer">MQTT Consumer</a> plugin used for connecting to The Things Stack <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a>.</p>
 <p>The information needed to configure Telegraf can be found on the <strong>MQTT</strong> tab in The Things Stack <strong>Integrations</strong> menu.</p>
-<figure>
-    <img src="tts-mqtt-info.png"
-         alt="The Things Stack MQTT server info"/> 
+<figure><img src="tts-mqtt-info.png"
+         alt="The Things Stack MQTT server info"/>
 </figure>
 
 <p>Once you have downloaded the Telegraf configuration file as described in <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/influxdb-cloud/">InfluxDB Cloud 2.0 Setup</a>, update it by adding the following lines and modifying them according to your MQTT server info:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[[</span>inputs.mqtt_consumer<span class="o">]]</span>
-#
-<span class="c1"># MQTT broker URLs to be used. The format is scheme://host:port, schema can be tcp, ssl, or ws.</span>
-  <span class="nv">servers</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&#34;tcp://localhost:1883&#34;</span><span class="o">]</span>
-#
-<span class="c1"># Topics to subscribe to</span>
-  <span class="nv">topics</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&#34;#&#34;</span><span class="o">]</span>
-#
-<span class="c1"># Username and password</span>
-  <span class="nv">username</span> <span class="o">=</span> <span class="s2">&#34;app-example&#34;</span>
-  <span class="nv">password</span> <span class="o">=</span> <span class="s2">&#34;NNSXS.JNSBLIV34VXYXS7D4ZWV2IKPTGJM3DFRGO6TYDA.OHBQWSVL7Y..........&#34;</span>
-#
-<span class="c1"># Needed only if your payload type is string, since Telegraf does not forward data of this type by default</span>
-  <span class="nv">json_string_fields</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&#34;uplink_message_frm_payload&#34;</span><span class="o">]</span>
-#
-<span class="c1"># Define the message format</span>
-  <span class="nv">data_format</span> <span class="o">=</span> <span class="s2">&#34;json&#34;</span>
-</code></pre></div><p>Next, you need to copy the previously generated token from the <strong>Tokens</strong> tab and export it to an environmental variable to be used by the InfluxDB <strong>output plugin</strong>, or you can simply pass it directly as a <code>token</code> value in the configuration file. You can set the environmental variable by using the following command in your terminal:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">INFLUX_TOKEN</span><span class="o">=</span><span class="s2">&#34;paste your token here&#34;</span>
-</code></pre></div><p>Run the Telegraf agent in your terminal with the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">telegraf --config /path/to/custom/telegraf.conf
-</code></pre></div><h2 id="configure-telegraf-and-the-things-stack-for-webhook-integration">Configure Telegraf and The Things Stack for Webhook Integration</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[[</span>inputs.mqtt_consumer<span class="o">]]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># MQTT broker URLs to be used. The format is scheme://host:port, schema can be tcp, ssl, or ws.</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">servers</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&#34;tcp://localhost:1883&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Topics to subscribe to</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">topics</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&#34;#&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Username and password</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">username</span> <span class="o">=</span> <span class="s2">&#34;app-example&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">password</span> <span class="o">=</span> <span class="s2">&#34;NNSXS.JNSBLIV34VXYXS7D4ZWV2IKPTGJM3DFRGO6TYDA.OHBQWSVL7Y..........&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Needed only if your payload type is string, since Telegraf does not forward data of this type by default</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">json_string_fields</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&#34;uplink_message_frm_payload&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Define the message format</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">data_format</span> <span class="o">=</span> <span class="s2">&#34;json&#34;</span>
+</span></span></code></pre></div><p>Next, you need to copy the previously generated token from the <strong>Tokens</strong> tab and export it to an environmental variable to be used by the InfluxDB <strong>output plugin</strong>, or you can simply pass it directly as a <code>token</code> value in the configuration file. You can set the environmental variable by using the following command in your terminal:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">INFLUX_TOKEN</span><span class="o">=</span><span class="s2">&#34;paste your token here&#34;</span>
+</span></span></code></pre></div><p>Run the Telegraf agent in your terminal with the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">telegraf --config /path/to/custom/telegraf.conf
+</span></span></code></pre></div><h2 id="configure-telegraf-and-the-things-stack-for-webhook-integration">Configure Telegraf and The Things Stack for Webhook Integration</h2>
 <p>This section shows you how to configure the Telegraf agent with <a href="https://github.com/influxdata/telegraf/blob/master/plugins/inputs/http_listener_v2/">HTTP Listener v2</a> plugin and how to create a belonging <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/creating-webhooks/">Webhook integration</a> on The Things Stack.</p>
 <p>Update the Telegraf configuration you previously downloaded as described in <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/influxdb-cloud/">InfluxDB Cloud 2.0 Setup</a> by adding the following lines and modifying them according to your setup:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="o">[[</span>inputs.http_listener_v2<span class="o">]]</span>
-#
-<span class="c1"># Address and port to host HTTP listener on</span>
-  <span class="nv">service_address</span> <span class="o">=</span> <span class="s2">&#34;:8080&#34;</span>
-#
-<span class="c1"># Path to listen to</span>
-  <span class="nv">path</span> <span class="o">=</span> <span class="s2">&#34;/telegraf&#34;</span>
-#
-<span class="c1"># HTTP methods to accept</span>
-  <span class="nv">methods</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&#34;POST&#34;</span><span class="o">]</span>
-#
-<span class="c1"># Needed only if your payload type is string, since Telegraf does not forward data of this type by default</span>
-  <span class="nv">json_string_fields</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&#34;uplink_message_frm_payload&#34;</span><span class="o">]</span>
-#
-<span class="c1"># Define the message format</span>
-  <span class="nv">data_format</span> <span class="o">=</span> <span class="s2">&#34;json&#34;</span>
-</code></pre></div><p>Copy the generated token from the <strong>Tokens</strong> tab and use it as a <code>token</code> value for the <strong>output plugin</strong> in your Telegraf configuration file, or export it to an environmental variable with the following command in your terminal:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">INFLUX_TOKEN</span><span class="o">=</span><span class="s2">&#34;paste your token here&#34;</span>
-</code></pre></div><p>Start the Telegraf agent by running the following command in the terminal:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">telegraf --config /path/to/custom/telegraf.conf
-</code></pre></div><p>In The Things Stack Console, <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/creating-webhooks/">create a new webhook</a> with JSON <strong>Webhook format</strong>, set the <strong>Base URL</strong> to <code>http://localhost:8080/telegraf</code> and tick the box next to the message types you want to enable this webhook for.</p>
-<figure>
-    <img src="tts-webhook-info.png"
-         alt="Creating webhook on The Things Stack"/> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="o">[[</span>inputs.http_listener_v2<span class="o">]]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Address and port to host HTTP listener on</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">service_address</span> <span class="o">=</span> <span class="s2">&#34;:8080&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Path to listen to</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">path</span> <span class="o">=</span> <span class="s2">&#34;/telegraf&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># HTTP methods to accept</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">methods</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&#34;POST&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Needed only if your payload type is string, since Telegraf does not forward data of this type by default</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">json_string_fields</span> <span class="o">=</span> <span class="o">[</span><span class="s2">&#34;uplink_message_frm_payload&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Define the message format</span>
+</span></span><span class="line"><span class="cl">  <span class="nv">data_format</span> <span class="o">=</span> <span class="s2">&#34;json&#34;</span>
+</span></span></code></pre></div><p>Copy the generated token from the <strong>Tokens</strong> tab and use it as a <code>token</code> value for the <strong>output plugin</strong> in your Telegraf configuration file, or export it to an environmental variable with the following command in your terminal:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">INFLUX_TOKEN</span><span class="o">=</span><span class="s2">&#34;paste your token here&#34;</span>
+</span></span></code></pre></div><p>Start the Telegraf agent by running the following command in the terminal:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">telegraf --config /path/to/custom/telegraf.conf
+</span></span></code></pre></div><p>In The Things Stack Console, <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/creating-webhooks/">create a new webhook</a> with JSON <strong>Webhook format</strong>, set the <strong>Base URL</strong> to <code>http://localhost:8080/telegraf</code> and tick the box next to the message types you want to enable this webhook for.</p>
+<figure><img src="tts-webhook-info.png"
+         alt="Creating webhook on The Things Stack"/>
 </figure>
 
 <p>Keep in mind that Telegraf agent can be hosted in a remote environment as well. In that case, you need to adjust the <strong>Base URL</strong> according to your setup.</p>
 <h2 id="monitor-your-data">Monitor Your Data</h2>
 <p>Click the <strong>Explore</strong> tab on the left in InfluxDB Cloud 2.0. Select your bucket in the <strong>FROM</strong> window in the bottom. Next, you have to filter your measurements depending on the type of integration.</p>
 <p>If you created an MQTT integration, select <strong>_measurement</strong> on the drop-down menu in the <strong>Filter</strong> window and tick the <strong>mqtt_consumer</strong> box. Then you can choose the topic and parameter you wish to monitor.</p>
-<figure>
-    <img src="influxdb-mqtt.png"
-         alt="Monitoring the MQTT data"/> 
+<figure><img src="influxdb-mqtt.png"
+         alt="Monitoring the MQTT data"/>
 </figure>
 
 <p>Otherwise, if you are using Webhook integration, select <strong>_measurement</strong> on the drop-down menu in the <strong>Filter</strong> window and tick the <strong>http_listener_v2</strong> box. In another <strong>Filter</strong> window, you can select the <strong>uplink_message_decoded_payload</strong> and click the <strong>Submit</strong> field on the right to see the incoming data.</p>
-<figure>
-    <img src="influxdb-http.png"
-         alt="Monitoring the HTTP data"/> 
+<figure><img src="influxdb-http.png"
+         alt="Monitoring the HTTP data"/>
 </figure>
         </div>
         
@@ -496,7 +487,7 @@
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Cloud Studio | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cloudstudio/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Cloud Studio">
@@ -140,6 +140,11 @@
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cloudstudio/" class="is-active">Cloud Studio</a>
+    
+    
+
+
+
     
   </li>
 
@@ -288,9 +293,8 @@
 <h2 id="setup-gear-studio">Setup Gear Studio</h2>
 <p>When you log in to the Gear Studio, you first go through the procedure of creating a <strong>Facility</strong> and then you are presented with the dashboard in the <strong>Monitoring</strong> mode.</p>
 <p>To be able to make changes to the Gear Studio setup, you first need to switch to the <strong>Settings</strong> mode by clicking on the nut icon in the upper left, as shown on the image below.</p>
-<figure>
-    <img src="dashboard.png"
-         alt="Cloud Studio dashboard"/> 
+<figure><img src="dashboard.png"
+         alt="Cloud Studio dashboard"/>
 </figure>
 
 <h3 id="create-a-custom-device-model">Create a Custom Device Model</h3>
@@ -298,68 +302,63 @@
 <p>In this guide, we show how to create a custom <strong>Seeeduino LoRaWAN</strong> model. If your device&rsquo;s model is already defined in Gear Studio, you can skip this subsection and go directly to <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cloudstudio/#add-a-new-device">Add a New Device</a> subsection below.</p>
 <p>To create a new device model, in the <strong>Settings</strong> mode, navigate to <strong>Devices → Device models</strong> and click <strong>Add</strong>.</p>
 <p>In the <strong>Details</strong> tab, provide a <strong>Description</strong> of your model, and an arbitrary <strong>Device model code</strong>. Finish with <strong>Save</strong>.</p>
-<figure>
-    <img src="creating-device-model.png"
-         alt="Creating a custom device model"/> 
+<figure><img src="creating-device-model.png"
+         alt="Creating a custom device model"/>
 </figure>
 
 <p>Next, you need to edit this model. Click on three dots next to your newly created model in the device models list and select <strong>Edit</strong>, as shown on the image below.</p>
-<figure>
-    <img src="edit-device-model.png"
-         alt="Editing a newly created device model"/> 
+<figure><img src="edit-device-model.png"
+         alt="Editing a newly created device model"/>
 </figure>
 
 <p>Switch to the <strong>Scripts</strong> tab.</p>
 <p>Next, you need to define a device configuration script for your upcoming Gear Studio device. Click the <strong>Edit</strong> button next to the <strong>Configuration</strong> window and paste the following content:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">getConfiguration</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="nx">config</span><span class="p">.</span><span class="nx">addressLabel</span> <span class="o">=</span> <span class="p">{</span><span class="nx">en</span><span class="o">:</span> <span class="s2">&#34;DevEUI&#34;</span><span class="p">,</span> <span class="nx">es</span><span class="o">:</span> <span class="s2">&#34;DevEUI&#34;</span><span class="p">};</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">getEndpoints</span><span class="p">(</span><span class="nx">deviceAddress</span><span class="p">,</span> <span class="nx">endpoints</span><span class="p">)</span>
-<span class="p">{</span>
-  <span class="nx">endpoints</span><span class="p">.</span><span class="nx">addEndpoint</span><span class="p">(</span><span class="s2">&#34;1&#34;</span><span class="p">,</span> <span class="s2">&#34;Temperature sensor&#34;</span><span class="p">,</span> <span class="nx">endpointType</span><span class="p">.</span><span class="nx">temperatureSensor</span><span class="p">);</span>
-  <span class="nx">endpoints</span><span class="p">.</span><span class="nx">addEndpoint</span><span class="p">(</span><span class="s2">&#34;2&#34;</span><span class="p">,</span> <span class="s2">&#34;humidity sensor&#34;</span><span class="p">,</span> <span class="nx">endpointType</span><span class="p">.</span><span class="nx">humiditySensor</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div><p>The example configuration script above shows how to define device&rsquo;s address label, and how to define endpoints that will receive sensor values. <a href="https://wiki.cloud.studio/en/page/199">See Cloud Studio documentation for more info about device configuration scripts</a></p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">getConfiguration</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">config</span><span class="p">.</span><span class="nx">addressLabel</span> <span class="o">=</span> <span class="p">{</span><span class="nx">en</span><span class="o">:</span> <span class="s2">&#34;DevEUI&#34;</span><span class="p">,</span> <span class="nx">es</span><span class="o">:</span> <span class="s2">&#34;DevEUI&#34;</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">getEndpoints</span><span class="p">(</span><span class="nx">deviceAddress</span><span class="p">,</span> <span class="nx">endpoints</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">endpoints</span><span class="p">.</span><span class="nx">addEndpoint</span><span class="p">(</span><span class="s2">&#34;1&#34;</span><span class="p">,</span> <span class="s2">&#34;Temperature sensor&#34;</span><span class="p">,</span> <span class="nx">endpointType</span><span class="p">.</span><span class="nx">temperatureSensor</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">endpoints</span><span class="p">.</span><span class="nx">addEndpoint</span><span class="p">(</span><span class="s2">&#34;2&#34;</span><span class="p">,</span> <span class="s2">&#34;humidity sensor&#34;</span><span class="p">,</span> <span class="nx">endpointType</span><span class="p">.</span><span class="nx">humiditySensor</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The example configuration script above shows how to define device&rsquo;s address label, and how to define endpoints that will receive sensor values. <a href="https://wiki.cloud.studio/en/page/199">See Cloud Studio documentation for more info about device configuration scripts</a></p>
 <p>You also need to define a payload parser script, in order for Gear Studio to be able to properly parse the data coming from your end device on The Things Stack. Click on the <strong>Edit</strong> button next to the <strong>Payload parser</strong> window and paste the following content:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">parseUplink</span><span class="p">(</span><span class="nx">device</span><span class="p">,</span> <span class="nx">payload</span><span class="p">)</span>
-<span class="p">{</span>
-    <span class="kd">var</span> <span class="nx">parsed</span> <span class="o">=</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">asParsedObject</span><span class="p">();</span>
-    <span class="nx">env</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">parsed</span><span class="p">);</span>
-
-    <span class="kd">var</span> <span class="nx">temperatureSensor</span> <span class="o">=</span> <span class="nx">device</span><span class="p">.</span><span class="nx">endpoints</span><span class="p">.</span><span class="nx">byType</span><span class="p">(</span><span class="nx">endpointType</span><span class="p">.</span><span class="nx">temperatureSensor</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">temperatureSensor</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">){</span>
-        <span class="nx">temperatureSensor</span><span class="p">.</span><span class="nx">updateTemperatureSensorStatus</span><span class="p">(</span><span class="nx">parsed</span><span class="p">.</span><span class="nx">temperature</span><span class="p">);</span>
-    <span class="p">}</span>
-
-    <span class="kd">var</span> <span class="nx">humiditySensor</span> <span class="o">=</span> <span class="nx">device</span><span class="p">.</span><span class="nx">endpoints</span><span class="p">.</span><span class="nx">byType</span><span class="p">(</span><span class="nx">endpointType</span><span class="p">.</span><span class="nx">humiditySensor</span><span class="p">);</span>
-    <span class="k">if</span> <span class="p">(</span><span class="nx">temperatureSensor</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">){</span>
-        <span class="nx">humiditySensor</span><span class="p">.</span><span class="nx">updateHumiditySensorStatus</span><span class="p">(</span><span class="nx">parsed</span><span class="p">.</span><span class="nx">humidity</span><span class="p">);</span>   
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><p>Gear Studio allows parsing data coming from The Things Stack as bytes, strings and JSON objects, but it also allows reading data that is already parsed and decoded on The Things Stack using <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">Payload Formatters</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">parseUplink</span><span class="p">(</span><span class="nx">device</span><span class="p">,</span> <span class="nx">payload</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">parsed</span> <span class="o">=</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">asParsedObject</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">env</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">parsed</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">temperatureSensor</span> <span class="o">=</span> <span class="nx">device</span><span class="p">.</span><span class="nx">endpoints</span><span class="p">.</span><span class="nx">byType</span><span class="p">(</span><span class="nx">endpointType</span><span class="p">.</span><span class="nx">temperatureSensor</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">temperatureSensor</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">temperatureSensor</span><span class="p">.</span><span class="nx">updateTemperatureSensorStatus</span><span class="p">(</span><span class="nx">parsed</span><span class="p">.</span><span class="nx">temperature</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">humiditySensor</span> <span class="o">=</span> <span class="nx">device</span><span class="p">.</span><span class="nx">endpoints</span><span class="p">.</span><span class="nx">byType</span><span class="p">(</span><span class="nx">endpointType</span><span class="p">.</span><span class="nx">humiditySensor</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">temperatureSensor</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">humiditySensor</span><span class="p">.</span><span class="nx">updateHumiditySensorStatus</span><span class="p">(</span><span class="nx">parsed</span><span class="p">.</span><span class="nx">humidity</span><span class="p">);</span>   
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Gear Studio allows parsing data coming from The Things Stack as bytes, strings and JSON objects, but it also allows reading data that is already parsed and decoded on The Things Stack using <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">Payload Formatters</a>.</p>
 <p>The example payload parser script above shows how to extract temperature and humidity values from the <code>decoded_payload</code> JSON object nested in The Things Stack uplink data message, i.e. from a message that already contains decoded sensor data, and how to send the extracted data to the endpoints defined in the device configuration script. <a href="https://wiki.cloud.studio/en/page/200">See Cloud Studio documentation for more info about payload parsing scripts</a></p>
 <p>Finish by clicking <strong>Save</strong>.</p>
 <h3 id="add-a-new-device">Add a New Device</h3>
 <p>To add a new device, navigate to <strong>Devices → Devices</strong> on the left hand menu and select the <strong>Add</strong> button.</p>
 <p>Enter a <strong>Description</strong>, select the device <strong>Model</strong> (predefined or the one you created following the <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cloudstudio/#create-a-custom-device-model">Create a Custom Device Model</a> subsection), select <strong>The Things Network (TTN) interface</strong> as a <strong>Communication interface</strong> and provide the <strong>DevEUI</strong> of your end device. Finish with <strong>Save</strong>.</p>
-<figure>
-    <img src="add-device.png"
-         alt="Adding a new device"/> 
+<figure><img src="add-device.png"
+         alt="Adding a new device"/>
 </figure>
 
 <h3 id="create-an-access-token">Create an Access Token</h3>
 <p>To complete the integration on The Things Stack, in the next step you will need an access token. You can create an access token by navigating to <strong>Security → Access tokens</strong> and clicking on the <strong>Add</strong> button.</p>
 <p>Provide a <strong>Description</strong> for your token, enter your <strong>E-mail</strong> and set your <strong>Password</strong>. Finish with <strong>Save</strong>, copy the token and store it in a safe place.</p>
-<figure>
-    <img src="access-token.png"
-         alt="Creating an access token"/> 
+<figure><img src="access-token.png"
+         alt="Creating an access token"/>
 </figure>
 
-<figure>
-    <img src="copy-token.png"
-         alt="Copy the access token"/> 
+<figure><img src="copy-token.png"
+         alt="Copy the access token"/>
 </figure>
 
 <h2 id="configure-the-things-stack">Configure The Things Stack</h2>
@@ -367,30 +366,26 @@
 <p>First, fill in the <strong>Webhook ID</strong>.</p>
 <p>Then you need to provide a Gear Studio <strong>Server instance</strong> that is hosting your Gear Studio IoT platform. This depends on your Gear Studio subscription. The default value is <code>gear.cloud.studio</code> that is commonly used for free subscriptions. See <a href="https://wiki.cloud.studio/en/page/174">Cloud Studio documentation</a> for detailed information on other server instances, depending on your subscription plan.</p>
 <p>As the last step, paste the access token you copied from Gear Studio in the <strong>Access token</strong> field.</p>
-<figure>
-    <img src="cloud-studio-template.png"
-         alt="Cloud Studio Webhook template"/> 
+<figure><img src="cloud-studio-template.png"
+         alt="Cloud Studio Webhook template"/>
 </figure>
 
 <p>To see the values of all parameters of the Cloud Studio integration, click on the integration after you created it with the Webhook template.</p>
 <h2 id="monitor-your-data">Monitor Your Data</h2>
 <p>To create a dashboard in Gear Studio, in <strong>Settings</strong> mode, navigate to <strong>Dashboards → Dahboards</strong> on the left hand menu. Click the <strong>Add</strong> button.</p>
 <p>Add a <strong>Description</strong> and <strong>Comments</strong>, and select <strong>Add Group</strong>. Under group settings, add a <strong>Title</strong> and select <strong>Add widget</strong>.</p>
-<figure>
-    <img src="add-dashboard.png"
-         alt="Adding a dashboard"/> 
+<figure><img src="add-dashboard.png"
+         alt="Adding a dashboard"/>
 </figure>
 
 <p>Choose the desired widget type, adjust <strong>Minimum</strong> and <strong>Maximum</strong> values according to your data values range, choose the <strong>Variable</strong> you wish to monitor, and select a <strong>Device</strong> you want to monitor it from.</p>
-<figure>
-    <img src="widget-settings.png"
-         alt="Adjusting widget settings"/> 
+<figure><img src="widget-settings.png"
+         alt="Adjusting widget settings"/>
 </figure>
 
 <p>Now, go back to the <strong>Monitoring</strong> mode in Gear Studio, navigate to <strong>Dashboards</strong> on the left hand menu and start monitoring your sensor data!</p>
-<figure>
-    <img src="temperature-dashboard.png"
-         alt="Dashboard showing temperature sensor values"/> 
+<figure><img src="temperature-dashboard.png"
+         alt="Dashboard showing temperature sensor values"/>
 </figure>
 
 <p>To read about available Cloud Studio features, cool ways to customize your devices, dashboards and much more, check the <a href="https://wiki.cloud.studio/">official Gear Studio documentation site</a>.</p>
@@ -482,7 +477,7 @@
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

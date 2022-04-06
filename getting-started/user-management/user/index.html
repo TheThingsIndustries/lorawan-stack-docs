@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>User Management | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/user-management/user/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="User Management">
@@ -219,15 +219,13 @@
   <section data-content="console">
   <h2 id="managing-users-in-the-console">Managing Users in the Console</h2>
 <p>User management can be found in the user dropdown in the top right corner of the Console.</p>
-<figure>
-    <img src="dropdown.png"
-         alt="User Dropdown"/> 
+<figure><img src="dropdown.png"
+         alt="User Dropdown"/>
 </figure>
 <h2 id="listing-users">Listing Users</h2>
 <p>The list of users is shown immediately after going to <strong>User management</strong> in the user dropdown.</p>
-<figure>
-    <img src="users-list.png"
-         alt="User List"/> 
+<figure><img src="users-list.png"
+         alt="User List"/>
 </figure>
 <h2 id="searching-for-users">Searching for Users</h2>
 <p>You can search for users by ID using the search field above the list of users. It is currently not possible to search for users by other fields than the user ID using the Console, but you can do this with the CLI.</p>
@@ -242,16 +240,14 @@
 <p>It is currently not possible to invite users from the Console, but you can do this with the CLI.</p>
 <h2 id="updating-users">Updating Users</h2>
 <p>In order to update a user, select that user from the list. You&rsquo;ll now see the edit view.</p>
-<figure>
-    <img src="users-edit.png"
-         alt="Editing a User"/> 
+<figure><img src="users-edit.png"
+         alt="Editing a User"/>
 </figure>
 <p>After making the changes to the user, click <strong>Save changes</strong> to update the user.</p>
 <h2 id="deleting-users">Deleting Users</h2>
 <p>In the bottom of the edit view, you can click <strong>Delete user</strong> to delete the user.</p>
-<figure>
-    <img src="users-delete.png"
-         alt="Deleting a User"/> 
+<figure><img src="users-delete.png"
+         alt="Deleting a User"/>
 </figure>
 <div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
@@ -261,102 +257,102 @@
 <section data-content="cli">
   <h2 id="managing-users-using-the-cli">Managing Users using the CLI</h2>
 <p>We define some user parameters that will be used below:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">NAME</span><span class="o">=</span><span class="s2">&#34;My Colleague&#34;</span>
-<span class="nv">EMAIL</span><span class="o">=</span><span class="s2">&#34;colleague@thethings.network&#34;</span>
-</code></pre></div><p>Make sure to modify these according to your setup.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">NAME</span><span class="o">=</span><span class="s2">&#34;My Colleague&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">EMAIL</span><span class="o">=</span><span class="s2">&#34;colleague@thethings.network&#34;</span>
+</span></span></code></pre></div><p>Make sure to modify these according to your setup.</p>
 <h2 id="creating-users">Creating Users</h2>
 <p>Network Administrators can create user accounts as follows:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli users create colleague <span class="se">\
-</span><span class="se"></span>  --name <span class="nv">$NAME</span> <span class="se">\
-</span><span class="se"></span>  --primary-email-address <span class="nv">$EMAIL</span>
-</code></pre></div><p>You will be prompted to enter the password:</p>
-<pre><code>Please enter password:***************
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli users create colleague <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --name <span class="nv">$NAME</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --primary-email-address <span class="nv">$EMAIL</span>
+</span></span></code></pre></div><p>You will be prompted to enter the password:</p>
+<pre tabindex="0"><code>Please enter password:***************
 Please confirm password:***************
 </code></pre><details><summary>Output</summary>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;user_id&#34;</span><span class="p">:</span> <span class="s2">&#34;colleague&#34;</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-19T10:54:53.677Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-19T10:54:53.677Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;My Colleague&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;contact_info&#34;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="nt">&#34;contact_method&#34;</span><span class="p">:</span> <span class="s2">&#34;CONTACT_METHOD_EMAIL&#34;</span><span class="p">,</span>
-      <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;colleague@thethings.network&#34;</span>
-    <span class="p">}</span>
-  <span class="p">],</span>
-  <span class="nt">&#34;primary_email_address&#34;</span><span class="p">:</span> <span class="s2">&#34;colleague@thethings.network&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;password_updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-19T10:54:53.674Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;state&#34;</span><span class="p">:</span> <span class="s2">&#34;STATE_APPROVED&#34;</span>
-<span class="p">}</span>
-</code></pre></div></details>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;user_id&#34;</span><span class="p">:</span> <span class="s2">&#34;colleague&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-19T10:54:53.677Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-19T10:54:53.677Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;My Colleague&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;contact_info&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;contact_method&#34;</span><span class="p">:</span> <span class="s2">&#34;CONTACT_METHOD_EMAIL&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;colleague@thethings.network&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;primary_email_address&#34;</span><span class="p">:</span> <span class="s2">&#34;colleague@thethings.network&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;password_updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-19T10:54:53.674Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;state&#34;</span><span class="p">:</span> <span class="s2">&#34;STATE_APPROVED&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div></details>
 <h2 id="inviting-users">Inviting Users</h2>
 <p>You can create invitations for users to join the network with the <code>users invitations create</code> command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli users invitations create <span class="nv">$EMAIL</span>
-</code></pre></div><p>After you do this, you will be able to list the invitations you&rsquo;ve sent:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">% ttn-lw-cli users invitations list
-</code></pre></div><details><summary>Output</summary>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">[{</span>
-  <span class="nt">&#34;email&#34;</span><span class="p">:</span> <span class="s2">&#34;colleague@thethings.network&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;token&#34;</span><span class="p">:</span> <span class="s2">&#34;MW7INQWYOE46GLP3AEFQEHR5XIKRYPSRAXFF3CUCLIQPPQ3BNBLQ&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;expires_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-26T11:41:29.485Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-19T11:41:29.486Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-19T11:41:29.486Z&#34;</span>
-<span class="p">}]</span>
-</code></pre></div></details>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli users invitations create <span class="nv">$EMAIL</span>
+</span></span></code></pre></div><p>After you do this, you will be able to list the invitations you&rsquo;ve sent:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">% ttn-lw-cli users invitations list
+</span></span></code></pre></div><details><summary>Output</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;email&#34;</span><span class="p">:</span> <span class="s2">&#34;colleague@thethings.network&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;token&#34;</span><span class="p">:</span> <span class="s2">&#34;MW7INQWYOE46GLP3AEFQEHR5XIKRYPSRAXFF3CUCLIQPPQ3BNBLQ&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;expires_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-26T11:41:29.485Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-19T11:41:29.486Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-19T11:41:29.486Z&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}]</span>
+</span></span></code></pre></div></details>
 <p>You will also be able to delete an invitation if you want to revoke it:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli users invitations delete <span class="nv">$EMAIL</span>
-</code></pre></div><h2 id="listing-users">Listing Users</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli users invitations delete <span class="nv">$EMAIL</span>
+</span></span></code></pre></div><h2 id="listing-users">Listing Users</h2>
 <p>To list users with the CLI, use the <code>users list</code> command. Make sure to specify the fields you&rsquo;re interested in.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli users list --name --state --admin
-</code></pre></div><details><summary>Output</summary>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">[{</span>
-  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;user_id&#34;</span><span class="p">:</span> <span class="s2">&#34;new-user&#34;</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-19T09:10:31.426Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-19T09:10:40.527Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;New User&#34;</span>
-<span class="p">},</span> <span class="p">{</span>
-  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;user_id&#34;</span><span class="p">:</span> <span class="s2">&#34;admin&#34;</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-18T14:54:12.723Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-18T14:54:12.723Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;state&#34;</span><span class="p">:</span> <span class="s2">&#34;STATE_APPROVED&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;admin&#34;</span><span class="p">:</span> <span class="kc">true</span>
-<span class="p">}]</span>
-</code></pre></div></details>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli users list --name --state --admin
+</span></span></code></pre></div><details><summary>Output</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;user_id&#34;</span><span class="p">:</span> <span class="s2">&#34;new-user&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-19T09:10:31.426Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-19T09:10:40.527Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;New User&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">},</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;user_id&#34;</span><span class="p">:</span> <span class="s2">&#34;admin&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-18T14:54:12.723Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-18T14:54:12.723Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;state&#34;</span><span class="p">:</span> <span class="s2">&#34;STATE_APPROVED&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;admin&#34;</span><span class="p">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="p">}]</span>
+</span></span></code></pre></div></details>
 <p>Use the pagination flags <code>--limit</code> and <code>--page</code> when there are many users.</p>
 <h2 id="searching-for-users">Searching for Users</h2>
 <p>To search for users with the CLI, use the <code>users search</code> command. Make sure to specify the fields you&rsquo;re interested in. We&rsquo;ll search for users with IDs that contain &ldquo;new&rdquo;:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli users search --id-contains new --name
-</code></pre></div><details><summary>Output</summary>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">[{</span>
-  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;user_id&#34;</span><span class="p">:</span> <span class="s2">&#34;new-user&#34;</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-19T09:10:31.426Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-19T09:10:40.527Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;New User&#34;</span>
-<span class="p">}]</span>
-</code></pre></div></details>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli users search --id-contains new --name
+</span></span></code></pre></div><details><summary>Output</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;user_id&#34;</span><span class="p">:</span> <span class="s2">&#34;new-user&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-19T09:10:31.426Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-19T09:10:40.527Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;New User&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}]</span>
+</span></span></code></pre></div></details>
 <p>Use the pagination flags <code>--limit</code> and <code>--page</code> when there are many users.</p>
 <h2 id="updating-users">Updating Users</h2>
 <p>To update users with the CLI, use the <code>users update</code> command. The following command updates the state of user <code>new-user</code> to &ldquo;approved&rdquo; and makes them admin of the network:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli users update new-user --state APPROVED --admin <span class="nb">true</span>
-</code></pre></div><details><summary>Output</summary>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;user_id&#34;</span><span class="p">:</span> <span class="s2">&#34;new-user&#34;</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-19T09:10:31.426Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-19T11:44:39.609Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;state&#34;</span><span class="p">:</span> <span class="s2">&#34;STATE_APPROVED&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;admin&#34;</span><span class="p">:</span> <span class="kc">true</span>
-<span class="p">}</span>
-</code></pre></div></details>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli users update new-user --state APPROVED --admin <span class="nb">true</span>
+</span></span></code></pre></div><details><summary>Output</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;user_id&#34;</span><span class="p">:</span> <span class="s2">&#34;new-user&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-19T09:10:31.426Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-19T11:44:39.609Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;state&#34;</span><span class="p">:</span> <span class="s2">&#34;STATE_APPROVED&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;admin&#34;</span><span class="p">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div></details>
 <h2 id="deleting-users">Deleting Users</h2>
 <p>To delete a user, use the <code>users delete</code> command.</p>
 <div class="notification is-warning is-light has-text-dark">
@@ -484,7 +480,7 @@ Please confirm password:***************
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

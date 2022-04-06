@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>CayenneLPP | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/cayenne/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="The Things Stack for LoRaWAN">
   <meta name="keywords" content="">
   <meta itemprop="name" content="CayenneLPP">
@@ -129,6 +129,11 @@
   <li>
     <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/cayenne/" class="is-active">CayenneLPP</a>
     
+    
+
+
+
+    
   </li>
 
   <li>
@@ -180,34 +185,34 @@
 <h2 id="decoded-payload">Decoded Payload</h2>
 <p>Once you have configured your device to send CayenneLPP compatible payloads, enabling the CayenneLPP Payload Formatter will add a <code>decoded_payload</code> object to uplink messages from your device.</p>
 <p>For example, the following binary data:</p>
-<pre><code>[0x3, 0x67, 0x01, 0x10, 0x05, 0x67, 0x00, 0xFF]
+<pre tabindex="0"><code>[0x3, 0x67, 0x01, 0x10, 0x05, 0x67, 0x00, 0xFF]
 </code></pre><p>will produce the following <code>uplink_message</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;uplink_message&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-    <span class="nt">&#34;f_cnt&#34;</span><span class="p">:</span> <span class="mi">113</span><span class="p">,</span>
-    <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;A2cBEAVnAP8=&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;decoded_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;temperature_3&#34;</span><span class="p">:</span> <span class="mf">27.200000762939453</span><span class="p">,</span>
-      <span class="nt">&#34;temperature_5&#34;</span><span class="p">:</span> <span class="mf">25.5</span>
-    <span class="p">},</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><h2 id="translating-sensor-types-to-decoded_payload-fields">Translating Sensor Types to <code>decoded_payload</code> Fields</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;uplink_message&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;f_cnt&#34;</span><span class="p">:</span> <span class="mi">113</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;A2cBEAVnAP8=&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;decoded_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;temperature_3&#34;</span><span class="p">:</span> <span class="mf">27.200000762939453</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;temperature_5&#34;</span><span class="p">:</span> <span class="mf">25.5</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="translating-sensor-types-to-decoded_payload-fields">Translating Sensor Types to <code>decoded_payload</code> Fields</h2>
 <p>A description of the Cayenne LPP sensor types is available in the Cayenne documentation <a href="https://developers.mydevices.com/cayenne/docs/lora/#lora-cayenne-low-power-payload-reference-implementation-cayenne-lpp-cc-constants-definitions">here</a>.</p>
 <p>The Things Stack uses the sensor names to create the <code>decoded_payload</code> fields, so a Cayenne payload with one <code>LPP_TEMPERATURE</code> and one <code>LPP_BAROMETRIC_PRESSURE</code> sensor reading will produce the following decoded payload:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;uplink_message&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
-    <span class="nt">&#34;f_cnt&#34;</span><span class="p">:</span> <span class="mi">113</span><span class="p">,</span>
-    <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;AHMnvwBnAN4=&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;decoded_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;barometric_pressure_0&#34;</span><span class="p">:</span> <span class="mf">1017.5</span><span class="p">,</span>
-      <span class="nt">&#34;temperature_0&#34;</span><span class="p">:</span> <span class="mf">22.200000762939453</span>
-    <span class="p">},</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><p>The <code>decoded_payload</code> entries are formed from the lowercase sensor constant and channel, i.e. a <code>LPP_TEMPERATURE</code> reading on channel 0 becomes <code>temperature_0</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;uplink_message&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;f_cnt&#34;</span><span class="p">:</span> <span class="mi">113</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;AHMnvwBnAN4=&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;decoded_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;barometric_pressure_0&#34;</span><span class="p">:</span> <span class="mf">1017.5</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;temperature_0&#34;</span><span class="p">:</span> <span class="mf">22.200000762939453</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The <code>decoded_payload</code> entries are formed from the lowercase sensor constant and channel, i.e. a <code>LPP_TEMPERATURE</code> reading on channel 0 becomes <code>temperature_0</code>.</p>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/payload-formatters/create/">← Creating Payload Formatters</a>
@@ -293,7 +298,7 @@
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

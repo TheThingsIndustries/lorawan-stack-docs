@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Certificates | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/installation/certificates/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Certificates">
@@ -117,6 +117,11 @@
   <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/installation/certificates/" class="is-active">Certificates</a>
     
+    
+
+
+
+    
   </li>
 
   <li>
@@ -201,26 +206,26 @@
 <p>In this guide, we show you how to request a free, trusted certificate from <a href="https://letsencrypt.org/getting-started/">Let&rsquo;s Encrypt</a>, but if you already have a certificate (<code>cert.pem</code>) and a corresponding key (<code>key.pem</code>), you can also use those. For local deployments, you can set up your own Certificate Authority and issue a certificate-key pair.</p>
 <h2 id="automatic-certificate-management">Automatic Certificate Management</h2>
 <p>The Things Stack can be configured to automatically retrieve and update Let&rsquo;s Encrypt certificates. Assuming you followed the <a href="/docs/getting-started/installation/configuration/">configuration</a> steps, create an <code>acme</code> directory where The Things Stack can store the certificate data:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mkdir ./acme
-sudo chown 886:886 ./acme
-</code></pre></div><div class="notification is-warning is-light has-text-dark">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir ./acme
+</span></span><span class="line"><span class="cl">sudo chown 886:886 ./acme
+</span></span></code></pre></div><div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
   <code>886</code> is the <code>UID</code> and the <code>GID</code> of the user that runs The Things Stack in the Docker container. If you don&rsquo;t set these permissions, you may encounter an error resembling <code>open /var/lib/acme/acme_account+key&lt;...&gt;: permission denied</code>.
 </div>
 
 <p>The directory hierarchy should look like this:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">acme/
-docker-compose.yml          <span class="c1"># defines Docker services for running The Things Stack</span>
-config/
-└── stack/
-    └── ttn-lw-stack-docker.yml    <span class="c1"># configuration file for The Things Stack</span>
-</code></pre></div><p>If you are using Let&rsquo;s Encrypt in a multi-tenant The Things Stack environment, make sure you specify all tenant addresses in the TLS configuration of <code>ttn-lw-stack-docker.yml</code>. Read more in the <a href="https://www.thethingsindustries.com/docs/getting-started/installation/configuration/#tls">TLS section</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">acme/
+</span></span><span class="line"><span class="cl">docker-compose.yml          <span class="c1"># defines Docker services for running The Things Stack</span>
+</span></span><span class="line"><span class="cl">config/
+</span></span><span class="line"><span class="cl">└── stack/
+</span></span><span class="line"><span class="cl">    └── ttn-lw-stack-docker.yml    <span class="c1"># configuration file for The Things Stack</span>
+</span></span></code></pre></div><p>If you are using Let&rsquo;s Encrypt in a multi-tenant The Things Stack environment, make sure you specify all tenant addresses in the TLS configuration of <code>ttn-lw-stack-docker.yml</code>. Read more in the <a href="https://www.thethingsindustries.com/docs/getting-started/installation/configuration/#tls">TLS section</a>.</p>
 <p>Certificates will automatically be requested the first time you access The Things Stack. You will notice that the page takes some time to load while certificates are obtained in the background.</p>
 <h3 id="using-custom-certificates">Using Custom Certificates</h3>
 <p>To use <a href="#certificates-from-a-certificate-authority">CA certificates you already have</a> or <a href="#custom-certificate-authority">self-signed certificates</a>, you will need to uncomment the custom certificates section of <code>docker-compose.yml</code>:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">82
+<pre tabindex="0" class="chroma"><code><span class="lnt">82
 </span><span class="lnt">83
 </span><span class="lnt">84
 </span><span class="lnt">85
@@ -236,26 +241,26 @@ config/
 </span><span class="lnt">95
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">    </span><span class="c"># If using custom certificates:</span><span class="w">
-</span><span class="w">    </span><span class="k">secrets</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- ca.pem<span class="w">
-</span><span class="w">      </span>- cert.pem<span class="w">
-</span><span class="w">      </span>- key.pem<span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># If using custom certificates:</span><span class="w">
-</span><span class="w"></span><span class="k">secrets</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">ca.pem</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">file</span><span class="p">:</span><span class="w"> </span>./ca.pem<span class="w">
-</span><span class="w">  </span><span class="k">cert.pem</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">file</span><span class="p">:</span><span class="w"> </span>./cert.pem<span class="w">
-</span><span class="w">  </span><span class="k">key.pem</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">file</span><span class="p">:</span><span class="w"> </span>./key.pem</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">    </span><span class="c"># If using custom certificates:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">secrets</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">ca.pem</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">cert.pem</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">key.pem</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># If using custom certificates:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">secrets</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ca.pem</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l">./ca.pem</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">cert.pem</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l">./cert.pem</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">key.pem</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="l">./key.pem</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>You will also need to comment out the Let&rsquo;s Encrypt section of <code>ttn-lw-stack-docker.yml</code>, and uncomment the custom certificates section:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">41
+<pre tabindex="0" class="chroma"><code><span class="lnt">41
 </span><span class="lnt">42
 </span><span class="lnt">43
 </span><span class="lnt">44
@@ -272,73 +277,73 @@ config/
 </span><span class="lnt">55
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># If using custom certificates:</span><span class="w">
-</span><span class="w"></span><span class="k">tls</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">source</span><span class="p">:</span><span class="w"> </span>file<span class="w">
-</span><span class="w">  </span><span class="k">root-ca</span><span class="p">:</span><span class="w"> </span>/run/secrets/ca.pem<span class="w">
-</span><span class="w">  </span><span class="k">certificate</span><span class="p">:</span><span class="w"> </span>/run/secrets/cert.pem<span class="w">
-</span><span class="w">  </span><span class="k">key</span><span class="p">:</span><span class="w"> </span>/run/secrets/key.pem<span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># Let&#39;s encrypt for &#34;thethings.example.com&#34;</span><span class="w">
-</span><span class="w"></span><span class="c"># tls:</span><span class="w">
-</span><span class="w"></span><span class="c">#   source: &#39;acme&#39;</span><span class="w">
-</span><span class="w"></span><span class="c">#   acme:</span><span class="w">
-</span><span class="w"></span><span class="c">#     dir: &#39;/var/lib/acme&#39;</span><span class="w">
-</span><span class="w"></span><span class="c">#     email: &#39;you@thethings.example.com&#39;</span><span class="w">
-</span><span class="w"></span><span class="c">#     hosts: [&#39;thethings.example.com&#39;]</span><span class="w">
-</span><span class="w"></span><span class="c">#     default-host: &#39;thethings.example.com&#39;</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># If using custom certificates:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tls</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l">file</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">root-ca</span><span class="p">:</span><span class="w"> </span><span class="l">/run/secrets/ca.pem</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">certificate</span><span class="p">:</span><span class="w"> </span><span class="l">/run/secrets/cert.pem</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l">/run/secrets/key.pem</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Let&#39;s encrypt for &#34;thethings.example.com&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># tls:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#   source: &#39;acme&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#   acme:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#     dir: &#39;/var/lib/acme&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#     email: &#39;you@thethings.example.com&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#     hosts: [&#39;thethings.example.com&#39;]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#     default-host: &#39;thethings.example.com&#39;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="certificates-from-a-certificate-authority">Certificates from a Certificate Authority</h3>
 <p>If you want to use the certificate (<code>cert.pem</code>) and key (<code>key.pem</code>) that you already have, you also need to set these permissions.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo chown 886:886 ./cert.pem ./key.pem
-</code></pre></div><div class="notification is-warning is-light has-text-dark">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo chown 886:886 ./cert.pem ./key.pem
+</span></span></code></pre></div><div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
   If you don&rsquo;t set these permissions, you may encounter an error resembling <code>/run/secrets/key.pem: permission denied</code>.
 </div>
 
 <p>The directory hierarchy should look like this:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cert.pem
-key.pem
-docker-compose.yml          <span class="c1"># defines Docker services for running The Things Stack</span>
-config/
-└── stack/
-    └── ttn-lw-stack-docker.yml    <span class="c1"># configuration file for The Things Stack</span>
-</code></pre></div><p>Be sure to configure <code>docker-compose.yml</code> and <code>ttn-lw-stack-docker.yml</code> for your custom certificates, as shown in <a href="#using-custom-certificates">using custom certificates</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cert.pem
+</span></span><span class="line"><span class="cl">key.pem
+</span></span><span class="line"><span class="cl">docker-compose.yml          <span class="c1"># defines Docker services for running The Things Stack</span>
+</span></span><span class="line"><span class="cl">config/
+</span></span><span class="line"><span class="cl">└── stack/
+</span></span><span class="line"><span class="cl">    └── ttn-lw-stack-docker.yml    <span class="c1"># configuration file for The Things Stack</span>
+</span></span></code></pre></div><p>Be sure to configure <code>docker-compose.yml</code> and <code>ttn-lw-stack-docker.yml</code> for your custom certificates, as shown in <a href="#using-custom-certificates">using custom certificates</a>.</p>
 <h2 id="custom-certificate-authority">Custom Certificate Authority</h2>
 <p>To use TLS on a local or offline deployment, you can use your own Certificate Authority. In order to set that up, you can use <code>cfssl</code>, CloudFlare&rsquo;s PKI/TLS toolkit. The <code>cfssl</code> installation instructions can be found <a href="https://github.com/cloudflare/cfssl#installation">here</a>.</p>
 <p>Write the configuration for your CA to <code>ca.json</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;names&#34;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span><span class="nt">&#34;C&#34;</span><span class="p">:</span> <span class="s2">&#34;NL&#34;</span><span class="p">,</span> <span class="nt">&#34;ST&#34;</span><span class="p">:</span> <span class="s2">&#34;Noord-Holland&#34;</span><span class="p">,</span> <span class="nt">&#34;L&#34;</span><span class="p">:</span> <span class="s2">&#34;Amsterdam&#34;</span><span class="p">,</span> <span class="nt">&#34;O&#34;</span><span class="p">:</span> <span class="s2">&#34;The Things Demo&#34;</span><span class="p">}</span>
-  <span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div><p>Then use the following command to generate the CA key and certificate:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cfssl genkey -initca ca.json <span class="p">|</span> cfssljson -bare ca
-</code></pre></div><p>Now write the configuration for your certificate to <code>cert.json</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;hosts&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;thethings.example.com&#34;</span><span class="p">],</span>
-  <span class="nt">&#34;names&#34;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span><span class="nt">&#34;C&#34;</span><span class="p">:</span> <span class="s2">&#34;NL&#34;</span><span class="p">,</span> <span class="nt">&#34;ST&#34;</span><span class="p">:</span> <span class="s2">&#34;Noord-Holland&#34;</span><span class="p">,</span> <span class="nt">&#34;L&#34;</span><span class="p">:</span> <span class="s2">&#34;Amsterdam&#34;</span><span class="p">,</span> <span class="nt">&#34;O&#34;</span><span class="p">:</span> <span class="s2">&#34;The Things Demo&#34;</span><span class="p">}</span>
-  <span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div><div class="notification is-info is-light has-text-dark">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;names&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="nt">&#34;C&#34;</span><span class="p">:</span> <span class="s2">&#34;NL&#34;</span><span class="p">,</span> <span class="nt">&#34;ST&#34;</span><span class="p">:</span> <span class="s2">&#34;Noord-Holland&#34;</span><span class="p">,</span> <span class="nt">&#34;L&#34;</span><span class="p">:</span> <span class="s2">&#34;Amsterdam&#34;</span><span class="p">,</span> <span class="nt">&#34;O&#34;</span><span class="p">:</span> <span class="s2">&#34;The Things Demo&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Then use the following command to generate the CA key and certificate:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cfssl genkey -initca ca.json <span class="p">|</span> cfssljson -bare ca
+</span></span></code></pre></div><p>Now write the configuration for your certificate to <code>cert.json</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;hosts&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;thethings.example.com&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;names&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="nt">&#34;C&#34;</span><span class="p">:</span> <span class="s2">&#34;NL&#34;</span><span class="p">,</span> <span class="nt">&#34;ST&#34;</span><span class="p">:</span> <span class="s2">&#34;Noord-Holland&#34;</span><span class="p">,</span> <span class="nt">&#34;L&#34;</span><span class="p">:</span> <span class="s2">&#34;Amsterdam&#34;</span><span class="p">,</span> <span class="nt">&#34;O&#34;</span><span class="p">:</span> <span class="s2">&#34;The Things Demo&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   Remember to replace <code>thethings.example.com</code> with your server address!
 </div>
 
 <p>Then, run the following command to generate the server key and certificate:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cfssl gencert -ca ca.pem -ca-key ca-key.pem cert.json <span class="p">|</span> cfssljson -bare cert
-</code></pre></div><p>The next steps assume the certificate key is called <code>key.pem</code>, so you&rsquo;ll need to rename <code>cert-key.pem</code> to <code>key.pem</code>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cfssl gencert -ca ca.pem -ca-key ca-key.pem cert.json <span class="p">|</span> cfssljson -bare cert
+</span></span></code></pre></div><p>The next steps assume the certificate key is called <code>key.pem</code>, so you&rsquo;ll need to rename <code>cert-key.pem</code> to <code>key.pem</code>.</p>
 <p>At the end, your directory should look like this:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">cert.pem
-key.pem
-ca.pem
-docker-compose.yml          <span class="c1"># defines Docker services for running The Things Stack</span>
-config/
-└── stack/
-    └── ttn-lw-stack-docker.yml    <span class="c1"># configuration file for The Things Stack</span>
-</code></pre></div><p>Be sure to configure <code>docker-compose.yml</code> and <code>ttn-lw-stack-docker.yml</code> for your custom certificates, as shown in <a href="#using-custom-certificates">using custom certificates</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">cert.pem
+</span></span><span class="line"><span class="cl">key.pem
+</span></span><span class="line"><span class="cl">ca.pem
+</span></span><span class="line"><span class="cl">docker-compose.yml          <span class="c1"># defines Docker services for running The Things Stack</span>
+</span></span><span class="line"><span class="cl">config/
+</span></span><span class="line"><span class="cl">└── stack/
+</span></span><span class="line"><span class="cl">    └── ttn-lw-stack-docker.yml    <span class="c1"># configuration file for The Things Stack</span>
+</span></span></code></pre></div><p>Be sure to configure <code>docker-compose.yml</code> and <code>ttn-lw-stack-docker.yml</code> for your custom certificates, as shown in <a href="#using-custom-certificates">using custom certificates</a>.</p>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/getting-started/installation/configuration/">← Configuration</a>
@@ -421,7 +426,7 @@ config/
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

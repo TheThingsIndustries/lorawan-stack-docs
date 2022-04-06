@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Connect | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/connect/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Connect">
@@ -132,6 +132,11 @@
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/connect/" class="is-active">Connect</a>
+    
+    
+
+
+
     
   </li>
 
@@ -293,53 +298,53 @@
 <p>See a full list of NetIDs, DevAddr Prefix assignments, operators, and regions they are allocated to in <a href="https://www.thethingsnetwork.org/docs/lorawan/prefix-assignments/">The Things Network LoRaWAN documentation</a>.</p>
 <h2 id="configure-packet-broker-agent">Configure Packet Broker Agent</h2>
 <p>The Packet Broker Agent component of The Things Stack connects to Packet Broker. The Packet Broker Agent can be configured as Forwarder and as Home Network in your <code>ttn-lw-stack.yaml</code> configuration file:</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># Add Packet Broker configuration to your configuration file:</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># Packet Broker Agent configuration</span><span class="w">
-</span><span class="w"></span><span class="k">pba</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="c"># See https://packetbroker.net for available hosts</span><span class="w">
-</span><span class="w">  </span><span class="k">data-plane-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;eu.packetbroker.io:443&#39;</span><span class="w">
-</span><span class="w">  </span><span class="k">net-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;000013&#39;</span><span class="w">
-</span><span class="w">  </span><span class="k">tenant-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;my-tenant&#39;</span><span class="w"> </span><span class="c"># Leave empty if you own the NetID and you don&#39;t use tenants</span><span class="w">
-</span><span class="w">  </span><span class="k">cluster-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;my-cluster&#39;</span><span class="w"> </span><span class="c"># Unique identifier of your routing cluster</span><span class="w">
-</span><span class="w">  </span><span class="k">authentication-mode</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;oauth2&#39;</span><span class="w">
-</span><span class="w">  </span><span class="k">oauth2</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">client-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="c"># API key ID</span><span class="w">
-</span><span class="w">    </span><span class="k">client-secret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="c"># Secret API key value</span><span class="w">
-</span><span class="w">  </span><span class="k">forwarder</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">enable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w">    </span><span class="c"># generate 16 bytes (openssl rand -hex 16)</span><span class="w">
-</span><span class="w">    </span><span class="k">token-key</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;00112233445566770011223344556677&#39;</span><span class="w">
-</span><span class="w">  </span><span class="k">home-network</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">enable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span></code></pre></div><p>See <a href="https://www.thethingsindustries.com/docs/reference/configuration/packet-broker-agent/">Packet Broker Agent configuration</a> for all configuration options.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># Add Packet Broker configuration to your configuration file:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Packet Broker Agent configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">pba</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># See https://packetbroker.net for available hosts</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">data-plane-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;eu.packetbroker.io:443&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">net-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;000013&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tenant-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;my-tenant&#39;</span><span class="w"> </span><span class="c"># Leave empty if you own the NetID and you don&#39;t use tenants</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">cluster-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;my-cluster&#39;</span><span class="w"> </span><span class="c"># Unique identifier of your routing cluster</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">authentication-mode</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;oauth2&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">oauth2</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">client-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="c"># API key ID</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">client-secret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w"> </span><span class="c"># Secret API key value</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">forwarder</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># generate 16 bytes (openssl rand -hex 16)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">token-key</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;00112233445566770011223344556677&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">home-network</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">enable</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span></code></pre></div><p>See <a href="https://www.thethingsindustries.com/docs/reference/configuration/packet-broker-agent/">Packet Broker Agent configuration</a> for all configuration options.</p>
 <h2 id="configure-gateway-server">Configure Gateway Server</h2>
 <p>Configure the Gateway Server to forward traffic for the current network to the Network Server in the cluster, and route all traffic to Packet Broker (via Packet Broker Agent):</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># Edit the Gateway Server configuration in your configuration file:</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># Gateway Server configuration</span><span class="w">
-</span><span class="w"></span><span class="k">gs</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">forward</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="c"># Forward traffic to the Network Server in the cluster</span><span class="w">
-</span><span class="w">  </span>- <span class="s1">&#39;cluster=26000000/7&#39;</span><span class="w"> </span><span class="c"># Enter your DevAddr range</span><span class="w">
-</span><span class="w">  </span><span class="c"># Forward all traffic also to Packet Broker</span><span class="w">
-</span><span class="w">  </span>- <span class="s1">&#39;packetbroker=00000000/0&#39;</span><span class="w">
-</span></code></pre></div><p>See <a href="https://www.thethingsindustries.com/docs/reference/configuration/gateway-server/">Gateway Server configuration</a> for all configuration options.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># Edit the Gateway Server configuration in your configuration file:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Gateway Server configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">gs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">forward</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Forward traffic to the Network Server in the cluster</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="s1">&#39;cluster=26000000/7&#39;</span><span class="w"> </span><span class="c"># Enter your DevAddr range</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Forward all traffic also to Packet Broker</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="s1">&#39;packetbroker=00000000/0&#39;</span><span class="w">
+</span></span></span></code></pre></div><p>See <a href="https://www.thethingsindustries.com/docs/reference/configuration/gateway-server/">Gateway Server configuration</a> for all configuration options.</p>
 <h2 id="configure-network-server">Configure Network Server</h2>
 <p>Configure the Network Server to issue device addresses (DevAddr) that fall within your NetID:</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># Edit the Network Server configuration in your configuration file:</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># Network Server configuration.</span><span class="w">
-</span><span class="w"></span><span class="k">ns</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">net-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;000013&#39;</span><span class="w">
-</span></code></pre></div><p>If you are using a NetID tenant with one or more DevAddr blocks, configure the Network Server to use those blocks:</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># Network Server configuration.</span><span class="w">
-</span><span class="w"></span><span class="k">ns</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">net-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;000013&#39;</span><span class="w">
-</span><span class="w">  </span><span class="k">dev-addr-prefixes</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="s1">&#39;27111100/16&#39;</span><span class="w">
-</span><span class="w">  </span>- <span class="s1">&#39;27222200/16&#39;</span><span class="w">
-</span></code></pre></div><p>By default, the Network Server uses NetID <code>000000</code> which is intended for experimentation purposes. Only devices that are activated with a DevAddr that refers to a NetID will have their traffic routed by Packet Broker to your network.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># Edit the Network Server configuration in your configuration file:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Network Server configuration.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">ns</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">net-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;000013&#39;</span><span class="w">
+</span></span></span></code></pre></div><p>If you are using a NetID tenant with one or more DevAddr blocks, configure the Network Server to use those blocks:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># Network Server configuration.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">ns</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">net-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;000013&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">dev-addr-prefixes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="s1">&#39;27111100/16&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="s1">&#39;27222200/16&#39;</span><span class="w">
+</span></span></span></code></pre></div><p>By default, the Network Server uses NetID <code>000000</code> which is intended for experimentation purposes. Only devices that are activated with a DevAddr that refers to a NetID will have their traffic routed by Packet Broker to your network.</p>
 <p>See <a href="https://www.thethingsindustries.com/docs/reference/configuration/network-server/">Network Server configuration</a> for all configuration options.</p>
 <h2 id="configure-packet-broker">Configure Packet Broker</h2>
 <p>When The Things Stack is connected to Packet Broker, you can proceed with <a href="/docs/getting-started/packet-broker/configure/">Packet Broker Configuration</a>.</p>
@@ -448,7 +453,7 @@
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

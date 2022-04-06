@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Adding Gateways | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Adding Gateways">
@@ -232,28 +232,24 @@
 </details>
 <p>Go to <strong>Gateways</strong> in the top menu, and click <strong>+ Add Gateway</strong> to reach the gateway registration page.</p>
 <p>Fill the <strong>Gateway ID</strong>, <strong>Gateway EUI</strong> (if your gateway has an EUI) and <strong>Frequency Plan</strong>. The other fields are optional. Click <strong>Create Gateway</strong> to finish.</p>
-<figure>
-    <img src="gateway-creation.png"
-         alt="Gateway creation"/> 
+<figure><img src="gateway-creation.png"
+         alt="Gateway creation"/>
 </figure>
 <p>Your gateway will be created and you will be redirected to the gateway overview page of your newly created gateway.</p>
-<figure>
-    <img src="gateway-overview.png"
-         alt="Gateway overview"/> 
+<figure><img src="gateway-overview.png"
+         alt="Gateway overview"/>
 </figure>
 <p>You can now connect your gateway to The Things Stack.</p>
 <h3 id="create-gateway-api-key">Create Gateway API Key</h3>
 <p>Some gateways require an API Key with Link Gateway Rights to be able to connect to The Things Stack.</p>
 <p>In order to do this, navigate to the <strong>API Keys</strong> menu of your gateway and select <strong>Add API Key</strong>.</p>
 <p>Enter a name for your key, select the <strong>Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink</strong> right and then press <strong>Create API Key</strong>.</p>
-<figure>
-    <img src="gateway-api-key-creation.png"
-         alt="Gateway API Key creation"/> 
+<figure><img src="gateway-api-key-creation.png"
+         alt="Gateway API Key creation"/>
 </figure>
 <p>You will see a screen that shows your newly created API Key. You now can copy it in your clipboard by pressing the copy button. After saving the key in a safe place, press <strong>I have copied the key</strong>. You will not be able to see this key again in the future, and if you lose it, you can create a new one to replace it in the gateway configuration.</p>
-<figure>
-    <img src="gateway-api-key-created.png"
-         alt="Gateway API Key created"/> 
+<figure><img src="gateway-api-key-created.png"
+         alt="Gateway API Key created"/>
 </figure>
 <h2 id="set-gateway-location">Set Gateway Location</h2>
 <p>Once you have added your gateway to The Things Stack, you can also set its location to be displayed on a map widget by clicking <strong>Change location settings</strong>.</p>
@@ -264,73 +260,72 @@
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   The Things Stack Console currently supports setting one antenna location per gateway.
 </div>
-<figure>
-    <img src="gateway-location.png"
-         alt="Gateway location"/> 
+<figure><img src="gateway-location.png"
+         alt="Gateway location"/>
 </figure>
 </section>
 <section data-content="cli">
   <h2 id="adding-gateways-using-the-cli">Adding Gateways using the CLI</h2>
 <p>We define some user parameters that will be used below:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">GTW_ID</span><span class="o">=</span><span class="s2">&#34;gtw1&#34;</span> 
-<span class="nv">FREQUENCY_PLAN</span><span class="o">=</span><span class="s2">&#34;EU_863_870&#34;</span>
-<span class="nv">GTW_EUI</span><span class="o">=</span><span class="s2">&#34;00800000A00009EF&#34;</span>
-<span class="nv">USER_ID</span><span class="o">=</span><span class="s2">&#34;admin&#34;</span>
-</code></pre></div><p>Make sure to modify these according to your setup.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">GTW_ID</span><span class="o">=</span><span class="s2">&#34;gtw1&#34;</span> 
+</span></span><span class="line"><span class="cl"><span class="nv">FREQUENCY_PLAN</span><span class="o">=</span><span class="s2">&#34;EU_863_870&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">GTW_EUI</span><span class="o">=</span><span class="s2">&#34;00800000A00009EF&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">USER_ID</span><span class="o">=</span><span class="s2">&#34;admin&#34;</span>
+</span></span></code></pre></div><p>Make sure to modify these according to your setup.</p>
 <p>First, list the available frequency plans:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli gateways list-frequency-plans
-</code></pre></div><p>Then, create the first gateway with the chosen frequency plan:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli gateways create <span class="nv">$GTW_ID</span> <span class="se">\
-</span><span class="se"></span>  --user-id <span class="nv">$USER_ID</span> <span class="se">\
-</span><span class="se"></span>  --frequency-plan-id <span class="nv">$FREQUENCY_PLAN</span> <span class="se">\
-</span><span class="se"></span>  --gateway-eui <span class="nv">$GTW_EUI</span> <span class="se">\
-</span><span class="se"></span>  --enforce-duty-cycle
-</code></pre></div><p>This creates a gateway <code>gtw1</code> with user <code>admin</code> as collaborator, frequency plan <code>EU_863_870</code>, EUI <code>00800000A00009EF</code> and respecting duty-cycle limitations. You can now connect your gateway to The Things Stack.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli gateways list-frequency-plans
+</span></span></code></pre></div><p>Then, create the first gateway with the chosen frequency plan:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli gateways create <span class="nv">$GTW_ID</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --user-id <span class="nv">$USER_ID</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --frequency-plan-id <span class="nv">$FREQUENCY_PLAN</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --gateway-eui <span class="nv">$GTW_EUI</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --enforce-duty-cycle
+</span></span></code></pre></div><p>This creates a gateway <code>gtw1</code> with user <code>admin</code> as collaborator, frequency plan <code>EU_863_870</code>, EUI <code>00800000A00009EF</code> and respecting duty-cycle limitations. You can now connect your gateway to The Things Stack.</p>
 <h3 id="create-gateway-api-key">Create Gateway API Key</h3>
 <p>Some gateways require an API Key with Link Gateway Rights to be able to connect to The Things Stack.</p>
 <p>Create an API key for the gateway:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">API_KEY_NAME</span><span class="o">=</span><span class="s2">&#34;API key for connecting my gateway&#34;</span>
-ttn-lw-cli gateways api-keys create <span class="se">\
-</span><span class="se"></span>  --name <span class="nv">$API_KEY_NAME</span> <span class="se">\
-</span><span class="se"></span>  --gateway-id <span class="nv">$GTW_ID</span> <span class="se">\
-</span><span class="se"></span>  --right-gateway-link
-</code></pre></div><p>The CLI will return an API key such as <code>NNSXS.VEEBURF3KR77ZR...</code>. This API key has only link rights and can therefore only be used for linking this gateway. Make sure to copy the key and save it in a safe place. You will not be able to see this key again in the future, and if you lose it, you can create a new one to replace it in the gateway configuration.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">API_KEY_NAME</span><span class="o">=</span><span class="s2">&#34;API key for connecting my gateway&#34;</span>
+</span></span><span class="line"><span class="cl">ttn-lw-cli gateways api-keys create <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --name <span class="nv">$API_KEY_NAME</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --gateway-id <span class="nv">$GTW_ID</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --right-gateway-link
+</span></span></code></pre></div><p>The CLI will return an API key such as <code>NNSXS.VEEBURF3KR77ZR...</code>. This API key has only link rights and can therefore only be used for linking this gateway. Make sure to copy the key and save it in a safe place. You will not be able to see this key again in the future, and if you lose it, you can create a new one to replace it in the gateway configuration.</p>
 <h2 id="set-gateway-location">Set Gateway Location</h2>
 <p>Once you have added your gateway to The Things Stack, you can also set the locations of the gateway antennas.</p>
 <p>Add an antenna and set its location  with:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">LAT</span><span class="o">=</span><span class="s2">&#34;43.84&#34;</span>
-<span class="nv">LONG</span><span class="o">=</span><span class="s2">&#34;18.32&#34;</span>
-<span class="nv">ALT</span><span class="o">=</span><span class="s2">&#34;500&#34;</span>
-ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span> <span class="se">\
-</span><span class="se"></span>  --antenna.location.latitude <span class="nv">$LAT</span> <span class="se">\
-</span><span class="se"></span>  --antenna.location.longitude <span class="nv">$LONG</span> <span class="se">\
-</span><span class="se"></span>  --antenna.location.altitude <span class="nv">$ALT</span> <span class="se">\
-</span><span class="se"></span>  --antenna.add <span class="se">\
-</span></code></pre></div><p>If you do not mind your gateway&rsquo;s location to be publicly displayed, append the <code>--location-public</code> flag.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">LAT</span><span class="o">=</span><span class="s2">&#34;43.84&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">LONG</span><span class="o">=</span><span class="s2">&#34;18.32&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">ALT</span><span class="o">=</span><span class="s2">&#34;500&#34;</span>
+</span></span><span class="line"><span class="cl">ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --antenna.location.latitude <span class="nv">$LAT</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --antenna.location.longitude <span class="nv">$LONG</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --antenna.location.altitude <span class="nv">$ALT</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --antenna.add <span class="se">\
+</span></span></span></code></pre></div><p>If you do not mind your gateway&rsquo;s location to be publicly displayed, append the <code>--location-public</code> flag.</p>
 <p>You can also set the gateway location to be updated from various sources with the <code>--antenna.location.source</code> flag. The source of the location data can be the registry, GPS data, results of the LoRa RSSI geolocation, etc.</p>
 <p>Use <code>ttn-lw-cli gateways set $GTW_ID --help</code> command to see the full list of the available location sources and other relatable info. Keep in mind that if you set the alternative location source, the location settings you manually set will be overwritten by the automatic updates from that source.</p>
 <p>The CLI will return something like:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;gtw1&#34;</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-05-27T14:43:13.606Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;version_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;auto_update&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nt">&#34;antennas&#34;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;latitude&#34;</span><span class="p">:</span> <span class="mf">43.84</span><span class="p">,</span>
-        <span class="nt">&#34;longitude&#34;</span><span class="p">:</span> <span class="mf">18.32</span><span class="p">,</span>
-        <span class="nt">&#34;altitude&#34;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
-        <span class="nt">&#34;source&#34;</span><span class="p">:</span> <span class="s2">&#34;SOURCE_REGISTRY&#34;</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">],</span>
-  <span class="nt">&#34;location_public&#34;</span><span class="p">:</span> <span class="kc">true</span>
-<span class="p">}</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;gtw1&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-05-27T14:43:13.606Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;version_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;auto_update&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;antennas&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;latitude&#34;</span><span class="p">:</span> <span class="mf">43.84</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;longitude&#34;</span><span class="p">:</span> <span class="mf">18.32</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;altitude&#34;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;source&#34;</span><span class="p">:</span> <span class="s2">&#34;SOURCE_REGISTRY&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;location_public&#34;</span><span class="p">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div>
 </section>
 
 </div>
@@ -345,43 +340,42 @@ ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span> 
   </div>
 </div>
 <p>A preffered way for adjusting a downlink path gain is setting the gateway antenna gain, instead of changing the gateway Tx power. The following command will set the gateway antenna gain to 3 dB:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">GAIN</span><span class="o">=</span><span class="s2">&#34;3&#34;</span>
-ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span> --antenna.gain <span class="nv">$GAIN</span>
-</code></pre></div><p>The CLI output will be similar to:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;gtw1&#34;</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-05-27T14:43:13.606Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;version_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;auto_update&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nt">&#34;antennas&#34;</span><span class="p">:</span> <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="nt">&#34;gain&#34;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
-      <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="p">{</span>
-        <span class="nt">&#34;latitude&#34;</span><span class="p">:</span> <span class="mf">43.84</span><span class="p">,</span>
-        <span class="nt">&#34;longitude&#34;</span><span class="p">:</span> <span class="mf">18.32</span><span class="p">,</span>
-        <span class="nt">&#34;altitude&#34;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
-        <span class="nt">&#34;source&#34;</span><span class="p">:</span> <span class="s2">&#34;SOURCE_REGISTRY&#34;</span>
-      <span class="p">}</span>
-    <span class="p">}</span>
-  <span class="p">],</span>
-  <span class="nt">&#34;location_public&#34;</span><span class="p">:</span> <span class="kc">true</span>
-<span class="p">}</span>
-</code></pre></div><p>Keep in mind that the <code>antennas.location</code> object will be empty if you have not previously set the gateway antenna location.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">GAIN</span><span class="o">=</span><span class="s2">&#34;3&#34;</span>
+</span></span><span class="line"><span class="cl">ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span> --antenna.gain <span class="nv">$GAIN</span>
+</span></span></code></pre></div><p>The CLI output will be similar to:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;gtw1&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-05-27T14:43:13.606Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;version_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;auto_update&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;antennas&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;gain&#34;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;latitude&#34;</span><span class="p">:</span> <span class="mf">43.84</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;longitude&#34;</span><span class="p">:</span> <span class="mf">18.32</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;altitude&#34;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;source&#34;</span><span class="p">:</span> <span class="s2">&#34;SOURCE_REGISTRY&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;location_public&#34;</span><span class="p">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Keep in mind that the <code>antennas.location</code> object will be empty if you have not previously set the gateway antenna location.</p>
 <p>Once a gateway has been added, get started with <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> and <a href="https://www.thethingsindustries.com/docs/integrations/">Integrations</a> to process and act on data.</p>
 <h2 id="forwarding-uplinks-to-packet-broker">Forwarding Uplinks to Packet Broker</h2>
 <p>In deployments connected to <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/">Packet Broker</a>, you can control if you want uplinks received by your gateway to be forwarded to Packet Broker or not. In these deployments, uplinks received by your gateway are being forwarded to Packet Broker by default, but you can choose to disable this behavior.</p>
 <p>To disable forwarding uplink messages from your gateway to Packet Broker in The Things Stack Console, navigate to the <strong>General settings</strong> tab on the left hand menu in your gateway&rsquo;s overview, scroll to the bottom of the <strong>Basic settings</strong> section and tick the <strong>Disabled</strong> box under <strong>Packet Broker</strong> option.</p>
-<figure>
-    <img src="pb-forwarding.png"
-         alt="Forwarding uplinks to Packet Broker"/> 
+<figure><img src="pb-forwarding.png"
+         alt="Forwarding uplinks to Packet Broker"/>
 </figure>
 
 <p>To disable forwarding uplink messages from your gateways to Packet Broker using the CLI, use the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span> --disable-packet-broker-forwarding
-</code></pre></div><p>Keep in mind that changes will apply only after restarting the gateway.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span> --disable-packet-broker-forwarding
+</span></span></code></pre></div><p>Keep in mind that changes will apply only after restarting the gateway.</p>
         </div>
         
           <div class="is-clearfix">
@@ -477,7 +471,7 @@ ttn-lw-cli gateways <span class="nb">set</span> <span class="nv">$GTW_ID</span> 
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

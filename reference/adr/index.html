@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Adaptive Data Rate | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/adr/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Adaptive Data Rate">
@@ -240,11 +240,11 @@
 </div>
 
 <p>Before setting ADR parameters to desired values, you first need to turn off the default, The Things Stack ADR mechanism. To turn of The Things Stack ADR using the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">CLI</a>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;dev-id&gt; --mac-settings.use-adr<span class="o">=</span><span class="nb">false</span>
-</code></pre></div><p>After The Things Stack ADR mechanism is disabled, the Network Server will no longer try to optimize ADR parameters.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;dev-id&gt; --mac-settings.use-adr<span class="o">=</span><span class="nb">false</span>
+</span></span></code></pre></div><p>After The Things Stack ADR mechanism is disabled, the Network Server will no longer try to optimize ADR parameters.</p>
 <p>Now you can manually set ADR parameters to desired values using the CLI:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;dev-id&gt; --mac-state.desired-parameters.adr-data-rate-index &lt;data_rate&gt; --mac-state.desired-parameters.adr-tx-power-index &lt;power_index&gt; --mac-state.desired-parameters.adr-nb-trans &lt;nb_trans&gt;
-</code></pre></div><p>Desired values that you set for ADR parameters need to be supported by the end device based on its MAC and PHY versions, and its frequency plan. Upon receiving a next uplink message, the Network Server schedules a <code>LinkADRReq</code> message with new ADR parameters included.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;dev-id&gt; --mac-state.desired-parameters.adr-data-rate-index &lt;data_rate&gt; --mac-state.desired-parameters.adr-tx-power-index &lt;power_index&gt; --mac-state.desired-parameters.adr-nb-trans &lt;nb_trans&gt;
+</span></span></code></pre></div><p>Desired values that you set for ADR parameters need to be supported by the end device based on its MAC and PHY versions, and its frequency plan. Upon receiving a next uplink message, the Network Server schedules a <code>LinkADRReq</code> message with new ADR parameters included.</p>
 <p>If the end device accepts all three parameters specified, then it will use them and answer with a <code>LinkADRAns</code> uplink message. We recommend setting all three parameters explicitly to avoid a possible rejection.</p>
 <p>Keep in mind that changes to <code>mac-state.desired-parameters.&lt;parameter&gt;</code> are not persistent and will be lost on a device reset/rejoin. Read the <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/">MAC Settings</a> section for detailed info.</p>
 <h2 id="configuring-adr-margin">Configuring ADR Margin</h2>
@@ -256,8 +256,8 @@
 </div>
 
 <p>The Network Server uses the ADR margin of 15, but this value can be configured per device using the CLI:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;device-id&gt; --mac-settings.adr-margin &lt;float32&gt;
-</code></pre></div><p>Keep in mind that changes to <code>mac-settings.&lt;parameter&gt;</code> are persistent and will be present even after a device reset/rejoin. Read the <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/">MAC Settings</a> section for detailed info.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;device-id&gt; --mac-settings.adr-margin &lt;float32&gt;
+</span></span></code></pre></div><p>Keep in mind that changes to <code>mac-settings.&lt;parameter&gt;</code> are persistent and will be present even after a device reset/rejoin. Read the <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/">MAC Settings</a> section for detailed info.</p>
 <h3 id="examples">Examples</h3>
 <p>Consider a device whose SNR values in the last 20 uplink messages were in range from 0 to 7. The data rate of the last received frame from the end device is DR3. Three cases presented below demonstrate how choosing a different ADR margin leads to different outcomes in terms of changing the data rate and Tx power.</p>
 <p>In practice, the ADR margin value should be tuned until the optimization target is reached. The optimization target can be different (like battery duration, low packet loss, etc.) in different environments, so a user needs to decide on which margin value to adopt.</p>
@@ -370,7 +370,7 @@
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

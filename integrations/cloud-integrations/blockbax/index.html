@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Blockbax | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blockbax/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Blockbax">
@@ -287,9 +287,8 @@
           <p><a href="https://blockbax.com/">Blockbax</a> is a fully configurable and scalable cloud IoT platform which requires no programming.</p>
 <p>The most important concept in the Blockbax Platform is a <strong>subject</strong>. Typically this is the business object you want to monitor such as a building, but it can be a device in its own right as well. You can also relate subjects together, for example to create composite structure like a building with floors. A subject can have <strong>metrics</strong> which are the things being measured. Besides a subject can also have <strong>properties</strong> to provide extra information (metadata) about the subject. These can be used throughout the platform for filtering, creating slices, drilldowns and aggregations. In order to enforce structure and make it easy to scale there are <strong>subject types</strong> which are the templates / blueprints of your subjects.</p>
 <p>Check the <a href="https://blockbax.com/docs/">Blockbax documentation page</a> for more info and the short video below for an impression.</p>
-<figure>
-    <img src="subject-composition.gif"
-         alt="Subject composition"/> 
+<figure><img src="subject-composition.gif"
+         alt="Subject composition"/>
 </figure>
 
 <h2 id="prerequisites">Prerequisites</h2>
@@ -299,9 +298,8 @@
 <h2 id="blockbax-setup">Blockbax Setup</h2>
 <p><a href="https://login.blockbax.com/">Login</a> to the Blockbax Platform.</p>
 <p>Create a <a href="https://blockbax.com/docs/subjects/#managing-subject-types">subject type</a> and configure metrics. External IDs for these metrics need to match the property names returned by the uplink payload formatter that will be <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blockbax/#configure-the-things-stack">configured on The Things Stack</a>.</p>
-<figure>
-    <img src="blockbax-metric-external-id-in-payload.png"
-         alt="Relating Blockbax metrics to the Things Stack"/> 
+<figure><img src="blockbax-metric-external-id-in-payload.png"
+         alt="Relating Blockbax metrics to the Things Stack"/>
 </figure>
 
 <h2 id="configure-the-things-stack">Configure The Things Stack</h2>
@@ -310,102 +308,100 @@
 <p>On the left menu of your The Things Stack application, select <strong>Payload formatters → Uplink</strong>.</p>
 <p>Select <strong>Javascript</strong> payload formatter type.</p>
 <p>Paste the following contents in the <strong>Formatter parameter</strong> window:</p>
-<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">decoded</span> <span class="o">=</span> <span class="nx">decoder</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
-            <span class="c1">// For numeric metrics
-</span><span class="c1"></span>            <span class="o">&lt;</span><span class="nx">Blockbax</span><span class="o">-</span><span class="nx">external</span><span class="o">-</span><span class="nx">metric</span><span class="o">-</span><span class="nx">ID</span><span class="o">&gt;:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">exampleNumber</span><span class="p">,</span>
-
-            <span class="c1">// For text metrics
-</span><span class="c1"></span>            <span class="o">&lt;</span><span class="nx">Blockbax</span><span class="o">-</span><span class="nx">external</span><span class="o">-</span><span class="nx">metric</span><span class="o">-</span><span class="nx">ID</span><span class="o">&gt;:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">exampleText</span><span class="p">,</span>
-
-            <span class="c1">// For location metrics
-</span><span class="c1"></span>            <span class="o">&lt;</span><span class="nx">Blockbax</span><span class="o">-</span><span class="nx">external</span><span class="o">-</span><span class="nx">metric</span><span class="o">-</span><span class="nx">ID</span><span class="o">&gt;:</span> <span class="p">{</span>
-                <span class="nx">lat</span><span class="o">:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">exampleLatitude</span><span class="p">,</span>
-                <span class="nx">lon</span><span class="o">:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">exampleLongitude</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-    <span class="p">};</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">decoder</span><span class="p">(</span><span class="nx">bytes</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">// Add the logic that decodes the bytes from your device.
-</span><span class="c1"></span>    <span class="k">return</span> <span class="nx">decodedBytes</span>
-<span class="p">}</span>
-</code></pre></div><p>The functions presented above need to be modified against your setup. See example below.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">decoded</span> <span class="o">=</span> <span class="nx">decoder</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// For numeric metrics
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="o">&lt;</span><span class="nx">Blockbax</span><span class="o">-</span><span class="nx">external</span><span class="o">-</span><span class="nx">metric</span><span class="o">-</span><span class="nx">ID</span><span class="o">&gt;:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">exampleNumber</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1">// For text metrics
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="o">&lt;</span><span class="nx">Blockbax</span><span class="o">-</span><span class="nx">external</span><span class="o">-</span><span class="nx">metric</span><span class="o">-</span><span class="nx">ID</span><span class="o">&gt;:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">exampleText</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="c1">// For location metrics
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="o">&lt;</span><span class="nx">Blockbax</span><span class="o">-</span><span class="nx">external</span><span class="o">-</span><span class="nx">metric</span><span class="o">-</span><span class="nx">ID</span><span class="o">&gt;:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">lat</span><span class="o">:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">exampleLatitude</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">lon</span><span class="o">:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">exampleLongitude</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">decoder</span><span class="p">(</span><span class="nx">bytes</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Add the logic that decodes the bytes from your device.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">return</span> <span class="nx">decodedBytes</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The functions presented above need to be modified against your setup. See example below.</p>
 <details><summary>Uplink payload formatter example</summary>
-<div class="highlight"><pre class="chroma"><code class="language-javascript" data-lang="javascript">    <span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
-      <span class="nx">decoded</span> <span class="o">=</span> <span class="nx">decoder</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">)</span>
-      <span class="k">return</span> <span class="p">{</span>
-        <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
-          <span class="nx">battery</span><span class="o">:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">battery</span><span class="p">,</span>
-          <span class="nx">temperature</span><span class="o">:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">temperature</span><span class="p">,</span>
-          <span class="nx">humidity</span><span class="o">:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">humidity</span><span class="p">,</span>
-          <span class="nx">door</span><span class="o">:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">door</span>
-        <span class="p">}</span>
-      <span class="p">};</span>
-    <span class="p">}</span>
-
-    <span class="kd">function</span> <span class="nx">decoder</span><span class="p">(</span><span class="nx">bytes</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">decoded</span> <span class="o">=</span> <span class="p">{};</span>
-
-        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">bytes</span><span class="p">.</span><span class="nx">length</span><span class="p">;)</span> <span class="p">{</span>
-            <span class="kd">var</span> <span class="nx">channel_id</span> <span class="o">=</span> <span class="nx">bytes</span><span class="p">[</span><span class="nx">i</span><span class="o">++</span><span class="p">];</span>
-            <span class="kd">var</span> <span class="nx">channel_type</span> <span class="o">=</span> <span class="nx">bytes</span><span class="p">[</span><span class="nx">i</span><span class="o">++</span><span class="p">];</span>
-            <span class="c1">// BATTERY
-</span><span class="c1"></span>            <span class="k">if</span> <span class="p">(</span><span class="nx">channel_id</span> <span class="o">===</span> <span class="mh">0x01</span> <span class="o">&amp;&amp;</span> <span class="nx">channel_type</span> <span class="o">===</span> <span class="mh">0x75</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">decoded</span><span class="p">.</span><span class="nx">battery</span> <span class="o">=</span> <span class="nx">bytes</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
-                <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-            <span class="p">}</span>
-            <span class="c1">// TEMPERATURE
-</span><span class="c1"></span>            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">channel_id</span> <span class="o">===</span> <span class="mh">0x03</span> <span class="o">&amp;&amp;</span> <span class="nx">channel_type</span> <span class="o">===</span> <span class="mh">0x67</span><span class="p">)</span> <span class="p">{</span>
-                <span class="c1">// ℃
-</span><span class="c1"></span>                <span class="nx">decoded</span><span class="p">.</span><span class="nx">temperature</span> <span class="o">=</span> <span class="nx">readInt16LE</span><span class="p">(</span><span class="nx">bytes</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
-                <span class="nx">i</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
-
-                <span class="c1">// ℉
-</span><span class="c1"></span>                <span class="c1">// decoded.temperature = readInt16LE(bytes.slice(i, i + 2)) / 10 * 1.8 + 32;
-</span><span class="c1"></span>                <span class="c1">// i +=2;
-</span><span class="c1"></span>            <span class="p">}</span>
-            <span class="c1">// HUMIDITY
-</span><span class="c1"></span>            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">channel_id</span> <span class="o">===</span> <span class="mh">0x04</span> <span class="o">&amp;&amp;</span> <span class="nx">channel_type</span> <span class="o">===</span> <span class="mh">0x68</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">decoded</span><span class="p">.</span><span class="nx">humidity</span> <span class="o">=</span> <span class="nx">bytes</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
-                <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-            <span class="p">}</span>
-            <span class="c1">// DOOR
-</span><span class="c1"></span>            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">channel_id</span> <span class="o">===</span> <span class="mh">0x06</span> <span class="o">&amp;&amp;</span> <span class="nx">channel_type</span> <span class="o">===</span> <span class="mh">0x00</span><span class="p">)</span> <span class="p">{</span>
-                <span class="nx">decoded</span><span class="p">.</span><span class="nx">door</span> <span class="o">=</span> <span class="p">(</span><span class="nx">bytes</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="o">?</span>  <span class="mi">0</span> <span class="o">:</span>  <span class="mi">1</span><span class="p">;</span>
-                <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-                <span class="k">break</span><span class="p">;</span>
-            <span class="p">}</span>
-        <span class="p">}</span>
-
-        <span class="k">return</span> <span class="nx">decoded</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="kd">function</span> <span class="nx">readUInt16LE</span><span class="p">(</span><span class="nx">bytes</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="p">(</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-        <span class="k">return</span> <span class="nx">value</span> <span class="o">&amp;</span> <span class="mh">0xffff</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="kd">function</span> <span class="nx">readInt16LE</span><span class="p">(</span><span class="nx">bytes</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">ref</span> <span class="o">=</span> <span class="nx">readUInt16LE</span><span class="p">(</span><span class="nx">bytes</span><span class="p">);</span>
-        <span class="k">return</span> <span class="nx">ref</span> <span class="o">&gt;</span> <span class="mh">0x7fff</span> <span class="o">?</span> <span class="nx">ref</span> <span class="o">-</span> <span class="mh">0x10000</span> <span class="o">:</span> <span class="nx">ref</span><span class="p">;</span>
-    <span class="p">}</span>
-</code></pre></div></details>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">    <span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">decoded</span> <span class="o">=</span> <span class="nx">decoder</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">battery</span><span class="o">:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">battery</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">temperature</span><span class="o">:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">temperature</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">humidity</span><span class="o">:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">humidity</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">door</span><span class="o">:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">door</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">function</span> <span class="nx">decoder</span><span class="p">(</span><span class="nx">bytes</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">decoded</span> <span class="o">=</span> <span class="p">{};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">bytes</span><span class="p">.</span><span class="nx">length</span><span class="p">;)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="kd">var</span> <span class="nx">channel_id</span> <span class="o">=</span> <span class="nx">bytes</span><span class="p">[</span><span class="nx">i</span><span class="o">++</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="kd">var</span> <span class="nx">channel_type</span> <span class="o">=</span> <span class="nx">bytes</span><span class="p">[</span><span class="nx">i</span><span class="o">++</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// BATTERY
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">if</span> <span class="p">(</span><span class="nx">channel_id</span> <span class="o">===</span> <span class="mh">0x01</span> <span class="o">&amp;&amp;</span> <span class="nx">channel_type</span> <span class="o">===</span> <span class="mh">0x75</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">decoded</span><span class="p">.</span><span class="nx">battery</span> <span class="o">=</span> <span class="nx">bytes</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// TEMPERATURE
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">channel_id</span> <span class="o">===</span> <span class="mh">0x03</span> <span class="o">&amp;&amp;</span> <span class="nx">channel_type</span> <span class="o">===</span> <span class="mh">0x67</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">// ℃
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="nx">decoded</span><span class="p">.</span><span class="nx">temperature</span> <span class="o">=</span> <span class="nx">readInt16LE</span><span class="p">(</span><span class="nx">bytes</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">i</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="c1">// ℉
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// decoded.temperature = readInt16LE(bytes.slice(i, i + 2)) / 10 * 1.8 + 32;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// i +=2;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// HUMIDITY
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">channel_id</span> <span class="o">===</span> <span class="mh">0x04</span> <span class="o">&amp;&amp;</span> <span class="nx">channel_type</span> <span class="o">===</span> <span class="mh">0x68</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">decoded</span><span class="p">.</span><span class="nx">humidity</span> <span class="o">=</span> <span class="nx">bytes</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">// DOOR
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">channel_id</span> <span class="o">===</span> <span class="mh">0x06</span> <span class="o">&amp;&amp;</span> <span class="nx">channel_type</span> <span class="o">===</span> <span class="mh">0x00</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">decoded</span><span class="p">.</span><span class="nx">door</span> <span class="o">=</span> <span class="p">(</span><span class="nx">bytes</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="o">?</span>  <span class="mi">0</span> <span class="o">:</span>  <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">decoded</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">function</span> <span class="nx">readUInt16LE</span><span class="p">(</span><span class="nx">bytes</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="p">(</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">value</span> <span class="o">&amp;</span> <span class="mh">0xffff</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kd">function</span> <span class="nx">readInt16LE</span><span class="p">(</span><span class="nx">bytes</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">ref</span> <span class="o">=</span> <span class="nx">readUInt16LE</span><span class="p">(</span><span class="nx">bytes</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">ref</span> <span class="o">&gt;</span> <span class="mh">0x7fff</span> <span class="o">?</span> <span class="nx">ref</span> <span class="o">-</span> <span class="mh">0x10000</span> <span class="o">:</span> <span class="nx">ref</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></div></details>
 <p>When done, click <strong>Save changes</strong>.</p>
-<figure>
-    <img src="payload-formatter.png"
-         alt="Setting up the payload formatter"/> 
+<figure><img src="payload-formatter.png"
+         alt="Setting up the payload formatter"/>
 </figure>
 
 <h3 id="create-webhook">Create webhook</h3>
 <p>Use the Blockbax <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a> to create a Webhook integration on The Things Stack. Select <strong>Integrations → Webhooks</strong> on the left hand menu. Click <strong>Add webhook</strong> and select the <strong>Blockbax</strong> tile.</p>
-<figure>
-    <img src="webhook.png"
-         alt="Setting up the webhook"/> 
+<figure><img src="webhook.png"
+         alt="Setting up the webhook"/>
 </figure>
 
 <p>Enter an arbitrary <strong>Webhook ID</strong>, enter your <strong>Project ID</strong> and <strong><a href="https://blockbax.com/docs/project-settings/#access-tokens">Access token</a></strong>. The project ID is contained in your project&rsquo;s URL, e.g. if the project URL is <code>app.blockbax.com/projects/40edc099-7a41-4af3-9fa4-2fa4bc23a87a/</code>, the project ID is <code>40edc099-7a41-4af3-9fa4-2fa4bc23a87a</code>.</p>
@@ -498,7 +494,7 @@
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

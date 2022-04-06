@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>LoRa Cloud Device &amp; Application Services | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/lora-cloud/das/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="LoRa Cloud Device &amp; Application Services">
@@ -115,6 +115,11 @@
   <li>
     <a href="https://www.thethingsindustries.com/docs/integrations/lora-cloud/das/" class="is-active">LoRa Cloud Device &amp; Application Services</a>
     
+    
+
+
+
+    
   </li>
 
   <li>
@@ -170,37 +175,32 @@
 <p>However, when it comes to geolocation for modem-based devices, The Things Stack integration with LoRa Cloud Device &amp; Application Services handles this on behalf of the user, i.e. it queries the protocol engine on LoRa Cloud in order to retrieve the response. This way, after the integration is configured and the uplink message containing scanning result is sent from the device, the user only has to monitor results in The Things Stack.</p>
 <h2 id="lora-cloud-setup">LoRa Cloud Setup</h2>
 <p>On the <a href="https://www.loracloud.com/portal">LoRa Cloud portal</a>, navigate to <strong>LoRa Cloud Device &amp; Application Services</strong>.</p>
-<figure>
-    <img src="../das.png"
-         alt="LoRa Cloud Device &amp; Application Services"/> 
+<figure><img src="../das.png"
+         alt="LoRa Cloud Device &amp; Application Services"/>
 </figure>
 
 <p>Choose <strong>Manage devices</strong> on the left hand menu and click the <strong>Add devices</strong> button. To add a device, you only need to provide its EUI as shown on the image below.</p>
-<figure>
-    <img src="../add-device.png"
-         alt="Adding a new device"/> 
+<figure><img src="../add-device.png"
+         alt="Adding a new device"/>
 </figure>
 
 <p>Next, choose <strong>Manage tokens</strong> on the left hand menu. Click the <strong>Create new token</strong> button.</p>
 <p>Give the name to your token and tick the boxes next to permissions you wish to allow for it. Click the <strong>Create new token</strong> button to finish. A user can decide to restrict some permissions. On the image below, all permissions are allowed for the sake of simplicity of this guide.</p>
-<figure>
-    <img src="../token-creation.png"
-         alt="Creating a token"/> 
+<figure><img src="../token-creation.png"
+         alt="Creating a token"/>
 </figure>
 
 <h2 id="configure-device--application-services-integration">Configure Device &amp; Application Services Integration</h2>
 <p>To setup LoRa Cloud Device &amp; Application Services integration, navigate to your application in The Things Stack.</p>
 <p>On the left hand menu, select <strong>Integrations → LoRa Cloud</strong>. Click the <strong>Expand</strong> button next to the <strong>Device &amp; Application Services</strong>.</p>
 <p>Next, copy the token you previously created in LoRa Cloud Device &amp; Application Services portal.</p>
-<figure>
-    <img src="../copy-token.png"
-         alt="Copy the token from LoRa Cloud"/> 
+<figure><img src="../copy-token.png"
+         alt="Copy the token from LoRa Cloud"/>
 </figure>
 
 <p>Paste the token in the <strong>Token</strong> field under the <strong>Set LoRa Cloud token</strong> section and tick the box under <strong>LR1110 demo encoding</strong> to enable it. Finish by clicking the <strong>Set token</strong> button.</p>
-<figure>
-    <img src="../paste-token.png"
-         alt="Paste the token in The Things Stack"/> 
+<figure><img src="../paste-token.png"
+         alt="Paste the token in The Things Stack"/>
 </figure>
 
 <h2 id="obtain-location-solutions">Obtain Location Solutions</h2>
@@ -219,9 +219,8 @@
 <h3 id="wi-fi-scans">Wi-Fi Scans</h3>
 <p>To learn how to perform Wi-Fi scans with LoRa Edge LR1110 device, follow <a href="https://lora-developers.semtech.com/learning-center/hands-on-labs/build-end-to-end-solution-using-lorawan-and-loraedge/find-the-location-of-your-tracking-device/#run-a-wi-fi-scan-and-send-results">this guide</a>.</p>
 <p>At this point, when your device performs a Wi-Fi scan and sends the resulting data in an uplink message, you will notice the location estimation results present in the <code>Location solved</code> message in The Things Stack <strong>Live data</strong> tab, as shown below.</p>
-<figure>
-    <img src="../wifi-scan-result.png"
-         alt="Location estimation result from a WiFi scan"/> 
+<figure><img src="../wifi-scan-result.png"
+         alt="Location estimation result from a WiFi scan"/>
 </figure>
 
 <p>Notice the <code>Source: WIFI_RSSI_GEOLOCATION</code> which indicates the type of scan your device is performing.</p>
@@ -238,9 +237,8 @@
 </div>
 
 <p>Same as in the subsection above, when your device performs an assisted GNSS scan and sends the associated data in an uplink message, you will notice the location estimation results present in the <code>Location solved</code> message in The Things Stack <strong>Live data</strong> tab, as shown below.</p>
-<figure>
-    <img src="../gnss-assisted-scan-result.png"
-         alt="Location estimation result from an assisted GNSS scan"/> 
+<figure><img src="../gnss-assisted-scan-result.png"
+         alt="Location estimation result from an assisted GNSS scan"/>
 </figure>
 
 <p>Notice the <code>Source: GPS</code> which indicates the type of scan your device is performing.</p>
@@ -260,23 +258,20 @@
 <p>Besides estimating the location of your device, you can also send requests from LoRa Cloud portal to mute or reset the device, trigger it for a re-join, set ADR profile or obtain information like temperature, voltage, signal strength, status, etc. In this section, we demonstrate how to send a request to obtain information from your device.</p>
 <p>To send a request, navigate to <strong>Manage devices</strong> on the left hand menu in the LoRa Cloud Device &amp; Application Services portal.</p>
 <p>Click on the <strong>Send requests</strong> button.</p>
-<figure>
-    <img src="../send-requests.png"
-         alt="Send requests from LoRa Cloud portal"/> 
+<figure><img src="../send-requests.png"
+         alt="Send requests from LoRa Cloud portal"/>
 </figure>
 
 <p>Enter your device&rsquo;s EUI in the <strong>EUI(S)</strong> field and choose <strong>Get Info</strong> as a <strong>Request type</strong>. Tick the boxes next to the information you want to obtain from your device.</p>
 <p>Schedule the request to be sent by clicking the <strong>Send requests</strong> button.</p>
-<figure>
-    <img src="../get-info.png"
-         alt="Get Info request"/> 
+<figure><img src="../get-info.png"
+         alt="Get Info request"/>
 </figure>
 
 <p>After a few moments, click on a reload button to refresh the device information in the <strong>Manage devices</strong> view. You can already see that the <strong>Status</strong> is changed to <strong>Joined: Yes</strong>, as well as the time of the <strong>Last Uplink</strong>, <strong>Signal RSSI</strong> and <strong>Signal SNR</strong>.</p>
 <p>Click the <strong>&gt;</strong> button next to your device to see all the information that was obtained from the device.</p>
-<figure>
-    <img src="../full-info.png"
-         alt="Show full info"/> 
+<figure><img src="../full-info.png"
+         alt="Show full info"/>
 </figure>
         </div>
         <div class="is-clearfix">
@@ -366,7 +361,7 @@
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

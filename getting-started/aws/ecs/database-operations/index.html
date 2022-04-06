@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Database Operations | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/database-operations/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Database Operations">
@@ -248,39 +248,39 @@
         <div class="content">
           <p>This page describes the steps for performing database operations on an AWS ECS deployment.</p>
 <p>The <code>OpsRunTaskArguments</code> output of the stack deployed from the <code>5-2-ecs-ops</code> template contains the parameters needed to run (database) operations. The value of this output contains:</p>
-<pre><code>TASK_DEFINITION CLUSTER_NAME SUBNET_ONE SUBNET_TWO SECURITY_GROUP
+<pre tabindex="0"><code>TASK_DEFINITION CLUSTER_NAME SUBNET_ONE SUBNET_TWO SECURITY_GROUP
 </code></pre><p>To run a task from the AWS Console, go to <strong>Amazon ECS</strong> &gt; <strong>Clusters</strong> &gt; your cluster &gt; <strong>Tasks</strong>, and click <strong>Run new Task</strong>.</p>
 <p>For <strong>Task Definition</strong> select the latest version of the ops task definition (<code>TASK_DEFINITION</code> from earlier).</p>
 <p>Select the <strong>VPC</strong>, and for <strong>Subnets</strong> the subnets <code>SUBNET_ONE</code> and <code>SUBNET_TWO</code> from the <code>OpsRunTaskArguments</code> mentioned earlier. Instead of creating a new security group, select the existing <code>SECURITY_GROUP</code> listed in <code>OpsRunTaskArguments</code>.</p>
 <p>Under <strong>Advanced Options</strong> &gt; <strong>Container Overrides</strong> &gt; <code>ttes</code>, set the <strong>Command override</strong> to the command you want to run, separating arguments with commas. A typical command will look like <code>tti-lw-stack,COMMAND,ARGUMENTS,AND,FLAGS</code>.</p>
 <p>Alternatively, you can run ops commands using the AWS CLI:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">aws ecs run-task <span class="se">\
-</span><span class="se"></span>  --task-definition TASK_DEFINITION <span class="se">\
-</span><span class="se"></span>  --cluster CLUSTER_NAME <span class="se">\
-</span><span class="se"></span>  --launch-type EC2 <span class="se">\
-</span><span class="se"></span>  --network-configuration <span class="s1">&#39;{
-</span><span class="s1">    &#34;awsvpcConfiguration&#34;:{
-</span><span class="s1">      &#34;subnets&#34;:[
-</span><span class="s1">        &#34;SUBNET_ONE&#34;,
-</span><span class="s1">        &#34;SUBNET_TWO&#34;
-</span><span class="s1">      ],
-</span><span class="s1">      &#34;securityGroups&#34;:[
-</span><span class="s1">        &#34;SECURITY_GROUP&#34;
-</span><span class="s1">      ],
-</span><span class="s1">      &#34;assignPublicIp&#34;:&#34;DISABLED&#34;
-</span><span class="s1">    }
-</span><span class="s1">  }&#39;</span> <span class="se">\
-</span><span class="se"></span>  --overrides <span class="s1">&#39;{
-</span><span class="s1">    &#34;containerOverrides&#34;:[
-</span><span class="s1">      {
-</span><span class="s1">        &#34;name&#34;:&#34;ttes&#34;,
-</span><span class="s1">        &#34;command&#34;:[
-</span><span class="s1">          &#34;tti-lw-stack&#34;,&#34;COMMAND&#34;,&#34;ARGUMENTS&#34;,&#34;AND&#34;,&#34;FLAGS&#34;
-</span><span class="s1">        ]
-</span><span class="s1">      }
-</span><span class="s1">    ]
-</span><span class="s1">  }&#39;</span>
-</code></pre></div><p>In this case, the command, arguments and flags need to be written as a JSON array.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">aws ecs run-task <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --task-definition TASK_DEFINITION <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --cluster CLUSTER_NAME <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --launch-type EC2 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --network-configuration <span class="s1">&#39;{
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;awsvpcConfiguration&#34;:{
+</span></span></span><span class="line"><span class="cl"><span class="s1">      &#34;subnets&#34;:[
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;SUBNET_ONE&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;SUBNET_TWO&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s1">      ],
+</span></span></span><span class="line"><span class="cl"><span class="s1">      &#34;securityGroups&#34;:[
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;SECURITY_GROUP&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s1">      ],
+</span></span></span><span class="line"><span class="cl"><span class="s1">      &#34;assignPublicIp&#34;:&#34;DISABLED&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s1">    }
+</span></span></span><span class="line"><span class="cl"><span class="s1">  }&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --overrides <span class="s1">&#39;{
+</span></span></span><span class="line"><span class="cl"><span class="s1">    &#34;containerOverrides&#34;:[
+</span></span></span><span class="line"><span class="cl"><span class="s1">      {
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;name&#34;:&#34;ttes&#34;,
+</span></span></span><span class="line"><span class="cl"><span class="s1">        &#34;command&#34;:[
+</span></span></span><span class="line"><span class="cl"><span class="s1">          &#34;tti-lw-stack&#34;,&#34;COMMAND&#34;,&#34;ARGUMENTS&#34;,&#34;AND&#34;,&#34;FLAGS&#34;
+</span></span></span><span class="line"><span class="cl"><span class="s1">        ]
+</span></span></span><span class="line"><span class="cl"><span class="s1">      }
+</span></span></span><span class="line"><span class="cl"><span class="s1">    ]
+</span></span></span><span class="line"><span class="cl"><span class="s1">  }&#39;</span>
+</span></span></code></pre></div><p>In this case, the command, arguments and flags need to be written as a JSON array.</p>
 <h2 id="initialize-events-storage">Initialize Events Storage</h2>
 <p>If you use events storage (template <code>timescale</code>), you need to initialize the database.</p>
 <div class="tabs is-boxed">
@@ -302,11 +302,11 @@
 </div>
 <div class="tab-content content">
   <section data-content="aws-console">
-  <pre><code>tti-lw-stack,storage-db,init,--timescaledb.chunk-time-interval,12h,--timescaledb.enable-retention-policy,--timescaledb.retention-days,31
+  <pre tabindex="0"><code>tti-lw-stack,storage-db,init,--timescaledb.chunk-time-interval,12h,--timescaledb.enable-retention-policy,--timescaledb.retention-days,31
 </code></pre>
 </section>
 <section data-content="aws-cli">
-  <pre><code>[&quot;tti-lw-stack&quot;,&quot;storage-db&quot;,&quot;init&quot;,&quot;--timescaledb.chunk-time-interval&quot;,&quot;12h&quot;,&quot;--timescaledb.enable-retention-policy&quot;,&quot;--timescaledb.retention-days&quot;,&quot;31&quot;]
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;storage-db&#34;,&#34;init&#34;,&#34;--timescaledb.chunk-time-interval&#34;,&#34;12h&#34;,&#34;--timescaledb.enable-retention-policy&#34;,&#34;--timescaledb.retention-days&#34;,&#34;31&#34;]
 </code></pre>
 </section>
 
@@ -338,11 +338,11 @@
 </div>
 <div class="tab-content content">
   <section data-content="aws-console">
-  <pre><code>tti-lw-stack,is-db,init
+  <pre tabindex="0"><code>tti-lw-stack,is-db,init
 </code></pre>
 </section>
 <section data-content="aws-cli">
-  <pre><code>[&quot;tti-lw-stack&quot;,&quot;is-db&quot;,&quot;init&quot;]
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;is-db&#34;,&#34;init&#34;]
 </code></pre>
 </section>
 
@@ -375,11 +375,11 @@
 </div>
 <div class="tab-content content">
   <section data-content="aws-console">
-  <pre><code>tti-lw-stack,is-db,create-tenant,--id=$TENANT_ID,--name=$TENANT_NAME
+  <pre tabindex="0"><code>tti-lw-stack,is-db,create-tenant,--id=$TENANT_ID,--name=$TENANT_NAME
 </code></pre>
 </section>
 <section data-content="aws-cli">
-  <pre><code>[&quot;tti-lw-stack&quot;,&quot;is-db&quot;,&quot;create-tenant&quot;,&quot;--id=$TENANT_ID&quot;,&quot;--name=$TENANT_NAME&quot;]
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;is-db&#34;,&#34;create-tenant&#34;,&#34;--id=$TENANT_ID&#34;,&#34;--name=$TENANT_NAME&#34;]
 </code></pre>
 </section>
 
@@ -410,11 +410,11 @@
 </div>
 <div class="tab-content content">
   <section data-content="aws-console">
-  <pre><code>tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=cli,--name=Command Line Interface,--no-secret,--redirect-uri=local-callback,--redirect-uri=code
+  <pre tabindex="0"><code>tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=cli,--name=Command Line Interface,--no-secret,--redirect-uri=local-callback,--redirect-uri=code
 </code></pre>
 </section>
 <section data-content="aws-cli">
-  <pre><code>[&quot;tti-lw-stack&quot;,&quot;is-db&quot;,&quot;create-oauth-client&quot;,&quot;--tenant-id=NULL&quot;,&quot;--id=cli&quot;,&quot;--name=Command Line Interface&quot;,&quot;--no-secret&quot;,&quot;--redirect-uri=local-callback&quot;,&quot;--redirect-uri=code&quot;]
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;is-db&#34;,&#34;create-oauth-client&#34;,&#34;--tenant-id=NULL&#34;,&#34;--id=cli&#34;,&#34;--name=Command Line Interface&#34;,&#34;--no-secret&#34;,&#34;--redirect-uri=local-callback&#34;,&#34;--redirect-uri=code&#34;]
 </code></pre>
 </section>
 
@@ -445,11 +445,11 @@
 </div>
 <div class="tab-content content">
   <section data-content="aws-console">
-  <pre><code>tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=$ID,--name=$NAME,--secret=$CLIENT_SECRET,--redirect-uri=/console/oauth/callback,--redirect-uri=https://$DOMAIN/console/oauth/callback,--logout-redirect-uri=/console,--logout-redirect-uri=https://$DOMAIN/console
+  <pre tabindex="0"><code>tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=$ID,--name=$NAME,--secret=$CLIENT_SECRET,--redirect-uri=/console/oauth/callback,--redirect-uri=https://$DOMAIN/console/oauth/callback,--logout-redirect-uri=/console,--logout-redirect-uri=https://$DOMAIN/console
 </code></pre>
 </section>
 <section data-content="aws-cli">
-  <pre><code>[&quot;tti-lw-stack&quot;,&quot;is-db&quot;,&quot;create-oauth-client&quot;,&quot;--tenant-id=NULL&quot;,&quot;--id=$ID&quot;,&quot;--name=$NAME&quot;,&quot;--secret=$CLIENT_SECRET&quot;,&quot;--redirect-uri=/console/oauth/callback&quot;,&quot;--redirect-uri=https://$DOMAIN/console/oauth/callback&quot;,&quot;--logout-redirect-uri=/console&quot;,&quot;--logout-redirect-uri=https://$DOMAIN/console&quot;]
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;is-db&#34;,&#34;create-oauth-client&#34;,&#34;--tenant-id=NULL&#34;,&#34;--id=$ID&#34;,&#34;--name=$NAME&#34;,&#34;--secret=$CLIENT_SECRET&#34;,&#34;--redirect-uri=/console/oauth/callback&#34;,&#34;--redirect-uri=https://$DOMAIN/console/oauth/callback&#34;,&#34;--logout-redirect-uri=/console&#34;,&#34;--logout-redirect-uri=https://$DOMAIN/console&#34;]
 </code></pre>
 </section>
 
@@ -486,11 +486,11 @@
 </div>
 <div class="tab-content content">
   <section data-content="aws-console">
-  <pre><code>tti-lw-stack,is-db,create-admin-user,--tenant-id,$TENANT_ID,--email,$ADMIN_EMAIL,--password,$ADMIN_PASSWORD
+  <pre tabindex="0"><code>tti-lw-stack,is-db,create-admin-user,--tenant-id,$TENANT_ID,--email,$ADMIN_EMAIL,--password,$ADMIN_PASSWORD
 </code></pre>
 </section>
 <section data-content="aws-cli">
-  <pre><code>[&quot;tti-lw-stack&quot;,&quot;is-db&quot;,&quot;create-admin-user&quot;,&quot;--tenant-id&quot;,&quot;$TENANT_ID&quot;,&quot;--email&quot;,&quot;$ADMIN_EMAIL&quot;,&quot;--password&quot;,&quot;$ADMIN_PASSWORD&quot;]
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;is-db&#34;,&#34;create-admin-user&#34;,&#34;--tenant-id&#34;,&#34;$TENANT_ID&#34;,&#34;--email&#34;,&#34;$ADMIN_EMAIL&#34;,&#34;--password&#34;,&#34;$ADMIN_PASSWORD&#34;]
 </code></pre>
 </section>
 
@@ -522,11 +522,11 @@
 </div>
 <div class="tab-content content">
   <section data-content="aws-console">
-  <pre><code>tti-lw-stack,is-db,migrate
+  <pre tabindex="0"><code>tti-lw-stack,is-db,migrate
 </code></pre>
 </section>
 <section data-content="aws-cli">
-  <pre><code>[&quot;tti-lw-stack&quot;,&quot;is-db&quot;,&quot;migrate&quot;]
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;is-db&#34;,&#34;migrate&#34;]
 </code></pre>
 </section>
 
@@ -553,11 +553,11 @@
 </div>
 <div class="tab-content content">
   <section data-content="aws-console">
-  <pre><code>tti-lw-stack,ns-db,migrate
+  <pre tabindex="0"><code>tti-lw-stack,ns-db,migrate
 </code></pre>
 </section>
 <section data-content="aws-cli">
-  <pre><code>[&quot;tti-lw-stack&quot;,&quot;ns-db&quot;,&quot;migrate&quot;]
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;ns-db&#34;,&#34;migrate&#34;]
 </code></pre>
 </section>
 
@@ -584,11 +584,11 @@
 </div>
 <div class="tab-content content">
   <section data-content="aws-console">
-  <pre><code>tti-lw-stack,ns-db,prune
+  <pre tabindex="0"><code>tti-lw-stack,ns-db,prune
 </code></pre>
 </section>
 <section data-content="aws-cli">
-  <pre><code>[&quot;tti-lw-stack&quot;,&quot;ns-db&quot;,&quot;prune&quot;]
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;ns-db&#34;,&#34;prune&#34;]
 </code></pre>
 </section>
 
@@ -615,11 +615,11 @@
 </div>
 <div class="tab-content content">
   <section data-content="aws-console">
-  <pre><code>tti-lw-stack,as-db,migrate
+  <pre tabindex="0"><code>tti-lw-stack,as-db,migrate
 </code></pre>
 </section>
 <section data-content="aws-cli">
-  <pre><code>[&quot;tti-lw-stack&quot;,&quot;as-db&quot;,&quot;migrate&quot;]
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;as-db&#34;,&#34;migrate&#34;]
 </code></pre>
 </section>
 
@@ -646,11 +646,11 @@
 </div>
 <div class="tab-content content">
   <section data-content="aws-console">
-  <pre><code>tti-lw-stack,dcs-db,migrate
+  <pre tabindex="0"><code>tti-lw-stack,dcs-db,migrate
 </code></pre>
 </section>
 <section data-content="aws-cli">
-  <pre><code>[&quot;tti-lw-stack&quot;,&quot;dcs-db&quot;,&quot;migrate&quot;]
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;dcs-db&#34;,&#34;migrate&#34;]
 </code></pre>
 </section>
 
@@ -765,7 +765,7 @@
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Configuration | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/configuration/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Configuration">
@@ -278,8 +278,8 @@
 <p>In this reference we will refer to configuration options by name. On this page we will show how the <code>console.ui.canonical-url</code> option can be configured.</p>
 <h3 id="command-line-flags">Command-line flags</h3>
 <p>Command-line flags have the highest priority and, as such, override other means of configuration (environment variable or file). This looks as follows:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">$ ttn-lw-stack start console --console.ui.canonical-url <span class="s2">&#34;https://thethings.example.com/console&#34;</span>
-</code></pre></div><h3 id="environment-variables">Environment variables</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ ttn-lw-stack start console --console.ui.canonical-url <span class="s2">&#34;https://thethings.example.com/console&#34;</span>
+</span></span></code></pre></div><h3 id="environment-variables">Environment variables</h3>
 <p>Environment variables for configuration options are very similar to the command-line flags, except that they are in uppercase, and all separators (<code>.</code> or <code>-</code>) are replaced by underscores (<code>_</code>). Environment variables are also prefixed with <code>TTN_LW_</code>.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
@@ -287,15 +287,15 @@
 </div>
 
 <p>The option from the command-line example from above would look as follows with environment variables:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">TTN_LW_CONSOLE_UI_CANONICAL_URL</span><span class="o">=</span><span class="s2">&#34;https://thethings.example.com/console&#34;</span>
-</code></pre></div><h3 id="configuration-files">Configuration files</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">TTN_LW_CONSOLE_UI_CANONICAL_URL</span><span class="o">=</span><span class="s2">&#34;https://thethings.example.com/console&#34;</span>
+</span></span></code></pre></div><h3 id="configuration-files">Configuration files</h3>
 <p>You can also configure The Things Stack with a YAML configuration file. This is again similar to the command-line flags, except that each <code>.</code> represents a YAML node. This allows you to group related options together:</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">console</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">ui</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">canonical-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/console&#39;</span><span class="w">
-</span><span class="w">    </span><span class="c"># other console UI options</span><span class="w">
-</span><span class="w">  </span><span class="c"># other console options</span><span class="w">
-</span></code></pre></div><p>You can specify the location of the YAML configuration file with the command-line flag <code>-c</code> or <code>--config</code>. If this flag is not present, The Things Stack will look for config files in the following locations:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">console</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ui</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">canonical-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/console&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># other console UI options</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># other console options</span><span class="w">
+</span></span></span></code></pre></div><p>You can specify the location of the YAML configuration file with the command-line flag <code>-c</code> or <code>--config</code>. If this flag is not present, The Things Stack will look for config files in the following locations:</p>
 <ul>
 <li>The current directory</li>
 <li>The user&rsquo;s home directory (as <a href="https://golang.org/pkg/os/#UserHomeDir">determined by Go</a>)</li>
@@ -389,7 +389,7 @@
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

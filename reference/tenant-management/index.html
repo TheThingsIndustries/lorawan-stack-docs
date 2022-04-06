@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Tenant Management | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/tenant-management/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Tenant Management">
@@ -252,44 +252,44 @@
 <p>This means all tenant management CLI commands will need to have the <code>--tenant-admin-key</code> flag appended, followed by a tenant admin key that you configured in the Identity Server. See the section below for examples.</p>
 <h2 id="basic-operations">Basic Operations</h2>
 <p>We define some user parameters that will be used below:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">TENANT_ID</span><span class="o">=</span><span class="s2">&#34;tenant1&#34;</span>
-<span class="nv">TENANT_ADMIN_KEY</span><span class="o">=</span><span class="s2">&#34;14596c0bdb9b11f6a97273e7c09167531571efa5898274e48660ee8d08f62b67&#34;</span>
-</code></pre></div><p>Make sure to modify these according to your setup.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">TENANT_ID</span><span class="o">=</span><span class="s2">&#34;tenant1&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">TENANT_ADMIN_KEY</span><span class="o">=</span><span class="s2">&#34;14596c0bdb9b11f6a97273e7c09167531571efa5898274e48660ee8d08f62b67&#34;</span>
+</span></span></code></pre></div><p>Make sure to modify these according to your setup.</p>
 <h3 id="create-a-tenant">Create a Tenant</h3>
 <p>To create a new tenant with the tenant ID <code>tenant1</code>:</p>
-<pre><code>tti-lw-cli tenant create $TETANT_ID --tenant-admin-key $TENANT_ADMIN_KEY
+<pre tabindex="0"><code>tti-lw-cli tenant create $TETANT_ID --tenant-admin-key $TENANT_ADMIN_KEY
 </code></pre><h3 id="get-a-tenant">Get a Tenant</h3>
 <p>To get a tenant <code>tenant1</code>, i.e. to see details like when it was created or updated, and which its capabilities are:</p>
-<pre><code>tti-lw-cli tenant get $TENANT_ID --tenant-admin-key $TENANT_ADMIN_KEY
+<pre tabindex="0"><code>tti-lw-cli tenant get $TENANT_ID --tenant-admin-key $TENANT_ADMIN_KEY
 </code></pre><h3 id="list-tenants">List Tenants</h3>
 <p>To get descriptions of all tenants:</p>
-<pre><code>tti-lw-cli tenant list --tenant-admin-key $TENANT_ADMIN_KEY
+<pre tabindex="0"><code>tti-lw-cli tenant list --tenant-admin-key $TENANT_ADMIN_KEY
 </code></pre><h3 id="delete-a-tenant">Delete a Tenant</h3>
 <p>To delete a tenant <code>tenant1</code>:</p>
-<pre><code>tti-lw-cli tenant delete $TENANT_ID --tenant-admin-key $TENANT_ADMIN_KEY
+<pre tabindex="0"><code>tti-lw-cli tenant delete $TENANT_ID --tenant-admin-key $TENANT_ADMIN_KEY
 </code></pre><h3 id="get-tenant-identifiers-for-device-euis">Get Tenant Identifiers for Device EUIs</h3>
 <p>To get a tenant ID based on your device&rsquo;s DevEUI and JoinEUI:</p>
-<pre><code>DEV_EUI=&quot;0004A30B001C0530&quot;
-JOIN_EUI=&quot;800000000000000C&quot;
+<pre tabindex="0"><code>DEV_EUI=&#34;0004A30B001C0530&#34;
+JOIN_EUI=&#34;800000000000000C&#34;
 tti-lw-cli tenant get-identifiers-for-end-device-euis --dev-eui $DEV_EUI --join-eui $JOIN_EUI --tenant-admin-key $TENANT_ADMIN_KEY
 </code></pre><h3 id="get-tenant-identifiers-for-a-gateway-eui">Get Tenant Identifiers for a Gateway EUI</h3>
 <p>To get a tenant ID based on your gateways&rsquo;s EUI:</p>
-<pre><code>GTW_EUI=&quot;00800000A00009EF&quot;
+<pre tabindex="0"><code>GTW_EUI=&#34;00800000A00009EF&#34;
 tti-lw-cli tenant get-identifiers-for-gateway-eui --gateway-eui $GTW_EUI --tenant-admin-key $TENANT_ADMIN_KEY
 </code></pre><h3 id="search-for-tenants">Search for Tenants</h3>
 <p>You can search tenants based on multiple criteria such as name, maximum number of entities, state, configuration, etc. These criteria are defined using flags. To see all available flags, use the following command:</p>
-<pre><code>tti-lw-cli tenant search --help
+<pre tabindex="0"><code>tti-lw-cli tenant search --help
 </code></pre><p>For example, to search for recently deleted tenants:</p>
-<pre><code>tti-lw-cli tenant search --deleted --tenant-admin-key $TENANT_ADMIN_KEY
+<pre tabindex="0"><code>tti-lw-cli tenant search --deleted --tenant-admin-key $TENANT_ADMIN_KEY
 </code></pre><h3 id="update-a-tenant">Update a Tenant</h3>
 <p>You can update a tenant in multiple ways, for example change its name, set a maximum number of entities, change configuration and billing settings, etc. Use the following command to list all available flags:</p>
-<pre><code>tti-lw-cli tenant update --help
+<pre tabindex="0"><code>tti-lw-cli tenant update --help
 </code></pre><p>For example, to update a maximum number of end devices that can be registered in a tenant to 3:</p>
-<pre><code>tti-lw-cli tenant update --tenant-id $TENANT_ID --max-end-devices 3 --tenant-admin-key $TENANT_ADMIN_KEY
+<pre tabindex="0"><code>tti-lw-cli tenant update --tenant-id $TENANT_ID --max-end-devices 3 --tenant-admin-key $TENANT_ADMIN_KEY
 </code></pre><h2 id="setting-a-devaddr-prefix-for-a-tenant">Setting a DevAddr Prefix for a Tenant</h2>
 <p>In a multi-tenant deployment, different tenants share the same NetID, but they use different DevAddr blocks. DevAddr blocks need to be configured for every tenant in order for Packet Broker to be able to distinguish traffic that belongs to each of those tenants.</p>
 <p>Setting a DevAddr prefix for a tenant can be done using the <code>update</code> operation mentioned in the section above. To set a DevAddr prefix for a tenant <code>tenant1</code>:</p>
-<pre><code>DEV_ADDR_PREFIX=&quot;27123400/24&quot;
+<pre tabindex="0"><code>DEV_ADDR_PREFIX=&#34;27123400/24&#34;
 tti-lw-cli tenant update --tenant-id $tenant_id --configuration.default-cluster.ns.dev-addr-prefixes $DEV_ADDR_PREFIX
 </code></pre>
         </div>
@@ -378,7 +378,7 @@ tti-lw-cli tenant update --tenant-id $tenant_id --configuration.default-cluster.
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

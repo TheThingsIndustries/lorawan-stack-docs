@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Import End Devices in The Things Stack | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="The Things Stack for LoRaWAN">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Import End Devices in The Things Stack">
@@ -133,6 +133,11 @@
   <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/" class="is-active">Import End Devices in The Things Stack</a>
     
+    
+
+
+
+    
   </li>
 
   <li>
@@ -250,22 +255,19 @@
   <section data-content="console">
   <h3 id="import-devices-via-the-console">Import devices via the Console</h3>
 <p>Open your application and click the button <strong>Import end devices</strong></p>
-<figure>
-    <img src="../import-end-devices.png"
-         alt="import devices"/> 
+<figure><img src="../import-end-devices.png"
+         alt="import devices"/>
 </figure>
 <p>Select the <strong>File format</strong> and upload the file (e.g. <code>devices.json</code> or <code>devices.csv</code>).</p>
 <p>You can specify <strong>Fallback values</strong> for Frequency plan and LoRaWAN and Regional Parameters version, in case the import file does not specify these settings for the device.</p>
 <p>You can also expand the <strong>Advanced claiming and component settings</strong> to set targeted components, and set the claim authentication code to be generated.</p>
 <p>Start the import by clicking the <strong>Import end devices</strong> button.</p>
-<figure>
-    <img src="../upload-file.png"
-         alt="upload devices.json file"/> 
+<figure><img src="../upload-file.png"
+         alt="upload devices.json file"/>
 </figure>
 <p>Wait for the end devices to be successfully imported. In case any device fails, you will see a relevant error message in the console.</p>
-<figure>
-    <img src="../operation-finished.png"
-         alt="import finished"/> 
+<figure><img src="../operation-finished.png"
+         alt="import finished"/>
 </figure>
 <p>If the import was successful, your devices are added to the list of end devices in your application.</p>
 </section>
@@ -280,22 +282,21 @@
   </div>
 </div>
 <p>To import a file in The Things Stack, run the following command with <code>ttn-lw-cli</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># JSON format</span>
-ttn-lw-cli end-devices create --application-id &lt;application-id&gt; &lt; devices.json
-<span class="c1"># CSV format</span>
-ttn-lw-cli end-devices template from-data --local-file devices.csv --format-id the-things-stack-csv <span class="se">\
-</span><span class="se"></span>  <span class="p">|</span> ttn-lw-cli end-devices template execute <span class="se">\
-</span><span class="se"></span>  <span class="p">|</span> ttn-lw-cli end-devices create --application-id &lt;application-id&gt;
-</code></pre></div><div class="notification is-info is-light has-text-dark">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># JSON format</span>
+</span></span><span class="line"><span class="cl">ttn-lw-cli end-devices create --application-id &lt;application-id&gt; &lt; devices.json
+</span></span><span class="line"><span class="cl"><span class="c1"># CSV format</span>
+</span></span><span class="line"><span class="cl">ttn-lw-cli end-devices template from-data --local-file devices.csv --format-id the-things-stack-csv <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  <span class="p">|</span> ttn-lw-cli end-devices template execute <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  <span class="p">|</span> ttn-lw-cli end-devices create --application-id &lt;application-id&gt;
+</span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   See <a href="https://www.thethingsindustries.com/docs/devices/end-device-templates/">Device Templates</a> for advanced templating scenarios.
 </div>
 <p>This will import your devices in The Things Stack. In case any device import fails, you will see a relevant error message at the end of the output.</p>
 <p>If the import was successful, you will see your devices added to the list of end devices in your application.</p>
 </section>
-<figure>
-    <img src="../successful-import.png"
-         alt="successful-import"/> 
+<figure><img src="../successful-import.png"
+         alt="successful-import"/>
 </figure>
 <p>Your devices are now registered on The Things Stack.</p>
 <p>Keep in mind that you still might need to initiate a new join on The Things Stack network! See <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/">Migrating End Devices from V2</a> for detailed info on how to complete the migration of your devices.</p>
@@ -375,7 +376,7 @@ ttn-lw-cli end-devices template from-data --local-file devices.csv --format-id t
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

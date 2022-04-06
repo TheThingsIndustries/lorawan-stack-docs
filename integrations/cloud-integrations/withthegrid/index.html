@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Withthegrid | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/withthegrid/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Withthegrid">
@@ -295,9 +295,8 @@
 <h3 id="monitoring-environments">Monitoring environments</h3>
 <p>Monitoring environments are environments where the end users obtain an overview of all the issues and actions related to its assets.</p>
 <p>Locations form the core of the asset monitoring platform. At each location, measurements are recorded. In our example, a monitoring environment with the name <strong>Infrastructure company ACME</strong> will be created (Figure 1). We will create a location <strong>ACME Headquarters</strong> where we will connect a <strong>Dragino - LWL02</strong> water leak sensor device. Each location can be consisted of multiple location ports. These are ports onto which measurements are recorded. Here, we create a location port <strong>Entrance</strong> where the sensor is located. The device can be assigned with several channels that can be linked with any location port. This way, the right measurements can be pushed to desired locations.</p>
-<figure>
-    <img src="monnEnvironment.png"
-         alt="Monitoring environment example"/> <figcaption>
+<figure><img src="monnEnvironment.png"
+         alt="Monitoring environment example"/><figcaption>
             <p>Figure 1. Example of the setup of monitoring environment</p>
         </figcaption>
 </figure>
@@ -305,9 +304,8 @@
 <h3 id="connectivity-environments">Connectivity environments</h3>
 <p>Connectivity environments are environments where users configure their devices or data streams and assign them to one or multiple monitoring environments.</p>
 <p>In the connectivity environment, you can configure secure access for your devices through HTTPS webhooks or client certificates. You can define event handlers in TypeScript that parse incoming payloads into measurement reports, return instructions to devices and monitor device health.</p>
-<figure>
-    <img src="connEnvironment.png"
-         alt="Connectivity environment example"/> <figcaption>
+<figure><img src="connEnvironment.png"
+         alt="Connectivity environment example"/><figcaption>
             <p>Figure 2. Example of the setup of connectivity environment</p>
         </figcaption>
 </figure>
@@ -316,9 +314,8 @@
 <p>Finally, the connectivity environment is used to define the structure of measurement reports.</p>
 <h2 id="simplified-dataflow-model">Simplified dataflow model</h2>
 <p>A simplified dataflow model is shown in the figure below. An HTTP request from The Things Stack is processed by the <strong>webhook</strong>. Webhooks define the communicating device type, its unique identifier (e.g. IMEI number) and forward this information together with the payload to the corresponding <strong>device type event handler</strong>. Subsequently, the event handler runs a <strong>report parser</strong>. The platform offers full flexibility on how to parse payload into condition reports, using a custom TypeScript parser function. The parser should then convert the payload string (probably applying <code>JSON.parse</code> first) into an actual report with measurements.</p>
-<figure>
-    <img src="dataFlow.png"
-         alt="WTG dataflow"/> <figcaption>
+<figure><img src="dataFlow.png"
+         alt="WTG dataflow"/><figcaption>
             <p>Figure 3. Simplified dataflow model of the Withthegrid platform</p>
         </figcaption>
 </figure>
@@ -326,17 +323,15 @@
 <p>Now, let&rsquo;s implement the integration!</p>
 <h2 id="step-1-creating-monitoring-and-connectivity-environments">Step 1: Creating monitoring and connectivity environments</h2>
 <p>To create a new connectivity environment, simply enter the desired name and select <strong>CREATE</strong>.</p>
-<figure>
-    <img src="1_c_environment.png"
-         alt="Create new connectivity environment"/> <figcaption>
+<figure><img src="1_c_environment.png"
+         alt="Create new connectivity environment"/><figcaption>
             <p>Figure 4. New connectivity environment</p>
         </figcaption>
 </figure>
 
 <p>The same procedure can be followed to create a new monitoring environment. To create the first location in the monitoring environment, locate the desired place on the map and <strong>Add a new location</strong>.</p>
-<figure>
-    <img src="claim6.png"
-         alt="Add new location"/> <figcaption>
+<figure><img src="claim6.png"
+         alt="Add new location"/><figcaption>
             <p>Figure 5. Add new location</p>
         </figcaption>
 </figure>
@@ -344,359 +339,341 @@
 <p>To navigate between the environments, click on the arrows located in the top left corner.</p>
 <h2 id="step-2-creating-a-new-webhook">Step 2: Creating a new webhook</h2>
 <p>The first step in integrating the Withthegrid platform with The Things Stack is to create a new webhook. Webhooks can be found in the connectivity environment, under <strong>Device access/Webhooks</strong>. To create a new webhook, click <strong>+</strong> in the right bottom corner.</p>
-<figure>
-    <img src="2_c_environment.png"
-         alt="Webhooks"/> <figcaption>
+<figure><img src="2_c_environment.png"
+         alt="Webhooks"/><figcaption>
             <p>Figure 6. Webhooks overview</p>
         </figcaption>
 </figure>
 
 <p>Select the desired webhook name and click <strong>ADD</strong>.</p>
-<figure>
-    <img src="webhook_1.png"
-         alt="Add webhook"/> <figcaption>
+<figure><img src="webhook_1.png"
+         alt="Add webhook"/><figcaption>
             <p>Figure 7. Add a new webhook</p>
         </figcaption>
 </figure>
 
 <p>The platform will generate a webhook URL which we can use later to connect with The Things Stack.</p>
-<figure>
-    <img src="webhook_2.png"
-         alt="Webhook URL"/> <figcaption>
+<figure><img src="webhook_2.png"
+         alt="Webhook URL"/><figcaption>
             <p>Figure 8. New webhook</p>
         </figcaption>
 </figure>
 
 <h2 id="step-3-creating-and-configuring-a-new-device-type">Step 3: Creating and configuring a new device type</h2>
 <p>A new device type can be created in a connectivity environment by navigating to <strong>Device types</strong>. This page shows an overview of all the device types that are available in your environment. Let’s create the first device type by clicking <strong>+</strong> in the bottom right corner.</p>
-<figure>
-    <img src="5_c_environment_deviceType.png"
-         alt="New device type"/> <figcaption>
+<figure><img src="5_c_environment_deviceType.png"
+         alt="New device type"/><figcaption>
             <p>Figure 9. Device types overview</p>
         </figcaption>
 </figure>
 
 <p>Name the new device type. At this point, we can also change the default name of the device channel to <code>Internal Sensor</code>. Use the same name for default name for port. This is where internal battery voltage measurements will be pushed.</p>
-<figure>
-    <img src="device_type_1.png"
-         alt="Device type overview"/> <figcaption>
+<figure><img src="device_type_1.png"
+         alt="Device type overview"/><figcaption>
             <p>Figure 10. Add a new device type</p>
         </figcaption>
 </figure>
 
 <p>Let’s create one additional channel (<code>Probe</code>), where we will push measurements related to the water leak.</p>
-<figure>
-    <img src="device_type_2.png"
-         alt="Set channels"/> <figcaption>
+<figure><img src="device_type_2.png"
+         alt="Set channels"/><figcaption>
             <p>Figure 11. Set channels</p>
         </figcaption>
 </figure>
 
 <p>Click <strong>ADD</strong> to set the channel and click <strong>ADD</strong> to update and save the changes.</p>
 <p>Withthegrid&rsquo;s new event handler will validate the incoming request and pass the payload to the corresponding report parser which will parse incoming payloads into measurement reports. The new device type will be given a new hashID (e.g. <strong>4djrvd</strong>) which is a unique ID that identifies the event handler of <strong>Dragino - LWL02</strong>.</p>
-<figure>
-    <img src="device_type_3.png"
-         alt="Device type"/> <figcaption>
+<figure><img src="device_type_3.png"
+         alt="Device type"/><figcaption>
             <p>Figure 12. List of existing device types</p>
         </figcaption>
 </figure>
 
 <h2 id="step-4-creating-a-new-report-type-and-quantities">Step 4: Creating a new report type and quantities</h2>
 <p>For each report, a report parser can parse the incoming payload. To create a new report, click <strong>+</strong> in the bottom right corner.</p>
-<figure>
-    <img src="8_c_environment_report.png"
-         alt="Create a report parser"/> <figcaption>
+<figure><img src="8_c_environment_report.png"
+         alt="Create a report parser"/><figcaption>
             <p>Figure 13. Report types overview</p>
         </figcaption>
 </figure>
 
 <p>Follow the same steps as before to <strong>ADD</strong> the new report type.</p>
-<figure>
-    <img src="10_c_environment_report.png"
-         alt="Report parser"/> <figcaption>
+<figure><img src="10_c_environment_report.png"
+         alt="Report parser"/><figcaption>
             <p>Figure 14. Add a new report parser</p>
         </figcaption>
 </figure>
 
 <p>In the report parser, we will correctly parse the incoming payload into a measurement report. A new report type will be given a hashID (e.g. <strong>eyr96d</strong>). Note that the hashID is automatically created and will be different for everyone.</p>
 <p>The quantities of interest in this example are voltage, leak status, total leak events and last leak duration. Custom quantities can be found in the panel under option <strong>Quantities</strong>. To create a new quantity, select <strong>+</strong>.</p>
-<figure>
-    <img src="quantities_1.png"
-         alt="Quantities"/> <figcaption>
+<figure><img src="quantities_1.png"
+         alt="Quantities"/><figcaption>
             <p>Figure 15. Quantities overview</p>
         </figcaption>
 </figure>
 
 <p>Enter the quantity name <code>Voltage</code> and unit <code>V</code>. To create the quantity, select <strong>ADD</strong>.</p>
-<figure>
-    <img src="quantity_1.png"
-         alt="Create a quantity"/> <figcaption>
+<figure><img src="quantity_1.png"
+         alt="Create a quantity"/><figcaption>
             <p>Figure 16. Add a new quantity</p>
         </figcaption>
 </figure>
 
 <p>After selecting <strong>ADD</strong>, a hashID will be created for the newly created quantity. We will create <code>Leak status</code>, <code>Total leak events</code>, and <code>Last leak duration</code> quantities by following the same procedure. For unitless quantities, just enter space. Leak duration is in min according to the datasheet. In this example, the voltage, leak status, total leak events, and last leak duration hashIDs are <strong>yl4wwy</strong>, <strong>dp2v9d</strong>, <strong>yzrwny</strong>, and <strong>d4rwrd</strong>, respectively. The hashIDs will be used in the report to identify the correct measurement quantity.</p>
-<figure>
-    <img src="quantity_2.png"
-         alt="Created quantities overview"/> <figcaption>
+<figure><img src="quantity_2.png"
+         alt="Created quantities overview"/><figcaption>
             <p>Figure 17. List of existing quantities</p>
         </figcaption>
 </figure>
 
 <h2 id="step-5-configuring-the-created-webhook">Step 5: Configuring the created webhook</h2>
 <p>The webhook created in step 2 can be edited by navigating to <strong>Webhooks</strong>, selecting the newly created The Things Stack webhook, and clicking <strong>EDIT THE IDENTIFIER</strong>. The platform provides a template and a direct link to the webhook documentation. The following webhook will pass the payload from The Things Stack, together with the device type hashID to the appropriate event handler. Lastly, the webhook will also return a <code>deviceIdentifier</code>, e.g. the IMEI of the device.</p>
-<div class="highlight"><pre class="chroma"><code class="language-tsx" data-lang="tsx"><span class="nx">type</span> <span class="nx">JsonObject</span> <span class="o">=</span> <span class="p">{</span> <span class="p">[</span><span class="nx">key</span>: <span class="kt">string</span><span class="p">]</span><span class="o">:</span> <span class="nx">Json</span> <span class="p">};</span>
-
-<span class="kr">const</span> <span class="nx">ttsApplicationIds</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">dragino</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">waterLeak</span><span class="o">:</span> <span class="s1">&#39;dwl&#39;</span><span class="p">,</span>
-  <span class="p">},</span>
-<span class="p">};</span>
- 
-<span class="kr">const</span> <span class="nx">deviceTypeHashIds</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="nx">dragino</span><span class="o">:</span> <span class="p">{</span>
-    <span class="nx">waterLeak</span><span class="o">:</span> <span class="s1">&#39;4djrvd&#39;</span><span class="p">,</span>
-  <span class="p">},</span>
-<span class="p">};</span>
-
-<span class="kd">function</span> <span class="nx">handle</span><span class="p">(</span><span class="nx">args</span>: <span class="kt">Arguments</span><span class="p">)</span><span class="o">:</span> <span class="nx">Result</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">getJsonObject</span><span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="o">?</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
-  <span class="kd">let</span> <span class="nx">deviceTypeHashId</span><span class="p">;</span>
-
-  <span class="k">switch</span> <span class="p">(</span><span class="nx">data</span><span class="o">?</span><span class="p">.</span><span class="nx">end_device_ids</span><span class="o">?</span><span class="p">.</span><span class="nx">application_ids</span><span class="p">.</span><span class="nx">application_id</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">case</span> <span class="nx">ttsApplicationIds.dragino.waterLeak</span>:
-      <span class="kt">deviceTypeHashId</span> <span class="o">=</span> <span class="nx">deviceTypeHashIds</span><span class="p">.</span><span class="nx">dragino</span><span class="p">.</span><span class="nx">waterLeak</span><span class="p">;</span>
-      <span class="k">break</span><span class="p">;</span>
-
-    <span class="k">default</span><span class="o">:</span>
-      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="o">?</span><span class="p">.</span><span class="nx">end_device_ids</span><span class="p">));</span>
-  <span class="p">}</span>
-
-  <span class="kr">const</span> <span class="nx">deviceIdentifier</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">end_device_ids</span><span class="p">.</span><span class="nx">dev_eui</span><span class="p">;</span>
-  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">deviceIdentifier</span> <span class="o">!==</span> <span class="s2">&#34;string&#34;</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">&#34;Hardware serial is not available&#34;</span><span class="p">);</span>
-  <span class="p">}</span>
-
-  <span class="k">return</span> <span class="p">{</span>
-    <span class="nx">deviceTypeHashId</span><span class="p">,</span>
-    <span class="nx">deviceIdentifier</span><span class="p">,</span>
-  <span class="p">};</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">getJsonObject</span><span class="p">(</span><span class="nx">data</span>: <span class="kt">Json</span> <span class="o">|</span> <span class="kc">undefined</span><span class="p">)</span><span class="o">:</span> <span class="nx">any</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">data</span> <span class="o">===</span> <span class="s2">&#34;object&#34;</span> <span class="o">&amp;&amp;</span> <span class="nx">data</span> <span class="o">!==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
-  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">&#34;Data must be a JSON object!&#34;</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><h2 id="step-6-configuring-device-type">Step 6: Configuring device type</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="kr">type</span> <span class="nx">JsonObject</span> <span class="o">=</span> <span class="p">{</span> <span class="p">[</span><span class="nx">key</span>: <span class="kt">string</span><span class="p">]</span><span class="o">:</span> <span class="nx">Json</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">ttsApplicationIds</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">dragino</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">waterLeak</span><span class="o">:</span> <span class="s1">&#39;dwl&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl"> 
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">deviceTypeHashIds</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">dragino</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">waterLeak</span><span class="o">:</span> <span class="s1">&#39;4djrvd&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">handle</span><span class="p">(</span><span class="nx">args</span>: <span class="kt">Arguments</span><span class="p">)</span><span class="o">:</span> <span class="nx">Result</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">getJsonObject</span><span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="o">?</span><span class="p">.</span><span class="nx">data</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">let</span> <span class="nx">deviceTypeHashId</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">switch</span> <span class="p">(</span><span class="nx">data</span><span class="o">?</span><span class="p">.</span><span class="nx">end_device_ids</span><span class="o">?</span><span class="p">.</span><span class="nx">application_ids</span><span class="p">.</span><span class="nx">application_id</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">case</span> <span class="nx">ttsApplicationIds.dragino.waterLeak</span>:
+</span></span><span class="line"><span class="cl">      <span class="kt">deviceTypeHashId</span> <span class="o">=</span> <span class="nx">deviceTypeHashIds</span><span class="p">.</span><span class="nx">dragino</span><span class="p">.</span><span class="nx">waterLeak</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">      <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">default</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">      <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">data</span><span class="o">?</span><span class="p">.</span><span class="nx">end_device_ids</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">deviceIdentifier</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">end_device_ids</span><span class="p">.</span><span class="nx">dev_eui</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">deviceIdentifier</span> <span class="o">!==</span> <span class="s2">&#34;string&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">&#34;Hardware serial is not available&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">deviceTypeHashId</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">deviceIdentifier</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">getJsonObject</span><span class="p">(</span><span class="nx">data</span>: <span class="kt">Json</span> <span class="o">|</span> <span class="kc">undefined</span><span class="p">)</span><span class="o">:</span> <span class="kt">any</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">data</span> <span class="o">===</span> <span class="s2">&#34;object&#34;</span> <span class="o">&amp;&amp;</span> <span class="nx">data</span> <span class="o">!==</span> <span class="kc">null</span> <span class="o">&amp;&amp;</span> <span class="o">!</span><span class="nb">Array</span><span class="p">.</span><span class="nx">isArray</span><span class="p">(</span><span class="nx">data</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="nx">data</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">&#34;Data must be a JSON object!&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="step-6-configuring-device-type">Step 6: Configuring device type</h2>
 <p>The device type that we have created will forward the payload to the report type (which we will create in step 8) where it will be parsed. The following code will validate the request and forward the actual payload generated by the sensor to the report parser.</p>
-<div class="highlight"><pre class="chroma"><code class="language-tsx" data-lang="tsx"><span class="c1">// define the hashId of the reportType
-</span><span class="c1"></span><span class="kr">const</span> <span class="nx">reportTypeHashId</span> <span class="o">=</span> <span class="s2">&#34;eyr96d&#34;</span><span class="p">;</span>
-
-<span class="cm">/**
-</span><span class="cm"> * Handle is the required function. It has two overloads, one for incoming HTTP requests and one for internal events
-</span><span class="cm"> * When this function is called for an incoming HTTP requests, the function should return information about the response
-</span><span class="cm"> * that should be returned.
-</span><span class="cm"> */</span>
-<span class="kd">function</span> <span class="nx">handle</span><span class="p">(</span>
-  <span class="nx">args</span>: <span class="kt">ArgumentsForIncomingRequestEvent</span><span class="p">,</span>
-  <span class="nx">exec</span>: <span class="kt">Exec</span>
-<span class="p">)</span><span class="o">:</span> <span class="nx">IncomingRequestResponse</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">handle</span><span class="p">(</span><span class="nx">args</span>: <span class="kt">ArgumentsForEventWithoutResponse</span><span class="p">,</span> <span class="nx">exec</span>: <span class="kt">Exec</span><span class="p">)</span><span class="o">:</span> <span class="k">void</span><span class="p">;</span>
-<span class="kd">function</span> <span class="nx">handle</span><span class="p">(</span><span class="nx">args</span>: <span class="kt">Arguments</span><span class="p">,</span> <span class="nx">exec</span>: <span class="kt">Exec</span><span class="p">)</span><span class="o">:</span> <span class="nx">IncomingRequestResponse</span> <span class="o">|</span> <span class="k">void</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">type</span> <span class="o">===</span> <span class="s2">&#34;incomingRequest&#34;</span><span class="p">)</span> <span class="p">{</span>
-    <span class="kr">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">webRequest</span><span class="p">;</span>
-
-    <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">method</span> <span class="o">===</span> <span class="s2">&#34;POST&#34;</span> <span class="o">&amp;&amp;</span> <span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">.</span><span class="nx">path</span> <span class="o">===</span> <span class="s2">&#34;/&#34;</span><span class="p">)</span> <span class="p">{</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="o">||</span> <span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">type</span> <span class="o">!==</span> <span class="s2">&#34;json&#34;</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="p">{</span>
-          <span class="nx">statusCode</span>: <span class="kt">400</span><span class="p">,</span>
-          <span class="nx">body</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;parameter_error&#34;</span><span class="p">,</span> <span class="s2">&#34;Body is not of type JSON&#34;</span><span class="p">],</span>
-        <span class="p">};</span>
-      <span class="p">}</span>
-
-      <span class="kr">const</span> <span class="nx">payload</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
-      <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">join_accept</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="p">{</span>
-          <span class="nx">statusCode</span>: <span class="kt">204</span><span class="p">,</span>
-          <span class="nx">body</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;The Things Stack is registering!&#34;</span><span class="p">],</span>
-        <span class="p">};</span>
-      <span class="p">}</span>
-
-      <span class="c1">// Set receive timestamp
-</span><span class="c1"></span>      <span class="kd">let</span> <span class="nx">generatedAt</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
-      <span class="nx">generatedAt</span><span class="p">.</span><span class="nx">setMilliseconds</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-
-      <span class="c1">// pass parsing of the report to the right report type parser
-</span><span class="c1"></span>      <span class="nx">exec</span><span class="p">.</span><span class="nx">parseReport</span><span class="p">({</span>
-        <span class="nx">reportTypeHashId</span><span class="p">,</span>
-        <span class="nx">payload</span>: <span class="kt">JSON.stringify</span><span class="p">({</span>
-          <span class="nx">generatedAt</span><span class="p">,</span>
-          <span class="nx">payload</span>: <span class="kt">request.body.data</span><span class="p">,</span>
-        <span class="p">}),</span>
-      <span class="p">});</span>
-
-      <span class="k">return</span> <span class="p">{</span> <span class="nx">statusCode</span>: <span class="kt">204</span> <span class="p">};</span>
-    <span class="p">}</span>
-
-    <span class="k">return</span> <span class="p">{</span>
-      <span class="nx">statusCode</span>: <span class="kt">404</span><span class="p">,</span>
-      <span class="nx">body</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;not_found_error&#34;</span><span class="p">,</span> <span class="s2">&#34;Route cannot be found&#34;</span><span class="p">],</span>
-    <span class="p">};</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><h2 id="step-7-configuring-the-things-stack">Step 7: Configuring The Things Stack</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="c1">// define the hashId of the reportType
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kr">const</span> <span class="nx">reportTypeHashId</span> <span class="o">=</span> <span class="s2">&#34;eyr96d&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Handle is the required function. It has two overloads, one for incoming HTTP requests and one for internal events
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * When this function is called for an incoming HTTP requests, the function should return information about the response
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * that should be returned.
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">handle</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">args</span>: <span class="kt">ArgumentsForIncomingRequestEvent</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">exec</span>: <span class="kt">Exec</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span><span class="o">:</span> <span class="nx">IncomingRequestResponse</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">handle</span><span class="p">(</span><span class="nx">args</span>: <span class="kt">ArgumentsForEventWithoutResponse</span><span class="p">,</span> <span class="nx">exec</span>: <span class="kt">Exec</span><span class="p">)</span><span class="o">:</span> <span class="k">void</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">handle</span><span class="p">(</span><span class="nx">args</span>: <span class="kt">Arguments</span><span class="p">,</span> <span class="nx">exec</span>: <span class="kt">Exec</span><span class="p">)</span><span class="o">:</span> <span class="nx">IncomingRequestResponse</span> <span class="o">|</span> <span class="k">void</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="kr">type</span> <span class="o">===</span> <span class="s2">&#34;incomingRequest&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nx">event</span><span class="p">.</span><span class="nx">webRequest</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">method</span> <span class="o">===</span> <span class="s2">&#34;POST&#34;</span> <span class="o">&amp;&amp;</span> <span class="nx">request</span><span class="p">.</span><span class="nx">url</span><span class="p">.</span><span class="nx">path</span> <span class="o">===</span> <span class="s2">&#34;/&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span> <span class="o">===</span> <span class="kc">undefined</span> <span class="o">||</span> <span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="kr">type</span> <span class="o">!==</span> <span class="s2">&#34;json&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">statusCode</span>: <span class="kt">400</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">body</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;parameter_error&#34;</span><span class="p">,</span> <span class="s2">&#34;Body is not of type JSON&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="p">};</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="kr">const</span> <span class="nx">payload</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">request</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">      <span class="k">if</span> <span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">join_accept</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">statusCode</span>: <span class="kt">204</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">body</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;The Things Stack is registering!&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="p">};</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="c1">// Set receive timestamp
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="kd">let</span> <span class="nx">generatedAt</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">generatedAt</span><span class="p">.</span><span class="nx">setMilliseconds</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="c1">// pass parsing of the report to the right report type parser
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="nx">exec</span><span class="p">.</span><span class="nx">parseReport</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">reportTypeHashId</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">payload</span>: <span class="kt">JSON.stringify</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">generatedAt</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nx">payload</span>: <span class="kt">request.body.data</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}),</span>
+</span></span><span class="line"><span class="cl">      <span class="p">});</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">{</span> <span class="nx">statusCode</span>: <span class="kt">204</span> <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">statusCode</span>: <span class="kt">404</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">body</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;not_found_error&#34;</span><span class="p">,</span> <span class="s2">&#34;Route cannot be found&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="step-7-configuring-the-things-stack">Step 7: Configuring The Things Stack</h2>
 <p>Now that the webhook and the event handler of the Dragino - LWL02 device are configured, we can proceed with setting up The Things Stack.</p>
 <p><a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/">Create an application</a> and <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">add the Dragino device</a> by following linked tutorials.</p>
 <p>After the device is registered, we can configure a new webhook on The Things Stack. Set the webhook format to <strong>JSON</strong> and enter the <strong>Base URL</strong> provided with the Withthegrid webhook we created in step 2.</p>
-<figure>
-    <img src="TTS_Webhook.png"
-         alt="TTS set up webhook"/> <figcaption>
+<figure><img src="TTS_Webhook.png"
+         alt="TTS set up webhook"/><figcaption>
             <p>Figure 20. Configure The Things Stack webhook</p>
         </figcaption>
 </figure>
 
 <h2 id="step-8-configuring-report-type">Step 8: Configuring report type</h2>
 <p>The next step is to correctly configure the created report type such that it can decode the incoming payload into physical measurements. <strong>The Things Network</strong> makes this easy because the payload is already decoded. We only need to push the measurements to correct channels. Voltage measurement should be pushed into <em>Internal Sensor</em> channel which is the first channel, therefore, has a <code>channelIndex</code> of 0. Measurements related to <em>Probe</em> should be pushed to a <code>channelIndex</code> of 1.</p>
-<div class="highlight"><pre class="chroma"><code class="language-tsx" data-lang="tsx"><span class="cm">/**
-</span><span class="cm"> * Source: http://www.dragino.com/downloads/downloads/LoRa_End_Node/LDS01/LDS01_LoRaWAN_Door_Sensor_UserManual_v1.2.0.pdf
-</span><span class="cm"> */</span>
-<span class="kr">const</span> <span class="nx">operatingVoltageQuantityHashId</span>: <span class="kt">string</span> <span class="o">=</span> <span class="s2">&#34;yl4wwy&#34;</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">leakStatusQuantityHashId</span>: <span class="kt">string</span> <span class="o">=</span> <span class="s2">&#34;dp2v9d&#34;</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">totalLeakEventsQuantityHashId</span>: <span class="kt">string</span> <span class="o">=</span> <span class="s2">&#34;yzrwny&#34;</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">lastLeakDurationQuantityHashId</span>: <span class="kt">string</span> <span class="o">=</span> <span class="s2">&#34;d4rwrd&#34;</span><span class="p">;</span>
-
-<span class="kr">const</span> <span class="nx">sensorConditionChannelIndex</span>: <span class="kt">number</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="kr">const</span> <span class="nx">leakChannelIndex</span>: <span class="kt">number</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-
-<span class="kd">function</span> <span class="nx">handle</span><span class="p">(</span><span class="nx">args</span>: <span class="kt">Arguments</span><span class="p">,</span> <span class="nx">exec</span>: <span class="kt">Exec</span><span class="p">)</span><span class="o">:</span> <span class="nx">Result</span> <span class="p">{</span>
-  <span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">payload</span><span class="p">);</span>
-  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">data</span> <span class="o">!==</span> <span class="s2">&#34;object&#34;</span> <span class="o">||</span> <span class="nx">data</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">&#34;Data is not a JSON-object&#34;</span><span class="p">);</span>
-  <span class="p">}</span>
-
-  <span class="kr">const</span> <span class="nx">generatedAtMs</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">generatedAt</span><span class="p">);</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nb">Number</span><span class="p">.</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">generatedAtMs</span><span class="p">))</span> <span class="p">{</span>
-    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">&#34;generatedAt cannot be parsed into a valid Date&#34;</span><span class="p">);</span>
-  <span class="p">}</span>
-  <span class="kr">const</span> <span class="nx">generatedAt</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">generatedAtMs</span><span class="p">);</span>
-
-  <span class="kd">let</span> <span class="nx">payload</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">uplink_message</span><span class="p">.</span><span class="nx">decoded_payload</span><span class="p">;</span>
-  <span class="nx">exec</span><span class="p">.</span><span class="nx">addLog</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">BAT_V</span><span class="p">));</span>
-
-  <span class="kr">const</span> <span class="nx">operatingVoltage</span> <span class="o">=</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">BAT_V</span><span class="p">;</span>
-  <span class="kr">const</span> <span class="nx">waterLeakStatus</span> <span class="o">=</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">WATER_LEAK_STATUS</span><span class="p">;</span>
-  <span class="kr">const</span> <span class="nx">totalOpenLeakEvents</span> <span class="o">=</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">WATER_LEAK_TIMES</span><span class="p">;</span>
-  <span class="kr">const</span> <span class="nx">lastLeakDuration</span> <span class="o">=</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">LAST_WATER_LEAK_DURATION</span><span class="p">;</span>
-
-  <span class="cm">/**
-</span><span class="cm">   * Use with raw payload
-</span><span class="cm">   */</span>
-  <span class="c1">// const payload = data.payload;
-</span><span class="c1"></span>  <span class="c1">// const decodedPayload = exec.base64ToUInt8Array(payload);
-</span><span class="c1"></span>  <span class="c1">// const operatingVoltage = (decodedPayload[0] &lt;&lt; 8 | decodedPayload[1]) &amp; 0x3FFF;
-</span><span class="c1"></span>  <span class="c1">// const waterLeakStatus = decodedPayload[0] &amp; 0x40 ? 1 : 0;
-</span><span class="c1"></span>  <span class="c1">// const totalOpenLeakEvents = decodedPayload[3] &lt;&lt; 16 | decodedPayload[4] &lt;&lt; 8 | decodedPayload[5];
-</span><span class="c1"></span>  <span class="c1">// const lastLeakDuration = decodedPayload[6] &lt;&lt; 16 | decodedPayload[7] &lt;&lt; 8 | decodedPayload[8];
-</span><span class="c1"></span>
-  <span class="kr">const</span> <span class="nx">measurements</span>: <span class="kt">Result</span><span class="p">[</span><span class="s2">&#34;measurements&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
-
-  <span class="nx">pushMeasurement</span><span class="p">(</span>
-    <span class="nx">measurements</span><span class="p">,</span>
-    <span class="nx">sensorConditionChannelIndex</span><span class="p">,</span>
-    <span class="nx">operatingVoltageQuantityHashId</span><span class="p">,</span>
-    <span class="nx">generatedAt</span><span class="p">,</span>
-    <span class="o">-</span><span class="mi">3</span><span class="p">,</span>
-    <span class="nx">operatingVoltage</span> <span class="o">*</span> <span class="mi">1000</span>
-  <span class="p">);</span>
-  <span class="nx">pushMeasurement</span><span class="p">(</span>
-    <span class="nx">measurements</span><span class="p">,</span>
-    <span class="nx">leakChannelIndex</span><span class="p">,</span>
-    <span class="nx">leakStatusQuantityHashId</span><span class="p">,</span>
-    <span class="nx">generatedAt</span><span class="p">,</span>
-    <span class="mi">0</span><span class="p">,</span>
-    <span class="nx">waterLeakStatus</span>
-  <span class="p">);</span>
-  <span class="nx">pushMeasurement</span><span class="p">(</span>
-    <span class="nx">measurements</span><span class="p">,</span>
-    <span class="nx">leakChannelIndex</span><span class="p">,</span>
-    <span class="nx">totalLeakEventsQuantityHashId</span><span class="p">,</span>
-    <span class="nx">generatedAt</span><span class="p">,</span>
-    <span class="mi">0</span><span class="p">,</span>
-    <span class="nx">totalOpenLeakEvents</span>
-  <span class="p">);</span>
-  <span class="nx">pushMeasurement</span><span class="p">(</span>
-    <span class="nx">measurements</span><span class="p">,</span>
-    <span class="nx">leakChannelIndex</span><span class="p">,</span>
-    <span class="nx">lastLeakDurationQuantityHashId</span><span class="p">,</span>
-    <span class="nx">generatedAt</span><span class="p">,</span>
-    <span class="mi">0</span><span class="p">,</span>
-    <span class="nx">lastLeakDuration</span>
-  <span class="p">);</span>
-
-  <span class="k">return</span> <span class="p">{</span>
-    <span class="nx">generatedAt</span><span class="p">,</span>
-    <span class="nx">measurements</span><span class="p">,</span>
-    <span class="nx">fields</span><span class="o">:</span> <span class="p">{},</span>
-  <span class="p">};</span>
-<span class="p">}</span>
-
-<span class="kd">function</span> <span class="nx">pushMeasurement</span><span class="p">(</span>
-  <span class="nx">measurements</span>: <span class="kt">Result</span><span class="p">[</span><span class="s2">&#34;measurements&#34;</span><span class="p">],</span>
-  <span class="nx">channelIndex</span>: <span class="kt">number</span><span class="p">,</span>
-  <span class="nx">quantityHashId</span>: <span class="kt">string</span><span class="p">,</span>
-  <span class="nx">generatedAt</span>: <span class="kt">Date</span><span class="p">,</span>
-  <span class="nx">orderOfMagnitude</span>: <span class="kt">number</span><span class="p">,</span>
-  <span class="nx">significand</span>: <span class="kt">number</span>
-<span class="p">)</span> <span class="p">{</span>
-  <span class="nx">measurements</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
-    <span class="nx">channelIndex</span>: <span class="kt">channelIndex</span><span class="p">,</span>
-    <span class="nx">quantityHashId</span>: <span class="kt">quantityHashId</span><span class="p">,</span>
-    <span class="nx">generatedAt</span>: <span class="kt">generatedAt</span><span class="p">,</span>
-    <span class="nx">orderOfMagnitude</span>: <span class="kt">orderOfMagnitude</span><span class="p">,</span>
-    <span class="nx">significand</span>: <span class="kt">significand</span><span class="p">,</span>
-  <span class="p">});</span>
-<span class="p">}</span>
-</code></pre></div><h2 id="step-9-powering-up-the-device">Step 9: Powering up the device</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-tsx" data-lang="tsx"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * Source: http://www.dragino.com/downloads/downloads/LoRa_End_Node/LDS01/LDS01_LoRaWAN_Door_Sensor_UserManual_v1.2.0.pdf
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">operatingVoltageQuantityHashId</span>: <span class="kt">string</span> <span class="o">=</span> <span class="s2">&#34;yl4wwy&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">leakStatusQuantityHashId</span>: <span class="kt">string</span> <span class="o">=</span> <span class="s2">&#34;dp2v9d&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">totalLeakEventsQuantityHashId</span>: <span class="kt">string</span> <span class="o">=</span> <span class="s2">&#34;yzrwny&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">lastLeakDurationQuantityHashId</span>: <span class="kt">string</span> <span class="o">=</span> <span class="s2">&#34;d4rwrd&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">sensorConditionChannelIndex</span>: <span class="kt">number</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kr">const</span> <span class="nx">leakChannelIndex</span>: <span class="kt">number</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">handle</span><span class="p">(</span><span class="nx">args</span>: <span class="kt">Arguments</span><span class="p">,</span> <span class="nx">exec</span>: <span class="kt">Exec</span><span class="p">)</span><span class="o">:</span> <span class="nx">Result</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">payload</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="k">typeof</span> <span class="nx">data</span> <span class="o">!==</span> <span class="s2">&#34;object&#34;</span> <span class="o">||</span> <span class="nx">data</span> <span class="o">===</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">&#34;Data is not a JSON-object&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">generatedAtMs</span> <span class="o">=</span> <span class="nb">Date</span><span class="p">.</span><span class="nx">parse</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">generatedAt</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nb">Number</span><span class="p">.</span><span class="nb">isNaN</span><span class="p">(</span><span class="nx">generatedAtMs</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="s2">&#34;generatedAt cannot be parsed into a valid Date&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">generatedAt</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">generatedAtMs</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kd">let</span> <span class="nx">payload</span> <span class="o">=</span> <span class="nx">data</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">uplink_message</span><span class="p">.</span><span class="nx">decoded_payload</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">exec</span><span class="p">.</span><span class="nx">addLog</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">BAT_V</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">operatingVoltage</span> <span class="o">=</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">BAT_V</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">waterLeakStatus</span> <span class="o">=</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">WATER_LEAK_STATUS</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">totalOpenLeakEvents</span> <span class="o">=</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">WATER_LEAK_TIMES</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">lastLeakDuration</span> <span class="o">=</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">LAST_WATER_LEAK_DURATION</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm">   * Use with raw payload
+</span></span></span><span class="line"><span class="cl"><span class="cm">   */</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// const payload = data.payload;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// const decodedPayload = exec.base64ToUInt8Array(payload);
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// const operatingVoltage = (decodedPayload[0] &lt;&lt; 8 | decodedPayload[1]) &amp; 0x3FFF;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// const waterLeakStatus = decodedPayload[0] &amp; 0x40 ? 1 : 0;
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// const totalOpenLeakEvents = decodedPayload[3] &lt;&lt; 16 | decodedPayload[4] &lt;&lt; 8 | decodedPayload[5];
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// const lastLeakDuration = decodedPayload[6] &lt;&lt; 16 | decodedPayload[7] &lt;&lt; 8 | decodedPayload[8];
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">  <span class="kr">const</span> <span class="nx">measurements</span>: <span class="kt">Result</span><span class="p">[</span><span class="s2">&#34;measurements&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[];</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="nx">pushMeasurement</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">measurements</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">sensorConditionChannelIndex</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">operatingVoltageQuantityHashId</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">generatedAt</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="o">-</span><span class="mi">3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">operatingVoltage</span> <span class="o">*</span> <span class="mi">1000</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">pushMeasurement</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">measurements</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">leakChannelIndex</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">leakStatusQuantityHashId</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">generatedAt</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">waterLeakStatus</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">pushMeasurement</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">measurements</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">leakChannelIndex</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">totalLeakEventsQuantityHashId</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">generatedAt</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">totalOpenLeakEvents</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">pushMeasurement</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">measurements</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">leakChannelIndex</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">lastLeakDurationQuantityHashId</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">generatedAt</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">0</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">lastLeakDuration</span>
+</span></span><span class="line"><span class="cl">  <span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">generatedAt</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">measurements</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">fields</span><span class="o">:</span> <span class="p">{},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">pushMeasurement</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">measurements</span>: <span class="kt">Result</span><span class="p">[</span><span class="s2">&#34;measurements&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">channelIndex</span>: <span class="kt">number</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">quantityHashId</span>: <span class="kt">string</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">generatedAt</span>: <span class="kt">Date</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">orderOfMagnitude</span>: <span class="kt">number</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">significand</span>: <span class="kt">number</span>
+</span></span><span class="line"><span class="cl"><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">measurements</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">channelIndex</span>: <span class="kt">channelIndex</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">quantityHashId</span>: <span class="kt">quantityHashId</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">generatedAt</span>: <span class="kt">generatedAt</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">orderOfMagnitude</span>: <span class="kt">orderOfMagnitude</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">significand</span>: <span class="kt">significand</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">});</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="step-9-powering-up-the-device">Step 9: Powering up the device</h2>
 <p>After powering up the device it should automatically connect to the Withthegrid application. The successful connection can be observed in the connectivity environment under <strong>Activity</strong> and it will look like this:</p>
-<figure>
-    <img src="activity_1.png"
-         alt="Activity"/> <figcaption>
+<figure><img src="activity_1.png"
+         alt="Activity"/><figcaption>
             <p>Figure 20. Activity overview</p>
         </figcaption>
 </figure>
 
 <p>You can click on <strong>Parse report</strong> to view more information and verify that the parsing is correct.</p>
-<figure>
-    <img src="activity_2.png"
-         alt="Snipet of parsed report"/> <figcaption>
+<figure><img src="activity_2.png"
+         alt="Snipet of parsed report"/><figcaption>
             <p>Figure 21. Example of the parsed report</p>
         </figcaption>
 </figure>
 
 <h2 id="step-10-claiming-device-tokens">Step 10: Claiming device tokens</h2>
 <p>When the sensor is linked for the first time, the instance of the device is created in the platform and can be found in <strong>Devices</strong>. The corresponding device will have a unique hashID (e.g. <strong>dxrwmd</strong>), Identifier (in our case IMEI of the device), and will be of device type <strong>Dragino - LWL02</strong>. The device can be easily placed in any monitoring environment by selecting <strong>GET CLAIM TOKEN(S)</strong> in the bottom right corner.</p>
-<figure>
-    <img src="tokens_1.png"
-         alt="Tokens for devices"/> <figcaption>
+<figure><img src="tokens_1.png"
+         alt="Tokens for devices"/><figcaption>
             <p>Figure 22. Devices overview</p>
         </figcaption>
 </figure>
 
 <p>Enter the hashID of a device to be claimed and click <strong>REQUEST</strong>.</p>
-<figure>
-    <img src="tokens_2.png"
-         alt="HashID for claim token"/> <figcaption>
+<figure><img src="tokens_2.png"
+         alt="HashID for claim token"/><figcaption>
             <p>Figure 23. Get claim tokens with device hash IDs</p>
         </figcaption>
 </figure>
 
 <p>The platform will output a claim token that can be copied.</p>
-<figure>
-    <img src="token_3.png"
-         alt="Get claim token"/> <figcaption>
+<figure><img src="token_3.png"
+         alt="Get claim token"/><figcaption>
             <p>Figure 24. Claim generated token</p>
         </figcaption>
 </figure>
@@ -704,41 +681,36 @@
 <p>In the last step, we will configure the monitoring environment and add the newly connected sensor.</p>
 <h2 id="step-11-configuring-the-monitoring-environment">Step 11: Configuring the monitoring environment</h2>
 <p>To add a device into the monitoring environment, navigate to <strong>Devices</strong>, click <strong>+</strong>, and enter the previously copied claim token. Click <strong>ADD</strong>.</p>
-<figure>
-    <img src="claim4.png"
-         alt="Claim token"/> <figcaption>
+<figure><img src="claim4.png"
+         alt="Claim token"/><figcaption>
             <p>Figure 25. Claim device in the monitoring environment</p>
         </figcaption>
 </figure>
 
 <p>The following image shows that the device is registered in the monitoring environment, however, is not installed yet.</p>
-<figure>
-    <img src="Mon_1.png"
-         alt="Claim device in monitoring environment"/> <figcaption>
+<figure><img src="Mon_1.png"
+         alt="Claim device in monitoring environment"/><figcaption>
             <p>Figure 26. Available devices</p>
         </figcaption>
 </figure>
 
 <p>To install a device, navigate to the created location (<strong>ACME Headquarters</strong>) and select <strong>Devices</strong>.</p>
-<figure>
-    <img src="claim7.png"
-         alt="Create location"/> <figcaption>
+<figure><img src="claim7.png"
+         alt="Create location"/><figcaption>
             <p>Figure 27. Add a device to location</p>
         </figcaption>
 </figure>
 
 <p>In <strong>Link to a device</strong>, select the <strong>Dragino - LWL02</strong>. Finally, we would like to track the <strong>Internal Sensor</strong> port and <strong>Probe</strong> port onto which measurements are pushed. Click <strong>+ PORT</strong> to add the <strong>Internal Sensor</strong> channel and repeat to add the <strong>Probe</strong> channel. Finalize the device installation with <strong>SET</strong>.</p>
-<figure>
-    <img src="Mon_2.png"
-         alt="Set device ports"/> <figcaption>
+<figure><img src="Mon_2.png"
+         alt="Set device ports"/><figcaption>
             <p>Figure 28. Set device ports</p>
         </figcaption>
 </figure>
 
 <p>From this point on, all measurements pushed to channels of Dragino - LWL02 sensor with the unique IMEI will be available in the monitoring environments, ready to be visualized in graphs. Try shorting the two pins on the sensor to see if a measurement is recorded.</p>
-<figure>
-    <img src="Graphs.png"
-         alt="Overview of the graph"/> <figcaption>
+<figure><img src="Graphs.png"
+         alt="Overview of the graph"/><figcaption>
             <p>Figure 29. Visualize data</p>
         </figcaption>
 </figure>
@@ -862,7 +834,7 @@
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

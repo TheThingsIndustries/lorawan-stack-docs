@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>MQTTBox | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/mqtt/mqtt-clients/mqttbox/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="MQTTBox">
@@ -207,15 +207,13 @@
 <p>Choose <strong>mqtt / tcp</strong> from the <strong>Protocol</strong> drop down list, and enter the <strong>Public address</strong> of your The Things Stack instance in the <strong>Host</strong> field.</p>
 <p>Fill in the <strong>Username</strong> and <strong>Password</strong> fields.</p>
 <p>Keep in mind that password represents the value of the authentication API key. For more info, see <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#creating-an-api-key">Creating an API Key</a>.</p>
-<figure>
-    <img src="mqttbox-config.png"
-         alt="MQTTBox client configuration"/> 
+<figure><img src="mqttbox-config.png"
+         alt="MQTTBox client configuration"/>
 </figure>
 
 <p>If you want to enable TLS for security, choose <strong>mqtt / tls</strong> as <strong>Protocol</strong> and use the <strong>Public TLS address</strong> of The Things Stack MQTT Server for <strong>Host</strong> instead. You will also have to upload at least the <strong>CA file</strong> associated with your The Things Stack deployment.</p>
-<figure>
-    <img src="mqttbox-tls-config.png"
-         alt="MQTTBox TLS client configuration"/> 
+<figure><img src="mqttbox-tls-config.png"
+         alt="MQTTBox TLS client configuration"/>
 </figure>
 
 <p>You may leave the other fields empty. Click <strong>Save</strong> to save the configuration.</p>
@@ -227,9 +225,8 @@
 <p>In this section, we use the <code>v3/{application id}/devices/{device id}/up</code> topic structure for listening to uplink messages.</p>
 <p>See <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#subscribing-to-upstream-traffic">Subscribing to Upstream Traffic</a> section of the MQTT Server guide for a list of available topics you can subscribe to.</p>
 <p>Choose an appropriate <strong>QoS</strong> value from the list, click the <strong>Subscribe</strong> button and messages from The Things Stack will begin arriving shortly.</p>
-<figure>
-    <img src="subscribe.png"
-         alt="Subscribe"/> 
+<figure><img src="subscribe.png"
+         alt="Subscribe"/>
 </figure>
 
 <h2 id="schedule-downlink-messages">Schedule Downlink Messages</h2>
@@ -239,22 +236,21 @@
 <p>Choose an appropriate <strong>QoS</strong> value from the drop down menu.</p>
 <p>You can define the payload in multiple formats. In this guide, we use the <strong>Strings / JSON / XML / Characters</strong> for <strong>Payload Type</strong>.</p>
 <p>To send an example downlink, paste the following content in the <strong>Payload</strong> field:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;downlinks&#34;</span><span class="p">:</span> <span class="p">[{</span>
-    <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
-    <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;vu8=&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;priority&#34;</span><span class="p">:</span> <span class="s2">&#34;NORMAL&#34;</span>
-  <span class="p">}]</span>
-<span class="p">}</span>
-</code></pre></div><div class="notification is-info is-light has-text-dark">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;downlinks&#34;</span><span class="p">:</span> <span class="p">[{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;vu8=&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;priority&#34;</span><span class="p">:</span> <span class="s2">&#34;NORMAL&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   For scheduling downlink messages, the <code>f_port</code> values from <code>1</code> to <code>233</code> are allowed.
 </div>
 
 <p>Click the <strong>Publish</strong> button and a message with the hexadecimal payload <code>BE EF</code> will be scheduled for sending to your end device.</p>
-<figure>
-    <img src="publish.png"
-         alt="Publish"/> 
+<figure><img src="publish.png"
+         alt="Publish"/>
 </figure>
         </div>
         
@@ -344,7 +340,7 @@
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

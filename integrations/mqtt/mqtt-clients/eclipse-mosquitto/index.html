@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Eclipse Mosquitto | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/mqtt/mqtt-clients/eclipse-mosquitto/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Eclipse Mosquitto">
@@ -209,20 +209,20 @@
 <h2 id="subscribing-to-upstream-traffic">Subscribing to Upstream Traffic</h2>
 <p>This section follows the example for subscribing to upstream traffic in the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#subscribing-to-upstream-traffic">MQTT Server</a> guide.</p>
 <p>The command for connecting to a host and subscribing to a topic has using <code>mosquitto_sub</code> has the following syntax:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mosquitto_sub -h &lt;hostname&gt; -p &lt;port&gt; -u &lt;username&gt; -P &lt;password&gt; -t &lt;topic&gt;
-</code></pre></div><p>For example, to subscribe to all topics in the application <code>app1</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Tip: when using `mosquitto_sub`, pass the `-d` flag to see the topics messages get published on.</span>
-<span class="c1"># For example:</span>
-mosquitto_sub -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <span class="s2">&#34;1883&#34;</span> -u <span class="s2">&#34;app1&#34;</span> -P <span class="s2">&#34;NNSXS.VEEBURF3KR77ZR..&#34;</span> -t <span class="s2">&#34;#&#34;</span> -d
-</code></pre></div><p>In you want to use TLS, you need to change the port value to <code>8883</code> and add the <code>--cafile</code> option to the command. <code>--cafile</code> option is used to define a path to the file containing trusted CA certificates that are PEM encoded.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mosquitto_sub -h &lt;hostname&gt; -p &lt;port&gt; -u &lt;username&gt; -P &lt;password&gt; -t &lt;topic&gt;
+</span></span></code></pre></div><p>For example, to subscribe to all topics in the application <code>app1</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Tip: when using `mosquitto_sub`, pass the `-d` flag to see the topics messages get published on.</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># For example:</span>
+</span></span><span class="line"><span class="cl">mosquitto_sub -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <span class="s2">&#34;1883&#34;</span> -u <span class="s2">&#34;app1&#34;</span> -P <span class="s2">&#34;NNSXS.VEEBURF3KR77ZR..&#34;</span> -t <span class="s2">&#34;#&#34;</span> -d
+</span></span></code></pre></div><p>In you want to use TLS, you need to change the port value to <code>8883</code> and add the <code>--cafile</code> option to the command. <code>--cafile</code> option is used to define a path to the file containing trusted CA certificates that are PEM encoded.</p>
 <p>Read more about the command line options in the <a href="https://mosquitto.org/man/mosquitto_sub-1.html">mosquitto_sub manual</a>.</p>
 <h2 id="publishing-downlink-messages">Publishing Downlink Messages</h2>
 <p>This section follows the example for publishing downlink traffic in the <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a> guide. See <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/#publishing-downlink-traffic">Publishing Downlink Messages</a> for a list of available topics.</p>
 <p>For connecting to a host and publishing a message, <strong>mosquitto_pub</strong> client defines a command with the following syntax:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mosquitto_pub -h &lt;hostname&gt; -p &lt;port&gt; -u &lt;username&gt; -P &lt;password&gt; -t &lt;topic&gt; -m &lt;message&gt;
-</code></pre></div><p>For example, to send an unconfirmed downlink message to the device <code>dev1</code> in application <code>app1</code> with the hexadecimal payload <code>BE EF</code> on <code>FPort</code> 15 with normal priority, use the topic <code>v3/app1/devices/dev1/down/push</code> with the following contents:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mosquitto_pub -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <span class="s2">&#34;1883&#34;</span> -u <span class="s2">&#34;app1&#34;</span> -P <span class="s2">&#34;NNSXS.VEEBURF3KR77ZR..&#34;</span> -t <span class="s2">&#34;v3/app1/devices/dev1/down/push&#34;</span> -m <span class="s1">&#39;{&#34;downlinks&#34;:[{&#34;f_port&#34;: 15,&#34;frm_payload&#34;:&#34;vu8=&#34;,&#34;priority&#34;: &#34;NORMAL&#34;}]}&#39;</span>
-</code></pre></div><div class="notification is-info is-light has-text-dark">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mosquitto_pub -h &lt;hostname&gt; -p &lt;port&gt; -u &lt;username&gt; -P &lt;password&gt; -t &lt;topic&gt; -m &lt;message&gt;
+</span></span></code></pre></div><p>For example, to send an unconfirmed downlink message to the device <code>dev1</code> in application <code>app1</code> with the hexadecimal payload <code>BE EF</code> on <code>FPort</code> 15 with normal priority, use the topic <code>v3/app1/devices/dev1/down/push</code> with the following contents:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mosquitto_pub -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <span class="s2">&#34;1883&#34;</span> -u <span class="s2">&#34;app1&#34;</span> -P <span class="s2">&#34;NNSXS.VEEBURF3KR77ZR..&#34;</span> -t <span class="s2">&#34;v3/app1/devices/dev1/down/push&#34;</span> -m <span class="s1">&#39;{&#34;downlinks&#34;:[{&#34;f_port&#34;: 15,&#34;frm_payload&#34;:&#34;vu8=&#34;,&#34;priority&#34;: &#34;NORMAL&#34;}]}&#39;</span>
+</span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   For scheduling downlink messages, the <code>f_port</code> values from <code>1</code> to <code>233</code> are allowed.
 </div>
@@ -315,7 +315,7 @@ mosquitto_sub -h <span class="s2">&#34;thethings.example.com&#34;</span> -p <spa
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

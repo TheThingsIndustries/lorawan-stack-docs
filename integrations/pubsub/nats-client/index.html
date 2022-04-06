@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>NATS Client | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/pubsub/nats-client/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="NATS Client">
@@ -180,17 +180,15 @@
 <p>In your application select the <strong>Pub/Subs</strong> submenu from the <strong>Integrations</strong> side menu. Clicking on the <strong>+ Add Pub/Sub</strong> button will open the Pub/Sub creation screen.</p>
 <p>Give your Pub/Sub an <strong>ID</strong>, choose a <strong>Pub/Sub format</strong>, and enter a <strong>Base topic</strong> to subscribe or publish to.</p>
 <p>Select <strong>NATS</strong> as provider.</p>
-<figure>
-    <img src="nats.png"
-         alt="Pub/Sub creation screen"/> 
+<figure><img src="nats.png"
+         alt="Pub/Sub creation screen"/>
 </figure>
 
 <p>If using TLS, enable <strong>Secure</strong>.</p>
 <p>Enable <strong>Use credentials</strong> if your NATS server requires a login. Enter the username and password the Application Server should authenticate with.</p>
 <p>Enter the endpoint of the NATS server in the <strong>Address</strong> field, and the port in the <strong>Port</strong> field.</p>
-<figure>
-    <img src="nats-config.png"
-         alt="NATS configuration"/> 
+<figure><img src="nats-config.png"
+         alt="NATS configuration"/>
 </figure>
 
 <h2 id="message-types">Message Types</h2>
@@ -198,17 +196,17 @@
 <p>After enabling events, click the <strong>Add Pub/Sub</strong> button to enable the integration.</p>
 <h2 id="subscribing-to-upstream-traffic">Subscribing to Upstream Traffic</h2>
 <p>The Application Server publishes messages for any enabled events. For example, when a device sends an uplink, an <code>uplink</code> message is published. To view these using a <code>nats-sub</code> client connected to your NATS server:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">nats-sub -s nats://&lt;server_hostname&gt;:&lt;port&gt; <span class="s1">&#39;&gt;&#39;</span>
-<span class="c1"># Listening on [&gt;]</span>
-<span class="c1"># [#1] Received on [base-topic.uplink-subtopic] : &#39;{&#34;end_device_ids&#34;:{&#34;device_id&#34;:&#34;dev1&#34;,&#34;application_ids&#34;:{&#34;application_id&#34;:&#34;app1&#34;}, &#34;received_at&#34;:&#34;2020-05-12T10:12:42.063941Z&#34;,&#34;uplink_message&#34;:{&#34;session_key_id&#34;:&#34;AXIDznz4bnQqtW8T3NsIVg==&#34;,&#34;f_port&#34;:1,&#34;f_cnt&#34;:102,&#34;frm_payload&#34;:&#34;AQ==&#34;}]}&#39;</span>
-</code></pre></div><h2 id="scheduling-downlinks">Scheduling Downlinks</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nats-sub -s nats://&lt;server_hostname&gt;:&lt;port&gt; <span class="s1">&#39;&gt;&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># Listening on [&gt;]</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># [#1] Received on [base-topic.uplink-subtopic] : &#39;{&#34;end_device_ids&#34;:{&#34;device_id&#34;:&#34;dev1&#34;,&#34;application_ids&#34;:{&#34;application_id&#34;:&#34;app1&#34;}, &#34;received_at&#34;:&#34;2020-05-12T10:12:42.063941Z&#34;,&#34;uplink_message&#34;:{&#34;session_key_id&#34;:&#34;AXIDznz4bnQqtW8T3NsIVg==&#34;,&#34;f_port&#34;:1,&#34;f_cnt&#34;:102,&#34;frm_payload&#34;:&#34;AQ==&#34;}]}&#39;</span>
+</span></span></code></pre></div><h2 id="scheduling-downlinks">Scheduling Downlinks</h2>
 <p>You can schedule downlink messages by publishing to a topic. For example, using a <code>nats-pub</code> client connected to your NATS server:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">nats-pub -s nats://&lt;server_hostname&gt;:&lt;port&gt; base-topic.push-subtopic <span class="s1">&#39;{&#34;end_device_ids&#34;:{&#34;device_id&#34;:&#34;dev1&#34;,&#34;application_ids&#34;:{&#34;application_id&#34;:&#34;app1&#34;}},&#34;downlinks&#34;:[{&#34;f_port&#34;:1,&#34;frm_payload&#34;:&#34;AA==&#34;,&#34;priority&#34;:&#34;NORMAL&#34;}]}&#39;</span>
-</code></pre></div><p>will push a downlink to the end device <code>dev1</code> of the application <code>app1</code> with a base64 encoded payload of <code>AA==</code>, if <code>push-subtopic</code>is configured as the Sub topic for <strong>Downlink queue push</strong>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">nats-pub -s nats://&lt;server_hostname&gt;:&lt;port&gt; base-topic.push-subtopic <span class="s1">&#39;{&#34;end_device_ids&#34;:{&#34;device_id&#34;:&#34;dev1&#34;,&#34;application_ids&#34;:{&#34;application_id&#34;:&#34;app1&#34;}},&#34;downlinks&#34;:[{&#34;f_port&#34;:1,&#34;frm_payload&#34;:&#34;AA==&#34;,&#34;priority&#34;:&#34;NORMAL&#34;}]}&#39;</span>
+</span></span></code></pre></div><p>will push a downlink to the end device <code>dev1</code> of the application <code>app1</code> with a base64 encoded payload of <code>AA==</code>, if <code>push-subtopic</code>is configured as the Sub topic for <strong>Downlink queue push</strong>.</p>
 <p>This will also result in the following message being published by the Application Server:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># Received on [downlink-queued-subtopic] :</span> 
-<span class="s1">&#39;{&#34;end_device_ids&#34;:{&#34;device_id&#34;:&#34;dev1&#34;,&#34;application_ids&#34;:{&#34;application_id&#34;:&#34;app1&#34;}},&#34;correlation_ids&#34;:[&#34;as:downlink:01DAVNFG65NAMC5DMX0GFJ8CSK&#34;],&#34;downlink_queued&#34;:{&#34;f_port&#34;:1,&#34;frm_payload&#34;:&#34;AQ==&#34;,&#34;priority&#34;:&#34;NORMAL&#34;,&#34;correlation_ids&#34;:[&#34;as:downlink:01DAVNFG65NAMC5DMX0GFJ8CSK&#34;]}}&#39;</span>
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># Received on [downlink-queued-subtopic] : </span>
+</span></span><span class="line"><span class="cl"><span class="s1">&#39;{&#34;end_device_ids&#34;:{&#34;device_id&#34;:&#34;dev1&#34;,&#34;application_ids&#34;:{&#34;application_id&#34;:&#34;app1&#34;}},&#34;correlation_ids&#34;:[&#34;as:downlink:01DAVNFG65NAMC5DMX0GFJ8CSK&#34;],&#34;downlink_queued&#34;:{&#34;f_port&#34;:1,&#34;frm_payload&#34;:&#34;AQ==&#34;,&#34;priority&#34;:&#34;NORMAL&#34;,&#34;correlation_ids&#34;:[&#34;as:downlink:01DAVNFG65NAMC5DMX0GFJ8CSK&#34;]}}&#39;</span>
+</span></span></code></pre></div>
         </div>
         
           <div class="is-clearfix">
@@ -295,7 +293,7 @@
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

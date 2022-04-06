@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Troubleshooting Devices | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/troubleshooting/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Troubleshooting Devices">
@@ -177,10 +177,10 @@
 </li>
 <li>
 <p><strong>Duplicate identifiers</strong>: This error occurs when an end device is deleted from the Identity Server, but the device entry persists in the Join Server, Network Server and Application Server databases. In this case, the device will not appear in The Things Stack Console, so you need to check if it is present in the Join Server/Network Server/Application Server components using the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl -X <span class="s1">&#39;GET&#39;</span> <span class="s1">&#39;https://thethings.example.com/api/v3/&lt;js/ns/as&gt;/applications/&lt;application_id&gt;/devices/&lt;end-device_id&gt;&#39;</span> -H <span class="s1">&#39;accept: application/json&#39;</span> -H <span class="s1">&#39;Authorization: Bearer &lt;api-key&gt;&#39;</span>
-</code></pre></div><p>If the device entry is present in the above mentioned components, you can delete it with:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl <span class="s1">&#39;https://thethings.example.com/api/v3/&lt;js/ns/as&gt;/applications/&lt;application_id&gt;/devices/&lt;end-device_id&gt;&#39;</span> -X DELETE -H <span class="s1">&#39;Accept: application/json&#39;</span> -H <span class="s1">&#39;Authorization: Bearer &lt;api-key&gt;&#39;</span>
-</code></pre></div></li>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X <span class="s1">&#39;GET&#39;</span> <span class="s1">&#39;https://thethings.example.com/api/v3/&lt;js/ns/as&gt;/applications/&lt;application_id&gt;/devices/&lt;end-device_id&gt;&#39;</span> -H <span class="s1">&#39;accept: application/json&#39;</span> -H <span class="s1">&#39;Authorization: Bearer &lt;api-key&gt;&#39;</span>
+</span></span></code></pre></div><p>If the device entry is present in the above mentioned components, you can delete it with:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl <span class="s1">&#39;https://thethings.example.com/api/v3/&lt;js/ns/as&gt;/applications/&lt;application_id&gt;/devices/&lt;end-device_id&gt;&#39;</span> -X DELETE -H <span class="s1">&#39;Accept: application/json&#39;</span> -H <span class="s1">&#39;Authorization: Bearer &lt;api-key&gt;&#39;</span>
+</span></span></code></pre></div></li>
 </ul>
 <h2 id="how-do-i-see-device-events">How do I see device events?</h2>
 <p>Device event logs can be found in the console in the device&rsquo;s general information page. See <a href="https://www.thethingsindustries.com/docs/getting-started/events/">Working with Events</a> for other ways of subscribing to events.</p>
@@ -197,8 +197,8 @@
 <ul>
 <li><strong>MIC mismatch</strong> error in the device events: Possible mismatch of AppKey in device firmware to the AppKey registered in The Things Stack Console. Update the AppKey in the Console accordingly. Another cause can be using both AppKey and NwkKey for devices configured as LoRaWAN v1.0.x, where the Network Server will consider the device as capable for LoRaWAN v1.1. The configured NwkKey will be used for calculating the MIC and session key derivation in The Things Stack instead of AppKey, while the device will be using AppKey, causing the aforementioned error. You can use the command below to unset the NwkKey for the device:</li>
 </ul>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;dev-id&gt; --unset root-keys.nwk-key
-</code></pre></div><ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;dev-id&gt; --unset root-keys.nwk-key
+</span></span></code></pre></div><ul>
 <li><strong>Uplink channel not found</strong> error in the gateway events: Indicates there is a mismatch of the frequency plans. Double check frequency plan settings in your end device and gateways (they must be the same LoRaWAN band)</li>
 <li><strong>DevNonce has already been used</strong> error in the device events: Indicates a duplicate use of Devnonce. Generally happens when the device has sent too many unsuccessful Join Requests</li>
 <li><strong>DevNonce is too small</strong> error in the device events: If the device is using LoRaWAN MAC version 1.1 or 1.0.4, this error occurs when DevNonce is not being incremented, so the Join Server ignores Join Requests with the same or lower DevNonce value comparing to the previous one. Contact your device&rsquo;s manufacturer to find out the correct LoRaWAN MAC and PHY versions, and configure the device in The Things Stack accordingly</li>
@@ -465,7 +465,7 @@
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

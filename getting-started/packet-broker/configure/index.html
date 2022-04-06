@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Configure | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/configure/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Configure">
@@ -371,16 +371,14 @@
 <div class="tab-content content">
   <section data-content="console">
   <p>To configure Packet Broker, click the <strong>Packet Broker</strong> button in the top right menu.</p>
-<figure>
-    <img src="pb-menu.png"
-         alt="Packet Broker Menu Button"/> 
+<figure><img src="pb-menu.png"
+         alt="Packet Broker Menu Button"/>
 </figure>
 <p>This will take you to the dedicated Packet Broker configuration page.</p>
 <h3 id="register-or-deregister-tenant">Register or Deregister Tenant</h3>
 <p>Before configuring routing policies, you must first register your tenant with Packet Broker. To register it, toggle the <strong>Register network</strong> switch and make sure that <strong>Forwarder</strong> and <strong>Home network</strong> are <strong>enabled</strong>.</p>
-<figure>
-    <img src="pb-register.png"
-         alt="Register Packet Broker"/> 
+<figure><img src="pb-register.png"
+         alt="Register Packet Broker"/>
 </figure>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
@@ -388,61 +386,60 @@
 </div>
 <h3 id="network-visibility">Network Visibility</h3>
 <p>To publicly list your tenant, enable the <strong>List network publicly</strong> switch. This will allow other networks to easily find and configure routing policies with your network.</p>
-<figure>
-    <img src="pb-public.png"
-         alt="List Network Publicly"/> 
+<figure><img src="pb-public.png"
+         alt="List Network Publicly"/>
 </figure>
 </section>
 <section data-content="cli">
   <h3 id="view-registration">View Registration</h3>
 <p>To view the current registration with Packet Broker:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli packetbroker info
-</code></pre></div><details><summary>Example output with registration</summary>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;registration&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;net_id&#34;</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span>
-      <span class="nt">&#34;tenant_id&#34;</span><span class="p">:</span> <span class="s2">&#34;my-company&#34;</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;My Company&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;dev_addr_blocks&#34;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-        <span class="nt">&#34;dev_addr_prefix&#34;</span><span class="p">:</span> <span class="p">{</span>
-          <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span> <span class="s2">&#34;27ABCD00&#34;</span><span class="p">,</span>
-          <span class="nt">&#34;length&#34;</span><span class="p">:</span> <span class="mi">24</span>
-        <span class="p">}</span>
-      <span class="p">}</span>
-    <span class="p">],</span>
-    <span class="nt">&#34;contact_info&#34;</span><span class="p">:</span> <span class="p">[</span>
-      <span class="p">{</span>
-        <span class="nt">&#34;contact_method&#34;</span><span class="p">:</span> <span class="s2">&#34;CONTACT_METHOD_EMAIL&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;admin@example.com&#34;</span>
-      <span class="p">},</span>
-      <span class="p">{</span>
-        <span class="nt">&#34;contact_type&#34;</span><span class="p">:</span> <span class="s2">&#34;CONTACT_TYPE_TECHNICAL&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;contact_method&#34;</span><span class="p">:</span> <span class="s2">&#34;CONTACT_METHOD_EMAIL&#34;</span><span class="p">,</span>
-        <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;tech@example.com&#34;</span>
-      <span class="p">}</span>
-    <span class="p">]</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;forwarder_enabled&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nt">&#34;home_network_enabled&#34;</span><span class="p">:</span> <span class="kc">true</span>
-<span class="p">}</span>
-</code></pre></div></details>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli packetbroker info
+</span></span></code></pre></div><details><summary>Example output with registration</summary>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;registration&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;id&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;net_id&#34;</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;tenant_id&#34;</span><span class="p">:</span> <span class="s2">&#34;my-company&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;My Company&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;dev_addr_blocks&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;dev_addr_prefix&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span> <span class="s2">&#34;27ABCD00&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;length&#34;</span><span class="p">:</span> <span class="mi">24</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;contact_info&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;contact_method&#34;</span><span class="p">:</span> <span class="s2">&#34;CONTACT_METHOD_EMAIL&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;admin@example.com&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;contact_type&#34;</span><span class="p">:</span> <span class="s2">&#34;CONTACT_TYPE_TECHNICAL&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;contact_method&#34;</span><span class="p">:</span> <span class="s2">&#34;CONTACT_METHOD_EMAIL&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;tech@example.com&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;forwarder_enabled&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;home_network_enabled&#34;</span><span class="p">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div></details>
 <details><summary>Example output without registration</summary>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;forwarder_enabled&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nt">&#34;home_network_enabled&#34;</span><span class="p">:</span> <span class="kc">true</span>
-<span class="p">}</span>
-</code></pre></div></details>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;forwarder_enabled&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;home_network_enabled&#34;</span><span class="p">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div></details>
 <h3 id="register-tenant">Register Tenant</h3>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   You can register with Packet Broker if you are a tenant. This is the case for all users of The Things Stack Cloud and in other deployments where you are using a host <code>NetID</code>. If you are using your own <code>NetID</code> without tenancy, please reach out to <a href="mailto:join@packetbroker.net">join@packetbroker.net</a> for registration.
 </div>
 <p>To register or update your existing tenant registration:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli packetbroker register --listed
-</code></pre></div><p>This updates the registration with Packet Broker based on your The Things Stack environment. When using The Things Stack Cloud or Dedicated Cloud, the registration is based on your subscription. When using The Things Stack Enterprise or Open Source, the registration is based on <a href="/docs/getting-started/packet-broker/configure/">your configuration</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli packetbroker register --listed
+</span></span></code></pre></div><p>This updates the registration with Packet Broker based on your The Things Stack environment. When using The Things Stack Cloud or Dedicated Cloud, the registration is based on your subscription. When using The Things Stack Enterprise or Open Source, the registration is based on <a href="/docs/getting-started/packet-broker/configure/">your configuration</a>.</p>
 <p>With <code>--listed</code>, you make your network publicly listed so it can be found by other network administrators. This flag is optional.</p>
 <h3 id="deregister-tenant">Deregister Tenant</h3>
 <div class="notification is-warning is-light has-text-dark">
@@ -450,8 +447,8 @@
   This permanently deletes all routing policies that you configured as Forwarder to other Home Networks. It also permanently deletes all routing policies configured by other Forwarders for you as Home Network.
 </div>
 <p>To deregister from Packet Broker:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli packetbroker deregister
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli packetbroker deregister
+</span></span></code></pre></div>
 </section>
 
 </div>
@@ -692,7 +689,7 @@ Note: The Things Stack currently only allows configuring the default gateway vis
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

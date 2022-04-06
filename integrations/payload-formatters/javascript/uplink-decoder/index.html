@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Uplink Decoder | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/uplink-decoder/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Uplink Decoder">
@@ -205,35 +205,35 @@
         <div class="content">
           <p>The Javascript <code>decodeUplink()</code> function is called when a data uplink message is received from a device. This function decodes the binary payload received from the end device to a human-readable JSON object that gets send upstream to the application.</p>
 <p>The function takes an input object and returns an output object:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="p">{</span>
-    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
-      <span class="nx">bytes</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span>
-    <span class="p">}</span>
-  <span class="p">};</span>
-<span class="p">}</span>
-</code></pre></div><p>The input object has the following structure:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;bytes&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-  <span class="nt">&#34;fPort&#34;</span><span class="p">:</span> <span class="mi">1</span>
-<span class="p">}</span>
-</code></pre></div><p>The output object has the following structure:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;bytes&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;warnings&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;warning 1&#34;</span><span class="p">,</span> <span class="s2">&#34;warning 2&#34;</span><span class="p">],</span>
-  <span class="nt">&#34;errors&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;error 1&#34;</span><span class="p">,</span> <span class="s2">&#34;error 2&#34;</span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div><p>The function&rsquo;s output shown above is incorporated in the <a href="https://www.thethingsindustries.com/docs/reference/api/events/#event:as.up.data.forward"><code>as.up.data.forward</code></a> event, where the <code>data.uplink_message</code> object contains:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
-  <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;AQID&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;decoded_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;bytes&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><p>Uplink payload is constructed as an array of bytes on end device side. Before sending, the payload gets encoded with Base64 scheme. The object shown above contains this Base64-encoded value in the <code>frm_payload</code> field, because that is the format in which the payload is received on the server side. The result of the <code>decodeUplink()</code> function is contained in the <code>decoded_payload</code> field.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">bytes</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The input object has the following structure:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;bytes&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;fPort&#34;</span><span class="p">:</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The output object has the following structure:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;bytes&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;warnings&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;warning 1&#34;</span><span class="p">,</span> <span class="s2">&#34;warning 2&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;errors&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;error 1&#34;</span><span class="p">,</span> <span class="s2">&#34;error 2&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The function&rsquo;s output shown above is incorporated in the <a href="https://www.thethingsindustries.com/docs/reference/api/events/#event:as.up.data.forward"><code>as.up.data.forward</code></a> event, where the <code>data.uplink_message</code> object contains:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;AQID&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;decoded_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;bytes&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Uplink payload is constructed as an array of bytes on end device side. Before sending, the payload gets encoded with Base64 scheme. The object shown above contains this Base64-encoded value in the <code>frm_payload</code> field, because that is the format in which the payload is received on the server side. The result of the <code>decodeUplink()</code> function is contained in the <code>decoded_payload</code> field.</p>
 <p>If an error is present in <code>errors</code>, the payload is invalid and the message will be dropped. Any warnings in <code>warnings</code> are informative.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
@@ -242,46 +242,45 @@
 
 <h2 id="decode-uplink-example-the-things-node">Decode Uplink Example: The Things Node</h2>
 <p>Here is an example <code>decodeUplink()</code> function from The Things Node:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
-  <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{};</span>
-  <span class="kd">var</span> <span class="nx">events</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="mi">1</span><span class="o">:</span> <span class="s2">&#34;setup&#34;</span><span class="p">,</span>
-    <span class="mi">2</span><span class="o">:</span> <span class="s2">&#34;interval&#34;</span><span class="p">,</span>
-    <span class="mi">3</span><span class="o">:</span> <span class="s2">&#34;motion&#34;</span><span class="p">,</span>
-    <span class="mi">4</span><span class="o">:</span> <span class="s2">&#34;button&#34;</span>
-  <span class="p">};</span>
-  <span class="nx">data</span><span class="p">.</span><span class="nx">event</span> <span class="o">=</span> <span class="nx">events</span><span class="p">[</span><span class="nx">input</span><span class="p">.</span><span class="nx">fPort</span><span class="p">];</span>
-  <span class="nx">data</span><span class="p">.</span><span class="nx">battery</span> <span class="o">=</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
-  <span class="nx">data</span><span class="p">.</span><span class="nx">light</span> <span class="o">=</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
-  <span class="nx">data</span><span class="p">.</span><span class="nx">temperature</span> <span class="o">=</span> <span class="p">(((</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0x80</span> <span class="o">?</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="mh">0x100</span> <span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="o">/</span> <span class="mi">100</span><span class="p">;</span>
-  <span class="kd">var</span> <span class="nx">warnings</span> <span class="o">=</span> <span class="p">[];</span>
-  <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">temperature</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">warnings</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">&#34;it&#39;s cold&#34;</span><span class="p">);</span>
-  <span class="p">}</span>
-  <span class="k">return</span> <span class="p">{</span>
-    <span class="nx">data</span><span class="o">:</span> <span class="nx">data</span><span class="p">,</span>
-    <span class="nx">warnings</span><span class="o">:</span> <span class="nx">warnings</span>
-  <span class="p">};</span>
-<span class="p">}</span>
-</code></pre></div><p>Let&rsquo;s assume that the end device performed event selection and some measurements (battery, light, temperature levels) and needs to send associated decimal values to The Things Stack: <code>12, 178, 4, 128, 247, 174</code>. Decimal values are first converted to bytes on the end device side, so we consider the following hexadecimal payload: <code>0C B2 04 80 F7 AE</code>. We can also assume that the message was sent on FPort 4. The payload is Base64-encoded before uplink transmission.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{};</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">events</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">1</span><span class="o">:</span> <span class="s2">&#34;setup&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">2</span><span class="o">:</span> <span class="s2">&#34;interval&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">3</span><span class="o">:</span> <span class="s2">&#34;motion&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">4</span><span class="o">:</span> <span class="s2">&#34;button&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">event</span> <span class="o">=</span> <span class="nx">events</span><span class="p">[</span><span class="nx">input</span><span class="p">.</span><span class="nx">fPort</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">battery</span> <span class="o">=</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">light</span> <span class="o">=</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">temperature</span> <span class="o">=</span> <span class="p">(((</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0x80</span> <span class="o">?</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="mh">0x100</span> <span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="o">/</span> <span class="mi">100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">warnings</span> <span class="o">=</span> <span class="p">[];</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">temperature</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">warnings</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">&#34;it&#39;s cold&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="nx">data</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">warnings</span><span class="o">:</span> <span class="nx">warnings</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Let&rsquo;s assume that the end device performed event selection and some measurements (battery, light, temperature levels) and needs to send associated decimal values to The Things Stack: <code>12, 178, 4, 128, 247, 174</code>. Decimal values are first converted to bytes on the end device side, so we consider the following hexadecimal payload: <code>0C B2 04 80 F7 AE</code>. We can also assume that the message was sent on FPort 4. The payload is Base64-encoded before uplink transmission.</p>
 <p>The <code>data.uplink_message</code> object of the <code>as.up.data.forward</code> event will contain:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;uplink_message&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-    <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;DLIEgPeu&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;decoded_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;battery&#34;</span><span class="p">:</span> <span class="mi">3250</span><span class="p">,</span>
-      <span class="nt">&#34;event&#34;</span><span class="p">:</span> <span class="s2">&#34;setup&#34;</span><span class="p">,</span>
-      <span class="nt">&#34;light&#34;</span><span class="p">:</span> <span class="mi">1152</span><span class="p">,</span>
-      <span class="nt">&#34;temperature&#34;</span><span class="p">:</span> <span class="mf">-21.3</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;decoded_payload_warnings&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;it&#39;s cold&#34;</span><span class="p">]</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><p>From the object shown above, one can see that the Base64-encoded uplink payload is contained in the <code>frm_payload</code> field, while the result of the <code>decodeUplink()</code> function is contained in the <code>decoded_payload</code> field. You can also observe how warnings are mapped to the <code>decoded_payload_warnings</code> object if certain conditions are met.</p>
-<figure>
-    <img src="uplink-decoder.png"
-         alt="Testing an uplink decoder"/> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;uplink_message&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;DLIEgPeu&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;decoded_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;battery&#34;</span><span class="p">:</span> <span class="mi">3250</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;event&#34;</span><span class="p">:</span> <span class="s2">&#34;setup&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;light&#34;</span><span class="p">:</span> <span class="mi">1152</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;temperature&#34;</span><span class="p">:</span> <span class="mf">-21.3</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;decoded_payload_warnings&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;it&#39;s cold&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>From the object shown above, one can see that the Base64-encoded uplink payload is contained in the <code>frm_payload</code> field, while the result of the <code>decodeUplink()</code> function is contained in the <code>decoded_payload</code> field. You can also observe how warnings are mapped to the <code>decoded_payload_warnings</code> object if certain conditions are met.</p>
+<figure><img src="uplink-decoder.png"
+         alt="Testing an uplink decoder"/>
 </figure>
         </div>
         
@@ -363,7 +362,7 @@
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

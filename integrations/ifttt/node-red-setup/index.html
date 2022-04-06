@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Node-RED Setup for Integration with IFTTT | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/ifttt/node-red-setup/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Node-RED Setup for Integration with IFTTT">
@@ -180,45 +180,40 @@
 <p>Select <strong>POST</strong> as a <strong>Method</strong>.</p>
 <p>In the <strong>URL</strong> field enter the arbitrary path name, e.g. <code>join</code> if you are enabling the integration for the <code>Join accept</code> messages. Keep in mind that this path name also needs to be used when creating a Webhook on The Things Stack.</p>
 <p>Click <strong>Done</strong> to finish.</p>
-<figure>
-    <img src="http-in-node.png"
-         alt="Configuring HTTP input node"/> 
+<figure><img src="http-in-node.png"
+         alt="Configuring HTTP input node"/>
 </figure>
 
 <p>Next, add a <strong>function</strong> node to the dashboard. This node is used to define the structure of the HTTP POST request to be sent to IFTTT.</p>
 <p>In the <strong>Function</strong> field of its configuration, paste the following code, adjust it according to your setup and select <strong>Done</strong>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">msg.url <span class="o">=</span> <span class="s2">&#34;...&#34;</span> <span class="c1"># Paste the URL copied from IFTTT in the previous step</span>
-msg.method <span class="o">=</span> <span class="s2">&#34;POST&#34;</span><span class="p">;</span>
-msg.payload <span class="o">=</span> <span class="o">{</span>
-    <span class="c1"># Adjust according to your payload or leave empty</span>
-    <span class="s1">&#39;value1&#39;</span> : msg.payload.uplink_message.decoded_payload<span class="o">[</span><span class="s2">&#34;temperature&#34;</span><span class="o">]</span>,
-    <span class="s1">&#39;value2&#39;</span> : msg.payload.uplink_message.decoded_payload<span class="o">[</span><span class="s2">&#34;humidity&#34;</span><span class="o">]</span>
-<span class="o">}</span>
-<span class="k">return</span> msg<span class="p">;</span>
-</code></pre></div><figure>
-    <img src="function-node.png"
-         alt="Configuring function node"/> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">msg.url <span class="o">=</span> <span class="s2">&#34;...&#34;</span> <span class="c1"># Paste the URL copied from IFTTT in the previous step</span>
+</span></span><span class="line"><span class="cl">msg.method <span class="o">=</span> <span class="s2">&#34;POST&#34;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">msg.payload <span class="o">=</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1"># Adjust according to your payload or leave empty</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;value1&#39;</span> : msg.payload.uplink_message.decoded_payload<span class="o">[</span><span class="s2">&#34;temperature&#34;</span><span class="o">]</span>,
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;value2&#39;</span> : msg.payload.uplink_message.decoded_payload<span class="o">[</span><span class="s2">&#34;humidity&#34;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">return</span> msg<span class="p">;</span>
+</span></span></code></pre></div><figure><img src="function-node.png"
+         alt="Configuring function node"/>
 </figure>
 
 <p>Place the <strong>http request</strong> node on the dashboard.</p>
 <p>In its configuration, choose <strong>set by msg.method</strong> for a <strong>Method</strong> and select <strong>Done</strong>.</p>
-<figure>
-    <img src="http-request-node.png"
-         alt="Configuring HTTP request node"/> 
+<figure><img src="http-request-node.png"
+         alt="Configuring HTTP request node"/>
 </figure>
 
 <p>To avoid timeouts of the HTTP requests originating from The Things Stack, the <strong>http in</strong> node needs to be connected to an <strong>http response</strong> node.</p>
 <p>Add the <strong>http response</strong> node to the dashboard and configure it to reply to these requests with <code>200 OK</code>.</p>
-<figure>
-    <img src="http-response-node.png"
-         alt="Configuring HTTP response node"/> 
+<figure><img src="http-response-node.png"
+         alt="Configuring HTTP response node"/>
 </figure>
 
 <p>Finally, add the <strong>debug</strong> node to the dashboard, configure it to display a <strong>complete msg object</strong> as an <strong>Output</strong> and finish by selecting <strong>Done</strong>.</p>
 <p>Connect these nodes as shown on the picture below and click the <strong>Deploy</strong> button in the upper right corner. Use the debug window below this button to monitor the results.</p>
-<figure>
-    <img src="final-setup.png"
-         alt="Node-RED setup"/> 
+<figure><img src="final-setup.png"
+         alt="Node-RED setup"/>
 </figure>
         </div>
         
@@ -293,7 +288,7 @@ msg.payload <span class="o">=</span> <span class="o">{</span>
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

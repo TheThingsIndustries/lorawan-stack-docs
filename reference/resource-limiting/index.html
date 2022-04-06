@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Resource Limiting | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/resource-limiting/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Resource Limiting">
@@ -249,22 +249,22 @@
 <p>The resource limiting configuration is split into multiple profiles. For each profile, we provide a name and the maximum number of concurrent resources allowed rate. The profile is associated with a number of resource limiting classes. Refer to the <a href="#limited-entities">Limited Entities</a> section below for a list of all available resource limiting classes and what they mean.</p>
 <p>Enable resource limiting by adding the following configuration to your <code>ttn-lw-stack.yml</code>.</p>
 <p>Resource limiting can be applied per application, as well as for all applications in a tenant. The values shown below are only meant as an example. Make sure to adjust them accordingly, depending on the actual traffic of your deployment.</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">resource-limiting</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">profiles</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Limit<span class="w"> </span>application<span class="w"> </span>data<span class="w"> </span>plane<span class="w"> </span>connections<span class="w"> </span>(MQTT<span class="w"> </span>and<span class="w"> </span>gRPC)<span class="w">
-</span><span class="w">      </span><span class="k">max-concurrent</span><span class="p">:</span><span class="w"> </span><span class="m">50</span><span class="w">
-</span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- as<span class="p">:</span>conn<span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Override<span class="w"> </span>limit<span class="w"> </span>for<span class="w"> </span>application<span class="w"> </span>`test-app<span class="m">-1</span>`<span class="w"> </span>of<span class="w"> </span>tenant<span class="w"> </span>`test-tenant<span class="m">-1</span>`<span class="w">
-</span><span class="w">      </span><span class="k">max-concurrent</span><span class="p">:</span><span class="w"> </span><span class="m">100</span><span class="w">
-</span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- as<span class="p">:</span>conn<span class="p">:</span>app<span class="p">:</span>test-app<span class="m">-1</span>@test-tenant<span class="m">-1</span><span class="w">
-</span><span class="w">    </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Override<span class="w"> </span>limit<span class="w"> </span>for<span class="w"> </span>all<span class="w"> </span>applications<span class="w"> </span>of<span class="w"> </span>tenants<span class="w"> </span>`test-tenant<span class="m">-2</span>`<span class="w"> </span>and<span class="w"> </span>`test-tenant<span class="m">-3</span>`<span class="w">
-</span><span class="w">      </span><span class="k">max-concurrent</span><span class="p">:</span><span class="w"> </span><span class="m">200</span><span class="w">
-</span><span class="w">      </span><span class="k">associations</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- as<span class="p">:</span>conn<span class="p">:</span>tenant<span class="p">:</span>test-tenant<span class="m">-2</span><span class="w">
-</span><span class="w">        </span>- as<span class="p">:</span>conn<span class="p">:</span>tenant<span class="p">:</span>test-tenant<span class="m">-3</span><span class="w">
-</span></code></pre></div><h2 id="limited-entities">Limited Entities</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">resource-limiting</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">profiles</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Limit application data plane connections (MQTT and gRPC)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">max-concurrent</span><span class="p">:</span><span class="w"> </span><span class="m">50</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">associations</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">as:conn</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Override limit for application `test-app-1` of tenant `test-tenant-1`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">max-concurrent</span><span class="p">:</span><span class="w"> </span><span class="m">100</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">associations</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">as:conn:app:test-app-1@test-tenant-1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Override limit for all applications of tenants `test-tenant-2` and `test-tenant-3`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">max-concurrent</span><span class="p">:</span><span class="w"> </span><span class="m">200</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">associations</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">as:conn:tenant:test-tenant-2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="l">as:conn:tenant:test-tenant-3</span><span class="w">
+</span></span></span></code></pre></div><h2 id="limited-entities">Limited Entities</h2>
 
 <div class="has-vertical-space">
   <a href="#application-server-data-plane-connections">
@@ -315,18 +315,18 @@
 <p>For example, if an MQTT connection is failing due to resource limits exceeding, you will see an error such as <code>Resource limit 16 exceeded for resource with key as:conn:frontend:mqtt:app:test-app-1@test-tenant-1</code>. The resolution would be to terminate existing connections and retry.</p>
 <h2 id="external-configuration">External configuration</h2>
 <p>It is possible to load extra resource limiting profiles from an external file. Create a file named <code>/opt/config/resource-limiting.yml</code> (replace <code>/opt/config</code> with any path you like) with the following contents:</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># If a profile is configured in `ttn-lw-stack.yml` for `as:conn`, then</span><span class="w">
-</span><span class="w"></span><span class="c"># it will be overriden</span><span class="w">
-</span><span class="w"></span><span class="k">profiles</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span>- <span class="k">name</span><span class="p">:</span><span class="w"> </span>Example<span class="w"> </span>profile<span class="w">
-</span><span class="w">    </span><span class="k">max-concurrent</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
-</span><span class="w">    </span><span class="k">associations</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>as<span class="p">:</span>conn<span class="p">]</span><span class="w">
-</span></code></pre></div><p>Then add the following config to <code>ttn-lw-stack.yml</code> (replace <code>/opt/config</code> with your path):</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">resource-limiting</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="c"># This will read profiles from /opt/config/resource-limiting.yml</span><span class="w">
-</span><span class="w">  </span><span class="k">config-source</span><span class="p">:</span><span class="w"> </span>directory<span class="w">
-</span><span class="w">  </span><span class="k">directory</span><span class="p">:</span><span class="w"> </span>/opt/config<span class="w">
-</span></code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># If a profile is configured in `ttn-lw-stack.yml` for `as:conn`, then</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># it will be overriden</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">profiles</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">Example profile</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">max-concurrent</span><span class="p">:</span><span class="w"> </span><span class="m">5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">associations</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="l">as:conn]</span><span class="w">
+</span></span></span></code></pre></div><p>Then add the following config to <code>ttn-lw-stack.yml</code> (replace <code>/opt/config</code> with your path):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">resource-limiting</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># This will read profiles from /opt/config/resource-limiting.yml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">config-source</span><span class="p">:</span><span class="w"> </span><span class="l">directory</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">directory</span><span class="p">:</span><span class="w"> </span><span class="l">/opt/config</span><span class="w">
+</span></span></span></code></pre></div>
         </div>
         
           <div class="is-clearfix">
@@ -416,7 +416,7 @@
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

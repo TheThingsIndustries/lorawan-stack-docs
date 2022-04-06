@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Deployment | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/deployment/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Deployment">
@@ -312,9 +312,9 @@
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-4b-routing-s3.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-4b-routing-s3.gen.template</a> (replace <code>3.x.y</code> with the current minor and patch version).</p>
 <p>In addition to the re-used parameters (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>), this template asks for the name of the bucket you want to create. It is typically fine to leave this parameter empty, and have a automatically generated bucket name.</p>
 <p>After deploying the <code>2-4b-routing-s3</code> template, you need to upload the interop configuration to the interop bucket. For details on this configuration, see the <a href="https://www.thethingsindustries.com/docs/reference/interop-repository/">Interoperability Repository reference</a>. If you do not have such configuration, you can upload an empty configuration file:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">touch config.yml
-aws s3 cp config.yml s3://<span class="si">${</span><span class="nv">InteropConfigBucket</span><span class="si">}</span>/config.yml
-</code></pre></div><div class="notification is-info is-light has-text-dark">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">touch config.yml
+</span></span><span class="line"><span class="cl">aws s3 cp config.yml s3://<span class="si">${</span><span class="nv">InteropConfigBucket</span><span class="si">}</span>/config.yml
+</span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   If you did not set a bucket name, see the <code>InteropConfigBucket</code> output of the <code>2-4b-routing-s3</code> stack for the name of the bucket.
 </div>
@@ -344,8 +344,8 @@ aws s3 cp config.yml s3://<span class="si">${</span><span class="nv">InteropConf
 <p>For deployments that connect to Packet Broker, you need to configure your Packet Broker secrets here. If you don&rsquo;t have this, you can leave these parameters empty. It is possible to add or update this in the future.</p>
 <p>For multi-tenant deployments that use tenant billing through Stripe (see the <a href="https://www.thethingsindustries.com/docs/reference/stripe/">Stripe Billing reference</a>), you need to configure the Stripe API key (starting with <code>sk_</code>) and Stripe endpoint secret key (starting with <code>whsec_</code>). It is possible to add or update this in the future.</p>
 <p>For the <strong>Gateway Secrets Encryption Key Value</strong> parameter, provide an AES-128 Key in Base64. The following command can be used to randomly generate one:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">openssl rand -base64 <span class="m">16</span>
-</code></pre></div><h2 id="configuration">Configuration</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">openssl rand -base64 <span class="m">16</span>
+</span></span></code></pre></div><h2 id="configuration">Configuration</h2>
 <p>The <code>4-2a-configuration</code> template creates several configuration parameters in AWS Systems Manager Parameter Store.</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/4-2a-configuration.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/4-2a-configuration.gen.template</a> (replace <code>3.x.y</code> with the current minor and patch version).</p>
 <p>As with the other templates, this one also asks for the re-used parameters from the <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>. Next to these parameters, this template has some notable parameters:</p>
@@ -366,11 +366,11 @@ aws s3 cp config.yml s3://<span class="si">${</span><span class="nv">InteropConf
 <p>Before deploying the ECS cluster, check the ECS settings in your AWS account by going to <strong>Amazon ECS</strong> &gt; <strong>Account Settings</strong>. If you use multiple IAM users, you need to do this with your root account.</p>
 <p>Under <strong>Amazon ECS ARN and resource ID settings</strong> the <strong>new ARN and resource ID format</strong> needs to be enabled for <strong>container instances</strong>, <strong>services</strong> and <strong>tasks</strong>. If you plan to deploy The Things Stack on container instances, <strong>AWSVPC Trunking</strong> needs to be enabled.</p>
 <p>Alternatively, you can configure these settings for the entire AWS account using the AWS CLI:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">aws ecs put-account-setting-default --name serviceLongArnFormat --value enabled --region <span class="nv">$AWS_REGION</span>
-aws ecs put-account-setting-default --name taskLongArnFormat --value enabled --region <span class="nv">$AWS_REGION</span>
-aws ecs put-account-setting-default --name containerInstanceLongArnFormat --value enabled --region <span class="nv">$AWS_REGION</span>
-aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --region <span class="nv">$AWS_REGION</span>
-</code></pre></div><div class="notification is-info is-light has-text-dark">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">aws ecs put-account-setting-default --name serviceLongArnFormat --value enabled --region <span class="nv">$AWS_REGION</span>
+</span></span><span class="line"><span class="cl">aws ecs put-account-setting-default --name taskLongArnFormat --value enabled --region <span class="nv">$AWS_REGION</span>
+</span></span><span class="line"><span class="cl">aws ecs put-account-setting-default --name containerInstanceLongArnFormat --value enabled --region <span class="nv">$AWS_REGION</span>
+</span></span><span class="line"><span class="cl">aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --region <span class="nv">$AWS_REGION</span>
+</span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   These settings need to be applied in <strong>each</strong> AWS region where you want to deploy a cluster.
 </div>
@@ -603,7 +603,7 @@ aws ecs put-account-setting-default --name awsvpcTrunking --value enabled --regi
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

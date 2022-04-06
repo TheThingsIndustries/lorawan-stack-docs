@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Authentication | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/api/authentication/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Authentication">
@@ -102,6 +102,11 @@
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/reference/api/authentication/" class="is-active">Authentication</a>
+    
+    
+
+
+
     
   </li>
 
@@ -333,7 +338,7 @@
 <li>The <strong>client secret</strong> is issued when your OAuth client Registration is accepted by a network admin.</li>
 </ul>
 <p>After your OAuth client Registration is accepted, you can <strong>request authorization</strong> by sending the user to the <strong>authorization URL</strong>:</p>
-<pre><code>https://&lt;HOSTNAME&gt;/oauth/authorize?client_id=&lt;CLIENT-ID&gt;&amp;redirect_uri=&lt;REDIRECT-URI&gt;&amp;state=&lt;STATE&gt;&amp;response_type=code
+<pre tabindex="0"><code>https://&lt;HOSTNAME&gt;/oauth/authorize?client_id=&lt;CLIENT-ID&gt;&amp;redirect_uri=&lt;REDIRECT-URI&gt;&amp;state=&lt;STATE&gt;&amp;response_type=code
 </code></pre><ul>
 <li>The <code>HOSTNAME</code> is the hostname of the Identity Server.</li>
 <li>The <code>client_id</code> is the <strong>client ID</strong> of your OAuth client.</li>
@@ -347,39 +352,39 @@
 <li>The optional <code>state</code> can be used to mitigate CSRF attacks. It is recommended to supply this.</li>
 </ul>
 <p>The Identity Server will prompt the user with a view asking to authorize your OAuth client. They will see the <strong>client ID</strong>, <strong>description</strong>, requested <strong>scope</strong> and <strong>redirect URI</strong>. If they accept the authorization, they will be redirected to your <strong>redirect URI</strong> with an <strong>authorization code</strong>:</p>
-<pre><code>https://&lt;REDIRECT-URI&gt;/?code=&lt;AUTHORIZATION-CODE&gt;
+<pre tabindex="0"><code>https://&lt;REDIRECT-URI&gt;/?code=&lt;AUTHORIZATION-CODE&gt;
 </code></pre><p>Your OAuth client can exchange this <strong>authorization code</strong>, which is valid for 5 minutes, for an <strong>OAuth access token</strong> by making a <code>POST</code> request to the <strong>token URL</strong>:</p>
-<pre><code>https://&lt;HOSTNAME&gt;/oauth/token
+<pre tabindex="0"><code>https://&lt;HOSTNAME&gt;/oauth/token
 </code></pre><p>The request must use <strong>Basic Auth</strong> (<a href="https://tools.ietf.org/html/rfc7617">RFC7617</a>) with the <strong>client ID</strong> as username and the <strong>client secret</strong> as password.</p>
 <p>The <strong>authorization code</strong> is sent in the request payload:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;code&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;AUTHORIZATION-CODE&gt;&#34;</span><span class="p">,</span> 
-  <span class="nt">&#34;grant_type&#34;</span><span class="p">:</span> <span class="s2">&#34;authorization_code&#34;</span>
-<span class="p">}</span>
-</code></pre></div><p>The response contains the <strong>OAuth access token</strong>, which is valid for 60 minutes. If the network admin gave your OAuth client the <strong>refresh token</strong> grant, the response also contains a <strong>refresh token</strong>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;access_token&#34;</span><span class="p">:</span> <span class="s2">&#34;XXXXX&#34;</span><span class="p">,</span> 
-  <span class="nt">&#34;token_type&#34;</span><span class="p">:</span> <span class="s2">&#34;bearer&#34;</span><span class="p">,</span> 
-  <span class="nt">&#34;expires_in&#34;</span><span class="p">:</span> <span class="s2">&#34;3600&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;refresh_token&#34;</span><span class="p">:</span> <span class="s2">&#34;YYYYY&#34;</span>
-<span class="p">}</span>
-</code></pre></div><p>You can now use the <strong>OAuth access token</strong> until it expires.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;code&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;AUTHORIZATION-CODE&gt;&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;grant_type&#34;</span><span class="p">:</span> <span class="s2">&#34;authorization_code&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The response contains the <strong>OAuth access token</strong>, which is valid for 60 minutes. If the network admin gave your OAuth client the <strong>refresh token</strong> grant, the response also contains a <strong>refresh token</strong>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;access_token&#34;</span><span class="p">:</span> <span class="s2">&#34;XXXXX&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;token_type&#34;</span><span class="p">:</span> <span class="s2">&#34;bearer&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;expires_in&#34;</span><span class="p">:</span> <span class="s2">&#34;3600&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;refresh_token&#34;</span><span class="p">:</span> <span class="s2">&#34;YYYYY&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>You can now use the <strong>OAuth access token</strong> until it expires.</p>
 <p>If you have a <strong>refresh token</strong>, you can exchange this for a new <strong>OAuth access token</strong> after the old one expires by making another <code>POST</code> request to the <strong>token URL</strong>, similar to the exchange of the <strong>authorization code</strong> you did before:</p>
-<pre><code>https://&lt;HOSTNAME&gt;/oauth/token
+<pre tabindex="0"><code>https://&lt;HOSTNAME&gt;/oauth/token
 </code></pre><p>The request must use <strong>Basic Auth</strong> (<a href="https://tools.ietf.org/html/rfc7617">RFC7617</a>) with the <strong>client ID</strong> as username and the <strong>client secret</strong> as password.</p>
 <p>The <strong>refresh token</strong> is sent in the request payload:</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;code&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;REFRESH-TOKEN&gt;&#34;</span><span class="p">,</span> 
-  <span class="nt">&#34;grant_type&#34;</span><span class="p">:</span> <span class="s2">&#34;refresh_token&#34;</span>
-<span class="p">}</span>
-</code></pre></div><p>The response again contains the <strong>OAuth access token</strong> and an indication of when it expires. The response also contains a new <strong>refresh token</strong>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;access_token&#34;</span><span class="p">:</span> <span class="s2">&#34;XXXXX&#34;</span><span class="p">,</span> 
-  <span class="nt">&#34;token_type&#34;</span><span class="p">:</span> <span class="s2">&#34;bearer&#34;</span><span class="p">,</span> 
-  <span class="nt">&#34;expires_in&#34;</span><span class="p">:</span> <span class="s2">&#34;3600&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;refresh_token&#34;</span><span class="p">:</span> <span class="s2">&#34;YYYYY&#34;</span>
-<span class="p">}</span>
-</code></pre></div><h2 id="session-cookies">Session cookies</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;code&#34;</span><span class="p">:</span> <span class="s2">&#34;&lt;REFRESH-TOKEN&gt;&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;grant_type&#34;</span><span class="p">:</span> <span class="s2">&#34;refresh_token&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The response again contains the <strong>OAuth access token</strong> and an indication of when it expires. The response also contains a new <strong>refresh token</strong>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;access_token&#34;</span><span class="p">:</span> <span class="s2">&#34;XXXXX&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;token_type&#34;</span><span class="p">:</span> <span class="s2">&#34;bearer&#34;</span><span class="p">,</span> 
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;expires_in&#34;</span><span class="p">:</span> <span class="s2">&#34;3600&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;refresh_token&#34;</span><span class="p">:</span> <span class="s2">&#34;YYYYY&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h2 id="session-cookies">Session cookies</h2>
 <p>Session cookies provide a way to authorize API usage using the session cookie obtained during authentication with the OAuth provider (<code>/oauth/login</code>). Since cookies are domain-scoped, this will only work for requests originating from the same domain as the API. Session cookies authorize full access to all owned resources of the user associated with the session. Any other means of authorization will take precedence if present in the request (e.g. a session cookie will be disregarded if an <code>Authorization</code> header is already present in the request).</p>
 
         </div>
@@ -467,7 +472,7 @@
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>MAC Settings | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/mac-settings/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="MAC Settings">
@@ -191,18 +191,18 @@
 </div>
 
 <p>To see Rx1 delay change in the current session, modify the <code>mac-state.desired-parameters.rx1-delay</code> parameter:</p>
-<pre><code>ttn-lw-cli end-devices update --application-id &lt;application-id&gt; --device-id &lt;device-id&gt; --mac-state.desired-parameters.rx1-delay RX_DELAY_6
+<pre tabindex="0"><code>ttn-lw-cli end-devices update --application-id &lt;application-id&gt; --device-id &lt;device-id&gt; --mac-state.desired-parameters.rx1-delay RX_DELAY_6
 </code></pre><p>The Network Server will schedule an <code>RxTimingSetupReq</code> MAC command to communicate a new <code>Rx1Delay</code> of 6 seconds to the device. The end device will answer with an <code>RxTimingSetupAns</code> MAC command in the next uplink. The Network Server will then start using the <code>Rx1Delay</code> of 6 seconds for scheduling downlinks. For this change to take effect, the end device does not need to perform a re-join.</p>
 <p>To make the Rx1 delay change persistent upon end device re-join, modify the <code>mac-settings.desired-rx1-delay</code> parameter:</p>
-<pre><code>ttn-lw-cli end-devices update --application-id &lt;application-id&gt; --device-id &lt;device-id&gt; --mac-settings.desired-rx1-delay RX_DELAY_6
+<pre tabindex="0"><code>ttn-lw-cli end-devices update --application-id &lt;application-id&gt; --device-id &lt;device-id&gt; --mac-settings.desired-rx1-delay RX_DELAY_6
 </code></pre><p>The Rx1 delay change will take effect only after the end device performs a re-join, i.e. in the new session. The <code>Rx1Delay</code> of 6 seconds will be communicated to the device during join procedure via Join-accept downlink message.</p>
 <p>If the end device does not conform to the LoRaWAN Specification and has a custom Rx1 delay configured in it (6 seconds in this example), modify the <code>mac-settings.rx1-delay</code> parameter:</p>
-<pre><code>ttn-lw-cli end-devices update --application-id &lt;application-id&gt; --device-id &lt;device-id&gt; --mac-settings.rx1-delay RX_DELAY_6
+<pre tabindex="0"><code>ttn-lw-cli end-devices update --application-id &lt;application-id&gt; --device-id &lt;device-id&gt; --mac-settings.rx1-delay RX_DELAY_6
 </code></pre><p>The Network Server will start using the <code>Rx1Delay</code> of 6 seconds for downlink communication with the end device.</p>
 <h2 id="available-mac-settings">Available MAC Settings</h2>
 <p>Run the following command to get a list of all available MAC settings and available parameter values:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> --help
-</code></pre></div><p>You can also refer to the <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#message:MACSettings">End Device API Reference page</a> for documentation on the available MAC settings and MAC state parameters.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> --help
+</span></span></code></pre></div><p>You can also refer to the <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#message:MACSettings">End Device API Reference page</a> for documentation on the available MAC settings and MAC state parameters.</p>
 <h2 id="class-specific-settings">Class Specific Settings</h2>
 <p>Settings that are useful based on device class are:</p>
 <p>All devices:</p>
@@ -237,32 +237,32 @@
 <h2 id="examples">Examples</h2>
 <h3 id="configure-factory-preset-frequencies-for-abp-devices">Configure Factory Preset Frequencies for ABP Devices</h3>
 <p>To tell The Things Stack which frequencies are configured in an ABP device, set the <code>mac-settings.factory-preset-frequencies</code> parameter. For example, to configure a device using the default EU868 frequencies, use the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli devices update &lt;app-id&gt; &lt;device-id&gt; --mac-settings.factory-preset-frequencies 868100000,868300000,868500000,867100000,867300000,867500000,867700000,867900000
-</code></pre></div><div class="notification is-info is-light has-text-dark">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli devices update &lt;app-id&gt; &lt;device-id&gt; --mac-settings.factory-preset-frequencies 868100000,868300000,868500000,867100000,867300000,867500000,867700000,867900000
+</span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   For ABP devices, <code>mac-settings.factory-preset-frequencies</code> should be specified on <code>device create</code> or the settings will only take effect after MAC reset.
 </div>
 
 <h3 id="set-duty-cycle">Set Duty Cycle</h3>
 <p>To change the duty cycle, set the <code>desired-max-duty-cycle</code> parameter. For example, to set the duty cycle to 0.098%, use the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --mac-settings.desired-max-duty-cycle DUTY_CYCLE_1024
-</code></pre></div><p>See the <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#message:MACSettings">End Device API Reference</a> for available fields and definitions of constants. <code>DUTY_CYCLE_1024</code> represents 1/1024 ≈ 0.098%.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --mac-settings.desired-max-duty-cycle DUTY_CYCLE_1024
+</span></span></code></pre></div><p>See the <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#message:MACSettings">End Device API Reference</a> for available fields and definitions of constants. <code>DUTY_CYCLE_1024</code> represents 1/1024 ≈ 0.098%.</p>
 <h3 id="enable-adr">Enable ADR</h3>
 <p>To enable ADR, set the <code>mac-settings.use-adr</code> parameter:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --mac-settings.use-adr<span class="o">=</span><span class="nb">true</span> 
-</code></pre></div><p>See the <a href="https://www.thethingsindustries.com/docs/reference/adr/">Adaptive Data Rate</a> section for detailed information on configuring ADR parameters and ADR margin using MAC settings.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --mac-settings.use-adr<span class="o">=</span><span class="nb">true</span> 
+</span></span></code></pre></div><p>See the <a href="https://www.thethingsindustries.com/docs/reference/adr/">Adaptive Data Rate</a> section for detailed information on configuring ADR parameters and ADR margin using MAC settings.</p>
 <h3 id="set-rx1-delay">Set RX1 Delay</h3>
 <p>The RX1 delay of end devices is set to 5 second by default. To change it, set the <code>desired-rx1-delay</code> parameter:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --mac-settings.desired-rx1-delay RX_DELAY_5
-</code></pre></div><h3 id="unset-mac-settings">Unset MAC settings</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --mac-settings.desired-rx1-delay RX_DELAY_5
+</span></span></code></pre></div><h3 id="unset-mac-settings">Unset MAC settings</h3>
 <p>The CLI can also be used to unset MAC settings (so that the default ones are used):</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --unset mac-settings.rx1-delay
-</code></pre></div><h2 id="session-and-mac-state-reset">Session and MAC State Reset</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --unset mac-settings.rx1-delay
+</span></span></code></pre></div><h2 id="session-and-mac-state-reset">Session and MAC State Reset</h2>
 <p>Resetting session and MAC state for OTAA devices will wipe out all session and MAC data, and the end device will need to perform a rejoin on The Things Stack network. For ABP devices, only MAC state gets reset, while session keys, DevAddr and downlink queue are preserved.</p>
 <p>Session and MAC state can be reset through the Console - navigate to your end device&rsquo;s <strong>General settings</strong> tab, scroll down to the <strong>Network layer</strong> section, press the <strong>Reset session and MAC state</strong> button and confirm.</p>
 <p>To reset session and MAC state using the CLI:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices reset --application-id &lt;application-id&gt; --device-id &lt;device-id&gt;
-</code></pre></div>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices reset --application-id &lt;application-id&gt; --device-id &lt;device-id&gt;
+</span></span></code></pre></div>
         </div>
         
           <div class="is-clearfix">
@@ -355,7 +355,7 @@
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

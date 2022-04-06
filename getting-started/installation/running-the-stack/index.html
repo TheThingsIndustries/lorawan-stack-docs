@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Running The Things Stack | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/installation/running-the-stack/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Running The Things Stack">
@@ -122,6 +122,11 @@
   <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/installation/running-the-stack/" class="is-active">Running The Things Stack</a>
     
+    
+
+
+
+    
   </li>
 
   <li>
@@ -201,44 +206,44 @@
 <p>Begin by opening a terminal prompt in the same directory as your <code>docker-compose.yml</code> file.</p>
 <h2 id="initialization">Initialization</h2>
 <p>The first time The Things Stack is started, it requires some initialization. Start by pulling the Docker images:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose pull
-</code></pre></div><p>Next, you need to initialize the database of the Identity Server:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose run --rm stack is-db init
-</code></pre></div><p>If you receive an error running The Things Stack, make sure a The Things Stack container isn&rsquo;t already running. Use <code>docker ps</code> to see running containers.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose pull
+</span></span></code></pre></div><p>Next, you need to initialize the database of the Identity Server:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack is-db init
+</span></span></code></pre></div><p>If you receive an error running The Things Stack, make sure a The Things Stack container isn&rsquo;t already running. Use <code>docker ps</code> to see running containers.</p>
 <p>For the Storage Integration available in The Things Stack Enterprise, the database of the Application Server needs to be initialized as well:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose run --rm stack storage-db init
-</code></pre></div><p>The Things Stack Enterprise requires a tenant to be present, even if multi-tenancy is not included in the license. You create a tenant with:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose run --rm stack is-db create-tenant
-</code></pre></div><p>This will take the <code>tenancy.default-id</code> Tenant ID from the <a href="/docs/getting-started/installation/configuration/">configuration</a> in <code>ttn-lw-stack-docker.yml</code>. To specify another Tenant ID, use the <code>--id</code> parameter.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack storage-db init
+</span></span></code></pre></div><p>The Things Stack Enterprise requires a tenant to be present, even if multi-tenancy is not included in the license. You create a tenant with:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack is-db create-tenant
+</span></span></code></pre></div><p>This will take the <code>tenancy.default-id</code> Tenant ID from the <a href="/docs/getting-started/installation/configuration/">configuration</a> in <code>ttn-lw-stack-docker.yml</code>. To specify another Tenant ID, use the <code>--id</code> parameter.</p>
 <p>Next, an initial <code>admin</code> user has to be created. Make sure to give it a good password.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose run --rm stack is-db create-admin-user <span class="se">\
-</span><span class="se"></span>  --id admin <span class="se">\
-</span><span class="se"></span>  --email your@email.com
-</code></pre></div><p>Note that for multi-tenant deployments you can create admin users for each tenant using the <code>--tenant-id</code> flag.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack is-db create-admin-user <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --id admin <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --email your@email.com
+</span></span></code></pre></div><p>Note that for multi-tenant deployments you can create admin users for each tenant using the <code>--tenant-id</code> flag.</p>
 <p>Then the command-line interface needs to be registered as an OAuth client:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose run --rm stack is-db create-oauth-client <span class="se">\
-</span><span class="se"></span>  --id cli <span class="se">\
-</span><span class="se"></span>  --name <span class="s2">&#34;Command Line Interface&#34;</span> <span class="se">\
-</span><span class="se"></span>  --owner admin <span class="se">\
-</span><span class="se"></span>  --no-secret <span class="se">\
-</span><span class="se"></span>  --redirect-uri <span class="s2">&#34;local-callback&#34;</span> <span class="se">\
-</span><span class="se"></span>  --redirect-uri <span class="s2">&#34;code&#34;</span>
-</code></pre></div><p>Afterwards, the same needs to be done for the Console. If running a multi-tenant environment, use option <code>--tenant-id NULL</code> to register the OAuth client for all tenants. For <code>--secret</code>, make sure to enter the same value as you set for <code>console.oauth.client-secret</code> in the <code>ttn-lw-stack-docker.yml</code> file in the <a href="/docs/getting-started/installation/configuration/">Configuration</a> step.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">CONSOLE_SECRET</span><span class="o">=</span><span class="s2">&#34;your-console-secret&#34;</span>
-<span class="nv">SERVER_ADDRESS</span><span class="o">=</span><span class="s2">&#34;your-server-address&#34;</span>
-docker-compose run --rm stack is-db create-oauth-client <span class="se">\
-</span><span class="se"></span>  --id console <span class="se">\
-</span><span class="se"></span>  --name <span class="s2">&#34;Console&#34;</span> <span class="se">\
-</span><span class="se"></span>  --owner admin <span class="se">\
-</span><span class="se"></span>  --secret <span class="s2">&#34;</span><span class="si">${</span><span class="nv">CONSOLE_SECRET</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
-</span><span class="se"></span>  --redirect-uri <span class="s2">&#34;</span><span class="si">${</span><span class="nv">SERVER_ADDRESS</span><span class="si">}</span><span class="s2">/console/oauth/callback&#34;</span> <span class="se">\
-</span><span class="se"></span>  --redirect-uri <span class="s2">&#34;/console/oauth/callback&#34;</span> <span class="se">\
-</span><span class="se"></span>  --logout-redirect-uri <span class="s2">&#34;</span><span class="si">${</span><span class="nv">SERVER_ADDRESS</span><span class="si">}</span><span class="s2">/console&#34;</span> <span class="se">\
-</span><span class="se"></span>  --logout-redirect-uri <span class="s2">&#34;/console&#34;</span>
-</code></pre></div><h2 id="running-the-things-stack">Running The Things Stack</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack is-db create-oauth-client <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --id cli <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --name <span class="s2">&#34;Command Line Interface&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --owner admin <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --no-secret <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --redirect-uri <span class="s2">&#34;local-callback&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --redirect-uri <span class="s2">&#34;code&#34;</span>
+</span></span></code></pre></div><p>Afterwards, the same needs to be done for the Console. If running a multi-tenant environment, use option <code>--tenant-id NULL</code> to register the OAuth client for all tenants. For <code>--secret</code>, make sure to enter the same value as you set for <code>console.oauth.client-secret</code> in the <code>ttn-lw-stack-docker.yml</code> file in the <a href="/docs/getting-started/installation/configuration/">Configuration</a> step.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">CONSOLE_SECRET</span><span class="o">=</span><span class="s2">&#34;your-console-secret&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">SERVER_ADDRESS</span><span class="o">=</span><span class="s2">&#34;your-server-address&#34;</span>
+</span></span><span class="line"><span class="cl">docker-compose run --rm stack is-db create-oauth-client <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --id console <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --name <span class="s2">&#34;Console&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --owner admin <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --secret <span class="s2">&#34;</span><span class="si">${</span><span class="nv">CONSOLE_SECRET</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --redirect-uri <span class="s2">&#34;</span><span class="si">${</span><span class="nv">SERVER_ADDRESS</span><span class="si">}</span><span class="s2">/console/oauth/callback&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --redirect-uri <span class="s2">&#34;/console/oauth/callback&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --logout-redirect-uri <span class="s2">&#34;</span><span class="si">${</span><span class="nv">SERVER_ADDRESS</span><span class="si">}</span><span class="s2">/console&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --logout-redirect-uri <span class="s2">&#34;/console&#34;</span>
+</span></span></code></pre></div><h2 id="running-the-things-stack">Running The Things Stack</h2>
 <p>Start The Things Stack with:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose up
-</code></pre></div><p>This starts the stack, so you will see the stack logs being printed to your terminal. You can also start the stack in detached mode by adding <code>-d</code> to the command above. In that case you can get logs with <a href="https://docs.docker.com/compose/reference/logs/"><code>docker-compose logs</code></a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose up
+</span></span></code></pre></div><p>This starts the stack, so you will see the stack logs being printed to your terminal. You can also start the stack in detached mode by adding <code>-d</code> to the command above. In that case you can get logs with <a href="https://docs.docker.com/compose/reference/logs/"><code>docker-compose logs</code></a>.</p>
 <p>With The Things Stack up and running, follow <a href="https://www.thethingsindustries.com/docs/getting-started/console/">Console</a> or <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">Command-line Interface</a> to proceed with the login, then continue with connecting gateways, creating devices and working with streaming data.</p>
 
         </div>
@@ -323,7 +328,7 @@ docker-compose run --rm stack is-db create-oauth-client <span class="se">\
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

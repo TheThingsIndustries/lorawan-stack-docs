@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Troubleshooting AWS AMI Deployment | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/aws/ami/troubleshooting/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Troubleshooting AWS AMI Deployment">
@@ -237,19 +237,19 @@ Move to generic getting started guide once ready.
 <p>You can SSH into the EC2 machine using the public IP output value.</p>
 <p>Log in AWS Console and open the CloudFormation resource and click on your recently deployed stack. Navigate to the <strong>Outputs</strong> tab and copy the value of the <strong>PublicIP</strong> field.</p>
 <p>Now, using the private key of the <strong>SSH Key</strong> value that you entered during deployment, you can SSH into the machine using:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ssh -i &lt;path-to-private-key&gt; ec2-user@&lt;PublicIP&gt;
-</code></pre></div><h3 id="how-can-i-see-logs-of-the-things-stack">How can I see logs of The Things Stack?</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -i &lt;path-to-private-key&gt; ec2-user@&lt;PublicIP&gt;
+</span></span></code></pre></div><h3 id="how-can-i-see-logs-of-the-things-stack">How can I see logs of The Things Stack?</h3>
 <p>The Things Stack binary runs as a <code>systemd</code> service. In order to access the logs, SSH into the machine as described above and use the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo journalctl -f -u lorawan-stack.service
-</code></pre></div><h3 id="how-do-i-see-more-detailed-debug-logs-of-the-things-stack">How do I see more detailed debug logs of The Things Stack?</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo journalctl -f -u lorawan-stack.service
+</span></span></code></pre></div><h3 id="how-do-i-see-more-detailed-debug-logs-of-the-things-stack">How do I see more detailed debug logs of The Things Stack?</h3>
 <p>By default, The Things Stack does not log detailed <code>DEBUG</code> messages. In order to enable this, SSH into the EC2 instance as described above and add the following lines to the file <code>/tti/lorawan-stack/config.yml</code> using an editor such as <code>nano</code>.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">log:
-  level: debug
-</code></pre></div><p>Restart the service for this to take effect:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl restart lorawan-stack.service
-</code></pre></div><p>The debug logs can be read using the <code>journalctl</code>, same as above:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo journalctl -f -u lorawan-stack.service
-</code></pre></div><h3 id="my-gateway-doesnt-connect-what-do-i-do">My gateway doesn&rsquo;t connect. What do I do?</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">log:
+</span></span><span class="line"><span class="cl">  level: debug
+</span></span></code></pre></div><p>Restart the service for this to take effect:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo systemctl restart lorawan-stack.service
+</span></span></code></pre></div><p>The debug logs can be read using the <code>journalctl</code>, same as above:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo journalctl -f -u lorawan-stack.service
+</span></span></code></pre></div><h3 id="my-gateway-doesnt-connect-what-do-i-do">My gateway doesn&rsquo;t connect. What do I do?</h3>
 <p>Please check the <a href="https://www.thethingsindustries.com/docs/gateways/troubleshooting/">Troubleshooting Gateways</a> guide.</p>
 <h3 id="my-device-doesnt-join-how-do-i-fix-this">My device doesn&rsquo;t join. How do I fix this?</h3>
 <p>Please check the <a href="https://www.thethingsindustries.com/docs/devices/troubleshooting/">Troubleshooting Devices</a> guide.</p>
@@ -344,7 +344,7 @@ Move to generic getting started guide once ready.
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

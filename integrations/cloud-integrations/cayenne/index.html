@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Cayenne | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/cayenne/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Cayenne">
@@ -294,42 +294,37 @@
 <h2 id="setup-cayenne">Setup Cayenne</h2>
 <p>Log in to the Cayenne platform.</p>
 <p>First, you need to <strong>Choose a device to start a project</strong>. Choose <strong>LoRa</strong>.</p>
-<figure>
-    <img src="start-screen.png"
-         alt="Choose a device"/> 
+<figure><img src="start-screen.png"
+         alt="Choose a device"/>
 </figure>
 
 <p>You will be presented with a list of LoRaWAN networks you can connect your devices from and a list of device models you can connect to Cayenne. Scroll through the list of networks on the left and choose <strong>The Things Network</strong>, then select the model of your end device.</p>
 <p>You can choose the device model, but you can also choose <strong>Cayenne LPP</strong>. If you choose a device model and you start experiencing issues, try using the <strong>Cayenne LPP</strong> instead. In this guide, we chose <strong>Cayenne LPP</strong>.</p>
-<figure>
-    <img src="choose-ttn-device.png"
-         alt="Choose network and device model"/> 
+<figure><img src="choose-ttn-device.png"
+         alt="Choose network and device model"/>
 </figure>
 
 <p>To add your device, you will need to give it a <strong>Name</strong> (you can leave the pre-defined one) and provide its <strong>DevEUI</strong>.</p>
 <p>Since in this guide we assume your end device is already connected to The Things Stack, choose <strong>Already Registered</strong> for the <strong>Activation Mode</strong>. If your device is not connected to The Things Stack, see <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> section for instructions on how to register it.</p>
 <p>What you choose under <strong>Tracking → Location</strong> depends on the model of your device, i.e. if it can provide location coordinates or not. If you choose <strong>This device doesn&rsquo;t move</strong>, you will need to provide a static location of your device.</p>
 <p>Click <strong>Add device</strong> to finish.</p>
-<figure>
-    <img src="add-device.png"
-         alt="Adding device info"/> 
+<figure><img src="add-device.png"
+         alt="Adding device info"/>
 </figure>
 
 <p>Once you finish creating a new device, you will be presented with its dashboard.</p>
 <p>The <strong>Overview</strong> tab usually contains a map showing the device location (static or dynamic), and widgets showing sensor data. These widgets will be automatically loaded once data from The Things Stack reaches Cayenne.</p>
 <p>The <strong>Data</strong> tab will show the incoming live data, and you will be able to see historic data as well.</p>
-<figure>
-    <img src="device-overview.png"
-         alt="Device overview"/> 
+<figure><img src="device-overview.png"
+         alt="Device overview"/>
 </figure>
 
 <p>Note the <strong>Last data packet sent: - -</strong> in the bottom of the image below, indicating that The Things Stack data still has not reached Cayenne.</p>
 <h2 id="configure-the-things-stack">Configure The Things Stack</h2>
 <p>After preparing the setup on Cayenne, use the Cayenne <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a> to create a Webhook integration on The Things Stack.</p>
 <p>To integrate, you only need to fill out the <strong>Webhook ID</strong> field. The <strong>Client ID</strong> field is optional, so you can leave it empty.</p>
-<figure>
-    <img src="cayenne-webhook-template.png"
-         alt="Cayenne Webhook template"/> 
+<figure><img src="cayenne-webhook-template.png"
+         alt="Cayenne Webhook template"/>
 </figure>
 
 <p>To see the values of all parameters of the Cayenne integration, click on the integration after you created it with the Webhook template.</p>
@@ -337,9 +332,8 @@
 <p>As soon as new uplink message containing CayenneLPP-encoded sensor data is sent from your end device, the widgets showing this data will automatically load on your device&rsquo;s Cayenne dashboard, enabling you to monitor your data in a user friendly way.</p>
 <p><strong>RSSI</strong> and <strong>SNR</strong> are loaded from uplink message metadata.</p>
 <p>You can see the time of the arrival of the last message in the bottom.</p>
-<figure>
-    <img src="monitor-data.png"
-         alt="Monitor your data"/> 
+<figure><img src="monitor-data.png"
+         alt="Monitor your data"/>
 </figure>
 
 <p>Now you can switch to <strong>Data</strong> tab to see full incoming data records, create new widgets, events, triggers, etc. Have fun!</p>
@@ -432,7 +426,7 @@
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

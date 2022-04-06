@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Make a Device Claimable | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/device-claiming/make-device-claimable/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Make a Device Claimable">
@@ -130,6 +130,11 @@
   <li>
     <a href="https://www.thethingsindustries.com/docs/devices/device-claiming/make-device-claimable/" class="is-active">Make a Device Claimable</a>
     
+    
+
+
+
+    
   </li>
 
   <li>
@@ -231,10 +236,10 @@
 </div>
 
 <p>Replace <code>&lt;app-id&gt;</code> with the <strong>Application ID</strong> of the application that you created in prerequisites, and run the following command in the CLI:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli applications claim authorize &lt;app-id&gt;
-</code></pre></div><p>To undo the action:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli application claim unauthorize &lt;app-id&gt;
-</code></pre></div><h2 id="register-device">Register Device</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli applications claim authorize &lt;app-id&gt;
+</span></span></code></pre></div><p>To undo the action:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli application claim unauthorize &lt;app-id&gt;
+</span></span></code></pre></div><h2 id="register-device">Register Device</h2>
 <p>In order to make a device claimable, the device first needs to be added first in the application that has been authorized for claiming.</p>
 <p>If you already have devices in your application that can be claimed, i.e. to transfer the ownership, you can go ahead to the next section.</p>
 <p>If you don&rsquo;t have a device in the application yet, you can add it by using one of the following ways:</p>
@@ -266,20 +271,19 @@
   <section data-content="console">
   <p>Go to your application in The Things Stack Console. Go to <strong>End devices</strong> in the left menu and find the device you want to configure for claiming.</p>
 <p>Find the claiming settings in the <strong>Claiming</strong> tab:</p>
-<figure>
-    <img src="../claiming-settings.png"
-         alt="Claiming settings"/> 
+<figure><img src="../claiming-settings.png"
+         alt="Claiming settings"/>
 </figure>
 <p>To save the claiming settings you edited, click <strong>Save changes</strong>.</p>
 <p>To disallow claiming, click <strong>Delete claim authentication code</strong>.</p>
 </section>
 <section data-content="cli">
   <p>To configure claiming using the CLI, use the following command:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nv">CLAIM_AUTHENTICATION_CODE</span><span class="o">=</span><span class="s2">&#34;ABCD&#34;</span>
-ttn-lw-cli end-device <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --claim-authentication-code.value <span class="nv">$CLAIM_AUTHENTICATION_CODE</span> <span class="se">\
-</span><span class="se"></span>  --claim-authentication-code.valid-from 2021-03-01T00:00:00Z <span class="se">\
-</span><span class="se"></span>  --claim-authentication-code.valid-from 2021-03-31T23:59:59Z
-</code></pre></div><p>This sets the secret claim authentication code to <code>ABCD</code>, that can be used in March 2021.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">CLAIM_AUTHENTICATION_CODE</span><span class="o">=</span><span class="s2">&#34;ABCD&#34;</span>
+</span></span><span class="line"><span class="cl">ttn-lw-cli end-device <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&gt; --claim-authentication-code.value <span class="nv">$CLAIM_AUTHENTICATION_CODE</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --claim-authentication-code.valid-from 2021-03-01T00:00:00Z <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --claim-authentication-code.valid-from 2021-03-31T23:59:59Z
+</span></span></code></pre></div><p>This sets the secret claim authentication code to <code>ABCD</code>, that can be used in March 2021.</p>
 </section>
 <h2 id="generate-qr-code-for-claiming">Generate QR Code for Claiming</h2>
 <p>You can use QR codes to make claiming really easy. The QR code includes the unique identifiers of the device as well as the secret claim authentication code.</p>
@@ -377,7 +381,7 @@ ttn-lw-cli end-device <span class="nb">set</span> &lt;app-id&gt; &lt;device-id&g
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

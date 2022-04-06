@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Configuration | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/installation/configuration/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Configuration">
@@ -111,6 +111,11 @@
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/installation/configuration/" class="is-active">Configuration</a>
+    
+    
+
+
+
     
   </li>
 
@@ -216,11 +221,11 @@
 <p><code>ttn-lw-stack-docker.yml</code> contains the configuration specific to The Things Stack deployment and is used to configure The Things Stack. When The Things Stack starts, it searches through <code>ttn-lw-stack-docker.yml</code> for component server addresses, a TLS certificate source, client authentication credentials, and other configuration parameters.</p>
 <p>The configuration options in <code>ttn-lw-stack-docker</code> can also be specified using command-line flags or environment variables. All configuration options have a corresponding environment variable and command-line flag. See the <a href="https://www.thethingsindustries.com/docs/reference/configuration/">Configuration Reference</a> for more information about the configuration options.</p>
 <p>This guide assumes the following directory hierarchy:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker-compose.yml          <span class="c1"># defines Docker services for running The Things Stack</span>
-config/
-└── stack/
-    └── ttn-lw-stack-docker.yml    <span class="c1"># configuration file for The Things Stack</span>
-</code></pre></div><h2 id="example-configuration-files">Example Configuration Files</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose.yml          <span class="c1"># defines Docker services for running The Things Stack</span>
+</span></span><span class="line"><span class="cl">config/
+</span></span><span class="line"><span class="cl">└── stack/
+</span></span><span class="line"><span class="cl">    └── ttn-lw-stack-docker.yml    <span class="c1"># configuration file for The Things Stack</span>
+</span></span></code></pre></div><h2 id="example-configuration-files">Example Configuration Files</h2>
 <div class="tabs is-boxed">
   <ul>
     
@@ -279,7 +284,7 @@ config/
 <p>The simplest configuration for CockroachDB looks like this (excerpted from the example <code>docker-compose.yml</code>):</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 5
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 5
 </span><span class="lnt"> 6
 </span><span class="lnt"> 7
 </span><span class="lnt"> 8
@@ -291,16 +296,16 @@ config/
 </span><span class="lnt">14
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">  </span><span class="k">cockroach</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="c"># In production, replace &#39;latest&#39; with tag from https://hub.docker.com/r/cockroachdb/cockroach/tags</span><span class="w">
-</span><span class="w">    </span><span class="k">image</span><span class="p">:</span><span class="w"> </span>cockroachdb/cockroach<span class="p">:</span>latest<span class="w">
-</span><span class="w">    </span><span class="k">command</span><span class="p">:</span><span class="w"> </span>start-single-node<span class="w"> </span>--http-port<span class="w"> </span><span class="m">26256</span><span class="w"> </span>--insecure<span class="w">
-</span><span class="w">    </span><span class="k">restart</span><span class="p">:</span><span class="w"> </span>unless-stopped<span class="w">
-</span><span class="w">    </span><span class="k">volumes</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- ${DEV_DATA_DIR<span class="p">:</span>-.env/data}/cockroach<span class="p">:</span>/cockroach/cockroach-data<span class="w">
-</span><span class="w">    </span><span class="k">ports</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;127.0.0.1:26257:26257&#34;</span><span class="w"> </span><span class="c"># Cockroach</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;127.0.0.1:26256:26256&#34;</span><span class="w"> </span><span class="c"># WebUI</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">  </span><span class="nt">cockroach</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># In production, replace &#39;latest&#39; with tag from https://hub.docker.com/r/cockroachdb/cockroach/tags</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">cockroachdb/cockroach:latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l">start-single-node --http-port 26256 --insecure</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">${DEV_DATA_DIR:-.env/data}/cockroach:/cockroach/cockroach-data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;127.0.0.1:26257:26257&#34;</span><span class="w"> </span><span class="c"># Cockroach</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;127.0.0.1:26256:26256&#34;</span><span class="w"> </span><span class="c"># WebUI</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="redis">Redis</h3>
@@ -315,7 +320,7 @@ config/
 <p>The simplest configuration for Redis looks like this (excerpted from the example <code>docker-compose.yml</code>):</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">28
+<pre tabindex="0" class="chroma"><code><span class="lnt">28
 </span><span class="lnt">29
 </span><span class="lnt">30
 </span><span class="lnt">31
@@ -326,15 +331,15 @@ config/
 </span><span class="lnt">36
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">  </span><span class="k">redis</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="c"># In production, replace &#39;latest&#39; with tag from https://hub.docker.com/_/redis?tab=tags</span><span class="w">
-</span><span class="w">    </span><span class="k">image</span><span class="p">:</span><span class="w"> </span>redis<span class="p">:</span>latest<span class="w">
-</span><span class="w">    </span><span class="k">command</span><span class="p">:</span><span class="w"> </span>redis-server<span class="w"> </span>--appendonly<span class="w"> </span>yes<span class="w">
-</span><span class="w">    </span><span class="k">restart</span><span class="p">:</span><span class="w"> </span>unless-stopped<span class="w">
-</span><span class="w">    </span><span class="k">volumes</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- ${DEV_DATA_DIR<span class="p">:</span>-.env/data}/redis<span class="p">:</span>/data<span class="w">
-</span><span class="w">    </span><span class="k">ports</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;127.0.0.1:6379:6379&#34;</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">  </span><span class="nt">redis</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># In production, replace &#39;latest&#39; with tag from https://hub.docker.com/_/redis?tab=tags</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">redis:latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l">redis-server --appendonly yes</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">${DEV_DATA_DIR:-.env/data}/redis:/data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;127.0.0.1:6379:6379&#34;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="the-things-stack">The Things Stack</h3>
@@ -344,24 +349,24 @@ config/
 <p>The default command is <code>start</code>, which starts The Things Stack.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">39
+<pre tabindex="0" class="chroma"><code><span class="lnt">39
 </span><span class="lnt">40
 </span><span class="lnt">41
 </span><span class="lnt">42
 </span><span class="lnt">43
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">  </span><span class="k">stack</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="c"># In production, replace &#39;latest&#39; with tag from https://hub.docker.com/r/thethingsindustries/lorawan-stack/tags</span><span class="w">
-</span><span class="w">    </span><span class="k">image</span><span class="p">:</span><span class="w"> </span>thethingsindustries/lorawan-stack<span class="p">:</span>latest<span class="w">
-</span><span class="w">    </span><span class="k">entrypoint</span><span class="p">:</span><span class="w"> </span>tti-lw-stack<span class="w"> </span>-c<span class="w"> </span>/config/ttn-lw-stack-docker.yml<span class="w">
-</span><span class="w">    </span><span class="k">command</span><span class="p">:</span><span class="w"> </span>start</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">  </span><span class="nt">stack</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># In production, replace &#39;latest&#39; with tag from https://hub.docker.com/r/thethingsindustries/lorawan-stack/tags</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">thethingsindustries/lorawan-stack:latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="l">tti-lw-stack -c /config/ttn-lw-stack-docker.yml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l">start</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>The <code>depends_on</code> field tells Docker Compose that The Things Stack depends on CockroachDB and Redis. With this, Docker Compose will wait for CockroachDB and Redis to come online before starting The Things Stack.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">45
+<pre tabindex="0" class="chroma"><code><span class="lnt">45
 </span><span class="lnt">46
 </span><span class="lnt">47
 </span><span class="lnt">48
@@ -369,12 +374,12 @@ config/
 </span><span class="lnt">50
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">    </span><span class="k">depends_on</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- redis<span class="w">
-</span><span class="w">      </span><span class="c"># If using CockroachDB:</span><span class="w">
-</span><span class="w">      </span>- cockroach<span class="w">
-</span><span class="w">      </span><span class="c"># If using PostgreSQL:</span><span class="w">
-</span><span class="w">      </span><span class="c"># - postgres</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">redis</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># If using CockroachDB:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">cockroach</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># If using PostgreSQL:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># - postgres</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <div class="notification is-info is-light has-text-dark">
@@ -386,18 +391,18 @@ config/
 <p>Under the <code>volumes</code> section, volumes for the files that need to be persisted on the disk are defined. There are stored blob files (such as profile pictures) and certificate files retrieved with ACME (if required). Also, local <code>./config/stack/</code> directory is mounted on the container under <code>/config</code>, so that The Things Stack can find the configuration file at <code>/config/ttn-lw-stack-docker.yml</code>.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">51
+<pre tabindex="0" class="chroma"><code><span class="lnt">51
 </span><span class="lnt">52
 </span><span class="lnt">53
 </span><span class="lnt">54
 </span><span class="lnt">55
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">    </span><span class="k">volumes</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span>- ./blob<span class="p">:</span>/srv/ttn-lorawan/public/blob<span class="w">
-</span><span class="w">      </span>- ./config/stack<span class="p">:</span>/config<span class="p">:</span>ro<span class="w">
-</span><span class="w">      </span><span class="c"># If using Let&#39;s Encrypt:</span><span class="w">
-</span><span class="w">      </span>- ./acme<span class="p">:</span>/var/lib/acme</code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./blob:/srv/ttn-lorawan/public/blob</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./config/stack:/config:ro</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># If using Let&#39;s Encrypt:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./acme:/var/lib/acme</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <div class="notification is-info is-light has-text-dark">
@@ -415,7 +420,7 @@ config/
 <p>The <code>ports</code> section exposes The Things Stack&rsquo;s ports outside the Docker container. Port <code>80</code> and <code>443</code> are mapped to the internal HTTP and HTTPS ports. The other ports have a direct mapping. If you don&rsquo;t need support for gateways and applications that don&rsquo;t use TLS, you can remove ports starting with <code>188</code>:</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">56
+<pre tabindex="0" class="chroma"><code><span class="lnt">56
 </span><span class="lnt">57
 </span><span class="lnt">58
 </span><span class="lnt">59
@@ -444,33 +449,33 @@ config/
 </span><span class="lnt">82
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="w">    </span><span class="k">environment</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">TTN_LW_BLOB_LOCAL_DIRECTORY</span><span class="p">:</span><span class="w"> </span>/srv/ttn-lorawan/public/blob<span class="w">
-</span><span class="w">      </span><span class="k">TTN_LW_REDIS_ADDRESS</span><span class="p">:</span><span class="w"> </span>redis<span class="p">:</span><span class="m">6379</span><span class="w">
-</span><span class="w">      </span><span class="c"># If using CockroachDB:</span><span class="w">
-</span><span class="w">      </span><span class="k">TTN_LW_IS_DATABASE_URI</span><span class="p">:</span><span class="w"> </span>postgres<span class="p">:</span>//root@cockroach<span class="p">:</span><span class="m">26257</span>/ttn_lorawan<span class="p">?</span>sslmode=disable<span class="w">
-</span><span class="w">      </span><span class="c"># # If using PostgreSQL:</span><span class="w">
-</span><span class="w">      </span><span class="c"># TTN_LW_IS_DATABASE_URI: postgres://root:root@postgres:5432/ttn_lorawan?sslmode=disable</span><span class="w">
-</span><span class="w">
-</span><span class="w">    </span><span class="k">ports</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="c"># If deploying on a public server:</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;80:1885&#34;</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;443:8885&#34;</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;1881:1881&#34;</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;8881:8881&#34;</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;1882:1882&#34;</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;8882:8882&#34;</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;1883:1883&#34;</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;8883:8883&#34;</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;1884:1884&#34;</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;8884:8884&#34;</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;1885:1885&#34;</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;8885:8885&#34;</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;1887:1887&#34;</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;8887:8887&#34;</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;1888:1888&#34;</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;8888:8888&#34;</span><span class="w">
-</span><span class="w">      </span>- <span class="s2">&#34;1700:1700/udp&#34;</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">TTN_LW_BLOB_LOCAL_DIRECTORY</span><span class="p">:</span><span class="w"> </span><span class="l">/srv/ttn-lorawan/public/blob</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">TTN_LW_REDIS_ADDRESS</span><span class="p">:</span><span class="w"> </span><span class="l">redis:6379</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># If using CockroachDB:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">TTN_LW_IS_DATABASE_URI</span><span class="p">:</span><span class="w"> </span><span class="l">postgres://root@cockroach:26257/ttn_lorawan?sslmode=disable</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># # If using PostgreSQL:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># TTN_LW_IS_DATABASE_URI: postgres://root:root@postgres:5432/ttn_lorawan?sslmode=disable</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># If deploying on a public server:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;80:1885&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;443:8885&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;1881:1881&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;8881:8881&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;1882:1882&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;8882:8882&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;1883:1883&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;8883:8883&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;1884:1884&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;8884:8884&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;1885:1885&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;8885:8885&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;1887:1887&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;8887:8887&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;1888:1888&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;8888:8888&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;1700:1700/udp&#34;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <h2 id="understanding-the-things-stack-configuration">Understanding The Things Stack Configuration</h2>
@@ -478,7 +483,7 @@ config/
 <p>The example <code>ttn-lw-stack-docker.yml</code> file for The Things Stack Enterprise shown below contains details which help you follow this section. The example <code>ttn-lw-stack-docker.yml</code> file is also available for download in the <a href="https://www.thethingsindustries.com/docs/getting-started/installation/configuration/#example-configuration-files">Example Configuration Files</a> section.</p>
 <details><summary>Example ttn-lw-stack-docker.yml file</summary><div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">  1
+<pre tabindex="0" class="chroma"><code><span class="lnt">  1
 </span><span class="lnt">  2
 </span><span class="lnt">  3
 </span><span class="lnt">  4
@@ -638,164 +643,164 @@ config/
 </span><span class="lnt">158
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="c"># The Things Stack requires a license key</span><span class="w">
-</span><span class="w"></span><span class="k">license</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="c"># License contents may be specified directly</span><span class="w">
-</span><span class="w">  </span><span class="k">key</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
-</span><span class="w">  </span><span class="c"># Or stored in a file</span><span class="w">
-</span><span class="w">  </span><span class="c"># file: &#39;&#39;</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># Identity Server configuration</span><span class="w">
-</span><span class="w"></span><span class="c"># Email configuration for &#34;thethings.example.com&#34;</span><span class="w">
-</span><span class="w"></span><span class="k">is</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">email</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">sender-name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;The Things Stack&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">sender-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;noreply@thethings.example.com&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">network</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;The Things Stack&#39;</span><span class="w">
-</span><span class="w">      </span><span class="k">console-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/console&#39;</span><span class="w">
-</span><span class="w">      </span><span class="k">identity-server-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/oauth&#39;</span><span class="w">
-</span><span class="w">
-</span><span class="w">    </span><span class="c"># If sending email with Sendgrid</span><span class="w">
-</span><span class="w">    </span><span class="c"># provider: sendgrid</span><span class="w">
-</span><span class="w">    </span><span class="c"># sendgrid:</span><span class="w">
-</span><span class="w">    </span><span class="c">#   api-key: &#39;...&#39;              # enter Sendgrid API key</span><span class="w">
-</span><span class="w">
-</span><span class="w">    </span><span class="c"># If sending email with SMTP</span><span class="w">
-</span><span class="w">    </span><span class="c"># provider: smtp</span><span class="w">
-</span><span class="w">    </span><span class="c"># smtp:</span><span class="w">
-</span><span class="w">    </span><span class="c">#   address:  &#39;...&#39;             # enter SMTP server address</span><span class="w">
-</span><span class="w">    </span><span class="c">#   username: &#39;...&#39;             # enter SMTP server username</span><span class="w">
-</span><span class="w">    </span><span class="c">#   password: &#39;...&#39;             # enter SMTP server password</span><span class="w">
-</span><span class="w">
-</span><span class="w">  </span><span class="c"># Web UI configuration for &#34;thethings.example.com&#34;:</span><span class="w">
-</span><span class="w">  </span><span class="k">oauth</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">ui</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">canonical-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/oauth&#39;</span><span class="w">
-</span><span class="w">      </span><span class="k">is</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="k">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
-</span><span class="w">
-</span><span class="w">  </span><span class="c"># If running a multi-tenant environment, configure tenant admin keys</span><span class="w">
-</span><span class="w">  </span><span class="k">tenancy</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">admin-keys</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">                  </span><span class="c"># generate 32 bytes (openssl rand -hex 32)</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># HTTP server configuration</span><span class="w">
-</span><span class="w"></span><span class="k">http</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">cookie</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">block-key</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">                </span><span class="c"># generate 32 bytes (openssl rand -hex 32)</span><span class="w">
-</span><span class="w">    </span><span class="k">hash-key</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">                 </span><span class="c"># generate 64 bytes (openssl rand -hex 64)</span><span class="w">
-</span><span class="w">  </span><span class="k">metrics</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">password</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;metrics&#39;</span><span class="w">               </span><span class="c"># choose a password</span><span class="w">
-</span><span class="w">  </span><span class="k">pprof</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">password</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;pprof&#39;</span><span class="w">                 </span><span class="c"># choose a password</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># If using custom certificates:</span><span class="w">
-</span><span class="w"></span><span class="c">#tls:</span><span class="w">
-</span><span class="w"></span><span class="c">#  source: file</span><span class="w">
-</span><span class="w"></span><span class="c">#  root-ca: /run/secrets/ca.pem</span><span class="w">
-</span><span class="w"></span><span class="c">#  certificate: /run/secrets/cert.pem</span><span class="w">
-</span><span class="w"></span><span class="c">#  key: /run/secrets/key.pem</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># Let&#39;s encrypt for &#34;thethings.example.com&#34;</span><span class="w">
-</span><span class="w"></span><span class="k">tls</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">source</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;acme&#39;</span><span class="w">
-</span><span class="w">  </span><span class="k">acme</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">dir</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;/var/lib/acme&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">email</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;you@thethings.example.com&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">hosts</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;thethings.example.com&#39;</span><span class="p">]</span><span class="w">
-</span><span class="w">    </span><span class="k">default-host</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com&#39;</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># If Gateway Server enabled, defaults for &#34;thethings.example.com&#34;:</span><span class="w">
-</span><span class="w"></span><span class="k">gs</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">mqtt</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">public-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:1882&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">public-tls-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:8882&#39;</span><span class="w">
-</span><span class="w">  </span><span class="k">mqtt-v2</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">public-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:1881&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">public-tls-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:8881&#39;</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># If Gateway Configuration Server enabled, defaults for &#34;thethings.example.com&#34;:</span><span class="w">
-</span><span class="w"></span><span class="k">gcs</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">basic-station</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">default</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">lns-uri</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;wss://thethings.example.com:8887&#39;</span><span class="w">
-</span><span class="w">  </span><span class="k">the-things-gateway</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">default</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">mqtt-server</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;mqtts://thethings.example.com:8881&#39;</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># Web UI configuration for &#34;thethings.example.com&#34;:</span><span class="w">
-</span><span class="w"></span><span class="k">console</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">ui</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">canonical-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/console&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">is</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">gs</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">gcs</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">ns</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">as</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">js</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">qrg</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">edtc</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
-</span><span class="w">
-</span><span class="w">  </span><span class="k">oauth</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">authorize-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/oauth/authorize&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">token-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/oauth/token&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">logout-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/oauth/logout&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">client-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;console&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">client-secret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;console&#39;</span><span class="w">          </span><span class="c"># choose or generate a secret</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># If Application Server enabled, defaults for &#34;thethings.example.com&#34;:</span><span class="w">
-</span><span class="w"></span><span class="k">as</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="c"># Configuration required for the Storage Integration</span><span class="w">
-</span><span class="w">  </span><span class="k">packages</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">storage</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">provider</span><span class="p">:</span><span class="w"> </span>postgres<span class="w">
-</span><span class="w">      </span><span class="k">bulk</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="k">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-</span><span class="w">      </span><span class="k">postgres</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="c"># if using CockroachDB</span><span class="w">
-</span><span class="w">        </span><span class="k">database-uri</span><span class="p">:</span><span class="w"> </span>postgres<span class="p">:</span>//root@cockroach<span class="p">:</span><span class="m">26257</span>/ttn_lorawan<span class="p">?</span>sslmode=disable<span class="w">
-</span><span class="w">        </span><span class="c"># if using PostgreSQL or TimescaleDB</span><span class="w">
-</span><span class="w">        </span><span class="c"># database-uri: postgres://root:root@postgres:5432/ttn_lorawan?sslmode=disable</span><span class="w">
-</span><span class="w">        </span><span class="k">insert-batch-size</span><span class="p">:</span><span class="w"> </span><span class="m">1024</span><span class="w">     </span><span class="c"># batch size for INSERT operations</span><span class="w">
-</span><span class="w">        </span><span class="k">select-batch-size</span><span class="p">:</span><span class="w"> </span><span class="m">1024</span><span class="w">     </span><span class="c"># batch size for SELECT operations</span><span class="w">
-</span><span class="w">  </span><span class="k">mqtt</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">public-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:1883&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">public-tls-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:8883&#39;</span><span class="w">
-</span><span class="w">  </span><span class="k">webhooks</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">downlink</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">public-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:1885/api/v3&#39;</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># If Device Claiming Server enabled, defaults for &#34;thethings.example.com&#34;:</span><span class="w">
-</span><span class="w"></span><span class="k">dcs</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">oauth</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">authorize-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/oauth/authorize&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">token-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/oauth/token&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">logout-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/oauth/logout&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">client-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;device-claiming&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">client-secret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;device-claiming&#39;</span><span class="w">          </span><span class="c"># choose or generate a secret</span><span class="w">
-</span><span class="w">  </span><span class="k">ui</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">canonical-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/claim&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">as</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">dcs</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">is</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">ns</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
-</span><span class="w">
-</span><span class="w"></span><span class="c"># If running a multi-tenant environment, defaults for &#34;thethings.example.com&#34;:</span><span class="w">
-</span><span class="w"></span><span class="k">tenancy</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">base-domains</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com&#39;</span><span class="w">
-</span><span class="w">  </span><span class="k">default-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;default&#39;</span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># The Things Stack requires a license key</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">license</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># License contents may be specified directly</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Or stored in a file</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># file: &#39;&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Identity Server configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Email configuration for &#34;thethings.example.com&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">is</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">email</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">sender-name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;The Things Stack&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">sender-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;noreply@thethings.example.com&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">network</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;The Things Stack&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">console-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/console&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">identity-server-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/oauth&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># If sending email with Sendgrid</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># provider: sendgrid</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># sendgrid:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c">#   api-key: &#39;...&#39;              # enter Sendgrid API key</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># If sending email with SMTP</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># provider: smtp</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># smtp:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c">#   address:  &#39;...&#39;             # enter SMTP server address</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c">#   username: &#39;...&#39;             # enter SMTP server username</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c">#   password: &#39;...&#39;             # enter SMTP server password</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Web UI configuration for &#34;thethings.example.com&#34;:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">oauth</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ui</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">canonical-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/oauth&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">is</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># If running a multi-tenant environment, configure tenant admin keys</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tenancy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">admin-keys</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">                  </span><span class="c"># generate 32 bytes (openssl rand -hex 32)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># HTTP server configuration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">http</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">cookie</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">block-key</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">                </span><span class="c"># generate 32 bytes (openssl rand -hex 32)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">hash-key</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="w">                 </span><span class="c"># generate 64 bytes (openssl rand -hex 64)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">metrics</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;metrics&#39;</span><span class="w">               </span><span class="c"># choose a password</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">pprof</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;pprof&#39;</span><span class="w">                 </span><span class="c"># choose a password</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># If using custom certificates:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#tls:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#  source: file</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#  root-ca: /run/secrets/ca.pem</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#  certificate: /run/secrets/cert.pem</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#  key: /run/secrets/key.pem</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Let&#39;s encrypt for &#34;thethings.example.com&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tls</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;acme&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">acme</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">dir</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;/var/lib/acme&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">email</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;you@thethings.example.com&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;thethings.example.com&#39;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">default-host</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># If Gateway Server enabled, defaults for &#34;thethings.example.com&#34;:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">gs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mqtt</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">public-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:1882&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">public-tls-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:8882&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mqtt-v2</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">public-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:1881&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">public-tls-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:8881&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># If Gateway Configuration Server enabled, defaults for &#34;thethings.example.com&#34;:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">gcs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">basic-station</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">lns-uri</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;wss://thethings.example.com:8887&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">the-things-gateway</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">default</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">mqtt-server</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;mqtts://thethings.example.com:8881&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Web UI configuration for &#34;thethings.example.com&#34;:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">console</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ui</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">canonical-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/console&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">is</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">gs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">gcs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ns</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">as</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">js</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">qrg</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">edtc</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">oauth</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">authorize-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/oauth/authorize&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">token-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/oauth/token&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">logout-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/oauth/logout&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">client-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;console&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">client-secret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;console&#39;</span><span class="w">          </span><span class="c"># choose or generate a secret</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># If Application Server enabled, defaults for &#34;thethings.example.com&#34;:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">as</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="c"># Configuration required for the Storage Integration</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">packages</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">storage</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l">postgres</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">bulk</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">postgres</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c"># if using CockroachDB</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">database-uri</span><span class="p">:</span><span class="w"> </span><span class="l">postgres://root@cockroach:26257/ttn_lorawan?sslmode=disable</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c"># if using PostgreSQL or TimescaleDB</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c"># database-uri: postgres://root:root@postgres:5432/ttn_lorawan?sslmode=disable</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">insert-batch-size</span><span class="p">:</span><span class="w"> </span><span class="m">1024</span><span class="w">     </span><span class="c"># batch size for INSERT operations</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">select-batch-size</span><span class="p">:</span><span class="w"> </span><span class="m">1024</span><span class="w">     </span><span class="c"># batch size for SELECT operations</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">mqtt</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">public-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:1883&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">public-tls-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:8883&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">webhooks</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">downlink</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">public-address</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com:1885/api/v3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># If Device Claiming Server enabled, defaults for &#34;thethings.example.com&#34;:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">dcs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">oauth</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">authorize-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/oauth/authorize&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">token-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/oauth/token&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">logout-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/oauth/logout&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">client-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;device-claiming&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">client-secret</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;device-claiming&#39;</span><span class="w">          </span><span class="c"># choose or generate a secret</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ui</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">canonical-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/claim&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">as</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">dcs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">is</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ns</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># If running a multi-tenant environment, defaults for &#34;thethings.example.com&#34;:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tenancy</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">base-domains</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">default-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;default&#39;</span></span></span></code></pre></td></tr></table>
 </div>
 </div></details>
 <h3 id="license">License</h3>
@@ -831,14 +836,14 @@ host, and also to use it as the default host.</p>
 <p>Make sure that you use the correct <code>tls</code> configuration depending on whether you are using Let&rsquo;s Encrypt or your own certificate files.</p>
 <p>If you are using your own certificate files, make sure to uncomment the lines that define <code>source</code> type, <code>root-ca</code>, <code>certificate</code> and <code>key</code>. The paths assigned to these do not need to be altered, because they point to the location of these files inside the Docker container, and not on your machine.</p>
 <p>If you are using Let&rsquo;s Encrypt in a multi-tenant The Things Stack environment, all tenant addresses have to be specified in the <code>ttn-lw-stack-docker.yml</code> file using <code>tls.acme.hosts</code> configuration option. For example, for The Things Stack deployment with two tenants, TLS configuration would look like this:</p>
-<div class="highlight"><pre class="chroma"><code class="language-yml" data-lang="yml"><span class="k">tls</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">source</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;acme&#39;</span><span class="w">
-</span><span class="w">  </span><span class="k">acme</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">dir</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;/var/lib/acme&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">email</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;you@thethings.example.com&#39;</span><span class="w">
-</span><span class="w">    </span><span class="k">hosts</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;&lt;tenant1&gt;.thethings.example.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&lt;tenant2&gt;.thethings.example.com&#39;</span><span class="p">]</span><span class="w">
-</span><span class="w">    </span><span class="k">default-host</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com&#39;</span><span class="w">
-</span></code></pre></div><h3 id="http">HTTP</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">tls</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;acme&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">acme</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">dir</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;/var/lib/acme&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">email</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;you@thethings.example.com&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;&lt;tenant1&gt;.thethings.example.com&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;&lt;tenant2&gt;.thethings.example.com&#39;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">default-host</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example.com&#39;</span><span class="w">
+</span></span></span></code></pre></div><h3 id="http">HTTP</h3>
 <p>In the <code>http</code> section, HTTP server keys for encrypting and verifying cookies are configured, as well
 as passwords for endpoints that you may want to keep for the internal use.</p>
 <h3 id="email">Email</h3>
@@ -906,29 +911,29 @@ by the console client. These tell The Things Stack where all its components are 
 <p>By default, The Things Stack listens on ports 1885 and 8885 inside Docker. To make <code>localhost</code> work both on your local machine and within the Docker container, append the port to <code>localhost</code> and make sure port forwarding is enabled in your <code>docker-compose.yml</code> for that port.</p>
 <p>You must also remove ports 80 and 443 from your The Things Stack Docker configuration.</p>
 <p>For example,</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">is</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">oauth</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">ui</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">canonical-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/oauth&#39;</span><span class="w">
-</span><span class="w">      </span><span class="k">is</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="k">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
-</span></code></pre></div><p>becomes</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">is</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">oauth</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">ui</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">canonical-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://localhost:8885/oauth&#39;</span><span class="w">
-</span><span class="w">      </span><span class="k">is</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span><span class="k">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://localhost:8885/api/v3&#39;</span><span class="w">
-</span></code></pre></div><p>and in <code>docker-compose.yml</code>, add the following port forwarding configuration (if it does not already exist), while removing ports 80 and 443:</p>
-<div class="highlight"><pre class="chroma"><code class="language-yaml" data-lang="yaml"><span class="k">services</span><span class="p">:</span><span class="w">
-</span><span class="w">  </span><span class="k">stack</span><span class="p">:</span><span class="w">
-</span><span class="w">    </span><span class="k">ports</span><span class="p">:</span><span class="w">
-</span><span class="w">      </span><span class="k">stack</span><span class="p">:</span><span class="w">
-</span><span class="w">        </span>- <span class="s2">&#34;1885:1885&#34;</span><span class="w">
-</span><span class="w">        </span>- <span class="s2">&#34;8885:8885&#34;</span><span class="w">
-</span><span class="w">        </span><span class="c"># - &#34;80:80&#34; # Do not forward port 80</span><span class="w">
-</span><span class="w">        </span><span class="c"># - &#34;443:443&#34; # Do not forward port 443</span><span class="w">
-</span></code></pre></div><p>This will result in visits from both outside and inside the Docker container being received at the correct port by The Things Stack.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">is</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">oauth</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ui</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">canonical-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/oauth&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">is</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://thethings.example.com/api/v3&#39;</span><span class="w">
+</span></span></span></code></pre></div><p>becomes</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">is</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">oauth</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ui</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">canonical-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://localhost:8885/oauth&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">is</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://localhost:8885/api/v3&#39;</span><span class="w">
+</span></span></span></code></pre></div><p>and in <code>docker-compose.yml</code>, add the following port forwarding configuration (if it does not already exist), while removing ports 80 and 443:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">services</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">stack</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">stack</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="s2">&#34;1885:1885&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span>- <span class="s2">&#34;8885:8885&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c"># - &#34;80:80&#34; # Do not forward port 80</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="c"># - &#34;443:443&#34; # Do not forward port 443</span><span class="w">
+</span></span></span></code></pre></div><p>This will result in visits from both outside and inside the Docker container being received at the correct port by The Things Stack.</p>
 
         </div>
         <div class="is-clearfix">
@@ -1021,7 +1026,7 @@ by the console client. These tell The Things Stack where all its components are 
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

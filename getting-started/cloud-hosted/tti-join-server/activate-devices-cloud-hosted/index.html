@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Activating Devices on Cloud | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/tti-join-server/activate-devices-cloud-hosted/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Activating Devices on Cloud">
@@ -139,6 +139,11 @@
   <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/tti-join-server/activate-devices-cloud-hosted/" class="is-active">Activating Devices on Cloud</a>
     
+    
+
+
+
+    
   </li>
 
 </ul>
@@ -250,8 +255,8 @@
 </ol>
 <h2 id="login-with-cli">Login with CLI</h2>
 <p>Use the command-line interface (CLI) configuration file with Cloud cluster.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli login
-</code></pre></div><h2 id="register">Register</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli login
+</span></span></code></pre></div><h2 id="register">Register</h2>
 <p>When registering the devices on a Network Server and Application Server, you need the following information:</p>
 <ol>
 <li>The NetID of The Things Network: <code>000013</code></li>
@@ -260,39 +265,39 @@
 <li>Frequency plan (i.e. <code>EU_863_870</code> or <code>US_902_928</code>)</li>
 </ol>
 <p>List the supported LoRaWAN versions, regional parameters versions, frequency plans and other options with:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices list-frequency-plans
-ttn-lw-cli end-devices <span class="nb">set</span> --help
-</code></pre></div><p>To register the device in application <code>test-app</code> with device ID <code>eui-0004a310001ff9e0</code>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices <span class="nb">set</span> test-app eui-0004a310001ff9e0 <span class="se">\
-</span><span class="se"></span>  --net-id <span class="m">000013</span> <span class="se">\
-</span><span class="se"></span>  --lorawan-version 1.0.2 <span class="se">\
-</span><span class="se"></span>  --lorawan-phy-version 1.0.2-b <span class="se">\
-</span><span class="se"></span>  --frequency-plan-id EU_863_870 <span class="se">\
-</span><span class="se"></span>  --supports-join <span class="se">\
-</span><span class="se"></span>  --unset version_ids <span class="se">\
-</span><span class="se"></span>  --touch
-</code></pre></div><details>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices list-frequency-plans
+</span></span><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> --help
+</span></span></code></pre></div><p>To register the device in application <code>test-app</code> with device ID <code>eui-0004a310001ff9e0</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> test-app eui-0004a310001ff9e0 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --net-id <span class="m">000013</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --lorawan-version 1.0.2 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --lorawan-phy-version 1.0.2-b <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --frequency-plan-id EU_863_870 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --supports-join <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --unset version_ids <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --touch
+</span></span></code></pre></div><details>
 <summary>Show output</summary>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;eui-0004a310001ff9e0&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;test-app&#34;</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0004A310001FF9E0&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;70B3D57ED0000000&#34;</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-06T17:19:47.330Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-09T13:01:30.207753911Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;network_server_address&#34;</span><span class="p">:</span> <span class="s2">&#34;tti.eu1.cloud.thethings.industries&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;join_server_address&#34;</span><span class="p">:</span> <span class="s2">&#34;tti.join.cloud.thethings.industries&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;lorawan_version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.2&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;lorawan_phy_version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.2-b&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;frequency_plan_id&#34;</span><span class="p">:</span> <span class="s2">&#34;EU_863_870&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;supports_join&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nt">&#34;net_id&#34;</span><span class="p">:</span> <span class="s2">&#34;000013&#34;</span>
-<span class="p">}</span>
-</code></pre></div></details>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;eui-0004a310001ff9e0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;test-app&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0004A310001FF9E0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;70B3D57ED0000000&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-06T17:19:47.330Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-09T13:01:30.207753911Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;network_server_address&#34;</span><span class="p">:</span> <span class="s2">&#34;tti.eu1.cloud.thethings.industries&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;join_server_address&#34;</span><span class="p">:</span> <span class="s2">&#34;tti.join.cloud.thethings.industries&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;lorawan_version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;lorawan_phy_version&#34;</span><span class="p">:</span> <span class="s2">&#34;1.0.2-b&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;frequency_plan_id&#34;</span><span class="p">:</span> <span class="s2">&#34;EU_863_870&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;supports_join&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;net_id&#34;</span><span class="p">:</span> <span class="s2">&#34;000013&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div></details>
 <p>You can now activate the devices on The Things Industries Cloud.</p>
         </div>
         <div class="is-clearfix">
@@ -378,7 +383,7 @@ ttn-lw-cli end-devices <span class="nb">set</span> --help
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

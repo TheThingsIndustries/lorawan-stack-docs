@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Troubleshooting Installation | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/installation/troubleshooting/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Troubleshooting Installation">
@@ -127,6 +127,11 @@
   <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/installation/troubleshooting/" class="is-active">Troubleshooting Installation</a>
     
+    
+
+
+
+    
   </li>
 
   <li>
@@ -214,28 +219,28 @@
 <p>Ensure you have a DNS record pointing to your server&rsquo;s public IP address. See your domain registrar&rsquo;s help section for instructions, or <a href="https://www.name.com/support/articles/205188538-Pointing-your-domain-to-hosting-with-A-records">name.com&rsquo;s DNS guide</a> for general information about pointing records to your IP address.</p>
 <h2 id="forbidden">Forbidden</h2>
 <p>If you see an error reading:</p>
-<pre><code>Invalid redirect URI
+<pre tabindex="0"><code>Invalid redirect URI
 </code></pre><p>check that you entered the correct server address when <a href="https://www.thethingsindustries.com/docs/getting-started/installation/running-the-stack/#initialization">registering the Console as an OAuth client</a>.</p>
 <p>If you encounter the following error while trying to long into the Console:</p>
-<pre><code>The client is not authorized to request a token using this method
+<pre tabindex="0"><code>The client is not authorized to request a token using this method
 </code></pre><p>make sure you used the same <code>client-secret</code> in your The Things Stack configuration (<code>ttn-lw-stack-docker.yml</code> file) and for authorizing the Console client in <a href="/docs/getting-started/installation/running-the-stack/">Running The Things Stack</a>.</p>
 <h2 id="could-not-initialize-server">Could not initialize Server</h2>
 <p>The cause of this error lies in misconfiguration of The Things Stack server components. A few examples related to this error are listed below.</p>
 <p>When an invalid tenant admin key is configured, the initialization of the Identity Server will fail with the following output:</p>
-<pre><code>stack_1      | INFO Setting up Identity Server
+<pre tabindex="0"><code>stack_1      | INFO Setting up Identity Server
 stack_1      | error:cmd/internal/shared:initialize_identity_server (could not initialize Identity Server)
 stack_1      |     correlation_id=c98b9172c25c45269ac674aad04710f1
 stack_1      | --- error:pkg/identityserver:tenant_admin_key (invalid tenant admin key)
 stack_1      |     correlation_id=c3ad9a81631c40f88ec35eb1b3234f54
-stack_1      | --- encoding/hex: invalid byte: U+00E2 '?'
+stack_1      | --- encoding/hex: invalid byte: U+00E2 &#39;?&#39;
 </code></pre><p>When a wrong database URI is configured, the initialization of the Application Server will fail:</p>
-<pre><code>stack_1      | INFO	Setting up Application Server
+<pre tabindex="0"><code>stack_1      | INFO	Setting up Application Server
 stack_1      | error:cmd/internal/shared:initialize_application_server (could not initialize Application Server)
 stack_1      |     correlation_id=4804d40c2b9143209f95925d47c6881e
 stack_1      | --- error:pkg/errors:net_operation (dial tcp 127.0.0.1:5432: connect: connection refused)
 stack_1      |     message=dial tcp 127.0.0.1:5432: connect: connection refused
 </code></pre><p>When the Network Server is configured to use a DevAddr block that is not included in the license, its initialization will fail:</p>
-<pre><code>stack_1      | INFO Setting up Network Server
+<pre tabindex="0"><code>stack_1      | INFO Setting up Network Server
 stack_1      | error:cmd/internal/shared:initialize_network_server (could not initialize Network Server)
 stack_1      |     correlation_id=47a8f405f56f45918d1277aeee8faaa7
 stack_1      | --- error:pkg/license:dev_addr_prefix_not_licensed (DevAddr prefix 00000000/7 is not included in this license)
@@ -243,7 +248,7 @@ stack_1      |     prefix=00000000/7
 stack_1      |     licensed=[XXXXXXXX/24] (redacted)
 </code></pre><h2 id="error-while-parsing-the-things-stack-configuration-file">Error while parsing The Things Stack configuration file</h2>
 <p>One of the issues that can cause parsing errors is using inappropriate indentation in The Things Stack configuration file, so you might end up seeing something like:</p>
-<pre><code>stack_1      | While parsing config: yaml: line 34: did not find expected key
+<pre tabindex="0"><code>stack_1      | While parsing config: yaml: line 34: did not find expected key
 </code></pre><p>In most cases, the error will point to an exact line of your configuration file where the issue occured. To fix this, apply the correct indentation. Use <code>ttn-lw-stack config --yml</code> to see the default The Things Stack configuration with correct indentation in your terminal.</p>
 <h2 id="missing-tenant-id">Missing tenant ID</h2>
 <p>If you are facing the <code>missing_tenant_id</code> error, that means you are trying to access the Console in a multi-tenant The Things Stack environment on an address that doesn&rsquo;t contain any tenant ID, e.g. <code>https://thethings.example.com</code>. To access the Console of a particular tenant in a multi-tenant environment, you have to specify a tenant ID as a URL subdomain, e.g. <code>https://&lt;tenant-id&gt;.thethings.network.com</code>.</p>
@@ -348,7 +353,7 @@ stack_1      |     licensed=[XXXXXXXX/24] (redacted)
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

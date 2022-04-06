@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>thethings.iO | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/thethingsio/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="thethings.iO">
@@ -293,41 +293,37 @@
 <p>Log in to your thethings.iO user account.</p>
 <p>On the left hand menu, navigate to <strong>Things</strong>.</p>
 <p>Click the <strong>Create new IoT product</strong> button. Give it a <strong>Name</strong>, choose <strong>LoRa</strong> as its format and finish with the <strong>Create</strong> button.</p>
-<figure>
-    <img src="create-new-iot-product.png"
-         alt="Creating a new IoT product"/> 
+<figure><img src="create-new-iot-product.png"
+         alt="Creating a new IoT product"/>
 </figure>
 
 <p>To parse the data coming from The Things Stack, we use thething.iO&rsquo;s <a href="https://developers.thethings.io/docs/cloud-code-functions">Cloud Code Function</a>.</p>
 <p>On the left hand menu, navigate to <strong>Cloud Code</strong>. Since you have created a new LoRa product, a <code>lora_parser</code> Cloud Code Function is automatically generated for you - you can find it under <strong>Functions</strong>.</p>
-<figure>
-    <img src="cloud-code-function.png"
-         alt="Auto-generated Cloud Code Function"/> 
+<figure><img src="cloud-code-function.png"
+         alt="Auto-generated Cloud Code Function"/>
 </figure>
 
 <p>To parse the data correctly, you need to modify this function according to the payload you are sending from The Things Stack. Checking <a href="https://www.thethingsindustries.com/docs/reference/data-formats/">Data Formats</a> in the the official The Things Stack documentation might be useful.</p>
 <p>To modify the <code>lora_parser</code> function code, click the <strong>Edit</strong> button on its right.</p>
 <p>In the <strong>Code</strong> window, paste the following code, adjust it to your uplink data and click <strong>Save</strong>:</p>
-<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="kd">function</span> <span class="nx">main</span><span class="p">(</span><span class="nx">params</span><span class="p">,</span> <span class="nx">callback</span><span class="p">){</span>
-  <span class="kd">var</span> <span class="nx">payload</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">uplink_message</span><span class="p">.</span><span class="nx">decoded_payload</span><span class="p">;</span>
-  <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">{</span>
-      <span class="s2">&#34;key&#34;</span><span class="o">:</span> <span class="s2">&#34;battery&#34;</span><span class="p">,</span>
-      <span class="s2">&#34;value&#34;</span><span class="o">:</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">battery</span>
-    <span class="p">}</span>
-  <span class="p">]</span>
-  <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span> 
-<span class="p">}</span>
-</code></pre></div><figure>
-    <img src="modify-cloud-code-function.png"
-         alt="Modifying the Cloud Code Function"/> 
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">main</span><span class="p">(</span><span class="nx">params</span><span class="p">,</span> <span class="nx">callback</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">payload</span> <span class="o">=</span> <span class="nx">params</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">uplink_message</span><span class="p">.</span><span class="nx">decoded_payload</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">result</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;key&#34;</span><span class="o">:</span> <span class="s2">&#34;battery&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;value&#34;</span><span class="o">:</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">battery</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">callback</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span> <span class="nx">result</span><span class="p">);</span> 
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><figure><img src="modify-cloud-code-function.png"
+         alt="Modifying the Cloud Code Function"/>
 </figure>
 
 <p>Once you have created the product and the parser function, thethings.iO setup is ready. The next step will be creating the Webhook integration on The Things Stack.</p>
 <p>To complete the Webhook integration, you will need some information about the product you created in the previous steps. You can find the <strong>Product ID</strong> and its <strong>Hash</strong> in the <strong>Details</strong> window of the created product.</p>
-<figure>
-    <img src="callback-url.png"
-         alt="Callback URL"/> 
+<figure><img src="callback-url.png"
+         alt="Callback URL"/>
 </figure>
 
 <p>At this point, you can see that the API has not been called yet. Also, if you scroll down and check the <strong>Things</strong> section, you will see that your product does not have any things activated yet. After we complete the integration, a thing will be activated within your product, you will see the API calls and you will be able to visualize the incoming data!</p>
@@ -336,9 +332,8 @@
 <p>On The Things Stack, navigate to <strong>Integrations → Webhooks</strong> and choose <strong>thethings.iO</strong> Webhook template.</p>
 <p>Name your integration by filling in the <strong>Webhook ID</strong> field.</p>
 <p>Paste the <strong>Product ID</strong> and <strong>Hash</strong> values from thethings.iO into the equally named fields of the Webhook template.</p>
-<figure>
-    <img src="thethingsio-webhook-integration.png"
-         alt="Creating the Webhook integration"/> 
+<figure><img src="thethingsio-webhook-integration.png"
+         alt="Creating the Webhook integration"/>
 </figure>
 
 <p>Hit the <strong>Create thethings.io webhook</strong> button to finish.</p>
@@ -348,15 +343,13 @@
 <p>Go back to thethings.iO and navigate to your product&rsquo;s details page.</p>
 <p>In the <strong>API calls</strong> and the <strong>Things sending data now</strong> windows, you will see the incoming API calls.</p>
 <p>If you scroll down, on the <strong>Things</strong> tab, you will see that now you have one activated thing! Click on its <strong>Details</strong> button on the right.</p>
-<figure>
-    <img src="api-calls.png"
-         alt="The incoming API calls"/> 
+<figure><img src="api-calls.png"
+         alt="The incoming API calls"/>
 </figure>
 
 <p>In the <strong>Thing Details</strong> section, scroll down to see the incoming data. Switch between marked buttons to see the data in numeric format, or as a real-time graph.</p>
-<figure>
-    <img src="data-chart.png"
-         alt="Incoming data visualization"/> 
+<figure><img src="data-chart.png"
+         alt="Incoming data visualization"/>
 </figure>
         </div>
         
@@ -447,7 +440,7 @@
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };

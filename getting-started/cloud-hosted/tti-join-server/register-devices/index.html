@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.70.0" />
+  <meta name="generator" content="Hugo 0.96.0" />
   <title>Register Devices | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/tti-join-server/register-devices/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.cfe865954edfe434e98142c39643957012b2f6f55c7a22b86ac263279cadc889.css" integrity="sha256-z&#43;hllU7f5DTpgULDlkOVcBKy9vVceiK4asJjJ5ytyIk=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Register Devices">
@@ -134,6 +134,11 @@
   <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/tti-join-server/register-devices/" class="is-active">Register Devices</a>
     
+    
+
+
+
+    
   </li>
 
   <li>
@@ -251,75 +256,73 @@
 <p>Learn more about <a href="https://standards.ieee.org/products-services/regauth/index.html">obtaining a IEEE MAC Address Block</a> for JoinEUI/AppEUI and DevEUIs.</p>
 <h2 id="login-with-cli">Login with CLI</h2>
 <p>Use the command-line interface (CLI) configuration file with Join Server only.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli login
-</code></pre></div><h2 id="register">Register</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli login
+</span></span></code></pre></div><h2 id="register">Register</h2>
 <p>You can register devices that support LoRaWAN 1.0.x and 1.1.x activation. The actual LoRaWAN version of the session depends on the end device and the LoRaWAN network capabilities and configuration.</p>
 <p>It is recommended to provision the LoRaWAN 1.1.x NwkKey for future compliance. This allows the device for joining as LoRaWAN 1.0 as well, only using the AppKey.</p>
 <h3 id="lorawan-10x">LoRaWAN 1.0.x</h3>
 <p>To register a LoRaWAN 1.0.x device in application <code>test-app</code>, device ID <code>test-device</code>, AppEUI <code>70B3D57ED0000000</code> and DevEUI <code>0004A310001FF9E0</code> and an AppKey:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices create test-app test-device <span class="se">\
-</span><span class="se"></span>  --app-eui 70B3D57ED0000000 <span class="se">\
-</span><span class="se"></span>  --dev-eui 0004A310001FF9E0 <span class="se">\
-</span><span class="se"></span>  --root-keys.app-key.key D3FD8EEED7E8880025CC63D5E8E1D7FB
-</code></pre></div><details>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices create test-app test-device <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --app-eui 70B3D57ED0000000 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --dev-eui 0004A310001FF9E0 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --root-keys.app-key.key D3FD8EEED7E8880025CC63D5E8E1D7FB
+</span></span></code></pre></div><details>
 <summary>Show output</summary>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;test-device&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;test-app&#34;</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0004A310001FF9E0&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;70B3D57ED0000000&#34;</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-11T16:06:40.595Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-11T16:06:41.819240805Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;attributes&#34;</span><span class="p">:</span> <span class="p">{</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;join_server_address&#34;</span><span class="p">:</span> <span class="s2">&#34;tti.join.cloud.thethings.industries&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;root_keys&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;app_key&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;key&#34;</span><span class="p">:</span> <span class="s2">&#34;D3FD8EEED7E8880025CC63D5E8E1D7FB&#34;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-</code></pre></div></details>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;test-device&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;test-app&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0004A310001FF9E0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;70B3D57ED0000000&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-11T16:06:40.595Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-11T16:06:41.819240805Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;attributes&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;join_server_address&#34;</span><span class="p">:</span> <span class="s2">&#34;tti.join.cloud.thethings.industries&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;root_keys&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;app_key&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;key&#34;</span><span class="p">:</span> <span class="s2">&#34;D3FD8EEED7E8880025CC63D5E8E1D7FB&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div></details>
 <h3 id="lorawan-11x">LoRaWAN 1.1.x</h3>
 <p>To register a LoRaWAN 1.1.x device in application <code>test-app</code>, device ID <code>test-device</code>, JoinEUI <code>70B3D57ED0000000</code> and DevEUI <code>0004A310001FF9E0</code> and an AppKey:</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">ttn-lw-cli end-devices create test-app test-device <span class="se">\
-</span><span class="se"></span>  --join-eui 70B3D57ED0000000 <span class="se">\
-</span><span class="se"></span>  --dev-eui 0004A310001FF9E0 <span class="se">\
-</span><span class="se"></span>  --root-keys.app-key.key D3FD8EEED7E8880025CC63D5E8E1D7FB <span class="se">\
-</span><span class="se"></span>  --root-keys.nwk-key.key 4EAF77DA839DEE8F5003ECC4FBED8135
-</code></pre></div><details>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices create test-app test-device <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --join-eui 70B3D57ED0000000 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --dev-eui 0004A310001FF9E0 <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --root-keys.app-key.key D3FD8EEED7E8880025CC63D5E8E1D7FB <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --root-keys.nwk-key.key 4EAF77DA839DEE8F5003ECC4FBED8135
+</span></span></code></pre></div><details>
 <summary>Show output</summary>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="p">{</span>
-  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;test-device&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;test-app&#34;</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0004A310001FF9E0&#34;</span><span class="p">,</span>
-    <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;70B3D57ED0000000&#34;</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-11T16:10:20.092Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-11T16:10:20.250739580Z&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;attributes&#34;</span><span class="p">:</span> <span class="p">{</span>
-  <span class="p">},</span>
-  <span class="nt">&#34;join_server_address&#34;</span><span class="p">:</span> <span class="s2">&#34;tti.join.cloud.thethings.industries&#34;</span><span class="p">,</span>
-  <span class="nt">&#34;supports_join&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-  <span class="nt">&#34;root_keys&#34;</span><span class="p">:</span> <span class="p">{</span>
-    <span class="nt">&#34;app_key&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;key&#34;</span><span class="p">:</span> <span class="s2">&#34;D3FD8EEED7E8880025CC63D5E8E1D7FB&#34;</span>
-    <span class="p">},</span>
-    <span class="nt">&#34;nwk_key&#34;</span><span class="p">:</span> <span class="p">{</span>
-      <span class="nt">&#34;key&#34;</span><span class="p">:</span> <span class="s2">&#34;4EAF77DA839DEE8F5003ECC4FBED8135&#34;</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-
-</code></pre></div></details>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;test-device&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;test-app&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0004A310001FF9E0&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;70B3D57ED0000000&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-11T16:10:20.092Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2019-12-11T16:10:20.250739580Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;attributes&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;join_server_address&#34;</span><span class="p">:</span> <span class="s2">&#34;tti.join.cloud.thethings.industries&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;supports_join&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;root_keys&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;app_key&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;key&#34;</span><span class="p">:</span> <span class="s2">&#34;D3FD8EEED7E8880025CC63D5E8E1D7FB&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;nwk_key&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;key&#34;</span><span class="p">:</span> <span class="s2">&#34;4EAF77DA839DEE8F5003ECC4FBED8135&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div></details>
 <h3 id="advanced-settings">Advanced Settings</h3>
 <p>As part of the end device <code>create</code> and <code>update</code> CLI commands, you can specify advanced settings.</p>
 <p>On create, the <code>--with-root-keys</code> flag allows for generating root keys randomly.</p>
@@ -421,7 +424,7 @@
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.79500656c3860a54b3b38e5f5770a5130bc57306ebb67ca9b057e494f6f4b454.js" integrity="sha256-eVAGVsOGClSzs45fV3ClEwvFcwbrtnypsFfklPb0tFQ=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };
