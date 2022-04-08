@@ -61,7 +61,7 @@ This template allows the user to customize the deployment. The following is a li
 |---|---|---|
 |EC2 Instance Name|Name of the EC2 instance.|`the-things-enterprise-stack`|
 |Domain|Domain name. You should be able to configure DNS for the domain. TLS certificates from Let's Encrypt will automatically be requested.|-|
-|Network Title*|The title of your deployment.|`The Things Enterprise Stack for LoRaWAN`|
+|Network Title*|The title of your deployment.|`The Things Stack Enterprise for LoRaWAN`|
 |CIDR block|CIDR block used by the VPC.|10.0.0.0/16|
 
 > \* Optional field

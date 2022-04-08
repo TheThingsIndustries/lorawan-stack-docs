@@ -15,7 +15,7 @@ We recommend using [Change Sets](https://docs.aws.amazon.com/AWSCloudFormation/l
 On the AWS Console, open the **CloudFormation** service, navigate to the **Change sets** tab and select **Create change set**. There are two choices that can be made here:
 
 - Use current template: Choose this option to update input parameters on an existing template.
-- Replace current template: Choose this option to use a new template on the existing deployment. This option should be used to apply new versions of The Things Enterprise Stack that are delivered as new version of the CloudFormation template.
+- Replace current template: Choose this option to use a new template on the existing deployment. This option should be used to apply new versions of {{% tts %}} that are delivered as new version of the CloudFormation template.
 
 Once the necessary options are updated, select the **Create Change Set** option. This will create a change set that describes the resources that will be updated by this change and if any of these resources need to be replaced. 
 
