@@ -5,7 +5,7 @@ weight: 2
 aliases: "/guides/aws/ami/after-deploy"
 ---
 
-This section provides the information necessary to get started with The Things Enterprise Stack after it is deployed via [AWS Marketplace](https://aws.amazon.com/marketplace/pp/The-Things-Industries-The-Things-Enterprise-Stack/B081HZKDJ4) using AWS CloudFormation.
+This section provides the information necessary to get started with {{% tts %}} after it is deployed via [AWS Marketplace](https://aws.amazon.com/marketplace/pp/The-Things-Industries-The-Things-Enterprise-Stack/B081HZKDJ4) using AWS CloudFormation.
 
 <!--more-->
 
@@ -40,21 +40,21 @@ Once the domain has been propagated, the DNS Lookup will show that your Domain (
 
 ### SSL Certificates
 
-As a security measure, plaintext access to the Console/API is disabled. In order to serve requests securely, The Things Enterprise Stack has built-in support to automatically request, serve and renew SSL certificates.
+As a security measure, plaintext access to the Console/API is disabled. In order to serve requests securely, {{% tts %}} has built-in support to automatically request, serve and renew SSL certificates.
 
 Apart from the DNS mapping above, no additional steps are necessary for this.
 
 ## Getting Started using the Console
 
-Please check the [Console]({{< ref "/getting-started/console" >}}) guide to get quickly started with The Things Enterprise Stack Console.
+Please check the [Console]({{< ref "/getting-started/console" >}}) guide to get quickly started with {{% tts %}} Console.
 
 ## Getting Started using the Command Line Interface (CLI)
 
-Please check the [CLI]({{< ref "/getting-started/cli" >}}) guide to get quickly started with The Things Enterprise Stack CLI.
+Please check the [CLI]({{< ref "/getting-started/cli" >}}) guide to get quickly started with {{% tts %}} CLI.
 
 ## SSH Access
 
-In most cases, you will interact with The Things Enterprise Stack only via the Console or the CLI. However, in case there is a need to directly access the EC2 instance, there is an option to do so via SSH.
+In most cases, you will interact with {{% tts %}} only via the Console or the CLI. However, in case there is a need to directly access the EC2 instance, there is an option to do so via SSH.
 
 SSH access is possible only via the IP addresses set using the **Restrict SSH Access to IP Range** parameter during deployment. Also, the SSH client needs access to the private key corresponding to the public key that was chosen in the **SSH Key** parameter during deployment. The SSH username is `ec2-user`.
 
@@ -76,14 +76,14 @@ This directory is structured as follows:
 ├── acme                        # contains SSL certificates and related files
 ├── bootstrap                   # contains logs generated during deployment and restarts
 └── lorawan-stack
-    ├── config.yml              # The Things Enterprise Stack configuration
+    ├── config.yml              # The Things Stack Enterprise configuration
     ├── environment             # additional environment variables
     ├── lorawan-frequency-plans # contains a local copy of the LoRaWAN Frequency Plans Repository
     ├── public                  # contains the static assets
-    └── tti-lw-stack            # The Things Enterprise Stack binary
+    └── tti-lw-stack            # The Things Stack Enterprise binary
 ```
 
-The Things Enterprise Stack binary is run as a `systemd` service. In order to check the logs, run the following:
+{{% tts %}} binary is run as a `systemd` service. In order to check the logs, run the following:
 
 ```bash
 sudo journalctl -f -u lorawan-stack.service
@@ -103,6 +103,6 @@ Please check the [Adding Devices]({{< relref "devices/adding-devices" >}}) guide
 
 ## AWS IoT
 
-The Things Enterprise Stack supports publishing of uplink messages directly to the [AWS IoT suite](https://aws.amazon.com/iot/). In order for this to work, the **AWS IoT Telemetry** option in the CloudFormation template must be set to **true** during the deployment phase.
+{{% tts %}} supports publishing of uplink messages directly to the [AWS IoT suite](https://aws.amazon.com/iot/). In order for this to work, the **AWS IoT Telemetry** option in the CloudFormation template must be set to **true** during the deployment phase.
 
 Please check the guide on [AWS IoT]({{< relref "integrations/cloud-integrations/aws-iot" >}}) guide for more information.

@@ -17,8 +17,8 @@ The provided Prometheus image already comes with a number of recording and alert
 For all ECS services that form your {{% tts %}} deployment, the following alerts are defined:
 
 - `NoIdentityServers` (The cluster does not have any Identity Server instances). This means that there are no ECS tasks for the Identity Server component.
-- `SomeIdentityServersDown` (Some Identity Server instances of The Things Enterprise Stack are down). This means that some of the Identity Server instances are not responding. In many cases the deployment will still be online, as requests are routed to other instances.
-- `AllIdentityServersDown` (All Identity Server instances of The Things Enterprise Stack are down). This means that none of the Identity Server instances is responding.
+- `SomeIdentityServersDown` (Some Identity Server instances of {{% tts %}} are down). This means that some of the Identity Server instances are not responding. In many cases the deployment will still be online, as requests are routed to other instances.
+- `AllIdentityServersDown` (All Identity Server instances of {{% tts %}} are down). This means that none of the Identity Server instances is responding.
 
 Similar alerts are defined for the Gateway Server, Network Server, Application Server, Join Server, etc.
 
@@ -28,15 +28,15 @@ For the deployment as a whole, the following alerts are defined:
 - `UpcomingCertificateExpiry` (A TLS certificate expires in less than 14 days).
 - `CertificateExpired` (A TLS certificate has expired).
 - `IncreasedLatency` (An instance is experiencing increased latency).
-- `UpcomingLicenseExpiry` (The Things Enterprise Stack license expires in less than 14 days).
-- `LicenseExpired` (The Things Enterprise Stack license expired).
+- `UpcomingLicenseExpiry` ({{% tts %}} license expires in less than 14 days).
+- `LicenseExpired` ({{% tts %}} license expired).
 
 For several components there are alerts that fire when traffic patterns deviate from "usual" traffic:
 
-- `GatewayServerReceivedUplinkTrafficDrop` (The Gateway Server of The Things Enterprise Stack received less uplink traffic than usual). This alert includes the protocol (UDP, MQTT, WS), so make sure to look at that when this alert fires.
-- `GatewayServerForwardedUplinkTrafficDrop` (The Gateway Server of The Things Enterprise Stack forwarded less uplink traffic than usual). This alert includes the host (cluster, packet broker), so make sure to look at that when this alert fires. If the host is "cluster", there may be an issue with the Network Server. If the host is "packetbroker", there may be an issue with the Packet Broker Agent.
-- `NetworkServerReceivedUplinkTrafficDrop` (The Network Server of The Things Enterprise Stack received less uplink traffic than usual).
-- `ApplicationServerReceivedUplinkTrafficDrop` (The Application Server of The Things Enterprise Stack received less uplink traffic than usual).
+- `GatewayServerReceivedUplinkTrafficDrop` (The Gateway Server of {{% tts %}} received less uplink traffic than usual). This alert includes the protocol (UDP, MQTT, WS), so make sure to look at that when this alert fires.
+- `GatewayServerForwardedUplinkTrafficDrop` (The Gateway Server of {{% tts %}} forwarded less uplink traffic than usual). This alert includes the host (cluster, packet broker), so make sure to look at that when this alert fires. If the host is "cluster", there may be an issue with the Network Server. If the host is "packetbroker", there may be an issue with the Packet Broker Agent.
+- `NetworkServerReceivedUplinkTrafficDrop` (The Network Server of {{% tts %}} received less uplink traffic than usual).
+- `ApplicationServerReceivedUplinkTrafficDrop` (The Application Server of {{% tts %}} received less uplink traffic than usual).
 
 Similar alerts for downlink traffic will be added in the future.
 
