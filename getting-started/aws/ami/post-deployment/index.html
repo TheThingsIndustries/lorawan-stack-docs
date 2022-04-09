@@ -226,7 +226,7 @@
         </h1>
         
         <div class="content">
-          <p>This section provides the information necessary to get started with The Things Enterprise Stack after it is deployed via <a href="https://aws.amazon.com/marketplace/pp/The-Things-Industries-The-Things-Enterprise-Stack/B081HZKDJ4">AWS Marketplace</a> using AWS CloudFormation.</p>
+          <p>This section provides the information necessary to get started with The Things Stack after it is deployed via <a href="https://aws.amazon.com/marketplace/pp/The-Things-Industries-The-Things-Enterprise-Stack/B081HZKDJ4">AWS Marketplace</a> using AWS CloudFormation.</p>
 <h2 id="dns-configuration">DNS Configuration</h2>
 <p>In order to access the Console/API of the The Things Stack, the domain name chosen during deployment must be mapped to the public IP address of the CloudFormation stack. This section provides details on how to do that.</p>
 <ol>
@@ -287,14 +287,14 @@
 <p>There will be an initial propagation delay for this value to be updated. You can check the status via a DNS lookup using either an <a href="https://network-tools.webwiz.net/nslookup.htm">online tool</a> or using a command line tool (ex: <code>nslookup</code>).</p>
 <p>Once the domain has been propagated, the DNS Lookup will show that your Domain (or sub-domain) is pointing to the <strong>PublicIP</strong> value.</p>
 <h3 id="ssl-certificates">SSL Certificates</h3>
-<p>As a security measure, plaintext access to the Console/API is disabled. In order to serve requests securely, The Things Enterprise Stack has built-in support to automatically request, serve and renew SSL certificates.</p>
+<p>As a security measure, plaintext access to the Console/API is disabled. In order to serve requests securely, The Things Stack has built-in support to automatically request, serve and renew SSL certificates.</p>
 <p>Apart from the DNS mapping above, no additional steps are necessary for this.</p>
 <h2 id="getting-started-using-the-console">Getting Started using the Console</h2>
-<p>Please check the <a href="https://www.thethingsindustries.com/docs/getting-started/console/">Console</a> guide to get quickly started with The Things Enterprise Stack Console.</p>
+<p>Please check the <a href="https://www.thethingsindustries.com/docs/getting-started/console/">Console</a> guide to get quickly started with The Things Stack Console.</p>
 <h2 id="getting-started-using-the-command-line-interface-cli">Getting Started using the Command Line Interface (CLI)</h2>
-<p>Please check the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">CLI</a> guide to get quickly started with The Things Enterprise Stack CLI.</p>
+<p>Please check the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">CLI</a> guide to get quickly started with The Things Stack CLI.</p>
 <h2 id="ssh-access">SSH Access</h2>
-<p>In most cases, you will interact with The Things Enterprise Stack only via the Console or the CLI. However, in case there is a need to directly access the EC2 instance, there is an option to do so via SSH.</p>
+<p>In most cases, you will interact with The Things Stack only via the Console or the CLI. However, in case there is a need to directly access the EC2 instance, there is an option to do so via SSH.</p>
 <p>SSH access is possible only via the IP addresses set using the <strong>Restrict SSH Access to IP Range</strong> parameter during deployment. Also, the SSH client needs access to the private key corresponding to the public key that was chosen in the <strong>SSH Key</strong> parameter during deployment. The SSH username is <code>ec2-user</code>.</p>
 <p>For example, you can use the OpenSSH client via the terminal and login using:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ssh -i &lt;private-key-file&gt; ec2-user@PublicIP
@@ -304,12 +304,12 @@
 <pre tabindex="0"><code>├── acme                        # contains SSL certificates and related files
 ├── bootstrap                   # contains logs generated during deployment and restarts
 └── lorawan-stack
-    ├── config.yml              # The Things Enterprise Stack configuration
+    ├── config.yml              # The Things Stack Enterprise configuration
     ├── environment             # additional environment variables
     ├── lorawan-frequency-plans # contains a local copy of the LoRaWAN Frequency Plans Repository
     ├── public                  # contains the static assets
-    └── tti-lw-stack            # The Things Enterprise Stack binary
-</code></pre><p>The Things Enterprise Stack binary is run as a <code>systemd</code> service. In order to check the logs, run the following:</p>
+    └── tti-lw-stack            # The Things Stack Enterprise binary
+</code></pre><p>The Things Stack binary is run as a <code>systemd</code> service. In order to check the logs, run the following:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo journalctl -f -u lorawan-stack.service
 </span></span></code></pre></div><h2 id="routing-lorawan-traffic">Routing LoRaWAN Traffic</h2>
 <p>Now that your stack has been successfully deployed, let&rsquo;s look at how to connect a LoRaWAN Gateway, Register a LoRaWAN Device and read traffic from this device.</p>
@@ -318,7 +318,7 @@
 <h3 id="registering-a-device">Registering a Device</h3>
 <p>Please check the <a href="/docs/devices/adding-devices/">Adding Devices</a> guide.</p>
 <h2 id="aws-iot">AWS IoT</h2>
-<p>The Things Enterprise Stack supports publishing of uplink messages directly to the <a href="https://aws.amazon.com/iot/">AWS IoT suite</a>. In order for this to work, the <strong>AWS IoT Telemetry</strong> option in the CloudFormation template must be set to <strong>true</strong> during the deployment phase.</p>
+<p>The Things Stack supports publishing of uplink messages directly to the <a href="https://aws.amazon.com/iot/">AWS IoT suite</a>. In order for this to work, the <strong>AWS IoT Telemetry</strong> option in the CloudFormation template must be set to <strong>true</strong> during the deployment phase.</p>
 <p>Please check the guide on <a href="/docs/integrations/cloud-integrations/aws-iot/">AWS IoT</a> guide for more information.</p>
         </div>
         
@@ -400,10 +400,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 23 Dec 2021.
+  Last changed by Johan Stokking on 09 Apr 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
-      doc: Remove $ character from code blocks, add variables (#678)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/c44467b53b8ce616c3839a2fb89f036d4184f21c">
+      doc: Use name The Things Stack Enterprise (#850)
     </a>
 </p>
 
