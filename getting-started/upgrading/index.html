@@ -261,7 +261,12 @@
 <p>Stop <code>The Things Stack</code> container.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose stop stack
 </span></span><span class="line"><span class="cl">Stopping &lt;directory&gt;_stack_1 ... <span class="k">done</span>
-</span></span></code></pre></div><h4 id="redis">Redis</h4>
+</span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  In this guide, <code>&lt;directory&gt;</code> represents the directory containing The Things Stack files, i.e. the directory where you cloned The Things Stack repository.
+</div>
+
+<h4 id="redis">Redis</h4>
 <p>Navigate to the Redis data folder, which can be found in the <code>docker-compose.yml</code> for the <code>redis</code> service (ex: <code>${DEV_DATA_DIR:-.env/data}/redis</code>)</p>
 <p>Stop the <code>redis</code> container.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose stop redis
@@ -271,22 +276,24 @@
 <p>Start the <code>redis</code> container.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose up -d redis
 </span></span><span class="line"><span class="cl">Starting &lt;directory&gt;_redis_1 ... <span class="k">done</span>
-</span></span></code></pre></div><h4 id="cockroach">Cockroach</h4>
-<p>Keep the <code>cockroach</code> container running and enter a cockroach CLI shell.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it &lt;directory&gt;_cockroach_1 ./cockroach sql --insecure
-</span></span></code></pre></div><p>Backup the database.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@:26257/defaultdb&gt; BACKUP * TO <span class="s1">&#39;nodelocal://self/&lt;backup_name&gt;&#39;</span><span class="p">;</span>
-</span></span></code></pre></div><p>A folder with the chosen <code>&lt;backup_name&gt;</code> will be created at the location <code>${DEV_DATA_DIR:-.env/data}/cockroach/extern</code>.</p>
-<p>Copy this folder (<code>${DEV_DATA_DIR:-.env/data}/cockroach/extern/&lt;backup_name&gt;</code>) to a location of your choice. This folder is now a snapshot of the database at the time that it is copied.</p>
-<p>In order to restore from a backup, copy the backup folder to <code>${DEV_DATA_DIR:-.env/data}/cockroach/extern</code>.</p>
-<p>Now, again enter a cockroach CLI shell again with the <code>cockroach</code> container running.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it &lt;directory&gt;_cockroach_1 ./cockroach sql --insecure
-</span></span></code></pre></div><p>Delete (or rename) the existing database to prevent conflicts.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@:26257/defaultdb&gt;  DROP DATABASE ttn_lorawan CASCADE<span class="p">;</span>
-</span></span></code></pre></div><p>Restore from the backup.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">root@:26257/defaultdb&gt;  RESTORE DATABASE ttn_lorawan FROM <span class="s1">&#39;nodelocal://self/&lt;backup_name&gt;&#39;</span><span class="p">;</span>
-</span></span></code></pre></div><h4 id="postgres">Postgres</h4>
-<p>Please refer to the <a href="https://www.postgresql.org/docs/14/backup.html">official postgres documentation</a> for the specific version that you are using.</p>
+</span></span></code></pre></div><h4 id="postgresql">PostgreSQL</h4>
+<p>Keep the <code>postgres</code> container running and make a PostgreSQL backup file using the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it &lt;directory&gt;_postgres_1 /usr/bin/pg_dump --format<span class="o">=</span>c ttn_lorawan &gt; &lt;location-of-your-choice&gt;/postgres-backup.sql
+</span></span></code></pre></div><p>A <code>postgres-backup.sql</code> file containing a snapshot of the PostgreSQL database at the time that it was backed up will be created in the <code>&lt;location-of-your-choice&gt;</code> directory.</p>
+<p>In order to make the backup file available inside the container, just copy the <code>postgres-backup.sql</code> file to the <code>${DEV_DATA_DIR:-.env/data}/postgres</code> directory on your machine. You can also use the following command to copy the file into the <code>/var/lib/postgresql/data</code> directory inside the container:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker cp postgres-backup.sql &lt;directory&gt;_postgres_1:/var/lib/postgresql/data
+</span></span></code></pre></div><p>In order to restore the PostgreSQL database contents, you first need to delete (or rename) the old <code>ttn_lorawan</code> database to prevent conflicts. In order to perform deletion or renaming, you have to be disconnected from the <code>ttn_lorawan</code> database.</p>
+<p>Create a temporary database <code>temp_db</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it &lt;directory&gt;_postgres_1 psql -d ttn_lorawan -c <span class="s2">&#34;CREATE DATABASE temp_db;&#34;</span>
+</span></span></code></pre></div><p>Run the following command to disconnect from <code>ttn_lorawan</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it &lt;directory&gt;_postgres_1 psql -d ttn_lorawan -c <span class="s2">&#34;SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE pg_stat_activity.datname = &#39;ttn_lorawan&#39; AND pid &lt;&gt; pg_backend_pid();&#34;</span>
+</span></span></code></pre></div><p>Now connect to <code>temp_db</code> and delete the old <code>ttn_lorawan</code> database with:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it &lt;directory&gt;_postgres_1 psql -d temp_db -c <span class="s2">&#34;DROP DATABASE ttn_lorawan;&#34;</span>
+</span></span></code></pre></div><p>Recreate the <code>ttn_lorawan</code> database:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it &lt;directory&gt;_postgres_1 psql -d temp_db -c <span class="s2">&#34;CREATE DATABASE ttn_lorawan;&#34;</span>
+</span></span></code></pre></div><p>At this point, the <code>ttn_lorawan</code> database will be empty. Finally, you can restore the database contents from the <code>postgres-backup.sql</code> snapshot file:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> &lt;directory&gt;_postgres_1 pg_restore -d ttn_lorawan /var/lib/postgresql/data/postgres-backup.sql
+</span></span></code></pre></div><p>For additional info, please refer to the <a href="https://www.postgresql.org/docs/14/backup.html">official PostgreSQL documentation</a> for the specific version that you are using.</p>
 <h4 id="optional">Optional</h4>
 <p>Updates to The Things Stack do not modify static (user-uploaded) assets. But those can be backed up as well.</p>
 <p>User profile pictures and end device pictures are stored in the <code>assets</code> folder by default.</p>
@@ -395,10 +402,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer Easwaran on 24 Mar 2022.
+  Last changed by Nejra Selimović on 13 Apr 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/53e83e3420371cdd54de21559ba6f5f661d25685">
-      doc: Add postgres doc (#830)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/6150bf1f09b0f904dab5b82c0ca7bcff29488e6e">
+      doc: Replace CockroachDB refs with PostgreSQL (#840)
     </a>
 </p>
 
