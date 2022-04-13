@@ -9,24 +9,28 @@ description: ""
 
 This includes all of the following LoRaWAN specification versions:
 
-- LoRaWAN 1.0
-- LoRaWAN 1.0.1
-- LoRaWAN 1.0.2
-- LoRaWAN 1.0.3
-- LoRaWAN 1.0.4
-- LoRaWAN 1.1
+- LoRaWAN Specification 1.0.0
+- LoRaWAN Specification 1.0.1
+- LoRaWAN Specification 1.0.2
+- LoRaWAN Specification 1.0.3
+- LoRaWAN Specification 1.0.4
+- LoRaWAN Specification 1.1.0
 
 The LoRaWAN specification versions are available from the [LoRa Alliance resource hub](https://lora-alliance.org/resource-hub/).
 
 {{% tts %}} supports the following LoRaWAN Regional Parameter specification versions:
 
-- LoRaWAN Regional Parameters 1.0
-- LoRaWAN Regional Parameters 1.0.1
-- LoRaWAN Regional Parameters 1.0.2 Rev A
-- LoRaWAN Regional Parameters 1.0.2 Rev B
-- LoRaWAN Regional Parameters 1.0.3 Rev A
-- LoRaWAN Regional Parameters 1.1 Rev A
-- LoRaWAN Regional Parameters 1.1 Rev B
+- TS001 Technical Specification 1.0.0
+- TS001 Technical Specification 1.0.1
+- RP001 Regional Parameters 1.0.2
+- RP001 Regional Parameters 1.0.2 Rev B
+- RP001 Regional Parameters 1.0.3 Rev A
+- RP001 Regional Parameters 1.1 Rev A
+- RP001 Regional Parameters 1.1 Rev B
+- RP002 Regional Parameters 1.0.0
+- RP002 Regional Parameters 1.0.1
+- RP002 Regional Parameters 1.0.2
+- RP002 Regional Parameters 1.0.3
 
 The LoRaWAN Regional Parameters specification versions are available from the [LoRa Alliance resource hub](https://lora-alliance.org/resource-hub/). More information is also available in [The Things Network LoRaWAN documentation](https://www.thethingsnetwork.org/docs/lorawan/regional-parameters/).
 
