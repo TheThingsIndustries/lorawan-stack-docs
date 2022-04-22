@@ -21,6 +21,7 @@ ttn-lw-cli applications list [flags]
       --administrative-contact.ids.user-ids.email                     select the administrative_contact.ids.user_ids.email field
       --administrative-contact.ids.user-ids.user-id                   select the administrative_contact.ids.user_ids.user_id field
       --all                                                           select all application fields
+      --application-server-address                                    select the application_server_address field
       --attributes                                                    select the attributes field
       --contact-info                                                  select the contact_info field
       --deleted                                                       return recently deleted
@@ -28,8 +29,10 @@ ttn-lw-cli applications list [flags]
       --description                                                   select the description field
       --dev-eui-counter                                               select the dev_eui_counter field
   -h, --help                                                          help for list
+      --join-server-address                                           select the join_server_address field
       --limit uint32                                                  maximum number of results to get (default 50)
       --name                                                          select the name field
+      --network-server-address                                        select the network_server_address field
       --order string                                                  order by this field
       --organization-id string                                        
       --page uint32                                                   results page number (default 1)

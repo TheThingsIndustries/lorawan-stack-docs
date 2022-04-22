@@ -56,6 +56,7 @@ ttn-lw-cli gateways search [flags]
       --name-contains string                                          
       --order string                                                  order by this field
       --page uint32                                                   results page number (default 1)
+      --query string                                                  
       --require-authenticated-connection                              select the require_authenticated_connection field
       --schedule-anytime-delay                                        select the schedule_anytime_delay field
       --schedule-downlink-late                                        select the schedule_downlink_late field

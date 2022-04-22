@@ -47,11 +47,23 @@ description: ""
 
 {{< proto/method service="UserInvitationRegistry" method="Delete" >}}
 
+## The `NotificationService` service
+
+{{< proto/method service="NotificationService" method="Create" >}}
+
+{{< proto/method service="NotificationService" method="List" >}}
+
+{{< proto/method service="NotificationService" method="UpdateStatus" >}}
+
 ## Messages
 
 {{< proto/message message="APIKey" >}}
 
 {{< proto/message message="APIKeys" >}}
+
+{{< proto/message message="ApplicationIdentifiers" >}}
+
+{{< proto/message message="ClientIdentifiers" >}}
 
 {{< proto/message message="CreateUserAPIKeyRequest" >}}
 
@@ -59,9 +71,19 @@ description: ""
 
 {{< proto/message message="CreateTemporaryPasswordRequest" >}}
 
+{{< proto/message message="CreateNotificationResponse" >}}
+
+{{< proto/message message="CreateNotificationRequest" >}}
+
 {{< proto/message message="CreateUserRequest" >}}
 
 {{< proto/message message="DeleteInvitationRequest" >}}
+
+{{< proto/message message="EndDeviceIdentifiers" >}}
+
+{{< proto/message message="EntityIdentifiers" >}}
+
+{{< proto/message message="GatewayIdentifiers" >}}
 
 {{< proto/message message="GetUserAPIKeyRequest" >}}
 
@@ -71,11 +93,19 @@ description: ""
 
 {{< proto/message message="Invitations" >}}
 
+{{< proto/message message="ListNotificationsRequest" >}}
+
+{{< proto/message message="ListNotificationsResponse" >}}
+
 {{< proto/message message="ListInvitationsRequest" >}}
 
 {{< proto/message message="ListUserAPIKeysRequest" >}}
 
 {{< proto/message message="ListUsersRequest" >}}
+
+{{< proto/message message="Notification" >}}
+
+{{< proto/message message="OrganizationIdentifiers" >}}
 
 {{< proto/message message="Picture" >}}
 
@@ -86,6 +116,8 @@ description: ""
 {{< proto/message message="SearchUsersRequest" >}}
 
 {{< proto/message message="SendInvitationRequest" >}}
+
+{{< proto/message message="UpdateNotificationStatusRequest" >}}
 
 {{< proto/message message="UpdateUserAPIKeyRequest" >}}
 
@@ -106,6 +138,10 @@ description: ""
 {{< proto/enum enum="ContactType" >}}
 
 {{< proto/enum enum="ContactMethod" >}}
+
+{{< proto/enum enum="NotificationStatus" >}}
+
+{{< proto/enum enum="NotificationReceiver" >}}
 
 {{< proto/enum enum="Right" >}}
 

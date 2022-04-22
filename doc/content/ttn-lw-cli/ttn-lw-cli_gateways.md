@@ -54,7 +54,7 @@ Gateway commands
 * [ttn-lw-cli gateways api-keys]({{< relref "ttn-lw-cli_gateways_api-keys" >}})	 - Manage gateway API keys
 * [ttn-lw-cli gateways claim]({{< relref "ttn-lw-cli_gateways_claim" >}})	 - Claim a gateway (EXPERIMENTAL)
 * [ttn-lw-cli gateways collaborators]({{< relref "ttn-lw-cli_gateways_collaborators" >}})	 - Manage gateway collaborators
-* [ttn-lw-cli gateways contact-info]({{< relref "ttn-lw-cli_gateways_contact-info" >}})	 - Manage gateway contact info
+* [ttn-lw-cli gateways contact-info]({{< relref "ttn-lw-cli_gateways_contact-info" >}})	 - Manage gateway contact info (DEPRECATED. Instead, use administrative_contact and technical_contact fields of gateway)
 * [ttn-lw-cli gateways create]({{< relref "ttn-lw-cli_gateways_create" >}})	 - Create a gateway
 * [ttn-lw-cli gateways delete]({{< relref "ttn-lw-cli_gateways_delete" >}})	 - Delete a gateway
 * [ttn-lw-cli gateways get]({{< relref "ttn-lw-cli_gateways_get" >}})	 - Get a gateway

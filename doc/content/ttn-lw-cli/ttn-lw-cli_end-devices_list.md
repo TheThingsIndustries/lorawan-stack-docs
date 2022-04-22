@@ -22,6 +22,7 @@ ttn-lw-cli end-devices list [application-id] [flags]
       --description                    select the description field
   -h, --help                           help for list
       --join-server-address            select the join_server_address field
+      --last-seen-at                   select the last_seen_at field
       --limit uint32                   maximum number of results to get (default 50)
       --locations                      select the locations field
       --name                           select the name field

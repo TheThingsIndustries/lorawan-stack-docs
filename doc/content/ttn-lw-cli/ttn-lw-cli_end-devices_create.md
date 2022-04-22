@@ -45,6 +45,7 @@ ttn-lw-cli end-devices create [application-id] [device-id] [flags]
       --last-join-nonce uint32                                                                
       --last-rj-count-0 uint32                                                                
       --last-rj-count-1 uint32                                                                
+      --last-seen-at string                                                                   (YYYY-MM-DDTHH:MM:SSZ)
       --location.accuracy int32                                                               
       --location.altitude int32                                                               
       --location.latitude float                                                               
@@ -52,7 +53,19 @@ ttn-lw-cli end-devices create [application-id] [device-id] [flags]
       --location.source string                                                                allowed values: SOURCE_BT_RSSI_GEOLOCATION, SOURCE_COMBINED_GEOLOCATION, SOURCE_GPS, SOURCE_IP_GEOLOCATION, SOURCE_LORA_RSSI_GEOLOCATION, SOURCE_LORA_TDOA_GEOLOCATION, SOURCE_REGISTRY, SOURCE_UNKNOWN, SOURCE_WIFI_RSSI_GEOLOCATION
       --lorawan-phy-version string                                                            allowed values: PHY_UNKNOWN, PHY_V1_0, PHY_V1_0_1, PHY_V1_0_2_REV_A, PHY_V1_0_2_REV_B, PHY_V1_0_3_REV_A, PHY_V1_1_REV_A, PHY_V1_1_REV_B, RP001_V1_0_2, RP001_V1_0_2_REV_B, RP001_V1_0_3_REV_A, RP001_V1_1_REV_A, RP001_V1_1_REV_B, RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3, TS001_V1_0, TS001_V1_0_1
       --lorawan-version string                                                                allowed values: MAC_UNKNOWN, MAC_V1_0, MAC_V1_0_1, MAC_V1_0_2, MAC_V1_0_3, MAC_V1_0_4, MAC_V1_1
-      --mac-settings.adr-margin float32                                                       
+      --mac-settings.adr.mode.disabled                                                        
+      --mac-settings.adr.mode.dynamic                                                         
+      --mac-settings.adr.mode.dynamic.margin float32                                          
+      --mac-settings.adr.mode.dynamic.max-data-rate-index string                              allowed values: DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --mac-settings.adr.mode.dynamic.max-nb-trans uint32                                     
+      --mac-settings.adr.mode.dynamic.max-tx-power-index uint32                               
+      --mac-settings.adr.mode.dynamic.min-data-rate-index string                              allowed values: DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --mac-settings.adr.mode.dynamic.min-nb-trans uint32                                     
+      --mac-settings.adr.mode.dynamic.min-tx-power-index uint32                               
+      --mac-settings.adr.mode.static                                                          
+      --mac-settings.adr.mode.static.data-rate-index string                                   allowed values: DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9
+      --mac-settings.adr.mode.static.nb-trans uint32                                          
+      --mac-settings.adr.mode.static.tx-power-index uint32                                    
       --mac-settings.beacon-frequency uint                                                    
       --mac-settings.class-b-c-downlink-interval duration                                     (1h2m3s)
       --mac-settings.class-b-timeout duration                                                 (1h2m3s)
@@ -83,7 +96,6 @@ ttn-lw-cli end-devices create [application-id] [device-id] [flags]
       --mac-settings.status-time-periodicity duration                                         (1h2m3s)
       --mac-settings.supports-32-bit-f-cnt                                                    
       --mac-settings.uplink-dwell-time                                                        
-      --mac-settings.use-adr                                                                  
       --mac-state.current-parameters.adr-ack-delay-exponent string                            allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_128, ADR_ACK_DELAY_16, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_2, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_256, ADR_ACK_DELAY_32, ADR_ACK_DELAY_32768, ADR_ACK_DELAY_4, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_512, ADR_ACK_DELAY_64, ADR_ACK_DELAY_8, ADR_ACK_DELAY_8192
       --mac-state.current-parameters.adr-ack-limit-exponent string                            allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_32768, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_8192
       --mac-state.current-parameters.adr-data-rate-index string                               allowed values: DATA_RATE_0, DATA_RATE_1, DATA_RATE_10, DATA_RATE_11, DATA_RATE_12, DATA_RATE_13, DATA_RATE_14, DATA_RATE_15, DATA_RATE_2, DATA_RATE_3, DATA_RATE_4, DATA_RATE_5, DATA_RATE_6, DATA_RATE_7, DATA_RATE_8, DATA_RATE_9

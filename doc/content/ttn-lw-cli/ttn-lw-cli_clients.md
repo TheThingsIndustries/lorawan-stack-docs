@@ -52,7 +52,7 @@ Client commands
 
 * [ttn-lw-cli]({{< relref "ttn-lw-cli" >}})	 - The Things Industries Command-line Interface
 * [ttn-lw-cli clients collaborators]({{< relref "ttn-lw-cli_clients_collaborators" >}})	 - Manage client collaborators
-* [ttn-lw-cli clients contact-info]({{< relref "ttn-lw-cli_clients_contact-info" >}})	 - Manage client contact info
+* [ttn-lw-cli clients contact-info]({{< relref "ttn-lw-cli_clients_contact-info" >}})	 - Manage client contact info (DEPRECATED. Instead, use administrative_contact and technical_contact fields of client)
 * [ttn-lw-cli clients create]({{< relref "ttn-lw-cli_clients_create" >}})	 - Create a client
 * [ttn-lw-cli clients delete]({{< relref "ttn-lw-cli_clients_delete" >}})	 - Delete a client
 * [ttn-lw-cli clients get]({{< relref "ttn-lw-cli_clients_get" >}})	 - Get a client

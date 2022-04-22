@@ -35,6 +35,7 @@ ttn-lw-cli users search [flags]
       --primary-email-address                select the primary_email_address field
       --primary-email-address-validated-at   select the primary_email_address_validated_at field
       --profile-picture                      select the profile_picture field
+      --query string                         
       --require-password-update              select the require_password_update field
       --state strings                        allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED
       --state-description                    select the state_description field

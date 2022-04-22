@@ -35,6 +35,7 @@ ttn-lw-cli organizations search [flags]
       --name-contains string                                          
       --order string                                                  order by this field
       --page uint32                                                   results page number (default 1)
+      --query string                                                  
       --technical-contact                                             select the technical_contact field and all allowed sub-fields
       --technical-contact.ids.organization-ids                        select the technical_contact.ids.organization_ids field and all allowed sub-fields
       --technical-contact.ids.organization-ids.organization-id        select the technical_contact.ids.organization_ids.organization_id field

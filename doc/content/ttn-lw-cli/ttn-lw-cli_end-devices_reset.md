@@ -44,11 +44,25 @@ ttn-lw-cli end-devices reset [application-id] [device-id] [flags]
       --last-join-nonce                                                                select the last_join_nonce field
       --last-rj-count-0                                                                select the last_rj_count_0 field
       --last-rj-count-1                                                                select the last_rj_count_1 field
+      --last-seen-at                                                                   select the last_seen_at field
       --locations                                                                      select the locations field
       --lorawan-phy-version                                                            select the lorawan_phy_version field
       --lorawan-version                                                                select the lorawan_version field
       --mac-settings                                                                   select the mac_settings field and all allowed sub-fields
-      --mac-settings.adr-margin                                                        select the mac_settings.adr_margin field
+      --mac-settings.adr                                                               select the mac_settings.adr field and all allowed sub-fields
+      --mac-settings.adr.mode.disabled                                                 select the mac_settings.adr.mode.disabled field and all allowed sub-fields
+      --mac-settings.adr.mode.dynamic                                                  select the mac_settings.adr.mode.dynamic field and all allowed sub-fields
+      --mac-settings.adr.mode.dynamic.margin                                           select the mac_settings.adr.mode.dynamic.margin field
+      --mac-settings.adr.mode.dynamic.max-data-rate-index                              select the mac_settings.adr.mode.dynamic.max_data_rate_index field
+      --mac-settings.adr.mode.dynamic.max-nb-trans                                     select the mac_settings.adr.mode.dynamic.max_nb_trans field
+      --mac-settings.adr.mode.dynamic.max-tx-power-index                               select the mac_settings.adr.mode.dynamic.max_tx_power_index field
+      --mac-settings.adr.mode.dynamic.min-data-rate-index                              select the mac_settings.adr.mode.dynamic.min_data_rate_index field
+      --mac-settings.adr.mode.dynamic.min-nb-trans                                     select the mac_settings.adr.mode.dynamic.min_nb_trans field
+      --mac-settings.adr.mode.dynamic.min-tx-power-index                               select the mac_settings.adr.mode.dynamic.min_tx_power_index field
+      --mac-settings.adr.mode.static                                                   select the mac_settings.adr.mode.static field and all allowed sub-fields
+      --mac-settings.adr.mode.static.data-rate-index                                   select the mac_settings.adr.mode.static.data_rate_index field
+      --mac-settings.adr.mode.static.nb-trans                                          select the mac_settings.adr.mode.static.nb_trans field
+      --mac-settings.adr.mode.static.tx-power-index                                    select the mac_settings.adr.mode.static.tx_power_index field
       --mac-settings.beacon-frequency                                                  select the mac_settings.beacon_frequency field
       --mac-settings.class-b-c-downlink-interval                                       select the mac_settings.class_b_c_downlink_interval field
       --mac-settings.class-b-timeout                                                   select the mac_settings.class_b_timeout field
@@ -79,7 +93,6 @@ ttn-lw-cli end-devices reset [application-id] [device-id] [flags]
       --mac-settings.status-time-periodicity                                           select the mac_settings.status_time_periodicity field
       --mac-settings.supports-32-bit-f-cnt                                             select the mac_settings.supports_32_bit_f_cnt field
       --mac-settings.uplink-dwell-time                                                 select the mac_settings.uplink_dwell_time field
-      --mac-settings.use-adr                                                           select the mac_settings.use_adr field
       --mac-state                                                                      select the mac_state field and all allowed sub-fields
       --mac-state.current-parameters                                                   select the mac_state.current_parameters field and all allowed sub-fields
       --mac-state.current-parameters.adr-ack-delay-exponent                            select the mac_state.current_parameters.adr_ack_delay_exponent field

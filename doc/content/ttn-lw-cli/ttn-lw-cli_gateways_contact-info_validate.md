@@ -62,5 +62,5 @@ ttn-lw-cli gateways contact-info validate [reference] [token] [flags]
 
 ### SEE ALSO
 
-* [ttn-lw-cli gateways contact-info]({{< relref "ttn-lw-cli_gateways_contact-info" >}})	 - Manage gateway contact info
+* [ttn-lw-cli gateways contact-info]({{< relref "ttn-lw-cli_gateways_contact-info" >}})	 - Manage gateway contact info (DEPRECATED. Instead, use administrative_contact and technical_contact fields of gateway)
 
