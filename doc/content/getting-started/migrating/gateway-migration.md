@@ -1,6 +1,6 @@
 ---
 title: Migrating Gateways
-weight: 6
+weight: 7
 aliases: "/getting-started/migrating-from-v2/gateway-migration"
 ---
 
