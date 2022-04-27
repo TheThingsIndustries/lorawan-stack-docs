@@ -5,7 +5,7 @@ slug: ttn-lw-cli_users_contact-info
 
 ## ttn-lw-cli users contact-info
 
-Manage user contact info
+Manage user contact info (DEPRECATED. Instead, use administrative_contact and technical_contact fields of user)
 
 ### Options
 
@@ -52,9 +52,6 @@ Manage user contact info
 ### SEE ALSO
 
 * [ttn-lw-cli users]({{< relref "ttn-lw-cli_users" >}})	 - User commands
-* [ttn-lw-cli users contact-info create]({{< relref "ttn-lw-cli_users_contact-info_create" >}})	 - 
-* [ttn-lw-cli users contact-info delete]({{< relref "ttn-lw-cli_users_contact-info_delete" >}})	 - 
-* [ttn-lw-cli users contact-info list]({{< relref "ttn-lw-cli_users_contact-info_list" >}})	 - 
 * [ttn-lw-cli users contact-info request-validation]({{< relref "ttn-lw-cli_users_contact-info_request-validation" >}})	 - Request validation for entity contact info
 * [ttn-lw-cli users contact-info validate]({{< relref "ttn-lw-cli_users_contact-info_validate" >}})	 - Validate contact info
 

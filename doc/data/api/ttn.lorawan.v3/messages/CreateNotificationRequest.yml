@@ -1,0 +1,43 @@
+name: CreateNotificationRequest
+fields:
+- name: entity_ids
+  comment: The entity this notification is about.
+  message:
+    name: EntityIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: notification_type
+  comment: The type of this notification.
+  type: string
+  rules:
+    min_len: 1
+    max_len: 100
+  default: ""
+- name: data
+  comment: The data related to the notification.
+  message:
+    package: google.protobuf
+    name: Any
+  default: null
+- name: sender_ids
+  comment: If the notification was triggered by a user action, this contains the identifiers
+    of the user that triggered the notification.
+  message:
+    name: UserIdentifiers
+  default: {}
+- name: receivers
+  comment: Receivers of the notification.
+  rules:
+    min_items: 1
+    unique: true
+  repeated:
+    enum:
+      name: NotificationReceiver
+    rules:
+      defined_only: true
+  default: []
+- name: email
+  comment: Whether an email should be sent for the notification.
+  type: bool
+  default: false

@@ -5,7 +5,7 @@ slug: ttn-lw-cli_gateways_contact-info
 
 ## ttn-lw-cli gateways contact-info
 
-Manage gateway contact info
+Manage gateway contact info (DEPRECATED. Instead, use administrative_contact and technical_contact fields of gateway)
 
 ### Options
 
@@ -53,9 +53,6 @@ Manage gateway contact info
 ### SEE ALSO
 
 * [ttn-lw-cli gateways]({{< relref "ttn-lw-cli_gateways" >}})	 - Gateway commands
-* [ttn-lw-cli gateways contact-info create]({{< relref "ttn-lw-cli_gateways_contact-info_create" >}})	 - 
-* [ttn-lw-cli gateways contact-info delete]({{< relref "ttn-lw-cli_gateways_contact-info_delete" >}})	 - 
-* [ttn-lw-cli gateways contact-info list]({{< relref "ttn-lw-cli_gateways_contact-info_list" >}})	 - 
 * [ttn-lw-cli gateways contact-info request-validation]({{< relref "ttn-lw-cli_gateways_contact-info_request-validation" >}})	 - Request validation for entity contact info
 * [ttn-lw-cli gateways contact-info validate]({{< relref "ttn-lw-cli_gateways_contact-info_validate" >}})	 - Validate contact info
 

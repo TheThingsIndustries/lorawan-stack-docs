@@ -22,6 +22,7 @@ ttn-lw-cli end-devices search [application-id] [flags]
       --administrative-contact.ids.user-ids.user-id                   select the administrative_contact.ids.user_ids.user_id field
       --all                                                           select all end devices fields
       --application-id string                                         
+      --application-server-address                                    select the application_server_address field
       --attributes                                                    select the attributes field
       --attributes-contain stringToString                             (key=value) (default [])
       --contact-info                                                  select the contact_info field
@@ -33,11 +34,14 @@ ttn-lw-cli end-devices search [application-id] [flags]
   -h, --help                                                          help for search
       --id-contains string                                            
       --join-eui-contains string                                      
+      --join-server-address                                           select the join_server_address field
       --limit uint32                                                  maximum number of results to get (default 50)
       --name                                                          select the name field
       --name-contains string                                          
+      --network-server-address                                        select the network_server_address field
       --order string                                                  order by this field
       --page uint32                                                   results page number (default 1)
+      --query string                                                  
       --technical-contact                                             select the technical_contact field and all allowed sub-fields
       --technical-contact.ids.organization-ids                        select the technical_contact.ids.organization_ids field and all allowed sub-fields
       --technical-contact.ids.organization-ids.organization-id        select the technical_contact.ids.organization_ids.organization_id field

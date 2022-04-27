@@ -61,5 +61,5 @@ ttn-lw-cli applications contact-info validate [reference] [token] [flags]
 
 ### SEE ALSO
 
-* [ttn-lw-cli applications contact-info]({{< relref "ttn-lw-cli_applications_contact-info" >}})	 - Manage application contact info
+* [ttn-lw-cli applications contact-info]({{< relref "ttn-lw-cli_applications_contact-info" >}})	 - Manage application contact info (DEPRECATED. Instead, use administrative_contact and technical_contact fields of application)
 

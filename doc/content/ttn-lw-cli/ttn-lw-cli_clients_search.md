@@ -38,6 +38,7 @@ ttn-lw-cli clients search [flags]
       --name-contains string                                          
       --order string                                                  order by this field
       --page uint32                                                   results page number (default 1)
+      --query string                                                  
       --redirect-uris                                                 select the redirect_uris field
       --rights                                                        select the rights field
       --secret                                                        select the secret field

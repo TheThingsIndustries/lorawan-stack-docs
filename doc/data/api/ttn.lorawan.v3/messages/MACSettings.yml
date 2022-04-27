@@ -96,15 +96,15 @@ fields:
 - name: use_adr
   comment: |-
     Whether the Network Server should use ADR for the device.
-    If unset, the default value from Network Server configuration will be used.
+    This field is deprecated, use adr_settings instead.
   message:
     name: BoolValue
   default: {}
 - name: adr_margin
   comment: |-
-    The ADR margin tells the network server how much margin it should add in ADR requests.
+    The ADR margin (dB) tells the network server how much margin it should add in ADR requests.
     A bigger margin is less efficient, but gives a better chance of successful reception.
-    If unset, the default value from Network Server configuration will be used.
+    This field is deprecated, use adr_settings.dynamic.margin instead.
   message:
     package: google.protobuf
     name: FloatValue
@@ -229,4 +229,11 @@ fields:
     If unset, the default value from Network Server configuration or regional parameters specification will be used.
   message:
     name: BoolValue
+  default: {}
+- name: adr
+  comment: |-
+    Adaptive Data Rate settings.
+    If unset, the default value from Network Server configuration or regional parameters specification will be used.
+  message:
+    name: ADRSettings
   default: {}

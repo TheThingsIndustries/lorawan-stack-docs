@@ -92,6 +92,7 @@ ttn-lw-cli tenants search [flags]
       --name-contains string                                                                     
       --order string                                                                             order by this field
       --page uint32                                                                              results page number (default 1)
+      --query string                                                                             
       --state strings                                                                            allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED
       --state-description                                                                        select the state_description field
 ```

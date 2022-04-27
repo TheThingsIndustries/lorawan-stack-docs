@@ -61,5 +61,5 @@ ttn-lw-cli organizations contact-info validate [reference] [token] [flags]
 
 ### SEE ALSO
 
-* [ttn-lw-cli organizations contact-info]({{< relref "ttn-lw-cli_organizations_contact-info" >}})	 - Manage organization contact info
+* [ttn-lw-cli organizations contact-info]({{< relref "ttn-lw-cli_organizations_contact-info" >}})	 - Manage organization contact info (DEPRECATED. Instead, use administrative_contact and technical_contact fields of organization)
 

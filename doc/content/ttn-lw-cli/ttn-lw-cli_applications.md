@@ -55,7 +55,7 @@ Application commands
 * [ttn-lw-cli applications api-keys]({{< relref "ttn-lw-cli_applications_api-keys" >}})	 - Manage application API keys
 * [ttn-lw-cli applications claim]({{< relref "ttn-lw-cli_applications_claim" >}})	 - Manage claim settings in applications
 * [ttn-lw-cli applications collaborators]({{< relref "ttn-lw-cli_applications_collaborators" >}})	 - Manage application collaborators
-* [ttn-lw-cli applications contact-info]({{< relref "ttn-lw-cli_applications_contact-info" >}})	 - Manage application contact info
+* [ttn-lw-cli applications contact-info]({{< relref "ttn-lw-cli_applications_contact-info" >}})	 - Manage application contact info (DEPRECATED. Instead, use administrative_contact and technical_contact fields of application)
 * [ttn-lw-cli applications create]({{< relref "ttn-lw-cli_applications_create" >}})	 - Create an application
 * [ttn-lw-cli applications delete]({{< relref "ttn-lw-cli_applications_delete" >}})	 - Delete an application
 * [ttn-lw-cli applications get]({{< relref "ttn-lw-cli_applications_get" >}})	 - Get an application

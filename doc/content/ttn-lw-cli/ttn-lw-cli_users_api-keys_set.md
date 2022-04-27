@@ -70,6 +70,7 @@ ttn-lw-cli users api-keys set [user-id] [api-key-id] [flags]
       --right-user-gateways-create                 
       --right-user-gateways-list                   
       --right-user-info                            
+      --right-user-notifications-read              
       --right-user-organizations-create            
       --right-user-organizations-list              
       --right-user-settings-api-keys               

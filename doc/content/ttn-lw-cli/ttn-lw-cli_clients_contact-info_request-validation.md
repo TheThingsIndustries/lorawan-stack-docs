@@ -60,5 +60,5 @@ ttn-lw-cli clients contact-info request-validation [client-id] [flags]
 
 ### SEE ALSO
 
-* [ttn-lw-cli clients contact-info]({{< relref "ttn-lw-cli_clients_contact-info" >}})	 - Manage client contact info
+* [ttn-lw-cli clients contact-info]({{< relref "ttn-lw-cli_clients_contact-info" >}})	 - Manage client contact info (DEPRECATED. Instead, use administrative_contact and technical_contact fields of client)
 

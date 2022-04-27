@@ -40,6 +40,8 @@ The Identity Server's `EndDeviceRegistry` is the first service, where end device
 
 {{< proto/method service="EndDeviceRegistry" method="Delete" >}}
 
+{{< proto/method service="EndDeviceRegistry" method="BatchUpdateLastSeen" >}}
+
 ## The `JsEndDeviceRegistry` service
 
 OTAA devices are registered in the Join Server's `JsEndDeviceRegistry`. The following [EndDevice fields](#message:EndDevice) are registered in this registry:
@@ -135,6 +137,24 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/method service="EndDeviceClaimingServer" method="Unclaim" >}}
 
+## The `DeviceRepository` service
+
+{{< proto/method service="DeviceRepository" method="ListBrands" >}}
+
+{{< proto/method service="DeviceRepository" method="GetBrand" >}}
+
+{{< proto/method service="DeviceRepository" method="ListModels" >}}
+
+{{< proto/method service="DeviceRepository" method="GetModel" >}}
+
+{{< proto/method service="DeviceRepository" method="GetTemplate" >}}
+
+{{< proto/method service="DeviceRepository" method="GetUplinkDecoder" >}}
+
+{{< proto/method service="DeviceRepository" method="GetDownlinkDecoder" >}}
+
+{{< proto/method service="DeviceRepository" method="GetDownlinkEncoder" >}}
+
 ## Messages
 
 {{< proto/message message="ApplicationIdentifiers" >}}
@@ -147,11 +167,23 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="ADRAckDelayExponentValue" >}}
 
+{{< proto/message message="ADRSettings" >}}
+
+{{< proto/message message="ADRSettings.StaticMode" >}}
+
+{{< proto/message message="ADRSettings.DynamicMode" >}}
+
+{{< proto/message message="ADRSettings.DisabledMode" >}}
+
 {{< proto/message message="AggregatedDutyCycleValue" >}}
 
 {{< proto/message message="AuthorizeApplicationRequest" >}}
 
 {{< proto/message message="BoolValue" >}}
+
+{{< proto/message message="BatchUpdateEndDeviceLastSeenRequest.EndDeviceLastSeenUpdate" >}}
+
+{{< proto/message message="BatchUpdateEndDeviceLastSeenRequest" >}}
 
 {{< proto/message message="CreateEndDeviceRequest" >}}
 
@@ -207,13 +239,27 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="GetInfoByJoinEUIResponse" >}}
 
+{{< proto/message message="GetEndDeviceModelRequest" >}}
+
+{{< proto/message message="GetEndDeviceBrandRequest" >}}
+
 {{< proto/message message="GetEndDeviceRequest" >}}
+
+{{< proto/message message="GetTemplateRequest" >}}
+
+{{< proto/message message="GetTemplateRequest.EndDeviceProfileIdentifiers" >}}
+
+{{< proto/message message="GetPayloadFormatterRequest" >}}
 
 {{< proto/message message="JoinRequestPayload" >}}
 
 {{< proto/message message="JoinAcceptPayload" >}}
 
 {{< proto/message message="KeyEnvelope" >}}
+
+{{< proto/message message="ListEndDeviceBrandsRequest" >}}
+
+{{< proto/message message="ListEndDeviceModelsRequest" >}}
 
 {{< proto/message message="ListEndDevicesRequest" >}}
 

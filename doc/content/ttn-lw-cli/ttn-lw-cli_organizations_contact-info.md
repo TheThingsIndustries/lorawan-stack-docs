@@ -5,7 +5,7 @@ slug: ttn-lw-cli_organizations_contact-info
 
 ## ttn-lw-cli organizations contact-info
 
-Manage organization contact info
+Manage organization contact info (DEPRECATED. Instead, use administrative_contact and technical_contact fields of organization)
 
 ### Options
 
@@ -52,9 +52,6 @@ Manage organization contact info
 ### SEE ALSO
 
 * [ttn-lw-cli organizations]({{< relref "ttn-lw-cli_organizations" >}})	 - Organization commands
-* [ttn-lw-cli organizations contact-info create]({{< relref "ttn-lw-cli_organizations_contact-info_create" >}})	 - 
-* [ttn-lw-cli organizations contact-info delete]({{< relref "ttn-lw-cli_organizations_contact-info_delete" >}})	 - 
-* [ttn-lw-cli organizations contact-info list]({{< relref "ttn-lw-cli_organizations_contact-info_list" >}})	 - 
 * [ttn-lw-cli organizations contact-info request-validation]({{< relref "ttn-lw-cli_organizations_contact-info_request-validation" >}})	 - Request validation for entity contact info
 * [ttn-lw-cli organizations contact-info validate]({{< relref "ttn-lw-cli_organizations_contact-info_validate" >}})	 - Validate contact info
 

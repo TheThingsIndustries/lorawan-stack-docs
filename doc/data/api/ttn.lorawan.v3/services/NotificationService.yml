@@ -1,0 +1,36 @@
+name: NotificationService
+methods:
+  Create:
+    name: Create
+    comment: Create a new notification. Can only be called by internal services using
+      cluster auth.
+    input:
+      name: CreateNotificationRequest
+    output:
+      name: CreateNotificationResponse
+  List:
+    name: List
+    comment: |-
+      List the notifications for a user or an organization.
+      When called with user credentials and empty receiver_ids, this will list
+      notifications for the current user and its organizations.
+    input:
+      name: ListNotificationsRequest
+    output:
+      name: ListNotificationsResponse
+    http:
+    - method: ""
+      path: ""
+    - method: GET
+      path: /users/{receiver_ids.user_id}/notifications
+  UpdateStatus:
+    name: UpdateStatus
+    comment: Batch-update multiple notifications to the same status.
+    input:
+      name: UpdateNotificationStatusRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: PATCH
+      path: /users/{receiver_ids.user_id}/notifications

@@ -5,7 +5,7 @@ slug: ttn-lw-cli_clients_contact-info
 
 ## ttn-lw-cli clients contact-info
 
-Manage client contact info
+Manage client contact info (DEPRECATED. Instead, use administrative_contact and technical_contact fields of client)
 
 ### Options
 
@@ -52,9 +52,6 @@ Manage client contact info
 ### SEE ALSO
 
 * [ttn-lw-cli clients]({{< relref "ttn-lw-cli_clients" >}})	 - Client commands
-* [ttn-lw-cli clients contact-info create]({{< relref "ttn-lw-cli_clients_contact-info_create" >}})	 - 
-* [ttn-lw-cli clients contact-info delete]({{< relref "ttn-lw-cli_clients_contact-info_delete" >}})	 - 
-* [ttn-lw-cli clients contact-info list]({{< relref "ttn-lw-cli_clients_contact-info_list" >}})	 - 
 * [ttn-lw-cli clients contact-info request-validation]({{< relref "ttn-lw-cli_clients_contact-info_request-validation" >}})	 - Request validation for entity contact info
 * [ttn-lw-cli clients contact-info validate]({{< relref "ttn-lw-cli_clients_contact-info_validate" >}})	 - Validate contact info
 
