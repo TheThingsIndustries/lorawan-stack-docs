@@ -15,7 +15,7 @@ Learn how to deploy the Azure IoT Hub integration for {{% tts %}}.
 
 ## Create API Key
 
-Go to your application in {{% tts %}} Console, navigate to **Integrations &#8594; Azure IoT Hub** on the left hand menu and click **Generate API Key**.
+Go to your application in {{% tts %}} Console, navigate to **Integrations &#8594; Azure IoT** on the left hand menu and click on **Expand** next to **Azure IoT Hub**. Now click on **Generate API Key**.
 
 {{< figure src="../create-api-key.png" alt="Create API key" >}}
 
@@ -35,8 +35,8 @@ The following parameters configure the integration:
 
 - **Location**: The region in which the Azure resources will be deployed. Defaults to the region used by the selected Resource Group.
 - **Name Suffix**: The suffix added to the Azure Resources. Defaults to a random string.
-- **Stack Cluster Address**: The address of your {{% tts %}} deployment. Can be retrieved from the **Azure IoT Hub** integration page in {{% tts %}} (see image above).
-- **Stack Application ID**: The application ID of your application. Can be retrieved from the **Azure IoT Hub** integration page in {{% tts %}} (see image above).
+- **Stack Cluster Address**: The address of your {{% tts %}} deployment. Can be retrieved from the **Azure IoT** integration page in {{% tts %}} (see image above).
+- **Stack Application ID**: The application ID of your application. Can be retrieved from the **Azure IoT** integration page in {{% tts %}} (see image above).
 - **Stack API Key**: The application API key that you generated in the previous step.
 - **Enable fallback route**: Defines if the Azure IoT Hub fallback route should be added. If enabled, uplink messages will be submitted to the default `events` endpoint in your Azure IoT Hub.
 
