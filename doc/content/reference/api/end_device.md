@@ -155,6 +155,16 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/method service="DeviceRepository" method="GetDownlinkEncoder" >}}
 
+## The `EndDeviceQRCodeGenerator` service
+
+{{< proto/method service="EndDeviceQRCodeGenerator" method="GetFormat" >}}
+
+{{< proto/method service="EndDeviceQRCodeGenerator" method="ListFormats" >}}
+
+{{< proto/method service="EndDeviceQRCodeGenerator" method="Generate" >}}
+
+{{< proto/method service="EndDeviceQRCodeGenerator" method="Parse" >}}
+
 ## Messages
 
 {{< proto/message message="ApplicationIdentifiers" >}}
@@ -244,6 +254,14 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 {{< proto/message message="GetEndDeviceBrandRequest" >}}
 
 {{< proto/message message="GetEndDeviceRequest" >}}
+
+{{< proto/message message="GetQRCodeFormatRequest" >}}
+
+{{< proto/message message="GenerateEndDeviceQRCodeRequest" >}}
+
+{{< proto/message message="GenerateEndDeviceQRCodeRequest.Image" >}}
+
+{{< proto/message message="ParseEndDeviceQRCodeRequest" >}}
 
 {{< proto/message message="GetTemplateRequest" >}}
 

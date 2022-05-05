@@ -42,7 +42,7 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --up.downlink-ack.class-b-c.gateways                                               select the up.downlink_ack.class_b_c.gateways field
       --up.downlink-ack.confirmed                                                        select the up.downlink_ack.confirmed field
       --up.downlink-ack.correlation-ids                                                  select the up.downlink_ack.correlation_ids field
-      --up.downlink-ack.decoded-payload                                                  select the up.downlink_ack.decoded_payload field and all allowed sub-fields
+      --up.downlink-ack.decoded-payload                                                  select the up.downlink_ack.decoded_payload field
       --up.downlink-ack.decoded-payload-warnings                                         select the up.downlink_ack.decoded_payload_warnings field
       --up.downlink-ack.f-cnt                                                            select the up.downlink_ack.f_cnt field
       --up.downlink-ack.f-port                                                           select the up.downlink_ack.f_port field
@@ -56,7 +56,7 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --up.downlink-failed.downlink.class-b-c.gateways                                   select the up.downlink_failed.downlink.class_b_c.gateways field
       --up.downlink-failed.downlink.confirmed                                            select the up.downlink_failed.downlink.confirmed field
       --up.downlink-failed.downlink.correlation-ids                                      select the up.downlink_failed.downlink.correlation_ids field
-      --up.downlink-failed.downlink.decoded-payload                                      select the up.downlink_failed.downlink.decoded_payload field and all allowed sub-fields
+      --up.downlink-failed.downlink.decoded-payload                                      select the up.downlink_failed.downlink.decoded_payload field
       --up.downlink-failed.downlink.decoded-payload-warnings                             select the up.downlink_failed.downlink.decoded_payload_warnings field
       --up.downlink-failed.downlink.f-cnt                                                select the up.downlink_failed.downlink.f_cnt field
       --up.downlink-failed.downlink.f-port                                               select the up.downlink_failed.downlink.f_port field
@@ -70,7 +70,7 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --up.downlink-nack.class-b-c.gateways                                              select the up.downlink_nack.class_b_c.gateways field
       --up.downlink-nack.confirmed                                                       select the up.downlink_nack.confirmed field
       --up.downlink-nack.correlation-ids                                                 select the up.downlink_nack.correlation_ids field
-      --up.downlink-nack.decoded-payload                                                 select the up.downlink_nack.decoded_payload field and all allowed sub-fields
+      --up.downlink-nack.decoded-payload                                                 select the up.downlink_nack.decoded_payload field
       --up.downlink-nack.decoded-payload-warnings                                        select the up.downlink_nack.decoded_payload_warnings field
       --up.downlink-nack.f-cnt                                                           select the up.downlink_nack.f_cnt field
       --up.downlink-nack.f-port                                                          select the up.downlink_nack.f_port field
@@ -87,7 +87,7 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --up.downlink-queued.class-b-c.gateways                                            select the up.downlink_queued.class_b_c.gateways field
       --up.downlink-queued.confirmed                                                     select the up.downlink_queued.confirmed field
       --up.downlink-queued.correlation-ids                                               select the up.downlink_queued.correlation_ids field
-      --up.downlink-queued.decoded-payload                                               select the up.downlink_queued.decoded_payload field and all allowed sub-fields
+      --up.downlink-queued.decoded-payload                                               select the up.downlink_queued.decoded_payload field
       --up.downlink-queued.decoded-payload-warnings                                      select the up.downlink_queued.decoded_payload_warnings field
       --up.downlink-queued.f-cnt                                                         select the up.downlink_queued.f_cnt field
       --up.downlink-queued.f-port                                                        select the up.downlink_queued.f_port field
@@ -100,7 +100,7 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --up.downlink-sent.class-b-c.gateways                                              select the up.downlink_sent.class_b_c.gateways field
       --up.downlink-sent.confirmed                                                       select the up.downlink_sent.confirmed field
       --up.downlink-sent.correlation-ids                                                 select the up.downlink_sent.correlation_ids field
-      --up.downlink-sent.decoded-payload                                                 select the up.downlink_sent.decoded_payload field and all allowed sub-fields
+      --up.downlink-sent.decoded-payload                                                 select the up.downlink_sent.decoded_payload field
       --up.downlink-sent.decoded-payload-warnings                                        select the up.downlink_sent.decoded_payload_warnings field
       --up.downlink-sent.f-cnt                                                           select the up.downlink_sent.f_cnt field
       --up.downlink-sent.f-port                                                          select the up.downlink_sent.f_port field
@@ -126,7 +126,7 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --up.location-solved.location.source                                               select the up.location_solved.location.source field
       --up.location-solved.service                                                       select the up.location_solved.service field
       --up.service-data                                                                  select the up.service_data field and all allowed sub-fields
-      --up.service-data.data                                                             select the up.service_data.data field and all allowed sub-fields
+      --up.service-data.data                                                             select the up.service_data.data field
       --up.service-data.service                                                          select the up.service_data.service field
       --up.uplink-message                                                                select the up.uplink_message field and all allowed sub-fields
       --up.uplink-message.app-s-key                                                      select the up.uplink_message.app_s_key field and all allowed sub-fields
@@ -135,7 +135,7 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --up.uplink-message.app-s-key.key                                                  select the up.uplink_message.app_s_key.key field
       --up.uplink-message.confirmed                                                      select the up.uplink_message.confirmed field
       --up.uplink-message.consumed-airtime                                               select the up.uplink_message.consumed_airtime field
-      --up.uplink-message.decoded-payload                                                select the up.uplink_message.decoded_payload field and all allowed sub-fields
+      --up.uplink-message.decoded-payload                                                select the up.uplink_message.decoded_payload field
       --up.uplink-message.decoded-payload-warnings                                       select the up.uplink_message.decoded_payload_warnings field
       --up.uplink-message.f-cnt                                                          select the up.uplink_message.f_cnt field
       --up.uplink-message.f-port                                                         select the up.uplink_message.f_port field
@@ -143,8 +143,10 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --up.uplink-message.last-a-f-cnt-down                                              select the up.uplink_message.last_a_f_cnt_down field
       --up.uplink-message.locations                                                      select the up.uplink_message.locations field
       --up.uplink-message.network-ids                                                    select the up.uplink_message.network_ids field and all allowed sub-fields
+      --up.uplink-message.network-ids.cluster-address                                    select the up.uplink_message.network_ids.cluster_address field
       --up.uplink-message.network-ids.cluster-id                                         select the up.uplink_message.network_ids.cluster_id field
       --up.uplink-message.network-ids.net-id                                             select the up.uplink_message.network_ids.net_id field
+      --up.uplink-message.network-ids.tenant-address                                     select the up.uplink_message.network_ids.tenant_address field
       --up.uplink-message.network-ids.tenant-id                                          select the up.uplink_message.network_ids.tenant_id field
       --up.uplink-message.received-at                                                    select the up.uplink_message.received_at field
       --up.uplink-message.rx-metadata                                                    select the up.uplink_message.rx_metadata field
@@ -176,6 +178,9 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --up.uplink-message.version-ids.firmware-version                                   select the up.uplink_message.version_ids.firmware_version field
       --up.uplink-message.version-ids.hardware-version                                   select the up.uplink_message.version_ids.hardware_version field
       --up.uplink-message.version-ids.model-id                                           select the up.uplink_message.version_ids.model_id field
+      --up.uplink-message.version-ids.serial-number                                      select the up.uplink_message.version_ids.serial_number field
+      --up.uplink-message.version-ids.vendor-id                                          select the up.uplink_message.version_ids.vendor_id field
+      --up.uplink-message.version-ids.vendor-profile-id                                  select the up.uplink_message.version_ids.vendor_profile_id field
 ```
 
 ### Options inherited from parent commands

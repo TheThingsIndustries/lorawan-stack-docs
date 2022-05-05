@@ -16,7 +16,7 @@ ttn-lw-cli applications packages default-associations list [application-id] [fla
 ```
       --all                     select all application package default association fields
       --application-id string   
-      --data                    select the data field and all allowed sub-fields
+      --data                    select the data field
   -h, --help                    help for list
       --limit uint32            maximum number of results to get (default 50)
       --package-name            select the package_name field

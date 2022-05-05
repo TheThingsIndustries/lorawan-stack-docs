@@ -22,28 +22,29 @@ ttn-lw-cli clients search [flags]
       --administrative-contact.ids.user-ids.user-id                   select the administrative_contact.ids.user_ids.user_id field
       --all                                                           select all client fields
       --attributes                                                    select the attributes field
-      --attributes-contain stringToString                             (key=value) (default [])
+      --attributes-contain stringToString                             
       --contact-info                                                  select the contact_info field
-      --deleted                                                       return recently deleted
+      --deleted                                                       
       --deleted-at                                                    select the deleted_at field
       --description                                                   select the description field
       --description-contains string                                   
       --endorsed                                                      select the endorsed field
+      --field-mask strings                                            
       --grants                                                        select the grants field
   -h, --help                                                          help for search
       --id-contains string                                            
-      --limit uint32                                                  maximum number of results to get (default 50)
+      --limit uint32                                                  
       --logout-redirect-uris                                          select the logout_redirect_uris field
       --name                                                          select the name field
       --name-contains string                                          
-      --order string                                                  order by this field
-      --page uint32                                                   results page number (default 1)
+      --order string                                                  
+      --page uint32                                                   
       --query string                                                  
       --redirect-uris                                                 select the redirect_uris field
       --rights                                                        select the rights field
       --secret                                                        select the secret field
       --skip-authorization                                            select the skip_authorization field
-      --state strings                                                 allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED
+      --state strings                                                 allowed values: STATE_REQUESTED, STATE_APPROVED, STATE_REJECTED, STATE_FLAGGED, STATE_SUSPENDED
       --state-description                                             select the state_description field
       --technical-contact                                             select the technical_contact field and all allowed sub-fields
       --technical-contact.ids.organization-ids                        select the technical_contact.ids.organization_ids field and all allowed sub-fields

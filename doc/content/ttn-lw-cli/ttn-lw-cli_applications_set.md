@@ -19,10 +19,8 @@ ttn-lw-cli applications set [application-id] [flags]
       --administrative-contact.ids.user-ids.user-id string                   
       --application-id string                                                
       --application-server-address string                                    
-      --attributes strings                                                   key=value
-      --deleted-at string                                                    (YYYY-MM-DDTHH:MM:SSZ)
+      --attributes stringToString                                            
       --description string                                                   
-      --dev-eui-counter uint32                                               
   -h, --help                                                                 help for set
       --join-server-address string                                           
       --name string                                                          

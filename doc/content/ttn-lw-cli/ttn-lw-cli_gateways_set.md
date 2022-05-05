@@ -18,25 +18,24 @@ ttn-lw-cli gateways set [gateway-id] [flags]
       --administrative-contact.ids.user-ids.email string                     
       --administrative-contact.ids.user-ids.user-id string                   
       --antenna.add                                                          add an extra antenna
+      --antenna.attributes stringToString                                    
       --antenna.gain float32                                                 
       --antenna.index int                                                    index of the antenna to update or remove
       --antenna.location.accuracy int32                                      
       --antenna.location.altitude int32                                      
       --antenna.location.latitude float                                      
       --antenna.location.longitude float                                     
-      --antenna.location.source string                                       allowed values: SOURCE_BT_RSSI_GEOLOCATION, SOURCE_COMBINED_GEOLOCATION, SOURCE_GPS, SOURCE_IP_GEOLOCATION, SOURCE_LORA_RSSI_GEOLOCATION, SOURCE_LORA_TDOA_GEOLOCATION, SOURCE_REGISTRY, SOURCE_UNKNOWN, SOURCE_WIFI_RSSI_GEOLOCATION
-      --antenna.placement string                                             allowed values: INDOOR, OUTDOOR, PLACEMENT_UNKNOWN
+      --antenna.placement string                                             allowed values: PLACEMENT_UNKNOWN, INDOOR, OUTDOOR
       --antenna.remove                                                       remove an antenna
-      --attributes strings                                                   key=value
+      --attributes stringToString                                            
       --auto-update                                                          
       --claim-authentication-code.secret.key-id string                       
-      --claim-authentication-code.secret.value string                        (hex)
-      --claim-authentication-code.valid-from string                          (YYYY-MM-DDTHH:MM:SSZ)
-      --claim-authentication-code.valid-to string                            (YYYY-MM-DDTHH:MM:SSZ)
-      --deleted-at string                                                    (YYYY-MM-DDTHH:MM:SSZ)
+      --claim-authentication-code.secret.value bytesHex                      
+      --claim-authentication-code.valid-from timestamp                       
+      --claim-authentication-code.valid-to timestamp                         
       --description string                                                   
       --disable-packet-broker-forwarding                                     
-      --downlink-path-constraint string                                      allowed values: DOWNLINK_PATH_CONSTRAINT_NEVER, DOWNLINK_PATH_CONSTRAINT_NONE, DOWNLINK_PATH_CONSTRAINT_PREFER_OTHER
+      --downlink-path-constraint string                                      allowed values: DOWNLINK_PATH_CONSTRAINT_NONE, DOWNLINK_PATH_CONSTRAINT_PREFER_OTHER, DOWNLINK_PATH_CONSTRAINT_NEVER
       --enforce-duty-cycle                                                   
       --frequency-plan-id string                                             
       --frequency-plan-ids strings                                           
@@ -45,16 +44,16 @@ ttn-lw-cli gateways set [gateway-id] [flags]
       --gateway-server-address string                                        
   -h, --help                                                                 help for set
       --lbs-lns-secret.key-id string                                         
-      --lbs-lns-secret.value string                                          (hex)
+      --lbs-lns-secret.value bytesHex                                        
       --location-public                                                      
       --lrfhss.supported                                                     
       --name string                                                          
       --require-authenticated-connection                                     
-      --schedule-anytime-delay duration                                      (1h2m3s)
+      --schedule-anytime-delay duration                                      
       --schedule-downlink-late                                               
       --status-public                                                        
       --target-cups-key.key-id string                                        
-      --target-cups-key.value string                                         (hex)
+      --target-cups-key.value bytesHex                                       
       --target-cups-uri string                                               
       --technical-contact.ids.organization-ids.organization-id string        
       --technical-contact.ids.user-ids.email string                          

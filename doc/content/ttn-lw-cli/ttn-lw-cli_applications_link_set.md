@@ -15,10 +15,10 @@ ttn-lw-cli applications link set [application-id] [flags]
 
 ```
       --application-id string                                           
-      --default-formatters.down-formatter string                        allowed values: FORMATTER_CAYENNELPP, FORMATTER_GRPC_SERVICE, FORMATTER_JAVASCRIPT, FORMATTER_NONE, FORMATTER_REPOSITORY
+      --default-formatters.down-formatter string                        allowed values: FORMATTER_NONE, FORMATTER_REPOSITORY, FORMATTER_GRPC_SERVICE, FORMATTER_JAVASCRIPT, FORMATTER_CAYENNELPP
       --default-formatters.down-formatter-parameter string              
       --default-formatters.down-formatter-parameter-local-file string   (local file name)
-      --default-formatters.up-formatter string                          allowed values: FORMATTER_CAYENNELPP, FORMATTER_GRPC_SERVICE, FORMATTER_JAVASCRIPT, FORMATTER_NONE, FORMATTER_REPOSITORY
+      --default-formatters.up-formatter string                          allowed values: FORMATTER_NONE, FORMATTER_REPOSITORY, FORMATTER_GRPC_SERVICE, FORMATTER_JAVASCRIPT, FORMATTER_CAYENNELPP
       --default-formatters.up-formatter-parameter string                
       --default-formatters.up-formatter-parameter-local-file string     (local file name)
   -h, --help                                                            help for set

@@ -14,26 +14,25 @@ ttn-lw-cli applications webhooks set [application-id] [webhook-id] [flags]
 ### Options
 
 ```
-      --application-id string                                          
-      --base-url string                                                
-      --downlink-ack.path string                                       
-      --downlink-api-key string                                        
-      --downlink-failed.path string                                    
-      --downlink-nack.path string                                      
-      --downlink-queue-invalidated.path string                         
-      --downlink-queued.path string                                    
-      --downlink-sent.path string                                      
-      --format string                                                  
-      --headers strings                                                key=value
-      --health-status.status.unhealthy.failed-attempts uint            
-      --health-status.status.unhealthy.last-failed-attempt-at string   (YYYY-MM-DDTHH:MM:SSZ)
-  -h, --help                                                           help for set
-      --join-accept.path string                                        
-      --location-solved.path string                                    
-      --service-data.path string                                       
-      --template-ids.template-id string                                
-      --uplink-message.path string                                     
-      --webhook-id string                                              
+      --application-id string                    
+      --base-url string                          
+      --downlink-ack.path string                 
+      --downlink-api-key string                  
+      --downlink-failed.path string              
+      --downlink-nack.path string                
+      --downlink-queue-invalidated.path string   
+      --downlink-queued.path string              
+      --downlink-sent.path string                
+      --format string                            
+      --headers stringToString                   
+  -h, --help                                     help for set
+      --join-accept.path string                  
+      --location-solved.path string              
+      --service-data.path string                 
+      --template-fields stringToString           
+      --template-ids.template-id string          
+      --uplink-message.path string               
+      --webhook-id string                        
 ```
 
 ### Options inherited from parent commands

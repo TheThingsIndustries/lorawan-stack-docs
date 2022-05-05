@@ -26,7 +26,7 @@ ttn-lw-cli users get [user-id] [flags]
       --password-updated-at                  select the password_updated_at field
       --primary-email-address                select the primary_email_address field
       --primary-email-address-validated-at   select the primary_email_address_validated_at field
-      --profile-picture                      select the profile_picture field
+      --profile-picture                      select the profile_picture field and all allowed sub-fields
       --require-password-update              select the require_password_update field
       --state                                select the state field
       --state-description                    select the state_description field
