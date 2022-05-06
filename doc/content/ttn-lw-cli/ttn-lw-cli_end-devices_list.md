@@ -29,7 +29,7 @@ ttn-lw-cli end-devices list [application-id] [flags]
       --network-server-address         select the network_server_address field
       --order string                   order by this field
       --page uint32                    results page number (default 1)
-      --picture                        select the picture field
+      --picture                        select the picture field and all allowed sub-fields
       --service-profile-id             select the service_profile_id field
       --version-ids                    select the version_ids field and all allowed sub-fields
       --version-ids.band-id            select the version_ids.band_id field

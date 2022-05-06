@@ -14,23 +14,21 @@ ttn-lw-cli users create [user-id] [flags]
 ### Options
 
 ```
-      --admin                                       
-      --attributes strings                          key=value
-      --deleted-at string                           (YYYY-MM-DDTHH:MM:SSZ)
-      --description string                          
-  -h, --help                                        help for create
-      --invitation-token string                     
-      --name string                                 
-      --password string                             
-      --primary-email-address string                
-      --primary-email-address-validated-at string   (YYYY-MM-DDTHH:MM:SSZ)
-      --profile-picture string                      upload the profile picture from this file
-      --require-password-update                     
-      --state string                                allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED (default "STATE_APPROVED")
-      --state-description string                    
-      --temporary-password string                   
-      --temporary-password-expires-at string        (YYYY-MM-DDTHH:MM:SSZ)
-      --user-id string                              
+      --admin                                          
+      --attributes stringToString                      
+      --description string                             
+  -h, --help                                           help for create
+      --invitation-token string                        
+      --name string                                    
+      --password string                                
+      --primary-email-address string                   
+      --primary-email-address-validated-at timestamp   
+      --profile-picture string                         upload the profile picture from this file
+      --require-password-update                        
+      --state string                                   allowed values: STATE_REQUESTED, STATE_APPROVED, STATE_REJECTED, STATE_FLAGGED, STATE_SUSPENDED
+      --state-description string                       
+      --temporary-password string                      
+      --user-id string                                 
 ```
 
 ### Options inherited from parent commands

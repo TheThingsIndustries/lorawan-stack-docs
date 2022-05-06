@@ -36,6 +36,7 @@ ttn-lw-cli packetbroker home-networks gateway-visibilities set default [flags]
       --all                 
       --antenna-count       
       --antenna-placement   
+      --contact-info        
       --fine-timestamps     
       --frequency-plan      
   -h, --help                help for set

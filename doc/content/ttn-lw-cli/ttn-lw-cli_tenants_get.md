@@ -28,7 +28,7 @@ ttn-lw-cli tenants get [tenant-id] [flags]
       --billing.provider.stripe.plan-id                                                          select the billing.provider.stripe.plan_id field
       --billing.provider.stripe.subscription-id                                                  select the billing.provider.stripe.subscription_id field
       --billing.provider.stripe.subscription-item-id                                             select the billing.provider.stripe.subscription_item_id field
-      --capabilities                                                                             select the capabilities field and all allowed sub-fields
+      --capabilities                                                                             select the capabilities field
       --configuration                                                                            select the configuration field and all allowed sub-fields
       --configuration.clusters                                                                   select the configuration.clusters field
       --configuration.default-cluster                                                            select the configuration.default_cluster field and all allowed sub-fields

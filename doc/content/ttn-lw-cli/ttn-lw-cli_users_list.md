@@ -18,19 +18,20 @@ ttn-lw-cli users list [flags]
       --all                                  select all user fields
       --attributes                           select the attributes field
       --contact-info                         select the contact_info field
-      --deleted                              return recently deleted
+      --deleted                              
       --deleted-at                           select the deleted_at field
       --description                          select the description field
+      --field-mask strings                   
   -h, --help                                 help for list
-      --limit uint32                         maximum number of results to get (default 50)
+      --limit uint32                         
       --name                                 select the name field
-      --order string                         order by this field
-      --page uint32                          results page number (default 1)
+      --order string                         
+      --page uint32                          
       --password                             select the password field
       --password-updated-at                  select the password_updated_at field
       --primary-email-address                select the primary_email_address field
       --primary-email-address-validated-at   select the primary_email_address_validated_at field
-      --profile-picture                      select the profile_picture field
+      --profile-picture                      select the profile_picture field and all allowed sub-fields
       --require-password-update              select the require_password_update field
       --state                                select the state field
       --state-description                    select the state_description field

@@ -16,7 +16,7 @@ ttn-lw-cli applications packages associations get [application-id] [device-id] [
 ```
       --all                     select all application package association fields
       --application-id string   
-      --data                    select the data field and all allowed sub-fields
+      --data                    select the data field
       --device-id string        
       --f-port uint8            
   -h, --help                    help for get

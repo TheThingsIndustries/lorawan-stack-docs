@@ -17,8 +17,7 @@ ttn-lw-cli organizations create [organization-id] [flags]
       --administrative-contact.ids.organization-ids.organization-id string   
       --administrative-contact.ids.user-ids.email string                     
       --administrative-contact.ids.user-ids.user-id string                   
-      --attributes strings                                                   key=value
-      --deleted-at string                                                    (YYYY-MM-DDTHH:MM:SSZ)
+      --attributes stringToString                                            
       --description string                                                   
   -h, --help                                                                 help for create
       --name string                                                          

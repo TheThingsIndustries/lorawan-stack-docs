@@ -15,7 +15,7 @@ ttn-lw-cli tenants search [flags]
 
 ```
       --attributes                                                                               select the attributes field
-      --attributes-contain stringToString                                                        (key=value) (default [])
+      --attributes-contain stringToString                                                        
       --billing                                                                                  select the billing field and all allowed sub-fields
       --billing-identifiers                                                                      select the billing_identifiers field and all allowed sub-fields
       --billing-identifiers.billing-id                                                           select the billing_identifiers.billing_id field
@@ -29,7 +29,7 @@ ttn-lw-cli tenants search [flags]
       --billing.provider.stripe.plan-id                                                          select the billing.provider.stripe.plan_id field
       --billing.provider.stripe.subscription-id                                                  select the billing.provider.stripe.subscription_id field
       --billing.provider.stripe.subscription-item-id                                             select the billing.provider.stripe.subscription_item_id field
-      --capabilities                                                                             select the capabilities field and all allowed sub-fields
+      --capabilities                                                                             select the capabilities field
       --configuration                                                                            select the configuration field and all allowed sub-fields
       --configuration.clusters                                                                   select the configuration.clusters field
       --configuration.default-cluster                                                            select the configuration.default_cluster field and all allowed sub-fields
@@ -76,12 +76,13 @@ ttn-lw-cli tenants search [flags]
       --configuration.pb                                                                         select the configuration.pb field and all allowed sub-fields
       --configuration.pb.listed                                                                  select the configuration.pb.listed field
       --contact-info                                                                             select the contact_info field
-      --deleted                                                                                  return recently deleted
+      --deleted                                                                                  
       --description                                                                              select the description field
       --description-contains string                                                              
+      --field-mask strings                                                                       
   -h, --help                                                                                     help for search
       --id-contains string                                                                       
-      --limit uint32                                                                             maximum number of results to get (default 50)
+      --limit uint32                                                                             
       --max-applications                                                                         select the max_applications field
       --max-clients                                                                              select the max_clients field
       --max-end-devices                                                                          select the max_end_devices field
@@ -90,10 +91,9 @@ ttn-lw-cli tenants search [flags]
       --max-users                                                                                select the max_users field
       --name                                                                                     select the name field
       --name-contains string                                                                     
-      --order string                                                                             order by this field
-      --page uint32                                                                              results page number (default 1)
-      --query string                                                                             
-      --state strings                                                                            allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED
+      --order string                                                                             
+      --page uint32                                                                              
+      --state strings                                                                            allowed values: STATE_REQUESTED, STATE_APPROVED, STATE_REJECTED, STATE_FLAGGED, STATE_SUSPENDED
       --state-description                                                                        select the state_description field
 ```
 

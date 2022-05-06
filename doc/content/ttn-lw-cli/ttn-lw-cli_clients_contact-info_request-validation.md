@@ -14,12 +14,12 @@ ttn-lw-cli clients contact-info request-validation [client-id] [flags]
 ### Options
 
 ```
-      --contact-method string   allowed values: CONTACT_METHOD_EMAIL, CONTACT_METHOD_OTHER, CONTACT_METHOD_PHONE
-      --contact-type string     allowed values: CONTACT_TYPE_ABUSE, CONTACT_TYPE_BILLING, CONTACT_TYPE_OTHER, CONTACT_TYPE_TECHNICAL
-  -h, --help                    help for request-validation
-      --public                  
-      --validated-at string     (YYYY-MM-DDTHH:MM:SSZ)
-      --value string            
+      --contact-method string    allowed values: CONTACT_METHOD_OTHER, CONTACT_METHOD_EMAIL, CONTACT_METHOD_PHONE
+      --contact-type string      allowed values: CONTACT_TYPE_OTHER, CONTACT_TYPE_ABUSE, CONTACT_TYPE_BILLING, CONTACT_TYPE_TECHNICAL
+  -h, --help                     help for request-validation
+      --public                   
+      --validated-at timestamp   
+      --value string             
 ```
 
 ### Options inherited from parent commands
