@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.19.0</p>
+        <p class="navbar-item is-size-7">v3.19.1</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -140,55 +140,21 @@
 <div class="whats-new">
   <div class="whats-new-content">
     <div class="whats-new-header">
-      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.19.0/>What's new in V3.19.0</a></h2>
+      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.19.1/>What's new in V3.19.1</a></h2>
       <a href="https://www.thethingsindustries.com/docs/whats-new/"><p class="see-more">See all release notes →</p></a>
     </div>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.19.0/">
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.19.1/">
       <div class="whats-new-body">
         <div class="whats-new-items-shadow whats-new-items-fade">
           <div class="whats-new-items">
-            <h3 id="added">Added</h3>
+            <h3 id="changed">Changed</h3>
 <ul>
-<li>Session management page in Account App.</li>
-<li>Status page references in the Console.</li>
-<li>Notification Service API that will allow users to receive notifications about their registered entities.
-<ul>
-<li>This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>) because of the added tables.</li>
-</ul>
-</li>
-<li>Cluster setting <code>cluster.cluster-id-address-template</code> that can be used as a Go template to construct the cluster address from a cluster ID. Example value is <code>{{.}}.thethings.example.com</code> where <code>{{.}}</code> gets replaced by the configured cluster ID.</li>
-<li>Packet Broker setting <code>pba.cluster-id-from-address</code> can be used to construct the Cluster ID from the configured cluster address. This requires <code>cluster.cluster-id-address-template</code> to be set.</li>
-<li>Add <code>network_server_address</code>, <code>application_server_address</code> and <code>join_server_address</code> to applications.
-<ul>
-<li>This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>) because of the added columns.</li>
-</ul>
-</li>
-<li>New ADR settings API, which allows stronger control over the ADR algorithm.
-<ul>
-<li>The new settings fields can be found under <code>mac-settings.adr</code>, and are mutually exclusive with <code>use-adr</code> and <code>adr-margin</code>. The legacy settings need to be unset before the new API options may be used.</li>
-<li><code>mac-settings.adr.mode.disabled</code> completely disables the ADR algorithm.</li>
-<li><code>mac-settings.adr.mode.static.data-rate-index</code>, <code>mac-settings.adr.mode.static.nb-trans</code>, <code>mac-settings.adr.mode.static.tx-power-index</code> allow the user to provide static ADR parameters to be negotiated with the end device. These options persist over multiple sessions and do not require a session reset in order to be propagated to the current session.</li>
-<li><code>mac-settings.adr.mode.dynamic.min-data-rate-index</code> and <code>mac-settings.adr.mode.dynamic.max-data-rate-index</code> control the data rate index range which the Network Server will attempt to negotiate with the end device. Note that if the provided interval is disjoint with the available data rate indices, no negotiation will take place.</li>
-<li><code>mac-settings.adr.mode.dynamic.min-tx-power-index</code> and <code>mac-settings.adr.mode.dynamic.max-tx-power-index</code> have similar behavior, but for transmission power indices.</li>
-<li><code>mac-settings.adr.mode.dynamic.min-nb-trans</code> and <code>mac-settings.adr.mode.dynamic.max-nb-trans</code> have similar behavior, but for NbTrans.</li>
-<li><code>mac-settings.adr.mode.dynamic.margin</code> may be used to provide the margin of the ADR algorithm. It replaces the old <code>adr-margin</code> setting.</li>
-<li><code>use-adr</code> and <code>adr-margin</code> are still supported, but deprecated. Any future API usage should instead use the <code>mac-settings.adr</code> settings.</li>
-</ul>
-</li>
-</ul>
-<h3 id="changed">Changed</h3>
-<ul>
-<li>Sortable tables are now sorted by default in the Console</li>
+<li>Application Server now decodes downlink if a downlink decoder is present and binary payload is scheduled.</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>Console determining gateways as &ldquo;Other cluster&rdquo; even though using the same host if server addresses not matching exactly (e.g. due to using different host or scheme).</li>
-<li>Inconsistency in setting gateway&rsquo;s LNS Auth key in the Console.</li>
-<li>CLI no longer informs the user that is using the default JoinEUI when passing its value via flags.</li>
-<li>Generating device ID from a DevEUI when importing a CSV file.</li>
-<li>The <code>is-db migrate</code> command that failed when running on databases created by <code>v3.18</code>.</li>
-<li>Some error messages being displayed as <code>error:undefined:undefined</code> in the Console, e.g. in the live data view.</li>
-<li>Missing <code>query</code> flag on CLI search commands.</li>
+<li>End devices frame counts being displayed as <code>n/a</code> when event stream contained historical data message events.</li>
+<li>Gateway general settings (Basic settings) not saving changes in some cases.</li>
 </ul>
 
           </div>
@@ -206,7 +172,7 @@
 <a href="https://www.thethingsindustries.com/docs/whats-new/">
   <div class="whats-new-800">
     <div class="whats-new-header-800">
-      <p>See what's new in V3.19.0</p>
+      <p>See what's new in V3.19.1</p>
       <p>-></p>
     </div>
   </div>

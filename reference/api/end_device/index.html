@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.19.0</p>
+        <p class="navbar-item is-size-7">v3.19.1</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -1805,6 +1805,208 @@ This reverts the authorization given with rpc AuthorizeApplication.
       </th>
       <td>
         <p><code>GET</code> <code>/api/v3/dr/applications/{application_ids.application_id}/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/formatters/downlink/encoder</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="the-enddeviceqrcodegenerator-service">The <code>EndDeviceQRCodeGenerator</code> service</h2>
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>EndDeviceQRCodeGenerator.GetFormat</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Return the QR code format.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GetQRCodeFormatRequest"><code>GetQRCodeFormatRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:QRCodeFormat"><code>QRCodeFormat</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/qr-codes/end-devices/formats/{format_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>EndDeviceQRCodeGenerator.ListFormats</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Returns the supported formats.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:QRCodeFormats"><code>QRCodeFormats</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/qr-codes/end-devices/formats</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>EndDeviceQRCodeGenerator.Generate</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Generates a QR code.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GenerateEndDeviceQRCodeRequest"><code>GenerateEndDeviceQRCodeRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:GenerateQRCodeResponse"><code>GenerateQRCodeResponse</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/qr-codes/end-devices</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>EndDeviceQRCodeGenerator.Parse</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Parse QR Codes of known formats and return the information contained within.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:ParseEndDeviceQRCodeRequest"><code>ParseEndDeviceQRCodeRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:ParseEndDeviceQRCodeResponse"><code>ParseEndDeviceQRCodeResponse</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/qr-code/end-devices/parse</code></p>
+        <p><code>POST</code> <code>/api/v3/qr-code/end-devices/{format_id}/parse</code></p>
       </td>
     </tr>
   </tbody>
@@ -7432,6 +7634,9 @@ This field is set by the Application Server and stored in the Identity Server.</
   "hardware_version": "",
   "firmware_version": "",
   "band_id": "",
+  "vendor_id": 0,
+  "vendor_profile_id": 0,
+  "serial_number": "",
 }</code></pre>
 </details>
 
@@ -7599,6 +7804,107 @@ This field is set by the Application Server and stored in the Identity Server.</
       </th>
       <td>
           <p><code>max_len</code>: <code>32</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>vendor_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>VendorID managed by the LoRa Alliance, as defined in TR005.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>vendor_profile_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>ID of the LoRaWAN end device profile assigned by the vendor.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>serial_number</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>ignore_empty</code></p>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
       </td>
     </tr>
     
@@ -9023,6 +9329,325 @@ This field is set by the Application Server and stored in the Identity Server.</
       <td>
           <p>The names of the end device fields that should be returned.
 See the API reference for which fields can be returned by the different services.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:GetQRCodeFormatRequest">Message <code>GetQRCodeFormatRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "format_id": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>format_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>QR code format identifier. Enumerate available formats with rpc ListFormats in the EndDeviceQRCodeGenerator service.</p>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:GenerateEndDeviceQRCodeRequest">Message <code>GenerateEndDeviceQRCodeRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "format_id": "",
+  "end_device": {},
+  "image": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>format_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>QR code format identifier. Enumerate available formats with rpc ListFormats in the EndDeviceQRCodeGenerator service.</p>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>end_device</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:EndDevice">
+  
+  <code>
+    
+    EndDevice
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>End device to use as input to generate the QR code.</p>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>image</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:GenerateEndDeviceQRCodeRequest.Image">
+  
+  <code>
+    
+    GenerateEndDeviceQRCodeRequest.Image
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>If set, the server will render the QR code image according to these settings.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:GenerateEndDeviceQRCodeRequest.Image">Message <code>GenerateEndDeviceQRCodeRequest.Image</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "image_size": 0,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>image_size</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Requested QR code image dimension in pixels.</p>
+          <p><code>gte</code>: <code>10</code></p>
+          <p><code>lte</code>: <code>1000</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:ParseEndDeviceQRCodeRequest">Message <code>ParseEndDeviceQRCodeRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "format_id": "",
+  "qr_code": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>format_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>QR code format identifier.
+Enumerate available formats with the rpc <code>ListFormats</code>.
+If this field is not specified, the server will attempt to parse the data with each known format.</p>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$|^$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>qr_code</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Raw QR code contents.</p>
+          <p><code>max_len</code>: <code>1024</code></p>
+          <p><code>min_len</code>: <code>10</code></p>
       </td>
     </tr>
     
@@ -25610,6 +26235,14 @@ Set by Network Server.</p>
 
 	
 
+	
+
+	
+
+	
+
+	
+
 
         </div>
         <div class="is-clearfix">
@@ -25651,6 +26284,9 @@ Set by Network Server.</p>
     
       
       <li><a href='#the-devicerepository-service'>The DeviceRepository service</a></li>
+    
+      
+      <li><a href='#the-enddeviceqrcodegenerator-service'>The EndDeviceQRCodeGenerator service</a></li>
     
       
       <li><a href='#messages'>Messages</a></li>
@@ -25696,10 +26332,10 @@ Set by Network Server.</p>
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 27 Apr 2022.
+  Last changed by Nejra Selimović on 06 May 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/dcf9a1a743e932e073ec1c338e1d6cd19d9bf2ab">
-      doc: Add v3.19.0 release docs (#860)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/cf0b7efec7b6017421acdda1abd00c66cfb9a5fa">
+      doc: Add v3.19.1 release documentation (#864)
     </a>
 </p>
 
