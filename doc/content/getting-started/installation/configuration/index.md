@@ -203,8 +203,6 @@ as passwords for endpoints that you may want to keep for the internal use.
 You can use Sendgrid or an SMTP server. If you skip setting up an email provider,
 {{% tts %}} will print emails to the stack logs.
 
-See [Email Templates]({{< ref "/reference/email-templates" >}}) section for additional info.
-
 ### Component URLs
 
 Finally, the `console` section configures the URLs for the Web UI and the secret used
