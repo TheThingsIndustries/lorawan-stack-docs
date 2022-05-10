@@ -200,8 +200,8 @@ as passwords for endpoints that you may want to keep for the internal use.
 ### Email
 
 {{% tts %}} sends emails to users, so the `email` section of the configuration defines how these are sent.
-You can use Sendgrid or an SMTP server. If you skip setting up an email provider,
-{{% tts %}} will print emails to the stack logs.
+You can use Sendgrid or an SMTP server. For development purposes, you can use the `dir` provider that writes emails to a directory.
+If you skip setting up an email provider, {{% tts %}} will print emails to the stack logs.
 
 ### Component URLs
 

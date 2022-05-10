@@ -18,7 +18,7 @@ The Identity Server needs to be connected to a PostgreSQL-compatible database. D
 
 ## Email Options
 
-The Identity Server can be configured with different providers for sending emails. Currently the `sendgrid` and `smtp` providers are implemented.
+The Identity Server can be configured with different providers for sending emails. Currently the `sendgrid`, `smtp` and `dir` providers are implemented.
 
 - `is.email.provider`: Email provider to use
 
@@ -33,6 +33,10 @@ When `smtp` is used as provider, provide the address of the SMTP server (`host:p
 - `is.email.smtp.username`: Username to authenticate with
 - `is.email.smtp.password`: Password to authenticate with
 - `is.email.smtp.connections`: Maximum number of connections to the SMTP server
+
+When `dir` is used as provider, provide the path to the local directory where email messages should be written to.
+
+- `is.email.dir`: Path to the local directory where email messages should be written to {{< new-in-version "3.19" >}}
 
 The email address and name of the sender should be configured regardless of the provider that is used.
 
