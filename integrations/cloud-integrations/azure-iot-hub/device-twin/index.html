@@ -124,6 +124,11 @@
   </li>
 
   <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-central/" class="">Azure IoT Central</a>
+    
+  </li>
+
+  <li>
     <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/" class="">Azure IoT Hub</a>
     
     
@@ -387,6 +392,59 @@
 </figure>
 
 <p>A downlink message will be generated in The Things Stack.</p>
+<h2 id="message-filters-hahahugoshortcode-s14-hbhb">Message Filters <span class="tag is-light">New in 3.19.1</span>
+
+</h2>
+<p>The Azure IoT Hub integration can be configured such that it sends only certain message types to the Azure IoT Hub. There are two message filters available: one for the device events (also known as device to cloud messages), and one for the Device Twin reported properties.</p>
+<p>Go to your application in The Things Stack Console, navigate to <strong>Integrations → Azure IoT</strong> on the left hand menu and click on <strong>Expand</strong> next to <strong>Azure IoT Hub</strong>.</p>
+<figure><img src="../filters.png"
+         alt="Message Filters"/>
+</figure>
+
+<p>Click on <strong>Enable/Update Azure IoT Hub integration</strong> in order to save the filters.</p>
+<h2 id="raw-downlinks-hahahugoshortcode-s17-hbhb">Raw Downlinks <span class="tag is-light">New in 3.19.2</span>
+
+</h2>
+<p>It is possible to schedule &ldquo;raw&rdquo; downlinks using the Device Twin desired properties. The <code>rawDownlink</code> property allows this behavior using the following object structure:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;rawDownlink&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fPort&#34;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;framePayload&#34;</span><span class="p">:</span> <span class="s2">&#34;BEEF&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;confirmed&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;operation&#34;</span><span class="p">:</span> <span class="s2">&#34;replace&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The fields have the following semantics:</p>
+<ul>
+<li><code>fPort</code>: the frame port of the downlink. Defaults to 0.</li>
+<li><code>framePayload</code>: the binary frame payload, in base 16. Defaults to an empty frame.</li>
+<li><code>confirmed</code>: if the downlink should be confirmed. Defaults to <code>false</code>.</li>
+<li><code>operation</code>: the downlink operation type. Supported values are <code>push</code> and <code>replace</code>. Defaults to <code>push</code>.</li>
+</ul>
+<p>Note that the semantics of the <code>rawDownlink</code> and <code>decodedPayload</code> fields follow the semantics of an application downlink. Specifically, if a decoded payload is provided, and a downlink encoder is available, the frame port may be omitted, as the downlink encoder may output it automatically based on the <code>decodedPayload</code>.</p>
+<p>If one would like to schedule a downlink only with a binary payload, the <code>decodedPayload</code> should be explicitly set to <code>null</code>, and the <code>fPort</code> should be explicitly provided:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;rawDownlink&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fPort&#34;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;framePayload&#34;</span><span class="p">:</span> <span class="s2">&#34;BEEF&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;confirmed&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;operation&#34;</span><span class="p">:</span> <span class="s2">&#34;replace&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;decodedPayload&#34;</span><span class="p">:</span> <span class="kc">null</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>It is also possible to mix and match the two fields. If one would like to schedule a confirmed downlink, replacing the existing downlink queue, with a LED state payload, the following payload may be provided:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;rawDownlink&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fPort&#34;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;framePayload&#34;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;confirmed&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;operation&#34;</span><span class="p">:</span> <span class="s2">&#34;replace&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;decodedPayload&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;ledState&#34;</span><span class="p">:</span> <span class="s2">&#34;on&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The explicit <code>null</code> values are required in order to signal to Azure IoT Hub that the values should not be present. Otherwise, updating only the relevant fields would cause the two objects to be merged, having unintended side effects.</p>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/azure-iot-hub/devices/">← Managing Devices</a>
@@ -454,10 +512,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Adrian-Stefan Mares on 06 Oct 2021.
+  Last changed by Adrian-Stefan Mares on 11 May 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/e24ba6c1874756816fa3d90932fc5024fc53bf89">
-      Release v3.15.1 (#599)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/9d03917734b052669afe65d44c16b234709bbd33">
+      Improve Azure IoT documentation (#866)
     </a>
 </p>
 
