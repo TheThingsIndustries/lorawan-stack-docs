@@ -376,7 +376,7 @@
 : Read-Only database connection URI</li>
 </ul>
 <h2 id="email-options">Email Options</h2>
-<p>The Identity Server can be configured with different providers for sending emails. Currently the <code>sendgrid</code> and <code>smtp</code> providers are implemented.</p>
+<p>The Identity Server can be configured with different providers for sending emails. Currently the <code>sendgrid</code>, <code>smtp</code> and <code>dir</code> providers are implemented.</p>
 <ul>
 <li><code>is.email.provider</code>: Email provider to use</li>
 </ul>
@@ -392,6 +392,12 @@
 <li><code>is.email.smtp.password</code>: Password to authenticate with</li>
 <li><code>is.email.smtp.connections</code>: Maximum number of connections to the SMTP server</li>
 </ul>
+<p>When <code>dir</code> is used as provider, provide the path to the local directory where email messages should be written to.</p>
+<ul>
+<li><code>is.email.dir</code>: Path to the local directory where email messages should be written to <span class="tag is-light">New in 3.19</span>
+
+</li>
+</ul>
 <p>The email address and name of the sender should be configured regardless of the provider that is used.</p>
 <ul>
 <li><code>is.email.sender-address</code>: The address of the sender</li>
@@ -403,17 +409,31 @@
 <li><code>is.email.network.identity-server-url</code>: The URL of the Identity Server</li>
 <li><code>is.email.network.console-url</code>: The URL of the Console</li>
 </ul>
-<p>Although The Things Stack comes with a number of builtin email templates, it is possible to override those with custom templates. You can specify the source where to load templates from, and options for that source. For more information on email templates, see the <a href="https://www.thethingsindustries.com/docs/reference/email-templates/">email templates reference</a>.</p>
+<p>Although The Things Stack comes with a number of builtin email templates, it is possible to override those with custom templates. You can specify the source where to load templates from, and options for that source. For more information on email templates, see the <a href="https://www.thethingsindustries.com/docs/reference/email-templates/">email templates reference</a>. <span class="tag is-danger is-light">Removed in 3.19</span>
+
+</p>
 <ul>
-<li><code>is.email.templates.source</code>: Source of the email template files (directory, url, blob)</li>
-<li><code>is.email.templates.directory</code>: Directory on the filesystem where email templates are located</li>
-<li><code>is.email.templates.url</code>: URL where email templates are located</li>
-<li><code>is.email.templates.blob.bucket</code>: Bucket where email templates are located</li>
-<li><code>is.email.templates.blob.path</code>: Path within the bucket.</li>
+<li><code>is.email.templates.source</code>: Source of the email template files (directory, url, blob) <span class="tag is-danger is-light">Deprecated in 3.19</span>
+
+</li>
+<li><code>is.email.templates.directory</code>: Directory on the filesystem where email templates are located <span class="tag is-danger is-light">Deprecated in 3.19</span>
+
+</li>
+<li><code>is.email.templates.url</code>: URL where email templates are located <span class="tag is-danger is-light">Deprecated in 3.19</span>
+
+</li>
+<li><code>is.email.templates.blob.bucket</code>: Bucket where email templates are located <span class="tag is-danger is-light">Deprecated in 3.19</span>
+
+</li>
+<li><code>is.email.templates.blob.path</code>: Path within the bucket <span class="tag is-danger is-light">Deprecated in 3.19</span>
+
+</li>
 </ul>
 <p>If your custom templates rely on other files, such as headers or footers, those files need to be included.</p>
 <ul>
-<li><code>is.email.templates.includes</code>: The email templates that will be preloaded on startup</li>
+<li><code>is.email.templates.includes</code>: The email templates that will be preloaded on startup <span class="tag is-danger is-light">Deprecated in 3.19</span>
+
+</li>
 </ul>
 <h2 id="oauth-ui-options">OAuth UI Options</h2>
 <p>The OAuth user interface needs to be configured with at least the canonical URL and the base URL of the Identity Server&rsquo;s HTTP API. The canonical URL needs to be the full URL of the UI, and looks like <code>https://thethings.example.com/oauth</code>. The base URL of the Identity Server&rsquo;s HTTP API looks like <code>https://thethings.example.com/api/v3</code>.</p>
@@ -812,10 +832,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 30 Mar 2022.
+  Last changed by Hylke Visser on 12 May 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/077a39a95e121ec18e2a034fca19db748350a348">
-      doc: Add missing config options (#831)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b63f4173b1deca9cfc1fd7ed993a34b616f25d4">
+      Remove references to customizable email templates (#861)
     </a>
 </p>
 
