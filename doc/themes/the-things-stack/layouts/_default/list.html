@@ -14,7 +14,7 @@
         <h1 class="title is-size-2">{{ .Title }}
           {{ $context := . }}
         </h1>
-        {{ if or .Params.distributions (or .Params.new_in_version .Params.deprecated_in_version) }}
+        {{ if or .Params.distributions (or .Params.new_in_version .Params.deprecated_in_version .Params.removed_in_version) }}
         <h2 class="subtitle">
           {{ with .Params.distributions }}
             {{ $distributions := .}}
@@ -25,6 +25,9 @@
           {{ end }}
           {{ with .Params.deprecated_in_version }}
             {{ partial "deprecated-in-version" .}}
+          {{ end }}
+          {{ with .Params.removed_in_version }}
+            {{ partial "removed-in-version" .}}
           {{ end }}
         </h2>
         {{ end }}
