@@ -60,7 +60,7 @@ When finished editing the JSON `properties.desired` object, click on **Save** in
 
 A downlink message will be generated in {{% tts %}}.
 
-## Message Filters {{< new-in-version "3.19.1" >}}
+## Message Filters {{< new-in-version "3.19.2" >}}
 
 The Azure IoT Hub integration can be configured such that it sends only certain message types to the Azure IoT Hub. There are two message filters available: one for the device events (also known as device to cloud messages), and one for the Device Twin reported properties.
 
