@@ -150,7 +150,7 @@ tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=$ID,--name=$NAME,--
 - Replace `--tenant-id=NULL` with `--tenant-id=$TENANT_ID` in single-tenant deployments.
 - Replace the values of `$ID`, `$NAME` and `$CLIENT_SECRET` with your own. `id` and `secret` can be found in the `<network>-<environment>-<cluster>-console-oauth-client` secret in the AWS Secrets Manager.
 - For secondary clusters (where the domain of the Console is not equal to the domain of the Identity Server), omit `--redirect-uri=/console/oauth/callback` and `--logout-redirect-uri=/console`.
-- You can use a similar command for the Device Claiming server if you use `/claim` instead of `/console` for the redirect URIs.
+- You can use a similar command for the Device Claiming server and Network Operations Center if you use `/claim` and `/noc` instead of `/console` for the redirect URIs.
 {{</ note >}}
 
 ## Create Admin User
