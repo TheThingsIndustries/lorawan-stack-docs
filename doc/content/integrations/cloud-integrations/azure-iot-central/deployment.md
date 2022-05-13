@@ -4,7 +4,7 @@ description: ""
 weight: 20
 ---
 
-Learn how to deploy the Azure IoT Ce4ntral integration for {{% tts %}}.
+Learn how to deploy the Azure IoT Central integration for {{% tts %}}.
 
 <!--more-->
 
