@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.96.0" />
-  <title>Deployment Guide | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/deployment/" />
+  <title>akenza | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/akenza/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Deployment Guide">
+  <meta itemprop="name" content="akenza">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Deployment Guide">
+  <meta property="og:title" content="akenza">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/deployment/">
-  <meta name="twitter:title" content="Deployment Guide" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/akenza/">
+  <meta name="twitter:title" content="akenza" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -104,7 +104,12 @@
 <ul class="menu-list">
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/akenza/" class="">akenza</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/akenza/" class="is-active">akenza</a>
+    
+    
+
+
+
     
   </li>
 
@@ -130,50 +135,6 @@
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/" class="">Azure IoT Hub</a>
-    
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/architecture/" class="">Architecture</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/deployment/" class="is-active">Deployment Guide</a>
-    
-    
-
-
-
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/devices/" class="">Managing Devices</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/device-twin/" class="">Messages and Device Twin</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/update/" class="">Update</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/azure-iot-hub/uninstall/" class="">Uninstall</a>
-    
-  </li>
-
-</ul>
-
-
     
   </li>
 
@@ -333,70 +294,51 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Deployment Guide
+        <h1 class="title is-size-2">akenza
           
         </h1>
         
         <div class="content">
-          <p>Learn how to deploy the Azure IoT Hub integration for The Things Stack.</p>
+          <p><a href="https://akenza.io/">akenza</a> is an IoT platform designed to help you develop your own smart solutions. It connects your sensors, manages the connectivity layer, processes your data and makes it accessible to your cloud application.</p>
+<p>This guide will help you set up an integration between The Things Stack and akenza.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
-<li>Access to an Azure account. <a href="https://signup.azure.com/">Create a new account</a></li>
-<li>An application in The Things Stack. <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/">See instructions</a></li>
+<li>A <a href="https://auth.akenza.io/login">user account on akenza</a>, with an organizationa and a workspace set up.</li>
 </ol>
-<h2 id="create-api-key">Create API Key</h2>
-<p>Go to your application in The Things Stack Console, navigate to <strong>Integrations → Azure IoT</strong> on the left hand menu and click on <strong>Expand</strong> next to <strong>Azure IoT Hub</strong>. Now click on <strong>Generate API Key</strong>.</p>
-<figure><img src="../create-api-key.png"
-         alt="Create API key"/>
+<h2 id="akenza-integration-setup">akenza integration setup</h2>
+<p>If you are a new akenza user, and you just set up your organization and your workspace, you will be presented with two options to continue, as shown on the image below. Choose the <strong>Import existing LoRa Devices</strong> option.</p>
+<p>If you had an akenza organization and workspace set up before, then navigate to the <strong>Integrations</strong> tab on the left hand menu in your akenza workspace.</p>
+<figure><img src="import-lora-devices.png"
+         alt="Import LoRa devices"/>
 </figure>
 
-<p>Copy the generated API key and store it in a safe place, because you will need it in the next section.</p>
-<p>Leave the integration page open, as you will need to copy in your <strong>Azure IoT Hub hostname</strong> and <strong>Azure IoT Hub access key</strong> before saving the integration.</p>
-<h2 id="deploy-azure-resource-manager-template">Deploy Azure Resource Manager Template</h2>
-<p><a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fttsiothubintegration.blob.core.windows.net%2Fintegration-releases%2Flatest%2Fmain.json" target="_blank" class="button is-primary">Deploy template</a></p>
-<p>View template as <a href="https://ttsiothubintegration.blob.core.windows.net/integration-releases/latest/main.json">JSON</a> or <a href="https://ttsiothubintegration.blob.core.windows.net/integration-releases/latest/main.bicep">Bicep</a></p>
-<h3 id="settings">Settings</h3>
-<p>The following parameters configure the integration:</p>
-<ul>
-<li><strong>Location</strong>: The region in which the Azure resources will be deployed. Defaults to the region used by the selected Resource Group.</li>
-<li><strong>Name Suffix</strong>: The suffix added to the Azure Resources. Defaults to a random string.</li>
-<li><strong>Stack Cluster Address</strong>: The address of your The Things Stack deployment. Can be retrieved from the <strong>Azure IoT</strong> integration page in The Things Stack (see image above).</li>
-<li><strong>Stack Application ID</strong>: The application ID of your application. Can be retrieved from the <strong>Azure IoT</strong> integration page in The Things Stack (see image above).</li>
-<li><strong>Stack API Key</strong>: The application API key that you generated in the previous step.</li>
-<li><strong>Enable fallback route</strong>: Defines if the Azure IoT Hub fallback route should be added. If enabled, uplink messages will be submitted to the default <code>events</code> endpoint in your Azure IoT Hub.</li>
-</ul>
-<figure><img src="../deploy-template.png"
-         alt="Deploy Azure Resource Manager Template"/>
+<p>Next step is to create the integration, so hit the <strong>+ Create Integration</strong> button.</p>
+<p>In the <strong>Connectivity provider</strong> menu, choose <strong>The Things Stack</strong>.</p>
+<figure><img src="connectivity-provider.png"
+         alt="Choosing connectivity provider"/>
 </figure>
 
-<p>Click <strong>Review + Create</strong>, then <strong>Create</strong>.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Creating all resources can take up to five minutes.  ☕
-</div>
-
-<p>When the deployment is done, you&rsquo;ll see the status <code>Your deployment is complete</code>.</p>
-<figure><img src="../deployment-done.png"
-         alt="Deployment Done"/>
+<p>To configure The Things Stack integration, you first have to choose the host, i.e. The Things Stack cluster, depending on your region.</p>
+<p>Then, choose the desired <strong>Authentication</strong> method. If you choose the <strong>Application ID / API Key</strong> authentication for example, you will need to provide your The Things Stack application ID in the <strong>Application ID</strong> field. You will also need to provide an <strong>API key</strong> from The Things Stack that you have previously created in your The Things Stack application.</p>
+<figure><img src="tts-integration.png"
+         alt="Set up The Things Stack integration"/>
 </figure>
 
-<p>After the deployment has finished, click <strong>Outputs</strong>.</p>
-<figure><img src="../deployment-outputs.png"
-         alt="Deployment Outputs"/>
+<p>Finally, just fill in the <strong>Integration name</strong>, click <strong>Next</strong> and finish with <strong>Done</strong> button.</p>
+<p>After this process is completed, the initial synchronization will start, and after a few minutes (depending on how many devices your The Things Stack application contains), the devices will automatically become available on akenza. If you look under <strong>Integrations → Webhooks</strong> in your The Things Stack application, you will see that an akenza Webhook was automatically created.</p>
+<figure><img src="tts-webhook.png"
+         alt="akenza Webhook on The Things Stack"/>
 </figure>
 
-<p>The two outputs can now be copied into your integration settings as <strong>Azure IoT Hub hostname</strong> and <strong>Azure IoT Hub access key</strong>. Click on <strong>Enable/Update Azure IoT Hub integration</strong>.</p>
-<figure><img src="../add-keys.png"
-         alt="Add Deployment Outputs"/>
+<p>If you navigate to the <strong>Assets</strong> tab on the left hand menu in akenza, you will a list of devices, which are now available for management via akenza. Select a desired device to see its <strong>Connectivity Details</strong> or to send a <strong>Downlink</strong> to it.</p>
+<p>Next time your device sends an uplink to The Things Stack, you will be able to observe it in the <strong>Logs</strong> tab on the left hand menu in akenza.</p>
+<figure><img src="observe-uplink.png"
+         alt="Observing uplinks"/>
 </figure>
-
-<blockquote>
-<p>Congratulations! 🎉 You have now set up the Azure IoT Hub integration for The Things Stack!</p>
-</blockquote>
         </div>
         <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/azure-iot-hub/architecture/">← Architecture</a>
-<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/azure-iot-hub/devices/">Managing Devices →</a>
+<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/">← Cloud Integrations</a>
+<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/allthingstalk/">AllThingsTalk Maker →</a>
 </div>
 
         <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -420,10 +362,7 @@
       <li><a href='#prerequisites'>Prerequisites</a></li>
     
       
-      <li><a href='#create-api-key'>Create API Key</a></li>
-    
-      
-      <li><a href='#deploy-azure-resource-manager-template'>Deploy Azure Resource Manager Template</a></li>
+      <li><a href='#akenza-integration-setup'>akenza integration setup</a></li>
     
   </ul>
 
@@ -463,14 +402,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Adrian-Stefan Mares on 11 May 2022.
+  Last changed by Nejra Selimović on 19 May 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/9d03917734b052669afe65d44c16b234709bbd33">
-      Improve Azure IoT documentation (#866)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/56878fde5f3f3c9d40045592a9760a557514833e">
+      doc: Update akenza documentation (#868)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/cloud-integrations/azure-iot-hub/deployment.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/cloud-integrations/akenza/index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
