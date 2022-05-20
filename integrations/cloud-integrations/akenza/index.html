@@ -324,17 +324,43 @@
          alt="Set up The Things Stack integration"/>
 </figure>
 
-<p>Finally, just fill in the <strong>Integration name</strong>, click <strong>Next</strong> and finish with <strong>Done</strong> button.</p>
+<p>Finally, just fill in the <strong>Integration name</strong>, click <strong>Next</strong> and finish with <strong>Done</strong> button. In this example, the integration name is <code>tts-integration-demo</code>.</p>
 <p>After this process is completed, the initial synchronization will start, and after a few minutes (depending on how many devices your The Things Stack application contains), the devices will automatically become available on akenza. If you look under <strong>Integrations → Webhooks</strong> in your The Things Stack application, you will see that an akenza Webhook was automatically created.</p>
 <figure><img src="tts-webhook.png"
          alt="akenza Webhook on The Things Stack"/>
 </figure>
 
-<p>If you navigate to the <strong>Assets</strong> tab on the left hand menu in akenza, you will a list of devices, which are now available for management via akenza. Select a desired device to see its <strong>Connectivity Details</strong> or to send a <strong>Downlink</strong> to it.</p>
-<p>Next time your device sends an uplink to The Things Stack, you will be able to observe it in the <strong>Logs</strong> tab on the left hand menu in akenza.</p>
-<figure><img src="observe-uplink.png"
-         alt="Observing uplinks"/>
+<p>If you navigate to the <strong>Assets</strong> tab on the left hand menu in akenza, you will a list of devices, which are now available in akenza. However, a few more steps are needed for the integration to function properly.</p>
+<p>Navigate to the <strong>Data Flows</strong> tab on the left hand menu and click the <strong>+ Create Data Flow</strong> button. You will be presented with a few data flow templates, but make sure you click the <strong>+ Create new Data Flow</strong> button, as shown on the image below.</p>
+<figure><img src="create-data-flow.png"
+         alt="Creating a data flow"/>
 </figure>
+
+<p>In the <strong>Device connector</strong> section, choose <strong>LoRa → The Things Stack → TTN Connector</strong> and then choose the connector named after the akenza integration you created above. In this example, the connector is named <code>TTN Connector - tts-integration-demo</code>.</p>
+<p>Finally, choose an <strong>Output connector</strong>. In this example, we use the <code>akenza DB</code> data sink.</p>
+<p>Finish with the <strong>Save Data Flow</strong> button. Now you will need to associate this data flow with your device.</p>
+<figure><img src="data-flow-structure.png"
+         alt="Data Flow structure"/>
+</figure>
+
+<p>Navigate to the <strong>Assets</strong> tab on the left hand menu and select your device. To edit your device, click on <strong>More → Edit</strong> in the top right corner.</p>
+<figure><img src="device-edit.png"
+         alt="Editing device"/>
+</figure>
+
+<p>In your device&rsquo;s settings, scroll down to the <strong>Data Processing</strong> section, click on <strong>Data Flow</strong> and make sure you choose the data flow you created in previous step.</p>
+<figure><img src="data-processing.png"
+         alt="Data processing configuration"/>
+</figure>
+
+<p>Finish by clicking <strong>Update device</strong> in the top right corner. Immediately after updating, you will see that new options are available in your device&rsquo;s overview page such as <strong>Data Overview</strong> and <strong>Message Logs</strong>. Your akenza device is now fully capable of receiving uplinks and sending downlinks to the end device connected to The Things Stack.</p>
+<figure><img src="message-logs.png"
+         alt="Observing message logs"/>
+</figure>
+
+<blockquote>
+<p>Visit the <a href="https://docs.akenza.io/">official Akenza documentation page</a> for more information on managing integrations, data flows, devices and rules on akenza.</p>
+</blockquote>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/">← Cloud Integrations</a>
@@ -402,10 +428,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 19 May 2022.
+  Last changed by Nejra Selimović on 20 May 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/56878fde5f3f3c9d40045592a9760a557514833e">
-      doc: Update akenza documentation (#868)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2b05d113ff1c47b30f60c269b24fec61b099e906">
+      doc: Update akenza doc with data flow part (#873)
     </a>
 </p>
 
