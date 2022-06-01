@@ -1,7 +1,7 @@
 ---
 title: "CSV File Reference"
 description: ""
-weight: 8
+weight: 9
 ---
 
 {{% tts %}} has support for importing end devices from CSV (comma-separated values) files. This is useful when batches of end devices are managed in Microsoft Excel or any other spreadsheet or database that can export to CSV file.

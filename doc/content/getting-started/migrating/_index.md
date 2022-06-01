@@ -9,6 +9,6 @@ This guide documents the process of migrating end devices and gateways to {{% tt
 
 <!--more-->
 
-End devices from [{{% ttnv2 %}}]({{< relref "migrating-from-v2" >}}) or any other LoRaWAN network (like [Chirpstack]({{< relref "migrate-from-chirpstack" >}})) can be migrated to {{% tts %}}. Migrating devices can be done in two ways - [manually via {{% tts %}} Console]({{< relref "migrate-using-console" >}}) or by [using `ttn-lw-migrate` tool]({{< relref "migrate-using-migration-tool" >}}), depending on how many devices and from which network you are migrating from.
+End devices can be migrated from one {{% tts %}} deployment to another (e.g. [from {{% tts %}} Community Edition to {{% tts %}} Cloud]({{< ref "/getting-started/migrating/migrating-from-ce-to-ch" >}})), from any other LoRaWAN network (like [Chirpstack]({{< relref "migrate-from-chirpstack" >}})), as well as from [legacy {{% ttnv2 %}} deployment]({{< relref "migrating-from-v2" >}}).
 
-In this section, we first consider migrating end devices, then migrating gateways.
+Depending on how many devices you are migrating and which network you are migrating from, there are multiple migration methods you can apply. Find your specific use case in subsections below and learn how to migrate your devices to a desired {{% tts %}} deployment.

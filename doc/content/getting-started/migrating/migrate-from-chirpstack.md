@@ -1,7 +1,7 @@
 ---
 title: "Migrating End Devices from ChirpStack"
 description: ""
-weight: 3
+weight: 2
 aliases: "/getting-started/migrating-from-networks/migrate-from-chirpstack"
 ---
 

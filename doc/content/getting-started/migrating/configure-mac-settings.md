@@ -1,6 +1,6 @@
 ---
 title: Fine-tuning MAC Settings for End Devices
-weight: 5
+weight: 6
 aliases: "/getting-started/migrating-from-v2/configure-mac-settings"
 ---
 

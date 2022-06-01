@@ -1,6 +1,6 @@
 ---
 title: Import End Devices in The Things Stack
-weight: 4
+weight: 5
 aliases: ["/getting-started/migrating-from-v2/import-devices", "/getting-started/migrating-from-networks/import-devices"]
 ---
 
