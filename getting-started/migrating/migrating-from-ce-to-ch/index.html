@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.96.0" />
-  <title>Migration Tool | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/" />
+  <title>Migrating End Devices from Community Edition to Cloud | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Migration Tool">
+  <meta itemprop="name" content="Migrating End Devices from Community Edition to Cloud">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Migration Tool">
+  <meta property="og:title" content="Migrating End Devices from Community Edition to Cloud">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/">
-  <meta name="twitter:title" content="Migration Tool" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/">
+  <meta name="twitter:title" content="Migrating End Devices from Community Edition to Cloud" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -116,7 +116,26 @@
 <ul class="menu-list">
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/" class="">Migrating End Devices from Community Edition to Cloud</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/" class="is-active">Migrating End Devices from Community Edition to Cloud</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/migrate-active-session/" class="">Migrate Active Device Session</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/establish-new-session/" class="">Migrate Without Persisting Active Session</a>
+    
+  </li>
+
+</ul>
+
+
     
   </li>
 
@@ -131,12 +150,7 @@
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/" class="is-active">Migration Tool</a>
-    
-    
-
-
-
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/" class="">Migration Tool</a>
     
   </li>
 
@@ -222,43 +236,117 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Migration Tool
+        <h1 class="title is-size-2">Migrating End Devices from Community Edition to Cloud
           
         </h1>
         
+        <h2 class="subtitle">
+          
+            
+            
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+  
+
+  
+
+<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud and Community Only">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_ttn.svg"></img>
+
+</a>
+
+
+          
+          
+          
+          
+        </h2>
+        
         <div class="content">
-          <p><a href="https://github.com/TheThingsNetwork/lorawan-stack-migrate"><code>ttn-lw-migrate</code></a> is a tool that can be used for migrating end devices and applications from V2 and other supported LoRaWAN networks (like ChirpStack) to The Things Stack. This section provides a few ways to install this tool.</p>
-<p>This tool is used for exporting descriptions of end devices and applications to a <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON file</a>, that can later be <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">imported in The Things Stack</a>.</p>
-<h2 id="installation">Installation</h2>
-<p>The migration tool can be installed using package managers or manually from binary files. The following subsections contain instructions for recommended installation methods depending on your OS.</p>
-<p>We highly recommend installing or upgrading to <code>ttn-lw-migrate</code> version <code>0.5.0</code> or newer, because some features like session migration are not available for prior versions.</p>
-<h3 id="macos">macOS</h3>
-<p>To install <code>ttn-lw-migrate</code> tool with <code>brew</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">brew install TheThingsNetwork/homebrew-lorawan-stack/ttn-lw-migrate
-</span></span></code></pre></div><p>To upgrade <code>ttn-lw-migrate</code> tool if updates are available:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">brew upgrade TheThingsNetwork/homebrew-lorawan-stack/ttn-lw-migrate
-</span></span></code></pre></div><h3 id="linux">Linux</h3>
-<p>To install <code>ttn-lw-migrate</code> tool with <code>snap</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo snap install ttn-lw-migrate
-</span></span></code></pre></div><p>To upgrade <code>ttn-lw-migrate</code> tool if updates are available:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo snap refresh ttn-lw-migrate
-</span></span></code></pre></div><h3 id="windows">Windows</h3>
-<p>Download the zipped archive with binary files for Windows from <a href="https://github.com/TheThingsNetwork/lorawan-stack-migrate/releases">Github</a>.</p>
-<p>Extract the folder from ZIP archive and enter the folder. Double-click to run the <code>ttn-lw-migrate.exe</code> executable file.</p>
-<p>After this, you will be notified that you can run <code>ttn-lw-migrate</code> from the command prompt.</p>
-<h2 id="using-the-migration-tool">Using the Migration Tool</h2>
-<p>To use the <code>ttn-lw-migrate</code> tool after successful installation, use your terminal or command prompt to navigate to the folder where it is installed and run the commands from there. Run <code>ttn-lw-migrate help</code> to see all available commands and flags.</p>
-<p>To list available sources that you can migrate your end devices and applications from:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-migrate sources
-</span></span></code></pre></div><p>Currently, supported sources are <code>ttnv2</code> and <code>chirpstack</code>.</p>
-<p>For detailed instructions on migrating from V2 and ChirpStack, read <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/">Migrating End Devices from V2</a> and <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrate-from-chirpstack/">Migrating End Devices from ChirpStack</a> guides.</p>
+          <p>This section explains how to migrate your devices from <a href="https://www.thethingsindustries.com/docs/getting-started/ttn/">The Things Stack Community Edition</a> to <a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/">The Things Stack Cloud</a>.</p>
+<p>You can migrate your devices from The Things Stack Community Edition to The Things Stack Cloud using The Things Stack <a href="https://www.thethingsindustries.com/docs/getting-started/console/">Console</a>, the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">CLI</a> or the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/">migration tool</a>, depending on if you want to migrate them with or without their existing session, and how many devices you wish to migrate.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ol>
+<li>A user account on The Things Stack Community Edition with an application containing registered devices.</li>
+<li>A user account on The Things Stack Cloud.</li>
+</ol>
+<p>We recommend testing migration on a single end device or a small batch of end devices in order to make sure the migration process goes as expected.</p>
+<h2 id="add-application-in-the-things-stack-cloud">Add Application in The Things Stack Cloud</h2>
+<p>You first need to add a new application in The Things Stack Cloud. See <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/">Adding Applications</a> for detailed instructions.</p>
+<p>When adding an application in The Things Stack Cloud, the Application ID does not have to be the same as the one in The Things Stack Community Edition.</p>
+<h2 id="add-payload-formatters-and-integrations-in-the-things-stack-cloud">Add Payload Formatters and Integrations in The Things Stack Cloud</h2>
+<p>After creating an application in The Things Stack Cloud, you need to add the associated elements like application-level payload formatters and integrations. Commonly, you can copy-paste payload formatters from The Things Stack Community Edition to The Things Stack Cloud, and you can recreate all integrations on The Things Stack Cloud in the same way as you created them on The Things Stack Community Edition.</p>
+<p>See <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">Payload Formatters</a> and <a href="https://www.thethingsindustries.com/docs/integrations/">Integrations</a> for more info.</p>
+<h2 id="migrate-end-devices-and-gateways">Migrate End Devices and Gateways</h2>
+<p>Instructions for migrating your devices will differ depending on if you are using OTAA or ABP devices, and if you want to preserve their active session or not. Migrating your gateway will be needed in some cases. Choose your scenario and find the instructions in the following subsections.</p>
         </div>
-        <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/getting-started/migrating/migrating-from-v2/">← Migrating End Devices from V2</a>
-<a class="button is-pulled-right" href="/docs/getting-started/migrating/import-devices/">Import End Devices in The Things Stack →</a>
+        
+          <div class="columns is-multiline">
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/migrate-active-session/">Migrate Active Device Session</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            This section explains how to migrate end devices from The Things Stack Community Edition to The Things Stack Cloud while persisting sessions that were already established between those devices and The Things Stack.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/migrate-active-session/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/establish-new-session/">Migrate Without Persisting Active Session</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            This section explains how to migrate end devices from The Things Stack Community Edition to The Things Stack Cloud without persisting sessions that were established between those devices and The Things Stack.
+
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/establish-new-session/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+        
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/getting-started/migrating/">← Migrating to The Things Stack</a>
+<a class="button is-pulled-right" href="/docs/getting-started/migrating/migrating-from-ce-to-ch/migrate-active-session/">Migrate Active Device Session →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
 <script src="https://cdn.emojicom.io/embed/widget.js" async></script>
 
 <div class='feedback has-vertical-space'>
@@ -276,10 +364,16 @@
   <ul class="menu-list">
     
       
-      <li><a href='#installation'>Installation</a></li>
+      <li><a href='#prerequisites'>Prerequisites</a></li>
     
       
-      <li><a href='#using-the-migration-tool'>Using the Migration Tool</a></li>
+      <li><a href='#add-application-in-the-things-stack-cloud'>Add Application in The Things Stack Cloud</a></li>
+    
+      
+      <li><a href='#add-payload-formatters-and-integrations-in-the-things-stack-cloud'>Add Payload Formatters and Integrations in The Things Stack Cloud</a></li>
+    
+      
+      <li><a href='#migrate-end-devices-and-gateways'>Migrate End Devices and Gateways</a></li>
     
   </ul>
 
@@ -319,14 +413,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 23 Dec 2021.
+  Last changed by Nejra Selimović on 01 Jun 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
-      doc: Remove $ character from code blocks, add variables (#678)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b96c8e75c162c24633ccfd590f6457fc61a6ac09">
+      doc: Add instructions to migrate from Community Edition to Cloud (#858)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/migrating/migration-tool.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/migrating/migrating-from-ce-to-ch/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>

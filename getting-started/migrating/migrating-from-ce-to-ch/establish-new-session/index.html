@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.96.0" />
+  <title>Migrate Without Persisting Active Session | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/establish-new-session/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Migrate Without Persisting Active Session">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Migrate Without Persisting Active Session">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/establish-new-session/">
+  <meta name="twitter:title" content="Migrate Without Persisting Active Session" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body><nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.19.1</p>
+      </a><div class="navbar-item navbar-search-brand">
+        <div class="field has-addons has-addons-centered">
+          <div class="control">
+            <input id="search-input-brand" class="input search-bar" type="text" placeholder="Search the docs..." type="text">
+          </div>
+        </div>
+      </div>
+      
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a><div class="navbar-item navbar-search-menu">
+            <div class="field has-addons has-addons-centered">
+              <div class="control">
+                <input id="search-input-menu" class="input search-bar" type="text" placeholder="Search the docs..." type="text">
+              </div>
+            </div>
+          </div></div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://accounts.thethingsindustries.com/fee-calculator">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+  <script type="text/javascript">
+    docsearch({
+      apiKey: "4372282a02970d8402d43457bf95d486",
+      indexName: "thethingsstack",
+      inputSelector: '#search-input-brand',
+      debug: false 
+    });
+    docsearch({
+      apiKey: "4372282a02970d8402d43457bf95d486",
+      indexName: "thethingsstack",
+      inputSelector: '#search-input-menu',
+      debug: false 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Getting Started</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/getting-started/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/quick-start/" class="">Quick Start</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/what-is-tts/" class="">What Is The Things Stack?</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/console/" class="">Console</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/cli/" class="">Command-line Interface</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/installation/" class="">Installing The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/upgrading/" class="">Upgrading The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/" class="">Migrating to The Things Stack</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/" class="">Migrating End Devices from Community Edition to Cloud</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/migrate-active-session/" class="">Migrate Active Device Session</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/establish-new-session/" class="is-active">Migrate Without Persisting Active Session</a>
+    
+    
+
+
+
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrate-from-chirpstack/" class="">Migrating End Devices from ChirpStack</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/" class="">Migrating End Devices from V2</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/" class="">Migration Tool</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/" class="">Import End Devices in The Things Stack</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/configure-mac-settings/" class="">Fine-tuning MAC Settings for End Devices</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/" class="">Migrating Gateways</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/" class="">JSON File Reference</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-csv/" class="">CSV File Reference</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/faq/" class="">Migration FAQ</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/" class="">The Things Stack Cloud</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/" class="">The Things Stack AWS Launcher</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/ttn/" class="">The Things Network</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/server-addresses/" class="">Server Addresses</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/" class="">Packet Broker</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/sso/" class="">Single Sign-On</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/user-management/" class="">Users and Organizations</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/api/" class="">Using the API</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/events/" class="">Working with Events</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/troubleshooting/" class="">Troubleshooting Getting Started</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        <h1 class="title is-size-2">Migrate Without Persisting Active Session
+          
+        </h1>
+        
+        <div class="content">
+          <p>This section explains how to migrate end devices from The Things Stack Community Edition to The Things Stack Cloud without persisting sessions that were established between those devices and The Things Stack.</p>
+<p>Read the instructions below for your specific device.</p>
+<h2 id="otaa">OTAA</h2>
+<p>Migrating an OTAA device without persisting its active session means the device will establish a new session with The Things Stack Cloud, i.e. it will have to perform a new join on The Things Stack Cloud network after migration. The device will negotiate about network parameters with The Things Stack Cloud Network Server, and during that negotiation, the device will be assigned with a new DevAddr from The Things Stack Cloud DevAddr block.</p>
+<p>Since The Things Stack Community Edition and The Things Stack Cloud are both connected to Packet Broker, Packet Broker will be able to route your device&rsquo;s traffic to The Things Stack Cloud even if your gateway stays connected to The Things Stack Community Edition, i.e. you don&rsquo;t have to migrate your gateway to The Things Stack Cloud, only your device. However, if you want to migrate your gateway to The Things Stack Cloud too, see <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">Migrating Gateways</a> for instructions.</p>
+<p>To migrate your OTAA device from The Things Stack Community Edition to The Things Stack Cloud without an active session, follow the steps described below.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="console">
+      <a>
+        <span>Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="cli">
+      <a>
+        <span>CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="console">
+  <p>Using the Console is covenient only when you have a few devices to migrate. For larger groups of devices, we recommend using the CLI or the migration tool. Migration tool support will be available soon.</p>
+<p>Recreate your device on The Things Stack Cloud. See <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> for instructions on creating a device. You can reuse the DevEUI, AppEUI/JoinEUI and AppKey values from The Things Stack Community Edition. You can also generate new values for these parameters on The Things Stack Cloud, but then you will need to re-program your OTAA device using those values.</p>
+</section>
+<section data-content="cli">
+  <p>First, configure your CLI to connect to The Things Stack Community Edition. See <a href="https://www.thethingsindustries.com/docs/getting-started/cli/configuring-cli/">Configuring the CLI</a> guide for instructions. Make sure you also perform a <a href="https://www.thethingsindustries.com/docs/getting-started/cli/login/">Login with the CLI</a> to The Things Stack Community Edition.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  We recommend to use the latest version of the CLI. Instructions for upgrading the CLI if you already have it installed are available in the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/login/">Installing the CLI</a> guide.
+</div>
+<p>Now, use the CLI to export your device&rsquo;s description from The Things Stack Community Edition:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices get --application-id &lt;app-id&gt; --device-id &lt;device-id&gt; <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --name <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --description <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --lorawan-version <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --lorawan-phy-version <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --frequency-plan-id <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --supports-join <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --root-keys <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --mac-settings &gt; device-description.json
+</span></span></code></pre></div><p>The command above will export your device&rsquo;s description to the <code>device-description.json</code> file in the current folder. Open the file with a text editor and remove the following fields: <code>join_server_address</code>, <code>network_server_address</code> and <code>application_server_address</code>.</p>
+<p>Next, you need to import the <code>device-description.json</code> file in your The Things Stack Cloud application. See instructions on how to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">Import End Devices in The Things Stack</a>. Keep in mind that if you are using the CLI to import devices, you first have to re-configure it to connect to The Things Stack Cloud.</p>
+</section>
+
+</div>
+
+<p>When your device is registered in The Things Stack Cloud, you need to prevent it from re-joining The Things Stack Community Edition network. To do so, you can change your OTAA device&rsquo;s AppKey on The Things Stack Community Edition (under device&rsquo;s <strong>General settings → Join Settings → AppKey</strong>) or completely delete your device from The Things Stack Community Edition.</p>
+<p>Finally, your device needs to perform a new join on The Things Stack Cloud network. Some OTAA devices will perform an automatic re-join after they are deleted from The Things Stack Community Edition, but some devices need to be triggered, e.g. by sending a downlink to it, by power cycling it, etc. You should see a Join Request from your device coming in The Things Stack Cloud.</p>
+<p>After joining The Things Stack Cloud network, you will see uplinks arriving from your device.</p>
+<h2 id="abp">ABP</h2>
+<p>Migrating an ABP device without persisting its active session means its session and MAC state parameters will be reset, or the device will be completely re-programmed with new session parameters.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Migrating devices without persisting active sessions is the preferred migration method. For ABP devices, we also advise to re-program the device using session parameters generated on The Things Stack Cloud, if possible. For devices that can be re-programmed, it is also recommended to change their activation method from ABP to OTAA.
+</div>
+
+<p>Let&rsquo;s first assume that you are able to re-program your ABP device with new DevAddr, NwkSKey and AppSKey issued by The Things Stack Cloud.</p>
+<p>Since The Things Stack Community Edition and The Things Stack Cloud are both connected to Packet Broker, and your ABP device will be re-programmed with a new DevAddr from The Things Stack Cloud DevAddr block, Packet Broker will be able to route your device&rsquo;s traffic to The Things Stack Cloud even if your gateway stays connected to The Things Stack Community Edition, i.e. you don&rsquo;t have to migrate your gateway to The Things Stack Cloud, only your device. However, if you want to migrate your gateway to The Things Stack Cloud too, see <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">Migrating Gateways</a> for instructions.</p>
+<p>The process of migrating your ABP device from The Things Stack Community Edition to The Things Stack Cloud without its active session and by re-programming it is the most straightforward if you use the The Things Stack Console.</p>
+<p>Create a new ABP device on The Things Stack Cloud. See <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> for instructions on creating a device. Generate new DevAddr, AppSKey and NwkSKey values while creating the device.</p>
+<p>Now re-program your ABP device with newly created DevAddr, AppSKey and NwkSKey values from The Things Stack Cloud. You should immediately see uplinks arriving from your device to The Things Stack Cloud.</p>
+<p>However, if you don&rsquo;t want to re-program your device, i.e. you want to keep the DevAddr, AppSKey and NwkSKey from The Things Stack Community Edition, read the instructions below.</p>
+<hr>
+<p>Now let&rsquo;s assume that you want to migrate your ABP device to The Things Stack Cloud in such manner that it keeps its DevAddr, NwkSKey and AppSKey it was programmed with upon its registration on The Things Stack Community Edition network.</p>
+<p>Note that The Things Stack Community Edition and The Things Stack Cloud use different DevAddr blocks. Since Packet Broker routes traffic according to the DevAddr blocks, in this case it won&rsquo;t be able to route your device&rsquo;s traffic properly, because of the Community Edition-related DevAddr. To successfully migrate your ABP device while keeping these parameters, you also need to migrate your gateway to The Things Stack Cloud. See instructions for <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">Migrating Gateways</a>. The ideal scenario would be to migrate your gateway and your device simultaneously.</p>
+<p>To migrate your ABP device with preserving its DevAddr, NwkSKey and AppSKey, from The Things Stack Community Edition to The Things Stack Cloud, follow the steps described below. Keep in mind that the existing session will be violated because you will need to reset frame counters for your device, hence we refer to this as migrating without an active session.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="console">
+      <a>
+        <span>Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="cli">
+      <a>
+        <span>CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="console">
+  <p>Using the Console is covenient only when you have a few devices to migrate. For larger groups of devices, we recommend using the CLI or the migration tool. Migration tool support will be available soon.</p>
+<p>Recreate your device on The Things Stack Cloud. See <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> for instructions on creating a device. Reuse the DevEUI, DevAddr, AppSKey and NwkSKey values from The Things Stack Community Edition.</p>
+<p>Navigate to <strong>General settings → Network Layer → Advanced MAC settings</strong> and enable the <strong>Resets frame counters</strong> option.</p>
+</section>
+<section data-content="cli">
+  <p>First, configure your CLI to connect to The Things Stack Community Edition. See <a href="https://www.thethingsindustries.com/docs/getting-started/cli/configuring-cli/">Configuring the CLI</a> guide for instructions. Make sure you also perform a <a href="https://www.thethingsindustries.com/docs/getting-started/cli/login/">Login with the CLI</a> to The Things Stack Community Edition.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  We recommend to use the latest version of the CLI. Instructions for upgrading the CLI if you already have it installed are available in the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/login/">Installing the CLI</a> guide.
+</div>
+<p>Now, use the CLI to export your device&rsquo;s description from The Things Stack Community Edition:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices get --application-id &lt;app-id&gt; --device-id &lt;device-id&gt; <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --name  
+</span></span><span class="line"><span class="cl">    --description   
+</span></span><span class="line"><span class="cl">    --lorawan-version <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --lorawan-phy-version <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --frequency-plan-id <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --supports-join <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --root-keys <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --mac-settings <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --session.dev-addr <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --session.keys &gt; device-description.json
+</span></span></code></pre></div><p>The command above will export your device&rsquo;s description to the <code>device-description.json</code> file in the current folder. Open the file with a text editor and remove the following fields: <code>join_server_address</code>, <code>network_server_address</code> and <code>application_server_address</code>. Also, set the <code>mac-settings.resets-f-cnt</code> field value to <code>true</code>.</p>
+<p>Next, you need to import the <code>device-description.json</code> file in your The Things Stack Cloud application. See instructions on how to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">Import End Devices in The Things Stack</a>. Keep in mind that if you are using the CLI to import devices, you first have to re-configure it to connect to The Things Stack Cloud.</p>
+</section>
+
+</div>
+
+<p>When your device is registered in The Things Stack Cloud, you need to completely delete it from The Things Stack Community Edition network to prevent conflicts. You will also need to reset your ABP device.</p>
+<p>If you also migrated your gateway, you will immediately see uplinks arriving from your device.</p>
+        </div>
+        
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/getting-started/migrating/migrating-from-ce-to-ch/migrate-active-session/">← Migrate Active Device Session</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#otaa'>OTAA</a></li>
+    
+      
+      <li><a href='#abp'>ABP</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/ttn-network/v3/90">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Nejra Selimović on 01 Jun 2022.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b96c8e75c162c24633ccfd590f6457fc61a6ac09">
+      doc: Add instructions to migrate from Community Edition to Cloud (#858)
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/migrating/migrating-from-ce-to-ch/establish-new-session/_index.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>
