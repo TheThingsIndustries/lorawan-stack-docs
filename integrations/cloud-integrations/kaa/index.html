@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.96.0" />
-  <title>Widgelix | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/widgelix/" />
+  <title>Kaa | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/kaa/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
-  <meta name="description" content="">
+  <meta name="description" content="The Things Stack for LoRaWAN">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Widgelix">
-  <meta itemprop="description" content="">
+  <meta itemprop="name" content="Kaa">
+  <meta itemprop="description" content="The Things Stack for LoRaWAN">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Widgelix">
-  <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/widgelix/">
-  <meta name="twitter:title" content="Widgelix" />
-  <meta name="twitter:description" content="" />
+  <meta property="og:title" content="Kaa">
+  <meta property="og:description" content="The Things Stack for LoRaWAN">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/kaa/">
+  <meta name="twitter:title" content="Kaa" />
+  <meta name="twitter:description" content="The Things Stack for LoRaWAN" />
   <meta name="twitter:card" content="summary" />
 </head>
 
@@ -179,7 +179,12 @@
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/kaa/" class="">Kaa</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/kaa/" class="is-active">Kaa</a>
+    
+    
+
+
+
     
   </li>
 
@@ -239,12 +244,7 @@
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/widgelix/" class="is-active">Widgelix</a>
-    
-    
-
-
-
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/widgelix/" class="">Widgelix</a>
     
   </li>
 
@@ -299,76 +299,93 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Widgelix
+        <h1 class="title is-size-2">Kaa
           
         </h1>
         
         <div class="content">
-          <p><a href="https://widgelix.com/">Widgelix</a> is a flexible IoT service, which supports zero-code and low-code features, helps to connect any device and build custom applications for device management and data visualization.</p>
+          <p>This section shows how to implement an integration between The Things Stack and <a href="https://www.kaaiot.com/">Kaa IoT platform</a> in order to create a digital twin of your LoRa device and observe your device&rsquo;s telemetry in the Kaa web interface.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
-<li>A <a href="https://widgelix.com/register">user account on Widgelix</a>.</li>
+<li>A user account in the <a href="https://cloud.kaaiot.com/login">Kaa cloud</a>.</li>
 </ol>
-<h2 id="setup-widgelix">Setup Widgelix</h2>
-<h3 id="create-a-data-converter">Create a Data Converter</h3>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Skip this section if you are already decoding data on The Things Stack using <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">payload formatters</a>.
-</div>
-
-<p>Navigate to <strong>Data Converters</strong> on the left hand menu, then click <strong>Create Data Converter</strong>.
-Give a <strong>Name</strong> to your converter, then edit the default JavaScript converter code or create a new one.</p>
-<p>Optionally, you may provide a test payload and check the converter. The resulting output of your converter should be a flat JSON object.</p>
-<figure><img src="data-converter.png"
-         alt="Create Data Converter"/>
+<h2 id="setup-kaa">Setup Kaa</h2>
+<p>First, create an application in the Kaa cloud that will correspond your The Things Stack application. Let&rsquo;s name it <code>smart-home-application</code>.</p>
+<figure><img src="kaa-create-application.png"
+         alt="Create Kaa cloud app"/>
 </figure>
 
-<h3 id="create-device-type">Create Device Type</h3>
-<p>Device types allow to join same devices in a single group, manage simultaneously and assign <strong>Rules</strong>, <strong>Widget Sets</strong>, <strong>Data Converters</strong> and <strong>Data Flows</strong>.</p>
-<p>Navigate to <strong>Device Types</strong> on the left hand menu, then click <strong>Create Device Type</strong> button.</p>
-<p>Give a <strong>Name</strong> to your device type, and fill the <strong>Description</strong> and <strong>Manufacturer</strong> fields (optional).</p>
-<p>If you previously <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/widgelix/#create-a-data-converter">created a data converter</a>, you can assign it under <strong>Uplink Data Converter</strong>.
-In the <strong>Data Fields</strong> input, you need to provide all required keys from your resulting flat JSON object.</p>
-<figure><img src="device-type.png"
-         alt="Create Device Type"/>
+<p>Next, create the application version by clicking on the <strong>+</strong> button as shown on the image below.</p>
+<figure><img src="kaa-create-app-version.png"
+         alt="Create Kaa cloud app version"/>
 </figure>
 
-<h3 id="add-device">Add Device</h3>
-<p>Navigate to <strong>Devices</strong> on the left hand menu, then click the <strong>Create Device</strong> button.</p>
-<p>Give a <strong>Name</strong> to your device and provide its <strong>DevEUI</strong>. Assign the previously created <strong>Device Type</strong>.</p>
-<figure><img src="create-device.png"
-         alt="Create Device"/>
+<p>Navigate to <strong>MQTT</strong> under <strong>Integrations</strong> on the left hand menu in The Things Stack to obtain MQTT connection details needed to proceed with building the integration.</p>
+<figure><img src="ttn-connection-information.png"
+         alt="Integration connection information"/>
 </figure>
 
-<h3 id="create-data-flow">Create Data Flow</h3>
-<p>Navigate to <strong>Data Flows</strong> on the left hand menu, then click the <strong>Create New Data Flow</strong> button.</p>
-<p>Give a <strong>Name</strong> to your data flow, select <strong>LoRaWAN (TTN)</strong> connectivity and assign the previously created <strong>Device Type</strong>.</p>
-<figure><img src="create-data-flow.png"
-         alt="Create Data Flow"/>
+<p>Now you can configure the integration in Kaa. You can add it if you navigate to <strong>Device management</strong> on the left hand menu, then to <strong>Integrations</strong>. Fill in the following fields when registering the integration:</p>
+<ul>
+<li><strong>TTN Username</strong> - the MQTT <strong>Username</strong> from your The Things Stack application</li>
+<li><strong>TTN API key</strong> - the MQTT <strong>Password</strong> from your The Things Stack application</li>
+<li><strong>Identity Server Host</strong> - The Things Stack Identity Server host address (see the <a href="https://www.thethingsindustries.com/docs/getting-started/server-addresses/">Server Addresses section</a></li>
+<li><strong>MQTT Server Host</strong> - the MQTT <strong>Public address</strong> from your The Things Stack application</li>
+</ul>
+<figure><img src="kaa-create-app-integration.png"
+         alt="Create Kaa cloud app integration"/>
 </figure>
 
-<p>The new <strong>Data Flow</strong> will appear in the table of data flows. Click on your data flow and copy the <strong>Webhook path</strong> and the <strong>API key</strong> - you will need these values to set up The Things Stack Webhook integration.</p>
-<figure><img src="data-flow-credentials.png"
-         alt="Create Data Flow"/>
+<p>Press the <strong>Create</strong> button to finish creating the integration.</p>
+<p>After application integration is created, it iss possible to create device integrations, i.e. mappings between The Things Stack devices and Kaa endpoints.</p>
+<p>Go to the created application integration and create a device integration by choosing the application version and The Things Stack device that you want to integrate.</p>
+<figure><img src="kaa-create-dev-integration.png"
+         alt="Device integration creation"/>
 </figure>
 
-<h2 id="configure-the-things-stack">Configure The Things Stack</h2>
-<p>Now you are ready to instantiate the Widgelix <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a>. This will allow you to forward data from your The Things Stack device to <strong>Widgelix</strong>.</p>
-<p>On The Things Stack, navigate to <strong>Integrations → Webhooks</strong> and choose <strong>Widgelix</strong> Webhook template.</p>
-<p>Give a <strong>Webhook ID</strong> to your integration. Fill the <strong>Webhook path</strong> and the <strong>API token</strong> with values you previously copied from Widgelix.</p>
-<figure><img src="tts-widgelix.png"
-         alt="Widgelix integration on TTS"/>
+<p>On the image below, you can see that the device integration has been created and it appeared in the <strong>Devices</strong> list.</p>
+<figure><img src="kaa-dev-integrations.png"
+         alt="Device integrations"/>
 </figure>
 
-<p>Congrats, <strong>Widgelix</strong> is now ready to accept your device&rsquo;s uplinks! Navigate back to <strong>Devices</strong> on Widgelix, click on your device and you will be able to observe all the incoming data from your device.</p>
+<p>By navigating to <strong>Device management → Devices</strong>, you will find the endpoint that was automatically created during the integration creation. All incoming data from The Things Stack device will from now on be ingested under that endpoint.</p>
+<figure><img src="kaa-created-endpoint.png"
+         alt="Created endpoint"/>
+</figure>
+
+<h2 id="visualize-your-data">Visualize Your Data</h2>
+<p>Next, we want visualize some data from The Things Stack on Kaa UI. To do so, the Kaa application must first be prepared first.</p>
+<p>Edit the application configuration for the <a href="https://docs.kaaiot.io/KAA/docs/current/Features/Data-collection/EPTS">Endpoint Time Series service (EPTS)</a>. EPTS is a Kaa platform component responsible for transforming raw <a href="https://docs.kaaiot.io/KAA/docs/current/Kaa-concepts/#data-sample">data samples</a> into well-structured time series. It also stores the time series data and provides access to API for other services, including the <a href="https://docs.kaaiot.io/KAA/docs/current/Features/Visualization/WD">Web Dashboard</a>.</p>
+<p>Enable the <a href="https://docs.kaaiot.io/KAA/docs/current/Features/Data-collection/EPTS/Configuration/#time-series-auto-extraction">time series auto-extraction</a> from data samples for the previously specified Kaa application.</p>
+<figure><img src="kaa-epts-autoextract-config.png"
+         alt="Enable time series auto extract"/>
+</figure>
+
+<p>With this function enabled, Kaa will automatically create a time series for each numeric field that it encounters at the root of data samples submitted by your endpoints.
+You will then be able to view these time series in the Kaa UI, with no extra configuration required.</p>
+<p>Now navigate to the device details page of the endpoint created in previous steps. To do that, click on the corresponding row in the device table on the <strong>Devices</strong> dashboard. The data coming from The Things Stack device will be available on the <strong>Device telemetry</strong> widget.</p>
+<figure><img src="kaa-endpoint-no-data.png"
+         alt="Device telemetry - no data"/>
+</figure>
+
+<p>Let&rsquo;s assume that The Things Stack device is sending temperature measurements. You will need to use a <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">payload formatter</a> in order to get the data into a format recognizable by the Kaa platform, such as:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;temperature&#34;</span><span class="p">:</span><span class="mi">20</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>When some uplinks are sent from The Things Stack device, the visualized data on Kaa will look like on the image below.</p>
+<figure><img src="kaa-endpoint-data.png"
+         alt="Device telemetry - data"/>
+</figure>
+
+<p>Congratulations, you have successfully integrated The Things Stack with Kaa and visualized your data in the Kaa UI!</p>
+
         </div>
-        
-          <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/uib/">← UIB</a>
-<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/withthegrid/">Withthegrid →</a>
+        <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/iotinabox/">← IoT in a Box</a>
+<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/mclimate/">MClimate →</a>
 </div>
 
-          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
 <script src="https://cdn.emojicom.io/embed/widget.js" async></script>
 
 <div class='feedback has-vertical-space'>
@@ -389,10 +406,10 @@ In the <strong>Data Fields</strong> input, you need to provide all required keys
       <li><a href='#prerequisites'>Prerequisites</a></li>
     
       
-      <li><a href='#setup-widgelix'>Setup Widgelix</a></li>
+      <li><a href='#setup-kaa'>Setup Kaa</a></li>
     
       
-      <li><a href='#configure-the-things-stack'>Configure The Things Stack</a></li>
+      <li><a href='#visualize-your-data'>Visualize Your Data</a></li>
     
   </ul>
 
@@ -432,14 +449,14 @@ In the <strong>Data Fields</strong> input, you need to provide all required keys
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 04 Feb 2022.
+  Last changed by PavelAnikeichyk on 03 Jun 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/29804584da6bd5de4712a87fa20df14806aee8bd">
-      doc: Widgelix documentation added (#762)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4c19046056aeb29bc8023a178ce0bcf6a846c647">
+      doc: Add the Kaa IoT platform integration tutorial (#872)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/cloud-integrations/widgelix/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/cloud-integrations/kaa/index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
