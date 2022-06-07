@@ -26,14 +26,14 @@ Now you can configure the integration in Kaa. You can add it if you navigate to 
 
 - **TTN Username** - the MQTT **Username** from your {{% tts %}} application
 - **TTN API key** - the MQTT **Password** from your {{% tts %}} application
-- **Identity Server Host** - {{% tts %}} Identity Server host address (see the [Server Addresses section]({{< ref "/getting-started/server-addresses" >}})
+- **Identity Server Host** - {{% tts %}} Identity Server host address (see the [Server Addresses section]({{< ref "/getting-started/server-addresses" >}}))
 - **MQTT Server Host** - the MQTT **Public address** from your {{% tts %}} application
 
 {{< figure src="kaa-create-app-integration.png" alt="Create Kaa cloud app integration" >}}
 
 Press the **Create** button to finish creating the integration.
 
-After application integration is created, it iss possible to create device integrations, i.e. mappings between {{% tts %}} devices and Kaa endpoints.
+After application integration is created, it is possible to create device integrations, i.e. mappings between {{% tts %}} devices and Kaa endpoints.
 
 Go to the created application integration and create a device integration by choosing the application version and {{% tts %}} device that you want to integrate.
 
