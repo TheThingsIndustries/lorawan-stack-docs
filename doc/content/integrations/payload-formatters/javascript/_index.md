@@ -15,9 +15,9 @@ Tips:
 
 {{< note >}} Payload formatters use ECMAScript 5 (2009), which has some distinct differences compared to newer, commonly used ECMAScript revisions. See [here](https://www.javatpoint.com/es5-vs-es6) for a quick comparison. Notably, `let`, `const`, and arrow functions are not supported by ES5. {{</ note >}}
 
-{{< note >}} Javascript payload formatters from {{% ttnv2 %}} will work in {{% tts %}}. {{% tts %}} has a new payload formatter signature, but it is also backwards compatible. {{</ note >}}
-
 {{< note >}} For security, the runtime does not support modules, `require` syntax, or any input/output other than defined below. {{</ note >}}
+
+{{< warning >}} The maximum size of a user-defined Javascript payload formatter is 40KB (40960 characters), unless the source of the payload formatter is [Device Repository]({{< ref "/integrations/payload-formatters/device-repo" >}}). {{</ warning>}}
 
 There are three different types of {{% tts %}} JavaScript payload formatters:
 
