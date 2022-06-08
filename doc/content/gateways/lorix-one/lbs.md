@@ -7,6 +7,8 @@ This section contains instructions for connecting to {{% tts %}} using [{{% lbs 
 
 <!--more-->
 
+## Enable the Basic Station
+
 Go to the **LoRa > Settings page > Forwarder tab**.
 
 {{< figure src="../lorix-one-lora-settings-forwarder.png" alt="LORIX One LoRa forwarder page" >}}
@@ -19,20 +21,17 @@ In the list, select **LoRa Basic Station** and press apply.
 
 {{< figure src="../lorix-one-lora-settings-forwarder-change-bs.png" alt="LORIX One LoRa forwarder Basic Station selection" class="plain" >}}
 
-## LNS
+## Configure the LNS
 
-Scroll down to the **Configuration** section and enable the **LoRaWAN Network Server**.
+Scroll down to the **Configuration** section and enable the **LoRaWAN Network Server** option.
 
 {{< figure src="../lorix-one-lora-settings-bs.png" alt="LORIX One LoRa forwarder Basic Station LNS" >}}
 
-To connect the gateway via LNS protocol, follow the instructions for [Connecting LNS]({{< ref "/gateways/lora-basics-station/lns" >}}).
-
 Configure the **Address** with the server address of your deployment, and **Port** with LNS port `8887`.
 
-Enable the **Secured TLS connection** and upload the [LNS Server Certificate]({{< ref "/gateways/lora-basics-station/lns#lns-server-certificate--lns-trust" >}}) as a **Server authentication certificate**.
+Enable the **Secured TLS connection** and select the **Use local root certificates** option. If you need to use a certificate specific to your infrastructure (for on-premise installations), use the **Use certificate file** option instead and upload the certificate.
 
-Enable the **Client authentication**, select **Use token**, then copy the [LNS Key File]({{< ref "/gateways/lora-basics-station/lns#lns-key-file" >}}) and paste it as an **Authentication token**.
-
+Enable the **Client authentication**, select **Use token**, and set the previously saved API key in the **Authentication token** field. This key was shown to you as you created it when [registering the gateway]({{< ref "/gateways/adding-gateways#create-gateway-api-key" >}}). If you did not copy the key, you can delete it and create a new one.
 
 {{< figure src="../lorix-one-lora-settings-bs-lns.png" alt="LORIX One LoRa forwarder Basic Station LNS" class="plain" >}}
 
