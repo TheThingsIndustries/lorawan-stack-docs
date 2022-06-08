@@ -218,6 +218,7 @@
         
         <div class="content">
           <p>This section contains instructions for connecting to The Things Stack using <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/">LoRa Basics™ Station</a>.</p>
+<h2 id="enable-the-basic-station">Enable the Basic Station</h2>
 <p>Go to the <strong>LoRa &gt; Settings page &gt; Forwarder tab</strong>.</p>
 <figure><img src="../lorix-one-lora-settings-forwarder.png"
          alt="LORIX One LoRa forwarder page"/>
@@ -233,16 +234,15 @@
          alt="LORIX One LoRa forwarder Basic Station selection"/>
 </figure>
 
-<h2 id="lns">LNS</h2>
-<p>Scroll down to the <strong>Configuration</strong> section and enable the <strong>LoRaWAN Network Server</strong>.</p>
+<h2 id="configure-the-lns">Configure the LNS</h2>
+<p>Scroll down to the <strong>Configuration</strong> section and enable the <strong>LoRaWAN Network Server</strong> option.</p>
 <figure><img src="../lorix-one-lora-settings-bs.png"
          alt="LORIX One LoRa forwarder Basic Station LNS"/>
 </figure>
 
-<p>To connect the gateway via LNS protocol, follow the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/lns/">Connecting LNS</a>.</p>
 <p>Configure the <strong>Address</strong> with the server address of your deployment, and <strong>Port</strong> with LNS port <code>8887</code>.</p>
-<p>Enable the <strong>Secured TLS connection</strong> and upload the <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/lns/#lns-server-certificate--lns-trust">LNS Server Certificate</a> as a <strong>Server authentication certificate</strong>.</p>
-<p>Enable the <strong>Client authentication</strong>, select <strong>Use token</strong>, then copy the <a href="https://www.thethingsindustries.com/docs/gateways/lora-basics-station/lns/#lns-key-file">LNS Key File</a> and paste it as an <strong>Authentication token</strong>.</p>
+<p>Enable the <strong>Secured TLS connection</strong> and select the <strong>Use local root certificates</strong> option. If you need to use a certificate specific to your infrastructure (for on-premise installations), use the <strong>Use certificate file</strong> option instead and upload the certificate.</p>
+<p>Enable the <strong>Client authentication</strong>, select <strong>Use token</strong>, and set the previously saved API key in the <strong>Authentication token</strong> field. This key was shown to you as you created it when <a href="https://www.thethingsindustries.com/docs/gateways/adding-gateways/#create-gateway-api-key">registering the gateway</a>. If you did not copy the key, you can delete it and create a new one.</p>
 <figure class="plain"><img src="../lorix-one-lora-settings-bs-lns.png"
          alt="LORIX One LoRa forwarder Basic Station LNS"/>
 </figure>
@@ -291,7 +291,10 @@
   <ul class="menu-list">
     
       
-      <li><a href='#lns'>LNS</a></li>
+      <li><a href='#enable-the-basic-station'>Enable the Basic Station</a></li>
+    
+      
+      <li><a href='#configure-the-lns'>Configure the LNS</a></li>
     
       
       <li><a href='#cups'>CUPS</a></li>
@@ -334,10 +337,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 08 Jun 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4d8b017a6bf39248613e2d3e8906119847e0e263">
+      doc: Fix minor issues in guide for connecting Lorix gw (#881)
     </a>
 </p>
 
