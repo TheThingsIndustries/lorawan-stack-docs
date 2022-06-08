@@ -18,7 +18,7 @@ The Things Join Server is a LoRaWAN Join Server. Learn how to register devices t
 3. DevEUIs are issued from a IEEE block that you own.
 4. Root keys are generated randomly per device.
 
-Learn more about [obtaining a IEEE MAC Address Block](https://standards.ieee.org/products-services/regauth/index.html) for JoinEUI/AppEUI and DevEUIs.
+Learn more about [obtaining a IEEE MAC Address Block](https://standards.ieee.org/products-services/regauth/) for JoinEUI/AppEUI and DevEUIs.
 
 ## Login with CLI
 

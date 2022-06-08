@@ -17,7 +17,7 @@ Once the device templates are personalized with EUIs, you can set additional fie
 
 To make your device compliant with most LoRaWAN networks, use the `JoinEUI` of the LoRaWAN Join Server where the devices will be registered and use a `DevEUI` from an IEEE issued MAC address block that is assigned to your company. 
 
-If you intend to operate your own LoRaWAN Join Server, use a `JoinEUI` from your IEEE assigned MAC address block as LoRa Alliance requires that for DNS lookup. [Learn how to apply for a IEEE issued MAC address block](https://standards.ieee.org/products-services/index.html).
+If you intend to operate your own LoRaWAN Join Server, use a `JoinEUI` from your IEEE assigned MAC address block as LoRa Alliance requires that for DNS lookup. [Learn how to apply for a IEEE issued MAC address block](https://standards.ieee.org/products-services/).
 
 ## Example
 
