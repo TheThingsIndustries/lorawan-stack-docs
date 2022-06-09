@@ -44,7 +44,7 @@ CAC=ABCD
 CAC_IN_HEX=$(echo -n "$CAC" | xxd -ps -u -c 8192)
 ttn-lw-cli gateways update <gateway-id> --claim-authentication-code.secret.value $CAC_IN_HEX \
   --claim-authentication-code.valid-from 2021-03-01T00:00:00Z \
-  --claim-authentication-code.valid-from 2021-03-31T23:59:59Z
+  --claim-authentication-code.valid-to 2021-03-31T23:59:59Z
 ```
 
 This sets the secret claim authentication code secret value to `ABCD`, that can be used in March 2021. Please adapt these values for your specific case.
