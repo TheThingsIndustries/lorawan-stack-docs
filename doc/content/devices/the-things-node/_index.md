@@ -10,6 +10,8 @@ weight:
 
 The Things Node is compatible with the **Arduino software (IDE)**. In this quickstart, you will learn how to register your Things Node with {{% tts %}} and program it with the Arduino software for activating with {{% tts %}}.
 
+## Setting Up Arduino
+
 **Download** the latest release of the [Arduino Software (IDE)](https://www.arduino.cc/en/Main/Software) and [install](https://www.arduino.cc/en/Guide) it on your operating system.
 
 **Start** the Arduino Software (IDE).
@@ -36,11 +38,31 @@ Select the **Install** button.
 
 When the installation finishes, close the **Library Manager** by selecting the **Close** button.
 
-## Connecting the Things Node to a Computer
+Finally, you should add the **SparkFun Pro Micro** board package to the Arduino IDE. Select **File &#8594; Preferences** from the menu bar and paste the following URL into the **Additional Board Manager URLs** text box.
 
-The Things Node can be connected to a computer using a [micro-USB cable](https://www.sparkfun.com/products/13244). First, you should open the enclosure to access the USB port on the back of the Things Node’s PCB.
+```
+https://raw.githubusercontent.com/sparkfun/Arduino_Boards/main/IDE_Board_Manager/package_sparkfun_index.json
 
-{{< note "USB is usually the easiest way to power the Things node, especially when you are programming it. It is acceptable to connect both batteries and a USB connector at the same time. The Things node can automatically select the best power source." />}}
+```
+{{< figure src="additional-boards-manager.png" alt="Additional Board Manager" >}}
+
+Select the **OK** button. 
+
+Open the Board Manager by selecting **Tools &#8594; Board &#8594; Board Manager...** from the menu bar.
+
+{{< figure src="ConnectUsbCable.png" alt="Connect USB cable" >}}
+
+Then open the Board Manager by clicking **Tools &#8594; Board &#8594; Boards Manager...** from the menu bar.
+
+Search for **sparkfun** in the Board Manager. You should see the **SparkFun AVR Boards** package appear. Select the  **Install** button.
+
+{{< figure src="sparkfun-avr-boards.png" alt="SparkFun AVR Boards" >}}
+
+## Connecting The Things Node to a Computer
+
+The Things Node can be connected to a computer using a [micro-USB cable](https://www.sparkfun.com/products/13244). First, you should open the enclosure to access the USB port on the back of The Things Node’s PCB.
+
+{{< note "USB is usually the easiest way to power The Things node, especially when you are programming it. It is acceptable to connect both batteries and a USB connector at the same time. The Things node can automatically select the best power source." />}}
 
 Using a **Phillips** screwdriver remove both screws as shown in the following image.
 
@@ -54,9 +76,9 @@ Connect a micro-USB cable to the connector found between the battery compartment
 
 Connect the other end of the USB cable to your computer.
 
-In the Arduino IDE, select **Tools &#8594; Boards &#8594; SparkFun Pro Micro** from the menu bar.
+In the Arduino IDE, select **Tools &#8594; Boards &#8594; SparkFun AVR Boards &#8594; SparkFun Pro Micro** from the menu bar.
 
-Select **Tools &#8594; Processor &#8594; ATmega32U4 (3.3V, 8Mhz)** from the menu bar.
+Select **Tools &#8594; Processor &#8594; ATmega32U4 (3.3V, 8MHz)** from the menu bar.
 
 Select **Tools &#8594; Port** and choose the correct serial port associated with your Things Node.
 
@@ -116,16 +138,18 @@ Select **Tools &#8594; Serial Monitor** from the menu bar to open the **Serial M
 Once open the Arduino **Serial Monitor** prints something similar to the following output.
 
 ```
--- STATUS
-EUI: 0004A30B001B7AD2
-Battery: 3223
-AppEUI: 70B3D57EF000001C
-DevEUI: 0004A30B001B7AD2
-Band: 868
+Device Information
+
+EUI: 0004A30B001BDFA4
+Battery: 3294
+AppEUI: 70B3D57EF0004C75
+DevEUI: 0004A30B001BDFA4
 Data Rate: 5
 RX Delay 1: 1000
 RX Delay 2: 2000
-Total airtime: 0.00 s
+
+Use the EUI to register the device for OTAA
+-------------------------------------------
 ```
 
 **Copy** the Serial Monitor output into a **text editor** (E.g. Notepad) because you will need the **AppEUI** and **DevEUI** when you register your Things Node with {{% tts %}}.
@@ -138,13 +162,13 @@ The Things Node (or any end device) first needs to be registered with an **appli
 
 It’s time to register your Things Node with {{% tts %}}. 
 
-On the **Applications** page, select your application to go to its **overview** page.
+On the **Applications** page, select your application to view its **Overview** page.
 
-Select **+Add end device** in the bottom-right of the page.
+Select **+ Add end device** in the bottom-right of the page.
 
 {{< figure src="AddEndDevice.png" alt="Add The Things Node" >}}
 
-{{% tts %}} provides two options to register your end device.
+{{% tts %}} provides two options to register your end device:
 
 - From the LoRaWAN Device Repository
 - Manually
@@ -177,9 +201,20 @@ Select the **Register end device** button.
 
 Once registered, you will be redirected to the **overview** page of the newly registered Things Node, where you can find the generated **AppKey** which we’ll need next.
 
-## Activating the Things Node - OTAA
+## Payload Formatter
+The Things Node supports different types of payload formatters. However, for this quickstart you can use the payload formatter which we have provided through our [Device Repository](https://www.thethingsnetwork.org/device-repository/).
 
-In this section, you will learn how to use Over the air activation (OTAA) method to activate your Things Node with {{% tts %}}.
+Click on the **Payload formatters** tab, then click on the **Uplink** tab.
+
+Select **Use Device Repository Formatters** from the **Formatter type** drop-down box. 
+
+Click on the **Save changes** button.
+
+{{< figure src="payload-formatter.png" alt="Payload formatter" >}}
+
+## Activating The Things Node - OTAA
+
+In this section, you will learn how to use Over The Air Activation (OTAA) method to activate your Things Node with {{% tts %}}.
 
 In the Arduino IDE, select **File &#8594; Examples &#8594; TheThingsNode &#8594; Basic** from the menu bar. The ***Basic.ino*** sketch will open in a new window.
 
@@ -202,75 +237,8 @@ Replace **REPLACE_ME** with `TTN_FP_EU868` or `TTN_FP_US915` depending on the fr
 
 Select **Sketch &#8594; Upload** from the menu bar to upload the sketch.
 
-Within 10 seconds, select **Tools &#8594; Serial Monitor** from the menu bar to open the **Serial Monitor**.
+Once uploaded go to the **Live data** section/tab of your application or The Things Node. You should be able to see the decoded payload of each event (setup, interval, motion, button).
 
-You should see something like this on the Arduino **Serial Monitor**.
+{{< figure src="decoded-payload.png" alt="decoded payloads" >}}
 
-```
--- STATUS
-EUI: 0004A30B001B7AD2
-Battery: 3223
-AppEUI: 70B3D57EF000001C
-DevEUI: 0004A30B001B7AD2
-DevAddr: 260127C6
-Data Rate: 5
-RX Delay 1: 1000
-RX Delay 2: 2000
-Total airtime: 0.00 s
--- JOIN
-Version is RN2483 1.0.1 Dec 15 2015 09:38:09, model is RN2483
-...
-Sending: mac set appeui with 8 bytes
-Sending: mac set deveui 0004A30B001B7AD2
-Sending: mac set appkey with 16 bytes
-Sending: mac join otaa
-Join accepted. Status: 00000401
-DevAddr: 26012E93
-```
-
-Meanwhile, you should see something like this in the **Live data** section on your **Application overview** page.
-
-[INSERT IMAGE - capture join-request and join-accept messages]
-
-Your **Things Node** is now activated and ready to send/receive messages to/from **{{% tts %}}!**.
-
-## Decoding the Received Messages
-
-Now let’s confirm whether the data has been received to {{% tts %}}. On the **Applications** page, select the Live data tab. You should now see the messages come in. What you see on the **Live data** tab are the raw payloads in hex-formatted, space-separated bytes.
-
-[INSERT IMAGE - raw payload (before applying the payload formatter)]
-
-These payloads are difficult to understand so let’s decode them into meaningful fields.
-
-On the **Applications** page, select the **Payload formatter** tab and then select **Uplink**.
-
-Under **Setup**, from the **Formatter type** drop-down list select **Javascript**.
-
-Copy and paste the following **JavaScript** code in the **Formatter parameter** box.
-
-```
-function Decoder(bytes, port) {
-  var decoded = {};
-  var events = {
-    1: 'setup',
-    2: 'interval',
-    3: 'motion',
-    4: 'button'
-  };
-  decoded.event = events[port];
-  decoded.battery = (bytes[0] << 8) + bytes[1];
-  decoded.light = (bytes[2] << 8) + bytes[3];
-  decoded.temperature = ((bytes[4] << 8) + bytes[5]) / 100;
-  return decoded;
-}
-```
-
-Select the **Save changes** button.
-
-{{< figure src="UplinkPayloadFormatter.png" alt="Uplink Payload Formatter" >}}
-
-Now go back again to the **Live data** tab. The new messages should now show their **decoded** payload.
-
-[INSERT IMAGE - after applied the payload formatter]
-
-You have now completed the quickstart and are able to activate the Things Node, send messages to an application, and decode them from the server side to get meaningful data. Go build something!
+You have now completed the quickstart and are able to activate The Things Node, send messages to an application, and decode them from the server side to get meaningful data. Go build something!
