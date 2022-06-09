@@ -16,7 +16,7 @@ The Things Node is compatible with the **Arduino software (IDE)**. In this quick
 
 **Start** the Arduino Software (IDE).
 
-The Things Network has written two excellent Arduino libraries ([The Things Network Arduino Library](https://github.com/TheThingsNetwork/arduino-device-lib) and [The Things Node Arduino Library](https://github.com/TheThingsNetwork/arduino-node-lib)) for the Things Uno. **The Things Network** library provides functions to communicate with {{% tts %}} (E.g. device activation, sending data, etc). **The Things Node** library helps you to configure the sensors and reading sensor data from onboard sensors (E.g. configuring the onboard temperature sensor and reading the temperature).
+The Things Network has written two Arduino libraries ([The Things Network Arduino Library](https://github.com/TheThingsNetwork/arduino-device-lib) and [The Things Node Arduino Library](https://github.com/TheThingsNetwork/arduino-node-lib)) for the Things Node. **The Things Network** library provides functions to communicate with {{% tts %}} (E.g. device activation, sending data, etc). **The Things Node** library helps you to configure the sensors and read sensor data from onboard sensors (E.g. configuring the onboard temperature sensor and reading the temperature).
 
 In the Arduino IDE, select **Sketch &#8594; Include Library &#8594; Manage Libraries…** or **Tools &#8594; Manage Libraries…** from the menu bar.
 
@@ -214,7 +214,7 @@ Click on the **Save changes** button.
 
 ## Activating The Things Node - OTAA
 
-In this section, you will learn how to use Over The Air Activation (OTAA) method to activate your Things Node with {{% tts %}}.
+To activate the Things Node using Over-the-air-activation (OTAA), you must enter some configuration settings from {{% tts %}}.
 
 In the Arduino IDE, select **File &#8594; Examples &#8594; TheThingsNode &#8594; Basic** from the menu bar. The ***Basic.ino*** sketch will open in a new window.
 
