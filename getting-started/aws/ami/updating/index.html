@@ -226,9 +226,18 @@
         </h1>
         
         <div class="content">
-          <p>This section contains information to update The Things Stack deployment on AWS Marketplace.</p>
+          <p>This section contains information to update The Things Stack AWS AMI deployment.</p>
 <h2 id="updating-the-cloudformation-stack">Updating the CloudFormation Stack</h2>
 <p>We recommend using <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html">Change Sets</a> to update the CloudFormation Stack.</p>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  Updating The Things Stack AWS AMI deployment sometimes involves replacing the EC2 instance. When this is necessary, this will be indicated in Change Set before applying the change.
+When the EC2 instance is replaced, the built-in ACME feature requests new Let&rsquo;s Encrypt certificates.
+Let&rsquo;s Encrypt has a weekly <a href="https://letsencrypt.org/docs/rate-limits/">certificate limit</a> of 5 per domain.
+In order not to hit the rate-limit, make sure that you are not making changes that replace the EC2 machine more often than the rate-limit i.e, 5 per week.
+If you are using custom certificates via the provided parameters, this is not applicable.
+</div>
+
 <p>On the AWS Console, open the <strong>CloudFormation</strong> service, navigate to the <strong>Change sets</strong> tab and select <strong>Create change set</strong>. There are two choices that can be made here:</p>
 <ul>
 <li>Use current template: Choose this option to update input parameters on an existing template.</li>
@@ -339,10 +348,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Johan Stokking on 09 Apr 2022.
+  Last changed by Krishna Iyer Easwaran on 14 Jun 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/c44467b53b8ce616c3839a2fb89f036d4184f21c">
-      doc: Use name The Things Stack Enterprise (#850)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/75686308c128cf9b27c4dda26f062c3f4b470ace">
+      doc: Add note on Let&#39;s Encrypt Ratelimit (#888)
     </a>
 </p>
 
