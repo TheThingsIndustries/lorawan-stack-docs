@@ -4,7 +4,7 @@ description: ""
 aliases: [/components/packet-broker-agent]
 ---
 
-The Packet Broker Agent connects Packet Broker for exchanging traffic with other networks.
+Packet Broker Agent connects {{% tts %}} with Packet Broker for exchanging traffic with other networks.
 
 <!--more-->
 
