@@ -4,13 +4,21 @@ description: ""
 weight: 3
 ---
 
-This section contains information to update {{% tts %}} deployment on AWS Marketplace.
+This section contains information to update {{% tts %}} AWS AMI deployment.
 
 <!--more-->
 
 ## Updating the CloudFormation Stack
 
 We recommend using [Change Sets](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html) to update the CloudFormation Stack.
+
+{{< warning >}}
+Updating {{% tts %}} AWS AMI deployment sometimes involves replacing the EC2 instance. When this is necessary, this will be indicated in Change Set before applying the change.
+When the EC2 instance is replaced, the built-in ACME feature requests new Let's Encrypt certificates.
+Let's Encrypt has a weekly [certificate limit](https://letsencrypt.org/docs/rate-limits/) of 5 per domain.
+In order not to hit the rate-limit, make sure that you are not making changes that replace the EC2 machine more often than the rate-limit i.e, 5 per week.
+If you are using custom certificates via the provided parameters, this is not applicable.
+{{</ warning >}}
 
 On the AWS Console, open the **CloudFormation** service, navigate to the **Change sets** tab and select **Create change set**. There are two choices that can be made here:
 
