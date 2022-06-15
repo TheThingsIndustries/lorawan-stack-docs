@@ -16,7 +16,7 @@ ttn-lw-cli end-devices get-default-mac-settings [flags]
 ```
       --frequency-plan-id string     
   -h, --help                         help for get-default-mac-settings
-      --lorawan-phy-version string   allowed values: PHY_UNKNOWN, unknown, PHY_V1_0, TS001_V1_0, 1.0, V1_0, 1.0.0, PHY_V1_0_1, TS001_V1_0_1, 1.0.1, V1_0_1, PHY_V1_0_2_REV_A, RP001_V1_0_2, 1.0.2-a, 1.0.2, V1_0_2, V1_0_2_REV_A, PHY_V1_0_2_REV_B, RP001_V1_0_2_REV_B, 1.0.2-b, V1_0_2_REV_B, RP001_V1_1_REV_A, PHY_V1_1_REV_A, 1.1.0-a, V1_1_REV_A, 1.1-a, PHY_V1_1_REV_B, RP001_V1_1_REV_B, 1.1-b, V1_1_REV_B, 1.1.0-b, RP001_V1_0_3_REV_A, PHY_V1_0_3_REV_A, 1.0.3-a, V1_0_3_REV_A, RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3
+      --lorawan-phy-version string   allowed values: PHY_UNKNOWN, unknown, PHY_V1_0, TS001_V1_0, 1.0, V1_0, 1.0.0, PHY_V1_0_1, TS001_V1_0_1, 1.0.1, V1_0_1, PHY_V1_0_2_REV_A, RP001_V1_0_2, 1.0.2-a, 1.0.2, V1_0_2, V1_0_2_REV_A, RP001_V1_0_2_REV_B, PHY_V1_0_2_REV_B, 1.0.2-b, V1_0_2_REV_B, PHY_V1_1_REV_A, RP001_V1_1_REV_A, 1.1-a, V1_1_REV_A, 1.1.0-a, RP001_V1_1_REV_B, PHY_V1_1_REV_B, 1.1-b, 1.1.0-b, V1_1_REV_B, RP001_V1_0_3_REV_A, PHY_V1_0_3_REV_A, 1.0.3-a, V1_0_3_REV_A, RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3
 ```
 
 ### Options inherited from parent commands

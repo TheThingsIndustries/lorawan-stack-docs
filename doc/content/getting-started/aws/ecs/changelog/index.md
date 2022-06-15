@@ -8,6 +8,36 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.19.2
+
+### `1-1-vpc`
+- Added a hosted zone for internal use
+
+### `2-5-db-timescale`
+- Added new parameter `NumReplicas`
+- Added new parameter `DeploymentName`
+- Before updating this template, please remove non-default records from the `${NetworkName}.${Environment}.${Cluster}.db.as.local` hosted zone and turn off the Application Server Storage Integration
+
+### `4-1-secrets`
+- Added new parameters `IncludeNOC`, `NOCGrafanaAdminPassword`, `NOCOAuthClientIDValue`, `NOCOAuthClientSecretValue`
+
+### `4-2a-configuration`
+- Added new parameters `ConsoleURLForNOC`, `IncludeNetworkOperationsCenter`, `NOCMaxIdleConnections`, `NOCMaxOpenConnections`, `NOCRawDataRetention`, `NOCTargetInsertBatchSize`, `NOCTargetInsertBatchWindow`
+- Added `is.email.assets-base-url` and `is.email.branding-base-url`. These options are set to the values of the existing parameters.
+
+### `5-2-ecs-ops`
+- Added new parameters `IncludeNetworkOperationsCenter`, `NOCTimescaleDBDeploymentName`, `ApplicationServerStorageTimescaleDBDeploymentName`, `ApplicationServerStorageReplicaEnabled`
+
+### `5-4-ecs-services`
+- Added new parameter `ApplicationServerStorageTimescaleDBDeploymentName`, `ApplicationServerStorageReplicaEnabled`
+- Added new parameters `IncludeNetworkOperationsCenter`, `NOCTimescaleDBDeploymentName`, `NetworkOperationsCenter*`, `NetworkOperationsCenterGrafana*`
+
+### `5-5-ecs-monitoring`
+- Added new parameter `IncludeNetworkOperationsCenter`
+
+### `5-6-ecs-proxy`
+- Added new parameter `IncludeNetworkOperationsCenter`
+
 ## 3.19.1
 
 ## 3.19.0

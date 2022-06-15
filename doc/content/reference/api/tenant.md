@@ -77,6 +77,10 @@ Unlike the other services, the tenant services do **not** accept API keys or OAu
 
 {{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.IdentityServer.UserLogin" >}}
 
+{{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.IdentityServer.Email" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.IdentityServer.Email.Network" >}}
+
 {{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.IdentityServer.EndDevicePicture" >}}
 
 {{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.IdentityServer.UserRights" >}}

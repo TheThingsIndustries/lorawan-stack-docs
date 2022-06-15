@@ -36,6 +36,9 @@ ttn-lw-cli tenants search [flags]
       --configuration.default-cluster.is                                                         select the configuration.default_cluster.is field and all allowed sub-fields
       --configuration.default-cluster.is.admin-rights                                            select the configuration.default_cluster.is.admin_rights field and all allowed sub-fields
       --configuration.default-cluster.is.admin-rights.all                                        select the configuration.default_cluster.is.admin_rights.all field
+      --configuration.default-cluster.is.email                                                   select the configuration.default_cluster.is.email field and all allowed sub-fields
+      --configuration.default-cluster.is.email.network                                           select the configuration.default_cluster.is.email.network field and all allowed sub-fields
+      --configuration.default-cluster.is.email.network.branding-base-url                         select the configuration.default_cluster.is.email.network.branding_base_url field
       --configuration.default-cluster.is.end-device-picture                                      select the configuration.default_cluster.is.end_device_picture field and all allowed sub-fields
       --configuration.default-cluster.is.end-device-picture.disable-upload                       select the configuration.default_cluster.is.end_device_picture.disable_upload field
       --configuration.default-cluster.is.profile-picture                                         select the configuration.default_cluster.is.profile_picture field and all allowed sub-fields
