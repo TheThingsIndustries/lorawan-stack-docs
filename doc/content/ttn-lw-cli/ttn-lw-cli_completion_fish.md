@@ -14,22 +14,26 @@ generate the autocompletion script for fish
 Generate the autocompletion script for the fish shell.
 
 To load completions in your current shell session:
-$ ttn-lw-cli completion fish | source
+```
+$ ttn-lw-cli completion --shell fish | source
+```
 
 To load completions for every new session, execute once:
-$ ttn-lw-cli completion fish > ~/.config/fish/completions/ttn-lw-cli.fish
+```
+$ ttn-lw-cli completion --shell fish > ~/.config/fish/completions/ttn-lw-cli.fish
+```
 
 You will need to start a new shell for this setup to take effect.
 
 
 ```
-ttn-lw-cli completion fish [flags]
+ttn-lw-cli completion --shell fish [flags]
 ```
 
 ### Options
 
 ```
-  -h, --help              help for fish
+  -h, --help              help for completion
       --no-descriptions   disable completion descriptions
 ```
 

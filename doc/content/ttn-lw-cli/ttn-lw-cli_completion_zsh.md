@@ -16,25 +16,31 @@ Generate the autocompletion script for the zsh shell.
 If shell completion is not already enabled in your environment you will need
 to enable it.  You can execute the following once:
 
+```
 $ echo "autoload -U compinit; compinit" >> ~/.zshrc
+```
 
 To load completions for every new session, execute once:
-# Linux:
-$ ttn-lw-cli completion zsh > "${fpath[1]}/_ttn-lw-cli"
-# macOS:
-$ ttn-lw-cli completion zsh > /usr/local/share/zsh/site-functions/_ttn-lw-cli
+#### Linux:
+```
+$ ttn-lw-cli completion --shell zsh > "${fpath[1]}/_ttn-lw-cli"
+```
+#### macOS:
+```
+$ ttn-lw-cli completion --shell zsh > /usr/local/share/zsh/site-functions/_ttn-lw-cli
+```
 
 You will need to start a new shell for this setup to take effect.
 
 
 ```
-ttn-lw-cli completion zsh [flags]
+ttn-lw-cli completion --shell zsh [flags]
 ```
 
 ### Options
 
 ```
-  -h, --help              help for zsh
+  -h, --help              help for completion
       --no-descriptions   disable completion descriptions
 ```
 
