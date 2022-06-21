@@ -17,25 +17,31 @@ This script depends on the 'bash-completion' package.
 If it is not installed already, you can install it via your OS's package manager.
 
 To load completions in your current shell session:
-$ source <(ttn-lw-cli completion bash)
+```
+$ source <(ttn-lw-cli completion)
+```
 
 To load completions for every new session, execute once:
-Linux:
-  $ ttn-lw-cli completion bash > /etc/bash_completion.d/ttn-lw-cli
-MacOS:
-  $ ttn-lw-cli completion bash > /usr/local/etc/bash_completion.d/ttn-lw-cli
+#### Linux:
+```
+  $ ttn-lw-cli completion > /etc/bash_completion.d/ttn-lw-cli
+```
+#### MacOS:
+```
+  $ ttn-lw-cli completion > /usr/local/etc/bash_completion.d/ttn-lw-cli
+```
 
 You will need to start a new shell for this setup to take effect.
   
 
 ```
-ttn-lw-cli completion bash
+ttn-lw-cli completion 
 ```
 
 ### Options
 
 ```
-  -h, --help              help for bash
+  -h, --help              help for completion
       --no-descriptions   disable completion descriptions
 ```
 

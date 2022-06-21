@@ -14,20 +14,22 @@ generate the autocompletion script for powershell
 Generate the autocompletion script for powershell.
 
 To load completions in your current shell session:
-PS C:\> ttn-lw-cli completion powershell | Out-String | Invoke-Expression
+```
+PS C:\> ttn-lw-cli completion --shell powershell | Out-String | Invoke-Expression
+```
 
 To load completions for every new session, add the output of the above command
 to your powershell profile.
 
 
 ```
-ttn-lw-cli completion powershell [flags]
+ttn-lw-cli completion --shell powershell [flags]
 ```
 
 ### Options
 
 ```
-  -h, --help              help for powershell
+  -h, --help              help for completion
       --no-descriptions   disable completion descriptions
 ```
 
