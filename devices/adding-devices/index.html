@@ -189,7 +189,8 @@
 <figure><img src="application-overview.png"
          alt="Application overview"/>
 </figure>
-<h2 id="using-the-lorawan-device-repository">Using the LoRaWAN Device Repository</h2>
+<p>You will be presented with options to register an end device <strong>From The LoRaWAN Device Repository</strong> or <strong>Manually</strong>. Keep reading to learn how to register devices using both of these methods.</p>
+<h3 id="using-the-lorawan-device-repository">Using the LoRaWAN Device Repository</h3>
 <p>The <a href="https://github.com/TheThingsNetwork/lorawan-devices">LoRaWAN device repository</a> contains device profiles, LoRaWAN information, codecs, and more, for many LoRaWAN devices. Using the device repository to add devices in The Things Stack automatically uses the correct LoRaWAN version and regional parameters version, which means less information for you to find!</p>
 <p>In addition to the written instructions below, a video with instructions for adding a device using the device repository is available on <a href="https://youtu.be/bMT9n1-6dCc">The Things Network youtube channel</a>.</p>
 <details><summary>Show video</summary>
@@ -219,8 +220,8 @@
          alt="Device information"/>
 </figure>
 <p>The device is now activated, and will appear as connected in The Things Stack once it sends an uplink.</p>
-<h2 id="manually-registering-an-end-device">Manually Registering an End Device</h2>
-<p>If your device is not in the device repository, you may manually register it.</p>
+<h3 id="manually-registering-an-end-device">Manually Registering an End Device</h3>
+<p>If your device is not available in the device repository, you may manually register it.</p>
 <p>Make sure the <strong>Manually</strong> tab is selected.</p>
 <figure><img src="manual-tab.png"
          alt="Manual tab"/>
@@ -289,19 +290,6 @@
          alt="Manually create OTAA end device"/>
 </figure>
 <p>Click <strong>Register end device</strong> to create the end device.</p>
-<h2 id="adding-devices-in-bulk">Adding Devices in Bulk</h2>
-<p>It is also possible to import end devices in bulk, using a file format defined in the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON file reference</a>. See the following video from <a href="https://youtu.be/ouz-VuiosU4">The Things Network youtube channel</a> for instructions.</p>
-<details><summary>Show video</summary>
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-  <iframe src="https://www.youtube.com/embed/ouz-VuiosU4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
-</div>
-</details>
-<h2 id="set-device-location-in-the-console">Set Device Location in the Console</h2>
-<p>Once you have added your end device to The Things Stack, you can also set its location to be displayed on a map widget by clicking <strong>Change location settings</strong>.</p>
-<p>The end device location can be manually set by pinning on the map widget, or entering the <strong>Latitude</strong>, <strong>Longitude</strong> and <strong>Altitude</strong> values.</p>
-<figure><img src="device-location.png"
-         alt="Gateway location"/>
-</figure>
 </section>
 <section data-content="cli">
   <h2 id="adding-devices-using-the-cli">Adding Devices using the CLI</h2>
@@ -391,8 +379,50 @@
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --session.keys.nwk-s-enc-key.key <span class="nv">$NWK_SESSION_ENC_KEY</span>
 </span></span></code></pre></div><p>This will create an end device <code>dev1</code> in application <code>app1</code> with the <code>EU_863_870</code> frequency plan, that uses LoRaWAN 1.1.0 MAC and 1.1.0-b PHY versions. Make sure you replace these versions according to your setup.</p>
 <p>You can also pass <code>--with-session</code> to have a session generated.</p>
-<h3 id="set-device-location-with-the-cli">Set Device Location with the CLI</h3>
-<p>Once you have added your end device to The Things Stack, you can also set its location.</p>
+</section>
+
+</div>
+
+<p>Once a device has been added, get started with <a href="https://www.thethingsindustries.com/docs/integrations/">Integrations</a> to process and act on data.</p>
+<h2 id="adding-devices-in-bulk">Adding Devices in Bulk</h2>
+<p>It is also possible to import end devices in bulk.</p>
+<p>Devices&rsquo; descriptions need to be in a <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON</a> or <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-csv/">CSV</a> format. See <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">Import End Devices in The Things Stack</a> section for instructions on how to import devices in bulk using these files.</p>
+<p>See the following video from <a href="https://youtu.be/ouz-VuiosU4">The Things Network youtube channel</a> for instructions.</p>
+<details><summary>Show video</summary>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://www.youtube.com/embed/ouz-VuiosU4" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+</details>
+<h2 id="set-device-location">Set Device Location</h2>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="console">
+      <a>
+        <span>Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="cli">
+      <a>
+        <span>CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="console">
+  <p>Once you have added your end device to The Things Stack, you can also set its location to be displayed on a map widget by clicking <strong>Change location settings</strong>.</p>
+<p>The end device location can be manually set by pinning on the map widget, or entering the <strong>Latitude</strong>, <strong>Longitude</strong> and <strong>Altitude</strong> values.</p>
+<figure><img src="device-location.png"
+         alt="Gateway location"/>
+</figure>
+</section>
+<section data-content="cli">
+  <p>Once you have added your end device to The Things Stack, you can also set its location.</p>
 <p>Set your end device&rsquo;s location with:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">LAT</span><span class="o">=</span><span class="s2">&#34;43.84&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">LONG</span><span class="o">=</span><span class="s2">&#34;18.32&#34;</span>
@@ -429,7 +459,6 @@
 
 </div>
 
-<p>Once a device has been added, get started with <a href="https://www.thethingsindustries.com/docs/integrations/">Integrations</a> to process and act on data.</p>
 <h2 id="application-layer-settings">Application Layer Settings</h2>
 <h3 id="payload-crypto-override">Payload Crypto Override</h3>
 <p>LoRaWAN frames are encrypted on the application layer using the AppSKey. Once the end device is registered, you can choose to enforce or skip payload encryption. Skipping payload encryption will cause the Application Server to forward messages to integrations without any processing, for example it will neglect <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">payload formatters</a>. If you choose to skip payload encryption, integrations will be responsible for processing the message in order to understand it.</p>
@@ -467,19 +496,13 @@
       <li><a href='#adding-devices-using-the-console'>Adding Devices using the Console</a></li>
     
       
-      <li><a href='#using-the-lorawan-device-repository'>Using the LoRaWAN Device Repository</a></li>
-    
-      
-      <li><a href='#manually-registering-an-end-device'>Manually Registering an End Device</a></li>
+      <li><a href='#adding-devices-using-the-cli'>Adding Devices using the CLI</a></li>
     
       
       <li><a href='#adding-devices-in-bulk'>Adding Devices in Bulk</a></li>
     
       
-      <li><a href='#set-device-location-in-the-console'>Set Device Location in the Console</a></li>
-    
-      
-      <li><a href='#adding-devices-using-the-cli'>Adding Devices using the CLI</a></li>
+      <li><a href='#set-device-location'>Set Device Location</a></li>
     
       
       <li><a href='#application-layer-settings'>Application Layer Settings</a></li>
@@ -522,10 +545,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 09 Mar 2022.
+  Last changed by Nejra Selimović on 22 Jun 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/cf63dd58b7dd6b5802c057d7df7110a693acad05">
-      doc: Modify MAC settings and skip payload crypto info (#799)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/725229c5229ab89de7d4d241a3221d1c35c22499">
+      doc: Update adding devices in bulk with CSV, reorganize Adding Devices (#899)
     </a>
 </p>
 
