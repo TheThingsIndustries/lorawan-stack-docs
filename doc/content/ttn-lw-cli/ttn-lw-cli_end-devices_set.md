@@ -48,9 +48,8 @@ ttn-lw-cli end-devices set [application-id] [device-id] [flags]
       --location.altitude int32                                                               
       --location.latitude float                                                               
       --location.longitude float                                                              
-      --lorawan-phy-version string                                                            allowed values: PHY_UNKNOWN, unknown, TS001_V1_0, PHY_V1_0, 1.0.0, 1.0, V1_0, PHY_V1_0_1, TS001_V1_0_1, V1_0_1, 1.0.1, RP001_V1_0_2, PHY_V1_0_2_REV_A, 1.0.2-a, V1_0_2_REV_A, 1.0.2, V1_0_2, PHY_V1_0_2_REV_B, RP001_V1_0_2_REV_B, 1.0.2-b, V1_0_2_REV_B, PHY_V1_1_REV_A, RP001_V1_1_REV_A, 1.1-a, 1.1.0-a, V1_1_REV_A, PHY_V1_1_REV_B, RP001_V1_1_REV_B, 1.1.0-b, 1.1-b, V1_1_REV_B, RP001_V1_0_3_REV_A, PHY_V1_0_3_REV_A, 1.0.3-a, V1_0_3_REV_A, RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3
-      --lorawan-version string                                                                allowed values: MAC_UNKNOWN, UNKNOWN, unknown, MAC_V1_0, V1_0, 1.0, 1.0.0, MAC_V1_0_1, 1.0.1, V1_0_1, MAC_V1_0_2, 1.0.2, V1_0_2, MAC_V1_1, 1.1, 1.1.0, V1_1, MAC_V1_0_3, V1_0_3, 1.0.3, MAC_V1_0_4, V1_0_4, 1.0.4
-      --mac-settings.adr-margin float32                                                       
+      --lorawan-phy-version string                                                            allowed values: PHY_UNKNOWN, unknown, PHY_V1_0, TS001_V1_0, 1.0.0, V1_0, 1.0, PHY_V1_0_1, TS001_V1_0_1, V1_0_1, 1.0.1, PHY_V1_0_2_REV_A, RP001_V1_0_2, V1_0_2_REV_A, 1.0.2, 1.0.2-a, V1_0_2, RP001_V1_0_2_REV_B, PHY_V1_0_2_REV_B, V1_0_2_REV_B, 1.0.2-b, PHY_V1_1_REV_A, RP001_V1_1_REV_A, 1.1.0-a, 1.1-a, V1_1_REV_A, RP001_V1_1_REV_B, PHY_V1_1_REV_B, 1.1.0-b, V1_1_REV_B, 1.1-b, RP001_V1_0_3_REV_A, PHY_V1_0_3_REV_A, V1_0_3_REV_A, 1.0.3-a, RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3
+      --lorawan-version string                                                                allowed values: MAC_UNKNOWN, unknown, UNKNOWN, MAC_V1_0, V1_0, 1.0, 1.0.0, MAC_V1_0_1, 1.0.1, V1_0_1, MAC_V1_0_2, V1_0_2, 1.0.2, MAC_V1_1, V1_1, 1.1, 1.1.0, MAC_V1_0_3, 1.0.3, V1_0_3, MAC_V1_0_4, 1.0.4, V1_0_4
       --mac-settings.beacon-frequency uint                                                    
       --mac-settings.class-b-c-downlink-interval duration                                     
       --mac-settings.class-b-timeout duration                                                 
@@ -81,7 +80,6 @@ ttn-lw-cli end-devices set [application-id] [device-id] [flags]
       --mac-settings.status-time-periodicity duration                                         
       --mac-settings.supports-32-bit-f-cnt                                                    
       --mac-settings.uplink-dwell-time                                                        
-      --mac-settings.use-adr                                                                  
       --mac-state.current-parameters.adr-ack-delay-exponent string                            allowed values: ADR_ACK_DELAY_1, ADR_ACK_DELAY_2, ADR_ACK_DELAY_4, ADR_ACK_DELAY_8, ADR_ACK_DELAY_16, ADR_ACK_DELAY_32, ADR_ACK_DELAY_64, ADR_ACK_DELAY_128, ADR_ACK_DELAY_256, ADR_ACK_DELAY_512, ADR_ACK_DELAY_1024, ADR_ACK_DELAY_2048, ADR_ACK_DELAY_4096, ADR_ACK_DELAY_8192, ADR_ACK_DELAY_16384, ADR_ACK_DELAY_32768
       --mac-state.current-parameters.adr-ack-limit-exponent string                            allowed values: ADR_ACK_LIMIT_1, ADR_ACK_LIMIT_2, ADR_ACK_LIMIT_4, ADR_ACK_LIMIT_8, ADR_ACK_LIMIT_16, ADR_ACK_LIMIT_32, ADR_ACK_LIMIT_64, ADR_ACK_LIMIT_128, ADR_ACK_LIMIT_256, ADR_ACK_LIMIT_512, ADR_ACK_LIMIT_1024, ADR_ACK_LIMIT_2048, ADR_ACK_LIMIT_4096, ADR_ACK_LIMIT_8192, ADR_ACK_LIMIT_16384, ADR_ACK_LIMIT_32768
       --mac-state.current-parameters.adr-data-rate-index string                               allowed values: DATA_RATE_0, 0, DATA_RATE_1, 1, DATA_RATE_2, 2, DATA_RATE_3, 3, DATA_RATE_4, 4, DATA_RATE_5, 5, DATA_RATE_6, 6, DATA_RATE_7, 7, DATA_RATE_8, 8, DATA_RATE_9, 9, DATA_RATE_10, 10, DATA_RATE_11, 11, DATA_RATE_12, 12, DATA_RATE_13, 13, DATA_RATE_14, 14, DATA_RATE_15, 15
@@ -124,7 +122,7 @@ ttn-lw-cli end-devices set [application-id] [device-id] [flags]
       --mac-state.last-dev-status-f-cnt-up uint32                                             
       --mac-state.last-downlink-at timestamp                                                  
       --mac-state.last-network-initiated-downlink-at timestamp                                
-      --mac-state.lorawan-version string                                                      allowed values: MAC_UNKNOWN, UNKNOWN, unknown, MAC_V1_0, V1_0, 1.0, 1.0.0, MAC_V1_0_1, V1_0_1, 1.0.1, MAC_V1_0_2, 1.0.2, V1_0_2, MAC_V1_1, 1.1, 1.1.0, V1_1, MAC_V1_0_3, V1_0_3, 1.0.3, MAC_V1_0_4, V1_0_4, 1.0.4
+      --mac-state.lorawan-version string                                                      allowed values: MAC_UNKNOWN, unknown, UNKNOWN, MAC_V1_0, 1.0.0, V1_0, 1.0, MAC_V1_0_1, 1.0.1, V1_0_1, MAC_V1_0_2, 1.0.2, V1_0_2, MAC_V1_1, 1.1.0, V1_1, 1.1, MAC_V1_0_3, 1.0.3, V1_0_3, MAC_V1_0_4, 1.0.4, V1_0_4
       --mac-state.pending-application-downlink.class-b-c.absolute-time timestamp              
       --mac-state.pending-application-downlink.confirmed                                      
       --mac-state.pending-application-downlink.correlation-ids strings                        
@@ -187,7 +185,7 @@ ttn-lw-cli end-devices set [application-id] [device-id] [flags]
       --pending-mac-state.last-dev-status-f-cnt-up uint32                                     
       --pending-mac-state.last-downlink-at timestamp                                          
       --pending-mac-state.last-network-initiated-downlink-at timestamp                        
-      --pending-mac-state.lorawan-version string                                              allowed values: MAC_UNKNOWN, UNKNOWN, unknown, MAC_V1_0, V1_0, 1.0, 1.0.0, MAC_V1_0_1, V1_0_1, 1.0.1, MAC_V1_0_2, 1.0.2, V1_0_2, MAC_V1_1, 1.1, 1.1.0, V1_1, MAC_V1_0_3, V1_0_3, 1.0.3, MAC_V1_0_4, V1_0_4, 1.0.4
+      --pending-mac-state.lorawan-version string                                              allowed values: MAC_UNKNOWN, unknown, UNKNOWN, MAC_V1_0, 1.0.0, V1_0, 1.0, MAC_V1_0_1, 1.0.1, V1_0_1, MAC_V1_0_2, 1.0.2, V1_0_2, MAC_V1_1, 1.1.0, V1_1, 1.1, MAC_V1_0_3, 1.0.3, V1_0_3, MAC_V1_0_4, 1.0.4, V1_0_4
       --pending-mac-state.pending-join-request.cf-list.ch-masks bools                         
       --pending-mac-state.pending-join-request.cf-list.freq uint32Slice                       
       --pending-mac-state.pending-join-request.cf-list.type string                            allowed values: FREQUENCIES, CHANNEL_MASKS
@@ -218,7 +216,7 @@ ttn-lw-cli end-devices set [application-id] [device-id] [flags]
       --pending-mac-state.rejected-adr-tx-power-indexes uint32Slice                           
       --pending-mac-state.rejected-frequencies uint64Slice                                    
       --pending-mac-state.rx-windows-available                                                
-      --pending-session.dev-addr bytesBase64                                                  
+      --pending-session.dev-addr 16-bytes                                                     
       --pending-session.keys.f-nwk-s-int-key.key 16-bytes                                     
       --pending-session.keys.nwk-s-enc-key.key 16-bytes                                       
       --pending-session.keys.s-nwk-s-int-key.key 16-bytes                                     
@@ -230,7 +228,7 @@ ttn-lw-cli end-devices set [application-id] [device-id] [flags]
       --root-keys.nwk-key.key 16-bytes                                                        
       --root-keys.root-key-id string                                                          
       --service-profile-id string                                                             
-      --session.dev-addr bytesBase64                                                          
+      --session.dev-addr 16-bytes                                                             
       --session.keys.app-s-key.key 16-bytes                                                   
       --session.keys.f-nwk-s-int-key.key 16-bytes                                             
       --session.keys.nwk-s-enc-key.key 16-bytes                                               

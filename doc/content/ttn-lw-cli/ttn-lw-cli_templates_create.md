@@ -60,7 +60,6 @@ ttn-lw-cli templates create [flags]
       --lorawan-version                                                                select the lorawan_version field
       --mac-settings                                                                   select the mac_settings field and all allowed sub-fields
       --mac-settings.adr                                                               select the mac_settings.adr field and all allowed sub-fields
-      --mac-settings.adr-margin                                                        select the mac_settings.adr_margin field
       --mac-settings.beacon-frequency                                                  select the mac_settings.beacon_frequency field and all allowed sub-fields
       --mac-settings.class-b-c-downlink-interval                                       select the mac_settings.class_b_c_downlink_interval field
       --mac-settings.class-b-timeout                                                   select the mac_settings.class_b_timeout field
@@ -91,7 +90,6 @@ ttn-lw-cli templates create [flags]
       --mac-settings.status-time-periodicity                                           select the mac_settings.status_time_periodicity field
       --mac-settings.supports-32-bit-f-cnt                                             select the mac_settings.supports_32_bit_f_cnt field and all allowed sub-fields
       --mac-settings.uplink-dwell-time                                                 select the mac_settings.uplink_dwell_time field and all allowed sub-fields
-      --mac-settings.use-adr                                                           select the mac_settings.use_adr field and all allowed sub-fields
       --mac-state                                                                      select the mac_state field and all allowed sub-fields
       --mac-state.current-parameters                                                   select the mac_state.current_parameters field and all allowed sub-fields
       --mac-state.current-parameters.adr-ack-delay-exponent                            select the mac_state.current_parameters.adr_ack_delay_exponent field and all allowed sub-fields
