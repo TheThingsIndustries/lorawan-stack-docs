@@ -17,7 +17,7 @@ There are two ways to import devices in {{% tts %}} - using [Console]({{< ref "/
 
 {{< tabs/tab "Console" >}}
 
-### Import devices via the Console {#import-devices-via-the-console}
+## Import devices via the Console {#import-devices-via-the-console}
 
 Open your application and click the button **Import end devices**
 
@@ -43,7 +43,7 @@ If the import was successful, your devices are added to the list of end devices 
 
 {{< tabs/tab "CLI" >}}
 
-### Import devices via the CLI
+## Import devices via the CLI
 
 To complete these steps, you need the have the latest version of `ttn-lw-cli` installed on your system.
 
