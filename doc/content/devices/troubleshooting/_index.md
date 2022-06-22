@@ -78,6 +78,7 @@ Here are some common causes and solutions:
 
 - The device is not transmitting uplink messages. Check if your device is transmitting uplinks by observing its debug logs.
 - The device has no network coverage. Check if your device has a network coverage from any of the gateways registered in your tenant.
+- The device is transmitting data in a different FSB (frequency sub-band) than the one that the gateway is listening on. Check if the frequency plan and FSB that the gateway listens on are correctly configured on {{% tts %}} and on the device.
 - The gateway is not receiving uplinks due to hardware issues. Check if your gateway is receiving uplinks by observing its debug logs.
 - The gateway is not forwarding received uplinks to the Network Server. Check your gateway's debug logs for any errors or warnings. Refer to the [Troubleshooting Gateways guide]({{< ref "/gateways/troubleshooting" >}}).
 
