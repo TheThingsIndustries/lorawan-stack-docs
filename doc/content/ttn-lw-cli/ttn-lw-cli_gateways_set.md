@@ -15,7 +15,6 @@ ttn-lw-cli gateways set [gateway-id] [flags]
 
 ```
       --administrative-contact.ids.organization-ids.organization-id string   
-      --administrative-contact.ids.user-ids.email string                     
       --administrative-contact.ids.user-ids.user-id string                   
       --antenna.add                                                          add an extra antenna
       --antenna.attributes stringToString                                    
@@ -56,7 +55,6 @@ ttn-lw-cli gateways set [gateway-id] [flags]
       --target-cups-key.value bytesHex                                       
       --target-cups-uri string                                               
       --technical-contact.ids.organization-ids.organization-id string        
-      --technical-contact.ids.user-ids.email string                          
       --technical-contact.ids.user-ids.user-id string                        
       --unset strings                                                        list of fields to unset
       --update-channel string                                                

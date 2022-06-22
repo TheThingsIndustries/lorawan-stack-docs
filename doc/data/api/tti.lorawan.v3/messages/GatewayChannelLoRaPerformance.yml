@@ -1,0 +1,18 @@
+name: GatewayChannelLoRaPerformance
+comment: LoRa performance per channel.
+fields:
+- name: time
+  message:
+    package: google.protobuf
+    name: Timestamp
+  rules:
+    required: true
+  default: "0001-01-01T00:00:00Z"
+- name: min_lora_rssi
+  comment: Minimum observed LoRa RSSI (channel RSSI adjusted for SNR) per frequency
+    (Hz).
+  map_key:
+    type: uint64
+  map_value:
+    type: float
+  default: {}

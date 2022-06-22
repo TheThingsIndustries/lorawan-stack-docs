@@ -85,6 +85,7 @@ ttn-lw-cli gateways claim [gateway-eui] [flags]
 ### SEE ALSO
 
 * [ttn-lw-cli gateways]({{< relref "ttn-lw-cli_gateways" >}})	 - Gateway commands
-* [ttn-lw-cli gateways claim authorize]({{< relref "ttn-lw-cli_gateways_claim_authorize" >}})	 - Authorize an gateway for claiming (EXPERIMENTAL)
-* [ttn-lw-cli gateways claim unauthorize]({{< relref "ttn-lw-cli_gateways_claim_unauthorize" >}})	 - Unauthorize an gateway for claiming (EXPERIMENTAL)
+* [ttn-lw-cli gateways claim authorize]({{< relref "ttn-lw-cli_gateways_claim_authorize" >}})	 - Authorize a gateway for claiming (EXPERIMENTAL)
+* [ttn-lw-cli gateways claim info]({{< relref "ttn-lw-cli_gateways_claim_info" >}})	 - Check if claiming is supported for the EUI (EXPERIMENTAL)
+* [ttn-lw-cli gateways claim unauthorize]({{< relref "ttn-lw-cli_gateways_claim_unauthorize" >}})	 - Unauthorize a gateway for claiming (EXPERIMENTAL)
 

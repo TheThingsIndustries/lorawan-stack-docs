@@ -14,9 +14,11 @@ ttn-lw-cli organizations api-keys list [organization-id] [flags]
 ### Options
 
 ```
-  -h, --help           help for list
-      --limit uint32   maximum number of results to get (default 50)
-      --page uint32    results page number (default 1)
+  -h, --help                                      help for list
+      --limit uint32                              
+      --order string                              
+      --organization-ids.organization-id string   
+      --page uint32                               
 ```
 
 ### Options inherited from parent commands

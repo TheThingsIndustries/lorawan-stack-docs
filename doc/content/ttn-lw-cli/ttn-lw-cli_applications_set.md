@@ -15,7 +15,6 @@ ttn-lw-cli applications set [application-id] [flags]
 
 ```
       --administrative-contact.ids.organization-ids.organization-id string   
-      --administrative-contact.ids.user-ids.email string                     
       --administrative-contact.ids.user-ids.user-id string                   
       --application-id string                                                
       --application-server-address string                                    
@@ -26,7 +25,6 @@ ttn-lw-cli applications set [application-id] [flags]
       --name string                                                          
       --network-server-address string                                        
       --technical-contact.ids.organization-ids.organization-id string        
-      --technical-contact.ids.user-ids.email string                          
       --technical-contact.ids.user-ids.user-id string                        
       --unset strings                                                        list of fields to unset
 ```

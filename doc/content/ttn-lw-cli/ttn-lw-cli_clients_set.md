@@ -15,7 +15,6 @@ ttn-lw-cli clients set [client-id] [flags]
 
 ```
       --administrative-contact.ids.organization-ids.organization-id string   
-      --administrative-contact.ids.user-ids.email string                     
       --administrative-contact.ids.user-ids.user-id string                   
       --attributes stringToString                                            
       --client-id string                                                     
@@ -32,7 +31,6 @@ ttn-lw-cli clients set [client-id] [flags]
       --state string                                                         allowed values: STATE_REQUESTED, STATE_APPROVED, STATE_REJECTED, STATE_FLAGGED, STATE_SUSPENDED
       --state-description string                                             
       --technical-contact.ids.organization-ids.organization-id string        
-      --technical-contact.ids.user-ids.email string                          
       --technical-contact.ids.user-ids.user-id string                        
       --unset strings                                                        list of fields to unset
 ```

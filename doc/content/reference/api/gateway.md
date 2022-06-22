@@ -55,6 +55,8 @@ The Gateway Server exposes the list of available frequency plans with the `Confi
 
 {{< proto/method service="GatewayClaimingServer" method="Claim" >}}
 
+{{< proto/method service="GatewayClaimingServer" method="GetInfoByGatewayEUI" >}}
+
 {{< proto/method service="GatewayClaimingServer" method="UnauthorizeGateway" >}}
 
 ## Messages
@@ -108,6 +110,8 @@ The Gateway Server exposes the list of available frequency plans with the `Confi
 {{< proto/message message="GetGatewayRequest" >}}
 
 {{< proto/message message="GetGatewayIdentifiersForEUIRequest" >}}
+
+{{< proto/message message="GetInfoByGatewayEUIRequest" >}}
 
 {{< proto/message message="ListFrequencyPlansRequest" >}}
 

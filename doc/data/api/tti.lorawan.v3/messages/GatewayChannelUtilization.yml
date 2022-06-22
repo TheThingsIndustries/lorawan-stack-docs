@@ -1,0 +1,18 @@
+name: GatewayChannelUtilization
+comment: Utilization per channel.
+fields:
+- name: time
+  message:
+    package: google.protobuf
+    name: Timestamp
+  rules:
+    required: true
+  default: "0001-01-01T00:00:00Z"
+- name: utilization
+  comment: Utilization (fraction of time) per frequency (Hz) that the channel is in
+    use.
+  map_key:
+    type: uint64
+  map_value:
+    type: float
+  default: {}

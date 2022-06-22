@@ -1,0 +1,17 @@
+name: ChannelPacketCount
+comment: Packet count per channel.
+fields:
+- name: time
+  message:
+    package: google.protobuf
+    name: Timestamp
+  rules:
+    required: true
+  default: "0001-01-01T00:00:00Z"
+- name: count
+  comment: Packet counts per frequency (Hz).
+  map_key:
+    type: uint64
+  map_value:
+    type: uint64
+  default: {}

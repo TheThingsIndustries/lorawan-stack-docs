@@ -18,7 +18,6 @@ ttn-lw-cli gateways list [flags]
       --administrative-contact.ids.organization-ids                   select the administrative_contact.ids.organization_ids field and all allowed sub-fields
       --administrative-contact.ids.organization-ids.organization-id   select the administrative_contact.ids.organization_ids.organization_id field
       --administrative-contact.ids.user-ids                           select the administrative_contact.ids.user_ids field and all allowed sub-fields
-      --administrative-contact.ids.user-ids.email                     select the administrative_contact.ids.user_ids.email field
       --administrative-contact.ids.user-ids.user-id                   select the administrative_contact.ids.user_ids.user_id field
       --all                                                           select all gateway fields
       --antennas                                                      select the antennas field
@@ -65,7 +64,6 @@ ttn-lw-cli gateways list [flags]
       --technical-contact.ids.organization-ids                        select the technical_contact.ids.organization_ids field and all allowed sub-fields
       --technical-contact.ids.organization-ids.organization-id        select the technical_contact.ids.organization_ids.organization_id field
       --technical-contact.ids.user-ids                                select the technical_contact.ids.user_ids field and all allowed sub-fields
-      --technical-contact.ids.user-ids.email                          select the technical_contact.ids.user_ids.email field
       --technical-contact.ids.user-ids.user-id                        select the technical_contact.ids.user_ids.user_id field
       --update-channel                                                select the update_channel field
       --update-location-from-status                                   select the update_location_from_status field
