@@ -23,7 +23,9 @@ To create a device, first open the application you wish to add the device in. Go
 
 {{< figure src="application-overview.png" alt="Application overview" >}}
 
-## Using the LoRaWAN Device Repository
+You will be presented with options to register an end device **From The LoRaWAN Device Repository** or **Manually**. Keep reading to learn how to register devices using both of these methods.
+
+### Using the LoRaWAN Device Repository
 
 The [LoRaWAN device repository](https://github.com/TheThingsNetwork/lorawan-devices) contains device profiles, LoRaWAN information, codecs, and more, for many LoRaWAN devices. Using the device repository to add devices in {{% tts %}} automatically uses the correct LoRaWAN version and regional parameters version, which means less information for you to find!
 
@@ -59,9 +61,9 @@ Finally, give your device a unique **End device ID**, and click the **Register e
 
 The device is now activated, and will appear as connected in {{% tts %}} once it sends an uplink.
 
-## Manually Registering an End Device
+### Manually Registering an End Device
 
-If your device is not in the device repository, you may manually register it.
+If your device is not available in the device repository, you may manually register it.
 
 Make sure the **Manually** tab is selected.
 
@@ -150,22 +152,6 @@ Finally, give your device a unique **End device ID**. See [ID and EUI constraint
 {{< figure src="manual-network-settings-abp.png" alt="Manually create OTAA end device" >}}
 
 Click **Register end device** to create the end device.
-
-## Adding Devices in Bulk
-
-It is also possible to import end devices in bulk, using a file format defined in the [JSON file reference]({{< ref "getting-started/migrating/device-json" >}}). See the following video from [The Things Network youtube channel](https://youtu.be/ouz-VuiosU4) for instructions.
-
-<details><summary>Show video</summary>
-{{< youtube "ouz-VuiosU4" >}}
-</details>
-
-## Set Device Location in the Console
-
-Once you have added your end device to {{% tts %}}, you can also set its location to be displayed on a map widget by clicking **Change location settings**. 
-
-The end device location can be manually set by pinning on the map widget, or entering the **Latitude**, **Longitude** and **Altitude** values. 
-
-{{< figure src="device-location.png" alt="Gateway location" >}}
 
 {{< /tabs/tab >}}
 
@@ -308,7 +294,39 @@ This will create an end device `dev1` in application `app1` with the `EU_863_870
 
 You can also pass `--with-session` to have a session generated.
 
-### Set Device Location with the CLI
+{{< /tabs/tab >}}
+
+{{< /tabs/container >}}
+
+Once a device has been added, get started with [Integrations]({{< ref "/integrations" >}}) to process and act on data.
+
+## Adding Devices in Bulk
+
+It is also possible to import end devices in bulk.
+
+Devices' descriptions need to be in a [JSON]({{< ref "/getting-started/migrating/device-json" >}}) or [CSV]({{< ref "/getting-started/migrating/device-csv" >}}) format. See [Import End Devices in {{% tts %}}]({{< ref "/getting-started/migrating/import-devices" >}}) section for instructions on how to import devices in bulk using these files.
+
+See the following video from [The Things Network youtube channel](https://youtu.be/ouz-VuiosU4) for instructions.
+
+<details><summary>Show video</summary>
+{{< youtube "ouz-VuiosU4" >}}
+</details>
+
+## Set Device Location
+
+{{< tabs/container "Console" "CLI" >}}
+
+{{< tabs/tab "Console" >}}
+
+Once you have added your end device to {{% tts %}}, you can also set its location to be displayed on a map widget by clicking **Change location settings**. 
+
+The end device location can be manually set by pinning on the map widget, or entering the **Latitude**, **Longitude** and **Altitude** values. 
+
+{{< figure src="device-location.png" alt="Gateway location" >}}
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "CLI" >}}
 
 Once you have added your end device to {{% tts %}}, you can also set its location. 
 
@@ -357,8 +375,6 @@ The CLI will return something like:
 {{< /tabs/tab >}}
 
 {{< /tabs/container >}}
-
-Once a device has been added, get started with [Integrations]({{< ref "/integrations" >}}) to process and act on data.
 
 ## Application Layer Settings
 
