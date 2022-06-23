@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.19.2</p>
+        <p class="navbar-item is-size-7">v3.20.0</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -1327,6 +1327,56 @@ The caller is required to have all assigned or/and removed rights.
       </th>
       <td>
         <p><code>POST</code> <code>/api/v3/gcls/claim</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>GatewayClaimingServer.GetInfoByGatewayEUI</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Return whether claiming is available for a given gateway EUI.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GetInfoByGatewayEUIRequest"><code>GetInfoByGatewayEUIRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:GetInfoByGatewayEUIResponse"><code>GetInfoByGatewayEUIResponse</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/gcls/claim/info</code></p>
       </td>
     </tr>
   </tbody>
@@ -5580,6 +5630,51 @@ Requires the RIGHT_GATEWAY_READ_SECRETS for reading and RIGHT_GATEWAY_WRITE_SECR
 
 
 
+<h3 id="message:GetInfoByGatewayEUIRequest">Message <code>GetInfoByGatewayEUIRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "eui": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>eui</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>8</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
 <h3 id="message:ListFrequencyPlansRequest">Message <code>ListFrequencyPlansRequest</code></h3>
 
 <details><summary>Show object example</summary>
@@ -5689,6 +5784,7 @@ Requires the RIGHT_GATEWAY_READ_SECRETS for reading and RIGHT_GATEWAY_WRITE_SECR
 <details><summary>Show object example</summary>
 <pre><code>{
   "gateway_ids": {},
+  "order": "",
   "limit": 0,
   "page": 0,
 }</code></pre>
@@ -5736,6 +5832,41 @@ Requires the RIGHT_GATEWAY_READ_SECRETS for reading and RIGHT_GATEWAY_WRITE_SECR
       </th>
       <td>
           <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>order</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Order the results by this field path.
+Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
+          <p><code>in</code>: <code>[ api_key_id -api_key_id name -name created_at -created_at expires_at -expires_at]</code></p>
       </td>
     </tr>
     
@@ -8089,6 +8220,8 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 
 	
 
+	
+
 
         </div>
         <div class="is-clearfix">
@@ -8172,10 +8305,10 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 11 Feb 2022.
+  Last changed by Nejra Selimović on 23 Jun 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/268e3c3ce15a774d0fee8c56a50fa555aae5d842">
-      doc: Add missing API entries for purging entities, cross-link sections (#773)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b53237bd281092740133fc00fd9bccde36388bbb">
+      doc: Add v3.20.0 release docs (#897)
     </a>
 </p>
 

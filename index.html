@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.19.2</p>
+        <p class="navbar-item is-size-7">v3.20.0</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -140,73 +140,49 @@
 <div class="whats-new">
   <div class="whats-new-content">
     <div class="whats-new-header">
-      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.19.2/>What's new in V3.19.2</a></h2>
+      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.20.0/>What's new in V3.20.0</a></h2>
       <a href="https://www.thethingsindustries.com/docs/whats-new/"><p class="see-more">See all release notes →</p></a>
     </div>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.19.2/">
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.20.0/">
       <div class="whats-new-body">
         <div class="whats-new-items-shadow whats-new-items-fade">
           <div class="whats-new-items">
             <h3 id="added">Added</h3>
 <ul>
-<li>Allow setting an expiry date for API keys in the Console</li>
-<li>New event type <code>gs.gateway.connection.stats</code> with connection statistics. A new event is sent at most every <code>gs.update-connection-stats-debounce-time</code> time and at least every <code>gs.update-connection-stats-interval</code> time.</li>
-<li>Experimental version of the Network Operations Center. Until the Network Operations Center is considered stable, it needs to be started as part of <code>tti-lw-stack start all</code> or explicitly with <code>tti-lw-stack start noc</code>.
-<ul>
-<li>This requires a database schema initialization (<code>tti-lw-stack noc-db init</code>).</li>
-</ul>
-</li>
-<li>Button to export as JSON end device <code>mac-settings</code> and <code>mac-state</code> in the Console.</li>
-<li>Support configurable plugin flags.</li>
-<li>Support for the <code>FOpts encryption, usage of FCntDwn</code> LoRaWAN 1.1 erratum.</li>
+<li>Add RPC to check if a gateway EUI is claimable.</li>
+<li>OAuth client management in the account app.</li>
+<li>Support claim protection when claiming end devices on The Things Join Server.</li>
+<li>CLI commands <code>notifications list</code> and <code>notifications set-status</code> to manage user notifications.</li>
+<li>Support for class B and C downlink transmissions through multiple gateways simultaneously.</li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
-<li>Event type for <code>gs.up.receive</code> event to <code>GatewayUplinkMessage</code>.</li>
-<li>Default debounce time for updating connection stats in de Gateway Server (configuration setting <code>gs.update-connection-stats-debounce-time</code>) is now 30 seconds.</li>
-<li>Error code when importing CSV file with invalid LoRaWAN or Regional Parameters version.</li>
-<li>Emails sent by the Identity Server now also contain HTML versions.
+<li>Entities are now fully validated when updated in the stores.
 <ul>
-<li>For the images in these emails to work, an absolute <code>is.email.network.assets-base-url</code> (and optionally <code>is.email.network.branding-base-url</code>) needs to be set in configuration.</li>
+<li>Previously only the updated paths where validated. This lead to situations in which a partial update could cause the entity as a whole to reach an invalid state.</li>
 </ul>
 </li>
-<li>Notification emails are now sent through the Notification Service of the Identity Server.</li>
-<li>&ldquo;Last activity&rdquo;-information in the Console is now sourced as a single aggregate from the Identity Server.</li>
-<li>End device overview in the Console.
+<li>Application, gateway, end device and organization-tables in the Console are now sorted by creation time by default (newest first).</li>
+<li>Collaborator and API Key tables can now be sorted in the Console.</li>
+<li>The application table in the Console now shows the amount of end devices.</li>
+<li>The organizations table in the Console now shows the amount of collaborators.</li>
+<li>Table layouts for several entities have been improved on the Console.</li>
+<li>The Storage Integration now stores data using the <code>json</code> data type instead of <code>jsonb</code>. This is relevant for decoded payloads which may contain null characters.
 <ul>
-<li>Showing MAC/PHY versions and used frequency plan.</li>
-<li>Hiding the entity description if not set.</li>
-<li>Showing information of pending sessions.</li>
-<li>Automatically updating session info (no refresh necessary to schedule downlinks after a device has joined).</li>
-<li>Showing session start time.</li>
+<li>This mainly affects the TimescaleDB/PostgreSQL backend.</li>
+<li>This requires a database schema migration (<code>ttn-lw-stack storage-db migrate</code>) because of the update column.</li>
 </ul>
 </li>
-<li>The Things Stack is now built with Go 1.18.</li>
-<li>Layout of webhook and Pub/Sub forms to improve UX.</li>
-<li>The Network Server Address used for End Device Claiming is fetched from the configuration instead of client input.</li>
-</ul>
-<h3 id="removed">Removed</h3>
+<li>Default raw data retention for the Network Operation Center is now 3 days (instead of 30 days). You can override this with the <code>noc.store.raw-data-retention</code> setting.
 <ul>
-<li>The ability to create custom email templates.</li>
+<li>For changes to take effect, perform a database schema migration (<code>tti-lw-stack noc-db migrate</code>).</li>
+</ul>
+</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>Fixed adding device address prefixes if it contains characters in the Console.</li>
-<li>Support <code>app_eui</code> as alias for <code>join_eui</code> in CSV file import, per documentation.</li>
-<li>End devices frame counts being displayed as <code>n/a</code> when event stream contained historical data message events.</li>
-<li>Gateway general settings (Basic settings) not saving changes in some cases.</li>
-<li>Contact info validation not possible when user is already logged in.</li>
-<li>CLI not allowing devices to be created or updated.</li>
-<li>End device creation no longer errors on missing application info rights.</li>
-<li>Missing success notification when successfully deleting an application in the Console.</li>
-<li>CLI create commands for applications, gateways and clients no longer have their decoded ID emptied when using the <code>--user-id</code> flag.</li>
-<li>End device claiming settings not showing in the Console in Join Server-only deployments.</li>
-<li>Metric <code>ttn_lw_events_channel_dropped_total</code> not getting updated.</li>
-<li>Dropped events when calling the Stream RPC with a long tail.</li>
-</ul>
-<h3 id="security">Security</h3>
-<ul>
-<li>Security fix for an issue where the description and list of rights of arbitrary API keys could be retrieved by any logged-in user if the 24-bit random API key ID was known.</li>
+<li>End devices running on MAC versions higher or equal to 1.1 showing network downlink frame counters instead of application downlink frame counters.</li>
+<li>Wrong representation of time values between midnight and 1am (eg. 24:04:11) in the Console in some cases.</li>
 </ul>
 
           </div>
@@ -224,7 +200,7 @@
 <a href="https://www.thethingsindustries.com/docs/whats-new/">
   <div class="whats-new-800">
     <div class="whats-new-header-800">
-      <p>See what's new in V3.19.2</p>
+      <p>See what's new in V3.20.0</p>
       <p>-></p>
     </div>
   </div>

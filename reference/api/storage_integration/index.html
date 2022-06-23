@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.19.2</p>
+        <p class="navbar-item is-size-7">v3.20.0</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -1487,11 +1487,11 @@ If not set, this downlink message may be transmitted in class A, B and C.</p>
         repeated 
   
     
-    <a href="#message:GatewayAntennaIdentifiers">
+    <a href="#message:ClassBCGatewayIdentifiers">
   
   <code>
     
-    GatewayAntennaIdentifiers
+    ClassBCGatewayIdentifiers
   </code>
   
     </a>
@@ -1504,10 +1504,11 @@ If not set, this downlink message may be transmitted in class A, B and C.</p>
         Description
       </th>
       <td>
-          <p>Possible gateway identifiers and antenna index to use for this downlink message.
+          <p>Possible gateway identifiers, antenna index, and group index to use for this downlink message.
 The Network Server selects one of these gateways for downlink, based on connectivity, signal quality, channel utilization and an available slot.
 If none of the gateways can be selected, the downlink message fails.
-If empty, a gateway and antenna is selected automatically from the gateways seen in recent uplinks.</p>
+If empty, a gateway and antenna is selected automatically from the gateways seen in recent uplinks.
+If group index is set, gateways will be grouped by the index for the Network Server to select one gateway per group.</p>
         
       </td>
     </tr>
@@ -3212,6 +3213,114 @@ Can be used with app_s_key to encrypt downlink payloads.</p>
 
 
 
+<h3 id="message:ClassBCGatewayIdentifiers">Message <code>ClassBCGatewayIdentifiers</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "gateway_ids": {},
+  "antenna_index": 0,
+  "group_index": 0,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>gateway_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:GatewayIdentifiers">
+  
+  <code>
+    
+    GatewayIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>antenna_index</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>group_index</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
 <h3 id="message:DataRate">Message <code>DataRate</code></h3>
 <b>Restrictions:</b>
 <ul>
@@ -4814,6 +4923,8 @@ traces the network may (or may not) store about recent errors.</p>
       </th>
       <td>
           <p>LoRa Alliance NetID of the Packet Broker Forwarder Member.</p>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>3</code></p>
       </td>
     </tr>
     
@@ -4913,6 +5024,8 @@ traces the network may (or may not) store about recent errors.</p>
       </th>
       <td>
           <p>Forwarder gateway EUI.</p>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>8</code></p>
       </td>
     </tr>
     
@@ -4988,6 +5101,8 @@ traces the network may (or may not) store about recent errors.</p>
       </th>
       <td>
           <p>LoRa Alliance NetID of the Packet Broker Home Network Member.</p>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>3</code></p>
       </td>
     </tr>
     
@@ -7173,10 +7288,10 @@ This field is set and used only by the Gateway Server.</p>
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 16 Aug 2021.
+  Last changed by Nejra Selimović on 23 Jun 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5a835dc32881e8370322cd2fe18a18130caac35f">
-      Improve description of field masks in API documentation (#475)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b53237bd281092740133fc00fd9bccde36388bbb">
+      doc: Add v3.20.0 release docs (#897)
     </a>
 </p>
 

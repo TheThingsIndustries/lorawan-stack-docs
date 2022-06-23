@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.19.2</p>
+        <p class="navbar-item is-size-7">v3.20.0</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -330,7 +330,7 @@
         Request type
       </th>
       <td>
-        <a href="#message:TimeBucketRequest"><code>TimeBucketRequest</code></a>
+        <a href="#message:TimeBucketQuery"><code>TimeBucketQuery</code></a>
         
       </td>
     </tr>
@@ -339,7 +339,7 @@
         Response type
       </th>
       <td>
-        <a href="#message:GatewaysConnectedResponse"><code>GatewaysConnectedResponse</code></a>
+        <a href="#message:GatewaysConnectedTimeBuckets"><code>GatewaysConnectedTimeBuckets</code></a>
         
       </td>
     </tr>
@@ -354,9 +354,487 @@
   </tbody>
 </table>
 
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Noc.QueryGatewaysConnectivityTimes</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:TimeWindowQuery"><code>TimeWindowQuery</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:GatewaysConnectivityTimes"><code>GatewaysConnectivityTimes</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/noc/gateways/connectivity</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Noc.QueryGatewaysActive</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:TimeWindowQuery"><code>TimeWindowQuery</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:GatewaysActive"><code>GatewaysActive</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/noc/gateways/active</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Noc.QueryGatewayConnectionEvents</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GatewayConnectionEventsQuery"><code>GatewayConnectionEventsQuery</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:GatewayConnectionEvents"><code>GatewayConnectionEvents</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/noc/gateway/{gateway_time_window.gateway_ids.gateway_id}/connection-events</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Noc.QueryGatewayChannelsUtilization</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GatewayTimeBucketQuery"><code>GatewayTimeBucketQuery</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:GatewayChannelsUtilization"><code>GatewayChannelsUtilization</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/noc/gateway/{gateway_ids.gateway_id}/channels/utilization</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Noc.QueryGatewayChannelsLoRaPerformance</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GatewayTimeBucketQuery"><code>GatewayTimeBucketQuery</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:GatewayChannelsLoRaPerformance"><code>GatewayChannelsLoRaPerformance</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/noc/gateway/{gateway_ids.gateway_id}/channels/lora-performance</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Noc.QueryGatewayChannelsPacketCount</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GatewayTimeBucketQuery"><code>GatewayTimeBucketQuery</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:ChannelsPacketCount"><code>ChannelsPacketCount</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/noc/gateway/{gateway_ids.gateway_id}/channels/packet-count</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Noc.QueryGatewayTrafficRates</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GatewayTimeBucketQuery"><code>GatewayTimeBucketQuery</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:TrafficRatesTimeBuckets"><code>TrafficRatesTimeBuckets</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/noc/gateway/{gateway_ids.gateway_id}/traffic</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Noc.QueryGatewayUptime</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GatewayTimeWindowQuery"><code>GatewayTimeWindowQuery</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.FloatValue</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/noc/gateway/{gateway_ids.gateway_id}/uptime</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Noc.QueryGatewayTopNetworksSeen</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GatewayTopNetworksSeenQuery"><code>GatewayTopNetworksSeenQuery</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:GatewayTopNetworksSeen"><code>GatewayTopNetworksSeen</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/noc/gateway/{gateway_time_window.gateway_ids.gateway_id}/networks-seen/top/{top}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Noc.CheckHealth</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/noc/health</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 <h2 id="messages">Messages</h2>
 
-<h3 id="message:GatewaysConnectedResponse">Message <code>GatewaysConnectedResponse</code></h3>
+<h3 id="message:GatewayConnectionEventTypeValue">Message <code>GatewayConnectionEventTypeValue</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "value": "GATEWAY_CONNECTION_EVENT_TYPE_CONNECT",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>value</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#enum:GatewayConnectionEventType">
+  
+  <code>
+  
+  GatewayConnectionEventType
+  </code>
+    
+  </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>defined_only</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:GatewaysConnectedTimeBuckets">Message <code>GatewaysConnectedTimeBuckets</code></h3>
 <p>Number of gateways connected.</p>
 
 <details><summary>Show object example</summary>
@@ -418,6 +896,7 @@
 
 
 <h3 id="message:GatewaysConnectedTimeBucket">Message <code>GatewaysConnectedTimeBucket</code></h3>
+<p>Number of gateways connected in a time bucket.</p>
 
 <details><summary>Show object example</summary>
 <pre><code>{
@@ -495,8 +974,8 @@
 
 
 
-<h3 id="message:TimeBucketRequest">Message <code>TimeBucketRequest</code></h3>
-<p>Request using aggregates by time buckets with a specified interval.</p>
+<h3 id="message:TimeBucketQuery">Message <code>TimeBucketQuery</code></h3>
+<p>Request for data using aggregates by time buckets with a specified interval.</p>
 
 <details><summary>Show object example</summary>
 <pre><code>{
@@ -635,8 +1114,556 @@
 
 
 
+<h3 id="message:TimeWindowQuery">Message <code>TimeWindowQuery</code></h3>
+<p>Request for data in a specific time window.</p>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "from": "0001-01-01T00:00:00Z",
+  "to": "0001-01-01T00:00:00Z",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>from</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>to</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
 
 
+
+<h3 id="message:GatewayConnectionEventsQuery">Message <code>GatewayConnectionEventsQuery</code></h3>
+<p>Request for gateway connection events in a specific time window.</p>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "gateway_time_window": {},
+  "event_type": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>gateway_time_window</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:GatewayTimeWindowQuery">
+  
+  <code>
+    
+    GatewayTimeWindowQuery
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>event_type</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:GatewayConnectionEventTypeValue">
+  
+  <code>
+    
+    GatewayConnectionEventTypeValue
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The event type to query. If unset, query all event types.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:GatewayTimeBucketQuery">Message <code>GatewayTimeBucketQuery</code></h3>
+<p>Request for gateway data using aggregates by time buckets with a specified interval.</p>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "gateway_ids": {},
+  "time_bucket": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>gateway_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      ttn.lorawan.v3.
+    
+    GatewayIdentifiers
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>time_bucket</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:TimeBucketQuery">
+  
+  <code>
+    
+    TimeBucketQuery
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:GatewayTimeWindowQuery">Message <code>GatewayTimeWindowQuery</code></h3>
+<p>Request for gateway data in a specific time window.</p>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "gateway_ids": {},
+  "time_window": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>gateway_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      ttn.lorawan.v3.
+    
+    GatewayIdentifiers
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>time_window</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:TimeWindowQuery">
+  
+  <code>
+    
+    TimeWindowQuery
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:GatewayTopNetworksSeenQuery">Message <code>GatewayTopNetworksSeenQuery</code></h3>
+<p>Request for top network seen by a gateway.</p>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "gateway_time_window": {},
+  "top": 0,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>gateway_time_window</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:GatewayTimeWindowQuery">
+  
+  <code>
+    
+    GatewayTimeWindowQuery
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>top</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Top number of networks to include.</p>
+          <p><code>gte</code>: <code>1</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+<h2 id="enums">Enums</h2>
+
+
+<h3 id="enum:GatewayConnectionEventType">Enum <code>GatewayConnectionEventType</code></h3>
+<p>Gateway connection event type.</p>
+<table class="api">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>GATEWAY_CONNECTION_EVENT_TYPE_CONNECT</code></td>
+      <td><code>0</code></td>
+      <td> The gateway connects.</td>
+    </tr>
+    <tr>
+      <td><code>GATEWAY_CONNECTION_EVENT_TYPE_DISCONNECT</code></td>
+      <td><code>1</code></td>
+      <td> The gateway disconnects.</td>
+    </tr>
+    <tr>
+      <td><code>GATEWAY_CONNECTION_EVENT_TYPE_STATS</code></td>
+      <td><code>2</code></td>
+      <td> The gateway connection statistics are updated.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
 
 	
 
@@ -671,6 +1698,9 @@
     
       
       <li><a href='#messages'>Messages</a></li>
+    
+      
+      <li><a href='#enums'>Enums</a></li>
     
   </ul>
 
@@ -710,10 +1740,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 22 Jun 2022.
+  Last changed by Nejra Selimović on 23 Jun 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b367100bfbcc289cc9ffffe0558ee430b5e47d0">
-      doc: Add v3.19.2 release docs (#892)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b53237bd281092740133fc00fd9bccde36388bbb">
+      doc: Add v3.20.0 release docs (#897)
     </a>
 </p>
 
