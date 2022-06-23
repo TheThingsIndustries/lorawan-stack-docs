@@ -15,7 +15,6 @@ ttn-lw-cli organizations create [organization-id] [flags]
 
 ```
       --administrative-contact.ids.organization-ids.organization-id string   
-      --administrative-contact.ids.user-ids.email string                     
       --administrative-contact.ids.user-ids.user-id string                   
       --attributes stringToString                                            
       --description string                                                   
@@ -23,7 +22,6 @@ ttn-lw-cli organizations create [organization-id] [flags]
       --name string                                                          
       --organization-id string                                               
       --technical-contact.ids.organization-ids.organization-id string        
-      --technical-contact.ids.user-ids.email string                          
       --technical-contact.ids.user-ids.user-id string                        
       --user-id string                                                       
 ```

@@ -8,6 +8,24 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.20.0
+
+### `2-5-db-timescale`
+- Increased backup and redeployment timeout
+
+### `4-2a-configuration`
+- Added new parameters `EventsRedisPublishQueueSize`, `EventsRedisPublishMaxWorkers`, `PacketBrokerHomeNetworkWorkerCountLimit`, `PacketBrokerForwarderWorkerCountLimit`
+
+### `5-5-ecs-monitoring`
+- Added alerts for TimescaleDB running out of storage
+
+### `AMI/BYOL` template
+- Added new parameters `TLSCertificate`, `TLSCertificateCA`, `TLSCertificateKey`
+
+### Proxy
+- Added Notification Service routes.
+- Added account invitations routes.
+
 ## 3.19.2
 
 ### `1-1-vpc`

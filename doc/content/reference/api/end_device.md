@@ -203,6 +203,8 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="ClaimEndDeviceRequest.AuthenticatedIdentifiers" >}}
 
+{{< proto/message message="ClassBCGatewayIdentifiers" >}}
+
 {{< proto/message message="DataRate" >}}
 
 {{< proto/message message="DataRateIndexValue" >}}

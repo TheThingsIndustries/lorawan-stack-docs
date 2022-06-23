@@ -14,9 +14,12 @@ ttn-lw-cli gateways api-keys list [gateway-id] [flags]
 ### Options
 
 ```
-  -h, --help           help for list
-      --limit uint32   maximum number of results to get (default 50)
-      --page uint32    results page number (default 1)
+      --gateway-ids.eui 8-bytes         
+      --gateway-ids.gateway-id string   
+  -h, --help                            help for list
+      --limit uint32                    
+      --order string                    
+      --page uint32                     
 ```
 
 ### Options inherited from parent commands

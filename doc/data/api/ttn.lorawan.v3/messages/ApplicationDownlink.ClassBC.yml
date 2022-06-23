@@ -2,13 +2,14 @@ name: ApplicationDownlink.ClassBC
 fields:
 - name: gateways
   comment: |-
-    Possible gateway identifiers and antenna index to use for this downlink message.
+    Possible gateway identifiers, antenna index, and group index to use for this downlink message.
     The Network Server selects one of these gateways for downlink, based on connectivity, signal quality, channel utilization and an available slot.
     If none of the gateways can be selected, the downlink message fails.
     If empty, a gateway and antenna is selected automatically from the gateways seen in recent uplinks.
+    If group index is set, gateways will be grouped by the index for the Network Server to select one gateway per group.
   repeated:
     message:
-      name: GatewayAntennaIdentifiers
+      name: ClassBCGatewayIdentifiers
   default: []
 - name: absolute_time
   comment: |-

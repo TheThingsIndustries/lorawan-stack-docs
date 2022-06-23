@@ -15,7 +15,6 @@ ttn-lw-cli applications create [application-id] [flags]
 
 ```
       --administrative-contact.ids.organization-ids.organization-id string   
-      --administrative-contact.ids.user-ids.email string                     
       --administrative-contact.ids.user-ids.user-id string                   
       --application-id string                                                
       --application-server-address string                                    
@@ -27,7 +26,6 @@ ttn-lw-cli applications create [application-id] [flags]
       --network-server-address string                                        
       --organization-id string                                               
       --technical-contact.ids.organization-ids.organization-id string        
-      --technical-contact.ids.user-ids.email string                          
       --technical-contact.ids.user-ids.user-id string                        
       --user-id string                                                       
 ```

@@ -14,9 +14,11 @@ ttn-lw-cli users api-keys list [user-id] [flags]
 ### Options
 
 ```
-  -h, --help           help for list
-      --limit uint32   maximum number of results to get (default 50)
-      --page uint32    results page number (default 1)
+  -h, --help                      help for list
+      --limit uint32              
+      --order string              
+      --page uint32               
+      --user-ids.user-id string   
 ```
 
 ### Options inherited from parent commands

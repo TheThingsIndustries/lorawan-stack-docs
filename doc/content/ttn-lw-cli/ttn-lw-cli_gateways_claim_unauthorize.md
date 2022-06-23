@@ -5,7 +5,7 @@ slug: ttn-lw-cli_gateways_claim_unauthorize
 
 ## ttn-lw-cli gateways claim unauthorize
 
-Unauthorize an gateway for claiming (EXPERIMENTAL)
+Unauthorize a gateway for claiming (EXPERIMENTAL)
 
 ```
 ttn-lw-cli gateways claim unauthorize [gateway-id] [flags]

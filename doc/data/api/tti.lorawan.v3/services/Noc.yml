@@ -5,9 +5,102 @@ methods:
   QueryGatewaysConnected:
     name: QueryGatewaysConnected
     input:
-      name: TimeBucketRequest
+      name: TimeBucketQuery
     output:
-      name: GatewaysConnectedResponse
+      name: GatewaysConnectedTimeBuckets
     http:
     - method: POST
       path: /noc/gateways/connected
+  QueryGatewaysConnectivityTimes:
+    name: QueryGatewaysConnectivityTimes
+    input:
+      name: TimeWindowQuery
+    output:
+      name: GatewaysConnectivityTimes
+    http:
+    - method: POST
+      path: /noc/gateways/connectivity
+  QueryGatewaysActive:
+    name: QueryGatewaysActive
+    input:
+      name: TimeWindowQuery
+    output:
+      name: GatewaysActive
+    http:
+    - method: POST
+      path: /noc/gateways/active
+  QueryGatewayConnectionEvents:
+    name: QueryGatewayConnectionEvents
+    input:
+      name: GatewayConnectionEventsQuery
+    output:
+      name: GatewayConnectionEvents
+    http:
+    - method: POST
+      path: /noc/gateway/{gateway_time_window.gateway_ids.gateway_id}/connection-events
+  QueryGatewayChannelsUtilization:
+    name: QueryGatewayChannelsUtilization
+    input:
+      name: GatewayTimeBucketQuery
+    output:
+      name: GatewayChannelsUtilization
+    http:
+    - method: POST
+      path: /noc/gateway/{gateway_ids.gateway_id}/channels/utilization
+  QueryGatewayChannelsLoRaPerformance:
+    name: QueryGatewayChannelsLoRaPerformance
+    input:
+      name: GatewayTimeBucketQuery
+    output:
+      name: GatewayChannelsLoRaPerformance
+    http:
+    - method: POST
+      path: /noc/gateway/{gateway_ids.gateway_id}/channels/lora-performance
+  QueryGatewayChannelsPacketCount:
+    name: QueryGatewayChannelsPacketCount
+    input:
+      name: GatewayTimeBucketQuery
+    output:
+      name: ChannelsPacketCount
+    http:
+    - method: POST
+      path: /noc/gateway/{gateway_ids.gateway_id}/channels/packet-count
+  QueryGatewayTrafficRates:
+    name: QueryGatewayTrafficRates
+    input:
+      name: GatewayTimeBucketQuery
+    output:
+      name: TrafficRatesTimeBuckets
+    http:
+    - method: POST
+      path: /noc/gateway/{gateway_ids.gateway_id}/traffic
+  QueryGatewayUptime:
+    name: QueryGatewayUptime
+    input:
+      name: GatewayTimeWindowQuery
+    output:
+      package: google.protobuf
+      name: FloatValue
+    http:
+    - method: POST
+      path: /noc/gateway/{gateway_ids.gateway_id}/uptime
+  QueryGatewayTopNetworksSeen:
+    name: QueryGatewayTopNetworksSeen
+    input:
+      name: GatewayTopNetworksSeenQuery
+    output:
+      name: GatewayTopNetworksSeen
+    http:
+    - method: POST
+      path: /noc/gateway/{gateway_time_window.gateway_ids.gateway_id}/networks-seen/top/{top}
+  CheckHealth:
+    name: CheckHealth
+    input:
+      package: google.protobuf
+      name: Empty
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: GET
+      path: /noc/health

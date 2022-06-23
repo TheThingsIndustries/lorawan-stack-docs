@@ -15,7 +15,6 @@ ttn-lw-cli gateways create [gateway-id] [flags]
 
 ```
       --administrative-contact.ids.organization-ids.organization-id string   
-      --administrative-contact.ids.user-ids.email string                     
       --administrative-contact.ids.user-ids.user-id string                   
       --antenna.attributes stringToString                                    
       --antenna.gain float32                                                 
@@ -55,7 +54,6 @@ ttn-lw-cli gateways create [gateway-id] [flags]
       --target-cups-key.value bytesHex                                       
       --target-cups-uri string                                               
       --technical-contact.ids.organization-ids.organization-id string        
-      --technical-contact.ids.user-ids.email string                          
       --technical-contact.ids.user-ids.user-id string                        
       --update-channel string                                                
       --update-location-from-status                                          

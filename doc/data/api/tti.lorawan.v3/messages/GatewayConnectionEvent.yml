@@ -1,0 +1,16 @@
+name: GatewayConnectionEvent
+comment: Gateway connection event.
+fields:
+- name: time
+  message:
+    package: google.protobuf
+    name: Timestamp
+  rules:
+    required: true
+  default: "0001-01-01T00:00:00Z"
+- name: event_type
+  enum:
+    name: GatewayConnectionEventType
+  rules:
+    defined_only: true
+  default: GATEWAY_CONNECTION_EVENT_TYPE_CONNECT

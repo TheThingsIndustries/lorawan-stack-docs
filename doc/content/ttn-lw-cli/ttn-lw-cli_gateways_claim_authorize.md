@@ -5,11 +5,11 @@ slug: ttn-lw-cli_gateways_claim_authorize
 
 ## ttn-lw-cli gateways claim authorize
 
-Authorize an gateway for claiming (EXPERIMENTAL)
+Authorize a gateway for claiming (EXPERIMENTAL)
 
 ### Synopsis
 
-Authorize an gateway for claiming (EXPERIMENTAL)
+Authorize a gateway for claiming (EXPERIMENTAL)
 
 The given API key must have the right to
 - read gateway information

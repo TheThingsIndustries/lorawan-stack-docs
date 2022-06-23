@@ -6,6 +6,23 @@ fields:
   rules:
     required: true
   default: {}
+- name: order
+  comment: |-
+    Order the results by this field path.
+    Default ordering is by ID. Prepend with a minus (-) to reverse the order.
+  type: string
+  rules:
+    in:
+    - ""
+    - api_key_id
+    - -api_key_id
+    - name
+    - -name
+    - created_at
+    - -created_at
+    - expires_at
+    - -expires_at
+  default: ""
 - name: limit
   comment: Limit the number of results per page.
   type: uint32
