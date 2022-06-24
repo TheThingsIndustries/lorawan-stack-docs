@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.96.0" />
-  <title>Gateway Visibility Settings | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/configure/gateway-visibilities/" />
+  <title>Mapper API | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/api/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.74b07de880ad60ffdf0f356535e15d45e05de3df7f1c738e63521f7d8d731e53.css" integrity="sha256-dLB96ICtYP/fDzVlNeFdReBd499/HHOOY1IffY1zHlM=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Gateway Visibility Settings">
+  <meta itemprop="name" content="Mapper API">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Gateway Visibility Settings">
+  <meta property="og:title" content="Mapper API">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/packet-broker/configure/gateway-visibilities/">
-  <meta name="twitter:title" content="Gateway Visibility Settings" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/packet-broker/api/">
+  <meta name="twitter:title" content="Mapper API" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -138,34 +138,15 @@
   <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/configure/" class="">Configure</a>
     
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/configure/routing-policies/" class="">Routing Policies</a>
-    
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/configure/gateway-visibilities/" class="is-active">Gateway Visibility Settings</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/api/" class="is-active">Mapper API</a>
     
     
 
 
 
-    
-  </li>
-
-</ul>
-
-
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/api/" class="">Mapper API</a>
     
   </li>
 
@@ -211,186 +192,58 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Gateway Visibility Settings
+        <h1 class="title is-size-2">Mapper API
           
         </h1>
         
-        <h2 class="subtitle">
-          
-            
-            
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-  
-
-  
-
-  
-
-  
-
-<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud, Dedicated Cloud, Enterprise and Open Source Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
-
-  <img class="badge" src="/docs/img/tts_frames/frame_dedicated_cloud.svg"></img>
-
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
-
-  <img class="badge" src="/docs/img/tts_frames/frame_open_source.svg"></img>
-
-</a>
-
-
-          
-          
-            <span class="tag is-light">New in 3.15.1</span>
-
-          
-          
-          
-        </h2>
-        
         <div class="content">
-          <p>Gateway visibility configuration allows network administrators to configure who sees which gateway-related information. Having gateways listed publicly on the map can help discovering partner networks, but it may also lead to privacy concerns. Therefore, Packet Broker allows configuring gateway visibility with fine-grained settings. <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/#gateway-visibility-settings">Learn more about gateway visibility</a>.</p>
-<!-- more -->
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The Things Stack currently only allows configuring the default gateway visibility. Configuring visibility per Home Network is not yet supported.
-</div>
-
-<h2 id="configure-default-gateway-visibility">Configure Default Gateway Visibility</h2>
-<div class="tabs is-boxed">
-  <ul>
-    
-    <li data-tab="console">
-      <a>
-        <span>Console</span>
-      </a>
-    </li>
-    
-    <li data-tab="cli">
-      <a>
-        <span>CLI</span>
-      </a>
-    </li>
-    
-  </ul>
-</div>
-<div class="tab-content content">
-  <section data-content="console">
-  <p>In the Packer Broker settings page, navigate to the <strong>Default gateway visibility</strong> tab to control what information of your gateways will be publicly visible.</p>
-<figure><img src="../pb-gw-visibility.png"
-         alt="Default gateway visibility"/>
-</figure>
-</section>
-<section data-content="cli">
-  <h3 id="get-default-gateway-visibility">Get Default Gateway Visibility</h3>
-<p>The default gateway visibility defines rules for all Home Networks if there is no specific gateway visibility for a Home Network.</p>
-<p>Use the following command in your terminal to get the default routing policy:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli packetbroker home-networks gateway-visibilities get default
-</span></span></code></pre></div><p>If there is no default gateway visibility defined, the above command fails with <code>not found</code>.</p>
-<details><summary>Example output</summary>
-<p>In the following example, all gateway visibility configuration fields are enabled:</p>
+          <p>The Packet Broker Mapper API can help you fetch gateway locations, online status and other gateway information for The Things Stack Community Edition, Cloud, Enterprise and Open Source deployments. This section contains the reference for the Packet Broker Mapper API and examples of forming an API call.</p>
+<p>The <a href="https://swagger.io/specification/">OpenAPI</a> definition of the Packet Broker Mapper API is available <a href="https://mapper.packetbroker.net/api/v2/openapi.json">here</a>.</p>
+<p>You can also use <a href="https://petstore.swagger.io/">Swagger UI</a> to explore the Mapper API. Just enter <code>https://mapper.packetbroker.net/api/v2/openapi.json</code> in the URL field on the top and click <strong>Explore</strong>.</p>
+<h2 id="examples">Examples</h2>
+<p>To get all gateways:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl https://mapper.packetbroker.net/api/v2/gateways
+</span></span></code></pre></div><p>As a result of this API call, you will get a list of all gateways connected to Packet Broker and their details (like network, tenant, cluster and gateway identifiers, activity status, location, etc.).</p>
+<p>To get info about a single gateway <code>demo-gw1</code> that&rsquo;s connected to The Things Stack Community Edition:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl https://mapper.packetbroker.net/api/v2/gateways/netID<span class="o">=</span>000013,tenantID<span class="o">=</span>ttn,id<span class="o">=</span>demo-gw1
+</span></span></code></pre></div><details><summary>Show JSON API response</summary>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2021-09-27T09:55:56.326241Z&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="nt">&#34;visibility&#34;</span><span class="p">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;location&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;antenna_placement&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;antenna_count&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;fine_timestamps&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;contact_info&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;status&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;frequency_plan&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="nt">&#34;packet_rates&#34;</span><span class="p">:</span> <span class="kc">true</span>
-</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;netID&#34;</span><span class="p">:</span><span class="s2">&#34;000013&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;tenantID&#34;</span><span class="p">:</span><span class="s2">&#34;ttn&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;id&#34;</span><span class="p">:</span><span class="s2">&#34;demo-gw1&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;eui&#34;</span><span class="p">:</span><span class="s2">&#34;B827EBFFFE8DB885&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;clusterID&#34;</span><span class="p">:</span><span class="s2">&#34;eu1.cloud.thethings.network&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;updatedAt&#34;</span><span class="p">:</span><span class="s2">&#34;2022-05-04T14:55:35.52635Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;location&#34;</span><span class="p">:{</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;latitude&#34;</span><span class="p">:</span><span class="mf">43.856691</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;longitude&#34;</span><span class="p">:</span><span class="mf">18.382848</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;altitude&#34;</span><span class="p">:</span><span class="mi">500</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;accuracy&#34;</span><span class="p">:</span><span class="mi">0</span>
+</span></span><span class="line"><span class="cl">	<span class="p">},</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;antennaPlacement&#34;</span><span class="p">:</span><span class="s2">&#34;INDOOR&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;antennaCount&#34;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;online&#34;</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;frequencyPlan&#34;</span><span class="p">:{</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;region&#34;</span><span class="p">:</span><span class="s2">&#34;EU_863_870&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">		<span class="nt">&#34;loraMultiSFChannels&#34;</span><span class="p">:[</span>
+</span></span><span class="line"><span class="cl">			<span class="mi">868100000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="mi">868300000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="mi">868500000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="mi">867100000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="mi">867300000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="mi">867500000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="mi">867700000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">			<span class="mi">867900000</span>
+</span></span><span class="line"><span class="cl">		<span class="p">]</span>
+</span></span><span class="line"><span class="cl">	<span class="p">},</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;rxRate&#34;</span><span class="p">:</span><span class="mf">2821.1191</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">	<span class="nt">&#34;txRate&#34;</span><span class="p">:</span><span class="mf">151.6022</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div></details>
-<h3 id="set-default-gateway-visibility">Set Default Gateway Visibility</h3>
-<p>To set the default gateway visibility and enable all fields:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli packetbroker home-networks gateway-visibilities <span class="nb">set</span> default --all
-</span></span></code></pre></div><p>To customize, see <a href="#flags">Flags</a> below.</p>
-<h3 id="delete-default-gateway-visibility">Delete Default Gateway Visibility</h3>
-<p>To delete the default gateway visibility:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli packetbroker home-networks gateway-visibilities delete default
-</span></span></code></pre></div><h3 id="flags">Flags</h3>
-<p>When setting gateway visibility, you can specify a combination of the following flags:</p>
-<table>
-<thead>
-<tr>
-<th>Flag</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>--all</code></td>
-<td>Enable all fields</td>
-</tr>
-<tr>
-<td><code>--location</code></td>
-<td>Enable gateway coordinates</td>
-</tr>
-<tr>
-<td><code>--antenna-placement</code></td>
-<td>Enable indoor/outdoor antenna placement</td>
-</tr>
-<tr>
-<td><code>--antenna-count</code></td>
-<td>Enable number of antennas</td>
-</tr>
-<tr>
-<td><code>--fine-timestamps</code></td>
-<td>Enable whether the gateway produces fine timestamps</td>
-</tr>
-<tr>
-<td><code>--contact-information</code></td>
-<td>Enable administrative and technical contact information of the gateway</td>
-</tr>
-<tr>
-<td><code>--status</code></td>
-<td>Enable online/offline status</td>
-</tr>
-<tr>
-<td><code>--frequency-plan</code></td>
-<td>Enable region and channel plan with frequencies that the gateway uses</td>
-</tr>
-<tr>
-<td><code>--packet-rates</code></td>
-<td>Enable receive and transmission packet rates</td>
-</tr>
-</tbody>
-</table>
-</section>
-
-</div>
-
-
         </div>
         <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/getting-started/packet-broker/configure/routing-policies/">← Routing Policies</a>
-<a class="button is-pulled-right" href="/docs/getting-started/packet-broker/api/">Mapper API →</a>
+<a class="button is-pulled-left" href="/docs/getting-started/packet-broker/configure/">← Configure</a>
+<a class="button is-pulled-right" href="/docs/getting-started/packet-broker/troubleshooting/">Troubleshooting →</a>
 </div>
 
         <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -411,7 +264,7 @@
   <ul class="menu-list">
     
       
-      <li><a href='#configure-default-gateway-visibility'>Configure Default Gateway Visibility</a></li>
+      <li><a href='#examples'>Examples</a></li>
     
   </ul>
 
@@ -451,14 +304,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 31 Mar 2022.
+  Last changed by Nejra Selimović on 24 Jun 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2579561dc9a38b9d72124b1e8eddfa386a6587f5">
-      doc: Update PB doc (#833)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3b8877b438be4b0692ee66cdb4a4fc89f7898944">
+      doc: Add PB Mapper API ref and examples (#901)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/packet-broker/configure/gateway-visibilities.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/packet-broker/api.md" class="button">Edit on Github</a>
 </div>
 
       </div>
