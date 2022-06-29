@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.20.0</p>
+        <p class="navbar-item is-size-7">v3.20.1</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -140,49 +140,37 @@
 <div class="whats-new">
   <div class="whats-new-content">
     <div class="whats-new-header">
-      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.20.0/>What's new in V3.20.0</a></h2>
+      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.20.1/>What's new in V3.20.1</a></h2>
       <a href="https://www.thethingsindustries.com/docs/whats-new/"><p class="see-more">See all release notes →</p></a>
     </div>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.20.0/">
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.20.1/">
       <div class="whats-new-body">
         <div class="whats-new-items-shadow whats-new-items-fade">
           <div class="whats-new-items">
             <h3 id="added">Added</h3>
 <ul>
-<li>Add RPC to check if a gateway EUI is claimable.</li>
-<li>OAuth client management in the account app.</li>
-<li>Support claim protection when claiming end devices on The Things Join Server.</li>
-<li>CLI commands <code>notifications list</code> and <code>notifications set-status</code> to manage user notifications.</li>
-<li>Support for class B and C downlink transmissions through multiple gateways simultaneously.</li>
+<li>Support inviting users in the Console.</li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
-<li>Entities are now fully validated when updated in the stores.
+<li>In AS923 frequency plans, the Network Server will skip the RX1 window if the data rate is ambiguous.
 <ul>
-<li>Previously only the updated paths where validated. This lead to situations in which a partial update could cause the entity as a whole to reach an invalid state.</li>
+<li>This change occurs in old Regional Parameters versions in which the initial downlink dwell time setting of the end device is not specified. The end device may have the downlink dwell time setting either enabled or disabled, and due to this the data rate of the RX1 window is ambiguous.</li>
+<li>This ambiguity exists until the Network Server is successful in negotiating the dwell time limitations using the TxParamSetupReq MAC command. This will occur automatically and does not require any external input.</li>
+<li>If you already know the boot dwell time settings of your end device, you may provide them via the <code>--mac-settings.downlink-dwell-time</code> and <code>--mac-settings.uplink-dwell-time</code> MAC settings. This will ensure that RX1 transmissions are available from the first uplink of the session.</li>
 </ul>
 </li>
-<li>Application, gateway, end device and organization-tables in the Console are now sorted by creation time by default (newest first).</li>
-<li>Collaborator and API Key tables can now be sorted in the Console.</li>
-<li>The application table in the Console now shows the amount of end devices.</li>
-<li>The organizations table in the Console now shows the amount of collaborators.</li>
-<li>Table layouts for several entities have been improved on the Console.</li>
-<li>The Storage Integration now stores data using the <code>json</code> data type instead of <code>jsonb</code>. This is relevant for decoded payloads which may contain null characters.
-<ul>
-<li>This mainly affects the TimescaleDB/PostgreSQL backend.</li>
-<li>This requires a database schema migration (<code>ttn-lw-stack storage-db migrate</code>) because of the update column.</li>
 </ul>
-</li>
-<li>Default raw data retention for the Network Operation Center is now 3 days (instead of 30 days). You can override this with the <code>noc.store.raw-data-retention</code> setting.
+<h3 id="removed">Removed</h3>
 <ul>
-<li>For changes to take effect, perform a database schema migration (<code>tti-lw-stack noc-db migrate</code>).</li>
-</ul>
-</li>
+<li>Sorting on associated rights in the API keys table.</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>End devices running on MAC versions higher or equal to 1.1 showing network downlink frame counters instead of application downlink frame counters.</li>
-<li>Wrong representation of time values between midnight and 1am (eg. 24:04:11) in the Console in some cases.</li>
+<li><code>last activity</code> not updating when an end device joins for the first time in the Console.</li>
+<li>A bug that would show the &ldquo;Status count periodicity&rdquo;-field in the Console as <code>200</code> when actually set to <code>0</code>.</li>
+<li>A bug causing map viewports to be set in odd locations when setting end device/gateway locations.</li>
+<li>Console crashing when sorting by associated rights in the API keys table.</li>
 </ul>
 
           </div>
@@ -200,7 +188,7 @@
 <a href="https://www.thethingsindustries.com/docs/whats-new/">
   <div class="whats-new-800">
     <div class="whats-new-header-800">
-      <p>See what's new in V3.20.0</p>
+      <p>See what's new in V3.20.1</p>
       <p>-></p>
     </div>
   </div>

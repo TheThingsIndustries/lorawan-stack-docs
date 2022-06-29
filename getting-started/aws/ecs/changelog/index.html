@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.20.0</p>
+        <p class="navbar-item is-size-7">v3.20.1</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -249,6 +249,11 @@
           <h1 id="upgrading">Upgrading</h1>
 <p>All meaningful changes to templates are documented in this file.</p>
 <h2 id="unreleased">Unreleased</h2>
+<h2 id="3201">3.20.1</h2>
+<h2 id="prometheus">Prometheus</h2>
+<ul>
+<li>The <code>node_exporter</code> metrics are now tagged with the EC2 instance ID and instance name.</li>
+</ul>
 <h2 id="3200">3.20.0</h2>
 <h3 id="2-5-db-timescale"><code>2-5-db-timescale</code></h3>
 <ul>
@@ -318,7 +323,7 @@
 <li>Added the <code>RedisConnectionPoolSize</code> and <code>RedisConnectionPoolIdleTimeout</code> parameters to control the Redis connection pool of each component</li>
 <li>Added new parameter <code>ClusterIDAddressTemplate</code>. For single-cluster deployments this should be equal to <code>Domain</code></li>
 </ul>
-<h3 id="prometheus">Prometheus</h3>
+<h3 id="prometheus-1">Prometheus</h3>
 <ul>
 <li>Added the <code>ttn_lw_workerpootl_queue_latency_seconds_bucket_rate:by_pool</code> aggregation, which aggregates the time spent by items in the worker pool queues</li>
 </ul>
@@ -478,7 +483,7 @@
 <ul>
 <li>Added <code>RedisKmsKeyId</code> and <code>RedisPassword</code> parameters for at-rest and in-transit encryption</li>
 </ul>
-<h3 id="prometheus-1">Prometheus</h3>
+<h3 id="prometheus-2">Prometheus</h3>
 <ul>
 <li>Added recording rules for tenant fetcher metrics</li>
 <li>Added recording rules for Application Server metadata store and caches</li>
@@ -522,7 +527,7 @@
 <li>Updated <code>Strict-Transport-Security</code> header, increasing max-age to 2 years, including subdomains and enabling pre-loading.</li>
 <li>Added custom static and error responses.</li>
 </ul>
-<h3 id="prometheus-2">Prometheus</h3>
+<h3 id="prometheus-3">Prometheus</h3>
 <ul>
 <li>Added recording rules for gRPC server/client stream messages sent/received.</li>
 </ul>
@@ -567,7 +572,7 @@
 <li>New template for CryptoServer</li>
 </ul>
 <h2 id="3153">3.15.3</h2>
-<h3 id="prometheus-3">Prometheus</h3>
+<h3 id="prometheus-4">Prometheus</h3>
 <ul>
 <li>Added metrics for the number of currently running subscription sets, and for subscription set publishing rates.</li>
 <li>Added metrics for the number dropped gateway status messages.</li>
@@ -625,7 +630,7 @@
 <ul>
 <li>This template now imports TimescaleDB address in a different way.</li>
 </ul>
-<h3 id="prometheus-4">Prometheus</h3>
+<h3 id="prometheus-5">Prometheus</h3>
 <ul>
 <li>Added recording rules for Gateway Server transmission success / failure</li>
 <li>Added recording rules for Application Server worker pools, webhooks and application packages</li>
@@ -639,7 +644,7 @@
 <ul>
 <li>Headers with underscores are now dropped, instead of rejecting the whole request.</li>
 </ul>
-<h3 id="prometheus-5">Prometheus</h3>
+<h3 id="prometheus-6">Prometheus</h3>
 <ul>
 <li>Upgraded to v2.29.2.</li>
 </ul>
@@ -653,7 +658,7 @@
 <li>Fixed generated <code>is-proxy</code> configuration.</li>
 <li>Allow more concurrent requests (mostly event streams) to the Console.</li>
 </ul>
-<h3 id="prometheus-6">Prometheus</h3>
+<h3 id="prometheus-7">Prometheus</h3>
 <ul>
 <li>Added recording rule for JavaScript payload formatters latency metric.</li>
 </ul>
@@ -700,7 +705,7 @@
 <ul>
 <li>Added option to skip automatically fetching wildcard certificates for the sub domain.</li>
 </ul>
-<h3 id="prometheus-7">Prometheus</h3>
+<h3 id="prometheus-8">Prometheus</h3>
 <ul>
 <li>Upgraded image to Prometheus v2.28.1.</li>
 <li>Added discovery of Gateway Configuration Server and Device Claiming Server.</li>
@@ -713,7 +718,7 @@
 <li>Add routes for tenant search API.</li>
 </ul>
 <h2 id="3133">3.13.3</h2>
-<h3 id="prometheus-8">Prometheus</h3>
+<h3 id="prometheus-9">Prometheus</h3>
 <ul>
 <li>Added recording rules for latency metrics.</li>
 </ul>
@@ -727,7 +732,7 @@
 <ul>
 <li>Added route for <code>ttn.lorawan.v3.Events</code> gRPC service.</li>
 </ul>
-<h3 id="prometheus-9">Prometheus</h3>
+<h3 id="prometheus-10">Prometheus</h3>
 <ul>
 <li>Added alert for the Cluster Proxy reaching its file descriptor limit and dropping new connections.</li>
 </ul>
@@ -736,7 +741,7 @@
 <ul>
 <li>Added <code>Strict-Transport-Security</code> header when using HTTPS.</li>
 </ul>
-<h3 id="prometheus-10">Prometheus</h3>
+<h3 id="prometheus-11">Prometheus</h3>
 <ul>
 <li>Upgraded image to Prometheus v2.27.1.</li>
 <li>Add recording rule for v3.13.1 <code>ttn_lw_log_messages_total</code> metric. The recording rule for the old <code>ttn_lw_log_messages_rate</code> is also still present.</li>
@@ -834,7 +839,7 @@
 <li>MinimumHealthyPercent set to 50 (CloudFormation doesn&rsquo;t update this setting in ECS, might require manual update)</li>
 <li>Set <code>IncludeGatewayConfigurationServer</code> to <code>true</code> by default. <code>false</code> is not compatible with existing deployments where a GCS is required in the cluster.</li>
 </ul>
-<h3 id="prometheus-11">Prometheus</h3>
+<h3 id="prometheus-12">Prometheus</h3>
 <ul>
 <li>Added alerts for CPU, Memory and Disk issues on VMs.</li>
 <li>New <code>EnableVirtualHostWithTenantSubdomain</code> and <code>EnableVirtualHostWithoutTenantSubdomain</code> parameters to enable/disable virtual hosts with or without tenant subdomain.</li>
@@ -888,7 +893,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="prometheus-12">Prometheus</h2>
+<h2 id="prometheus-13">Prometheus</h2>
 <ul>
 <li>Upgrade Prometheus to v2.26.0</li>
 </ul>
@@ -919,7 +924,7 @@
 <li>Changed configuration for changes in Envoy v1.17.</li>
 <li>Modified overload handling to degrade service more gracefully.</li>
 </ul>
-<h3 id="prometheus-13">Prometheus</h3>
+<h3 id="prometheus-14">Prometheus</h3>
 <ul>
 <li>Added recording and alerting rules for Cluster Proxy.</li>
 </ul>
@@ -1029,7 +1034,7 @@
 <ul>
 <li>Added routes for Device Repository APIs.</li>
 </ul>
-<h3 id="prometheus-14">Prometheus</h3>
+<h3 id="prometheus-15">Prometheus</h3>
 <ul>
 <li>Update base image</li>
 </ul>
@@ -1075,7 +1080,7 @@
 <ul>
 <li>Changed EC2 machine&rsquo;s UserData</li>
 </ul>
-<h3 id="prometheus-15">Prometheus</h3>
+<h3 id="prometheus-16">Prometheus</h3>
 <ul>
 <li>New metrics and alerts</li>
 </ul>
@@ -1108,6 +1113,12 @@
     
       
       <li><a href='#unreleased'>Unreleased</a></li>
+    
+      
+      <li><a href='#3201'>3.20.1</a></li>
+    
+      
+      <li><a href='#prometheus'>Prometheus</a></li>
     
       
       <li><a href='#3200'>3.20.0</a></li>
@@ -1255,10 +1266,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 23 Jun 2022.
+  Last changed by Nejra Selimović on 29 Jun 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b53237bd281092740133fc00fd9bccde36388bbb">
-      doc: Add v3.20.0 release docs (#897)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/1bce6eff8c309757b6721679666e5ce4222e1edc">
+      doc: Add v3.20.1 release docs (#904)
     </a>
 </p>
 
