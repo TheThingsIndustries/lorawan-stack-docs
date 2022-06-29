@@ -8,6 +8,12 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.20.1
+
+## Prometheus
+
+- The `node_exporter` metrics are now tagged with the EC2 instance ID and instance name.
+
 ## 3.20.0
 
 ### `2-5-db-timescale`

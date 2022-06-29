@@ -21,6 +21,14 @@ fields:
 - name: uptime
   comment: |-
     Fraction of time that the gateway was active.
-    This is typically aggregated in time buckets of at least 5 minutes.
+    This is typically aggregated in time buckets of at least 5 minutes or 1 hour depending on the query window.
   type: float
+  default: 0
+- name: packet_rate_last_hour
+  comment: Packet rate (uplink and downlink) of the last hour.
+  type: float
+  default: 0
+- name: disconnects
+  comment: Number of disconnects.
+  type: uint64
   default: 0
