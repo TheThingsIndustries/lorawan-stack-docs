@@ -370,7 +370,15 @@
 }
 </code></pre></details>
 <h3 id="put-requests"><code>PUT</code> Requests</h3>
-<p><code>PUT</code> requests can be used to update entities by supplying the object as JSON data. To update fields, the field mask must also be specified in the JSON object (query parameters do not work for <code>PUT</code> requests). The field mask has the following format:</p>
+<p><code>PUT</code> requests can be used to update entities by supplying the object as JSON data.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <p>Keep in mind that application ID (<code>application_ids.application_id</code>), end device ID (<code>device_id</code>), AppEUI/JoinEUI (<code>join_eui</code>), DevEUI (<code>dev_eui</code>) and API key IDs cannot be updated after creation. These fields are part of the allowed field mask, but they can only be used at creation, after which they can no longer be changed.</p>
+<p>For example, to properly register an end device in The Things Stack like described in the <a href="https://www.thethingsindustries.com/docs/getting-started/api/#multi-step-actions">Using the API</a> section, it is necessary to set the <code>dev_eui</code> field to device&rsquo;s DevEUI. However, updating the DevEUI after device is created will not be possible, i.e. will fail with the <code>forbidden path(s) in field mask</code> error.</p>
+
+</div>
+
+<p>To update fields, the field mask must also be specified in the JSON object (query parameters do not work for <code>PUT</code> requests). The field mask has the following format:</p>
 <pre tabindex="0"><code>{
   &#34;field_mask&#34;: {
       &#34;paths&#34;: [
@@ -532,10 +540,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer Easwaran on 05 Jan 2022.
+  Last changed by Nejra Selimović on 01 Jul 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/640bd9663fb6b335bcc9d2ca463b68a8a1fff869">
-      Update EUI description for end device creation (#693)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b28b7b62119285f9c9fade2656fcddfe5800f0d6">
+      doc: Add note about updating IDs via API (#903)
     </a>
 </p>
 
