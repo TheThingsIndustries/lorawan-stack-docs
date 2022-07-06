@@ -133,6 +133,10 @@ Please respect the following guidelines for content in our documentation site.
   - If a line is longer than 120 columns, insert a line break
   - In very special cases, longer lines are tolerated
 
+## Building Frequency Plans Documentation
+
+The [Frequency Plans](https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/reference/frequency-plans/_index.md) section contains all frequency plans that are officially supported by {{% tts %}}. The list of frequency plans is populated from the [LoRaWAN Frequency Plans for {{% tts %}} Github repository](https://github.com/TheThingsNetwork/lorawan-frequency-plans/). To update the list of frequency plans with the newest changes from the Frequency Plans repository, run `make freq.deps`.
+
 ## Legal
 
 The Things Stack Documentation is Apache 2.0 licensed.
