@@ -96,7 +96,7 @@ The simplest configuration for PostgreSQL looks like this (excerpted from the ex
 
 The configuration in this guide uses a single instance of [Redis](https://redis.io/). Again, note that the `volumes` need to be set up correctly so that the datastore is persisted on your server's disk. 
 
-{{< note >}} {{% tts %}} requires Redis version 6.2 or newer. {{</ note >}}
+{{< note >}} {{% tts %}} requires Redis version 6.2. {{</ note >}}
 
 In production, replace the `image` with a working, stable tag from [Docker Hub - Redis](https://hub.docker.com/_/redis?tab=tags).
 
