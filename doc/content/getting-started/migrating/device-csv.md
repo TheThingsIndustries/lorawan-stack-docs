@@ -23,16 +23,26 @@ Column | Required | Alias | Format | Meaning
 `join_eui` | **Yes** | `app_eui` | Hexadecimal string | LoRaWAN JoinEUI (or AppEUI)
 `id` | No | | Alphanumeric string, lowercase with hyphens | Device ID (falls back to DevEUI if not set)
 `name` | No | | Free form | Name
-`frequency_plan_id` | No * | | See [Frequency Plans]({{< ref "/reference/frequency-plans" >}}) | Frequency plan ID
+`description` | No | | string | Optional, description of the device
 `lorawan_version` | No * | | See [`MACVersion`]({{< ref "/reference/api/end_device#enum:MACVersion" >}}) | LoRaWAN version
 `lorawan_phy_version` | No * | | See [`PHYVersion`]({{< ref "/reference/api/end_device#enum:PHYVersion" >}}) | LoRaWAN Regional Parameters version
-`app_key` | **Yes** | | Hexadecimal string | LoRaWAN AppKey
-`nwk_key` | No | | Hexadecimal string | LoRaWAN NwkKey
+`frequency_plan_id` | No * | | See [Frequency Plans]({{< ref "/reference/frequency-plans" >}}) | Frequency plan ID
 `brand_id` | No | | Vendor ID string from [Device Repository]({{< ref "/integrations/payload-formatters/device-repo" >}}) | Device brand ID
 `model_id` | No | | Model ID from [Device Repository]({{< ref "/integrations/payload-formatters/device-repo" >}}) | Device model ID
 `firmware_version` | No | | Firmware version from [Device Repository]({{< ref "/integrations/payload-formatters/device-repo" >}}) | Firmware version
 `hardware_version` | No | | Hardware version from [Device Repository]({{< ref "/integrations/payload-formatters/device-repo" >}}) | Hardware version
 `band_id` | No | | See [Frequency Plans]({{< ref "/reference/frequency-plans" >}}) | LoRaWAN Band ID
+`supports_class_c` | No | | boolean | `true` for Class C devices, `false` otherwise.
+`app_key` | **Yes** | | Hexadecimal string | LoRaWAN AppKey
+`nwk_key` | No | | Hexadecimal string | LoRaWAN NwkKey
+`rx1_delay` | No | | string | Delay for the first Class A receive window (Rx1). Typical values are `"RX_DELAY_1"` (1 second) and `"RX_DELAY_5"` (5 seconds). See [MACSettings]({{< ref "reference/api/end_device#message:MACSettings" >}}) for more information.
+`supports_32_bit_f_cnt` | No | | boolean |  `true` if device supports 32-bit frame counters, `false` if device only supports 16-bit frame counters. 
+`dev_addr` | **For existing session** | | Hexadecimal string | **Needed for ABP devices or when migrating OTAA devices with an existing session**. See [Device Address]({{< ref "/reference/glossary#device-address" >}}) for more information.
+`app_s_key` | **For existing session** | | string | **Needed for ABP devices or when migrating OTAA devices with an existing session**. See [Application Session Key]({{< ref "reference/glossary#application-session-key" >}}) for more information.
+`f_nwk_s_int_key` | **For existing session** | | string | Forwarding Network Session Integrity Key, also referred to as **Network Session Key** in LoRaWAN v1.0.x compatibility mode. See [SessionKeys]({{< ref "reference/api/end_device#message:SessionKeys" >}}) and [Forwarding Network Session Integrity Key]({{< ref "/reference/glossary#forwarding-network-session-integrity-key" >}}) for more information.
+`last_f_cnt_up` | **For existing session** | | uint | Last uplink frame counter used.
+`last_n_f_cnt_down` | **For existing session** | | uint | Last network downlink frame counter used.
+`last_a_f_cnt_down` | **For existing session** | | uint | Last application downlink frame counter used.
 
 \* If you don't set this, you must set the fallback value when importing the CSV file. See [Importing devices]({{< ref "/getting-started/migrating/import-devices" >}}).
 
