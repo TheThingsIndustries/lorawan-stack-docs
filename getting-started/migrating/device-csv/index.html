@@ -278,11 +278,11 @@
 <td>Name</td>
 </tr>
 <tr>
-<td><code>frequency_plan_id</code></td>
-<td>No *</td>
+<td><code>description</code></td>
+<td>No</td>
 <td></td>
-<td>See <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plans</a></td>
-<td>Frequency plan ID</td>
+<td>string</td>
+<td>Optional, description of the device</td>
 </tr>
 <tr>
 <td><code>lorawan_version</code></td>
@@ -299,18 +299,11 @@
 <td>LoRaWAN Regional Parameters version</td>
 </tr>
 <tr>
-<td><code>app_key</code></td>
-<td><strong>Yes</strong></td>
+<td><code>frequency_plan_id</code></td>
+<td>No *</td>
 <td></td>
-<td>Hexadecimal string</td>
-<td>LoRaWAN AppKey</td>
-</tr>
-<tr>
-<td><code>nwk_key</code></td>
-<td>No</td>
-<td></td>
-<td>Hexadecimal string</td>
-<td>LoRaWAN NwkKey</td>
+<td>See <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plans</a></td>
+<td>Frequency plan ID</td>
 </tr>
 <tr>
 <td><code>brand_id</code></td>
@@ -346,6 +339,83 @@
 <td></td>
 <td>See <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plans</a></td>
 <td>LoRaWAN Band ID</td>
+</tr>
+<tr>
+<td><code>supports_class_c</code></td>
+<td>No</td>
+<td></td>
+<td>boolean</td>
+<td><code>true</code> for Class C devices, <code>false</code> otherwise.</td>
+</tr>
+<tr>
+<td><code>app_key</code></td>
+<td><strong>Yes</strong></td>
+<td></td>
+<td>Hexadecimal string</td>
+<td>LoRaWAN AppKey</td>
+</tr>
+<tr>
+<td><code>nwk_key</code></td>
+<td>No</td>
+<td></td>
+<td>Hexadecimal string</td>
+<td>LoRaWAN NwkKey</td>
+</tr>
+<tr>
+<td><code>rx1_delay</code></td>
+<td>No</td>
+<td></td>
+<td>string</td>
+<td>Delay for the first Class A receive window (Rx1). Typical values are <code>&quot;RX_DELAY_1&quot;</code> (1 second) and <code>&quot;RX_DELAY_5&quot;</code> (5 seconds). See <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#message:MACSettings">MACSettings</a> for more information.</td>
+</tr>
+<tr>
+<td><code>supports_32_bit_f_cnt</code></td>
+<td>No</td>
+<td></td>
+<td>boolean</td>
+<td><code>true</code> if device supports 32-bit frame counters, <code>false</code> if device only supports 16-bit frame counters.</td>
+</tr>
+<tr>
+<td><code>dev_addr</code></td>
+<td><strong>For existing session</strong></td>
+<td></td>
+<td>Hexadecimal string</td>
+<td><strong>Needed for ABP devices or when migrating OTAA devices with an existing session</strong>. See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#device-address">Device Address</a> for more information.</td>
+</tr>
+<tr>
+<td><code>app_s_key</code></td>
+<td><strong>For existing session</strong></td>
+<td></td>
+<td>string</td>
+<td><strong>Needed for ABP devices or when migrating OTAA devices with an existing session</strong>. See <a href="https://www.thethingsindustries.com/docs/reference/glossary/#application-session-key">Application Session Key</a> for more information.</td>
+</tr>
+<tr>
+<td><code>f_nwk_s_int_key</code></td>
+<td><strong>For existing session</strong></td>
+<td></td>
+<td>string</td>
+<td>Forwarding Network Session Integrity Key, also referred to as <strong>Network Session Key</strong> in LoRaWAN v1.0.x compatibility mode. See <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#message:SessionKeys">SessionKeys</a> and <a href="https://www.thethingsindustries.com/docs/reference/glossary/#forwarding-network-session-integrity-key">Forwarding Network Session Integrity Key</a> for more information.</td>
+</tr>
+<tr>
+<td><code>last_f_cnt_up</code></td>
+<td><strong>For existing session</strong></td>
+<td></td>
+<td>uint</td>
+<td>Last uplink frame counter used.</td>
+</tr>
+<tr>
+<td><code>last_n_f_cnt_down</code></td>
+<td><strong>For existing session</strong></td>
+<td></td>
+<td>uint</td>
+<td>Last network downlink frame counter used.</td>
+</tr>
+<tr>
+<td><code>last_a_f_cnt_down</code></td>
+<td><strong>For existing session</strong></td>
+<td></td>
+<td>uint</td>
+<td>Last application downlink frame counter used.</td>
 </tr>
 </tbody>
 </table>
@@ -432,10 +502,10 @@ test-three;3333333333333333;3333333333333333;Device 3;EU_863_870_TTN;MAC_V1_0_4;
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 01 Jun 2022.
+  Last changed by Nicholas Cristofaro on 11 Jul 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b96c8e75c162c24633ccfd590f6457fc61a6ac09">
-      doc: Add instructions to migrate from Community Edition to Cloud (#858)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/83ed267e08b03c3c008f385cc0a7fb83bae346c0">
+      doc: Add description for new csv fields on migration procedure (#910)
     </a>
 </p>
 
