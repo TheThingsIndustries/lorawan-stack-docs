@@ -25,17 +25,21 @@ Adding gateways using the Console or the CLI is usually most convenient, so thos
 
 ## Adding Gateways using the Console
 
-In addition to the written instructions below, a video with instructions for adding a gateway is available on [The Things Network youtube channel](https://youtu.be/o6nwc3APXns).
-
-<details><summary>Show video</summary>
-{{< youtube "o6nwc3APXns" >}}
-</details>
-
 Go to **Gateways** in the top menu, and click **+ Add Gateway** to reach the gateway registration page.
 
-Fill the **Gateway ID**, **Gateway EUI** (if your gateway has an EUI) and **Frequency Plan**. The other fields are optional. Click **Create Gateway** to finish.
+Fill the **Gateway EUI** and click **Confirm**.
+
+{{< figure src="gateway-add.png" alt="Gateway add" >}}
+
+Depending of weather the **Gateway EUI** is claimable you will either be shown the claiming form or the manual registration form.
+
+On the manual registration form fill in the **Frequency Plan**, The other fields are optional or pre filled. Click **Create Gateway** to finish.
 
 {{< figure src="gateway-creation.png" alt="Gateway creation" >}}
+
+On claiming form fill in the **Authentication Code**, **Gateway ID** and the **Frequency Plan**. Click **Create Gateway** to finish.
+
+{{< figure src="gateway-claim.png" alt="Gateway claiming" >}}
 
 Your gateway will be created and you will be redirected to the gateway overview page of your newly created gateway.
 
@@ -45,9 +49,9 @@ You can now connect your gateway to {{% tts %}}.
 
 ### Create Gateway API Key
 
-Some gateways require an API Key with Link Gateway Rights to be able to connect to {{% tts %}}. 
+Some gateways require an API Key with Link Gateway Rights to be able to connect to {{% tts %}}.
 
-In order to do this, navigate to the **API Keys** menu of your gateway and select **Add API Key**. 
+In order to do this, navigate to the **API Keys** menu of your gateway and select **Add API Key**.
 
 Enter a name for your key, select the **Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink** right and then press **Create API Key**.
 
@@ -59,11 +63,11 @@ You will see a screen that shows your newly created API Key. You now can copy it
 
 ## Set Gateway Location
 
-Once you have added your gateway to {{% tts %}}, you can also set its location to be displayed on a map widget by clicking **Change location settings**. 
+Once you have added your gateway to {{% tts %}}, you can also set its location to be displayed on a map widget by clicking **Change location settings**.
 
 If you do not mind your gateway's location to be publicly displayed, check the **Publish location** box.
 
-The gateway location can be manually set by entering the **Latitude**, **Longitude** and **Altitude** values. 
+The gateway location can be manually set by entering the **Latitude**, **Longitude** and **Altitude** values.
 
 You can also check the **Update from status messages** box if you want to update the location based on the metadata from the incoming uplink gateway status messages. The location settings you manually entered will be overwritten by the updates from the gateway status messages.
 
@@ -80,7 +84,7 @@ You can also check the **Update from status messages** box if you want to update
 We define some user parameters that will be used below:
 
 ```bash
-GTW_ID="gtw1" 
+GTW_ID="gtw1"
 FREQUENCY_PLAN="EU_863_870"
 GTW_EUI="00800000A00009EF"
 USER_ID="admin"
@@ -122,9 +126,9 @@ ttn-lw-cli gateways api-keys create \
 
 The CLI will return an API key such as `NNSXS.VEEBURF3KR77ZR...`. This API key has only link rights and can therefore only be used for linking this gateway. Make sure to copy the key and save it in a safe place. You will not be able to see this key again in the future, and if you lose it, you can create a new one to replace it in the gateway configuration.
 
-## Set Gateway Location 
+## Set Gateway Location
 
-Once you have added your gateway to {{% tts %}}, you can also set the locations of the gateway antennas. 
+Once you have added your gateway to {{% tts %}}, you can also set the locations of the gateway antennas.
 
 Add an antenna and set its location  with:
 
