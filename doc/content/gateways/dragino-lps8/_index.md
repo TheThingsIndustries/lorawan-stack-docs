@@ -21,7 +21,7 @@ This page guides you on how to connect the Dragino LPS8 to {{% tts %}}.
 
 ## Register the Gateway on {{% tts %}}
 
-Create a gateway by following [the instructions]({{< ref "/gateways/adding-gateways" >}}). The Gateway EUI can be derived from the WiFi MAC address that can be found on the back of the gateway enclosure. To get the 8 byte Gateway EUI insert `4150` at the end of the WiFi MAC address.
+Create a gateway by following [the instructions]({{< ref "/gateways/concepts/adding-gateways" >}}). The Gateway EUI can be derived from the WiFi MAC address that can be found on the back of the gateway enclosure. To get the 8 byte Gateway EUI insert `4150` at the end of the WiFi MAC address.
  
 If the WiFi MAC address is `A8:A8:41:A8:CE:54` then the Gateway EUI is `A8 A8 41 A8 CE 54 41 50`.
 

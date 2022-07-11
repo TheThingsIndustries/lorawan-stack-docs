@@ -138,7 +138,7 @@ If you want to connect your gateway to an LNS on a local network (for example if
 
 {{< note >}} In order to connect your {{% ttig %}} to a local {{% tts %}} network, the [`gs.basic-station.allow-unauthenticated` option]({{< ref "/reference/configuration/gateway-server#security-options" >}}) must be set to `true` in [{{% tts %}} configuration]({{< ref "/getting-started/installation/configuration#understanding-the-things-stack-configuration" >}}). {{</ note >}}
 
-First, register the {{% ttig %}} on your target LNS by following [the instructions]({{< ref "/gateways/adding-gateways" >}}).
+First, register the {{% ttig %}} on your target LNS by following [the instructions]({{< ref "/gateways/concepts/adding-gateways" >}}).
 
 In order for this to work, both the {{% ttig %}} and the local machine where the LNS is running must be connected to the same WiFi access point.
 
@@ -158,7 +158,7 @@ Restart the {{% ttig %}} by removing and reinserting the power supply and if you
 
 If you want to connect your gateway to a remotely hosted LNS, use the steps below.
 
-First, register the {{% ttig %}} on your target LNS. If the target LNS requires authenticated connections, then create an auth token for the gateway. If the target LNS is a {{% tts %}} instance, then create an API Key with Link Gateway Rights. Follow the instructions for [Creating a Gateway API key]({{< ref "/gateways/adding-gateways#create-gateway-api-key" >}}).
+First, register the {{% ttig %}} on your target LNS. If the target LNS requires authenticated connections, then create an auth token for the gateway. If the target LNS is a {{% tts %}} instance, then create an API Key with Link Gateway Rights. Follow the instructions for [Creating a Gateway API key]({{< ref "/gateways/concepts/adding-gateways#create-gateway-api-key" >}}).
 
 On the {{% tts %}} cluster where the gateway is claimed, head over to the **General settings** tab on the navigation panel of the gateway.
 

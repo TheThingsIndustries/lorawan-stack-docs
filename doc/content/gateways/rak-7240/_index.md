@@ -91,6 +91,6 @@ RAK7240 can operate in three modes - **Network Server**, **Basic Station** and *
 
 ## Registration
 
-Create a gateway on {{% tts %}} by following the instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}).
+Create a gateway on {{% tts %}} by following the instructions for [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}).
 
 You can find the **Gateway EUI** under **LoRa Network &#8594; Network Settings &#8594; LoRaWAN Network Settings** once you successfully access the Web Management Platform.

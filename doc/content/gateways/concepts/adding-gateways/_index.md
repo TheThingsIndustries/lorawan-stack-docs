@@ -2,7 +2,7 @@
 title: "Adding Gateways"
 description: ""
 weight: -2
-aliases: [/getting-started/cli/create-gateway, /getting-started/console/create-gateway]
+aliases: [/getting-started/cli/create-gateway, /getting-started/console/create-gateway, /gateways/adding-gateways]
 ---
 
 This section contains instructions for adding Gateways in {{%tts%}}.

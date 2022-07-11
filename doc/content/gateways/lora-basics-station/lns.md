@@ -19,7 +19,7 @@ These are general instructions for all {{% lbs %}} gateways. For specific instru
 
 ## Create a Gateway
 
-To connect a gateway using the LNS protocol, you must first add the gateway in {{% tts %}}. This can be done either in the console, or via the command line. See instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}). 
+To connect a gateway using the LNS protocol, you must first add the gateway in {{% tts %}}. This can be done either in the console, or via the command line. See instructions for [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}). 
 
 ## Create an API Key
 
@@ -29,7 +29,7 @@ LNS requires an API Key with the following rights:
 
 {{< figure src="../lns-rights.png" alt="LNS API Key Rights" >}}
 
-To create this API key for your gateway, follow instructions for [Creating a Gateway API key ]({{< ref "/gateways/adding-gateways#create-gateway-api-key" >}}).
+To create this API key for your gateway, follow instructions for [Creating a Gateway API key ]({{< ref "/gateways/concepts/adding-gateways#create-gateway-api-key" >}}).
 
 ## Configure Gateway
 

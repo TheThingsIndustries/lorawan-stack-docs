@@ -20,7 +20,7 @@ The MultiTech Conduit has two compatible firmwares - **AEP**, which is configure
 
 ## Registration
 
-Create a gateway by following the instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}).
+Create a gateway by following the instructions for [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}).
 
 The gateway EUI can be found at the bottom of the gateway under the field &quot;LORA NODE&quot;.
 

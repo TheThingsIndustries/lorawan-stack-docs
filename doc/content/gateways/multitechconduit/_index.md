@@ -23,7 +23,7 @@ The technical specifications of the Conduit can be found in the software guide i
 
 ## Registration
 
-Create a gateway by following the instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}).
+Create a gateway by following the instructions for [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}).
 
 The gateway EUI can be found at the bottom of the gateway under the field &quot;LORA NODE&quot;.
 

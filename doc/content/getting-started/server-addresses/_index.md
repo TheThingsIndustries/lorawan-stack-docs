@@ -4,7 +4,7 @@ description: ""
 weight: 9
 ---
 
-To access the [Console]({{< ref "getting-started/console" >}}), register a [command line client]({{< ref "getting-started/cli" >}}), [connect gateways]({{< ref "gateways/adding-gateways" >}}), or schedule uplinks via [webhooks]({{< ref "integrations/webhooks" >}}), it is necessary to know the server address of your {{% tts %}} instance. This section contains information about addresses for different {{% tts %}} deployments.
+To access the [Console]({{< ref "getting-started/console" >}}), register a [command line client]({{< ref "getting-started/cli" >}}), [connect gateways]({{< ref "/gateways/concepts/adding-gateways" >}}), or schedule uplinks via [webhooks]({{< ref "integrations/webhooks" >}}), it is necessary to know the server address of your {{% tts %}} instance. This section contains information about addresses for different {{% tts %}} deployments.
 
 <!--more-->
 

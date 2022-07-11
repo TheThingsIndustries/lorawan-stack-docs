@@ -23,7 +23,7 @@ Three query types are supported in scope of this integration and will be demonst
 
 The location of your gateway has to be publicly available for this integration, as it participates in the process of computing the end device location. This is disabled in {{% tts %}} by default, because the application (and end device) owner does not have be the one providing the gateway coverage. If you own the gateway, it is safe for you to explicitly allow to publish its location.
 
-To make the gateway location public, tick the **Gateway location &#8594; Public** box when [adding your gateway]({{< ref "/gateways/adding-gateways" >}}) in {{% tts %}} Console. 
+To make the gateway location public, tick the **Gateway location &#8594; Public** box when [adding your gateway]({{< ref "/gateways/concepts/adding-gateways" >}}) in {{% tts %}} Console.
 
 If your gateway is already added in {{% tts %}} Console, go to your gateway's settings, navigate to the **Location** tab on the left hand menu and tick the **Privacy &#8594; Publish location** box.
 

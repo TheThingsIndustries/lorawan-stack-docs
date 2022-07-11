@@ -35,7 +35,7 @@ To download a `global_conf.json` file for your gateway, open the Gateway overvie
 
 ## Download Configuration via Terminal
 
-To download a `global_conf.json` file using the terminal, you will need a Gateway API key with the `View gateway information` right enabled. To create an API key, see instructions for in the [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}) guide.
+To download a `global_conf.json` file using the terminal, you will need a Gateway API key with the `View gateway information` right enabled. To create an API key, see instructions for in the [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}) guide.
 
 Open the command prompt in Windows or any Linux terminal to run a curl command (as shown below) to generate the required `global_conf.json` file in your current working directory.
 

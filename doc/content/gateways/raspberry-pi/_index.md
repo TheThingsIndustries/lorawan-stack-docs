@@ -145,7 +145,7 @@ Make sure you write it down for further steps.
 
 ## Register the Gateway on {{% tts %}}
 
-To register your gateway on {{% tts %}}, follow the process described in the [Adding Gateways]({{< ref "/gateways/adding-gateways/" >}}) section. For the **Gateway EUI**, use the EUI that was derived in the previous step.
+To register your gateway on {{% tts %}}, follow the process described in the [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways/" >}}) section. For the **Gateway EUI**, use the EUI that was derived in the previous step.
 
 While registering, it is also recommended to enable the **Require authenticated connection** option.
 

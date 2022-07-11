@@ -52,7 +52,7 @@ To get the Gateway EUI from the Manager UI, connect to your gateway and check th
 
 ## Registration
 
-Create a gateway in {{% tts %}} Console by following the instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}). Copy the API Key to a notepad, as you will need it later.
+Create a gateway in {{% tts %}} Console by following the instructions for [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}). Copy the API Key to a notepad, as you will need it later.
 
 ## Configuration
 

@@ -69,7 +69,7 @@ Go to **Home &#8594; System Information** and make sure that the **Basics Statio
 
 ### Registration
 
-Create a gateway by following the instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}).
+Create a gateway by following the instructions for [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}).
 
 The Gateway EUI is the MAC address of the CloudGate with `FFFE` in the middle. For example, if the gateway's MAC address is `1234567890AB`, the Gateway EUI is `123456FFFE7890AB`.
 

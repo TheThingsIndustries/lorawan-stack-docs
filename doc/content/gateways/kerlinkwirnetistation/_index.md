@@ -27,7 +27,7 @@ grep EUI /tmp/board_info.json
 
 ## Registration
 
-Create a gateway by following the instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}) via Console or CLI. Choose a **Gateway ID** and paste the **Gateway EUI** you printed in the previous step.
+Create a gateway by following the instructions for [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}) via Console or CLI. Choose a **Gateway ID** and paste the **Gateway EUI** you printed in the previous step.
 
 Create an API Key with **View gateway information** rights for this gateway using the same instructions. Copy the API key and save it for later use.
 

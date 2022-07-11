@@ -31,7 +31,7 @@ Configure the **Address** with the server address of your deployment, and **Port
 
 Enable the **Secured TLS connection** and select the **Use local root certificates** option. If you need to use a certificate specific to your infrastructure (for on-premise installations), use the **Use certificate file** option instead and upload the certificate.
 
-Enable the **Client authentication**, select **Use token**, and set the previously saved API key in the **Authentication token** field. This key was shown to you as you created it when [registering the gateway]({{< ref "/gateways/adding-gateways#create-gateway-api-key" >}}). If you did not copy the key, you can delete it and create a new one.
+Enable the **Client authentication**, select **Use token**, and set the previously saved API key in the **Authentication token** field. This key was shown to you as you created it when [registering the gateway]({{< ref "/gateways/concepts/adding-gateways#create-gateway-api-key" >}}). If you did not copy the key, you can delete it and create a new one.
 
 {{< figure src="../lorix-one-lora-settings-bs-lns.png" alt="LORIX One LoRa forwarder Basic Station LNS" class="plain" >}}
 
