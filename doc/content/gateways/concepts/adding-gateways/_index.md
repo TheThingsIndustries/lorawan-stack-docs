@@ -9,10 +9,10 @@ This section contains instructions for adding Gateways in {{%tts%}}.
 
 <!--more-->
 
-Some gateways, like [The Things Indoor Gateway]({{< ref "gateways/thethingsindoorgateway" >}}), have special instructions for claiming. Look for your gateway in the left hand menu for specific instructions, as this guide does not apply to those gateways.
+Some gateways, like [The Things Indoor Gateway]({{< ref "/gateways/gateways-by-model/thethingsindoorgateway" >}}), have special instructions for claiming. Look for your gateway in the left hand menu for specific instructions, as this guide does not apply to those gateways.
 
 {{< note >}}
-Do not follow this guide for a [The Things Indoor Gateway]({{< ref "gateways/thethingsindoorgateway" >}}).
+Do not follow this guide for a [The Things Indoor Gateway]({{< ref "/gateways/gateways-by-model/thethingsindoorgateway" >}}).
 {{</ note >}}
 
 If your {{% tts %}} deployment is connected to [Packet Broker]({{< ref "getting-started/packet-broker" >}}), you can take advantage of coverage from The Things Network without adding any gateways of your own. See the community sourced [TTN Mapper](ttnmapper.org) to find out if your location has nearby gateways.

@@ -9,7 +9,7 @@ Gateway claiming is a mechanism that transfers gateways securely. This enables t
 
 <!--more-->
 
-{{< note >}} This section is only for UDP gateways. If you are instead looking to claim your {{% ttig %}}, please check [here]({{< ref "/gateways/thethingsindoorgateway" >}}).{{</ note >}}
+{{< note >}} This section is only for UDP gateways. If you are instead looking to claim your {{% ttig %}}, please check [here]({{< ref "/gateways/gateways-by-model/thethingsindoorgateway" >}}).{{</ note >}}
 
 {{< warning >}} This is an experimental feature. {{</ warning >}}
 

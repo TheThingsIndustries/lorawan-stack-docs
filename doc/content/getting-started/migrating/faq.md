@@ -32,7 +32,7 @@ For example, this means that you can migrate an end device from The Things Indus
 
 Yes, TTIG can be migrated from {{% ttnv2 %}} to {{% tts %}}. Make sure you are not using the regular option of [adding gateways]({{< ref "/gateways/concepts/adding-gateways" >}}), but [gateway claiming]({{< ref "/gateways/concepts/gateway-claiming" >}}).
 
-Read the full guide on how to [connect TTIG to {{% tts %}}]({{< ref "/gateways/thethingsindoorgateway" >}}). This guide also contains a troubleshooting section for common errors.
+Read the full guide on how to [connect TTIG to {{% tts %}}]({{< ref "/gateways/gateways-by-model/thethingsindoorgateway" >}}). This guide also contains a troubleshooting section for common errors.
 
 ### Can I delete my TTIG from {{% ttnv2 %}} Console after I have migrated it to {{% tts %}}?
 
