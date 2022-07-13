@@ -208,7 +208,12 @@
         <div class="content">
           <p>This section contains instructions to upgrade a The Things Stack Enterprise or Open Source deployment, that was installed using the <a href="/docs/getting-started/installation/">installation guide</a>.</p>
 <p>The Things Stack Cloud and Community Edition are updated automatically (you do not need to do anything!)</p>
-<h3 id="pulling-new-images">Pulling new images</h3>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  To avoid downtime in production deployments, we strongly suggest The Things Stack users to test the upgrading process in their staging environments first. After confirming that the upgrade process was successful in staging environment, you may proceed with upgrading The Things Stack in your production deployment.
+</div>
+
+<h2 id="pulling-new-images">Pulling new images</h2>
 <p>Replace the tag in your <code>docker-compose.yml</code> file with the newer version of The Things Stack.</p>
 <div class="tabs is-boxed">
   <ul>
@@ -253,7 +258,7 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose pull stack
 </span></span><span class="line"><span class="cl">Pulling stack     ... <span class="k">done</span>
 </span></span></code></pre></div><p>The new version will be pulled locally but not run yet.</p>
-<h3 id="backup">Backup</h3>
+<h2 id="backup">Backup</h2>
 <div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
   We do not recommend manually backing up and restoring databases for production deployments. Consider using a managed database service with support for snapshots.
@@ -267,7 +272,7 @@
   In this guide, <code>&lt;directory&gt;</code> represents the directory containing The Things Stack files, i.e. the directory where you cloned The Things Stack repository.
 </div>
 
-<h4 id="redis">Redis</h4>
+<h3 id="redis">Redis</h3>
 <p>Navigate to the Redis data folder, which can be found in the <code>docker-compose.yml</code> for the <code>redis</code> service (ex: <code>${DEV_DATA_DIR:-.env/data}/redis</code>)</p>
 <p>Stop the <code>redis</code> container.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose stop redis
@@ -277,7 +282,7 @@
 <p>Start the <code>redis</code> container.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose up -d redis
 </span></span><span class="line"><span class="cl">Starting &lt;directory&gt;_redis_1 ... <span class="k">done</span>
-</span></span></code></pre></div><h4 id="postgresql">PostgreSQL</h4>
+</span></span></code></pre></div><h3 id="postgresql">PostgreSQL</h3>
 <p>Keep the <code>postgres</code> container running and make a PostgreSQL backup file using the following command:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it &lt;directory&gt;_postgres_1 /usr/bin/pg_dump --format<span class="o">=</span>c ttn_lorawan &gt; &lt;location-of-your-choice&gt;/postgres-backup.sql
 </span></span></code></pre></div><p>A <code>postgres-backup.sql</code> file containing a snapshot of the PostgreSQL database at the time that it was backed up will be created in the <code>&lt;location-of-your-choice&gt;</code> directory.</p>
@@ -295,12 +300,12 @@
 </span></span></code></pre></div><p>At this point, the <code>ttn_lorawan</code> database will be empty. Finally, you can restore the database contents from the <code>postgres-backup.sql</code> snapshot file:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker <span class="nb">exec</span> &lt;directory&gt;_postgres_1 pg_restore -d ttn_lorawan /var/lib/postgresql/data/postgres-backup.sql
 </span></span></code></pre></div><p>For additional info, please refer to the <a href="https://www.postgresql.org/docs/14/backup.html">official PostgreSQL documentation</a> for the specific version that you are using.</p>
-<h4 id="optional">Optional</h4>
+<h3 id="optional">Optional</h3>
 <p>Updates to The Things Stack do not modify static (user-uploaded) assets. But those can be backed up as well.</p>
 <p>User profile pictures and end device pictures are stored in the <code>assets</code> folder by default.</p>
 <p>Check the values set for <code>is.profile-picture.bucket-url</code> and <code>is.end-device-picture.bucket-url</code> configuration options to find these locations (if you are using a non-default location).</p>
 <p>You can now copy the contents of those folders to a location of your choice.</p>
-<h3 id="migrations">Migrations</h3>
+<h2 id="migrations">Migrations</h2>
 <p>New minor versions of The Things Stack include new features/fixes which may require an update to the databases. This is done through migrations.</p>
 <div class="tabs is-boxed">
   <ul>
@@ -341,10 +346,11 @@
 
 </div>
 
-<h3 id="running-the-new-version">Running the new version</h3>
+<h2 id="running-the-new-version">Running the new version</h2>
 <p>Once the above steps are successfully completed, start The Things Stack.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose up -d stack
-</span></span></code></pre></div>
+</span></span></code></pre></div><h2 id="troubleshooting">Troubleshooting</h2>
+<p>For common issues that might show up during the upgrade process, see the <a href="https://www.thethingsindustries.com/docs/getting-started/installation/troubleshooting/">Troubleshooting Installation section</a>.</p>
         </div>
         
           <div class="is-clearfix">
@@ -366,6 +372,25 @@
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#pulling-new-images'>Pulling new images</a></li>
+    
+      
+      <li><a href='#backup'>Backup</a></li>
+    
+      
+      <li><a href='#migrations'>Migrations</a></li>
+    
+      
+      <li><a href='#running-the-new-version'>Running the new version</a></li>
+    
+      
+      <li><a href='#troubleshooting'>Troubleshooting</a></li>
+    
+  </ul>
 
 
   </nav>
@@ -403,10 +428,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 13 Apr 2022.
+  Last changed by Nejra Selimović on 13 Jul 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/6150bf1f09b0f904dab5b82c0ca7bcff29488e6e">
-      doc: Replace CockroachDB refs with PostgreSQL (#840)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/c9562d3a01a4473a14f2a36726dc7fe60f9b5ad7">
+      doc: Minor changes in Upgrading TTS section (#915)
     </a>
 </p>
 
