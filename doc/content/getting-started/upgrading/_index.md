@@ -11,7 +11,9 @@ This section contains instructions to upgrade a {{% tts %}} Enterprise or Open S
 
 <!--more-->
 
-### Pulling new images
+{{< note >}} To avoid downtime in production deployments, we strongly suggest {{% tts %}} users to test the upgrading process in their staging environments first. After confirming that the upgrade process was successful in staging environment, you may proceed with upgrading {{% tts %}} in your production deployment. {{</ note >}}
+
+## Pulling new images
 
 Replace the tag in your `docker-compose.yml` file with the newer version of {{% tts %}}.
 
@@ -50,7 +52,7 @@ Pulling stack     ... done
 
 The new version will be pulled locally but not run yet.
 
-### Backup
+## Backup
 
 {{< warning >}} We do not recommend manually backing up and restoring databases for production deployments. Consider using a managed database service with support for snapshots. {{</ warning >}}
 
@@ -63,7 +65,7 @@ Stopping <directory>_stack_1 ... done
 
 {{< note >}} In this guide, `<directory>` represents the directory containing {{% tts %}} files, i.e. the directory where you cloned {{% tts %}} repository. {{</ note >}}
 
-#### Redis
+### Redis
 
 Navigate to the Redis data folder, which can be found in the `docker-compose.yml` for the `redis` service (ex: `${DEV_DATA_DIR:-.env/data}/redis`)
 
@@ -85,7 +87,7 @@ docker-compose up -d redis
 Starting <directory>_redis_1 ... done
 ```
 
-#### PostgreSQL
+### PostgreSQL
 
 Keep the `postgres` container running and make a PostgreSQL backup file using the following command:
 
@@ -135,7 +137,7 @@ docker exec <directory>_postgres_1 pg_restore -d ttn_lorawan /var/lib/postgresql
 
 For additional info, please refer to the [official PostgreSQL documentation](https://www.postgresql.org/docs/14/backup.html) for the specific version that you are using.
 
-#### Optional
+### Optional
 
 Updates to {{< tts >}} do not modify static (user-uploaded) assets. But those can be backed up as well.
 
@@ -145,7 +147,7 @@ Check the values set for `is.profile-picture.bucket-url` and `is.end-device-pict
 
 You can now copy the contents of those folders to a location of your choice.
 
-### Migrations
+## Migrations
 
 New minor versions of {{< tts >}} include new features/fixes which may require an update to the databases. This is done through migrations.
 
@@ -194,10 +196,14 @@ docker-compose run --rm stack ns-db migrate
 {{< /tabs/container >}}
 
 
-### Running the new version
+## Running the new version
 
 Once the above steps are successfully completed, start {{< tts >}}.
 
 ```bash
 docker-compose up -d stack
 ```
+
+## Troubleshooting
+
+For common issues that might show up during the upgrade process, see the [Troubleshooting Installation section]({{< ref "/getting-started/installation/troubleshooting" >}}).
