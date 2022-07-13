@@ -205,170 +205,592 @@
 <h2 id="example-join-flow">Example: Join Flow</h2>
 <p>See the events of a typical join flow in the example below:</p>
 <details><summary>Join flow example</summary>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;gs.up.receive&#34;</span><span class="p">,</span> <span class="c1">// Gateway Server received an uplink message from a device.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="s2">&#34;time&#34;</span><span class="o">:</span> <span class="s2">&#34;2019-04-04T09:54:34.786220Z&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;identifiers&#34;</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gateway_ids&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gateway_id&#34;</span><span class="o">:</span> <span class="s2">&#34;multitech&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;eui&#34;</span><span class="o">:</span> <span class="s2">&#34;00800000A0000DB4&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;gs.up.receive&#34;</span><span class="p">,</span> <span class="c1">//The Gateway Server receives an uplink message (Join Request) from the end device
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nt">&#34;time&#34;</span><span class="p">:</span> <span class="s2">&#34;2022-07-05T09:01:06.987556027Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;identifiers&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;gateway_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;gw2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;eui&#34;</span><span class="p">:</span> <span class="s2">&#34;B827EBFFFE8DB887&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">],</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;correlation_ids&#34;</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;gs:conn:01D7KWADW2E5CJA32VS1MTR2J6&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;gs:uplink:01D7KWB0N2KVCV8HZABC8DDHSA&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;js.join.accept&#34;</span><span class="p">,</span> <span class="c1">// Join Server accepted the join-accept.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="s2">&#34;time&#34;</span><span class="o">:</span> <span class="s2">&#34;2019-04-04T09:54:34.806812Z&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;identifiers&#34;</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="s2">&#34;device_ids&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;device_id&#34;</span><span class="o">:</span> <span class="s2">&#34;dev1&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;application_ids&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="s2">&#34;application_id&#34;</span><span class="o">:</span> <span class="s2">&#34;app1&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;@type&#34;</span><span class="p">:</span> <span class="s2">&#34;type.googleapis.com/ttn.lorawan.v3.GatewayUplinkMessage&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;message&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;join_request_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0000000000000000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;70B3D57ED0050EAD&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;dev_nonce&#34;</span><span class="p">:</span> <span class="s2">&#34;AF7C&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
 </span></span><span class="line"><span class="cl">        <span class="p">},</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;dev_eui&#34;</span><span class="o">:</span> <span class="s2">&#34;4200000000000000&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;join_eui&#34;</span><span class="o">:</span> <span class="s2">&#34;4200000000000000&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;rx_metadata&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">          <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;gateway_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;gw2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="nt">&#34;eui&#34;</span><span class="p">:</span> <span class="s2">&#34;B827EBFFFE8DB887&#34;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;gs:conn:01G76RS17HGZZXV740X0N2XDV8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="s2">&#34;gs:uplink:01G76SF01BNW5SKRAND31Z0MGB&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">]</span>
 </span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">],</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;correlation_ids&#34;</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;rpc:/ttn.lorawan.v3.NsJs/HandleJoin:01D7KWB0NCTDY835V5N3CYWBZK&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;ns.up.join.forward&#34;</span><span class="p">,</span> <span class="c1">// Network Server forwarded the join-accept and it got accepted.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="s2">&#34;time&#34;</span><span class="o">:</span> <span class="s2">&#34;2019-04-04T09:54:34.808132Z&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;identifiers&#34;</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="s2">&#34;device_ids&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;device_id&#34;</span><span class="o">:</span> <span class="s2">&#34;dev1&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;application_ids&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="s2">&#34;application_id&#34;</span><span class="o">:</span> <span class="s2">&#34;app1&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:conn:01G76RS17HGZZXV740X0N2XDV8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:uplink:01G76SF01BNW5SKRAND31Z0MGB&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;ns.up.join.receive&#34;</span><span class="p">,</span> <span class="c1">//The Network Server receives the Join Request
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nt">&#34;time&#34;</span><span class="p">:</span> <span class="s2">&#34;2022-07-05T09:01:06.995021407Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;identifiers&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;device_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;dev2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;app1&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;70B3D57ED0050EAD&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0000000000000000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span> <span class="s2">&#34;004C2AA4&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;@type&#34;</span><span class="p">:</span> <span class="s2">&#34;type.googleapis.com/ttn.lorawan.v3.UplinkMessage&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;join_request_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0000000000000000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;70B3D57ED0050EAD&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_nonce&#34;</span><span class="p">:</span> <span class="s2">&#34;AF7C&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;rx_metadata&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;gateway_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;gw2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;eui&#34;</span><span class="p">:</span> <span class="s2">&#34;B827EBFFFE8DB887&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">],</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:conn:01G76RS17HGZZXV740X0N2XDV8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:up:host:01G76RS1T9JM1RGFWT6A0ZEGNB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:uplink:01G76SF01BNW5SKRAND31Z0MGB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ns:uplink:01G76SF01C64KZ26CKK4SK5G10&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01G76SF01BBAMZAQRXYK97RZ8K&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:conn:01G76RS17HGZZXV740X0N2XDV8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:up:host:01G76RS1T9JM1RGFWT6A0ZEGNB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:uplink:01G76SF01BNW5SKRAND31Z0MGB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ns:uplink:01G76SF01C64KZ26CKK4SK5G10&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01G76SF01BBAMZAQRXYK97RZ8K&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;ns.up.join.cluster.attempt&#34;</span><span class="p">,</span> <span class="c1">//The Network Server sends the Join Request to the cluster-local Join Server
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nt">&#34;time&#34;</span><span class="p">:</span> <span class="s2">&#34;2022-07-05T09:01:06.995430193Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;identifiers&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;device_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;dev2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;app1&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;70B3D57ED0050EAD&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0000000000000000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span> <span class="s2">&#34;004C2AA4&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;@type&#34;</span><span class="p">:</span> <span class="s2">&#34;type.googleapis.com/ttn.lorawan.v3.JoinRequest&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;join_request_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0000000000000000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;70B3D57ED0050EAD&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_nonce&#34;</span><span class="p">:</span> <span class="s2">&#34;AF7C&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span> <span class="s2">&#34;AP9S4w==&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;selected_mac_version&#34;</span><span class="p">:</span> <span class="s2">&#34;MAC_V1_0_2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;net_id&#34;</span><span class="p">:</span> <span class="s2">&#34;AAAA&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;downlink_settings&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;rx2_dr&#34;</span><span class="p">:</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;rx_delay&#34;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;cf_list&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;freq&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">          <span class="mi">8671000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="mi">8673000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="mi">8675000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="mi">8677000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="mi">8679000</span>
+</span></span><span class="line"><span class="cl">        <span class="p">]</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:conn:01G76RS17HGZZXV740X0N2XDV8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:up:host:01G76RS1T9JM1RGFWT6A0ZEGNB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:uplink:01G76SF01BNW5SKRAND31Z0MGB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ns:uplink:01G76SF01C64KZ26CKK4SK5G10&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01G76SF01BBAMZAQRXYK97RZ8K&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:conn:01G76RS17HGZZXV740X0N2XDV8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:up:host:01G76RS1T9JM1RGFWT6A0ZEGNB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:uplink:01G76SF01BNW5SKRAND31Z0MGB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ns:uplink:01G76SF01C64KZ26CKK4SK5G10&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01G76SF01BBAMZAQRXYK97RZ8K&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;js.join.accept&#34;</span><span class="p">,</span> <span class="c1">//The local Join Server accepts the Join Request
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nt">&#34;time&#34;</span><span class="p">:</span> <span class="s2">&#34;2022-07-05T09:01:06.998805073Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;identifiers&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;device_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;dev2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;app1&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;70B3D57ED0050EAD&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0000000000000000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span> <span class="s2">&#34;00FF52E3&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;rpc:/ttn.lorawan.v3.NsJs/HandleJoin:01G76SF01KFGDBGNQKRWG64DBP&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;ns.up.join.cluster.success&#34;</span><span class="p">,</span> <span class="c1">//The Network Server indicates that the Join Request to the cluster-local Join Server succeeded
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nt">&#34;time&#34;</span><span class="p">:</span> <span class="s2">&#34;2022-07-05T09:01:06.999074200Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;identifiers&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;device_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;dev2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;app1&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;70B3D57ED0050EAD&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0000000000000000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span> <span class="s2">&#34;004C2AA4&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;@type&#34;</span><span class="p">:</span> <span class="s2">&#34;type.googleapis.com/ttn.lorawan.v3.JoinResponse&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;session_keys&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;session_key_id&#34;</span><span class="p">:</span> <span class="s2">&#34;AYHNl4A0v5Eu3uRRH34tEA==&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:conn:01G76RS17HGZZXV740X0N2XDV8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:up:host:01G76RS1T9JM1RGFWT6A0ZEGNB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:uplink:01G76SF01BNW5SKRAND31Z0MGB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ns:uplink:01G76SF01C64KZ26CKK4SK5G10&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01G76SF01BBAMZAQRXYK97RZ8K&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;ns.up.join.process&#34;</span><span class="p">,</span> <span class="c1">//The Network Server indicates that the Join Request was successfully processed
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nt">&#34;time&#34;</span><span class="p">:</span> <span class="s2">&#34;2022-07-05T09:01:07.192284684Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;identifiers&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;device_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;dev2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;app1&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;70B3D57ED0050EAD&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0000000000000000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span> <span class="s2">&#34;004C2AA4&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;@type&#34;</span><span class="p">:</span> <span class="s2">&#34;type.googleapis.com/ttn.lorawan.v3.UplinkMessage&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;join_request_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0000000000000000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;70B3D57ED0050EAD&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_nonce&#34;</span><span class="p">:</span> <span class="s2">&#34;AF7C&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;rx_metadata&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;gateway_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;gw2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;eui&#34;</span><span class="p">:</span> <span class="s2">&#34;B827EBFFFE8DB887&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">],</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:conn:01G76RS17HGZZXV740X0N2XDV8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:up:host:01G76RS1T9JM1RGFWT6A0ZEGNB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:uplink:01G76SF01BNW5SKRAND31Z0MGB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ns:uplink:01G76SF01C64KZ26CKK4SK5G10&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01G76SF01BBAMZAQRXYK97RZ8K&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:conn:01G76RS17HGZZXV740X0N2XDV8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:up:host:01G76RS1T9JM1RGFWT6A0ZEGNB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:uplink:01G76SF01BNW5SKRAND31Z0MGB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ns:uplink:01G76SF01C64KZ26CKK4SK5G10&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01G76SF01BBAMZAQRXYK97RZ8K&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;gs.up.forward&#34;</span><span class="p">,</span> <span class="c1">//The Gateway Server indicates that the successfully processed Join Request was forwarded to the Network Server
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nt">&#34;time&#34;</span><span class="p">:</span> <span class="s2">&#34;2022-07-05T09:01:07.192498007Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;identifiers&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;gateway_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;gw2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;eui&#34;</span><span class="p">:</span> <span class="s2">&#34;B827EBFFFE8DB887&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;@type&#34;</span><span class="p">:</span> <span class="s2">&#34;type.googleapis.com/google.protobuf.Value&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;cluster&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:conn:01G76RS17HGZZXV740X0N2XDV8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:up:host:01G76RS1T9JM1RGFWT6A0ZEGNB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:uplink:01G76SF01BNW5SKRAND31Z0MGB&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;ns.down.join.schedule.attempt&#34;</span><span class="p">,</span> <span class="c1">//The Network Server attempts to schedule a Join Accept message for transmission (to the end device) on the Gateway Server
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nt">&#34;time&#34;</span><span class="p">:</span> <span class="s2">&#34;2022-07-05T09:01:08.800956312Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;identifiers&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;device_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;dev2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;app1&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;70B3D57ED0050EAD&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0000000000000000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span> <span class="s2">&#34;004C2AA4&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;@type&#34;</span><span class="p">:</span> <span class="s2">&#34;type.googleapis.com/ttn.lorawan.v3.DownlinkMessage&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;m_hdr&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;m_type&#34;</span><span class="p">:</span> <span class="s2">&#34;JOIN_ACCEPT&#34;</span>
 </span></span><span class="line"><span class="cl">        <span class="p">},</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;dev_eui&#34;</span><span class="o">:</span> <span class="s2">&#34;4200000000000000&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;join_eui&#34;</span><span class="o">:</span> <span class="s2">&#34;4200000000000000&#34;</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">],</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;correlation_ids&#34;</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;gs:conn:01D7KWADW2E5CJA32VS1MTR2J6&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;gs:uplink:01D7KWB0N2KVCV8HZABC8DDHSA&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ns:uplink:01D7KWB0N5C1T8TE2HAVBJN5Y4&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01D7KWB0N5G2N5C0AFXT4YMF8R&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;ns.up.merge_metadata&#34;</span><span class="p">,</span> <span class="c1">// Network Server merged metadata of incoming uplink messages.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="s2">&#34;time&#34;</span><span class="o">:</span> <span class="s2">&#34;2019-04-04T09:54:34.991332Z&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;identifiers&#34;</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="s2">&#34;device_ids&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;device_id&#34;</span><span class="o">:</span> <span class="s2">&#34;dev1&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;application_ids&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="s2">&#34;application_id&#34;</span><span class="o">:</span> <span class="s2">&#34;app1&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;join_accept_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;join_nonce&#34;</span><span class="p">:</span> <span class="s2">&#34;000000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;net_id&#34;</span><span class="p">:</span> <span class="s2">&#34;000000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span> <span class="s2">&#34;00FF52E3&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dl_settings&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;rx2_dr&#34;</span><span class="p">:</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl">          <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;rx_delay&#34;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;cf_list&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;freq&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">              <span class="mi">8671000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="mi">8673000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="mi">8675000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="mi">8677000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">              <span class="mi">8679000</span>
+</span></span><span class="line"><span class="cl">            <span class="p">]</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;request&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;downlink_paths&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">          <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;uplink_token&#34;</span><span class="p">:</span> <span class="s2">&#34;ChEKDwoDZ3cyEgi4J+v//o24hxDUjazMAhoMCNL7j5YGEIXF5NYDIKDYyrikFCoLCNP7j5YGEICh5gQ=&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">],</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;rx1_delay&#34;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;rx1_data_rate&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;lora&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;bandwidth&#34;</span><span class="p">:</span> <span class="mi">125000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;spreading_factor&#34;</span><span class="p">:</span> <span class="mi">12</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
 </span></span><span class="line"><span class="cl">        <span class="p">},</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;dev_eui&#34;</span><span class="o">:</span> <span class="s2">&#34;4200000000000000&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;join_eui&#34;</span><span class="o">:</span> <span class="s2">&#34;4200000000000000&#34;</span>
-</span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">],</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;data&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;@type&#34;</span><span class="o">:</span> <span class="s2">&#34;type.googleapis.com/google.protobuf.Value&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;value&#34;</span><span class="o">:</span> <span class="mi">1</span> <span class="c1">// There was 1 gateway that received the join-request.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">},</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;correlation_ids&#34;</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// Here you find the correlation IDs of all gs.up.receive events that were merged.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;gs:conn:01D7KWADW2E5CJA32VS1MTR2J6&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;gs:uplink:01D7KWB0N2KVCV8HZABC8DDHSA&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ns:uplink:01D7KWB0N5C1T8TE2HAVBJN5Y4&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01D7KWB0N5G2N5C0AFXT4YMF8R&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;as.up.join.receive&#34;</span><span class="p">,</span> <span class="c1">// Application Server receives the join-accept.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="s2">&#34;time&#34;</span><span class="o">:</span> <span class="s2">&#34;2019-04-04T09:54:35.005090Z&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;identifiers&#34;</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="s2">&#34;device_ids&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;device_id&#34;</span><span class="o">:</span> <span class="s2">&#34;dev1&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;application_ids&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="s2">&#34;application_id&#34;</span><span class="o">:</span> <span class="s2">&#34;app1&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;rx1_frequency&#34;</span><span class="p">:</span> <span class="s2">&#34;868300000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;rx2_data_rate&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;lora&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;bandwidth&#34;</span><span class="p">:</span> <span class="mi">125000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;spreading_factor&#34;</span><span class="p">:</span> <span class="mi">12</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
 </span></span><span class="line"><span class="cl">        <span class="p">},</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;dev_eui&#34;</span><span class="o">:</span> <span class="s2">&#34;4200000000000000&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;join_eui&#34;</span><span class="o">:</span> <span class="s2">&#34;4200000000000000&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;dev_addr&#34;</span><span class="o">:</span> <span class="s2">&#34;0063ECE2&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;rx2_frequency&#34;</span><span class="p">:</span> <span class="s2">&#34;869525000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;priority&#34;</span><span class="p">:</span> <span class="s2">&#34;HIGHEST&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;frequency_plan_id&#34;</span><span class="p">:</span> <span class="s2">&#34;EU_863_870_TTN&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:conn:01G76RS17HGZZXV740X0N2XDV8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:up:host:01G76RS1T9JM1RGFWT6A0ZEGNB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:uplink:01G76SF01BNW5SKRAND31Z0MGB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ns:downlink:01G76SF1T0JHYTRMXTQ69DG1E6&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ns:transmission:01G76SF1T0WAQAB4RF2M6EKSJR&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ns:uplink:01G76SF01C64KZ26CKK4SK5G10&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01G76SF01BBAMZAQRXYK97RZ8K&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:conn:01G76RS17HGZZXV740X0N2XDV8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:up:host:01G76RS1T9JM1RGFWT6A0ZEGNB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:uplink:01G76SF01BNW5SKRAND31Z0MGB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ns:downlink:01G76SF1T0JHYTRMXTQ69DG1E6&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ns:transmission:01G76SF1T0WAQAB4RF2M6EKSJR&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ns:uplink:01G76SF01C64KZ26CKK4SK5G10&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01G76SF01BBAMZAQRXYK97RZ8K&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;gs.down.schedule.attempt&#34;</span><span class="p">,</span> <span class="c1">//The Gateway Server attempts to schedule a downlink message
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nt">&#34;time&#34;</span><span class="p">:</span> <span class="s2">&#34;2022-07-05T09:01:08.801328916Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;identifiers&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;gateway_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;gw2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;eui&#34;</span><span class="p">:</span> <span class="s2">&#34;B827EBFFFE8DB887&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">],</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;correlation_ids&#34;</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;as:up:01D7KWB0VX1D7G3RKFN9HDA39Q&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;gs:conn:01D7KWADW2E5CJA32VS1MTR2J6&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;gs:uplink:01D7KWB0N2KVCV8HZABC8DDHSA&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ns:uplink:01D7KWB0N5C1T8TE2HAVBJN5Y4&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01D7KWB0N5G2N5C0AFXT4YMF8R&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;as.up.join.forward&#34;</span><span class="p">,</span> <span class="c1">// Application Server forwards the join-accept to an application (CLI, MQTT, webhooks, etc).
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="s2">&#34;time&#34;</span><span class="o">:</span> <span class="s2">&#34;2019-04-04T09:54:35.010243Z&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;identifiers&#34;</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="s2">&#34;device_ids&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;device_id&#34;</span><span class="o">:</span> <span class="s2">&#34;dev1&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;application_ids&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="s2">&#34;application_id&#34;</span><span class="o">:</span> <span class="s2">&#34;app1&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;@type&#34;</span><span class="p">:</span> <span class="s2">&#34;type.googleapis.com/ttn.lorawan.v3.DownlinkMessage&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:conn:01G76RS17HGZZXV740X0N2XDV8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:up:host:01G76RS1T9JM1RGFWT6A0ZEGNB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:uplink:01G76SF01BNW5SKRAND31Z0MGB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ns:downlink:01G76SF1T0JHYTRMXTQ69DG1E6&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ns:transmission:01G76SF1T0WAQAB4RF2M6EKSJR&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ns:uplink:01G76SF01C64KZ26CKK4SK5G10&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01G76SF01BBAMZAQRXYK97RZ8K&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;rpc:/ttn.lorawan.v3.NsGs/ScheduleDownlink:01G76SF1T1FC3Q3N7RBSMEXDKA&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:conn:01G76RS17HGZZXV740X0N2XDV8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:up:host:01G76RS1T9JM1RGFWT6A0ZEGNB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:uplink:01G76SF01BNW5SKRAND31Z0MGB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ns:downlink:01G76SF1T0JHYTRMXTQ69DG1E6&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ns:transmission:01G76SF1T0WAQAB4RF2M6EKSJR&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ns:uplink:01G76SF01C64KZ26CKK4SK5G10&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01G76SF01BBAMZAQRXYK97RZ8K&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;rpc:/ttn.lorawan.v3.NsGs/ScheduleDownlink:01G76SF1T1FC3Q3N7RBSMEXDKA&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;gs.down.send&#34;</span><span class="p">,</span> <span class="c1">//The Gateway Server sends a downlink message
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nt">&#34;time&#34;</span><span class="p">:</span> <span class="s2">&#34;2022-07-05T09:01:08.801388035Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;identifiers&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;gateway_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;gw2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;eui&#34;</span><span class="p">:</span> <span class="s2">&#34;B827EBFFFE8DB887&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;@type&#34;</span><span class="p">:</span> <span class="s2">&#34;type.googleapis.com/ttn.lorawan.v3.DownlinkMessage&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:conn:01G76RS17HGZZXV740X0N2XDV8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:up:host:01G76RS1T9JM1RGFWT6A0ZEGNB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:uplink:01G76SF01BNW5SKRAND31Z0MGB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ns:downlink:01G76SF1T0JHYTRMXTQ69DG1E6&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ns:transmission:01G76SF1T0WAQAB4RF2M6EKSJR&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ns:uplink:01G76SF01C64KZ26CKK4SK5G10&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01G76SF01BBAMZAQRXYK97RZ8K&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;rpc:/ttn.lorawan.v3.NsGs/ScheduleDownlink:01G76SF1T1FC3Q3N7RBSMEXDKA&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">]</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:conn:01G76RS17HGZZXV740X0N2XDV8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:up:host:01G76RS1T9JM1RGFWT6A0ZEGNB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:uplink:01G76SF01BNW5SKRAND31Z0MGB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ns:downlink:01G76SF1T0JHYTRMXTQ69DG1E6&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ns:transmission:01G76SF1T0WAQAB4RF2M6EKSJR&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ns:uplink:01G76SF01C64KZ26CKK4SK5G10&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01G76SF01BBAMZAQRXYK97RZ8K&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;rpc:/ttn.lorawan.v3.NsGs/ScheduleDownlink:01G76SF1T1FC3Q3N7RBSMEXDKA&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;ns.down.join.schedule.success&#34;</span><span class="p">,</span> <span class="c1">//The Network Server indicates that a Join Accept message was successfully scheduled for transmission (to the end device) on the Gateway Server
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nt">&#34;time&#34;</span><span class="p">:</span> <span class="s2">&#34;2022-07-05T09:01:08.801724107Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;identifiers&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;device_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;dev2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;app1&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;70B3D57ED0050EAD&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0000000000000000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span> <span class="s2">&#34;004C2AA4&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;@type&#34;</span><span class="p">:</span> <span class="s2">&#34;type.googleapis.com/ttn.lorawan.v3.ScheduleDownlinkResponse&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;downlink_path&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;fixed&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;gateway_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;gw2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;eui&#34;</span><span class="p">:</span> <span class="s2">&#34;B827EBFFFE8DB887&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;rx1&#34;</span><span class="p">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:conn:01G76RS17HGZZXV740X0N2XDV8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:up:host:01G76RS1T9JM1RGFWT6A0ZEGNB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:uplink:01G76SF01BNW5SKRAND31Z0MGB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ns:downlink:01G76SF1T0JHYTRMXTQ69DG1E6&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ns:transmission:01G76SF1T0WAQAB4RF2M6EKSJR&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ns:uplink:01G76SF01C64KZ26CKK4SK5G10&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01G76SF01BBAMZAQRXYK97RZ8K&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;ns.up.join.accept.forward&#34;</span><span class="p">,</span> <span class="c1">//The Network Server forwards the Join Accept message to the Application Server
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nt">&#34;time&#34;</span><span class="p">:</span> <span class="s2">&#34;2022-07-05T09:01:08.806834516Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;identifiers&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;device_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;dev2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;app1&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;70B3D57ED0050EAD&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0000000000000000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span> <span class="s2">&#34;00FF52E3&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;@type&#34;</span><span class="p">:</span> <span class="s2">&#34;type.googleapis.com/ttn.lorawan.v3.ApplicationUp&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;end_device_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;dev2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;app1&#34;</span>
 </span></span><span class="line"><span class="cl">        <span class="p">},</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;dev_eui&#34;</span><span class="o">:</span> <span class="s2">&#34;4200000000000000&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;join_eui&#34;</span><span class="o">:</span> <span class="s2">&#34;4200000000000000&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;dev_addr&#34;</span><span class="o">:</span> <span class="s2">&#34;0063ECE2&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;70B3D57ED0050EAD&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0000000000000000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span> <span class="s2">&#34;00FF52E3&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:conn:01G76RS17HGZZXV740X0N2XDV8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:up:host:01G76RS1T9JM1RGFWT6A0ZEGNB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:uplink:01G76SF01BNW5SKRAND31Z0MGB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ns:uplink:01G76SF01C64KZ26CKK4SK5G10&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01G76SF01BBAMZAQRXYK97RZ8K&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">],</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;join_accept&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;session_key_id&#34;</span><span class="p">:</span> <span class="s2">&#34;AYHNl4A0v5Eu3uRRH34tEA==&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;received_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2022-07-05T09:01:06.988023916Z&#34;</span>
 </span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">],</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;correlation_ids&#34;</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;as:up:01D7KWB0VX1D7G3RKFN9HDA39Q&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;gs:conn:01D7KWADW2E5CJA32VS1MTR2J6&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;gs:uplink:01D7KWB0N2KVCV8HZABC8DDHSA&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;ns:uplink:01D7KWB0N5C1T8TE2HAVBJN5Y4&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01D7KWB0N5G2N5C0AFXT4YMF8R&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;gs.down.send&#34;</span><span class="p">,</span> <span class="c1">// Gateway Server sent the join-accept to the gateway.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="s2">&#34;time&#34;</span><span class="o">:</span> <span class="s2">&#34;2019-04-04T09:54:35.046147Z&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;identifiers&#34;</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gateway_ids&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gateway_id&#34;</span><span class="o">:</span> <span class="s2">&#34;multitech&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;eui&#34;</span><span class="o">:</span> <span class="s2">&#34;00800000A0000DB4&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:conn:01G76RS17HGZZXV740X0N2XDV8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:up:host:01G76RS1T9JM1RGFWT6A0ZEGNB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:uplink:01G76SF01BNW5SKRAND31Z0MGB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ns:uplink:01G76SF01C64KZ26CKK4SK5G10&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01G76SF01BBAMZAQRXYK97RZ8K&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;as.up.join.receive&#34;</span><span class="p">,</span> <span class="c1">//The Application Server receives the Join Accept message
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nt">&#34;time&#34;</span><span class="p">:</span> <span class="s2">&#34;2022-07-05T09:01:08.804362691Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;identifiers&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;device_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;dev2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;app1&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;70B3D57ED0050EAD&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0000000000000000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span> <span class="s2">&#34;00FF52E3&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">],</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;correlation_ids&#34;</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;gs:conn:01D7KWADW2E5CJA32VS1MTR2J6&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;rpc:/ttn.lorawan.v3.NsGs/ScheduleDownlink:01D7KWB0W84AJ1P5A3AQV6R4J7&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl"><span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;name&#34;</span><span class="o">:</span> <span class="s2">&#34;gs.up.forward&#34;</span><span class="p">,</span> <span class="c1">// Gateway Server forwarded join-request to the Network Server.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="s2">&#34;time&#34;</span><span class="o">:</span> <span class="s2">&#34;2019-04-04T09:54:35.991226Z&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;identifiers&#34;</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gateway_ids&#34;</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gateway_id&#34;</span><span class="o">:</span> <span class="s2">&#34;multitech&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">        <span class="s2">&#34;eui&#34;</span><span class="o">:</span> <span class="s2">&#34;00800000A0000DB4&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;as:up:01G76SF1T4N87XN57MY6H36X4C&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:conn:01G76RS17HGZZXV740X0N2XDV8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:up:host:01G76RS1T9JM1RGFWT6A0ZEGNB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:uplink:01G76SF01BNW5SKRAND31Z0MGB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ns:uplink:01G76SF01C64KZ26CKK4SK5G10&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01G76SF01BBAMZAQRXYK97RZ8K&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;rpc:/ttn.lorawan.v3.NsAs/HandleUplink:01G76SF1T4N1VR08BVHQ6MTTJN&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;as.up.join.forward&#34;</span><span class="p">,</span> <span class="c1">//The Application Server forwards the Join Accept message to the application
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nt">&#34;time&#34;</span><span class="p">:</span> <span class="s2">&#34;2022-07-05T09:01:08.806553539Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;identifiers&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;device_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;dev2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;app1&#34;</span>
+</span></span><span class="line"><span class="cl">          <span class="p">},</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;70B3D57ED0050EAD&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0000000000000000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span> <span class="s2">&#34;00FF52E3&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">      <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">  <span class="p">],</span>
-</span></span><span class="line"><span class="cl">  <span class="s2">&#34;correlation_ids&#34;</span><span class="o">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;gs:conn:01D7KWADW2E5CJA32VS1MTR2J6&#34;</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">    <span class="s2">&#34;gs:uplink:01D7KWB0N2KVCV8HZABC8DDHSA&#34;</span>
-</span></span><span class="line"><span class="cl">  <span class="p">]</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;data&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;@type&#34;</span><span class="p">:</span> <span class="s2">&#34;type.googleapis.com/ttn.lorawan.v3.ApplicationUp&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;end_device_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;device_id&#34;</span><span class="p">:</span> <span class="s2">&#34;dev2&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;application_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;application_id&#34;</span><span class="p">:</span> <span class="s2">&#34;app1&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;dev_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;70B3D57ED0050EAD&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;join_eui&#34;</span><span class="p">:</span> <span class="s2">&#34;0000000000000000&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;dev_addr&#34;</span><span class="p">:</span> <span class="s2">&#34;00FF52E3&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;as:up:01G76SF1T4N87XN57MY6H36X4C&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:conn:01G76RS17HGZZXV740X0N2XDV8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:up:host:01G76RS1T9JM1RGFWT6A0ZEGNB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;gs:uplink:01G76SF01BNW5SKRAND31Z0MGB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ns:uplink:01G76SF01C64KZ26CKK4SK5G10&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01G76SF01BBAMZAQRXYK97RZ8K&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;rpc:/ttn.lorawan.v3.NsAs/HandleUplink:01G76SF1T4N1VR08BVHQ6MTTJN&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">],</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;received_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2022-07-05T09:01:08.804377195Z&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;join_accept&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;session_key_id&#34;</span><span class="p">:</span> <span class="s2">&#34;AYHNl4A0v5Eu3uRRH34tEA==&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;received_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2022-07-05T09:01:06.988023916Z&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;correlation_ids&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;as:up:01G76SF1T4N87XN57MY6H36X4C&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:conn:01G76RS17HGZZXV740X0N2XDV8&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:up:host:01G76RS1T9JM1RGFWT6A0ZEGNB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;gs:uplink:01G76SF01BNW5SKRAND31Z0MGB&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;ns:uplink:01G76SF01C64KZ26CKK4SK5G10&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;rpc:/ttn.lorawan.v3.GsNs/HandleUplink:01G76SF01BBAMZAQRXYK97RZ8K&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="s2">&#34;rpc:/ttn.lorawan.v3.NsAs/HandleUplink:01G76SF1T4N1VR08BVHQ6MTTJN&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
 </span></span></code></pre></div></details>
         </div>
         
@@ -444,10 +866,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 23 Mar 2022.
+  Last changed by Nejra Selimović on 13 Jul 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/8d4295eadabd371b0c59b674cf1d476a7c315ba0">
-      doc: Address improvement points from feedback (#828)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/17cfe911e53dbc0c2b604b728ed31db001de70e9">
+      doc: Update join flow (#908)
     </a>
 </p>
 
