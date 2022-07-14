@@ -182,6 +182,18 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl <span class="s1">&#39;https://thethings.example.com/api/v3/&lt;js/ns/as&gt;/applications/&lt;application_id&gt;/devices/&lt;end-device_id&gt;&#39;</span> -X DELETE -H <span class="s1">&#39;Accept: application/json&#39;</span> -H <span class="s1">&#39;Authorization: Bearer &lt;api-key&gt;&#39;</span>
 </span></span></code></pre></div></li>
 </ul>
+<h2 id="i-cannot-access-my-device-in-the-things-stack-console">I cannot access my device in The Things Stack Console.</h2>
+<p>If you cannot access your device in the Console, i.e. you&rsquo;re seeing the <code>An unknown error occured. Please try again later...</code> error, your device is probably not properly provisioned in all The Things Stack components (Identity Server, Join Server, Network Server and Application Server). For example, this might happen if you tried to create your device <a href="https://www.thethingsindustries.com/docs/getting-started/api/#multi-step-actions">using the API</a>, but you haven&rsquo;t created it properly in all four server components.</p>
+<p>This error can be resolved if you delete your device from all four above mentioned server components, and recreate it from scratch.</p>
+<p>To check if your device is present in the Identity Server component:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X <span class="s1">&#39;GET&#39;</span> <span class="s1">&#39;https://thethings.example.com/api/v3/applications/&lt;application_id&gt;/devices/&lt;device_id&gt;&#39;</span> -H <span class="s1">&#39;Accept: application/json&#39;</span> -H <span class="s1">&#39;Authorization: Bearer &lt;api-key&gt;&#39;</span>
+</span></span></code></pre></div><p>To check if your device is present in Join Server, Network Server and/or Application Server:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X <span class="s1">&#39;GET&#39;</span> <span class="s1">&#39;https://thethings.example.com/api/v3/&lt;js/ns/as&gt;/applications/&lt;application_id&gt;/devices/&lt;device_id&gt;&#39;</span> -H <span class="s1">&#39;Accept: application/json&#39;</span> -H <span class="s1">&#39;Authorization: Bearer &lt;api-key&gt;&#39;</span>
+</span></span></code></pre></div><p>To delete your device from Identity Server:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X DELETE <span class="s1">&#39;https://thethings.example.com/api/v3/applications/&lt;application_id&gt;/devices/&lt;device_id&gt;&#39;</span> -H <span class="s1">&#39;Accept: application/json&#39;</span> -H <span class="s1">&#39;Authorization: Bearer &lt;api-key&gt;&#39;</span>
+</span></span></code></pre></div><p>To delete your device from Join Server, Network Server and/or Application Server:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X DELETE <span class="s1">&#39;https://thethings.example.com/api/v3/&lt;js/ns/as&gt;/applications/&lt;application_id&gt;/devices/&lt;device_id&gt;&#39;</span> -H <span class="s1">&#39;Accept: application/json&#39;</span> -H <span class="s1">&#39;Authorization: Bearer &lt;api-key&gt;&#39;</span>
+</span></span></code></pre></div><p>Next, recreate your device as documented in the <a href="https://www.thethingsindustries.com/docs/getting-started/api/#multi-step-actions">Using the API</a> section.</p>
 <h2 id="how-do-i-see-device-events">How do I see device events?</h2>
 <p>Device event logs can be found in the console in the device&rsquo;s general information page. See <a href="https://www.thethingsindustries.com/docs/getting-started/events/">Working with Events</a> for other ways of subscribing to events.</p>
 <h2 id="i-see-no-join-requests-from-my-device-in-the-things-stack">I see no Join Requests from my device in The Things Stack.</h2>
@@ -363,6 +375,9 @@
       <li><a href='#i-receive-an-error-when-registering-an-end-device'>I receive an error when registering an end device.</a></li>
     
       
+      <li><a href='#i-cannot-access-my-device-in-the-things-stack-console'>I cannot access my device in The Things Stack Console.</a></li>
+    
+      
       <li><a href='#how-do-i-see-device-events'>How do I see device events?</a></li>
     
       
@@ -451,10 +466,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 22 Jun 2022.
+  Last changed by Nejra Selimović on 14 Jul 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4f468202ae3def0e09c0b5a4997bf5202eb44dd4">
-      doc: Add troubleshooting entry (#898)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b51e813112585cd058fc383dc1edc6fa0301e134">
+      doc: Resolve unaccessible device in the Console error (#916)
     </a>
 </p>
 
