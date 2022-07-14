@@ -26,6 +26,38 @@ Here are some common errors and solutions:
     curl 'https://thethings.example.com/api/v3/<js/ns/as>/applications/<application_id>/devices/<end-device_id>' -X DELETE -H 'Accept: application/json' -H 'Authorization: Bearer <api-key>'
     ```
 
+## I cannot access my device in {{% tts %}} Console.
+
+If you cannot access your device in the Console, i.e. you're seeing the `An unknown error occured. Please try again later...` error, your device is probably not properly provisioned in all {{% tts %}} components (Identity Server, Join Server, Network Server and Application Server). For example, this might happen if you tried to create your device [using the API]({{< ref "/getting-started/api/#multi-step-actions" >}}), but you haven't created it properly in all four server components.
+
+This error can be resolved if you delete your device from all four above mentioned server components, and recreate it from scratch.
+
+To check if your device is present in the Identity Server component:
+
+```bash
+curl -X 'GET' 'https://thethings.example.com/api/v3/applications/<application_id>/devices/<device_id>' -H 'Accept: application/json' -H 'Authorization: Bearer <api-key>'
+```
+
+To check if your device is present in Join Server, Network Server and/or Application Server:
+
+```bash
+curl -X 'GET' 'https://thethings.example.com/api/v3/<js/ns/as>/applications/<application_id>/devices/<device_id>' -H 'Accept: application/json' -H 'Authorization: Bearer <api-key>'
+```
+
+To delete your device from Identity Server:
+
+```bash
+curl -X DELETE 'https://thethings.example.com/api/v3/applications/<application_id>/devices/<device_id>' -H 'Accept: application/json' -H 'Authorization: Bearer <api-key>'
+```
+
+To delete your device from Join Server, Network Server and/or Application Server:
+
+```bash
+curl -X DELETE 'https://thethings.example.com/api/v3/<js/ns/as>/applications/<application_id>/devices/<device_id>' -H 'Accept: application/json' -H 'Authorization: Bearer <api-key>'
+```
+
+Next, recreate your device as documented in the [Using the API]({{< ref "/getting-started/api/#multi-step-actions" >}}) section.
+
 ## How do I see device events?
 
 Device event logs can be found in the console in the device's general information page. See [Working with Events]({{< ref "getting-started/events" >}}) for other ways of subscribing to events.
