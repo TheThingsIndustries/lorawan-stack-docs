@@ -9,7 +9,7 @@ API calls can be authorized either by providing an **API key**, **OAuth access t
 - Usage with HTTP `Authorization` Header: `Bearer XXXXX`
 - Usage with HTTP `_session` Cookie, containing a session secret `XXXXX`
 - Usage with gRPC [call credentials](https://grpc.io/docs/guides/auth.html#authentication-api) (in the `authorization` header): `Bearer XXXXX`
-- Usage with MQTT: Password: `XXXXX`
+- Usage with MQTT Password: `XXXXX`
 
 Here, `XXXXX` is either a valid **API key**, a valid **OAuth access token** or a valid **session secret**.
 
@@ -32,29 +32,57 @@ API keys are the simplest way of authorization. API keys do not expire, are revo
 
 ## OAuth access tokens
 
-The Things Network uses the [OAuth 2.0 protocol](https://oauth.net/) for authentication and authorization. 
+{{% tts %}} uses the [OAuth 2.0 protocol](https://oauth.net/) for authentication and authorization. 
 
-To use this method, you first need an **OAuth client registration**:
+To use this authentication method, you first need to register an **OAuth client**. A few parameters listed below are usually used to describe an OAuth client.
 
-- The **client ID** uniquely identifies the OAuth client. Its restrictions are the same as for any other ID in TTN.
+- The **client ID** uniquely identifies the OAuth client. Its [restrictions]({{< ref "/reference/id-eui-constraints#requirements-of-an-id-or-eui" >}}) are the same as for any other ID in {{% tts %}}.
 - The **description** is shown to the user when you request authorization.
-- The **scope** indicates what actions your OAuth client is allowed to perform. This is shown to the user when you request authorization. You can select the actions your OAuth client needs on registration, a full list can also be found in our [source code]({{< tts-repo-file-url "blob" "api/rights.proto" >}}).
+- The **scope** indicates what actions your OAuth client is allowed to perform. This is shown to the user when you request authorization. You can select the actions your OAuth client needs on registration. A full list of rights can also be found in {{% tts %}} [source code]({{< tts-repo-file-url "blob" "api/rights.proto" >}}).
 - The **redirect URI** is where the user is redirected after authorizing your OAuth client.
-- The **client secret** is issued when your OAuth client Registration is accepted by a network admin.
+- The **client secret** is issued when your OAuth client registration is accepted by a network admin.
 
-To register OAuth client you need to use [CLI](https://www.thethingsindustries.com/docs/getting-started/cli/):
+To register OAuth client you can use {{% tts %}} [Console]({{< ref "/getting-started/console" >}}) or [CLI](https://www.thethingsindustries.com/docs/getting-started/cli/).
+
+{{< tabs/container "Console" "CLI" >}}
+
+{{< tabs/tab "Console" >}}
+
+To register an OAuth client using the Console, first navigate to `https://<HOSTNAME>/oauth` in your web browser to log into your Account App. When logged in, switch to the **OAuth Clients** tab on the top menu and click the **Add OAuth Client** button.
+
+Enter the **OAuth Client ID**, **Name** and **Description** for your OAuth client. You can also add the **Redirect URLs** against which authorization requests will be checked, and **Logout redirect URLs** agains which client initiated requests are checked.
+
+{{< figure src="../create-oauth-client.png" alt="Create an OAuth client" >}}
+
+Some **Advanced admin options** are also available to set the state of the OAuth client, skip the authorization page or indicate endorsement.
+
+You can choose multiple **Grant types**, i.e. multiple OAuth flows that can be used for the client to obtain an OAuth token: **Authorization code**, **Refresh token** and **Password**.
+
+You also need to grant rights for your OAuth client. Keep in mind that, to provide the functionality of the application, a minimum set of rights has to be requested.
+
+{{< figure src="../grant-rights-for-oauth-client.png" alt="Grant rights for an OAuth client" >}}
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "CLI" >}}
+
+To register an OAuth client using the CLI, use the following command:
 
 ```
 ttn-lw-cli clients create \
-    --client-id mybrand-gateway-manager \
-    --name "MyBrand Gateway Manager" \
-    --description "Manage your MyBrand gateway from the mobile app" \
-    --organization-id mybrand \ # or --user-id htdvisser \
-    --redirect-uris https://app.mybrand.com/oauth/callback/ttn \
-    --grants GRANT_AUTHORIZATION_CODE \
-    --rights RIGHT_GATEWAY_ALL,RIGHT_ORGANIZATION_GATEWAYS_CREATE,RIGHT_ORGANIZATION_GATEWAYS_LIST,RIGHT_ORGANIZATION_INFO,RIGHT_USER_GATEWAYS_CREATE,RIGHT_USER_GATEWAYS_LIST,RIGHT_USER_INFO,RIGHT_USER_ORGANIZATIONS_LIST
+  --client-id <CLIENT-ID> \
+  --name <CLIENT-NAME> \
+  --description "My new OAuth client" \
+  --redirect-uris <REDIRECT-URI> \
+  --grants GRANT_AUTHORIZATION_CODE \
+  --rights RIGHT_GATEWAY_ALL,RIGHT_ORGANIZATION_GATEWAYS_CREATE,RIGHT_ORGANIZATION_GATEWAYS_LIST,RIGHT_ORGANIZATION_INFO,RIGHT_USER_GATEWAYS_CREATE,RIGHT_USER_GATEWAYS_LIST,RIGHT_USER_INFO,RIGHT_USER_ORGANIZATIONS_LIST
 ```
-After your OAuth client Registration is accepted, you can **request authorization** by sending the user to the **authorization URL**:
+
+{{< /tabs/tab >}}
+
+{{< /tabs/container >}}
+
+After your OAuth client registration is accepted, you can **request authorization** by sending the user to the **authorization URL**:
 
 ```
 https://<HOSTNAME>/oauth/authorize?client_id=<CLIENT-ID>&redirect_uri=<REDIRECT-URI>&state=<STATE>&response_type=code
