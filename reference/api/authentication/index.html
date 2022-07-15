@@ -345,7 +345,16 @@
 <li>The <strong>redirect URI</strong> is where the user is redirected after authorizing your OAuth client.</li>
 <li>The <strong>client secret</strong> is issued when your OAuth client Registration is accepted by a network admin.</li>
 </ul>
-<p>After your OAuth client Registration is accepted, you can <strong>request authorization</strong> by sending the user to the <strong>authorization URL</strong>:</p>
+<p>To register OAuth client you need to use <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">CLI</a>:</p>
+<pre tabindex="0"><code>ttn-lw-cli clients create \
+    --client-id mybrand-gateway-manager \
+    --name &#34;MyBrand Gateway Manager&#34; \
+    --description &#34;Manage your MyBrand gateway from the mobile app&#34; \
+    --organization-id mybrand \ # or --user-id htdvisser \
+    --redirect-uris https://app.mybrand.com/oauth/callback/ttn \
+    --grants GRANT_AUTHORIZATION_CODE \
+    --rights RIGHT_GATEWAY_ALL,RIGHT_ORGANIZATION_GATEWAYS_CREATE,RIGHT_ORGANIZATION_GATEWAYS_LIST,RIGHT_ORGANIZATION_INFO,RIGHT_USER_GATEWAYS_CREATE,RIGHT_USER_GATEWAYS_LIST,RIGHT_USER_INFO,RIGHT_USER_ORGANIZATIONS_LIST
+</code></pre><p>After your OAuth client Registration is accepted, you can <strong>request authorization</strong> by sending the user to the <strong>authorization URL</strong>:</p>
 <pre tabindex="0"><code>https://&lt;HOSTNAME&gt;/oauth/authorize?client_id=&lt;CLIENT-ID&gt;&amp;redirect_uri=&lt;REDIRECT-URI&gt;&amp;state=&lt;STATE&gt;&amp;response_type=code
 </code></pre><ul>
 <li>The <code>HOSTNAME</code> is the hostname of the Identity Server.</li>
@@ -465,10 +474,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Roman Cherepanov on 15 Jul 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f06406942b793eb7ff2dcc89775a9b2bbe6d2676">
+      doc: Add information about OAuth client creation (#441)
     </a>
 </p>
 
