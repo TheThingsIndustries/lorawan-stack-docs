@@ -316,7 +316,7 @@
 <li>Usage with HTTP <code>Authorization</code> Header: <code>Bearer XXXXX</code></li>
 <li>Usage with HTTP <code>_session</code> Cookie, containing a session secret <code>XXXXX</code></li>
 <li>Usage with gRPC <a href="https://grpc.io/docs/guides/auth.html#authentication-api">call credentials</a> (in the <code>authorization</code> header): <code>Bearer XXXXX</code></li>
-<li>Usage with MQTT: Password: <code>XXXXX</code></li>
+<li>Usage with MQTT Password: <code>XXXXX</code></li>
 </ul>
 <p>Here, <code>XXXXX</code> is either a valid <strong>API key</strong>, a valid <strong>OAuth access token</strong> or a valid <strong>session secret</strong>.</p>
 <p>API keys and OAuth access tokens in The Things Stack have the following format: <code>&lt;token-type&gt;.&lt;token-id&gt;.&lt;token-secret&gt;</code>. <strong>Token type</strong> defines if the token is an API key (<code>NNSXS</code>) or an OAuth access token (<code>MFRWG</code>).</p>
@@ -336,25 +336,62 @@
 <li>Organization API keys</li>
 </ul>
 <h2 id="oauth-access-tokens">OAuth access tokens</h2>
-<p>The Things Network uses the <a href="https://oauth.net/">OAuth 2.0 protocol</a> for authentication and authorization.</p>
-<p>To use this method, you first need an <strong>OAuth client registration</strong>:</p>
+<p>The Things Stack uses the <a href="https://oauth.net/">OAuth 2.0 protocol</a> for authentication and authorization.</p>
+<p>To use this authentication method, you first need to register an <strong>OAuth client</strong>. A few parameters listed below are usually used to describe an OAuth client.</p>
 <ul>
-<li>The <strong>client ID</strong> uniquely identifies the OAuth client. Its restrictions are the same as for any other ID in TTN.</li>
+<li>The <strong>client ID</strong> uniquely identifies the OAuth client. Its <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/#requirements-of-an-id-or-eui">restrictions</a> are the same as for any other ID in The Things Stack.</li>
 <li>The <strong>description</strong> is shown to the user when you request authorization.</li>
-<li>The <strong>scope</strong> indicates what actions your OAuth client is allowed to perform. This is shown to the user when you request authorization. You can select the actions your OAuth client needs on registration, a full list can also be found in our <a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/v3.20/api/rights.proto">source code</a>.</li>
+<li>The <strong>scope</strong> indicates what actions your OAuth client is allowed to perform. This is shown to the user when you request authorization. You can select the actions your OAuth client needs on registration. A full list of rights can also be found in The Things Stack <a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/v3.20/api/rights.proto">source code</a>.</li>
 <li>The <strong>redirect URI</strong> is where the user is redirected after authorizing your OAuth client.</li>
-<li>The <strong>client secret</strong> is issued when your OAuth client Registration is accepted by a network admin.</li>
+<li>The <strong>client secret</strong> is issued when your OAuth client registration is accepted by a network admin.</li>
 </ul>
-<p>To register OAuth client you need to use <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">CLI</a>:</p>
+<p>To register OAuth client you can use The Things Stack <a href="https://www.thethingsindustries.com/docs/getting-started/console/">Console</a> or <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">CLI</a>.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="console">
+      <a>
+        <span>Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="cli">
+      <a>
+        <span>CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="console">
+  <p>To register an OAuth client using the Console, first navigate to <code>https://&lt;HOSTNAME&gt;/oauth</code> in your web browser to log into your Account App. When logged in, switch to the <strong>OAuth Clients</strong> tab on the top menu and click the <strong>Add OAuth Client</strong> button.</p>
+<p>Enter the <strong>OAuth Client ID</strong>, <strong>Name</strong> and <strong>Description</strong> for your OAuth client. You can also add the <strong>Redirect URLs</strong> against which authorization requests will be checked, and <strong>Logout redirect URLs</strong> agains which client initiated requests are checked.</p>
+<figure><img src="../create-oauth-client.png"
+         alt="Create an OAuth client"/>
+</figure>
+<p>Some <strong>Advanced admin options</strong> are also available to set the state of the OAuth client, skip the authorization page or indicate endorsement.</p>
+<p>You can choose multiple <strong>Grant types</strong>, i.e. multiple OAuth flows that can be used for the client to obtain an OAuth token: <strong>Authorization code</strong>, <strong>Refresh token</strong> and <strong>Password</strong>.</p>
+<p>You also need to grant rights for your OAuth client. Keep in mind that, to provide the functionality of the application, a minimum set of rights has to be requested.</p>
+<figure><img src="../grant-rights-for-oauth-client.png"
+         alt="Grant rights for an OAuth client"/>
+</figure>
+</section>
+<section data-content="cli">
+  <p>To register an OAuth client using the CLI, use the following command:</p>
 <pre tabindex="0"><code>ttn-lw-cli clients create \
-    --client-id mybrand-gateway-manager \
-    --name &#34;MyBrand Gateway Manager&#34; \
-    --description &#34;Manage your MyBrand gateway from the mobile app&#34; \
-    --organization-id mybrand \ # or --user-id htdvisser \
-    --redirect-uris https://app.mybrand.com/oauth/callback/ttn \
-    --grants GRANT_AUTHORIZATION_CODE \
-    --rights RIGHT_GATEWAY_ALL,RIGHT_ORGANIZATION_GATEWAYS_CREATE,RIGHT_ORGANIZATION_GATEWAYS_LIST,RIGHT_ORGANIZATION_INFO,RIGHT_USER_GATEWAYS_CREATE,RIGHT_USER_GATEWAYS_LIST,RIGHT_USER_INFO,RIGHT_USER_ORGANIZATIONS_LIST
-</code></pre><p>After your OAuth client Registration is accepted, you can <strong>request authorization</strong> by sending the user to the <strong>authorization URL</strong>:</p>
+  --client-id &lt;CLIENT-ID&gt; \
+  --name &lt;CLIENT-NAME&gt; \
+  --description &#34;My new OAuth client&#34; \
+  --redirect-uris &lt;REDIRECT-URI&gt; \
+  --grants GRANT_AUTHORIZATION_CODE \
+  --rights RIGHT_GATEWAY_ALL,RIGHT_ORGANIZATION_GATEWAYS_CREATE,RIGHT_ORGANIZATION_GATEWAYS_LIST,RIGHT_ORGANIZATION_INFO,RIGHT_USER_GATEWAYS_CREATE,RIGHT_USER_GATEWAYS_LIST,RIGHT_USER_INFO,RIGHT_USER_ORGANIZATIONS_LIST
+</code></pre>
+</section>
+
+</div>
+
+<p>After your OAuth client registration is accepted, you can <strong>request authorization</strong> by sending the user to the <strong>authorization URL</strong>:</p>
 <pre tabindex="0"><code>https://&lt;HOSTNAME&gt;/oauth/authorize?client_id=&lt;CLIENT-ID&gt;&amp;redirect_uri=&lt;REDIRECT-URI&gt;&amp;state=&lt;STATE&gt;&amp;response_type=code
 </code></pre><ul>
 <li>The <code>HOSTNAME</code> is the hostname of the Identity Server.</li>
@@ -474,10 +511,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Roman Cherepanov on 15 Jul 2022.
+  Last changed by Nejra Selimović on 15 Jul 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f06406942b793eb7ff2dcc89775a9b2bbe6d2676">
-      doc: Add information about OAuth client creation (#441)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/54d27f66a0f5d52f7d24b665215f3d477ad5850a">
+      doc: Add steps to create OAuth client using Console (#918)
     </a>
 </p>
 
