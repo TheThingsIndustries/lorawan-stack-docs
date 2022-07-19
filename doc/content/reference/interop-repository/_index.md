@@ -7,46 +7,35 @@ description: ""
 
 <!-- more -->
 
-{{% tts %}} reads configuration from a file system. The root should contain `config.yml`, which contains various Join Servers.
-
-```yml
-join-servers:                 # list of Join Server interoperability configurations,
-                              # used to map a JoinEUI to the Join Server
-  - file: './path/js.yml'     # relative path to a file containing Join Server configuration
-    join-euis:                # list of Join EUI prefixes the Join Server should handle
-    - '11aa000000000000/16'
-```
-
-All paths are relative to the file they are defined in, that is `example/js.yml` defined in `interopconf/config.yml` is expected to be located at `interopconf/example/js.yml`.
-
-In case `JoinEUI` prefixes overlap, the most specific prefix takes precedence.
-
-{{% tts %}} Network Server always first tries the cluster-local Join Server and if it's not found or the device is not found, a Join Server via this interoperability is contacted.
-
-`0000000000000000/0` prefix matches all `JoinEUI`s, while being the least specific, hence it always matches last. Use this prefix if you wish to define a "fallback" Join Server interoperability configuration.
-
-For example, consider `config.yml` as follows:
+{{% tts %}} reads configuration from a file system. The root should contain `config.yml`, which contains Join Servers.
 
 ```yml
 join-servers:
-  - file: './example/js.yml'
-    join-euis:
-    - 'abcd000000000000/16'
-    - 'dcba000000000000/16'
+  - file: './path/js.yml'     # relative path to a file containing Join Server configuration
+    components: ['as', 'ns']  # optional selector for components (new in 3.21.0)
+    join-euis:                # list of Join EUI prefixes the Join Server should handle
+    - '11AA000000000000/16'   # in this example, the first 16 bits, so all JoinEUIs starting with 11AA
+```
 
+All paths are relative to the `config.yml` file they are defined in.
+
+{{% tts %}} Network Server always first tries the cluster-local Join Server. If the cluster-local Join Server does not accept the join-request, a Join Server is contacted via the LoRaWAN Backend Interfaces interoperability.
+
+In case `JoinEUI` prefixes overlap, the most specific prefix takes precedence. `0000000000000000/0` prefix matches all `JoinEUI`s. Use this prefix if you wish to define a Join Server interoperability configuration for all other join-requests. For example:
+
+```yml
+join-servers:
   - file: './fallback/js.yml'
     join-euis:
     - '0000000000000000/0'
 ```
-
-A configuration like this would make Join Server requests for JoinEUIs starting with `ABCD` or `BCDA` to be handled by Join Server defined at `example/js.yml` in interoperability mode and all other ones to be handled by Join Server defined at `fallback/js.yml`.
 
 The Join Server configuration provides means to configure how the components interact with the Join Server. The configuration supports multiple options:
 
 ```yml
 scheme: 'https'                          # URL scheme. Defaults to https
 fqdn: 'thethings.example'                # FQDN of the Join Server
-port: 12345                              # port to connect at. Defaults to 443
+port: 443                                # port to connect at. Defaults to 443
 protocol: 'BI1.0'                        # Backend Interfaces protocol to use (one of BI1.0 or BI1.1)
 paths:                                   # custom URI paths to use for various requests. Defaults to /
   join: 'some/path'                      # the URI path to use for JoinReq
@@ -71,23 +60,38 @@ The Things Join Server is a stand-alone LoRaWAN Join Server that can be deployed
 
 An example interoperability repository supporting The Things Join Server operated by The Things Industries could look like this:
 
-- `config.yml`:
 ```yml
+# config.yml
 join-servers:
   ...
-  - file: './tti/js.yml'
+  - file: './tti/ns-js.yml'
+    components: ['ns']
+    join-euis:
+    - 'EC656E0000000000/24'
+
+  - file: './tti/as-js.yml'
+    components: ['as']
     join-euis:
     - 'EC656E0000000000/24'
   ...
 ```
 
-- `tti/js.yml`:
 ```yml
+# tti/ns-js.yml
 fqdn: 'join.cloud.thethings.industries'
 protocol: 'BI1.1'
 sender-ns-id: 'ABCDEF0000000001'
 basic-auth:
   username: 'ABCDEF0000000001'
+  password: 'secret'
+```
+
+```yml
+# tti/as-js.yml
+fqdn: 'join.cloud.thethings.industries'
+protocol: 'BI1.1'
+basic-auth:
+  username: 'thethings.example.com'
   password: 'secret'
 ```
 
@@ -97,19 +101,18 @@ Semtech Join Server is a hosted LoRaWAN Join Server by Semtech for use with pre-
 
 An example interoperability repository supporting Semtech Join Server could look like this:
 
-- `config.yml`:
 ```yml
+# config.yml
 join-servers:
   ...
   - file: './semtech/js.yml'
     join-euis:
-    - 'ffffffbb00000000/32'
-    - '0016c00000000000/24'
+    - '0016C00000000000/24'
   ...
 ```
 
-- `semtech/js.yml`:
 ```yml
+# semtech/js.yml
 fqdn: 'js.loracloud.com'
 port: 7009
 protocol: 'BI1.0'
