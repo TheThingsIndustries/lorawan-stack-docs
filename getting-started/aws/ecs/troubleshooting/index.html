@@ -247,21 +247,24 @@
         
         <div class="content">
           <p>This section contains information to troubleshoot The Things Stack deployment.</p>
-<h3 id="ecs-pulled-wrong-image-version">ECS pulled wrong image version</h3>
+<h2 id="ecs-pulled-wrong-image-version">ECS pulled wrong image version</h2>
 <p>The image tags starting with <code>3.x</code> contain the latest patch version. For this reason, you should use images starting with <code>3.x.y</code>, where you specify the desired patch version yourself. Otherwise, when for some reason an ECS task restarts, it can pull the <code>3.x</code> image again, which could be in the meantime updated to a new patch version.</p>
-<h3 id="identity-server-fails-with-errorpkgidentityserverstoredatabase-database-error">Identity Server fails with <code>error:pkg/identityserver/store:database (database error)</code></h3>
+<h2 id="identity-server-fails-with-errorpkgidentityserverstoredatabase-database-error">Identity Server fails with <code>error:pkg/identityserver/store:database (database error)</code></h2>
 <p>This error is usually caused by a network failure. In this case, and in case of similar connection errors, we recommend:</p>
 <ol>
 <li>Restarting relevant ECS tasks</li>
 <li>Waiting for all startup processes to complete, as sometimes certain elements might start in wrong order</li>
 </ol>
 <p>If this doesn&rsquo;t help, please start troubleshooting the network connection (for example, in this case between the Identity Server and the Aurora database).</p>
-<h3 id="the-session-information-is-lost-for-all-devices-and-the-uplinks-are-dropped-by-the-network-server">The session information is lost for all devices, and the uplinks are dropped by the Network Server</h3>
+<h2 id="the-session-information-is-lost-for-all-devices-and-the-uplinks-are-dropped-by-the-network-server">The session information is lost for all devices, and the uplinks are dropped by the Network Server</h2>
 <p>While intuitively ElastiCache seems to be just cache, in fact it is a fully capable database, and The Things Stack uses it as such. In particular, among other things, Network Server uses it for storing the session information for devices. If there is any issue with the Redis database, it causes loss of devices session data.</p>
 <p>This is why, by default, we enable periodic backups. If you&rsquo;re experiencing data loss, restore the database from one of automatic snapshots, by entering the snapshot ID into relevant parameter in the Redis CloudFormation template.</p>
-<h3 id="i-have-an-issue-with-certain-aws-resources">I have an issue with certain AWS resources</h3>
+<h2 id="i-have-an-issue-with-certain-aws-resources">I have an issue with certain AWS resources</h2>
 <p>It is assumed that customers who wish to deploy their own AWS ECS setup already have in-depth knowledge about AWS. We do not offer support on AWS itself. In order to receive best support from us, before reaching out please narrow down your issue to particular elements of The Things Stack. For help on AWS itself, please refer to:</p>
 <p><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/troubleshooting.html">https://docs.aws.amazon.com/AmazonECS/latest/developerguide/troubleshooting.html</a></p>
+<h2 id="i-get-a-pkgscriptingjavascriptscript_timeout-script-timeout-error">I get a <code>pkg/scripting/javascript:script_timeout (script timeout)</code> error</h2>
+<p>The current deadline for executing a Javascript payload decoder is 100 milliseconds. The payload decoder execution time increases in cases of high CPU usage and appearance of traffic bursts in The Things Stack deployment. If the process of decoding a payload exceeds the deadline, the payload decoder execution process is stopped and the uplink is sent with raw payload only.</p>
+<p>This error can be resolved by doubling CPU and memory for the Application Server tasks.</p>
 
         </div>
         
@@ -284,6 +287,25 @@
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#ecs-pulled-wrong-image-version'>ECS pulled wrong image version</a></li>
+    
+      
+      <li><a href='#identity-server-fails-with-errorpkgidentityserverstoredatabase-database-error'>Identity Server fails with error:pkg/identityserver/store:database (database error)</a></li>
+    
+      
+      <li><a href='#the-session-information-is-lost-for-all-devices-and-the-uplinks-are-dropped-by-the-network-server'>The session information is lost for all devices, and the uplinks are dropped by the Network Server</a></li>
+    
+      
+      <li><a href='#i-have-an-issue-with-certain-aws-resources'>I have an issue with certain AWS resources</a></li>
+    
+      
+      <li><a href='#i-get-a-pkgscriptingjavascriptscript_timeout-script-timeout-error'>I get a pkg/scripting/javascript:script_timeout (script timeout) error</a></li>
+    
+  </ul>
 
 
   </nav>
@@ -321,10 +343,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Michał Borkowski on 18 Mar 2022.
+  Last changed by Nejra Selimović on 20 Jul 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/82fd7c530e14328cf7b31e76ee63ccc2b10db42a">
-      doc: Small improvements (#818)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/31b317e7de281e442fcfd7d81c6339e5149b2f35">
+      doc: Add troubleshooting entry for AWS ECS (#917)
     </a>
 </p>
 
