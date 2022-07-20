@@ -197,9 +197,13 @@ Here are some common causes of a delay in scheduling downlinks for Class C devic
 
 One of the possible causes might be that your end device is not answering MAC commands sent by the Network Server. The Network Server will continuously re-send those MAC commands, until the end device answers them. The recommended practice is to contact device manufacturer to resolve the issue. 
 
-## I changed my device's frequency plan in the Console and now I am facing errors.
+## I'm facing errors when trying to change my device's frequency plan.
 
-The Network Server performs a lot of checks to ensure that the end device MAC state and MAC settings are valid with respect to the frequency plan, so that might be the source of the errors you are facing. Updating device's frequency plan is not supported in {{% tts %}} and should always be achieved by re-creating the end device in the Console.
+The Network Server performs a lot of checks to ensure that the end device MAC state and MAC settings are valid with respect to the frequency plan, so that is probably the source of errors you are facing. The most common error is `Invalid value of field mac_settings.rx2_data_rate_index.value`.
+
+Updating device's frequency plan in {{% tts %}} is available in some cases, e.g. for devices that haven't been activated yet, or when changing spreading factor only, for example from Europe 863-870 MHz (SF9 for RX2) plan to Europe 863-870 MHz (SF12 for RX2).
+
+Generally speaking, changing frequency plans in {{% tts %}} is not recommended and in large number of cases not available either, so you should always recreate your end device using the desired frequency plan.
 
 ## I see a "no decoder defined for codec {codec_id}" error after very downlink message.
 
