@@ -7,6 +7,8 @@ description: ""
 
 {{< proto/method service="Gs" method="GetGatewayConnectionStats" >}}
 
+{{< proto/method service="Gs" method="BatchGetGatewayConnectionStats" >}}
+
 ## The `GatewayConfigurator` service
 
 {{< proto/method service="GatewayConfigurator" method="PullConfiguration" >}}
@@ -16,6 +18,10 @@ description: ""
 {{< proto/method service="GatewayConfigurationService" method="GetGatewayConfiguration" >}}
 
 ## Messages
+
+{{< proto/message message="BatchGetGatewayConnectionStatsRequest" >}}
+
+{{< proto/message message="BatchGetGatewayConnectionStatsResponse" >}}
 
 {{< proto/message message="GatewayIdentifiers" >}}
 
@@ -30,6 +36,8 @@ description: ""
 {{< proto/message message="GatewayConnectionStats.SubBand" >}}
 
 {{< proto/message message="GatewayStatus" >}}
+
+{{< proto/message message="GatewayRemoteAddress" >}}
 
 {{< proto/message message="Location" >}}
 

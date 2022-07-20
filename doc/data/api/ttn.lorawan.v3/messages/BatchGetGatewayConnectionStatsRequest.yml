@@ -1,0 +1,18 @@
+name: BatchGetGatewayConnectionStatsRequest
+fields:
+- name: gateway_ids
+  rules:
+    min_items: 1
+    max_items: 100
+  repeated:
+    message:
+      name: GatewayIdentifiers
+  default: []
+- name: field_mask
+  comment: |-
+    The names of the gateway stats fields that should be returned.
+    This mask will be applied on each entry returned.
+  message:
+    package: google.protobuf
+    name: FieldMask
+  default: {}

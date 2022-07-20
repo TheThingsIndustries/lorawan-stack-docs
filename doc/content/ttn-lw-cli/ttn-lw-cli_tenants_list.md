@@ -127,7 +127,7 @@ ttn-lw-cli tenants list [flags]
       --retry-config.jitter float                       Fraction that creates a deviation of the timeout used between retry attempts
       --retry-config.max uint                           Maximum amount of times that a request can be reattempted
       --skip-version-check                              Do not perform version checks
-      --tenant-admin-key string                         Tenant Admin Key
+      --tenant-admin-key string                         Tenant admin key
 ```
 
 ### SEE ALSO

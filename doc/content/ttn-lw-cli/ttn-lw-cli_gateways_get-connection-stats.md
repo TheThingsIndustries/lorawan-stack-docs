@@ -5,10 +5,17 @@ slug: ttn-lw-cli_gateways_get-connection-stats
 
 ## ttn-lw-cli gateways get-connection-stats
 
-Get connection stats for a gateway
+Get connection stats for a (group of) gateway(s).
+
+### Synopsis
+
+Get connection stats for a (group of) gateway(s).
+The command arguments support multiple gateway IDs.
+Alternatively use the --gateway-ids flag.
+If both the parameter and the flag are provided, the flag is ignored.
 
 ```
-ttn-lw-cli gateways get-connection-stats [gateway-id] [flags]
+ttn-lw-cli gateways get-connection-stats [gateway-ids] [flags]
 ```
 
 ### Options
@@ -16,7 +23,9 @@ ttn-lw-cli gateways get-connection-stats [gateway-id] [flags]
 ```
       --gateway-eui string   
       --gateway-id string    
+      --gateway-ids string   
   -h, --help                 help for get-connection-stats
+      --paths strings        comma separated list of paths to filter on a batch of stats
 ```
 
 ### Options inherited from parent commands

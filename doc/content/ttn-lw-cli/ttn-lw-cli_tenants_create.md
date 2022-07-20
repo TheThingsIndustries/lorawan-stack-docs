@@ -53,10 +53,11 @@ ttn-lw-cli tenants create [tenant-id] [flags]
       --configuration.pb.listed                                                                         
       --description string                                                                              
   -h, --help                                                                                            help for create
-      --initial-user                                                                                    create initial tenant user
+      --initial-user                                                                                    create initial tenant user (default true)
       --initial-user.admin                                                                              
       --initial-user.attributes stringToString                                                          
       --initial-user.description string                                                                 
+      --initial-user.ids.user-id string                                                                 
       --initial-user.name string                                                                        
       --initial-user.password string                                                                    
       --initial-user.primary-email-address string                                                       
@@ -110,7 +111,7 @@ ttn-lw-cli tenants create [tenant-id] [flags]
       --retry-config.jitter float                       Fraction that creates a deviation of the timeout used between retry attempts
       --retry-config.max uint                           Maximum amount of times that a request can be reattempted
       --skip-version-check                              Do not perform version checks
-      --tenant-admin-key string                         Tenant Admin Key
+      --tenant-admin-key string                         Tenant admin key
 ```
 
 ### SEE ALSO

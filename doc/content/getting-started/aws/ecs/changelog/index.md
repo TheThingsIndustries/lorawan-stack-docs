@@ -8,6 +8,12 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.20.2
+
+### Prometheus
+
+- The `node_exporter` alerts now contain the instance ID and instance name.
+
 ## 3.20.1
 
 ## Prometheus
