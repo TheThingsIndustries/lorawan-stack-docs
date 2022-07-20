@@ -344,8 +344,10 @@
 </ul>
 <h2 id="i-see-downlinks-being-sent-after-every-uplink-message-but-i-did-not-schedule-any-what-are-those-downlinks">I see downlinks being sent after every uplink message, but I did not schedule any. What are those downlinks?</h2>
 <p>One of the possible causes might be that your end device is not answering MAC commands sent by the Network Server. The Network Server will continuously re-send those MAC commands, until the end device answers them. The recommended practice is to contact device manufacturer to resolve the issue.</p>
-<h2 id="i-changed-my-devices-frequency-plan-in-the-console-and-now-i-am-facing-errors">I changed my device&rsquo;s frequency plan in the Console and now I am facing errors.</h2>
-<p>The Network Server performs a lot of checks to ensure that the end device MAC state and MAC settings are valid with respect to the frequency plan, so that might be the source of the errors you are facing. Updating device&rsquo;s frequency plan is not supported in The Things Stack and should always be achieved by re-creating the end device in the Console.</p>
+<h2 id="im-facing-errors-when-trying-to-change-my-devices-frequency-plan">I&rsquo;m facing errors when trying to change my device&rsquo;s frequency plan.</h2>
+<p>The Network Server performs a lot of checks to ensure that the end device MAC state and MAC settings are valid with respect to the frequency plan, so that is probably the source of errors you are facing. The most common error is <code>Invalid value of field mac_settings.rx2_data_rate_index.value</code>.</p>
+<p>Updating device&rsquo;s frequency plan in The Things Stack is available in some cases, e.g. for devices that haven&rsquo;t been activated yet, or when changing spreading factor only, for example from Europe 863-870 MHz (SF9 for RX2) plan to Europe 863-870 MHz (SF12 for RX2).</p>
+<p>Generally speaking, changing frequency plans in The Things Stack is not recommended and in large number of cases not available either, so you should always recreate your end device using the desired frequency plan.</p>
 <h2 id="i-see-a-no-decoder-defined-for-codec-codec_id-error-after-very-downlink-message">I see a &ldquo;no decoder defined for codec {codec_id}&rdquo; error after very downlink message.</h2>
 <p>This error indicates that your end device was added from the <a href="https://github.com/TheThingsNetwork/lorawan-devices">Device Repository</a>, but in the device&rsquo;s codec file there are no <code>downlinkEncoder</code> and <code>downlinkDecoder</code> functions defined. To fix this, you can reach out to the device manufacturer to update your device&rsquo;s codec file in the Device Repository. Alternatively, you can define the <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">payload formatter</a> on your own.</p>
         </div>
@@ -423,7 +425,7 @@
       <li><a href='#i-see-downlinks-being-sent-after-every-uplink-message-but-i-did-not-schedule-any-what-are-those-downlinks'>I see downlinks being sent after every uplink message, but I did not schedule any. What are those downlinks?</a></li>
     
       
-      <li><a href='#i-changed-my-devices-frequency-plan-in-the-console-and-now-i-am-facing-errors'>I changed my device’s frequency plan in the Console and now I am facing errors.</a></li>
+      <li><a href='#im-facing-errors-when-trying-to-change-my-devices-frequency-plan'>I’m facing errors when trying to change my device’s frequency plan.</a></li>
     
       
       <li><a href='#i-see-a-no-decoder-defined-for-codec-codec_id-error-after-very-downlink-message'>I see a “no decoder defined for codec {codec_id}” error after very downlink message.</a></li>
@@ -466,10 +468,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 14 Jul 2022.
+  Last changed by Nejra Selimović on 20 Jul 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b51e813112585cd058fc383dc1edc6fa0301e134">
-      doc: Resolve unaccessible device in the Console error (#916)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/49b4a2033f83d1935a1ce216afe3cc9269d2f571">
+      doc: Fix device FP troubleshooting and a hyperlink (#922)
     </a>
 </p>
 
