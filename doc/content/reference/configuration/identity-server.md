@@ -36,7 +36,7 @@ When `smtp` is used as provider, provide the address of the SMTP server (`host:p
 
 When `dir` is used as provider, provide the path to the local directory where email messages should be written to.
 
-- `is.email.dir`: Path to the local directory where email messages should be written to {{< new-in-version "3.19" >}}
+- `is.email.dir`: Path to the local directory where email messages should be written to
 
 The email address and name of the sender should be configured regardless of the provider that is used.
 
