@@ -12,3 +12,17 @@ methods:
     http:
     - method: GET
       path: /gs/gateways/{gateway_id}/connection/stats
+  BatchGetGatewayConnectionStats:
+    name: BatchGetGatewayConnectionStats
+    comment: |-
+      Get statistics about gateway connections to the Gateway Server of a batch of gateways.
+      This is not persisted between reconnects.
+      Gateways that are not connected or are part of a different cluster are ignored.
+      It is up to the client to make sure that the gateways are in the requested cluster.
+    input:
+      name: BatchGetGatewayConnectionStatsRequest
+    output:
+      name: BatchGetGatewayConnectionStatsResponse
+    http:
+    - method: POST
+      path: /gs/gateways/connection/stats

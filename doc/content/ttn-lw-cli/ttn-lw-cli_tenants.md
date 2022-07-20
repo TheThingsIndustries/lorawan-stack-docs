@@ -11,7 +11,7 @@ Tenant commands
 
 ```
   -h, --help                      help for tenants
-      --tenant-admin-key string   Tenant Admin Key
+      --tenant-admin-key string   Tenant admin key
 ```
 
 ### Options inherited from parent commands

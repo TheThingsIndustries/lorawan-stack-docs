@@ -1,0 +1,15 @@
+name: MACState.DownlinkMessage
+comment: |-
+  A minimal DownlinkMessage definition which is binary compatible with the top level DownlinkMessage message.
+  Used for type safe recent downlink storage.
+fields:
+- name: payload
+  message:
+    name: MACState.DownlinkMessage.Message
+  default: {}
+- name: correlation_ids
+  repeated:
+    type: string
+    rules:
+      max_len: 100
+  default: []

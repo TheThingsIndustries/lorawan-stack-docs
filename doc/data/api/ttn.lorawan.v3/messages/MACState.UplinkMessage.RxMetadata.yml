@@ -1,0 +1,27 @@
+name: MACState.UplinkMessage.RxMetadata
+fields:
+- name: gateway_ids
+  message:
+    name: GatewayIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: channel_rssi
+  type: float
+  default: 0
+- name: snr
+  type: float
+  default: 0
+- name: downlink_path_constraint
+  enum:
+    name: DownlinkPathConstraint
+  rules:
+    defined_only: true
+  default: DOWNLINK_PATH_CONSTRAINT_NONE
+- name: uplink_token
+  type: bytes
+  default: ""
+- name: packet_broker
+  message:
+    name: MACState.UplinkMessage.RxMetadata.PacketBrokerMetadata
+  default: {}

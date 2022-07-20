@@ -1,0 +1,38 @@
+name: MACState.UplinkMessage
+comment: |-
+  A minimal UplinkMessage definition which is binary compatible with the top level UplinkMessage message.
+  Used for type safe recent uplink storage.
+fields:
+- name: payload
+  message:
+    name: Message
+  rules:
+    required: true
+  default: {}
+- name: settings
+  message:
+    name: MACState.UplinkMessage.TxSettings
+  rules:
+    required: true
+  default: {}
+- name: rx_metadata
+  repeated:
+    message:
+      name: MACState.UplinkMessage.RxMetadata
+  default: []
+- name: received_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: correlation_ids
+  repeated:
+    type: string
+    rules:
+      max_len: 100
+  default: []
+- name: device_channel_index
+  type: uint32
+  rules:
+    lte: 255
+  default: 0

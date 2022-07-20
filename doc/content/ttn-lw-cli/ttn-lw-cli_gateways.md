@@ -58,7 +58,7 @@ Gateway commands
 * [ttn-lw-cli gateways create]({{< relref "ttn-lw-cli_gateways_create" >}})	 - Create a gateway
 * [ttn-lw-cli gateways delete]({{< relref "ttn-lw-cli_gateways_delete" >}})	 - Delete a gateway
 * [ttn-lw-cli gateways get]({{< relref "ttn-lw-cli_gateways_get" >}})	 - Get a gateway
-* [ttn-lw-cli gateways get-connection-stats]({{< relref "ttn-lw-cli_gateways_get-connection-stats" >}})	 - Get connection stats for a gateway
+* [ttn-lw-cli gateways get-connection-stats]({{< relref "ttn-lw-cli_gateways_get-connection-stats" >}})	 - Get connection stats for a (group of) gateway(s).
 * [ttn-lw-cli gateways list]({{< relref "ttn-lw-cli_gateways_list" >}})	 - List gateways
 * [ttn-lw-cli gateways list-frequency-plans]({{< relref "ttn-lw-cli_gateways_list-frequency-plans" >}})	 - List available frequency plans for gateways
 * [ttn-lw-cli gateways purge]({{< relref "ttn-lw-cli_gateways_purge" >}})	 - Purge a gateway

@@ -367,6 +367,22 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="MACState.JoinRequest" >}}
 
+{{< proto/message message="MACState.DownlinkMessage" >}}
+
+{{< proto/message message="MACState.DownlinkMessage.Message" >}}
+
+{{< proto/message message="MACState.DownlinkMessage.Message.MACPayload" >}}
+
+{{< proto/message message="MACState.DownlinkMessage.Message.MHDR" >}}
+
+{{< proto/message message="MACState.UplinkMessage" >}}
+
+{{< proto/message message="MACState.UplinkMessage.RxMetadata" >}}
+
+{{< proto/message message="MACState.UplinkMessage.TxSettings" >}}
+
+{{< proto/message message="MACState.UplinkMessage.RxMetadata.PacketBrokerMetadata" >}}
+
 {{< proto/message message="Message" >}}
 
 {{< proto/message message="MHDR" >}}
