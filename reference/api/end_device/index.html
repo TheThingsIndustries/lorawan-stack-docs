@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.20.1</p>
+        <p class="navbar-item is-size-7">v3.20.2</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -19095,11 +19095,11 @@ Set to false every time a successful downlink scheduling attempt is made.</p>
         repeated 
   
     
-    <a href="#message:UplinkMessage">
+    <a href="#message:MACState.UplinkMessage">
   
   <code>
     
-    UplinkMessage
+    MACState.UplinkMessage
   </code>
   
     </a>
@@ -19146,11 +19146,11 @@ The number of messages stored may depend on configuration.</p>
         repeated 
   
     
-    <a href="#message:DownlinkMessage">
+    <a href="#message:MACState.DownlinkMessage">
   
   <code>
     
-    DownlinkMessage
+    MACState.DownlinkMessage
   </code>
   
     </a>
@@ -19861,6 +19861,869 @@ Elements are sorted in ascending order.</p>
   </tbody>
 </table>
 
+
+
+<h3 id="message:MACState.DownlinkMessage">Message <code>MACState.DownlinkMessage</code></h3>
+<p>A minimal DownlinkMessage definition which is binary compatible with the top level DownlinkMessage message.
+Used for type safe recent downlink storage.</p>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "payload": {},
+  "correlation_ids": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>payload</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:MACState.DownlinkMessage.Message">
+  
+  <code>
+    
+    MACState.DownlinkMessage.Message
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>correlation_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+        
+        repeated 
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+            <p><code>max_len</code>: <code>100</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:MACState.DownlinkMessage.Message">Message <code>MACState.DownlinkMessage.Message</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "m_hdr": {},
+  "mac_payload": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>m_hdr</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:MACState.DownlinkMessage.Message.MHDR">
+  
+  <code>
+    
+    MACState.DownlinkMessage.Message.MHDR
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>mac_payload</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:MACState.DownlinkMessage.Message.MACPayload">
+  
+  <code>
+    
+    MACState.DownlinkMessage.Message.MACPayload
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:MACState.DownlinkMessage.Message.MACPayload">Message <code>MACState.DownlinkMessage.Message.MACPayload</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "f_port": 0,
+  "full_f_cnt": 0,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>f_port</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>lte</code>: <code>255</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>full_f_cnt</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:MACState.DownlinkMessage.Message.MHDR">Message <code>MACState.DownlinkMessage.Message.MHDR</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "m_type": "JOIN_REQUEST",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>m_type</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#enum:MType">
+  
+  <code>
+  
+  MType
+  </code>
+    
+  </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>defined_only</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:MACState.UplinkMessage">Message <code>MACState.UplinkMessage</code></h3>
+<p>A minimal UplinkMessage definition which is binary compatible with the top level UplinkMessage message.
+Used for type safe recent uplink storage.</p>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "payload": {},
+  "settings": {},
+  "rx_metadata": [],
+  "received_at": "0001-01-01T00:00:00Z",
+  "correlation_ids": [],
+  "device_channel_index": 0,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>payload</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:Message">
+  
+  <code>
+    
+    Message
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>settings</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:MACState.UplinkMessage.TxSettings">
+  
+  <code>
+    
+    MACState.UplinkMessage.TxSettings
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>rx_metadata</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:MACState.UplinkMessage.RxMetadata">
+  
+  <code>
+    
+    MACState.UplinkMessage.RxMetadata
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>received_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>correlation_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+        
+        repeated 
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+            <p><code>max_len</code>: <code>100</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>device_channel_index</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>lte</code>: <code>255</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:MACState.UplinkMessage.RxMetadata">Message <code>MACState.UplinkMessage.RxMetadata</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "gateway_ids": {},
+  "channel_rssi": 0,
+  "snr": 0,
+  "downlink_path_constraint": "DOWNLINK_PATH_CONSTRAINT_NONE",
+  "uplink_token": "",
+  "packet_broker": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>gateway_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:GatewayIdentifiers">
+  
+  <code>
+    
+    GatewayIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>channel_rssi</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>float</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>snr</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>float</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>downlink_path_constraint</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#enum:DownlinkPathConstraint">
+  
+  <code>
+  
+  DownlinkPathConstraint
+  </code>
+    
+  </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>defined_only</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>uplink_token</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>packet_broker</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:MACState.UplinkMessage.RxMetadata.PacketBrokerMetadata">
+  
+  <code>
+    
+    MACState.UplinkMessage.RxMetadata.PacketBrokerMetadata
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:MACState.UplinkMessage.TxSettings">Message <code>MACState.UplinkMessage.TxSettings</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "data_rate": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>data_rate</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:DataRate">
+  
+  <code>
+    
+    DataRate
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:MACState.UplinkMessage.RxMetadata.PacketBrokerMetadata">Message <code>MACState.UplinkMessage.RxMetadata.PacketBrokerMetadata</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
 
 
 <h3 id="message:Message">Message <code>Message</code></h3>
@@ -26439,6 +27302,18 @@ Set by Network Server.</p>
 
 	
 
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
 
         </div>
         <div class="is-clearfix">
@@ -26528,10 +27403,10 @@ Set by Network Server.</p>
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 23 Jun 2022.
+  Last changed by Nejra Selimović on 20 Jul 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/23bf725c8daaf21368dc741b46e0504bbde93fb1">
-      doc: Add end device creation via API ref (#900)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/44d52309c365c76eb04861f69caf8281ebfea11a">
+      doc: Add v3.20.2 release docs (#924)
     </a>
 </p>
 
