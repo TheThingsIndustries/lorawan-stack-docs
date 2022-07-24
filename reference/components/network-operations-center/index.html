@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.96.0" />
-  <title>Command-line Interface | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/components/cli/" />
+  <title>Network Operations Center | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/components/network-operations-center/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.c994a55269632c4bc7be3364abf857e85ff170cc251dd025099769c910cbbcb4.css" integrity="sha256-yZSlUmljLEvHvjNkq/hX6F/xcMwlHdAlCZdpyRDLvLQ=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Command-line Interface">
+  <meta itemprop="name" content="Network Operations Center">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Command-line Interface">
+  <meta property="og:title" content="Network Operations Center">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/components/cli/">
-  <meta name="twitter:title" content="Command-line Interface" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/components/network-operations-center/">
+  <meta name="twitter:title" content="Network Operations Center" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -118,12 +118,7 @@
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/components/cli/" class="is-active">Command-line Interface</a>
-    
-    
-
-
-
+    <a href="https://www.thethingsindustries.com/docs/reference/components/cli/" class="">Command-line Interface</a>
     
   </li>
 
@@ -163,7 +158,12 @@
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/components/network-operations-center/" class="">Network Operations Center</a>
+    <a href="https://www.thethingsindustries.com/docs/reference/components/network-operations-center/" class="is-active">Network Operations Center</a>
+    
+    
+
+
+
     
   </li>
 
@@ -281,55 +281,65 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Command-line Interface
+        <h1 class="title is-size-2">Network Operations Center
           
         </h1>
         
+        <h2 class="subtitle">
+          
+            
+            
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+  
+
+  
+
+<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud and Enterprise Only">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+
+</a>
+
+
+          
+          
+            <span class="tag is-light">New in 3.21.0</span>
+
+          
+          
+          
+        </h2>
+        
         <div class="content">
-          <p>The Command-line Interface (CLI) provides a cross-platform interface for managing components through the command-line.</p>
-<h2 id="configuration">Configuration</h2>
-<p>See the <a href="https://www.thethingsindustries.com/docs/reference/configuration/">Configuration Reference</a> for details on how the CLI can be configured. The different options are detailed in the <a href="https://www.thethingsindustries.com/docs/reference/configuration/cli/">CLI Configuration Reference</a>.</p>
-<h2 id="help-for-commands">Help for Commands</h2>
-<p>The CLI comes with builtin documentation. This documentation can be printed by adding the <code>-h</code> or <code>--help</code> flag to any command.</p>
-<h2 id="command-aliases">Command Aliases</h2>
-<p>Many CLI commands names have aliases, which are different spellings or shorter versions of the same command. For instance, <code>applications</code> commands can also be written as <code>application</code>, <code>apps</code>, <code>app</code> or even <code>a</code>. This could save you some typing if you frequently use the CLI.</p>
-<p>For even less typing you could also register an alias for <code>ttn-lw-cli</code> itself (<code>alias tt=ttn-lw-cli</code>).</p>
-<h2 id="input-and-output-formats">Input and Output Formats</h2>
-<p>By default the CLI outputs results as one or more JSON objects. These JSON objects are equivalent to the JSON objects that would be returned when using the HTTP API of The Things Stack. Some commands accept one or more JSON objects as input. These JSON objects are equivalent to the JSON objects that can be sent to the HTTP API. This way of handling input and output is used by the <a href="https://www.thethingsindustries.com/docs/devices/end-device-templates/">End Device Templates feature</a>.</p>
-<p>The <code>--output-format</code> flag allows you to specify a <a href="https://golang.org/pkg/text/template/">Go template</a> that is executed for the result(s) of a command. The example below executes lists applications and outputs their IDs and names:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli applications list --name --output-format <span class="s2">&#34;{{ .ApplicationID }}: {{ .Name }}&#34;</span>
-</span></span></code></pre></div><h2 id="login-and-logout">Login and Logout</h2>
-<p>The <code>login</code> command starts the OAuth authorization flow with the configured OAuth server. By default this makes use of an endpoint on <code>localhost</code> for the OAuth callback. If you are not running the CLI on the machine that is <code>localhost</code>, you can add the flag <code>--callback=false</code> to the <code>login</code> command. This will disable the callback endpoint, and instead ask you to copy/paste the authorization code that you will receive from the OAuth server.</p>
-<p>It is also possible to use an API key instead of OAuth. To do this, add the flag <code>--api-key=NNSXS.AAAA.BBBB</code> to the <code>login</code> command (replacing <code>NNSXS.AAAA.BBBB</code> with your API key).</p>
-<p>Logging out of the CLI is done with the <code>logout</code> command, which will automatically invalidate the OAuth access token that was in use.</p>
-<h2 id="entity-management">Entity Management</h2>
-<p>In most cases the CLI be used to manage entities, such as applications, end devices or gateways. For each of these entities, the cli has <code>create</code>, <code>get</code>, <code>list</code>, <code>update</code> and <code>delete</code> commands.</p>
-<h3 id="creating-entities">Creating Entities</h3>
-<p>When creating an application or gateway, you need to specify a user or organization with the <code>--user-id</code> or <code>--organization-id</code> flag. This user or organization will be granted all rights on the new application or gateway.</p>
-<p>When creating an end device, you need to specify an application in which the end device should be created.</p>
-<p>All other flags correspond to the fields of the entity, as can be seen with the <code>--help</code> flag and in the <a href="https://www.thethingsindustries.com/docs/reference/api/">API Reference</a>.</p>
-<h3 id="getting-or-listing-entities">Getting or Listing Entities</h3>
-<p>When getting a single entity or listing entities, you need to provide flags for selecting the fields to fetch from the server. For performance reasons, list commands only allow a subset of fields (the fields stored in the <a href="/docs/reference/components/identity-server/">Identity Server</a>).</p>
-<h3 id="updating-entities">Updating Entities</h3>
-<p>When updating an entity, you provide flags for the fields that need to be updated. All other fields of the entitiy are left unchanged.</p>
-<h3 id="deleting-entities">Deleting Entities</h3>
-<p>Be careful when using the <code>delete</code> command, as it won&rsquo;t ask for confirmation.</p>
-<h2 id="access-control">Access Control</h2>
-<p>The CLI can be used to manage access control of entities. Managing collaborators is done with the <code>collaborators</code> commands (i.e. <code>ttn-lw-cli applications collaborators</code>) and managing API keys with the <code>api-keys</code> commands (i.e. <code>ttn-lw-cli applications api-keys</code>).</p>
-<h3 id="collaborator-rights">Collaborator Rights</h3>
-<p>Collaborator rights can be <code>set</code>, <code>list</code>ed or <code>delete</code>d. When setting collaborator rights, specify a user or organization with the <code>--user-id</code> or <code>--organization-id</code> flag and the flags for the rights that you want to assign. Use the <code>--help</code> or <code>-h</code> for more information on the available rights.</p>
-<h3 id="api-keys">API Keys</h3>
-<p>API keys can be <code>create</code>d, <code>list</code>ed, <code>update</code>d and <code>delete</code>d. Creating an API key is very similar to setting collaborator rights. Be aware that API keys are only shown once when they are created, and will never be shown again, so make sure to copy them to a safe place.</p>
-<h2 id="uplink-traffic">Uplink Traffic</h2>
-<p>The CLI can be used to subscribe to uplink traffic. See the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">Getting Started guide</a> for more details.</p>
-<h2 id="downlink-queue">Downlink Queue</h2>
-<p>The CLI can manage the downlink queue of end devices. See the <a href="https://www.thethingsindustries.com/docs/devices/downlink-queue-ops/">Downlink Queue Operations guide</a> for more details.</p>
-<h2 id="events">Events</h2>
-<p>The CLI can be used to subscribe to events. See the <a href="https://www.thethingsindustries.com/docs/getting-started/events/">Events guide</a> for more details.</p>
+          <p>Network Operations Center provides aggregated insight in a network operated with The Things Stack.</p>
+<!-- more -->
+<p>Network Operations Center stores events from The Things Stack in a time series database, queries aggregated data and visualizes data in a dashboard driven by Grafana. Network Operations Center is complementary to the <a href="/docs/reference/components/console/">Console</a>: the Network Operations Center shows historic data (with a delay of at most 5 minutes), while the Console shows live information and allows for managing the network.</p>
+<figure><img src="../network-operations-center_overview.png"
+         alt="Network Operations Center"/>
+</figure>
+
+<p>The Network Operations Center can only be accessed by administrators.</p>
+
         </div>
         <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/reference/components/application-server/">← Application Server</a>
-<a class="button is-pulled-right" href="/docs/reference/components/console/">Console →</a>
+<a class="button is-pulled-left" href="/docs/reference/components/join-server/">← Join Server</a>
+<a class="button is-pulled-right" href="/docs/reference/components/network-server/">Network Server →</a>
 </div>
 
         <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -346,40 +356,6 @@
     <h2 class="title is-size-6">On this page</h2>
     
 
-
-  <ul class="menu-list">
-    
-      
-      <li><a href='#configuration'>Configuration</a></li>
-    
-      
-      <li><a href='#help-for-commands'>Help for Commands</a></li>
-    
-      
-      <li><a href='#command-aliases'>Command Aliases</a></li>
-    
-      
-      <li><a href='#input-and-output-formats'>Input and Output Formats</a></li>
-    
-      
-      <li><a href='#login-and-logout'>Login and Logout</a></li>
-    
-      
-      <li><a href='#entity-management'>Entity Management</a></li>
-    
-      
-      <li><a href='#access-control'>Access Control</a></li>
-    
-      
-      <li><a href='#uplink-traffic'>Uplink Traffic</a></li>
-    
-      
-      <li><a href='#downlink-queue'>Downlink Queue</a></li>
-    
-      
-      <li><a href='#events'>Events</a></li>
-    
-  </ul>
 
 
   </nav>
@@ -417,14 +393,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 23 Dec 2021.
+  Last changed by Johan Stokking on 24 Jul 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
-      doc: Remove $ character from code blocks, add variables (#678)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/cf535ac0e692d2abb39cfb660dc269cee2f76d2a">
+      Document Network Operations Center (#889)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/reference/components/cli.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/reference/components/network-operations-center.md" class="button">Edit on Github</a>
 </div>
 
       </div>

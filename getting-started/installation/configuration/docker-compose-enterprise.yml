@@ -2,8 +2,10 @@ version: '3.7'
 services:
 
   postgres:
-    # In production, replace 'latest' with tag from https://hub.docker.com/_/postgres?tab=tags
-    image: postgres:latest
+    # In production, replace 'latest' with tag from https://hub.docker.com/r/timescale/timescaledb/tags
+    # If you are not using the Storage Integration nor Network Operations Center, you can use vanilla Postgres.
+    # The minimum Postgres version supported is 14.x.
+    image: "timescale/timescaledb:latest-pg14"
     restart: unless-stopped
     environment:
       - POSTGRES_PASSWORD=root
@@ -24,6 +26,29 @@ services:
     ports:
       - "127.0.0.1:6379:6379"
 
+  grafana:
+    # In production, replace 'latest' with tag from https://github.com/thethingsindustries/lorawan-stack-noc-grafana/pkgs/container/lorawan-stack-noc-grafana/versions
+    # Make sure the tag matches the version used for the stack service (see below)
+    image: "ghcr.io/thethingsindustries/lorawan-stack-noc-grafana:latest"
+    environment:
+      - GF_AUTH_PROXY_AUTO_SIGN_UP=false
+      - GF_AUTH_PROXY_ENABLE_LOGIN_TOKEN=false
+      - GF_AUTH_PROXY_ENABLED=true
+      - GF_AUTH_PROXY_HEADER_NAME=X-WEBAUTH-USER
+      - GF_AUTH_SIGNOUT_REDIRECT_URL=/noc/logout
+      - GF_DEFAULT_APP_MODE=development
+      - GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=thethingsindustries-ttsnoc-datasource
+      - GF_PLUGINS_PLUGIN_ADMIN_ENABLED=false
+      - GF_SECURITY_CONTENT_SECURITY_POLICY=true
+      - GF_SECURITY_CONTENT_SECURITY_POLICY_TEMPLATE=script-src 'self' 'unsafe-eval' 'unsafe-inline' 'strict-dynamic' $$NONCE;object-src 'none';font-src 'self';style-src 'self' 'unsafe-inline' blob:;img-src * data:;base-uri 'self';connect-src 'self' wss:;manifest-src 'self';media-src 'none';form-action 'self';
+      - GF_SERVER_ROOT_URL=/noc
+      - GF_SERVER_SERVE_FROM_SUB_PATH=true
+      - GF_USERS_DEFAULT_THEME=light
+    volumes:
+      - ${DEV_DATA_DIR:-.env/data}/grafana/grafana.db:/var/lib/grafana/grafana.db
+    ports:
+      - "127.0.0.1:3000:3000"
+
   stack:
     # In production, replace 'latest' with tag from https://hub.docker.com/r/thethingsindustries/lorawan-stack/tags
     image: thethingsindustries/lorawan-stack:latest
@@ -42,6 +67,9 @@ services:
       TTN_LW_BLOB_LOCAL_DIRECTORY: /srv/ttn-lorawan/public/blob
       TTN_LW_REDIS_ADDRESS: redis:6379
       TTN_LW_IS_DATABASE_URI: postgres://root:root@postgres:5432/ttn_lorawan?sslmode=disable
+      TTN_LW_NOC_GRAFANA_NOC_ADDRESS: stack:1884
+      TTN_LW_NOC_GRAFANA_TARGET_URL: http://grafana:3000
+      TTN_LW_NOC_STORE_DATABASE_URI: postgres://root:root@timescaledb:5432/ttn_lorawan?sslmode=disable
 
     ports:
       # If deploying on a public server:
