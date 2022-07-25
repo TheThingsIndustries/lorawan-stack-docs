@@ -169,6 +169,19 @@ By default users can create applications, gateways, organizations and OAuth clie
 - `is.user-rights.create-gateways`: Allow non-admin users to create gateways in their user account
 - `is.user-rights.create-organizations`: Allow non-admin users to create organizations in their user account
 
+## Entity Limits Options {{< new-in-version "3.21.0">}} {#entity-limits-options}
+
+By default, users can create an unlimited number of applications, gateways, organizations and OAuth clients. With the following configuration options, it is possible to restrict this. These configuration options apply to _newly created_ applications, organizations and users. Limits for existing applications, organizations and users can be modified by admin users.
+
+- `is.application-limits.end-devices`: The end devices limit for newly created applications.
+- `is.organization-limits.applications`: The applications limit for newly created organizations.
+- `is.organization-limits.clients`: The clients limit for newly created organizations.
+- `is.organization-limits.gateways`: The gateways limit for newly created organizations.
+- `is.user-limits.applications`: The applications limit for newly created users; this limit applies to direct memberships, not to indirect memberships through organizations.
+- `is.user-limits.clients`: The clients limit for newly created users; this limit applies to direct memberships, not to indirect memberships through organizations.
+- `is.user-limits.gateways`: The gateways limit for newly created users; this limit applies to direct memberships, not to indirect memberships through organizations.
+- `is.user-limits.organizations`: The organizations limit for newly created users.
+
 ## Admin Rights Options {#admin-rights-options}
 
 By default admins are granted _almost_ all rights on all entities in the network. The default configuration does not allow admins to read secrets, such as the root keys of end devices, and the CUPS/LNS secrets of gateways. This also means that admins can not assign those rights to others. The following option can be used to grant admin users all possible rights.
