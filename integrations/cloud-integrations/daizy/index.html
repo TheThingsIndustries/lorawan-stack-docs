@@ -308,23 +308,94 @@
           
         </h1>
         
+        <h2 class="subtitle">
+          
+            
+            
+
+
+
+
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+  
+    
+  
+
+
+
+  
+
+  
+
+  
+
+  
+
+<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud, Dedicated Cloud, Enterprise and Community Only">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_dedicated_cloud.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+
+  <img class="badge" src="/docs/img/tts_frames/frame_ttn.svg"></img>
+
+</a>
+
+
+          
+          
+          
+          
+        </h2>
+        
         <div class="content">
-          <p>Use <a href="https://daizy.io">Daizy</a> to rapidly build, deploy and scale Internet of Things applications and stay in control of your data.</p>
-<p>The Daizy platform provides an intuitive management system for IoT devices and projects, and delivers data directly to any existing or future business systems. Daizy enables rapid scaling by reducing time to market for any IoT implementation while minimizing cost, improving flexibility and maintaining security.</p>
-<h2 id="prerequisites">Prerequisites</h2>
-<ol>
-<li>A user account and organisation created within the <a href="https://portal.daizy.io/login">Daizy platform</a>.</li>
-<li>LoRa devices enrolled and activated in your Daizy project.</li>
-</ol>
-<h2 id="set-up-daizy">Set up Daizy</h2>
-<p>The details required for creating the webhook on Daizy can be found under <strong>Compose → Connectivity → IoT Endpoint</strong>.</p>
+          <p>Use <a href="https://daizy.io">Daizy</a> to rapidly build, deploy and scale Internet of Things applications and stay in control of your data.</p>
+<p>Daizy enables rapid scaling by making it easy to design, configure, install and operate your IoT projects and delivers data directly to your business systems.</p>
+<p>Devices are automatically enrolled at point of activation, with full support for downlinks to configure and control the device.  Daizy will decode all device-specific payloads and deliver data directly to your data lake.</p>
+<p>The Things Stack licenses can be purchased from Daizy, and in this case there is no additional configuration required.  Simply enrol and activate devices in the Daizy platform and they will be automatically enrolled and managed in The Things Stack.</p>
+<h2 id="use-daizy-to-manage-devices-in-your-own-instance">Use Daizy to manage devices in your own instance</h2>
+<p>Daizy can be configured to manage devices in your own The Things Stack Cloud tenancy or private instance via API.</p>
+<p>Devices will be automatically enrolled at point of activation, with full support for downlinks to configure and control the device.</p>
+<p>In The Things Stack, go to the organisation where you would like Daizy to load and manage devices.  Select <strong>API keys</strong> on the menu and then <strong>+Add API key.</strong></p>
+<figure><img src="tts-api-key.png"
+         alt="Creating TTS API Key"/>
+</figure>
+
+<p>Give the new API key a name and suitable expiry, and under Rights, select <strong>Grant all current and future rights</strong>.</p>
+<p>Copy or save the API key.</p>
+<p>In the Daizy portal, go to the <strong>Compose → Connectivity → LoRa Settings</strong>.</p>
+<p>In the drop-down menu, select <strong>The Things Industries</strong>.</p>
+<figure><img src="daizy-tts-settings.png"
+         alt="Daizy TTS Settings"/>
+</figure>
+
+<p>For The Things Stack Cloud, enter your <strong>Tenant ID</strong> and select your <strong>Cluster</strong>.</p>
+<p>For a private instance, untick the check box and enter the URL to your server.</p>
+<p>Paste the <strong>API key</strong> you created in the previous step and enter the <strong>Organisation ID</strong>.  You may optionally enter an <strong>Application ID</strong>.</p>
+<p>When you click <strong>Save</strong>, a webhook will be created to deliver data to the data lake in your Daizy organisation.</p>
+<h2 id="deliver-data-to-daizy-through-a-webhook">Deliver data to Daizy through a webhook</h2>
+<p>You may also deliver data to your data lake without the Daizy platform managing the lifecycle of your devices in The Things Stack.  This option is suitable for organisations with an existing deployed project looking to make use of payload decoding and universal sensor metrics in Daizy.</p>
+<p>The details required for creating the webhook on Daizy can be found under <strong>Compose → Connectivity → IoT Endpoint</strong>.</p>
 <figure><img src="connectivity.png"
          alt="Daizy Connectivity tab"/>
 </figure>
 
 <p>Copy the <strong>Organisation slug</strong> and <strong>Uplink API key</strong> values.</p>
-<h2 id="configure-the-things-stack">Configure The Things Stack</h2>
-<p>In The Things Stack, create a webhook using the ready made <strong>Daizy</strong> <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a>.</p>
+<p>In The Things Stack, create a webhook using the ready-made <strong>Daizy</strong> <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a></p>
 <p>Give your Webhook a name in the <strong>Webhook ID</strong> field.</p>
 <p>Paste the <strong>Organisation slug</strong> and <strong>Uplink API key</strong> values you copied in the previous steps to the corresponding fields of the Webhook template.</p>
 <figure><img src="creating-webhook.png"
@@ -357,13 +428,10 @@
   <ul class="menu-list">
     
       
-      <li><a href='#prerequisites'>Prerequisites</a></li>
+      <li><a href='#use-daizy-to-manage-devices-in-your-own-instance'>Use Daizy to manage devices in your own instance</a></li>
     
       
-      <li><a href='#set-up-daizy'>Set up Daizy</a></li>
-    
-      
-      <li><a href='#configure-the-things-stack'>Configure The Things Stack</a></li>
+      <li><a href='#deliver-data-to-daizy-through-a-webhook'>Deliver data to Daizy through a webhook</a></li>
     
   </ul>
 
@@ -403,10 +471,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Mark Piper on 11 May 2022.
+  Last changed by NozzerFX on 26 Jul 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b4a7bff0b8aac44dc604b954a52423c3dddddbfa">
-      doc: Add guide for Daizy cloud integration (#865)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7cadf5b2e5eee8d551126b0512a45a6395948c36">
+      doc: Replace existing guide for Daizy cloud integration (Issue #928) (#930)
     </a>
 </p>
 
