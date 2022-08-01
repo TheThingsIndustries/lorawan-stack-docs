@@ -19,133 +19,98 @@ Check the [Blockbax documentation page](https://blockbax.com/docs/) for more inf
 
 1. Own a Blockbax project or [request one](https://blockbax.com/about#contact) if you do not have an account yet.
 
-## Blockbax Setup
+## Preparing an inbound connector in Blockbax
 
-[Login](https://login.blockbax.com/) to the Blockbax Platform.
+[Login](https://login.blockbax.com/) to the Blockbax Platform. Go to **Settings** and **Inbound connectors**.
 
-Create a [subject type](https://blockbax.com/docs/subjects/#managing-subject-types) and configure metrics. External IDs for these metrics need to match the property names returned by the uplink payload formatter that will be [configured on {{% tts %}}]({{< ref "/integrations/cloud-integrations/blockbax#configure-the-things-stack" >}}).
+Create an [inbound connector](https://blockbax.com/docs/project-settings/#inbound-connectors) accepting HTTP JSON payloads. The payload conversion script depends on the way the payload is formatted before it is being sent to Blockbax. By default when you add a known device in {{% tts %}} it comes with a payload formatter submitted by the device manufacturer from the [device repository]({{< ref "/integrations/payload-formatters/device-repo" >}}). In most cases data is returned as a simple JavaScript object containing numeric and text values as properties.
 
-{{< figure src="blockbax-metric-external-id-in-payload.png" alt="Relating Blockbax metrics to the Things Stack" >}}
-
-## Configure {{% tts %}}
-
-Make sure your device is added to {{% tts %}}. See [Adding Devices]({{< ref "/devices/adding-devices" >}}) for more info. Many [Device Repository]({{< ref "/integrations/payload-formatters/device-repo" >}}) payload formatters output payloads such that it can be directly ingested by the Blockbax Platform. If this is not the case, then please follow the instruction below to create a custom payload formatter.
-
-### Create payload formatter
-
-On the left menu of your {{% tts %}} application, select **Payload formatters &#8594; Uplink**.
-
-Select **Javascript** payload formatter type.
-
-Paste the following contents in the **Formatter parameter** window:
+In this case everything will work with the simple conversion script below. If not, you need to align the payload conversion script to the way your device formatter(s) output the payload. We will explain how to do this later. In any case it is a good starting point to start with the following script in your inbound connector.
 
 ```javascript
-function decodeUplink(input) {
-    decoded = decoder(input.bytes)
-    return {
-        data: {
-            // For numeric metrics
-            <Blockbax-external-metric-ID>: decoded.exampleNumber,
-
-            // For text metrics
-            <Blockbax-external-metric-ID>: decoded.exampleText,
-
-            // For location metrics
-            <Blockbax-external-metric-ID>: {
-                lat: decoded.exampleLatitude,
-                lon: decoded.exampleLongitude
-            }
+/**
+ * @param {JsonPayload} payload
+ * @param {Context} context
+ */
+function convertPayload(payload, context) {
+    const timestamp = date(payload.received_at);
+    const subjectExternalId = payload.end_device_ids.device_id;
+    for (const [metricExternalId, value] of Object.entries(payload.uplink_message.decoded_payload)) {
+        if (value != null) {
+            context.addMeasurement(subjectExternalId + "$" + metricExternalId, value, timestamp);
         }
-    };
-}
-
-function decoder(bytes) {
-    // Add the logic that decodes the bytes from your device.
-    return decodedBytes
+    }
 }
 ```
 
-The functions presented above need to be modified against your setup. See example below.
+Optionally you can check 'Automatically create subjects'. This will create a subject automatically if a subject does not exist.
 
-<details><summary>Uplink payload formatter example</summary>
-
-```javascript
-    function decodeUplink(input) {
-      decoded = decoder(input.bytes)
-      return {
-        data: {
-          battery: decoded.battery,
-          temperature: decoded.temperature,
-          humidity: decoded.humidity,
-          door: decoded.door
-        }
-      };
-    }
-
-    function decoder(bytes) {
-        var decoded = {};
-
-        for (var i = 0; i < bytes.length;) {
-            var channel_id = bytes[i++];
-            var channel_type = bytes[i++];
-            // BATTERY
-            if (channel_id === 0x01 && channel_type === 0x75) {
-                decoded.battery = bytes[i];
-                i += 1;
-            }
-            // TEMPERATURE
-            else if (channel_id === 0x03 && channel_type === 0x67) {
-                // ℃
-                decoded.temperature = readInt16LE(bytes.slice(i, i + 2)) / 10;
-                i += 2;
-
-                // ℉
-                // decoded.temperature = readInt16LE(bytes.slice(i, i + 2)) / 10 * 1.8 + 32;
-                // i +=2;
-            }
-            // HUMIDITY
-            else if (channel_id === 0x04 && channel_type === 0x68) {
-                decoded.humidity = bytes[i] / 2;
-                i += 1;
-            }
-            // DOOR
-            else if (channel_id === 0x06 && channel_type === 0x00) {
-                decoded.door = (bytes[i] === 0) ?  0 :  1;
-                i += 1;
-            } else {
-                break;
-            }
-        }
-
-        return decoded;
-    }
-
-    function readUInt16LE(bytes) {
-        var value = (bytes[1] << 8) + bytes[0];
-        return value & 0xffff;
-    }
-
-    function readInt16LE(bytes) {
-        var ref = readUInt16LE(bytes);
-        return ref > 0x7fff ? ref - 0x10000 : ref;
-    }
-```
-</details>
-
-When done, click **Save changes**.
-
-{{< figure src="payload-formatter.png" alt="Setting up the payload formatter" >}}
-
-### Create webhook
+## Create a webhook in {{% tts %}}
 
 Use the Blockbax [Webhook template]({{< ref "/integrations/webhooks/webhook-templates" >}}) to create a Webhook integration on {{% tts %}}. Select **Integrations &#8594; Webhooks** on the left hand menu. Click **Add webhook** and select the **Blockbax** tile.
 
 {{< figure src="webhook.png" alt="Setting up the webhook" >}}
 
-Enter an arbitrary **Webhook ID**, enter your **Project ID** and **[Access token](https://blockbax.com/docs/project-settings/#access-tokens)**. The project ID is contained in your project's URL, e.g. if the project URL is `app.blockbax.com/projects/40edc099-7a41-4af3-9fa4-2fa4bc23a87a/`, the project ID is `40edc099-7a41-4af3-9fa4-2fa4bc23a87a`.
+Enter an arbitrary **Webhook ID**, enter your **[Access token](https://blockbax.com/docs/project-settings/#access-tokens)** and **Endpoint**. The endpoint you can copy from the inbound connector settings.
 
-Additionally, you can choose to [create subjects](https://blockbax.com/docs/subjects/#creating-subjects) manually with external IDs matching the device IDs. In that case set the **Automatically create subjects?** option to `false`. The default `true` will create a subject automatically if a subject does not exist and if the property names returned by the uplink payload formatter match the external IDs for these metrics in the Blockbax platform (see above).
+## Further set up your Blockbax project
 
-To see the values of all parameters of the Blockbax integration, click on the integration after you created it with the Webhook template.
+Once you've added the webhook, payload are sent to Blockbax. Make sure your {{% tts %}} device is connected and has sent at least one payload. Now we are going to create a subject type which matches your device type(s) and further align your inbound connector if necessary. As an example we use the Oyster from Digital Matter, but the process is similar for other devices. 
 
-Once you have added the integration, check your Blockbax project to see the measurements coming in!
+When you expand the executions in your inbound connector you should see something similar to the execution logs below.
+
+{{< figure src="execution-logs" alt="Example execution logs from an Oyster device from Digital Matter" >}}
+
+In Blockbax ingestion IDs are used to map {{% tts %}} data to your subjects and metrics. By default ingestion IDs are derived from the subjects' external IDs and metrics' external IDs (e.g. `subjectExternalId$metricExternalId`) but you can also override these with custom ones. The inbound connector script configured in the previous step combines your device ID from {{% tts %}} and the property name returned by the payload formatter(s) into an ingestion ID (e.g. `example-device$type`). This allows for easy setup if you make sure your subject external IDs and metric external IDs match the ones you configure in Blockbax.
+
+Now in order to set up your Blockbax project create a [subject type](https://blockbax.com/docs/subjects/#managing-subject-types) with a metric of the correct type for each external ID in your execution logs. For this example you would need to create ingested metrics with the following types and external IDs (highlighted also in the screenshot of the execution logs above):
+
+| Type     | External ID   |
+| -------- | ------------- |
+| Text     | `type`        |
+| Number   | `inTrip`      |
+| Number   | `batV`        |
+| Number   | `fixFailed`   |
+| Location | `latLonDeg`\* |
+| Number   | `headingDeg`  |
+| Number   | `speedKmph`   |
+
+If you have enabled the setting to automatically create subjects in the inbound connector they will be created automatically when measurements are received and the metric external ID can be linked to one subject type. If you wish to [create subjects](https://blockbax.com/docs/subjects/#creating-subjects) manually the subject's external IDs need to match the device IDs configured in The Things Stack. For this example that would be a subject with external ID `example-device`.
+
+(\*) As you might have noted the `latLonDeg` external ID is not highlighted in the execution logs. This is because we do not to have the `latitudeDeg` and `longitudeDeg` as separate number metrics but as a location metric. In this way you are able to use the full location-based functionality in the Blockbax Platform such as viewing routes and setting geofences. You can do this by changing the conversion script to the one below.
+
+```javascript
+/**
+ * @param {JsonPayload} payload
+ * @param {Context} context
+ */
+function convertPayload(payload, context) {
+    const timestamp = date(payload.received_at);
+    const subjectExternalId = payload.end_device_ids.device_id;
+    const location = {};
+    for (const [metricExternalId, value] of Object.entries(payload.uplink_message.decoded_payload)) {
+        if (value != null) {
+            if (metricExternalId === "latitudeDeg") {
+                location.lat = value;
+            } else if (metricExternalId === "longitudeDeg") {
+                location.lon = value;
+            } else {
+                context.addMeasurement(subjectExternalId + "$" + metricExternalId, value, timestamp);
+            }
+        }
+    }
+    if (location.lat && location.lon) {
+        context.addMeasurement(subjectExternalId + "$" + "latLonDeg", location, timestamp);
+    }
+}
+```
+
+Now you are all set up, check your Blockbax project to see the measurements coming in!
+
+{{< figure src="digital-matter-example.png" alt="Digital Matter Oyster2 in Blockbax" >}}
+
+{{< note >}}
+If you are familiar with JavaScript another option to determine the external IDs for the ingested metrics is to look at the source code of the device specific payload formatter. In this case you are also sure you do not miss any metrics which are only sent under certain conditions. In our example we used the Oyster from Digital Matter. 
+
+The source code for the related payload formatter can be found [here](https://github.com/TheThingsNetwork/lorawan-devices/blob/master/vendor/digital-matter/oyster.js). The property names of the `decoded` object should be set as metric external IDs.
+{{</ note >}}
