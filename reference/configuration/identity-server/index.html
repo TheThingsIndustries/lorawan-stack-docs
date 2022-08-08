@@ -629,6 +629,20 @@
 <li><code>is.user-rights.create-gateways</code>: Allow non-admin users to create gateways in their user account</li>
 <li><code>is.user-rights.create-organizations</code>: Allow non-admin users to create organizations in their user account</li>
 </ul>
+<h2 id="entity-limits-options">Entity Limits Options <span class="tag is-light">New in 3.21.0</span>
+
+</h2>
+<p>By default, users can create an unlimited number of applications, gateways, organizations and OAuth clients. With the following configuration options, it is possible to restrict this. These configuration options apply to <em>newly created</em> applications, organizations and users. Limits for existing applications, organizations and users can be modified by admin users.</p>
+<ul>
+<li><code>is.application-limits.end-devices</code>: The end devices limit for newly created applications.</li>
+<li><code>is.organization-limits.applications</code>: The applications limit for newly created organizations.</li>
+<li><code>is.organization-limits.clients</code>: The clients limit for newly created organizations.</li>
+<li><code>is.organization-limits.gateways</code>: The gateways limit for newly created organizations.</li>
+<li><code>is.user-limits.applications</code>: The applications limit for newly created users; this limit applies to direct memberships, not to indirect memberships through organizations.</li>
+<li><code>is.user-limits.clients</code>: The clients limit for newly created users; this limit applies to direct memberships, not to indirect memberships through organizations.</li>
+<li><code>is.user-limits.gateways</code>: The gateways limit for newly created users; this limit applies to direct memberships, not to indirect memberships through organizations.</li>
+<li><code>is.user-limits.organizations</code>: The organizations limit for newly created users.</li>
+</ul>
 <h2 id="admin-rights-options">Admin Rights Options</h2>
 <p>By default admins are granted <em>almost</em> all rights on all entities in the network. The default configuration does not allow admins to read secrets, such as the root keys of end devices, and the CUPS/LNS secrets of gateways. This also means that admins can not assign those rights to others. The following option can be used to grant admin users all possible rights.</p>
 <ul>
@@ -833,10 +847,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 20 Jul 2022.
+  Last changed by Hylke Visser on 08 Aug 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/49b4a2033f83d1935a1ce216afe3cc9269d2f571">
-      doc: Fix device FP troubleshooting and a hyperlink (#922)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/8a4734b0565a779aa303fb4679f7962ffc39c0db">
+      doc: Add entity limits configuration reference (#929)
     </a>
 </p>
 
