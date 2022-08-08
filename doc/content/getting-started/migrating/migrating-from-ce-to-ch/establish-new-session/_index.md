@@ -7,7 +7,22 @@ This section explains how to migrate end devices from {{% tts %}} Community Edit
 
 <!--more-->
 
-Read the instructions below for your specific device.
+### Note on temporarily preserving uplink traffic on {{% tts %}} Community Edition
+
+In this section, we consider migrating your devices in cases when you don't want to migrate your gateway from {{% tts %}} Community Edition to {{% tts %}} Cloud, or when your gateway is inaccessible for this migration. In those cases, devices are migrated from {{% tts %}} Community Edition to {{% tts %}} Cloud without persisting their active session, i.e. devices need to establish a new session with {{% tts %}} Cloud. More information about this will be available in subsections below.
+
+For a new session to be established between device (that's connected to {{% tts %}} Community Edition) and {{% tts %}} Cloud, device has to perform a [join procedure]({{< ref "/reference/components/join-server#join-procedure" >}}) to register on {{% tts %}} Cloud. In order not to lose any uplink traffic during this join procedure, we suggest to disable scheduling downlink messages on {{% tts %}} Community Edition Network Server using the following [CLI]({{< ref "/getting-started/cli" >}}) command:
+
+```bash
+ttn-lw-cli dev set --application-id <app-id> --device-id <device-id> \
+    --mac-settings.schedule-downlinks=false
+```
+
+This way, {{% tts %}} Community Edition Network Server will not be able to send Join Accept messages, data downlinks or MAC commands anymore. The end device will be triggered to perform a new join on {{% tts %}} Cloud, but the uplink traffic will still reach  {{% tts %}} Community Edition before device is actually registered on Cloud.
+
+Now, you can proceed with migrating your device. Read the instructions below for your specific device.
+
+When your device is finally migrated, it will be assigned with a DevAddr issued by {{% tts %}} Cloud, so the old session between device and {{% tts %}} Community Edition will no longer exist, i.e. uplinks will no longer reach {{% tts %}} Community Edition, just {{% tts %}} Cloud.
 
 ## OTAA
 
