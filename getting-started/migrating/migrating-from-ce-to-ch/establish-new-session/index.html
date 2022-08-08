@@ -247,7 +247,14 @@
         
         <div class="content">
           <p>This section explains how to migrate end devices from The Things Stack Community Edition to The Things Stack Cloud without persisting sessions that were established between those devices and The Things Stack.</p>
-<p>Read the instructions below for your specific device.</p>
+<h3 id="note-on-temporarily-preserving-uplink-traffic-on-the-things-stack-community-edition">Note on temporarily preserving uplink traffic on The Things Stack Community Edition</h3>
+<p>In this section, we consider migrating your devices in cases when you don&rsquo;t want to migrate your gateway from The Things Stack Community Edition to The Things Stack Cloud, or when your gateway is inaccessible for this migration. In those cases, devices are migrated from The Things Stack Community Edition to The Things Stack Cloud without persisting their active session, i.e. devices need to establish a new session with The Things Stack Cloud. More information about this will be available in subsections below.</p>
+<p>For a new session to be established between device (that&rsquo;s connected to The Things Stack Community Edition) and The Things Stack Cloud, device has to perform a <a href="https://www.thethingsindustries.com/docs/reference/components/join-server/#join-procedure">join procedure</a> to register on The Things Stack Cloud. In order not to lose any uplink traffic during this join procedure, we suggest to disable scheduling downlink messages on The Things Stack Community Edition Network Server using the following <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">CLI</a> command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli dev <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;device-id&gt; <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --mac-settings.schedule-downlinks<span class="o">=</span><span class="nb">false</span>
+</span></span></code></pre></div><p>This way, The Things Stack Community Edition Network Server will not be able to send Join Accept messages, data downlinks or MAC commands anymore. The end device will be triggered to perform a new join on The Things Stack Cloud, but the uplink traffic will still reach  The Things Stack Community Edition before device is actually registered on Cloud.</p>
+<p>Now, you can proceed with migrating your device. Read the instructions below for your specific device.</p>
+<p>When your device is finally migrated, it will be assigned with a DevAddr issued by The Things Stack Cloud, so the old session between device and The Things Stack Community Edition will no longer exist, i.e. uplinks will no longer reach The Things Stack Community Edition, just The Things Stack Cloud.</p>
 <h2 id="otaa">OTAA</h2>
 <p>Migrating an OTAA device without persisting its active session means the device will establish a new session with The Things Stack Cloud, i.e. it will have to perform a new join on The Things Stack Cloud network after migration. The device will negotiate about network parameters with The Things Stack Cloud Network Server, and during that negotiation, the device will be assigned with a new DevAddr from The Things Stack Cloud DevAddr block.</p>
 <p>Since The Things Stack Community Edition and The Things Stack Cloud are both connected to Packet Broker, Packet Broker will be able to route your device&rsquo;s traffic to The Things Stack Cloud even if your gateway stays connected to The Things Stack Community Edition, i.e. you don&rsquo;t have to migrate your gateway to The Things Stack Cloud, only your device. However, if you want to migrate your gateway to The Things Stack Cloud too, see <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">Migrating Gateways</a> for instructions.</p>
@@ -432,10 +439,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 01 Jun 2022.
+  Last changed by Nejra Selimović on 08 Aug 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b96c8e75c162c24633ccfd590f6457fc61a6ac09">
-      doc: Add instructions to migrate from Community Edition to Cloud (#858)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b5ecdeb0e90ad69c5742407d01f572769aa04e72">
+      doc: Add note about persisting session on CE during registration on CH (#931)
     </a>
 </p>
 
