@@ -55,11 +55,11 @@ Enter an arbitrary **Webhook ID**, enter your **[Access token](https://blockbax.
 
 ## Further set up your Blockbax project
 
-Once you've added the webhook, payload are sent to Blockbax. Make sure your {{% tts %}} device is connected and has sent at least one payload. Now we are going to create a subject type which matches your device type(s) and further align your inbound connector if necessary. As an example we use the Oyster from Digital Matter, but the process is similar for other devices. 
+Once you've added the webhook, payload are sent to Blockbax. Make sure your {{% tts %}} device is connected and has sent at least one payload. Now we are going to create a subject type which matches your device type(s) and further align your inbound connector if necessary. As an example we use the [Oyster](https://www.digitalmatter.com/devices/oyster-lorawan/) from [Digital Matter](https://www.digitalmatter.com/), but the process is similar for other devices.
 
 When you expand the executions in your inbound connector you should see something similar to the execution logs below.
 
-{{< figure src="execution-logs" alt="Example execution logs from an Oyster device from Digital Matter" >}}
+{{< figure src="execution-logs.png" alt="Example execution logs from an Oyster device from Digital Matter" >}}
 
 In Blockbax ingestion IDs are used to map {{% tts %}} data to your subjects and metrics. By default ingestion IDs are derived from the subjects' external IDs and metrics' external IDs (e.g. `subjectExternalId$metricExternalId`) but you can also override these with custom ones. The inbound connector script configured in the previous step combines your device ID from {{% tts %}} and the property name returned by the payload formatter(s) into an ingestion ID (e.g. `example-device$type`). This allows for easy setup if you make sure your subject external IDs and metric external IDs match the ones you configure in Blockbax.
 
