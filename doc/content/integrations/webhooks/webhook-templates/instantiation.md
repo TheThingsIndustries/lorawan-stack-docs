@@ -86,3 +86,16 @@ paths:
 ```
 
 If the user has filled in the value of `username` with `user1` and the value of `create` with `true`, then the resulting webhook will have its base URL set to `https://www.example.com/lora/user1` and the uplink messages will be sent to `https://www.example.com/lora/user1?create=true` (the uplink messages path will be set to `/uplink?create=true`).
+
+## Instantiation of Field Mask {{< new-in-version "3.21.1" >}}
+
+The fields that are sent in the webhook uplink message can be filtered. Field paths not specified in `field-mask` will not be present in the uplink message. Field paths are provided as a list, for example as:
+
+```yaml
+field-mask:
+  - received_at
+  - up.uplink_message
+  - up.service_data
+```
+
+When there are no paths in the field mask or there is no `field-mask` in the template all the fields are sent in the uplink message.
