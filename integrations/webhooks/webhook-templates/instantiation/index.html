@@ -250,6 +250,15 @@
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">paths</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="nt">uplink-message</span><span class="p">:</span><span class="w"> </span><span class="l">/uplink{?create}</span><span class="w">
 </span></span></span></code></pre></div><p>If the user has filled in the value of <code>username</code> with <code>user1</code> and the value of <code>create</code> with <code>true</code>, then the resulting webhook will have its base URL set to <code>https://www.example.com/lora/user1</code> and the uplink messages will be sent to <code>https://www.example.com/lora/user1?create=true</code> (the uplink messages path will be set to <code>/uplink?create=true</code>).</p>
+<h2 id="instantiation-of-field-mask-hahahugoshortcode-s0-hbhb">Instantiation of Field Mask <span class="tag is-light">New in 3.21.1</span>
+
+</h2>
+<p>The fields that are sent in the webhook uplink message can be filtered. Field paths not specified in <code>field-mask</code> will not be present in the uplink message. Field paths are provided as a list, for example as:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">field-mask</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">received_at</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">up.uplink_message</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">up.service_data</span><span class="w">
+</span></span></span></code></pre></div><p>When there are no paths in the field mask or there is no <code>field-mask</code> in the template all the fields are sent in the uplink message.</p>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/webhooks/webhook-templates/format/">← Format</a>
@@ -320,10 +329,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 23 Dec 2021.
+  Last changed by Aleksander Borowski on 15 Aug 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/0320c4aa84c00e5b3dce873abc3dea4ba1e95986">
-      doc: Add info about creating empty headers and fields (#692)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/74e64b4eb881fd719248aee5c0847b09ef2a1c58">
+      doc: Add `field_mask` to webhook docs (#935)
     </a>
 </p>
 
