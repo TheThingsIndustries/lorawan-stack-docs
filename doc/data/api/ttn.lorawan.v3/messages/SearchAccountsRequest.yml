@@ -1,0 +1,33 @@
+name: SearchAccountsRequest
+fields:
+- name: query
+  type: string
+  rules:
+    max_len: 50
+  default: ""
+- name: only_users
+  type: bool
+  default: false
+- name: application_ids
+  message:
+    name: ApplicationIdentifiers
+  default: {}
+- name: client_ids
+  message:
+    name: ClientIdentifiers
+  default: {}
+- name: gateway_ids
+  message:
+    name: GatewayIdentifiers
+  default: {}
+- name: organization_ids
+  message:
+    name: OrganizationIdentifiers
+  default: {}
+oneofs:
+- name: collaborator_of
+  field_names:
+  - application_ids
+  - client_ids
+  - gateway_ids
+  - organization_ids

@@ -36,14 +36,17 @@ ttn-lw-cli tenants search [flags]
       --configuration.default-cluster.is                                                         select the configuration.default_cluster.is field and all allowed sub-fields
       --configuration.default-cluster.is.admin-rights                                            select the configuration.default_cluster.is.admin_rights field and all allowed sub-fields
       --configuration.default-cluster.is.admin-rights.all                                        select the configuration.default_cluster.is.admin_rights.all field
+      --configuration.default-cluster.is.application-limits                                      select the configuration.default_cluster.is.application_limits field and all allowed sub-fields
       --configuration.default-cluster.is.email                                                   select the configuration.default_cluster.is.email field and all allowed sub-fields
       --configuration.default-cluster.is.email.network                                           select the configuration.default_cluster.is.email.network field and all allowed sub-fields
       --configuration.default-cluster.is.email.network.branding-base-url                         select the configuration.default_cluster.is.email.network.branding_base_url field
       --configuration.default-cluster.is.end-device-picture                                      select the configuration.default_cluster.is.end_device_picture field and all allowed sub-fields
       --configuration.default-cluster.is.end-device-picture.disable-upload                       select the configuration.default_cluster.is.end_device_picture.disable_upload field
+      --configuration.default-cluster.is.organization-limits                                     select the configuration.default_cluster.is.organization_limits field and all allowed sub-fields
       --configuration.default-cluster.is.profile-picture                                         select the configuration.default_cluster.is.profile_picture field and all allowed sub-fields
       --configuration.default-cluster.is.profile-picture.disable-upload                          select the configuration.default_cluster.is.profile_picture.disable_upload field
       --configuration.default-cluster.is.profile-picture.use-gravatar                            select the configuration.default_cluster.is.profile_picture.use_gravatar field
+      --configuration.default-cluster.is.user-limits                                             select the configuration.default_cluster.is.user_limits field and all allowed sub-fields
       --configuration.default-cluster.is.user-login                                              select the configuration.default_cluster.is.user_login field and all allowed sub-fields
       --configuration.default-cluster.is.user-login.disable-credentials-login                    select the configuration.default_cluster.is.user_login.disable_credentials_login field
       --configuration.default-cluster.is.user-registration                                       select the configuration.default_cluster.is.user_registration field and all allowed sub-fields
@@ -128,10 +131,10 @@ ttn-lw-cli tenants search [flags]
       --output-format string                            Output format (default "json")
       --packet-broker-agent-grpc-address string         Packet Broker Agent address (default "localhost:8884")
       --qr-code-generator-grpc-address string           QR Code Generator address (default "localhost:8884")
-      --retry-config.default-timeout duration           Default timeout between retry attempts (default 100ms)
-      --retry-config.enable-metadata                    Use request response metadata to dynamically calculate timeout between retry attempts (default true)
-      --retry-config.jitter float                       Fraction that creates a deviation of the timeout used between retry attempts
-      --retry-config.max uint                           Maximum amount of times that a request can be reattempted
+      --retry.default-timeout duration                  Default timeout between retry attempts (default 100ms)
+      --retry.enable-metadata                           Use request response metadata to dynamically calculate timeout between retry attempts (default true)
+      --retry.jitter float                              Fraction that creates a deviation of the timeout used between retry attempts
+      --retry.max uint                                  Maximum amount of times that a request can be reattempted
       --skip-version-check                              Do not perform version checks
       --tenant-admin-key string                         Tenant admin key
 ```

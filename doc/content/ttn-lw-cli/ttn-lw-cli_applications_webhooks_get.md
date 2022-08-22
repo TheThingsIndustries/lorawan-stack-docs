@@ -30,6 +30,7 @@ ttn-lw-cli applications webhooks get [application-id] [webhook-id] [flags]
       --downlink-queued.path                                         select the downlink_queued.path field
       --downlink-sent                                                select the downlink_sent field and all allowed sub-fields
       --downlink-sent.path                                           select the downlink_sent.path field
+      --field-mask                                                   select the field_mask field
       --format                                                       select the format field
       --headers                                                      select the headers field
       --health-status                                                select the health_status field and all allowed sub-fields
@@ -81,10 +82,10 @@ ttn-lw-cli applications webhooks get [application-id] [webhook-id] [flags]
       --output-format string                            Output format (default "json")
       --packet-broker-agent-grpc-address string         Packet Broker Agent address (default "localhost:8884")
       --qr-code-generator-grpc-address string           QR Code Generator address (default "localhost:8884")
-      --retry-config.default-timeout duration           Default timeout between retry attempts (default 100ms)
-      --retry-config.enable-metadata                    Use request response metadata to dynamically calculate timeout between retry attempts (default true)
-      --retry-config.jitter float                       Fraction that creates a deviation of the timeout used between retry attempts
-      --retry-config.max uint                           Maximum amount of times that a request can be reattempted
+      --retry.default-timeout duration                  Default timeout between retry attempts (default 100ms)
+      --retry.enable-metadata                           Use request response metadata to dynamically calculate timeout between retry attempts (default true)
+      --retry.jitter float                              Fraction that creates a deviation of the timeout used between retry attempts
+      --retry.max uint                                  Maximum amount of times that a request can be reattempted
       --skip-version-check                              Do not perform version checks
 ```
 

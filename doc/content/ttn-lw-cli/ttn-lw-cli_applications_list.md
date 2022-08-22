@@ -27,6 +27,7 @@ ttn-lw-cli applications list [flags]
       --deleted-at                                                    select the deleted_at field
       --description                                                   select the description field
       --dev-eui-counter                                               select the dev_eui_counter field
+      --end-device-limit                                              select the end_device_limit field
       --field-mask strings                                            
   -h, --help                                                          help for list
       --join-server-address                                           select the join_server_address field
@@ -72,10 +73,10 @@ ttn-lw-cli applications list [flags]
       --output-format string                            Output format (default "json")
       --packet-broker-agent-grpc-address string         Packet Broker Agent address (default "localhost:8884")
       --qr-code-generator-grpc-address string           QR Code Generator address (default "localhost:8884")
-      --retry-config.default-timeout duration           Default timeout between retry attempts (default 100ms)
-      --retry-config.enable-metadata                    Use request response metadata to dynamically calculate timeout between retry attempts (default true)
-      --retry-config.jitter float                       Fraction that creates a deviation of the timeout used between retry attempts
-      --retry-config.max uint                           Maximum amount of times that a request can be reattempted
+      --retry.default-timeout duration                  Default timeout between retry attempts (default 100ms)
+      --retry.enable-metadata                           Use request response metadata to dynamically calculate timeout between retry attempts (default true)
+      --retry.jitter float                              Fraction that creates a deviation of the timeout used between retry attempts
+      --retry.max uint                                  Maximum amount of times that a request can be reattempted
       --skip-version-check                              Do not perform version checks
 ```
 
