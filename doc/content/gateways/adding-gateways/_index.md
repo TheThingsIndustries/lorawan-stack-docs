@@ -34,7 +34,7 @@ Fill the **Gateway EUI** and click **Confirm** or **Continue without EUI**.
 
 Depending of weather the **Gateway EUI** is claimable you will either be shown the claiming form or the manual registration form.
 
-{{< note >}}Claiming may not be possible of your version of The Thing Stack, if so you will see the manual registration form by default.{{</ note >}}
+{{< note >}}Claiming may not be possible on your version of The Thing Stack, if not you will see the manual registration form by default.{{</ note >}}
 
 {{< figure src="gateway-add.png" alt="Gateway add" >}}
 
