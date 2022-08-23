@@ -25,19 +25,24 @@ Adding gateways using the Console or the CLI is usually most convenient, so thos
 
 ## Adding Gateways using the Console
 
-Go to **Gateways** in the top menu, and click **+ Add Gateway** to reach the gateway registration page.
+Go to **Gateways** in the top menu, and click **+ Register Gateway** to reach the gateway registration page.
 
-Fill the **Gateway EUI** and click **Confirm**.
 
-{{< figure src="gateway-add.png" alt="Gateway add" >}}
+
+
+Fill the **Gateway EUI** and click **Confirm** or **Continue without EUI**.
 
 Depending of weather the **Gateway EUI** is claimable you will either be shown the claiming form or the manual registration form.
 
-On the manual registration form fill in the **Frequency Plan**, The other fields are optional or pre filled. Click **Create Gateway** to finish.
+{{< note >}}Claiming may not be possible of your version of The Thing Stack, if so you will see the manual registration form by default.{{</ note >}}
+
+{{< figure src="gateway-add.png" alt="Gateway add" >}}
+
+On the manual registration form fill in the **Frequency Plan** and the **Gateway ID** if it was not pre filled, The other fields are optional. Click **Register Gateway** to finish.
 
 {{< figure src="gateway-creation.png" alt="Gateway creation" >}}
 
-On claiming form fill in the **Authentication Code**, **Gateway ID** and the **Frequency Plan**. Click **Create Gateway** to finish.
+On claiming form fill in the **Authentication Code**, **Gateway ID** and the **Frequency Plan**. Click **Claim Gateway** to finish.
 
 {{< figure src="gateway-claim.png" alt="Gateway claiming" >}}
 
