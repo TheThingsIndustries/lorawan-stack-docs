@@ -8,6 +8,15 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.21.0
+
+### `4-2a-configuration`
+- Added new `EntityLimits` parameters.
+
+### `5-4-ecs-services`
+
+- Fixed the connection of the Device Claiming Server to the QR Code Generator.
+
 ## 3.20.2
 
 ### Prometheus

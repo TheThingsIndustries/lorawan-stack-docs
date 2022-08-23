@@ -50,6 +50,19 @@ ttn-lw-cli end-devices reset [application-id] [device-id] [flags]
       --lorawan-version                                                                select the lorawan_version field
       --mac-settings                                                                   select the mac_settings field and all allowed sub-fields
       --mac-settings.adr                                                               select the mac_settings.adr field and all allowed sub-fields
+      --mac-settings.adr.mode.disabled                                                 select the mac_settings.adr.mode.disabled field and all allowed sub-fields
+      --mac-settings.adr.mode.dynamic                                                  select the mac_settings.adr.mode.dynamic field and all allowed sub-fields
+      --mac-settings.adr.mode.dynamic.margin                                           select the mac_settings.adr.mode.dynamic.margin field
+      --mac-settings.adr.mode.dynamic.max-data-rate-index                              select the mac_settings.adr.mode.dynamic.max_data_rate_index field and all allowed sub-fields
+      --mac-settings.adr.mode.dynamic.max-nb-trans                                     select the mac_settings.adr.mode.dynamic.max_nb_trans field
+      --mac-settings.adr.mode.dynamic.max-tx-power-index                               select the mac_settings.adr.mode.dynamic.max_tx_power_index field
+      --mac-settings.adr.mode.dynamic.min-data-rate-index                              select the mac_settings.adr.mode.dynamic.min_data_rate_index field and all allowed sub-fields
+      --mac-settings.adr.mode.dynamic.min-nb-trans                                     select the mac_settings.adr.mode.dynamic.min_nb_trans field
+      --mac-settings.adr.mode.dynamic.min-tx-power-index                               select the mac_settings.adr.mode.dynamic.min_tx_power_index field
+      --mac-settings.adr.mode.static                                                   select the mac_settings.adr.mode.static field and all allowed sub-fields
+      --mac-settings.adr.mode.static.data-rate-index                                   select the mac_settings.adr.mode.static.data_rate_index field
+      --mac-settings.adr.mode.static.nb-trans                                          select the mac_settings.adr.mode.static.nb_trans field
+      --mac-settings.adr.mode.static.tx-power-index                                    select the mac_settings.adr.mode.static.tx_power_index field
       --mac-settings.beacon-frequency                                                  select the mac_settings.beacon_frequency field and all allowed sub-fields
       --mac-settings.class-b-c-downlink-interval                                       select the mac_settings.class_b_c_downlink_interval field
       --mac-settings.class-b-timeout                                                   select the mac_settings.class_b_timeout field
@@ -76,6 +89,7 @@ ttn-lw-cli end-devices reset [application-id] [device-id] [flags]
       --mac-settings.rx1-delay                                                         select the mac_settings.rx1_delay field and all allowed sub-fields
       --mac-settings.rx2-data-rate-index                                               select the mac_settings.rx2_data_rate_index field and all allowed sub-fields
       --mac-settings.rx2-frequency                                                     select the mac_settings.rx2_frequency field and all allowed sub-fields
+      --mac-settings.schedule-downlinks                                                select the mac_settings.schedule_downlinks field and all allowed sub-fields
       --mac-settings.status-count-periodicity                                          select the mac_settings.status_count_periodicity field
       --mac-settings.status-time-periodicity                                           select the mac_settings.status_time_periodicity field
       --mac-settings.supports-32-bit-f-cnt                                             select the mac_settings.supports_32_bit_f_cnt field and all allowed sub-fields
@@ -143,6 +157,7 @@ ttn-lw-cli end-devices reset [application-id] [device-id] [flags]
       --mac-state.ping-slot-periodicity                                                select the mac_state.ping_slot_periodicity field and all allowed sub-fields
       --mac-state.queued-responses                                                     select the mac_state.queued_responses field
       --mac-state.recent-downlinks                                                     select the mac_state.recent_downlinks field
+      --mac-state.recent-mac-command-identifiers                                       select the mac_state.recent_mac_command_identifiers field
       --mac-state.recent-uplinks                                                       select the mac_state.recent_uplinks field
       --mac-state.rejected-adr-data-rate-indexes                                       select the mac_state.rejected_adr_data_rate_indexes field
       --mac-state.rejected-adr-tx-power-indexes                                        select the mac_state.rejected_adr_tx_power_indexes field
@@ -243,6 +258,7 @@ ttn-lw-cli end-devices reset [application-id] [device-id] [flags]
       --pending-mac-state.queued-join-accept.request.downlink-settings.rx2-dr          select the pending_mac_state.queued_join_accept.request.downlink_settings.rx2_dr field
       --pending-mac-state.queued-join-accept.request.rx-delay                          select the pending_mac_state.queued_join_accept.request.rx_delay field
       --pending-mac-state.recent-downlinks                                             select the pending_mac_state.recent_downlinks field
+      --pending-mac-state.recent-mac-command-identifiers                               select the pending_mac_state.recent_mac_command_identifiers field
       --pending-mac-state.recent-uplinks                                               select the pending_mac_state.recent_uplinks field
       --pending-mac-state.rejected-adr-data-rate-indexes                               select the pending_mac_state.rejected_adr_data_rate_indexes field
       --pending-mac-state.rejected-adr-tx-power-indexes                                select the pending_mac_state.rejected_adr_tx_power_indexes field
@@ -333,10 +349,10 @@ ttn-lw-cli end-devices reset [application-id] [device-id] [flags]
       --output-format string                            Output format (default "json")
       --packet-broker-agent-grpc-address string         Packet Broker Agent address (default "localhost:8884")
       --qr-code-generator-grpc-address string           QR Code Generator address (default "localhost:8884")
-      --retry-config.default-timeout duration           Default timeout between retry attempts (default 100ms)
-      --retry-config.enable-metadata                    Use request response metadata to dynamically calculate timeout between retry attempts (default true)
-      --retry-config.jitter float                       Fraction that creates a deviation of the timeout used between retry attempts
-      --retry-config.max uint                           Maximum amount of times that a request can be reattempted
+      --retry.default-timeout duration                  Default timeout between retry attempts (default 100ms)
+      --retry.enable-metadata                           Use request response metadata to dynamically calculate timeout between retry attempts (default true)
+      --retry.jitter float                              Fraction that creates a deviation of the timeout used between retry attempts
+      --retry.max uint                                  Maximum amount of times that a request can be reattempted
       --skip-version-check                              Do not perform version checks
 ```
 

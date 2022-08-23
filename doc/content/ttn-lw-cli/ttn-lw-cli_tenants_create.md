@@ -55,10 +55,14 @@ ttn-lw-cli tenants create [tenant-id] [flags]
   -h, --help                                                                                            help for create
       --initial-user                                                                                    create initial tenant user (default true)
       --initial-user.admin                                                                              
+      --initial-user.application-limit uint                                                             
       --initial-user.attributes stringToString                                                          
+      --initial-user.client-limit uint                                                                  
       --initial-user.description string                                                                 
+      --initial-user.gateway-limit uint                                                                 
       --initial-user.ids.user-id string                                                                 
       --initial-user.name string                                                                        
+      --initial-user.organization-limit uint                                                            
       --initial-user.password string                                                                    
       --initial-user.primary-email-address string                                                       
       --initial-user.primary-email-address-validated-at timestamp                                       
@@ -106,10 +110,10 @@ ttn-lw-cli tenants create [tenant-id] [flags]
       --output-format string                            Output format (default "json")
       --packet-broker-agent-grpc-address string         Packet Broker Agent address (default "localhost:8884")
       --qr-code-generator-grpc-address string           QR Code Generator address (default "localhost:8884")
-      --retry-config.default-timeout duration           Default timeout between retry attempts (default 100ms)
-      --retry-config.enable-metadata                    Use request response metadata to dynamically calculate timeout between retry attempts (default true)
-      --retry-config.jitter float                       Fraction that creates a deviation of the timeout used between retry attempts
-      --retry-config.max uint                           Maximum amount of times that a request can be reattempted
+      --retry.default-timeout duration                  Default timeout between retry attempts (default 100ms)
+      --retry.enable-metadata                           Use request response metadata to dynamically calculate timeout between retry attempts (default true)
+      --retry.jitter float                              Fraction that creates a deviation of the timeout used between retry attempts
+      --retry.max uint                                  Maximum amount of times that a request can be reattempted
       --skip-version-check                              Do not perform version checks
       --tenant-admin-key string                         Tenant admin key
 ```

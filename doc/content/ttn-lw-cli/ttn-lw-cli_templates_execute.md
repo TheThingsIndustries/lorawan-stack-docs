@@ -44,8 +44,18 @@ ttn-lw-cli templates execute [flags]
       --last-rj-count-0 uint32                                                                
       --last-rj-count-1 uint32                                                                
       --last-seen-at timestamp                                                                
-      --lorawan-phy-version string                                                            allowed values: PHY_UNKNOWN, unknown, TS001_V1_0, PHY_V1_0, 1.0, 1.0.0, V1_0, TS001_V1_0_1, PHY_V1_0_1, 1.0.1, V1_0_1, RP001_V1_0_2, PHY_V1_0_2_REV_A, V1_0_2, 1.0.2, V1_0_2_REV_A, 1.0.2-a, RP001_V1_0_2_REV_B, PHY_V1_0_2_REV_B, 1.0.2-b, V1_0_2_REV_B, RP001_V1_1_REV_A, PHY_V1_1_REV_A, 1.1.0-a, V1_1_REV_A, 1.1-a, PHY_V1_1_REV_B, RP001_V1_1_REV_B, 1.1-b, 1.1.0-b, V1_1_REV_B, RP001_V1_0_3_REV_A, PHY_V1_0_3_REV_A, 1.0.3-a, V1_0_3_REV_A, RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3
-      --lorawan-version string                                                                allowed values: MAC_UNKNOWN, UNKNOWN, unknown, MAC_V1_0, 1.0.0, 1.0, V1_0, MAC_V1_0_1, 1.0.1, V1_0_1, MAC_V1_0_2, V1_0_2, 1.0.2, MAC_V1_1, 1.1, 1.1.0, V1_1, MAC_V1_0_3, 1.0.3, V1_0_3, MAC_V1_0_4, V1_0_4, 1.0.4
+      --lorawan-phy-version string                                                            allowed values: PHY_UNKNOWN, unknown, PHY_V1_0, TS001_V1_0, 1.0, V1_0, 1.0.0, PHY_V1_0_1, TS001_V1_0_1, V1_0_1, 1.0.1, RP001_V1_0_2, PHY_V1_0_2_REV_A, 1.0.2-a, V1_0_2_REV_A, 1.0.2, V1_0_2, RP001_V1_0_2_REV_B, PHY_V1_0_2_REV_B, 1.0.2-b, V1_0_2_REV_B, PHY_V1_1_REV_A, RP001_V1_1_REV_A, 1.1.0-a, V1_1_REV_A, 1.1-a, PHY_V1_1_REV_B, RP001_V1_1_REV_B, 1.1-b, 1.1.0-b, V1_1_REV_B, RP001_V1_0_3_REV_A, PHY_V1_0_3_REV_A, 1.0.3-a, V1_0_3_REV_A, RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3
+      --lorawan-version string                                                                allowed values: MAC_UNKNOWN, UNKNOWN, unknown, MAC_V1_0, 1.0.0, V1_0, 1.0, MAC_V1_0_1, V1_0_1, 1.0.1, MAC_V1_0_2, 1.0.2, V1_0_2, MAC_V1_1, 1.1, V1_1, 1.1.0, MAC_V1_0_3, V1_0_3, 1.0.3, MAC_V1_0_4, V1_0_4, 1.0.4
+      --mac-settings.adr.mode.dynamic.margin float32                                          
+      --mac-settings.adr.mode.dynamic.max-data-rate-index string                              allowed values: DATA_RATE_0, 0, DATA_RATE_1, 1, DATA_RATE_2, 2, DATA_RATE_3, 3, DATA_RATE_4, 4, DATA_RATE_5, 5, DATA_RATE_6, 6, DATA_RATE_7, 7, DATA_RATE_8, 8, DATA_RATE_9, 9, DATA_RATE_10, 10, DATA_RATE_11, 11, DATA_RATE_12, 12, DATA_RATE_13, 13, DATA_RATE_14, 14, DATA_RATE_15, 15
+      --mac-settings.adr.mode.dynamic.max-nb-trans uint32                                     
+      --mac-settings.adr.mode.dynamic.max-tx-power-index uint32                               
+      --mac-settings.adr.mode.dynamic.min-data-rate-index string                              allowed values: DATA_RATE_0, 0, DATA_RATE_1, 1, DATA_RATE_2, 2, DATA_RATE_3, 3, DATA_RATE_4, 4, DATA_RATE_5, 5, DATA_RATE_6, 6, DATA_RATE_7, 7, DATA_RATE_8, 8, DATA_RATE_9, 9, DATA_RATE_10, 10, DATA_RATE_11, 11, DATA_RATE_12, 12, DATA_RATE_13, 13, DATA_RATE_14, 14, DATA_RATE_15, 15
+      --mac-settings.adr.mode.dynamic.min-nb-trans uint32                                     
+      --mac-settings.adr.mode.dynamic.min-tx-power-index uint32                               
+      --mac-settings.adr.mode.static.data-rate-index string                                   allowed values: DATA_RATE_0, 0, DATA_RATE_1, 1, DATA_RATE_2, 2, DATA_RATE_3, 3, DATA_RATE_4, 4, DATA_RATE_5, 5, DATA_RATE_6, 6, DATA_RATE_7, 7, DATA_RATE_8, 8, DATA_RATE_9, 9, DATA_RATE_10, 10, DATA_RATE_11, 11, DATA_RATE_12, 12, DATA_RATE_13, 13, DATA_RATE_14, 14, DATA_RATE_15, 15
+      --mac-settings.adr.mode.static.nb-trans uint32                                          
+      --mac-settings.adr.mode.static.tx-power-index uint32                                    
       --mac-settings.beacon-frequency uint                                                    
       --mac-settings.class-b-c-downlink-interval duration                                     
       --mac-settings.class-b-timeout duration                                                 
@@ -72,6 +82,7 @@ ttn-lw-cli templates execute [flags]
       --mac-settings.rx1-delay string                                                         allowed values: RX_DELAY_0, 0, RX_DELAY_1, 1, RX_DELAY_2, 2, RX_DELAY_3, 3, RX_DELAY_4, 4, RX_DELAY_5, 5, RX_DELAY_6, 6, RX_DELAY_7, 7, RX_DELAY_8, 8, RX_DELAY_9, 9, RX_DELAY_10, 10, RX_DELAY_11, 11, RX_DELAY_12, 12, RX_DELAY_13, 13, RX_DELAY_14, 14, RX_DELAY_15, 15
       --mac-settings.rx2-data-rate-index string                                               allowed values: DATA_RATE_0, 0, DATA_RATE_1, 1, DATA_RATE_2, 2, DATA_RATE_3, 3, DATA_RATE_4, 4, DATA_RATE_5, 5, DATA_RATE_6, 6, DATA_RATE_7, 7, DATA_RATE_8, 8, DATA_RATE_9, 9, DATA_RATE_10, 10, DATA_RATE_11, 11, DATA_RATE_12, 12, DATA_RATE_13, 13, DATA_RATE_14, 14, DATA_RATE_15, 15
       --mac-settings.rx2-frequency uint                                                       
+      --mac-settings.schedule-downlinks                                                       
       --mac-settings.status-count-periodicity uint32                                          
       --mac-settings.status-time-periodicity duration                                         
       --mac-settings.supports-32-bit-f-cnt                                                    
@@ -118,7 +129,7 @@ ttn-lw-cli templates execute [flags]
       --mac-state.last-dev-status-f-cnt-up uint32                                             
       --mac-state.last-downlink-at timestamp                                                  
       --mac-state.last-network-initiated-downlink-at timestamp                                
-      --mac-state.lorawan-version string                                                      allowed values: MAC_UNKNOWN, unknown, UNKNOWN, MAC_V1_0, 1.0, V1_0, 1.0.0, MAC_V1_0_1, V1_0_1, 1.0.1, MAC_V1_0_2, 1.0.2, V1_0_2, MAC_V1_1, V1_1, 1.1, 1.1.0, MAC_V1_0_3, 1.0.3, V1_0_3, MAC_V1_0_4, V1_0_4, 1.0.4
+      --mac-state.lorawan-version string                                                      allowed values: MAC_UNKNOWN, UNKNOWN, unknown, MAC_V1_0, 1.0.0, V1_0, 1.0, MAC_V1_0_1, V1_0_1, 1.0.1, MAC_V1_0_2, 1.0.2, V1_0_2, MAC_V1_1, 1.1, V1_1, 1.1.0, MAC_V1_0_3, V1_0_3, 1.0.3, MAC_V1_0_4, V1_0_4, 1.0.4
       --mac-state.pending-application-downlink.class-b-c.absolute-time timestamp              
       --mac-state.pending-application-downlink.confirmed                                      
       --mac-state.pending-application-downlink.correlation-ids strings                        
@@ -128,6 +139,7 @@ ttn-lw-cli templates execute [flags]
       --mac-state.pending-application-downlink.priority string                                allowed values: LOWEST, LOW, BELOW_NORMAL, NORMAL, ABOVE_NORMAL, HIGH, HIGHEST
       --mac-state.pending-application-downlink.session-key-id bytesHex                        
       --mac-state.ping-slot-periodicity string                                                allowed values: PING_EVERY_1S, PING_EVERY_2S, PING_EVERY_4S, PING_EVERY_8S, PING_EVERY_16S, PING_EVERY_32S, PING_EVERY_64S, PING_EVERY_128S
+      --mac-state.recent-mac-command-identifiers strings                                      allowed values: CID_RFU_0, CID_RESET, CID_LINK_CHECK, CID_LINK_ADR, CID_DUTY_CYCLE, CID_RX_PARAM_SETUP, CID_DEV_STATUS, CID_NEW_CHANNEL, CID_RX_TIMING_SETUP, CID_TX_PARAM_SETUP, CID_DL_CHANNEL, CID_REKEY, CID_ADR_PARAM_SETUP, CID_DEVICE_TIME, CID_FORCE_REJOIN, CID_REJOIN_PARAM_SETUP, CID_PING_SLOT_INFO, CID_PING_SLOT_CHANNEL, CID_BEACON_TIMING, CID_BEACON_FREQ, CID_DEVICE_MODE
       --mac-state.rejected-adr-data-rate-indexes strings                                      allowed values: DATA_RATE_0, 0, DATA_RATE_1, 1, DATA_RATE_2, 2, DATA_RATE_3, 3, DATA_RATE_4, 4, DATA_RATE_5, 5, DATA_RATE_6, 6, DATA_RATE_7, 7, DATA_RATE_8, 8, DATA_RATE_9, 9, DATA_RATE_10, 10, DATA_RATE_11, 11, DATA_RATE_12, 12, DATA_RATE_13, 13, DATA_RATE_14, 14, DATA_RATE_15, 15
       --mac-state.rejected-adr-tx-power-indexes uint32Slice                                   
       --mac-state.rejected-frequencies uint64Slice                                            
@@ -181,7 +193,7 @@ ttn-lw-cli templates execute [flags]
       --pending-mac-state.last-dev-status-f-cnt-up uint32                                     
       --pending-mac-state.last-downlink-at timestamp                                          
       --pending-mac-state.last-network-initiated-downlink-at timestamp                        
-      --pending-mac-state.lorawan-version string                                              allowed values: MAC_UNKNOWN, unknown, UNKNOWN, MAC_V1_0, 1.0.0, 1.0, V1_0, MAC_V1_0_1, V1_0_1, 1.0.1, MAC_V1_0_2, V1_0_2, 1.0.2, MAC_V1_1, V1_1, 1.1, 1.1.0, MAC_V1_0_3, 1.0.3, V1_0_3, MAC_V1_0_4, V1_0_4, 1.0.4
+      --pending-mac-state.lorawan-version string                                              allowed values: MAC_UNKNOWN, UNKNOWN, unknown, MAC_V1_0, 1.0.0, V1_0, 1.0, MAC_V1_0_1, V1_0_1, 1.0.1, MAC_V1_0_2, 1.0.2, V1_0_2, MAC_V1_1, 1.1, V1_1, 1.1.0, MAC_V1_0_3, V1_0_3, 1.0.3, MAC_V1_0_4, V1_0_4, 1.0.4
       --pending-mac-state.pending-join-request.cf-list.ch-masks bools                         
       --pending-mac-state.pending-join-request.cf-list.freq uint32Slice                       
       --pending-mac-state.pending-join-request.cf-list.type string                            allowed values: FREQUENCIES, CHANNEL_MASKS
@@ -208,6 +220,7 @@ ttn-lw-cli templates execute [flags]
       --pending-mac-state.queued-join-accept.request.downlink-settings.rx1-dr-offset string   allowed values: DATA_RATE_OFFSET_0, 0, DATA_RATE_OFFSET_1, 1, DATA_RATE_OFFSET_2, 2, DATA_RATE_OFFSET_3, 3, DATA_RATE_OFFSET_4, 4, DATA_RATE_OFFSET_5, 5, DATA_RATE_OFFSET_6, 6, DATA_RATE_OFFSET_7, 7
       --pending-mac-state.queued-join-accept.request.downlink-settings.rx2-dr string          allowed values: DATA_RATE_0, 0, DATA_RATE_1, 1, DATA_RATE_2, 2, DATA_RATE_3, 3, DATA_RATE_4, 4, DATA_RATE_5, 5, DATA_RATE_6, 6, DATA_RATE_7, 7, DATA_RATE_8, 8, DATA_RATE_9, 9, DATA_RATE_10, 10, DATA_RATE_11, 11, DATA_RATE_12, 12, DATA_RATE_13, 13, DATA_RATE_14, 14, DATA_RATE_15, 15
       --pending-mac-state.queued-join-accept.request.rx-delay string                          allowed values: RX_DELAY_0, 0, RX_DELAY_1, 1, RX_DELAY_2, 2, RX_DELAY_3, 3, RX_DELAY_4, 4, RX_DELAY_5, 5, RX_DELAY_6, 6, RX_DELAY_7, 7, RX_DELAY_8, 8, RX_DELAY_9, 9, RX_DELAY_10, 10, RX_DELAY_11, 11, RX_DELAY_12, 12, RX_DELAY_13, 13, RX_DELAY_14, 14, RX_DELAY_15, 15
+      --pending-mac-state.recent-mac-command-identifiers strings                              allowed values: CID_RFU_0, CID_RESET, CID_LINK_CHECK, CID_LINK_ADR, CID_DUTY_CYCLE, CID_RX_PARAM_SETUP, CID_DEV_STATUS, CID_NEW_CHANNEL, CID_RX_TIMING_SETUP, CID_TX_PARAM_SETUP, CID_DL_CHANNEL, CID_REKEY, CID_ADR_PARAM_SETUP, CID_DEVICE_TIME, CID_FORCE_REJOIN, CID_REJOIN_PARAM_SETUP, CID_PING_SLOT_INFO, CID_PING_SLOT_CHANNEL, CID_BEACON_TIMING, CID_BEACON_FREQ, CID_DEVICE_MODE
       --pending-mac-state.rejected-adr-data-rate-indexes strings                              allowed values: DATA_RATE_0, 0, DATA_RATE_1, 1, DATA_RATE_2, 2, DATA_RATE_3, 3, DATA_RATE_4, 4, DATA_RATE_5, 5, DATA_RATE_6, 6, DATA_RATE_7, 7, DATA_RATE_8, 8, DATA_RATE_9, 9, DATA_RATE_10, 10, DATA_RATE_11, 11, DATA_RATE_12, 12, DATA_RATE_13, 13, DATA_RATE_14, 14, DATA_RATE_15, 15
       --pending-mac-state.rejected-adr-tx-power-indexes uint32Slice                           
       --pending-mac-state.rejected-frequencies uint64Slice                                    
@@ -275,10 +288,10 @@ ttn-lw-cli templates execute [flags]
       --output-format string                            Output format (default "json")
       --packet-broker-agent-grpc-address string         Packet Broker Agent address (default "localhost:8884")
       --qr-code-generator-grpc-address string           QR Code Generator address (default "localhost:8884")
-      --retry-config.default-timeout duration           Default timeout between retry attempts (default 100ms)
-      --retry-config.enable-metadata                    Use request response metadata to dynamically calculate timeout between retry attempts (default true)
-      --retry-config.jitter float                       Fraction that creates a deviation of the timeout used between retry attempts
-      --retry-config.max uint                           Maximum amount of times that a request can be reattempted
+      --retry.default-timeout duration                  Default timeout between retry attempts (default 100ms)
+      --retry.enable-metadata                           Use request response metadata to dynamically calculate timeout between retry attempts (default true)
+      --retry.jitter float                              Fraction that creates a deviation of the timeout used between retry attempts
+      --retry.max uint                                  Maximum amount of times that a request can be reattempted
       --skip-version-check                              Do not perform version checks
 ```
 

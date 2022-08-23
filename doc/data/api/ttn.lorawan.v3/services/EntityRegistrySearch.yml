@@ -64,3 +64,21 @@ methods:
     http:
     - method: GET
       path: /search/users
+  SearchAccounts:
+    name: SearchAccounts
+    comment: Search for accounts that match the conditions specified in the request.
+    input:
+      name: SearchAccountsRequest
+    output:
+      name: SearchAccountsResponse
+    http:
+    - method: GET
+      path: /search/accounts
+    - method: GET
+      path: /applications/{application_ids.application_id}/collaborators/search
+    - method: GET
+      path: /clients/{client_ids.client_id}/collaborators/search
+    - method: GET
+      path: /gateways/{gateway_ids.gateway_id}/collaborators/search
+    - method: GET
+      path: /organizations/{organization_ids.organization_id}/collaborators/search

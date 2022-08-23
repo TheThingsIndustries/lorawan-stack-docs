@@ -14,29 +14,33 @@ ttn-lw-cli end-devices list [application-id] [flags]
 ### Options
 
 ```
-      --activated-at                   select the activated_at field
-      --all                            select all end devices fields
-      --application-id string          
-      --application-server-address     select the application_server_address field
-      --attributes                     select the attributes field
-      --description                    select the description field
-  -h, --help                           help for list
-      --join-server-address            select the join_server_address field
-      --last-seen-at                   select the last_seen_at field
-      --limit uint32                   maximum number of results to get (default 50)
-      --locations                      select the locations field
-      --name                           select the name field
-      --network-server-address         select the network_server_address field
-      --order string                   order by this field
-      --page uint32                    results page number (default 1)
-      --picture                        select the picture field and all allowed sub-fields
-      --service-profile-id             select the service_profile_id field
-      --version-ids                    select the version_ids field and all allowed sub-fields
-      --version-ids.band-id            select the version_ids.band_id field
-      --version-ids.brand-id           select the version_ids.brand_id field
-      --version-ids.firmware-version   select the version_ids.firmware_version field
-      --version-ids.hardware-version   select the version_ids.hardware_version field
-      --version-ids.model-id           select the version_ids.model_id field
+      --activated-at                           select the activated_at field
+      --all                                    select all end devices fields
+      --application-id string                  
+      --application-server-address             select the application_server_address field
+      --attributes                             select the attributes field
+      --claim-authentication-code              select the claim_authentication_code field and all allowed sub-fields
+      --claim-authentication-code.valid-from   select the claim_authentication_code.valid_from field
+      --claim-authentication-code.valid-to     select the claim_authentication_code.valid_to field
+      --claim-authentication-code.value        select the claim_authentication_code.value field
+      --description                            select the description field
+  -h, --help                                   help for list
+      --join-server-address                    select the join_server_address field
+      --last-seen-at                           select the last_seen_at field
+      --limit uint32                           maximum number of results to get (default 50)
+      --locations                              select the locations field
+      --name                                   select the name field
+      --network-server-address                 select the network_server_address field
+      --order string                           order by this field
+      --page uint32                            results page number (default 1)
+      --picture                                select the picture field and all allowed sub-fields
+      --service-profile-id                     select the service_profile_id field
+      --version-ids                            select the version_ids field and all allowed sub-fields
+      --version-ids.band-id                    select the version_ids.band_id field
+      --version-ids.brand-id                   select the version_ids.brand_id field
+      --version-ids.firmware-version           select the version_ids.firmware_version field
+      --version-ids.hardware-version           select the version_ids.hardware_version field
+      --version-ids.model-id                   select the version_ids.model_id field
 ```
 
 ### Options inherited from parent commands
@@ -67,10 +71,10 @@ ttn-lw-cli end-devices list [application-id] [flags]
       --output-format string                            Output format (default "json")
       --packet-broker-agent-grpc-address string         Packet Broker Agent address (default "localhost:8884")
       --qr-code-generator-grpc-address string           QR Code Generator address (default "localhost:8884")
-      --retry-config.default-timeout duration           Default timeout between retry attempts (default 100ms)
-      --retry-config.enable-metadata                    Use request response metadata to dynamically calculate timeout between retry attempts (default true)
-      --retry-config.jitter float                       Fraction that creates a deviation of the timeout used between retry attempts
-      --retry-config.max uint                           Maximum amount of times that a request can be reattempted
+      --retry.default-timeout duration                  Default timeout between retry attempts (default 100ms)
+      --retry.enable-metadata                           Use request response metadata to dynamically calculate timeout between retry attempts (default true)
+      --retry.jitter float                              Fraction that creates a deviation of the timeout used between retry attempts
+      --retry.max uint                                  Maximum amount of times that a request can be reattempted
       --skip-version-check                              Do not perform version checks
 ```
 

@@ -16,12 +16,16 @@ ttn-lw-cli users get [user-id] [flags]
 ```
       --admin                                select the admin field
       --all                                  select all user fields
+      --application-limit                    select the application_limit field
       --attributes                           select the attributes field
+      --client-limit                         select the client_limit field
       --contact-info                         select the contact_info field
       --deleted-at                           select the deleted_at field
       --description                          select the description field
+      --gateway-limit                        select the gateway_limit field
   -h, --help                                 help for get
       --name                                 select the name field
+      --organization-limit                   select the organization_limit field
       --password                             select the password field
       --password-updated-at                  select the password_updated_at field
       --primary-email-address                select the primary_email_address field
@@ -64,10 +68,10 @@ ttn-lw-cli users get [user-id] [flags]
       --output-format string                            Output format (default "json")
       --packet-broker-agent-grpc-address string         Packet Broker Agent address (default "localhost:8884")
       --qr-code-generator-grpc-address string           QR Code Generator address (default "localhost:8884")
-      --retry-config.default-timeout duration           Default timeout between retry attempts (default 100ms)
-      --retry-config.enable-metadata                    Use request response metadata to dynamically calculate timeout between retry attempts (default true)
-      --retry-config.jitter float                       Fraction that creates a deviation of the timeout used between retry attempts
-      --retry-config.max uint                           Maximum amount of times that a request can be reattempted
+      --retry.default-timeout duration                  Default timeout between retry attempts (default 100ms)
+      --retry.enable-metadata                           Use request response metadata to dynamically calculate timeout between retry attempts (default true)
+      --retry.jitter float                              Fraction that creates a deviation of the timeout used between retry attempts
+      --retry.max uint                                  Maximum amount of times that a request can be reattempted
       --skip-version-check                              Do not perform version checks
 ```
 

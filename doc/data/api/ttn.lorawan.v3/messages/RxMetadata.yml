@@ -17,6 +17,8 @@ fields:
   type: uint32
   default: 0
 - name: time
+  comment: Timestamp at the end of the transmission, provided by the gateway. The
+    accuracy is undefined.
   message:
     package: google.protobuf
     name: Timestamp
@@ -95,6 +97,20 @@ fields:
   comment: Frequency drift in Hz between start and end of an LR-FHSS packet (signed).
   type: int32
   default: 0
+- name: gps_time
+  comment: |-
+    Timestamp at the end of the transmission, provided by the gateway.
+    Guaranteed to be based on a GPS PPS signal, with an accuracy of 1 millisecond.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: received_at
+  comment: Timestamp at which the Gateway Server has received the message.
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
 - name: advanced
   comment: |-
     Advanced metadata fields

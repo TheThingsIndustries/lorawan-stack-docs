@@ -341,8 +341,11 @@ fields:
   type: bool
   default: false
 - name: claim_authentication_code
-  comment: Authentication code to claim ownership of the end device. Stored in Join
-    Server.
+  comment: |-
+    Authentication code to claim ownership of the end device.
+    From TTS v3.21.0 this field is stored in the Identity Server.
+    For TTS versions < 3.21.0, this field is stored in the Join Server.
+    The value stored on the Identity Server takes precedence.
   message:
     name: EndDeviceAuthenticationCode
   default: {}

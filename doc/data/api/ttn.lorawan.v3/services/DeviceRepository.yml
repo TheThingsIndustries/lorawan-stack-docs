@@ -8,6 +8,8 @@ methods:
       name: ListEndDeviceBrandsResponse
     http:
     - method: GET
+      path: /dr/brands
+    - method: GET
       path: /dr/applications/{application_ids.application_id}/brands
   GetBrand:
     name: GetBrand
@@ -16,6 +18,8 @@ methods:
     output:
       name: EndDeviceBrand
     http:
+    - method: GET
+      path: /dr/brands/{brand_id}
     - method: GET
       path: /dr/applications/{application_ids.application_id}/brands/{brand_id}
   ListModels:
@@ -26,9 +30,13 @@ methods:
       name: ListEndDeviceModelsResponse
     http:
     - method: GET
-      path: /dr/applications/{application_ids.application_id}/brands/{brand_id}/models
+      path: /dr/models
+    - method: GET
+      path: /dr/brands/{brand_id}/models
     - method: GET
       path: /dr/applications/{application_ids.application_id}/models
+    - method: GET
+      path: /dr/applications/{application_ids.application_id}/brands/{brand_id}/models
   GetModel:
     name: GetModel
     input:
@@ -36,6 +44,8 @@ methods:
     output:
       name: EndDeviceModel
     http:
+    - method: GET
+      path: /dr/brands/{brand_id}/models/{model_id}
     - method: GET
       path: /dr/applications/{application_ids.application_id}/brands/{brand_id}/models/{model_id}
   GetTemplate:
@@ -45,6 +55,10 @@ methods:
     output:
       name: EndDeviceTemplate
     http:
+    - method: GET
+      path: /dr/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/template
+    - method: GET
+      path: /dr/vendors/{end_device_profile_ids.vendor_id}/profiles/{end_device_profile_ids.vendor_profile_id}/template
     - method: GET
       path: /dr/applications/{application_ids.application_id}/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/template
     - method: GET
@@ -57,6 +71,8 @@ methods:
       name: MessagePayloadDecoder
     http:
     - method: GET
+      path: /dr/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/formatters/uplink/decoder
+    - method: GET
       path: /dr/applications/{application_ids.application_id}/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/formatters/uplink/decoder
   GetDownlinkDecoder:
     name: GetDownlinkDecoder
@@ -66,6 +82,8 @@ methods:
       name: MessagePayloadDecoder
     http:
     - method: GET
+      path: /dr/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/formatters/downlink/decoder
+    - method: GET
       path: /dr/applications/{application_ids.application_id}/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/formatters/downlink/decoder
   GetDownlinkEncoder:
     name: GetDownlinkEncoder
@@ -74,5 +92,7 @@ methods:
     output:
       name: MessagePayloadEncoder
     http:
+    - method: GET
+      path: /dr/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/formatters/downlink/encoder
     - method: GET
       path: /dr/applications/{application_ids.application_id}/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/formatters/downlink/encoder
