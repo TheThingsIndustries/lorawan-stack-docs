@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.20.2</p>
+        <p class="navbar-item is-size-7">v3.21.0</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -1517,6 +1517,7 @@ This reverts the authorization given with rpc AuthorizeApplication.
         HTTP bindings
       </th>
       <td>
+        <p><code>GET</code> <code>/api/v3/dr/brands</code></p>
         <p><code>GET</code> <code>/api/v3/dr/applications/{application_ids.application_id}/brands</code></p>
       </td>
     </tr>
@@ -1559,6 +1560,7 @@ This reverts the authorization given with rpc AuthorizeApplication.
         HTTP bindings
       </th>
       <td>
+        <p><code>GET</code> <code>/api/v3/dr/brands/{brand_id}</code></p>
         <p><code>GET</code> <code>/api/v3/dr/applications/{application_ids.application_id}/brands/{brand_id}</code></p>
       </td>
     </tr>
@@ -1601,8 +1603,10 @@ This reverts the authorization given with rpc AuthorizeApplication.
         HTTP bindings
       </th>
       <td>
-        <p><code>GET</code> <code>/api/v3/dr/applications/{application_ids.application_id}/brands/{brand_id}/models</code></p>
+        <p><code>GET</code> <code>/api/v3/dr/models</code></p>
+        <p><code>GET</code> <code>/api/v3/dr/brands/{brand_id}/models</code></p>
         <p><code>GET</code> <code>/api/v3/dr/applications/{application_ids.application_id}/models</code></p>
+        <p><code>GET</code> <code>/api/v3/dr/applications/{application_ids.application_id}/brands/{brand_id}/models</code></p>
       </td>
     </tr>
   </tbody>
@@ -1644,6 +1648,7 @@ This reverts the authorization given with rpc AuthorizeApplication.
         HTTP bindings
       </th>
       <td>
+        <p><code>GET</code> <code>/api/v3/dr/brands/{brand_id}/models/{model_id}</code></p>
         <p><code>GET</code> <code>/api/v3/dr/applications/{application_ids.application_id}/brands/{brand_id}/models/{model_id}</code></p>
       </td>
     </tr>
@@ -1686,6 +1691,8 @@ This reverts the authorization given with rpc AuthorizeApplication.
         HTTP bindings
       </th>
       <td>
+        <p><code>GET</code> <code>/api/v3/dr/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/template</code></p>
+        <p><code>GET</code> <code>/api/v3/dr/vendors/{end_device_profile_ids.vendor_id}/profiles/{end_device_profile_ids.vendor_profile_id}/template</code></p>
         <p><code>GET</code> <code>/api/v3/dr/applications/{application_ids.application_id}/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/template</code></p>
         <p><code>GET</code> <code>/api/v3/dr/applications/{application_ids.application_id}/vendors/{end_device_profile_ids.vendor_id}/profiles/{end_device_profile_ids.vendor_profile_id}/template</code></p>
       </td>
@@ -1729,6 +1736,7 @@ This reverts the authorization given with rpc AuthorizeApplication.
         HTTP bindings
       </th>
       <td>
+        <p><code>GET</code> <code>/api/v3/dr/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/formatters/uplink/decoder</code></p>
         <p><code>GET</code> <code>/api/v3/dr/applications/{application_ids.application_id}/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/formatters/uplink/decoder</code></p>
       </td>
     </tr>
@@ -1771,6 +1779,7 @@ This reverts the authorization given with rpc AuthorizeApplication.
         HTTP bindings
       </th>
       <td>
+        <p><code>GET</code> <code>/api/v3/dr/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/formatters/downlink/decoder</code></p>
         <p><code>GET</code> <code>/api/v3/dr/applications/{application_ids.application_id}/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/formatters/downlink/decoder</code></p>
       </td>
     </tr>
@@ -1813,6 +1822,7 @@ This reverts the authorization given with rpc AuthorizeApplication.
         HTTP bindings
       </th>
       <td>
+        <p><code>GET</code> <code>/api/v3/dr/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/formatters/downlink/encoder</code></p>
         <p><code>GET</code> <code>/api/v3/dr/applications/{application_ids.application_id}/brands/{version_ids.brand_id}/models/{version_ids.model_id}/{version_ids.firmware_version}/{version_ids.band_id}/formatters/downlink/encoder</code></p>
       </td>
     </tr>
@@ -2933,6 +2943,7 @@ If null, the time is selected based on slot availability. This is recommended in
       </th>
       <td>
           <p>Number of retransmissions.</p>
+          <p><code>gte</code>: <code>1</code></p>
           <p><code>lte</code>: <code>15</code></p>
       </td>
     </tr>
@@ -7206,7 +7217,10 @@ Copied on creation from template identified by version_ids.</p>
         Description
       </th>
       <td>
-          <p>Authentication code to claim ownership of the end device. Stored in Join Server.</p>
+          <p>Authentication code to claim ownership of the end device.
+From TTS v3.21.0 this field is stored in the Identity Server.
+For TTS versions &lt; 3.21.0, this field is stored in the Join Server.
+The value stored on the Identity Server takes precedence.</p>
       </td>
     </tr>
     
@@ -7420,7 +7434,7 @@ This field is set by the Application Server and stored in the Identity Server.</
         Description
       </th>
       <td>
-          <p><code>pattern</code>: <code>^[A-Z0-9]{1,32}$</code></p>
+          <p><code>pattern</code>: <code>^[a-zA-Z0-9]{1,32}$</code></p>
       </td>
     </tr>
     
@@ -7616,6 +7630,8 @@ This field is set by the Application Server and stored in the Identity Server.</
       </th>
       <td>
           <p>The LoRaWAN DevEUI.</p>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>8</code></p>
       </td>
     </tr>
     
@@ -7649,6 +7665,8 @@ This field is set by the Application Server and stored in the Identity Server.</
       </th>
       <td>
           <p>The LoRaWAN JoinEUI (AppEUI until LoRaWAN 1.0.3 end devices).</p>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>8</code></p>
       </td>
     </tr>
     
@@ -7682,6 +7700,8 @@ This field is set by the Application Server and stored in the Identity Server.</
       </th>
       <td>
           <p>The LoRaWAN DevAddr.</p>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>4</code></p>
       </td>
     </tr>
     
@@ -8114,6 +8134,16 @@ This field is set by the Application Server and stored in the Identity Server.</
         
   <code>bytes</code>
 </td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>4</code></p>
+      </td>
     </tr>
     
   </tbody>
@@ -8629,6 +8659,8 @@ This field is set by the Application Server and stored in the Identity Server.</
       </th>
       <td>
           <p>Secondary identifier, which can only be used in specific requests.</p>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>8</code></p>
       </td>
     </tr>
     
@@ -9142,7 +9174,6 @@ This field is set by the Application Server and stored in the Identity Server.</
       </th>
       <td>
           <p>Application identifiers.</p>
-          <p><code>required</code></p>
       </td>
     </tr>
     
@@ -9315,7 +9346,6 @@ This field is set by the Application Server and stored in the Identity Server.</
       </th>
       <td>
           <p>Application identifiers.</p>
-          <p><code>required</code></p>
       </td>
     </tr>
     
@@ -9874,7 +9904,6 @@ If this field is not specified, the server will attempt to parse the data with e
       </th>
       <td>
           <p>Application identifiers.</p>
-          <p><code>required</code></p>
       </td>
     </tr>
     
@@ -10110,7 +10139,6 @@ Use either EndDeviceVersionIdentifiers or EndDeviceProfileIdentifiers.</p>
       </th>
       <td>
           <p>Application identifiers.</p>
-          <p><code>required</code></p>
       </td>
     </tr>
     
@@ -10240,6 +10268,16 @@ Use either EndDeviceVersionIdentifiers or EndDeviceProfileIdentifiers.</p>
 </td>
     </tr>
     
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>8</code></p>
+      </td>
+    </tr>
+    
   </tbody>
 </table>
 
@@ -10264,6 +10302,16 @@ Use either EndDeviceVersionIdentifiers or EndDeviceProfileIdentifiers.</p>
 </td>
     </tr>
     
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>8</code></p>
+      </td>
+    </tr>
+    
   </tbody>
 </table>
 
@@ -10286,6 +10334,16 @@ Use either EndDeviceVersionIdentifiers or EndDeviceProfileIdentifiers.</p>
         
   <code>bytes</code>
 </td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>2</code></p>
+      </td>
     </tr>
     
   </tbody>
@@ -10353,6 +10411,16 @@ Use either EndDeviceVersionIdentifiers or EndDeviceProfileIdentifiers.</p>
 </td>
     </tr>
     
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>3</code></p>
+      </td>
+    </tr>
+    
   </tbody>
 </table>
 
@@ -10377,6 +10445,16 @@ Use either EndDeviceVersionIdentifiers or EndDeviceProfileIdentifiers.</p>
 </td>
     </tr>
     
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>3</code></p>
+      </td>
+    </tr>
+    
   </tbody>
 </table>
 
@@ -10399,6 +10477,16 @@ Use either EndDeviceVersionIdentifiers or EndDeviceProfileIdentifiers.</p>
         
   <code>bytes</code>
 </td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>4</code></p>
+      </td>
     </tr>
     
   </tbody>
@@ -10576,6 +10664,8 @@ Use either EndDeviceVersionIdentifiers or EndDeviceProfileIdentifiers.</p>
       </th>
       <td>
           <p>The unencrypted AES key.</p>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>16</code></p>
       </td>
     </tr>
     
@@ -10706,7 +10796,6 @@ Use either EndDeviceVersionIdentifiers or EndDeviceProfileIdentifiers.</p>
       </th>
       <td>
           <p>Application identifiers.</p>
-          <p><code>required</code></p>
       </td>
     </tr>
     
@@ -10948,7 +11037,6 @@ Use either EndDeviceVersionIdentifiers or EndDeviceProfileIdentifiers.</p>
       </th>
       <td>
           <p>Application identifiers.</p>
-          <p><code>required</code></p>
       </td>
     </tr>
     
@@ -16888,6 +16976,7 @@ If this field is not set, then the value is either unknown or irrelevant(Network
   "uplink_dwell_time": {},
   "downlink_dwell_time": {},
   "adr": {},
+  "schedule_downlinks": {},
 }</code></pre>
 </details>
 
@@ -18435,6 +18524,55 @@ If unset, the default value from Network Server configuration or regional parame
   </tbody>
 </table>
 
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>schedule_downlinks</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:BoolValue">
+  
+  <code>
+    
+    BoolValue
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Whether or not downlink messages should be scheduled.
+This option can be used in order to disable any downlink interaction with the end device. It will affect all types
+of downlink messages: data and MAC downlinks, and join accepts.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
 
 
 <h3 id="message:MACState">Message <code>MACState</code></h3>
@@ -18466,6 +18604,7 @@ This is used internally by the Network Server.</p>
   "last_downlink_at": "0001-01-01T00:00:00Z",
   "rejected_data_rate_ranges": {},
   "last_adr_change_f_cnt_up": 0,
+  "recent_mac_command_identifiers": [],
 }</code></pre>
 </details>
 
@@ -19460,6 +19599,58 @@ Elements are sorted in ascending order.</p>
       </th>
       <td>
           <p>Frame counter of uplink, which confirmed the last ADR parameter change.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>recent_mac_command_identifiers</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#enum:MACCommandIdentifier">
+  
+  <code>
+  
+  MACCommandIdentifier
+  </code>
+    
+  </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>MAC command identifiers sent by the end device in the last received uplink.
+The Network Server may choose to store only certain types of MAC
+command identifiers in the underlying implementation.</p>
+        
       </td>
     </tr>
     
@@ -22153,6 +22344,16 @@ Omitted if there are external URLs available (in sizes).</p>
 </td>
     </tr>
     
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>3</code></p>
+      </td>
+    </tr>
+    
   </tbody>
 </table>
 
@@ -22177,6 +22378,16 @@ Omitted if there are external URLs available (in sizes).</p>
 </td>
     </tr>
     
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>8</code></p>
+      </td>
+    </tr>
+    
   </tbody>
 </table>
 
@@ -22199,6 +22410,16 @@ Omitted if there are external URLs available (in sizes).</p>
         
   <code>bytes</code>
 </td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>8</code></p>
+      </td>
     </tr>
     
   </tbody>
@@ -22466,6 +22687,8 @@ a message corresponds to one RxMetadata.</p>
   "channel_index": 0,
   "hopping_width": 0,
   "frequency_drift": 0,
+  "gps_time": "0001-01-01T00:00:00Z",
+  "received_at": "0001-01-01T00:00:00Z",
   "advanced": {},
 }</code></pre>
 </details>
@@ -22608,6 +22831,15 @@ a message corresponds to one RxMetadata.</p>
   </code>
   
 </td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Timestamp at the end of the transmission, provided by the gateway. The accuracy is undefined.</p>
+      </td>
     </tr>
     
   </tbody>
@@ -23166,6 +23398,91 @@ This value equals <code>channel_rssi</code>.</p>
       </th>
       <td>
           <p>Frequency drift in Hz between start and end of an LR-FHSS packet (signed).</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>gps_time</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Timestamp at the end of the transmission, provided by the gateway.
+Guaranteed to be based on a GPS PPS signal, with an accuracy of 1 millisecond.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>received_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Timestamp at which the Gateway Server has received the message.</p>
       </td>
     </tr>
     
