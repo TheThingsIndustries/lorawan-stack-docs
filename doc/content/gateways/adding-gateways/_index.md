@@ -30,11 +30,11 @@ Go to **Gateways** in the top menu, and click **+ Register Gateway** to reach th
 
 
 
-Fill the **Gateway EUI** and click **Confirm** or **Continue without EUI**.
+Fill the **Gateway EUI** and click **Confirm**. Some gateways do not use a **Gateway EUI** (e.g. The Things Kickstarter Gateway), in which case you can just click on **Continue without EUI**.
 
-Depending of weather the **Gateway EUI** is claimable you will either be shown the claiming form or the manual registration form.
+Depending on whether the **Gateway EUI** is claimable you will either be shown the claiming form or the manual registration form.
 
-{{< note >}}Claiming may not be possible on your version of The Thing Stack, if not you will see the manual registration form by default.{{</ note >}}
+{{< note >}}Claiming of gateways is not supported on {{% tts %}} Open Source. In that case, you will see the manual registration form by default.{{</ note >}}
 
 {{< figure src="gateway-add.png" alt="Gateway add" >}}
 
@@ -42,7 +42,7 @@ On the manual registration form fill in the **Frequency Plan** and the **Gateway
 
 {{< figure src="gateway-creation.png" alt="Gateway creation" >}}
 
-On claiming form fill in the **Authentication Code**, **Gateway ID** and the **Frequency Plan**. Click **Claim Gateway** to finish.
+If your gateway is claimable (e.g. The Things Indoor Gateway), you will see the claiming form. Here, fill in the **Authentication Code**, **Gateway ID** and the **Frequency Plan**. Click **Claim Gateway** to finish.
 
 {{< figure src="gateway-claim.png" alt="Gateway claiming" >}}
 
