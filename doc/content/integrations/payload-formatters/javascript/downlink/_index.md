@@ -25,7 +25,7 @@ function encodeDownlink(input) {
     bytes: [1, 2, 3], // FRMPayload (byte array)
     fPort: 1,
     warnings: ["warning 1", "warning 2"], // optional
-    errors: ["error 1", "error 2"] // optional (if set, the message is dropped)
+    errors: ["error 1", "error 2"] // optional (if set, the encoding failed)
   }
 }
 
@@ -40,7 +40,7 @@ function decodeDownlink(input) {
       field: "value"
     },
     warnings: ["warning 1", "warning 2"], // optional
-    errors: ["error 1", "error 2"] // optional (if set, the message is dropped)
+    errors: ["error 1", "error 2"] // optional (if set, the decoding failed)
   }
 }
 ```

@@ -24,7 +24,7 @@ function decodeUplink(input) {
       bytes: input.bytes
     },
     warnings: ["warning 1", "warning 2"], // optional
-    errors: ["error 1", "error 2"] // optional (if set, the message is dropped)
+    errors: ["error 1", "error 2"] // optional (if set, the decoding failed)
   };
 }
 ```
@@ -43,7 +43,7 @@ The decoder function's output shown above is incorporated in the [`as.up.data.fo
 
 Uplink payload is transmitted as binary payload by the end device. {{% tts %}} shows this binary payload in the `frm_payload` field (Base64 encoded). The result of the `decodeUplink()` function is contained in the `decoded_payload` field.
 
-If an error is present in `errors`, the payload is invalid and the message will be dropped. Any warnings in `warnings` are informative.
+If an error is present in `errors`, the payload is invalid. If the decoder or the normalizer return an error, applications still receive the message but only the binary payload in `frm_payload`. Any warnings in `warnings` are informative.
 
 {{< note >}} You can test your uplink decoder, as well as simulate uplinks from {{% tts %}} Console. {{</ note >}}
 
@@ -69,14 +69,14 @@ function normalizeUplink(input) {
   return {
     data: {
       air: {
-        temperature: (input.data.temperature - 32) * 5/9 // Fahrenheit to Celcius 
+        temperature: (input.data.temperature - 32) * 5/9 // Fahrenheit to Celsius 
       },
       wind: {
         speed: input.data.windSpeed * 0.5144 // knots to m/s
       }
     },
     warnings: ["warning 1", "warning 2"], // optional
-    errors: ["error 1", "error 2"] // optional (if set, the message is dropped)
+    errors: ["error 1", "error 2"] // optional (if set, the normalization failed)
   }
 }
 ```
@@ -129,7 +129,7 @@ The normalized payload schema is continuously being extended to support more fie
   "air": {
     "pressure": 1032,         // Atmospheric pressure (hPa): [900..1100]
     "relativeHumidity": 43.9, // Relative humidity (%): [0..100]
-    "temperature": 21.5       // Temperature (Celcius): [-273.15..)
+    "temperature": 21.5       // Temperature (Celsius): [-273.15..)
   },
   "wind": {
     "direction": 321, // Direction (degrees): [0..360)
@@ -208,7 +208,7 @@ function normalizeUplink(input) {
 }
 ```
 
-Let's assume that the end device observed an event and performed some measurements. The end device transmitted the following binary payload: `0C B2 04 80 F7 AE` (hex encoded) on FPort 4. The Base64 equivalent of that binary payload is `DLIEgPeu` and the JavaScript byte array is `[ 12, 178, 4, 128, 247, 174 ]`. This is all the same, just a different representation.
+For example, the end device observed an event and performed some measurements. The end device transmitted the following binary payload: `0C B2 04 80 F7 AE` (hex encoded) on FPort 4. The Base64 equivalent of that binary payload is `DLIEgPeu` and the JavaScript byte array is `[ 12, 178, 4, 128, 247, 174 ]`. This is all the same, just a different representation.
 
 The uplink decoder gets the JavaScript byte array of the binary payload and FPort as input. {{% tts %}} sets `frm_payload` to the Base64 representation of the binary payload, and `decoded_payload` to the output `data` of the uplink decoder. If there are warnings, they are set in `decoded_payload_warnings`.
 
