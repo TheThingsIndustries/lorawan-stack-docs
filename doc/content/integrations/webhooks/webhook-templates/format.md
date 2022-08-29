@@ -40,7 +40,7 @@ The endpoint of the webhook can be configured using the following fields:
 - `format`: The format which the endpoint expects. Currently `json` and `protobuf` are supported.
 - `headers`: A mapping between the names of the headers and their values. The values can contain template fields.
 - `create-downlink-api-key`: Controls if an API Key specific to the service should be created on instantiation.
-- `baseurl`: The base URL of the endpoint. Can contain template fields.
+- `base-url`: The base URL of the endpoint.
 
 The message paths are provided in the `paths` object which can contain the following message types:
 
