@@ -1,7 +1,9 @@
 ---
-title: "Uplink Decoder"
+title: "Uplink"
 description: ""
 weight: 1
+aliases:
+  - "/integrations/payload-formatters/javascript/uplink-decoder"
 ---
 
 The Javascript `decodeUplink()` function is called when a data uplink message is received from a device. This function decodes the binary payload received from the end device to a human-readable JSON object that gets send upstream to the application.
@@ -12,32 +14,18 @@ The function takes an input object and returns an output object:
 
 ```js
 function decodeUplink(input) {
+  // input has the following structure:
+  // {
+  //   "bytes": [1, 2, 3], // FRMPayload (byte array)
+  //   "fPort": 1
+  // }
   return {
     data: {
       bytes: input.bytes
-    }
+    },
+    warnings: ["warning 1", "warning 2"],
+    errors: ["error 1", "error 2"]
   };
-}
-```
-
-The input object has the following structure:
-
-```json
-{
-  "bytes": [1, 2, 3],
-  "fPort": 1
-}
-```
-
-The output object has the following structure:
-
-```json
-{
-  "data": {
-    "bytes": [1, 2, 3]
-  },
-  "warnings": ["warning 1", "warning 2"],
-  "errors": ["error 1", "error 2"]
 }
 ```
 
@@ -53,13 +41,13 @@ The function's output shown above is incorporated in the [`as.up.data.forward`](
 }
 ```
 
-Uplink payload is constructed as an array of bytes on end device side. Before sending, the payload gets encoded with Base64 scheme. The object shown above contains this Base64-encoded value in the `frm_payload` field, because that is the format in which the payload is received on the server side. The result of the `decodeUplink()` function is contained in the `decoded_payload` field.
+Uplink payload is transmitted as binary payload by the end device. {{% tts %}} shows this binary payload in the `frm_payload` field (Base64 encoded). The result of the `decodeUplink()` function is contained in the `decoded_payload` field.
 
 If an error is present in `errors`, the payload is invalid and the message will be dropped. Any warnings in `warnings` are informative.
 
-{{< note >}} Keep in mind that you can test your uplink decoder, as well as simulate uplinks from {{% tts %}} Console. {{</ note >}}
+{{< note >}} You can test your uplink decoder, as well as simulate uplinks from {{% tts %}} Console. {{</ note >}}
 
-## Decode Uplink Example: The Things Node
+## Uplink Example: The Things Node
 
 Here is an example `decodeUplink()` function from The Things Node:
 
@@ -87,7 +75,9 @@ function decodeUplink(input) {
 }
 ```
 
-Let's assume that the end device performed event selection and some measurements (battery, light, temperature levels) and needs to send associated decimal values to {{% tts %}}: `12, 178, 4, 128, 247, 174`. Decimal values are first converted to bytes on the end device side, so we consider the following hexadecimal payload: `0C B2 04 80 F7 AE`. We can also assume that the message was sent on FPort 4. The payload is Base64-encoded before uplink transmission.
+Let's assume that the end device observed an event and performed some measurements. The end device transmitted the following binary payload: `0C B2 04 80 F7 AE` (hex encoded) on FPort 4. The Base64 equivalent of that binary payload is `DLIEgPeu` and the JavaScript byte array is `[ 12, 178, 4, 128, 247, 174 ]`. This is all the same, just a different representation.
+
+The uplink decoder gets the JavaScript byte array of the binary payload and FPort as input. {{% tts %}} sets `frm_payload` to the Base64 representation of the binary payload, and `decoded_payload` to the output `data` of the uplink decoder. If there are warnings, they are set in `decoded_payload_warnings`.
 
 The `data.uplink_message` object of the `as.up.data.forward` event will contain:
 
@@ -106,7 +96,5 @@ The `data.uplink_message` object of the `as.up.data.forward` event will contain:
   }
 }
 ```
-
-From the object shown above, one can see that the Base64-encoded uplink payload is contained in the `frm_payload` field, while the result of the `decodeUplink()` function is contained in the `decoded_payload` field. You can also observe how warnings are mapped to the `decoded_payload_warnings` object if certain conditions are met.
 
 {{< figure src="uplink-decoder.png" alt="Testing an uplink decoder" >}}
