@@ -236,27 +236,30 @@
 <li><code>format</code>: The format which the endpoint expects. Currently <code>json</code> and <code>protobuf</code> are supported.</li>
 <li><code>headers</code>: A mapping between the names of the headers and their values. The values can contain template fields.</li>
 <li><code>create-downlink-api-key</code>: Controls if an API Key specific to the service should be created on instantiation.</li>
-<li><code>baseurl</code>: The base URL of the endpoint. Can contain template fields.</li>
+<li><code>base-url</code>: The base URL of the endpoint.</li>
 </ul>
 <p>The message paths are provided in the <code>paths</code> object which can contain the following message types:</p>
 <ul>
-<li><code>uplink-message</code>: The path to which uplink messages will be sent. Can contain template fields.</li>
-<li><code>join-accept</code>: The path to which join accept messages will be sent. Can contain template fields.</li>
-<li><code>downlink-ack</code>: The path to which downlink acknowledgements will be sent. Can contain template fields.</li>
-<li><code>downlink-nack</code>: The path to which downlink not-acknowledged messages will be sent. Can contain template fields.</li>
-<li><code>downlink-sent</code>: The path to which downlink sent will be sent. Can contain template fields.</li>
-<li><code>downlink-failed</code>: The path to which downlink failures will be sent. Can contain template fields.</li>
-<li><code>downlink-queued</code>: The path to which downlink queued status will be sent. Can contain template fields.</li>
-<li><code>downlink-queue-invalidated</code>: The path to which downlink queue invalidated event will be sent. Can contain template fields. This is only used when the upstream platform carries out LoRaWAN <code>FRMPayload</code> encryption.</li>
-<li><code>location-solved</code>: The path to which the location of the device will be sent when resolved. Can contain template fields.</li>
-<li><code>service-data</code>: The path to which the data from integrations is sent. Data from services such as LoRa Cloud DAS and GLS will be sent here, for example. Can contain template fields.</li>
+<li><code>uplink-message</code>: The path to which uplink messages will be sent.</li>
+<li><code>uplink-normalized</code>: The path to which normalized uplink payloads will be sent.</li>
+<li><code>join-accept</code>: The path to which join accept messages will be sent.</li>
+<li><code>downlink-ack</code>: The path to which downlink acknowledgements will be sent.</li>
+<li><code>downlink-nack</code>: The path to which downlink not-acknowledged messages will be sent.</li>
+<li><code>downlink-sent</code>: The path to which downlink sent will be sent.</li>
+<li><code>downlink-failed</code>: The path to which downlink failures will be sent.</li>
+<li><code>downlink-queued</code>: The path to which downlink queued status will be sent.</li>
+<li><code>downlink-queue-invalidated</code>: The path to which downlink queue invalidated event will be sent. This is only used when the upstream platform carries out LoRaWAN <code>FRMPayload</code> encryption.</li>
+<li><code>location-solved</code>: The path to which the location of the device will be sent when resolved.</li>
+<li><code>service-data</code>: The path to which the data from integrations is sent. Data from services such as LoRa Cloud DAS and GLS will be sent here, for example.</li>
 </ul>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Not all of the messages types must be handled by the service. By omitting the field in the <code>paths</code> object, the message type will be disabled in the final webhook and the related messages will not be passed to the endpoint.
+  <p>The URL (<code>base-url</code>) and all paths can contain template fields.</p>
+<p>Not all of the messages types must be handled by the service. By omitting the field in the <code>paths</code> object, the message type will be disabled in the instantiated webhook configuration.</p>
+
 </div>
 
-<h2 id="field-mask-hahahugoshortcode-s2-hbhb">Field Mask <span class="tag is-light">New in 3.21.1</span>
+<h2 id="field-mask">Field Mask <span class="tag is-light">New in 3.21.1</span>
 
 </h2>
 <p>Field mask can be configured by providing field paths as a list named <code>field-mask</code> in the body of the webhook template and contain the following paths:</p>
@@ -385,6 +388,8 @@ up.uplink_message.confirmed
 up.uplink_message.consumed_airtime
 up.uplink_message.decoded_payload
 up.uplink_message.decoded_payload_warnings
+up.uplink_message.normalized_payload
+up.uplink_message.normalized_payload_warnings
 up.uplink_message.f_cnt
 up.uplink_message.f_port
 up.uplink_message.frm_payload
@@ -430,6 +435,55 @@ up.uplink_message.version_ids.model_id
 up.uplink_message.version_ids.serial_number
 up.uplink_message.version_ids.vendor_id
 up.uplink_message.version_ids.vendor_profile_id
+up.uplink_normalized
+up.uplink_normalized.confirmed
+up.uplink_normalized.consumed_airtime
+up.uplink_normalized.normalized_payload
+up.uplink_normalized.normalized_payload_warnings
+up.uplink_normalized.f_cnt
+up.uplink_normalized.f_port
+up.uplink_normalized.frm_payload
+up.uplink_normalized.locations
+up.uplink_normalized.network_ids
+up.uplink_normalized.network_ids.cluster_address
+up.uplink_normalized.network_ids.cluster_id
+up.uplink_normalized.network_ids.net_id
+up.uplink_normalized.network_ids.tenant_address
+up.uplink_normalized.network_ids.tenant_id
+up.uplink_normalized.received_at
+up.uplink_normalized.rx_metadata
+up.uplink_normalized.session_key_id
+up.uplink_normalized.settings
+up.uplink_normalized.settings.coding_rate
+up.uplink_normalized.settings.concentrator_timestamp
+up.uplink_normalized.settings.data_rate
+up.uplink_normalized.settings.data_rate.modulation
+up.uplink_normalized.settings.data_rate.modulation.fsk
+up.uplink_normalized.settings.data_rate.modulation.fsk.bit_rate
+up.uplink_normalized.settings.data_rate.modulation.lora
+up.uplink_normalized.settings.data_rate.modulation.lora.bandwidth
+up.uplink_normalized.settings.data_rate.modulation.lora.spreading_factor
+up.uplink_normalized.settings.data_rate.modulation.lrfhss
+up.uplink_normalized.settings.data_rate.modulation.lrfhss.coding_rate
+up.uplink_normalized.settings.data_rate.modulation.lrfhss.modulation_type
+up.uplink_normalized.settings.data_rate.modulation.lrfhss.operating_channel_width
+up.uplink_normalized.settings.downlink
+up.uplink_normalized.settings.downlink.antenna_index
+up.uplink_normalized.settings.downlink.invert_polarization
+up.uplink_normalized.settings.downlink.tx_power
+up.uplink_normalized.settings.enable_crc
+up.uplink_normalized.settings.frequency
+up.uplink_normalized.settings.time
+up.uplink_normalized.settings.timestamp
+up.uplink_normalized.version_ids
+up.uplink_normalized.version_ids.band_id
+up.uplink_normalized.version_ids.brand_id
+up.uplink_normalized.version_ids.firmware_version
+up.uplink_normalized.version_ids.hardware_version
+up.uplink_normalized.version_ids.model_id
+up.uplink_normalized.version_ids.serial_number
+up.uplink_normalized.version_ids.vendor_id
+up.uplink_normalized.version_ids.vendor_profile_id
 </code></pre>
         </div>
         <div class="is-clearfix">
@@ -501,10 +555,10 @@ up.uplink_message.version_ids.vendor_profile_id
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Aleksander Borowski on 15 Aug 2022.
+  Last changed by Johan Stokking on 29 Aug 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/74e64b4eb881fd719248aee5c0847b09ef2a1c58">
-      doc: Add `field_mask` to webhook docs (#935)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a7600f3b2dbaab00de0984b0a8008fef92ff24eb">
+      Document payload normalization (#939)
     </a>
 </p>
 

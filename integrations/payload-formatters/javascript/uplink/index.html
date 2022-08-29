@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.96.0" />
+  <title>Uplink | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/uplink/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.c994a55269632c4bc7be3364abf857e85ff170cc251dd025099769c910cbbcb4.css" integrity="sha256-yZSlUmljLEvHvjNkq/hX6F/xcMwlHdAlCZdpyRDLvLQ=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Uplink">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Uplink">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/uplink/">
+  <meta name="twitter:title" content="Uplink" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body><nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.21.0</p>
+      </a><div class="navbar-item navbar-search-brand">
+        <div class="field has-addons has-addons-centered">
+          <div class="control">
+            <input id="search-input-brand" class="input search-bar" type="text" placeholder="Search the docs..." type="text">
+          </div>
+        </div>
+      </div>
+      
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a><div class="navbar-item navbar-search-menu">
+            <div class="field has-addons has-addons-centered">
+              <div class="control">
+                <input id="search-input-menu" class="input search-bar" type="text" placeholder="Search the docs..." type="text">
+              </div>
+            </div>
+          </div></div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://accounts.thethingsindustries.com/fee-calculator">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+  <script type="text/javascript">
+    docsearch({
+      apiKey: "4372282a02970d8402d43457bf95d486",
+      indexName: "thethingsstack",
+      inputSelector: '#search-input-brand',
+      debug: false 
+    });
+    docsearch({
+      apiKey: "4372282a02970d8402d43457bf95d486",
+      indexName: "thethingsstack",
+      inputSelector: '#search-input-menu',
+      debug: false 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Integrations</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/integrations/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/" class="">Adding Applications</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/adding-integrations/" class="">Adding Integrations</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/" class="">Cloud Integrations</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/" class="">MQTT Server</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/pubsub/" class="">Pub/Sub</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/lora-cloud/" class="">LoRa Cloud</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/node-red/" class="">Node-RED</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/ifttt/" class="">IFTTT</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/" class="">Payload Formatters</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/create/" class="">Creating Payload Formatters</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/cayenne/" class="">CayenneLPP</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/device-repo/" class="">Device Repository</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/" class="">JavaScript</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/uplink/" class="is-active">Uplink</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/javascript/downlink/" class="">Downlink</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/storage/" class="">Storage Integration</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/" class="">Webhooks</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        <h1 class="title is-size-2">Uplink
+          
+        </h1>
+        
+        <div class="content">
+          <p>The JavaScript <code>decodeUplink()</code> function is called when a data uplink message is received from a device. This function decodes the binary payload received from the end device to a human-readable JSON object that gets send upstream to the application. If present, the <code>normalizeUplink()</code> function is called to normalize the decoded payload in a common data structure.</p>
+<p>The decoder function takes an input object and returns an output object:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// input has the following structure:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//   &#34;bytes&#34;: [1, 2, 3], // FRMPayload (byte array)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//   &#34;fPort&#34;: 1
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// }
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">bytes</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">warnings</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;warning 1&#34;</span><span class="p">,</span> <span class="s2">&#34;warning 2&#34;</span><span class="p">],</span> <span class="c1">// optional
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">errors</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;error 1&#34;</span><span class="p">,</span> <span class="s2">&#34;error 2&#34;</span><span class="p">]</span> <span class="c1">// optional (if set, the decoding failed)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The decoder function&rsquo;s output shown above is incorporated in the <a href="https://www.thethingsindustries.com/docs/reference/api/events/#event:as.up.data.forward"><code>as.up.data.forward</code></a> event, where the <code>data.uplink_message</code> object contains:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;AQID&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;decoded_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;bytes&#34;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Uplink payload is transmitted as binary payload by the end device. The Things Stack shows this binary payload in the <code>frm_payload</code> field (Base64 encoded). The result of the <code>decodeUplink()</code> function is contained in the <code>decoded_payload</code> field.</p>
+<p>If an error is present in <code>errors</code>, the payload is invalid. If the decoder or the normalizer return an error, applications still receive the message but only the binary payload in <code>frm_payload</code>. Any warnings in <code>warnings</code> are informative.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  You can test your uplink decoder, as well as simulate uplinks from The Things Stack Console.
+</div>
+
+<h2 id="normalized-payload-hahahugoshortcode-s3-hbhb">Normalized Payload <span class="tag is-light">New in 3.21.2</span>
+
+</h2>
+<p>The uplink decoder can return any data structure. This provides full flexibility: a decoder can return any measurement in any unit as well as any additional information.</p>
+<p>However, developers building applications that combine data from various device types may find it difficult to work with different data structures.</p>
+<p>This is what the normalization step is for: the decoded payload gets normalized to a data structure that is common for all device types. Normalized payload is complementary to decoded payload: some measurements or some information may not fit in the normalized payload data structure. Therefore, some application may use normalized payload while others use decoded payload carrying device specific information.</p>
+<p>The normalizer function takes the output from the decoder function and returns an output object:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">normalizeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// input has the following structure:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//   &#34;data&#34;: {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//     &#34;temperature&#34;: 50, // Fahrenheit
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//     &#34;windSpeed&#34;: 17.5 // knots
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//   }
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// }
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">air</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">temperature</span><span class="o">:</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">temperature</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span><span class="o">/</span><span class="mi">9</span> <span class="c1">// Fahrenheit to Celsius 
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">wind</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">speed</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">windSpeed</span> <span class="o">*</span> <span class="mf">0.5144</span> <span class="c1">// knots to m/s
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">warnings</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;warning 1&#34;</span><span class="p">,</span> <span class="s2">&#34;warning 2&#34;</span><span class="p">],</span> <span class="c1">// optional
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="nx">errors</span><span class="o">:</span> <span class="p">[</span><span class="s2">&#34;error 1&#34;</span><span class="p">,</span> <span class="s2">&#34;error 2&#34;</span><span class="p">]</span> <span class="c1">// optional (if set, the normalization failed)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The normalizer function&rsquo;s output shown above is incorporated in the <a href="https://www.thethingsindustries.com/docs/reference/api/events/#event:as.up.data.forward"><code>as.up.data.forward</code></a> event, where the <code>data.uplink_message</code> object contains:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;decoded_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;temperature&#34;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;windSpeed&#34;</span><span class="p">:</span> <span class="mf">17.5</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;normalized_payload&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;air&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;temperature&#34;</span><span class="p">:</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;wind&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;speed&#34;</span><span class="p">:</span> <span class="mf">9.002</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>The Application Server also publishes an event for each returned normalized payload, in the <a href="https://www.thethingsindustries.com/docs/reference/api/events/#event:as.up.normalized.forward"><code>as.up.normalized.forward</code></a> event, where the <code>data.uplink_normalized</code> object contains:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;normalized_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;air&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;temperature&#34;</span><span class="p">:</span> <span class="mi">10</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;wind&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;speed&#34;</span><span class="p">:</span> <span class="mf">9.002</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The uplink message data contains an array of normalized payload measurements (<code>normalized_payload</code> is an array) while the normalized uplink data contains a single normalized payload measurement. See <a href="#multiple-measurements">below</a> why and how this is useful.
+</div>
+
+<h3 id="normalized-payload-schema">Normalized Payload Schema</h3>
+<p>The normalized payload schema is continuously being extended to support more fields. You can find the latest JSON Schema definition in the <a href="https://github.com/TheThingsNetwork/lorawan-devices/blob/master/lib/payload.json">LoRaWAN Device Repository</a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;time&#34;</span><span class="o">:</span> <span class="s2">&#34;2022-08-29T13:50:15Z&#34;</span><span class="p">,</span> <span class="c1">// Timestamp (RFC 3339)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="s2">&#34;air&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;pressure&#34;</span><span class="o">:</span> <span class="mi">1032</span><span class="p">,</span>         <span class="c1">// Atmospheric pressure (hPa): [900..1100]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;relativeHumidity&#34;</span><span class="o">:</span> <span class="mf">43.9</span><span class="p">,</span> <span class="c1">// Relative humidity (%): [0..100]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;temperature&#34;</span><span class="o">:</span> <span class="mf">21.5</span>       <span class="c1">// Temperature (Celsius): [-273.15..)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;wind&#34;</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;direction&#34;</span><span class="o">:</span> <span class="mi">321</span><span class="p">,</span> <span class="c1">// Direction (degrees): [0..360)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="s2">&#34;speed&#34;</span><span class="o">:</span> <span class="mf">5.2</span>      <span class="c1">// Speed (m/s): [0..)
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><h3 id="multiple-measurements">Advanced: Return Multiple Measurements</h3>
+<p>Multiple measurements can be encoded by the end device in a single LoRaWAN uplink message. This is a good practice as it is more battery efficient. Therefore, the uplink decoder may find multiple measurements from the same sensor. The normalizer function can therefore return an array of measurements, as an alternative to a single measurement:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">normalizeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// input has the following structure:
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//   &#34;data&#34;: {
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//     &#34;readings&#34;: [
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//       { &#34;temperature&#34;: 51.4 },
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//       { &#34;temperature&#34;: 50.1 },
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//       { &#34;temperature&#34;: 56.8 }
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//     ]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">//   }
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="c1">// }
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">[];</span>
+</span></span><span class="line"><span class="cl">  <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">input</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">readings</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="p">.</span><span class="nx">push</span><span class="p">({</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">air</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">temperature</span><span class="o">:</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">readings</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nx">temperature</span> <span class="o">-</span> <span class="mi">32</span><span class="p">)</span> <span class="o">*</span> <span class="mi">5</span><span class="o">/</span><span class="mi">9</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">});</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="nx">data</span> <span class="c1">// this is now an array: [ { air: { temperature: ... } }, ... ]
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>When the normalizer function returns an array of measurements, Application Server publishes a normalized uplink event for each measurement, while there is still one uplink message event.</p>
+<h2 id="uplink-example-the-things-node">Uplink Example: The Things Node</h2>
+<p>Here is an example <code>decodeUplink()</code> function from The Things Node:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{};</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">events</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">1</span><span class="o">:</span> <span class="s2">&#34;setup&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">2</span><span class="o">:</span> <span class="s2">&#34;interval&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">3</span><span class="o">:</span> <span class="s2">&#34;motion&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="mi">4</span><span class="o">:</span> <span class="s2">&#34;button&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">event</span> <span class="o">=</span> <span class="nx">events</span><span class="p">[</span><span class="nx">input</span><span class="p">.</span><span class="nx">fPort</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">battery</span> <span class="o">=</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">light</span> <span class="o">=</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">3</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">temperature</span> <span class="o">=</span> <span class="p">(((</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">&amp;</span> <span class="mh">0x80</span> <span class="o">?</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="mh">0x100</span> <span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span> <span class="o">/</span> <span class="mi">100</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">warnings</span> <span class="o">=</span> <span class="p">[];</span>
+</span></span><span class="line"><span class="cl">  <span class="k">if</span> <span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">temperature</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mi">10</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">warnings</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="s2">&#34;it&#39;s cold&#34;</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="nx">data</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">warnings</span><span class="o">:</span> <span class="nx">warnings</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">normalizeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nx">air</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">temperature</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">temperature</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>For example, the end device observed an event and performed some measurements. The end device transmitted the following binary payload: <code>0C B2 04 80 F7 AE</code> (hex encoded) on FPort 4. The Base64 equivalent of that binary payload is <code>DLIEgPeu</code> and the JavaScript byte array is <code>[ 12, 178, 4, 128, 247, 174 ]</code>. This is all the same, just a different representation.</p>
+<p>The uplink decoder gets the JavaScript byte array of the binary payload and FPort as input. The Things Stack sets <code>frm_payload</code> to the Base64 representation of the binary payload, and <code>decoded_payload</code> to the output <code>data</code> of the uplink decoder. If there are warnings, they are set in <code>decoded_payload_warnings</code>.</p>
+<p>The <code>data.uplink_message</code> object of the <code>as.up.data.forward</code> event will contain:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;uplink_message&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;DLIEgPeu&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;decoded_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;battery&#34;</span><span class="p">:</span> <span class="mi">3250</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;event&#34;</span><span class="p">:</span> <span class="s2">&#34;setup&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;light&#34;</span><span class="p">:</span> <span class="mi">1152</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;temperature&#34;</span><span class="p">:</span> <span class="mf">-21.3</span>
+</span></span><span class="line"><span class="cl">    <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;decoded_payload_warnings&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;it&#39;s cold&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;normalized_payload&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;air&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;temperature&#34;</span><span class="p">:</span> <span class="mf">-21.3</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Since there is <code>normalized_payload</code>, there will also be a <code>as.up.normalized.forward</code> event published:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;uplink_normalized&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;DLIEgPeu&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;normalized_payload&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;air&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;temperature&#34;</span><span class="p">:</span> <span class="mf">-21.3</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><figure><img src="uplink-decoder.png"
+         alt="Testing an uplink decoder"/>
+</figure>
+        </div>
+        
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/integrations/payload-formatters/javascript/">← JavaScript</a>
+<a class="button is-pulled-right" href="/docs/integrations/payload-formatters/javascript/downlink/">Downlink →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#uplink-example-the-things-node'>Uplink Example: The Things Node</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/ttn-network/v3/90">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Johan Stokking on 29 Aug 2022.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a7600f3b2dbaab00de0984b0a8008fef92ff24eb">
+      Document payload normalization (#939)
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/payload-formatters/javascript/uplink/_index.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>
