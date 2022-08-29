@@ -82,15 +82,38 @@ In `docker-compose.yml` file, Docker is configured to run three services:
 
 The configuration in this guide uses a single instance of [PostgreSQL](https://www.postgresql.org/). Note that the `volumes` need to be set up correctly so that the database is persisted on your server's disk.
 
-In production, replace the `image` with a working, stable tag from [Docker Hub - Postgres](https://hub.docker.com/_/postgres).
+{{< tabs/container "Enterprise" "Open Source" >}}
+{{< tabs/tab "Enterprise" >}}
 
-It is also possible (and even preferred) to use a managed SQL database. In this case, you will need to configure the managed database URI with the `is.database-uri` [configuration option]({{< ref "reference/configuration/identity-server#database-options" >}}) or `TTN_LW_IS_DATABASE_URI` environment variable.
+In production, replace the `image` with a working, stable tag from [Docker Hub - TimescaleDB](https://hub.docker.com/r/timescale/timescaledb/tags).
 
 The simplest configuration for PostgreSQL looks like this (excerpted from the example `docker-compose.yml`):
 
 {{< highlight yaml "linenos=table,linenostart=4" >}}
 {{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=4 to=17 >}}
 {{< /highlight >}}
+
+{{< note >}}
+Alternatively, you can use a managed TimescaleDB database, like [Timescale Cloud](https://www.timescale.com/cloud). In that case, make sure to configure the [Identity Server]({{< ref "/reference/configuration/identity-server#database-options" >}}), [Application Server]({{< ref "/reference/configuration/application-server#storage-integration-options" >}}) and [Network Operations Center]({{< ref "/reference/configuration/network-operations-center#database-options" >}}) databases.
+{{< /note >}}
+
+{{< /tabs/tab >}}
+{{< tabs/tab "Open Source" >}}
+
+In production, replace the `image` with a working, stable tag from [Docker Hub - Postgres](https://hub.docker.com/_/postgres).
+
+The simplest configuration for PostgreSQL looks like this (excerpted from the example `docker-compose.yml`):
+
+{{< highlight yaml "linenos=table,linenostart=4" >}}
+{{< readfile path="/content/getting-started/installation/configuration/docker-compose-open-source.yml" from=4 to=15 >}}
+{{< /highlight >}}
+
+{{< note >}}
+Alternatively, you can use a managed PostgreSQL database. In that case, make sure to configure the [Identity Server]({{< ref "/reference/configuration/identity-server#database-options" >}}) database.
+{{< /note >}}
+
+{{< /tabs/tab >}}
+{{< /tabs/container >}}
 
 ### Redis
 
@@ -110,7 +133,7 @@ The simplest configuration for Redis looks like this (excerpted from the example
 
 ### {{% tts %}}
 
-#### Entrypoint and dependencies
+#### Entrypoint and Dependencies
 
 Docker Compose uses `ttn-lw-stack -c /config/ttn-lw-stack-docker.yml` as the container entry point, so that `ttn-lw-stack-docker.yml` configuration file is always loaded (more on the config file below).
 
@@ -205,12 +228,19 @@ If you skip setting up an email provider, {{% tts %}} will print emails to the s
 
 ### Component URLs
 
-Finally, the `console` section configures the URLs for the Web UI and the secret used
-by the console client. These tell {{% tts %}} where all its components are accessible.
+Finally, the `console` section configures the URLs for the Web UI and the secret used by the console client. These tell {{% tts %}} where all its components are accessible.
 
 The `client-secret` will be needed later when authorizing the Console. Be sure to set and remember it!
 
 {{< warning >}} Failure to correctly configure component URLs is a common problem that will prevent the stack from starting. Be sure to replace all instances of `thethings.example.com` with your domain name! {{</ warning >}}
+
+### NOC
+
+{{< distributions "Enterprise" >}} The `noc` section configures the Network Operations Center.
+
+Besides `ui` and `oauth` settings, storage settings need to be configured in the `store` section. If you're using Postgres read replicas to offload read requests or analytics traffic from the primary Postgres instance, you can configure it using the `read-database-uri`. You're also able to configure the batch window and size, as well as to set the retention period for raw data.
+
+To visualize data, configure the `grafana` section.
 
 ### Multi-tenancy
 

@@ -19,7 +19,7 @@ docker-compose pull
 Next, you need to initialize the database of the Identity Server:
 
 ```bash
-docker-compose run --rm stack is-db init
+docker-compose run --rm stack is-db migrate
 ```
 
 If you receive an error running {{% tts %}}, make sure a {{% tts %}} container isn't already running. Use `docker ps` to see running containers.
@@ -28,6 +28,12 @@ For the Storage Integration available in {{% tts %}} Enterprise, the database of
 
 ```bash
 docker-compose run --rm stack storage-db init
+```
+
+Network Operations Center, available in {{% tts %}} Enterprise, needs to be initialized with:
+
+```bash
+docker-compose run --rm stack noc-db init
 ```
 
 {{% tts %}} Enterprise requires a tenant to be present, even if multi-tenancy is not included in the license. You create a tenant with:
@@ -60,21 +66,43 @@ docker-compose run --rm stack is-db create-oauth-client \
   --redirect-uri "code"
 ```
 
-Afterwards, the same needs to be done for the Console. If running a multi-tenant environment, use option `--tenant-id NULL` to register the OAuth client for all tenants. For `--secret`, make sure to enter the same value as you set for `console.oauth.client-secret` in the `ttn-lw-stack-docker.yml` file in the [Configuration]({{< relref "configuration" >}}) step. 
+OAuth clients for the Console and Network Operations Center need to be created in Identity Server so they can use the login functionality.
+
+Use the following command with variables:
 
 ```bash
-CONSOLE_SECRET="your-console-secret"
-SERVER_ADDRESS="your-server-address"
+SERVER_ADDRESS=https://thethings.example.com
+ID=...
+NAME=...
+CLIENT_SECRET=...
+REDIRECT_URI=...
+REDIRECT_PATH=...
+LOGOUT_REDIRECT_URI=...
+LOGOUT_REDIRECT_PATH=...
 docker-compose run --rm stack is-db create-oauth-client \
-  --id console \
-  --name "Console" \
+  --id ${ID} \
+  --name "${NAME}" \
   --owner admin \
   --secret "${CONSOLE_SECRET}" \
-  --redirect-uri "${SERVER_ADDRESS}/console/oauth/callback" \
-  --redirect-uri "/console/oauth/callback" \
-  --logout-redirect-uri "${SERVER_ADDRESS}/console" \
-  --logout-redirect-uri "/console"
+  --redirect-uri "${REDIRECT_URI}" \
+  --redirect-uri "${REDIRECT_PATH}" \
+  --logout-redirect-uri "${LOGOUT_REDIRECT_URI}" \
+  --logout-redirect-uri "${LOGOUT_REDIRECT_PATH}"
 ```
+
+{{< note >}} In a multi-tenant environment, pass `--tenant-id NULL` to register the OAuth client for all tenants. {{< /note >}}
+
+Set the variables as follows:
+
+Key | Console | Network Operations Center
+--- | --- | ---
+`ID` | `console` | `noc`
+`NAME` | `Console` | `Network Operations Center`
+`CLIENT_SECRET` | Config: `console.oauth.client-secret` | Config: `noc.oauth.client-secret`
+`REDIRECT_URI` | `${SERVER_ADDRESS}/console/oauth/callback` | `${SERVER_ADDRESS}/noc/oauth/callback`
+`REDIRECT_PATH` | `/console/oauth/callback` | `/noc/oauth/callback`
+`LOGOUT_REDIRECT_URI` | `${SERVER_ADDRESS}/console` | `${SERVER_ADDRESS}/noc`
+`LOGOUT_REDIRECT_PATH` | `/console` | `/noc`
 
 ## Running {{% tts %}}
 
