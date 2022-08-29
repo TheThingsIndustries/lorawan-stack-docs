@@ -99,3 +99,5 @@ field-mask:
 ```
 
 When there are no paths in the field mask or there is no `field-mask` in the template, all fields will be present in the request message.
+
+For the full list of support fields, see [Field Mask]({{< relref "format#field-mask" >}}).
