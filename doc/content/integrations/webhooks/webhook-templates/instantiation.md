@@ -89,7 +89,7 @@ If the user has filled in the value of `username` with `user1` and the value of 
 
 ## Instantiation of Field Mask {{< new-in-version "3.21.1" >}}
 
-The fields that are sent in the webhook uplink message can be filtered. Field paths not specified in `field-mask` will not be present in the uplink message. Field paths are provided as a list, for example as:
+The request message data fields that are sent via webhooks can be filtered. If specified in `field-mask`, only these fields will be present in the request message to save bandwidth. Field paths are provided as a list, for example:
 
 ```yaml
 field-mask:
@@ -98,4 +98,6 @@ field-mask:
   - up.service_data
 ```
 
-When there are no paths in the field mask or there is no `field-mask` in the template all the fields are sent in the uplink message.
+When there are no paths in the field mask or there is no `field-mask` in the template, all fields will be present in the request message.
+
+For the full list of support fields, see [Field Mask]({{< relref "format#field-mask" >}}).

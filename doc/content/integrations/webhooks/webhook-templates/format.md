@@ -40,24 +40,29 @@ The endpoint of the webhook can be configured using the following fields:
 - `format`: The format which the endpoint expects. Currently `json` and `protobuf` are supported.
 - `headers`: A mapping between the names of the headers and their values. The values can contain template fields.
 - `create-downlink-api-key`: Controls if an API Key specific to the service should be created on instantiation.
-- `baseurl`: The base URL of the endpoint. Can contain template fields.
+- `base-url`: The base URL of the endpoint.
 
 The message paths are provided in the `paths` object which can contain the following message types:
 
-- `uplink-message`: The path to which uplink messages will be sent. Can contain template fields.
-- `join-accept`: The path to which join accept messages will be sent. Can contain template fields.
-- `downlink-ack`: The path to which downlink acknowledgements will be sent. Can contain template fields.
-- `downlink-nack`: The path to which downlink not-acknowledged messages will be sent. Can contain template fields.
-- `downlink-sent`: The path to which downlink sent will be sent. Can contain template fields.
-- `downlink-failed`: The path to which downlink failures will be sent. Can contain template fields.
-- `downlink-queued`: The path to which downlink queued status will be sent. Can contain template fields.
-- `downlink-queue-invalidated`: The path to which downlink queue invalidated event will be sent. Can contain template fields. This is only used when the upstream platform carries out LoRaWAN `FRMPayload` encryption.
-- `location-solved`: The path to which the location of the device will be sent when resolved. Can contain template fields.
-- `service-data`: The path to which the data from integrations is sent. Data from services such as LoRa Cloud DAS and GLS will be sent here, for example. Can contain template fields.
+- `uplink-message`: The path to which uplink messages will be sent.
+- `uplink-normalized`: The path to which normalized uplink payloads will be sent.
+- `join-accept`: The path to which join accept messages will be sent.
+- `downlink-ack`: The path to which downlink acknowledgements will be sent.
+- `downlink-nack`: The path to which downlink not-acknowledged messages will be sent.
+- `downlink-sent`: The path to which downlink sent will be sent.
+- `downlink-failed`: The path to which downlink failures will be sent.
+- `downlink-queued`: The path to which downlink queued status will be sent.
+- `downlink-queue-invalidated`: The path to which downlink queue invalidated event will be sent. This is only used when the upstream platform carries out LoRaWAN `FRMPayload` encryption.
+- `location-solved`: The path to which the location of the device will be sent when resolved.
+- `service-data`: The path to which the data from integrations is sent. Data from services such as LoRa Cloud DAS and GLS will be sent here, for example.
 
-{{< note >}} Not all of the messages types must be handled by the service. By omitting the field in the `paths` object, the message type will be disabled in the final webhook and the related messages will not be passed to the endpoint. {{</ note >}}
+{{< note >}}
+The URL (`base-url`) and all paths can contain template fields.
 
-## Field Mask {{< new-in-version "3.21.1" >}}
+Not all of the messages types must be handled by the service. By omitting the field in the `paths` object, the message type will be disabled in the instantiated webhook configuration.
+{{</ note >}}
+
+## Field Mask {{< new-in-version "3.21.1" >}} {#field-mask}
 
 Field mask can be configured by providing field paths as a list named `field-mask` in the body of the webhook template and contain the following paths:
 
@@ -187,6 +192,8 @@ up.uplink_message.confirmed
 up.uplink_message.consumed_airtime
 up.uplink_message.decoded_payload
 up.uplink_message.decoded_payload_warnings
+up.uplink_message.normalized_payload
+up.uplink_message.normalized_payload_warnings
 up.uplink_message.f_cnt
 up.uplink_message.f_port
 up.uplink_message.frm_payload
@@ -232,4 +239,53 @@ up.uplink_message.version_ids.model_id
 up.uplink_message.version_ids.serial_number
 up.uplink_message.version_ids.vendor_id
 up.uplink_message.version_ids.vendor_profile_id
+up.uplink_normalized
+up.uplink_normalized.confirmed
+up.uplink_normalized.consumed_airtime
+up.uplink_normalized.normalized_payload
+up.uplink_normalized.normalized_payload_warnings
+up.uplink_normalized.f_cnt
+up.uplink_normalized.f_port
+up.uplink_normalized.frm_payload
+up.uplink_normalized.locations
+up.uplink_normalized.network_ids
+up.uplink_normalized.network_ids.cluster_address
+up.uplink_normalized.network_ids.cluster_id
+up.uplink_normalized.network_ids.net_id
+up.uplink_normalized.network_ids.tenant_address
+up.uplink_normalized.network_ids.tenant_id
+up.uplink_normalized.received_at
+up.uplink_normalized.rx_metadata
+up.uplink_normalized.session_key_id
+up.uplink_normalized.settings
+up.uplink_normalized.settings.coding_rate
+up.uplink_normalized.settings.concentrator_timestamp
+up.uplink_normalized.settings.data_rate
+up.uplink_normalized.settings.data_rate.modulation
+up.uplink_normalized.settings.data_rate.modulation.fsk
+up.uplink_normalized.settings.data_rate.modulation.fsk.bit_rate
+up.uplink_normalized.settings.data_rate.modulation.lora
+up.uplink_normalized.settings.data_rate.modulation.lora.bandwidth
+up.uplink_normalized.settings.data_rate.modulation.lora.spreading_factor
+up.uplink_normalized.settings.data_rate.modulation.lrfhss
+up.uplink_normalized.settings.data_rate.modulation.lrfhss.coding_rate
+up.uplink_normalized.settings.data_rate.modulation.lrfhss.modulation_type
+up.uplink_normalized.settings.data_rate.modulation.lrfhss.operating_channel_width
+up.uplink_normalized.settings.downlink
+up.uplink_normalized.settings.downlink.antenna_index
+up.uplink_normalized.settings.downlink.invert_polarization
+up.uplink_normalized.settings.downlink.tx_power
+up.uplink_normalized.settings.enable_crc
+up.uplink_normalized.settings.frequency
+up.uplink_normalized.settings.time
+up.uplink_normalized.settings.timestamp
+up.uplink_normalized.version_ids
+up.uplink_normalized.version_ids.band_id
+up.uplink_normalized.version_ids.brand_id
+up.uplink_normalized.version_ids.firmware_version
+up.uplink_normalized.version_ids.hardware_version
+up.uplink_normalized.version_ids.model_id
+up.uplink_normalized.version_ids.serial_number
+up.uplink_normalized.version_ids.vendor_id
+up.uplink_normalized.version_ids.vendor_profile_id
 ```
