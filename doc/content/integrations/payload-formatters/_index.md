@@ -9,7 +9,7 @@ This section explains how to set up payload formatters for a specific end device
 
 <!--more-->
 
-In addition to the written instructions linked below, a video with instructions for creating Javascript and device repository payload formatters is available on [The Things Network youtube channel](https://youtu.be/4tii7MiD-yM).
+In addition to the written instructions linked below, a video with instructions for creating JavaScript and device repository payload formatters is available on [The Things Network YouTube channel](https://youtu.be/4tii7MiD-yM).
 
 <details><summary>Show video</summary>
 {{< youtube "4tii7MiD-yM" >}}
@@ -17,11 +17,11 @@ In addition to the written instructions linked below, a video with instructions 
 
 ## Types of Payload Formatters
 
-{{% tts %}} supports three types of payload formatters: Javascript, CayenneLPP, and Repository payload formatters.
+{{% tts %}} supports three types of payload formatters: JavaScript, CayenneLPP, and Repository payload formatters.
 
-### Javascript
+### JavaScript
 
-{{% tts %}} allows you to write your own custom payload formatters in Javascript. To find out how to write a custom Javascript payload formatter, see the [Javascript Payload Formatters]({{< ref "/integrations/payload-formatters/javascript" >}}) section.
+{{% tts %}} allows you to write your own custom payload formatters in JavaScript. To find out how to write a custom JavaScript payload formatter, see the [JavaScript Payload Formatters]({{< ref "/integrations/payload-formatters/javascript" >}}) section.
 
 ### CayeneLPP
 
@@ -29,9 +29,9 @@ In addition to the written instructions linked below, a video with instructions 
 
 ### Repository
 
-Device manufacturers may submit payload formatters designed to work with their devices. These are publicly available in {{% tts %}} [Device Repository](https://github.com/TheThingsNetwork/lorawan-devices/tree/master).
+Device manufacturers may submit payload formatters designed to work with their devices. These are publicly available in {{% tts %}} [Device Repository](https://github.com/TheThingsNetwork/lorawan-devices).
 
-Device repository payload formatters work right out of the box - no customization needed!
+Device repository payload formatters work right out of the box – no customization needed!
 
 ## Application and Device Specific Payload Formatters
 
