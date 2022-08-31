@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.21.0</p>
+        <p class="navbar-item is-size-7">v3.21.1</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -140,130 +140,37 @@
 <div class="whats-new">
   <div class="whats-new-content">
     <div class="whats-new-header">
-      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.21.0/>What's new in V3.21.0</a></h2>
+      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.21.1/>What's new in V3.21.1</a></h2>
       <a href="https://www.thethingsindustries.com/docs/whats-new/"><p class="see-more">See all release notes →</p></a>
     </div>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.21.0/">
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.21.1/">
       <div class="whats-new-body">
         <div class="whats-new-items-shadow whats-new-items-fade">
           <div class="whats-new-items">
             <h3 id="added">Added</h3>
 <ul>
-<li>Add RPC to check if a gateway EUI is claimable.</li>
-<li>OAuth client management in the account app.</li>
-<li>Support claim protection when claiming end devices on The Things Join Server.</li>
-<li>CLI commands <code>notifications list</code> and <code>notifications set-status</code> to manage user notifications.</li>
-<li>Support for class B and C downlink transmissions through multiple gateways simultaneously.</li>
+<li>New <code>SearchAccounts</code> RPC on the <code>EntityRegistrySearch</code> service.</li>
+<li>Prompt user to confirm navigation when changes have not been saved in the payload formatter form to prevent big change-drafts from getting lost.</li>
+<li>Event data pushed by webhooks can now be filtered with field masks.
+<ul>
+<li>Support for the field mask setup was added for both CLI and Console.</li>
+</ul>
+</li>
+<li>OpenID Connect identity providers which provide the <code>email_verified</code> field of the claims token as a string are now supported.
+<ul>
+<li>String value parsing is based on <a href="https://pkg.go.dev/strconv#ParseBool">strconv.ParseBool</a>.</li>
+</ul>
+</li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
-<li>Entities are now fully validated when updated in the stores.
-<ul>
-<li>Previously only the updated paths where validated. This lead to situations in which a partial update could cause the entity as a whole to reach an invalid state.</li>
-</ul>
-</li>
-<li>Application, gateway, end device and organization-tables in the Console are now sorted by creation time by default (newest first).</li>
-<li>Collaborator and API Key tables can now be sorted in the Console.</li>
-<li>The application table in the Console now shows the amount of end devices.</li>
-<li>The organizations table in the Console now shows the amount of collaborators.</li>
-<li>Table layouts for several entities have been improved on the Console.</li>
-<li>The Storage Integration now stores data using the <code>json</code> data type instead of <code>jsonb</code>. This is relevant for decoded payloads which may contain null characters.
-<ul>
-<li>This mainly affects the TimescaleDB/PostgreSQL backend.</li>
-<li>This requires a database schema migration (<code>ttn-lw-stack storage-db migrate</code>) because of the update column.</li>
-</ul>
-</li>
-<li>Default raw data retention for the Network Operation Center is now 3 days (instead of 30 days). You can override this with the <code>noc.store.raw-data-retention</code> setting.
-<ul>
-<li>For changes to take effect, perform a database schema migration (<code>tti-lw-stack noc-db migrate</code>).</li>
-</ul>
-</li>
+<li>Gateway registration in the Console has been updated to simplify the onboarding experience.</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>
-<p>End devices running on MAC versions higher or equal to 1.1 showing network downlink frame counters instead of application downlink frame counters.</p>
-</li>
-<li>
-<p>Wrong representation of time values between midnight and 1am (eg. 24:04:11) in the Console in some cases.### Added</p>
-</li>
-<li>
-<p>Network Operations Center with gateway insight. This is a new component that you can access at your deployment domain under the <code>/noc</code> path.</p>
-<ul>
-<li>This requires a database schema initialization (<code>tti-lw-stack noc-db init</code>). If you are currently using Postgres without TimescaleDB, <a href="https://docs.timescale.com/install/latest/#install-timescaledb">install the TimescaleDB extension</a> before initializing the database.</li>
-</ul>
-</li>
-<li>
-<p>Component selector for Join Server interoperability configuration. This allows administrators to declare separate Network Server and Application Server configuration for the same JoinEUI ranges in the same interoperability configuration. See <a href="https://www.thethingsindustries.com/docs/reference/interop-repository/">documentation</a>.</p>
-</li>
-<li>
-<p><code>BatchGetGatewayConnectionStats</code> RPC to fetch Gateway Connection Stats for a batch of gateways.</p>
-</li>
-<li>
-<p>The ability to disable the downlink scheduling mechanism for individual end devices (<code>mac-settings.schedule-downlinks</code>).</p>
-<ul>
-<li>This option is useful during a migration procedure in order to force the end device to join the new network. The Network Server will no longer schedule any data downlinks or MAC commands, and will stop answering potential join requests.</li>
-</ul>
-</li>
-<li>
-<p>Configurable limits for the number of entity memberships an organization or user can have, as well as limits on the number of end devices in an application.</p>
-<ul>
-<li>This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>) because of the added columns.</li>
-<li>This introduces new configuration options <code>is.{user,organization}-limits.{applications,clients,gateways}</code> and <code>is.application-limits.end-devices</code> that default to &ldquo;unlimited&rdquo; (consistent with the old behavior).</li>
-</ul>
-</li>
-<li>
-<p>A new implementation of the Identity Server storage layer. In v3.21.0 the new implementation is not yet used by default, but it can be enabled with the <code>is.bunstore</code> feature flag. A new database driver can be enabled with the <code>is.pgdriver</code> feature flag.</p>
-<ul>
-<li>This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>) because of added columns and views.</li>
-</ul>
-</li>
-<li>
-<p>Support for comma-separated (<code>,</code>) values in The Things Stack CSV file format for importing end devices.</p>
-</li>
-<li>
-<p>Support for the <code>RxParamSetup</code>, <code>RxTimingSetup</code>, <code>TxParamSetup</code>, and <code>DlChannel</code> sticky answer mechanism. The commands were supported previously, but subsequent sticky responses would cause the Network Server to drop the MAC command buffer in certain situations.</p>
-</li>
-<li>
-<p>Button with connection to the Network Operations Center in the Console.</p>
-</li>
-</ul>
-<h3 id="changed-1">Changed</h3>
-<ul>
-<li>Deleted users are no longer included in primary email addresses uniqueness checks. This allows a user to create a new account which uses the email address of a deleted account.
-<ul>
-<li>This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>) due to updated indices.</li>
-</ul>
-</li>
-<li>Tenants created with the CLI now use a generated password and have the tenant state approved by default.</li>
-<li>Tenant initial users are now always tenant administrator.</li>
-<li>The CLI settings fields <code>retry-config.enable_metadata</code> and <code>retry-config.default_timeout</code> have been renamed to <code>retry.enable-metadata</code> and <code>retry.default-timeout</code> for consistency reasons.</li>
-<li>Generated device ID based on a DevEUI from an imported CSV file is now prepended by <code>eui-</code>. This is consistent with generated device IDs by the Console.</li>
-<li>The Claim Authentication Code (CAC) field is stored in the Identity Server instead of the Join Server.
-<ul>
-<li>This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>) because of the added columns.</li>
-<li>CAC values stored currently in the Join Server should be migrated to the Identity Server. One method is to run the following CLI commands on each device with a CAC.
-<ul>
-<li>Read the current values using <code>ttn-lw-cli dev get &lt;application-id&gt; &lt;device-id&gt; --claim-authentication-code</code>. This will fetch the value stored in the Join Server as a fallback.</li>
-<li>Write back the value read <code>ttn-lw-cli dev set &lt;application-id&gt; &lt;device-id&gt; --claim-authentication-code.valid_from [xxx] --claim-authentication-code.valid_to [xxx] --claim-authentication-code.value &lt;xxx&gt;</code>. This will by default write to the Identity Server.</li>
-<li>Note that this requires a minimum CLI version of 3.21.0.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Device Repository no longer uses the <code>ApplicationID</code> for validating requests. Authentication is still necessary, but the <code>ApplicationID</code> field has been deprecated in the Device Repository API.</li>
-</ul>
-<h3 id="fixed-1">Fixed</h3>
-<ul>
-<li>Console showing <code>404 Not Found</code> errors for pages containing user IDs in the path, when the user ID has a length of two.</li>
-<li>CLI no longer panics when deleting a device without JoinEUI, this scenario only occurred when deleting a device that uses ABP.</li>
-<li>Console crashing when navigating to certain Packet Broker network configuration pages.</li>
-<li>Packet Broker network pages becoming inaccessible until refreshing after a user navigates to a non-existing network.</li>
-<li>The batch update query for <code>EndDevice.LastSeenAt</code> field now specifies the data type of the placeholders.
-<ul>
-<li>This resolves an issue in the Console where <code>Last activity</code> values were inconsistent.</li>
-</ul>
-</li>
+<li>CLI command <code>end-device template create</code> no longer breaks when providing field mask values.</li>
+<li>Device repository services no longer require ApplicationID in its request URL.</li>
+<li>Importing ABP devices via the CSV format now correctly handles the missing session key ID.</li>
 </ul>
 
           </div>
@@ -281,7 +188,7 @@
 <a href="https://www.thethingsindustries.com/docs/whats-new/">
   <div class="whats-new-800">
     <div class="whats-new-header-800">
-      <p>See what's new in V3.21.0</p>
+      <p>See what's new in V3.21.1</p>
       <p>-></p>
     </div>
   </div>
