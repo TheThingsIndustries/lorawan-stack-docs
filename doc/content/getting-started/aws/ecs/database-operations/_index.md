@@ -91,7 +91,26 @@ tti-lw-stack,is-db,init
 {{</ tabs/tab >}}
 {{</ tabs/container >}}
 
-{{< note >}} While initialization alone is needed for deployment itself, creating initial resources mentioned below is required for the stack to work. {{</ note >}}
+{{< note >}} While initialization alone is needed for deployment itself, creating initial resources mentioned below is required for {{% tts %}} to work. {{</ note >}}
+
+## Initialize Network Operations Center Database
+
+When deploying your main cluster with Network Operations Center for the first time, the database needs to be initialized.
+
+{{< tabs/container "AWS Console" "AWS CLI">}}
+{{< tabs/tab "AWS Console" >}}
+```
+tti-lw-stack,noc-db,init
+```
+{{</ tabs/tab >}}
+{{< tabs/tab "AWS CLI" >}}
+```
+["tti-lw-stack","noc-db","init"]
+```
+{{</ tabs/tab >}}
+{{</ tabs/container >}}
+
+{{< note >}} While initialization alone is needed for deployment itself, creating initial resources mentioned below is required for {{% tts %}} to work. {{</ note >}}
 
 ## Create a Tenant in the Identity Server Database (multi-tenant only)
 
@@ -131,27 +150,41 @@ tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=cli,--name=Command 
 
 {{< note >}} Replace `--tenant-id=NULL` with `--tenant-id=$TENANT_ID` in single-tenant deployments. {{</ note >}}
 
-## Create the OAuth Client for the Console
+## Create the OAuth Clients
+
+The Console and Network Operations Center are OAuth clients. These clients must be created before they can be used.
+
+Use the following command with variables:
 
 {{< tabs/container "AWS Console" "AWS CLI">}}
 {{< tabs/tab "AWS Console" >}}
 ```
-tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=$ID,--name=$NAME,--secret=$CLIENT_SECRET,--redirect-uri=/console/oauth/callback,--redirect-uri=https://$DOMAIN/console/oauth/callback,--logout-redirect-uri=/console,--logout-redirect-uri=https://$DOMAIN/console
+tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=$ID,--name=$NAME,--secret=$CLIENT_SECRET,--redirect-uri=$REDIRECT_PATH,--redirect-uri=$REDIRECT_URI,--logout-redirect-uri=$LOGOUT_REDIRECT_PATH,--logout-redirect-uri=$LOGOUT_REDIRECT_URI
 ```
 {{</ tabs/tab >}}
 {{< tabs/tab "AWS CLI" >}}
 ```
-["tti-lw-stack","is-db","create-oauth-client","--tenant-id=NULL","--id=$ID","--name=$NAME","--secret=$CLIENT_SECRET","--redirect-uri=/console/oauth/callback","--redirect-uri=https://$DOMAIN/console/oauth/callback","--logout-redirect-uri=/console","--logout-redirect-uri=https://$DOMAIN/console"]
+["tti-lw-stack","is-db","create-oauth-client","--tenant-id=NULL","--id=$ID","--name=$NAME","--secret=$CLIENT_SECRET","--redirect-uri=$REDIRECT_PATH","--redirect-uri=$REDIRECT_URI","--logout-redirect-uri=$LOGOUT_REDIRECT_PATH","--logout-redirect-uri=$LOGOUT_REDIRECT_URI"]
 ```
 {{</ tabs/tab >}}
 {{</ tabs/container >}}
 
 {{< note >}} 
 - Replace `--tenant-id=NULL` with `--tenant-id=$TENANT_ID` in single-tenant deployments.
-- Replace the values of `$ID`, `$NAME` and `$CLIENT_SECRET` with your own. `id` and `secret` can be found in the `<network>-<environment>-<cluster>-console-oauth-client` secret in the AWS Secrets Manager.
-- For secondary clusters (where the domain of the Console is not equal to the domain of the Identity Server), omit `--redirect-uri=/console/oauth/callback` and `--logout-redirect-uri=/console`.
-- You can use a similar command for the Device Claiming server and Network Operations Center if you use `/claim` and `/noc` instead of `/console` for the redirect URIs.
+- For secondary clusters (where the domain of the Console or Network Operations Center is not equal to the domain of the Identity Server), omit you can omit the `--redirect-uri` and `--logout-redirect-uri` to relative paths (only keep the URI).
 {{</ note >}}
+
+Set the variables as follows:
+
+Key | Console | Network Operations Center
+--- | --- | ---
+`ID` | Secrets Manager: `<network>-<environment>-<cluster>-console-oauth-client` | Secrets Manager: `<network>-<environment>-<cluster>-noc-oauth-client`
+`NAME` | `Console` | `Network Operations Center`
+`CLIENT_SECRET` | Secrets Manager: `<network>-<environment>-<cluster>-console-oauth-client` | Secrets Manager: `<network>-<environment>-<cluster>-noc-oauth-client`
+`REDIRECT_URI` | `https://${DOMAIN}/console/oauth/callback` | `https://${DOMAIN}/noc/oauth/callback`
+`REDIRECT_PATH` | `/console/oauth/callback` | `/noc/oauth/callback`
+`LOGOUT_REDIRECT_URI` | `https://${DOMAIN}/console` | `https://${DOMAIN}/noc`
+`LOGOUT_REDIRECT_PATH` | `/console` | `/noc`
 
 ## Create Admin User
 
@@ -234,6 +267,23 @@ tti-lw-stack,as-db,migrate
 {{< tabs/tab "AWS CLI" >}}
 ```
 ["tti-lw-stack","as-db","migrate"]
+```
+{{</ tabs/tab >}}
+{{</ tabs/container >}}
+
+## Migrate Network Operations Center Database
+
+Before upgrading the Network Operations Center to a new minor version, the database may need to be migrated.
+
+{{< tabs/container "AWS Console" "AWS CLI">}}
+{{< tabs/tab "AWS Console" >}}
+```
+tti-lw-stack,noc-db,migrate
+```
+{{</ tabs/tab >}}
+{{< tabs/tab "AWS CLI" >}}
+```
+["tti-lw-stack","noc-db","migrate"]
 ```
 {{</ tabs/tab >}}
 {{</ tabs/container >}}
