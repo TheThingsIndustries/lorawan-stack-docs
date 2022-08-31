@@ -27,9 +27,6 @@ Adding gateways using the Console or the CLI is usually most convenient, so thos
 
 Go to **Gateways** in the top menu, and click **+ Register Gateway** to reach the gateway registration page.
 
-
-
-
 Fill the **Gateway EUI** and click **Confirm**. Some gateways do not use a **Gateway EUI** (e.g. The Things Kickstarter Gateway), in which case you can just click on **Continue without EUI**.
 
 Depending on whether the **Gateway EUI** is claimable you will either be shown the claiming form or the manual registration form.

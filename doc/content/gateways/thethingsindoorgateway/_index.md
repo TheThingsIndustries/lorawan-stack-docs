@@ -11,7 +11,7 @@ This page guides you to connect {{% ttig %}} to {{% tts %}}.
 
 <!--more-->
 
-{{% ttig %}} is an 8 Channel LoRaWAN gateway, whose technical specifications can be found in [the official documentation](https://www.thethingsnetwork.org/docs/gateways/thethingsindoor/). 
+{{% ttig %}} is an 8 Channel LoRaWAN gateway, whose technical specifications can be found in [the official documentation](https://www.thethingsnetwork.org/docs/gateways/thethingsindoor/).
 
 ## Prerequisites
 
@@ -22,23 +22,29 @@ The gateway EUI can later be found at the bottom in the WiFi setup screen.
 
 {{< figure src="TTIG_EUI.png" alt="{{% ttig %}} EUI" >}}
 
-3. The WiFi password of the {{% ttig %}}, typically printed on the back of the gateway. 
+3. The WiFi password of the {{% ttig %}}, typically printed on the back of the gateway.
 
 ## Claiming {{% ttig %}}
 
 {{% ttig %}} is added to The Things Stack via a process called **Gateway Claiming**.
 
-{{< warning >}} Do not register your TTIGs via the regular option of **Adding Gateways**. {{</ warning >}}
+{{< note >}}Claiming of gateways is not supported on {{% tts %}} Open Source.{{</ note >}}
 
 {{< tabs/container "Console" "CLI" >}}
 
 {{< tabs/tab "Console" >}}
 
-Go to **Gateways** in the top menu, and click the **Claim Gateway** button on the upper right to reach the gateway claiming page.
+Go to **Gateways** in the top menu, and click **+ Register Gateway** to reach the gateway registration page.
 
-Fill the **Gateway EUI**, the **Claim authentication code** (the WiFi Password from Prerequisites), the **Gateway ID** and choose the appropriate **Frequency Plan**.
+Fill the **Gateway EUI** and click **Confirm**.
 
-Click **Claim gateway** to finish.
+Depending on whether the **Gateway EUI** is claimable you will either be shown the claiming form or the manual registration form.
+
+{{< warning >}} Do not register your TTIGs via the manual registration. All TTIGs should be claimable, if you see the manual registration form please contact support. {{</ warning >}}
+
+If your gateway is claimable, you will see the claiming form. Here, fill in the **Authentication Code**, **Gateway ID** and the **Frequency Plan**.
+
+Click **Claim Gateway** to finish.
 
 {{< figure src="TTIG_Claim.png" alt="{{% ttig %}} Claiming" >}}
 
@@ -100,10 +106,10 @@ Select the WiFi network by clicking the **+** button next to the desired network
 
 Click **Save and Reboot** to finish.
 
-If your configuration is correct, 
+If your configuration is correct,
   *  The gateway will blink GREEN for a few seconds until it connects to the selected WiFi network.
   * Then, it will blink from GREEN to RED and vice versa for a few seconds while it connects to the server and fetches the necessary configuration.
-  * Please allow 5-10 minutes for the gateway to pick up the new configuration. 
+  * Please allow 5-10 minutes for the gateway to pick up the new configuration.
 
 If this is the first time your gateway is being powered on/connected to WiFi, it might pick up a new firmware depending on when it was last updated. This is indicated by alternating GREEN/RED blinks of the LED. Please leave the gateway powered on when this happens.
 
@@ -193,7 +199,7 @@ Reboot your {{% ttig %}}. If the gateway status is still `Disconnected` after a 
 ### LED States
 
 |Color(s) | Illumination Pattern |Operating Mode | Meaning|
-|---|---|---|---| 
+|---|---|---|---|
 |GREEN|Blinking (freq 1 sec)|GW| WiFi not connected (or trying to connect)|
 |GREEN|Blinking (freq 1/4 sec)|GW| Connected to WiFi, establishing connection to LNS/configuring radio|
 |GREEN|Solid|GW| Connected to WiFi, connected to LNS backend, listening for packets|
