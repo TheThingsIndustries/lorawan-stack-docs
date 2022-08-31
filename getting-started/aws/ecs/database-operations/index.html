@@ -350,7 +350,43 @@
 
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  While initialization alone is needed for deployment itself, creating initial resources mentioned below is required for the stack to work.
+  While initialization alone is needed for deployment itself, creating initial resources mentioned below is required for The Things Stack to work.
+</div>
+
+<h2 id="initialize-network-operations-center-database">Initialize Network Operations Center Database</h2>
+<p>When deploying your main cluster with Network Operations Center for the first time, the database needs to be initialized.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="aws-console">
+      <a>
+        <span>AWS Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="aws-cli">
+      <a>
+        <span>AWS CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="aws-console">
+  <pre tabindex="0"><code>tti-lw-stack,noc-db,init
+</code></pre>
+</section>
+<section data-content="aws-cli">
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;noc-db&#34;,&#34;init&#34;]
+</code></pre>
+</section>
+
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  While initialization alone is needed for deployment itself, creating initial resources mentioned below is required for The Things Stack to work.
 </div>
 
 <h2 id="create-a-tenant-in-the-identity-server-database-multi-tenant-only">Create a Tenant in the Identity Server Database (multi-tenant only)</h2>
@@ -425,7 +461,9 @@
   Replace <code>--tenant-id=NULL</code> with <code>--tenant-id=$TENANT_ID</code> in single-tenant deployments.
 </div>
 
-<h2 id="create-the-oauth-client-for-the-console">Create the OAuth Client for the Console</h2>
+<h2 id="create-the-oauth-clients">Create the OAuth Clients</h2>
+<p>The Console and Network Operations Center are OAuth clients. These clients must be created before they can be used.</p>
+<p>Use the following command with variables:</p>
 <div class="tabs is-boxed">
   <ul>
     
@@ -445,11 +483,11 @@
 </div>
 <div class="tab-content content">
   <section data-content="aws-console">
-  <pre tabindex="0"><code>tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=$ID,--name=$NAME,--secret=$CLIENT_SECRET,--redirect-uri=/console/oauth/callback,--redirect-uri=https://$DOMAIN/console/oauth/callback,--logout-redirect-uri=/console,--logout-redirect-uri=https://$DOMAIN/console
+  <pre tabindex="0"><code>tti-lw-stack,is-db,create-oauth-client,--tenant-id=NULL,--id=$ID,--name=$NAME,--secret=$CLIENT_SECRET,--redirect-uri=$REDIRECT_PATH,--redirect-uri=$REDIRECT_URI,--logout-redirect-uri=$LOGOUT_REDIRECT_PATH,--logout-redirect-uri=$LOGOUT_REDIRECT_URI
 </code></pre>
 </section>
 <section data-content="aws-cli">
-  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;is-db&#34;,&#34;create-oauth-client&#34;,&#34;--tenant-id=NULL&#34;,&#34;--id=$ID&#34;,&#34;--name=$NAME&#34;,&#34;--secret=$CLIENT_SECRET&#34;,&#34;--redirect-uri=/console/oauth/callback&#34;,&#34;--redirect-uri=https://$DOMAIN/console/oauth/callback&#34;,&#34;--logout-redirect-uri=/console&#34;,&#34;--logout-redirect-uri=https://$DOMAIN/console&#34;]
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;is-db&#34;,&#34;create-oauth-client&#34;,&#34;--tenant-id=NULL&#34;,&#34;--id=$ID&#34;,&#34;--name=$NAME&#34;,&#34;--secret=$CLIENT_SECRET&#34;,&#34;--redirect-uri=$REDIRECT_PATH&#34;,&#34;--redirect-uri=$REDIRECT_URI&#34;,&#34;--logout-redirect-uri=$LOGOUT_REDIRECT_PATH&#34;,&#34;--logout-redirect-uri=$LOGOUT_REDIRECT_URI&#34;]
 </code></pre>
 </section>
 
@@ -459,13 +497,58 @@
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
   <ul>
 <li>Replace <code>--tenant-id=NULL</code> with <code>--tenant-id=$TENANT_ID</code> in single-tenant deployments.</li>
-<li>Replace the values of <code>$ID</code>, <code>$NAME</code> and <code>$CLIENT_SECRET</code> with your own. <code>id</code> and <code>secret</code> can be found in the <code>&lt;network&gt;-&lt;environment&gt;-&lt;cluster&gt;-console-oauth-client</code> secret in the AWS Secrets Manager.</li>
-<li>For secondary clusters (where the domain of the Console is not equal to the domain of the Identity Server), omit <code>--redirect-uri=/console/oauth/callback</code> and <code>--logout-redirect-uri=/console</code>.</li>
-<li>You can use a similar command for the Device Claiming server and Network Operations Center if you use <code>/claim</code> and <code>/noc</code> instead of <code>/console</code> for the redirect URIs.</li>
+<li>For secondary clusters (where the domain of the Console or Network Operations Center is not equal to the domain of the Identity Server), omit you can omit the <code>--redirect-uri</code> and <code>--logout-redirect-uri</code> to relative paths (only keep the URI).</li>
 </ul>
 
 </div>
 
+<p>Set the variables as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Console</th>
+<th>Network Operations Center</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ID</code></td>
+<td>Secrets Manager: <code>&lt;network&gt;-&lt;environment&gt;-&lt;cluster&gt;-console-oauth-client</code></td>
+<td>Secrets Manager: <code>&lt;network&gt;-&lt;environment&gt;-&lt;cluster&gt;-noc-oauth-client</code></td>
+</tr>
+<tr>
+<td><code>NAME</code></td>
+<td><code>Console</code></td>
+<td><code>Network Operations Center</code></td>
+</tr>
+<tr>
+<td><code>CLIENT_SECRET</code></td>
+<td>Secrets Manager: <code>&lt;network&gt;-&lt;environment&gt;-&lt;cluster&gt;-console-oauth-client</code></td>
+<td>Secrets Manager: <code>&lt;network&gt;-&lt;environment&gt;-&lt;cluster&gt;-noc-oauth-client</code></td>
+</tr>
+<tr>
+<td><code>REDIRECT_URI</code></td>
+<td><code>https://${DOMAIN}/console/oauth/callback</code></td>
+<td><code>https://${DOMAIN}/noc/oauth/callback</code></td>
+</tr>
+<tr>
+<td><code>REDIRECT_PATH</code></td>
+<td><code>/console/oauth/callback</code></td>
+<td><code>/noc/oauth/callback</code></td>
+</tr>
+<tr>
+<td><code>LOGOUT_REDIRECT_URI</code></td>
+<td><code>https://${DOMAIN}/console</code></td>
+<td><code>https://${DOMAIN}/noc</code></td>
+</tr>
+<tr>
+<td><code>LOGOUT_REDIRECT_PATH</code></td>
+<td><code>/console</code></td>
+<td><code>/noc</code></td>
+</tr>
+</tbody>
+</table>
 <h2 id="create-admin-user">Create Admin User</h2>
 <div class="tabs is-boxed">
   <ul>
@@ -625,6 +708,37 @@
 
 </div>
 
+<h2 id="migrate-network-operations-center-database">Migrate Network Operations Center Database</h2>
+<p>Before upgrading the Network Operations Center to a new minor version, the database may need to be migrated.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="aws-console">
+      <a>
+        <span>AWS Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="aws-cli">
+      <a>
+        <span>AWS CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="aws-console">
+  <pre tabindex="0"><code>tti-lw-stack,noc-db,migrate
+</code></pre>
+</section>
+<section data-content="aws-cli">
+  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;noc-db&#34;,&#34;migrate&#34;]
+</code></pre>
+</section>
+
+</div>
+
 <h2 id="migrate-device-claiming-server-database">Migrate Device Claiming Server Database</h2>
 <p>Before upgrading the Device Claiming Server to a new minor version, the database may need to be migrated.</p>
 <div class="tabs is-boxed">
@@ -686,13 +800,16 @@
       <li><a href='#initialize-identity-server-database'>Initialize Identity Server Database</a></li>
     
       
+      <li><a href='#initialize-network-operations-center-database'>Initialize Network Operations Center Database</a></li>
+    
+      
       <li><a href='#create-a-tenant-in-the-identity-server-database-multi-tenant-only'>Create a Tenant in the Identity Server Database (multi-tenant only)</a></li>
     
       
       <li><a href='#create-the-oauth-client-for-the-command-line-interface'>Create the OAuth Client for the Command-Line Interface</a></li>
     
       
-      <li><a href='#create-the-oauth-client-for-the-console'>Create the OAuth Client for the Console</a></li>
+      <li><a href='#create-the-oauth-clients'>Create the OAuth Clients</a></li>
     
       
       <li><a href='#create-admin-user'>Create Admin User</a></li>
@@ -708,6 +825,9 @@
     
       
       <li><a href='#migrate-application-server-database'>Migrate Application Server Database</a></li>
+    
+      
+      <li><a href='#migrate-network-operations-center-database'>Migrate Network Operations Center Database</a></li>
     
       
       <li><a href='#migrate-device-claiming-server-database'>Migrate Device Claiming Server Database</a></li>
@@ -750,10 +870,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Michał Borkowski on 13 May 2022.
+  Last changed by Nejra Selimović on 31 Aug 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/707768995b9fe60b10e1caf4b889039be04f9bc3">
-      Mention the NOC OAuth client (#867)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/8ed38574ff8493f0015fae6d5061d64ad7e143b9">
+      doc: Replace init with migrate, add NOC bootstrap and config info (#941)
     </a>
 </p>
 

@@ -208,10 +208,12 @@
 <p>The first time The Things Stack is started, it requires some initialization. Start by pulling the Docker images:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose pull
 </span></span></code></pre></div><p>Next, you need to initialize the database of the Identity Server:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack is-db init
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack is-db migrate
 </span></span></code></pre></div><p>If you receive an error running The Things Stack, make sure a The Things Stack container isn&rsquo;t already running. Use <code>docker ps</code> to see running containers.</p>
 <p>For the Storage Integration available in The Things Stack Enterprise, the database of the Application Server needs to be initialized as well:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack storage-db init
+</span></span></code></pre></div><p>Network Operations Center, available in The Things Stack Enterprise, needs to be initialized with:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack noc-db init
 </span></span></code></pre></div><p>The Things Stack Enterprise requires a tenant to be present, even if multi-tenancy is not included in the license. You create a tenant with:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack is-db create-tenant
 </span></span></code></pre></div><p>This will take the <code>tenancy.default-id</code> Tenant ID from the <a href="/docs/getting-started/installation/configuration/">configuration</a> in <code>ttn-lw-stack-docker.yml</code>. To specify another Tenant ID, use the <code>--id</code> parameter.</p>
@@ -228,19 +230,78 @@
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --no-secret <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --redirect-uri <span class="s2">&#34;local-callback&#34;</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --redirect-uri <span class="s2">&#34;code&#34;</span>
-</span></span></code></pre></div><p>Afterwards, the same needs to be done for the Console. If running a multi-tenant environment, use option <code>--tenant-id NULL</code> to register the OAuth client for all tenants. For <code>--secret</code>, make sure to enter the same value as you set for <code>console.oauth.client-secret</code> in the <code>ttn-lw-stack-docker.yml</code> file in the <a href="/docs/getting-started/installation/configuration/">Configuration</a> step.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">CONSOLE_SECRET</span><span class="o">=</span><span class="s2">&#34;your-console-secret&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">SERVER_ADDRESS</span><span class="o">=</span><span class="s2">&#34;your-server-address&#34;</span>
+</span></span></code></pre></div><p>OAuth clients for the Console and Network Operations Center need to be created in Identity Server so they can use the login functionality.</p>
+<p>Use the following command with variables:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">SERVER_ADDRESS</span><span class="o">=</span>https://thethings.example.com
+</span></span><span class="line"><span class="cl"><span class="nv">ID</span><span class="o">=</span>...
+</span></span><span class="line"><span class="cl"><span class="nv">NAME</span><span class="o">=</span>...
+</span></span><span class="line"><span class="cl"><span class="nv">CLIENT_SECRET</span><span class="o">=</span>...
+</span></span><span class="line"><span class="cl"><span class="nv">REDIRECT_URI</span><span class="o">=</span>...
+</span></span><span class="line"><span class="cl"><span class="nv">REDIRECT_PATH</span><span class="o">=</span>...
+</span></span><span class="line"><span class="cl"><span class="nv">LOGOUT_REDIRECT_URI</span><span class="o">=</span>...
+</span></span><span class="line"><span class="cl"><span class="nv">LOGOUT_REDIRECT_PATH</span><span class="o">=</span>...
 </span></span><span class="line"><span class="cl">docker-compose run --rm stack is-db create-oauth-client <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --id console <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --name <span class="s2">&#34;Console&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --id <span class="si">${</span><span class="nv">ID</span><span class="si">}</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --name <span class="s2">&#34;</span><span class="si">${</span><span class="nv">NAME</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --owner admin <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --secret <span class="s2">&#34;</span><span class="si">${</span><span class="nv">CONSOLE_SECRET</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --redirect-uri <span class="s2">&#34;</span><span class="si">${</span><span class="nv">SERVER_ADDRESS</span><span class="si">}</span><span class="s2">/console/oauth/callback&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --redirect-uri <span class="s2">&#34;/console/oauth/callback&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --logout-redirect-uri <span class="s2">&#34;</span><span class="si">${</span><span class="nv">SERVER_ADDRESS</span><span class="si">}</span><span class="s2">/console&#34;</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --logout-redirect-uri <span class="s2">&#34;/console&#34;</span>
-</span></span></code></pre></div><h2 id="running-the-things-stack">Running The Things Stack</h2>
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --redirect-uri <span class="s2">&#34;</span><span class="si">${</span><span class="nv">REDIRECT_URI</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --redirect-uri <span class="s2">&#34;</span><span class="si">${</span><span class="nv">REDIRECT_PATH</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --logout-redirect-uri <span class="s2">&#34;</span><span class="si">${</span><span class="nv">LOGOUT_REDIRECT_URI</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --logout-redirect-uri <span class="s2">&#34;</span><span class="si">${</span><span class="nv">LOGOUT_REDIRECT_PATH</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  In a multi-tenant environment, pass <code>--tenant-id NULL</code> to register the OAuth client for all tenants.
+</div>
+
+<p>Set the variables as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Console</th>
+<th>Network Operations Center</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ID</code></td>
+<td><code>console</code></td>
+<td><code>noc</code></td>
+</tr>
+<tr>
+<td><code>NAME</code></td>
+<td><code>Console</code></td>
+<td><code>Network Operations Center</code></td>
+</tr>
+<tr>
+<td><code>CLIENT_SECRET</code></td>
+<td>Config: <code>console.oauth.client-secret</code></td>
+<td>Config: <code>noc.oauth.client-secret</code></td>
+</tr>
+<tr>
+<td><code>REDIRECT_URI</code></td>
+<td><code>${SERVER_ADDRESS}/console/oauth/callback</code></td>
+<td><code>${SERVER_ADDRESS}/noc/oauth/callback</code></td>
+</tr>
+<tr>
+<td><code>REDIRECT_PATH</code></td>
+<td><code>/console/oauth/callback</code></td>
+<td><code>/noc/oauth/callback</code></td>
+</tr>
+<tr>
+<td><code>LOGOUT_REDIRECT_URI</code></td>
+<td><code>${SERVER_ADDRESS}/console</code></td>
+<td><code>${SERVER_ADDRESS}/noc</code></td>
+</tr>
+<tr>
+<td><code>LOGOUT_REDIRECT_PATH</code></td>
+<td><code>/console</code></td>
+<td><code>/noc</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="running-the-things-stack">Running The Things Stack</h2>
 <p>Start The Things Stack with:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose up
 </span></span></code></pre></div><p>This starts the stack, so you will see the stack logs being printed to your terminal. You can also start the stack in detached mode by adding <code>-d</code> to the command above. In that case you can get logs with <a href="https://docs.docker.com/compose/reference/logs/"><code>docker-compose logs</code></a>.</p>
@@ -313,10 +374,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 23 Mar 2022.
+  Last changed by Nejra Selimović on 31 Aug 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/60b1fdbfb69a93f576b466dde6e0c152550ed279">
-      doc: Address installation section feedback (#829)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/8ed38574ff8493f0015fae6d5061d64ad7e143b9">
+      doc: Replace init with migrate, add NOC bootstrap and config info (#941)
     </a>
 </p>
 

@@ -274,8 +274,26 @@
 </ul>
 <h3 id="postgresql-database">PostgreSQL Database</h3>
 <p>The configuration in this guide uses a single instance of <a href="https://www.postgresql.org/">PostgreSQL</a>. Note that the <code>volumes</code> need to be set up correctly so that the database is persisted on your server&rsquo;s disk.</p>
-<p>In production, replace the <code>image</code> with a working, stable tag from <a href="https://hub.docker.com/_/postgres">Docker Hub - Postgres</a>.</p>
-<p>It is also possible (and even preferred) to use a managed SQL database. In this case, you will need to configure the managed database URI with the <code>is.database-uri</code> <a href="https://www.thethingsindustries.com/docs/reference/configuration/identity-server/#database-options">configuration option</a> or <code>TTN_LW_IS_DATABASE_URI</code> environment variable.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="enterprise">
+      <a>
+        <span>Enterprise</span>
+      </a>
+    </li>
+    
+    <li data-tab="open-source">
+      <a>
+        <span>Open Source</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="enterprise">
+  <p>In production, replace the <code>image</code> with a working, stable tag from <a href="https://hub.docker.com/r/timescale/timescaledb/tags">Docker Hub - TimescaleDB</a>.</p>
 <p>The simplest configuration for PostgreSQL looks like this (excerpted from the example <code>docker-compose.yml</code>):</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -311,6 +329,52 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;127.0.0.1:5432:5432&#34;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Alternatively, you can use a managed TimescaleDB database, like <a href="https://www.timescale.com/cloud">Timescale Cloud</a>. In that case, make sure to configure the <a href="https://www.thethingsindustries.com/docs/reference/configuration/identity-server/#database-options">Identity Server</a>, <a href="https://www.thethingsindustries.com/docs/reference/configuration/application-server/#storage-integration-options">Application Server</a> and <a href="https://www.thethingsindustries.com/docs/reference/configuration/network-operations-center/#database-options">Network Operations Center</a> databases.
+</div>
+</section>
+<section data-content="open-source">
+  <p>In production, replace the <code>image</code> with a working, stable tag from <a href="https://hub.docker.com/_/postgres">Docker Hub - Postgres</a>.</p>
+<p>The simplest configuration for PostgreSQL looks like this (excerpted from the example <code>docker-compose.yml</code>):</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">  </span><span class="nt">postgres</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># In production, replace &#39;latest&#39; with tag from https://hub.docker.com/_/postgres?tab=tags</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">postgres:latest</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">POSTGRES_PASSWORD=root</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">POSTGRES_USER=root</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">POSTGRES_DB=ttn_lorawan</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">${DEV_DATA_DIR:-.env/data}/postgres:/var/lib/postgresql/data</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;127.0.0.1:5432:5432&#34;</span></span></span></code></pre></td></tr></table>
+</div>
+</div>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Alternatively, you can use a managed PostgreSQL database. In that case, make sure to configure the <a href="https://www.thethingsindustries.com/docs/reference/configuration/identity-server/#database-options">Identity Server</a> database.
+</div>
+</section>
+
+</div>
+
 <h3 id="redis">Redis</h3>
 <p>The configuration in this guide uses a single instance of <a href="https://redis.io/">Redis</a>. Again, note that the <code>volumes</code> need to be set up correctly so that the datastore is persisted on your server&rsquo;s disk.</p>
 <div class="notification is-info is-light has-text-dark">
@@ -346,7 +410,7 @@
 </div>
 </div>
 <h3 id="the-things-stack">The Things Stack</h3>
-<h4 id="entrypoint-and-dependencies">Entrypoint and dependencies</h4>
+<h4 id="entrypoint-and-dependencies">Entrypoint and Dependencies</h4>
 <p>Docker Compose uses <code>ttn-lw-stack -c /config/ttn-lw-stack-docker.yml</code> as the container entry point, so that <code>ttn-lw-stack-docker.yml</code> configuration file is always loaded (more on the config file below).</p>
 <p>In production, replace the <code>image</code> with a working, stable tag from <a href="https://hub.docker.com/r/thethingsindustries/lorawan-stack/tags">Docker Hub - The Things Industries</a> for Enterprise, or <a href="https://hub.docker.com/r/thethingsnetwork/lorawan-stack/tags">Docker Hub - The Things Network</a> for Open Source.</p>
 <p>The default command is <code>start</code>, which starts The Things Stack.</p>
@@ -894,14 +958,39 @@ as passwords for endpoints that you may want to keep for the internal use.</p>
 You can use Sendgrid or an SMTP server. For development purposes, you can use the <code>dir</code> provider that writes emails to a directory.
 If you skip setting up an email provider, The Things Stack will print emails to the stack logs.</p>
 <h3 id="component-urls">Component URLs</h3>
-<p>Finally, the <code>console</code> section configures the URLs for the Web UI and the secret used
-by the console client. These tell The Things Stack where all its components are accessible.</p>
+<p>Finally, the <code>console</code> section configures the URLs for the Web UI and the secret used by the console client. These tell The Things Stack where all its components are accessible.</p>
 <p>The <code>client-secret</code> will be needed later when authorizing the Console. Be sure to set and remember it!</p>
 <div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
   Failure to correctly configure component URLs is a common problem that will prevent the stack from starting. Be sure to replace all instances of <code>thethings.example.com</code> with your domain name!
 </div>
 
+<h3 id="noc">NOC</h3>
+<p>
+
+
+
+
+
+
+  
+    
+  
+
+
+
+  
+
+<a href="/docs/download" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Enterprise Only">
+
+  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
+
+</a>
+
+
+ The <code>noc</code> section configures the Network Operations Center.</p>
+<p>Besides <code>ui</code> and <code>oauth</code> settings, storage settings need to be configured in the <code>store</code> section. If you&rsquo;re using Postgres read replicas to offload read requests or analytics traffic from the primary Postgres instance, you can configure it using the <code>read-database-uri</code>. You&rsquo;re also able to configure the batch window and size, as well as to set the retention period for raw data.</p>
+<p>To visualize data, configure the <code>grafana</code> section.</p>
 <h3 id="multi-tenancy">Multi-tenancy</h3>
 <p>
 
@@ -1053,10 +1142,10 @@ by the console client. These tell The Things Stack where all its components are 
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Johan Stokking on 24 Jul 2022.
+  Last changed by Nejra Selimović on 31 Aug 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/cf535ac0e692d2abb39cfb660dc269cee2f76d2a">
-      Document Network Operations Center (#889)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/8ed38574ff8493f0015fae6d5061d64ad7e143b9">
+      doc: Replace init with migrate, add NOC bootstrap and config info (#941)
     </a>
 </p>
 
