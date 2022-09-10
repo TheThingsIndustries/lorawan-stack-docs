@@ -44,8 +44,8 @@ ttn-lw-cli templates execute [flags]
       --last-rj-count-0 uint32                                                                
       --last-rj-count-1 uint32                                                                
       --last-seen-at timestamp                                                                
-      --lorawan-phy-version string                                                            allowed values: PHY_UNKNOWN, unknown, PHY_V1_0, TS001_V1_0, 1.0, V1_0, 1.0.0, PHY_V1_0_1, TS001_V1_0_1, 1.0.1, V1_0_1, PHY_V1_0_2_REV_A, RP001_V1_0_2, 1.0.2, 1.0.2-a, V1_0_2_REV_A, V1_0_2, PHY_V1_0_2_REV_B, RP001_V1_0_2_REV_B, 1.0.2-b, V1_0_2_REV_B, PHY_V1_1_REV_A, RP001_V1_1_REV_A, 1.1-a, 1.1.0-a, V1_1_REV_A, RP001_V1_1_REV_B, PHY_V1_1_REV_B, V1_1_REV_B, 1.1-b, 1.1.0-b, PHY_V1_0_3_REV_A, RP001_V1_0_3_REV_A, 1.0.3-a, V1_0_3_REV_A, RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3
-      --lorawan-version string                                                                allowed values: MAC_UNKNOWN, UNKNOWN, unknown, MAC_V1_0, 1.0, 1.0.0, V1_0, MAC_V1_0_1, 1.0.1, V1_0_1, MAC_V1_0_2, V1_0_2, 1.0.2, MAC_V1_1, 1.1, V1_1, 1.1.0, MAC_V1_0_3, V1_0_3, 1.0.3, MAC_V1_0_4, 1.0.4, V1_0_4
+      --lorawan-phy-version string                                                            allowed values: PHY_UNKNOWN, unknown, PHY_V1_0, TS001_V1_0, V1_0, 1.0, 1.0.0, TS001_V1_0_1, PHY_V1_0_1, V1_0_1, 1.0.1, PHY_V1_0_2_REV_A, RP001_V1_0_2, V1_0_2, V1_0_2_REV_A, 1.0.2, 1.0.2-a, PHY_V1_0_2_REV_B, RP001_V1_0_2_REV_B, 1.0.2-b, V1_0_2_REV_B, PHY_V1_1_REV_A, RP001_V1_1_REV_A, V1_1_REV_A, 1.1.0-a, 1.1-a, PHY_V1_1_REV_B, RP001_V1_1_REV_B, 1.1.0-b, 1.1-b, V1_1_REV_B, PHY_V1_0_3_REV_A, RP001_V1_0_3_REV_A, 1.0.3-a, V1_0_3_REV_A, RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3
+      --lorawan-version string                                                                allowed values: MAC_UNKNOWN, unknown, UNKNOWN, MAC_V1_0, V1_0, 1.0.0, 1.0, MAC_V1_0_1, V1_0_1, 1.0.1, MAC_V1_0_2, 1.0.2, V1_0_2, MAC_V1_1, 1.1, V1_1, 1.1.0, MAC_V1_0_3, 1.0.3, V1_0_3, MAC_V1_0_4, V1_0_4, 1.0.4
       --mac-settings.adr.mode.dynamic.margin float32                                          
       --mac-settings.adr.mode.dynamic.max-data-rate-index string                              allowed values: DATA_RATE_0, 0, DATA_RATE_1, 1, DATA_RATE_2, 2, DATA_RATE_3, 3, DATA_RATE_4, 4, DATA_RATE_5, 5, DATA_RATE_6, 6, DATA_RATE_7, 7, DATA_RATE_8, 8, DATA_RATE_9, 9, DATA_RATE_10, 10, DATA_RATE_11, 11, DATA_RATE_12, 12, DATA_RATE_13, 13, DATA_RATE_14, 14, DATA_RATE_15, 15
       --mac-settings.adr.mode.dynamic.max-nb-trans uint32                                     
@@ -129,7 +129,7 @@ ttn-lw-cli templates execute [flags]
       --mac-state.last-dev-status-f-cnt-up uint32                                             
       --mac-state.last-downlink-at timestamp                                                  
       --mac-state.last-network-initiated-downlink-at timestamp                                
-      --mac-state.lorawan-version string                                                      allowed values: MAC_UNKNOWN, UNKNOWN, unknown, MAC_V1_0, 1.0.0, V1_0, 1.0, MAC_V1_0_1, 1.0.1, V1_0_1, MAC_V1_0_2, V1_0_2, 1.0.2, MAC_V1_1, V1_1, 1.1.0, 1.1, MAC_V1_0_3, 1.0.3, V1_0_3, MAC_V1_0_4, V1_0_4, 1.0.4
+      --mac-state.lorawan-version string                                                      allowed values: MAC_UNKNOWN, unknown, UNKNOWN, MAC_V1_0, 1.0.0, 1.0, V1_0, MAC_V1_0_1, 1.0.1, V1_0_1, MAC_V1_0_2, V1_0_2, 1.0.2, MAC_V1_1, V1_1, 1.1.0, 1.1, MAC_V1_0_3, V1_0_3, 1.0.3, MAC_V1_0_4, V1_0_4, 1.0.4
       --mac-state.pending-application-downlink.class-b-c.absolute-time timestamp              
       --mac-state.pending-application-downlink.confirmed                                      
       --mac-state.pending-application-downlink.correlation-ids strings                        
@@ -193,7 +193,7 @@ ttn-lw-cli templates execute [flags]
       --pending-mac-state.last-dev-status-f-cnt-up uint32                                     
       --pending-mac-state.last-downlink-at timestamp                                          
       --pending-mac-state.last-network-initiated-downlink-at timestamp                        
-      --pending-mac-state.lorawan-version string                                              allowed values: MAC_UNKNOWN, UNKNOWN, unknown, MAC_V1_0, V1_0, 1.0, 1.0.0, MAC_V1_0_1, V1_0_1, 1.0.1, MAC_V1_0_2, V1_0_2, 1.0.2, MAC_V1_1, V1_1, 1.1.0, 1.1, MAC_V1_0_3, 1.0.3, V1_0_3, MAC_V1_0_4, V1_0_4, 1.0.4
+      --pending-mac-state.lorawan-version string                                              allowed values: MAC_UNKNOWN, UNKNOWN, unknown, MAC_V1_0, 1.0, V1_0, 1.0.0, MAC_V1_0_1, V1_0_1, 1.0.1, MAC_V1_0_2, 1.0.2, V1_0_2, MAC_V1_1, 1.1, V1_1, 1.1.0, MAC_V1_0_3, 1.0.3, V1_0_3, MAC_V1_0_4, V1_0_4, 1.0.4
       --pending-mac-state.pending-join-request.cf-list.ch-masks bools                         
       --pending-mac-state.pending-join-request.cf-list.freq uint32Slice                       
       --pending-mac-state.pending-join-request.cf-list.type string                            allowed values: FREQUENCIES, CHANNEL_MASKS
@@ -258,6 +258,8 @@ ttn-lw-cli templates execute [flags]
       --version-ids.firmware-version string                                                   
       --version-ids.hardware-version string                                                   
       --version-ids.model-id string                                                           
+      --version-ids.vendor-id uint32                                                          
+      --version-ids.vendor-profile-id uint32                                                  
 ```
 
 ### Options inherited from parent commands

@@ -71,6 +71,8 @@ ttn-lw-cli applications pubsubs get [application-id] [pubsub-id] [flags]
       --service-data.topic                               select the service_data.topic field
       --uplink-message                                   select the uplink_message field and all allowed sub-fields
       --uplink-message.topic                             select the uplink_message.topic field
+      --uplink-normalized                                select the uplink_normalized field and all allowed sub-fields
+      --uplink-normalized.topic                          select the uplink_normalized.topic field
 ```
 
 ### Options inherited from parent commands

@@ -1,16 +1,22 @@
 ---
-title: "ttn-lw-cli end-devices"
-slug: ttn-lw-cli_end-devices
+title: "ttn-lw-cli end-devices list-bands"
+slug: ttn-lw-cli_end-devices_list-bands
 ---
 
-## ttn-lw-cli end-devices
+## ttn-lw-cli end-devices list-bands
 
-End Device commands
+List available band definitions
+
+```
+ttn-lw-cli end-devices list-bands [flags]
+```
 
 ### Options
 
 ```
-  -h, --help   help for end-devices
+      --band-id string       
+  -h, --help                 help for list-bands
+      --phy-version string   allowed values: PHY_UNKNOWN, unknown, TS001_V1_0, PHY_V1_0, 1.0, 1.0.0, V1_0, TS001_V1_0_1, PHY_V1_0_1, V1_0_1, 1.0.1, PHY_V1_0_2_REV_A, RP001_V1_0_2, V1_0_2_REV_A, 1.0.2, 1.0.2-a, V1_0_2, RP001_V1_0_2_REV_B, PHY_V1_0_2_REV_B, V1_0_2_REV_B, 1.0.2-b, PHY_V1_1_REV_A, RP001_V1_1_REV_A, 1.1.0-a, 1.1-a, V1_1_REV_A, RP001_V1_1_REV_B, PHY_V1_1_REV_B, 1.1-b, V1_1_REV_B, 1.1.0-b, RP001_V1_0_3_REV_A, PHY_V1_0_3_REV_A, 1.0.3-a, V1_0_3_REV_A, RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3
 ```
 
 ### Options inherited from parent commands
@@ -50,26 +56,5 @@ End Device commands
 
 ### SEE ALSO
 
-* [ttn-lw-cli]({{< relref "ttn-lw-cli" >}})	 - The Things Industries Command-line Interface
-* [ttn-lw-cli end-devices claim]({{< relref "ttn-lw-cli_end-devices_claim" >}})	 - Claim an end device (EXPERIMENTAL)
-* [ttn-lw-cli end-devices create]({{< relref "ttn-lw-cli_end-devices_create" >}})	 - Create an end device
-* [ttn-lw-cli end-devices delete]({{< relref "ttn-lw-cli_end-devices_delete" >}})	 - Delete an end device
-* [ttn-lw-cli end-devices downlink]({{< relref "ttn-lw-cli_end-devices_downlink" >}})	 - Application downlink commands
-* [ttn-lw-cli end-devices generate-qr]({{< relref "ttn-lw-cli_end-devices_generate-qr" >}})	 - Generate an end device QR code (EXPERIMENTAL)
-* [ttn-lw-cli end-devices get]({{< relref "ttn-lw-cli_end-devices_get" >}})	 - Get an end device
-* [ttn-lw-cli end-devices get-default-mac-settings]({{< relref "ttn-lw-cli_end-devices_get-default-mac-settings" >}})	 - Get Network Server default MAC settings for frequency plan and LoRaWAN version
-* [ttn-lw-cli end-devices get-dev-addr-prefixes]({{< relref "ttn-lw-cli_end-devices_get-dev-addr-prefixes" >}})	 - Get Network Server configured device address prefixes
-* [ttn-lw-cli end-devices get-net-id]({{< relref "ttn-lw-cli_end-devices_get-net-id" >}})	 - Get Network Server configured Net ID
-* [ttn-lw-cli end-devices list]({{< relref "ttn-lw-cli_end-devices_list" >}})	 - List end devices
-* [ttn-lw-cli end-devices list-bands]({{< relref "ttn-lw-cli_end-devices_list-bands" >}})	 - List available band definitions
-* [ttn-lw-cli end-devices list-frequency-plans]({{< relref "ttn-lw-cli_end-devices_list-frequency-plans" >}})	 - List available frequency plans for end devices
-* [ttn-lw-cli end-devices list-phy-versions]({{< relref "ttn-lw-cli_end-devices_list-phy-versions" >}})	 - List supported phy versions
-* [ttn-lw-cli end-devices list-qr-formats]({{< relref "ttn-lw-cli_end-devices_list-qr-formats" >}})	 - List QR code formats (EXPERIMENTAL)
-* [ttn-lw-cli end-devices provision]({{< relref "ttn-lw-cli_end-devices_provision" >}})	 - Provision end devices using vendor-specific data
-* [ttn-lw-cli end-devices reset]({{< relref "ttn-lw-cli_end-devices_reset" >}})	 - Reset state of an end device to factory defaults
-* [ttn-lw-cli end-devices search]({{< relref "ttn-lw-cli_end-devices_search" >}})	 - Search for end devices
-* [ttn-lw-cli end-devices set]({{< relref "ttn-lw-cli_end-devices_set" >}})	 - Set properties of an end device
-* [ttn-lw-cli end-devices storage]({{< relref "ttn-lw-cli_end-devices_storage" >}})	 - Storage Integration
-* [ttn-lw-cli end-devices templates]({{< relref "ttn-lw-cli_templates" >}})	 - End Device template commands
-* [ttn-lw-cli end-devices use-external-join-server]({{< relref "ttn-lw-cli_end-devices_use-external-join-server" >}})	 - Disassociate and delete the device from Join Server
+* [ttn-lw-cli end-devices]({{< relref "ttn-lw-cli_end-devices" >}})	 - End Device commands
 

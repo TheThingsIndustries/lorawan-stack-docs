@@ -31,6 +31,8 @@ description: ""
 
 {{< proto/message message="ApplicationUplink" >}}
 
+{{< proto/message message="ApplicationUplinkNormalized" >}}
+
 {{< proto/message message="ClassBCGatewayIdentifiers" >}}
 
 {{< proto/message message="DataRate" >}}

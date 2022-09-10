@@ -51,6 +51,8 @@ ttn-lw-cli applications webhooks list [application-id] [flags]
       --template-ids.template-id                                     select the template_ids.template_id field
       --uplink-message                                               select the uplink_message field and all allowed sub-fields
       --uplink-message.path                                          select the uplink_message.path field
+      --uplink-normalized                                            select the uplink_normalized field and all allowed sub-fields
+      --uplink-normalized.path                                       select the uplink_normalized.path field
 ```
 
 ### Options inherited from parent commands
