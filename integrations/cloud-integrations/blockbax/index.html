@@ -330,119 +330,114 @@
 <ol>
 <li>Own a Blockbax project or <a href="https://blockbax.com/about#contact">request one</a> if you do not have an account yet.</li>
 </ol>
-<h2 id="blockbax-setup">Blockbax Setup</h2>
-<p><a href="https://login.blockbax.com/">Login</a> to the Blockbax Platform.</p>
-<p>Create a <a href="https://blockbax.com/docs/subjects/#managing-subject-types">subject type</a> and configure metrics. External IDs for these metrics need to match the property names returned by the uplink payload formatter that will be <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/blockbax/#configure-the-things-stack">configured on The Things Stack</a>.</p>
-<figure><img src="blockbax-metric-external-id-in-payload.png"
-         alt="Relating Blockbax metrics to the Things Stack"/>
-</figure>
-
-<h2 id="configure-the-things-stack">Configure The Things Stack</h2>
-<p>Make sure your device is added to The Things Stack. See <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> for more info. Many <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/device-repo/">Device Repository</a> payload formatters output payloads such that it can be directly ingested by the Blockbax Platform. If this is not the case, then please follow the instruction below to create a custom payload formatter.</p>
-<h3 id="create-payload-formatter">Create payload formatter</h3>
-<p>On the left menu of your The Things Stack application, select <strong>Payload formatters → Uplink</strong>.</p>
-<p>Select <strong>Javascript</strong> payload formatter type.</p>
-<p>Paste the following contents in the <strong>Formatter parameter</strong> window:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">decoded</span> <span class="o">=</span> <span class="nx">decoder</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="c1">// For numeric metrics
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="o">&lt;</span><span class="nx">Blockbax</span><span class="o">-</span><span class="nx">external</span><span class="o">-</span><span class="nx">metric</span><span class="o">-</span><span class="nx">ID</span><span class="o">&gt;:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">exampleNumber</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">            <span class="c1">// For text metrics
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="o">&lt;</span><span class="nx">Blockbax</span><span class="o">-</span><span class="nx">external</span><span class="o">-</span><span class="nx">metric</span><span class="o">-</span><span class="nx">ID</span><span class="o">&gt;:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">exampleText</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">            <span class="c1">// For location metrics
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="o">&lt;</span><span class="nx">Blockbax</span><span class="o">-</span><span class="nx">external</span><span class="o">-</span><span class="nx">metric</span><span class="o">-</span><span class="nx">ID</span><span class="o">&gt;:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                <span class="nx">lat</span><span class="o">:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">exampleLatitude</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">                <span class="nx">lon</span><span class="o">:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">exampleLongitude</span>
-</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+<h2 id="preparing-an-inbound-connector-in-blockbax">Preparing an inbound connector in Blockbax</h2>
+<p><a href="https://login.blockbax.com/">Login</a> to the Blockbax Platform. Go to <strong>Settings</strong> and <strong>Inbound connectors</strong>.</p>
+<p>Create an <a href="https://blockbax.com/docs/project-settings/#inbound-connectors">inbound connector</a> accepting HTTP JSON payloads. The payload conversion script depends on the way the payload is formatted before it is being sent to Blockbax. By default when you add a known device in The Things Stack it comes with a payload formatter submitted by the device manufacturer from the <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/device-repo/">device repository</a>. In most cases data is returned as a simple JavaScript object containing numeric and text values as properties.</p>
+<p>In this case everything will work with the simple conversion script below. If not, you need to align the payload conversion script to the way your device formatter(s) output the payload. We will explain how to do this later. In any case it is a good starting point to start with the following script in your inbound connector.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param {JsonPayload} payload
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param {Context} context
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">convertPayload</span><span class="p">(</span><span class="nx">payload</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">timestamp</span> <span class="o">=</span> <span class="nx">date</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">received_at</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">subjectExternalId</span> <span class="o">=</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">end_device_ids</span><span class="p">.</span><span class="nx">device_id</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="p">[</span><span class="nx">metricExternalId</span><span class="p">,</span> <span class="nx">value</span><span class="p">]</span> <span class="k">of</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">uplink_message</span><span class="p">.</span><span class="nx">decoded_payload</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">context</span><span class="p">.</span><span class="nx">addMeasurement</span><span class="p">(</span><span class="nx">subjectExternalId</span> <span class="o">+</span> <span class="s2">&#34;$&#34;</span> <span class="o">+</span> <span class="nx">metricExternalId</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">timestamp</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">    <span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">decoder</span><span class="p">(</span><span class="nx">bytes</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="c1">// Add the logic that decodes the bytes from your device.
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">return</span> <span class="nx">decodedBytes</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>The functions presented above need to be modified against your setup. See example below.</p>
-<details><summary>Uplink payload formatter example</summary>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl">    <span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">decoded</span> <span class="o">=</span> <span class="nx">decoder</span><span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">)</span>
-</span></span><span class="line"><span class="cl">      <span class="k">return</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">          <span class="nx">battery</span><span class="o">:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">battery</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">          <span class="nx">temperature</span><span class="o">:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">temperature</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">          <span class="nx">humidity</span><span class="o">:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">humidity</span><span class="p">,</span>
-</span></span><span class="line"><span class="cl">          <span class="nx">door</span><span class="o">:</span> <span class="nx">decoded</span><span class="p">.</span><span class="nx">door</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">      <span class="p">};</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">function</span> <span class="nx">decoder</span><span class="p">(</span><span class="nx">bytes</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">decoded</span> <span class="o">=</span> <span class="p">{};</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">bytes</span><span class="p">.</span><span class="nx">length</span><span class="p">;)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">            <span class="kd">var</span> <span class="nx">channel_id</span> <span class="o">=</span> <span class="nx">bytes</span><span class="p">[</span><span class="nx">i</span><span class="o">++</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">            <span class="kd">var</span> <span class="nx">channel_type</span> <span class="o">=</span> <span class="nx">bytes</span><span class="p">[</span><span class="nx">i</span><span class="o">++</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">            <span class="c1">// BATTERY
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">if</span> <span class="p">(</span><span class="nx">channel_id</span> <span class="o">===</span> <span class="mh">0x01</span> <span class="o">&amp;&amp;</span> <span class="nx">channel_type</span> <span class="o">===</span> <span class="mh">0x75</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                <span class="nx">decoded</span><span class="p">.</span><span class="nx">battery</span> <span class="o">=</span> <span class="nx">bytes</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">                <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">            <span class="p">}</span>
-</span></span><span class="line"><span class="cl">            <span class="c1">// TEMPERATURE
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">channel_id</span> <span class="o">===</span> <span class="mh">0x03</span> <span class="o">&amp;&amp;</span> <span class="nx">channel_type</span> <span class="o">===</span> <span class="mh">0x67</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                <span class="c1">// ℃
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="nx">decoded</span><span class="p">.</span><span class="nx">temperature</span> <span class="o">=</span> <span class="nx">readInt16LE</span><span class="p">(</span><span class="nx">bytes</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="nx">i</span><span class="p">,</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="mi">10</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">                <span class="nx">i</span> <span class="o">+=</span> <span class="mi">2</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">                <span class="c1">// ℉
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// decoded.temperature = readInt16LE(bytes.slice(i, i + 2)) / 10 * 1.8 + 32;
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="c1">// i +=2;
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="p">}</span>
-</span></span><span class="line"><span class="cl">            <span class="c1">// HUMIDITY
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">channel_id</span> <span class="o">===</span> <span class="mh">0x04</span> <span class="o">&amp;&amp;</span> <span class="nx">channel_type</span> <span class="o">===</span> <span class="mh">0x68</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                <span class="nx">decoded</span><span class="p">.</span><span class="nx">humidity</span> <span class="o">=</span> <span class="nx">bytes</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">/</span> <span class="mi">2</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">                <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">            <span class="p">}</span>
-</span></span><span class="line"><span class="cl">            <span class="c1">// DOOR
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">channel_id</span> <span class="o">===</span> <span class="mh">0x06</span> <span class="o">&amp;&amp;</span> <span class="nx">channel_type</span> <span class="o">===</span> <span class="mh">0x00</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                <span class="nx">decoded</span><span class="p">.</span><span class="nx">door</span> <span class="o">=</span> <span class="p">(</span><span class="nx">bytes</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="o">?</span>  <span class="mi">0</span> <span class="o">:</span>  <span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">                <span class="nx">i</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">                <span class="k">break</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">            <span class="p">}</span>
-</span></span><span class="line"><span class="cl">        <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">decoded</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">function</span> <span class="nx">readUInt16LE</span><span class="p">(</span><span class="nx">bytes</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">value</span> <span class="o">=</span> <span class="p">(</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">value</span> <span class="o">&amp;</span> <span class="mh">0xffff</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">    <span class="kd">function</span> <span class="nx">readInt16LE</span><span class="p">(</span><span class="nx">bytes</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">        <span class="kd">var</span> <span class="nx">ref</span> <span class="o">=</span> <span class="nx">readUInt16LE</span><span class="p">(</span><span class="nx">bytes</span><span class="p">);</span>
-</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="nx">ref</span> <span class="o">&gt;</span> <span class="mh">0x7fff</span> <span class="o">?</span> <span class="nx">ref</span> <span class="o">-</span> <span class="mh">0x10000</span> <span class="o">:</span> <span class="nx">ref</span><span class="p">;</span>
-</span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span></code></pre></div></details>
-<p>When done, click <strong>Save changes</strong>.</p>
-<figure><img src="payload-formatter.png"
-         alt="Setting up the payload formatter"/>
-</figure>
-
-<h3 id="create-webhook">Create webhook</h3>
+</span></span></code></pre></div><p>Optionally you can check &lsquo;Automatically create subjects&rsquo;. This will create a subject automatically if a subject does not exist.</p>
+<h2 id="create-a-webhook-in-the-things-stack">Create a webhook in The Things Stack</h2>
 <p>Use the Blockbax <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a> to create a Webhook integration on The Things Stack. Select <strong>Integrations → Webhooks</strong> on the left hand menu. Click <strong>Add webhook</strong> and select the <strong>Blockbax</strong> tile.</p>
 <figure><img src="webhook.png"
          alt="Setting up the webhook"/>
 </figure>
 
-<p>Enter an arbitrary <strong>Webhook ID</strong>, enter your <strong>Project ID</strong> and <strong><a href="https://blockbax.com/docs/project-settings/#access-tokens">Access token</a></strong>. The project ID is contained in your project&rsquo;s URL, e.g. if the project URL is <code>app.blockbax.com/projects/40edc099-7a41-4af3-9fa4-2fa4bc23a87a/</code>, the project ID is <code>40edc099-7a41-4af3-9fa4-2fa4bc23a87a</code>.</p>
-<p>Additionally, you can choose to <a href="https://blockbax.com/docs/subjects/#creating-subjects">create subjects</a> manually with external IDs matching the device IDs. In that case set the <strong>Automatically create subjects?</strong> option to <code>false</code>. The default <code>true</code> will create a subject automatically if a subject does not exist and if the property names returned by the uplink payload formatter match the external IDs for these metrics in the Blockbax platform (see above).</p>
-<p>To see the values of all parameters of the Blockbax integration, click on the integration after you created it with the Webhook template.</p>
-<p>Once you have added the integration, check your Blockbax project to see the measurements coming in!</p>
+<p>Enter an arbitrary <strong>Webhook ID</strong>, enter your <strong><a href="https://blockbax.com/docs/project-settings/#access-tokens">Access token</a></strong> and <strong>Endpoint</strong>. The endpoint you can copy from the inbound connector settings.</p>
+<h2 id="further-set-up-your-blockbax-project">Further set up your Blockbax project</h2>
+<p>Once you&rsquo;ve added the webhook, payload are sent to Blockbax. Make sure your The Things Stack device is connected and has sent at least one payload. Now we are going to create a subject type which matches your device type(s) and further align your inbound connector if necessary. As an example we use the <a href="https://www.digitalmatter.com/devices/oyster-lorawan/">Oyster</a> from <a href="https://www.digitalmatter.com/">Digital Matter</a>, but the process is similar for other devices.</p>
+<p>When you expand the executions in your inbound connector you should see something similar to the execution logs below.</p>
+<figure><img src="execution-logs.png"
+         alt="Example execution logs from an Oyster device from Digital Matter"/>
+</figure>
+
+<p>In Blockbax ingestion IDs are used to map The Things Stack data to your subjects and metrics. By default ingestion IDs are derived from the subjects&rsquo; external IDs and metrics&rsquo; external IDs (e.g. <code>subjectExternalId$metricExternalId</code>) but you can also override these with custom ones. The inbound connector script configured in the previous step combines your device ID from The Things Stack and the property name returned by the payload formatter(s) into an ingestion ID (e.g. <code>example-device$type</code>). This allows for easy setup if you make sure your subject external IDs and metric external IDs match the ones you configure in Blockbax.</p>
+<p>Now in order to set up your Blockbax project create a <a href="https://blockbax.com/docs/subjects/#managing-subject-types">subject type</a> with a metric of the correct type for each external ID in your execution logs. For this example you would need to create ingested metrics with the following types and external IDs (highlighted also in the screenshot of the execution logs above):</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>External ID</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Text</td>
+<td><code>type</code></td>
+</tr>
+<tr>
+<td>Number</td>
+<td><code>inTrip</code></td>
+</tr>
+<tr>
+<td>Number</td>
+<td><code>batV</code></td>
+</tr>
+<tr>
+<td>Number</td>
+<td><code>fixFailed</code></td>
+</tr>
+<tr>
+<td>Location</td>
+<td><code>latLonDeg</code>*</td>
+</tr>
+<tr>
+<td>Number</td>
+<td><code>headingDeg</code></td>
+</tr>
+<tr>
+<td>Number</td>
+<td><code>speedKmph</code></td>
+</tr>
+</tbody>
+</table>
+<p>If you have enabled the setting to automatically create subjects in the inbound connector they will be created automatically when measurements are received and the metric external ID can be linked to one subject type. If you wish to <a href="https://blockbax.com/docs/subjects/#creating-subjects">create subjects</a> manually the subject&rsquo;s external IDs need to match the device IDs configured in The Things Stack. For this example that would be a subject with external ID <code>example-device</code>.</p>
+<p>(*) As you might have noted the <code>latLonDeg</code> external ID is not highlighted in the execution logs. This is because we do not to have the <code>latitudeDeg</code> and <code>longitudeDeg</code> as separate number metrics but as a location metric. In this way you are able to use the full location-based functionality in the Blockbax Platform such as viewing routes and setting geofences. You can do this by changing the conversion script to the one below.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-javascript" data-lang="javascript"><span class="line"><span class="cl"><span class="cm">/**
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param {JsonPayload} payload
+</span></span></span><span class="line"><span class="cl"><span class="cm"> * @param {Context} context
+</span></span></span><span class="line"><span class="cl"><span class="cm"> */</span>
+</span></span><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">convertPayload</span><span class="p">(</span><span class="nx">payload</span><span class="p">,</span> <span class="nx">context</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">timestamp</span> <span class="o">=</span> <span class="nx">date</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">received_at</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">subjectExternalId</span> <span class="o">=</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">end_device_ids</span><span class="p">.</span><span class="nx">device_id</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="kr">const</span> <span class="nx">location</span> <span class="o">=</span> <span class="p">{};</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="p">(</span><span class="kr">const</span> <span class="p">[</span><span class="nx">metricExternalId</span><span class="p">,</span> <span class="nx">value</span><span class="p">]</span> <span class="k">of</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">entries</span><span class="p">(</span><span class="nx">payload</span><span class="p">.</span><span class="nx">uplink_message</span><span class="p">.</span><span class="nx">decoded_payload</span><span class="p">))</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="nx">value</span> <span class="o">!=</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="p">(</span><span class="nx">metricExternalId</span> <span class="o">===</span> <span class="s2">&#34;latitudeDeg&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">location</span><span class="p">.</span><span class="nx">lat</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="nx">metricExternalId</span> <span class="o">===</span> <span class="s2">&#34;longitudeDeg&#34;</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">location</span><span class="p">.</span><span class="nx">lon</span> <span class="o">=</span> <span class="nx">value</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="nx">context</span><span class="p">.</span><span class="nx">addMeasurement</span><span class="p">(</span><span class="nx">subjectExternalId</span> <span class="o">+</span> <span class="s2">&#34;$&#34;</span> <span class="o">+</span> <span class="nx">metricExternalId</span><span class="p">,</span> <span class="nx">value</span><span class="p">,</span> <span class="nx">timestamp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nx">location</span><span class="p">.</span><span class="nx">lat</span> <span class="o">&amp;&amp;</span> <span class="nx">location</span><span class="p">.</span><span class="nx">lon</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">context</span><span class="p">.</span><span class="nx">addMeasurement</span><span class="p">(</span><span class="nx">subjectExternalId</span> <span class="o">+</span> <span class="s2">&#34;$&#34;</span> <span class="o">+</span> <span class="s2">&#34;latLonDeg&#34;</span><span class="p">,</span> <span class="nx">location</span><span class="p">,</span> <span class="nx">timestamp</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Now you are all set up, check your Blockbax project to see the measurements coming in!</p>
+<figure><img src="digital-matter-example.png"
+         alt="Digital Matter Oyster2 in Blockbax"/>
+</figure>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  <p>If you are familiar with JavaScript another option to determine the external IDs for the ingested metrics is to look at the source code of the device specific payload formatter. In this case you are also sure you do not miss any metrics which are only sent under certain conditions. In our example we used the Oyster from Digital Matter.</p>
+<p>The source code for the related payload formatter can be found <a href="https://github.com/TheThingsNetwork/lorawan-devices/blob/master/vendor/digital-matter/oyster.js">here</a>. The property names of the <code>decoded</code> object should be set as metric external IDs.</p>
+
+</div>
         </div>
         
           <div class="is-clearfix">
@@ -471,10 +466,13 @@
       <li><a href='#prerequisites'>Prerequisites</a></li>
     
       
-      <li><a href='#blockbax-setup'>Blockbax Setup</a></li>
+      <li><a href='#preparing-an-inbound-connector-in-blockbax'>Preparing an inbound connector in Blockbax</a></li>
     
       
-      <li><a href='#configure-the-things-stack'>Configure The Things Stack</a></li>
+      <li><a href='#create-a-webhook-in-the-things-stack'>Create a webhook in The Things Stack</a></li>
+    
+      
+      <li><a href='#further-set-up-your-blockbax-project'>Further set up your Blockbax project</a></li>
     
   </ul>
 
@@ -514,10 +512,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Blockbax on 02 Feb 2022.
+  Last changed by Blockbax on 12 Sep 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/398b8a2e4555d59659201c6cc4f7863cab75a40b">
-      doc: Update Blockbax integration docs (#753)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/d16eb743c8520b5a6aefa40999330eb8b4557676">
+      doc: Simplify Blockbax setup (#933)
     </a>
 </p>
 
