@@ -4,9 +4,9 @@ description: ""
 weight: 
 ---
 
-[Thinger.io](https://thinger.io/) is a cloud IoT Platform that provides every needed tool to prototype, scale and manage connected products in a very simple way. Our goal is to democratize the use of IoT making it accessible to the whole world, and streamlining the development of big IoT projects.
+[Thinger.io](https://thinger.io/) is a cloud IoT Platform that provides every needed tool to prototype, scale and manage connected products in a very simple way. Its goal is to democratize the use of IoT making it accessible to the whole world, and streamlining the development of big IoT projects.
 
-From [Thinger.io](https://thinger.io/) we wanted to offer an improved integration to {{% tts %}} users by providing easy to configure tools for the storing, analyzing and showing devices data in a simple way. [The plugin](https://docs.thinger.io/plugins/the-things-stack) allows to retrieve {{% tts %}} webhook messages to enhance the integration with some interesting features such as:
+[Thinger.io](https://thinger.io/) wants to offer an improved integration to {{% tts %}} users by providing easy to configure tools for the storing, analyzing and showing devices data in a simple way. [The plugin](https://docs.thinger.io/plugins/the-things-stack) allows to retrieve {{% tts %}} webhook messages to enhance the integration with some interesting features such as:
 
 - Uplink data payload processing
 - Downlink data payload processing
@@ -26,11 +26,11 @@ This section describes the different interfaces that can be used to configure th
 
 ### Integrating {{% tts %}} Applications
 
-The first step to perform the integration, is to create a new plugin configuration. It is possible to create multiple configuration profiles with custom behavior for each application deployed in {{% tts %}}. To create a new application profile, just type the Application ID and press the green **Add Application** button. Note that the ID must be exactly the same identifier defined in {{% tts %}} application.
+The first step to perform the integration, is to create a new plugin configuration on [Thinger.io](https://thinger.io/) Cloud. It is possible to create multiple configuration profiles with custom behavior for each application deployed in {{% tts %}}. To create a new application profile, just type the **Application ID** and press the green **Add Application** button. Note that this ID must exactly match the application ID defined in your {{% tts %}} application.
 
 {{< figure src="thingerio_default_settings.png" alt="[Thinger.io](https://thinger.io/) {{% tts %}} Plugin default settings" >}}
 
-The `Application Id` dropdown allows to select and configure a particular application profile, but if the "default" profile is selected, the configuration will be applied to all the applications integrated with the plugin.
+The `Application Id` dropdown allows to select and configure a particular application profile, but if the `Default` profile is selected, the configuration will be applied to all the applications integrated with the plugin.
 
 ### Uplink Settings
 
@@ -132,7 +132,7 @@ The downlink method should return a base64 string if {{% tts %}} application doe
 
 ### Uplink Configuration
 
-The last tab of the plugin configuration interface is called `Webhook Settings`, it has been created to help the developers to complete the integration in {{% tts %}} Console, by providing all the information required to setup the webhook profile. 
+The last tab of the plugin configuration interface is called **Webhook Settings**, it has been created to help the developers to complete the integration in {{% tts %}} Console, by providing all the information required to setup the webhook profile.
 
 {{< figure src="thingerio_webhook_settings.png" alt="[Thinger.io](https://thinger.io/) {{% tts %}} Plugin webhook settings tab" >}}
 
@@ -143,16 +143,16 @@ The REST API does not define the application ID, this parameter will be checked 
 To create a new webhook integration follow the next steps in {{% tts %}} web console:
 
 1. Select the Application to be integrated.
-2. In the main menu open the `Integrations` section and click the `Webhooks` option. The webhooks list will be shown.
+2. In the main menu open the **Integrations** section and click the **Webhooks** option. The webhooks list will be shown.
 
 {{< figure src="thingerio_tts_sidebar.png" alt="{{% tts %}} sidebar" >}}
 
-3. Clicking the **+Add webhook** blue button in the right top corner of the interface allows choosing between different webhooks integration templates. Select [Thinger.io](https://thinger.io/) template. Then, configure the webhook only requires filling the form with the information provided by [Thinger.io](https://thinger.io/) `Webhook Settings` tab and selecting JSON webhook format.
+3. Clicking the **+Add webhook** blue button in the right top corner of the interface allows choosing between different webhooks integration templates. Select [Thinger.io](https://thinger.io/) template. Then, configure the webhook only requires filling the form with the information provided by [Thinger.io](https://thinger.io/) **Webhook Settings** tab and selecting JSON webhook format.
 
 {{< figure src="thingerio_tts_webhook.png" alt="[Thinger.io](https://thinger.io/) {{% tts %}} webhook settings" >}}
 
 {{< note >}}
-The Authorization header must be set up using the access token including "Bearer" command
+The **Authorization header** must be set up using the access token including `Bearer` command
 {{</ note >}}
 
 ### Downlink Configuration
@@ -161,7 +161,7 @@ As part of the webhook template, the Download API key is automatically created, 
 
 ## Executing Downlink Processes
 
-[Thinger.io](https://thinger.io/)'s [{{% tts %}} Plugin](https://docs.thinger.io/plugins/the-things-stack) has been prepared to automatically manage sending downlink messages to {{% tts %}} server, this system takes the data from the device downlink property, autogenerated during device provisioning and inserts it as a response to the next HTTP request from the system. In this way we can create device configuration and controlling processes just modifying the value of this property by means of a [Dashboard widget](https://docs.thinger.io/features/dashboards), [Node-RED](https://docs.thinger.io/plugins/node-red), or direct API integration.
+[Thinger.io](https://thinger.io/)'s [{{% tts %}} Plugin](https://docs.thinger.io/plugins/the-things-stack) has been prepared to automatically manage sending downlink messages to {{% tts %}} server. [Thinger.io](https://thinger.io/) Cloud takes the data from the device downlink property, autogenerated during device provisioning, and inserts it as a response to the next HTTP request from the system. Therefore, allowing the creation of device configurations and being able to control processes by just modifying the value of this property by means of a [Dashboard widget](https://docs.thinger.io/features/dashboards), [Node-RED](https://docs.thinger.io/plugins/node-red), or direct API integration.
 
 1. Configure the plugin's downlink settings at [Thinger.io](https://thinger.io/)
 2. Write a codification script if required using the plugin's `downlink payload processing`
