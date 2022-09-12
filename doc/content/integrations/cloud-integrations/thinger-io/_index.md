@@ -169,3 +169,16 @@ As part of the webhook template, the Download API key is automatically created, 
 
 After this, the plugin will execute the payload processing and send it in response of the next {{% tts %}} API request to your server. It is possible to follow the trace of this communication by accessing the plugin's log going to `Plugins > Plugin profile > Logs`.
 
+## Monitor Your Data
+
+There are multiple ways to view the data sent by the device in [Thinger.io](https://thinger.io/).
+
+As long as the uplink messages are being sent by {{% tts %}}, the raw data will be available in the [Thinger.io](https://thinger.io/) **Data Bucket** configured or auto provisioned by the [{{% tts %}} Plugin](https://docs.thinger.io/plugins/the-things-stack), without any further configuration.
+
+{{< figure src="thingerio_data_bucket.png" alt="[Thinger.io](https://thinger.io/) data bucket showing raw data sent by {{% tts %}} device" >}}
+
+Nevertheless, it is recommended to create a [Dashboard](https://docs.thinger.io/features/dashboards) in [Thinger.io](https://thinger.io/) to be able to view the data in a more comprehensive way.
+
+{{< figure src="thingerio_data_dashboard.png" alt="[Thinger.io](https://thinger.io/) dashboard showing data from {{% tts %}} device" >}}
+
+
