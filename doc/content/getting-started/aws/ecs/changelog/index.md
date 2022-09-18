@@ -8,6 +8,10 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.21.2
+
+## 3.21.1
+
 ## 3.21.0
 
 ### `4-2a-configuration`

@@ -33,6 +33,7 @@ ttn-lw-cli applications webhooks set [application-id] [webhook-id] [flags]
       --template-fields stringToString           
       --template-ids.template-id string          
       --uplink-message.path string               
+      --uplink-normalized.path string            
       --webhook-id string                        
 ```
 

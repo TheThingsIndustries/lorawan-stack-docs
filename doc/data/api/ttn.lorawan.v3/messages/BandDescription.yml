@@ -1,0 +1,113 @@
+name: BandDescription
+fields:
+- name: id
+  type: string
+  default: ""
+- name: beacon
+  message:
+    name: BandDescription.Beacon
+  default: {}
+- name: ping_slot_frequencies
+  repeated:
+    type: uint64
+  default: []
+- name: max_uplink_channels
+  type: uint32
+  default: 0
+- name: uplink_channels
+  repeated:
+    message:
+      name: BandDescription.Channel
+  default: []
+- name: max_downlink_channels
+  type: uint32
+  default: 0
+- name: downlink_channels
+  repeated:
+    message:
+      name: BandDescription.Channel
+  default: []
+- name: sub_bands
+  repeated:
+    message:
+      name: BandDescription.SubBandParameters
+  default: []
+- name: data_rates
+  map_key:
+    type: uint32
+  map_value:
+    message:
+      name: BandDescription.BandDataRate
+  default: {}
+- name: freq_multiplier
+  type: uint64
+  default: 0
+- name: implements_cf_list
+  type: bool
+  default: false
+- name: cf_list_type
+  enum:
+    name: CFListType
+  default: FREQUENCIES
+- name: receive_delay_1
+  message:
+    package: google.protobuf
+    name: Duration
+  default: 0s
+- name: receive_delay_2
+  message:
+    package: google.protobuf
+    name: Duration
+  default: 0s
+- name: join_accept_delay_1
+  message:
+    package: google.protobuf
+    name: Duration
+  default: 0s
+- name: join_accept_delay_2
+  message:
+    package: google.protobuf
+    name: Duration
+  default: 0s
+- name: max_fcnt_gap
+  type: uint64
+  default: 0
+- name: supports_dynamic_adr
+  type: bool
+  default: false
+- name: adr_ack_limit
+  enum:
+    name: ADRAckLimitExponent
+  default: ADR_ACK_LIMIT_1
+- name: min_retransmit_timeout
+  message:
+    package: google.protobuf
+    name: Duration
+  default: 0s
+- name: max_retransmit_timeout
+  message:
+    package: google.protobuf
+    name: Duration
+  default: 0s
+- name: tx_offset
+  repeated:
+    type: float
+  default: []
+- name: max_adr_data_rate_index
+  enum:
+    name: DataRateIndex
+  default: DATA_RATE_0
+- name: tx_param_setup_req_support
+  type: bool
+  default: false
+- name: default_max_eirp
+  type: float
+  default: 0
+- name: default_rx2_parameters
+  message:
+    name: BandDescription.Rx2Parameters
+  default: {}
+- name: boot_dwell_time
+  message:
+    name: BandDescription.DwellTime
+  default: {}

@@ -52,6 +52,7 @@ ttn-lw-cli applications pubsubs set [application-id] [pubsub-id] [flags]
       --pubsub-id string                                         
       --service-data.topic string                                
       --uplink-message.topic string                              
+      --uplink-normalized.topic string                           
 ```
 
 ### Options inherited from parent commands
