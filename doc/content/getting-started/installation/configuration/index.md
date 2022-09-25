@@ -142,13 +142,13 @@ In production, replace the `image` with a working, stable tag from [Docker Hub -
 The default command is `start`, which starts {{% tts %}}.
 
 {{< highlight yaml "linenos=table,linenostart=53" >}}
-{{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=53 to=57 >}}
+{{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=53 to=58 >}}
 {{< /highlight >}}
 
 The `depends_on` field tells Docker Compose that {{% tts %}} depends on PostgreSQL and Redis. With this, Docker Compose will wait for PostgreSQL and Redis to come online before starting {{% tts %}}.
 
 {{< highlight yaml "linenos=table,linenostart=58" >}}
-{{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=58 to=60 >}}
+{{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=59 to=61 >}}
 {{< /highlight >}}
 
 {{< note >}} If using a managed SQL or Redis database, these can be removed from `depends_on` and the services do not need to be started in Docker. {{</ note >}}
@@ -158,7 +158,7 @@ The `depends_on` field tells Docker Compose that {{% tts %}} depends on PostgreS
 Under the `volumes` section, volumes for the files that need to be persisted on the disk are defined. There are stored blob files (such as profile pictures) and certificate files retrieved with ACME (if required). Also, local `./config/stack/` directory is mounted on the container under `/config`, so that {{% tts %}} can find the configuration file at `/config/ttn-lw-stack-docker.yml`.
 
 {{< highlight yaml "linenos=table,linenostart=61" >}}
-{{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=61 to=65 >}}
+{{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=62 to=66 >}}
 {{< /highlight >}}
 
 {{< note >}} If your `ttn-lw-stack-docker.yml` is in a directory other than `./config/stack`, you will need to change this volume accordingly. {{</ note >}}
@@ -172,7 +172,7 @@ The databases used by {{% tts %}} are configured in the `environment` section. I
 The `ports` section exposes {{% tts %}}'s ports outside the Docker container. Port `80` and `443` are mapped to the internal HTTP and HTTPS ports. The other ports have a direct mapping. If you don't need support for gateways and applications that don't use TLS, you can remove ports starting with `188`:
 
 {{< highlight yaml "linenos=table,linenostart=66" >}}
-{{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=66 to=94 >}}
+{{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=67 to=95 >}}
 {{< /highlight >}}
 
 ## Understanding {{% tts %}} Configuration
@@ -189,6 +189,29 @@ The example `ttn-lw-stack-docker.yml` file for {{% tts %}} Enterprise shown belo
 
 {{< distributions "Enterprise" >}} {{% tts %}} Enterprise requires a license, which can be purchased at the [products page](https://thethingsindustries.com/technology/pricing). This is specified in the `license` field, and can be either a `key` string, or a `file`path. See the [License configuration reference]({{< ref "/reference/configuration/the-things-stack#license" >}}) for more information.
 
+{{< highlight yaml "linenos=table,linenostart=2" >}}
+{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=2 to=6 >}}
+{{< /highlight >}}
+
+### Email
+
+{{% tts %}} sends emails to users, so the `email` section of the configuration defines how these are sent.
+You can use Sendgrid or an SMTP server. For development purposes, you can use the `dir` provider that writes emails to a directory.
+If you skip setting up an email provider, {{% tts %}} will print emails to the stack logs.
+
+{{< highlight yaml "linenos=table,linenostart=11" >}}
+{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=11 to=29 >}}
+{{< /highlight >}}
+
+### HTTP
+
+In the `http` section, HTTP server keys for encrypting and verifying cookies are configured, as well
+as passwords for endpoints that you may want to keep for the internal use.
+
+{{< highlight yaml "linenos=table,linenostart=43" >}}
+{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=43 to=50 >}}
+{{< /highlight >}}
+
 ### TLS
 
 This example shows the configuration for using TLS with Let's Encrypt. Since {{% tts %}} is being deployed on
@@ -203,32 +226,19 @@ Make sure that you use the correct `tls` configuration depending on whether you 
 
 If you are using your own certificate files, make sure to uncomment the lines that define `source` type, `root-ca`, `certificate` and `key`. The paths assigned to these do not need to be altered, because they point to the location of these files inside the Docker container, and not on your machine.
 
+{{< highlight yaml "linenos=table,linenostart=52" >}}
+{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=52 to=57 >}}
+{{< /highlight >}}
+
 If you are using Let's Encrypt in a multi-tenant {{% tts %}} environment, all tenant addresses have to be specified in the `ttn-lw-stack-docker.yml` file using `tls.acme.hosts` configuration option. For example, for {{% tts %}} deployment with two tenants, TLS configuration would look like this:
 
-```yml
-tls:
-  source: 'acme'
-  acme:
-    dir: '/var/lib/acme'
-    email: 'you@thethings.example.com'
-    hosts: ['<tenant1>.thethings.example.com', '<tenant2>.thethings.example.com']
-    default-host: 'thethings.example.com'
-```
-
-### HTTP
-
-In the `http` section, HTTP server keys for encrypting and verifying cookies are configured, as well
-as passwords for endpoints that you may want to keep for the internal use.
-
-### Email
-
-{{% tts %}} sends emails to users, so the `email` section of the configuration defines how these are sent.
-You can use Sendgrid or an SMTP server. For development purposes, you can use the `dir` provider that writes emails to a directory.
-If you skip setting up an email provider, {{% tts %}} will print emails to the stack logs.
+{{< highlight yaml "linenos=table,linenostart=59" >}}
+{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=59 to=66 >}}
+{{< /highlight >}}
 
 ### Component URLs
 
-Finally, the `console` section configures the URLs for the Web UI and the secret used by the console client. These tell {{% tts %}} where all its components are accessible.
+The `console` section configures the URLs for the Web UI and the secret used by the console client. These tell {{% tts %}} where all its components are accessible.
 
 The `client-secret` will be needed later when authorizing the Console. Be sure to set and remember it!
 
@@ -242,9 +252,23 @@ Besides `ui` and `oauth` settings, storage settings need to be configured in the
 
 To visualize data, configure the `grafana` section.
 
+{{< highlight yaml "linenos=table,linenostart=152" >}}
+{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=152 to=174 >}}
+{{< /highlight >}}
+
 ### Multi-tenancy
 
 {{< distributions "Enterprise" >}} If running a multi-tenant environment, we need to configure the default tenant ID, and the base domain from which tenant IDs are inferred. See the [`tenancy` configuration reference]({{< ref "/reference/configuration/the-things-stack#multi-tenancy" >}}).
+
+{{< highlight yaml "linenos=table,linenostart=177" >}}
+{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=177 to=179 >}}
+{{< /highlight >}}
+
+For multi-tenant environments you'll also need to configure tenant admin keys:
+
+{{< highlight yaml "linenos=table,linenostart=38" >}}
+{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=38 to=40 >}}
+{{< /highlight >}}
 
 ## Running The Things Stack as `localhost`
 
@@ -310,11 +334,10 @@ and in `docker-compose.yml`, add the following port forwarding configuration (if
 services:
   stack:
     ports:
-      stack:
-        - "1885:1885"
-        - "8885:8885"
-        # - "80:80" # Do not forward port 80
-        # - "443:443" # Do not forward port 443
+      - "1885:1885"
+      - "8885:8885"
+      # - "80:80" # Do not forward port 80
+      # - "443:443" # Do not forward port 443
 ```
 
 This will result in visits from both outside and inside the Docker container being received at the correct port by {{% tts %}}.
