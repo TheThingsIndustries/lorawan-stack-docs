@@ -7,6 +7,16 @@ This section contains help for common errors encountered when using the CLI.
 
 <!--more-->
 
+## Unauthenticated
+
+If the [CLI login]({{< ref "/getting-started/cli/login" >}}) wasn't successful, the user will face the following error when trying to execute CLI commands:
+
+```
+error:cmd/ttn-lw-cli/commands:unauthenticated (not authenticated with either API key or OAuth access token)
+```
+
+If you face this error, make sure you have properly [created a CLI configuration file]({{< ref "/getting-started/cli/configuring-cli/#step-1---create-a-configuration-file" >}}) and [configured the CLI]({{< ref "/getting-started/cli/configuring-cli/#step-2---configure-the-cli" >}}) for your {{% tts %}} instance.
+
 ## Faulty OAuth Server Address
 
 In the [CLI configuration file]({{< ref "/getting-started/cli/configuring-cli" >}}), the server address is set to `thethings.example.com` by default. If you do not change this server address to the address of your own deployment, using `ttn-lw-cli login` command will redirect to `https://thethings.example.com/oauth/authorize?client_id=cli&redirect_uri=local-callback&response_type=code` in your web browser, where the CLI needs to be authorized for exchanging an access token.
