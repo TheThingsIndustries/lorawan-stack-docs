@@ -39,14 +39,14 @@ Certificates will automatically be requested the first time you access {{% tts %
 
 To use [CA certificates you already have](#certificates-from-a-certificate-authority) or [self-signed certificates](#custom-certificate-authority), you will need to uncomment the custom certificates section of `docker-compose.yml`:
 
-{{< highlight yaml "linenos=table,linenostart=82" >}}
-{{< readfile path="/content/getting-started/installation/configuration/docker-compose-custom-certificates.yml" from=82 to=97 >}}
+{{< highlight yaml "linenos=table,linenostart=66" >}}
+{{< readfile path="/content/getting-started/installation/configuration/docker-compose-custom-certificates.yml" from=66 to=79 >}}
 {{< /highlight >}}
 
 You will also need to comment out the Let's Encrypt section of `ttn-lw-stack-docker.yml`, and uncomment the custom certificates section:
 
-{{< highlight yaml "linenos=table,linenostart=41" >}}
-{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-custom-certificates.yml" from=41 to=55 >}}
+{{< highlight yaml "linenos=table,linenostart=48" >}}
+{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-custom-certificates.yml" from=48 to=55 >}}
 {{< /highlight >}}
 
 ### Certificates from a Certificate Authority
