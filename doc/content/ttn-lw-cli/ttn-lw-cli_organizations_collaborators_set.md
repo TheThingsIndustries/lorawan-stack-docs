@@ -31,6 +31,10 @@ ttn-lw-cli organizations collaborators set [flags]
       --right-application-traffic-read             
       --right-application-traffic-up-write         
       --right-client-all                           
+      --right-client-delete                        
+      --right-client-info                          
+      --right-client-settings-basic                
+      --right-client-settings-collaborators        
       --right-gateway-all                          
       --right-gateway-delete                       
       --right-gateway-info                         

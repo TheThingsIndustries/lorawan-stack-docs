@@ -154,13 +154,13 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --up.uplink-message.rx-metadata                                                       select the up.uplink_message.rx_metadata field
       --up.uplink-message.session-key-id                                                    select the up.uplink_message.session_key_id field
       --up.uplink-message.settings                                                          select the up.uplink_message.settings field and all allowed sub-fields
-      --up.uplink-message.settings.coding-rate                                              select the up.uplink_message.settings.coding_rate field
       --up.uplink-message.settings.concentrator-timestamp                                   select the up.uplink_message.settings.concentrator_timestamp field
       --up.uplink-message.settings.data-rate                                                select the up.uplink_message.settings.data_rate field and all allowed sub-fields
       --up.uplink-message.settings.data-rate.modulation.fsk                                 select the up.uplink_message.settings.data_rate.modulation.fsk field and all allowed sub-fields
       --up.uplink-message.settings.data-rate.modulation.fsk.bit-rate                        select the up.uplink_message.settings.data_rate.modulation.fsk.bit_rate field
       --up.uplink-message.settings.data-rate.modulation.lora                                select the up.uplink_message.settings.data_rate.modulation.lora field and all allowed sub-fields
       --up.uplink-message.settings.data-rate.modulation.lora.bandwidth                      select the up.uplink_message.settings.data_rate.modulation.lora.bandwidth field
+      --up.uplink-message.settings.data-rate.modulation.lora.coding-rate                    select the up.uplink_message.settings.data_rate.modulation.lora.coding_rate field
       --up.uplink-message.settings.data-rate.modulation.lora.spreading-factor               select the up.uplink_message.settings.data_rate.modulation.lora.spreading_factor field
       --up.uplink-message.settings.data-rate.modulation.lrfhss                              select the up.uplink_message.settings.data_rate.modulation.lrfhss field and all allowed sub-fields
       --up.uplink-message.settings.data-rate.modulation.lrfhss.coding-rate                  select the up.uplink_message.settings.data_rate.modulation.lrfhss.coding_rate field
@@ -202,13 +202,13 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --up.uplink-normalized.rx-metadata                                                    select the up.uplink_normalized.rx_metadata field
       --up.uplink-normalized.session-key-id                                                 select the up.uplink_normalized.session_key_id field
       --up.uplink-normalized.settings                                                       select the up.uplink_normalized.settings field and all allowed sub-fields
-      --up.uplink-normalized.settings.coding-rate                                           select the up.uplink_normalized.settings.coding_rate field
       --up.uplink-normalized.settings.concentrator-timestamp                                select the up.uplink_normalized.settings.concentrator_timestamp field
       --up.uplink-normalized.settings.data-rate                                             select the up.uplink_normalized.settings.data_rate field and all allowed sub-fields
       --up.uplink-normalized.settings.data-rate.modulation.fsk                              select the up.uplink_normalized.settings.data_rate.modulation.fsk field and all allowed sub-fields
       --up.uplink-normalized.settings.data-rate.modulation.fsk.bit-rate                     select the up.uplink_normalized.settings.data_rate.modulation.fsk.bit_rate field
       --up.uplink-normalized.settings.data-rate.modulation.lora                             select the up.uplink_normalized.settings.data_rate.modulation.lora field and all allowed sub-fields
       --up.uplink-normalized.settings.data-rate.modulation.lora.bandwidth                   select the up.uplink_normalized.settings.data_rate.modulation.lora.bandwidth field
+      --up.uplink-normalized.settings.data-rate.modulation.lora.coding-rate                 select the up.uplink_normalized.settings.data_rate.modulation.lora.coding_rate field
       --up.uplink-normalized.settings.data-rate.modulation.lora.spreading-factor            select the up.uplink_normalized.settings.data_rate.modulation.lora.spreading_factor field
       --up.uplink-normalized.settings.data-rate.modulation.lrfhss                           select the up.uplink_normalized.settings.data_rate.modulation.lrfhss field and all allowed sub-fields
       --up.uplink-normalized.settings.data-rate.modulation.lrfhss.coding-rate               select the up.uplink_normalized.settings.data_rate.modulation.lrfhss.coding_rate field

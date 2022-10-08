@@ -37,10 +37,10 @@ ttn-lw-cli simulate application-uplink [application-id] [device-id] [flags]
       --normalized-payload-warnings strings                                   
       --received-at string                                                    (YYYY-MM-DDTHH:MM:SSZ)
       --session-key-id string                                                 (hex)
-      --settings.coding-rate string                                           
       --settings.concentrator-timestamp int                                   
       --settings.data-rate.modulation.fsk.bit-rate uint32                     
       --settings.data-rate.modulation.lora.bandwidth uint32                   
+      --settings.data-rate.modulation.lora.coding-rate string                 
       --settings.data-rate.modulation.lora.spreading-factor uint32            
       --settings.data-rate.modulation.lrfhss.coding-rate string               
       --settings.data-rate.modulation.lrfhss.modulation-type uint32           
