@@ -8,6 +8,36 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.22.0
+
+### `2-3-db-redis`
+
+- Clusters are now marked as `MultiAZEnabled` enabled when the `RedisMultiAZ` parameter is enabled.
+  - Previously the `RedisMultiAZ` parameter would control the `AutomaticFailoverEnabled` attribute only, but now it implies `MultiAZEnabled` as well.
+- The `t4g` family of machines is now available for hosting, and the default machine size has been promoted to `cache.m6g.large`.
+
+### `2-1-db-aurora-master`, `2-2-db-aurora-replica`
+
+- The `t4g` family of machines is now available for hosting, and the default machine size has been promoted to `db.t4g.medium`.
+
+### `2-5-db-timescale`
+
+- Updated the default `node_exporter` version to 1.4.0.
+
+### `4-2a-configuration`
+
+- Add Console `dtc` target address.
+
+### `5-4-ecs-cluster`
+
+- Updated the default `node_exporter` version to 1.4.0.
+
+### `AMI/BYOL` template
+
+- The `t4g` family of machines is now available for ElastiCache, and the default machine size has been promoted to `cache.t4g.small`.
+- The `t4g` family of machines is now available for RDS, and the default machine size has been promoted to `db.t4g.small`.
+- Add Console `dtc` target address.
+
 ## 3.21.2
 
 ## 3.21.1

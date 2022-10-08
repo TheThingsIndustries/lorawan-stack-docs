@@ -16,6 +16,7 @@ ttn-lw-cli organizations collaborators list [organization-id] [flags]
 ```
   -h, --help           help for list
       --limit uint32   maximum number of results to get (default 50)
+      --order string   order by this field
       --page uint32    results page number (default 1)
 ```
 

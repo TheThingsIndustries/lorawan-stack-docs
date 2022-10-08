@@ -14,10 +14,14 @@ ttn-lw-cli clients collaborators set [flags]
 ### Options
 
 ```
-  -h, --help                     help for set
-      --organization-id string   
-      --right-client-all         
-      --user-id string           
+  -h, --help                                  help for set
+      --organization-id string                
+      --right-client-all                      
+      --right-client-delete                   
+      --right-client-info                     
+      --right-client-settings-basic           
+      --right-client-settings-collaborators   
+      --user-id string                        
 ```
 
 ### Options inherited from parent commands

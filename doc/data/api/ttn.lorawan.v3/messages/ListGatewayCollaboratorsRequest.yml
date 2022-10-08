@@ -16,3 +16,16 @@ fields:
   comment: Page number for pagination. 0 is interpreted as 1.
   type: uint32
   default: 0
+- name: order
+  comment: |-
+    Order the results by this field path (must be present in the field mask).
+    Default ordering is by ID. Prepend with a minus (-) to reverse the order.
+  type: string
+  rules:
+    in:
+    - ""
+    - id
+    - -id
+    - -rights
+    - rights
+  default: ""
