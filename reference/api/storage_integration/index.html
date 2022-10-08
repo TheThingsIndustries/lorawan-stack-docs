@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.21.2</p>
+        <p class="navbar-item is-size-7">v3.22.0</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -504,7 +504,7 @@
       </th>
       <td>
           <p>Query upstream messages of a specific type. If not set, then all upstream messages are returned.</p>
-          <p><code>in</code>: <code>[ uplink_message join_accept downlink_ack downlink_nack downlink_sent downlink_failed downlink_queued downlink_queue_invalidated location_solved service_data]</code></p>
+          <p><code>in</code>: <code>[ uplink_message uplink_normalized join_accept downlink_ack downlink_nack downlink_sent downlink_failed downlink_queued downlink_queue_invalidated location_solved service_data]</code></p>
       </td>
     </tr>
     
@@ -5336,6 +5336,7 @@ traces the network may (or may not) store about recent errors.</p>
 <pre><code>{
   "bandwidth": 0,
   "spreading_factor": 0,
+  "coding_rate": "",
 }</code></pre>
 </details>
 
@@ -5391,6 +5392,30 @@ traces the network may (or may not) store about recent errors.</p>
         
         
   <code>uint32</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>coding_rate</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
 </td>
     </tr>
     
@@ -7450,7 +7475,6 @@ On downlink, this is a scheduled transmission.</p>
 <details><summary>Show object example</summary>
 <pre><code>{
   "data_rate": {},
-  "coding_rate": "",
   "frequency": 0,
   "enable_crc": false,
   "timestamp": 0,
@@ -7503,39 +7527,6 @@ On downlink, this is a scheduled transmission.</p>
       <td>
           <p>Data rate.</p>
           <p><code>required</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>coding_rate</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>LoRa coding rate.</p>
       </td>
     </tr>
     

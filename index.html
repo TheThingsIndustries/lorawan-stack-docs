@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.21.2</p>
+        <p class="navbar-item is-size-7">v3.22.0</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -140,63 +140,52 @@
 <div class="whats-new">
   <div class="whats-new-content">
     <div class="whats-new-header">
-      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.21.2/>What's new in V3.21.2</a></h2>
+      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.22.0/>What's new in V3.22.0</a></h2>
       <a href="https://www.thethingsindustries.com/docs/whats-new/"><p class="see-more">See all release notes →</p></a>
     </div>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.21.2/">
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.22.0/">
       <div class="whats-new-body">
         <div class="whats-new-items-shadow whats-new-items-fade">
           <div class="whats-new-items">
             <h3 id="added">Added</h3>
 <ul>
-<li>New <code>ListBands</code> RPC on the <code>Configuration</code> service.
-<ul>
-<li>Added support to CLI. Available via the <code>end-devices list-bands</code> command.</li>
-</ul>
-</li>
-<li>CLI support for listing PHY versions via the <code>end-devices list-phy-versions</code> CLI command.</li>
-<li>New <code>NetID</code> and <code>DeviceAddressPrefixes</code> RPC on the <code>NS</code> service.
-<ul>
-<li>Added support on CLI. Available via the <code>end-devices get-net-id</code> and <code>end-devices get-dev-addr-prefixes</code> commands.</li>
-</ul>
-</li>
-<li>Support for loading end device template from Device Repository when importing devices using a CSV file.</li>
-<li>Experimental support for normalized payload.</li>
-<li>Support management of deleted users in the Console.</li>
-<li>Decoded payloads are now visible for downlinks in the Console.</li>
-<li>Support for dynamic ping slot frequencies, as used by the US915 and AU915 bands.</li>
-<li>Support for LoRa Basics Station beaconing.</li>
+<li>Add more specific rights for OAuth clients.</li>
+<li>Experimental support for mTLS connections for LoRa Basics Station CUPS and LoRa Basics Station LNS (LNS-only mode) connections.</li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
-<li>Deprecated <code>attributes</code> from <code>GatewayAntenna</code> definition. While it was present in the API it was never stored in the database.</li>
-<li>Absolute time downlinks (such as class B ping slots or class C absolute time downlinks) are now using the native class B downlink API of LoRa Basics Station.</li>
-<li>Only gateways which are guaranteed to be GPS capable may now be used for absolute time downlinks. This ensures that gateways that have an unknown time source are not used for absolute time scheduling.</li>
-<li>The static ADR mode may now steer the end device to use custom data rates such as SF7BW250, FSK and LR-FHSS.</li>
-<li>The Console will try to resolve invalid state errors during login with an automatic refresh.</li>
-<li>Error details are now displayed in a modal instead of within the notification element in the Console.</li>
+<li>The flow for adding end devices has been updated in the Console.
+<ul>
+<li>Device QR codes can now be scanned to speed up end device onboarding.</li>
+<li>Claiming end devices from external Join Servers is now possible seemlessly from the same onboarding flow.</li>
+</ul>
+</li>
+<li>LoRa coding rate now defined in <code>DataRate</code> instead of <code>Band</code>.</li>
+<li>The Network Server will now schedule a potentially empty downlink in order to stop end devices from sending sticky MAC commands.</li>
+<li>Factory preset frequencies may now be provided for bands with fixed channel plans, such as US915 or AU915. The factory preset frequencies are interpreted as the only channels which are enabled at boot time.</li>
+<li><code>TxParamSetupReq</code> MAC command priority has been increased.</li>
+<li><code>DevStatusReq</code> MAC command priority has been lowered.</li>
+<li>Event subscriptions without history are now sent to the Redis read only replica, if it is available.</li>
 </ul>
 <h3 id="removed">Removed</h3>
 <ul>
-<li>Experimental support for <code>LoRa Basics Station</code> gateway GPS timestamps which use the wrong precision (milliseconds instead of microseconds). Please ensure that your gateway has been updated to the latest firmware.</li>
+<li>Removed coding rate from <code>TxSettings</code> as it is now defined in <code>DataRate</code>.</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>Network Operations Center now only shows LoRa channels in &ldquo;Lowest RSSI (LoRa)&rdquo; panel.
+<li><code>--mac-settings.adr.mode.disabled</code>, <code>--mac-settings.adr.mode.dynamic</code> and <code>--mac-settings.adr.mode.static</code> flags of the <code>end-device update</code> command.</li>
+<li>Pagination in <code>sessions</code> and <code>access tokens</code> tables in the Console.</li>
+<li><code>LinkADRReq</code> MAC command generation for LoRaWAN 1.0 and 1.0.1 end devices.</li>
+<li><code>LinkADRReq</code> no longer attempts to enable channels which have not yet been negotiated with the end device.</li>
+<li>Downlink path selection for uplinks which are not LoRa modulated.</li>
+<li>Issues with byte inputs in the Console.
 <ul>
-<li>This requires refreshing the materialized view with LoRa performance data. Connect with <code>psql</code> to the TimescaleDB database and run:
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-sql" data-lang="sql"><span class="line"><span class="cl"><span class="k">CALL</span><span class="w"> </span><span class="n">refresh_continuous_aggregate</span><span class="p">(</span><span class="s1">&#39;gateway_uplink_lora_performance_1h&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">NOW</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">INTERVAL</span><span class="w"> </span><span class="s1">&#39;30 days&#39;</span><span class="p">,</span><span class="w"> </span><span class="n">NOW</span><span class="p">());</span><span class="w">
-</span></span></span></code></pre></div></li>
+<li>Pasting values into the input leading to issues in some cases.</li>
+<li>Values being typed double on android phones.</li>
 </ul>
 </li>
-<li>The Gateway Server scheduler no longer considers the absolute time of a downlink to be the time of arrival.</li>
-<li>The Network Server now correctly handles the command that may succeed a <code>LinkADRAns</code> response.</li>
-<li>LR-FHSS data rate matching.</li>
-<li>Console data rate rendering of non-LoRa modulations.</li>
-<li>End device network layer form crashing in some situations in the Console device general settings.</li>
-<li>End device overview crashing in some situations in the Console.</li>
-<li>Device import when using Join Server-only deployments.</li>
-<li>QRG can generate QR Codes without the claim authentication code.</li>
+<li>Console showing deleted collaborator after successful deletion in application collaborator list.</li>
+<li>Console crashing after deleting an organization.</li>
 </ul>
 
           </div>
@@ -214,7 +203,7 @@
 <a href="https://www.thethingsindustries.com/docs/whats-new/">
   <div class="whats-new-800">
     <div class="whats-new-header-800">
-      <p>See what's new in V3.21.2</p>
+      <p>See what's new in V3.22.0</p>
       <p>-></p>
     </div>
   </div>

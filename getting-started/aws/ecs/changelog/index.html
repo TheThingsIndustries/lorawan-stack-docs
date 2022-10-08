@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.21.2</p>
+        <p class="navbar-item is-size-7">v3.22.0</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -249,10 +249,42 @@
           <h1 id="upgrading">Upgrading</h1>
 <p>All meaningful changes to templates are documented in this file.</p>
 <h2 id="unreleased">Unreleased</h2>
+<h2 id="3220">3.22.0</h2>
+<h3 id="2-3-db-redis"><code>2-3-db-redis</code></h3>
+<ul>
+<li>Clusters are now marked as <code>MultiAZEnabled</code> enabled when the <code>RedisMultiAZ</code> parameter is enabled.
+<ul>
+<li>Previously the <code>RedisMultiAZ</code> parameter would control the <code>AutomaticFailoverEnabled</code> attribute only, but now it implies <code>MultiAZEnabled</code> as well.</li>
+</ul>
+</li>
+<li>The <code>t4g</code> family of machines is now available for hosting, and the default machine size has been promoted to <code>cache.m6g.large</code>.</li>
+</ul>
+<h3 id="2-1-db-aurora-master-2-2-db-aurora-replica"><code>2-1-db-aurora-master</code>, <code>2-2-db-aurora-replica</code></h3>
+<ul>
+<li>The <code>t4g</code> family of machines is now available for hosting, and the default machine size has been promoted to <code>db.t4g.medium</code>.</li>
+</ul>
+<h3 id="2-5-db-timescale"><code>2-5-db-timescale</code></h3>
+<ul>
+<li>Updated the default <code>node_exporter</code> version to 1.4.0.</li>
+</ul>
+<h3 id="4-2a-configuration"><code>4-2a-configuration</code></h3>
+<ul>
+<li>Add Console <code>dtc</code> target address.</li>
+</ul>
+<h3 id="5-4-ecs-cluster"><code>5-4-ecs-cluster</code></h3>
+<ul>
+<li>Updated the default <code>node_exporter</code> version to 1.4.0.</li>
+</ul>
+<h3 id="amibyol-template"><code>AMI/BYOL</code> template</h3>
+<ul>
+<li>The <code>t4g</code> family of machines is now available for ElastiCache, and the default machine size has been promoted to <code>cache.t4g.small</code>.</li>
+<li>The <code>t4g</code> family of machines is now available for RDS, and the default machine size has been promoted to <code>db.t4g.small</code>.</li>
+<li>Add Console <code>dtc</code> target address.</li>
+</ul>
 <h2 id="3212">3.21.2</h2>
 <h2 id="3211">3.21.1</h2>
 <h2 id="3210">3.21.0</h2>
-<h3 id="4-2a-configuration"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-1"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Added new <code>EntityLimits</code> parameters.</li>
 </ul>
@@ -271,11 +303,11 @@
 <li>The <code>node_exporter</code> metrics are now tagged with the EC2 instance ID and instance name.</li>
 </ul>
 <h2 id="3200">3.20.0</h2>
-<h3 id="2-5-db-timescale"><code>2-5-db-timescale</code></h3>
+<h3 id="2-5-db-timescale-1"><code>2-5-db-timescale</code></h3>
 <ul>
 <li>Increased backup and redeployment timeout</li>
 </ul>
-<h3 id="4-2a-configuration-1"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-2"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Added new parameters <code>EventsRedisPublishQueueSize</code>, <code>EventsRedisPublishMaxWorkers</code>, <code>PacketBrokerHomeNetworkWorkerCountLimit</code>, <code>PacketBrokerForwarderWorkerCountLimit</code></li>
 </ul>
@@ -283,7 +315,7 @@
 <ul>
 <li>Added alerts for TimescaleDB running out of storage</li>
 </ul>
-<h3 id="amibyol-template"><code>AMI/BYOL</code> template</h3>
+<h3 id="amibyol-template-1"><code>AMI/BYOL</code> template</h3>
 <ul>
 <li>Added new parameters <code>TLSCertificate</code>, <code>TLSCertificateCA</code>, <code>TLSCertificateKey</code></li>
 </ul>
@@ -297,7 +329,7 @@
 <ul>
 <li>Added a hosted zone for internal use</li>
 </ul>
-<h3 id="2-5-db-timescale-1"><code>2-5-db-timescale</code></h3>
+<h3 id="2-5-db-timescale-2"><code>2-5-db-timescale</code></h3>
 <ul>
 <li>Added new parameter <code>NumReplicas</code></li>
 <li>Added new parameter <code>DeploymentName</code></li>
@@ -307,7 +339,7 @@
 <ul>
 <li>Added new parameters <code>IncludeNOC</code>, <code>NOCGrafanaAdminPassword</code>, <code>NOCOAuthClientIDValue</code>, <code>NOCOAuthClientSecretValue</code></li>
 </ul>
-<h3 id="4-2a-configuration-2"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-3"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Added new parameters <code>ConsoleURLForNOC</code>, <code>IncludeNetworkOperationsCenter</code>, <code>NOCMaxIdleConnections</code>, <code>NOCMaxOpenConnections</code>, <code>NOCRawDataRetention</code>, <code>NOCTargetInsertBatchSize</code>, <code>NOCTargetInsertBatchWindow</code></li>
 <li>Added <code>is.email.assets-base-url</code> and <code>is.email.branding-base-url</code>. These options are set to the values of the existing parameters.</li>
@@ -331,7 +363,7 @@
 </ul>
 <h2 id="3191">3.19.1</h2>
 <h2 id="3190">3.19.0</h2>
-<h3 id="4-2a-configuration-3"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-4"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Added new parameter <code>ConsoleStatusPageBaseURL</code></li>
 <li>Added new parameter <code>UserRightsUpdatePrimaryEmailAddress</code></li>
@@ -352,7 +384,7 @@
 <ul>
 <li>Added new bucket for DCS configuration files.  Create a <code>config.yml</code> file at the root of this bucket. This can be left empty if claiming via an external Join Server is not necessary.</li>
 </ul>
-<h3 id="4-2a-configuration-4"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-5"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Add new config items for the DCS service.</li>
 </ul>
@@ -379,11 +411,11 @@
 <ul>
 <li>Added support for Aurora Postgres 12 and 13</li>
 </ul>
-<h3 id="2-3-db-redis"><code>2-3-db-redis</code></h3>
+<h3 id="2-3-db-redis-1"><code>2-3-db-redis</code></h3>
 <ul>
 <li>Upgraded Redis to version 6.2</li>
 </ul>
-<h3 id="4-2a-configuration-5"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-6"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Added the <code>WebhooksUnhealthyAttemptsThreshold</code> and <code>WebhooksUnhealthyRetryInterval</code> parameters.</li>
 <li>Added the <code>DatabaseMaxIdleConns</code> and <code>DatabaseMaxOpenConns</code> to control the database connection pool of the Identity Server.</li>
@@ -434,7 +466,7 @@
 <ul>
 <li>Machine now supports connection from AWS Session Manager. Added parameter <code>SessionManagerLogGroup</code></li>
 </ul>
-<h3 id="2-5-db-timescale-2"><code>2-5-db-timescale</code></h3>
+<h3 id="2-5-db-timescale-3"><code>2-5-db-timescale</code></h3>
 <ul>
 <li>Machine now supports connection from AWS Session Manager. Added parameter <code>SessionManagerLogGroup</code></li>
 </ul>
@@ -483,7 +515,7 @@
 <ul>
 <li>Added missing <code>db.r5</code> instances.</li>
 </ul>
-<h3 id="2-3-db-redis-1"><code>2-3-db-redis</code></h3>
+<h3 id="2-3-db-redis-2"><code>2-3-db-redis</code></h3>
 <ul>
 <li>Added <code>RedisKMSKeyID</code> parameter to specify key for at-rest encryption. Non-empty value forces replacement</li>
 </ul>
@@ -491,7 +523,7 @@
 <ul>
 <li>ECS Container Insights may now be enabled using the <code>ContainerInsights</code> parameter</li>
 </ul>
-<h3 id="2-3-db-redis-2"><code>2-3-db-redis</code></h3>
+<h3 id="2-3-db-redis-3"><code>2-3-db-redis</code></h3>
 <ul>
 <li>Removed <code>RedisPrimary*</code> and <code>RedisReplica*</code> parameters in the <code>Alerting</code> group, added <code>Redis*</code> parameters instead</li>
 </ul>
@@ -509,7 +541,7 @@
 <ul>
 <li>Updated UserData to handle TLS connection to redis</li>
 </ul>
-<h3 id="2-3-db-redis-3"><code>2-3-db-redis</code></h3>
+<h3 id="2-3-db-redis-4"><code>2-3-db-redis</code></h3>
 <ul>
 <li>Added <code>RedisTLS</code> parameter</li>
 </ul>
@@ -561,7 +593,7 @@
 <ul>
 <li>Added new resource <code>InteropTLSSecret</code>. This resource is a placeholder for certbot to upload TLS certificates</li>
 </ul>
-<h3 id="4-2a-configuration-6"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-7"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Added the <code>ForwardOnlyOwnedDevAddrs</code> parameter</li>
 <li>Added the <code>InteropEnabled</code>, <code>InteropPacketBrokerEnabled</code>, <code>InteropPacketBrokerTokenIssuer</code> and <code>CryptoServerDNSName</code> parameters.</li>
@@ -612,7 +644,7 @@
 <ul>
 <li>Added <code>EBSKmsKeyId</code> parameter to choose EBS boot volume encryption key. From now on, EBS boot volumes are encrypted.</li>
 </ul>
-<h3 id="2-5-db-timescale-3"><code>2-5-db-timescale</code></h3>
+<h3 id="2-5-db-timescale-4"><code>2-5-db-timescale</code></h3>
 <ul>
 <li>Created a hosted zone for internal use</li>
 <li>This template has been reworked so that updates are now possible. Before updating make a backup of the volume. For more information, please refer to the documentation at <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/updating/#2-5-db-timescale">https://www.thethingsindustries.com/docs/getting-started/aws/ecs/updating/#2-5-db-timescale</a></li>
@@ -697,7 +729,7 @@
 <ul>
 <li>Added alternative certificates support for all TLS listeners.</li>
 </ul>
-<h3 id="4-2a-configuration-7"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-8"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Changed log format to JSON.</li>
 <li>Added <code>NetworkServerClusterID</code> which identifies cluster in the Network Server for informative purposes. Suggested value the same as <code>PacketBrokerClusterID</code>.</li>
@@ -775,7 +807,7 @@
 <ul>
 <li>Support injecting Rate Limiting configuration in docker containers.</li>
 </ul>
-<h3 id="2-3-db-redis-4"><code>2-3-db-redis</code></h3>
+<h3 id="2-3-db-redis-5"><code>2-3-db-redis</code></h3>
 <ul>
 <li>Fixes for <code>cache</code> and <code>events</code> purposes. This requires replacement of redis replication groups of these purposes but does NOT affect the <code>general</code> purpose.</li>
 </ul>
@@ -1017,7 +1049,7 @@
 <li>Added gRPC API routes to HTTP listener.</li>
 </ul>
 <h2 id="3110httpsgithubcomthethingsindustrieslorawan-stack-awscomparee69f9ef7c4683c"><a href="https://github.com/TheThingsIndustries/lorawan-stack-aws/compare/e69f9ef...7c4683c">3.11.0</a></h2>
-<h3 id="2-3-db-redis-5"><code>2-3-db-redis</code></h3>
+<h3 id="2-3-db-redis-6"><code>2-3-db-redis</code></h3>
 <ul>
 <li>Changed Redis engine compatibility version to <code>6.x</code></li>
 </ul>
@@ -1061,7 +1093,7 @@
 <ul>
 <li>Added InstanceProfile to the EC2 machine, changed its UserData</li>
 </ul>
-<h3 id="2-5-db-timescale-4"><code>2-5-db-timescale</code></h3>
+<h3 id="2-5-db-timescale-5"><code>2-5-db-timescale</code></h3>
 <ul>
 <li>Added LifecyclePolicy to the EC2 machine&rsquo;s volume</li>
 </ul>
@@ -1129,6 +1161,9 @@
     
       
       <li><a href='#unreleased'>Unreleased</a></li>
+    
+      
+      <li><a href='#3220'>3.22.0</a></li>
     
       
       <li><a href='#3212'>3.21.2</a></li>
@@ -1294,10 +1329,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 18 Sep 2022.
+  Last changed by Nejra Selimović on 08 Oct 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/e271c3119b44760bd2e2bc05f9bd443895f37528">
-      doc: Add v3.21.2 release docs (#955)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f39bff6da7bad789a5c81b01328670d8595bf5a4">
+      doc: Add v3.22.0 release docs (#966)
     </a>
 </p>
 
