@@ -1,5 +1,5 @@
 ---
-title: "Migrating End Devices from ChirpStack"
+title: "Migrating Devices from ChirpStack to The Things Stack"
 description: ""
 weight: 2
 aliases: "/getting-started/migrating-from-networks/migrate-from-chirpstack"
