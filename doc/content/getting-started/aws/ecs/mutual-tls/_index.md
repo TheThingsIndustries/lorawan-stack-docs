@@ -41,11 +41,28 @@ If not, it should be set to `false` in **all** the templates (this is the defaul
 
 First, deploy template `2-4c-mtls-s3`. This generates an S3 bucket to store CA certificates.
 
-Create a folder called `common` at the root of the bucket. 
+After this template has been deployed, navigate to S3 and find the bucket that was created. You can check the **Resources** tab in Cloud Formation to find the bucket.
 
+Create an `index.yml` file that contains the CA store configuration and upload it to the root of the bucket.
+
+The contents of this file are as below.
+
+```yaml
+common:
+- common.pem
+tenants:
+  test:
+  - test.pem
+```
+Create a `common` folder at the root of this repository.
 This folder contains the default certificates that are used to verify the client certificate, in case there are no tenant-specific matches.
 
-You can now create as many folders with the folder name being the ID of a {{% tts %}} tenant. These folders would contain CA Certificates specific to that tenant.
+Create a folder called `tenants` in the root of the bucket. This bucket contains CA certificates per tenant.
+You can now create as many folders inside `tenants` with the folder name being the ID of a {{% tts %}} tenant. These folders would contain CA Certificates specific to that tenant.
+
+{{< note >}}
+If you want to set the certificates later, create an empty `index.yml` file.
+{{</ note >}}
 
 ### Step 2: Fetch and Store Server TLS Credentials
 
