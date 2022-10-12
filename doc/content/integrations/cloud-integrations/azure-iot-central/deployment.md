@@ -43,7 +43,9 @@ The **ID scope** can now be copied into your integration settings as **Azure Dev
 
 ## Data Export
 
-Go back to your Azure IoT Central Application, navigate to **Data export &#8594; Destinations** on the left hand menu and click on **+ New destination**.
+Go back to your Azure IoT Central Application, navigate to **Data export** on the left hand menu.
+
+Activate the **Destinations** tab and click on **+ New destination**.
 
 {{< figure src="../create-data-export-destination.png" alt="Create Data Export Destination" >}}
 
