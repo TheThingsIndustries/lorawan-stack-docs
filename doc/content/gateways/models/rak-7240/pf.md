@@ -2,6 +2,7 @@
 title: "Connect RAK7240 in Packet Forwarder Mode"
 description: ""
 weight: 3
+aliases: [/gateways/rak-7240/pf]
 ---
 
 RAK7240's **Packet Forwarder** mode utilizes the [{{% udp-pf %}}]({{< ref "/gateways/concepts/udp" >}}) protocol. Follow this section to learn how to connect to {{% tts %}} Network Server using this mode.

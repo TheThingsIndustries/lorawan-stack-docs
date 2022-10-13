@@ -2,6 +2,7 @@
 title: "Connect RAK7240 in Basic Station Mode"
 description: ""
 weight: 2
+aliases: [/gateways/rak-7240/bs]
 ---
 
 RAK7240's **Basic Station** mode utilizes the [{{% lbs %}}]({{< ref "/gateways/concepts/lora-basics-station" >}}) protocol. As part of the Basic Station mode, RAK7240 supports two {{% lbs %}} subprotocols - [LNS]({{< ref "/gateways/concepts/lora-basics-station/lns" >}}) and [CUPS]({{< ref "/gateways/concepts/lora-basics-station/cups" >}}). Follow this section to learn how to connect to {{% tts %}} Network Server using this mode.

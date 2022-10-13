@@ -1,6 +1,7 @@
 ---
 title: "RAK7240 WisGate Edge Prime"
 description: ""
+aliases: [/gateways/rak-7240]
 ---
 
 The [RAK7240 (WisGate Edge Prime)](https://docs.rakwireless.com/Product-Categories/WisGate/RAK7240/Overview/) is a macro outdoor LoRaWAN gateway, ideal for large scale deployments. It is highly reliable, customizable, and offers a WiFi, LTE and Ethernet backhaul.
@@ -87,7 +88,7 @@ The IP address of your gateway will be shown under **Status**.
 
 In the Web Management Platform, navigate to **LoRa Network &#8594; Network Settings**. 
 
-RAK7240 can operate in three modes - **Network Server**, **Basic Station** and **Packet Forwarder**. The available network settings depend on which **Mode** you choose. For this guide, Network Server mode is not relevant. Continue reading to learn to connect RAK7240 to {{% tts %}} using [Basic Station mode]({{< ref "/gateways/rak-7240/bs.md" >}}) or [Packet Forwarder mode]({{< ref "/gateways/rak-7240/pf.md" >}}).
+RAK7240 can operate in three modes - **Network Server**, **Basic Station** and **Packet Forwarder**. The available network settings depend on which **Mode** you choose. For this guide, Network Server mode is not relevant. Continue reading to learn to connect RAK7240 to {{% tts %}} using [Basic Station mode]({{< ref "/gateways/models/rak-7240/bs.md" >}}) or [Packet Forwarder mode]({{< ref "/gateways/models/rak-7240/pf.md" >}}).
 
 ## Registration
 
