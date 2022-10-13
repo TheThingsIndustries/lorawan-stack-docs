@@ -1,9 +1,10 @@
 ---
 title: "Kerlink Wirnet Station"
 description: ""
+aliases: [/gateways/kerlinkwirnetstation]
 ---
 
-{{< warning >}} Kerlink announced the [Product End of Life](https://www.kerlink.com/wp-content/uploads/2020/01/Product-End-of-Life-Wirnet-Station.pdf) in January 2020 for Wirnet Station, so using [Kerlink Wirnet iStation]({{< ref "/gateways/kerlinkwirnetistation" >}}) is highly recommended. {{</ warning >}}
+{{< warning >}} Kerlink announced the [Product End of Life](https://www.kerlink.com/wp-content/uploads/2020/01/Product-End-of-Life-Wirnet-Station.pdf) in January 2020 for Wirnet Station, so using [Kerlink Wirnet iStation]({{< ref "/gateways/models/kerlinkwirnetistation" >}}) is highly recommended. {{</ warning >}}
 
 {{< figure src="wirnet-station.png" alt="Kerlink Wirnet Station" class="float plain" >}}
 
