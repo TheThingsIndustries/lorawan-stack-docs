@@ -2,7 +2,7 @@
 title: "Mutual TLS"
 description: "Mutual TLS authentication"
 weight: 9
-new_in_version: 3.21.2
+new_in_version: 3.22.2
 ---
 
 {{% tts %}} supports mutual TLS authentication via a supported proxy (Envoy).
@@ -21,7 +21,7 @@ new_in_version: 3.21.2
 
 In the standard deployment model, AWS Network Load Balancer (NLB) terminates TLS, and then forwards unencrypted packets to {{% tts %}} via AWS internal network.
 
-Since the NLB does not support verifying client TLS certificates, the responsibility for terminating TLS is promoted to the proxy (only) for the **necessary ports**.
+Since the NLB does not support verifying client TLS certificates, the responsibility for terminating TLS is promoted to the proxy (only) for the the ports **443** (HTTPS) and **8887** (Web Socket with TLS).
 
 The other ports will have TLS terminated by the NLB.
 
@@ -70,9 +70,9 @@ If you want to set the certificates later, create an empty `index.yml` file.
 
 But since credentials once stored in ACM cannot be retrieved (can only be referenced by NLB), we need to store a copy of these credentials in the AWS Secrets Manager.
 
-Deploy the `4-1-secrets` template to create a new secret in ACM. This also generates additional keys in the KeyVault for {{% tts %}} components to exchange auth information.
+Deploy the updated `4-1-secrets` template to create a new secret in ACM. This also generates additional keys in the KeyVault for {{% tts %}} components to exchange auth information.
 
-Then deploy `5-7a-certs-le` to update the Certbot task and fetch new certificates using the [instructions]({{< relref "#lets-encrypt-certificates-optional" >}}).
+Then deploy the updated `5-7a-certs-le` to update the Certbot task and fetch new certificates using the [instructions]({{< relref "#lets-encrypt-certificates-optional" >}}).
 
 ### Step 3: Update the Load Balancer and the Proxy
 
@@ -90,10 +90,10 @@ Since the Proxy service is already bound to these target groups, CloudFormation 
 
 First, make a copy of the configuration parameters in the `5-6-ecs-proxy` CloudFormation stack.
 
-Next, delete this CloudFormation stack.
+Next, delete the `5-6-ecs-proxy` stack.
 
 {{< note >}}
-This will only delete the Proxy ECS containers and alarms. This can be easily reverted by re-deploying `5-6-ecs-proxy`.
+This will only delete the Proxy ECS containers and its related alarms. This can be easily reverted by re-deploying `5-6-ecs-proxy`.
 {{</ note >}}
 
 Deploy the `3-2-load-balancer-rules` template. AWS will now create the proper target groups with the `TCP` protocol type.
@@ -120,7 +120,7 @@ The `5-7b-ecs-certbot-scheduled-task` runs a periodic task to fetch new server T
 
 If there are new credentials, they will also be stored in Secrets Manager.
 
-The `-aws-proxy` images used for the proxy contain a cronjob that queries Secrets Manager (daily) and updates the proxy configuration.
+The `-aws-proxy` images used for the proxy contain a cronjob that queries Secrets Manager (daily by default) and updates the proxy configuration.
 
 ### Testing mTLS authentication
 
