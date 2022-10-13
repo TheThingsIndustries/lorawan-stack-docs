@@ -30,9 +30,7 @@ For example, this means that you can migrate an end device from The Things Indus
 
 ### I tried migrating my The Things Indoor Gateway (TTIG) to {{% tts %}}, but the Console shows status `Disconnected`. Does {{% tts %}} support connecting TTIGs?
 
-Yes, TTIG can be migrated from {{% ttnv2 %}} to {{% tts %}}. Make sure you are not using the regular option of [adding gateways]({{< ref "/gateways/concepts/adding-gateways" >}}), but [gateway claiming]({{< ref "/gateways/gateway-claiming" >}}).
-
-Read the full guide on how to [connect TTIG to {{% tts %}}]({{< ref "/gateways/thethingsindoorgateway" >}}). This guide also contains a troubleshooting section for common errors.
+Yes, TTIG can be migrated from {{% ttnv2 %}} to {{% tts %}}. Make sure you are not using the regular option of [adding gateways]({{< ref "/gateways/concepts/adding-gateways" >}}) and instead read the full guide on how to [connect TTIG to {{% tts %}}]({{< ref "/gateways/thethingsindoorgateway" >}}). This guide also contains a troubleshooting section for common errors.
 
 ### Can I delete my TTIG from {{% ttnv2 %}} Console after I have migrated it to {{% tts %}}?
 
