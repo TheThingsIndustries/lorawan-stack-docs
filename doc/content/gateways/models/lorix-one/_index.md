@@ -1,6 +1,7 @@
 ---
 title: "Wifx LORIX One"
 description: ""
+aliases: [/gateways/lorix-one]
 ---
 
 {{< figure src="lorix-one.png" alt="LORIX One" class="plain float" >}}
