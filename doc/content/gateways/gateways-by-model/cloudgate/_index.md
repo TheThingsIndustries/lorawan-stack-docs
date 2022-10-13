@@ -1,6 +1,7 @@
 ---
 title: "CloudGate"
 description: ""
+aliases: [/gateways/cloudgate]
 ---
 
 {{< figure src="CloudGate.png" alt="CloudGate Gateway" class="float plain" >}}
