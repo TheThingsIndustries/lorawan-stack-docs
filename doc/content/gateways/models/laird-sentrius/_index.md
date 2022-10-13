@@ -1,6 +1,7 @@
 ---
 title: "Laird Sentrius™ RG1xx LoRaWAN Gateway"
 description: ""
+aliases: [/gateways/laird-sentrius]
 ---
 
 {{< figure src="laird.png" alt="Laird RG1xx" class="float plain" >}}
