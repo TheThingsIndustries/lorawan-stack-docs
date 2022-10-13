@@ -1,6 +1,7 @@
 ---
 title: "Milesight UG8X LoRaWAN Gateway"
 description: ""
+aliases: [/gateways/milesightug8x]
 ---
 
 {{< figure src="ug8x.png" alt="Milesight IoT UG8x" class="plain float" >}}
