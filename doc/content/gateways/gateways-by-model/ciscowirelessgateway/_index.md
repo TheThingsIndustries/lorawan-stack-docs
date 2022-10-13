@@ -1,6 +1,7 @@
 ---
 title: "Cisco Wireless Gateway for LoRaWAN"
 description: ""
+alias: [/gateways/ciscowirelessgateway]
 ---
 
 This page guides you to connecting the Cisco Wireless Gateway for LoRaWAN to {{% tts %}}.
