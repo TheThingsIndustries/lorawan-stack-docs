@@ -5,7 +5,7 @@ aliases: [/gateways/cotx/x3]
 
 {{< figure src="X3_1.png" alt="COTX X3" class="plain float" >}}
 
-COTX X3 gateway has similar characteristics to previously described [X1]({{< ref "/gateways/gateways-by-model/cotx/x1" >}}) gateway, only with additional features like:
+COTX X3 gateway has similar characteristics to previously described [X1]({{< ref "/gateways/models/cotx/x1" >}}) gateway, only with additional features like:
 - Outdoor support
 - BLE support
 - Small screen for easy monitoring, etc.
