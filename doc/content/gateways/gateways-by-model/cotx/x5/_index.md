@@ -1,10 +1,11 @@
 ---
 title: COTX X5
+aliases: [/gateways/cotx/x5]
 ---
 
 {{< figure src="X5_1.png" alt="COTX X5" class="plain float" >}}
 
-COTX X5 gateway has similar characteristics to previously described [X1]({{< ref "/gateways/cotx/x1" >}}) and [X3]({{< ref "/gateways/cotx/x3" >}}) gateways, but unlike them is an outdoor gateway intended for industrial IoT use cases, with a water and dust proof aluminium case.
+COTX X5 gateway has similar characteristics to previously described [X1]({{< ref "/gateways/gateways-by-model/cotx/x1" >}}) and [X3]({{< ref "/gateways/gateways-by-model/cotx/x3" >}}) gateways, but unlike them is an outdoor gateway intended for industrial IoT use cases, with a water and dust proof aluminium case.
 
 ## Gateway Setup 
 
