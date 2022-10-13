@@ -3,6 +3,7 @@ title: "The Things Indoor Gateway"
 description: ""
 distributions: ["Community", "Cloud"]
 new_in_version: 3.13.3
+aliases: [/gateways/thethingsindoorgateway]
 ---
 
 {{< figure src="TTIG.jpeg" alt="{{% ttig %}}" class="plain float">}}
