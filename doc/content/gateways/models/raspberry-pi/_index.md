@@ -1,7 +1,8 @@
 ---
-title: "Bulding a gateway with Raspberry Pi and IC880A"
+title: "Building a gateway with Raspberry Pi and IC880A"
 description: ""
 weight: 1
+aliases: [/gateways/raspberry-pi]
 ---
 
 This guide can help you build your own LoRaWAN gateway using a Raspberry Pi and an iC880A LoRa concentrator board, and run {{% lbs %}} on it.
