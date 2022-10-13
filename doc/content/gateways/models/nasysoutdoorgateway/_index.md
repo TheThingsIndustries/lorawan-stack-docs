@@ -1,6 +1,7 @@
 ---
 title: "NASys LoRaWAN Outdoor Gateway"
 description: ""
+aliases: [/gateways/nasysoutdoorgateway]
 ---
 
 This page guides you to connect NASys LoRaWAN Outdoor Gateway to {{% tts %}}.
