@@ -1,6 +1,7 @@
 ---
 title: "Tektelic Kona Micro IoT LoRaWAN Gateway"
 description: ""
+aliases: [/gateways/tektelickonamicro]
 ---
  
 This page guides you to connect Tektelic Kona Micro IoT LoRaWAN Gateway to {{% tts %}}.

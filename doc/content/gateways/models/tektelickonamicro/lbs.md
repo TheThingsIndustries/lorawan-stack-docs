@@ -1,6 +1,7 @@
 ---
 title: "Connect Tektelic Kona Micro with Lora Basics™ Station"
 description: ""
+aliases: [/gateways/tektelickonamicro/lbs]
 ---
 
 This section guides you to connect the Tektelic Kona Micro IoT LoRaWAN Gateway to {{% tts %}} using [{{% lbs %}}]({{< ref "/gateways/concepts/lora-basics-station" >}}).
