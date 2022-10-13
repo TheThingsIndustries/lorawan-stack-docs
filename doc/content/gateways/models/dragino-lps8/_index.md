@@ -1,7 +1,8 @@
 ---
 title: "Dragino LPS8"
 description: ""
-weight: 
+weight:
+aliases: [/gateways/dragino-lps8]
 ---
 
 {{< figure src="dragino-lps8.jpg" alt="Dragino LPS8" class="float plain" >}}
