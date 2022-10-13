@@ -296,7 +296,7 @@ Try solving this issue by:
 
 Updating gateway location from status messages in supported only for gateways that establish authenticated connections (Basic Station and MQTT gateways), i.e. it is not supported for [UDP]({{< ref "/gateways/udp" >}}) gateways.
 
-Keep in mind that you can still set the gateway location [manually]({{< ref "/gateways/adding-gateways#set-gateway-location" >}}) from {{% tts %}} Console.
+Keep in mind that you can still set the gateway location [manually]({{< ref "/gateways/concepts/adding-gateways#set-gateway-location" >}}) from {{% tts %}} Console.
 
 ## I set the gateway location manually in {{% tts %}} Console. Why can I not see it in the gateway connection statistics?
 

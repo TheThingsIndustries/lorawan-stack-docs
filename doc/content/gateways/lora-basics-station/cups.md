@@ -17,7 +17,7 @@ weight: -1
 
 ## Create a Gateway
 
-To connect a gateway using the CUPS protocol, you must first add the gateway in {{% tts %}}. This can be done either in the console, or via the command line. See instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}). 
+To connect a gateway using the CUPS protocol, you must first add the gateway in {{% tts %}}. This can be done either in the console, or via the command line. See instructions for [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}). 
 
 ## Create Separate CUPS and LNS API Keys
 
@@ -37,7 +37,7 @@ LNS requires an API Key with the following rights:
 
 {{< figure src="../lns-rights.png" alt="LNS API Key Rights" >}}
 
-To create these API keys for your gateway, follow instructions for [Creating a Gateway API key]({{< ref "/gateways/adding-gateways#create-gateway-api-key" >}}).
+To create these API keys for your gateway, follow instructions for [Creating a Gateway API key]({{< ref "/gateways/concepts/adding-gateways#create-gateway-api-key" >}}).
 
 ## Configure CUPS to Send the LNS API Key
 

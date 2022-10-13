@@ -26,7 +26,7 @@ If the device indicator is green after powering the gateway up, the system is ru
 
 ## Connecting COTX X1 (Lite) to {{% tts %}}
 
-Register the COTX gateway by following instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}).
+Register the COTX gateway by following instructions for [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}).
 
 For **Gateway ID** and **Gateway EUI**, enter the 8 byte **ID** available on the label at the bottom of the gateway.
 

@@ -50,7 +50,7 @@ Packet Broker is already enabled on The Things Network V2 (public community netw
 
 For private {{% tts %}} deployments with Packet Broker disabled, you will need to re-configure your gateways to connect to {{% tts %}}, so that you can start receiving traffic from your end devices.
 
-In order to connect a gateway to {{% tts %}}, first follow instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}),then reconfigure the gateway to connect to {{% tts %}}, and regenerate its API key (if required). See [Gateways]({{< ref "/gateways" >}}) for instructions on configuring popular LoRaWAN gateways with {{% tts %}}.
+In order to connect a gateway to {{% tts %}}, first follow instructions for [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}),then reconfigure the gateway to connect to {{% tts %}}, and regenerate its API key (if required). See [Gateways]({{< ref "/gateways" >}}) for instructions on configuring popular LoRaWAN gateways with {{% tts %}}.
 
 ## Application Data
 

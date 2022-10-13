@@ -12,7 +12,7 @@ Migrating gateways to {{% tts %}} is an easy, two step process.
 
 Add the Gateway in the {{% tts %}}. 
 
-For detailed instructions on adding gateways to {{% tts %}} using the CLI or Console, see [Adding Gateways]({{< ref "gateways/adding-gateways" >}}).
+For detailed instructions on adding gateways to {{% tts %}} using the CLI or Console, see [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}).
 
 ### Step 2
 

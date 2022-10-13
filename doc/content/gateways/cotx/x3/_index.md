@@ -31,6 +31,6 @@ After powering up the gateway, the LED indication should light up and turn green
 
 ## Connecting COTX X3 to {{% tts %}}
 
-Register the COTX gateway by following instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}).
+Register the COTX gateway by following instructions for [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}).
 
 For **Gateway ID** and **Gateway EUI**, enter the 8 byte **ID** available on the label at the bottom of the gateway.

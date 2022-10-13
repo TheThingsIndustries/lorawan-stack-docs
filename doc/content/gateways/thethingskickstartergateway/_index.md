@@ -16,7 +16,7 @@ The Things Kickstarter Gateway is a LoRaWAN gateway, whose technical specificati
 
 ## Registration
 
-Create a gateway by following the instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}). Choose a **Gateway ID**. An **EUI** is not necessary.
+Create a gateway by following the instructions for [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}). Choose a **Gateway ID**. An **EUI** is not necessary.
 
 Create an API Key with Gateway Link rights for this gateway using the same instructions. Copy the key and save it for later use.
 
@@ -101,7 +101,7 @@ Now, you need to start a terminal session to UART interface device with `115200@
 
 ### What steps do I need to take if I want to relocate my gateway? 
 
-There is no need to reconfigure the gateway, however, it is recommended to update the [gateway location settings]({{< ref "/gateways/adding-gateways#set-gateway-location" >}}) in {{% tts %}} Console for a better accuracy.
+There is no need to reconfigure the gateway, however, it is recommended to update the [gateway location settings]({{< ref "/gateways/concepts/adding-gateways#set-gateway-location" >}}) in {{% tts %}} Console for a better accuracy.
 
 ### I see *Unexpected data sent to gateway* error. What should I do?
 

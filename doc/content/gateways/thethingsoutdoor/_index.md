@@ -75,7 +75,7 @@ You will need to set your PC's IP address in the same range, e.g.:
  
 ## Registration
 
-Create a gateway in {{% tts %}} by following the instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}).
+Create a gateway in {{% tts %}} by following the instructions for [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}).
 
 Give your gateway a unique **Gateway ID** in {{% tts %}} - this is just for you to identify the gateway and it does not need to be the same as the **Gateway ID** displayed in the gateway.
 

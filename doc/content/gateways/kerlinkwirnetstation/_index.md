@@ -22,7 +22,7 @@ This page guides you to connect Kerlink Wirnet Station to {{% tts %}}.
 
 ## Registration
 
-Create a gateway by following the instructions for [Adding Gateways]({{< ref "/gateways/adding-gateways" >}}). Choose a **Gateway ID**, and fill in the **Gateway EUI** field with value `7276FF0000XXXXXXX`. `XXXXXXX` represents the last 7 characters of the gateway's serial number For example, the **Gateway EUI** could be `7276ff00080E0000`.
+Create a gateway by following the instructions for [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}). Choose a **Gateway ID**, and fill in the **Gateway EUI** field with value `7276FF0000XXXXXXX`. `XXXXXXX` represents the last 7 characters of the gateway's serial number For example, the **Gateway EUI** could be `7276ff00080E0000`.
 
 Create an API Key with **View gateway information** rights for this gateway using the same instructions. Copy the API key and save it for later use.
 

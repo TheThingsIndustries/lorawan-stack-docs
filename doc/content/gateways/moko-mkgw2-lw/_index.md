@@ -14,7 +14,7 @@ MOKOSMART's 8 channel MKGW2 gateway is embedded with Semtech’s high performanc
 
 ## Registration
 
-Create a gateway by following [the instructions]({{< ref "/gateways/adding-gateways" >}}). 
+Create a gateway by following [the instructions]({{< ref "/gateways/concepts/adding-gateways" >}}). 
 
 The **EUI** of the gateway can be found on the configuration web page of the gateway or on the device packaging. 
 
