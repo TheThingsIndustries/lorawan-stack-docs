@@ -1,7 +1,8 @@
 ---
 title: "Browan Minuhub Pro"
 description: ""
-weight: 
+weight:
+aliases: [/gateways/browan-minihub-pro]
 ---
 
 {{< figure src="minihub-pro.png" alt="Browan Minihub Pro" class="float plain" >}}

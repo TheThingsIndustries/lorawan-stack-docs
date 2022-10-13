@@ -2,7 +2,7 @@
 title: "Troubleshooting Gateways"
 description: ""
 aliases: "/gateways/adding-gateways/troubleshooting"
-weight: -2
+weight: -1
 ---
 
 This section provides help for common issues and frequently asked questions you may have when adding gateways. 
