@@ -1,6 +1,7 @@
 ---
 title: "MultiTech Conduit mLinux"
 description: ""
+aliases: [/gateways/multitechconduit-mlinux]
 ---
 
 {{< figure src="001_Multitech_Conduit.png" alt="MultiTech MultiConnect Conduit Gateway" class="float plain" >}}

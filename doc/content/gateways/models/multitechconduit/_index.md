@@ -1,7 +1,7 @@
 ---
 title: "MultiTech Conduit AEP"
 description: ""
-aliases: [/guides/connecting-gateways/multitechconduit]
+aliases: [/guides/connecting-gateways/multitechconduit, /gateways/multitechconduit]
 ---
 
 The [MultiTech MultiConnect® Conduit™](http://www.multitech.net/developer/products/multiconnect-Conduit-platform/) is a configurable, scalable cellular communications gateway for industrial IoT applications. 
