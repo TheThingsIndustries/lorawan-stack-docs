@@ -3,7 +3,7 @@ title: "Connect LORIX One with UDP Packet Forwarder"
 description: ""
 ---
 
-This section contains instructions for connecting to {{% tts %}} using the [{{% udp-pf %}}]({{< ref "/gateways/udp" >}}).
+This section contains instructions for connecting to {{% tts %}} using the [{{% udp-pf %}}]({{< ref "/gateways/concepts/udp" >}}).
 
 <!--more-->
 

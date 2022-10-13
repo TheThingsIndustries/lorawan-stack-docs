@@ -33,7 +33,7 @@ It is recommended that the default password is changed for security reasons.
 
 ## Connect to {{% tts %}}
 
-The MOKOSMART MKGW2-LW supports the UDP packet forwarder. Please follow instructions for connecting the [UDP packet forwarder]({{< ref "gateways/udp" >}}).
+The MOKOSMART MKGW2-LW supports the UDP packet forwarder. Please follow instructions for connecting the [UDP packet forwarder]({{< ref "/gateways/concepts/udp" >}}).
 
 Do not forget to click **SAVE&APPLY** after you fill in the parameters. After a few seconds, your gateway should connect to {{% tts %}}.
 

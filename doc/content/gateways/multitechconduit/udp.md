@@ -3,7 +3,7 @@ title: "Connect Multitech Conduit with UDP Packet Forwarder"
 description: ""
 ---
 
-This section contains instructions for connecting the Multitech Conduit AEP to {{% tts %}} using the [{{% udp-pf %}}]({{< ref "/gateways/udp" >}}).
+This section contains instructions for connecting the Multitech Conduit AEP to {{% tts %}} using the [{{% udp-pf %}}]({{< ref "/gateways/concepts/udp" >}}).
 
 <!--more-->
 
@@ -13,7 +13,7 @@ This section contains instructions for connecting the Multitech Conduit AEP to {
 
 To configure the gateway for the correct channel plans, you need a `global_conf.json`.
 
-The Gateway Configuration Server can be used to retrieve a proper `global_conf.json` configuration file for your gateway. Follow instructions [here]({{< relref "../udp" >}}).
+The Gateway Configuration Server can be used to retrieve a proper `global_conf.json` configuration file for your gateway. Follow instructions [here]({{< ref "/gateways/concepts/udp" >}}).
 
 Once the `global_conf.json` file is generated, you will need to add this to your gateway. In a web browser, open the gateway’s configuration page by navigating to its IP Address obtained from the network it is connected to. Once logged in, you can configure the gateway to connect to {{%tts%}} by following the steps below:
 

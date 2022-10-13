@@ -51,7 +51,7 @@ Gateway event logs can be found in the Live Data tab in the gateway's general in
 
 ## How does {{% tts %}} Console know whether a gateway is connected?
 
-For both [{{% udp-pf %}}]({{< ref "gateways/udp" >}}) and [{{% lbs %}}]({{< ref "gateways/concepts/lora-basics-station" >}}) gateways, {{% tts %}} creates a `GatewayConnectionStats` database entry when a gateway connects and removes that entry when the gateway disconnects. The Console checks whether this database entry exists and shows the gateway as connected or disconnected accordingly.
+For both [{{% udp-pf %}}]({{< ref "/gateways/concepts/udp" >}}) and [{{% lbs %}}]({{< ref "gateways/concepts/lora-basics-station" >}}) gateways, {{% tts %}} creates a `GatewayConnectionStats` database entry when a gateway connects and removes that entry when the gateway disconnects. The Console checks whether this database entry exists and shows the gateway as connected or disconnected accordingly.
 
 The mechanism for determining whether a gateway remains connected differs for UDP and {{% lbs %}} gateways.
 
@@ -258,7 +258,7 @@ Example:
 {"txpk_ack":{"error":"COLLISION_PACKET"}}
 ```
 
-If you are facing `TX_FREQ` or `TX_POWER` errors, please make sure that your gateway's `global_conf.json` file is properly configured. See [{{% udp-pf %}} Configuration]({{< ref "/gateways/udp#configuration" >}}) section for more info.
+If you are facing `TX_FREQ` or `TX_POWER` errors, please make sure that your gateway's `global_conf.json` file is properly configured. See [{{% udp-pf %}} Configuration]({{< ref "/gateways/concepts/udp#configuration" >}}) section for more info.
 
 For the rest of errors in the list above, please create an issue in [{{% tts %}} GitHub repository](https://github.com/TheThingsNetwork/lorawan-stack) or contact [The Things Industries support](mailto:support@thethingsindustries.com).
 
@@ -294,7 +294,7 @@ Try solving this issue by:
 
 [{{% lbs %}}]({{< ref "/gateways/concepts/lora-basics-station" >}}) protocol currently does not support GPS fields in Uplink messages, so the GPS location in {{% tts %}} Console for {{% lbs %}}-based gateways cannot be updated from status messages.
 
-Updating gateway location from status messages in supported only for gateways that establish authenticated connections (Basic Station and MQTT gateways), i.e. it is not supported for [UDP]({{< ref "/gateways/udp" >}}) gateways.
+Updating gateway location from status messages in supported only for gateways that establish authenticated connections (Basic Station and MQTT gateways), i.e. it is not supported for [UDP]({{< ref "/gateways/concepts/udp" >}}) gateways.
 
 Keep in mind that you can still set the gateway location [manually]({{< ref "/gateways/concepts/adding-gateways#set-gateway-location" >}}) from {{% tts %}} Console.
 
