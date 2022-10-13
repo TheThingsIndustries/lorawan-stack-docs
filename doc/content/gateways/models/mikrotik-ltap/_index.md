@@ -1,6 +1,7 @@
 ---
 title: "MikroTik LtAP"
 description: ""
+aliases: ["/gateways/mikrotik-ltap"]
 ---
 
 {{< figure src="LtaP.jpg" alt="LtAP" class="plain float" >}}

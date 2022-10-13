@@ -1,6 +1,7 @@
 ---
 title: "MikroTik KNOT"
 description: ""
+aliases: ["/gateways/mikrotik-knot"]
 ---
 
 {{< figure src="mikrotik-knot.jpeg" alt="Ltmikrotik-knotAP" class="plain float" >}}
