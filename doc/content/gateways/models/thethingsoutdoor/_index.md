@@ -1,6 +1,7 @@
 ---
 title: "The Things Outdoor Gateway"
 description: ""
+aliases: [/gateways/thethingsoutdoor]
 ---
 
 This guide contains instructions for connecting The Things Outdoor Gateway to {{% tts %}}.
