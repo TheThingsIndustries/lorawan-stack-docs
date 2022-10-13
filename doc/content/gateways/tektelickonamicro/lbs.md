@@ -3,7 +3,7 @@ title: "Connect Tektelic Kona Micro with Lora Basics™ Station"
 description: ""
 ---
 
-This section guides you to connect the Tektelic Kona Micro IoT LoRaWAN Gateway to {{% tts %}} using [{{% lbs %}}]({{< ref "/gateways/lora-basics-station" >}}).
+This section guides you to connect the Tektelic Kona Micro IoT LoRaWAN Gateway to {{% tts %}} using [{{% lbs %}}]({{< ref "/gateways/concepts/lora-basics-station" >}}).
 
 <!--more-->
 
@@ -83,7 +83,7 @@ The Basic Station process ID should be displayed.
 
 ### Upload Configuration Files
 
-On Basic Station gateways, only CUPS or LNS can be configured. Configuring CUPS will automatically configure LNS, so to use {{% tts %}}, just follow the instructions for [Connecting CUPS]({{< ref "/gateways/lora-basics-station/cups" >}}).
+On Basic Station gateways, only CUPS or LNS can be configured. Configuring CUPS will automatically configure LNS, so to use {{% tts %}}, just follow the instructions for [Connecting CUPS]({{< ref "/gateways/concepts/lora-basics-station/cups" >}}).
 
 After completing the instructions for CUPS, you should have the following files:
 

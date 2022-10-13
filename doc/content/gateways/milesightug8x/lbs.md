@@ -3,7 +3,7 @@ title: "Connect Milesight UG8X with Lora Basics™ Station"
 description: ""
 ---
 
-This section contains instructions for connecting the Milesight UG8X LoRaWAN gateway to {{% tts %}} using [{{% lbs %}}]({{< ref "/gateways/lora-basics-station" >}}).
+This section contains instructions for connecting the Milesight UG8X LoRaWAN gateway to {{% tts %}} using [{{% lbs %}}]({{< ref "/gateways/concepts/lora-basics-station" >}}).
 
 <!--more-->
 
@@ -15,7 +15,7 @@ In the server configuration options, check the **Enable** box.
 
 Choose **Basic Station** as the **Type**.
 
-Follow the instructions for [Connecting LNS]({{< ref "/gateways/lora-basics-station/lns" >}}). If using CUPS, following the instructions for [Connecting CUPS]({{< ref "/gateways/lora-basics-station/cups" >}}).
+Follow the instructions for [Connecting LNS]({{< ref "/gateways/concepts/lora-basics-station/lns" >}}). If using CUPS, following the instructions for [Connecting CUPS]({{< ref "/gateways/concepts/lora-basics-station/cups" >}}).
 
 Click **Save** to continue.
 

@@ -2,6 +2,7 @@
 title: "LoRaWAN Network Server (LNS)"
 description: ""
 weight: -1
+aliases: [/gateways/lora-basics-station/lns]
 ---
 
 LNS establishes a data connection between a {{% lbs %}} and {{% tts %}}. This page contains information about connecting your gateway to {{% tts %}} using the {{% lns %}} (LNS) protocol.
@@ -53,7 +54,7 @@ Upload the `.pem` file in your gateway as the LNS Server Certificate, i.e. LNS T
 
 This is a file which {{% tts %}} uses to verify the identity of your gateway.
 
-Instructions below show how to create a file called `lns.key`, replacing `"your-lns-api-key"` with the [LNS API key]({{< ref "/gateways/lora-basics-station/lns#create-an-api-key" >}}) you created above.
+Instructions below show how to create a file called `lns.key`, replacing `"your-lns-api-key"` with the [LNS API key]({{< ref "/gateways/concepts/lora-basics-station/lns#create-an-api-key" >}}) you created above.
 
 On Linux or macOS use the following commands:
 

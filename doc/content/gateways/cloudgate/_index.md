@@ -7,7 +7,7 @@ description: ""
 
 Option Wireless Technology’s CloudGate is the carrier-approved IoT solution platform that delivers device connectivity, security and processing power for global IoT applications.
 
-This guide will help you set up the CloudGate gateway to communicate over {{% tts %}} using [LoRa Basics Station]({{< ref "/gateways/lora-basics-station" >}}).
+This guide will help you set up the CloudGate gateway to communicate over {{% tts %}} using [LoRa Basics Station]({{< ref "/gateways/concepts/lora-basics-station" >}}).
 
 <!--more-->
 
@@ -97,7 +97,7 @@ Configure the authentication as **LNS**, and select the region.
 
 {{< figure src="BasicsStation-Config-Authentication.png" alt="Choose Authentication Field" >}}
 
-On CloudGate gateways, only CUPS or LNS can be configured. Configuring CUPS will automatically configure LNS, so to use {{% tts %}}, just follow the instructions for [Connecting to CUPS]({{< ref "/gateways/lora-basics-station/cups" >}}).
+On CloudGate gateways, only CUPS or LNS can be configured. Configuring CUPS will automatically configure LNS, so to use {{% tts %}}, just follow the instructions for [Connecting to CUPS]({{< ref "/gateways/concepts/lora-basics-station/cups" >}}).
 
 The server address is the network endpoint of {{% tts %}} LNS. It is a combination of the **protocol** (wss), the **server address**, and the **port**. Enter the following in your gateway as the **LNS Server Address**: `wss://<server-address>:8887`.
 

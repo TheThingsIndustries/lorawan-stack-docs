@@ -3,7 +3,7 @@ title: "Connect LORIX One with Lora Basics™ Station"
 description: ""
 ---
 
-This section contains instructions for connecting to {{% tts %}} using [{{% lbs %}}]({{< ref "/gateways/lora-basics-station" >}}).
+This section contains instructions for connecting to {{% tts %}} using [{{% lbs %}}]({{< ref "/gateways/concepts/lora-basics-station" >}}).
 
 <!--more-->
 
@@ -62,6 +62,6 @@ Go to the **Configuration** section and enable **Configuration and Update Server
 
 {{< figure src="../lorix-one-lora-settings-bs.png" alt="LORIX One LoRa forwarder Basic Station LNS" >}}
 
-To connect the gateway via CUPS protocol, follow the instructions for [Connecting CUPS]({{< ref "/gateways/lora-basics-station/cups" >}}).
+To connect the gateway via CUPS protocol, follow the instructions for [Connecting CUPS]({{< ref "/gateways/concepts/lora-basics-station/cups" >}}).
 
 Press the **SAVE** button. In the **Control** pane above, press **START** and check the logs in the dedicated pane.
