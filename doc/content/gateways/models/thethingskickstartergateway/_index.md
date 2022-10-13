@@ -1,6 +1,7 @@
 ---
 title: "The Things Kickstarter Gateway"
 description: ""
+aliases: [/gateways/thethingskickstartergateway]
 ---
 
 This page guides you to connect The Things Kickstarter Gateway to {{% tts %}}.
