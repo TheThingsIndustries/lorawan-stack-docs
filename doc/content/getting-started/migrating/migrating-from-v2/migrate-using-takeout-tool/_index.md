@@ -35,7 +35,7 @@ In the gateways section, you will see gateways you created on The Things Network
 
 {{< figure src="gateways.png" >}}
 
-To migrate these gateways, simply [add the gateways]({{< ref "gateways/adding-gateways" >}}) in {{% tts %}}. If the gateway supports {{% lbs %}}, we recommend following instructions for [Adding a {{% lbs %}} gateway]({{< ref "gateways/lora-basics-station" >}}).
+To migrate these gateways, simply [add the gateways]({{< ref "/gateways/concepts/adding-gateways" >}}) in {{% tts %}}. If the gateway supports {{% lbs %}}, we recommend following instructions for [Adding a {{% lbs %}} gateway]({{< ref "gateways/concepts/lora-basics-station" >}}).
 
 There is no need to remove the gateways from The Things Network V2. Once the gateways are configured for {{% tts %}}, they will communicate only with that network server.
 

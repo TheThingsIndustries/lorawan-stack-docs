@@ -12,7 +12,7 @@ Check the official [TTN Mapper documentation site](https://docs.ttnmapper.org/).
 ## Prerequisites
 
 1. A LoRaWAN end device transmitting GPS coordinates (latitude, longitude and optionally altitude), and HDOP, GPS accuracy or satellite count.
-2. A LoRaWAN gateway with a [public location]({{< ref "/gateways/adding-gateways#set-gateway-location" >}}). 
+2. A LoRaWAN gateway with a [public location]({{< ref "/gateways/concepts/adding-gateways#set-gateway-location" >}}). 
 
 ## Configure {{% tts %}}
 

@@ -38,7 +38,7 @@ Once you have access to {{% tts %}}, it's time to start connecting devices. See 
 
 If you're using The Things Stack Community in an urban area, you may already have gateway coverage thanks to other members of the public The Things Network community. See [The Things Network Coverage Map](https://www.thethingsnetwork.org/map) to find out.
 
-If you're not covered, or you want to add gateways to extend the coverage of your network, see the [Adding Gateways section]({{< ref "gateways/adding-gateways" >}}).
+If you're not covered, or you want to add gateways to extend the coverage of your network, see the [Adding Gateways section]({{< ref "/gateways/concepts/adding-gateways" >}}).
 
 Once you've added a device and it's connected to a gateway and to {{% tts %}}, see the [Integrations section]({{< ref "integrations" >}}) to learn how to connect other services to act on device data.
 
@@ -61,6 +61,6 @@ A lot of academic research around LoRaWAN is being conducted nowadays. [Read som
 ## Useful Links
 
 - Learn more about LoRaWAN and our global, crowdsourced LoRaWAN network at [The Things Network Learn](https://thethingsnetwork.org/docs)
-- Learn to [add gateways]({{< ref "gateways/adding-gateways" >}}), [add devices]({{< ref "devices/adding-devices" >}}), and [create integrations]({{< ref "integrations" >}})
+- Learn to [add gateways]({{< ref "/gateways/concepts/adding-gateways" >}}), [add devices]({{< ref "devices/adding-devices" >}}), and [create integrations]({{< ref "integrations" >}})
 - Join The Things Network [Forum](https://www.thethingsnetwork.org/forum/) or [Slack](https://thethingsnetwork.slack.com/) for community support.
 - Get in touch with [The Things Industries](https://thethingsindustries.com) when you're ready to scale up
