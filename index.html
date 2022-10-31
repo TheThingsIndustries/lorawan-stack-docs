@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.22.0</p>
+        <p class="navbar-item is-size-7">v3.22.1</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -140,52 +140,28 @@
 <div class="whats-new">
   <div class="whats-new-content">
     <div class="whats-new-header">
-      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.22.0/>What's new in V3.22.0</a></h2>
+      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.22.1/>What's new in V3.22.1</a></h2>
       <a href="https://www.thethingsindustries.com/docs/whats-new/"><p class="see-more">See all release notes →</p></a>
     </div>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.22.0/">
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.22.1/">
       <div class="whats-new-body">
         <div class="whats-new-items-shadow whats-new-items-fade">
           <div class="whats-new-items">
-            <h3 id="added">Added</h3>
+            <h3 id="changed">Changed</h3>
 <ul>
-<li>Add more specific rights for OAuth clients.</li>
-<li>Experimental support for mTLS connections for LoRa Basics Station CUPS and LoRa Basics Station LNS (LNS-only mode) connections.</li>
-</ul>
-<h3 id="changed">Changed</h3>
+<li>Option to ignore logs from selected gRPC methods now supports ignoring logs for selected errors on method.
+Examples:
 <ul>
-<li>The flow for adding end devices has been updated in the Console.
-<ul>
-<li>Device QR codes can now be scanned to speed up end device onboarding.</li>
-<li>Claiming end devices from external Join Servers is now possible seemlessly from the same onboarding flow.</li>
+<li><code>--grpc.log-ignore-methods=&quot;/ttn.lorawan.v3.GsNs/HandleUplink&quot;</code>: log is skipped when no error occurs.</li>
+<li><code>--grpc.log-ignore-methods=&quot;/ttn.lorawan.v3.GsNs/HandleUplink:pkg/networkserver:duplicate_uplink;pkg/networkserver:device_not_found&quot;</code>: log is skipped when either <code>pkg/networkserver:duplicate_uplink</code> or <code>pkg/networkserver:device_not_found</code> error occurs (but not on success).</li>
+<li><code>--grpc.log-ignore-methods=&quot;/ttn.lorawan.v3.GsNs/HandleUplink:;pkg/networkserver:duplicate_uplink&quot;</code>: log is skipped on success or when <code>pkg/networkserver:duplicate_uplink</code> error occurs.</li>
 </ul>
 </li>
-<li>LoRa coding rate now defined in <code>DataRate</code> instead of <code>Band</code>.</li>
-<li>The Network Server will now schedule a potentially empty downlink in order to stop end devices from sending sticky MAC commands.</li>
-<li>Factory preset frequencies may now be provided for bands with fixed channel plans, such as US915 or AU915. The factory preset frequencies are interpreted as the only channels which are enabled at boot time.</li>
-<li><code>TxParamSetupReq</code> MAC command priority has been increased.</li>
-<li><code>DevStatusReq</code> MAC command priority has been lowered.</li>
-<li>Event subscriptions without history are now sent to the Redis read only replica, if it is available.</li>
-</ul>
-<h3 id="removed">Removed</h3>
+<li>The Gateway Server now takes into consideration the extra duty cycle checks present in the LoRa Basics Station forwarder. Previously the Gateway Server may accept the scheduling of downlinks which the packet forwarder would silently drop.
 <ul>
-<li>Removed coding rate from <code>TxSettings</code> as it is now defined in <code>DataRate</code>.</li>
-</ul>
-<h3 id="fixed">Fixed</h3>
-<ul>
-<li><code>--mac-settings.adr.mode.disabled</code>, <code>--mac-settings.adr.mode.dynamic</code> and <code>--mac-settings.adr.mode.static</code> flags of the <code>end-device update</code> command.</li>
-<li>Pagination in <code>sessions</code> and <code>access tokens</code> tables in the Console.</li>
-<li><code>LinkADRReq</code> MAC command generation for LoRaWAN 1.0 and 1.0.1 end devices.</li>
-<li><code>LinkADRReq</code> no longer attempts to enable channels which have not yet been negotiated with the end device.</li>
-<li>Downlink path selection for uplinks which are not LoRa modulated.</li>
-<li>Issues with byte inputs in the Console.
-<ul>
-<li>Pasting values into the input leading to issues in some cases.</li>
-<li>Values being typed double on android phones.</li>
+<li>Note that in some rare cases in which the LoRa Basics Station duty cycle is stricter than the windowed approach used by The Things Stack, the scheduling will fail and this will be visible via <code>ns.down.data.schedule.fail</code> events. Note that this is actually a positive outcome - it allows the Network Server to schedule the downlink via another gateway, while previously the downlink would be scheduled but get silently dropped on the gateway.</li>
 </ul>
 </li>
-<li>Console showing deleted collaborator after successful deletion in application collaborator list.</li>
-<li>Console crashing after deleting an organization.</li>
 </ul>
 
           </div>
@@ -203,7 +179,7 @@
 <a href="https://www.thethingsindustries.com/docs/whats-new/">
   <div class="whats-new-800">
     <div class="whats-new-header-800">
-      <p>See what's new in V3.22.0</p>
+      <p>See what's new in V3.22.1</p>
       <p>-></p>
     </div>
   </div>
