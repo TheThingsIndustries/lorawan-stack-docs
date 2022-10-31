@@ -8,6 +8,16 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.22.1
+
+### `2-4b-routing-s3`
+
+Add versioning to S3 buckets. Versioning is enabled by default.
+
+### `4-2a-configuration`
+
+- The `pkg/networkserver:duplicate_uplink` and `pkg/networkserver:device_not_found` errors of the `/ttn.lorawan.v3.GsNs/HandleUplink` RPC are now ignored.
+
 ## 3.22.0
 
 ### `2-3-db-redis`
