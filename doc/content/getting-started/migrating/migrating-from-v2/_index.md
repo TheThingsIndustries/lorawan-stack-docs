@@ -2,7 +2,13 @@
 title: "Migrating End Devices from V2"
 description: ""
 weight: 3
-aliases: ["/getting-started/migrating-from-v2", "/getting-started/migrating-from-v2/configure-ttnctl", "/getting-started/migrating-from-v2/export-v2-devices", "/getting-started/migrating/migrating-from-v2"]
+aliases:
+  [
+    "/getting-started/migrating-from-v2",
+    "/getting-started/migrating-from-v2/configure-ttnctl",
+    "/getting-started/migrating-from-v2/export-v2-devices",
+    "/getting-started/migrating/migrating-from-v2",
+  ]
 ---
 
 This section documents the process of migrating end devices from {{% ttnv2 %}} to {{% tts %}}.
@@ -38,7 +44,7 @@ The format of {{% ttnv2 %}} payload encoders and decoders is still supported in 
 
 ```js
 function Decoder(bytes) {
-    var temperature = bytes[0] | bytes[2];  
+    var temperature = bytes[0] | bytes[2];
     return {
         temperature: temperature;
     }
@@ -57,7 +63,7 @@ function decodeUplink(input) {
 }
 ```
 
-See [Payload Formatters]({{< ref "/integrations/payload-formatters" >}}) guide for detailed instructions on how to add payload formatters and which types are supported by {{% tts %}}. 
+See [Payload Formatters]({{< ref "/integrations/payload-formatters" >}}) guide for detailed instructions on how to add payload formatters and which types are supported by {{% tts %}}.
 
 For detailed tutorials on the integrations that are available in {{% tts %}}, see [Integrations]({{< ref "/integrations/payload-formatters" >}}).
 
