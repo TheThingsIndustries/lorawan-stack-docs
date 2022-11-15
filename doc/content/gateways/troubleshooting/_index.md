@@ -262,6 +262,10 @@ If you are facing `TX_FREQ` or `TX_POWER` errors, please make sure that your gat
 
 For the rest of errors in the list above, please create an issue in [{{% tts %}} GitHub repository](https://github.com/TheThingsNetwork/lorawan-stack) or contact [The Things Industries support](mailto:support@thethingsindustries.com).
 
+## I'm seeing the "Gateway missed too many pongs” warnings in the Gateway Live data events. What's causing this?
+
+The Gateway Server disconnects LoRa Basics Station gateways that stop sending pongs to pings that the server is sending, so the gateway might get disconnected after failing to send two or more pongs. Gateways that don't send pongs to server pings will probably face this issue.
+
 ## I do not see the downlink being scheduled by the Network Server. What do I do?
 
 If you notice your downlink is not being scheduled, check your gateway's Live data tab for the [`gs.down.send` event]({{< ref "/reference/api/events#event:gs.down.send" >}}). If you do not see this event, it means that the Network Server failed to schedule the downlink message to Gateway Server.
@@ -309,3 +313,19 @@ For example, you can query the location with:
 ```bash
 curl -H "Authorization: Bearer <api-key>" https://example.thethings.com/api/v3/gateways/<gateway-id>?field_mask=antennas
 ```
+
+## My gateway backhaul consumes a lot of data. Is there any way I can optimize it?
+
+Gateway's data consumption is influenced by many factors, and some of them can allow some optimization. Here are some common high data consumption causes:
+
+- A high number of LoRaWAN devices nearby and their traffic volume
+- A way that the gateway protocol is implemented. For example, a gateway might be sending a status update every N seconds, polling the network server for downstream messages (look for `pull_data` and `pull_ack` in the packet forwarder logs), etc. You can check the factors that consume data in your gateway protocol's documentation.
+- A gateway management system running on the gateway
+- Other applications or integrations configured in the gateway, such as automatic data recovery, MQTT bridge, etc.. Check if you have any additional features (that are unnecessary for your use case) enabled and optimize accordingly.
+- Firmware upgrades
+
+We recommend contacting your gateway's manufacturer to gather insights on data consumption and an advice on how it can be optimized.
+
+##  My gateway is receiving all LoRaWAN and non-LoRaWAN traffic from devices in its surrounding. Can I filter unwanted sensor data at the gateway level?
+
+In general, a gateway will receive all other LoRaWAN and non-LoRaWAN traffic from neighbouring devices, and it will forward that traffic to the Network Server. When it comes to filtering unwanted sensor data at the gateway level, users might consider using a gateway with a whitelisting function. This function can effectively reduce data traffic and operational costs. Please contact your gateway's manufacturer for additional info.
