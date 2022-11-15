@@ -8,6 +8,14 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.22.2
+
+### `2-5-db-timescale`
+
+- Add two new parameters: `DBEngineVersion`, which controls the PostgreSQL engine major version, and `DBTimescaleDBExtensionVersion`, which controls the TimescaleDB extension version.
+  - By default, `DBEngineVersion` is `12`, and `DBTimescaleDBExtensionVersion` is `2.7.0`.
+  - Major upgrades require manual migration via `pg_upgrade`.
+  
 ## 3.22.1
 
 ### `2-4b-routing-s3`
