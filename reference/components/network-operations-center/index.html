@@ -330,11 +330,71 @@
           <p>Network Operations Center provides aggregated insight in a network operated with The Things Stack.</p>
 <!-- more -->
 <p>Network Operations Center stores events from The Things Stack in a time series database, queries aggregated data and visualizes data in a dashboard driven by Grafana. Network Operations Center is complementary to the <a href="/docs/reference/components/console/">Console</a>: the Network Operations Center shows historic data (with a delay of at most 5 minutes), while the Console shows live information and allows for managing the network.</p>
-<figure><img src="../network-operations-center_overview.png"
-         alt="Network Operations Center"/>
+<h2 id="accessing-network-operations-center">Accessing Network Operations Center</h2>
+<p>The Network Operations Center can only be accessed by administrators. There are two main ways to access Network Operations Center within The Things Stack Console:</p>
+<ul>
+<li>On the left hand menu click Network Operations Center.</li>
+<li>Click on your avatar/profile in the upper right corner and then choose the Network Operations Center from the drop-down menu.</li>
+</ul>
+<p>The Network Operations Center Overview dashboard will open in a new web browser tab.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Since it utilizes Grafana, the Network Operations Center is supported in the current version of the following <a href="https://grafana.com/docs/grafana/latest/setup-grafana/installation#supported-web-browsers">web browsers</a>.
+</div>
+
+<p>A dashboard offers many features such as time picker, alerting, etc. For more information see the <a href="https://grafana.com/docs/grafana/v9.0/dashboards/use-dashboards/">Grafana docs</a>. Each dashboard has several panels for data visualization.</p>
+<h3 id="overview-dashboard">Overview Dashboard</h3>
+<p>The Overview dashboard provides a high-level overview of the network, focusing on the gateway statistics based on historical data.</p>
+<figure><img src="../overview-dashboard.png"
+         alt="overview dashboard"/>
 </figure>
 
-<p>The Network Operations Center can only be accessed by administrators.</p>
+<p>It consists of the following panels:</p>
+<p><strong>Gateways connected</strong> - a bar chart that visualizes the number of gateways that have connected to the network in the selected period.</p>
+<p><strong>Gateway connectivity</strong> - a table layout that displays the <strong>Gateway ID</strong>, <strong>Last Connect</strong>, <strong>Last Disconnect</strong>, <strong>Disconnects</strong>, <strong>Uptime</strong>, and <strong>Packet Rate</strong> of all the gateways on the network in the selected period.</p>
+<p>The following is a brief description of each column in the table:</p>
+<ul>
+<li><strong>Gateway ID</strong>: displays gateway IDs of all the gateways on the network. Click on the Gateway ID to access its Gateway Details Dashboard.</li>
+<li><strong>Last Connect</strong>: the date and time when the gateway last connected to the Network Server.</li>
+<li><strong>Last Disconnect</strong>: the date and time when the gateway last disconnected from the Network Server.</li>
+<li><strong>Disconnects</strong>: the number of disconnects in the selected period.</li>
+<li><strong>Uptime</strong>: the fraction of time in which the gateway has been connected to the Network Server.</li>
+<li><strong>Packet Rate</strong>: the total number of uplink and downlink data packets forwarded by the gateway per second.</li>
+</ul>
+<p>The data can be sorted by column names and filtered by column values.</p>
+<h2 id="gateway-details-dashboard">Gateway Details Dashboard</h2>
+<p>The Gateway Details dashboard visualizes detailed insight into gateway statistics in the selected time period.</p>
+<figure><img src="../gateway-details-dashboard.png"
+         alt="gateway details dashboard"/>
+</figure>
+
+<p>It consists of the following panels:</p>
+<p><strong>Uptime</strong> - the gauge chart that visualizes the gateway uptime, i.e. the fraction of the time in which the gateway has been connected to the Network Server.</p>
+<figure><img src="../uptime.png"
+         alt="uptime"/>
+</figure>
+
+<p><strong>Lowest RSSI (LoRa)</strong> - the graph that visualizes data about the lowest Received Signal Strength Indicator (RSSI) in dBm for each channel.</p>
+<figure><img src="../rssi.png"
+         alt="lowest rssi"/>
+</figure>
+
+<p><strong>Traffic</strong> - a time series graph that visualizes the uplink and downlink rates in packets per second.</p>
+<figure><img src="../traffic.png"
+         alt="traffic"/>
+</figure>
+
+<p><strong>Packets per channel</strong> - a heat map that visualizes the number of uplink data packets for each channel.</p>
+<figure><img src="../packets-per-channel.png"
+         alt="packets per channel"/>
+</figure>
+
+<p><strong>Channel utilization</strong> - a graph that visualizes the percentage of total utilization on each channel over a time interval.</p>
+<figure><img src="../channel-utilization.png"
+         alt="channel utilization"/>
+</figure>
+
+<p>The Packets per channel and Channel utilization graphs can be used to find out which channels are overused and which channels are prone to collisions.</p>
 
         </div>
         <div class="is-clearfix">
@@ -356,6 +416,16 @@
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#accessing-network-operations-center'>Accessing Network Operations Center</a></li>
+    
+      
+      <li><a href='#gateway-details-dashboard'>Gateway Details Dashboard</a></li>
+    
+  </ul>
 
 
   </nav>
@@ -393,10 +463,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Johan Stokking on 24 Jul 2022.
+  Last changed by Pradeeka Seneviratne on 16 Nov 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/cf535ac0e692d2abb39cfb660dc269cee2f76d2a">
-      Document Network Operations Center (#889)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4339fe117077adb4076214350c3788fe432e2d52">
+      doc: Update Network Operations Center reference page (#978)
     </a>
 </p>
 
