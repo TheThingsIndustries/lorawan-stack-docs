@@ -281,6 +281,8 @@ echo Authorization: Bearer %LNS_KEY% &gt; lns.key
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span><span class="nt">&#34;txpk_ack&#34;</span><span class="p">:{</span><span class="nt">&#34;error&#34;</span><span class="p">:</span><span class="s2">&#34;COLLISION_PACKET&#34;</span><span class="p">}}</span>
 </span></span></code></pre></div><p>If you are facing <code>TX_FREQ</code> or <code>TX_POWER</code> errors, please make sure that your gateway&rsquo;s <code>global_conf.json</code> file is properly configured. See <a href="https://www.thethingsindustries.com/docs/gateways/concepts/udp/#configuration">Semtech UDP Packet Forwarder Configuration</a> section for more info.</p>
 <p>For the rest of errors in the list above, please create an issue in <a href="https://github.com/TheThingsNetwork/lorawan-stack">The Things Stack GitHub repository</a> or contact <a href="mailto:support@thethingsindustries.com">The Things Industries support</a>.</p>
+<h2 id="im-seeing-the-gateway-missed-too-many-pongs-warnings-in-the-gateway-live-data-events-whats-causing-this">I&rsquo;m seeing the &ldquo;Gateway missed too many pongs” warnings in the Gateway Live data events. What&rsquo;s causing this?</h2>
+<p>The Gateway Server disconnects LoRa Basics Station gateways that stop sending pongs to pings that the server is sending, so the gateway might get disconnected after failing to send two or more pongs. Gateways that don&rsquo;t send pongs to server pings will probably face this issue.</p>
 <h2 id="i-do-not-see-the-downlink-being-scheduled-by-the-network-server-what-do-i-do">I do not see the downlink being scheduled by the Network Server. What do I do?</h2>
 <p>If you notice your downlink is not being scheduled, check your gateway&rsquo;s Live data tab for the <a href="https://www.thethingsindustries.com/docs/reference/api/events/#event:gs.down.send"><code>gs.down.send</code> event</a>. If you do not see this event, it means that the Network Server failed to schedule the downlink message to Gateway Server.</p>
 <p>You can simply try re-scheduling the downlink, and if the issue persists, check if the downlink is being properly scheduled from the Application Server to the Network Server.</p>
@@ -309,7 +311,18 @@ echo Authorization: Bearer %LNS_KEY% &gt; lns.key
 <p>The gateway location is stored in the Identity Server instead. The updated location can be found by querying the Identity Server <a href="https://www.thethingsindustries.com/docs/reference/api/gateway/">GetGateway API</a>.</p>
 <p>For example, you can query the location with:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -H <span class="s2">&#34;Authorization: Bearer &lt;api-key&gt;&#34;</span> https://example.thethings.com/api/v3/gateways/&lt;gateway-id&gt;?field_mask<span class="o">=</span>antennas
-</span></span></code></pre></div>
+</span></span></code></pre></div><h2 id="my-gateway-backhaul-consumes-a-lot-of-data-is-there-any-way-i-can-optimize-it">My gateway backhaul consumes a lot of data. Is there any way I can optimize it?</h2>
+<p>Gateway&rsquo;s data consumption is influenced by many factors, and some of them can allow some optimization. Here are some common high data consumption causes:</p>
+<ul>
+<li>A high number of LoRaWAN devices nearby and their traffic volume</li>
+<li>A way that the gateway protocol is implemented. For example, a gateway might be sending a status update every N seconds, polling the network server for downstream messages (look for <code>pull_data</code> and <code>pull_ack</code> in the packet forwarder logs), etc. You can check the factors that consume data in your gateway protocol&rsquo;s documentation.</li>
+<li>A gateway management system running on the gateway</li>
+<li>Other applications or integrations configured in the gateway, such as automatic data recovery, MQTT bridge, etc.. Check if you have any additional features (that are unnecessary for your use case) enabled and optimize accordingly.</li>
+<li>Firmware upgrades</li>
+</ul>
+<p>We recommend contacting your gateway&rsquo;s manufacturer to gather insights on data consumption and an advice on how it can be optimized.</p>
+<h2 id="my-gateway-is-receiving-all-lorawan-and-non-lorawan-traffic-from-devices-in-its-surrounding-can-i-filter-unwanted-sensor-data-at-the-gateway-level">My gateway is receiving all LoRaWAN and non-LoRaWAN traffic from devices in its surrounding. Can I filter unwanted sensor data at the gateway level?</h2>
+<p>In general, a gateway will receive all other LoRaWAN and non-LoRaWAN traffic from neighbouring devices, and it will forward that traffic to the Network Server. When it comes to filtering unwanted sensor data at the gateway level, users might consider using a gateway with a whitelisting function. This function can effectively reduce data traffic and operational costs. Please contact your gateway&rsquo;s manufacturer for additional info.</p>
         </div>
         
           <div class="is-clearfix">
@@ -415,6 +428,9 @@ echo Authorization: Bearer %LNS_KEY% &gt; lns.key
       <li><a href='#im-noticing-some-errors-in-my-udp-gateways-packet-forwarder-logs-what-do-they-represent'>I’m noticing some errors in my UDP gateway’s packet forwarder logs. What do they represent?</a></li>
     
       
+      <li><a href='#im-seeing-the-gateway-missed-too-many-pongs-warnings-in-the-gateway-live-data-events-whats-causing-this'>I’m seeing the “Gateway missed too many pongs” warnings in the Gateway Live data events. What’s causing this?</a></li>
+    
+      
       <li><a href='#i-do-not-see-the-downlink-being-scheduled-by-the-network-server-what-do-i-do'>I do not see the downlink being scheduled by the Network Server. What do I do?</a></li>
     
       
@@ -428,6 +444,12 @@ echo Authorization: Bearer %LNS_KEY% &gt; lns.key
     
       
       <li><a href='#i-set-the-gateway-location-manually-in-the-things-stack-console-why-can-i-not-see-it-in-the-gateway-connection-statistics'>I set the gateway location manually in The Things Stack Console. Why can I not see it in the gateway connection statistics?</a></li>
+    
+      
+      <li><a href='#my-gateway-backhaul-consumes-a-lot-of-data-is-there-any-way-i-can-optimize-it'>My gateway backhaul consumes a lot of data. Is there any way I can optimize it?</a></li>
+    
+      
+      <li><a href='#my-gateway-is-receiving-all-lorawan-and-non-lorawan-traffic-from-devices-in-its-surrounding-can-i-filter-unwanted-sensor-data-at-the-gateway-level'>My gateway is receiving all LoRaWAN and non-LoRaWAN traffic from devices in its surrounding. Can I filter unwanted sensor data at the gateway level?</a></li>
     
   </ul>
 
@@ -467,10 +489,10 @@ echo Authorization: Bearer %LNS_KEY% &gt; lns.key
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer on 14 Oct 2022.
+  Last changed by Nejra Selimović on 15 Nov 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/11b832df984f5600c0739c6635d78cead9b0f8ae">
-      Refactor gateways section (#973)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/18a16a67435029072d5d8f595c3861ed14d6880f">
+      doc: Update gateway troubleshooting list (#994)
     </a>
 </p>
 
