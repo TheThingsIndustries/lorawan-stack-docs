@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.96.0" />
+  <title>Mutual TLS | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/mutual-tls/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.c994a55269632c4bc7be3364abf857e85ff170cc251dd025099769c910cbbcb4.css" integrity="sha256-yZSlUmljLEvHvjNkq/hX6F/xcMwlHdAlCZdpyRDLvLQ=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+  <meta name="description" content="Mutual TLS authentication">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Mutual TLS">
+  <meta itemprop="description" content="Mutual TLS authentication">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Mutual TLS">
+  <meta property="og:description" content="Mutual TLS authentication">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/mutual-tls/">
+  <meta name="twitter:title" content="Mutual TLS" />
+  <meta name="twitter:description" content="Mutual TLS authentication" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body><nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.22.1</p>
+      </a><div class="navbar-item navbar-search-brand">
+        <div class="field has-addons has-addons-centered">
+          <div class="control">
+            <input id="search-input-brand" class="input search-bar" type="text" placeholder="Search the docs..." type="text">
+          </div>
+        </div>
+      </div>
+      
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a><div class="navbar-item navbar-search-menu">
+            <div class="field has-addons has-addons-centered">
+              <div class="control">
+                <input id="search-input-menu" class="input search-bar" type="text" placeholder="Search the docs..." type="text">
+              </div>
+            </div>
+          </div></div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://accounts.thethingsindustries.com/fee-calculator">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+  <script type="text/javascript">
+    docsearch({
+      apiKey: "4372282a02970d8402d43457bf95d486",
+      indexName: "thethingsstack",
+      inputSelector: '#search-input-brand',
+      debug: false 
+    });
+    docsearch({
+      apiKey: "4372282a02970d8402d43457bf95d486",
+      indexName: "thethingsstack",
+      inputSelector: '#search-input-menu',
+      debug: false 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Getting Started</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/getting-started/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/quick-start/" class="">Quick Start</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/what-is-tts/" class="">What Is The Things Stack?</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/console/" class="">Console</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/billing-and-subscription-management/" class="">Subscription and Billing Management</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/cli/" class="">Command-line Interface</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/installation/" class="">Installing The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/upgrading/" class="">Upgrading The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/" class="">Migrating to The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/" class="">The Things Stack Cloud</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/" class="">The Things Stack AWS Launcher</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ami/" class="">AWS Marketplace AMI</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/" class="">AWS ECS</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/architecture/" class="">Architecture</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/prerequisites/" class="">Prerequisites</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/deployment/" class="">Deployment</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/database-operations/" class="">Database Operations</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/monitoring/" class="">Monitoring</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/updating/" class="">Updating</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/best-practices/" class="">Best Practices</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/interop/" class="">Interoperability</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/mutual-tls/" class="is-active">Mutual TLS</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/troubleshooting/" class="">Troubleshooting AWS ECS Deployment</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/changelog/" class="">Template Changelog</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/ttn/" class="">The Things Network</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/server-addresses/" class="">Server Addresses</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/" class="">Packet Broker</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/sso/" class="">Single Sign-On</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/user-management/" class="">Users and Organizations</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/api/" class="">Using the API</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/events/" class="">Working with Events</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/troubleshooting/" class="">Troubleshooting Getting Started</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        <h1 class="title is-size-2">Mutual TLS
+          
+        </h1>
+        
+        <h2 class="subtitle">
+          
+          
+            <span class="tag is-light">New in 3.22.2</span>
+
+          
+          
+          
+        </h2>
+        
+        <div class="content">
+          <p>The Things Stack supports mutual TLS authentication via a supported proxy (Envoy).</p>
+<h2 id="mechanism">Mechanism</h2>
+<p>The Things Stack does not terminate mTLS connections. This is done by the proxy. The proxy is expected to forward the sanitized client certificate chain as an HTTP header.</p>
+<p>The Things Stack verifies this header with a pre-configured list of CAs.</p>
+<p>The Things Stack supports mTLS authentication for LoRa Basics™ Station CUPS and LoRa Basics™ Station LNS connections (LNS-only mode) that present a client certificate.</p>
+<h3 id="tls-termination">TLS termination</h3>
+<p>In the standard deployment model, AWS Network Load Balancer (NLB) terminates TLS, and then forwards unencrypted packets to The Things Stack via AWS internal network.</p>
+<p>Since the NLB does not support verifying client TLS certificates, the responsibility for terminating TLS is promoted to the proxy (only) for the the ports <strong>443</strong> (HTTPS) and <strong>8887</strong> (Web Socket with TLS).</p>
+<p>The other ports will have TLS terminated by the NLB.</p>
+<h3 id="certificate-requirements">Certificate Requirements</h3>
+<p>The <code>CN</code> (Common Name) field of the certificate must be the 16 digit gateway EUI. Example: <code>1111111111111111</code></p>
+<h2 id="update-instructions">Update Instructions</h2>
+<p>The <code>SupportProxyTLS</code> option is available in all the following templates and controls where TLS is terminated.</p>
+<p>Make sure to set it to <code>true</code> in <strong>all</strong> the templates if the proxy should terminate TLS.</p>
+<p>If not, it should be set to <code>false</code> in <strong>all</strong> the templates (this is the default). Setting it <code>true</code> in one and <code>false</code> in another will lead to to errors.</p>
+<h3 id="step-1-configuration-of-the-ca-certificate-store">Step 1: Configuration of the CA Certificate Store</h3>
+<p>First, deploy template <code>2-4c-mtls-s3</code>. This generates an S3 bucket to store CA certificates.</p>
+<p>After this template has been deployed, navigate to S3 and find the bucket that was created. You can check the <strong>Resources</strong> tab in Cloud Formation to find the bucket.</p>
+<p>Create an <code>index.yml</code> file that contains the CA store configuration and upload it to the root of the bucket.</p>
+<p>The contents of this file are as below.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">common</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span>- <span class="l">common.pem</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tenants</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">test</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="l">test.pem</span><span class="w">
+</span></span></span></code></pre></div><p>Create a <code>common</code> folder at the root of this repository.
+This folder contains the default certificates that are used to verify the client certificate, in case there are no tenant-specific matches.</p>
+<p>Create a folder called <code>tenants</code> in the root of the bucket. This bucket contains CA certificates per tenant.
+You can now create as many folders inside <code>tenants</code> with the folder name being the ID of a The Things Stack tenant. These folders would contain CA Certificates specific to that tenant.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  If you want to set the certificates later, create an empty <code>index.yml</code> file.
+</div>
+
+<h3 id="step-2-fetch-and-store-server-tls-credentials">Step 2: Fetch and Store Server TLS Credentials</h3>
+<p>The Things Stack AWS ECS deployment uses Certbot to query Server TLS credentials from Let&rsquo;s Encrpyt and store it in the AWS Certificate Manager.</p>
+<p>But since credentials once stored in ACM cannot be retrieved (can only be referenced by NLB), we need to store a copy of these credentials in the AWS Secrets Manager.</p>
+<p>Deploy the updated <code>4-1-secrets</code> template to create a new secret in ACM. This also generates additional keys in the KeyVault for The Things Stack components to exchange auth information.</p>
+<p>Then deploy the updated <code>5-7a-certs-le</code> to update the Certbot task and fetch new certificates using the <a href="#lets-encrypt-certificates-optional">instructions</a>.</p>
+<h3 id="step-3-update-the-load-balancer-and-the-proxy">Step 3: Update the Load Balancer and the Proxy</h3>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  This step requires brief downtime. Make sure to inform your customers.
+</div>
+
+<p>The AWS NLB used by The Things Stack AWS ECS deployment binds listeners to Target Groups.</p>
+<p>AWS NLB requires that the target groups and the listeners have the same protocol type (TCP/TLS/UDP).</p>
+<p>We are now modifying the protocol of the NLB ports <code>443</code> and <code>8887</code> to TCP. This means that the target groups that these ports use must be modified.</p>
+<p>Since the Proxy service is already bound to these target groups, CloudFormation would error if you try to update this.</p>
+<p>First, make a copy of the configuration parameters in the <code>5-6-ecs-proxy</code> CloudFormation stack.</p>
+<p>Next, delete the <code>5-6-ecs-proxy</code> stack.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  This will only delete the Proxy ECS containers and its related alarms. This can be easily reverted by re-deploying <code>5-6-ecs-proxy</code>.
+</div>
+
+<p>Deploy the <code>3-2-load-balancer-rules</code> template. AWS will now create the proper target groups with the <code>TCP</code> protocol type.</p>
+<p>Once completed, redeploy <code>5-6-ecs-proxy</code> and make sure to set <code>SupportProxyTLS</code> to <code>true</code>.</p>
+<p>At this point, if all the configuration is right, the proxy (Envoy) will handle TLS termination for ports <code>443</code> and <code>8887</code>.</p>
+<h3 id="step-4-update-the-things-stack-components">Step 4: Update The Things Stack Components</h3>
+<p>Since mTLS is supported for LoRa Basics™ Station CUPS and LoRa Basics™ Station LNS connections, The Things Stack Gateway Server, Identity Server and Gateway Configuration Server components require additional configuration.</p>
+<p>First deploy <code>4-2a-configuration</code> which contains new configuration and then deploy <code>5-4-ecs-services</code> to use those changes.</p>
+<h2 id="additional-operator-notes">Additional Operator Notes</h2>
+<h3 id="reloading-certificates">Reloading Certificates</h3>
+<p>Envoy (proxy) supports reloading TLS certificates without dropping active connections.</p>
+<p>This is done by using the <a href="https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret#example-three-certificate-rotation-for-xds-grpc-connection">static SDS configuration</a>.</p>
+<p>The <code>5-7b-ecs-certbot-scheduled-task</code> runs a periodic task to fetch new server TLS credentials.</p>
+<p>If there are new credentials, they will also be stored in Secrets Manager.</p>
+<p>The <code>-aws-proxy</code> images used for the proxy contain a cronjob that queries Secrets Manager (daily by default) and updates the proxy configuration.</p>
+<h3 id="testing-mtls-authentication">Testing mTLS authentication</h3>
+<p>In order to test mTLS authentication, you can generate self-signed certificates.</p>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  This is only for testing. Do not use this process in production.
+</div>
+
+<ol>
+<li>Create a client gateway private key. Note you can choose any length of the key.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl genrsa -des3 -out client.key <span class="m">2048</span>
+</span></span></code></pre></div><p>Unlock the key:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl rsa -in client.key -out gateway.key
+</span></span></code></pre></div><ol start="2">
+<li>Create a Root CA:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl req -x509 -sha256 -days <span class="m">1825</span> -newkey rsa:2048 -keyout root-ca.key -out root-ca.crt
+</span></span></code></pre></div><ol start="3">
+<li>Create a Certificate Signing Request for your client (Gateways):</li>
+</ol>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The <code>CN</code> (Common Name) field must be the 16 digit gateway EUI. Example: <code>1111111111111111</code>
+</div>
+
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl req -key client.key -new -out gateway.csr
+</span></span></code></pre></div><ol start="4">
+<li>Generate the client certificate. The following generates a gateway certificate signed by the Root CA valid for 365 days.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl x509 -req -CA root-ca.crt -CAkey root-ca.key -in gateway.csr -out gateway.crt -days <span class="m">365</span> -CAcreateserial -sha256 -days <span class="m">365</span>
+</span></span></code></pre></div><ol start="5">
+<li>In the S3 bucket generated in Step 1, add the <code>root-ca.crt</code> in either the <code>common</code> folder or the target tenant folder where your gateway is registered.</li>
+</ol>
+<p>Now restart the Gateway Server, Identity Server and Gateway Configuration Servers.</p>
+<ol start="6">
+<li>Connect using a client (e.g. <code>cURL</code>)</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -v --cert &lt;path&gt;/gateway.crt --key &lt;path&gt;/gateway.key --cacert &lt;path&gt;/root-ca.crt https://&lt;domain&gt;:443/update-info -d <span class="s1">&#39;{&#34;router&#34;:&#34;&lt;EUI in ID6&gt;&#34;}&#39;</span>
+</span></span></code></pre></div><h2 id="troubleshooting">Troubleshooting</h2>
+<h4 id="how-do-i-check-which-certificates-are-being-used">How do I check which certificates are being used?</h4>
+<p>On most web browsers, next to the server address, there would be a lock symbol. Clicking on this would lead to a menu that shows the certificates.</p>
+<p>Alternatively, this can be done via command line.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ openssl s_client -showcerts -connect &lt;server&gt;:&lt;port&gt;
+</span></span></code></pre></div>
+        </div>
+        
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/getting-started/aws/ecs/interop/">← Interoperability</a>
+<a class="button is-pulled-right" href="/docs/getting-started/aws/ecs/troubleshooting/">Troubleshooting AWS ECS Deployment →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#mechanism'>Mechanism</a></li>
+    
+      
+      <li><a href='#update-instructions'>Update Instructions</a></li>
+    
+      
+      <li><a href='#additional-operator-notes'>Additional Operator Notes</a></li>
+    
+      
+      <li><a href='#troubleshooting'>Troubleshooting</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/ttn-network/v3/90">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Krishna Iyer on 16 Nov 2022.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/1c76b66f1028b69e067488474412c431772bb84b">
+      Document mTLS gateway connections (#971)
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/aws/ecs/mutual-tls/_index.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>
