@@ -2,6 +2,7 @@
 title: "Azure IoT Central"
 description: ""
 distributions: ["Cloud", "Dedicated Cloud", "Enterprise", "Community"]
+aliases: ["/azure-iot-central"]
 ---
 
 This guide will help you setup the [Azure IoT Central](https://azure.microsoft.com/en-us/services/iot-central/) integration.
