@@ -83,7 +83,7 @@ docker-compose run --rm stack is-db create-oauth-client \
   --id ${ID} \
   --name "${NAME}" \
   --owner admin \
-  --secret "${CONSOLE_SECRET}" \
+  --secret "${CLIENT_SECRET}" \
   --redirect-uri "${REDIRECT_URI}" \
   --redirect-uri "${REDIRECT_PATH}" \
   --logout-redirect-uri "${LOGOUT_REDIRECT_URI}" \
