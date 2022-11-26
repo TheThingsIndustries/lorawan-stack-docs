@@ -425,6 +425,8 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="UplinkMessage" >}}
 
+{{< proto/message message="ZeroableFrequencyValue" >}}
+
 ## Enums
 
 {{< proto/enum enum="ADRAckLimitExponent" >}}
