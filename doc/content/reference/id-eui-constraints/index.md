@@ -49,3 +49,5 @@ EUIs of gateways and end device are released when deleted.
 - When an application is deleted, the ID is retained and cannot be reused within the tenant
 - When a gateway is deleted, the ID is retained but the gateway EUI can be reused
 - When an end device is deleted, the ID and EUI are released and can be reused
+
+{{< note >}} Entity IDs that were purged from an admin account are released and can be reused. Also, keep in mind that {{% tts %}} allows you to restore deleted entities within 24 hours from the time when they were deleted. {{</ note >}}
