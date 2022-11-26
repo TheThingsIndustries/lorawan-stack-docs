@@ -281,6 +281,8 @@ The official image is `docker.io/thethingsindustries/lorawan-stack:3.x.y-aws-pro
 
 {{< note >}} By default, Prometheus stores metrics only for a limited time. You can optionally enable long-term storage of metrics in an S3 bucket. This is done using a [Thanos](https://thanos.io/) sidecar. We do not support querying from long-term storage yet. {{</ note >}}
 
+The username for accessing Prometheus is `metrics`. Users can configure a custom `PrometheusPassword` while deploying the `5-5-ecs-monitoring.gen.template`. If this password wasn't configured during deployment, users can use `HTTPMetricsPasswordSecret` in the outputs section of the `4-1-secrets.gen.template`.
+
 We recommend to point Prometheus to an external **Alertmanager URL**, so that you can be alerted about (potential) problems with your deployment.
 
 ## HTTP and gRPC Proxy
