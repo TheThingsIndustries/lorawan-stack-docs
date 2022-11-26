@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.22.1</p>
+        <p class="navbar-item is-size-7">v3.22.2</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -257,6 +257,16 @@
           <h1 id="upgrading">Upgrading</h1>
 <p>All meaningful changes to templates are documented in this file.</p>
 <h2 id="unreleased">Unreleased</h2>
+<h2 id="3222">3.22.2</h2>
+<h3 id="2-5-db-timescale"><code>2-5-db-timescale</code></h3>
+<ul>
+<li>Add two new parameters: <code>DBEngineVersion</code>, which controls the PostgreSQL engine major version, and <code>DBTimescaleDBExtensionVersion</code>, which controls the TimescaleDB extension version.
+<ul>
+<li>By default, <code>DBEngineVersion</code> is <code>12</code>, and <code>DBTimescaleDBExtensionVersion</code> is <code>2.7.0</code>.</li>
+<li>Major upgrades require manual migration via <code>pg_upgrade</code>.</li>
+</ul>
+</li>
+</ul>
 <h2 id="3221">3.22.1</h2>
 <h3 id="2-4b-routing-s3"><code>2-4b-routing-s3</code></h3>
 <p>Add versioning to S3 buckets. Versioning is enabled by default.</p>
@@ -278,7 +288,7 @@
 <ul>
 <li>The <code>t4g</code> family of machines is now available for hosting, and the default machine size has been promoted to <code>db.t4g.medium</code>.</li>
 </ul>
-<h3 id="2-5-db-timescale"><code>2-5-db-timescale</code></h3>
+<h3 id="2-5-db-timescale-1"><code>2-5-db-timescale</code></h3>
 <ul>
 <li>Updated the default <code>node_exporter</code> version to 1.4.0.</li>
 </ul>
@@ -318,7 +328,7 @@
 <li>The <code>node_exporter</code> metrics are now tagged with the EC2 instance ID and instance name.</li>
 </ul>
 <h2 id="3200">3.20.0</h2>
-<h3 id="2-5-db-timescale-1"><code>2-5-db-timescale</code></h3>
+<h3 id="2-5-db-timescale-2"><code>2-5-db-timescale</code></h3>
 <ul>
 <li>Increased backup and redeployment timeout</li>
 </ul>
@@ -344,7 +354,7 @@
 <ul>
 <li>Added a hosted zone for internal use</li>
 </ul>
-<h3 id="2-5-db-timescale-2"><code>2-5-db-timescale</code></h3>
+<h3 id="2-5-db-timescale-3"><code>2-5-db-timescale</code></h3>
 <ul>
 <li>Added new parameter <code>NumReplicas</code></li>
 <li>Added new parameter <code>DeploymentName</code></li>
@@ -481,7 +491,7 @@
 <ul>
 <li>Machine now supports connection from AWS Session Manager. Added parameter <code>SessionManagerLogGroup</code></li>
 </ul>
-<h3 id="2-5-db-timescale-3"><code>2-5-db-timescale</code></h3>
+<h3 id="2-5-db-timescale-4"><code>2-5-db-timescale</code></h3>
 <ul>
 <li>Machine now supports connection from AWS Session Manager. Added parameter <code>SessionManagerLogGroup</code></li>
 </ul>
@@ -659,7 +669,7 @@
 <ul>
 <li>Added <code>EBSKmsKeyId</code> parameter to choose EBS boot volume encryption key. From now on, EBS boot volumes are encrypted.</li>
 </ul>
-<h3 id="2-5-db-timescale-4"><code>2-5-db-timescale</code></h3>
+<h3 id="2-5-db-timescale-5"><code>2-5-db-timescale</code></h3>
 <ul>
 <li>Created a hosted zone for internal use</li>
 <li>This template has been reworked so that updates are now possible. Before updating make a backup of the volume. For more information, please refer to the documentation at <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/updating/#2-5-db-timescale">https://www.thethingsindustries.com/docs/getting-started/aws/ecs/updating/#2-5-db-timescale</a></li>
@@ -1108,7 +1118,7 @@
 <ul>
 <li>Added InstanceProfile to the EC2 machine, changed its UserData</li>
 </ul>
-<h3 id="2-5-db-timescale-5"><code>2-5-db-timescale</code></h3>
+<h3 id="2-5-db-timescale-6"><code>2-5-db-timescale</code></h3>
 <ul>
 <li>Added LifecyclePolicy to the EC2 machine&rsquo;s volume</li>
 </ul>
@@ -1176,6 +1186,9 @@
     
       
       <li><a href='#unreleased'>Unreleased</a></li>
+    
+      
+      <li><a href='#3222'>3.22.2</a></li>
     
       
       <li><a href='#3221'>3.22.1</a></li>
@@ -1347,10 +1360,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 31 Oct 2022.
+  Last changed by Nejra Selimović on 26 Nov 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/309760fe4f1338f739be33f0a017e45a18aa4a5e">
-      doc: Add v3.22.1 release docs (#982)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7484876f3cdf31ffa5b34936d47ce0d36a0873dd">
+      doc: Add v3.22.2 release docs (#993)
     </a>
 </p>
 

@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.22.1</p>
+        <p class="navbar-item is-size-7">v3.22.2</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -140,28 +140,33 @@
 <div class="whats-new">
   <div class="whats-new-content">
     <div class="whats-new-header">
-      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.22.1/>What's new in V3.22.1</a></h2>
+      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.22.2/>What's new in V3.22.2</a></h2>
       <a href="https://www.thethingsindustries.com/docs/whats-new/"><p class="see-more">See all release notes →</p></a>
     </div>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.22.1/">
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.22.2/">
       <div class="whats-new-body">
         <div class="whats-new-items-shadow whats-new-items-fade">
           <div class="whats-new-items">
-            <h3 id="changed">Changed</h3>
+            <h3 id="added">Added</h3>
 <ul>
-<li>Option to ignore logs from selected gRPC methods now supports ignoring logs for selected errors on method.
-Examples:
+<li>The <code>is.gormstore</code> experimental flag has been added. Swaps the underlying Identity Server store implementation if set to true.</li>
+<li>The Things Join Server 2.0 (type <code>ttjsv2</code>) for claiming with Device Claiming Server.</li>
+<li>All Join Servers with a <code>/64</code> JoinEUI prefix are contacted concurrently with LoRaWAN Backend Interfaces interoperability. This should only be used with ambiguous JoinEUIs and when migrating Join Servers.</li>
+</ul>
+<h3 id="changed">Changed</h3>
 <ul>
-<li><code>--grpc.log-ignore-methods=&quot;/ttn.lorawan.v3.GsNs/HandleUplink&quot;</code>: log is skipped when no error occurs.</li>
-<li><code>--grpc.log-ignore-methods=&quot;/ttn.lorawan.v3.GsNs/HandleUplink:pkg/networkserver:duplicate_uplink;pkg/networkserver:device_not_found&quot;</code>: log is skipped when either <code>pkg/networkserver:duplicate_uplink</code> or <code>pkg/networkserver:device_not_found</code> error occurs (but not on success).</li>
-<li><code>--grpc.log-ignore-methods=&quot;/ttn.lorawan.v3.GsNs/HandleUplink:;pkg/networkserver:duplicate_uplink&quot;</code>: log is skipped on success or when <code>pkg/networkserver:duplicate_uplink</code> error occurs.</li>
+<li>Class B and C downlinks will no longer be automatically retried indefinitely if none of the gateways are available at the scheduling moment, and the downlink paths come from the last uplink.
+<ul>
+<li>This was already the behavior for downlinks which had their downlink path provided explicitly using the <code>class_b_c.gateways</code> field.</li>
+<li>The downlinks will be evicted from the downlink queue and a downlink failure event will be generated. The failure event can be observed by the application using the <code>downlink_failed</code> message, which is available in all integrations.</li>
 </ul>
 </li>
-<li>The Gateway Server now takes into consideration the extra duty cycle checks present in the LoRa Basics Station forwarder. Previously the Gateway Server may accept the scheduling of downlinks which the packet forwarder would silently drop.
-<ul>
-<li>Note that in some rare cases in which the LoRa Basics Station duty cycle is stricter than the windowed approach used by The Things Stack, the scheduling will fail and this will be visible via <code>ns.down.data.schedule.fail</code> events. Note that this is actually a positive outcome - it allows the Network Server to schedule the downlink via another gateway, while previously the downlink would be scheduled but get silently dropped on the gateway.</li>
+<li>Event history and payload storage TTL has now 1% jitter.</li>
+<li>The underlying store implementation has been changed to be by default based on <code>bun</code> instead of <code>gorm</code>. The previous store implementation can be reactivated using the <code>is.gormstore</code> experimental flag.</li>
 </ul>
-</li>
+<h3 id="deprecated">Deprecated</h3>
+<ul>
+<li>The Things Join Server 1.0 (type <code>ttjs</code>) for claiming with Device Claiming Server. Use The Things Join Server 2.0 (type <code>ttjsv2</code>) instead.</li>
 </ul>
 
           </div>
@@ -179,7 +184,7 @@ Examples:
 <a href="https://www.thethingsindustries.com/docs/whats-new/">
   <div class="whats-new-800">
     <div class="whats-new-header-800">
-      <p>See what's new in V3.22.1</p>
+      <p>See what's new in V3.22.2</p>
       <p>-></p>
     </div>
   </div>
