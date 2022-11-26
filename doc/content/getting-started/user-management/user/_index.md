@@ -54,7 +54,9 @@ In the bottom of the edit view, you can click **Delete user** to delete the user
 
 {{< figure src="users-delete.png" alt="Deleting a User" >}}
 
-{{< warning >}} When deleting users, their user IDs stay reserved in the system, it is not possible to create a new user with the same user ID. In most cases you'll probably want to update a user to set its state to `suspended` instead. {{</ warning >}}
+{{< warning >}} When deleting users, their user IDs stay reserved in the system, it is not possible to create a new user with the same user ID. In most cases you'll probably want to update a user to set its state to `suspended` instead.
+
+However, if the user ID has been purged by an admin, you'll be able to reuse it. {{</ warning >}}
 
 {{< /tabs/tab >}}
 
