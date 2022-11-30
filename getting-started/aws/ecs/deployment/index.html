@@ -441,6 +441,7 @@
   By default, Prometheus stores metrics only for a limited time. You can optionally enable long-term storage of metrics in an S3 bucket. This is done using a <a href="https://thanos.io/">Thanos</a> sidecar. We do not support querying from long-term storage yet.
 </div>
 
+<p>The username for accessing Prometheus is <code>metrics</code>. Users can configure a custom <code>PrometheusPassword</code> while deploying the <code>5-5-ecs-monitoring.gen.template</code>. If this password wasn&rsquo;t configured during deployment, users can use <code>HTTPMetricsPasswordSecret</code> in the outputs section of the <code>4-1-secrets.gen.template</code>.</p>
 <p>We recommend to point Prometheus to an external <strong>Alertmanager URL</strong>, so that you can be alerted about (potential) problems with your deployment.</p>
 <h2 id="http-and-grpc-proxy">HTTP and gRPC Proxy</h2>
 <p>The template <code>5-6-ecs-proxy</code> deploys the proxy that routes incoming gRPC and HTTP requests from the outside world to the right service.</p>
@@ -596,10 +597,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Michał Borkowski on 18 Mar 2022.
+  Last changed by Nejra Selimović on 30 Nov 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/82fd7c530e14328cf7b31e76ee63ccc2b10db42a">
-      doc: Small improvements (#818)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/16c473cad60a7ea292b38d9ed673375a6deb3cf0">
+      doc: Document Prometheus username and pass (#999)
     </a>
 </p>
 
