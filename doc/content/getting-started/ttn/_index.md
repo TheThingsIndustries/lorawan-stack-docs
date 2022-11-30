@@ -33,4 +33,8 @@ The Things Stack Community Edition (run by The Things Network) is a multi-cluste
 | `eu1`          | Europe 1        | Ireland           |
 | `nam1`         | North America 1 | California, USA   |
 
-For links to these clusters, see the [Addresses section]({{< relref "addresses" >}}).
+If you navigate to [this link](https://console.cloud.thethings.network), you can find out which {{% tts %}} Community Edition clusters are recommended for your deployment based on the location of your devices and immediately log into its Console.
+
+{{< figure src="cluster-location.png" alt="Recommended clusters" >}}
+
+See the [Addresses]({{< ref "/getting-started/ttn/addresses" >}}) for details about cluster, Console, API endpoints and other {{% tts %}} Community Edition addresses.

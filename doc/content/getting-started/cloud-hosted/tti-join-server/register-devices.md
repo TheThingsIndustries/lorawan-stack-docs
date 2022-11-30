@@ -5,7 +5,7 @@ weight: 10
 distributions: ["Cloud"]
 ---
 
-The Things Join Server is a LoRaWAN Join Server. Learn how to register devices to activate on The Things Industries Cloud Hosted or any LoRaWAN network.
+The Things Join Server is a LoRaWAN Join Server. Learn how to register devices to activate on {{% tts %}} Cloud or any LoRaWAN network.
 
 <!--more-->
 
@@ -137,4 +137,4 @@ The claim authentication code can be part of QR codes. [Learn how to generate QR
 
 ## Next Steps
 
-You can now activate the devices on The Things Industries Cloud Hosted.
+You can now activate the devices on {{% tts %}} Cloud.

@@ -6,7 +6,7 @@ aliases: [/guides/cloud-hosted/addresses]
 distributions: ["Cloud"]
 ---
 
-The addresses where you can reach your The Things Industries Cloud network consist of the tenant ID, the cluster ID and `cloud.thethings.industries`.
+The addresses where you can reach your {{% tts %}} Cloud network consist of the tenant ID, the cluster ID and `cloud.thethings.industries`.
 
 You can update the examples below with your tenant ID and cluster ID by filling them here.
 

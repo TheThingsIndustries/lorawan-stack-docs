@@ -8,7 +8,7 @@ distributions: ["Cloud"]
 
 Each Cloud cluster contains a Join Server for convenience. Instead of the Join Server in a cluster, you can also use The Things Join Server: a dedicated LoRaWAN Join Server which supports interoperability with other Network Servers and supports pre-provisioned secure elements.
 
-The addresses where you can reach your The Things Industries Cloud network consist of the tenant ID and `join.cloud.thethings.industries`.
+The addresses where you can reach your {{% tts %}} Cloud network consist of the tenant ID and `join.cloud.thethings.industries`.
 
 You can update the examples below with your tenant ID and cluster ID by filling them here.
 
