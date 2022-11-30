@@ -86,7 +86,7 @@ For example using `tenant1`, the `target-cups-uri` would be `https://tenant1.eu1
 
 If the {{% ttig %}} is currently connected to another LNS, do either of the following
 - Wait up to 24 hrs (this is the default action for gateways that are not physically reachable). {{% ttig %}} connects to the server every 24 hours to check for new configuration.
-- Unplug the power supply, wait for a few seconds and plug it back in. {{% ttig %}} now connects to the server to check for new configuration.
+- Perform a hard reset by holding down the reset button for at least 5 seconds. Then, follow the new gateway instructions below.
 
 ### New Gateways
 
