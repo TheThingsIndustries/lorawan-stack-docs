@@ -63,4 +63,6 @@ Once the application is created, you can update your application settings to ski
 
 To configure this setting, navigate to your applications's **General settings** tab in the Console and check the **Enabled** box under **Skip payload encryption and decryption** section.
 
+{{< note >}} The **Skip payload encryption and decryption** setting requires that the Application Server cannot access the AppSKey and can be used exclusively with external join servers (such as The Things Join Server with a custom KEK or the Semtech Join Server) that encrypt the AppSKey with their own KEK. Using this setting with a cluster local Join Server will not have any effect, because the Application Sever automatically unwraps keys so this setting gets overridden. {{</ note >}}
+
 {{< figure src="skip-payload-crypto.png" alt="Skip payload encryption and decryption" >}}
