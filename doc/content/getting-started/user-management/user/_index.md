@@ -18,17 +18,17 @@ User management can be found in the user dropdown in the top right corner of the
 
 {{< figure src="dropdown.png" alt="User Dropdown" >}}
 
-## Listing Users
+### Listing Users
 
 The list of users is shown immediately after going to **User management** in the user dropdown.
 
 {{< figure src="users-list.png" alt="User List" >}}
 
-## Searching for Users
+### Searching for Users
 
 You can search for users by ID using the search field above the list of users. It is currently not possible to search for users by other fields than the user ID using the Console, but you can do this with the CLI.
 
-## Creating Users
+### Creating Users
 
 See the following video from [The Things Network youtube channel](https://youtu.be/vxXKBEQxLq0) for instructions to create a user in the console.
 
@@ -36,11 +36,11 @@ See the following video from [The Things Network youtube channel](https://youtu.
 {{< youtube "vxXKBEQxLq0" >}}
 </details>
 
-## Inviting Users
+### Inviting Users
 
 It is currently not possible to invite users from the Console, but you can do this with the CLI.
 
-## Updating Users
+### Updating Users
 
 In order to update a user, select that user from the list. You'll now see the edit view.
 
@@ -48,7 +48,7 @@ In order to update a user, select that user from the list. You'll now see the ed
 
 After making the changes to the user, click **Save changes** to update the user.
 
-## Deleting Users
+### Deleting Users
 
 In the bottom of the edit view, you can click **Delete user** to delete the user.
 
@@ -73,7 +73,7 @@ EMAIL="colleague@thethings.network"
 
 Make sure to modify these according to your setup.
 
-## Creating Users
+### Creating Users
 
 Network Administrators can create user accounts as follows:
 
@@ -113,7 +113,7 @@ Please confirm password:***************
 ```
 </details>
 
-## Inviting Users
+### Inviting Users
 
 You can create invitations for users to join the network with the `users invitations create` command:
 
@@ -146,7 +146,7 @@ You will also be able to delete an invitation if you want to revoke it:
 ttn-lw-cli users invitations delete $EMAIL
 ```
 
-## Listing Users
+### Listing Users
 
 To list users with the CLI, use the `users list` command. Make sure to specify the fields you're interested in.
 
@@ -178,7 +178,7 @@ ttn-lw-cli users list --name --state --admin
 
 Use the pagination flags `--limit` and `--page` when there are many users.
 
-## Searching for Users
+### Searching for Users
 
 To search for users with the CLI, use the `users search` command. Make sure to specify the fields you're interested in. We'll search for users with IDs that contain "new":
 
@@ -202,7 +202,7 @@ ttn-lw-cli users search --id-contains new --name
 
 Use the pagination flags `--limit` and `--page` when there are many users.
 
-## Updating Users
+### Updating Users
 
 To update users with the CLI, use the `users update` command. The following command updates the state of user `new-user` to "approved" and makes them admin of the network:
 
@@ -225,7 +225,7 @@ ttn-lw-cli users update new-user --state APPROVED --admin true
 ```
 </details>
 
-## Deleting Users
+### Deleting Users
 
 To delete a user, use the `users delete` command.
 

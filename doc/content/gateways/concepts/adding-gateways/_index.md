@@ -90,15 +90,15 @@ This creates a gateway `gtw1` with user `admin` as collaborator, frequency plan 
 
 ## Create Gateway API Key
 
+Some gateways require an API Key with Link Gateway Rights to be able to connect to {{% tts %}}. In this section we explain how to create an API key with this right, but the procedure of creating an API key is identical for any other right as well.
+
 {{< tabs/container "Console" "CLI" >}}
 
 {{< tabs/tab "Console" >}}
 
-Some gateways require an API Key with Link Gateway Rights to be able to connect to {{% tts %}}.
+To do this, navigate to **API Keys** on the left hand menu of your gateway's settings and select **Add API Key**.
 
-In order to do this, navigate to the **API Keys** menu of your gateway and select **Add API Key**.
-
-Enter a name for your key, select the **Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink** right and then press **Create API Key**.
+Enter a **Name** for your key, set the **Expiry date**, select the **Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink** right and then press **Create API Key**.
 
 {{< figure src="gateway-api-key-creation.png" alt="Gateway API Key creation" >}}
 
@@ -110,9 +110,7 @@ You will see a screen that shows your newly created API Key. You now can copy it
 
 {{< tabs/tab "CLI" >}}
 
-Some gateways require an API Key with Link Gateway Rights to be able to connect to {{% tts %}}.
-
-Create an API key for the gateway:
+To create an API key for the gateway with the **Link as Gateway Server for traffic exchange, i.e. write uplink and read downlink** right:
 
 ```bash
 API_KEY_NAME="API key for connecting my gateway"
@@ -123,6 +121,8 @@ ttn-lw-cli gateways api-keys create \
 ```
 
 The CLI will return an API key such as `NNSXS.VEEBURF3KR77ZR...`. This API key has only link rights and can therefore only be used for linking this gateway. Make sure to copy the key and save it in a safe place. You will not be able to see this key again in the future, and if you lose it, you can create a new one to replace it in the gateway configuration.
+
+See the [CLI Reference]({{< ref "/ttn-lw-cli/ttn-lw-cli_gateways_api-keys" >}}) for details on managing gateway API keys using the CLI.
 
 {{< /tabs/tab >}}
 
