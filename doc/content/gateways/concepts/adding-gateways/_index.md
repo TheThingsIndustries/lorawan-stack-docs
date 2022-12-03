@@ -49,34 +49,6 @@ Your gateway will be created and you will be redirected to the gateway overview 
 
 You can now connect your gateway to {{% tts %}}.
 
-### Create Gateway API Key
-
-Some gateways require an API Key with Link Gateway Rights to be able to connect to {{% tts %}}.
-
-In order to do this, navigate to the **API Keys** menu of your gateway and select **Add API Key**.
-
-Enter a name for your key, select the **Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink** right and then press **Create API Key**.
-
-{{< figure src="gateway-api-key-creation.png" alt="Gateway API Key creation" >}}
-
-You will see a screen that shows your newly created API Key. You now can copy it in your clipboard by pressing the copy button. After saving the key in a safe place, press **I have copied the key**. You will not be able to see this key again in the future, and if you lose it, you can create a new one to replace it in the gateway configuration.
-
-{{< figure src="gateway-api-key-created.png" alt="Gateway API Key created" >}}
-
-## Set Gateway Location
-
-Once you have added your gateway to {{% tts %}}, you can also set its location to be displayed on a map widget by clicking **Change location settings**.
-
-If you do not mind your gateway's location to be publicly displayed, check the **Publish location** box.
-
-The gateway location can be manually set by entering the **Latitude**, **Longitude** and **Altitude** values.
-
-You can also check the **Update from status messages** box if you want to update the location based on the metadata from the incoming uplink gateway status messages. The location settings you manually entered will be overwritten by the updates from the gateway status messages.
-
-{{< note >}} {{% tts %}} Console currently supports setting one antenna location per gateway. {{</ note >}}
-
-{{< figure src="gateway-location.png" alt="Gateway location" >}}
-
 {{< /tabs/tab >}}
 
 {{< tabs/tab "CLI" >}}
@@ -112,7 +84,31 @@ ttn-lw-cli gateways create $GTW_ID \
 
 This creates a gateway `gtw1` with user `admin` as collaborator, frequency plan `EU_863_870`, EUI `00800000A00009EF` and respecting duty-cycle limitations. You can now connect your gateway to {{% tts %}}.
 
-### Create Gateway API Key
+{{< /tabs/tab >}}
+
+{{< /tabs/container >}}
+
+## Create Gateway API Key
+
+{{< tabs/container "Console" "CLI" >}}
+
+{{< tabs/tab "Console" >}}
+
+Some gateways require an API Key with Link Gateway Rights to be able to connect to {{% tts %}}.
+
+In order to do this, navigate to the **API Keys** menu of your gateway and select **Add API Key**.
+
+Enter a name for your key, select the **Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink** right and then press **Create API Key**.
+
+{{< figure src="gateway-api-key-creation.png" alt="Gateway API Key creation" >}}
+
+You will see a screen that shows your newly created API Key. You now can copy it in your clipboard by pressing the copy button. After saving the key in a safe place, press **I have copied the key**. You will not be able to see this key again in the future, and if you lose it, you can create a new one to replace it in the gateway configuration.
+
+{{< figure src="gateway-api-key-created.png" alt="Gateway API Key created" >}}
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "CLI" >}}
 
 Some gateways require an API Key with Link Gateway Rights to be able to connect to {{% tts %}}.
 
@@ -128,7 +124,31 @@ ttn-lw-cli gateways api-keys create \
 
 The CLI will return an API key such as `NNSXS.VEEBURF3KR77ZR...`. This API key has only link rights and can therefore only be used for linking this gateway. Make sure to copy the key and save it in a safe place. You will not be able to see this key again in the future, and if you lose it, you can create a new one to replace it in the gateway configuration.
 
+{{< /tabs/tab >}}
+
+{{< /tabs/container >}}
+
 ## Set Gateway Location
+
+{{< tabs/container "Console" "CLI" >}}
+
+{{< tabs/tab "Console" >}}
+
+Once you have added your gateway to {{% tts %}}, you can also set its location to be displayed on a map widget by clicking **Change location settings**.
+
+If you do not mind your gateway's location to be publicly displayed, check the **Publish location** box.
+
+The gateway location can be manually set by entering the **Latitude**, **Longitude** and **Altitude** values.
+
+You can also check the **Update from status messages** box if you want to update the location based on the metadata from the incoming uplink gateway status messages. The location settings you manually entered will be overwritten by the updates from the gateway status messages.
+
+{{< note >}} {{% tts %}} Console currently supports setting one antenna location per gateway. {{</ note >}}
+
+{{< figure src="gateway-location.png" alt="Gateway location" >}}
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "CLI" >}}
 
 Once you have added your gateway to {{% tts %}}, you can also set the locations of the gateway antennas.
 
