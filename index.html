@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.22.2</p>
+        <p class="navbar-item is-size-7">v3.23.0</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -140,33 +140,40 @@
 <div class="whats-new">
   <div class="whats-new-content">
     <div class="whats-new-header">
-      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.22.2/>What's new in V3.22.2</a></h2>
+      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.23.0/>What's new in V3.23.0</a></h2>
       <a href="https://www.thethingsindustries.com/docs/whats-new/"><p class="see-more">See all release notes →</p></a>
     </div>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.22.2/">
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.23.0/">
       <div class="whats-new-body">
         <div class="whats-new-items-shadow whats-new-items-fade">
           <div class="whats-new-items">
             <h3 id="added">Added</h3>
 <ul>
-<li>The <code>is.gormstore</code> experimental flag has been added. Swaps the underlying Identity Server store implementation if set to true.</li>
-<li>The Things Join Server 2.0 (type <code>ttjsv2</code>) for claiming with Device Claiming Server.</li>
-<li>All Join Servers with a <code>/64</code> JoinEUI prefix are contacted concurrently with LoRaWAN Backend Interfaces interoperability. This should only be used with ambiguous JoinEUIs and when migrating Join Servers.</li>
+<li>LoRa Alliance NetIDs revision 61 to 67. This is used in Network Operations Center.
+<ul>
+<li>This requires a database schema migration (<code>ttn-lw-stack noc-db migrate</code>) because of added table records.</li>
+</ul>
+</li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
-<li>Class B and C downlinks will no longer be automatically retried indefinitely if none of the gateways are available at the scheduling moment, and the downlink paths come from the last uplink.
-<ul>
-<li>This was already the behavior for downlinks which had their downlink path provided explicitly using the <code>class_b_c.gateways</code> field.</li>
-<li>The downlinks will be evicted from the downlink queue and a downlink failure event will be generated. The failure event can be observed by the application using the <code>downlink_failed</code> message, which is available in all integrations.</li>
-</ul>
-</li>
-<li>Event history and payload storage TTL has now 1% jitter.</li>
-<li>The underlying store implementation has been changed to be by default based on <code>bun</code> instead of <code>gorm</code>. The previous store implementation can be reactivated using the <code>is.gormstore</code> experimental flag.</li>
+<li>Gateway EUI is no longer unset when deleting a gateway, meaning it could be recovered if no other gateway claimed it. This requires a schema migration (<code>ttn-lw-stack is-db migrate</code>) because of the change in the database&rsquo;s <code>gateway_eui_index</code>.</li>
+<li>The new database driver is no longer specific to the Identity Server and is now activated using the <code>db.pgdriver</code> feature flag (instead of <code>is.pgdriver</code>).</li>
 </ul>
 <h3 id="deprecated">Deprecated</h3>
 <ul>
+<li>Google Cloud Platform backend for loading pre-shared master keys used with the Microchip ATECC608 secure elements. Only AWS is now supported.</li>
+</ul>
+<h3 id="removed">Removed</h3>
+<ul>
 <li>The Things Join Server 1.0 (type <code>ttjs</code>) for claiming with Device Claiming Server. Use The Things Join Server 2.0 (type <code>ttjsv2</code>) instead.</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li>Devices with pending session and MAC state may now successfully be imported.</li>
+<li>Client creation with an organization API key will no longer send an email without user information to the admins. Instead, the API key name will be used and if that is empty the API key ID will be the default.</li>
+<li>Allow providing DevEUI for ABP end devices with a LoRaWAN specification lower or equal to 1.0.4 in the end device onboarding screen in the Console.</li>
+<li>Faulty field validation for byte payloads in the uplink payload formatter panel in the Console.</li>
 </ul>
 
           </div>
@@ -184,7 +191,7 @@
 <a href="https://www.thethingsindustries.com/docs/whats-new/">
   <div class="whats-new-800">
     <div class="whats-new-header-800">
-      <p>See what's new in V3.22.2</p>
+      <p>See what's new in V3.23.0</p>
       <p>-></p>
     </div>
   </div>
