@@ -248,6 +248,11 @@
 <p>LoRaWAN frames are encrypted and decrypted on the application layer using the AppSKey by default.</p>
 <p>Once the application is created, you can update your application settings to skip uplink payload decryption and downlink payload encryption. This will cause the Application Server to forward messages to integrations without any processing, for example it will neglect <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">payload formatters</a>, meaning the integrations will be responsible for decrypting uplink messages in order to understand them. Also, scheduling downlinks from The Things Stack will be restricted, as it is expected for downlinks in that case to be scheduled from integrations.</p>
 <p>To configure this setting, navigate to your applications&rsquo;s <strong>General settings</strong> tab in the Console and check the <strong>Enabled</strong> box under <strong>Skip payload encryption and decryption</strong> section.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The <strong>Skip payload encryption and decryption</strong> setting requires that the Application Server cannot access the AppSKey and can be used exclusively with external join servers (such as The Things Join Server with a custom KEK or the Semtech Join Server) that encrypt the AppSKey with their own KEK. Using this setting with a cluster local Join Server will not have any effect, because the Application Sever automatically unwraps keys so this setting gets overridden.
+</div>
+
 <figure><img src="skip-payload-crypto.png"
          alt="Skip payload encryption and decryption"/>
 </figure>
@@ -327,8 +332,8 @@
 <p class="is-size-7">
   Last changed by Nejra Selimović on 06 Dec 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b2cc09622773f946ef8926031e63a07bb5fd0e8f">
-      Document creating API keys for apps/orgs/users, reorganize docs (#1010)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/edb1803e3391b9fdf6732317d7dd9df732ebcc80">
+      doc: Note on skip payload encryption setting (#1011)
     </a>
 </p>
 
