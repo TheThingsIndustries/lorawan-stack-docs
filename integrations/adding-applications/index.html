@@ -200,6 +200,50 @@
 
 <p>Next, see <a href="https://www.thethingsindustries.com/docs/integrations/adding-integrations/">Adding Integrations</a> to proceed with using the built-in <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/">MQTT Server</a> and <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/">HTTP Webhooks</a> for receiving uplink and sending downlink traffic.</p>
 <p>End devices are also created within applications. See <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> for more information.</p>
+<h2 id="create-application-api-key">Create Application API Key</h2>
+<p>Some applications require an API Key to write downlink traffic, read uplink traffic, manage integrations, etc. In this section we explain how to create an application API key on some basic examples, but this procedure is identical for any other right as well.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="console">
+      <a>
+        <span>Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="cli">
+      <a>
+        <span>CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="console">
+  <p>To create an API key for your application, navigate to <strong>API Keys</strong> on the left hand menu of your application&rsquo;s settings and select <strong>Add API Key</strong>.</p>
+<p>Enter a <strong>Name</strong> for your key, set the <strong>Expiry date</strong>, select rights that you want to grant and then press <strong>Create API Key</strong>.</p>
+<figure><img src="application-api-key-creation.png"
+         alt="Application API Key creation"/>
+</figure>
+<p>You will see a screen that shows your newly created API Key. You now can copy it in your clipboard by pressing the copy button. After saving the key in a safe place, press <strong>I have copied the key</strong>. You will not be able to see this key again in the future, and if you lose it, you can create a new one by following this same procedure.</p>
+<figure><img src="application-api-key-created.png"
+         alt="Application API Key created"/>
+</figure>
+</section>
+<section data-content="cli">
+  <p>To create an API key for your application with a <strong>Delete application</strong> right:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">API_KEY_NAME</span><span class="o">=</span><span class="s2">&#34;API key for deleting my application&#34;</span>
+</span></span><span class="line"><span class="cl">ttn-lw-cli applications api-keys create <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --name <span class="nv">$API_KEY_NAME</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --application-id <span class="nv">$APP_ID</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --right-application-delete
+</span></span></code></pre></div><p>The CLI will return an API key such as <code>NNSXS.RLA7AGGMD5ZHBH...</code>. This API key has only delete rights and can therefore only be used for deleting this application. Make sure to copy the key and save it in a safe place. You will not be able to see this key again in the future, and if you lose it, you can create a new one by following this same procedure.</p>
+<p>See the <a href="https://www.thethingsindustries.com/docs/ttn-lw-cli/ttn-lw-cli_applications_api-keys/">CLI Reference</a> for details on managing application API keys using the CLI.</p>
+</section>
+
+</div>
+
 <h2 id="payload-encryption-and-decryption">Payload Encryption and Decryption</h2>
 <p>LoRaWAN frames are encrypted and decrypted on the application layer using the AppSKey by default.</p>
 <p>Once the application is created, you can update your application settings to skip uplink payload decryption and downlink payload encryption. This will cause the Application Server to forward messages to integrations without any processing, for example it will neglect <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">payload formatters</a>, meaning the integrations will be responsible for decrypting uplink messages in order to understand them. Also, scheduling downlinks from The Things Stack will be restricted, as it is expected for downlinks in that case to be scheduled from integrations.</p>
@@ -236,6 +280,9 @@
     
       
       <li><a href='#adding-applications-using-the-cli'>Adding Applications using the CLI</a></li>
+    
+      
+      <li><a href='#create-application-api-key'>Create Application API Key</a></li>
     
       
       <li><a href='#payload-encryption-and-decryption'>Payload Encryption and Decryption</a></li>
@@ -278,10 +325,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 09 Mar 2022.
+  Last changed by Nejra Selimović on 06 Dec 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/cf63dd58b7dd6b5802c057d7df7110a693acad05">
-      doc: Modify MAC settings and skip payload crypto info (#799)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b2cc09622773f946ef8926031e63a07bb5fd0e8f">
+      Document creating API keys for apps/orgs/users, reorganize docs (#1010)
     </a>
 </p>
 

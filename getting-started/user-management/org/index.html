@@ -203,6 +203,7 @@
           <p>This section contains instructions for managing organizations.</p>
 <p>To make it easier to manage groups of users, it is possible to create organizations with specific rights which apply to all users who are collaborators. To use organizations, users must be added as collaborators of the organization, and the organization must be added as a collaborator of an entity.</p>
 <p>When a user is a collaborator of an organization which is a collaborator for an entity, the user&rsquo;s rights are the intersection of the user&rsquo;s rights in the organization and the organization&rsquo;s rights on the entity.</p>
+<p>In this section, we explain how to manage organizations and grant them rights using The Things Stack <a href="https://www.thethingsindustries.com/docs/getting-started/console/">Console</a> and the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">CLI</a>.</p>
 <div class="tabs is-boxed">
   <ul>
     
@@ -231,8 +232,15 @@
 <figure><img src="add-org.png"
          alt="Add organization"/>
 </figure>
-<p>Choose the rights you would like to grant the organization, and click the <strong>Add organization</strong> button to save your choices.</p>
-<p>When a user is a member of an organization which is a collaborator for an entity, the user&rsquo;s rights are the intersection of the user&rsquo;s rights in the organization and the organization&rsquo;s rights on the entity.</p>
+<p>Enter the <strong>Organization ID</strong>, optionally <strong>Name</strong> and <strong>Description</strong>, and hit <strong>Create organization</strong>.</p>
+<p>Use the left hand menu in your organization&rsquo;s settings to add or remove collaborators, edit or delete the organization, etc.</p>
+<h3 id="create-organization-api-key">Create Organization API Key</h3>
+<p>When a user is a member of an organization which is a collaborator for an entity, the user&rsquo;s rights are the intersection of the user&rsquo;s rights in the organization and the organization&rsquo;s rights on the entity. To grant rights to your organization, navigate to <strong>API Keys</strong> on the left hand menu of your organization&rsquo;s settings and select <strong>Add API Key</strong>.</p>
+<p>Enter a <strong>Name</strong> for your key, set the <strong>Expiry date</strong>, select rights that you want to grant and then press <strong>Create API Key</strong>.</p>
+<figure><img src="organization-api-key-creation.png"
+         alt="Application API Key creation"/>
+</figure>
+<p>You will see a screen that shows your newly created API Key. You now can copy it in your clipboard by pressing the copy button. After saving the key in a safe place, press <strong>I have copied the key</strong>. You will not be able to see this key again in the future, and if you lose it, you can create a new one by following this same procedure.</p>
 </section>
 <section data-content="cli">
   <h2 id="managing-organizations-using-the-cli">Managing Organizations using the CLI</h2>
@@ -240,7 +248,7 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">ORGANIZATION_ID</span><span class="o">=</span><span class="s2">&#34;org1&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="nv">USER_ID</span><span class="o">=</span><span class="s2">&#34;user1&#34;</span>
 </span></span></code></pre></div><p>Make sure to modify these according to your setup.</p>
-<h2 id="creating-organizations">Creating Organizations</h2>
+<h3 id="creating-organizations">Creating Organizations</h3>
 <p>Administrators can create organizations as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli organizations create <span class="nv">$ORGANIZATION_ID</span> --user-id <span class="nv">$USER_ID</span>
 </span></span></code></pre></div><p>This will create an organization <code>org1</code> with all the rights of <code>user1</code> and make <code>user1</code> a collaborator within the organization.</p>
@@ -252,7 +260,7 @@
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-07-14T09:37:01.938Z&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-07-14T09:37:01.938Z&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><h2 id="listing-organizations">Listing Organizations</h2>
+</span></span></code></pre></div><h3 id="listing-organizations">Listing Organizations</h3>
 <p>To list organizations with the CLI, use the <code>organizations list</code> command.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli organizations list
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">[{</span>
@@ -269,7 +277,7 @@
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-07-14T09:37:01.938Z&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-07-14T09:37:01.938Z&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}]</span>
-</span></span></code></pre></div><h2 id="searching-for-organizations">Searching for Organizations</h2>
+</span></span></code></pre></div><h3 id="searching-for-organizations">Searching for Organizations</h3>
 <p>To search for organizations with the CLI, use the <code>organizations search</code> command. Make sure to specify the fields you&rsquo;re interested in. This example will search for organizations with IDs that contain <code>org1</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli organizations search --id-contains <span class="nv">$ORGANIZATION_ID</span>
 </span></span></code></pre></div><p>Output:</p>
@@ -280,21 +288,30 @@
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;created_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-07-09T12:39:35.129Z&#34;</span><span class="p">,</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;updated_at&#34;</span><span class="p">:</span> <span class="s2">&#34;2020-07-09T12:39:35.129Z&#34;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}]</span>
-</span></span></code></pre></div><h2 id="adding-users-to-organizations">Adding Users to Organizations</h2>
+</span></span></code></pre></div><h3 id="adding-users-to-organizations">Adding Users to Organizations</h3>
 <p>To add a user to an organization, use the  <code>organizations collaborators set</code> command. This will add user <code>user1</code> as a collaborator of organization <code>org1</code> with all organization rights:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli organizations collaborators <span class="nb">set</span> --organization-id <span class="nv">$ORGANIZATION_ID</span> --user-id <span class="nv">$USER_ID</span> --right-organization-all
 </span></span></code></pre></div><p>You must specify rights when adding a collaborator. Use the <code>--help</code> flag to see the list of possible rights, e.g <code>ttn-lw-cli organizations collaborators set --help</code>.</p>
-<h2 id="removing-users-from-organizations">Removing Users from Organizations</h2>
+<h3 id="removing-users-from-organizations">Removing Users from Organizations</h3>
 <p>To remove a user from an organization, use the  <code>organizations collaborators delete</code> command:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli organizations collaborators delete --organization-id <span class="nv">$ORGANIZATION_ID</span> --user-id <span class="nv">$USER_ID</span>
 </span></span></code></pre></div><p>This will remove user <code>user1</code> as a collaborator of organization <code>org1</code></p>
-<h2 id="deleting-organizations">Deleting Organizations</h2>
+<h3 id="deleting-organizations">Deleting Organizations</h3>
 <p>To delete an organization, use the <code>organizations delete</code> command.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli organizations delete --organization-id <span class="nv">$ORGANIZATION_ID</span>
 </span></span></code></pre></div><div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
   When deleting organizations, their IDs stay reserved in the system. For security reasons, it is not possible to create a new organization with the same ID.
 </div>
+<h3 id="create-organization-api-key">Create Organization API Key</h3>
+<p>To create an API key for your organization with all rights granted:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">API_KEY_NAME</span><span class="o">=</span><span class="s2">&#34;API key for my organization&#34;</span>
+</span></span><span class="line"><span class="cl">ttn-lw-cli organizations api-keys create <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --name <span class="nv">$API_KEY_NAME</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --organization-id <span class="nv">$ORGANIZATION_ID</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --right-organization-all
+</span></span></code></pre></div><p>The CLI will return an API key such as <code>NNSXS.JPFOTRWPJ4RBZZH...</code>. This API key has all rights granted. Make sure to copy the key and save it in a safe place. You will not be able to see this key again in the future, and if you lose it, you can create a new one by following this same procedure.</p>
+<p>See the <a href="https://www.thethingsindustries.com/docs/ttn-lw-cli/ttn-lw-cli_organizations_api-keys/">CLI Reference</a> for details on managing organization API keys using the CLI.</p>
 </section>
 
 </div>
@@ -327,24 +344,6 @@
     
       
       <li><a href='#managing-organizations-using-the-cli'>Managing Organizations using the CLI</a></li>
-    
-      
-      <li><a href='#creating-organizations'>Creating Organizations</a></li>
-    
-      
-      <li><a href='#listing-organizations'>Listing Organizations</a></li>
-    
-      
-      <li><a href='#searching-for-organizations'>Searching for Organizations</a></li>
-    
-      
-      <li><a href='#adding-users-to-organizations'>Adding Users to Organizations</a></li>
-    
-      
-      <li><a href='#removing-users-from-organizations'>Removing Users from Organizations</a></li>
-    
-      
-      <li><a href='#deleting-organizations'>Deleting Organizations</a></li>
     
   </ul>
 
@@ -384,10 +383,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 23 Dec 2021.
+  Last changed by Nejra Selimović on 06 Dec 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/530b661ab3deed325cab8e675a402da28e5083ff">
-      doc: Remove $ character from code blocks, add variables (#678)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b2cc09622773f946ef8926031e63a07bb5fd0e8f">
+      Document creating API keys for apps/orgs/users, reorganize docs (#1010)
     </a>
 </p>
 
