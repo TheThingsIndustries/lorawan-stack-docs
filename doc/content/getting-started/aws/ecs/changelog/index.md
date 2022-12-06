@@ -8,6 +8,54 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.23.0
+
+For mTLS termination, check the upgrading guide at https://thethingsindustries.com/docs/getting-started/aws/ecs/mutual-tls/.
+
+## `1-2-bastion`
+
+- The local Redis client has been upgraded to version `6.x` from `4.0`.
+
+### `certbot`
+
+- Support storing TLS credentials in AWS Secrets Manager.
+
+### `2-4c-mtls-s3`
+
+- Create S3 buckets to store CA certificates.
+
+### `3-2-load-balancer-rules`
+
+- Update rules to terminate TLS in Envoy (if `SupportProxyTLS` is enabled).
+
+### `4-1-secrets`
+
+- Add new secret to store server TLS credentials.
+- Add new KeyVault IDs for Gateway Tokens.
+
+### `4-2a-configuration`
+
+- Add Configuration options for Gateway Tokens.
+- Add `/` to the ignored logging HTTP request paths.
+- The default values of `PubSubProviderMQTT` and `PubSubProviderNATS` are changed to `disabled`.
+
+### `5-4-ecs-services`
+
+- Add options to use Gateway Tokens.
+- Add Device Repository peer settings to Device Claiming Server.
+
+### `5-6-ecs-proxy`
+
+- Add options to support mTLS termination.
+
+### `5-7a-certs-le`
+
+- Store server TLS credentials in AWS Secrets Manager if `SupportProxyTLS` is enabled.
+
+### `proxy`
+
+- Support mTLS cert forwarding and hot reloading certificates.
+
 ## 3.22.2
 
 ### `2-5-db-timescale`

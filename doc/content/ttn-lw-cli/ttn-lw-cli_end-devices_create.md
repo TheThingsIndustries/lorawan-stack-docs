@@ -50,8 +50,8 @@ ttn-lw-cli end-devices create [application-id] [device-id] [flags]
       --location.altitude int32                                                               
       --location.latitude float                                                               
       --location.longitude float                                                              
-      --lorawan-phy-version string                                                            allowed values: PHY_UNKNOWN, unknown, PHY_V1_0, TS001_V1_0, V1_0, 1.0, 1.0.0, TS001_V1_0_1, PHY_V1_0_1, 1.0.1, V1_0_1, PHY_V1_0_2_REV_A, RP001_V1_0_2, 1.0.2-a, V1_0_2, V1_0_2_REV_A, 1.0.2, PHY_V1_0_2_REV_B, RP001_V1_0_2_REV_B, 1.0.2-b, V1_0_2_REV_B, RP001_V1_1_REV_A, PHY_V1_1_REV_A, 1.1.0-a, 1.1-a, V1_1_REV_A, PHY_V1_1_REV_B, RP001_V1_1_REV_B, 1.1-b, V1_1_REV_B, 1.1.0-b, PHY_V1_0_3_REV_A, RP001_V1_0_3_REV_A, V1_0_3_REV_A, 1.0.3-a, RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3
-      --lorawan-version string                                                                allowed values: MAC_UNKNOWN, UNKNOWN, unknown, MAC_V1_0, 1.0, 1.0.0, V1_0, MAC_V1_0_1, V1_0_1, 1.0.1, MAC_V1_0_2, V1_0_2, 1.0.2, MAC_V1_1, V1_1, 1.1, 1.1.0, MAC_V1_0_3, V1_0_3, 1.0.3, MAC_V1_0_4, 1.0.4, V1_0_4
+      --lorawan-phy-version string                                                            allowed values: PHY_UNKNOWN, unknown, TS001_V1_0, PHY_V1_0, 1.0, 1.0.0, V1_0, PHY_V1_0_1, TS001_V1_0_1, V1_0_1, 1.0.1, PHY_V1_0_2_REV_A, RP001_V1_0_2, V1_0_2, 1.0.2-a, V1_0_2_REV_A, 1.0.2, PHY_V1_0_2_REV_B, RP001_V1_0_2_REV_B, 1.0.2-b, V1_0_2_REV_B, RP001_V1_1_REV_A, PHY_V1_1_REV_A, 1.1.0-a, V1_1_REV_A, 1.1-a, PHY_V1_1_REV_B, RP001_V1_1_REV_B, V1_1_REV_B, 1.1-b, 1.1.0-b, PHY_V1_0_3_REV_A, RP001_V1_0_3_REV_A, V1_0_3_REV_A, 1.0.3-a, RP002_V1_0_0, RP002_V1_0_1, RP002_V1_0_2, RP002_V1_0_3
+      --lorawan-version string                                                                allowed values: MAC_UNKNOWN, unknown, UNKNOWN, MAC_V1_0, 1.0.0, 1.0, V1_0, MAC_V1_0_1, V1_0_1, 1.0.1, MAC_V1_0_2, V1_0_2, 1.0.2, MAC_V1_1, V1_1, 1.1.0, 1.1, MAC_V1_0_3, 1.0.3, V1_0_3, MAC_V1_0_4, 1.0.4, V1_0_4
       --mac-settings.adr.mode.disabled                                                        
       --mac-settings.adr.mode.dynamic                                                         
       --mac-settings.adr.mode.dynamic.margin float32                                          
@@ -138,7 +138,7 @@ ttn-lw-cli end-devices create [application-id] [device-id] [flags]
       --mac-state.last-dev-status-f-cnt-up uint32                                             
       --mac-state.last-downlink-at timestamp                                                  
       --mac-state.last-network-initiated-downlink-at timestamp                                
-      --mac-state.lorawan-version string                                                      allowed values: MAC_UNKNOWN, UNKNOWN, unknown, MAC_V1_0, V1_0, 1.0, 1.0.0, MAC_V1_0_1, V1_0_1, 1.0.1, MAC_V1_0_2, 1.0.2, V1_0_2, MAC_V1_1, 1.1, 1.1.0, V1_1, MAC_V1_0_3, V1_0_3, 1.0.3, MAC_V1_0_4, V1_0_4, 1.0.4
+      --mac-state.lorawan-version string                                                      allowed values: MAC_UNKNOWN, unknown, UNKNOWN, MAC_V1_0, 1.0.0, 1.0, V1_0, MAC_V1_0_1, V1_0_1, 1.0.1, MAC_V1_0_2, 1.0.2, V1_0_2, MAC_V1_1, V1_1, 1.1.0, 1.1, MAC_V1_0_3, 1.0.3, V1_0_3, MAC_V1_0_4, 1.0.4, V1_0_4
       --mac-state.pending-application-downlink.class-b-c.absolute-time timestamp              
       --mac-state.pending-application-downlink.confirmed                                      
       --mac-state.pending-application-downlink.correlation-ids strings                        
@@ -202,7 +202,7 @@ ttn-lw-cli end-devices create [application-id] [device-id] [flags]
       --pending-mac-state.last-dev-status-f-cnt-up uint32                                     
       --pending-mac-state.last-downlink-at timestamp                                          
       --pending-mac-state.last-network-initiated-downlink-at timestamp                        
-      --pending-mac-state.lorawan-version string                                              allowed values: MAC_UNKNOWN, UNKNOWN, unknown, MAC_V1_0, 1.0, 1.0.0, V1_0, MAC_V1_0_1, 1.0.1, V1_0_1, MAC_V1_0_2, V1_0_2, 1.0.2, MAC_V1_1, V1_1, 1.1, 1.1.0, MAC_V1_0_3, V1_0_3, 1.0.3, MAC_V1_0_4, V1_0_4, 1.0.4
+      --pending-mac-state.lorawan-version string                                              allowed values: MAC_UNKNOWN, unknown, UNKNOWN, MAC_V1_0, 1.0.0, 1.0, V1_0, MAC_V1_0_1, 1.0.1, V1_0_1, MAC_V1_0_2, V1_0_2, 1.0.2, MAC_V1_1, 1.1, V1_1, 1.1.0, MAC_V1_0_3, V1_0_3, 1.0.3, MAC_V1_0_4, V1_0_4, 1.0.4
       --pending-mac-state.pending-join-request.cf-list.ch-masks bools                         
       --pending-mac-state.pending-join-request.cf-list.freq uint32Slice                       
       --pending-mac-state.pending-join-request.cf-list.type string                            allowed values: FREQUENCIES, CHANNEL_MASKS
