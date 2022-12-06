@@ -5,7 +5,7 @@ weight: 20
 distributions: ["Cloud"]
 ---
 
-The Things Join Server is a LoRaWAN Join Server. Learn how to activate devices on The Things Industries Cloud.
+The Things Join Server is a LoRaWAN Join Server. Learn how to activate devices on {{% tts %}} Cloud.
 
 <!--more-->
 
@@ -81,4 +81,4 @@ ttn-lw-cli end-devices set test-app eui-0004a310001ff9e0 \
 
 </details>
 
-You can now activate the devices on The Things Industries Cloud.
+You can now activate the devices on {{% tts %}} Cloud.
