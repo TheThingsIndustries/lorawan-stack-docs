@@ -55,6 +55,46 @@ Next, see [Adding Integrations]({{< ref "/integrations/adding-integrations" >}})
 
 End devices are also created within applications. See [Adding Devices]({{< ref "/devices/adding-devices" >}}) for more information.
 
+## Create Application API Key
+
+Some applications require an API Key to write downlink traffic, read uplink traffic, manage integrations, etc. In this section we explain how to create an application API key on some basic examples, but this procedure is identical for any other right as well.
+
+{{< tabs/container "Console" "CLI" >}}
+
+{{< tabs/tab "Console" >}}
+
+To create an API key for your application, navigate to **API Keys** on the left hand menu of your application's settings and select **Add API Key**.
+
+Enter a **Name** for your key, set the **Expiry date**, select rights that you want to grant and then press **Create API Key**.
+
+{{< figure src="application-api-key-creation.png" alt="Application API Key creation" >}}
+
+You will see a screen that shows your newly created API Key. You now can copy it in your clipboard by pressing the copy button. After saving the key in a safe place, press **I have copied the key**. You will not be able to see this key again in the future, and if you lose it, you can create a new one by following this same procedure.
+
+{{< figure src="application-api-key-created.png" alt="Application API Key created" >}}
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "CLI" >}}
+
+To create an API key for your application with a **Delete application** right:
+
+```bash
+API_KEY_NAME="API key for deleting my application"
+ttn-lw-cli applications api-keys create \
+  --name $API_KEY_NAME \
+  --application-id $APP_ID \
+  --right-application-delete
+```
+
+The CLI will return an API key such as `NNSXS.RLA7AGGMD5ZHBH...`. This API key has only delete rights and can therefore only be used for deleting this application. Make sure to copy the key and save it in a safe place. You will not be able to see this key again in the future, and if you lose it, you can create a new one by following this same procedure.
+
+See the [CLI Reference]({{< ref "/ttn-lw-cli/ttn-lw-cli_applications_api-keys" >}}) for details on managing application API keys using the CLI.
+
+{{< /tabs/tab >}}
+
+{{< /tabs/container >}}
+
 ## Payload Encryption and Decryption
 
 LoRaWAN frames are encrypted and decrypted on the application layer using the AppSKey by default.

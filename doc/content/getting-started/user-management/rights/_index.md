@@ -14,8 +14,6 @@ This section contains instructions for managing rights.
 
 ## Managing Rights using the Console
 
-## Managing Collaborators
-
 In addition to the written instructions linked below, a video with instructions for managing collaborator rights is available on [The Things Network youtube channel](https://youtu.be/-m5rULfP1yg).
 
 <details><summary>Show video</summary>
@@ -51,7 +49,7 @@ GTW_ID="gateway1"
 
 Make sure to modify these according to your setup.
 
-## Adding Collaborators
+### Adding Collaborators
 
 To add collaborators for Gateways, End Devices, or Applications, use the `collaborators add` command. For example, to add a collaborator `user1` to the application `app1` with rights to read and write device info and delete applications, use the command
 
@@ -65,7 +63,7 @@ ttn-lw-cli applications collaborators set --application-id $APP_ID \
 
 To see the list of possible rights for an entity, use the `--help` flag, e.g `ttn-lw-cli applications collaborators set --help`.
 
-## Listing Collaborators
+### Listing Collaborators
 
 To see which rights a user has on an entity, use the `collaborators list` command. For example, to see collaborators for the gateway `gateway1`, use the command:
 
