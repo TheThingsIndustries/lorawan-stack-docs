@@ -8,6 +8,43 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.23.1
+
+## `1-2-bastion`
+
+- The volumes used by the bastion hosts now use `gp3` volumes.
+
+## `2-5-db-timescale`
+
+- The volumes used by the TimescaleDB hosts now use `gp3` volumes.
+
+### `3-2-load-balancer-rules`
+
+- UDP target groups now automatically kill active flows to deregistered targets. This enables the replacement of the ECS EC2 machines without having the UDP traffic blackhole in the NLB.
+
+### `4-2a-configuration`
+
+- Add configuration option for `HomeNSID` for the DCS config object.
+
+### `5-1-ecs-cluster`
+
+- The volumes used by the EC2 machines used by ECS now use `gp3` volumes. Note that this will not apply retroactively to existing instances.
+
+### `5-5-ecs-monitoring`
+
+- Prometheus has been upgraded to version 2.40.5.
+- Thanos default image has been upgraded to version 0.29.0.
+
+### `AMI/BYOL` template
+
+- Fix RDS PostgreSQL 13 and 14 support for new deployments.
+- The volumes used by the EC2 machine and by the RDS database are now `gp3` volumes.
+- Fix Network Operation Center initialization for new deployments.
+
+### Proxy
+
+- Upgraded to Envoy 1.24.1.
+
 ## 3.23.0
 
 For mTLS termination, check the upgrading guide at https://thethingsindustries.com/docs/getting-started/aws/ecs/mutual-tls/.

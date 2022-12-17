@@ -14,7 +14,7 @@ ttn-lw-cli users api-keys set [user-id] [api-key-id] [flags]
 ### Options
 
 ```
-      --api-key-expiry string                      (YYYY-MM-DDTHH:MM:SSZ)
+      --api-key-expiry timestamp                   (YYYY-MM-DDTHH:MM:SSZ)
       --api-key-id string                          
   -h, --help                                       help for set
       --name string                                

@@ -14,52 +14,32 @@ ttn-lw-cli simulate application-uplink [application-id] [device-id] [flags]
 ### Options
 
 ```
-      --app-s-key.encrypted-key string                                        (hex)
-      --app-s-key.kek-label string                                            
-      --app-s-key.key string                                                  (hex)
-      --application-id string                                                 
-      --confirmed                                                             
-      --consumed-airtime duration                                             (1h2m3s)
-      --decoded-payload-warnings strings                                      
-      --dev-eui string                                                        (hex)
-      --device-id string                                                      
-      --f-cnt uint32                                                          
-      --f-port uint32                                                         
-      --frm-payload string                                                    (hex)
-  -h, --help                                                                  help for application-uplink
-      --join-eui string                                                       (hex)
-      --last-a-f-cnt-down uint32                                              
-      --network-ids.cluster-address string                                    
-      --network-ids.cluster-id string                                         
-      --network-ids.net-id string                                             (hex)
-      --network-ids.tenant-address string                                     
-      --network-ids.tenant-id string                                          
-      --normalized-payload-warnings strings                                   
-      --received-at string                                                    (YYYY-MM-DDTHH:MM:SSZ)
-      --session-key-id string                                                 (hex)
-      --settings.concentrator-timestamp int                                   
-      --settings.data-rate.modulation.fsk.bit-rate uint32                     
-      --settings.data-rate.modulation.lora.bandwidth uint32                   
-      --settings.data-rate.modulation.lora.coding-rate string                 
-      --settings.data-rate.modulation.lora.spreading-factor uint32            
-      --settings.data-rate.modulation.lrfhss.coding-rate string               
-      --settings.data-rate.modulation.lrfhss.modulation-type uint32           
-      --settings.data-rate.modulation.lrfhss.operating-channel-width uint32   
-      --settings.downlink.antenna-index uint32                                
-      --settings.downlink.invert-polarization                                 
-      --settings.downlink.tx-power float32                                    
-      --settings.enable-crc                                                   
-      --settings.frequency uint                                               
-      --settings.time string                                                  (YYYY-MM-DDTHH:MM:SSZ)
-      --settings.timestamp uint32                                             
-      --version-ids.band-id string                                            
-      --version-ids.brand-id string                                           
-      --version-ids.firmware-version string                                   
-      --version-ids.hardware-version string                                   
-      --version-ids.model-id string                                           
-      --version-ids.serial-number string                                      
-      --version-ids.vendor-id uint32                                          
-      --version-ids.vendor-profile-id uint32                                  
+      --app-s-key.encrypted-key bytesHex       
+      --app-s-key.kek-label string             
+      --app-s-key.key 16-bytes                 
+      --application-id string                  
+      --confirmed                              
+      --consumed-airtime duration              
+      --decoded-payload-warnings strings       
+      --dev-eui string                         (hex)
+      --device-id string                       
+      --f-cnt uint32                           
+      --f-port uint32                          
+      --frm-payload bytesBase64                
+  -h, --help                                   help for application-uplink
+      --join-eui string                        (hex)
+      --last-a-f-cnt-down uint32               
+      --normalized-payload-warnings strings    
+      --received-at timestamp                  
+      --session-key-id bytesBase64             
+      --version-ids.band-id string             
+      --version-ids.brand-id string            
+      --version-ids.firmware-version string    
+      --version-ids.hardware-version string    
+      --version-ids.model-id string            
+      --version-ids.serial-number string       
+      --version-ids.vendor-id uint32           
+      --version-ids.vendor-profile-id uint32   
 ```
 
 ### Options inherited from parent commands

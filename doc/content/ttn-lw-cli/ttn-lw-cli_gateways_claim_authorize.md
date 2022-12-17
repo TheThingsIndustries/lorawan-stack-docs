@@ -24,9 +24,9 @@ ttn-lw-cli gateways claim authorize [gateway-id] [flags]
 ### Options
 
 ```
-      --api-key string          
-      --api-key-expiry string   (YYYY-MM-DDTHH:MM:SSZ)
-  -h, --help                    help for authorize
+      --api-key string             
+      --api-key-expiry timestamp   (YYYY-MM-DDTHH:MM:SSZ)
+  -h, --help                       help for authorize
 ```
 
 ### Options inherited from parent commands
