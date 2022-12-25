@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.23.0</p>
+        <p class="navbar-item is-size-7">v3.23.1</p>
       </a><div class="navbar-item navbar-search-brand">
         <div class="field has-addons has-addons-centered">
           <div class="control">
@@ -257,9 +257,45 @@
           <h1 id="upgrading">Upgrading</h1>
 <p>All meaningful changes to templates are documented in this file.</p>
 <h2 id="unreleased">Unreleased</h2>
+<h2 id="3231">3.23.1</h2>
+<h2 id="1-2-bastion"><code>1-2-bastion</code></h2>
+<ul>
+<li>The volumes used by the bastion hosts now use <code>gp3</code> volumes.</li>
+</ul>
+<h2 id="2-5-db-timescale"><code>2-5-db-timescale</code></h2>
+<ul>
+<li>The volumes used by the TimescaleDB hosts now use <code>gp3</code> volumes.</li>
+</ul>
+<h3 id="3-2-load-balancer-rules"><code>3-2-load-balancer-rules</code></h3>
+<ul>
+<li>UDP target groups now automatically kill active flows to deregistered targets. This enables the replacement of the ECS EC2 machines without having the UDP traffic blackhole in the NLB.</li>
+</ul>
+<h3 id="4-2a-configuration"><code>4-2a-configuration</code></h3>
+<ul>
+<li>Add configuration option for <code>HomeNSID</code> for the DCS config object.</li>
+</ul>
+<h3 id="5-1-ecs-cluster"><code>5-1-ecs-cluster</code></h3>
+<ul>
+<li>The volumes used by the EC2 machines used by ECS now use <code>gp3</code> volumes. Note that this will not apply retroactively to existing instances.</li>
+</ul>
+<h3 id="5-5-ecs-monitoring"><code>5-5-ecs-monitoring</code></h3>
+<ul>
+<li>Prometheus has been upgraded to version 2.40.5.</li>
+<li>Thanos default image has been upgraded to version 0.29.0.</li>
+</ul>
+<h3 id="amibyol-template"><code>AMI/BYOL</code> template</h3>
+<ul>
+<li>Fix RDS PostgreSQL 13 and 14 support for new deployments.</li>
+<li>The volumes used by the EC2 machine and by the RDS database are now <code>gp3</code> volumes.</li>
+<li>Fix Network Operation Center initialization for new deployments.</li>
+</ul>
+<h3 id="proxy">Proxy</h3>
+<ul>
+<li>Upgraded to Envoy 1.24.1.</li>
+</ul>
 <h2 id="3230">3.23.0</h2>
 <p>For mTLS termination, check the upgrading guide at <a href="https://thethingsindustries.com/docs/getting-started/aws/ecs/mutual-tls/">https://thethingsindustries.com/docs/getting-started/aws/ecs/mutual-tls/</a>.</p>
-<h2 id="1-2-bastion"><code>1-2-bastion</code></h2>
+<h2 id="1-2-bastion-1"><code>1-2-bastion</code></h2>
 <ul>
 <li>The local Redis client has been upgraded to version <code>6.x</code> from <code>4.0</code>.</li>
 </ul>
@@ -271,7 +307,7 @@
 <ul>
 <li>Create S3 buckets to store CA certificates.</li>
 </ul>
-<h3 id="3-2-load-balancer-rules"><code>3-2-load-balancer-rules</code></h3>
+<h3 id="3-2-load-balancer-rules-1"><code>3-2-load-balancer-rules</code></h3>
 <ul>
 <li>Update rules to terminate TLS in Envoy (if <code>SupportProxyTLS</code> is enabled).</li>
 </ul>
@@ -280,7 +316,7 @@
 <li>Add new secret to store server TLS credentials.</li>
 <li>Add new KeyVault IDs for Gateway Tokens.</li>
 </ul>
-<h3 id="4-2a-configuration"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-1"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Add Configuration options for Gateway Tokens.</li>
 <li>Add <code>/</code> to the ignored logging HTTP request paths.</li>
@@ -299,12 +335,12 @@
 <ul>
 <li>Store server TLS credentials in AWS Secrets Manager if <code>SupportProxyTLS</code> is enabled.</li>
 </ul>
-<h3 id="proxy"><code>proxy</code></h3>
+<h3 id="proxy-1"><code>proxy</code></h3>
 <ul>
 <li>Support mTLS cert forwarding and hot reloading certificates.</li>
 </ul>
 <h2 id="3222">3.22.2</h2>
-<h3 id="2-5-db-timescale"><code>2-5-db-timescale</code></h3>
+<h3 id="2-5-db-timescale-1"><code>2-5-db-timescale</code></h3>
 <ul>
 <li>Add two new parameters: <code>DBEngineVersion</code>, which controls the PostgreSQL engine major version, and <code>DBTimescaleDBExtensionVersion</code>, which controls the TimescaleDB extension version.
 <ul>
@@ -316,7 +352,7 @@
 <h2 id="3221">3.22.1</h2>
 <h3 id="2-4b-routing-s3"><code>2-4b-routing-s3</code></h3>
 <p>Add versioning to S3 buckets. Versioning is enabled by default.</p>
-<h3 id="4-2a-configuration-1"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-2"><code>4-2a-configuration</code></h3>
 <ul>
 <li>The <code>pkg/networkserver:duplicate_uplink</code> and <code>pkg/networkserver:device_not_found</code> errors of the <code>/ttn.lorawan.v3.GsNs/HandleUplink</code> RPC are now ignored.</li>
 </ul>
@@ -334,11 +370,11 @@
 <ul>
 <li>The <code>t4g</code> family of machines is now available for hosting, and the default machine size has been promoted to <code>db.t4g.medium</code>.</li>
 </ul>
-<h3 id="2-5-db-timescale-1"><code>2-5-db-timescale</code></h3>
+<h3 id="2-5-db-timescale-2"><code>2-5-db-timescale</code></h3>
 <ul>
 <li>Updated the default <code>node_exporter</code> version to 1.4.0.</li>
 </ul>
-<h3 id="4-2a-configuration-2"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-3"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Add Console <code>dtc</code> target address.</li>
 </ul>
@@ -346,7 +382,7 @@
 <ul>
 <li>Updated the default <code>node_exporter</code> version to 1.4.0.</li>
 </ul>
-<h3 id="amibyol-template"><code>AMI/BYOL</code> template</h3>
+<h3 id="amibyol-template-1"><code>AMI/BYOL</code> template</h3>
 <ul>
 <li>The <code>t4g</code> family of machines is now available for ElastiCache, and the default machine size has been promoted to <code>cache.t4g.small</code>.</li>
 <li>The <code>t4g</code> family of machines is now available for RDS, and the default machine size has been promoted to <code>db.t4g.small</code>.</li>
@@ -355,7 +391,7 @@
 <h2 id="3212">3.21.2</h2>
 <h2 id="3211">3.21.1</h2>
 <h2 id="3210">3.21.0</h2>
-<h3 id="4-2a-configuration-3"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-4"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Added new <code>EntityLimits</code> parameters.</li>
 </ul>
@@ -374,23 +410,23 @@
 <li>The <code>node_exporter</code> metrics are now tagged with the EC2 instance ID and instance name.</li>
 </ul>
 <h2 id="3200">3.20.0</h2>
-<h3 id="2-5-db-timescale-2"><code>2-5-db-timescale</code></h3>
+<h3 id="2-5-db-timescale-3"><code>2-5-db-timescale</code></h3>
 <ul>
 <li>Increased backup and redeployment timeout</li>
 </ul>
-<h3 id="4-2a-configuration-4"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-5"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Added new parameters <code>EventsRedisPublishQueueSize</code>, <code>EventsRedisPublishMaxWorkers</code>, <code>PacketBrokerHomeNetworkWorkerCountLimit</code>, <code>PacketBrokerForwarderWorkerCountLimit</code></li>
 </ul>
-<h3 id="5-5-ecs-monitoring"><code>5-5-ecs-monitoring</code></h3>
+<h3 id="5-5-ecs-monitoring-1"><code>5-5-ecs-monitoring</code></h3>
 <ul>
 <li>Added alerts for TimescaleDB running out of storage</li>
 </ul>
-<h3 id="amibyol-template-1"><code>AMI/BYOL</code> template</h3>
+<h3 id="amibyol-template-2"><code>AMI/BYOL</code> template</h3>
 <ul>
 <li>Added new parameters <code>TLSCertificate</code>, <code>TLSCertificateCA</code>, <code>TLSCertificateKey</code></li>
 </ul>
-<h3 id="proxy-1">Proxy</h3>
+<h3 id="proxy-2">Proxy</h3>
 <ul>
 <li>Added Notification Service routes.</li>
 <li>Added account invitations routes.</li>
@@ -400,7 +436,7 @@
 <ul>
 <li>Added a hosted zone for internal use</li>
 </ul>
-<h3 id="2-5-db-timescale-3"><code>2-5-db-timescale</code></h3>
+<h3 id="2-5-db-timescale-4"><code>2-5-db-timescale</code></h3>
 <ul>
 <li>Added new parameter <code>NumReplicas</code></li>
 <li>Added new parameter <code>DeploymentName</code></li>
@@ -410,7 +446,7 @@
 <ul>
 <li>Added new parameters <code>IncludeNOC</code>, <code>NOCGrafanaAdminPassword</code>, <code>NOCOAuthClientIDValue</code>, <code>NOCOAuthClientSecretValue</code></li>
 </ul>
-<h3 id="4-2a-configuration-5"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-6"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Added new parameters <code>ConsoleURLForNOC</code>, <code>IncludeNetworkOperationsCenter</code>, <code>NOCMaxIdleConnections</code>, <code>NOCMaxOpenConnections</code>, <code>NOCRawDataRetention</code>, <code>NOCTargetInsertBatchSize</code>, <code>NOCTargetInsertBatchWindow</code></li>
 <li>Added <code>is.email.assets-base-url</code> and <code>is.email.branding-base-url</code>. These options are set to the values of the existing parameters.</li>
@@ -424,7 +460,7 @@
 <li>Added new parameter <code>ApplicationServerStorageTimescaleDBDeploymentName</code>, <code>ApplicationServerStorageReplicaEnabled</code></li>
 <li>Added new parameters <code>IncludeNetworkOperationsCenter</code>, <code>NOCTimescaleDBDeploymentName</code>, <code>NetworkOperationsCenter*</code>, <code>NetworkOperationsCenterGrafana*</code></li>
 </ul>
-<h3 id="5-5-ecs-monitoring-1"><code>5-5-ecs-monitoring</code></h3>
+<h3 id="5-5-ecs-monitoring-2"><code>5-5-ecs-monitoring</code></h3>
 <ul>
 <li>Added new parameter <code>IncludeNetworkOperationsCenter</code></li>
 </ul>
@@ -434,7 +470,7 @@
 </ul>
 <h2 id="3191">3.19.1</h2>
 <h2 id="3190">3.19.0</h2>
-<h3 id="4-2a-configuration-6"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-7"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Added new parameter <code>ConsoleStatusPageBaseURL</code></li>
 <li>Added new parameter <code>UserRightsUpdatePrimaryEmailAddress</code></li>
@@ -455,7 +491,7 @@
 <ul>
 <li>Added new bucket for DCS configuration files.  Create a <code>config.yml</code> file at the root of this bucket. This can be left empty if claiming via an external Join Server is not necessary.</li>
 </ul>
-<h3 id="4-2a-configuration-7"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-8"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Add new config items for the DCS service.</li>
 </ul>
@@ -469,7 +505,7 @@
 <li>Redis upgraded to version 6.2</li>
 </ul>
 <h2 id="3180">3.18.0</h2>
-<h3 id="1-2-bastion-1"><code>1-2-bastion</code></h3>
+<h3 id="1-2-bastion-2"><code>1-2-bastion</code></h3>
 <ul>
 <li>Connect to the RDS database using TLS</li>
 </ul>
@@ -486,7 +522,7 @@
 <ul>
 <li>Upgraded Redis to version 6.2</li>
 </ul>
-<h3 id="4-2a-configuration-8"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-9"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Added the <code>WebhooksUnhealthyAttemptsThreshold</code> and <code>WebhooksUnhealthyRetryInterval</code> parameters.</li>
 <li>Added the <code>DatabaseMaxIdleConns</code> and <code>DatabaseMaxOpenConns</code> to control the database connection pool of the Identity Server.</li>
@@ -495,7 +531,7 @@
 <ul>
 <li>Fixed rate limiting keys of AS RPCs.</li>
 </ul>
-<h3 id="5-1-ecs-cluster"><code>5-1-ecs-cluster</code></h3>
+<h3 id="5-1-ecs-cluster-1"><code>5-1-ecs-cluster</code></h3>
 <ul>
 <li>New export that is required by other stacks</li>
 </ul>
@@ -533,15 +569,15 @@
 <ul>
 <li>Templates that define ECS services now got the <code>*RuntimePlatform</code> parameter. This parameter can be used to run ARM64 images using AWS Graviton2. Depending on particular use case, performance might be better or worse.</li>
 </ul>
-<h3 id="1-2-bastion-2"><code>1-2-bastion</code></h3>
+<h3 id="1-2-bastion-3"><code>1-2-bastion</code></h3>
 <ul>
 <li>Machine now supports connection from AWS Session Manager. Added parameter <code>SessionManagerLogGroup</code></li>
 </ul>
-<h3 id="2-5-db-timescale-4"><code>2-5-db-timescale</code></h3>
+<h3 id="2-5-db-timescale-5"><code>2-5-db-timescale</code></h3>
 <ul>
 <li>Machine now supports connection from AWS Session Manager. Added parameter <code>SessionManagerLogGroup</code></li>
 </ul>
-<h3 id="5-1-ecs-cluster-1"><code>5-1-ecs-cluster</code></h3>
+<h3 id="5-1-ecs-cluster-2"><code>5-1-ecs-cluster</code></h3>
 <ul>
 <li>Machines now support connection from AWS Session Manager. Added parameter <code>SessionManagerLogGroup</code>. You need to manually update the SSM Agent using <code>yum update amazon-ssm-agent</code></li>
 </ul>
@@ -555,7 +591,7 @@
 </ul>
 <h2 id="3171">3.17.1</h2>
 <h2 id="3170">3.17.0</h2>
-<h3 id="3-2-load-balancer-rules-1"><code>3-2-load-balancer-rules</code></h3>
+<h3 id="3-2-load-balancer-rules-2"><code>3-2-load-balancer-rules</code></h3>
 <ul>
 <li>The <code>InteropEnabled</code> parameter has different values. Deployments that used value <code>false</code> should now choose <code>disabled</code>. Deployments that used value <code>true</code> should now choose <code>mutual-authentication</code>. <code>server-only-authentication</code> is a new option, please refer to documentation: <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/interop/">https://www.thethingsindustries.com/docs/getting-started/aws/ecs/interop/</a></li>
 </ul>
@@ -590,7 +626,7 @@
 <ul>
 <li>Added <code>RedisKMSKeyID</code> parameter to specify key for at-rest encryption. Non-empty value forces replacement</li>
 </ul>
-<h3 id="5-1-ecs-cluster-2"><code>5-1-ecs-cluster</code></h3>
+<h3 id="5-1-ecs-cluster-3"><code>5-1-ecs-cluster</code></h3>
 <ul>
 <li>ECS Container Insights may now be enabled using the <code>ContainerInsights</code> parameter</li>
 </ul>
@@ -608,7 +644,7 @@
 <li>Added recording rules for Application Server metadata store and caches</li>
 </ul>
 <h2 id="3161">3.16.1</h2>
-<h3 id="1-2-bastion-3"><code>1-2-bastion</code></h3>
+<h3 id="1-2-bastion-4"><code>1-2-bastion</code></h3>
 <ul>
 <li>Updated UserData to handle TLS connection to redis</li>
 </ul>
@@ -616,7 +652,7 @@
 <ul>
 <li>Added <code>RedisTLS</code> parameter</li>
 </ul>
-<h3 id="3-2-load-balancer-rules-2"><code>3-2-load-balancer-rules</code></h3>
+<h3 id="3-2-load-balancer-rules-3"><code>3-2-load-balancer-rules</code></h3>
 <ul>
 <li>Added new <code>EnableNonTLSListeners</code> parameter</li>
 </ul>
@@ -636,11 +672,11 @@
 <ul>
 <li>Added <code>GeneralRedisTLS</code>, <code>CacheRedisTLS</code>, <code>EventsRedisTLS</code> parameters</li>
 </ul>
-<h3 id="5-5-ecs-monitoring-2"><code>5-5-ecs-monitoring</code></h3>
+<h3 id="5-5-ecs-monitoring-3"><code>5-5-ecs-monitoring</code></h3>
 <ul>
 <li>Added the <code>ProbeHTTP</code> parameter</li>
 </ul>
-<h3 id="proxy-2">Proxy</h3>
+<h3 id="proxy-3">Proxy</h3>
 <ul>
 <li>Fixed routing of authentication providers and external users API.</li>
 <li>Updated <code>Strict-Transport-Security</code> header, increasing max-age to 2 years, including subdomains and enabling pre-loading.</li>
@@ -655,7 +691,7 @@
 <ul>
 <li>Added new parameter <code>PeerRequesterAccountId</code>. Use empty value if you&rsquo;re not deploying external CryptoServer</li>
 </ul>
-<h3 id="3-2-load-balancer-rules-3"><code>3-2-load-balancer-rules</code></h3>
+<h3 id="3-2-load-balancer-rules-4"><code>3-2-load-balancer-rules</code></h3>
 <ul>
 <li>Added new  <code>SSLPolicy</code> parameter</li>
 <li>Added new parameter <code>InteropEnabled</code></li>
@@ -664,7 +700,7 @@
 <ul>
 <li>Added new resource <code>InteropTLSSecret</code>. This resource is a placeholder for certbot to upload TLS certificates</li>
 </ul>
-<h3 id="4-2a-configuration-9"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-10"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Added the <code>ForwardOnlyOwnedDevAddrs</code> parameter</li>
 <li>Added the <code>InteropEnabled</code>, <code>InteropPacketBrokerEnabled</code>, <code>InteropPacketBrokerTokenIssuer</code> and <code>CryptoServerDNSName</code> parameters.</li>
@@ -705,17 +741,17 @@
 <li>Added the <code>UserCredentialsLoginDisabled</code> parameter, which disables user login with credentials, so that The Things Stack only lets users login with an external OpenID Connect provider.</li>
 <li>Removed the <code>PacketBrokerClusterID</code> parameter. Now <code>Domain</code> is used instead</li>
 </ul>
-<h3 id="proxy-3">Proxy</h3>
+<h3 id="proxy-4">Proxy</h3>
 <ul>
 <li>Fixed routing of &ldquo;related events&rdquo; API.</li>
 </ul>
 <h2 id="3151">3.15.1</h2>
 <h2 id="3150">3.15.0</h2>
-<h3 id="1-2-bastion-4"><code>1-2-bastion</code></h3>
+<h3 id="1-2-bastion-5"><code>1-2-bastion</code></h3>
 <ul>
 <li>Added <code>EBSKmsKeyId</code> parameter to choose EBS boot volume encryption key. From now on, EBS boot volumes are encrypted.</li>
 </ul>
-<h3 id="2-5-db-timescale-5"><code>2-5-db-timescale</code></h3>
+<h3 id="2-5-db-timescale-6"><code>2-5-db-timescale</code></h3>
 <ul>
 <li>Created a hosted zone for internal use</li>
 <li>This template has been reworked so that updates are now possible. Before updating make a backup of the volume. For more information, please refer to the documentation at <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/updating/#2-5-db-timescale">https://www.thethingsindustries.com/docs/getting-started/aws/ecs/updating/#2-5-db-timescale</a></li>
@@ -759,7 +795,7 @@
 <ul>
 <li>Allowed any string matching the <code>((10)|(11))\.\d+</code> regex as Aurora version so that RDS with up-to-date minor version can be deployed.</li>
 </ul>
-<h3 id="proxy-4">Proxy</h3>
+<h3 id="proxy-5">Proxy</h3>
 <ul>
 <li>Headers with underscores are now dropped, instead of rejecting the whole request.</li>
 </ul>
@@ -772,7 +808,7 @@
 <ul>
 <li>Added <code>IncludeSemtechRJSConfiguration</code> parameter to include/exclude Semtech RJS configuration. This is a bugfix, as previous version failed to deploy when Semtech RJS secrets weren&rsquo;t available.</li>
 </ul>
-<h3 id="proxy-5">Proxy</h3>
+<h3 id="proxy-6">Proxy</h3>
 <ul>
 <li>Fixed generated <code>is-proxy</code> configuration.</li>
 <li>Allow more concurrent requests (mostly event streams) to the Console.</li>
@@ -796,11 +832,11 @@
 </ol>
 </li>
 </ul>
-<h3 id="3-2-load-balancer-rules-4"><code>3-2-load-balancer-rules</code></h3>
+<h3 id="3-2-load-balancer-rules-5"><code>3-2-load-balancer-rules</code></h3>
 <ul>
 <li>Added alternative certificates support for all TLS listeners.</li>
 </ul>
-<h3 id="4-2a-configuration-10"><code>4-2a-configuration</code></h3>
+<h3 id="4-2a-configuration-11"><code>4-2a-configuration</code></h3>
 <ul>
 <li>Changed log format to JSON.</li>
 <li>Added <code>NetworkServerClusterID</code> which identifies cluster in the Network Server for informative purposes. Suggested value the same as <code>PacketBrokerClusterID</code>.</li>
@@ -829,7 +865,7 @@
 <li>Upgraded image to Prometheus v2.28.1.</li>
 <li>Added discovery of Gateway Configuration Server and Device Claiming Server.</li>
 </ul>
-<h3 id="proxy-6">Proxy</h3>
+<h3 id="proxy-7">Proxy</h3>
 <ul>
 <li>Upgraded image to Envoy v1.19.0.</li>
 <li>Change log format to JSON.</li>
@@ -847,7 +883,7 @@
 <li>Fixed naming of security group rules for Basic Station and Interop.</li>
 <li>Added Basic Station port 1887. This is needed when a TLS-terminating load balancer preserves Client IP addresses.</li>
 </ul>
-<h3 id="proxy-7">Proxy</h3>
+<h3 id="proxy-8">Proxy</h3>
 <ul>
 <li>Added route for <code>ttn.lorawan.v3.Events</code> gRPC service.</li>
 </ul>
@@ -856,7 +892,7 @@
 <li>Added alert for the Cluster Proxy reaching its file descriptor limit and dropping new connections.</li>
 </ul>
 <h2 id="3131">3.13.1</h2>
-<h3 id="proxy-8">Proxy</h3>
+<h3 id="proxy-9">Proxy</h3>
 <ul>
 <li>Added <code>Strict-Transport-Security</code> header when using HTTPS.</li>
 </ul>
@@ -865,7 +901,7 @@
 <li>Upgraded image to Prometheus v2.27.1.</li>
 <li>Add recording rule for v3.13.1 <code>ttn_lw_log_messages_total</code> metric. The recording rule for the old <code>ttn_lw_log_messages_rate</code> is also still present.</li>
 </ul>
-<h3 id="3-2-load-balancer-rules-5"><code>3-2-load-balancer-rules</code></h3>
+<h3 id="3-2-load-balancer-rules-6"><code>3-2-load-balancer-rules</code></h3>
 <ul>
 <li>Added client IP preservation to the Gateway Server MQTTv2, Gateway Server MQTTv3, Gateway Server BasicStation, GatewayServer TabsHubs and Application Server MQTT target groups. Deployments which set the Application Server MQTT connection rate limits to high values to avoid throttling should consider reverting the rate limit to the default value.</li>
 </ul>
@@ -924,7 +960,7 @@
 <li>Change <code>PacketBrokerEnabled</code> parameter to <code>IncludePacketBrokerAgent</code> for consistency. The default value of <code>true</code> is compatible with existing deployments. Set to <code>false</code> to disable PBA.</li>
 <li>Changed Console configuration (no change in parameters)</li>
 </ul>
-<h3 id="5-1-ecs-cluster-3"><code>5-1-ecs-cluster</code></h3>
+<h3 id="5-1-ecs-cluster-4"><code>5-1-ecs-cluster</code></h3>
 <ul>
 <li>Added LifecycleHook for service draining when ECS EC2 machines are terminated. Added resources <code>ECSAutoScalingGroupDraining*</code>, replacement of <code>ECSLaunchConfiguration</code>, update of <code>ECSAutoScalingGroup</code> - here it says <code>Conditional</code> replacement due to update of <code>LaunchConfigurationName</code>, but in reality there is no replacement</li>
 </ul>
@@ -968,7 +1004,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="proxy-9">Proxy</h3>
+<h3 id="proxy-10">Proxy</h3>
 <ul>
 <li>Removed GCS routes from the GS Service.</li>
 </ul>
@@ -983,7 +1019,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="5-5-ecs-monitoring-3"><code>5-5-ecs-monitoring</code></h3>
+<h3 id="5-5-ecs-monitoring-4"><code>5-5-ecs-monitoring</code></h3>
 <ul>
 <li>Added Device Claiming Server to list of services to be scraped. This change is fully compatible with existing deployments.</li>
 </ul>
@@ -1016,7 +1052,7 @@
 <ul>
 <li>Upgrade Prometheus to v2.26.0</li>
 </ul>
-<h2 id="proxy-10">Proxy</h2>
+<h2 id="proxy-11">Proxy</h2>
 <ul>
 <li>Added Device Claiming Server routes/servers.</li>
 </ul>
@@ -1032,12 +1068,12 @@
 <li>Added <code>UDPAddrChangeBlock</code>, <code>UDPDownlinkPathExpires</code> and <code>UDPPacketHandlers</code> parameters.</li>
 <li>Added environment name to Sentry configuration.</li>
 </ul>
-<h3 id="5-5-ecs-monitoring-4"><code>5-5-ecs-monitoring</code></h3>
+<h3 id="5-5-ecs-monitoring-5"><code>5-5-ecs-monitoring</code></h3>
 <ul>
 <li>Increased Prometheus retention.</li>
 <li>Disabled Thanos by default.</li>
 </ul>
-<h3 id="proxy-11">Proxy</h3>
+<h3 id="proxy-12">Proxy</h3>
 <ul>
 <li>Upgraded Envoy to v1.17.1.</li>
 <li>Changed configuration for changes in Envoy v1.17.</li>
@@ -1053,7 +1089,7 @@
 <li>Added TTI Root CA Support</li>
 <li>Made Certbot image consistent with other Docker Images. Use <code>thethingsindustries/lorawan-stack:3.x.x-aws-certbot</code> images.</li>
 </ul>
-<h3 id="proxy-12">Proxy</h3>
+<h3 id="proxy-13">Proxy</h3>
 <ul>
 <li>Added GCS routes to HTTP listener.</li>
 <li>Fixed wrong delimiter for GS gRPC cluster definition.</li>
@@ -1066,7 +1102,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="3-2-load-balancer-rules-6"><code>3-2-load-balancer-rules</code></h3>
+<h3 id="3-2-load-balancer-rules-7"><code>3-2-load-balancer-rules</code></h3>
 <ul>
 <li>Added support for overriding certificates for all listeners.</li>
 <li>Added alternative Certificate chain support for HTTPS and Basic Station listeners.
@@ -1114,7 +1150,7 @@
 <ul>
 <li>Changed descriptions of security group ingress rules; no functional changes.</li>
 </ul>
-<h3 id="proxy-13">Proxy</h3>
+<h3 id="proxy-14">Proxy</h3>
 <ul>
 <li>Added Basic Station routes to HTTP listener.</li>
 <li>Added gRPC API routes to HTTP listener.</li>
@@ -1149,7 +1185,7 @@
 <li>Added RuleRole</li>
 <li>General fixes to the Rule</li>
 </ul>
-<h3 id="proxy-14">Proxy</h3>
+<h3 id="proxy-15">Proxy</h3>
 <ul>
 <li>Added routes for Device Repository APIs.</li>
 </ul>
@@ -1160,11 +1196,11 @@
 <h2 id="3107httpsgithubcomthethingsindustrieslorawan-stack-awscompare251f9c5e69f9ef"><a href="https://github.com/TheThingsIndustries/lorawan-stack-aws/compare/251f9c5...e69f9ef">3.10.7</a></h2>
 <p>no changes</p>
 <h2 id="3106httpsgithubcomthethingsindustrieslorawan-stack-awscompare86656ab251f9c5"><a href="https://github.com/TheThingsIndustries/lorawan-stack-aws/compare/86656ab...251f9c5">3.10.6</a></h2>
-<h3 id="1-2-bastion-5"><code>1-2-bastion</code></h3>
+<h3 id="1-2-bastion-6"><code>1-2-bastion</code></h3>
 <ul>
 <li>Added InstanceProfile to the EC2 machine, changed its UserData</li>
 </ul>
-<h3 id="2-5-db-timescale-6"><code>2-5-db-timescale</code></h3>
+<h3 id="2-5-db-timescale-7"><code>2-5-db-timescale</code></h3>
 <ul>
 <li>Added LifecyclePolicy to the EC2 machine&rsquo;s volume</li>
 </ul>
@@ -1232,6 +1268,15 @@
     
       
       <li><a href='#unreleased'>Unreleased</a></li>
+    
+      
+      <li><a href='#3231'>3.23.1</a></li>
+    
+      
+      <li><a href='#1-2-bastion'>1-2-bastion</a></li>
+    
+      
+      <li><a href='#2-5-db-timescale'>2-5-db-timescale</a></li>
     
       
       <li><a href='#3230'>3.23.0</a></li>
@@ -1412,10 +1457,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 06 Dec 2022.
+  Last changed by Nejra Selimović on 25 Dec 2022.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/045b285c961477184754d9c6a284ec563087bfc6">
-      doc: Add v3.23.0 release docs (#1008)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/df64c3ff82b3197517d818c24ae1359db0c7cbce">
+      doc: Add v3.23.1 docs (#1018)
     </a>
 </p>
 
