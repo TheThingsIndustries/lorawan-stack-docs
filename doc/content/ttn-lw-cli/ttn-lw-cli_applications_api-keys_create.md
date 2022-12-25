@@ -14,7 +14,7 @@ ttn-lw-cli applications api-keys create [application-id] [flags]
 ### Options
 
 ```
-      --api-key-expiry string                      (YYYY-MM-DDTHH:MM:SSZ)
+      --api-key-expiry timestamp                   (YYYY-MM-DDTHH:MM:SSZ)
   -h, --help                                       help for create
       --name string                                
       --right-application-all                      
