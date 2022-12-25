@@ -119,9 +119,9 @@ aws s3 cp config.yml s3://${InteropConfigBucket}/config.yml
 
 ## TimescaleDB (optional) {#timescaledb-optional}
 
-The template `2-5-db-timescale` is an optional template that creates an EC2 instance that runs [TimescaleDB](https://www.timescale.com/), which is used by the Storage Integration of the Application Server. 
+The template `2-5-db-timescale` is an optional template that creates an EC2 instance that runs [TimescaleDB](https://www.timescale.com/), which is used by the Storage Integration and the Network Operations Center (NOC). 
 
-{{< note >}} If you do not want to install the storage integration, you do not need to deploy this. {{</ note >}}
+{{< note >}} If you do not want to install the Storage Integration and NOC, you do not need to deploy this template. However, deploying this template is mandatory if you wish to install them. {{</ note >}}
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-5-db-timescale.gen.template (replace `3.x.y` with the current minor and patch version).
 
