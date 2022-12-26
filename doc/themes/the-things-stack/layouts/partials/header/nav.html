@@ -1,23 +1,18 @@
 <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
   <div class="container is-fluid">
     <div class="navbar-brand">
-      <a class="navbar-item" href="{{ relURL "/" }}">
-        <img class="logo" src="{{ "img/TTS-logo.svg" | relURL }}">
+      <a class="navbar-item" href="{{ relURL '/' }}">
+        <img class="logo" src='{{ "img/TTS-logo.svg" | relURL }}'>
         <p class="navbar-item is-size-7">v{{- .Site.Params.version -}}</p>
       </a>
+      {{- if .Site.Params.search.enabled -}}
+          <div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+        {{- end -}}
       {{- $currentPage := . -}}
       {{- range .Site.Menus.brand }}
       <a class="navbar-item{{ if $currentPage.IsMenuCurrent "brand" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a>
       {{- end }}
-      {{- if .Site.Params.search.enabled -}}
-      <div class="navbar-item navbar-search-brand">
-        <div class="field has-addons has-addons-centered">
-          <div class="control">
-            <div id="search-input-brand" class="search-bar">
-          </div>
-        </div>
-      </div>
-      {{ end }}
       <span class="navbar-burger burger" data-target="topMenu">
         <span></span>
         <span></span>
@@ -30,16 +25,6 @@
         {{- range .Site.Menus.main }}
         <a class="navbar-item{{ if $currentPage.IsMenuCurrent "main" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a>
         {{- end }}
-
-        {{- if .Site.Params.search.enabled -}}
-          <div class="navbar-item navbar-search-menu">
-            <div class="field has-addons has-addons-centered">
-              <div class="control">
-                <div id="search-input-menu" class="search-bar">
-              </div>
-            </div>
-          </div>
-        {{- end -}}
 
       </div>
       <div class="navbar-end">
@@ -65,13 +50,6 @@
 {{- if .Site.Params.search.enabled -}}
   <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
   <script type="text/javascript">
-    docsearch({
-      appId: {{ .Site.Params.search.appid }},
-      apiKey: {{ .Site.Params.search.apikey }},
-      indexName: {{ .Site.Params.search.index }},
-      container: '#search-input-brand',
-      debug: false, // Set debug to true if you want to inspect the dropdown.
-    });
     docsearch({
       appId: {{ .Site.Params.search.appid }},
       apiKey: {{ .Site.Params.search.apikey }},
