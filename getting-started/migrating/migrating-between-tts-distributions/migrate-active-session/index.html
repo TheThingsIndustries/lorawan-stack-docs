@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.96.0" />
-  <title>Migrate Active Device Session | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/migrate-active-session/" />
+  <title>Migrate Active Device Session | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-between-tts-distributions/migrate-active-session/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8afd1a9ba4c2f5b2a5910c50125ba2636f89937b2e7f5ca55766ed500a2a1e4f.css" integrity="sha256-iv0am6TC9bKlkQxQEluiY2&#43;Jk3suf1ylV2btUAoqHk8=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
@@ -18,7 +18,7 @@
   <meta itemprop="keywords" content="">
   <meta property="og:title" content="Migrate Active Device Session">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/migrate-active-session/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-between-tts-distributions/migrate-active-session/">
   <meta name="twitter:title" content="Migrate Active Device Session" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
@@ -104,7 +104,7 @@
 <ul class="menu-list">
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/" class="">Migrating End Devices from Community Edition to Cloud</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-between-tts-distributions/" class="">Migrating End Devices between The Things Stack distributions</a>
     
     
 
@@ -112,17 +112,17 @@
 <ul class="menu-list">
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/migrate-active-session/" class="is-active">Migrate Active Device Session</a>
-    
-    
-
-
-
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-between-tts-distributions/establish-new-session/" class="">Migrate Without Persisting Active Session</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/establish-new-session/" class="">Migrate Without Persisting Active Session</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-between-tts-distributions/migrate-active-session/" class="is-active">Migrate Active Device Session</a>
+    
+    
+
+
+
     
   </li>
 
@@ -133,17 +133,12 @@
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrate-from-chirpstack/" class="">Migrating Devices from ChirpStack to The Things Stack</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/" class="">Migration Tool</a>
     
   </li>
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/" class="">Migrating End Devices from V2</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/" class="">Migration Tool</a>
     
   </li>
 
@@ -234,29 +229,55 @@
         </h1>
         
         <div class="content">
-          <p>This section explains how to migrate end devices from The Things Stack Community Edition to The Things Stack Cloud while persisting sessions that were already established between those devices and The Things Stack.</p>
-<p>Since migrating an active session implies migrating a large number of parameters that cannot be configured manually, it is possible to do it only using the CLI or the migration tool. Migration tool support will soon be available.</p>
+          <p>This section explains how to migrate end devices from The Things Stack Community Edition to The Things Stack Cloud while persisting sessions that were already established between those devices and The Things Stack Community Edition.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Migrating devices without persisting active sessions is the preferred migration method.
+  Keep in mind that <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-between-tts-distributions/establish-new-session/">migrating devices without persisting active sessions</a> is highly recommended.
 </div>
 
-<p>Read the instructions below for migrating your specific device type.</p>
-<h2 id="note-on-gateway-migration">Note on Gateway Migration</h2>
+<p>Read the instructions below to migrate your OTAA or ABP devices.</p>
+<h3 id="note-on-gateway-migration">Note on Gateway Migration</h3>
 <p>Even though they are both connected to <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/">Packet Broker</a>, The Things Stack Community Edition and The Things Stack Cloud use different DevAddr blocks.</p>
 <p>When an active device session is migrated from The Things Stack Community Edition to The Things Stack Cloud, the DevAddr that the device was assigned with (OTAA) or programmed with (ABP) when it joined The Things Stack Community Edition will be preserved. Since Packet Broker routes traffic according to the DevAddr blocks, in case of migrating an active session to The Things Stack Cloud it won&rsquo;t be able to route your device&rsquo;s traffic properly, because your device still has its Community Edition-related DevAddr.</p>
 <p>Hence, to successfully migrate an active device session from The Things Stack Community Edition to The Things Stack Cloud, you also need to migrate your gateway to The Things Stack Cloud. See instructions for <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/gateway-migration/">Migrating Gateways</a>. The ideal scenario would be to migrate your gateway and your device simultaneously, in order to not loose any traffic.</p>
-<h2 id="otaa">OTAA</h2>
-<p>Migrating an active OTAA device session means the OTAA device won&rsquo;t have to perform a join on The Things Stack Cloud network after its migration, i.e. the existing session that was established between the device and The Things Stack Community Edition will just be transferred to The Things Stack Cloud.</p>
-<p>To migrate active OTAA device sessions from The Things Stack Community Edition to The Things Stack Cloud, follow the steps described below.</p>
-<!-- placeholder for migration tool info -->
+<h2 id="migrate-otaa-and-abp-devices">Migrate OTAA and ABP Devices</h2>
+<p>Since migrating an active session implies migrating a large number of parameters that cannot be configured manually, it is possible to do it only using the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/">migration tool</a> or the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">CLI</a>.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="migration-tool">
+      <a>
+        <span>Migration tool</span>
+      </a>
+    </li>
+    
+    <li data-tab="cli">
+      <a>
+        <span>CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="migration-tool">
+  <p>For detailed instructions on how to configure the migration tool before exporting your device and how to adjust the following command for migrating multiple devices or whole applications, head over to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/export-from-tts/">Export Devices from The Things Stack</a>.</p>
+<p>To export device using the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/">migration tool</a> with its active session, use the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-migrate device --source ttnv3 <span class="s1">&#39;my-device&#39;</span> &gt; devices.json
+</span></span></code></pre></div><p>The migration tool retains session of extracted devices by default.</p>
+<p>Before your device&rsquo;s session is imported in The Things Stack Cloud, you need to completely delete your device from The Things Stack Community Edition to prevent conflicts. To do it, use the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-migrate device --source ttnv3 <span class="s1">&#39;my-device&#39;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --ttnv3.delete-source-device
+</span></span></code></pre></div><p>Next, you need to import the <code>devices.json</code> file in your The Things Stack Cloud application. See instructions on how to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">Import End Devices in The Things Stack</a>. Keep in mind that if you are using the CLI to import devices, you first have to configure it to connect to The Things Stack Cloud. See <a href="https://www.thethingsindustries.com/docs/getting-started/cli/configuring-cli/">Configuring the CLI</a> guide for instructions.</p>
+</section>
+<section data-content="cli">
+  <p>Migrating an active OTAA or ABP device session means the existing session that was established between the device and The Things Stack Community Edition will just be transferred to The Things Stack Cloud. To migrate active device sessions from The Things Stack Community Edition to The Things Stack Cloud using the CLI, follow the steps described below.</p>
 <p>First, configure your CLI to connect to The Things Stack Community Edition. See <a href="https://www.thethingsindustries.com/docs/getting-started/cli/configuring-cli/">Configuring the CLI</a> guide for instructions. Make sure you also perform a <a href="https://www.thethingsindustries.com/docs/getting-started/cli/login/">Login with the CLI</a> to The Things Stack Community Edition.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  We recommend to use the latest version of the CLI. Instructions for upgrading the CLI if you already have it installed are available in the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/login/">Installing the CLI</a> guide.
+  We recommend to use the latest version of the CLI. Instructions for upgrading the CLI if you already have it installed are available in the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/installing-cli/">Installing the CLI</a> guide.
 </div>
-
-<p>Now, use the CLI to export your device&rsquo;s session from The Things Stack Community Edition:</p>
+<p>To export your OTAA device&rsquo;s session from The Things Stack Community Edition:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices get --application-id &lt;app-id&gt; --device-id &lt;device-id&gt; <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    --name <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    --description <span class="se">\
@@ -268,19 +289,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    --mac-settings <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    --mac-state <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    --session &gt; device-session.json
-</span></span></code></pre></div><p>The command above will export your device&rsquo;s session to the <code>device-session.json</code> file in the current folder. Open the file with a text editor and remove the following fields: <code>join_server_address</code>, <code>network_server_address</code> and <code>application_server_address</code>.</p>
-<p>Keep reading below the line at the end of the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/migrate-active-session/#abp">ABP</a> section.</p>
-<h2 id="abp">ABP</h2>
-<p>Migrating an active ABP device session means the existing session that was established between the ABP device and The Things Stack Community Edition will just be transferred to The Things Stack Cloud.</p>
-<p>To migrate active ABP device sessions from The Things Stack Community Edition to The Things Stack Cloud, follow the steps described below.</p>
-<!-- placeholder for migration tool info -->
-<p>First, configure your CLI to connect to The Things Stack Community Edition. See <a href="https://www.thethingsindustries.com/docs/getting-started/cli/configuring-cli/">Configuring the CLI</a> guide for instructions. Make sure you also perform a <a href="https://www.thethingsindustries.com/docs/getting-started/cli/login/">Login with the CLI</a> to The Things Stack Community Edition.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  We recommend to use the latest version of the CLI. Instructions for upgrading the CLI if you already have it installed are available in the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/login/">Installing the CLI</a> guide.
-</div>
-
-<p>Now, use the CLI to export your device&rsquo;s session from The Things Stack Community Edition:</p>
+</span></span></code></pre></div><p>To export your ABP device&rsquo;s session from The Things Stack Community Edition is just slightly different:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices get --application-id &lt;app-id&gt; --device-id &lt;device-id&gt; <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    --name <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    --description <span class="se">\
@@ -292,15 +301,17 @@
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    --mac-state <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    --session &gt; device-session.json
 </span></span></code></pre></div><p>The command above will export your device&rsquo;s session to the <code>device-session.json</code> file in the current folder. Open the file with a text editor and remove the following fields: <code>join_server_address</code>, <code>network_server_address</code> and <code>application_server_address</code>.</p>
-<hr>
-<p>Before importing your device&rsquo;s session in The Things Stack Cloud, you need to completely delete your device from The Things Stack Community Edition to prevent conflicts.</p>
-<p>Next, you need to import the JSON file generated above in your The Things Stack Cloud application. See instructions on how to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">Import End Devices in The Things Stack</a>. Keep in mind that if you are using the CLI for import, you first have to re-configure it to connect to The Things Stack Cloud.</p>
-<p>When your device&rsquo;s session is imported in The Things Stack Cloud, assuming that your gateway is also migrated to The Things Stack Cloud, you will see uplinks arriving from your device.</p>
+<p>Before your device&rsquo;s session is imported in The Things Stack Cloud, you need to completely delete your device from The Things Stack Community Edition to prevent conflicts.</p>
+<p>Next, you need to import the <code>devices.json</code> file in your The Things Stack Cloud application. See instructions on how to <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">Import End Devices in The Things Stack</a>. Keep in mind that if you are using the CLI to import devices, you first have to configure it to connect to The Things Stack Cloud. Again, see <a href="https://www.thethingsindustries.com/docs/getting-started/cli/configuring-cli/">Configuring the CLI</a> guide for instructions.</p>
+</section>
+
+</div>
+
+<p>When your device&rsquo;s session is finally imported in The Things Stack Cloud, assuming that your gateway was also migrated to The Things Stack Cloud, you will see uplinks arriving from your device.</p>
         </div>
         
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/getting-started/migrating/migrating-from-ce-to-ch/">← Migrating End Devices from Community Edition to Cloud</a>
-<a class="button is-pulled-right" href="/docs/getting-started/migrating/migrating-from-ce-to-ch/establish-new-session/">Migrate Without Persisting Active Session →</a>
+<a class="button is-pulled-left" href="/docs/getting-started/migrating/migrating-between-tts-distributions/establish-new-session/">← Migrate Without Persisting Active Session</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -321,13 +332,7 @@
   <ul class="menu-list">
     
       
-      <li><a href='#note-on-gateway-migration'>Note on Gateway Migration</a></li>
-    
-      
-      <li><a href='#otaa'>OTAA</a></li>
-    
-      
-      <li><a href='#abp'>ABP</a></li>
+      <li><a href='#migrate-otaa-and-abp-devices'>Migrate OTAA and ABP Devices</a></li>
     
   </ul>
 
@@ -367,14 +372,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 01 Jun 2022.
+  Last changed by Aleksander Borowski on 16 Jan 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b96c8e75c162c24633ccfd590f6457fc61a6ac09">
-      doc: Add instructions to migrate from Community Edition to Cloud (#858)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/ed9a6722f098dc173021e68ec6eb0bf86ced9ea9">
+      doc: Add `ttnv3` migration tool docs and reorganize existing docs (#991)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/migrating/migrating-from-ce-to-ch/migrate-active-session/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/migrating/migrating-between-tts-distributions/migrate-active-session/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>

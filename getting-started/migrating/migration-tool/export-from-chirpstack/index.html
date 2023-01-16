@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.96.0" />
-  <title>Migrating End Devices from Community Edition to Cloud | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/" />
+  <title>Export End Devices from ChirpStack | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/export-from-chirpstack/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8afd1a9ba4c2f5b2a5910c50125ba2636f89937b2e7f5ca55766ed500a2a1e4f.css" integrity="sha256-iv0am6TC9bKlkQxQEluiY2&#43;Jk3suf1ylV2btUAoqHk8=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Migrating End Devices from Community Edition to Cloud">
+  <meta itemprop="name" content="Export End Devices from ChirpStack">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Migrating End Devices from Community Edition to Cloud">
+  <meta property="og:title" content="Export End Devices from ChirpStack">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/">
-  <meta name="twitter:title" content="Migrating End Devices from Community Edition to Cloud" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/export-from-chirpstack/">
+  <meta name="twitter:title" content="Export End Devices from ChirpStack" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -104,7 +104,12 @@
 <ul class="menu-list">
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/" class="is-active">Migrating End Devices from Community Edition to Cloud</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-between-tts-distributions/" class="">Migrating End Devices between The Things Stack distributions</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/" class="">Migration Tool</a>
     
     
 
@@ -112,12 +117,17 @@
 <ul class="menu-list">
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/migrate-active-session/" class="">Migrate Active Device Session</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/export-from-tts/" class="">Export Devices from The Things Stack</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/establish-new-session/" class="">Migrate Without Persisting Active Session</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/export-from-chirpstack/" class="is-active">Export End Devices from ChirpStack</a>
+    
+    
+
+
+
     
   </li>
 
@@ -128,17 +138,7 @@
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrate-from-chirpstack/" class="">Migrating Devices from ChirpStack to The Things Stack</a>
-    
-  </li>
-
-  <li>
     <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/" class="">Migrating End Devices from V2</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/" class="">Migration Tool</a>
     
   </li>
 
@@ -224,117 +224,81 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Migrating End Devices from Community Edition to Cloud
+        <h1 class="title is-size-2">Export End Devices from ChirpStack
           
         </h1>
         
-        <h2 class="subtitle">
-          
-            
-            
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-  
-
-  
-
-<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud and Community Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
-
-  <img class="badge" src="/docs/img/tts_frames/frame_ttn.svg"></img>
-
-</a>
-
-
-          
-          
-          
-          
-        </h2>
-        
         <div class="content">
-          <p>This section explains how to migrate your devices from <a href="https://www.thethingsindustries.com/docs/getting-started/ttn/">The Things Stack Community Edition</a> to <a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/">The Things Stack Cloud</a>.</p>
-<p>You can migrate your devices from The Things Stack Community Edition to The Things Stack Cloud using The Things Stack <a href="https://www.thethingsindustries.com/docs/getting-started/console/">Console</a>, the <a href="https://www.thethingsindustries.com/docs/getting-started/cli/">CLI</a> or the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/">migration tool</a>, depending on if you want to migrate them with or without their existing session, and how many devices you wish to migrate.</p>
-<h2 id="prerequisites">Prerequisites</h2>
-<ol>
-<li>A user account on The Things Stack Community Edition with an application containing registered devices.</li>
-<li>A user account on The Things Stack Cloud.</li>
-</ol>
-<p>We recommend testing migration on a single end device or a small batch of end devices in order to make sure the migration process goes as expected.</p>
-<h2 id="add-application-in-the-things-stack-cloud">Add Application in The Things Stack Cloud</h2>
-<p>You first need to add a new application in The Things Stack Cloud. See <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/">Adding Applications</a> for detailed instructions.</p>
-<p>When adding an application in The Things Stack Cloud, the Application ID does not have to be the same as the one in The Things Stack Community Edition.</p>
-<h2 id="add-payload-formatters-and-integrations-in-the-things-stack-cloud">Add Payload Formatters and Integrations in The Things Stack Cloud</h2>
-<p>After creating an application in The Things Stack Cloud, you need to add the associated elements like application-level payload formatters and integrations. Commonly, you can copy-paste payload formatters from The Things Stack Community Edition to The Things Stack Cloud, and you can recreate all integrations on The Things Stack Cloud in the same way as you created them on The Things Stack Community Edition.</p>
-<p>See <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">Payload Formatters</a> and <a href="https://www.thethingsindustries.com/docs/integrations/">Integrations</a> for more info.</p>
-<h2 id="migrate-end-devices-and-gateways">Migrate End Devices and Gateways</h2>
-<p>Instructions for migrating your devices will differ depending on if you are using OTAA or ABP devices, and if you want to preserve their active session or not. Migrating your gateway will be needed in some cases. Choose your scenario and find the instructions in the following subsections.</p>
-        </div>
-        
-          <div class="columns is-multiline">
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/migrate-active-session/">Migrate Active Device Session</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            
-            This section explains how to migrate end devices from The Things Stack Community Edition to The Things Stack Cloud while persisting sessions that were already established between those devices and The Things Stack.
+          <p>This section contains instructions on how to configure migration tool and use it to export end devices from ChirpStack, that can later be imported in The Things Stack. This is a base for migrating end devices from ChirpStack to The Things Stack.</p>
+<h2 id="configuration">Configuration</h2>
+<p>First, configure the environment with the following variables modified according to your setup. Navigate to the folder where you installed <code>ttn-lw-migrate</code> and execute:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">CHIRPSTACK_API_URL</span><span class="o">=</span><span class="s2">&#34;localhost:8080&#34;</span>    <span class="c1"># ChirpStack Application Server URL</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">CHIRPSTACK_API_TOKEN</span><span class="o">=</span><span class="s2">&#34;7F0as987e61...&#34;</span>  <span class="c1"># ChirpStack API key</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">JOIN_EUI</span><span class="o">=</span><span class="s2">&#34;0101010102020203&#34;</span>            <span class="c1"># Set The Things Stack JoinEUI for exported devices</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">FREQUENCY_PLAN_ID</span><span class="o">=</span><span class="s2">&#34;EU_863_870&#34;</span>         <span class="c1"># Set The Things Stack FrequencyPlanID for exported devices</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">CHIRPSTACK_API_INSECURE</span><span class="o">=</span><span class="m">0</span>              <span class="c1"># Set to 1 if not using TLS on ChirpStack</span>
+</span></span></code></pre></div><p>If using Windows OS, replace <code>export</code> with <code>set</code> and remove the double-quotes in commands above. For example, you would use:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">set</span> <span class="nv">CHIRPSTACK_API_TOKEN</span><span class="o">=</span>7F0as987e61...
+</span></span></code></pre></div><p><code>JoinEUI</code> and <code>FrequencyPlanID</code> have to be set because ChirpStack does not store these variables. See <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">Frequency Plans</a> for a full list of frequency plans supported by The Things Stack (and their IDs).</p>
+<p>You can now proceed to exporting devices or applications.</p>
+<h2 id="export-devices-and-applications">Export Devices and Applications</h2>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="export-devices">
+      <a>
+        <span>Export devices</span>
+      </a>
+    </li>
+    
+    <li data-tab="export-applications">
+      <a>
+        <span>Export applications</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="export-devices">
+  <p>To export a single end device to a <code>devices.json</code> file based on their <code>DevEUI</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-migrate --source chirpstack device <span class="s2">&#34;0102030405060701&#34;</span> &gt; devices.json
+</span></span></code></pre></div><p>To export multiple end devices, create a <code>devices.txt</code> file containing one <code>DevEUI</code> per line:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="m">0102030405060701</span>
+</span></span><span class="line"><span class="cl"><span class="m">0102030405060702</span>
+</span></span><span class="line"><span class="cl"><span class="m">0102030405060703</span>
+</span></span><span class="line"><span class="cl"><span class="m">0102030405060704</span>
+</span></span><span class="line"><span class="cl"><span class="m">0102030405060705</span>
+</span></span><span class="line"><span class="cl"><span class="m">0102030405060706</span>
+</span></span></code></pre></div><p>To export multiple end devices to a <code>devices.json</code> file:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-migrate --source chirpstack device &lt; devices.txt &gt; devices.json
+</span></span></code></pre></div>
+</section>
+<section data-content="export-applications">
+  <p>To export end devices from a single application using its name (from ChirpStack):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-migrate --source chirpstack application <span class="s2">&#34;app1&#34;</span> &gt; applications.json
+</span></span></code></pre></div><p>To export end devices from multiple applications to an <code>applications.json</code> file, you need to create a <code>.txt</code> file containing one application name per line and run the following command in your terminal:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-migrate --source chirpstack application &lt; applications.txt &gt; applications.json
+</span></span></code></pre></div>
+</section>
 
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/migrate-active-session/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/establish-new-session/">Migrate Without Persisting Active Session</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            
-            This section explains how to migrate end devices from The Things Stack Community Edition to The Things Stack Cloud without persisting sessions that were established between those devices and The Things Stack.
-
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-ce-to-ch/establish-new-session/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
-        
-          <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/getting-started/migrating/">← Migrating to The Things Stack</a>
-<a class="button is-pulled-right" href="/docs/getting-started/migrating/migrating-from-ce-to-ch/migrate-active-session/">Migrate Active Device Session →</a>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  ABP end devices without an active session can be exported from ChirpStack, but cannot be imported in The Things Stack.
 </div>
 
-          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<p>Please note that <code>MaxEIRP</code> parameter may not be always set properly, and that the ChirpStack <code>variables</code> parameter related to payload formatting will always be converted to <code>null</code> when the end device is imported to The Things Stack.</p>
+<hr>
+<p>After exporting, devices and applications can be imported in The Things Stack. See <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">Import End Devices in The Things Stack</a> for details about importing devices.</p>
+        </div>
+        <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/getting-started/migrating/migration-tool/export-from-tts/">← Export Devices from The Things Stack</a>
+<a class="button is-pulled-right" href="/docs/getting-started/migrating/migrating-from-v2/">Migrating End Devices from V2 →</a>
+</div>
+
+        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
 <script src="https://cdn.emojicom.io/embed/widget.js" async></script>
 
 <div class='feedback has-vertical-space'>
@@ -352,16 +316,10 @@
   <ul class="menu-list">
     
       
-      <li><a href='#prerequisites'>Prerequisites</a></li>
+      <li><a href='#configuration'>Configuration</a></li>
     
       
-      <li><a href='#add-application-in-the-things-stack-cloud'>Add Application in The Things Stack Cloud</a></li>
-    
-      
-      <li><a href='#add-payload-formatters-and-integrations-in-the-things-stack-cloud'>Add Payload Formatters and Integrations in The Things Stack Cloud</a></li>
-    
-      
-      <li><a href='#migrate-end-devices-and-gateways'>Migrate End Devices and Gateways</a></li>
+      <li><a href='#export-devices-and-applications'>Export Devices and Applications</a></li>
     
   </ul>
 
@@ -401,14 +359,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 01 Jun 2022.
+  Last changed by Aleksander Borowski on 16 Jan 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/b96c8e75c162c24633ccfd590f6457fc61a6ac09">
-      doc: Add instructions to migrate from Community Edition to Cloud (#858)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/ed9a6722f098dc173021e68ec6eb0bf86ced9ea9">
+      doc: Add `ttnv3` migration tool docs and reorganize existing docs (#991)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/migrating/migrating-from-ce-to-ch/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/migrating/migration-tool/export-from-chirpstack.md" class="button">Edit on Github</a>
 </div>
 
       </div>

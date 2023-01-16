@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.96.0" />
-  <title>Migration Tool | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/" />
+  <title>Export Devices from The Things Stack | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/export-from-tts/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8afd1a9ba4c2f5b2a5910c50125ba2636f89937b2e7f5ca55766ed500a2a1e4f.css" integrity="sha256-iv0am6TC9bKlkQxQEluiY2&#43;Jk3suf1ylV2btUAoqHk8=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Migration Tool">
+  <meta itemprop="name" content="Export Devices from The Things Stack">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Migration Tool">
+  <meta property="og:title" content="Export Devices from The Things Stack">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/">
-  <meta name="twitter:title" content="Migration Tool" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/export-from-tts/">
+  <meta name="twitter:title" content="Export Devices from The Things Stack" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -109,7 +109,7 @@
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/" class="is-active">Migration Tool</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/" class="">Migration Tool</a>
     
     
 
@@ -117,7 +117,12 @@
 <ul class="menu-list">
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/export-from-tts/" class="">Export Devices from The Things Stack</a>
+    <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/export-from-tts/" class="is-active">Export Devices from The Things Stack</a>
+    
+    
+
+
+
     
   </li>
 
@@ -219,144 +224,96 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Migration Tool
+        <h1 class="title is-size-2">Export Devices from The Things Stack
           
         </h1>
         
         <div class="content">
-          <p><a href="https://github.com/TheThingsNetwork/lorawan-stack-migrate"><code>ttn-lw-migrate</code></a> is a tool that can be used for migrating end devices and applications from supported LoRaWAN networks (like <a href="https://www.chirpstack.io/">ChirpStack</a>) to The Things Stack, or between The Things Stack distributions. This section provides details on how to install, configure and use this tool.</p>
-<p>This tool works in a way that it exports descriptions of end devices and applications to a <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON file</a>, that can later be <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">imported in The Things Stack</a>.</p>
-<h2 id="installation">Installation</h2>
-<p>The migration tool can be installed using package managers or manually from binary files. We highly recommend installing or upgrading to <code>ttn-lw-migrate</code> version <code>0.5.0</code> or newer, because some features like session migration are not available for prior versions.</p>
+          <p>This section explains how to configure the migration tool and use it to export end devices from The Things Stack, that can later be imported in other The Things Stack deployments. This is a base for migrating end devices between The Things Stack distributions.</p>
+<h2 id="configuration">Configuration</h2>
+<p>First, configure the migration tool with environment variables or command-line arguments, like shown below. See <code>--help</code> for more details.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TTNV3_APP_ID</span><span class="o">=</span><span class="s2">&#34;my-tts-app&#34;</span>                                                  <span class="c1"># TTS App ID</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TTNV3_APP_API_KEY</span><span class="o">=</span><span class="s2">&#34;NNSXS.U...&#34;</span>                                             <span class="c1"># TTS App API Key (needs `device` permissions)</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TTNV3_APPLICATION_SERVER_GRPC_ADDRESS</span><span class="o">=</span><span class="s2">&#34;eu1.cloud.thethings.network:8884&#34;</span>   <span class="c1"># TTS Application Server URL Address</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TTNV3_IDENTITY_SERVER_GRPC_ADDRESS</span><span class="o">=</span><span class="s2">&#34;eu1.cloud.thethings.network:8884&#34;</span>      <span class="c1"># TTS Identity Server URL Address</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TTNV3_JOIN_SERVER_GRPC_ADDRESS</span><span class="o">=</span><span class="s2">&#34;eu1.cloud.thethings.network:8884&#34;</span>          <span class="c1"># TTS Join Server URL Address</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TTNV3_NETWORK_SERVER_GRPC_ADDRESS</span><span class="o">=</span><span class="s2">&#34;eu1.cloud.thethings.network:8884&#34;</span>       <span class="c1"># TTS Network Server URL Address</span>
+</span></span></code></pre></div><p>If using Windows OS, replace <code>export</code> with <code>set</code> and remove the double-quotes in commands above. For example, you would use:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">set</span> <span class="nv">TTNV3_APP_ID</span><span class="o">=</span>my-tts-app
+</span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The export process will halt if any error occurs. Execute commands with the <code>--dry-run</code> flag to verify whether the outcome will be as expected.
+</div>
+
+<p>You can now proceed to exporting devices or applications.</p>
+<h2 id="export-devices-and-applications">Export Devices and Applications</h2>
 <div class="tabs is-boxed">
   <ul>
     
-    <li data-tab="macos">
+    <li data-tab="export-devices">
       <a>
-        <span>macOS</span>
+        <span>Export devices</span>
       </a>
     </li>
     
-    <li data-tab="linux">
+    <li data-tab="export-applications">
       <a>
-        <span>Linux</span>
-      </a>
-    </li>
-    
-    <li data-tab="windows">
-      <a>
-        <span>Windows</span>
+        <span>Export applications</span>
       </a>
     </li>
     
   </ul>
 </div>
 <div class="tab-content content">
-  <section data-content="macos">
-  <p>To install <code>ttn-lw-migrate</code> tool with <code>brew</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">brew install TheThingsNetwork/homebrew-lorawan-stack/ttn-lw-migrate
-</span></span></code></pre></div><p>To upgrade <code>ttn-lw-migrate</code> tool if updates are available:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">brew upgrade TheThingsNetwork/homebrew-lorawan-stack/ttn-lw-migrate
+  <section data-content="export-devices">
+  <p>To export a single device using it&rsquo;s <strong>End Device ID</strong> (e.g. <code>my-device</code>):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># dry run first, verify that no errors occur</span>
+</span></span><span class="line"><span class="cl">ttn-lw-migrate device --source ttnv3 <span class="s1">&#39;my-device&#39;</span> --dry-run --verbose &gt; devices.json
+</span></span><span class="line"><span class="cl"><span class="c1"># export device</span>
+</span></span><span class="line"><span class="cl">ttn-lw-migrate device --source ttnv3 <span class="s1">&#39;my-device&#39;</span> &gt; devices.json
+</span></span></code></pre></div><p>In order to export a large number of devices, create a file named <code>device_ids.txt</code> with one device ID per line:</p>
+<pre tabindex="0"><code>my-device-1
+my-device-2
+my-device-3
+</code></pre><p>And then export with:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># dry run first, verify that no errors occur</span>
+</span></span><span class="line"><span class="cl">ttn-lw-migrate devices --source ttnv3 --dry-run --verbose &lt; device_ids.txt &gt; devices.json
+</span></span><span class="line"><span class="cl"><span class="c1"># export devices</span>
+</span></span><span class="line"><span class="cl">ttn-lw-migrate devices --source ttnv3 &lt; device_ids.txt &gt; devices.json
 </span></span></code></pre></div>
 </section>
-<section data-content="linux">
-  <p>To install <code>ttn-lw-migrate</code> tool with <code>snap</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo snap install ttn-lw-migrate
-</span></span></code></pre></div><p>To upgrade <code>ttn-lw-migrate</code> tool if updates are available:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo snap refresh ttn-lw-migrate
+<section data-content="export-applications">
+  <p>To export all devices of an application using its <strong>Application ID</strong> (e.g. <code>my-app-id</code>):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># dry run first, verify that no errors occur</span>
+</span></span><span class="line"><span class="cl">ttn-lw-migrate application --source ttnv3 <span class="s1">&#39;my-app-id&#39;</span> --dry-run --verbose &gt; devices.json
+</span></span><span class="line"><span class="cl"><span class="c1"># export application</span>
+</span></span><span class="line"><span class="cl">ttn-lw-migrate application --source ttnv3 <span class="s1">&#39;my-app-id&#39;</span> &gt; devices.json
+</span></span></code></pre></div><p>In order to export multiple applications, create a file named <code>application_names.txt</code> with one application ID per line:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">my-app-id-1
+</span></span><span class="line"><span class="cl">my-app-id-2
+</span></span><span class="line"><span class="cl">my-app-id-3
+</span></span></code></pre></div><p>And then export with:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># dry run first, verify that no errors occur</span>
+</span></span><span class="line"><span class="cl">ttn-lw-migrate devices --source ttnv3 --dry-run --verbose &lt; application_names.txt &gt; devices.json
+</span></span><span class="line"><span class="cl"><span class="c1"># export applications</span>
+</span></span><span class="line"><span class="cl">ttn-lw-migrate devices --source ttnv3 &lt; application_names.txt &gt; devices.json
 </span></span></code></pre></div>
 </section>
-<section data-content="windows">
-  <p>Download the zipped archive with binary files for Windows from <a href="https://github.com/TheThingsNetwork/lorawan-stack-migrate/releases">Github</a>.</p>
-<p>Extract the folder from ZIP archive and enter the folder. Double-click to run the <code>ttn-lw-migrate.exe</code> executable file.</p>
-<p>After this, you will be notified that you can run <code>ttn-lw-migrate</code> from the command prompt.</p>
-</section>
 
 </div>
 
-<h2 id="usage">Usage</h2>
-<p>To use the <code>ttn-lw-migrate</code> tool after successful installation, use your terminal or command prompt to navigate to the folder where it is installed and run the commands from there. Run <code>ttn-lw-migrate help</code> to see all available commands and flags.</p>
-<p>To list available sources that you can migrate your end devices and applications from:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-migrate sources
-</span></span></code></pre></div><p>Currently, there are three available sources listed in the table below. For detailed migration instructions using these three sources, check the linked sections.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Source</th>
-<th style="text-align:left">Section</th>
-<th style="text-align:left">Used for</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left"><code>ttnv3</code></td>
-<td style="text-align:left"><a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/export-from-tts/">Export Devices from The Things Stack</a></td>
-<td style="text-align:left"><a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-between-tts-distributions/">Migrating between The Things Stack distributions</a></td>
-</tr>
-<tr>
-<td style="text-align:left"><code>chirpstack</code></td>
-<td style="text-align:left"><a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/export-from-chirpstack/">Export Devices from ChirpStack</a></td>
-<td style="text-align:left">Migrating devices from ChirpStack</td>
-</tr>
-<tr>
-<td style="text-align:left"><code>ttnv2</code></td>
-<td style="text-align:left">Discontinued</td>
-<td style="text-align:left">Migrating from legacy V2 deployments</td>
-</tr>
-</tbody>
-</table>
+<h2 id="advanced-setup">Advanced setup</h2>
+<p>If you are using a custom CA, you can provide a path to it by with an environment variable or by using <code>--ttnv3.ca-file</code> flag.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TTNV3_CA_FILE</span><span class="o">=</span><span class="s2">&#34;/path/to/ca.file&#34;</span>   <span class="c1"># Path to a CA file (optional)</span>
+</span></span></code></pre></div><hr>
+<p>After exporting, devices and applications can be imported in other The Things Stack deployments. See <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">Import End Devices in The Things Stack</a> for details about importing devices. See <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-between-tts-distributions/">Migrating End Devices between The Things Stack Distributions</a> to wrap up the whole process of migration between The Things Stack distributions.</p>
         </div>
-        
-          <div class="columns is-multiline">
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/export-from-tts/">Export Devices from The Things Stack</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            
-            This section explains how to configure the migration tool and use it to export end devices from The Things Stack, that can later be imported in other The Things Stack deployments. This is a base for migrating end devices between The Things Stack distributions.
-
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/export-from-tts/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="column is-half is-flex">
-    <div class="card has-radius is-fullwidth">
-      <div class="card-content">
-        <div class="title-content">
-          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/export-from-chirpstack/">Export End Devices from ChirpStack</a>
-          </h1>
-          
-          <div class="content has-text-grey">
-            
-            This section contains instructions on how to configure migration tool and use it to export end devices from ChirpStack, that can later be imported in The Things Stack. This is a base for migrating end devices from ChirpStack to The Things Stack.
-
-            
-          </div>
-        </div>
-        <div class="buttons">
-          <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migration-tool/export-from-chirpstack/" class="button is-primary is-outlined">Read</a>
-        </div>
-      </div>
-    </div>
-  </div>
+        <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/getting-started/migrating/migration-tool/">← Migration Tool</a>
+<a class="button is-pulled-right" href="/docs/getting-started/migrating/migration-tool/export-from-chirpstack/">Export End Devices from ChirpStack →</a>
 </div>
 
-        
-          <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/getting-started/migrating/migrating-between-tts-distributions/migrate-active-session/">← Migrate Active Device Session</a>
-<a class="button is-pulled-right" href="/docs/getting-started/migrating/migration-tool/export-from-tts/">Export Devices from The Things Stack →</a>
-</div>
-
-          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
 <script src="https://cdn.emojicom.io/embed/widget.js" async></script>
 
 <div class='feedback has-vertical-space'>
@@ -374,10 +331,13 @@
   <ul class="menu-list">
     
       
-      <li><a href='#installation'>Installation</a></li>
+      <li><a href='#configuration'>Configuration</a></li>
     
       
-      <li><a href='#usage'>Usage</a></li>
+      <li><a href='#export-devices-and-applications'>Export Devices and Applications</a></li>
+    
+      
+      <li><a href='#advanced-setup'>Advanced setup</a></li>
     
   </ul>
 
@@ -424,7 +384,7 @@
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/migrating/migration-tool/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/getting-started/migrating/migration-tool/export-from-tts.md" class="button">Edit on Github</a>
 </div>
 
       </div>
