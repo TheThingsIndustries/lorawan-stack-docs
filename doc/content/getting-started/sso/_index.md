@@ -81,3 +81,27 @@ A list of provider discovery URLs is available from AWS [here](https://docs.aws.
 If succesful, `tti-lw-cli` will return a list of Authentication Providers. When you go to login, you will see the login option using the `name` you registered the Authentication Provider with.
 
 {{< figure src="login-screen.png" >}}
+
+## Troubleshooting
+
+### I get the `email not verified` error when logging in using SSO.
+
+{{% tts %}} checks if the email address included in the JWT token has been verified by the OIDC provider (e.g. The Things ID or SSO DB), so the JWT token that the OIDC provider provides should contain the `email_verified` field. If this field is not present, the user might face the following error upon logging in with SSO:
+
+```
+{
+"code": 7,
+"message": "error:pkg/account/oidc:unverified_email (email not verified)",
+"details": [
+    {
+        "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+        "namespace": "pkg/account/oidc",
+        "name": "unverified_email",
+        "message_format": "email not verified",
+        "correlation_id": "43c2ea63620d4487b64723d03195953e",
+        "code": 7
+    }]
+}
+```
+
+To fix this error, users should ask their OIDC provider to include the `email_verified` field in the JWT token to be used with {{% tts %}} SSO.
