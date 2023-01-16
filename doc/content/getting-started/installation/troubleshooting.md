@@ -93,3 +93,17 @@ In most cases, the error will point to an exact line of your configuration file 
 ## Missing tenant ID
 
 If you are facing the `missing_tenant_id` error, that means you are trying to access the Console in a multi-tenant {{% tts %}} environment on an address that doesn't contain any tenant ID, e.g. `https://thethings.example.com`. To access the Console of a particular tenant in a multi-tenant environment, you have to specify a tenant ID as a URL subdomain, e.g. `https://<tenant-id>.thethings.network.com`.
+
+## Grafana container fails to start upon installing {{% tts %}} due to permissions issues
+
+If you are running {{% tts %}} Docker deployment on a Linux machine, you might encounter the following error: 
+
+```
+failed to connect to database: failed to create SQLite database file "/var/lib/grafana/db/grafana.db": open /var/lib/grafana/db/grafana.db: permission denied
+```
+
+This issue usually arises from the following fact - on Linux, Docker creates folders as `root` and containers are expected to run as `root`, while Grafana runs as a non-`root` user. To fix this, you need to manually update rights for Grafana using the following command:
+
+```bash
+sudo chown -R 472:0 .env/data/grafana
+```
