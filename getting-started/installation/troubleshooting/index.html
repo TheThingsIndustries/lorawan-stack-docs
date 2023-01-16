@@ -240,7 +240,12 @@ stack_1      |     licensed=[XXXXXXXX/24] (redacted)
 </code></pre><p>In most cases, the error will point to an exact line of your configuration file where the issue occured. To fix this, apply the correct indentation. Use <code>ttn-lw-stack config --yml</code> to see the default The Things Stack configuration with correct indentation in your terminal.</p>
 <h2 id="missing-tenant-id">Missing tenant ID</h2>
 <p>If you are facing the <code>missing_tenant_id</code> error, that means you are trying to access the Console in a multi-tenant The Things Stack environment on an address that doesn&rsquo;t contain any tenant ID, e.g. <code>https://thethings.example.com</code>. To access the Console of a particular tenant in a multi-tenant environment, you have to specify a tenant ID as a URL subdomain, e.g. <code>https://&lt;tenant-id&gt;.thethings.network.com</code>.</p>
-
+<h2 id="grafana-container-fails-to-start-upon-installing-the-things-stack-due-to-permissions-issues">Grafana container fails to start upon installing The Things Stack due to permissions issues</h2>
+<p>If you are running The Things Stack Docker deployment on a Linux machine, you might encounter the following error:</p>
+<pre tabindex="0"><code>failed to connect to database: failed to create SQLite database file &#34;/var/lib/grafana/db/grafana.db&#34;: open /var/lib/grafana/db/grafana.db: permission denied
+</code></pre><p>This issue usually arises from the following fact - on Linux, Docker creates folders as <code>root</code> and containers are expected to run as <code>root</code>, while Grafana runs as a non-<code>root</code> user. To fix this, you need to manually update rights for Grafana using the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo chown -R 472:0 .env/data/grafana
+</span></span></code></pre></div>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/getting-started/installation/running-the-stack/">← Running The Things Stack</a>
@@ -288,6 +293,9 @@ stack_1      |     licensed=[XXXXXXXX/24] (redacted)
       
       <li><a href='#missing-tenant-id'>Missing tenant ID</a></li>
     
+      
+      <li><a href='#grafana-container-fails-to-start-upon-installing-the-things-stack-due-to-permissions-issues'>Grafana container fails to start upon installing The Things Stack due to permissions issues</a></li>
+    
   </ul>
 
 
@@ -326,10 +334,10 @@ stack_1      |     licensed=[XXXXXXXX/24] (redacted)
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Feb 2022.
+  Last changed by Nejra Selimović on 16 Jan 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/38ea2645a10aeda4ec666a9b055103dc35559703">
-      doc: Add installation troubleshooting entries (#745)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a5b6108aa748c7cdd57a3315f4d1f75c628a537d">
+      doc: Document resolving Grafana permissions issue (#1024)
     </a>
 </p>
 
