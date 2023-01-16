@@ -11,6 +11,10 @@ You can uninstall the AWS IoT integration for {{% tts %}} using AWS CloudFormati
 
 <!--more-->
 
+{{< note >}} Disabling the AWS IoT integration in {{% tts %}} only stops traffic from being published to AWS IoT Core. On the other hand, deleting devices on AWS IoT side will also delete them from {{% tts %}}, even if the AWS IoT integration is disabled on {{% tts %}} side.
+
+If you want to delete devices from AWS IoT Core without deleting them from {{% tts %}}, follow the section below. {{</ note >}}
+
 ## Delete AWS CloudFormation Stack
 
 In the AWS Console, open **Services** and go to **CloudFormation**.
