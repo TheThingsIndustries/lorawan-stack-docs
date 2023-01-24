@@ -346,12 +346,39 @@
 
  The key vault is used to store secrets, such as TLS certificates and the keys for encrypting LoRaWAN root keys in the database. These secrets can also be cached. The Things Stack supports keys stored in AWS Secrets Manager, or static configuration for development purposes.</p>
 <ul>
-<li><code>key-vault.provider</code>: Provider (static or aws)</li>
-<li><code>key-vault.static</code>: Static key encryption keys; values use hex encoding</li>
-<li><code>key-vault.cache.size</code>: Cache size (caching is disabled if size is 0)</li>
-<li><code>key-vault.cache.ttl</code>: TTL for cached elements (no expiration mechanism is used if TTL is 0)</li>
-<li><code>key-vault.aws.region</code>: AWS region</li>
-<li><code>key-vault.aws.secret-id-prefix</code>: Secret ID prefix</li>
+<li>
+<p><code>key-vault.provider</code>: Provider (<code>static</code> or <code>aws</code>)</p>
+</li>
+<li>
+<p><code>key-vault.static</code>: Static key encryption keys; values use hex encoding</p>
+</li>
+<li>
+<p><code>key-vault.cache.size</code>: Cache size (caching is disabled if size is 0)</p>
+</li>
+<li>
+<p><code>key-vault.cache.ttl</code>: TTL for cached elements (no expiration mechanism is used if TTL is 0)</p>
+</li>
+<li>
+<p><code>key-vault.aws.region</code>: AWS region</p>
+</li>
+<li>
+<p><code>key-vault.aws.secret-id-prefix</code>: Secret ID prefix</p>
+</li>
+<li>
+<p><code>key-vault.aws.client-certificate-secret-label</code>: Secret label for loading the client certificate from Secrets Manager. Conflicts with <code>key-vault.aws.certificate-authority-arn</code>. If set, the secret must contain a <code>certificate</code> and <code>key</code> field with PEM encoded values <span class="tag is-light">New in 3.24.0</span>
+
+</p>
+</li>
+<li>
+<p><code>key-vault.aws.certificate-authority-arn</code>: Certificate authority ARN for issuing the client certificate from AWS Private CA. Conflicts with <code>key-vault.aws.client-certificate-secret-label</code>. If set, the client certificate is issued from AWS Private CA <span class="tag is-light">New in 3.24.0</span>
+
+</p>
+</li>
+<li>
+<p><code>key-vault.aws.client-certificate-common-name</code>: Common Name for issuing the client certificate from AWS Private CA. If not set, the host name is used <span class="tag is-light">New in 3.24.0</span>
+
+</p>
+</li>
 </ul>
 <h2 id="tls-options">TLS Options</h2>
 <p>The Things Stack serves several endpoints using TLS. TLS certificates can come from different sources.</p>
@@ -1189,10 +1216,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 24 Feb 2022.
+  Last changed by Johan Stokking on 24 Jan 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/53eb0102d2f0a111dbdc43953c3cc7d1d88ce8ed">
-      doc: Add API calls troubleshooting (#790)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a4258800410f748b3b809a2cc95dfb7256541a0d">
+      Document TLS client configuration (#1031)
     </a>
 </p>
 
