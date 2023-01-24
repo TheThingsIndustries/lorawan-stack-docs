@@ -36,7 +36,7 @@ The Join Server configuration provides means to configure how the components int
 scheme: 'https'                          # URL scheme. Defaults to https
 fqdn: 'thethings.example'                # FQDN of the Join Server
 port: 443                                # port to connect at. Defaults to 443
-protocol: 'BI1.0'                        # Backend Interfaces protocol to use (one of BI1.0 or BI1.1)
+protocol: 'BI1.0'                        # Backend Interfaces protocol to use (BI1.0 or BI1.1)
 paths:                                   # custom URI paths to use for various requests. Defaults to /
   join: 'some/path'                      # the URI path to use for JoinReq
   rejoin: 'some/other/path'              # the URI path to use for RejoinReq
@@ -47,12 +47,15 @@ basic-auth:                              # HTTP Basic Authentication (optional)
   username: 'user'                       # HTTP Basic username
   password: 'secret'                     # HTTP Basic password
 tls:                                     # TLS configuration to use (optional)
-  root-ca: 'path/to/clientca.pem'        # path to client CA
-  certificate: 'path/to/clientcert.pem'  # path to client TLS certificate
-  key: 'path/to/clientkey.pem'           # path to client TLS key
+  source: 'file'                         # TLS client certificate source (file or key-vault)
+  root-ca: 'path/to/clientca.pem'        # path to CA file to verify TLS server certificate (optional)
+  certificate: 'path/to/clientcert.pem'  # path to TLS client certificate
+  key: 'path/to/clientkey.pem'           # path to TLS client key
 headers:                                 # HTTP headers to send, defined as key-value map
   Some-Header: 'SomeValue'
 ```
+
+If `tls.source` is set to `key-vault`, {{% tts %}} uses its [Key Vault]({{< ref "/reference/configuration/the-things-stack#key-vault" >}}) configuration to load the TLS client certificate.
 
 ## Interoperability with The Things Join Server
 
@@ -81,18 +84,16 @@ join-servers:
 fqdn: 'join.cloud.thethings.industries'
 protocol: 'BI1.1'
 sender-ns-id: 'ABCDEF0000000001'
-basic-auth:
-  username: 'ABCDEF0000000001'
-  password: 'secret'
+tls:
+  source: 'key-vault'
 ```
 
 ```yml
 # tti/as-js.yml
 fqdn: 'join.cloud.thethings.industries'
 protocol: 'BI1.1'
-basic-auth:
-  username: 'thethings.example.com'
-  password: 'secret'
+tls:
+  source: 'key-vault'
 ```
 
 ## Interoperability with Semtech Join Server
@@ -119,7 +120,8 @@ protocol: 'BI1.0'
 paths:
   join: 'api/v1/rens/rens-1::2/lbi_joinreq'  # replace 'rens-1::1' by the RENS issued by Semtech
 tls:
-  root-ca: './ca.pem'                        # path to the client CA issued by Semtech
-  certificate: './cert.pem'                  # path to the client TLS certificate issued by Semtech
-  key: './key.pem'                           # path to the client TLS key issued by Semtech
+  source: 'file'
+  root-ca: './ca.pem'                        # path to the CA issued by Semtech
+  certificate: './cert.pem'                  # path to the TLS client certificate issued by Semtech
+  key: './key.pem'                           # path to the TLS client key issued by Semtech
 ```
