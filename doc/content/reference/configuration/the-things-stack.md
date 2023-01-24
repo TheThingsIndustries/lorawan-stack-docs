@@ -31,12 +31,16 @@ $ echo "AzYFASd/Gcggs..." | base64 --decode > ttn-lw-stack-license.bin
 
 {{< distributions "Cloud" "Enterprise" >}} The key vault is used to store secrets, such as TLS certificates and the keys for encrypting LoRaWAN root keys in the database. These secrets can also be cached. {{% tts %}} supports keys stored in AWS Secrets Manager, or static configuration for development purposes.
 
-- `key-vault.provider`: Provider (static or aws)
+- `key-vault.provider`: Provider (`static` or `aws`)
 - `key-vault.static`: Static key encryption keys; values use hex encoding
 - `key-vault.cache.size`: Cache size (caching is disabled if size is 0)
 - `key-vault.cache.ttl`: TTL for cached elements (no expiration mechanism is used if TTL is 0)
+
 - `key-vault.aws.region`: AWS region
 - `key-vault.aws.secret-id-prefix`: Secret ID prefix
+- `key-vault.aws.client-certificate-secret-label`: Secret label for loading the client certificate from Secrets Manager. Conflicts with `key-vault.aws.certificate-authority-arn`. If set, the secret must contain a `certificate` and `key` field with PEM encoded values {{< new-in-version "3.24.0" >}}
+- `key-vault.aws.certificate-authority-arn`: Certificate authority ARN for issuing the client certificate from AWS Private CA. Conflicts with `key-vault.aws.client-certificate-secret-label`. If set, the client certificate is issued from AWS Private CA {{< new-in-version "3.24.0" >}}
+- `key-vault.aws.client-certificate-common-name`: Common Name for issuing the client certificate from AWS Private CA. If not set, the host name is used {{< new-in-version "3.24.0" >}}
 
 ## TLS Options
 
