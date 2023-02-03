@@ -42,7 +42,7 @@ paths:                                   # custom URI paths to use for various r
   rejoin: 'some/other/path'              # the URI path to use for RejoinReq
   app-s-key: 'other/path'                # the URI path to use for AppSKeyReq
   home-ns: 'somepath'                    # the URI path to use for HomeNSReq
-sender-ns-id: '1122334455667788'         # Backend Interfaces 1.1 NSID
+sender-ns-id: '1122334455667788'         # Backend Interfaces 1.1 NSID (overrides ns.interop.id)
 basic-auth:                              # HTTP Basic Authentication (optional)
   username: 'user'                       # HTTP Basic username
   password: 'secret'                     # HTTP Basic password
@@ -67,29 +67,14 @@ An example interoperability repository supporting The Things Join Server operate
 # config.yml
 join-servers:
   ...
-  - file: './tti/ns-js.yml'
-    components: ['ns']
-    join-euis:
-    - 'EC656E0000000000/24'
-
-  - file: './tti/as-js.yml'
-    components: ['as']
+  - file: './tti/js.yml'
     join-euis:
     - 'EC656E0000000000/24'
   ...
 ```
 
 ```yml
-# tti/ns-js.yml
-fqdn: 'join.cloud.thethings.industries'
-protocol: 'BI1.1'
-sender-ns-id: 'ABCDEF0000000001'
-tls:
-  source: 'key-vault'
-```
-
-```yml
-# tti/as-js.yml
+# tti/js.yml
 fqdn: 'join.cloud.thethings.industries'
 protocol: 'BI1.1'
 tls:
