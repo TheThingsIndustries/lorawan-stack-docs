@@ -8,6 +8,8 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.23.2
+
 ## 3.23.1
 
 ## `1-2-bastion`
