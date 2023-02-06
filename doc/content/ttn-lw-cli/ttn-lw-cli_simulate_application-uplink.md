@@ -14,32 +14,29 @@ ttn-lw-cli simulate application-uplink [application-id] [device-id] [flags]
 ### Options
 
 ```
-      --app-s-key.encrypted-key bytesHex       
-      --app-s-key.kek-label string             
-      --app-s-key.key 16-bytes                 
-      --application-id string                  
-      --confirmed                              
-      --consumed-airtime duration              
-      --decoded-payload-warnings strings       
-      --dev-eui string                         (hex)
-      --device-id string                       
-      --f-cnt uint32                           
-      --f-port uint32                          
-      --frm-payload bytesBase64                
-  -h, --help                                   help for application-uplink
-      --join-eui string                        (hex)
-      --last-a-f-cnt-down uint32               
-      --normalized-payload-warnings strings    
-      --received-at timestamp                  
-      --session-key-id bytesBase64             
-      --version-ids.band-id string             
-      --version-ids.brand-id string            
-      --version-ids.firmware-version string    
-      --version-ids.hardware-version string    
-      --version-ids.model-id string            
-      --version-ids.serial-number string       
-      --version-ids.vendor-id uint32           
-      --version-ids.vendor-profile-id uint32   
+      --app-s-key.encrypted-key bytesHex      
+      --app-s-key.kek-label string            
+      --app-s-key.key 16-bytes                
+      --application-id string                 
+      --confirmed                             
+      --consumed-airtime duration             
+      --decoded-payload-warnings strings      
+      --dev-eui string                        (hex)
+      --device-id string                      
+      --f-cnt uint32                          
+      --f-port uint32                         
+      --frm-payload bytesBase64               
+  -h, --help                                  help for application-uplink
+      --join-eui string                       (hex)
+      --last-a-f-cnt-down uint32              
+      --normalized-payload-warnings strings   
+      --received-at timestamp                 
+      --session-key-id bytesBase64            
+      --version-ids.band-id string            
+      --version-ids.brand-id string           
+      --version-ids.firmware-version string   
+      --version-ids.hardware-version string   
+      --version-ids.model-id string           
 ```
 
 ### Options inherited from parent commands

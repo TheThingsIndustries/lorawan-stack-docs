@@ -238,6 +238,7 @@ ttn-lw-cli templates execute [flags]
       --root-keys.app-key.key 16-bytes                                                        
       --root-keys.nwk-key.key 16-bytes                                                        
       --root-keys.root-key-id string                                                          
+      --serial-number string                                                                  
       --service-profile-id string                                                             
       --session.dev-addr 4-bytes                                                              
       --session.keys.app-s-key.key 16-bytes                                                   
@@ -261,8 +262,6 @@ ttn-lw-cli templates execute [flags]
       --version-ids.firmware-version string                                                   
       --version-ids.hardware-version string                                                   
       --version-ids.model-id string                                                           
-      --version-ids.vendor-id uint32                                                          
-      --version-ids.vendor-profile-id uint32                                                  
 ```
 
 ### Options inherited from parent commands
