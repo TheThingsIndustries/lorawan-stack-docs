@@ -217,7 +217,7 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">rejoin</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;some/other/path&#39;</span><span class="w">              </span><span class="c"># the URI path to use for RejoinReq</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">app-s-key</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;other/path&#39;</span><span class="w">                </span><span class="c"># the URI path to use for AppSKeyReq</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">home-ns</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;somepath&#39;</span><span class="w">                    </span><span class="c"># the URI path to use for HomeNSReq</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">sender-ns-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;1122334455667788&#39;</span><span class="w">         </span><span class="c"># Backend Interfaces 1.1 NSID</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">sender-ns-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;1122334455667788&#39;</span><span class="w">         </span><span class="c"># Backend Interfaces 1.1 NSID (overrides ns.interop.id)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">basic-auth</span><span class="p">:</span><span class="w">                              </span><span class="c"># HTTP Basic Authentication (optional)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">username</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;user&#39;</span><span class="w">                       </span><span class="c"># HTTP Basic username</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">password</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;secret&#39;</span><span class="w">                     </span><span class="c"># HTTP Basic password</span><span class="w">
@@ -235,23 +235,11 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="c"># config.yml</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">join-servers</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">...</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;./tti/ns-js.yml&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">components</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;ns&#39;</span><span class="p">]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">join-euis</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="s1">&#39;EC656E0000000000/24&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;./tti/as-js.yml&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">components</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;as&#39;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;./tti/js.yml&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">join-euis</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="s1">&#39;EC656E0000000000/24&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">...</span><span class="w">
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="c"># tti/ns-js.yml</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">fqdn</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;join.cloud.thethings.industries&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;BI1.1&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">sender-ns-id</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;ABCDEF0000000001&#39;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tls</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;key-vault&#39;</span><span class="w">
-</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="c"># tti/as-js.yml</span><span class="w">
+</span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="c"># tti/js.yml</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">fqdn</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;join.cloud.thethings.industries&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;BI1.1&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tls</span><span class="p">:</span><span class="w">
@@ -346,10 +334,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Johan Stokking on 24 Jan 2023.
+  Last changed by Johan Stokking on 07 Feb 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a4258800410f748b3b809a2cc95dfb7256541a0d">
-      Document TLS client configuration (#1031)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f8654b0b928e38189e55c2e7426280e8e6d0104f">
+      doc: Document NSID and DCS (#1034)
     </a>
 </p>
 
