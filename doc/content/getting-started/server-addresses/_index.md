@@ -52,3 +52,13 @@ The CUPS gateway address is a combination of the **protocol** (https), the **ser
 **Example 2**: The CUPS address for an `au1` Cloud tenant is `https://tenant.au1.cloud.thethings.industries:443`, where `tenant` should be replaced with your Tenant ID.
 
 **Example 3**: If you installed {{% tts %}} Enterprise or Open Source, the CUPS address is the domain you used in configuration, for example `https://thethings.example.com:443`.
+
+## The Things Kickstarter Gateway Account Server
+
+The The Things Kickstarter Gateway Account Server address is a combination of the **scheme** (https) and the **server address**. The port is inferred from the scheme.
+
+**Example 1**: For the `eu1` The Things Stack Community Edition cluster, the value is `https://eu1.cloud.thethings.network`. Replace `eu1` with the applicable cluster value (ex: `nam1`, `au1` etc).
+
+**Example 2**: For The Things Stack Cloud cluster `au1` with tenant `tenant`, the value is `https://tenant.au1.cloud.thethings.industries`. Replace  `tenant` with your Tenant ID and `au1` with the appropriate cluster value.
+
+**Example 3**: If you installed {{% tts %}} Enterprise or Open Source, the address is the domain you used in configuration, for example `https://thethings.example.com`.
