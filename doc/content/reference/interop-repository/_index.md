@@ -1,11 +1,15 @@
 ---
-title: "LoRaWAN Backend Interfaces Interoperability"
+title: "LoRaWAN Join Server Configuration"
 description: ""
 ---
 
 {{% tts %}} Network Server and Application Server can use LoRaWAN Backend Interfaces 1.0 and 1.1 with LoRaWAN Join Servers.
 
 <!-- more -->
+
+Network Server and Application Server use this configuration to contact LoRaWAN Join Servers. Learn how to configure [Network Server]({{< ref "/reference/configuration/network-server#interoperability-options" >}}) and [Application Server]({{< ref "/reference/configuration/application-server#interoperability-options" >}}) to use the interoperability client configuration.
+
+## Configuration Files
 
 {{% tts %}} reads configuration from a file system. The root should contain `config.yml`, which contains Join Servers.
 
@@ -14,7 +18,7 @@ join-servers:
   - file: './path/js.yml'     # relative path to a file containing Join Server configuration
     components: ['as', 'ns']  # optional selector for components (new in 3.21.0)
     join-euis:                # list of Join EUI prefixes the Join Server should handle
-    - '11AA000000000000/16'   # in this example, the first 16 bits, so all JoinEUIs starting with 11AA
+      - '11AA000000000000/16' # in this example, the first 16 bits, so all JoinEUIs starting with 11AA
 ```
 
 All paths are relative to the `config.yml` file they are defined in.
@@ -27,7 +31,7 @@ In case `JoinEUI` prefixes overlap, the most specific prefix takes precedence. `
 join-servers:
   - file: './fallback/js.yml'
     join-euis:
-    - '0000000000000000/0'
+      - '0000000000000000/0'
 ```
 
 The Join Server configuration provides means to configure how the components interact with the Join Server. The configuration supports multiple options:
@@ -61,7 +65,7 @@ If `tls.source` is set to `key-vault`, {{% tts %}} uses its [Key Vault]({{< ref 
 
 The Things Join Server is a stand-alone LoRaWAN Join Server that can be deployed by device makers, distributors and integrators.
 
-An example interoperability repository supporting The Things Join Server operated by The Things Industries could look like this:
+The Things Join Server operated by The Things Industries should be configured as follows:
 
 ```yml
 # config.yml
@@ -69,13 +73,14 @@ join-servers:
   ...
   - file: './tti/js.yml'
     join-euis:
-    - 'EC656E0000000000/24'
+      - '70B3D57ED0000000/64'
+      - 'EC656E0000000000/56'
   ...
 ```
 
 ```yml
 # tti/js.yml
-fqdn: 'join.cloud.thethings.industries'
+fqdn: 'js.cloud.thethings.industries'
 protocol: 'BI1.1'
 tls:
   source: 'key-vault'
@@ -85,7 +90,7 @@ tls:
 
 Semtech Join Server is a hosted LoRaWAN Join Server by Semtech for use with pre-provisioned LoRa Edge modems.
 
-An example interoperability repository supporting Semtech Join Server could look like this:
+Semtech Join Server should be configured as follows:
 
 ```yml
 # config.yml
@@ -93,7 +98,7 @@ join-servers:
   ...
   - file: './semtech/js.yml'
     join-euis:
-    - '0016C00000000000/24'
+      - '0016C00000000000/24'
   ...
 ```
 
