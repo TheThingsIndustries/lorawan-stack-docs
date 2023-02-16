@@ -74,7 +74,7 @@ You can also edit existing subscriptions. To do this, click on a single subscrip
 
 To upgrade your subscription and be able to add more entities and enjoy full {{% tts %}} service, click the **Upgrade** button and follow instructions.
 
-Here you can also edit your support plan. Having a support lets you contact The Things industries support team via [email](mailto:support@thethingsindustries.com) or via the [Support portal](https://thethingsindustries.atlassian.net/servicedesk/customer/portal/1).
+Here you can also edit your support plan. Having a support lets you contact The Things Industries support team via [email](mailto:support@thethingsindustries.com) or via the [Support portal](https://thethingsindustries.atlassian.net/servicedesk/customer/portal/1).
 
 Scroll down to the bottom of the page to **Cancel subscription**.
 

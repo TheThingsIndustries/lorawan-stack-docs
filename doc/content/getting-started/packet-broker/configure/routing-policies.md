@@ -98,7 +98,7 @@ To list Packet Broker Home Networks:
 ttn-lw-cli packetbroker home-networks list
 ```
 
-This shows only the Home Networks that have been set to be visible to other networks. If you are using {{% tts %}} Cloud or Dedicated Cloud, [contact The Things Industries support](mailto:support@thethingsindustries.com) to set your network to be listed or not. If you are using {{% tts %}} Open Source or Enterprise, see [Configuration]({{< relref "/reference/configuration/packet-broker-agent" >}}).
+This shows only the Home Networks that have been set to be visible to other networks.
 
 <details><summary>Example output</summary>
 
