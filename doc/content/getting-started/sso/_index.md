@@ -3,7 +3,7 @@ title: "Single Sign-On"
 description: ""
 weight: 
 distributions: ["Cloud", "Enterprise"]
-weight: 11
+weight: 12
 ---
 
 {{% tts %}} supports [OpenID Connect](https://openid.net/connect/) for single sign-on. This section contains instructions for connecting an OpenID provider to your {{% tts %}} deployment to allow users to sign in with their existing credentials.

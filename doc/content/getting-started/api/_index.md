@@ -1,7 +1,7 @@
 ---
 title: "Using the API"
 description: ""
-weight: 13
+weight: 14
 ---
 
 While we recommend using the [Console]({{< ref "getting-started/console" >}}) or [CLI]({{< ref "getting-started/cli" >}}) to manage your applications and devices in {{% tts %}}, we also expose HTTP and gRPC APIs which you can interact directly with. This section contains information about using the HTTP API, and examples.
