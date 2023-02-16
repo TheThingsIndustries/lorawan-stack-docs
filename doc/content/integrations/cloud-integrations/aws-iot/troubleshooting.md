@@ -27,7 +27,6 @@ For further details, you can look at the log entries of the Lambda functions:
 
 - `/aws/lambda/<stack-name>-ConfigureFunction...`: configuration
 - `/aws/lambda/<stack-name>-CreateThingTypeFunction...`: create the thing type
-- `/aws/lambda/<stack-name>-ClaimThingFunction...`: thing claiming
 - `/aws/lambda/<stack-name>-CreateThingFunction...`: thing creation
 - `/aws/lambda/<stack-name>-HandleDownlinkFunction...`: downlink handling
 - `/aws/lambda/<stack-name>-HandleUplinkFunction...`: uplink handling

@@ -36,8 +36,6 @@ The shadow state contains the following fields:
     "devAddr": "270000B0",
     // Unique session ID
     "sessionID": "AXVvI/CZfJfog5g2zvVKfw==",
-    // LoRaWAN AppSKey (only when using end-to-end encryption)
-    "appSKey": "F6AEEDFFA15F51C84B28EA2FA72716C8",
     // Best RSSI (received signal strength indicator) of the last uplink message
     "rssi": -38,
     // Best SNR (signal-to-noise ratio) of the last uplink message
