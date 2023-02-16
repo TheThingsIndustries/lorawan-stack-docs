@@ -22,8 +22,6 @@ Device makers provision devices on a LoRaWAN Join Server that supports claiming.
 
 Device makers send the proof of ownership together with the physical end devices to the owner. There are various ways to transfer the proof of ownership: it can be encoded in a QR code or text printed on the device packaging, or sent as an import file.
 
-Device owners claim the device by scanning the QR code, entering the claim authentication code or importing a file with claim authentication codes.
-
-[Learn how to claim devices]({{< relref "claim-devices" >}})
+Device owners claim the device by scanning the QR code, entering the claim authentication code or importing a file with claim authentication codes. This is integrated in the [adding devices flow]({{< ref "/devices/adding-devices" >}}).
 
 Device claiming works with LoRaWAN Join Servers configured in {{% tts %}}. By default, {{% tts %}} Cloud and Community Edition are preconfigured to use The Things Join Server and Semtech Join Server. If you operate {{% tts %}} Enterprise or Open Source, configure the [LoRaWAN Backend Interfaces interoperability repository]({{< ref "/reference/interop-repository" >}}) and the [Device Claiming repository]({{< ref "/reference/device-claiming-repository" >}}) accordingly.
