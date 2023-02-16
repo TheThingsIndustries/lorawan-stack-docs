@@ -64,10 +64,6 @@ ttn-lw-cli end-devices template from-data --local-file devices.csv --format-id t
   | ttn-lw-cli end-devices create --application-id <application-id>
 ```
 
-{{< note >}}
-See [Device Templates]({{< ref "/devices/end-device-templates" >}}) for advanced templating scenarios.
-{{< /note >}}
-
 This will import your devices in {{% tts %}}. In case any device import fails, you will see a relevant error message at the end of the output.
 
 If the import was successful, you will see your devices added to the list of end devices in your application.
