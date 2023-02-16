@@ -52,3 +52,5 @@ tls:                                          # TLS configuration to use (option
 ```
 
 If `tls.source` is set to `key-vault`, {{% tts %}} uses its [Key Vault]({{< ref "/reference/configuration/the-things-stack#key-vault" >}}) configuration to load the TLS client certificate.
+
+Please contact [The Things Industries support](mailto:support@thethingsindustries.com) to gain access to The Things Join Server.

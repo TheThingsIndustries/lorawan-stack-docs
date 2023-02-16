@@ -86,6 +86,8 @@ tls:
   source: 'key-vault'
 ```
 
+Please contact [The Things Industries support](mailto:support@thethingsindustries.com) to gain access to The Things Join Server.
+
 ## Interoperability with Semtech Join Server
 
 Semtech Join Server is a hosted LoRaWAN Join Server by Semtech for use with pre-provisioned LoRa Edge modems.
