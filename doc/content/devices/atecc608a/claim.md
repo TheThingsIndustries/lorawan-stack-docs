@@ -2,12 +2,11 @@
 title: "Claim"
 description: ""
 weight: 1
-distributions: ["Enterprise", "Cloud"]
 aliases:
-  - "/devices/claim-atecc608a"
+  - /devices/claim-atecc608a
 ---
 
-This guide helps device makers to claim Microchip ATECC608A/B secure elements on The Things Join Server.
+This guide helps device makers to claim Microchip ATECC608 secure elements on The Things Join Server.
 
 <!--more-->
 
@@ -15,32 +14,82 @@ This guide helps device makers to claim Microchip ATECC608A/B secure elements on
 
 1. ATECC608A-TNGLORA or ATECC608B-TNGLORA secure elements. [Product details](https://www.microchip.com/wwwproducts/en/ATECC608A-TNGLORA)
 2. Device security (manifest) file. You can obtain this from your [Microchip Direct order history](https://www.microchipdirect.com/orders)
-3. Access to {{% tts %}} Cloud. [Contact The Things Industries](mailto:cloud@thethingsindustries.com) to get onboarded
-4. An application in {{% tts %}} Cloud. [See instructions]({{< ref "/integrations/adding-applications" >}})
-5. Your The Things Join Server address. [See Join Server addresses]({{< ref "/getting-started/cloud-hosted/tti-join-server" >}})
+3. Provisioner access to The Things Join Server. [Contact The Things Industries support](mailto:support@thethingsindustries.com) to get access
+4. The Things Join Server command-line interface installed. [See instructions to install `ttjs`](https://www.npmjs.com/package/ttjs-cli)
 
-## Import Manifest
+## Initialize `ttjs`
 
-Visit the Console of The Things Join Server, e.g.:
+To initialize The Things Join Server CLI `ttjs`, run the following command:
 
-`https://<tenant-id>.join.cloud.thethings.industries/console`
+```bash
+ttjs init
+```
 
-Go to the **Applications** menu and select your application. 
+This prompts the URL, provisioner credentials and location to save the configuration:
 
-Go to **Devices** and click **Import Devices** button in the upper right. 
+```
+✔ Server URL … https://js.cloud.thethings.industries
+✔ Provisioner username … example
+✔ Provisioner password … ********************
+✔ Configuration file … ~/.config/ttjs/config.yaml
+✔ Save configuration … yes
+```
 
-As **Format**, select **Microchip ATECC608A-TNGLORA Manifest File**.
+Verify that your credentials are correct:
 
-Click **Select a file** and open your manifest file. If you want to make your device available for claiming by other users, check **Set claim authentication code**.
+```bash
+ttjs list
+```
 
-{{< figure src="../import-devices-settings.png" alt="Import settings" >}}   
+This should return the currently provisioned devices (or `[]` if there aren't any).
 
-Click **Create Devices** to finish.
+## Import manifest
 
-{{< figure src="../import-devices-progress.png" alt="Import progress" >}}
+Next, import your manifest file, in this case named `manifest.json`:
 
-Your secure elements are now claimed in your application. The secure elements cannot be claimed by anyone else until you delete the devices.
+```bash
+ttjs import -f microchip-atecc608 manifest.json
+```
 
-Note that claiming the secure elements only creates devices on the Join Server, but they are not registered on a Network Server or Application Server yet. You first need to register them on a Network Server and Application Server before you can activate the devices.
+This provisions the secure elements in The Things Join Server and returns the generated owner tokens, for example:
 
-[Learn how to activate devices on {{% tts %}} Cloud]({{< ref "/getting-started/cloud-hosted/tti-join-server/activate-devices-cloud-hosted" >}})
+```js
+[
+  {
+    devEUI: '0004A310001AAED6',
+    ownerToken: 'C05EA29C',
+    rootKeysExposed: false
+  }
+]
+```
+
+The owner token is called claim authentication code in {{% tts %}}. This is the proof of ownership for claiming devices. See [Device Claiming]({{< ref "/devices/device-claiming" >}}) for more information.
+
+## Export root keys
+
+In case your end devices are to be activated on a LoRaWAN Network Server that does not support claiming on The Things Join Server, the root keys can be exported:
+
+```bash
+ttjs get <dev-eui> --nonces --root-keys
+```
+
+{{< warning >}} When you export the root keys, they are marked forever as exposed. This reduces the security of the end device. Current and future owners of the device are not guaranteed privacy and secure activation if the keys are not carefully stored. {{</ warning >}}
+
+This returns the root keys and LoRaWAN nonces (if any):
+
+```js
+{
+  devEUI: '0004A310001AAED6',
+  ownerToken: 'C05EA29C',
+  rootKeysExposed: true,
+  nonces: { nextJoinNonce: 2, usedDevNonces: [1836, 10331] },
+  rootKeys: {
+    appKey: '525746CCF9CF5DE887BE5D836D08B5C9',
+    nwkKey: 'CB0F4E236567566D2A976B3DAB2CF7A5'
+  }
+}
+```
+
+{{< note >}} The secure elements are pre-provisioned with JoinEUI `70B3D57ED0000000`. {{</ note >}}
+
+This allows you to register the devices on any LoRaWAN Network Server that does not support The Things Join Server.
