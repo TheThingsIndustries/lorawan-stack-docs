@@ -48,7 +48,7 @@ ABP's drawbacks are arising as consequences of its main characteristics.
 
   Read more about LoRaWAN security in [The Things Network LoRaWAN documentation](https://www.thethingsnetwork.org/docs/lorawan/security/).
   
-  For enhancing security, you can use a dedicated [Join Server](https://www.thethingsindustries.com/docs/reference/components/join-server/) to handle the join flow, Network Server and Application Server authentication, store root keys and generate session keys. Using a dedicated Join Server also prevents the vendor lock-in. Another option is using Hardware Secured Elements (see [ATECC608A](https://www.thethingsindustries.com/docs/devices/claim-atecc608a/)) which prevent the exposure of keys to software, firmware, manufacturing sites, and other third parties. 
+  For enhancing security, you can use [The Things Join Server]({{< ref "/getting-started/join-server" >}}) to handle the join flow, Network Server and Application Server authentication, store root keys and generate session keys. Another option is using Hardware Secured Elements (see [Microchip ATECC608 secure elements]({{< ref "/devices/atecc608a" >}})) which prevent the exposure of keys to software, firmware, manufacturing sites, and other third parties. 
 
 3. **ABP end devices use fixed network parameters.**
 
