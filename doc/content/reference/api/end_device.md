@@ -287,6 +287,8 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="Location" >}}
 
+{{< proto/message message="LoRaAllianceProfileIdentifiers" >}}
+
 {{< proto/message message="LoRaDataRate" >}}
 
 {{< proto/message message="LRFHSSDataRate" >}}

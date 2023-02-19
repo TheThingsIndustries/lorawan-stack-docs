@@ -51,6 +51,7 @@ ttn-lw-cli end-devices search [application-id] [flags]
       --last-seen-at                                                                   select the last_seen_at field
       --limit uint32                                                                   
       --locations                                                                      select the locations field
+      --lora-alliance-profile-ids                                                      select the lora_alliance_profile_ids field and all allowed sub-fields
       --lorawan-phy-version                                                            select the lorawan_phy_version field
       --lorawan-version                                                                select the lorawan_version field
       --mac-settings                                                                   select the mac_settings field and all allowed sub-fields
@@ -298,6 +299,7 @@ ttn-lw-cli end-devices search [application-id] [flags]
       --root-keys.nwk-key                                                              select the root_keys.nwk_key field and all allowed sub-fields
       --root-keys.nwk-key.key                                                          select the root_keys.nwk_key.key field
       --root-keys.root-key-id                                                          select the root_keys.root_key_id field
+      --serial-number                                                                  select the serial_number field
       --service-profile-id                                                             select the service_profile_id field
       --session                                                                        select the session field and all allowed sub-fields
       --session.dev-addr                                                               select the session.dev_addr field

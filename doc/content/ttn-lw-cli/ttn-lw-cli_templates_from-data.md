@@ -14,17 +14,14 @@ ttn-lw-cli templates from-data [format-id] [flags]
 ### Options
 
 ```
-      --end-device-version-ids.band-id string             
-      --end-device-version-ids.brand-id string            
-      --end-device-version-ids.firmware-version string    
-      --end-device-version-ids.hardware-version string    
-      --end-device-version-ids.model-id string            
-      --end-device-version-ids.serial-number string       
-      --end-device-version-ids.vendor-id uint32           
-      --end-device-version-ids.vendor-profile-id uint32   
-      --format-id string                                  
-  -h, --help                                              help for from-data
-      --local-file string                                 (local file name)
+      --end-device-version-ids.band-id string            
+      --end-device-version-ids.brand-id string           
+      --end-device-version-ids.firmware-version string   
+      --end-device-version-ids.hardware-version string   
+      --end-device-version-ids.model-id string           
+      --format-id string                                 
+  -h, --help                                             help for from-data
+      --local-file string                                (local file name)
 ```
 
 ### Options inherited from parent commands

@@ -55,6 +55,7 @@ Tenant commands
 * [ttn-lw-cli tenants create]({{< relref "ttn-lw-cli_tenants_create" >}})	 - Create a tenant
 * [ttn-lw-cli tenants delete]({{< relref "ttn-lw-cli_tenants_delete" >}})	 - Delete a tenant
 * [ttn-lw-cli tenants get]({{< relref "ttn-lw-cli_tenants_get" >}})	 - Get a tenant
+* [ttn-lw-cli tenants get-identifiers-for-billing-identifiers]({{< relref "ttn-lw-cli_tenants_get-identifiers-for-billing-identifiers" >}})	 - Get tenant identifiers for billing identifiers
 * [ttn-lw-cli tenants get-identifiers-for-end-device-euis]({{< relref "ttn-lw-cli_tenants_get-identifiers-for-end-device-euis" >}})	 - Get tenant identifiers for Device EUIs
 * [ttn-lw-cli tenants get-identifiers-for-gateway-eui]({{< relref "ttn-lw-cli_tenants_get-identifiers-for-gateway-eui" >}})	 - Get tenant identifiers for a Gateway EUI
 * [ttn-lw-cli tenants get-registry-totals]({{< relref "ttn-lw-cli_tenants_get-registry-totals" >}})	 - Get registry totals of a tenant

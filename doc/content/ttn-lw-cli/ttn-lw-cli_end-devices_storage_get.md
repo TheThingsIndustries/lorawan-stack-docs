@@ -183,9 +183,6 @@ ttn-lw-cli end-devices storage get [application-id] [device-id] [flags]
       --up.uplink-message.version-ids.firmware-version                                      select the up.uplink_message.version_ids.firmware_version field
       --up.uplink-message.version-ids.hardware-version                                      select the up.uplink_message.version_ids.hardware_version field
       --up.uplink-message.version-ids.model-id                                              select the up.uplink_message.version_ids.model_id field
-      --up.uplink-message.version-ids.serial-number                                         select the up.uplink_message.version_ids.serial_number field
-      --up.uplink-message.version-ids.vendor-id                                             select the up.uplink_message.version_ids.vendor_id field
-      --up.uplink-message.version-ids.vendor-profile-id                                     select the up.uplink_message.version_ids.vendor_profile_id field
       --up.uplink-normalized                                                                select the up.uplink_normalized field and all allowed sub-fields
       --up.uplink-normalized.confirmed                                                      select the up.uplink_normalized.confirmed field
       --up.uplink-normalized.consumed-airtime                                               select the up.uplink_normalized.consumed_airtime field
@@ -231,9 +228,6 @@ ttn-lw-cli end-devices storage get [application-id] [device-id] [flags]
       --up.uplink-normalized.version-ids.firmware-version                                   select the up.uplink_normalized.version_ids.firmware_version field
       --up.uplink-normalized.version-ids.hardware-version                                   select the up.uplink_normalized.version_ids.hardware_version field
       --up.uplink-normalized.version-ids.model-id                                           select the up.uplink_normalized.version_ids.model_id field
-      --up.uplink-normalized.version-ids.serial-number                                      select the up.uplink_normalized.version_ids.serial_number field
-      --up.uplink-normalized.version-ids.vendor-id                                          select the up.uplink_normalized.version_ids.vendor_id field
-      --up.uplink-normalized.version-ids.vendor-profile-id                                  select the up.uplink_normalized.version_ids.vendor_profile_id field
 ```
 
 ### Options inherited from parent commands

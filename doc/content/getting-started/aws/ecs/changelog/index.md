@@ -8,6 +8,65 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.24.0
+
+### ECS templates
+
+- Support for TLS mutual authentication terminated by The Things Stack has been removed. TLS authentication is now only terminated by the Network Load Balancer or Envoy Proxy.
+- Support for LoRaWAN Backend Interfaces interoperability with the Join Server has been removed.
+- Crypto Server deployment has been removed.
+
+### Upgrade procedure
+
+- As this version upgrade removes certain resources, the standard upgrade procedure which follows the template numbering order cannot be followed directly.
+- The `5-7a-certs-le` template needs to be upgraded first.
+- The `5-3a-ecs-is-service` template needs to be upgraded next, and have `InteropEnabled` set to `disabled`. The value may be enabled again after every other template has been upgraded.
+- The standard upgrade procedure can commence after these two templates have been upgraded.
+
+### `3-2-load-balancer-rules`
+
+- Changed `InteropEnabled` to a boolean since TLS mutual authentication is no longer terminated by The Things Stack.
+  - If you were using `server-authentication` or `mutual-authentication`, select `true`;
+  - If you were using `disabled`, select `false`.
+
+### `4-1-secrets`
+
+- Removed `InteropTLSSecret` and output `InteropTLSSecretID`.
+
+### `4-2a-configuration`
+
+- Removed `InteropEnabled` parameter.
+- Removed `CryptoServerDNSName` parameter.
+- Added `CertificateAuthorityARN` parameter.
+
+### `5-2-ecs-ops`
+
+- Added `UseCertificateAuthorityARN` parameter.
+
+### `5-3a-ecs-is-service`
+
+- Changed `InteropEnabledIS` to a boolean since TLS mutual authentication is no longer terminated by The Things Stack.
+  - If you were using `server-authentication` or `mutual-authentication`, select `true`;
+  - If you were using `disabled`, select `false`.
+- Added `UseCertificateAuthorityARN` parameter.
+
+### `5-3c-ecs-tbs-service`
+
+- Added `UseCertificateAuthorityARN` parameter.
+
+### `5-4-ecs-services`
+
+- Removed `InteropEnabledJS` parameter.
+- Added `UseCertificateAuthorityARN` parameter.
+
+### `5-7a-certs-le`
+
+- Removed configuration for storing certificates for interoperability.
+
+### `200-1-crypto`
+
+- This template has been removed and can be undeployed.
+
 ## 3.23.2
 
 ## 3.23.1

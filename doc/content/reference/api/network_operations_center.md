@@ -9,8 +9,6 @@ description: ""
 
 {{< proto/method package="tti.lorawan.v3" service="Noc" method="QueryGatewaysConnectivityTimes" >}}
 
-{{< proto/method package="tti.lorawan.v3" service="Noc" method="QueryGatewaysActive" >}}
-
 {{< proto/method package="tti.lorawan.v3" service="Noc" method="QueryGatewayConnectionEvents" >}}
 
 {{< proto/method package="tti.lorawan.v3" service="Noc" method="QueryGatewayChannelsUtilization" >}}
@@ -30,10 +28,6 @@ description: ""
 ## Messages
 
 {{< proto/message package="tti.lorawan.v3" message="GatewayConnectionEventTypeValue" >}}
-
-{{< proto/message package="tti.lorawan.v3" message="GatewaysConnectedTimeBuckets" >}}
-
-{{< proto/message package="tti.lorawan.v3" message="GatewaysConnectedTimeBucket" >}}
 
 {{< proto/message package="tti.lorawan.v3" message="TimeBucketQuery" >}}
 
