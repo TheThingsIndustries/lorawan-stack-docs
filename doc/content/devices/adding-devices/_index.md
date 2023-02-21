@@ -1,7 +1,10 @@
 ---
 title: "Adding Devices"
 description: ""
-aliases: [/getting-started/cli/create-end-device, /getting-started/console/create-end-device]
+aliases:
+  - /getting-started/cli/create-end-device
+  - /getting-started/console/create-end-device
+  - /getting-started/device-claiming/claim-devices
 weight: -1
 ---
 
@@ -17,7 +20,7 @@ Devices can be easily added using the Console and the CLI, so those methods are 
 
 {{< tabs/tab "Console" >}}
 
-## Adding Devices using the Console
+## Adding devices using the Console
 
 To create a device, first open the application you wish to add the device in. Go to **End devices** in the left menu and click on **+ Add end device** to reach the end device registration page.
 
@@ -29,7 +32,7 @@ You will be presented with options to easily onboard your device using its QR co
 
 Keep reading to learn how to register devices using these methods.
 
-### Onboarding Devices using QR codes
+### Onboarding devices using QR codes
 
 If your device has a QR code, it is a no-brainer to onboard it on {{% tts %}}. If your device doesn't have a QR code, you can skip this section.
 
@@ -73,7 +76,7 @@ Finally, give your device a unique **End device ID**, and click the **Register e
 
 The device is now activated, and will appear as connected in {{% tts %}} once it sends an uplink.
 
-### Manually Registering an End Device
+### Manually registering a device
 
 If your device is not available in the device repository, you may manually register it. To do this, choose the **Enter end device specifics manually** input method. Please refer to your device's datasheet to ensure entering the following information correctly. If such sheet has not been provided, please contact the manufacturer to assist you with obtaining this data.
 
@@ -93,7 +96,7 @@ If you need to use a method of activation other than OTAA, create a multicast gr
 
 The information that you'll be providing in the **Provisioning information** section depends on the activation method you've chosen. If you choose **OTAA**, follow the [OTAA Devices]({{< ref "/devices/adding-devices#otaa-devices" >}}) subsection, and if you choose **ABP**, follow the [ABP Devices]({{< ref "/devices/adding-devices#abp-devices" >}}) subsection.
 
-### Advanced Settings
+### Advanced settings
 
 To modify advanced settings, expand the **Show advanced activation, LoRaWAN class and cluster settings** dropdown.
 
@@ -107,7 +110,7 @@ Under **Network defaults**, you can choose to **Use network's default MAC settin
 
 You can also choose to **Skip registration on Join Server** for testing purposes. We advise not to check this option unless you're an expert.
 
-### OTAA Devices
+### OTAA devices
 
 Over-the-Air-Activation (OTAA) is the secure, scalable way to activate LoRaWAN devices. All commercially available LoRaWAN devices support OTAA, and it is selected by default. If you are using a custom or DIY device, and cannot use OTAA, see the [Activation by Personalisation](#abp-devices) section.
 
@@ -127,7 +130,7 @@ Give your device a unique **End device ID**. See [ID and EUI constraints]({{< re
 
 Click **Register end device** to create the end device.
 
-### ABP Devices
+### ABP devices
 
 If your device cannot be activated using the more secure OTAA, you may manually activate it by programming security keys it, i.e. using ABP.
 
@@ -155,7 +158,7 @@ Click **Register end device** to create the end device.
 
 {{< tabs/tab "CLI" >}}
 
-## Adding Devices using the CLI
+## Adding devices using the CLI
 
 First, list the available frequency plans and LoRaWAN versions:
 
@@ -164,7 +167,7 @@ ttn-lw-cli end-devices list-frequency-plans
 ttn-lw-cli end-devices create --help
 ```
 
-### Over-The-Air-Activation (OTAA) Device
+### Over-The-Air-Activation (OTAA) device
 
 We define some user parameters that will be used below:
 
@@ -231,7 +234,7 @@ You can also pass `--with-root-keys` to have root keys generated. In this case, 
 
 The end device should now be able to join the private network.
 
-### Activation By Personalization (ABP) Device
+### Activation By Personalization (ABP) device
 
 For adding ABP devices, we can define the following parameters:
 
@@ -296,7 +299,7 @@ You can also pass `--with-session` to have a session generated.
 
 {{< /tabs/container >}}
 
-## Adding Devices in Bulk
+## Adding devices in bulk
 
 It is also possible to import end devices in bulk.
 
@@ -308,7 +311,7 @@ See the following video from [The Things Network youtube channel](https://youtu.
 {{< youtube "ouz-VuiosU4" >}}
 </details>
 
-## Set Device Location
+## Set device location
 
 {{< tabs/container "Console" "CLI" >}}
 
@@ -372,9 +375,9 @@ The CLI will return something like:
 
 {{< /tabs/container >}}
 
-## Application Layer Settings
+## Application layer settings
 
-### Payload Crypto Override
+### Payload crypto override
 
 LoRaWAN frames are encrypted on the application layer using the AppSKey. Once the end device is registered, you can choose to enforce or skip payload encryption. Skipping payload encryption will cause the Application Server to forward messages to integrations without any processing, for example it will neglect [payload formatters]({{< ref "/integrations/payload-formatters" >}}). If you choose to skip payload encryption, integrations will be responsible for processing the message in order to understand it.
 

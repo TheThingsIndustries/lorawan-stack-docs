@@ -36,18 +36,6 @@ https://<span data-content="tenant-id"></span>.<span data-content="cluster-id"><
 </code>
 </p>
 
-{{< note >}}
-Although there is a Join Server in each routing cluster, this Join Server does not support advanced features like secure elements and interoperability with LoRaWAN Backend Interfaces. See below the address of The Things Join Server that does support these features in the section below.
-{{< /note >}}
-
-The address of the Console for **The Things Join Server** is always in the `join` cluster:
-
-<p>
-<code data-content="cluster-address">
-https://<span data-content="tenant-id"></span>.join.cloud.thethings.industries/console
-</code>
-</p>
-
 ## API Endpoints
 
 The Application Server, Join Server and Network Server APIs are all available in your routing cluster.
@@ -67,14 +55,6 @@ However, the Identity Server APIs are only available in the `eu1` cluster:
 </p>
 
 {{< warning >}}End-Device Registry API requests or other Identity Server API requests to any cluster other than `eu1` will fail. {{</ warning >}}
-
-The Things Join Server APIs are only available in the `join` cluster:
-
-<p>
-<code data-content="cluster-address">
-<span data-content="tenant-id"></span>.join.cloud.thethings.industries
-</code>
-</p>
 
 ## Account and OAuth
 

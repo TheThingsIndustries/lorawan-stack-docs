@@ -2,7 +2,7 @@
 title: "The Things Network"
 description: ""
 distributions: "Community"
-weight: 8
+weight: 9
 ---
 
 {{< figure src="logo_TTN.svg" class="float plain" width="150px" >}}

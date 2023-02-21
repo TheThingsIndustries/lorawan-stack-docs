@@ -77,7 +77,6 @@ The parameters configure the integration:
   - When using **The Things Stack Cloud**, go to [The Things Stack Cloud Addresses]({{< relref "/getting-started/cloud-hosted/addresses" >}}) to find your cluster address
   - When using **The Things Stack Enterprise**, enter your cluster address
   - When using **The Things Network**, select the community cluster from the dropdown
-- **Enable End-to-End Encryption** {{< distributions "Cloud" >}}: If enabled, the AppSKey is delivered as encrypted from Join Server to your AWS Account, so the AppSKey will not be exposed to the network layer. Also, your AWS solution needs to handle binary payload as the underlying network cannot run payload encoding and decoding functions.
 - **Application ID**: The application ID for which you configure the integration.
 - **Application API Key**: The application API key that you generated before.
 

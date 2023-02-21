@@ -66,7 +66,7 @@ The message is a JSON object with the following format:
 
   "bytes": "AQ==", // Base64 encoded FRMPayload
   // or
-  "payload": {     // JSON encoded payload (see the note below)
+  "payload": {     // JSON encoded payload
     "field1": 42
   },
 
@@ -76,8 +76,6 @@ The message is a JSON object with the following format:
   "highPriority": true // High priority (default: false)
 }
 ```
-
-{{< note >}} You can only send JSON encoded payload using the `payload` field when end-to-end encryption is **not enabled**. See [Deployment Guide]({{< relref "deployment-guide" >}}) on how to enable and disable end-to-end encryption. {{</ note >}}
 
 When you publish downlink this way, you will immediately see a message on `lorawan/<thing>/downlink/queued`. Keep an eye on other messages published to `lorawan/<thing>/downlink/#` for the sent, failed, acknowledged and not acknowledged events.
 

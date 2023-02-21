@@ -44,11 +44,11 @@ Make sure that at least **Thing: created, updated, deleted** is checked.
 
 {{< figure src="../topic-settings.png" alt="Thing Topics" >}}
 
-## Creating and Claiming Things
+## Creating Things
 
-You can use AWS IoT to create and claim devices in {{% tts %}}. This is useful to manage all your things in one place, without having to use {{% tts %}} Console, CLI or API.
+You can use AWS IoT to create devices in {{% tts %}}. This is useful to manage all your things in one place, without having to use {{% tts %}} Console, CLI or API.
 
-**Creating** a Thing allows you to add any LoRaWAN device by manually entering its information and security keys. **Claiming** a Thing allows you to use a QR code to transfer ownership from the manufacturer or previous owner of the device, if the device has been provisioned for claiming. See [Device Claiming]({{< ref "devices/device-claiming" >}}) for more information.
+Creating a Thing allows you to add any LoRaWAN device by manually entering its information and security keys.
 
 In the AWS Console, open **Services** and go to **IoT Core**.
 
@@ -69,11 +69,7 @@ There are two **Searchable attributes** that come with the thing type: `devEUI` 
 
 {{< figure src="../create-thing-2.png" alt="Create Thing" >}}
 
-Next, you can create a new device by specifying all required attributes, or your can claim an existing thing with an authentication code (or owner token).
-
-### Creating Things
-
-When creating things, you need to specify attributes under **Non-searchable thing attributes** for creating LoRaWAN devices:
+Next, you can create a new device by specifying all required attributes under **Non-searchable thing attributes**:
 
 - `joinEUI`: the hexadecimal LoRaWAN JoinEUI (or AppEUI). You may also specify `appEUI` instead.
 - `lorawanVersion`: either `1.0`, `1.0.1`, `1.0.2`, `1.0.3` or `1.1`
@@ -88,24 +84,6 @@ Any errors during Creating Things will be propagated to CloudWatch. See [Trouble
 {{< /note >}}
 
 {{< figure src="../create-thing-3.png" alt="Create Thing" >}}
-
-[Finalize device creation]({{< relref "#finalize-create" >}})
-
-### Claiming Things
-
-First, follow [the steps above]({{< relref "#creating-and-claiming-things" >}}).
-
-When claiming things, you need to specify attributes under **Non-searchable thing attributes** for claiming LoRaWAN devices:
-
-- `joinEUI`: the hexadecimal LoRaWAN JoinEUI (or AppEUI). You may also specify `appEUI` instead.
-- `claimAuthenticationCode`: the claim authentication code, also known as owner token or pin code.
-- Optional `deviceID`: the device ID that will be used to create the device in your {{% tts %}} application. When omitted, the integration uses `eui-<dev-eui>` as device ID.
-
-{{< figure src="../claim-thing.png" alt="Claim Thing" >}}
-
-{{< note >}} Are you a device maker? Learn [how to make your devices claimable]({{< ref "devices/device-claiming/make-device-claimable" >}}). {{</ note >}}
-
-### Finalize Create
 
 Click **Next**.
 

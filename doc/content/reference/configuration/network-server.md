@@ -47,7 +47,7 @@ The `ns.default-mac-settings` options configure default device MAC configuration
 - `ns.default-mac-settings.status-count-periodicity`: Number of uplink messages after which a DevStatusReq MACCommand shall be sent by Network Server
 - `ns.default-mac-settings.status-time-periodicity`: The interval after which a DevStatusReq MACCommand shall be sent by Network Server
 
-## Interoperability
+## Interoperability Options
 
 The `ns.interop` options configure how Network Server performs interoperability with other LoRaWAN Backend Interfaces-compliant servers.
 
@@ -57,6 +57,8 @@ The `ns.interop` options configure how Network Server performs interoperability 
 - `ns.interop.blob.path`: Blob path, which contains interoperability client configuration
 - `ns.interop.directory`: OS filesystem directory, which contains interoperability client configuration
 - `ns.interop.url`: URL, which contains interoperability client configuration
+
+See [LoRaWAN Join Server Configuration]({{< ref "/reference/interop-repository" >}}) to learn how to configure the client configuration.
 
 ## Peering
 
