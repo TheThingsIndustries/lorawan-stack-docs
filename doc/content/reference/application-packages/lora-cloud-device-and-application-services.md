@@ -1,18 +1,18 @@
 ---
-title: "LoRa Cloud Device & Application Services"
+title: "LoRa Cloud Modem and Geolocation Services"
 description: ""
 aliases: "/integrations/application-packages/lora-cloud-device-and-application-services"
 ---
 
-The LoRa Cloud Device & Application Services v1 application package communicates the uplinks received from a compatible device to the LoRa Cloud Device & Application Services, and schedules the downlinks received from the service back to the device.
+The LoRa Cloud Modem and Geolocation Services v1 application package communicates the uplinks received from a compatible device to the LoRa Cloud Modem and Geolocation Services, and schedules the downlinks received from the service back to the device.
 
-More information on the LoRa Cloud Device & Application Services can be found in the [official LoRa documentation](https://www.loracloud.com/documentation/device_management?url=overview.html).
+More information on the LoRa Cloud Modem and Geolocation Services can be found in the [official LoRa documentation](https://www.loracloud.com/documentation/device_management?url=overview.html).
 
 ## Creating a New Uplink Token
 
-In order to use the LoRa Cloud Device & Application Services application package, a new access token must be created in order to allow the Application Server to send the uplinks to the Device & Application Services. 
+In order to use the LoRa Cloud Modem and Geolocation Services application package, a new access token must be created in order to allow the Application Server to send the uplinks to the Device & Application Services.
 
-The new token can be created in the LoRa Cloud Device & Application Services portal, in the **Token Management** section.
+The new token can be created in the LoRa Cloud Modem and Geolocation Services portal, in the **Token Management** section.
 
 {{< figure src="../lora-dms-token-creation.png" alt="Token creation" >}}
 
@@ -35,7 +35,7 @@ echo '{ "token": "AQEAdqwV67..." }' > package-data.json
 ttn-lw-cli applications packages default-associations set $APP_ID $F_PORT --package-name lora-cloud-device-management-v1 --data-local-file package-data.json
 ```
 
-This will enable the package on FPort `199` of all of the devices of application `app1`. You can now use the LoRa Cloud Device & Application Services in order to manage your device!
+This will enable the package on FPort `199` of all of the devices of application `app1`. You can now use the LoRa Cloud Modem and Geolocation Services in order to manage your device!
 
 <details><summary>Output</summary>
 
@@ -97,7 +97,7 @@ The package data format is common between both default associations and associat
 
 | Field | Type | Description | Required | Default value |
 |-------|------|-------------|---------|---------------|
-| `token` | `string` | The acces token to be used by the package to submit uplinks to the LoRa Cloud Device & Application Services | Yes | None. |
+| `token` | `string` | The acces token to be used by the package to submit uplinks to the LoRa Cloud Modem and Geolocation Services | Yes | None. |
 | `server_url` | `URL` | The custom base URL to be used for service communication | No | `https://das.loracloud.com`
 
 Fields can be customized on a per device basis, by overriding the field in the package data of the association.

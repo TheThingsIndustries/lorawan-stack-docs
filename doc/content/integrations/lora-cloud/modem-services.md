@@ -1,53 +1,40 @@
 ---
-title: "LoRa Cloud Device & Application Services"
+title: "LoRa Cloud Modem Services"
 description: ""
+weight: 3
 ---
 
-[LoRa Cloud Device & Application Services](https://www.loracloud.com/portal/device_management/home) comprise a set of full life-cycle management features for LoRaWAN-based devices, which are intended to simplify the development of managed LoRaWAN endpoint solutions.
+[LoRa Cloud Modem Services](https://www.loracloud.com/portal/device_management/home) complement your device management solution by giving you fine grain control of your LoRaWAN end devices. Obtain modem status information such as: system status, firmware version, voltage, downlink signal quality and time since last downlink.
 
 <!--more-->
 
-LoRa Cloud Device & Application Services protocol lets you manage common device functionality at the application layer for all LoRa-based devices, and manage geolocation for modem-based devices (like [LoRa Edge LR1110 Solution](https://www.loracloud.com/documentation/device_management?url=overview.html#lora-edge-lr1110-solution)). These services also provide protocols for reliable application data reception from all Semtech's LoRaWAN-compatible devices, with efficient techniques to fight against packet loss. 
+LoRa Cloud Modem Services protocol lets you manage common device functionality at the application layer for all LoRa-based devices, and manage geolocation for modem-based devices (like [LoRa Edge LR1110 Solution](https://www.loracloud.com/documentation/device_management?url=overview.html#lora-edge-lr1110-solution)). These services also provide protocols for reliable application data reception from all Semtech's LoRaWAN-compatible devices, with efficient techniques to fight against packet loss.
 
-In general, LoRa Cloud Device & Application Services do not interact directly with network servers to retrieve uplinks or schedule downlinks, so it is usually users's responsibility to forward uplinks towards and schedule downlinks from LoRa Cloud as a part of the response.
+In general, LoRa Cloud Modem Services do not interact directly with network servers to retrieve uplinks or schedule downlinks, so it is usually users's responsibility to forward uplinks towards and schedule downlinks from LoRa Cloud as a part of the response.
 
-However, when it comes to geolocation for modem-based devices, {{% tts %}} integration with LoRa Cloud Device & Application Services handles this on behalf of the user, i.e. it queries the protocol engine on LoRa Cloud in order to retrieve the response. This way, after the integration is configured and the uplink message containing scanning result is sent from the device, the user only has to monitor results in {{% tts %}}.
+However, when it comes to geolocation for modem-based devices, {{% tts %}} integration with LoRa Cloud Modem Services handles this on behalf of the user, i.e. it queries the protocol engine on LoRa Cloud in order to retrieve the response. This way, after the integration is configured and the uplink message containing scanning result is sent from the device, the user only has to monitor results in {{% tts %}}.
 
-## LoRa Cloud Setup
+Before proceding with this guide, make sure you have completed the [LoRa Cloud Setup]({{< ref "/integrations/lora-cloud/portal" >}}) guide.
 
-On the [LoRa Cloud portal](https://www.loracloud.com/portal), navigate to **LoRa Cloud Device & Application Services**.
+## Configure LoRa Cloud Modem Services Integration
 
-{{< figure src="../das.png" alt="LoRa Cloud Device & Application Services" >}}
+To setup LoRa Cloud Modem Services integration, navigate to your application in {{% tts %}}.
 
-Choose **Manage devices** on the left hand menu and click the **Add devices** button. To add a device, you only need to provide its EUI as shown on the image below.
+On the left hand menu, select **Integrations &#8594; LoRa Cloud**. Click the **Expand** button next to the **Modem Services**.
 
-{{< figure src="../add-device.png" alt="Adding a new device" >}}
-
-Next, choose **Manage tokens** on the left hand menu. Click the **Create new token** button.
-
-Give the name to your token and tick the boxes next to permissions you wish to allow for it. Click the **Create new token** button to finish. A user can decide to restrict some permissions. On the image below, all permissions are allowed for the sake of simplicity of this guide.
-
-{{< figure src="../token-creation.png" alt="Creating a token" >}}
-
-## Configure Device & Application Services Integration
-
-To setup LoRa Cloud Device & Application Services integration, navigate to your application in {{% tts %}}.
-
-On the left hand menu, select **Integrations &#8594; LoRa Cloud**. Click the **Expand** button next to the **Device & Application Services**.
-
-Next, copy the token you previously created in LoRa Cloud Device & Application Services portal.
+Next, copy the token you previously created in LoRa Cloud Modem & Geolocation Services portal.
 
 {{< figure src="../copy-token.png" alt="Copy the token from LoRa Cloud" >}}
 
-Paste the token in the **Token** field under the **Set LoRa Cloud token** section and tick the box under **LR1110 demo encoding** to enable it. Finish by clicking the **Set token** button.
+Paste the token in the **Token** field under the **Set LoRa Cloud token** section. Finish by clicking the **Set token** button.
 
-{{< figure src="../paste-token.png" alt="Paste the token in The Things Stack" >}}
+{{< figure src="../paste-token-modem.png" alt="Paste the token in The Things Stack" >}}
 
-## Obtain Location Solutions 
+## Obtain Location Solutions
 
 For LR1110 modem-based devices, location of the device can be estimated using Wi-Fi, assisted GNSS and autonomous GNSS scans. This section will show you how to obtain the location estimates using Wi-Fi and assisted GNSS scans.
 
-{{< note >}} Please keep in mind that this guide does not refer to  LoRa Cloud Geolocation. In case you are looking for geolocation solutions that use RSSI and TOA metadata, or you are using LR1110-based device with transceiver firmware (instead of Modem-E firmware), you should follow the [LoRa Cloud Geolocation guide]({{< ref "/integrations/lora-cloud/geolocation" >}}). {{</ note >}}
+{{< note >}} Please keep in mind that this guide does not refer to  LoRa Cloud Geolocation. In case you are looking for geolocation solutions that use RSSI and TOA metadata, or you are using LR1110-based device with transceiver firmware (instead of Modem-E firmware), you should follow the [LoRa Cloud Geolocation guide]({{< ref "/integrations/lora-cloud/geolocation-services" >}}). {{</ note >}}
 
 {{< note >}}  The number of (useful) satellites detected when running the autonomous GNSS scan might not be enough to calculate the position of your device, so we will not include that case in this guide. However, if you want to read more about it, follow [this guide](https://lora-developers.semtech.com/learning-center/hands-on-labs/build-end-to-end-solution-using-lorawan-and-loraedge/find-the-location-of-your-tracking-device/#run-an-autonomous-gnss-scan-and-send-results). {{</ note >}}
 
@@ -90,7 +77,7 @@ If you are facing these errors, keep repeating the scan and re-sending results p
 
 Besides estimating the location of your device, you can also send requests from LoRa Cloud portal to mute or reset the device, trigger it for a re-join, set ADR profile or obtain information like temperature, voltage, signal strength, status, etc. In this section, we demonstrate how to send a request to obtain information from your device.
 
-To send a request, navigate to **Manage devices** on the left hand menu in the LoRa Cloud Device & Application Services portal.
+To send a request, navigate to **Manage devices** on the left hand menu in the LoRa Cloud Modem Services portal.
 
 Click on the **Send requests** button.
 
@@ -102,7 +89,7 @@ Schedule the request to be sent by clicking the **Send requests** button.
 
 {{< figure src="../get-info.png" alt="Get Info request" >}}
 
-After a few moments, click on a reload button to refresh the device information in the **Manage devices** view. You can already see that the **Status** is changed to **Joined: Yes**, as well as the time of the **Last Uplink**, **Signal RSSI** and **Signal SNR**. 
+After a few moments, click on a reload button to refresh the device information in the **Manage devices** view. You can already see that the **Status** is changed to **Joined: Yes**, as well as the time of the **Last Uplink**, **Signal RSSI** and **Signal SNR**.
 
 Click the **>** button next to your device to see all the information that was obtained from the device.
 

@@ -1,9 +1,10 @@
 ---
-title: "LoRa Cloud Geolocation"
+title: "LoRa Cloud Geolocation Services"
 description: ""
+weight: 2
 ---
 
-[LoRa Cloud Geolocation Service](https://www.loracloud.com/portal/geolocation/home) provides simple JSON web APIs that can be easily integrated with a LoRaWAN network or application server to enable estimating the location of LoRa-based devices.
+[LoRa Cloud Geolocation Services](https://www.loracloud.com/portal/geolocation/home) provides simple JSON web APIs that can be easily integrated with a LoRaWAN network or application server to enable estimating the location of LoRa-based devices.
 
 <!--more-->
 
@@ -23,31 +24,23 @@ Three query types are supported in scope of this integration and will be demonst
 
 The location of your gateway has to be publicly available for this integration, as it participates in the process of computing the end device location. This is disabled in {{% tts %}} by default, because the application (and end device) owner does not have be the one providing the gateway coverage. If you own the gateway, it is safe for you to explicitly allow to publish its location.
 
-To make the gateway location public, tick the **Gateway location &#8594; Public** box when [adding your gateway]({{< ref "/gateways/concepts/adding-gateways" >}}) in {{% tts %}} Console. 
+To make the gateway location public, tick the **Gateway location &#8594; Public** box when [adding your gateway]({{< ref "/gateways/concepts/adding-gateways" >}}) in {{% tts %}} Console.
 
 If your gateway is already added in {{% tts %}} Console, go to your gateway's settings, navigate to the **Location** tab on the left hand menu and tick the **Privacy &#8594; Publish location** box.
 
-{{< note >}} Using Semtech's [Modem-E firmware](https://lora-developers.semtech.com/library/tech-papers-and-guides/understanding-lora-basics-modem-e/) is recommended for LR1110-based devices, hence using the [LoRa Cloud Device & Application Services integration]({{< ref "/integrations/lora-cloud/das" >}}) instead of LoRa Cloud Geolocation is also recommended. {{</ note >}}
+{{< note >}} Using Semtech's [Modem-E firmware](https://lora-developers.semtech.com/library/tech-papers-and-guides/understanding-lora-basics-modem-e/) is recommended for LR1110-based devices, hence using the [LoRa Cloud Modem Services integration]({{< ref "/integrations/lora-cloud/modem-services" >}}) instead of LoRa Cloud Geolocation is also recommended. {{</ note >}}
 
-## LoRa Cloud Setup
-
-Before you create the integration on {{% tts %}}, you first need to prepare the setup on LoRa Cloud.
-
-On the [LoRa Cloud portal](https://www.loracloud.com/portal), navigate to **LoRa Cloud Geolocation**.
-
-{{< figure src="../geolocation.png" alt="LoRa Cloud Device & Application Services" >}}
-
-Choose **Manage tokens** on the left hand menu. You will see that two tokens (**Primary Token** and **Secondary Token**) are pre-configured and you can use them in the next step.
-
-{{< figure src="../geolocation-tokens.png" alt="Pre-configured tokens" >}}
+Before proceding with this guide, make sure you have completed the [LoRa Cloud Setup]({{< ref "/integrations/lora-cloud/portal" >}}) guide.
 
 ## Configure Geolocation Integration
 
 To setup LoRa Cloud Geolocation integration, navigate to your application in {{% tts %}}.
 
-On the left hand menu, select **Integrations &#8594; LoRa Cloud**. Click the **Expand** button next to the **Geolocation**.
+On the left hand menu, select **Integrations &#8594; LoRa Cloud**. Click the **Expand** button next to the **Geolocation services**.
 
-Next, copy one of the aforementioned tokens from LoRa Cloud Geolocation portal. Paste the token in the **Token** field under the **Set LoRa Cloud token** section. 
+Next, copy the token you previously created in LoRa Cloud Modem & Geolocation Services portal.
+
+{{< figure src="../copy-token.png" alt="Copy the token from LoRa Cloud" >}}
 
 Choose the **Query type** depending on the type of data you want to use for estimating the location of your device. As mentioned earlier, you can choose **LoRa TOA/RSSI**, **GNSS** or **TOA/WiFi** query type.
 
@@ -55,9 +48,9 @@ If you choose **LoRa TOA/RSSI**, you also have an option to enable **Multiframe*
 
 Finish by clicking the **Set token** button.
 
-{{< figure src="../geolocation-integration.png" alt="LoRa Cloud Geolocation integration" >}}
+{{< figure src="../paste-token-geolocation.png" alt="LoRa Cloud Geolocation integration" >}}
 
-## Obtain Location Solutions 
+## Obtain Location Solutions
 
 This section will show you how to obtain the location estimates using LoRa® TOA/RSSI, GNSS and TOA/WiFi query types.
 
