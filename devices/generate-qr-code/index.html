@@ -103,13 +103,10 @@
     <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/" class="">MAC Settings</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/atecc608a/" class="">ATECC608A/B Secure Elements</a>
+    <a href="https://www.thethingsindustries.com/docs/devices/atecc608a/" class="">ATECC608 Secure Elements</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/devices/device-claiming/" class="">Device Claiming</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/end-device-templates/" class="">End Device Templates</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/devices/generate-qr-code/" class="is-active">Generating a QR Code</a>
@@ -197,24 +194,10 @@
 <p>The SchemaID value will be <code>D0</code> as it is the only device schema version described by the <a href="https://lora-alliance.org/wp-content/uploads/2020/11/TR005_LoRaWAN_Device_Identification_QR_Codes.pdf">LoRaWAN Device Identification QR Codes for Automated Onboarding Technical Recommendation (TR005)</a>.</p>
 <p>The ProfileID encodes a VendorID, assigned by the LoRa Alliance prior to commercial production of a device, and a VendorProfileID, assigned by the device manufacturer for commercial products. Read more in the <a href="https://lora-alliance.org/wp-content/uploads/2020/11/TR005_LoRaWAN_Device_Identification_QR_Codes.pdf">TR005 document</a>.</p>
 <p>For the example identification QR code presented above, the stored information is: <code>LW:D0:0000000000000000:1122334455667789:00000000</code>.</p>
-<h2 id="generate-a-claiming-qr-code">Generate a Claiming QR Code</h2>
-<p>Device claiming is a mechanism to transfer devices securely from one application to another. For example, from a device maker to a device owner, or transferring ownership to a new device owner. Learn all about claiming in the <a href="https://www.thethingsindustries.com/docs/devices/device-claiming/">Device Claiming</a> section.</p>
-<p>To generate a QR code for claiming, you first need to <a href="/docs/devices/device-claiming/make-device-claimable/">make your device claimable</a>.</p>
-<p>When a device is claimable (it contains a claim authentication code), you can use the same command as above to generate a QR code:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices generate-qr &lt;application-id&gt; &lt;device-id&gt; --format-id &lt;qr-code-format&gt;
-</span></span></code></pre></div><details><summary>Example of a generated claiming QR code</summary>
-<figure><img src="qr-claiming.png"
-         alt="Device QR Code for Claiming"/>
-</figure>
-
-</details>
-<p>If you scan the generated claiming QR code, you will see that it stores the information in the following format: <code>LW:&lt;schema-id&gt;:&lt;join-eui&gt;:&lt;dev-eui&gt;:&lt;profile-id&gt;:&lt;claim-authentication-code&gt;</code>. One can notice that all fields are just the same as described above, only with a claim authentication code appended at the end.</p>
-<p>For the example claiming QR code presented above, the stored information is: <code>LW:D0:0000000000000000:1122334455667789:00000000:OABCD</code>, where <code>ABCD</code> is device&rsquo;s claim authentication code. The <code>O</code> in <code>OABCD</code> stands for <code>OwnerToken</code> according to the <a href="https://lora-alliance.org/wp-content/uploads/2020/11/TR005_LoRaWAN_Device_Identification_QR_Codes.pdf">LoRaWAN Device Identification QR Codes for Automated Onboarding Technical Recommendation (TR005)</a>.</p>
-<p>After you have generated the QR claiming code for your end device, follow the instructions to <a href="https://www.thethingsindustries.com/docs/devices/device-claiming/claim-devices/">claim your device</a>.</p>
         </div>
         
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/devices/end-device-templates/assigning-euis/">← Assigning EUIs</a>
+<a class="button is-pulled-left" href="/docs/devices/device-claiming/">← Device Claiming</a>
 <a class="button is-pulled-right" href="/docs/devices/the-things-node/">The Things Node →</a>
 </div>
 
@@ -240,9 +223,6 @@
     
       
       <li><a href='#generate-an-identification-qr-code'>Generate an Identification QR Code</a></li>
-    
-      
-      <li><a href='#generate-a-claiming-qr-code'>Generate a Claiming QR Code</a></li>
     
   </ul>
 
@@ -282,10 +262,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 22 Apr 2022.
+  Last changed by Johan Stokking on 21 Feb 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7cde258d1e4700ef5fd06443bdaa5d404d2ae3f5">
-      doc: Improve QR and claiming docs (#854)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4445e2e50510e1224c9e2ec7a8ebb7889b5961ae">
+      The Things Join Server and related documentation (#1041)
     </a>
 </p>
 

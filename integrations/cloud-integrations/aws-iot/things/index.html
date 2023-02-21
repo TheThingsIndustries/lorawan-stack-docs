@@ -388,9 +388,9 @@
          alt="Thing Topics"/>
 </figure>
 
-<h2 id="creating-and-claiming-things">Creating and Claiming Things</h2>
-<p>You can use AWS IoT to create and claim devices in The Things Stack. This is useful to manage all your things in one place, without having to use The Things Stack Console, CLI or API.</p>
-<p><strong>Creating</strong> a Thing allows you to add any LoRaWAN device by manually entering its information and security keys. <strong>Claiming</strong> a Thing allows you to use a QR code to transfer ownership from the manufacturer or previous owner of the device, if the device has been provisioned for claiming. See <a href="https://www.thethingsindustries.com/docs/devices/device-claiming/">Device Claiming</a> for more information.</p>
+<h2 id="creating-things">Creating Things</h2>
+<p>You can use AWS IoT to create devices in The Things Stack. This is useful to manage all your things in one place, without having to use The Things Stack Console, CLI or API.</p>
+<p>Creating a Thing allows you to add any LoRaWAN device by manually entering its information and security keys.</p>
 <p>In the AWS Console, open <strong>Services</strong> and go to <strong>IoT Core</strong>.</p>
 <p>In the menu on the left, click <strong>Manage</strong>, go to <strong>Things</strong> and click <strong>Create things</strong> in the top-right.</p>
 <p>Select <strong>Create a single thing</strong> and click <strong>Next</strong>.</p>
@@ -409,9 +409,7 @@
          alt="Create Thing"/>
 </figure>
 
-<p>Next, you can create a new device by specifying all required attributes, or your can claim an existing thing with an authentication code (or owner token).</p>
-<h3 id="creating-things">Creating Things</h3>
-<p>When creating things, you need to specify attributes under <strong>Non-searchable thing attributes</strong> for creating LoRaWAN devices:</p>
+<p>Next, you can create a new device by specifying all required attributes under <strong>Non-searchable thing attributes</strong>:</p>
 <ul>
 <li><code>joinEUI</code>: the hexadecimal LoRaWAN JoinEUI (or AppEUI). You may also specify <code>appEUI</code> instead.</li>
 <li><code>lorawanVersion</code>: either <code>1.0</code>, <code>1.0.1</code>, <code>1.0.2</code>, <code>1.0.3</code> or <code>1.1</code></li>
@@ -430,25 +428,6 @@
          alt="Create Thing"/>
 </figure>
 
-<p><a href="#finalize-create">Finalize device creation</a></p>
-<h3 id="claiming-things">Claiming Things</h3>
-<p>First, follow <a href="#creating-and-claiming-things">the steps above</a>.</p>
-<p>When claiming things, you need to specify attributes under <strong>Non-searchable thing attributes</strong> for claiming LoRaWAN devices:</p>
-<ul>
-<li><code>joinEUI</code>: the hexadecimal LoRaWAN JoinEUI (or AppEUI). You may also specify <code>appEUI</code> instead.</li>
-<li><code>claimAuthenticationCode</code>: the claim authentication code, also known as owner token or pin code.</li>
-<li>Optional <code>deviceID</code>: the device ID that will be used to create the device in your The Things Stack application. When omitted, the integration uses <code>eui-&lt;dev-eui&gt;</code> as device ID.</li>
-</ul>
-<figure><img src="../claim-thing.png"
-         alt="Claim Thing"/>
-</figure>
-
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Are you a device maker? Learn <a href="https://www.thethingsindustries.com/docs/devices/device-claiming/make-device-claimable/">how to make your devices claimable</a>.
-</div>
-
-<h3 id="finalize-create">Finalize Create</h3>
 <p>Click <strong>Next</strong>.</p>
 <p>Click <strong>Skip certificate and create thing</strong>.</p>
 <div class="notification is-info is-light has-text-dark">
@@ -487,7 +466,7 @@
       <li><a href='#preparation'>Preparation</a></li>
     
       
-      <li><a href='#creating-and-claiming-things'>Creating and Claiming Things</a></li>
+      <li><a href='#creating-things'>Creating Things</a></li>
     
   </ul>
 
@@ -527,10 +506,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Johan Stokking on 23 Feb 2022.
+  Last changed by Johan Stokking on 21 Feb 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/8dcaa1916de4d00ce23fbf8e2f8f58a79092f299">
-      Update AWS IoT Core to new console (#784)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4445e2e50510e1224c9e2ec7a8ebb7889b5961ae">
+      The Things Join Server and related documentation (#1041)
     </a>
 </p>
 

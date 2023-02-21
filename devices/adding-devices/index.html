@@ -108,13 +108,10 @@
     <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/" class="">MAC Settings</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/atecc608a/" class="">ATECC608A/B Secure Elements</a>
+    <a href="https://www.thethingsindustries.com/docs/devices/atecc608a/" class="">ATECC608 Secure Elements</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/devices/device-claiming/" class="">Device Claiming</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/end-device-templates/" class="">End Device Templates</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/devices/generate-qr-code/" class="">Generating a QR Code</a>
@@ -172,7 +169,7 @@
 </div>
 <div class="tab-content content">
   <section data-content="console">
-  <h2 id="adding-devices-using-the-console">Adding Devices using the Console</h2>
+  <h2 id="adding-devices-using-the-console">Adding devices using the Console</h2>
 <p>To create a device, first open the application you wish to add the device in. Go to <strong>End devices</strong> in the left menu and click on <strong>+ Add end device</strong> to reach the end device registration page.</p>
 <figure><img src="application-overview.png"
          alt="Application overview"/>
@@ -182,7 +179,7 @@
          alt="Options to add devices"/>
 </figure>
 <p>Keep reading to learn how to register devices using these methods.</p>
-<h3 id="onboarding-devices-using-qr-codes">Onboarding Devices using QR codes</h3>
+<h3 id="onboarding-devices-using-qr-codes">Onboarding devices using QR codes</h3>
 <p>If your device has a QR code, it is a no-brainer to onboard it on The Things Stack. If your device doesn&rsquo;t have a QR code, you can skip this section.</p>
 <p>Click the <strong>Scan end device QR code</strong> button and allow The Things Stack to use your camera.</p>
 <figure><img src="waiting-for-camera.png"
@@ -217,7 +214,7 @@
 </figure>
 <p>Finally, give your device a unique <strong>End device ID</strong>, and click the <strong>Register end device</strong> button to create the end device. See <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">ID and EUI constraints</a> for guidelines about choosing a unique ID.</p>
 <p>The device is now activated, and will appear as connected in The Things Stack once it sends an uplink.</p>
-<h3 id="manually-registering-an-end-device">Manually Registering an End Device</h3>
+<h3 id="manually-registering-a-device">Manually registering a device</h3>
 <p>If your device is not available in the device repository, you may manually register it. To do this, choose the <strong>Enter end device specifics manually</strong> input method. Please refer to your device&rsquo;s datasheet to ensure entering the following information correctly. If such sheet has not been provided, please contact the manufacturer to assist you with obtaining this data.</p>
 <p>Choose a <strong>Frequency plan</strong> appropriate for your region. Your device and gateway must use the same <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">frequency plan</a> to communicate.</p>
 <p>Select the device <strong>LoRaWAN version</strong>. This should be provided with your device as the LoRaWAN version, LoRaWAN specification, or MAC version.</p>
@@ -231,7 +228,7 @@
 </figure>
 <p>If you need to use a method of activation other than OTAA, create a multicast group, specify a Class B or Class C device, or change Rx Delay and Frequency plan settings, see the <a href="#advanced-settings">Advanced settings</a> section below. Otherwise, skip the next section and continue with filling in the <strong>Provisioning information</strong>.</p>
 <p>The information that you&rsquo;ll be providing in the <strong>Provisioning information</strong> section depends on the activation method you&rsquo;ve chosen. If you choose <strong>OTAA</strong>, follow the <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/#otaa-devices">OTAA Devices</a> subsection, and if you choose <strong>ABP</strong>, follow the <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/#abp-devices">ABP Devices</a> subsection.</p>
-<h3 id="advanced-settings">Advanced Settings</h3>
+<h3 id="advanced-settings">Advanced settings</h3>
 <p>To modify advanced settings, expand the <strong>Show advanced activation, LoRaWAN class and cluster settings</strong> dropdown.</p>
 <p>Here, you may choose your <strong>Activation mode</strong>. If you choose <strong>OTAA</strong>, follow the <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/#otaa-devices">OTAA Devices</a> subsection after this one, and if you choose <strong>ABP</strong>, follow the <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/#abp-devices">ABP Devices</a> subsection.</p>
 <p>If your device supports <strong>Class B</strong> or <strong>Class C</strong> features, you may enable them using the dropdown <strong>Additional LoRaWAN class capabilities</strong>.</p>
@@ -241,7 +238,7 @@
   There are lots of additional options here that aren&rsquo;t mentioned for the sake of keeping this section concise. If you want to learn more about them, see the <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/">MAC Settings</a> section and/or hover over the tooltip icons on the respective inputs.
 </div>
 <p>You can also choose to <strong>Skip registration on Join Server</strong> for testing purposes. We advise not to check this option unless you&rsquo;re an expert.</p>
-<h3 id="otaa-devices">OTAA Devices</h3>
+<h3 id="otaa-devices">OTAA devices</h3>
 <p>Over-the-Air-Activation (OTAA) is the secure, scalable way to activate LoRaWAN devices. All commercially available LoRaWAN devices support OTAA, and it is selected by default. If you are using a custom or DIY device, and cannot use OTAA, see the <a href="#abp-devices">Activation by Personalisation</a> section.</p>
 <p>The example in this guide covers adding a device using <a href="https://www.thethingsindustries.com/docs/reference/glossary/#over-the-air-activation">OTAA</a> (the most secure and preferred activation method) and <a href="https://www.thethingsindustries.com/docs/reference/glossary/#lorawan-version">LoRaWAN version</a> MAC V1.0.2 (the most common LoRaWAN version, although newer versions are better and more secure) and RP001 Regional Parameters 1.0.2 revision B. Names and keys may vary slightly for other versions, but the process is the same and any differences are noted.</p>
 <p>First, enter a <strong>JoinEUI/AppEUI</strong> if provided by your manufacturer. If it is not provided by the manufacturer and your device is programmable, you can generate a random one in accordance with the test ranges defined by the <a href="https://ieee802.org/">IEEE 802 standards</a> or use all zeros, just make sure to program the same value into your device. Then click <strong>Confirm</strong>.</p>
@@ -256,7 +253,7 @@
          alt="Manually create OTAA end device"/>
 </figure>
 <p>Click <strong>Register end device</strong> to create the end device.</p>
-<h3 id="abp-devices">ABP Devices</h3>
+<h3 id="abp-devices">ABP devices</h3>
 <p>If your device cannot be activated using the more secure OTAA, you may manually activate it by programming security keys it, i.e. using ABP.</p>
 <p>In the <strong>Advanced settings</strong> dropdown (see the <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/#advanced-settings">Advanced Settings section</a>), select <strong>Activation by Personalization (ABP)</strong>.</p>
 <p>When using ABP, it is important to make sure that the Rx1 settings in your device match those in The Things Stack. Uncheck <strong>Use network&rsquo;s Rx and frequency defaults</strong> to specify settings that match those in your device. The Things Stack recommends an Rx1 delay of <code>5</code> seconds, but this value would have to also be programmed into your device.</p>
@@ -272,11 +269,11 @@
 <p>Click <strong>Register end device</strong> to create the end device.</p>
 </section>
 <section data-content="cli">
-  <h2 id="adding-devices-using-the-cli">Adding Devices using the CLI</h2>
+  <h2 id="adding-devices-using-the-cli">Adding devices using the CLI</h2>
 <p>First, list the available frequency plans and LoRaWAN versions:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices list-frequency-plans
 </span></span><span class="line"><span class="cl">ttn-lw-cli end-devices create --help
-</span></span></code></pre></div><h3 id="over-the-air-activation-otaa-device">Over-The-Air-Activation (OTAA) Device</h3>
+</span></span></code></pre></div><h3 id="over-the-air-activation-otaa-device">Over-The-Air-Activation (OTAA) device</h3>
 <p>We define some user parameters that will be used below:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;app1&#34;</span> 
 </span></span><span class="line"><span class="cl"><span class="nv">DEVICE_ID</span><span class="o">=</span><span class="s2">&#34;dev1&#34;</span>
@@ -318,7 +315,7 @@
 </span></span></code></pre></div><p>This will create an end device <code>dev1</code> in application <code>app1</code> with the <code>EU_863_870</code> frequency plan, that uses LoRaWAN 1.1.0 MAC and 1.1.0-b PHY versions. Make sure you replace these versions according to your setup.</p>
 <p>You can also pass <code>--with-root-keys</code> to have root keys generated. In this case, you do not need to specify <code>--root-keys.app-key.key</code> or <code>root-keys.nwk-key.key</code>.</p>
 <p>The end device should now be able to join the private network.</p>
-<h3 id="activation-by-personalization-abp-device">Activation By Personalization (ABP) Device</h3>
+<h3 id="activation-by-personalization-abp-device">Activation By Personalization (ABP) device</h3>
 <p>For adding ABP devices, we can define the following parameters:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">APP_ID</span><span class="o">=</span><span class="s2">&#34;app1&#34;</span> 
 </span></span><span class="line"><span class="cl"><span class="nv">DEVICE_ID</span><span class="o">=</span><span class="s2">&#34;dev1&#34;</span>
@@ -362,7 +359,7 @@
 
 </div>
 
-<h2 id="adding-devices-in-bulk">Adding Devices in Bulk</h2>
+<h2 id="adding-devices-in-bulk">Adding devices in bulk</h2>
 <p>It is also possible to import end devices in bulk.</p>
 <p>Devices&rsquo; descriptions need to be in a <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON</a> or <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-csv/">CSV</a> format. See <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/import-devices/">Import End Devices in The Things Stack</a> section for instructions on how to import devices in bulk using these files.</p>
 <p>See the following video from <a href="https://youtu.be/ouz-VuiosU4">The Things Network youtube channel</a> for instructions.</p>
@@ -373,7 +370,7 @@
 </div>
 
 </details>
-<h2 id="set-device-location">Set Device Location</h2>
+<h2 id="set-device-location">Set device location</h2>
 <div class="tabs is-boxed">
   <ul>
     
@@ -437,8 +434,8 @@
 
 </div>
 
-<h2 id="application-layer-settings">Application Layer Settings</h2>
-<h3 id="payload-crypto-override">Payload Crypto Override</h3>
+<h2 id="application-layer-settings">Application layer settings</h2>
+<h3 id="payload-crypto-override">Payload crypto override</h3>
 <p>LoRaWAN frames are encrypted on the application layer using the AppSKey. Once the end device is registered, you can choose to enforce or skip payload encryption. Skipping payload encryption will cause the Application Server to forward messages to integrations without any processing, for example it will neglect <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">payload formatters</a>. If you choose to skip payload encryption, integrations will be responsible for processing the message in order to understand it.</p>
 <p>To configure these settings, navigate to your end device&rsquo;s <strong>General settings</strong> tab in the Console and scroll down to the <strong>Application layer</strong> section.</p>
 <p>Skipping payload encryption and decryption option is also available on an <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/#payload-encryption-and-decryption">application level</a>, so if you want the end device to inherit this setting from its application, choose <strong>Use application default</strong>.</p>
@@ -471,19 +468,19 @@
   <ul class="menu-list">
     
       
-      <li><a href='#adding-devices-using-the-console'>Adding Devices using the Console</a></li>
+      <li><a href='#adding-devices-using-the-console'>Adding devices using the Console</a></li>
     
       
-      <li><a href='#adding-devices-using-the-cli'>Adding Devices using the CLI</a></li>
+      <li><a href='#adding-devices-using-the-cli'>Adding devices using the CLI</a></li>
     
       
-      <li><a href='#adding-devices-in-bulk'>Adding Devices in Bulk</a></li>
+      <li><a href='#adding-devices-in-bulk'>Adding devices in bulk</a></li>
     
       
-      <li><a href='#set-device-location'>Set Device Location</a></li>
+      <li><a href='#set-device-location'>Set device location</a></li>
     
       
-      <li><a href='#application-layer-settings'>Application Layer Settings</a></li>
+      <li><a href='#application-layer-settings'>Application layer settings</a></li>
     
   </ul>
 
@@ -523,10 +520,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 22 Oct 2022.
+  Last changed by Johan Stokking on 21 Feb 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/59caf60bc5138e010b95cab991cff73bb617e00d">
-      doc: Document new device registration process (#968)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4445e2e50510e1224c9e2ec7a8ebb7889b5961ae">
+      The Things Join Server and related documentation (#1041)
     </a>
 </p>
 

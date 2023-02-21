@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.96.0" />
-  <title>LoRaWAN Backend Interfaces Interoperability | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/interop-repository/" />
+  <title>LoRaWAN Join Server Configuration | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/interop-repository/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8afd1a9ba4c2f5b2a5910c50125ba2636f89937b2e7f5ca55766ed500a2a1e4f.css" integrity="sha256-iv0am6TC9bKlkQxQEluiY2&#43;Jk3suf1ylV2btUAoqHk8=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="LoRaWAN Backend Interfaces Interoperability">
+  <meta itemprop="name" content="LoRaWAN Join Server Configuration">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="LoRaWAN Backend Interfaces Interoperability">
+  <meta property="og:title" content="LoRaWAN Join Server Configuration">
   <meta property="og:description" content="">
   <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/interop-repository/">
-  <meta name="twitter:title" content="LoRaWAN Backend Interfaces Interoperability" />
+  <meta name="twitter:title" content="LoRaWAN Join Server Configuration" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -103,6 +103,9 @@
     <a href="https://www.thethingsindustries.com/docs/reference/data-retention/" class="">Data Retention and Privacy</a>
   </li>
 <li>
+    <a href="https://www.thethingsindustries.com/docs/reference/device-claiming-repository/" class="">Device Claiming Configuration</a>
+  </li>
+<li>
     <a href="https://www.thethingsindustries.com/docs/reference/email-templates/" class="">Email Templates</a>
   </li>
 <li>
@@ -130,7 +133,7 @@
     <a href="https://www.thethingsindustries.com/docs/reference/lbs-implementation-guide/implementation-details/" class="">LoRa Basics Station Implementation Guide</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/interop-repository/" class="is-active">LoRaWAN Backend Interfaces Interoperability</a>
+    <a href="https://www.thethingsindustries.com/docs/reference/interop-repository/" class="is-active">LoRaWAN Join Server Configuration</a>
     
 
 
@@ -187,26 +190,28 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">LoRaWAN Backend Interfaces Interoperability
+        <h1 class="title is-size-2">LoRaWAN Join Server Configuration
           
         </h1>
         
         <div class="content">
           <p>The Things Stack Network Server and Application Server can use LoRaWAN Backend Interfaces 1.0 and 1.1 with LoRaWAN Join Servers.</p>
 <!-- more -->
+<p>Network Server and Application Server use this configuration to contact LoRaWAN Join Servers. Learn how to configure <a href="https://www.thethingsindustries.com/docs/reference/configuration/network-server/#interoperability-options">Network Server</a> and <a href="https://www.thethingsindustries.com/docs/reference/configuration/application-server/#interoperability-options">Application Server</a> to use the interoperability client configuration.</p>
+<h2 id="configuration-files">Configuration Files</h2>
 <p>The Things Stack reads configuration from a file system. The root should contain <code>config.yml</code>, which contains Join Servers.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">join-servers</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;./path/js.yml&#39;</span><span class="w">     </span><span class="c"># relative path to a file containing Join Server configuration</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">components</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s1">&#39;as&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;ns&#39;</span><span class="p">]</span><span class="w">  </span><span class="c"># optional selector for components (new in 3.21.0)</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">join-euis</span><span class="p">:</span><span class="w">                </span><span class="c"># list of Join EUI prefixes the Join Server should handle</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="s1">&#39;11AA000000000000/16&#39;</span><span class="w">   </span><span class="c"># in this example, the first 16 bits, so all JoinEUIs starting with 11AA</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s1">&#39;11AA000000000000/16&#39;</span><span class="w"> </span><span class="c"># in this example, the first 16 bits, so all JoinEUIs starting with 11AA</span><span class="w">
 </span></span></span></code></pre></div><p>All paths are relative to the <code>config.yml</code> file they are defined in.</p>
 <p>The Things Stack Network Server always first tries the cluster-local Join Server. If the cluster-local Join Server does not accept the join-request, a Join Server is contacted via the LoRaWAN Backend Interfaces interoperability.</p>
 <p>In case <code>JoinEUI</code> prefixes overlap, the most specific prefix takes precedence. <code>0000000000000000/0</code> prefix matches all <code>JoinEUI</code>s. Use this prefix if you wish to define a Join Server interoperability configuration for all other join-requests. For example:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">join-servers</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;./fallback/js.yml&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">join-euis</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="s1">&#39;0000000000000000/0&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s1">&#39;0000000000000000/0&#39;</span><span class="w">
 </span></span></span></code></pre></div><p>The Join Server configuration provides means to configure how the components interact with the Join Server. The configuration supports multiple options:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="nt">scheme</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https&#39;</span><span class="w">                          </span><span class="c"># URL scheme. Defaults to https</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">fqdn</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;thethings.example&#39;</span><span class="w">                </span><span class="c"># FQDN of the Join Server</span><span class="w">
@@ -231,28 +236,30 @@
 </span></span></span></code></pre></div><p>If <code>tls.source</code> is set to <code>key-vault</code>, The Things Stack uses its <a href="https://www.thethingsindustries.com/docs/reference/configuration/the-things-stack/#key-vault">Key Vault</a> configuration to load the TLS client certificate.</p>
 <h2 id="interoperability-with-the-things-join-server">Interoperability with The Things Join Server</h2>
 <p>The Things Join Server is a stand-alone LoRaWAN Join Server that can be deployed by device makers, distributors and integrators.</p>
-<p>An example interoperability repository supporting The Things Join Server operated by The Things Industries could look like this:</p>
+<p>The Things Join Server operated by The Things Industries should be configured as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="c"># config.yml</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">join-servers</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">...</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;./tti/js.yml&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">join-euis</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="s1">&#39;EC656E0000000000/24&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s1">&#39;70B3D57ED0000000/64&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s1">&#39;EC656E0000000000/56&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">...</span><span class="w">
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="c"># tti/js.yml</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">fqdn</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;join.cloud.thethings.industries&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">fqdn</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;js.cloud.thethings.industries&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">protocol</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;BI1.1&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tls</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;key-vault&#39;</span><span class="w">
-</span></span></span></code></pre></div><h2 id="interoperability-with-semtech-join-server">Interoperability with Semtech Join Server</h2>
+</span></span></span></code></pre></div><p>Please contact <a href="mailto:support@thethingsindustries.com">The Things Industries support</a> to gain access to The Things Join Server.</p>
+<h2 id="interoperability-with-semtech-join-server">Interoperability with Semtech Join Server</h2>
 <p>Semtech Join Server is a hosted LoRaWAN Join Server by Semtech for use with pre-provisioned LoRa Edge modems.</p>
-<p>An example interoperability repository supporting Semtech Join Server could look like this:</p>
+<p>Semtech Join Server should be configured as follows:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="c"># config.yml</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">join-servers</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">...</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">file</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;./semtech/js.yml&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">join-euis</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="s1">&#39;0016C00000000000/24&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s1">&#39;0016C00000000000/24&#39;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">...</span><span class="w">
 </span></span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yml" data-lang="yml"><span class="line"><span class="cl"><span class="c"># semtech/js.yml</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">fqdn</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;js.loracloud.com&#39;</span><span class="w">
@@ -289,6 +296,9 @@
 
 
   <ul class="menu-list">
+    
+      
+      <li><a href='#configuration-files'>Configuration Files</a></li>
     
       
       <li><a href='#interoperability-with-the-things-join-server'>Interoperability with The Things Join Server</a></li>
@@ -334,10 +344,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Johan Stokking on 07 Feb 2023.
+  Last changed by Johan Stokking on 21 Feb 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f8654b0b928e38189e55c2e7426280e8e6d0104f">
-      doc: Document NSID and DCS (#1034)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4445e2e50510e1224c9e2ec7a8ebb7889b5961ae">
+      The Things Join Server and related documentation (#1041)
     </a>
 </p>
 

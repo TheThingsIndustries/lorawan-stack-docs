@@ -103,7 +103,7 @@
     <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/" class="">MAC Settings</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/atecc608a/" class="">ATECC608A/B Secure Elements</a>
+    <a href="https://www.thethingsindustries.com/docs/devices/atecc608a/" class="">ATECC608 Secure Elements</a>
     
 
 
@@ -119,11 +119,6 @@
     
   </li>
 
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/atecc608a/transfer/" class="">Transfer to new Join Server</a>
-    
-  </li>
-
 </ul>
 
 
@@ -131,9 +126,6 @@
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/devices/device-claiming/" class="">Device Claiming</a>
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/end-device-templates/" class="">End Device Templates</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/devices/generate-qr-code/" class="">Generating a QR Code</a>
@@ -168,77 +160,68 @@
           
         </h1>
         
-        <h2 class="subtitle">
-          
-            
-            
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-  
-
-  
-
-<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud and Enterprise Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
-
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
-
-</a>
-
-
-          
-          
-          
-          
-        </h2>
-        
         <div class="content">
-          <p>This guide helps device makers to claim Microchip ATECC608A/B secure elements on The Things Join Server.</p>
+          <p>This guide helps device makers to claim Microchip ATECC608 secure elements on The Things Join Server.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
 <li>ATECC608A-TNGLORA or ATECC608B-TNGLORA secure elements. <a href="https://www.microchip.com/wwwproducts/en/ATECC608A-TNGLORA">Product details</a></li>
 <li>Device security (manifest) file. You can obtain this from your <a href="https://www.microchipdirect.com/orders">Microchip Direct order history</a></li>
-<li>Access to The Things Stack Cloud. <a href="mailto:cloud@thethingsindustries.com">Contact The Things Industries</a> to get onboarded</li>
-<li>An application in The Things Stack Cloud. <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/">See instructions</a></li>
-<li>Your The Things Join Server address. <a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/tti-join-server/">See Join Server addresses</a></li>
+<li>Provisioner access to The Things Join Server. <a href="mailto:support@thethingsindustries.com">Contact The Things Industries support</a> to get access.</li>
+<li>The Things Join Server command-line interface (<code>ttjs</code>) installed. <a href="https://www.npmjs.com/package/ttjs-cli">See instructions to install <code>ttjs</code></a></li>
 </ol>
-<h2 id="import-manifest">Import Manifest</h2>
-<p>Visit the Console of The Things Join Server, e.g.:</p>
-<p><code>https://&lt;tenant-id&gt;.join.cloud.thethings.industries/console</code></p>
-<p>Go to the <strong>Applications</strong> menu and select your application.</p>
-<p>Go to <strong>Devices</strong> and click <strong>Import Devices</strong> button in the upper right.</p>
-<p>As <strong>Format</strong>, select <strong>Microchip ATECC608A-TNGLORA Manifest File</strong>.</p>
-<p>Click <strong>Select a file</strong> and open your manifest file. If you want to make your device available for claiming by other users, check <strong>Set claim authentication code</strong>.</p>
-<figure><img src="../import-devices-settings.png"
-         alt="Import settings"/>
-</figure>
+<h2 id="initialize-ttjs">Initialize <code>ttjs</code></h2>
+<p>To initialize The Things Join Server CLI <code>ttjs</code>, run the following command:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttjs init
+</span></span></code></pre></div><p>This prompts the URL, provisioner credentials and location to save the configuration:</p>
+<pre tabindex="0"><code>✔ Server URL … https://js.cloud.thethings.industries
+✔ Provisioner username … example
+✔ Provisioner password … ********************
+✔ Configuration file … ~/.config/ttjs/config.yaml
+✔ Save configuration … yes
+</code></pre><p>Verify that your credentials are correct:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttjs list
+</span></span></code></pre></div><p>This should return the currently provisioned devices (or <code>[]</code> if there aren&rsquo;t any).</p>
+<h2 id="import-manifest">Import manifest</h2>
+<p>Next, import your manifest file, in this case named <code>manifest.json</code>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttjs import -f microchip-atecc608 manifest.json
+</span></span></code></pre></div><p>This provisions the secure elements in The Things Join Server and returns the generated owner tokens, for example:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="p">[</span>
+</span></span><span class="line"><span class="cl">  <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">devEUI</span><span class="o">:</span> <span class="s1">&#39;0004A310001AAED6&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">ownerToken</span><span class="o">:</span> <span class="s1">&#39;C05EA29C&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">rootKeysExposed</span><span class="o">:</span> <span class="kc">false</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">]</span>
+</span></span></code></pre></div><p>The owner token is called claim authentication code in The Things Stack. This is the proof of ownership for claiming devices. See <a href="https://www.thethingsindustries.com/docs/devices/device-claiming/">Device Claiming</a> for more information.</p>
+<h2 id="export-root-keys">Export root keys</h2>
+<p>In case your end devices are to be activated on a LoRaWAN Network Server that does not support claiming on The Things Join Server, the root keys can be exported:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttjs get &lt;dev-eui&gt; --nonces --root-keys
+</span></span></code></pre></div><div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  When you export the root keys, they are marked forever as exposed. This reduces the security of the end device. Current and future owners of the device are not guaranteed privacy and secure activation if the keys are not carefully stored.
+</div>
 
-<p>Click <strong>Create Devices</strong> to finish.</p>
-<figure><img src="../import-devices-progress.png"
-         alt="Import progress"/>
-</figure>
+<p>This returns the root keys and LoRaWAN nonces (if any):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">devEUI</span><span class="o">:</span> <span class="s1">&#39;0004A310001AAED6&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">ownerToken</span><span class="o">:</span> <span class="s1">&#39;C05EA29C&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">rootKeysExposed</span><span class="o">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">nonces</span><span class="o">:</span> <span class="p">{</span> <span class="nx">nextJoinNonce</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">usedDevNonces</span><span class="o">:</span> <span class="p">[</span><span class="mi">1836</span><span class="p">,</span> <span class="mi">10331</span><span class="p">]</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">rootKeys</span><span class="o">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">appKey</span><span class="o">:</span> <span class="s1">&#39;525746CCF9CF5DE887BE5D836D08B5C9&#39;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">nwkKey</span><span class="o">:</span> <span class="s1">&#39;CB0F4E236567566D2A976B3DAB2CF7A5&#39;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The secure elements are pre-provisioned with JoinEUI <code>70B3D57ED0000000</code>.
+</div>
 
-<p>Your secure elements are now claimed in your application. The secure elements cannot be claimed by anyone else until you delete the devices.</p>
-<p>Note that claiming the secure elements only creates devices on the Join Server, but they are not registered on a Network Server or Application Server yet. You first need to register them on a Network Server and Application Server before you can activate the devices.</p>
-<p><a href="https://www.thethingsindustries.com/docs/getting-started/cloud-hosted/tti-join-server/activate-devices-cloud-hosted/">Learn how to activate devices on The Things Stack Cloud</a></p>
+<p>This allows you to register the devices on any LoRaWAN Network Server that does not support The Things Join Server.</p>
         </div>
         <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/devices/atecc608a/">← ATECC608A/B Secure Elements</a>
-<a class="button is-pulled-right" href="/docs/devices/atecc608a/transfer/">Transfer to new Join Server →</a>
+<a class="button is-pulled-left" href="/docs/devices/atecc608a/">← ATECC608 Secure Elements</a>
+<a class="button is-pulled-right" href="/docs/devices/device-claiming/">Device Claiming →</a>
 </div>
 
         <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -262,7 +245,13 @@
       <li><a href='#prerequisites'>Prerequisites</a></li>
     
       
-      <li><a href='#import-manifest'>Import Manifest</a></li>
+      <li><a href='#initialize-ttjs'>Initialize ttjs</a></li>
+    
+      
+      <li><a href='#import-manifest'>Import manifest</a></li>
+    
+      
+      <li><a href='#export-root-keys'>Export root keys</a></li>
     
   </ul>
 
@@ -302,10 +291,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Johan Stokking on 28 Mar 2021.
+  Last changed by Johan Stokking on 21 Feb 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/ae37cc9a5f3ca0e2ce3c8a0e164cd2a9586b1b69">
-      doc: Small textual improvements
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4445e2e50510e1224c9e2ec7a8ebb7889b5961ae">
+      The Things Join Server and related documentation (#1041)
     </a>
 </p>
 

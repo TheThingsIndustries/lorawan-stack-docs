@@ -103,32 +103,15 @@
     <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/" class="">MAC Settings</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/atecc608a/" class="">ATECC608A/B Secure Elements</a>
+    <a href="https://www.thethingsindustries.com/docs/devices/atecc608a/" class="">ATECC608 Secure Elements</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/devices/device-claiming/" class="is-active">Device Claiming</a>
     
 
 
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/device-claiming/make-device-claimable/" class="">Make a Device Claimable</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/device-claiming/claim-devices/" class="">Claim a Device</a>
-    
-  </li>
-
-</ul>
-
 
     
-  </li>
-<li>
-    <a href="https://www.thethingsindustries.com/docs/devices/end-device-templates/" class="">End Device Templates</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/devices/generate-qr-code/" class="">Generating a QR Code</a>
@@ -163,68 +146,25 @@
           
         </h1>
         
-        <h2 class="subtitle">
-          
-            
-            
-
-
-
-
-
-  
-    
-  
-
-  
-    
-  
-
-
-
-  
-
-  
-
-<a href="/docs/getting-started/what-is-tts#the-things-stack-deployments" target="_blank" class="badge-stack has-tooltip has-tooltip-arrow has-tooltip-light" data-tooltip="Cloud and Enterprise Only">
-
-  <img class="badge" src="/docs/img/tts_frames/frame_cloud.svg"></img>
-
-  <img class="badge" src="/docs/img/tts_frames/frame_enterprise.svg"></img>
-
-</a>
-
-
-          
-          
-          
-          
-        </h2>
-        
         <div class="content">
-          <p>Device claiming is a mechanism that transfers devices securely from one application to another. This section provides guides for making devices claimable and claiming them.</p>
+          <p>Device claiming is a mechanism that securely transfers ownership from the device maker to the device owner without transferring LoRaWAN root keys. This section provides an overview to resources for device makers and device owners.</p>
 <h2 id="who-is-it-for">Who is it for?</h2>
-<p>It is used to transfer ownership from a device maker to a device owner, or to a new device owner.</p>
+<p>It is for device owners who need to claim ownership of their devices.</p>
 <h3 id="typical-use-cases">Typical use cases</h3>
 <ol>
-<li>Purchasing a new device and registering it to the Console in an easy and secure way.</li>
-<li>Transferring ownership to a new device owner.</li>
+<li>Onboarding a device by scanning its QR code that contains the ownership information.</li>
+<li>Bulk importing devices with ownership information.</li>
 </ol>
-<p>Devices can be transferred from one application to another within a single The Things Stack Cloud or Enterprise cluster, or between two Cloud or Enterprise clusters.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Device claiming for other deployments than The Things Stack Cloud and The Things Stack Enterprise is not possible. For example, you will not be able to transfer a device from The Things Stack Cloud application to The Things Stack Community Edition application, and vice versa. Transferring devices from The Things Stack Cloud to The Things Stack Enterprise and vice versa is also not possible.
-</div>
-
 <h2 id="how-does-it-work">How does it work?</h2>
-<p>After pre-provisioning a device, device makers register it on The Things Join Server or on their Cloud cluster, generate a QR code for claiming and stick it to the device. When purchasing a device, new device owners scan this QR code to claim it to their application.</p>
-<p><a href="https://www.thethingsindustries.com/docs/devices/device-claiming/claim-devices/">Learn how to claim a device</a></p>
-<p>Device claiming does not transfer a security session for a device, it only transfers ownership. The original LoRaWAN session is deleted. The device needs to join the network again for traffic to appear.</p>
+<p>Device makers provision devices on a LoRaWAN Join Server that supports claiming. As part of this process, a &ldquo;claim authentication code&rdquo; or &ldquo;owner token&rdquo; is generated: a proof of ownership.</p>
+<p>Device makers send the proof of ownership together with the physical end devices to the owner. There are various ways to transfer the proof of ownership: it can be encoded in a QR code or text printed on the device packaging, or sent as an import file.</p>
+<p>Device owners claim the device by scanning the QR code, entering the claim authentication code or importing a file with claim authentication codes. This is integrated in the <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">adding devices flow</a>.</p>
+<p>Device claiming works with LoRaWAN Join Servers configured in The Things Stack. By default, The Things Stack Cloud and Community Edition are preconfigured to use The Things Join Server and Semtech Join Server. If you operate The Things Stack Enterprise or Open Source, configure the <a href="https://www.thethingsindustries.com/docs/reference/interop-repository/">LoRaWAN Backend Interfaces interoperability repository</a> and the <a href="https://www.thethingsindustries.com/docs/reference/device-claiming-repository/">Device Claiming repository</a> accordingly.</p>
         </div>
         
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/devices/atecc608a/transfer/">← Transfer to new Join Server</a>
-<a class="button is-pulled-right" href="/docs/devices/device-claiming/make-device-claimable/">Make a Device Claimable →</a>
+<a class="button is-pulled-left" href="/docs/devices/atecc608a/claim/">← Claim</a>
+<a class="button is-pulled-right" href="/docs/devices/generate-qr-code/">Generating a QR Code →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -288,10 +228,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Johan Stokking on 21 Feb 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4445e2e50510e1224c9e2ec7a8ebb7889b5961ae">
+      The Things Join Server and related documentation (#1041)
     </a>
 </p>
 
