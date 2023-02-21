@@ -14,8 +14,8 @@ This guide helps device makers to claim Microchip ATECC608 secure elements on Th
 
 1. ATECC608A-TNGLORA or ATECC608B-TNGLORA secure elements. [Product details](https://www.microchip.com/wwwproducts/en/ATECC608A-TNGLORA)
 2. Device security (manifest) file. You can obtain this from your [Microchip Direct order history](https://www.microchipdirect.com/orders)
-3. Provisioner access to The Things Join Server. [Contact The Things Industries support](mailto:support@thethingsindustries.com) to get access
-4. The Things Join Server command-line interface installed. [See instructions to install `ttjs`](https://www.npmjs.com/package/ttjs-cli)
+3. Provisioner access to The Things Join Server. [Contact The Things Industries support](mailto:support@thethingsindustries.com) to get access.
+4. The Things Join Server command-line interface (`ttjs`) installed. [See instructions to install `ttjs`](https://www.npmjs.com/package/ttjs-cli)
 
 ## Initialize `ttjs`
 
