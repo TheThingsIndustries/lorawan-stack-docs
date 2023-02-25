@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.96.0" />
-  <title>Device Claiming | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/device-claiming/" />
+  <title>Generic Node Sensor Edition | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/generic-node-se/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8afd1a9ba4c2f5b2a5910c50125ba2636f89937b2e7f5ca55766ed500a2a1e4f.css" integrity="sha256-iv0am6TC9bKlkQxQEluiY2&#43;Jk3suf1ylV2btUAoqHk8=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Device Claiming">
+  <meta itemprop="name" content="Generic Node Sensor Edition">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Device Claiming">
+  <meta property="og:title" content="Generic Node Sensor Edition">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/devices/device-claiming/">
-  <meta name="twitter:title" content="Device Claiming" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/devices/generic-node-se/">
+  <meta name="twitter:title" content="Generic Node Sensor Edition" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -106,18 +106,18 @@
     <a href="https://www.thethingsindustries.com/docs/devices/atecc608a/" class="">ATECC608 Secure Elements</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/device-claiming/" class="is-active">Device Claiming</a>
-    
-
-
-
-    
+    <a href="https://www.thethingsindustries.com/docs/devices/device-claiming/" class="">Device Claiming</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/devices/generate-qr-code/" class="">Generating a QR Code</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/devices/generic-node-se/" class="">Generic Node Sensor Edition</a>
+    <a href="https://www.thethingsindustries.com/docs/devices/generic-node-se/" class="is-active">Generic Node Sensor Edition</a>
+    
+
+
+
+    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/devices/the-things-node/" class="">The Things Node</a>
@@ -145,29 +145,110 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Device Claiming
+        <h1 class="title is-size-2">Generic Node Sensor Edition
           
         </h1>
         
         <div class="content">
-          <p>Device claiming is a mechanism that securely transfers ownership from the device maker to the device owner without transferring LoRaWAN root keys. This section provides an overview to resources for device makers and device owners.</p>
-<h2 id="who-is-it-for">Who is it for?</h2>
-<p>It is for device owners who need to claim ownership of their devices.</p>
-<h3 id="typical-use-cases">Typical use cases</h3>
-<ol>
-<li>Onboarding a device by scanning its QR code that contains the ownership information.</li>
-<li>Bulk importing devices with ownership information.</li>
-</ol>
-<h2 id="how-does-it-work">How does it work?</h2>
-<p>Device makers provision devices on a LoRaWAN Join Server that supports claiming. As part of this process, a &ldquo;claim authentication code&rdquo; or &ldquo;owner token&rdquo; is generated: a proof of ownership.</p>
-<p>Device makers send the proof of ownership together with the physical end devices to the owner. There are various ways to transfer the proof of ownership: it can be encoded in a QR code or text printed on the device packaging, or sent as an import file.</p>
-<p>Device owners claim the device by scanning the QR code, entering the claim authentication code or importing a file with claim authentication codes. This is integrated in the <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">adding devices flow</a>.</p>
-<p>Device claiming works with LoRaWAN Join Servers configured in The Things Stack. By default, The Things Stack Cloud and Community Edition are preconfigured to use The Things Join Server and Semtech Join Server. If you operate The Things Stack Enterprise or Open Source, configure the <a href="https://www.thethingsindustries.com/docs/reference/interop-repository/">LoRaWAN Backend Interfaces interoperability repository</a> and the <a href="https://www.thethingsindustries.com/docs/reference/device-claiming-repository/">Device Claiming repository</a> accordingly.</p>
+          <figure class="float plain"><img src="generic-node-se.png"
+         alt="Generic Node Sensor Edition"/>
+</figure>
+
+<p>This section will provide guidance on how to begin using <a href="https://www.genericnode.com/docs/sensor-edition/">Generic Node Sensor Edition</a> (GNSE) on The Things Stack.</p>
+<p>The Generic Node Sensor Edition comes with a pre-loaded application called <a href="https://www.genericnode.com/docs/applications/se-vanilla/">vanilla</a> that showcases the device&rsquo;s functions and capabilities. This application utilizes a combination of the onboard components including the LEDs, button, buzzer, accelerometer, secure element, temperature sensor, and humidity sensor. The instructions on how to flash a new application onto the Generic Node SE can be found <a href="https://www.genericnode.com/docs/getting-started/se-sw/env-setup/">here</a>.</p>
+<h1 id="onboarding-gnse-using-the-qr-code">Onboarding GNSE Using the QR Code</h1>
+<p>The Generic Node can be onboarded to The Things Stack using the QR code which is printed on the back of its enclosure.</p>
+<p>Sign in to <a href="/getting-started/quick-start/">The Things Stack</a>.</p>
+<p>In The Things Stack <strong>Console</strong>, choose the application to which you want to add the GNSE. See <a href="/integrations/adding-applications/">Adding applications</a> if you haven&rsquo;t created one yet.</p>
+<p>Select the <strong>Register end device</strong> button.</p>
+<figure><img src="application-overview.png"
+         alt="Application overview"/>
+</figure>
+
+<p>In the <strong>Register end device</strong> page select the <strong>Scan end device QR code</strong> button.</p>
+<figure><img src="register-end-device.png"
+         alt="Register end device"/>
+</figure>
+
+<p>The camera will start up and be ready to scan the QR code. To scan the device, bring the QR code close to the camera.</p>
+<figure><img src="waiting-for-camera.png"
+         alt="Waiting for camera"/>
+</figure>
+
+<p>A window with information scanned from the QR code (like <strong>Claim authentication code</strong>, <strong>JoinEUI</strong>, <strong>DevEUI</strong> and <strong>Brand</strong>) should appear on your screen. If the data displayed is correct, select the <strong>Apply</strong> button.</p>
+<figure><img src="found-qr-data.png"
+         alt="Found QR data"/>
+</figure>
+
+<p>To continue with the rest of the registration process you can choose either <strong>LoRaWAN Device Repository</strong> or <strong>manual registration</strong>.</p>
+<h3 id="using-the-lorawan-device-repository">Using the LoRaWAN Device Repository</h3>
+<p>The <a href="https://github.com/TheThingsNetwork/lorawan-devices">LoRaWAN Device repository</a> comprises over 600 end-device profiles, including the Generic Node Sensor Edition, which requires less information for registration with The Things Stack.</p>
+<p>In the <strong>End device type</strong> section, under <strong>Input Method</strong> select <strong>Select the end device in the LoRaWAN device repository</strong>. Then select/enter the following values:</p>
+<ul>
+<li>End device brand: <strong>The Things Industries</strong></li>
+<li>Model: <strong>Generic Node (Sensor Edition)</strong></li>
+<li>Hardware Ver.: <strong>1.1</strong></li>
+<li>Firmware Ver.: <strong>1.1</strong></li>
+<li>Profile (Region): choose <strong>EU_863_870</strong> for Europe or <strong>US_902_928</strong> for US</li>
+<li>Frequency plan: choose the frequency plan appropriate for your region/country, for example, if you are live in Europe, choose <strong>Europe 863-870 MHz (SF9 for RX2 - recommended)</strong>.</li>
+</ul>
+<figure><img src="dev-rep-1.png"
+         alt="Settings for registration through device repository"/>
+</figure>
+
+<ul>
+<li>JoinEUI: pre-filled</li>
+<li>DevEUI: pre-filled (this is the secure element’s DevEUI)</li>
+<li>AppKey: select the <strong>Generate</strong> button.</li>
+<li>End device ID: you can continue with the pre-filled value or use any other unique value.</li>
+</ul>
+<p>Select the <strong>Register end device</strong> button.</p>
+<figure><img src="dev-rep-2.png"
+         alt="Settings for registration through device repository"/>
+</figure>
+
+<p>The device is now registered and you will be redirected to the <strong>Overview</strong> page of the device.</p>
+<figure><img src="gnse-after-register.png"
+         alt="GNSE overview page"/>
+</figure>
+
+<h3 id="manually">Manually</h3>
+<p>The Generic Node Sensor Edition also supports manual registration, but you need to find the required settings from the datasheet and ensure that they are entered correctly.</p>
+<p>In the <strong>End device type</strong> section, under <strong>Input Method</strong> select <strong>Enter end device specifics manually</strong>.</p>
+<p>Then select/enter the following values:</p>
+<ul>
+<li>Frequency plan: choose the frequency plan appropriate for your region/country, for example, if you are live in Europe, choose <strong>Europe 863-870 MHz (SF9 for RX2 - recommended)</strong>.</li>
+<li>LoRaWAN version: <strong>LoRaWAN Specification 1.0.2</strong></li>
+<li>Regional parameters version: <strong>RP001 Regional Parameters 1.0.2 revision B</strong></li>
+</ul>
+<p>Select <strong>Show advanced activation, LoRaWAN class and cluster settings</strong> to expand the section. Ensure that the default selection is <strong>Over the Air Activation (OTAA)</strong>.</p>
+<figure><img src="manually-1.png"
+         alt="Settings for manual registartion"/>
+</figure>
+
+<p>Under <strong>Provisioning information</strong> enter the following settings:</p>
+<ul>
+<li>JoinEUI: pre-filled</li>
+<li>DevEUI: pre-filled (this is the secure element’s DevEUI)</li>
+<li>AppKey: select the <strong>Generate</strong> button.</li>
+<li>End device ID: you can continue with the pre-filled value or use any other unique value.</li>
+</ul>
+<p>Select the <strong>Register end device</strong> button.</p>
+<figure><img src="manually-2.png"
+         alt="Settings for manual registartion"/>
+</figure>
+
+<p>The device is now registered and you will be redirected to the <strong>Overview</strong> page of the device.</p>
+<figure><img src="gnse-after-register.png"
+         alt="GNSE overview page"/>
+</figure>
+
+
         </div>
         
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/devices/atecc608a/claim/">← Claim</a>
-<a class="button is-pulled-right" href="/docs/devices/generate-qr-code/">Generating a QR Code →</a>
+<a class="button is-pulled-left" href="/docs/devices/generate-qr-code/">← Generating a QR Code</a>
+<a class="button is-pulled-right" href="/docs/devices/the-things-node/">The Things Node →</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -184,16 +265,6 @@
     <h2 class="title is-size-6">On this page</h2>
     
 
-
-  <ul class="menu-list">
-    
-      
-      <li><a href='#who-is-it-for'>Who is it for?</a></li>
-    
-      
-      <li><a href='#how-does-it-work'>How does it work?</a></li>
-    
-  </ul>
 
 
   </nav>
@@ -231,14 +302,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Johan Stokking on 21 Feb 2023.
+  Last changed by Pradeeka Seneviratne on 25 Feb 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4445e2e50510e1224c9e2ec7a8ebb7889b5961ae">
-      The Things Join Server and related documentation (#1041)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2896283bebc8decf15ae57b08e7aaa060a172c40">
+      doc: Add Generic Node Sensor Edition (#1037)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/devices/device-claiming/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/devices/generic-node-se/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
