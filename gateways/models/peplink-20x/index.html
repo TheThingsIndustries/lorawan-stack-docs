@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.96.0" />
-  <title>Connect Tektelic Kona Micro with UDP Packet Forwarder | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/models/tektelickonamicro/udp/" />
+  <title>Peplink Balance 20X LoRaWAN (with FlexModule Mini) | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/models/peplink-20x/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8afd1a9ba4c2f5b2a5910c50125ba2636f89937b2e7f5ca55766ed500a2a1e4f.css" integrity="sha256-iv0am6TC9bKlkQxQEluiY2&#43;Jk3suf1ylV2btUAoqHk8=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Connect Tektelic Kona Micro with UDP Packet Forwarder">
+  <meta itemprop="name" content="Peplink Balance 20X LoRaWAN (with FlexModule Mini)">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Connect Tektelic Kona Micro with UDP Packet Forwarder">
+  <meta property="og:title" content="Peplink Balance 20X LoRaWAN (with FlexModule Mini)">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/models/tektelickonamicro/udp/">
-  <meta name="twitter:title" content="Connect Tektelic Kona Micro with UDP Packet Forwarder" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/models/peplink-20x/">
+  <meta name="twitter:title" content="Peplink Balance 20X LoRaWAN (with FlexModule Mini)" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -176,7 +176,12 @@
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/models/peplink-20x/" class="">Peplink Balance 20X LoRaWAN (with FlexModule Mini)</a>
+    <a href="https://www.thethingsindustries.com/docs/gateways/models/peplink-20x/" class="is-active">Peplink Balance 20X LoRaWAN (with FlexModule Mini)</a>
+    
+    
+
+
+
     
   </li>
 
@@ -187,30 +192,6 @@
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/models/tektelickonamicro/" class="">Tektelic Kona Micro IoT LoRaWAN Gateway</a>
-    
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/models/tektelickonamicro/lbs/" class="">Connect Tektelic Kona Micro with Lora Basics™ Station</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/models/tektelickonamicro/udp/" class="is-active">Connect Tektelic Kona Micro with UDP Packet Forwarder</a>
-    
-    
-
-
-
-    
-  </li>
-
-</ul>
-
-
     
   </li>
 
@@ -259,36 +240,82 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Connect Tektelic Kona Micro with UDP Packet Forwarder
+        <h1 class="title is-size-2">Peplink Balance 20X LoRaWAN (with FlexModule Mini)
           
         </h1>
         
         <div class="content">
-          <p>This section guides you to connect the Tektelic Kona Micro IoT LoRaWAN Gateway to The Things Stack using the <a href="https://www.thethingsindustries.com/docs/gateways/concepts/udp/">Semtech UDP Packet Forwarder</a>.</p>
-<h2 id="configure-the-packet-forwarder">Configure the Packet Forwarder</h2>
-<p>Now you can edit the gateway configuration file.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">vi /etc/default/config.json
-</span></span></code></pre></div><p>Press the <code>i</code> key on your keyboard to start insert mode. Once finished editing, press <code>ESC</code> and enter <code>:wq</code> to write the file and quit.</p>
-<p>Edit the server parameters:</p>
-<ul>
-<li><strong>server_address</strong>: Address of your The Things Stack deployment. See <a href="https://www.thethingsindustries.com/docs/getting-started/server-addresses/">Server Addresses</a>.</li>
-<li><strong>serv_port_up</strong>: UDP upstream port of the Gateway Server, typically 1700.</li>
-<li><strong>serv_port_down</strong>: UDP downstream port of the Gateway Server, typically 1700.</li>
-</ul>
-<p>Save the configuration and restart the packet forwarder.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">/etc/init.d/pkt_fwd restart
-</span></span></code></pre></div><p>If your configuration was successful, your gateway will connect to The Things Stack after a couple of seconds.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<p>If the gateway does not connect to The Things Stack after a few minutes, disconnect and reconnect the power supply to power-cycle the gateway. Packet forwarder logs can be observed by SSH-ing into the gateway and running:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">tail -f /var/log/pkt_fwd.log
-</span></span></code></pre></div>
-        </div>
-        <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/gateways/models/tektelickonamicro/lbs/">← Connect Tektelic Kona Micro with Lora Basics™ Station</a>
-<a class="button is-pulled-right" href="/docs/gateways/models/thethingsindoorgateway/">The Things Indoor Gateway →</a>
+          <p><a href="https://www.peplink.com/products/balance-20x/">Peplink’s Balance 20X</a> is an SD-WAN branch router with an option to add LoRaWAN gateway functionality using a LoRaWAN FlexModule Mini.</p>
+<figure class="plain"><img src="B20X_LoRa.png"
+         alt="Balance 20X with LoRaWAN FlexModule Mini"/>
+</figure>
+
+<p>The Balance 20X delivers excellent routing throughput with an embedded cellular modem, making it an easy-to-use, all-in-one router for indoor deployments. Its installation and configuration are made simple through a web-based user-friendly interface.</p>
+<p>The gateway supports both <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/">LoRa Basics™ Station</a> and the <a href="https://www.thethingsindustries.com/docs/gateways/concepts/udp/">Semtech UDP Packet Forwarder</a>. Keep in mind that using Lora Basics™ Station is preferred.</p>
+<p>For scalable deployments, Peplink’s in-house device management system, <a href="https://www.peplink.com/software/network-management-solution-incontrol-2/">InControl</a> can also be used.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ol>
+<li>The Things Stack account with user rights to add gateways.</li>
+<li>A Balance 20X with the LoRaWAN FlexModule Mini.</li>
+<li>A computer connected to the Balance 20X for configuration.</li>
+</ol>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Balance 20X must be running 8.3.0 or newer firmware version. Please check <a href="https://www.peplink.com/support/downloads/#balance">Peplink&rsquo;s download page</a> to download the latest firmware version.
 </div>
 
-        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<h2 id="registration">Registration</h2>
+<p>Create a gateway by following the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/concepts/adding-gateways/">Adding Gateways</a>.</p>
+<p>In the registration process, you will need the gateway&rsquo;s EUI. The Peplink 20X&rsquo;s EUI can be found in several ways:</p>
+<ol>
+<li>On the LoRaWAN FlexModule Mini label.</li>
+<li>On the LoRaWAN FlexModule Mini packing box.</li>
+<li>Via B20X web-based configuration page, under <strong>LoRaWAN</strong> section on the <strong>Advanced</strong> tab. See image below for a reference.</li>
+</ol>
+<figure class="plain"><img src="EUI.png"
+         alt="Finding EUI on the Balance 20X WEB configuration page"/>
+</figure>
+
+<h2 id="gateway-setup">Gateway Setup</h2>
+<p>This section demonstrates how to set up the Peplink Balance 20X using LoRa Basics™ Station.</p>
+<p>On your Peplink router’s web admin page, go to the <strong>Advanced</strong> tab along the top bar.</p>
+<p>Find <strong>LoRaWAN</strong> settings on the left and tick the <strong>Enable</strong> checkbox.</p>
+<p>Download a <a href="https://www.thethingsindustries.com/docs/reference/root-certificates/">common root SSL certificate</a> used in The Things Stack. For this guide, we used <strong>ISRG Root X1 certificate</strong>.</p>
+<p>Now configure the following settings:</p>
+<ul>
+<li><strong>Protocol: Basics™ Station</strong></li>
+<li><strong>Server</strong>: select <strong>Configuration and Update Server (CUPS)</strong> and enter the address of your The Things Stack deployment</li>
+<li><strong>Server Certificate (pem encoded):</strong> paste the ISRG Root X1 certificate you previously downloaded</li>
+<li><strong>Gateway Authorization:</strong> select <strong>Token</strong> and paste your gateway&rsquo;s API key (check the <a href="https://www.thethingsindustries.com/docs/gateways/concepts/adding-gateways/#create-gateway-api-key">Create Gateway API Key</a> section)</li>
+<li><strong>Network Mode: Public</strong></li>
+<li><strong>Antenna Gain:</strong> enter antenna Gain (<strong>2dBi</strong> for Peplink Balance 20X gateway)</li>
+<li><strong>Cable Loss:</strong> enter cable loss if there is a cable between antenna and LoRa module</li>
+</ul>
+<figure class="plain"><img src="Gateway_setup.png"
+         alt="Balance 20X LoRaWAN Gateway configuration example"/>
+</figure>
+
+<p>Click <strong>Save and Apply Changes</strong>.</p>
+<h2 id="monitor-event-log">Monitor Event Log</h2>
+<p>For debugging purposes go to <strong>Dashboard</strong> tab, then click on the <strong>Status</strong> button in the <strong>LoRaWAN</strong> section. This will open <strong>LoRaWAN Status</strong> page.</p>
+<p>Next to the <strong>Event log</strong> press <strong>Click to show</strong>. This will open the <strong>LoRaWAN Event Log</strong> page. See images below for reference.</p>
+<figure class="plain"><img src="Status.png"
+         alt="Viewing LoRaWAN statistics on Balance 20X"/>
+</figure>
+
+<figure class="plain"><img src="Event_log.png"
+         alt="Viewing LoRaWAN Event log messages on Balance 20X"/>
+</figure>
+
+
+        </div>
+        
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/gateways/models/nasysoutdoorgateway/">← NASys LoRaWAN Outdoor Gateway</a>
+<a class="button is-pulled-right" href="/docs/gateways/models/rak-7240/">RAK7240 WisGate Edge Prime →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
 <script src="https://cdn.emojicom.io/embed/widget.js" async></script>
 
 <div class='feedback has-vertical-space'>
@@ -306,10 +333,16 @@
   <ul class="menu-list">
     
       
-      <li><a href='#configure-the-packet-forwarder'>Configure the Packet Forwarder</a></li>
+      <li><a href='#prerequisites'>Prerequisites</a></li>
     
       
-      <li><a href='#troubleshooting'>Troubleshooting</a></li>
+      <li><a href='#registration'>Registration</a></li>
+    
+      
+      <li><a href='#gateway-setup'>Gateway Setup</a></li>
+    
+      
+      <li><a href='#monitor-event-log'>Monitor Event Log</a></li>
     
   </ul>
 
@@ -349,14 +382,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer on 14 Oct 2022.
+  Last changed by Giedrius on 25 Feb 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/11b832df984f5600c0739c6635d78cead9b0f8ae">
-      Refactor gateways section (#973)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/dd0dce81caf0b7f8bc6937e10342a939782aa16d">
+      doc: Peplink Balance 20X Gateway configuration manual (#1049)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/models/tektelickonamicro/udp.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/models/peplink-20x/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
