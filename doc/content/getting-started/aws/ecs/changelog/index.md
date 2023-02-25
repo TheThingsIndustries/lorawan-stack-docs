@@ -8,6 +8,20 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.24.1
+
+### `4-2a-configuration`
+
+- Added `RedisConnectionPoolMaxLifetime` parameter.
+
+### `2-5-db-timescale`
+
+- Added support for Postgres engine version 15 and TimescaleDB 2.9.3.
+
+### `4-2a-configuration`
+
+- Added `KeyVaultCacheSize`, `KeyVaultCacheTTL`, `KeyVaultCacheErrorTTL` parameters.
+
 ## 3.24.0
 
 ### ECS templates
