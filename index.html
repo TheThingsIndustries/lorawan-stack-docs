@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.24.0</p>
+        <p class="navbar-item is-size-7">v3.24.1</p>
       </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
           </div>
       <span class="navbar-burger burger" data-target="topMenu">
@@ -125,49 +125,35 @@
 <div class="whats-new">
   <div class="whats-new-content">
     <div class="whats-new-header">
-      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.24.0/>What's new in V3.24.0</a></h2>
+      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.24.1/>What's new in V3.24.1</a></h2>
       <a href="https://www.thethingsindustries.com/docs/whats-new/"><p class="see-more">See all release notes →</p></a>
     </div>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.24.0/">
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.24.1/">
       <div class="whats-new-body">
         <div class="whats-new-items-shadow whats-new-items-fade">
           <div class="whats-new-items">
             <h3 id="added">Added</h3>
 <ul>
-<li>List of end-devices can now be sorted by <code>last_seen_at</code> field. Unseen devices will be shown last.</li>
-<li>End devices now contain <code>lora_alliance_profile_ids</code> field.</li>
-<li>LoRa Alliance NetIDs revision 69 and 70. This is used in Network Operations Center.
+<li>Network Server ID (NSID) used for Backend Interfaces interoperability via the <code>ns.interop.id</code> and <code>dcs.edcs.ns-id</code> configuration options.
 <ul>
-<li>This requires a database schema migration (<code>ttn-lw-stack noc-db migrate</code>) because of added table records.</li>
+<li>In the Network Server, <code>ns.interop.id</code> acts as a fallback value for <code>sender-ns-id</code> in Join Server interoperability configuration.</li>
 </ul>
 </li>
-<li>Add <code>source</code> config option for TLS certificates in LoRaWAN Backend Interfaces interop client and The Things Join Server device claiming configuration. This value can be <code>file</code> (existing behavior) or <code>key-vault</code>.</li>
-<li>Add issuing short-lived TLS client certificates from AWS Private CA.</li>
-<li>Experimental support for application and end device statistics in the Network Operations Center.
-<ul>
-<li>The collection of the end device and application statistics can be enabled via the <code>noc.events.ns</code> experimental flag.</li>
-<li>The collection of the end device MAC command events can be enabled via the <code>noc.events.mac_commands</code> experimental flag.</li>
-<li>The new dashboards can be enabled via the <code>noc.dashboards.preview</code> experimental flag.</li>
-<li>This requires a database schema migration (<code>ttn-lw-stack noc-db migrate</code>) because of added table records.</li>
-</ul>
-</li>
-</ul>
-<h3 id="changed">Changed</h3>
-<ul>
-<li><code>serial_number</code> field is now moved to the root of the end device structure. <code>vendor_id</code> and <code>vendor_profile_id</code> are now moved to the <code>lora_alliance_profile_ids</code>.
-<ul>
-<li>This requires a database schema migration (<code>ttn-lw-stack is-db migrate</code>) because of added columns and views.</li>
-</ul>
-</li>
-<li>The underlying implementation of the storage integration of the Application Server now uses <code>bun</code> by default. This can be switched back by setting the experimental flag <code>as.bunstore</code> to <code>false</code>.</li>
+<li>Key vault cache time-to-live for errors configuration option <code>key-vault.cache.error-ttl</code>. This defaults to <code>key-vault.cache.ttl</code>.</li>
 </ul>
 <h3 id="deprecated">Deprecated</h3>
 <ul>
-<li>Configuring certificate authorities per LoRaWAN Backend Interfaces SenderID (<code>interop.sender-client-ca</code>) is now deprecated and support will be removed in a future version of The Things Stack.</li>
+<li>Device Claiming Server configuration option <code>dcs.edcs.network-server.home-ns-id</code>. Use <code>dcs.edcs.ns-id</code> instead.</li>
 </ul>
-<h3 id="removed">Removed</h3>
+<h3 id="fixed">Fixed</h3>
 <ul>
-<li>The device version identifiers no longer have the <code>serial_number</code>, <code>vendor_id</code> and <code>vendor_profile_id</code> fields.</li>
+<li>Claiming The Things Indoor Gateways.</li>
+<li>Key unwrap caching.</li>
+<li>Desired RX1 delay and desired beacon frequency not being possible to set for OTAA devices.</li>
+</ul>
+<h3 id="security">Security</h3>
+<ul>
+<li>Fix open redirect vulnerability for Console/Account App logins.</li>
 </ul>
 
           </div>
@@ -185,7 +171,7 @@
 <a href="https://www.thethingsindustries.com/docs/whats-new/">
   <div class="whats-new-800">
     <div class="whats-new-header-800">
-      <p>See what's new in V3.24.0</p>
+      <p>See what's new in V3.24.1</p>
       <p>-></p>
     </div>
   </div>
