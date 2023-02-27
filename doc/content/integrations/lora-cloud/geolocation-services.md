@@ -38,13 +38,15 @@ To setup LoRa Cloud Geolocation integration, navigate to your application in {{%
 
 On the left hand menu, select **Integrations &#8594; LoRa Cloud**. Click the **Expand** button next to the **Geolocation services**.
 
-Next, copy the token you previously created in LoRa Cloud Modem & Geolocation Services portal.
+Next, copy the token you previously created in LoRa Cloud Modem & Geolocation Services portal and paste it in the **Token** field.
 
 {{< figure src="../copy-token.png" alt="Copy the token from LoRa Cloud" >}}
 
 Choose the **Query type** depending on the type of data you want to use for estimating the location of your device. As mentioned earlier, you can choose **LoRa TOA/RSSI**, **GNSS** or **TOA/WiFi** query type.
 
 If you choose **LoRa TOA/RSSI**, you also have an option to enable **Multiframe** location lookups. Multiframe mode allows using the sequence of radio frames (instead of just a single frame) to improve the device's location estimation accuracy. Multiframe mode is reported to be more accurate than averaging multiple location results calculated from several single radio frames. If you choose multiframe mode, you can also set the **Multiframe window size** to tell how many historical messages should be sent as part of the final request, and **Multiframe time window** as the maximum age of considered historical messages.
+
+The setting for the Server URL points to the LoRa Cloud Modem & Geolocation Services and is set by default. Changing this is unnecessary.
 
 Finish by clicking the **Set token** button.
 

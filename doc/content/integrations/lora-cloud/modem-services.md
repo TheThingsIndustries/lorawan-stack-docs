@@ -4,7 +4,7 @@ description: ""
 weight: 3
 ---
 
-[LoRa Cloud Modem Services](https://www.loracloud.com/portal/device_management/home) complement your device management solution by giving you fine grain control of your LoRaWAN end devices. Obtain modem status information such as: system status, firmware version, voltage, downlink signal quality and time since last downlink.
+[LoRa Cloud Modem Services](https://www.loracloud.com/portal/device_management/home) complement your device management solution by giving you fine grain control of your LoRaWAN end devices. It allows to obtain modem status information such as: system status, firmware version, voltage, downlink signal quality and time since last downlink.
 
 <!--more-->
 
@@ -22,11 +22,11 @@ To setup LoRa Cloud Modem Services integration, navigate to your application in 
 
 On the left hand menu, select **Integrations &#8594; LoRa Cloud**. Click the **Expand** button next to the **Modem Services**.
 
-Next, copy the token you previously created in LoRa Cloud Modem & Geolocation Services portal.
+Next, copy the token you previously created in LoRa Cloud Modem & Geolocation Services portal and paste it in the **Token** field.
 
 {{< figure src="../copy-token.png" alt="Copy the token from LoRa Cloud" >}}
 
-Paste the token in the **Token** field under the **Set LoRa Cloud token** section. Finish by clicking the **Set token** button.
+Finish by clicking the **Set token** button.
 
 {{< figure src="../paste-token-modem.png" alt="Paste the token in The Things Stack" >}}
 

@@ -98,6 +98,6 @@ The package data format is common between both default associations and associat
 | Field | Type | Description | Required | Default value |
 |-------|------|-------------|---------|---------------|
 | `token` | `string` | The acces token to be used by the package to submit uplinks to the LoRa Cloud Modem and Geolocation Services | Yes | None. |
-| `server_url` | `URL` | The custom base URL to be used for service communication | No | `https://das.loracloud.com`
+| `server_url` | `URL` | The custom base URL to be used for service communication | No | `https://mgs.loracloud.com`
 
 Fields can be customized on a per device basis, by overriding the field in the package data of the association.
