@@ -34,9 +34,9 @@ Keep reading to learn how to register devices using these methods.
 
 ### Onboarding devices using QR codes
 
-If your device has a QR code, it is a no-brainer to onboard it on {{% tts %}}. If your device doesn't have a QR code, you can skip this section.
+If your device has a [TR005 LoRaWAN® Device Identification QR Code](https://lora-alliance.org/resource_hub/tr005-lorawan-device-identification-qr-codes/), it is a no-brainer to onboard it on {{% tts %}}. Note not all QR codes on the physical device are scannable. If your device doesn't have a QR code or has a vendor specific QR code, you can skip this section.
 
-Click the **Scan end device QR code** button and allow {{% tts %}} to use your camera. 
+Click the **Scan end device QR code** button and allow {{% tts %}} to use your camera.
 
 {{< figure src="waiting-for-camera.png" alt="Waiting for camera" >}}
 
@@ -62,7 +62,7 @@ Choose a **Frequency plan** appropriate for your region. Your device and gateway
 
 {{< figure src="device-repo.png" alt="Creating a new device with the Device Repository" >}}
 
-Enter a **JoinEUI/AppEUI** if provided by your manufacturer and click **Confirm**. If it is not provided by the manufacturer and your device is programmable, you can generate a random one in accordance with the test ranges defined by the [IEEE 802 standards](https://ieee802.org/) or use all zeros, just make sure to program the same value into your device. 
+Enter a **JoinEUI/AppEUI** if provided by your manufacturer and click **Confirm**. If it is not provided by the manufacturer and your device is programmable, you can generate a random one in accordance with the test ranges defined by the [IEEE 802 standards](https://ieee802.org/) or use all zeros, just make sure to program the same value into your device.
 
 Now enter your **DevEUI**. This should be provided by your manufacturer for commercial devices. If your device is programmable, you may generate an EUI using the **Generate** button, and program it in your device.
 
@@ -172,7 +172,7 @@ ttn-lw-cli end-devices create --help
 We define some user parameters that will be used below:
 
 ```bash
-APP_ID="app1" 
+APP_ID="app1"
 DEVICE_ID="dev1"
 FREQUENCY_PLAN="EU_863_870"
 DEV_EUI="0004A30B001C0530"
@@ -239,7 +239,7 @@ The end device should now be able to join the private network.
 For adding ABP devices, we can define the following parameters:
 
 ```bash
-APP_ID="app1" 
+APP_ID="app1"
 DEVICE_ID="dev1"
 FREQUENCY_PLAN="EU_863_870"
 DEV_ADDR="00E4304D"
@@ -317,9 +317,9 @@ See the following video from [The Things Network youtube channel](https://youtu.
 
 {{< tabs/tab "Console" >}}
 
-Once you have added your end device to {{% tts %}}, you can also set its location to be displayed on a map widget by clicking **Change location settings**. 
+Once you have added your end device to {{% tts %}}, you can also set its location to be displayed on a map widget by clicking **Change location settings**.
 
-The end device location can be manually set by pinning on the map widget, or entering the **Latitude**, **Longitude** and **Altitude** values. 
+The end device location can be manually set by pinning on the map widget, or entering the **Latitude**, **Longitude** and **Altitude** values.
 
 {{< figure src="device-location.png" alt="Gateway location" >}}
 
@@ -327,7 +327,7 @@ The end device location can be manually set by pinning on the map widget, or ent
 
 {{< tabs/tab "CLI" >}}
 
-Once you have added your end device to {{% tts %}}, you can also set its location. 
+Once you have added your end device to {{% tts %}}, you can also set its location.
 
 Set your end device's location with:
 
