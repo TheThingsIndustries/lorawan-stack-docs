@@ -21,6 +21,7 @@ Our `docker-compose.yml` file uses [Compose file version 3.7](https://docs.docke
 3. You may have invalid certificates. Verify using `openssl verify -CAfile ca.pem cert.pem`.
 4. If you configure {{% tts %}} without TLS and attempt to connect using `https` you will receive this error. Configure TLS or use `http`.
 5. If you are running an offline {{% tts %}} deployment, generating [Let's Encrypt certificates]({{< ref "/getting-started/installation/certificates#automatic-certificate-management" >}}) for your domain name might fail because of lack of the Internet connection. Try using certificates from a [Custom Certificate Authority]({{< ref "/getting-started/installation/certificates#custom-certificate-authority" >}}).
+6. Double-check all [ports]({{< ref "/getting-started/installation/configuration#environment-and-ports" >}}) listed in the `docker-compose.yml` file for any firewall restrictions.
 
 ## Can't access the server
 
@@ -94,7 +95,7 @@ In most cases, the error will point to an exact line of your configuration file 
 
 If you are facing the `missing_tenant_id` error, that means you are trying to access the Console in a multi-tenant {{% tts %}} environment on an address that doesn't contain any tenant ID, e.g. `https://thethings.example.com`. To access the Console of a particular tenant in a multi-tenant environment, you have to specify a tenant ID as a URL subdomain, e.g. `https://<tenant-id>.thethings.network.com`.
 
-## Grafana container fails to start upon installing {{% tts %}} due to permissions issues
+## Grafana container fails to start due to permissions issues
 
 If you are running {{% tts %}} Docker deployment on a Linux machine, you might encounter the following error: 
 
@@ -107,3 +108,14 @@ This issue usually arises from the following fact - on Linux, Docker creates fol
 ```bash
 sudo chown -R 472:0 .env/data/grafana
 ```
+
+## NOC has trouble getting initialized
+
+If you have registered user with User ID `admin` during installation, you will most likely encounter this error when trying to run {{% tts %}}:
+
+```
+stack_1     | INFO	Setting up Network Operations Center
+stack_1     | error:cmd/internal/shared:initialize_network_operations_center (could not initialize Network Operations Center)
+```
+
+Accessing NOC with the `admin` user is not allowed, so make sure to create user with admin rights but with User ID other than `admin`.
