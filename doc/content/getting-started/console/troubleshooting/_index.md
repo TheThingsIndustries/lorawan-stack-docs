@@ -41,3 +41,7 @@ An uplink was received and forwarded by multiple gateways, but due to backhaul l
 ### Invalid Major / JoinRequestPHYPayload Length / Unknown MType
 
 These are typically non-LoRaWAN traffic received by a gateway on your network.
+
+### Token Refresh Refused
+
+If you see `error:pkg/web/oauthclient:refresh (token refresh refused)` error in the Console and you're unable to access it, try clearing your browser's cache and history, and retry accessing the Console. You can also try accessing the Console from the incognito window or another browser.
