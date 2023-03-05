@@ -205,6 +205,7 @@
 <li>You may have invalid certificates. Verify using <code>openssl verify -CAfile ca.pem cert.pem</code>.</li>
 <li>If you configure The Things Stack without TLS and attempt to connect using <code>https</code> you will receive this error. Configure TLS or use <code>http</code>.</li>
 <li>If you are running an offline The Things Stack deployment, generating <a href="https://www.thethingsindustries.com/docs/getting-started/installation/certificates/#automatic-certificate-management">Let&rsquo;s Encrypt certificates</a> for your domain name might fail because of lack of the Internet connection. Try using certificates from a <a href="https://www.thethingsindustries.com/docs/getting-started/installation/certificates/#custom-certificate-authority">Custom Certificate Authority</a>.</li>
+<li>Double-check all <a href="https://www.thethingsindustries.com/docs/getting-started/installation/configuration/#environment-and-ports">ports</a> listed in the <code>docker-compose.yml</code> file for any firewall restrictions.</li>
 </ol>
 <h2 id="cant-access-the-server">Can&rsquo;t access the server</h2>
 <p>Ensure you have a DNS record pointing to your server&rsquo;s public IP address. See your domain registrar&rsquo;s help section for instructions, or <a href="https://www.name.com/support/articles/205188538-Pointing-your-domain-to-hosting-with-A-records">name.com&rsquo;s DNS guide</a> for general information about pointing records to your IP address.</p>
@@ -243,12 +244,17 @@ stack_1      |     licensed=[XXXXXXXX/24] (redacted)
 </code></pre><p>In most cases, the error will point to an exact line of your configuration file where the issue occured. To fix this, apply the correct indentation. Use <code>ttn-lw-stack config --yml</code> to see the default The Things Stack configuration with correct indentation in your terminal.</p>
 <h2 id="missing-tenant-id">Missing tenant ID</h2>
 <p>If you are facing the <code>missing_tenant_id</code> error, that means you are trying to access the Console in a multi-tenant The Things Stack environment on an address that doesn&rsquo;t contain any tenant ID, e.g. <code>https://thethings.example.com</code>. To access the Console of a particular tenant in a multi-tenant environment, you have to specify a tenant ID as a URL subdomain, e.g. <code>https://&lt;tenant-id&gt;.thethings.network.com</code>.</p>
-<h2 id="grafana-container-fails-to-start-upon-installing-the-things-stack-due-to-permissions-issues">Grafana container fails to start upon installing The Things Stack due to permissions issues</h2>
+<h2 id="grafana-container-fails-to-start-due-to-permissions-issues">Grafana container fails to start due to permissions issues</h2>
 <p>If you are running The Things Stack Docker deployment on a Linux machine, you might encounter the following error:</p>
 <pre tabindex="0"><code>failed to connect to database: failed to create SQLite database file &#34;/var/lib/grafana/db/grafana.db&#34;: open /var/lib/grafana/db/grafana.db: permission denied
 </code></pre><p>This issue usually arises from the following fact - on Linux, Docker creates folders as <code>root</code> and containers are expected to run as <code>root</code>, while Grafana runs as a non-<code>root</code> user. To fix this, you need to manually update rights for Grafana using the following command:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo chown -R 472:0 .env/data/grafana
-</span></span></code></pre></div>
+</span></span></code></pre></div><h2 id="noc-has-trouble-getting-initialized">NOC has trouble getting initialized</h2>
+<p>If you have registered user with User ID <code>admin</code> during installation, you will most likely encounter this error when trying to run The Things Stack:</p>
+<pre tabindex="0"><code>stack_1     | INFO	Setting up Network Operations Center
+stack_1     | error:cmd/internal/shared:initialize_network_operations_center (could not initialize Network Operations Center)
+</code></pre><p>Accessing NOC with the <code>admin</code> user is not allowed, so make sure to create user with admin rights but with User ID other than <code>admin</code>.</p>
+
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/getting-started/installation/running-the-stack/">← Running The Things Stack</a>
@@ -297,7 +303,10 @@ stack_1      |     licensed=[XXXXXXXX/24] (redacted)
       <li><a href='#missing-tenant-id'>Missing tenant ID</a></li>
     
       
-      <li><a href='#grafana-container-fails-to-start-upon-installing-the-things-stack-due-to-permissions-issues'>Grafana container fails to start upon installing The Things Stack due to permissions issues</a></li>
+      <li><a href='#grafana-container-fails-to-start-due-to-permissions-issues'>Grafana container fails to start due to permissions issues</a></li>
+    
+      
+      <li><a href='#noc-has-trouble-getting-initialized'>NOC has trouble getting initialized</a></li>
     
   </ul>
 
@@ -337,10 +346,10 @@ stack_1      |     licensed=[XXXXXXXX/24] (redacted)
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 16 Jan 2023.
+  Last changed by Nejra Selimović on 05 Mar 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a5b6108aa748c7cdd57a3315f4d1f75c628a537d">
-      doc: Document resolving Grafana permissions issue (#1024)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/370882f6eaca3bb4373955b5e94b613db74ea5cb">
+      doc: Troubleshooting installation (#1051)
     </a>
 </p>
 
