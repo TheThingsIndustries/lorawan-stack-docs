@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.96.0" />
-  <title>LoRa Cloud Device &amp; Application Services | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/lora-cloud/das/" />
+  <title>LoRa Cloud Modem Services | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/lora-cloud/modem-services/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8afd1a9ba4c2f5b2a5910c50125ba2636f89937b2e7f5ca55766ed500a2a1e4f.css" integrity="sha256-iv0am6TC9bKlkQxQEluiY2&#43;Jk3suf1ylV2btUAoqHk8=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="LoRa Cloud Device &amp; Application Services">
+  <meta itemprop="name" content="LoRa Cloud Modem Services">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="LoRa Cloud Device &amp; Application Services">
+  <meta property="og:title" content="LoRa Cloud Modem Services">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/lora-cloud/das/">
-  <meta name="twitter:title" content="LoRa Cloud Device &amp; Application Services" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/lora-cloud/modem-services/">
+  <meta name="twitter:title" content="LoRa Cloud Modem Services" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
 </head>
@@ -98,17 +98,22 @@
 <ul class="menu-list">
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/lora-cloud/das/" class="is-active">LoRa Cloud Device &amp; Application Services</a>
-    
-    
-
-
-
+    <a href="https://www.thethingsindustries.com/docs/integrations/lora-cloud/portal/" class="">LoRa Cloud Setup</a>
     
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/lora-cloud/geolocation/" class="">LoRa Cloud Geolocation</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/lora-cloud/geolocation-services/" class="">LoRa Cloud Geolocation Services</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/lora-cloud/modem-services/" class="is-active">LoRa Cloud Modem Services</a>
+    
+    
+
+
+
     
   </li>
 
@@ -149,42 +154,26 @@
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">LoRa Cloud Device &amp; Application Services
+        <h1 class="title is-size-2">LoRa Cloud Modem Services
           
         </h1>
         
         <div class="content">
-          <p><a href="https://www.loracloud.com/portal/device_management/home">LoRa Cloud Device &amp; Application Services</a> comprise a set of full life-cycle management features for LoRaWAN-based devices, which are intended to simplify the development of managed LoRaWAN endpoint solutions.</p>
-<p>LoRa Cloud Device &amp; Application Services protocol lets you manage common device functionality at the application layer for all LoRa-based devices, and manage geolocation for modem-based devices (like <a href="https://www.loracloud.com/documentation/device_management?url=overview.html#lora-edge-lr1110-solution">LoRa Edge LR1110 Solution</a>). These services also provide protocols for reliable application data reception from all Semtech&rsquo;s LoRaWAN-compatible devices, with efficient techniques to fight against packet loss.</p>
-<p>In general, LoRa Cloud Device &amp; Application Services do not interact directly with network servers to retrieve uplinks or schedule downlinks, so it is usually users&rsquo;s responsibility to forward uplinks towards and schedule downlinks from LoRa Cloud as a part of the response.</p>
-<p>However, when it comes to geolocation for modem-based devices, The Things Stack integration with LoRa Cloud Device &amp; Application Services handles this on behalf of the user, i.e. it queries the protocol engine on LoRa Cloud in order to retrieve the response. This way, after the integration is configured and the uplink message containing scanning result is sent from the device, the user only has to monitor results in The Things Stack.</p>
-<h2 id="lora-cloud-setup">LoRa Cloud Setup</h2>
-<p>On the <a href="https://www.loracloud.com/portal">LoRa Cloud portal</a>, navigate to <strong>LoRa Cloud Device &amp; Application Services</strong>.</p>
-<figure><img src="../das.png"
-         alt="LoRa Cloud Device &amp; Application Services"/>
-</figure>
-
-<p>Choose <strong>Manage devices</strong> on the left hand menu and click the <strong>Add devices</strong> button. To add a device, you only need to provide its EUI as shown on the image below.</p>
-<figure><img src="../add-device.png"
-         alt="Adding a new device"/>
-</figure>
-
-<p>Next, choose <strong>Manage tokens</strong> on the left hand menu. Click the <strong>Create new token</strong> button.</p>
-<p>Give the name to your token and tick the boxes next to permissions you wish to allow for it. Click the <strong>Create new token</strong> button to finish. A user can decide to restrict some permissions. On the image below, all permissions are allowed for the sake of simplicity of this guide.</p>
-<figure><img src="../token-creation.png"
-         alt="Creating a token"/>
-</figure>
-
-<h2 id="configure-device--application-services-integration">Configure Device &amp; Application Services Integration</h2>
-<p>To setup LoRa Cloud Device &amp; Application Services integration, navigate to your application in The Things Stack.</p>
-<p>On the left hand menu, select <strong>Integrations → LoRa Cloud</strong>. Click the <strong>Expand</strong> button next to the <strong>Device &amp; Application Services</strong>.</p>
-<p>Next, copy the token you previously created in LoRa Cloud Device &amp; Application Services portal.</p>
+          <p><a href="https://www.loracloud.com/portal/device_management/home">LoRa Cloud Modem Services</a> complement your device management solution by giving you fine grain control of your LoRaWAN end devices. It allows to obtain modem status information such as: system status, firmware version, voltage, downlink signal quality and time since last downlink.</p>
+<p>LoRa Cloud Modem Services protocol lets you manage common device functionality at the application layer for all LoRa-based devices, and manage geolocation for modem-based devices (like <a href="https://www.loracloud.com/documentation/device_management?url=overview.html#lora-edge-lr1110-solution">LoRa Edge LR1110 Solution</a>). These services also provide protocols for reliable application data reception from all Semtech&rsquo;s LoRaWAN-compatible devices, with efficient techniques to fight against packet loss.</p>
+<p>In general, LoRa Cloud Modem Services do not interact directly with network servers to retrieve uplinks or schedule downlinks, so it is usually users&rsquo;s responsibility to forward uplinks towards and schedule downlinks from LoRa Cloud as a part of the response.</p>
+<p>However, when it comes to geolocation for modem-based devices, The Things Stack integration with LoRa Cloud Modem Services handles this on behalf of the user, i.e. it queries the protocol engine on LoRa Cloud in order to retrieve the response. This way, after the integration is configured and the uplink message containing scanning result is sent from the device, the user only has to monitor results in The Things Stack.</p>
+<p>Before proceding with this guide, make sure you have completed the <a href="https://www.thethingsindustries.com/docs/integrations/lora-cloud/portal/">LoRa Cloud Setup</a> guide.</p>
+<h2 id="configure-lora-cloud-modem-services-integration">Configure LoRa Cloud Modem Services Integration</h2>
+<p>To setup LoRa Cloud Modem Services integration, navigate to your application in The Things Stack.</p>
+<p>On the left hand menu, select <strong>Integrations → LoRa Cloud</strong>. Click the <strong>Expand</strong> button next to the <strong>Modem Services</strong>.</p>
+<p>Next, copy the token you previously created in LoRa Cloud Modem &amp; Geolocation Services portal and paste it in the <strong>Token</strong> field.</p>
 <figure><img src="../copy-token.png"
          alt="Copy the token from LoRa Cloud"/>
 </figure>
 
-<p>Paste the token in the <strong>Token</strong> field under the <strong>Set LoRa Cloud token</strong> section and tick the box under <strong>LR1110 demo encoding</strong> to enable it. Finish by clicking the <strong>Set token</strong> button.</p>
-<figure><img src="../paste-token.png"
+<p>Finish by clicking the <strong>Set token</strong> button.</p>
+<figure><img src="../paste-token-modem.png"
          alt="Paste the token in The Things Stack"/>
 </figure>
 
@@ -192,7 +181,7 @@
 <p>For LR1110 modem-based devices, location of the device can be estimated using Wi-Fi, assisted GNSS and autonomous GNSS scans. This section will show you how to obtain the location estimates using Wi-Fi and assisted GNSS scans.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Please keep in mind that this guide does not refer to  LoRa Cloud Geolocation. In case you are looking for geolocation solutions that use RSSI and TOA metadata, or you are using LR1110-based device with transceiver firmware (instead of Modem-E firmware), you should follow the <a href="https://www.thethingsindustries.com/docs/integrations/lora-cloud/geolocation/">LoRa Cloud Geolocation guide</a>.
+  Please keep in mind that this guide does not refer to  LoRa Cloud Geolocation. In case you are looking for geolocation solutions that use RSSI and TOA metadata, or you are using LR1110-based device with transceiver firmware (instead of Modem-E firmware), you should follow the <a href="https://www.thethingsindustries.com/docs/integrations/lora-cloud/geolocation-services/">LoRa Cloud Geolocation guide</a>.
 </div>
 
 <div class="notification is-info is-light has-text-dark">
@@ -241,7 +230,7 @@
 
 <h2 id="send-requests-from-lora-cloud">Send Requests from LoRa Cloud</h2>
 <p>Besides estimating the location of your device, you can also send requests from LoRa Cloud portal to mute or reset the device, trigger it for a re-join, set ADR profile or obtain information like temperature, voltage, signal strength, status, etc. In this section, we demonstrate how to send a request to obtain information from your device.</p>
-<p>To send a request, navigate to <strong>Manage devices</strong> on the left hand menu in the LoRa Cloud Device &amp; Application Services portal.</p>
+<p>To send a request, navigate to <strong>Manage devices</strong> on the left hand menu in the LoRa Cloud Modem Services portal.</p>
 <p>Click on the <strong>Send requests</strong> button.</p>
 <figure><img src="../send-requests.png"
          alt="Send requests from LoRa Cloud portal"/>
@@ -260,8 +249,8 @@
 </figure>
         </div>
         <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/integrations/lora-cloud/">← LoRa Cloud</a>
-<a class="button is-pulled-right" href="/docs/integrations/lora-cloud/geolocation/">LoRa Cloud Geolocation →</a>
+<a class="button is-pulled-left" href="/docs/integrations/lora-cloud/geolocation-services/">← LoRa Cloud Geolocation Services</a>
+<a class="button is-pulled-right" href="/docs/integrations/node-red/">Node-RED →</a>
 </div>
 
         <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -282,10 +271,7 @@
   <ul class="menu-list">
     
       
-      <li><a href='#lora-cloud-setup'>LoRa Cloud Setup</a></li>
-    
-      
-      <li><a href='#configure-device--application-services-integration'>Configure Device &amp; Application Services Integration</a></li>
+      <li><a href='#configure-lora-cloud-modem-services-integration'>Configure LoRa Cloud Modem Services Integration</a></li>
     
       
       <li><a href='#obtain-location-solutions'>Obtain Location Solutions</a></li>
@@ -331,14 +317,14 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Oliver Cvetkovski on 08 Mar 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/ec58e18e80a5bb0f837b3064abd22b81482b7303">
+      doc: Update LoRa Cloud integration docs (#1046)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/lora-cloud/das.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/lora-cloud/modem-services.md" class="button">Edit on Github</a>
 </div>
 
       </div>
