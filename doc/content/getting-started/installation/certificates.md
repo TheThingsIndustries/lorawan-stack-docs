@@ -8,7 +8,7 @@ weight: 2
 
 <!--more-->
 
-In this guide, we show you how to request a free, trusted certificate from [Let's Encrypt](https://letsencrypt.org/getting-started/), but if you already have a certificate (`cert.pem`) and a corresponding key (`key.pem`), you can also use those. For local deployments, you can set up your own Certificate Authority and issue a certificate-key pair.
+In this guide, we request a free, trusted certificate from [Let's Encrypt](https://letsencrypt.org/getting-started/), using the built in ACME support, but if you already have a certificate (`cert.pem`) and a corresponding key (`key.pem`), you can also use those. For local deployments, you can set up your own Certificate Authority and issue a certificate-key pair.
 
 ## Automatic Certificate Management
 
@@ -33,7 +33,9 @@ config/
 
 If you are using Let's Encrypt in a multi-tenant {{% tts %}} environment, make sure you specify all tenant addresses in the TLS configuration of `ttn-lw-stack-docker.yml`. Read more in the [TLS section]({{< ref "/getting-started/installation/configuration#tls" >}}).
 
-Certificates will automatically be requested the first time you access {{% tts %}}. You will notice that the page takes some time to load while certificates are obtained in the background. 
+Certificates will automatically be requested the first time you access {{% tts %}}. You will notice that the page takes some time to load while certificates are obtained in the background.
+
+Once you have created the `acme` folder and given it appropriate permissions, move on to [run {{% tts %}}]({{< ref "/getting-started/installation/running-the-stack" >}})!
 
 ### Using Custom Certificates
 

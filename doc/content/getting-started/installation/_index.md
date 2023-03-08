@@ -37,6 +37,6 @@ If purchasing an Enterprise license, consider setting up a multi-tenant environm
 
 For multi-tenant deployments, DNS records for `*.domain` need to be created in addition to the plain `domain` record. For offline deployments, internal DNS pointing to your server's IP address can be used, and The Things Industries can provide a license for that domain name.
 
-This guide shows you how to get everything up and running on a server. If you are comfortable with configuring servers and working with command line, this is the perfect place to start, but first, follow the guides to [install Docker](https://docs.docker.com/install/#supported-platforms) and to [install Docker Compose](https://docs.docker.com/compose/install/#install-compose).
+This guide shows you how to get everything up and running on a server. If you are comfortable with configuring servers and working with command line, this is the perfect place to start, but first, follow the guides to [install Docker](https://docs.docker.com/install/#supported-platforms), to [install Docker Compose](https://docs.docker.com/compose/install/#install-compose), and to [configure permissions for Docker Engine](https://docs.docker.com/engine/install/linux-postinstall/).
 
 Next, see instructions on how to [configure]({{< ref "/getting-started/installation/configuration" >}}), set up [certificates]({{< ref "/getting-started/installation/certificates" >}}) and finally [run {{% tts %}}]({{< ref "/getting-started/installation/running-the-stack" >}})!
