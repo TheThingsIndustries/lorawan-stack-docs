@@ -22,6 +22,8 @@ Next, you need to initialize the database of the Identity Server:
 docker-compose run --rm stack is-db migrate
 ```
 
+If you receive a permissions error, ensure you have correctly [configured permissions for Docker Engine](https://docs.docker.com/engine/install/linux-postinstall/).
+
 If you receive an error running {{% tts %}}, make sure a {{% tts %}} container isn't already running. Use `docker ps` to see running containers.
 
 For the Storage Integration available in {{% tts %}} Enterprise, the database of the Application Server needs to be initialized as well:
@@ -66,19 +68,41 @@ docker-compose run --rm stack is-db create-oauth-client \
   --redirect-uri "code"
 ```
 
-OAuth clients for the Console and Network Operations Center need to be created in Identity Server so they can use the login functionality.
+OAuth clients for the Console and Network Operations Center also need to be created in Identity Server so they can use the login functionality.
 
-Use the following command with variables:
+Create an OAuth client for the console (replace with your `SERVER_ADDRESS` and Console `CLIENT_SECRET`):
 
 ```bash
 SERVER_ADDRESS=https://thethings.example.com
-ID=...
-NAME=...
-CLIENT_SECRET=...
-REDIRECT_URI=...
-REDIRECT_PATH=...
-LOGOUT_REDIRECT_URI=...
-LOGOUT_REDIRECT_PATH=...
+ID=console
+NAME=Console
+CLIENT_SECRET=console
+REDIRECT_URI=${SERVER_ADDRESS}/console/oauth/callback
+REDIRECT_PATH=/console/oauth/callback
+LOGOUT_REDIRECT_URI=${SERVER_ADDRESS}/console
+LOGOUT_REDIRECT_PATH=/console
+docker-compose run --rm stack is-db create-oauth-client \
+  --id ${ID} \
+  --name "${NAME}" \
+  --owner admin \
+  --secret "${CLIENT_SECRET}" \
+  --redirect-uri "${REDIRECT_URI}" \
+  --redirect-uri "${REDIRECT_PATH}" \
+  --logout-redirect-uri "${LOGOUT_REDIRECT_URI}" \
+  --logout-redirect-uri "${LOGOUT_REDIRECT_PATH}"
+```
+
+And then for the NOC (replace with your `SERVER_ADDRESS` and NOC `CLIENT_SECRET`):
+
+```bash
+SERVER_ADDRESS=https://thethings.example.com
+ID=noc
+NAME="Network Operations Center"
+CLIENT_SECRET=noc
+REDIRECT_URI=${SERVER_ADDRESS}/noc/oauth/callback
+REDIRECT_PATH=/noc/oauth/callback
+LOGOUT_REDIRECT_URI=${SERVER_ADDRESS}/noc
+LOGOUT_REDIRECT_PATH=/noc
 docker-compose run --rm stack is-db create-oauth-client \
   --id ${ID} \
   --name "${NAME}" \
@@ -92,6 +116,10 @@ docker-compose run --rm stack is-db create-oauth-client \
 
 {{< note >}} In a multi-tenant environment, pass `--tenant-id NULL` to register the OAuth client for all tenants. {{< /note >}}
 
+The variables for the Console and NOC OAuth clients are repeated here:
+
+<details><summary>OAuth client variables</summary>
+
 Set the variables as follows:
 
 Key | Console | Network Operations Center
@@ -103,6 +131,8 @@ Key | Console | Network Operations Center
 `REDIRECT_PATH` | `/console/oauth/callback` | `/noc/oauth/callback`
 `LOGOUT_REDIRECT_URI` | `${SERVER_ADDRESS}/console` | `${SERVER_ADDRESS}/noc`
 `LOGOUT_REDIRECT_PATH` | `/console` | `/noc`
+
+</details>
 
 ## Running {{% tts %}}
 

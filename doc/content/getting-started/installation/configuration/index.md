@@ -18,7 +18,7 @@ In addition to the written instructions below, video instructions for installing
 
 {{% tts %}} requires two configuration files when installing with Docker: `docker-compose.yml` and `ttn-lw-stack-docker.yml`. 
 
-Example files for Enterprise and Open source are provided [below](#example-configuration-files).
+Example files for Enterprise and Open source are provided [below](#example-configuration-files). Note that you must replace the example server address `thethings.example.com` in `ttn-lw-stack-docker.yml`, and you should change additional settings for production deployments, which we cover below.
 
 ### `docker-compose.yml`
 
@@ -30,7 +30,7 @@ Example files for Enterprise and Open source are provided [below](#example-confi
 
 The configuration options in `ttn-lw-stack-docker` can also be specified using command-line flags or environment variables. All configuration options have a corresponding environment variable and command-line flag. See the [Configuration Reference]({{< ref "reference/configuration" >}}) for more information about the configuration options.
 
-This guide assumes the following directory hierarchy:
+This guide assumes the following directory hierarchy. Create this folder structure with `docker-compose.yml`and `ttn-lw-stack-docker.yml`:
 
 ```bash
 docker-compose.yml          # defines Docker services for running {{% tts %}}
@@ -58,11 +58,9 @@ Download the example `ttn-lw-stack-docker.yml` for {{% tts %}} Open Source <a hr
 {{< /tabs/tab >}}
 {{< /tabs/container >}}
 
-These example configuration files contain all of the configuration settings you need to run {{% tts %}} for development. Be sure to update `ttn-lw-stack-docker.yml` with your server address, generate keys in `http.cookie` and set `console.oauth.client-secret`.
+These example configuration files contain all of the configuration settings you need to run {{% tts %}} for development. Be sure to update `ttn-lw-stack-docker.yml` with your server address.
 
-For an extended explanation of the configuration settings, keep reading.
-
-Settings in `docker-compose.yml` and `ttn-lw-stack-docker.yml` files are explained in detail in [Understanding Docker Configuration](#understanding-docker-configuration) and [Understanding The Things Stack Configuration](#understanding-the-things-stack-configuration) sections. Further, we provide tips for running {{% tts %}} in production.
+Settings in `docker-compose.yml` and `ttn-lw-stack-docker.yml` files are explained in detail in [Understanding Docker Configuration](#understanding-docker-configuration) and [Understanding The Things Stack Configuration](#understanding-the-things-stack-configuration) sections below. Further, we provide tips for running {{% tts %}} in production.
 
 ## Understanding Docker Configuration
 
@@ -133,6 +131,8 @@ The simplest configuration for Redis looks like this (excerpted from the example
 
 ### {{% tts %}}
 
+After starting the PostgreSQL and Redis databases, Docker Compose starts {{% tts %}}.
+
 #### Entrypoint and Dependencies
 
 Docker Compose uses `ttn-lw-stack -c /config/ttn-lw-stack-docker.yml` as the container entry point, so that `ttn-lw-stack-docker.yml` configuration file is always loaded (more on the config file below).
@@ -174,6 +174,8 @@ The `ports` section exposes {{% tts %}}'s ports outside the Docker container. Po
 {{< highlight yaml "linenos=table,linenostart=66" >}}
 {{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=67 to=95 >}}
 {{< /highlight >}}
+
+{{< note >}} Be sure to provide network access to these ports on the machine you are running {{% tts %}}. {{</ note >}}
 
 ## Understanding {{% tts %}} Configuration
 
@@ -233,16 +235,31 @@ If you are using your own certificate files, make sure to uncomment the lines th
 If you are using Let's Encrypt in a multi-tenant {{% tts %}} environment, all tenant addresses have to be specified in the `ttn-lw-stack-docker.yml` file using `tls.acme.hosts` configuration option. For example, for {{% tts %}} deployment with two tenants, TLS configuration would look like this:
 
 {{< highlight yaml "linenos=table,linenostart=59" >}}
-{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=59 to=66 >}}
+# Let's encrypt for "thethings.example.com"
+tls:
+  source: "acme"
+  acme:
+    dir: "/var/lib/acme"
+    email: "you@thethings.example.com"
+    hosts: ["*.thethings.example.com"]
+    default-host: "thethings.example.com"
 {{< /highlight >}}
 
-### Component URLs
+### Console Component URLs
 
-The `console` section configures the URLs for the Web UI and the secret used by the console client. These tell {{% tts %}} where all its components are accessible.
+The `console` section configures the URLs for the Web UI and the secret used by the console client. These tell {{% tts %}} where all its components are accessible. Be sure to replace these, and all the other server addresses, with yours.
+
+{{< highlight yaml "linenos=table,linenostart=89" >}}
+{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=89 to=109 >}}
+{{< /highlight >}}
+
+{{< warning >}} Failure to correctly configure component URLs is a common problem that will prevent the stack from starting. Be sure to replace all instances of `thethings.example.com` with your domain name! {{</ warning >}}
 
 The `client-secret` will be needed later when authorizing the Console. Be sure to set and remember it!
 
-{{< warning >}} Failure to correctly configure component URLs is a common problem that will prevent the stack from starting. Be sure to replace all instances of `thethings.example.com` with your domain name! {{</ warning >}}
+{{< highlight yaml "linenos=table,linenostart=111" >}}
+{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=111 to=116 >}}
+{{< /highlight >}}
 
 ### NOC
 
@@ -250,25 +267,35 @@ The `client-secret` will be needed later when authorizing the Console. Be sure t
 
 Besides `ui` and `oauth` settings, storage settings need to be configured in the `store` section. If you're using Postgres read replicas to offload read requests or analytics traffic from the primary Postgres instance, you can configure it using the `read-database-uri`. You're also able to configure the batch window and size, as well as to set the retention period for raw data.
 
-To visualize data, configure the `grafana` section.
+To authorize the NOC, be sure to set and remember the client secret.
 
 {{< highlight yaml "linenos=table,linenostart=152" >}}
-{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=152 to=174 >}}
+{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=152 to=173 >}}
+{{< /highlight >}}
+
+To visualize data, configure the `grafana` section.
+
+{{< highlight yaml "linenos=table,linenostart=174" >}}
+{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=174 to=180 >}}
 {{< /highlight >}}
 
 ### Multi-tenancy
 
 {{< distributions "Enterprise" >}} If running a multi-tenant environment, we need to configure the default tenant ID, and the base domain from which tenant IDs are inferred. See the [`tenancy` configuration reference]({{< ref "/reference/configuration/the-things-stack#multi-tenancy" >}}).
 
-{{< highlight yaml "linenos=table,linenostart=177" >}}
-{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=177 to=179 >}}
+{{< highlight yaml "linenos=table,linenostart=181" >}}
+{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=181 to=184 >}}
 {{< /highlight >}}
 
 For multi-tenant environments you'll also need to configure tenant admin keys:
 
-{{< highlight yaml "linenos=table,linenostart=38" >}}
-{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=38 to=40 >}}
+{{< highlight yaml "linenos=table,linenostart=40" >}}
+{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=40 to=42 >}}
 {{< /highlight >}}
+
+## Next Step - Certificates
+
+Once you have configured `docker-compose.yml` and `ttn-lw-stack-docker.yml` as shown in the instructions above, continue on to the [Certificates]({{< relref "certificates" >}}) section.
 
 ## Running The Things Stack as `localhost`
 
