@@ -194,7 +194,7 @@
         
         <div class="content">
           <p>The Things Stack needs to be configured with Transport Layer Security (TLS) and HTTPS. This requires a TLS certificate and a corresponding key.</p>
-<p>In this guide, we show you how to request a free, trusted certificate from <a href="https://letsencrypt.org/getting-started/">Let&rsquo;s Encrypt</a>, but if you already have a certificate (<code>cert.pem</code>) and a corresponding key (<code>key.pem</code>), you can also use those. For local deployments, you can set up your own Certificate Authority and issue a certificate-key pair.</p>
+<p>In this guide, we request a free, trusted certificate from <a href="https://letsencrypt.org/getting-started/">Let&rsquo;s Encrypt</a>, using the built in ACME support, but if you already have a certificate (<code>cert.pem</code>) and a corresponding key (<code>key.pem</code>), you can also use those. For local deployments, you can set up your own Certificate Authority and issue a certificate-key pair.</p>
 <h2 id="automatic-certificate-management">Automatic Certificate Management</h2>
 <p>The Things Stack can be configured to automatically retrieve and update Let&rsquo;s Encrypt certificates. Assuming you followed the <a href="/docs/getting-started/installation/configuration/">configuration</a> steps, create an <code>acme</code> directory where The Things Stack can store the certificate data:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">mkdir ./acme
@@ -212,6 +212,7 @@
 </span></span><span class="line"><span class="cl">    └── ttn-lw-stack-docker.yml    <span class="c1"># configuration file for The Things Stack</span>
 </span></span></code></pre></div><p>If you are using Let&rsquo;s Encrypt in a multi-tenant The Things Stack environment, make sure you specify all tenant addresses in the TLS configuration of <code>ttn-lw-stack-docker.yml</code>. Read more in the <a href="https://www.thethingsindustries.com/docs/getting-started/installation/configuration/#tls">TLS section</a>.</p>
 <p>Certificates will automatically be requested the first time you access The Things Stack. You will notice that the page takes some time to load while certificates are obtained in the background.</p>
+<p>Once you have created the <code>acme</code> folder and given it appropriate permissions, move on to <a href="https://www.thethingsindustries.com/docs/getting-started/installation/running-the-stack/">run The Things Stack</a>!</p>
 <h3 id="using-custom-certificates">Using Custom Certificates</h3>
 <p>To use <a href="#certificates-from-a-certificate-authority">CA certificates you already have</a> or <a href="#custom-certificate-authority">self-signed certificates</a>, you will need to uncomment the custom certificates section of <code>docker-compose.yml</code>:</p>
 <div class="highlight"><div class="chroma">
@@ -388,10 +389,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 27 Sep 2022.
+  Last changed by Ben Olayinka on 08 Mar 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/59f4d745be2540ad37210d829e5143da27491371">
-      doc: Fix configuration references in code blocks (#959)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f4221760153938447b48f542b969e17d5ba97f8b">
+      doc: Refactor installation guide (#1062)
     </a>
 </p>
 

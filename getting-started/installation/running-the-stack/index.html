@@ -200,7 +200,8 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose pull
 </span></span></code></pre></div><p>Next, you need to initialize the database of the Identity Server:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack is-db migrate
-</span></span></code></pre></div><p>If you receive an error running The Things Stack, make sure a The Things Stack container isn&rsquo;t already running. Use <code>docker ps</code> to see running containers.</p>
+</span></span></code></pre></div><p>If you receive a permissions error, ensure you have correctly <a href="https://docs.docker.com/engine/install/linux-postinstall/">configured permissions for Docker Engine</a>.</p>
+<p>If you receive an error running The Things Stack, make sure a The Things Stack container isn&rsquo;t already running. Use <code>docker ps</code> to see running containers.</p>
 <p>For the Storage Integration available in The Things Stack Enterprise, the database of the Application Server needs to be initialized as well:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack storage-db init
 </span></span></code></pre></div><p>Network Operations Center, available in The Things Stack Enterprise, needs to be initialized with:</p>
@@ -221,16 +222,34 @@
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --no-secret <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --redirect-uri <span class="s2">&#34;local-callback&#34;</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --redirect-uri <span class="s2">&#34;code&#34;</span>
-</span></span></code></pre></div><p>OAuth clients for the Console and Network Operations Center need to be created in Identity Server so they can use the login functionality.</p>
-<p>Use the following command with variables:</p>
+</span></span></code></pre></div><p>OAuth clients for the Console and Network Operations Center also need to be created in Identity Server so they can use the login functionality.</p>
+<p>Create an OAuth client for the console (replace with your <code>SERVER_ADDRESS</code> and Console <code>CLIENT_SECRET</code>):</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">SERVER_ADDRESS</span><span class="o">=</span>https://thethings.example.com
-</span></span><span class="line"><span class="cl"><span class="nv">ID</span><span class="o">=</span>...
-</span></span><span class="line"><span class="cl"><span class="nv">NAME</span><span class="o">=</span>...
-</span></span><span class="line"><span class="cl"><span class="nv">CLIENT_SECRET</span><span class="o">=</span>...
-</span></span><span class="line"><span class="cl"><span class="nv">REDIRECT_URI</span><span class="o">=</span>...
-</span></span><span class="line"><span class="cl"><span class="nv">REDIRECT_PATH</span><span class="o">=</span>...
-</span></span><span class="line"><span class="cl"><span class="nv">LOGOUT_REDIRECT_URI</span><span class="o">=</span>...
-</span></span><span class="line"><span class="cl"><span class="nv">LOGOUT_REDIRECT_PATH</span><span class="o">=</span>...
+</span></span><span class="line"><span class="cl"><span class="nv">ID</span><span class="o">=</span>console
+</span></span><span class="line"><span class="cl"><span class="nv">NAME</span><span class="o">=</span>Console
+</span></span><span class="line"><span class="cl"><span class="nv">CLIENT_SECRET</span><span class="o">=</span>console
+</span></span><span class="line"><span class="cl"><span class="nv">REDIRECT_URI</span><span class="o">=</span><span class="si">${</span><span class="nv">SERVER_ADDRESS</span><span class="si">}</span>/console/oauth/callback
+</span></span><span class="line"><span class="cl"><span class="nv">REDIRECT_PATH</span><span class="o">=</span>/console/oauth/callback
+</span></span><span class="line"><span class="cl"><span class="nv">LOGOUT_REDIRECT_URI</span><span class="o">=</span><span class="si">${</span><span class="nv">SERVER_ADDRESS</span><span class="si">}</span>/console
+</span></span><span class="line"><span class="cl"><span class="nv">LOGOUT_REDIRECT_PATH</span><span class="o">=</span>/console
+</span></span><span class="line"><span class="cl">docker-compose run --rm stack is-db create-oauth-client <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --id <span class="si">${</span><span class="nv">ID</span><span class="si">}</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --name <span class="s2">&#34;</span><span class="si">${</span><span class="nv">NAME</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --owner admin <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --secret <span class="s2">&#34;</span><span class="si">${</span><span class="nv">CLIENT_SECRET</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --redirect-uri <span class="s2">&#34;</span><span class="si">${</span><span class="nv">REDIRECT_URI</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --redirect-uri <span class="s2">&#34;</span><span class="si">${</span><span class="nv">REDIRECT_PATH</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --logout-redirect-uri <span class="s2">&#34;</span><span class="si">${</span><span class="nv">LOGOUT_REDIRECT_URI</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>  --logout-redirect-uri <span class="s2">&#34;</span><span class="si">${</span><span class="nv">LOGOUT_REDIRECT_PATH</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span></code></pre></div><p>And then for the NOC (replace with your <code>SERVER_ADDRESS</code> and NOC <code>CLIENT_SECRET</code>):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">SERVER_ADDRESS</span><span class="o">=</span>https://thethings.example.com
+</span></span><span class="line"><span class="cl"><span class="nv">ID</span><span class="o">=</span>noc
+</span></span><span class="line"><span class="cl"><span class="nv">NAME</span><span class="o">=</span><span class="s2">&#34;Network Operations Center&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nv">CLIENT_SECRET</span><span class="o">=</span>noc
+</span></span><span class="line"><span class="cl"><span class="nv">REDIRECT_URI</span><span class="o">=</span><span class="si">${</span><span class="nv">SERVER_ADDRESS</span><span class="si">}</span>/noc/oauth/callback
+</span></span><span class="line"><span class="cl"><span class="nv">REDIRECT_PATH</span><span class="o">=</span>/noc/oauth/callback
+</span></span><span class="line"><span class="cl"><span class="nv">LOGOUT_REDIRECT_URI</span><span class="o">=</span><span class="si">${</span><span class="nv">SERVER_ADDRESS</span><span class="si">}</span>/noc
+</span></span><span class="line"><span class="cl"><span class="nv">LOGOUT_REDIRECT_PATH</span><span class="o">=</span>/noc
 </span></span><span class="line"><span class="cl">docker-compose run --rm stack is-db create-oauth-client <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --id <span class="si">${</span><span class="nv">ID</span><span class="si">}</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --name <span class="s2">&#34;</span><span class="si">${</span><span class="nv">NAME</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
@@ -245,6 +264,8 @@
   In a multi-tenant environment, pass <code>--tenant-id NULL</code> to register the OAuth client for all tenants.
 </div>
 
+<p>The variables for the Console and NOC OAuth clients are repeated here:</p>
+<details><summary>OAuth client variables</summary>
 <p>Set the variables as follows:</p>
 <table>
 <thead>
@@ -292,6 +313,7 @@
 </tr>
 </tbody>
 </table>
+</details>
 <h2 id="running-the-things-stack">Running The Things Stack</h2>
 <p>Start The Things Stack with:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose up
@@ -365,10 +387,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Johan Stokking on 18 Nov 2022.
+  Last changed by Ben Olayinka on 08 Mar 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/1c6dfc85d09b57bcbcd9b63d1db9dbb76e6f4ca6">
-      Fix NOC database URI, fix OAuth client ID environment variable (#997)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f4221760153938447b48f542b969e17d5ba97f8b">
+      doc: Refactor installation guide (#1062)
     </a>
 </p>
 
