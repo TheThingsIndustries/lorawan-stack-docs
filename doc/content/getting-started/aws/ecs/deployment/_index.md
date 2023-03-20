@@ -108,14 +108,15 @@ The template `2-4b-routing-s3` creates an S3 bucket that stores configuration fo
 
 In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template asks for the name of the bucket you want to create. It is typically fine to leave this parameter empty, and have a automatically generated bucket name.
 
-After deploying the `2-4b-routing-s3` template, you need to upload the interop configuration to the interop bucket. For details on this configuration, see the [Interoperability Repository reference]({{< ref "/reference/interop-repository" >}}). If you do not have such configuration, you can upload an empty configuration file:
+After deploying the `2-4b-routing-s3` template, you need to upload the interop configuration to the interop bucket and EDCS configuration to the EDCS bucket. For details on those configuration files, see the [Interoperability Repository reference]({{< ref "/reference/interop-repository" >}}) and the [Device Claiming reference]({{< ref "/reference/device-claiming-repository" >}}). If you do not have such configuration, you can upload an empty configuration file:
 
 ```bash
 touch config.yml
 aws s3 cp config.yml s3://${InteropConfigBucket}/config.yml
+aws s3 cp config.yml s3://${EDCSConfigBucket}/config.yml
 ```
 
-{{< note >}} If you did not set a bucket name, see the `InteropConfigBucket` output of the `2-4b-routing-s3` stack for the name of the bucket. {{</ note >}}
+{{< note >}} If you did not set bucket names, see the `InteropConfigBucket` and `EDCSConfigBucket` outputs of the `2-4b-routing-s3` stack for the names of those buckets. {{</ note >}}
 
 ## TimescaleDB (optional) {#timescaledb-optional}
 
