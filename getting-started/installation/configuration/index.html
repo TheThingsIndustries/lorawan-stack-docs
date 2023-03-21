@@ -734,6 +734,8 @@
 </span><span class="lnt">183
 </span><span class="lnt">184
 </span><span class="lnt">185
+</span><span class="lnt">186
+</span><span class="lnt">187
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># The Things Stack requires a license key</span><span class="w">
@@ -803,6 +805,8 @@
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">dir</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/var/lib/acme&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">email</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;you@thethings.example.com&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;thethings.example.com&#34;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># If running a multi-tenant environment, specify the wildcard address:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># hosts: [&#34;*.thethings.example.com&#34;]</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">default-host</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;thethings.example.com&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># If Gateway Server enabled, defaults for &#34;thethings.example.com&#34;:</span><span class="w">
@@ -1060,7 +1064,7 @@ host, and also to use it as the default host.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c">#  root-ca: /run/secrets/ca.pem</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
-<p>If you are using Let&rsquo;s Encrypt in a multi-tenant The Things Stack environment, all tenant addresses have to be specified in the <code>ttn-lw-stack-docker.yml</code> file using <code>tls.acme.hosts</code> configuration option. For example, for The Things Stack deployment with two tenants, TLS configuration would look like this:</p>
+<p>If you are using Let&rsquo;s Encrypt in a multi-tenant The Things Stack environment, all tenant addresses have to be specified in the <code>ttn-lw-stack-docker.yml</code> file using <code>tls.acme.hosts</code> configuration option with <code>*.thethings.example.com</code> wildcard.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre tabindex="0" class="chroma"><code><span class="lnt">59
@@ -1071,16 +1075,20 @@ host, and also to use it as the default host.</p>
 </span><span class="lnt">64
 </span><span class="lnt">65
 </span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># Let&#39;s encrypt for &#34;thethings.example.com&#34;</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c">#  key: /run/secrets/key.pem</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># Let&#39;s encrypt for &#34;thethings.example.com&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tls</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;acme&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">acme</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">dir</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;/var/lib/acme&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">email</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;you@thethings.example.com&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;*.thethings.example.com&#34;</span><span class="p">]</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">default-host</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;thethings.example.com&#34;</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">hosts</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;thethings.example.com&#34;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># If running a multi-tenant environment, specify the wildcard address:</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="console-component-urls">Console Component URLs</h3>
@@ -1107,10 +1115,10 @@ host, and also to use it as the default host.</p>
 </span><span class="lnt">106
 </span><span class="lnt">107
 </span><span class="lnt">108
-</span><span class="lnt">109
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">console</span><span class="p">:</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># Web UI configuration for &#34;thethings.example.com&#34;:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">console</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ui</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">canonical-url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/console&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">is</span><span class="p">:</span><span class="w">
@@ -1128,9 +1136,7 @@ host, and also to use it as the default host.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">qrg</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/api/v3&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">edtc</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/api/v3&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">noc-url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/noc&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">account-url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/console&#34;</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/api/v3&#34;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <div class="notification is-warning is-light has-text-dark">
@@ -1149,12 +1155,12 @@ host, and also to use it as the default host.</p>
 </span><span class="lnt">116
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">      </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/api/v3&#34;</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">    </span><span class="nt">account-url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/console&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">dcs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/api/v3&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">oauth</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">authorize-url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/oauth/authorize&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">token-url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/oauth/token&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">logout-url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/oauth/logout&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">client-id</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;console&#34;</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">token-url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/oauth/token&#34;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="noc">NOC</h3>
@@ -1209,7 +1215,9 @@ host, and also to use it as the default host.</p>
 </span><span class="lnt">173
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">    </span><span class="nt">is</span><span class="p">:</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">    </span><span class="nt">dcs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/api/v3&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">is</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/api/v3&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ns</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">base-url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/api/v3&#34;</span><span class="w">
@@ -1228,9 +1236,7 @@ host, and also to use it as the default host.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">database-uri</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;postgres://root:root@postgres:5432/ttn_lorawan?sslmode=disable&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># If you have Postgres read replicas:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># read-database-uri: &#34;postgres://root:root@postgres-read:5432/ttn_lorawan?sslmode=disable&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">target-insert-batch-window</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;1m&#34;</span><span class="w"> </span><span class="c"># batch window</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">target-insert-batch-size</span><span class="p">:</span><span class="w"> </span><span class="m">8192</span><span class="w"> </span><span class="c"># batch size</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Adjust the raw data retention (minimum 3 days):</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">target-insert-batch-window</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;1m&#34;</span><span class="w"> </span><span class="c"># batch window</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>To visualize data, configure the <code>grafana</code> section.</p>
@@ -1245,13 +1251,13 @@ host, and also to use it as the default host.</p>
 </span><span class="lnt">180
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">    </span><span class="c"># raw-data-retention: &#34;3d&#34;</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">    </span><span class="nt">target-insert-batch-size</span><span class="p">:</span><span class="w"> </span><span class="m">8192</span><span class="w"> </span><span class="c"># batch size</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># Adjust the raw data retention (minimum 3 days):</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># raw-data-retention: &#34;3d&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">grafana</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">target-url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;http://grafana:3000&#34;</span><span class="w"> </span><span class="c"># URL for the internal Grafana</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">admin-username</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;admin&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">admin-password</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;admin&#34;</span><span class="w"> </span><span class="c"># choose or generate a secret</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">console-url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/console&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">noc-address</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;stack:1884&#34;</span><span class="w"> </span><span class="c"># internal non-TLS address of The Things Stack Network Operations Center</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">admin-password</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;admin&#34;</span><span class="w"> </span><span class="c"># choose or generate a secret</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="multi-tenancy">Multi-tenancy</h3>
@@ -1283,11 +1289,13 @@ host, and also to use it as the default host.</p>
 <pre tabindex="0" class="chroma"><code><span class="lnt">181
 </span><span class="lnt">182
 </span><span class="lnt">183
+</span><span class="lnt">184
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># If running a multi-tenant environment, defaults for &#34;thethings.example.com&#34;:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tenancy</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">base-domains</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;thethings.example.com&#34;</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">    </span><span class="nt">console-url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/console&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">noc-address</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;stack:1884&#34;</span><span class="w"> </span><span class="c"># internal non-TLS address of The Things Stack Network Operations Center</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># If running a multi-tenant environment, defaults for &#34;thethings.example.com&#34;:</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>For multi-tenant environments you&rsquo;ll also need to configure tenant admin keys:</p>
@@ -1434,10 +1442,10 @@ host, and also to use it as the default host.</p>
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Ben Olayinka on 08 Mar 2023.
+  Last changed by Nejra Selimović on 21 Mar 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f4221760153938447b48f542b969e17d5ba97f8b">
-      doc: Refactor installation guide (#1062)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/210731141f57f561851dff4b0692e878efb0d87e">
+      doc: Update installation guide (#1052)
     </a>
 </p>
 
