@@ -35,7 +35,7 @@ Please [contact our sales team](mailto:sales@thethingsindustries.com) for access
 3. Redis compatible database.
 4. Blob Storage
 5. Traefik Proxy to handle the ingress routes.
-6. TLS Certificates for the Domain where TTS is hosted.
+6. TLS Certificates.
 7. (Optional) TimescaleDB
 8. (Optional) Metrics Server
 
@@ -67,15 +67,15 @@ The Things Stack currently supports AWS S3, S3 compatible Blob, Azure Blob stora
 
 The Things Stack requires the following buckets.
 
-1. Profile pictures Bucket
+1. Profile pictures bucket
   - The contents of this bucket must be *public*.
-2. End device pictures Bucket
+2. End device pictures bucket
   - The contents of this bucket must be *public*.
-3. End Device Claiming Server Configuration
+3. End Device Claiming Server configuration
   - Once this bucket is setup, place an empty `config.yml` file at the root of the bucket.
   - The contents of this bucket must be *private* since they contain secrets.
   - Enabling encryption and versioning is highly recommended.
-4. Interoperability Configuration
+4. Interoperability configuration
   - Once this bucket is setup, place an empty `config.yml` file at the root of the bucket.
   - The contents of this bucket must be *private* since they contain secrets.
   - Enabling encryption and versioning is highly recommended.
@@ -181,11 +181,19 @@ If you are using the official [Traefik Helm Chart](https://github.com/traefik/tr
 
 #### 6. TLS Certificates
 
-The Things Stack expects a [Kubernetes TLS Secret](https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets) which contains the server leaf certificates for the configured domain.
+The Things Stack expects a [Kubernetes TLS Secret](https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets) which contains the server leaf certificates.
+
+The Things Stack (Enterprise) uses a base domain ex: `domain` and one of the following
+- `*.domain` (wildcard) with multi-tenancy
+- `<default tenant>.domain` (single tenant) without multi-tenancy.
+
+Consequently, the TLS certificates used should cover `domain` and one of the following.
+- `*.domain`
+- `<default tenant>.domain`
 
 The Things Stack expects the name of this secret to be set in the value `global.ingress.tls.secretName`.
 
-Provisioning of the certificate secret is left to the operator.
+The process of provisioning and maintenance of the certificate secret is left to the operator.
 
 #### 7. (optional) TimescaleDB
 
