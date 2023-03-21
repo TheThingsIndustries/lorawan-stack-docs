@@ -114,7 +114,7 @@ docker-compose run --rm stack is-db create-oauth-client \
   --logout-redirect-uri "${LOGOUT_REDIRECT_PATH}"
 ```
 
-{{< note >}} In a multi-tenant environment, pass `--tenant-id NULL` to register the OAuth client for all tenants. {{< /note >}}
+{{< note >}} In a multi-tenant environment, pass `--tenant-id NULL` to register the OAuth client for all tenants, but make sure to remove the `--owner` flag as it is only for single tenant environments. {{< /note >}}
 
 The variables for the Console and NOC OAuth clients are repeated here:
 

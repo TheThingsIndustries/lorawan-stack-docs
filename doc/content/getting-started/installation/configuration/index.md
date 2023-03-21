@@ -232,17 +232,10 @@ If you are using your own certificate files, make sure to uncomment the lines th
 {{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=52 to=57 >}}
 {{< /highlight >}}
 
-If you are using Let's Encrypt in a multi-tenant {{% tts %}} environment, all tenant addresses have to be specified in the `ttn-lw-stack-docker.yml` file using `tls.acme.hosts` configuration option. For example, for {{% tts %}} deployment with two tenants, TLS configuration would look like this:
+If you are using Let's Encrypt in a multi-tenant {{% tts %}} environment, all tenant addresses have to be specified in the `ttn-lw-stack-docker.yml` file using `tls.acme.hosts` configuration option with `*.thethings.example.com` wildcard.
 
 {{< highlight yaml "linenos=table,linenostart=59" >}}
-# Let's encrypt for "thethings.example.com"
-tls:
-  source: "acme"
-  acme:
-    dir: "/var/lib/acme"
-    email: "you@thethings.example.com"
-    hosts: ["*.thethings.example.com"]
-    default-host: "thethings.example.com"
+{{< readfile path="/content/getting-started/installation/configuration/ttn-lw-stack-docker-enterprise.yml" from=59 to=68 >}}
 {{< /highlight >}}
 
 ### Console Component URLs
