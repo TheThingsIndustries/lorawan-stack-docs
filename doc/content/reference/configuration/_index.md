@@ -9,7 +9,7 @@ aliases: [/guides/getting-started/configuration]
 <!--more-->
 
 {{< note >}}
-These configuration methods only apply to {{% tts %}} Open Source and Enterprise deployments that follow the [Installation]({{< ref "getting-started/installation" >}}) guide. AWS Launcher deployments can be configured using the [CloudFormation template settings]({{< ref "/getting-started/aws/ami/deployment-guide#deployment-using-aws-cloud-formation" >}}). Managed deployments such as Cloud and Community Edition are configured for you by The Things Industries.
+These configuration methods only apply to {{% tts %}} Open Source and Enterprise deployments that follow the [Installation]({{< ref "getting-started/installation" >}}) guide. AWS Launcher deployments can be configured using the [CloudFormation template settings]({{< ref "/the-things-stack/host/aws/ami/deployment-guide#deployment-using-aws-cloud-formation" >}}). Managed deployments such as Cloud and Community Edition are configured for you by The Things Industries.
 {{</ note >}}
 
 ## Configuration Sources

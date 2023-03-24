@@ -106,7 +106,7 @@ The server address is the network endpoint of {{% tts %}} CUPS. It is a combinat
 
 Enter the following in your gateway as CUPS Server Address: `https://<server-address>:443`. 
 
-The `<server-address>` is the address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}) for more info.
+The `<server-address>` is the address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}) for more info.
 
 ### CUPS Server Certificate / CUPS Trust
 

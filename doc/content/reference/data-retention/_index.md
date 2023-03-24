@@ -16,9 +16,9 @@ To understand how data is secured in {{% tts %}} it is necessary to understand s
 
 **Network Administrators**: Users with administrative access in a tenant. **Network Administrators** have access to all entities in a tenant, including device secrets. In multi-tenant environments, tenants are completely isolated, and **Network Administrators** of one tenant have **no access** to other tenants.
 
-**Users and Organizations**: Users without administrative access, and organizations, can access entities which they have [collaborator rights]({{< ref "getting-started/user-management" >}}) over.
+**Users and Organizations**: Users without administrative access, and organizations, can access entities which they have [collaborator rights]({{< ref "the-things-stack/concepts/user-management" >}}) over.
 
-**Support Engineers**: The Things Industries support engineers do **not** have infrastructural access to any {{% tts %}} deployments. They must be [granted access]({{< ref "getting-started/user-management" >}}) by the customer.
+**Support Engineers**: The Things Industries support engineers do **not** have infrastructural access to any {{% tts %}} deployments. They must be [granted access]({{< ref "the-things-stack/concepts/user-management" >}}) by the customer.
 
 ## {{% tts %}} Cloud and Dedicated Cloud
 

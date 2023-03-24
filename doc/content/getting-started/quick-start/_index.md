@@ -49,7 +49,7 @@ Links to discovery.
 
 link to install.
 
-To get started with {{% tts %}}, you can simply [create an account](https://console.cloud.thethings.network) on The Things Network to start using [The Things Stack Community Edition]({{< ref "getting-started/ttn" >}}) for free.
+To get started with {{% tts %}}, you can simply [create an account](https://console.cloud.thethings.network) on The Things Network to start using [The Things Stack Community Edition]({{< ref "the-things-stack/concepts/ttn" >}}) for free.
 
 To purchase a professional plan for {{% tts %}}, see [Pricing](https://accounts.thethingsindustries.com/fee-calculator).
 

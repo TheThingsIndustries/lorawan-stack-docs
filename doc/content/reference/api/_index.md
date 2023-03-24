@@ -21,7 +21,7 @@ Fields may be specified in HTTP requests by appending them as query string param
 curl -i -H "Authorization: Bearer NNSXS.XXXXXXXXX" https://thethings.example.com/api/v3/applications/app1/devices/dev1?field_mask=name,description,locations
 ```
 
-The `thethings.example.com` URL needs to be replaced with the address of your {{% tts %}} instance. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}) for a list of URLs for all deployments.
+The `thethings.example.com` URL needs to be replaced with the address of your {{% tts %}} instance. See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}) for a list of URLs for all deployments.
 
 ### Optional Fields
 

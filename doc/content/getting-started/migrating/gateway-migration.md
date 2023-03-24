@@ -17,7 +17,7 @@ For detailed instructions on adding gateways to {{% tts %}} using the CLI or Con
 ### Step 2
 
 Update the server address in the gateway configuration settings.
-- When using the Semtech UDP Packet Forwarder, make sure to update the `server_address` in the gateway configuration settings to the address of the Gateway Server. For examples, see [The Things Network Addresses]({{< ref "/getting-started/ttn/addresses" >}}) if you are using {{% tts %}} Community Edition, or [Cloud Addresses]({{< ref "/the-things-stack/concepts/the-things-stack-cloud/addresses" >}}) if you are using {{% tts %}} Cloud. See [Semtech UDP Packet Forwarder]({{< ref "/gateways/concepts/udp" >}}) documentation for more info.
+- When using the Semtech UDP Packet Forwarder, make sure to update the `server_address` in the gateway configuration settings to the address of the Gateway Server. For examples, see [The Things Network Addresses]({{< ref "/the-things-stack/concepts/ttn/addresses" >}}) if you are using {{% tts %}} Community Edition, or [Cloud Addresses]({{< ref "/the-things-stack/concepts/the-things-stack-cloud/addresses" >}}) if you are using {{% tts %}} Cloud. See [Semtech UDP Packet Forwarder]({{< ref "/gateways/concepts/udp" >}}) documentation for more info.
 - When using the LoRa Basics Station protocol, refer to the [LoRa Basics Station]({{< ref "gateways/concepts/lora-basics-station" >}}) documentation.
 
 Once your gateways are migrated, the traffic will be routed directly to {{% tts %}}.

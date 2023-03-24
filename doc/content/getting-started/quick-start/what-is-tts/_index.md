@@ -24,7 +24,7 @@ Welcome to {{% tts %}}! In this section, we help you to understand how to use {{
 
 {{< distributions "Enterprise" >}} **Enterprise**: Install the network server on your own hardware, with professional support from The Things Industries.
 
-{{< distributions "Community" >}} **Community Edition**: Run by The Things Network, this is our free to use network server which provides the world's largest community based LoRaWAN network. To learn more and sign up, see [The Things Network]({{< ref "getting-started/ttn" >}}).
+{{< distributions "Community" >}} **Community Edition**: Run by The Things Network, this is our free to use network server which provides the world's largest community based LoRaWAN network. To learn more and sign up, see [The Things Network]({{< ref "the-things-stack/concepts/ttn" >}}).
 
 {{< distributions "Open Source" >}} **Open Source**: For DIY'ers, the core of {{% tts %}} is [open source](https://github.com/thethingsnetwork/lorawan-stack). If you want to get your hands dirty and understand how {{% tts %}} works, clone away and get hacking.
 

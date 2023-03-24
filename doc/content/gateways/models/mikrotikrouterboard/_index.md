@@ -53,7 +53,7 @@ From the top menu, select the **Servers** Tab and press the **Add New** button.
 Edit the server parameters.
 
 - **Name**: A distinct name 
-- **Address**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}).
+- **Address**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}).
 - **Up port**: UDP upstream port of the Gateway Server, typically `1700`.
 - **Down port**: UDP downstream port of the Gateway Server, typically `1700`.
 
@@ -108,7 +108,7 @@ Back in the **LoRa** section, select the **Servers** section. Select the **+** b
 Edit the server parameters.
 
 - **Name**: A distinct name 
-- **Address**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}).
+- **Address**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}).
 - **Up port**: UDP upstream port of the Gateway Server, typically `1700`.
 - **Down port**: UDP downstream port of the Gateway Server, typically `1700`.
 

@@ -24,7 +24,7 @@ Create a gateway by following the instructions for the [Console]({{< ref "/the-t
 
 The gateway EUI is derived from the MAC address that can be found on the back panel of the gateway. To get the EUI from the MAC address insert `FFFE` after the first 6 characters to make it a 64-bit EUI. For example, if the gateway's MAC address is `5B:A0:CB:80:04:2B` then the EUI is `5B A0 CB FF FE 80 04 2B`.
 
-The **Gateway Server Address** is the address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}).
+The **Gateway Server Address** is the address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}).
 
 ## Configuration
 

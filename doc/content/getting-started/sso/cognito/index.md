@@ -52,7 +52,7 @@ Ensure that **Cognito User Pool** is checked for **Enabled Identity Providers**.
 
 {{< figure src="app-client-settings.png" >}}
 
-For the **Callback URL**, enter the **OAuth Callback URL** of your {{% tts %}} deployment. This is the [Server Address]({{< ref "getting-started/server-addresses" >}}) followed by the OAuth endpoint, which includes an **Authentication Provider ID** of your choosing:
+For the **Callback URL**, enter the **OAuth Callback URL** of your {{% tts %}} deployment. This is the [Server Address]({{< ref "the-things-stack/concepts/server-addresses" >}}) followed by the OAuth endpoint, which includes an **Authentication Provider ID** of your choosing:
 
 `
 /oauth/login/<authentication-provider-id>/callback

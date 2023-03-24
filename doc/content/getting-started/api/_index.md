@@ -450,7 +450,7 @@ The most common cause for this error is not following the regex pattern in the `
 
 ### Listing gateways via API call works for the `eu1` {{% tts %}} Cloud cluster, but won't work for the `nam1` cluster.
 
-Unlike other server components, the Identity Server component of {{% tts %}} is hosted only in the `eu1` cluster for [{{% tts %}} Cloud]({{< ref "/the-things-stack/concepts/the-things-stack-cloud/addresses#api-endpoints" >}}) and [{{% tts %}} Community Edition]({{< ref "/getting-started/ttn/addresses#api-endpoints" >}}). This is the reason why Identity Server API request to any cluster other than `eu1` will fail.
+Unlike other server components, the Identity Server component of {{% tts %}} is hosted only in the `eu1` cluster for [{{% tts %}} Cloud]({{< ref "/the-things-stack/concepts/the-things-stack-cloud/addresses#api-endpoints" >}}) and [{{% tts %}} Community Edition]({{< ref "/the-things-stack/concepts/ttn/addresses#api-endpoints" >}}). This is the reason why Identity Server API request to any cluster other than `eu1` will fail.
 
 ### I see a `426 Upgrade Required` error when making an API call.
 

@@ -23,12 +23,12 @@ See [Cloud Addresses]({{< ref "/the-things-stack/concepts/the-things-stack-cloud
 
 If you are using {{% tts %}} Community Edition, the Console is available at `cloud.thethings.network`.
 
-Visit the addresses page for [{{% tts %}} Community Edition]({{< ref "getting-started/ttn/addresses" >}}) for more information.
+Visit the addresses page for [{{% tts %}} Community Edition]({{< ref "the-things-stack/concepts/ttn/addresses" >}}) for more information.
 
 ## {{% tts %}} Enterprise and Open Source
 
 If you are hosting your own deployment, the Console is available at the address you host {{% tts %}} at.
 
-See [Server Addresses]({{< ref "getting-started/server-addresses" >}}) to learn more.
+See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}) to learn more.
 
 Once you have access to the Console, proceed to [Login]({{< relref "login" >}}).
