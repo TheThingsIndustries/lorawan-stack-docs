@@ -20,11 +20,11 @@ See [user and organization management]({{< ref "getting-started/user-management"
 
 ## Troubleshooting common errors in the Console
 
-See [Troubleshooting Console]({{< ref "getting-started/console/troubleshooting" >}}).
+See [Troubleshooting Console]({{< ref "the-things-stack/concepts/console/troubleshooting" >}}).
 
 ## Troubleshooting common CLI errors
 
-See [Troubleshooting CLI]({{< ref "getting-started/cli/troubleshooting" >}}).
+See [Troubleshooting CLI]({{< ref "the-things-stack/concepts/cli/troubleshooting" >}}).
 
 ## Troubleshooting common device errors
 
@@ -36,7 +36,7 @@ See [Troubleshooting Gateways]({{< ref "/gateways/troubleshooting" >}}).
 
 ## Tenant is not active
 
-For [{{% tts %}} Cloud]({{< ref "/getting-started/cloud-hosted" >}}) customers, this error indicates that the payment is probably overdue. If you are experiencing payment issues, please contact your Account Manager directly for further assistance.
+For [{{% tts %}} Cloud]({{< ref "/the-things-stack/concepts/the-things-stack-cloud" >}}) customers, this error indicates that the payment is probably overdue. If you are experiencing payment issues, please contact your Account Manager directly for further assistance.
 
 ## How do I change the tenant ID of an existing tenant in {{% tts %}}?
 

@@ -2,6 +2,7 @@
 title: "Subscription and Billing Management"
 description: ""
 weight: 1
+aliases: [/getting-started/billing-and-subscription-management/]
 ---
 
 This section shows how to buy {{% tts %}} subscription, and to perform subscription and billing management for your business accounts with The Things Industries.
@@ -14,7 +15,9 @@ Navigate to the [{{% tts %}} fee calculator](https://accounts.thethingsindustrie
 
 First, you need to choose your entry level. If you are just exploring {{% tts %}} functionalities and performance, we suggest you pick **{{% tts %}} Discovery**. If you are already a user of {{% tts %}} and want to scale up, **{{% tts %}}** is the right choice for you.
 
-If you choose {{% tts %}} entry level, you'll also need to choose your deployment and device bundle. If you want to learn more about available {{% tts %}} deployments, check [this link]({{< ref "/getting-started/what-is-tts#the-things-stack-deployments" >}}).
+If you choose {{% tts %}} entry level, you'll also need to choose your deployment and device bundle. If you want to learn more about available {{% tts %}} deployments, check 
+
+TODO: ADd the link
 
 Next, you need to pick your support plan. Available plans are **DIY**, **Standard** and **Priority**, but keep in mind that all plans are not available for all {{% tts %}} deployments. You can follow [this link](https://www.thethingsindustries.com/support/) to compare support plans.
 

@@ -16,7 +16,7 @@ weight: 12
 
 1. Access to an OpenID Connect provider such as Google or Amazon Cognito
 2. Administrator access to your {{% tts %}} deployment
-3. [`tti-lw-cli`]({{< ref "getting-started/cli" >}})
+3. [`tti-lw-cli`]({{< ref "the-things-stack/concepts/cli" >}})
 
 ## Configure Your OpenID Connect Provider
 

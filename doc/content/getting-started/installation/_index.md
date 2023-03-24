@@ -13,7 +13,7 @@ There are several ways to run {{% tts %}}.
 
 {{% tts %}} Open Source and Enterprise distributions are designed to run on your own hardware, which this guide covers.
 
-Alternatively, to use {{% tts %}} in the cloud without installing it on your own hardware, see [{{% tts %}} Cloud]({{< relref "cloud-hosted" >}}) (our professional, SLA-backed offering) or [Community Edition]({{< relref "ttn" >}}) (our free-to-use community edition). To spin up your own EC2 instance, there is also an [AWS Launcher]({{< relref "aws" >}}). To install using balenaCloud on a Rasperry Pi, see the [Balena]({{< relref "balena" >}}) section.
+Alternatively, to use {{% tts %}} in the cloud without installing it on your own hardware, see [{{% tts %}} Cloud]({{< relref "the-things-stack-cloud" >}}) (our professional, SLA-backed offering) or [Community Edition]({{< relref "ttn" >}}) (our free-to-use community edition). To spin up your own EC2 instance, there is also an [AWS Launcher]({{< relref "aws" >}}). To install using balenaCloud on a Rasperry Pi, see the [Balena]({{< relref "balena" >}}) section.
 
 For highly available production cloud deployments with high throughput, we recommend using {{% tts %}} Cloud or AWS Launcher. All deployments of {{% tts %}} except Open Source and AWS Launcher support multi-tenancy, which allows you to create multiple private network servers within a single deployment, for example to resell to individual clients.
 

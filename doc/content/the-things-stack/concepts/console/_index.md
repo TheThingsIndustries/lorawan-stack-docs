@@ -1,7 +1,7 @@
 ---
 title: "Console"
 description: ""
-aliases: [/guides/getting-started/cli]
+aliases: [/guides/the-things-stack/concepts/cli, /getting-started/console]
 weight: 1
 ---
 
@@ -17,7 +17,7 @@ If you are using {{% tts %}} Cloud, the Console is available at the following UR
 
 `<tenant_id>.<eu1/eu2/au1/nam1/>.cloud.thethings.industries`
 
-See [Cloud Addresses]({{< ref "getting-started/cloud-hosted/addresses" >}}) for more information about cluster addresses.
+See [Cloud Addresses]({{< ref "/the-things-stack/concepts/the-things-stack-cloud/addresses" >}}) for more information about cluster addresses.
 
 ## {{% tts %}} Community Edition
 

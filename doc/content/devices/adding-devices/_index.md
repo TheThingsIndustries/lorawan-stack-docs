@@ -2,8 +2,8 @@
 title: "Adding Devices"
 description: ""
 aliases:
-  - /getting-started/cli/create-end-device
-  - /getting-started/console/create-end-device
+  - /the-things-stack/concepts/cli/create-end-device
+  - /the-things-stack/concepts/console/create-end-device
   - /getting-started/device-claiming/claim-devices
 weight: -1
 ---

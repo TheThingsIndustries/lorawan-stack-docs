@@ -10,4 +10,4 @@ The Console is the management application of {{% tts %}} for LoRaWAN. It is a we
 
 {{< figure src="../console_overview.png" alt="Console" >}}
 
-See the [Console Getting Started guide]({{< ref "/getting-started/console" >}}), for detailed instructions regarding the Console.
+See the [Console Getting Started guide]({{< ref "/the-things-stack/concepts/console" >}}), for detailed instructions regarding the Console.

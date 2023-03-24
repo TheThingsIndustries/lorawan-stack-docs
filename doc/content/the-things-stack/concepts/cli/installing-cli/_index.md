@@ -2,6 +2,7 @@
 title: "Installing the CLI"
 description: ""
 weight: 1
+aliases: [/getting-started/cli/installing-cli/]
 ---
 
 This section contains instructions for installing the command-line interface.
@@ -110,7 +111,7 @@ Now you can run the CLI using `tti-lw-cli` in your terminal.
 
 ### Windows
 
-No package manager is available for Windows. Follow instructions in the [Installing using pre-built binaries]({{< ref "/getting-started/cli/installing-cli#installing-using-pre-built-binaries" >}}) section below to download the [pre-built binaries](https://github.com/TheThingsNetwork/lorawan-stack/releases) for Windows based on the processor architecture.
+No package manager is available for Windows. Follow instructions in the [Installing using pre-built binaries]({{< ref "/the-things-stack/concepts/cli/installing-cli#installing-using-pre-built-binaries" >}}) section below to download the [pre-built binaries](https://github.com/TheThingsNetwork/lorawan-stack/releases) for Windows based on the processor architecture.
 
 Note that Windows binaries must be run with a `.exe` extension on the end, so if an example uses `ttn-lw-cli`, that will be `ttn-lw-cli.exe` on Windows.
 

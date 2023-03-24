@@ -1,6 +1,7 @@
 ---
 title: "Troubleshooting CLI"
 description: ""
+aliases: [/getting-started/cli/troubleshooting]
 ---
 
 This section contains help for common errors encountered when using the CLI.
@@ -9,17 +10,17 @@ This section contains help for common errors encountered when using the CLI.
 
 ## Unauthenticated
 
-If the [CLI login]({{< ref "/getting-started/cli/login" >}}) wasn't successful, the user will face the following error when trying to execute CLI commands:
+If the [CLI login]({{< ref "/the-things-stack/concepts/cli/login" >}}) wasn't successful, the user will face the following error when trying to execute CLI commands:
 
 ```
 error:cmd/ttn-lw-cli/commands:unauthenticated (not authenticated with either API key or OAuth access token)
 ```
 
-If you face this error, make sure you have properly [created a CLI configuration file]({{< ref "/getting-started/cli/configuring-cli/#step-1---create-a-configuration-file" >}}) and [configured the CLI]({{< ref "/getting-started/cli/configuring-cli/#step-2---configure-the-cli" >}}) for your {{% tts %}} instance.
+If you face this error, make sure you have properly [created a CLI configuration file]({{< ref "/the-things-stack/concepts/cli/configuring-cli/#step-1---create-a-configuration-file" >}}) and [configured the CLI]({{< ref "/the-things-stack/concepts/cli/configuring-cli/#step-2---configure-the-cli" >}}) for your {{% tts %}} instance.
 
 ## Faulty OAuth Server Address
 
-In the [CLI configuration file]({{< ref "/getting-started/cli/configuring-cli" >}}), the server address is set to `thethings.example.com` by default. If you do not change this server address to the address of your own deployment, using `ttn-lw-cli login` command will redirect to `https://thethings.example.com/oauth/authorize?client_id=cli&redirect_uri=local-callback&response_type=code` in your web browser, where the CLI needs to be authorized for exchanging an access token.
+In the [CLI configuration file]({{< ref "/the-things-stack/concepts/cli/configuring-cli" >}}), the server address is set to `thethings.example.com` by default. If you do not change this server address to the address of your own deployment, using `ttn-lw-cli login` command will redirect to `https://thethings.example.com/oauth/authorize?client_id=cli&redirect_uri=local-callback&response_type=code` in your web browser, where the CLI needs to be authorized for exchanging an access token.
 
 Since your server address is most likely different than `thethings.example.com`, you will see an error about that URL not being found in your browser, the access token will not be obtained and you will not be able to execute any further CLI commands. In your terminal, you will see something like:
 
@@ -35,7 +36,7 @@ You will experience the same issue if you are using an `https` port other than `
 
 ## Certificate Signed by Unknown Authority
 
-If the CA file path is not specified in the [CLI configuration file]({{< ref "/getting-started/cli/configuring-cli" >}}) (or with `--ca` flag when running the CLI), or if you are using self-signed certificates, using `ttn-lw-cli login` might result in the following error:
+If the CA file path is not specified in the [CLI configuration file]({{< ref "/the-things-stack/concepts/cli/configuring-cli" >}}) (or with `--ca` flag when running the CLI), or if you are using self-signed certificates, using `ttn-lw-cli login` might result in the following error:
 
 ```
 ERROR Could not exchange OAuth access token    error=Post "https://thethings.example.com:8885/oauth/token": x509: certificate signed by unknown authority

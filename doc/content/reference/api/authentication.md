@@ -42,7 +42,7 @@ To use this authentication method, you first need to register an **OAuth client*
 - The **redirect URI** is where the user is redirected after authorizing your OAuth client.
 - The **client secret** is issued when your OAuth client registration is accepted by a network admin.
 
-To register OAuth client you can use {{% tts %}} [Console]({{< ref "/getting-started/console" >}}) or [CLI](https://www.thethingsindustries.com/docs/getting-started/cli/).
+To register OAuth client you can use {{% tts %}} [Console]({{< ref "/the-things-stack/concepts/console" >}}) or [CLI](https://www.thethingsindustries.com/docs/the-things-stack/concepts/cli/).
 
 {{< tabs/container "Console" "CLI" >}}
 

@@ -10,7 +10,7 @@ aliases:
 
 To import end devices, you need access to an application in {{% tts %}}. If you have not created one previously, see the [Adding Applications]({{< ref "integrations/adding-applications" >}}) guide for detailed instructions.
 
-There are two ways to import devices in {{% tts %}} - using [Console]({{< ref "/getting-started/console" >}}) or [CLI]({{< ref "/getting-started/cli" >}}).
+There are two ways to import devices in {{% tts %}} - using [Console]({{< ref "/the-things-stack/concepts/console" >}}) or [CLI]({{< ref "/the-things-stack/concepts/cli" >}}).
 
 {{% tts %}} supports importing end devices in JSON and CSV format:
 

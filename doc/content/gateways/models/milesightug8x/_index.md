@@ -20,7 +20,7 @@ Technical specifications can be found in Milesight's official [document center](
 
 ## Registration
 
-[Add a gateway]({{< ref "/gateways/concepts/adding-gateways" >}}) by following the instructions for the [Console]({{< ref "/getting-started/console#create-gateway" >}}) or the [CLI]({{< ref "/getting-started/cli#create-gateway" >}}).
+[Add a gateway]({{< ref "/gateways/concepts/adding-gateways" >}}) by following the instructions for the [Console]({{< ref "/the-things-stack/concepts/console#create-gateway" >}}) or the [CLI]({{< ref "/the-things-stack/concepts/cli#create-gateway" >}}).
 
 The **Gateway EUI** can be found on the gateway's configuration web page. See the [Configuration via Browser section]({{< ref "#configuration-via-browser" >}}) below for instructions to access the configuration page.
 

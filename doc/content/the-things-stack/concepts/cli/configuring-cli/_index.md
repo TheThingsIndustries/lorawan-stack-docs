@@ -2,6 +2,7 @@
 title: "Configuring the CLI"
 description: ""
 weight: 2
+aliases: [/getting-started/cli/configuring-cli/]
 ---
 
 {{% tts %}} CLI needs to be configured to connect to your {{% tts %}} deployment. To configure the CLI, you first have to create a configuration file, then make that file available to the CLI.

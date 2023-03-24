@@ -2,7 +2,7 @@
 title: "Adding Applications"
 description: ""
 weight: -1
-aliases: [/getting-started/cli/create-application, /getting-started/console/create-application, /guides/getting-started/console/create-application]
+aliases: [/the-things-stack/concepts/cli/create-application, /the-things-stack/concepts/console/create-application, /guides/the-things-stack/concepts/console/create-application]
 ---
 
 This section contains instructions for creating an Application.

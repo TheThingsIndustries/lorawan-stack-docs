@@ -2,7 +2,7 @@
 title: "Cloud Addresses"
 description: ""
 weight: 10
-aliases: [/guides/cloud-hosted/addresses]
+aliases: [/guides/cloud-hosted/addresses, /the-things-stack/concepts/the-things-stack-cloud/addresses]
 distributions: ["Cloud"]
 ---
 
@@ -24,7 +24,7 @@ Your cluster address is:
 
 ## Console
 
-To learn how to get started with the Console, see the [Console Getting Started Guide]({{< ref "/getting-started/console" >}}).
+To learn how to get started with the Console, see the [Console Getting Started Guide]({{< ref "/the-things-stack/concepts/console" >}}).
 
 Each cluster has a Console where you can manage gateways and end devices of that cluster. You can use any cluster with your Cloud account.
 
@@ -87,7 +87,7 @@ qr-code-generator-grpc-address: '<span data-content="tenant-id"></span>.<span da
 credentials-id: '<span data-content="tenant-id"></span>'
 </pre>
 
-See the [CLI Getting Started Guide]({{< ref "/getting-started/cli" >}}) to learn how to get started with the CLI and working with configuration files.
+See the [CLI Getting Started Guide]({{< ref "/the-things-stack/concepts/cli" >}}) to learn how to get started with the CLI and working with configuration files.
 
 ## IP Addresses
 

@@ -2,7 +2,7 @@
 title: "Adding Gateways"
 description: ""
 weight: -2
-aliases: [/gateways/adding-gateways, /getting-started/cli/create-gateway, /getting-started/console/create-gateway]
+aliases: [/gateways/adding-gateways, /the-things-stack/concepts/cli/create-gateway, /the-things-stack/concepts/console/create-gateway]
 ---
 
 This section contains instructions for adding Gateways in {{%tts%}}.

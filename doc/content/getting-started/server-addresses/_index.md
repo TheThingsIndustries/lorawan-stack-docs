@@ -4,7 +4,7 @@ description: ""
 weight: 10
 ---
 
-To access the [Console]({{< ref "getting-started/console" >}}), register a [command line client]({{< ref "getting-started/cli" >}}), [connect gateways]({{< ref "/gateways/concepts/adding-gateways" >}}), or schedule uplinks via [webhooks]({{< ref "integrations/webhooks" >}}), it is necessary to know the server address of your {{% tts %}} instance. This section contains information about addresses for different {{% tts %}} deployments.
+To access the [Console]({{< ref "/the-things-stack/concepts/console" >}}), register a [command line client]({{< ref "the-things-stack/concepts/cli" >}}), [connect gateways]({{< ref "/gateways/concepts/adding-gateways" >}}), or schedule uplinks via [webhooks]({{< ref "integrations/webhooks" >}}), it is necessary to know the server address of your {{% tts %}} instance. This section contains information about addresses for different {{% tts %}} deployments.
 
 <!--more-->
 
@@ -15,7 +15,7 @@ The server addresses for the different {{% tts %}} deployments are listed below.
 
 ## Deployments
 
-**Cloud and Dedicated Cloud**: See [Cloud Addresses]({{< ref "getting-started/cloud-hosted/addresses" >}}).
+**Cloud and Dedicated Cloud**: See [Cloud Addresses]({{< ref "/the-things-stack/concepts/the-things-stack-cloud/addresses" >}}).
 
 **AWS Launcher**: This is the domain you specify in your [CloudFormation configuration]({{< ref "getting-started/aws/ami/deployment-guide#step-2-configure-the-deployment" >}}).
 

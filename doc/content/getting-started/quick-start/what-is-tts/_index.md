@@ -16,7 +16,7 @@ Welcome to {{% tts %}}! In this section, we help you to understand how to use {{
 
 {{% tts %}} comes in many different flavors to meet different requirements. For information about all available deployments, see [Deployments](https://www.thethingsindustries.com/deployment/). These are:
 
-{{< distributions "Cloud" >}} **Cloud**: SLA backed network server hosted by The Things Industries. See [Cloud]({{< ref "getting-started/cloud-hosted" >}}).
+{{< distributions "Cloud" >}} **Cloud**: SLA backed network server hosted by The Things Industries. See [Cloud]({{< ref "the-things-stack/concepts/the-things-stack-cloud" >}}).
 
 {{< distributions "Dedicated Cloud" >}} **Dedicated Cloud**: All the benefits of **Cloud** on a dedicated cluster.
 

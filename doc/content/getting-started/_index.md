@@ -5,7 +5,8 @@ weight: -2
 menu:
   main:
     weight: 2
-aliases: [/guides/getting-started, /guides/getting-started/running-the-stack]
+aliases: [/guides/getting-started, /guides/getting-started/running-the-stack, /guides/getting-started/quick-start]
 ---
 
-This section contains information to help you get started with {{% tts %}}. Here, you'll find guides for installing and upgrading {{% tts %}}, migrating from other network servers, using the console, and much more.
+The Things Stack is a robust, yet flexible LoRaWAN® Network Server. If you are already familiar with LoRaWAN, skip ahead to the [{{% tts %}}]({{< relref "the-things-stack" >}}) section.
+
