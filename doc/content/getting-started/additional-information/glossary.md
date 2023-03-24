@@ -1,16 +1,8 @@
 ---
-title: "What Is The Things Stack?"
-description: ""
-weight: -2
+title: "Glossary"
+description: "List of terms"
+weight: 2
 ---
-
-Welcome to {{% tts %}}! In this section, we help you to understand how to use {{% tts %}}, who makes it, and common acronyms like TTS, TTI, and TTN.
-
-<!--more-->
-
-## What is {{% tts %}}?
-
-{{% tts %}} is an enterprise grade LoRaWAN network server, built on an [open source](https://github.com/TheThingsNetwork/lorawan-stack) core. {{% tts %}} allows you to build and manage LoRaWAN networks on your own hardware or in the cloud.
 
 ### {{% tts %}} Deployments
 
@@ -28,17 +20,6 @@ Welcome to {{% tts %}}! In this section, we help you to understand how to use {{
 
 {{< distributions "Open Source" >}} **Open Source**: For DIY'ers, the core of {{% tts %}} is [open source](https://github.com/thethingsnetwork/lorawan-stack). If you want to get your hands dirty and understand how {{% tts %}} works, clone away and get hacking.
 
-## Who makes {{% tts %}}?
-
-{{% tts %}} is developed and maintained by [The Things Industries](https://thethingsindustries.com/).
-
-The Things Industries offers several types of deployments of {{% tts %}}, for example as a managed cloud service, or with additional proprietary features.
-
-## What are TTI, TTN, and TTS?
-
-You might see abbreviations like TTN, TTS, and TTI tossed around in the forums and in other places. Here's what they mean:
-
-### TTS: {{% tts %}}
 
 TTS is {{% tts %}}, the LoRaWAN Network Server stack. {{% tts %}} is currently at version 3 of a Network Server implementation, and is therefore also informally known as V3.
 
@@ -51,3 +32,4 @@ The Things Network transitioned to {{% tts %}} Community Edition in 2021. For a 
 ### TTI: The Things Industries
 
 TTI is The Things Industries: the company primarily responsible for development of {{% tts %}} and writing documentation. The Things Industries also offers cloud hosted and on-premises private LoRaWAN networks with additional enterprise features, and premium support plans for enterprise clients. If you're interested in building your own guaranteed uptime enterprise grade LoRaWAN network, send us an [email](mailto:info@thethingsindustries.com).
+
