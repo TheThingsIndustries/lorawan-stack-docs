@@ -213,5 +213,5 @@ $ curl --location --header 'Authorization: Bearer NNSXS.XXXXXXXXX' --header 'Acc
 It is also possible to host source code (or any text file) and display it using shortcodes. For example:
 
 {{< highlight yaml "linenos=table,linenostart=5" >}}
-{{< readfile path="/content/getting-started/installation/configuration/docker-compose-enterprise.yml" from=5 to=14 >}}
+{{< readfile path="/content/the-things-stack/host/docker/configuration/docker-compose-enterprise.yml" from=5 to=14 >}}
 {{< /highlight >}}

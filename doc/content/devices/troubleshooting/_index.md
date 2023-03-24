@@ -28,7 +28,7 @@ Here are some common errors and solutions:
 
 ## I cannot access my device in {{% tts %}} Console.
 
-If you cannot access your device in the Console, i.e. you're seeing the `An unknown error occured. Please try again later...` error, your device is probably not properly provisioned in all {{% tts %}} components (Identity Server, Join Server, Network Server and Application Server). For example, this might happen if you tried to create your device [using the API]({{< ref "/getting-started/api/#multi-step-actions" >}}), but you haven't created it properly in all four server components.
+If you cannot access your device in the Console, i.e. you're seeing the `An unknown error occured. Please try again later...` error, your device is probably not properly provisioned in all {{% tts %}} components (Identity Server, Join Server, Network Server and Application Server). For example, this might happen if you tried to create your device [using the API]({{< ref "/the-things-stack/concepts/api/#multi-step-actions" >}}), but you haven't created it properly in all four server components.
 
 This error can be resolved if you delete your device from all four above mentioned server components, and recreate it from scratch.
 
@@ -56,11 +56,11 @@ To delete your device from Join Server, Network Server and/or Application Server
 curl -X DELETE 'https://thethings.example.com/api/v3/<js/ns/as>/applications/<application_id>/devices/<device_id>' -H 'Accept: application/json' -H 'Authorization: Bearer <api-key>'
 ```
 
-Next, recreate your device as documented in the [Using the API]({{< ref "/getting-started/api/#multi-step-actions" >}}) section.
+Next, recreate your device as documented in the [Using the API]({{< ref "/the-things-stack/concepts/api/#multi-step-actions" >}}) section.
 
 ## How do I see device events?
 
-Device event logs can be found in the console in the device's general information page. See [Working with Events]({{< ref "getting-started/events" >}}) for other ways of subscribing to events.
+Device event logs can be found in the console in the device's general information page. See [Working with Events]({{< ref "the-things-stack/concepts/events" >}}) for other ways of subscribing to events.
 
 ## I see no Join Requests from my device in {{% tts %}}.
 
@@ -185,12 +185,12 @@ Possible causes and solutions:
 - Session keys mismatch
   - For ABP devices, if there is a mismatch between session keys (AppSKey and NwkSKey) that are hardcoded in the device and those used when registering the device on {{% tts %}}, uplinks will not be seen in the device's Live data tab. Please cross-check that your device's session keys match the ones used upon registration on {{% tts %}}.
 
-This problem can also occur after [migrating an active device session]({{< ref "/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session" >}}) from {{% ttnv2 %}} to {{% tts %}}, for devices that transmit uplinks on frequencies that are not part of the standard [frequency plans]({{< ref "/reference/frequency-plans" >}}) used by {{% tts %}}. The issue arises from the fact that factory preset frequencies were not stored in {{% ttnv2 %}}, so they are not present in the [JSON file]({{< ref "/getting-started/migrating/device-json" >}}) used for importing devices in {{% tts %}}. There are two possible solutions:
+This problem can also occur after [migrating an active device session]({{< ref "/the-things-stack/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session" >}}) from {{% ttnv2 %}} to {{% tts %}}, for devices that transmit uplinks on frequencies that are not part of the standard [frequency plans]({{< ref "/reference/frequency-plans" >}}) used by {{% tts %}}. The issue arises from the fact that factory preset frequencies were not stored in {{% ttnv2 %}}, so they are not present in the [JSON file]({{< ref "/the-things-stack/migrating/device-json" >}}) used for importing devices in {{% tts %}}. There are two possible solutions:
 
 - If the end device can be reset, i.e. if it can perform a re-join to {{% tts %}} network or at least reset frame counters (for ABP devices)
   - Go to **General settings** in the device overview in {{% tts %}} Console, navigate to **Network layer &#8594; Advanced MAC settings** and set the **Factory preset frequencies**, then click the **Reset session and MAC state** button. By resetting the device, a new session will be established with {{% tts %}} Network Server and the uplinks on the defined frequencies will be accepted.
 - If the end device cannot be reset
-  - Changes related to factory preset frequencies take effect only after a device reset, but applying the fix explained above will break the existing device session. If you really want to keep the active session or simply cannot reset the device physically, you can try adding the frequency channels manually in the `mac_state.current.channels` and `mac_state.desired_channels` parameters of the [JSON file]({{< ref "/getting-started/migrating/device-json" >}}) before you import it to {{% tts %}}.
+  - Changes related to factory preset frequencies take effect only after a device reset, but applying the fix explained above will break the existing device session. If you really want to keep the active session or simply cannot reset the device physically, you can try adding the frequency channels manually in the `mac_state.current.channels` and `mac_state.desired_channels` parameters of the [JSON file]({{< ref "/the-things-stack/migrating/device-json" >}}) before you import it to {{% tts %}}.
 
 ## I notice a delay in scheduling Class C downlinks. What can I do to fix it?
 

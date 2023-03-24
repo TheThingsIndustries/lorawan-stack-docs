@@ -53,7 +53,7 @@ To get started with {{% tts %}}, you can simply [create an account](https://cons
 
 To purchase a professional plan for {{% tts %}}, see [Pricing](https://accounts.thethingsindustries.com/fee-calculator).
 
-If you are more of the DIY type, you can also [install and run your own network server]({{< ref "getting-started/installation" >}}), using our [open source stack](https://github.com/TheThingsNetwork/lorawan-stack).
+If you are more of the DIY type, you can also [install and run your own network server]({{< ref "the-things-stack/host/docker" >}}), using our [open source stack](https://github.com/TheThingsNetwork/lorawan-stack).
 
 #### Data
 

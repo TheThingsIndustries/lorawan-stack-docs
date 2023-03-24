@@ -33,7 +33,7 @@ First, you need to provide a **Tenant name** and a **Tenant ID** for the tenant 
 
 {{< figure src="tenant-name-and-id.png" alt="Tenant name and ID" >}}
 
-Then, you need to choose clusters you want to use. You can also determine if you want to list your network on [Packet Broker]({{< ref "/getting-started/packet-broker" >}}).
+Then, you need to choose clusters you want to use. You can also determine if you want to list your network on [Packet Broker]({{< ref "/the-things-stack/packet-broker" >}}).
 
 Add the **Administrator email**, **Administrator username** and **Administrator full name** for your Billing Account.
 

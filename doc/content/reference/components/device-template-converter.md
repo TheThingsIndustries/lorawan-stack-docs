@@ -8,4 +8,4 @@ The Device Template Converter converts data to device templates for migrating ne
 
 <!--more-->
 
-Device Template Converter is typically used when migration devices. [Learn about device migration]({{< ref "/getting-started/migrating" >}}).
+Device Template Converter is typically used when migration devices. [Learn about device migration]({{< ref "/the-things-stack/migrating" >}}).

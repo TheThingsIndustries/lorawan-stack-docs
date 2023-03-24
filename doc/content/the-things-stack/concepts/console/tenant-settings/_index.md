@@ -73,7 +73,7 @@ The **Cooldown window** sets a time period after the deduplication window during
 
 Deduplication and cooldown windows affect the initial delay of uplink forwarding for the sake of collecting metadata and are typically modified to align this trade-off with network requirements.
 
-**Device address prefixes** are used to generate the end device address of an end device when it joins to {{% tts %}} network. These prefixes are used to identify traffic from the associated network. When using [Packet Broker]({{< ref "/getting-started/packet-broker" >}}), it may be required to reregister the network if the device address prefixes are changed.
+**Device address prefixes** are used to generate the end device address of an end device when it joins to {{% tts %}} network. These prefixes are used to identify traffic from the associated network. When using [Packet Broker]({{< ref "/the-things-stack/packet-broker" >}}), it may be required to reregister the network if the device address prefixes are changed.
 
 {{< figure src="network-settings.png" alt="Network settings" >}}
 

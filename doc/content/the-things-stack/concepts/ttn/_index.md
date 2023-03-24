@@ -2,7 +2,7 @@
 title: "The Things Network"
 description: ""
 distributions: "Community"
-weight: 9
+weight: -1
 aliases: [/getting-started/ttn]
 ---
 

@@ -22,7 +22,7 @@ The server addresses for the different {{% tts %}} deployments are listed below.
 
 **Community Edition**: See [Community Edition Addresses]({{< ref "the-things-stack/concepts/ttn/addresses" >}})
 
-**Enterprise and Open Source**: This is the domain you configure when installing {{% tts %}}. If you followed the [Getting Started guide]({{< ref "/getting-started/installation" >}}), this is what you use instead of `thethings.example.com`.
+**Enterprise and Open Source**: This is the domain you configure when installing {{% tts %}}. If you followed the [Getting Started guide]({{< ref "/the-things-stack/host/docker" >}}), this is what you use instead of `thethings.example.com`.
 
 ## Console
 

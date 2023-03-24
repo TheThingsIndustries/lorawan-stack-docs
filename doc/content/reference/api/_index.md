@@ -7,7 +7,7 @@ This is the reference for the gRPC and HTTP APIs that {{% tts %}} exposes.
 
 <!--more-->
 
-{{< note >}} {{% tts %}} API is different from {{% ttnv2 %}} API. If migrating from V2, see [here]({{< ref "getting-started/migrating/migrating-from-v2/major-changes" >}}) for an overview of changes. {{</ note >}}
+{{< note >}} {{% tts %}} API is different from {{% ttnv2 %}} API. If migrating from V2, see [here]({{< ref "the-things-stack/migrating/migrating-from-v2/major-changes" >}}) for an overview of changes. {{</ note >}}
 
 ## HTTP Queries
 
@@ -33,4 +33,4 @@ If you are having trouble with the HTTP API, you can always inspect requests in 
 
 ## Examples and Troubleshooting
 
-Examples, fixes for common errors and answers to FAQ are provided in the [Using the API]({{< ref "getting-started/api" >}}) Getting Started section.
+Examples, fixes for common errors and answers to FAQ are provided in the [Using the API]({{< ref "the-things-stack/concepts/api" >}}) Getting Started section.

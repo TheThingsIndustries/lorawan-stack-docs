@@ -46,7 +46,7 @@ TTS is {{% tts %}}, the LoRaWAN Network Server stack. {{% tts %}} is currently a
 
 TTN is [The Things Network](https://thethingsnetwork.org), which is a global collaborative Internet of Things ecosystem that creates networks, devices and solutions using LoRaWAN. The Things Network runs {{% tts %}} Community Edition, which is a crowdsourced, open and decentralized LoRaWAN network. This network is a great way to get started testing devices, applications, and integrations, and get familiar with LoRaWAN.
 
-The Things Network transitioned to {{% tts %}} Community Edition in 2021. For a guide on migrating from {{% ttnv2 %}} to {{% tts %}}, see the [Migrating Guide]({{< ref "/getting-started/migrating">}}).
+The Things Network transitioned to {{% tts %}} Community Edition in 2021. For a guide on migrating from {{% ttnv2 %}} to {{% tts %}}, see the [Migrating Guide]({{< ref "/the-things-stack/migrating">}}).
 
 ### TTI: The Things Industries
 

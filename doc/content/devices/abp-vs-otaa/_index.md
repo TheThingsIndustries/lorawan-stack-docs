@@ -32,7 +32,7 @@ ABP's drawbacks are arising as consequences of its main characteristics.
 
 1. **ABP end devices use a fixed `DevAddr`.**
 
-  Taking the structure of `DevAddr` into the account and the fact that, with ABP, `NwkID` is fixed, we come to the conclusion that this device can work correctly only in its predefined network. Even if a network or a cluster allows registering end devices with different `DevAddr` values than the ones that were assigned to that network/cluster, the [Packet Broker]({{< ref "/getting-started/packet-broker#packet-broker" >}}) will not route the traffic from those end devices to the right network/cluster. 
+  Taking the structure of `DevAddr` into the account and the fact that, with ABP, `NwkID` is fixed, we come to the conclusion that this device can work correctly only in its predefined network. Even if a network or a cluster allows registering end devices with different `DevAddr` values than the ones that were assigned to that network/cluster, the [Packet Broker]({{< ref "/the-things-stack/packet-broker#packet-broker" >}}) will not route the traffic from those end devices to the right network/cluster. 
 
   Also, even if the network/cluster is assigned with additional address blocks, the Network Server will not be able to perform optimization of `DevAddr` allocation, hence the device matching procedure for ABP end devices will not be improved.
 
@@ -48,7 +48,7 @@ ABP's drawbacks are arising as consequences of its main characteristics.
 
   Read more about LoRaWAN security in [The Things Network LoRaWAN documentation](https://www.thethingsnetwork.org/docs/lorawan/security/).
   
-  For enhancing security, you can use [The Things Join Server]({{< ref "/getting-started/join-server" >}}) to handle the join flow, Network Server and Application Server authentication, store root keys and generate session keys. Another option is using Hardware Secured Elements (see [Microchip ATECC608 secure elements]({{< ref "/devices/atecc608a" >}})) which prevent the exposure of keys to software, firmware, manufacturing sites, and other third parties. 
+  For enhancing security, you can use [The Things Join Server]({{< ref "/the-things-stack/concepts/join-server" >}}) to handle the join flow, Network Server and Application Server authentication, store root keys and generate session keys. Another option is using Hardware Secured Elements (see [Microchip ATECC608 secure elements]({{< ref "/devices/atecc608a" >}})) which prevent the exposure of keys to software, firmware, manufacturing sites, and other third parties. 
 
 3. **ABP end devices use fixed network parameters.**
 
