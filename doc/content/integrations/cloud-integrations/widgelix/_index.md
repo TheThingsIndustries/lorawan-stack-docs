@@ -9,7 +9,7 @@ aliases:
   ]
 ---
 
-[Widgelix](https://app.widgelix.com/) is a powerful and flexible deep analytics cloud service for IoT device management and data visualization. Our platform allows you to easily integrate devices from various manufacturers into a single platform, making it easier to manage your IoT network and extract valuable insights from your collected data. With Widgelix, you can optimize your device performance, improve your decision-making, and drive business growth.
+[Widgelix](https://app.widgelix.com/) is a powerful and flexible deep analytics cloud service for IoT device management and data visualization. Widgelix platform allows you to easily integrate devices from various manufacturers into a single platform, making it easier to manage your IoT network and extract valuable insights from your collected data. With Widgelix, you can optimize your device performance, improve your decision-making, and drive business growth.
 
 <!--more-->
 
@@ -23,7 +23,7 @@ aliases:
 
 Navigate to **Device Types** on the left hand menu, then click the **Load From Repository** button.
 
-Select required device and give a **Name** to your template and click **Save** button.
+Select required device, give a **Name** to your template and click **Save** button.
 
 {{< figure src="add-device-type.png" alt="Add device template" >}}
 
