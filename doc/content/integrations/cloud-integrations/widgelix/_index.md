@@ -39,7 +39,7 @@ Give a **Name** to your device, type **DevEUI**, assign previously created **Dev
 
 Navigate to **Devices** on the left hand menu, then click on the created device.
 
-Go to **Settings** tab and click on **Connectivity** section. Then select {{% tts %}}, switch **Secure** option. And finally, copy given API Key.
+Go to **Settings** tab and click on **Connectivity** section. Then select {{% tts %}}, switch **Secure** option. And finally, copy the given API Key because you'll need it in the next step.
 
 {{< figure src="add-connectivity.png" alt="Add connectivity" >}}
 
