@@ -1,5 +1,5 @@
 ---
-title: "Migrating to The Things Stack"
+title: "Migrate to The Things Stack"
 description: ""
 aliases: "/the-things-stack/migrating-from-networks"
 weight: 5

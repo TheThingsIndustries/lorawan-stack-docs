@@ -73,13 +73,13 @@ All devices have a key called the "Root Key" associated with them. The separate 
 
 {{% tts %}} an enterprise grade LoRaWAN server (that includes both the Network Server and Application Server functions mentioned above). In addition, {{% tts %}} contains services and tools to securely manage millions of LoRaWAN devices in production.
 
-Users can choose between simply signing up for `{{% tts %}} Cloud`, [a fully-managed SLA-backed cloud subscription]({{< relref "the-things-stack-cloud" >}}).
+- Users can easily get started by signing up for `{{% tts %}} Cloud`, [a fully-managed SLA-backed cloud subscription]({{< relref "the-things-stack-cloud" >}}). The Things Stack Cloud also offers a free discovery tier to get started and then seamlessly upgrade later to a different tier. Check [available plans](https://www.thethingsindustries.com/stack/plans/).
 
-Users can also leverage the full customization options of and run {{% tts %}} on your own  hardware or cloud infrastructure.
+- Alternatively, the full customization options of {{% tts %}} can be leveraged by and [run {{% tts %}}]({{< relref "host" >}}) on your own hardware or cloud infrastructure.
 
-A free but limited version of {{% tts %}} called `{{% tts %}} Community Edition` is available to [The Things Network]({{< relref "ttn" >}}) community for simple proof-of-concepts and community projects.
+- A free but limited version of {{% tts %}} called `{{% tts %}} Community Edition` is available to [The Things Network]({{< relref "ttn" >}}) community for simple proof-of-concepts and community projects.
 
-For the DIY’ers, the core features of The Things Stack are [open source](https://github.com/thethingsnetwork/lorawan-stack) and is available for installation.
+- For the DIY’ers, the core features of The Things Stack are [open source](https://github.com/thethingsnetwork/lorawan-stack) and is available for local testing.
 
 {{% tts %}} is developed and maintained by [The Things Industries](https://thethingsindustries.com/).
 
@@ -90,9 +90,10 @@ To get started with your LoRaWAN journey, you'd need the following
 1. A LoRaWAN end device
 2. A LoRaWAN gateway
 3. An account on any {{% tts %}} deployment. There are multiple possibilities
- - 
+ - Free
+ - Community
+ - DIY
 
 Once you have an account.
 
-1. Login to your 
-2. Add a device.
+TODO: Add getting started creating a tenant on TTSC and connecting a device/gateway and getting data.

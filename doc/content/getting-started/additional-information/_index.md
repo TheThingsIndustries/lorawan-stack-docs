@@ -8,9 +8,7 @@ This section builds on the introductory explanation to help the reader find reso
 
 <!--more-->
 
-## Learn more
-
-### LoRaWAN
+## LoRaWAN
 
 To learn more about LoRaWAN, check out the [Learn section](https://thethingsnetwork.org/docs/lorawan) of The Things Network, or read up at the [LoRa Alliance](https://lora-alliance.org).
 
@@ -22,6 +20,10 @@ Here is a video of Johan Stokking, the tech lead of The Things Industries and on
 
 
 ### Get Certified
+
+## The Things Stack
+
+
 
 
 ### Useful links
