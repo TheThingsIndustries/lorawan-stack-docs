@@ -7,6 +7,8 @@ With the **Delmation Products | Docksters** integration, data from your LoRaWAN 
 
 Built on the latest cloud-based technology, Docksters can help you excel your business model with the power of IoT data. Using Docksters, you can convert your business into a future proof, data driven company.
 
+{{< figure src="docksters.png" alt="Docksters Smart Building" >}}
+
 <!--more-->
 
 This section takes you quickly through the process of adding a new LoRaWAN device to your Docksters environment. For a new user, this takes approximately 30 minutes. Basic scripting/coding knowledge is useful, but not required.
@@ -136,6 +138,6 @@ function parsePayload(payloadStr, payloadRaw) {
 
 Congrats, you have configured the integration and now you can easily monitor your data!
 
-{{< figure src="docksters.png" alt="Docksters Smart Building" >}}
+{{< figure src="docksters_smart_buildings.png" alt="Data monitoring" >}}
 
 If you want to explore further functionalities, check out the [Delmation Products | Docksters IoT docs page](https://documentation.docksters.io/reports).
