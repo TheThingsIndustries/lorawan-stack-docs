@@ -304,63 +304,45 @@
         </h1>
         
         <div class="content">
-          <p><a href="https://widgelix.com/">Widgelix</a> is a flexible IoT service, which supports zero-code and low-code features, helps to connect any device and build custom applications for device management and data visualization.</p>
+          <p><a href="https://app.widgelix.com/">Widgelix</a> is a powerful and flexible deep analytics cloud service for IoT device management and data visualization. Widgelix platform allows you to easily integrate devices from various manufacturers into a single platform, making it easier to manage your IoT network and extract valuable insights from your collected data. With Widgelix, you can optimize your device performance, improve your decision-making, and drive business growth.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
-<li>A <a href="https://widgelix.com/register">user account on Widgelix</a>.</li>
+<li>A <a href="https://app.widgelix.com/auth/register">user account on Widgelix</a>.</li>
 </ol>
 <h2 id="setup-widgelix">Setup Widgelix</h2>
-<h3 id="create-a-data-converter">Create a Data Converter</h3>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Skip this section if you are already decoding data on The Things Stack using <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">payload formatters</a>.
-</div>
-
-<p>Navigate to <strong>Data Converters</strong> on the left hand menu, then click <strong>Create Data Converter</strong>.
-Give a <strong>Name</strong> to your converter, then edit the default JavaScript converter code or create a new one.</p>
-<p>Optionally, you may provide a test payload and check the converter. The resulting output of your converter should be a flat JSON object.</p>
-<figure><img src="data-converter.png"
-         alt="Create Data Converter"/>
+<h3 id="create-a-device-template-from-repository">Create a device template from Repository</h3>
+<p>Navigate to <strong>Device Types</strong> on the left hand menu, then click the <strong>Load From Repository</strong> button.</p>
+<p>Select required device, give a <strong>Name</strong> to your template and click <strong>Save</strong> button.</p>
+<figure><img src="add-device-type.png"
+         alt="Add device template"/>
 </figure>
 
-<h3 id="create-device-type">Create Device Type</h3>
-<p>Device types allow to join same devices in a single group, manage simultaneously and assign <strong>Rules</strong>, <strong>Widget Sets</strong>, <strong>Data Converters</strong> and <strong>Data Flows</strong>.</p>
-<p>Navigate to <strong>Device Types</strong> on the left hand menu, then click <strong>Create Device Type</strong> button.</p>
-<p>Give a <strong>Name</strong> to your device type, and fill the <strong>Description</strong> and <strong>Manufacturer</strong> fields (optional).</p>
-<p>If you previously <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/widgelix/#create-a-data-converter">created a data converter</a>, you can assign it under <strong>Uplink Data Converter</strong>.
-In the <strong>Data Fields</strong> input, you need to provide all required keys from your resulting flat JSON object.</p>
-<figure><img src="device-type.png"
-         alt="Create Device Type"/>
-</figure>
-
-<h3 id="add-device">Add Device</h3>
+<h3 id="add-new-device-based-on-the-template">Add new device based on the template</h3>
 <p>Navigate to <strong>Devices</strong> on the left hand menu, then click the <strong>Create Device</strong> button.</p>
-<p>Give a <strong>Name</strong> to your device and provide its <strong>DevEUI</strong>. Assign the previously created <strong>Device Type</strong>.</p>
-<figure><img src="create-device.png"
-         alt="Create Device"/>
+<p>Give a <strong>Name</strong> to your device, type <strong>DevEUI</strong>, assign previously created <strong>Device Type</strong> template and click <strong>Save</strong> button.</p>
+<figure><img src="add-device.png"
+         alt="Add device"/>
 </figure>
 
-<h3 id="create-data-flow">Create Data Flow</h3>
-<p>Navigate to <strong>Data Flows</strong> on the left hand menu, then click the <strong>Create New Data Flow</strong> button.</p>
-<p>Give a <strong>Name</strong> to your data flow, select <strong>LoRaWAN (TTN)</strong> connectivity and assign the previously created <strong>Device Type</strong>.</p>
-<figure><img src="create-data-flow.png"
-         alt="Create Data Flow"/>
-</figure>
-
-<p>The new <strong>Data Flow</strong> will appear in the table of data flows. Click on your data flow and copy the <strong>Webhook path</strong> and the <strong>API key</strong> - you will need these values to set up The Things Stack Webhook integration.</p>
-<figure><img src="data-flow-credentials.png"
-         alt="Create Data Flow"/>
+<h3 id="configure-connectivity">Configure Connectivity</h3>
+<p>Navigate to <strong>Devices</strong> on the left hand menu, then click on the created device.</p>
+<p>Go to <strong>Settings</strong> tab and click on <strong>Connectivity</strong> section. Then select The Things Stack, switch <strong>Secure</strong> option. And finally, copy the given API Key because you&rsquo;ll need it in the next step.</p>
+<figure><img src="add-connectivity.png"
+         alt="Add connectivity"/>
 </figure>
 
 <h2 id="configure-the-things-stack">Configure The Things Stack</h2>
 <p>Now you are ready to instantiate the Widgelix <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a>. This will allow you to forward data from your The Things Stack device to <strong>Widgelix</strong>.</p>
 <p>On The Things Stack, navigate to <strong>Integrations → Webhooks</strong> and choose <strong>Widgelix</strong> Webhook template.</p>
-<p>Give a <strong>Webhook ID</strong> to your integration. Fill the <strong>Webhook path</strong> and the <strong>API token</strong> with values you previously copied from Widgelix.</p>
+<p>Give a <strong>Webhook ID</strong> to your integration. Fill the <strong>API Key</strong> with value you previously copied from Widgelix.</p>
 <figure><img src="tts-widgelix.png"
          alt="Widgelix integration on TTS"/>
 </figure>
 
 <p>Congrats, <strong>Widgelix</strong> is now ready to accept your device&rsquo;s uplinks! Navigate back to <strong>Devices</strong> on Widgelix, click on your device and you will be able to observe all the incoming data from your device.</p>
+<figure><img src="dashboard.png"
+         alt="Dashboard"/>
+</figure>
         </div>
         
           <div class="is-clearfix">
@@ -432,10 +414,10 @@ In the <strong>Data Fields</strong> input, you need to provide all required keys
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 04 Feb 2022.
+  Last changed by Anatoly Zimin on 28 Mar 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/29804584da6bd5de4712a87fa20df14806aee8bd">
-      doc: Widgelix documentation added (#762)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/43cb86a64cbf96ca6e6b683e0c2bfa87b91a569a">
+      doc: Update Widgelix Docs (#1068)
     </a>
 </p>
 
