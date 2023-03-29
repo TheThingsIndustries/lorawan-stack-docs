@@ -89,11 +89,4 @@ To get started with your LoRaWAN journey, you'd need the following
 
 1. A LoRaWAN end device
 2. A LoRaWAN gateway
-3. An account on any {{% tts %}} deployment. There are multiple possibilities
- - Free
- - Community
- - DIY
-
-Once you have an account.
-
-TODO: Add getting started creating a tenant on TTSC and connecting a device/gateway and getting data.
+3. An account on any {{% tts %}} deployment. In this guide we show an example of creating a {{% tts %}} Cloud discovery account.
