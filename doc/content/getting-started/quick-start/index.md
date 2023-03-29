@@ -26,17 +26,15 @@ Make sure to get familiar about [LoRaWAN architecture](https://www.thethingsnetw
 
 ## Start Using {{% tts %}}
 
-To get started with {{% tts %}}, you can simply [create an account](https://console.cloud.thethings.network) on The Things Network to start using [The Things Stack Community Edition]({{< ref "getting-started/ttn" >}}) for free.
+{{< figure src="tts-cloud.svg" class="float plain" >}}
 
-To purchase a professional plan for {{% tts %}}, see [Pricing](https://accounts.thethingsindustries.com/fee-calculator).
-
-If you are more of the DIY type, you can also [install and run your own network server]({{< ref "getting-started/installation" >}}), using our [open source stack](https://github.com/TheThingsNetwork/lorawan-stack).
+**The Things Stack Cloud** is a commercial The Things Stack instance hosted by The Things Industries. You can ([start with The Things Stack Cloud for free](https://www.thethingsindustries.com/stack/plans/)) and later easily upgrade to a paid plan if you plan on running your LoRaWAN solution commercially.
 
 ## Build LoRaWAN Solutions
 
 Once you have access to {{% tts %}}, it's time to start connecting devices. See the [Adding Devices section]({{< ref "devices/adding-devices" >}}) for instructions, or watch the video below for a complete introduction.
 
-If you're using The Things Stack Community in an urban area, you may already have gateway coverage thanks to other members of the public The Things Network community. See [The Things Network Coverage Map](https://www.thethingsnetwork.org/map) to find out.
+If you're using The Things Stack in an urban area, you may already have gateway coverage thanks to [Packet Broker]({{< relref "packet-broker" >}}) members of the public The Things Network community. See [The Things Network Coverage Map](https://www.thethingsnetwork.org/map) to find out.
 
 If you're not covered, or you want to add gateways to extend the coverage of your network, see the [Adding Gateways section]({{< ref "/gateways/concepts/adding-gateways" >}}).
 
