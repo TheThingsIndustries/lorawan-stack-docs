@@ -18,13 +18,12 @@ Here is a video of Johan Stokking, the tech lead of The Things Industries and on
 
 {{< note >}} Some common [use cases](https://www.thethingsnetwork.org/docs/lorawan/what-is-lorawan/#lorawan-use-cases) are explained in the video above, but there are certain limitations that make LoRaWAN not suitable for every use-case. Read about [LoRaWAN limitations in The Things Network LoRaWAN documentation](https://www.thethingsnetwork.org/docs/lorawan/limitations/). {{</ note >}}
 
-
 ### Get Certified
 
-## The Things Stack
+The Things Network certification program allows you to officially certify your LoRaWAN knowledge and skills.
 
+Visit [The Things Network Learn hub](https://www.thethingsnetwork.org/docs/lorawan/) or [The Things Academy on Udemy](https://www.udemy.com/course/lorawan-fundamentals/) to learn all about LoRa and LoRaWAN, and get prepared for [The Things Fundamentals certification](https://www.thethingsnetwork.org/achievements/a/the-things-certified-fundamentals/).
 
+Check all available certifications on [The Things Certification site](https://www.thethingsnetwork.org/achievements/certificates/).
 
-
-### Useful links
-
+A lot of academic research around LoRaWAN is being conducted nowadays. [Read some LoRaWAN-related academic papers and publications](https://www.thethingsnetwork.org/docs/lorawan/academic/).

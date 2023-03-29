@@ -1,8 +1,8 @@
 ---
 title: "Console"
 description: ""
-aliases: [/guides/the-things-stack/concepts/cli, /getting-started/console]
-weight: 1
+aliases: [/guides/the-things-stack/concepts/interact/cli, /getting-started/console]
+weight: -3
 ---
 
 The Console is the management application of {{% tts %}} for LoRaWAN. It is a web application which can be used to register applications, end devices or gateways, monitor network traffic, or configure network related options, among other things.

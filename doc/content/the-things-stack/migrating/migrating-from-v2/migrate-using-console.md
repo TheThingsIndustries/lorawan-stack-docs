@@ -5,7 +5,7 @@ weight: 2
 aliases: ["/getting-started/migrating-from-v2/migrate-using-console"]
 ---
 
-This section describes migrating end devices to {{% tts %}} by using [{{% tts %}} Console]({{< ref "/the-things-stack/concepts/console" >}}).
+This section describes migrating end devices to {{% tts %}} by using [{{% tts %}} Console]({{< ref "/the-things-stack/concepts/interact/console" >}}).
 
 <!--more-->
 

@@ -21,11 +21,11 @@ See [user and organization management]({{< ref "the-things-stack/concepts/user-m
 
 ## Troubleshooting common errors in the Console
 
-See [Troubleshooting Console]({{< ref "the-things-stack/concepts/console/troubleshooting" >}}).
+See [Troubleshooting Console]({{< ref "the-things-stack/concepts/interact/console/troubleshooting" >}}).
 
 ## Troubleshooting common CLI errors
 
-See [Troubleshooting CLI]({{< ref "the-things-stack/concepts/cli/troubleshooting" >}}).
+See [Troubleshooting CLI]({{< ref "the-things-stack/concepts/interact/cli/troubleshooting" >}}).
 
 ## Troubleshooting common device errors
 

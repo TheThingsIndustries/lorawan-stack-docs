@@ -2,8 +2,8 @@
 title: "Adding Devices"
 description: ""
 aliases:
-  - /the-things-stack/concepts/cli/create-end-device
-  - /the-things-stack/concepts/console/create-end-device
+  - /the-things-stack/concepts/interact/cli/create-end-device
+  - /the-things-stack/concepts/interact/console/create-end-device
   - /getting-started/device-claiming/claim-devices
 weight: -1
 ---
@@ -14,7 +14,7 @@ This section contains instructions for adding devices in {{% tts %}}.
 
 Devices are managed under applications. An application can contain an unlimited number of devices, but it can be helpful to sort devices in to applications by function or geographical area, to make the integrations and live data views more useful.
 
-Devices can be easily added using the Console and the CLI, so those methods are extensively explained in this section. It is also possible to add devices [using the API]({{< ref "/the-things-stack/concepts/api#multi-step-actions" >}}).
+Devices can be easily added using the Console and the CLI, so those methods are extensively explained in this section. It is also possible to add devices [using the API]({{< ref "/the-things-stack/concepts/interact/api#multi-step-actions" >}}).
 
 {{< tabs/container "Console" "CLI" >}}
 

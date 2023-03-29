@@ -33,4 +33,4 @@ If you are having trouble with the HTTP API, you can always inspect requests in 
 
 ## Examples and Troubleshooting
 
-Examples, fixes for common errors and answers to FAQ are provided in the [Using the API]({{< ref "the-things-stack/concepts/api" >}}) Getting Started section.
+Examples, fixes for common errors and answers to FAQ are provided in the [Using the API]({{< ref "the-things-stack/concepts/interact/api" >}}) Getting Started section.

@@ -22,7 +22,7 @@ The Milesight UG6X LoRaWAN gateways support two ways of connecting {{% tts %}}, 
 
 ## Registration
 
-[Add a gateway]({{< ref "/gateways/concepts/adding-gateways" >}}) by following the instructions for the [Console]({{< ref "/the-things-stack/concepts/console#create-gateway" >}}) or the [CLI]({{< ref "/the-things-stack/concepts/cli#create-gateway" >}}).
+[Add a gateway]({{< ref "/gateways/concepts/adding-gateways" >}}) by following the instructions for the [Console]({{< ref "/the-things-stack/concepts/interact/console#create-gateway" >}}) or the [CLI]({{< ref "/the-things-stack/concepts/interact/cli#create-gateway" >}}).
 
 The **Gateway EUI** of the gateway can be found on the gateway's configuration web page. See [Configuration via Browser section]({{< ref "#configuration-via-browser" >}}) below for instructions to access the configuration page.
 

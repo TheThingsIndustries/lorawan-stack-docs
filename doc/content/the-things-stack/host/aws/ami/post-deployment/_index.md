@@ -46,11 +46,11 @@ Apart from the DNS mapping above, no additional steps are necessary for this.
 
 ## Getting Started using the Console
 
-Please check the [Console]({{< ref "/the-things-stack/concepts/console" >}}) guide to get quickly started with {{% tts %}} Console.
+Please check the [Console]({{< ref "/the-things-stack/concepts/interact/console" >}}) guide to get quickly started with {{% tts %}} Console.
 
 ## Getting Started using the Command Line Interface (CLI)
 
-Please check the [CLI]({{< ref "/the-things-stack/concepts/cli" >}}) guide to get quickly started with {{% tts %}} CLI.
+Please check the [CLI]({{< ref "/the-things-stack/concepts/interact/cli" >}}) guide to get quickly started with {{% tts %}} CLI.
 
 ## SSH Access
 

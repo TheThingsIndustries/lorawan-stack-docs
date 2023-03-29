@@ -78,7 +78,7 @@ API keys can be `create`d, `list`ed, `update`d and `delete`d. Creating an API ke
 
 ## Uplink Traffic
 
-The CLI can be used to subscribe to uplink traffic. See the [Getting Started guide]({{< ref "/the-things-stack/concepts/cli" >}}) for more details.
+The CLI can be used to subscribe to uplink traffic. See the [Getting Started guide]({{< ref "/the-things-stack/concepts/interact/cli" >}}) for more details.
 
 ## Downlink Queue
 

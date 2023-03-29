@@ -145,4 +145,4 @@ docker-compose up
 
 This starts the stack, so you will see the stack logs being printed to your terminal. You can also start the stack in detached mode by adding `-d` to the command above. In that case you can get logs with [`docker-compose logs`](https://docs.docker.com/compose/reference/logs/).
 
-With {{% tts %}} up and running, follow [Console]({{< ref "/the-things-stack/concepts/console" >}}) or [Command-line Interface]({{< ref "the-things-stack/concepts/cli" >}}) to proceed with the login, then continue with connecting gateways, creating devices and working with streaming data.
+With {{% tts %}} up and running, follow [Console]({{< ref "/the-things-stack/concepts/interact/console" >}}) or [Command-line Interface]({{< ref "the-things-stack/concepts/interact/cli" >}}) to proceed with the login, then continue with connecting gateways, creating devices and working with streaming data.

@@ -11,7 +11,7 @@ You can update the examples below with your cluster ID by filling it here.
 
 ## Console
 
-To learn how to get started with the Console, see the [Console Getting Started Guide]({{< ref "/the-things-stack/concepts/console" >}}).
+To learn how to get started with the Console, see the [Console Getting Started Guide]({{< ref "/the-things-stack/concepts/interact/console" >}}).
 
 Each cluster has a Console where you can manage gateways and end devices of that cluster. You can use any cluster with your Cloud account.
 
@@ -72,4 +72,4 @@ device-template-converter-grpc-address: '<span data-content="cluster-id"></span>
 qr-code-generator-grpc-address: '<span data-content="cluster-id"></span>.cloud.thethings.network:8884'
 </pre>
 
-See the [CLI Getting Started Guide]({{< ref "/the-things-stack/concepts/cli" >}}) to learn how to get started with the CLI and working with configuration files.
+See the [CLI Getting Started Guide]({{< ref "/the-things-stack/concepts/interact/cli" >}}) to learn how to get started with the CLI and working with configuration files.

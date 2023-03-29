@@ -1,7 +1,7 @@
 ---
 title: "Personal Settings"
 description: ""
-aliases: "/the-things-stack/concepts/console/profile-settings"
+aliases: "/the-things-stack/concepts/interact/console/profile-settings"
 weight: 1
 ---
 

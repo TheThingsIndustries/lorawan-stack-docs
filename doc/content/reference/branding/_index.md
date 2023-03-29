@@ -11,7 +11,7 @@ This reference gives details on how to customize the branding of the login pages
 
 [{{% tts %}} Cloud]({{< ref "/the-things-stack/concepts/the-things-stack-cloud" >}}) users can use a custom branding in {{% tts %}} Console. Branding customization is available for each {{% tts %}} Cloud tenant.
 
-See below for what's available to customize and what files are necessary. Users need to host these files on a CDN (e.g. an S3 bucket) and provide a link to it as shown in the [Tenant Settings guide]({{< ref "/the-things-stack/concepts/console/tenant-settings#branding" >}}).
+See below for what's available to customize and what files are necessary. Users need to host these files on a CDN (e.g. an S3 bucket) and provide a link to it as shown in the [Tenant Settings guide]({{< ref "/the-things-stack/concepts/interact/console/tenant-settings#branding" >}}).
 
 ## Title, Subtitle and Description
 
@@ -19,7 +19,7 @@ The title, subtitle and description of the login pages and the Console can be ch
 
 ## Logos
 
-Logos of the web UI can be rebranded by pointing the **Branding base URL** in the Console (as described in [Tenant Settings]({{< ref "/the-things-stack/concepts/console/tenant-settings#branding" >}})) to a location that contains the following files:
+Logos of the web UI can be rebranded by pointing the **Branding base URL** in the Console (as described in [Tenant Settings]({{< ref "/the-things-stack/concepts/interact/console/tenant-settings#branding" >}})) to a location that contains the following files:
 
 | **Filename**           | **Size** | **Purpose** |
 | ---------------------- | -------- | ----------- |

@@ -32,7 +32,7 @@ The CLI is capable of retrying requests that were rejected by the rate limiter: 
 
 ## API Options
 
-The CLI needs to be configured with the addresses of the OAuth server. The [Getting Started guide]({{< ref "/the-things-stack/concepts/cli/installing-cli" >}}) gives a good example configuration for a typical deployment.
+The CLI needs to be configured with the addresses of the OAuth server. The [Getting Started guide]({{< ref "/the-things-stack/concepts/interact/cli/installing-cli" >}}) gives a good example configuration for a typical deployment.
 
 - `oauth-server-address`: OAuth Server address
 - `identity-server-grpc-address`: Identity Server address

@@ -1,11 +1,11 @@
 ---
 title: "Using the API"
 description: ""
-weight: 14
 aliases: [/getting-started/api]
+weight: -1
 ---
 
-While we recommend using the [Console]({{< ref "/the-things-stack/concepts/console" >}}) or [CLI]({{< ref "the-things-stack/concepts/cli" >}}) to manage your applications and devices in {{% tts %}}, we also expose HTTP and gRPC APIs which you can interact directly with. This section contains information about using the HTTP API, and examples.
+While we recommend using the [Console]({{< ref "/the-things-stack/concepts/interact/console" >}}) or [CLI]({{< ref "the-things-stack/concepts/interact/cli" >}}) to manage your applications and devices in {{% tts %}}, we also expose HTTP and gRPC APIs which you can interact directly with. This section contains information about using the HTTP API, and examples.
 
 <!--more-->
 
@@ -123,7 +123,7 @@ It is also possible to [schedule downlinks using HTTP Webhooks]({{< ref "integra
 
 ### Multi-step Actions
 
-If you want to create a device, perform multi-step actions, or write shell scripts, it's best to use the [CLI]({{< ref "the-things-stack/concepts/cli" >}}).
+If you want to create a device, perform multi-step actions, or write shell scripts, it's best to use the [CLI]({{< ref "the-things-stack/concepts/interact/cli" >}}).
 
 If you want to do something like registering a device directly via the API, you need to make calls to the Identity Server, Join Server, Network Server and Application Server. See the [API Reference]({{< ref "reference/api/end_device" >}}) for detailed information about which messages go to which endpoints. 
 
