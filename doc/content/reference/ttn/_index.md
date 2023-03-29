@@ -2,7 +2,6 @@
 title: "The Things Network"
 description: ""
 distributions: "Community"
-weight: -1
 aliases: [/getting-started/ttn]
 ---
 
@@ -38,4 +37,4 @@ If you navigate to [this link](https://console.cloud.thethings.network), you can
 
 {{< figure src="cluster-location.png" alt="Recommended clusters" >}}
 
-See the [Addresses]({{< ref "/the-things-stack/concepts/ttn/addresses" >}}) for details about cluster, Console, API endpoints and other {{% tts %}} Community Edition addresses.
+See the [Addresses]({{< ref "/reference/ttn/addresses" >}}) for details about cluster, Console, API endpoints and other {{% tts %}} Community Edition addresses.

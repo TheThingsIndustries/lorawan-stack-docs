@@ -1,7 +1,21 @@
 ---
-title: "Install The Things Stack"
-description: "Install an instance of The Things Stack"
-weight: -1
+title: "Setup The Things Stack"
+description: ""
+weight: 1
 ---
 
-In addition to the hosted versions, {{% tts %}} is also flexible enough to installed and hosted on various infrastructures. This guide contains information on the various flavours of hosting {{% tts %}} based the requirements.
+{{% tts %}} is a highly flexible software product that is available in a variety of deployment models and caters to various user requirements. Check which model applies to your use case.
+
+<!--more-->
+
+The Things Industries offers {{% tts %}} as a fully-managed, SLA-backed cloud subscription called [`{{% tts %}} Cloud`]({{< relref "cloud" >}}). The complexity of managing a LoRaWAN network server in production is handled by us, while you can focus on delivering value to your customers.
+
+Users can easily get started with The Things Stack Cloud by signing up for [free discovery tier](https://www.thethingsindustries.com/stack/plans/) to get started and test the capabilities of {{% tts %}}. Once you are ready to scale your LoRaWAN fleet, you can seamlessly update the subscription to reflect the changes. For most users, {{% tts %}} Cloud is the recommended option.
+
+For users with operational experience and for users who require that the LoRaWAN data is within their own infrastructural domain, {{% tts %}} is packaged in various flavours for users to install on their own hardware/cloud.
+
+{{% tts %}} is available for production installations for the following cases
+- [Amazon Cloud Services templates]({{< relref "aws" >}})
+- [Kubernetes templates]({{< relref "kubernetes" >}})
+
+For users who want to install {{% tts %}} on their local machines for testing or want to contribute to [{{% tts %}} open source repository](https://github.com/TheThingsNetwork/lorawan-stack), {{% tts %}} is also available to be [installed via Docker]({{< relref "docker" >}}).

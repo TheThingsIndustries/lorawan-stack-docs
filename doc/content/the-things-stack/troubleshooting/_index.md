@@ -37,7 +37,7 @@ See [Troubleshooting Gateways]({{< ref "/gateways/troubleshooting" >}}).
 
 ## Tenant is not active
 
-For [{{% tts %}} Cloud]({{< ref "/the-things-stack/concepts/the-things-stack-cloud" >}}) customers, this error indicates that the payment is probably overdue. If you are experiencing payment issues, please contact your Account Manager directly for further assistance.
+For [{{% tts %}} Cloud]({{< ref "/the-things-stack/host/cloud" >}}) customers, this error indicates that the payment is probably overdue. If you are experiencing payment issues, please contact your Account Manager directly for further assistance.
 
 ## How do I change the tenant ID of an existing tenant in {{% tts %}}?
 

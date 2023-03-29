@@ -1,7 +1,7 @@
 ---
 title: "Kubernetes"
 description: ""
-weight: 7
+weight: 3
 aliases: [/getting-started/kubernetes]
 ---
 

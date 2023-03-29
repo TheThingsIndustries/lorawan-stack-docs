@@ -17,13 +17,13 @@ If you are using {{% tts %}} Cloud, the Console is available at the following UR
 
 `<tenant_id>.<eu1/eu2/au1/nam1/>.cloud.thethings.industries`
 
-See [Cloud Addresses]({{< ref "/the-things-stack/concepts/the-things-stack-cloud/addresses" >}}) for more information about cluster addresses.
+See [Cloud Addresses]({{< ref "/the-things-stack/host/cloud/addresses" >}}) for more information about cluster addresses.
 
 ## {{% tts %}} Community Edition
 
 If you are using {{% tts %}} Community Edition, the Console is available at `cloud.thethings.network`.
 
-Visit the addresses page for [{{% tts %}} Community Edition]({{< ref "the-things-stack/concepts/ttn/addresses" >}}) for more information.
+Visit the addresses page for [{{% tts %}} Community Edition]({{< ref "reference/ttn/addresses" >}}) for more information.
 
 ## {{% tts %}} Enterprise and Open Source
 

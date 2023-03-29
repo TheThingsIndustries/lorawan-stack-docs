@@ -1,7 +1,7 @@
 ---
 title: "The Things Stack Cloud"
 description: "This section contains concepts specific to The Things Stack Cloud"
-weight: -2
+weight: 1
 aliases: [/guides/cloud-hosted/cloud-hosted, /getting-started/cloud-hosted]
 ---
 
@@ -34,7 +34,7 @@ If you navigate to [this link](https://console.cloud.thethings.industries), you 
 
 {{< figure src="cluster-location.png" alt="Recommended clusters" >}}
 
-See the [Cloud Addresses]({{< ref "/the-things-stack/concepts/the-things-stack-cloud/addresses" >}}) for details about cluster, Console, API endpoints and other {{% tts %}} Cloud addresses.
+See the [Cloud Addresses]({{< ref "/the-things-stack/host/cloud/addresses" >}}) for details about cluster, Console, API endpoints and other {{% tts %}} Cloud addresses.
 
 ## Status Page
 

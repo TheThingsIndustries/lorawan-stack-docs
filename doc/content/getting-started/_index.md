@@ -73,9 +73,9 @@ All devices have a key called the "Root Key" associated with them. The separate 
 
 {{% tts %}} an enterprise grade LoRaWAN server (that includes both the Network Server and Application Server functions mentioned above). In addition, {{% tts %}} contains services and tools to securely manage millions of LoRaWAN devices in production.
 
-- Users can easily get started by signing up for `{{% tts %}} Cloud`, [a fully-managed SLA-backed cloud subscription]({{< relref "the-things-stack-cloud" >}}). The Things Stack Cloud also offers a free discovery tier to get started and then seamlessly upgrade later to a different tier. Check [available plans](https://www.thethingsindustries.com/stack/plans/).
+- Users can easily get started by signing up for `{{% tts %}} Cloud`, [a fully-managed SLA-backed cloud subscription]({{< relref "cloud" >}}). The Things Stack Cloud also offers a free discovery tier to get started and then seamlessly upgrade later to a different tier. Check [available plans](https://www.thethingsindustries.com/stack/plans/).
 
-- Alternatively, the full customization options of {{% tts %}} can be leveraged by and [run {{% tts %}}]({{< relref "host" >}}) on your own hardware or cloud infrastructure.
+- Alternatively, the full customization options of {{% tts %}} can be leveraged by and [run {{% tts %}}]({{< relref "setup" >}}) on your own hardware or cloud infrastructure.
 
 - A free but limited version of {{% tts %}} called `{{% tts %}} Community Edition` is available to [The Things Network]({{< relref "ttn" >}}) community for simple proof-of-concepts and community projects.
 

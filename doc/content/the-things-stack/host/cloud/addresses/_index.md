@@ -2,7 +2,7 @@
 title: "Cloud Addresses"
 description: ""
 weight: 10
-aliases: [/guides/cloud-hosted/addresses, /the-things-stack/concepts/the-things-stack-cloud/addresses]
+aliases: [/guides/cloud-hosted/addresses, /the-things-stack/host/cloud/addresses]
 distributions: ["Cloud"]
 ---
 

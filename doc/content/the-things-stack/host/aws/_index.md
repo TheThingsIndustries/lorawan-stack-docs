@@ -1,7 +1,7 @@
 ---
 title: "AWS"
 description: ""
-weight: 7
+weight: 2
 aliases: [/getting-started/aws]
 ---
 

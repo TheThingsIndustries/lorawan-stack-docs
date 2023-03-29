@@ -16,11 +16,11 @@ The server addresses for the different {{% tts %}} deployments are listed below.
 
 ## Deployments
 
-**Cloud and Dedicated Cloud**: See [Cloud Addresses]({{< ref "/the-things-stack/concepts/the-things-stack-cloud/addresses" >}}).
+**Cloud and Dedicated Cloud**: See [Cloud Addresses]({{< ref "/the-things-stack/host/cloud/addresses" >}}).
 
 **AWS Launcher**: This is the domain you specify in your [CloudFormation configuration]({{< ref "the-things-stack/host/aws/ami/deployment-guide#step-2-configure-the-deployment" >}}).
 
-**Community Edition**: See [Community Edition Addresses]({{< ref "the-things-stack/concepts/ttn/addresses" >}})
+**Community Edition**: See [Community Edition Addresses]({{< ref "reference/ttn/addresses" >}})
 
 **Enterprise and Open Source**: This is the domain you configure when installing {{% tts %}}. If you followed the [Getting Started guide]({{< ref "/the-things-stack/host/docker" >}}), this is what you use instead of `thethings.example.com`.
 
