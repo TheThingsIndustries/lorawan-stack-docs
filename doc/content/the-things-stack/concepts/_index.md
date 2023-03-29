@@ -1,7 +1,8 @@
 ---
-title: "Concepts"
+title: "Basic Concepts"
 description: "Guides on basic concepts of working with The Things Stack"
-weight: -3
+weight: 1
+aliases: [/reference/spec-regional-parameters]
 ---
 
 This section introduces basic concepts of working with {{% tts %}}.

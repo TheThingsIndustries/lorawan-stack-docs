@@ -1,7 +1,7 @@
 ---
 title: "Troubleshooting"
 description: ""
-weight: 16
+weight: 7
 aliases: [/getting-started/troubleshooting]
 ---
 
@@ -17,15 +17,15 @@ See the [authentication reference]({{< ref "reference/api/authentication" >}}).
 
 ## How do I create and authorize new users?
 
-See [user and organization management]({{< ref "the-things-stack/concepts/user-management" >}}).
+See [user and organization management]({{< ref "/the-things-stack/management/user-management" >}}).
 
 ## Troubleshooting common errors in the Console
 
-See [Troubleshooting Console]({{< ref "the-things-stack/concepts/interact/console/troubleshooting" >}}).
+See [Troubleshooting Console]({{< ref "the-things-stack/interact/console/troubleshooting" >}}).
 
 ## Troubleshooting common CLI errors
 
-See [Troubleshooting CLI]({{< ref "the-things-stack/concepts/interact/cli/troubleshooting" >}}).
+See [Troubleshooting CLI]({{< ref "the-things-stack/interact/cli/troubleshooting" >}}).
 
 ## Troubleshooting common device errors
 

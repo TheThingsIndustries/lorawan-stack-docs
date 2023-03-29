@@ -7,7 +7,7 @@ aliases:
   - "/reference/peering"
   - "/reference/packet-broker"
   - "getting-started/packet-broker"
-weight: 11
+weight: 6
 ---
 
 ## What is it?

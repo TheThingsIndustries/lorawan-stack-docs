@@ -313,7 +313,7 @@ ACME will not work on `localhost`, so you must either generate custom certificat
 
 This will still allow you to see {{% tts %}} Console by entering `localhost` or your local IP address in your browser. It will also allow you to connect to {{% tts %}} from any machine inside your local network.
 
-You will also need to [configure the CLI]({{< ref "the-things-stack/concepts/interact/cli/installing-cli#generate-configuration-file" >}}), to use the static IP of your machine as the address of {{% tts %}}. 
+You will also need to [configure the CLI]({{< ref "the-things-stack/interact/cli/installing-cli#generate-configuration-file" >}}), to use the static IP of your machine as the address of {{% tts %}}. 
 
 ### Solution 2: Specify the internal ports that {{% tts %}} listens on in your configuration files
 

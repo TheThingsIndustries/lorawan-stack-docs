@@ -16,9 +16,9 @@ To understand how data is secured in {{% tts %}} it is necessary to understand s
 
 **Network Administrators**: Users with administrative access in a tenant. **Network Administrators** have access to all entities in a tenant, including device secrets. In multi-tenant environments, tenants are completely isolated, and **Network Administrators** of one tenant have **no access** to other tenants.
 
-**Users and Organizations**: Users without administrative access, and organizations, can access entities which they have [collaborator rights]({{< ref "the-things-stack/concepts/user-management" >}}) over.
+**Users and Organizations**: Users without administrative access, and organizations, can access entities which they have [collaborator rights]({{< ref "/the-things-stack/management/user-management" >}}) over.
 
-**Support Engineers**: The Things Industries support engineers do **not** have infrastructural access to any {{% tts %}} deployments. They must be [granted access]({{< ref "the-things-stack/concepts/user-management" >}}) by the customer.
+**Support Engineers**: The Things Industries support engineers do **not** have infrastructural access to any {{% tts %}} deployments. They must be [granted access]({{< ref "/the-things-stack/management/user-management" >}}) by the customer.
 
 ## {{% tts %}} Cloud and Dedicated Cloud
 
@@ -42,5 +42,5 @@ The Application Server stores
 
 {{% tts %}} uses your NwkSKey (NwkSEncKey in LoRaWAN 1.1) to decrypt LoRaWAN network-level payload. These session keys are only known to the Network Server and are never exposed downstream (to gateways) or upstream (to applications).
 
-{{% tts %}} uses the LoRaWAN AppSKey to decrypt the application payload, which is available in the [JSON message]({{< ref "reference/data-formats" >}}). It is also possible to skip payload decryption in {{% tts %}}, and perform decryption later in your application pipeline. See instructions on how to do it on an [application level]({{< ref "/integrations/adding-applications#payload-encryption-and-decryption" >}}) or on a [device level]({{< ref "/devices/adding-devices#application-layer-settings" >}}).
+{{% tts %}} uses the LoRaWAN AppSKey to decrypt the application payload, which is available in the [JSON message]({{< ref "the-things-stack/concepts/data-formats" >}}). It is also possible to skip payload decryption in {{% tts %}}, and perform decryption later in your application pipeline. See instructions on how to do it on an [application level]({{< ref "/integrations/adding-applications#payload-encryption-and-decryption" >}}) or on a [device level]({{< ref "/devices/adding-devices#application-layer-settings" >}}).
 

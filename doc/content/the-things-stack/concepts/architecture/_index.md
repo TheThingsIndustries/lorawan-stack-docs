@@ -1,7 +1,7 @@
 ---
 title: "Architecture"
 description: "This section explains the architecture and components of The Things Stack"
-weight: -4
+weight: 1
 ---
 
 {{% tts %}} follows a API driven microservice architecture, well suited for high availability and reliability.

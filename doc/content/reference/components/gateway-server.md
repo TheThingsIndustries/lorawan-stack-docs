@@ -10,7 +10,7 @@ The Gateway Server maintains connections with gateways supporting the Basic Stat
 
 ## Connectivity
 
-Gateways can connect to Gateway Servers over multiple protocols. See [Networking]({{< ref "/reference/networking" >}}).
+Gateways can connect to Gateway Servers over multiple protocols. See [Networking]({{< ref "/the-things-stack/concepts/networking" >}}).
 
 ### Basic Station Protocol
 

@@ -2,8 +2,8 @@
 title: "Adding Devices"
 description: ""
 aliases:
-  - /the-things-stack/concepts/interact/cli/create-end-device
-  - /the-things-stack/concepts/interact/console/create-end-device
+  - /the-things-stack/interact/cli/create-end-device
+  - /the-things-stack/interact/console/create-end-device
   - /getting-started/device-claiming/claim-devices
 weight: -1
 ---
@@ -14,7 +14,7 @@ This section contains instructions for adding devices in {{% tts %}}.
 
 Devices are managed under applications. An application can contain an unlimited number of devices, but it can be helpful to sort devices in to applications by function or geographical area, to make the integrations and live data views more useful.
 
-Devices can be easily added using the Console and the CLI, so those methods are extensively explained in this section. It is also possible to add devices [using the API]({{< ref "/the-things-stack/concepts/interact/api#multi-step-actions" >}}).
+Devices can be easily added using the Console and the CLI, so those methods are extensively explained in this section. It is also possible to add devices [using the API]({{< ref "/the-things-stack/interact/api#multi-step-actions" >}}).
 
 {{< tabs/container "Console" "CLI" >}}
 
@@ -85,7 +85,7 @@ Choose a **Frequency plan** appropriate for your region. Your device and gateway
 Select the device **LoRaWAN version**. This should be provided with your device as the LoRaWAN version, LoRaWAN specification, or MAC version.
 
 {{< warning >}}
-Choosing the incorrect LoRaWAN version can lead to complex errors. Activation may work, but the device will not be able to communicate consistently. If you are unsure about the LoRaWAN version you have selected, watch the [event log]({{< ref "the-things-stack/concepts/events" >}}) for errors!
+Choosing the incorrect LoRaWAN version can lead to complex errors. Activation may work, but the device will not be able to communicate consistently. If you are unsure about the LoRaWAN version you have selected, watch the [event log]({{< ref "the-things-stack/management/events" >}}) for errors!
 {{</ warning >}}
 
 Choose the **Regional Parameters version** provided by the manufacturer of your device. This should be specified in the data sheet as Regional Parameters or PHY version.

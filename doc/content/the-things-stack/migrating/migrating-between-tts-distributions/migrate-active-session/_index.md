@@ -22,7 +22,7 @@ Hence, to successfully migrate an active device session from {{% tts %}} Communi
 
 ## Migrate OTAA and ABP Devices
 
-Since migrating an active session implies migrating a large number of parameters that cannot be configured manually, it is possible to do it only using the [migration tool]({{< ref "/the-things-stack/migrating/migration-tool">}}) or the [CLI]({{< ref "/the-things-stack/concepts/interact/cli" >}}).
+Since migrating an active session implies migrating a large number of parameters that cannot be configured manually, it is possible to do it only using the [migration tool]({{< ref "/the-things-stack/migrating/migration-tool">}}) or the [CLI]({{< ref "/the-things-stack/interact/cli" >}}).
 
 {{< tabs/container "Migration tool" "CLI">}}
 
@@ -45,7 +45,7 @@ ttn-lw-migrate device --source ttnv3 'my-device' \
     --ttnv3.delete-source-device
 ```
 
-Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [Import End Devices in {{% tts %}}]({{< ref "/the-things-stack/migrating/import-devices" >}}). Keep in mind that if you are using the CLI to import devices, you first have to configure it to connect to {{% tts %}} Cloud. See [Configuring the CLI]({{< ref "/the-things-stack/concepts/interact/cli/configuring-cli" >}}) guide for instructions.
+Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [Import End Devices in {{% tts %}}]({{< ref "/the-things-stack/migrating/import-devices" >}}). Keep in mind that if you are using the CLI to import devices, you first have to configure it to connect to {{% tts %}} Cloud. See [Configuring the CLI]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) guide for instructions.
 
 {{</ tabs/tab >}}
 
@@ -53,9 +53,9 @@ Next, you need to import the `devices.json` file in your {{% tts %}} Cloud appli
 
 Migrating an active OTAA or ABP device session means the existing session that was established between the device and {{% tts %}} Community Edition will just be transferred to {{% tts %}} Cloud. To migrate active device sessions from {{% tts %}} Community Edition to {{% tts %}} Cloud using the CLI, follow the steps described below.
 
-First, configure your CLI to connect to {{% tts %}} Community Edition. See [Configuring the CLI]({{< ref "/the-things-stack/concepts/interact/cli/configuring-cli" >}}) guide for instructions. Make sure you also perform a [Login with the CLI]({{< ref "/the-things-stack/concepts/interact/cli/login" >}}) to {{% tts %}} Community Edition.
+First, configure your CLI to connect to {{% tts %}} Community Edition. See [Configuring the CLI]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) guide for instructions. Make sure you also perform a [Login with the CLI]({{< ref "/the-things-stack/interact/cli/login" >}}) to {{% tts %}} Community Edition.
 
-{{< note >}} We recommend to use the latest version of the CLI. Instructions for upgrading the CLI if you already have it installed are available in the [Installing the CLI]({{< ref "/the-things-stack/concepts/interact/cli/installing-cli" >}}) guide. {{</ note >}}
+{{< note >}} We recommend to use the latest version of the CLI. Instructions for upgrading the CLI if you already have it installed are available in the [Installing the CLI]({{< ref "/the-things-stack/interact/cli/installing-cli" >}}) guide. {{</ note >}}
 
 To export your OTAA device's session from {{% tts %}} Community Edition:
 
@@ -92,7 +92,7 @@ The command above will export your device's session to the `device-session.json`
 
 Before your device's session is imported in {{% tts %}} Cloud, you need to completely delete your device from {{% tts %}} Community Edition to prevent conflicts. 
 
-Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [Import End Devices in {{% tts %}}]({{< ref "/the-things-stack/migrating/import-devices" >}}). Keep in mind that if you are using the CLI to import devices, you first have to configure it to connect to {{% tts %}} Cloud. Again, see [Configuring the CLI]({{< ref "/the-things-stack/concepts/interact/cli/configuring-cli" >}}) guide for instructions.
+Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [Import End Devices in {{% tts %}}]({{< ref "/the-things-stack/migrating/import-devices" >}}). Keep in mind that if you are using the CLI to import devices, you first have to configure it to connect to {{% tts %}} Cloud. Again, see [Configuring the CLI]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) guide for instructions.
 
 {{</ tabs/tab >}}
 

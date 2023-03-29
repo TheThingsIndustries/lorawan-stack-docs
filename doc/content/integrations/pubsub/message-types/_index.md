@@ -18,7 +18,7 @@ The Application Server can be configured to **subscribe** to messages to schedul
 - Downlink queue push
 - Downlink queue replace
 
-JSON messages sent or received by the Application Server are defined in [Data Formats]({{< ref "/reference/data-formats" >}}).
+JSON messages sent or received by the Application Server are defined in [Data Formats]({{< ref "/the-things-stack/concepts/data-formats" >}}).
 
 Enabling event messaging also allows you to manually configure a **Sub topic** for that event. If no Sub topic is specified, events will be published to the configured **Base topic**.
 

@@ -6,7 +6,7 @@ aliases: [/the-things-stack/migrating-from-v2/import-devices,/the-things-stack/m
 
 To import end devices, you need access to an application in {{% tts %}}. If you have not created one previously, see the [Adding Applications]({{< ref "integrations/adding-applications" >}}) guide for detailed instructions.
 
-There are two ways to import devices in {{% tts %}} - using [Console]({{< ref "/the-things-stack/concepts/interact/console" >}}) or [CLI]({{< ref "/the-things-stack/concepts/interact/cli" >}}).
+There are two ways to import devices in {{% tts %}} - using [Console]({{< ref "/the-things-stack/interact/console" >}}) or [CLI]({{< ref "/the-things-stack/interact/cli" >}}).
 
 {{% tts %}} supports importing end devices in JSON and CSV format:
 

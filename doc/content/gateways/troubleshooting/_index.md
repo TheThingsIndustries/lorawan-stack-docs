@@ -47,7 +47,7 @@ For an example configuration file, see [Semtech's {{% lbs %}} documentation](htt
 
 ## How do I see gateway events?
 
-Gateway event logs can be found in the Live Data tab in the gateway's general information page. See [Working with Events]({{< ref "the-things-stack/concepts/events" >}}) for other ways of subscribing to events.
+Gateway event logs can be found in the Live Data tab in the gateway's general information page. See [Working with Events]({{< ref "the-things-stack/management/events" >}}) for other ways of subscribing to events.
 
 ## How does {{% tts %}} Console know whether a gateway is connected?
 
@@ -129,7 +129,7 @@ Another gateway is already registered with this ID. This gateway may have been d
 
 This gateway may also be registered by another user, but you are not able to see gateways registered by other users if you are not an administrator (e.g. if you are using {{% tts %}} Community Edition).
 
-To solve this, use a different gateway ID. If you are an administrator and wish to reuse a deleted ID, see [Purging Entities]({{< ref "reference/purge" >}}).
+To solve this, use a different gateway ID. If you are an administrator and wish to reuse a deleted ID, see [Purging Entities]({{< ref "/the-things-stack/management/purge" >}}).
 
 ## I get a "Gateway with EUI is Already Registered" error when adding a gateway.
 
