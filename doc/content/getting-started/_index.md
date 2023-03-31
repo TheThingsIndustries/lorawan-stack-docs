@@ -8,9 +8,11 @@ menu:
 aliases: [/guides/getting-started, /guides/getting-started/running-the-stack, /guides/getting-started/quick-start]
 ---
 
-This guide briefly introduces the basic concepts to help the reader get started. For more information, look at the [additional information]({{< relref "additional-information" >}})  section.
+{{% tts %}} an enterprise-grade LoRaWAN Network Server that contains services and tools to securely install and manage millions of LoRaWAN devices in production.
 
-If you are already familiar with LoRaWAN, skip ahead to the [{{% tts %}}]({{< relref "the-things-stack" >}}) section.
+This guide walks a user with no experience in this space by introducing some basic concepts and then setting up your first LoRaWAN network.
+
+If you are already familiar with LoRaWAN, you can skip ahead and [setup your first LoRaWAN network]({{< relref "setup-first-network" >}}).
 
 ## LoRaWAN
 
@@ -73,28 +75,16 @@ All devices have a key called the "Root Key" associated with them. The separate 
 
 {{% tts %}} an enterprise grade LoRaWAN server (that includes both the Network Server and Application Server functions mentioned above). In addition, {{% tts %}} contains services and tools to securely manage millions of LoRaWAN devices in production.
 
-- Users can easily get started by signing up for `{{% tts %}} Cloud`, [a fully-managed SLA-backed cloud subscription]({{< relref "cloud" >}}). The Things Stack Cloud also offers a free discovery tier to get started and then seamlessly upgrade later to a different tier. Check [available plans](https://www.thethingsindustries.com/stack/plans/).
+{{% tts %}} offers the following options for LoRaWAN deployments in production.
 
-- Alternatively, the full customization options of {{% tts %}} can be leveraged by and [run {{% tts %}}]({{< relref "setup" >}}) on your own hardware or cloud infrastructure.
+- The quickest way to get started with LoRaWAN is to sign up to [{{% tts %}} Cloud]({{< relref "cloud" >}}) a fully-managed SLA-backed cloud subscription. By using {{% tts %}} Cloud, you can focus on scaling your LoRaWAN deployments while leaving the complexity of managing a production LoRaWAN Network Server to us. The Things Stack Cloud offers a [free discovery tier](https://www.thethingsindustries.com/stack/plans/) to get started and is the recommended option for most new users.
 
-- A free but limited version of {{% tts %}} called `{{% tts %}} Community Edition` is available to [The Things Network]({{< relref "ttn" >}}) community for simple proof-of-concepts and community projects.
+- Alternatively, if you prefer to take on the responsibility of installing and maintaining {{% tts %}} in addition to managing your LoRaWAN device fleet,  {{% tts %}} is available to be [installed on your own hardware or cloud infrastructure]({{< relref "setup" >}}).
+
+For simple community projects and local testing, there are a few options.
+
+- A free and limited version of {{% tts %}} called [{{% tts %}} Community Edition]{{< relref "ttn" >}} is available to [The Things Network](https://www.thethingsnetwork.org/) community for simple proof-of-concepts and community projects. This service comes with no guarantees and is entirely at the risk of the users.
 
 - For the DIY’ers, the core features of The Things Stack are [open source](https://github.com/thethingsnetwork/lorawan-stack) and is available for local testing.
 
 {{% tts %}} is developed and maintained by [The Things Industries](https://thethingsindustries.com/).
-
-## Quick Start
-
-To get started with your LoRaWAN journey, you'd need the following
-
-1. A LoRaWAN end device
-2. A LoRaWAN gateway
-3. An account on any {{% tts %}} deployment. In this guide we show an example of creating a {{% tts %}} Cloud discovery account.
-
-TODO: Add getting started guide with a TTSC discovery tenant.
-
-## Next Steps
-
-- Learn to [add gateways]({{< ref "/gateways/concepts/adding-gateways" >}}), [add devices]({{< ref "devices/adding-devices" >}}), and [create integrations]({{< ref "integrations" >}})
-- Learn how you can scale your LoRaWAN deployments and the best practices for a well architected LoRaWAN deployment.
-- Learn how to get the most of [{{% tts %}}]({{< ref "/the-things-stack/" >}})

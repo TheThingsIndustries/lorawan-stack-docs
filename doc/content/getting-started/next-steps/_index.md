@@ -1,12 +1,18 @@
 ---
-title: "Additional Information"
+title: "Next steps"
 description: ""
-weight: -1
+weight: 2
 ---
 
-This section builds on the introductory explanation to help the reader find resources to learn more on the concepts introduced earlier.
+Once you have your first LoRaWAN Network setup, here are the next steps.
 
 <!--more-->
+
+See how you can [add gateways]({{< ref "/gateways/concepts/adding-gateways" >}}), [add devices]({{< ref "devices/adding-devices" >}}), and [create integrations]({{< ref "integrations" >}})
+
+Learn how you can scale your LoRaWAN deployments and the best practices for a well architected LoRaWAN deployment.
+
+Learn how to get the most of [{{% tts %}}]({{< ref "/the-things-stack/" >}}).
 
 ## LoRaWAN
 
