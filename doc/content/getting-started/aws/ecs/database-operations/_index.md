@@ -74,25 +74,6 @@ tti-lw-stack,storage-db,init,--timescaledb.chunk-time-interval,12h,--timescaledb
 
 {{< note >}} Depending on your use case, feel free to adjust parameter values. {{</ note >}}
 
-## Initialize Identity Server Database
-
-When deploying your main cluster with Identity Server for the first time, the database needs to be initialized.
-
-{{< tabs/container "AWS Console" "AWS CLI">}}
-{{< tabs/tab "AWS Console" >}}
-```
-tti-lw-stack,is-db,init
-```
-{{</ tabs/tab >}}
-{{< tabs/tab "AWS CLI" >}}
-```
-["tti-lw-stack","is-db","init"]
-```
-{{</ tabs/tab >}}
-{{</ tabs/container >}}
-
-{{< note >}} While initialization alone is needed for deployment itself, creating initial resources mentioned below is required for {{% tts %}} to work. {{</ note >}}
-
 ## Initialize Network Operations Center Database
 
 When deploying your main cluster with Network Operations Center for the first time, the database needs to be initialized.
@@ -178,9 +159,9 @@ Set the variables as follows:
 
 Key | Console | Network Operations Center
 --- | --- | ---
-`ID` | Secrets Manager: `<network>-<environment>-<cluster>-console-oauth-client` | Secrets Manager: `<network>-<environment>-<cluster>-noc-oauth-client`
+`ID` | `client_id` from Secrets Manager: `<network>-<environment>-<cluster>-console-oauth-client` | `client_id` from Secrets Manager: `<network>-<environment>-<cluster>-noc-oauth-client`
 `NAME` | `Console` | `Network Operations Center`
-`CLIENT_SECRET` | Secrets Manager: `<network>-<environment>-<cluster>-console-oauth-client` | Secrets Manager: `<network>-<environment>-<cluster>-noc-oauth-client`
+`CLIENT_SECRET` | `client_secret` from Secrets Manager: `<network>-<environment>-<cluster>-console-oauth-client` | `client_secret` from Secrets Manager: `<network>-<environment>-<cluster>-noc-oauth-client`
 `REDIRECT_URI` | `https://${DOMAIN}/console/oauth/callback` | `https://${DOMAIN}/noc/oauth/callback`
 `REDIRECT_PATH` | `/console/oauth/callback` | `/noc/oauth/callback`
 `LOGOUT_REDIRECT_URI` | `https://${DOMAIN}/console` | `https://${DOMAIN}/noc`
@@ -205,7 +186,7 @@ tti-lw-stack,is-db,create-admin-user,--tenant-id,$TENANT_ID,--email,$ADMIN_EMAIL
 
 ## Migrate Identity Server Database
 
-Before upgrading the Identity Server to a new minor version, the database may need to be migrated.
+Before upgrading the Identity Server to a new minor version or deploying {{% tts %}} for the first time, the database may need to be migrated.
 
 {{< tabs/container "AWS Console" "AWS CLI">}}
 {{< tabs/tab "AWS Console" >}}
@@ -219,6 +200,8 @@ tti-lw-stack,is-db,migrate
 ```
 {{</ tabs/tab >}}
 {{</ tabs/container >}}
+
+{{< note >}} While the migration alone is needed for deployment itself, creating initial resources mentioned above is required for {{% tts %}} to work. {{</ note >}}
 
 ## Migrate Network Server Database
 
