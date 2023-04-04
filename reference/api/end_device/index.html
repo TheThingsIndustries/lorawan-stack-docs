@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.24.1</p>
+        <p class="navbar-item is-size-7">v3.24.2</p>
       </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
           </div>
       <span class="navbar-burger burger" data-target="topMenu">
@@ -554,6 +554,8 @@ More or less fields may be returned, depending on the rights of the caller.
         <p>Delete the end device with the given IDs.</p>
 <p>Before deleting an end device it first needs to be deleted from the
 NsEndDeviceRegistry, the AsEndDeviceRegistry and the JsEndDeviceRegistry.
+In addition, if the device claimed on a Join Server, it also needs to be
+unclaimed via the DeviceClaimingServer so it can be claimed in the future.
 This is NOT done automatically.</p>
 
       </td>
@@ -1186,6 +1188,8 @@ If there are multiple matches, an error will be returned.
 identifiers are the source application, where the devices are registered before they are claimed.
 The API key is used to access the application, find the device, verify the claim request and delete the end device
 from the source application.
+DEPRECATED: Device claiming that transfers devices between applications is no longer supported and will be removed
+in a future version of The Things Stack.
       </td>
     </tr>
     <tr>
@@ -1387,6 +1391,8 @@ from the source application.
       <td>
         Unauthorize the End Device Claiming Server to claim devices in the given application.
 This reverts the authorization given with rpc AuthorizeApplication.
+DEPRECATED: Device claiming that transfers devices between applications is no longer supported and will be removed
+in a future version of The Things Stack.
       </td>
     </tr>
     <tr>
@@ -3348,6 +3354,8 @@ completely.</p>
 
 
 <h3 id="message:AuthorizeApplicationRequest">Message <code>AuthorizeApplicationRequest</code></h3>
+<p>DEPRECATED: Device claiming that transfers devices between applications is no longer supported and will be removed
+in a future version of The Things Stack.</p>
 
 <details><summary>Show object example</summary>
 <pre><code>{

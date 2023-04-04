@@ -30,7 +30,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.24.1</p>
+        <p class="navbar-item is-size-7">v3.24.2</p>
       </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
           </div>
       <span class="navbar-burger burger" data-target="topMenu">
@@ -125,35 +125,29 @@
 <div class="whats-new">
   <div class="whats-new-content">
     <div class="whats-new-header">
-      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.24.1/>What's new in V3.24.1</a></h2>
+      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.24.2/>What's new in V3.24.2</a></h2>
       <a href="https://www.thethingsindustries.com/docs/whats-new/"><p class="see-more">See all release notes →</p></a>
     </div>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.24.1/">
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.24.2/">
       <div class="whats-new-body">
         <div class="whats-new-items-shadow whats-new-items-fade">
           <div class="whats-new-items">
-            <h3 id="added">Added</h3>
+            <h3 id="deprecated">Deprecated</h3>
 <ul>
-<li>Network Server ID (NSID) used for Backend Interfaces interoperability via the <code>ns.interop.id</code> and <code>dcs.edcs.ns-id</code> configuration options.
+<li>Device claiming that transfer devices between applications is now deprecated and will be removed in a future version of The Things Stack. Device claiming on Join Servers, including The Things Join Server, remains functional. This deprecates the following components:
 <ul>
-<li>In the Network Server, <code>ns.interop.id</code> acts as a fallback value for <code>sender-ns-id</code> in Join Server interoperability configuration.</li>
+<li>API for managing application claim authorization (<code>EndDeviceClaimingServer.AuthorizeApplication</code> and <code>EndDeviceClaimingServer.UnauthorizeApplication</code>)</li>
+<li>CLI commands to manage application claim settings (<code>ttn-lw-cli application claim [authorize|unauthorize]</code>)</li>
+<li>Device Claiming Server device transfer functionality (API call <code>DeviceClaimingServer.Claim</code>) if the <code>JoinEUI</code> was not registered with a Join Server that supports device claiming</li>
+<li>Web interface for claiming devices</li>
 </ul>
 </li>
-<li>Key vault cache time-to-live for errors configuration option <code>key-vault.cache.error-ttl</code>. This defaults to <code>key-vault.cache.ttl</code>.</li>
-</ul>
-<h3 id="deprecated">Deprecated</h3>
-<ul>
-<li>Device Claiming Server configuration option <code>dcs.edcs.network-server.home-ns-id</code>. Use <code>dcs.edcs.ns-id</code> instead.</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>Claiming The Things Indoor Gateways.</li>
-<li>Key unwrap caching.</li>
-<li>Desired RX1 delay and desired beacon frequency not being possible to set for OTAA devices.</li>
-</ul>
-<h3 id="security">Security</h3>
-<ul>
-<li>Fix open redirect vulnerability for Console/Account App logins.</li>
+<li>The CLI now continues deleting devices when unclaiming from the Join Server fails. This resembles the behavior in the Console. This no longer stops devices from being deleted if the Join Server is unavailable or the claim is not held.</li>
+<li>Organization API Keys&rsquo; rights no longer are considered invalid during fetch operations. If the proper right is attached to said API key it is possible to fetch all fields of an entity, previous to this fix only public safe fields were fetchable.</li>
+<li>Fix Sentry issue related to the component requests in the Console.</li>
 </ul>
 
           </div>
@@ -171,7 +165,7 @@
 <a href="https://www.thethingsindustries.com/docs/whats-new/">
   <div class="whats-new-800">
     <div class="whats-new-header-800">
-      <p>See what's new in V3.24.1</p>
+      <p>See what's new in V3.24.2</p>
       <p>-></p>
     </div>
   </div>
