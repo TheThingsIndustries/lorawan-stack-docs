@@ -8,6 +8,16 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.24.2
+
+### `1-2-bastion`
+
+- AWS Graviton instances can now be used as bastion hosts.
+
+### `2-5-db-timescale`
+
+- Added TimescaleDB 2.10.0 support.
+
 ## 3.24.1
 
 ### `4-2a-configuration`
