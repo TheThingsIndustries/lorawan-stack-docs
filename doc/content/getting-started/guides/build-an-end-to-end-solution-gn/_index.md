@@ -1,22 +1,22 @@
 ---
-title: "Building an End-to-End LoRaWAN Application with The Things Stack"
+title: "Build an Application using Generic Node Sensor Edition and Kuando Busylight"
 description: ""
 weight: 
 ---
 
-In this section, we will show how to build an end-to-end solution with [{{% tts %}}](/getting-started/what-is-tts/) to control the [Kuando Busylight](https://busylight.com/busylight-iot/) with the [Generic Node Sensor Edition](https://www.thethingsshop.com/products/generic-node-sensor-edition)(GNSE). 
+In this section, we will show how to build an end-to-end solution with [{{% tts %}}]({{< ref "/getting-started/what-is-tts/" >}}) to control the [Kuando Busylight](https://busylight.com/busylight-iot/) with the [Generic Node Sensor Edition](https://www.thethingsshop.com/products/generic-node-sensor-edition) (GNSE). 
 
-# Registering The Things Indoor Gateway
+## Registering The Things Indoor Gateway
 
-Register The Things Indoor Gateway with {{% tts %}} by following the instructions on this [page](/gateways/models/thethingsindoorgateway/). Once registered, your gateway will be ready to receive uplinks and forward downlinks.
+Register The Things Indoor Gateway with {{% tts %}} by following [these instructions]({{< ref "/gateways/models/thethingsindoorgateway" >}}). Once registered, your gateway will be ready to receive uplinks and forward downlinks.
 
-# Creating an Application
+## Creating an Application
 
-Create a new application with {{% tts %}} by following the instructions on this [page](/integrations/adding-applications/).
+Create a new application with {{% tts %}} by following [these instructions]({{< ref "/integrations/adding-applications/" >}}).
 
-# Adding Generic Node SE
+## Adding GNSE
 
-Add GNSE to {{% tts %}} by following the instructions on this [page](/devices/adding-devices/).
+Add GNSE to {{% tts %}} by following [these instructions]({{< ref "/devices/adding-devices/" >}}).
 
 {{< note "Your GNSE comes pre-programmed with an [application](https://www.genericnode.com/docs/applications/se-vanilla/) that can be used with this project. The full instructions on how to program GNSE can be found [here](https://www.genericnode.com/docs/getting-started/se-sw/)." />}}
 
@@ -30,9 +30,9 @@ Select the uplink message (the type of the message is **Forward uplink data mess
 
 {{< figure src="frm-payload.png" alt="" >}}
 
-# Using Payload Formatters
+## Using Payload Formatters
 
-To decode the payload you will need a [payload formatter](/integrations/payload-formatters/) that helps you to extract individual data.
+To decode the payload you will need a [payload formatter]({{< ref "/integrations/payload-formatters/" >}}) that helps you to extract individual data.
 
 Create a payload formatter for the uplink messages using the following JavaScript formatter code:
 
@@ -66,15 +66,15 @@ Now go back to the **Live data** tab and press the user button on the GNSE. The 
 
 {{< figure src="decoded-payload-live.png" alt="" >}}
 
-# Creating an Integration using Webhooks
+## Creating an Integration using Webhooks
 
 A webhook helps you to send data from one application to another whenever a given event occurs. In this solution, {{% tts %}} application will send the temperature received by the sensor to the custom application through a webhook to display on a chart for visualization.
 
-Create a custom [webhook](/integrations/webhooks/creating-webhooks/) in JSON format by providing the base URL and endpoint, for example, http://root.yourhost.com:3000/webhooks. Select the checkbox **Enabled** under the **Uplink message**. This will configure your webhook to send the payloads of the uplink messages to your custom application whenever they are received.
+Create a custom [webhook]({{< ref "/integrations/webhooks/creating-webhooks" >}}) in JSON format by providing the base URL and endpoint, for example, http://root.yourhost.com:3000/webhooks. Select the checkbox **Enabled** under the **Uplink message**. This will configure your webhook to send the payloads of the uplink messages to your custom application whenever they are received.
 
 {{< figure src="add-webhook-1.png" alt="" >}}
 
-# Node.js Application
+## Node.js Application
 
 A simple Node.js application can be used to expose an HTTP server that takes the temperature and humidity data received through the webhook and displays it on a chart for visualization. The source files you need for this project can be found in this [GitHub repository](https://github.com/kschiffer/tts-demo-app).
 
@@ -125,15 +125,15 @@ Press the push button a few more times and see what your chart looks like:
 
 {{< figure src="chart-3.png" alt="" >}}
 
-# Adding Kuando Busylight
+## Adding Kuando Busylight
 
 Kuando busylight is a light that you can control using LoRaWAN downlinks. It is a Class C end device that opens continuous receive windows so it is capable of receiving downlinks anytime.
 
   {{< figure src="busylight.png" alt="" >}}
 
-To register the Kuando Busylight with {{% tts %}}, follow the steps outlined in **Manually Registering an End Device** section on the [Adding Devices](/devices/adding-devices/) page. When adding the device, make sure to select **Class C (Continuous)** from the **Additional LoRaWAN class capabilities** drop-down. You can find this by expanding the **Show advanced activation, LoRaWAN class and cluster settings** section.
+To register the Kuando Busylight with {{% tts %}}, follow the steps outlined in **Manually Registering an End Device** section on the [Adding Devices]({{< ref "/devices/adding-devices/" >}}) page. When adding the device, make sure to select **Class C (Continuous)** from the **Additional LoRaWAN class capabilities** drop-down. You can find this by expanding the **Show advanced activation, LoRaWAN class and cluster settings** section.
 
-# Sending Downlink Messages to Kuando Busylight from {{% tts %}} Application
+## Sending Downlink Messages to Kuando Busylight from {{% tts %}} Application
 
 Let’s have a look at how to schedule downlink messages from {{% tts %}} application to control the Busylight.
 
@@ -151,7 +151,7 @@ Select the **Schedule downlink** button. The Busylight will turn on solid white.
 
 If you want to turn off the Busylight, type in **FF FF FF 00 FF** in the **Payload** text box and then select the **Schedule downlink** button again. The Busylight will turn off immediately.
 
-# Going Further
+## Going Further
 
 Editing the `config.env` file enables your custom application to read the button press event from an uplink message and then compose and send a downlink message through the webhook to ON or OFF the Busylight accordingly. Here is the code snippet:
 
