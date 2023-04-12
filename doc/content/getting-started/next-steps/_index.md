@@ -8,15 +8,21 @@ Once you have your first LoRaWAN Network setup, here are the next steps.
 
 <!--more-->
 
-See how you can [add gateways]({{< ref "/gateways/concepts/adding-gateways" >}}), [add devices]({{< ref "devices/adding-devices" >}}), and [create integrations]({{< ref "integrations" >}})
+1. [Connect a gateway]({{< ref "/gateways/concepts/adding-gateways" >}}) to your LoRaWAN Network.
+2. [Add LoRaWAN end devices]({{< ref "devices/adding-devices" >}}) to send LoRaWAN traffic to your network.
+3. [Create an integration]({{< ref "integrations" >}}) to send your LoRaWAN sensor data to external integrations or to your own private server.
+4. Learn how to get the most out of [{{% tts %}}]({{< ref "/the-things-stack/" >}}).
+5. Check out the [Glossary]({{< ref "/reference/glossary" >}}) for a list of commonly used terms.
 
-Learn how you can scale your LoRaWAN deployments and the best practices for a well architected LoRaWAN deployment.
+## Scaling your LoRaWAN Network
 
-Learn how to get the most of [{{% tts %}}]({{< ref "/the-things-stack/" >}}).
+Learn how you can [scale]({{< ref "/reference/scaling-lorawan" >}}) your LoRaWAN deployments and the best practices for a well architected LoRaWAN deployment.
 
-## LoRaWAN
+## Learn more
 
-To learn more about LoRaWAN, check out the [Learn section](https://thethingsnetwork.org/docs/lorawan) of The Things Network, or read up at the [LoRa Alliance](https://lora-alliance.org).
+LoRaWAN is a very deep topic that requires a lot of technical knowhow. Use the links suggested here to learn more.
+
+### LoRaWAN Crash Course
 
 Here is a video of Johan Stokking, the tech lead of The Things Industries and one of the core developers of {{% tts %}}, explaining LoRaWAN:
 
@@ -33,3 +39,9 @@ Visit [The Things Network Learn hub](https://www.thethingsnetwork.org/docs/loraw
 Check all available certifications on [The Things Certification site](https://www.thethingsnetwork.org/achievements/certificates/).
 
 A lot of academic research around LoRaWAN is being conducted nowadays. [Read some LoRaWAN-related academic papers and publications](https://www.thethingsnetwork.org/docs/lorawan/academic/).
+
+
+### Useful links
+
+- Check out the [Learn section](https://thethingsnetwork.org/docs/lorawan) of The Things Network website.
+- Read the official specificationa at the [LoRa Alliance](https://lora-alliance.org).

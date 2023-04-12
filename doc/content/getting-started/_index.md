@@ -10,7 +10,7 @@ aliases: [/guides/getting-started, /guides/getting-started/running-the-stack, /g
 
 {{% tts %}} an enterprise-grade LoRaWAN Network Server that contains services and tools to securely install and manage millions of LoRaWAN devices in production.
 
-This guide walks a user with no experience in this space by introducing some basic concepts and then setting up your first LoRaWAN network.
+This guide first introduces basic LoRaWAN concepts and then proceeds to briefly describe {{% tts %}}.
 
 If you are already familiar with LoRaWAN, you can skip ahead and [setup your first LoRaWAN network]({{< relref "setup-first-network" >}}).
 
@@ -24,11 +24,9 @@ The LoRaWAN protocol is developed and maintained by the LoRa Alliance. The first
 
 ### Architecture
 
-Sensor networks in LoRaWAN are deployed in a star-of-stars topology.
-
 {{< figure src="architecture.png" alt="LoRaWAN architecture" >}}
 
-A typical LoRaWAN network consists of the following basic parts.
+A typical LoRaWAN network consists of the following basic elements.
 
 **End Devices**
   - Sensors or actuators send LoRa modulated wireless messages to the gateways or receive messages wirelessly back from the gateways. .
@@ -59,15 +57,17 @@ The messages that originates from an end device are called an Uplinks.
 
 Messages flowing in the opposite direction (originating from the Network Server and/or Application Server and sent to end devices) are called Downlinks.
 
+{{< note "Sensor networks in LoRaWAN are deployed in a star-of-stars topology." />}}
+
 ### Security
 
-All LoRaWAN data is encrypted AES-128 symmetric keys.
+All LoRaWAN data is encrypted AES-128 symmetric keys. All devices have a unique AES-128 key called the "Root Key" associated with them.
 
-Application data is encrypted using a particular key. This key is only shared between the Application Server and the End Device.
+This root key is used to derive separate keys for the application data and network data.
 
-Network (settings) data is encrypted using a different key. This key is only shared between the Network Server and the End Device.
+Application data is encrypted using one of these derived keys. This key is known only to the Application Server and the End Device.
 
-All devices have a key called the "Root Key" associated with them. The separate keys for the application data and network data are derived from this root key.
+Network (settings) data is encrypted using different key(s). These keys are known only to the Network Server and the End Device.
 
 {{< note "These keys are called Session Keys since they are rotated when a device session changes. Device sessions are a much deeper topic and is omitted from this basic guide in the interest of simplicity. See the linked references for more information." />}}
 
@@ -88,3 +88,5 @@ For simple community projects and local testing, there are a few options.
 - For the DIY’ers, the core features of The Things Stack are [open source](https://github.com/thethingsnetwork/lorawan-stack) and is available for local testing.
 
 {{% tts %}} is developed and maintained by [The Things Industries](https://thethingsindustries.com/).
+
+Now that we've covered some basics, let's go ahead and setup your first LoRaWAN network.
