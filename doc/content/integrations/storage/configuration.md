@@ -14,7 +14,7 @@ The Storage Integration requires configuration for the underlying storage provid
 You can configure PostgreSQL, or any other PostgreSQL-compatible database (e.g. [TimescaleDB](https://www.timescale.com/)). A base-line configuration can be found below. Add the following section into your existing `ttn-lw-stack.yml` configuration file. See [Storage Integration Options]({{< ref "/reference/configuration/application-server#storage-integration-options" >}}) for more details.
 
 {{< highlight yaml "linenos=table,linenostart=108" >}}
-{{< readfile path="/content/the-things-stack/host/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=113 to=128 >}}
+{{< readfile path="/content/the-things-stack/host/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=124 to=134 >}}
 {{< /highlight >}}
 
 {{< note >}} This will use the same database instance that is used for the Identity Server as well. In production deployments, this should be a different database. {{</ note >}}
