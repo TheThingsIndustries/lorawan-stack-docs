@@ -201,7 +201,7 @@ tti-lw-stack,is-db,migrate
 {{</ tabs/tab >}}
 {{</ tabs/container >}}
 
-{{< note >}} While the migration alone is needed for deployment itself, creating initial resources mentioned above is required for {{% tts %}} to work. {{</ note >}}
+{{< note >}} While the migration alone is sufficient for completing the deployment, creating initial resources mentioned above is required for {{% tts %}} to work. {{</ note >}}
 
 ## Migrate Network Server Database
 
