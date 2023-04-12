@@ -9,6 +9,8 @@ distributions:
   - Open Source
 aliases:
   - "/reference/packet-broker/configure"
+  - "/getting-started/packet-broker/configure/registration"
+  - "/getting-started/packet-broker/configure/routing-policies"
   - "/the-things-stack/packet-broker/configure/registration"
   - "/the-things-stack/packet-broker/configure/routing-policies"
   - "/getting-started/packet-broker/configure"

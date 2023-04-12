@@ -40,7 +40,6 @@ Check all available certifications on [The Things Certification site](https://ww
 
 A lot of academic research around LoRaWAN is being conducted nowadays. [Read some LoRaWAN-related academic papers and publications](https://www.thethingsnetwork.org/docs/lorawan/academic/).
 
-
 ### Useful links
 
 - Check out the [Learn section](https://thethingsnetwork.org/docs/lorawan) of The Things Network website.

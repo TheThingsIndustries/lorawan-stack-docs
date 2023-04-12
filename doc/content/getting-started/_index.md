@@ -8,7 +8,7 @@ menu:
 aliases: [/guides/getting-started, /guides/getting-started/running-the-stack, /guides/getting-started/quick-start]
 ---
 
-{{% tts %}} an enterprise-grade LoRaWAN Network Server that contains services and tools to securely install and manage millions of LoRaWAN devices in production.
+{{% tts %}} is an enterprise-grade LoRaWAN Network Server that provides services and tools to securely install and manage millions of LoRaWAN devices in production.
 
 This guide first introduces basic LoRaWAN concepts and then proceeds to briefly describe {{% tts %}}.
 
@@ -43,7 +43,7 @@ A typical LoRaWAN network consists of the following basic elements.
 
 ### Message Flow
 
-End devices communicate with nearby gateways and each gateway is connected to the network server.
+End devices communicate with nearby gateways and each gateway is connected to the Network Server.
 
 LoRaWAN networks use an ALOHA based protocol, so end devices don’t need to pair with specific gateways. Messages sent from end devices travel through all gateways within range.
 
@@ -73,13 +73,13 @@ Network (settings) data is encrypted using different key(s). These keys are know
 
 ## {{% tts %}}
 
-{{% tts %}} an enterprise grade LoRaWAN server (that includes both the Network Server and Application Server functions mentioned above). In addition, {{% tts %}} contains services and tools to securely manage millions of LoRaWAN devices in production.
+{{% tts %}} is an enterprise grade LoRaWAN server (that includes both the Network Server and Application Server functions mentioned above). In addition, {{% tts %}} contains services and tools to securely manage millions of LoRaWAN devices in production.
 
 {{% tts %}} offers the following options for LoRaWAN deployments in production.
 
 - The quickest way to get started with LoRaWAN is to sign up to [{{% tts %}} Cloud]({{< relref "cloud" >}}) a fully-managed SLA-backed cloud subscription. By using {{% tts %}} Cloud, you can focus on scaling your LoRaWAN deployments while leaving the complexity of managing a production LoRaWAN Network Server to us. The Things Stack Cloud offers a [free discovery tier](https://www.thethingsindustries.com/stack/plans/) to get started and is the recommended option for most new users.
 
-- Alternatively, if you prefer to take on the responsibility of installing and maintaining {{% tts %}} in addition to managing your LoRaWAN device fleet,  {{% tts %}} is available to be [installed on your own hardware or cloud infrastructure]({{< relref "setup" >}}).
+- Alternatively, if you prefer to take on the responsibility of installing and maintaining {{% tts %}} in addition to managing your LoRaWAN device fleet, {{% tts %}} is available to be [installed on your own hardware or cloud infrastructure]({{< relref "setup" >}}).
 
 For simple community projects and local testing, there are a few options.
 

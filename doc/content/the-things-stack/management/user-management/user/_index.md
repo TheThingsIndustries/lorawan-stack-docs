@@ -1,7 +1,7 @@
 ---
 title: "User Management"
 description: ""
-aliases: [//the-things-stack/management/user-management/cli/user, //the-things-stack/management/user-management/console/user, /getting-started/user-management/user]
+aliases: [/the-things-stack/management/user-management/cli/user, /the-things-stack/management/user-management/console/user, /getting-started/user-management/user]
 ---
 
 This section contains instructions for managing users.

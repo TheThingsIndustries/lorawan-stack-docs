@@ -1,7 +1,7 @@
 ---
 title: "Migrate to The Things Stack"
 description: ""
-aliases: "/the-things-stack/migrating-from-networks"
+aliases: [/getting-started/migrating-from-networks, /the-things-stack/migrating-from-networks]
 weight: 5
 aliases: [/getting-started/migrating]
 ---

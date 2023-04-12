@@ -1,7 +1,7 @@
 ---
 title: "Organization Management"
 description: ""
-aliases: [//the-things-stack/management/user-management/cli/org, //the-things-stack/management/user-management/console/org, getting-started/user-management/org/]
+aliases: [/the-things-stack/management/user-management/cli/org, /the-things-stack/management/user-management/console/org, /getting-started/user-management/org/]
 ---
 
 This section contains instructions for managing organizations.

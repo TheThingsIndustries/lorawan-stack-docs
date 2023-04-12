@@ -2,7 +2,7 @@
 title: "Server Addresses"
 description: ""
 weight: 5
-aliases: [/the-things-stack/concepts/server-addresses]
+aliases: [/getting-started/server-addresses, /the-things-stack/concepts/server-addresses]
 ---
 
 To access the [Console]({{< ref "/the-things-stack/interact/console" >}}), register a [command line client]({{< ref "the-things-stack/interact/cli" >}}), [connect gateways]({{< ref "/gateways/concepts/adding-gateways" >}}), or schedule uplinks via [webhooks]({{< ref "integrations/webhooks" >}}), it is necessary to know the server address of your {{% tts %}} instance. This section contains information about addresses for different {{% tts %}} deployments.
