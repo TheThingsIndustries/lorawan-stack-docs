@@ -108,15 +108,18 @@ The template `2-4b-routing-s3` creates an S3 bucket that stores configuration fo
 
 In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template asks for the name of the bucket you want to create. It is typically fine to leave this parameter empty, and have a automatically generated bucket name.
 
-After deploying the `2-4b-routing-s3` template, you need to upload the interop configuration to the interop bucket and EDCS configuration to the EDCS bucket. For details on those configuration files, see the [Interoperability Repository reference]({{< ref "/reference/interop-repository" >}}) and the [Device Claiming reference]({{< ref "/reference/device-claiming-repository" >}}). If you do not have such configuration, you can upload an empty configuration file:
+After deploying the `2-4b-routing-s3` template, you need to upload the interop configuration to the interop bucket, EDCS configuration to the EDCS bucket and plugins configuration to the plugins bucket. For details on those configuration files, see the [Interoperability Repository reference]({{< ref "/reference/interop-repository" >}}) and the [Device Claiming reference]({{< ref "/reference/device-claiming-repository" >}}). If you do not have the configuration, you can upload an empty configuration file:
 
 ```bash
 touch config.yml
 aws s3 cp config.yml s3://${InteropConfigBucket}/config.yml
 aws s3 cp config.yml s3://${EDCSConfigBucket}/config.yml
+
+touch plugins.yml
+aws s3 cp plugins.yml s3://${PluginsConfigBucket}/plugins.yml
 ```
 
-{{< note >}} If you did not set bucket names, see the `InteropConfigBucket` and `EDCSConfigBucket` outputs of the `2-4b-routing-s3` stack for the names of those buckets. {{</ note >}}
+{{< note >}} If you did not set bucket names, see outputs of the `2-4b-routing-s3` stack for the names of those buckets. {{</ note >}}
 
 ## TimescaleDB (optional) {#timescaledb-optional}
 
@@ -232,7 +235,7 @@ The **Ops Image** is the Docker image that you want to use. The official image i
 
 You can now run instances of this task definition to perform operations on the deployment.
 
-{{< warning >}} You need to initialize the Identity Server database before moving on to the next step. See the [Database Operations page]({{< ref "../database-operations" >}}) for details. {{</ warning >}}
+{{< warning >}} You need to initialize the Identity Server database before moving on to the next step. See the [Migrate Identity Server Database]({{< ref "../database-operations#migrate-identity-server-database" >}}) for details. {{</ warning >}}
 
 ## Identity Server or Identity Server Proxy
 
