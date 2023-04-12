@@ -316,42 +316,6 @@
   Depending on your use case, feel free to adjust parameter values.
 </div>
 
-<h2 id="initialize-identity-server-database">Initialize Identity Server Database</h2>
-<p>When deploying your main cluster with Identity Server for the first time, the database needs to be initialized.</p>
-<div class="tabs is-boxed">
-  <ul>
-    
-    <li data-tab="aws-console">
-      <a>
-        <span>AWS Console</span>
-      </a>
-    </li>
-    
-    <li data-tab="aws-cli">
-      <a>
-        <span>AWS CLI</span>
-      </a>
-    </li>
-    
-  </ul>
-</div>
-<div class="tab-content content">
-  <section data-content="aws-console">
-  <pre tabindex="0"><code>tti-lw-stack,is-db,init
-</code></pre>
-</section>
-<section data-content="aws-cli">
-  <pre tabindex="0"><code>[&#34;tti-lw-stack&#34;,&#34;is-db&#34;,&#34;init&#34;]
-</code></pre>
-</section>
-
-</div>
-
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  While initialization alone is needed for deployment itself, creating initial resources mentioned below is required for The Things Stack to work.
-</div>
-
 <h2 id="initialize-network-operations-center-database">Initialize Network Operations Center Database</h2>
 <p>When deploying your main cluster with Network Operations Center for the first time, the database needs to be initialized.</p>
 <div class="tabs is-boxed">
@@ -513,8 +477,8 @@
 <tbody>
 <tr>
 <td><code>ID</code></td>
-<td>Secrets Manager: <code>&lt;network&gt;-&lt;environment&gt;-&lt;cluster&gt;-console-oauth-client</code></td>
-<td>Secrets Manager: <code>&lt;network&gt;-&lt;environment&gt;-&lt;cluster&gt;-noc-oauth-client</code></td>
+<td><code>client_id</code> from Secrets Manager: <code>&lt;network&gt;-&lt;environment&gt;-&lt;cluster&gt;-console-oauth-client</code></td>
+<td><code>client_id</code> from Secrets Manager: <code>&lt;network&gt;-&lt;environment&gt;-&lt;cluster&gt;-noc-oauth-client</code></td>
 </tr>
 <tr>
 <td><code>NAME</code></td>
@@ -523,8 +487,8 @@
 </tr>
 <tr>
 <td><code>CLIENT_SECRET</code></td>
-<td>Secrets Manager: <code>&lt;network&gt;-&lt;environment&gt;-&lt;cluster&gt;-console-oauth-client</code></td>
-<td>Secrets Manager: <code>&lt;network&gt;-&lt;environment&gt;-&lt;cluster&gt;-noc-oauth-client</code></td>
+<td><code>client_secret</code> from Secrets Manager: <code>&lt;network&gt;-&lt;environment&gt;-&lt;cluster&gt;-console-oauth-client</code></td>
+<td><code>client_secret</code> from Secrets Manager: <code>&lt;network&gt;-&lt;environment&gt;-&lt;cluster&gt;-noc-oauth-client</code></td>
 </tr>
 <tr>
 <td><code>REDIRECT_URI</code></td>
@@ -584,7 +548,7 @@
 </div>
 
 <h2 id="migrate-identity-server-database">Migrate Identity Server Database</h2>
-<p>Before upgrading the Identity Server to a new minor version, the database may need to be migrated.</p>
+<p>Before upgrading the Identity Server to a new minor version or deploying The Things Stack for the first time, the database may need to be migrated.</p>
 <div class="tabs is-boxed">
   <ul>
     
@@ -612,6 +576,11 @@
 </code></pre>
 </section>
 
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  While the migration alone is sufficient for completing the deployment, creating initial resources mentioned above is required for The Things Stack to work.
 </div>
 
 <h2 id="migrate-network-server-database">Migrate Network Server Database</h2>
@@ -796,9 +765,6 @@
       <li><a href='#initialize-events-storage'>Initialize Events Storage</a></li>
     
       
-      <li><a href='#initialize-identity-server-database'>Initialize Identity Server Database</a></li>
-    
-      
       <li><a href='#initialize-network-operations-center-database'>Initialize Network Operations Center Database</a></li>
     
       
@@ -869,10 +835,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 31 Aug 2022.
+  Last changed by Aleksander Borowski on 12 Apr 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/8ed38574ff8493f0015fae6d5061d64ad7e143b9">
-      doc: Replace init with migrate, add NOC bootstrap and config info (#941)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/9d848a7fa52370527b30a17241614bf35a3bf904">
+      Add information about the Plugins Bucket (#1074)
     </a>
 </p>
 

@@ -310,13 +310,16 @@
 <p>The template <code>2-4b-routing-s3</code> creates an S3 bucket that stores configuration for interoperability with other LoRaWAN Backend Interfaces-compliant servers. Even if you don&rsquo;t plan to immediately activate interoperability, this template is still required by another template that you will deploy later in this guide.</p>
 <p><strong>Template:</strong> <a href="https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-4b-routing-s3.gen.template">https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-4b-routing-s3.gen.template</a> (replace <code>3.x.y</code> with the current minor and patch version).</p>
 <p>In addition to the re-used parameters (see <a href="/docs/getting-started/aws/ecs/prerequisites/">Prerequisites</a>), this template asks for the name of the bucket you want to create. It is typically fine to leave this parameter empty, and have a automatically generated bucket name.</p>
-<p>After deploying the <code>2-4b-routing-s3</code> template, you need to upload the interop configuration to the interop bucket and EDCS configuration to the EDCS bucket. For details on those configuration files, see the <a href="https://www.thethingsindustries.com/docs/reference/interop-repository/">Interoperability Repository reference</a> and the <a href="https://www.thethingsindustries.com/docs/reference/device-claiming-repository/">Device Claiming reference</a>. If you do not have such configuration, you can upload an empty configuration file:</p>
+<p>After deploying the <code>2-4b-routing-s3</code> template, you need to upload the interop configuration to the interop bucket, EDCS configuration to the EDCS bucket and plugins configuration to the plugins bucket. For details on those configuration files, see the <a href="https://www.thethingsindustries.com/docs/reference/interop-repository/">Interoperability Repository reference</a> and the <a href="https://www.thethingsindustries.com/docs/reference/device-claiming-repository/">Device Claiming reference</a>. If you do not have the configuration, you can upload an empty configuration file:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">touch config.yml
 </span></span><span class="line"><span class="cl">aws s3 cp config.yml s3://<span class="si">${</span><span class="nv">InteropConfigBucket</span><span class="si">}</span>/config.yml
 </span></span><span class="line"><span class="cl">aws s3 cp config.yml s3://<span class="si">${</span><span class="nv">EDCSConfigBucket</span><span class="si">}</span>/config.yml
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">touch plugins.yml
+</span></span><span class="line"><span class="cl">aws s3 cp plugins.yml s3://<span class="si">${</span><span class="nv">PluginsConfigBucket</span><span class="si">}</span>/plugins.yml
 </span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  If you did not set bucket names, see the <code>InteropConfigBucket</code> and <code>EDCSConfigBucket</code> outputs of the <code>2-4b-routing-s3</code> stack for the names of those buckets.
+  If you did not set bucket names, see outputs of the <code>2-4b-routing-s3</code> stack for the names of those buckets.
 </div>
 
 <h2 id="timescaledb-optional">TimescaleDB (optional)</h2>
@@ -396,7 +399,7 @@
 <p>You can now run instances of this task definition to perform operations on the deployment.</p>
 <div class="notification is-warning is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
-  You need to initialize the Identity Server database before moving on to the next step. See the <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/database-operations/">Database Operations page</a> for details.
+  You need to initialize the Identity Server database before moving on to the next step. See the <a href="https://www.thethingsindustries.com/docs/getting-started/aws/ecs/database-operations/#migrate-identity-server-database">Migrate Identity Server Database</a> for details.
 </div>
 
 <h2 id="identity-server-or-identity-server-proxy">Identity Server or Identity Server Proxy</h2>
@@ -589,10 +592,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Aleksander Borowski on 21 Mar 2023.
+  Last changed by Aleksander Borowski on 12 Apr 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3532fcb38e6f60fa6c8dbfd5539b85b1f8cfc0f2">
-      Add note about uploading EDCS config file (#1067)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/9d848a7fa52370527b30a17241614bf35a3bf904">
+      Add information about the Plugins Bucket (#1074)
     </a>
 </p>
 
