@@ -51,7 +51,7 @@ Click on **Set up my deployment** to proceed.
 
 In the subsequent window, choose a **Network Name**. This field supports valid alpha numeric characters with dashes/underscores and spaces.
 
-{{< figure src="ttsc-setup-1" alt="Choose Network Name" >}}
+{{< figure src="ttsc-setup-1.png" alt="Choose Network Name" >}}
 
 Choose a name for your network that can be easily understood by both administrators and regular users. This name will be used in the Console and in automated system emails sent to them.
 
