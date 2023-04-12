@@ -14,10 +14,6 @@ Once you have your first LoRaWAN Network setup, here are the next steps.
 4. Learn how to get the most out of [{{% tts %}}]({{< ref "/the-things-stack/" >}}).
 5. Check out the [Glossary]({{< ref "/reference/glossary" >}}) for a list of commonly used terms.
 
-## Scaling your LoRaWAN Network
-
-Learn how you can [scale]({{< ref "/reference/scaling-lorawan" >}}) your LoRaWAN deployments and the best practices for a well architected LoRaWAN deployment.
-
 ## Learn more
 
 LoRaWAN is a very deep topic that requires a lot of technical knowhow. Use the links suggested here to learn more.
