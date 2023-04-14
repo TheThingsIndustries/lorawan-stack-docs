@@ -1,10 +1,10 @@
 ---
 title: "Setup Your First LoRaWAN Network"
 description: ""
-weight: 1
+weight: 3
 ---
 
-This guide walks you through setting up your first LoRaWAN Network.
+Now that you are familiar with LoRaWAN and {{% tts %}}, let us set up your first LoRaWAN Network.
 
 <!--more-->
 
