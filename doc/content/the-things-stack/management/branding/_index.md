@@ -10,7 +10,7 @@ This reference gives details on how to customize the branding of the login pages
 
 ## Cloud Branding
 
-[{{% tts %}} Cloud]({{< ref "/the-things-stack/host/cloud" >}}) users can use a custom branding in {{% tts %}} Console. Branding customization is available for each {{% tts %}} Cloud tenant.
+[{{% tts %}} Cloud]({{< ref "/the-things-stack/cloud" >}}) users can use a custom branding in {{% tts %}} Console. Branding customization is available for each {{% tts %}} Cloud tenant.
 
 See below for what's available to customize and what files are necessary. Users need to host these files on a CDN (e.g. an S3 bucket) and provide a link to it as shown in the [Tenant Settings guide]({{< ref "/the-things-stack/interact/console/tenant-settings#branding" >}}).
 

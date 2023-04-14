@@ -1,5 +1,5 @@
 ---
-title: "Setup The Things Stack"
+title: "Host The Things Stack"
 description: ""
 weight: 2
 ---

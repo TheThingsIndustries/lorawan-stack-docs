@@ -7,7 +7,7 @@ aliases: [/guides/cloud-hosted/cloud-hosted, /getting-started/cloud-hosted]
 
 The Things Industries offers {{% tts %}} as hosted software as a service (SaaS).
 
-This guide explains what that means and shows how to work with The Things Industries Cloud.
+This guide explains how to manage and customize your cloud account.
 
 <!--more-->
 
@@ -34,7 +34,7 @@ If you navigate to [this link](https://console.cloud.thethings.industries), you 
 
 {{< figure src="cluster-location.png" alt="Recommended clusters" >}}
 
-See the [Cloud Addresses]({{< ref "/the-things-stack/host/cloud/addresses" >}}) for details about cluster, Console, API endpoints and other {{% tts %}} Cloud addresses.
+See the [Cloud Addresses]({{< ref "/the-things-stack/cloud/addresses" >}}) for details about cluster, Console, API endpoints and other {{% tts %}} Cloud addresses.
 
 ## Status Page
 

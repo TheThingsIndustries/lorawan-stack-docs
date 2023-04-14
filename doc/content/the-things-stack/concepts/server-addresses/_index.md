@@ -16,7 +16,7 @@ The server addresses for the different {{% tts %}} deployments are listed below.
 
 ## Deployments
 
-**Cloud and Dedicated Cloud**: See [Cloud Addresses]({{< ref "/the-things-stack/host/cloud/addresses" >}}).
+**Cloud and Dedicated Cloud**: See [Cloud Addresses]({{< ref "/the-things-stack/cloud/addresses" >}}).
 
 **AWS Launcher**: This is the domain you specify in your [CloudFormation configuration]({{< ref "the-things-stack/host/aws/ami/deployment-guide#step-2-configure-the-deployment" >}}).
 
