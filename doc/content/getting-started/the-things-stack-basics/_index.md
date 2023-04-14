@@ -12,15 +12,16 @@ weight: 2
 
 {{% tts %}} offers the following options for LoRaWAN deployments in production.
 
-- The quickest way to get started with LoRaWAN is to sign up to [{{% tts %}} Cloud]({{< relref "cloud" >}}) a fully-managed SLA-backed cloud subscription. By using {{% tts %}} Cloud, you can focus on scaling your LoRaWAN deployments while leaving the complexity of managing a production LoRaWAN Network Server to us. The Things Stack Cloud offers a [free discovery tier](https://www.thethingsindustries.com/stack/plans/) to get started and is the recommended option for most new users.
+- {{< distributions "Cloud" >}} [{{% tts %}} Cloud]({{< relref "cloud" >}}): Our flagship, fully-managed, SLA-backed cloud subscription helping hundreds of companies around the world.
+By using {{% tts %}} Cloud, you can focus on providing value to your customers, while leaving the complexity of managing a production LoRaWAN Network Server to us. You can start evaluating {{% tts %}} Cloud by [signing up for the free discovery tier]({{< relref "setup-first-network" >}}) to get started.
 
-- Alternatively, if you prefer to take on the responsibility of installing and maintaining {{% tts %}} in addition to managing your LoRaWAN device fleet, {{% tts %}} is available to be [installed on your own hardware or cloud infrastructure]({{< relref "setup" >}}).
+- {{< distributions "Enterprise" >}}[{{% tts %}} Enterprise]({{< relref "host" >}}): Alternatively, if you prefer to take on the responsibility of installing and maintaining {{% tts %}} in addition to managing your LoRaWAN device fleet, {{% tts %}} is available to be installed on your own hardware or cloud infrastructure.
 
 For simple community projects and local testing, there are a few options.
 
-- A free and limited version of {{% tts %}} called [{{% tts %}} Community Edition]{{< relref "ttn" >}} is available to [The Things Network](https://www.thethingsnetwork.org/) community for simple proof-of-concepts and community projects. This service comes with no guarantees and is entirely at the risk of the users.
+- {{< distributions "Community" >}}[{{% tts %}} Community Edition]({{< relref "ttn" >}}): A free and limited version of {{% tts %}} _without any guarantees or SLA_ available to The Things Network community users for simple proof-of-concepts and community projects.
 
-- For the DIY’ers, the core features of The Things Stack are [open source](https://github.com/thethingsnetwork/lorawan-stack) and is available for local testing.
+- {{< distributions "Open Source" >}}[{{% tts %}} Open Source](https://github.com/thethingsnetwork/lorawan-stack): For the DIY’ers, the core features of The Things Stack are open source. This is limited in features and is not suitable for production.
 
 {{% tts %}} is developed and maintained by [The Things Industries](https://thethingsindustries.com/).
 
