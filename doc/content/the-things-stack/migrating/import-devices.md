@@ -1,7 +1,7 @@
 ---
 title: Import End Devices in The Things Stack
 weight: 4
-aliases: ["/getting-started/migrating-from-v2/import-devices", "/getting-started/migrating-from-networks/import-devices", /the-things-stack/migrating-from-v2/import-devices, /the-things-stack/migrating-from-networks/import-devices,/getting-started/migrating]
+aliases: [/getting-started/migrating-from-v2/import-devices, /getting-started/migrating-from-networks/import-devices, /the-things-stack/migrating-from-v2/import-devices, /the-things-stack/migrating-from-networks/import-devices,/getting-started/migrating]
 ---
 
 To import end devices, you need access to an application in {{% tts %}}. If you have not created one previously, see the [Adding Applications]({{< ref "integrations/adding-applications" >}}) guide for detailed instructions.

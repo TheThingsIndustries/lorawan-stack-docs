@@ -7,8 +7,7 @@ aliases:
     "/getting-started/migrating-from-v2",
     "/getting-started/migrating-from-v2/configure-ttnctl",
     "/getting-started/migrating-from-v2/export-v2-devices",
-    "/getting-started/migrating/migrating-from-v2",
-    "/getting-started/migrating/migrating-from-v2",
+    "/getting-started/migrating/migrating-from-v2"
   ]
 ---
 
