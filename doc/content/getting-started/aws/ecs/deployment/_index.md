@@ -318,3 +318,11 @@ To automatically renew the certificate from Let's Encrypt, we will now deploy te
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/5-7b-ecs-certbot-scheduled-task.gen.template (replace `3.x.y` with the current minor and patch version).
 
 >We recommend to schedule this task to run every 14 days.
+
+## Mutual TLS (optional)
+
+The template `2-4c-mtls-s3` generates an S3 bucket to store CA certificates, needed for mutual TLS authentication via a supported proxy (Envoy).
+
+**Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-4c-mtls-s3.gen.template (replace `3.x.y` with the current minor and patch version).
+
+More information can be found in the [Mutual TLS]({{< ref "/getting-started/aws/ecs/mutual-tls" >}}) section.
