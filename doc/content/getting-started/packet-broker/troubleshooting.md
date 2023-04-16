@@ -13,8 +13,9 @@ This section provides help for common issues and frequently asked questions you 
 We recommend the following:
 
 - Check if there are any incidents on the Packet Broker end. See [Packet Broker Status Page]({{< ref "/getting-started/packet-broker#status-page" >}}).
-- Make sure your tenant is registered in Packet Broker. See [Configure Packet Broker section]({{< ref "/getting-started/packet-broker/configure" >}}).
+- Make sure your tenant is registered in Packet Broker. See [Configure Packet Broker section]({{< ref "/getting-started/packet-broker/configure" >}}) for.
 - Double check if routing policies are properly configured. See [Routing Policies]({{< ref "/getting-started/packet-broker/configure/routing-policies" >}}).
+- If you're sure that all previous points are checked, contact our [support](mailto:support@thethingsindustries.com).
 
 ## My gateway is not visible in the Packet Broker Mapper API.
 
@@ -31,3 +32,7 @@ To set gateway status and location to public using the CLI, use the following co
 ```bash
 ttn-lw-cli gateways set $GTW_ID --status-public --location-public
 ```
+
+## I am unable to toggle the **Register network** button. What should I do?
+
+The reason you cannot toggle the **Register network** button 
