@@ -7,8 +7,6 @@ This is the reference for the gRPC and HTTP APIs that {{% tts %}} exposes.
 
 <!--more-->
 
-{{< note >}} {{% tts %}} API is different from {{% ttnv2 %}} API. If migrating from V2, see [here]({{< ref "getting-started/migrating/migrating-from-v2/major-changes" >}}) for an overview of changes. {{</ note >}}
-
 ## HTTP Queries
 
 ### Field Masks

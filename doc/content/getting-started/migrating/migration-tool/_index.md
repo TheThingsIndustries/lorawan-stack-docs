@@ -76,4 +76,3 @@ Currently, there are three available sources listed in the table below. For deta
 | :----------- | :---------------------------------------------------------------------------------------------------------------------------------- | :------------------------ |
 | `ttnv3`      | [Export Devices from {{% tts %}}]({{< ref "/getting-started/migrating/migration-tool/export-from-tts" >}}) | [Migrating between {{% tts %}} distributions]({{< ref "/getting-started/migrating/migrating-between-tts-distributions" >}})
 | `chirpstack` | [Export Devices from ChirpStack]({{< ref "/getting-started/migrating/migration-tool/export-from-chirpstack" >}})            |  Migrating devices from ChirpStack
-| `ttnv2`      | Discontinued | Migrating from legacy {{% ttnv2 %}} deployments
