@@ -2,6 +2,7 @@
 title: "Migrate Active Sessions"
 description: ""
 weight: 2
+aliases: [/getting-started/migrating/migrating-between-tts-distributions/migrate-active-session/]
 ---
 
 Starting from {{% tts %}} version `3.12.0`, it is possible to migrate end devices together with their active sessions using the `ttn-lw-migrate` tool. This section explains how to export one or more of your end devices from {{% ttnv2 %}} to a [JSON file]({{< ref "/the-things-stack/migrating/device-json" >}}), with persisting their active sessions.
