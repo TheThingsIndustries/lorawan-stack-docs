@@ -71,6 +71,7 @@ func main() {
 
 	fmt.Printf("Check %d URLs for changes\n", len(sitemap.URLs))
 
+	missing := []string{}
 	for _, url := range sitemap.URLs {
 		// Check if the URL exists.
 		req, err := http.NewRequest("GET", strings.Replace(url.Loc, docsSite, devSite, 1), nil)
@@ -83,26 +84,31 @@ func main() {
 		}
 		defer resp.Body.Close()
 
+		page := strings.TrimPrefix(url.Loc, docsSite)
 		switch resp.StatusCode {
 		case http.StatusOK:
 			pc.unchanged++
 		case http.StatusNotFound:
 			pc.missing++
-			fmt.Printf("%s is not aliased\n", url.Loc)
+			missing = append(missing, page)
 		case http.StatusMovedPermanently:
 			pc.aliased++
 			location := resp.Header.Get("Location")
 			if location != "" {
-				fmt.Printf("%s aliased to %s\n", url.Loc, location)
+				fmt.Printf("%s aliased to %s\n", page, location)
 			} else {
-				fmt.Printf("%s aliased to unknown location\n", url.Loc)
+				fmt.Printf("%s aliased to unknown location\n", page)
 			}
 		default:
 			log.Fatalf("URL %s returned status code %d", url.Loc, resp.StatusCode)
 		}
 	}
 	fmt.Printf("Original: %d, Unchanged: %d, Aliased: %d, Missing: %d\n", pc.original, pc.unchanged, pc.aliased, pc.missing)
-	if pc.missing > 0 {
+	if len(missing) > 0 {
+		fmt.Printf("Missing pages:\n")
+		for _, page := range missing {
+			fmt.Printf("- %s\n", page)
+		}
 		os.Exit(1)
 	}
 }
