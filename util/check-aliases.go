@@ -101,5 +101,8 @@ func main() {
 			log.Fatalf("URL %s returned status code %d", url.Loc, resp.StatusCode)
 		}
 	}
-	fmt.Printf("Original: %d, Unchanged: %d, Aliased: %d, Missing: %d", pc.original, pc.unchanged, pc.aliased, pc.missing)
+	fmt.Printf("Original: %d, Unchanged: %d, Aliased: %d, Missing: %d\n", pc.original, pc.unchanged, pc.aliased, pc.missing)
+	if pc.missing > 0 {
+		os.Exit(1)
+	}
 }
