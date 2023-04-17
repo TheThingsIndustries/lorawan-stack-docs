@@ -9,7 +9,7 @@ aliases: [/getting-started/kubernetes]
 
 This guide helps the user to install and configure {{% tts %}} on a Kubernetes cluster.
 
-{{< warning >}} Operating The Things Stack on a Kubernetes cluster is only meant for advanced users with sufficient experience with the chosen infrastructure platform and with Kubernetes. {{</ warning >}}
+Operating The Things Stack on a Kubernetes cluster is only meant for advanced users with sufficient experience with the chosen infrastructure platform and with Kubernetes.
 
 {{< warning >}} Until the release of v1.0.0, all versions are considered to be in the Alpha stage and are not suitable for production use. The Things Industries does not offer any guarantees on compatibility between the Alpha versions. {{</ warning >}}
 

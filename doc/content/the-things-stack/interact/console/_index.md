@@ -13,9 +13,17 @@ The Console is the management application of {{% tts %}} for LoRaWAN. It is a we
 
 ## {{% tts %}} Cloud
 
-If you are using {{% tts %}} Cloud, the Console is available at the following URL with your `tenant_id` and region:
+If you are using {{% tts %}} Cloud, you can generate a direct link to the Console by entering your tenant ID choosing the required cluster.
 
-`<tenant_id>.<eu1/eu2/au1/nam1/>.cloud.thethings.industries`
+{{< tenant-cluster-selector >}}
+
+Copy the link below and paste it in a browser window.
+
+<p>
+<code data-content="cluster-address">
+https://<span data-content="tenant-id"></span>.<span data-content="cluster-id"></span>.cloud.thethings.industries
+</code>
+</p>
 
 See [Cloud Addresses]({{< ref "/the-things-stack/cloud/addresses" >}}) for more information about cluster addresses.
 

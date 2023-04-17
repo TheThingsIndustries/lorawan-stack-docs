@@ -10,16 +10,14 @@ Now that you are familiar with LoRaWAN and {{% tts %}}, let us set up your first
 
 ## Prerequisites
 
-1. A valid credit card. This card will not be charged for the free `Discovery` plan that we setup in this guide.
+1. A valid credit card. This card will not be charged for the free **Discovery** plan that we setup in this guide.
 2. An email address.
 
 ## Setup
 
-Head over to [thethingsindustries.com](https://thethingsindustries.com) and click on the **Get Started** button.
+Go to the [plans](https://www.thethingsindustries.com/stack/plans/) page which lists the different plans supported by {{% tts %}} Cloud.
 
-This leads to the `plans` page which shows the different plans supported by {{% tts %}} Cloud.
-
-For this example, we will choose the `Discovery` plan.
+For this example, we will choose the **Discovery** plan.
 
 {{< note  "At the time of writing this documentation, this plan allows you free access to use 10 devices and 10 gateways on The Things Stack Cloud. For updates on these limits, check the plans page." />}}
 
@@ -41,9 +39,7 @@ This page asks you for a **Payment method**. Fill in the relevant card details.
 
 {{< figure src="ttsc-signup-card.png" alt="Payment information" >}}
 
-{{< warning >}}
-Please note that this is used only for verifying legitimacy and you will only be charged once you exceed the device limits of the `Discovery` plan.
-{{</ warning >}}
+{{< note "The payment information is used for verifying legitimacy and you will only be charged once you exceed the device limits of the **Discovery** plan." />}}
 
 If your details are correct and verified successfully, you will reach the [`Accounts`](https://accounts.thethingsindustries.com) page.
 

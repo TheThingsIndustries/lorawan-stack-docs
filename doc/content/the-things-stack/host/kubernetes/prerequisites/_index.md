@@ -10,8 +10,7 @@ The following are required for {{% tts %}} on Kubernetes.
 ## Installation Tools
 
 1. [`kubectl`](https://kubernetes.io/docs/reference/kubectl/)
-2. [Helm version 3](https://helm.sh/docs/intro/). Check the version of Helm installed using `helm version`.
-{{< warning >}}Helm v3.8 or above is required.{{</ warning >}}
+2. [Helm version 3](https://helm.sh/docs/intro/). Check the version of Helm installed using `helm version`. Helm v3.8 or above is required.
 
 ## License
 
