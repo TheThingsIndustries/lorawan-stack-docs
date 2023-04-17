@@ -1,5 +1,6 @@
 ---
 title: "Template Changelog"
+aliases: [/getting-started/aws/ecs/changelog]
 ---
 
 # Upgrading

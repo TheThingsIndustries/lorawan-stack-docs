@@ -2,7 +2,7 @@
 title: "Best Practices"
 description: ""
 weight: 4
-aliases: [/getting-started/aws/best-practices]
+aliases: [/getting-started/aws/ami/best-practices]
 ---
 
 This page describes best practices of a {{% tts %}} deployment on AWS AMI.

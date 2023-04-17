@@ -7,6 +7,7 @@ aliases:
   - /integrations/aws-iot/application-server-telemetry
   - /integrations/cloud-integrations/aws-iot/application-server-telemetry/
   - /getting-started/aws/application-server-telemetry
+  - /getting-started/aws/ami/application-server-telemetry
 ---
 
 {{% tts %}} supports publishing of uplink messages directly to the AWS IoT suite.

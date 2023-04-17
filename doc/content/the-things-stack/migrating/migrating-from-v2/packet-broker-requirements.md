@@ -2,7 +2,7 @@
 title: "Packet Broker Requirements for End Device Migration"
 description: ""
 weight: 1
-aliases: ["/getting-started/migrating-from-v2/packet-broker-requirements"]
+aliases: ["/getting-started/migrating/migrating-from-v2/packet-broker-requirements"]
 ---
 
 Read this section if you want to make use of [Packet Broker]({{< ref "/the-things-stack/packet-broker" >}}) to migrate your end devices and route traffic from {{% ttnv2 %}} to {{% tts %}}.

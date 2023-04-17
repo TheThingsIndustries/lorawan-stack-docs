@@ -2,7 +2,7 @@
 title: "Prerequisites"
 description: ""
 weight: 1
-aliases: [/getting-started/prerequisites]
+aliases: [/getting-started/kubernetes/prerequisites]
 ---
 
 The following are required for {{% tts %}} on Kubernetes.

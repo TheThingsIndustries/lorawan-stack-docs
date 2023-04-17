@@ -1,7 +1,7 @@
 ---
 title: Fine-tuning MAC Settings for End Devices
 weight: 6
-aliases: "/the-things-stack/migrating-from-v2/configure-mac-settings, /getting-started/configure-mac-settings"
+aliases: [/the-things-stack/migrating-from-v2/configure-mac-settings, /getting-started/configure-mac-settings, /getting-started/migrating/configure-mac-settings]
 ---
 
 MAC settings on {{% tts %}} are configurable per end device. See the [MAC settings guide]({{< ref "/devices/mac-settings" >}}) for instructions.

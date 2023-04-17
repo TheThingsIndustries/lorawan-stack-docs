@@ -1,6 +1,7 @@
 ---
 title: "Troubleshooting Console"
 description: ""
+aliases: [/getting-started/console/troubleshooting]
 ---
 
 This section provides help for common issues in {{% tts %}} Console. 

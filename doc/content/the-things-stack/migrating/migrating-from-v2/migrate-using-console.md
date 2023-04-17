@@ -2,7 +2,7 @@
 title: "Migrate using the Console"
 description: ""
 weight: 2
-aliases: ["/getting-started/migrating-from-v2/migrate-using-console"]
+aliases: ["/getting-started/migrating/migrating-from-v2/migrate-using-console"]
 ---
 
 This section describes migrating end devices to {{% tts %}} by using [{{% tts %}} Console]({{< ref "/the-things-stack/interact/console" >}}).

@@ -2,9 +2,10 @@
 title: "Migrate using the Migration Tool"
 description: ""
 weight: 2
+aliases: [/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool]
 ---
 
-This section refers to migrating end devices to {{% tts %}} using [`ttn-lw-migrate` migration tool](https://github.com/TheThingsNetwork/lorawan-stack-migrate). 
+This section refers to migrating end devices to {{% tts %}} using [`ttn-lw-migrate` migration tool](https://github.com/TheThingsNetwork/lorawan-stack-migrate).
 
 <!--more-->
 

@@ -1,7 +1,7 @@
 ---
 title: "Personal Settings"
 description: ""
-aliases: ["/getting-started/console/profile-settings","/the-things-stack/interact/console/profile-settings"]
+aliases: [/getting-started/console/profile-settings,/the-things-stack/interact/console/profile-settings, /getting-started/console/personal-settings]
 weight: 1
 ---
 

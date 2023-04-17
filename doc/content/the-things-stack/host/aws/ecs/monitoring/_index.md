@@ -2,6 +2,7 @@
 title: "Monitoring"
 description: ""
 weight: 5
+aliases: [/getting-started/aws/ecs/monitoring]
 ---
 
 This page describes how you can monitor a {{% tts %}} deployment on AWS ECS.

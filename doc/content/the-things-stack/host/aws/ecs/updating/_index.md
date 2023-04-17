@@ -2,6 +2,7 @@
 title: "Updating"
 description: ""
 weight: 6
+aliases: [/getting-started/aws/ecs/updating]
 ---
 
 This page describes the steps for updating {{% tts %}} on AWS ECS.

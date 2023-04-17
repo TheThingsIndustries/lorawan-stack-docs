@@ -1,7 +1,7 @@
 ---
 title: "Data Formats"
 description: ""
-aliases: "/integrations/data-formats"
+aliases: [/integrations/data-formats, /reference/data-formats]
 weight: 3
 ---
 

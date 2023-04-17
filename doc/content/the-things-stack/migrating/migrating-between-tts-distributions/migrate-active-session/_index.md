@@ -1,7 +1,7 @@
 ---
 title: "Migrate Active Device Session"
 description: ""
-aliases: [/getting-started/migrating/migrating-between-tts-distributions/migrate-active-session]
+aliases: [/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session]
 ---
 
 This section explains how to migrate end devices from {{% tts %}} Community Edition to {{% tts %}} Cloud while persisting sessions that were already established between those devices and {{% tts %}} Community Edition.

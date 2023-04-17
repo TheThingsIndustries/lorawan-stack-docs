@@ -2,7 +2,7 @@
 title: "Export Devices from The Things Stack"
 description: ""
 weight: 1
-aliases: [/getting-started/migrating/export-from-tts]
+aliases: [/getting-started/migrating/migration-tool/export-from-tts]
 ---
 
 This section explains how to configure the migration tool and use it to export end devices from {{% tts %}}, that can later be imported in other {{% tts %}} deployments. This is a base for migrating end devices between {{% tts %}} distributions.

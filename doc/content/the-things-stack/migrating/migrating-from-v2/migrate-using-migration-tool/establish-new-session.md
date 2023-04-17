@@ -2,6 +2,7 @@
 title: "Migrate without Persisting Active Sessions"
 description: ""
 weight: 1
+aliases: [/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/establish-new-session]
 ---
 
 This section explains how to export one or more of your end devices from {{% ttnv2 %}} to a [JSON file]({{< ref "/the-things-stack/migrating/device-json" >}}), without persisting their session.

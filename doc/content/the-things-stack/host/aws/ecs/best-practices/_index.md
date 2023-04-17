@@ -2,6 +2,7 @@
 title: "Best Practices"
 description: ""
 weight: 8
+aliases: [/getting-started/aws/ecs/best-practices]
 ---
 
 This page describes best practices of a {{% tts %}} deployment on AWS ECS.

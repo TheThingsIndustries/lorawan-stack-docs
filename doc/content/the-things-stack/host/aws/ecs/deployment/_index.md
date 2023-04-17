@@ -2,6 +2,7 @@
 title: "Deployment"
 description: ""
 weight: 3
+aliases: [/getting-started/aws/ecs/deployment]
 ---
 
 This page describes the steps for deploying {{% tts %}} on AWS ECS.

@@ -2,6 +2,7 @@
 title: "Troubleshooting AWS ECS Deployment"
 description: ""
 weight: 9
+aliases: [/getting-started/aws/ecs/troubleshooting]
 ---
 
 This section contains information to troubleshoot {{% tts %}} deployment.

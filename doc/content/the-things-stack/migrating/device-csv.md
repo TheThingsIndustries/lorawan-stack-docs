@@ -2,7 +2,7 @@
 title: "CSV File Reference"
 description: ""
 weight: 9
-aliases: [/getting-started/device-csv]
+aliases: [/getting-started/device-csv, /getting-started/migrating/device-csv]
 ---
 
 {{% tts %}} has support for importing end devices from CSV (comma-separated values) files. This is useful when batches of end devices are managed in Microsoft Excel or any other spreadsheet or database that can export to CSV file.

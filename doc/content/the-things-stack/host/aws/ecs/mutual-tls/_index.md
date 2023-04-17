@@ -3,6 +3,7 @@ title: "Mutual TLS"
 description: "Mutual TLS authentication"
 weight: 9
 new_in_version: 3.22.2
+aliases: [/getting-started/aws/ecs/mutual-tls]
 ---
 
 {{% tts %}} supports mutual TLS authentication via a supported proxy (Envoy).

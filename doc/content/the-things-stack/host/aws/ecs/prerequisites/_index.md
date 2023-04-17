@@ -2,6 +2,7 @@
 title: "Prerequisites"
 description: ""
 weight: 2
+aliases: [/getting-started/aws/ecs/prerequisites]
 ---
 
 This page describes what you need for deploying {{% tts %}} on AWS ECS.

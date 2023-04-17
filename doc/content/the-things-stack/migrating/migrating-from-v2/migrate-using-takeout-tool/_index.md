@@ -1,7 +1,7 @@
 ---
 title: "Migrate using the V2 Takeout Tool"
 description: ""
-aliases: ["/getting-started/migrating-from-v2/migrate-using-takeout-tool"]
+aliases: ["/getting-started/migrating/migrating-from-v2/migrate-using-takeout-tool"]
 ---
 
 This section contains instructions for viewing historical data about applications, devices, and gateways in The Things Network V2 using the [V2 Takeout Tool](https://v2takeout.thethingsnetwork.org), to migrate these devices to {{% tts %}}.

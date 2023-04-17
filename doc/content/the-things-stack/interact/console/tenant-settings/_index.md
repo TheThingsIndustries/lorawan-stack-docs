@@ -3,6 +3,7 @@ title: "Tenant Settings"
 description: ""
 weight: 1
 distributions: ["Cloud", "Enterprise"]
+aliases: [/getting-started/console/tenant-settings]
 ---
 
 This section explains how to modify tenant settings in {{% tts %}} Console.

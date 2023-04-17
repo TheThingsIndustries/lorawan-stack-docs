@@ -2,7 +2,7 @@
 title: "Troubleshooting AWS AMI Deployment"
 description: ""
 weight: 6
-aliases: [/getting-started/aws/troubleshooting]
+aliases: [/getting-started/aws/ami/troubleshooting]
 ---
 
 <!--

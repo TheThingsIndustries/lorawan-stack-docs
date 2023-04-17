@@ -2,6 +2,7 @@
 title: "The Things Stack"
 description: ""
 weight: 2
+aliases: [/getting-started/what-is-tts/]
 ---
 
 {{% tts %}} is a LoRaWAN Network Server stack which is the critical component for any LoRaWAN solution. This guide quickly gets the read up to speed with the basics of {{% tts %}}.

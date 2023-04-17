@@ -1,6 +1,7 @@
 ---
 title: "Addresses"
 description: ""
+aliases: [/getting-started/ttn/addresses]
 ---
 
 The addresses where you can reach The Things Stack Community Edition consist of the cluster ID and `cloud.thethings.network`.

@@ -2,6 +2,7 @@
 title: "Architecture"
 description: ""
 weight: 1
+aliases: [/getting-started/aws/ecs/architecture/]
 ---
 
 This page describes the architecture of a {{% tts %}} deployment on AWS ECS.

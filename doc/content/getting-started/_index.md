@@ -5,7 +5,7 @@ weight: -2
 menu:
   main:
     weight: 2
-aliases: [/guides/getting-started, /guides/getting-started/running-the-stack, /guides/getting-started/quick-start]
+aliases: [/guides/getting-started, /guides/getting-started/running-the-stack, /guides/getting-started/quick-start, /getting-started/quick-start/]
 ---
 
 {{% tts %}} is an enterprise-grade LoRaWAN Network Server that provides services and tools to securely install and manage millions of LoRaWAN devices in production.

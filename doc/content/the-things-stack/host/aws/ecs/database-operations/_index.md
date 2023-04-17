@@ -2,6 +2,7 @@
 title: "Database Operations"
 description: ""
 weight: 4
+aliases: [/getting-started/aws/ecs/database-operations]
 ---
 
 This page describes the steps for performing database operations on an AWS ECS deployment.
