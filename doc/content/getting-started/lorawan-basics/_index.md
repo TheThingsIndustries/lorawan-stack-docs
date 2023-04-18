@@ -24,7 +24,7 @@ A typical LoRaWAN network consists of the following basic elements.
   - Sensors or actuators send LoRa modulated wireless messages to the gateways or receive messages wirelessly back from the gateways. .
 
 **Gateways**
-  - Specialized evices that receive messages from end devices and forward them to the Network Server.
+  - Specialized devices that receive messages from end devices and forward them to the Network Server.
 
 **Network Server**
   - A piece of software running on a server that manages the end devices.
