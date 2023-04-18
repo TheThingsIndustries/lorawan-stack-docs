@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli tenants get-registry-totals"
 slug: ttn-lw-cli_tenants_get-registry-totals
-type: "commands"
 ---
 
 ## ttn-lw-cli tenants get-registry-totals

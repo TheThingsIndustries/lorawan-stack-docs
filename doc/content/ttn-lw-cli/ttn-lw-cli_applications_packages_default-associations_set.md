@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications packages default-associations set"
 slug: ttn-lw-cli_applications_packages_default-associations_set
-type: "commands"
 ---
 
 ## ttn-lw-cli applications packages default-associations set
@@ -17,7 +16,7 @@ ttn-lw-cli applications packages default-associations set [application-id] [f-po
 ```
       --application-id string    
       --data-local-file string   package data (local file name)
-      --f-port uint8             
+      --f-port uint32            
   -h, --help                     help for set
       --package-name string      
 ```

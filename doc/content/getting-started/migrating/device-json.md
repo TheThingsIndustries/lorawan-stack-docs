@@ -1,7 +1,7 @@
 ---
 title: "JSON File Reference"
 description: ""
-weight: 7
+weight: 8
 aliases: "/getting-started/migrating-from-networks/device-json"
 ---
 

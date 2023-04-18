@@ -12,11 +12,13 @@ description: ''
 The Identity Server needs to be connected to a PostgreSQL-compatible database. Details for the form of the URI can be found in the [PostgreSQL documentation](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING).
 
 - `is.database-uri`: Database connection URI
-- `is.read-database-uri` {{< distributions "Cloud" "Enterprise" >}}: Read-Only database connection URI 
+- `is.database-max-idle-conns` {{< distributions "Cloud" "Enterprise" >}}: Maximum number of idle database connections (default `10`)
+- `is.database-max-open-conns` {{< distributions "Cloud" "Enterprise" >}}: Maximum number of open database connections (default `20`)
+- `is.read-database-uri` {{< distributions "Cloud" "Enterprise" >}}: Read-Only database connection URI
 
 ## Email Options
 
-The Identity Server can be configured with different providers for sending emails. Currently the `sendgrid` and `smtp` providers are implemented.
+The Identity Server can be configured with different providers for sending emails. Currently the `sendgrid`, `smtp` and `dir` providers are implemented.
 
 - `is.email.provider`: Email provider to use
 
@@ -32,6 +34,10 @@ When `smtp` is used as provider, provide the address of the SMTP server (`host:p
 - `is.email.smtp.password`: Password to authenticate with
 - `is.email.smtp.connections`: Maximum number of connections to the SMTP server
 
+When `dir` is used as provider, provide the path to the local directory where email messages should be written to.
+
+- `is.email.dir`: Path to the local directory where email messages should be written to {{< new-in-version "3.19" >}}
+
 The email address and name of the sender should be configured regardless of the provider that is used.
 
 - `is.email.sender-address`: The address of the sender
@@ -43,17 +49,17 @@ Most emails contain the name of the network and links to the Identity Server or 
 - `is.email.network.identity-server-url`: The URL of the Identity Server
 - `is.email.network.console-url`: The URL of the Console
 
-Although {{% tts %}} comes with a number of builtin email templates, it is possible to override those with custom templates. You can specify the source where to load templates from, and options for that source. For more information on email templates, see the [email templates reference]({{< ref "/reference/email-templates" >}}).
+Although {{% tts %}} comes with a number of builtin email templates, it is possible to override those with custom templates. You can specify the source where to load templates from, and options for that source. For more information on email templates, see the [email templates reference]({{< ref "/reference/email-templates" >}}). {{< removed-in-version "3.19" >}}
 
-- `is.email.templates.source`: Source of the email template files (directory, url, blob)
-- `is.email.templates.directory`: Directory on the filesystem where email templates are located
-- `is.email.templates.url`: URL where email templates are located
-- `is.email.templates.blob.bucket`: Bucket where email templates are located
-- `is.email.templates.blob.path`: Path within the bucket.
+- `is.email.templates.source`: Source of the email template files (directory, url, blob) {{< deprecated-in-version "3.19" >}}
+- `is.email.templates.directory`: Directory on the filesystem where email templates are located {{< deprecated-in-version "3.19" >}}
+- `is.email.templates.url`: URL where email templates are located {{< deprecated-in-version "3.19" >}}
+- `is.email.templates.blob.bucket`: Bucket where email templates are located {{< deprecated-in-version "3.19" >}}
+- `is.email.templates.blob.path`: Path within the bucket {{< deprecated-in-version "3.19" >}}
 
 If your custom templates rely on other files, such as headers or footers, those files need to be included.
 
-- `is.email.templates.includes`: The email templates that will be preloaded on startup
+- `is.email.templates.includes`: The email templates that will be preloaded on startup {{< deprecated-in-version "3.19" >}}
 
 ## OAuth UI Options
 
@@ -149,6 +155,10 @@ There are several options to customize the requirements for user passwords.
 - `is.user-registration.password-requirements.min-uppercase`: Minimum number of uppercase letters
 - `is.user-registration.password-requirements.reject-common`: Reject common passwords
 - `is.user-registration.password-requirements.reject-user-id`: Reject passwords that contain user ID
+
+There is also an option to disable login with credentials. In that case, {{% tts %}} will only allow a login with configured external (OpenID Connect) providers.
+
+- `is.user-login.disable-credentials-login` {{< distributions "Cloud" "Enterprise" >}}: Disable login with credentials
 
 ## User Rights Options
 

@@ -1,0 +1,19 @@
+name: ParseEndDeviceQRCodeRequest
+fields:
+- name: format_id
+  comment: |-
+    QR code format identifier.
+    Enumerate available formats with the rpc `ListFormats`.
+    If this field is not specified, the server will attempt to parse the data with each known format.
+  type: string
+  rules:
+    max_len: 36
+    pattern: ^[a-z0-9](?:[-]?[a-z0-9]){2,}$|^$
+  default: ""
+- name: qr_code
+  comment: Raw QR code contents.
+  type: bytes
+  rules:
+    min_len: 10
+    max_len: 1024
+  default: ""

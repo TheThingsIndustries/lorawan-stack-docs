@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli authentication-providers list"
 slug: ttn-lw-cli_authentication-providers_list
-type: "commands"
 ---
 
 ## ttn-lw-cli authentication-providers list

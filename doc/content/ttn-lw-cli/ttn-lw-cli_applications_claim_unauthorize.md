@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications claim unauthorize"
 slug: ttn-lw-cli_applications_claim_unauthorize
-type: "commands"
 ---
 
 ## ttn-lw-cli applications claim unauthorize

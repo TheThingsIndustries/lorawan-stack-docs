@@ -1,6 +1,7 @@
 ---
 title: "Using the API"
 description: ""
+weight: 13
 ---
 
 While we recommend using the [Console]({{< ref "getting-started/console" >}}) or [CLI]({{< ref "getting-started/cli" >}}) to manage your applications and devices in {{% tts %}}, we also expose HTTP and gRPC APIs which you can interact directly with. This section contains information about using the HTTP API, and examples.
@@ -31,7 +32,7 @@ Set the `User-Agent` HTTP header containing your integration name and version. T
 
 ## HTTP Query Examples
 
-## Get Device Info
+### Get Device Info
 
 Fields may be specified in HTTP requests by appending them as query string parameters. For example, to request the `name`, `description`, and `locations` of devices in an `EndDeviceRegistry.Get` request, add these fields to the `field_mask` field. To get this data for device `dev1` in application `app1`:
 
@@ -55,7 +56,7 @@ curl --location \
 
 Fields may also be specified as a JSON object in a POST request.
 
-## Get Event Stream
+### Get Event Stream
 
 To get a stream of events for device `dev1` in application `app1` :
 
@@ -79,7 +80,7 @@ curl --location \
 
 See [here](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events) a description of the `text/event-stream` MIME type.
 
-## Schedule Downlink
+### Schedule Downlink
 
 To schedule a downlink, you may use the `DownlinkQueuePush` or `DownlinkQueueReplace` endpoints of the [Application Server API]({{< ref "reference/api/application_server#the-appas-service" >}}). For example, to schedule a downlink queue push to device `dev1` in application `app1`:
 
@@ -119,7 +120,7 @@ Please note that downlinks scheduled using the `decoded_payload` Payload Formatt
 
 It is also possible to [schedule downlinks using HTTP Webhooks]({{< ref "integrations/webhooks/scheduling-downlinks" >}}), which give you flexibility to choose JSON or gRPC HTTP payloads.
 
-## Multi-step Actions
+### Multi-step Actions
 
 If you want to create a device, perform multi-step actions, or write shell scripts, it's best to use the [CLI]({{< ref "getting-started/cli" >}}).
 
@@ -396,7 +397,7 @@ curl --location \
 
 {{< /tabs/container >}}
 
-## Register a Gateway
+### Register a Gateway
 
 To register a gateway `gtw1` using the `GatewayRegistry.Create` request:
 
@@ -421,7 +422,8 @@ curl --location \
 ```
 
 See [here]({{< ref "/reference/api/gateway" >}}) for more info about gateway APIs.
-## Purge Entities
+
+### Purge Entities
 
 An admin user can [purge entities]({{< ref "/reference/purge" >}}) such as [applications]({{< ref "/reference/api/application" >}}), [clients]({{< ref "/reference/api/client" >}}), [gateways]({{< ref "/reference/api/gateway" >}}), [organizations]({{< ref "/reference/api/organization" >}}) or [users]({{< ref "/reference/api/user" >}}).
 
@@ -433,3 +435,27 @@ curl --location \
   --request DELETE \
   'https://thethings.example.com/api/v3/applications/app1/purge'
 ```
+
+## API Usage Troubleshooting
+
+This section provides help for common issues and frequently asked questions you may have when using the API.
+
+### I get a `forbidden path(s) in field mask` error.
+
+This error usually occurs when wrong path(s) are specified in the `field_mask` object in the API request body. See [Fields and Field Masks]({{< ref "/reference/api/field-mask" >}}) section and make sure that paths listed under your `field_mask` are correct.
+
+### When adding a device, I get an `invalid end_device: embedded message failed validation` error.
+
+The most common cause for this error is not following the regex pattern in the `device_id` field. See [End Device APIs]({{< ref "/reference/api/end_device#message:EndDeviceIdentifiers" >}}) section and make sure your `device_id` is in line with the defined regex pattern. See also [ID and EUI constaints]({{< ref "/reference/id-eui-constraints" >}}) documentation.
+
+### Listing gateways via API call works for the `eu1` {{% tts %}} Cloud cluster, but won't work for the `nam1` cluster.
+
+Unlike other server components, the Identity Server component of {{% tts %}} is hosted only in the `eu1` cluster for [{{% tts %}} Cloud]({{< ref "/getting-started/cloud-hosted/addresses#api-endpoints" >}}) and [{{% tts %}} Community Edition]({{< ref "/getting-started/ttn/addresses#api-endpoints" >}}). This is the reason why Identity Server API request to any cluster other than `eu1` will fail.
+
+### I see a `426 Upgrade Required` error when making an API call.
+
+This error indicates that the client HTTP protocol version is old, so the server refuses to perform the request and requires a client update to HTTP 1.1 version or higher.
+
+### I get an `insufficient_application_rights` error.
+
+The API key you are using doesn't have sufficient rights. Go to the Console, enter your API key settings on the left hand menu and edit them to provide rights needed to perform the desired action.

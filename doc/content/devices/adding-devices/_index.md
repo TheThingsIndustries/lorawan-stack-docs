@@ -85,25 +85,27 @@ If you need to use a method of activation other than OTAA, create a multicast gr
 
 To modify advanced settings, expand the **Show advanced activation, LoRaWAN class and cluster settings** dropdown.
 
-Here, you may choose your **Activation Mode**.
+Here, you may choose your **Activation Mode**. If you choose **OTAA**, follow the [OTAA Devices]({{< ref "/devices/adding-devices#otaa-devices" >}}) subsection after this one, and if you choose **ABP**, follow the [ABP Devices]({{< ref "/devices/adding-devices#abp-devices" >}}) subsection.
 
 {{< figure src="advanced.png" alt="Advanced settings" >}}
 
-If your device supports **Class B** or **Class C** features, you may enable them using the dropdown.
+If your device supports **Class B** or **Class C** features, you may enable them using the dropdown **Additional LoRaWAN class capabilities**.
 
 {{< figure src="class.png" alt="Choose device class" >}}
 
-To modify **Rx2 data rate** or **Rx2 frequency**, uncheck **Use network's Rx and frequency defaults**. If using **[ABP](#abp-devices)**, this will also allow you to configure **Rx1 settings**.
+Under **Network defaults**, you can choose to **Use network's default MAC settings**. This option is enabled by default because for most deployments, {{% tts %}} defaults for Rx delay and other MAC settings will be suitable. However, if you want to modify **Rx2 data rate** or **Rx2 frequency**, uncheck this option and provide your custom values. If using [ABP activation mode](#abp-devices), this will also allow you to configure **Rx1 settings**.
 
 {{< figure src="default-frequencies.png" alt="Use default frequencies" >}}
 
-To use an external join server or an external network server, check **Use external LoRaWAN backend servers**.
+By default, server components of the current cluster are used, but if you want to use an external Join Server or an external Network Server, check **Use external LoRaWAN backend servers**.
 
-The **Network Server** and **Join Server** addresses should correctly point to the address of {{% tts %}} deployment you are using.
-
-If using an External Join Server, enter its address in the **Join Server** field.
+The **Network Server address** and **Join Server address** should correctly point to the address of {{% tts %}} deployment you are using. If using an External Join Server, enter its address in the **Join Server address** field.
 
 {{< figure src="external-servers.png" alt="Use external backend servers" >}}
+
+Once your device is registered, you can navigate to the **General settings** tab in your end device's settings, scroll down to the **Network layer** section and expand **Advanced MAC settings** to modify more MAC settings like **Frame counter width**, **Desired maximum duty cycle**, **ADR margin**, etc. See the [MAC Settings]({{< ref "/devices/mac-settings" >}}) section to learn about available MAC settings for your end devices.
+
+{{< figure src="mac-settings.png" alt="Additional MAC settings" >}}
 
 ### OTAA Devices
 
@@ -357,3 +359,17 @@ The CLI will return something like:
 {{< /tabs/container >}}
 
 Once a device has been added, get started with [Integrations]({{< ref "/integrations" >}}) to process and act on data.
+
+## Application Layer Settings
+
+### Payload Crypto Override
+
+LoRaWAN frames are encrypted on the application layer using the AppSKey. Once the end device is registered, you can choose to enforce or skip payload encryption. Skipping payload encryption will cause the Application Server to forward messages to integrations without any processing, for example it will neglect [payload formatters]({{< ref "/integrations/payload-formatters" >}}). If you choose to skip payload encryption, integrations will be responsible for processing the message in order to understand it.
+
+To configure these settings, navigate to your end device's **General settings** tab in the Console and scroll down to the **Application layer** section.
+
+Skipping payload encryption and decryption option is also available on an [application level]({{< ref "/integrations/adding-applications#payload-encryption-and-decryption" >}}), so if you want the end device to inherit this setting from its application, choose **Use application default**.
+
+Otherwise, choose to **Enforce skipping payload crypto** or to **Enforce payload crypto** for a single device only.
+
+{{< figure src="skip-payload-crypto.png" alt="Skip payload encryption and decryption" >}}

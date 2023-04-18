@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications get"
 slug: ttn-lw-cli_applications_get
-type: "commands"
 ---
 
 ## ttn-lw-cli applications get
@@ -23,13 +22,16 @@ ttn-lw-cli applications get [application-id] [flags]
       --administrative-contact.ids.user-ids.user-id                   select the administrative_contact.ids.user_ids.user_id field
       --all                                                           select all application fields
       --application-id string                                         
+      --application-server-address                                    select the application_server_address field
       --attributes                                                    select the attributes field
       --contact-info                                                  select the contact_info field
       --deleted-at                                                    select the deleted_at field
       --description                                                   select the description field
       --dev-eui-counter                                               select the dev_eui_counter field
   -h, --help                                                          help for get
+      --join-server-address                                           select the join_server_address field
       --name                                                          select the name field
+      --network-server-address                                        select the network_server_address field
       --technical-contact                                             select the technical_contact field and all allowed sub-fields
       --technical-contact.ids.organization-ids                        select the technical_contact.ids.organization_ids field and all allowed sub-fields
       --technical-contact.ids.organization-ids.organization-id        select the technical_contact.ids.organization_ids.organization_id field

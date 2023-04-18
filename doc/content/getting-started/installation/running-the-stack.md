@@ -46,6 +46,8 @@ docker-compose run --rm stack is-db create-admin-user \
   --email your@email.com
 ```
 
+Note that for multi-tenant deployments you can create admin users for each tenant using the `--tenant-id` flag.
+
 Then the command-line interface needs to be registered as an OAuth client:
 
 ```bash

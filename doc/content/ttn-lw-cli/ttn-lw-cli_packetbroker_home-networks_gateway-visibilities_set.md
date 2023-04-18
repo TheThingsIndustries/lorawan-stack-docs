@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli packetbroker home-networks gateway-visibilities set"
 slug: ttn-lw-cli_packetbroker_home-networks_gateway-visibilities_set
-type: "commands"
 ---
 
 ## ttn-lw-cli packetbroker home-networks gateway-visibilities set
@@ -37,6 +36,7 @@ ttn-lw-cli packetbroker home-networks gateway-visibilities set default [flags]
       --all                 
       --antenna-count       
       --antenna-placement   
+      --contact-info        
       --fine-timestamps     
       --frequency-plan      
   -h, --help                help for set

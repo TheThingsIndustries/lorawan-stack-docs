@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli gateways api-keys create"
 slug: ttn-lw-cli_gateways_api-keys_create
-type: "commands"
 ---
 
 ## ttn-lw-cli gateways api-keys create

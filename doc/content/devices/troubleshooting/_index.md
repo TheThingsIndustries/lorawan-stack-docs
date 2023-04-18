@@ -34,13 +34,18 @@ Device event logs can be found in the console in the device's general informatio
 
 Check your network coverage, and if your device is activated and transmitting Join Requests.
 
-If your device uses ABP, it is also possible that it is sending join requests on frequencies that {{% tts %}} is not listening on. See [using inappropriate frequencies](#i-can-see-some-received-uplinks-in-gateway-live-data-events-but-i-do-not-see-them-in-device-events) below.
+It is possible that your device is sending Join Requests on non-default frequencies, i.e. on frequencies that {{% tts %}} is not listening on by default. If this is the case, Join Requests will be dropped on a gateway level. As per LoRaWAN specification, devices should be sending Join Requests on default frequencies of the defined frequency band. To fix this issue, reach out to your device manufacturer and find out which are the default frequencies for your device. Also, check out [using inappropriate frequencies](#i-can-see-some-received-uplinks-in-gateway-live-data-events-but-i-do-not-see-them-in-device-events) below.
 
 ## My device will not join. What do I do?
 
 - Double check your DevEUI, JoinEUI or AppEUI, LoRaWAN and Regional Parameters Version, root keys (AppKey, and with LoRaWAN 1.1 or higher, NwkKey)
 - Check gateway and device events for traffic from your device. Below are a few common issues
-    - **MIC mismatch** error in the device events: Possible mismatch of AppKey in device firmware to the AppKey registered in {{% tts %}} console. Update the AppKey in the console accordingly
+    - **MIC mismatch** error in the device events: Possible mismatch of AppKey in device firmware to the AppKey registered in {{% tts %}} Console. Update the AppKey in the Console accordingly. Another cause can be using both AppKey and NwkKey for devices configured as LoRaWAN v1.0.x, where the Network Server will consider the device as capable for LoRaWAN v1.1. The configured NwkKey will be used for calculating the MIC and session key derivation in {{% tts %}} instead of AppKey, while the device will be using AppKey, causing the aforementioned error. You can use the command below to unset the NwkKey for the device:
+
+    ```bash
+    ttn-lw-cli end-devices set --application-id <app-id> --device-id <dev-id> --unset root-keys.nwk-key
+    ```
+
     - **Uplink channel not found** error in the gateway events: Indicates there is a mismatch of the frequency plans. Double check frequency plan settings in your end device and gateways (they must be the same LoRaWAN band)
     - **DevNonce has already been used** error in the device events: Indicates a duplicate use of Devnonce. Generally happens when the device has sent too many unsuccessful Join Requests
     - **DevNonce is too small** error in the device events: If the device is using LoRaWAN MAC version 1.1 or 1.0.4, this error occurs when DevNonce is not being incremented, so the Join Server ignores Join Requests with the same or lower DevNonce value comparing to the previous one. Contact your device's manufacturer to find out the correct LoRaWAN MAC and PHY versions, and configure the device in {{% tts %}} accordingly
@@ -54,6 +59,11 @@ If your device uses ABP, it is also possible that it is sending join requests on
 - Check for the errors and solutions listed above
 - If the Network Server is processing Join Requests and scheduling Join Accepts, check the gateway events and see whether the Join Accept downlink messages are being scheduled by the gateway
 - If you see any deviation in scheduling Join Accept downlinks from the gateway, follow the [Troubleshooting Gateways]({{< ref "/gateways/troubleshooting" >}})
+- Did you schedule a command to reset your device as a confirmed downlink? If yes, the downlink confirmation will never arrive. You should always schedule the reset command as an unconfirmed downlink. However, if your device is already affected, use the **Reset session and MAC state** option under **Network layer** in your device's settings, then manually re-join the device.
+
+## I see the "The LoRaWAN version `<mac-version>` does not support the `<frequency-plan-id>` frequency plan. Please choose a different MAC version or frequency plan" error while registering a device in {{% tts %}}.
+
+{{% tts %}} returns this error when the frequency plan that you are using is not supported by the LoRaWAN MAC and PHY versions you specified. We suggest you to check your device's datasheet or user manual, or to contact your device manufacturer to find out correct MAC and PHY versions. You can also find your Regional Parameters document on the [LoRa Alliance site](https://lora-alliance.org/search-site/) and find out which frequency plans are supported by it.
 
 ## No downlinks are reaching my device. What do I do?
 
@@ -104,11 +114,13 @@ We also advise to double check your network connection. If the connection betwee
 - Cluster latencies
 - Gateway level issues
 
-## Scheduling a downlink from {{% tts %}} Console is disabled with a warning `Simulation is disabled for devices that skip paload crypto`.
+## Scheduling a downlink from {{% tts %}} Console is disabled with a warning "Simulation is disabled for devices that skip payload crypto".
 
 When using the [AWS IoT integration]({{< ref "/integrations/cloud-integrations/aws-iot" >}}) with the **End to End Encryption** option enabled, scheduling downlink messages from {{% tts %}} Console is restricted by default.
 
 When this option is enabled, encryption and decryption at the Application Server is disabled, i.e. the `skip_payload_crypto` field for the end device is enabled on the application level. The downlinks are expected to be scheduled from the AWS IoT, and not from the {{% tts %}}.
+
+Read more about skipping payload crypto option on an [application level]({{< ref "/integrations/adding-applications#payload-encryption-and-decryption" >}}) or on a [device level]({{< ref "/devices/adding-devices#application-layer-settings" >}}).
 
 ## {{% tts %}} intermittently receives uplinks from my device, but with the FCnt gap.
 
@@ -147,3 +159,15 @@ Here are some common causes of a delay in scheduling downlinks for Class C devic
 - **The `Supports class C` option not enabled in device settings**: If this option is not enabled, {{% tts %}} treats the device as a class A device, so it schedules a downlink only after receiving an uplink. Find and enable this option under **General settings &#8594; Network layer &#8594; LoRaWAN class capabilities**, then trigger your device for a re-join in order for changes to have an effect.
 - **Device not responding immediately on a confirmed downlink or a MAC command**: Your device might be configured to respond to confirmed downlinks and/or MAC commands with the next uplink, instead of immediately. All downlinks scheduled after the confirmed downlink or a MAC command will be in a pending state until the device responds with an ACK or a MAC answer. You can check pending requests with `ttn-lw-cli end-devices get --application-id <app-id> --device-id <dev-id> --mac-state > <dev-id>.mac-state.txt`. If the device does not respond in the `class-c-timeout` interval (5 minutes by default), all pending downlinks will be discarded. In this case, you need to configure your device to immediately answer confirmed downlinks and MAC commands.
 - **Downlink failure**: If you have already addressed the above mentioned cases, but you are still experiencing a delay in scheduling downlinks, the downlinks might not be reaching the device. Please check your end device's debug logs, and your gateway's packet forwarder logs for errors. Find the common gateway-related issues and solutions in the [Troubleshooting Gateways]({{< ref "/gateways/troubleshooting" >}}) section.
+
+## I see downlinks being sent after every uplink message, but I did not schedule any. What are those downlinks?
+
+One of the possible causes might be that your end device is not answering MAC commands sent by the Network Server. The Network Server will continuously re-send those MAC commands, until the end device answers them. The recommended practice is to contact device manufacturer to resolve the issue. 
+
+## I changed my device's frequency plan in the Console and now I am facing errors.
+
+The Network Server performs a lot of checks to ensure that the end device MAC state and MAC settings are valid with respect to the frequency plan, so that might be the source of the errors you are facing. Updating device's frequency plan is not supported in {{% tts %}} and should always be achieved by re-creating the end device in the Console.
+
+## I see a "no decoder defined for codec {codec_id}" error after very downlink message.
+
+This error indicates that your end device was added from the [Device Repository](https://github.com/TheThingsNetwork/lorawan-devices), but in the device's codec file there are no `downlinkEncoder` and `downlinkDecoder` functions defined. To fix this, you can reach out to the device manufacturer to update your device's codec file in the Device Repository. Alternatively, you can define the [payload formatter]({{< ref "/integrations/payload-formatters" >}}) on your own.

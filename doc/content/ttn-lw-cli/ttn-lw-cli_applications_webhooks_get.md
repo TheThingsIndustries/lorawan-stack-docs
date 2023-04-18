@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications webhooks get"
 slug: ttn-lw-cli_applications_webhooks_get
-type: "commands"
 ---
 
 ## ttn-lw-cli applications webhooks get

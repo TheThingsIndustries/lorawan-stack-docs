@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli clients list"
 slug: ttn-lw-cli_clients_list
-type: "commands"
 ---
 
 ## ttn-lw-cli clients list
@@ -24,18 +23,19 @@ ttn-lw-cli clients list [flags]
       --all                                                           select all client fields
       --attributes                                                    select the attributes field
       --contact-info                                                  select the contact_info field
-      --deleted                                                       return recently deleted
+      --deleted                                                       
       --deleted-at                                                    select the deleted_at field
       --description                                                   select the description field
       --endorsed                                                      select the endorsed field
+      --field-mask strings                                            
       --grants                                                        select the grants field
   -h, --help                                                          help for list
-      --limit uint32                                                  maximum number of results to get (default 50)
+      --limit uint32                                                  
       --logout-redirect-uris                                          select the logout_redirect_uris field
       --name                                                          select the name field
-      --order string                                                  order by this field
+      --order string                                                  
       --organization-id string                                        
-      --page uint32                                                   results page number (default 1)
+      --page uint32                                                   
       --redirect-uris                                                 select the redirect_uris field
       --rights                                                        select the rights field
       --secret                                                        select the secret field

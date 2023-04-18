@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli gateways search"
 slug: ttn-lw-cli_gateways_search
-type: "commands"
 ---
 
 ## ttn-lw-cli gateways search
@@ -24,7 +23,7 @@ ttn-lw-cli gateways search [flags]
       --all                                                           select all gateway fields
       --antennas                                                      select the antennas field
       --attributes                                                    select the attributes field
-      --attributes-contain stringToString                             (key=value) (default [])
+      --attributes-contain stringToString                             
       --auto-update                                                   select the auto_update field
       --claim-authentication-code                                     select the claim_authentication_code field and all allowed sub-fields
       --claim-authentication-code.secret                              select the claim_authentication_code.secret field and all allowed sub-fields
@@ -33,7 +32,7 @@ ttn-lw-cli gateways search [flags]
       --claim-authentication-code.valid-from                          select the claim_authentication_code.valid_from field
       --claim-authentication-code.valid-to                            select the claim_authentication_code.valid_to field
       --contact-info                                                  select the contact_info field
-      --deleted                                                       return recently deleted
+      --deleted                                                       
       --deleted-at                                                    select the deleted_at field
       --description                                                   select the description field
       --description-contains string                                   
@@ -41,6 +40,7 @@ ttn-lw-cli gateways search [flags]
       --downlink-path-constraint                                      select the downlink_path_constraint field
       --enforce-duty-cycle                                            select the enforce_duty_cycle field
       --eui-contains string                                           
+      --field-mask strings                                            
       --frequency-plan-id                                             select the frequency_plan_id field
       --frequency-plan-ids                                            select the frequency_plan_ids field
       --gateway-server-address                                        select the gateway_server_address field
@@ -49,14 +49,15 @@ ttn-lw-cli gateways search [flags]
       --lbs-lns-secret                                                select the lbs_lns_secret field and all allowed sub-fields
       --lbs-lns-secret.key-id                                         select the lbs_lns_secret.key_id field
       --lbs-lns-secret.value                                          select the lbs_lns_secret.value field
-      --limit uint32                                                  maximum number of results to get (default 50)
+      --limit uint32                                                  
       --location-public                                               select the location_public field
       --lrfhss                                                        select the lrfhss field and all allowed sub-fields
       --lrfhss.supported                                              select the lrfhss.supported field
       --name                                                          select the name field
       --name-contains string                                          
-      --order string                                                  order by this field
-      --page uint32                                                   results page number (default 1)
+      --order string                                                  
+      --page uint32                                                   
+      --query string                                                  
       --require-authenticated-connection                              select the require_authenticated_connection field
       --schedule-anytime-delay                                        select the schedule_anytime_delay field
       --schedule-downlink-late                                        select the schedule_downlink_late field

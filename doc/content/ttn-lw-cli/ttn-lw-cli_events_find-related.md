@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli events find-related"
 slug: ttn-lw-cli_events_find-related
-type: "commands"
 ---
 
 ## ttn-lw-cli events find-related

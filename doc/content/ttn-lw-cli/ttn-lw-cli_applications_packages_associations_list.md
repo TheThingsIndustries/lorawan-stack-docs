@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications packages associations list"
 slug: ttn-lw-cli_applications_packages_associations_list
-type: "commands"
 ---
 
 ## ttn-lw-cli applications packages associations list
@@ -17,7 +16,7 @@ ttn-lw-cli applications packages associations list [application-id] [device-id] 
 ```
       --all                     select all application package association fields
       --application-id string   
-      --data                    select the data field and all allowed sub-fields
+      --data                    select the data field
       --dev-eui string          (hex)
       --device-id string        
   -h, --help                    help for list

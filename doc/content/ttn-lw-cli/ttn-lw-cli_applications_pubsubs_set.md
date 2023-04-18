@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications pubsubs set"
 slug: ttn-lw-cli_applications_pubsubs_set
-type: "commands"
 ---
 
 ## ttn-lw-cli applications pubsubs set
@@ -34,18 +33,19 @@ ttn-lw-cli applications pubsubs set [application-id] [pubsub-id] [flags]
       --provider.aws-iot.access-key.session-token string         
       --provider.aws-iot.assume-role.arn string                  
       --provider.aws-iot.assume-role.external-id string          
-      --provider.aws-iot.assume-role.session-duration duration   (1h2m3s)
+      --provider.aws-iot.assume-role.session-duration duration   
       --provider.aws-iot.deployment.default.stack-name string    
       --provider.aws-iot.endpoint-address string                 
       --provider.aws-iot.region string                           
       --provider.mqtt.client-id string                           
+      --provider.mqtt.headers stringToString                     
       --provider.mqtt.password string                            
-      --provider.mqtt.publish-qos string                         allowed values: AT_LEAST_ONCE, AT_MOST_ONCE, EXACTLY_ONCE
+      --provider.mqtt.publish-qos string                         allowed values: AT_MOST_ONCE, AT_LEAST_ONCE, EXACTLY_ONCE
       --provider.mqtt.server-url string                          
-      --provider.mqtt.subscribe-qos string                       allowed values: AT_LEAST_ONCE, AT_MOST_ONCE, EXACTLY_ONCE
-      --provider.mqtt.tls-ca string                              (hex)
-      --provider.mqtt.tls-client-cert string                     (hex)
-      --provider.mqtt.tls-client-key string                      (hex)
+      --provider.mqtt.subscribe-qos string                       allowed values: AT_MOST_ONCE, AT_LEAST_ONCE, EXACTLY_ONCE
+      --provider.mqtt.tls-ca bytesHex                            
+      --provider.mqtt.tls-client-cert bytesHex                   
+      --provider.mqtt.tls-client-key bytesHex                    
       --provider.mqtt.use-tls                                    
       --provider.mqtt.username string                            
       --provider.nats.server-url string                          

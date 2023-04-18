@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli clients collaborators delete"
 slug: ttn-lw-cli_clients_collaborators_delete
-type: "commands"
 ---
 
 ## ttn-lw-cli clients collaborators delete

@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli gateways delete"
 slug: ttn-lw-cli_gateways_delete
-type: "commands"
 ---
 
 ## ttn-lw-cli gateways delete

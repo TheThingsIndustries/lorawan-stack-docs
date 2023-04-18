@@ -24,7 +24,7 @@ Some of the advantages of {{% lbs %}} over the legacy UDP Packet Forwarder are:
 
 ## Authentication
 
-{{% tts %}} supports [TLS server authentication and client token](https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/?url=authmodes.html). This requires a `*.trust` file and a `*.key` file. See the [LNS]({{< relref "lns" >}}) and [CUPS]({{< relref "cups" >}}) sections for information about getting these files. {{% tts %}} does not support TLS client authentication and does not provide a `*.cert` file.
+{{% tts %}} supports [TLS server authentication and client token](https://lora-developers.semtech.com/build/software/lora-basics/lora-basics-for-gateways/?url=authmodes.html). This requires a `*.trust` file and a `*.key` file. See the [LNS]({{< relref "lns" >}}) and [CUPS]({{< relref "cups" >}}) sections for information about getting these files. {{% tts %}} does not support TLS client authentication and does not provide a `*.cert` file.
 
 ## LNS and CUPS Sub Protocols
 

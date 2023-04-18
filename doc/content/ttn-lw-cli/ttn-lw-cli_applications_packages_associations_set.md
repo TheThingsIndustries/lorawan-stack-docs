@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications packages associations set"
 slug: ttn-lw-cli_applications_packages_associations_set
-type: "commands"
 ---
 
 ## ttn-lw-cli applications packages associations set
@@ -18,7 +17,7 @@ ttn-lw-cli applications packages associations set [application-id] [device-id] [
       --application-id string    
       --data-local-file string   package data (local file name)
       --device-id string         
-      --f-port uint8             
+      --f-port uint32            
   -h, --help                     help for set
       --package-name string      
 ```

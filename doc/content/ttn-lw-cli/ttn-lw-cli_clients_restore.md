@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli clients restore"
 slug: ttn-lw-cli_clients_restore
-type: "commands"
 ---
 
 ## ttn-lw-cli clients restore

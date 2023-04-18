@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications rights"
 slug: ttn-lw-cli_applications_rights
-type: "commands"
 ---
 
 ## ttn-lw-cli applications rights

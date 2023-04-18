@@ -40,6 +40,8 @@ The Identity Server's `EndDeviceRegistry` is the first service, where end device
 
 {{< proto/method service="EndDeviceRegistry" method="Delete" >}}
 
+{{< proto/method service="EndDeviceRegistry" method="BatchUpdateLastSeen" >}}
+
 ## The `JsEndDeviceRegistry` service
 
 OTAA devices are registered in the Join Server's `JsEndDeviceRegistry`. The following [EndDevice fields](#message:EndDevice) are registered in this registry:
@@ -123,11 +125,45 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 ## The `EndDeviceClaimingServer` service
 
-{{< proto/method service="EndDeviceClaimingServer" method="Claim" >}}
-
 {{< proto/method service="EndDeviceClaimingServer" method="AuthorizeApplication" >}}
 
+{{< proto/method service="EndDeviceClaimingServer" method="Claim" >}}
+
+{{< proto/method service="EndDeviceClaimingServer" method="GetClaimStatus" >}}
+
+{{< proto/method service="EndDeviceClaimingServer" method="GetInfoByJoinEUI" >}}
+
 {{< proto/method service="EndDeviceClaimingServer" method="UnauthorizeApplication" >}}
+
+{{< proto/method service="EndDeviceClaimingServer" method="Unclaim" >}}
+
+## The `DeviceRepository` service
+
+{{< proto/method service="DeviceRepository" method="ListBrands" >}}
+
+{{< proto/method service="DeviceRepository" method="GetBrand" >}}
+
+{{< proto/method service="DeviceRepository" method="ListModels" >}}
+
+{{< proto/method service="DeviceRepository" method="GetModel" >}}
+
+{{< proto/method service="DeviceRepository" method="GetTemplate" >}}
+
+{{< proto/method service="DeviceRepository" method="GetUplinkDecoder" >}}
+
+{{< proto/method service="DeviceRepository" method="GetDownlinkDecoder" >}}
+
+{{< proto/method service="DeviceRepository" method="GetDownlinkEncoder" >}}
+
+## The `EndDeviceQRCodeGenerator` service
+
+{{< proto/method service="EndDeviceQRCodeGenerator" method="GetFormat" >}}
+
+{{< proto/method service="EndDeviceQRCodeGenerator" method="ListFormats" >}}
+
+{{< proto/method service="EndDeviceQRCodeGenerator" method="Generate" >}}
+
+{{< proto/method service="EndDeviceQRCodeGenerator" method="Parse" >}}
 
 ## Messages
 
@@ -141,11 +177,23 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="ADRAckDelayExponentValue" >}}
 
+{{< proto/message message="ADRSettings" >}}
+
+{{< proto/message message="ADRSettings.StaticMode" >}}
+
+{{< proto/message message="ADRSettings.DynamicMode" >}}
+
+{{< proto/message message="ADRSettings.DisabledMode" >}}
+
 {{< proto/message message="AggregatedDutyCycleValue" >}}
 
 {{< proto/message message="AuthorizeApplicationRequest" >}}
 
 {{< proto/message message="BoolValue" >}}
+
+{{< proto/message message="BatchUpdateEndDeviceLastSeenRequest.EndDeviceLastSeenUpdate" >}}
+
+{{< proto/message message="BatchUpdateEndDeviceLastSeenRequest" >}}
 
 {{< proto/message message="CreateEndDeviceRequest" >}}
 
@@ -193,13 +241,43 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="GatewayAntennaIdentifiers" >}}
 
+{{< proto/message message="GetClaimStatusResponse" >}}
+
+{{< proto/message message="GetClaimStatusResponse.VendorSpecific" >}}
+
+{{< proto/message message="GetInfoByJoinEUIRequest" >}}
+
+{{< proto/message message="GetInfoByJoinEUIResponse" >}}
+
+{{< proto/message message="GetEndDeviceModelRequest" >}}
+
+{{< proto/message message="GetEndDeviceBrandRequest" >}}
+
 {{< proto/message message="GetEndDeviceRequest" >}}
+
+{{< proto/message message="GetQRCodeFormatRequest" >}}
+
+{{< proto/message message="GenerateEndDeviceQRCodeRequest" >}}
+
+{{< proto/message message="GenerateEndDeviceQRCodeRequest.Image" >}}
+
+{{< proto/message message="ParseEndDeviceQRCodeRequest" >}}
+
+{{< proto/message message="GetTemplateRequest" >}}
+
+{{< proto/message message="GetTemplateRequest.EndDeviceProfileIdentifiers" >}}
+
+{{< proto/message message="GetPayloadFormatterRequest" >}}
 
 {{< proto/message message="JoinRequestPayload" >}}
 
 {{< proto/message message="JoinAcceptPayload" >}}
 
 {{< proto/message message="KeyEnvelope" >}}
+
+{{< proto/message message="ListEndDeviceBrandsRequest" >}}
+
+{{< proto/message message="ListEndDeviceModelsRequest" >}}
 
 {{< proto/message message="ListEndDevicesRequest" >}}
 

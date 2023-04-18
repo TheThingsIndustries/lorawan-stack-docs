@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli gateways claim unauthorize"
 slug: ttn-lw-cli_gateways_claim_unauthorize
-type: "commands"
 ---
 
 ## ttn-lw-cli gateways claim unauthorize

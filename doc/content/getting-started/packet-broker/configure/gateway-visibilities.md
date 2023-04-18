@@ -10,17 +10,28 @@ distributions:
 new_in_version: 3.15.1
 ---
 
-Gateway visibility configuration allows network administrators to configure who sees which gateway-related information. Having gateways listed publicly on the map can help discovering partner networks, but it may also lead to privacy concerns. Therefore, Packet Broker allows configuring gateway visibility with fine-grained settings. [Learn more about gateway visibility]({{< relref "../#gateway-visibilities" >}}).
+Gateway visibility configuration allows network administrators to configure who sees which gateway-related information. Having gateways listed publicly on the map can help discovering partner networks, but it may also lead to privacy concerns. Therefore, Packet Broker allows configuring gateway visibility with fine-grained settings. [Learn more about gateway visibility]({{< ref "/getting-started/packet-broker#gateway-visibility-settings" >}}).
 
 <!-- more -->
 
 {{< note >}}{{% tts %}} currently only allows configuring the default gateway visibility. Configuring visibility per Home Network is not yet supported.{{< /note >}}
 
-{{< cli-only >}}
+## Configure Default Gateway Visibility
 
-### Configure Default Gateway Visibility
+{{< tabs/container "Console" "CLI" >}}
 
-#### Get Default Gateway Visibility
+{{< tabs/tab "Console" >}}
+
+In the Packer Broker settings page, navigate to the **Default gateway visibility** tab to control what information of your gateways will be publicly visible.
+
+{{< figure src="../pb-gw-visibility.png" alt="Default gateway visibility" >}}
+
+{{< /tabs/tab >}}
+
+{{< tabs/tab "CLI" >}}
+
+### Get Default Gateway Visibility
+
 The default gateway visibility defines rules for all Home Networks if there is no specific gateway visibility for a Home Network.
 
 Use the following command in your terminal to get the default routing policy:
@@ -53,7 +64,7 @@ In the following example, all gateway visibility configuration fields are enable
 
 </details>
 
-#### Set Default Gateway Visibility
+### Set Default Gateway Visibility
 
 To set the default gateway visibility and enable all fields:
 
@@ -63,7 +74,7 @@ ttn-lw-cli packetbroker home-networks gateway-visibilities set default --all
 
 To customize, see [Flags]({{< relref "#flags" >}}) below.
 
-#### Delete Default Gateway Visibility
+### Delete Default Gateway Visibility
 
 To delete the default gateway visibility:
 
@@ -71,7 +82,7 @@ To delete the default gateway visibility:
 ttn-lw-cli packetbroker home-networks gateway-visibilities delete default
 ```
 
-#### Flags {#flags}
+### Flags {#flags}
 
 When setting gateway visibility, you can specify a combination of the following flags:
 
@@ -86,3 +97,7 @@ Flag | Meaning
 `--status` | Enable online/offline status
 `--frequency-plan` | Enable region and channel plan with frequencies that the gateway uses
 `--packet-rates` | Enable receive and transmission packet rates
+
+{{< /tabs/tab >}}
+
+{{< /tabs/container >}}

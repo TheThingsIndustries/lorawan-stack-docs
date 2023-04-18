@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli users sessions list"
 slug: ttn-lw-cli_users_sessions_list
-type: "commands"
 ---
 
 ## ttn-lw-cli users sessions list

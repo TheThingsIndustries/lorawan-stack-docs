@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications list"
 slug: ttn-lw-cli_applications_list
-type: "commands"
 ---
 
 ## ttn-lw-cli applications list
@@ -22,18 +21,22 @@ ttn-lw-cli applications list [flags]
       --administrative-contact.ids.user-ids.email                     select the administrative_contact.ids.user_ids.email field
       --administrative-contact.ids.user-ids.user-id                   select the administrative_contact.ids.user_ids.user_id field
       --all                                                           select all application fields
+      --application-server-address                                    select the application_server_address field
       --attributes                                                    select the attributes field
       --contact-info                                                  select the contact_info field
-      --deleted                                                       return recently deleted
+      --deleted                                                       
       --deleted-at                                                    select the deleted_at field
       --description                                                   select the description field
       --dev-eui-counter                                               select the dev_eui_counter field
+      --field-mask strings                                            
   -h, --help                                                          help for list
-      --limit uint32                                                  maximum number of results to get (default 50)
+      --join-server-address                                           select the join_server_address field
+      --limit uint32                                                  
       --name                                                          select the name field
-      --order string                                                  order by this field
+      --network-server-address                                        select the network_server_address field
+      --order string                                                  
       --organization-id string                                        
-      --page uint32                                                   results page number (default 1)
+      --page uint32                                                   
       --technical-contact                                             select the technical_contact field and all allowed sub-fields
       --technical-contact.ids.organization-ids                        select the technical_contact.ids.organization_ids field and all allowed sub-fields
       --technical-contact.ids.organization-ids.organization-id        select the technical_contact.ids.organization_ids.organization_id field

@@ -128,6 +128,47 @@ Once complete, make sure to unauthorize the gateway to prevent further claiming.
 ttn-lw-cli gateways claim unauthorize <gateway-id>
 ```
 
+## Using The Things Indoor Gateway with Different LNS
+
+Once {{% ttig %}} is claimed on a {{% tts %}} cluster, the following steps will allow it to be used with a different LNS Server.
+
+### Connecting to an LNS on a Local Network
+
+If you want to connect your gateway to an LNS on a local network (for example if you have {{% tts %}} installed for debugging on your laptop), use the steps below.
+
+{{< note >}} In order to connect your {{% ttig %}} to a local {{% tts %}} network, the [`gs.basic-station.allow-unauthenticated` option]({{< ref "/reference/configuration/gateway-server#security-options" >}}) must be set to `true` in [{{% tts %}} configuration]({{< ref "/getting-started/installation/configuration#understanding-the-things-stack-configuration" >}}). {{</ note >}}
+
+First, register the {{% ttig %}} on your target LNS by following [the instructions]({{< ref "/gateways/adding-gateways" >}}).
+
+In order for this to work, both the {{% ttig %}} and the local machine where the LNS is running must be connected to the same WiFi access point.
+
+Find the IP address of the machine on which the LNS is installed. You can do this either on the network page of the settings of your operating system or use a command line tool like `ifconfig`.
+
+On the {{% tts %}} cluster where the gateway is claimed, head over to the **General settings** tab on the navigation panel of the gateway.
+
+Set the **Gateway Server Address** in the format `ws://<ip-address>:<port>`. Here, the port is the plain text web socket port that is exposed by the LNS. For example, if you are using a locally installed {{% tts %}} instance and the machine's IP address is `192.168.2.2`, then Gateway Server address would be `ws://192.168.2.2:1887`. If you are using a different port, then set that in the address.
+
+Now, clear the **LoRa Basics Station LNS Authentication Key** value and press **Save changes**.
+
+Restart the {{% ttig %}} by removing and reinserting the power supply and if your configuration is correct, your {{% ttig %}} will be connected to the LNS on the local machine.
+
+{{< note >}} Connecting the {{% ttig %}} with TLS and/or with an authentication key to a local machine is not easy since that requires setting up local certificates and a DNS resolver. This is out of the scope of the documentation and hence is not explained here. {{</ note >}}
+
+### Connecting to a Remote LNS
+
+If you want to connect your gateway to a remotely hosted LNS, use the steps below.
+
+First, register the {{% ttig %}} on your target LNS. If the target LNS requires authenticated connections, then create an auth token for the gateway. If the target LNS is a {{% tts %}} instance, then create an API Key with Link Gateway Rights. Follow the instructions for [Creating a Gateway API key]({{< ref "/gateways/adding-gateways#create-gateway-api-key" >}}).
+
+On the {{% tts %}} cluster where the gateway is claimed, head over to the **General settings** tab on the navigation panel of the gateway.
+
+Set the **Gateway Server Address** to the DNS of the target LNS. For example, if the LNS is hosted at `thethings.example.com` and is using port `8887` for WebSocket traffic with TLS, then the address would be `thethings.example.com:8887`.
+
+If the target LNS requires authenticated connections, set the **LoRa Basics Station LNS Authentication Key** field with the auth token for the gateway on the target LNS and press **Save changes**.
+
+Either restart the {{% ttig %}} or wait upto 24 hours for it to reconnect to the CUPS server. If your configuration is correct, your {{% ttig %}} will be connected to the target LNS.
+
+{{< note >}} {{% tts %}} automatically fetches the server certificate chain of the target LNS. This chain should be a standard certificate chain trusted by most browsers. At the moment, we don't support using self-signed custom certificates in this mode of operation.  {{</ note >}}
 
 ## Troubleshooting
 
@@ -145,7 +186,7 @@ If you have already registered/claimed your {{% ttig %}} in {{% tts %}} cluster 
 
 This means that either you or another user has already used the Gateway ID. Please choose another ID and try again.
 
-### Gateway shows status `Disconnected` and the LED status is solid green. What do I do?
+#### Gateway shows status `Disconnected` and the LED status is solid green. What do I do?
 
 Reboot your {{% ttig %}}. If the gateway status is still `Disconnected` after a reboot, try performing a factory reset and reconfiguring the gateway.
 

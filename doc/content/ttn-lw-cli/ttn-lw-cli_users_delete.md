@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli users delete"
 slug: ttn-lw-cli_users_delete
-type: "commands"
 ---
 
 ## ttn-lw-cli users delete

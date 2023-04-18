@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications collaborators delete"
 slug: ttn-lw-cli_applications_collaborators_delete
-type: "commands"
 ---
 
 ## ttn-lw-cli applications collaborators delete

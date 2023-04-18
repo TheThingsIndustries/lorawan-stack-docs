@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli packetbroker networks"
 slug: ttn-lw-cli_packetbroker_networks
-type: "commands"
 ---
 
 ## ttn-lw-cli packetbroker networks

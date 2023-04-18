@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli end-devices downlink push"
 slug: ttn-lw-cli_end-devices_downlink_push
-type: "commands"
 ---
 
 ## ttn-lw-cli end-devices downlink push
@@ -15,21 +14,21 @@ ttn-lw-cli end-devices downlink push [application-id] [device-id] [flags]
 ### Options
 
 ```
-      --application-id string              
-      --class-b-c.absolute-time string     (YYYY-MM-DDTHH:MM:SSZ)
-      --class-b-c.gateways strings         
-      --confirmed                          
-      --correlation-ids strings            
-      --decoded-payload-warnings strings   
-      --dev-eui string                     (hex)
-      --device-id string                   
-      --f-cnt uint32                       
-      --f-port uint32                      
-      --frm-payload string                 (hex)
-  -h, --help                               help for push
-      --join-eui string                    (hex)
-      --priority string                    allowed values: ABOVE_NORMAL, BELOW_NORMAL, HIGH, HIGHEST, LOW, LOWEST, NORMAL
-      --session-key-id string              (hex)
+      --application-id string               
+      --class-b-c.absolute-time timestamp   
+      --class-b-c.gateways strings          
+      --confirmed                           
+      --correlation-ids strings             
+      --decoded-payload-warnings strings    
+      --dev-eui string                      (hex)
+      --device-id string                    
+      --f-cnt uint32                        
+      --f-port uint32                       
+      --frm-payload bytesHex                
+  -h, --help                                help for push
+      --join-eui string                     (hex)
+      --priority string                     allowed values: LOWEST, LOW, BELOW_NORMAL, NORMAL, ABOVE_NORMAL, HIGH, HIGHEST
+      --session-key-id bytesHex             
 ```
 
 ### Options inherited from parent commands

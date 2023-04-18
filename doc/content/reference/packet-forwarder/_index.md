@@ -14,5 +14,5 @@ The following packet forwarders are **not** supported:
 
 - [The Things Network Packet Forwarder](https://github.com/TheThingsNetwork/packet_forwarder)
 - [Kersing Packet Forwarder](https://github.com/kersing/packet_forwarder)
-- [Chirpstack Gateway Bridge](https://github.com/TheThingsNetwork/packet_forwarder)
+- [Chirpstack Gateway Bridge](https://www.chirpstack.io/gateway-bridge/)
 

@@ -50,6 +50,7 @@ ttn-lw-cli end-devices set test-app eui-0004a310001ff9e0 \
   --lorawan-phy-version 1.0.2-b \
   --frequency-plan-id EU_863_870 \
   --supports-join \
+  --unset version_ids \
   --touch
 ```
 

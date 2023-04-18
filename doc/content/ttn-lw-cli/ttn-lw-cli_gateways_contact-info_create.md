@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli gateways contact-info create"
 slug: ttn-lw-cli_gateways_contact-info_create
-type: "commands"
 ---
 
 ## ttn-lw-cli gateways contact-info create

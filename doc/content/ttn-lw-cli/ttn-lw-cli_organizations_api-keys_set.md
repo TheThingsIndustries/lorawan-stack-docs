@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli organizations api-keys set"
 slug: ttn-lw-cli_organizations_api-keys_set
-type: "commands"
 ---
 
 ## ttn-lw-cli organizations api-keys set

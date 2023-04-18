@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli packetbroker deregister"
 slug: ttn-lw-cli_packetbroker_deregister
-type: "commands"
 ---
 
 ## ttn-lw-cli packetbroker deregister

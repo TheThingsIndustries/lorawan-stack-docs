@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli tenants create"
 slug: ttn-lw-cli_tenants_create
-type: "commands"
 ---
 
 ## ttn-lw-cli tenants create
@@ -15,9 +14,9 @@ ttn-lw-cli tenants create [tenant-id] [flags]
 ### Options
 
 ```
-      --attributes strings                                                                              key=value
+      --attributes stringToString                                                                       
       --billing-identifiers.billing-id string                                                           
-      --billing.counting.end-devices int32                                                              
+      --billing.counting.end-devices string                                                             allowed values: ALL, ONLY_ACTIVATED
       --billing.provider.aws-saas-marketplace.customer-identifier string                                
       --billing.provider.aws-saas-marketplace.product-code string                                       
       --billing.provider.stripe.customer-id string                                                      
@@ -33,7 +32,7 @@ ttn-lw-cli tenants create [tenant-id] [flags]
       --configuration.default-cluster.is.user-registration.contact-info-validation.required             
       --configuration.default-cluster.is.user-registration.enabled                                      
       --configuration.default-cluster.is.user-registration.invitation.required                          
-      --configuration.default-cluster.is.user-registration.invitation.token-ttl duration                (1h2m3s)
+      --configuration.default-cluster.is.user-registration.invitation.token-ttl duration                
       --configuration.default-cluster.is.user-registration.password-requirements.max-length uint32      
       --configuration.default-cluster.is.user-registration.password-requirements.min-digits uint32      
       --configuration.default-cluster.is.user-registration.password-requirements.min-length uint32      
@@ -46,8 +45,8 @@ ttn-lw-cli tenants create [tenant-id] [flags]
       --configuration.default-cluster.is.user-rights.update-name                                        
       --configuration.default-cluster.is.user-rights.update-primary-email-address                       
       --configuration.default-cluster.js.join-eui-prefixes strings                                      
-      --configuration.default-cluster.ns.cooldown-window duration                                       (1h2m3s)
-      --configuration.default-cluster.ns.deduplication-window duration                                  (1h2m3s)
+      --configuration.default-cluster.ns.cooldown-window duration                                       
+      --configuration.default-cluster.ns.deduplication-window duration                                  
       --configuration.default-cluster.ns.dev-addr-prefixes strings                                      
       --configuration.default-cluster.ui.branding-base-url string                                       
       --configuration.pb.listed                                                                         
@@ -55,23 +54,16 @@ ttn-lw-cli tenants create [tenant-id] [flags]
   -h, --help                                                                                            help for create
       --initial-user                                                                                    create initial tenant user
       --initial-user.admin                                                                              
-      --initial-user.created-at string                                                                  (YYYY-MM-DDTHH:MM:SSZ)
-      --initial-user.deleted-at string                                                                  (YYYY-MM-DDTHH:MM:SSZ)
+      --initial-user.attributes stringToString                                                          
       --initial-user.description string                                                                 
-      --initial-user.ids.email string                                                                   
-      --initial-user.ids.user-id string                                                                 
       --initial-user.name string                                                                        
       --initial-user.password string                                                                    
-      --initial-user.password-updated-at string                                                         (YYYY-MM-DDTHH:MM:SSZ)
       --initial-user.primary-email-address string                                                       
-      --initial-user.primary-email-address-validated-at string                                          (YYYY-MM-DDTHH:MM:SSZ)
+      --initial-user.primary-email-address-validated-at timestamp                                       
       --initial-user.require-password-update                                                            
-      --initial-user.state string                                                                       allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED (default "STATE_APPROVED")
+      --initial-user.state string                                                                       allowed values: STATE_REQUESTED, STATE_APPROVED, STATE_REJECTED, STATE_FLAGGED, STATE_SUSPENDED
       --initial-user.state-description string                                                           
       --initial-user.temporary-password string                                                          
-      --initial-user.temporary-password-created-at string                                               (YYYY-MM-DDTHH:MM:SSZ)
-      --initial-user.temporary-password-expires-at string                                               (YYYY-MM-DDTHH:MM:SSZ)
-      --initial-user.updated-at string                                                                  (YYYY-MM-DDTHH:MM:SSZ)
       --max-applications uint                                                                           
       --max-clients uint                                                                                
       --max-end-devices uint                                                                            
@@ -79,7 +71,7 @@ ttn-lw-cli tenants create [tenant-id] [flags]
       --max-organizations uint                                                                          
       --max-users uint                                                                                  
       --name string                                                                                     
-      --state string                                                                                    allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED
+      --state string                                                                                    allowed values: STATE_REQUESTED, STATE_APPROVED, STATE_REJECTED, STATE_FLAGGED, STATE_SUSPENDED
       --state-description string                                                                        
       --tenant-id string                                                                                
 ```

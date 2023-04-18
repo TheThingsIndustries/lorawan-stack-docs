@@ -1,5 +1,6 @@
 ---
 title: "Email Templates"
+removed_in_version: "3.19"
 description: ""
 ---
 

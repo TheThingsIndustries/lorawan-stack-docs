@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli external-users create"
 slug: ttn-lw-cli_external-users_create
-type: "commands"
 ---
 
 ## ttn-lw-cli external-users create

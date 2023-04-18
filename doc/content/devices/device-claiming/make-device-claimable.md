@@ -82,4 +82,6 @@ This sets the secret claim authentication code to `ABCD`, that can be used in Ma
 
 You can use QR codes to make claiming really easy. The QR code includes the unique identifiers of the device as well as the secret claim authentication code.
 
-Learn how to [Generate QR Codes]({{< relref "../generate-qr-code#generate-qr-code-for-claiming" >}})
+Learn how to [Generate QR Codes]({{< relref "../generate-qr-code#generate-qr-code-for-claiming" >}}).
+
+After you generate a QR code for your device, you can finally claim it. See instructions on how to [Claim a device]({{< ref "/devices/device-claiming/claim-devices" >}}).

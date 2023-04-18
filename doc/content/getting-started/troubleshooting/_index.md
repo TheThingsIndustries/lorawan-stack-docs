@@ -1,7 +1,6 @@
 ---
 title: "Troubleshooting Getting Started"
 description: ""
-weight: -1
 ---
 
 This section provides help for common issues and frequently asked questions you may have when getting started with {{% tts %}}. 
@@ -22,6 +21,10 @@ See [user and organization management]({{< ref "getting-started/user-management"
 
 See [Troubleshooting Console]({{< ref "getting-started/console/troubleshooting" >}}).
 
+## Troubleshooting common CLI errors
+
+See [Troubleshooting CLI]({{< ref "getting-started/cli/troubleshooting" >}}).
+
 ## Troubleshooting common device errors
 
 See [Troubleshooting Devices]({{< ref "/devices/troubleshooting" >}}).
@@ -33,3 +36,7 @@ See [Troubleshooting Gateways]({{< ref "/gateways/troubleshooting" >}}).
 ## Tenant is not active
 
 For [{{% tts %}} Cloud]({{< ref "/getting-started/cloud-hosted" >}}) customers, this error indicates that the payment is probably overdue. If you are experiencing payment issues, please contact your Account Manager directly for further assistance.
+
+## How do I change the tenant ID of an existing tenant in {{% tts %}}?
+
+It is not possible to change tenant IDs. You can only create a new tenant with a desired tenant ID, transfer entities from the old tenant to the new one and then delete the old tenant.

@@ -2,9 +2,10 @@
 title: "The Things Stack Cloud"
 description: ""
 aliases: [/guides/cloud-hosted/cloud-hosted]
+weight: 6
 ---
 
-The Things Industries offers The Things Enterprise Stack as hosted software as a service (SaaS). 
+The Things Industries offers {{% tts %}} as hosted software as a service (SaaS). 
 
 This guide explains what that means and shows how to work with The Things Industries Cloud.
 

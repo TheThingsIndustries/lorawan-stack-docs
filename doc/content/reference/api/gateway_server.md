@@ -3,13 +3,25 @@ title: "Gateway Server APIs"
 description: ""
 ---
 
-## <a name="Gs">The `Gs` service</a>
+## The `Gs` service
 
 {{< proto/method service="Gs" method="GetGatewayConnectionStats" >}}
+
+## The `GatewayConfigurator` service
+
+{{< proto/method service="GatewayConfigurator" method="PullConfiguration" >}}
+
+## The `GatewayConfigurationService` service
+
+{{< proto/method service="GatewayConfigurationService" method="GetGatewayConfiguration" >}}
 
 ## Messages
 
 {{< proto/message message="GatewayIdentifiers" >}}
+
+{{< proto/message message="GetGatewayConfigurationRequest" >}}
+
+{{< proto/message message="GetGatewayConfigurationResponse" >}}
 
 {{< proto/message message="GatewayConnectionStats" >}}
 
@@ -20,6 +32,8 @@ description: ""
 {{< proto/message message="GatewayStatus" >}}
 
 {{< proto/message message="Location" >}}
+
+{{< proto/message message="PullGatewayConfigurationRequest" >}}
 
 ## Enums
 

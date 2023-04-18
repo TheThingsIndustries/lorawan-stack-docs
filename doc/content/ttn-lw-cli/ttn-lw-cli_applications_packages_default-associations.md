@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications packages default-associations"
 slug: ttn-lw-cli_applications_packages_default-associations
-type: "commands"
 ---
 
 ## ttn-lw-cli applications packages default-associations

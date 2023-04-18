@@ -1,7 +1,7 @@
 ---
 title: "Updating"
 description: ""
-weight: 3
+weight: 6
 ---
 
 This page describes the steps for updating {{% tts %}} on AWS ECS.
@@ -78,3 +78,5 @@ When updating {{% tts %}} to a newer version, the [Release Notes](https://www.th
 Migrations are performed using `migrate` commands. Those can be run similarly to `init` commands during initial deployment. 
 
 > See [Database Operations]({{< relref "../database-operations" >}}) for detailed info about migrations.
+
+{{< note >}} When updating from a version that is more than one minor behind your target version you need to perform all migrations mentioned in release notes between your current and target version. If a migration is mentioned more than one time, then you only need to apply it once, using the target version image. {{</ note >}}

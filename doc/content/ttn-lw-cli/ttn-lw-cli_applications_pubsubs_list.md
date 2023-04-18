@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications pubsubs list"
 slug: ttn-lw-cli_applications_pubsubs_list
-type: "commands"
 ---
 
 ## ttn-lw-cli applications pubsubs list

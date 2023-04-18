@@ -42,6 +42,5 @@ The Application Server stores
 
 {{% tts %}} uses your NwkSKey (NwkSEncKey in LoRaWAN 1.1) to decrypt LoRaWAN network-level payload. These session keys are only known to the Network Server and are never exposed downstream (to gateways) or upstream (to applications).
 
-{{% tts %}} uses the LoRaWAN AppSKey to decrypt the application payload, which is available in the [JSON message]({{< ref "reference/data-formats" >}}). It is also possible to skip payload decryption in {{% tts %}}, and perform decryption later in your application pipeline. Select **Skip payload encryption/decryption** when registering a device to do so.
+{{% tts %}} uses the LoRaWAN AppSKey to decrypt the application payload, which is available in the [JSON message]({{< ref "reference/data-formats" >}}). It is also possible to skip payload decryption in {{% tts %}}, and perform decryption later in your application pipeline. See instructions on how to do it on an [application level]({{< ref "/integrations/adding-applications#payload-encryption-and-decryption" >}}) or on a [device level]({{< ref "/devices/adding-devices#application-layer-settings" >}}).
 
-{{< figure src="skip-encryption.png" >}}

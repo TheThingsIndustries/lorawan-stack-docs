@@ -1,5 +1,6 @@
 ---
 title: "Available Templates"
+removed_in_version: "3.19"
 description: ""
 weight: 3
 ---

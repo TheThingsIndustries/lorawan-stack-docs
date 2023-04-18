@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli clients collaborators list"
 slug: ttn-lw-cli_clients_collaborators_list
-type: "commands"
 ---
 
 ## ttn-lw-cli clients collaborators list

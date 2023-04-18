@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications activation-settings set"
 slug: ttn-lw-cli_applications_activation-settings_set
-type: "commands"
 ---
 
 ## ttn-lw-cli applications activation-settings set
@@ -18,11 +17,11 @@ ttn-lw-cli applications activation-settings set [application-id] [flags]
       --application-id string          
       --application-server-id string   
   -h, --help                           help for set
-      --home-net-id string             (hex)
+      --home-net-id 3-bytes            
       --kek-label string               
-      --kek.encrypted-key string       (hex)
+      --kek.encrypted-key bytesHex     
       --kek.kek-label string           
-      --kek.key string                 (hex)
+      --kek.key 16-bytes               
 ```
 
 ### Options inherited from parent commands

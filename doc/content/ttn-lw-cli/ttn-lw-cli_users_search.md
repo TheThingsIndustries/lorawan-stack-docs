@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli users search"
 slug: ttn-lw-cli_users_search
-type: "commands"
 ---
 
 ## ttn-lw-cli users search
@@ -18,26 +17,28 @@ ttn-lw-cli users search [flags]
       --admin                                select the admin field
       --all                                  select all user fields
       --attributes                           select the attributes field
-      --attributes-contain stringToString    (key=value) (default [])
+      --attributes-contain stringToString    
       --contact-info                         select the contact_info field
-      --deleted                              return recently deleted
+      --deleted                              
       --deleted-at                           select the deleted_at field
       --description                          select the description field
       --description-contains string          
+      --field-mask strings                   
   -h, --help                                 help for search
       --id-contains string                   
-      --limit uint32                         maximum number of results to get (default 50)
+      --limit uint32                         
       --name                                 select the name field
       --name-contains string                 
-      --order string                         order by this field
-      --page uint32                          results page number (default 1)
+      --order string                         
+      --page uint32                          
       --password                             select the password field
       --password-updated-at                  select the password_updated_at field
       --primary-email-address                select the primary_email_address field
       --primary-email-address-validated-at   select the primary_email_address_validated_at field
-      --profile-picture                      select the profile_picture field
+      --profile-picture                      select the profile_picture field and all allowed sub-fields
+      --query string                         
       --require-password-update              select the require_password_update field
-      --state strings                        allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED
+      --state strings                        allowed values: STATE_REQUESTED, STATE_APPROVED, STATE_REJECTED, STATE_FLAGGED, STATE_SUSPENDED
       --state-description                    select the state_description field
       --temporary-password                   select the temporary_password field
       --temporary-password-created-at        select the temporary_password_created_at field

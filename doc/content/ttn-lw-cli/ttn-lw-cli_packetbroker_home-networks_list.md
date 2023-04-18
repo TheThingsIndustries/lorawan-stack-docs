@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli packetbroker home-networks list"
 slug: ttn-lw-cli_packetbroker_home-networks_list
-type: "commands"
 ---
 
 ## ttn-lw-cli packetbroker home-networks list

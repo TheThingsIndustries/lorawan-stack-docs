@@ -6,11 +6,18 @@ aliases:
   - "/integrations/peering"
   - "/reference/peering"
   - "/reference/packet-broker"
+weight: 10
 ---
 
 ## What is it?
 
-Packet Broker can be used to exchange traffic with other LoRaWAN networks to share coverage and improve the overall network performance.
+Packet Broker uses LoRaWAN peering to exchange traffic with other LoRaWAN networks to share coverage and improve the overall network performance.
+
+For a video explaining what LoRaWAN peering is, and how Packet Broker works, see [LoRaWAN Networks, Roaming and Peering in 5 minutes](https://youtu.be/TQImwfHCraM).
+
+<details><summary>Show video</summary>
+{{< youtube "TQImwfHCraM" >}}
+</details>
 
 ![Overview](overview.png)
 

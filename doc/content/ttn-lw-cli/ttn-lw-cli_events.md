@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli events"
 slug: ttn-lw-cli_events
-type: "commands"
 ---
 
 ## ttn-lw-cli events

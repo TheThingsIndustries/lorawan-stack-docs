@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli simulate application-uplink"
 slug: ttn-lw-cli_simulate_application-uplink
-type: "commands"
 ---
 
 ## ttn-lw-cli simulate application-uplink
@@ -30,12 +29,15 @@ ttn-lw-cli simulate application-uplink [application-id] [device-id] [flags]
   -h, --help                                                                  help for application-uplink
       --join-eui string                                                       (hex)
       --last-a-f-cnt-down uint32                                              
+      --network-ids.cluster-address string                                    
       --network-ids.cluster-id string                                         
       --network-ids.net-id string                                             (hex)
+      --network-ids.tenant-address string                                     
       --network-ids.tenant-id string                                          
       --received-at string                                                    (YYYY-MM-DDTHH:MM:SSZ)
       --session-key-id string                                                 (hex)
       --settings.coding-rate string                                           
+      --settings.concentrator-timestamp int                                   
       --settings.data-rate.modulation.fsk.bit-rate uint32                     
       --settings.data-rate.modulation.lora.bandwidth uint32                   
       --settings.data-rate.modulation.lora.spreading-factor uint32            
@@ -54,6 +56,9 @@ ttn-lw-cli simulate application-uplink [application-id] [device-id] [flags]
       --version-ids.firmware-version string                                   
       --version-ids.hardware-version string                                   
       --version-ids.model-id string                                           
+      --version-ids.serial-number string                                      
+      --version-ids.vendor-id uint32                                          
+      --version-ids.vendor-profile-id uint32                                  
 ```
 
 ### Options inherited from parent commands

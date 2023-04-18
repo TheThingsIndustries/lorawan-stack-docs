@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications link delete"
 slug: ttn-lw-cli_applications_link_delete
-type: "commands"
 ---
 
 ## ttn-lw-cli applications link delete

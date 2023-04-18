@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli users contact-info request-validation"
 slug: ttn-lw-cli_users_contact-info_request-validation
-type: "commands"
 ---
 
 ## ttn-lw-cli users contact-info request-validation
@@ -15,12 +14,12 @@ ttn-lw-cli users contact-info request-validation [user-id] [flags]
 ### Options
 
 ```
-      --contact-method string   allowed values: CONTACT_METHOD_EMAIL, CONTACT_METHOD_OTHER, CONTACT_METHOD_PHONE
-      --contact-type string     allowed values: CONTACT_TYPE_ABUSE, CONTACT_TYPE_BILLING, CONTACT_TYPE_OTHER, CONTACT_TYPE_TECHNICAL
-  -h, --help                    help for request-validation
-      --public                  
-      --validated-at string     (YYYY-MM-DDTHH:MM:SSZ)
-      --value string            
+      --contact-method string    allowed values: CONTACT_METHOD_OTHER, CONTACT_METHOD_EMAIL, CONTACT_METHOD_PHONE
+      --contact-type string      allowed values: CONTACT_TYPE_OTHER, CONTACT_TYPE_ABUSE, CONTACT_TYPE_BILLING, CONTACT_TYPE_TECHNICAL
+  -h, --help                     help for request-validation
+      --public                   
+      --validated-at timestamp   
+      --value string             
 ```
 
 ### Options inherited from parent commands
@@ -61,5 +60,5 @@ ttn-lw-cli users contact-info request-validation [user-id] [flags]
 
 ### SEE ALSO
 
-* [ttn-lw-cli users contact-info]({{< relref "ttn-lw-cli_users_contact-info" >}})	 - Manage user contact info
+* [ttn-lw-cli users contact-info]({{< relref "ttn-lw-cli_users_contact-info" >}})	 - Manage user contact info (DEPRECATED. Instead, use administrative_contact and technical_contact fields of user)
 

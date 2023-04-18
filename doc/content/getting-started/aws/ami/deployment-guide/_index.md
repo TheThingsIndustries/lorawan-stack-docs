@@ -61,7 +61,7 @@ This template allows the user to customize the deployment. The following is a li
 |---|---|---|
 |EC2 Instance Name|Name of the EC2 instance.|`the-things-enterprise-stack`|
 |Domain|Domain name. You should be able to configure DNS for the domain. TLS certificates from Let's Encrypt will automatically be requested.|-|
-|Network Title*|The title of your deployment.|`The Things Enterprise Stack for LoRaWAN`|
+|Network Title*|The title of your deployment.|`The Things Stack Enterprise for LoRaWAN`|
 |CIDR block|CIDR block used by the VPC.|10.0.0.0/16|
 
 > \* Optional field
@@ -79,6 +79,9 @@ This template allows the user to customize the deployment. The following is a li
 |SendGrid API Key*|API key for [SendGrid](https://sendgrid.com/) to send emails.|-|
 |Amazon ElastiCache KMS Key ID*|Key used for Redis at-rest encryption. Leave empty to disable encryption. (Warning) A change to this field requires manual migration of the database.|-|
 |Amazon ElastiCache Password*|Password used to access Redis. Leave empty to disable TLS connection. (Warning) A change to this field requires manual migration of the database.|-|
+|TLS Certificate|TLS certificate to use. If left empty, TLS certificates from Let's Encrypt will automatically be requested.|-|
+|TLS Certificate Key|TLS certificate key to use. If left empty, TLS certificates from Let's Encrypt will automatically be requested.|-|
+|TLS Certificate CA|TLS certificate CA to use. If left empty, TLS certificates from Let's Encrypt will automatically be requested.|-|
 
 > \* Optional field
 

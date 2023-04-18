@@ -1,0 +1,22 @@
+name: ADRSettings.StaticMode
+comment: Configuration options for static ADR.
+fields:
+- name: data_rate_index
+  comment: Data rate index to use.
+  enum:
+    name: DataRateIndex
+  rules:
+    defined_only: true
+  default: DATA_RATE_0
+- name: tx_power_index
+  comment: Transmission power index to use.
+  type: uint32
+  rules:
+    lte: 15
+  default: 0
+- name: nb_trans
+  comment: Number of retransmissions.
+  type: uint32
+  rules:
+    lte: 15
+  default: 0

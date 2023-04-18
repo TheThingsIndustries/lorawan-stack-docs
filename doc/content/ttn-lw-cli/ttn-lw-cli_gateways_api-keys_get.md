@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli gateways api-keys get"
 slug: ttn-lw-cli_gateways_api-keys_get
-type: "commands"
 ---
 
 ## ttn-lw-cli gateways api-keys get

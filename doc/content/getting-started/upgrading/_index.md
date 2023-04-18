@@ -2,6 +2,7 @@
 title: "Upgrading The Things Stack"
 description: ""
 distributions: ["Enterprise", "Open Source"]
+weight: 4
 ---
 
 This section contains instructions to upgrade a {{% tts %}} Enterprise or Open Source deployment, that was installed using the [installation guide]({{< relref "installation" >}}).
@@ -60,6 +61,8 @@ docker-compose stop stack
 Stopping <directory>_stack_1 ... done
 ```
 
+{{< note >}} In this guide, `<directory>` represents the directory containing {{% tts %}} files, i.e. the directory where you cloned {{% tts %}} repository. {{</ note >}}
+
 #### Redis
 
 Navigate to the Redis data folder, which can be found in the `docker-compose.yml` for the `redis` service (ex: `${DEV_DATA_DIR:-.env/data}/redis`)
@@ -82,43 +85,55 @@ docker-compose up -d redis
 Starting <directory>_redis_1 ... done
 ```
 
-#### Cockroach
+#### PostgreSQL
 
-Keep the `cockroach` container running and enter a cockroach CLI shell.
-
-```bash
-docker exec -it <directory>_cockroach_1 ./cockroach sql --insecure
-```
-
-Backup the database.
+Keep the `postgres` container running and make a PostgreSQL backup file using the following command:
 
 ```bash
-root@:26257/defaultdb> BACKUP * TO 'nodelocal://self/<backup_name>';
+docker exec -it <directory>_postgres_1 /usr/bin/pg_dump --format=c ttn_lorawan > <location-of-your-choice>/postgres-backup.sql
 ```
 
-A folder with the chosen `<backup_name>` will be created at the location `${DEV_DATA_DIR:-.env/data}/cockroach/extern`.
+A `postgres-backup.sql` file containing a snapshot of the PostgreSQL database at the time that it was backed up will be created in the `<location-of-your-choice>` directory.
 
-Copy this folder (`${DEV_DATA_DIR:-.env/data}/cockroach/extern/<backup_name>`) to a location of your choice. This folder is now a snapshot of the database at the time that it is copied.
-
-In order to restore from a backup, copy the backup folder to `${DEV_DATA_DIR:-.env/data}/cockroach/extern`.
-
-Now, again enter a cockroach CLI shell again with the `cockroach` container running.
+In order to make the backup file available inside the container, just copy the `postgres-backup.sql` file to the `${DEV_DATA_DIR:-.env/data}/postgres` directory on your machine. You can also use the following command to copy the file into the `/var/lib/postgresql/data` directory inside the container:
 
 ```bash
-docker exec -it <directory>_cockroach_1 ./cockroach sql --insecure
+docker cp postgres-backup.sql <directory>_postgres_1:/var/lib/postgresql/data
 ```
 
-Delete (or rename) the existing database to prevent conflicts.
+In order to restore the PostgreSQL database contents, you first need to delete (or rename) the old `ttn_lorawan` database to prevent conflicts. In order to perform deletion or renaming, you have to be disconnected from the `ttn_lorawan` database.
+
+Create a temporary database `temp_db`:
 
 ```bash
-root@:26257/defaultdb>  DROP DATABASE ttn_lorawan CASCADE;
+docker exec -it <directory>_postgres_1 psql -d ttn_lorawan -c "CREATE DATABASE temp_db;"
 ```
 
-Restore from the backup.
+Run the following command to disconnect from `ttn_lorawan`:
 
 ```bash
-root@:26257/defaultdb>  RESTORE DATABASE ttn_lorawan FROM 'nodelocal://self/<backup_name>';
+docker exec -it <directory>_postgres_1 psql -d ttn_lorawan -c "SELECT pg_terminate_backend(pg_stat_activity.pid) FROM pg_stat_activity WHERE pg_stat_activity.datname = 'ttn_lorawan' AND pid <> pg_backend_pid();"
 ```
+
+Now connect to `temp_db` and delete the old `ttn_lorawan` database with:
+
+```bash
+docker exec -it <directory>_postgres_1 psql -d temp_db -c "DROP DATABASE ttn_lorawan;"
+```
+
+Recreate the `ttn_lorawan` database:
+
+```bash
+docker exec -it <directory>_postgres_1 psql -d temp_db -c "CREATE DATABASE ttn_lorawan;"
+```
+
+At this point, the `ttn_lorawan` database will be empty. Finally, you can restore the database contents from the `postgres-backup.sql` snapshot file:
+
+```bash
+docker exec <directory>_postgres_1 pg_restore -d ttn_lorawan /var/lib/postgresql/data/postgres-backup.sql
+```
+
+For additional info, please refer to the [official PostgreSQL documentation](https://www.postgresql.org/docs/14/backup.html) for the specific version that you are using.
 
 #### Optional
 

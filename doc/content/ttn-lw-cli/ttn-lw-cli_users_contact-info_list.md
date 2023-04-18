@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli users contact-info list"
 slug: ttn-lw-cli_users_contact-info_list
-type: "commands"
 ---
 
 ## ttn-lw-cli users contact-info list

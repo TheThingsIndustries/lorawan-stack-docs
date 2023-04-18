@@ -1,7 +1,7 @@
 ---
 title: "Troubleshooting AWS AMI Deployment"
 description: ""
-weight: 3
+weight: 6
 ---
 
 <!--
@@ -56,21 +56,13 @@ The debug logs can be read using the `journalctl`, same as above:
 sudo journalctl -f -u lorawan-stack.service
   ```
 
-### My Gateway doesn't connect. What do I do?
+### My gateway doesn't connect. What do I do?
 
-<!--
-TODO: https://github.com/TheThingsNetwork/lorawan-stack/issues/2714
-Link to relevant section when available.
--->
-
-Please check the troubleshooting section in the Connecting Gateways guide.
+Please check the [Troubleshooting Gateways]({{< ref "/gateways/troubleshooting" >}}) guide.
   
 ### My device doesn't join. How do I fix this?
 
-<!--
-TODO: https://github.com/TheThingsNetwork/lorawan-stack/issues/2714
-Link to relevant section when available.
--->
+Please check the [Troubleshooting Devices]({{< ref "/devices/troubleshooting" >}}) guide.
 
 Device join failure could be due to a number of reasons. Ensure that the device settings are correct. This includes the JoinEUI, DevEUI and/or AppKey/NwkKey and the frequency plan settings. Check the logs as described above to locate the potential cause of the issue.
 
@@ -94,4 +86,4 @@ To resolve this issue, you can do `export TTN_LW_CONFIG=/tti/lorawan-stack/confi
 
 ## Professional Support
 
-Additional paid support for this deployment is offered by The Things Industries. You can [contact The Things Industries support](mailto:support@thethingsindustries.com) or visit [the support page](https://www.thethingsindustries.com/stack/aws/support).
+Additional paid support for this deployment is offered by The Things Industries. You can [contact The Things Industries support](mailto:support@thethingsindustries.com) or visit [the support page](https://www.thethingsindustries.com/support/).

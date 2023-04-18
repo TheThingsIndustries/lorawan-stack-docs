@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli organizations set"
 slug: ttn-lw-cli_organizations_set
-type: "commands"
 ---
 
 ## ttn-lw-cli organizations set
@@ -18,8 +17,7 @@ ttn-lw-cli organizations set [organization-id] [flags]
       --administrative-contact.ids.organization-ids.organization-id string   
       --administrative-contact.ids.user-ids.email string                     
       --administrative-contact.ids.user-ids.user-id string                   
-      --attributes strings                                                   key=value
-      --deleted-at string                                                    (YYYY-MM-DDTHH:MM:SSZ)
+      --attributes stringToString                                            
       --description string                                                   
   -h, --help                                                                 help for set
       --name string                                                          

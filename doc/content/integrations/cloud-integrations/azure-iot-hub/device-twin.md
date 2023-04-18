@@ -59,3 +59,72 @@ When finished editing the JSON `properties.desired` object, click on **Save** in
 {{< figure src="../desired-properties.png" alt="Desired Properties" >}}
 
 A downlink message will be generated in {{% tts %}}.
+
+## Message Filters {{< new-in-version "3.19.2" >}}
+
+The Azure IoT Hub integration can be configured such that it sends only certain message types to the Azure IoT Hub. There are two message filters available: one for the device events (also known as device to cloud messages), and one for the Device Twin reported properties.
+
+Go to your application in {{% tts %}} Console, navigate to **Integrations &#8594; Azure IoT** on the left hand menu and click on **Expand** next to **Azure IoT Hub**.
+
+
+{{< figure src="../filters.png" alt="Message Filters" >}}
+
+Click on **Enable/Update Azure IoT Hub integration** in order to save the filters.
+
+## Raw Downlinks {{< new-in-version "3.19.2" >}}
+
+It is possible to schedule "raw" downlinks using the Device Twin desired properties. The `rawDownlink` property allows this behavior using the following object structure:
+
+```json
+{
+  "rawDownlink": {
+    "fPort": 42,
+    "framePayload": "BEEF",
+    "confirmed": true,
+    "operation": "replace"
+  }
+}
+```
+
+The fields have the following semantics:
+
+- `fPort`: the frame port of the downlink. Defaults to 0.
+- `framePayload`: the binary frame payload, in base 16. Defaults to an empty frame.
+- `confirmed`: if the downlink should be confirmed. Defaults to `false`.
+- `operation`: the downlink operation type. Supported values are `push` and `replace`. Defaults to `push`.
+
+Note that the semantics of the `rawDownlink` and `decodedPayload` fields follow the semantics of an application downlink. Specifically, if a decoded payload is provided, and a downlink encoder is available, the frame port may be omitted, as the downlink encoder may output it automatically based on the `decodedPayload`.
+
+
+If one would like to schedule a downlink only with a binary payload, the `decodedPayload` should be explicitly set to `null`, and the `fPort` should be explicitly provided:
+
+
+```json
+{
+  "rawDownlink": {
+    "fPort": 42,
+    "framePayload": "BEEF",
+    "confirmed": true,
+    "operation": "replace"
+  },
+  "decodedPayload": null
+}
+```
+
+It is also possible to mix and match the two fields. If one would like to schedule a confirmed downlink, replacing the existing downlink queue, with a LED state payload, the following payload may be provided:
+
+```json
+{
+  "rawDownlink": {
+    "fPort": null,
+    "framePayload": null,
+    "confirmed": true,
+    "operation": "replace"
+  },
+  "decodedPayload": {
+    "ledState": "on"
+  }
+}
+```
+
+The explicit `null` values are required in order to signal to Azure IoT Hub that the values should not be present. Otherwise, updating only the relevant fields would cause the two objects to be merged, having unintended side effects.

@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli gateways api-keys delete"
 slug: ttn-lw-cli_gateways_api-keys_delete
-type: "commands"
 ---
 
 ## ttn-lw-cli gateways api-keys delete

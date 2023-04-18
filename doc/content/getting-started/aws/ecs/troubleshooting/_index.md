@@ -1,7 +1,7 @@
 ---
 title: "Troubleshooting AWS ECS Deployment"
 description: ""
-weight: 3
+weight: 9
 ---
 
 This section contains information to troubleshoot {{% tts %}} deployment.

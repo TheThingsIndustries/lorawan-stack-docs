@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli users api-keys set"
 slug: ttn-lw-cli_users_api-keys_set
-type: "commands"
 ---
 
 ## ttn-lw-cli users api-keys set
@@ -71,6 +70,7 @@ ttn-lw-cli users api-keys set [user-id] [api-key-id] [flags]
       --right-user-gateways-create                 
       --right-user-gateways-list                   
       --right-user-info                            
+      --right-user-notifications-read              
       --right-user-organizations-create            
       --right-user-organizations-list              
       --right-user-settings-api-keys               

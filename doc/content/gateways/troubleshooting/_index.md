@@ -13,137 +13,115 @@ This section provides help for common issues and frequently asked questions you 
 
 This is the address you use to access {{% tts %}}. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}).
 
-For **{{% lbs %}}:**
+For {{% lbs %}}:
 
-CUPS uses the URI: `https://<server-address>:443`
+- CUPS uses the URI: `https://<server-address>:443`
 
-LNS uses the URI: `wss://<server-address>:8887`
+- LNS uses the URI: `wss://<server-address>:8887`
 
-For **{{% udp-pf %}}:**:
+For {{% udp-pf %}} use `<server-address>`. The **Up Port** and **Down Port** are typically **1700**.
 
-Use `<server-address>`. The **Up Port** and **Down Port** are typically **1700**.
+## Which packet forwarders does {{% tts %}} support?
 
-## How do I find the CA Trust?
+Read the [Packet Forwarders section]({{< ref "/reference/packet-forwarder" >}}).
 
-See the [Root Certificates Reference]({{< ref "/reference/root-certificates" >}}).
+## Where can I learn more about {{% lbs %}}?
 
-## How do I use an API Key for LBS gateways?
+**Gateway Demo**: https://www.youtube.com/watch?v=LGFFxPOuSJw
 
-Use the following commands to generate a `api.key` file which is correctly formatted ({{% lbs %}} requires that `.key` files end with a CRLF character).
+**Official {{% lbs %}} documentation**: https://doc.sm.tc/station/
 
-```bash
-API_KEY="your-api-key"
-echo "Authorization: Bearer $API_KEY" | perl -p -e 's/\r\n|\n|\r/\r\n/g'  > api.key
-```
+**Forum**: https://www.thethingsnetwork.org/forum/
 
-Upload or copy the contents of this file in to your gateway as the **Gateway Key**.
+## What is {{% lbs %}} Radio Configuration?
 
-See the [{{% lbs %}} Authorization documentation](https://lora-developers.semtech.com/resources/tools/lora-basics/lora-basics-for-gateways/?url=authmodes.html) or your manufacturers guidelines for additional information.
+There are three types of radio configuration. All types are typically defined in the same `station.conf` file.
 
-## Is an API Key required?
+**Hardware Specific** is a configuration unique to the hardware. This is defined in a file shipped with the gateway and should not be modified. Examples are `clksrc` and RSSI offset.
 
-**{{% lbs %}} CUPS** requires an API key for your gateway with the following rights:
+**LoRaWAN Regional** is a configuration according to LoRaWAN Regional Parameters. This is common to all gateways using the same Regional Parameters, and is provided by the network server automatically when using {{% lbs %}}. It must be configured manually for UDP gateways. Examples are data rates and mandatory channels.
 
-- View gateway information
-- Edit basic gateway settings
-- Retrieve secrets associated with a gateway
+**User Defined** is a configuration which the user is free to choose. Examples are non-mandatory channels and sub-bands.
 
-**{{% lbs %}} LNS** requires an API Key with the following rights:
-
-- Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink
-
-**UDP gateways** are unsecured and require no API key.
+For an example configuration file, see [Semtech's {{% lbs %}} documentation](https://doc.sm.tc/station/gw_v1.5.html#single-board-sample-configuration).
 
 ## How do I see gateway events?
 
-Gateway event logs can be found in the console in the gateway's general information page. See [Working with Events]({{< ref "getting-started/events" >}}) for other ways of subscribing to events.
+Gateway event logs can be found in the Live Data tab in the gateway's general information page. See [Working with Events]({{< ref "getting-started/events" >}}) for other ways of subscribing to events.
 
-## How does {{% tts %}} console know whether a gateway is connected?
+## How does {{% tts %}} Console know whether a gateway is connected?
 
-For both [UDP]({{< ref "gateways/udp" >}}) and [{{% lbs %}}]({{< ref "gateways/lora-basics-station" >}}) gateways, {{% tts %}} creates a `GatewayConnectionStats` database entry when a gateway connects and removes that entry when the gateway disconnects. The console checks whether this database entry exists and shows the gateway as connected or disconnected accordingly.
+For both [{{% udp-pf %}}]({{< ref "gateways/udp" >}}) and [{{% lbs %}}]({{< ref "gateways/lora-basics-station" >}}) gateways, {{% tts %}} creates a `GatewayConnectionStats` database entry when a gateway connects and removes that entry when the gateway disconnects. The Console checks whether this database entry exists and shows the gateway as connected or disconnected accordingly.
 
-The mechanism for determining whether a gateway remains connected differs for UDP and LBS gateways:
+The mechanism for determining whether a gateway remains connected differs for UDP and {{% lbs %}} gateways.
 
-**For LBS gateways:**
+{{% lbs %}} uses a TCP keepalive to indicate that the connection is still alive.
 
-LBS uses a TCP keepalive to indicate that the connection is still alive.
-
-**For UDP gateways:**
-
-UDP is a connectionless protocol. {{% tts %}} expects a UDP gateway to occasionally send a `pull_data` message. This is typically every 5 seconds. By default, if a gateway misses 3 of these consecutively (15s) then the gateway is shown as disconnected and this indicates there’s potentially an issue with gateway connectivity.
-
-## My gateway is shown as connected in the console but I don’t see any events (including the gateway connection stats). What do I do?
-
-We have observed this with **UDP gateways only**. We recommend using [{{% lbs %}}]({{< ref "gateways/lora-basics-station" >}}) instead if possible, as the {{% udp-pf %}} has many security and scalability drawbacks.
-
-Check the following in the {{% tts %}} console:
-
-- Did you select **Require authenticated connection** in gateway settings? This prevents UDP gateways from working (and for gateways connected with Basic Station or MQTT, this prevents unauthenticated connections)
-
-Otherwise, try restarting the gateway. Sometimes, the gateway reports its status but still fails to forward packets, and this may fix that.
-
-## My gateway is offline, but still shows as connected in the console. Why?
-
-If you are using a UDP gateway, it is possible that another gateway with the same EUI is transmitting data. UDP has no authentication, so there is no way to prevent this from happening, although it is unlikely that another gateway with the same EUI will be registered on the same network server. If this is the case, the solutions are
-
-- Use the {{% lbs %}} packet forwarder
-- Change your gateway EUI
+UDP is a connectionless protocol. {{% tts %}} expects a UDP gateway to occasionally send a `PULL_DATA` message. This is typically every 5 seconds. By default, if a gateway misses 3 of these consecutively (15s) then the gateway is shown as disconnected and this indicates there’s potentially an issue with gateway connectivity.
 
 ## My gateway won't connect. What do I do?
 
-Check the following in **{{% tts %}} console:**
+Check the following in {{% tts %}} Console:
 
 - Does the Gateway EUI in the console match with the EUI of the gateway?
-- Does the Frequency Plan selected match with the configuration in the gateway? Refer to the [Frequency Plans section]({{< ref "/reference/frequency-plans" >}}) for plans that are officially supported by The Things Stack
-- Did you select **Require authenticated connection** in gateway settings? This prevents UDP gateways from working (and for gateways connected with Basic Station or MQTT, this prevents unauthenticated connections)
+- Does the Frequency Plan selected match with the configuration in the gateway? Refer to the [Frequency Plans section]({{< ref "/reference/frequency-plans" >}}) for plans that are officially supported by {{% tts %}}.
+- Did you select **Require authenticated connection** in gateway settings? This prevents UDP gateways from working (and for gateways connected with Basic Station or MQTT, this prevents unauthenticated connections).
 - Do you see any warnings/errors in the Gateway live data section?
 
-Check the following in your **Gateway configuration:**
+Check the following in your gateway configuration.
 
-**For UDP gateways:**
+For {{% udp-pf %}} gateways:
 
 - Does the Gateway Server address match with the address mentioned in the gateway overview in {{% tts %}} Console?
 - Are the upstream and downstream ports set to 1700?
 
-**For LoRa Basics™ Station Gateways:**
+For {{% lbs %}} gateways:
 
 - Are the CUPS server address and LNS server address correctly configured? See [What's my server address](#whats-my-server-address).
 - Are the CUPS and LNS ports configured with 443 and 8887 respectively? See [What's my server address](#whats-my-server-address).
-- Are API keys assigned with necessary rights? See [Is an API key required](#is-an-api-key-required)
+- Are API keys assigned with necessary rights? See [Is an API key required](#is-an-api-key-required).
 - Did you select the correct root certificates? See the [Root Certificates Reference]({{< ref "/reference/root-certificates" >}}).
 - Is the backhaul used in the Gateway stable?
 - Does the Gateway run with the latest firmware?
-- Does the Frequency Plan selected match with the configuration in the gateway? Refer to the [Frequency Plans section]({{< ref "/reference/frequency-plans" >}}) for plans that are officially supported by The Things Stack
+- Does the Frequency Plan selected match with the configuration in the gateway? Refer to the [Frequency Plans section]({{< ref "/reference/frequency-plans" >}}) for plans that are officially supported by {{% tts %}}.
 - Are both CUPS and LNS are configured? There is no need to configure both, as CUPS will automatically configure LNS. Follow the instructions for [configuring CUPS]({{< relref "cups" >}}).
 
 Check your manufacturer's documentation to access the gateway logs on your gateway, which will help to diagnose the issue.
+
+## When the connection on the main interface goes down, my gateway gets disconnected and it does not reconnect through the backup interface.
+
+Please try restarting your gateway's packet forwarder.
+
+## My gateway is shown as connected in the Console but I don’t see any events (including the gateway connection stats). What do I do?
+
+We have observed this with {{% udp-pf %}} gateways only. We recommend using [{{% lbs %}}]({{< ref "gateways/lora-basics-station" >}}) instead if possible, as the {{% udp-pf %}} has many security and scalability drawbacks.
+
+Check if you have selected **Require authenticated connection** in the gateway settings in the Console. This prevents UDP gateways from working (and for gateways connected with Basic Station or MQTT, this prevents unauthenticated connections)
+
+Otherwise, try restarting the gateway. Sometimes, the gateway reports its status but still fails to forward packets, and this may fix that.
 
 ## My gateway is shown as disconnected after recreating with the same Gateway EUI. What do I do?
 
 If a gateway is deleted when it’s still connected, the connection statistics for the gateway will continue to exist under the old ID until the gateway actually reconnects.
 
-If you are using **{{% lbs %}} or another TCP based gateway** then a simple restart/reconnection of the gateway will clear the statistics of the old ID and you create an entry for the new ID.
+If you are using {{% lbs %}} or another TCP based gateway then a simple restart/reconnection of the gateway will clear the statistics of the old ID and you create an entry for the new ID.
 
-If you are using a **UDP gateway** then there is no concept of a connection. {{% tts %}} assumes the connection is alive until no messages are received for the duration of the `DownlinkPathExpires`and `ConnectionExpires` settings. In this case, your gateway must be turned off for at least as long as the `ConnectionExpires` interval (default 1 minute) for {{% tts %}} to mark the gateway as disconnected clear the statistics for the old ID.
+If you are using a UDP gateway then there is no concept of a connection. {{% tts %}} assumes the connection is alive until no messages are received for the duration of the `DownlinkPathExpires`and `ConnectionExpires` settings. In this case, your gateway must be turned off for at least as long as the `ConnectionExpires` interval (default 1 minute) for {{% tts %}} to mark the gateway as disconnected clear the statistics for the old ID.
+
+## My gateway is offline, but still shows as connected in the Console. Why?
+
+If you are using a {{% udp-pf %}} gateway, it is possible that another gateway with the same EUI is transmitting data. UDP has no authentication, so there is no way to prevent this from happening, although it is unlikely that another gateway with the same EUI will be registered on the same network server. If this is the case, the solutions are:
+
+- Use the {{% lbs %}} packet forwarder
+- Change your gateway EUI
+
+## Why do I still see connection stats of a gateway I previously disconnected?
+
+After disconnecting a gateway, the connection stats will still be available for 48 hours. The HTTP endpoint will return the status code `200 OK` and the connection stats will contain the `disconnected_at` field. If the gateway remains inactive for more than 48 hours, the HTTP endpoint will then return the `404 Not Found (gateway <gtw_id> not connected)` status.
 
 ## My gateway shows an "Other cluster" status. Why?
 
-If a gateway appears in the Console with the status of "Other cluster", it means that this gateway has been setup with a `Gateway Server address` that the Console determines as not belonging to the current deployment. This could mean that you accidentally visited the Console of a different cluster of this deployment (e.g. The Things Stack Community `au1` cluster instead of `eu1`). Make sure you either use the correct cluster (usually the one located closest to you), or to change the `Gateway Server address` of the Gateway to match the cluster that you want to use. You can do that via the Gateway's `General settings` page in the Console.
-
-## No downlinks are reaching my UDP gateway. Why?
-
-With UDP gateways, if uplink messages are reaching {{% tts %}}, that does not mean the downlink messages are going to be received correctly by the gateway. 
-
-The {{% udp-pf %}} sends a `PULL_DATA` request every ~5 seconds to pull the data scheduled for a downlink transmission on {{% tts %}}.
-
-If downlink messages are reaching your gateway, the {{% udp-pf %}} should be sending `PULL_ACK` messages with a reasonable latency, usually way lower than 500 ms. If this latency is high, pulling the downlink data will fail. One of the drawbacks of using the {{% udp-pf %}} is that it does not have an implemented mechanism to detect if pulling the downlink data fails, so your data might end up lost. 
-
-Common reasons for having latency issues between the gateway and {{% tts %}} cluster are that the gateway is geographically far from the cluster, and using cellular or satellite backhauls for gateways.
-
-Try solving this issue by: 
-
-- Checking your internet connection
-- Using {{% tts %}} cluster closest to the location of your gateway
+If a gateway appears in the Console with the status of "Other cluster", it means that this gateway has been setup with a `Gateway Server address` that the Console determines as not belonging to the current deployment. This could mean that you accidentally visited the Console of a different cluster of this deployment (e.g. {{% tts %}} Community `au1` cluster instead of `eu1`). Make sure you either use the correct cluster (usually the one located closest to you), or to change the `Gateway Server address` of the Gateway to match the cluster that you want to use. You can do that via the Gateway's `General settings` page in the Console.
 
 ## I get an "ID Already Taken" error when adding a gateway.
 
@@ -159,23 +137,11 @@ Another gateway is already registered with the same Gateway EUI. This gateway ma
 
 If the gateway is registered with the same EUI in some other tenant, the error will reflect that as well.
 
-First, double check that you have entered the EUI correctly. Then, double check that you have not already registered the gateway. Finally, if you have purchased the gateway secondhand, it is possible someone before you registered the gateway. Contact them to unregister it. If they are unavailable, we recommend you to cantact the gateway manufacturer, who can help you configure your gateway with a new EUI or trace the supply chain.
+First, double check that you have entered the EUI correctly. Then, double check that you have not already registered the gateway. Finally, if you have purchased the gateway secondhand, it is possible someone before you registered the gateway. Contact them to unregister it. If they are unavailable, we recommend you to contact the gateway manufacturer, who can help you configure your gateway with a new EUI or trace the supply chain.
 
 A temporary workaround would be to define a custom Gateway EUI in physical gateway settings (if the gateway allows it), and register the gateway on {{% tts %}} using the new EUI. Note that a custom Gateway EUI should be issued from an IEEE block owned by the user.
 
-## What is Radio Configuration?
-
-There are three types of radio configuration. All types are typically defined in the same `station.conf` file.
-
-**Hardware Specific**: configuration unique to the hardware. This is defined in a file shipped with the gateway and should not be modified. Examples are `clksrc` and RSSI offset.
-
-**LoRaWAN Regional**: configuration according to LoRaWAN Regional Parameters. This is common to all gateways using the same Regional Parameters, and is provided by the network server automatically when using {{% lbs %}}. It must be configured manually for UDP gateways. Examples are data rates and mandatory channels.
-
-**User Defined**: configuration which the user is free to choose. Examples are non-mandatory channels and sub-bands.
-
-For an example configuration file, see [Semtech's {{% lbs %}} documentation](https://doc.sm.tc/station/gw_v1.5.html#single-board-sample-configuration).
-
-## What modes of authentication are supported?
+## Which {{% lbs %}} authentication modes are supported by {{% tts %}}?
 
 {{% lbs %}} defines bi-directional authentication at the server ({{% tts %}}) and client (gateway). The server is authenticated with a trusted certificate and the client is authenticated either by HTTP token or certificate. See [Semtech's documentation](https://doc.sm.tc/station/authmodes.html#authentication-modes).
 
@@ -191,46 +157,84 @@ Currently, {{% tts %}} only supports [TLS Server Authentication and Client Token
 
 These are two different types of {{% lbs %}} connections. Since CUPS automatically also configures LNS, we recommend you configure CUPS and leave LNS blank.
 
-## Where can I learn more about {{% lbs %}}?
+## How do I find the CA Trust?
 
-**Gateway Demo**: https://www.youtube.com/watch?v=LGFFxPOuSJw
+See the [Root Certificates Reference]({{< ref "/reference/root-certificates" >}}).
 
-**Official {{% lbs %}} documentation**: https://doc.sm.tc/station/
+## Is an API Key required?
 
-**Forum**: https://www.thethingsnetwork.org/forum/
+{{% lbs %}} CUPS requires an API key for your gateway with the following rights:
 
-## Why do my gateway's GPS location details not show in {{% tts %}} Console?
+- View gateway information
+- Edit basic gateway settings
+- Retrieve secrets associated with a gateway
 
-[{{% lbs %}}]({{< ref "/gateways/lora-basics-station" >}}) protocol currently does not support GPS fields in Uplink messages, so the GPS location in {{% tts %}} Console for {{% lbs %}}-based gateways cannot be updated from status messages.
+{{% lbs %}} LNS also requires an API Key, with the following rights:
 
-Updating gateway location from status messages in supported only for gateways that establish authenticated connections (Basic Station and MQTT gateways), i.e. it is not supported for [UDP]({{< ref "/gateways/udp" >}}) gateways.
+- Link as Gateway to a Gateway Server for traffic exchange, i.e. write uplink and read downlink
 
-Keep in mind that you can still set the gateway location [manually]({{< ref "/gateways/adding-gateways#set-gateway-location" >}}) from {{% tts %}} Console.
+{{% udp-pf %}} gateways are unsecured and require no API key.
 
-## I set the gateway location manually in {{% tts %}} Console, why can I not see it in the gateway connection statistics?
+## How do I use an API Key for LBS gateways?
 
-The connection statistics ([Gateway Server service API]({{< ref "/reference/api/gateway_server#a-namegsthe-gs-servicea" >}})) do not store the gateway locations.
+Use the following commands to generate a `api.key` file which is correctly formatted ({{% lbs %}} requires that `.key` files end with a CRLF character).
 
-The gateway location is stored in the Identity Server instead. The updated location can be found by querying the Identity Server [GetGateway API]({{< ref "/reference/api/gateway" >}}).
-
-For example, you can query the location with:
+On Linux and macOS:
 
 ```bash
-curl -H "Authorization: Bearer <api-key>" https://example.thethings.com/api/v3/gateways/<gateway-id>?field_mask=antennas
+API_KEY="your-api-key"
+echo "Authorization: Bearer $API_KEY" | perl -p -e 's/\r\n|\n|\r/\r\n/g'  > api.key
 ```
 
-## I do not see the downlink being scheduled by the Network Server. What do I do?
+On Windows, you can use Command Prompt:
 
-If you notice your downlink is not being scheduled, check your gateway's Live data tab for the [`gs.down.send` event]({{< ref "/reference/api/events#event:gs.down.send" >}}). If you do not see this event, it means that the Network Server failed to schedule the downlink message to Gateway Server.
+```
+set LNS_KEY=your-lns-api-key
+echo Authorization: Bearer %LNS_KEY% > lns.key
+```
 
-You can simply try re-scheduling the downlink, and if the issue persists, check if the downlink is being properly scheduled from the Application Server to the Network Server.
+or PowerShell:
 
-## When I schedule a downlink, I see the `gs.down.tx.fail` event in the Live data tab and the downlink message fails to be transmitted. Why?
+```shell
+$env:LNS_KEY='your-lns-api-key'
+write-output "Authorization: Bearer $env:LNS_KEY" | set-content lns.key
+```
 
-Seeing the [`gs.down.tx.fail` event]({{< ref "/reference/api/events#event:gs.down.tx.fail" >}}) in the gateway's Live data tab means the downlink message has been scheduled from the Gateway Server to the gateway, but the Gateway Server did not receive the ACK for that downlink. Some common causes and solutions for this issue:
+Upload or copy the contents of this file in to your gateway as the **Gateway Key**.
 
-- High latency in the gateway backhaul - high latency usually occurs if the gateway and {{% tts %}} cluster are not geographically close, or the gateway is using a cellular or satellite backhaul. Always use {{% tts %}} cluster that is closest to your gateway's location, and make sure to check your gateway's Internet connection.
-- Gateway hardware issue - if the problem persists, your gateway could be malfunctioning. Try using another gateway or contacting the gateway manufacturer.
+See the [{{% lbs %}} Authorization documentation](https://lora-developers.semtech.com/build/software/lora-basics/lora-basics-for-gateways/?url=authmodes.html) or your manufacturers guidelines for additional information.
+
+## {{% lbs %}} packet forwarder logs mention the "Send failed: X509 - Certificate verification failed, e.g. CRL, CA, or signature check failed" error. What does it mean?
+
+The cause of this issue is that the gateway is configured with a server certificate that {{% tts %}} does not support. It is recommended to use the [Let's Encrypt ISRG Root X1 Trust certificate](https://letsencrypt.org/certs/isrgrootx1.pem.txt). Make sure to restart your gateway after changing the certificate.
+
+## I'm seeing "Radio is not emitting frame - abandoning TX, trying alternative" error in the {{% lbs %}} gateway's packet forwarder logs. What is causing this?
+
+If you are seeing something like:
+
+```
+[S2E:WARN] ::0 diid=34946 [ant#0] - unable to place frame
+[S2E:VERB] ::0 diid=34946 [ant#0] - class A has no more alternate TX time
+[S2E:ERRO] ::0 diid=34946 [ant#0] - radio is not emitting frame - abandoning TX, trying alternative
+```
+
+in the packet forwarder logs on your {{% lbs %}} gateway, your gateway might have a hardware level issue.
+
+## I'm seeing "No DC in band" error in the {{% lbs %}} gateway's packet forwarder logs. What is causing this?
+
+If there is no direct channel in the band to send the downlink and no alternative downlink opportunities (RX2, back-off mechanism, etc.), the downlink will be dropped and the following messages will be printed in the logs:
+
+```
+[S2E:VERB] ::0 diid=2207 [ant#0] 867.5MHz - no DC in band: txtime=12:40:34.479 free=12:40:47.903
+[S2E:VERB] ::0 diid=2207 [ant#0] - class A has no more alternate TX time
+[S2E:WARN] ::0 diid=2207 [ant#0] - unable to place frame
+```
+
+If the gateway sends back a NACK, {{% tts %}} will retry sending in the next downlink window. This can also be caused by a hardware issue.
+
+## {{% lbs %}} packet forwarder logs mention the "HTTP connect failed: NET - Failed to get an IP address for the given hostname" error. What does it mean?
+
+This error indicates that the gateway was unable to resolve the CUPS URI. Please double check that your network is not blocking the CUPS URI and ports. 
 
 ## I'm noticing some errors in my UDP gateway's packet forwarder logs. What do they represent?
 
@@ -251,43 +255,57 @@ This JSON object will contain an `error` field describing the cause of the downl
 Example:
 
 ``` json
-{"txpk_ack":{
-	"error":"COLLISION_PACKET"
-}}
+{"txpk_ack":{"error":"COLLISION_PACKET"}}
 ```
 
 If you are facing `TX_FREQ` or `TX_POWER` errors, please make sure that your gateway's `global_conf.json` file is properly configured. See [{{% udp-pf %}} Configuration]({{< ref "/gateways/udp#configuration" >}}) section for more info.
 
 For the rest of errors in the list above, please create an issue in [{{% tts %}} GitHub repository](https://github.com/TheThingsNetwork/lorawan-stack) or contact [The Things Industries support](mailto:support@thethingsindustries.com).
 
-## I'm noticing "radio is not emitting frame - abandoning TX, trying alternative" error in the LoRa Basics Station gateway's packet forwarder logs. What is causing this?
+## I do not see the downlink being scheduled by the Network Server. What do I do?
 
-If you are seeing something like:
+If you notice your downlink is not being scheduled, check your gateway's Live data tab for the [`gs.down.send` event]({{< ref "/reference/api/events#event:gs.down.send" >}}). If you do not see this event, it means that the Network Server failed to schedule the downlink message to Gateway Server.
 
+You can simply try re-scheduling the downlink, and if the issue persists, check if the downlink is being properly scheduled from the Application Server to the Network Server.
+
+## When I schedule a downlink, I see the downlink transmission failed event in the Live data tab and the downlink message fails to be transmitted. Why?
+
+Seeing the [`gs.down.tx.fail` event]({{< ref "/reference/api/events#event:gs.down.tx.fail" >}}) in the gateway's Live data tab means the downlink message has been scheduled from the Gateway Server to the gateway, but the Gateway Server did not receive the ACK for that downlink. Some common causes and solutions for this issue:
+
+- High latency in the gateway backhaul - high latency usually occurs if the gateway and {{% tts %}} cluster are not geographically close, or the gateway is using a cellular or satellite backhaul. Always use {{% tts %}} cluster that is closest to your gateway's location, and make sure to check your gateway's Internet connection.
+- Gateway hardware issue - if the problem persists, your gateway could be malfunctioning. Try using another gateway or contacting the gateway manufacturer.
+
+## No downlinks are reaching my UDP gateway. Why?
+
+With UDP gateways, if uplink messages are reaching {{% tts %}}, that does not mean the downlink messages are going to be received correctly by the gateway. 
+
+The {{% udp-pf %}} sends a `PULL_DATA` request every ~5 seconds to pull the data scheduled for a downlink transmission on {{% tts %}}.
+
+The server reponds with a `PULL_ACK` message to confirm that the network route is open and that the data can be sent through `PULL_RESP` packets any time. In order to pull the data, `PULL_ACK` messages have to reach the gateway with a reasonable latency, usually way lower than 500 ms. If this latency is high, pulling the downlink data will fail. One of the drawbacks of using the {{% udp-pf %}} is that it does not have an implemented mechanism to detect if pulling the downlink data fails, so your data might end up lost. 
+
+Common reasons for having latency issues between the gateway and {{% tts %}} cluster are that the gateway is geographically far from the cluster, and using cellular or satellite backhauls for gateways.
+
+Try solving this issue by: 
+
+- Checking your internet connection
+- Using {{% tts %}} cluster closest to the location of your gateway
+
+## Why are my gateway's GPS location details not shown in {{% tts %}} Console?
+
+[{{% lbs %}}]({{< ref "/gateways/lora-basics-station" >}}) protocol currently does not support GPS fields in Uplink messages, so the GPS location in {{% tts %}} Console for {{% lbs %}}-based gateways cannot be updated from status messages.
+
+Updating gateway location from status messages in supported only for gateways that establish authenticated connections (Basic Station and MQTT gateways), i.e. it is not supported for [UDP]({{< ref "/gateways/udp" >}}) gateways.
+
+Keep in mind that you can still set the gateway location [manually]({{< ref "/gateways/adding-gateways#set-gateway-location" >}}) from {{% tts %}} Console.
+
+## I set the gateway location manually in {{% tts %}} Console. Why can I not see it in the gateway connection statistics?
+
+The connection statistics ([Gateway Server service API]({{< ref "/reference/api/gateway_server#a-namegsthe-gs-servicea" >}})) do not store the gateway locations.
+
+The gateway location is stored in the Identity Server instead. The updated location can be found by querying the Identity Server [GetGateway API]({{< ref "/reference/api/gateway" >}}).
+
+For example, you can query the location with:
+
+```bash
+curl -H "Authorization: Bearer <api-key>" https://example.thethings.com/api/v3/gateways/<gateway-id>?field_mask=antennas
 ```
-[S2E:WARN] ::0 diid=34946 [ant#0] - unable to place frame
-[S2E:VERB] ::0 diid=34946 [ant#0] - class A has no more alternate TX time
-[S2E:ERRO] ::0 diid=34946 [ant#0] - radio is not emitting frame - abandoning TX, trying alternative
-```
-
-in the packet forwarder logs on your {{% lbs %}} gateway, your gateway might have a hardware level issue.
-
-## I'm seeing "no DC in band" error in the LoRa Basics Station gateway's packet forwarder logs. What is causing this?
-
-If there is no direct channel in the band to send the downlink and no alternative downlink opportunities (RX2, back-off mechanism, etc.), the downlink will be dropped and the following messages will be printed in the logs:
-
-```
-[S2E:VERB] ::0 diid=2207 [ant#0] 867.5MHz - no DC in band: txtime=12:40:34.479 free=12:40:47.903
-[S2E:VERB] ::0 diid=2207 [ant#0] - class A has no more alternate TX time
-[S2E:WARN] ::0 diid=2207 [ant#0] - unable to place frame
-```
-
-If the gateway sends back a NACK, {{% tts %}} will retry sending in the next downlink window. This can also be caused by a hardware issue.
- 
-## When the connection on the main interface goes down, my gateway gets disconnected and it does not reconnect through the backup interface.
-
-Please try restarting your gateway's packet forwarder.
-
-## Why do I still see connection stats of a gateway I previously disconnected?
-
-After disconnecting a gateway, the connection stats will still be available for 48 hours. The HTTP endpoint will return the status code `200 OK` and the connection stats will contain the `disconnected_at` field. If the gateway remains inactive for more than 48 hours, the HTTP endpoint will then return the `404 Not Found (gateway <gtw_id> not connected)` status.

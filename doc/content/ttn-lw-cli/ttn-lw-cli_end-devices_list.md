@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli end-devices list"
 slug: ttn-lw-cli_end-devices_list
-type: "commands"
 ---
 
 ## ttn-lw-cli end-devices list
@@ -23,13 +22,14 @@ ttn-lw-cli end-devices list [application-id] [flags]
       --description                    select the description field
   -h, --help                           help for list
       --join-server-address            select the join_server_address field
+      --last-seen-at                   select the last_seen_at field
       --limit uint32                   maximum number of results to get (default 50)
       --locations                      select the locations field
       --name                           select the name field
       --network-server-address         select the network_server_address field
       --order string                   order by this field
       --page uint32                    results page number (default 1)
-      --picture                        select the picture field
+      --picture                        select the picture field and all allowed sub-fields
       --service-profile-id             select the service_profile_id field
       --version-ids                    select the version_ids field and all allowed sub-fields
       --version-ids.band-id            select the version_ids.band_id field

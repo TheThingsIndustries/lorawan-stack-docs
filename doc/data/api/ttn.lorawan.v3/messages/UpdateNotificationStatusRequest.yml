@@ -1,0 +1,27 @@
+name: UpdateNotificationStatusRequest
+fields:
+- name: receiver_ids
+  comment: The IDs of the receiving user.
+  message:
+    name: UserIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: ids
+  comment: The IDs of the notifications to update the status of.
+  rules:
+    min_items: 1
+    max_items: 1000
+    unique: true
+  repeated:
+    type: string
+    rules:
+      len: 36
+  default: []
+- name: status
+  comment: The status to set on the notifications.
+  enum:
+    name: NotificationStatus
+  rules:
+    defined_only: true
+  default: NOTIFICATION_STATUS_UNSEEN

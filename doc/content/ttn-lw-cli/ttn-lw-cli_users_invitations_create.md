@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli users invitations create"
 slug: ttn-lw-cli_users_invitations_create
-type: "commands"
 ---
 
 ## ttn-lw-cli users invitations create

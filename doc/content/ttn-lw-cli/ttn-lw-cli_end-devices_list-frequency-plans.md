@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli end-devices list-frequency-plans"
 slug: ttn-lw-cli_end-devices_list-frequency-plans
-type: "commands"
 ---
 
 ## ttn-lw-cli end-devices list-frequency-plans

@@ -9,7 +9,7 @@ The MQTT protocol can be used to develop custom packet forwarders or gateway bri
 
 ## Multi-Tenancy
 
-On multi-tenant environments such as Cloud, endoints include the tenant id, e.g `gateway1@tenant1`. On single tenant environments such as Open Source, the tenant id can be removed, i.e `gateway1`.
+On multi-tenant environments such as Cloud, endpoints include the tenant id, e.g `gateway1@tenant1`. On single tenant environments such as Open Source, the tenant id can be removed, i.e `gateway1`.
 
 ## MQTT Introduction
 

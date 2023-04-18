@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli gateways contact-info delete"
 slug: ttn-lw-cli_gateways_contact-info_delete
-type: "commands"
 ---
 
 ## ttn-lw-cli gateways contact-info delete

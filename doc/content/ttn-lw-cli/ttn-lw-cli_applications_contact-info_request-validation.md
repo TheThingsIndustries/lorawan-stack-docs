@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications contact-info request-validation"
 slug: ttn-lw-cli_applications_contact-info_request-validation
-type: "commands"
 ---
 
 ## ttn-lw-cli applications contact-info request-validation
@@ -15,12 +14,12 @@ ttn-lw-cli applications contact-info request-validation [application-id] [flags]
 ### Options
 
 ```
-      --contact-method string   allowed values: CONTACT_METHOD_EMAIL, CONTACT_METHOD_OTHER, CONTACT_METHOD_PHONE
-      --contact-type string     allowed values: CONTACT_TYPE_ABUSE, CONTACT_TYPE_BILLING, CONTACT_TYPE_OTHER, CONTACT_TYPE_TECHNICAL
-  -h, --help                    help for request-validation
-      --public                  
-      --validated-at string     (YYYY-MM-DDTHH:MM:SSZ)
-      --value string            
+      --contact-method string    allowed values: CONTACT_METHOD_OTHER, CONTACT_METHOD_EMAIL, CONTACT_METHOD_PHONE
+      --contact-type string      allowed values: CONTACT_TYPE_OTHER, CONTACT_TYPE_ABUSE, CONTACT_TYPE_BILLING, CONTACT_TYPE_TECHNICAL
+  -h, --help                     help for request-validation
+      --public                   
+      --validated-at timestamp   
+      --value string             
 ```
 
 ### Options inherited from parent commands
@@ -61,5 +60,5 @@ ttn-lw-cli applications contact-info request-validation [application-id] [flags]
 
 ### SEE ALSO
 
-* [ttn-lw-cli applications contact-info]({{< relref "ttn-lw-cli_applications_contact-info" >}})	 - Manage application contact info
+* [ttn-lw-cli applications contact-info]({{< relref "ttn-lw-cli_applications_contact-info" >}})	 - Manage application contact info (DEPRECATED. Instead, use administrative_contact and technical_contact fields of application)
 

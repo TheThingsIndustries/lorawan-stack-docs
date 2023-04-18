@@ -5,8 +5,8 @@ comment: |-
 methods:
   Claim:
     name: Claim
-    comment: Claims the end device by claim authentication code or QR code and transfers
-      the device to the target application.
+    comment: Claims the end device on a Join Server by claim authentication code or
+      QR code.
     input:
       name: ClaimEndDeviceRequest
     output:
@@ -14,6 +14,37 @@ methods:
     http:
     - method: POST
       path: /edcs/claim
+  Unclaim:
+    name: Unclaim
+    comment: Unclaims the end device on a Join Server.
+    input:
+      name: EndDeviceIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /edcs/claim/{application_ids.application_id}/devices/{device_id}
+  GetInfoByJoinEUI:
+    name: GetInfoByJoinEUI
+    comment: Return whether claiming is available for a given JoinEUI.
+    input:
+      name: GetInfoByJoinEUIRequest
+    output:
+      name: GetInfoByJoinEUIResponse
+    http:
+    - method: POST
+      path: /edcs/claim/info
+  GetClaimStatus:
+    name: GetClaimStatus
+    comment: Gets the claim status of an end device.
+    input:
+      name: EndDeviceIdentifiers
+    output:
+      name: GetClaimStatusResponse
+    http:
+    - method: GET
+      path: /edcs/claim/{application_ids.application_id}/devices/{device_id}
   AuthorizeApplication:
     name: AuthorizeApplication
     comment: |-

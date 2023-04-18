@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli users oauth authorizations list"
 slug: ttn-lw-cli_users_oauth_authorizations_list
-type: "commands"
 ---
 
 ## ttn-lw-cli users oauth authorizations list

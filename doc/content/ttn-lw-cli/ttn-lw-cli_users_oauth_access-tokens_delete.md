@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli users oauth access-tokens delete"
 slug: ttn-lw-cli_users_oauth_access-tokens_delete
-type: "commands"
 ---
 
 ## ttn-lw-cli users oauth access-tokens delete

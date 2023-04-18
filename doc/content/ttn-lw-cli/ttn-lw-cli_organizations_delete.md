@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli organizations delete"
 slug: ttn-lw-cli_organizations_delete
-type: "commands"
 ---
 
 ## ttn-lw-cli organizations delete

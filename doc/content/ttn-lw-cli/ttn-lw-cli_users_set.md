@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli users set"
 slug: ttn-lw-cli_users_set
-type: "commands"
 ---
 
 ## ttn-lw-cli users set
@@ -15,22 +14,20 @@ ttn-lw-cli users set [user-id] [flags]
 ### Options
 
 ```
-      --admin                                       
-      --attributes strings                          key=value
-      --deleted-at string                           (YYYY-MM-DDTHH:MM:SSZ)
-      --description string                          
-  -h, --help                                        help for set
-      --name string                                 
-      --password string                             
-      --primary-email-address string                
-      --primary-email-address-validated-at string   (YYYY-MM-DDTHH:MM:SSZ)
-      --profile-picture string                      upload the profile picture from this file
-      --require-password-update                     
-      --state string                                allowed values: STATE_APPROVED, STATE_FLAGGED, STATE_REJECTED, STATE_REQUESTED, STATE_SUSPENDED (default "STATE_APPROVED")
-      --state-description string                    
-      --temporary-password string                   
-      --temporary-password-expires-at string        (YYYY-MM-DDTHH:MM:SSZ)
-      --user-id string                              
+      --admin                                          
+      --attributes stringToString                      
+      --description string                             
+  -h, --help                                           help for set
+      --name string                                    
+      --password string                                
+      --primary-email-address string                   
+      --primary-email-address-validated-at timestamp   
+      --profile-picture string                         upload the profile picture from this file
+      --require-password-update                        
+      --state string                                   allowed values: STATE_REQUESTED, STATE_APPROVED, STATE_REJECTED, STATE_FLAGGED, STATE_SUSPENDED
+      --state-description string                       
+      --temporary-password string                      
+      --user-id string                                 
 ```
 
 ### Options inherited from parent commands

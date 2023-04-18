@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli end-devices use-external-join-server"
 slug: ttn-lw-cli_end-devices_use-external-join-server
-type: "commands"
 ---
 
 ## ttn-lw-cli end-devices use-external-join-server

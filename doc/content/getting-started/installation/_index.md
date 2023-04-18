@@ -2,6 +2,7 @@
 title: "Installing The Things Stack"
 description: ""
 distributions: ["Enterprise", "Open Source"]
+weight: 3
 ---
 
 This is a guide for installing {{% tts %}} Enterprise or Open Source on your own hardware, to run your own private LoRaWAN network server.
@@ -10,7 +11,7 @@ This is a guide for installing {{% tts %}} Enterprise or Open Source on your own
 
 There are several ways to run {{% tts %}}. Open Source and Enterprise are designed to run on your own hardware, which this guide covers. Alternatively, to use {{% tts %}} in the cloud without installing it on your own hardware, see [{{% tts %}} Cloud]({{< relref "cloud-hosted" >}}) (our professional, SLA-backed offering) or [Community Edition]({{< relref "ttn" >}}) (our free-to-use community edition). To spin up your own EC2 instance, there is also an [AWS Launcher]({{< relref "aws" >}}). To install using balenaCloud on a Rasperry Pi, see the [Balena]({{< relref "balena" >}}) section.
 
-All deployments of {{% tts %}} except Open Source support multi-tenancy, which allows you to create multiple private network servers within a single deployment, for example to resell to individual clients.
+All deployments of {{% tts %}} except Open Source and AWS Launcher support multi-tenancy, which allows you to create multiple private network servers within a single deployment, for example to resell to individual clients.
 
 Continue following these instructions to run {{% tts %}} Enterprise or Open Source on your own hardware, using Docker.
 

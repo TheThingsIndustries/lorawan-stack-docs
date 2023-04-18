@@ -54,7 +54,7 @@ ttn-lw-cli end-devices update --application-id <application-id> --device-id <dev
 
 The Network Server will start using the `Rx1Delay` of 6 seconds for downlink communication with the end device.
 
-## Available MAC settings
+## Available MAC Settings
 
 Run the following command to get a list of all available MAC settings and available parameter values:
 
@@ -98,6 +98,8 @@ Class C:
 
 Some additional examples are included below. All settings are available at the [End Device API Reference page]({{< ref "reference/api/end_device#message:MACSettings" >}}) and can be viewed using the `ttn-lw-cli end-devices set --help` command.
 
+## Examples
+
 ### Configure Factory Preset Frequencies for ABP Devices
 
 To tell {{% tts %}} which frequencies are configured in an ABP device, set the `mac-settings.factory-preset-frequencies` parameter. For example, to configure a device using the default EU868 frequencies, use the following command:
@@ -120,11 +122,13 @@ See the [End Device API Reference]({{< ref "reference/api/end_device#message:MAC
 
 ### Enable ADR
 
-To enable ADR, set the `mac-settings.use-adr` parameter
+To enable ADR, set the `mac-settings.use-adr` parameter:
 
 ```bash
 ttn-lw-cli end-devices set <app-id> <device-id> --mac-settings.use-adr=true 
 ```
+
+See the [Adaptive Data Rate]({{< ref "/reference/adr" >}}) section for detailed information on configuring ADR parameters and ADR margin using MAC settings.
 
 ### Set RX1 Delay
 
@@ -140,4 +144,16 @@ The CLI can also be used to unset MAC settings (so that the default ones are use
 
 ```bash
 ttn-lw-cli end-devices set <app-id> <device-id> --unset mac-settings.rx1-delay
+```
+
+## Session and MAC State Reset
+
+Resetting session and MAC state for OTAA devices will wipe out all session and MAC data, and the end device will need to perform a rejoin on {{% tts %}} network. For ABP devices, only MAC state gets reset, while session keys, DevAddr and downlink queue are preserved.
+
+Session and MAC state can be reset through the Console - navigate to your end device's **General settings** tab, scroll down to the **Network layer** section, press the **Reset session and MAC state** button and confirm.
+
+To reset session and MAC state using the CLI:
+
+```bash
+ttn-lw-cli end-devices reset --application-id <application-id> --device-id <device-id>
 ```

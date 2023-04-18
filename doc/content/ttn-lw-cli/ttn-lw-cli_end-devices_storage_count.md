@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli end-devices storage count"
 slug: ttn-lw-cli_end-devices_storage_count
-type: "commands"
 ---
 
 ## ttn-lw-cli end-devices storage count

@@ -1,30 +1,18 @@
 version: '3.7'
 services:
 
-  # If using CockroachDB:
-  cockroach:
-    # In production, replace 'latest' with tag from https://hub.docker.com/r/cockroachdb/cockroach/tags
-    image: cockroachdb/cockroach:latest
-    command: start-single-node --http-port 26256 --insecure
+  postgres:
+    # In production, replace 'latest' with tag from https://hub.docker.com/_/postgres?tab=tags
+    image: postgres:latest
     restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_USER=root
+      - POSTGRES_DB=ttn_lorawan
     volumes:
-      - ${DEV_DATA_DIR:-.env/data}/cockroach:/cockroach/cockroach-data
+      - ${DEV_DATA_DIR:-.env/data}/postgres:/var/lib/postgresql/data
     ports:
-      - "127.0.0.1:26257:26257" # Cockroach
-      - "127.0.0.1:26256:26256" # WebUI
-
-  # If using PostgreSQL:
-  # postgres:
-  #   image: postgres
-  #   restart: unless-stopped
-  #   environment:
-  #     - POSTGRES_PASSWORD=root
-  #     - POSTGRES_USER=root
-  #     - POSTGRES_DB=ttn_lorawan
-  #   volumes:
-  #     - ${DEV_DATA_DIR:-.env/data}/postgres:/var/lib/postgresql/data
-  #   ports:
-  #     - "127.0.0.1:5432:5432"
+      - "127.0.0.1:5432:5432"
 
   redis:
     # In production, replace 'latest' with tag from https://hub.docker.com/_/redis?tab=tags
@@ -44,10 +32,7 @@ services:
     restart: unless-stopped
     depends_on:
       - redis
-      # If using CockroachDB:
-      - cockroach
-      # If using PostgreSQL:
-      # - postgres
+      - postgres
     volumes:
       - ./blob:/srv/ttn-lorawan/public/blob
       - ./config/stack:/config:ro
@@ -56,10 +41,7 @@ services:
     environment:
       TTN_LW_BLOB_LOCAL_DIRECTORY: /srv/ttn-lorawan/public/blob
       TTN_LW_REDIS_ADDRESS: redis:6379
-      # If using CockroachDB:
-      TTN_LW_IS_DATABASE_URI: postgres://root@cockroach:26257/ttn_lorawan?sslmode=disable
-      # # If using PostgreSQL:
-      # TTN_LW_IS_DATABASE_URI: postgres://root:root@postgres:5432/ttn_lorawan?sslmode=disable
+      TTN_LW_IS_DATABASE_URI: postgres://root:root@postgres:5432/ttn_lorawan?sslmode=disable
 
     ports:
       # If deploying on a public server:

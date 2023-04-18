@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli gateways collaborators delete"
 slug: ttn-lw-cli_gateways_collaborators_delete
-type: "commands"
 ---
 
 ## ttn-lw-cli gateways collaborators delete

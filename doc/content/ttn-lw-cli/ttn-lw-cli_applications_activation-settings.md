@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications activation-settings"
 slug: ttn-lw-cli_applications_activation-settings
-type: "commands"
 ---
 
 ## ttn-lw-cli applications activation-settings

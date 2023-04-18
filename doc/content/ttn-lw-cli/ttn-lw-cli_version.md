@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli version"
 slug: ttn-lw-cli_version
-type: "commands"
 ---
 
 ## ttn-lw-cli version

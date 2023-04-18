@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications create"
 slug: ttn-lw-cli_applications_create
-type: "commands"
 ---
 
 ## ttn-lw-cli applications create
@@ -19,12 +18,13 @@ ttn-lw-cli applications create [application-id] [flags]
       --administrative-contact.ids.user-ids.email string                     
       --administrative-contact.ids.user-ids.user-id string                   
       --application-id string                                                
-      --attributes strings                                                   key=value
-      --deleted-at string                                                    (YYYY-MM-DDTHH:MM:SSZ)
+      --application-server-address string                                    
+      --attributes stringToString                                            
       --description string                                                   
-      --dev-eui-counter uint32                                               
   -h, --help                                                                 help for create
+      --join-server-address string                                           
       --name string                                                          
+      --network-server-address string                                        
       --organization-id string                                               
       --technical-contact.ids.organization-ids.organization-id string        
       --technical-contact.ids.user-ids.email string                          

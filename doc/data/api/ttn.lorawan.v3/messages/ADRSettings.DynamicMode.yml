@@ -1,0 +1,68 @@
+name: ADRSettings.DynamicMode
+comment: Configuration options for dynamic ADR.
+fields:
+- name: margin
+  comment: |-
+    The ADR margin (dB) tells the network server how much margin it should add in ADR requests.
+    A bigger margin is less efficient, but gives a better chance of successful reception.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    package: google.protobuf
+    name: FloatValue
+  default: null
+- name: min_data_rate_index
+  comment: |-
+    Minimum data rate index.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    name: DataRateIndexValue
+  default: {}
+- name: max_data_rate_index
+  comment: |-
+    Maximum data rate index.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    name: DataRateIndexValue
+  default: {}
+- name: min_tx_power_index
+  comment: |-
+    Minimum transmission power index.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    package: google.protobuf
+    name: UInt32Value
+  rules:
+    lte: 15
+  default: null
+- name: max_tx_power_index
+  comment: |-
+    Maximum transmission power index.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    package: google.protobuf
+    name: UInt32Value
+  rules:
+    lte: 15
+  default: null
+- name: min_nb_trans
+  comment: |-
+    Minimum number of retransmissions.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    package: google.protobuf
+    name: UInt32Value
+  rules:
+    lte: 3
+    gte: 1
+  default: null
+- name: max_nb_trans
+  comment: |-
+    Maximum number of retransmissions.
+    If unset, the default value from Network Server configuration will be used.
+  message:
+    package: google.protobuf
+    name: UInt32Value
+  rules:
+    lte: 3
+    gte: 1
+  default: null

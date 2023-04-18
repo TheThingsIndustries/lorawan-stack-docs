@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli organizations rights"
 slug: ttn-lw-cli_organizations_rights
-type: "commands"
 ---
 
 ## ttn-lw-cli organizations rights

@@ -1,12 +1,11 @@
 ---
 title: "ttn-lw-cli applications contact-info"
 slug: ttn-lw-cli_applications_contact-info
-type: "commands"
 ---
 
 ## ttn-lw-cli applications contact-info
 
-Manage application contact info
+Manage application contact info (DEPRECATED. Instead, use administrative_contact and technical_contact fields of application)
 
 ### Options
 
@@ -53,9 +52,6 @@ Manage application contact info
 ### SEE ALSO
 
 * [ttn-lw-cli applications]({{< relref "ttn-lw-cli_applications" >}})	 - Application commands
-* [ttn-lw-cli applications contact-info create]({{< relref "ttn-lw-cli_applications_contact-info_create" >}})	 - 
-* [ttn-lw-cli applications contact-info delete]({{< relref "ttn-lw-cli_applications_contact-info_delete" >}})	 - 
-* [ttn-lw-cli applications contact-info list]({{< relref "ttn-lw-cli_applications_contact-info_list" >}})	 - 
 * [ttn-lw-cli applications contact-info request-validation]({{< relref "ttn-lw-cli_applications_contact-info_request-validation" >}})	 - Request validation for entity contact info
 * [ttn-lw-cli applications contact-info validate]({{< relref "ttn-lw-cli_applications_contact-info_validate" >}})	 - Validate contact info
 

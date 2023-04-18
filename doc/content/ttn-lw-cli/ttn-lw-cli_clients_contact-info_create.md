@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli clients contact-info create"
 slug: ttn-lw-cli_clients_contact-info_create
-type: "commands"
 ---
 
 ## ttn-lw-cli clients contact-info create

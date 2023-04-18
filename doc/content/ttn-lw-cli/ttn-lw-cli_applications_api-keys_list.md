@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications api-keys list"
 slug: ttn-lw-cli_applications_api-keys_list
-type: "commands"
 ---
 
 ## ttn-lw-cli applications api-keys list

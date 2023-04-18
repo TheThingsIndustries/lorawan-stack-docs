@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications search"
 slug: ttn-lw-cli_applications_search
-type: "commands"
 ---
 
 ## ttn-lw-cli applications search
@@ -22,21 +21,26 @@ ttn-lw-cli applications search [flags]
       --administrative-contact.ids.user-ids.email                     select the administrative_contact.ids.user_ids.email field
       --administrative-contact.ids.user-ids.user-id                   select the administrative_contact.ids.user_ids.user_id field
       --all                                                           select all application fields
+      --application-server-address                                    select the application_server_address field
       --attributes                                                    select the attributes field
-      --attributes-contain stringToString                             (key=value) (default [])
+      --attributes-contain stringToString                             
       --contact-info                                                  select the contact_info field
-      --deleted                                                       return recently deleted
+      --deleted                                                       
       --deleted-at                                                    select the deleted_at field
       --description                                                   select the description field
       --description-contains string                                   
       --dev-eui-counter                                               select the dev_eui_counter field
+      --field-mask strings                                            
   -h, --help                                                          help for search
       --id-contains string                                            
-      --limit uint32                                                  maximum number of results to get (default 50)
+      --join-server-address                                           select the join_server_address field
+      --limit uint32                                                  
       --name                                                          select the name field
       --name-contains string                                          
-      --order string                                                  order by this field
-      --page uint32                                                   results page number (default 1)
+      --network-server-address                                        select the network_server_address field
+      --order string                                                  
+      --page uint32                                                   
+      --query string                                                  
       --technical-contact                                             select the technical_contact field and all allowed sub-fields
       --technical-contact.ids.organization-ids                        select the technical_contact.ids.organization_ids field and all allowed sub-fields
       --technical-contact.ids.organization-ids.organization-id        select the technical_contact.ids.organization_ids.organization_id field

@@ -1,7 +1,6 @@
 ---
 title: "ttn-lw-cli applications issue-dev-eui"
 slug: ttn-lw-cli_applications_issue-dev-eui
-type: "commands"
 ---
 
 ## ttn-lw-cli applications issue-dev-eui
