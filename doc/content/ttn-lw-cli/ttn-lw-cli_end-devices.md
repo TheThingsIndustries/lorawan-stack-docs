@@ -57,7 +57,7 @@ End Device commands
 * [ttn-lw-cli end-devices downlink]({{< relref "ttn-lw-cli_end-devices_downlink" >}})	 - Application downlink commands
 * [ttn-lw-cli end-devices generate-qr]({{< relref "ttn-lw-cli_end-devices_generate-qr" >}})	 - Generate an end device QR code (EXPERIMENTAL)
 * [ttn-lw-cli end-devices get]({{< relref "ttn-lw-cli_end-devices_get" >}})	 - Get an end device
-* [ttn-lw-cli end-devices get-default-mac-settings]({{< relref "ttn-lw-cli_end-devices_get-default-mac-settings" >}})	 - Get Network Server default MAC settings for frequency plan and LoRaWAN version
+* [ttn-lw-cli end-devices get-default-mac-settings]({{< relref "ttn-lw-cli_end-devices_get-default-mac-settings" >}})	 - Get Network Server default MAC settings for frequency plan and LoRaWAN® version
 * [ttn-lw-cli end-devices get-dev-addr-prefixes]({{< relref "ttn-lw-cli_end-devices_get-dev-addr-prefixes" >}})	 - Get Network Server configured device address prefixes
 * [ttn-lw-cli end-devices get-net-id]({{< relref "ttn-lw-cli_end-devices_get-net-id" >}})	 - Get Network Server configured Net ID
 * [ttn-lw-cli end-devices list]({{< relref "ttn-lw-cli_end-devices_list" >}})	 - List end devices

@@ -4,7 +4,7 @@ description: ""
 weight: 1
 ---
 
-This section can help you understand the differences between ABP and OTAA activation modes for LoRaWAN end devices, and comprehend why using OTAA is recommended. 
+This section can help you understand the differences between ABP and OTAA activation modes for LoRaWAN® end devices, and comprehend why using OTAA is recommended.
 
 <!--more-->
 

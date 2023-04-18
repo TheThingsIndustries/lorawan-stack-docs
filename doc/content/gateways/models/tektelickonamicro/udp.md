@@ -4,7 +4,7 @@ description: ""
 aliases: [/gateways/tektelickonamicro/udp]
 ---
 
-This section guides you to connect the Tektelic Kona Micro IoT LoRaWAN Gateway to {{% tts %}} using the [{{% udp-pf %}}]({{< ref "/gateways/concepts/udp" >}}).
+This section guides you to connect the Tektelic Kona Micro IoT LoRaWAN® Gateway to {{% tts %}} using the [{{% udp-pf %}}]({{< ref "/gateways/concepts/udp" >}}).
 
 <!--more-->
 

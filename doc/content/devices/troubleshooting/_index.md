@@ -66,7 +66,7 @@ Device event logs can be found in the console in the device's general informatio
 
 Check your network coverage, and if your device is activated and transmitting Join Requests.
 
-It is possible that your device is sending Join Requests on non-default frequencies, i.e. on frequencies that {{% tts %}} is not listening on by default. If this is the case, Join Requests will be dropped on a gateway level. As per LoRaWAN specification, devices should be sending Join Requests on default frequencies of the defined frequency band. To fix this issue, reach out to your device manufacturer and find out which are the default frequencies for your device. Also, check out [using inappropriate frequencies](#i-can-see-some-received-uplinks-in-gateway-live-data-events-but-i-do-not-see-them-in-device-events) below.
+It is possible that your device is sending Join Requests on non-default frequencies, i.e. on frequencies that {{% tts %}} is not listening on by default. If this is the case, Join Requests will be dropped on a gateway level. As per LoRaWAN® specification, devices should be sending Join Requests on default frequencies of the defined frequency band. To fix this issue, reach out to your device manufacturer and find out which are the default frequencies for your device. Also, check out [using inappropriate frequencies](#i-can-see-some-received-uplinks-in-gateway-live-data-events-but-i-do-not-see-them-in-device-events) below.
 
 ## My device will not join. What do I do?
 

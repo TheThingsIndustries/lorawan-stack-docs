@@ -29,7 +29,7 @@ $ echo "AzYFASd/Gcggs..." | base64 --decode > ttn-lw-stack-license.bin
 
 ## Key Vault
 
-{{< distributions "Cloud" "Enterprise" >}} The key vault is used to store secrets, such as TLS certificates and the keys for encrypting LoRaWAN root keys in the database. These secrets can also be cached. {{% tts %}} supports keys stored in AWS Secrets Manager, or static configuration for development purposes.
+{{< distributions "Cloud" "Enterprise" >}} The key vault is used to store secrets, such as TLS certificates and the keys for encrypting LoRaWAN® root keys in the database. These secrets can also be cached. {{% tts %}} supports keys stored in AWS Secrets Manager, or static configuration for development purposes.
 
 - `key-vault.provider`: Provider (`static` or `aws`)
 - `key-vault.static`: Static key encryption keys; values use hex encoding

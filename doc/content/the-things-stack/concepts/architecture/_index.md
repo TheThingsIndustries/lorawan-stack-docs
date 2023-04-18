@@ -15,7 +15,7 @@ weight: 1
 |Component (Service)|Short|Description|
 |---|---|---|
 |Gateway Server|`GS`| Maintains connections with gateways supporting the Basic Station, UDP, MQTT and gRPC protocols. It forwards uplink traffic to Network Servers directly or indirectly, and schedules downlink traffic on gateways. |
-|Network Server|`NS`| Handles the LoRaWAN network layer, including MAC commands, regional parameters and adaptive data rate (ADR). |
+|Network Server|`NS`| Handles the LoRaWAN® network layer, including MAC commands, regional parameters and adaptive data rate (ADR). |
 |Application Server|`AS`| Handles the LoRaWAN application layer, including uplink data decryption and decoding, downlink queuing and downlink data encoding and encryption. |
 |Identity Server|`IS`| Provides the registries that store entities such as applications with their end devices, gateways, users, organizations, OAuth clients and authentication providers. It also manages access control through memberships and API keys. |
 |Join Server|`JS`| Handles the LoRaWAN join flow, including Network and Application Server authentication and session key generation. |

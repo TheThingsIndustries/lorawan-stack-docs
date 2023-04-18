@@ -4,7 +4,7 @@ description: ""
 weight: 3
 ---
 
-Now that you are familiar with LoRaWAN and {{% tts %}}, let us set up your first LoRaWAN Network.
+Now that you are familiar with LoRaWAN® and {{% tts %}}, let us set up your first LoRaWAN Network.
 
 <!--more-->
 

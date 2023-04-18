@@ -28,7 +28,7 @@ This section lists the preparatory steps necessary to successfully complete this
 In order to follow this guide to deploy {{% tts %}}, it is recommended to be familiar with the following concepts:
 - AWS EC2, AWS CloudFormation
 - Shell and command line usage
-- Basics of LoRaWAN devices and gateways
+- Basics of LoRaWAN® devices and gateways
 
 ### Prerequisites
 
@@ -36,7 +36,7 @@ The following are necessary to complete this guide:
 1. An account with AWS with access to the AWS Marketplace. If you don't have one, create it by using the [Create an AWS account](https://portal.aws.amazon.com/billing/signup#/start) page.
 2. An RSA Public-Private Key pair
 3. Sufficient rights on your account to create IAM roles
-4. A LoRaWAN compliant Gateway
+4. A LoRaWAN® compliant Gateway
 5. A LoRaWAN compliant End Device
 6. Access to a name server for DNS mapping
 

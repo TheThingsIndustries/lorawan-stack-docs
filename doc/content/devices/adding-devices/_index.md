@@ -28,7 +28,7 @@ To create a device, first open the application you wish to add the device in. Go
 
 {{< figure src="application-overview.png" alt="Application overview" >}}
 
-You will be presented with options to easily onboard your device using its QR code (if you have it), and to register your end device from the [LoRaWAN Device Repository](https://github.com/TheThingsNetwork/lorawan-devices/) or manually.
+You will be presented with options to easily onboard your device using its QR code (if you have it), and to register your end device from the [LoRaWAN® Device Repository](https://github.com/TheThingsNetwork/lorawan-devices/) or manually.
 
 {{< figure src="adding-devices-options.png" alt="Options to add devices" >}}
 

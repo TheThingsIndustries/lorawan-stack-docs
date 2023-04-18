@@ -4,7 +4,7 @@ description: ""
 alias: [/gateways/ciscowirelessgateway]
 ---
 
-This page guides you to connecting the Cisco Wireless Gateway for LoRaWAN to {{% tts %}}.
+This page guides you to connecting the Cisco Wireless Gateway for LoRaWAN® to {{% tts %}}.
 
 <!--more-->
 

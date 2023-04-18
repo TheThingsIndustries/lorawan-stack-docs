@@ -88,7 +88,7 @@ If all steps have been followed correctly, once you register your gateway it wil
 
 ## Troubleshooting
 
-When you cannot find a way to change the LoRaWAN settings, you might need to update the system firmware. You can do so by following steps below:
+When you cannot find a way to change the LoRaWAN® settings, you might need to update the system firmware. You can do so by following steps below:
 
 * Navigate to **System** > **System Firmware** on the left hand menu
 * Download [this file](https://connectedthings.store/files/WAPS-232N_LW_OPDK_GUI_1.01.09_3416004962.tar.gz), making sure to keep the file name exactly the same (do not unzip this file)

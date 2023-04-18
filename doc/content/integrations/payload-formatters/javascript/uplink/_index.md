@@ -140,7 +140,7 @@ The normalized payload schema is continuously being extended to support more fie
 
 ### Advanced: Return Multiple Measurements {#multiple-measurements}
 
-Multiple measurements can be encoded by the end device in a single LoRaWAN uplink message. This is a good practice as it is more battery efficient. Therefore, the uplink decoder may find multiple measurements from the same sensor. The normalizer function can therefore return an array of measurements, as an alternative to a single measurement:
+Multiple measurements can be encoded by the end device in a single LoRaWAN® uplink message. This is a good practice as it is more battery efficient. Therefore, the uplink decoder may find multiple measurements from the same sensor. The normalizer function can therefore return an array of measurements, as an alternative to a single measurement:
 
 ```js
 function normalizeUplink(input) {

@@ -60,7 +60,7 @@ The generated QR code will automatically be saved to the current directory with 
 
 If you scan the generated identification QR code, you will see that it stores the information in the following format: `LW:<schema-id>:<join-eui>:<dev-eui>:<profile-id>`.
 
-The SchemaID value will be `D0` as it is the only device schema version described by the [LoRaWAN Device Identification QR Codes for Automated Onboarding Technical Recommendation (TR005)](https://lora-alliance.org/wp-content/uploads/2020/11/TR005_LoRaWAN_Device_Identification_QR_Codes.pdf).
+The SchemaID value will be `D0` as it is the only device schema version described by the [LoRaWAN® Device Identification QR Codes for Automated Onboarding Technical Recommendation (TR005)](https://lora-alliance.org/wp-content/uploads/2020/11/TR005_LoRaWAN_Device_Identification_QR_Codes.pdf).
 
 The ProfileID encodes a VendorID, assigned by the LoRa Alliance prior to commercial production of a device, and a VendorProfileID, assigned by the device manufacturer for commercial products. Read more in the [TR005 document](https://lora-alliance.org/wp-content/uploads/2020/11/TR005_LoRaWAN_Device_Identification_QR_Codes.pdf).
 

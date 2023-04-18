@@ -6,7 +6,7 @@ weight: 4
 aliases: [/getting-started/installation]
 ---
 
-This is a guide for installing {{% tts %}} Enterprise or Open Source on your own hardware using Docker, to run your own private LoRaWAN network server.
+This is a guide for installing {{% tts %}} Enterprise or Open Source on your own hardware using Docker, to run your own private LoRaWAN® network server.
 
 <!--more-->
 

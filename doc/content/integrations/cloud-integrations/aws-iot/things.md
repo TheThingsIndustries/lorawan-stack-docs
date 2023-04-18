@@ -48,7 +48,7 @@ Make sure that at least **Thing: created, updated, deleted** is checked.
 
 You can use AWS IoT to create devices in {{% tts %}}. This is useful to manage all your things in one place, without having to use {{% tts %}} Console, CLI or API.
 
-Creating a Thing allows you to add any LoRaWAN device by manually entering its information and security keys.
+Creating a Thing allows you to add any LoRaWAN® device by manually entering its information and security keys.
 
 In the AWS Console, open **Services** and go to **IoT Core**.
 

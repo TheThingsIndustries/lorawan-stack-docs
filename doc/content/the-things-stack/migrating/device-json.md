@@ -5,7 +5,7 @@ weight: 8
 aliases: [/the-things-stack/migrating-from-networks/device-json, /getting-started/migrating/device-json]
 ---
 
-{{% tts %}} allows you to import end devices from {{% ttnv2 %}}, ChirpStack and other LoRaWAN networks using a JSON file describing those devices.
+{{% tts %}} allows you to import end devices from {{% ttnv2 %}}, ChirpStack and other LoRaWAN® networks using a JSON file describing those devices.
 
 Using JSON file with device descriptions, you can migrate end devices with or without their existing sessions.
 

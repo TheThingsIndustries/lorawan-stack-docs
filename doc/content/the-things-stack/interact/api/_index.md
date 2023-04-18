@@ -201,7 +201,7 @@ curl --location \
   'https://thethings.example.com/api/v3/js/applications/app1/devices/newdev1'
 ```
 
-Register LoRaWAN settings in the Network Server:
+Register LoRaWAN® settings in the Network Server:
 
 ```bash
 curl --location \

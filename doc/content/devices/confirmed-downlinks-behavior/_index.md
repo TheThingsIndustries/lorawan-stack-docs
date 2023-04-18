@@ -10,7 +10,7 @@ This section describes differences in behavior of class A, B and C devices when 
 
 Let's consider scheduling a confirmed downlink message from the Network Server. The end device that receives this downlink is requested to send a confirmation upon its reception.
 
-To confirm a reception of the above mentioned downlink, a confirmation flag is attached to device's next uplink message. The confirmation flag is part of the standard LoRaWAN frame header. If the flag is an NACK, the end device indicates that it has not previously received a downlink message that required acknowledgement. If the flag is a ACK, the end device indicates that it wants to provide the acknowledgement for the previously received downlink message that requested it. This applies to all [device classes](https://www.thethingsnetwork.org/docs/lorawan/classes/).
+To confirm a reception of the above mentioned downlink, a confirmation flag is attached to device's next uplink message. The confirmation flag is part of the standard LoRaWAN® frame header. If the flag is an NACK, the end device indicates that it has not previously received a downlink message that required acknowledgement. If the flag is a ACK, the end device indicates that it wants to provide the acknowledgement for the previously received downlink message that requested it. This applies to all [device classes](https://www.thethingsnetwork.org/docs/lorawan/classes/).
 
 In general, upon receiving the next uplink message with an ACK flag, the Network Server decrypts the uplink message and generates the `downlink ack` message. The Application Server receives the `downlink ack` message and  forwards it further to the integrations.
 

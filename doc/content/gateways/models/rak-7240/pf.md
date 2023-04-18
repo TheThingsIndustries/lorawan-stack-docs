@@ -9,7 +9,7 @@ RAK7240's **Packet Forwarder** mode utilizes the [{{% udp-pf %}}]({{< ref "/gate
 
 <!--more-->
 
-{{< note >}} Packet Forwarder mode also includes an option to use the gateway as an MQTT bridge. This allows RAK7240 to connect to its built-in LoRa Network Server, or to an external server. However, {{% tts %}} is not supported (yet) as an external LoRaWAN network server by this gateway. {{</ note >}}
+{{< note >}} Packet Forwarder mode also includes an option to use the gateway as an MQTT bridge. This allows RAK7240 to connect to its built-in LoRa Network Server, or to an external server. However, {{% tts %}} is not supported (yet) as an external LoRaWAN® network server by this gateway. {{</ note >}}
 
 To configure the gateway to use the {{% udp-pf %}}, navigate to **LoRa Network &#8594; Network Settings &#8594; Packet Forwarder Settings**.
 

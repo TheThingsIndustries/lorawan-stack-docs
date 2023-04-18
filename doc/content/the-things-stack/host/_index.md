@@ -8,7 +8,7 @@ weight: 2
 
 <!--more-->
 
-The Things Industries offers {{% tts %}} as a fully-managed, SLA-backed cloud subscription called [`{{% tts %}} Cloud`]({{< relref "cloud" >}}). The complexity of managing a LoRaWAN network server in production is handled by us, while you can focus on delivering value to your customers.
+The Things Industries offers {{% tts %}} as a fully-managed, SLA-backed cloud subscription called [`{{% tts %}} Cloud`]({{< relref "cloud" >}}). The complexity of managing a LoRaWAN® network server in production is handled by us, while you can focus on delivering value to your customers.
 
 Users can easily get started with The Things Stack Cloud by signing up for [free discovery tier](https://www.thethingsindustries.com/stack/plans/) to get started and test the capabilities of {{% tts %}}. Once you are ready to scale your LoRaWAN fleet, you can seamlessly update the subscription to reflect the changes. For most users, {{% tts %}} Cloud is the recommended option.
 

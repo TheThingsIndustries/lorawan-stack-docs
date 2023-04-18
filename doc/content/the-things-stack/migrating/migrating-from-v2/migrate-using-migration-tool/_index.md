@@ -51,7 +51,7 @@ If the Discovery Server of your private The Things Industries V2 (SaaS) cluster 
 
 Next, you can proceed with exporting one or more end devices, with or without their active session, from {{% ttnv2 %}} to a [JSON file]({{< ref "/the-things-stack/migrating/device-json" >}}).
 
-{{< note >}} Migrating end devices from {{% ttnv2 %}} to {{% tts %}} is a one-way process, since LoRaWAN devices may be handled by only one Network Server at a time. {{</ note >}}
+{{< note >}} Migrating end devices from {{% ttnv2 %}} to {{% tts %}} is a one-way process, since LoRaWAN® devices may be handled by only one Network Server at a time. {{</ note >}}
 
 Now, read the following subsections for detailed steps on how to migrate devices from {{% ttnv2 %}} to {{% tts %}} using `ttn-lw-migrate` tool:
 

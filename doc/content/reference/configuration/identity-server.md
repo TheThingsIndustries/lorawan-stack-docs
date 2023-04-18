@@ -218,7 +218,7 @@ By default admins are granted _almost_ all rights on all entities in the network
 
 ## Network Options
 
-{{% tts %}} Identity Server supports LoRaWAN Backend Interfaces, so it is possible to obtain an end device's NetID, Tenant ID and Network Server address with the use of a vendor-specific extension.
+{{% tts %}} Identity Server supports LoRaWAN® Backend Interfaces, so it is possible to obtain an end device's NetID, Tenant ID and Network Server address with the use of a vendor-specific extension.
 
 - `is.network.net-id`: The NetID of the network. When running a Network Server, this needs to be the same value as `ns.net-id`.
 - `is.network.tenant-id`: The Tenant ID in the host NetID. Leave blank if the used NetID is dedicated for this Identity Server.

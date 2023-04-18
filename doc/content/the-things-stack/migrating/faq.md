@@ -7,7 +7,7 @@ This section answers frequently asked questions regarding migration to {{% tts %
 
 ### Why should I migrate my devices and gateways to {{% tts %}}? 
 
-{{% tts %}} is more scalable, more secure, and supports more of the LoRaWAN specification than {{% ttnv2 %}}. The Things Network {{% ttnv2 %}} machines have been completely shut down on **December 8, 2021**. Only private The Things Industries {{% ttnv2 %}} infrastructure is still running, but the associated software will no longer be developed or maintained by The Things Industries.
+{{% tts %}} is more scalable, more secure, and supports more of the LoRaWAN® specification than {{% ttnv2 %}}. The Things Network {{% ttnv2 %}} machines have been completely shut down on **December 8, 2021**. Only private The Things Industries {{% ttnv2 %}} infrastructure is still running, but the associated software will no longer be developed or maintained by The Things Industries.
 
 ### When should I migrate my devices and gateways to {{% tts %}}? 
 

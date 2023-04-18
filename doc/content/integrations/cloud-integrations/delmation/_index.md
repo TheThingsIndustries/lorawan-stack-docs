@@ -3,7 +3,7 @@ title: "Delmation Products"
 description: ""
 ---
 
-With the **Delmation Products | Docksters** integration, data from your LoRaWAN devices can easily be sent to the **Docksters IoT portal**. 
+With the **Delmation Products | Docksters** integration, data from your LoRaWAN® devices can easily be sent to the **Docksters IoT portal**. 
 
 Built on the latest cloud-based technology, Docksters can help you excel your business model with the power of IoT data. Using Docksters, you can convert your business into a future proof, data driven company.
 

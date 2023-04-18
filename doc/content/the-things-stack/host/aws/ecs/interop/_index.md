@@ -5,7 +5,7 @@ weight: 8
 aliases: [/getting-started/aws/ecs/interop]
 ---
 
-{{% tts %}} exposes a subset of the Join Server API defined by LoRaWAN Backend Interfaces 1.0 and 1.1. This is used for interoperability between LoRaWAN networks.
+{{% tts %}} exposes a subset of the Join Server API defined by LoRaWAN® Backend Interfaces 1.0 and 1.1. This is used for interoperability between LoRaWAN networks.
 
 <!--more-->
 

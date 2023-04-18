@@ -4,7 +4,7 @@ description: ""
 aliases: [/components/network-server]
 ---
 
-The Network Server handles the LoRaWAN network layer, including MAC commands, regional parameters and adaptive data rate (ADR).
+The Network Server handles the LoRaWAN® network layer, including MAC commands, regional parameters and adaptive data rate (ADR).
 
 <!--more-->
 

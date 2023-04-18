@@ -103,7 +103,7 @@ The template `2-4a-is-s3` creates S3 buckets for the Identity Server. This templ
 
 In addition to the re-used parameters (see [Prerequisites]({{< relref "../prerequisites" >}})), this template asks for the names of the buckets you want to create. It is typically fine to leave these parameters empty, and have automatically generated bucket names.
 
-The template `2-4b-routing-s3` creates an S3 bucket that stores configuration for interoperability with other LoRaWAN Backend Interfaces-compliant servers. Even if you don't plan to immediately activate interoperability, this template is still required by another template that you will deploy later in this guide.
+The template `2-4b-routing-s3` creates an S3 bucket that stores configuration for interoperability with other LoRaWAN® Backend Interfaces-compliant servers. Even if you don't plan to immediately activate interoperability, this template is still required by another template that you will deploy later in this guide.
 
 **Template:** https://thethingsindustries.s3.amazonaws.com/public/cloud/3.x.y/2-4b-routing-s3.gen.template (replace `3.x.y` with the current minor and patch version).
 

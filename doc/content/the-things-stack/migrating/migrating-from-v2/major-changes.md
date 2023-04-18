@@ -12,7 +12,7 @@ Before going in detail with the migration process, this section will give you a 
 
 ## LoRaWAN support
 
-{{% tts %}} brings full support for all LoRaWAN versions, as well as modes to support class B and class C capabilities. 
+{{% tts %}} brings full support for all LoRaWAN® versions, as well as modes to support class B and class C capabilities. 
 
 {{% tts %}} requires the LoRaWAN version (MAC) and Regional Parameters version (LoRaWAN PHY version) to be set per end device. These default to LoRaWAN version **MAC V1.0.2** and LoRaWAN Regional Parameters version **PHY V1.0.2 Rev B** for end devices imported from {{% ttnv2 %}}, because this configuration is the most commonly used one.
 

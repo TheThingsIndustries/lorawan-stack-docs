@@ -3,7 +3,7 @@ title: "Connect Milesight UG8X with UDP Packet Forwarder"
 description: ""
 ---
 
-This section contains instructions for connecting the Milesight UG8X LoRaWAN gateway to {{% tts %}} using the [{{% udp-pf %}}]({{< ref "/gateways/concepts/udp" >}}).
+This section contains instructions for connecting the Milesight UG8X LoRaWAN® gateway to {{% tts %}} using the [{{% udp-pf %}}]({{< ref "/gateways/concepts/udp" >}}).
 
 <!--more-->
 

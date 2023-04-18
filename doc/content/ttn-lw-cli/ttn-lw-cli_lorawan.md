@@ -5,7 +5,7 @@ slug: ttn-lw-cli_lorawan
 
 ## ttn-lw-cli lorawan
 
-LoRaWAN commands
+LoRaWAN® commands
 
 ### Options
 

@@ -9,7 +9,7 @@ aliases: [/getting-started/ttn]
 
 [The Things Network](https://www.thethingsnetwork.org/) is a global collaborative Internet of Things ecosystem that creates networks, devices and solutions using LoRaWAN.
 
-The Things Network runs {{% tts %}} Community Edition, which is a crowdsourced, open and decentralized LoRaWAN network. This network is a great way to get started testing devices, applications, and integrations, and get familiar with LoRaWAN.
+The Things Network runs {{% tts %}} Community Edition, which is a crowdsourced, open and decentralized LoRaWAN® network. This network is a great way to get started testing devices, applications, and integrations, and get familiar with LoRaWAN.
 
 <!--more-->
 

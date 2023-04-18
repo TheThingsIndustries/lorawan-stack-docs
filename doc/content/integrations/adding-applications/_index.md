@@ -97,7 +97,7 @@ See the [CLI Reference]({{< ref "/ttn-lw-cli/ttn-lw-cli_applications_api-keys" >
 
 ## Payload Encryption and Decryption
 
-LoRaWAN frames are encrypted and decrypted on the application layer using the AppSKey by default.
+LoRaWAN® frames are encrypted and decrypted on the application layer using the AppSKey by default.
 
 Once the application is created, you can update your application settings to skip uplink payload decryption and downlink payload encryption. This will cause the Application Server to forward messages to integrations without any processing, for example it will neglect [payload formatters]({{< ref "/integrations/payload-formatters" >}}), meaning the integrations will be responsible for decrypting uplink messages in order to understand them. Also, scheduling downlinks from {{% tts %}} will be restricted, as it is expected for downlinks in that case to be scheduled from integrations.
 

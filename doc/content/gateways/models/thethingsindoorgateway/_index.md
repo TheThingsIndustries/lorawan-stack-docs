@@ -12,7 +12,7 @@ This page guides you to connect {{% ttig %}} to {{% tts %}}.
 
 <!--more-->
 
-{{% ttig %}} is an 8 Channel LoRaWAN gateway, whose technical specifications can be found in [the official documentation](https://www.thethingsnetwork.org/docs/gateways/thethingsindoor/).
+{{% ttig %}} is an 8 Channel LoRaWAN® gateway, whose technical specifications can be found in [the official documentation](https://www.thethingsnetwork.org/docs/gateways/thethingsindoor/).
 
 ## Prerequisites
 

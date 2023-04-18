@@ -91,7 +91,7 @@ sudo journalctl -f -u lorawan-stack.service
 
 ## Routing LoRaWAN Traffic
 
-Now that your stack has been successfully deployed, let's look at how to connect a LoRaWAN Gateway, Register a LoRaWAN Device and read traffic from this device.
+Now that your stack has been successfully deployed, let's look at how to connect a LoRaWAN® Gateway, Register a LoRaWAN Device and read traffic from this device.
 
 ### Connecting a Gateway
 

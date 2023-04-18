@@ -4,7 +4,7 @@ description: ""
 weight: 1
 ---
 
-This guide briefly explains the architecture and key concepts of a LoRaWAN network.
+This guide briefly explains the architecture and key concepts of a LoRaWAN® network.
 
 <!--more-->
 

@@ -20,7 +20,7 @@ The following columns are recognized:
 
 Column | Required | Alias | Format | Meaning
 --- | --- | --- | --- | ---
-`dev_eui` | **Yes** | | Hexadecimal string | LoRaWAN DevEUI
+`dev_eui` | **Yes** | | Hexadecimal string | LoRaWAN® DevEUI
 `join_eui` | **Yes** | `app_eui` | Hexadecimal string | LoRaWAN JoinEUI (or AppEUI)
 `id` | No | | Alphanumeric string, lowercase with hyphens | Device ID (falls back to DevEUI if not set)
 `name` | No | | Free form | Name

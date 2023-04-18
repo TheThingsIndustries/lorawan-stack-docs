@@ -38,7 +38,7 @@ All meaningful changes to templates are documented in this file.
 ### ECS templates
 
 - Support for TLS mutual authentication terminated by The Things Stack has been removed. TLS authentication is now only terminated by the Network Load Balancer or Envoy Proxy.
-- Support for LoRaWAN Backend Interfaces interoperability with the Join Server has been removed.
+- Support for LoRaWAN® Backend Interfaces interoperability with the Join Server has been removed.
 - Crypto Server deployment has been removed.
 
 ### Upgrade procedure

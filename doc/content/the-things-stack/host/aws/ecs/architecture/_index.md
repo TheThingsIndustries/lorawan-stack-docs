@@ -21,7 +21,7 @@ The NLBs and NGWs all have Elastic IP address. All incoming connections to {{% t
 
 ## Persistence
 
-{{% tts %}} relies on two databases: PostgreSQL and Redis. AWS offers these databases as managed services, so that we can focus on operating a LoRaWAN network instead of operating databases. 
+{{% tts %}} relies on two databases: PostgreSQL and Redis. AWS offers these databases as managed services, so that we can focus on operating a LoRaWAN® network instead of operating databases. 
 
 We use a PostgreSQL-compatible version of Amazon Aurora and a Redis-compatible version of Amazon ElastiCache. Both PostgreSQL and Redis are deployed in a multi-AZ master-replica setup. 
 

@@ -6,7 +6,7 @@ aliases: [/gateways/milesightug6x]
 
 {{< figure src="ug6x.png" alt="Milesight IoT UG6x" class="plain float" >}}
 
-The **Milesight UG6X** is a series of 2 robust 8-channel LoRaWAN gateways for industrial IoT applications. This page contains information about connecting the Milesight IoT UG6x LoRaWAN gateway to {{% tts %}}.
+The **Milesight UG6X** is a series of 2 robust 8-channel LoRaWAN® gateways for industrial IoT applications. This page contains information about connecting the Milesight IoT UG6x LoRaWAN gateway to {{% tts %}}.
 
 <!--more-->
 

@@ -55,7 +55,7 @@ The Things Industries Command-line Interface
 * [ttn-lw-cli gateways]({{< relref "ttn-lw-cli_gateways" >}})	 - Gateway commands
 * [ttn-lw-cli login]({{< relref "ttn-lw-cli_login" >}})	 - Login
 * [ttn-lw-cli logout]({{< relref "ttn-lw-cli_logout" >}})	 - Logout
-* [ttn-lw-cli lorawan]({{< relref "ttn-lw-cli_lorawan" >}})	 - LoRaWAN commands
+* [ttn-lw-cli lorawan]({{< relref "ttn-lw-cli_lorawan" >}})	 - LoRaWAN® commands
 * [ttn-lw-cli notifications]({{< relref "ttn-lw-cli_notifications" >}})	 - Manage notifications
 * [ttn-lw-cli organizations]({{< relref "ttn-lw-cli_organizations" >}})	 - Organization commands
 * [ttn-lw-cli packetbroker]({{< relref "ttn-lw-cli_packetbroker" >}})	 - Packet Broker commands

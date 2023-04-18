@@ -14,7 +14,7 @@ This section provides guidelines for configuring MAC settings for end devices fr
 
 MAC settings on {{% tts %}} are configurable per end device. To configure persistent MAC settings, make changes to `mac-settings.desired_<parameter>`. Updates to `mac-settings.desired_<parameter>` take effect on device creation, after OTAA join or ABP FCnt reset, ResetInd, or after MAC state reset.
 
-`mac-settings.<parameter>` represents what the Network Server believes is configured on the end device, and should not be changed, unless the device does not conform to the LoRaWAN specification. It may however be necessary to set `mac-settings.RX1_delay` for ABP devices where this is not configured as part of activation.
+`mac-settings.<parameter>` represents what the Network Server believes is configured on the end device, and should not be changed, unless the device does not conform to the LoRaWAN® specification. It may however be necessary to set `mac-settings.RX1_delay` for ABP devices where this is not configured as part of activation.
 
 `mac-state` can be used to test MAC settings in the current session. To update settings for testing in the current session, make changes to the `mac-state.desired_parameters.<parameter>`. Updates to the `mac-state.desired_parameters.<parameter>` are applied on the next uplink, and lost on reset.
 

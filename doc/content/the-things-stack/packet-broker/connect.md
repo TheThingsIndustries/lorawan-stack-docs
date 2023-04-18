@@ -35,7 +35,7 @@ If you own a NetID, enter your NetID to obtain your DevAddr prefix:
 
 Your DevAddr prefix is: <code><span data-content="dev-addr-prefix"></span></code>
 
-See a full list of NetIDs, DevAddr Prefix assignments, operators, and regions they are allocated to in [The Things Network LoRaWAN documentation](https://www.thethingsnetwork.org/docs/lorawan/prefix-assignments/).
+See a full list of NetIDs, DevAddr Prefix assignments, operators, and regions they are allocated to in [The Things Network LoRaWAN® documentation](https://www.thethingsnetwork.org/docs/lorawan/prefix-assignments/).
 
 ## Configure Packet Broker Agent
 

@@ -25,7 +25,7 @@ Open your application and click the button **Import end devices**
 
 Select the **File format** and upload the file (e.g. `devices.json` or `devices.csv`).
 
-You can specify **Fallback values** for Frequency plan and LoRaWAN and Regional Parameters version, in case the import file does not specify these settings for the device.
+You can specify **Fallback values** for Frequency plan and LoRaWAN® and Regional Parameters version, in case the import file does not specify these settings for the device.
 
 You can also expand the **Advanced claiming and component settings** to set targeted components, and set the claim authentication code to be generated.
 

@@ -6,7 +6,7 @@ aliases: [/guides/connecting-gateways/kerlinkwirnetistation, /gateways/kerlinkwi
 
 {{< figure src="Kerlink-Wirnet-iStation.png" alt="Kerlink Wirnet iStation" class="float plain" >}}
 
-The [Kerlink Wirnet iStation](https://www.kerlink.com/product/wirnet-istation/) is an outdoor LoRaWAN gateway that represents an evolution of the legacy [Kerlink Wirnet Station]({{< ref "/gateways/models/kerlinkwirnetstation" >}}) gateway. It offers cellular (4G with 3G/2G fallback) and Ethernet backhauls, as well as fully integrated internal GPS, 4G and LoRa antennas.
+The [Kerlink Wirnet iStation](https://www.kerlink.com/product/wirnet-istation/) is an outdoor LoRaWAN® gateway that represents an evolution of the legacy [Kerlink Wirnet Station]({{< ref "/gateways/models/kerlinkwirnetstation" >}}) gateway. It offers cellular (4G with 3G/2G fallback) and Ethernet backhauls, as well as fully integrated internal GPS, 4G and LoRa antennas.
 
 <!--more-->
 

@@ -39,7 +39,7 @@ There are three types of radio configuration. All types are typically defined in
 
 **Hardware Specific** is a configuration unique to the hardware. This is defined in a file shipped with the gateway and should not be modified. Examples are `clksrc` and RSSI offset.
 
-**LoRaWAN Regional** is a configuration according to LoRaWAN Regional Parameters. This is common to all gateways using the same Regional Parameters, and is provided by the network server automatically when using {{% lbs %}}. It must be configured manually for UDP gateways. Examples are data rates and mandatory channels.
+**LoRaWAN Regional** is a configuration according to LoRaWAN® Regional Parameters. This is common to all gateways using the same Regional Parameters, and is provided by the network server automatically when using {{% lbs %}}. It must be configured manually for UDP gateways. Examples are data rates and mandatory channels.
 
 **User Defined** is a configuration which the user is free to choose. Examples are non-mandatory channels and sub-bands.
 

@@ -4,7 +4,7 @@ description: ""
 aliases: [/gateways/nasysoutdoorgateway]
 ---
 
-This page guides you to connect NASys LoRaWAN Outdoor Gateway to {{% tts %}}.
+This page guides you to connect NASys LoRaWAN® Outdoor Gateway to {{% tts %}}.
 
 <!--more-->
 

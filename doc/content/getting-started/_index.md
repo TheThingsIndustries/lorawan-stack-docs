@@ -8,7 +8,7 @@ menu:
 aliases: [/guides/getting-started, /guides/getting-started/running-the-stack, /guides/getting-started/quick-start, /getting-started/quick-start/]
 ---
 
-{{% tts %}} is an enterprise-grade LoRaWAN Network Server that provides services and tools to securely install and manage millions of LoRaWAN devices in production.
+{{% tts %}} is an enterprise-grade LoRaWAN® Network Server that provides services and tools to securely install and manage millions of LoRaWAN devices in production.
 
 This getting started section is divided into the following parts. You can either read these sequentially or skip ahead to the specific guide that you are looking for.
 

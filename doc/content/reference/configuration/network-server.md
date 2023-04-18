@@ -49,7 +49,7 @@ The `ns.default-mac-settings` options configure default device MAC configuration
 
 ## Interoperability Options
 
-The `ns.interop` options configure how Network Server performs interoperability with other LoRaWAN Backend Interfaces-compliant servers.
+The `ns.interop` options configure how Network Server performs interoperability with other LoRaWAN® Backend Interfaces-compliant servers.
 
 - `ns.interop.id`: NSID of this Network Server
 - `ns.interop.config-source`: Source of the interoperability client configuration (directory, url, blob)

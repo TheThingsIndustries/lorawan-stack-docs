@@ -44,7 +44,7 @@ When receiving a data uplink message, the Gateway Server decides which Network S
 
 ### Downlink Messages
 
-Network Servers can request transmission for downlink messages. The Gateway Server attempts to schedule the message based on the selected gateways, time to send the message and LoRaWAN settings (downlink class, RX1 delay and RX1/RX2 data rates and frequencies).
+Network Servers can request transmission for downlink messages. The Gateway Server attempts to schedule the message based on the selected gateways, time to send the message and LoRaWAN® settings (downlink class, RX1 delay and RX1/RX2 data rates and frequencies).
 
 The Gateway Server keeps track of all downlinks emitted and to be emitted by gateways connected to it, including the exact time-on-air based on message size and data rate. This allows {{% tts %}} to do smart scheduling. Besides timing and LoRaWAN settings, the Gateway Server takes applicable limitations into account, including:
 

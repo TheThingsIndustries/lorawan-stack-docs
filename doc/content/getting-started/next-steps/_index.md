@@ -4,7 +4,7 @@ description: ""
 weight: 4
 ---
 
-Once you have your first LoRaWAN Network setup, here are the next steps.
+Once you have your first LoRaWAN® Network setup, here are the next steps.
 
 <!--more-->
 

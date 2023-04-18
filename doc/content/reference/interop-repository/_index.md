@@ -3,7 +3,7 @@ title: "LoRaWAN Join Server Configuration"
 description: ""
 ---
 
-{{% tts %}} Network Server and Application Server can use LoRaWAN Backend Interfaces 1.0 and 1.1 with LoRaWAN Join Servers.
+{{% tts %}} Network Server and Application Server can use LoRaWAN® Backend Interfaces 1.0 and 1.1 with LoRaWAN Join Servers.
 
 <!-- more -->
 

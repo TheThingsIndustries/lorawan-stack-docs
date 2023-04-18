@@ -19,5 +19,5 @@ Then, click `Add device` and configure the balenaOS file by filling in the prese
 You can find more detailed instructions on [GitHub](https://github.com/xoseperez/the-things-stack-docker) and [balenaHub](https://hub.balena.io/organizations/xoseperez/projects/the-things-stack).
 
 {{< note >}}
-If you have a LoRa concentrator for the Raspberry Pi (e.g. RAK2245 or RAK2287 SPI-based) you can also turn your Pi in to a LoRaWAN gateway by running the `basicstation` service alongside {{% tts %}}. Find the project [here](https://hub.balena.io/organizations/xoseperez/projects/basicstation).  Or having everything together including Node-RED, InfluxDB and Grafana for a truly standalone gateway. Check this out [here](https://hub.balena.io/organizations/xoseperez/projects/standalone-lorawan-gw).
+If you have a LoRa concentrator for the Raspberry Pi (e.g. RAK2245 or RAK2287 SPI-based) you can also turn your Pi in to a LoRaWAN® gateway by running the `basicstation` service alongside {{% tts %}}. Find the project [here](https://hub.balena.io/organizations/xoseperez/projects/basicstation).  Or having everything together including Node-RED, InfluxDB and Grafana for a truly standalone gateway. Check this out [here](https://hub.balena.io/organizations/xoseperez/projects/standalone-lorawan-gw).
 {{</ note >}}

@@ -41,7 +41,7 @@ An uplink was received and forwarded by multiple gateways, but due to backhaul l
 
 ### Invalid Major / JoinRequestPHYPayload Length / Unknown MType
 
-These are typically non-LoRaWAN traffic received by a gateway on your network.
+These are typically non-LoRaWAN® traffic received by a gateway on your network.
 
 ### Token Refresh Refused
 

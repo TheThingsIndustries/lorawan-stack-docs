@@ -4,7 +4,7 @@ description: ""
 weight: 2
 ---
 
-{{% tts %}} supports versions 1.0.x and 1.1.x of the LoRaWAN specifications.
+{{% tts %}} supports versions 1.0.x and 1.1.x of the LoRaWAN® specifications.
 
 <!--more-->
 
