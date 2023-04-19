@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.96.0" />
+  <title>Fine-tuning MAC Settings for End Devices | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/configure-mac-settings/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8058c473c43c01571dbb7b1b4de287fb8e077613d282e9b7b9db17271211dd60.css" integrity="sha256-gFjEc8Q8AVcdu3sbTeKH&#43;44HdhPSgum3udsXJxIR3WA=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="The Things Stack for LoRaWAN">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Fine-tuning MAC Settings for End Devices">
+  <meta itemprop="description" content="The Things Stack for LoRaWAN">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Fine-tuning MAC Settings for End Devices">
+  <meta property="og:description" content="The Things Stack for LoRaWAN">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/migrating/configure-mac-settings/">
+  <meta name="twitter:title" content="Fine-tuning MAC Settings for End Devices" />
+  <meta name="twitter:description" content="The Things Stack for LoRaWAN" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body><nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.24.2</p>
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://accounts.thethingsindustries.com/fee-calculator">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">The Things Stack</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/the-things-stack/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/" class="">Basic Concepts</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/cloud/" class="">The Things Stack Cloud</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/" class="">Host The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/" class="">Interact with The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/management/" class="">Manage The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/" class="">Migrate to The Things Stack</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-between-tts-distributions/" class="">Migrating End Devices between The Things Stack distributions</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migration-tool/" class="">Migration Tool</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-from-v2/" class="">Migrating End Devices from V2</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/import-devices/" class="">Import End Devices in The Things Stack</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/configure-mac-settings/" class="is-active">Fine-tuning MAC Settings for End Devices</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/gateway-migration/" class="">Migrating Gateways</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/device-json/" class="">JSON File Reference</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/device-csv/" class="">CSV File Reference</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/faq/" class="">Migration FAQ</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/packet-broker/" class="">Packet Broker</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/troubleshooting/" class="">Troubleshooting</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        <h1 class="title is-size-2">Fine-tuning MAC Settings for End Devices
+          
+        </h1>
+        
+        <div class="content">
+          <p>MAC settings on The Things Stack are configurable per end device. See the <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/">MAC settings guide</a> for instructions.</p>
+<p>Devices migrated from V2 (The Things Network V2 or The Things Industries V2) are configured with an RX1 delay of 1 second, by default. In all The Things Stack deployments, the recommended RX1 delay is 5 seconds to accommodate for high latency backhauls and/or <a href="https://www.thethingsindustries.com/docs/the-things-stack/packet-broker/">peering with Packet Broker</a>.</p>
+
+        </div>
+        <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/the-things-stack/migrating/import-devices/">← Import End Devices in The Things Stack</a>
+<a class="button is-pulled-right" href="/docs/the-things-stack/migrating/gateway-migration/">Migrating Gateways →</a>
+</div>
+
+        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/ttn-network/v3/90">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Krishna Iyer on 19 Apr 2023.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b36a78abab91e6a6967b41f03b65551a89e54c9">
+      Restructure documentation (#1076)
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/the-things-stack/migrating/configure-mac-settings.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

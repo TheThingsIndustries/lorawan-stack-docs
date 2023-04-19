@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.96.0" />
+  <title>Kubernetes | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8058c473c43c01571dbb7b1b4de287fb8e077613d282e9b7b9db17271211dd60.css" integrity="sha256-gFjEc8Q8AVcdu3sbTeKH&#43;44HdhPSgum3udsXJxIR3WA=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Kubernetes">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Kubernetes">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/">
+  <meta name="twitter:title" content="Kubernetes" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body><nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.24.2</p>
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://accounts.thethingsindustries.com/fee-calculator">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">The Things Stack</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/the-things-stack/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/" class="">Basic Concepts</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/cloud/" class="">The Things Stack Cloud</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/" class="">Host The Things Stack</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/aws/" class="">AWS</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/" class="is-active">Kubernetes</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/prerequisites/" class="">Prerequisites</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/preparation/" class="">Preparation</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/configuration/" class="">Configuration</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/install-charts/" class="">Install Charts</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/monitoring/" class="">Monitoring</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/troubleshooting/" class="">Troubleshooting</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/docker/" class="">Docker</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/join-server/" class="">The Things Join Server</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/" class="">Interact with The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/management/" class="">Manage The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/" class="">Migrate to The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/packet-broker/" class="">Packet Broker</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/troubleshooting/" class="">Troubleshooting</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        <h1 class="title is-size-2">Kubernetes
+          
+        </h1>
+        
+        <div class="content">
+          <p>The Things Stack is packaged as a <a href="https://helm.sh/">Helm Chart</a> to be run on Kubernetes Clusters. The Things Stack Helm charts are packaged and distributed as <a href="https://helm.sh/docs/topics/registries/">OCI packages</a> and are published to <a href="https://hub.docker.com/r/thethingsindustries/lorawan-stack-helm-chart">Docker Hub</a>.</p>
+<p>This guide helps the user to install and configure The Things Stack on a Kubernetes cluster.</p>
+<p>Operating The Things Stack on a Kubernetes cluster is only meant for advanced users with sufficient experience with the chosen infrastructure platform and with Kubernetes.</p>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  Until the release of v1.0.0, all versions are considered to be in the Alpha stage and are not suitable for production use. The Things Industries does not offer any guarantees on compatibility between the Alpha versions.
+</div>
+
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Make sure to follow each section of this guide in the same order as it is written without skipping any steps.
+</div>
+
+<h2 id="udp-gateway-support">UDP Gateway Support</h2>
+<p>UDP gateways require connection stickiness in order to continue communicating with Gateway Server instances when they get recreated or when the nodes on which Gateway Servers are running are replaced. The most straightforward way to do this is to connect UDP gateways directly to the Gateway Server service via an external Load Balancer.
+This depends on the settings of the external Load Balancer that is used. The implementation details are specific to the external environment and is hence out of scope for this documentation.
+Please check the documentation of the Load Balancer and run tests to ensure that gateway communication is not lost on server updates.</p>
+<h2 id="kubernetes-version-support">Kubernetes Version Support</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Kubernetes v1.21 and above</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Chart v1.0.0 and below (alpha)</td>
+<td>[x]</td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+        
+          <div class="columns is-multiline">
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/prerequisites/">Prerequisites</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The following are required for The Things Stack on Kubernetes.
+Installation Tools  kubectl Helm version 3. Check the version of Helm installed using helm version. Helm v3.8 or above is required.  License The Things Stack requires a license key to run. Please contact our sales team for your license key.
+(Optional) Packet Broker Access The Things Stack contains the Packet Broker Agent component that can communicate with Packet Broker.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/prerequisites/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/preparation/">Preparation</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The Things Stack requires a few secret values to be configured. In this step, we generate them and store them for further use.
+Copy each generated secret to a local file and then transfer those values later into the corresponding location in the values.yaml file.
+Note: Secrets are required to be hex-encoded strings of the exact length mentioned in this guide.     Secret Description Size Setting in values.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/preparation/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/configuration/">Configuration</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The Things Stack Helm chart is configured using yaml files. This guide assumes that these fields are saved in a &amp;lt;deployment&amp;gt;.values.yaml file and used for deployment/updates.
+The following is a list of mandatory minimum fields. For a full list of possible values, check the values.yaml file at the root of the The Things Stack Helm chart.
+Warning: Some values in this file are secrets. Make sure to check this file into a secure repository.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/configuration/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/install-charts/">Install Charts</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The Things Stack Helm charts are packaged and distributed as OCI packages and are published to Docker Hub.
+Use the following steps to install the chart.
+ Login to the registry. This step can be skipped if you&amp;rsquo;ve already logged in via Docker Client.  $ helm registry login -u &amp;lt;username&amp;gt; registry-1.docker.io Note: registry-1 is the OCI registry of Docker Hub.  Pull the OCI container.  $ helm pull oci://registry-1.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/install-charts/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/monitoring/">Monitoring</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            The Things Stack exposes Prometheus metrics at the /metrics endpoint. This route is protected by Basic Auth with username metrics and password global.http.metrics.password.
+To scrape these metrics, you can install Prometheus in the cluster. The installation details are outside the scope of this document.
+The following scrape config can be used to scrape metrics from each of the components of The Things Stack.
+scrape_configs:- job_name:&amp;lt;name&amp;gt;metrics_path:/metricsscheme:httpbasic_auth:username:metricspassword:&amp;lt;password&amp;gt;static_configs:# This is the cluster local endpoint of the component&amp;#39;s service.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/monitoring/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column is-half is-flex">
+    <div class="card has-radius is-fullwidth">
+      <div class="card-content">
+        <div class="title-content">
+          <h1 class="title is-size-5 is-uppercase"><a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/troubleshooting/">Troubleshooting</a>
+          </h1>
+          
+          <div class="content has-text-grey">
+            
+            This guide contains general troubleshooting information.
+Why do the GS, NS, AS and JS components fail to start? The one thing that is common between these four components (and not others) is that they all use Redis. Make sure to troubleshoot the Redis server that&amp;rsquo;s used. Ensure that Redis is reachable from within the cluster. If authentication is required, make sure that the configuration works.
+If using the Bitnami Helm Charts for Redis, make sure to either setup TLS or disable password authentication.
+            
+          </div>
+        </div>
+        <div class="buttons">
+          <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/troubleshooting/" class="button is-primary is-outlined">Read</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+        
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/the-things-stack/host/aws/ecs/">← AWS ECS</a>
+<a class="button is-pulled-right" href="/docs/the-things-stack/host/kubernetes/prerequisites/">Prerequisites →</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#udp-gateway-support'>UDP Gateway Support</a></li>
+    
+      
+      <li><a href='#kubernetes-version-support'>Kubernetes Version Support</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/ttn-network/v3/90">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Krishna Iyer on 19 Apr 2023.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b36a78abab91e6a6967b41f03b65551a89e54c9">
+      Restructure documentation (#1076)
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/the-things-stack/host/kubernetes/_index.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

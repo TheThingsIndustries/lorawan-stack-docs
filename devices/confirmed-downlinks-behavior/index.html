@@ -10,7 +10,7 @@
   <title>Confirmed Downlinks Behavior | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/confirmed-downlinks-behavior/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8afd1a9ba4c2f5b2a5910c50125ba2636f89937b2e7f5ca55766ed500a2a1e4f.css" integrity="sha256-iv0am6TC9bKlkQxQEluiY2&#43;Jk3suf1ylV2btUAoqHk8=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8058c473c43c01571dbb7b1b4de287fb8e077613d282e9b7b9db17271211dd60.css" integrity="sha256-gFjEc8Q8AVcdu3sbTeKH&#43;44HdhPSgum3udsXJxIR3WA=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Confirmed Downlinks Behavior">
@@ -44,6 +44,7 @@
         <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
         <a class="navbar-item" href="/docs/devices/">Devices</a>
         <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
         <a class="navbar-item" href="/docs/integrations/">Integrations</a>
         <a class="navbar-item" href="/docs/reference/">Reference</a>
 
@@ -152,7 +153,7 @@
         <div class="content">
           <p>This section describes differences in behavior of class A, B and C devices when scheduling confirmed downlink messages.</p>
 <p>Let&rsquo;s consider scheduling a confirmed downlink message from the Network Server. The end device that receives this downlink is requested to send a confirmation upon its reception.</p>
-<p>To confirm a reception of the above mentioned downlink, a confirmation flag is attached to device&rsquo;s next uplink message. The confirmation flag is part of the standard LoRaWAN frame header. If the flag is an NACK, the end device indicates that it has not previously received a downlink message that required acknowledgement. If the flag is a ACK, the end device indicates that it wants to provide the acknowledgement for the previously received downlink message that requested it. This applies to all <a href="https://www.thethingsnetwork.org/docs/lorawan/classes/">device classes</a>.</p>
+<p>To confirm a reception of the above mentioned downlink, a confirmation flag is attached to device&rsquo;s next uplink message. The confirmation flag is part of the standard LoRaWAN® frame header. If the flag is an NACK, the end device indicates that it has not previously received a downlink message that required acknowledgement. If the flag is a ACK, the end device indicates that it wants to provide the acknowledgement for the previously received downlink message that requested it. This applies to all <a href="https://www.thethingsnetwork.org/docs/lorawan/classes/">device classes</a>.</p>
 <p>In general, upon receiving the next uplink message with an ACK flag, the Network Server decrypts the uplink message and generates the <code>downlink ack</code> message. The Application Server receives the <code>downlink ack</code> message and  forwards it further to the integrations.</p>
 <p>Similar to that, if the next uplink message with a NACK flag is received, the Network Server decrypts the uplink, generates the <code>downlink nack</code> message and sends it to the Application Server. The Application Server then forwards the <code>downlink nack</code> to integrations and regenerates the downlink.</p>
 <p>Sending a downlink happens only after an uplink for class A devices. If a NACK is received from a class A device, the downlink will automatically be re-encrypted and resent.</p>
@@ -199,6 +200,7 @@
         <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
         <p><a class="" href="/docs/devices/">Devices</a></p>
         <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
         <p><a class="" href="/docs/integrations/">Integrations</a></p>
         <p><a class="" href="/docs/reference/">Reference</a></p>
       </nav>
@@ -217,10 +219,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 18 Feb 2022.
+  Last changed by Krishna Iyer on 19 Apr 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/f1234f5ed1c807fc36bfad21f0110e4f46f56b7f">
-      doc: Document server behavior for scheduling confirmed downlinks towards class B and C devices (#778)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b36a78abab91e6a6967b41f03b65551a89e54c9">
+      Restructure documentation (#1076)
     </a>
 </p>
 

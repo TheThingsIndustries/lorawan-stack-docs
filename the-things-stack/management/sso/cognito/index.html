@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.96.0" />
+  <title>Amazon Cognito | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/management/sso/cognito/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8058c473c43c01571dbb7b1b4de287fb8e077613d282e9b7b9db17271211dd60.css" integrity="sha256-gFjEc8Q8AVcdu3sbTeKH&#43;44HdhPSgum3udsXJxIR3WA=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Amazon Cognito">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Amazon Cognito">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/management/sso/cognito/">
+  <meta name="twitter:title" content="Amazon Cognito" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body><nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.24.2</p>
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://accounts.thethingsindustries.com/fee-calculator">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">The Things Stack</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/the-things-stack/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/" class="">Basic Concepts</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/cloud/" class="">The Things Stack Cloud</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/" class="">Host The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/" class="">Interact with The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/management/" class="">Manage The Things Stack</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/management/sso/" class="">Single Sign-On</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/management/sso/cognito/" class="is-active">Amazon Cognito</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/management/sso/google/" class="">Google OpenID Connect</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/management/user-management/" class="">Users and Organizations</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/management/events/" class="">Working with Events</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/management/purge/" class="">Purging Entities</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/management/telemetry/" class="">Telemetry</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/management/tenant-management/" class="">Tenant Management</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/management/branding/" class="">Web UI Branding</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/" class="">Migrate to The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/packet-broker/" class="">Packet Broker</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/troubleshooting/" class="">Troubleshooting</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        <h1 class="title is-size-2">Amazon Cognito
+          
+        </h1>
+        
+        <div class="content">
+          <p>This section contains instructions to configure Amazon Cognito to work with The Things Stack.</p>
+<!-- more -->
+<p>Configuring OpenID Connect with Amazon Cognito will allow single sign-on from any account within a Cognito user pool.</p>
+<h2 id="create-a-user-pool">Create a User Pool</h2>
+<p>From the <a href="https://console.aws.amazon.com/cognito/">Amazon Cognito Management Page</a>, choose <strong>Manage User Pools</strong>.</p>
+<figure><img src="manage-user-pools.png"/>
+</figure>
+
+<p>Click <strong>Create a user pool</strong> in the top right.</p>
+<figure><img src="create-user-pool.png"/>
+</figure>
+
+<p>Give the user pool a name of your choosing. You will not need this later, you may pick any name.</p>
+<p>Click <strong>Review defaults</strong>.</p>
+<figure><img src="name.png"/>
+</figure>
+
+<p>Leave all default settings, but click <strong>Add app client</strong>.</p>
+<figure><img src="add-app-client.png"/>
+</figure>
+
+<p>Click <strong>Add an app client</strong>.</p>
+<figure><img src="add-app-client-2.png"/>
+</figure>
+
+<p>Give the App Client a name and leave all settings default. Click <strong>Create app client</strong>.</p>
+<figure><img src="add-app-client-3.png"/>
+</figure>
+
+<p>You will be taken back to the App Clients screen, where you should see the App Client you just added. Click <strong>Return to pool details</strong>.</p>
+<figure><img src="app-clients.png"/>
+</figure>
+
+<p>Verify that the App Client you added is listed in the pool. Click <strong>Create pool</strong>.</p>
+<figure><img src="create-pool.png"/>
+</figure>
+
+<p>In the left hand menu, choose <strong>App client settings</strong>.</p>
+<p>Ensure that <strong>Cognito User Pool</strong> is checked for <strong>Enabled Identity Providers</strong>.</p>
+<figure><img src="app-client-settings.png"/>
+</figure>
+
+<p>For the <strong>Callback URL</strong>, enter the <strong>OAuth Callback URL</strong> of your The Things Stack deployment. This is the <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/server-addresses/">Server Address</a> followed by the OAuth endpoint, which includes an <strong>Authentication Provider ID</strong> of your choosing:</p>
+<p><code>/oauth/login/&lt;authentication-provider-id&gt;/callback</code></p>
+<p>You will actually create the Authentication Provider in The Things Stack using this Authentication Provider ID, so remember it.</p>
+<p>For example, with a tenant <code>tenant1</code> in the <code>eu1</code> cluster and an Authentication Provider ID of <code>aws-cog</code>, the OAuth Callback URL is:</p>
+<p><code>https://tenant1.eu1.cloud.thethings.industries/oauth/login/aws-cog/callback</code></p>
+<p>Additionally, ensure the following <strong>Allowed OAuth Scopes</strong> are checked:</p>
+<ul>
+<li>email</li>
+<li>openid</li>
+<li>profile</li>
+</ul>
+<p>Finally, click <strong>Save changes</strong>.</p>
+<figure><img src="callback.png"/>
+</figure>
+
+<p>Choose <strong>Domain name</strong> from the left hand menu.</p>
+<p>Choose a domain name. You will not need to remember it, but <strong>login will fail if no domain is configured</strong>.</p>
+<div class="notification is-warning is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Warning:</h5>
+  Failing to configure a domain name will cause login to fail.
+</div>
+
+<p>Click <strong>Save changes</strong>.</p>
+<figure><img src="domain.png"/>
+</figure>
+
+<p>Finally, go to <strong>App clients</strong> and choose your <strong>App Client</strong> to view your Client ID and Client Secret.</p>
+<figure><img src="secret.png"/>
+</figure>
+
+<p>Proceed to <a href="/docs/the-things-stack/management/sso/#configure-the-things-stack-for-sso">Configure The Things Stack for SSO</a> using the following information:</p>
+<ul>
+<li><strong>Client ID</strong>: Provided by Cognito</li>
+<li><strong>Client Secret</strong>: Provided by Cognito</li>
+<li><strong>Authentication Provider ID</strong>: Of your choosing (see above)</li>
+<li><strong>OpenID Discovery Address</strong>: <code>https://cognito-idp.{REGION_ID}.amazonaws.com/{POOL_ID}</code>. That should look like <code>https://cognito-idp.eu-west-2.amazonaws.com/eu-west-2_KcLwCelr7</code>. Your Pool ID is visible in <strong>General settings</strong>.</li>
+</ul>
+<h2 id="troubleshooting-amazon-cognito">Troubleshooting Amazon Cognito</h2>
+<p>If you receive an error when logging in with Cognito, check the following:</p>
+<ul>
+<li>Did you configure a <strong>Domain Name</strong> in Cognito?</li>
+<li>Did you enable <strong>email</strong>, <strong>profile</strong>, and <strong>openid</strong> scopes?</li>
+<li>Did you ensure <strong>Cognito User Pool</strong> is checked for <strong>Enabled Identity Providers</strong>?</li>
+</ul>
+
+        </div>
+        <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/the-things-stack/management/sso/">← Single Sign-On</a>
+<a class="button is-pulled-right" href="/docs/the-things-stack/management/sso/google/">Google OpenID Connect →</a>
+</div>
+
+        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#create-a-user-pool'>Create a User Pool</a></li>
+    
+      
+      <li><a href='#troubleshooting-amazon-cognito'>Troubleshooting Amazon Cognito</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/ttn-network/v3/90">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Krishna Iyer on 19 Apr 2023.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b36a78abab91e6a6967b41f03b65551a89e54c9">
+      Restructure documentation (#1076)
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/the-things-stack/management/sso/cognito/index.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>

@@ -10,7 +10,7 @@
   <title>Troubleshooting Devices | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/troubleshooting/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8afd1a9ba4c2f5b2a5910c50125ba2636f89937b2e7f5ca55766ed500a2a1e4f.css" integrity="sha256-iv0am6TC9bKlkQxQEluiY2&#43;Jk3suf1ylV2btUAoqHk8=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8058c473c43c01571dbb7b1b4de287fb8e077613d282e9b7b9db17271211dd60.css" integrity="sha256-gFjEc8Q8AVcdu3sbTeKH&#43;44HdhPSgum3udsXJxIR3WA=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Troubleshooting Devices">
@@ -44,6 +44,7 @@
         <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
         <a class="navbar-item" href="/docs/devices/">Devices</a>
         <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
         <a class="navbar-item" href="/docs/integrations/">Integrations</a>
         <a class="navbar-item" href="/docs/reference/">Reference</a>
 
@@ -171,7 +172,7 @@
 </span></span></code></pre></div></li>
 </ul>
 <h2 id="i-cannot-access-my-device-in-the-things-stack-console">I cannot access my device in The Things Stack Console.</h2>
-<p>If you cannot access your device in the Console, i.e. you&rsquo;re seeing the <code>An unknown error occured. Please try again later...</code> error, your device is probably not properly provisioned in all The Things Stack components (Identity Server, Join Server, Network Server and Application Server). For example, this might happen if you tried to create your device <a href="https://www.thethingsindustries.com/docs/getting-started/api/#multi-step-actions">using the API</a>, but you haven&rsquo;t created it properly in all four server components.</p>
+<p>If you cannot access your device in the Console, i.e. you&rsquo;re seeing the <code>An unknown error occured. Please try again later...</code> error, your device is probably not properly provisioned in all The Things Stack components (Identity Server, Join Server, Network Server and Application Server). For example, this might happen if you tried to create your device <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/api/#multi-step-actions">using the API</a>, but you haven&rsquo;t created it properly in all four server components.</p>
 <p>This error can be resolved if you delete your device from all four above mentioned server components, and recreate it from scratch.</p>
 <p>To check if your device is present in the Identity Server component:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X <span class="s1">&#39;GET&#39;</span> <span class="s1">&#39;https://thethings.example.com/api/v3/applications/&lt;application_id&gt;/devices/&lt;device_id&gt;&#39;</span> -H <span class="s1">&#39;Accept: application/json&#39;</span> -H <span class="s1">&#39;Authorization: Bearer &lt;api-key&gt;&#39;</span>
@@ -181,12 +182,12 @@
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X DELETE <span class="s1">&#39;https://thethings.example.com/api/v3/applications/&lt;application_id&gt;/devices/&lt;device_id&gt;&#39;</span> -H <span class="s1">&#39;Accept: application/json&#39;</span> -H <span class="s1">&#39;Authorization: Bearer &lt;api-key&gt;&#39;</span>
 </span></span></code></pre></div><p>To delete your device from Join Server, Network Server and/or Application Server:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -X DELETE <span class="s1">&#39;https://thethings.example.com/api/v3/&lt;js/ns/as&gt;/applications/&lt;application_id&gt;/devices/&lt;device_id&gt;&#39;</span> -H <span class="s1">&#39;Accept: application/json&#39;</span> -H <span class="s1">&#39;Authorization: Bearer &lt;api-key&gt;&#39;</span>
-</span></span></code></pre></div><p>Next, recreate your device as documented in the <a href="https://www.thethingsindustries.com/docs/getting-started/api/#multi-step-actions">Using the API</a> section.</p>
+</span></span></code></pre></div><p>Next, recreate your device as documented in the <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/api/#multi-step-actions">Using the API</a> section.</p>
 <h2 id="how-do-i-see-device-events">How do I see device events?</h2>
-<p>Device event logs can be found in the console in the device&rsquo;s general information page. See <a href="https://www.thethingsindustries.com/docs/getting-started/events/">Working with Events</a> for other ways of subscribing to events.</p>
+<p>Device event logs can be found in the console in the device&rsquo;s general information page. See <a href="https://www.thethingsindustries.com/docs/the-things-stack/management/events/">Working with Events</a> for other ways of subscribing to events.</p>
 <h2 id="i-see-no-join-requests-from-my-device-in-the-things-stack">I see no Join Requests from my device in The Things Stack.</h2>
 <p>Check your network coverage, and if your device is activated and transmitting Join Requests.</p>
-<p>It is possible that your device is sending Join Requests on non-default frequencies, i.e. on frequencies that The Things Stack is not listening on by default. If this is the case, Join Requests will be dropped on a gateway level. As per LoRaWAN specification, devices should be sending Join Requests on default frequencies of the defined frequency band. To fix this issue, reach out to your device manufacturer and find out which are the default frequencies for your device. Also, check out <a href="#i-can-see-some-received-uplinks-in-gateway-live-data-events-but-i-do-not-see-them-in-device-events">using inappropriate frequencies</a> below.</p>
+<p>It is possible that your device is sending Join Requests on non-default frequencies, i.e. on frequencies that The Things Stack is not listening on by default. If this is the case, Join Requests will be dropped on a gateway level. As per LoRaWAN® specification, devices should be sending Join Requests on default frequencies of the defined frequency band. To fix this issue, reach out to your device manufacturer and find out which are the default frequencies for your device. Also, check out <a href="#i-can-see-some-received-uplinks-in-gateway-live-data-events-but-i-do-not-see-them-in-device-events">using inappropriate frequencies</a> below.</p>
 <h2 id="my-device-will-not-join-what-do-i-do">My device will not join. What do I do?</h2>
 <ul>
 <li>
@@ -310,7 +311,7 @@
 </ul>
 </li>
 </ul>
-<p>This problem can also occur after <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session/">migrating an active device session</a> from V2 to The Things Stack, for devices that transmit uplinks on frequencies that are not part of the standard <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">frequency plans</a> used by The Things Stack. The issue arises from the fact that factory preset frequencies were not stored in V2, so they are not present in the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON file</a> used for importing devices in The Things Stack. There are two possible solutions:</p>
+<p>This problem can also occur after <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-from-v2/migrate-using-migration-tool/migrate-active-session/">migrating an active device session</a> from V2 to The Things Stack, for devices that transmit uplinks on frequencies that are not part of the standard <a href="https://www.thethingsindustries.com/docs/reference/frequency-plans/">frequency plans</a> used by The Things Stack. The issue arises from the fact that factory preset frequencies were not stored in V2, so they are not present in the <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/device-json/">JSON file</a> used for importing devices in The Things Stack. There are two possible solutions:</p>
 <ul>
 <li>If the end device can be reset, i.e. if it can perform a re-join to The Things Stack network or at least reset frame counters (for ABP devices)
 <ul>
@@ -319,7 +320,7 @@
 </li>
 <li>If the end device cannot be reset
 <ul>
-<li>Changes related to factory preset frequencies take effect only after a device reset, but applying the fix explained above will break the existing device session. If you really want to keep the active session or simply cannot reset the device physically, you can try adding the frequency channels manually in the <code>mac_state.current.channels</code> and <code>mac_state.desired_channels</code> parameters of the <a href="https://www.thethingsindustries.com/docs/getting-started/migrating/device-json/">JSON file</a> before you import it to The Things Stack.</li>
+<li>Changes related to factory preset frequencies take effect only after a device reset, but applying the fix explained above will break the existing device session. If you really want to keep the active session or simply cannot reset the device physically, you can try adding the frequency channels manually in the <code>mac_state.current.channels</code> and <code>mac_state.desired_channels</code> parameters of the <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/device-json/">JSON file</a> before you import it to The Things Stack.</li>
 </ul>
 </li>
 </ul>
@@ -438,6 +439,7 @@
         <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
         <p><a class="" href="/docs/devices/">Devices</a></p>
         <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
         <p><a class="" href="/docs/integrations/">Integrations</a></p>
         <p><a class="" href="/docs/reference/">Reference</a></p>
       </nav>
@@ -456,10 +458,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Aleksander Borowski on 16 Jan 2023.
+  Last changed by Krishna Iyer on 19 Apr 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/ed9a6722f098dc173021e68ec6eb0bf86ced9ea9">
-      doc: Add `ttnv3` migration tool docs and reorganize existing docs (#991)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b36a78abab91e6a6967b41f03b65551a89e54c9">
+      Restructure documentation (#1076)
     </a>
 </p>
 

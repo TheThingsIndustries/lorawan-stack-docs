@@ -10,7 +10,7 @@
   <title>Troubleshooting Gateways | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/troubleshooting/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8afd1a9ba4c2f5b2a5910c50125ba2636f89937b2e7f5ca55766ed500a2a1e4f.css" integrity="sha256-iv0am6TC9bKlkQxQEluiY2&#43;Jk3suf1ylV2btUAoqHk8=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8058c473c43c01571dbb7b1b4de287fb8e077613d282e9b7b9db17271211dd60.css" integrity="sha256-gFjEc8Q8AVcdu3sbTeKH&#43;44HdhPSgum3udsXJxIR3WA=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Troubleshooting Gateways">
@@ -44,6 +44,7 @@
         <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
         <a class="navbar-item" href="/docs/devices/">Devices</a>
         <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
         <a class="navbar-item" href="/docs/integrations/">Integrations</a>
         <a class="navbar-item" href="/docs/reference/">Reference</a>
 
@@ -113,7 +114,7 @@
         <div class="content">
           <p>This section provides help for common issues and frequently asked questions you may have when adding gateways.</p>
 <h2 id="what-is-my-server-address">What is my server address?</h2>
-<p>This is the address you use to access The Things Stack. See <a href="https://www.thethingsindustries.com/docs/getting-started/server-addresses/">Server Addresses</a>.</p>
+<p>This is the address you use to access The Things Stack. See <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/server-addresses/">Server Addresses</a>.</p>
 <p>For LoRa Basics™ Station:</p>
 <ul>
 <li>
@@ -133,11 +134,11 @@
 <h2 id="what-is-lora-basics-station-radio-configuration">What is LoRa Basics™ Station Radio Configuration?</h2>
 <p>There are three types of radio configuration. All types are typically defined in the same <code>station.conf</code> file.</p>
 <p><strong>Hardware Specific</strong> is a configuration unique to the hardware. This is defined in a file shipped with the gateway and should not be modified. Examples are <code>clksrc</code> and RSSI offset.</p>
-<p><strong>LoRaWAN Regional</strong> is a configuration according to LoRaWAN Regional Parameters. This is common to all gateways using the same Regional Parameters, and is provided by the network server automatically when using LoRa Basics™ Station. It must be configured manually for UDP gateways. Examples are data rates and mandatory channels.</p>
+<p><strong>LoRaWAN Regional</strong> is a configuration according to LoRaWAN® Regional Parameters. This is common to all gateways using the same Regional Parameters, and is provided by the network server automatically when using LoRa Basics™ Station. It must be configured manually for UDP gateways. Examples are data rates and mandatory channels.</p>
 <p><strong>User Defined</strong> is a configuration which the user is free to choose. Examples are non-mandatory channels and sub-bands.</p>
 <p>For an example configuration file, see <a href="https://doc.sm.tc/station/gw_v1.5.html#single-board-sample-configuration">Semtech&rsquo;s LoRa Basics™ Station documentation</a>.</p>
 <h2 id="how-do-i-see-gateway-events">How do I see gateway events?</h2>
-<p>Gateway event logs can be found in the Live Data tab in the gateway&rsquo;s general information page. See <a href="https://www.thethingsindustries.com/docs/getting-started/events/">Working with Events</a> for other ways of subscribing to events.</p>
+<p>Gateway event logs can be found in the Live Data tab in the gateway&rsquo;s general information page. See <a href="https://www.thethingsindustries.com/docs/the-things-stack/management/events/">Working with Events</a> for other ways of subscribing to events.</p>
 <h2 id="how-does-the-things-stack-console-know-whether-a-gateway-is-connected">How does The Things Stack Console know whether a gateway is connected?</h2>
 <p>For both <a href="https://www.thethingsindustries.com/docs/gateways/concepts/udp/">Semtech UDP Packet Forwarder</a> and <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/">LoRa Basics™ Station</a> gateways, The Things Stack creates a <code>GatewayConnectionStats</code> database entry when a gateway connects and removes that entry when the gateway disconnects. The Console checks whether this database entry exists and shows the gateway as connected or disconnected accordingly.</p>
 <p>The mechanism for determining whether a gateway remains connected differs for UDP and LoRa Basics™ Station gateways.</p>
@@ -192,7 +193,7 @@
 <h2 id="i-get-an-id-already-taken-error-when-adding-a-gateway">I get an &ldquo;ID Already Taken&rdquo; error when adding a gateway.</h2>
 <p>Another gateway is already registered with this ID. This gateway may have been deleted already, but The Things Stack reserves previously used IDs for <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">security reasons</a>.</p>
 <p>This gateway may also be registered by another user, but you are not able to see gateways registered by other users if you are not an administrator (e.g. if you are using The Things Stack Community Edition).</p>
-<p>To solve this, use a different gateway ID. If you are an administrator and wish to reuse a deleted ID, see <a href="https://www.thethingsindustries.com/docs/reference/purge/">Purging Entities</a>.</p>
+<p>To solve this, use a different gateway ID. If you are an administrator and wish to reuse a deleted ID, see <a href="https://www.thethingsindustries.com/docs/the-things-stack/management/purge/">Purging Entities</a>.</p>
 <h2 id="i-get-a-gateway-with-eui-is-already-registered-error-when-adding-a-gateway">I get a &ldquo;Gateway with EUI is Already Registered&rdquo; error when adding a gateway.</h2>
 <p>Another gateway is already registered with the same Gateway EUI. This gateway may be registered by another user, but if you are not an administrator (e.g if you are using The Things Stack Community Edition) you will not be able to see gateways registered by other users.</p>
 <p>If the gateway is registered with the same EUI in some other tenant, the error will reflect that as well.</p>
@@ -456,6 +457,7 @@ echo Authorization: Bearer %LNS_KEY% &gt; lns.key
         <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
         <p><a class="" href="/docs/devices/">Devices</a></p>
         <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
         <p><a class="" href="/docs/integrations/">Integrations</a></p>
         <p><a class="" href="/docs/reference/">Reference</a></p>
       </nav>
@@ -474,10 +476,10 @@ echo Authorization: Bearer %LNS_KEY% &gt; lns.key
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 15 Nov 2022.
+  Last changed by Krishna Iyer on 19 Apr 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/18a16a67435029072d5d8f595c3861ed14d6880f">
-      doc: Update gateway troubleshooting list (#994)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b36a78abab91e6a6967b41f03b65551a89e54c9">
+      Restructure documentation (#1076)
     </a>
 </p>
 

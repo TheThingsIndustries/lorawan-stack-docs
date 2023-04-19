@@ -10,7 +10,7 @@
   <title>ABP vs OTAA | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/devices/abp-vs-otaa/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8afd1a9ba4c2f5b2a5910c50125ba2636f89937b2e7f5ca55766ed500a2a1e4f.css" integrity="sha256-iv0am6TC9bKlkQxQEluiY2&#43;Jk3suf1ylV2btUAoqHk8=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8058c473c43c01571dbb7b1b4de287fb8e077613d282e9b7b9db17271211dd60.css" integrity="sha256-gFjEc8Q8AVcdu3sbTeKH&#43;44HdhPSgum3udsXJxIR3WA=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="ABP vs OTAA">
@@ -44,6 +44,7 @@
         <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
         <a class="navbar-item" href="/docs/devices/">Devices</a>
         <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
         <a class="navbar-item" href="/docs/integrations/">Integrations</a>
         <a class="navbar-item" href="/docs/reference/">Reference</a>
 
@@ -150,7 +151,7 @@
         </h1>
         
         <div class="content">
-          <p>This section can help you understand the differences between ABP and OTAA activation modes for LoRaWAN end devices, and comprehend why using OTAA is recommended.</p>
+          <p>This section can help you understand the differences between ABP and OTAA activation modes for LoRaWAN® end devices, and comprehend why using OTAA is recommended.</p>
 <p>Learn more about device activation in general and details about OTAA and ABP flow in <a href="https://www.thethingsnetwork.org/docs/lorawan/end-device-activation/">The Things Network LoRaWAN documentation</a>.</p>
 <p>A <code>DevEUI</code> is a 64-bit unique ID assigned to an end device by the manufacturer. This value is linked to the hardware and it cannot be altered.</p>
 <p>Unlike <code>DevEUI</code>, which identifies an end device globally, a 32-bit <code>DevAddr</code> identifies the end device within the current network and all communication after joining the network is done with it. A <code>DevAddr</code> value consists of <code>NwkAddr</code> (end device address within network) prefixed by a <code>NwkID</code> (network identifier).</p>
@@ -165,7 +166,7 @@
 <ol>
 <li><strong>ABP end devices use a fixed <code>DevAddr</code>.</strong></li>
 </ol>
-<p>Taking the structure of <code>DevAddr</code> into the account and the fact that, with ABP, <code>NwkID</code> is fixed, we come to the conclusion that this device can work correctly only in its predefined network. Even if a network or a cluster allows registering end devices with different <code>DevAddr</code> values than the ones that were assigned to that network/cluster, the <a href="https://www.thethingsindustries.com/docs/getting-started/packet-broker/#packet-broker">Packet Broker</a> will not route the traffic from those end devices to the right network/cluster.</p>
+<p>Taking the structure of <code>DevAddr</code> into the account and the fact that, with ABP, <code>NwkID</code> is fixed, we come to the conclusion that this device can work correctly only in its predefined network. Even if a network or a cluster allows registering end devices with different <code>DevAddr</code> values than the ones that were assigned to that network/cluster, the <a href="https://www.thethingsindustries.com/docs/the-things-stack/packet-broker/#packet-broker">Packet Broker</a> will not route the traffic from those end devices to the right network/cluster.</p>
 <p>Also, even if the network/cluster is assigned with additional address blocks, the Network Server will not be able to perform optimization of <code>DevAddr</code> allocation, hence the device matching procedure for ABP end devices will not be improved.</p>
 <p>OTAA end devices are assigned a new <code>DevAddr</code> at establishing each new session. This allows them to move to different networks/clusters.</p>
 <ol start="2">
@@ -175,7 +176,7 @@
 <p>Session keys are hardcoded into an ABP device, meaning that even if they leak, they cannot be rotated, which is a serious security threat.</p>
 <p>Unlike ABP, OTAA end devices re-negotiate frame counters and session keys at establishing each new session. Hence, the lifetime of an OTAA device is not conditioned by the width of the frame counter.</p>
 <p>Read more about LoRaWAN security in <a href="https://www.thethingsnetwork.org/docs/lorawan/security/">The Things Network LoRaWAN documentation</a>.</p>
-<p>For enhancing security, you can use <a href="https://www.thethingsindustries.com/docs/getting-started/join-server/">The Things Join Server</a> to handle the join flow, Network Server and Application Server authentication, store root keys and generate session keys. Another option is using Hardware Secured Elements (see <a href="https://www.thethingsindustries.com/docs/devices/atecc608a/">Microchip ATECC608 secure elements</a>) which prevent the exposure of keys to software, firmware, manufacturing sites, and other third parties.</p>
+<p>For enhancing security, you can use <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/join-server/">The Things Join Server</a> to handle the join flow, Network Server and Application Server authentication, store root keys and generate session keys. Another option is using Hardware Secured Elements (see <a href="https://www.thethingsindustries.com/docs/devices/atecc608a/">Microchip ATECC608 secure elements</a>) which prevent the exposure of keys to software, firmware, manufacturing sites, and other third parties.</p>
 <ol start="3">
 <li><strong>ABP end devices use fixed network parameters.</strong></li>
 </ol>
@@ -245,6 +246,7 @@
         <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
         <p><a class="" href="/docs/devices/">Devices</a></p>
         <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
         <p><a class="" href="/docs/integrations/">Integrations</a></p>
         <p><a class="" href="/docs/reference/">Reference</a></p>
       </nav>
@@ -263,10 +265,10 @@
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Johan Stokking on 21 Feb 2023.
+  Last changed by Krishna Iyer on 19 Apr 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4445e2e50510e1224c9e2ec7a8ebb7889b5961ae">
-      The Things Join Server and related documentation (#1041)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b36a78abab91e6a6967b41f03b65551a89e54c9">
+      Restructure documentation (#1076)
     </a>
 </p>
 

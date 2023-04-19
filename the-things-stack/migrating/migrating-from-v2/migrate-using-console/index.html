@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.96.0" />
+  <title>Migrate using the Console | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-from-v2/migrate-using-console/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8058c473c43c01571dbb7b1b4de287fb8e077613d282e9b7b9db17271211dd60.css" integrity="sha256-gFjEc8Q8AVcdu3sbTeKH&#43;44HdhPSgum3udsXJxIR3WA=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Migrate using the Console">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Migrate using the Console">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-from-v2/migrate-using-console/">
+  <meta name="twitter:title" content="Migrate using the Console" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+</head>
+
+
+<body><nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.24.2</p>
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://accounts.thethingsindustries.com/fee-calculator">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">The Things Stack</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/the-things-stack/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/" class="">Basic Concepts</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/cloud/" class="">The Things Stack Cloud</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/" class="">Host The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/" class="">Interact with The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/management/" class="">Manage The Things Stack</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/" class="">Migrate to The Things Stack</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-between-tts-distributions/" class="">Migrating End Devices between The Things Stack distributions</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migration-tool/" class="">Migration Tool</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-from-v2/" class="">Migrating End Devices from V2</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-from-v2/major-changes/" class="">Major Changes In The Things Stack</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-from-v2/packet-broker-requirements/" class="">Packet Broker Requirements for End Device Migration</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-from-v2/migrate-using-console/" class="is-active">Migrate using the Console</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-from-v2/migrate-using-migration-tool/" class="">Migrate using the Migration Tool</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-from-v2/migrate-using-takeout-tool/" class="">Migrate using the V2 Takeout Tool</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/import-devices/" class="">Import End Devices in The Things Stack</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/configure-mac-settings/" class="">Fine-tuning MAC Settings for End Devices</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/gateway-migration/" class="">Migrating Gateways</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/device-json/" class="">JSON File Reference</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/device-csv/" class="">CSV File Reference</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/faq/" class="">Migration FAQ</a>
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/packet-broker/" class="">Packet Broker</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/troubleshooting/" class="">Troubleshooting</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        <h1 class="title is-size-2">Migrate using the Console
+          
+        </h1>
+        
+        <div class="content">
+          <p>This section describes migrating end devices to The Things Stack by using <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/console/">The Things Stack Console</a>.</p>
+<p>Migrating your end devices using The Things Stack Console is simple, but devices must be migrated one-by-one, so it is convenient only for migrating a fewer number of devices. This method also does not support migrating active device sessions. To learn to export device sessions and groups of devices from V2, see <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-from-v2/migrate-using-migration-tool/">Migrate using the Migration Tool</a> guide.</p>
+<p>Follow the steps below to migrate your end device from V2 to The Things Stack by using the Console.</p>
+<h2 id="add-an-end-device-in-the-things-stack">Add an End Device in The Things Stack</h2>
+<p>The first step is to add your end device in The Things Stack. See <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> section for more details on adding devices in The Things Stack.</p>
+<p>There are two ways to add devices in The Things Stack Console - <strong>Manually</strong> and via the <strong>LoRaWAN Device Repository</strong>.</p>
+<p>Configuring settings for end devices depends on their type - OTAA or ABP. We strongly recommend using OTAA over ABP. Read <a href="https://www.thethingsindustries.com/docs/devices/abp-vs-otaa/">why using OTAA is better than ABP</a>.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="otaa">
+      <a>
+        <span>OTAA</span>
+      </a>
+    </li>
+    
+    <li data-tab="abp">
+      <a>
+        <span>ABP</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="otaa">
+  <p>If you want to add an OTAA end device manually, follow these steps:</p>
+<ul>
+<li>Select <strong>Over the air actiovation (OTAA)</strong></li>
+<li>Choose <strong>LoRaWAN version</strong> <code>MAC V1.0.2</code> (this is the version used in V2)</li>
+<li>Create an <strong>End device ID</strong> (does not have to match the <strong>Device ID</strong> in V2)</li>
+<li>Enter your end device’s <strong>AppEUI</strong> and <strong>DevEUI</strong> (these have to be the same as the ones in V2, as this info is provided by the device manufacturer)</li>
+<li>Select your <strong>Frequency plan</strong></li>
+<li>Select <strong>Regional Parameters version</strong> <code>PHY V1.0.2 REV B</code> (this is the version used in V2)</li>
+<li>Do not check the boxes <strong>Supports class B/C</strong></li>
+<li>Keep the default Advanced settings as OTAA devices commonly negotiate about these with The Things Stack Network Server</li>
+<li>Enter your end device’s <strong>AppKey</strong> (see considerations below)</li>
+</ul>
+<p>The <strong>AppKey</strong> value can match the one used in V2, as this info is usually provided by the device manufacturer. The <strong>AppKey</strong> can also be generated in the Console as the last step of the OTAA device registration process. If you decide to generate it, do not forget to program your OTAA device to use the new <strong>AppKey</strong> issued by The Things Stack.</p>
+</section>
+<section data-content="abp">
+  <p>If you still have a good reason to use ABP device, you can add it in The Things Stack by following next few steps:</p>
+<ul>
+<li>Select <strong>Activation by personalization (ABP)</strong>
+Choose <strong>LoRaWAN version</strong> <code>MAC V1.0.2</code> (this is the version used in V2)</li>
+<li>Create an <strong>End device ID</strong> (does not have to match the <strong>Device ID</strong> in V2)</li>
+<li>The <strong>DevEUI</strong> field is optional</li>
+<li>Select your <strong>Frequency plan</strong></li>
+<li>Select <strong>Regional Parameters version</strong> <code>PHY V1.0.2 REV B</code> (this is the version used in V2)</li>
+<li>Do not check the boxes <strong>Supports class B/C</strong></li>
+<li>Enter your device’s <strong>DevAddr</strong> and <strong>NwkSKey</strong> (see considerations below)</li>
+<li>Advanced settings must be set on registration (beware that changing these settings might not work later)
+<ul>
+<li>Set <strong>Frame counter width</strong> to <code>32 bit</code> (this is the value used in V2)</li>
+<li>Set <strong>RX1 Delay</strong> to <code>1</code> (see considerations below)</li>
+<li>Set <strong>RX1 Data Rate Offset</strong> to <code>0</code></li>
+<li>Your device probably resets frame counters, so check the <strong>Resets Frame Counters</strong> box</li>
+<li>Set <strong>RX2 Data Rate Index</strong> to <code>3</code> if your frequency plan is EU868</li>
+<li>Set <strong>RX2 Frequency</strong> to <code>869525000</code> if your frequency plan is EU868</li>
+<li>Set <strong>Factory Preset Frequencies</strong> for EU868 devices to <code>868100000, 868300000, 868500000</code> for all devices, or to <code>867100000, 867300000, 867500000, 867700000, 867900000, 868100000, 868300000, 868500000</code> for 8-channel devices</li>
+</ul>
+</li>
+</ul>
+<p>The <strong>DevAddr</strong> and <strong>RX1 Delay</strong> values depend on your specific use case.</p>
+<p>If you want your end device traffic to be routed via Packet Broker to The Things Stack, <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-from-v2/packet-broker-requirements/">Packet Broker Requirements for End Device Migration</a> need to be fulfilled. If you are migrating from <strong>The Things Industries V2</strong> to <strong>The Things Stack Cloud</strong>, you might be able to keep the existing <strong>DevAddr</strong> (please contact <a href="mailto:support@thethingsindustries.com">The Things Industries support</a>). If the existing <strong>DevAddr</strong> is not routable by the Packet Broker (i.e. you are not migrating from <strong>The Things Industries V2</strong> to <strong>The Things Stack Cloud</strong>), you will need to auto-generate new <strong>DevAddr</strong> during device registration on The Things Stack, then re-program the device to assign it with the new <strong>DevAddr</strong>. Note that in both of these cases, you will  have to adjust your device&rsquo;s <strong>RX1 Delay</strong> to 5 seconds using MAC commands, otherwise your device&rsquo;s traffic might not reach The Things Stack in time.</p>
+<p>Re-programming the ABP device to change <strong>DevAddr</strong> to the one issued by The Things Stack and <strong>RX1 Delay</strong> to 5 seconds is <strong>recommended</strong>. Re-programming the ABP device to do this might also be a good time to reconsider switching it to OTAA by flashing the firmware and adopting some <a href="https://www.thethingsindustries.com/docs/devices/best-practices/">best practices</a>. <a href="https://www.thethingsindustries.com/docs/devices/abp-vs-otaa/">Check why using OTAA is recommended</a>.</p>
+<p>If you do not want your traffic to be routed by the Packet Broker, i.e. you want to migrate your gateway to The Things Stack too, you do not have to re-program your device. You can keep the existing <strong>DevAddr</strong> and <strong>RX1 Delay</strong> of 1 second, and use these values when adding the device to The Things Stack. Be aware that if you are using a high-latency backhaul, keeping the <strong>RX1 Delay</strong> of 1 second still might cause latency issues, even if you migrate your gateway.</p>
+<p>For the <strong>NwkSKey</strong>, you can choose to keep the one used on V2, or to generate a new one in The Things Stack Console during the device registration process.</p>
+</section>
+
+</div>
+
+<p>If your end device is a part of the <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/device-repo/">LoRaWAN Device Repository</a>, you will need to select its <strong>Brand</strong>, <strong>Model</strong> and provide other device-specific information.</p>
+<h2 id="prevent-the-end-device-from-joining-v2-network">Prevent the End Device from Joining V2 Network</h2>
+<p>When your end device is registered in The Things Stack, it is necessary to prevent it from re-joining the V2 network.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="otaa">
+      <a>
+        <span>OTAA</span>
+      </a>
+    </li>
+    
+    <li data-tab="abp">
+      <a>
+        <span>ABP</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="otaa">
+  <p>To prevent OTAA devices from re-joining V2, the recommended practice is to change the <strong>AppKey</strong> in V2. By changing the <strong>AppKey</strong>, the existing session on V2 will not be terminated yet, but the end device will not be able to re-join because V2 cluster will reject its new Join Requests. Swapping the last two bytes of the <strong>AppKey</strong> will prevent it from rejoining, and allow you to revert easily if you need to.</p>
+<h2 id="let-the-otaa-end-device-join-the-things-stack-network">Let the OTAA End Device Join The Things Stack Network</h2>
+<p>Next, your end device needs to join The Things Stack network.</p>
+<p>Some OTAA devices ocasionally perform new joins - with these end devices, you can only wait for them to do this on their own. Depending on the end device, you can also:</p>
+<ul>
+<li>Send a downlink message from V2 Console to trigger a new join</li>
+<li>Delete the end device from V2 Console so it loses the connection to V2 and triggers a re-join</li>
+<li>Power cycle the end device</li>
+</ul>
+</section>
+<section data-content="abp">
+  ABP devices must be completely deleted from V2, especially if they are not re-programmed for a new <strong>DevAddr</strong>. Having the device registered in both V2 and The Things Stack  introduces serious conflicts, including race conditions for Joins and unpredictable, out-of-spec operation.
+</section>
+
+</div>
+
+<h2 id="next-step---migrate-gateways">Next Step - Migrate Gateways</h2>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="otaa">
+      <a>
+        <span>OTAA</span>
+      </a>
+    </li>
+    
+    <li data-tab="abp">
+      <a>
+        <span>ABP</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="otaa">
+  <p>Since we assume you have not migrated your gateway from V2 yet, new Join Requests sent by your OTAA device are still being received by the V2 network. However, if you have prevented your device from joining V2 network (as recommended above), these Join Requests are not going to be accepted by the V2 Network Server.</p>
+<p>Instead, if your devices respect the previously mentioned Packet Broker requirements, these Join Requests are going to be routed to The Things Stack via Packet Broker and The Things Stack will accept them. Upon Join Request acceptance, your OTAA device will negotiate with The Things Stack Network Server to obtain a new <strong>DevAddr</strong>, channel settings and other MAC parameters. The traffic from your end device can from now on be routed to The Things Stack thanks to the newly assigned <strong>DevAddr</strong> and <strong>RX1 Delay</strong> of 5 seconds.</p>
+</section>
+<section data-content="abp">
+  <p>ABP devices do not perform the join procedure, so they do not get assigned with a new <strong>DevAddr</strong>, <strong>RX1 Delay</strong> and some other parameters like OTAA devices do. These values must be coded in the device itself.</p>
+<p>As previously mentioned, routing traffic from your ABP devices to The Things Stack via Packet Broker will be possible only if Packet Broker requirements are met. If you want your traffic to be routed via Packet Broker, you will need to re-program your ABP device to use a <strong>DevAddr</strong> issued by The Things Stack and <strong>RX1 Delay</strong> of 5 seconds. Please note that this is a recommended practice. An exception to this rule is the case of migrating from <strong>The Things Industries V2</strong> to <strong>The Things Stack Cloud</strong> deployment - here you might be able to keep your device&rsquo;s <strong>DevAddr</strong>, but you will still have to adjust your device&rsquo;s <strong>RX1 Delay</strong> to 5 seconds.</p>
+<p>If you want to keep <strong>DevAddr</strong> and <strong>RX1 Delay</strong> as they were in V2, you will need to <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/gateway-migration/">migrate your gateway to The Things Stack</a>. Please note that this is not a recommended practice, because using an <strong>RX1 Delay</strong> of 1 second in a combination with high latency backhauls might cause your device&rsquo;s traffic to not reach The Things Stack in time, even if you migrate your gateway.</p>
+</section>
+
+</div>
+
+<p>Even if you manage to get your end device traffic routed to The Things Stack by Packet Broker, we still recommend to migrate your gateways as soon as possible.</p>
+        </div>
+        <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/the-things-stack/migrating/migrating-from-v2/packet-broker-requirements/">← Packet Broker Requirements for End Device Migration</a>
+<a class="button is-pulled-right" href="/docs/the-things-stack/migrating/migrating-from-v2/migrate-using-migration-tool/">Migrate using the Migration Tool →</a>
+</div>
+
+        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#add-an-end-device-in-the-things-stack'>Add an End Device in The Things Stack</a></li>
+    
+      
+      <li><a href='#prevent-the-end-device-from-joining-v2-network'>Prevent the End Device from Joining V2 Network</a></li>
+    
+      
+      <li><a href='#let-the-otaa-end-device-join-the-things-stack-network'>Let the OTAA End Device Join The Things Stack Network</a></li>
+    
+      
+      <li><a href='#next-step---migrate-gateways'>Next Step - Migrate Gateways</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/ttn-network/v3/90">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Krishna Iyer on 19 Apr 2023.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b36a78abab91e6a6967b41f03b65551a89e54c9">
+      Restructure documentation (#1076)
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/the-things-stack/migrating/migrating-from-v2/migrate-using-console.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>
