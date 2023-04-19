@@ -10,7 +10,7 @@ This section will help you get started with using The Things Uno on {{% tts %}}.
 
 <!--more-->
 
-**The Things Uno** is based on the [Arduino Leonardo](https://store.arduino.cc/usa/leonardo) (not the Arduino Uno) with an added Microchip LoRaWAN module ([RN2483](https://www.microchip.com/wwwproducts/en/RN2483) or [RN2903](https://www.microchip.com/wwwproducts/en/RN2903)). 
+**The Things Uno** is based on the [Arduino Leonardo](https://store.arduino.cc/usa/leonardo) (not the Arduino Uno) with an added Microchip LoRaWAN® module ([RN2483](https://www.microchip.com/wwwproducts/en/RN2483) or [RN2903](https://www.microchip.com/wwwproducts/en/RN2903)). 
 
 The Things Uno is fully compatible with the Arduino software also known as the Arduino Integrated Development Environment (IDE) and the existing Arduino shields.
 

@@ -7,7 +7,7 @@ aliases: [/gateways/dragino-lps8]
 
 {{< figure src="dragino-lps8.jpg" alt="Dragino LPS8" class="float plain" >}}
 
-The **Dragino LPS8** is a LoRaWAN indoor gateway based on the OpenWrt Linux system. The hardware includes an SX1308 LoRa concentrator that provides 10 programmable parallel demodulation paths. The gateway has an ethernet and WiFi backhaul and supports EU868, IN865, US915, AU915, AS923, and KR920 ISM bands.
+The **Dragino LPS8** is a LoRaWAN® indoor gateway based on the OpenWrt Linux system. The hardware includes an SX1308 LoRa concentrator that provides 10 programmable parallel demodulation paths. The gateway has an ethernet and WiFi backhaul and supports EU868, IN865, US915, AU915, AS923, and KR920 ISM bands.
 
 <!--more-->
 

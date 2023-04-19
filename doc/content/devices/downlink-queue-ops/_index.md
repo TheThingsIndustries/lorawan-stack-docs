@@ -18,7 +18,7 @@ This guide shows how to interact with the downlink queue from the command-line i
 
 {{< cli-only >}}
 
-If there are more application downlink messages in the queue, the Network Server sets the LoRaWAN `FPending` bit to indicate end devices that there is more downlinks available. In class A downlink, this typically triggers the device to send an uplink message to receive the downlink message. In class C, the Network Server automatically transmits all queued downlink messages.
+If there are more application downlink messages in the queue, the Network Server sets the LoRaWAN® `FPending` bit to indicate end devices that there is more downlinks available. In class A downlink, this typically triggers the device to send an uplink message to receive the downlink message. In class C, the Network Server automatically transmits all queued downlink messages.
 
 We define some user parameters that will be used below:
 

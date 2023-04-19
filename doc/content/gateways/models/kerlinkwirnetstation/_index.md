@@ -8,7 +8,7 @@ aliases: [/gateways/kerlinkwirnetstation]
 
 {{< figure src="wirnet-station.png" alt="Kerlink Wirnet Station" class="float plain" >}}
 
-The [Kerlink Wirnet Station](https://www.kerlink.com/product/wirnet-station/) is a robust and highly reliable outdoor LoRaWAN gateway. It was the first commercially available LoRaWAN gateway on the global market. It offers Ethernet and cellular (3G/2G) backhauls.
+The [Kerlink Wirnet Station](https://www.kerlink.com/product/wirnet-station/) is a robust and highly reliable outdoor LoRaWAN gateway. It was the first commercially available LoRaWAN® gateway on the global market. It offers Ethernet and cellular (3G/2G) backhauls.
 
 <!--more-->
 

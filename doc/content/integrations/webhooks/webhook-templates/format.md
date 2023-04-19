@@ -52,7 +52,7 @@ The message paths are provided in the `paths` object which can contain the follo
 - `downlink-sent`: The path to which downlink sent will be sent.
 - `downlink-failed`: The path to which downlink failures will be sent.
 - `downlink-queued`: The path to which downlink queued status will be sent.
-- `downlink-queue-invalidated`: The path to which downlink queue invalidated event will be sent. This is only used when the upstream platform carries out LoRaWAN `FRMPayload` encryption.
+- `downlink-queue-invalidated`: The path to which downlink queue invalidated event will be sent. This is only used when the upstream platform carries out LoRaWAN® `FRMPayload` encryption.
 - `location-solved`: The path to which the location of the device will be sent when resolved.
 - `service-data`: The path to which the data from integrations is sent. Data from services such as LoRa Cloud DAS and GLS will be sent here, for example.
 

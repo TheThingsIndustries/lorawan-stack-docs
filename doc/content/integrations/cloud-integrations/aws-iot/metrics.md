@@ -15,7 +15,7 @@ In the AWS Console, open **Services** and go to **IoT Core**.
 
 In the menu on the left, open **Manage**, go to **Things** and click the thing of interest.
 
-Click the **Device Shadows** tab and go to **lorawan**. This opens the LoRaWAN shadow state that is maintained by {{% tts %}}.
+Click the **Device Shadows** tab and go to **lorawan**. This opens the LoRaWAN® shadow state that is maintained by {{% tts %}}.
 
 {{< figure src="../shadow-state.png" alt="Shadow State" >}}
 

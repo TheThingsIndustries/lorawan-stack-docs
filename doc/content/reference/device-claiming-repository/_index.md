@@ -3,7 +3,7 @@ title: "Device Claiming Configuration"
 description: ""
 ---
 
-{{% tts %}} Device Claiming Server can claim devices on LoRaWAN Join Servers.
+{{% tts %}} Device Claiming Server can claim devices on LoRaWAN® Join Servers.
 
 <!--more-->
 

@@ -67,7 +67,7 @@ The owner token is called claim authentication code in {{% tts %}}. This is the 
 
 ## Export root keys
 
-In case your end devices are to be activated on a LoRaWAN Network Server that does not support claiming on The Things Join Server, the root keys can be exported:
+In case your end devices are to be activated on a LoRaWAN® Network Server that does not support claiming on The Things Join Server, the root keys can be exported:
 
 ```bash
 ttjs get <dev-eui> --nonces --root-keys

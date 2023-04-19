@@ -172,7 +172,7 @@ Create a configuration file `tc.uri` containing an LNS server address. For examp
 echo 'wss://eu1.cloud.thethings.network:8887' | sudo tee /opt/ttn-station/config/tc.uri
 ```
 
-See [Server Addresses]({{< ref "/getting-started/server-addresses" >}}) if you are not sure which server address to use. See also [LNS Server Address]({{< ref "/gateways/concepts/lora-basics-station/lns#lns-server-address" >}}) for info about LNS server address format.
+See [Server Addresses]({{< ref "/the-things-stack/concepts/server-addresses" >}}) if you are not sure which server address to use. See also [LNS Server Address]({{< ref "/gateways/concepts/lora-basics-station/lns#lns-server-address" >}}) for info about LNS server address format.
 
 Next, create the `tc.key` configuration file containing an authorization header. This header will contain the API Key you created in the previous step, and it will be used to authenticate your gateway's connection.
 

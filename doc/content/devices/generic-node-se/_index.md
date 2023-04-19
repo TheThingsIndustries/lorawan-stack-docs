@@ -34,11 +34,11 @@ A window with information scanned from the QR code (like **Claim authentication 
 
 {{< figure src="found-qr-data.png" alt="Found QR data" >}}
 
-To continue with the rest of the registration process you can choose either **LoRaWAN Device Repository** or **manual registration**.
+To continue with the rest of the registration process you can choose either **LoRaWAN® Device Repository** or **manual registration**.
 
 ### Using the LoRaWAN Device Repository
 
-The [LoRaWAN Device repository](https://github.com/TheThingsNetwork/lorawan-devices) comprises over 600 end-device profiles, including the Generic Node Sensor Edition, which requires less information for registration with {{% tts %}}.
+The [LoRaWAN® Device repository](https://github.com/TheThingsNetwork/lorawan-devices) comprises over 600 end-device profiles, including the Generic Node Sensor Edition, which requires less information for registration with {{% tts %}}.
 
 In the **End device type** section, under **Input Method** select **Select the end device in the LoRaWAN device repository**. Then select/enter the following values:
   - End device brand: **The Things Industries**

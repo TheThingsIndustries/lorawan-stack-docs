@@ -1,5 +1,5 @@
 ---
-title: "MOKOSMART MKGW2-LW LoRaWAN Gateway"
+title: "MOKOSMART MKGW2-LW LoRaWAN® Gateway"
 description: ""
 aliases: [/gateways/moko-mkgw2-lw]
 ---

@@ -42,6 +42,6 @@ The paths are appended to the **Base URL**. In the example from the images above
 
 If no path is specified, messages of that type will be sent to the **Base URL**.
 
-See [Data Formats]({{< ref "reference/data-formats" >}}) for examples of uplink and downlink JSON messages. 
+See [Data Formats]({{< ref "the-things-stack/concepts/data-formats" >}}) for examples of uplink and downlink JSON messages. 
 
 Clicking the **Add Webhook** button will create the Webhook.

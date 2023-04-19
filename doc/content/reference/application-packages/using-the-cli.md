@@ -4,7 +4,7 @@ description: ""
 weight: 1
 ---
 
-To interact with the available application packages, you can use [{{% tts %}} CLI]({{< ref "/getting-started/cli" >}}).
+To interact with the available application packages, you can use [{{% tts %}} CLI]({{< ref "/the-things-stack/interact/cli" >}}).
 
 <!--more-->
 

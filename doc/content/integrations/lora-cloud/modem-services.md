@@ -4,7 +4,7 @@ description: ""
 weight: 3
 ---
 
-[LoRa Cloud Modem Services](https://www.loracloud.com/portal/device_management/home) complement your device management solution by giving you fine grain control of your LoRaWAN end devices. It allows to obtain modem status information such as: system status, firmware version, voltage, downlink signal quality and time since last downlink.
+[LoRa Cloud Modem Services](https://www.loracloud.com/portal/device_management/home) complement your device management solution by giving you fine grain control of your LoRaWAN® end devices. It allows to obtain modem status information such as: system status, firmware version, voltage, downlink signal quality and time since last downlink.
 
 <!--more-->
 

@@ -6,7 +6,7 @@ aliases: [/gateways/milesightug6x]
 
 {{< figure src="ug6x.png" alt="Milesight IoT UG6x" class="plain float" >}}
 
-The **Milesight UG6X** is a series of 2 robust 8-channel LoRaWAN gateways for industrial IoT applications. This page contains information about connecting the Milesight IoT UG6x LoRaWAN gateway to {{% tts %}}.
+The **Milesight UG6X** is a series of 2 robust 8-channel LoRaWAN® gateways for industrial IoT applications. This page contains information about connecting the Milesight IoT UG6x LoRaWAN gateway to {{% tts %}}.
 
 <!--more-->
 
@@ -22,7 +22,7 @@ The Milesight UG6X LoRaWAN gateways support two ways of connecting {{% tts %}}, 
 
 ## Registration
 
-[Add a gateway]({{< ref "/gateways/concepts/adding-gateways" >}}) by following the instructions for the [Console]({{< ref "/getting-started/console#create-gateway" >}}) or the [CLI]({{< ref "/getting-started/cli#create-gateway" >}}).
+[Add a gateway]({{< ref "/gateways/concepts/adding-gateways" >}}) by following the instructions for the [Console]({{< ref "/the-things-stack/interact/console#create-gateway" >}}) or the [CLI]({{< ref "/the-things-stack/interact/cli#create-gateway" >}}).
 
 The **Gateway EUI** of the gateway can be found on the gateway's configuration web page. See [Configuration via Browser section]({{< ref "#configuration-via-browser" >}}) below for instructions to access the configuration page.
 

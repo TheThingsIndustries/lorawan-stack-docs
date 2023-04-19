@@ -4,7 +4,7 @@ description: ""
 weight:
 ---
 
-[Homey](https://homey.app/en-us/) is a smart home hub that can be connected with practically every smart device on the market. This guide shows you how to integrate {{% tts %}} with a Homey application to get the best out of your LoRaWAN data.
+[Homey](https://homey.app/en-us/) is a smart home hub that can be connected with practically every smart device on the market. This guide shows you how to integrate {{% tts %}} with a Homey application to get the best out of your LoRaWAN® data.
 
 <!--more-->
 

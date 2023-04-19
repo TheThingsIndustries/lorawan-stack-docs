@@ -42,7 +42,7 @@ Besides {{% tts %}} ADR mechanism described [above]({{< ref "/reference/adr#the-
 
 {{< note >}} We recommend to test the process described below on test devices before implementing it in production. {{</ note >}}
 
-Before setting ADR parameters to desired values, you first need to turn off the default, {{% tts %}} ADR mechanism. To turn of {{% tts %}} ADR using the [CLI]({{< ref "/getting-started/cli" >}}):
+Before setting ADR parameters to desired values, you first need to turn off the default, {{% tts %}} ADR mechanism. To turn of {{% tts %}} ADR using the [CLI]({{< ref "/the-things-stack/interact/cli" >}}):
 
 ```bash
 ttn-lw-cli end-devices set --application-id <app-id> --device-id <dev-id> --mac-settings.use-adr=false

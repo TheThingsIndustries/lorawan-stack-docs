@@ -3,7 +3,7 @@ title: "deZem"
 description: "deZem IoT data management system"
 ---
 
-The [deZem IoT data management system](https://www.dezem.de/en/data-acquisition/lorawan/) facilitates an increased efficiency and productivity of plants, processes and infrastructure. To this end, deZem provides a modular solution to collect sensor data from very heterogeneous sources on a single platform, and a large variety of online analysis tools. As LoRaWAN devices are great for effortless data acquisition in the field, the deZem system integrates with {{% tts %}}.
+The [deZem IoT data management system](https://www.dezem.de/en/data-acquisition/lorawan/) facilitates an increased efficiency and productivity of plants, processes and infrastructure. To this end, deZem provides a modular solution to collect sensor data from very heterogeneous sources on a single platform, and a large variety of online analysis tools. As LoRaWAN® devices are great for effortless data acquisition in the field, the deZem system integrates with {{% tts %}}.
 
 ![deZemAd TheThingsStack import interface](lorawan-and-dezem.svg)
 

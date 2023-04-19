@@ -34,7 +34,7 @@ In the menu on the left, open **Test** and click **MQTT test client**.
 
 {{< figure src="../subscribe-uplink.png" alt="Subscribe Uplink" >}}
 
-In **Subscription topic**, enter `lorawan/#` to subscribe to all events from all LoRaWAN things in your account.
+In **Subscription topic**, enter `lorawan/#` to subscribe to all events from all LoRaWAN® things in your account.
 
 Click **Subscribe**.
 

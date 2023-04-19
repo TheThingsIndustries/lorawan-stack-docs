@@ -22,7 +22,7 @@ First, you need to **Choose a device to start a project**. Choose **LoRa**.
 
 {{< figure src="start-screen.png" alt="Choose a device" >}}
 
-You will be presented with a list of LoRaWAN networks you can connect your devices from and a list of device models you can connect to Cayenne. Scroll through the list of networks on the left and choose **The Things Network**, then select the model of your end device.
+You will be presented with a list of LoRaWAN® networks you can connect your devices from and a list of device models you can connect to Cayenne. Scroll through the list of networks on the left and choose **The Things Network**, then select the model of your end device.
 
 You can choose the device model, but you can also choose **Cayenne LPP**. If you choose a device model and you start experiencing issues, try using the **Cayenne LPP** instead. In this guide, we chose **Cayenne LPP**.
 

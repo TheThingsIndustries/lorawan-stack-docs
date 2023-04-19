@@ -25,7 +25,7 @@ You will be presented with a list of supported devices; choose **Your own LoRa d
 
 {{< figure src="lora-device.png" alt="Choosing a LoRa device" >}}
 
-Next, choose **The Things Network V3** as a LoRaWAN provider.
+Next, choose **The Things Network V3** as a LoRaWAN® provider.
 
 {{< figure src="ttnv3.png" alt="Choosing TTN V3" >}}
 

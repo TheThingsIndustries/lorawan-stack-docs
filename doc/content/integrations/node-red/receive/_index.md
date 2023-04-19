@@ -12,7 +12,7 @@ Place the **mqtt in** node on the dashboard. Double-click on the node to configu
 
 In the **Server** dropdown menu, select **Add new mqtt-broker** and click on the button besides to edit it. 
 
-In the **Connection** tab, under **Server**, provide the address of the MQTT server (without port) from {{% tts %}} Console (the address shown on the image at the bottom of the [Setup]({{< relref "setup#setup" >}}) section).
+In the **Connection** tab, under **Server**, provide the address of the MQTT server (without port) from {{% tts %}} Console (the address shown on the image at the bottom of the [Setup]({{< relref "host#setup" >}}) section).
 
 Provide the port in the **Port** field next to it, to define if you want an insecure or a TLS-secured connection with the server.
 
@@ -20,7 +20,7 @@ In this example, TLS-secured connection is to be established, so the **Port** va
 
 {{< figure src="mqtt_in_node_connection.png" alt="Configuring MQTT Server connection information" >}}
 
-In the **Security** tab, enter the **Username** and **Password** according to the values in {{% tts %}} Console (the credentials shown on the image at the bottom of the [Setup]({{< relref "setup#setup" >}}) section).
+In the **Security** tab, enter the **Username** and **Password** according to the values in {{% tts %}} Console (the credentials shown on the image at the bottom of the [Setup]({{< relref "host#setup" >}}) section).
 
 {{< figure src="mqtt_in_node_security.png" alt="Configuring MQTT Server credentials" >}}
 

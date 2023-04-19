@@ -8,7 +8,7 @@ weight:
 
 <!--more-->
 
-See [MClimate LoRaWAN Devices documentation page](https://docs.mclimate.eu/mclimate-lorawan-devices/) for detailed documentation on using MClimate with LoRaWAN.
+See [MClimate LoRaWAN® Devices documentation page](https://docs.mclimate.eu/mclimate-lorawan-devices/) for detailed documentation on using MClimate with LoRaWAN.
 
 ## Prerequisites
 

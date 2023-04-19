@@ -4,7 +4,7 @@ description: ""
 weight: 60
 ---
 
-[LoRa Cloud™](https://www.loracloud.com/) platform offers value-added APIs that enable simple solutions for common tasks related to LoRaWAN networks and LoRa-based devices. {{% tts %}} supports integrations with [LoRa Cloud Modem Services]({{< ref "/integrations/lora-cloud/modem-services" >}}) and [LoRa Cloud Geolocation Services]({{< ref "/integrations/lora-cloud/geolocation-services" >}}).
+[LoRa Cloud™](https://www.loracloud.com/) platform offers value-added APIs that enable simple solutions for common tasks related to LoRaWAN® networks and LoRa-based devices. {{% tts %}} supports integrations with [LoRa Cloud Modem Services]({{< ref "/integrations/lora-cloud/modem-services" >}}) and [LoRa Cloud Geolocation Services]({{< ref "/integrations/lora-cloud/geolocation-services" >}}).
 
 <!--more-->
 

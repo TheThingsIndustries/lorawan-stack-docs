@@ -29,7 +29,7 @@ On the left hand menu, navigate to **Cloud Code**. Since you have created a new 
 
 {{< figure src="cloud-code-function.png" alt="Auto-generated Cloud Code Function" >}}
 
-To parse the data correctly, you need to modify this function according to the payload you are sending from {{% tts %}}. Checking [Data Formats](https://www.thethingsindustries.com/docs/reference/data-formats/) in the the official {{% tts %}} documentation might be useful.
+To parse the data correctly, you need to modify this function according to the payload you are sending from {{% tts %}}. Checking [Data Formats](https://www.thethingsindustries.com/docs/the-things-stack/concepts/data-formats/) in the the official {{% tts %}} documentation might be useful.
 
 To modify the `lora_parser` function code, click the **Edit** button on its right. 
 

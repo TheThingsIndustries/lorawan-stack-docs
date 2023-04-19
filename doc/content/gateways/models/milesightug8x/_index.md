@@ -6,7 +6,7 @@ aliases: [/gateways/milesightug8x]
 
 {{< figure src="ug8x.png" alt="Milesight IoT UG8x" class="plain float" >}}
 
-The **Milesight UG8X** is a series of 2 robust 8-channel (16-channel optional) LoRaWAN gateways for industrial IoT applications. This page contains information about connecting the Milesight IoT UG8x LoRaWAN gateway to {{% tts %}}.
+The **Milesight UG8X** is a series of 2 robust 8-channel (16-channel optional) LoRaWAN® gateways for industrial IoT applications. This page contains information about connecting the Milesight IoT UG8x LoRaWAN gateway to {{% tts %}}.
 
 <!--more-->
 
@@ -20,7 +20,7 @@ Technical specifications can be found in Milesight's official [document center](
 
 ## Registration
 
-[Add a gateway]({{< ref "/gateways/concepts/adding-gateways" >}}) by following the instructions for the [Console]({{< ref "/getting-started/console#create-gateway" >}}) or the [CLI]({{< ref "/getting-started/cli#create-gateway" >}}).
+[Add a gateway]({{< ref "/gateways/concepts/adding-gateways" >}}) by following the instructions for the [Console]({{< ref "/the-things-stack/interact/console#create-gateway" >}}) or the [CLI]({{< ref "/the-things-stack/interact/cli#create-gateway" >}}).
 
 The **Gateway EUI** can be found on the gateway's configuration web page. See the [Configuration via Browser section]({{< ref "#configuration-via-browser" >}}) below for instructions to access the configuration page.
 

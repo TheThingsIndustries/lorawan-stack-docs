@@ -74,7 +74,7 @@ If you do not want to serve the OAuth user interface on `/oauth`, you may custom
 
 - `is.oauth.mount`: Path on the server where the OAuth server will be served
 
-If page assets for the OAuth UI are served from a CDN or on a different path on the server, the base URL needs to be customized as well. If you want to [customize the branding]({{< ref "/reference/branding" >}}) of the OAuth UI, you can set the base URL for where your branding assets are located.
+If page assets for the OAuth UI are served from a CDN or on a different path on the server, the base URL needs to be customized as well. If you want to [customize the branding]({{< ref "the-things-stack/management/branding" >}}) of the OAuth UI, you can set the base URL for where your branding assets are located.
 
 - `is.oauth.ui.assets-base-url`: The base URL to the page assets
 - `is.oauth.ui.branding-base-url`: The base URL to the branding assets
@@ -218,7 +218,7 @@ By default admins are granted _almost_ all rights on all entities in the network
 
 ## Network Options
 
-{{% tts %}} Identity Server supports LoRaWAN Backend Interfaces, so it is possible to obtain an end device's NetID, Tenant ID and Network Server address with the use of a vendor-specific extension.
+{{% tts %}} Identity Server supports LoRaWAN® Backend Interfaces, so it is possible to obtain an end device's NetID, Tenant ID and Network Server address with the use of a vendor-specific extension.
 
 - `is.network.net-id`: The NetID of the network. When running a Network Server, this needs to be the same value as `ns.net-id`.
 - `is.network.tenant-id`: The Tenant ID in the host NetID. Leave blank if the used NetID is dedicated for this Identity Server.

@@ -1,42 +1,27 @@
 {{ define "main" }}
 
 <div class="section">
-  <h1 class="title is-size-2 title-intro has-vertical-space">Build end-to-end secured LoRaWAN® networks with 99,9%+ availability</h1>
+  <h1 class="title is-size-2 title-intro has-vertical-space">The Things Stack Documentation</h1>
   <div class="content-intro">
     <p>
-      The Things Stack is a robust yet flexible LoRaWAN Network Server that caters to the needs of demanding LoRaWAN deployments, from covering the essentials to advanced security configurations and device life cycle management.
+      The Things Stack is a robust, yet flexible LoRaWAN® Network Server that caters to the needs of demanding LoRaWAN deployments, from covering the essentials to advanced security configurations and device life cycle management.
     </p>
   </div>
 </div>
 
-<div class="section">
-  <div class="container is-max-desktop">
-    {{ partial "schema/schema" . }}
-  </div>
-</div>
+{{ $quickstart := dict "title" "Getting Started" "button" "Learn More" "url" (.Site.GetPage "getting-started").RelPermalink "text" "Get started with The Things Stack. If you're new to The Things Stack and/or LoRaWAN, this is the place to start."}}
 
-<div class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column">
-        {{ partial "whats-new.html" . }}
-      </div>
-    </div>
-  </div>
-</div>
+{{ $enddevices := dict "title" "End Devices" "button" "Learn More" "url" (.Site.GetPage "devices").RelPermalink "text" "Learn how to configure and manage LoRaWAN End Devices in The Things Stack."}}
 
-{{ $features := dict "title" "Features" "button" "Learn More" "url" (.Site.GetPage "download").RelPermalink "text" "The Things Stack is comprised of an architecture of loosely coupled components which ensures the security, data routing and battery optimization of LoRaWAN end devices. \n\n The Things Stack is a complete and open source LoRaWAN Network Server designed for various deployment scenarios, supporting all existing LoRaWAN versions (including 1.1), operation modes A, B and C, and all regional parameters as released by the LoRa Alliance."}}
+{{ $gateways := dict "title" "Gateways" "button" "Learn More" "url" (.Site.GetPage "gateways").RelPermalink "text" "Learn to connect and manage various LoRaWAN Gateways on The Things Stack."}}
 
-{{ $documentation := dict "title" "Documentation" "button" "Get Started" "url" (.Site.GetPage "getting-started").RelPermalink "text" "The Things Stack is an open source LoRaWAN Network Server suitable for global, geo-distributed public and private deployments as well as for small, local networks. The architecture follows the LoRaWAN Network Reference Model for standards compliancy and interoperability. This project is actively maintained by [The Things Industries](https://www.thethingsindustries.com/). \n\n LoRaWAN is a protocol for low-power wide area networks. It allows for large scale Internet of Things deployments where low-powered devices efficiently communicate with Internet-connected applications over long range wireless connections." }}
+{{ $data := dict "title" "Integrations" "button" "Learn More" "url" (.Site.GetPage "integrations").RelPermalink "text" "Learn how to work with End Device data on The Things Stack and how to integrate with external systems."}}
 
-{{ $forumUrl := "" }}
-{{ range first 1 (where .Site.Menus.contributing "Name" "Forum") }}
-  {{ $forumUrl = .URL }}
-{{ end }}
+{{ $tts := dict "title" "The Things Stack" "button" "Learn More" "url" (.Site.GetPage "the-things-stack").RelPermalink "text" " Learn about the different flavours of The Things Stack and how to install/access them."}}
 
-{{ $community := dict "title" "Community" "button" "Developer Forum" "url" $forumUrl "text" "Thanks to a large developer community, The Things Stack is continuously being improved. There are many ways to contribute to the project, thinking of reporting issues, requesting and implementing new features and writing documentation. Read more on how to contribute in the [LoRaWAN stack repository](https://github.com/TheThingsNetwork/lorawan-stack). \n\n Hosted solutions, as well as commercial support and consultancy are offered by [The Things Industries](https://www.thethingsindustries.com/)." }}
+{{ $reference := dict "title" "Reference" "button" "Learn More" "url" (.Site.GetPage "reference").RelPermalink "text" "Curated list of advanced topics for The Things Stack. Leverage the full customization capabilities of The Things Stack."}}
 
-{{ $cards := slice $features $documentation $community }}
+{{ $cards := slice $quickstart $enddevices $gateways $data $tts $reference }}
 
 <div class="section">
   <div class="container is-max-desktop">
@@ -58,6 +43,16 @@
           </div>
         </div>
       {{ end }}
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column">
+        {{ partial "whats-new.html" . }}
+      </div>
     </div>
   </div>
 </div>

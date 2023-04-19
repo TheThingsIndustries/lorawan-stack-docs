@@ -9,7 +9,7 @@ description: ""
 
 ## Interoperability Options
 
-The `as.interop` options configure how Application Server performs interoperability with other LoRaWAN Backend Interfaces-compliant servers.
+The `as.interop` options configure how Application Server performs interoperability with other LoRaWAN® Backend Interfaces-compliant servers.
 
 - `as.interop.id`: AS-ID of this Application Server
 - `as.interop.config-source`: Source of the interoperability client configuration (directory, url, blob)

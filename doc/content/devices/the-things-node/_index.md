@@ -6,7 +6,7 @@ weight:
 
 {{< figure src="TheThingsNode.jpg" alt="The Things Node" class="float plain" >}}
 
-**The Things Node** is based on the [SparkFun Pro Micro - 3.3V/8Mhz](https://www.sparkfun.com/products/12587) with an added Microchip LoRaWAN module ([RN2483](https://www.microchip.com/wwwproducts/en/RN2483) or [RN2903](https://www.microchip.com/wwwproducts/en/RN2903)). It features a temperature sensor, [NXP’s digital accelerometer](http://www.nxp.com/products/sensors/accelerometers/3-axis-accelerometers/2g-4g-8g-low-g-12-bit-digital-accelerometer:MMA8452Q), light sensor, pushbutton, and RGB LED. All this is packaged in a matchbox-sized waterproof (IP54) casing with a 3 AAA battery compartment.
+**The Things Node** is based on the [SparkFun Pro Micro - 3.3V/8Mhz](https://www.sparkfun.com/products/12587) with an added Microchip LoRaWAN® module ([RN2483](https://www.microchip.com/wwwproducts/en/RN2483) or [RN2903](https://www.microchip.com/wwwproducts/en/RN2903)). It features a temperature sensor, [NXP’s digital accelerometer](http://www.nxp.com/products/sensors/accelerometers/3-axis-accelerometers/2g-4g-8g-low-g-12-bit-digital-accelerometer:MMA8452Q), light sensor, pushbutton, and RGB LED. All this is packaged in a matchbox-sized waterproof (IP54) casing with a 3 AAA battery compartment.
 
 The Things Node is compatible with the **Arduino software (IDE)**. In this quickstart, you will learn how to register your Things Node with {{% tts %}} and program it with the Arduino software for activating with {{% tts %}}.
 

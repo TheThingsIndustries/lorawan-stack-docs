@@ -11,7 +11,7 @@ LNS establishes a data connection between a {{% lbs %}} and {{% tts %}}. This pa
 
 These are general instructions for all {{% lbs %}} gateways. For specific instructions for connecting your gateway via LNS, look in the [Gateways]({{< ref "gateways" >}}) section.
 
-{{< note >}} The LNS protocol is **required** for sending and receiving LoRaWAN data with {{% lbs %}}, while the CUPS protocol is not. However, configuring CUPS will automatically retrieve LNS credentials and configure LNS on your gateway, so there is no need to configure both. {{</ note >}}
+{{< note >}} The LNS protocol is **required** for sending and receiving LoRaWAN® data with {{% lbs %}}, while the CUPS protocol is not. However, configuring CUPS will automatically retrieve LNS credentials and configure LNS on your gateway, so there is no need to configure both. {{</ note >}}
 
 ## Requirements
 
@@ -42,7 +42,7 @@ The server address is the network endpoint of {{% tts %}} LNS. It is a combinati
 
 Enter the following in your gateway as the LNS Server Address: `wss://<server-address>:8887`.
 
-The `<server-address>` is the address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}) for more info.
+The `<server-address>` is the address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}) for more info.
 
 ### LNS Server Certificate / LNS Trust
 

@@ -5,7 +5,7 @@ weight: -1
 aliases: [semtech-udp-packet-forwarder, /gateways/udp]
 ---
 
-The [{{% udp-pf %}}](https://github.com/lora-net/packet_forwarder) is the original LoRaWAN packet forwarder, connecting to servers through the Semtech UDP protocol. Many gateways include a pre-compiled version of the {{% udp-pf %}}, often adapted to the specific gateway.
+The [{{% udp-pf %}}](https://github.com/lora-net/packet_forwarder) is the original LoRaWAN® packet forwarder, connecting to servers through the Semtech UDP protocol. Many gateways include a pre-compiled version of the {{% udp-pf %}}, often adapted to the specific gateway.
 
 {{< warning >}} The {{% udp-pf %}} has many security and scalability drawbacks, so if possible, use [{{% lbs %}}]({{< ref "/gateways/concepts/lora-basics-station" >}}) to connect your gateway to {{% tts %}}. {{</ warning >}}
 

@@ -4,13 +4,13 @@ description: ""
 aliases: ["/gateways/mikrotikrouterboard"]
 ---
 
-MikroTik Routerboard wAP LoRa8 kit is a LoRaWAN gateway that contains a pre-installed UDP packet forwarder and an outdoor weatherproof wireless access point with 2.4 GHz WLAN interface and Ethernet port that could be used as a backend. 
+MikroTik Routerboard wAP LoRa8 kit is a LoRaWAN® gateway that contains a pre-installed UDP packet forwarder and an outdoor weatherproof wireless access point with 2.4 GHz WLAN interface and Ethernet port that could be used as a backend.
 
 This guide shows how to connect this gateway to {{% tts %}}.
 
 <!--more-->
 
-Its technical specifications can be found in [the MikroTik official documentation](https://mikrotik.com/product/wap_lora8_kit). 
+Its technical specifications can be found in [the MikroTik official documentation](https://mikrotik.com/product/wap_lora8_kit).
 
 {{< warning >}} Currently, this gateway does not support changing frequency channels. {{</ warning >}}
 
@@ -53,7 +53,7 @@ From the top menu, select the **Servers** Tab and press the **Add New** button.
 Edit the server parameters.
 
 - **Name**: A distinct name 
-- **Address**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}).
+- **Address**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}).
 - **Up port**: UDP upstream port of the Gateway Server, typically `1700`.
 - **Down port**: UDP downstream port of the Gateway Server, typically `1700`.
 
@@ -108,7 +108,7 @@ Back in the **LoRa** section, select the **Servers** section. Select the **+** b
 Edit the server parameters.
 
 - **Name**: A distinct name 
-- **Address**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}).
+- **Address**: Address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}).
 - **Up port**: UDP upstream port of the Gateway Server, typically `1700`.
 - **Down port**: UDP downstream port of the Gateway Server, typically `1700`.
 
