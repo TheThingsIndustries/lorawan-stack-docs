@@ -5,7 +5,7 @@ slug: ttn-lw-cli_lorawan_decode
 
 ## ttn-lw-cli lorawan decode
 
-Decode LoRaWAN® frames
+Decode LoRaWAN frames
 
 ```
 ttn-lw-cli lorawan decode [flags]

@@ -1,0 +1,21 @@
+name: ALCSyncCommand
+fields:
+- name: cid
+  enum:
+    name: ALCSyncCommandIdentifier
+  rules:
+    defined_only: true
+  default: ALCSYNC_CID_PKG_VERSION
+- name: app_time_req
+  message:
+    name: ALCSyncCommand.AppTimeReq
+  default: {}
+- name: app_time_ans
+  message:
+    name: ALCSyncCommand.AppTimeAns
+  default: {}
+oneofs:
+- name: payload
+  field_names:
+  - app_time_req
+  - app_time_ans

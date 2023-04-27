@@ -9,6 +9,25 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.25.0
+
+### Proxy
+
+- The NOC API is now exposed by the proxy.
+
+### `2-5-db-timescale`
+
+- Added TimescaleDB 2.10.1 support.
+
+### `2-3-db-redis`
+
+- The `r4g` family of machines is now available for hosting.
+
+### `4-2a-configuration`
+
+- Added the NOC API paths.
+- Added `RestrictAdminManagedFieldUpdates` parameter.
+
 ## 3.24.2
 
 ### `1-2-bastion`

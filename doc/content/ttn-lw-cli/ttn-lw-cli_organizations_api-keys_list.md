@@ -17,6 +17,7 @@ ttn-lw-cli organizations api-keys list [organization-id] [flags]
   -h, --help                                      help for list
       --limit uint32                              
       --order string                              
+      --organization-id string                    
       --organization-ids.organization-id string   
       --page uint32                               
 ```
@@ -46,7 +47,6 @@ ttn-lw-cli organizations api-keys list [organization-id] [flags]
       --network-server-enabled                          Network Server enabled (default true)
       --network-server-grpc-address string              Network Server address (default "localhost:8884")
       --oauth-server-address string                     OAuth Server address (default "https://localhost/oauth")
-      --organization-id string                          
       --output-format string                            Output format (default "json")
       --packet-broker-agent-grpc-address string         Packet Broker Agent address (default "localhost:8884")
       --qr-code-generator-grpc-address string           QR Code Generator address (default "localhost:8884")

@@ -15,6 +15,7 @@ ttn-lw-cli organizations collaborators set [flags]
 
 ```
   -h, --help                                       help for set
+      --organization-id string                     
       --right-application-all                      
       --right-application-delete                   
       --right-application-devices-read             
@@ -89,7 +90,6 @@ ttn-lw-cli organizations collaborators set [flags]
       --network-server-enabled                          Network Server enabled (default true)
       --network-server-grpc-address string              Network Server address (default "localhost:8884")
       --oauth-server-address string                     OAuth Server address (default "https://localhost/oauth")
-      --organization-id string                          
       --output-format string                            Output format (default "json")
       --packet-broker-agent-grpc-address string         Packet Broker Agent address (default "localhost:8884")
       --qr-code-generator-grpc-address string           QR Code Generator address (default "localhost:8884")
