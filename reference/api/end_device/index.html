@@ -44,7 +44,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.24.2</p>
+        <p class="navbar-item is-size-7">v3.25.0</p>
       </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
           </div>
       <span class="navbar-burger burger" data-target="topMenu">
@@ -25375,6 +25375,7 @@ See the API reference for which fields can be set on the different services.</p>
   "correlation_ids": [],
   "device_channel_index": 0,
   "consumed_airtime": "0s",
+  "crc_status": null,
 }</code></pre>
 </details>
 
@@ -25687,6 +25688,50 @@ Set by Network Server.</p>
       </th>
       <td>
           <p>Consumed airtime for the transmission of the uplink message. Calculated by Network Server using the RawPayload size and the transmission settings.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>crc_status</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    BoolValue
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Cyclic Redundancy Check (CRC) status of demodulating the frame.
+If unset, the modulation does not support CRC or the gateway did not provide a CRC status.
+If set to false, this message should not be processed.</p>
       </td>
     </tr>
     
