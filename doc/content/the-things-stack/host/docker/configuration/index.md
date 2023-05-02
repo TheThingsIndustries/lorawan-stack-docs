@@ -17,7 +17,7 @@ In addition to the written instructions below, video instructions for installing
 
 ## Configuration Files
 
-{{% tts %}} requires two configuration files when installing with Docker: `docker-compose.yml` and `ttn-lw-stack-docker.yml`. 
+{{% tts %}} requires two configuration files when installing with Docker: `docker-compose.yml` and `ttn-lw-stack-docker.yml`.
 
 Example files for Enterprise and Open source are provided [below](#example-configuration-files). Note that you must replace the example server address `thethings.example.com` in `ttn-lw-stack-docker.yml`, and you should change additional settings for production deployments, which we cover below.
 
@@ -76,7 +76,7 @@ In `docker-compose.yml` file, Docker is configured to run three services:
 - PostgreSQL database
 - Redis
 - {{% tts %}}
- 
+
 ### PostgreSQL Database
 
 The configuration in this guide uses a single instance of [PostgreSQL](https://www.postgresql.org/). Note that the `volumes` need to be set up correctly so that the database is persisted on your server's disk.
@@ -116,7 +116,7 @@ Alternatively, you can use a managed PostgreSQL database. In that case, make sur
 
 ### Redis
 
-The configuration in this guide uses a single instance of [Redis](https://redis.io/). Again, note that the `volumes` need to be set up correctly so that the datastore is persisted on your server's disk. 
+The configuration in this guide uses a single instance of [Redis](https://redis.io/). Again, note that the `volumes` need to be set up correctly so that the datastore is persisted on your server's disk.
 
 {{< note >}} {{% tts %}} requires Redis version 6.2. {{</ note >}}
 
@@ -138,7 +138,7 @@ After starting the PostgreSQL and Redis databases, Docker Compose starts {{% tts
 
 Docker Compose uses `ttn-lw-stack -c /config/ttn-lw-stack-docker.yml` as the container entry point, so that `ttn-lw-stack-docker.yml` configuration file is always loaded (more on the config file below).
 
-In production, replace the `image` with a working, stable tag from [Docker Hub - The Things Industries](https://hub.docker.com/r/thethingsindustries/lorawan-stack/tags) for Enterprise, or [Docker Hub - The Things Network](https://hub.docker.com/r/thethingsnetwork/lorawan-stack/tags) for Open Source. 
+In production, replace the `image` with a working, stable tag from [Docker Hub - The Things Industries](https://hub.docker.com/r/thethingsindustries/lorawan-stack/tags) for Enterprise, or [Docker Hub - The Things Network](https://hub.docker.com/r/thethingsnetwork/lorawan-stack/tags) for Open Source.
 
 The default command is `start`, which starts {{% tts %}}.
 
@@ -221,7 +221,7 @@ This example shows the configuration for using TLS with Let's Encrypt. Since {{%
 `thethings.example.com` in this guide, it is configured to only request certificates for that
 host, and also to use it as the default host.
 
-If using Let's Encrypt, certificates will automatically be requested the first time you access {{% tts %}}. You will notice that the page takes some time to load while certificates are obtained in the background. 
+If using Let's Encrypt, certificates will automatically be requested the first time you access {{% tts %}}. You will notice that the page takes some time to load while certificates are obtained in the background.
 
 See the [TLS Options configuration reference]({{< ref "/reference/configuration/the-things-stack#tls-options" >}}) for more information.
 
@@ -231,6 +231,7 @@ If you are using your own certificate files, make sure to uncomment the lines th
 
 {{< highlight yaml "linenos=table,linenostart=53" >}}
 {{< readfile path="/the-things-stack/host/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=53 to=59 >}}
+{{< /highlight >}}
 
 If you are using Let's Encrypt in a multi-tenant {{% tts %}} environment, all tenant addresses have to be specified in the `ttn-lw-stack-docker.yml` file using `tls.acme.hosts` configuration option with `*.thethings.example.com` wildcard.
 
@@ -244,6 +245,7 @@ The `console` section configures the URLs for the Web UI and the secret used by 
 
 {{< highlight yaml "linenos=table,linenostart=89" >}}
 {{< readfile path="/the-things-stack/host/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=89 to=115 >}}
+{{< /highlight >}}
 
 {{< warning >}} Failure to correctly configure component URLs is a common problem that will prevent the stack from starting. Be sure to replace all instances of `thethings.example.com` with your domain name! {{</ warning >}}
 
@@ -251,6 +253,7 @@ The `client-secret` will be needed later when authorizing the Console. Be sure t
 
 {{< highlight yaml "linenos=table,linenostart=116" >}}
 {{< readfile path="/the-things-stack/host/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=116 to=121 >}}
+{{< /highlight >}}
 
 ### NOC
 
@@ -262,11 +265,13 @@ To authorize the NOC, be sure to set and remember the client secret.
 
 {{< highlight yaml "linenos=table,linenostart=161" >}}
 {{< readfile path="/the-things-stack/host/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=161 to=170 >}}
+{{< /highlight >}}
 
 To visualize data, configure the `grafana` section.
 
 {{< highlight yaml "linenos=table,linenostart=179" >}}
 {{< readfile path="/the-things-stack/host/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=179 to=185 >}}
+{{< /highlight >}}
 
 ### Multi-tenancy
 
@@ -274,6 +279,7 @@ To visualize data, configure the `grafana` section.
 
 {{< highlight yaml "linenos=table,linenostart=185" >}}
 {{< readfile path="/the-things-stack/host/docker/configuration/ttn-lw-stack-docker-enterprise.yml" from=185 to=189 >}}
+{{< /highlight >}}
 
 For multi-tenant environments you'll also need to configure tenant admin keys:
 
@@ -303,7 +309,7 @@ If you configure your `is.oauth.ui.canonical-url` as `localhost`, this causes **
 
 ### Solution 1: Use the IP address of your computer on your local network
 
-The best solution is to configure and use a static IP address for your machine on your local network so that redirects from your machine, from the Docker container, or from anywhere inside your local network, all resolve at the same place, on your machine. 
+The best solution is to configure and use a static IP address for your machine on your local network so that redirects from your machine, from the Docker container, or from anywhere inside your local network, all resolve at the same place, on your machine.
 
 Follow instructions [here](https://uk.pcmag.com/news/124250/how-to-set-up-a-static-ip-address) for configuring a static IP address on your computer. Use that IP address as your server address, i.e replace `thethings.example.com` with that IP address. You may also generate a self-signed certificate for that IP address by following instructions in the [Certificates]({{< relref "certificates" >}}) section.
 
@@ -313,7 +319,7 @@ ACME will not work on `localhost`, so you must either generate custom certificat
 
 This will still allow you to see {{% tts %}} Console by entering `localhost` or your local IP address in your browser. It will also allow you to connect to {{% tts %}} from any machine inside your local network.
 
-You will also need to [configure the CLI]({{< ref "the-things-stack/interact/cli/installing-cli#generate-configuration-file" >}}), to use the static IP of your machine as the address of {{% tts %}}. 
+You will also need to [configure the CLI]({{< ref "the-things-stack/interact/cli/installing-cli#generate-configuration-file" >}}), to use the static IP of your machine as the address of {{% tts %}}.
 
 ### Solution 2: Specify the internal ports that {{% tts %}} listens on in your configuration files
 
@@ -321,7 +327,7 @@ By default, {{% tts %}} listens on ports 1885 and 8885 inside Docker. To make `l
 
 You must also remove ports 80 and 443 from your {{% tts %}} Docker configuration.
 
-For example, 
+For example,
 
 ```yaml
 is:
@@ -341,7 +347,7 @@ is:
       canonical-url: 'https://localhost:8885/oauth'
       is:
         base-url: 'https://localhost:8885/api/v3'
-``` 
+```
 
 and in `docker-compose.yml`, add the following port forwarding configuration (if it does not already exist), while removing ports 80 and 443:
 
