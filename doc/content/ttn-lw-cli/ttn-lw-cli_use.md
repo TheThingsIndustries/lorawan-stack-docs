@@ -14,12 +14,14 @@ ttn-lw-cli use [flags]
 ### Options
 
 ```
-      --fetch-ca        Connect to server and retrieve CA
-      --grpc-port int   
-  -h, --help            help for use
-      --host string     Server host name (default "localhost")
-      --overwrite       Overwrite existing config files
-      --user            Write config file in user config directory
+      --fetch-ca                      Connect to server and retrieve CA
+      --grpc-port int                 
+  -h, --help                          help for use
+      --host string                   Server host name (default "localhost")
+      --insecure                      Connect without TLS
+      --oauth-server-address string   OAuth Server address
+      --overwrite                     Overwrite existing config files
+      --user                          Write config file in user config directory
 ```
 
 ### Options inherited from parent commands
@@ -39,14 +41,12 @@ ttn-lw-cli use [flags]
       --gateway-server-grpc-address string              Gateway Server address (default "localhost:8884")
       --identity-server-grpc-address string             Identity Server address (default "localhost:8884")
       --input-format string                             Input format (default "json")
-      --insecure                                        Connect without TLS
       --join-server-enabled                             Join Server enabled (default true)
       --join-server-grpc-address string                 Join Server address (default "localhost:8884")
       --log.format string                               Log format to write (console, json) (default "console")
       --log.level string                                The minimum level log messages must have to be shown (default "info")
       --network-server-enabled                          Network Server enabled (default true)
       --network-server-grpc-address string              Network Server address (default "localhost:8884")
-      --oauth-server-address string                     OAuth Server address (default "https://localhost/oauth")
       --output-format string                            Output format (default "json")
       --packet-broker-agent-grpc-address string         Packet Broker Agent address (default "localhost:8884")
       --qr-code-generator-grpc-address string           QR Code Generator address (default "localhost:8884")

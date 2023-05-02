@@ -18,6 +18,7 @@ ttn-lw-cli users api-keys list [user-id] [flags]
       --limit uint32              
       --order string              
       --page uint32               
+      --user-id string            
       --user-ids.user-id string   
 ```
 
@@ -54,7 +55,6 @@ ttn-lw-cli users api-keys list [user-id] [flags]
       --retry.jitter float                              Fraction that creates a deviation of the timeout used between retry attempts
       --retry.max uint                                  Maximum amount of times that a request can be reattempted
       --skip-version-check                              Do not perform version checks
-      --user-id string                                  
 ```
 
 ### SEE ALSO
