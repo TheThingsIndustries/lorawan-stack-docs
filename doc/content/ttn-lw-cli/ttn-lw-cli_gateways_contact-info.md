@@ -48,6 +48,8 @@ Manage gateway contact info (DEPRECATED. Instead, use administrative_contact and
       --retry.jitter float                              Fraction that creates a deviation of the timeout used between retry attempts
       --retry.max uint                                  Maximum amount of times that a request can be reattempted
       --skip-version-check                              Do not perform version checks
+      --telemetry.enable                                Enables telemetry for CLI
+      --telemetry.target string                         Target to which the information will be sent to
 ```
 
 ### SEE ALSO

@@ -9,6 +9,42 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.25.1
+
+### `2-4b-routing-s3`
+
+- Added `PluginsConfigBucket`.
+
+### Proxy
+
+- The Network Operations Center routes now have a 30 second timeout.
+
+### `3-2-load-balancer-rules`
+
+- The Basic Station and Tabs Hubs target groups now have a deregistration delay of zero.
+
+### `5-3a-ecs-is-service`
+
+- Service deployment configuration `MinimumHealthyPercent` is now applied only to EC2 services.
+
+### `5-3b-ecs-external-is-proxy`
+
+- Service deployment configuration `MinimumHealthyPercent` is now applied only to EC2 services.
+
+### `5-3c-tbs-service`
+
+- Service deployment configuration `MinimumHealthyPercent` is now applied only to EC2 services.
+
+### `5-4-ecs-services`
+
+- Grafana `gzip` encoding is now enabled.
+- Service deployment configuration `MinimumHealthyPercent` is now applied only to EC2 services.
+- The default NOC Grafana image has been updated to `ghcr.io/thethingsindustries/lorawan-stack-noc-grafana:3.25.1`.
+
+### `5-6-ecs-proxy`
+
+- Service deployment configuration `MinimumHealthyPercent` is now applied only to EC2 services.
+
 ## 3.25.0
 
 ### Proxy

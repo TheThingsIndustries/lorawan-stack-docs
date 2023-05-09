@@ -46,12 +46,13 @@ End Device commands
       --retry.jitter float                              Fraction that creates a deviation of the timeout used between retry attempts
       --retry.max uint                                  Maximum amount of times that a request can be reattempted
       --skip-version-check                              Do not perform version checks
+      --telemetry.enable                                Enables telemetry for CLI
+      --telemetry.target string                         Target to which the information will be sent to
 ```
 
 ### SEE ALSO
 
 * [ttn-lw-cli]({{< relref "ttn-lw-cli" >}})	 - The Things Industries Command-line Interface
-* [ttn-lw-cli end-devices claim]({{< relref "ttn-lw-cli_end-devices_claim" >}})	 - Claim an end device (EXPERIMENTAL)
 * [ttn-lw-cli end-devices create]({{< relref "ttn-lw-cli_end-devices_create" >}})	 - Create an end device
 * [ttn-lw-cli end-devices delete]({{< relref "ttn-lw-cli_end-devices_delete" >}})	 - Delete an end device
 * [ttn-lw-cli end-devices downlink]({{< relref "ttn-lw-cli_end-devices_downlink" >}})	 - Application downlink commands
