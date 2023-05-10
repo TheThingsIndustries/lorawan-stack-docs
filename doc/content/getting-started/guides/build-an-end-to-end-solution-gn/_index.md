@@ -4,7 +4,7 @@ description: ""
 weight: 
 ---
 
-In this section, we will show how to build an end-to-end solution with [{{% tts %}}]({{< ref "/getting-started/what-is-tts/" >}}) to control the [Kuando Busylight](https://busylight.com/busylight-iot/) with the [Generic Node Sensor Edition](https://www.thethingsshop.com/products/generic-node-sensor-edition) (GNSE). 
+In this section, we will show how to build an end-to-end solution with [{{% tts %}}]({{< ref "/getting-started/the-things-stack-basics/" >}}) to control the [Kuando Busylight](https://busylight.com/busylight-iot/) with the [Generic Node Sensor Edition](https://www.thethingsshop.com/products/generic-node-sensor-edition) (GNSE). 
 
 ## Registering The Things Indoor Gateway
 
