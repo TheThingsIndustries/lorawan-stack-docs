@@ -44,7 +44,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.25.0</p>
+        <p class="navbar-item is-size-7">v3.25.1</p>
       </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
           </div>
       <span class="navbar-burger burger" data-target="topMenu">
@@ -215,59 +215,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="whats-new">
   <div class="whats-new-content">
     <div class="whats-new-header">
-      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.25.0/>What's new in V3.25.0</a></h2>
+      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.25.1/>What's new in V3.25.1</a></h2>
       <a href="https://www.thethingsindustries.com/docs/whats-new/"><p class="see-more">See all release notes →</p></a>
     </div>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.25.0/">
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.25.1/">
       <div class="whats-new-body">
         <div class="whats-new-items-shadow whats-new-items-fade">
           <div class="whats-new-items">
             <h3 id="added">Added</h3>
 <ul>
-<li>Optional Network Server database migration that removes obsolete last invalidation keys is now available.</li>
-<li>LoRaWAN Application Layer Clock Synchronization support.
-<ul>
-<li>It is available using the <code>alcsync-v1</code> application package.</li>
-<li>Can be enabled using the Console by visiting the application settings and ticking the <strong>Use Application Layer Clock Synchronization</strong> checkbox. By default, the package will operate on FPort 202.</li>
-</ul>
-</li>
-<li>Network Operations Center API references in the Console configuration.
-<ul>
-<li>This comes as part of the <code>console.ui.noc.enabled</code> and <code>console.ui.noc.base-url</code> configuration options.</li>
-<li>Deployments which use the Network Operations Center need to set <code>console.ui.noc.base-url</code> to the same value as other <code>base-url</code> configuration options, such as <code>console.ui.as.base-url</code>.</li>
-<li>Deployments which do not use the Network Operations Center need to set <code>console.ui.noc.enabled</code> to <code>false</code>.</li>
-</ul>
-</li>
-<li>Drop uplink frames with CRC failure.</li>
+<li>Fallback end device version identifiers to be used while importing end devices using the Console.</li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
-<li>The Stripe API used by the Tenant Billing Server has been updated to version <code>2022-11-15</code>.
-<ul>
-<li>Existing webhook integrations, which previously used API version <code>2018-09-06</code>, are no longer compatible and will be rejected.</li>
-<li>In order to have a smooth upgrade flow, create a new webhook with the new API version and the same endpoint URL, then update the Stripe signing secret (<code>tbs.stripe.endpoint-secret-key</code>) to the one provided by the new webhook. You may now restart the Tenant Billing Server and disable the old webhook integration.</li>
-</ul>
-</li>
-<li>Network Operations Center application and end devices table schema.
-<ul>
-<li>This requires a database schema migration (<code>ttn-lw-stack noc-db migrate</code>) because of added table records.</li>
-</ul>
-</li>
+<li>The Things Stack is now built with Go 1.20.</li>
 </ul>
 <h3 id="deprecated">Deprecated</h3>
 <ul>
-<li>Returning special float values, such as <code>NaN</code> and <code>Infinity</code> as part of the decoded payloads.
-<ul>
-<li>While the concepts of <code>NaN</code> and <code>Infinity</code> are part of JavaScript, JSON does not have a dedicated value for such values.</li>
-<li>Historically we have rendered them in their string form, i.e. <code>&quot;NaN&quot;</code> and <code>&quot;Infinity&quot;</code>, but this form is not standard nor accepted by the standard libraries of most programming languages (at least by default).</li>
-<li>Most usages of <code>NaN</code> are actually result of operations with the JavaScript concept of <code>undefined</code>, and are not intentional. Mathematical operations that interact with <code>undefined</code> return <code>NaN</code> - for example <code>undefined * 5</code> is <code>NaN</code>. It is not hard to reach <code>undefined</code> in JavaScript, as array access to undefined indices is <code>undefined</code>, and payload decoders generally work by consuming the frame payload bytes.</li>
-<li>Future The Things Stack versions may not render such values, or may discard the decoded payload completely. The deprecation discussion can be tracked <a href="https://github.com/TheThingsNetwork/lorawan-stack/issues/6128">on GitHub</a>.</li>
+<li><code>--with-claim-authentication-code</code> flag for the end device <code>create</code> command via the CLI. Users must use a valid claim authentication code that is registered on a Join Server instead of generating one during end device creation.</li>
 </ul>
-</li>
-</ul>
-<h3 id="removed">Removed</h3>
+<h3 id="fixed">Fixed</h3>
 <ul>
-<li>Automatic migrations of the Network Server database using <code>ns-db migrate</code> from versions prior to v3.24 are removed. Migrating from prior versions should be done through v3.24 instead.</li>
+<li>Attempting to claim an end device with a generated DevEUI will now result in an error.</li>
+<li>Claiming an end device using command line flags.</li>
+<li>24 hour stack components deadlock when the default clustering mode is used.</li>
 </ul>
 
           </div>
@@ -285,7 +256,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <a href="https://www.thethingsindustries.com/docs/whats-new/">
   <div class="whats-new-800">
     <div class="whats-new-header-800">
-      <p>See what's new in V3.25.0</p>
+      <p>See what's new in V3.25.1</p>
       <p>-></p>
     </div>
   </div>
