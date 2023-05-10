@@ -23,7 +23,7 @@ To communicate with the MQTT protocol, the Gateway Server and the gateway are ex
 
 ## Connecting to the Gateway Server
 
-See [Networking]({{< ref "/reference/networking" >}}) for the default port of the MQTT server.
+See [Networking]({{< ref "/the-things-stack/concepts/networking" >}}) for the default port of the MQTT server.
 
 The username is `<gateway-id>@<tenant-id>` (e.g. `gtw1@tenant1`), and the password is a gateway API key with the `RIGHT_GATEWAY_LINK` right enabled. You can generate this API key by following instructions in the [Creating Gateways]({{< ref "/gateways/concepts/adding-gateways#create-gateway-api-key" >}}) section.
 

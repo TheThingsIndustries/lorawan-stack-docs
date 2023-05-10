@@ -13,7 +13,7 @@ title: "Telemetry2U"
 
 First [login](https://telemetry2u.com/Identity/Account/Login) to your Telemetry2U account and navigate to **Node Maintenance** via **Admin** tab from the top menu.
 
-Click the __Create New__ link in the top right corner to add a new LoRaWAN device.
+Click the __Create New__ link in the top right corner to add a new LoRaWAN® device.
 
 Next, you need to complete the device creation form.  The __Description__, __Profile__, __Device EUI__, __Network Provider__ and __Device Configuration__ are required fields. If your device is currently unsupported leave __Device Configuration__ at the default value.  Click the __Create__ button to finish.
 

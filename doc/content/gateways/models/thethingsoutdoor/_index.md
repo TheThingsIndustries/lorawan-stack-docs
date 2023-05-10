@@ -55,7 +55,7 @@ Connect and power the gateway as above. The gateway will use DHCP to request an 
 
 Navigate to **Packet Forward** > **Module 1 Settings** on the left hand menu and enter the following settings to connect the gateway to {{% tts %}}:
 
- - **Server Address:** The address of your {{% tts %}} instance. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}) 
+ - **Server Address:** The address of your {{% tts %}} instance. See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}) 
  - **Server Uplink Port:** 1700
  - **Server Downlink Port:** 1700
 
@@ -88,7 +88,7 @@ If all steps have been followed correctly, once you register your gateway it wil
 
 ## Troubleshooting
 
-When you cannot find a way to change the LoRaWAN settings, you might need to update the system firmware. You can do so by following steps below:
+When you cannot find a way to change the LoRaWAN® settings, you might need to update the system firmware. You can do so by following steps below:
 
 * Navigate to **System** > **System Firmware** on the left hand menu
 * Download [this file](https://connectedthings.store/files/WAPS-232N_LW_OPDK_GUI_1.01.09_3416004962.tar.gz), making sure to keep the file name exactly the same (do not unzip this file)

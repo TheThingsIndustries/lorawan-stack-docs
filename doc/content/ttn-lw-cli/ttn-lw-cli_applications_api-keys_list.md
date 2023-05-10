@@ -14,6 +14,7 @@ ttn-lw-cli applications api-keys list [application-id] [flags]
 ### Options
 
 ```
+      --application-id string                   
       --application-ids.application-id string   
   -h, --help                                    help for list
       --limit uint32                            
@@ -25,7 +26,6 @@ ttn-lw-cli applications api-keys list [application-id] [flags]
 
 ```
       --allow-unknown-hosts                             Allow sending credentials to unknown hosts
-      --application-id string                           
       --application-server-enabled                      Application Server enabled (default true)
       --application-server-grpc-address string          Application Server address (default "localhost:8884")
       --ca string                                       CA certificate file

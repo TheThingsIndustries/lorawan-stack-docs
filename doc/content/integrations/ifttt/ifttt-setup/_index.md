@@ -26,7 +26,7 @@ Give a name to the trigger event and click the **Create trigger** button.
 
 Next, click the **+ That** button.
 
-There are many action services to choose from. In this guide, we will use the **Android SMS** action service to trigger an SMS when a LoRaWAN `Join accept` message is sent from {{% tts %}}.
+There are many action services to choose from. In this guide, we will use the **Android SMS** action service to trigger an SMS when a LoRaWAN® `Join accept` message is sent from {{% tts %}}.
 
 {{< figure src="choosing-action-service.png" alt="Choosing Android SMS action service" >}}
 

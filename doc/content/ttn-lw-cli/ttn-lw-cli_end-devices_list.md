@@ -29,11 +29,13 @@ ttn-lw-cli end-devices list [application-id] [flags]
       --last-seen-at                           select the last_seen_at field
       --limit uint32                           maximum number of results to get (default 50)
       --locations                              select the locations field
+      --lora-alliance-profile-ids              select the lora_alliance_profile_ids field and all allowed sub-fields
       --name                                   select the name field
       --network-server-address                 select the network_server_address field
       --order string                           order by this field
       --page uint32                            results page number (default 1)
       --picture                                select the picture field and all allowed sub-fields
+      --serial-number                          select the serial_number field
       --service-profile-id                     select the service_profile_id field
       --version-ids                            select the version_ids field and all allowed sub-fields
       --version-ids.band-id                    select the version_ids.band_id field

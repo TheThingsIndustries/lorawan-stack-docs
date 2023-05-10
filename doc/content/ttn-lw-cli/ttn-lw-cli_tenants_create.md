@@ -46,6 +46,7 @@ ttn-lw-cli tenants create [tenant-id] [flags]
       --configuration.default-cluster.is.user-rights.update-name                                        
       --configuration.default-cluster.is.user-rights.update-primary-email-address                       
       --configuration.default-cluster.js.join-eui-prefixes strings                                      
+      --configuration.default-cluster.noc.access.extended                                               
       --configuration.default-cluster.ns.cooldown-window duration                                       
       --configuration.default-cluster.ns.deduplication-window duration                                  
       --configuration.default-cluster.ns.dev-addr-prefixes strings                                      

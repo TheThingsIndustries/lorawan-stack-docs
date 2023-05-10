@@ -12,7 +12,7 @@ This page guides you to connect {{% ttig %}} to {{% tts %}}.
 
 <!--more-->
 
-{{% ttig %}} is an 8 Channel LoRaWAN gateway, whose technical specifications can be found in [the official documentation](https://www.thethingsnetwork.org/docs/gateways/thethingsindoor/).
+{{% ttig %}} is an 8 Channel LoRaWAN® gateway, whose technical specifications can be found in [the official documentation](https://www.thethingsnetwork.org/docs/gateways/thethingsindoor/).
 
 ## Prerequisites
 
@@ -143,7 +143,7 @@ Once {{% ttig %}} is claimed on a {{% tts %}} cluster, the following steps will 
 
 If you want to connect your gateway to an LNS on a local network (for example if you have {{% tts %}} installed for debugging on your laptop), use the steps below.
 
-{{< note >}} In order to connect your {{% ttig %}} to a local {{% tts %}} network, the [`gs.basic-station.allow-unauthenticated` option]({{< ref "/reference/configuration/gateway-server#security-options" >}}) must be set to `true` in [{{% tts %}} configuration]({{< ref "/getting-started/installation/configuration#understanding-the-things-stack-configuration" >}}). {{</ note >}}
+{{< note >}} In order to connect your {{% ttig %}} to a local {{% tts %}} network, the [`gs.basic-station.allow-unauthenticated` option]({{< ref "/reference/configuration/gateway-server#security-options" >}}) must be set to `true` in [{{% tts %}} configuration]({{< ref "/the-things-stack/host/docker/configuration#understanding-the-things-stack-configuration" >}}). {{</ note >}}
 
 First, register the {{% ttig %}} on your target LNS by following [the instructions]({{< ref "/gateways/concepts/adding-gateways" >}}).
 

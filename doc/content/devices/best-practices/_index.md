@@ -8,7 +8,7 @@ This section contains best practices for building connected devices which use {{
 
 <!--more-->
 
-LoRaWAN devices should always comply to the [LoRaWAN specification](https://www.lora-alliance.org/lorawan-for-developers).
+LoRaWAN® devices should always comply to the [LoRaWAN® specification](https://www.lora-alliance.org/lorawan-for-developers).
 
 The goal of these best practices is to optimize individual devices (especially for power) and the network as a whole (to reliably and efficiently serve more devices with the same number of gateways).
 

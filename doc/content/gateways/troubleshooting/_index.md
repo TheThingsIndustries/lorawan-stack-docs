@@ -11,7 +11,7 @@ This section provides help for common issues and frequently asked questions you 
 
 ## What is my server address?
 
-This is the address you use to access {{% tts %}}. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}).
+This is the address you use to access {{% tts %}}. See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}).
 
 For {{% lbs %}}:
 
@@ -39,7 +39,7 @@ There are three types of radio configuration. All types are typically defined in
 
 **Hardware Specific** is a configuration unique to the hardware. This is defined in a file shipped with the gateway and should not be modified. Examples are `clksrc` and RSSI offset.
 
-**LoRaWAN Regional** is a configuration according to LoRaWAN Regional Parameters. This is common to all gateways using the same Regional Parameters, and is provided by the network server automatically when using {{% lbs %}}. It must be configured manually for UDP gateways. Examples are data rates and mandatory channels.
+**LoRaWAN Regional** is a configuration according to LoRaWAN® Regional Parameters. This is common to all gateways using the same Regional Parameters, and is provided by the network server automatically when using {{% lbs %}}. It must be configured manually for UDP gateways. Examples are data rates and mandatory channels.
 
 **User Defined** is a configuration which the user is free to choose. Examples are non-mandatory channels and sub-bands.
 
@@ -47,7 +47,7 @@ For an example configuration file, see [Semtech's {{% lbs %}} documentation](htt
 
 ## How do I see gateway events?
 
-Gateway event logs can be found in the Live Data tab in the gateway's general information page. See [Working with Events]({{< ref "getting-started/events" >}}) for other ways of subscribing to events.
+Gateway event logs can be found in the Live Data tab in the gateway's general information page. See [Working with Events]({{< ref "the-things-stack/management/events" >}}) for other ways of subscribing to events.
 
 ## How does {{% tts %}} Console know whether a gateway is connected?
 
@@ -129,7 +129,7 @@ Another gateway is already registered with this ID. This gateway may have been d
 
 This gateway may also be registered by another user, but you are not able to see gateways registered by other users if you are not an administrator (e.g. if you are using {{% tts %}} Community Edition).
 
-To solve this, use a different gateway ID. If you are an administrator and wish to reuse a deleted ID, see [Purging Entities]({{< ref "reference/purge" >}}).
+To solve this, use a different gateway ID. If you are an administrator and wish to reuse a deleted ID, see [Purging Entities]({{< ref "/the-things-stack/management/purge" >}}).
 
 ## I get a "Gateway with EUI is Already Registered" error when adding a gateway.
 

@@ -4,7 +4,7 @@ description: ""
 aliases: [/gateways/rak-7240]
 ---
 
-The [RAK7240 (WisGate Edge Prime)](https://docs.rakwireless.com/Product-Categories/WisGate/RAK7240/Overview/) is a macro outdoor LoRaWAN gateway, ideal for large scale deployments. It is highly reliable, customizable, and offers a WiFi, LTE and Ethernet backhaul.
+The [RAK7240 (WisGate Edge Prime)](https://docs.rakwireless.com/Product-Categories/WisGate/RAK7240/Overview/) is a macro outdoor LoRaWAN® gateway, ideal for large scale deployments. It is highly reliable, customizable, and offers a WiFi, LTE and Ethernet backhaul.
 
 This guide will help you set up the RAK7240 gateway to communicate over {{%tts%}}. Configuring and connecting **RAK7249**, **RAK7268** and **RAK7258** gateways to {{% tts %}} should be identical as for the **RAK7240**.
 

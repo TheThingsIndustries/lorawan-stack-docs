@@ -14,6 +14,7 @@ ttn-lw-cli gateways api-keys list [gateway-id] [flags]
 ### Options
 
 ```
+      --gateway-id string               
       --gateway-ids.eui 8-bytes         
       --gateway-ids.gateway-id string   
   -h, --help                            help for list
@@ -36,7 +37,6 @@ ttn-lw-cli gateways api-keys list [gateway-id] [flags]
       --dump-requests                                   When log level is set to debug, also dump request payload as JSON
       --experimental.features strings                   Experimental features to activate
       --gateway-eui string                              
-      --gateway-id string                               
       --gateway-server-enabled                          Gateway Server enabled (default true)
       --gateway-server-grpc-address string              Gateway Server address (default "localhost:8884")
       --identity-server-grpc-address string             Identity Server address (default "localhost:8884")

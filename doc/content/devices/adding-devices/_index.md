@@ -1,7 +1,12 @@
 ---
 title: "Adding Devices"
 description: ""
-aliases: [/getting-started/cli/create-end-device, /getting-started/console/create-end-device]
+aliases:
+  - /getting-started/cli/create-end-device
+  - /getting-started/console/create-end-device
+  - /the-things-stack/interact/cli/create-end-device
+  - /the-things-stack/interact/console/create-end-device
+  - /getting-started/device-claiming/claim-devices
 weight: -1
 ---
 
@@ -11,29 +16,29 @@ This section contains instructions for adding devices in {{% tts %}}.
 
 Devices are managed under applications. An application can contain an unlimited number of devices, but it can be helpful to sort devices in to applications by function or geographical area, to make the integrations and live data views more useful.
 
-Devices can be easily added using the Console and the CLI, so those methods are extensively explained in this section. It is also possible to add devices [using the API]({{< ref "/getting-started/api#multi-step-actions" >}}).
+Devices can be easily added using the Console and the CLI, so those methods are extensively explained in this section. It is also possible to add devices [using the API]({{< ref "/the-things-stack/interact/api#multi-step-actions" >}}).
 
 {{< tabs/container "Console" "CLI" >}}
 
 {{< tabs/tab "Console" >}}
 
-## Adding Devices using the Console
+## Adding devices using the Console
 
 To create a device, first open the application you wish to add the device in. Go to **End devices** in the left menu and click on **+ Add end device** to reach the end device registration page.
 
 {{< figure src="application-overview.png" alt="Application overview" >}}
 
-You will be presented with options to easily onboard your device using its QR code (if you have it), and to register your end device from the [LoRaWAN Device Repository](https://github.com/TheThingsNetwork/lorawan-devices/) or manually.
+You will be presented with options to easily onboard your device using its QR code (if you have it), and to register your end device from the [LoRaWAN® Device Repository](https://github.com/TheThingsNetwork/lorawan-devices/) or manually.
 
 {{< figure src="adding-devices-options.png" alt="Options to add devices" >}}
 
 Keep reading to learn how to register devices using these methods.
 
-### Onboarding Devices using QR codes
+### Onboarding devices using QR codes
 
-If your device has a QR code, it is a no-brainer to onboard it on {{% tts %}}. If your device doesn't have a QR code, you can skip this section.
+If your device has a [TR005 LoRaWAN® Device Identification QR Code](https://lora-alliance.org/resource_hub/tr005-lorawan-device-identification-qr-codes/), it is a no-brainer to onboard it on {{% tts %}}. Note not all QR codes on the physical device are scannable. If your device doesn't have a QR code or has a vendor specific QR code, you can skip this section.
 
-Click the **Scan end device QR code** button and allow {{% tts %}} to use your camera. 
+Click the **Scan end device QR code** button and allow {{% tts %}} to use your camera.
 
 {{< figure src="waiting-for-camera.png" alt="Waiting for camera" >}}
 
@@ -59,7 +64,7 @@ Choose a **Frequency plan** appropriate for your region. Your device and gateway
 
 {{< figure src="device-repo.png" alt="Creating a new device with the Device Repository" >}}
 
-Enter a **JoinEUI/AppEUI** if provided by your manufacturer and click **Confirm**. If it is not provided by the manufacturer and your device is programmable, you can generate a random one in accordance with the test ranges defined by the [IEEE 802 standards](https://ieee802.org/) or use all zeros, just make sure to program the same value into your device. 
+Enter a **JoinEUI/AppEUI** if provided by your manufacturer and click **Confirm**. If it is not provided by the manufacturer and your device is programmable, you can generate a random one in accordance with the test ranges defined by the [IEEE 802 standards](https://ieee802.org/) or use all zeros, just make sure to program the same value into your device.
 
 Now enter your **DevEUI**. This should be provided by your manufacturer for commercial devices. If your device is programmable, you may generate an EUI using the **Generate** button, and program it in your device.
 
@@ -73,7 +78,7 @@ Finally, give your device a unique **End device ID**, and click the **Register e
 
 The device is now activated, and will appear as connected in {{% tts %}} once it sends an uplink.
 
-### Manually Registering an End Device
+### Manually registering a device
 
 If your device is not available in the device repository, you may manually register it. To do this, choose the **Enter end device specifics manually** input method. Please refer to your device's datasheet to ensure entering the following information correctly. If such sheet has not been provided, please contact the manufacturer to assist you with obtaining this data.
 
@@ -82,7 +87,7 @@ Choose a **Frequency plan** appropriate for your region. Your device and gateway
 Select the device **LoRaWAN version**. This should be provided with your device as the LoRaWAN version, LoRaWAN specification, or MAC version.
 
 {{< warning >}}
-Choosing the incorrect LoRaWAN version can lead to complex errors. Activation may work, but the device will not be able to communicate consistently. If you are unsure about the LoRaWAN version you have selected, watch the [event log]({{< ref "getting-started/events" >}}) for errors!
+Choosing the incorrect LoRaWAN version can lead to complex errors. Activation may work, but the device will not be able to communicate consistently. If you are unsure about the LoRaWAN version you have selected, watch the [event log]({{< ref "the-things-stack/management/events" >}}) for errors!
 {{</ warning >}}
 
 Choose the **Regional Parameters version** provided by the manufacturer of your device. This should be specified in the data sheet as Regional Parameters or PHY version.
@@ -93,7 +98,7 @@ If you need to use a method of activation other than OTAA, create a multicast gr
 
 The information that you'll be providing in the **Provisioning information** section depends on the activation method you've chosen. If you choose **OTAA**, follow the [OTAA Devices]({{< ref "/devices/adding-devices#otaa-devices" >}}) subsection, and if you choose **ABP**, follow the [ABP Devices]({{< ref "/devices/adding-devices#abp-devices" >}}) subsection.
 
-### Advanced Settings
+### Advanced settings
 
 To modify advanced settings, expand the **Show advanced activation, LoRaWAN class and cluster settings** dropdown.
 
@@ -107,7 +112,7 @@ Under **Network defaults**, you can choose to **Use network's default MAC settin
 
 You can also choose to **Skip registration on Join Server** for testing purposes. We advise not to check this option unless you're an expert.
 
-### OTAA Devices
+### OTAA devices
 
 Over-the-Air-Activation (OTAA) is the secure, scalable way to activate LoRaWAN devices. All commercially available LoRaWAN devices support OTAA, and it is selected by default. If you are using a custom or DIY device, and cannot use OTAA, see the [Activation by Personalisation](#abp-devices) section.
 
@@ -127,7 +132,7 @@ Give your device a unique **End device ID**. See [ID and EUI constraints]({{< re
 
 Click **Register end device** to create the end device.
 
-### ABP Devices
+### ABP devices
 
 If your device cannot be activated using the more secure OTAA, you may manually activate it by programming security keys it, i.e. using ABP.
 
@@ -155,7 +160,7 @@ Click **Register end device** to create the end device.
 
 {{< tabs/tab "CLI" >}}
 
-## Adding Devices using the CLI
+## Adding devices using the CLI
 
 First, list the available frequency plans and LoRaWAN versions:
 
@@ -164,12 +169,12 @@ ttn-lw-cli end-devices list-frequency-plans
 ttn-lw-cli end-devices create --help
 ```
 
-### Over-The-Air-Activation (OTAA) Device
+### Over-The-Air-Activation (OTAA) device
 
 We define some user parameters that will be used below:
 
 ```bash
-APP_ID="app1" 
+APP_ID="app1"
 DEVICE_ID="dev1"
 FREQUENCY_PLAN="EU_863_870"
 DEV_EUI="0004A30B001C0530"
@@ -231,12 +236,12 @@ You can also pass `--with-root-keys` to have root keys generated. In this case, 
 
 The end device should now be able to join the private network.
 
-### Activation By Personalization (ABP) Device
+### Activation By Personalization (ABP) device
 
 For adding ABP devices, we can define the following parameters:
 
 ```bash
-APP_ID="app1" 
+APP_ID="app1"
 DEVICE_ID="dev1"
 FREQUENCY_PLAN="EU_863_870"
 DEV_ADDR="00E4304D"
@@ -296,11 +301,11 @@ You can also pass `--with-session` to have a session generated.
 
 {{< /tabs/container >}}
 
-## Adding Devices in Bulk
+## Adding devices in bulk
 
 It is also possible to import end devices in bulk.
 
-Devices' descriptions need to be in a [JSON]({{< ref "/getting-started/migrating/device-json" >}}) or [CSV]({{< ref "/getting-started/migrating/device-csv" >}}) format. See [Import End Devices in {{% tts %}}]({{< ref "/getting-started/migrating/import-devices" >}}) section for instructions on how to import devices in bulk using these files.
+Devices' descriptions need to be in a [JSON]({{< ref "/the-things-stack/migrating/device-json" >}}) or [CSV]({{< ref "/the-things-stack/migrating/device-csv" >}}) format. See [Import End Devices in {{% tts %}}]({{< ref "/the-things-stack/migrating/import-devices" >}}) section for instructions on how to import devices in bulk using these files.
 
 See the following video from [The Things Network youtube channel](https://youtu.be/ouz-VuiosU4) for instructions.
 
@@ -308,15 +313,15 @@ See the following video from [The Things Network youtube channel](https://youtu.
 {{< youtube "ouz-VuiosU4" >}}
 </details>
 
-## Set Device Location
+## Set device location
 
 {{< tabs/container "Console" "CLI" >}}
 
 {{< tabs/tab "Console" >}}
 
-Once you have added your end device to {{% tts %}}, you can also set its location to be displayed on a map widget by clicking **Change location settings**. 
+Once you have added your end device to {{% tts %}}, you can also set its location to be displayed on a map widget by clicking **Change location settings**.
 
-The end device location can be manually set by pinning on the map widget, or entering the **Latitude**, **Longitude** and **Altitude** values. 
+The end device location can be manually set by pinning on the map widget, or entering the **Latitude**, **Longitude** and **Altitude** values.
 
 {{< figure src="device-location.png" alt="Gateway location" >}}
 
@@ -324,7 +329,7 @@ The end device location can be manually set by pinning on the map widget, or ent
 
 {{< tabs/tab "CLI" >}}
 
-Once you have added your end device to {{% tts %}}, you can also set its location. 
+Once you have added your end device to {{% tts %}}, you can also set its location.
 
 Set your end device's location with:
 
@@ -372,9 +377,9 @@ The CLI will return something like:
 
 {{< /tabs/container >}}
 
-## Application Layer Settings
+## Application layer settings
 
-### Payload Crypto Override
+### Payload crypto override
 
 LoRaWAN frames are encrypted on the application layer using the AppSKey. Once the end device is registered, you can choose to enforce or skip payload encryption. Skipping payload encryption will cause the Application Server to forward messages to integrations without any processing, for example it will neglect [payload formatters]({{< ref "/integrations/payload-formatters" >}}). If you choose to skip payload encryption, integrations will be responsible for processing the message in order to understand it.
 

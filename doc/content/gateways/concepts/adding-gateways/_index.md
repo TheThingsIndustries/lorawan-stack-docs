@@ -2,7 +2,7 @@
 title: "Adding Gateways"
 description: ""
 weight: -2
-aliases: [/gateways/adding-gateways, /getting-started/cli/create-gateway, /getting-started/console/create-gateway]
+aliases: [/gateways/adding-gateways, /the-things-stack/interact/cli/create-gateway, /the-things-stack/interact/console/create-gateway]
 ---
 
 This section contains instructions for adding Gateways in {{%tts%}}.
@@ -15,9 +15,9 @@ Some gateways, like [The Things Indoor Gateway]({{< ref "/gateways/models/thethi
 Do not follow this guide for a [The Things Indoor Gateway]({{< ref "/gateways/models/thethingsindoorgateway" >}}).
 {{</ note >}}
 
-If your {{% tts %}} deployment is connected to [Packet Broker]({{< ref "getting-started/packet-broker" >}}), you can take advantage of coverage from The Things Network without adding any gateways of your own. See the community sourced [TTN Mapper](ttnmapper.org) to find out if your location has nearby gateways.
+If your {{% tts %}} deployment is connected to [Packet Broker]({{< ref "the-things-stack/packet-broker" >}}), you can take advantage of coverage from The Things Network without adding any gateways of your own. See the community sourced [TTN Mapper](ttnmapper.org) to find out if your location has nearby gateways.
 
-Adding gateways using the Console or the CLI is usually most convenient, so those methods are extensively explained in this section. However, it is also possible to add gateways [using the API]({{< ref "/getting-started/api#register-a-gateway" >}}).
+Adding gateways using the Console or the CLI is usually most convenient, so those methods are extensively explained in this section. However, it is also possible to add gateways [using the API]({{< ref "/the-things-stack/interact/api#register-a-gateway" >}}).
 
 {{< tabs/container "Console" "CLI" >}}
 
@@ -245,7 +245,7 @@ Once a gateway has been added, get started with [Adding Devices]({{< ref "/devic
 
 ## Forwarding Uplinks to Packet Broker
 
-In deployments connected to [Packet Broker]({{< ref "/getting-started/packet-broker" >}}), you can control if you want uplinks received by your gateway to be forwarded to Packet Broker or not. In these deployments, uplinks received by your gateway are being forwarded to Packet Broker by default, but you can choose to disable this behavior.
+In deployments connected to [Packet Broker]({{< ref "/the-things-stack/packet-broker" >}}), you can control if you want uplinks received by your gateway to be forwarded to Packet Broker or not. In these deployments, uplinks received by your gateway are being forwarded to Packet Broker by default, but you can choose to disable this behavior.
 
 To disable forwarding uplink messages from your gateway to Packet Broker in {{% tts %}} Console, navigate to the **General settings** tab on the left hand menu in your gateway's overview, scroll to the bottom of the **Basic settings** section and tick the **Disabled** box under **Packet Broker** option.
 

@@ -72,6 +72,9 @@ ttn-lw-cli tenants get [tenant-id] [flags]
       --configuration.default-cluster.is.user-rights.update-primary-email-address                select the configuration.default_cluster.is.user_rights.update_primary_email_address field
       --configuration.default-cluster.js                                                         select the configuration.default_cluster.js field and all allowed sub-fields
       --configuration.default-cluster.js.join-eui-prefixes                                       select the configuration.default_cluster.js.join_eui_prefixes field
+      --configuration.default-cluster.noc                                                        select the configuration.default_cluster.noc field and all allowed sub-fields
+      --configuration.default-cluster.noc.access                                                 select the configuration.default_cluster.noc.access field and all allowed sub-fields
+      --configuration.default-cluster.noc.access.extended                                        select the configuration.default_cluster.noc.access.extended field
       --configuration.default-cluster.ns                                                         select the configuration.default_cluster.ns field and all allowed sub-fields
       --configuration.default-cluster.ns.cooldown-window                                         select the configuration.default_cluster.ns.cooldown_window field
       --configuration.default-cluster.ns.deduplication-window                                    select the configuration.default_cluster.ns.deduplication_window field

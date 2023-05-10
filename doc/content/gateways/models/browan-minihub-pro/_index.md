@@ -7,7 +7,7 @@ aliases: [/gateways/browan-minihub-pro]
 
 {{< figure src="minihub-pro.png" alt="Browan Minihub Pro" class="float plain" >}}
 
-The [**Browan Minihub Pro**](https://www.browan.com/product/minihub-pro/detail) is a low-cost LoRaWAN gateway with a WiFi backhaul, which supports both {{% udp-pf %}} and {{% lbs %}}.
+The [**Browan Minihub Pro**](https://www.browan.com/product/minihub-pro/detail) is a low-cost LoRaWAN® gateway with a WiFi backhaul, which supports both {{% udp-pf %}} and {{% lbs %}}.
 
 <!--more-->
 

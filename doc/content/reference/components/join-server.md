@@ -4,7 +4,7 @@ description: ""
 aliases: [/components/join-server]
 ---
 
-The Join Server handles the LoRaWAN join flow, including Network and Application Server authentication and session key generation.
+The Join Server handles the LoRaWAN® join flow, including Network and Application Server authentication and session key generation.
 
 <!--more-->
 

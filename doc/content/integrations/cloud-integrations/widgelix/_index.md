@@ -9,59 +9,39 @@ aliases:
   ]
 ---
 
-[Widgelix](https://widgelix.com/) is a flexible IoT service, which supports zero-code and low-code features, helps to connect any device and build custom applications for device management and data visualization.
+[Widgelix](https://app.widgelix.com/) is a powerful and flexible deep analytics cloud service for IoT device management and data visualization. Widgelix platform allows you to easily integrate devices from various manufacturers into a single platform, making it easier to manage your IoT network and extract valuable insights from your collected data. With Widgelix, you can optimize your device performance, improve your decision-making, and drive business growth.
 
 <!--more-->
 
 ## Prerequisites
 
-1. A [user account on Widgelix](https://widgelix.com/register).
+1. A [user account on Widgelix](https://app.widgelix.com/auth/register).
 
 ## Setup Widgelix
 
-### Create a Data Converter
+### Create a device template from Repository
 
-{{< note >}} Skip this section if you are already decoding data on {{% tts %}} using [payload formatters]({{< ref "/integrations/payload-formatters" >}}). {{</ note >}}
+Navigate to **Device Types** on the left hand menu, then click the **Load From Repository** button.
 
-Navigate to **Data Converters** on the left hand menu, then click **Create Data Converter**.
-Give a **Name** to your converter, then edit the default JavaScript converter code or create a new one.
+Select required device, give a **Name** to your template and click **Save** button.
 
-Optionally, you may provide a test payload and check the converter. The resulting output of your converter should be a flat JSON object.
+{{< figure src="add-device-type.png" alt="Add device template" >}}
 
-{{< figure src="data-converter.png" alt="Create Data Converter" >}}
-
-### Create Device Type
-
-Device types allow to join same devices in a single group, manage simultaneously and assign **Rules**, **Widget Sets**, **Data Converters** and **Data Flows**.
-
-Navigate to **Device Types** on the left hand menu, then click **Create Device Type** button.
-
-Give a **Name** to your device type, and fill the **Description** and **Manufacturer** fields (optional).
-
-If you previously [created a data converter]({{< ref "/integrations/cloud-integrations/widgelix#create-a-data-converter" >}}), you can assign it under **Uplink Data Converter**.
-In the **Data Fields** input, you need to provide all required keys from your resulting flat JSON object.
-
-{{< figure src="device-type.png" alt="Create Device Type" >}}
-
-### Add Device
+### Add new device based on the template
 
 Navigate to **Devices** on the left hand menu, then click the **Create Device** button.
 
-Give a **Name** to your device and provide its **DevEUI**. Assign the previously created **Device Type**.
+Give a **Name** to your device, type **DevEUI**, assign previously created **Device Type** template and click **Save** button.
 
-{{< figure src="create-device.png" alt="Create Device" >}}
+{{< figure src="add-device.png" alt="Add device" >}}
 
-### Create Data Flow
+### Configure Connectivity
 
-Navigate to **Data Flows** on the left hand menu, then click the **Create New Data Flow** button.
+Navigate to **Devices** on the left hand menu, then click on the created device.
 
-Give a **Name** to your data flow, select **LoRaWAN (TTN)** connectivity and assign the previously created **Device Type**.
+Go to **Settings** tab and click on **Connectivity** section. Then select {{% tts %}}, switch **Secure** option. And finally, copy the given API Key because you'll need it in the next step.
 
-{{< figure src="create-data-flow.png" alt="Create Data Flow" >}}
-
-The new **Data Flow** will appear in the table of data flows. Click on your data flow and copy the **Webhook path** and the **API key** - you will need these values to set up {{% tts %}} Webhook integration.
-
-{{< figure src="data-flow-credentials.png" alt="Create Data Flow" >}}
+{{< figure src="add-connectivity.png" alt="Add connectivity" >}}
 
 ## Configure {{% tts %}}
 
@@ -69,8 +49,10 @@ Now you are ready to instantiate the Widgelix [Webhook template]({{< ref "/integ
 
 On {{% tts %}}, navigate to **Integrations &#8594; Webhooks** and choose **Widgelix** Webhook template.
 
-Give a **Webhook ID** to your integration. Fill the **Webhook path** and the **API token** with values you previously copied from Widgelix.
+Give a **Webhook ID** to your integration. Fill the **API Key** with value you previously copied from Widgelix.
 
 {{< figure src="tts-widgelix.png" alt="Widgelix integration on TTS" >}}
 
 Congrats, **Widgelix** is now ready to accept your device's uplinks! Navigate back to **Devices** on Widgelix, click on your device and you will be able to observe all the incoming data from your device.
+
+{{< figure src="dashboard.png" alt="Dashboard" >}}

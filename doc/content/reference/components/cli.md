@@ -24,7 +24,7 @@ For even less typing you could also register an alias for `ttn-lw-cli` itself (`
 
 ## Input and Output Formats
 
-By default the CLI outputs results as one or more JSON objects. These JSON objects are equivalent to the JSON objects that would be returned when using the HTTP API of {{% tts %}}. Some commands accept one or more JSON objects as input. These JSON objects are equivalent to the JSON objects that can be sent to the HTTP API. This way of handling input and output is used by the [End Device Templates feature]({{< ref "/devices/end-device-templates" >}}).
+By default the CLI outputs results as one or more JSON objects. These JSON objects are equivalent to the JSON objects that would be returned when using the HTTP API of {{% tts %}}. Some commands accept one or more JSON objects as input. These JSON objects are equivalent to the JSON objects that can be sent to the HTTP API.
 
 The `--output-format` flag allows you to specify a [Go template](https://golang.org/pkg/text/template/) that is executed for the result(s) of a command. The example below executes lists applications and outputs their IDs and names:
 
@@ -78,7 +78,7 @@ API keys can be `create`d, `list`ed, `update`d and `delete`d. Creating an API ke
 
 ## Uplink Traffic
 
-The CLI can be used to subscribe to uplink traffic. See the [Getting Started guide]({{< ref "/getting-started/cli" >}}) for more details.
+The CLI can be used to subscribe to uplink traffic. See the [Getting Started guide]({{< ref "/the-things-stack/interact/cli" >}}) for more details.
 
 ## Downlink Queue
 
@@ -86,4 +86,4 @@ The CLI can manage the downlink queue of end devices. See the [Downlink Queue Op
 
 ## Events
 
-The CLI can be used to subscribe to events. See the [Events guide]({{< ref "/getting-started/events" >}}) for more details.
+The CLI can be used to subscribe to events. See the [Events guide]({{< ref "/the-things-stack/management/events" >}}) for more details.

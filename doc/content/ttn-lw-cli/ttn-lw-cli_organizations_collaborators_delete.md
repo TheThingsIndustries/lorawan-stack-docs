@@ -14,8 +14,9 @@ ttn-lw-cli organizations collaborators delete [flags]
 ### Options
 
 ```
-  -h, --help             help for delete
-      --user-id string   
+  -h, --help                     help for delete
+      --organization-id string   
+      --user-id string           
 ```
 
 ### Options inherited from parent commands
@@ -43,7 +44,6 @@ ttn-lw-cli organizations collaborators delete [flags]
       --network-server-enabled                          Network Server enabled (default true)
       --network-server-grpc-address string              Network Server address (default "localhost:8884")
       --oauth-server-address string                     OAuth Server address (default "https://localhost/oauth")
-      --organization-id string                          
       --output-format string                            Output format (default "json")
       --packet-broker-agent-grpc-address string         Packet Broker Agent address (default "localhost:8884")
       --qr-code-generator-grpc-address string           QR Code Generator address (default "localhost:8884")

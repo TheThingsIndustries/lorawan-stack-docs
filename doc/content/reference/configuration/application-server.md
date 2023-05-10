@@ -9,14 +9,16 @@ description: ""
 
 ## Interoperability Options
 
-The `as.interop` options configure how Application Server performs interoperability with other LoRaWAN Backend Interfaces-compliant servers.
+The `as.interop` options configure how Application Server performs interoperability with other LoRaWAN® Backend Interfaces-compliant servers.
 
-- `as.interop.id`: AS-ID used for interoperability
+- `as.interop.id`: AS-ID of this Application Server
 - `as.interop.config-source`: Source of the interoperability client configuration (directory, url, blob)
 - `as.interop.blob.bucket`: Blob bucket, which contains interoperability client configuration
 - `as.interop.blob.path`: Blob path, which contains interoperability client configuration
 - `as.interop.directory`: OS filesystem directory, which contains interoperability client configuration
 - `as.interop.url`: URL, which contains interoperability client configuration
+
+See [LoRaWAN Join Server Configuration]({{< ref "/reference/interop-repository" >}}) to learn how to configure the client configuration.
 
 ## MQTT Options
 

@@ -45,7 +45,7 @@ From the top menu, select the **Servers** tab and press the **Add New** button.
 Edit the server parameters.
 
 - **Name**: A distinct name which you can define yourself
-- **Address**: The address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "getting-started/server-addresses" >}}).
+- **Address**: The address of your {{% tts %}} deployment. See [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}).
 - **Up port**: UDP upstream port of the Gateway Server, typically `1700`.
 - **Down port**: UDP downstream port of the Gateway Server, typically `1700`.
 

@@ -12,7 +12,7 @@ When registering end devices, we recommend registering them in the following ord
 - `NsEndDeviceRegistry.Set` (Network Server)
 - `AsEndDeviceRegistry.Set` (Application Server)
 
-Check out [Using the API]({{< ref "/getting-started/api#multi-step-actions" >}}) subsection for an example on how to register a device via API.
+Check out [Using the API]({{< ref "/the-things-stack/interact/api#multi-step-actions" >}}) subsection for an example on how to register a device via API.
 
 When deleting end devices, we recommend deleting them in the reverse order.
 
@@ -286,6 +286,8 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 {{< proto/message message="ListEndDevicesRequest" >}}
 
 {{< proto/message message="Location" >}}
+
+{{< proto/message message="LoRaAllianceProfileIdentifiers" >}}
 
 {{< proto/message message="LoRaDataRate" >}}
 
