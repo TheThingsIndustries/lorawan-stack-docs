@@ -87,84 +87,88 @@ The Gateway Details dashboard visualizes detailed insight into gateway statistic
 
 It consists of the following panels:
 
-**Uptime** - the gauge chart that visualizes the gateway uptime, i.e. the fraction of the time in which the gateway has been connected to the Network Server.
+**Uptime** - a gauge chart that visualizes the amount of time the gateway has been connected to the Network Server, represented as a percentage out of 100.
 
-{{< figure src="../uptime.png" alt="uptime" >}}
+{{< figure src="../gateway-uptime.png" alt="uptime" >}}
 
-**Lowest RSSI (LoRa)** - the graph that visualizes data about the lowest Received Signal Strength Indicator (RSSI) in dBm for each channel. 
+**Lowest RSSI (LoRa)** - a graph that visualizes data about the lowest Received Signal Strength Indicator (RSSI) in dBm for each channel. 
 
-{{< figure src="../rssi.png" alt="lowest rssi" >}}
+{{< figure src="../gateway-rssi.png" alt="lowest rssi" >}}
 
 **Traffic** - a time series graph that visualizes the uplink and downlink rates in packets per second.
 
-{{< figure src="../traffic.png" alt="traffic" >}}
+{{< figure src="../gateway-traffic.png" alt="traffic" >}}
 
 **Packets per channel** - a heat map that visualizes the number of uplink data packets for each channel.
 
-{{< figure src="../packets-per-channel.png" alt="packets per channel" >}}
+{{< figure src="../gateway-packets-per-channel.png" alt="packets per channel" >}}
 
-**Channel utilization** - a graph that visualizes the percentage of total utilization on each channel over a time interval.
+**Channel utilization** - a chart displaying the percentage of packets received on each channel.
 
-{{< figure src="../channel-utilization.png" alt="channel utilization" >}}
+{{< figure src="../gateway-channel-utilization.png" alt="channel utilization" >}}
 
 The Packets per channel and Channel utilization graphs can be used to find out which channels are overused and which channels are prone to collisions.
+
+**Packets per Data Rate** - a time series graph that visualizes the uplink and downlink rates in packets per second.
+
+{{< figure src="../gateway-packets-per-data-rate.png" alt="" >}}
 
 ## Application Details Dashboard
 
 The Application Details dashboard visualizes detailed insight into application statistics in the selected time period.
 
-{{< figure src="" alt="" >}}
+{{< figure src="../application-details-full.png" alt="" >}}
 
 It consists of the following panels:
 
 **Gateways Seen** - a chart which displays the number of packets received by each gateway and the channel they primarily use.
 
-{{< figure src="" alt="" >}}
+{{< figure src="../gateways-seen.png" alt="" >}}
 
 **Device Statistics** - a chart displaying gateway, RSSI, and packet data for each device in the application. 
 
-{{< figure src="" alt="" >}}
+{{< figure src="../device-statistics.png" alt="" >}}
 
 **Packets per Data Rate** - a time series graph that visualizes the uplink and downlink rates in packets per second.
 
-{{< figure src="" alt="" >}}
+{{< figure src="../packets-per-data-rate.png" alt="" >}}
 
 **Packets per channel** - a heat map that visualizes the number of uplink data packets for each channel.
 
-{{< figure src="" alt="" >}}
+{{< figure src="../packets-per-channel-app.png" alt="" >}}
 
 ## End Device Details Dashboard
 
 The End Device Details dashboard visualizes detailed insight into end device statistics in the selected time period.
 
-{{< figure src="" alt="" >}}
+{{< figure src="../end-device-details.png" alt="" >}}
 
 It consists of the following panels:
 
 **Last Seen** - when the device last uplinked.
 
-{{< figure src="" alt="" >}}
+{{< figure src="../last-seen-ed.png" alt="" >}}
 
 **Session Age** - how long since the device last negotiated new keys.
 
-{{< figure src="" alt="" >}}
+{{< figure src="../session-age-ed.png" alt="" >}}
 
 **Best RSSI** - a chart displaying the RSSI for each channel. 
 
-{{< figure src="" alt="" >}}
+{{< figure src="../best-rssi-ed.png" alt="" >}}
 
 **Packet Error Rate** - a chart displaying the historical average error rate. 
 
-{{< figure src="" alt="" >}}
+{{< figure src="../packet-error-rate-ed.png" alt="" >}}
 
 **Channel utilization** - a chart displaying the percentage of packets received on each channel. 
 
-{{< figure src="" alt="" >}}
+{{< figure src="../channel-utilization-ed.png" alt="" >}}
 
 **Packets per Data Rate** - a time series graph that visualizes the uplink and downlink rates in packets per second.
 
-{{< figure src="" alt="" >}}
+{{< figure src="../packets-per-data-rate-ed.png" alt="" >}}
 
 **Packets per channel** - a heat map that visualizes the number of uplink data packets for each channel.
 
-{{< figure src="" alt="" >}}
+{{< figure src="../packets-per-channel-ed.png" alt="" >}}
