@@ -34,7 +34,41 @@ The **Downlink API key** field allows you to provide an API key which will be se
 Your integration may also [schedule downlinks using an API key with appropriate rights]({{< relref "scheduling-downlinks" >}}), regardless of the value in the **Downlink API key** field.
 {{< /note >}}
 
-To enable messages for different types of events, use the checkboxes in the **Enabled messages** section.
+If you want to increase security, you can also check the **Request authentication** checkbox and provide credentials that will be used to generate basic authentication header (`Authentication: Basic <credentials>` format). This header will then be attached to all webhook requests.
+
+It is also possible to **Filter event data**, i.e. to choose which data you want to push to your webhook. This feature is convenient in case you want to avoid pushing details you don't need and want to save bandwidth. To filter data, just click on the **Add filter path** button and choose paths for data that you need. For example, if you choose only `up.uplink_message` filter, you will only push the following object:
+
+```json
+{
+  "uplink_message": {
+    "f_port": 1,
+    "frm_payload": "ICw=",
+    "rx_metadata": [
+      {
+        "gateway_ids": {
+          "gateway_id": "test"
+        },
+        "rssi": 42,
+        "channel_rssi": 42,
+        "snr": 4.2
+      }
+    ],
+    "settings": {
+      "data_rate": {
+        "lora": {
+          "bandwidth": 125000,
+          "spreading_factor": 7
+        }
+      },
+      "frequency": "868000000"
+    }
+  }
+}
+```
+
+Check out all available [filter paths]({{< ref "/integrations/webhooks/webhook-templates/format#field-mask" >}}).
+
+To enable messages for different types of events, use the checkboxes in the **Enabled event types** section.
 
 {{< figure src="../enabled-messages.png" alt="Webhook creation screen" >}}
 

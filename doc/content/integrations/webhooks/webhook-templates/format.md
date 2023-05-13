@@ -62,7 +62,7 @@ The URL (`base-url`) and all paths can contain template fields.
 Not all of the messages types must be handled by the service. By omitting the field in the `paths` object, the message type will be disabled in the instantiated webhook configuration.
 {{</ note >}}
 
-## Field Mask {{< new-in-version "3.21.1" >}} {#field-mask}
+## Field Mask {#field-mask}
 
 Field mask can be configured by providing field paths as a list named `field-mask` in the body of the webhook template and contain the following paths:
 
