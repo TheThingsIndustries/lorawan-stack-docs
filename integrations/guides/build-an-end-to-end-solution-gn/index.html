@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html class="has-navbar-fixed-top">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="generator" content="Hugo 0.96.0" />
+  <title>Build an Application using Generic Node Sensor Edition and Kuando Busylight | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/guides/build-an-end-to-end-solution-gn/" />
+  <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
+  <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8058c473c43c01571dbb7b1b4de287fb8e077613d282e9b7b9db17271211dd60.css" integrity="sha256-gFjEc8Q8AVcdu3sbTeKH&#43;44HdhPSgum3udsXJxIR3WA=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta itemprop="name" content="Build an Application using Generic Node Sensor Edition and Kuando Busylight">
+  <meta itemprop="description" content="">
+  <meta itemprop="keywords" content="">
+  <meta property="og:title" content="Build an Application using Generic Node Sensor Edition and Kuando Busylight">
+  <meta property="og:description" content="">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/guides/build-an-end-to-end-solution-gn/">
+  <meta name="twitter:title" content="Build an Application using Generic Node Sensor Edition and Kuando Busylight" />
+  <meta name="twitter:description" content="" />
+  <meta name="twitter:card" content="summary" />
+  
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NGRDCNM');</script>
+
+
+</head>
+
+
+<body>
+
+
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NGRDCNM"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="/docs/">
+        <img class="logo" src="/docs/img/TTS-logo.svg">
+        <p class="navbar-item is-size-7">v3.25.1</p>
+      </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
+          </div>
+      <span class="navbar-burger burger" data-target="topMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </div>
+    <div id="topMenu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item" href="/docs/getting-started/">Getting Started</a>
+        <a class="navbar-item" href="/docs/devices/">Devices</a>
+        <a class="navbar-item" href="/docs/gateways/">Gateways</a>
+        <a class="navbar-item" href="/docs/the-things-stack/">The Things Stack</a>
+        <a class="navbar-item" href="/docs/integrations/">Integrations</a>
+        <a class="navbar-item" href="/docs/reference/">Reference</a>
+
+      </div>
+      <div class="navbar-end"><div class="navbar-item">
+            <a class="button is-primary" href="https://accounts.thethingsindustries.com/fee-calculator">Get The Things Stack</a>
+          </div>
+      </div>
+    </div>
+  </div>
+</nav><script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
+  <script type="text/javascript">
+    docsearch({
+      appId: "608OILUBK2",
+      apiKey: "39082cdce449b93b2aa806b44f6af4d2",
+      indexName: "thethingsstack",
+      container: '#search-input-menu',
+      debug: false, 
+    });
+  </script><div class="container" role="document">
+  <div class="columns my-0 ">
+      
+      <div class="column is-3 is-2-desktop sidebar-left">
+        
+
+<nav class="side-navigation" aria-label="Main navigation">
+
+<h2 class="title is-size-5">Integrations</h2>
+
+<ul class="menu-list">
+<a href="https://www.thethingsindustries.com/docs/integrations/" class="">Overview</a>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/" class="">Adding Applications</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/adding-integrations/" class="">Adding Integrations</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/" class="">Cloud Integrations</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/mqtt/" class="">MQTT Server</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/pubsub/" class="">Pub/Sub</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/lora-cloud/" class="">LoRa Cloud</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/node-red/" class="">Node-RED</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/ifttt/" class="">IFTTT</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/guides/" class="">Guides</a>
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/guides/build-an-end-to-end-solution-gn/" class="is-active">Build an Application using Generic Node Sensor Edition and Kuando Busylight</a>
+    
+    
+
+
+
+    
+  </li>
+
+</ul>
+
+
+    
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/" class="">Payload Formatters</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/storage/" class="">Storage Integration</a>
+  </li>
+<li>
+    <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/" class="">Webhooks</a>
+  </li>
+</ul>
+
+
+
+</nav>
+
+
+
+
+
+
+
+
+      </div>
+      
+      <div class="column is-9 is-8-desktop sidebar-middle">
+        <div class="docs-content">
+        <h1 class="title is-size-2">Build an Application using Generic Node Sensor Edition and Kuando Busylight
+          
+        </h1>
+        
+        <div class="content">
+          <p>This section shows how to build an end-to-end solution to control the <a href="https://busylight.com/busylight-iot/">Kuando Busylight</a> with the <a href="https://www.thethingsshop.com/products/generic-node-sensor-edition">Generic Node Sensor Edition</a> (GNSE).</p>
+<h2 id="registering-the-things-indoor-gateway">Registering The Things Indoor Gateway</h2>
+<p>Register The Things Indoor Gateway on The Things Stack by following <a href="https://www.thethingsindustries.com/docs/gateways/models/thethingsindoorgateway/">these instructions</a>. Once registered, your gateway will be ready to receive uplinks and forward downlinks.</p>
+<h2 id="creating-an-application">Creating an Application</h2>
+<p>Create a new application on The Things Stack by following <a href="https://www.thethingsindustries.com/docs/integrations/adding-applications/">these instructions</a>.</p>
+<h2 id="adding-gnse">Adding GNSE</h2>
+<p>Add GNSE to The Things Stack by following <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">these instructions</a>.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  Your GNSE comes pre-programmed with a <a href="https://www.genericnode.com/docs/applications/se-vanilla/"><em>vanilla</em> application</a> that can be used with this project. Full instructions on how to program GNSE can be found <a href="https://www.genericnode.com/docs/getting-started/se-sw/">here</a>.
+</div>
+
+<p>After adding GNSE, navigate to its <strong>Live data</strong> tab (<strong>Applications -&gt; your application -&gt; End devices -&gt; your GNSE</strong>).</p>
+<p>Power cycle your GNSE by either pressing the reset button or removing and re-inserting its batteries. Once power cycled, you can immediately see messages arriving, such as <strong>Accept join-request</strong> and <strong>Forward join-accept</strong>.</p>
+<p>Now press the user button on top of the GNSE. In the <strong>Live data</strong> section, you should see an uplink data message received by The Things Stack application.</p>
+<p>Select the uplink message. Scroll down and locate the <strong>frm_payload</strong> (frame payload) field. Note that the payload is encoded and requires decoding to understand it.</p>
+<figure><img src="frm-payload.png"/>
+</figure>
+
+<h2 id="using-payload-formatters">Using Payload Formatters</h2>
+<p>To decode the payload you will need a <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">payload formatter</a>.</p>
+<p>Create a payload formatter for the uplink messages using the following JavaScript formatter code:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">){</span>
+</span></span><span class="line"><span class="cl">  <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">{};</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">batt_volt</span> <span class="o">=</span> <span class="p">(</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">/</span><span class="mi">10</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">temperature</span> <span class="o">=</span> <span class="p">(((</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">&lt;&lt;</span><span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">-</span> <span class="mi">500</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">humidity</span> <span class="o">=</span> <span class="p">((</span><span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span><span class="o">/</span><span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">data</span><span class="p">.</span><span class="nx">button_press</span> <span class="o">=</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="nx">data</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="p">};</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><figure><img src="javascript-payload-formatter.png"/>
+</figure>
+
+<p>To test it, go back to the <strong>Live data</strong> tab and copy the <strong>MAC payload</strong> (find it in the <strong>Forward uplink data message</strong> event).</p>
+<figure><img src="mac-payload.png"/>
+</figure>
+
+<p>Next paste it in the <strong>Byte payload</strong> field. Then press the <strong>Test decoder</strong> button. The result of decoding will be displayed in the <strong>Decoded test payload</strong> box.</p>
+<figure><img src="decoded-payload.png"/>
+</figure>
+
+<p>Select <strong>Save changes</strong>.</p>
+<p>Now go back to the <strong>Live data</strong> tab and press the user button on GNSE. The payload of the uplink data message gets decoded as shown below:</p>
+<figure><img src="decoded-payload-live.png"/>
+</figure>
+
+<h2 id="creating-an-integration-using-webhooks">Creating an Integration using Webhooks</h2>
+<p>A webhook helps you to send data from one application to another whenever a given event occurs. In this solution, The Things Stack application will send the temperature received by the sensor to the custom application through a webhook to display a temperature graph.</p>
+<p>Create a custom <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/creating-webhooks/">webhook</a> in JSON format by providing the base URL and endpoint, for example, <a href="http://root.yourhost.com:3000/webhooks">http://root.yourhost.com:3000/webhooks</a>. Select the checkbox <strong>Enabled</strong> next to the <strong>Uplink message</strong> event type. This will configure your webhook to send all uplink messages from your device to your custom application.</p>
+<figure><img src="add-webhook-1.png"/>
+</figure>
+
+<h2 id="nodejs-application">Node.js Application</h2>
+<p>A simple Node.js application can be used to expose an HTTP server that takes the temperature and humidity data received through the webhook and displays it on a chart. The source files you need for this project can be found in this <a href="https://github.com/kschiffer/tts-demo-app">GitHub repository</a>.</p>
+<p>Install <a href="https://nodejs.org/">Node.js</a> and <a href="https://www.npmjs.com/">NPM</a> (or <a href="https://yarnpkg.com/">yarn</a>) on your computer. Installation instructions for each software can be found on their respective websites.</p>
+<p>Run <code>yarn install</code> or <code>yarn</code> to install all its dependencies.</p>
+<p>Clone the GitHub repository to your computer by typing the command <code>git clone git@github.com:kschiffer/tts-demo-app.git</code></p>
+<p>Create a file named <code>config.env</code> inside the <code>tts-demo-app</code> directory. Use the following commands:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">cd</span> tts-demo-app
+</span></span><span class="line"><span class="cl">vim config.env
+</span></span></code></pre></div><p>Type the following content:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TTN_APP_ID</span><span class="o">=</span>yourname-climate-tracker
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">API_KEY</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TTN_WEBHOOK_ID</span><span class="o">=</span>
+</span></span><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TTN_DEVICE_ID</span><span class="o">=</span>
+</span></span></code></pre></div><p>After editing, your configuration file looks something like this:</p>
+<figure><img src="config-file-1.png"/>
+</figure>
+
+<p>Save the configuration file (<code>[esc][:wq][enter]</code>), source it (<code>source config.env</code>) and then start the server (<code>node index.js</code>).</p>
+<p>Find the <code>index.js</code> file in the <code>tts-demo-app</code> directory and open it. Edit the webhook endpoint (<code>/webhooks</code>) to match the endpoint you provided in the previous section.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="nx">app</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s1">&#39;/webhooks&#39;</span><span class="p">,</span> <span class="p">(</span><span class="nx">req</span><span class="p">,</span> <span class="nx">res</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="c1">// Update chart
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>  <span class="kr">const</span> <span class="nx">value</span> <span class="o">=</span> <span class="nx">req</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">uplink_message</span><span class="p">.</span><span class="nx">decoded_payload</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">values</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">value</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">  <span class="nx">io</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span>
+</span></span></code></pre></div><p>Open a web browser and go to the address your server is exposing. The address is something like this: <code>http://yourhost.com:3000</code>.</p>
+<figure><img src="chart-1.png"/>
+</figure>
+
+<p>Now press the push button on GNSE. The current temperature and humidity will be immediately plotted on the chart.</p>
+<figure><img src="chart-2.png"/>
+</figure>
+
+<p>Press the push button a few more times and see how your chart behaves in time.</p>
+<figure><img src="chart-3.png"/>
+</figure>
+
+<h2 id="adding-kuando-busylight">Adding Kuando Busylight</h2>
+<p>Kuando BusyLight is a light device that you can control using LoRaWAN downlinks. It is a <a href="https://www.thethingsindustries.com/docs/devices/class-c/">class C</a> end device that opens continuous receive windows so it is capable of receiving downlinks anytime.</p>
+<figure><img src="busylight.png"/>
+</figure>
+
+<p>To register the Kuando Busylight with The Things Stack, follow the steps outlined in <strong>Manually Registering an End Device</strong> section in the <a href="https://www.thethingsindustries.com/docs/devices/adding-devices/">Adding Devices</a> guide. When adding the device, make sure to select <strong>Class C (Continuous)</strong> from the <strong>Additional LoRaWAN class capabilities</strong> drop-down menu. You can find this by expanding the <strong>Show advanced activation, LoRaWAN class and cluster settings</strong> section.</p>
+<h2 id="sending-downlink-messages-to-kuando-busylight-from-the-things-stack-application">Sending Downlink Messages to Kuando Busylight from The Things Stack Application</h2>
+<p>Let’s have a look at how to schedule downlink messages from The Things Stack application to control the Busylight.</p>
+<p>In The Things Stack Console select the <strong>Messaging</strong> tab and then select the <strong>Downlink</strong> tab. Then configure the downlink as follows:</p>
+<ul>
+<li><strong>Insert Mode</strong>: <strong>Replace Downlink Queue</strong></li>
+<li><strong>FPort</strong>: <code>15</code> (as per the datasheet)</li>
+<li><strong>Payload type</strong>: <strong>Bytes</strong></li>
+<li><strong>Payload</strong>: type in <strong>FF FF FF FF 00</strong> (this makes the Busylight solid white, no blinking)</li>
+</ul>
+<p>Here is the payload structure for the downlink messages for your reference:</p>
+<figure><img src="busylight-payload-structure.png"/>
+</figure>
+
+<p>Select the <strong>Schedule downlink</strong> button. The Busylight will turn on solid white.</p>
+<p>If you want to turn off the Busylight, type in <strong>FF FF FF 00 FF</strong> in the <strong>Payload</strong> text box and then select the <strong>Schedule downlink</strong> button again.</p>
+<h2 id="going-further">Going further</h2>
+<p>Editing the <code>config.env</code> file enables your custom application to read the button press event from an uplink message and then compose and send a downlink message through the webhook to ON or OFF the Busylight accordingly. Here is the code snippet:</p>
+<pre tabindex="0"><code>// Switch busylight
+  if (API_KEY &amp;&amp; value &amp;&amp; value.button_press) {
+    isOn = !isOn
+    const payload = Buffer.from(isOn ? new Uint8Array([255, 255, 255, 255, 0]) : new Uint8Array([255, 255, 255, 0, 255])).toString(&#39;base64&#39;)
+
+    axios({
+      method: &#39;post&#39;,
+      url: webhookUri,
+      headers: { Authorization: `Bearer ${API_KEY}` },
+      data: {
+        downlinks: [{
+          frm_payload: payload,
+          f_port: 15
+</code></pre><p>Stop your custom application server (<code>[Ctrl + C]</code>) and open the configuration file again (<code>vim config.env</code>).</p>
+<p>In The Things Stack Console, under your application, select <strong>API keys</strong>. Select the <strong>Add API key</strong> button.</p>
+<p>On the <strong>Add API key</strong> page, under <strong>Rights</strong>, select <strong>Grant individual rights</strong> and then select <strong>Write downlink application traffic</strong>.</p>
+<p>Select the <strong>Create API key</strong> button. Then copy the API key.</p>
+<figure><img src="api-key-1.png"/>
+</figure>
+
+<p>Go back to the configuration file and then paste your API key there (<code>export API_KEY=your API key</code>).</p>
+<p>Copy your webhook&rsquo;s ID and also paste it there (<code>export TTN_WEBHOOK_ID=your webhook id</code>).</p>
+<p>Copy the Busylight’s device ID and also paste it there (<code>export TTN_DEVICE_ID=device id</code>).</p>
+<p>After editing, your configuration file looks something like this:</p>
+<figure><img src="config-file-2.png"/>
+</figure>
+
+<p>Save the configuration file (<code>[esc][:wq][enter]</code>), source it (<code>source config.env</code>) and then start the server (<code>node index.js</code>).</p>
+<p>Now press the push button on GNSE. The Busylight will turn ON. Press the push button again. The Busylight will turn OFF.</p>
+<p>This solution can be customized to meet your specific needs and ideas, such as changing the Busylight&rsquo;s color to red when the temperature exceeds a set threshold.</p>
+
+        </div>
+        
+          <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/integrations/guides/">← Guides</a>
+</div>
+
+          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+<script src="https://cdn.emojicom.io/embed/widget.js" async></script>
+
+<div class='feedback has-vertical-space'>
+  <div id="emojicom-widget-inline"></div>
+</div>
+        </div>
+      </div>
+      
+      <div class="column is-hidden-touch is-2-desktop sidebar-right">
+        <nav class="toc" aria-label="Page navigation">
+    <h2 class="title is-size-6">On this page</h2>
+    
+
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#registering-the-things-indoor-gateway'>Registering The Things Indoor Gateway</a></li>
+    
+      
+      <li><a href='#creating-an-application'>Creating an Application</a></li>
+    
+      
+      <li><a href='#adding-gnse'>Adding GNSE</a></li>
+    
+      
+      <li><a href='#using-payload-formatters'>Using Payload Formatters</a></li>
+    
+      
+      <li><a href='#creating-an-integration-using-webhooks'>Creating an Integration using Webhooks</a></li>
+    
+      
+      <li><a href='#nodejs-application'>Node.js Application</a></li>
+    
+      
+      <li><a href='#adding-kuando-busylight'>Adding Kuando Busylight</a></li>
+    
+      
+      <li><a href='#sending-downlink-messages-to-kuando-busylight-from-the-things-stack-application'>Sending Downlink Messages to Kuando Busylight from The Things Stack Application</a></li>
+    
+      
+      <li><a href='#going-further'>Going further</a></li>
+    
+  </ul>
+
+
+  </nav>
+
+      </div>
+      
+  </div>
+</div>
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns">
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">The Things Stack</h3>
+        <p><a class="" href="/docs/getting-started/">Getting Started</a></p>
+        <p><a class="" href="/docs/devices/">Devices</a></p>
+        <p><a class="" href="/docs/gateways/">Gateways</a></p>
+        <p><a class="" href="/docs/the-things-stack/">The Things Stack</a></p>
+        <p><a class="" href="/docs/integrations/">Integrations</a></p>
+        <p><a class="" href="/docs/reference/">Reference</a></p>
+      </nav>
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">Contributing</h3>
+        <p><a class="" href="https://github.com/TheThingsIndustries/lorawan-stack-docs">GitHub</a></p>
+        <p><a class="" href="https://www.thethingsnetwork.org/forum/c/ttn-network/v3/90">Forum</a></p>
+      </nav>
+      
+      <nav class="column is-one-quarter">
+        <h3 class="title is-6">About Us</h3>
+        <p><a class="" href="https://www.thethingsnetwork.org">The Things Network</a></p>
+        <p><a class="" href="https://www.thethingsindustries.com">The Things Industries</a></p>
+      </nav>
+      <div class="column is-one-quarter">
+        <h3 class="title is-6">About this page</h3>
+        <div class="content">
+<p class="is-size-7">
+  Last changed by Pradeeka Seneviratne on 14 May 2023.
+  <br>
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/9b76e305acafa44e2f98b2a751f4d26386245d81">
+      doc: Add build an end to end solution with GN (#1035)
+    </a>
+</p>
+
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/guides/build-an-end-to-end-solution-gn/_index.md" class="button">Edit on Github</a>
+</div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
+  window.intercomSettings = {
+    app_id: "pp8esr7h",
+  };
+</script>
+
+<script>
+(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',w.intercomSettings);}else{var d=document;var i=function(){i.c(arguments);};i.q=[];i.c=function(args){i.q.push(args);};w.Intercom=i;var l=function(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/pp8esr7h';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);};if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})();
+</script>
+
+</body>
+
+</html>
