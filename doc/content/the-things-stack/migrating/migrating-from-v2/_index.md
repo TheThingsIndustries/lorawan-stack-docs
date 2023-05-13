@@ -15,9 +15,7 @@ This section documents the process of migrating end devices from {{% ttnv2 %}} t
 
 <!--more-->
 
-{{% ttnv2 %}} machines were shut down on December 1, 2021. `ttn-lw-migrate` is no longer able to migrate devices from these servers.
-
-To view applications, devices, and gateways which were still registered on The Things Network V2 before shutdown, see [Migrate using the V2 Takeout Tool]({{< relref "migrate-using-takeout-tool" >}}). You may migrate these entities simply by adding them in {{% tts %}}.
+Keep in mind that {{% ttnv2 %}} (community network) machines were shut down on December 1, 2021, so devices can no longer be migrated from there. It is only possible to register them from scratch on {{% tts %}}. However, it is still possible to migrate devices from private {{% ttnv2 %}} servers, which is described in this section.
 
 ## Prerequisites
 
@@ -71,10 +69,9 @@ For detailed tutorials on the integrations that are available in {{% tts %}}, se
 
 When you have added your application and elements associated with it, it is time to migrate your end device(s) from {{% ttnv2 %}} to {{% tts %}}.
 
-Since the {{% ttnv2 %}} machines were shut down, `ttn-lw-migrate` is no longer able to migrate devices from these servers.
+Since the {{% ttnv2 %}} machines were shut down, `ttn-lw-migrate` is no longer able to migrate devices from those servers. You can only add those entities in {{% tts %}}.
 
-To migrate applications, devices, and gateways which were still registered on The Things Network V2 before shutdown, see [Migrate using the V2 Takeout Tool]({{< relref "migrate-using-takeout-tool" >}}).
+However, devices can still be migrated from private {{% ttnv2 %}} servers to {{% tts %}}. There are two approaches for migrating devices, depending on how many end devices you intend to migrate and if you wish to migrate with or without active sessions, described in the following guides:
 
-You may migrate these entities simply by adding them in {{% tts %}}.
-
-There are two approaches for migrating devices, depending on how many end devices you intend to migrate and if you wish to migrate with or without active sessions, described in the following guides:
+- [Migrate using the Console]({{< relref "migrate-using-console" >}})
+- [Migrate using the Migration Tool]({{< ref "/the-things-stack/migrating/migrating-from-v2/migrate-using-migration-tool/" >}})
