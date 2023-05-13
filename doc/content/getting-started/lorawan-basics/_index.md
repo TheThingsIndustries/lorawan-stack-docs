@@ -12,7 +12,7 @@ LoRa is a wireless modulation technique derived from Chirp Spread Spectrum (CSS)
 
 LoRaWAN is a Media Access Control (MAC) layer protocol built on top of LoRa modulation. It is a software layer which defines how devices use the LoRa hardware, for example when they transmit, and the format of messages.
 
-The LoRaWAN protocol is developed and maintained by the LoRa Alliance. The first LoRaWAN specification was released in January 2015. The table below shows the version history of the LoRaWAN specifications. At the time of this writing the latest specifications are 1.0.4 (in 1.0 series) and 1.1 (1.1 series).
+The LoRaWAN protocol is developed and maintained by the LoRa Alliance. The first LoRaWAN specification was released in January 2015. At the time of this writing the latest specifications are 1.0.4 (in 1.0 series) and 1.1 (1.1 series).
 
 ### Architecture
 
@@ -21,13 +21,13 @@ The LoRaWAN protocol is developed and maintained by the LoRa Alliance. The first
 A typical LoRaWAN network consists of the following basic elements.
 
 **End Devices**
-  - Sensors or actuators send LoRa modulated wireless messages to the gateways or receive messages wirelessly back from the gateways. .
+  - Sensors or actuators send LoRa modulated wireless messages to the gateways or receive messages wirelessly back from the gateways.
 
 **Gateways**
-  - Specialized devices that receive messages from end devices and forward them to the Network Server.
+  - Specialized devices that receive messages from end devices and forward them to the Network Server, as well as forward messages from the Network Server to the end devices.
 
 **Network Server**
-  - A piece of software running on a server that manages the end devices.
+  - A piece of software running on a server that manages the entire network.
   - Also referred to as LoRaWAN Network Server/LNS or simply Network software.
 
 **Application servers**
@@ -53,13 +53,13 @@ Messages flowing in the opposite direction (originating from the Network Server 
 
 ### Security
 
-All LoRaWAN data is encrypted AES-128 symmetric keys. All devices have a unique AES-128 key called the "Root Key" associated with them.
+All LoRaWAN data is encrypted using AES-128 symmetric keys. All devices have one or two unique AES-128 keys called the "root keys" associated with them, depending on the version of LoRaWAN they use.
 
-This root key is used to derive separate keys for the application data and network data.
+These root keys are used to derive separate keys for the application data and network data.
 
 Application data is encrypted using one of these derived keys. This key is known only to the Application Server and the End Device.
 
 Network (settings) data is encrypted using different key(s). These keys are known only to the Network Server and the End Device.
 
-{{< note "These keys are called Session Keys since they are rotated when a device session changes. Device sessions are a much deeper topic and is omitted from this basic guide in the interest of simplicity. See the linked references for more information." />}}
+{{< note "These keys are called Session Keys since they are rotated when a device session changes. Device sessions are a much deeper topic and is omitted from this basic guide in the interest of simplicity. See [LoRaWAN Security](https://www.thethingsnetwork.org/docs/lorawan/security/) for more information." />}}
 
