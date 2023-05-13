@@ -132,7 +132,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <p>This guide briefly explains the architecture and key concepts of a LoRaWAN® network.</p>
 <p>LoRa is a wireless modulation technique derived from Chirp Spread Spectrum (CSS) technology. It encodes information on radio waves using chirp pulses - similar to the way dolphins and bats communicate! LoRa modulated transmission is robust against disturbances and can be received across great distances.</p>
 <p>LoRaWAN is a Media Access Control (MAC) layer protocol built on top of LoRa modulation. It is a software layer which defines how devices use the LoRa hardware, for example when they transmit, and the format of messages.</p>
-<p>The LoRaWAN protocol is developed and maintained by the LoRa Alliance. The first LoRaWAN specification was released in January 2015. The table below shows the version history of the LoRaWAN specifications. At the time of this writing the latest specifications are 1.0.4 (in 1.0 series) and 1.1 (1.1 series).</p>
+<p>The LoRaWAN protocol is developed and maintained by the LoRa Alliance. The first LoRaWAN specification was released in January 2015. At the time of this writing the latest specifications are 1.0.4 (in 1.0 series) and 1.1 (1.1 series).</p>
 <h3 id="architecture">Architecture</h3>
 <figure><img src="architecture.png"
          alt="LoRaWAN architecture"/>
@@ -141,15 +141,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>A typical LoRaWAN network consists of the following basic elements.</p>
 <p><strong>End Devices</strong></p>
 <ul>
-<li>Sensors or actuators send LoRa modulated wireless messages to the gateways or receive messages wirelessly back from the gateways. .</li>
+<li>Sensors or actuators send LoRa modulated wireless messages to the gateways or receive messages wirelessly back from the gateways.</li>
 </ul>
 <p><strong>Gateways</strong></p>
 <ul>
-<li>Specialized devices that receive messages from end devices and forward them to the Network Server.</li>
+<li>Specialized devices that receive messages from end devices and forward them to the Network Server, as well as forward messages from the Network Server to the end devices.</li>
 </ul>
 <p><strong>Network Server</strong></p>
 <ul>
-<li>A piece of software running on a server that manages the end devices.</li>
+<li>A piece of software running on a server that manages the entire network.</li>
 <li>Also referred to as LoRaWAN Network Server/LNS or simply Network software.</li>
 </ul>
 <p><strong>Application servers</strong></p>
@@ -170,13 +170,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
 <h3 id="security">Security</h3>
-<p>All LoRaWAN data is encrypted AES-128 symmetric keys. All devices have a unique AES-128 key called the &ldquo;Root Key&rdquo; associated with them.</p>
-<p>This root key is used to derive separate keys for the application data and network data.</p>
+<p>All LoRaWAN data is encrypted using AES-128 symmetric keys. All devices have one or two unique AES-128 keys called the &ldquo;root keys&rdquo; associated with them, depending on the version of LoRaWAN they use.</p>
+<p>These root keys are used to derive separate keys for the application data and network data.</p>
 <p>Application data is encrypted using one of these derived keys. This key is known only to the Application Server and the End Device.</p>
 <p>Network (settings) data is encrypted using different key(s). These keys are known only to the Network Server and the End Device.</p>
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  These keys are called Session Keys since they are rotated when a device session changes. Device sessions are a much deeper topic and is omitted from this basic guide in the interest of simplicity. See the linked references for more information.
+  These keys are called Session Keys since they are rotated when a device session changes. Device sessions are a much deeper topic and is omitted from this basic guide in the interest of simplicity. See <a href="https://www.thethingsnetwork.org/docs/lorawan/security/">LoRaWAN Security</a> for more information.
 </div>
         </div>
         
@@ -237,10 +237,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer on 19 Apr 2023.
+  Last changed by Pradeeka Seneviratne on 14 May 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b36a78abab91e6a6967b41f03b65551a89e54c9">
-      Restructure documentation (#1076)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/a65cade06e7adde622eb08052376313efa8cff41">
+      doc: Fix getting started LoRaWAN (#1091)
     </a>
 </p>
 
