@@ -27,7 +27,7 @@ A typical LoRaWAN network consists of the following basic elements.
   - Specialized devices that receive messages from end devices and forward them to the Network Server, as well as forward messages from the Network Server to the end devices.
 
 **Network Server**
-  - A piece of software running on a server manages the entire network.
+  - A piece of software running on a server that manages the entire network.
   - Also referred to as LoRaWAN Network Server/LNS or simply Network software.
 
 **Application servers**
