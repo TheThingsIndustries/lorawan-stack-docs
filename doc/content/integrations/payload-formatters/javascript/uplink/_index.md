@@ -49,7 +49,7 @@ If an error is present in `errors`, the payload is invalid. If the decoder or th
 
 ## Normalized Payload
 
-{{< new-in-version "3.21.2" >}} The uplink decoder can return any data structure. This provides full flexibility: a decoder can return any measurement in any unit as well as any additional information.
+The uplink decoder can return any data structure. This provides full flexibility: a decoder can return any measurement in any unit as well as any additional information.
 
 However, developers building applications that combine data from various device types may find it difficult to work with different data structures.
 
