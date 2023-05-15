@@ -23,7 +23,7 @@ global:
       adminUserID: # User ID for the Administrator of the tenant. Do not use `admin`.
       adminEmail: # Email of the Administrator of the tenant.
   blob:
-    provider: "aws", "azure" or "gcp"
+    provider: "aws", "azure", "gcp" or "local"
     aws: # Set only if provider is "aws".
       region: # region
     azure: # Set only if provider is "azure".
@@ -32,6 +32,8 @@ global:
       # Base64 encoded GCP credentials.json file.
       # One option is to run `$ cat <credentials>.json | base64`.
       credentials:
+    local: # Local Blob via a PV(C). The PVC must support the `ReadWriteMany` access mode.
+      pvc: # Name of the PVC.
   cluster:
     keys: # See preparation section.
   http:
@@ -52,8 +54,9 @@ global:
     oauth:
       clientSecret: # See preparation section.
   ingress:
-    tls:
-      secretName: # Secret Name containing the TLS Certificates for the Domain.
+    traefik:
+      tls:
+        secretName: # Secret Name containing the TLS Certificates for the Domain.
   tenancy:
     adminKey: # See preparation section.
   interop:

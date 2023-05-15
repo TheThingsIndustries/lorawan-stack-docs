@@ -21,6 +21,7 @@ The Things Stack requires a license key to run. Please [contact our sales team](
 The Things Stack contains the Packet Broker Agent component that can communicate with [Packet Broker](https://packetbroker.net/).
 
 Packet Broker is disabled by default in the Helm charts. When enabled, it can operate either only a Forwarder or as both a Forwarder and a Home Network. Check the [The Things Stack Documentation](https://www.thethingsindustries.com/docs/the-things-stack/packet-broker/) for more details.
+
 - If the cluster acts simply as a forwarder that forwards traffic to Packet Broker, then all that is needed are access credentials.
 - If the cluster also needs to work as a Packer Broker Home Network, in addition to the access credentials, the cluster either needs a NetID from the LoRa Alliance or The Things Industries can lease a DevAddr Block.
 
@@ -63,26 +64,55 @@ For testing purposes, [Bitnami's Helm Charts for Redis](https://artifacthub.io/p
 
 #### 4. Blob Storage
 
-The Things Stack currently supports AWS S3, S3 compatible Blob, Azure Blob storage or Google Cloud Platform (GCP) Buckets.
+The Things Stack currently supports AWS S3, S3 compatible Blob, Azure Blob storage, Google Cloud Platform (GCP) Buckets or a local PVC.
+
+##### Using Buckets
 
 The Things Stack requires the following buckets.
 
 1. Profile pictures bucket
-  - The contents of this bucket must be *public*.
+
+- The contents of this bucket must be _public_.
+
 2. End device pictures bucket
-  - The contents of this bucket must be *public*.
+
+- The contents of this bucket must be _public_.
+
 3. End Device Claiming Server configuration
-  - Once this bucket is setup, place an empty `config.yml` file at the root of the bucket.
-  - The contents of this bucket must be *private* since they contain secrets.
-  - Enabling encryption and versioning is highly recommended.
+
+- Once this bucket is setup, place an empty `config.yml` file at the root of the bucket.
+- The contents of this bucket must be _private_ since they contain secrets.
+- Enabling encryption and versioning is highly recommended.
+
 4. Interoperability configuration
-  - Once this bucket is setup, place an empty `config.yml` file at the root of the bucket.
-  - The contents of this bucket must be *private* since they contain secrets.
-  - Enabling encryption and versioning is highly recommended.
+
+- Once this bucket is setup, place an empty `config.yml` file at the root of the bucket.
+- The contents of this bucket must be _private_ since they contain secrets.
+- Enabling encryption and versioning is highly recommended.
+
+##### Using Local Blob Storage
+
+In the case of using a local blob, the following steps are necessary.
+
+1. Set the correct owner of the blob and its contents. Accessing the volume via the command line is specific to different storage providers. Check the documentation of the k8s storage provider.
+
+```bash
+$ sudo chown -R 886:886 <blob>
+```
+
+2. Create the `edcs`, `interop`, `end_device_pictures` and `profile_pictures` folders at the root of the blob folder.
+3. Create an empty `config.yml` in the `edcs` and `interop` folders.
 
 #### 5. Traefik Proxy
 
-The Things Stack currently only supports the [Traefik](https://traefik.io/traefik/) proxy to load balance incoming traffic.
+The Things Stack Helm Charts currently only supports the [Traefik](https://traefik.io/traefik/) proxy out of the box to load balance incoming traffic.
+
+To use a custom proxy/load balancer, set `global.ingress.traefik.enabled` to `false`.
+
+When Traefik is disabled, the ports and routes necessary for The Things Stack should be mapped manually by the operator.
+Check the `ingress-routes.yaml` files for each component and adapt it to your proxy. Setting up and maintaining a custom proxy is out of the scope of this document.
+
+If Traefik is not used, skip ahead to [setup TLS certificates]({{< ref "the-things-stack/host/kubernetes/prerequisites#6-tls-certificates" >}}).
 
 The simplest way to install Traefik in the kubernetes cluster is use the [official Helm charts](https://artifacthub.io/packages/helm/traefik/traefik).
 
@@ -184,10 +214,12 @@ If you are using the official [Traefik Helm Chart](https://github.com/traefik/tr
 The Things Stack expects a [Kubernetes TLS Secret](https://kubernetes.io/docs/concepts/configuration/secret/#tls-secrets) which contains the server leaf certificates.
 
 The Things Stack (Enterprise) uses a base domain ex: `domain` and one of the following
+
 - `*.domain` (wildcard) with multi-tenancy
 - `<default tenant>.domain` (single tenant) without multi-tenancy.
 
 Consequently, the TLS certificates used should cover `domain` and one of the following.
+
 - `*.domain`
 - `<default tenant>.domain`
 
@@ -203,8 +235,6 @@ There can either be two separate TimeScaleDB instances or a single instance but 
 
 For testing purposes, [TimeScaleDB Helm Charts](https://docs.timescale.com/install/latest/installation-kubernetes/) can be installed in the Kubernetes Cluster.
 
-
 #### 8. (Optional) Metrics Server
 
 For Autoscaling, the Kubernetes cluster needs a [Metrics Server](https://github.com/kubernetes-sigs/metrics-server). This is dependent on the cluster and the cloud infrastructure and is hence left to the operator.
-
