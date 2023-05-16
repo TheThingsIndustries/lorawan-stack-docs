@@ -13,29 +13,30 @@ The following scrape config can be used to scrape metrics from each of the compo
 
 ```yaml
 scrape_configs:
-- job_name: <name>
-  metrics_path: /metrics
-  scheme: http
-  basic_auth:
-    username: metrics
-    password: <password>
-  static_configs:
-    # This is the cluster local endpoint of the component's service.
-    - targets: ['<helm_release_name>-<component-name>.<namespace>.svc.cluster.local:1885']
-...
+  - job_name: <name>
+    metrics_path: /metrics
+    scheme: http
+    basic_auth:
+      username: metrics
+      password: <password>
+    static_configs:
+      # This is the cluster local endpoint of the component's service.
+      - targets:
+          [
+            "<helm_release_name>-<component-name>.<namespace>.svc.cluster.local:1885",
+          ]
 ```
 
 For example, to scrape metrics from the Identity Servers of a The Things Stack deployment named `mytts` in the `tts` namespace, use the following.
 
 ```yaml
 scrape_configs:
-- job_name: identity-server
-  metrics_path: /metrics
-  scheme: http
-  basic_auth:
-    username: metrics
-    password: <global.http.metrics.password>
-  static_configs:
-    - targets: ['mytts-is.tts.svc.cluster.local:1885']
+  - job_name: identity-server
+    metrics_path: /metrics
+    scheme: http
+    basic_auth:
+      username: metrics
+      password: <global.http.metrics.password>
+    static_configs:
+      - targets: ["mytts-is.tts.svc.cluster.local:1885"]
 ```
-
