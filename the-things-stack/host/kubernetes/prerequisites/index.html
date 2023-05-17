@@ -151,6 +151,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
   </li>
 
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/database-migrations/" class="">Database Migrations</a>
+    
+  </li>
+
 </ul>
 
 
@@ -253,7 +258,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
 <h4 id="4-blob-storage">4. Blob Storage</h4>
-<p>The Things Stack currently supports AWS S3, S3 compatible Blob, Azure Blob storage or Google Cloud Platform (GCP) Buckets.</p>
+<p>The Things Stack currently supports AWS S3, S3 compatible Blob, Azure Blob storage, Google Cloud Platform (GCP) Buckets or a local PVC.</p>
+<h5 id="using-buckets">Using Buckets</h5>
 <p>The Things Stack requires the following buckets.</p>
 <ol>
 <li>Profile pictures bucket</li>
@@ -283,8 +289,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>The contents of this bucket must be <em>private</em> since they contain secrets.</li>
 <li>Enabling encryption and versioning is highly recommended.</li>
 </ul>
+<h5 id="using-local-blob-storage">Using Local Blob Storage</h5>
+<p>In the case of using a local blob, the following steps are necessary.</p>
+<ol>
+<li>Set the correct owner of the blob and its contents. Accessing the volume via the command line is specific to different storage providers. Check the documentation of the k8s storage provider.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ sudo chown -R 886:886 &lt;blob&gt;
+</span></span></code></pre></div><ol start="2">
+<li>Create the <code>edcs</code>, <code>interop</code>, <code>end_device_pictures</code> and <code>profile_pictures</code> folders at the root of the blob folder.</li>
+<li>Create an empty <code>config.yml</code> in the <code>edcs</code> and <code>interop</code> folders.</li>
+</ol>
 <h4 id="5-traefik-proxy">5. Traefik Proxy</h4>
-<p>The Things Stack currently only supports the <a href="https://traefik.io/traefik/">Traefik</a> proxy to load balance incoming traffic.</p>
+<p>The Things Stack Helm Charts currently only supports the <a href="https://traefik.io/traefik/">Traefik</a> proxy out of the box to load balance incoming traffic.</p>
+<p>To use a custom proxy/load balancer, set <code>global.ingress.traefik.enabled</code> to <code>false</code>.</p>
+<p>When Traefik is disabled, the ports and routes necessary for The Things Stack should be mapped manually by the operator.
+Check the <code>ingress-routes.yaml</code> files for each component and adapt it to your proxy. Setting up and maintaining a custom proxy is out of the scope of this document.</p>
+<p>If Traefik is not used, skip ahead to <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/prerequisites/#6-tls-certificates">setup TLS certificates</a>.</p>
 <p>The simplest way to install Traefik in the kubernetes cluster is use the <a href="https://artifacthub.io/packages/helm/traefik/traefik">official Helm charts</a>.</p>
 <p>The Things Stack ingress routes need to be mapped to the Traefik entry points. This can be done during installation.</p>
 <p>Save the following as a YAML file (example <code>traefik.values.yaml</code>) and use that as the values file for Helm.</p>
@@ -466,10 +486,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer on 19 Apr 2023.
+  Last changed by Krishna Iyer on 17 May 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b36a78abab91e6a6967b41f03b65551a89e54c9">
-      Restructure documentation (#1076)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/69bef883eb7a4dd6645118cef159ace04579c4c4">
+      Update k8s section (#1103)
     </a>
 </p>
 

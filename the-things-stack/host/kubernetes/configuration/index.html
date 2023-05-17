@@ -151,6 +151,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
   </li>
 
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/database-migrations/" class="">Database Migrations</a>
+    
+  </li>
+
 </ul>
 
 
@@ -227,7 +232,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">adminUserID</span><span class="p">:</span><span class="w"> </span><span class="c"># User ID for the Administrator of the tenant. Do not use `admin`.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">adminEmail</span><span class="p">:</span><span class="w"> </span><span class="c"># Email of the Administrator of the tenant.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">blob</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;aws&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;azure&#34;</span><span class="w"> </span><span class="l">or &#34;gcp&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;aws&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;azure&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;gcp&#34;</span><span class="w"> </span><span class="l">or &#34;local&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">aws</span><span class="p">:</span><span class="w"> </span><span class="c"># Set only if provider is &#34;aws&#34;.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="c"># region</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">azure</span><span class="p">:</span><span class="w"> </span><span class="c"># Set only if provider is &#34;azure&#34;.</span><span class="w">
@@ -236,6 +241,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># Base64 encoded GCP credentials.json file.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># One option is to run `$ cat &lt;credentials&gt;.json | base64`.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">credentials</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">local</span><span class="p">:</span><span class="w"> </span><span class="c"># Local Blob via a PV(C). The PVC must support the `ReadWriteMany` access mode.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">pvc</span><span class="p">:</span><span class="w"> </span><span class="c"># Name of the PVC.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">cluster</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">keys</span><span class="p">:</span><span class="w"> </span><span class="c"># See preparation section.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">http</span><span class="p">:</span><span class="w">
@@ -256,8 +263,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">oauth</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">clientSecret</span><span class="p">:</span><span class="w"> </span><span class="c"># See preparation section.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">ingress</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">tls</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="c"># Secret Name containing the TLS Certificates for the Domain.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">traefik</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">tls</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="c"># Secret Name containing the TLS Certificates for the Domain.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">tenancy</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">adminKey</span><span class="p">:</span><span class="w"> </span><span class="c"># See preparation section.</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">interop</span><span class="p">:</span><span class="w">
@@ -342,10 +350,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer on 19 Apr 2023.
+  Last changed by Krishna Iyer on 17 May 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b36a78abab91e6a6967b41f03b65551a89e54c9">
-      Restructure documentation (#1076)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/69bef883eb7a4dd6645118cef159ace04579c4c4">
+      Update k8s section (#1103)
     </a>
 </p>
 

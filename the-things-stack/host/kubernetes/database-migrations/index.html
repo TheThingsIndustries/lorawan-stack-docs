@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.96.0" />
-  <title>Preparation | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/preparation/" />
+  <title>Database Migrations | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/database-migrations/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8058c473c43c01571dbb7b1b4de287fb8e077613d282e9b7b9db17271211dd60.css" integrity="sha256-gFjEc8Q8AVcdu3sbTeKH&#43;44HdhPSgum3udsXJxIR3WA=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Preparation">
+  <meta itemprop="name" content="Database Migrations">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Preparation">
+  <meta property="og:title" content="Database Migrations">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/preparation/">
-  <meta name="twitter:title" content="Preparation" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/database-migrations/">
+  <meta name="twitter:title" content="Database Migrations" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -122,12 +122,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/preparation/" class="is-active">Preparation</a>
-    
-    
-
-
-
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/preparation/" class="">Preparation</a>
     
   </li>
 
@@ -152,7 +147,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/database-migrations/" class="">Database Migrations</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/database-migrations/" class="is-active">Database Migrations</a>
+    
+    
+
+
+
     
   </li>
 
@@ -209,97 +209,57 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Preparation
+        <h1 class="title is-size-2">Database Migrations
           
         </h1>
         
         <div class="content">
-          <p>The Things Stack requires a few secret values to be configured. In this step, we generate them and store them for further use.</p>
-<p>Copy each generated secret to a local file and then transfer those values later into the corresponding location in the <code>values.yaml</code> file.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Secrets are required to be hex-encoded strings of the exact length mentioned in this guide.
-</div>
-
-<table>
-<thead>
-<tr>
-<th>Secret</th>
-<th>Description</th>
-<th>Size</th>
-<th>Setting in <code>values.yaml</code></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Cluster Keys</td>
-<td>Key used by cluster components to communicate</td>
-<td>32</td>
-<td><code>global.cluster.keys</code></td>
-</tr>
-<tr>
-<td>HTTP Cookie Block Key</td>
-<td>Block Key for HTTP Cookies</td>
-<td>32</td>
-<td><code>global.http.cookie.blockKey</code></td>
-</tr>
-<tr>
-<td>HTTP Cookie Hash Key</td>
-<td>Hash Key for HTTP Cookies</td>
-<td>32</td>
-<td><code>global.http.cookie.hashKey</code></td>
-</tr>
-<tr>
-<td>Metrics Password</td>
-<td>Password to access exposed Prometheus metrics</td>
-<td>16</td>
-<td><code>global.http.metrics.password</code></td>
-</tr>
-<tr>
-<td>PProf Password</td>
-<td>Password to access profiling (pprof)</td>
-<td>16</td>
-<td><code>global.http.pprof.password</code></td>
-</tr>
-<tr>
-<td>Console Oauth Secret</td>
-<td>Secret used by the Console to connect to The Things Stack</td>
-<td>16</td>
-<td><code>global.console.oauth.clientSecret</code></td>
-</tr>
-<tr>
-<td>Tenant Administration Key</td>
-<td>Secret used to administer cluster tenants</td>
-<td>32</td>
-<td><code>global.tenancy.adminKey</code></td>
-</tr>
-<tr>
-<td>NOC Grafana Admin Password (optional)</td>
-<td>Grafana admin password for The Things Stack Network Operations Center</td>
-<td>24</td>
-<td><code>noc.grafana.adminPassword</code></td>
-</tr>
-<tr>
-<td>NOC Oauth Client Secret (optional)</td>
-<td>OAuth client secret for The Things Stack Network Operations Center</td>
-<td>24</td>
-<td><code>noc.oauth.clientSecret</code></td>
-</tr>
-</tbody>
-</table>
-<p>The simplest option is to use <code>openssl</code>.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">size</span><span class="o">=</span>&lt;&gt;
-</span></span><span class="line"><span class="cl">$ openssl rand -hex <span class="si">${</span><span class="nv">size</span><span class="si">}</span>
-</span></span></code></pre></div><p>For example, to generate <code>global.http.cookie.hashKey</code> you can run the following.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">size</span><span class="o">=</span><span class="m">32</span>
-</span></span><span class="line"><span class="cl">$ openssl rand -hex <span class="si">${</span><span class="nv">size</span><span class="si">}</span>
-</span></span><span class="line"><span class="cl">e1bf1a49ac7e1cb593f1c3afeab494ca950bba06d764110854f801da42e3d568
-</span></span></code></pre></div>
+          <p>The Things Stack database entries are managed between minor versions using database migrations.</p>
+<p>User are informed of required migrations for each version via the <a href="https://www.thethingsindustries.com/docs/whats-new/">Release Notes</a>. It&rsquo;s mandatory to run required database migrations for The Things Stack to function properly.</p>
+<p>This page describes the steps for performing database operations on a The Things Stack Kubernetes Cluster.</p>
+<h2 id="general-procedure">General Procedure</h2>
+<ol>
+<li>Delete current Jobs (if any).</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ kubectl delete <span class="nb">jobs</span> --all<span class="o">=</span><span class="nb">true</span>
+</span></span></code></pre></div><ol start="2">
+<li>Do a <em>dry run</em> of a Helm update and store the evaluation to a file.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ helm upgrade &lt;name&gt; oci://registry-1.docker.io/thethingsindustries/&lt;repo&gt; --version &lt;version&gt; --values &lt;deployment&gt;.values.yaml --dry-run --debug &gt; dryrun.txt
+</span></span></code></pre></div><p>You can also use a local Helm chart.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ helm upgrade &lt;name&gt; &lt;path-to-chart&gt; --values &lt;deployment&gt;.values.yaml --dry-run --debug &gt; dryrun.txt
+</span></span></code></pre></div><ol start="3">
+<li>In the <code>dryrun.txt</code> file look for a job with the name <code>&lt;name&gt;-&lt;component&gt;-migrate</code>.</li>
+</ol>
+<p>For example a migration job for the Identity Server database would look like this.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">batch/v1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Job</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">&lt;name&gt;-is-migrate</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">...</span><span class="w">
+</span></span></span></code></pre></div><ol start="4">
+<li>
+<p>Copy the entire yaml content of this <code>Job</code>; until the <code>---</code> lines to a new file <code>&lt;name&gt;-&lt;component&gt;-migrate.yaml</code>.</p>
+</li>
+<li>
+<p>Deploy this Job manually.</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl apply -f &lt;name&gt;-&lt;component&gt;-migrate.yaml
+</span></span></code></pre></div><ol start="6">
+<li>
+<p>Wait for the Job to complete.</p>
+</li>
+<li>
+<p>Once successfully completed, this can be deleted.</p>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">kubectl delete -f &lt;name&gt;-&lt;component&gt;-migrate.yaml
+</span></span></code></pre></div><p>Repeat the above process for all the components required. Currently only the IS and NOC components require migrations.</p>
         </div>
         
           <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/the-things-stack/host/kubernetes/prerequisites/">← Prerequisites</a>
-<a class="button is-pulled-right" href="/docs/the-things-stack/host/kubernetes/configuration/">Configuration →</a>
+<a class="button is-pulled-left" href="/docs/the-things-stack/host/kubernetes/troubleshooting/">← Troubleshooting</a>
 </div>
 
           <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -316,6 +276,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <h2 class="title is-size-6">On this page</h2>
     
 
+
+  <ul class="menu-list">
+    
+      
+      <li><a href='#general-procedure'>General Procedure</a></li>
+    
+  </ul>
 
 
   </nav>
@@ -354,14 +321,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer on 19 Apr 2023.
+  Last changed by Krishna Iyer on 17 May 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b36a78abab91e6a6967b41f03b65551a89e54c9">
-      Restructure documentation (#1076)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/69bef883eb7a4dd6645118cef159ace04579c4c4">
+      Update k8s section (#1103)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/the-things-stack/host/kubernetes/preparation/_index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/the-things-stack/host/kubernetes/database-migrations/_index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
