@@ -63,13 +63,13 @@ The following is a brief description of each column in the table:
 
 - **Application ID**: displays application IDs of all the applications on the network.
 - **Active Devices**: the number of devices in the application which have uplinked in the **last hour**.
-- **Average Packet Error Rate**: this is calculated by comparing the number of seen frames to the total number of possible frames.
+- **Average Packet Error Rate**: this is calculated by comparing the number of seen frames (received packets) to the total number of possible frames (how much the frame counter incremented).
 
 ### End Device Overview
 
 The end device overview consists of the following panels:
 
-**End devices active** - a bar chart that visualizes the number of devices that have connected to the network in the selected period, either in the last hour, week, or day.
+**End devices active** - a bar chart that visualizes the number of devices that have connected to the network (uplinked) in the selected period, either in the last hour, week, or day.
 
 **End device statistics** - a table layout that displays the **End Device ID**, **Application ID**, **Last Seen**, and **Last Packet Error Rate** of all the devices on the network in the selected period.
 
@@ -87,7 +87,7 @@ The Gateway Details dashboard visualizes detailed insight into gateway statistic
 
 It consists of the following panels:
 
-**Uptime** - a gauge chart that visualizes the amount of time the gateway has been connected to the Network Server, represented as a percentage out of 100.
+**Uptime** - a gauge chart that visualizes the amount of time the gateway has been connected to the Network Server, represented as a percentage.
 
 {{< figure src="../gateway-uptime.png" alt="uptime" >}}
 
@@ -115,7 +115,7 @@ The Packets per channel and Channel utilization graphs can be used to find out w
 
 ## Application Details Dashboard
 
-The Application Details dashboard visualizes detailed insight into application statistics in the selected time period.
+The **Application Details** dashboard provides a detailed insight into application statistics in the selected time period.
 
 {{< figure src="../application-details-full.png" alt="" >}}
 
@@ -139,7 +139,7 @@ It consists of the following panels:
 
 ## End Device Details Dashboard
 
-The End Device Details dashboard visualizes detailed insight into end device statistics in the selected time period.
+The **End Device Details** dashboard provides a detailed insight into end device statistics in the selected time period.
 
 {{< figure src="../end-device-details.png" alt="" >}}
 
@@ -161,11 +161,11 @@ It consists of the following panels:
 
 {{< figure src="../packet-error-rate-ed.png" alt="" >}}
 
-**Channel utilization** - a chart displaying the percentage of packets received on each channel. 
+**Channel utilization** - a chart displaying the percentage of channel utilization.
 
 {{< figure src="../channel-utilization-ed.png" alt="" >}}
 
-**Packets per Data Rate** - a time series graph that visualizes the uplink and downlink rates in packets per second.
+**Packets per Data Rate** - a time series graph that visualizes a number of uplinks over each data rate.
 
 {{< figure src="../packets-per-data-rate-ed.png" alt="" >}}
 
