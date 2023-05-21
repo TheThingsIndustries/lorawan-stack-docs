@@ -215,7 +215,35 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   Your integration may also <a href="/docs/integrations/webhooks/scheduling-downlinks/">schedule downlinks using an API key with appropriate rights</a>, regardless of the value in the <strong>Downlink API key</strong> field.
 </div>
 
-<p>To enable messages for different types of events, use the checkboxes in the <strong>Enabled messages</strong> section.</p>
+<p>If you want to increase security, you can also check the <strong>Request authentication</strong> checkbox and provide credentials that will be used to generate basic authentication header (<code>Authentication: Basic &lt;credentials&gt;</code> format). This header will then be attached to all webhook requests.</p>
+<p>It is also possible to <strong>Filter event data</strong>, i.e. to choose which data you want to push to your webhook. This feature is convenient in case you want to avoid pushing details you don&rsquo;t need and want to save bandwidth. To filter data, just click on the <strong>Add filter path</strong> button and choose paths for data that you need. For example, if you choose only <code>up.uplink_message</code> filter, you will only push the following object:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;uplink_message&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;f_port&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;frm_payload&#34;</span><span class="p">:</span> <span class="s2">&#34;ICw=&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;rx_metadata&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">      <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;gateway_ids&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;gateway_id&#34;</span><span class="p">:</span> <span class="s2">&#34;test&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">},</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;rssi&#34;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;channel_rssi&#34;</span><span class="p">:</span> <span class="mi">42</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;snr&#34;</span><span class="p">:</span> <span class="mf">4.2</span>
+</span></span><span class="line"><span class="cl">      <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">],</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;settings&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;data_rate&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;lora&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;bandwidth&#34;</span><span class="p">:</span> <span class="mi">125000</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">          <span class="nt">&#34;spreading_factor&#34;</span><span class="p">:</span> <span class="mi">7</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;frequency&#34;</span><span class="p">:</span> <span class="s2">&#34;868000000&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Check out all available <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/format/#field-mask">filter paths</a>.</p>
+<p>To enable messages for different types of events, use the checkboxes in the <strong>Enabled event types</strong> section.</p>
 <figure><img src="../enabled-messages.png"
          alt="Webhook creation screen"/>
 </figure>
@@ -282,10 +310,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer on 19 Apr 2023.
+  Last changed by Nejra Selimović on 21 May 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b36a78abab91e6a6967b41f03b65551a89e54c9">
-      Restructure documentation (#1076)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/c6c15aaf5428c1003df8d6ebc1776dc6f4bf0958">
+      doc: Document filter path feature (#1098)
     </a>
 </p>
 
