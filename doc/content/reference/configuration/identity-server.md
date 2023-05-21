@@ -169,7 +169,7 @@ By default users can create applications, gateways, organizations and OAuth clie
 - `is.user-rights.create-gateways`: Allow non-admin users to create gateways in their user account
 - `is.user-rights.create-organizations`: Allow non-admin users to create organizations in their user account
 
-## Entity Limits Options {{< new-in-version "3.21.0">}} {#entity-limits-options}
+## Entity Limits Options {#entity-limits-options}
 
 By default, users can create an unlimited number of applications, gateways, organizations and OAuth clients. With the following configuration options, it is possible to restrict this. These configuration options apply to _newly created_ applications, organizations and users. Limits for existing applications, organizations and users can be modified by admin users.
 

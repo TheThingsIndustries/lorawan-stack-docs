@@ -87,7 +87,7 @@ paths:
 
 If the user has filled in the value of `username` with `user1` and the value of `create` with `true`, then the resulting webhook will have its base URL set to `https://www.example.com/lora/user1` and the uplink messages will be sent to `https://www.example.com/lora/user1?create=true` (the uplink messages path will be set to `/uplink?create=true`).
 
-## Instantiation of Field Mask {{< new-in-version "3.21.1" >}}
+## Instantiation of Field Mask
 
 The request message data fields that are sent via webhooks can be filtered. If specified in `field-mask`, only these fields will be present in the request message to save bandwidth. Field paths are provided as a list, for example:
 
