@@ -63,6 +63,9 @@ ttn-lw-cli templates create [flags]
       --mac-settings.adr                                                               select the mac_settings.adr field and all allowed sub-fields
       --mac-settings.adr.mode.disabled                                                 select the mac_settings.adr.mode.disabled field and all allowed sub-fields
       --mac-settings.adr.mode.dynamic                                                  select the mac_settings.adr.mode.dynamic field and all allowed sub-fields
+      --mac-settings.adr.mode.dynamic.channel-steering                                 select the mac_settings.adr.mode.dynamic.channel_steering field and all allowed sub-fields
+      --mac-settings.adr.mode.dynamic.channel-steering.mode.disabled                   select the mac_settings.adr.mode.dynamic.channel_steering.mode.disabled field and all allowed sub-fields
+      --mac-settings.adr.mode.dynamic.channel-steering.mode.lora-narrow                select the mac_settings.adr.mode.dynamic.channel_steering.mode.lora_narrow field and all allowed sub-fields
       --mac-settings.adr.mode.dynamic.margin                                           select the mac_settings.adr.mode.dynamic.margin field
       --mac-settings.adr.mode.dynamic.max-data-rate-index                              select the mac_settings.adr.mode.dynamic.max_data_rate_index field and all allowed sub-fields
       --mac-settings.adr.mode.dynamic.max-nb-trans                                     select the mac_settings.adr.mode.dynamic.max_nb_trans field

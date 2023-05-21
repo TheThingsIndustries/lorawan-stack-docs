@@ -54,6 +54,8 @@ ttn-lw-cli end-devices create [application-id] [device-id] [flags]
       --lorawan-version string                                                                allowed values: MAC_UNKNOWN, UNKNOWN, unknown, 1.0, 1.0.0, MAC_V1_0, V1_0, 1.0.1, MAC_V1_0_1, V1_0_1, 1.0.2, MAC_V1_0_2, V1_0_2, 1.1, 1.1.0, MAC_V1_1, V1_1, 1.0.3, MAC_V1_0_3, V1_0_3, 1.0.4, MAC_V1_0_4, V1_0_4
       --mac-settings.adr.mode.disabled                                                        
       --mac-settings.adr.mode.dynamic                                                         
+      --mac-settings.adr.mode.dynamic.channel-steering.mode.disabled                          
+      --mac-settings.adr.mode.dynamic.channel-steering.mode.lora-narrow                       
       --mac-settings.adr.mode.dynamic.margin float32                                          
       --mac-settings.adr.mode.dynamic.max-data-rate-index string                              allowed values: 0, DATA_RATE_0, 1, DATA_RATE_1, 2, DATA_RATE_2, 3, DATA_RATE_3, 4, DATA_RATE_4, 5, DATA_RATE_5, 6, DATA_RATE_6, 7, DATA_RATE_7, 8, DATA_RATE_8, 9, DATA_RATE_9, 10, DATA_RATE_10, 11, DATA_RATE_11, 12, DATA_RATE_12, 13, DATA_RATE_13, 14, DATA_RATE_14, 15, DATA_RATE_15
       --mac-settings.adr.mode.dynamic.max-nb-trans uint32                                     
