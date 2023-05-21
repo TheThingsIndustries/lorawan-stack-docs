@@ -248,6 +248,8 @@ echo Authorization: Bearer %LNS_KEY% &gt; lns.key
 </span></span><span class="line"><span class="cl">write-output <span class="s2">&#34;Authorization: Bearer </span><span class="nv">$env</span><span class="s2">:LNS_KEY&#34;</span> <span class="p">|</span> set-content lns.key
 </span></span></code></pre></div><p>Upload or copy the contents of this file in to your gateway as the <strong>Gateway Key</strong>.</p>
 <p>See the <a href="https://lora-developers.semtech.com/build/software/lora-basics/lora-basics-for-gateways/?url=authmodes.html">LoRa Basics™ Station Authorization documentation</a> or your manufacturers guidelines for additional information.</p>
+<h2 id="i-see-the-api-key-not-found-error-in-gateway-live-events-what-do-i-do">I see the &ldquo;API key not found&rdquo; error in gateway live events. What do I do?</h2>
+<p>This error is shown when the API key associated with the gateway has been deleted. Generate a <a href="https://www.thethingsindustries.com/docs/gateways/concepts/adding-gateways/#create-gateway-api-key">new API key</a>, configure the gateway with it and reboot it to apply changes.</p>
 <h2 id="lora-basics-station-packet-forwarder-logs-mention-the-send-failed-x509---certificate-verification-failed-eg-crl-ca-or-signature-check-failed-error-what-does-it-mean">LoRa Basics™ Station packet forwarder logs mention the &ldquo;Send failed: X509 - Certificate verification failed, e.g. CRL, CA, or signature check failed&rdquo; error. What does it mean?</h2>
 <p>The cause of this issue is that the gateway is configured with a server certificate that The Things Stack does not support. It is recommended to use the <a href="https://letsencrypt.org/certs/isrgrootx1.pem.txt">Let&rsquo;s Encrypt ISRG Root X1 Trust certificate</a>. Make sure to restart your gateway after changing the certificate.</p>
 <h2 id="im-seeing-radio-is-not-emitting-frame---abandoning-tx-trying-alternative-error-in-the-lora-basics-station-gateways-packet-forwarder-logs-what-is-causing-this">I&rsquo;m seeing &ldquo;Radio is not emitting frame - abandoning TX, trying alternative&rdquo; error in the LoRa Basics™ Station gateway&rsquo;s packet forwarder logs. What is causing this?</h2>
@@ -413,6 +415,9 @@ echo Authorization: Bearer %LNS_KEY% &gt; lns.key
       <li><a href='#how-do-i-use-an-api-key-for-lbs-gateways'>How do I use an API Key for LBS gateways?</a></li>
     
       
+      <li><a href='#i-see-the-api-key-not-found-error-in-gateway-live-events-what-do-i-do'>I see the “API key not found” error in gateway live events. What do I do?</a></li>
+    
+      
       <li><a href='#lora-basics-station-packet-forwarder-logs-mention-the-send-failed-x509---certificate-verification-failed-eg-crl-ca-or-signature-check-failed-error-what-does-it-mean'>LoRa Basics™ Station packet forwarder logs mention the “Send failed: X509 - Certificate verification failed, e.g. CRL, CA, or signature check failed” error. What does it mean?</a></li>
     
       
@@ -490,10 +495,10 @@ echo Authorization: Bearer %LNS_KEY% &gt; lns.key
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer on 19 Apr 2023.
+  Last changed by Nejra Selimović on 21 May 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b36a78abab91e6a6967b41f03b65551a89e54c9">
-      Restructure documentation (#1076)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/1fd6147607f66750a04f217ec6439d2c48f49add">
+      doc: Gateway troubleshooting update (#1110)
     </a>
 </p>
 
