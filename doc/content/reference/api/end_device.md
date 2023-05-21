@@ -187,6 +187,10 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="ADRSettings.DynamicMode.ChannelSteeringSettings" >}}
 
+{{< proto/message message="ADRSettings.DynamicMode.ChannelSteeringSettings.LoRaNarrowMode" >}}
+
+{{< proto/message message="ADRSettings.DynamicMode.ChannelSteeringSettings.DisabledMode" >}}
+
 {{< proto/message message="ADRSettings.DisabledMode" >}}
 
 {{< proto/message message="AggregatedDutyCycleValue" >}}
