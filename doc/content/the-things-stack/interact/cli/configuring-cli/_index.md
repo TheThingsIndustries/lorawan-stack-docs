@@ -5,9 +5,11 @@ weight: 2
 aliases: [/getting-started/cli/configuring-cli/]
 ---
 
-{{% tts %}} CLI needs to be configured to connect to your {{% tts %}} deployment. To configure the CLI, you first have to create a configuration file, then make that file available to the CLI.
+{{% tts %}} CLI needs to be configured to connect to your {{% tts %}} deployment.
 
-The CLI configuration file can be generated or manually created.
+<!--more-->
+
+To configure the CLI, you first have to create a configuration file, then make that file available to the CLI. The CLI configuration file can be generated or manually created.
 
 ## Step 1 - Create a configuration file
 

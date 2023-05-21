@@ -19,6 +19,8 @@ error:cmd/ttn-lw-cli/commands:unauthenticated (not authenticated with either API
 
 If you face this error, make sure you have properly [created a CLI configuration file]({{< ref "/the-things-stack/interact/cli/configuring-cli/#step-1---create-a-configuration-file" >}}) and [configured the CLI]({{< ref "/the-things-stack/interact/cli/configuring-cli/#step-2---configure-the-cli" >}}) for your {{% tts %}} instance.
 
+Keep in mind that there are two CLI versions, `ttn-lw-cli` and `tti-lw-cli`, intended for users of different {{% tts %}} distributions, as mentioned in [Installing the CLI guide]({{< ref "/the-things-stack/interact/cli/installing-cli" >}}). You might face this error, for example, if you install `tti-lw-cli` and try to perform some action using `ttn-lw-cli`, or vice versa.
+
 ## Faulty OAuth Server Address
 
 In the [CLI configuration file]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}), the server address is set to `thethings.example.com` by default. If you do not change this server address to the address of your own deployment, using `ttn-lw-cli login` command will redirect to `https://thethings.example.com/oauth/authorize?client_id=cli&redirect_uri=local-callback&response_type=code` in your web browser, where the CLI needs to be authorized for exchanging an access token.
