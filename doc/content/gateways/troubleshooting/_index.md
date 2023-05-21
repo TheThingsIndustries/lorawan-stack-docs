@@ -204,6 +204,10 @@ Upload or copy the contents of this file in to your gateway as the **Gateway Key
 
 See the [{{% lbs %}} Authorization documentation](https://lora-developers.semtech.com/build/software/lora-basics/lora-basics-for-gateways/?url=authmodes.html) or your manufacturers guidelines for additional information.
 
+## I see the "API key not found" error in gateway live events. What do I do?
+
+This error is shown when the API key associated with the gateway has been deleted. Generate a [new API key]({{< ref "/gateways/concepts/adding-gateways#create-gateway-api-key" >}}), configure the gateway with it and reboot it to apply changes.
+
 ## {{% lbs %}} packet forwarder logs mention the "Send failed: X509 - Certificate verification failed, e.g. CRL, CA, or signature check failed" error. What does it mean?
 
 The cause of this issue is that the gateway is configured with a server certificate that {{% tts %}} does not support. It is recommended to use the [Let's Encrypt ISRG Root X1 Trust certificate](https://letsencrypt.org/certs/isrgrootx1.pem.txt). Make sure to restart your gateway after changing the certificate.
