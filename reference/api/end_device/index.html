@@ -44,7 +44,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.25.1</p>
+        <p class="navbar-item is-size-7">v3.25.2</p>
       </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
           </div>
       <span class="navbar-burger burger" data-target="topMenu">
@@ -2956,6 +2956,7 @@ If null, the time is selected based on slot availability. This is recommended in
   "max_tx_power_index": null,
   "min_nb_trans": null,
   "max_nb_trans": null,
+  "channel_steering": {},
 }</code></pre>
 </details>
 
@@ -3278,6 +3279,162 @@ If unset, the default value from Network Server configuration will be used.</p>
   </tbody>
 </table>
 
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>channel_steering</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ADRSettings.DynamicMode.ChannelSteeringSettings">
+  
+  <code>
+    
+    ADRSettings.DynamicMode.ChannelSteeringSettings
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:ADRSettings.DynamicMode.ChannelSteeringSettings">Message <code>ADRSettings.DynamicMode.ChannelSteeringSettings</code></h3>
+<p>EXPERIMENTAL: Channel steering settings.</p>
+<b>Restrictions:</b>
+<ul>
+  <li>Only one of <code>lora_narrow</code>, <code>disabled</code> can be set.</li>
+</ul>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "lora_narrow": {},
+  "disabled": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>lora_narrow</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ADRSettings.DynamicMode.ChannelSteeringSettings.LoRaNarrowMode">
+  
+  <code>
+    
+    ADRSettings.DynamicMode.ChannelSteeringSettings.LoRaNarrowMode
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>disabled</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ADRSettings.DynamicMode.ChannelSteeringSettings.DisabledMode">
+  
+  <code>
+    
+    ADRSettings.DynamicMode.ChannelSteeringSettings.DisabledMode
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:ADRSettings.DynamicMode.ChannelSteeringSettings.LoRaNarrowMode">Message <code>ADRSettings.DynamicMode.ChannelSteeringSettings.LoRaNarrowMode</code></h3>
+<p>Configuration options for LoRa narrow channels steering.
+The narrow mode attempts to steer the end device towards
+using the LoRa modulated, 125kHz bandwidth channels.</p>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+
+
+<h3 id="message:ADRSettings.DynamicMode.ChannelSteeringSettings.DisabledMode">Message <code>ADRSettings.DynamicMode.ChannelSteeringSettings.DisabledMode</code></h3>
+<p>Configuration options for cases in which ADR is not supposed to steer the end device
+to another set of channels.</p>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
 
 
 <h3 id="message:ADRSettings.DisabledMode">Message <code>ADRSettings.DisabledMode</code></h3>
@@ -24947,6 +25104,7 @@ On downlink, this is a scheduled transmission.</p>
       </th>
       <td>
           <p>Frequency (Hz).</p>
+          <p><code>gte</code>: <code>100000</code></p>
       </td>
     </tr>
     
@@ -27758,6 +27916,12 @@ If set to false, this message should not be processed.</p>
 
 	
 
+	
+
+	
+
+	
+
 
         </div>
         <div class="is-clearfix">
@@ -27848,10 +28012,10 @@ If set to false, this message should not be processed.</p>
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer on 19 Apr 2023.
+  Last changed by Nejra Selimović on 22 May 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b36a78abab91e6a6967b41f03b65551a89e54c9">
-      Restructure documentation (#1076)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/92f5300a371d7d81f0bcd046ceeee98ad6501a47">
+      doc: Add v3.25.2 release docs (#1112)
     </a>
 </p>
 
