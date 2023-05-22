@@ -1,43 +1,43 @@
 ---
-title: "Connect LORIX One with Lora Basics™ Station"
+title: "Connect the Wifx L1 with Lora Basics™ Station"
 description: ""
 ---
 
-This section contains instructions for connecting to {{% tts %}} using [{{% lbs %}}]({{< ref "/gateways/concepts/lora-basics-station" >}}).
+This section contains instructions for connecting the Wifx L1 gateway to {{% tts %}} using [{{% lbs %}}]({{< ref "/gateways/concepts/lora-basics-station" >}}).
 
 <!--more-->
 
 ## Enable the Basic Station
 
-Go to the **LoRa > Settings page > Forwarder tab**.
+Go to the **LoRa > Forwarder** page.
 
-{{< figure src="../lorix-one-lora-settings-forwarder.png" alt="LORIX One LoRa forwarder page" >}}
+{{< figure src="../wifx-l1-lora-settings-forwarder.png" alt="Wifx L1 LoRa forwarder page" >}}
 
 On the top right, click the **Edit** button to choose a forwarder.
 
-{{< figure src="../lorix-one-lora-settings-forwarder-change-list.png" alt="LORIX One LoRa forwarder selection" class="plain" >}}
+{{< figure src="../wifx-l1-lora-settings-forwarder-change-list.png" alt="Wifx L1 LoRa forwarder selection" class="plain" >}}
 
-In the list, select **LoRa Basic Station** and press apply.
+In the list, select **LoRa Basic Station** and press **Apply**.
 
-{{< figure src="../lorix-one-lora-settings-forwarder-change-bs.png" alt="LORIX One LoRa forwarder Basic Station selection" class="plain" >}}
+{{< figure src="../wifx-l1-lora-settings-forwarder-change-bs.png" alt="Wifx L1 LoRa forwarder Basic Station selection" class="plain" >}}
 
 ## Configure the LNS
 
 Scroll down to the **Configuration** section and enable the **LoRaWAN Network Server** option.
 
-{{< figure src="../lorix-one-lora-settings-bs.png" alt="LORIX One LoRa forwarder Basic Station LNS" >}}
+{{< figure src="../wifx-l1-lora-settings-bs.png" alt="Wifx L1 LoRa forwarder Basic Station LNS" >}}
 
-Configure the **Address** with the server address of your deployment, and **Port** with LNS port `8887`.
+Configure the **Address** with the [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}) of your deployment, and **Port** with LNS port `8887`.
 
 Enable the **Secured TLS connection** and select the **Use local root certificates** option. If you need to use a certificate specific to your infrastructure (for on-premise installations), use the **Use certificate file** option instead and upload the certificate.
 
 Enable the **Client authentication**, select **Use token**, and set the previously saved API key in the **Authentication token** field. This key was shown to you as you created it when [registering the gateway]({{< ref "/gateways/concepts/adding-gateways#create-gateway-api-key" >}}). If you did not copy the key, you can delete it and create a new one.
 
-{{< figure src="../lorix-one-lora-settings-bs-lns.png" alt="LORIX One LoRa forwarder Basic Station LNS" class="plain" >}}
+{{< figure src="../wifx-l1-lora-settings-bs-lns.png" alt="Wifx L1 LoRa forwarder Basic Station LNS" class="plain" >}}
 
 Press the **SAVE** button. In the **Control** pane above, press **START** and check the logs in the dedicated pane.
 
-{{< figure src="../lorix-one-lora-settings-bs-control-logs.png" alt="LORIX One LoRa forwarder Basic Station start" >}}
+{{< figure src="../wifx-l1-lora-settings-bs-control-logs.png" alt="Wifx L1 LoRa forwarder Basic Station start" >}}
 
 You should see a bunch of messages, one of which indicates success :
 
@@ -60,7 +60,7 @@ If the Basic Station crashes for any reason, it will be automatically restarted 
 
 Go to the **Configuration** section and enable **Configuration and Update Server**.
 
-{{< figure src="../lorix-one-lora-settings-bs.png" alt="LORIX One LoRa forwarder Basic Station LNS" >}}
+{{< figure src="../wifx-l1-lora-settings-bs.png" alt="Wifx L1 LoRa forwarder Basic Station LNS" >}}
 
 To connect the gateway via CUPS protocol, follow the instructions for [Connecting CUPS]({{< ref "/gateways/concepts/lora-basics-station/cups" >}}).
 
