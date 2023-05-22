@@ -9,6 +9,26 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.25.2
+
+### Proxy
+
+- Upgraded to Envoy 1.26.0.
+
+### `2-5-db-timescale`
+
+- Updated the default `node_exporter` version to 1.5.0.
+- Replica updates now always maintain at least one instance during the upgrade.
+- Postgres custom settings are now re-created on every master instance provisioning.
+
+### `5-4-ecs-cluster`
+
+- Updated the default `node_exporter` version to 1.5.0.
+
+### `5-5-ecs-monitoring`
+
+- Prometheus has been upgraded to version 2.43.0.
+
 ## 3.25.1
 
 ### `2-4b-routing-s3`
