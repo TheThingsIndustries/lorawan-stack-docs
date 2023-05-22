@@ -27,7 +27,7 @@ Scroll down to the **Configuration** section and enable the **LoRaWAN Network Se
 
 {{< figure src="../wifx-l1-lora-settings-bs.png" alt="Wifx L1 LoRa forwarder Basic Station LNS" >}}
 
-Configure the **Address** with the [Server Addresses]({{< ref "the-things-stack/concepts/server-addresses" >}}) of your deployment, and **Port** with LNS port `8887`.
+Configure the **Address** with the [Server Addresse]({{< ref "the-things-stack/concepts/server-addresses" >}}) of your deployment, and **Port** with LNS port `8887`.
 
 Enable the **Secured TLS connection** and select the **Use local root certificates** option. If you need to use a certificate specific to your infrastructure (for on-premise installations), use the **Use certificate file** option instead and upload the certificate.
 
