@@ -66,6 +66,8 @@ If the import was successful, you will see your devices added to the list of end
 
 {{< /tabs/tab >}}
 
+{{< /tabs/container >}}
+
 {{< figure src="../successful-import.png" alt="successful-import" >}}
 
 Your devices are now registered on {{% tts %}}.

@@ -15,7 +15,7 @@
 GO = go
 HUGO_BUILD_FLAGS = -tags extended
 HUGO_MODULE = github.com/gohugoio/hugo
-HUGO ?= $(GO) run $(HUGO_BUILD_FLAGS) $(HUGO_MODULE)
+HUGO ?= CGO_ENABLED=1 $(GO) run $(HUGO_BUILD_FLAGS) $(HUGO_MODULE)
 YARN_DEPS = doc/themes/the-things-stack/node_modules
 FREQUENCY_PLAN_URL ?= \
 https://raw.githubusercontent.com/TheThingsNetwork/lorawan-frequency-plans/master/frequency-plans.yml

@@ -150,3 +150,5 @@ ttn-lw-cli packetbroker deregister
 ```
 
 {{< /tabs/tab >}}
+
+{{< /tabs/container >}}
