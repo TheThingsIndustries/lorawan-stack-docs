@@ -12,13 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import "@tti/design/ui/main.js"
-import "@tti/design/ui/components/ttui-header/index.js"
-import "@tti/design/ui/components/ttui-footer/index.js"
-import "@tti/design/ui/components/ttn-header/index.js"
-import "@tti/design/ui/components/ttn-footer/index.js"
-import "@tti/design/ui/components/cookie-banner"
-
 function addNavBarBurgers(){
   var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0)
   if ($navbarBurgers.length > 0) {
