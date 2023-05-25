@@ -6,11 +6,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta name="generator" content="Hugo 0.96.0" />
+  <meta name="generator" content="Hugo 0.112.3">
   <title>Kubernetes | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
-  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.8058c473c43c01571dbb7b1b4de287fb8e077613d282e9b7b9db17271211dd60.css" integrity="sha256-gFjEc8Q8AVcdu3sbTeKH&#43;44HdhPSgum3udsXJxIR3WA=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
+  <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.a66756cfe43ecf9e9bdf4eda3f7a6599499c94b1de904093e2d076c04af16f4b.css" integrity="sha256-pmdWz&#43;Q&#43;z56b307aP3plmUmclLHekECT4tB2wErxb0s=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta itemprop="name" content="Kubernetes">
@@ -42,7 +42,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
   <div class="container is-fluid">
     <div class="navbar-brand">
-      <a class="navbar-item" href="/docs/">
+      <a class="navbar-item" href="/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
         <p class="navbar-item is-size-7">v3.25.2</p>
       </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
@@ -110,50 +110,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/" class="is-active">Kubernetes</a>
-    
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/prerequisites/" class="">Prerequisites</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/preparation/" class="">Preparation</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/configuration/" class="">Configuration</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/install-charts/" class="">Install Charts</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/monitoring/" class="">Monitoring</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/troubleshooting/" class="">Troubleshooting</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/kubernetes/database-migrations/" class="">Database Migrations</a>
-    
-  </li>
-
-</ul>
-
-
     
   </li>
 
@@ -255,8 +211,9 @@ Please check the documentation of the Load Balancer and run tests to ensure that
           <div class="content has-text-grey">
             
             The following are required for The Things Stack on Kubernetes.
-Installation Tools  kubectl Helm version 3. Check the version of Helm installed using helm version. Helm v3.8 or above is required.  License The Things Stack requires a license key to run. Please contact our sales team for your license key.
+Installation Tools kubectl Helm version 3. Check the version of Helm installed using helm version. Helm v3.8 or above is required. License The Things Stack requires a license key to run. Please contact our sales team for your license key.
 (Optional) Packet Broker Access The Things Stack contains the Packet Broker Agent component that can communicate with Packet Broker.
+Packet Broker is disabled by default in the Helm charts.
             
           </div>
         </div>
@@ -277,7 +234,7 @@ Installation Tools  kubectl Helm version 3. Check the version of Helm installed 
             
             The Things Stack requires a few secret values to be configured. In this step, we generate them and store them for further use.
 Copy each generated secret to a local file and then transfer those values later into the corresponding location in the values.yaml file.
-Note: Secrets are required to be hex-encoded strings of the exact length mentioned in this guide.     Secret Description Size Setting in values.
+Note: Secrets are required to be hex-encoded strings of the exact length mentioned in this guide. Secret Description Size Setting in values.yaml Cluster Keys Key used by cluster components to communicate 32 global.
             
           </div>
         </div>
@@ -319,7 +276,7 @@ Warning: Some values in this file are secrets. Make sure to check this file into
             
             The Things Stack Helm charts are packaged and distributed as OCI packages and are published to Docker Hub.
 Use the following steps to install the chart.
- Login to the registry. This step can be skipped if you&amp;rsquo;ve already logged in via Docker Client.  $ helm registry login -u &amp;lt;username&amp;gt; registry-1.docker.io Note: registry-1 is the OCI registry of Docker Hub.  Pull the OCI container.  $ helm pull oci://registry-1.
+Login to the registry. This step can be skipped if you&amp;rsquo;ve already logged in via Docker Client. $ helm registry login -u &amp;lt;username&amp;gt; registry-1.docker.io Note: registry-1 is the OCI registry of Docker Hub. Pull the OCI container. $ helm pull oci://registry-1.docker.io/thethingsindustries/lorawan-stack-helm-chart --version &amp;lt;version&amp;gt; This pulls a lorawan-stack-helm-chart-&amp;lt;version&amp;gt;.
             
           </div>
         </div>
@@ -341,7 +298,7 @@ Use the following steps to install the chart.
             The Things Stack exposes Prometheus metrics at the /metrics endpoint. This route is protected by Basic Auth with username metrics and password global.http.metrics.password.
 To scrape these metrics, you can install Prometheus in the cluster. The installation details are outside the scope of this document.
 The following scrape config can be used to scrape metrics from each of the components of The Things Stack.
-scrape_configs:- job_name:&amp;lt;name&amp;gt;metrics_path:/metricsscheme:httpbasic_auth:username:metricspassword:&amp;lt;password&amp;gt;static_configs:# This is the cluster local endpoint of the component&amp;#39;s service.
+scrape_configs: - job_name: &amp;lt;name&amp;gt; metrics_path: /metrics scheme: http basic_auth: username: metrics password: &amp;lt;password&amp;gt; static_configs: # This is the cluster local endpoint of the component&amp;#39;s service.
             
           </div>
         </div>
@@ -479,7 +436,7 @@ This page describes the steps for performing database operations on a The Things
   </div>
 </footer>
 <script src="https://www.thethingsindustries.com/docs/js/vendor/basicLightbox.min.js"></script>
-<script src="https://www.thethingsindustries.com/docs/js/theme.min.a32708c8796e7e8713fa926212adddbbf5c15cdd97676d898ecfc17bc6d9ed4f.js" integrity="sha256-oycIyHlufocT&#43;pJiEq3du/XBXN2XZ22Jjs/Be8bZ7U8=" crossorigin="anonymous"></script><script>
+<script src="https://www.thethingsindustries.com/docs/js/theme.min.c601451bfe16c7a1f9f8a5874bf803042c24e8aaf36ffb7ab8f2f0b1fc2d6961.js" integrity="sha256-xgFFG/4Wx6H5&#43;KWHS/gDBCwk6Krzb/t6uPLwsfwtaWE=" crossorigin="anonymous"></script><script>
   window.intercomSettings = {
     app_id: "pp8esr7h",
   };
