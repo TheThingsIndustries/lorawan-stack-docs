@@ -1,6 +1,6 @@
 module go.thethings.network/lorawan-stack-docs/v3
 
-go 1.18
+go 1.20
 
 require github.com/gohugoio/hugo v0.112.3
 
