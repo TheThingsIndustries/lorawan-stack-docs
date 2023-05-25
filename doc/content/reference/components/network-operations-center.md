@@ -38,16 +38,16 @@ The gateway overview consists of the following panels:
 
 **Gateways connected** - a bar chart that visualizes the number of gateways that have connected to the network in the selected period.
 
-**Gateway connectivity** - a table layout that displays the **Gateway ID**, **Last Connect**, **Last Disconnect**, **Disconnects**, **Uptime**, and **Packet Rate** of all the gateways on the network in the selected period.
+**Gateway connectivity** - a table layout that displays the **Gateway ID**, **Last connect**, **Last disconnect**, **Disconnects**, **Uptime**, and **Packet rate** of all the gateways on the network in the selected period.
 
 The following is a brief description of each column in the table:
 
 - **Gateway ID**: displays gateway IDs of all the gateways on the network. Click on the Gateway ID to access its Gateway Details Dashboard.
-- **Last Connect**: the date and time when the gateway last connected to the Network Server.
-- **Last Disconnect**: the date and time when the gateway last disconnected from the Network Server.
+- **Last connect**: the date and time when the gateway last connected to the Network Server.
+- **Last disconnect**: the date and time when the gateway last disconnected from the Network Server.
 - **Disconnects**: the number of disconnects in the selected period.
 - **Uptime**: the fraction of time in which the gateway has been connected to the Network Server.
-- **Packet Rate**: the total number of uplink and downlink data packets forwarded by the gateway per second.
+- **Packet rate**: the total number of uplink and downlink data packets forwarded by the gateway per second.
 
 The data can be sorted by column names and filtered by column values.
 
@@ -55,15 +55,15 @@ The data can be sorted by column names and filtered by column values.
 
 The application overview consists of the following panels:
 
-**Applications active** - a bar chart that visualizes the number of applications with a device that has connected to the network in the selected period, either in the last hour, week, or day.
+**Applications active** - a bar chart that visualizes the number of applications with a device that has been activated in the network in the selected period, either in the last hour, week, or day.
 
-**Application statistics** - a table layout that displays the **Application ID**, **Active Devices**, and **Average Packet Error Rate** of all the applications on the network in the selected period.
+**Application statistics** - a table layout that displays the **Application ID**, **Active devices**, and **Average packet error rate** of all the applications on the network in the selected period.
 
 The following is a brief description of each column in the table:
 
 - **Application ID**: displays application IDs of all the applications on the network.
-- **Active Devices**: the number of devices in the application which have uplinked in the **last hour**.
-- **Average Packet Error Rate**: this is calculated by comparing the number of seen frames (received packets) to the total number of possible frames (how much the frame counter incremented).
+- **Active devices**: displays the number of devices in the application which have sent an uplink message in the last hour.
+- **Average packet error rate**: displays the average of the last packet error rate, over all of the end devices in an application as a percentage.
 
 ### End Device Overview
 
@@ -71,14 +71,14 @@ The end device overview consists of the following panels:
 
 **End devices active** - a bar chart that visualizes the number of devices that have connected to the network (uplinked) in the selected period, either in the last hour, week, or day.
 
-**End device statistics** - a table layout that displays the **End Device ID**, **Application ID**, **Last Seen**, and **Last Packet Error Rate** of all the devices on the network in the selected period.
+**End device statistics** - a table layout that displays the **Device ID**, **Application ID**, **Last seen**, and **Last packet error rate** of all the devices on the network in the selected period.
 
 The following is a brief description of each column in the table:
 
-- **End Device ID**: displays IDs of all the end devices on the network.
+- **Device ID**: displays IDs of all the end devices on the network.
 - **Application ID**: displays the application ID for each device.
-- **Last Seen**: displays when the device last uplinked.
-- **Last Packet Error Rate**: .
+- **Last seen**: displays when the device last uplinked.
+- **Last packet error rate**:  displays the ratio between the number of missing frames and the total number of frames over an hour as a percentage.
 
 ## Gateway Details Dashboard
 The Gateway Details dashboard visualizes detailed insight into gateway statistics in the selected time period.
@@ -121,15 +121,15 @@ The **Application Details** dashboard provides a detailed insight into applicati
 
 It consists of the following panels:
 
-**Gateways Seen** - a chart which displays the number of packets received by each gateway and the channel they primarily use.
+**Gateways seen** - a chart which displays the number of packets received by each gateway and the channel they primarily use.
 
 {{< figure src="../gateways-seen.png" alt="" >}}
 
-**Device Statistics** - a chart displaying gateway, RSSI, and packet data for each device in the application. 
+**Device statistics** - a chart displaying gateway, RSSI, and packet data for each device in the application. 
 
 {{< figure src="../device-statistics.png" alt="" >}}
 
-**Packets per Data Rate** - a time series graph that visualizes the uplink and downlink rates in packets per second.
+**Packets per data rate** - a time series graph that visualizes the uplink and downlink rates in packets per second.
 
 {{< figure src="../packets-per-data-rate.png" alt="" >}}
 
@@ -145,19 +145,19 @@ The **End Device Details** dashboard provides a detailed insight into end device
 
 It consists of the following panels:
 
-**Last Seen** - when the device last uplinked.
+**Last seen** - when the device last uplinked.
 
 {{< figure src="../last-seen-ed.png" alt="" >}}
 
-**Session Age** - how long since the device last negotiated new keys.
+**Session age** - how long since the device last negotiated new keys.
 
 {{< figure src="../session-age-ed.png" alt="" >}}
 
-**Best RSSI** - a chart displaying the RSSI for each channel. 
+**Best RSSI (LoRa)** - a chart displaying the RSSI for each channel. 
 
 {{< figure src="../best-rssi-ed.png" alt="" >}}
 
-**Packet Error Rate** - a chart displaying the historical average error rate. 
+**Packet error rate** - a chart displaying the historical average error rate. 
 
 {{< figure src="../packet-error-rate-ed.png" alt="" >}}
 
@@ -165,7 +165,7 @@ It consists of the following panels:
 
 {{< figure src="../channel-utilization-ed.png" alt="" >}}
 
-**Packets per Data Rate** - a time series graph that visualizes a number of uplinks over each data rate.
+**Packets per data rate** - a time series graph that visualizes a number of uplinks over each data rate.
 
 {{< figure src="../packets-per-data-rate-ed.png" alt="" >}}
 
