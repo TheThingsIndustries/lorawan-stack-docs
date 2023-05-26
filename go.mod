@@ -110,7 +110,7 @@ require (
 	github.com/tdewolff/parse/v2 v2.6.6 // indirect
 	github.com/yuin/goldmark v1.5.4 // indirect
 	go.opencensus.io v0.24.0 // indirect
-	go.uber.org/atomic v1.10.0 // indirect
+	go.uber.org/atomic v1.11.0 // indirect
 	go.uber.org/automaxprocs v1.5.2 // indirect
 	gocloud.dev v0.24.0 // indirect
 	golang.org/x/crypto v0.3.0 // indirect
