@@ -9,7 +9,7 @@
 {{- range .FirstSection.Pages.ByWeight }}
 <li>
     <a href="{{ .Permalink }}" class="{{ if eq $currentPage . }}is-active{{ end }}">{{ .Name }}</a>
-    {{- if .IsAncestor $currentPage }}
+    {{- if or (.IsAncestor $currentPage) (eq . $currentPage) }}
     {{ template "expandifancestor" (dict "section" . "goal" $currentPage ) }}
     {{ end }}
   </li>
@@ -23,7 +23,7 @@
 {{ range . }}
   <li>
     <a href="{{ .Permalink }}" class="{{ if eq $goal . }}is-active{{ end }}">{{ .Name }}</a>
-    {{ if .IsAncestor $goal }}
+    {{ if or (.IsAncestor $goal) (eq . $goal) }}
     {{ template "expandifancestor" (dict "section" . "goal" $goal ) }}
     {{ end }}
   </li>
