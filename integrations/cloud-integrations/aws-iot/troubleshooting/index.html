@@ -399,7 +399,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li><code>/aws/lambda/&lt;stack-name&gt;-HandleUplinkFunction...</code>: uplink handling</li>
 </ul>
 <h2 id="resolving-issues">Resolving issues</h2>
-<h3 id="resolve-deveui--is-registered-for-mismatching-stack">Resolve &ldquo;DevEUI <code>...</code> is registered for mismatching stack&rdquo;</h3>
+<h3 id="deveui-is-registered-for-mismatching-stack-error">&ldquo;DevEUI is registered for mismatching stack&rdquo; error</h3>
 <p>This error occurs when the AWS IoT Integration wants to process an event for an IoT Core thing, but that thing is not managed by the AWS IoT Integration.</p>
 <p>AWS IoT Core things used by the AWS IoT Integration are unique in the AWS account. They must have an attribute <code>stackName</code> that equals the <strong>Stack name</strong> of the integration.</p>
 <p>There are three possible causes, with a each a solution:</p>
@@ -423,6 +423,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ul>
 </li>
 </ol>
+<h3 id="invalid-token-error">&ldquo;Invalid token&rdquo; error</h3>
+<p>If the API key used during deployment of the AWS IoT integration is incorrect, deployment will fail with the <code>error:pkg/auth:token(invalid token)</code> error. Check out <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/aws-iot/deployment-guide/#create-api-key">AWS IoT Deployment guide</a> and make sure you&rsquo;re using an API key with required rights for this integration. You can also create a new API key and re-deploy the integration.</p>
         </div>
         <div class="is-clearfix">
 <a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/aws-iot/uninstall/">← Uninstall</a>
@@ -491,10 +493,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Johan Stokking on 21 Feb 2023.
+  Last changed by Nejra Selimović on 29 May 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4445e2e50510e1224c9e2ec7a8ebb7889b5961ae">
-      The Things Join Server and related documentation (#1041)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/e058a4f409c8d26326f6f0538a1567ed655031a1">
+      doc: Document invalid token error (#1114)
     </a>
 </p>
 
