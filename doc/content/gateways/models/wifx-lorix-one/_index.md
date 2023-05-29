@@ -1,7 +1,6 @@
 ---
 title: "Wifx LORIX One"
 description: ""
-aliases: [/gateways/lorix-one]
 ---
 
 {{< figure src="lorix-one.png" alt="LORIX One" class="plain float" >}}
@@ -53,7 +52,7 @@ To get the Gateway EUI from the Manager UI, connect to your gateway and check th
 
 ## Registration
 
-Create a gateway in {{% tts %}} Console by following the instructions for [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}). Copy the API Key to a notepad, as you will need it later.
+Create a gateway in the {{% tts %}} Console by following the instructions for [Adding Gateways]({{< ref "/gateways/concepts/adding-gateways" >}}). Copy the API Key to a notepad, as you will need it later.
 
 ## Configuration
 
@@ -67,7 +66,7 @@ You will land on the login page. Log on using the following the default username
 
 ### Configure the antenna type
 
-Go to the **LoRa > Settings page > Hardware tab**.
+Go to the **LoRa > Settings** page.
 
 {{< figure src="lorix-one-lora-settings-antenna.png" alt="LORIX One LoRa hardware page" >}}
 
@@ -80,4 +79,5 @@ In the **Antenna** field, select the antenna you have connected.
 
 ## Configure the Packet Forwarder
 
-After completing basic configuration, follow the instructions for connecting using [{{% lbs %}}]({{< relref "lbs" >}}). It is also possible to connect the gateway usgin the legacy [UDP Packet Forwarder]({{< relref "udp" >}}) if necessary.
+After completing basic configuration, follow the instructions for connecting using [{{% lbs %}}]({{< relref "lbs" >}}).
+It is also possible to connect the gateway usgin the legacy [UDP Packet Forwarder]({{< relref "udp" >}}) if necessary.
