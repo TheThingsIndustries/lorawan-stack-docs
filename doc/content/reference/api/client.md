@@ -29,6 +29,10 @@ description: ""
 
 {{< proto/method service="ClientAccess" method="ListCollaborators" >}}
 
+## The `EntityRegistrySearch` service
+
+{{< proto/method service="EntityRegistrySearch" method="SearchClients" >}}
+
 ## Messages
 
 {{< proto/message message="Client" >}}
@@ -52,6 +56,8 @@ description: ""
 {{< proto/message message="OrganizationIdentifiers" >}}
 
 {{< proto/message message="OrganizationOrUserIdentifiers" >}}
+
+{{< proto/message message="SearchClientsRequest" >}}
 
 {{< proto/message message="SetClientCollaboratorRequest" >}}
 

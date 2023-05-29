@@ -25,6 +25,10 @@ Unlike the other services, the tenant services do **not** accept API keys or OAu
 
 {{< proto/method package="tti.lorawan.v3" service="TenantRegistry" method="Delete" >}}
 
+## The `EntityRegistrySearch` service
+
+{{< proto/method package="tti.lorawan.v3" service="EntityRegistrySearch" method="SearchTenants" >}}
+
 ## Messages
 
 {{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.IdentityServer.ApplicationLimits" >}}
@@ -102,6 +106,8 @@ Unlike the other services, the tenant services do **not** accept API keys or OAu
 {{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.NetworkOperationsCenter.Access" >}}
 
 {{< proto/message package="tti.lorawan.v3" message="EntityCounting" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="SearchTenantsRequest" >}}
 
 ## Enums
 
