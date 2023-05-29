@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>Connect RAK7240 in Packet Forwarder Mode | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/models/rak-7240/pf/" />
+  <title>Connect the Wifx L1 with Lora Basics™ Station | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/models/wifx-l1/lbs/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.a66756cfe43ecf9e9bdf4eda3f7a6599499c94b1de904093e2d076c04af16f4b.css" integrity="sha256-pmdWz&#43;Q&#43;z56b307aP3plmUmclLHekECT4tB2wErxb0s=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Connect RAK7240 in Packet Forwarder Mode">
+  <meta itemprop="name" content="Connect the Wifx L1 with Lora Basics™ Station">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Connect RAK7240 in Packet Forwarder Mode">
+  <meta property="og:title" content="Connect the Wifx L1 with Lora Basics™ Station">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/models/rak-7240/pf/">
-  <meta name="twitter:title" content="Connect RAK7240 in Packet Forwarder Mode" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/models/wifx-l1/lbs/">
+  <meta name="twitter:title" content="Connect the Wifx L1 with Lora Basics™ Station" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -203,30 +203,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/models/rak-7240/" class="">RAK7240 WisGate Edge Prime</a>
     
-    
-
-
-<ul class="menu-list">
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/models/rak-7240/bs/" class="">Connect RAK7240 in Basic Station Mode</a>
-    
-  </li>
-
-  <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/models/rak-7240/pf/" class="is-active">Connect RAK7240 in Packet Forwarder Mode</a>
-    
-    
-
-
-
-    
-  </li>
-
-</ul>
-
-
-    
   </li>
 
   <li>
@@ -251,6 +227,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/gateways/models/wifx-l1/" class="">Wifx L1</a>
+    
+    
+
+
+<ul class="menu-list">
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/models/wifx-l1/lbs/" class="is-active">Connect the Wifx L1 with Lora Basics™ Station</a>
+    
+    
+
+
+
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/gateways/models/wifx-l1/udp/" class="">Connect the Wifx L1 with UDP Packet Forwarder</a>
+    
+  </li>
+
+</ul>
+
+
     
   </li>
 
@@ -284,30 +284,65 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Connect RAK7240 in Packet Forwarder Mode
+        <h1 class="title is-size-2">Connect the Wifx L1 with Lora Basics™ Station
           
         </h1>
         
         <div class="content">
-          <p>RAK7240&rsquo;s <strong>Packet Forwarder</strong> mode utilizes the <a href="https://www.thethingsindustries.com/docs/gateways/concepts/udp/">Semtech UDP Packet Forwarder</a> protocol. Follow this section to learn how to connect to The Things Stack Network Server using this mode.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Packet Forwarder mode also includes an option to use the gateway as an MQTT bridge. This allows RAK7240 to connect to its built-in LoRa Network Server, or to an external server. However, The Things Stack is not supported (yet) as an external LoRaWAN® network server by this gateway.
-</div>
-
-<p>To configure the gateway to use the Semtech UDP Packet Forwarder, navigate to <strong>LoRa Network → Network Settings → Packet Forwarder Settings</strong>.</p>
-<h2 id="semtech-udp-gwmp-protocol">Semtech UDP GWMP Protocol</h2>
-<p>To use the legacy Semtech UDP Packet Forwarder, select <strong>Semtech UDP GWMP Protocol</strong> in the <strong>Protocol</strong> drop-down list.</p>
-<p>Enter The Things Stack address in the <strong>Server Address</strong> field.</p>
-<p>Fill in the <strong>Server Port Up</strong> and <strong>Server Port Down</strong> fields with value <code>1700</code>.</p>
-<p>Other settings can retain their default values. For more information about these parameters, please visit the <a href="https://docs.rakwireless.com/Knowledge-Hub/Learn/WEB-Management-Platform/#packet-forwarder">Packet Forwarder mode documentation</a>.</p>
-<figure class="plain"><img src="../udp-pf.jpg"
-         alt="Semtech UDP GWMP Protocol"/>
+          <p>This section contains instructions for connecting the Wifx L1 gateway to The Things Stack using <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/">LoRa Basics™ Station</a>.</p>
+<h2 id="enable-the-basic-station">Enable the Basic Station</h2>
+<p>Go to the <strong>LoRa &gt; Forwarder</strong> page.</p>
+<figure><img src="../wifx-l1-lora-settings-forwarder.png"
+         alt="Wifx L1 LoRa forwarder page"/>
 </figure>
+
+<p>On the top right, click the <strong>Edit</strong> button to choose a forwarder.</p>
+<figure class="plain"><img src="../wifx-l1-lora-settings-forwarder-change-list.png"
+         alt="Wifx L1 LoRa forwarder selection"/>
+</figure>
+
+<p>In the list, select <strong>LoRa Basic Station</strong> and press <strong>Apply</strong>.</p>
+<figure class="plain"><img src="../wifx-l1-lora-settings-forwarder-change-bs.png"
+         alt="Wifx L1 LoRa forwarder Basic Station selection"/>
+</figure>
+
+<h2 id="configure-the-lns">Configure the LNS</h2>
+<p>Scroll down to the <strong>Configuration</strong> section and enable the <strong>LoRaWAN Network Server</strong> option.</p>
+<figure><img src="../wifx-l1-lora-settings-bs.png"
+         alt="Wifx L1 LoRa forwarder Basic Station LNS"/>
+</figure>
+
+<p>Configure the <strong>Address</strong> with the <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/server-addresses/">Server Address</a> of your deployment, and <strong>Port</strong> with LNS port <code>8887</code>.</p>
+<p>Enable the <strong>Secured TLS connection</strong> and select the <strong>Use local root certificates</strong> option. If you need to use a certificate specific to your infrastructure (for on-premise installations), use the <strong>Use certificate file</strong> option instead and upload the certificate.</p>
+<p>Enable the <strong>Client authentication</strong>, select <strong>Use token</strong>, and set the previously saved API key in the <strong>Authentication token</strong> field. This key was shown to you as you created it when <a href="https://www.thethingsindustries.com/docs/gateways/concepts/adding-gateways/#create-gateway-api-key">registering the gateway</a>. If you did not copy the key, you can delete it and create a new one.</p>
+<figure class="plain"><img src="../wifx-l1-lora-settings-bs-lns.png"
+         alt="Wifx L1 LoRa forwarder Basic Station LNS"/>
+</figure>
+
+<p>Press the <strong>SAVE</strong> button. In the <strong>Control</strong> pane above, press <strong>START</strong> and check the logs in the dedicated pane.</p>
+<figure><img src="../wifx-l1-lora-settings-bs-control-logs.png"
+         alt="Wifx L1 LoRa forwarder Basic Station start"/>
+</figure>
+
+<p>You should see a bunch of messages, one of which indicates success :</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">[TCE:INFO] Infos: fcc2:3dff:feab:cdef muxs-::0 wss://wifx.eu1.cloud.thethings.industries:8887/traffic/eui-FCC23DFFFEABCDEF
+</code></pre><p>If the connection fails, you will get this kind of message:</p>
+<pre tabindex="0"><code class="language-log" data-lang="log">[AIO:ERRO] [-1] WS connect failed: NET - Failed to get an IP address for the given hostname
+[TCE:ERRO] TC connect failed - URI: wss://wrong-tenant.eu1.cloud.thethings.industries:8887
+</code></pre><p>Please check the configuration and the <strong>LoRa Network Server</strong> status. After a configuration change, always restart the Basic Station with the <strong>Restart</strong> button to make it effective.</p>
+<p>If the Basic Station crashes for any reason, it will be automatically restarted if the <strong>Auto-start</strong> option is enabled.</p>
+<h2 id="cups">CUPS</h2>
+<p>Go to the <strong>Configuration</strong> section and enable <strong>Configuration and Update Server</strong>.</p>
+<figure><img src="../wifx-l1-lora-settings-bs.png"
+         alt="Wifx L1 LoRa forwarder Basic Station LNS"/>
+</figure>
+
+<p>To connect the gateway via CUPS protocol, follow the instructions for <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/cups/">Connecting CUPS</a>.</p>
+<p>Press the <strong>SAVE</strong> button. In the <strong>Control</strong> pane above, press <strong>START</strong> and check the logs in the dedicated pane.</p>
         </div>
         <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/gateways/models/rak-7240/bs/">← Connect RAK7240 in Basic Station Mode</a>
-<a class="button is-pulled-right" href="/docs/gateways/models/tektelickonamicro/">Tektelic Kona Micro IoT LoRaWAN Gateway →</a>
+<a class="button is-pulled-left" href="/docs/gateways/models/wifx-l1/">← Wifx L1</a>
+<a class="button is-pulled-right" href="/docs/gateways/models/wifx-l1/udp/">Connect the Wifx L1 with UDP Packet Forwarder →</a>
 </div>
 
         <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -328,7 +363,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <ul class="menu-list">
     
       
-      <li><a href='#semtech-udp-gwmp-protocol'>Semtech UDP GWMP Protocol</a></li>
+      <li><a href='#enable-the-basic-station'>Enable the Basic Station</a></li>
+    
+      
+      <li><a href='#configure-the-lns'>Configure the LNS</a></li>
+    
+      
+      <li><a href='#cups'>CUPS</a></li>
     
   </ul>
 
@@ -369,14 +410,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer on 19 Apr 2023.
+  Last changed by Christian Müller on 29 May 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b36a78abab91e6a6967b41f03b65551a89e54c9">
-      Restructure documentation (#1076)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/cc1e8c311c64f22059064c2974e32bf5d9ffad23">
+      doc: Wifx gateways update (#1082)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/models/rak-7240/pf.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/gateways/models/wifx-l1/lbs.md" class="button">Edit on Github</a>
 </div>
 
       </div>
