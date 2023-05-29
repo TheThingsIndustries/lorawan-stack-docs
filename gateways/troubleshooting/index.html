@@ -200,6 +200,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Use the LoRa Basics™ Station packet forwarder</li>
 <li>Change your gateway EUI</li>
 </ul>
+<h2 id="my-udp-gateway-is-connected-but-the-console-persistently-shows-it-as-offline-what-do-i-do">My UDP gateway is connected, but the Console persistently shows it as offline. What do I do?</h2>
+<p>As explained <a href="https://www.thethingsindustries.com/docs/gateways/troubleshooting/#how-does-the-things-stack-console-know-whether-a-gateway-is-connected">here</a>, The Things Stack Console shows UDP gateway as offline if it doesn&rsquo;t receive 3 consecutive <code>PULL_DATA</code> messages from it. This might be due to gateway connectivity issues, but it can also be due to high keep alive interval that is configured in the gateway packet forwarder. To make sure that the latter isn&rsquo;t causing gateway to appear offline in the Console, you should configure your gateway&rsquo;s keep alive interval to recommended value of 5 seconds. For further questions regarding this, we recommend contacting your gateway&rsquo;s manufacturer.</p>
 <h2 id="why-do-i-still-see-connection-stats-of-a-gateway-i-previously-disconnected">Why do I still see connection stats of a gateway I previously disconnected?</h2>
 <p>After disconnecting a gateway, the connection stats will still be available for 48 hours. The HTTP endpoint will return the status code <code>200 OK</code> and the connection stats will contain the <code>disconnected_at</code> field. If the gateway remains inactive for more than 48 hours, the HTTP endpoint will then return the <code>404 Not Found (gateway &lt;gtw_id&gt; not connected)</code> status.</p>
 <h2 id="my-gateway-shows-an-other-cluster-status-why">My gateway shows an &ldquo;Other cluster&rdquo; status. Why?</h2>
@@ -382,6 +384,9 @@ echo Authorization: Bearer %LNS_KEY% &gt; lns.key
       <li><a href='#my-gateway-is-offline-but-still-shows-as-connected-in-the-console-why'>My gateway is offline, but still shows as connected in the Console. Why?</a></li>
     
       
+      <li><a href='#my-udp-gateway-is-connected-but-the-console-persistently-shows-it-as-offline-what-do-i-do'>My UDP gateway is connected, but the Console persistently shows it as offline. What do I do?</a></li>
+    
+      
       <li><a href='#why-do-i-still-see-connection-stats-of-a-gateway-i-previously-disconnected'>Why do I still see connection stats of a gateway I previously disconnected?</a></li>
     
       
@@ -495,10 +500,10 @@ echo Authorization: Bearer %LNS_KEY% &gt; lns.key
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 21 May 2023.
+  Last changed by Nejra Selimović on 29 May 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/1fd6147607f66750a04f217ec6439d2c48f49add">
-      doc: Gateway troubleshooting update (#1110)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/3c5dd764c3b4a914acdd32a16d1e911482317168">
+      doc: UDP gateway keep alive interval ts (#1115)
     </a>
 </p>
 
