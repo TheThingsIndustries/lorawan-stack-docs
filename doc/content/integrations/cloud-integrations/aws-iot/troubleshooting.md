@@ -33,7 +33,7 @@ For further details, you can look at the log entries of the Lambda functions:
 
 ## Resolving issues
 
-### Resolve "DevEUI `...` is registered for mismatching stack"
+### "DevEUI is registered for mismatching stack" error
 
 This error occurs when the AWS IoT Integration wants to process an event for an IoT Core thing, but that thing is not managed by the AWS IoT Integration.
 
@@ -50,3 +50,7 @@ There are three possible causes, with a each a solution:
    - **Solution 1:** Update the `stackName` attribute of the concerning IoT Core things to match the **Stack name** of the new integration. See [Deployment guide](./deploy-ment-guide)
    - **Solution 2:** Use a different AWS account
    - **Solution 3:** If you do not longer need the (manually) created IoT Core thing, delete it
+
+### "Invalid token" error
+
+If the API key used during deployment of the AWS IoT integration is incorrect, deployment will fail with the `error:pkg/auth:token(invalid token)` error. Check out [AWS IoT Deployment guide]({{< ref "/integrations/cloud-integrations/aws-iot/deployment-guide#create-api-key" >}}) and make sure you're using an API key with required rights for this integration. You can also create a new API key and re-deploy the integration. 
