@@ -115,6 +115,10 @@ If you are using a {{% udp-pf %}} gateway, it is possible that another gateway w
 - Use the {{% lbs %}} packet forwarder
 - Change your gateway EUI
 
+## My UDP gateway is connected, but the Console persistently shows it as offline. What do I do?
+
+As explained [here]({{< ref "/gateways/troubleshooting#how-does-the-things-stack-console-know-whether-a-gateway-is-connected" >}}), {{% tts %}} Console shows UDP gateway as offline if it doesn't receive 3 consecutive `PULL_DATA` messages from it. This might be due to gateway connectivity issues, but it can also be due to high keep alive interval that is configured in the gateway packet forwarder. To make sure that the latter isn't causing gateway to appear offline in the Console, you should configure your gateway's keep alive interval to recommended value of 5 seconds. For further questions regarding this, we recommend contacting your gateway's manufacturer.
+
 ## Why do I still see connection stats of a gateway I previously disconnected?
 
 After disconnecting a gateway, the connection stats will still be available for 48 hours. The HTTP endpoint will return the status code `200 OK` and the connection stats will contain the `disconnected_at` field. If the gateway remains inactive for more than 48 hours, the HTTP endpoint will then return the `404 Not Found (gateway <gtw_id> not connected)` status.
