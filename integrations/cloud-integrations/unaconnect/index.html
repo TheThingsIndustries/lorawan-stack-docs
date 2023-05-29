@@ -7,19 +7,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>IoT in a Box | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/iotinabox/" />
+  <title>UnaConnect | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/unaconnect/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.a66756cfe43ecf9e9bdf4eda3f7a6599499c94b1de904093e2d076c04af16f4b.css" integrity="sha256-pmdWz&#43;Q&#43;z56b307aP3plmUmclLHekECT4tB2wErxb0s=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="IoT in a Box">
+  <meta itemprop="name" content="UnaConnect">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="IoT in a Box">
+  <meta property="og:title" content="UnaConnect">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/iotinabox/">
-  <meta name="twitter:title" content="IoT in a Box" />
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/unaconnect/">
+  <meta name="twitter:title" content="UnaConnect" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -179,12 +179,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/iotinabox/" class="is-active">IoT in a Box</a>
-    
-    
-
-
-
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/iotinabox/" class="">IoT in a Box</a>
     
   </li>
 
@@ -264,7 +259,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/unaconnect/" class="">UnaConnect</a>
+    <a href="https://www.thethingsindustries.com/docs/integrations/cloud-integrations/unaconnect/" class="is-active">UnaConnect</a>
+    
+    
+
+
+
     
   </li>
 
@@ -327,52 +327,33 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">IoT in a Box
+        <h1 class="title is-size-2">UnaConnect
           
         </h1>
         
         <div class="content">
-          <p><a href="https://www.iotinabox.com/">IoT in a Box</a> combines an intelligent network of sensors and gateways with monitoring and reporting applications to solve unique and complex monitoring challenges.</p>
-<p>Visit <a href="https://iotinabox.zendesk.com/hc/en-us">IoT in a Box helpdesk</a> for detailed documentation.</p>
+          <p><a href="https://docs.unaconnect.io/">UnaConnect</a> is a middleware cloud platform for IoT device management from <a href="https://www.unabiz.com/">UnaBiz</a>. It allows onboarding large fleets of devices, collecting and processing their data, and integrating with various end platforms in a secure and efficient manner.</p>
+<p>This guide will help you set up an integration between The Things Stack and UnaConnect.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
-<li>An <a href="https://iotinabox.mydevices.com/home">Iot in a Box user account</a>.</li>
+<li>A <a href="https://docs.unaconnect.io/docs/uc-docs/Getting%20Started#before-you-start">user account on UnaConnect</a>.</li>
 </ol>
-<h2 id="setup-iot-in-a-box">Setup IoT in a Box</h2>
-<p>Once you log into your IoT in a Box account, you will need to add a company. You can add it by providing your company info in <strong>Company</strong>, <strong>Country</strong>, <strong>Address</strong> and other fields as shown on the image below.</p>
-<figure><img src="company.png"
-         alt="Creating a company"/>
-</figure>
-
-<p>Next, you will be asked to add your gateway. To add it, your need to enter the <strong>Gateway ID</strong> that is printed on the sticker on the device bottom.</p>
-<figure><img src="add-gateway.png"
-         alt="Adding a gateway"/>
-</figure>
-
-<p>You will also be asked to add your device, which you can do by submitting the <strong>Device ID</strong>. You can find this ID printed on the sticker on your device.</p>
-<figure><img src="add-device.png"
-         alt="Adding a device"/>
-</figure>
-
-<p>Check the supported hardware in <a href="https://store.mydevices.com/">myDevices online store</a>. Devices that are not purchased from this store can be added by submitting their DevEUI/model, or by registering them through your IoT in a Box Whitelabel Console.</p>
+<h2 id="unabiz-setup">UnaBiz setup</h2>
+<p>Before creating the integration on The Things Stack, you first need to <a href="https://docs.unaconnect.io/docs/uc-docs/Getting%20Started/adding-device">add your device on UnaConnect</a>.</p>
 <h2 id="configure-the-things-stack">Configure The Things Stack</h2>
-<p>After finishing IoT in a Box setup, use the <strong>IoTinaBox™</strong> <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a> to create a Webhook integration on The Things Stack.</p>
-<p>To integrate, you only need to fill out the <strong>Webhook ID</strong> field with a desired value, and provide an IoT in a Box <strong>Subscription Key</strong>.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  You can obtain the IoT in a Box subscription key by sending an email to <code>support@mydevices.com</code>.
-</div>
-
-<figure><img src="iotinabox-template.png"
-         alt="IoT in a Box webhook"/>
+<p>Now you are ready to instantiate the UnaConnect <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a>. This will allow you to forward data from your The Things Stack device to the UnaConnect device you created in the previous step.</p>
+<p>On The Things Stack, navigate to <strong>Integrations → Webhooks</strong> and choose <strong>UnaConnect</strong> Webhook template.</p>
+<p>Give a <strong>Webhook ID</strong> to your integration. Enter the <strong>UnaConnect server region</strong> (<code>aps-1</code> for Asia-Pacific, <code>euw-1</code> for Europe).</p>
+<figure><img src="unaconnect-webhook-template.png"
+         alt="UnaConnect integration on TTS"/>
 </figure>
 
-<p>To see the values of all parameters of the IoT in a Box integration, click on the integration after you created it with the Webhook template.</p>
-<p>At this point, you have set up everything to monitor your sensor devices, receive alerts and get daily reports on their status.</p>
+<p>Congrats, your integration is ready! Navigate to your device on UnaConnect and observe the incoming data from your The Things Stack device.</p>
+<p>Visit <a href="https://docs.unaconnect.io/docs/uc-docs/Getting%20Started/Setting%20up%20the%20Networks/tti">UnaConnect</a> for more info.</p>
         </div>
         <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/influxdb-cloud/">← InfluxDB Cloud 2.0</a>
-<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/kaa/">Kaa →</a>
+<a class="button is-pulled-left" href="/docs/integrations/cloud-integrations/uib/">← UIB</a>
+<a class="button is-pulled-right" href="/docs/integrations/cloud-integrations/widgelix/">Widgelix →</a>
 </div>
 
         <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -396,7 +377,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <li><a href='#prerequisites'>Prerequisites</a></li>
     
       
-      <li><a href='#setup-iot-in-a-box'>Setup IoT in a Box</a></li>
+      <li><a href='#unabiz-setup'>UnaBiz setup</a></li>
     
       
       <li><a href='#configure-the-things-stack'>Configure The Things Stack</a></li>
@@ -440,14 +421,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 29 May 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7021f03805db61c3bec7b70c2d4c7257a2fbfd6d">
+      doc: Document UnaConnect integration (#1118)
     </a>
 </p>
 
-<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/cloud-integrations/iotinabox/index.md" class="button">Edit on Github</a>
+<a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/blob/master/doc/content/integrations/cloud-integrations/unaconnect/index.md" class="button">Edit on Github</a>
 </div>
 
       </div>
