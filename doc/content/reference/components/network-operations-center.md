@@ -103,13 +103,13 @@ It consists of the following panels:
 
 {{< figure src="../gateway-packets-per-channel.png" alt="packets per channel" >}}
 
-**Channel utilization** - a chart displaying the percentage of packets received on each channel.
+**Channel utilization** - a graph that visualizes the percentage of total utilization on each channel over a time interval. For example, if we have sent 60 seconds of uplinks in a time period of 15 minutes, we have 60 / (15 * 60) = ~1.66% utilization.
 
 {{< figure src="../gateway-channel-utilization.png" alt="channel utilization" >}}
 
 The Packets per channel and Channel utilization graphs can be used to find out which channels are overused and which channels are prone to collisions.
 
-**Packets per Data Rate** - a time series graph that visualizes the uplink and downlink rates in packets per second.
+**Packets per data rate** - a time series graph that visualizes the number of uplinks at each data rate.
 
 {{< figure src="../gateway-packets-per-data-rate.png" alt="" >}}
 
@@ -129,7 +129,7 @@ It consists of the following panels:
 
 {{< figure src="../device-statistics.png" alt="" >}}
 
-**Packets per data rate** - a time series graph that visualizes the uplink and downlink rates in packets per second.
+**Packets per data rate** - a time series graph that visualizes the number of uplinks at each data rate.
 
 {{< figure src="../packets-per-data-rate.png" alt="" >}}
 
@@ -165,7 +165,7 @@ It consists of the following panels:
 
 {{< figure src="../channel-utilization-ed.png" alt="" >}}
 
-**Packets per data rate** - a time series graph that visualizes a number of uplinks over each data rate.
+**Packets per data rate** - a time series graph that visualizes the number of uplinks at each data rate.
 
 {{< figure src="../packets-per-data-rate-ed.png" alt="" >}}
 
