@@ -167,6 +167,10 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/method service="EndDeviceQRCodeGenerator" method="Parse" >}}
 
+## The `EndDeviceRegistrySearch` service
+
+{{< proto/method service="EndDeviceRegistrySearch" method="SearchEndDevices" >}}
+
 ## Messages
 
 {{< proto/message message="ApplicationIdentifiers" >}}
@@ -414,6 +418,8 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 {{< proto/message message="RxDelayValue" >}}
 
 {{< proto/message message="RxMetadata" >}}
+
+{{< proto/message message="SearchEndDevicesRequest" >}}
 
 {{< proto/message message="Secret" >}}
 
