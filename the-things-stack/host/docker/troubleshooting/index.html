@@ -270,6 +270,9 @@ stack_1      |     licensed=[XXXXXXXX/24] (redacted)
 <pre tabindex="0"><code>stack_1     | INFO	Setting up Network Operations Center
 stack_1     | error:cmd/internal/shared:initialize_network_operations_center (could not initialize Network Operations Center)
 </code></pre><p>Accessing NOC with the <code>admin</code> user is not allowed, so make sure to create user with admin rights but with User ID other than <code>admin</code>.</p>
+<h2 id="operation-timed-out">Operation timed out</h2>
+<p>Generally, an operation will fail with this error if it hasn&rsquo;t been completed within the expected timeframe. For example, if there are firewall restrictions on port 443, logging into The Things Stack will probably fail with this error since token can&rsquo;t be returned to the Console. Besides this example, similar issues with establishing connection with The Things Stack or communication between its components can occur if there are issues with user&rsquo;s internet connection, or if there are restrictions on The Things Stack infrastructure, web browser or firewall level.</p>
+<p>To avoid this happening, users need to ensure that their internet connection is stable and with minimal latency, and that there are no firewall restrictions on the system from which they are accessing The Things Stack. Users can also try using a different browser or computer to try isolating the issue within a specific system. Finally, clear the web browser cache and retry the operation.</p>
 
         </div>
         <div class="is-clearfix">
@@ -324,6 +327,9 @@ stack_1     | error:cmd/internal/shared:initialize_network_operations_center (co
       
       <li><a href='#noc-has-trouble-getting-initialized'>NOC has trouble getting initialized</a></li>
     
+      
+      <li><a href='#operation-timed-out'>Operation timed out</a></li>
+    
   </ul>
 
 
@@ -363,10 +369,10 @@ stack_1     | error:cmd/internal/shared:initialize_network_operations_center (co
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer on 19 Apr 2023.
+  Last changed by Nejra Selimović on 10 Jun 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b36a78abab91e6a6967b41f03b65551a89e54c9">
-      Restructure documentation (#1076)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/e43b1ce680f0a1ce6cda95a31406312628ae9ccf">
+      doc: Document Operation timed out error (#1129)
     </a>
 </p>
 
