@@ -120,3 +120,9 @@ stack_1     | error:cmd/internal/shared:initialize_network_operations_center (co
 ```
 
 Accessing NOC with the `admin` user is not allowed, so make sure to create user with admin rights but with User ID other than `admin`.
+
+## Operation timed out
+
+Generally, an operation will fail with this error if it hasn't been completed within the expected timeframe. For example, if there are firewall restrictions on port 443, logging into {{% tts %}} will probably fail with this error since token can't be returned to the Console. Besides this example, similar issues with establishing connection with {{% tts %}} or communication between its components can occur if there are issues with user's internet connection, or if there are restrictions on {{% tts %}} infrastructure, web browser or firewall level.
+
+To avoid this happening, users need to ensure that their internet connection is stable and with minimal latency, and that there are no firewall restrictions on the system from which they are accessing {{% tts %}}. Users can also try using a different browser or computer to try isolating the issue within a specific system. Finally, clear the web browser cache and retry the operation.
