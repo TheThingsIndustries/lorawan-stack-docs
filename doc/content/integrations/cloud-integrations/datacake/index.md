@@ -35,7 +35,7 @@ Under **Network**, choose **The Things Industries** from the drop-down menu.
 
 Paste your device's **End device ID** from {{% tts %}} in the **TTI Dev Id** field.
 
-The **TTI Server Url** field should contain the URL of your {{% tts %}} deployment.
+The **TTI Server Url** field should contain the URL of your {{% tts %}} deployment. See the [Server Addresses section]({{< ref "/the-things-stack/concepts/server-addresses" >}}) for more info.
 
 Paste your **Application ID** from {{% tts %}} in the **TTI App Id** field. 
 
