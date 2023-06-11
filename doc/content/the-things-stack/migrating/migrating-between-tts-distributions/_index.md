@@ -36,3 +36,5 @@ See [Payload Formatters]({{< ref "/integrations/payload-formatters" >}}) and [In
 ## Migrate End Devices and Gateways
 
 Instructions for migrating your devices will differ depending on if you are using OTAA or ABP devices, and if you want to preserve their active session or not. Migrating your gateway will be needed in some cases. Choose your scenario and find the instructions in the following subsections.
+
+If you experience issues with devices or gateways that you've migrated, check out the [Troubleshooting Devices]({{< ref "/devices/troubleshooting" >}}) and [Troubleshooting Gateways]({{< ref "/gateways/troubleshooting" >}}) sections.

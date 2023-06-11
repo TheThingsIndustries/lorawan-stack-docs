@@ -33,7 +33,7 @@ For detailed instructions on how to configure the migration tool before exportin
 To export device using the [migration tool]({{< ref "/the-things-stack/migrating/migration-tool" >}}) with its active session, use the following command:
 
 ```bash
-ttn-lw-migrate device --source ttnv3 'my-device' > devices.json
+ttn-lw-migrate device --source tts 'my-device' > devices.json
 ```
 
 The migration tool retains session of extracted devices by default.
@@ -41,8 +41,8 @@ The migration tool retains session of extracted devices by default.
 Before your device's session is imported in {{% tts %}} Cloud, you need to completely delete your device from {{% tts %}} Community Edition to prevent conflicts. To do it, use the following command:
 
 ```bash
-ttn-lw-migrate device --source ttnv3 'my-device' \
-    --ttnv3.delete-source-device
+ttn-lw-migrate device --source tts 'my-device' \
+    --tts.delete-source-device
 ```
 
 Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [Import End Devices in {{% tts %}}]({{< ref "/the-things-stack/migrating/import-devices" >}}). Keep in mind that if you are using the CLI to import devices, you first have to configure it to connect to {{% tts %}} Cloud. See [Configuring the CLI]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) guide for instructions.
