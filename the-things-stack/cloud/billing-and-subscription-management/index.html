@@ -243,6 +243,28 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Please reach out to our <a href="mailto:sales@thethingsindustries.com">sales team</a> and reference your tenant ID.</p>
 <h3 id="can-multiple-users-access-a-single-billing-account">Can multiple users access a single Billing Account?</h3>
 <p>No, The Things Stack Billing Account can only be accessed by one person (i.e. one email address). However, you can change the email address which receives payment reminders and appears on the invoices. To edit this email addess, navigate to <strong>Invoices</strong> tab in your Billing Account, then click <strong>Edit billing information</strong> under the <strong>Invoice Information</strong> section and change it.</p>
+<h3 id="im-facing-an-error-that-says-i-reached-a-limit-for-adding-devicesgateways-what-do-i-do">I&rsquo;m facing an error that says I reached a limit for adding devices/gateways. What do I do?</h3>
+<p>If you&rsquo;ve reached a limit for adding devices and/or gateways, you&rsquo;ll be facing the <code>error:pkg/identityserver:tenant_entity_limit</code> error. For example, if you&rsquo;re using The Things Stack Discovery plan (which allows 10 devices, 1 application and 1 gateway to be registered) and you try adding a second gateway, you&rsquo;ll see something like this:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-JSON" data-lang="JSON"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;code&#34;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;message&#34;</span><span class="p">:</span> <span class="s2">&#34;error:pkg/identityserver:tenant_entity_limit (limit for gateway entities in tenant reached, upgrade at )&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;details&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;@type&#34;</span><span class="p">:</span> <span class="s2">&#34;type.googleapis.com/ttn.lorawan.v3.ErrorDetails&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;namespace&#34;</span><span class="p">:</span> <span class="s2">&#34;pkg/identityserver&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;tenant_entity_limit&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;message_format&#34;</span><span class="p">:</span> <span class="s2">&#34;limit for {entity_type} entities in tenant reached, upgrade at {subscription_upgrade_url}&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;attributes&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;entity_type&#34;</span><span class="p">:</span> <span class="s2">&#34;gateway&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;limit&#34;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">        <span class="nt">&#34;subscription_upgrade_url&#34;</span><span class="p">:</span> <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">      <span class="p">},</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;correlation_id&#34;</span><span class="p">:</span> <span class="s2">&#34;abfd8647852947c4889b850f7736ca7b&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;code&#34;</span><span class="p">:</span> <span class="mi">9</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>If you want to add more entities than your current limit allows you to, you will need to upgrade your subscription plan. For example above, you could upgrade your plan from Discovery to Standard or Plus. If you face any difficulties with upgrading your plan, feel free to reach <a href="mailto:sales@thethingsindustries.com">The Things Industries sales team</a>.</p>
         </div>
         
           <div class="is-clearfix">
@@ -318,10 +340,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer on 19 Apr 2023.
+  Last changed by Nejra Selimović on 11 Jun 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b36a78abab91e6a6967b41f03b65551a89e54c9">
-      Restructure documentation (#1076)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/237fdc3379b9b0d2c6257de36a676a335bf27a86">
+      doc: Document entity limit reached err (#1131)
     </a>
 </p>
 
