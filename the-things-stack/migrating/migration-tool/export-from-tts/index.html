@@ -253,42 +253,42 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <section data-content="export-devices">
   <p>To export a single device using it&rsquo;s <strong>End Device ID</strong> (e.g. <code>my-device</code>):</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># dry run first, verify that no errors occur</span>
-</span></span><span class="line"><span class="cl">ttn-lw-migrate device --source ttnv3 <span class="s1">&#39;my-device&#39;</span> --dry-run --verbose &gt; devices.json
+</span></span><span class="line"><span class="cl">ttn-lw-migrate device --source tts <span class="s1">&#39;my-device&#39;</span> --dry-run --verbose &gt; devices.json
 </span></span><span class="line"><span class="cl"><span class="c1"># export device</span>
-</span></span><span class="line"><span class="cl">ttn-lw-migrate device --source ttnv3 <span class="s1">&#39;my-device&#39;</span> &gt; devices.json
+</span></span><span class="line"><span class="cl">ttn-lw-migrate device --source tts <span class="s1">&#39;my-device&#39;</span> &gt; devices.json
 </span></span></code></pre></div><p>In order to export a large number of devices, create a file named <code>device_ids.txt</code> with one device ID per line:</p>
 <pre tabindex="0"><code>my-device-1
 my-device-2
 my-device-3
 </code></pre><p>And then export with:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># dry run first, verify that no errors occur</span>
-</span></span><span class="line"><span class="cl">ttn-lw-migrate devices --source ttnv3 --dry-run --verbose &lt; device_ids.txt &gt; devices.json
+</span></span><span class="line"><span class="cl">ttn-lw-migrate devices --source tts --dry-run --verbose &lt; device_ids.txt &gt; devices.json
 </span></span><span class="line"><span class="cl"><span class="c1"># export devices</span>
-</span></span><span class="line"><span class="cl">ttn-lw-migrate devices --source ttnv3 &lt; device_ids.txt &gt; devices.json
+</span></span><span class="line"><span class="cl">ttn-lw-migrate devices --source tts &lt; device_ids.txt &gt; devices.json
 </span></span></code></pre></div>
 </section>
 <section data-content="export-applications">
   <p>To export all devices of an application using its <strong>Application ID</strong> (e.g. <code>my-app-id</code>):</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># dry run first, verify that no errors occur</span>
-</span></span><span class="line"><span class="cl">ttn-lw-migrate application --source ttnv3 <span class="s1">&#39;my-app-id&#39;</span> --dry-run --verbose &gt; devices.json
+</span></span><span class="line"><span class="cl">ttn-lw-migrate application --source tts <span class="s1">&#39;my-app-id&#39;</span> --dry-run --verbose &gt; devices.json
 </span></span><span class="line"><span class="cl"><span class="c1"># export application</span>
-</span></span><span class="line"><span class="cl">ttn-lw-migrate application --source ttnv3 <span class="s1">&#39;my-app-id&#39;</span> &gt; devices.json
+</span></span><span class="line"><span class="cl">ttn-lw-migrate application --source tts <span class="s1">&#39;my-app-id&#39;</span> &gt; devices.json
 </span></span></code></pre></div><p>In order to export multiple applications, create a file named <code>application_names.txt</code> with one application ID per line:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">my-app-id-1
 </span></span><span class="line"><span class="cl">my-app-id-2
 </span></span><span class="line"><span class="cl">my-app-id-3
 </span></span></code></pre></div><p>And then export with:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># dry run first, verify that no errors occur</span>
-</span></span><span class="line"><span class="cl">ttn-lw-migrate devices --source ttnv3 --dry-run --verbose &lt; application_names.txt &gt; devices.json
+</span></span><span class="line"><span class="cl">ttn-lw-migrate devices --source tts --dry-run --verbose &lt; application_names.txt &gt; devices.json
 </span></span><span class="line"><span class="cl"><span class="c1"># export applications</span>
-</span></span><span class="line"><span class="cl">ttn-lw-migrate devices --source ttnv3 &lt; application_names.txt &gt; devices.json
+</span></span><span class="line"><span class="cl">ttn-lw-migrate devices --source tts &lt; application_names.txt &gt; devices.json
 </span></span></code></pre></div>
 </section>
 
 </div>
 
 <h2 id="advanced-setup">Advanced setup</h2>
-<p>If you are using a custom CA, you can provide a path to it by with an environment variable or by using <code>--ttnv3.ca-file</code> flag.</p>
+<p>If you are using a custom CA, you can provide a path to it by with an environment variable or by using <code>--tts.ca-file</code> flag.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nb">export</span> <span class="nv">TTNV3_CA_FILE</span><span class="o">=</span><span class="s2">&#34;/path/to/ca.file&#34;</span>   <span class="c1"># Path to a CA file (optional)</span>
 </span></span></code></pre></div><hr>
 <p>After exporting, devices and applications can be imported in other The Things Stack deployments. See <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/import-devices/">Import End Devices in The Things Stack</a> for details about importing devices. See <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-between-tts-distributions/">Migrating End Devices between The Things Stack Distributions</a> to wrap up the whole process of migration between The Things Stack distributions.</p>
@@ -363,10 +363,10 @@ my-device-3
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer on 19 Apr 2023.
+  Last changed by Nejra Selimović on 11 Jun 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b36a78abab91e6a6967b41f03b65551a89e54c9">
-      Restructure documentation (#1076)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/1cb558174432bac8d5c1a45541f2bb09c4a4875f">
+      doc: Minor updates in Migratin (#1130)
     </a>
 </p>
 
