@@ -44,10 +44,10 @@ To migrate your OTAA device from {{% tts %}} Community Edition to {{% tts %}} Cl
 
 For detailed instructions on how to configure the migration tool before exporting your device and how to adjust the following command for migrating multiple devices or whole applications, head over to [Export Devices from {{% tts %}}]({{< ref "/the-things-stack/migrating/migration-tool/export-from-tts" >}}).
 
-To export device using the [migration tool]({{< ref "/the-things-stack/migrating/migration-tool" >}}) without persisting active session, use the `--ttnv3.no-session` flag:
+To export device using the [migration tool]({{< ref "/the-things-stack/migrating/migration-tool" >}}) without persisting active session, use the `--tts.no-session` flag:
 
 ```bash
-ttn-lw-migrate device --source ttnv3 'my-device' --ttnv3.no-session > devices.json
+ttn-lw-migrate device --source tts 'my-device' --tts.no-session > devices.json
 ```
 
 Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [Import End Devices in {{% tts %}}]({{< ref "/the-things-stack/migrating/import-devices" >}}). Keep in mind that if you are using the CLI to import devices, you have to configure it to connect to {{% tts %}} Cloud. See [Configuring the CLI]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) guide for instructions.
@@ -132,22 +132,22 @@ To migrate your ABP device with preserving its DevAddr, NwkSKey and AppSKey, fro
 
 For detailed instructions on how to configure the migration tool before exporting your device and how to adjust the following commands for migrating multiple devices or whole applications, head over to [Export Devices from {{% tts %}}]({{< ref "/the-things-stack/migrating/migration-tool/export-from-tts" >}}).
 
-To export devices using the [migration tool]({{< ref "/the-things-stack/migrating/migration-tool" >}}) without persisting active session, use the `--ttnv3.no-session` flag:
+To export devices using the [migration tool]({{< ref "/the-things-stack/migrating/migration-tool" >}}) without persisting active session, use the `--tts.no-session` flag:
 
 ```bash
-ttn-lw-migrate device --source ttnv3 'my-device' \
-    --ttnv3.no-session > devices.json
+ttn-lw-migrate device --source tts 'my-device' \
+    --tts.no-session > devices.json
 ```
 
 Next, you need to import the `devices.json` file in your {{% tts %}} Cloud application. See instructions on how to [Import End Devices in {{% tts %}}]({{< ref "/the-things-stack/migrating/import-devices" >}}). Keep in mind that if you are using the CLI to import devices, you first have to configure it to connect to {{% tts %}} Cloud. See [Configuring the CLI]({{< ref "/the-things-stack/interact/cli/configuring-cli" >}}) guide for instructions.
 
 You will also need to reset your ABP device.
 
-When your device is finally registered in {{% tts %}} Cloud, you need to completely delete it from {{% tts %}} Community Edition network to prevent conflicts. You can do this by running the following command with `--ttnv3.delete-source-device` flag:
+When your device is finally registered in {{% tts %}} Cloud, you need to completely delete it from {{% tts %}} Community Edition network to prevent conflicts. You can do this by running the following command with `--tts.delete-source-device` flag:
 
 ```bash
-ttn-lw-migrate device --source ttnv3 'my-device' \
-    --ttnv3.delete-source-device
+ttn-lw-migrate device --source tts 'my-device' \
+    --tts.delete-source-device
 ```
 
 {{</ tabs/tab >}}

@@ -42,9 +42,9 @@ To export a single device using it's **End Device ID** (e.g. `my-device`):
 
 ```bash
 # dry run first, verify that no errors occur
-ttn-lw-migrate device --source ttnv3 'my-device' --dry-run --verbose > devices.json
+ttn-lw-migrate device --source tts 'my-device' --dry-run --verbose > devices.json
 # export device
-ttn-lw-migrate device --source ttnv3 'my-device' > devices.json
+ttn-lw-migrate device --source tts 'my-device' > devices.json
 ```
 
 In order to export a large number of devices, create a file named `device_ids.txt` with one device ID per line:
@@ -59,9 +59,9 @@ And then export with:
 
 ```bash
 # dry run first, verify that no errors occur
-ttn-lw-migrate devices --source ttnv3 --dry-run --verbose < device_ids.txt > devices.json
+ttn-lw-migrate devices --source tts --dry-run --verbose < device_ids.txt > devices.json
 # export devices
-ttn-lw-migrate devices --source ttnv3 < device_ids.txt > devices.json
+ttn-lw-migrate devices --source tts < device_ids.txt > devices.json
 ```
 
 {{</ tabs/tab >}}
@@ -72,9 +72,9 @@ To export all devices of an application using its **Application ID** (e.g. `my-a
 
 ```bash
 # dry run first, verify that no errors occur
-ttn-lw-migrate application --source ttnv3 'my-app-id' --dry-run --verbose > devices.json
+ttn-lw-migrate application --source tts 'my-app-id' --dry-run --verbose > devices.json
 # export application
-ttn-lw-migrate application --source ttnv3 'my-app-id' > devices.json
+ttn-lw-migrate application --source tts 'my-app-id' > devices.json
 ```
 
 In order to export multiple applications, create a file named `application_names.txt` with one application ID per line:
@@ -89,9 +89,9 @@ And then export with:
 
 ```bash
 # dry run first, verify that no errors occur
-ttn-lw-migrate devices --source ttnv3 --dry-run --verbose < application_names.txt > devices.json
+ttn-lw-migrate devices --source tts --dry-run --verbose < application_names.txt > devices.json
 # export applications
-ttn-lw-migrate devices --source ttnv3 < application_names.txt > devices.json
+ttn-lw-migrate devices --source tts < application_names.txt > devices.json
 ```
 
 {{</ tabs/tab >}}
@@ -100,7 +100,7 @@ ttn-lw-migrate devices --source ttnv3 < application_names.txt > devices.json
 
 ## Advanced setup
 
-If you are using a custom CA, you can provide a path to it by with an environment variable or by using `--ttnv3.ca-file` flag.
+If you are using a custom CA, you can provide a path to it by with an environment variable or by using `--tts.ca-file` flag.
 
 ```bash
 export TTNV3_CA_FILE="/path/to/ca.file"   # Path to a CA file (optional)

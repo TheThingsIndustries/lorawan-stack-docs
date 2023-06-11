@@ -73,8 +73,10 @@ ttn-lw-migrate sources
 
 Currently, there are three available sources listed in the table below. For detailed migration instructions using these three sources, check the linked sections.
 
+> The `tts` source can be used for migrating devices between applications in the same {{% tts %}} tenant, migrating between different tenants, or migrating between different {{% tts %}} deployments.
+
 |   Source  |   Section |   Used for    |
 | :----------- | :---------------------------------------------------------------------------------------------------------------------------------- | :------------------------ |
-| `ttnv3`      | [Export Devices from {{% tts %}}]({{< ref "/the-things-stack/migrating/migration-tool/export-from-tts" >}}) | [Migrating between {{% tts %}} distributions]({{< ref "/the-things-stack/migrating/migrating-between-tts-distributions" >}})
+| `tts`      | [Export Devices from {{% tts %}}]({{< ref "/the-things-stack/migrating/migration-tool/export-from-tts" >}}) | [Migrating between {{% tts %}} distributions]({{< ref "/the-things-stack/migrating/migrating-between-tts-distributions" >}})
 | `chirpstack` | [Export Devices from ChirpStack]({{< ref "/the-things-stack/migrating/migration-tool/export-from-chirpstack" >}})            |  Migrating devices from ChirpStack
 | `ttnv2`      | Discontinued | Migrating from legacy {{% ttnv2 %}} deployments
