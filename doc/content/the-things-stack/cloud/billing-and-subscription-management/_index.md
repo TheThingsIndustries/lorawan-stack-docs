@@ -106,3 +106,31 @@ Please reach out to our [sales team](mailto:sales@thethingsindustries.com) and r
 ### Can multiple users access a single Billing Account?
 
 No, {{% tts %}} Billing Account can only be accessed by one person (i.e. one email address). However, you can change the email address which receives payment reminders and appears on the invoices. To edit this email addess, navigate to **Invoices** tab in your Billing Account, then click **Edit billing information** under the **Invoice Information** section and change it.
+
+### I'm facing an error that says I reached a limit for adding devices/gateways. What do I do?
+
+If you've reached a limit for adding devices and/or gateways, you'll be facing the `error:pkg/identityserver:tenant_entity_limit` error. For example, if you're using {{% tts %}} Discovery plan (which allows 10 devices, 1 application and 1 gateway to be registered) and you try adding a second gateway, you'll see something like this:
+
+```JSON
+{
+  "code": 9,
+  "message": "error:pkg/identityserver:tenant_entity_limit (limit for gateway entities in tenant reached, upgrade at )",
+  "details": [
+    {
+      "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+      "namespace": "pkg/identityserver",
+      "name": "tenant_entity_limit",
+      "message_format": "limit for {entity_type} entities in tenant reached, upgrade at {subscription_upgrade_url}",
+      "attributes": {
+        "entity_type": "gateway",
+        "limit": 1,
+        "subscription_upgrade_url": ""
+      },
+      "correlation_id": "abfd8647852947c4889b850f7736ca7b",
+      "code": 9
+    }
+  ]
+}
+```
+
+If you want to add more entities than your current limit allows you to, you will need to upgrade your subscription plan. For example above, you could upgrade your plan from Discovery to Standard or Plus. If you face any difficulties with upgrading your plan, feel free to reach [The Things Industries sales team](mailto:sales@thethingsindustries.com).
