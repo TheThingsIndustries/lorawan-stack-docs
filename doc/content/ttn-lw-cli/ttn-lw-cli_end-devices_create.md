@@ -272,7 +272,6 @@ ttn-lw-cli end-devices create [application-id] [device-id] [flags]
       --version-ids.firmware-version string                                                   
       --version-ids.hardware-version string                                                   
       --version-ids.model-id string                                                           
-      --with-claim-authentication-code                                                        generate claim authentication code of 4 bytes
       --with-root-keys                                                                        generate OTAA root keys
       --with-session                                                                          generate ABP session DevAddr and keys
 ```

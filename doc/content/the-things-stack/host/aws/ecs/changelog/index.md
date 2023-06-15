@@ -9,6 +9,42 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.26.0
+
+### ECS templates
+
+- The UDP Gateway Server service has been removed. Historically this service has been used in order to work around various limitations that AWS Network Load Balancer had with UDP traffic. The service is problematic as it runs as a daemon service on each available ECS host machine, and does not support rolling updates. As the support for UDP traffic has improved in the AWS Network Load Balancer, we have decided to remove this service and have UDP traffic be served by the replica Gateway Server service.
+
+### Upgrade procedure
+
+- As this version upgrade removes certain resources, the standard upgrade procedure which follows the template numbering order cannot be followed directly.
+- The configuration of the `5-4-ecs-services` template needs to be updated such that the `EnableUDPGSRateLimiting` and `IncludeUDPGatewayServer` parameters are set to `false`. The template does not have to be updated yet, only the configuration. This will remove the UDP Gateway Server service instances.
+- The standard upgrade procedure can commence after the template has been upgraded.
+- While upgrading the `5-4-ecs-services` template, consider increasing the number of tasks, or allocated resources, for the Gateway Server service.
+
+### `1-2-bastion`
+
+- UDP Gateway Server references have been removed.
+
+### `3-2-load-balancer-rules`
+
+- The UDP target group target type has been changed from `instance` to `ip`.
+
+### `4-2b-configuration-rate-limiting`
+
+- The UDP Gateway Server rate limiting configuration has been marked as deprecated. The configuration will be removed in a future version.
+- Add NOC rate limiting configuration.
+
+### `5-4-ecs-services`
+
+- The UDP Gateway Server service has been removed. The UDP traffic will now be served by the existing Gateway Server service.
+- The default NOC Grafana image has been updated to `ghcr.io/thethingsindustries/lorawan-stack-noc-grafana:3.26.0`.
+- Add NOC rate limiting.
+
+### `5-5-ecs-monitoring`
+
+- UDP Gateway Server references have been removed.
+
 ## 3.25.2
 
 ### Proxy

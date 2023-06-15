@@ -19,6 +19,7 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --application-id string                                                               
       --before string                                                                       query upstream messages before specified timestamp (format: '2006-01-02 15:04:05')
       --before-utc string                                                                   query upstream messages before specified timestamp (format: '2006-01-02 15:04:05') (UTC)
+      --continuation-token string                                                           continuation token for pagination (if used additional flags other than the type are ignored)
       --correlation-ids                                                                     select the correlation_ids field
       --end-device-ids                                                                      select the end_device_ids field and all allowed sub-fields
       --end-device-ids.application-ids                                                      select the end_device_ids.application_ids field and all allowed sub-fields
