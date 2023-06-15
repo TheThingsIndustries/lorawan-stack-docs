@@ -44,7 +44,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.25.2</p>
+        <p class="navbar-item is-size-7">v3.26.0</p>
       </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
           </div>
       <span class="navbar-burger burger" data-target="topMenu">
@@ -256,6 +256,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           <h1 id="upgrading">Upgrading</h1>
 <p>All meaningful changes to templates are documented in this file.</p>
 <h2 id="unreleased">Unreleased</h2>
+<h2 id="3260">3.26.0</h2>
+<h3 id="ecs-templates">ECS templates</h3>
+<ul>
+<li>The UDP Gateway Server service has been removed. Historically this service has been used in order to work around various limitations that AWS Network Load Balancer had with UDP traffic. The service is problematic as it runs as a daemon service on each available ECS host machine, and does not support rolling updates. As the support for UDP traffic has improved in the AWS Network Load Balancer, we have decided to remove this service and have UDP traffic be served by the replica Gateway Server service.</li>
+</ul>
+<h3 id="upgrade-procedure">Upgrade procedure</h3>
+<ul>
+<li>As this version upgrade removes certain resources, the standard upgrade procedure which follows the template numbering order cannot be followed directly.</li>
+<li>The configuration of the <code>5-4-ecs-services</code> template needs to be updated such that the <code>EnableUDPGSRateLimiting</code> and <code>IncludeUDPGatewayServer</code> parameters are set to <code>false</code>. The template does not have to be updated yet, only the configuration. This will remove the UDP Gateway Server service instances.</li>
+<li>The standard upgrade procedure can commence after the template has been upgraded.</li>
+<li>While upgrading the <code>5-4-ecs-services</code> template, consider increasing the number of tasks, or allocated resources, for the Gateway Server service.</li>
+</ul>
+<h3 id="1-2-bastion"><code>1-2-bastion</code></h3>
+<ul>
+<li>UDP Gateway Server references have been removed.</li>
+</ul>
+<h3 id="3-2-load-balancer-rules"><code>3-2-load-balancer-rules</code></h3>
+<ul>
+<li>The UDP target group target type has been changed from <code>instance</code> to <code>ip</code>.</li>
+</ul>
+<h3 id="4-2b-configuration-rate-limiting"><code>4-2b-configuration-rate-limiting</code></h3>
+<ul>
+<li>The UDP Gateway Server rate limiting configuration has been marked as deprecated. The configuration will be removed in a future version.</li>
+<li>Add NOC rate limiting configuration.</li>
+</ul>
+<h3 id="5-4-ecs-services"><code>5-4-ecs-services</code></h3>
+<ul>
+<li>The UDP Gateway Server service has been removed. The UDP traffic will now be served by the existing Gateway Server service.</li>
+<li>The default NOC Grafana image has been updated to <code>ghcr.io/thethingsindustries/lorawan-stack-noc-grafana:3.26.0</code>.</li>
+<li>Add NOC rate limiting.</li>
+</ul>
+<h3 id="5-5-ecs-monitoring"><code>5-5-ecs-monitoring</code></h3>
+<ul>
+<li>UDP Gateway Server references have been removed.</li>
+</ul>
 <h2 id="3252">3.25.2</h2>
 <h3 id="proxy">Proxy</h3>
 <ul>
@@ -271,7 +306,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Updated the default <code>node_exporter</code> version to 1.5.0.</li>
 </ul>
-<h3 id="5-5-ecs-monitoring"><code>5-5-ecs-monitoring</code></h3>
+<h3 id="5-5-ecs-monitoring-1"><code>5-5-ecs-monitoring</code></h3>
 <ul>
 <li>Prometheus has been upgraded to version 2.43.0.</li>
 </ul>
@@ -284,7 +319,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>The Network Operations Center routes now have a 30 second timeout.</li>
 </ul>
-<h3 id="3-2-load-balancer-rules"><code>3-2-load-balancer-rules</code></h3>
+<h3 id="3-2-load-balancer-rules-1"><code>3-2-load-balancer-rules</code></h3>
 <ul>
 <li>The Basic Station and Tabs Hubs target groups now have a deregistration delay of zero.</li>
 </ul>
@@ -300,7 +335,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Service deployment configuration <code>MinimumHealthyPercent</code> is now applied only to EC2 services.</li>
 </ul>
-<h3 id="5-4-ecs-services"><code>5-4-ecs-services</code></h3>
+<h3 id="5-4-ecs-services-1"><code>5-4-ecs-services</code></h3>
 <ul>
 <li>Grafana <code>gzip</code> encoding is now enabled.</li>
 <li>Service deployment configuration <code>MinimumHealthyPercent</code> is now applied only to EC2 services.</li>
@@ -329,7 +364,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Added <code>RestrictAdminManagedFieldUpdates</code> parameter.</li>
 </ul>
 <h2 id="3242">3.24.2</h2>
-<h3 id="1-2-bastion"><code>1-2-bastion</code></h3>
+<h3 id="1-2-bastion-1"><code>1-2-bastion</code></h3>
 <ul>
 <li>AWS Graviton instances can now be used as bastion hosts.</li>
 </ul>
@@ -351,20 +386,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Added <code>KeyVaultCacheSize</code>, <code>KeyVaultCacheTTL</code>, <code>KeyVaultCacheErrorTTL</code> parameters.</li>
 </ul>
 <h2 id="3240">3.24.0</h2>
-<h3 id="ecs-templates">ECS templates</h3>
+<h3 id="ecs-templates-1">ECS templates</h3>
 <ul>
 <li>Support for TLS mutual authentication terminated by The Things Stack has been removed. TLS authentication is now only terminated by the Network Load Balancer or Envoy Proxy.</li>
 <li>Support for LoRaWAN® Backend Interfaces interoperability with the Join Server has been removed.</li>
 <li>Crypto Server deployment has been removed.</li>
 </ul>
-<h3 id="upgrade-procedure">Upgrade procedure</h3>
+<h3 id="upgrade-procedure-1">Upgrade procedure</h3>
 <ul>
 <li>As this version upgrade removes certain resources, the standard upgrade procedure which follows the template numbering order cannot be followed directly.</li>
 <li>The <code>5-7a-certs-le</code> template needs to be upgraded first.</li>
 <li>The <code>5-3a-ecs-is-service</code> template needs to be upgraded next, and have <code>InteropEnabled</code> set to <code>disabled</code>. The value may be enabled again after every other template has been upgraded.</li>
 <li>The standard upgrade procedure can commence after these two templates have been upgraded.</li>
 </ul>
-<h3 id="3-2-load-balancer-rules-1"><code>3-2-load-balancer-rules</code></h3>
+<h3 id="3-2-load-balancer-rules-2"><code>3-2-load-balancer-rules</code></h3>
 <ul>
 <li>Changed <code>InteropEnabled</code> to a boolean since TLS mutual authentication is no longer terminated by The Things Stack.
 <ul>
@@ -401,7 +436,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Added <code>UseCertificateAuthorityARN</code> parameter.</li>
 </ul>
-<h3 id="5-4-ecs-services-1"><code>5-4-ecs-services</code></h3>
+<h3 id="5-4-ecs-services-2"><code>5-4-ecs-services</code></h3>
 <ul>
 <li>Removed <code>InteropEnabledJS</code> parameter.</li>
 <li>Added <code>UseCertificateAuthorityARN</code> parameter.</li>
@@ -416,7 +451,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ul>
 <h2 id="3232">3.23.2</h2>
 <h2 id="3231">3.23.1</h2>
-<h2 id="1-2-bastion-1"><code>1-2-bastion</code></h2>
+<h2 id="1-2-bastion-2"><code>1-2-bastion</code></h2>
 <ul>
 <li>The volumes used by the bastion hosts now use <code>gp3</code> volumes.</li>
 </ul>
@@ -424,7 +459,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>The volumes used by the TimescaleDB hosts now use <code>gp3</code> volumes.</li>
 </ul>
-<h3 id="3-2-load-balancer-rules-2"><code>3-2-load-balancer-rules</code></h3>
+<h3 id="3-2-load-balancer-rules-3"><code>3-2-load-balancer-rules</code></h3>
 <ul>
 <li>UDP target groups now automatically kill active flows to deregistered targets. This enables the replacement of the ECS EC2 machines without having the UDP traffic blackhole in the NLB.</li>
 </ul>
@@ -436,7 +471,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>The volumes used by the EC2 machines used by ECS now use <code>gp3</code> volumes. Note that this will not apply retroactively to existing instances.</li>
 </ul>
-<h3 id="5-5-ecs-monitoring-1"><code>5-5-ecs-monitoring</code></h3>
+<h3 id="5-5-ecs-monitoring-2"><code>5-5-ecs-monitoring</code></h3>
 <ul>
 <li>Prometheus has been upgraded to version 2.40.5.</li>
 <li>Thanos default image has been upgraded to version 0.29.0.</li>
@@ -453,7 +488,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ul>
 <h2 id="3230">3.23.0</h2>
 <p>For mTLS termination, check the upgrading guide at <a href="https://thethingsindustries.com/docs/the-things-stack/host/aws/ecs/mutual-tls/">https://thethingsindustries.com/docs/the-things-stack/host/aws/ecs/mutual-tls/</a>.</p>
-<h2 id="1-2-bastion-2"><code>1-2-bastion</code></h2>
+<h2 id="1-2-bastion-3"><code>1-2-bastion</code></h2>
 <ul>
 <li>The local Redis client has been upgraded to version <code>6.x</code> from <code>4.0</code>.</li>
 </ul>
@@ -465,7 +500,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Create S3 buckets to store CA certificates.</li>
 </ul>
-<h3 id="3-2-load-balancer-rules-3"><code>3-2-load-balancer-rules</code></h3>
+<h3 id="3-2-load-balancer-rules-4"><code>3-2-load-balancer-rules</code></h3>
 <ul>
 <li>Update rules to terminate TLS in Envoy (if <code>SupportProxyTLS</code> is enabled).</li>
 </ul>
@@ -480,7 +515,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Add <code>/</code> to the ignored logging HTTP request paths.</li>
 <li>The default values of <code>PubSubProviderMQTT</code> and <code>PubSubProviderNATS</code> are changed to <code>disabled</code>.</li>
 </ul>
-<h3 id="5-4-ecs-services-2"><code>5-4-ecs-services</code></h3>
+<h3 id="5-4-ecs-services-3"><code>5-4-ecs-services</code></h3>
 <ul>
 <li>Add options to use Gateway Tokens.</li>
 <li>Add Device Repository peer settings to Device Claiming Server.</li>
@@ -553,7 +588,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Added new <code>EntityLimits</code> parameters.</li>
 </ul>
-<h3 id="5-4-ecs-services-3"><code>5-4-ecs-services</code></h3>
+<h3 id="5-4-ecs-services-4"><code>5-4-ecs-services</code></h3>
 <ul>
 <li>Fixed the connection of the Device Claiming Server to the QR Code Generator.</li>
 </ul>
@@ -576,7 +611,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Added new parameters <code>EventsRedisPublishQueueSize</code>, <code>EventsRedisPublishMaxWorkers</code>, <code>PacketBrokerHomeNetworkWorkerCountLimit</code>, <code>PacketBrokerForwarderWorkerCountLimit</code></li>
 </ul>
-<h3 id="5-5-ecs-monitoring-2"><code>5-5-ecs-monitoring</code></h3>
+<h3 id="5-5-ecs-monitoring-3"><code>5-5-ecs-monitoring</code></h3>
 <ul>
 <li>Added alerts for TimescaleDB running out of storage</li>
 </ul>
@@ -613,12 +648,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Added new parameters <code>IncludeNetworkOperationsCenter</code>, <code>NOCTimescaleDBDeploymentName</code>, <code>ApplicationServerStorageTimescaleDBDeploymentName</code>, <code>ApplicationServerStorageReplicaEnabled</code></li>
 </ul>
-<h3 id="5-4-ecs-services-4"><code>5-4-ecs-services</code></h3>
+<h3 id="5-4-ecs-services-5"><code>5-4-ecs-services</code></h3>
 <ul>
 <li>Added new parameter <code>ApplicationServerStorageTimescaleDBDeploymentName</code>, <code>ApplicationServerStorageReplicaEnabled</code></li>
 <li>Added new parameters <code>IncludeNetworkOperationsCenter</code>, <code>NOCTimescaleDBDeploymentName</code>, <code>NetworkOperationsCenter*</code>, <code>NetworkOperationsCenterGrafana*</code></li>
 </ul>
-<h3 id="5-5-ecs-monitoring-3"><code>5-5-ecs-monitoring</code></h3>
+<h3 id="5-5-ecs-monitoring-4"><code>5-5-ecs-monitoring</code></h3>
 <ul>
 <li>Added new parameter <code>IncludeNetworkOperationsCenter</code></li>
 </ul>
@@ -653,7 +688,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Add new config items for the DCS service.</li>
 </ul>
-<h3 id="5-4-ecs-services-5"><code>5-4-ecs-services</code></h3>
+<h3 id="5-4-ecs-services-6"><code>5-4-ecs-services</code></h3>
 <ul>
 <li>Add policy and environment for the DCS service.</li>
 </ul>
@@ -663,7 +698,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Redis upgraded to version 6.2</li>
 </ul>
 <h2 id="3180">3.18.0</h2>
-<h3 id="1-2-bastion-3"><code>1-2-bastion</code></h3>
+<h3 id="1-2-bastion-4"><code>1-2-bastion</code></h3>
 <ul>
 <li>Connect to the RDS database using TLS</li>
 </ul>
@@ -685,7 +720,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Added the <code>WebhooksUnhealthyAttemptsThreshold</code> and <code>WebhooksUnhealthyRetryInterval</code> parameters.</li>
 <li>Added the <code>DatabaseMaxIdleConns</code> and <code>DatabaseMaxOpenConns</code> to control the database connection pool of the Identity Server.</li>
 </ul>
-<h3 id="4-2b-configuration-rate-limiting"><code>4-2b-configuration-rate-limiting</code></h3>
+<h3 id="4-2b-configuration-rate-limiting-1"><code>4-2b-configuration-rate-limiting</code></h3>
 <ul>
 <li>Fixed rate limiting keys of AS RPCs.</li>
 </ul>
@@ -709,7 +744,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Fixed an issue where The Things Stack wouldn&rsquo;t connect to Redis when using password</li>
 <li>Updated IAM role</li>
 </ul>
-<h3 id="5-4-ecs-services-6"><code>5-4-ecs-services</code></h3>
+<h3 id="5-4-ecs-services-7"><code>5-4-ecs-services</code></h3>
 <ul>
 <li>Fixed an issue where The Things Stack wouldn&rsquo;t connect to Redis when using password</li>
 <li>Updated IAM role</li>
@@ -727,7 +762,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Templates that define ECS services now got the <code>*RuntimePlatform</code> parameter. This parameter can be used to run ARM64 images using AWS Graviton2. Depending on particular use case, performance might be better or worse.</li>
 </ul>
-<h3 id="1-2-bastion-4"><code>1-2-bastion</code></h3>
+<h3 id="1-2-bastion-5"><code>1-2-bastion</code></h3>
 <ul>
 <li>Machine now supports connection from AWS Session Manager. Added parameter <code>SessionManagerLogGroup</code></li>
 </ul>
@@ -749,7 +784,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ul>
 <h2 id="3171">3.17.1</h2>
 <h2 id="3170">3.17.0</h2>
-<h3 id="3-2-load-balancer-rules-4"><code>3-2-load-balancer-rules</code></h3>
+<h3 id="3-2-load-balancer-rules-5"><code>3-2-load-balancer-rules</code></h3>
 <ul>
 <li>The <code>InteropEnabled</code> parameter has different values. Deployments that used value <code>false</code> should now choose <code>disabled</code>. Deployments that used value <code>true</code> should now choose <code>mutual-authentication</code>. <code>server-only-authentication</code> is a new option, please refer to documentation: <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/aws/ecs/interop/">https://www.thethingsindustries.com/docs/the-things-stack/host/aws/ecs/interop/</a></li>
 </ul>
@@ -802,7 +837,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Added recording rules for Application Server metadata store and caches</li>
 </ul>
 <h2 id="3161">3.16.1</h2>
-<h3 id="1-2-bastion-5"><code>1-2-bastion</code></h3>
+<h3 id="1-2-bastion-6"><code>1-2-bastion</code></h3>
 <ul>
 <li>Updated UserData to handle TLS connection to redis</li>
 </ul>
@@ -810,7 +845,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Added <code>RedisTLS</code> parameter</li>
 </ul>
-<h3 id="3-2-load-balancer-rules-5"><code>3-2-load-balancer-rules</code></h3>
+<h3 id="3-2-load-balancer-rules-6"><code>3-2-load-balancer-rules</code></h3>
 <ul>
 <li>Added new <code>EnableNonTLSListeners</code> parameter</li>
 </ul>
@@ -826,11 +861,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Added <code>GeneralRedisTLS</code>, <code>CacheRedisTLS</code>, <code>EventsRedisTLS</code> parameters</li>
 </ul>
-<h3 id="5-4-ecs-services-7"><code>5-4-ecs-services</code></h3>
+<h3 id="5-4-ecs-services-8"><code>5-4-ecs-services</code></h3>
 <ul>
 <li>Added <code>GeneralRedisTLS</code>, <code>CacheRedisTLS</code>, <code>EventsRedisTLS</code> parameters</li>
 </ul>
-<h3 id="5-5-ecs-monitoring-4"><code>5-5-ecs-monitoring</code></h3>
+<h3 id="5-5-ecs-monitoring-5"><code>5-5-ecs-monitoring</code></h3>
 <ul>
 <li>Added the <code>ProbeHTTP</code> parameter</li>
 </ul>
@@ -849,7 +884,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Added new parameter <code>PeerRequesterAccountId</code>. Use empty value if you&rsquo;re not deploying external CryptoServer</li>
 </ul>
-<h3 id="3-2-load-balancer-rules-6"><code>3-2-load-balancer-rules</code></h3>
+<h3 id="3-2-load-balancer-rules-7"><code>3-2-load-balancer-rules</code></h3>
 <ul>
 <li>Added new  <code>SSLPolicy</code> parameter</li>
 <li>Added new parameter <code>InteropEnabled</code></li>
@@ -868,7 +903,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Added the <code>InteropEnabled</code> parameter</li>
 </ul>
-<h3 id="5-4-ecs-services-8"><code>5-4-ecs-services</code></h3>
+<h3 id="5-4-ecs-services-9"><code>5-4-ecs-services</code></h3>
 <ul>
 <li>Added the <code>InteropEnabled</code> parameter</li>
 </ul>
@@ -905,7 +940,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ul>
 <h2 id="3151">3.15.1</h2>
 <h2 id="3150">3.15.0</h2>
-<h3 id="1-2-bastion-6"><code>1-2-bastion</code></h3>
+<h3 id="1-2-bastion-7"><code>1-2-bastion</code></h3>
 <ul>
 <li>Added <code>EBSKmsKeyId</code> parameter to choose EBS boot volume encryption key. From now on, EBS boot volumes are encrypted.</li>
 </ul>
@@ -939,7 +974,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>This template now imports TimescaleDB address in a different way.</li>
 </ul>
-<h3 id="5-4-ecs-services-9"><code>5-4-ecs-services</code></h3>
+<h3 id="5-4-ecs-services-10"><code>5-4-ecs-services</code></h3>
 <ul>
 <li>This template now imports TimescaleDB address in a different way.</li>
 </ul>
@@ -962,7 +997,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Upgraded to v2.29.2.</li>
 </ul>
 <h2 id="3141">3.14.1</h2>
-<h3 id="5-4-ecs-services-10"><code>5-4-ecs-services</code></h3>
+<h3 id="5-4-ecs-services-11"><code>5-4-ecs-services</code></h3>
 <ul>
 <li>Added <code>IncludeSemtechRJSConfiguration</code> parameter to include/exclude Semtech RJS configuration. This is a bugfix, as previous version failed to deploy when Semtech RJS secrets weren&rsquo;t available.</li>
 </ul>
@@ -990,7 +1025,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ol>
 </li>
 </ul>
-<h3 id="3-2-load-balancer-rules-7"><code>3-2-load-balancer-rules</code></h3>
+<h3 id="3-2-load-balancer-rules-8"><code>3-2-load-balancer-rules</code></h3>
 <ul>
 <li>Added alternative certificates support for all TLS listeners.</li>
 </ul>
@@ -1002,7 +1037,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Add <code>DevEUIBlockEnabled</code> and <code>DevEUIBlockApplicationLimit</code> to Console configuration.</li>
 <li>Add <code>ApplicationPackagesWorkerCount</code> and <code>ApplicationPackagesWorkerCount</code> to the Application Server configuration.</li>
 </ul>
-<h3 id="5-4-ecs-services-11"><code>5-4-ecs-services</code></h3>
+<h3 id="5-4-ecs-services-12"><code>5-4-ecs-services</code></h3>
 <ul>
 <li>Make execution and task policies conditional. This is compatible with existing deployments.</li>
 </ul>
@@ -1059,11 +1094,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Upgraded image to Prometheus v2.27.1.</li>
 <li>Add recording rule for v3.13.1 <code>ttn_lw_log_messages_total</code> metric. The recording rule for the old <code>ttn_lw_log_messages_rate</code> is also still present.</li>
 </ul>
-<h3 id="3-2-load-balancer-rules-8"><code>3-2-load-balancer-rules</code></h3>
+<h3 id="3-2-load-balancer-rules-9"><code>3-2-load-balancer-rules</code></h3>
 <ul>
 <li>Added client IP preservation to the Gateway Server MQTTv2, Gateway Server MQTTv3, Gateway Server BasicStation, GatewayServer TabsHubs and Application Server MQTT target groups. Deployments which set the Application Server MQTT connection rate limits to high values to avoid throttling should consider reverting the rate limit to the default value.</li>
 </ul>
-<h3 id="4-2b-configuration-rate-limiting-1"><code>4-2b-configuration-rate-limiting</code></h3>
+<h3 id="4-2b-configuration-rate-limiting-2"><code>4-2b-configuration-rate-limiting</code></h3>
 <ul>
 <li>Updated the default Gateway Server uplink rate to 100 uplinks per second (6000 per minute).</li>
 </ul>
@@ -1085,7 +1120,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Added <code>EventsStorageEnabled</code> parameter to enable storage of event history in Redis.</li>
 <li>Added <code>DevEUIBlockEnabled</code>, <code>DevEUIBlockApplicationLimit</code>, <code>DevEUIBlockPrefix</code> and <code>DevEUIBlockInitCounter</code> parameters</li>
 </ul>
-<h3 id="4-2b-configuration-rate-limiting-2"><code>4-2b-configuration-rate-limiting</code></h3>
+<h3 id="4-2b-configuration-rate-limiting-3"><code>4-2b-configuration-rate-limiting</code></h3>
 <ul>
 <li>Added new Rate Limiting Configuration definitions. Rate Limiting can be enabled/disabled independently for each service.</li>
 </ul>
@@ -1101,7 +1136,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul>
 <li>Support Rate Limiting. If Rate Limiting is enabled, the corresponding configuration should be enabled in <code>4-2b-configuration-rate-limiting</code>.</li>
 </ul>
-<h3 id="5-4-ecs-services-12"><code>5-4-ecs-services</code></h3>
+<h3 id="5-4-ecs-services-13"><code>5-4-ecs-services</code></h3>
 <ul>
 <li>Support Rate Limiting. If Rate Limiting is enabled for a service, the corresponding configuration for that service should be enabled in <code>4-2b-configuration-rate-limiting</code>.</li>
 </ul>
@@ -1139,7 +1174,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>MinimumHealthyPercent set to 50 (CloudFormation doesn&rsquo;t update this setting in ECS, might require manual update)</li>
 <li>This template has been removed. To conditionally deploy the <code>gcs</code> and <code>console</code> services, use <code>5-4-ecs-services</code>.</li>
 </ul>
-<h3 id="5-4-ecs-services-13"><code>5-4-ecs-services</code></h3>
+<h3 id="5-4-ecs-services-14"><code>5-4-ecs-services</code></h3>
 <ul>
 <li>MinimumHealthyPercent set to 50 (CloudFormation doesn&rsquo;t update this setting in ECS, might require manual update)</li>
 <li>Added Gateway Configuration Server Service.</li>
@@ -1168,7 +1203,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ul>
 <h2 id="3121">3.12.1</h2>
 <h2 id="3120httpsgithubcomthethingsindustrieslorawan-stack-awscompare01cd9efb60a758"><a href="https://github.com/TheThingsIndustries/lorawan-stack-aws/compare/01cd9ef...b60a758">3.12.0</a></h2>
-<h3 id="5-4-ecs-services-14"><code>5-4-ecs-services</code></h3>
+<h3 id="5-4-ecs-services-15"><code>5-4-ecs-services</code></h3>
 <ul>
 <li>Added <code>ApplicationServerDesiredCount</code> parameter (ApplicationServer is not multi-instance)</li>
 <li>Added Device Claiming Server task definition and service.
@@ -1177,7 +1212,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ul>
 </li>
 </ul>
-<h3 id="5-5-ecs-monitoring-5"><code>5-5-ecs-monitoring</code></h3>
+<h3 id="5-5-ecs-monitoring-6"><code>5-5-ecs-monitoring</code></h3>
 <ul>
 <li>Added Device Claiming Server to list of services to be scraped. This change is fully compatible with existing deployments.</li>
 </ul>
@@ -1226,7 +1261,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Added <code>UDPAddrChangeBlock</code>, <code>UDPDownlinkPathExpires</code> and <code>UDPPacketHandlers</code> parameters.</li>
 <li>Added environment name to Sentry configuration.</li>
 </ul>
-<h3 id="5-5-ecs-monitoring-6"><code>5-5-ecs-monitoring</code></h3>
+<h3 id="5-5-ecs-monitoring-7"><code>5-5-ecs-monitoring</code></h3>
 <ul>
 <li>Increased Prometheus retention.</li>
 <li>Disabled Thanos by default.</li>
@@ -1260,7 +1295,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </ul>
 </li>
 </ul>
-<h3 id="3-2-load-balancer-rules-9"><code>3-2-load-balancer-rules</code></h3>
+<h3 id="3-2-load-balancer-rules-10"><code>3-2-load-balancer-rules</code></h3>
 <ul>
 <li>Added support for overriding certificates for all listeners.</li>
 <li>Added alternative Certificate chain support for HTTPS and Basic Station listeners.
@@ -1326,7 +1361,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Added search path for Device Repository store.</li>
 <li>Relaxed Stripe pricing plans IDs validation</li>
 </ul>
-<h3 id="5-4-ecs-services-15"><code>5-4-ecs-services</code></h3>
+<h3 id="5-4-ecs-services-16"><code>5-4-ecs-services</code></h3>
 <ul>
 <li>Removed <code>MaximumPercent, MinimumHealthyPercent</code> from NetworkServer service</li>
 <li>Added NetworkServerDesiredCount</li>
@@ -1354,7 +1389,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="3107httpsgithubcomthethingsindustrieslorawan-stack-awscompare251f9c5e69f9ef"><a href="https://github.com/TheThingsIndustries/lorawan-stack-aws/compare/251f9c5...e69f9ef">3.10.7</a></h2>
 <p>no changes</p>
 <h2 id="3106httpsgithubcomthethingsindustrieslorawan-stack-awscompare86656ab251f9c5"><a href="https://github.com/TheThingsIndustries/lorawan-stack-aws/compare/86656ab...251f9c5">3.10.6</a></h2>
-<h3 id="1-2-bastion-7"><code>1-2-bastion</code></h3>
+<h3 id="1-2-bastion-8"><code>1-2-bastion</code></h3>
 <ul>
 <li>Added InstanceProfile to the EC2 machine, changed its UserData</li>
 </ul>
@@ -1374,7 +1409,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Changed PacketBrokerAddress parameter allowed values</li>
 <li>Changed ISConfiguration and PBAConfiguration contents</li>
 </ul>
-<h3 id="5-4-ecs-services-16"><code>5-4-ecs-services</code></h3>
+<h3 id="5-4-ecs-services-17"><code>5-4-ecs-services</code></h3>
 <ul>
 <li>Changed PacketBrokerAgent TaskDefinition: added a secret</li>
 <li>Changed tasks&rsquo; execution role: added access to packet borker&rsquo;s secret</li>
@@ -1426,6 +1461,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
       
       <li><a href='#unreleased'>Unreleased</a></li>
+    
+      
+      <li><a href='#3260'>3.26.0</a></li>
     
       
       <li><a href='#3252'>3.25.2</a></li>
@@ -1637,10 +1675,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 22 May 2023.
+  Last changed by Nejra Selimović on 15 Jun 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/92f5300a371d7d81f0bcd046ceeee98ad6501a47">
-      doc: Add v3.25.2 release docs (#1112)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5bfc7215d34b6b40cda722d86f4d3aeee5330e15">
+      doc: Add v3.26.0 release docs (#1127)
     </a>
 </p>
 

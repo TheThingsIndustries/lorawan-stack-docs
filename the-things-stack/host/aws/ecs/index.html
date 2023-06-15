@@ -44,7 +44,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.25.2</p>
+        <p class="navbar-item is-size-7">v3.26.0</p>
       </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
           </div>
       <span class="navbar-burger burger" data-target="topMenu">
@@ -519,7 +519,7 @@ ECS pulled wrong image version The image tags starting with 3.x contain the late
           <div class="content has-text-grey">
             
             Upgrading All meaningful changes to templates are documented in this file.
-Unreleased 3.25.2 Proxy Upgraded to Envoy 1.26.0. 2-5-db-timescale Updated the default node_exporter version to 1.5.0. Replica updates now always maintain at least one instance during the upgrade. Postgres custom settings are now re-created on every master instance provisioning. 5-4-ecs-cluster Updated the default node_exporter version to 1.5.0. 5-5-ecs-monitoring Prometheus has been upgraded to version 2.43.0. 3.25.1 2-4b-routing-s3 Added PluginsConfigBucket. Proxy The Network Operations Center routes now have a 30 second timeout.
+Unreleased 3.26.0 ECS templates The UDP Gateway Server service has been removed. Historically this service has been used in order to work around various limitations that AWS Network Load Balancer had with UDP traffic. The service is problematic as it runs as a daemon service on each available ECS host machine, and does not support rolling updates. As the support for UDP traffic has improved in the AWS Network Load Balancer, we have decided to remove this service and have UDP traffic be served by the replica Gateway Server service.
             
           </div>
         </div>

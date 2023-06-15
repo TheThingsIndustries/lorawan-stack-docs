@@ -44,7 +44,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.25.2</p>
+        <p class="navbar-item is-size-7">v3.26.0</p>
       </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
           </div>
       <span class="navbar-burger burger" data-target="topMenu">
@@ -215,49 +215,54 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="whats-new">
   <div class="whats-new-content">
     <div class="whats-new-header">
-      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.25.2/>What's new in V3.25.2</a></h2>
+      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.26.0/>What's new in V3.26.0</a></h2>
       <a href="https://www.thethingsindustries.com/docs/whats-new/"><p class="see-more">See all release notes →</p></a>
     </div>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.25.2/">
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.26.0/">
       <div class="whats-new-body">
         <div class="whats-new-items-shadow whats-new-items-fade">
           <div class="whats-new-items">
             <h3 id="added">Added</h3>
 <ul>
-<li>Experimental channel steering API, which allows steering end devices from the wide (250kHz or 500kHz) channels towards the narrow (125kHz) channels.
+<li><code>tti-lw-stack dcs-db purge</code> command to remove authorized entities from the DCS registry.</li>
+<li>Support for scanning a QR code that only contains the hexadecimal encoded DevEUI.</li>
+<li>Experimental flag <code>ns.adr.auto_narrow_steer</code>. When enabled, end devices which do not have an explicit channel steering mode will be steered towards the LoRa narrow channels.</li>
+<li>Add a NOC button in the application and end-device views in the Console.</li>
+<li>The storage integration now supports iterating pages of uplinks, instead of retrieving all of the uplinks at once.
 <ul>
-<li>This API is mainly relevant for end devices operating in the US915 and AU915 regions, as they may join via a wide channel, but users may want to steer them towards the narrow channels.</li>
-<li>The new settings can be found under <code>mac-settings.adr.mode.dynamic.channel-steering</code>.</li>
-<li><code>mac-settings.adr.mode.dynamic.channel-steering.mode.lora-narrow</code> steers the end devices towards the LoRa modulated narrow channels.</li>
-<li><code>mac-settings.adr.mode.dynamic.channel-steering.mode.disabled</code> does not steer the end devices - end devices are left to operate in their currently active channels, wide or narrow.</li>
-<li>The default behavior is to avoid steering the end devices, but this is subject to change in future versions. Consider explicitly specifying a certain behavior (<code>lora-narrow</code> or <code>disabled</code>) if you depend on not steering the end devices.</li>
+<li>The Application Server will now return a <em>continuation token</em> via the <code>X-Continuation-Token</code> header. The continuation token can be provided to a subsequent request in order to continue the iteration from the last retrieved uplink, using the <code>continuation_token</code> parameter.</li>
+<li>The continuation token replaces any other filtering options such as the <code>type</code>, <code>limit</code>, <code>after</code>, <code>before</code>, <code>f_port</code>, <code>order</code> or <code>field_mask</code>. These have to be provided only in the initial request - subsequent iterations no longer need to provide them, as they are saved as part of the token.</li>
+<li>This requires a storage integration database migration (<code>ttn-lw-stack storage-db migrate</code>).</li>
 </ul>
 </li>
 </ul>
 <h3 id="changed">Changed</h3>
 <ul>
-<li>Network Operations Center end device uplinks performance retention rate to 30 days.
-<ul>
-<li>This requires a database schema migration (<code>ttn-lw-stack noc-db migrate</code>) because of added table records.</li>
+<li>The Network Operations Center applications and end devices insights are no longer experimental.</li>
 </ul>
-</li>
-<li>Uplink and downlink message frequencies are now validated and zero values are dropped.
+<h3 id="removed">Removed</h3>
 <ul>
-<li>Such traffic would have always been dropped by the Network Server, but it is now dropped in the Gateway Server.</li>
-<li>Simulated uplink traffic now requires a frequency value as well.</li>
+<li>Device claiming that transfers devices between applications is now removed.
+<ul>
+<li>Related fields in the <code>ClaimEndDeviceRequest</code> message are reserved.</li>
+<li>RPCs <code>AuthorizeApplication</code> and <code>UnauthorizeApplication</code> of the Device Claiming Server will now return an <code>Unimplemented</code> error code.</li>
+<li><code>ttn-lw-cli end-devices claim</code>, <code>ttn-lw-cli applications claim</code>, <code>ttn-lw-cli applications claim authorize</code> and <code>ttn-lw-cli applications claim unauthorize</code> commands are no longer supported and will return an error.</li>
+<li><code>--with-claim-authentication-code</code> option for <code>ttn-lw-cli end-devices create</code> is no longer supported.</li>
+<li>If the DCS does not support claiming for the provided JoinEUI, <code>ttn-lw-cli end-devices create</code> will no longer fallback to create devices in the Cluster Join Server and instead error.</li>
+<li><code>tti-lw-stack dcs-db migrate</code> and <code>tti-lw-stack dcs-db clean</code> commands are removed.</li>
+<li>The deprecated Claim App (by default available via <code>/claim</code>) has been removed and now redirects to the Console.</li>
 </ul>
 </li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>Multiple ADR algorithm bugs:
+<li>Console not applying webhook field masks when creating a webhook from a template that has field masks set.</li>
+<li>LoRa Basics Station <code>PONG</code> messages will now contain the application payload of the associated <code>PING</code>, as required by the WebSockets specification.
 <ul>
-<li>An off-by-one error which caused the ADR algorithm to not take into consideration the signal qualities of the uplink which confirmed a parameter change. In effect, this fix improves the quality of the link budget estimation.</li>
-<li>A flip-flop condition which caused the algorithm to swap back and forth between a higher and a lower transmission power index every 20 uplinks. In effect, this fix will cause the algorithm to change the transmission power index less often.</li>
-<li>A condition mistake which caused the algorithm to avoid increasing the transmission power if it would not completely fix the missing link budget. In effect, this will cause the algorithm to increase the transmission power in situations in which the link budget deteriorates rapidly.</li>
+<li>This fix enables <code>PING</code>/<code>PONG</code> behavior for non reference implementations of the LNS protocol.</li>
 </ul>
 </li>
-<li>In fixed channel plans such as US915 and AU915, the the associated wide (500kHz) channel is now enabled by default.</li>
+<li>Fix crash of &ldquo;Edit webhook&rdquo; view due to invalid Authorization header encoding in the Console.</li>
 </ul>
 
           </div>
@@ -275,7 +280,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <a href="https://www.thethingsindustries.com/docs/whats-new/">
   <div class="whats-new-800">
     <div class="whats-new-header-800">
-      <p>See what's new in V3.25.2</p>
+      <p>See what's new in V3.26.0</p>
       <p>-></p>
     </div>
   </div>
