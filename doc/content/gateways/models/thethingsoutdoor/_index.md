@@ -50,7 +50,7 @@ Connect and power the gateway as above. The gateway will use DHCP to request an 
 
 {{< figure src="GUI.png" alt="TTOG GUI">}}
 
-{{< note >}} Older firmware versions used the password `admin`.
+{{< note >}} Log in with the username `admin` and the web password from the label on the back of the unit - under the barcode. Older firmware versions used the default password `admin` so use this if your label doesn't have a web password.
 {{</ note >}}
 
 Navigate to **Packet Forward** > **Module 1 Settings** on the left hand menu and enter the following settings to connect the gateway to {{% tts %}}:
@@ -67,12 +67,12 @@ Set the network settings via **Network** > **WAN**. You can choose to connect vi
 
 If you connect via 3G/LTE, it will take a few minutes before the gateway will start routing messages.
 
-To open the ODU GUI again, you can access the web interface via the fallback IP address: [`192.168.11.10`](http://192.168.11.10).
+Once the gateway is in LTE backhaul mode it doesn't request an IP from the Ethernet interface again. To connect to the gateway and open the ODU GUI again, you can access the web interface via the fallback IP address: [`168.168.168.253`](http://168.168.168.253).
 
 You will need to set your PC's IP address in the same range, e.g.:
-- IP address: `192.168.11.100`
+- IP address: `168.168.168.100`
 - Subnet Mask: `255.255.255.0`
-- Router: `192.168.11.10`
+- Router: `168.168.168.253`
  
 ## Registration
 
@@ -91,7 +91,7 @@ If all steps have been followed correctly, once you register your gateway it wil
 When you cannot find a way to change the LoRaWAN® settings, you might need to update the system firmware. You can do so by following steps below:
 
 * Navigate to **System** > **System Firmware** on the left hand menu
-* Download [this file](https://connectedthings.store/files/WAPS-232N_LW_OPDK_GUI_1.01.09_3416004962.tar.gz), making sure to keep the file name exactly the same (do not unzip this file)
+* Download [this file](https://connectedthings.store/files/WAPS-232N_LW_OPDK_GUI_1.01.27_521895521.tar.gz), making sure to keep the file name exactly the same (do not unzip this file)
 * Upload the file and click **Upgrade**
 {{< figure src="upgrade_1.png" alt="Upgrade Page">}}
 * The gateway will automatically reboot with the upgraded firmware
