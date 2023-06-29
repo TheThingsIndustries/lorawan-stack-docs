@@ -1,37 +1,55 @@
-<footer class="footer">
-  <div class="container">
-    <div class="columns">
-      <nav class="column is-one-quarter">
-        <h3 class="title is-6">The Things Stack</h3>
-        {{- $currentPage := . -}}
-        {{- range .Site.Menus.main }}
-        <p><a class="{{ if $currentPage.IsMenuCurrent "main" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Name }}</a></p>
-        {{- end }}
-      </nav>
-      {{- if .Site.Menus.contributing }}
-      <nav class="column is-one-quarter">
-        <h3 class="title is-6">Contributing</h3>
-        {{- $currentPage := . -}}
-        {{- range .Site.Menus.contributing }}
-        <p><a class="{{ if $currentPage.IsMenuCurrent "contributing" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Name }}</a></p>
-        {{- end }}
-      </nav>
-      {{ end -}}
-      {{- if .Site.Menus.about_us }}
-      <nav class="column is-one-quarter">
-        <h3 class="title is-6">About Us</h3>
-        {{- $currentPage := . -}}
-        {{- range .Site.Menus.about_us }}
-        <p><a class="{{ if $currentPage.IsMenuCurrent "about_us" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Name }}</a></p>
-        {{- end }}
-      </nav>
-      {{ end -}}
-      <div class="column is-one-quarter">
-        <h3 class="title is-6">About this page</h3>
-        {{ partial "file-info.html" . }}
-      </div>
-    </div>
-  </div>
+<footer class="ttui-container">
+  <ttui-footer class="p-cs-m">
+
+    <ttui-footer-nav slot="menu" title="Documentation">
+      <ttui-footer-nav-item>
+        <a href="https://www.google.com">Getting Started</a>
+        <a href="https://www.google.com">Devices</a>
+        <a href="https://www.google.com">Gateways</a>
+        <a href="https://www.google.com">The Things Stack</a>
+        <a href="https://www.google.com">Integrations</a>
+        <a href="https://www.google.com">Reference</a>
+      </ttui-footer-nav-item>
+    </ttui-footer-nav>
+
+    <ttui-footer-nav slot="menu" title="Contributing">
+      <ttui-footer-nav-item>
+        <a href="https://www.google.com">Github</a>
+        <a href="https://www.google.com">Forum</a>
+      </ttui-footer-nav-item>
+    </ttui-footer-nav>
+
+    <ttui-footer-nav slot="menu" title="What's new">
+      <ttui-footer-nav-item>
+        <a href="https://www.google.com">v.XXXX</a>
+      </ttui-footer-nav-item>
+    </ttui-footer-nav>
+
+    <ttui-footer-nav slot="menu" title="About us">
+      <ttui-footer-nav-item>
+        <a href="https://www.google.com">The Things Network</a>
+        <a href="https://www.google.com">The Things Industries</a>
+      </ttui-footer-nav-item>
+    </ttui-footer-nav>
+
+    {{/*  <ttui-footer-nav slot="menu" title="Example mobile only" mobile-only>
+      <ttui-footer-nav-item>
+        <a href="https://www.google.com">Menu item</a>
+      </ttui-footer-nav-item>
+      <ttui-footer-nav-item>
+        <a href="https://www.google.com">Menu item</a>
+      </ttui-footer-nav-item>
+    </ttui-footer-nav>  */}}
+
+    <ttui-footer-social slot="social">
+      <ttui-footer-social-icon platform="youtube" url="https://www.google.com" align-left></ttui-footer-social-icon>
+      <ttui-footer-social-icon platform="github" url="https://www.google.com" align-left></ttui-footer-social-icon>
+      <ttui-footer-social-icon platform="twitter" url="https://www.google.com" align-left></ttui-footer-social-icon>
+      <ttui-footer-social-icon platform="linkedin" url="https://www.google.com" align-left></ttui-footer-social-icon>
+      <ttui-footer-social-icon platform="facebook" url="https://www.google.com" align-left></ttui-footer-social-icon>
+      <ttui-footer-social-icon platform="instagram" url="https://www.google.com" align-left></ttui-footer-social-icon>
+    </ttui-footer-social>
+  </ttui-footer>
 </footer>
 
 {{- $script := resources.Get "js/vendor/basicLightbox.min.js" }}

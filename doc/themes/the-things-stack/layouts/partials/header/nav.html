@@ -1,60 +1,54 @@
-<nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-  <div class="container is-fluid">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="{{ relURL "" }}">
-        <img class="logo" src="{{ "img/TTS-logo.svg" | relURL }}">
-      </a>
-      {{- if .Site.Params.search.enabled -}}
-          <div class="navbar-item navbar-search-menu" id="search-input-menu">
-          </div>
-        {{- end -}}
-      {{- $currentPage := . -}}
-      {{- range .Site.Menus.brand }}
-      <a class="navbar-item{{ if $currentPage.IsMenuCurrent "brand" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a>
-      {{- end }}
-      <span class="navbar-burger burger" data-target="topMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </span>
-    </div>
-    <div id="topMenu" class="navbar-menu">
-      <div class="navbar-start">
-        {{- $currentPage := . -}}
-        {{- range .Site.Menus.main }}
-        <a class="navbar-item{{ if $currentPage.IsMenuCurrent "main" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a>
-        {{- end }}
-
-      </div>
-      <div class="navbar-end">
-        {{- if .Site.Menus.right }}
-        {{- range .Site.Menus.right }}
-        <a class="navbar-item{{ if $currentPage.IsMenuCurrent "right" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a>
-        {{- end }}
-        {{- end }}
-        {{- if .Site.Menus.buttons }}
-          {{- if not .Params.hidebuttons -}}
-          <div class="navbar-item">
-            {{- range .Site.Menus.buttons }}
-            <a class="button is-primary{{ if $currentPage.IsMenuCurrent "buttons" . }} is-active{{ end }}" href="{{ .URL }}">{{ .Pre }}{{ .Name }}</a>
-            {{- end }}
-          </div>
-          {{- end -}}
-        {{- end }}
-      </div>
+<ttui-header>
+  <div slot="middle">
+    <ttui-nav>
+      <nav-dropdown name="Documentation">
+        <nav-dropdown-item>
+          <a slot="nav_dropdown__link" href="https://www.google.com">Getting started</a>
+        </nav-dropdown-item>
+        <nav-dropdown-item>
+          <a slot="nav_dropdown__link" href="https://www.google.com">End Devices</a>
+        </nav-dropdown-item>
+        <nav-dropdown-item>
+          <a slot="nav_dropdown__link" href="https://www.google.com">Gateways</a>
+        </nav-dropdown-item>
+        <nav-dropdown-item>
+          <a slot="nav_dropdown__link" href="https://www.google.com">Integrations</a>
+        </nav-dropdown-item>
+        <nav-dropdown-item>
+          <a slot="nav_dropdown__link" href="https://www.google.com">The Things Stack</a>
+        </nav-dropdown-item>
+        <nav-dropdown-item>
+          <a slot="nav_dropdown__link" href="https://www.google.com">Reference</a>
+        </nav-dropdown-item>
+      </nav-dropdown>
+      <nav-dropdown name="Try it out">
+        <nav-dropdown-item>
+          <a slot="nav_dropdown__link" href="https://www.google.com">Get to know LoRaWAN®</a>
+        </nav-dropdown-item>
+        <nav-dropdown-item>
+          <a slot="nav_dropdown__link" href="https://www.google.com">Set up your first LoRaWAN® network</a>
+        </nav-dropdown-item>
+        <nav-dropdown-item>
+          <a slot="nav_dropdown__link" href="https://www.google.com">Connect your first gateway</a>
+        </nav-dropdown-item>
+        <nav-dropdown-item>
+          <a slot="nav_dropdown__link" href="https://www.google.com">Add your first device</a>
+        </nav-dropdown-item>
+        <nav-dropdown-item>
+          <a slot="nav_dropdown__link" href="https://www.google.com">Get certified</a>
+        </nav-dropdown-item>
+      </nav-dropdown>
+      <nav-item>
+        <a slot="nav_item__link" href="lates whats new page">What's new</a>
+      </nav-item>
+      {{/*  <nav-item mobile-only>
+        <a slot="nav_item__link" href="https://www.google.com">Menu Item (mobile only)</a>
+      </nav-item>  */}}
+    </ttui-nav>
+  </div>
+  <div slot="right">
+    <div class="d-flex j-end">
+      <button class="ttui-btn ttui-btn--primary">Get started</button>
     </div>
   </div>
-</nav>
-
-{{- if .Site.Params.search.enabled -}}
-  <script src="https://cdn.jsdelivr.net/npm/@docsearch/js@3"></script>
-  <script type="text/javascript">
-    docsearch({
-      appId: {{ .Site.Params.search.appid }},
-      apiKey: {{ .Site.Params.search.apikey }},
-      indexName: {{ .Site.Params.search.index }},
-      container: '#search-input-menu',
-      debug: false, // Set debug to true if you want to inspect the dropdown.
-    });
-  </script>
-{{- end -}}
+</ttui-header>
