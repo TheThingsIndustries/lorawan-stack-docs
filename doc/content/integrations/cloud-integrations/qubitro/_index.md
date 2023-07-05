@@ -5,7 +5,9 @@ weight:
 aliases: ["/integrations/cloud-integrations/qubitro/qubitro-setup", "/integrations/cloud-integrations/qubitro/tts-setup", "/integrations/cloud-integrations/qubitro/monitor-data"]
 ---
 
-[Qubitro](https://www.qubitro.com/) is a modern, brand and model agnostic IoT platform for designing and developing IoT projects. Connecting devices can be performed via multiple protocols, while security is based on using TLS/DTLS and a built-in token authentication mechanism. Thanks to its user-friendly portal and programmable APIs, you do not have to worry about the infrustructure management and scalability.
+[Qubitro](https://www.qubitro.com/) is a device data platform (DDP) built for a hyper-connected world and used by companies of all sizes — from visionary startups to large enterprises across 40+ countries.
+
+Qubitro has no-code source integration support for {{% tts %}}.
 
 <!--more-->
 
@@ -13,65 +15,68 @@ aliases: ["/integrations/cloud-integrations/qubitro/qubitro-setup", "/integratio
 
 1. A [user account on Qubitro](https://portal.qubitro.com/signup).
 
-## Setup Qubitro
+## Creating the integration
 
-Log in to your Qubitro user account and navigate to **Projects** on the left hand menu. 
+### Fetch credentials from Qubitro
 
-Create a new project by choosing **New Project**, then providing a **Project Name** and a **Project Description**.
+To get the required credentials, **choose a project** from the list, then, click on the `New source` button and click on **{{% tts %}}** in the list.
 
-{{< figure src="create-new-project.png" alt="Creating a new project" >}}
+Keep this page open and navigate to **{{% tts %}} Console** to configure the webhook integration.
 
-When you have created your project, switch to the **Settings** tab and note down the **Project ID** since you will need it in the later steps. 
+{{< figure src="qubitro-copy-credentials.png" alt="Integration credentials" >}}
 
-{{< figure src="project-settings.png" alt="Project settings" >}}
+### Setup {{% tts %}}
 
-In the upper right corner, click on your avatar and then select **Account**. You will see a detailed info related to your account. 
+Choose the application on {{% tts %}} Console then click on **Webhooks** from the left navigation menu. Next, click the **Add webhook** button located at the top right of the page, and choose **Qubitro** from the list.
 
-In your account settings, find the **Webhook Signing Key** under the **API Keys** tab. You will need this key also to complete the Webhook integration on {{% tts %}}.
+Copy and paste the values of credentials from the first step on Qubitro Portal. You can also copy values individually from the **Projects Settings** and **Credentials** tab.
 
-{{< figure src="webhook-signing-key.png" alt="Webhook signing key" >}}
+Click on the **Create Qubitro webhook** button and go back to the Qubitro Portal.
 
-## Configure {{% tts %}}
+An example configuration is shown on the image below.
 
-In order for Qubitro to be able to decode the data coming from {{% tts %}}, you need to create an uplink [payload formatter]({{< ref "/integrations/payload-formatters" >}}) on {{% tts %}}. The example uplink payload formatter is shown below.
+{{< figure src="qubitro-configuration.png" alt="Webhook configuration" >}}
 
-```js
-function decodeUplink(input) {
-  return {
-    data: {
-      temperature: input.bytes[0],
-      humidity: input.bytes[1]
-    },
-    warnings: [],
-    errors: []
-  };
-}
-```
+### Verify integration
 
-Next, you can create a Webhook integration by instantiating the **Qubitro** [Webhook template]({{< ref "/integrations/webhooks/webhook-templates" >}}).
+Click on the **Go to project** button and then the **Refresh** button to verify that devices are listed successfully.
 
-Copy the **Project ID** and the **Webhook Signing Key** values from Qubitro. Paste them to the respectively named fields of the Qubitro template on {{% tts %}}.
+> **Note:** Once the integration is configured, all devices connected to the same project on {{% tts %}} will be synchronized with Qubitro automatically.
 
-{{< figure src="creating-a-webhook.png" alt="Qubitro webhook" >}}
+{{< figure src="qubitro-device-list.png" alt="Device list" >}}
 
-To see or edit the values of all parameters of the Qubitro integration, click on the integration after you created it with the Webhook template.
+### Configure the decoder and verify the data
 
-## Monitor Your Data
+If you want to process incoming data, you need to configure decoder functions. You can create [custom decoder function](https://docs.qubitro.com/platform/functions/decoder/custom) or choose from available [device templates](https://docs.qubitro.com/platform/functions/decoder/template) on Qubitro Portal.
 
-Go back to Qubitro and navigate to your project. You will see that a device has been automatically added to your project. 
+> **Note:** If the decoder is enabled on {{% tts %}}, Qubitro will automatically store incoming JSON data.
 
-Click on the device and switch to the **Data** tab to see the incoming decoded data from {{% tts %}}.
+You can create a decoder function by navigating to the **Functions** tab located on the device page.
 
-{{< figure src="decoded-data.png" alt="The incoming decoded data" >}}
+{{< figure src="qubitro-decoder.png" alt="Decoder list" >}}
 
-Switch to the **Analytics** tab and click the **Create chart** button to visualize this data.
+Then, navigate to the device and click on the **Data** tab to verify the incoming data.
 
-Enter a **Chart Name**, choose the parameters you wish to visualize on this chart, select the type of chart for each parameter and the color to differentiate them. Finish with **Create**.
+{{< figure src="qubitro-data-table.png" alt="Data table" >}}
 
-{{< figure src="create-a-chart.png" alt="Creating a chart" >}}
+### Customize device information (optional) 
 
-Now, you can see the real-time chart showing your data coming from {{% tts %}}!
+You can customize device information, such as avatar, name, brand, and model, by navigating to the device settings.
 
-{{< figure src="real-time-graph.png" alt="Real-time graph showing your data" >}}
+{{< figure src="qubitro-device-settings.png" alt="Device settings" >}}
 
-For more cool features, see the [official Qubitro documentation](https://docs.qubitro.com/)!
+An example device overview is shown below.
+
+{{< figure src="qubitro-device-overview.png" alt="Device overview" >}}
+
+## Work with Device Data
+
+Click on the **Dashboads** tab to create dashboards.
+
+{{< figure src="qubitro-create-widget.png" alt="Create widget" >}}
+
+You can also discover other features such as **Rule Functions** on Qubitro Portal.
+
+{{< figure src="qubitro-rule-list.png" alt="Rule list" >}}
+
+For more cool features, see the [official Qubitro documentation](https://docs.qubitro.com/).
