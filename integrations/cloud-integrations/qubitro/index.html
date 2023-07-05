@@ -332,67 +332,76 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </h1>
         
         <div class="content">
-          <p><a href="https://www.qubitro.com/">Qubitro</a> is a modern, brand and model agnostic IoT platform for designing and developing IoT projects. Connecting devices can be performed via multiple protocols, while security is based on using TLS/DTLS and a built-in token authentication mechanism. Thanks to its user-friendly portal and programmable APIs, you do not have to worry about the infrustructure management and scalability.</p>
+          <p><a href="https://www.qubitro.com/">Qubitro</a> is a device data platform (DDP) built for a hyper-connected world and used by companies of all sizes — from visionary startups to large enterprises across 40+ countries.</p>
+<p>Qubitro has no-code source integration support for The Things Stack.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
 <li>A <a href="https://portal.qubitro.com/signup">user account on Qubitro</a>.</li>
 </ol>
-<h2 id="setup-qubitro">Setup Qubitro</h2>
-<p>Log in to your Qubitro user account and navigate to <strong>Projects</strong> on the left hand menu.</p>
-<p>Create a new project by choosing <strong>New Project</strong>, then providing a <strong>Project Name</strong> and a <strong>Project Description</strong>.</p>
-<figure><img src="create-new-project.png"
-         alt="Creating a new project"/>
+<h2 id="creating-the-integration">Creating the integration</h2>
+<h3 id="fetch-credentials-from-qubitro">Fetch credentials from Qubitro</h3>
+<p>To get the required credentials, <strong>choose a project</strong> from the list, then, click on the <code>New source</code> button and click on <strong>The Things Stack</strong> in the list.</p>
+<p>Keep this page open and navigate to <strong>The Things Stack Console</strong> to configure the webhook integration.</p>
+<figure><img src="qubitro-copy-credentials.png"
+         alt="Integration credentials"/>
 </figure>
 
-<p>When you have created your project, switch to the <strong>Settings</strong> tab and note down the <strong>Project ID</strong> since you will need it in the later steps.</p>
-<figure><img src="project-settings.png"
-         alt="Project settings"/>
+<h3 id="setup-the-things-stack">Setup The Things Stack</h3>
+<p>Choose the application on The Things Stack Console then click on <strong>Webhooks</strong> from the left navigation menu. Next, click the <strong>Add webhook</strong> button located at the top right of the page, and choose <strong>Qubitro</strong> from the list.</p>
+<p>Copy and paste the values of credentials from the first step on Qubitro Portal. You can also copy values individually from the <strong>Projects Settings</strong> and <strong>Credentials</strong> tab.</p>
+<p>Click on the <strong>Create Qubitro webhook</strong> button and go back to the Qubitro Portal.</p>
+<p>An example configuration is shown on the image below.</p>
+<figure><img src="qubitro-configuration.png"
+         alt="Webhook configuration"/>
 </figure>
 
-<p>In the upper right corner, click on your avatar and then select <strong>Account</strong>. You will see a detailed info related to your account.</p>
-<p>In your account settings, find the <strong>Webhook Signing Key</strong> under the <strong>API Keys</strong> tab. You will need this key also to complete the Webhook integration on The Things Stack.</p>
-<figure><img src="webhook-signing-key.png"
-         alt="Webhook signing key"/>
+<h3 id="verify-integration">Verify integration</h3>
+<p>Click on the <strong>Go to project</strong> button and then the <strong>Refresh</strong> button to verify that devices are listed successfully.</p>
+<blockquote>
+<p><strong>Note:</strong> Once the integration is configured, all devices connected to the same project on The Things Stack will be synchronized with Qubitro automatically.</p>
+</blockquote>
+<figure><img src="qubitro-device-list.png"
+         alt="Device list"/>
 </figure>
 
-<h2 id="configure-the-things-stack">Configure The Things Stack</h2>
-<p>In order for Qubitro to be able to decode the data coming from The Things Stack, you need to create an uplink <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">payload formatter</a> on The Things Stack. The example uplink payload formatter is shown below.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">decodeUplink</span><span class="p">(</span><span class="nx">input</span><span class="p">)</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">  <span class="k">return</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">data</span><span class="o">:</span> <span class="p">{</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">temperature</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-</span></span><span class="line"><span class="cl">      <span class="nx">humidity</span><span class="o">:</span> <span class="nx">input</span><span class="p">.</span><span class="nx">bytes</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-</span></span><span class="line"><span class="cl">    <span class="p">},</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">warnings</span><span class="o">:</span> <span class="p">[],</span>
-</span></span><span class="line"><span class="cl">    <span class="nx">errors</span><span class="o">:</span> <span class="p">[]</span>
-</span></span><span class="line"><span class="cl">  <span class="p">};</span>
-</span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>Next, you can create a Webhook integration by instantiating the <strong>Qubitro</strong> <a href="https://www.thethingsindustries.com/docs/integrations/webhooks/webhook-templates/">Webhook template</a>.</p>
-<p>Copy the <strong>Project ID</strong> and the <strong>Webhook Signing Key</strong> values from Qubitro. Paste them to the respectively named fields of the Qubitro template on The Things Stack.</p>
-<figure><img src="creating-a-webhook.png"
-         alt="Qubitro webhook"/>
+<h3 id="configure-the-decoder-and-verify-the-data">Configure the decoder and verify the data</h3>
+<p>If you want to process incoming data, you need to configure decoder functions. You can create <a href="https://docs.qubitro.com/platform/functions/decoder/custom">custom decoder function</a> or choose from available <a href="https://docs.qubitro.com/platform/functions/decoder/template">device templates</a> on Qubitro Portal.</p>
+<blockquote>
+<p><strong>Note:</strong> If the decoder is enabled on The Things Stack, Qubitro will automatically store incoming JSON data.</p>
+</blockquote>
+<p>You can create a decoder function by navigating to the <strong>Functions</strong> tab located on the device page.</p>
+<figure><img src="qubitro-decoder.png"
+         alt="Decoder list"/>
 </figure>
 
-<p>To see or edit the values of all parameters of the Qubitro integration, click on the integration after you created it with the Webhook template.</p>
-<h2 id="monitor-your-data">Monitor Your Data</h2>
-<p>Go back to Qubitro and navigate to your project. You will see that a device has been automatically added to your project.</p>
-<p>Click on the device and switch to the <strong>Data</strong> tab to see the incoming decoded data from The Things Stack.</p>
-<figure><img src="decoded-data.png"
-         alt="The incoming decoded data"/>
+<p>Then, navigate to the device and click on the <strong>Data</strong> tab to verify the incoming data.</p>
+<figure><img src="qubitro-data-table.png"
+         alt="Data table"/>
 </figure>
 
-<p>Switch to the <strong>Analytics</strong> tab and click the <strong>Create chart</strong> button to visualize this data.</p>
-<p>Enter a <strong>Chart Name</strong>, choose the parameters you wish to visualize on this chart, select the type of chart for each parameter and the color to differentiate them. Finish with <strong>Create</strong>.</p>
-<figure><img src="create-a-chart.png"
-         alt="Creating a chart"/>
+<h3 id="customize-device-information-optional">Customize device information (optional)</h3>
+<p>You can customize device information, such as avatar, name, brand, and model, by navigating to the device settings.</p>
+<figure><img src="qubitro-device-settings.png"
+         alt="Device settings"/>
 </figure>
 
-<p>Now, you can see the real-time chart showing your data coming from The Things Stack!</p>
-<figure><img src="real-time-graph.png"
-         alt="Real-time graph showing your data"/>
+<p>An example device overview is shown below.</p>
+<figure><img src="qubitro-device-overview.png"
+         alt="Device overview"/>
 </figure>
 
-<p>For more cool features, see the <a href="https://docs.qubitro.com/">official Qubitro documentation</a>!</p>
+<h2 id="work-with-device-data">Work with Device Data</h2>
+<p>Click on the <strong>Dashboads</strong> tab to create dashboards.</p>
+<figure><img src="qubitro-create-widget.png"
+         alt="Create widget"/>
+</figure>
+
+<p>You can also discover other features such as <strong>Rule Functions</strong> on Qubitro Portal.</p>
+<figure><img src="qubitro-rule-list.png"
+         alt="Rule list"/>
+</figure>
+
+<p>For more cool features, see the <a href="https://docs.qubitro.com/">official Qubitro documentation</a>.</p>
         </div>
         
           <div class="is-clearfix">
@@ -421,13 +430,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <li><a href='#prerequisites'>Prerequisites</a></li>
     
       
-      <li><a href='#setup-qubitro'>Setup Qubitro</a></li>
+      <li><a href='#creating-the-integration'>Creating the integration</a></li>
     
       
-      <li><a href='#configure-the-things-stack'>Configure The Things Stack</a></li>
-    
-      
-      <li><a href='#monitor-your-data'>Monitor Your Data</a></li>
+      <li><a href='#work-with-device-data'>Work with Device Data</a></li>
     
   </ul>
 
@@ -468,10 +474,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 05 Jul 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/1305764a158ed95b3b7cb7584f3062c676fcca88">
+      doc: Update Qubitro docs (#1138)
     </a>
 </p>
 
