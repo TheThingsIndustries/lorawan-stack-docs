@@ -9,6 +9,36 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.26.1
+
+### ECS Templates
+
+- This release adds support for large (8 and 16 vCPU) task sizes. These large tasks are [supported](https://aws.amazon.com/about-aws/whats-new/2022/09/aws-fargate-increases-compute-memory-resource-configurations-4x/) by AWS Fargate. Please note that due to limitations to the EC2 launch type, the 16 vCPU tasks [may not be used](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html) with the EC2 launch type.
+
+### `5-3a-ecs-is-service`
+
+- Add support for 8 and 16 vCPUs tasks.
+
+### `5-3b-ecs-external-is-proxy`
+
+- Add support for 8 and 16 vCPUs tasks.
+
+### `5-3c-tbs-service`
+
+- Add support for 8 and 16 vCPUs tasks.
+
+### `5-4-ecs-services`
+
+- Add support for 8 and 16 vCPUs tasks.
+
+### `5-5-ecs-monitoring`
+
+- Add support for 8 and 16 vCPUs tasks.
+
+### `5-6-ecs-proxy`
+
+- Add support for 8 and 16 vCPUs tasks.
+
 ## 3.26.0
 
 ### ECS templates
