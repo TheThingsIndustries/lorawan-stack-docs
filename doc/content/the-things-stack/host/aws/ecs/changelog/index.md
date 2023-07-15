@@ -9,6 +9,25 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.26.2
+
+### `5-2-ecs-ops`
+
+- Add `GOGCValue` parameter which controls the Go garbage collector target. Sets the `GOGC` environment variable for stack components. Defaults to 100, which is also the default value in the absence of the environment variable.
+
+### `5-3a-ecs-is-service`
+
+- Add `GOGCValue` parameter which controls the Go garbage collector target. Sets the `GOGC` environment variable for stack components. Defaults to 100, which is also the default value in the absence of the environment variable.
+
+### `5-3c-tbs-service`
+
+- Add `GOGCValue` parameter which controls the Go garbage collector target. Sets the `GOGC` environment variable for stack components. Defaults to 100, which is also the default value in the absence of the environment variable.
+
+### `5-4-ecs-services`
+
+- Grafana alerting is now disabled by default, as it is not usable in the current setup.
+- Add `GOGCValue` parameter which controls the Go garbage collector target. Sets the `GOGC` environment variable for stack components. Defaults to 100, which is also the default value in the absence of the environment variable.
+
 ## 3.26.1
 
 ### ECS Templates
