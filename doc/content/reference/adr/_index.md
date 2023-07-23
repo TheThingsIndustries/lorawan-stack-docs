@@ -19,7 +19,15 @@ The ADR mechanism controls the following transmission parameters of an end devic
 
 See [The Things Network LoRaWAN documentation](https://www.thethingsnetwork.org/docs/lorawan/adaptive-data-rate/) for a general description of ADR. See the [Spreading Factors](https://www.thethingsnetwork.org/docs/lorawan/spreading-factors/) section to learn how spreading factor influences data rate, range and battery life.
 
-## {{% tts %}} ADR Algorithm
+{{% tts %}} supports two ADR modes explained below - static and dynamic.
+
+## Dynamic Mode
+
+Dynamic mode represents a default {{% tts %}} ADR mechanism. In this mode, {{% tts %}} calculates ADR parameters (data rate, Tx power, number of transmissions per uplink frame) values, but a user can configure the margin and min/max values for the mentioned parameters.
+
+Before configuring this mode, it's useful to know how it actually works, so the default {{% tts %}} ADR algorithm is explained below.
+
+### {{% tts %}} ADR Algorithm
 
 This section describes {{% tts %}} ADR implementation in plain english, with links to the relevant lines of source code in our open source [LoRaWAN Stack Repository](https://github.com/TheThingsNetwork/lorawan-stack).
 
@@ -35,32 +43,6 @@ The implementation is based on Semtech's recommended algorithm described in [thi
 4. [Increase the data rate as long as there's enough margin](https://github.com/TheThingsNetwork/lorawan-stack/blob/5a816e8171f993db9659566286d45725698f032e/pkg/networkserver/mac/adr.go#L251-L262)
 5. If there's still margin after reaching the maximum data rate, [decrease the transmit power](https://github.com/TheThingsNetwork/lorawan-stack/blob/5a816e8171f993db9659566286d45725698f032e/pkg/networkserver/mac/adr.go#L273-L281)
 6. Depending on packet loss, [increase the number of retransmissions](https://github.com/TheThingsNetwork/lorawan-stack/blob/5a816e8171f993db9659566286d45725698f032e/pkg/networkserver/mac/adr.go#L288-L296)
-
-## Custom ADR Algorithm
-
-Besides {{% tts %}} ADR mechanism described [above]({{< ref "/reference/adr#the-things-stack-adr-algorithm" >}}), {{% tts %}} also supports using a custom ADR, meaning ADR parameters (data rate, Tx power, number of transmissions per uplink frame) can be controlled manually.
-
-{{< note >}} We recommend to test the process described below on test devices before implementing it in production. {{</ note >}}
-
-Before setting ADR parameters to desired values, you first need to turn off the default, {{% tts %}} ADR mechanism. To turn of {{% tts %}} ADR using the [CLI]({{< ref "/the-things-stack/interact/cli" >}}):
-
-```bash
-ttn-lw-cli end-devices set --application-id <app-id> --device-id <dev-id> --mac-settings.use-adr=false
-```
-
-After {{% tts %}} ADR mechanism is disabled, the Network Server will no longer try to optimize ADR parameters.
-
-Now you can manually set ADR parameters to desired values using the CLI:
-
-```bash
-ttn-lw-cli end-devices set --application-id <app-id> --device-id <dev-id> --mac-state.desired-parameters.adr-data-rate-index <data_rate> --mac-state.desired-parameters.adr-tx-power-index <power_index> --mac-state.desired-parameters.adr-nb-trans <nb_trans>
-```
-
-Desired values that you set for ADR parameters need to be supported by the end device based on its MAC and PHY versions, and its frequency plan. Upon receiving a next uplink message, the Network Server schedules a `LinkADRReq` message with new ADR parameters included.
-
-If the end device accepts all three parameters specified, then it will use them and answer with a `LinkADRAns` uplink message. We recommend setting all three parameters explicitly to avoid a possible rejection.
-
-Keep in mind that changes to `mac-state.desired-parameters.<parameter>` are not persistent and will be lost on a device reset/rejoin. Read the [MAC Settings]({{< ref "/devices/mac-settings" >}}) section for detailed info.
 
 ## Configuring ADR Margin
 
@@ -123,3 +105,29 @@ The `NStep` value would be:
 NStep=int(SNR<sub>margin</sub>/2.5) = int (-5.5/2.5) = -1
 
 In this case, according to the previously mentioned [diagram](https://www.thethingsnetwork.org/forum/uploads/default/original/2X/7/7480e044aa93a54a910dab8ef0adfb5f515d14a1.pdf), if Tx power is lower than its maximum, the Network Server should increase it once by 3dB, while the data rate should not be changed.
+
+## Static Mode
+
+Besides {{% tts %}} ADR mechanism described [above]({{< ref "/reference/adr#the-things-stack-adr-algorithm" >}}), {{% tts %}} also supports using a custom ADR, meaning ADR parameters (data rate, Tx power, number of transmissions per uplink frame) can be controlled manually.
+
+{{< note >}} We recommend to test the process described below on test devices before implementing it in production. {{</ note >}}
+
+Before setting ADR parameters to desired values, you first need to turn off the default {{% tts %}} ADR mechanism. To turn of {{% tts %}} ADR using the [CLI]({{< ref "/the-things-stack/interact/cli" >}}):
+
+```bash
+ttn-lw-cli end-devices set --application-id <app-id> --device-id <dev-id> --mac-settings.adr.mode.disabled=true
+```
+
+After {{% tts %}} ADR mechanism is disabled, the Network Server will no longer try to optimize ADR parameters.
+
+Now you can manually set ADR parameters to desired values using the CLI:
+
+```bash
+ttn-lw-cli end-devices set --application-id <app-id> --device-id <dev-id> --mac-settings.adr.mode.static --mac-settings.adr.mode.static.data-rate-index <data_rate> --mac-settings.adr.mode.static.tx-power-index <power_index> --mac-settings.adr.mode.static.nb-trans <nb_trans>
+```
+
+Static mode values that you set for ADR parameters need to be supported by the end device based on its MAC and PHY versions, and its frequency plan. Upon receiving a next uplink message, the Network Server schedules a `LinkADRReq` message with new ADR parameters included.
+
+If the end device accepts all three parameters specified, then it will use them and answer with a `LinkADRAns` uplink message. We recommend setting all three parameters explicitly to avoid a possible rejection.
+
+Keep in mind that changes to `mac-settings.adr.mode.static.<parameter>` are persistent and these values will be used even after a device reset/rejoin, until you change them.
