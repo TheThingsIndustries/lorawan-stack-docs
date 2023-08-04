@@ -218,6 +218,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h3 id="why-do-the-gs-ns-as-and-js-components-fail-to-start">Why do the GS, NS, AS and JS components fail to start?</h3>
 <p>The one thing that is common between these four components (and not others) is that they all use Redis. Make sure to troubleshoot the Redis server that&rsquo;s used. Ensure that Redis is reachable from within the cluster. If authentication is required, make sure that the configuration works.</p>
 <p>If using the Bitnami Helm Charts for Redis, make sure to either setup TLS or disable password authentication. The latter is recommended if this database is used for testing. Check Bitnami&rsquo;s documentation on how to disable authentication. It usually involves setting <code>auth.enabled</code> to <code>false</code> for the Redis Helm charts and not using a Redis password in The Things Stack.</p>
+<h3 id="missing-tenant-id">Missing Tenant ID</h3>
+<p>This issue occurs most likely due to not setting the <code>tenancy.defaultID</code> for single tenant deployments.</p>
+<h3 id="x509_unknown_authority">x509_unknown_authority</h3>
+<p>For this error, check that the value set in <code>global.tls.rootCA</code> is base64 encoded and matches the domain where the installation is accessible.</p>
+<h3 id="x509_certificate_invalid">x509_certificate_invalid</h3>
+<p>For this error, make sure that the value set in <code>ingress.traefik.tls.secretName</code> is a valid TLS certificate.</p>
+<h3 id="pkgutilstoredriver-driver-error">pkg/util/store:driver (driver error)</h3>
+<p>The Things Stack runs kubernetes jobs to initialize and migrate Postgres. This error can occur if the The Things Stack is accessed either before these jobs are run or if the jobs failed to execute. Check the status of the jobs for more details on what went wrong.</p>
+<h3 id="gateways-dont-work-when-targeting-the-udp-port-1700">Gateways don&rsquo;t work when targeting the UDP port 1700</h3>
+<p>Ensure that UDP port (default 1700) is exposed outside the k8s cluster via your chosen proxy or load balancer.</p>
 
         </div>
         
@@ -278,10 +288,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer on 19 Apr 2023.
+  Last changed by Krishna Iyer on 04 Aug 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b36a78abab91e6a6967b41f03b65551a89e54c9">
-      Restructure documentation (#1076)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/466e097c63cb83e15666206543aa7a6d80fb39f9">
+      doc: Add k8s troubleshooting tips (#1150)
     </a>
 </p>
 
