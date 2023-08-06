@@ -202,7 +202,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Transmission power</li>
 </ul>
 <p>See <a href="https://www.thethingsnetwork.org/docs/lorawan/adaptive-data-rate/">The Things Network LoRaWAN documentation</a> for a general description of ADR. See the <a href="https://www.thethingsnetwork.org/docs/lorawan/spreading-factors/">Spreading Factors</a> section to learn how spreading factor influences data rate, range and battery life.</p>
-<h2 id="the-things-stack-adr-algorithm">The Things Stack ADR Algorithm</h2>
+<p>The Things Stack supports two ADR modes explained below - dynamic and static.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  The <code>use_adr</code> and <code>adr_margin</code> parameters that were previously used to control The Things Stack ADR usage are now deprecated in favor of making ADR algorithm more configurable. The usage of new parameters to control ADR is explained below. To proceed with using below mentioned parameters, make sure to disable old ones using the <code>--unset use-adr,adr-margin</code> flag.
+</div>
+
+<h2 id="dynamic-mode">Dynamic Mode</h2>
+<p>Dynamic mode represents a default The Things Stack ADR mechanism. In this mode, The Things Stack calculates ADR parameters (data rate, Tx power, number of transmissions per uplink frame) values, but a user can configure the margin and min/max values for the mentioned parameters.</p>
+<p>Before configuring this mode, it&rsquo;s useful to know how it actually works, so the default The Things Stack ADR algorithm is explained below.</p>
+<h3 id="the-things-stack-adr-algorithm">The Things Stack ADR Algorithm</h3>
 <p>This section describes The Things Stack ADR implementation in plain english, with links to the relevant lines of source code in our open source <a href="https://github.com/TheThingsNetwork/lorawan-stack">LoRaWAN Stack Repository</a>.</p>
 <p>The Things Stack ADR implementation looks at the signal-to-noise ratio (SNR) to determine the Data Rate and Tx Power, and looks at frame counters to determine packet loss, and set the number of re-transmissions accordingly.</p>
 <p>The implementation is based on Semtech&rsquo;s recommended algorithm described in <a href="https://www.thethingsnetwork.org/forum/uploads/default/original/2X/7/7480e044aa93a54a910dab8ef0adfb5f515d14a1.pdf">this document</a>:</p>
@@ -220,22 +229,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>If there&rsquo;s still margin after reaching the maximum data rate, <a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/5a816e8171f993db9659566286d45725698f032e/pkg/networkserver/mac/adr.go#L273-L281">decrease the transmit power</a></li>
 <li>Depending on packet loss, <a href="https://github.com/TheThingsNetwork/lorawan-stack/blob/5a816e8171f993db9659566286d45725698f032e/pkg/networkserver/mac/adr.go#L288-L296">increase the number of retransmissions</a></li>
 </ol>
-<h2 id="custom-adr-algorithm">Custom ADR Algorithm</h2>
-<p>Besides The Things Stack ADR mechanism described <a href="https://www.thethingsindustries.com/docs/reference/adr/#the-things-stack-adr-algorithm">above</a>, The Things Stack also supports using a custom ADR, meaning ADR parameters (data rate, Tx power, number of transmissions per uplink frame) can be controlled manually.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  We recommend to test the process described below on test devices before implementing it in production.
-</div>
-
-<p>Before setting ADR parameters to desired values, you first need to turn off the default, The Things Stack ADR mechanism. To turn of The Things Stack ADR using the <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/cli/">CLI</a>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;dev-id&gt; --mac-settings.use-adr<span class="o">=</span><span class="nb">false</span>
-</span></span></code></pre></div><p>After The Things Stack ADR mechanism is disabled, the Network Server will no longer try to optimize ADR parameters.</p>
-<p>Now you can manually set ADR parameters to desired values using the CLI:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;dev-id&gt; --mac-state.desired-parameters.adr-data-rate-index &lt;data_rate&gt; --mac-state.desired-parameters.adr-tx-power-index &lt;power_index&gt; --mac-state.desired-parameters.adr-nb-trans &lt;nb_trans&gt;
-</span></span></code></pre></div><p>Desired values that you set for ADR parameters need to be supported by the end device based on its MAC and PHY versions, and its frequency plan. Upon receiving a next uplink message, the Network Server schedules a <code>LinkADRReq</code> message with new ADR parameters included.</p>
-<p>If the end device accepts all three parameters specified, then it will use them and answer with a <code>LinkADRAns</code> uplink message. We recommend setting all three parameters explicitly to avoid a possible rejection.</p>
-<p>Keep in mind that changes to <code>mac-state.desired-parameters.&lt;parameter&gt;</code> are not persistent and will be lost on a device reset/rejoin. Read the <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/">MAC Settings</a> section for detailed info.</p>
-<h2 id="configuring-adr-margin">Configuring ADR Margin</h2>
+<h3 id="enable-and-configure-dynamic-mode">Enable and Configure Dynamic Mode</h3>
+<p>To turn on The Things Stack ADR using the <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/cli/">CLI</a>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;dev-id&gt; --mac-settings.adr.mode.dynamic
+</span></span></code></pre></div><p>Values of parameters like data rate index, transmission power index and number of transmissions are calculated by the ADR algorithm, but their minimum and maximum values can be set by the user as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;dev-id&gt; --mac-settings.adr.mode.dynamic --mac-settings.adr.mode.dynamic.max-data-rate-index &lt;data_rate&gt; --mac-settings.adr.mode.dynamic.max tx-power-index &lt;power_index&gt; --mac-settings.adr.mode.dynamic.max-nb-trans &lt;nb_trans&gt; --mac-settings.adr.mode.dynamic.min-data-rate-index &lt;data_rate&gt; --mac-settings.adr.mode.dynamic.min tx-power-index &lt;power_index&gt; --mac-settings.adr.mode.dynamic.min-nb-trans &lt;nb_trans&gt;
+</span></span></code></pre></div><blockquote>
+<p>Please note that <code>data_rate</code> in above and following commands is data rate index which can take values from 0-6 (referring to data rate sets DR0-DR6). For example, data rate index 0 implies using SF12 in EU868 freqeuncy plan, as explained <a href="https://www.thethingsnetwork.org/docs/lorawan/regional-parameters/#eu863-870-data-rates">here</a>. You can check out detailed info for your frequency plan in the <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/spec-regional-parameters/">Regional Parameters specification</a>.</p>
+</blockquote>
+<h3 id="configure-adr-margin">Configure ADR Margin</h3>
 <p>The Things Stack Network Server calculates the ADR margin to optimize the data rate and Tx power.</p>
 <p>Margin is the difference between the gateway&rsquo;s maximum measured SNR and the minimal SNR required to demodulate a message on a given data rate. Margin is used to determine how much data rate can be increased, or how much transmit power can be lowered. Increasing the ADR margin reduces the data rate, leading to a reduced overall network capacity, but also to a lower packet loss rate in lightly loaded networks. Decreasing the ADR margin leads to a data rate increase, network capacity enhancement, but also causes higher packet loss rate.</p>
 <div class="notification is-info is-light has-text-dark">
@@ -244,12 +246,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
 <p>The Network Server uses the ADR margin of 15, but this value can be configured per device using the CLI:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;device-id&gt; --mac-settings.adr-margin &lt;float32&gt;
-</span></span></code></pre></div><p>Keep in mind that changes to <code>mac-settings.&lt;parameter&gt;</code> are persistent and will be present even after a device reset/rejoin. Read the <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/">MAC Settings</a> section for detailed info.</p>
-<h3 id="examples">Examples</h3>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;device-id&gt; --mac-settings.adr.mode.dynamic.margin &lt;float32&gt;
+</span></span></code></pre></div><p>Keep in mind that changes to <code>mac-settings.adr.mode.dynamic.&lt;parameter&gt;</code> are persistent and will be present even after a device reset/rejoin. Read the <a href="https://www.thethingsindustries.com/docs/devices/mac-settings/">MAC Settings</a> section for detailed info.</p>
+<h4 id="examples">Examples</h4>
 <p>Consider a device whose SNR values in the last 20 uplink messages were in range from 0 to 7. The data rate of the last received frame from the end device is DR3. Three cases presented below demonstrate how choosing a different ADR margin leads to different outcomes in terms of changing the data rate and Tx power.</p>
 <p>In practice, the ADR margin value should be tuned until the optimization target is reached. The optimization target can be different (like battery duration, low packet loss, etc.) in different environments, so a user needs to decide on which margin value to adopt.</p>
-<h4 id="case-1-adr-margin-set-to-default">Case 1: ADR margin set to default</h4>
+<h5 id="case-1-adr-margin-set-to-default">Case 1: ADR margin set to default</h5>
 <p>The default ADR margin value in The Things Stack is 15, while the minimum SNR required to demodulate a message for DR3 is 12.5.</p>
 <p>First, the maximum SNR is computed for recent uplinks. In this example, the <code>SNRmax</code> is 7.</p>
 <p>Then the SNR margin is calculated as follows:</p>
@@ -257,18 +259,41 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>The final step is to calculate the <code>NStep</code> value to decide whether a data rate can be optimized:</p>
 <p>NStep=int(SNR<sub>margin</sub>/2.5) = int (4.5/2.5) = 1</p>
 <p>Considering the diagram for acting on an NStep calculation depicted <a href="https://www.thethingsnetwork.org/forum/uploads/default/original/2X/7/7480e044aa93a54a910dab8ef0adfb5f515d14a1.pdf">here</a>, the conclusion for this example is that the Network Server should increase the data rate to DR4.</p>
-<h4 id="case-2-adr-margin-set-to-18">Case 2: ADR margin set to 18</h4>
+<h5 id="case-2-adr-margin-set-to-18">Case 2: ADR margin set to 18</h5>
 <p>The SNR margin would be:</p>
 <p>SNR<sub>margin</sub> = SNR<sub>max</sub> - SNR<sub>DR3</sub> - margin<sub>dB</sub> = 7-(-12.5)-18 = 1.5</p>
 <p>The <code>NStep</code> value would be:</p>
 <p>NStep=int(SNR<sub>margin</sub>/2.5) = int (1.5/2.5) = 0</p>
 <p>In this case, according to the previously mentioned <a href="https://www.thethingsnetwork.org/forum/uploads/default/original/2X/7/7480e044aa93a54a910dab8ef0adfb5f515d14a1.pdf">diagram</a>, the Network Server should not take any action to further optimize the data rate.</p>
-<h4 id="case-3-adr-margin-set-to-25">Case 3: ADR margin set to 25</h4>
+<h5 id="case-3-adr-margin-set-to-25">Case 3: ADR margin set to 25</h5>
 <p>The SNR margin would be:</p>
 <p>SNR<sub>margin</sub> = SNR<sub>max</sub> - SNR<sub>DR3</sub> - margin<sub>dB</sub> = 7-(-12.5)-25 = -5.5</p>
 <p>The <code>NStep</code> value would be:</p>
 <p>NStep=int(SNR<sub>margin</sub>/2.5) = int (-5.5/2.5) = -1</p>
 <p>In this case, according to the previously mentioned <a href="https://www.thethingsnetwork.org/forum/uploads/default/original/2X/7/7480e044aa93a54a910dab8ef0adfb5f515d14a1.pdf">diagram</a>, if Tx power is lower than its maximum, the Network Server should increase it once by 3dB, while the data rate should not be changed.</p>
+<h3 id="configure-channel-steering-mode">Configure Channel Steering Mode</h3>
+<p>The channel steering modes are only applicable to <code>US915</code> and <code>AU915</code> bands. End devices in these bands can join The Things Stack network via <strong>LoRa</strong> modulated channels with a bandwidth of 500kHz. There is one such channel within a frequency sub band (FBS), and an end device which has joined via a 500kHz channel will only use this channel for transmissions. This behavior is default, and it can be enabled as follows:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;dev-id&gt; --mac-settings.adr.mode.dynamic --mac-settings.adr.mode.dynamic.channel-steering.disabled
+</span></span></code></pre></div><p>The end device can also be steered towards the 125kHz channels, which usually are 8 per frequency sub band (FSB), instead of using a singular 500kHz channel like mentioned above. This mode is called <strong>LoRa narrow</strong> and it can be enabled with:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;dev-id&gt; --mac-settings.adr.mode.dynamic --mac-settings.adr.mode.dynamic.channel-steering.lora-narrow
+</span></span></code></pre></div><h2 id="static-mode">Static Mode</h2>
+<p>Besides The Things Stack ADR mechanism described <a href="https://www.thethingsindustries.com/docs/reference/adr/#the-things-stack-adr-algorithm">above</a>, The Things Stack also supports using a custom ADR, meaning ADR parameters (data rate, Tx power, number of transmissions per uplink frame) can be controlled manually.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  We recommend to test the process described below on test devices before implementing it in production.
+</div>
+
+<p>Before setting ADR parameters to desired values, you first need to turn off the default The Things Stack ADR mechanism. To turn off The Things Stack ADR using the <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/cli/">CLI</a>:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;dev-id&gt; --mac-settings.adr.mode.disabled
+</span></span></code></pre></div><blockquote>
+<p>Please note that <code>data_rate</code> in above and following commands is data rate index which can take values from 0-6 (referring to data rate sets DR0-DR6). For example, data rate index 0 implies using SF12 in EU868 freqeuncy plan, as explained <a href="https://www.thethingsnetwork.org/docs/lorawan/regional-parameters/#eu863-870-data-rates">here</a>. You can check out detailed info for your frequency plan in the <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/spec-regional-parameters/">Regional Parameters specification</a>.</p>
+</blockquote>
+<p>After The Things Stack ADR mechanism is disabled, the Network Server will no longer try to optimize ADR parameters.</p>
+<p>Now you can manually set ADR parameters to desired values using the CLI:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli end-devices <span class="nb">set</span> --application-id &lt;app-id&gt; --device-id &lt;dev-id&gt; --mac-settings.adr.mode.static --mac-settings.adr.mode.static.data-rate-index &lt;data_rate&gt; --mac-settings.adr.mode.static.tx-power-index &lt;power_index&gt; --mac-settings.adr.mode.static.nb-trans &lt;nb_trans&gt;
+</span></span></code></pre></div><p>Static mode values that you set for ADR parameters need to be supported by the end device based on its MAC and PHY versions, and its frequency plan. Upon receiving a next uplink message, the Network Server schedules a <code>LinkADRReq</code> message with new ADR parameters included.</p>
+<p>If the end device accepts all three parameters specified, then it will use them and answer with a <code>LinkADRAns</code> uplink message. We recommend setting all three parameters explicitly to avoid a possible rejection.</p>
+<p>Keep in mind that changes to <code>mac-settings.adr.mode.static.&lt;parameter&gt;</code> are persistent and these values will be used even after a device reset/rejoin, until you change them.</p>
         </div>
         
           <div class="is-clearfix">
@@ -297,13 +322,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <li><a href='#how-adr-works'>How ADR Works</a></li>
     
       
-      <li><a href='#the-things-stack-adr-algorithm'>The Things Stack ADR Algorithm</a></li>
+      <li><a href='#dynamic-mode'>Dynamic Mode</a></li>
     
       
-      <li><a href='#custom-adr-algorithm'>Custom ADR Algorithm</a></li>
-    
-      
-      <li><a href='#configuring-adr-margin'>Configuring ADR Margin</a></li>
+      <li><a href='#static-mode'>Static Mode</a></li>
     
   </ul>
 
@@ -344,10 +366,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer on 19 Apr 2023.
+  Last changed by Nejra Selimović on 06 Aug 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b36a78abab91e6a6967b41f03b65551a89e54c9">
-      Restructure documentation (#1076)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/688b64758510a7c80417c08335054c76c02324d2">
+      doc: Update ADR documentation (#1146)
     </a>
 </p>
 
