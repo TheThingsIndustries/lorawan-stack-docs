@@ -1,0 +1,40 @@
+name: EndDeviceBatchRegistry
+comment: |-
+  The EndDeviceBatchRegistry service, exposed by the Identity Server, is used to manage
+  end device registrations in batches.
+methods:
+  Get:
+    name: Get
+    comment: |-
+      Get a batch of end devices with the given identifiers, selecting the fields specified
+      in the field mask.
+      More or less fields may be returned, depending on the rights of the caller.
+      Devices not found are skipped and no error is returned.
+    input:
+      name: BatchGetEndDevicesRequest
+    output:
+      name: EndDevices
+    http:
+    - method: GET
+      path: /applications/{application_ids.application_id}/devices/batch
+  Delete:
+    name: Delete
+    comment: |-
+      Delete a batch of end devices with the given IDs.
+
+      This operation is atomic; either all devices are deleted or none.
+      Devices not found are skipped and no error is returned.
+      Before calling this RPC, use the corresponding BatchDelete RPCs
+      of NsEndDeviceRegistry, AsEndDeviceRegistry and
+      optionally the JsEndDeviceRegistry to delete the end devices.
+      If the devices were claimed on a Join Server, use the BatchUnclaim RPC
+      of the DeviceClaimingServer.
+      This is NOT done automatically.
+    input:
+      name: BatchDeleteEndDevicesRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /applications/{application_ids.application_id}/devices/batch

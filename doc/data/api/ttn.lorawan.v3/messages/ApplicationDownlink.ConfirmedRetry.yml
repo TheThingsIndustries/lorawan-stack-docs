@@ -1,0 +1,17 @@
+name: ApplicationDownlink.ConfirmedRetry
+fields:
+- name: attempt
+  comment: The number of attempted confirmed downlink acknowledgements.
+  type: uint32
+  default: 0
+- name: max_attempts
+  comment: |-
+    The maximum number of confirmed downlink acknowledgement attempts.
+    If null, the Application Server configuration is used instead.
+  message:
+    package: google.protobuf
+    name: UInt32Value
+  rules:
+    lte: 100
+    gt: 0
+  default: null

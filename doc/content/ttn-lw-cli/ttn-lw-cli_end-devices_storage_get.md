@@ -45,6 +45,9 @@ ttn-lw-cli end-devices storage get [application-id] [device-id] [flags]
       --up.downlink-ack.class-b-c.absolute-time                                             select the up.downlink_ack.class_b_c.absolute_time field
       --up.downlink-ack.class-b-c.gateways                                                  select the up.downlink_ack.class_b_c.gateways field
       --up.downlink-ack.confirmed                                                           select the up.downlink_ack.confirmed field
+      --up.downlink-ack.confirmed-retry                                                     select the up.downlink_ack.confirmed_retry field and all allowed sub-fields
+      --up.downlink-ack.confirmed-retry.attempt                                             select the up.downlink_ack.confirmed_retry.attempt field
+      --up.downlink-ack.confirmed-retry.max-attempts                                        select the up.downlink_ack.confirmed_retry.max_attempts field
       --up.downlink-ack.correlation-ids                                                     select the up.downlink_ack.correlation_ids field
       --up.downlink-ack.decoded-payload                                                     select the up.downlink_ack.decoded_payload field
       --up.downlink-ack.decoded-payload-warnings                                            select the up.downlink_ack.decoded_payload_warnings field
@@ -59,6 +62,9 @@ ttn-lw-cli end-devices storage get [application-id] [device-id] [flags]
       --up.downlink-failed.downlink.class-b-c.absolute-time                                 select the up.downlink_failed.downlink.class_b_c.absolute_time field
       --up.downlink-failed.downlink.class-b-c.gateways                                      select the up.downlink_failed.downlink.class_b_c.gateways field
       --up.downlink-failed.downlink.confirmed                                               select the up.downlink_failed.downlink.confirmed field
+      --up.downlink-failed.downlink.confirmed-retry                                         select the up.downlink_failed.downlink.confirmed_retry field and all allowed sub-fields
+      --up.downlink-failed.downlink.confirmed-retry.attempt                                 select the up.downlink_failed.downlink.confirmed_retry.attempt field
+      --up.downlink-failed.downlink.confirmed-retry.max-attempts                            select the up.downlink_failed.downlink.confirmed_retry.max_attempts field
       --up.downlink-failed.downlink.correlation-ids                                         select the up.downlink_failed.downlink.correlation_ids field
       --up.downlink-failed.downlink.decoded-payload                                         select the up.downlink_failed.downlink.decoded_payload field
       --up.downlink-failed.downlink.decoded-payload-warnings                                select the up.downlink_failed.downlink.decoded_payload_warnings field
@@ -73,6 +79,9 @@ ttn-lw-cli end-devices storage get [application-id] [device-id] [flags]
       --up.downlink-nack.class-b-c.absolute-time                                            select the up.downlink_nack.class_b_c.absolute_time field
       --up.downlink-nack.class-b-c.gateways                                                 select the up.downlink_nack.class_b_c.gateways field
       --up.downlink-nack.confirmed                                                          select the up.downlink_nack.confirmed field
+      --up.downlink-nack.confirmed-retry                                                    select the up.downlink_nack.confirmed_retry field and all allowed sub-fields
+      --up.downlink-nack.confirmed-retry.attempt                                            select the up.downlink_nack.confirmed_retry.attempt field
+      --up.downlink-nack.confirmed-retry.max-attempts                                       select the up.downlink_nack.confirmed_retry.max_attempts field
       --up.downlink-nack.correlation-ids                                                    select the up.downlink_nack.correlation_ids field
       --up.downlink-nack.decoded-payload                                                    select the up.downlink_nack.decoded_payload field
       --up.downlink-nack.decoded-payload-warnings                                           select the up.downlink_nack.decoded_payload_warnings field
@@ -90,6 +99,9 @@ ttn-lw-cli end-devices storage get [application-id] [device-id] [flags]
       --up.downlink-queued.class-b-c.absolute-time                                          select the up.downlink_queued.class_b_c.absolute_time field
       --up.downlink-queued.class-b-c.gateways                                               select the up.downlink_queued.class_b_c.gateways field
       --up.downlink-queued.confirmed                                                        select the up.downlink_queued.confirmed field
+      --up.downlink-queued.confirmed-retry                                                  select the up.downlink_queued.confirmed_retry field and all allowed sub-fields
+      --up.downlink-queued.confirmed-retry.attempt                                          select the up.downlink_queued.confirmed_retry.attempt field
+      --up.downlink-queued.confirmed-retry.max-attempts                                     select the up.downlink_queued.confirmed_retry.max_attempts field
       --up.downlink-queued.correlation-ids                                                  select the up.downlink_queued.correlation_ids field
       --up.downlink-queued.decoded-payload                                                  select the up.downlink_queued.decoded_payload field
       --up.downlink-queued.decoded-payload-warnings                                         select the up.downlink_queued.decoded_payload_warnings field
@@ -103,6 +115,9 @@ ttn-lw-cli end-devices storage get [application-id] [device-id] [flags]
       --up.downlink-sent.class-b-c.absolute-time                                            select the up.downlink_sent.class_b_c.absolute_time field
       --up.downlink-sent.class-b-c.gateways                                                 select the up.downlink_sent.class_b_c.gateways field
       --up.downlink-sent.confirmed                                                          select the up.downlink_sent.confirmed field
+      --up.downlink-sent.confirmed-retry                                                    select the up.downlink_sent.confirmed_retry field and all allowed sub-fields
+      --up.downlink-sent.confirmed-retry.attempt                                            select the up.downlink_sent.confirmed_retry.attempt field
+      --up.downlink-sent.confirmed-retry.max-attempts                                       select the up.downlink_sent.confirmed_retry.max_attempts field
       --up.downlink-sent.correlation-ids                                                    select the up.downlink_sent.correlation_ids field
       --up.downlink-sent.decoded-payload                                                    select the up.downlink_sent.decoded_payload field
       --up.downlink-sent.decoded-payload-warnings                                           select the up.downlink_sent.decoded_payload_warnings field

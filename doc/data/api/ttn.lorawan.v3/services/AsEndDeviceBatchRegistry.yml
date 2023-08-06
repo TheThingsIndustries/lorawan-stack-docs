@@ -1,0 +1,18 @@
+name: AsEndDeviceBatchRegistry
+comment: The AsEndDeviceBatchRegistry service allows clients to manage batches end
+  devices on the Application Server.
+methods:
+  Delete:
+    name: Delete
+    comment: |-
+      Delete a list of devices within the same application.
+      This operation is atomic; either all devices are deleted or none.
+      Devices not found are skipped and no error is returned.
+    input:
+      name: BatchDeleteEndDevicesRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /as/applications/{application_ids.application_id}/devices/batch

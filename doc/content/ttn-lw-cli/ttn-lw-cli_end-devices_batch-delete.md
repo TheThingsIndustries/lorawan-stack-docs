@@ -1,36 +1,20 @@
 ---
-title: "ttn-lw-cli end-devices downlink push"
-slug: ttn-lw-cli_end-devices_downlink_push
+title: "ttn-lw-cli end-devices batch-delete"
+slug: ttn-lw-cli_end-devices_batch-delete
 ---
 
-## ttn-lw-cli end-devices downlink push
+## ttn-lw-cli end-devices batch-delete
 
-Push to the application downlink queue
+Delete a batch of end devices within the same application (EXPERIMENTAL).
 
 ```
-ttn-lw-cli end-devices downlink push [application-id] [device-id] [flags]
+ttn-lw-cli end-devices batch-delete [application-id] [device-ids] [flags]
 ```
 
 ### Options
 
 ```
-      --application-id string                 
-      --class-b-c.absolute-time timestamp     
-      --class-b-c.gateways strings            
-      --confirmed                             
-      --confirmed-retry.attempt uint32        
-      --confirmed-retry.max-attempts uint32   
-      --correlation-ids strings               
-      --decoded-payload-warnings strings      
-      --dev-eui string                        (hex)
-      --device-id string                      
-      --f-cnt uint32                          
-      --f-port uint32                         
-      --frm-payload bytesHex                  
-  -h, --help                                  help for push
-      --join-eui string                       (hex)
-      --priority string                       allowed values: LOWEST, LOW, BELOW_NORMAL, NORMAL, ABOVE_NORMAL, HIGH, HIGHEST
-      --session-key-id bytesHex               
+  -h, --help   help for batch-delete
 ```
 
 ### Options inherited from parent commands
@@ -72,5 +56,5 @@ ttn-lw-cli end-devices downlink push [application-id] [device-id] [flags]
 
 ### SEE ALSO
 
-* [ttn-lw-cli end-devices downlink]({{< relref "ttn-lw-cli_end-devices_downlink" >}})	 - Application downlink commands
+* [ttn-lw-cli end-devices]({{< relref "ttn-lw-cli_end-devices" >}})	 - End Device commands
 

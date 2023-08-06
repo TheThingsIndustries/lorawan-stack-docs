@@ -19,6 +19,8 @@ description: ""
 
 {{< proto/message message="ApplicationDownlink.ClassBC" >}}
 
+{{< proto/message message="ApplicationDownlink.ConfirmedRetry" >}}
+
 {{< proto/message message="ApplicationDownlinkFailed" >}}
 
 {{< proto/message message="ApplicationInvalidatedDownlinks" >}}

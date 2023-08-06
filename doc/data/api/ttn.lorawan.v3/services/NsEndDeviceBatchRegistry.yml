@@ -1,0 +1,18 @@
+name: NsEndDeviceBatchRegistry
+comment: The NsEndDeviceBatchRegistry service allows clients to manage batches of
+  end devices on the Network Server.
+methods:
+  Delete:
+    name: Delete
+    comment: |-
+      Delete a list of devices within the same application.
+      This operation is atomic; either all devices are deleted or none.
+      Devices not found are skipped and no error is returned.
+    input:
+      name: BatchDeleteEndDevicesRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /ns/applications/{application_ids.application_id}/devices/batch

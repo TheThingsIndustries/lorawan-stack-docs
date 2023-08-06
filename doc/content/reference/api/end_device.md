@@ -44,6 +44,12 @@ The Identity Server's `EndDeviceRegistry` is the first service, where end device
 
 {{< proto/method service="EndDeviceRegistry" method="BatchUpdateLastSeen" >}}
 
+## The `EndDeviceBatchRegistry` service
+
+{{< proto/method service="EndDeviceBatchRegistry" method="Get" >}}
+
+{{< proto/method service="EndDeviceBatchRegistry" method="Delete" >}}
+
 ## The `JsEndDeviceRegistry` service
 
 OTAA devices are registered in the Join Server's `JsEndDeviceRegistry`. The following [EndDevice fields](#message:EndDevice) are registered in this registry:
@@ -71,6 +77,11 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 {{< proto/method service="JsEndDeviceRegistry" method="Get" >}}
 
 {{< proto/method service="JsEndDeviceRegistry" method="Delete" >}}
+
+
+## The `JsEndDeviceBatchRegistry` service
+
+{{< proto/method service="JsEndDeviceBatchRegistry" method="Delete" >}}
 
 ## The `NsEndDeviceRegistry` service
 
@@ -101,6 +112,11 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/method service="NsEndDeviceRegistry" method="Delete" >}}
 
+
+## The `NsEndDeviceBatchRegistry` service
+
+{{< proto/method service="NsEndDeviceBatchRegistry" method="Delete" >}}
+
 ## The `AsEndDeviceRegistry` service
 
 The following [EndDevice fields](#message:EndDevice) are registered in the Application Server's `AsEndDeviceRegistry`:
@@ -124,6 +140,9 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/method service="AsEndDeviceRegistry" method="Delete" >}}
 
+## The `AsEndDeviceBatchRegistry` service
+
+{{< proto/method service="AsEndDeviceBatchRegistry" method="Delete" >}}
 
 ## The `EndDeviceClaimingServer` service
 
@@ -179,6 +198,8 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="ApplicationDownlink.ClassBC" >}}
 
+{{< proto/message message="ApplicationDownlink.ConfirmedRetry" >}}
+
 {{< proto/message message="ADRAckLimitExponentValue" >}}
 
 {{< proto/message message="ADRAckDelayExponentValue" >}}
@@ -202,6 +223,10 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 {{< proto/message message="AuthorizeApplicationRequest" >}}
 
 {{< proto/message message="BoolValue" >}}
+
+{{< proto/message message="BatchDeleteEndDevicesRequest" >}}
+
+{{< proto/message message="BatchGetEndDevicesRequest" >}}
 
 {{< proto/message message="BatchUpdateEndDeviceLastSeenRequest.EndDeviceLastSeenUpdate" >}}
 
@@ -236,6 +261,8 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 {{< proto/message message="EndDeviceAuthenticationCode" >}}
 
 {{< proto/message message="EndDeviceIdentifiers" >}}
+
+{{< proto/message message="EndDeviceIdentifiersList" >}}
 
 {{< proto/message message="EndDevices" >}}
 

@@ -27,6 +27,8 @@ description: ""
 
 {{< proto/message message="ApplicationDownlink.ClassBC" >}}
 
+{{< proto/message message="ApplicationDownlink.ConfirmedRetry" >}}
+
 {{< proto/message message="ApplicationDownlink" >}}
 
 {{< proto/message message="ApplicationDownlinkFailed" >}}
@@ -60,6 +62,8 @@ description: ""
 {{< proto/message message="DownlinkQueueRequest" >}}
 
 {{< proto/message message="EndDeviceIdentifiers" >}}
+
+{{< proto/message message="EndDeviceIdentifiersList" >}}
 
 {{< proto/message message="EndDeviceVersionIdentifiers" >}}
 
