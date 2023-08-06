@@ -60,6 +60,8 @@ Values of parameters like data rate index, transmission power index and number o
 ttn-lw-cli end-devices set --application-id <app-id> --device-id <dev-id> --mac-settings.adr.mode.dynamic --mac-settings.adr.mode.dynamic.max-data-rate-index <data_rate> --mac-settings.adr.mode.dynamic.max tx-power-index <power_index> --mac-settings.adr.mode.dynamic.max-nb-trans <nb_trans> --mac-settings.adr.mode.dynamic.min-data-rate-index <data_rate> --mac-settings.adr.mode.dynamic.min tx-power-index <power_index> --mac-settings.adr.mode.dynamic.min-nb-trans <nb_trans>
 ```
 
+> Please note that `data_rate` in above and following commands is data rate index which can take values from 0-6 (referring to data rate sets DR0-DR6). For example, data rate index 0 implies using SF12 in EU868 freqeuncy plan, as explained [here](https://www.thethingsnetwork.org/docs/lorawan/regional-parameters/#eu863-870-data-rates). You can check out detailed info for your frequency plan in the [Regional Parameters specification]({{< ref "/the-things-stack/concepts/spec-regional-parameters" >}}).
+
 ### Configure ADR Margin
 
 {{% tts %}} Network Server calculates the ADR margin to optimize the data rate and Tx power.
@@ -124,13 +126,13 @@ In this case, according to the previously mentioned [diagram](https://www.thethi
 
 ### Configure Channel Steering Mode
 
-The channel steering modes are only applicable to `US915` and `AU915` bands. End devices in these bands can join {{% tts %}} network via **LoRa wide channel** mode, i.e. a 500kHz bandwidth channel. This behavior is default, and it can be enabled as follows:
+The channel steering modes are only applicable to `US915` and `AU915` bands. End devices in these bands can join {{% tts %}} network via **LoRa** modulated channels with a bandwidth of 500kHz. There is one such channel within a frequency sub band (FBS), and an end device which has joined via a 500kHz channel will only use this channel for transmissions. This behavior is default, and it can be enabled as follows:
 
 ```bash
 ttn-lw-cli end-devices set --application-id <app-id> --device-id <dev-id> --mac-settings.adr.mode.dynamic --mac-settings.adr.mode.dynamic.channel-steering.disabled
 ```
 
-The end device can also be steered towards the 8 125kHz channels, instead of using a singular 500kHz channel like mentioned above. This mode is called **LoRa narrow** and it can be enabled with:
+The end device can also be steered towards the 125kHz channels, which usually are 8 per frequency sub band (FSB), instead of using a singular 500kHz channel like mentioned above. This mode is called **LoRa narrow** and it can be enabled with:
 
 ```bash
 ttn-lw-cli end-devices set --application-id <app-id> --device-id <dev-id> --mac-settings.adr.mode.dynamic --mac-settings.adr.mode.dynamic.channel-steering.lora-narrow
@@ -147,6 +149,8 @@ Before setting ADR parameters to desired values, you first need to turn off the 
 ```bash
 ttn-lw-cli end-devices set --application-id <app-id> --device-id <dev-id> --mac-settings.adr.mode.disabled
 ```
+
+> Please note that `data_rate` in above and following commands is data rate index which can take values from 0-6 (referring to data rate sets DR0-DR6). For example, data rate index 0 implies using SF12 in EU868 freqeuncy plan, as explained [here](https://www.thethingsnetwork.org/docs/lorawan/regional-parameters/#eu863-870-data-rates). You can check out detailed info for your frequency plan in the [Regional Parameters specification]({{< ref "/the-things-stack/concepts/spec-regional-parameters" >}}).
 
 After {{% tts %}} ADR mechanism is disabled, the Network Server will no longer try to optimize ADR parameters.
 
