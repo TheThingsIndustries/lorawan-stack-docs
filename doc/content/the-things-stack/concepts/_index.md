@@ -7,6 +7,6 @@ aliases: [/reference/spec-regional-parameters]
 
 This section introduces basic concepts of working with {{% tts %}}.
 
-We start with a general technical discussion of {{% tts %}} architecture and progress to other more detailed topics.
+We start with a general technical discussion of {{% tts %}} architecture and progress to other more detailed topics that can be found through the **left menu**.
 
 <!--more-->
