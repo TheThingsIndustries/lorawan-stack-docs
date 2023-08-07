@@ -29,3 +29,5 @@ The Storage Integration should not be used for querying realtime data. For scala
 
 - Long-term storage of historical data for end-devices.
 - No need to maintain a connection with {{% tts %}} at all times, e.g. for end devices that send messages infrequently.
+
+Detailed instructions about storage integration can be found through the subtopics in the **left menu**.

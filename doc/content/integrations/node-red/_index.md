@@ -10,6 +10,6 @@ The MQTT server that is exposed by {{% tts %}} can be connected to Node-RED.
 
 <!--more-->
 
-This integration allows setting up a Node-RED flow that listens to events and uplink messages, and it is also possible to schedule downlink messages.
+This integration allows [setting up a Node-RED flow]({{< ref "/integrations/node-red/setup/" >}}) that [listens to events and uplink messages]({{< ref "/integrations/node-red/receive/" >}}), and it is also possible to [schedule downlink messages]({{< ref "/integrations/node-red/send/" >}}).
 
 {{< figure src="demo_setup.png" alt="Demo setup" class="plain" >}}

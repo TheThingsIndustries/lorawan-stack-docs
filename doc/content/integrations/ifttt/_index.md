@@ -15,3 +15,5 @@ To connect {{% tts %}} to IFTTT, [Node-RED](https://nodered.org/) will also be u
 1. A user account on IFTTT.
 
 2. A running instance of Node-RED.
+
+Detailed instructions on using IFTTT with {{% tts %}} can be found through the subtopics in the **left menu**.

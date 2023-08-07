@@ -16,4 +16,4 @@ The device is claimed using the [LoRa Cloud Device Join Service](https://www.lor
 
 In this guide, we assume you already [added the device]({{< ref "/devices/adding-devices" >}}) in {{% tts %}} Console. Please keep in mind that in case of using the LoRa Cloud Device Join Service for claiming, you have to tick the **External Join Server** box when adding the device in {{% tts %}} Console, as described [here]({{< ref "/devices/adding-devices#manually-create-end-device" >}}).
 
-Keep reading to learn how to integrate and make use of LoRa Cloud features.
+Keep reading the subtopics in the **left menu** to learn how to integrate and make use of LoRa Cloud features.

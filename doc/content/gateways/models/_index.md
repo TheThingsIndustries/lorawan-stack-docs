@@ -4,4 +4,4 @@ description: "Guides on connecting gateways to The Things Stack by model"
 weight: -2
 ---
 
-Guides with instructions for connecting popular LoRaWAN® gateways.
+This subsection contains comprehensive instructions for connecting some of the popular LoRaWAN® gateway models to {{% tts %}}. Select the gateway model you want to learn about from the **left menu**.
