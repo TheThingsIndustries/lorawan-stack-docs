@@ -44,7 +44,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.26.2</p>
+        <p class="navbar-item is-size-7">v3.27.0</p>
       </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
           </div>
       <span class="navbar-burger burger" data-target="topMenu">
@@ -818,6 +818,96 @@ If null, the time is selected based on slot availability. This is recommended in
 
 
 
+<h3 id="message:ApplicationDownlink.ConfirmedRetry">Message <code>ApplicationDownlink.ConfirmedRetry</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "attempt": 0,
+  "max_attempts": null,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>attempt</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The number of attempted confirmed downlink acknowledgements.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>max_attempts</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    UInt32Value
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The maximum number of confirmed downlink acknowledgement attempts.
+If null, the Application Server configuration is used instead.</p>
+          <p><code>gt</code>: <code>0</code></p>
+          <p><code>lte</code>: <code>100</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
 <h3 id="message:ApplicationDownlink">Message <code>ApplicationDownlink</code></h3>
 
 <details><summary>Show object example</summary>
@@ -832,6 +922,7 @@ If null, the time is selected based on slot availability. This is recommended in
   "class_b_c": {},
   "priority": "LOWEST",
   "correlation_ids": [],
+  "confirmed_retry": {},
 }</code></pre>
 </details>
 
@@ -1196,6 +1287,44 @@ If not set, this downlink message may be transmitted in class A, B and C.</p>
             <p><code>max_len</code>: <code>100</code></p>
         
       </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>confirmed_retry</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ApplicationDownlink.ConfirmedRetry">
+  
+  <code>
+    
+    ApplicationDownlink.ConfirmedRetry
+  </code>
+  
+    </a>
+  
+</td>
     </tr>
     
   </tbody>
@@ -4801,6 +4930,66 @@ This field is set for each item in normalized_payload in the corresponding Appli
           <p>The LoRaWAN DevAddr.</p>
           <p><code>ignore_empty</code></p>
           <p><code>len</code>: <code>4</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:EndDeviceIdentifiersList">Message <code>EndDeviceIdentifiersList</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "end_device_ids": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>end_device_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:EndDeviceIdentifiers">
+  
+  <code>
+    
+    EndDeviceIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        
       </td>
     </tr>
     
@@ -8738,6 +8927,8 @@ This field is set and used only by the Gateway Server.</p>
 
 	
 
+	
+
 
         </div>
         <div class="is-clearfix">
@@ -8813,10 +9004,10 @@ This field is set and used only by the Gateway Server.</p>
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Johan Stokking on 28 Feb 2023.
+  Last changed by Nejra Selimović on 08 Aug 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/1a9a364b429a745a089e0bd9a65ecb32854d09e2">
-      doc: Document SimulateUplink API
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/723366e675acba2997d5d7abde4fa00ec7c8db66">
+      doc: Add v3.27.0 release docs (#1152)
     </a>
 </p>
 

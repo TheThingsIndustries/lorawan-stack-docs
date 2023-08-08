@@ -44,7 +44,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.26.2</p>
+        <p class="navbar-item is-size-7">v3.27.0</p>
       </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
           </div>
       <span class="navbar-burger burger" data-target="topMenu">
@@ -215,31 +215,51 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="whats-new">
   <div class="whats-new-content">
     <div class="whats-new-header">
-      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.26.2/>What's new in V3.26.2</a></h2>
+      <h2 class="whats-new-title"><a href=https://www.thethingsindustries.com/docs/whats-new/3.27.0/>What's new in V3.27.0</a></h2>
       <a href="https://www.thethingsindustries.com/docs/whats-new/"><p class="see-more">See all release notes →</p></a>
     </div>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.26.2/">
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.27.0/">
       <div class="whats-new-body">
         <div class="whats-new-items-shadow whats-new-items-fade">
           <div class="whats-new-items">
             <h3 id="added">Added</h3>
 <ul>
-<li>New Admin Panel in the Console.</li>
+<li>The <code>as-db purge</code> command to purge unused data from the Application Server database.</li>
+<li>RPCs and CLI command to delete a batch of end devices within an application.
+<ul>
+<li>Check <code>ttn-lw-cli end-devices batch-delete</code> for more details.</li>
+</ul>
+</li>
+<li>Add <code>UserInput</code> component to the Console to handle user id input fields by implementing an autosuggest.</li>
+<li>The Identity Server configuration has a new optional restriction regarding administrative and technical contacts of entities. This limits the action of an user or organization to set these contacts only to themselves, it is disabled by default but it is possible to enable it by setting <code>is.collaborator-rights.set-others-as-contacts</code> as false.</li>
+<li>Implement <code>IDStringer</code> for Network Operations Center API to increase granularity of Network Operations Center rate limiting.</li>
+</ul>
+<h3 id="changed">Changed</h3>
+<ul>
+<li>Instead of retrying application downlinks indefinitely, the Application Server now retries them for a configured number of times. Each <code>ApplicationDownlink</code> message contains the <code>attempt</code> and <code>max_attempts</code> fields to indicate the current and maximum number of attempts for a specific <code>application downlink</code>.</li>
+<li>The Application Server configuration has the <code>as.downlinks.confirmation.default-retry-attempts</code> and <code>as.downlinks.confirmation.max-retry-attempts</code> fields that configure the allowed number of retries for application downlinks. The default values are <code>8</code> for the <code>as.downlinks.confirmation.default-retry-attempts</code> and <code>32</code> for the <code>as.downlinks.confirmation.max-retry-attempts</code>.</li>
+<li>The <code>as.downlinks.confirmation.default-retry-attempts</code> field is used for all application downlinks that were scheduled before this change and for every application downlink that does not have the <code>max_attempts</code> field set. On the other hand, the <code>as.downlinks.confirmation.max-retry-attempts</code> field ensures that the <code>max_attempts</code> field&rsquo;s upper bound is contained and does not exceed its value.</li>
+<li>The number of historical frames considered for the multi-frame query window size in the LoRaCloud Geolocation Services integration. The window size is now limited between 1 and 16 frames with 16 being the default value.</li>
+<li>Packet Broker Agent now subscribes as Home Network to all DevAddr prefixes. This is to support NetID delegation where DevAddr blocks of other NetIDs should be routed to the cluster of a different NetID.</li>
+</ul>
+<h3 id="deprecated">Deprecated</h3>
+<ul>
+<li>The <code>as.uplink-storage.limit</code> configuration option.</li>
+</ul>
+<h3 id="removed">Removed</h3>
+<ul>
+<li>Command-line interface support for listing QR code formats and generating QR codes. This is considered the responsibility of a LoRaWAN Join Server.</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>The Console contacting the NOC configuration endpoint indefinitely.</li>
-<li>Network Operations Center button for end devices in the end device overview not working in the Console.</li>
-<li>Removing user invitations not working in the user management panel for administrators.</li>
-<li>Fix payload formatter page launching malformed requests in the Console.</li>
-<li>Fix end device claiming issues in the Console and improve error messaging.</li>
-<li>HTTP API routes for parsing QR codes for the QR Generator service. We exercise our right to break compatibility with third party HTTP clients since this is a bug.
+<li>The gateway data rate utilization panel in Network Operations Center now includes all gateway uplink traffic, not just traffic that has been processed for an end device.
 <ul>
-<li><code>/qr-code/end-devices/parse</code> is changed to <code>/qr-codes/end-devices/parse</code>.</li>
-<li><code>/qr-code/end-devices/{format_id}/parse</code> is changed to <code>/qr-codes/end-devices/{format_id}/parse</code>.</li>
+<li>This requires a Network Operations Center migration (<code>tti-lw-stack noc-db migrate</code>).</li>
+<li>Existing data is not migrated: only new data will be shown in the panel.</li>
 </ul>
 </li>
-<li>Fixed authenticating with Packet Broker when gRPC dialer schemes are used in the address.</li>
+<li>End device data stream not being closed when navigating away from end device pages, which could cause event streams stopping to work due to too many open connections.</li>
+<li>Editing certain fields in the Tenant Settings form, more specifically in the presence of cluster overrides and sending the patch update.</li>
 </ul>
 
           </div>
@@ -257,7 +277,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <a href="https://www.thethingsindustries.com/docs/whats-new/">
   <div class="whats-new-800">
     <div class="whats-new-header-800">
-      <p>See what's new in V3.26.2</p>
+      <p>See what's new in V3.27.0</p>
       <p>-></p>
     </div>
   </div>

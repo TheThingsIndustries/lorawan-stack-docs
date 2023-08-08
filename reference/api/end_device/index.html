@@ -44,7 +44,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <div class="navbar-brand">
       <a class="navbar-item" href="/docs/">
         <img class="logo" src="/docs/img/TTS-logo.svg">
-        <p class="navbar-item is-size-7">v3.26.2</p>
+        <p class="navbar-item is-size-7">v3.27.0</p>
       </a><div class="navbar-item navbar-search-menu" id="search-input-menu">
           </div>
       <span class="navbar-burger burger" data-target="topMenu">
@@ -635,6 +635,119 @@ This is NOT done automatically.</p>
   </tbody>
 </table>
 
+<h2 id="the-enddevicebatchregistry-service">The <code>EndDeviceBatchRegistry</code> service</h2>
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>EndDeviceBatchRegistry.Get</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Get a batch of end devices with the given identifiers, selecting the fields specified
+in the field mask.
+More or less fields may be returned, depending on the rights of the caller.
+Devices not found are skipped and no error is returned.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:BatchGetEndDevicesRequest"><code>BatchGetEndDevicesRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:EndDevices"><code>EndDevices</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/applications/{application_ids.application_id}/devices/batch</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>EndDeviceBatchRegistry.Delete</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        <p>Delete a batch of end devices with the given IDs.</p>
+<p>This operation is atomic; either all devices are deleted or none.
+Devices not found are skipped and no error is returned.
+Before calling this RPC, use the corresponding BatchDelete RPCs
+of NsEndDeviceRegistry, AsEndDeviceRegistry and
+optionally the JsEndDeviceRegistry to delete the end devices.
+If the devices were claimed on a Join Server, use the BatchUnclaim RPC
+of the DeviceClaimingServer.
+This is NOT done automatically.</p>
+
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:BatchDeleteEndDevicesRequest"><code>BatchDeleteEndDevicesRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>DELETE</code> <code>/api/v3/applications/{application_ids.application_id}/devices/batch</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 <h2 id="the-jsenddeviceregistry-service">The <code>JsEndDeviceRegistry</code> service</h2>
 <p>OTAA devices are registered in the Join Server&rsquo;s <code>JsEndDeviceRegistry</code>. The following <a href="#message:EndDevice">EndDevice fields</a> are registered in this registry:</p>
 <ul>
@@ -806,6 +919,59 @@ If there are multiple matches, an error will be returned.
       </th>
       <td>
         <p><code>DELETE</code> <code>/api/v3/js/applications/{application_ids.application_id}/devices/{device_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="the-jsenddevicebatchregistry-service">The <code>JsEndDeviceBatchRegistry</code> service</h2>
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>JsEndDeviceBatchRegistry.Delete</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Delete a list of devices within the same application.
+This operation is atomic; either all devices are deleted or none.
+Devices not found are skipped and no error is returned.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:BatchDeleteEndDevicesRequest"><code>BatchDeleteEndDevicesRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>DELETE</code> <code>/api/v3/js/applications/{application_ids.application_id}/devices/batch</code></p>
       </td>
     </tr>
   </tbody>
@@ -988,6 +1154,59 @@ If there are multiple matches, an error will be returned.
   </tbody>
 </table>
 
+<h2 id="the-nsenddevicebatchregistry-service">The <code>NsEndDeviceBatchRegistry</code> service</h2>
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>NsEndDeviceBatchRegistry.Delete</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Delete a list of devices within the same application.
+This operation is atomic; either all devices are deleted or none.
+Devices not found are skipped and no error is returned.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:BatchDeleteEndDevicesRequest"><code>BatchDeleteEndDevicesRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>DELETE</code> <code>/api/v3/ns/applications/{application_ids.application_id}/devices/batch</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 <h2 id="the-asenddeviceregistry-service">The <code>AsEndDeviceRegistry</code> service</h2>
 <p>The following <a href="#message:EndDevice">EndDevice fields</a> are registered in the Application Server&rsquo;s <code>AsEndDeviceRegistry</code>:</p>
 <ul>
@@ -1157,6 +1376,59 @@ If there are multiple matches, an error will be returned.
       </th>
       <td>
         <p><code>DELETE</code> <code>/api/v3/as/applications/{application_ids.application_id}/devices/{device_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="the-asenddevicebatchregistry-service">The <code>AsEndDeviceBatchRegistry</code> service</h2>
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>AsEndDeviceBatchRegistry.Delete</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Delete a list of devices within the same application.
+This operation is atomic; either all devices are deleted or none.
+Devices not found are skipped and no error is returned.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:BatchDeleteEndDevicesRequest"><code>BatchDeleteEndDevicesRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>DELETE</code> <code>/api/v3/as/applications/{application_ids.application_id}/devices/batch</code></p>
       </td>
     </tr>
   </tbody>
@@ -2134,6 +2406,7 @@ in a future version of The Things Stack.
   "class_b_c": {},
   "priority": "LOWEST",
   "correlation_ids": [],
+  "confirmed_retry": {},
 }</code></pre>
 </details>
 
@@ -2503,6 +2776,44 @@ If not set, this downlink message may be transmitted in class A, B and C.</p>
   </tbody>
 </table>
 
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>confirmed_retry</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ApplicationDownlink.ConfirmedRetry">
+  
+  <code>
+    
+    ApplicationDownlink.ConfirmedRetry
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
 
 
 <h3 id="message:ApplicationDownlink.ClassBC">Message <code>ApplicationDownlink.ClassBC</code></h3>
@@ -2608,6 +2919,96 @@ If group index is set, gateways will be grouped by the index for the Network Ser
 This requires the gateway to have GPS time synchronization.
 If the time is in the past or if there is a scheduling conflict, the downlink message fails.
 If null, the time is selected based on slot availability. This is recommended in class B mode.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:ApplicationDownlink.ConfirmedRetry">Message <code>ApplicationDownlink.ConfirmedRetry</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "attempt": 0,
+  "max_attempts": null,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>attempt</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The number of attempted confirmed downlink acknowledgements.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>max_attempts</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    UInt32Value
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The maximum number of confirmed downlink acknowledgement attempts.
+If null, the Application Server configuration is used instead.</p>
+          <p><code>gt</code>: <code>0</code></p>
+          <p><code>lte</code>: <code>100</code></p>
       </td>
     </tr>
     
@@ -3681,6 +4082,247 @@ in a future version of The Things Stack.</p>
         
   <code>bool</code>
 </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:BatchDeleteEndDevicesRequest">Message <code>BatchDeleteEndDevicesRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "application_ids": {},
+  "device_ids": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>application_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ApplicationIdentifiers">
+  
+  <code>
+    
+    ApplicationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>device_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+        
+        repeated 
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_items</code>: <code>20</code></p>
+          <p><code>min_items</code>: <code>1</code></p>
+            <p><code>max_len</code>: <code>36</code></p>
+            <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:BatchGetEndDevicesRequest">Message <code>BatchGetEndDevicesRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "application_ids": {},
+  "device_ids": [],
+  "field_mask": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>application_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ApplicationIdentifiers">
+  
+  <code>
+    
+    ApplicationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>device_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+        
+        repeated 
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_items</code>: <code>20</code></p>
+          <p><code>min_items</code>: <code>1</code></p>
+            <p><code>max_len</code>: <code>36</code></p>
+            <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>field_mask</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    FieldMask
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The names of the end device fields that should be returned.
+This mask is applied on all the end devices in the result.
+See the API reference for which fields can be returned by the different services.</p>
+      </td>
     </tr>
     
   </tbody>
@@ -7729,6 +8371,66 @@ This field is set by the Application Server and stored in the Identity Server.</
           <p>The LoRaWAN DevAddr.</p>
           <p><code>ignore_empty</code></p>
           <p><code>len</code>: <code>4</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:EndDeviceIdentifiersList">Message <code>EndDeviceIdentifiersList</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "end_device_ids": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>end_device_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:EndDeviceIdentifiers">
+  
+  <code>
+    
+    EndDeviceIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        
       </td>
     </tr>
     
@@ -28210,6 +28912,12 @@ If set to false, this message should not be processed.</p>
 
 	
 
+	
+
+	
+
+	
+
 
         </div>
         <div class="is-clearfix">
@@ -28238,13 +28946,25 @@ If set to false, this message should not be processed.</p>
       <li><a href='#the-enddeviceregistry-service'>The EndDeviceRegistry service</a></li>
     
       
+      <li><a href='#the-enddevicebatchregistry-service'>The EndDeviceBatchRegistry service</a></li>
+    
+      
       <li><a href='#the-jsenddeviceregistry-service'>The JsEndDeviceRegistry service</a></li>
+    
+      
+      <li><a href='#the-jsenddevicebatchregistry-service'>The JsEndDeviceBatchRegistry service</a></li>
     
       
       <li><a href='#the-nsenddeviceregistry-service'>The NsEndDeviceRegistry service</a></li>
     
       
+      <li><a href='#the-nsenddevicebatchregistry-service'>The NsEndDeviceBatchRegistry service</a></li>
+    
+      
       <li><a href='#the-asenddeviceregistry-service'>The AsEndDeviceRegistry service</a></li>
+    
+      
+      <li><a href='#the-asenddevicebatchregistry-service'>The AsEndDeviceBatchRegistry service</a></li>
     
       
       <li><a href='#the-enddeviceclaimingserver-service'>The EndDeviceClaimingServer service</a></li>
@@ -28303,10 +29023,10 @@ If set to false, this message should not be processed.</p>
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 04 Jun 2023.
+  Last changed by Nejra Selimović on 08 Aug 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/aab299b9f310a04483897f1188252022a9bd39ea">
-      doc: Update API docs (#1117)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/723366e675acba2997d5d7abde4fa00ec7c8db66">
+      doc: Add v3.27.0 release docs (#1152)
     </a>
 </p>
 
