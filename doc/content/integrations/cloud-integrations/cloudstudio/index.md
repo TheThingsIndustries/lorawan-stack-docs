@@ -34,13 +34,19 @@ In the **Details** tab, provide a **Description** of your model, and an arbitrar
 
 {{< figure src="creating-device-model.png" alt="Creating a custom device model" >}}
 
+{{< figure src="device-model.png" alt="Custom device model" >}}
+
 Next, you need to edit this model. Click on three dots next to your newly created model in the device models list and select **Edit**, as shown on the image below.
 
 {{< figure src="edit-device-model.png" alt="Editing a newly created device model" >}}
 
 Switch to the **Scripts** tab.
 
-Next, you need to define a device configuration script for your upcoming Gear Studio device. Click the **Edit** button next to the **Configuration** window and paste the following content:
+Next, you need to define a device configuration script for your upcoming Gear Studio device. 
+
+{{< figure src="scripts-configuration.png" alt="Add configuration script" >}}
+
+Click the **Edit** button next to the **Configuration** window and paste the following content:
 
 ```js
 function getConfiguration(config)
@@ -55,9 +61,15 @@ function getEndpoints(deviceAddress, endpoints)
 }
 ```
 
+{{< figure src="configuration.png" alt="Configuration script" >}}
+
 The example configuration script above shows how to define device's address label, and how to define endpoints that will receive sensor values. [See Cloud Studio documentation for more info about device configuration scripts](https://wiki.cloud.studio/en/page/199)
 
-You also need to define a payload parser script, in order for Gear Studio to be able to properly parse the data coming from your end device on {{% tts %}}. Click on the **Edit** button next to the **Payload parser** window and paste the following content:
+You also need to define a payload parser script, in order for Gear Studio to be able to properly parse the data coming from your end device on {{% tts %}}. 
+
+{{< figure src="scripts-payload-parser.png" alt="Add payload parser script" >}}
+
+Click on the **Edit** button next to the **Payload parser** window and paste the following content:
 
 ```js
 function parseUplink(device, payload)
@@ -121,14 +133,14 @@ To create a dashboard in Gear Studio, in **Settings** mode, navigate to **Dashbo
 
 Add a **Description** and **Comments**, and select **Add Group**. Under group settings, add a **Title** and select **Add widget**.
 
-{{< figure src="add-dashboard.png" alt="Adding a dashboard" >}}
+{{< figure src="widget-settings.png" alt="Adjusting widget settings" >}}
+
+{{< figure src="select-widget.png" alt="Select widget" >}}
 
 Choose the desired widget type, adjust **Minimum** and **Maximum** values according to your data values range, choose the **Variable** you wish to monitor, and select a **Device** you want to monitor it from.
 
-{{< figure src="widget-settings.png" alt="Adjusting widget settings" >}}
+{{< figure src="add-dashboard.png" alt="Adding a dashboard" >}}
 
 Now, go back to the **Monitoring** mode in Gear Studio, navigate to **Dashboards** on the left hand menu and start monitoring your sensor data!
-
-{{< figure src="temperature-dashboard.png" alt="Dashboard showing temperature sensor values" >}}
 
 To read about available Cloud Studio features, cool ways to customize your devices, dashboards and much more, check the [official Gear Studio documentation site](https://wiki.cloud.studio/).
