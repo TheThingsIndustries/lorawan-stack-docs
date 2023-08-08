@@ -354,13 +354,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
          alt="Creating a custom device model"/>
 </figure>
 
+<figure><img src="device-model.png"
+         alt="Custom device model"/>
+</figure>
+
 <p>Next, you need to edit this model. Click on three dots next to your newly created model in the device models list and select <strong>Edit</strong>, as shown on the image below.</p>
 <figure><img src="edit-device-model.png"
          alt="Editing a newly created device model"/>
 </figure>
 
 <p>Switch to the <strong>Scripts</strong> tab.</p>
-<p>Next, you need to define a device configuration script for your upcoming Gear Studio device. Click the <strong>Edit</strong> button next to the <strong>Configuration</strong> window and paste the following content:</p>
+<p>Next, you need to define a device configuration script for your upcoming Gear Studio device.</p>
+<figure><img src="scripts-configuration.png"
+         alt="Add configuration script"/>
+</figure>
+
+<p>Click the <strong>Edit</strong> button next to the <strong>Configuration</strong> window and paste the following content:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">getConfiguration</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">config</span><span class="p">.</span><span class="nx">addressLabel</span> <span class="o">=</span> <span class="p">{</span><span class="nx">en</span><span class="o">:</span> <span class="s2">&#34;DevEUI&#34;</span><span class="p">,</span> <span class="nx">es</span><span class="o">:</span> <span class="s2">&#34;DevEUI&#34;</span><span class="p">};</span>
@@ -371,8 +380,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl">  <span class="nx">endpoints</span><span class="p">.</span><span class="nx">addEndpoint</span><span class="p">(</span><span class="s2">&#34;1&#34;</span><span class="p">,</span> <span class="s2">&#34;Temperature sensor&#34;</span><span class="p">,</span> <span class="nx">endpointType</span><span class="p">.</span><span class="nx">temperatureSensor</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">  <span class="nx">endpoints</span><span class="p">.</span><span class="nx">addEndpoint</span><span class="p">(</span><span class="s2">&#34;2&#34;</span><span class="p">,</span> <span class="s2">&#34;humidity sensor&#34;</span><span class="p">,</span> <span class="nx">endpointType</span><span class="p">.</span><span class="nx">humiditySensor</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>The example configuration script above shows how to define device&rsquo;s address label, and how to define endpoints that will receive sensor values. <a href="https://wiki.cloud.studio/en/page/199">See Cloud Studio documentation for more info about device configuration scripts</a></p>
-<p>You also need to define a payload parser script, in order for Gear Studio to be able to properly parse the data coming from your end device on The Things Stack. Click on the <strong>Edit</strong> button next to the <strong>Payload parser</strong> window and paste the following content:</p>
+</span></span></code></pre></div><figure><img src="configuration.png"
+         alt="Configuration script"/>
+</figure>
+
+<p>The example configuration script above shows how to define device&rsquo;s address label, and how to define endpoints that will receive sensor values. <a href="https://wiki.cloud.studio/en/page/199">See Cloud Studio documentation for more info about device configuration scripts</a></p>
+<p>You also need to define a payload parser script, in order for Gear Studio to be able to properly parse the data coming from your end device on The Things Stack.</p>
+<figure><img src="scripts-payload-parser.png"
+         alt="Add payload parser script"/>
+</figure>
+
+<p>Click on the <strong>Edit</strong> button next to the <strong>Payload parser</strong> window and paste the following content:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-js" data-lang="js"><span class="line"><span class="cl"><span class="kd">function</span> <span class="nx">parseUplink</span><span class="p">(</span><span class="nx">device</span><span class="p">,</span> <span class="nx">payload</span><span class="p">)</span>
 </span></span><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kd">var</span> <span class="nx">parsed</span> <span class="o">=</span> <span class="nx">payload</span><span class="p">.</span><span class="nx">asParsedObject</span><span class="p">();</span>
@@ -422,20 +440,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h2 id="monitor-your-data">Monitor Your Data</h2>
 <p>To create a dashboard in Gear Studio, in <strong>Settings</strong> mode, navigate to <strong>Dashboards → Dahboards</strong> on the left hand menu. Click the <strong>Add</strong> button.</p>
 <p>Add a <strong>Description</strong> and <strong>Comments</strong>, and select <strong>Add Group</strong>. Under group settings, add a <strong>Title</strong> and select <strong>Add widget</strong>.</p>
-<figure><img src="add-dashboard.png"
-         alt="Adding a dashboard"/>
-</figure>
-
-<p>Choose the desired widget type, adjust <strong>Minimum</strong> and <strong>Maximum</strong> values according to your data values range, choose the <strong>Variable</strong> you wish to monitor, and select a <strong>Device</strong> you want to monitor it from.</p>
 <figure><img src="widget-settings.png"
          alt="Adjusting widget settings"/>
 </figure>
 
-<p>Now, go back to the <strong>Monitoring</strong> mode in Gear Studio, navigate to <strong>Dashboards</strong> on the left hand menu and start monitoring your sensor data!</p>
-<figure><img src="temperature-dashboard.png"
-         alt="Dashboard showing temperature sensor values"/>
+<figure><img src="select-widget.png"
+         alt="Select widget"/>
 </figure>
 
+<p>Choose the desired widget type, adjust <strong>Minimum</strong> and <strong>Maximum</strong> values according to your data values range, choose the <strong>Variable</strong> you wish to monitor, and select a <strong>Device</strong> you want to monitor it from.</p>
+<figure><img src="add-dashboard.png"
+         alt="Adding a dashboard"/>
+</figure>
+
+<p>Now, go back to the <strong>Monitoring</strong> mode in Gear Studio, navigate to <strong>Dashboards</strong> on the left hand menu and start monitoring your sensor data!</p>
 <p>To read about available Cloud Studio features, cool ways to customize your devices, dashboards and much more, check the <a href="https://wiki.cloud.studio/">official Gear Studio documentation site</a>.</p>
         </div>
         <div class="is-clearfix">
@@ -511,10 +529,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Nejra Selimović on 17 Nov 2021.
+  Last changed by Nejra Selimović on 08 Aug 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/5d29b990eb8ed318e388c5b085525e30df45b4cc">
-      doc: Remove unnecessary notes, remove old new-in-version tags (#651)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/2d4ef61fd598ecec72b9bd114270ae5c369e01e0">
+      doc: Update Cloud Studio screenshots (#1156)
     </a>
 </p>
 
