@@ -53,10 +53,10 @@ End Device commands
 ### SEE ALSO
 
 * [ttn-lw-cli]({{< relref "ttn-lw-cli" >}})	 - The Things Industries Command-line Interface
+* [ttn-lw-cli end-devices batch-delete]({{< relref "ttn-lw-cli_end-devices_batch-delete" >}})	 - Delete a batch of end devices within the same application (EXPERIMENTAL).
 * [ttn-lw-cli end-devices create]({{< relref "ttn-lw-cli_end-devices_create" >}})	 - Create an end device
 * [ttn-lw-cli end-devices delete]({{< relref "ttn-lw-cli_end-devices_delete" >}})	 - Delete an end device
 * [ttn-lw-cli end-devices downlink]({{< relref "ttn-lw-cli_end-devices_downlink" >}})	 - Application downlink commands
-* [ttn-lw-cli end-devices generate-qr]({{< relref "ttn-lw-cli_end-devices_generate-qr" >}})	 - Generate an end device QR code (EXPERIMENTAL)
 * [ttn-lw-cli end-devices get]({{< relref "ttn-lw-cli_end-devices_get" >}})	 - Get an end device
 * [ttn-lw-cli end-devices get-default-mac-settings]({{< relref "ttn-lw-cli_end-devices_get-default-mac-settings" >}})	 - Get Network Server default MAC settings for frequency plan and LoRaWAN version
 * [ttn-lw-cli end-devices get-dev-addr-prefixes]({{< relref "ttn-lw-cli_end-devices_get-dev-addr-prefixes" >}})	 - Get Network Server configured device address prefixes
@@ -65,8 +65,6 @@ End Device commands
 * [ttn-lw-cli end-devices list-bands]({{< relref "ttn-lw-cli_end-devices_list-bands" >}})	 - List available band definitions
 * [ttn-lw-cli end-devices list-frequency-plans]({{< relref "ttn-lw-cli_end-devices_list-frequency-plans" >}})	 - List available frequency plans for end devices
 * [ttn-lw-cli end-devices list-phy-versions]({{< relref "ttn-lw-cli_end-devices_list-phy-versions" >}})	 - List supported phy versions
-* [ttn-lw-cli end-devices list-qr-formats]({{< relref "ttn-lw-cli_end-devices_list-qr-formats" >}})	 - List QR code formats (EXPERIMENTAL)
-* [ttn-lw-cli end-devices provision]({{< relref "ttn-lw-cli_end-devices_provision" >}})	 - Provision end devices using vendor-specific data
 * [ttn-lw-cli end-devices reset]({{< relref "ttn-lw-cli_end-devices_reset" >}})	 - Reset state of an end device to factory defaults
 * [ttn-lw-cli end-devices search]({{< relref "ttn-lw-cli_end-devices_search" >}})	 - Search for end devices
 * [ttn-lw-cli end-devices set]({{< relref "ttn-lw-cli_end-devices_set" >}})	 - Set properties of an end device

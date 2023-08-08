@@ -9,6 +9,12 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.27.0
+
+### `5-4-ecs-services`
+
+- The default number of desired instances for the Gateway Configuration Server, Network Operations Center and Network Operations Center Grafana services has been increased to 2. We recommend that production deployments consider deploying extra replicas in order to ensure high availability.
+
 ## 3.26.2
 
 ### `5-2-ecs-ops`

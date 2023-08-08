@@ -9,6 +9,8 @@ description: ""
 
 ## Messages
 
+{{< proto/message message="ApplicationIdentifiers" >}}
+
 {{< proto/message message="GenerateDevAddrResponse" >}}
 
 {{< api-refs >}}

@@ -14,21 +14,23 @@ ttn-lw-cli end-devices downlink replace [application-id] [device-id] [flags]
 ### Options
 
 ```
-      --application-id string               
-      --class-b-c.absolute-time timestamp   
-      --class-b-c.gateways strings          
-      --confirmed                           
-      --correlation-ids strings             
-      --decoded-payload-warnings strings    
-      --dev-eui string                      (hex)
-      --device-id string                    
-      --f-cnt uint32                        
-      --f-port uint32                       
-      --frm-payload bytesHex                
-  -h, --help                                help for replace
-      --join-eui string                     (hex)
-      --priority string                     allowed values: LOWEST, LOW, BELOW_NORMAL, NORMAL, ABOVE_NORMAL, HIGH, HIGHEST
-      --session-key-id bytesHex             
+      --application-id string                 
+      --class-b-c.absolute-time timestamp     
+      --class-b-c.gateways strings            
+      --confirmed                             
+      --confirmed-retry.attempt uint32        
+      --confirmed-retry.max-attempts uint32   
+      --correlation-ids strings               
+      --decoded-payload-warnings strings      
+      --dev-eui string                        (hex)
+      --device-id string                      
+      --f-cnt uint32                          
+      --f-port uint32                         
+      --frm-payload bytesHex                  
+  -h, --help                                  help for replace
+      --join-eui string                       (hex)
+      --priority string                       allowed values: LOWEST, LOW, BELOW_NORMAL, NORMAL, ABOVE_NORMAL, HIGH, HIGHEST
+      --session-key-id bytesHex               
 ```
 
 ### Options inherited from parent commands
