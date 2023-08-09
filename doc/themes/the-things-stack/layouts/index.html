@@ -1,60 +1,67 @@
 {{ define "main" }}
 
-<div class="section">
-  <h1 class="title is-size-2 title-intro has-vertical-space">The Things Stack Documentation</h1>
-  <div class="content-intro">
-    <p>
-      The Things Stack is a robust, yet flexible LoRaWAN® Network Server that caters to the needs of demanding LoRaWAN deployments, from covering the essentials to advanced security configurations and device life cycle management.
-    </p>
-  </div>
-</div>
+<div>
 
-{{ $quickstart := dict "title" "Getting Started" "button" "Learn More" "url" (.Site.GetPage "getting-started").RelPermalink "text" "Get started with The Things Stack. If you're new to The Things Stack and/or LoRaWAN, this is the place to start."}}
+  <section class="section-doc-home-page-hero ttui-container grid pt-ls-xl pb-ls-xl">
 
-{{ $enddevices := dict "title" "End Devices" "button" "Learn More" "url" (.Site.GetPage "devices").RelPermalink "text" "Learn how to configure and manage LoRaWAN End Devices in The Things Stack."}}
-
-{{ $gateways := dict "title" "Gateways" "button" "Learn More" "url" (.Site.GetPage "gateways").RelPermalink "text" "Learn to connect and manage various LoRaWAN Gateways on The Things Stack."}}
-
-{{ $data := dict "title" "Integrations" "button" "Learn More" "url" (.Site.GetPage "integrations").RelPermalink "text" "Learn how to work with End Device data on The Things Stack and how to integrate with external systems."}}
-
-{{ $tts := dict "title" "The Things Stack" "button" "Learn More" "url" (.Site.GetPage "the-things-stack").RelPermalink "text" " Learn about the different flavours of The Things Stack and how to install/access them."}}
-
-{{ $reference := dict "title" "Reference" "button" "Learn More" "url" (.Site.GetPage "reference").RelPermalink "text" "Curated list of advanced topics for The Things Stack. Leverage the full customization capabilities of The Things Stack."}}
-
-{{ $cards := slice $quickstart $enddevices $gateways $data $tts $reference }}
-
-<div class="section">
-  <div class="container is-max-desktop">
-    <div class="columns" style="flex-wrap: wrap" >
-      {{ range $cards}}
-        <div class="column is-flex">
-          <div class="card is-fullwidth">
-            <div class="card-content">
-              <div class="title-content">
-                <h2 class="title is-size-5 has-text-centered">{{ .title }}</h2>
-                <div class="content">
-                    {{ .text | markdownify }}
-                </div>
-              </div>
-              <div class="buttons is-centered">
-                <a href="{{ .url }}" class="button is-primary is-outlined">{{ .button }}</a>
-              </div>
+    <div class="item-5 md:item-12 grid sm:mb-ls-l">
+      <div class="mb-ls-l item-12 md:item-6 sm:item-8 xs:item-12">
+        <p class="bg-tts-primary-main d-inline-block c-white ttui-body p-sides-cs-s pt-cs-xxs pb-cs-xxs br-xxl mb-cs-m">v{{- .Site.Params.version -}}</p>
+        <h1 class="mb-cs-s c-interactive-03">The Things Stack Documentation</h1>
+        <p class="ttui-body fs-l mb-cs-xl">The Things Stack is a robust, yet flexible LoRaWAN® Network Server that caters to the needs of demanding LoRaWAN deployments, from covering the essentials to advanced security configurations and device life cycle management.</p>
+      </div>
+      {{ $lorawanbasics := dict "link" "Get to know LoRaWAN®" "url" (.Site.GetPage "/getting-started/lorawan-basics").RelPermalink}}
+      {{ $lorawannetwork := dict "link" "Set up your first LoRaWAN® network" "url" (.Site.GetPage "/getting-started/setup-first-network").RelPermalink}}
+      {{ $addgateways := dict "link" "Connect your first gateway" "url" (.Site.GetPage "/gateways/concepts/adding-gateways").RelPermalink}}
+      {{ $adddevice := dict "link" "Add your first device" "url" (.Site.GetPage "/devices/adding-devices").RelPermalink}}
+      {{ $certified := dict "link" "Get certified" "url" "https://www.thethingsnetwork.org/achievements"}}
+      {{ $list := slice $lorawanbasics $lorawannetwork $addgateways $adddevice $certified }}
+      <div class="item-12 md:item-6 sm:item-12">
+        <p class="ttui-body fs-l fw-bolder mb-cs-xl">Try it out</p>
+        <div class="container-whats-new-list flex-column b-line-02 br-l">
+          {{ range $list}}
+          <a class="ttui-link ttui-link--highlight p-cs-m" href="{{ .url }}">
+            <div class="d-flex j-between">
+              <p>{{ .link }}</p>
+              <p>&#8594</p>
             </div>
-          </div>
+          </a>
+          <div class="whats-new-separation-line"></div>
+          {{ end }}
         </div>
-      {{ end }}
-    </div>
-  </div>
-</div>
-
-<div class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column">
-        {{ partial "whats-new.html" . }}
       </div>
     </div>
-  </div>
+
+    {{ $gettingstarted := dict "url" (.Site.GetPage "getting-started").RelPermalink "title" "Getting started" "text" "Get started with The Things Stack. If you’re new to The Things Stack and/or LoRaWAN, this is the place to start." "bgcolor" "background-color: #002B9E"}}
+    {{ $devices := dict "url" (.Site.GetPage "devices").RelPermalink "title" "End Devices" "text" "Learn how to configure and manage LoRaWAN End Devices in The Things Stack." "bgcolor" "background-color: #1E5DFF"}}
+    {{ $gateways := dict "url" (.Site.GetPage "gateways").RelPermalink "title" "Gateways" "text" "Learn to connect and manage various LoRaWAN Gateways on The Things Stack." "bgcolor" "background-color: #4275FF" }}
+    {{ $integrations := dict "url" (.Site.GetPage "integrations").RelPermalink "title" "Integrations" "text" "Learn how to work with End Device data on The Things Stack and how to integrate with external systems." "bgcolor" "background-color: #1F52D8" }}
+    {{ $tts := dict "url" (.Site.GetPage "the-things-stack").RelPermalink "title" "The Things Stack" "text" "Learn about the different flavours of The Things Stack and how to install/access them." "bgcolor" "background-color: #073DCB" }}
+    {{ $reference := dict "url" (.Site.GetPage "reference").RelPermalink "title" "Reference" "text" "Curated list of advanced topics for The Things Stack. Leverage the full customization capabilities of The Things Stack." "bgcolor" "background-color: #001958" }}
+    {{ $cards := slice $gettingstarted $devices $gateways $integrations $tts $reference }}
+    <div class="container-doc-home-page-browse item-6 item-start-7 md:item-12 md:item-start-1">
+      <p class="ttui-body fs-l fw-bolder mb-cs-xl">Browse by section</p>
+      <div class="container-doc-home-page-cards grid grid--center">
+        {{ range $cards}}
+        <a href="{{ .url }}" class="whats-new-hero-card item-6 xxs:item-12 h-full flex-column p-cs-l br-l" style="{{ .bgcolor }}">
+          <div class="mb-cs-l">
+            <p class="ttui-body fs-l fw-bolder mb-cs-xs c-white">{{ .title }}</p>
+            <p class="ttui-body fs-m c-white">{{ .text }}</p>
+          </div>
+          <div>
+            <button class="ttui-btn ttui-btn--primary default fs-s">Learn more &#8594</button>
+          </div>
+        </a>
+        {{ end }}
+      </div>
+    </div>
+
+  </section>
+
+
+  {{ partial "whats-new.html" . }}
+
+
 </div>
 
 {{ end }}
