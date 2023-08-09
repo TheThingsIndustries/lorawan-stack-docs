@@ -5,7 +5,7 @@ weight: 2
 aliases: [/getting-started/installation/certificates]
 ---
 
-{{% tts %}} needs to be configured with Transport Layer Security (TLS) and HTTPS. This requires a TLS certificate and a corresponding key.
+{{% tts %}} has built in support for Transport Layer Security (TLS) and HTTPS. This requires a TLS certificate and a corresponding key. For using {{% tts %}} behind an external proxy that can terminate TLS see the [proxy]({{< relref "proxy" >}}) section.
 
 <!--more-->
 
@@ -84,7 +84,12 @@ Write the configuration for your CA to `ca.json`:
 ```json
 {
   "names": [
-    {"C": "NL", "ST": "Noord-Holland", "L": "Amsterdam", "O": "The Things Demo"}
+    {
+      "C": "NL",
+      "ST": "Noord-Holland",
+      "L": "Amsterdam",
+      "O": "The Things Demo"
+    }
   ]
 }
 ```
@@ -101,7 +106,12 @@ Now write the configuration for your certificate to `cert.json`:
 {
   "hosts": ["thethings.example.com"],
   "names": [
-    {"C": "NL", "ST": "Noord-Holland", "L": "Amsterdam", "O": "The Things Demo"}
+    {
+      "C": "NL",
+      "ST": "Noord-Holland",
+      "L": "Amsterdam",
+      "O": "The Things Demo"
+    }
   ]
 }
 ```
