@@ -144,6 +144,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/docker/proxy/" class="">Proxy</a>
+    
+  </li>
+
+  <li>
     <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/docker/troubleshooting/" class="">Troubleshooting Installation</a>
     
   </li>
@@ -211,7 +216,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </h1>
         
         <div class="content">
-          <p>The Things Stack needs to be configured with Transport Layer Security (TLS) and HTTPS. This requires a TLS certificate and a corresponding key.</p>
+          <p>The Things Stack has built in support for Transport Layer Security (TLS) and HTTPS. This requires a TLS certificate and a corresponding key. For using The Things Stack behind an external proxy that can terminate TLS see the <a href="/docs/the-things-stack/host/docker/proxy/">proxy</a> section.</p>
 <p>In this guide, we request a free, trusted certificate from <a href="https://letsencrypt.org/getting-started/">Let&rsquo;s Encrypt</a>, using the built in ACME support, but if you already have a certificate (<code>cert.pem</code>) and a corresponding key (<code>key.pem</code>), you can also use those. For local deployments, you can set up your own Certificate Authority and issue a certificate-key pair.</p>
 <h2 id="automatic-certificate-management">Automatic Certificate Management</h2>
 <p>The Things Stack can be configured to automatically retrieve and update Let&rsquo;s Encrypt certificates. Assuming you followed the <a href="/docs/the-things-stack/host/docker/configuration/">configuration</a> steps, create an <code>acme</code> directory where The Things Stack can store the certificate data:</p>
@@ -311,7 +316,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Write the configuration for your CA to <code>ca.json</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;names&#34;</span><span class="p">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="nt">&#34;C&#34;</span><span class="p">:</span> <span class="s2">&#34;NL&#34;</span><span class="p">,</span> <span class="nt">&#34;ST&#34;</span><span class="p">:</span> <span class="s2">&#34;Noord-Holland&#34;</span><span class="p">,</span> <span class="nt">&#34;L&#34;</span><span class="p">:</span> <span class="s2">&#34;Amsterdam&#34;</span><span class="p">,</span> <span class="nt">&#34;O&#34;</span><span class="p">:</span> <span class="s2">&#34;The Things Demo&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;C&#34;</span><span class="p">:</span> <span class="s2">&#34;NL&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;ST&#34;</span><span class="p">:</span> <span class="s2">&#34;Noord-Holland&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;L&#34;</span><span class="p">:</span> <span class="s2">&#34;Amsterdam&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;O&#34;</span><span class="p">:</span> <span class="s2">&#34;The Things Demo&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">]</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>Then use the following command to generate the CA key and certificate:</p>
@@ -320,7 +330,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;hosts&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;thethings.example.com&#34;</span><span class="p">],</span>
 </span></span><span class="line"><span class="cl">  <span class="nt">&#34;names&#34;</span><span class="p">:</span> <span class="p">[</span>
-</span></span><span class="line"><span class="cl">    <span class="p">{</span><span class="nt">&#34;C&#34;</span><span class="p">:</span> <span class="s2">&#34;NL&#34;</span><span class="p">,</span> <span class="nt">&#34;ST&#34;</span><span class="p">:</span> <span class="s2">&#34;Noord-Holland&#34;</span><span class="p">,</span> <span class="nt">&#34;L&#34;</span><span class="p">:</span> <span class="s2">&#34;Amsterdam&#34;</span><span class="p">,</span> <span class="nt">&#34;O&#34;</span><span class="p">:</span> <span class="s2">&#34;The Things Demo&#34;</span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;C&#34;</span><span class="p">:</span> <span class="s2">&#34;NL&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;ST&#34;</span><span class="p">:</span> <span class="s2">&#34;Noord-Holland&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;L&#34;</span><span class="p">:</span> <span class="s2">&#34;Amsterdam&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">      <span class="nt">&#34;O&#34;</span><span class="p">:</span> <span class="s2">&#34;The Things Demo&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">  <span class="p">]</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
@@ -408,10 +423,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <h3 class="title is-6">About this page</h3>
         <div class="content">
 <p class="is-size-7">
-  Last changed by Krishna Iyer on 19 Apr 2023.
+  Last changed by Krishna Iyer on 11 Aug 2023.
   <br>
-  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/7b36a78abab91e6a6967b41f03b65551a89e54c9">
-      Restructure documentation (#1076)
+  <a href="https://github.com/TheThingsIndustries/lorawan-stack-docs/commit/4c82ce64ed29edf5f0db9ffd5e169f95790ad141">
+      doc: Add notes on using an external proxy (#1158)
     </a>
 </p>
 
