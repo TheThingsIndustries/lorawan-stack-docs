@@ -50,7 +50,7 @@ Below is a JSON object with an example of a full telemetry data message that is 
 
 One such data object is sent every 24 hours. The purpose of each of these fields is listed below.
 
-- `uid`: universal unique identifier attached to telemetry data sent by the CLI.
+- `uid`: universal unique identifier attached to telemetry data sent by the CLI
 - `os`: basic information about the operating system of the machine which executes the CLI
 - `cli`: empty object signaling that the telemetry data is sent from a CLI
 
