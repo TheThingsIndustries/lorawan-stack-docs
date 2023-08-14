@@ -4,9 +4,23 @@ description: "Telemetry data collection by The Things Stack's Identity Server"
 aliases: "/telemetry/identity-server"
 ---
 
-## User's Identification
+## Configuring Telemetry Collection
 
-When the Identity Server starts the background task responsible for collecting and sending telemetry data, it generates the UID which is attached to every telemetry message that is sent. UID value is the SHA512 hash of `console.ui[IS,GS,NS,AS,JS].BaseURL` values.
+Telemetry collection is **enabled** by default for **{{% tts %}} Open Source** distribution.
+
+In order to disable it, set `telemetry.enable` to `false` in the [{{% tts %}} configuration]({{< ref "reference/configuration" >}}):
+
+```yaml
+telemetry:
+  enable: false
+```
+
+Telemetry collection is **disabled** by default for **{{% tts %}} Enterprise** distributions.
+
+## Initialization
+
+When the Identity Server starts the background task responsible for collecting and sending telemetry data, it generates the UID which is attached to every telemetry message that is sent.
+UID is the SHA512 hash of `console.ui[IS,GS,NS,AS,JS].BaseURL` values.
 
 {{< note >}}
 If you want the telemetry collector to use a different list of elements, there is an option to set your own list of values used in the SHA512 hash creation. Edit [{{% tts %}}'s configuration]({{< ref "reference/configuration" >}}) and set `telemetry.uid-elements` to a list of string values of your choice.
@@ -16,6 +30,7 @@ If you want the telemetry collector to use a different list of elements, there i
 telemetry:
   uid-elements: ["foo", "bar"]
 ```
+
 {{</ note >}}
 
 ## Telemetry Data Types
@@ -55,7 +70,7 @@ Below is a JSON object with an example of a full telemetry data message that is 
       },
       "accounts": {
         "users": {
-          "stan dard": 0,
+          "standard": 0,
           "admin": 1
         },
         "organizations": {
@@ -67,21 +82,12 @@ Below is a JSON object with an example of a full telemetry data message that is 
 }
 ```
 
-List of telemetry data fields and their purpose:
+One such data object is sent every 24 hours. The purpose of each of these fields is listed below.
 
 - `uid`: identifier which is built from the base64 encoding of URLs set in the configuration
 - `os`: basic information about the operating system of the machine which executed the CLI
 - `entities_count`: data regarding the amount of each entity and its possible states, e.g. the amount of active end devices in the last 24 hours, the amount of gateways per frequency plan ID, the total amount of organizations, etc
 
-## Disable Telemetry
-
-Telemetry collection is enabled by default and in order to disable it, set `telemetry.enable` to `false` in the [{{% tts %}} configuration]({{< ref "reference/configuration" >}}):
-
-```yaml
-telemetry:
-  enable: false
-```
-
 ## Visualization
 
-Check out [Telemetry Dashboard](https://telemetry.thethingsstack.io) to see visual representation of collected data. Some of the information available is: amount of each type of entity stored in the IdentityServer, the quantity of gateways for each frequency plan and the amount of end devices that were active in the last month, week and day.
+The Things Industries publishes aggregated data on the [Telemetry Dashboard](https://telemetry.thethingsstack.io).
