@@ -5,7 +5,7 @@ aliases: "/gateways/adding-gateways/troubleshooting"
 weight: -1
 ---
 
-This section provides help for common issues and frequently asked questions you may have when adding gateways. 
+This section provides help for common issues and frequently asked questions you may have when adding gateways.
 
 <!--more-->
 
@@ -135,6 +135,8 @@ This gateway may also be registered by another user, but you are not able to see
 
 To solve this, use a different gateway ID. If you are an administrator and wish to reuse a deleted ID, see [Purging Entities]({{< ref "/the-things-stack/management/purge" >}}).
 
+If you are using {{% tts %}} Cloud or Enterprise, ask the admin of your tenant to purge this ID for you.
+
 ## I get a "Gateway with EUI is Already Registered" error when adding a gateway.
 
 Another gateway is already registered with the same Gateway EUI. This gateway may be registered by another user, but if you are not an administrator (e.g if you are using {{% tts %}} Community Edition) you will not be able to see gateways registered by other users.
@@ -142,6 +144,8 @@ Another gateway is already registered with the same Gateway EUI. This gateway ma
 If the gateway is registered with the same EUI in some other tenant, the error will reflect that as well.
 
 First, double check that you have entered the EUI correctly. Then, double check that you have not already registered the gateway. Finally, if you have purchased the gateway secondhand, it is possible someone before you registered the gateway. Contact them to unregister it. If they are unavailable, we recommend you to contact the gateway manufacturer, who can help you configure your gateway with a new EUI or trace the supply chain.
+
+If you are using {{% tts %}} Cloud or Enterprise, ask the admin of your tenant if they can release this EUI. You may have to show proof that you own this gateway.
 
 A temporary workaround would be to define a custom Gateway EUI in physical gateway settings (if the gateway allows it), and register the gateway on {{% tts %}} using the new EUI. Note that a custom Gateway EUI should be issued from an IEEE block owned by the user.
 
@@ -242,7 +246,7 @@ If the gateway sends back a NACK, {{% tts %}} will retry sending in the next dow
 
 ## {{% lbs %}} packet forwarder logs mention the "HTTP connect failed: NET - Failed to get an IP address for the given hostname" error. What does it mean?
 
-This error indicates that the gateway was unable to resolve the CUPS URI. Please double check that your network is not blocking the CUPS URI and ports. 
+This error indicates that the gateway was unable to resolve the CUPS URI. Please double check that your network is not blocking the CUPS URI and ports.
 
 ## I'm noticing some errors in my UDP gateway's packet forwarder logs. What do they represent?
 
@@ -262,8 +266,8 @@ This JSON object will contain an `error` field describing the cause of the downl
 
 Example:
 
-``` json
-{"txpk_ack":{"error":"COLLISION_PACKET"}}
+```json
+{ "txpk_ack": { "error": "COLLISION_PACKET" } }
 ```
 
 If you are facing `TX_FREQ` or `TX_POWER` errors, please make sure that your gateway's `global_conf.json` file is properly configured. See [{{% udp-pf %}} Configuration]({{< ref "/gateways/concepts/udp#configuration" >}}) section for more info.
@@ -289,15 +293,15 @@ Seeing the [`gs.down.tx.fail` event]({{< ref "/reference/api/events#event:gs.dow
 
 ## No downlinks are reaching my UDP gateway. Why?
 
-With UDP gateways, if uplink messages are reaching {{% tts %}}, that does not mean the downlink messages are going to be received correctly by the gateway. 
+With UDP gateways, if uplink messages are reaching {{% tts %}}, that does not mean the downlink messages are going to be received correctly by the gateway.
 
 The {{% udp-pf %}} sends a `PULL_DATA` request every ~5 seconds to pull the data scheduled for a downlink transmission on {{% tts %}}.
 
-The server reponds with a `PULL_ACK` message to confirm that the network route is open and that the data can be sent through `PULL_RESP` packets any time. In order to pull the data, `PULL_ACK` messages have to reach the gateway with a reasonable latency, usually way lower than 500 ms. If this latency is high, pulling the downlink data will fail. One of the drawbacks of using the {{% udp-pf %}} is that it does not have an implemented mechanism to detect if pulling the downlink data fails, so your data might end up lost. 
+The server reponds with a `PULL_ACK` message to confirm that the network route is open and that the data can be sent through `PULL_RESP` packets any time. In order to pull the data, `PULL_ACK` messages have to reach the gateway with a reasonable latency, usually way lower than 500 ms. If this latency is high, pulling the downlink data will fail. One of the drawbacks of using the {{% udp-pf %}} is that it does not have an implemented mechanism to detect if pulling the downlink data fails, so your data might end up lost.
 
 Common reasons for having latency issues between the gateway and {{% tts %}} cluster are that the gateway is geographically far from the cluster, and using cellular or satellite backhauls for gateways.
 
-Try solving this issue by: 
+Try solving this issue by:
 
 - Checking your internet connection
 - Using {{% tts %}} cluster closest to the location of your gateway
@@ -334,6 +338,6 @@ Gateway's data consumption is influenced by many factors, and some of them can a
 
 We recommend contacting your gateway's manufacturer to gather insights on data consumption and an advice on how it can be optimized.
 
-##  My gateway is receiving all LoRaWAN and non-LoRaWAN traffic from devices in its surrounding. Can I filter unwanted sensor data at the gateway level?
+## My gateway is receiving all LoRaWAN and non-LoRaWAN traffic from devices in its surrounding. Can I filter unwanted sensor data at the gateway level?
 
 In general, a gateway will receive all other LoRaWAN and non-LoRaWAN traffic from neighbouring devices, and it will forward that traffic to the Network Server. When it comes to filtering unwanted sensor data at the gateway level, users might consider using a gateway with a whitelisting function. This function can effectively reduce data traffic and operational costs. Please contact your gateway's manufacturer for additional info.
