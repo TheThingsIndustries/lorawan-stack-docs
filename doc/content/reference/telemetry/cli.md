@@ -53,7 +53,3 @@ One such data object is sent every 24 hours. The purpose of each of these fields
 - `uid`: universal unique identifier attached to telemetry data sent by the CLI
 - `os`: basic information about the operating system of the machine which executes the CLI
 - `cli`: empty object signaling that the telemetry data is sent from a CLI
-
-## Visualization
-
-The Things Industries publishes aggregated data on the [Telemetry Dashboard](https://telemetry.thethingsstack.io).

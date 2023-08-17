@@ -87,7 +87,3 @@ One such data object is sent every 24 hours. The purpose of each of these fields
 - `uid`: identifier which is built from the base64 encoding of URLs set in the configuration
 - `os`: basic information about the operating system of the machine which executed the CLI
 - `entities_count`: data regarding the amount of each entity and its possible states, e.g. the amount of active end devices in the last 24 hours, the amount of gateways per frequency plan ID, the total amount of organizations, etc
-
-## Visualization
-
-The Things Industries publishes aggregated data on the [Telemetry Dashboard](https://telemetry.thethingsstack.io).
