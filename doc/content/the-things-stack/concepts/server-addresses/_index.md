@@ -14,7 +14,7 @@ Deployments of {{% tts %}} in a single cluster use the same server address for a
 Distributed deployments, like {{% tts %}} Cloud and Community Edition, use different addresses per region for routing components, while the address of global components (like Identity Server) is always the same. Enterprise and Open Source deployments may be in a single cluster, or distributed over multiple clusters with multiple addresses.
 The server addresses for the different {{% tts %}} deployments are listed below.
 
-You can update the examples below with your tenant ID and cluster ID by filling them here.  The `<tenant-id>` will be replaced with the provoded tenant ID.
+You can update the examples below with your tenant ID and cluster ID by filling them here.  The `<tenant-id>` will be replaced with the provided tenant ID.
 
 {{< tenant-cluster-selector >}}
 
@@ -44,7 +44,7 @@ The LNS gateway address is a combination of the **protocol** (wss), the **server
 
 **Example 1**: The <code data-content="cluster-address"><span data-content="cluster-id"></span></code> Community Edition LNS address is <code data-content="cluster-address">wss://<span data-content="cluster-id"></span>.cloud.thethings.network:8887</code>.
 
-**Example 2**: The LNS address for an <code data-content="cluster-address"><span data-content="cluster-id"></span></code> Cloud tenant is <code data-content="cluster-address">wss://<span data-content="tenant-id"></span>.<span data-content="cluster-id"></span>.cloud.thethings.industries:8887</code>.
+**Example 2**: The LNS address for a <code data-content="cluster-address"><span data-content="cluster-id"></span></code> Cloud tenant is <code data-content="cluster-address">wss://<span data-content="tenant-id"></span>.<span data-content="cluster-id"></span>.cloud.thethings.industries:8887</code>.
 
 **Example 3**: If you installed {{% tts %}} Enterprise or Open Source, the LNS address is the domain you used in configuration, for example `wss://thethings.example.com:8887`.
 
@@ -54,7 +54,7 @@ The CUPS gateway address is a combination of the **protocol** (https), the **ser
 
 **Example 1**: The <code data-content="cluster-address"><span data-content="cluster-id"></span></code> Community Edition CUPS address is <code data-content="cluster-address">https://<span data-content="cluster-id"></span>.cloud.thethings.network:443</code>.
 
-**Example 2**: The CUPS address for an <code data-content="cluster-address"><span data-content="cluster-id"></span></code> Cloud tenant is <code data-content="cluster-address">https://<span data-content="tenant-id"></span>.<span data-content="cluster-id"></span>.cloud.thethings.industries:443</code>.
+**Example 2**: The CUPS address for a <code data-content="cluster-address"><span data-content="cluster-id"></span></code> Cloud tenant is <code data-content="cluster-address">https://<span data-content="tenant-id"></span>.<span data-content="cluster-id"></span>.cloud.thethings.industries:443</code>.
 
 **Example 3**: If you installed {{% tts %}} Enterprise or Open Source, the CUPS address is the domain you used in configuration, for example `https://thethings.example.com:443`.
 
