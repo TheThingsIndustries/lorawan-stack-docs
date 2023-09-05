@@ -85,12 +85,12 @@ Then, schedule the following message to the [Application Server MQTT server]({{<
         {
           "gateway_ids": {
             "gateway_id": "gtw1"
-          },
+          }
         },
         {
           "gateway_ids": {
             "gateway_id": "gtw2"
-          },
+          }
         }
       ],
       "absolute_time": "2019-07-23T13:05:00Z"
