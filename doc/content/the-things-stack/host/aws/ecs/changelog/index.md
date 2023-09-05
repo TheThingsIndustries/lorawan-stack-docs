@@ -9,6 +9,16 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.27.1
+
+### `2-5-db-timescale`
+
+- The instance initialization scripts now automatically terminates the instance if the initialization fails.
+
+### `4-2a-configuration`
+
+- Added the `CollaboratorRightsSetOthersAsContacts` parameter.
+
 ## 3.27.0
 
 ### `5-4-ecs-services`
