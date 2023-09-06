@@ -158,6 +158,12 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/method service="EndDeviceClaimingServer" method="Unclaim" >}}
 
+## The `EndDeviceBatchClaimingServer` service
+
+{{< proto/method service="EndDeviceBatchClaimingServer" method="GetInfoByJoinEUIs" >}}
+
+{{< proto/method service="EndDeviceBatchClaimingServer" method="Unclaim" >}}
+
 ## The `DeviceRepository` service
 
 {{< proto/method service="DeviceRepository" method="ListBrands" >}}
@@ -232,6 +238,10 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="BatchUpdateEndDeviceLastSeenRequest" >}}
 
+{{< proto/message message="BatchUnclaimEndDevicesRequest" >}}
+
+{{< proto/message message="BatchUnclaimEndDevicesResponse" >}}
+
 {{< proto/message message="CreateEndDeviceRequest" >}}
 
 {{< proto/message message="CFList" >}}
@@ -288,7 +298,11 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="GetInfoByJoinEUIRequest" >}}
 
+{{< proto/message message="GetInfoByJoinEUIsRequest" >}}
+
 {{< proto/message message="GetInfoByJoinEUIResponse" >}}
+
+{{< proto/message message="GetInfoByJoinEUIsResponse" >}}
 
 {{< proto/message message="GetEndDeviceModelRequest" >}}
 

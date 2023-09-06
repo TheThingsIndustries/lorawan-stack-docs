@@ -1,0 +1,25 @@
+name: EndDeviceBatchClaimingServer
+methods:
+  Unclaim:
+    name: Unclaim
+    comment: |-
+      Unclaims multiple end devices on an external Join Server.
+      All devices must have the same application ID.
+      Check the response for devices that could not be unclaimed.
+    input:
+      name: BatchUnclaimEndDevicesRequest
+    output:
+      name: BatchUnclaimEndDevicesResponse
+    http:
+    - method: DELETE
+      path: /edcs/claim/{application_ids.application_id}/devices/batch
+  GetInfoByJoinEUIs:
+    name: GetInfoByJoinEUIs
+    comment: Return whether claiming is supported for each Join EUI in a given list.
+    input:
+      name: GetInfoByJoinEUIsRequest
+    output:
+      name: GetInfoByJoinEUIsResponse
+    http:
+    - method: POST
+      path: /edcs/claim/info/batch
