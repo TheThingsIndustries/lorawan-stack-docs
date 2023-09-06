@@ -18,7 +18,7 @@ Change of device MAC configuration may trigger a downlink message.
 
 ## Application Downlink Queue Management and Linking
 
-Network Servers let [Application Servers]({{< relref "gateway-server.md" >}}) push, replace and list application downlinks as well as link applications via gRPC API.
+Network Servers let [Application Servers]({{< relref "application-server.md" >}}) push, replace and list application downlinks as well as link applications via gRPC API.
 
 Change of application downlink queue may trigger a downlink message.
 
