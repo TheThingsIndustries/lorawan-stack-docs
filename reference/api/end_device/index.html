@@ -1564,6 +1564,7 @@ in a future version of The Things Stack.
       </th>
       <td>
         Gets the claim status of an end device.
+EUIs provided in the request are ignored and the end device is looked up by the given identifiers.
       </td>
     </tr>
     <tr>
@@ -1717,6 +1718,7 @@ in a future version of The Things Stack.
       </th>
       <td>
         Unclaims the end device on a Join Server.
+EUIs provided in the request are ignored and the end device is looked up by the given identifiers.
       </td>
     </tr>
     <tr>
@@ -1743,6 +1745,109 @@ in a future version of The Things Stack.
       </th>
       <td>
         <p><code>DELETE</code> <code>/api/v3/edcs/claim/{application_ids.application_id}/devices/{device_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="the-enddevicebatchclaimingserver-service">The <code>EndDeviceBatchClaimingServer</code> service</h2>
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>EndDeviceBatchClaimingServer.GetInfoByJoinEUIs</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Return whether claiming is supported for each Join EUI in a given list.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GetInfoByJoinEUIsRequest"><code>GetInfoByJoinEUIsRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:GetInfoByJoinEUIsResponse"><code>GetInfoByJoinEUIsResponse</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/edcs/claim/info/batch</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>EndDeviceBatchClaimingServer.Unclaim</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Unclaims multiple end devices on an external Join Server.
+All devices must have the same application ID.
+Check the response for devices that could not be unclaimed.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:BatchUnclaimEndDevicesRequest"><code>BatchUnclaimEndDevicesRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:BatchUnclaimEndDevicesResponse"><code>BatchUnclaimEndDevicesResponse</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>DELETE</code> <code>/api/v3/edcs/claim/{application_ids.application_id}/devices/batch</code></p>
       </td>
     </tr>
   </tbody>
@@ -4479,6 +4584,202 @@ See the API reference for which fields can be returned by the different services
       </th>
       <td>
           <p>The last seen timestamp needs to be set per end device.</p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:BatchUnclaimEndDevicesRequest">Message <code>BatchUnclaimEndDevicesRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "application_ids": {},
+  "device_ids": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>application_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ApplicationIdentifiers">
+  
+  <code>
+    
+    ApplicationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>device_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+        
+        repeated 
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_items</code>: <code>20</code></p>
+          <p><code>min_items</code>: <code>1</code></p>
+            <p><code>max_len</code>: <code>36</code></p>
+            <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:BatchUnclaimEndDevicesResponse">Message <code>BatchUnclaimEndDevicesResponse</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "application_ids": {},
+  "failed": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>application_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ApplicationIdentifiers">
+  
+  <code>
+    
+    ApplicationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>failed</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        map of 
+  <code>string</code>
+ to 
+  
+    
+    <a href="#message:ErrorDetails">
+  
+  <code>
+    
+    ErrorDetails
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>End devices that could not be unclaimed.
+The key is the device ID.</p>
+        
         
       </td>
     </tr>
@@ -9672,6 +9973,67 @@ This field is set by the Application Server and stored in the Identity Server.</
 
 
 
+<h3 id="message:GetInfoByJoinEUIsRequest">Message <code>GetInfoByJoinEUIsRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "requests": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>requests</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:GetInfoByJoinEUIRequest">
+  
+  <code>
+    
+    GetInfoByJoinEUIRequest
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_items</code>: <code>20</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
 <h3 id="message:GetInfoByJoinEUIResponse">Message <code>GetInfoByJoinEUIResponse</code></h3>
 
 <details><summary>Show object example</summary>
@@ -9743,6 +10105,66 @@ This field is set by the Application Server and stored in the Identity Server.</
       </th>
       <td>
           <p>If set, this Join EUI is available for claiming on one of the configured Join Servers.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:GetInfoByJoinEUIsResponse">Message <code>GetInfoByJoinEUIsResponse</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "infos": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>infos</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:GetInfoByJoinEUIResponse">
+  
+  <code>
+    
+    GetInfoByJoinEUIResponse
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        
       </td>
     </tr>
     
@@ -28923,6 +29345,12 @@ If set to false, this message should not be processed.</p>
 
 	
 
+	
+
+	
+
+	
+
 
         </div>
         <div class="is-clearfix">
@@ -28973,6 +29401,9 @@ If set to false, this message should not be processed.</p>
     
       
       <li><a href='#the-enddeviceclaimingserver-service'>The EndDeviceClaimingServer service</a></li>
+    
+      
+      <li><a href='#the-enddevicebatchclaimingserver-service'>The EndDeviceBatchClaimingServer service</a></li>
     
       
       <li><a href='#the-devicerepository-service'>The DeviceRepository service</a></li>

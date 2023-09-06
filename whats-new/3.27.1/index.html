@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>3.12.2 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/whats-new/3.12.2/" />
+  <title>3.27.1 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/whats-new/3.27.1/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.1734e98fc0eb35f5e3b9f3f9a27d19d7cc102b4737ff72b5111ea78f3e79eb15.css" integrity="sha256-FzTpj8DrNfXjufP5on0Z18wQK0c3/3K1ER6njz556xU=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="The Things Stack for LoRaWAN">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="3.12.2">
+  <meta itemprop="name" content="3.27.1">
   <meta itemprop="description" content="The Things Stack for LoRaWAN">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="3.12.2">
+  <meta property="og:title" content="3.27.1">
   <meta property="og:description" content="The Things Stack for LoRaWAN">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/whats-new/3.12.2/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/whats-new/3.27.1/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="3.12.2" />
+  <meta name="twitter:title" content="3.27.1" />
   <meta name="twitter:description" content="The Things Stack for LoRaWAN" />
   <meta name="twitter:card" content="summary" />
   
@@ -93,7 +93,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <ul class="menu-list">
 <a href="https://www.thethingsindustries.com/docs/whats-new/" class="">Overview</a>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.27.1/" class="">3.27.1</a>
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.27.1/" class="is-active">3.27.1</a>
+    
+
+
+
+    
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.27.0/" class="">3.27.0</a>
@@ -234,12 +239,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.12.3/" class="">3.12.3</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/whats-new/3.12.2/" class="is-active">3.12.2</a>
-    
-
-
-
-    
+    <a href="https://www.thethingsindustries.com/docs/whats-new/3.12.2/" class="">3.12.2</a>
   </li>
 <li>
     <a href="https://www.thethingsindustries.com/docs/whats-new/3.12.1/" class="">3.12.1</a>
@@ -303,42 +303,30 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">3.12.2
+        <h1 class="title is-size-2">3.27.1
           
         </h1>
         
         <div class="content">
           <h3 id="added">Added</h3>
 <ul>
-<li>Contextual tooltips to form fields in the Console.</li>
-<li>C-Style uint32_t representation for end device address field.</li>
-<li>Gateway Configuration Server to the cluster package.
-<ul>
-<li>This introduces a new config option <code>cluster.gateway-configuration-server</code> that needs to be set in multi-instance deployments.</li>
-</ul>
-</li>
-<li>Uplink storage for integrations in the Application Server. The number of uplinks stored per end device may be configured via the config option <code>as.uplink-storage.limit</code>.</li>
-<li>LoRaCloud GLS multi frame request support.</li>
-<li>LoRaCloud GNSS request support.</li>
-<li>LoRaCloud WiFi request support.</li>
-</ul>
-<h3 id="changed">Changed</h3>
-<ul>
-<li>Allow the LinkADRReq commands to lower the data rate used by the end devices.</li>
+<li>Add support for <code>administrative_contact</code> and <code>technical_contact</code> in the Console.</li>
+<li>Reimplement move away prompt in payload formatter views in the Console.</li>
+<li>Add telemetry collection for the CLI. A background process was added to the CLI in order to send the following information: Operating System, Architecture, Binary version and Golang version. The message is sent every 24 hours and it contains an unique random number as an identifier. It is enabled by default and in order to disable it, set <code>telemetry.enable</code> to false in the CLI configuration. For more information, consult the documentation <a href="https://www.thethingsindustries.com/docs/reference/telemetry/cli">here</a>.</li>
+<li>Add telemetry collection for the IdentityServer. A background task was added in the Identity Server which is responsible for collecting information regarding the amount of each entity in the database, this has the purpose of allowing us to better understand how users are interacting with the system, an example being if tenants are using Organizations or just Users. All information is sent every 24 hours and it contains an identifier composed of the URLs present in the following configuration fields <code>console.ui.[is|gs|ns|as|js].base-url</code>. It is enabled by default and in order to disable it, set <code>telemetry.enable</code> to false in the Stack configuration. For more information, consult the documentation <a href="https://www.thethingsindustries.com/docs/reference/telemetry/identity_server">here</a>.</li>
 </ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
-<li>Occasional crashes in the ratelimit middleware.</li>
-<li>Handling of zero EUI CUPS update-info requests.</li>
-<li>Backend validation messages for some forms.</li>
-<li>Gateway downlink message previews not displaying correctly in the event view of the Console.</li>
-<li>Importing end devices from the Console would occasionally ignore some device MAC settings fields.</li>
+<li>OAuth clients created by an admin no longer trigger an email requesting approval from one of the tenant&rsquo;s admins.</li>
+<li>Broken network routing policy links in the Packet Broker panel of the admin panel in the Console.</li>
+<li>Application Server downlink related events now contain the complete set of end device identifiers, and the received at timestamp is now provided at all times.</li>
+<li>Wrong order of breadcrumbs in the device views of the Console.</li>
 </ul>
 
         </div>
         <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/whats-new/3.12.3/">← 3.12.3</a>
-<a class="button is-pulled-right" href="/docs/whats-new/3.12.1/">3.12.1 →</a>
+<a class="button is-pulled-left" href="/docs/whats-new/">← Release Notes</a>
+<a class="button is-pulled-right" href="/docs/whats-new/3.27.0/">3.27.0 →</a>
 </div>
 
         <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
