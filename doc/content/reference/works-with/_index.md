@@ -7,7 +7,7 @@ Selected LoRaWAN End Devices and Gateways are certified **Works with The Things 
 
 <!--more-->
 
-{{< figure src="./works-with-tts-light.png" alt="Works wit The Things Stack" class="logo">}}
+{{< figure src="./works-with-tts-light.png" alt="Works with The Things Stack" class="logo">}}
 
 This certification assures users that the devices and gateways meet the quality criteria required to work seamlessly with The Things Stack.
 
