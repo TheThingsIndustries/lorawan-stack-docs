@@ -14,18 +14,18 @@ This section explains how to configure the migration tool and use it to export e
 First, configure the migration tool with environment variables or command-line arguments, like shown below. See `--help` for more details.
 
 ```bash
-export TTNV3_APP_ID="my-tts-app"                                                  # TTS App ID
-export TTNV3_APP_API_KEY="NNSXS.U..."                                             # TTS App API Key (needs `device` permissions)
-export TTNV3_APPLICATION_SERVER_GRPC_ADDRESS="eu1.cloud.thethings.network:8884"   # TTS Application Server URL Address
-export TTNV3_IDENTITY_SERVER_GRPC_ADDRESS="eu1.cloud.thethings.network:8884"      # TTS Identity Server URL Address
-export TTNV3_JOIN_SERVER_GRPC_ADDRESS="eu1.cloud.thethings.network:8884"          # TTS Join Server URL Address
-export TTNV3_NETWORK_SERVER_GRPC_ADDRESS="eu1.cloud.thethings.network:8884"       # TTS Network Server URL Address
+export TTS_APP_ID="my-tts-app"                                                  # TTS App ID
+export TTS_APP_API_KEY="NNSXS.U..."                                             # TTS App API Key (needs `device` permissions)
+export TTS_APPLICATION_SERVER_GRPC_ADDRESS="eu1.cloud.thethings.network:8884"   # TTS Application Server URL Address
+export TTS_IDENTITY_SERVER_GRPC_ADDRESS="eu1.cloud.thethings.network:8884"      # TTS Identity Server URL Address
+export TTS_JOIN_SERVER_GRPC_ADDRESS="eu1.cloud.thethings.network:8884"          # TTS Join Server URL Address
+export TTS_NETWORK_SERVER_GRPC_ADDRESS="eu1.cloud.thethings.network:8884"       # TTS Network Server URL Address
 ```
 
 If using Windows OS, replace `export` with `set` and remove the double-quotes in commands above. For example, you would use:
 
 ```bash
-set TTNV3_APP_ID=my-tts-app
+set TTS_APP_ID=my-tts-app
 ```
 
 {{< note >}} The export process will halt if any error occurs. Execute commands with the `--dry-run` flag to verify whether the outcome will be as expected. {{</ note >}}
@@ -103,7 +103,7 @@ ttn-lw-migrate devices --source tts < application_names.txt > devices.json
 If you are using a custom CA, you can provide a path to it by with an environment variable or by using `--tts.ca-file` flag.
 
 ```bash
-export TTNV3_CA_FILE="/path/to/ca.file"   # Path to a CA file (optional)
+export TTS_CA_FILE="/path/to/ca.file"   # Path to a CA file (optional)
 ```
 
 ---
