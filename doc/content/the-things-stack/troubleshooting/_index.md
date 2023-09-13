@@ -1,7 +1,7 @@
 ---
 title: "Troubleshooting"
 description: ""
-weight: 7
+weight: 8
 aliases: [/getting-started/troubleshooting]
 ---
 
