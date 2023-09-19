@@ -59,6 +59,17 @@ methods:
     http:
     - method: PUT
       path: /users/{user_ids.user_id}/api-keys/{api_key.id}
+  DeleteAPIKey:
+    name: DeleteAPIKey
+    comment: Delete a single API key of this user.
+    input:
+      name: DeleteUserAPIKeyRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /users/{user_ids.user_id}/api-keys/{key_id}
   CreateLoginToken:
     name: CreateLoginToken
     comment: Create a login token that can be used for a one-time login as a user.

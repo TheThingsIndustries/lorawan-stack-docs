@@ -53,3 +53,18 @@ methods:
     http:
     - method: GET
       path: /clients/{client_ids.client_id}/collaborators
+  DeleteCollaborator:
+    name: DeleteCollaborator
+    comment: DeleteCollaborator removes a collaborator from a client.
+    input:
+      name: DeleteClientCollaboratorRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: ""
+      path: ""
+    - method: DELETE
+      path: /clients/{client_ids.client_id}/collaborators/user/{collaborator_ids.user_ids.user_id}
+    - method: DELETE
+      path: /clients/{client_ids.client_id}/collaborators/organization/{collaborator_ids.organization_ids.organization_id}
