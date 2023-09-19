@@ -779,6 +779,58 @@ Pseudo-rights in the response (such as the &ldquo;_ALL&rdquo; right) are not exp
         Method
       </th>
       <td>
+        <code>ClientAccess.DeleteCollaborator</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        DeleteCollaborator removes a collaborator from a client.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:DeleteClientCollaboratorRequest"><code>DeleteClientCollaboratorRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code></code> <code>/api/v3</code></p>
+        <p><code>DELETE</code> <code>/api/v3/clients/{client_ids.client_id}/collaborators/user/{collaborator_ids.user_ids.user_id}</code></p>
+        <p><code>DELETE</code> <code>/api/v3/clients/{client_ids.client_id}/collaborators/organization/{collaborator_ids.organization_ids.organization_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
         <code>ClientAccess.SetCollaborator</code>
       </td>
     </tr>
@@ -2200,6 +2252,112 @@ client after rights are added to this list.</p>
   </code>
   
 </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:DeleteClientCollaboratorRequest">Message <code>DeleteClientCollaboratorRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "client_ids": {},
+  "collaborator_ids": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>client_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ClientIdentifiers">
+  
+  <code>
+    
+    ClientIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>collaborator_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationOrUserIdentifiers">
+  
+  <code>
+    
+    OrganizationOrUserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
     </tr>
     
   </tbody>
@@ -4149,6 +4307,8 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 
 
 
+
+	
 
 	
 

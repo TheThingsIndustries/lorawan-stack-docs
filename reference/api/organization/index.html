@@ -830,6 +830,56 @@ any application, gateway and OAuth client this organization is a collaborator of
         Method
       </th>
       <td>
+        <code>OrganizationAccess.DeleteAPIKey</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Delete a single API key of this organization.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:DeleteOrganizationAPIKeyRequest"><code>DeleteOrganizationAPIKeyRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>DELETE</code> <code>/api/v3/organizations/{organization_ids.organization_id}/api-keys/{key_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
         <code>OrganizationAccess.ListAPIKeys</code>
       </td>
     </tr>
@@ -1019,6 +1069,56 @@ Pseudo-rights in the response (such as the &ldquo;_ALL&rdquo; right) are not exp
       <td>
         <p><code></code> <code>/api/v3</code></p>
         <p><code>GET</code> <code>/api/v3/organizations/{organization_ids.organization_id}/collaborator/user/{collaborator.user_ids.user_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OrganizationAccess.DeleteCollaborator</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        DeleteCollaborator removes a collaborator from an organization.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:DeleteOrganizationCollaboratorRequest"><code>DeleteOrganizationCollaboratorRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>DELETE</code> <code>/api/v3/organizations/{organization_ids.organization_id}/collaborators/user/{collaborator_ids.user_ids.user_id}</code></p>
       </td>
     </tr>
   </tbody>
@@ -2133,6 +2233,195 @@ other organizations.</p>
 
 
 
+<h3 id="message:DeleteOrganizationAPIKeyRequest">Message <code>DeleteOrganizationAPIKeyRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "organization_ids": {},
+  "key_id": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organization_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationIdentifiers">
+  
+  <code>
+    
+    OrganizationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>key_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:DeleteOrganizationCollaboratorRequest">Message <code>DeleteOrganizationCollaboratorRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "organization_ids": {},
+  "collaborator_ids": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organization_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationIdentifiers">
+  
+  <code>
+    
+    OrganizationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>collaborator_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationOrUserIdentifiers">
+  
+  <code>
+    
+    OrganizationOrUserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
 <h3 id="message:GetCollaboratorResponse">Message <code>GetCollaboratorResponse</code></h3>
 
 <details><summary>Show object example</summary>
@@ -2421,8 +2710,7 @@ other organizations.</p>
         Description
       </th>
       <td>
-          <p>NOTE: It is currently not possible to have organizations collaborating on
-other organizations.</p>
+          <p>NOTE: It is currently not possible to have organizations collaborating on other organizations.</p>
           <p><code>required</code></p>
       </td>
     </tr>
@@ -5141,6 +5429,10 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 
 
 
+
+	
+
+	
 
 	
 
