@@ -31,6 +31,8 @@ description: ""
 
 {{< proto/method service="ApplicationAccess" method="CreateAPIKey" >}}
 
+{{< proto/method service="ApplicationAccess" method="DeleteAPIKey" >}}
+
 {{< proto/method service="ApplicationAccess" method="ListAPIKeys" >}}
 
 {{< proto/method service="ApplicationAccess" method="GetAPIKey" >}}
@@ -38,6 +40,8 @@ description: ""
 {{< proto/method service="ApplicationAccess" method="UpdateAPIKey" >}}
 
 {{< proto/method service="ApplicationAccess" method="GetCollaborator" >}}
+
+{{< proto/method service="ApplicationAccess" method="DeleteCollaborator" >}}
 
 {{< proto/method service="ApplicationAccess" method="SetCollaborator" >}}
 
@@ -64,6 +68,10 @@ description: ""
 {{< proto/message message="CreateApplicationAPIKeyRequest" >}}
 
 {{< proto/message message="CreateApplicationRequest" >}}
+
+{{< proto/message message="DeleteApplicationAPIKeyRequest" >}}
+
+{{< proto/message message="DeleteApplicationCollaboratorRequest" >}}
 
 {{< proto/message message="GetApplicationAPIKeyRequest" >}}
 

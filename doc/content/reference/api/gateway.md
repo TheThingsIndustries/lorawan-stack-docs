@@ -31,6 +31,8 @@ description: ""
 
 {{< proto/method service="GatewayAccess" method="CreateAPIKey" >}}
 
+{{< proto/method service="GatewayAccess" method="DeleteAPIKey" >}}
+
 {{< proto/method service="GatewayAccess" method="ListAPIKeys" >}}
 
 {{< proto/method service="GatewayAccess" method="GetAPIKey" >}}
@@ -38,6 +40,8 @@ description: ""
 {{< proto/method service="GatewayAccess" method="UpdateAPIKey" >}}
 
 {{< proto/method service="GatewayAccess" method="GetCollaborator" >}}
+
+{{< proto/method service="GatewayAccess" method="DeleteCollaborator" >}}
 
 {{< proto/method service="GatewayAccess" method="SetCollaborator" >}}
 
@@ -84,6 +88,10 @@ The Gateway Server exposes the list of available frequency plans with the `Confi
 {{< proto/message message="CUPSRedirection" >}}
 
 {{< proto/message message="CUPSRedirection.ClientTLS" >}}
+
+{{< proto/message message="DeleteGatewayAPIKeyRequest" >}}
+
+{{< proto/message message="DeleteGatewayCollaboratorRequest" >}}
 
 {{< proto/message message="FrequencyPlanDescription" >}}
 
