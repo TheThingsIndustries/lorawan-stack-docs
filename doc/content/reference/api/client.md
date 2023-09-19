@@ -25,6 +25,8 @@ description: ""
 
 {{< proto/method service="ClientAccess" method="GetCollaborator" >}}
 
+{{< proto/method service="ClientAccess" method="DeleteCollaborator" >}}
+
 {{< proto/method service="ClientAccess" method="SetCollaborator" >}}
 
 {{< proto/method service="ClientAccess" method="ListCollaborators" >}}
@@ -44,6 +46,8 @@ description: ""
 {{< proto/message message="Collaborator" >}}
 
 {{< proto/message message="ContactInfo" >}}
+
+{{< proto/message message="DeleteClientCollaboratorRequest" >}}
 
 {{< proto/message message="GetClientCollaboratorRequest" >}}
 

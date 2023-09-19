@@ -29,6 +29,8 @@ description: ""
 
 {{< proto/method service="OrganizationAccess" method="CreateAPIKey" >}}
 
+{{< proto/method service="OrganizationAccess" method="DeleteAPIKey" >}}
+
 {{< proto/method service="OrganizationAccess" method="ListAPIKeys" >}}
 
 {{< proto/method service="OrganizationAccess" method="GetAPIKey" >}}
@@ -36,6 +38,8 @@ description: ""
 {{< proto/method service="OrganizationAccess" method="UpdateAPIKey" >}}
 
 {{< proto/method service="OrganizationAccess" method="GetCollaborator" >}}
+
+{{< proto/method service="OrganizationAccess" method="DeleteCollaborator" >}}
 
 {{< proto/method service="OrganizationAccess" method="SetCollaborator" >}}
 
@@ -53,10 +57,13 @@ description: ""
 
 {{< proto/message message="ContactInfo" >}}
 
-
 {{< proto/message message="CreateOrganizationAPIKeyRequest" >}}
 
 {{< proto/message message="CreateOrganizationRequest" >}}
+
+{{< proto/message message="DeleteOrganizationAPIKeyRequest" >}}
+
+{{< proto/message message="DeleteOrganizationCollaboratorRequest" >}}
 
 {{< proto/message message="GetCollaboratorResponse" >}}
 

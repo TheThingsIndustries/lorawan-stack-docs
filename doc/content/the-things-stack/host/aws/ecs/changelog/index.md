@@ -9,6 +9,12 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.27.2
+
+### `5-4-ecs-services`
+
+- The default NOC Grafana image has been updated to `ghcr.io/thethingsindustries/lorawan-stack-noc-grafana:3.27.2`. This upgrades Grafana to version 10.1.0 and disables the news feed.
+
 ## 3.27.1
 
 ### `2-5-db-timescale`

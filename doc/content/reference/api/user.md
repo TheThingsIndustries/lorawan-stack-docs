@@ -33,6 +33,8 @@ description: ""
 
 {{< proto/method service="UserAccess" method="CreateAPIKey" >}}
 
+{{< proto/method service="UserAccess" method="DeleteAPIKey" >}}
+
 {{< proto/method service="UserAccess" method="ListAPIKeys" >}}
 
 {{< proto/method service="UserAccess" method="GetAPIKey" >}}
@@ -78,6 +80,8 @@ description: ""
 {{< proto/message message="CreateUserRequest" >}}
 
 {{< proto/message message="DeleteInvitationRequest" >}}
+
+{{< proto/message message="DeleteUserAPIKeyRequest" >}}
 
 {{< proto/message message="EndDeviceIdentifiers" >}}
 

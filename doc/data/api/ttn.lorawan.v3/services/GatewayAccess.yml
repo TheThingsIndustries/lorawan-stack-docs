@@ -56,6 +56,17 @@ methods:
     http:
     - method: PUT
       path: /gateways/{gateway_ids.gateway_id}/api-keys/{api_key.id}
+  DeleteAPIKey:
+    name: DeleteAPIKey
+    comment: Delete a single API key of this gateway.
+    input:
+      name: DeleteGatewayAPIKeyRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /gateways/{gateway_ids.gateway_id}/api-keys/{key_id}
   GetCollaborator:
     name: GetCollaborator
     comment: |-
@@ -96,3 +107,18 @@ methods:
     http:
     - method: GET
       path: /gateways/{gateway_ids.gateway_id}/collaborators
+  DeleteCollaborator:
+    name: DeleteCollaborator
+    comment: DeleteCollaborator removes a collaborator from a gateway.
+    input:
+      name: DeleteGatewayCollaboratorRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: ""
+      path: ""
+    - method: DELETE
+      path: /gateways/{gateway_ids.gateway_id}/collaborators/user/{collaborator_ids.user_ids.user_id}
+    - method: DELETE
+      path: /gateways/{gateway_ids.gateway_id}/collaborators/organization/{collaborator_ids.organization_ids.organization_id}

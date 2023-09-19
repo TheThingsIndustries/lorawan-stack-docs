@@ -59,6 +59,17 @@ methods:
     http:
     - method: PUT
       path: /organizations/{organization_ids.organization_id}/api-keys/{api_key.id}
+  DeleteAPIKey:
+    name: DeleteAPIKey
+    comment: Delete a single API key of this organization.
+    input:
+      name: DeleteOrganizationAPIKeyRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /organizations/{organization_ids.organization_id}/api-keys/{key_id}
   GetCollaborator:
     name: GetCollaborator
     comment: |-
@@ -99,3 +110,14 @@ methods:
     http:
     - method: GET
       path: /organizations/{organization_ids.organization_id}/collaborators
+  DeleteCollaborator:
+    name: DeleteCollaborator
+    comment: DeleteCollaborator removes a collaborator from an organization.
+    input:
+      name: DeleteOrganizationCollaboratorRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /organizations/{organization_ids.organization_id}/collaborators/user/{collaborator_ids.user_ids.user_id}
