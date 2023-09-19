@@ -1,0 +1,153 @@
+name: Tag release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Tag to release (v3.x.x)
+        required: true
+
+env:
+  TAG: "${{ github.event.inputs.tag }}"
+
+jobs:
+  test:
+    name: Tag release
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Check out LoRaWAN Stack Docs
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          path: "./lorawan-stack-docs"
+          ref: "master"
+      - name: Set up git
+        working-directory: "./lorawan-stack-docs"
+        env:
+          BRANCH: "release/${{ env.TAG }}"
+        run: |
+          git config user.name 'The Things Bot'
+          git config user.email 'github@thethingsindustries.com'
+          git checkout -b "${BRANCH}"
+          git push --set-upstream origin "${BRANCH}"
+      - name: Check out The Things Stack
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          path: "./lorawan-stack"
+          ref: "${{ github.event.inputs.tag }}"
+          repository: TheThingsIndustries/lorawan-stack
+          ssh-key: "${{ secrets.LORAWAN_STACK_SSH_KEY }}"
+      - name: Check out LoRaWAN Stack AWS
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          path: "./lorawan-stack-aws"
+          ref: "${{ github.event.inputs.tag }}"
+          repository: TheThingsIndustries/lorawan-stack-aws
+          ssh-key: "${{ secrets.LORAWAN_STACK_AWS_SSH_KEY }}"
+      - name: Update `whats-new`
+        working-directory: "./lorawan-stack-docs"
+        run: |
+          cp ../lorawan-stack/CHANGELOG.md .
+
+          TMP_FILE=$(mktemp)
+
+          # Get changes
+          awk "/^## \[${TAG//v/}\]/{flag=1;next} /^## \[/{flag=0} flag" \
+            'CHANGELOG.md' \
+            > "${TMP_FILE}"
+
+          CHANGES_FILE="./doc/content/whats-new/${TAG}.md"
+
+          cat > "${CHANGES_FILE}" <<EOF
+          ---
+          date: $(date +%F)
+          title: "${TAG//v/}"
+          featured: {}
+          ---
+          EOF
+          cat "${TMP_FILE}" >> "${CHANGES_FILE}"
+
+          git add "${CHANGES_FILE}" && \
+          git commit -m 'all: Update `whats-new`'
+      - name: Update AWS ECS Changelog
+        working-directory: "./lorawan-stack-docs"
+        run: |
+          CHANGES_FILE='./doc/content/the-things-stack/host/aws/ecs/changelog/index.md'
+
+          cp '../lorawan-stack-aws/UPGRADING.md' "${CHANGES_FILE}"
+
+          git diff --exit-code "${CHANGES_FILE}" && exit 0 || true # Exit if not changed
+
+          git add "${CHANGES_FILE}" && \
+          git commit -m 'all: Update `the-things-stack/host/aws/ecs/changelog`'
+      - name: Update doc version
+        working-directory: "./lorawan-stack-docs"
+        run: |
+          CONFIG_FILE='./doc/config/_default/config.toml'
+          TAG="${TAG//v/}" # Remove 'v' from tag
+
+          sed -i -r "s/version = \"([0-9]+\.){2}[0-9]+\"/version = \"${TAG}\"/" "${CONFIG_FILE}"
+
+          git diff --exit-code "${CONFIG_FILE}" && exit 0 || true # Exit if not changed
+
+          git add "${CONFIG_FILE}" && \
+          git commit -m "all: Set docs version to \`${TAG}\`"
+      - name: Set up go
+        uses: actions/setup-go@v4
+        with:
+          go-version: "~1.21"
+      - name: Download go dependencies
+        working-directory: ./lorawan-stack/tools
+        run: go mod download
+      - name: Initialize mage binary cache
+        id: mage-cache
+        uses: actions/cache@v3
+        with:
+          path: ./lorawan-stack/tools/bin/mage
+          key: ${{ runner.os }}-mage-${{ hashFiles('lorawan-stack/tools/**') }}
+      - name: Make mage
+        if: steps.mage-cache.outputs.cache-hit != 'true'
+        working-directory: ./lorawan-stack
+        run: make tools/bin/mage
+      - name: Generate hugo data
+        working-directory: "./lorawan-stack"
+        run: tools/bin/mage ttiProto:hugoData
+      - name: Sync hugo data
+        working-directory: "./lorawan-stack-docs"
+        run: |
+          rsync --recursive --delete --remove-source-files '../lorawan-stack/api/ttn.lorawan.v3/' './doc/data/api/ttn.lorawan.v3/'
+          rsync --recursive --delete --remove-source-files '../lorawan-stack/api/tti.lorawan.v3/' './doc/data/api/tti.lorawan.v3/'
+
+          git add ./doc/data/api/tt{i,n}.lorawan.v3/ && \
+          git commit -m 'all: Add API documentation'
+      - name: Export CLI documentation
+        working-directory: "./lorawan-stack"
+        run: |
+          go build -tags 'tti' './cmd/tti-lw-cli'
+
+          HOME='$HOME' ./tti-lw-cli 'gen-md-doc' -o '../lorawan-stack-docs/doc/content/ttn-lw-cli'
+          HOME='$HOME' ./tti-lw-cli 'gen-json-tree' -o '../lorawan-stack-docs/doc/data/commands'
+
+          # Replace links to 'end-devices/templates' with 'templates' as they are not exported correctly.
+          sed -i 's/end-devices_templates/templates/g' '../lorawan-stack-docs/doc/content/ttn-lw-cli/ttn-lw-cli_end-devices.md'
+
+          cd '../lorawan-stack-docs'
+          git add ./doc/{content/ttn-lw-cli,data/commands} && \
+          git commit -m "all: Add CLI documentation"
+      - name: Prepare merge PR
+        working-directory: "./lorawan-stack-docs"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        run: |
+          git status
+          git push
+          gh pr create \
+              --assignee '${{ github.actor }}' \
+              --base 'master' \
+              --body "This pull request merges back changes from the ${TAG} release." \
+              --title "Release ${TAG}" \
