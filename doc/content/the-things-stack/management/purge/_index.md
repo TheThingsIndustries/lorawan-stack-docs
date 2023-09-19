@@ -125,12 +125,6 @@ There are two ways to purge an entity:
 
 {{< tabs/tab "CLI" >}}
 
-To view soft-deleted entities, for example applications:
-
-```bash
-ttn-lw-cli applications list --deleted --all
-```
-
 To purge an application:
 
 ```bash
