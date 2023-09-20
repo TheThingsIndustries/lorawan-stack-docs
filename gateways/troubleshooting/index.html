@@ -186,6 +186,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <li>Are both CUPS and LNS are configured? There is no need to configure both, as CUPS will automatically configure LNS. Follow the instructions for <a href="/docs/gateways/concepts/lora-basics-station/cups/">configuring CUPS</a>.</li>
 </ul>
 <p>Check your manufacturer&rsquo;s documentation to access the gateway logs on your gateway, which will help to diagnose the issue.</p>
+<h2 id="my-gateways-packet-forwarder-logs-show-error-main-failed-to-start-the-concentrator">My gateway&rsquo;s packet forwarder logs show &ldquo;ERROR: [main] failed to start the concentrator&rdquo;.</h2>
+<p>This error indicates that there might be a hardware issue at the gateway level. It is recommended to contact the gateway manufacturer for further support in this case.</p>
 <h2 id="when-the-connection-on-the-main-interface-goes-down-my-gateway-gets-disconnected-and-it-does-not-reconnect-through-the-backup-interface">When the connection on the main interface goes down, my gateway gets disconnected and it does not reconnect through the backup interface.</h2>
 <p>Please try restarting your gateway&rsquo;s packet forwarder.</p>
 <h2 id="my-gateway-is-shown-as-connected-in-the-console-but-i-dont-see-any-events-including-the-gateway-connection-stats-what-do-i-do">My gateway is shown as connected in the Console but I don’t see any events (including the gateway connection stats). What do I do?</h2>
@@ -256,6 +258,8 @@ echo Authorization: Bearer %LNS_KEY% &gt; lns.key
 <p>See the <a href="https://lora-developers.semtech.com/build/software/lora-basics/lora-basics-for-gateways/?url=authmodes.html">LoRa Basics™ Station Authorization documentation</a> or your manufacturers guidelines for additional information.</p>
 <h2 id="i-see-the-api-key-not-found-error-in-gateway-live-events-what-do-i-do">I see the &ldquo;API key not found&rdquo; error in gateway live events. What do I do?</h2>
 <p>This error is shown when the API key associated with the gateway has been deleted. Generate a <a href="https://www.thethingsindustries.com/docs/gateways/concepts/adding-gateways/#create-gateway-api-key">new API key</a>, configure the gateway with it and reboot it to apply changes.</p>
+<h2 id="there-is-failed-to-retrieve-tcuri-from-cups-404-not-found-error-on-my-basics-station-gateways-logs">There is &ldquo;Failed to retrieve TCURI from CUPS: (404) Not Found&rdquo; error on my Basics Station gateway&rsquo;s logs.</h2>
+<p>This error occurs due to the incorrect API key configuration in the <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/cups/#configure-cups-to-send-the-lns-api-key"><strong>LoRa Basics Station LNS Authentication Key</strong> field</a> available in your gateway&rsquo;s settings in the Console. Make sure you&rsquo;ve followed instructions to <a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/cups/#configure-cups-to-send-the-lns-api-key">Configure CUPS to Send the LNS API Key</a>.</p>
 <h2 id="lora-basics-station-packet-forwarder-logs-mention-the-send-failed-x509---certificate-verification-failed-eg-crl-ca-or-signature-check-failed-error-what-does-it-mean">LoRa Basics™ Station packet forwarder logs mention the &ldquo;Send failed: X509 - Certificate verification failed, e.g. CRL, CA, or signature check failed&rdquo; error. What does it mean?</h2>
 <p>The cause of this issue is that the gateway is configured with a server certificate that The Things Stack does not support. It is recommended to use the <a href="https://letsencrypt.org/certs/isrgrootx1.pem.txt">Let&rsquo;s Encrypt ISRG Root X1 Trust certificate</a>. Make sure to restart your gateway after changing the certificate.</p>
 <h2 id="im-seeing-radio-is-not-emitting-frame---abandoning-tx-trying-alternative-error-in-the-lora-basics-station-gateways-packet-forwarder-logs-what-is-causing-this">I&rsquo;m seeing &ldquo;Radio is not emitting frame - abandoning TX, trying alternative&rdquo; error in the LoRa Basics™ Station gateway&rsquo;s packet forwarder logs. What is causing this?</h2>
@@ -310,6 +314,8 @@ echo Authorization: Bearer %LNS_KEY% &gt; lns.key
 <li>Checking your internet connection</li>
 <li>Using The Things Stack cluster closest to the location of your gateway</li>
 </ul>
+<h2 id="sending-a-downlink-fails-with-the-invalid-fixed-paths-set-in-application-downlink-error-why">Sending a downlink fails with the &ldquo;Invalid fixed paths set in application downlink&rdquo; error. Why?</h2>
+<p>This error might occur if the gateway mentioned in the downlink path is not connected or is unavailable for scheduling a downlink message. Make sure that the gateway is connected to The Things Stack.</p>
 <h2 id="why-are-my-gateways-gps-location-details-not-shown-in-the-things-stack-console">Why are my gateway&rsquo;s GPS location details not shown in The Things Stack Console?</h2>
 <p><a href="https://www.thethingsindustries.com/docs/gateways/concepts/lora-basics-station/">LoRa Basics™ Station</a> protocol currently does not support GPS fields in Uplink messages, so the GPS location in The Things Stack Console for LoRa Basics™ Station-based gateways cannot be updated from status messages.</p>
 <p>Updating gateway location from status messages in supported only for gateways that establish authenticated connections (Basic Station and MQTT gateways), i.e. it is not supported for <a href="https://www.thethingsindustries.com/docs/gateways/concepts/udp/">UDP</a> gateways.</p>
@@ -376,6 +382,9 @@ echo Authorization: Bearer %LNS_KEY% &gt; lns.key
       <li><a href='#my-gateway-wont-connect-what-do-i-do'>My gateway won’t connect. What do I do?</a></li>
     
       
+      <li><a href='#my-gateways-packet-forwarder-logs-show-error-main-failed-to-start-the-concentrator'>My gateway’s packet forwarder logs show “ERROR: [main] failed to start the concentrator”.</a></li>
+    
+      
       <li><a href='#when-the-connection-on-the-main-interface-goes-down-my-gateway-gets-disconnected-and-it-does-not-reconnect-through-the-backup-interface'>When the connection on the main interface goes down, my gateway gets disconnected and it does not reconnect through the backup interface.</a></li>
     
       
@@ -427,6 +436,9 @@ echo Authorization: Bearer %LNS_KEY% &gt; lns.key
       <li><a href='#i-see-the-api-key-not-found-error-in-gateway-live-events-what-do-i-do'>I see the “API key not found” error in gateway live events. What do I do?</a></li>
     
       
+      <li><a href='#there-is-failed-to-retrieve-tcuri-from-cups-404-not-found-error-on-my-basics-station-gateways-logs'>There is “Failed to retrieve TCURI from CUPS: (404) Not Found” error on my Basics Station gateway’s logs.</a></li>
+    
+      
       <li><a href='#lora-basics-station-packet-forwarder-logs-mention-the-send-failed-x509---certificate-verification-failed-eg-crl-ca-or-signature-check-failed-error-what-does-it-mean'>LoRa Basics™ Station packet forwarder logs mention the “Send failed: X509 - Certificate verification failed, e.g. CRL, CA, or signature check failed” error. What does it mean?</a></li>
     
       
@@ -452,6 +464,9 @@ echo Authorization: Bearer %LNS_KEY% &gt; lns.key
     
       
       <li><a href='#no-downlinks-are-reaching-my-udp-gateway-why'>No downlinks are reaching my UDP gateway. Why?</a></li>
+    
+      
+      <li><a href='#sending-a-downlink-fails-with-the-invalid-fixed-paths-set-in-application-downlink-error-why'>Sending a downlink fails with the “Invalid fixed paths set in application downlink” error. Why?</a></li>
     
       
       <li><a href='#why-are-my-gateways-gps-location-details-not-shown-in-the-things-stack-console'>Why are my gateway’s GPS location details not shown in The Things Stack Console?</a></li>
