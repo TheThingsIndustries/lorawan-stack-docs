@@ -88,6 +88,10 @@ For {{% lbs %}} gateways:
 
 Check your manufacturer's documentation to access the gateway logs on your gateway, which will help to diagnose the issue.
 
+## My gateway's packet forwarder logs show "ERROR: [main] failed to start the concentrator".
+
+This error indicates that there might be a hardware issue at the gateway level. It is recommended to contact the gateway manufacturer for further support in this case.
+
 ## When the connection on the main interface goes down, my gateway gets disconnected and it does not reconnect through the backup interface.
 
 Please try restarting your gateway's packet forwarder.
@@ -216,6 +220,10 @@ See the [{{% lbs %}} Authorization documentation](https://lora-developers.semtec
 
 This error is shown when the API key associated with the gateway has been deleted. Generate a [new API key]({{< ref "/gateways/concepts/adding-gateways#create-gateway-api-key" >}}), configure the gateway with it and reboot it to apply changes.
 
+## There is "Failed to retrieve TCURI from CUPS: (404) Not Found" error on my Basics Station gateway's logs.
+
+This error occurs due to the incorrect API key configuration in the [**LoRa Basics Station LNS Authentication Key** field]({{< ref "/gateways/concepts/lora-basics-station/cups#configure-cups-to-send-the-lns-api-key" >}}) available in your gateway's settings in the Console. Make sure you've followed instructions to [Configure CUPS to Send the LNS API Key]({{< ref "/gateways/concepts/lora-basics-station/cups#configure-cups-to-send-the-lns-api-key" >}}).
+
 ## {{% lbs %}} packet forwarder logs mention the "Send failed: X509 - Certificate verification failed, e.g. CRL, CA, or signature check failed" error. What does it mean?
 
 The cause of this issue is that the gateway is configured with a server certificate that {{% tts %}} does not support. It is recommended to use the [Let's Encrypt ISRG Root X1 Trust certificate](https://letsencrypt.org/certs/isrgrootx1.pem.txt). Make sure to restart your gateway after changing the certificate.
@@ -305,6 +313,10 @@ Try solving this issue by:
 
 - Checking your internet connection
 - Using {{% tts %}} cluster closest to the location of your gateway
+
+## Sending a downlink fails with the "Invalid fixed paths set in application downlink" error. Why?
+
+This error might occur if the gateway mentioned in the downlink path is not connected or is unavailable for scheduling a downlink message. Make sure that the gateway is connected to {{% tts %}}.
 
 ## Why are my gateway's GPS location details not shown in {{% tts %}} Console?
 
