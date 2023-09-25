@@ -45,7 +45,7 @@ services:
 Pull the docker images of the new version.
 
 ```bash
-docker-compose pull stack
+docker compose pull stack
 Pulling stack     ... done
 ```
 
@@ -58,7 +58,7 @@ The new version will be pulled locally but not run yet.
 Stop `{{< tts >}}` container.
 
 ```bash
-docker-compose stop stack
+docker compose stop stack
 Stopping <directory>_stack_1 ... done
 ```
 
@@ -71,7 +71,7 @@ Navigate to the Redis data folder, which can be found in the `docker-compose.yml
 Stop the `redis` container.
 
 ```bash
-docker-compose stop redis
+docker compose stop redis
 Stopping <directory>_redis_1 ... done
 ```
 
@@ -82,7 +82,7 @@ To restore `redis` from this file, simply place the file back in the data folder
 Start the `redis` container.
 
 ```bash
-docker-compose up -d redis
+docker compose up -d redis
 Starting <directory>_redis_1 ... done
 ```
 
@@ -156,25 +156,25 @@ New minor versions of {{< tts >}} include new features/fixes which may require a
 Migrate the Identity Server Database.
 
 ```bash
-docker-compose run --rm stack is-db migrate
+docker compose run --rm stack is-db migrate
 ```
 
 Migrate the Network Server Database.
 
 ```bash
-docker-compose run --rm stack ns-db migrate
+docker compose run --rm stack ns-db migrate
 ```
 
 Migrate the Device Claiming Server Database.
 
 ```bash
-docker-compose run --rm stack dcs-db migrate
+docker compose run --rm stack dcs-db migrate
 ```
 
 Migrate the Application Server Database.
 
 ```bash
-docker-compose run --rm stack as-db migrate
+docker compose run --rm stack as-db migrate
 ```
 
 {{< /tabs/tab >}}
@@ -183,13 +183,13 @@ docker-compose run --rm stack as-db migrate
 Migrate the Identity Server Database.
 
 ```bash
-docker-compose run --rm stack is-db migrate
+docker compose run --rm stack is-db migrate
 ```
 
 Migrate the Network Server Database.
 
 ```bash
-docker-compose run --rm stack ns-db migrate
+docker compose run --rm stack ns-db migrate
 ```
 {{< /tabs/tab >}}
 {{< /tabs/container >}}
@@ -200,7 +200,7 @@ docker-compose run --rm stack ns-db migrate
 Once the above steps are successfully completed, start {{< tts >}}.
 
 ```bash
-docker-compose up -d stack
+docker compose up -d stack
 ```
 
 ## Troubleshooting

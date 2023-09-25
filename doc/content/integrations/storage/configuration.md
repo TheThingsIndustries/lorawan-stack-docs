@@ -50,7 +50,7 @@ If you are using TimescaleDB, as mentioned in the [TimescaleDB Options]({{< ref 
 If you are using Docker Compose to run {{% tts %}} (as shown in [Installing {{% tts %}} guide]({{< ref "/the-things-stack/host/docker" >}})), initialize the configured database with:
 
 ```bash
-docker-compose run --rm stack storage-db init
+docker compose run --rm stack storage-db init
 ```
 
 If everything went well, upon restart, you should be able to see the following log message:
