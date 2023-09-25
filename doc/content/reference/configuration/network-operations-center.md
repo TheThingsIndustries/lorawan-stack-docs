@@ -45,3 +45,9 @@ Network Operations Center is a reverse proxy to Grafana. In order to use the Gra
 - `noc.grafana.console-url`: Public URL of the Console. This is used for the **Console** buttons in Grafana to go directly to the Console
 - `noc.grafana.noc-address`: Internal address for the data source plugin to contact the Network Operations Center service directly. This must be in `host:port` format. The `port` is typically `1885` or `8886` when using TLS
 - `noc.grafana.noc-tls.require`: Require TLS between Grafana data source plugin and the Network Operations Center (default: `false`)
+
+## Access Options
+
+Network Operations Center provides conditional access to the different Grafana dashboards. In order to configure access to these extra dashboards, configure the following options.
+
+- `noc.access.extended`: Applications and end devices dashboards (default: `true` since version `3.28.0`, `false` previously)
