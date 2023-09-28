@@ -45,6 +45,9 @@ services:
       - GF_SERVER_ROOT_URL=/noc
       - GF_SERVER_SERVE_FROM_SUB_PATH=true
       - GF_USERS_DEFAULT_THEME=light
+    depends_on:
+      - postgres
+      - stack
     volumes:
       - ${DEV_DATA_DIR:-.env/data}/grafana/db:/var/lib/grafana/db
     ports:

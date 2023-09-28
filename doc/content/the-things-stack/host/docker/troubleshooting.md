@@ -110,7 +110,7 @@ This issue usually arises from the following fact - on Linux, Docker creates fol
 sudo chown -R 472:0 .env/data/grafana
 ```
 
-## NOC has trouble getting initialized
+## Network Operations Center cannot be initialized
 
 If you have registered user with User ID `admin` during installation, you will most likely encounter this error when trying to run {{% tts %}}:
 
@@ -119,7 +119,21 @@ stack_1     | INFO	Setting up Network Operations Center
 stack_1     | error:cmd/internal/shared:initialize_network_operations_center (could not initialize Network Operations Center)
 ```
 
-Accessing NOC with the `admin` user is not allowed, so make sure to create user with admin rights but with User ID other than `admin`.
+Accessing the Network Operations Center with the `admin` user is not allowed, so make sure to create user with admin rights but with User ID other than `admin`.
+
+## Grafana cannot connect to {{% tts %}} following a restart
+
+In a containerized environment, the Grafana container connects to the {{% tts %}} using the container DNS address. Following a {{% tts %}} container restart, the Grafana container will maintain the address of the old container for the duration of the Docker DNS TTL (default 10 minutes). In order to speed up the process, it is possible to restart the Grafana container using `docker compose restart grafana`.
+
+In order to avoid having to manually restart the Grafana container, ensure that your Grafana container has the correct `depends_on` dependencies set:
+
+```yaml
+    depends_on:
+      - postgres
+      - stack
+``````
+
+Older versions of {{% tts %}} may not have the above dependencies set, so you may consider adding them manually.
 
 ## Operation timed out
 
