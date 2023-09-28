@@ -275,11 +275,18 @@ stack_1      |     licensed=[XXXXXXXX/24] (redacted)
 <pre tabindex="0"><code>failed to connect to database: failed to create SQLite database file &#34;/var/lib/grafana/db/grafana.db&#34;: open /var/lib/grafana/db/grafana.db: permission denied
 </code></pre><p>This issue usually arises from the following fact - on Linux, Docker creates folders as <code>root</code> and containers are expected to run as <code>root</code>, while Grafana runs as a non-<code>root</code> user. To fix this, you need to manually update rights for Grafana using the following command:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">sudo chown -R 472:0 .env/data/grafana
-</span></span></code></pre></div><h2 id="noc-has-trouble-getting-initialized">NOC has trouble getting initialized</h2>
+</span></span></code></pre></div><h2 id="network-operations-center-cannot-be-initialized">Network Operations Center cannot be initialized</h2>
 <p>If you have registered user with User ID <code>admin</code> during installation, you will most likely encounter this error when trying to run The Things Stack:</p>
 <pre tabindex="0"><code>stack_1     | INFO	Setting up Network Operations Center
 stack_1     | error:cmd/internal/shared:initialize_network_operations_center (could not initialize Network Operations Center)
-</code></pre><p>Accessing NOC with the <code>admin</code> user is not allowed, so make sure to create user with admin rights but with User ID other than <code>admin</code>.</p>
+</code></pre><p>Accessing the Network Operations Center with the <code>admin</code> user is not allowed, so make sure to create user with admin rights but with User ID other than <code>admin</code>.</p>
+<h2 id="grafana-cannot-connect-to-the-things-stack-following-a-restart">Grafana cannot connect to The Things Stack following a restart</h2>
+<p>In a containerized environment, the Grafana container connects to the The Things Stack using the container DNS address. Following a The Things Stack container restart, the Grafana container will maintain the address of the old container for the duration of the Docker DNS TTL (default 10 minutes). In order to speed up the process, it is possible to restart the Grafana container using <code>docker compose restart grafana</code>.</p>
+<p>In order to avoid having to manually restart the Grafana container, ensure that your Grafana container has the correct <code>depends_on</code> dependencies set:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">postgres</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">stack</span><span class="w">
+</span></span></span></code></pre></div><p>Older versions of The Things Stack may not have the above dependencies set, so you may consider adding them manually.</p>
 <h2 id="operation-timed-out">Operation timed out</h2>
 <p>Generally, an operation will fail with this error if it hasn&rsquo;t been completed within the expected timeframe. For example, if there are firewall restrictions on port 443, logging into The Things Stack will probably fail with this error since token can&rsquo;t be returned to the Console. Besides this example, similar issues with establishing connection with The Things Stack or communication between its components can occur if there are issues with user&rsquo;s internet connection, or if there are restrictions on The Things Stack infrastructure, web browser or firewall level.</p>
 <p>To avoid this happening, users need to ensure that their internet connection is stable and with minimal latency, and that there are no firewall restrictions on the system from which they are accessing The Things Stack. Users can also try using a different browser or computer to try isolating the issue within a specific system. Finally, clear the web browser cache and retry the operation.</p>
@@ -335,7 +342,10 @@ stack_1     | error:cmd/internal/shared:initialize_network_operations_center (co
       <li><a href='#grafana-container-fails-to-start-due-to-permissions-issues'>Grafana container fails to start due to permissions issues</a></li>
     
       
-      <li><a href='#noc-has-trouble-getting-initialized'>NOC has trouble getting initialized</a></li>
+      <li><a href='#network-operations-center-cannot-be-initialized'>Network Operations Center cannot be initialized</a></li>
+    
+      
+      <li><a href='#grafana-cannot-connect-to-the-things-stack-following-a-restart'>Grafana cannot connect to The Things Stack following a restart</a></li>
     
       
       <li><a href='#operation-timed-out'>Operation timed out</a></li>

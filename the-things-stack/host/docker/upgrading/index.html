@@ -305,7 +305,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
 <p>Pull the docker images of the new version.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose pull stack
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose pull stack
 </span></span><span class="line"><span class="cl">Pulling stack     ... <span class="k">done</span>
 </span></span></code></pre></div><p>The new version will be pulled locally but not run yet.</p>
 <h2 id="backup">Backup</h2>
@@ -315,7 +315,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 
 <p>Stop <code>The Things Stack</code> container.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose stop stack
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose stop stack
 </span></span><span class="line"><span class="cl">Stopping &lt;directory&gt;_stack_1 ... <span class="k">done</span>
 </span></span></code></pre></div><div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
@@ -325,12 +325,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <h3 id="redis">Redis</h3>
 <p>Navigate to the Redis data folder, which can be found in the <code>docker-compose.yml</code> for the <code>redis</code> service (ex: <code>${DEV_DATA_DIR:-.env/data}/redis</code>)</p>
 <p>Stop the <code>redis</code> container.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose stop redis
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose stop redis
 </span></span><span class="line"><span class="cl">Stopping &lt;directory&gt;_redis_1 ... <span class="k">done</span>
 </span></span></code></pre></div><p>Copy the <code>${DEV_DATA_DIR:-.env/data}/redis/appendonly.aof</code> file to a location of your choice. This file is now a snapshot of the database at the time that it is copied.</p>
 <p>To restore <code>redis</code> from this file, simply place the file back in the data folder (replacing the <code>appendonly.aof</code> file) and start <code>redis</code>. The contents of the backup will be read and restored.</p>
 <p>Start the <code>redis</code> container.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose up -d redis
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose up -d redis
 </span></span><span class="line"><span class="cl">Starting &lt;directory&gt;_redis_1 ... <span class="k">done</span>
 </span></span></code></pre></div><h3 id="postgresql">PostgreSQL</h3>
 <p>Keep the <code>postgres</code> container running and make a PostgreSQL backup file using the following command:</p>
@@ -377,20 +377,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="tab-content content">
   <section data-content="enterprise">
   <p>Migrate the Identity Server Database.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack is-db migrate
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run --rm stack is-db migrate
 </span></span></code></pre></div><p>Migrate the Network Server Database.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack ns-db migrate
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run --rm stack ns-db migrate
 </span></span></code></pre></div><p>Migrate the Device Claiming Server Database.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack dcs-db migrate
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run --rm stack dcs-db migrate
 </span></span></code></pre></div><p>Migrate the Application Server Database.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack as-db migrate
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run --rm stack as-db migrate
 </span></span></code></pre></div>
 </section>
 <section data-content="open-source">
   <p>Migrate the Identity Server Database.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack is-db migrate
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run --rm stack is-db migrate
 </span></span></code></pre></div><p>Migrate the Network Server Database.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack ns-db migrate
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run --rm stack ns-db migrate
 </span></span></code></pre></div>
 </section>
 
@@ -398,7 +398,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <h2 id="running-the-new-version">Running the new version</h2>
 <p>Once the above steps are successfully completed, start The Things Stack.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose up -d stack
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose up -d stack
 </span></span></code></pre></div><h2 id="troubleshooting">Troubleshooting</h2>
 <p>For common issues that might show up during the upgrade process, see the <a href="https://www.thethingsindustries.com/docs/the-things-stack/host/docker/troubleshooting/">Troubleshooting Installation section</a>.</p>
         </div>

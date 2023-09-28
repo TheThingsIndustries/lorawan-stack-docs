@@ -223,25 +223,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Begin by opening a terminal prompt in the same directory as your <code>docker-compose.yml</code> file.</p>
 <h2 id="initialization">Initialization</h2>
 <p>The first time The Things Stack is started, it requires some initialization. Start by pulling the Docker images:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose pull
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose pull
 </span></span></code></pre></div><p>Next, you need to initialize the database of the Identity Server:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack is-db migrate
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run --rm stack is-db migrate
 </span></span></code></pre></div><p>If you receive a permissions error, ensure you have correctly <a href="https://docs.docker.com/engine/install/linux-postinstall/">configured permissions for Docker Engine</a>.</p>
 <p>If you receive an error running The Things Stack, make sure a The Things Stack container isn&rsquo;t already running. Use <code>docker ps</code> to see running containers.</p>
 <p>For the Storage Integration available in The Things Stack Enterprise, the database of the Application Server needs to be initialized as well:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack storage-db init
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run --rm stack storage-db init
 </span></span></code></pre></div><p>Network Operations Center, available in The Things Stack Enterprise, needs to be initialized with:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack noc-db init
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run --rm stack noc-db init
 </span></span></code></pre></div><p>The Things Stack Enterprise requires a tenant to be present, even if multi-tenancy is not included in the license. You create a tenant with:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack is-db create-tenant
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run --rm stack is-db create-tenant
 </span></span></code></pre></div><p>This will take the <code>tenancy.default-id</code> Tenant ID from the <a href="/docs/the-things-stack/host/docker/configuration/">configuration</a> in <code>ttn-lw-stack-docker.yml</code>. To specify another Tenant ID, use the <code>--id</code> parameter.</p>
 <p>Next, an initial <code>admin</code> user has to be created. Make sure to give it a good password.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack is-db create-admin-user <span class="se">\
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run --rm stack is-db create-admin-user <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --id admin <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --email your@email.com
 </span></span></code></pre></div><p>Note that for multi-tenant deployments you can create admin users for each tenant using the <code>--tenant-id</code> flag.</p>
 <p>Then the command-line interface needs to be registered as an OAuth client:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose run --rm stack is-db create-oauth-client <span class="se">\
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose run --rm stack is-db create-oauth-client <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --id cli <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --name <span class="s2">&#34;Command Line Interface&#34;</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --owner admin <span class="se">\
@@ -258,7 +258,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl"><span class="nv">REDIRECT_PATH</span><span class="o">=</span>/console/oauth/callback
 </span></span><span class="line"><span class="cl"><span class="nv">LOGOUT_REDIRECT_URI</span><span class="o">=</span><span class="si">${</span><span class="nv">SERVER_ADDRESS</span><span class="si">}</span>/console
 </span></span><span class="line"><span class="cl"><span class="nv">LOGOUT_REDIRECT_PATH</span><span class="o">=</span>/console
-</span></span><span class="line"><span class="cl">docker-compose run --rm stack is-db create-oauth-client <span class="se">\
+</span></span><span class="line"><span class="cl">docker compose run --rm stack is-db create-oauth-client <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --id <span class="si">${</span><span class="nv">ID</span><span class="si">}</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --name <span class="s2">&#34;</span><span class="si">${</span><span class="nv">NAME</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --owner admin <span class="se">\
@@ -276,7 +276,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span><span class="line"><span class="cl"><span class="nv">REDIRECT_PATH</span><span class="o">=</span>/noc/oauth/callback
 </span></span><span class="line"><span class="cl"><span class="nv">LOGOUT_REDIRECT_URI</span><span class="o">=</span><span class="si">${</span><span class="nv">SERVER_ADDRESS</span><span class="si">}</span>/noc
 </span></span><span class="line"><span class="cl"><span class="nv">LOGOUT_REDIRECT_PATH</span><span class="o">=</span>/noc
-</span></span><span class="line"><span class="cl">docker-compose run --rm stack is-db create-oauth-client <span class="se">\
+</span></span><span class="line"><span class="cl">docker compose run --rm stack is-db create-oauth-client <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --id <span class="si">${</span><span class="nv">ID</span><span class="si">}</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --name <span class="s2">&#34;</span><span class="si">${</span><span class="nv">NAME</span><span class="si">}</span><span class="s2">&#34;</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  --owner admin <span class="se">\
@@ -342,8 +342,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </details>
 <h2 id="running-the-things-stack">Running The Things Stack</h2>
 <p>Start The Things Stack with:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker-compose up
-</span></span></code></pre></div><p>This starts the stack, so you will see the stack logs being printed to your terminal. You can also start the stack in detached mode by adding <code>-d</code> to the command above. In that case you can get logs with <a href="https://docs.docker.com/compose/reference/logs/"><code>docker-compose logs</code></a>.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">docker compose up
+</span></span></code></pre></div><p>This starts the stack, so you will see the stack logs being printed to your terminal. You can also start the stack in detached mode by adding <code>-d</code> to the command above. In that case you can get logs with <a href="https://docs.docker.com/compose/reference/logs/"><code>docker compose logs</code></a>.</p>
 <p>With The Things Stack up and running, follow <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/console/">Console</a> or <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/cli/">Command-line Interface</a> to proceed with the login, then continue with connecting gateways, creating devices and working with streaming data.</p>
 
         </div>

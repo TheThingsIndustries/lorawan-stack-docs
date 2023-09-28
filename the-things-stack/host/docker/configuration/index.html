@@ -441,12 +441,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span><span class="lnt">58
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">  </span><span class="nt">stack</span><span class="p">:</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">    </span><span class="nt">ports</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;127.0.0.1:3000:3000&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">stack</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c"># In production, replace &#39;latest&#39; with tag from https://hub.docker.com/r/thethingsindustries/lorawan-stack/tags</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">thethingsindustries/lorawan-stack:latest</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="l">tti-lw-stack -c /config/ttn-lw-stack-docker.yml</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l">start</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l">thethingsindustries/lorawan-stack:latest</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>The <code>depends_on</code> field tells Docker Compose that The Things Stack depends on PostgreSQL and Redis. With this, Docker Compose will wait for PostgreSQL and Redis to come online before starting The Things Stack.</p>
@@ -457,9 +457,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span><span class="lnt">60
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">redis</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">postgres</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">    </span><span class="nt">entrypoint</span><span class="p">:</span><span class="w"> </span><span class="l">tti-lw-stack -c /config/ttn-lw-stack-docker.yml</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l">start</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l">unless-stopped</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <div class="notification is-info is-light has-text-dark">
@@ -478,11 +478,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span><span class="lnt">65
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./blob:/srv/ttn-lorawan/public/blob</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./config/stack:/config:ro</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># If using Let&#39;s Encrypt:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./acme:/var/lib/acme</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">    </span><span class="nt">depends_on</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">redis</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">postgres</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./blob:/srv/ttn-lorawan/public/blob</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <div class="notification is-info is-light has-text-dark">
@@ -531,7 +531,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span><span class="lnt">94
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./config/stack:/config:ro</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="c"># If using Let&#39;s Encrypt:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="l">./acme:/var/lib/acme</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">environment</span><span class="p">:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">TTN_LW_BLOB_LOCAL_DIRECTORY</span><span class="p">:</span><span class="w"> </span><span class="l">/srv/ttn-lorawan/public/blob</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">TTN_LW_REDIS_ADDRESS</span><span class="p">:</span><span class="w"> </span><span class="l">redis:6379</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">TTN_LW_IS_DATABASE_URI</span><span class="p">:</span><span class="w"> </span><span class="l">postgres://root:root@postgres:5432/ttn_lorawan?sslmode=disable</span><span class="w">
@@ -556,10 +559,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;1886:1886&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;8886:8886&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;1887:1887&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;8887:8887&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;1888:1888&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;8888:8888&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;1700:1700/udp&#34;</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="s2">&#34;8887:8887&#34;</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <div class="notification is-info is-light has-text-dark">
@@ -761,6 +761,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span><span class="lnt">187
 </span><span class="lnt">188
 </span><span class="lnt">189
+</span><span class="lnt">190
+</span><span class="lnt">191
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># The Things Stack requires a license key</span><span class="w">
@@ -947,6 +949,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">admin-password</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;admin&#34;</span><span class="w"> </span><span class="c"># choose or generate a secret</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">console-url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/console&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">noc-address</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;stack:1884&#34;</span><span class="w"> </span><span class="c"># internal non-TLS address of The Things Stack Network Operations Center</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">access</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">extended</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># Enable application and end device dashboards</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># If running a multi-tenant environment, defaults for &#34;thethings.example.com&#34;:</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tenancy</span><span class="p">:</span><span class="w">
@@ -1263,6 +1267,7 @@ host, and also to use it as the default host.</p>
 </span><span class="lnt">182
 </span><span class="lnt">183
 </span><span class="lnt">184
+</span><span class="lnt">185
 </span></code></pre></td>
 <td class="lntd">
 <pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">  </span><span class="nt">grafana</span><span class="p">:</span><span class="w">
@@ -1270,7 +1275,8 @@ host, and also to use it as the default host.</p>
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">admin-username</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;admin&#34;</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">admin-password</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;admin&#34;</span><span class="w"> </span><span class="c"># choose or generate a secret</span><span class="w">
 </span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">console-url</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;https://thethings.example.com/console&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">noc-address</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;stack:1884&#34;</span><span class="w"> </span><span class="c"># internal non-TLS address of The Things Stack Network Operations Center</span></span></span></code></pre></td></tr></table>
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">noc-address</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;stack:1884&#34;</span><span class="w"> </span><span class="c"># internal non-TLS address of The Things Stack Network Operations Center</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="l">access:</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <h3 id="multi-tenancy">Multi-tenancy</h3>
@@ -1303,12 +1309,14 @@ host, and also to use it as the default host.</p>
 </span><span class="lnt">186
 </span><span class="lnt">187
 </span><span class="lnt">188
+</span><span class="lnt">189
 </span></code></pre></td>
 <td class="lntd">
-<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># If running a multi-tenant environment, defaults for &#34;thethings.example.com&#34;:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">tenancy</span><span class="p">:</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">base-domains</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;thethings.example.com&#34;</span><span class="w">
-</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">default-id</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;default&#34;</span></span></span></code></pre></td></tr></table>
+<pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="w">  </span><span class="nt">access</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">extended</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w"> </span><span class="c"># Enable application and end device dashboards</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="c"># If running a multi-tenant environment, defaults for &#34;thethings.example.com&#34;:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="l">tenancy:</span></span></span></code></pre></td></tr></table>
 </div>
 </div>
 <p>For multi-tenant environments you&rsquo;ll also need to configure tenant admin keys:</p>
