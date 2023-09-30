@@ -21,7 +21,17 @@ description: ""
 
 {{< proto/method service="AppAs" method="DownlinkQueueList" >}}
 
+{{< proto/method service="AppAs" method="DecodeDownlink" >}}
+
+{{< proto/method service="AppAs" method="DecodeUplink" >}}
+
+{{< proto/method service="AppAs" method="EncodeDownlink" >}}
+
+{{< proto/method service="AppAs" method="GetMQTTConnectionInfo" >}}
+
 {{< proto/method service="AppAs" method="SimulateUplink" >}}
+
+{{< proto/method service="AppAs" method="Subscribe" >}}
 
 ## Messages
 
@@ -59,7 +69,13 @@ description: ""
 
 {{< proto/message message="DataRate" >}}
 
+{{< proto/message message="DecodeDownlinkRequest" >}}
+
+{{< proto/message message="DecodeUplinkRequest" >}}
+
 {{< proto/message message="DownlinkQueueRequest" >}}
+
+{{< proto/message message="EncodeDownlinkRequest" >}}
 
 {{< proto/message message="EndDeviceIdentifiers" >}}
 
