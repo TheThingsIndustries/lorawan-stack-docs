@@ -15,6 +15,12 @@ description: ""
 
 {{< proto/method package="tti.lorawan.v3" service="AuthenticationProviderRegistry" method="Delete" >}}
 
+## The `ContactInfoRegistry` service
+
+{{< proto/method service="ContactInfoRegistry" method="RequestValidation" >}}
+
+{{< proto/method service="ContactInfoRegistry" method="Validate" >}}
+
 ## The `EntityRegistrySearch` service
 
 {{< proto/method service="EntityRegistrySearch" method="SearchAccounts" >}}
@@ -30,6 +36,14 @@ description: ""
 {{< proto/message package="tti.lorawan.v3" message="AuthenticationProviders" >}}
 
 {{< proto/message package="tti.lorawan.v3" message="CreateAuthenticationProviderRequest" >}}
+
+{{< proto/message message="ContactInfo" >}}
+
+{{< proto/message message="ContactInfoValidation" >}}
+
+{{< proto/message message="EndDeviceIdentifiers" >}}
+
+{{< proto/message message="EntityIdentifiers" >}}
 
 {{< proto/message package="tti.lorawan.v3" message="GetAuthenticationProviderRequest" >}}
 
@@ -56,5 +70,9 @@ description: ""
 {{< proto/message message="SearchAccountsResponse" >}}
 
 <!-- ## Enums -->
+
+{{< proto/enum enum="ContactMethod" >}}
+
+{{< proto/enum enum="ContactType" >}}
 
 {{< api-refs >}}
