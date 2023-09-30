@@ -7,6 +7,8 @@ description: ""
 
 {{< proto/method service="ApplicationUpStorage" method="GetStoredApplicationUp" >}}
 
+{{< proto/method service="ApplicationUpStorage" method="GetStoredApplicationUpCount" >}}
+
 ## Messages
 
 {{< proto/message message="GetStoredApplicationUpRequest" >}}
@@ -50,6 +52,8 @@ description: ""
 {{< proto/message message="GatewayIdentifiers" >}}
 
 {{< proto/message message="GatewayAntennaIdentifiers" >}}
+
+{{< proto/message message="GetStoredApplicationUpCountRequest" >}}
 
 {{< proto/message message="KeyEnvelope" >}}
 
