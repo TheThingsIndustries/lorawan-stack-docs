@@ -47,6 +47,15 @@ description: ""
 
 {{< proto/method service="ApplicationAccess" method="ListCollaborators" >}}
 
+
+## The `ApplicationActivationSettingRegistry` service
+
+{{< proto/method service="ApplicationActivationSettingRegistry" method="Get" >}}
+
+{{< proto/method service="ApplicationActivationSettingRegistry" method="Set" >}}
+
+{{< proto/method service="ApplicationActivationSettingRegistry" method="Delete" >}}
+
 ## Messages
 
 {{< proto/message message="APIKey" >}}
@@ -58,6 +67,8 @@ description: ""
 {{< proto/message message="ApplicationIdentifiers" >}}
 
 {{< proto/message message="Applications" >}}
+
+{{< proto/message message="ApplicationActivationSettings" >}}
 
 {{< proto/message message="Collaborator" >}}
 
@@ -71,13 +82,19 @@ description: ""
 
 {{< proto/message message="DeleteApplicationAPIKeyRequest" >}}
 
+{{< proto/message message="DeleteApplicationActivationSettingsRequest" >}}
+
 {{< proto/message message="DeleteApplicationCollaboratorRequest" >}}
 
 {{< proto/message message="GetApplicationAPIKeyRequest" >}}
 
 {{< proto/message message="GetApplicationCollaboratorRequest" >}}
 
+{{< proto/message message="GetApplicationActivationSettingsRequest" >}}
+
 {{< proto/message message="GetApplicationRequest" >}}
+
+{{< proto/message message="KeyEnvelope" >}}
 
 {{< proto/message message="GetCollaboratorResponse" >}}
 
@@ -96,6 +113,8 @@ description: ""
 {{< proto/message message="SearchApplicationsRequest" >}}
 
 {{< proto/message message="SetApplicationCollaboratorRequest" >}}
+
+{{< proto/message message="SetApplicationActivationSettingsRequest" >}}
 
 {{< proto/message message="UpdateApplicationAPIKeyRequest" >}}
 
