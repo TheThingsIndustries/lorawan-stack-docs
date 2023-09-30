@@ -23,7 +23,15 @@ description: ""
 
 {{< proto/method service="ApplicationPackageRegistry" method="DeleteDefaultAssociation" >}}
 
+## The `AzureIoTHubService` service
+
+{{< proto/method service="AzureIoTHubService" method="Submit" >}}
+
 ## Messages
+
+{{< proto/message message="AzureIoTHubEvent" >}}
+
+{{< proto/message message="AzureIoTHubEvents" >}}
 
 {{< proto/message message="EndDeviceIdentifiers" >}}
 
