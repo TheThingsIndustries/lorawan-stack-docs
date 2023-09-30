@@ -51,6 +51,8 @@ description: ""
 
 {{< proto/method service="UserAccess" method="UpdateAPIKey" >}}
 
+{{< proto/method service="UserAccess" method="CreateLoginToken" >}}
+
 ## The `UserInvitationRegistry` service
 
 {{< proto/method service="UserInvitationRegistry" method="Send" >}}
@@ -82,6 +84,8 @@ description: ""
 {{< proto/message message="CreateUserAPIKeyRequest" >}}
 
 {{< proto/message message="ContactInfo" >}}
+
+{{< proto/message message="CreateLoginTokenRequest" >}}
 
 {{< proto/message message="CreateTemporaryPasswordRequest" >}}
 
