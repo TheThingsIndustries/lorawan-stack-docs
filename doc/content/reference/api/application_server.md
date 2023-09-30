@@ -41,6 +41,14 @@ description: ""
 
 {{< proto/method service="AsJs" method="GetAppSKey" >}}
 
+## The `AsNs` service
+
+{{< proto/method service="AsNs" method="DownlinkQueueReplace" >}}
+
+{{< proto/method service="AsNs" method="DownlinkQueuePush" >}}
+
+{{< proto/method service="AsNs" method="DownlinkQueueList" >}}
+
 ## Messages
 
 {{< proto/message message="ApplicationDownlink.ClassBC" >}}
