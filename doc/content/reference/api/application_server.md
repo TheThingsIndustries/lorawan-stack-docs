@@ -37,6 +37,10 @@ description: ""
 
 {{< proto/method service="AppJs" method="GetAppSKey" >}}
 
+## The `AsJs` service
+
+{{< proto/method service="AsJs" method="GetAppSKey" >}}
+
 ## Messages
 
 {{< proto/message message="ApplicationDownlink.ClassBC" >}}
