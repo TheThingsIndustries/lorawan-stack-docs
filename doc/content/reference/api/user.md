@@ -61,6 +61,12 @@ description: ""
 
 {{< proto/method service="UserInvitationRegistry" method="Delete" >}}
 
+## The `UserSessionRegistry` service
+
+{{< proto/method service="UserSessionRegistry" method="Delete" >}}
+
+{{< proto/method service="UserSessionRegistry" method="List" >}}
+
 ## The `NotificationService` service
 
 {{< proto/method service="NotificationService" method="Create" >}}
@@ -131,6 +137,8 @@ description: ""
 
 {{< proto/message message="ListUsersRequest" >}}
 
+{{< proto/message message="ListUserSessionsRequest" >}}
+
 {{< proto/message message="Notification" >}}
 
 {{< proto/message message="OrganizationIdentifiers" >}}
@@ -162,6 +170,8 @@ description: ""
 {{< proto/message message="UserIdentifiers" >}}
 
 {{< proto/message message="Users" >}}
+
+{{< proto/message message="UserSessionIdentifiers" >}}
 
 ## Enums
 
