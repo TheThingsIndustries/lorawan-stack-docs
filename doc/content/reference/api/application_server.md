@@ -33,6 +33,10 @@ description: ""
 
 {{< proto/method service="AppAs" method="Subscribe" >}}
 
+## The `AppJs` service
+
+{{< proto/method service="AppJs" method="GetAppSKey" >}}
+
 ## Messages
 
 {{< proto/message message="ApplicationDownlink.ClassBC" >}}
@@ -110,6 +114,8 @@ description: ""
 {{< proto/message message="PacketBrokerRouteHop" >}}
 
 {{< proto/message message="RxMetadata" >}}
+
+{{< proto/message message="SessionKeyRequest" >}}
 
 {{< proto/message message="SetApplicationLinkRequest" >}}
 
