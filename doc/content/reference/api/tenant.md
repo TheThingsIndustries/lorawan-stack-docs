@@ -29,6 +29,10 @@ Unlike the other services, the tenant services do **not** accept API keys or OAu
 
 {{< proto/method package="tti.lorawan.v3" service="EntityRegistrySearch" method="SearchTenants" >}}
 
+## The `Tbs` service
+
+{{< proto/method package="tti.lorawan.v3" service="Tbs" method="Report" >}}
+
 ## Messages
 
 {{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.IdentityServer.ApplicationLimits" >}}
@@ -52,6 +56,10 @@ Unlike the other services, the tenant services do **not** accept API keys or OAu
 {{< proto/message package="tti.lorawan.v3" message="TenantRegistryTotals" >}}
 
 {{< proto/message package="tti.lorawan.v3" message="ListTenantsRequest" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="MeteringData" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="MeteringData.TenantMeteringData" >}}
 
 {{< proto/message package="tti.lorawan.v3" message="UpdateTenantRequest" >}}
 
