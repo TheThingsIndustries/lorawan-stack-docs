@@ -7,6 +7,8 @@ description: ""
 
 {{< proto/method service="As" method="SetLink" >}}
 
+{{< proto/method service="As" method="GetConfiguration" >}}
+
 {{< proto/method service="As" method="GetLink" >}}
 
 {{< proto/method service="As" method="GetLinkStats" >}}
@@ -102,6 +104,8 @@ description: ""
 {{< proto/message message="ErrorDetails" >}}
 
 {{< proto/message message="FSKDataRate" >}}
+
+{{< proto/message message="GetAsConfigurationRequest" >}}
 
 {{< proto/message message="GatewayAntennaIdentifiers" >}}
 
