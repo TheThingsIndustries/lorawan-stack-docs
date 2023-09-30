@@ -56,6 +56,13 @@ description: ""
 
 {{< proto/method service="ApplicationActivationSettingRegistry" method="Delete" >}}
 
+
+## The `ApplicationCryptoService` service
+
+{{< proto/method service="ApplicationCryptoService" method="DeriveAppSKey" >}}
+
+{{< proto/method service="ApplicationCryptoService" method="GetAppKey" >}}
+
 ## Messages
 
 {{< proto/message message="APIKey" >}}
@@ -85,6 +92,12 @@ description: ""
 {{< proto/message message="DeleteApplicationActivationSettingsRequest" >}}
 
 {{< proto/message message="DeleteApplicationCollaboratorRequest" >}}
+
+{{< proto/message message="DeriveSessionKeysRequest" >}}
+
+{{< proto/message message="EndDeviceIdentifiers" >}}
+
+{{< proto/message message="GetRootKeysRequest" >}}
 
 {{< proto/message message="GetApplicationAPIKeyRequest" >}}
 
@@ -127,6 +140,8 @@ description: ""
 {{< proto/enum enum="ContactType" >}}
 
 {{< proto/enum enum="ContactMethod" >}}
+
+{{< proto/enum enum="MACVersion" >}}
 
 {{< proto/enum enum="Right" >}}
 
