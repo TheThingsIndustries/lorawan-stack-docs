@@ -15,6 +15,10 @@ description: ""
 
 {{< proto/method package="tti.lorawan.v3" service="AuthenticationProviderRegistry" method="Delete" >}}
 
+## The `EntityRegistrySearch` service
+
+{{< proto/method service="EntityRegistrySearch" method="SearchAccounts" >}}
+
 ## Messages
 
 {{< proto/message package="tti.lorawan.v3" message="AuthenticationProvider" >}}
@@ -34,6 +38,22 @@ description: ""
 {{< proto/message package="tti.lorawan.v3" message="UpdateAuthenticationProviderRequest" >}}
 
 {{< proto/message package="tti.lorawan.v3" message="AuthenticationProviderIdentifiers" >}}
+
+{{< proto/message message="ApplicationIdentifiers" >}}
+
+{{< proto/message message="ClientIdentifiers" >}}
+
+{{< proto/message message="GatewayIdentifiers" >}}
+
+{{< proto/message message="OrganizationIdentifiers" >}}
+
+{{< proto/message message="OrganizationOrUserIdentifiers" >}}
+
+{{< proto/message message="UserIdentifiers" >}}
+
+{{< proto/message message="SearchAccountsRequest" >}}
+
+{{< proto/message message="SearchAccountsResponse" >}}
 
 <!-- ## Enums -->
 
