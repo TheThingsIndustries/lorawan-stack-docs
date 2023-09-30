@@ -5,13 +5,17 @@ description: ""
 
 ## The `ApplicationWebhookRegistry` service
 
+{{< proto/method service="ApplicationWebhookRegistry" method="Get" >}}
+
 {{< proto/method service="ApplicationWebhookRegistry" method="GetFormats" >}}
+
+{{< proto/method service="ApplicationWebhookRegistry" method="GetTemplate" >}}
 
 {{< proto/method service="ApplicationWebhookRegistry" method="Set" >}}
 
-{{< proto/method service="ApplicationWebhookRegistry" method="Get" >}}
-
 {{< proto/method service="ApplicationWebhookRegistry" method="List" >}}
+
+{{< proto/method service="ApplicationWebhookRegistry" method="ListTemplates" >}}
 
 {{< proto/method service="ApplicationWebhookRegistry" method="Delete" >}}
 
@@ -40,6 +44,10 @@ description: ""
 {{< proto/message message="ErrorDetails" >}}
 
 {{< proto/message message="GetApplicationWebhookRequest" >}}
+
+{{< proto/message message="GetApplicationWebhookTemplateRequest" >}}
+
+{{< proto/message message="ListApplicationWebhookTemplatesRequest" >}}
 
 {{< proto/message message="ListApplicationWebhooksRequest" >}}
 
