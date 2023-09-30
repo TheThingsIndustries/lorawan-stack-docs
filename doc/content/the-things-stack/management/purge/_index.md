@@ -5,13 +5,13 @@ weight:
 aliases: [/reference/purge]
 ---
 
-When entities are deleted, {{% tts %}} [retains some IDs]({{< ref "reference/id-eui-constraints" >}}) by default to prevent another user re-registering the ID and obtaining historical data.
-
-When entities are deleted, they can be restored within a limited time period. It is also possible for administrators to purge IDs so that they may be reused.
+When entities are deleted, {{% tts %}} [retains some IDs]({{< ref "reference/id-eui-constraints" >}}) by default to prevent another user re-registering the ID and obtaining historical data. Deleted entities can be restored within a limited time period, but it is also possible for administrators to purge these entities, so that their IDs may be reused.
 
 This reference contains information about how to do delete, restore and purge entities.
 
 <!--more-->
+
+{{< note >}} End devices cannot be soft deleted, i.e. once they are deleted, they cannot be restored anymore. Hence, information below regarding restoring and manual purging refers to other entities - applications, gateways, clients, users and organizations. {{</ note >}}
 
 ## Deleting and Restoring Entities
 
@@ -28,6 +28,12 @@ If you are an administrator, you will also be presented with the option to purge
 {{</ tabs/tab >}}
 
 {{< tabs/tab "CLI" >}}
+
+To delete an end device (keep in mind the note above!):
+
+```bash
+ttn-lw-cli applications delete --application-id <application-id> --device-id <device-id>
+```
 
 To delete an application:
 
