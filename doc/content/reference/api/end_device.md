@@ -198,6 +198,12 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/method service="EndDeviceRegistrySearch" method="SearchEndDevices" >}}
 
+## The `EndDeviceTemplateConverter` service
+
+{{< proto/method service="EndDeviceTemplateConverter" method="ListFormats" >}}
+
+{{< proto/method service="EndDeviceTemplateConverter" method="Convert" >}}
+
 ## Messages
 
 {{< proto/message message="ApplicationIdentifiers" >}}
@@ -253,6 +259,8 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 {{< proto/message message="ClaimEndDeviceRequest.AuthenticatedIdentifiers" >}}
 
 {{< proto/message message="ClassBCGatewayIdentifiers" >}}
+
+{{< proto/message message="ConvertEndDeviceTemplateRequest" >}}
 
 {{< proto/message message="DataRate" >}}
 
