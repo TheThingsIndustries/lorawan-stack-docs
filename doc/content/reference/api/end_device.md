@@ -36,6 +36,8 @@ The Identity Server's `EndDeviceRegistry` is the first service, where end device
 
 {{< proto/method service="EndDeviceRegistry" method="Get" >}}
 
+{{< proto/method service="EndDeviceRegistry" method="GetIdentifiersForEUIs" >}}
+
 {{< proto/method service="EndDeviceRegistry" method="List" >}}
 
 {{< proto/method service="EndDeviceRegistry" method="Update" >}}
@@ -295,6 +297,8 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 {{< proto/message message="GetClaimStatusResponse" >}}
 
 {{< proto/message message="GetClaimStatusResponse.VendorSpecific" >}}
+
+{{< proto/message message="GetEndDeviceIdentifiersForEUIsRequest" >}}
 
 {{< proto/message message="GetInfoByJoinEUIRequest" >}}
 
