@@ -33,6 +33,16 @@ description: ""
 
 {{< proto/method service="Is" method="GetConfiguration" >}}
 
+## The `OAuthAuthorizationRegistry` service
+
+{{< proto/method service="OAuthAuthorizationRegistry" method="List" >}}
+
+{{< proto/method service="OAuthAuthorizationRegistry" method="ListTokens" >}}
+
+{{< proto/method service="OAuthAuthorizationRegistry" method="Delete" >}}
+
+{{< proto/method service="OAuthAuthorizationRegistry" method="DeleteToken" >}}
+
 ## Messages
 
 {{< proto/message package="tti.lorawan.v3" message="AuthenticationProvider" >}}
@@ -79,7 +89,21 @@ description: ""
 
 {{< proto/message message="GetIsConfigurationRequest" >}}
 
+{{< proto/message message="OAuthClientAuthorizationIdentifiers" >}}
+
+{{< proto/message message="ListOAuthClientAuthorizationsRequest" >}}
+
+{{< proto/message message="ListOAuthAccessTokensRequest" >}}
+
 {{< proto/message message="OAuthAccessToken" >}}
+
+{{< proto/message message="OAuthAccessTokenIdentifiers" >}}
+
+{{< proto/message message="OAuthAccessTokens" >}}
+
+{{< proto/message message="OAuthClientAuthorization" >}}
+
+{{< proto/message message="OAuthClientAuthorizations" >}}
 
 {{< proto/message message="OrganizationIdentifiers" >}}
 
