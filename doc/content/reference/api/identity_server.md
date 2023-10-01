@@ -25,6 +25,10 @@ description: ""
 
 {{< proto/method service="EntityRegistrySearch" method="SearchAccounts" >}}
 
+## The `EntityAccess` service
+
+{{< proto/method service="EntityAccess" method="AuthInfo" >}}
+
 ## Messages
 
 {{< proto/message package="tti.lorawan.v3" message="AuthenticationProvider" >}}
@@ -53,17 +57,31 @@ description: ""
 
 {{< proto/message package="tti.lorawan.v3" message="AuthenticationProviderIdentifiers" >}}
 
+{{< proto/message message="APIKey" >}}
+
 {{< proto/message message="ApplicationIdentifiers" >}}
+
+{{< proto/message message="AuthInfoResponse" >}}
+
+{{< proto/message message="AuthInfoResponse.APIKeyAccess" >}}
+
+{{< proto/message message="AuthInfoResponse.GatewayToken" >}}
 
 {{< proto/message message="ClientIdentifiers" >}}
 
 {{< proto/message message="GatewayIdentifiers" >}}
 
+{{< proto/message message="OAuthAccessToken" >}}
+
 {{< proto/message message="OrganizationIdentifiers" >}}
 
 {{< proto/message message="OrganizationOrUserIdentifiers" >}}
 
+{{< proto/message message="Rights" >}}
+
 {{< proto/message message="UserIdentifiers" >}}
+
+{{< proto/message message="UserSession" >}}
 
 {{< proto/message message="SearchAccountsRequest" >}}
 
@@ -74,5 +92,7 @@ description: ""
 {{< proto/enum enum="ContactMethod" >}}
 
 {{< proto/enum enum="ContactType" >}}
+
+{{< proto/enum enum="Right" >}}
 
 {{< api-refs >}}
