@@ -29,6 +29,10 @@ description: ""
 
 {{< proto/method service="EntityAccess" method="AuthInfo" >}}
 
+## The `Is` service
+
+{{< proto/method service="Is" method="GetConfiguration" >}}
+
 ## Messages
 
 {{< proto/message package="tti.lorawan.v3" message="AuthenticationProvider" >}}
@@ -70,6 +74,10 @@ description: ""
 {{< proto/message message="ClientIdentifiers" >}}
 
 {{< proto/message message="GatewayIdentifiers" >}}
+
+{{< proto/message message="GetIsConfigurationRequest" >}}
+
+{{< proto/message message="GetIsConfigurationRequest" >}}
 
 {{< proto/message message="OAuthAccessToken" >}}
 
