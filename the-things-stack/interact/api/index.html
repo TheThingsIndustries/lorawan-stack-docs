@@ -537,16 +537,23 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>  <span class="s1">&#39;https://thethings.example.com/api/v3/applications/app1/purge&#39;</span>
 </span></span></code></pre></div><h2 id="api-usage-troubleshooting">API Usage Troubleshooting</h2>
 <p>This section provides help for common issues and frequently asked questions you may have when using the API.</p>
-<h3 id="i-get-a-forbidden-paths-in-field-mask-error">I get a <code>forbidden path(s) in field mask</code> error.</h3>
+<h3 id="forbidden-paths-in-field-mask-error">&ldquo;Forbidden path(s) in field mask&rdquo; error</h3>
 <p>This error usually occurs when wrong path(s) are specified in the <code>field_mask</code> object in the API request body. See <a href="https://www.thethingsindustries.com/docs/reference/api/field-mask/">Fields and Field Masks</a> section and make sure that paths listed under your <code>field_mask</code> are correct.</p>
-<h3 id="when-adding-a-device-i-get-an-invalid-end_device-embedded-message-failed-validation-error">When adding a device, I get an <code>invalid end_device: embedded message failed validation</code> error.</h3>
+<h3 id="when-adding-a-device-i-get-an-invalid-end_device-embedded-message-failed-validation-error">When adding a device, I get an &ldquo;invalid end_device: embedded message failed validation&rdquo; error.</h3>
 <p>The most common cause for this error is not following the regex pattern in the <code>device_id</code> field. See <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/#message:EndDeviceIdentifiers">End Device APIs</a> section and make sure your <code>device_id</code> is in line with the defined regex pattern. See also <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">ID and EUI constaints</a> documentation.</p>
-<h3 id="listing-gateways-via-api-call-works-for-the-eu1-the-things-stack-cloud-cluster-but-wont-work-for-the-nam1-cluster">Listing gateways via API call works for the <code>eu1</code> The Things Stack Cloud cluster, but won&rsquo;t work for the <code>nam1</code> cluster.</h3>
+<h3 id="listing-gateways-via-api-call-works-for-the-eu1-the-things-stack-cloud-cluster-but-wont-work-for-the-nam1-cluster">Listing gateways via API call works for the eu1 The Things Stack Cloud cluster, but won&rsquo;t work for the nam1 cluster.</h3>
 <p>Unlike other server components, the Identity Server component of The Things Stack is hosted only in the <code>eu1</code> cluster for <a href="https://www.thethingsindustries.com/docs/the-things-stack/cloud/addresses/#api-endpoints">The Things Stack Cloud</a> and <a href="https://www.thethingsindustries.com/docs/reference/ttn/addresses/#api-endpoints">The Things Stack Community Edition</a>. This is the reason why Identity Server API request to any cluster other than <code>eu1</code> will fail.</p>
-<h3 id="i-see-a-426-upgrade-required-error-when-making-an-api-call">I see a <code>426 Upgrade Required</code> error when making an API call.</h3>
+<h3 id="426-upgrade-required-error">&ldquo;426 Upgrade Required&rdquo; error</h3>
 <p>This error indicates that the client HTTP protocol version is old, so the server refuses to perform the request and requires a client update to HTTP 1.1 version or higher.</p>
-<h3 id="i-get-an-insufficient_application_rights-error">I get an <code>insufficient_application_rights</code> error.</h3>
-<p>The API key you are using doesn&rsquo;t have sufficient rights. Go to the Console, enter your API key settings on the left hand menu and edit them to provide rights needed to perform the desired action.</p>
+<h3 id="no_application_rights-error">&ldquo;No_application_rights&rdquo; error</h3>
+<p>The API key you are using doesn&rsquo;t have sufficient rights to perform the desired API request. It might also be caused by a missing <code>Bearer</code> keyword in the <code>Authorization</code> header used in the API call.</p>
+<p>To resolve this issue, make sure your API key has necessary rights to interact with the desired application. Also, make sure to use the <code>Bearer</code> keyword when specifying the <code>Authorization</code> header.</p>
+<h3 id="api_key_not_found-error">&ldquo;Api_key_not_found&rdquo; error</h3>
+<p>This error indicates that the specified API key used for the API call is not valid or doesn&rsquo;t exist at all. Double-check that the API key you provided is correct and still valid. If it is expired, you can generate a new API key and update your API call request with the new one.</p>
+<h3 id="unauthenticated-error">&ldquo;Unauthenticated&rdquo; error</h3>
+<p>This error occurs when the API request is made without proper authentication credentials. Make sure to include the correct API key in the authentication request header.</p>
+<h3 id="url-using-badillegal-format-or-missing-url-error">&ldquo;URL using bad/illegal format or missing URL&rdquo; error</h3>
+<p>The URL format in the API call command is incorrect or missing. Please make sure that the URL syntax is correct, that it includes all necessary parameters and that the specified endpoint is properly configured.</p>
         </div>
         
           <div class="is-clearfix">
