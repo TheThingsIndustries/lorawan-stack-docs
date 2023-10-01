@@ -17,6 +17,16 @@ description: ""
 
 {{< proto/method service="GatewayConfigurationService" method="GetGatewayConfiguration" >}}
 
+## The `GtwGs` service
+
+{{< proto/method service="GtwGs" method="LinkGateway" >}}
+
+{{< proto/method service="GtwGs" method="GetConcentratorConfig" >}}
+
+{{< proto/method service="GtwGs" method="GetMQTTConnectionInfo" >}}
+
+{{< proto/method service="GtwGs" method="GetMQTTV2ConnectionInfo" >}}
+
 ## The `GsNs` service
 
 {{< proto/method service="GsNs" method="HandleUplink" >}}
@@ -32,6 +42,16 @@ description: ""
 {{< proto/message message="BatchGetGatewayConnectionStatsResponse" >}}
 
 {{< proto/message message="CFList" >}}
+
+{{< proto/message message="ConcentratorConfig" >}}
+
+{{< proto/message message="ConcentratorConfig.Channel" >}}
+
+{{< proto/message message="ConcentratorConfig.LoRaStandardChannel" >}}
+
+{{< proto/message message="ConcentratorConfig.FSKChannel" >}}
+
+{{< proto/message message="ConcentratorConfig.LBTConfiguration" >}}
 
 {{< proto/message message="DownlinkPath" >}}
 
@@ -63,11 +83,19 @@ description: ""
 
 {{< proto/message message="GatewayConnectionStats.SubBand" >}}
 
+{{< proto/message message="GatewayDown" >}}
+
 {{< proto/message message="GatewayStatus" >}}
+
+{{< proto/message message="GatewayRadio" >}}
+
+{{< proto/message message="GatewayRadio.TxConfiguration" >}}
 
 {{< proto/message message="GatewayRemoteAddress" >}}
 
 {{< proto/message message="GatewayTxAcknowledgment" >}}
+
+{{< proto/message message="GatewayUp" >}}
 
 {{< proto/message message="JoinAcceptPayload" >}}
 
@@ -84,6 +112,8 @@ description: ""
 {{< proto/message message="Message" >}}
 
 {{< proto/message message="MHDR" >}}
+
+{{< proto/message message="MQTTConnectionInfo" >}}
 
 {{< proto/message message="PullGatewayConfigurationRequest" >}}
 
