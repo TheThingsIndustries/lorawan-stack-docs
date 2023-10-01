@@ -11,6 +11,10 @@ description: ""
 
 {{< proto/method service="NsAs" method="HandleUplink" >}}
 
+## The `NsGs` service
+
+{{< proto/method service="NsGs" method="ScheduleDownlink" >}}
+
 ## Messages
 
 {{< proto/message message="ApplicationDownlink" >}}
@@ -39,7 +43,17 @@ description: ""
 
 {{< proto/message message="ClassBCGatewayIdentifiers" >}}
 
+{{< proto/message message="CFList" >}}
+
 {{< proto/message message="DataRate" >}}
+
+{{< proto/message message="DLSettings" >}}
+
+{{< proto/message message="DownlinkMessage" >}}
+
+{{< proto/message message="DownlinkPath" >}}
+
+{{< proto/message message="GatewayAntennaIdentifiers" >}}
 
 {{< proto/message message="GatewayIdentifiers" >}}
 
@@ -51,7 +65,15 @@ description: ""
 
 {{< proto/message message="ErrorDetails" >}}
 
+{{< proto/message message="FCtrl" >}}
+
+{{< proto/message message="FHDR" >}}
+
 {{< proto/message message="FSKDataRate" >}}
+
+{{< proto/message message="JoinAcceptPayload" >}}
+
+{{< proto/message message="JoinRequestPayload" >}}
 
 {{< proto/message message="KeyEnvelope" >}}
 
@@ -61,6 +83,12 @@ description: ""
 
 {{< proto/message message="LRFHSSDataRate" >}}
 
+{{< proto/message message="MACPayload" >}}
+
+{{< proto/message message="Message" >}}
+
+{{< proto/message message="MHDR" >}}
+
 {{< proto/message message="NetworkIdentifiers" >}}
 
 {{< proto/message message="NsAsHandleUplinkRequest" >}}
@@ -69,7 +97,13 @@ description: ""
 
 {{< proto/message message="PacketBrokerRouteHop" >}}
 
+{{< proto/message message="RejoinRequestPayload" >}}
+
 {{< proto/message message="RxMetadata" >}}
+
+{{< proto/message message="ScheduleDownlinkResponse" >}}
+
+{{< proto/message message="TxRequest" >}}
 
 {{< proto/message message="TxSettings" >}}
 
@@ -77,9 +111,25 @@ description: ""
 
 ## Enums
 
+{{< proto/enum enum="Class" >}}
+
+{{< proto/enum enum="CFListType" >}}
+
+{{< proto/enum enum="DataRateIndex" >}}
+
+{{< proto/enum enum="DataRateOffset" >}}
+
 {{< proto/enum enum="DownlinkPathConstraint" >}}
 
 {{< proto/enum enum="LocationSource" >}}
+
+{{< proto/enum enum="Major" >}}
+
+{{< proto/enum enum="MType" >}}
+
+{{< proto/enum enum="RejoinRequestType" >}}
+
+{{< proto/enum enum="RxDelay" >}}
 
 {{< proto/enum enum="TxSchedulePriority" >}}
 
