@@ -7,6 +7,12 @@ description: ""
 
 {{< proto/method service="Ns" method="GenerateDevAddr" >}}
 
+{{< proto/method service="Ns" method="GetDefaultMACSettings" >}}
+
+{{< proto/method service="Ns" method="GetNetID" >}}
+
+{{< proto/method service="Ns" method="GetDeviceAddressPrefixes" >}}
+
 ## The `NsAs` service
 
 {{< proto/method service="NsAs" method="HandleUplink" >}}
@@ -26,6 +32,26 @@ description: ""
 {{< proto/method service="NsPba" method="PublishDownlink" >}}
 
 ## Messages
+
+{{< proto/message message="ADRAckDelayExponentValue" >}}
+
+{{< proto/message message="ADRAckLimitExponentValue" >}}
+
+{{< proto/message message="ADRSettings" >}}
+
+{{< proto/message message="ADRSettings.StaticMode" >}}
+
+{{< proto/message message="ADRSettings.DynamicMode" >}}
+
+{{< proto/message message="ADRSettings.DynamicMode.ChannelSteeringSettings" >}}
+
+{{< proto/message message="ADRSettings.DynamicMode.ChannelSteeringSettings.LoRaNarrowMode" >}}
+
+{{< proto/message message="ADRSettings.DynamicMode.ChannelSteeringSettings.DisabledMode" >}}
+
+{{< proto/message message="ADRSettings.DisabledMode" >}}
+
+{{< proto/message message="AggregatedDutyCycleValue" >}}
 
 {{< proto/message message="ApplicationDownlink" >}}
 
@@ -51,11 +77,19 @@ description: ""
 
 {{< proto/message message="ApplicationUplinkNormalized" >}}
 
+{{< proto/message message="BoolValue" >}}
+
 {{< proto/message message="ClassBCGatewayIdentifiers" >}}
 
 {{< proto/message message="CFList" >}}
 
 {{< proto/message message="DataRate" >}}
+
+{{< proto/message message="DataRateIndexValue" >}}
+
+{{< proto/message message="DataRateOffsetValue" >}}
+
+{{< proto/message message="DeviceEIRPValue" >}}
 
 {{< proto/message message="DLSettings" >}}
 
@@ -69,6 +103,12 @@ description: ""
 
 {{< proto/message message="GenerateDevAddrResponse" >}}
 
+{{< proto/message message="GetDefaultMACSettingsRequest" >}}
+
+{{< proto/message message="GetDeviceAdressPrefixesResponse" >}}
+
+{{< proto/message message="GetNetIDResponse" >}}
+
 {{< proto/message message="EndDeviceIdentifiers" >}}
 
 {{< proto/message message="EndDeviceVersionIdentifiers" >}}
@@ -78,6 +118,8 @@ description: ""
 {{< proto/message message="FCtrl" >}}
 
 {{< proto/message message="FHDR" >}}
+
+{{< proto/message message="FrequencyValue" >}}
 
 {{< proto/message message="FSKDataRate" >}}
 
@@ -99,6 +141,8 @@ description: ""
 
 {{< proto/message message="MACPayload" >}}
 
+{{< proto/message message="MACSettings" >}}
+
 {{< proto/message message="Message" >}}
 
 {{< proto/message message="MHDR" >}}
@@ -113,7 +157,11 @@ description: ""
 
 {{< proto/message message="PacketBrokerRouteHop" >}}
 
+{{< proto/message message="PingSlotPeriodValue" >}}
+
 {{< proto/message message="RejoinRequestPayload" >}}
+
+{{< proto/message message="RxDelayValue" >}}
 
 {{< proto/message message="RxMetadata" >}}
 
@@ -129,7 +177,15 @@ description: ""
 
 {{< proto/message message="TxSettings.Downlink" >}}
 
+{{< proto/message message="ZeroableFrequencyValue" >}}
+
 ## Enums
+
+{{< proto/enum enum="ADRAckDelayExponent" >}}
+
+{{< proto/enum enum="ADRAckLimitExponent" >}}
+
+{{< proto/enum enum="AggregatedDutyCycle" >}}
 
 {{< proto/enum enum="Class" >}}
 
@@ -138,6 +194,8 @@ description: ""
 {{< proto/enum enum="DataRateIndex" >}}
 
 {{< proto/enum enum="DataRateOffset" >}}
+
+{{< proto/enum enum="DeviceEIRP" >}}
 
 {{< proto/enum enum="DownlinkPathConstraint" >}}
 
@@ -148,6 +206,10 @@ description: ""
 {{< proto/enum enum="Major" >}}
 
 {{< proto/enum enum="MType" >}}
+
+{{< proto/enum enum="PHYVersion" >}}
+
+{{< proto/enum enum="PingSlotPeriod" >}}
 
 {{< proto/enum enum="RejoinRequestType" >}}
 
