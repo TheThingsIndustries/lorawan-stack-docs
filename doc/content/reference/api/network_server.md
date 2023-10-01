@@ -21,6 +21,10 @@ description: ""
 
 {{< proto/method service="NsJs" method="GetNwkSKeys" >}}
 
+## The `NsPba` service
+
+{{< proto/method service="NsPba" method="PublishDownlink" >}}
+
 ## Messages
 
 {{< proto/message message="ApplicationDownlink" >}}
