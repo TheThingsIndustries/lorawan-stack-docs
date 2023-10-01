@@ -15,6 +15,12 @@ description: ""
 
 {{< proto/method service="NsGs" method="ScheduleDownlink" >}}
 
+## The `NsJs` service
+
+{{< proto/method service="NsJs" method="HandleJoin" >}}
+
+{{< proto/method service="NsJs" method="GetNwkSKeys" >}}
+
 ## Messages
 
 {{< proto/message message="ApplicationDownlink" >}}
@@ -73,7 +79,11 @@ description: ""
 
 {{< proto/message message="JoinAcceptPayload" >}}
 
+{{< proto/message message="JoinRequest" >}}
+
 {{< proto/message message="JoinRequestPayload" >}}
+
+{{< proto/message message="JoinResponse" >}}
 
 {{< proto/message message="KeyEnvelope" >}}
 
@@ -93,6 +103,8 @@ description: ""
 
 {{< proto/message message="NsAsHandleUplinkRequest" >}}
 
+{{< proto/message message="NwkSKeysResponse" >}}
+
 {{< proto/message message="PacketBrokerMetadata" >}}
 
 {{< proto/message message="PacketBrokerRouteHop" >}}
@@ -100,6 +112,10 @@ description: ""
 {{< proto/message message="RejoinRequestPayload" >}}
 
 {{< proto/message message="RxMetadata" >}}
+
+{{< proto/message message="SessionKeyRequest" >}}
+
+{{< proto/message message="SessionKeys" >}}
 
 {{< proto/message message="ScheduleDownlinkResponse" >}}
 
@@ -122,6 +138,8 @@ description: ""
 {{< proto/enum enum="DownlinkPathConstraint" >}}
 
 {{< proto/enum enum="LocationSource" >}}
+
+{{< proto/enum enum="MACVersion" >}}
 
 {{< proto/enum enum="Major" >}}
 
