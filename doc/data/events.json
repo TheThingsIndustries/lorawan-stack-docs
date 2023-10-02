@@ -1,4 +1,8 @@
 {
+  "account.user.login_failed": {
+    "name": "account.user.login_failed",
+    "description": "login user failure"
+  },
   "application.api-key.create": {
     "name": "application.api-key.create",
     "description": "create application API key"
@@ -26,6 +30,18 @@
   "application.delete": {
     "name": "application.delete",
     "description": "delete application"
+  },
+  "application.issue_dev_eui": {
+    "name": "application.issue_dev_eui",
+    "description": "issue DevEUI for application"
+  },
+  "application.purge": {
+    "name": "application.purge",
+    "description": "purge application"
+  },
+  "application.restore": {
+    "name": "application.restore",
+    "description": "restore application"
   },
   "application.update": {
     "name": "application.update",
@@ -70,20 +86,15 @@
     "description": "forward downlink data message",
     "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ApplicationDownlink"}
   },
-  "as.down.data.queue.invalid": {
-    "name": "as.down.data.queue.invalid",
-    "description": "invalid downlink data queue",
-    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
-  },
-  "as.down.data.queue.lost": {
-    "name": "as.down.data.queue.lost",
-    "description": "lose downlink data queue",
-    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
-  },
   "as.down.data.receive": {
     "name": "as.down.data.receive",
     "description": "receive downlink data message",
     "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ApplicationDownlink"}
+  },
+  "as.end_device.batch.delete": {
+    "name": "as.end_device.batch.delete",
+    "description": "batch delete end devices",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.EndDeviceIdentifiersList"}
   },
   "as.end_device.create": {
     "name": "as.end_device.create",
@@ -98,18 +109,59 @@
     "description": "update end device",
     "data": {"@type":"type.googleapis.com/google.protobuf.Value","value":["list.of","updated.fields"]}
   },
-  "as.link.fail": {
-    "name": "as.link.fail",
-    "description": "fail link",
+  "as.mqtt.connect.fail": {
+    "name": "as.mqtt.connect.fail",
+    "description": "fail to connect to MQTT",
     "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
   },
-  "as.link.start": {
-    "name": "as.link.start",
-    "description": "start link"
+  "as.packages.alcsync.v1.fail": {
+    "name": "as.packages.alcsync.v1.fail",
+    "description": "package failed due to error",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
   },
-  "as.link.stop": {
-    "name": "as.link.stop",
-    "description": "stop link"
+  "as.packages.alcsync.v1.time_correction.answer_enqueued": {
+    "name": "as.packages.alcsync.v1.time_correction.answer_enqueued",
+    "description": "time correction command answer enqueued",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ALCSyncCommand.AppTimeAns"}
+  },
+  "as.packages.alcsync.v1.time_correction.cmd_received": {
+    "name": "as.packages.alcsync.v1.time_correction.cmd_received",
+    "description": "time correction command received",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ALCSyncCommand.AppTimeReq"}
+  },
+  "as.packages.awsiot.fail": {
+    "name": "as.packages.awsiot.fail",
+    "description": "fail to process upstream message",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
+  },
+  "as.packages.azure.iotcentral.fail": {
+    "name": "as.packages.azure.iotcentral.fail",
+    "description": "fail to process upstream message",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
+  },
+  "as.packages.azure.iothub.fail": {
+    "name": "as.packages.azure.iothub.fail",
+    "description": "fail to process upstream message",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
+  },
+  "as.packages.loraclouddmsv1.fail": {
+    "name": "as.packages.loraclouddmsv1.fail",
+    "description": "fail to process upstream message",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
+  },
+  "as.packages.loracloudglsv3.fail": {
+    "name": "as.packages.loracloudglsv3.fail",
+    "description": "fail to process upstream message",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
+  },
+  "as.packages.storage.up.drop": {
+    "name": "as.packages.storage.up.drop",
+    "description": "drop upstream data message",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
+  },
+  "as.packages.storage.up.store": {
+    "name": "as.packages.storage.up.store",
+    "description": "store upstream data message"
   },
   "as.pubsub.delete": {
     "name": "as.pubsub.delete",
@@ -144,7 +196,7 @@
   "as.up.data.decode.warning": {
     "name": "as.up.data.decode.warning",
     "description": "decode uplink data message warning",
-    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ApplicationUplink","settings":{"data_rate":{}},"received_at":"0001-01-01T00:00:00Z"}
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ApplicationUplink"}
   },
   "as.up.data.drop": {
     "name": "as.up.data.drop",
@@ -154,7 +206,12 @@
   "as.up.data.forward": {
     "name": "as.up.data.forward",
     "description": "forward uplink data message",
-    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ApplicationUp","end_device_ids":{"application_ids":{}}}
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ApplicationUp"}
+  },
+  "as.up.data.normalize.warning": {
+    "name": "as.up.data.normalize.warning",
+    "description": "normalize uplink data message warning",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ApplicationUplink"}
   },
   "as.up.data.receive": {
     "name": "as.up.data.receive",
@@ -168,11 +225,31 @@
   "as.up.join.forward": {
     "name": "as.up.join.forward",
     "description": "forward join-accept message",
-    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ApplicationUp","end_device_ids":{"application_ids":{}}}
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ApplicationUp"}
   },
   "as.up.join.receive": {
     "name": "as.up.join.receive",
     "description": "receive join-accept message"
+  },
+  "as.up.location.forward": {
+    "name": "as.up.location.forward",
+    "description": "forward location solved message",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ApplicationUp"}
+  },
+  "as.up.normalized.forward": {
+    "name": "as.up.normalized.forward",
+    "description": "forward normalized uplink message",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ApplicationUp"}
+  },
+  "as.up.service.forward": {
+    "name": "as.up.service.forward",
+    "description": "forward service data message",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ApplicationUp"}
+  },
+  "as.webhook.fail": {
+    "name": "as.webhook.fail",
+    "description": "fail to send webhook",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
   },
   "client.collaborator.delete": {
     "name": "client.collaborator.delete",
@@ -190,6 +267,14 @@
     "name": "client.delete",
     "description": "delete OAuth client"
   },
+  "client.purge": {
+    "name": "client.purge",
+    "description": "purge client"
+  },
+  "client.restore": {
+    "name": "client.restore",
+    "description": "restore OAuth client"
+  },
   "client.update": {
     "name": "client.update",
     "description": "update OAuth client",
@@ -197,15 +282,32 @@
   },
   "dcs.end_device.claim.abort": {
     "name": "dcs.end_device.claim.abort",
-    "description": "claim end device abort"
+    "description": "abort end device claim"
   },
   "dcs.end_device.claim.fail": {
     "name": "dcs.end_device.claim.fail",
-    "description": "claim end device fail"
+    "description": "claim end device failure"
   },
   "dcs.end_device.claim.success": {
     "name": "dcs.end_device.claim.success",
     "description": "claim end device successful"
+  },
+  "dcs.gateway.claim.abort": {
+    "name": "dcs.gateway.claim.abort",
+    "description": "abort gateway claim"
+  },
+  "dcs.gateway.claim.fail": {
+    "name": "dcs.gateway.claim.fail",
+    "description": "claim gateway failure"
+  },
+  "dcs.gateway.claim.success": {
+    "name": "dcs.gateway.claim.success",
+    "description": "claim gateway successful"
+  },
+  "end_device.batch.delete": {
+    "name": "end_device.batch.delete",
+    "description": "batch delete end devices",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.EndDeviceIdentifiersList"}
   },
   "end_device.create": {
     "name": "end_device.create",
@@ -232,6 +334,11 @@
     "name": "gateway.api-key.update",
     "description": "update gateway API key"
   },
+  "gateway.batch.delete": {
+    "name": "gateway.batch.delete",
+    "description": "batch delete gateways",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.GatewayIdentifiersList"}
+  },
   "gateway.collaborator.delete": {
     "name": "gateway.collaborator.delete",
     "description": "delete gateway collaborator"
@@ -248,10 +355,28 @@
     "name": "gateway.delete",
     "description": "delete gateway"
   },
+  "gateway.purge": {
+    "name": "gateway.purge",
+    "description": "purge gateway"
+  },
+  "gateway.restore": {
+    "name": "gateway.restore",
+    "description": "restore gateway"
+  },
   "gateway.update": {
     "name": "gateway.update",
     "description": "update gateway",
     "data": {"@type":"type.googleapis.com/google.protobuf.Value","value":["list.of","updated.fields"]}
+  },
+  "gs.down.schedule.attempt": {
+    "name": "gs.down.schedule.attempt",
+    "description": "schedule downlink for transmission by gateway",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.DownlinkMessage"}
+  },
+  "gs.down.schedule.fail": {
+    "name": "gs.down.schedule.fail",
+    "description": "schedule downlink for transmission by gateway",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
   },
   "gs.down.send": {
     "name": "gs.down.send",
@@ -269,40 +394,66 @@
   },
   "gs.gateway.connect": {
     "name": "gs.gateway.connect",
-    "description": "connect gateway"
+    "description": "connect gateway",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.GatewayConnectionStats"}
+  },
+  "gs.gateway.connection.stats": {
+    "name": "gs.gateway.connection.stats",
+    "description": "gateway connection statistics",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.GatewayConnectionStats"}
   },
   "gs.gateway.disconnect": {
     "name": "gs.gateway.disconnect",
-    "description": "disconnect gateway"
+    "description": "disconnect gateway",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
+  },
+  "gs.io.status.drop": {
+    "name": "gs.io.status.drop",
+    "description": "drop gateway status",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
+  },
+  "gs.io.tx.ack.drop": {
+    "name": "gs.io.tx.ack.drop",
+    "description": "drop tx ack message",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
+  },
+  "gs.io.up.drop": {
+    "name": "gs.io.up.drop",
+    "description": "drop uplink message",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
+  },
+  "gs.io.up.repeat": {
+    "name": "gs.io.up.repeat",
+    "description": "received repeated uplink message from gateway",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.GatewayIdentifiers"}
   },
   "gs.status.drop": {
     "name": "gs.status.drop",
     "description": "drop gateway status",
     "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
   },
-  "gs.status.fail": {
-    "name": "gs.status.fail",
-    "description": "fail to handle gateway status",
-    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
-  },
-  "gs.status.forward": {
-    "name": "gs.status.forward",
-    "description": "forward gateway status",
-    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.GatewayStatus","time":"0001-01-01T00:00:00Z","boot_time":"0001-01-01T00:00:00Z"}
-  },
   "gs.status.receive": {
     "name": "gs.status.receive",
     "description": "receive gateway status",
-    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.GatewayStatus","time":"0001-01-01T00:00:00Z","boot_time":"0001-01-01T00:00:00Z"}
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.GatewayStatus"}
+  },
+  "gs.txack.drop": {
+    "name": "gs.txack.drop",
+    "description": "drop transmission acknowledgement",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
+  },
+  "gs.txack.forward": {
+    "name": "gs.txack.forward",
+    "description": "forward transmission acknowledgement"
+  },
+  "gs.txack.receive": {
+    "name": "gs.txack.receive",
+    "description": "receive transmission acknowledgement",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.TxAcknowledgment"}
   },
   "gs.up.drop": {
     "name": "gs.up.drop",
     "description": "drop uplink message",
-    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
-  },
-  "gs.up.fail": {
-    "name": "gs.up.fail",
-    "description": "fail to handle uplink message",
     "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
   },
   "gs.up.forward": {
@@ -312,11 +463,16 @@
   "gs.up.receive": {
     "name": "gs.up.receive",
     "description": "receive uplink message",
-    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.UplinkMessage","settings":{"data_rate":{}},"received_at":"0001-01-01T00:00:00Z"}
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.GatewayUplinkMessage"}
   },
   "invitation.create": {
     "name": "invitation.create",
     "description": "create invitation"
+  },
+  "js.end_device.batch.delete": {
+    "name": "js.end_device.batch.delete",
+    "description": "batch delete end devices",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.EndDeviceIdentifiersList"}
   },
   "js.end_device.create": {
     "name": "js.end_device.create",
@@ -340,15 +496,6 @@
     "description": "reject join-request",
     "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
   },
-  "ns.application.link.begin": {
-    "name": "ns.application.link.begin",
-    "description": "begin application link"
-  },
-  "ns.application.link.end": {
-    "name": "ns.application.link.end",
-    "description": "end application link",
-    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
-  },
   "ns.class.switch.a": {
     "name": "ns.class.switch.a",
     "description": "switched to class A"
@@ -368,7 +515,7 @@
   },
   "ns.down.data.schedule.fail": {
     "name": "ns.down.data.schedule.fail",
-    "description": "failed to schedule data downlink for transmission on Gateway Server",
+    "description": "schedule data downlink for transmission on Gateway Server",
     "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
   },
   "ns.down.data.schedule.success": {
@@ -383,13 +530,33 @@
   },
   "ns.down.join.schedule.fail": {
     "name": "ns.down.join.schedule.fail",
-    "description": "failed to schedule join-accept for transmission on Gateway Server",
+    "description": "schedule join-accept for transmission on Gateway Server",
     "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
   },
   "ns.down.join.schedule.success": {
     "name": "ns.down.join.schedule.success",
     "description": "successfully scheduled join-accept for transmission on Gateway Server",
     "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ScheduleDownlinkResponse"}
+  },
+  "ns.down.rx.parameters.fail": {
+    "name": "ns.down.rx.parameters.fail",
+    "description": "compute RX parameters",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
+  },
+  "ns.down.transmission.fail": {
+    "name": "ns.down.transmission.fail",
+    "description": "transmit downlink",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
+  },
+  "ns.down.transmission.success": {
+    "name": "ns.down.transmission.success",
+    "description": "downlink successfully transmitted",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.DownlinkMessage"}
+  },
+  "ns.end_device.batch.delete": {
+    "name": "ns.end_device.batch.delete",
+    "description": "batch delete end devices",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.EndDeviceIdentifiersList"}
   },
   "ns.end_device.create": {
     "name": "ns.end_device.create",
@@ -427,6 +594,26 @@
     "name": "ns.mac.beacon_freq.request",
     "description": "beacon frequency change request enqueued",
     "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.MACCommand.BeaconFreqReq"}
+  },
+  "ns.mac.command.parse.fail": {
+    "name": "ns.mac.command.parse.fail",
+    "description": "parse MAC command",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
+  },
+  "ns.mac.command.process.fail": {
+    "name": "ns.mac.command.process.fail",
+    "description": "process MAC command",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ErrorDetails","namespace":"pkg/example","name":"example","message_format":"example error for `{attr_name}`","attributes":{"attr_name":"attr_value"},"code":2}
+  },
+  "ns.mac.command.unanswered": {
+    "name": "ns.mac.command.unanswered",
+    "description": "MAC command answer missing",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.MACCommands"}
+  },
+  "ns.mac.command.unknown": {
+    "name": "ns.mac.command.unknown",
+    "description": "unknown MAC command",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.MACCommand"}
   },
   "ns.mac.dev_status.answer": {
     "name": "ns.mac.dev_status.answer",
@@ -527,6 +714,11 @@
     "description": "ping slot channel accept received",
     "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.MACCommand.PingSlotChannelAns"}
   },
+  "ns.mac.ping_slot_channel.answer.reject": {
+    "name": "ns.mac.ping_slot_channel.answer.reject",
+    "description": "ping slot channel rejection received",
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.MACCommand.PingSlotChannelAns"}
+  },
   "ns.mac.ping_slot_channel.request": {
     "name": "ns.mac.ping_slot_channel.request",
     "description": "ping slot channel request enqueued",
@@ -616,27 +808,27 @@
   "ns.up.data.forward": {
     "name": "ns.up.data.forward",
     "description": "forward data message to Application Server",
-    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ApplicationUp","end_device_ids":{"application_ids":{}},"uplink_message":{"settings":{"data_rate":{}},"received_at":"0001-01-01T00:00:00Z"}}
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ApplicationUp","uplink_message":{}}
   },
   "ns.up.data.process": {
     "name": "ns.up.data.process",
     "description": "successfully processed data message",
-    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.UplinkMessage","settings":{"data_rate":{}},"received_at":"0001-01-01T00:00:00Z"}
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.UplinkMessage"}
   },
   "ns.up.data.receive": {
     "name": "ns.up.data.receive",
     "description": "receive data message",
-    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.UplinkMessage","settings":{"data_rate":{}},"received_at":"0001-01-01T00:00:00Z"}
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.UplinkMessage"}
   },
   "ns.up.join.accept.forward": {
     "name": "ns.up.join.accept.forward",
     "description": "forward join-accept to Application Server",
-    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ApplicationUp","end_device_ids":{"application_ids":{}},"join_accept":{"received_at":"0001-01-01T00:00:00Z"}}
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.ApplicationUp","join_accept":{}}
   },
   "ns.up.join.cluster.attempt": {
     "name": "ns.up.join.cluster.attempt",
     "description": "send join-request to cluster-local Join Server",
-    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.JoinRequest","dev_addr":"00000000","net_id":"000000","downlink_settings":{}}
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.JoinRequest"}
   },
   "ns.up.join.cluster.fail": {
     "name": "ns.up.join.cluster.fail",
@@ -646,7 +838,7 @@
   "ns.up.join.cluster.success": {
     "name": "ns.up.join.cluster.success",
     "description": "join-request to cluster-local Join Server succeeded",
-    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.JoinResponse","session_keys":{}}
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.JoinResponse"}
   },
   "ns.up.join.drop": {
     "name": "ns.up.join.drop",
@@ -656,7 +848,7 @@
   "ns.up.join.interop.attempt": {
     "name": "ns.up.join.interop.attempt",
     "description": "forward join-request to interoperability Join Server",
-    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.JoinRequest","dev_addr":"00000000","net_id":"000000","downlink_settings":{}}
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.JoinRequest"}
   },
   "ns.up.join.interop.fail": {
     "name": "ns.up.join.interop.fail",
@@ -666,21 +858,29 @@
   "ns.up.join.interop.success": {
     "name": "ns.up.join.interop.success",
     "description": "join-request to interoperability Join Server succeeded",
-    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.JoinResponse","session_keys":{}}
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.JoinResponse"}
   },
   "ns.up.join.process": {
     "name": "ns.up.join.process",
     "description": "successfully processed join-request",
-    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.UplinkMessage","settings":{"data_rate":{}},"received_at":"0001-01-01T00:00:00Z"}
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.UplinkMessage"}
   },
   "ns.up.join.receive": {
     "name": "ns.up.join.receive",
     "description": "receive join-request",
-    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.UplinkMessage","settings":{"data_rate":{}},"received_at":"0001-01-01T00:00:00Z"}
+    "data": {"@type":"type.googleapis.com/ttn.lorawan.v3.UplinkMessage"}
   },
   "oauth.authorize": {
     "name": "oauth.authorize",
     "description": "authorize OAuth client"
+  },
+  "oauth.session.terminated": {
+    "name": "oauth.session.terminated",
+    "description": "terminate user session"
+  },
+  "oauth.token.deleted": {
+    "name": "oauth.token.deleted",
+    "description": "delete access token"
   },
   "oauth.token.exchange": {
     "name": "oauth.token.exchange",
@@ -689,10 +889,6 @@
   "oauth.user.login": {
     "name": "oauth.user.login",
     "description": "login user successful"
-  },
-  "oauth.user.login_failed": {
-    "name": "oauth.user.login_failed",
-    "description": "login user failure"
   },
   "oauth.user.logout": {
     "name": "oauth.user.logout",
@@ -726,6 +922,14 @@
     "name": "organization.delete",
     "description": "delete organization"
   },
+  "organization.purge": {
+    "name": "organization.purge",
+    "description": "purge organization"
+  },
+  "organization.restore": {
+    "name": "organization.restore",
+    "description": "restore organization"
+  },
   "organization.update": {
     "name": "organization.update",
     "description": "update organization",
@@ -750,6 +954,14 @@
   "user.delete": {
     "name": "user.delete",
     "description": "delete user"
+  },
+  "user.purge": {
+    "name": "user.purge",
+    "description": "purge user"
+  },
+  "user.restore": {
+    "name": "user.restore",
+    "description": "restore user"
   },
   "user.update": {
     "name": "user.update",
