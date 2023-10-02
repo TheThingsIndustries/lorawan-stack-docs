@@ -2292,6 +2292,8 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 
 <h2 id="events">Events</h2>
 
+<h3 class="event-name" id="event:account.user.login_failed">Event <code>account.user.login_failed</code></h3>
+<p class="event-description">login user failure</p>
 <h3 class="event-name" id="event:application.api-key.create">Event <code>application.api-key.create</code></h3>
 <p class="event-description">create application API key</p>
 <h3 class="event-name" id="event:application.api-key.delete">Event <code>application.api-key.delete</code></h3>
@@ -2306,6 +2308,12 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 <p class="event-description">create application</p>
 <h3 class="event-name" id="event:application.delete">Event <code>application.delete</code></h3>
 <p class="event-description">delete application</p>
+<h3 class="event-name" id="event:application.issue_dev_eui">Event <code>application.issue_dev_eui</code></h3>
+<p class="event-description">issue DevEUI for application</p>
+<h3 class="event-name" id="event:application.purge">Event <code>application.purge</code></h3>
+<p class="event-description">purge application</p>
+<h3 class="event-name" id="event:application.restore">Event <code>application.restore</code></h3>
+<p class="event-description">restore application</p>
 <h3 class="event-name" id="event:application.update">Event <code>application.update</code></h3>
 <p class="event-description">update application</p>
 <details><summary>Show example of <code>data</code> field</summary>
@@ -2384,39 +2392,18 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
   "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationDownlink"
 }</code></pre>
 </details>
-<h3 class="event-name" id="event:as.down.data.queue.invalid">Event <code>as.down.data.queue.invalid</code></h3>
-<p class="event-description">invalid downlink data queue</p>
-<details><summary>Show example of <code>data</code> field</summary>
-  <pre class="event-example"><code>{
-  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
-  "attributes": {
-    "attr_name": "attr_value"
-  },
-  "code": 2,
-  "message_format": "example error for `{attr_name}`",
-  "name": "example",
-  "namespace": "pkg/example"
-}</code></pre>
-</details>
-<h3 class="event-name" id="event:as.down.data.queue.lost">Event <code>as.down.data.queue.lost</code></h3>
-<p class="event-description">lose downlink data queue</p>
-<details><summary>Show example of <code>data</code> field</summary>
-  <pre class="event-example"><code>{
-  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
-  "attributes": {
-    "attr_name": "attr_value"
-  },
-  "code": 2,
-  "message_format": "example error for `{attr_name}`",
-  "name": "example",
-  "namespace": "pkg/example"
-}</code></pre>
-</details>
 <h3 class="event-name" id="event:as.down.data.receive">Event <code>as.down.data.receive</code></h3>
 <p class="event-description">receive downlink data message</p>
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
   "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationDownlink"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.end_device.batch.delete">Event <code>as.end_device.batch.delete</code></h3>
+<p class="event-description">batch delete end devices</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.EndDeviceIdentifiersList"
 }</code></pre>
 </details>
 <h3 class="event-name" id="event:as.end_device.create">Event <code>as.end_device.create</code></h3>
@@ -2434,8 +2421,8 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
   ]
 }</code></pre>
 </details>
-<h3 class="event-name" id="event:as.link.fail">Event <code>as.link.fail</code></h3>
-<p class="event-description">fail link</p>
+<h3 class="event-name" id="event:as.mqtt.connect.fail">Event <code>as.mqtt.connect.fail</code></h3>
+<p class="event-description">fail to connect to MQTT</p>
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
   "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
@@ -2448,10 +2435,120 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
   "namespace": "pkg/example"
 }</code></pre>
 </details>
-<h3 class="event-name" id="event:as.link.start">Event <code>as.link.start</code></h3>
-<p class="event-description">start link</p>
-<h3 class="event-name" id="event:as.link.stop">Event <code>as.link.stop</code></h3>
-<p class="event-description">stop link</p>
+<h3 class="event-name" id="event:as.packages.alcsync.v1.fail">Event <code>as.packages.alcsync.v1.fail</code></h3>
+<p class="event-description">package failed due to error</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.packages.alcsync.v1.time_correction.answer_enqueued">Event <code>as.packages.alcsync.v1.time_correction.answer_enqueued</code></h3>
+<p class="event-description">time correction command answer enqueued</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ALCSyncCommand.AppTimeAns"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.packages.alcsync.v1.time_correction.cmd_received">Event <code>as.packages.alcsync.v1.time_correction.cmd_received</code></h3>
+<p class="event-description">time correction command received</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ALCSyncCommand.AppTimeReq"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.packages.awsiot.fail">Event <code>as.packages.awsiot.fail</code></h3>
+<p class="event-description">fail to process upstream message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.packages.azure.iotcentral.fail">Event <code>as.packages.azure.iotcentral.fail</code></h3>
+<p class="event-description">fail to process upstream message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.packages.azure.iothub.fail">Event <code>as.packages.azure.iothub.fail</code></h3>
+<p class="event-description">fail to process upstream message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.packages.loraclouddmsv1.fail">Event <code>as.packages.loraclouddmsv1.fail</code></h3>
+<p class="event-description">fail to process upstream message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.packages.loracloudglsv3.fail">Event <code>as.packages.loracloudglsv3.fail</code></h3>
+<p class="event-description">fail to process upstream message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.packages.storage.up.drop">Event <code>as.packages.storage.up.drop</code></h3>
+<p class="event-description">drop upstream data message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.packages.storage.up.store">Event <code>as.packages.storage.up.store</code></h3>
+<p class="event-description">store upstream data message</p>
 <h3 class="event-name" id="event:as.pubsub.delete">Event <code>as.pubsub.delete</code></h3>
 <p class="event-description">delete pub/sub</p>
 <details><summary>Show example of <code>data</code> field</summary>
@@ -2528,11 +2625,7 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 <p class="event-description">decode uplink data message warning</p>
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
-  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationUplink",
-  "received_at": "0001-01-01T00:00:00Z",
-  "settings": {
-    "data_rate": {}
-  }
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationUplink"
 }</code></pre>
 </details>
 <h3 class="event-name" id="event:as.up.data.drop">Event <code>as.up.data.drop</code></h3>
@@ -2553,10 +2646,14 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 <p class="event-description">forward uplink data message</p>
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
-  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationUp",
-  "end_device_ids": {
-    "application_ids": {}
-  }
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationUp"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.up.data.normalize.warning">Event <code>as.up.data.normalize.warning</code></h3>
+<p class="event-description">normalize uplink data message warning</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationUplink"
 }</code></pre>
 </details>
 <h3 class="event-name" id="event:as.up.data.receive">Event <code>as.up.data.receive</code></h3>
@@ -2579,14 +2676,46 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 <p class="event-description">forward join-accept message</p>
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
-  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationUp",
-  "end_device_ids": {
-    "application_ids": {}
-  }
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationUp"
 }</code></pre>
 </details>
 <h3 class="event-name" id="event:as.up.join.receive">Event <code>as.up.join.receive</code></h3>
 <p class="event-description">receive join-accept message</p>
+<h3 class="event-name" id="event:as.up.location.forward">Event <code>as.up.location.forward</code></h3>
+<p class="event-description">forward location solved message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationUp"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.up.normalized.forward">Event <code>as.up.normalized.forward</code></h3>
+<p class="event-description">forward normalized uplink message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationUp"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.up.service.forward">Event <code>as.up.service.forward</code></h3>
+<p class="event-description">forward service data message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationUp"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:as.webhook.fail">Event <code>as.webhook.fail</code></h3>
+<p class="event-description">fail to send webhook</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
 <h3 class="event-name" id="event:client.collaborator.delete">Event <code>client.collaborator.delete</code></h3>
 <p class="event-description">delete client collaborator</p>
 <h3 class="event-name" id="event:client.collaborator.update">Event <code>client.collaborator.update</code></h3>
@@ -2595,6 +2724,10 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 <p class="event-description">create OAuth client</p>
 <h3 class="event-name" id="event:client.delete">Event <code>client.delete</code></h3>
 <p class="event-description">delete OAuth client</p>
+<h3 class="event-name" id="event:client.purge">Event <code>client.purge</code></h3>
+<p class="event-description">purge client</p>
+<h3 class="event-name" id="event:client.restore">Event <code>client.restore</code></h3>
+<p class="event-description">restore OAuth client</p>
 <h3 class="event-name" id="event:client.update">Event <code>client.update</code></h3>
 <p class="event-description">update OAuth client</p>
 <details><summary>Show example of <code>data</code> field</summary>
@@ -2607,11 +2740,24 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 }</code></pre>
 </details>
 <h3 class="event-name" id="event:dcs.end_device.claim.abort">Event <code>dcs.end_device.claim.abort</code></h3>
-<p class="event-description">claim end device abort</p>
+<p class="event-description">abort end device claim</p>
 <h3 class="event-name" id="event:dcs.end_device.claim.fail">Event <code>dcs.end_device.claim.fail</code></h3>
-<p class="event-description">claim end device fail</p>
+<p class="event-description">claim end device failure</p>
 <h3 class="event-name" id="event:dcs.end_device.claim.success">Event <code>dcs.end_device.claim.success</code></h3>
 <p class="event-description">claim end device successful</p>
+<h3 class="event-name" id="event:dcs.gateway.claim.abort">Event <code>dcs.gateway.claim.abort</code></h3>
+<p class="event-description">abort gateway claim</p>
+<h3 class="event-name" id="event:dcs.gateway.claim.fail">Event <code>dcs.gateway.claim.fail</code></h3>
+<p class="event-description">claim gateway failure</p>
+<h3 class="event-name" id="event:dcs.gateway.claim.success">Event <code>dcs.gateway.claim.success</code></h3>
+<p class="event-description">claim gateway successful</p>
+<h3 class="event-name" id="event:end_device.batch.delete">Event <code>end_device.batch.delete</code></h3>
+<p class="event-description">batch delete end devices</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.EndDeviceIdentifiersList"
+}</code></pre>
+</details>
 <h3 class="event-name" id="event:end_device.create">Event <code>end_device.create</code></h3>
 <p class="event-description">create end device</p>
 <h3 class="event-name" id="event:end_device.delete">Event <code>end_device.delete</code></h3>
@@ -2633,6 +2779,13 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 <p class="event-description">delete gateway API key</p>
 <h3 class="event-name" id="event:gateway.api-key.update">Event <code>gateway.api-key.update</code></h3>
 <p class="event-description">update gateway API key</p>
+<h3 class="event-name" id="event:gateway.batch.delete">Event <code>gateway.batch.delete</code></h3>
+<p class="event-description">batch delete gateways</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.GatewayIdentifiersList"
+}</code></pre>
+</details>
 <h3 class="event-name" id="event:gateway.collaborator.delete">Event <code>gateway.collaborator.delete</code></h3>
 <p class="event-description">delete gateway collaborator</p>
 <h3 class="event-name" id="event:gateway.collaborator.update">Event <code>gateway.collaborator.update</code></h3>
@@ -2641,6 +2794,10 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 <p class="event-description">create gateway</p>
 <h3 class="event-name" id="event:gateway.delete">Event <code>gateway.delete</code></h3>
 <p class="event-description">delete gateway</p>
+<h3 class="event-name" id="event:gateway.purge">Event <code>gateway.purge</code></h3>
+<p class="event-description">purge gateway</p>
+<h3 class="event-name" id="event:gateway.restore">Event <code>gateway.restore</code></h3>
+<p class="event-description">restore gateway</p>
 <h3 class="event-name" id="event:gateway.update">Event <code>gateway.update</code></h3>
 <p class="event-description">update gateway</p>
 <details><summary>Show example of <code>data</code> field</summary>
@@ -2650,6 +2807,27 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
     "list.of",
     "updated.fields"
   ]
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.down.schedule.attempt">Event <code>gs.down.schedule.attempt</code></h3>
+<p class="event-description">schedule downlink for transmission by gateway</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.DownlinkMessage"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.down.schedule.fail">Event <code>gs.down.schedule.fail</code></h3>
+<p class="event-description">schedule downlink for transmission by gateway</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
 }</code></pre>
 </details>
 <h3 class="event-name" id="event:gs.down.send">Event <code>gs.down.send</code></h3>
@@ -2671,8 +2849,81 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 <p class="event-description">transmit downlink message successful</p>
 <h3 class="event-name" id="event:gs.gateway.connect">Event <code>gs.gateway.connect</code></h3>
 <p class="event-description">connect gateway</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.GatewayConnectionStats"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.gateway.connection.stats">Event <code>gs.gateway.connection.stats</code></h3>
+<p class="event-description">gateway connection statistics</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.GatewayConnectionStats"
+}</code></pre>
+</details>
 <h3 class="event-name" id="event:gs.gateway.disconnect">Event <code>gs.gateway.disconnect</code></h3>
 <p class="event-description">disconnect gateway</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.io.status.drop">Event <code>gs.io.status.drop</code></h3>
+<p class="event-description">drop gateway status</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.io.tx.ack.drop">Event <code>gs.io.tx.ack.drop</code></h3>
+<p class="event-description">drop tx ack message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.io.up.drop">Event <code>gs.io.up.drop</code></h3>
+<p class="event-description">drop uplink message</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.io.up.repeat">Event <code>gs.io.up.repeat</code></h3>
+<p class="event-description">received repeated uplink message from gateway</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.GatewayIdentifiers"
+}</code></pre>
+</details>
 <h3 class="event-name" id="event:gs.status.drop">Event <code>gs.status.drop</code></h3>
 <p class="event-description">drop gateway status</p>
 <details><summary>Show example of <code>data</code> field</summary>
@@ -2687,40 +2938,15 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
   "namespace": "pkg/example"
 }</code></pre>
 </details>
-<h3 class="event-name" id="event:gs.status.fail">Event <code>gs.status.fail</code></h3>
-<p class="event-description">fail to handle gateway status</p>
-<details><summary>Show example of <code>data</code> field</summary>
-  <pre class="event-example"><code>{
-  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
-  "attributes": {
-    "attr_name": "attr_value"
-  },
-  "code": 2,
-  "message_format": "example error for `{attr_name}`",
-  "name": "example",
-  "namespace": "pkg/example"
-}</code></pre>
-</details>
-<h3 class="event-name" id="event:gs.status.forward">Event <code>gs.status.forward</code></h3>
-<p class="event-description">forward gateway status</p>
-<details><summary>Show example of <code>data</code> field</summary>
-  <pre class="event-example"><code>{
-  "@type": "type.googleapis.com/ttn.lorawan.v3.GatewayStatus",
-  "boot_time": "0001-01-01T00:00:00Z",
-  "time": "0001-01-01T00:00:00Z"
-}</code></pre>
-</details>
 <h3 class="event-name" id="event:gs.status.receive">Event <code>gs.status.receive</code></h3>
 <p class="event-description">receive gateway status</p>
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
-  "@type": "type.googleapis.com/ttn.lorawan.v3.GatewayStatus",
-  "boot_time": "0001-01-01T00:00:00Z",
-  "time": "0001-01-01T00:00:00Z"
+  "@type": "type.googleapis.com/ttn.lorawan.v3.GatewayStatus"
 }</code></pre>
 </details>
-<h3 class="event-name" id="event:gs.up.drop">Event <code>gs.up.drop</code></h3>
-<p class="event-description">drop uplink message</p>
+<h3 class="event-name" id="event:gs.txack.drop">Event <code>gs.txack.drop</code></h3>
+<p class="event-description">drop transmission acknowledgement</p>
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
   "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
@@ -2733,8 +2959,17 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
   "namespace": "pkg/example"
 }</code></pre>
 </details>
-<h3 class="event-name" id="event:gs.up.fail">Event <code>gs.up.fail</code></h3>
-<p class="event-description">fail to handle uplink message</p>
+<h3 class="event-name" id="event:gs.txack.forward">Event <code>gs.txack.forward</code></h3>
+<p class="event-description">forward transmission acknowledgement</p>
+<h3 class="event-name" id="event:gs.txack.receive">Event <code>gs.txack.receive</code></h3>
+<p class="event-description">receive transmission acknowledgement</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.TxAcknowledgment"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:gs.up.drop">Event <code>gs.up.drop</code></h3>
+<p class="event-description">drop uplink message</p>
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
   "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
@@ -2753,15 +2988,18 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 <p class="event-description">receive uplink message</p>
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
-  "@type": "type.googleapis.com/ttn.lorawan.v3.UplinkMessage",
-  "received_at": "0001-01-01T00:00:00Z",
-  "settings": {
-    "data_rate": {}
-  }
+  "@type": "type.googleapis.com/ttn.lorawan.v3.GatewayUplinkMessage"
 }</code></pre>
 </details>
 <h3 class="event-name" id="event:invitation.create">Event <code>invitation.create</code></h3>
 <p class="event-description">create invitation</p>
+<h3 class="event-name" id="event:js.end_device.batch.delete">Event <code>js.end_device.batch.delete</code></h3>
+<p class="event-description">batch delete end devices</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.EndDeviceIdentifiersList"
+}</code></pre>
+</details>
 <h3 class="event-name" id="event:js.end_device.create">Event <code>js.end_device.create</code></h3>
 <p class="event-description">create end device</p>
 <h3 class="event-name" id="event:js.end_device.delete">Event <code>js.end_device.delete</code></h3>
@@ -2793,22 +3031,6 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
   "namespace": "pkg/example"
 }</code></pre>
 </details>
-<h3 class="event-name" id="event:ns.application.link.begin">Event <code>ns.application.link.begin</code></h3>
-<p class="event-description">begin application link</p>
-<h3 class="event-name" id="event:ns.application.link.end">Event <code>ns.application.link.end</code></h3>
-<p class="event-description">end application link</p>
-<details><summary>Show example of <code>data</code> field</summary>
-  <pre class="event-example"><code>{
-  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
-  "attributes": {
-    "attr_name": "attr_value"
-  },
-  "code": 2,
-  "message_format": "example error for `{attr_name}`",
-  "name": "example",
-  "namespace": "pkg/example"
-}</code></pre>
-</details>
 <h3 class="event-name" id="event:ns.class.switch.a">Event <code>ns.class.switch.a</code></h3>
 <p class="event-description">switched to class A</p>
 <h3 class="event-name" id="event:ns.class.switch.b">Event <code>ns.class.switch.b</code></h3>
@@ -2823,7 +3045,7 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 }</code></pre>
 </details>
 <h3 class="event-name" id="event:ns.down.data.schedule.fail">Event <code>ns.down.data.schedule.fail</code></h3>
-<p class="event-description">failed to schedule data downlink for transmission on Gateway Server</p>
+<p class="event-description">schedule data downlink for transmission on Gateway Server</p>
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
   "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
@@ -2851,7 +3073,7 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 }</code></pre>
 </details>
 <h3 class="event-name" id="event:ns.down.join.schedule.fail">Event <code>ns.down.join.schedule.fail</code></h3>
-<p class="event-description">failed to schedule join-accept for transmission on Gateway Server</p>
+<p class="event-description">schedule join-accept for transmission on Gateway Server</p>
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
   "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
@@ -2869,6 +3091,48 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
   "@type": "type.googleapis.com/ttn.lorawan.v3.ScheduleDownlinkResponse"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.down.rx.parameters.fail">Event <code>ns.down.rx.parameters.fail</code></h3>
+<p class="event-description">compute RX parameters</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.down.transmission.fail">Event <code>ns.down.transmission.fail</code></h3>
+<p class="event-description">transmit downlink</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.down.transmission.success">Event <code>ns.down.transmission.success</code></h3>
+<p class="event-description">downlink successfully transmitted</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.DownlinkMessage"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.end_device.batch.delete">Event <code>ns.end_device.batch.delete</code></h3>
+<p class="event-description">batch delete end devices</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.EndDeviceIdentifiersList"
 }</code></pre>
 </details>
 <h3 class="event-name" id="event:ns.end_device.create">Event <code>ns.end_device.create</code></h3>
@@ -2914,6 +3178,48 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
   "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.BeaconFreqReq"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.command.parse.fail">Event <code>ns.mac.command.parse.fail</code></h3>
+<p class="event-description">parse MAC command</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.command.process.fail">Event <code>ns.mac.command.process.fail</code></h3>
+<p class="event-description">process MAC command</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.ErrorDetails",
+  "attributes": {
+    "attr_name": "attr_value"
+  },
+  "code": 2,
+  "message_format": "example error for `{attr_name}`",
+  "name": "example",
+  "namespace": "pkg/example"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.command.unanswered">Event <code>ns.mac.command.unanswered</code></h3>
+<p class="event-description">MAC command answer missing</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommands"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.command.unknown">Event <code>ns.mac.command.unknown</code></h3>
+<p class="event-description">unknown MAC command</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand"
 }</code></pre>
 </details>
 <h3 class="event-name" id="event:ns.mac.dev_status.answer">Event <code>ns.mac.dev_status.answer</code></h3>
@@ -3028,6 +3334,13 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 </details>
 <h3 class="event-name" id="event:ns.mac.ping_slot_channel.answer.accept">Event <code>ns.mac.ping_slot_channel.answer.accept</code></h3>
 <p class="event-description">ping slot channel accept received</p>
+<details><summary>Show example of <code>data</code> field</summary>
+  <pre class="event-example"><code>{
+  "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.PingSlotChannelAns"
+}</code></pre>
+</details>
+<h3 class="event-name" id="event:ns.mac.ping_slot_channel.answer.reject">Event <code>ns.mac.ping_slot_channel.answer.reject</code></h3>
+<p class="event-description">ping slot channel rejection received</p>
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
   "@type": "type.googleapis.com/ttn.lorawan.v3.MACCommand.PingSlotChannelAns"
@@ -3151,37 +3464,21 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
   "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationUp",
-  "end_device_ids": {
-    "application_ids": {}
-  },
-  "uplink_message": {
-    "received_at": "0001-01-01T00:00:00Z",
-    "settings": {
-      "data_rate": {}
-    }
-  }
+  "uplink_message": {}
 }</code></pre>
 </details>
 <h3 class="event-name" id="event:ns.up.data.process">Event <code>ns.up.data.process</code></h3>
 <p class="event-description">successfully processed data message</p>
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
-  "@type": "type.googleapis.com/ttn.lorawan.v3.UplinkMessage",
-  "received_at": "0001-01-01T00:00:00Z",
-  "settings": {
-    "data_rate": {}
-  }
+  "@type": "type.googleapis.com/ttn.lorawan.v3.UplinkMessage"
 }</code></pre>
 </details>
 <h3 class="event-name" id="event:ns.up.data.receive">Event <code>ns.up.data.receive</code></h3>
 <p class="event-description">receive data message</p>
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
-  "@type": "type.googleapis.com/ttn.lorawan.v3.UplinkMessage",
-  "received_at": "0001-01-01T00:00:00Z",
-  "settings": {
-    "data_rate": {}
-  }
+  "@type": "type.googleapis.com/ttn.lorawan.v3.UplinkMessage"
 }</code></pre>
 </details>
 <h3 class="event-name" id="event:ns.up.join.accept.forward">Event <code>ns.up.join.accept.forward</code></h3>
@@ -3189,22 +3486,14 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
   "@type": "type.googleapis.com/ttn.lorawan.v3.ApplicationUp",
-  "end_device_ids": {
-    "application_ids": {}
-  },
-  "join_accept": {
-    "received_at": "0001-01-01T00:00:00Z"
-  }
+  "join_accept": {}
 }</code></pre>
 </details>
 <h3 class="event-name" id="event:ns.up.join.cluster.attempt">Event <code>ns.up.join.cluster.attempt</code></h3>
 <p class="event-description">send join-request to cluster-local Join Server</p>
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
-  "@type": "type.googleapis.com/ttn.lorawan.v3.JoinRequest",
-  "dev_addr": "00000000",
-  "downlink_settings": {},
-  "net_id": "000000"
+  "@type": "type.googleapis.com/ttn.lorawan.v3.JoinRequest"
 }</code></pre>
 </details>
 <h3 class="event-name" id="event:ns.up.join.cluster.fail">Event <code>ns.up.join.cluster.fail</code></h3>
@@ -3225,8 +3514,7 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 <p class="event-description">join-request to cluster-local Join Server succeeded</p>
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
-  "@type": "type.googleapis.com/ttn.lorawan.v3.JoinResponse",
-  "session_keys": {}
+  "@type": "type.googleapis.com/ttn.lorawan.v3.JoinResponse"
 }</code></pre>
 </details>
 <h3 class="event-name" id="event:ns.up.join.drop">Event <code>ns.up.join.drop</code></h3>
@@ -3247,10 +3535,7 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 <p class="event-description">forward join-request to interoperability Join Server</p>
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
-  "@type": "type.googleapis.com/ttn.lorawan.v3.JoinRequest",
-  "dev_addr": "00000000",
-  "downlink_settings": {},
-  "net_id": "000000"
+  "@type": "type.googleapis.com/ttn.lorawan.v3.JoinRequest"
 }</code></pre>
 </details>
 <h3 class="event-name" id="event:ns.up.join.interop.fail">Event <code>ns.up.join.interop.fail</code></h3>
@@ -3271,40 +3556,33 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 <p class="event-description">join-request to interoperability Join Server succeeded</p>
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
-  "@type": "type.googleapis.com/ttn.lorawan.v3.JoinResponse",
-  "session_keys": {}
+  "@type": "type.googleapis.com/ttn.lorawan.v3.JoinResponse"
 }</code></pre>
 </details>
 <h3 class="event-name" id="event:ns.up.join.process">Event <code>ns.up.join.process</code></h3>
 <p class="event-description">successfully processed join-request</p>
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
-  "@type": "type.googleapis.com/ttn.lorawan.v3.UplinkMessage",
-  "received_at": "0001-01-01T00:00:00Z",
-  "settings": {
-    "data_rate": {}
-  }
+  "@type": "type.googleapis.com/ttn.lorawan.v3.UplinkMessage"
 }</code></pre>
 </details>
 <h3 class="event-name" id="event:ns.up.join.receive">Event <code>ns.up.join.receive</code></h3>
 <p class="event-description">receive join-request</p>
 <details><summary>Show example of <code>data</code> field</summary>
   <pre class="event-example"><code>{
-  "@type": "type.googleapis.com/ttn.lorawan.v3.UplinkMessage",
-  "received_at": "0001-01-01T00:00:00Z",
-  "settings": {
-    "data_rate": {}
-  }
+  "@type": "type.googleapis.com/ttn.lorawan.v3.UplinkMessage"
 }</code></pre>
 </details>
 <h3 class="event-name" id="event:oauth.authorize">Event <code>oauth.authorize</code></h3>
 <p class="event-description">authorize OAuth client</p>
+<h3 class="event-name" id="event:oauth.session.terminated">Event <code>oauth.session.terminated</code></h3>
+<p class="event-description">terminate user session</p>
+<h3 class="event-name" id="event:oauth.token.deleted">Event <code>oauth.token.deleted</code></h3>
+<p class="event-description">delete access token</p>
 <h3 class="event-name" id="event:oauth.token.exchange">Event <code>oauth.token.exchange</code></h3>
 <p class="event-description">exchange OAuth access token</p>
 <h3 class="event-name" id="event:oauth.user.login">Event <code>oauth.user.login</code></h3>
 <p class="event-description">login user successful</p>
-<h3 class="event-name" id="event:oauth.user.login_failed">Event <code>oauth.user.login_failed</code></h3>
-<p class="event-description">login user failure</p>
 <h3 class="event-name" id="event:oauth.user.logout">Event <code>oauth.user.logout</code></h3>
 <p class="event-description">logout user</p>
 <h3 class="event-name" id="event:organization.api-key.create">Event <code>organization.api-key.create</code></h3>
@@ -3321,6 +3599,10 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 <p class="event-description">create organization</p>
 <h3 class="event-name" id="event:organization.delete">Event <code>organization.delete</code></h3>
 <p class="event-description">delete organization</p>
+<h3 class="event-name" id="event:organization.purge">Event <code>organization.purge</code></h3>
+<p class="event-description">purge organization</p>
+<h3 class="event-name" id="event:organization.restore">Event <code>organization.restore</code></h3>
+<p class="event-description">restore organization</p>
 <h3 class="event-name" id="event:organization.update">Event <code>organization.update</code></h3>
 <p class="event-description">update organization</p>
 <details><summary>Show example of <code>data</code> field</summary>
@@ -3342,6 +3624,10 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 <p class="event-description">create user</p>
 <h3 class="event-name" id="event:user.delete">Event <code>user.delete</code></h3>
 <p class="event-description">delete user</p>
+<h3 class="event-name" id="event:user.purge">Event <code>user.purge</code></h3>
+<p class="event-description">purge user</p>
+<h3 class="event-name" id="event:user.restore">Event <code>user.restore</code></h3>
+<p class="event-description">restore user</p>
 <h3 class="event-name" id="event:user.update">Event <code>user.update</code></h3>
 <p class="event-description">update user</p>
 <details><summary>Show example of <code>data</code> field</summary>
