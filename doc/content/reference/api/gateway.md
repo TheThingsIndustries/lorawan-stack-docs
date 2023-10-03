@@ -51,7 +51,11 @@ description: ""
 
 The Gateway Server exposes the list of available frequency plans with the `Configuration` service.
 
+{{< proto/method service="Configuration" method="ListBands" >}}
+
 {{< proto/method service="Configuration" method="ListFrequencyPlans" >}}
+
+{{< proto/method service="Configuration" method="GetPhyVersions" >}}
 
 ## The `GatewayClaimingServer` service
 
@@ -121,6 +125,10 @@ The Gateway Server exposes the list of available frequency plans with the `Confi
 
 {{< proto/message message="GetInfoByGatewayEUIRequest" >}}
 
+{{< proto/message message="GetPhyVersionsRequest" >}}
+
+{{< proto/message message="ListBandsRequest" >}}
+
 {{< proto/message message="ListFrequencyPlansRequest" >}}
 
 {{< proto/message message="ListFrequencyPlansResponse" >}}
@@ -162,6 +170,8 @@ The Gateway Server exposes the list of available frequency plans with the `Confi
 {{< proto/enum enum="GatewayAntennaPlacement" >}}
 
 {{< proto/enum enum="LocationSource" >}}
+
+{{< proto/enum enum="PHYVersion" >}}
 
 {{< proto/enum enum="Right" >}}
 

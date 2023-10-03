@@ -7,6 +7,8 @@ description: ""
 
 {{< proto/method service="As" method="SetLink" >}}
 
+{{< proto/method service="As" method="GetConfiguration" >}}
+
 {{< proto/method service="As" method="GetLink" >}}
 
 {{< proto/method service="As" method="GetLinkStats" >}}
@@ -21,7 +23,33 @@ description: ""
 
 {{< proto/method service="AppAs" method="DownlinkQueueList" >}}
 
+{{< proto/method service="AppAs" method="DecodeDownlink" >}}
+
+{{< proto/method service="AppAs" method="DecodeUplink" >}}
+
+{{< proto/method service="AppAs" method="EncodeDownlink" >}}
+
+{{< proto/method service="AppAs" method="GetMQTTConnectionInfo" >}}
+
 {{< proto/method service="AppAs" method="SimulateUplink" >}}
+
+{{< proto/method service="AppAs" method="Subscribe" >}}
+
+## The `AppJs` service
+
+{{< proto/method service="AppJs" method="GetAppSKey" >}}
+
+## The `AsJs` service
+
+{{< proto/method service="AsJs" method="GetAppSKey" >}}
+
+## The `AsNs` service
+
+{{< proto/method service="AsNs" method="DownlinkQueueReplace" >}}
+
+{{< proto/method service="AsNs" method="DownlinkQueuePush" >}}
+
+{{< proto/method service="AsNs" method="DownlinkQueueList" >}}
 
 ## Messages
 
@@ -59,7 +87,13 @@ description: ""
 
 {{< proto/message message="DataRate" >}}
 
+{{< proto/message message="DecodeDownlinkRequest" >}}
+
+{{< proto/message message="DecodeUplinkRequest" >}}
+
 {{< proto/message message="DownlinkQueueRequest" >}}
+
+{{< proto/message message="EncodeDownlinkRequest" >}}
 
 {{< proto/message message="EndDeviceIdentifiers" >}}
 
@@ -70,6 +104,8 @@ description: ""
 {{< proto/message message="ErrorDetails" >}}
 
 {{< proto/message message="FSKDataRate" >}}
+
+{{< proto/message message="GetAsConfigurationRequest" >}}
 
 {{< proto/message message="GatewayAntennaIdentifiers" >}}
 
@@ -94,6 +130,8 @@ description: ""
 {{< proto/message message="PacketBrokerRouteHop" >}}
 
 {{< proto/message message="RxMetadata" >}}
+
+{{< proto/message message="SessionKeyRequest" >}}
 
 {{< proto/message message="SetApplicationLinkRequest" >}}
 

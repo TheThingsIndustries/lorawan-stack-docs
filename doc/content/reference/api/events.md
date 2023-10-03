@@ -7,6 +7,8 @@ description: ""
 
 {{< proto/method service="Events" method="Stream" >}}
 
+{{< proto/method service="Events" method="FindRelated" >}}
+
 ## Messages
 
 {{< proto/message message="EntityIdentifiers" >}}
@@ -16,6 +18,10 @@ description: ""
 {{< proto/message message="ClientIdentifiers" >}}
 
 {{< proto/message message="EndDeviceIdentifiers" >}}
+
+{{< proto/message message="FindRelatedEventsRequest" >}}
+
+{{< proto/message message="FindRelatedEventsResponse" >}}
 
 {{< proto/message message="GatewayIdentifiers" >}}
 

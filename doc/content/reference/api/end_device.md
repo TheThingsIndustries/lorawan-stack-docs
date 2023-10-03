@@ -36,6 +36,8 @@ The Identity Server's `EndDeviceRegistry` is the first service, where end device
 
 {{< proto/method service="EndDeviceRegistry" method="Get" >}}
 
+{{< proto/method service="EndDeviceRegistry" method="GetIdentifiersForEUIs" >}}
+
 {{< proto/method service="EndDeviceRegistry" method="List" >}}
 
 {{< proto/method service="EndDeviceRegistry" method="Update" >}}
@@ -196,6 +198,12 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/method service="EndDeviceRegistrySearch" method="SearchEndDevices" >}}
 
+## The `EndDeviceTemplateConverter` service
+
+{{< proto/method service="EndDeviceTemplateConverter" method="ListFormats" >}}
+
+{{< proto/method service="EndDeviceTemplateConverter" method="Convert" >}}
+
 ## Messages
 
 {{< proto/message message="ApplicationIdentifiers" >}}
@@ -252,6 +260,8 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 
 {{< proto/message message="ClassBCGatewayIdentifiers" >}}
 
+{{< proto/message message="ConvertEndDeviceTemplateRequest" >}}
+
 {{< proto/message message="DataRate" >}}
 
 {{< proto/message message="DataRateIndexValue" >}}
@@ -295,6 +305,8 @@ See the [EndDevice message](#message:EndDevice) and its sub-messages for additio
 {{< proto/message message="GetClaimStatusResponse" >}}
 
 {{< proto/message message="GetClaimStatusResponse.VendorSpecific" >}}
+
+{{< proto/message message="GetEndDeviceIdentifiersForEUIsRequest" >}}
 
 {{< proto/message message="GetInfoByJoinEUIRequest" >}}
 

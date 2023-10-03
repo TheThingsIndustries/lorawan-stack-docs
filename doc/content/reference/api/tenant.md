@@ -17,7 +17,15 @@ Unlike the other services, the tenant services do **not** accept API keys or OAu
 
 {{< proto/method package="tti.lorawan.v3" service="TenantRegistry" method="Get" >}}
 
+{{< proto/method package="tti.lorawan.v3" service="TenantRegistry" method="GetIdentifiersForEndDeviceEUIs" >}}
+
+{{< proto/method package="tti.lorawan.v3" service="TenantRegistry" method="GetIdentifiersForGatewayEUI" >}}
+
+{{< proto/method package="tti.lorawan.v3" service="TenantRegistry" method="GetIdentifiersForBillingIdentifiers" >}}
+
 {{< proto/method package="tti.lorawan.v3" service="TenantRegistry" method="GetRegistryTotals" >}}
+
+{{< proto/method package="tti.lorawan.v3" service="TenantRegistry" method="BatchGetRegistryTotals" >}}
 
 {{< proto/method package="tti.lorawan.v3" service="TenantRegistry" method="List" >}}
 
@@ -29,7 +37,13 @@ Unlike the other services, the tenant services do **not** accept API keys or OAu
 
 {{< proto/method package="tti.lorawan.v3" service="EntityRegistrySearch" method="SearchTenants" >}}
 
+## The `Tbs` service
+
+{{< proto/method package="tti.lorawan.v3" service="Tbs" method="Report" >}}
+
 ## Messages
+
+{{< proto/message package="tti.lorawan.v3" message="BatchGetTenantRegistryTotalsRequest" >}}
 
 {{< proto/message package="tti.lorawan.v3" message="Configuration.Cluster.IdentityServer.ApplicationLimits" >}}
 
@@ -47,11 +61,21 @@ Unlike the other services, the tenant services do **not** accept API keys or OAu
 
 {{< proto/message package="tti.lorawan.v3" message="GetTenantRequest" >}}
 
+{{< proto/message package="tti.lorawan.v3" message="GetTenantIdentifiersForEndDeviceEUIsRequest" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="GetTenantIdentifiersForGatewayEUIRequest" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="GetTenantIdentifiersForBillingIdentifiersRequest" >}}
+
 {{< proto/message package="tti.lorawan.v3" message="GetTenantRegistryTotalsRequest" >}}
 
 {{< proto/message package="tti.lorawan.v3" message="TenantRegistryTotals" >}}
 
 {{< proto/message package="tti.lorawan.v3" message="ListTenantsRequest" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="MeteringData" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="MeteringData.TenantMeteringData" >}}
 
 {{< proto/message package="tti.lorawan.v3" message="UpdateTenantRequest" >}}
 
