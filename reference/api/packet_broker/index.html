@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>Gateway Server APIs | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/api/gateway_server/" />
+  <title>Packet Broker APIs | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/api/packet_broker/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.fd3d59eb4852f5cc339297cb0cb5a6af3c7895bf80bc7bc02db7b78eadec7102.css" integrity="sha256-/T1Z60hS9cwzkpfLDLWmrzx4lb&#43;AvHvALbe3jq3scQI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Gateway Server APIs">
+  <meta itemprop="name" content="Packet Broker APIs">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Gateway Server APIs">
+  <meta property="og:title" content="Packet Broker APIs">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/api/gateway_server/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/api/packet_broker/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="Gateway Server APIs" />
+  <meta name="twitter:title" content="Packet Broker APIs" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -163,12 +163,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/api/gateway_server/" class="is-active">Gateway Server APIs</a>
-    
-    
-
-
-
+    <a href="https://www.thethingsindustries.com/docs/reference/api/gateway_server/" class="">Gateway Server APIs</a>
     
   </li>
 
@@ -203,7 +198,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/api/packet_broker/" class="">Packet Broker APIs</a>
+    <a href="https://www.thethingsindustries.com/docs/reference/api/packet_broker/" class="is-active">Packet Broker APIs</a>
+    
+    
+
+
+
     
   </li>
 
@@ -316,12 +316,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Gateway Server APIs
+        <h1 class="title is-size-2">Packet Broker APIs
           
         </h1>
         
         <div class="content">
-          <h2 id="the-gs-service">The <code>Gs</code> service</h2>
+          <h2 id="the-pba-service">The <code>Pba</code> service</h2>
 
 
 
@@ -332,7 +332,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         Method
       </th>
       <td>
-        <code>Gs.GetGatewayConnectionStats</code>
+        <code>Pba.DeleteHomeNetworkRoutingPolicy</code>
       </td>
     </tr>
     <tr>
@@ -340,8 +340,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         Description
       </th>
       <td>
-        Get statistics about the current gateway connection to the Gateway Server.
-This is not persisted between reconnects.
+        Delete the routing policy for the given Home Network.
+Deleting routing policies requires administrative access.
       </td>
     </tr>
     <tr>
@@ -349,397 +349,7 @@ This is not persisted between reconnects.
         Request type
       </th>
       <td>
-        <a href="#message:GatewayIdentifiers"><code>GatewayIdentifiers</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Response type
-      </th>
-      <td>
-        <a href="#message:GatewayConnectionStats"><code>GatewayConnectionStats</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        HTTP bindings
-      </th>
-      <td>
-        <p><code>GET</code> <code>/api/v3/gs/gateways/{gateway_id}/connection/stats</code></p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
-
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Method
-      </th>
-      <td>
-        <code>Gs.BatchGetGatewayConnectionStats</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-        Get statistics about gateway connections to the Gateway Server of a batch of gateways.
-This is not persisted between reconnects.
-Gateways that are not connected or are part of a different cluster are ignored.
-It is up to the client to make sure that the gateways are in the requested cluster.
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Request type
-      </th>
-      <td>
-        <a href="#message:BatchGetGatewayConnectionStatsRequest"><code>BatchGetGatewayConnectionStatsRequest</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Response type
-      </th>
-      <td>
-        <a href="#message:BatchGetGatewayConnectionStatsResponse"><code>BatchGetGatewayConnectionStatsResponse</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        HTTP bindings
-      </th>
-      <td>
-        <p><code>POST</code> <code>/api/v3/gs/gateways/connection/stats</code></p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="the-gatewayconfigurator-service">The <code>GatewayConfigurator</code> service</h2>
-
-
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Method
-      </th>
-      <td>
-        <code>GatewayConfigurator.PullConfiguration</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Request type
-      </th>
-      <td>
-        <a href="#message:PullGatewayConfigurationRequest"><code>PullGatewayConfigurationRequest</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Response type
-      </th>
-      <td>
-        Stream of <a href="#message:Gateway"><code>Gateway</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        HTTP bindings
-      </th>
-      <td>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="the-gatewayconfigurationservice-service">The <code>GatewayConfigurationService</code> service</h2>
-
-
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Method
-      </th>
-      <td>
-        <code>GatewayConfigurationService.GetGatewayConfiguration</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Request type
-      </th>
-      <td>
-        <a href="#message:GetGatewayConfigurationRequest"><code>GetGatewayConfigurationRequest</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Response type
-      </th>
-      <td>
-        <a href="#message:GetGatewayConfigurationResponse"><code>GetGatewayConfigurationResponse</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        HTTP bindings
-      </th>
-      <td>
-        <p><code></code> <code>/api/v3</code></p>
-        <p><code>GET</code> <code>/api/v3/gcs/gateways/configuration/{gateway_ids.gateway_id}/{format}/{filename}</code></p>
-        <p><code>GET</code> <code>/api/v3/gcs/gateways/configuration/{gateway_ids.gateway_id}/{format}/{type}/{filename}</code></p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="the-gtwgs-service">The <code>GtwGs</code> service</h2>
-
-
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Method
-      </th>
-      <td>
-        <code>GtwGs.LinkGateway</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-        Link a gateway to the Gateway Server for streaming upstream messages and downstream messages.
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Request type
-      </th>
-      <td>
-        Stream of <a href="#message:GatewayUp"><code>GatewayUp</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Response type
-      </th>
-      <td>
-        Stream of <a href="#message:GatewayDown"><code>GatewayDown</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        HTTP bindings
-      </th>
-      <td>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
-
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Method
-      </th>
-      <td>
-        <code>GtwGs.GetConcentratorConfig</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-        Get configuration for the concentrator.
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Request type
-      </th>
-      <td>
-        <code>google.protobuf.Empty</code>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Response type
-      </th>
-      <td>
-        <a href="#message:ConcentratorConfig"><code>ConcentratorConfig</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        HTTP bindings
-      </th>
-      <td>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
-
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Method
-      </th>
-      <td>
-        <code>GtwGs.GetMQTTConnectionInfo</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-        Get connection information to connect an MQTT gateway.
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Request type
-      </th>
-      <td>
-        <a href="#message:GatewayIdentifiers"><code>GatewayIdentifiers</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Response type
-      </th>
-      <td>
-        <a href="#message:MQTTConnectionInfo"><code>MQTTConnectionInfo</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        HTTP bindings
-      </th>
-      <td>
-        <p><code>GET</code> <code>/api/v3/gs/gateways/{gateway_id}/mqtt-connection-info</code></p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
-
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Method
-      </th>
-      <td>
-        <code>GtwGs.GetMQTTV2ConnectionInfo</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-        Get legacy connection information to connect a The Things Network Stack V2 MQTT gateway.
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Request type
-      </th>
-      <td>
-        <a href="#message:GatewayIdentifiers"><code>GatewayIdentifiers</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Response type
-      </th>
-      <td>
-        <a href="#message:MQTTConnectionInfo"><code>MQTTConnectionInfo</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        HTTP bindings
-      </th>
-      <td>
-        <p><code>GET</code> <code>/api/v3/gs/gateways/{gateway_id}/mqttv2-connection-info</code></p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="the-gsns-service">The <code>GsNs</code> service</h2>
-
-
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Method
-      </th>
-      <td>
-        <code>GsNs.HandleUplink</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-        Called by the Gateway Server when an uplink message arrives.
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Request type
-      </th>
-      <td>
-        <a href="#message:UplinkMessage"><code>UplinkMessage</code></a>
+        <a href="#message:PacketBrokerNetworkIdentifier"><code>PacketBrokerNetworkIdentifier</code></a>
         
       </td>
     </tr>
@@ -757,6 +367,8 @@ It is up to the client to make sure that the gateways are in the requested clust
         HTTP bindings
       </th>
       <td>
+        <p><code>DELETE</code> <code>/api/v3/pba/home-networks/policies/{net_id}</code></p>
+        <p><code>DELETE</code> <code>/api/v3/pba/home-networks/policies/{net_id}/{tenant_id}</code></p>
       </td>
     </tr>
   </tbody>
@@ -772,7 +384,7 @@ It is up to the client to make sure that the gateways are in the requested clust
         Method
       </th>
       <td>
-        <code>GsNs.ReportTxAcknowledgment</code>
+        <code>Pba.DeleteHomeNetworkDefaultRoutingPolicy</code>
       </td>
     </tr>
     <tr>
@@ -780,7 +392,8 @@ It is up to the client to make sure that the gateways are in the requested clust
         Description
       </th>
       <td>
-        Called by the Gateway Server when a Tx acknowledgment arrives.
+        Deletes the default routing policy.
+Deleting routing policies requires administrative access.
       </td>
     </tr>
     <tr>
@@ -788,7 +401,7 @@ It is up to the client to make sure that the gateways are in the requested clust
         Request type
       </th>
       <td>
-        <a href="#message:GatewayTxAcknowledgment"><code>GatewayTxAcknowledgment</code></a>
+        <code>google.protobuf.Empty</code>
         
       </td>
     </tr>
@@ -798,6 +411,826 @@ It is up to the client to make sure that the gateways are in the requested clust
       </th>
       <td>
         <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>DELETE</code> <code>/api/v3/pba/home-networks/policies/default</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Pba.DeleteHomeNetworkDefaultGatewayVisibility</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Deletes the default gateway visibility.
+Deleting gateway visibilities requires administrative access.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>DELETE</code> <code>/api/v3/pba/home-networks/gateway-visibilities/default</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Pba.Deregister</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Deregister from Packet Broker.
+Packet Broker deregistration requires administrative access.
+Packet Broker deregistration is only supported for tenants and requires Packet Broker Agent to be configured with
+NetID level authentication. Use rpc GetInfo and check register_enabled to check whether this rpc is enabled.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>DELETE</code> <code>/api/v3/pba/registration</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Pba.GetInfo</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Get information about the Packet Broker registration.
+Viewing Packet Packet information requires administrative access.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:PacketBrokerInfo"><code>PacketBrokerInfo</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/pba/info</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Pba.GetHomeNetworkRoutingPolicy</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Get the routing policy for the given Home Network.
+Getting routing policies requires administrative access.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:PacketBrokerNetworkIdentifier"><code>PacketBrokerNetworkIdentifier</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:PacketBrokerRoutingPolicy"><code>PacketBrokerRoutingPolicy</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/pba/home-networks/policies/{net_id}</code></p>
+        <p><code>GET</code> <code>/api/v3/pba/home-networks/policies/{net_id}/{tenant_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Pba.GetHomeNetworkDefaultRoutingPolicy</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Get the default routing policy.
+Getting routing policies requires administrative access.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:PacketBrokerDefaultRoutingPolicy"><code>PacketBrokerDefaultRoutingPolicy</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/pba/home-networks/policies/default</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Pba.GetHomeNetworkDefaultGatewayVisibility</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Get the default gateway visibility.
+Getting gateway visibilities requires administrative access.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:PacketBrokerDefaultGatewayVisibility"><code>PacketBrokerDefaultGatewayVisibility</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/pba/home-networks/gateway-visibilities/default</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Pba.ListNetworks</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        List all listed networks.
+Listing networks requires administrative access.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:ListPacketBrokerNetworksRequest"><code>ListPacketBrokerNetworksRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:PacketBrokerNetworks"><code>PacketBrokerNetworks</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/pba/networks</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Pba.ListHomeNetworks</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        List the listed home networks for which routing policies can be configured.
+Listing home networks requires administrative access.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:ListPacketBrokerHomeNetworksRequest"><code>ListPacketBrokerHomeNetworksRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:PacketBrokerNetworks"><code>PacketBrokerNetworks</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/pba/home-networks</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Pba.ListForwarderRoutingPolicies</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        List the routing policies that Forwarders configured with Packet Broker Agent as Home Network.
+Listing routing policies requires administrative access.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:ListForwarderRoutingPoliciesRequest"><code>ListForwarderRoutingPoliciesRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:PacketBrokerRoutingPolicies"><code>PacketBrokerRoutingPolicies</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/pba/forwarders/policies</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Pba.ListHomeNetworkRoutingPolicies</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        List the routing policies that Packet Broker Agent as Forwarder configured with Home Networks.
+Listing routing policies requires administrative access.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:ListHomeNetworkRoutingPoliciesRequest"><code>ListHomeNetworkRoutingPoliciesRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:PacketBrokerRoutingPolicies"><code>PacketBrokerRoutingPolicies</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/pba/home-networks/policies</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Pba.Register</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Register with Packet Broker. If no registration exists, it will be created. Any existing registration will be updated.
+Registration settings not in the request message are taken from Packet Broker Agent configuration and caller context.
+Packet Broker registration requires administrative access.
+Packet Broker registration is only supported for tenants and requires Packet Broker Agent to be configured with
+NetID level authentication. Use rpc GetInfo and check register_enabled to check whether this rpc is enabled.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:PacketBrokerRegisterRequest"><code>PacketBrokerRegisterRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:PacketBrokerNetwork"><code>PacketBrokerNetwork</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>PUT</code> <code>/api/v3/pba/registration</code></p>
+        <p><code>POST</code> <code>/api/v3/pba/registration</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Pba.SetHomeNetworkRoutingPolicy</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Set the routing policy for the given Home Network.
+Setting routing policies requires administrative access.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:SetPacketBrokerRoutingPolicyRequest"><code>SetPacketBrokerRoutingPolicyRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>PUT</code> <code>/api/v3/pba/home-networks/policies/{home_network_id.net_id}</code></p>
+        <p><code>POST</code> <code>/api/v3/pba/home-networks/policies/{home_network_id.net_id}</code></p>
+        <p><code>PUT</code> <code>/api/v3/pba/home-networks/policies/{home_network_id.net_id}/{home_network_id.tenant_id}</code></p>
+        <p><code>POST</code> <code>/api/v3/pba/home-networks/policies/{home_network_id.net_id}/{home_network_id.tenant_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Pba.SetHomeNetworkDefaultRoutingPolicy</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Set the default routing policy.
+Setting routing policies requires administrative access.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:SetPacketBrokerDefaultRoutingPolicyRequest"><code>SetPacketBrokerDefaultRoutingPolicyRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>PUT</code> <code>/api/v3/pba/home-networks/policies/default</code></p>
+        <p><code>POST</code> <code>/api/v3/pba/home-networks/policies/default</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Pba.SetHomeNetworkDefaultGatewayVisibility</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Set the default gateway visibility.
+Setting gateway visibilities requires administrative access.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:SetPacketBrokerDefaultGatewayVisibilityRequest"><code>SetPacketBrokerDefaultGatewayVisibilityRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>PUT</code> <code>/api/v3/pba/home-networks/gateway-visibilities/default</code></p>
+        <p><code>POST</code> <code>/api/v3/pba/home-networks/gateway-visibilities/default</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="the-gspba-service">The <code>GsPba</code> service</h2>
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>GsPba.PublishUplink</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GatewayUplinkMessage"><code>GatewayUplinkMessage</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>GsPba.UpdateGateway</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Update the gateway, changing the fields specified by the field mask to the provided values.
+To mark a gateway as online, call this rpc setting online to true, include status_public in field_mask and
+keep calling this rpc before the returned online_ttl passes to keep the gateway online.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:UpdatePacketBrokerGatewayRequest"><code>UpdatePacketBrokerGatewayRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:UpdatePacketBrokerGatewayResponse"><code>UpdatePacketBrokerGatewayResponse</code></a>
         
       </td>
     </tr>
@@ -812,215 +1245,6 @@ It is up to the client to make sure that the gateways are in the requested clust
 </table>
 
 <h2 id="messages">Messages</h2>
-
-<h3 id="message:ApplicationIdentifiers">Message <code>ApplicationIdentifiers</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "application_id": "",
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>application_id</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><code>max_len</code>: <code>36</code></p>
-          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:BatchGetGatewayConnectionStatsRequest">Message <code>BatchGetGatewayConnectionStatsRequest</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "gateway_ids": [],
-  "field_mask": {},
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>gateway_ids</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-          
-              
-                
-              
-          
-        
-        repeated 
-  
-    
-    <a href="#message:GatewayIdentifiers">
-  
-  <code>
-    
-    GatewayIdentifiers
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><code>max_items</code>: <code>100</code></p>
-          <p><code>min_items</code>: <code>1</code></p>
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>field_mask</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-        
-  
-  <code>
-    
-      google.protobuf.
-    
-    FieldMask
-  </code>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The names of the gateway stats fields that should be returned.
-This mask will be applied on each entry returned.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:BatchGetGatewayConnectionStatsResponse">Message <code>BatchGetGatewayConnectionStatsResponse</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "entries": {},
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>entries</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        map of 
-  <code>string</code>
- to 
-  
-    
-    <a href="#message:GatewayConnectionStats">
-  
-  <code>
-    
-    GatewayConnectionStats
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The map key is the gateway identifier.</p>
-        
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
 
 <h3 id="message:CFList">Message <code>CFList</code></h3>
 
@@ -1158,17 +1382,15 @@ defined by the selected frequency plan.</p>
 
 
 
-<h3 id="message:ConcentratorConfig">Message <code>ConcentratorConfig</code></h3>
+<h3 id="message:ContactInfo">Message <code>ContactInfo</code></h3>
 
 <details><summary>Show object example</summary>
 <pre><code>{
-  "channels": [],
-  "lora_standard_channel": {},
-  "fsk_channel": {},
-  "lbt": {},
-  "ping_slot": {},
-  "radios": [],
-  "clock_source": 0,
+  "contact_type": "CONTACT_TYPE_OTHER",
+  "contact_method": "CONTACT_METHOD_OTHER",
+  "value": "",
+  "public": false,
+  "validated_at": "0001-01-01T00:00:00Z",
 }</code></pre>
 </details>
 
@@ -1180,7 +1402,7 @@ defined by the selected frequency plan.</p>
         Field
       </th>
       <td>
-        <code>channels</code>
+        <code>contact_type</code>
       </td>
     </tr>
     <tr>
@@ -1189,23 +1411,21 @@ defined by the selected frequency plan.</p>
       </th>
       <td>
         
-          
-              
-                
-              
-          
         
-        repeated 
+            
+              
+            
+        
   
     
-    <a href="#message:ConcentratorConfig.Channel">
+    <a href="#enum:ContactType">
   
   <code>
-    
-    ConcentratorConfig.Channel
-  </code>
   
-    </a>
+  ContactType
+  </code>
+    
+  </a>
   
 </td>
     </tr>
@@ -1215,7 +1435,7 @@ defined by the selected frequency plan.</p>
         Description
       </th>
       <td>
-        
+          <p><code>defined_only</code></p>
       </td>
     </tr>
     
@@ -1229,7 +1449,7 @@ defined by the selected frequency plan.</p>
         Field
       </th>
       <td>
-        <code>lora_standard_channel</code>
+        <code>contact_method</code>
       </td>
     </tr>
     <tr>
@@ -1245,168 +1465,14 @@ defined by the selected frequency plan.</p>
         
   
     
-    <a href="#message:ConcentratorConfig.LoRaStandardChannel">
+    <a href="#enum:ContactMethod">
   
   <code>
-    
-    ConcentratorConfig.LoRaStandardChannel
+  
+  ContactMethod
   </code>
-  
-    </a>
-  
-</td>
-    </tr>
     
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>fsk_channel</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:ConcentratorConfig.FSKChannel">
-  
-  <code>
-    
-    ConcentratorConfig.FSKChannel
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>lbt</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:ConcentratorConfig.LBTConfiguration">
-  
-  <code>
-    
-    ConcentratorConfig.LBTConfiguration
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>ping_slot</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:ConcentratorConfig.Channel">
-  
-  <code>
-    
-    ConcentratorConfig.Channel
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>radios</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-          
-              
-                
-              
-          
-        
-        repeated 
-  
-    
-    <a href="#message:GatewayRadio">
-  
-  <code>
-    
-    GatewayRadio
-  </code>
-  
-    </a>
+  </a>
   
 </td>
     </tr>
@@ -1416,7 +1482,7 @@ defined by the selected frequency plan.</p>
         Description
       </th>
       <td>
-        
+          <p><code>defined_only</code></p>
       </td>
     </tr>
     
@@ -1430,7 +1496,7 @@ defined by the selected frequency plan.</p>
         Field
       </th>
       <td>
-        <code>clock_source</code>
+        <code>value</code>
       </td>
     </tr>
     <tr>
@@ -1440,43 +1506,7 @@ defined by the selected frequency plan.</p>
       <td>
         
         
-  <code>uint32</code>
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:ConcentratorConfig.Channel">Message <code>ConcentratorConfig.Channel</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "frequency": 0,
-  "radio": 0,
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>frequency</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint64</code>
+  <code>string</code>
 </td>
     </tr>
     
@@ -1485,7 +1515,7 @@ defined by the selected frequency plan.</p>
         Description
       </th>
       <td>
-          <p>Frequency (Hz).</p>
+          <p><code>max_len</code>: <code>256</code></p>
       </td>
     </tr>
     
@@ -1499,7 +1529,7 @@ defined by the selected frequency plan.</p>
         Field
       </th>
       <td>
-        <code>radio</code>
+        <code>public</code>
       </td>
     </tr>
     <tr>
@@ -1509,78 +1539,7 @@ defined by the selected frequency plan.</p>
       <td>
         
         
-  <code>uint32</code>
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:ConcentratorConfig.LoRaStandardChannel">Message <code>ConcentratorConfig.LoRaStandardChannel</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "frequency": 0,
-  "radio": 0,
-  "bandwidth": 0,
-  "spreading_factor": 0,
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>frequency</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint64</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Frequency (Hz).</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>radio</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint32</code>
+  <code>bool</code>
 </td>
     </tr>
     
@@ -1594,212 +1553,7 @@ defined by the selected frequency plan.</p>
         Field
       </th>
       <td>
-        <code>bandwidth</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint32</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Bandwidth (Hz).</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>spreading_factor</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint32</code>
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:ConcentratorConfig.FSKChannel">Message <code>ConcentratorConfig.FSKChannel</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "frequency": 0,
-  "radio": 0,
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>frequency</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint64</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Frequency (Hz).</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>radio</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint32</code>
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:ConcentratorConfig.LBTConfiguration">Message <code>ConcentratorConfig.LBTConfiguration</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "rssi_target": 0,
-  "rssi_offset": 0,
-  "scan_time": "0s",
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>rssi_target</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>float</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Received signal strength (dBm).</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>rssi_offset</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>float</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Received signal strength offset (dBm).</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>scan_time</code>
+        <code>validated_at</code>
       </td>
     </tr>
     <tr>
@@ -1816,86 +1570,8 @@ defined by the selected frequency plan.</p>
     
       google.protobuf.
     
-    Duration
+    Timestamp
   </code>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:DownlinkPath">Message <code>DownlinkPath</code></h3>
-<b>Restrictions:</b>
-<ul>
-  <li>Only one of <code>uplink_token</code>, <code>fixed</code> can be set.</li>
-</ul>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "uplink_token": "",
-  "fixed": {},
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>uplink_token</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>bytes</code>
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>fixed</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:GatewayAntennaIdentifiers">
-  
-  <code>
-    
-    GatewayAntennaIdentifiers
-  </code>
-  
-    </a>
   
 </td>
     </tr>
@@ -2176,22 +1852,15 @@ defined by the selected frequency plan.</p>
 
 
 
-<h3 id="message:DownlinkMessage">Message <code>DownlinkMessage</code></h3>
-<p>Downlink message from the network to the end device</p>
-<b>Restrictions:</b>
-<ul>
-  <li>Only one of <code>request</code>, <code>scheduled</code> can be set.</li>
-</ul>
+<h3 id="message:GatewayAntenna">Message <code>GatewayAntenna</code></h3>
+<p>GatewayAntenna is the message that defines a gateway antenna.</p>
 
 <details><summary>Show object example</summary>
 <pre><code>{
-  "raw_payload": "",
-  "payload": {},
-  "end_device_ids": {},
-  "request": {},
-  "scheduled": {},
-  "correlation_ids": [],
-  "session_key_id": "",
+  "gain": 0,
+  "location": {},
+  "attributes": {},
+  "placement": "PLACEMENT_UNKNOWN",
 }</code></pre>
 </details>
 
@@ -2203,7 +1872,7 @@ defined by the selected frequency plan.</p>
         Field
       </th>
       <td>
-        <code>raw_payload</code>
+        <code>gain</code>
       </td>
     </tr>
     <tr>
@@ -2213,8 +1882,17 @@ defined by the selected frequency plan.</p>
       <td>
         
         
-  <code>bytes</code>
+  <code>float</code>
 </td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Antenna gain relative to the gateway, in dBi.</p>
+      </td>
     </tr>
     
   </tbody>
@@ -2227,7 +1905,7 @@ defined by the selected frequency plan.</p>
         Field
       </th>
       <td>
-        <code>payload</code>
+        <code>location</code>
       </td>
     </tr>
     <tr>
@@ -2243,16 +1921,25 @@ defined by the selected frequency plan.</p>
         
   
     
-    <a href="#message:Message">
+    <a href="#message:Location">
   
   <code>
     
-    Message
+    Location
   </code>
   
     </a>
   
 </td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>location is the antenna&rsquo;s location.</p>
+      </td>
     </tr>
     
   </tbody>
@@ -2265,7 +1952,7 @@ defined by the selected frequency plan.</p>
         Field
       </th>
       <td>
-        <code>end_device_ids</code>
+        <code>attributes</code>
       </td>
     </tr>
     <tr>
@@ -2274,123 +1961,9 @@ defined by the selected frequency plan.</p>
       </th>
       <td>
         
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:EndDeviceIdentifiers">
-  
-  <code>
-    
-    EndDeviceIdentifiers
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>request</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:TxRequest">
-  
-  <code>
-    
-    TxRequest
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>scheduled</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:TxSettings">
-  
-  <code>
-    
-    TxSettings
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>correlation_ids</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-          
-        
-        repeated 
+        map of 
+  <code>string</code>
+ to 
   <code>string</code>
 </td>
     </tr>
@@ -2400,7 +1973,11 @@ defined by the selected frequency plan.</p>
         Description
       </th>
       <td>
-            <p><code>max_len</code>: <code>100</code></p>
+          <p><code>max_pairs</code>: <code>10</code></p>
+            <p><code>max_len</code> (key): <code>36</code></p>
+            <p><code>pattern</code> (key): <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+        
+            <p><code>max_len</code> (value): <code>200</code></p>
         
       </td>
     </tr>
@@ -2415,89 +1992,7 @@ defined by the selected frequency plan.</p>
         Field
       </th>
       <td>
-        <code>session_key_id</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>bytes</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><code>max_len</code>: <code>2048</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:EndDeviceIdentifiers">Message <code>EndDeviceIdentifiers</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "device_id": "",
-  "application_ids": {},
-  "dev_eui": "",
-  "join_eui": "",
-  "dev_addr": "",
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>device_id</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><code>max_len</code>: <code>36</code></p>
-          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>application_ids</code>
+        <code>placement</code>
       </td>
     </tr>
     <tr>
@@ -2513,579 +2008,15 @@ defined by the selected frequency plan.</p>
         
   
     
-    <a href="#message:ApplicationIdentifiers">
+    <a href="#enum:GatewayAntennaPlacement">
   
   <code>
-    
-    ApplicationIdentifiers
+  
+  GatewayAntennaPlacement
   </code>
+    
+  </a>
   
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><code>required</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>dev_eui</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>bytes</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The LoRaWAN DevEUI.</p>
-          <p><code>ignore_empty</code></p>
-          <p><code>len</code>: <code>8</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>join_eui</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>bytes</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The LoRaWAN JoinEUI (AppEUI until LoRaWAN 1.0.3 end devices).</p>
-          <p><code>ignore_empty</code></p>
-          <p><code>len</code>: <code>8</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>dev_addr</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>bytes</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The LoRaWAN DevAddr.</p>
-          <p><code>ignore_empty</code></p>
-          <p><code>len</code>: <code>4</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:FHDR">Message <code>FHDR</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "dev_addr": "",
-  "f_ctrl": {},
-  "f_cnt": 0,
-  "f_opts": "",
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>dev_addr</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>bytes</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><code>ignore_empty</code></p>
-          <p><code>len</code>: <code>4</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>f_ctrl</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:FCtrl">
-  
-  <code>
-    
-    FCtrl
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><code>required</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>f_cnt</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint32</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><code>lte</code>: <code>65535</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>f_opts</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>bytes</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><code>max_len</code>: <code>15</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:FCtrl">Message <code>FCtrl</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "adr": false,
-  "adr_ack_req": false,
-  "ack": false,
-  "f_pending": false,
-  "class_b": false,
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>adr</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>bool</code>
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>adr_ack_req</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>bool</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Only on uplink.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>ack</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>bool</code>
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>f_pending</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>bool</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Only on downlink.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>class_b</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>bool</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Only on uplink.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:FSKDataRate">Message <code>FSKDataRate</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "bit_rate": 0,
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>bit_rate</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint32</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Bit rate (bps).</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:GatewayAntennaIdentifiers">Message <code>GatewayAntennaIdentifiers</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "gateway_ids": {},
-  "antenna_index": 0,
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>gateway_ids</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:GatewayIdentifiers">
-  
-  <code>
-    
-    GatewayIdentifiers
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><code>required</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>antenna_index</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint32</code>
 </td>
     </tr>
     
@@ -3175,14 +2106,12 @@ defined by the selected frequency plan.</p>
 
 
 
-<h3 id="message:GetGatewayConfigurationRequest">Message <code>GetGatewayConfigurationRequest</code></h3>
+<h3 id="message:GatewayUplinkMessage">Message <code>GatewayUplinkMessage</code></h3>
 
 <details><summary>Show object example</summary>
 <pre><code>{
-  "gateway_ids": {},
-  "format": "",
-  "type": "",
-  "filename": "",
+  "message": {},
+  "band_id": "",
 }</code></pre>
 </details>
 
@@ -3194,7 +2123,7 @@ defined by the selected frequency plan.</p>
         Field
       </th>
       <td>
-        <code>gateway_ids</code>
+        <code>message</code>
       </td>
     </tr>
     <tr>
@@ -3210,11 +2139,11 @@ defined by the selected frequency plan.</p>
         
   
     
-    <a href="#message:GatewayIdentifiers">
+    <a href="#message:UplinkMessage">
   
   <code>
     
-    GatewayIdentifiers
+    UplinkMessage
   </code>
   
     </a>
@@ -3241,7 +2170,7 @@ defined by the selected frequency plan.</p>
         Field
       </th>
       <td>
-        <code>format</code>
+        <code>band_id</code>
       </td>
     </tr>
     <tr>
@@ -3260,1804 +2189,7 @@ defined by the selected frequency plan.</p>
         Description
       </th>
       <td>
-          <p><code>max_len</code>: <code>36</code></p>
-          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$|^$</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>type</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><code>max_len</code>: <code>36</code></p>
-          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$|^$</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>filename</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><code>max_len</code>: <code>36</code></p>
-          <p><code>pattern</code>: <code>^[a-z0-9](?:[-._]?[a-z0-9]){2,}$|^$</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:GetGatewayConfigurationResponse">Message <code>GetGatewayConfigurationResponse</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "contents": "",
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>contents</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>bytes</code>
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:GatewayConnectionStats">Message <code>GatewayConnectionStats</code></h3>
-<p>Connection stats as monitored by the Gateway Server.</p>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "connected_at": "0001-01-01T00:00:00Z",
-  "disconnected_at": "0001-01-01T00:00:00Z",
-  "protocol": "",
-  "last_status_received_at": "0001-01-01T00:00:00Z",
-  "last_status": {},
-  "last_uplink_received_at": "0001-01-01T00:00:00Z",
-  "uplink_count": 0,
-  "last_downlink_received_at": "0001-01-01T00:00:00Z",
-  "downlink_count": 0,
-  "last_tx_acknowledgment_received_at": "0001-01-01T00:00:00Z",
-  "tx_acknowledgment_count": 0,
-  "round_trip_times": {},
-  "sub_bands": [],
-  "gateway_remote_address": {},
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>connected_at</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-        
-  
-  <code>
-    
-      google.protobuf.
-    
-    Timestamp
-  </code>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>disconnected_at</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-        
-  
-  <code>
-    
-      google.protobuf.
-    
-    Timestamp
-  </code>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>protocol</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Protocol used to connect (for example, udp, mqtt, grpc)</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>last_status_received_at</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-        
-  
-  <code>
-    
-      google.protobuf.
-    
-    Timestamp
-  </code>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>last_status</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:GatewayStatus">
-  
-  <code>
-    
-    GatewayStatus
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>last_uplink_received_at</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-        
-  
-  <code>
-    
-      google.protobuf.
-    
-    Timestamp
-  </code>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>uplink_count</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint64</code>
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>last_downlink_received_at</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-        
-  
-  <code>
-    
-      google.protobuf.
-    
-    Timestamp
-  </code>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>downlink_count</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint64</code>
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>last_tx_acknowledgment_received_at</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-        
-  
-  <code>
-    
-      google.protobuf.
-    
-    Timestamp
-  </code>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>tx_acknowledgment_count</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint64</code>
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>round_trip_times</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:GatewayConnectionStats.RoundTripTimes">
-  
-  <code>
-    
-    GatewayConnectionStats.RoundTripTimes
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>sub_bands</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-          
-              
-                
-              
-          
-        
-        repeated 
-  
-    
-    <a href="#message:GatewayConnectionStats.SubBand">
-  
-  <code>
-    
-    GatewayConnectionStats.SubBand
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Statistics for each sub band.</p>
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>gateway_remote_address</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:GatewayRemoteAddress">
-  
-  <code>
-    
-    GatewayRemoteAddress
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Gateway Remote Address.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:GatewayConnectionStats.RoundTripTimes">Message <code>GatewayConnectionStats.RoundTripTimes</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "min": "0s",
-  "max": "0s",
-  "median": "0s",
-  "count": 0,
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>min</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-        
-  
-  <code>
-    
-      google.protobuf.
-    
-    Duration
-  </code>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>max</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-        
-  
-  <code>
-    
-      google.protobuf.
-    
-    Duration
-  </code>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>median</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-        
-  
-  <code>
-    
-      google.protobuf.
-    
-    Duration
-  </code>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>count</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint32</code>
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:GatewayConnectionStats.SubBand">Message <code>GatewayConnectionStats.SubBand</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "min_frequency": 0,
-  "max_frequency": 0,
-  "downlink_utilization_limit": 0,
-  "downlink_utilization": 0,
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>min_frequency</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint64</code>
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>max_frequency</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint64</code>
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>downlink_utilization_limit</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>float</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Duty-cycle limit of the sub-band as a fraction of time.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>downlink_utilization</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>float</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Utilization rate of the available duty-cycle. This value should not exceed downlink_utilization_limit.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:GatewayDown">Message <code>GatewayDown</code></h3>
-<p>GatewayDown contains downlink messages for the gateway.</p>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "downlink_message": {},
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>downlink_message</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:DownlinkMessage">
-  
-  <code>
-    
-    DownlinkMessage
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>DownlinkMessage for the gateway.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:GatewayStatus">Message <code>GatewayStatus</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "time": "0001-01-01T00:00:00Z",
-  "boot_time": "0001-01-01T00:00:00Z",
-  "versions": {},
-  "antenna_locations": [],
-  "ip": [],
-  "metrics": {},
-  "advanced": {},
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>time</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-        
-  
-  <code>
-    
-      google.protobuf.
-    
-    Timestamp
-  </code>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Current time of the gateway</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>boot_time</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-        
-  
-  <code>
-    
-      google.protobuf.
-    
-    Timestamp
-  </code>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><p>Boot time of the gateway</p>
-<ul>
-<li>can be left out to save bandwidth; old value will be kept</li>
-</ul>
-</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>versions</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        map of 
-  <code>string</code>
- to 
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><p>Versions of gateway subsystems</p>
-<ul>
-<li>each field can be left out to save bandwidth; old value will be kept</li>
-<li>map keys are written in snake_case</li>
-<li>for example:
-firmware: &ldquo;2.0.4&rdquo;
-forwarder: &ldquo;v2-3.3.1&rdquo;
-fpga: &ldquo;48&rdquo;
-dsp: &ldquo;27&rdquo;
-hal: &ldquo;v2-3.5.0&rdquo;</li>
-</ul>
-</p>
-          <p><code>max_pairs</code>: <code>10</code></p>
-            <p><code>max_len</code> (key): <code>36</code></p>
-            <p><code>pattern</code> (key): <code>^[a-z0-9](?:[_-]?[a-z0-9]){2,}$</code></p>
-        
-            <p><code>max_len</code> (value): <code>128</code></p>
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>antenna_locations</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-          
-              
-                
-              
-          
-        
-        repeated 
-  
-    
-    <a href="#message:Location">
-  
-  <code>
-    
-    Location
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><p>Location of each gateway&rsquo;s antenna</p>
-<ul>
-<li>if left out, server uses registry-set location as fallback</li>
-</ul>
-</p>
-          <p><code>max_items</code>: <code>8</code></p>
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>ip</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-          
-        
-        repeated 
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>IP addresses of this gateway.
-Repeated addresses can be used to communicate addresses of multiple interfaces (LAN, Public IP, &hellip;).</p>
-          <p><code>max_items</code>: <code>10</code></p>
-            <p><code>ip</code></p>
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>metrics</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        map of 
-  <code>string</code>
- to 
-  <code>float</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><p>Metrics</p>
-<ul>
-<li>can be used for forwarding gateway metrics such as temperatures or performance metrics</li>
-<li>map keys are written in snake_case</li>
-</ul>
-</p>
-          <p><code>max_pairs</code>: <code>32</code></p>
-            <p><code>max_len</code> (key): <code>36</code></p>
-            <p><code>pattern</code> (key): <code>^[a-z0-9](?:[_-]?[a-z0-9]){2,}$</code></p>
-        
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>advanced</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-        
-  
-  <code>
-    
-      google.protobuf.
-    
-    Struct
-  </code>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><p>Advanced metadata fields</p>
-<ul>
-<li>can be used for advanced information or experimental features that are not yet formally defined in the API</li>
-<li>field names are written in snake_case</li>
-</ul>
-</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:GatewayRadio">Message <code>GatewayRadio</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "enable": false,
-  "chip_type": "",
-  "frequency": 0,
-  "rssi_offset": 0,
-  "tx_configuration": {},
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>enable</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>bool</code>
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>chip_type</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>string</code>
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>frequency</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint64</code>
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>rssi_offset</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>float</code>
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>tx_configuration</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:GatewayRadio.TxConfiguration">
-  
-  <code>
-    
-    GatewayRadio.TxConfiguration
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:GatewayRadio.TxConfiguration">Message <code>GatewayRadio.TxConfiguration</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "min_frequency": 0,
-  "max_frequency": 0,
-  "notch_frequency": 0,
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>min_frequency</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint64</code>
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>max_frequency</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint64</code>
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>notch_frequency</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint64</code>
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:GatewayRemoteAddress">Message <code>GatewayRemoteAddress</code></h3>
-<p>Remote Address of the Gateway, as seen by the Gateway Server.</p>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "ip": "",
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>ip</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>IPv4 or IPv6 address.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:GatewayTxAcknowledgment">Message <code>GatewayTxAcknowledgment</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "gateway_ids": {},
-  "tx_ack": {},
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>gateway_ids</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:GatewayIdentifiers">
-  
-  <code>
-    
-    GatewayIdentifiers
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>tx_ack</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:TxAcknowledgment">
-  
-  <code>
-    
-    TxAcknowledgment
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:GatewayUp">Message <code>GatewayUp</code></h3>
-<p>GatewayUp may contain zero or more uplink messages and/or a status message for the gateway.</p>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "uplink_messages": [],
-  "gateway_status": {},
-  "tx_acknowledgment": {},
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>uplink_messages</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-          
-              
-                
-              
-          
-        
-        repeated 
-  
-    
-    <a href="#message:UplinkMessage">
-  
-  <code>
-    
-    UplinkMessage
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Uplink messages received by the gateway.</p>
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>gateway_status</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:GatewayStatus">
-  
-  <code>
-    
-    GatewayStatus
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Gateway status produced by the gateway.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>tx_acknowledgment</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:TxAcknowledgment">
-  
-  <code>
-    
-    TxAcknowledgment
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>A Tx acknowledgment or error.</p>
+          <p>LoRaWAN band ID of the gateway.</p>
       </td>
     </tr>
     
@@ -5647,6 +2779,910 @@ Repeated addresses can be used to communicate addresses of multiple interfaces (
       <td>
           <p>Source of the location information.</p>
           <p><code>defined_only</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:ListPacketBrokerNetworksRequest">Message <code>ListPacketBrokerNetworksRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "limit": 0,
+  "page": 0,
+  "with_routing_policy": false,
+  "tenant_id_contains": "",
+  "name_contains": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>limit</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Limit the number of results per page.</p>
+          <p><code>lte</code>: <code>1000</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>page</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Page number for pagination. 0 is interpreted as 1.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>with_routing_policy</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>If true, list only the Forwarders and Home Networks with whom a routing policy has been defined in either direction.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>tenant_id_contains</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Filter by tenant ID.</p>
+          <p><code>max_len</code>: <code>100</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>name_contains</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Filter by name.</p>
+          <p><code>max_len</code>: <code>100</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:ListPacketBrokerHomeNetworksRequest">Message <code>ListPacketBrokerHomeNetworksRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "limit": 0,
+  "page": 0,
+  "tenant_id_contains": "",
+  "name_contains": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>limit</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Limit the number of results per page.</p>
+          <p><code>lte</code>: <code>1000</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>page</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Page number for pagination. 0 is interpreted as 1.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>tenant_id_contains</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Filter by tenant ID.</p>
+          <p><code>max_len</code>: <code>100</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>name_contains</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Filter by name.</p>
+          <p><code>max_len</code>: <code>100</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:ListForwarderRoutingPoliciesRequest">Message <code>ListForwarderRoutingPoliciesRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "home_network_id": {},
+  "limit": 0,
+  "page": 0,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>home_network_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:PacketBrokerNetworkIdentifier">
+  
+  <code>
+    
+    PacketBrokerNetworkIdentifier
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Packet Broker identifier of the Home Network.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>limit</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Limit the number of results per page.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>page</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Page number for pagination. 0 is interpreted as 1.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:ListHomeNetworkRoutingPoliciesRequest">Message <code>ListHomeNetworkRoutingPoliciesRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "limit": 0,
+  "page": 0,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>limit</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Limit the number of results per page.</p>
+          <p><code>lte</code>: <code>1000</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>page</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Page number for pagination. 0 is interpreted as 1.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:FCtrl">Message <code>FCtrl</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "adr": false,
+  "adr_ack_req": false,
+  "ack": false,
+  "f_pending": false,
+  "class_b": false,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>adr</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>adr_ack_req</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Only on uplink.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>ack</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>f_pending</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Only on downlink.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>class_b</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Only on uplink.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:FSKDataRate">Message <code>FSKDataRate</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "bit_rate": 0,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>bit_rate</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Bit rate (bps).</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:FHDR">Message <code>FHDR</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "dev_addr": "",
+  "f_ctrl": {},
+  "f_cnt": 0,
+  "f_opts": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>dev_addr</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>4</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>f_ctrl</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:FCtrl">
+  
+  <code>
+    
+    FCtrl
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>f_cnt</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>lte</code>: <code>65535</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>f_opts</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>15</code></p>
       </td>
     </tr>
     
@@ -6387,14 +4423,17 @@ Repeated addresses can be used to communicate addresses of multiple interfaces (
 
 
 
-<h3 id="message:MQTTConnectionInfo">Message <code>MQTTConnectionInfo</code></h3>
-<p>The connection information of an MQTT frontend.</p>
+<h3 id="message:OrganizationOrUserIdentifiers">Message <code>OrganizationOrUserIdentifiers</code></h3>
+<p>OrganizationOrUserIdentifiers contains either organization or user identifiers.</p>
+<b>Restrictions:</b>
+<ul>
+  <li>Only one of <code>organization_ids</code>, <code>user_ids</code> can be set.</li>
+</ul>
 
 <details><summary>Show object example</summary>
 <pre><code>{
-  "public_address": "",
-  "public_tls_address": "",
-  "username": "",
+  "organization_ids": {},
+  "user_ids": {},
 }</code></pre>
 </details>
 
@@ -6406,120 +4445,7 @@ Repeated addresses can be used to communicate addresses of multiple interfaces (
         Field
       </th>
       <td>
-        <code>public_address</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The public listen address of the frontend.</p>
-          <p><code>pattern</code>: <code>^(?:(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*(?:[A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])(?::[0-9]{1,5})?$|^$</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>public_tls_address</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The public listen address of the TLS frontend.</p>
-          <p><code>pattern</code>: <code>^(?:(?:[a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*(?:[A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])(?::[0-9]{1,5})?$|^$</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>username</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The username to be used for authentication.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:PullGatewayConfigurationRequest">Message <code>PullGatewayConfigurationRequest</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "gateway_ids": {},
-  "field_mask": {},
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>gateway_ids</code>
+        <code>organization_ids</code>
       </td>
     </tr>
     <tr>
@@ -6535,11 +4461,11 @@ Repeated addresses can be used to communicate addresses of multiple interfaces (
         
   
     
-    <a href="#message:GatewayIdentifiers">
+    <a href="#message:OrganizationIdentifiers">
   
   <code>
     
-    GatewayIdentifiers
+    OrganizationIdentifiers
   </code>
   
     </a>
@@ -6557,7 +4483,473 @@ Repeated addresses can be used to communicate addresses of multiple interfaces (
         Field
       </th>
       <td>
-        <code>field_mask</code>
+        <code>user_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:UserIdentifiers">
+  
+  <code>
+    
+    UserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:OrganizationIdentifiers">Message <code>OrganizationIdentifiers</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "organization_id": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organization_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>This ID shares namespace with user IDs.</p>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:PacketBrokerGateway">Message <code>PacketBrokerGateway</code></h3>
+<p>Gateway respresentation for Packet Broker.
+This is a subset and superset of the Gateway message using the same data types and field tags to achieve initial wire compatibility.
+There is no (longer) wire compatibility needed; new fields may use any tag.</p>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "ids": {},
+  "contact_info": [],
+  "administrative_contact": {},
+  "technical_contact": {},
+  "antennas": [],
+  "status_public": false,
+  "location_public": false,
+  "frequency_plan_ids": [],
+  "update_location_from_status": false,
+  "online": false,
+  "rx_rate": null,
+  "tx_rate": null,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:PacketBrokerGateway.GatewayIdentifiers">
+  
+  <code>
+    
+    PacketBrokerGateway.GatewayIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>contact_info</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:ContactInfo">
+  
+  <code>
+    
+    ContactInfo
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>This field is deprecated. Use administrative_contact and technical_contact instead.</p>
+          <p><code>max_items</code>: <code>10</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>administrative_contact</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationOrUserIdentifiers">
+  
+  <code>
+    
+    OrganizationOrUserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>technical_contact</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationOrUserIdentifiers">
+  
+  <code>
+    
+    OrganizationOrUserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>antennas</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:GatewayAntenna">
+  
+  <code>
+    
+    GatewayAntenna
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_items</code>: <code>8</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>status_public</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>location_public</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>frequency_plan_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+        
+        repeated 
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_items</code>: <code>8</code></p>
+            <p><code>max_len</code>: <code>64</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>update_location_from_status</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>online</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>rx_rate</code>
       </td>
     </tr>
     <tr>
@@ -6574,10 +4966,745 @@ Repeated addresses can be used to communicate addresses of multiple interfaces (
     
       google.protobuf.
     
-    FieldMask
+    FloatValue
   </code>
   
 </td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Received packets rate (number of packets per hour).
+This field gets updated when a value is set.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>tx_rate</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    FloatValue
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Transmitted packets rate (number of packets per hour).
+This field gets updated when a value is set.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:PacketBrokerGateway">Message <code>PacketBrokerGateway</code></h3>
+<p>Gateway respresentation for Packet Broker.
+This is a subset and superset of the Gateway message using the same data types and field tags to achieve initial wire compatibility.
+There is no (longer) wire compatibility needed; new fields may use any tag.</p>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "ids": {},
+  "contact_info": [],
+  "administrative_contact": {},
+  "technical_contact": {},
+  "antennas": [],
+  "status_public": false,
+  "location_public": false,
+  "frequency_plan_ids": [],
+  "update_location_from_status": false,
+  "online": false,
+  "rx_rate": null,
+  "tx_rate": null,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:PacketBrokerGateway.GatewayIdentifiers">
+  
+  <code>
+    
+    PacketBrokerGateway.GatewayIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>contact_info</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:ContactInfo">
+  
+  <code>
+    
+    ContactInfo
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>This field is deprecated. Use administrative_contact and technical_contact instead.</p>
+          <p><code>max_items</code>: <code>10</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>administrative_contact</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationOrUserIdentifiers">
+  
+  <code>
+    
+    OrganizationOrUserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>technical_contact</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationOrUserIdentifiers">
+  
+  <code>
+    
+    OrganizationOrUserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>antennas</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:GatewayAntenna">
+  
+  <code>
+    
+    GatewayAntenna
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_items</code>: <code>8</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>status_public</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>location_public</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>frequency_plan_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+        
+        repeated 
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_items</code>: <code>8</code></p>
+            <p><code>max_len</code>: <code>64</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>update_location_from_status</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>online</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>rx_rate</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    FloatValue
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Received packets rate (number of packets per hour).
+This field gets updated when a value is set.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>tx_rate</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    FloatValue
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Transmitted packets rate (number of packets per hour).
+This field gets updated when a value is set.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:PacketBrokerGateway.GatewayIdentifiers">Message <code>PacketBrokerGateway.GatewayIdentifiers</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "gateway_id": "",
+  "eui": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>gateway_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[_-]?[a-z0-9]){2,}$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>eui</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>8</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:PacketBrokerRegisterRequest">Message <code>PacketBrokerRegisterRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "listed": null,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>listed</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    BoolValue
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Whether the network should be listed in Packet Broker.
+If unset, the value is taken from the registration settings.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:PacketBrokerNetworkIdentifier">Message <code>PacketBrokerNetworkIdentifier</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "net_id": 0,
+  "tenant_id": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>net_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>LoRa Alliance NetID.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>tenant_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Tenant identifier if the registration leases DevAddr blocks from a NetID.</p>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$|^$</code></p>
+      </td>
     </tr>
     
   </tbody>
@@ -7149,6 +6276,580 @@ This value is empty if it cannot be determined by the Packet Broker Router.</p>
       </th>
       <td>
           <p>Receiver agent.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:PacketBrokerRoutingPolicyUplink">Message <code>PacketBrokerRoutingPolicyUplink</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "join_request": false,
+  "mac_data": false,
+  "application_data": false,
+  "signal_quality": false,
+  "localization": false,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>join_request</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Forward join-request messages.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>mac_data</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Forward uplink messages with FPort of 0.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>application_data</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Forward uplink messages with FPort between 1 and 255.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>signal_quality</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Forward RSSI and SNR.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>localization</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Forward gateway location, RSSI, SNR and fine timestamp.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:PacketBrokerRoutingPolicyDownlink">Message <code>PacketBrokerRoutingPolicyDownlink</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "join_accept": false,
+  "mac_data": false,
+  "application_data": false,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>join_accept</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Allow join-accept messages.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>mac_data</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Allow downlink messages with FPort of 0.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>application_data</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Allow downlink messages with FPort between 1 and 255.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:PacketBrokerGatewayVisibility">Message <code>PacketBrokerGatewayVisibility</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "location": false,
+  "antenna_placement": false,
+  "antenna_count": false,
+  "fine_timestamps": false,
+  "contact_info": false,
+  "status": false,
+  "frequency_plan": false,
+  "packet_rates": false,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>location</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Show location.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>antenna_placement</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Show antenna placement (indoor/outdoor).</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>antenna_count</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Show antenna count.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>fine_timestamps</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Show whether the gateway produces fine timestamps.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>contact_info</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Show contact information.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>status</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Show status (online/offline).</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>frequency_plan</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Show frequency plan.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>packet_rates</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Show receive and transmission packet rates.</p>
       </td>
     </tr>
     
@@ -8231,6 +7932,735 @@ Guaranteed to be based on a GPS PPS signal, with an accuracy of 1 millisecond.</
 
 
 
+<h3 id="message:SetPacketBrokerRoutingPolicyRequest">Message <code>SetPacketBrokerRoutingPolicyRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "home_network_id": {},
+  "uplink": {},
+  "downlink": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>home_network_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:PacketBrokerNetworkIdentifier">
+  
+  <code>
+    
+    PacketBrokerNetworkIdentifier
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Packet Broker identifier of the Home Network.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>uplink</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:PacketBrokerRoutingPolicyUplink">
+  
+  <code>
+    
+    PacketBrokerRoutingPolicyUplink
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Uplink policy.</p>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>downlink</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:PacketBrokerRoutingPolicyDownlink">
+  
+  <code>
+    
+    PacketBrokerRoutingPolicyDownlink
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Downlink policy.</p>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:SetPacketBrokerDefaultRoutingPolicyRequest">Message <code>SetPacketBrokerDefaultRoutingPolicyRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "uplink": {},
+  "downlink": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>uplink</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:PacketBrokerRoutingPolicyUplink">
+  
+  <code>
+    
+    PacketBrokerRoutingPolicyUplink
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Uplink policy.</p>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>downlink</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:PacketBrokerRoutingPolicyDownlink">
+  
+  <code>
+    
+    PacketBrokerRoutingPolicyDownlink
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Downlink policy.</p>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:SetPacketBrokerDefaultGatewayVisibilityRequest">Message <code>SetPacketBrokerDefaultGatewayVisibilityRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "visibility": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>visibility</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:PacketBrokerGatewayVisibility">
+  
+  <code>
+    
+    PacketBrokerGatewayVisibility
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:TxSettings">Message <code>TxSettings</code></h3>
+<p>TxSettings contains the settings for a transmission.
+This message is used on both uplink and downlink.
+On downlink, this is a scheduled transmission.</p>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "data_rate": {},
+  "frequency": 0,
+  "enable_crc": false,
+  "timestamp": 0,
+  "time": "0001-01-01T00:00:00Z",
+  "downlink": {},
+  "concentrator_timestamp": 0,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>data_rate</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:DataRate">
+  
+  <code>
+    
+    DataRate
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Data rate.</p>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>frequency</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint64</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Frequency (Hz).</p>
+          <p><code>gte</code>: <code>100000</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>enable_crc</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Send a CRC in the packet; only on uplink; on downlink, CRC should not be enabled.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>timestamp</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Timestamp of the gateway concentrator when the uplink message was received, or when the downlink message should be transmitted (microseconds).
+On downlink, set timestamp to 0 and time to null to use immediate scheduling.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>time</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Time of the gateway when the uplink message was received, or when the downlink message should be transmitted.
+For downlink, this requires the gateway to have GPS time synchronization.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>downlink</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:TxSettings.Downlink">
+  
+  <code>
+    
+    TxSettings.Downlink
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Transmission settings for downlink.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>concentrator_timestamp</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>int64</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Concentrator timestamp for the downlink as calculated by the Gateway Server scheduler.
+This value takes into account necessary offsets such as the RTT (Round Trip Time) and TOA (Time Of Arrival).
+This field is set and used only by the Gateway Server.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:TxSettings.Downlink">Message <code>TxSettings.Downlink</code></h3>
+<p>Transmission settings for downlink.</p>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "antenna_index": 0,
+  "tx_power": 0,
+  "invert_polarization": false,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>antenna_index</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Index of the antenna on which the uplink was received and/or downlink must be sent.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>tx_power</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>float</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Transmission power (dBm). Only on downlink.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>invert_polarization</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Invert LoRa polarization; false for LoRaWAN uplink, true for downlink.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
 <h3 id="message:UplinkMessage">Message <code>UplinkMessage</code></h3>
 <p>Uplink message from the end device to the network</p>
 
@@ -8609,13 +9039,12 @@ If set to false, this message should not be processed.</p>
 
 
 
-<h3 id="message:TxAcknowledgment">Message <code>TxAcknowledgment</code></h3>
+<h3 id="message:UpdatePacketBrokerGatewayRequest">Message <code>UpdatePacketBrokerGatewayRequest</code></h3>
 
 <details><summary>Show object example</summary>
 <pre><code>{
-  "correlation_ids": [],
-  "result": "SUCCESS",
-  "downlink_message": {},
+  "gateway": {},
+  "field_mask": {},
 }</code></pre>
 </details>
 
@@ -8627,46 +9056,7 @@ If set to false, this message should not be processed.</p>
         Field
       </th>
       <td>
-        <code>correlation_ids</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-          
-        
-        repeated 
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Correlation IDs for the downlink message.
-Set automatically by the UDP and LBS frontends.
-For gRPC and the MQTT v3 frontends, the correlation IDs must match the ones of the downlink message the Tx acknowledgment message refers to.</p>
-            <p><code>max_len</code>: <code>100</code></p>
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>result</code>
+        <code>gateway</code>
       </td>
     </tr>
     <tr>
@@ -8682,58 +9072,11 @@ For gRPC and the MQTT v3 frontends, the correlation IDs must match the ones of t
         
   
     
-    <a href="#enum:TxAcknowledgment.Result">
-  
-  <code>
-  
-  TxAcknowledgment.Result
-  </code>
-    
-  </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><code>defined_only</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>downlink_message</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:DownlinkMessage">
+    <a href="#message:PacketBrokerGateway">
   
   <code>
     
-    DownlinkMessage
+    PacketBrokerGateway
   </code>
   
     </a>
@@ -8746,1185 +9089,6 @@ For gRPC and the MQTT v3 frontends, the correlation IDs must match the ones of t
         Description
       </th>
       <td>
-          <p>The acknowledged downlink message. Set by the Gateway Server.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:TxSettings.Downlink">Message <code>TxSettings.Downlink</code></h3>
-<p>Transmission settings for downlink.</p>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "antenna_index": 0,
-  "tx_power": 0,
-  "invert_polarization": false,
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>antenna_index</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint32</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Index of the antenna on which the uplink was received and/or downlink must be sent.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>tx_power</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>float</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Transmission power (dBm). Only on downlink.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>invert_polarization</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>bool</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Invert LoRa polarization; false for LoRaWAN uplink, true for downlink.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:TxRequest">Message <code>TxRequest</code></h3>
-<p>TxRequest is a request for transmission.
-If sent to a roaming partner, this request is used to generate the DLMetadata Object (see Backend Interfaces 1.0, Table 22).
-If the gateway has a scheduler, this request is sent to the gateway, in the order of gateway_ids.
-Otherwise, the Gateway Server attempts to schedule the request and creates the TxSettings.</p>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "class": "CLASS_A",
-  "downlink_paths": [],
-  "rx1_delay": "RX_DELAY_0",
-  "rx1_data_rate": {},
-  "rx1_frequency": 0,
-  "rx2_data_rate": {},
-  "rx2_frequency": 0,
-  "priority": "LOWEST",
-  "absolute_time": "0001-01-01T00:00:00Z",
-  "frequency_plan_id": "",
-  "advanced": {},
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>class</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#enum:Class">
-  
-  <code>
-  
-  Class
-  </code>
-    
-  </a>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>downlink_paths</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-          
-              
-                
-              
-          
-        
-        repeated 
-  
-    
-    <a href="#message:DownlinkPath">
-  
-  <code>
-    
-    DownlinkPath
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Downlink paths used to select a gateway for downlink.
-In class A, the downlink paths are required to only contain uplink tokens.
-In class B and C, the downlink paths may contain uplink tokens and fixed gateways antenna identifiers.</p>
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>rx1_delay</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#enum:RxDelay">
-  
-  <code>
-  
-  RxDelay
-  </code>
-    
-  </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Rx1 delay (Rx2 delay is Rx1 delay + 1 second).</p>
-          <p><code>defined_only</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>rx1_data_rate</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:DataRate">
-  
-  <code>
-    
-    DataRate
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>LoRaWAN data rate for Rx1.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>rx1_frequency</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint64</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Frequency (Hz) for Rx1.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>rx2_data_rate</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:DataRate">
-  
-  <code>
-    
-    DataRate
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>LoRaWAN data rate for Rx2.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>rx2_frequency</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint64</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Frequency (Hz) for Rx2.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>priority</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#enum:TxSchedulePriority">
-  
-  <code>
-  
-  TxSchedulePriority
-  </code>
-    
-  </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Priority for scheduling.
-Requests with a higher priority are allocated more channel time than messages with a lower priority, in duty-cycle limited regions.
-A priority of HIGH or higher sets the HiPriorityFlag in the DLMetadata Object.</p>
-          <p><code>defined_only</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>absolute_time</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-        
-  
-  <code>
-    
-      google.protobuf.
-    
-    Timestamp
-  </code>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Time when the downlink message should be transmitted.
-This value is only valid for class C downlink; class A downlink uses uplink tokens and class B downlink is scheduled on ping slots.
-This requires the gateway to have GPS time sychronization.
-If the absolute time is not set, the first available time will be used that does not conflict or violate regional limitations.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>frequency_plan_id</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Frequency plan ID from which the frequencies in this message are retrieved.</p>
-          <p><code>max_len</code>: <code>64</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>advanced</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-        
-  
-  <code>
-    
-      google.protobuf.
-    
-    Struct
-  </code>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><p>Advanced metadata fields</p>
-<ul>
-<li>can be used for advanced information or experimental features that are not yet formally defined in the API</li>
-<li>field names are written in snake_case</li>
-</ul>
-</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:TxRequest">Message <code>TxRequest</code></h3>
-<p>TxRequest is a request for transmission.
-If sent to a roaming partner, this request is used to generate the DLMetadata Object (see Backend Interfaces 1.0, Table 22).
-If the gateway has a scheduler, this request is sent to the gateway, in the order of gateway_ids.
-Otherwise, the Gateway Server attempts to schedule the request and creates the TxSettings.</p>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "class": "CLASS_A",
-  "downlink_paths": [],
-  "rx1_delay": "RX_DELAY_0",
-  "rx1_data_rate": {},
-  "rx1_frequency": 0,
-  "rx2_data_rate": {},
-  "rx2_frequency": 0,
-  "priority": "LOWEST",
-  "absolute_time": "0001-01-01T00:00:00Z",
-  "frequency_plan_id": "",
-  "advanced": {},
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>class</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#enum:Class">
-  
-  <code>
-  
-  Class
-  </code>
-    
-  </a>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>downlink_paths</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-          
-              
-                
-              
-          
-        
-        repeated 
-  
-    
-    <a href="#message:DownlinkPath">
-  
-  <code>
-    
-    DownlinkPath
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Downlink paths used to select a gateway for downlink.
-In class A, the downlink paths are required to only contain uplink tokens.
-In class B and C, the downlink paths may contain uplink tokens and fixed gateways antenna identifiers.</p>
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>rx1_delay</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#enum:RxDelay">
-  
-  <code>
-  
-  RxDelay
-  </code>
-    
-  </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Rx1 delay (Rx2 delay is Rx1 delay + 1 second).</p>
-          <p><code>defined_only</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>rx1_data_rate</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:DataRate">
-  
-  <code>
-    
-    DataRate
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>LoRaWAN data rate for Rx1.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>rx1_frequency</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint64</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Frequency (Hz) for Rx1.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>rx2_data_rate</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:DataRate">
-  
-  <code>
-    
-    DataRate
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>LoRaWAN data rate for Rx2.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>rx2_frequency</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint64</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Frequency (Hz) for Rx2.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>priority</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#enum:TxSchedulePriority">
-  
-  <code>
-  
-  TxSchedulePriority
-  </code>
-    
-  </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Priority for scheduling.
-Requests with a higher priority are allocated more channel time than messages with a lower priority, in duty-cycle limited regions.
-A priority of HIGH or higher sets the HiPriorityFlag in the DLMetadata Object.</p>
-          <p><code>defined_only</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>absolute_time</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-        
-  
-  <code>
-    
-      google.protobuf.
-    
-    Timestamp
-  </code>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Time when the downlink message should be transmitted.
-This value is only valid for class C downlink; class A downlink uses uplink tokens and class B downlink is scheduled on ping slots.
-This requires the gateway to have GPS time sychronization.
-If the absolute time is not set, the first available time will be used that does not conflict or violate regional limitations.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>frequency_plan_id</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Frequency plan ID from which the frequencies in this message are retrieved.</p>
-          <p><code>max_len</code>: <code>64</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>advanced</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-        
-  
-  <code>
-    
-      google.protobuf.
-    
-    Struct
-  </code>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><p>Advanced metadata fields</p>
-<ul>
-<li>can be used for advanced information or experimental features that are not yet formally defined in the API</li>
-<li>field names are written in snake_case</li>
-</ul>
-</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:TxSettings">Message <code>TxSettings</code></h3>
-<p>TxSettings contains the settings for a transmission.
-This message is used on both uplink and downlink.
-On downlink, this is a scheduled transmission.</p>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "data_rate": {},
-  "frequency": 0,
-  "enable_crc": false,
-  "timestamp": 0,
-  "time": "0001-01-01T00:00:00Z",
-  "downlink": {},
-  "concentrator_timestamp": 0,
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>data_rate</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:DataRate">
-  
-  <code>
-    
-    DataRate
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Data rate.</p>
           <p><code>required</code></p>
       </td>
     </tr>
@@ -9939,108 +9103,7 @@ On downlink, this is a scheduled transmission.</p>
         Field
       </th>
       <td>
-        <code>frequency</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint64</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Frequency (Hz).</p>
-          <p><code>gte</code>: <code>100000</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>enable_crc</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>bool</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Send a CRC in the packet; only on uplink; on downlink, CRC should not be enabled.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>timestamp</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint32</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Timestamp of the gateway concentrator when the uplink message was received, or when the downlink message should be transmitted (microseconds).
-On downlink, set timestamp to 0 and time to null to use immediate scheduling.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>time</code>
+        <code>field_mask</code>
       </td>
     </tr>
     <tr>
@@ -10057,7 +9120,7 @@ On downlink, set timestamp to 0 and time to null to use immediate scheduling.</p
     
       google.protobuf.
     
-    Timestamp
+    FieldMask
   </code>
   
 </td>
@@ -10068,14 +9131,30 @@ On downlink, set timestamp to 0 and time to null to use immediate scheduling.</p
         Description
       </th>
       <td>
-          <p>Time of the gateway when the uplink message was received, or when the downlink message should be transmitted.
-For downlink, this requires the gateway to have GPS time synchronization.</p>
+          <p><p>The names of the gateway fields that are considered for update.</p>
+<p>Online status is only updated if status_public is set. If status_public is set and false, the status will be reset.
+If status_public is set and true, the online status is taken from the online field. The return message contains
+the duration online_ttl for how long the gateway is considered online.</p>
+<p>Location is only updated if location_public is set. If location_public is set and false, the location will be reset.
+If location_public is set and true, the first antenna location will be used as gateway location.</p>
+</p>
       </td>
     </tr>
     
   </tbody>
 </table>
 
+
+
+<h3 id="message:UpdatePacketBrokerGatewayResponse">Message <code>UpdatePacketBrokerGatewayResponse</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "online_ttl": "0s",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
 <table class="api">
   <tbody>
     <tr>
@@ -10083,7 +9162,7 @@ For downlink, this requires the gateway to have GPS time synchronization.</p>
         Field
       </th>
       <td>
-        <code>downlink</code>
+        <code>online_ttl</code>
       </td>
     </tr>
     <tr>
@@ -10094,19 +9173,14 @@ For downlink, this requires the gateway to have GPS time synchronization.</p>
         
         
             
-              
-            
         
-  
-    
-    <a href="#message:TxSettings.Downlink">
   
   <code>
     
-    TxSettings.Downlink
+      google.protobuf.
+    
+    Duration
   </code>
-  
-    </a>
   
 </td>
     </tr>
@@ -10116,7 +9190,54 @@ For downlink, this requires the gateway to have GPS time synchronization.</p>
         Description
       </th>
       <td>
-          <p>Transmission settings for downlink.</p>
+          <p>Time to live of the online status.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:UserIdentifiers">Message <code>UserIdentifiers</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "user_id": "",
+  "email": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>user_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>This ID shares namespace with organization IDs.</p>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){1,}$</code></p>
       </td>
     </tr>
     
@@ -10130,7 +9251,7 @@ For downlink, this requires the gateway to have GPS time synchronization.</p>
         Field
       </th>
       <td>
-        <code>concentrator_timestamp</code>
+        <code>email</code>
       </td>
     </tr>
     <tr>
@@ -10140,7 +9261,7 @@ For downlink, this requires the gateway to have GPS time synchronization.</p>
       <td>
         
         
-  <code>int64</code>
+  <code>string</code>
 </td>
     </tr>
     
@@ -10149,9 +9270,7 @@ For downlink, this requires the gateway to have GPS time synchronization.</p>
         Description
       </th>
       <td>
-          <p>Concentrator timestamp for the downlink as calculated by the Gateway Server scheduler.
-This value takes into account necessary offsets such as the RTT (Round Trip Time) and TOA (Time Of Arrival).
-This field is set and used only by the Gateway Server.</p>
+          <p>Secondary identifier, which can only be used in specific requests.</p>
       </td>
     </tr>
     
@@ -10160,36 +9279,6 @@ This field is set and used only by the Gateway Server.</p>
 
 
 <h2 id="enums">Enums</h2>
-
-
-<h3 id="enum:Class">Enum <code>Class</code></h3>
-<table class="api">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Value</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>CLASS_A</code></td>
-      <td><code>0</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>CLASS_B</code></td>
-      <td><code>1</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>CLASS_C</code></td>
-      <td><code>2</code></td>
-      <td> </td>
-    </tr>
-  </tbody>
-</table>
-
 
 
 <h3 id="enum:CFListType">Enum <code>CFListType</code></h3>
@@ -10210,6 +9299,126 @@ This field is set and used only by the Gateway Server.</p>
     <tr>
       <td><code>CHANNEL_MASKS</code></td>
       <td><code>1</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<h3 id="enum:ContactType">Enum <code>ContactType</code></h3>
+<table class="api">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>CONTACT_TYPE_OTHER</code></td>
+      <td><code>0</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>CONTACT_TYPE_ABUSE</code></td>
+      <td><code>1</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>CONTACT_TYPE_BILLING</code></td>
+      <td><code>2</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>CONTACT_TYPE_TECHNICAL</code></td>
+      <td><code>3</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<h3 id="enum:ContactMethod">Enum <code>ContactMethod</code></h3>
+<table class="api">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>CONTACT_METHOD_OTHER</code></td>
+      <td><code>0</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>CONTACT_METHOD_EMAIL</code></td>
+      <td><code>1</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>CONTACT_METHOD_PHONE</code></td>
+      <td><code>2</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<h3 id="enum:DataRateOffset">Enum <code>DataRateOffset</code></h3>
+<table class="api">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>DATA_RATE_OFFSET_0</code></td>
+      <td><code>0</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>DATA_RATE_OFFSET_1</code></td>
+      <td><code>1</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>DATA_RATE_OFFSET_2</code></td>
+      <td><code>2</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>DATA_RATE_OFFSET_3</code></td>
+      <td><code>3</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>DATA_RATE_OFFSET_4</code></td>
+      <td><code>4</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>DATA_RATE_OFFSET_5</code></td>
+      <td><code>5</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>DATA_RATE_OFFSET_6</code></td>
+      <td><code>6</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>DATA_RATE_OFFSET_7</code></td>
+      <td><code>7</code></td>
       <td> </td>
     </tr>
   </tbody>
@@ -10312,61 +9521,6 @@ This field is set and used only by the Gateway Server.</p>
 
 
 
-<h3 id="enum:DataRateOffset">Enum <code>DataRateOffset</code></h3>
-<table class="api">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Value</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>DATA_RATE_OFFSET_0</code></td>
-      <td><code>0</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>DATA_RATE_OFFSET_1</code></td>
-      <td><code>1</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>DATA_RATE_OFFSET_2</code></td>
-      <td><code>2</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>DATA_RATE_OFFSET_3</code></td>
-      <td><code>3</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>DATA_RATE_OFFSET_4</code></td>
-      <td><code>4</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>DATA_RATE_OFFSET_5</code></td>
-      <td><code>5</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>DATA_RATE_OFFSET_6</code></td>
-      <td><code>6</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>DATA_RATE_OFFSET_7</code></td>
-      <td><code>7</code></td>
-      <td> </td>
-    </tr>
-  </tbody>
-</table>
-
-
-
 <h3 id="enum:DownlinkPathConstraint">Enum <code>DownlinkPathConstraint</code></h3>
 <table class="api">
   <thead>
@@ -10391,6 +9545,36 @@ This field is set and used only by the Gateway Server.</p>
       <td><code>DOWNLINK_PATH_CONSTRAINT_NEVER</code></td>
       <td><code>2</code></td>
       <td> Indicates that this gateway will never be selected for downlink, even if that results in no available downlink path.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+<h3 id="enum:GatewayAntennaPlacement">Enum <code>GatewayAntennaPlacement</code></h3>
+<table class="api">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>PLACEMENT_UNKNOWN</code></td>
+      <td><code>0</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>INDOOR</code></td>
+      <td><code>1</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>OUTDOOR</code></td>
+      <td><code>2</code></td>
+      <td> </td>
     </tr>
   </tbody>
 </table>
@@ -10532,6 +9716,351 @@ This field is set and used only by the Gateway Server.</p>
 
 
 
+<h3 id="enum:Right">Enum <code>Right</code></h3>
+<p>Right is the enum that defines all the different rights to do something in the network.</p>
+<table class="api">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>right_invalid</code></td>
+      <td><code>0</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_INFO</code></td>
+      <td><code>1</code></td>
+      <td> The right to view user information.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_SETTINGS_BASIC</code></td>
+      <td><code>2</code></td>
+      <td> The right to edit basic user settings.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_SETTINGS_API_KEYS</code></td>
+      <td><code>3</code></td>
+      <td> The right to view and edit user API keys.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_DELETE</code></td>
+      <td><code>4</code></td>
+      <td> The right to delete user account.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_AUTHORIZED_CLIENTS</code></td>
+      <td><code>5</code></td>
+      <td> The right to view and edit authorized OAuth clients of the user.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_APPLICATIONS_LIST</code></td>
+      <td><code>6</code></td>
+      <td> The right to list applications the user is a collaborator of.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_APPLICATIONS_CREATE</code></td>
+      <td><code>7</code></td>
+      <td> The right to create an application under the user account.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_GATEWAYS_LIST</code></td>
+      <td><code>8</code></td>
+      <td> The right to list gateways the user is a collaborator of.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_GATEWAYS_CREATE</code></td>
+      <td><code>9</code></td>
+      <td> The right to create a gateway under the account of the user.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_CLIENTS_LIST</code></td>
+      <td><code>10</code></td>
+      <td> The right to list OAuth clients the user is a collaborator of.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_CLIENTS_CREATE</code></td>
+      <td><code>11</code></td>
+      <td> The right to create an OAuth client under the account of the user.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_ORGANIZATIONS_LIST</code></td>
+      <td><code>12</code></td>
+      <td> The right to list organizations the user is a member of.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_ORGANIZATIONS_CREATE</code></td>
+      <td><code>13</code></td>
+      <td> The right to create an organization under the user account.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_NOTIFICATIONS_READ</code></td>
+      <td><code>59</code></td>
+      <td> The right to read notifications sent to the user.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_USER_ALL</code></td>
+      <td><code>14</code></td>
+      <td> The pseudo-right for all (current and future) user rights.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_INFO</code></td>
+      <td><code>15</code></td>
+      <td> The right to view application information.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_SETTINGS_BASIC</code></td>
+      <td><code>16</code></td>
+      <td> The right to edit basic application settings.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_SETTINGS_API_KEYS</code></td>
+      <td><code>17</code></td>
+      <td> The right to view and edit application API keys.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_SETTINGS_COLLABORATORS</code></td>
+      <td><code>18</code></td>
+      <td> The right to view and edit application collaborators.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_SETTINGS_PACKAGES</code></td>
+      <td><code>56</code></td>
+      <td> The right to view and edit application packages and associations.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_DELETE</code></td>
+      <td><code>19</code></td>
+      <td> The right to delete application.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_DEVICES_READ</code></td>
+      <td><code>20</code></td>
+      <td> The right to view devices in application.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_DEVICES_WRITE</code></td>
+      <td><code>21</code></td>
+      <td> The right to create devices in application.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_DEVICES_READ_KEYS</code></td>
+      <td><code>22</code></td>
+      <td> The right to view device keys in application.
+Note that keys may not be stored in a way that supports viewing them.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_DEVICES_WRITE_KEYS</code></td>
+      <td><code>23</code></td>
+      <td> The right to edit device keys in application.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_TRAFFIC_READ</code></td>
+      <td><code>24</code></td>
+      <td> The right to read application traffic (uplink and downlink).</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_TRAFFIC_UP_WRITE</code></td>
+      <td><code>25</code></td>
+      <td> The right to write uplink application traffic.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_TRAFFIC_DOWN_WRITE</code></td>
+      <td><code>26</code></td>
+      <td> The right to write downlink application traffic.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_LINK</code></td>
+      <td><code>27</code></td>
+      <td> The right to link as Application to a Network Server for traffic exchange,
+i.e. read uplink and write downlink (API keys only).
+This right is typically only given to an Application Server.
+This right implies RIGHT_APPLICATION_INFO, RIGHT_APPLICATION_TRAFFIC_READ,
+and RIGHT_APPLICATION_TRAFFIC_DOWN_WRITE.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_APPLICATION_ALL</code></td>
+      <td><code>28</code></td>
+      <td> The pseudo-right for all (current and future) application rights.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_CLIENT_ALL</code></td>
+      <td><code>29</code></td>
+      <td> The pseudo-right for all (current and future) OAuth client rights.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_CLIENT_INFO</code></td>
+      <td><code>60</code></td>
+      <td> The right to read client information.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_CLIENT_SETTINGS_BASIC</code></td>
+      <td><code>61</code></td>
+      <td> The right to edit basic client settings.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_CLIENT_SETTINGS_COLLABORATORS</code></td>
+      <td><code>62</code></td>
+      <td> The right to view and edit client collaborators.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_CLIENT_DELETE</code></td>
+      <td><code>63</code></td>
+      <td> The right to delete a client.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_INFO</code></td>
+      <td><code>30</code></td>
+      <td> The right to view gateway information.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_SETTINGS_BASIC</code></td>
+      <td><code>31</code></td>
+      <td> The right to edit basic gateway settings.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_SETTINGS_API_KEYS</code></td>
+      <td><code>32</code></td>
+      <td> The right to view and edit gateway API keys.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_SETTINGS_COLLABORATORS</code></td>
+      <td><code>33</code></td>
+      <td> The right to view and edit gateway collaborators.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_DELETE</code></td>
+      <td><code>34</code></td>
+      <td> The right to delete gateway.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_TRAFFIC_READ</code></td>
+      <td><code>35</code></td>
+      <td> The right to read gateway traffic.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_TRAFFIC_DOWN_WRITE</code></td>
+      <td><code>36</code></td>
+      <td> The right to write downlink gateway traffic.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_LINK</code></td>
+      <td><code>37</code></td>
+      <td> The right to link as Gateway to a Gateway Server for traffic exchange,
+i.e. write uplink and read downlink (API keys only)
+This right is typically only given to a gateway.
+This right implies RIGHT_GATEWAY_INFO.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_STATUS_READ</code></td>
+      <td><code>38</code></td>
+      <td> The right to view gateway status.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_LOCATION_READ</code></td>
+      <td><code>39</code></td>
+      <td> The right to view view gateway location.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_WRITE_SECRETS</code></td>
+      <td><code>57</code></td>
+      <td> The right to store secrets associated with this gateway.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_READ_SECRETS</code></td>
+      <td><code>58</code></td>
+      <td> The right to retrieve secrets associated with this gateway.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_GATEWAY_ALL</code></td>
+      <td><code>40</code></td>
+      <td> The pseudo-right for all (current and future) gateway rights.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_INFO</code></td>
+      <td><code>41</code></td>
+      <td> The right to view organization information.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_SETTINGS_BASIC</code></td>
+      <td><code>42</code></td>
+      <td> The right to edit basic organization settings.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_SETTINGS_API_KEYS</code></td>
+      <td><code>43</code></td>
+      <td> The right to view and edit organization API keys.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_SETTINGS_MEMBERS</code></td>
+      <td><code>44</code></td>
+      <td> The right to view and edit organization members.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_DELETE</code></td>
+      <td><code>45</code></td>
+      <td> The right to delete organization.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_APPLICATIONS_LIST</code></td>
+      <td><code>46</code></td>
+      <td> The right to list the applications the organization is a collaborator of.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_APPLICATIONS_CREATE</code></td>
+      <td><code>47</code></td>
+      <td> The right to create an application under the organization.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_GATEWAYS_LIST</code></td>
+      <td><code>48</code></td>
+      <td> The right to list the gateways the organization is a collaborator of.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_GATEWAYS_CREATE</code></td>
+      <td><code>49</code></td>
+      <td> The right to create a gateway under the organization.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_CLIENTS_LIST</code></td>
+      <td><code>50</code></td>
+      <td> The right to list the OAuth clients the organization is a collaborator of.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_CLIENTS_CREATE</code></td>
+      <td><code>51</code></td>
+      <td> The right to create an OAuth client under the organization.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_ADD_AS_COLLABORATOR</code></td>
+      <td><code>52</code></td>
+      <td> The right to add the organization as a collaborator on an existing entity.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ORGANIZATION_ALL</code></td>
+      <td><code>53</code></td>
+      <td> The pseudo-right for all (current and future) organization rights.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_SEND_INVITES</code></td>
+      <td><code>54</code></td>
+      <td> The right to send invites to new users.
+Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on the user entity.</td>
+    </tr>
+    <tr>
+      <td><code>RIGHT_ALL</code></td>
+      <td><code>55</code></td>
+      <td> The pseudo-right for all (current and future) possible rights.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
 <h3 id="enum:RejoinRequestType">Enum <code>RejoinRequestType</code></h3>
 <table class="api">
   <thead>
@@ -10657,119 +10186,7 @@ This field is set and used only by the Gateway Server.</p>
 
 
 
-<h3 id="enum:TxAcknowledgment.Result">Enum <code>TxAcknowledgment.Result</code></h3>
-<table class="api">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Value</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>SUCCESS</code></td>
-      <td><code>0</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>UNKNOWN_ERROR</code></td>
-      <td><code>1</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>TOO_LATE</code></td>
-      <td><code>2</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>TOO_EARLY</code></td>
-      <td><code>3</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>COLLISION_PACKET</code></td>
-      <td><code>4</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>COLLISION_BEACON</code></td>
-      <td><code>5</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>TX_FREQ</code></td>
-      <td><code>6</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>TX_POWER</code></td>
-      <td><code>7</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>GPS_UNLOCKED</code></td>
-      <td><code>8</code></td>
-      <td> </td>
-    </tr>
-  </tbody>
-</table>
 
-
-
-<h3 id="enum:TxSchedulePriority">Enum <code>TxSchedulePriority</code></h3>
-<table class="api">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Value</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>LOWEST</code></td>
-      <td><code>0</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>LOW</code></td>
-      <td><code>1</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>BELOW_NORMAL</code></td>
-      <td><code>2</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>NORMAL</code></td>
-      <td><code>3</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>ABOVE_NORMAL</code></td>
-      <td><code>4</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>HIGH</code></td>
-      <td><code>5</code></td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td><code>HIGHEST</code></td>
-      <td><code>6</code></td>
-      <td> </td>
-    </tr>
-  </tbody>
-</table>
-
-
-
-
-
-	
 
 	
 
@@ -10884,8 +10301,8 @@ This field is set and used only by the Gateway Server.</p>
 
         </div>
         <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/reference/api/gateway/">← Gateway APIs</a>
-<a class="button is-pulled-right" href="/docs/reference/api/gateway_server_mqtt/">Gateway Server MQTT →</a>
+<a class="button is-pulled-left" href="/docs/reference/api/organization/">← Organization APIs</a>
+<a class="button is-pulled-right" href="/docs/reference/api/storage_integration/">Storage Integration API →</a>
 </div>
 
         <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -10906,19 +10323,10 @@ This field is set and used only by the Gateway Server.</p>
   <ul class="menu-list">
     
       
-      <li><a href='#the-gs-service'>The Gs service</a></li>
+      <li><a href='#the-pba-service'>The Pba service</a></li>
     
       
-      <li><a href='#the-gatewayconfigurator-service'>The GatewayConfigurator service</a></li>
-    
-      
-      <li><a href='#the-gatewayconfigurationservice-service'>The GatewayConfigurationService service</a></li>
-    
-      
-      <li><a href='#the-gtwgs-service'>The GtwGs service</a></li>
-    
-      
-      <li><a href='#the-gsns-service'>The GsNs service</a></li>
+      <li><a href='#the-gspba-service'>The GsPba service</a></li>
     
       
       <li><a href='#messages'>Messages</a></li>

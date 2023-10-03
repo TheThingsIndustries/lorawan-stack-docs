@@ -143,6 +143,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
+    <a href="https://www.thethingsindustries.com/docs/reference/api/crypto_operations/" class="">Crypto Operations APIs</a>
+    
+  </li>
+
+  <li>
     <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/" class="">End Device APIs</a>
     
   </li>
@@ -168,6 +173,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
+    <a href="https://www.thethingsindustries.com/docs/reference/api/identity_server/" class="">Identity Server APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/reference/api/join_server/" class="">Join Server APIs</a>
+    
+  </li>
+
+  <li>
     <a href="https://www.thethingsindustries.com/docs/reference/api/network_operations_center/" class="">Network Operations Center APIs</a>
     
   </li>
@@ -179,6 +194,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/reference/api/organization/" class="">Organization APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/reference/api/packet_broker/" class="">Packet Broker APIs</a>
     
   </li>
 
@@ -348,6 +368,57 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <td>
         <p><code>GET</code> <code>/api/v3/as/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}/packages/storage/{type}</code></p>
         <p><code>GET</code> <code>/api/v3/as/applications/{application_ids.application_id}/packages/storage/{type}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>ApplicationUpStorage.GetStoredApplicationUpCount</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Returns how many application messages have been stored in the database for an application or end device.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GetStoredApplicationUpCountRequest"><code>GetStoredApplicationUpCountRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:GetStoredApplicationUpCountResponse"><code>GetStoredApplicationUpCountResponse</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/as/applications/{end_device_ids.application_ids.application_id}/devices/{end_device_ids.device_id}/packages/storage/{type}/count</code></p>
+        <p><code>GET</code> <code>/api/v3/as/applications/{application_ids.application_id}/packages/storage/{type}/count</code></p>
       </td>
     </tr>
   </tbody>
@@ -5265,6 +5336,319 @@ traces the network may (or may not) store about recent errors.</p>
 
 
 
+<h3 id="message:GetStoredApplicationUpCountRequest">Message <code>GetStoredApplicationUpCountRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "application_ids": {},
+  "end_device_ids": {},
+  "type": "",
+  "after": "0001-01-01T00:00:00Z",
+  "before": "0001-01-01T00:00:00Z",
+  "f_port": null,
+  "last": "0s",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>application_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ApplicationIdentifiers">
+  
+  <code>
+    
+    ApplicationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Count upstream messages from all end devices of an application. Cannot be used in conjunction with end_device_ids.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>end_device_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:EndDeviceIdentifiers">
+  
+  <code>
+    
+    EndDeviceIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Count upstream messages from a single end device. Cannot be used in conjunction with application_ids.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>type</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Count upstream messages of a specific type. If not set, then all upstream messages are returned.</p>
+          <p><code>in</code>: <code>[ uplink_message join_accept downlink_ack downlink_nack downlink_sent downlink_failed downlink_queued downlink_queue_invalidated location_solved service_data]</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>after</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Count upstream messages after this timestamp only. Cannot be used in conjunction with last.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>before</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Count upstream messages before this timestamp only. Cannot be used in conjunction with last.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>f_port</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    UInt32Value
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Count uplinks on a specific FPort only.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>last</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Duration
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Count upstream messages that have arrived in the last minutes or hours. Cannot be used in conjunction with after and before.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
 <h3 id="message:KeyEnvelope">Message <code>KeyEnvelope</code></h3>
 
 <details><summary>Show object example</summary>
@@ -8114,10 +8498,12 @@ This field is set and used only by the Gateway Server.</p>
 
 	
 
+	
+
 
         </div>
         <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/reference/api/organization/">← Organization APIs</a>
+<a class="button is-pulled-left" href="/docs/reference/api/packet_broker/">← Packet Broker APIs</a>
 <a class="button is-pulled-right" href="/docs/reference/api/tenant/">Tenant APIs →</a>
 </div>
 

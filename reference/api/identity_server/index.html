@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>Client APIs | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/api/client/" />
+  <title>Identity Server APIs | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/api/identity_server/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.fd3d59eb4852f5cc339297cb0cb5a6af3c7895bf80bc7bc02db7b78eadec7102.css" integrity="sha256-/T1Z60hS9cwzkpfLDLWmrzx4lb&#43;AvHvALbe3jq3scQI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Client APIs">
+  <meta itemprop="name" content="Identity Server APIs">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Client APIs">
+  <meta property="og:title" content="Identity Server APIs">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/api/client/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/api/identity_server/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="Client APIs" />
+  <meta name="twitter:title" content="Identity Server APIs" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -138,12 +138,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/api/client/" class="is-active">Client APIs</a>
-    
-    
-
-
-
+    <a href="https://www.thethingsindustries.com/docs/reference/api/client/" class="">Client APIs</a>
     
   </li>
 
@@ -178,7 +173,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/api/identity_server/" class="">Identity Server APIs</a>
+    <a href="https://www.thethingsindustries.com/docs/reference/api/identity_server/" class="is-active">Identity Server APIs</a>
+    
+    
+
+
+
     
   </li>
 
@@ -316,12 +316,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Client APIs
+        <h1 class="title is-size-2">Identity Server APIs
           
         </h1>
         
         <div class="content">
-          <h2 id="the-clientregistry-service">The <code>ClientRegistry</code> service</h2>
+          <h2 id="the-authenticationproviderregistry-service">The <code>AuthenticationProviderRegistry</code> service</h2>
 
 
 
@@ -332,16 +332,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         Method
       </th>
       <td>
-        <code>ClientRegistry.Create</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-        Create a new OAuth client. This also sets the given organization or user as
-first collaborator with all possible rights.
+        <code>AuthenticationProviderRegistry.Create</code>
       </td>
     </tr>
     <tr>
@@ -349,7 +340,7 @@ first collaborator with all possible rights.
         Request type
       </th>
       <td>
-        <a href="#message:CreateClientRequest"><code>CreateClientRequest</code></a>
+        <a href="#message:CreateAuthenticationProviderRequest"><code>CreateAuthenticationProviderRequest</code></a>
         
       </td>
     </tr>
@@ -358,7 +349,7 @@ first collaborator with all possible rights.
         Response type
       </th>
       <td>
-        <a href="#message:Client"><code>Client</code></a>
+        <a href="#message:AuthenticationProvider"><code>AuthenticationProvider</code></a>
         
       </td>
     </tr>
@@ -367,8 +358,7 @@ first collaborator with all possible rights.
         HTTP bindings
       </th>
       <td>
-        <p><code>POST</code> <code>/api/v3/users/{collaborator.user_ids.user_id}/clients</code></p>
-        <p><code>POST</code> <code>/api/v3/organizations/{collaborator.organization_ids.organization_id}/clients</code></p>
+        <p><code>POST</code> <code>/api/v3/authentication_providers</code></p>
       </td>
     </tr>
   </tbody>
@@ -384,17 +374,7 @@ first collaborator with all possible rights.
         Method
       </th>
       <td>
-        <code>ClientRegistry.Get</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-        Get the OAuth client with the given identifiers, selecting the fields specified
-in the field mask.
-More or less fields may be returned, depending on the rights of the caller.
+        <code>AuthenticationProviderRegistry.Get</code>
       </td>
     </tr>
     <tr>
@@ -402,7 +382,7 @@ More or less fields may be returned, depending on the rights of the caller.
         Request type
       </th>
       <td>
-        <a href="#message:GetClientRequest"><code>GetClientRequest</code></a>
+        <a href="#message:GetAuthenticationProviderRequest"><code>GetAuthenticationProviderRequest</code></a>
         
       </td>
     </tr>
@@ -411,7 +391,7 @@ More or less fields may be returned, depending on the rights of the caller.
         Response type
       </th>
       <td>
-        <a href="#message:Client"><code>Client</code></a>
+        <a href="#message:AuthenticationProvider"><code>AuthenticationProvider</code></a>
         
       </td>
     </tr>
@@ -420,7 +400,7 @@ More or less fields may be returned, depending on the rights of the caller.
         HTTP bindings
       </th>
       <td>
-        <p><code>GET</code> <code>/api/v3/clients/{client_ids.client_id}</code></p>
+        <p><code>GET</code> <code>/api/v3/authentication_providers/{ids.provider_id}</code></p>
       </td>
     </tr>
   </tbody>
@@ -436,19 +416,7 @@ More or less fields may be returned, depending on the rights of the caller.
         Method
       </th>
       <td>
-        <code>ClientRegistry.List</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-        List OAuth clients where the given user or organization is a direct collaborator.
-If no user or organization is given, this returns the OAuth clients the caller
-has access to.
-Similar to Get, this selects the fields specified in the field mask.
-More or less fields may be returned, depending on the rights of the caller.
+        <code>AuthenticationProviderRegistry.List</code>
       </td>
     </tr>
     <tr>
@@ -456,7 +424,7 @@ More or less fields may be returned, depending on the rights of the caller.
         Request type
       </th>
       <td>
-        <a href="#message:ListClientsRequest"><code>ListClientsRequest</code></a>
+        <a href="#message:ListAuthenticationProvidersRequest"><code>ListAuthenticationProvidersRequest</code></a>
         
       </td>
     </tr>
@@ -465,7 +433,7 @@ More or less fields may be returned, depending on the rights of the caller.
         Response type
       </th>
       <td>
-        <a href="#message:Clients"><code>Clients</code></a>
+        <a href="#message:AuthenticationProviders"><code>AuthenticationProviders</code></a>
         
       </td>
     </tr>
@@ -474,9 +442,7 @@ More or less fields may be returned, depending on the rights of the caller.
         HTTP bindings
       </th>
       <td>
-        <p><code>GET</code> <code>/api/v3/clients</code></p>
-        <p><code>GET</code> <code>/api/v3/users/{collaborator.user_ids.user_id}/clients</code></p>
-        <p><code>GET</code> <code>/api/v3/organizations/{collaborator.organization_ids.organization_id}/clients</code></p>
+        <p><code>GET</code> <code>/api/v3/authentication_providers</code></p>
       </td>
     </tr>
   </tbody>
@@ -492,15 +458,7 @@ More or less fields may be returned, depending on the rights of the caller.
         Method
       </th>
       <td>
-        <code>ClientRegistry.Update</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-        Update the OAuth client, changing the fields specified by the field mask to the provided values.
+        <code>AuthenticationProviderRegistry.Update</code>
       </td>
     </tr>
     <tr>
@@ -508,7 +466,7 @@ More or less fields may be returned, depending on the rights of the caller.
         Request type
       </th>
       <td>
-        <a href="#message:UpdateClientRequest"><code>UpdateClientRequest</code></a>
+        <a href="#message:UpdateAuthenticationProviderRequest"><code>UpdateAuthenticationProviderRequest</code></a>
         
       </td>
     </tr>
@@ -517,7 +475,7 @@ More or less fields may be returned, depending on the rights of the caller.
         Response type
       </th>
       <td>
-        <a href="#message:Client"><code>Client</code></a>
+        <a href="#message:AuthenticationProvider"><code>AuthenticationProvider</code></a>
         
       </td>
     </tr>
@@ -526,7 +484,7 @@ More or less fields may be returned, depending on the rights of the caller.
         HTTP bindings
       </th>
       <td>
-        <p><code>PUT</code> <code>/api/v3/clients/{client.ids.client_id}</code></p>
+        <p><code>PUT</code> <code>/api/v3/authentication_providers/{provider.ids.provider_id}</code></p>
       </td>
     </tr>
   </tbody>
@@ -542,15 +500,7 @@ More or less fields may be returned, depending on the rights of the caller.
         Method
       </th>
       <td>
-        <code>ClientRegistry.Delete</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-        Delete the OAuth client. This may not release the client ID for reuse.
+        <code>AuthenticationProviderRegistry.Delete</code>
       </td>
     </tr>
     <tr>
@@ -558,7 +508,7 @@ More or less fields may be returned, depending on the rights of the caller.
         Request type
       </th>
       <td>
-        <a href="#message:ClientIdentifiers"><code>ClientIdentifiers</code></a>
+        <a href="#message:AuthenticationProviderIdentifiers"><code>AuthenticationProviderIdentifiers</code></a>
         
       </td>
     </tr>
@@ -576,7 +526,58 @@ More or less fields may be returned, depending on the rights of the caller.
         HTTP bindings
       </th>
       <td>
-        <p><code>DELETE</code> <code>/api/v3/clients/{client_id}</code></p>
+        <p><code>DELETE</code> <code>/api/v3/authentication_providers/{provider_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="the-contactinforegistry-service">The <code>ContactInfoRegistry</code> service</h2>
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>ContactInfoRegistry.RequestValidation</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Request validation for the non-validated contact info for the given entity.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:EntityIdentifiers"><code>EntityIdentifiers</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:ContactInfoValidation"><code>ContactInfoValidation</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>POST</code> <code>/api/v3/contact_info/validation</code></p>
       </td>
     </tr>
   </tbody>
@@ -592,7 +593,7 @@ More or less fields may be returned, depending on the rights of the caller.
         Method
       </th>
       <td>
-        <code>ClientRegistry.Restore</code>
+        <code>ContactInfoRegistry.Validate</code>
       </td>
     </tr>
     <tr>
@@ -600,10 +601,7 @@ More or less fields may be returned, depending on the rights of the caller.
         Description
       </th>
       <td>
-        <p>Restore a recently deleted client.</p>
-<p>Deployment configuration may specify if, and for how long after deletion,
-entities can be restored.</p>
-
+        Validate confirms a contact info validation.
       </td>
     </tr>
     <tr>
@@ -611,7 +609,7 @@ entities can be restored.</p>
         Request type
       </th>
       <td>
-        <a href="#message:ClientIdentifiers"><code>ClientIdentifiers</code></a>
+        <a href="#message:ContactInfoValidation"><code>ContactInfoValidation</code></a>
         
       </td>
     </tr>
@@ -629,315 +627,7 @@ entities can be restored.</p>
         HTTP bindings
       </th>
       <td>
-        <p><code>POST</code> <code>/api/v3/clients/{client_id}/restore</code></p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
-
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Method
-      </th>
-      <td>
-        <code>ClientRegistry.Purge</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-        Purge the client. This will release the client ID for reuse.
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Request type
-      </th>
-      <td>
-        <a href="#message:ClientIdentifiers"><code>ClientIdentifiers</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Response type
-      </th>
-      <td>
-        <code>google.protobuf.Empty</code>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        HTTP bindings
-      </th>
-      <td>
-        <p><code>DELETE</code> <code>/api/v3/clients/{client_id}/purge</code></p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="the-clientaccess-service">The <code>ClientAccess</code> service</h2>
-
-
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Method
-      </th>
-      <td>
-        <code>ClientAccess.ListRights</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-        List the rights the caller has on this application.
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Request type
-      </th>
-      <td>
-        <a href="#message:ClientIdentifiers"><code>ClientIdentifiers</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Response type
-      </th>
-      <td>
-        <a href="#message:Rights"><code>Rights</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        HTTP bindings
-      </th>
-      <td>
-        <p><code>GET</code> <code>/api/v3/clients/{client_id}/rights</code></p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
-
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Method
-      </th>
-      <td>
-        <code>ClientAccess.GetCollaborator</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-        Get the rights of a collaborator (member) of the client.
-Pseudo-rights in the response (such as the &ldquo;_ALL&rdquo; right) are not expanded.
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Request type
-      </th>
-      <td>
-        <a href="#message:GetClientCollaboratorRequest"><code>GetClientCollaboratorRequest</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Response type
-      </th>
-      <td>
-        <a href="#message:GetCollaboratorResponse"><code>GetCollaboratorResponse</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        HTTP bindings
-      </th>
-      <td>
-        <p><code></code> <code>/api/v3</code></p>
-        <p><code>GET</code> <code>/api/v3/clients/{client_ids.client_id}/collaborator/user/{collaborator.user_ids.user_id}</code></p>
-        <p><code>GET</code> <code>/api/v3/clients/{client_ids.client_id}/collaborator/organization/{collaborator.organization_ids.organization_id}</code></p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
-
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Method
-      </th>
-      <td>
-        <code>ClientAccess.DeleteCollaborator</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-        DeleteCollaborator removes a collaborator from a client.
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Request type
-      </th>
-      <td>
-        <a href="#message:DeleteClientCollaboratorRequest"><code>DeleteClientCollaboratorRequest</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Response type
-      </th>
-      <td>
-        <code>google.protobuf.Empty</code>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        HTTP bindings
-      </th>
-      <td>
-        <p><code></code> <code>/api/v3</code></p>
-        <p><code>DELETE</code> <code>/api/v3/clients/{client_ids.client_id}/collaborators/user/{collaborator_ids.user_ids.user_id}</code></p>
-        <p><code>DELETE</code> <code>/api/v3/clients/{client_ids.client_id}/collaborators/organization/{collaborator_ids.organization_ids.organization_id}</code></p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
-
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Method
-      </th>
-      <td>
-        <code>ClientAccess.SetCollaborator</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-        Set the rights of a collaborator (member) on the OAuth client.
-This method can also be used to delete the collaborator, by giving them no rights.
-The caller is required to have all assigned or/and removed rights.
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Request type
-      </th>
-      <td>
-        <a href="#message:SetClientCollaboratorRequest"><code>SetClientCollaboratorRequest</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Response type
-      </th>
-      <td>
-        <code>google.protobuf.Empty</code>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        HTTP bindings
-      </th>
-      <td>
-        <p><code>PUT</code> <code>/api/v3/clients/{client_ids.client_id}/collaborators</code></p>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
-
-
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Method
-      </th>
-      <td>
-        <code>ClientAccess.ListCollaborators</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-        List the collaborators on this OAuth client.
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Request type
-      </th>
-      <td>
-        <a href="#message:ListClientCollaboratorsRequest"><code>ListClientCollaboratorsRequest</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Response type
-      </th>
-      <td>
-        <a href="#message:Collaborators"><code>Collaborators</code></a>
-        
-      </td>
-    </tr>
-    <tr>
-      <th>
-        HTTP bindings
-      </th>
-      <td>
-        <p><code>GET</code> <code>/api/v3/clients/{client_ids.client_id}/collaborators</code></p>
+        <p><code>PATCH</code> <code>/api/v3/contact_info/validation</code></p>
       </td>
     </tr>
   </tbody>
@@ -954,7 +644,7 @@ The caller is required to have all assigned or/and removed rights.
         Method
       </th>
       <td>
-        <code>EntityRegistrySearch.SearchClients</code>
+        <code>EntityRegistrySearch.SearchAccounts</code>
       </td>
     </tr>
     <tr>
@@ -962,8 +652,7 @@ The caller is required to have all assigned or/and removed rights.
         Description
       </th>
       <td>
-        Search for OAuth clients that match the conditions specified in the request.
-Non-admin users will only match OAuth clients that they have rights on.
+        Search for accounts that match the conditions specified in the request.
       </td>
     </tr>
     <tr>
@@ -971,7 +660,7 @@ Non-admin users will only match OAuth clients that they have rights on.
         Request type
       </th>
       <td>
-        <a href="#message:SearchClientsRequest"><code>SearchClientsRequest</code></a>
+        <a href="#message:SearchAccountsRequest"><code>SearchAccountsRequest</code></a>
         
       </td>
     </tr>
@@ -980,7 +669,7 @@ Non-admin users will only match OAuth clients that they have rights on.
         Response type
       </th>
       <td>
-        <a href="#message:Clients"><code>Clients</code></a>
+        <a href="#message:SearchAccountsResponse"><code>SearchAccountsResponse</code></a>
         
       </td>
     </tr>
@@ -989,7 +678,315 @@ Non-admin users will only match OAuth clients that they have rights on.
         HTTP bindings
       </th>
       <td>
-        <p><code>GET</code> <code>/api/v3/search/clients</code></p>
+        <p><code>GET</code> <code>/api/v3/search/accounts</code></p>
+        <p><code>GET</code> <code>/api/v3/applications/{application_ids.application_id}/collaborators/search</code></p>
+        <p><code>GET</code> <code>/api/v3/clients/{client_ids.client_id}/collaborators/search</code></p>
+        <p><code>GET</code> <code>/api/v3/gateways/{gateway_ids.gateway_id}/collaborators/search</code></p>
+        <p><code>GET</code> <code>/api/v3/organizations/{organization_ids.organization_id}/collaborators/search</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="the-entityaccess-service">The <code>EntityAccess</code> service</h2>
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>EntityAccess.AuthInfo</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        AuthInfo returns information about the authentication that is used on the request.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:AuthInfoResponse"><code>AuthInfoResponse</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/auth_info</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="the-is-service">The <code>Is</code> service</h2>
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Is.GetConfiguration</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Get the configuration of the Identity Server. The response is typically used
+to enable or disable features in a user interface.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GetIsConfigurationRequest"><code>GetIsConfigurationRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:GetIsConfigurationResponse"><code>GetIsConfigurationResponse</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/is/configuration</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="the-oauthauthorizationregistry-service">The <code>OAuthAuthorizationRegistry</code> service</h2>
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OAuthAuthorizationRegistry.List</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        List OAuth clients that are authorized by the user.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:ListOAuthClientAuthorizationsRequest"><code>ListOAuthClientAuthorizationsRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:OAuthClientAuthorizations"><code>OAuthClientAuthorizations</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/users/{user_ids.user_id}/authorizations</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OAuthAuthorizationRegistry.ListTokens</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        List OAuth access tokens issued to the OAuth client on behalf of the user.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:ListOAuthAccessTokensRequest"><code>ListOAuthAccessTokensRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:OAuthAccessTokens"><code>OAuthAccessTokens</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/users/{user_ids.user_id}/authorizations/{client_ids.client_id}/tokens</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OAuthAuthorizationRegistry.Delete</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Delete (de-authorize) an OAuth client for the user.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:OAuthClientAuthorizationIdentifiers"><code>OAuthClientAuthorizationIdentifiers</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>DELETE</code> <code>/api/v3/users/{user_ids.user_id}/authorizations/{client_ids.client_id}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>OAuthAuthorizationRegistry.DeleteToken</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Delete (invalidate) an OAuth access token.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:OAuthAccessTokenIdentifiers"><code>OAuthAccessTokenIdentifiers</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>DELETE</code> <code>/api/v3/users/{user_ids.user_id}/authorizations/{client_ids.client_id}/tokens/{id}</code></p>
       </td>
     </tr>
   </tbody>
@@ -997,30 +994,16 @@ Non-admin users will only match OAuth clients that they have rights on.
 
 <h2 id="messages">Messages</h2>
 
-<h3 id="message:Client">Message <code>Client</code></h3>
-<p>An OAuth client on the network.</p>
+<h3 id="message:AuthenticationProvider">Message <code>AuthenticationProvider</code></h3>
 
 <details><summary>Show object example</summary>
 <pre><code>{
   "ids": {},
   "created_at": "0001-01-01T00:00:00Z",
   "updated_at": "0001-01-01T00:00:00Z",
-  "deleted_at": "0001-01-01T00:00:00Z",
   "name": "",
-  "description": "",
-  "attributes": {},
-  "contact_info": [],
-  "administrative_contact": {},
-  "technical_contact": {},
-  "secret": "",
-  "redirect_uris": [],
-  "logout_redirect_uris": [],
-  "state": "STATE_REQUESTED",
-  "state_description": "",
-  "skip_authorization": false,
-  "endorsed": false,
-  "grants": [],
-  "rights": [],
+  "allow_registrations": false,
+  "configuration": {},
 }</code></pre>
 </details>
 
@@ -1048,11 +1031,11 @@ Non-admin users will only match OAuth clients that they have rights on.
         
   
     
-    <a href="#message:ClientIdentifiers">
+    <a href="#message:AuthenticationProviderIdentifiers">
   
   <code>
     
-    ClientIdentifiers
+    AuthenticationProviderIdentifiers
   </code>
   
     </a>
@@ -1065,7 +1048,6 @@ Non-admin users will only match OAuth clients that they have rights on.
         Description
       </th>
       <td>
-          <p>The identifiers of the OAuth client. These are public and can be seen by any authenticated user in the network.</p>
           <p><code>required</code></p>
       </td>
     </tr>
@@ -1103,15 +1085,6 @@ Non-admin users will only match OAuth clients that they have rights on.
 </td>
     </tr>
     
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>When the OAuth client was created. This information is public and can be seen by any authenticated user in the network.</p>
-      </td>
-    </tr>
-    
   </tbody>
 </table>
 
@@ -1145,57 +1118,6 @@ Non-admin users will only match OAuth clients that they have rights on.
 </td>
     </tr>
     
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>When the OAuth client was last updated. This information is public and can be seen by any authenticated user in the network.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>deleted_at</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-        
-  
-  <code>
-    
-      google.protobuf.
-    
-    Timestamp
-  </code>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>When the OAuth client was deleted. This information is public and can be seen by any authenticated user in the network.</p>
-      </td>
-    </tr>
-    
   </tbody>
 </table>
 
@@ -1225,7 +1147,6 @@ Non-admin users will only match OAuth clients that they have rights on.
         Description
       </th>
       <td>
-          <p>The name of the OAuth client. This information is public and can be seen by any authenticated user in the network.</p>
           <p><code>max_len</code>: <code>50</code></p>
       </td>
     </tr>
@@ -1240,414 +1161,7 @@ Non-admin users will only match OAuth clients that they have rights on.
         Field
       </th>
       <td>
-        <code>description</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>A description for the OAuth client. This information is public and can be seen by any authenticated user in the network.</p>
-          <p><code>max_len</code>: <code>2000</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>attributes</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        map of 
-  <code>string</code>
- to 
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Key-value attributes for this client. Typically used for organizing clients or for storing integration-specific data.</p>
-          <p><code>max_pairs</code>: <code>10</code></p>
-            <p><code>max_len</code> (key): <code>36</code></p>
-            <p><code>pattern</code> (key): <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
-        
-            <p><code>max_len</code> (value): <code>200</code></p>
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>contact_info</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-          
-              
-                
-              
-          
-        
-        repeated 
-  
-    
-    <a href="#message:ContactInfo">
-  
-  <code>
-    
-    ContactInfo
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Contact information for this client. Typically used to indicate who to contact with technical/security questions about the application.
-This information is public and can be seen by any authenticated user in the network.
-This field is deprecated. Use administrative_contact and technical_contact instead.</p>
-          <p><code>max_items</code>: <code>10</code></p>
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>administrative_contact</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:OrganizationOrUserIdentifiers">
-  
-  <code>
-    
-    OrganizationOrUserIdentifiers
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>technical_contact</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:OrganizationOrUserIdentifiers">
-  
-  <code>
-    
-    OrganizationOrUserIdentifiers
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>secret</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The client secret is only visible to collaborators of the client.</p>
-          <p><code>max_len</code>: <code>128</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>redirect_uris</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-          
-        
-        repeated 
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The allowed redirect URIs against which authorization requests are checked.
-If the authorization request does not pass a redirect URI, the first one
-from this list is taken.
-This information is public and can be seen by any authenticated user in the network.</p>
-          <p><code>max_items</code>: <code>10</code></p>
-            <p><code>max_len</code>: <code>128</code></p>
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>logout_redirect_uris</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-          
-        
-        repeated 
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The allowed logout redirect URIs against which client initiated logout
-requests are checked. If the authorization request does not pass a redirect
-URI, the first one from this list is taken.
-This information is public and can be seen by any authenticated user in the network.</p>
-          <p><code>max_items</code>: <code>10</code></p>
-            <p><code>max_len</code>: <code>128</code></p>
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>state</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#enum:State">
-  
-  <code>
-  
-  State
-  </code>
-    
-  </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The reviewing state of the client.
-This information is public and can be seen by any authenticated user in the network.
-This field can only be modified by admins.
-If state_description is not updated when updating state, state_description is cleared.</p>
-          <p><code>defined_only</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>state_description</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>A description for the state field.
-This field can only be modified by admins, and should typically only be updated
-when also updating <code>state</code>.</p>
-          <p><code>max_len</code>: <code>128</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>skip_authorization</code>
+        <code>allow_registrations</code>
       </td>
     </tr>
     <tr>
@@ -1661,17 +1175,6 @@ when also updating <code>state</code>.</p>
 </td>
     </tr>
     
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>If set, the authorization page will be skipped.
-This information is public and can be seen by any authenticated user in the network.
-This field can only be modified by admins.</p>
-      </td>
-    </tr>
-    
   </tbody>
 </table>
 
@@ -1682,7 +1185,7 @@ This field can only be modified by admins.</p>
         Field
       </th>
       <td>
-        <code>endorsed</code>
+        <code>configuration</code>
       </td>
     </tr>
     <tr>
@@ -1692,77 +1195,42 @@ This field can only be modified by admins.</p>
       <td>
         
         
-  <code>bool</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>If set, the authorization page will show endorsement.
-This information is public and can be seen by any authenticated user in the network.
-This field can only be modified by admins.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>grants</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-          
+            
               
-                
-              
-          
+            
         
-        repeated 
   
     
-    <a href="#enum:GrantType">
+    <a href="#message:AuthenticationProvider.Configuration">
   
   <code>
-  
-  GrantType
-  </code>
     
-  </a>
+    AuthenticationProvider.Configuration
+  </code>
+  
+    </a>
   
 </td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>OAuth flows that can be used for the client to get a token.
-This information is public and can be seen by any authenticated user in the network.
-After a client is created, this field can only be modified by admins.</p>
-            <p><code>defined_only</code></p>
-        
-      </td>
     </tr>
     
   </tbody>
 </table>
 
+
+
+<h3 id="message:AuthenticationProvider.Configuration">Message <code>AuthenticationProvider.Configuration</code></h3>
+<b>Restrictions:</b>
+<ul>
+  <li>Only one of <code>oidc</code> can be set.</li>
+</ul>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "oidc": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
 <table class="api">
   <tbody>
     <tr>
@@ -1770,7 +1238,7 @@ After a client is created, this field can only be modified by admins.</p>
         Field
       </th>
       <td>
-        <code>rights</code>
+        <code>oidc</code>
       </td>
     </tr>
     <tr>
@@ -1779,39 +1247,23 @@ After a client is created, this field can only be modified by admins.</p>
       </th>
       <td>
         
-          
-              
-                
-              
-          
         
-        repeated 
+            
+              
+            
+        
   
     
-    <a href="#enum:Right">
+    <a href="#message:AuthenticationProvider.OIDC">
   
   <code>
-  
-  Right
-  </code>
     
-  </a>
+    AuthenticationProvider.OIDC
+  </code>
+  
+    </a>
   
 </td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Rights denotes what rights the client will have access to.
-This information is public and can be seen by any authenticated user in the network.
-Users that previously authorized this client will have to re-authorize the
-client after rights are added to this list.</p>
-            <p><code>defined_only</code></p>
-        
-      </td>
     </tr>
     
   </tbody>
@@ -1819,11 +1271,13 @@ client after rights are added to this list.</p>
 
 
 
-<h3 id="message:ClientIdentifiers">Message <code>ClientIdentifiers</code></h3>
+<h3 id="message:AuthenticationProvider.OIDC">Message <code>AuthenticationProvider.OIDC</code></h3>
 
 <details><summary>Show object example</summary>
 <pre><code>{
   "client_id": "",
+  "client_secret": "",
+  "provider_url": "",
 }</code></pre>
 </details>
 
@@ -1849,13 +1303,60 @@ client after rights are added to this list.</p>
 </td>
     </tr>
     
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>client_secret</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>provider_url</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
     <tr>
       <th>
         Description
       </th>
       <td>
-          <p><code>max_len</code>: <code>36</code></p>
-          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+          <p><code>uri</code></p>
       </td>
     </tr>
     
@@ -1864,12 +1365,11 @@ client after rights are added to this list.</p>
 
 
 
-<h3 id="message:CreateClientRequest">Message <code>CreateClientRequest</code></h3>
+<h3 id="message:AuthenticationProviders">Message <code>AuthenticationProviders</code></h3>
 
 <details><summary>Show object example</summary>
 <pre><code>{
-  "client": {},
-  "collaborator": {},
+  "providers": [],
 }</code></pre>
 </details>
 
@@ -1881,161 +1381,7 @@ client after rights are added to this list.</p>
         Field
       </th>
       <td>
-        <code>client</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:Client">
-  
-  <code>
-    
-    Client
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><code>required</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>collaborator</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:OrganizationOrUserIdentifiers">
-  
-  <code>
-    
-    OrganizationOrUserIdentifiers
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Collaborator to grant all rights on the newly created client.</p>
-          <p><code>required</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:Collaborator">Message <code>Collaborator</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "ids": {},
-  "rights": [],
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>ids</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:OrganizationOrUserIdentifiers">
-  
-  <code>
-    
-    OrganizationOrUserIdentifiers
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><code>required</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>rights</code>
+        <code>providers</code>
       </td>
     </tr>
     <tr>
@@ -2053,14 +1399,14 @@ client after rights are added to this list.</p>
         repeated 
   
     
-    <a href="#enum:Right">
+    <a href="#message:AuthenticationProvider">
   
   <code>
-  
-  Right
-  </code>
     
-  </a>
+    AuthenticationProvider
+  </code>
+  
+    </a>
   
 </td>
     </tr>
@@ -2070,8 +1416,65 @@ client after rights are added to this list.</p>
         Description
       </th>
       <td>
-            <p><code>defined_only</code></p>
         
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:CreateAuthenticationProviderRequest">Message <code>CreateAuthenticationProviderRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "provider": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>provider</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:AuthenticationProvider">
+  
+  <code>
+    
+    AuthenticationProvider
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
       </td>
     </tr>
     
@@ -2279,16 +1682,501 @@ client after rights are added to this list.</p>
 
 
 
-<h3 id="message:DeleteClientCollaboratorRequest">Message <code>DeleteClientCollaboratorRequest</code></h3>
+<h3 id="message:ContactInfoValidation">Message <code>ContactInfoValidation</code></h3>
 
 <details><summary>Show object example</summary>
 <pre><code>{
-  "client_ids": {},
-  "collaborator_ids": {},
+  "id": "",
+  "token": "",
+  "entity": {},
+  "contact_info": [],
+  "created_at": "0001-01-01T00:00:00Z",
+  "expires_at": "0001-01-01T00:00:00Z",
 }</code></pre>
 </details>
 
 <p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>64</code></p>
+          <p><code>min_len</code>: <code>1</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>token</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>64</code></p>
+          <p><code>min_len</code>: <code>1</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>entity</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:EntityIdentifiers">
+  
+  <code>
+    
+    EntityIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>contact_info</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:ContactInfo">
+  
+  <code>
+    
+    ContactInfo
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>created_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>expires_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:EndDeviceIdentifiers">Message <code>EndDeviceIdentifiers</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "device_id": "",
+  "application_ids": {},
+  "dev_eui": "",
+  "join_eui": "",
+  "dev_addr": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>device_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>application_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ApplicationIdentifiers">
+  
+  <code>
+    
+    ApplicationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>dev_eui</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The LoRaWAN DevEUI.</p>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>8</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>join_eui</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The LoRaWAN JoinEUI (AppEUI until LoRaWAN 1.0.3 end devices).</p>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>8</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>dev_addr</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The LoRaWAN DevAddr.</p>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>4</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:EntityIdentifiers">Message <code>EntityIdentifiers</code></h3>
+<p>EntityIdentifiers contains one of the possible entity identifiers.</p>
+<b>Restrictions:</b>
+<ul>
+  <li>Only one of <code>application_ids</code>, <code>client_ids</code>, <code>device_ids</code>, <code>gateway_ids</code>, <code>organization_ids</code>, <code>user_ids</code> can be set.</li>
+</ul>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "application_ids": {},
+  "client_ids": {},
+  "device_ids": {},
+  "gateway_ids": {},
+  "organization_ids": {},
+  "user_ids": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>application_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ApplicationIdentifiers">
+  
+  <code>
+    
+    ApplicationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
 <table class="api">
   <tbody>
     <tr>
@@ -2324,15 +2212,6 @@ client after rights are added to this list.</p>
 </td>
     </tr>
     
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><code>required</code></p>
-      </td>
-    </tr>
-    
   </tbody>
 </table>
 
@@ -2343,7 +2222,7 @@ client after rights are added to this list.</p>
         Field
       </th>
       <td>
-        <code>collaborator_ids</code>
+        <code>device_ids</code>
       </td>
     </tr>
     <tr>
@@ -2359,11 +2238,11 @@ client after rights are added to this list.</p>
         
   
     
-    <a href="#message:OrganizationOrUserIdentifiers">
+    <a href="#message:EndDeviceIdentifiers">
   
   <code>
     
-    OrganizationOrUserIdentifiers
+    EndDeviceIdentifiers
   </code>
   
     </a>
@@ -2371,13 +2250,118 @@ client after rights are added to this list.</p>
 </td>
     </tr>
     
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
     <tr>
-      <th>
-        Description
+      <th style="width: 150px">
+        Field
       </th>
       <td>
-          <p><code>required</code></p>
+        <code>gateway_ids</code>
       </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:GatewayIdentifiers">
+  
+  <code>
+    
+    GatewayIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organization_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationIdentifiers">
+  
+  <code>
+    
+    OrganizationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>user_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:UserIdentifiers">
+  
+  <code>
+    
+    UserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
     </tr>
     
   </tbody>
@@ -2385,117 +2369,11 @@ client after rights are added to this list.</p>
 
 
 
-<h3 id="message:GetClientCollaboratorRequest">Message <code>GetClientCollaboratorRequest</code></h3>
+<h3 id="message:GetAuthenticationProviderRequest">Message <code>GetAuthenticationProviderRequest</code></h3>
 
 <details><summary>Show object example</summary>
 <pre><code>{
-  "client_ids": {},
-  "collaborator": {},
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>client_ids</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:ClientIdentifiers">
-  
-  <code>
-    
-    ClientIdentifiers
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><code>required</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>collaborator</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:OrganizationOrUserIdentifiers">
-  
-  <code>
-    
-    OrganizationOrUserIdentifiers
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><code>required</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:GetClientRequest">Message <code>GetClientRequest</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "client_ids": {},
+  "ids": {},
   "field_mask": {},
 }</code></pre>
 </details>
@@ -2508,7 +2386,7 @@ client after rights are added to this list.</p>
         Field
       </th>
       <td>
-        <code>client_ids</code>
+        <code>ids</code>
       </td>
     </tr>
     <tr>
@@ -2524,11 +2402,11 @@ client after rights are added to this list.</p>
         
   
     
-    <a href="#message:ClientIdentifiers">
+    <a href="#message:AuthenticationProviderIdentifiers">
   
   <code>
     
-    ClientIdentifiers
+    AuthenticationProviderIdentifiers
   </code>
   
     </a>
@@ -2578,83 +2456,23 @@ client after rights are added to this list.</p>
 </td>
     </tr>
     
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The names of the client fields that should be returned.</p>
-      </td>
-    </tr>
-    
   </tbody>
 </table>
 
 
 
-<h3 id="message:ListClientsRequest">Message <code>ListClientsRequest</code></h3>
+<h3 id="message:ListAuthenticationProvidersRequest">Message <code>ListAuthenticationProvidersRequest</code></h3>
 
 <details><summary>Show object example</summary>
 <pre><code>{
-  "collaborator": {},
   "field_mask": {},
   "order": "",
   "limit": 0,
   "page": 0,
-  "deleted": false,
 }</code></pre>
 </details>
 
 <p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>collaborator</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:OrganizationOrUserIdentifiers">
-  
-  <code>
-    
-    OrganizationOrUserIdentifiers
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>By default we list all OAuth clients the caller has rights on.
-Set the user or the organization (not both) to instead list the OAuth clients
-where the user or organization is collaborator on.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
 <table class="api">
   <tbody>
     <tr>
@@ -2683,15 +2501,6 @@ where the user or organization is collaborator on.</p>
   </code>
   
 </td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The names of the client fields that should be returned.</p>
-      </td>
     </tr>
     
   </tbody>
@@ -2725,7 +2534,7 @@ where the user or organization is collaborator on.</p>
       <td>
           <p>Order the results by this field path (must be present in the field mask).
 Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
-          <p><code>in</code>: <code>[ client_id -client_id name -name created_at -created_at]</code></p>
+          <p><code>in</code>: <code>[ provider_id -provider_id name -name created_at -created_at]</code></p>
       </td>
     </tr>
     
@@ -2799,6 +2608,18 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
   </tbody>
 </table>
 
+
+
+<h3 id="message:UpdateAuthenticationProviderRequest">Message <code>UpdateAuthenticationProviderRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "provider": {},
+  "field_mask": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
 <table class="api">
   <tbody>
     <tr>
@@ -2806,7 +2627,677 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
         Field
       </th>
       <td>
-        <code>deleted</code>
+        <code>provider</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:AuthenticationProvider">
+  
+  <code>
+    
+    AuthenticationProvider
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>field_mask</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    FieldMask
+  </code>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:AuthenticationProviderIdentifiers">Message <code>AuthenticationProviderIdentifiers</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "provider_id": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>provider_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:APIKey">Message <code>APIKey</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "id": "",
+  "key": "",
+  "name": "",
+  "rights": [],
+  "created_at": "0001-01-01T00:00:00Z",
+  "updated_at": "0001-01-01T00:00:00Z",
+  "expires_at": "0001-01-01T00:00:00Z",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Immutable and unique public identifier for the API key.
+Generated by the Access Server.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>key</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Immutable and unique secret value of the API key.
+Generated by the Access Server.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>name</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>User-defined (friendly) name for the API key.</p>
+          <p><code>max_len</code>: <code>50</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>rights</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#enum:Right">
+  
+  <code>
+  
+  Right
+  </code>
+    
+  </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Rights that are granted to this API key.</p>
+            <p><code>defined_only</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>created_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>updated_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>expires_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>gt_now</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:ApplicationIdentifiers">Message <code>ApplicationIdentifiers</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "application_id": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>application_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:AuthInfoResponse">Message <code>AuthInfoResponse</code></h3>
+<b>Restrictions:</b>
+<ul>
+  <li>Only one of <code>api_key</code>, <code>oauth_access_token</code>, <code>user_session</code>, <code>gateway_token</code> can be set.</li>
+</ul>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "api_key": {},
+  "oauth_access_token": {},
+  "user_session": {},
+  "gateway_token": {},
+  "universal_rights": {},
+  "is_admin": false,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>api_key</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:AuthInfoResponse.APIKeyAccess">
+  
+  <code>
+    
+    AuthInfoResponse.APIKeyAccess
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>oauth_access_token</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OAuthAccessToken">
+  
+  <code>
+    
+    OAuthAccessToken
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>user_session</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:UserSession">
+  
+  <code>
+    
+    UserSession
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Warning: A user authorized by session cookie will be granted all
+current and future rights. When using this auth type, the respective
+handlers need to ensure thorough CSRF and CORS protection using
+appropriate middleware.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>gateway_token</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:AuthInfoResponse.GatewayToken">
+  
+  <code>
+    
+    AuthInfoResponse.GatewayToken
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>universal_rights</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:Rights">
+  
+  <code>
+    
+    Rights
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>is_admin</code>
       </td>
     </tr>
     <tr>
@@ -2820,12 +3311,109 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
 </td>
     </tr>
     
+  </tbody>
+</table>
+
+
+
+<h3 id="message:AuthInfoResponse.APIKeyAccess">Message <code>AuthInfoResponse.APIKeyAccess</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "api_key": {},
+  "entity_ids": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>api_key</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:APIKey">
+  
+  <code>
+    
+    APIKey
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
     <tr>
       <th>
         Description
       </th>
       <td>
-          <p>Only return recently deleted clients.</p>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>entity_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:EntityIdentifiers">
+  
+  <code>
+    
+    EntityIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
       </td>
     </tr>
     
@@ -2834,18 +3422,317 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
 
 
 
-<h3 id="message:ListClientCollaboratorsRequest">Message <code>ListClientCollaboratorsRequest</code></h3>
+<h3 id="message:AuthInfoResponse.GatewayToken">Message <code>AuthInfoResponse.GatewayToken</code></h3>
 
 <details><summary>Show object example</summary>
 <pre><code>{
-  "client_ids": {},
-  "limit": 0,
-  "page": 0,
-  "order": "",
+  "gateway_ids": {},
+  "rights": [],
 }</code></pre>
 </details>
 
 <p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>gateway_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:GatewayIdentifiers">
+  
+  <code>
+    
+    GatewayIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>rights</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#enum:Right">
+  
+  <code>
+  
+  Right
+  </code>
+    
+  </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:ClientIdentifiers">Message <code>ClientIdentifiers</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "client_id": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>client_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:GatewayIdentifiers">Message <code>GatewayIdentifiers</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "gateway_id": "",
+  "eui": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>gateway_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>36</code></p>
+          <p><code>pattern</code>: <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>eui</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Secondary identifier, which can only be used in specific requests.</p>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>8</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:GetIsConfigurationRequest">Message <code>GetIsConfigurationRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+
+
+<h3 id="message:GetIsConfigurationRequest">Message <code>GetIsConfigurationRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+
+
+<h3 id="message:OAuthClientAuthorizationIdentifiers">Message <code>OAuthClientAuthorizationIdentifiers</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "user_ids": {},
+  "client_ids": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>user_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:UserIdentifiers">
+  
+  <code>
+    
+    UserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
 <table class="api">
   <tbody>
     <tr>
@@ -2887,6 +3774,102 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
       </th>
       <td>
           <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:ListOAuthClientAuthorizationsRequest">Message <code>ListOAuthClientAuthorizationsRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "user_ids": {},
+  "order": "",
+  "limit": 0,
+  "page": 0,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>user_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:UserIdentifiers">
+  
+  <code>
+    
+    UserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>order</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Order the results by this field path (must be present in the field mask).
+Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
+          <p><code>in</code>: <code>[ created_at -created_at]</code></p>
       </td>
     </tr>
     
@@ -2960,6 +3943,115 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
   </tbody>
 </table>
 
+
+
+<h3 id="message:ListOAuthAccessTokensRequest">Message <code>ListOAuthAccessTokensRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "user_ids": {},
+  "client_ids": {},
+  "order": "",
+  "limit": 0,
+  "page": 0,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>user_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:UserIdentifiers">
+  
+  <code>
+    
+    UserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>client_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ClientIdentifiers">
+  
+  <code>
+    
+    ClientIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
 <table class="api">
   <tbody>
     <tr>
@@ -2988,7 +4080,882 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
       <td>
           <p>Order the results by this field path (must be present in the field mask).
 Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
-          <p><code>in</code>: <code>[ id -id -rights rights]</code></p>
+          <p><code>in</code>: <code>[ created_at -created_at]</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>limit</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Limit the number of results per page.</p>
+          <p><code>lte</code>: <code>1000</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>page</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Page number for pagination. 0 is interpreted as 1.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:OAuthAccessToken">Message <code>OAuthAccessToken</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "user_ids": {},
+  "user_session_id": "",
+  "client_ids": {},
+  "id": "",
+  "access_token": "",
+  "refresh_token": "",
+  "rights": [],
+  "created_at": "0001-01-01T00:00:00Z",
+  "expires_at": "0001-01-01T00:00:00Z",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>user_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:UserIdentifiers">
+  
+  <code>
+    
+    UserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>user_session_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>64</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>client_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ClientIdentifiers">
+  
+  <code>
+    
+    ClientIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>access_token</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>refresh_token</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>rights</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#enum:Right">
+  
+  <code>
+  
+  Right
+  </code>
+    
+  </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>created_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>expires_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:OAuthAccessTokenIdentifiers">Message <code>OAuthAccessTokenIdentifiers</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "user_ids": {},
+  "client_ids": {},
+  "id": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>user_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:UserIdentifiers">
+  
+  <code>
+    
+    UserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>client_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ClientIdentifiers">
+  
+  <code>
+    
+    ClientIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:OAuthAccessTokens">Message <code>OAuthAccessTokens</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "tokens": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>tokens</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:OAuthAccessToken">
+  
+  <code>
+    
+    OAuthAccessToken
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:OAuthClientAuthorization">Message <code>OAuthClientAuthorization</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "user_ids": {},
+  "client_ids": {},
+  "rights": [],
+  "created_at": "0001-01-01T00:00:00Z",
+  "updated_at": "0001-01-01T00:00:00Z",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>user_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:UserIdentifiers">
+  
+  <code>
+    
+    UserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>client_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ClientIdentifiers">
+  
+  <code>
+    
+    ClientIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>rights</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#enum:Right">
+  
+  <code>
+  
+  Right
+  </code>
+    
+  </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>created_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>updated_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:OAuthClientAuthorizations">Message <code>OAuthClientAuthorizations</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "authorizations": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>authorizations</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:OAuthClientAuthorization">
+  
+  <code>
+    
+    OAuthClientAuthorization
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        
       </td>
     </tr>
     
@@ -3136,22 +5103,11 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
 
 
 
-<h3 id="message:SearchClientsRequest">Message <code>SearchClientsRequest</code></h3>
-<p>This message is used for finding OAuth clients in the EntityRegistrySearch service.</p>
+<h3 id="message:Rights">Message <code>Rights</code></h3>
 
 <details><summary>Show object example</summary>
 <pre><code>{
-  "query": "",
-  "id_contains": "",
-  "name_contains": "",
-  "description_contains": "",
-  "attributes_contain": {},
-  "state": [],
-  "field_mask": {},
-  "order": "",
-  "limit": 0,
-  "page": 0,
-  "deleted": false,
+  "rights": [],
 }</code></pre>
 </details>
 
@@ -3163,184 +5119,7 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
         Field
       </th>
       <td>
-        <code>query</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Find OAuth clients where the ID, name or description contains this substring.</p>
-          <p><code>max_len</code>: <code>50</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>id_contains</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Find OAuth clients where the ID contains this substring.</p>
-          <p><code>max_len</code>: <code>50</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>name_contains</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Find OAuth clients where the name contains this substring.</p>
-          <p><code>max_len</code>: <code>50</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>description_contains</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Find OAuth clients where the description contains this substring.</p>
-          <p><code>max_len</code>: <code>50</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>attributes_contain</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        map of 
-  <code>string</code>
- to 
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Find OAuth clients where the given attributes contain these substrings.</p>
-          <p><code>max_pairs</code>: <code>10</code></p>
-            <p><code>max_len</code> (key): <code>36</code></p>
-            <p><code>pattern</code> (key): <code>^[a-z0-9](?:[-]?[a-z0-9]){2,}$</code></p>
-        
-            <p><code>max_len</code> (value): <code>50</code></p>
-        
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>state</code>
+        <code>rights</code>
       </td>
     </tr>
     <tr>
@@ -3358,11 +5137,11 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
         repeated 
   
     
-    <a href="#enum:State">
+    <a href="#enum:Right">
   
   <code>
   
-  State
+  Right
   </code>
     
   </a>
@@ -3375,385 +5154,8 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
         Description
       </th>
       <td>
-          <p>Find OAuth clients where the state is any of these states.</p>
-          <p><code>unique</code></p>
             <p><code>defined_only</code></p>
         
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>field_mask</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-        
-  
-  <code>
-    
-      google.protobuf.
-    
-    FieldMask
-  </code>
-  
-</td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>order</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>string</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Order the results by this field path (must be present in the field mask).
-Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
-          <p><code>in</code>: <code>[ client_id -client_id name -name created_at -created_at]</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>limit</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint32</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Limit the number of results per page.</p>
-          <p><code>lte</code>: <code>1000</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>page</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>uint32</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Page number for pagination. 0 is interpreted as 1.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>deleted</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-  <code>bool</code>
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>Only return recently deleted OAuth clients.</p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:SetClientCollaboratorRequest">Message <code>SetClientCollaboratorRequest</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "client_ids": {},
-  "collaborator": {},
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>client_ids</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:ClientIdentifiers">
-  
-  <code>
-    
-    ClientIdentifiers
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><code>required</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>collaborator</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:Collaborator">
-  
-  <code>
-    
-    Collaborator
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><code>required</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-
-
-<h3 id="message:UpdateClientRequest">Message <code>UpdateClientRequest</code></h3>
-
-<details><summary>Show object example</summary>
-<pre><code>{
-  "client": {},
-  "field_mask": {},
-}</code></pre>
-</details>
-
-<p><b>Fields:</b></p>
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>client</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-              
-            
-        
-  
-    
-    <a href="#message:Client">
-  
-  <code>
-    
-    Client
-  </code>
-  
-    </a>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p><code>required</code></p>
-      </td>
-    </tr>
-    
-  </tbody>
-</table>
-
-<table class="api">
-  <tbody>
-    <tr>
-      <th style="width: 150px">
-        Field
-      </th>
-      <td>
-        <code>field_mask</code>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        Type
-      </th>
-      <td>
-        
-        
-            
-        
-  
-  <code>
-    
-      google.protobuf.
-    
-    FieldMask
-  </code>
-  
-</td>
-    </tr>
-    
-    <tr>
-      <th>
-        Description
-      </th>
-      <td>
-          <p>The names of the client fields that should be updated.</p>
       </td>
     </tr>
     
@@ -3841,7 +5243,524 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
 </table>
 
 
-<h2 id="enums">Enums</h2>
+
+<h3 id="message:UserSession">Message <code>UserSession</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "user_ids": {},
+  "session_id": "",
+  "created_at": "0001-01-01T00:00:00Z",
+  "updated_at": "0001-01-01T00:00:00Z",
+  "expires_at": "0001-01-01T00:00:00Z",
+  "session_secret": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>user_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:UserIdentifiers">
+  
+  <code>
+    
+    UserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>session_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>64</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>created_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>updated_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>expires_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>session_secret</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>The session secret is used to compose an authorization key and is never returned.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:SearchAccountsRequest">Message <code>SearchAccountsRequest</code></h3>
+<b>Restrictions:</b>
+<ul>
+  <li>Only one of <code>application_ids</code>, <code>client_ids</code>, <code>gateway_ids</code>, <code>organization_ids</code> can be set.</li>
+</ul>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "query": "",
+  "only_users": false,
+  "application_ids": {},
+  "client_ids": {},
+  "gateway_ids": {},
+  "organization_ids": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>query</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_len</code>: <code>50</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>only_users</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bool</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>application_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ApplicationIdentifiers">
+  
+  <code>
+    
+    ApplicationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>client_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:ClientIdentifiers">
+  
+  <code>
+    
+    ClientIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>gateway_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:GatewayIdentifiers">
+  
+  <code>
+    
+    GatewayIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>organization_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:OrganizationIdentifiers">
+  
+  <code>
+    
+    OrganizationIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:SearchAccountsResponse">Message <code>SearchAccountsResponse</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "account_ids": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>account_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:OrganizationOrUserIdentifiers">
+  
+  <code>
+    
+    OrganizationOrUserIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+<!-- ## Enums -->
 
 
 <h3 id="enum:ContactMethod">Enum <code>ContactMethod</code></h3>
@@ -3903,78 +5822,6 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
       <td><code>CONTACT_TYPE_TECHNICAL</code></td>
       <td><code>3</code></td>
       <td> </td>
-    </tr>
-  </tbody>
-</table>
-
-
-
-<h3 id="enum:GrantType">Enum <code>GrantType</code></h3>
-<p>The OAuth2 flows an OAuth client can use to get an access token.</p>
-<table class="api">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Value</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>GRANT_AUTHORIZATION_CODE</code></td>
-      <td><code>0</code></td>
-      <td> Grant type used to exchange an authorization code for an access token.</td>
-    </tr>
-    <tr>
-      <td><code>GRANT_PASSWORD</code></td>
-      <td><code>1</code></td>
-      <td> Grant type used to exchange a user ID and password for an access token.</td>
-    </tr>
-    <tr>
-      <td><code>GRANT_REFRESH_TOKEN</code></td>
-      <td><code>2</code></td>
-      <td> Grant type used to exchange a refresh token for an access token.</td>
-    </tr>
-  </tbody>
-</table>
-
-
-
-<h3 id="enum:State">Enum <code>State</code></h3>
-<p>State enum defines states that an entity can be in.</p>
-<table class="api">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Value</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><code>STATE_REQUESTED</code></td>
-      <td><code>0</code></td>
-      <td> Denotes that the entity has been requested and is pending review by an admin.</td>
-    </tr>
-    <tr>
-      <td><code>STATE_APPROVED</code></td>
-      <td><code>1</code></td>
-      <td> Denotes that the entity has been reviewed and approved by an admin.</td>
-    </tr>
-    <tr>
-      <td><code>STATE_REJECTED</code></td>
-      <td><code>2</code></td>
-      <td> Denotes that the entity has been reviewed and rejected by an admin.</td>
-    </tr>
-    <tr>
-      <td><code>STATE_FLAGGED</code></td>
-      <td><code>3</code></td>
-      <td> Denotes that the entity has been flagged and is pending review by an admin.</td>
-    </tr>
-    <tr>
-      <td><code>STATE_SUSPENDED</code></td>
-      <td><code>4</code></td>
-      <td> Denotes that the entity has been reviewed and suspended by an admin.</td>
     </tr>
   </tbody>
 </table>
@@ -4370,11 +6217,37 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 
 	
 
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
 
         </div>
         <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/reference/api/application_webhooks/">← Application Webhook APIs</a>
-<a class="button is-pulled-right" href="/docs/reference/api/crypto_operations/">Crypto Operations APIs →</a>
+<a class="button is-pulled-left" href="/docs/reference/api/gateway_server_mqtt/">← Gateway Server MQTT</a>
+<a class="button is-pulled-right" href="/docs/reference/api/join_server/">Join Server APIs →</a>
 </div>
 
         <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
@@ -4395,19 +6268,25 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
   <ul class="menu-list">
     
       
-      <li><a href='#the-clientregistry-service'>The ClientRegistry service</a></li>
+      <li><a href='#the-authenticationproviderregistry-service'>The AuthenticationProviderRegistry service</a></li>
     
       
-      <li><a href='#the-clientaccess-service'>The ClientAccess service</a></li>
+      <li><a href='#the-contactinforegistry-service'>The ContactInfoRegistry service</a></li>
     
       
       <li><a href='#the-entityregistrysearch-service'>The EntityRegistrySearch service</a></li>
     
       
-      <li><a href='#messages'>Messages</a></li>
+      <li><a href='#the-entityaccess-service'>The EntityAccess service</a></li>
     
       
-      <li><a href='#enums'>Enums</a></li>
+      <li><a href='#the-is-service'>The Is service</a></li>
+    
+      
+      <li><a href='#the-oauthauthorizationregistry-service'>The OAuthAuthorizationRegistry service</a></li>
+    
+      
+      <li><a href='#messages'>Messages</a></li>
     
   </ul>
 

@@ -143,6 +143,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
+    <a href="https://www.thethingsindustries.com/docs/reference/api/crypto_operations/" class="">Crypto Operations APIs</a>
+    
+  </li>
+
+  <li>
     <a href="https://www.thethingsindustries.com/docs/reference/api/end_device/" class="">End Device APIs</a>
     
   </li>
@@ -173,6 +178,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
+    <a href="https://www.thethingsindustries.com/docs/reference/api/identity_server/" class="">Identity Server APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/reference/api/join_server/" class="">Join Server APIs</a>
+    
+  </li>
+
+  <li>
     <a href="https://www.thethingsindustries.com/docs/reference/api/network_operations_center/" class="">Network Operations Center APIs</a>
     
   </li>
@@ -184,6 +199,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
   <li>
     <a href="https://www.thethingsindustries.com/docs/reference/api/organization/" class="">Organization APIs</a>
+    
+  </li>
+
+  <li>
+    <a href="https://www.thethingsindustries.com/docs/reference/api/packet_broker/" class="">Packet Broker APIs</a>
     
   </li>
 
@@ -1291,6 +1311,50 @@ The caller is required to have all assigned or/and removed rights.
         Method
       </th>
       <td>
+        <code>Configuration.ListBands</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:ListBandsRequest"><code>ListBandsRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:ListBandsResponse"><code>ListBandsResponse</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/configuration/bands</code></p>
+        <p><code>GET</code> <code>/api/v3/configuration/bands/{band_id}</code></p>
+        <p><code>GET</code> <code>/api/v3/configuration/bands/{band_id}/{phy_version}</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
         <code>Configuration.ListFrequencyPlans</code>
       </td>
     </tr>
@@ -1318,6 +1382,56 @@ The caller is required to have all assigned or/and removed rights.
       </th>
       <td>
         <p><code>GET</code> <code>/api/v3/configuration/frequency-plans</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Configuration.GetPhyVersions</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Returns a list of supported LoRaWAN PHY Versions for the given Band ID.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:GetPhyVersionsRequest"><code>GetPhyVersionsRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:GetPhyVersionsResponse"><code>GetPhyVersionsResponse</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/configuration/phy-versions</code></p>
       </td>
     </tr>
   </tbody>
@@ -5958,6 +6072,146 @@ Requires the RIGHT_GATEWAY_READ_SECRETS for reading and RIGHT_GATEWAY_WRITE_SECR
 
 
 
+<h3 id="message:GetPhyVersionsRequest">Message <code>GetPhyVersionsRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "band_id": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>band_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Optional Band ID to filter the results.
+If unused, all supported Bands and their versions are returned.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:ListBandsRequest">Message <code>ListBandsRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "band_id": "",
+  "phy_version": "PHY_UNKNOWN",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>band_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Optional Band ID to filter the results.
+If unused, all supported Bands are returned.</p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>phy_version</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#enum:PHYVersion">
+  
+  <code>
+  
+  PHYVersion
+  </code>
+    
+  </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Optional PHY version to filter the results.
+If unused, all supported versions are returned.</p>
+          <p><code>defined_only</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
 <h3 id="message:ListFrequencyPlansRequest">Message <code>ListFrequencyPlansRequest</code></h3>
 
 <details><summary>Show object example</summary>
@@ -8132,6 +8386,121 @@ Default ordering is by ID. Prepend with a minus (-) to reverse the order.</p>
 
 
 
+<h3 id="enum:PHYVersion">Enum <code>PHYVersion</code></h3>
+<table class="api">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>PHY_UNKNOWN</code></td>
+      <td><code>0</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>PHY_V1_0</code></td>
+      <td><code>1</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>TS001_V1_0</code></td>
+      <td><code>1</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>PHY_V1_0_1</code></td>
+      <td><code>2</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>TS001_V1_0_1</code></td>
+      <td><code>2</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>PHY_V1_0_2_REV_A</code></td>
+      <td><code>3</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>RP001_V1_0_2</code></td>
+      <td><code>3</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>PHY_V1_0_2_REV_B</code></td>
+      <td><code>4</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>RP001_V1_0_2_REV_B</code></td>
+      <td><code>4</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>PHY_V1_1_REV_A</code></td>
+      <td><code>5</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>RP001_V1_1_REV_A</code></td>
+      <td><code>5</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>PHY_V1_1_REV_B</code></td>
+      <td><code>6</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>RP001_V1_1_REV_B</code></td>
+      <td><code>6</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>PHY_V1_0_3_REV_A</code></td>
+      <td><code>7</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>RP001_V1_0_3_REV_A</code></td>
+      <td><code>7</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>RP002_V1_0_0</code></td>
+      <td><code>8</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>RP002_V1_0_1</code></td>
+      <td><code>9</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>RP002_V1_0_2</code></td>
+      <td><code>10</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>RP002_V1_0_3</code></td>
+      <td><code>11</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td><code>RP002_V1_0_4</code></td>
+      <td><code>12</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
 <h3 id="enum:Right">Enum <code>Right</code></h3>
 <p>Right is the enum that defines all the different rights to do something in the network.</p>
 <table class="api">
@@ -8478,6 +8847,12 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 
 
 
+
+	
+
+	
+
+	
 
 	
 

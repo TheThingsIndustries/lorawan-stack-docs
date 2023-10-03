@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>API | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/api/" />
+  <title>Join Server APIs | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/reference/api/join_server/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.fd3d59eb4852f5cc339297cb0cb5a6af3c7895bf80bc7bc02db7b78eadec7102.css" integrity="sha256-/T1Z60hS9cwzkpfLDLWmrzx4lb&#43;AvHvALbe3jq3scQI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="API">
+  <meta itemprop="name" content="Join Server APIs">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="API">
+  <meta property="og:title" content="Join Server APIs">
   <meta property="og:description" content="">
-  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/api/">
+  <meta property="og:url" content="https://www.thethingsindustries.com/docs/reference/api/join_server/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="API" />
+  <meta name="twitter:title" content="Join Server APIs" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -96,7 +96,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <a href="https://www.thethingsindustries.com/docs/reference/adr/" class="">Adaptive Data Rate</a>
   </li>
 <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/api/" class="is-active">API</a>
+    <a href="https://www.thethingsindustries.com/docs/reference/api/" class="">API</a>
     
 
 
@@ -178,7 +178,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/reference/api/join_server/" class="">Join Server APIs</a>
+    <a href="https://www.thethingsindustries.com/docs/reference/api/join_server/" class="is-active">Join Server APIs</a>
+    
+    
+
+
+
     
   </li>
 
@@ -311,41 +316,303 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">API
+        <h1 class="title is-size-2">Join Server APIs
           
         </h1>
         
         <div class="content">
-          <p>This is the reference for the gRPC and HTTP APIs that The Things Stack exposes.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The Things Stack API is different from V2 API. If migrating from V2, see <a href="https://www.thethingsindustries.com/docs/the-things-stack/migrating/migrating-from-v2/major-changes/">here</a> for an overview of changes.
-</div>
+          <h2 id="the-js-service">The <code>Js</code> service</h2>
 
-<h2 id="http-queries">HTTP Queries</h2>
-<h3 id="field-masks">Field Masks</h3>
-<p>The Things Stack APIs use field masks to specify a subset of fields that should be returned by a reading request, or to specify fields that should be updated in a writing request. See the <a href="/docs/reference/api/field-mask/">Field Masks section</a> to learn how they control which fields are returned in API requests.</p>
-<p>Fields may be specified in HTTP requests by appending them as query string parameters. For example, to request the <code>name</code>, <code>description</code>, and <code>locations</code> of devices in an <code>EndDeviceRegistry.Get</code> request, add these fields to the <code>field_mask</code> field. To get this data for device <code>dev1</code> in application <code>app1</code>:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">curl -i -H <span class="s2">&#34;Authorization: Bearer NNSXS.XXXXXXXXX&#34;</span> https://thethings.example.com/api/v3/applications/app1/devices/dev1?field_mask<span class="o">=</span>name,description,locations
-</span></span></code></pre></div><p>The <code>thethings.example.com</code> URL needs to be replaced with the address of your The Things Stack instance. See <a href="https://www.thethingsindustries.com/docs/the-things-stack/concepts/server-addresses/">Server Addresses</a> for a list of URLs for all deployments.</p>
-<h3 id="optional-fields">Optional Fields</h3>
-<p>Identifiers specified in the request URL do not need to be specified again in the message body. For example, <a href="reference/api/end_device/#message:GetEndDeviceRequest"><code>GetEndDeviceRequest</code></a> has an <code>end_device_ids</code> field and a <code>field_mask</code> field which are not required in the message body if they are specified in the URL. From the above example: <code>https://thethings.example.com/api/v3/applications/app1/devices/dev1?field_mask=name,description,locations</code> requests device <code>dev1</code> in application <code>app1</code> and so no message body is required. These message body fields are only used in gRPC requests.</p>
-<div class="notification is-info is-light has-text-dark">
-  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  Fields that are empty or zero are not returned in requests, even if they are specified in a field mask.
-</div>
 
-<p>If you are having trouble with the HTTP API, you can always inspect requests in the Console using your browser&rsquo;s inspector. All of the data displayed in the Console is pulled using HTTP API requests, and this should give you some insight in to how they are formed.</p>
-<h2 id="examples-and-troubleshooting">Examples and Troubleshooting</h2>
-<p>Examples, fixes for common errors and answers to FAQ are provided in the <a href="https://www.thethingsindustries.com/docs/the-things-stack/interact/api/">Using the API</a> Getting Started section.</p>
-        </div>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Js.GetJoinEUIPrefixes</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Request the JoinEUI prefixes that are configured for this Join Server.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
         
-          <div class="is-clearfix">
-<a class="button is-pulled-left" href="/docs/reference/adr/">← Adaptive Data Rate</a>
-<a class="button is-pulled-right" href="/docs/reference/api/authentication/">Authentication →</a>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:JoinEUIPrefixes"><code>JoinEUIPrefixes</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/js/join_eui_prefixes</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>Js.GetDefaultJoinEUI</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Request the default JoinEUI that is configured for this Join Server.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <a href="#message:GetDefaultJoinEUIResponse"><code>GetDefaultJoinEUIResponse</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/js/default_join_eui</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="messages">Messages</h2>
+
+<h3 id="message:JoinEUIPrefix">Message <code>JoinEUIPrefix</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "join_eui": "",
+  "length": 0,
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>join_eui</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>8</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>length</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>uint32</code>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:JoinEUIPrefixes">Message <code>JoinEUIPrefixes</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "prefixes": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>prefixes</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:JoinEUIPrefix">
+  
+  <code>
+    
+    JoinEUIPrefix
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:GetDefaultJoinEUIResponse">Message <code>GetDefaultJoinEUIResponse</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "join_eui": "",
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>join_eui</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>8</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+<h2 id="enums">Enums</h2>
+
+
+
+
+	
+
+
+        </div>
+        <div class="is-clearfix">
+<a class="button is-pulled-left" href="/docs/reference/api/identity_server/">← Identity Server APIs</a>
+<a class="button is-pulled-right" href="/docs/reference/api/network_operations_center/">Network Operations Center APIs →</a>
 </div>
 
-          <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
+        <script>window.emojicom_widget = { campaign: "NEDHszRC2r2KaGj1mhj7" };</script>
 <script src="https://cdn.emojicom.io/embed/widget.js" async></script>
 
 <div class='feedback has-vertical-space'>
@@ -363,10 +630,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   <ul class="menu-list">
     
       
-      <li><a href='#http-queries'>HTTP Queries</a></li>
+      <li><a href='#the-js-service'>The Js service</a></li>
     
       
-      <li><a href='#examples-and-troubleshooting'>Examples and Troubleshooting</a></li>
+      <li><a href='#messages'>Messages</a></li>
+    
+      
+      <li><a href='#enums'>Enums</a></li>
     
   </ul>
 
