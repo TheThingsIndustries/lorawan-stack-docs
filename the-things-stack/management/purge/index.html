@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>Purging Entities | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/management/purge/" />
+  <title>Deleting, Restoring and Purging Entities | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/the-things-stack/management/purge/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.fd3d59eb4852f5cc339297cb0cb5a6af3c7895bf80bc7bc02db7b78eadec7102.css" integrity="sha256-/T1Z60hS9cwzkpfLDLWmrzx4lb&#43;AvHvALbe3jq3scQI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Purging Entities">
+  <meta itemprop="name" content="Deleting, Restoring and Purging Entities">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Purging Entities">
+  <meta property="og:title" content="Deleting, Restoring and Purging Entities">
   <meta property="og:description" content="">
   <meta property="og:url" content="https://www.thethingsindustries.com/docs/the-things-stack/management/purge/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="Purging Entities" />
+  <meta name="twitter:title" content="Deleting, Restoring and Purging Entities" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -127,7 +127,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/the-things-stack/management/purge/" class="is-active">Purging Entities</a>
+    <a href="https://www.thethingsindustries.com/docs/the-things-stack/management/purge/" class="is-active">Deleting, Restoring and Purging Entities</a>
     
     
 
@@ -185,13 +185,95 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Purging Entities
+        <h1 class="title is-size-2">Deleting, Restoring and Purging Entities
           
         </h1>
         
         <div class="content">
-          <p>When entities are deleted, The Things Stack <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">retains some IDs</a> by default to prevent another user re-registering the ID and obtaining historical data.</p>
-<p>It is also possible for administrators to purge IDs so that they may be reused. This reference contains information about how to do this, and the implications of purging IDs.</p>
+          <p>When entities are deleted, The Things Stack <a href="https://www.thethingsindustries.com/docs/reference/id-eui-constraints/">retains some IDs</a> by default to prevent another user re-registering the ID and obtaining historical data. Deleted entities can be restored within a limited time period, but it is also possible for administrators to purge these entities, so that their IDs may be reused.</p>
+<p>This reference contains information about how to do delete, restore and purge entities.</p>
+<div class="notification is-info is-light has-text-dark">
+  <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
+  End devices cannot be soft deleted, i.e. once they are deleted, they cannot be restored anymore. Hence, information below regarding restoring and manual purging refers to other entities - applications, gateways, clients, users and organizations.
+</div>
+
+<h2 id="deleting-and-restoring-entities">Deleting and Restoring Entities</h2>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="console">
+      <a>
+        <span>Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="cli">
+      <a>
+        <span>CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="console">
+  <p>Go to the <strong>General Settings</strong> tab of the entity and click <strong>Delete</strong>.</p>
+<figure><img src="delete.png"/>
+</figure>
+<p>If you are an administrator, you will also be presented with the option to purge the entity. For implications of purging entities and other details, check <a href="#what-happens-to-purged-entities">sections below</a>.</p>
+</section>
+<section data-content="cli">
+  <p>To delete an end device (keep in mind the note above!):</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli applications delete --application-id &lt;application-id&gt; --device-id &lt;device-id&gt;
+</span></span></code></pre></div><p>To delete an application:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli applications delete --application-id &lt;application-id&gt;
+</span></span></code></pre></div><p>To delete a client:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli clients delete --client-id &lt;client-id&gt;
+</span></span></code></pre></div><p>To delete a gateway:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># By EUI</span>
+</span></span><span class="line"><span class="cl">ttn-lw-cli gateways delete --gateway-eui &lt;gateway-eui&gt;
+</span></span><span class="line"><span class="cl"><span class="c1"># Or by ID</span>
+</span></span><span class="line"><span class="cl">ttn-lw-cli gateways delete --gateway-id &lt;gateway-id&gt;
+</span></span></code></pre></div><p>To delete an organization:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli organizations delete --organization-id &lt;organization-id&gt;
+</span></span></code></pre></div><p>To delete a user:</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli users delete --user-id &lt;user-id&gt;
+</span></span></code></pre></div>
+</section>
+
+</div>
+
+<p>When entities are deleted, there is a default time period of 24h when an administrator can restore them. For The Things Stack Enterprise deployments, it is possible to configure this restoration period. For more info, check <a href="https://www.thethingsindustries.com/docs/reference/configuration/identity-server/#general-options">Identity Server Options</a>.</p>
+<p>Note again that restoring entities is not possible if they have been purged.</p>
+<div class="tabs is-boxed">
+  <ul>
+    
+    <li data-tab="console">
+      <a>
+        <span>Console</span>
+      </a>
+    </li>
+    
+    <li data-tab="cli">
+      <a>
+        <span>CLI</span>
+      </a>
+    </li>
+    
+  </ul>
+</div>
+<div class="tab-content content">
+  <section data-content="console">
+  <p>To restore an entity using the Console, navigate to the <strong>Deleted (Admin)</strong> tab for the entity of interest, and click <strong>Restore</strong>.</p>
+<figure><img src="restore-app.png"/>
+</figure>
+</section>
+<section data-content="cli">
+  To restore an entity using the CLI, just replace <code>delete</code> with <code>restore</code> in commands presented above.
+</section>
+
+</div>
+
 <h2 id="what-happens-to-purged-entities">What Happens to Purged Entities?</h2>
 <p>Only administrators may purge entities. Purging an entity has the following effects:</p>
 <ul>
@@ -231,17 +313,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </div>
 <div class="tab-content content">
   <section data-content="console">
-  <p>Go to the <strong>General Settings</strong> tab of the entity and click <strong>Delete</strong>.</p>
-<figure><img src="delete.png"/>
-</figure>
-<p>If you are an administrator, you will be presented with the option to purge the entity. Check the <strong>Also release entity IDs</strong> box to also purge the entity.</p>
+  <p>There are two ways to purge an entity:</p>
+<ul>
+<li>Go to the <strong>General Settings</strong> tab of the entity and click <strong>Delete</strong>. If you are an administrator, you will be presented with the option to purge the entity. Check the <strong>Also release entity IDs</strong> box to also purge the entity.</li>
+</ul>
 <figure><img src="purge.png"/>
 </figure>
+<ul>
+<li>After soft-deleting the entity with <strong>Delete</strong>, navigate to the <strong>Deleted (Admin)</strong> panel (the same panel where you restore entities), find your deleted entity and click <strong>Purge</strong>.</li>
+</ul>
 </section>
 <section data-content="cli">
-  <p>To view soft-deleted users:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli user list --deleted --all
-</span></span></code></pre></div><p>To purge an application:</p>
+  <p>To purge an application:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli applications purge --application-id &lt;application-id&gt;
 </span></span></code></pre></div><p>To purge a client:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">ttn-lw-cli clients purge --client-id &lt;client-id&gt;
@@ -281,6 +364,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
   <ul class="menu-list">
+    
+      
+      <li><a href='#deleting-and-restoring-entities'>Deleting and Restoring Entities</a></li>
     
       
       <li><a href='#what-happens-to-purged-entities'>What Happens to Purged Entities?</a></li>
