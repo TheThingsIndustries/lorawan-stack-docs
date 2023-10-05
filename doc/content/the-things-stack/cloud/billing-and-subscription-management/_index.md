@@ -11,17 +11,27 @@ This section shows how to buy {{% tts %}} subscription, and to perform subscript
 
 ## Purchasing {{% tts %}} Subscription
 
-Navigate to the [{{% tts %}} fee calculator](https://accounts.thethingsindustries.com/fee-calculator) page.
+Navigate to the [{{% tts %}} Plans](https://accounts.thethingsindustries.com/fee-calculator) page.
 
-First, you need to choose your entry level. If you are just exploring {{% tts %}} functionalities and performance, we suggest you pick **{{% tts %}} Discovery**. If you are already a user of {{% tts %}} and want to scale up, **{{% tts %}}** is the right choice for you.
+First, you need to choose your entry level.
 
-If you choose {{% tts %}} entry level, you'll also need to choose your deployment and device bundle.
+If you are just exploring {{% tts %}} functionalities and performance, we suggest you pick **{{% tts %}} Discovery**.
 
-Next, you need to pick your support plan. Available plans are **DIY**, **Standard** and **Priority**, but keep in mind that all plans are not available for all {{% tts %}} deployments. You can follow [this link](https://www.thethingsindustries.com/support/) to compare support plans.
+If you are already a user of {{% tts %}} and want to scale up, you can choose between **Standard** and **Plus** plans, both of which have different levels of offered support (**Standard**, **Priority**, **Consulting** and **Free**). You can follow [this link](https://www.thethingsindustries.com/support/) to compare support plans.
 
-{{< note >}} Some deployments (e.g. **{{% tts %}} Dedicated Cloud**) and some support plans (e.g. **Consulting**) are not available for purchase through the platform. Instead, you need to [contact The Things Industries](mailto:info@thethingsindustries.com). {{</ note >}}
+On the top of the page, you can also choose between monthly and annual billing plan.
 
-If you choose one of {{% tts %}} deployments, you might also need to choose between monthly and yearly pre-paid plan for your contract period and billing preferences.
+{{< figure src="plans-and-billing-period.png" alt="Plans and billing period" >}}
+
+Every subscription and support plan have details listed on the Plans page. If you are not sure which plan to choose, you can scroll down and calculate an approximate price for your fleet of devices, and check out our answers to frequently asked questions about {{% tts %}} plans. On the bottom of the page you can also request a demo or contact an expert.
+
+{{< figure src="faq-and-price-estimation.png" alt="Price estimation and FAQ" >}}
+
+To sign up for any of the above mentioned plans, just click on the button on the plan to sign up and you will be redirected to the checkout page, where you will be requested to enter your personal and billing info.
+
+If you are not looking for a cloud but for an enterprise solution, make sure to check out [self-hosted {{% tts %}} options](https://www.thethingsindustries.com/deployment/).
+
+{{< note >}} Some deployments (e.g. **{{% tts %}} Dedicated Cloud**) and some support plans (e.g. **Consulting**) are not available for purchase through the platform. Instead, you need to [contact The Things Industries](mailto:info@thethingsindustries.com) to proceed. {{</ note >}}
 
 ## Creating a Tenant and a Billing Account
 
