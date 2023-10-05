@@ -2,14 +2,11 @@
 title: "OpenID Connect"
 description: ""
 distributions: ["Enterprise"]
-weight: 3
 ---
-
-## What is OpenID Connect ?
 
 [OpenID Connect](https://openid.net/connect/) 1.0 is a simple identity layer on top of the OAuth 2.0 protocol. It allows the Identity Server to verify the identity of the End-User based on the authentication performed by an Authorization Server, as well as to obtain basic profile information about the End-User in an interoperable and REST-like manner.
 
-## What are the requirements for OpenID Connect ?
+## Requirements
 
 A new OAuth 2.0 client must be created in the provider and the client ID and client secret must be noted down. While creating the OAuth2 client, you will be asked to provide a redirect URL, which should have the following format:
 
@@ -19,7 +16,7 @@ https://thethings.example.com/oauth/login/<oidc-provider-id>/callback
 
 Replace `<oidc-provider-id>` with the ID that you have chosen for this OpenID Connect provider, for example `my-oidc-provider`.
 
-## How can I register an OpenID Connect provider ?
+## Registering an Authentication Provider
 
 We first define some user parameters used below:
 
@@ -31,22 +28,18 @@ OIDC_CLIENT_SECRET="secret123"
 OIDC_PROVIDER_URL="https://oidc.example.com"
 ```
 
-Make sure you modify these according to your setup.
-
-After you have created the OAuth2 client you may register the provider using the `is-db` stack command:
+Make sure you modify these according to your setup and use the following command to register the provider.
 
 ```bash
-tti-lw-stack is-db create-auth-provider
-    --id $OIDC_PROVIDER_ID
-    --name $OIDC_PROVIDER_NAME
-    --allow-registrations true
-    --oidc
-    --oidc.client-id $OIDC_CLIENT_ID
-    --oidc.client-secret $OIDC_CLIENT_SECRET
-    --oidc.provider-url $OIDC_PROVIDER_URL
+$ tti-lw-cli ap create $OIDC_PROVIDER_ID \
+    --name $OIDC_PROVIDER_NAME \
+    --allow-registrations true \
+    --configuration.provider.oidc.client-id $OIDC_CLIENT_ID \
+    --configuration.provider.oidc.client-secret $OIDC_CLIENT_SECRET \
+    --configuration.provider.oidc.provider-url OIDC_PROVIDER_URL
 ```
 
-## How are usernames generated for external users ?
+## Generating Usernames
 
 External users are being automatically registered when they login using the OpenID Connect provider. Their username is automatically generated based on the information provided by the provider. The following username variants are used:
 
