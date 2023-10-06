@@ -77,8 +77,8 @@ An example response is shown below.
 }
 ```
 
-Head to the Login page of {{% tts %}} console. A button **Login to <name>** should be present, where `<name>` is the same as the `OIDC_PROVIDER_NAME`.
+Head to the Login page of {{% tts %}} console. A button **Login to \<name\>** should be present, where `<name>` is the same as the `OIDC_PROVIDER_NAME`.
 
 Click on this button. This will redirect you to the Google Sign in page. You will be asked to authorize {{% tts %}} to read some basic user information. Select `Allow`. This is only for the first login attempt.
 
-If all your configuration is correct, you will now be redirected to {{% tts %}} console and you will be logged in.
+If all your configuration is correct, you will now be redirected to {{% tts %}} console and you will be logged in. The username is chosen based on the rules explained in the [generating usernames]({{< ref "/reference/federated-auth/oidc#generating-usernames" >}}) section.
