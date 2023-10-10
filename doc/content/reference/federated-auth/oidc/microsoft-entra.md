@@ -2,6 +2,7 @@
 title: "Microsoft Entra"
 description: ""
 distributions: ["Enterprise"]
+new_in_version: "3.28.0"
 ---
 
 [Microsoft Entra](https://learn.microsoft.com/en-us/azure/active-directory/develop/v2-protocols-oidc) supports OpenID 1.0 authorization flow and can be used to log into {{% tts %}}.
@@ -20,9 +21,9 @@ This page guides you with the necessary steps to login to {{% tts %}} using your
 
 ## Disclaimer
 
-The Open ID implementation of [Microsoft Entra](https://entra.microsoft.com/) does not require the email ID of the microsoft user to be verified.
+The Open ID implementation of [Microsoft Entra](https://entra.microsoft.com/) does not require the email ID of the microsoft to be verified.
 This could lead to potential security issues since the user's email is not verified.
-Admins must make sure that microsoft users who login to {{% tts %}} do not have access to update their email so that the email cannot be spoofed.
+Admins must make sure that users who login to {{% tts %}} do not have access to update their email so that the email cannot be spoofed.
 
 ## Configuring the Provider in Microsoft Entra
 
