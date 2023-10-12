@@ -10,7 +10,7 @@ This page guides you to connect Tektelic Kona Micro IoT LoRaWAN® Gateway to {{%
 
 {{< figure src="kona-micro.jpg" alt="Tektelic Kona Micro IoT LoRaWAN Gateway" class="float plain" >}}
 
-Tektelic Kona Micro IoT LoRaWAN Gateway is an 8 channel LoRaWAN gateway, whose technical specifications can be found in [the official documentation](https://tektelic.com/catalog/kona-micro-iot-gateway).
+Tektelic Kona Micro IoT LoRaWAN Gateway is an 8 channel LoRaWAN gateway, whose technical specifications can be found in [the official documentation](https://tektelic.com/products/gateways/kona-micro-iot-gateway/).
 
 ## Prerequisites
 
@@ -31,9 +31,9 @@ To be able to configure your gateway to connect to {{% tts %}}, you first need t
 
 **Step 1:** Download the [KonaFT application](https://support.tektelic.com/portal/en/kb/articles/konaft) and complete the installation.
 
-**Step 2:** Connect your gateway to the KonaFT tool. [See **KFT_Connect** video instructions](https://support.tektelic.com/portal/en/kb/articles/konaft-instructional-videos)
+**Step 2:** [Connect your gateway to the KonaFT tool](https://support.tektelic.com/portal/en/kb/articles/kona-ft-faq#1_How_do_I_connect_my_gateway_to_KonaFT).
 
-**Step 3:** [Assign a static IP address to the gateway using KonaFT](https://support.tektelic.com/portal/en/kb/articles/assigning-static-ip-to-kona-gateway-using-konaft).
+**Step 3:** [Assign a static IP address to the gateway using KonaFT](https://support.tektelic.com/portal/en/kb/articles/kona-ft-faq#3_How_do_I_set_a_static_IP_on_KonaFT).
 
 **Step 4:** Configure the gateway to connect to {{% tts %}} using [{{% udp-pf %}}]({{< relref "udp" >}}).
 
