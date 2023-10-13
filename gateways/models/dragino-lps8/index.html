@@ -7,20 +7,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="generator" content="Hugo 0.112.3">
-  <title>Dragino LPS8 | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/models/dragino-lps8/" />
+  <title>Dragino LPS8N | The Things Stack for LoRaWAN</title><link rel="canonical" href="https://www.thethingsindustries.com/docs/gateways/models/dragino-lps8/" />
   <link rel="alternate icon" type="image/png" href="/docs/favicon.png">
   <link rel="icon" type="image/svg+xml" href="/docs/favicon.svg">
   <link rel="stylesheet" href="https://www.thethingsindustries.com/docs/css/theme.min.fd3d59eb4852f5cc339297cb0cb5a6af3c7895bf80bc7bc02db7b78eadec7102.css" integrity="sha256-/T1Z60hS9cwzkpfLDLWmrzx4lb&#43;AvHvALbe3jq3scQI=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3" />
   <meta name="description" content="">
   <meta name="keywords" content="">
-  <meta itemprop="name" content="Dragino LPS8">
+  <meta itemprop="name" content="Dragino LPS8N">
   <meta itemprop="description" content="">
   <meta itemprop="keywords" content="">
-  <meta property="og:title" content="Dragino LPS8">
+  <meta property="og:title" content="Dragino LPS8N">
   <meta property="og:description" content="">
   <meta property="og:url" content="https://www.thethingsindustries.com/docs/gateways/models/dragino-lps8/">
   <meta property="og:image" content="/docs/docs-thumbnail.png"/>
-  <meta name="twitter:title" content="Dragino LPS8" />
+  <meta name="twitter:title" content="Dragino LPS8N" />
   <meta name="twitter:description" content="" />
   <meta name="twitter:card" content="summary" />
   
@@ -133,7 +133,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </li>
 
   <li>
-    <a href="https://www.thethingsindustries.com/docs/gateways/models/dragino-lps8/" class="is-active">Dragino LPS8</a>
+    <a href="https://www.thethingsindustries.com/docs/gateways/models/dragino-lps8/" class="is-active">Dragino LPS8N</a>
     
     
 
@@ -267,73 +267,79 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       
       <div class="column is-9 is-8-desktop sidebar-middle">
         <div class="docs-content">
-        <h1 class="title is-size-2">Dragino LPS8
+        <h1 class="title is-size-2">Dragino LPS8N
           
         </h1>
         
         <div class="content">
-          <figure class="float plain"><img src="dragino-lps8.jpg"
-         alt="Dragino LPS8"/>
+          <figure class="float plain"><img src="dragino-lps8n.jpg"
+         alt="Dragino LPS8N"/>
 </figure>
 
-<p>The <strong>Dragino LPS8</strong> is a LoRaWAN® indoor gateway based on the OpenWrt Linux system. The hardware includes an SX1308 LoRa concentrator that provides 10 programmable parallel demodulation paths. The gateway has an ethernet and WiFi backhaul and supports EU868, IN865, US915, AU915, AS923, and KR920 ISM bands.</p>
-<p>This page guides you on how to connect the Dragino LPS8 to The Things Stack.</p>
+<p>The <a href="https://www.dragino.com/products/lora-lorawan-gateway/item/200-lps8n.html/">Dragino LPS8N</a> is a LoRaWAN® indoor gateway based on the open-source OpenWrt Linux operating system. Its hardware is built around the SX1302 LoRa Core™ Digital Baseband Chip and the SX1250 LoRa Core™ Multi-band Sub-GHz RF Front End. The LPS8N provides ten programmable parallel demodulation paths. The gateway can be connected to the internet using Ethernet, WiFi, or optional Cellular (3G/4G) connectivity. It supports the EU868, IN865, US915, AU915, AS923, and KR920 frequency bands.</p>
+<p>This page guides you on how to configure the Dragino LPS8N for adding on The Things Stack.</p>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
 <li>A user account on The Things Stack with user rights to add gateways.</li>
-<li>An LPS8 connected to the internet.</li>
-<li>A computer on the same network as the LPS8.</li>
-<li>The latest version of firmware running on the Dragino LPS8 (read the Dragino LPS8 <a href="https://www.dragino.com/downloads/downloads/LoRa_Gateway/LPS8/LPS8_LoRaWAN_Gateway_User_Manual_v1.2.0.pdf">user manual</a> for instructions on firmware upgrade).</li>
+<li>A computer on the same network as the LPS8N.</li>
+<li>The latest version of firmware running on the Dragino LPS8N. Read the Dragino LPS8N <a href="http://wiki.dragino.com/xwiki/bin/view/Main/User%20Manual%20for%20All%20Gateway%20models/LPS8N%20-%20LoRaWAN%20Gateway%20User%20Manual/#H8.A0UpgradeLinuxFirmware">user manual</a> for instructions on firmware upgrade.</li>
 </ol>
-<h2 id="register-the-gateway-on-the-things-stack">Register the Gateway on The Things Stack</h2>
-<p>Create a gateway by following <a href="https://www.thethingsindustries.com/docs/gateways/concepts/adding-gateways/">the instructions</a>. The Gateway EUI can be derived from the WiFi MAC address that can be found on the back of the gateway enclosure. To get the 8 byte Gateway EUI insert <code>4150</code> at the end of the WiFi MAC address.</p>
-<p>If the WiFi MAC address is <code>A8:A8:41:A8:CE:54</code> then the Gateway EUI is <code>A8 A8 41 A8 CE 54 41 50</code>.</p>
-<figure><img src="add-gateway.png"
-         alt="Dragino LPS8 LoRaWAN config"/>
+<h2 id="configuring-the-lps8n">Configuring the LPS8N</h2>
+<p>Navigate to the Web UI using one of the following addresses with a web browser:</p>
+<ul>
+<li>If you are connecting through the Wi-Fi access point generated by the LPS8N, use the default IP address <code>10.130.1.1</code>.</li>
+<li>If your LPS8N is connected to a router via Ethernet or Wi-Fi, use the address <code>http://IP_ADDRESS</code> or <code>http://IP_ADDRESS:8000</code>. Replace <code>IP_ADDRESS</code> with the IP address assigned to the LPS8N by the router.</li>
+</ul>
+<p>When prompted for the sign-in, enter the username <code>root</code> and the password <code>dragino</code>.</p>
+<figure><img src="sign-in-lps8n.png"
+         alt="Sign In"/>
 </figure>
 
-<h2 id="configuring-the-lps8">Configuring the LPS8</h2>
-<p>Enter the IP address and port number of your gateway in the browser (the default port number is 8000, E.g. <code>192.168.1.6.:8000</code>)</p>
-<figure><img src="lps8-step-1.png"
-         alt="Step 1"/>
+<p>After signing in, you will be directed to the LPS8N&rsquo;s Web UI.</p>
+<figure><img src="web-ui-home-lps8n.png"
+         alt="Web UI hime"/>
 </figure>
 
-<p>In the prompt box, type your username and password and then click <strong>OK</strong>.</p>
+<p>Before proceeding with the next step, we assume you have set up internet access for the LPS8N using one of the following methods:</p>
+<ul>
+<li>Using the WAN port of the LPS8N</li>
+<li>As a WiFi client</li>
+<li>Using the built-in 4G modem</li>
+</ul>
+<p>On the Web UI, navigate to <strong>LoRaWAN &gt; LoRaWAN</strong> in the menu.</p>
+<p>On the LoRaWAN Configuration page, configure the following settings:</p>
+<ol>
+<li><strong>Service Provider</strong>: <code>The Things Network V3</code></li>
+<li><strong>Server Address</strong>: <code>eu1.cloud.thethings.network</code></li>
+<li><strong>Gateway ID</strong>: This is the default Gateway EUI for LPS8N. You can keep it as is.</li>
+<li><strong>Uplink Port</strong>: <code>1700</code></li>
+<li><strong>Downlink Port</strong>: <code>1700</code></li>
+</ol>
+<p>Copy the <strong>Gateway ID</strong> which you will need in the next step.
 <div class="notification is-info is-light has-text-dark">
   <h5 class="title is-family-sans-serif has-text-dark mb-1">Note:</h5>
-  The default username is <code>root</code> and the password is <code>dragino</code>.
+  The LPS8N Web UI refers to Gateway EUI as the Gateway ID, which is the Gateway EUI for The Things Stack.
 </div>
-
-<figure class="plain"><img src="lps8-step-2.png"
-         alt="Step 2"/>
-</figure>
-
-<p>Once you logged in, you will navigate to the home page of the configuration portal that is a web-based GUI.</p>
-<figure><img src="lps8-step-3.png"
-         alt="Step 3"/>
-</figure>
-
-<p>On the portal page, on the top menu, select <strong>LoRaWAN &gt; LoRaWAN</strong>.</p>
-<figure><img src="lps8-step-4.png"
-         alt="Step 4"/>
-</figure>
-
-<p>Edit the server settings.</p>
-<ol>
-<li><strong>LoRaWAN Service Provider</strong>: Choose <strong>Custom</strong> from the drop-down list.</li>
-<li><strong>Server Address</strong>: Provide your LoRaWAN Gateway Server address. You can find it on The Things Stack <strong>Gateway Overview</strong> page.</li>
-<li><strong>Gateway ID</strong>: This is the Gateway EUI. Make sure that the Gateway EUI already appeared in the text box is match with the one you have derived from the WiFi MAC address in the previous section.</li>
-<li><strong>Server Port Upstream</strong>: Upstream port of the Gateway Server, typically 1700.</li>
-<li><strong>Server Port Downstream</strong>: Downstream port of the Gateway Server, typically 1700.</li>
-</ol>
+</p>
 <p>Select <strong>Save &amp; Apply</strong>.</p>
-<figure><img src="lps8-step-5.png"
-         alt="Step 5"/>
+<figure><img src="lorawan-config.png"
+         alt="LoRaWAN Configuration"/>
 </figure>
 
-<p>Finally, test your connection by going to the gateway’s <strong>Overview</strong> page. You can see the gateway status is changed as connected (with a blue dot) or the frequently updating ‘Last seen’ time.</p>
+<h2 id="adding-lps8n-to-the-things-stack">Adding LPS8N to The Things Stack</h2>
+<p>You can add the LPS8N gateway to The Things Stack by following the instructions on the <a href="https://www.thethingsindustries.com/docs/gateways/concepts/adding-gateways/"> Adding Gateways</a> page. The <strong>Gateway EUI</strong> should be the <strong>Gateway ID</strong> that you have copied from the LPS8N&rsquo;s Web UI.</p>
+<figure><img src="add-gateway.png"
+         alt="Add Gateway"/>
+</figure>
+
+<p>Finally, test your connection by going to the LPS8N&rsquo;s <strong>Overview</strong> page. You should see the gateway status changed to <strong>connected</strong> (indicated by a blue dot) or observe the frequently updating <strong>Last seen</strong> time. Also, see the <strong>Live data</strong> section for various gateway related activities.</p>
 <figure><img src="gateway-add-ok.png"
-         alt="Dragino LPS8 LoRaWAN config"/>
+         alt="Gateway add OK"/>
+</figure>
+
+<p>You can also verify the presence of a green tick on the LoRa icon in the Web UI.</p>
+<figure><img src="lorawan-ok.png"
+         alt="LoRaWAN OK"/>
 </figure>
         </div>
         
@@ -363,10 +369,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       <li><a href='#prerequisites'>Prerequisites</a></li>
     
       
-      <li><a href='#register-the-gateway-on-the-things-stack'>Register the Gateway on The Things Stack</a></li>
+      <li><a href='#configuring-the-lps8n'>Configuring the LPS8N</a></li>
     
       
-      <li><a href='#configuring-the-lps8'>Configuring the LPS8</a></li>
+      <li><a href='#adding-lps8n-to-the-things-stack'>Adding LPS8N to The Things Stack</a></li>
     
   </ul>
 
