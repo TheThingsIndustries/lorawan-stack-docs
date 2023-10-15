@@ -457,11 +457,11 @@ Unlike other server components, the Identity Server component of {{% tts %}} is 
 
 This error indicates that the client HTTP protocol version is old, so the server refuses to perform the request and requires a client update to HTTP 1.1 version or higher.
 
-### "No_application_rights" error
+### "No_application_rights" or "No_user_rights" error
 
 The API key you are using doesn't have sufficient rights to perform the desired API request. It might also be caused by a missing `Bearer` keyword in the `Authorization` header used in the API call.
 
-To resolve this issue, make sure your API key has necessary rights to interact with the desired application. Also, make sure to use the `Bearer` keyword when specifying the `Authorization` header.
+To resolve this issue, make sure your API key has necessary rights to interact with the desired entity. Also, make sure to use the `Bearer` keyword when specifying the `Authorization` header.
 
 ### "Api_key_not_found" error
 
