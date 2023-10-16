@@ -17,7 +17,6 @@ This page guides you with the necessary steps to login to {{% tts %}} using your
 3. A {{% tts %}} account with admin rights.
 4. The Things Stack Enterprise command line interface (`tti-lw-cli`).
 5. Choose a Provider ID (ex: `microsoft-entra`). It must be between 3 and 36 characters and can only contain lower-case alphanumeric letters and dashes. Multiple, leading and/or trailing dashes are not allowed.
-6. An Email ID regex that is allowed to login. For example, if you want to only allow users from your domain, the regex would be `.*@example.com`.
 
 ## Disclaimer
 
@@ -29,7 +28,7 @@ Admins must make sure that users who login to {{% tts %}} do not have access to 
 
 Log in to the [Microsoft Entra admin center](https://entra.microsoft.com/).
 
-Naviagate to the [App Registrations](https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/RegisteredApps) panel.
+Navigate to the [App Registrations](https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/RegisteredApps) panel.
 
 Add a new registration with the following values.
 
@@ -54,19 +53,19 @@ Login to {{% tts %}} via the CLI.
 Register the provider. Set the following values
 
 ```bash
-OIDC_PROVIDER_ID="provider ID"                              # Provider ID from above.
-OIDC_PROVIDER_NAME="My OIDC Provider"                       # Name used to display on the Console.
-OIDC_CLIENT_ID="client123"                                  # Client ID is the Secret ID above.
-OIDC_CLIENT_SECRET="secret123"                              # Client Secret is the secret Value from above..
+OIDC_PROVIDER_ID="provider ID"                                # Provider ID from above.
+OIDC_PROVIDER_NAME="My OIDC Provider"                         # Name used to display on the Console.
+OIDC_CLIENT_ID="client123"                                    # Client ID is the Secret ID above.
+OIDC_CLIENT_SECRET="secret123"                                # Client Secret is the secret Value from above..
 OIDC_MICROSOFT_TENANT="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-OIDC_ALLOWED_EMAIL_REGEX=".*@example.com"                   # This is a required field to skip email verification.
+OIDC_ALLOWED_EMAIL_DOMAINS="example.com"                      # This is a required field to skip email verification.
 ```
 
 ```bash
 $ tti-lw-cli ap create $OIDC_PROVIDER_ID \
     --name $OIDC_PROVIDER_NAME \
     --allow-registrations true \
-    --allowed-email-regex  $OIDC_ALLOWED_EMAIL_REGEX \
+    --allowed-email-domains  $OIDC_ALLOWED_EMAIL_DOMAINS \
     --configuration.provider.oidc.client-id $OIDC_CLIENT_ID \
     --configuration.provider.oidc.client-secret $OIDC_CLIENT_SECRET \
     --configuration.provider.oidc.provider-url https://login.microsoftonline.com/$OIDC_MICROSOFT_TENANT/v2.0
@@ -89,7 +88,10 @@ An example response is shown below.
       "client_secret": "secret123",
       "provider_url": "https://login.microsoftonline.com/$MICROSOFT_TENANT/v2.0"
     }
-  }
+  },
+  "allowed_email_domains": [
+    "example.com"
+  ]
 }
 ```
 
