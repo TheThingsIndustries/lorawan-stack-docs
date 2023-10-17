@@ -352,6 +352,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <p>Generally speaking, changing frequency plans in The Things Stack is not recommended and in large number of cases not available either, so you should always recreate your end device using the desired frequency plan.</p>
 <h2 id="i-see-a-no-decoder-defined-for-codec-codec_id-error-after-very-downlink-message">I see a &ldquo;no decoder defined for codec {codec_id}&rdquo; error after very downlink message.</h2>
 <p>This error indicates that your end device was added from the <a href="https://github.com/TheThingsNetwork/lorawan-devices">Device Repository</a>, but in the device&rsquo;s codec file there are no <code>downlinkEncoder</code> and <code>downlinkDecoder</code> functions defined. To fix this, you can reach out to the device manufacturer to update your device&rsquo;s codec file in the Device Repository. Alternatively, you can define the <a href="https://www.thethingsindustries.com/docs/integrations/payload-formatters/">payload formatter</a> on your own.</p>
+<h2 id="transmitting-downlink-message-fails-with-the-collision-packet-error">Transmitting downlink message fails with the collision packet error.</h2>
+<p>The <code>COLLISION_PACKET</code> error occurs when downlink transmissions overlap - this happens when two or more packets overlap in time and use the same spreading factor, bandwith and frequency plan settings.</p>
+<p>To avoid packet collisions, users can enable server-side buffering of donwlink messages. If server-side buffering is enabled, the Gateway Server schedules the downlink message to be sent after the downlink message that was already queued but not sent yet, so that their transmissions don&rsquo;t overlap. To enable this, navigate to your gateway&rsquo;s <strong>General settings</strong> section, expand the <strong>LoRaWAN</strong> section and <strong>Enable</strong> the <strong>Schedule downlink late</strong> option by ticking the box. Note that this is a recommended setting for gateways that use <a href="https://www.thethingsindustries.com/docs/gateways/concepts/udp/">UDP packet forwarder</a>.</p>
         </div>
         
           <div class="is-clearfix">
@@ -431,6 +434,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     
       
       <li><a href='#i-see-a-no-decoder-defined-for-codec-codec_id-error-after-very-downlink-message'>I see a “no decoder defined for codec {codec_id}” error after very downlink message.</a></li>
+    
+      
+      <li><a href='#transmitting-downlink-message-fails-with-the-collision-packet-error'>Transmitting downlink message fails with the collision packet error.</a></li>
     
   </ul>
 
