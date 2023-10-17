@@ -215,3 +215,9 @@ Generally speaking, changing frequency plans in {{% tts %}} is not recommended a
 ## I see a "no decoder defined for codec {codec_id}" error after very downlink message.
 
 This error indicates that your end device was added from the [Device Repository](https://github.com/TheThingsNetwork/lorawan-devices), but in the device's codec file there are no `downlinkEncoder` and `downlinkDecoder` functions defined. To fix this, you can reach out to the device manufacturer to update your device's codec file in the Device Repository. Alternatively, you can define the [payload formatter]({{< ref "/integrations/payload-formatters" >}}) on your own.
+
+## Transmitting downlink message fails with the collision packet error.
+
+The `COLLISION_PACKET` error occurs when downlink transmissions overlap - this happens when two or more packets overlap in time and use the same spreading factor, bandwith and frequency plan settings.
+
+To avoid packet collisions, users can enable server-side buffering of donwlink messages. If server-side buffering is enabled, the Gateway Server schedules the downlink message to be sent after the downlink message that was already queued but not sent yet, so that their transmissions don't overlap. To enable this, navigate to your gateway's **General settings** section, expand the **LoRaWAN** section and **Enable** the **Schedule downlink late** option by ticking the box. Note that this is a recommended setting for gateways that use [UDP packet forwarder]({{< ref "/gateways/concepts/udp" >}}).
