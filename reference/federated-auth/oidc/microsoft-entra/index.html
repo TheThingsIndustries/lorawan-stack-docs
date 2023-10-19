@@ -272,7 +272,6 @@ This page guides you with the necessary steps to login to The Things Stack using
 <li>A The Things Stack account with admin rights.</li>
 <li>The Things Stack Enterprise command line interface (<code>tti-lw-cli</code>).</li>
 <li>Choose a Provider ID (ex: <code>microsoft-entra</code>). It must be between 3 and 36 characters and can only contain lower-case alphanumeric letters and dashes. Multiple, leading and/or trailing dashes are not allowed.</li>
-<li>An Email ID regex that is allowed to login. For example, if you want to only allow users from your domain, the regex would be <code>.*@example.com</code>.</li>
 </ol>
 <h2 id="disclaimer">Disclaimer</h2>
 <p>The Open ID implementation of <a href="https://entra.microsoft.com/">Microsoft Entra</a> does not require the email ID of the microsoft to be verified.
@@ -280,7 +279,7 @@ This could lead to potential security issues since the user&rsquo;s email is not
 Admins must make sure that users who login to The Things Stack do not have access to update their email so that the email cannot be spoofed.</p>
 <h2 id="configuring-the-provider-in-microsoft-entra">Configuring the Provider in Microsoft Entra</h2>
 <p>Log in to the <a href="https://entra.microsoft.com/">Microsoft Entra admin center</a>.</p>
-<p>Naviagate to the <a href="https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/RegisteredApps">App Registrations</a> panel.</p>
+<p>Navigate to the <a href="https://portal.azure.com/#view/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/~/RegisteredApps">App Registrations</a> panel.</p>
 <p>Add a new registration with the following values.</p>
 <ul>
 <li><strong>Name</strong>: A user-facing name.</li>
@@ -295,16 +294,16 @@ Admins must make sure that users who login to The Things Stack do not have acces
 <h2 id="registering-the-provider-in-the-things-stack">Registering the Provider in The Things Stack</h2>
 <p>Login to The Things Stack via the CLI.</p>
 <p>Register the provider. Set the following values</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">OIDC_PROVIDER_ID</span><span class="o">=</span><span class="s2">&#34;provider ID&#34;</span>                              <span class="c1"># Provider ID from above.</span>
-</span></span><span class="line"><span class="cl"><span class="nv">OIDC_PROVIDER_NAME</span><span class="o">=</span><span class="s2">&#34;My OIDC Provider&#34;</span>                       <span class="c1"># Name used to display on the Console.</span>
-</span></span><span class="line"><span class="cl"><span class="nv">OIDC_CLIENT_ID</span><span class="o">=</span><span class="s2">&#34;client123&#34;</span>                                  <span class="c1"># Client ID is the Secret ID above.</span>
-</span></span><span class="line"><span class="cl"><span class="nv">OIDC_CLIENT_SECRET</span><span class="o">=</span><span class="s2">&#34;secret123&#34;</span>                              <span class="c1"># Client Secret is the secret Value from above..</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="nv">OIDC_PROVIDER_ID</span><span class="o">=</span><span class="s2">&#34;provider ID&#34;</span>                                <span class="c1"># Provider ID from above.</span>
+</span></span><span class="line"><span class="cl"><span class="nv">OIDC_PROVIDER_NAME</span><span class="o">=</span><span class="s2">&#34;My OIDC Provider&#34;</span>                         <span class="c1"># Name used to display on the Console.</span>
+</span></span><span class="line"><span class="cl"><span class="nv">OIDC_CLIENT_ID</span><span class="o">=</span><span class="s2">&#34;client123&#34;</span>                                    <span class="c1"># Client ID is the Secret ID above.</span>
+</span></span><span class="line"><span class="cl"><span class="nv">OIDC_CLIENT_SECRET</span><span class="o">=</span><span class="s2">&#34;secret123&#34;</span>                                <span class="c1"># Client Secret is the secret Value from above..</span>
 </span></span><span class="line"><span class="cl"><span class="nv">OIDC_MICROSOFT_TENANT</span><span class="o">=</span><span class="s2">&#34;xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx&#34;</span>
-</span></span><span class="line"><span class="cl"><span class="nv">OIDC_ALLOWED_EMAIL_REGEX</span><span class="o">=</span><span class="s2">&#34;.*@example.com&#34;</span>                   <span class="c1"># This is a required field to skip email verification.</span>
+</span></span><span class="line"><span class="cl"><span class="nv">OIDC_ALLOWED_EMAIL_DOMAINS</span><span class="o">=</span><span class="s2">&#34;example.com&#34;</span>                      <span class="c1"># This is a required field to skip email verification.</span>
 </span></span></code></pre></div><div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ tti-lw-cli ap create <span class="nv">$OIDC_PROVIDER_ID</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    --name <span class="nv">$OIDC_PROVIDER_NAME</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    --allow-registrations <span class="nb">true</span> <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --allowed-email-regex  <span class="nv">$OIDC_ALLOWED_EMAIL_REGEX</span> <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>    --allowed-email-domains  <span class="nv">$OIDC_ALLOWED_EMAIL_DOMAINS</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    --configuration.provider.oidc.client-id <span class="nv">$OIDC_CLIENT_ID</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    --configuration.provider.oidc.client-secret <span class="nv">$OIDC_CLIENT_SECRET</span> <span class="se">\
 </span></span></span><span class="line"><span class="cl"><span class="se"></span>    --configuration.provider.oidc.provider-url https://login.microsoftonline.com/<span class="nv">$OIDC_MICROSOFT_TENANT</span>/v2.0
@@ -323,7 +322,10 @@ Admins must make sure that users who login to The Things Stack do not have acces
 </span></span><span class="line"><span class="cl">      <span class="s2">&#34;client_secret&#34;</span>: <span class="s2">&#34;secret123&#34;</span>,
 </span></span><span class="line"><span class="cl">      <span class="s2">&#34;provider_url&#34;</span>: <span class="s2">&#34;https://login.microsoftonline.com/</span><span class="nv">$MICROSOFT_TENANT</span><span class="s2">/v2.0&#34;</span>
 </span></span><span class="line"><span class="cl">    <span class="o">}</span>
-</span></span><span class="line"><span class="cl">  <span class="o">}</span>
+</span></span><span class="line"><span class="cl">  <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">  <span class="s2">&#34;allowed_email_domains&#34;</span>: <span class="o">[</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;example.com&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="o">]</span>
 </span></span><span class="line"><span class="cl"><span class="o">}</span>
 </span></span></code></pre></div><p>Head to the Login page of The Things Stack console. A button <strong>Login to &lt;name&gt;</strong> should be present, where <code>&lt;name&gt;</code> is the same as the <code>OIDC_PROVIDER_NAME</code>.</p>
 <p>Click on this button. This will redirect you to the Microsoft Sign in page. You will be asked to authorize The Things Stack to read some basic user information. Select <code>Allow</code>. This is only for the first login attempt.</p>
