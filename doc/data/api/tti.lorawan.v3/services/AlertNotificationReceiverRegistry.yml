@@ -1,0 +1,48 @@
+name: AlertNotificationReceiverRegistry
+methods:
+  Create:
+    name: Create
+    input:
+      name: CreateAlertNotificationReceiverRequest
+    output:
+      name: AlertNotificationReceiver
+    http:
+    - method: POST
+      path: /alerts/notifications/receivers
+  Get:
+    name: Get
+    input:
+      name: GetAlertNotificationReceiverRequest
+    output:
+      name: AlertNotificationReceiver
+    http:
+    - method: GET
+      path: /alerts/notifications/receivers/{ids.receiver_id}
+  List:
+    name: List
+    input:
+      name: ListAlertNotificationReceiversRequest
+    output:
+      name: AlertNotificationReceivers
+    http:
+    - method: GET
+      path: /alerts/notifications/receivers
+  Update:
+    name: Update
+    input:
+      name: UpdateAlertNotificationReceiverRequest
+    output:
+      name: AlertNotificationReceiver
+    http:
+    - method: PUT
+      path: /alerts/notifications/receivers/{receiver.ids.receiver_id}
+  Delete:
+    name: Delete
+    input:
+      name: AuthenticationProviderIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /alerts/notifications/receivers/{receiver_id}

@@ -1,0 +1,40 @@
+name: AlertNotificationReceiver
+fields:
+- name: ids
+  message:
+    package: tti.lorawan.v3
+    name: AlertNotificationReceiverIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: created_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: updated_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: name
+  type: string
+  default: ""
+- name: email
+  message:
+    name: AlertNotificationReceiver.Email
+  default: {}
+- name: sms
+  message:
+    name: AlertNotificationReceiver.SMS
+  default: {}
+- name: webhook
+  message:
+    name: AlertNotificationReceiver.Webhook
+  default: {}
+oneofs:
+- name: contact_method
+  field_names:
+  - email
+  - sms
+  - webhook

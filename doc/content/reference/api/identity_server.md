@@ -3,6 +3,18 @@ title: "Identity Server APIs"
 description: ""
 ---
 
+## The `AlertNotificationReceiverRegistry` service
+
+{{< proto/method package="tti.lorawan.v3" service="AlertNotificationReceiverRegistry" method="Create" >}}
+
+{{< proto/method package="tti.lorawan.v3" service="AlertNotificationReceiverRegistry" method="Get" >}}
+
+{{< proto/method package="tti.lorawan.v3" service="AlertNotificationReceiverRegistry" method="Update" >}}
+
+{{< proto/method package="tti.lorawan.v3" service="AlertNotificationReceiverRegistry" method="Delete" >}}
+
+{{< proto/method package="tti.lorawan.v3" service="AlertNotificationReceiverRegistry" method="List" >}}
+
 ## The `AuthenticationProviderRegistry` service
 
 {{< proto/method package="tti.lorawan.v3" service="AuthenticationProviderRegistry" method="Create" >}}
@@ -44,6 +56,24 @@ description: ""
 {{< proto/method service="OAuthAuthorizationRegistry" method="DeleteToken" >}}
 
 ## Messages
+
+{{< proto/message package="tti.lorawan.v3" message="AlertNotificationReceiver" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="AlertNotificationReceiverIdentifiers" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="AlertNotificationReceiver.Email" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="AlertNotificationReceiver.SMS" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="AlertNotificationReceiver.Webhook" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="CreateAlertNotificationReceiverRequest" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="GetAlertNotificationReceiverRequest" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="ListAlertNotificationReceiversRequest" >}}
+
+{{< proto/message package="tti.lorawan.v3" message="UpdateAlertNotificationReceiverRequest" >}}
 
 {{< proto/message package="tti.lorawan.v3" message="AuthenticationProvider" >}}
 
