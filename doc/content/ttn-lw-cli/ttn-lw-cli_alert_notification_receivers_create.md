@@ -1,20 +1,41 @@
 ---
-title: "ttn-lw-cli"
-slug: ttn-lw-cli
+title: "ttn-lw-cli alert-notification-receivers create"
+slug: ttn-lw-cli_alert_notification_receivers_create
 ---
 
-## ttn-lw-cli
+## ttn-lw-cli alert-notification-receivers create
 
-The Things Industries Command-line Interface
+Create an alert notification receiver (EXPERIMENTAL)
+
+```
+ttn-lw-cli alert-notification-receivers create [receiver-id] [flags]
+```
+
+## Aliases:
+```
+create, add, register
+```
 
 ### Options
+```
+      --contact-method.email.recipient string
+      --contact-method.sms.phone-number string
+      --contact-method.webhook.headers stringToString
+      --contact-method.webhook.url string
+  -h, --help                                            help for create
+      --ids.receiver-id string
+      --name string
+      --receiver-id string
+```
+
+### Options inherited from parent commands
 
 ```
       --allow-unknown-hosts                             Allow sending credentials to unknown hosts
       --application-server-enabled                      Application Server enabled (default true)
       --application-server-grpc-address string          Application Server address (default "localhost:8884")
       --ca string                                       CA certificate file
-  -c, --config strings                                  Location of the config files (default [.ttn-lw-cli.yml,$HOME/.ttn-lw-cli.yml,$HOME/.config/.ttn-lw-cli.yml])
+  -c, --config strings                                  Location of the config files (default [.ttn-lw-cli.yml,/home/nick/.ttn-lw-cli.yml,/home/nick/.config/.ttn-lw-cli.yml])
       --credentials-id string                           Credentials ID (if using multiple configurations)
       --device-claiming-server-grpc-address string      Device Claiming Server address (default "localhost:8884")
       --device-template-converter-grpc-address string   Device Template Converter address (default "localhost:8884")
@@ -22,7 +43,6 @@ The Things Industries Command-line Interface
       --experimental.features strings                   Experimental features to activate
       --gateway-server-enabled                          Gateway Server enabled (default true)
       --gateway-server-grpc-address string              Gateway Server address (default "localhost:8884")
-  -h, --help                                            help for ttn-lw-cli
       --identity-server-grpc-address string             Identity Server address (default "localhost:8884")
       --input-format string                             Input format (default "json")
       --insecure                                        Connect without TLS
@@ -47,25 +67,9 @@ The Things Industries Command-line Interface
 
 ### SEE ALSO
 
-* [ttn-lw-cli alert-notification-receivers]({{< relref "ttn-lw-cli_alert_notification_receivers" >}})	 - Alert Notification Receiver commands
-* [ttn-lw-cli applications]({{< relref "ttn-lw-cli_applications" >}})	 - Application commands
-* [ttn-lw-cli authentication-providers]({{< relref "ttn-lw-cli_authentication-providers" >}})	 - Authentication Provider commands
-* [ttn-lw-cli clients]({{< relref "ttn-lw-cli_clients" >}})	 - Client commands
-* [ttn-lw-cli config]({{< relref "ttn-lw-cli_config" >}})	 - View the current configuration
-* [ttn-lw-cli end-devices]({{< relref "ttn-lw-cli_end-devices" >}})	 - End Device commands
-* [ttn-lw-cli events]({{< relref "ttn-lw-cli_events" >}})	 - Subscribe to events
-* [ttn-lw-cli external-users]({{< relref "ttn-lw-cli_external-users" >}})	 - External User commands
-* [ttn-lw-cli gateways]({{< relref "ttn-lw-cli_gateways" >}})	 - Gateway commands
-* [ttn-lw-cli login]({{< relref "ttn-lw-cli_login" >}})	 - Login
-* [ttn-lw-cli logout]({{< relref "ttn-lw-cli_logout" >}})	 - Logout
-* [ttn-lw-cli lorawan]({{< relref "ttn-lw-cli_lorawan" >}})	 - LoRaWAN commands
-* [ttn-lw-cli notifications]({{< relref "ttn-lw-cli_notifications" >}})	 - Manage notifications
-* [ttn-lw-cli organizations]({{< relref "ttn-lw-cli_organizations" >}})	 - Organization commands
-* [ttn-lw-cli packetbroker]({{< relref "ttn-lw-cli_packetbroker" >}})	 - Packet Broker commands
-* [ttn-lw-cli simulate]({{< relref "ttn-lw-cli_simulate" >}})	 - Simulation commands
-* [ttn-lw-cli templates]({{< relref "ttn-lw-cli_templates" >}})	 - End Device template commands
-* [ttn-lw-cli tenants]({{< relref "ttn-lw-cli_tenants" >}})	 - Tenant commands
-* [ttn-lw-cli use]({{< relref "ttn-lw-cli_use" >}})	 - Generate client configuration for The Things Stack
-* [ttn-lw-cli users]({{< relref "ttn-lw-cli_users" >}})	 - User commands
-* [ttn-lw-cli version]({{< relref "ttn-lw-cli_version" >}})	 - Print version information
-
+* [ttn-lw-cli]({{< relref "ttn-lw-cli" >}})	 - The Things Industries Command-line Interface
+* [ttn-lw-cli alert-notification-receivers create]({{< relref "ttn-lw-cli_alert_notification_receivers_create" >}})	 - Alert notification receiver create command
+* [ttn-lw-cli alert-notification-receivers get]({{< relref "ttn-lw-cli_alert_notification_receivers_get" >}})	 - Alert notification receiver get command
+* [ttn-lw-cli alert-notification-receivers list]({{< relref "ttn-lw-cli_alert_notification_receivers_list" >}})	 - Alert notification receiver list command
+* [ttn-lw-cli alert-notification-receivers update]({{< relref "ttn-lw-cli_alert_notification_receivers_update" >}})	 - Alert notification receiver update command
+* [ttn-lw-cli alert-notification-receivers delete]({{< relref "ttn-lw-cli_alert_notification_receivers_delete" >}})	 - Alert notification receiver delete command
