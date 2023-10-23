@@ -1,0 +1,57 @@
+name: AlertNotificationProfileRegistry
+methods:
+  Create:
+    name: Create
+    input:
+      name: CreateAlertNotificationProfileRequest
+    output:
+      name: AlertNotificationProfile
+    http:
+    - method: POST
+      path: /alerts/notifications/profiles
+  Get:
+    name: Get
+    input:
+      name: GetAlertNotificationProfileRequest
+    output:
+      name: AlertNotificationProfile
+    http:
+    - method: GET
+      path: /alerts/notifications/profiles/{ids.profile_id}
+  List:
+    name: List
+    input:
+      name: ListAlertNotificationProfilesRequest
+    output:
+      name: AlertNotificationProfiles
+    http:
+    - method: GET
+      path: /alerts/notifications/profiles
+  Update:
+    name: Update
+    input:
+      name: UpdateAlertNotificationProfileRequest
+    output:
+      name: AlertNotificationProfile
+    http:
+    - method: PUT
+      path: /alerts/notifications/profiles/{profile.ids.profile_id}
+  Delete:
+    name: Delete
+    input:
+      name: AuthenticationProviderIdentifiers
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /alerts/notifications/profiles/{profile_id}
+  GetDefault:
+    name: GetDefault
+    input:
+      name: GetDefaultAlertNotificationProfileRequest
+    output:
+      name: AlertNotificationProfile
+    http:
+    - method: GET
+      path: /alerts/notifications/profiles/default

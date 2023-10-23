@@ -1,0 +1,41 @@
+name: AlertNotificationProfile
+fields:
+- name: ids
+  message:
+    package: ttn.lorawan.v3
+    name: AlertNotificationReceiverIdentifiers
+  rules:
+    required: true
+  default: {}
+- name: created_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: updated_at
+  message:
+    package: google.protobuf
+    name: Timestamp
+  default: "0001-01-01T00:00:00Z"
+- name: is_default
+  type: bool
+  default: false
+- name: name
+  type: string
+  default: ""
+  rules:
+    max_len: 50
+- name: description
+  type: string
+  default: ""
+  rules:
+    max_len: 256
+- name: receivers
+  repeated:
+    message:
+      package: tti.lorawan.v3
+      name: AlertNotificationReceiverIdentifiers
+  rules:
+    min_len: 0
+    max_len: 20
+  default: []
