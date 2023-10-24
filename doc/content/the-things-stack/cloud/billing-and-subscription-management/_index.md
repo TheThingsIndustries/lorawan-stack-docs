@@ -53,7 +53,7 @@ Finally, click the **Launch {{% tts %}} Cloud** button to create your network.
 
 ## Manage your Subscriptions, Support and Billing Plans
 
-After you purchased {{% tts %}} subscription, you'll receive some emails in the inbox of the administrator email address you provided previously.
+After you purchased {{% tts %}} subscription, you'll receive some emails in the inbox of the administrator email address you provided previously. In one of the emails, you will get a link for creating an admin account password.
 
 Among other info, you'll be provided with a URL to access your newly created tenant's Console. The Console will be available on:
 
@@ -61,7 +61,7 @@ Among other info, you'll be provided with a URL to access your newly created ten
 
 e.g. `https://docs-test-network.eu1.cloud.thethings.industries` for above shown example.
 
-Use the administrator username you provided in previous steps to access it. You might be asked to change your administrator password to log into your tenant.
+Use the administrator username you provided in previous steps, and the password that you created via magic link to access it.
 
 To manage your subscriptions, log in [here](https://accounts.thethingsindustries.com/login) with the administrator email and password you created in previous steps.
 
@@ -91,11 +91,25 @@ You can also upgrade your support plan (or add one if you haven't done so previo
 
 In a similar manner, you can also choose to downgrade your subscription or support plan.
 
-Under **Invoice History** section, you will be able to see and download invoices and receipts for your subscription. To access your invoices for all purchased subscriptions, switch to the **Invoices** tab.
+To downgrade your subscription, e.g. from **Plus** to **Standard** plan, click the **Change plan** button and choose **Downgrading to Cloud Standard** option.
 
-{{< figure src="invoices-overview.png" alt="Invoices overview" >}}
+{{< figure src="downgrade-plan.png" alt="Downgrade TTS plan" >}}
+
+{{< note >}} Keep in mind that you can upgrade from **Discovery** tier to **Standard** and **Plus** using these options, and you can downgrade from **Plus** to **Standard**, but you cannot downgrade from **Standard** to **Discovery**. {{</ note>}}
+
+To downgrade your support plan, click the **Change support plan** button. You will be able to downgrade your support plan, e.g. from **Priority** to **Standard**, or to completely **Remove support**.
+
+{{< figure src="downgrade-support.png" alt="Downgrade support plan" >}}
+
+Under **Invoice History** section on the bottom, you will be able to see and download invoices and receipts for your subscription. To access your invoices for all purchased subscriptions, switch to the **Invoices** tab.
+
+{{< figure src="invoice-history.png" alt="Invoices overview" >}}
 
 {{< note >}} If you change your billing information, it will be applied only on newly created invoices. Invoices that have been created before that cannot be changed. {{</ note >}}
+
+If you want to cancel your subscription, click the **Cancel subscription** button in the upper right of your subscription preview (below **Expected next invoice amount**). 
+
+{{< warning >}} Please note that the action of cancelling subscription cannot be undone. You will loose access to your tenant/network and all the data stored in it. It will also not be possible to reuse the associated Network ID. All registered end devices and gateways will be **locked** to this tenant unless deregistered/unclaimed and purged first. {{</ warning >}}
 
 ## FAQ
 
@@ -106,10 +120,6 @@ Please submit your Billing Account email address via the [password reset form](h
 ### I forgot my Billing Account email address. What now?
 
 Please contact our [sales team](mailto:sales@thethingsindustries.com).
-
-### I canceled my subscription so my tenant is suspended. Can I reactivate it?
-
-Please reach out to our [sales team](mailto:sales@thethingsindustries.com) and reference your tenant ID.
 
 ### Can multiple users access a single Billing Account?
 
