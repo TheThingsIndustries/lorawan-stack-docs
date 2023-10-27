@@ -1,7 +1,7 @@
 ---
 title: "Command-line Interface"
 description: ""
-aliases: [/guides/the-things-stack/interact/cli]
+aliases: [/guides/the-things-stack/interact/cli, /getting-started/cli]
 weight: -2
 ---
 
