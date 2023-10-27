@@ -1,7 +1,7 @@
 ---
 title: "Console"
 description: ""
-aliases: [/guides/the-things-stack/interact/cli, /getting-started/console]
+aliases: [/guides/the-things-stack/interact/console, /getting-started/console]
 weight: -3
 ---
 
