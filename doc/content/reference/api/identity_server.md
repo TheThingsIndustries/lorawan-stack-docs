@@ -43,7 +43,17 @@ description: ""
 
 {{< proto/method service="OAuthAuthorizationRegistry" method="DeleteToken" >}}
 
+## The `GatewayBatchAccess` service
+
+{{< proto/method service="GatewayBatchAccess" method="AssertRights" >}}
+
+## The `GatewayBatchRegistry` service
+
+{{< proto/method service="GatewayBatchRegistry" method="Delete" >}}
+
 ## Messages
+
+{{< proto/message message="AssertGatewayRightsRequest" >}}
 
 {{< proto/message package="tti.lorawan.v3" message="AuthenticationProvider" >}}
 
@@ -52,6 +62,8 @@ description: ""
 {{< proto/message package="tti.lorawan.v3" message="AuthenticationProvider.OIDC" >}}
 
 {{< proto/message package="tti.lorawan.v3" message="AuthenticationProviders" >}}
+
+{{< proto/message message="BatchDeleteGatewaysRequest" >}}
 
 {{< proto/message package="tti.lorawan.v3" message="CreateAuthenticationProviderRequest" >}}
 
