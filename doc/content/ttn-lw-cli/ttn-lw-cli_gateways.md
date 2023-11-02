@@ -54,6 +54,7 @@ Gateway commands
 
 * [ttn-lw-cli]({{< relref "ttn-lw-cli" >}})	 - The Things Industries Command-line Interface
 * [ttn-lw-cli gateways api-keys]({{< relref "ttn-lw-cli_gateways_api-keys" >}})	 - Manage gateway API keys
+* [ttn-lw-cli gateways batch-delete]({{< relref "ttn-lw-cli_gateways_batch-delete" >}})	 - Delete a batch of gateways (EXPERIMENTAL).
 * [ttn-lw-cli gateways claim]({{< relref "ttn-lw-cli_gateways_claim" >}})	 - Claim a gateway (EXPERIMENTAL)
 * [ttn-lw-cli gateways collaborators]({{< relref "ttn-lw-cli_gateways_collaborators" >}})	 - Manage gateway collaborators
 * [ttn-lw-cli gateways contact-info]({{< relref "ttn-lw-cli_gateways_contact-info" >}})	 - Manage gateway contact info (DEPRECATED. Instead, use administrative_contact and technical_contact fields of gateway)

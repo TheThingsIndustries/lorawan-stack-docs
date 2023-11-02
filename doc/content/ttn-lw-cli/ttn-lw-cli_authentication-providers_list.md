@@ -15,6 +15,7 @@ ttn-lw-cli authentication-providers list [flags]
 
 ```
       --allow-registrations                         select the allow_registrations field
+      --allowed-email-domains                       select the allowed_email_domains field
       --configuration                               select the configuration field and all allowed sub-fields
       --configuration.provider.oidc                 select the configuration.provider.oidc field and all allowed sub-fields
       --configuration.provider.oidc.client-id       select the configuration.provider.oidc.client_id field

@@ -28,3 +28,18 @@ fields:
   message:
     name: AuthenticationProvider.Configuration
   default: {}
+- name: allowed_email_domains
+  comment: |-
+    Allowed email domains for this provider.
+    If this field is set, only emails with the specified domains will be allowed to login.
+    The server also skips checking the `email_verified` field of the claims token.
+    We highly recommend admins of such providers to not allow
+    users to change their email addresses with the provider due to lack of verification.
+  rules:
+    max_items: 10
+    unique: true
+  repeated:
+    type: string
+    rules:
+      pattern: ^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$
+  default: []

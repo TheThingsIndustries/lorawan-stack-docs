@@ -1,0 +1,19 @@
+name: GatewayBatchAccess
+comment: |-
+  The GatewayBatchAccess service, exposed by the Identity Server, is used to
+  check the rights of the caller on multiple gateways at once.
+  EXPERIMENTAL: This service is subject to change.
+methods:
+  AssertRights:
+    name: AssertRights
+    comment: |-
+      Assert that the caller has the requested rights on all the requested gateways.
+      The check is successful if there are no errors.
+    input:
+      name: AssertGatewayRightsRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: GET
+      path: /gateways/rights/batch
