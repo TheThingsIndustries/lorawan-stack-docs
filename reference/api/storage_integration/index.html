@@ -2804,7 +2804,8 @@ If null, the Application Server configuration is used instead.</p>
         Description
       </th>
       <td>
-          <p>Signals if the message is coming from the Network Server or is simulated.</p>
+          <p>Signals if the message is coming from the Network Server or is simulated.
+The Application Server automatically sets this field, and callers must not manually set it.</p>
       </td>
     </tr>
     
@@ -7606,6 +7607,7 @@ Guaranteed to be based on a GPS PPS signal, with an accuracy of 1 millisecond.</
 <details><summary>Show object example</summary>
 <pre><code>{
   "net_id": "",
+  "ns_id": "",
   "tenant_id": "",
   "cluster_id": "",
   "cluster_address": "",
@@ -7643,6 +7645,41 @@ Guaranteed to be based on a GPS PPS signal, with an accuracy of 1 millisecond.</
           <p>LoRa Alliance NetID.</p>
           <p><code>ignore_empty</code></p>
           <p><code>len</code>: <code>3</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>ns_id</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+  <code>bytes</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>LoRaWAN NSID (EUI-64) that uniquely identifies the Network Server instance.</p>
+          <p><code>ignore_empty</code></p>
+          <p><code>len</code>: <code>8</code></p>
       </td>
     </tr>
     

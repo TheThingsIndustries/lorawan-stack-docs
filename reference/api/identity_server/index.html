@@ -992,7 +992,222 @@ to enable or disable features in a user interface.
   </tbody>
 </table>
 
+<h2 id="the-gatewaybatchaccess-service">The <code>GatewayBatchAccess</code> service</h2>
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>GatewayBatchAccess.AssertRights</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Assert that the caller has the requested rights on all the requested gateways.
+The check is successful if there are no errors.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:AssertGatewayRightsRequest"><code>AssertGatewayRightsRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>GET</code> <code>/api/v3/gateways/rights/batch</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="the-gatewaybatchregistry-service">The <code>GatewayBatchRegistry</code> service</h2>
+
+
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Method
+      </th>
+      <td>
+        <code>GatewayBatchRegistry.Delete</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+        Delete a batch of gateways.
+This operation is atomic; either all gateways are deleted or none.
+The caller must have delete rights on all requested gateways.
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Request type
+      </th>
+      <td>
+        <a href="#message:BatchDeleteGatewaysRequest"><code>BatchDeleteGatewaysRequest</code></a>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Response type
+      </th>
+      <td>
+        <code>google.protobuf.Empty</code>
+        
+      </td>
+    </tr>
+    <tr>
+      <th>
+        HTTP bindings
+      </th>
+      <td>
+        <p><code>DELETE</code> <code>/api/v3/gateways/batch</code></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
 <h2 id="messages">Messages</h2>
+
+<h3 id="message:AssertGatewayRightsRequest">Message <code>AssertGatewayRightsRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "gateway_ids": [],
+  "required": {},
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>gateway_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:GatewayIdentifiers">
+  
+  <code>
+    
+    GatewayIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_items</code>: <code>20</code></p>
+          <p><code>min_items</code>: <code>1</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>required</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+              
+            
+        
+  
+    
+    <a href="#message:Rights">
+  
+  <code>
+    
+    Rights
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>required</code></p>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
 
 <h3 id="message:AuthenticationProvider">Message <code>AuthenticationProvider</code></h3>
 
@@ -1004,6 +1219,7 @@ to enable or disable features in a user interface.
   "name": "",
   "allow_registrations": false,
   "configuration": {},
+  "allowed_email_domains": [],
 }</code></pre>
 </details>
 
@@ -1216,6 +1432,49 @@ to enable or disable features in a user interface.
   </tbody>
 </table>
 
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>allowed_email_domains</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+        
+        repeated 
+  <code>string</code>
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p>Allowed email domains for this provider.
+If this field is set, only emails with the specified domains will be allowed to login.
+The server also skips checking the <code>email_verified</code> field of the claims token.
+We highly recommend admins of such providers to not allow
+users to change their email addresses with the provider due to lack of verification.</p>
+          <p><code>max_items</code>: <code>10</code></p>
+          <p><code>unique</code></p>
+            <p><code>pattern</code>: <code>^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$</code></p>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
 
 
 <h3 id="message:AuthenticationProvider.Configuration">Message <code>AuthenticationProvider.Configuration</code></h3>
@@ -1416,6 +1675,68 @@ to enable or disable features in a user interface.
         Description
       </th>
       <td>
+        
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+
+
+<h3 id="message:BatchDeleteGatewaysRequest">Message <code>BatchDeleteGatewaysRequest</code></h3>
+
+<details><summary>Show object example</summary>
+<pre><code>{
+  "gateway_ids": [],
+}</code></pre>
+</details>
+
+<p><b>Fields:</b></p>
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>gateway_ids</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+          
+              
+                
+              
+          
+        
+        repeated 
+  
+    
+    <a href="#message:GatewayIdentifiers">
+  
+  <code>
+    
+    GatewayIdentifiers
+  </code>
+  
+    </a>
+  
+</td>
+    </tr>
+    
+    <tr>
+      <th>
+        Description
+      </th>
+      <td>
+          <p><code>max_items</code>: <code>20</code></p>
+          <p><code>min_items</code>: <code>1</code></p>
         
       </td>
     </tr>
@@ -1692,6 +2013,7 @@ to enable or disable features in a user interface.
   "contact_info": [],
   "created_at": "0001-01-01T00:00:00Z",
   "expires_at": "0001-01-01T00:00:00Z",
+  "updated_at": "0001-01-01T00:00:00Z",
 }</code></pre>
 </details>
 
@@ -1892,6 +2214,39 @@ to enable or disable features in a user interface.
       </th>
       <td>
         <code>expires_at</code>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        Type
+      </th>
+      <td>
+        
+        
+            
+        
+  
+  <code>
+    
+      google.protobuf.
+    
+    Timestamp
+  </code>
+  
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table class="api">
+  <tbody>
+    <tr>
+      <th style="width: 150px">
+        Field
+      </th>
+      <td>
+        <code>updated_at</code>
       </td>
     </tr>
     <tr>
@@ -6243,6 +6598,10 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
 
 	
 
+	
+
+	
+
 
         </div>
         <div class="is-clearfix">
@@ -6284,6 +6643,12 @@ Note that this is not prefixed with &ldquo;USER_&rdquo;; it is not a right on th
     
       
       <li><a href='#the-oauthauthorizationregistry-service'>The OAuthAuthorizationRegistry service</a></li>
+    
+      
+      <li><a href='#the-gatewaybatchaccess-service'>The GatewayBatchAccess service</a></li>
+    
+      
+      <li><a href='#the-gatewaybatchregistry-service'>The GatewayBatchRegistry service</a></li>
     
       
       <li><a href='#messages'>Messages</a></li>
