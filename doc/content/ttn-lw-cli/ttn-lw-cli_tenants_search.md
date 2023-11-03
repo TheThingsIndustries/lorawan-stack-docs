@@ -80,6 +80,8 @@ ttn-lw-cli tenants search [flags]
       --configuration.default-cluster.ns.cooldown-window                                         select the configuration.default_cluster.ns.cooldown_window field
       --configuration.default-cluster.ns.deduplication-window                                    select the configuration.default_cluster.ns.deduplication_window field
       --configuration.default-cluster.ns.dev-addr-prefixes                                       select the configuration.default_cluster.ns.dev_addr_prefixes field
+      --configuration.default-cluster.ns.net-id                                                  select the configuration.default_cluster.ns.net_id field
+      --configuration.default-cluster.ns.ns-id                                                   select the configuration.default_cluster.ns.ns_id field
       --configuration.default-cluster.ui                                                         select the configuration.default_cluster.ui field and all allowed sub-fields
       --configuration.default-cluster.ui.branding-base-url                                       select the configuration.default_cluster.ui.branding_base_url field
       --configuration.pb                                                                         select the configuration.pb field and all allowed sub-fields

@@ -162,6 +162,7 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --up.uplink-message.network-ids.cluster-address                                       select the up.uplink_message.network_ids.cluster_address field
       --up.uplink-message.network-ids.cluster-id                                            select the up.uplink_message.network_ids.cluster_id field
       --up.uplink-message.network-ids.net-id                                                select the up.uplink_message.network_ids.net_id field
+      --up.uplink-message.network-ids.ns-id                                                 select the up.uplink_message.network_ids.ns_id field
       --up.uplink-message.network-ids.tenant-address                                        select the up.uplink_message.network_ids.tenant_address field
       --up.uplink-message.network-ids.tenant-id                                             select the up.uplink_message.network_ids.tenant_id field
       --up.uplink-message.normalized-payload                                                select the up.uplink_message.normalized_payload field
@@ -207,6 +208,7 @@ ttn-lw-cli applications storage get [application-id] [flags]
       --up.uplink-normalized.network-ids.cluster-address                                    select the up.uplink_normalized.network_ids.cluster_address field
       --up.uplink-normalized.network-ids.cluster-id                                         select the up.uplink_normalized.network_ids.cluster_id field
       --up.uplink-normalized.network-ids.net-id                                             select the up.uplink_normalized.network_ids.net_id field
+      --up.uplink-normalized.network-ids.ns-id                                              select the up.uplink_normalized.network_ids.ns_id field
       --up.uplink-normalized.network-ids.tenant-address                                     select the up.uplink_normalized.network_ids.tenant_address field
       --up.uplink-normalized.network-ids.tenant-id                                          select the up.uplink_normalized.network_ids.tenant_id field
       --up.uplink-normalized.normalized-payload                                             select the up.uplink_normalized.normalized_payload field

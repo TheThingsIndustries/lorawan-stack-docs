@@ -9,6 +9,18 @@ All meaningful changes to templates are documented in this file.
 
 ## Unreleased
 
+## 3.28.0
+
+### `2-3-db-redis`
+
+- The `r7g` family of machines is now available for hosting.
+
+### `4-2a-configuration`
+
+- Add `EventsBatchingEnabled`, `EventsBatchingTargetSize`, `EventsBatchingDelay` parameters.
+- Add correlation IDs ignored methods to the gRPC server configuration.
+- Add Identity Server NS-ID configuration.
+
 ## 3.27.2
 
 ### `5-4-ecs-services`

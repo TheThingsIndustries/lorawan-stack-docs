@@ -1,0 +1,19 @@
+name: GatewayBatchRegistry
+comment: |-
+  The GatewayBatchRegistry service, exposed by the Identity Server, is used to manage
+  gateway registrations in batches.
+methods:
+  Delete:
+    name: Delete
+    comment: |-
+      Delete a batch of gateways.
+      This operation is atomic; either all gateways are deleted or none.
+      The caller must have delete rights on all requested gateways.
+    input:
+      name: BatchDeleteGatewaysRequest
+    output:
+      package: google.protobuf
+      name: Empty
+    http:
+    - method: DELETE
+      path: /gateways/batch
