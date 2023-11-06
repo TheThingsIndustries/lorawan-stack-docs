@@ -1,29 +1,20 @@
 ---
-title: "ttn-lw-cli authentication-providers get"
-slug: ttn-lw-cli_authentication-providers_get
+title: "ttn-lw-cli gateways batch-delete"
+slug: ttn-lw-cli_gateways_batch-delete
 ---
 
-## ttn-lw-cli authentication-providers get
+## ttn-lw-cli gateways batch-delete
 
-Get an authentication provider
+Delete a batch of gateways (EXPERIMENTAL).
 
 ```
-ttn-lw-cli authentication-providers get [provider-id] [flags]
+ttn-lw-cli gateways batch-delete [gateway-ids] [flags]
 ```
 
 ### Options
 
 ```
-      --allow-registrations                         select the allow_registrations field
-      --allowed-email-domains                       select the allowed_email_domains field
-      --configuration                               select the configuration field and all allowed sub-fields
-      --configuration.provider.oidc                 select the configuration.provider.oidc field and all allowed sub-fields
-      --configuration.provider.oidc.client-id       select the configuration.provider.oidc.client_id field
-      --configuration.provider.oidc.client-secret   select the configuration.provider.oidc.client_secret field
-      --configuration.provider.oidc.provider-url    select the configuration.provider.oidc.provider_url field
-  -h, --help                                        help for get
-      --name                                        select the name field
-      --provider-id string                          
+  -h, --help   help for batch-delete
 ```
 
 ### Options inherited from parent commands
@@ -65,5 +56,5 @@ ttn-lw-cli authentication-providers get [provider-id] [flags]
 
 ### SEE ALSO
 
-* [ttn-lw-cli authentication-providers]({{< relref "ttn-lw-cli_authentication-providers" >}})	 - Authentication Provider commands
+* [ttn-lw-cli gateways]({{< relref "ttn-lw-cli_gateways" >}})	 - Gateway commands
 

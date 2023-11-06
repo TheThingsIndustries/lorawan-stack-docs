@@ -50,6 +50,8 @@ ttn-lw-cli tenants update [tenant-id] [flags]
       --configuration.default-cluster.ns.cooldown-window duration                                       
       --configuration.default-cluster.ns.deduplication-window duration                                  
       --configuration.default-cluster.ns.dev-addr-prefixes strings                                      
+      --configuration.default-cluster.ns.net-id 3-bytes                                                 
+      --configuration.default-cluster.ns.ns-id bytesBase64                                              
       --configuration.default-cluster.ui.branding-base-url string                                       
       --configuration.pb.listed                                                                         
       --description string                                                                              

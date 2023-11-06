@@ -15,6 +15,7 @@ ttn-lw-cli authentication-providers update [provider-id] [flags]
 
 ```
       --allow-registrations                                
+      --allowed-email-domains strings                      
       --configuration.provider.oidc.client-id string       
       --configuration.provider.oidc.client-secret string   
       --configuration.provider.oidc.provider-url string    
