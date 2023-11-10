@@ -1,6 +1,7 @@
 ---
 title: "Adding devices with ATECC608 Secure Elements"
 description: ""
+aliases: ["/devices/atecc608a"]
 ---
 
 The Things Industries and Microchip developed a security solution for LoRaWAN® that enables secure key provisioning and secure cryptographic operations using secure elements.
