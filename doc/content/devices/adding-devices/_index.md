@@ -34,7 +34,7 @@ You will be presented with options to easily onboard your device using its QR co
 ### Onboarding devices using QR codes
 
 If your device has a [TR005 LoRaWAN® Device Identification QR Code](https://lora-alliance.org/resource_hub/tr005-lorawan-device-identification-qr-codes/), adding a device is a simple process.
-Note not all QR codes on the physical device are scannable. Only [TR005 LoRaWAN® Device Identification QR Code](https://lora-alliance.org/resource_hub/tr005-lorawan-device-identification-qr-codes/), are supported for this method.
+Note not all QR codes on the physical device are scannable. Only TR005 LoRaWAN® Device Identification QR Codes, are supported for this method.
 
 Click the **Scan end device QR code** button and allow {{% tts %}} to use your camera.
 Now just bring your device's QR code closer to your camera. A window with data found from the QR code will appear, containing your device's **Claim authentication code**, **JoinEUI**, **DevEUI** and **Brand**.

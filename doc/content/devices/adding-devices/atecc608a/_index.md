@@ -1,5 +1,5 @@
 ---
-title: "ATECC608 Secure Elements"
+title: "Adding devices with ATECC608 Secure Elements"
 description: ""
 ---
 

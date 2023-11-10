@@ -35,4 +35,4 @@ The Things Join Server supports LoRaWAN Backend Interfaces 1.0 and 1.1 as well a
 
 ## Security Features
 
-The Things Join Server operated by The Things Industries supports pre-provisioned Microchip ATECC608 secure elements which provide enhanced hardware security protection for LoRaWAN devices. [Learn more about ATECC608 secure elements]({{< ref "/devices/atecc608a" >}}).
+The Things Join Server operated by The Things Industries supports pre-provisioned Microchip ATECC608 secure elements which provide enhanced hardware security protection for LoRaWAN devices. [Learn more about ATECC608 secure elements]({{< ref "/devices/adding-devices/atecc608a" >}}).
