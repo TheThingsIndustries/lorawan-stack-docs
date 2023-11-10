@@ -7,7 +7,7 @@ aliases:
   - /the-things-stack/interact/cli/create-end-device
   - /the-things-stack/interact/console/create-end-device
   - /getting-started/device-claiming/claim-devices
-weight: -1
+weight: 1
 ---
 
 This section contains instructions for adding devices in {{% tts %}}.

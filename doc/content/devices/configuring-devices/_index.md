@@ -1,5 +1,5 @@
 ---
 title: "Configuring Devices"
 description: ""
-weight: 1
+weight: 2
 ---

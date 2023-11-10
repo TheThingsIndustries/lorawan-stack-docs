@@ -2,6 +2,7 @@
 title: "The Things Uno"
 description: ""
 weight:
+aliases: ["/devices/the-things-uno"]
 ---
 
 {{< figure src="TheThingsUno.png" alt="The Things Uno" class="float plain" >}}

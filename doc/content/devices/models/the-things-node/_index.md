@@ -1,14 +1,17 @@
 ---
 title: "The Things Node"
 description: ""
-weight: 
+weight:
 ---
 
 {{< figure src="TheThingsNode.jpg" alt="The Things Node" class="float plain" >}}
 
-**The Things Node** is based on the [SparkFun Pro Micro - 3.3V/8Mhz](https://www.sparkfun.com/products/12587) with an added Microchip LoRaWAN® module ([RN2483](https://www.microchip.com/wwwproducts/en/RN2483) or [RN2903](https://www.microchip.com/wwwproducts/en/RN2903)). It features a temperature sensor, [NXP’s digital accelerometer](http://www.nxp.com/products/sensors/accelerometers/3-axis-accelerometers/2g-4g-8g-low-g-12-bit-digital-accelerometer:MMA8452Q), light sensor, pushbutton, and RGB LED. All this is packaged in a matchbox-sized waterproof (IP54) casing with a 3 AAA battery compartment.
+In this quickstart, you will learn how to register your Things Node with {{% tts %}} and program it with the Arduino software for activating with {{% tts %}}.
 
-The Things Node is compatible with the **Arduino software (IDE)**. In this quickstart, you will learn how to register your Things Node with {{% tts %}} and program it with the Arduino software for activating with {{% tts %}}.
+<!--more-->
+
+**The Things Node** is based on the [SparkFun Pro Micro - 3.3V/8Mhz](https://www.sparkfun.com/products/12587) with an added Microchip LoRaWAN® module ([RN2483](https://www.microchip.com/wwwproducts/en/RN2483) or [RN2903](https://www.microchip.com/wwwproducts/en/RN2903)). It features a temperature sensor, [NXP’s digital accelerometer](http://www.nxp.com/products/sensors/accelerometers/3-axis-accelerometers/2g-4g-8g-low-g-12-bit-digital-accelerometer:MMA8452Q), light sensor, pushbutton, and RGB LED. All this is packaged in a matchbox-sized waterproof (IP54) casing with a 3 AAA battery compartment.
+The Things Node is compatible with the **Arduino software (IDE)**.
 
 ## Setting Up Arduino
 
@@ -44,9 +47,10 @@ Finally, you should add the **SparkFun Pro Micro** board package to the Arduino 
 https://raw.githubusercontent.com/sparkfun/Arduino_Boards/main/IDE_Board_Manager/package_sparkfun_index.json
 
 ```
+
 {{< figure src="additional-boards-manager.png" alt="Additional Board Manager" >}}
 
-Select the **OK** button. 
+Select the **OK** button.
 
 Open the Board Manager by selecting **Tools &#8594; Board &#8594; Board Manager...** from the menu bar.
 
@@ -54,7 +58,7 @@ Open the Board Manager by selecting **Tools &#8594; Board &#8594; Board Manager.
 
 Then open the Board Manager by clicking **Tools &#8594; Board &#8594; Boards Manager...** from the menu bar.
 
-Search for **sparkfun** in the Board Manager. You should see the **SparkFun AVR Boards** package appear. Select the  **Install** button.
+Search for **sparkfun** in the Board Manager. You should see the **SparkFun AVR Boards** package appear. Select the **Install** button.
 
 {{< figure src="sparkfun-avr-boards.png" alt="SparkFun AVR Boards" >}}
 
@@ -128,10 +132,9 @@ Replace **REPLACE_ME** with **TTN_FP_EU868** or **TTN_FP_US915** depending on th
 
 {{< note "The Things Node supports only **EU868** and **US915** frequency plans." />}}
 
-
 Select **Sketch &#8594; Upload** from the menu bar to upload the sketch. The Arduino IDE verifies your sketch again and uploads it to your Things Node.
 
-Once uploaded, your sketch will immediately start to run but you cannot see any output unless you open the Arduino **Serial Monitor**. The Arduino **Serial Monitor** is a tool that can be used to print information passing through the serial port. 
+Once uploaded, your sketch will immediately start to run but you cannot see any output unless you open the Arduino **Serial Monitor**. The Arduino **Serial Monitor** is a tool that can be used to print information passing through the serial port.
 
 Select **Tools &#8594; Serial Monitor** from the menu bar to open the **Serial Monitor**.
 
@@ -160,7 +163,7 @@ The Things Node (or any end device) first needs to be registered with an **appli
 
 ## Registering The Things Node with {{% tts %}}
 
-It’s time to register your Things Node with {{% tts %}}. 
+It’s time to register your Things Node with {{% tts %}}.
 
 On the **Applications** page, select your application to view its **Overview** page.
 
@@ -183,30 +186,31 @@ Under **Select the end device**, select the following mandatory fields.
 - Model – `The Things Node`
 - Hardware Ver. – `1.0`
 - Firmware Ver. – `1.0`
-- Profile (Region) – Choose `EU_863_870` or `US_902_928` to match with your board. 
+- Profile (Region) – Choose `EU_863_870` or `US_902_928` to match with your board.
 
 {{< figure src="RegisterThingsNodeP1.png" alt="Register Things Node" >}}
 
 Under the **Enter registration data**, select/fill the following mandatory fields.
 
 - Frequency plan – Select `Europe 863-870 MHz (SF9 for RX2 - recommended)` for **EU_863_870** or `United States 902-928 MHz, FSB2 (used by TTN)` for **US_902_928**.
-- AppEUI – Copy the **AppEUI** from the output printed by the ***DeviceInfo*** sketch.
-- DevEUI – Copy the **DevEUI** from the output printed by the ***DeviceInfo*** sketch.
+- AppEUI – Copy the **AppEUI** from the output printed by the **_DeviceInfo_** sketch.
+- DevEUI – Copy the **DevEUI** from the output printed by the **_DeviceInfo_** sketch.
 - AppKey – Select **Generate** button to generate an **AppKey**.
-- End device ID –  Give your device a unique human-readable [identifier]({{< ref "reference/id-eui-constraints" >}}).
+- End device ID – Give your device a unique human-readable [identifier]({{< ref "reference/id-eui-constraints" >}}).
 
-Select the **Register end device** button. 
+Select the **Register end device** button.
 
 {{< figure src="RegisterThingsNodeP2.png" alt="Register Things Node" >}}
 
 Once registered, you will be redirected to the **overview** page of the newly registered Things Node, where you can find the generated **AppKey** which we’ll need next.
 
 ## Payload Formatter
+
 The Things Node supports different types of payload formatters. However, for this quickstart you can use the payload formatter which we have provided through our [Device Repository](https://www.thethingsnetwork.org/device-repository/).
 
 Click on the **Payload formatters** tab, then click on the **Uplink** tab.
 
-Select **Use Device Repository Formatters** from the **Formatter type** drop-down box. 
+Select **Use Device Repository Formatters** from the **Formatter type** drop-down box.
 
 Click on the **Save changes** button.
 
@@ -216,7 +220,7 @@ Click on the **Save changes** button.
 
 To activate the Things Node using Over-the-air-activation (OTAA), you must enter some configuration settings from {{% tts %}}.
 
-In the Arduino IDE, select **File &#8594; Examples &#8594; TheThingsNode &#8594; Basic** from the menu bar. The ***Basic.ino*** sketch will open in a new window.
+In the Arduino IDE, select **File &#8594; Examples &#8594; TheThingsNode &#8594; Basic** from the menu bar. The **_Basic.ino_** sketch will open in a new window.
 
 Replace the lines following the comment **Set your AppEUI and AppKey**. These keys can be found in your Things Node’s **overview** page under the **Activation information**.
 
