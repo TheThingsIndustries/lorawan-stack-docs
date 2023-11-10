@@ -1,7 +1,8 @@
 ---
 title: "MAC Settings"
 description: ""
-aliases: ["/devices/mac-settings"]
+aliases: ["/devices/configuring-devices/mac-settings"]
+weight: 3
 ---
 
 This section provides guidelines for configuring MAC settings for end devices from the CLI.

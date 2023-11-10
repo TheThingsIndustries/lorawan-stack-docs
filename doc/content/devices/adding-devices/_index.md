@@ -108,7 +108,7 @@ If your device supports **Class B** or **Class C** features, you may enable them
 
 Under **Network defaults**, you can choose to **Use network's default MAC settings**. This option is enabled by default because for most deployments, {{% tts %}} defaults for Rx delay and other MAC settings will be suitable. However, if you want to modify **Rx2 data rate** or **Rx2 frequency**, uncheck this option and provide your custom values. If using [ABP activation mode](#abp-devices), this will also allow you to configure **Rx1 data rate offset**, **Rx1 delay**, **Factory preset frequencies** and to reset frame counters.
 
-{{< note >}} There are lots of additional options here that aren't mentioned for the sake of keeping this section concise. If you want to learn more about them, see the [MAC Settings]({{< ref "/devices/mac-settings" >}}) section and/or hover over the tooltip icons on the respective inputs. {{</ note >}}
+{{< note >}} There are lots of additional options here that aren't mentioned for the sake of keeping this section concise. If you want to learn more about them, see the [MAC Settings]({{< ref "/devices/configuring-devices/mac-settings" >}}) section and/or hover over the tooltip icons on the respective inputs. {{</ note >}}
 
 You can also choose to **Skip registration on Join Server** for testing purposes. We advise not to check this option unless you're an expert.
 

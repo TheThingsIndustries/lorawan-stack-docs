@@ -29,13 +29,13 @@ The RX1 delay is the time after which the first receive window (RX1) opens. In t
 
 Devices imported from {{% ttnv2 %}} are configured with an RX1 delay of 1 second. In all {{% tts %}} deployments, the recommended RX1 delay is 5 seconds to accommodate for high latency backhauls and/or [peering with Packet Broker]({{< ref "/the-things-stack/packet-broker" >}}).
 
-See the [MAC settings guide]({{< ref "/devices/mac-settings" >}}) for more information and instructions about configuring the RX1 delay.
+See the [MAC settings guide]({{< ref "/devices/configuring-devices/mac-settings" >}}) for more information and instructions about configuring the RX1 delay.
 
 ## MAC Commands
 
 {{% tts %}} expects that all end devices comply with the LoRaWAN specification by default, which means that the end devices should respond to Network Server MAC command requests accordingly. If a device fails to answer a MAC Command in a timely manner, there may be disruptions to the device uplink or downlink traffic. As mentioned in the LoRaWAN specification, the Network Server of {{% tts %}} will always prioritize MAC commands over application payloads on downlink.
 
-In case a device is not fully compliant with the LORaWAN specification, it can still work on {{% tts %}}, but it may require custom [MAC settings configuration]({{< ref "/devices/mac-settings" >}}).
+In case a device is not fully compliant with the LORaWAN specification, it can still work on {{% tts %}}, but it may require custom [MAC settings configuration]({{< ref "/devices/configuring-devices/mac-settings" >}}).
 
 ### DevStatusReq
 
@@ -45,7 +45,7 @@ For end devices that ignore this MAC command, make sure to configure the `Status
 
 {{< note >}} In the scope of [Migrating from The Things Network Stack V2]({{< ref "/the-things-stack/migrating/migrating-from-v2" >}}), devices exported with the `ttn-lw-migrate` tool have these MAC settings set to `0` by default. {{</ note >}}
 
-See the [MAC settings guide]({{< ref "/devices/mac-settings" >}}) for more information.
+See the [MAC settings guide]({{< ref "/devices/configuring-devices/mac-settings" >}}) for more information.
 
 ## Gateway Coverage
 

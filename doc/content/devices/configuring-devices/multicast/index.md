@@ -1,11 +1,11 @@
 ---
-title: "Multicast"
+title: "Multicast Groups"
 description: ""
-aliases: ["devices/class-c-multicast"]
-weight: 6
+aliases: ["devices/multicast"]
+weight: 4
 ---
 
-It is also possible to create a [Class B]({{< ref "devices/class-b" >}}) or [Class C]({{< ref "devices/class-c" >}}) multicast group to send downlink messages to a group of end devices. A multicast group is a virtual ABP device, where multiple physical devices share the same DevAddr and session keys. It does not support uplink, confirmed downlink nor MAC commands.
+It is also possible to create a [Class B]({{< ref "devices/configuring-devices/class-b" >}}) or [Class C]({{< ref "devices/configuring-devices/class-c" >}}) multicast group to send downlink messages to a group of end devices. A multicast group is a virtual ABP device, where multiple physical devices share the same DevAddr and session keys. It does not support uplink, confirmed downlink nor MAC commands.
 
 <!--more-->
 
@@ -30,7 +30,7 @@ Since there are no uplinks in multicast groups, there is no MAC layer communicat
 
 - `mac-settings.ping-slot-periodicity.value`
 
-See the [MAC Settings]({{< ref "devices/mac-settings" >}}) guide for more information about configuring MAC layer parameters.
+See the [MAC Settings]({{< ref "/devices/configuring-devices/mac-settings" >}}) guide for more information about configuring MAC layer parameters.
 
 ## Creating a Multicast Group
 

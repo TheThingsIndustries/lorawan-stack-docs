@@ -1,10 +1,10 @@
 ---
 title: "Build an Application using Generic Node Sensor Edition and Kuando Busylight"
 description: ""
-weight: 
+weight:
 ---
 
-This section shows how to build an end-to-end solution to control the [Kuando Busylight](https://busylight.com/busylight-iot/) with the [Generic Node Sensor Edition](https://www.thethingsshop.com/products/generic-node-sensor-edition) (GNSE). 
+This section shows how to build an end-to-end solution to control the [Kuando Busylight](https://busylight.com/busylight-iot/) with the [Generic Node Sensor Edition](https://www.thethingsshop.com/products/generic-node-sensor-edition) (GNSE).
 
 ## Registering {{% ttig %}}
 
@@ -37,12 +37,12 @@ To decode the payload you will need a [payload formatter]({{< ref "/integrations
 Create a payload formatter for the uplink messages using the following JavaScript formatter code:
 
 ```js
-function decodeUplink(input){
+function decodeUplink(input) {
   var data = {};
-  data.batt_volt = (input.bytes[0]/10)
-  data.temperature = (((input.bytes[1] <<8) + input.bytes[2]) - 500)/10;
-  data.humidity = ((input.bytes[3] << 8) + input.bytes[4])/10;
-  data.button_press = input.bytes[5]
+  data.batt_volt = input.bytes[0] / 10;
+  data.temperature = ((input.bytes[1] << 8) + input.bytes[2] - 500) / 10;
+  data.humidity = ((input.bytes[3] << 8) + input.bytes[4]) / 10;
+  data.button_press = input.bytes[5];
 
   return {
     data: data,
@@ -84,8 +84,8 @@ Run `yarn install` or `yarn` to install all its dependencies.
 
 Clone the GitHub repository to your computer by typing the command `git clone git@github.com:kschiffer/tts-demo-app.git`
 
-Create a file named `config.env` inside the `tts-demo-app` directory. Use the following commands: 
-  
+Create a file named `config.env` inside the `tts-demo-app` directory. Use the following commands:
+
 ```bash
 cd tts-demo-app
 vim config.env
@@ -130,7 +130,7 @@ Press the push button a few more times and see how your chart behaves in time.
 
 ## Adding Kuando Busylight
 
-Kuando BusyLight is a light device that you can control using LoRaWAN downlinks. It is a [class C]({{< ref "/devices/class-c" >}}) end device that opens continuous receive windows so it is capable of receiving downlinks anytime.
+Kuando BusyLight is a light device that you can control using LoRaWAN downlinks. It is a [class C]({{< ref "/devices/configuring-devices/class-c" >}}) end device that opens continuous receive windows so it is capable of receiving downlinks anytime.
 
 {{< figure src="busylight.png" alt="" >}}
 
@@ -142,11 +142,11 @@ Let’s have a look at how to schedule downlink messages from {{% tts %}} applic
 
 In {{% tts %}} Console select the **Messaging** tab and then select the **Downlink** tab. Then configure the downlink as follows:
 
-  - **Insert Mode**: **Replace Downlink Queue**
-  - **FPort**: `15` (as per the datasheet)
-  - **Payload type**: **Bytes**
-  - **Payload**: type in **FF FF FF FF 00** (this makes the Busylight solid white, no blinking)
-  
+- **Insert Mode**: **Replace Downlink Queue**
+- **FPort**: `15` (as per the datasheet)
+- **Payload type**: **Bytes**
+- **Payload**: type in **FF FF FF FF 00** (this makes the Busylight solid white, no blinking)
+
 Here is the payload structure for the downlink messages for your reference:
 
 {{< figure src="busylight-payload-structure.png" alt="" >}}

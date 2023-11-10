@@ -1,10 +1,11 @@
 ---
-title: "Class C"
+title: "Class C Settings"
 description: ""
-weight: 5
+aliases: ["/devices/class-c"]
+weight: 2
 ---
 
-Class C end devices continuously listen for downlink messages. This allows applications to send messages to devices at any time, instead of having to wait for a Class A uplink. When combined with [multicast groups]({{< ref "/devices/multicast" >}}), this allows applications to send immediate downlinks to many devices at the same time.
+Class C end devices continuously listen for downlink messages. This allows applications to send messages to devices at any time, instead of having to wait for a Class A uplink. When combined with [multicast groups]({{< ref "/devices/configuring-devices/multicast" >}}), this allows applications to send immediate downlinks to many devices at the same time.
 
 This guide shows how to enable or disable Class C for an and device, and how to work with multicast groups.
 
@@ -47,7 +48,7 @@ To disable Class C scheduling, reset with `--supports-class-c=false`.
 
 ## Multicast Group
 
-See [Multicast]({{< ref "devices/multicast" >}}) for instructions for creating and using multicast groups.
+See [Multicast]({{< ref "/devices/configuring-devices/multicast" >}}) for instructions for creating and using multicast groups.
 
 ## Class C Message Settings
 
